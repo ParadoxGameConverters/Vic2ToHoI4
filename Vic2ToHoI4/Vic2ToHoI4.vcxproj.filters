@@ -3422,21 +3422,6 @@
     <CopyFileToFolders Include="Data_Files\flags\ASY_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ATB.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ATB_communist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ATB_fascist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ATB_monarchy.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ATB_republic.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\ATH.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
@@ -4691,21 +4676,6 @@
     <CopyFileToFolders Include="Data_Files\flags\BUU_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\BYA.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\BYA_communist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\BYA_fascist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\BYA_monarchy.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\BYA_republic.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\BYE.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
@@ -5724,21 +5694,6 @@
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\CRL_republic.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\CRN.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\CRN_communist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\CRN_fascist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\CRN_monarchy.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\CRN_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\CRO.tga">
@@ -13448,21 +13403,6 @@
     <CopyFileToFolders Include="Data_Files\flags\NOR_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\NOV.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\NOV_communist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\NOV_fascist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\NOV_monarchy.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\NOV_republic.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\NRM.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
@@ -19001,21 +18941,6 @@
     <CopyFileToFolders Include="Data_Files\flags\ADU_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ALL.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ALL_communist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ALL_fascist.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ALL_monarchy.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\flags\ALL_republic.tga">
-      <Filter>Data Files\Flags</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\ALN.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
@@ -20847,6 +20772,1956 @@
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\LNB_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AAA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AAA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AAA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AAA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AAA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ABI.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ABI_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ABI_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ABI_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ABI_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ACO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ACO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ACO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ACO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ACO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AGG.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AGG_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AGG_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AGG_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AGG_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALM.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALM_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALM_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALM_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALM_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALQ.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALQ_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALQ_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALQ_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ALQ_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ARR.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ARR_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ARR_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ARR_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ARR_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATT.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATT_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATT_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATT_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATT_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATW.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATW_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATW_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATW_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ATW_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUE.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUE_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUE_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUE_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUE_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUI.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUI_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUI_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUI_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUI_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUK.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUK_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUK_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUK_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUK_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUM.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUM_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUM_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUM_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUM_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUN.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUN_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUN_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUN_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUN_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUP.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUP_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUP_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUP_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUP_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUW.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUW_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUW_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUW_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUW_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUY.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUY_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUY_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUY_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUY_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUZ.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUZ_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUZ_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUZ_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\AUZ_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BAU.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BAU_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BAU_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BAU_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BAU_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BEY.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BEY_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BEY_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BEY_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BEY_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BJR.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BJR_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BJR_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BJR_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BJR_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BLG.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BLG_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BLG_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BLG_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BLG_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BNE.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BNE_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BNE_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BNE_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BNE_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BRS.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BRS_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BRS_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BRS_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BRS_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BXR.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BXR_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BXR_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BXR_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BXR_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAQ.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAQ_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAQ_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAQ_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CAQ_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CCA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CCA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CCA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CCA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CCA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CEL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CEL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CEL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CEL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CEL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CIA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CIA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CIA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CIA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CIA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLG.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLG_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLG_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLG_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLG_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COF.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COF_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COF_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COF_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COF_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COW.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COW_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COW_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COW_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\COW_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CTI.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CTI_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CTI_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CTI_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CTI_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYG.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYG_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYG_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYG_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYG_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DEM.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DEM_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DEM_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DEM_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DEM_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DKU.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DKU_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DKU_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DKU_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DKU_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DLI.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DLI_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DLI_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DLI_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DLI_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DNL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DNL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DNL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DNL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DNL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ENS.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ENS_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ENS_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ENS_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ENS_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ERY.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ERY_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ERY_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ERY_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ERY_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ETO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ETO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ETO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ETO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ETO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FDL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FDL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FDL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FDL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FDL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJV.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJV_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJV_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJV_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJV_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJW.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJW_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJW_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJW_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FJW_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HBY.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HBY_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HBY_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HBY_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HBY_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HNI.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HNI_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HNI_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HNI_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HNI_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWH.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWH_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWH_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWH_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWH_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWK.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWK_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWK_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWK_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWK_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWM.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWM_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWM_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWM_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWM_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\HWO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ICH.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ICH_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ICH_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ICH_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ICH_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\INN.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\INN_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\INN_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\INN_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\INN_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IPR.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IPR_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IPR_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IPR_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IPR_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ISL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ISL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ISL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ISL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ISL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IST.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IST_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IST_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IST_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\IST_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JAR.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JAR_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JAR_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JAR_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JAR_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JOA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JOA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JOA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JOA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\JOA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KEL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KEL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KEL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KEL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KEL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KOH.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KOH_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KOH_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KOH_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KOH_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSI.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSI_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSI_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSI_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSI_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSK.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSK_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSK_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSK_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSK_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSP.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSP_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSP_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSP_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KSP_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KUL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KUL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KUL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KUL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\KUL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBG.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBG_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBG_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBG_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LBG_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LEP.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LEP_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LEP_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LEP_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LEP_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LGU.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LGU_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LGU_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LGU_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LGU_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLS.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLS_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLS_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLS_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLS_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MNX.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MNX_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MNX_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MNX_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MNX_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MOH.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MOH_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MOH_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MOH_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MOH_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MRL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MRL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MRL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MRL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MRL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSG.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSG_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSG_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSG_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSG_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSH.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSH_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSH_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSH_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSH_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NAK.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NAK_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NAK_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NAK_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NAK_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NEH.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NEH_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NEH_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NEH_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NEH_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NHY.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NHY_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NHY_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NHY_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NHY_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTC.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTC_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTC_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTC_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTC_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTZ.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTZ_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTZ_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTZ_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NTZ_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZK.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZK_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZK_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZK_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZK_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZM.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZM_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZM_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZM_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZM_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZN.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZN_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZN_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZN_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZN_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZR.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZR_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZR_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZR_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZR_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZT.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZT_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZT_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZT_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NZT_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OEO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OEO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OEO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OEO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OEO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OHK.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OHK_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OHK_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OHK_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OHK_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONE.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONE_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONE_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONE_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONE_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ONO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OSH.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OSH_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OSH_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OSH_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\OSH_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCH.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCH_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCH_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCH_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PCH_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEN.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEN_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEN_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEN_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEN_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PEO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHG.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHG_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHG_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHG_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHG_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHR.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHR_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHR_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHR_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PHR_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PRT.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PRT_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PRT_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PRT_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PRT_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\QUI.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\QUI_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\QUI_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\QUI_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\QUI_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RHD.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RHD_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RHD_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RHD_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RHD_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SAB.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SAB_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SAB_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SAB_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SAB_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SHB.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SHB_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SHB_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SHB_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SHB_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SKL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SKL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SKL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SKL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SKL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMB.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMB_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMB_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMB_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMB_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMT.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMT_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMT_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMT_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SMT_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SNC.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SNC_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SNC_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SNC_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SNC_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRB.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRB_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRB_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRB_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRB_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRJ.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRJ_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRJ_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRJ_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRJ_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STP.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STP_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STP_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STP_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\STP_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SUE.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SUE_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SUE_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SUE_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SUE_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\THN.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\THN_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\THN_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\THN_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\THN_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIO.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIO_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIO_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIO_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIO_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIW.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIW_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIW_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIW_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TIW_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TOC.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TOC_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TOC_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TOC_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TOC_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TSC.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TSC_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TSC_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TSC_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\TSC_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\VNT.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\VNT_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\VNT_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\VNT_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\VNT_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WAM.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WAM_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WAM_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WAM_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WAM_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WCY.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WCY_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WCY_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WCY_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WCY_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WIL.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WIL_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WIL_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WIL_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WIL_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WNR.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WNR_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WNR_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WNR_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\WNR_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\XMA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\XMA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\XMA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\XMA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\XMA_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
   </ItemGroup>
