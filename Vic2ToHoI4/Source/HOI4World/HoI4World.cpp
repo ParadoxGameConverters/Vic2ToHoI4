@@ -510,7 +510,6 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 }
 
 
-// overlord units don't need to control provinces
 // determine actual release conditions
 // some shouldn't be formed
 // Central Asia not so far north
@@ -783,12 +782,21 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 
 	for (auto& [tag, country]: countries)
 	{
+		auto ownersToSkip = country->getPuppets();
+		for (const auto& [tag, relation]: country->getRelations())
+		{
+			if (relation.hasMilitaryAccess())
+			{
+				ownersToSkip.insert(tag);
+			}
+		}
+
 		country->convertArmies(localMilitaryMappings, *states, provinceMapper, theConfiguration);
 		if (!country->getProvinces().empty())
 		{
 			for (const auto& divisionLocation: country->getDivisionLocations())
 			{
-				states->giveProvinceControlToCountry(divisionLocation, tag);
+				states->giveProvinceControlToCountry(divisionLocation, tag, ownersToSkip);
 			}
 		}
 	}

@@ -82,7 +82,9 @@ class States: commonItems::parser
 	void convertCapitalVPs(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::vector<std::shared_ptr<Country>>& greatPowers);
 	void addCapitalsToStates(const std::map<std::string, std::shared_ptr<Country>>& countries);
-	void giveProvinceControlToCountry(int provinceNum, const std::string& country);
+	void giveProvinceControlToCountry(int provinceNum,
+		 const std::string& country,
+		 const std::set<std::string>& ownersToSkip);
 	void addDominions(std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const Regions& regions,
 		 Mappers::CountryMapper::Factory& countryMapperFactory,
