@@ -872,7 +872,7 @@ south_slavic = {
 		democratic = { "gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Grol.dds" "gfx/leaders/BUL/Portrait_Bulgaria_Georgi_Dimitrov.dds" }
 		fascism = { "gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Stojadinovic.dds" "gfx/leaders/BUL/portrait_bul_hristo_lukov.dds" "gfx/leaders/CRO/Portrait_Croatia_Ante_Pavelic.dds" }
 		absolutist = { "gfx/leaders/BUL/Portrait_Bulgaria_Boris_III.dds" "GFX_portrait_bul_ferdinand_i" }
-		neutrality = { "gfx/leaders/YUG/Portrait_Yugoslavia_Peter_II.dds" "gfx/leaders/CRO/CRO_vladko_macek.dds" "GFX_portrait_bul_regency_council" }
+		neutrality = { "gfx/leaders/YUG/Portrait_Yugoslavia_Peter_II.dds" "gfx/leaders/CRO/CRO_vladko_macek.dds" }
 		radical = { "gfx/leaders/Europe/portrait_europe_generic_land_18.dds" } #Pavle Jurišic Sturm
 	}
 	ideology_minister_portraits = 
@@ -982,8 +982,8 @@ hungarian_culture_group = {
 	leader_portraits = {
 		communism = { "gfx/leaders/HUN/Portrait_Hungary_Matyas_Rakoski.dds" }
 		democratic = { "GFX_HUN_Arpad_Szakasits" } 
-		fascism = { "gfx/leaders/HUN/Portrait_Hungary_Miklos_Horthy.dds" }
-		absolutist = { "GFX_HUN_Ferenc_Feketehalmy_Czeydner" } 
+		fascism = { "GFX_HUN_Ferenc_Feketehalmy_Czeydner" }
+		absolutist = { "gfx/leaders/HUN/Portrait_Hungary_Miklos_Horthy.dds" } 
 		neutrality = { "GFX_HUN_Geza_Lakatos" } 
 		radical = { "gfx/leaders/Europe/portrait_europe_generic_5.dds" } #Kálmán Darányi
 	}
@@ -2548,12 +2548,12 @@ turko_semitic = {
 	}
 	ideology_minister_portraits = 
 	{
-		communism = { "gfx/interface/ideas/idea_generic_communist_arab.dds" } # Revise
-		democratic = { "gfx/interface/ideas/idea_sabiha_gocen.dds" }
-		fascism = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
+		communism = { "gfx/interface/ideas/idea_tur_nazim_hikmet.dds" }
+		democratic = { "gfx/interface/ideas/idea_tur_celal_bayar.dds" }
+		fascism = { "gfx/interface/ideas/idea_tur_zeki_velidi_togan.dds" }
 		absolutist = { "gfx/interface/ideas/idea_generic_army_arab_1.dds" } # Revise
-		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
-		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
+		neutrality = { "gfx/interface/ideas/idea_tur_sukru_saracoglu.dds" }
+		radical = { "gfx/interface/ideas/idea_tur_ismet_inonu.dds" } 
 	}
 	male_monarch_portraits = {
 		"GFX_focus_TUR_pivot_to_the_past"
@@ -3102,7 +3102,7 @@ arab = {
 		communism = { "gfx/interface/ideas/idea_generic_communist_arab.dds" } # Revise
 		democratic = { "gfx/interface/ideas/idea_generic_democratic_arab.dds" } # Revise
 		fascism = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
-		absolutist = { "gfx/interface/ideas/idea_generic_army_arab_1.dds" } # Revise
+		absolutist = { "gfx/interface/ideas/idea_generic_army_arab_3.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
@@ -3629,7 +3629,7 @@ iranian_turanian = {
 	{
 		communism = { "gfx/interface/ideas/idea_generic_communist_arab.dds" } # Revise
 		democratic = { "gfx/interface/ideas/idea_generic_democratic_arab.dds" } # Revise
-		fascism = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
+		fascism = { "gfx/interface/ideas/idea_tur_nejdet_sancar.dds" } 
 		absolutist = { "gfx/interface/ideas/idea_generic_army_arab_1.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
@@ -3741,10 +3741,10 @@ south_asian = {
 	}
 	ideology_minister_portraits = 
 	{
-		communism = { "gfx/interface/ideas/idea_generic_communist_arab.dds" } # Revise
-		democratic = { "gfx/interface/ideas/idea_raj_quit_india_movement.dds" }
-		fascism = { "gfx/interface/ideas/generic_political_advisor_india_2.dds" }
-		absolutist = { "gfx/interface/ideas/idea_raj_quit_india_movement.dds" }
+		communism = { "gfx/interface/ideas/generic_political_advisor_india_2.dds" } # Karam Singh Mann
+		democratic = { "gfx//interface//ideas//idea_chakravarti_rajagopalachari.dds" } # How it is defined in TFV, it's double slash
+		fascism = { "gfx//interface//ideas//idea_subhas_chanda_bose.dds" } # How it is defined in TFV, it's double slash
+		absolutist = { "gfx/interface/ideas/idea_raj_quit_india_movement.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/generic_political_advisor_india_1.dds" }
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
@@ -3829,9 +3829,9 @@ indo_iranian = { #HFM
 	ideology_minister_portraits = 
 	{
 		communism = { "gfx/interface/ideas/idea_generic_communist_arab.dds" } # Revise
-		democratic = { "gfx/interface/ideas/idea_raj_quit_india_movement.dds" } # Revise
+		democratic = { "gfx//interface//ideas//idea_sir_mohammed_iqbal.dds" } # How it is defined in TFV, it's double slash
 		fascism = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
-		absolutist = { "gfx/interface/ideas/idea_raj_quit_india_movement.dds" } # Revise
+		absolutist = { "gfx//interface//ideas//idea_agha_khan.dds" } # How it is defined in TFV, it's double slash, Agha Khan III had royal blood
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
@@ -3882,8 +3882,8 @@ east_asian = {
 	}
 	ideology_minister_portraits = 
 	{
-		communism = { "gfx/interface/ideas/idea_hisaichi_terauchi.dds" }
-		democratic = { "gfx/interface/ideas/idea_hideo_itokawa.dds" }
+		communism = { "gfx/interface/ideas/idea_prc_zhou_enlai.dds" }
+		democratic = { "gfx/interface/ideas/idea_chi_chiang_ching_kuo.dds" }
 		fascism = { "gfx/interface/ideas/idea_hitoshi_imamura.dds" }
 		absolutist = { "gfx/interface/ideas/idea_hideki_tojo.dds" }
 		neutrality = { "gfx/interface/ideas/idea_hajime_sugiyama.dds" }
