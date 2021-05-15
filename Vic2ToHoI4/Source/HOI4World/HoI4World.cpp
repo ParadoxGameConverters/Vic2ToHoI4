@@ -548,7 +548,7 @@ std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(
 
 bool HoI4::World::dominionShouldBeFreed(const Country& dominion, const Country& overlord)
 {
-	return true;
+	return dominion.getCoreStates().size() > 1;
 }
 
 
