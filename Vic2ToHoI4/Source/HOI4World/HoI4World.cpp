@@ -456,12 +456,17 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		if (!ownerCapitalProvince)
 		{
 			continue;
-		}
+		}		
 		const auto& ownerRegion = theRegions->getRegion(*ownerCapitalProvince);
 
 		const bool differentRegions =
 			 ((stateRegion && !ownerRegion) || (stateRegion && ownerRegion && *stateRegion != *ownerRegion));
 		if (!differentRegions)
+		{
+			continue;
+		}
+
+		if (state.getCores().contains(owner->first))
 		{
 			continue;
 		}
@@ -511,7 +516,6 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 
 
 // determine actual release conditions
-// some shouldn't be formed
 // Central Asia not so far north
 std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(const std::string& ownerTag,
 	 const Country& owner,
