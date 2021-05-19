@@ -515,8 +515,6 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 }
 
 
-// determine actual release conditions
-// Central Asia not so far north
 std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(const std::string& ownerTag,
 	 const Country& owner,
 	 const std::string& region,
