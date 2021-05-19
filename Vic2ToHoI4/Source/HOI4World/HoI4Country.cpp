@@ -123,7 +123,7 @@ HoI4::Country::Country(const std::string& tag_,
 	 graphicalCulture2d(owner.graphicalCulture2d), warSupport(owner.warSupport),
 	 oldTechnologiesAndInventions(owner.oldTechnologiesAndInventions), atWar(owner.atWar), shipNames(owner.shipNames),
 	 generatedDominion(true), region(region_), puppetMaster(owner.getTag()), puppetMasterOldTag(owner.getOldTag()),
-	 governmentIdeology(owner.getGovernmentIdeology()), leaderIdeology(owner.getLeaderIdeology())
+	 governmentIdeology(owner.getGovernmentIdeology()), leaderIdeology(owner.getLeaderIdeology()), oldCapital(-1)
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
