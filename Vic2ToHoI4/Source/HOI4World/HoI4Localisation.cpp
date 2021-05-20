@@ -404,12 +404,12 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisation(const std::strin
 		return false;
 	}
 
-	for (const auto& textInLanguage: Vic2Text)
+	for (const auto& [language, text]: Vic2Text)
 	{
-		auto localisations = getExistingLocalisationsInLanguage(textInLanguage.first);
+		auto localisations = getExistingLocalisationsInLanguage(language);
 		if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
 		{
-			localisation->second = textInLanguage.second;
+			localisation->second = text;
 		}
 	}
 
@@ -428,12 +428,12 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisationChangingArticles(
 		return false;
 	}
 
-	for (const auto& textInLanguage: Vic2Text)
+	for (const auto& [language, text]: Vic2Text)
 	{
-		auto localisations = getExistingLocalisationsInLanguage(textInLanguage.first);
+		auto localisations = getExistingLocalisationsInLanguage(language);
 		if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
 		{
-			localisation->second = articleRules.updateArticles(textInLanguage.first, textInLanguage.second);
+			localisation->second = articleRules.updateArticles(language, text);
 		}
 	}
 

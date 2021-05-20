@@ -4,9 +4,9 @@
 
 std::optional<std::string> HoI4::Regions::getRegion(int provinceNumber) const
 {
-	if (regionsMap.contains(provinceNumber))
+	if (const auto& region = regionsMap.find(provinceNumber); region != regionsMap.end())
 	{
-		return regionsMap.at(provinceNumber);
+		return region->second;
 	}
 
 	return std::nullopt;
@@ -15,9 +15,9 @@ std::optional<std::string> HoI4::Regions::getRegion(int provinceNumber) const
 
 std::optional<std::string> HoI4::Regions::getRegionName(const std::string& regionName) const
 {
-	if (regionNames.contains(regionName))
+	if (const auto& name = regionNames.find(regionName); name != regionNames.end())
 	{
-		return regionNames.at(regionName);
+		return name->second;
 	}
 
 	return std::nullopt;
@@ -26,9 +26,9 @@ std::optional<std::string> HoI4::Regions::getRegionName(const std::string& regio
 
 std::optional<std::string> HoI4::Regions::getRegionAdjective(const std::string& regionName) const
 {
-	if (regionAdjectives.contains(regionName))
+	if (const auto& adjective = regionAdjectives.find(regionName); adjective != regionAdjectives.end())
 	{
-		return regionAdjectives.at(regionName);
+		return adjective->second;
 	}
 
 	return std::nullopt;

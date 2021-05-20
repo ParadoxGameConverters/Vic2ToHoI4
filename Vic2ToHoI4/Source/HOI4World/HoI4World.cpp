@@ -51,6 +51,7 @@
 #include "V2World/World/World.h"
 #include "WarCreator/HoI4WarCreator.h"
 #include <numeric>
+#include <ranges>
 using namespace std;
 
 
@@ -314,7 +315,7 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 	{
 		if (country->isGeneratedDominion())
 		{
-			const auto ownerOldTag = country->getPuppetMasterOldTag();
+			const auto& ownerOldTag = country->getPuppetMasterOldTag();
 			hoi4Localisations->createGeneratedDominionLocalisations(tag,
 				 country->getRegion(),
 				 ownerOldTag,
@@ -456,7 +457,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		if (!ownerCapitalProvince)
 		{
 			continue;
-		}		
+		}
 		const auto& ownerRegion = theRegions->getRegion(*ownerCapitalProvince);
 
 		const bool differentRegions =
@@ -485,7 +486,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 	}
 
 	auto& modifiableStates = states->getModifiableStates();
-	for (auto& [unused, dominionTag]: dominions)
+	for (auto& dominionTag: dominions | std::views::values)
 	{
 		if (auto dominion = countries.find(dominionTag); dominion != countries.end())
 		{
@@ -498,7 +499,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 				continue;
 			}
 
-			if (dominionShouldBeFreed(*dominion->second, *overlord->second))
+			if (dominionIsReleasable(*dominion->second, *overlord->second))
 			{
 				overlord->second->addPuppet(dominionTag);
 				for (const auto& stateId: dominion->second->getCoreStates())
@@ -544,7 +545,7 @@ std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(
 }
 
 
-bool HoI4::World::dominionShouldBeFreed(const Country& dominion, const Country& overlord)
+bool HoI4::World::dominionIsReleasable(const Country& dominion, const Country& overlord)
 {
 	return dominion.getCoreStates().size() > 1;
 }
