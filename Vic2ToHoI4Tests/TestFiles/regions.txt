@@ -1,1 +1,5 @@
-test_region = { 42 }
+test_region = {
+	name = "Test Region"
+	adjective = "Test Regional"
+	provinces = { 42 }
+}

@@ -318,6 +318,56 @@ void HoI4::Localisation::addLocalisation(const std::string& newKey,
 }
 
 
+void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string& tag,
+	 const std::string& region,
+	 const std::string& ownerOldTag,
+	 const Vic2::Localisations& vic2Localisations,
+	 const Mappers::CountryNameMapper& countryNameMapper,
+	 const std::set<std::string>& majorIdeologies,
+	 const ArticleRules& articleRules)
+{
+	for (const auto& ideology: majorIdeologies)
+	{
+		const auto vic2Government = countryNameMapper.getVic2Government(ideology, ownerOldTag);
+		if (!vic2Government)
+		{
+			continue;
+		}
+
+		auto localisationsForGovernment =
+			 vic2Localisations.getTextInEachLanguage(ownerOldTag + "_" + *vic2Government + "_ADJ");
+		if (localisationsForGovernment.empty())
+		{
+			localisationsForGovernment = vic2Localisations.getTextInEachLanguage(ownerOldTag + "_ADJ");
+		}
+		for (auto& [language, localisation]: localisationsForGovernment)
+		{
+			if (const auto& secondPart = vic2Localisations.getTextInLanguage(region, language); secondPart)
+			{
+				localisation += " " + *secondPart;
+			}
+		}
+		addLocalisationsInAllLanguages(tag, "", "_DEF", ideology, localisationsForGovernment, articleRules);
+		if (localisationsForGovernment.empty())
+		{
+			addLocalisationsInAllLanguages(tag,
+				 "",
+				 "_DEF",
+				 ideology,
+				 vic2Localisations.getTextInEachLanguage(region),
+				 articleRules);
+		}
+
+		addLocalisationsInAllLanguages(tag,
+			 "_ADJ",
+			 "",
+			 ideology,
+			 vic2Localisations.getTextInEachLanguage(region + "_ADJ"),
+			 articleRules);
+	}
+}
+
+
 void HoI4::Localisation::updateMainCountryLocalisation(const std::string& HoI4Key,
 	 const std::string& Vic2Tag,
 	 const std::string& Vic2Government,
@@ -348,21 +398,22 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisation(const std::strin
 	 const std::string& Vic2Key,
 	 const Vic2::Localisations& vic2Localisations)
 {
-	if (auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key); Vic2Text.empty())
+	auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key);
+	if (!Vic2Text.empty())
 	{
-		for (const auto& textInLanguage: Vic2Text)
-		{
-			auto localisations = getExistingLocalisationsInLanguage(textInLanguage.first);
-			if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
-			{
-				localisation->second = textInLanguage.second;
-			}
-		}
-
-		return true;
+		return false;
 	}
 
-	return false;
+	for (const auto& [language, text]: Vic2Text)
+	{
+		auto localisations = getExistingLocalisationsInLanguage(language);
+		if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
+		{
+			localisation->second = text;
+		}
+	}
+
+	return true;
 }
 
 
@@ -371,21 +422,22 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisationChangingArticles(
 	 const Vic2::Localisations& vic2Localisations,
 	 const ArticleRules& articleRules)
 {
-	if (auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key); Vic2Text.empty())
+	const auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key);
+	if (Vic2Text.empty())
 	{
-		for (const auto& textInLanguage: Vic2Text)
-		{
-			auto localisations = getExistingLocalisationsInLanguage(textInLanguage.first);
-			if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
-			{
-				localisation->second = articleRules.updateArticles(textInLanguage.first, textInLanguage.second);
-			}
-		}
-
-		return true;
+		return false;
 	}
 
-	return false;
+	for (const auto& [language, text]: Vic2Text)
+	{
+		auto localisations = getExistingLocalisationsInLanguage(language);
+		if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
+		{
+			localisation->second = articleRules.updateArticles(language, text);
+		}
+	}
+
+	return true;
 }
 
 

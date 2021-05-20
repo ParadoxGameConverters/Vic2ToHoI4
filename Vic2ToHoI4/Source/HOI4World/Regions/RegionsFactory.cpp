@@ -6,11 +6,14 @@
 
 HoI4::Regions::Factory::Factory()
 {
-	registerRegex(commonItems::catchallRegex, [this](const std::string& region, std::istream& theStream) {
-		for (const auto province: commonItems::intList{theStream}.getInts())
+	registerRegex(commonItems::catchallRegex, [this](const std::string& regionId, std::istream& theStream) {
+		const auto region = regionFactory.importRegion(theStream);
+		for (const auto province: region->getProvinces())
 		{
-			theRegions->regionsMap.insert(std::make_pair(province, region));
+			theRegions->regionsMap.emplace(province, regionId);
 		}
+		theRegions->regionNames.emplace(regionId, region->getName());
+		theRegions->regionAdjectives.emplace(regionId, region->getAdjective());
 	});
 }
 

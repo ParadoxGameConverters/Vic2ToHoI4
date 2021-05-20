@@ -381,8 +381,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 
 		if (!passableProvinces.empty())
 		{
-			auto [existing, emplaced] =
-				 languageCategories.emplace(vic2State.getLanguageCategory(), std::set{nextStateID});
+			auto [existing, emplaced] = languageCategories.emplace(vic2State.getLanguageCategory(), std::set{nextStateID});
 			if (!emplaced)
 			{
 				existing->second.insert(nextStateID);
@@ -409,8 +408,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 
 		if (!impassableProvinces.empty())
 		{
-			auto [existing, emplaced] =
-				 languageCategories.emplace(vic2State.getLanguageCategory(), std::set{nextStateID});
+			auto [existing, emplaced] = languageCategories.emplace(vic2State.getLanguageCategory(), std::set{nextStateID});
 			if (!emplaced)
 			{
 				existing->second.insert(nextStateID);
@@ -734,7 +732,9 @@ void HoI4::States::addCapitalsToStates(const std::map<std::string, std::shared_p
 }
 
 
-void HoI4::States::giveProvinceControlToCountry(int provinceNum, const std::string& country)
+void HoI4::States::giveProvinceControlToCountry(int provinceNum,
+	 const std::string& country,
+	 const std::set<std::string>& ownersToSkip)
 {
 	const auto& stateIdMapping = provinceToStateIDMap.find(provinceNum);
 	if (stateIdMapping == provinceToStateIDMap.end())
@@ -742,6 +742,16 @@ void HoI4::States::giveProvinceControlToCountry(int provinceNum, const std::stri
 		return;
 	}
 
+	const auto state = states.find(stateIdMapping->second);
+	if (state == states.end())
+	{
+		return;
+	}
+
+	if (ownersToSkip.contains(state->second.getOwner()))
+	{
+		return;
+	}
 	states.at(stateIdMapping->second).setControlledProvince(provinceNum, country);
 }
 

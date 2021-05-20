@@ -67,9 +67,6 @@ HoI4::Country::Country(std::string tag,
 
 	initIdeas(names, hoi4Localisations);
 
-	stability = 60;
-	warSupport = 60;
-
 	if (sourceCountry.hasLand())
 	{
 		auto warAttitude = sourceCountry.getAverageIssueSupport("jingoism");
@@ -109,6 +106,62 @@ HoI4::Country::Country(std::string tag,
 	shipNames = sourceCountry.getAllShipNames();
 
 	sourceCountryGoods = sourceCountry.getGoodsStockpile();
+}
+
+
+HoI4::Country::Country(const std::string& tag_,
+	 const Country& owner,
+	 const std::string& region_,
+	 const Regions& regions,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names,
+	 Localisation& hoi4Localisations):
+	 tag(tag_),
+	 primaryCulture(owner.primaryCulture), primaryCultureGroup(owner.primaryCultureGroup), civilized(owner.civilized),
+	 rulingParty(owner.rulingParty), parties(owner.parties), upperHouseComposition(owner.upperHouseComposition),
+	 lastElection(owner.lastElection), color(owner.color), graphicalCulture(owner.graphicalCulture),
+	 graphicalCulture2d(owner.graphicalCulture2d), warSupport(owner.warSupport),
+	 oldTechnologiesAndInventions(owner.oldTechnologiesAndInventions), atWar(owner.atWar), shipNames(owner.shipNames),
+	 generatedDominion(true), region(region_), puppetMaster(owner.getTag()), puppetMasterOldTag(owner.getOldTag()),
+	 governmentIdeology(owner.getGovernmentIdeology()), leaderIdeology(owner.getLeaderIdeology()), oldCapital(-1)
+{
+	if (const auto& regionName = regions.getRegionName(region); regionName)
+	{
+		if (const auto& ownerAdjective = owner.adjective; ownerAdjective)
+		{
+			name = *ownerAdjective + " " + *regionName;
+		}
+		else
+		{
+			name = *regionName;
+		}
+	}
+
+	if (const auto& regionAdjective = regions.getRegionAdjective(region); regionAdjective)
+	{
+		adjective = *regionAdjective;
+	}
+
+	determineFilename();
+
+	color.RandomlyFluctuate(2);
+
+	armyPortraits = graphicsMapper.getArmyPortraits(primaryCultureGroup);
+	navyPortraits = graphicsMapper.getNavyPortraits(primaryCultureGroup);
+	communistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
+	democraticAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
+	neutralityAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
+	absolutistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
+	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
+	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
+
+	initIdeas(names, hoi4Localisations);
+	if (owner.hasMonarchIdea())
+	{
+		ideas.insert(owner.tag + "_monarch");
+	}
+
+	convertLaws();
 }
 
 
@@ -550,6 +603,28 @@ void HoI4::Country::determineCapitalFromVic2(const Mappers::ProvinceMapper& theP
 }
 
 
+void HoI4::Country::determineBestCapital(const std::map<int, State>& allStates)
+{
+	auto success = attemptToPutCapitalInNonWastelandOwned(allStates);
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyOwned(allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyNonWastelandCored(allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyCored(allStates);
+	}
+	if (!success)
+	{
+		Log(LogLevel::Warning) << "Could not properly set capital for " << tag;
+	}
+}
+
+
 bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
@@ -660,14 +735,14 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const Mapper
 
 bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const std::map<int, State>& allStates)
 {
-	for (auto ownedStateNum: states)
+	for (auto coredStateNum: coreStates)
 	{
-		if (auto stateAndNum = allStates.find(ownedStateNum); stateAndNum != allStates.end())
+		if (auto stateAndNum = allStates.find(coredStateNum); stateAndNum != allStates.end())
 		{
 			auto state = stateAndNum->second;
 			if ((state.getCores().contains(tag) || state.getClaims().contains(tag)) && !state.isImpassable())
 			{
-				capitalState = ownedStateNum;
+				capitalState = coredStateNum;
 				capitalProvince = *state.getProvinces().begin();
 				return true;
 			}
@@ -703,13 +778,13 @@ bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(const Mappers::
 
 bool HoI4::Country::attemptToPutCapitalInAnyCored(const std::map<int, State>& allStates)
 {
-	for (auto ownedStateNum: states)
+	for (auto coredStateNum: coreStates)
 	{
-		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		if (auto state = allStates.find(coredStateNum); state != allStates.end())
 		{
 			if (state->second.getCores().contains(tag) || state->second.getClaims().contains(tag))
 			{
-				capitalState = ownedStateNum;
+				capitalState = coredStateNum;
 				capitalProvince = *state->second.getProvinces().begin();
 				return true;
 			}

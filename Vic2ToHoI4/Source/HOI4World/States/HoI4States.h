@@ -7,7 +7,11 @@
 #include "HOI4World/Map/Hoi4Province.h"
 #include "HOI4World/Map/MapData.h"
 #include "HOI4World/Map/StrategicRegions.h"
+#include "HOI4World/Names/Names.h"
+#include "HOI4World/Regions/Regions.h"
 #include "Mappers/Country/CountryMapper.h"
+#include "Mappers/Country/CountryMapperFactory.h"
+#include "Mappers/Graphics/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
 #include "V2World/Countries/Country.h"
@@ -67,6 +71,8 @@ class States: commonItems::parser
 	[[nodiscard]] const std::map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
 	[[nodiscard]] const auto& getLanguageCategories() const { return languageCategories; }
 
+	[[nodiscard]] std::map<int, State>& getModifiableStates() { return states; }
+
 	void convertAirBases(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::vector<std::shared_ptr<Country>>& greatPowers);
 	void convertResources();
@@ -76,7 +82,15 @@ class States: commonItems::parser
 	void convertCapitalVPs(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::vector<std::shared_ptr<Country>>& greatPowers);
 	void addCapitalsToStates(const std::map<std::string, std::shared_ptr<Country>>& countries);
-	void giveProvinceControlToCountry(int provinceNum, const std::string& country);
+	void giveProvinceControlToCountry(int provinceNum,
+		 const std::string& country,
+		 const std::set<std::string>& ownersToSkip);
+	void addDominions(std::map<std::string, std::shared_ptr<Country>>& countries,
+		 const Regions& regions,
+		 Mappers::CountryMapper::Factory& countryMapperFactory,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Names& names,
+		 Localisation& hoi4Localisations);
 
   private:
 	void determineOwnersAndCores(const Mappers::CountryMapper& countryMap,

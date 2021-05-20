@@ -60,16 +60,18 @@ class Country
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 Localisation& hoi4Localisations);
-	Country() = delete;
-	Country(const Country&) = delete;
-	Country& operator=(const Country&) = delete;
-	Country(Country&&) = delete;
-	Country& operator=(Country&&) = delete;
-	~Country() = default;
+	explicit Country(const std::string& tag_,
+		 const Country& owner,
+		 const std::string& region_,
+		 const Regions& regions,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Names& names,
+		 Localisation& hoi4Localisations);
 
 	void determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
+	void determineBestCapital(const std::map<int, State>& allStates);
 	void setCapitalRegionFlag(const Regions& regions);
 	void setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 		 const Ideologies& ideologies,
@@ -217,8 +219,11 @@ class Country
 	[[nodiscard]] const std::set<std::string>& getAllies() const { return allies; }
 	[[nodiscard]] const std::set<std::string>& getPuppets() const { return puppets; }
 	[[nodiscard]] const std::string& getPuppetMaster() const { return puppetMaster; }
+	[[nodiscard]] const std::string& getPuppetMasterOldTag() const { return puppetMasterOldTag; }
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
+	[[nodiscard]] bool isGeneratedDominion() const { return generatedDominion; }
+	[[nodiscard]] const auto& getRegion() const { return region; }
 
 	[[nodiscard]] bool isNavalTreatyAdherent() const { return navalTreatyAdherent; }
 	[[nodiscard]] bool isGreatestNavalPower() const { return greatestNavalPower; }
@@ -312,8 +317,8 @@ class Country
 	std::map<std::string, double> upperHouseComposition;
 	std::map<std::string, int> ideologySupport{std::make_pair("neutrality", 100)};
 	date lastElection;
-	int stability = 50;
-	int warSupport = 50;
+	int stability = 60;
+	int warSupport = 60;
 	std::string mobilizationLaw = "volunteer_only";
 	std::string economicLaw = "civilian_economy";
 	std::string tradeLaw = "export_focus";
@@ -356,8 +361,11 @@ class Country
 	std::set<std::string> allies;
 	std::set<std::string> puppets;
 	std::string puppetMaster;
+	std::string puppetMasterOldTag;
 	bool greatPower = false;
 	bool civilized = false;
+	bool generatedDominion = false;
+	std::string region;
 
 	std::map<std::string, int> GPInfluences;
 	std::map<std::string, double> spherelings;

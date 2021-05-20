@@ -20,6 +20,7 @@ class CountryMapper::Factory: commonItems::parser
   public:
 	Factory();
 	std::unique_ptr<CountryMapper> importCountryMapper(const Vic2::World& srcWorld, bool debug);
+	[[nodiscard]] std::string generateNewHoI4Tag();
 
   private:
 	void readRules();
@@ -27,7 +28,6 @@ class CountryMapper::Factory: commonItems::parser
 	void resetMappingData();
 	void makeOneMapping(const std::string& Vic2Tag, bool debug);
 	[[nodiscard]] bool tagIsAlreadyAssigned(const std::string& HoI4Tag) const;
-	[[nodiscard]] std::string generateNewHoI4Tag();
 	void mapToNewTag(const std::string& Vic2Tag, const std::string& HoI4Tag, bool debug);
 
 	CountryMappingRuleFactory countryMappingRuleFactory;

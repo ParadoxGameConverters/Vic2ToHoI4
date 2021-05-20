@@ -51,6 +51,7 @@
 #include "V2World/World/World.h"
 #include "WarCreator/HoI4WarCreator.h"
 #include <numeric>
+#include <ranges>
 using namespace std;
 
 
@@ -65,7 +66,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
 
-	countryMap = Mappers::CountryMapper::Factory().importCountryMapper(sourceWorld, theConfiguration.getDebug());
+	Mappers::CountryMapper::Factory countryMapperFactory;
+	countryMap = countryMapperFactory.importCountryMapper(sourceWorld, theConfiguration.getDebug());
 
 	auto vic2Localisations = sourceWorld.getLocalisations();
 	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration);
@@ -86,11 +88,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
-	convertCountryNames(vic2Localisations);
-	scriptedLocalisations = ScriptedLocalisations::Factory().getScriptedLocalisations();
-	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
-	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
-	hoi4Localisations->generateCustomLocalisations(*scriptedLocalisations, ideologies->getMajorIdeologies());
 	states = std::make_unique<States>(sourceWorld,
 		 *countryMap,
 		 theProvinces,
@@ -105,17 +102,25 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 theConfiguration);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
+	theRegions = Regions::Factory().getRegions();
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	convertIndustry(theConfiguration);
+	addDominions(countryMapperFactory);
 	determineCoreStates();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
 	convertDiplomacy(sourceWorld);
 	convertTechs();
+
+	convertCountryNames(vic2Localisations);
+	scriptedLocalisations = ScriptedLocalisations::Factory().getScriptedLocalisations();
+	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
+	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
+	hoi4Localisations->generateCustomLocalisations(*scriptedLocalisations, ideologies->getMajorIdeologies());
 
 	militaryMappingsFile importedMilitaryMappings;
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
@@ -308,16 +313,30 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 	const auto articleRules = ArticleRules::Factory().getRules("Configurables/Localisations/ArticleRules.txt");
 	for (const auto& [tag, country]: countries)
 	{
-		hoi4Localisations->createCountryLocalisations(std::make_pair(country->getOldTag(), tag),
-			 *countryNameMapper,
-			 ideologies->getMajorIdeologies(),
-			 vic2Localisations,
-			 *articleRules);
-		hoi4Localisations->updateMainCountryLocalisation(tag + "_" + country->getGovernmentIdeology(),
-			 country->getOldTag(),
-			 country->getOldGovernment(),
-			 vic2Localisations,
-			 *articleRules);
+		if (country->isGeneratedDominion())
+		{
+			const auto& ownerOldTag = country->getPuppetMasterOldTag();
+			hoi4Localisations->createGeneratedDominionLocalisations(tag,
+				 country->getRegion(),
+				 ownerOldTag,
+				 vic2Localisations,
+				 *countryNameMapper,
+				 ideologies->getMajorIdeologies(),
+				 *articleRules);
+		}
+		else
+		{
+			hoi4Localisations->createCountryLocalisations(std::make_pair(country->getOldTag(), tag),
+				 *countryNameMapper,
+				 ideologies->getMajorIdeologies(),
+				 vic2Localisations,
+				 *articleRules);
+			hoi4Localisations->updateMainCountryLocalisation(tag + "_" + country->getGovernmentIdeology(),
+				 country->getOldTag(),
+				 country->getOldGovernment(),
+				 vic2Localisations,
+				 *articleRules);
+		}
 	}
 
 	hoi4Localisations->addNonenglishCountryLocalisations();
@@ -406,7 +425,6 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		}
 	}
 
-	const auto theRegions = Regions::Factory().getRegions();
 	for (auto country: countries)
 	{
 		if (country.second->getStates().size() > 0)
@@ -416,6 +434,120 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
 		country.second->setCapitalRegionFlag(*theRegions);
 	}
+}
+
+
+void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFactory)
+{
+	for (auto& [stateId, state]: states->getModifiableStates())
+	{
+		const auto& provinces = state.getProvinces();
+		if (provinces.empty())
+		{
+			continue;
+		}
+		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
+
+		const auto& owner = countries.find(state.getOwner());
+		if (owner == countries.end())
+		{
+			continue;
+		}
+		const auto& ownerCapitalProvince = owner->second->getCapitalProvince();
+		if (!ownerCapitalProvince)
+		{
+			continue;
+		}
+		const auto& ownerRegion = theRegions->getRegion(*ownerCapitalProvince);
+
+		const bool differentRegions =
+			 ((stateRegion && !ownerRegion) || (stateRegion && ownerRegion && *stateRegion != *ownerRegion));
+		if (!differentRegions)
+		{
+			continue;
+		}
+
+		if (state.getCores().contains(owner->first))
+		{
+			continue;
+		}
+
+		auto [dominionTag, dominion] = getDominion(owner->first,
+			 *owner->second,
+			 *stateRegion,
+			 countries,
+			 countryMapperFactory,
+			 *theRegions,
+			 *graphicsMapper,
+			 *names,
+			 *hoi4Localisations);
+		state.addCores({dominionTag});
+		dominion->addCoreState(stateId);
+	}
+
+	auto& modifiableStates = states->getModifiableStates();
+	for (auto& dominionTag: dominions | std::views::values)
+	{
+		if (auto dominion = countries.find(dominionTag); dominion != countries.end())
+		{
+			dominion->second->determineBestCapital(states->getStates());
+
+			const auto overlordTag = dominion->second->getPuppetMaster();
+			auto overlord = countries.find(overlordTag);
+			if (overlord == countries.end())
+			{
+				continue;
+			}
+
+			if (dominionIsReleasable(*dominion->second, *overlord->second))
+			{
+				overlord->second->addPuppet(dominionTag);
+				for (const auto& stateId: dominion->second->getCoreStates())
+				{
+					if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
+					{
+						state->second.setOwner(dominionTag);
+						dominion->second->addState(state->second);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(const std::string& ownerTag,
+	 const Country& owner,
+	 const std::string& region,
+	 std::map<std::string, std::shared_ptr<Country>>& countries,
+	 Mappers::CountryMapper::Factory& countryMapperFactory,
+	 const Regions& regions,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names,
+	 Localisation& hoi4Localisations)
+{
+	if (const auto& dominionTag = dominions.find(std::make_pair(ownerTag, region)); dominionTag != dominions.end())
+	{
+		if (const auto dominion = countries.find(dominionTag->second); dominion != countries.end())
+		{
+			return *dominion;
+		}
+		return std::make_pair(dominionTag->second, nullptr);
+	}
+
+	const auto dominionTag = countryMapperFactory.generateNewHoI4Tag();
+	dominions.emplace(std::make_pair(ownerTag, region), dominionTag);
+	auto dominion =
+		 std::make_shared<Country>(dominionTag, owner, region, regions, graphicsMapper, names, hoi4Localisations);
+	countries.emplace(dominionTag, dominion);
+
+	return std::make_pair(dominionTag, dominion);
+}
+
+
+bool HoI4::World::dominionIsReleasable(const Country& dominion, const Country& overlord)
+{
+	return dominion.getCoreStates().size() > 1;
 }
 
 
@@ -653,12 +785,21 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 
 	for (auto& [tag, country]: countries)
 	{
+		auto ownersToSkip = country->getPuppets();
+		for (const auto& [tag, relation]: country->getRelations())
+		{
+			if (relation.hasMilitaryAccess())
+			{
+				ownersToSkip.insert(tag);
+			}
+		}
+
 		country->convertArmies(localMilitaryMappings, *states, provinceMapper, theConfiguration);
 		if (!country->getProvinces().empty())
 		{
 			for (const auto& divisionLocation: country->getDivisionLocations())
 			{
-				states->giveProvinceControlToCountry(divisionLocation, tag);
+				states->giveProvinceControlToCountry(divisionLocation, tag, ownersToSkip);
 			}
 		}
 	}

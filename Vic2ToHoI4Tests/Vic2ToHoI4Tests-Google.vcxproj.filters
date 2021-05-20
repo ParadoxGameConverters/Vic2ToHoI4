@@ -322,9 +322,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Building.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Region.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
     </ClCompile>
@@ -430,7 +427,7 @@
     <ClCompile Include="HoI4WorldTests\Map\ProvincePointsTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Map\RegionTests.cpp">
+    <ClCompile Include="HoI4WorldTests\Map\MapRegionTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Map\ResourcesLinkTests.cpp">
@@ -1526,6 +1523,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\NavalTreatyEventsUpdaters.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Regions\RegionTests.cpp">
+      <Filter>HoI4WorldTests\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2568,9 +2574,6 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ProvincePoints.h">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Region.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
-    </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.h">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
@@ -2996,6 +2999,15 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\NavalTreatyEventsUpdaters.h">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Region.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
