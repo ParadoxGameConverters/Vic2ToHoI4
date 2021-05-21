@@ -1254,8 +1254,15 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakNeighbors(st
 	std::vector<std::shared_ptr<HoI4::Country>> weakNeighbors;
 
 	auto allies = country->getAllies();
-	for (const auto& neighborTag: mapUtils.getNearbyCountries(country->getTag(), 500))
+	const auto& nearbyCountries = mapUtils.getNearbyCountries(country->getTag(), 500);
+	const auto& targets = country->getConquerStrategies();
+	for (const auto& target: targets)
 	{
+		const auto& neighborTag = target.getID();
+		if (!nearbyCountries.contains(neighborTag))
+		{
+			continue;
+		}
 		if (allies.contains(neighborTag))
 		{
 			continue;
@@ -1308,6 +1315,10 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakColonies(std
 			continue;
 		}
 		if (!neighbor->hasProvinces())
+		{
+			continue;
+		}
+		if (neighbor->isCivilized())
 		{
 			continue;
 		}
