@@ -588,7 +588,16 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	std::vector<std::shared_ptr<HoI4::Country>> EqualTargets;
 	std::vector<std::shared_ptr<HoI4::Country>> DifficultTargets;
 	// getting country provinces and its neighbors
-	auto neighbors = mapUtils.getNearbyCountries(Leader->getTag(), 500.0F);
+	std::set<std::string> neighbors;
+	const auto& nearbyCountries = mapUtils.getNearbyCountries(Leader->getTag(), 500.0F);
+	const auto& targets = Leader->getConquerStrategies();
+	for (const auto& target: targets)
+	{
+		if (nearbyCountries.contains(target.getID()))
+		{
+			neighbors.insert(target.getID());
+		}
+	}
 
 	std::set<std::string> Allies = Leader->getAllies();
 	// should add method to look for cores you dont own
@@ -858,7 +867,17 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 		Log(LogLevel::Info) << "\t\t\tCalculating AI for a country";
 		Log(LogLevel::Info) << "\t\t\tCalculating Neighbors for a country";
 	}
-	auto neighbors = mapUtils.getNearbyCountries(Leader->getTag(), 400);
+	std::set<std::string> neighbors;
+	const auto& nearbyCountries = mapUtils.getNearbyCountries(Leader->getTag(), 400);
+	const auto& targets = Leader->getConquerStrategies();
+	for (const auto& target: targets)
+	{
+		if (nearbyCountries.contains(target.getID()))
+		{
+			neighbors.insert(target.getID());
+		}
+	}
+
 	std::set<std::string> Allies = Leader->getAllies();
 	std::vector<std::shared_ptr<HoI4::Country>> coups;
 	std::vector<std::shared_ptr<HoI4::Country>> forcedtakeover;
@@ -1269,10 +1288,10 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakColonies(std
 	 const HoI4::MapData& theMapData,
 	 const HoI4::ProvinceDefinitions& provinceDefinitions)
 {
-	std::vector<std::shared_ptr<HoI4::Country>> weakColonies;
+	std::vector<std::pair<std::shared_ptr<HoI4::Country>, float>> weakColonies;
 
 	auto allies = country->getAllies();
-	for (auto neighborTag: mapUtils.getFarCountries(country->getTag(), 500))
+	for (auto neighborTag: mapUtils.getFarCountries(country->getTag(), 400))
 	{
 		if (allies.contains(neighborTag))
 		{
@@ -1288,16 +1307,34 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakColonies(std
 		{
 			continue;
 		}
+		if (!neighbor->hasProvinces())
+		{
+			continue;
+		}
+		const auto& distanceBetweenCapitals = mapUtils.getDistanceBetweenCapitals(*country, *neighbor);
+		if (!distanceBetweenCapitals || *distanceBetweenCapitals > 1500)
+		{
+			continue;
+		}
 
 		double enemystrength = neighbor->getStrengthOverTime(1.5);
 		double mystrength = country->getStrengthOverTime(1.5);
 		if ((enemystrength < mystrength * 0.5) && (findFaction(neighbor)->getMembers().size() == 1))
 		{
-			weakColonies.push_back(neighbor);
+			weakColonies.push_back(std::make_pair(neighbor, *distanceBetweenCapitals));
 		}
 	}
-
-	return weakColonies;
+	std::sort(weakColonies.begin(),
+		 weakColonies.end(),
+		 [](const std::pair<std::shared_ptr<HoI4::Country>, float>& a, const std::pair<std::shared_ptr<HoI4::Country>, float>& b) {
+			 return a.second < b.second;
+		 });
+	std::vector<std::shared_ptr<HoI4::Country>> sortedWeakColonies;
+	for (const auto& [colony, unused]: weakColonies)
+	{
+		sortedWeakColonies.push_back(colony);
+	}
+	return sortedWeakColonies;
 }
 
 
