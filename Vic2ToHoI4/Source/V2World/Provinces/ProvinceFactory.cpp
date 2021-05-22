@@ -4,7 +4,7 @@
 
 
 
-Vic2::Province::Factory::Factory(std::unique_ptr<Pop::Factory>&& _popFactory): popFactory(std::move(_popFactory))
+Vic2::Province::Factory::Factory(std::unique_ptr<PopFactory>&& _popFactory): popFactory(std::move(_popFactory))
 {
 	registerKeyword("owner", [this](std::istream& theStream) {
 		province->owner = commonItems::singleString{theStream}.getString();

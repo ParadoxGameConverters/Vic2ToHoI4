@@ -26,8 +26,6 @@ struct PopOptions
 class Pop
 {
   public:
-	class Factory;
-
 	Pop() = default;
 	explicit Pop(const PopOptions& options):
 		 type_(options.type), culture_(options.culture), size_(options.size), literacy_(options.literacy),

@@ -5,7 +5,7 @@
 
 
 
-Vic2::Pop::Factory::Factory(Issues _theIssues): theIssues(std::move(_theIssues))
+Vic2::PopFactory::PopFactory(Issues _theIssues): theIssues(std::move(_theIssues))
 {
 	registerKeyword("size", [this](std::istream& theStream) {
 		popOptions.size = commonItems::singleInt{theStream}.getInt();
@@ -45,7 +45,7 @@ Vic2::Pop::Factory::Factory(Issues _theIssues): theIssues(std::move(_theIssues))
 }
 
 
-Vic2::Pop Vic2::Pop::Factory::getPop(const std::string& typeString, std::istream& theStream)
+Vic2::Pop Vic2::PopFactory::getPop(const std::string& typeString, std::istream& theStream)
 {
 	popOptions = PopOptions();
 	popOptions.type = typeString;

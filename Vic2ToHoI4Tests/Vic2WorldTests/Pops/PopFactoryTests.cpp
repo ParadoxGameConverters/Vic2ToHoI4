@@ -10,7 +10,7 @@ class Vic2World_Pops_PopFactoryTests: public testing::Test
   protected:
 	Vic2World_Pops_PopFactoryTests(): popFactory(Vic2::Issues()) {}
 
-	Vic2::Pop::Factory popFactory;
+	Vic2::PopFactory popFactory;
 };
 
 
@@ -164,7 +164,7 @@ TEST(Vic2World_Pops_PopTests, IssuesCanBeImported)
 	input << "\t}";
 	input << "}";
 	const auto pop =
-		 Vic2::Pop::Factory(*Vic2::Issues::Builder().addIssueName("learn_the_question").build()).getPop("", input);
+		 Vic2::PopFactory(*Vic2::Issues::Builder().addIssueName("learn_the_question").build()).getPop("", input);
 
 	EXPECT_FLOAT_EQ(87.125F, pop.getIssueSupport("learn_the_question"));
 }
