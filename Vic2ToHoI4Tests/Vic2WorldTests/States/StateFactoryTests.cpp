@@ -1,11 +1,16 @@
 #include "Configuration.h"
-#include "V2World/Pops/PopBuilder.h"
+#include "V2World/Pops/Pop.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/StateDefinitions.h"
 #include "V2World/States/StateDefinitionsBuilder.h"
 #include "V2World/States/StateFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
+
+
+
+using Vic2::Pop;
+using Vic2::PopOptions;
 
 
 
@@ -231,10 +236,8 @@ TEST(Vic2World_States_StateFactoryTests, BuildingLevelIsImported)
 	input << "\t}\n";
 	input << "}\n";
 	auto state = Vic2::State::Factory().getState(input, "TAG", *Vic2::StateDefinitions::Builder().build());
-	state->addProvince(Vic2::Province::Builder()
-								  .setNumber(42)
-								  .setPops({*Vic2::Pop::Builder().setType("craftsmen").setSize(50000).build()})
-								  .build());
+	state->addProvince(
+		 Vic2::Province::Builder().setNumber(42).setPops({Pop(PopOptions{.type = "craftsmen", .size = 50'000})}).build());
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(20000, state->getEmployedWorkers());

@@ -1,9 +1,14 @@
 #include "V2World/Issues/Issues.h"
-#include "V2World/Pops/PopBuilder.h"
+#include "V2World/Pops/Pop.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
+
+
+
+using Vic2::Pop;
+using Vic2::PopOptions;
 
 
 
@@ -17,11 +22,11 @@ TEST(Vic2World_ProvinceTests, getTotalPopulationDefaultsToZero)
 
 TEST(Vic2World_ProvinceTests, getTotalPopulationReturnsTotalPopulation)
 {
-	const auto theProvince = Vic2::Province::Builder()
-										  .setNumber(42)
-										  .setPops({*Vic2::Pop::Builder().setType("serfs").setSize(1).build(),
-												*Vic2::Pop::Builder().setType("slaves").setSize(2).build()})
-										  .build();
+	const auto theProvince =
+		 Vic2::Province::Builder()
+			  .setNumber(42)
+			  .setPops({Pop(PopOptions{.type = "serfs", .size = 1}), Pop(PopOptions{.type = "slaves", .size = 2})})
+			  .build();
 
 	ASSERT_EQ(theProvince->getTotalPopulation(), 3);
 }
@@ -37,11 +42,11 @@ TEST(Vic2World_ProvinceTests, getPopulationDefaultsToZero)
 
 TEST(Vic2World_ProvinceTests, getPopulationWithNoTypeGivesTotalPopulation)
 {
-	const auto theProvince = Vic2::Province::Builder()
-										  .setNumber(42)
-										  .setPops({*Vic2::Pop::Builder().setType("serfs").setSize(1).build(),
-												*Vic2::Pop::Builder().setType("slaves").setSize(2).build()})
-										  .build();
+	const auto theProvince =
+		 Vic2::Province::Builder()
+			  .setNumber(42)
+			  .setPops({Pop(PopOptions{.type = "serfs", .size = 1}), Pop(PopOptions{.type = "slaves", .size = 2})})
+			  .build();
 
 	ASSERT_EQ(theProvince->getPopulation(), 3);
 }
@@ -49,11 +54,11 @@ TEST(Vic2World_ProvinceTests, getPopulationWithNoTypeGivesTotalPopulation)
 
 TEST(Vic2World_ProvinceTests, getPopulationDiscriminatesBySpecifiedPopType)
 {
-	const auto theProvince = Vic2::Province::Builder()
-										  .setNumber(42)
-										  .setPops({*Vic2::Pop::Builder().setType("serfs").setSize(1).build(),
-												*Vic2::Pop::Builder().setType("slaves").setSize(2).build()})
-										  .build();
+	const auto theProvince =
+		 Vic2::Province::Builder()
+			  .setNumber(42)
+			  .setPops({Pop(PopOptions{.type = "serfs", .size = 1}), Pop(PopOptions{.type = "slaves", .size = 2})})
+			  .build();
 
 	ASSERT_EQ(theProvince->getPopulation("slaves"), 2);
 }
@@ -69,10 +74,8 @@ TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDefaultsToZero)
 
 TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesTenPercentAtNoLiteracy)
 {
-	const auto theProvince = Vic2::Province::Builder()
-										  .setNumber(42)
-										  .setPops({*Vic2::Pop::Builder().setType("aristocrats").setSize(100).build()})
-										  .build();
+	const auto theProvince =
+		 Vic2::Province::Builder().setNumber(42).setPops({Pop(PopOptions{.type = "aristocrats", .size = 100})}).build();
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation("aristocrats"), 10);
 }
@@ -80,11 +83,10 @@ TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesTenPercentAtNoLi
 
 TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesOneHundredPercentAtFullLiteracy)
 {
-	const auto theProvince =
-		 Vic2::Province::Builder()
-			  .setNumber(42)
-			  .setPops({*Vic2::Pop::Builder().setType("aristocrats").setSize(100).setLiteracy(1.0).build()})
-			  .build();
+	const auto theProvince = Vic2::Province::Builder()
+										  .setNumber(42)
+										  .setPops({Pop(PopOptions{.type = "aristocrats", .size = 100, .literacy = 1.0})})
+										  .build();
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation("aristocrats"), 100);
 }
@@ -92,12 +94,11 @@ TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesOneHundredPercen
 
 TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDiscriminatesByPopType)
 {
-	const auto theProvince =
-		 Vic2::Province::Builder()
-			  .setNumber(42)
-			  .setPops({*Vic2::Pop::Builder().setType("aristocrats").setSize(100).setLiteracy(1.0).build(),
-					*Vic2::Pop::Builder().setType("artisans").setSize(100).setLiteracy(0.5).build()})
-			  .build();
+	const auto theProvince = Vic2::Province::Builder()
+										  .setNumber(42)
+										  .setPops({Pop(PopOptions{.type = "aristocrats", .size = 100, .literacy = 1.0}),
+												Pop(PopOptions{.type = "artisans", .size = 100, .literacy = 0.5})})
+										  .build();
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation("aristocrats"), 100);
 }
@@ -105,12 +106,11 @@ TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDiscriminatesByPopTyp
 
 TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesAllPopsWhenNoTypeSpecified)
 {
-	const auto theProvince =
-		 Vic2::Province::Builder()
-			  .setNumber(42)
-			  .setPops({*Vic2::Pop::Builder().setType("aristocrats").setSize(100).setLiteracy(1.0).build(),
-					*Vic2::Pop::Builder().setType("artisans").setSize(100).setLiteracy(0.5).build()})
-			  .build();
+	const auto theProvince = Vic2::Province::Builder()
+										  .setNumber(42)
+										  .setPops({Pop(PopOptions{.type = "aristocrats", .size = 100, .literacy = 1.0}),
+												Pop(PopOptions{.type = "artisans", .size = 100, .literacy = 0.5})})
+										  .build();
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation(), 155);
 }
@@ -127,11 +127,10 @@ TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoPops)
 
 TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesSpecified)
 {
-	const auto theProvince =
-		 Vic2::Province::Builder()
-			  .setNumber(42)
-			  .setPops({*Vic2::Pop::Builder().setType("aristocrats").setSize(100).setCulture("culture").build()})
-			  .build();
+	const auto theProvince = Vic2::Province::Builder()
+										  .setNumber(42)
+										  .setPops({Pop(PopOptions{.type = "aristocrats", .culture = "culture", .size = 100})})
+										  .build();
 
 	const std::set<std::string> cultures;
 	ASSERT_EQ(theProvince->getPercentageWithCultures(cultures), 0.0);
@@ -140,11 +139,10 @@ TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesSp
 
 TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesMatch)
 {
-	const auto theProvince =
-		 Vic2::Province::Builder()
-			  .setNumber(42)
-			  .setPops({*Vic2::Pop::Builder().setType("aristocrats").setSize(100).setCulture("culture").build()})
-			  .build();
+	const auto theProvince = Vic2::Province::Builder()
+										  .setNumber(42)
+										  .setPops({Pop(PopOptions{.type = "aristocrats", .culture = "culture", .size = 100})})
+										  .build();
 
 	std::set<std::string> cultures;
 	cultures.insert("wrong_culture");
@@ -154,12 +152,11 @@ TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesMa
 
 TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsMatchedPercent)
 {
-	const auto theProvince =
-		 Vic2::Province::Builder()
-			  .setNumber(42)
-			  .setPops({*Vic2::Pop::Builder().setType("aristocrats").setSize(100).setCulture("culture").build(),
-					*Vic2::Pop::Builder().setType("aristocrats").setSize(100).setCulture("culture2").build()})
-			  .build();
+	const auto theProvince = Vic2::Province::Builder()
+										  .setNumber(42)
+										  .setPops({Pop(PopOptions{.type = "aristocrats", .culture = "culture", .size = 100}),
+												Pop(PopOptions{.type = "aristocrats", .culture = "culture2", .size = 100})})
+										  .build();
 
 	std::set<std::string> cultures;
 	cultures.insert("culture");
@@ -169,12 +166,11 @@ TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsMatchedPercent)
 
 TEST(Vic2World_ProvinceTests, getPercentageWithCulturesCanMapMultipleCultures)
 {
-	const auto theProvince =
-		 Vic2::Province::Builder()
-			  .setNumber(42)
-			  .setPops({*Vic2::Pop::Builder().setType("aristocrats").setSize(100).setCulture("culture").build(),
-					*Vic2::Pop::Builder().setType("aristocrats").setSize(100).setCulture("another_culture").build()})
-			  .build();
+	const auto theProvince = Vic2::Province::Builder()
+										  .setNumber(42)
+										  .setPops({Pop(PopOptions{.type = "aristocrats", .culture = "culture", .size = 100}),
+												Pop(PopOptions{.type = "aristocrats", .culture = "another_culture", .size = 100})})
+										  .build();
 
 	std::set<std::string> cultures;
 	cultures.insert("culture");

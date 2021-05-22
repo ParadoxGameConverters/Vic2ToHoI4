@@ -1,7 +1,12 @@
-#include "V2World/Pops/PopBuilder.h"
+#include "V2World/Pops/Pop.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
+
+
+
+using Vic2::Pop;
+using Vic2::PopOptions;
 
 
 
@@ -69,8 +74,7 @@ TEST(Vic2World_Provinces_ProvinceBuilderTests, PopsDefaultsToEmpty)
 
 TEST(Vic2World_Provinces_ProvinceBuilderTests, PopsCanBeSet)
 {
-	const auto province =
-		 Vic2::Province::Builder().setNumber(42).setPops({*Vic2::Pop::Builder().setType("farmers").build()}).build();
+	const auto province = Vic2::Province::Builder().setNumber(42).setPops({Pop(PopOptions{.type = "farmers"})}).build();
 
 	ASSERT_EQ(province->getPops().size(), 1);
 	ASSERT_EQ(province->getPops()[0].getType(), "farmers");
