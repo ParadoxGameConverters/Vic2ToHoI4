@@ -4,7 +4,7 @@
 
 
 
-Vic2::Province::Factory::Factory(std::unique_ptr<Pop::Factory>&& _popFactory): popFactory(std::move(_popFactory))
+Vic2::Province::Factory::Factory(std::unique_ptr<PopFactory>&& _popFactory): popFactory(std::move(_popFactory))
 {
 	registerKeyword("owner", [this](std::istream& theStream) {
 		province->owner = commonItems::singleString{theStream}.getString();
@@ -25,7 +25,7 @@ Vic2::Province::Factory::Factory(std::unique_ptr<Pop::Factory>&& _popFactory): p
 		 "aristocrats|artisans|bureaucrats|capitalists|clergymen|craftsmen|clerks|farmers|soldiers|officers|labourers|"
 		 "slaves|serfs",
 		 [this](const std::string& popType, std::istream& theStream) {
-			 province->pops.push_back(*popFactory->getPop(popType, theStream));
+			 province->pops.push_back(popFactory->getPop(popType, theStream));
 		 });
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

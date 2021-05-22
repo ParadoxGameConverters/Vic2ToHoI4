@@ -11,13 +11,13 @@ class Vic2World_ProvinceFactoryTests: public testing::Test
   protected:
 	Vic2World_ProvinceFactoryTests();
 
-	std::unique_ptr<Vic2::Pop::Factory> popFactory;
+	std::unique_ptr<Vic2::PopFactory> popFactory;
 	std::unique_ptr<Vic2::Province::Factory> provinceFactory;
 };
 
 
 Vic2World_ProvinceFactoryTests::Vic2World_ProvinceFactoryTests():
-	 popFactory(std::make_unique<Vic2::Pop::Factory>(Vic2::Issues()))
+	 popFactory(std::make_unique<Vic2::PopFactory>(Vic2::Issues()))
 {
 	provinceFactory = std::make_unique<Vic2::Province::Factory>(std::move(popFactory));
 }

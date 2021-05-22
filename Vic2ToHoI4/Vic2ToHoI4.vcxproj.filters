@@ -2039,9 +2039,6 @@
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.h">
       <Filter>HoI4World\Localisations\ArticleRules</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\Pops\PopBuilder.h">
-      <Filter>Vic2World\Pops</Filter>
-    </ClInclude>
     <ClInclude Include="Source\V2World\Issues\IssuesFactory.h">
       <Filter>Vic2World\Issues</Filter>
     </ClInclude>
@@ -4925,7 +4922,7 @@
     <CopyFileToFolders Include="Data_Files\flags\CEG_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
-	<CopyFileToFolders Include="Data_Files\flags\central_asia_emblem.tga">
+    <CopyFileToFolders Include="Data_Files\flags\central_asia_emblem.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\CEP.tga">
@@ -20651,7 +20648,7 @@
     <CopyFileToFolders Include="Data_Files\flags\SOO_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
-	<CopyFileToFolders Include="Data_Files\flags\south_asia_emblem.tga">
+    <CopyFileToFolders Include="Data_Files\flags\south_asia_emblem.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\SRN.tga">
@@ -22737,6 +22734,36 @@
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\XMA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ZIA.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ZIA_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ZIA_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ZIA_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ZIA_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NVG.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NVG_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NVG_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NVG_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\NVG_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
   </ItemGroup>

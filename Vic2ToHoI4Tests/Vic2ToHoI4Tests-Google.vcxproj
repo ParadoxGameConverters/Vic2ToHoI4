@@ -529,7 +529,6 @@
     <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Politics\PartyTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Pops\PopBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Provinces\ProvinceBuilderTests.cpp" />

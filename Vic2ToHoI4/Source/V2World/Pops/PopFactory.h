@@ -13,14 +13,14 @@
 namespace Vic2
 {
 
-class Pop::Factory: commonItems::parser
+class PopFactory: commonItems::parser
 {
   public:
-	explicit Factory(Issues _theIssues);
-	std::unique_ptr<Pop> getPop(const std::string& typeString, std::istream& theStream);
+	explicit PopFactory(Issues _theIssues);
+	Pop getPop(const std::string& typeString, std::istream& theStream);
 
   private:
-	std::unique_ptr<Pop> pop;
+	PopOptions popOptions;
 	const Issues theIssues;
 };
 

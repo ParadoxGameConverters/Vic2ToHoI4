@@ -6,21 +6,42 @@
 #include "Mappers/Country/CountryMapperBuilder.h"
 #include "Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "OutHoi4/States/OutHoI4State.h"
-#include "V2World/Pops/PopBuilder.h"
+#include "V2World/Pops/Pop.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/StateBuilder.h"
 #include "gtest/gtest.h"
-#include <gmock/gmock-matchers.h>
+#include "gmock/gmock-matchers.h"
 #include <optional>
 #include <sstream>
 
 
-TEST(HoI4World_States_StateTests, IdDefaultsToZero)
+
+using Vic2::Pop;
+using Vic2::PopOptions;
+
+
+TEST(HoI4World_States_StateTests, DefaultsAreAsSet)
 {
 	const HoI4::State theState;
 
-	ASSERT_EQ(0, theState.getID());
+	EXPECT_EQ(0, theState.getID());
+	EXPECT_TRUE(theState.getProvinces().empty());
+	EXPECT_TRUE(theState.getOwner().empty());
+	EXPECT_TRUE(theState.getCores().empty());
+	EXPECT_TRUE(theState.getClaims().empty());
+	EXPECT_TRUE(theState.getControlledProvinces().empty());
+	EXPECT_FALSE(theState.isImpassable());
+	EXPECT_EQ(0, theState.getDockyards());
+	EXPECT_EQ(0, theState.getCivFactories());
+	EXPECT_EQ(theState.getMilFactories(), 0);
+	EXPECT_EQ(3, theState.getInfrastructure());
+	EXPECT_TRUE(theState.getNavalBases().empty());
+	EXPECT_EQ(0, theState.getAirbaseLevel());
+	EXPECT_EQ(1, theState.getManpower());
+	EXPECT_FALSE(theState.hasResources());
+	EXPECT_FALSE(theState.getVPLocation());
+	EXPECT_FALSE(theState.getMainNavalLocation());
 }
 
 
@@ -29,16 +50,7 @@ TEST(HoI4World_States_StateTests, IdIsReturned)
 	const auto sourceState = *Vic2::State::Builder().build();
 	const HoI4::State theState(sourceState, 42, "TAG");
 
-	ASSERT_EQ(theState.getID(), 42);
-}
-
-
-TEST(HoI4World_States_StateTests, ProvincesDefaultToEmpty)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_TRUE(theState.getProvinces().empty());
+	EXPECT_EQ(theState.getID(), 42);
 }
 
 
@@ -50,17 +62,7 @@ TEST(HoI4World_States_StateTests, ProvincesCanbeAdded)
 	theState.addProvince(5);
 	theState.addProvince(13);
 
-	ASSERT_EQ(2, theState.getProvinces().size());
-	ASSERT_TRUE(theState.getProvinces().contains(5));
-	ASSERT_TRUE(theState.getProvinces().contains(13));
-}
-
-
-TEST(HoI4World_States_StateTests, OwnerDefaultsToEmpty)
-{
-	const HoI4::State theState;
-
-	ASSERT_TRUE(theState.getOwner().empty());
+	EXPECT_THAT(theState.getProvinces(), testing::UnorderedElementsAre(5, 13));
 }
 
 
@@ -69,16 +71,7 @@ TEST(HoI4World_States_StateTests, OwnerIsReturned)
 	const auto sourceState = *Vic2::State::Builder().build();
 	const HoI4::State theState(sourceState, 42, "TAG");
 
-	ASSERT_EQ(theState.getOwner(), "TAG");
-}
-
-
-TEST(HoI4World_States_StateTests, CoresDefaultToEmpty)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_TRUE(theState.getCores().empty());
+	EXPECT_EQ(theState.getOwner(), "TAG");
 }
 
 
@@ -92,18 +85,7 @@ TEST(HoI4World_States_StateTests, CoresCanbeAdded)
 	cores.insert("COR");
 	theState.addCores(cores);
 
-	ASSERT_EQ(2, theState.getCores().size());
-	ASSERT_TRUE(theState.getCores().contains("TAG"));
-	ASSERT_TRUE(theState.getCores().contains("COR"));
-}
-
-
-TEST(HoI4World_States_StateTests, ClaimsDefaultToEmpty)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_TRUE(theState.getClaims().empty());
+	EXPECT_THAT(theState.getCores(), testing::UnorderedElementsAre("TAG", "COR"));
 }
 
 
@@ -117,18 +99,7 @@ TEST(HoI4World_States_StateTests, ClaimsCanbeAdded)
 	claims.insert("CLM");
 	theState.addClaims(claims);
 
-	ASSERT_EQ(2, theState.getClaims().size());
-	ASSERT_TRUE(theState.getClaims().contains("TAG"));
-	ASSERT_TRUE(theState.getClaims().contains("CLM"));
-}
-
-
-TEST(HoI4World_States_StateTests, ControlledProvincesDefaultToEmpty)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_TRUE(theState.getControlledProvinces().empty());
+	EXPECT_THAT(theState.getClaims(), testing::UnorderedElementsAre("TAG", "CLM"));
 }
 
 
@@ -142,8 +113,7 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
 		 *Mappers::CountryMapper::Builder().addMapping("NOT", "NOT").Build());
 
-	std::map<std::string, std::set<int>> expectedControlledProvinces{{"NOT", {12}}};
-	ASSERT_EQ(expectedControlledProvinces, theState.getControlledProvinces());
+	EXPECT_THAT(theState.getControlledProvinces(), testing::ElementsAre(testing::Pair("NOT", std::set<int>{12})));
 }
 
 
@@ -157,8 +127,7 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
 		 *Mappers::CountryMapper::Builder().addMapping("NOT", "HOI").Build());
 
-	std::map<std::string, std::set<int>> expectedControlledProvinces{{"HOI", {12}}};
-	ASSERT_EQ(expectedControlledProvinces, theState.getControlledProvinces());
+	EXPECT_THAT(theState.getControlledProvinces(), testing::ElementsAre(testing::Pair("HOI", std::set<int>{12})));
 }
 
 
@@ -172,7 +141,7 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 		 *Mappers::ProvinceMapper::Builder().Build(),
 		 *Mappers::CountryMapper::Builder().addMapping("REB", "REB").Build());
 
-	ASSERT_TRUE(theState.getControlledProvinces().empty());
+	EXPECT_TRUE(theState.getControlledProvinces().empty());
 }
 
 
@@ -183,7 +152,7 @@ TEST(HoI4World_States_StateTests, SetControlledProvinceSetsControlledProvinces)
 
 	theState.setControlledProvince(1, "ONE");
 
-	ASSERT_THAT(theState.getControlledProvinces(),
+	EXPECT_THAT(theState.getControlledProvinces(),
 		 testing::UnorderedElementsAre(testing::Pair(std::string("ONE"), std::set{1})));
 }
 
@@ -196,7 +165,7 @@ TEST(HoI4World_States_StateTests, SetControlledProvinceSetsMultipleControlledPro
 	theState.setControlledProvince(1, "ONE");
 	theState.setControlledProvince(2, "ONE");
 
-	ASSERT_THAT(theState.getControlledProvinces(),
+	EXPECT_THAT(theState.getControlledProvinces(),
 		 testing::UnorderedElementsAre(testing::Pair(std::string("ONE"), std::set{1, 2})));
 }
 
@@ -208,16 +177,7 @@ TEST(HoI4World_States_StateTests, SetControlledProvinceDoesNotSetControlledProvi
 
 	theState.setControlledProvince(1, "TAG");
 
-	ASSERT_TRUE(theState.getControlledProvinces().empty());
-}
-
-
-TEST(HoI4World_States_StateTests, ImpassableDefaultsToFalse)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_FALSE(theState.isImpassable());
+	EXPECT_TRUE(theState.getControlledProvinces().empty());
 }
 
 
@@ -228,46 +188,17 @@ TEST(HoI4World_States_StateTests, ImpassableCanBeSet)
 
 	theState.makeImpassable();
 
-	ASSERT_TRUE(theState.isImpassable());
-}
-
-
-TEST(HoI4World_States_StateTests, DockyardsDefaultsToZero)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_EQ(0, theState.getDockyards());
-}
-
-
-TEST(HoI4World_States_StateTests, CivFactoriesDefaultsToZero)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_EQ(0, theState.getCivFactories());
-}
-
-
-TEST(HoI4World_States_StateTests, MilFactoriesDefaultsToZero)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_EQ(theState.getMilFactories(), 0);
+	EXPECT_TRUE(theState.isImpassable());
 }
 
 
 TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 {
-	const auto sourceState = *Vic2::State::Builder()
-											.setEmployedWorkers(60000)
-											.setProvinces({Vic2::Province::Builder()
-																	 .setNumber(0)
-																	 .setPops({*Vic2::Pop::Builder().setSize(70000).build()})
-																	 .build()})
-											.build();
+	const auto sourceState =
+		 *Vic2::State::Builder()
+				.setEmployedWorkers(60000)
+				.setProvinces({Vic2::Province::Builder().setNumber(0).setPops({Pop(PopOptions{.size = 70000})}).build()})
+				.build();
 
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addCores({"TAG"});
@@ -277,19 +208,17 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 		 *HoI4::StateCategories::Builder().addCategory(8, "mockedCategory").Build(),
 		 theCoastalProvinces);
 
-	ASSERT_EQ(6, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
+	EXPECT_EQ(6, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
 }
 
 
 TEST(HoI4World_States_StateTests, TotalFactoriesHalvedByMissingCore)
 {
-	const auto sourceState = *Vic2::State::Builder()
-											.setEmployedWorkers(60000)
-											.setProvinces({Vic2::Province::Builder()
-																	 .setNumber(0)
-																	 .setPops({*Vic2::Pop::Builder().setSize(70000).build()})
-																	 .build()})
-											.build();
+	const auto sourceState =
+		 *Vic2::State::Builder()
+				.setEmployedWorkers(60000)
+				.setProvinces({Vic2::Province::Builder().setNumber(0).setPops({Pop(PopOptions{.size = 70'000})}).build()})
+				.build();
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
@@ -297,19 +226,17 @@ TEST(HoI4World_States_StateTests, TotalFactoriesHalvedByMissingCore)
 		 *HoI4::StateCategories::Builder().addCategory(8, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	ASSERT_EQ(3, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
+	EXPECT_EQ(3, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
 }
 
 
 TEST(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
 {
-	const auto sourceState = *Vic2::State::Builder()
-											.setEmployedWorkers(500000)
-											.setProvinces({Vic2::Province::Builder()
-																	 .setNumber(0)
-																	 .setPops({*Vic2::Pop::Builder().setSize(60000).build()})
-																	 .build()})
-											.build();
+	const auto sourceState =
+		 *Vic2::State::Builder()
+				.setEmployedWorkers(500000)
+				.setProvinces({Vic2::Province::Builder().setNumber(0).setPops({Pop(PopOptions{.size = 60'000})}).build()})
+				.build();
 
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addCores({"TAG"});
@@ -318,7 +245,7 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
 		 *HoI4::StateCategories::Builder().addCategory(14, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	ASSERT_EQ(12, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
+	EXPECT_EQ(12, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
 }
 
 
@@ -328,7 +255,7 @@ TEST(HoI4World_States_StateTests, categoryCanBeChanged)
 											.setEmployedWorkers(500000)
 											.setProvinces({Vic2::Province::Builder()
 																	 .setNumber(0)
-																	 .setPops({*Vic2::Pop::Builder().setSize(60000).build()})
+																	 .setPops({Pop(PopOptions{.size = 60'000})})
 																	 .setRailLevel(0)
 																	 .build()})
 											.build();
@@ -338,16 +265,7 @@ TEST(HoI4World_States_StateTests, categoryCanBeChanged)
 		 *HoI4::StateCategories::Builder().addCategory(14, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	ASSERT_EQ("mockedCategory", theState.getCategory());
-}
-
-
-TEST(HoI4World_States_StateTests, InfrastructureDefaultsToThree)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_EQ(3, theState.getInfrastructure());
+	EXPECT_EQ("mockedCategory", theState.getCategory());
 }
 
 
@@ -362,7 +280,7 @@ TEST(HoI4World_States_StateTests, InfrastructureAddedPerTwoRailLevels)
 		 *HoI4::StateCategories::Builder().addCategory(2, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	ASSERT_EQ(6, theState.getInfrastructure());
+	EXPECT_EQ(6, theState.getInfrastructure());
 }
 
 
@@ -372,7 +290,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverFourFactories)
 											.setEmployedWorkers(50000)
 											.setProvinces({Vic2::Province::Builder()
 																	 .setNumber(0)
-																	 .setPops({*Vic2::Pop::Builder().setSize(100000).build()})
+																	 .setPops({Pop(PopOptions{.size = 100'000})})
 																	 .setRailLevel(6)
 																	 .build()})
 											.build();
@@ -383,7 +301,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverFourFactories)
 		 *HoI4::StateCategories::Builder().addCategory(7, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	ASSERT_EQ(7, theState.getInfrastructure());
+	EXPECT_EQ(7, theState.getInfrastructure());
 }
 
 
@@ -393,7 +311,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverSixFactories)
 											.setEmployedWorkers(70000)
 											.setProvinces({Vic2::Province::Builder()
 																	 .setNumber(0)
-																	 .setPops({*Vic2::Pop::Builder().setSize(100000).build()})
+																	 .setPops({Pop(PopOptions{.size = 100'000})})
 																	 .setRailLevel(6)
 																	 .build()})
 											.build();
@@ -404,7 +322,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverSixFactories)
 		 *HoI4::StateCategories::Builder().addCategory(9, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	ASSERT_EQ(8, theState.getInfrastructure());
+	EXPECT_EQ(8, theState.getInfrastructure());
 }
 
 
@@ -414,7 +332,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverTenFactories)
 											.setEmployedWorkers(110000)
 											.setProvinces({Vic2::Province::Builder()
 																	 .setNumber(0)
-																	 .setPops({*Vic2::Pop::Builder().setSize(100000).build()})
+																	 .setPops({Pop(PopOptions{.size = 100'000})})
 																	 .setRailLevel(6)
 																	 .build()})
 											.build();
@@ -425,15 +343,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverTenFactories)
 		 *HoI4::StateCategories::Builder().addCategory(13, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	ASSERT_EQ(9, theState.getInfrastructure());
-}
-
-
-TEST(HoI4World_States_StateTests, NavalBasesConvertsToEmpty)
-{
-	const HoI4::State theState;
-
-	ASSERT_TRUE(theState.getNavalBases().empty());
+	EXPECT_EQ(9, theState.getInfrastructure());
 }
 
 
@@ -447,16 +357,7 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 		 *HoI4::CoastalProvinces::Builder().addCoastalProvince(1, {}).addCoastalProvince(2, {}).Build(),
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(1, {1}).addVic2ToHoI4ProvinceMap(2, {2}).Build());
 
-	const std::map<int, int> expectedNavalBases{{1, 2}, {2, 2}};
-	ASSERT_EQ(expectedNavalBases, theState.getNavalBases());
-}
-
-
-TEST(HoI4World_States_StateTests, AirbaseLevelDefaultsToZero)
-{
-	const HoI4::State theState;
-
-	ASSERT_EQ(0, theState.getAirbaseLevel());
+	EXPECT_THAT(theState.getNavalBases(), testing::ElementsAre(testing::Pair(1, 2), testing::Pair(2, 2)));
 }
 
 
@@ -465,7 +366,7 @@ TEST(HoI4World_States_StateTests, AirbaseLevelCanBeSet)
 	HoI4::State theState;
 	theState.addAirBase(2);
 
-	ASSERT_EQ(2, theState.getAirbaseLevel());
+	EXPECT_EQ(2, theState.getAirbaseLevel());
 }
 
 
@@ -475,7 +376,7 @@ TEST(HoI4World_States_StateTests, AirbaseLevelCanBeIncreased)
 	theState.addAirBase(2);
 	theState.addAirBase(3);
 
-	ASSERT_EQ(5, theState.getAirbaseLevel());
+	EXPECT_EQ(5, theState.getAirbaseLevel());
 }
 
 
@@ -485,16 +386,7 @@ TEST(HoI4World_States_StateTests, AirbaseLevelCappedAtTen)
 	theState.addAirBase(5);
 	theState.addAirBase(10);
 
-	ASSERT_EQ(10, theState.getAirbaseLevel());
-}
-
-
-TEST(HoI4World_States_StateTests, ManpowerReturnsMinimumOfOne)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_EQ(1, theState.getManpower());
+	EXPECT_EQ(10, theState.getAirbaseLevel());
 }
 
 
@@ -506,7 +398,7 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 			  .setNumber(12)
 			  .setOwner("TAG")
 			  .setController("REB")
-			  .setPops(std::vector{*Vic2::Pop::Builder().setType("farmers").setSize(12345).build()})
+			  .setPops(std::vector{Pop(PopOptions{.type = "farmers", .size = 12'345})})
 			  .build();
 	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
@@ -520,16 +412,7 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
 		 theConfiguration);
 
-	ASSERT_EQ(49380, theState.getManpower());
-}
-
-
-TEST(HoI4World_States_StateTests, HasResourcesDefaultsToFalse)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_FALSE(theState.hasResources());
+	EXPECT_EQ(49380, theState.getManpower());
 }
 
 
@@ -574,17 +457,8 @@ TEST(HoI4World_States_StateTests, ResourcesCanBeAdded)
 	std::stringstream output;
 	outputHoI4State(output, theState, false);
 
-	ASSERT_TRUE(theState.hasResources());
-	ASSERT_EQ(expectedOutput.str(), output.str());
-}
-
-
-TEST(HoI4World_States_StateTests, VictoryPointPositionDefaultsToMissing)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_FALSE(theState.getVPLocation());
+	EXPECT_TRUE(theState.hasResources());
+	EXPECT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -595,7 +469,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetManually)
 
 	theState.setVPLocation(12);
 
-	ASSERT_EQ(12, theState.getVPLocation());
+	EXPECT_EQ(12, theState.getVPLocation());
 }
 
 
@@ -611,7 +485,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
 		 theConfiguration);
 
-	ASSERT_EQ(theState.getVPLocation(), 12);
+	EXPECT_EQ(theState.getVPLocation(), 12);
 }
 
 
@@ -624,14 +498,14 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
-										 .setPops(std::vector{*Vic2::Pop::Builder().setType("farmers").setSize(123456).build()})
+										 .setPops(std::vector{Pop(PopOptions{.type = "farmers", .size = 123'456})})
 										 .build(),
 					 Vic2::Province::Builder()
 						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
-						  .setPops(std::vector{*Vic2::Pop::Builder().setType("aristocrats").setSize(12345).build()})
+						  .setPops(std::vector{Pop(PopOptions{.type = "aristocrats", .size = 12'345})})
 						  .build()})
 				.build();
 
@@ -645,7 +519,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(24, {24}).Build(),
 		 theConfiguration);
 
-	ASSERT_EQ(24, theState.getVPLocation());
+	EXPECT_EQ(24, theState.getVPLocation());
 }
 
 
@@ -658,14 +532,14 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
-										 .setPops(std::vector{*Vic2::Pop::Builder().setType("farmers").setSize(123456).build()})
+										 .setPops(std::vector{Pop(PopOptions{.type = "farmers", .size = 123'456})})
 										 .build(),
 					 Vic2::Province::Builder()
 						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
-						  .setPops(std::vector{*Vic2::Pop::Builder().setType("bureaucrats").setSize(12345).build()})
+						  .setPops(std::vector{Pop(PopOptions{.type = "bureaucrats", .size = 12'345})})
 						  .build()})
 				.build();
 
@@ -679,7 +553,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(24, {24}).Build(),
 		 theConfiguration);
 
-	ASSERT_EQ(24, theState.getVPLocation());
+	EXPECT_EQ(24, theState.getVPLocation());
 }
 
 
@@ -692,14 +566,14 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
-										 .setPops(std::vector{*Vic2::Pop::Builder().setType("farmers").setSize(123456).build()})
+										 .setPops(std::vector{Pop(PopOptions{.type = "farmers", .size = 123'456})})
 										 .build(),
 					 Vic2::Province::Builder()
 						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
-						  .setPops(std::vector{*Vic2::Pop::Builder().setType("capitalists").setSize(12345).build()})
+						  .setPops(std::vector{Pop(PopOptions{.type = "capitalists", .size = 123'456})})
 						  .build()})
 				.build();
 
@@ -713,7 +587,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(24, {24}).Build(),
 		 theConfiguration);
 
-	ASSERT_EQ(24, theState.getVPLocation());
+	EXPECT_EQ(24, theState.getVPLocation());
 }
 
 
@@ -726,14 +600,14 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
-										 .setPops(std::vector{*Vic2::Pop::Builder().setType("farmers").setSize(12345).build()})
+										 .setPops(std::vector{Pop(PopOptions{.type = "farmers", .size = 123'456})})
 										 .build(),
 					 Vic2::Province::Builder()
 						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
-						  .setPops(std::vector{*Vic2::Pop::Builder().setType("farmers").setSize(123456).build()})
+						  .setPops(std::vector{Pop(PopOptions{.type = "farmers", .size = 123'456})})
 						  .build()})
 				.build();
 
@@ -747,7 +621,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(24, {24}).Build(),
 		 theConfiguration);
 
-	ASSERT_EQ(24, theState.getVPLocation());
+	EXPECT_EQ(24, theState.getVPLocation());
 }
 
 
@@ -767,8 +641,8 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 
 	std::cout.rdbuf(coutBuffer);
 
-	ASSERT_EQ(std::nullopt, theState.getVPLocation());
-	ASSERT_EQ(log.str(), " [WARNING] Could not create VP for state 42\n");
+	EXPECT_EQ(std::nullopt, theState.getVPLocation());
+	EXPECT_EQ(log.str(), " [WARNING] Could not create VP for state 42\n");
 }
 
 
@@ -785,7 +659,7 @@ TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
 		 theConfiguration);
 
-	ASSERT_EQ(std::set{12}, theState.getDebugVPs());
+	EXPECT_EQ(std::set{12}, theState.getDebugVPs());
 }
 
 
@@ -801,8 +675,7 @@ TEST(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12, 13}).Build(),
 		 theConfiguration);
 
-	const std::set<int> expectedVps{12, 13};
-	ASSERT_EQ(expectedVps, theState.getSecondaryDebugVPs());
+	EXPECT_THAT(theState.getSecondaryDebugVPs(), testing::ElementsAre(12, 13));
 }
 
 
@@ -863,16 +736,7 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 	std::stringstream output;
 	outputHoI4State(output, theState, true);
 
-	ASSERT_EQ(expectedOutput.str(), output.str());
-}
-
-
-TEST(HoI4World_States_StateTests, MainNavalBaseLocationDefaultsToMissing)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	const HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_FALSE(theState.getMainNavalLocation());
+	EXPECT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -884,7 +748,7 @@ TEST(HoI4World_States_StateTests, MainNavalBaseLocationCanBeAssigned)
 	theState.addProvince(12);
 	theState.addNavalBase(1, 12);
 
-	ASSERT_EQ(12, *theState.getMainNavalLocation());
+	EXPECT_EQ(12, *theState.getMainNavalLocation());
 }
 
 
@@ -898,5 +762,5 @@ TEST(HoI4World_States_StateTests, MainNavalBaseLocationGoesToLargestBase)
 	theState.addProvince(24);
 	theState.addNavalBase(5, 24);
 
-	ASSERT_EQ(24, *theState.getMainNavalLocation());
+	EXPECT_EQ(24, *theState.getMainNavalLocation());
 }
