@@ -6,13 +6,18 @@
 #include "V2World/Diplomacy/RelationsBuilder.h"
 #include "V2World/EU4ToVic2Data/CountryDataBuilder.h"
 #include "V2World/Politics/PartyBuilder.h"
-#include "V2World/Pops/PopBuilder.h"
+#include "V2World/Pops/Pop.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/StateDefinitionsBuilder.h"
 #include "V2World/States/StateLanguageCategoriesBuilder.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>
+
+
+
+using Vic2::Pop;
+using Vic2::PopOptions;
 
 
 
@@ -472,8 +477,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 	country->addProvince(1,
 		 Vic2::Province::Builder()
 			  .setNumber(1)
-			  .setPops({*Vic2::Pop::Builder().setSize(7).setCulture("test_primary").build(),
-					*Vic2::Pop::Builder().setSize(5).setCulture("test_secondary").build()})
+			  .setPops({Pop(PopOptions{.culture = "test_primary", .size = 7}),
+					Pop(PopOptions{.culture = "test_secondary", .size = 5})})
 			  .build());
 
 	country->handleMissingCulture(*Vic2::CultureGroups::Factory().getCultureGroups(
@@ -502,9 +507,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromMultiplePopsAdd
 	country->addProvince(1,
 		 Vic2::Province::Builder()
 			  .setNumber(1)
-			  .setPops({*Vic2::Pop::Builder().setSize(3).setCulture("test_primary").build(),
-					*Vic2::Pop::Builder().setSize(4).setCulture("test_primary").build(),
-					*Vic2::Pop::Builder().setSize(5).setCulture("test_secondary").build()})
+			  .setPops({Pop(PopOptions{.culture = "test_primary", .size = 3}),
+					Pop(PopOptions{.culture = "test_primary", .size = 4}),
+					Pop(PopOptions{.culture = "test_secondary", .size = 5})})
 			  .build());
 
 	country->handleMissingCulture(*Vic2::CultureGroups::Factory().getCultureGroups(
@@ -626,8 +631,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupCanBeSetFromLargestCul
 	country->addProvince(1,
 		 Vic2::Province::Builder()
 			  .setNumber(1)
-			  .setPops({*Vic2::Pop::Builder().setSize(7).setCulture("test_primary").build(),
-					*Vic2::Pop::Builder().setSize(5).setCulture("test_secondary").build()})
+			  .setPops({Pop(PopOptions{.culture = "test_primary", .size = 7}),
+					Pop(PopOptions{.culture = "test_secondary", .size = 6})})
 			  .build());
 
 	country->handleMissingCulture(*Vic2::CultureGroups::Factory().getCultureGroups(
@@ -2101,15 +2106,9 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersComeFromStates)
 								  0.05F,
 								  std::nullopt);
 	country->addProvince(1,
-		 Vic2::Province::Builder()
-			  .setNumber(1)
-			  .setPops({*Vic2::Pop::Builder().setType("craftsmen").setSize(5).build()})
-			  .build());
+		 Vic2::Province::Builder().setNumber(1).setPops({Pop(PopOptions{.type = "craftsmen", .size = 5})}).build());
 	country->addProvince(2,
-		 Vic2::Province::Builder()
-			  .setNumber(2)
-			  .setPops({*Vic2::Pop::Builder().setType("craftsmen").setSize(7).build()})
-			  .build());
+		 Vic2::Province::Builder().setNumber(2).setPops({Pop(PopOptions{.type = "craftsmen", .size = 7})}).build());
 	country->putProvincesInStates();
 	country->determineEmployedWorkers();
 
@@ -2214,7 +2213,7 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportComesFromProvinces)
 	country->addProvince(1,
 		 Vic2::Province::Builder()
 			  .setNumber(1)
-			  .setPops({*Vic2::Pop::Builder().setIssues({std::make_pair("test_issue", 0.5F)}).setSize(5).build()})
+			  .setPops({Pop(PopOptions{.size = 5, .popIssues{std::make_pair("test_issue", 0.5F)}})})
 			  .build());
 
 	ASSERT_EQ(0.5F, country->getAverageIssueSupport("test_issue"));

@@ -855,7 +855,6 @@
     <ClInclude Include="Source\V2World\Politics\PartyBuilder.h" />
     <ClInclude Include="Source\V2World\Politics\PartyFactory.h" />
     <ClInclude Include="Source\V2World\Pops\Pop.h" />
-    <ClInclude Include="Source\V2World\Pops\PopBuilder.h" />
     <ClInclude Include="Source\V2World\Pops\PopFactory.h" />
     <ClInclude Include="Source\V2World\Provinces\Province.h" />
     <ClInclude Include="Source\V2World\Provinces\ProvinceBuilder.h" />
@@ -5926,7 +5925,7 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>
-	<CopyFileToFolders Include="Data_Files\flags\central_asia_emblem.tga">
+    <CopyFileToFolders Include="Data_Files\flags\central_asia_emblem.tga">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>
@@ -25259,7 +25258,7 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>
-	<CopyFileToFolders Include="Data_Files\flags\south_asia_emblem.tga">
+    <CopyFileToFolders Include="Data_Files\flags\south_asia_emblem.tga">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>

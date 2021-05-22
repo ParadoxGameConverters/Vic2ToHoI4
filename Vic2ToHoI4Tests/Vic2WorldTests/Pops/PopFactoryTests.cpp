@@ -15,21 +15,16 @@ class Vic2World_Pops_PopFactoryTests: public testing::Test
 
 
 
-TEST_F(Vic2World_Pops_PopFactoryTests, TypeCanBeSet)
+TEST_F(Vic2World_Pops_PopFactoryTests, DefaultsAreSet)
 {
 	std::stringstream input;
 	const auto pop = popFactory.getPop("test_type", input);
 
-	ASSERT_EQ("test_type", pop->getType());
-}
-
-
-TEST_F(Vic2World_Pops_PopFactoryTests, CultureDefaultsToNoCulture)
-{
-	std::stringstream input;
-	const auto pop = popFactory.getPop("test_type", input);
-
-	ASSERT_EQ("no_culture", pop->getCulture());
+	EXPECT_EQ("test_type", pop.getType());
+	EXPECT_EQ("no_culture", pop.getCulture());
+	EXPECT_EQ(0, pop.getSize());
+	EXPECT_DOUBLE_EQ(0.0, pop.getLiteracy());
+	EXPECT_DOUBLE_EQ(0.0, pop.getMilitancy());
 }
 
 
@@ -41,7 +36,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, CultureCanBeSet)
 	input << "}";
 	const auto pop = popFactory.getPop("test_type", input);
 
-	ASSERT_EQ("test_culture", pop->getCulture());
+	EXPECT_EQ("test_culture", pop.getCulture());
 }
 
 
@@ -53,7 +48,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, CultureIsNotSetToCon)
 	input << "}";
 	const auto pop = popFactory.getPop("test_type", input);
 
-	ASSERT_EQ("no_culture", pop->getCulture());
+	EXPECT_EQ("no_culture", pop.getCulture());
 }
 
 
@@ -65,7 +60,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, CultureIsNotSetToId)
 	input << "}";
 	const auto pop = popFactory.getPop("test_type", input);
 
-	ASSERT_EQ("no_culture", pop->getCulture());
+	EXPECT_EQ("no_culture", pop.getCulture());
 }
 
 
@@ -78,16 +73,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, CultureIsOnlySetOnce)
 	input << "}";
 	const auto pop = popFactory.getPop("test_type", input);
 
-	ASSERT_EQ("test_culture", pop->getCulture());
-}
-
-
-TEST_F(Vic2World_Pops_PopFactoryTests, SizeDefaultsToZero)
-{
-	std::stringstream input;
-	const auto pop = popFactory.getPop("test_type", input);
-
-	ASSERT_EQ(0, pop->getSize());
+	EXPECT_EQ("test_culture", pop.getCulture());
 }
 
 
@@ -99,16 +85,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, SizecanBeSet)
 	input << "}";
 	const auto pop = popFactory.getPop("test_type", input);
 
-	ASSERT_EQ(12345, pop->getSize());
-}
-
-
-TEST_F(Vic2World_Pops_PopFactoryTests, LiteracyDefaultsToZero)
-{
-	std::stringstream input;
-	const auto pop = popFactory.getPop("test_type", input);
-
-	ASSERT_NEAR(0.0, pop->getLiteracy(), 0.0001);
+	EXPECT_EQ(12345, pop.getSize());
 }
 
 
@@ -120,16 +97,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, LiteracyCanBeSet)
 	input << "}";
 	const auto pop = popFactory.getPop("test_type", input);
 
-	ASSERT_NEAR(0.42, pop->getLiteracy(), 0.0001);
-}
-
-
-TEST_F(Vic2World_Pops_PopFactoryTests, MilitancyDefaultsToZero)
-{
-	std::stringstream input;
-	const auto pop = popFactory.getPop("test_type", input);
-
-	ASSERT_NEAR(0.0, pop->getMilitancy(), 0.0001);
+	EXPECT_DOUBLE_EQ(0.42, pop.getLiteracy());
 }
 
 
@@ -141,7 +109,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, MilitancyCanBeSet)
 	input << "}";
 	const auto pop = popFactory.getPop("test_type", input);
 
-	ASSERT_NEAR(0.42, pop->getMilitancy(), 0.0001);
+	EXPECT_DOUBLE_EQ(0.42, pop.getMilitancy());
 }
 
 
@@ -155,14 +123,14 @@ TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonIntegerIssueNumberLogsWarning
 	input << "}";
 
 	const std::stringstream log;
-	const auto stdOutBuf = std::cout.rdbuf();
+	auto* const stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto pop = popFactory.getPop("test_type", input);
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] Poorly formatted pop issue: not_an_int=87.125\n", log.str());
+	EXPECT_EQ(" [WARNING] Poorly formatted pop issue: not_an_int=87.125\n", log.str());
 }
 
 
@@ -176,14 +144,14 @@ TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonFloatIssueSupportLogsWarning)
 	input << "}";
 
 	const std::stringstream log;
-	const auto stdOutBuf = std::cout.rdbuf();
+	auto* const stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto pop = popFactory.getPop("test_type", input);
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] Poorly formatted pop issue: 42=not_a_float\n", log.str());
+	EXPECT_EQ(" [WARNING] Poorly formatted pop issue: 42=not_a_float\n", log.str());
 }
 
 
@@ -198,5 +166,5 @@ TEST(Vic2World_Pops_PopTests, IssuesCanBeImported)
 	const auto pop =
 		 Vic2::Pop::Factory(*Vic2::Issues::Builder().addIssueName("learn_the_question").build()).getPop("", input);
 
-	ASSERT_NEAR(87.125, pop->getIssueSupport("learn_the_question"), 0.001);
+	EXPECT_FLOAT_EQ(87.125F, pop.getIssueSupport("learn_the_question"));
 }

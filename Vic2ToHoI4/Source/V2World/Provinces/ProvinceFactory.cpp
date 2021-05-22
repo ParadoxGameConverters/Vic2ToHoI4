@@ -25,7 +25,7 @@ Vic2::Province::Factory::Factory(std::unique_ptr<Pop::Factory>&& _popFactory): p
 		 "aristocrats|artisans|bureaucrats|capitalists|clergymen|craftsmen|clerks|farmers|soldiers|officers|labourers|"
 		 "slaves|serfs",
 		 [this](const std::string& popType, std::istream& theStream) {
-			 province->pops.push_back(*popFactory->getPop(popType, theStream));
+			 province->pops.push_back(popFactory->getPop(popType, theStream));
 		 });
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

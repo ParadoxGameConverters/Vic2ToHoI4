@@ -17,10 +17,10 @@ class Pop::Factory: commonItems::parser
 {
   public:
 	explicit Factory(Issues _theIssues);
-	std::unique_ptr<Pop> getPop(const std::string& typeString, std::istream& theStream);
+	Pop getPop(const std::string& typeString, std::istream& theStream);
 
   private:
-	std::unique_ptr<Pop> pop;
+	PopOptions popOptions;
 	const Issues theIssues;
 };
 

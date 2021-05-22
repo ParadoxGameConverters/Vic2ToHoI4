@@ -983,9 +983,6 @@
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesFactoryTests.cpp">
       <Filter>HoI4WorldTests\Localisations\ArticleRules</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Pops\PopBuilderTests.cpp">
-      <Filter>Vic2WorldTests\Pops</Filter>
-    </ClCompile>
     <ClCompile Include="Vic2WorldTests\Issues\IssueHelperTests.cpp">
       <Filter>Vic2WorldTests\Issues</Filter>
     </ClCompile>
