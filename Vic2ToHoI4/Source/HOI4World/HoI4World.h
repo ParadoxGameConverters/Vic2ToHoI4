@@ -141,6 +141,7 @@ class World: commonItems::parser
 	void convertIndustry(const Configuration& theConfiguration);
 	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper);
 	void addDominions(Mappers::CountryMapper::Factory& countryMapperFactory);
+	void transferPuppetsToDominions();
 	void determineCoreStates();
 	std::map<std::string, double> calculateFactoryWorkerRatios(const Configuration& theConfiguration);
 	std::map<std::string, double> getIndustrialWorkersPerCountry();

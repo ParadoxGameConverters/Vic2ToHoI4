@@ -108,7 +108,9 @@ class Country
 	void addState(const State& state);
 	void addCoreState(const int stateId) { coreStates.insert(stateId); }
 	void calculateIndustry(const std::map<int, State>& allStates);
+	void transferPuppets(const std::set<std::string>& transferingPuppets, std::shared_ptr<HoI4::Country> dominion);
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
+	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
 	void adjustResearchFocuses() const;
 
 	void setSphereLeader(const std::string& SphereLeader) { sphereLeader = SphereLeader; }
@@ -245,6 +247,9 @@ class Country
 
 	[[nodiscard]] const bool isEligibleEnemy(std::string target);
 
+	void addGeneratedDominion(const std::string& region, const std::string& tag) { generatedDominions[region] = tag; }
+	const std::string& getDominionTag(const std::string& region);
+
   private:
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
@@ -360,6 +365,7 @@ class Country
 	std::string sphereLeader;
 	std::set<std::string> allies;
 	std::set<std::string> puppets;
+	std::map<std::string, std::string> generatedDominions;
 	std::string puppetMaster;
 	std::string puppetMasterOldTag;
 	bool greatPower = false;

@@ -951,6 +951,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 			throw std::runtime_error("Could not load focus WAR");
 		}
 	}
+	nextFreeColumn += 2;
 }
 
 
@@ -1383,6 +1384,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 			throw std::runtime_error("Could not load focus Annex");
 		}
 	}
+	nextFreeColumn += 2;
 }
 
 void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
@@ -2773,6 +2775,36 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 	else
 	{
 		throw std::runtime_error("Could not load focus neighbor_war");
+	}
+
+	nextFreeColumn += 2;
+}
+
+void HoI4FocusTree::addIntegratePuppetsBranch(const std::string& tag,
+	 const std::set<std::string>& puppetTags,
+	 HoI4::Localisation& hoi4Localisations)
+{
+	if (const auto& originalFocus = loadedFocuses.find("integrate_satellite"); originalFocus != loadedFocuses.end())
+	{
+		int yPos = 0;
+
+		for (const auto& puppet: puppetTags)
+		{
+			shared_ptr<HoI4Focus> newFocus =
+				 originalFocus->second.makeTargetedCopy(tag, puppet, hoi4Localisations);
+			newFocus->xPos = nextFreeColumn;
+			newFocus->yPos = yPos;
+			newFocus->updateFocusElement(newFocus->selectEffect, "#TARGET", puppet);
+			newFocus->updateFocusElement(newFocus->bypass, "#TARGET", puppet);
+			newFocus->updateFocusElement(newFocus->completionReward, "#TARGET", puppet);
+			focuses.push_back(newFocus);
+
+			yPos++;
+		}
+	}
+	else
+	{
+		throw std::runtime_error("Could not load focus integrate_satellite");
 	}
 
 	nextFreeColumn += 2;
