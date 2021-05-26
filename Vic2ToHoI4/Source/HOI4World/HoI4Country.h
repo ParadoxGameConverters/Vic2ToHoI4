@@ -248,7 +248,7 @@ class Country
 	[[nodiscard]] const bool isEligibleEnemy(std::string target);
 
 	void addGeneratedDominion(const std::string& region, const std::string& tag) { generatedDominions[region] = tag; }
-	const std::string& getDominionTag(const std::string& region);
+	std::optional<std::string> getDominionTag(const std::string& region);
 
   private:
 	void determineFilename();

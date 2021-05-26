@@ -1420,11 +1420,11 @@ const bool HoI4::Country::isEligibleEnemy(std::string target)
 	return !allies.contains(target) && !puppets.contains(target) && target != puppetMaster;
 }
 
-const std::string& HoI4::Country::getDominionTag(const std::string& region)
+std::optional<std::string> HoI4::Country::getDominionTag(const std::string& region)
 {
 	if (generatedDominions.find(region) == generatedDominions.end())
 	{
-		return std::string{};
+		return std::nullopt;
 	}
 	return generatedDominions.at(region);
 }

@@ -556,16 +556,17 @@ bool HoI4::World::dominionIsReleasable(const Country& dominion, const Country& o
 
 void HoI4::World::transferPuppetsToDominions()
 {
-	for (auto [unused, country]: countries)
+	for (auto& country: countries | std::views::values )
 	{
 		std::map<std::string, std::set<std::string>> regionalPuppets; // <region, puppets>
 		for (const auto& puppetTag: country->getPuppets())
 		{
-			if (countries.find(puppetTag) == countries.end())
+			const auto& puppetItr = countries.find(puppetTag);
+			if (puppetItr == countries.end())
 			{
 				continue;
 			}
-			const auto& puppet = countries.find(puppetTag)->second;
+			const auto& puppet = puppetItr->second;
 			if (puppet->isGeneratedDominion())
 			{
 				continue;
@@ -584,7 +585,7 @@ void HoI4::World::transferPuppetsToDominions()
 
 		for (const auto& [region, puppets]: regionalPuppets)
 		{
-			auto dominion = countries.find(country->getDominionTag(region));
+			auto dominion = countries.find(*country->getDominionTag(region));
 			if (dominion != countries.end())
 			{
 				country->transferPuppets(puppets, dominion->second);
