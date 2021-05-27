@@ -585,7 +585,12 @@ void HoI4::World::transferPuppetsToDominions()
 
 		for (const auto& [region, puppets]: regionalPuppets)
 		{
-			auto dominion = countries.find(*country->getDominionTag(region));
+			const auto& dominionTag = country->getDominionTag(region);
+			if (!dominionTag)
+			{
+				continue;
+			}
+			auto dominion = countries.find(*dominionTag);
 			if (dominion != countries.end())
 			{
 				country->transferPuppets(puppets, dominion->second);
