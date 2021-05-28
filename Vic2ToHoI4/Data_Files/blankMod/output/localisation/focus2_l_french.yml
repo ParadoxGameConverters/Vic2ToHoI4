@@ -107,3 +107,5 @@
  cleanup_revanchism:0 "Mettre fin au revanchisme avec [$TARGET.GetName]"
  cleanup_revanchism_desc:0 "Nous avons récupéré avec succès notre territoire principal de [$TARGET.GetName]."
  decrease_revanchism:0 "§G-0.1§! Revanchisme de base par noyau \n"
+ integrate_satellite:0 "Intégrer [$TARGET.GetName]"
+ integrate_satellite_desc:0 "Investir un peu d'influence politique dans [$TARGET.GetName] nous mènerait loin en termes de leur intégration complète dans notre empire, ce qui faciliterait alors l'augmentation de l'efficacité du dominion."

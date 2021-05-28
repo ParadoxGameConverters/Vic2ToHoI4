@@ -3251,3 +3251,36 @@ focus = {
 			factor = 10
 		}
 	}
+
+	focus = {
+		id = integrate_satellite
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		bypass = {
+			#TARGET = {
+				OR = {
+					NOT = { is_subject_of = ROOT }
+					has_war_with = ROOT
+				}
+			}
+		}
+		cost = 10
+		available = {
+
+		}
+		select_effect = {
+			#TARGET = {
+				every_owned_state = { set_state_flag = is_being_integrated }
+			}
+		}
+		completion_reward = {
+			annex_country = { target = #TARGET transfer_troops = yes }
+			every_owned_state = {
+				limit = { has_state_flag = is_being_integrated }
+				add_core_of = ROOT
+				clr_state_flag = is_being_integrated
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}

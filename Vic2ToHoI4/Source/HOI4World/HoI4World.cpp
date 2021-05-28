@@ -166,13 +166,15 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	HoI4WarCreator warCreator(this, *theMapData, provinceDefinitions, *hoi4Localisations, theConfiguration);
 
-	addFocusTrees();
-	adjustResearchFocuses();
-
 	setSphereLeaders();
 	processInfluence();
 	determineSpherelings();
 	calculateSpherelingAutonomy();
+	transferPuppetsToDominions();
+
+	addFocusTrees();
+	adjustResearchFocuses();
+
 	dynamicModifiers.updateDynamicModifiers(ideologies->getMajorIdeologies());
 	scriptedTriggers.importScriptedTriggers(theConfiguration);
 	updateScriptedTriggers(scriptedTriggers, ideologies->getMajorIdeologies());
@@ -502,6 +504,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			if (dominionIsReleasable(*dominion->second, *overlord->second))
 			{
 				overlord->second->addPuppet(dominionTag);
+				overlord->second->addGeneratedDominion(dominion->second->getRegion(), dominionTag);
 				for (const auto& stateId: dominion->second->getCoreStates())
 				{
 					if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
@@ -548,6 +551,52 @@ std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(
 bool HoI4::World::dominionIsReleasable(const Country& dominion, const Country& overlord)
 {
 	return dominion.getCoreStates().size() > 1;
+}
+
+
+void HoI4::World::transferPuppetsToDominions()
+{
+	for (auto& country: countries | std::views::values )
+	{
+		std::map<std::string, std::set<std::string>> regionalPuppets; // <region, puppets>
+		for (const auto& puppetTag: country->getPuppets())
+		{
+			const auto& puppetItr = countries.find(puppetTag);
+			if (puppetItr == countries.end())
+			{
+				continue;
+			}
+			const auto& puppet = puppetItr->second;
+			if (puppet->isGeneratedDominion())
+			{
+				continue;
+			}
+			const auto& capital = puppet->getCapitalProvince();
+			if (!capital)
+			{
+				continue;
+			}
+			const auto& region = theRegions->getRegion(*capital);
+			if (region)
+			{
+				regionalPuppets[*region].insert(puppetTag);
+			}
+		}
+
+		for (const auto& [region, puppets]: regionalPuppets)
+		{
+			const auto& dominionTag = country->getDominionTag(region);
+			if (!dominionTag)
+			{
+				continue;
+			}
+			auto dominion = countries.find(*dominionTag);
+			if (dominion != countries.end())
+			{
+				country->transferPuppets(puppets, dominion->second);
+			}
+		}
+	}
 }
 
 
@@ -1061,11 +1110,16 @@ bool HoI4::World::governmentsAllowFaction(const string& leaderIdeology, const st
 void HoI4::World::addFocusTrees()
 {
 	Log(LogLevel::Info) << "\tAdding focus trees";
-	for (auto country: countries)
+	for (auto [unused, country]: countries)
 	{
-		if (country.second->isGreatPower() || (country.second->getStrengthOverTime(3) > 4500))
+		if (country->isGreatPower() || (country->getStrengthOverTime(3) > 4500))
 		{
-			country.second->addGenericFocusTree(ideologies->getMajorIdeologies());
+			country->addGenericFocusTree(ideologies->getMajorIdeologies());
+		}
+		if (country->isGeneratedDominion() && !country->getPuppets().empty())
+		{
+			country->addGenericFocusTree(ideologies->getMajorIdeologies());
+			country->addPuppetsIntegrationTree(*hoi4Localisations);
 		}
 	}
 }

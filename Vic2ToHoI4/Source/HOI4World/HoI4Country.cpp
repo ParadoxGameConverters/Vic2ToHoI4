@@ -1274,6 +1274,23 @@ void HoI4::Country::addGenericFocusTree(const std::set<std::string>& majorIdeolo
 }
 
 
+void HoI4::Country::transferPuppets(const std::set<std::string>& transferingPuppets, std::shared_ptr<HoI4::Country> dominion)
+{
+	for (const auto& puppet: transferingPuppets)
+	{
+		puppets.erase(puppet);
+		spherelings.erase(puppet);
+		dominion->addPuppet(puppet);
+	}
+}
+
+
+void HoI4::Country::addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations)
+{
+	nationalFocus->addIntegratePuppetsBranch(tag, puppets, hoi4Localisations);
+}
+
+
 void HoI4::Country::adjustResearchFocuses() const
 {
 	if (greatPower && nationalFocus)
@@ -1401,4 +1418,13 @@ const bool HoI4::Country::isEligibleEnemy(std::string target)
 	}
 
 	return !allies.contains(target) && !puppets.contains(target) && target != puppetMaster;
+}
+
+std::optional<std::string> HoI4::Country::getDominionTag(const std::string& region)
+{
+	if (generatedDominions.find(region) == generatedDominions.end())
+	{
+		return std::nullopt;
+	}
+	return generatedDominions.at(region);
 }
