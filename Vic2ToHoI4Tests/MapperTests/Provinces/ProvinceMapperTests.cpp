@@ -36,10 +36,12 @@ TEST(Mappers_Provinces_ProvinceMapperTests, ProvinceMappingsCanBeImportedFromMod
 {
 	const auto province_mappings =
 		 Mappers::ProvinceMapper::Factory(*Configuration::Builder().setHoI4Path("./empty_definition/").build())
-			  .importProvinceMapper(*Configuration::Builder()
-												  .addVic2Mod(*Vic2::Mod::Builder().setName("no_mappings_mod").build())
-												  .addVic2Mod(*Vic2::Mod::Builder().setName("mod").build())
-												  .build());
+			  .importProvinceMapper(
+					*Configuration::Builder()
+						  .addVic2Mod(
+								*Vic2::Mod::Builder().setName("no_mappings_mod").setDirectory("no_mappings_mod").build())
+						  .addVic2Mod(*Vic2::Mod::Builder().setName("mod").setDirectory("mod").build())
+						  .build());
 
 	ASSERT_THAT(province_mappings->getVic2ToHoI4ProvinceMapping(5), testing::ElementsAre(5, 50));
 	ASSERT_THAT(province_mappings->getVic2ToHoI4ProvinceMapping(6), testing::ElementsAre(6));
