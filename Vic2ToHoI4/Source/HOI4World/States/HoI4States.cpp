@@ -590,6 +590,11 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 			newState.addClaims({HoI4Core});
 		}
 	}
+
+	if (newState.getCores().empty())
+	{
+		Log(LogLevel::Warning) << "State #" << newState.getID() << " has no cores";
+	}
 }
 
 
