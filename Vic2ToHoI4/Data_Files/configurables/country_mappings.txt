@@ -277,3 +277,10 @@ link = { vic = SPQ hoi = RME } # Roman Empire
 link = { vic = HRE hoi = HRE } # Holy Roman Empire
 
 link = { vic = UCV hoi = UCV } # Terra Nullius - only for the purposes of generating no leader
+
+# Countries in HPM
+link = { vic = PHL hoi = PHI } # Philippines - HPM
+link = { vic = TKG hoi = JAP } # Japan
+#anticipating 1.11 countries
+link = { vic = SLS hoi = SIL } # Silesia
+link = { vic = DZG hoi = DNZ } # Danzig
