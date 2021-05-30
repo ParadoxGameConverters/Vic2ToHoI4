@@ -558,6 +558,7 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 		sourceProvinceNums.insert(possibleProvinces.begin(), possibleProvinces.end());
 	}
 
+	std::vector<std::pair<std::string, double>> acceptedPopulations;
 	for (const auto& [Vic2Core, HoI4Core]: possibleCores)
 	{
 		const auto sourceCountry = sourceCountries.find(Vic2Core);
@@ -580,6 +581,7 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 					 provincePopulation * vic2Province->second->getPercentageWithCultures(acceptedCultures);
 			}
 		}
+		acceptedPopulations.push_back(std::make_pair(HoI4Core, acceptedPopulation));
 
 		if (acceptedPopulation / static_cast<double>(totalPopulation) >= 0.5)
 		{
@@ -589,6 +591,15 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 		{
 			newState.addClaims({HoI4Core});
 		}
+	}
+
+	if (newState.getCores().empty() && !acceptedPopulations.empty())
+	{
+		std::ranges::sort(acceptedPopulations,
+			 [](const std::pair<std::string, double>& lhs, const std::pair<std::string, double>& rhs) {
+				 return lhs < rhs;
+			 });
+		newState.addCores({acceptedPopulations[0].first});
 	}
 
 	if (newState.getCores().empty())
