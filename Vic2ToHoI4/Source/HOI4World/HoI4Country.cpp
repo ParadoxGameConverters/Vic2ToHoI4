@@ -144,7 +144,16 @@ HoI4::Country::Country(const std::string& tag_,
 
 	determineFilename();
 
-	color.RandomlyFluctuate(2);
+	auto hsv = color.getHsvComponents();
+	if (hsv[2] > 0.2F)
+	{
+		hsv[2] -= 0.2F;
+	}
+	else
+	{
+		hsv[2] += 0.2F;
+	}
+	color = commonItems::Color(hsv);
 
 	armyPortraits = graphicsMapper.getArmyPortraits(primaryCultureGroup);
 	navyPortraits = graphicsMapper.getNavyPortraits(primaryCultureGroup);
