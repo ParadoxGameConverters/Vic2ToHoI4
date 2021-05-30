@@ -109,6 +109,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	convertIndustry(theConfiguration);
 	addDominions(countryMapperFactory);
+	states->addCoresToCorelessStates(sourceWorld.getCountries(), provinceMapper, sourceWorld.getProvinces());
 	determineCoreStates();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
