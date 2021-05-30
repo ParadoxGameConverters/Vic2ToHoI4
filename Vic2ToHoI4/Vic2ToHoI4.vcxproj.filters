@@ -268,6 +268,9 @@
     <Filter Include="OutHoi4\CountryCategories">
       <UniqueIdentifier>{f88af672-93e0-4688-8cc1-4687cdc63a9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files\Configurables\CodenamesOperatives">
+      <UniqueIdentifier>{a5a483a6-422e-4433-b0e9-4dbfaeb0ba09}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -18902,9 +18905,6 @@
     <CopyFileToFolders Include="Data_Files\Configurables\Resources.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\RME_operative_codenames.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Configurables\shipTypes.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
@@ -22765,6 +22765,48 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\NVG_republic.tga">
       <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\RME_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\arabic_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\CZE_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\ENG_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\EST_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\GRE_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\HUN_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\LAT_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\NOR_opertive_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\RME_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\SIA_opertive_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\SOV_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\SWE_opertive_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\TUR_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
