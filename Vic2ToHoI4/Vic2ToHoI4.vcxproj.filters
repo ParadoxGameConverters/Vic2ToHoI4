@@ -16199,6 +16199,9 @@
     <CopyFileToFolders Include="Data_Files\flags\SOS_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
+	<CopyFileToFolders Include="Data_Files\flags\southeast_asia_emblem.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\SPA.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
