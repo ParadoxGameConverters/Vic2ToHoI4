@@ -21,6 +21,7 @@
 #include "V2World/States/StateFactory.h"
 #include "V2World/World/World.h"
 #include <queue>
+#include <ranges>
 #include <unordered_map>
 
 
@@ -753,6 +754,71 @@ void HoI4::States::giveProvinceControlToCountry(int provinceNum,
 		return;
 	}
 	states.at(stateIdMapping->second).setControlledProvince(provinceNum, country);
+}
+
+
+void HoI4::States::addCoresToCorelessStates(const std::map<std::string, Vic2::Country>& sourceCountries,
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces)
+{
+	for (auto& [id, state]: states)
+	{
+		if (!state.getCores().empty())
+		{
+			continue;
+		}
+
+		std::set<std::pair<std::string, std::string>> possibleCores;
+		std::set<int> sourceProvinceNums;
+		for (auto province: state.getProvinces())
+		{
+			if (auto coresMapping = coresMap.find(province); coresMapping != coresMap.end())
+			{
+				possibleCores.insert(coresMapping->second.begin(), coresMapping->second.end());
+			}
+
+			const auto possibleProvinces = provinceMapper.getHoI4ToVic2ProvinceMapping(province);
+			sourceProvinceNums.insert(possibleProvinces.begin(), possibleProvinces.end());
+		}
+
+		std::vector<std::pair<std::string, double>> acceptedPopulations;
+		for (const auto& [Vic2Core, HoI4Core]: possibleCores)
+		{
+			const auto sourceCountry = sourceCountries.find(Vic2Core);
+			if (sourceCountry == sourceCountries.end())
+			{
+				continue;
+			}
+			auto acceptedCultures = sourceCountry->second.getAcceptedCultures();
+			acceptedCultures.insert(sourceCountry->second.getPrimaryCulture());
+
+			double acceptedPopulation = 0;
+			for (const auto& sourceProvinceNum: sourceProvinceNums)
+			{
+				if (const auto& vic2Province = vic2Provinces.find(sourceProvinceNum); vic2Province != vic2Provinces.end())
+				{
+					const auto provincePopulation = vic2Province->second->getTotalPopulation();
+					acceptedPopulation +=
+						 provincePopulation * vic2Province->second->getPercentageWithCultures(acceptedCultures);
+				}
+			}
+			acceptedPopulations.push_back(std::make_pair(HoI4Core, acceptedPopulation));
+		}
+
+		if (!acceptedPopulations.empty())
+		{
+			std::ranges::sort(acceptedPopulations,
+				 [](const std::pair<std::string, double>& lhs, const std::pair<std::string, double>& rhs) {
+					 return lhs < rhs;
+				 });
+			state.addCores({acceptedPopulations[0].first});
+		}
+
+		if (state.getCores().empty())
+		{
+			Log(LogLevel::Warning) << "State #" << id << " has no cores";
+		}
+	}
 }
 
 

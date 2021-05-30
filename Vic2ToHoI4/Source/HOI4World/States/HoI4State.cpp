@@ -104,6 +104,10 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 	for (auto newCore: newCores)
 	{
 		cores.insert(newCore);
+		if (claims.contains(newCore))
+		{
+			claims.erase(newCore);
+		}
 	}
 }
 
