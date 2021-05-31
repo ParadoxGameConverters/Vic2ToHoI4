@@ -4,6 +4,7 @@
 #include "HoI4Localisation.h"
 #include "HoI4World.h"
 #include "Log.h"
+#include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "SharedFocus.h"
 #include "V2World/Countries/Country.h"
@@ -31,6 +32,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\t\tCreating generic focus tree";
 	confirmLoadedFocuses();
+	verifyBranches();
 
 	auto numCollectovistIdeologies = static_cast<int>(calculateNumCollectovistIdeologies(majorIdeologies));
 
@@ -454,8 +456,134 @@ void HoI4FocusTree::confirmLoadedFocuses()
 		});
 
 		parseFile("Configurables/converterFocuses.txt");
+		for (const auto& file: commonItems::GetAllFilesInFolder("Configurables/ConverterFocuses"))
+		{
+			parseFile("Configurables/ConverterFocuses/" + file);
+		}
 		clearRegisteredKeywords();
+
+		createBranches();
 	}
+}
+
+
+void HoI4FocusTree::loadFocuses(const std::string& branch)
+{
+	registerKeyword("focus_tree", [this](std::istream& theStream) {
+	});
+	registerKeyword("id", commonItems::ignoreString);
+	registerKeyword("country", commonItems::ignoreObject);
+	registerKeyword("default", commonItems::ignoreString);
+	registerKeyword("reset_on_civilwar", commonItems::ignoreString);
+	registerKeyword("focus", [this](std::istream& theStream) {
+		HoI4Focus newFocus(theStream);
+		loadedFocuses.insert(make_pair(newFocus.id, newFocus));
+	});
+	registerKeyword("shared_focus", [this](std::istream& theStream) {
+		HoI4Focus newFocus(theStream);
+		loadedFocuses.insert(make_pair(newFocus.id, newFocus));
+	});
+
+	parseFile("Configurables/ConverterFocuses/" + branch + "/focuses.txt");
+	clearRegisteredKeywords();
+
+	createBranches();
+}
+
+
+void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch, HoI4::OnActions& onActions)
+{
+	Log(LogLevel::Info) << tag;
+	loadFocuses(branch);
+
+	if (!branches.contains(branch))
+	{
+		Log(LogLevel::Info) << branch << " could not be found";
+		return;
+	}
+	const auto& branchFocuses = branches.at(branch);
+	for (const auto& focus: branchFocuses)
+	{
+		Log(LogLevel::Info) << "<- Adding " << focus;
+		if (const auto& originalFocus = loadedFocuses.find(focus); originalFocus != loadedFocuses.end())
+		{
+			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(tag);
+			if (focus == branch)
+			{
+				newFocus->xPos += nextFreeColumn;
+				onActions.addFocusEvent(tag, focus);
+			}
+			focuses.push_back(newFocus);
+		}
+		else
+		{
+			throw std::runtime_error("Could not load focus " + focus);
+		}
+	}
+}
+
+
+void HoI4FocusTree::createBranches()
+{
+	Log(LogLevel::Info) << "Branch heads";
+	for (const auto& [id, focus]: loadedFocuses)
+	{
+		if (!focus.prerequisites.empty())
+		{
+			continue;
+		}
+		Log(LogLevel::Info) << id;
+		branches[id].push_back(id);
+		addChildrenToBranch(id, id);
+		Log(LogLevel::Info) << "_____________________";
+	}
+}
+
+
+void HoI4FocusTree::verifyBranches()
+{
+	Log(LogLevel::Debug) << "Verifying branches";
+	for (const auto& [branch, focuses]: branches)
+	{
+		Log(LogLevel::Info) << branch;
+		for (const auto& focus: focuses)
+		{
+			Log(LogLevel::Info) << "\t" << focus;
+		}
+		Log(LogLevel::Info) << "___________________";
+	}
+}
+
+
+void HoI4FocusTree::addChildrenToBranch(const std::string& head, const std::string& id)
+{
+	for (const auto& [childId, childFocus]: loadedFocuses)
+	{
+		for (const auto& prerequisiteStr: childFocus.prerequisites)
+		{
+			const auto& prerequisites = extractIds(prerequisiteStr);
+			if (prerequisites.contains(id))
+			{
+				branches[head].push_back(childId);
+				addChildrenToBranch(head, childId);
+			}
+		}
+	}
+}
+
+
+std::set<std::string> HoI4FocusTree::extractIds(const std::string& prerequisiteStr)
+{
+	std::set<std::string> ids;
+	std::regex prereq("(focus\\s*=\\s*)([A-Za-z0-9_]+)");
+	std::sregex_iterator end;
+	std::sregex_iterator matchItr(prerequisiteStr.begin(), prerequisiteStr.end(), prereq);
+	while (matchItr != end)
+	{
+		ids.insert((*matchItr)[2].str());
+		++matchItr;
+	}
+	return ids;
 }
 
 

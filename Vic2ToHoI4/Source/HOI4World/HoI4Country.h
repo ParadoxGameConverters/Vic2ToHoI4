@@ -112,6 +112,7 @@ class Country
 	void transferPuppets(const std::set<std::string>& transferingPuppets, std::shared_ptr<HoI4::Country> dominion);
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
+	void addFocusTree(const std::string& branch, OnActions& onActions);
 	void adjustResearchFocuses() const;
 
 	void setSphereLeader(const std::string& SphereLeader) { sphereLeader = SphereLeader; }
