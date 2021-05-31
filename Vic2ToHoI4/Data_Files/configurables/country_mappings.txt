@@ -125,6 +125,7 @@ link = { vic = KAZ hoi = KAZ } # Kazakhstan
 link = { vic = KNY hoi = KEN } # Kenya
 link = { vic = SWA hoi = KEN } # Swahili => Kenya
 link = { vic = KOR hoi = KOR } # Korea
+#link = { vic = PYO hoi = KOR } # DPRK => Korea
 link = { vic = KOS hoi = KOS } # Kosovo
 link = { vic = KWT hoi = KUW } # Kuwait
 link = { vic = KYR hoi = KYR } # Kyrgyzstan (PDM)
@@ -167,6 +168,7 @@ link = { vic = NMB hoi = NMB } # Namibia
 link = { vic = NOR hoi = NOR } # Norway
 link = { vic = NZL hoi = NZL } # New Zealand
 link = { vic = OMA hoi = OMA } # Oman
+link = { vic = OCC hoi = OCC } # Occitania
 link = { vic = HDU hoi = PAK } # Hindustan => Pakistan
 link = { vic = PAK hoi = PAK } # Pakistan (HPM)
 link = { vic = MUG hoi = PAK } # Mughalistan => Pakistan
@@ -179,8 +181,7 @@ link = { vic = POL hoi = POL } # Poland
 link = { vic = CPL hoi = POL } # Congress Poland => Poland
 link = { vic = PPG hoi = PNG } # Papua New Guinea
 link = { vic = POR hoi = POR } # Portugal
-#link = { vic = CHI hoi = PRC } # China (already used)
-link = { vic = KOR hoi = PYO } # Pyongyang => DPRK
+link = { vic = TPG hoi = PRC } # Heavenly Kingdom (which was a protocommunist state) => Communist China
 link = { vic = PRU hoi = PRE } # Prussia
 link = { vic = PEU hoi = PRU } # Peru
 link = { vic = PRI hoi = PUE } # Puerto Rico
@@ -188,7 +189,7 @@ link = { vic = QAT hoi = QAT } # Qatar
 link = { vic = HND hoi = RAJ } # India
 link = { vic = CGO hoi = RCG } # Congo-Brazzaville
 link = { vic = ROM hoi = ROM } # Romania
-#link = { vic = ITA hoi = RSI } # Italian Social Republic
+#link = { vic = ITP hoi = RSI } # Papal Italy => Italian Social Republic
 link = { vic = RWA hoi = RWA } # Rwanda
 link = { vic = SMO hoi = SAM } # Samoa
 link = { vic = SAF hoi = SAF } # South Africa
@@ -207,8 +208,10 @@ link = { vic = SLO hoi = SLV } # Slovenia
 #link = { vic = ? hoi = SOL } # Solomon Islands
 link = { vic = SOM hoi = SOM } # Somalia
 link = { vic = RUS hoi = SOV } # Russia
+#link = { vic = CST hoi = SPA } # Castile => Nationalist Spain 
+link = { vic = SPC hoi = SPB } # Carlist Spain 
+link = { vic = ARN hoi = SPC } # Aragon
 link = { vic = SPA hoi = SPR } # Spain
-link = { vic = SPC hoi = SPR } # Carlist Spain => Spain
 link = { vic = SRI hoi = SRL } # Ceylon
 link = { vic = SUD hoi = SUD } # Sudan
 link = { vic = NUB hoi = SUD } # Funj => Sudan
@@ -248,7 +251,8 @@ link = { vic = YEM hoi = YEM } # Yemen
 link = { vic = YUG hoi = YUG } # Yugoslavia
 link = { vic = YNN hoi = YUN } # Yunnan
 link = { vic = ZAM hoi = ZAM } # Zambia
-link = { vic = RHO hoi = ZIM } # Rhodesia
+link = { vic = RHO hoi = ZIM } # Rhodesia => Zimbabwe
+link = { vic = ZBW hoi = ZIM } # Zimbabwe
 
 #Countries in Darkest Hour (generated tags)
 link = { vic = BEN hoi = BEN } # Benin (PDM)
@@ -280,7 +284,7 @@ link = { vic = UCV hoi = UCV } # Terra Nullius - only for the purposes of genera
 
 # Countries in HPM
 link = { vic = PHL hoi = PHI } # Philippines - HPM
-link = { vic = TKG hoi = JAP } # Japan
-#anticipating 1.11 countries
+link = { vic = TKG hoi = JAP } # Tokugawa => Japan
+#anticipating 1.11 countries, please move when update rolls out
 link = { vic = SLS hoi = SIL } # Silesia
 link = { vic = DZG hoi = DNZ } # Danzig
