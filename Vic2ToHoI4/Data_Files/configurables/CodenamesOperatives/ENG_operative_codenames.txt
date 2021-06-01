@@ -1,6 +1,6 @@
 ﻿#British Operative list
 ENG_OPERATIVE_CODENAME_HISTORICAL = {
-	name = ENG_HISTORICAL_OPERATIVES
+	name = ENG_OPERATIVE_CODENAME_HISTORICAL
 
 	# for all English countries
 	for_countries = { ENG SCO WLS NIR AST NZL JAM }
