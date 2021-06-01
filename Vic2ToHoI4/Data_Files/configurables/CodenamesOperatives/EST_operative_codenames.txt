@@ -1,6 +1,6 @@
 ﻿#Generic Operative list
-GENERIC_EST_OPERATIVE_CODENAME_HISTORICAL = {
-	name = NAME_THEME_HISTORICAL_OPERATIVES
+EST_OPERATIVE_CODENAME_HISTORICAL = {
+	name = EST_OPERATIVE_CODENAME_HISTORICAL
 
 	# for all English speaking countries
 	for_countries = { EST }
