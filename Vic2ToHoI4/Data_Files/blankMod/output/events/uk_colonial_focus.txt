@@ -10,7 +10,6 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		save_global_event_target_as = uk_colonial_focus_ENG
 		random_owned_controlled_state = {
 			limit = {
 				is_on_continent = asia

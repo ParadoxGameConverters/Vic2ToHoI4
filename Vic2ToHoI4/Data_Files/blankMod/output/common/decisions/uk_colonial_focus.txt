@@ -13,12 +13,12 @@ ENG_imperial_conference_decision = {
 		fire_only_once = yes
 
 		activation = {
-			tag = ENG
+			tag = event_target:uk_colonial_focus_ENG
 			has_country_flag = ENG_imperial_conference_timer_flag
 		}
 
 		visible = {
-			tag = ENG
+			tag = event_target:uk_colonial_focus_ENG
 			has_country_flag = ENG_imperial_conference_timer_flag
 		}
 
@@ -36,29 +36,29 @@ ENG_imperial_conference_decision = {
 				limit = {
 					OR = {
 						AND = {
-							is_subject_of = ENG
+							is_subject_of = ROOT
 							tag = event_target:uk_colonial_focus_CAN
 						}
 						AND = {
-							is_subject_of = ENG
+							is_subject_of = ROOT
 							tag = event_target:uk_colonial_focus_SAF
 						}
 						AND = {
-							is_subject_of = ENG
+							is_subject_of = ROOT
 							tag = event_target:uk_colonial_focus_RAJ
 						}
 						AND = {
-							is_subject_of = ENG
+							is_subject_of = ROOT
 							tag = event_target:uk_colonial_focus_AST
 						}
 						AND = {
-							is_subject_of = ENG
+							is_subject_of = ROOT
 							tag = event_target:uk_colonial_focus_NZL
 						}
 					}
 				}
-				remove_opinion_modifier = { target = ENG modifier = ENG_imperial_conference_opinion }
-				remove_opinion_modifier = { target = ENG modifier = ENG_imperial_conference_approved_resolution }
+				remove_opinion_modifier = { target = ROOT modifier = ENG_imperial_conference_opinion }
+				remove_opinion_modifier = { target = ROOT modifier = ENG_imperial_conference_approved_resolution }
 			}
 		}
 	}
@@ -68,7 +68,7 @@ ENG_imperial_conference_decision = {
 		icon = eng_trade_unions_support
 
 		allowed = {
-			tag = ENG
+			tag = event_target:uk_colonial_focus_ENG
 		}
 
 		available = {
@@ -99,7 +99,7 @@ ENG_imperial_conference_decision = {
 		icon = eng_trade_unions_support
 
 		allowed = {
-			tag = ENG
+			tag = event_target:uk_colonial_focus_ENG
 		}
 
 		available = {
@@ -130,7 +130,7 @@ ENG_imperial_conference_decision = {
 		icon = eng_trade_unions_support
 
 		allowed = {
-			tag = ENG
+			tag = event_target:uk_colonial_focus_ENG
 		}
 
 		available = {
@@ -161,7 +161,7 @@ ENG_imperial_conference_decision = {
 		icon = eng_trade_unions_support
 
 		allowed = {
-			tag = ENG
+			tag = event_target:uk_colonial_focus_ENG
 		}
 
 		available = {
@@ -193,7 +193,7 @@ ENG_imperial_conference_decision = {
 		icon = eng_imperial_federation
 
 		allowed = {
-			tag = ENG
+			tag = event_target:uk_colonial_focus_ENG
 		}
 
 		available = {
@@ -204,7 +204,7 @@ ENG_imperial_conference_decision = {
 				event_target:uk_colonial_focus_AST = { exists = yes }
 				event_target:uk_colonial_focus_NZL = { exists = yes }
 				AND = {
-					event_target:uk_colonial_focus_RAJ = { is_subject_of = ENG }
+					event_target:uk_colonial_focus_RAJ = { is_subject_of = ROOT }
 					has_completed_focus = ENG_indian_autonomy
 				}
 			}

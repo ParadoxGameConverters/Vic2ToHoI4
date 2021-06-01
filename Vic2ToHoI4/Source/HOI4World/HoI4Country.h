@@ -253,6 +253,9 @@ class Country
 
 	void addGeneratedDominion(const std::string& region, const std::string& tag) { generatedDominions[region] = tag; }
 	std::optional<std::string> getDominionTag(const std::string& region);
+	void addGlobalEventTarget(const std::string& name) { globalEventTargets.insert(name); }
+
+	[[nodiscard]] const auto& getGlobalEventTargets() const { return globalEventTargets; }
 
   private:
 	void determineFilename();
@@ -391,6 +394,7 @@ class Country
 	std::mt19937 generator;
 
 	std::map<std::string, float> sourceCountryGoods;
+	std::set<std::string> globalEventTargets;
 };
 
 } // namespace HoI4

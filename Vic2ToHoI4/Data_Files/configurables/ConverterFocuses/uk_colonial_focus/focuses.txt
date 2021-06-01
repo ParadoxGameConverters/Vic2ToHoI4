@@ -929,7 +929,7 @@ focus_tree = {
 					original_tag = event_target:uk_colonial_focus_RAJ
 					is_in_faction_with = ROOT
 				}
-				add_opinion_modifier = { target = ENG modifier = aided_industry }
+				add_opinion_modifier = { target = ROOT modifier = aided_industry }
 				every_state = { limit = { has_state_flag = ENG_uk_india_focus_2IC }
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
@@ -2446,7 +2446,7 @@ focus_tree = {
 			}
 			MAL = {
 				every_unit_leader = {
-					set_nationality = ENG
+					set_nationality = ROOT
 				}
 			}
 			annex_country = {
