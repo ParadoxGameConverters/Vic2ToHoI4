@@ -1,4 +1,5 @@
 #include "HoI4FocusTree.h"
+#include "CommonRegexes.h"
 #include "HoI4Country.h"
 #include "HoI4Focus.h"
 #include "HoI4Localisation.h"
@@ -442,21 +443,14 @@ void HoI4FocusTree::confirmLoadedFocuses()
 	{
 		registerKeyword("focus_tree", [this](std::istream& theStream) {
 		});
-		registerKeyword("id", commonItems::ignoreString);
-		registerKeyword("country", commonItems::ignoreObject);
-		registerKeyword("default", commonItems::ignoreString);
-		registerKeyword("reset_on_civilwar", commonItems::ignoreString);
-		registerKeyword("focus", [this](std::istream& theStream) {
+		registerRegex("focus|shared_focus", [this](const std::string& unused, std::istream& theStream) {
 			HoI4Focus newFocus(theStream);
 			loadedFocuses.insert(make_pair(newFocus.id, newFocus));
 		});
-		registerKeyword("shared_focus", [this](std::istream& theStream) {
-			HoI4Focus newFocus(theStream);
-			loadedFocuses.insert(make_pair(newFocus.id, newFocus));
-		});
+		registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 		parseFile("Configurables/converterFocuses.txt");
-		for (const auto& file: commonItems::GetAllFilesInFolder("Configurables/ConverterFocuses"))
+		for (const auto& file: commonItems::GetAllFilesInFolderRecursive("Configurables/ConverterFocuses"))
 		{
 			parseFile("Configurables/ConverterFocuses/" + file);
 		}
@@ -471,18 +465,11 @@ void HoI4FocusTree::loadFocuses(const std::string& branch)
 {
 	registerKeyword("focus_tree", [this](std::istream& theStream) {
 	});
-	registerKeyword("id", commonItems::ignoreString);
-	registerKeyword("country", commonItems::ignoreObject);
-	registerKeyword("default", commonItems::ignoreString);
-	registerKeyword("reset_on_civilwar", commonItems::ignoreString);
-	registerKeyword("focus", [this](std::istream& theStream) {
+	registerRegex("focus|shared_focus", [this](const std::string& unused, std::istream& theStream) {
 		HoI4Focus newFocus(theStream);
 		loadedFocuses.insert(make_pair(newFocus.id, newFocus));
 	});
-	registerKeyword("shared_focus", [this](std::istream& theStream) {
-		HoI4Focus newFocus(theStream);
-		loadedFocuses.insert(make_pair(newFocus.id, newFocus));
-	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseFile("Configurables/ConverterFocuses/" + branch + "/focuses.txt");
 	clearRegisteredKeywords();
@@ -507,10 +494,10 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 		Log(LogLevel::Info) << "<- Adding " << focus;
 		if (const auto& originalFocus = loadedFocuses.find(focus); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(tag);
+			const auto& newFocus = std::make_shared<HoI4Focus>(originalFocus->second);
 			if (focus == branch)
 			{
-				newFocus->xPos += nextFreeColumn;
+				newFocus->xPos += nextFreeColumn - 2;
 				onActions.addFocusEvent(tag, focus);
 			}
 			focuses.push_back(newFocus);
@@ -559,6 +546,10 @@ void HoI4FocusTree::addChildrenToBranch(const std::string& head, const std::stri
 {
 	for (const auto& [childId, childFocus]: loadedFocuses)
 	{
+		if (std::find(branches[head].begin(), branches[head].end(), childId) != branches[head].end())
+		{
+			continue;
+		}
 		for (const auto& prerequisiteStr: childFocus.prerequisites)
 		{
 			const auto& prerequisites = extractIds(prerequisiteStr);

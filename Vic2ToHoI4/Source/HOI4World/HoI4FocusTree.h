@@ -112,8 +112,10 @@ class HoI4FocusTree: commonItems::parser
 	[[nodiscard]] const auto& getDestinationCountryTag() const { return dstCountryTag; }
 	[[nodiscard]] const auto& getFocuses() const { return focuses; }
 	[[nodiscard]] const auto& getSharedFocuses() const { return sharedFocuses; }
+	[[nodiscard]] const auto& getBranches() const { return branches; }
 
 	void addBranch(const std::string& tag, const std::string& branch, HoI4::OnActions& onActions);
+	void eraseBranch(const std::string& branch) { branches.erase(branch); }
 
   private:
 	void confirmLoadedFocuses();
