@@ -117,7 +117,6 @@ country_event = {
 			limit = {
 				is_subject_of = ROOT
 				compare_autonomy_state < autonomy_dominion
-				any_owned_state = { is_coastal = yes }
 			}
 			save_global_event_target_as = uk_colonial_focus_RAJ
 		}
@@ -126,7 +125,14 @@ country_event = {
 				NOT = { tag = event_target:uk_colonial_focus_RAJ }
 				is_subject_of = ROOT
 				compare_autonomy_state < autonomy_sphereling
-				any_owned_state = { is_coastal = yes }
+				NOT = {
+					any_other_country = {
+						NOT = { tag = event_target:uk_colonial_focus_RAJ }
+						is_subject_of = ROOT
+						compare_autonomy_state < autonomy_sphereling
+						ic_ratio = { tag = PREV ratio > 1.0 }
+					}
+				}
 			}
 			save_global_event_target_as = uk_colonial_focus_CAN
 		}
@@ -136,7 +142,15 @@ country_event = {
 				NOT = { tag = event_target:uk_colonial_focus_CAN }
 				is_subject_of = ROOT
 				compare_autonomy_state < autonomy_sphereling
-				any_owned_state = { is_coastal = yes }
+				NOT = {
+					any_other_country = {
+						NOT = { tag = event_target:uk_colonial_focus_RAJ }
+						NOT = { tag = event_target:uk_colonial_focus_CAN }
+						is_subject_of = ROOT
+						compare_autonomy_state < autonomy_sphereling
+						ic_ratio = { tag = PREV ratio > 1.0 }
+					}
+				}
 			}
 			save_global_event_target_as = uk_colonial_focus_SAF
 		}
@@ -147,7 +161,16 @@ country_event = {
 				NOT = { tag = event_target:uk_colonial_focus_SAF }
 				is_subject_of = ROOT
 				compare_autonomy_state < autonomy_sphereling
-				any_owned_state = { is_coastal = yes }
+				NOT = {
+					any_other_country = {
+						NOT = { tag = event_target:uk_colonial_focus_RAJ }
+						NOT = { tag = event_target:uk_colonial_focus_CAN }
+						NOT = { tag = event_target:uk_colonial_focus_SAF }
+						is_subject_of = ROOT
+						compare_autonomy_state < autonomy_sphereling
+						ic_ratio = { tag = PREV ratio > 1.0 }
+					}
+				}
 			}
 			save_global_event_target_as = uk_colonial_focus_AST
 		}
@@ -159,7 +182,17 @@ country_event = {
 				NOT = { tag = event_target:uk_colonial_focus_AST }
 				is_subject_of = ROOT
 				compare_autonomy_state < autonomy_sphereling
-				any_owned_state = { is_coastal = yes }
+				NOT = {
+					any_other_country = {
+						NOT = { tag = event_target:uk_colonial_focus_RAJ }
+						NOT = { tag = event_target:uk_colonial_focus_CAN }
+						NOT = { tag = event_target:uk_colonial_focus_SAF }
+						NOT = { tag = event_target:uk_colonial_focus_AST }
+						is_subject_of = ROOT
+						compare_autonomy_state < autonomy_sphereling
+						ic_ratio = { tag = PREV ratio > 1.0 }
+					}
+				}
 			}
 			save_global_event_target_as = uk_colonial_focus_NZL
 		}
