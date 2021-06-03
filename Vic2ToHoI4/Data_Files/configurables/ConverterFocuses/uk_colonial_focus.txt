@@ -2358,7 +2358,7 @@ focus_tree = {
 						NOT = { is_subject_of = ROOT }
 					}
 				}
-				set_cosmetic_tag = ROOT_imperial_federation_unified
+				set_cosmetic_tag = imperial_federation_unified
 				news_event = { id = mtg_news.8 days = 1 }
 			}
 			if = {
@@ -2367,7 +2367,7 @@ focus_tree = {
 						is_subject_of = ROOT
 					}
 				}
-				set_cosmetic_tag = ROOT_imperial_federation_india_unified
+				set_cosmetic_tag = imperial_federation_india_unified
 				news_event = { id = mtg_news.9 days = 1 }
 			}
 			event_target:uk_colonial_focus_CAN = {

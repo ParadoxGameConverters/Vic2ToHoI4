@@ -471,7 +471,7 @@ void HoI4FocusTree::loadFocuses(const std::string& branch)
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile("Configurables/ConverterFocuses/" + branch + "/focuses.txt");
+	parseFile("Configurables/ConverterFocuses/" + branch + ".txt");
 	clearRegisteredKeywords();
 
 	createBranches();
