@@ -630,8 +630,8 @@ democratic_on_the_rise = {
 		days_remove = 30
 
 		modifier = {
-			democratic_drift = 0.02
-			stability_weekly = -0.03
+			democratic_drift = 0.05
+			stability_weekly = -0.003
  			political_power_gain = -0.2
 		}
 		
@@ -1078,7 +1078,7 @@ political_actions = {
 		}
 	
 		modifier = {
-			democratic_drift = -0.02
+			democratic_drift = -0.05
 		}
 	
 		days_remove = -1
@@ -1101,8 +1101,10 @@ political_actions = {
 				multiply_temp_variable = {
 					var = ban_ideology_var
 					value = 0.66
-				}				
+				}
+				set_country_flag = banned_democratic_flag
 			}
+			remove_democratic_spirits_effect = yes
 			custom_effect_tooltip = ban_democratic_party_tt
 			add_stability = ban_ideology_var
 		}
