@@ -85,10 +85,10 @@ class States: commonItems::parser
 	void giveProvinceControlToCountry(int provinceNum,
 		 const std::string& country,
 		 const std::set<std::string>& ownersToSkip);
-	void addCoresToCorelessStates(
-		 const std::map<std::string, Vic2::Country>& sourceCountries,
+	void addCoresToCorelessStates(const std::map<std::string, Vic2::Country>& sourceCountries,
 		 const Mappers::ProvinceMapper& provinceMapper,
-		 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces);
+		 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces,
+		 bool debug);
 
   private:
 	void determineOwnersAndCores(const Mappers::CountryMapper& countryMap,

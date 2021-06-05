@@ -759,7 +759,8 @@ void HoI4::States::giveProvinceControlToCountry(int provinceNum,
 
 void HoI4::States::addCoresToCorelessStates(const std::map<std::string, Vic2::Country>& sourceCountries,
 	 const Mappers::ProvinceMapper& provinceMapper,
-	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces)
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces,
+	 bool debug)
 {
 	for (auto& [id, state]: states)
 	{
@@ -816,7 +817,10 @@ void HoI4::States::addCoresToCorelessStates(const std::map<std::string, Vic2::Co
 
 		if (state.getCores().empty())
 		{
-			Log(LogLevel::Warning) << "State #" << id << " has no cores";
+			if (debug)
+			{
+				Log(LogLevel::Debug) << "State #" << id << " has no cores";
+			}
 		}
 	}
 }
