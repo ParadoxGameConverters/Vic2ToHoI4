@@ -36,11 +36,14 @@ void HoI4::outputStates(const States& theStates, const std::string& outputName, 
 	{
 		if (category.empty())
 		{
-			Log warning(LogLevel::Warning);
-			warning << "No language category defined for HoI4 states:";
-			for (const auto& id: stateIds)
+			if (debugEnabled)
 			{
-				warning << " " << id;
+				Log warning(LogLevel::Warning);
+				warning << "No language category defined for HoI4 states:";
+				for (const auto& id: stateIds)
+				{
+					warning << " " << id;
+				}
 			}
 			continue;
 		}
