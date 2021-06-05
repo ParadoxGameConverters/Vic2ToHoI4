@@ -26,6 +26,7 @@ class decision: commonItems::parser
 	void setAllowed(const std::string& newAllowed) { allowed = newAllowed; }
 	void setAvailable(const std::string& newAvailable) { available = newAvailable; }
 	void setHighlightStateTargets(const std::string& newHighlightStates) { highlightStateTargets = newHighlightStates; }
+	void setActivation(const std::string& newActivation) { activation = newActivation; }
 	void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }
 	void setVisible(const std::string& newVisible) { visible = newVisible; }
 	void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
