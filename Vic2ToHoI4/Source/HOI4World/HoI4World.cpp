@@ -109,7 +109,10 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	convertIndustry(theConfiguration);
 	addDominions(countryMapperFactory);
-	states->addCoresToCorelessStates(sourceWorld.getCountries(), provinceMapper, sourceWorld.getProvinces());
+	states->addCoresToCorelessStates(sourceWorld.getCountries(),
+		 provinceMapper,
+		 sourceWorld.getProvinces(),
+		 theConfiguration.getDebug());
 	determineCoreStates();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
@@ -557,7 +560,7 @@ bool HoI4::World::dominionIsReleasable(const Country& dominion, const Country& o
 
 void HoI4::World::transferPuppetsToDominions()
 {
-	for (auto& country: countries | std::views::values )
+	for (auto& country: countries | std::views::values)
 	{
 		std::map<std::string, std::set<std::string>> regionalPuppets; // <region, puppets>
 		for (const auto& puppetTag: country->getPuppets())

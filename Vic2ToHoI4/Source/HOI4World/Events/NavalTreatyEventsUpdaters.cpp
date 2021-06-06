@@ -212,6 +212,41 @@ void HoI4::updateNavalTreatyEventFour(Event& event, const std::set<std::string>&
 }
 
 
+void HoI4::updateNavalTreatyEventSix(Event& event, const std::set<std::string>& majorIdeologies)
+{
+	event.clearOptions();
+
+	EventOption optionA;
+	optionA.giveName("MTG_naval_treaty.6.a");
+	optionA.giveAiChance(
+		 "= {\n"
+		 "\t\t\tfactor = 70\n"
+		 "\t\t\tmodifier = {\n"
+		 "\t\t\t\thas_war = yes\n"
+		 "\t\t\t\tfactor = 0\n"
+		 "\t\t\t}\n"
+		 "\t\t\tmodifier = {\n"
+		 "\t\t\t\thas_war_support < 0.2\n"
+		 "\t\t\t\tfactor = 0.25\n"
+		 "\t\t\t}\n"
+		 "\t\t}");
+	optionA.giveScriptBlock(
+		 "create_wargoal = {\n"
+		 "\t\t\ttype = puppet_wargoal_focus\n"
+		 "\t\t\ttarget = FROM\n"
+		 "\t\t}");
+	event.giveOption(std::move(optionA));
+
+	EventOption optionB;
+	optionB.giveName("MTG_naval_treaty.6.b");
+	optionB.giveAiChance(
+		 "= {\n"
+		 "\t\t\tfactor = 30\n"
+		 "\t\t}");
+	event.giveOption(std::move(optionB));
+}
+
+
 void HoI4::updateNavalTreatyEventTen(Event& event, const std::set<std::string>& majorIdeologies)
 {
 	event.giveTrigger(

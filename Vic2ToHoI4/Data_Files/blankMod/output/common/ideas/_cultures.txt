@@ -177,15 +177,12 @@ ideas = {
 				army_speed_factor = 100
 				supply_consumption_factor = -100
 				attrition = -100
-				justify_war_goal_time = -1
 				trade_opinion_factor = -1
 				research_speed_factor = 0.01
 				decryption_factor = 1
 				encryption_factor = 1
 				invasion_preparation = -0.5
-				land_reinforce_rate = 0.1
 				production_speed_nuclear_reactor_factor = 1
-				ai_get_ally_desire_factor = -1
 				ai_badass_factor = -1
 			}
 		}
