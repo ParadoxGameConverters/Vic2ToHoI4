@@ -407,7 +407,9 @@ focus_tree = {
 				add_building_construction = {
 					type = coastal_bunker
 					level = 3
-					province = 12299
+					province = {
+						all_provinces = yes
+					}
 					instant_build = yes
 				}
 				if = {
@@ -466,7 +468,10 @@ focus_tree = {
 				add_building_construction = {
 					type = bunker
 					level = 4
-					province = 12299
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
 					instant_build = yes
 				}
 				add_building_construction = {
@@ -519,19 +524,10 @@ focus_tree = {
 				add_building_construction = {
 					type = bunker
 					level = 3
-					province = 7329
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = bunker
-					level = 3
-					province = 4310
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = bunker
-					level = 3
-					province = 7342
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
 					instant_build = yes
 				}
 				add_building_construction = {
@@ -586,7 +582,9 @@ focus_tree = {
 				add_building_construction = {
 					type = coastal_bunker
 					level = 3
-					province = 10062
+					province = {
+						all_provinces = yes
+					}
 					instant_build = yes
 				}
 			}
@@ -631,7 +629,10 @@ focus_tree = {
 				add_building_construction = {
 					type = bunker
 					level = 4
-					province = 10062
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
 					instant_build = yes
 				}
 				add_building_construction = {
