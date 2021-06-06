@@ -489,6 +489,7 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 		return;
 	}
 	const auto& branchFocuses = branches.at(branch);
+	int branchWidth;
 	for (const auto& focus: branchFocuses)
 	{
 		Log(LogLevel::Info) << "<- Adding " << focus;
@@ -497,7 +498,8 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 			const auto& newFocus = std::make_shared<HoI4Focus>(originalFocus->second);
 			if (focus == branch)
 			{
-				newFocus->xPos += nextFreeColumn - 2;
+				branchWidth = newFocus->xPos;
+				newFocus->xPos = nextFreeColumn + branchWidth/2 - 1;
 				onActions.addFocusEvent(tag, focus);
 			}
 			focuses.push_back(newFocus);
@@ -507,6 +509,7 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 			throw std::runtime_error("Could not load focus " + focus);
 		}
 	}
+	nextFreeColumn += branchWidth;
 }
 
 
