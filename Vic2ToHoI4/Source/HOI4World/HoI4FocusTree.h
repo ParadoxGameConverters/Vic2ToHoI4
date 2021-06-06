@@ -121,7 +121,6 @@ class HoI4FocusTree: commonItems::parser
 	void confirmLoadedFocuses();
 	void loadFocuses(const std::string& branch);
 	void createBranches();
-	void verifyBranches();
 	std::set<std::string> extractIds(const std::string& prerequisiteStr);
 	void addChildrenToBranch(const std::string& head, const std::string& id);
 

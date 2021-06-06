@@ -33,7 +33,6 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\t\tCreating generic focus tree";
 	confirmLoadedFocuses();
-	verifyBranches();
 
 	auto numCollectovistIdeologies = static_cast<int>(calculateNumCollectovistIdeologies(majorIdeologies));
 
@@ -480,19 +479,16 @@ void HoI4FocusTree::loadFocuses(const std::string& branch)
 
 void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch, HoI4::OnActions& onActions)
 {
-	Log(LogLevel::Info) << tag;
 	loadFocuses(branch);
 
 	if (!branches.contains(branch))
 	{
-		Log(LogLevel::Info) << branch << " could not be found";
 		return;
 	}
 	const auto& branchFocuses = branches.at(branch);
 	int branchWidth;
 	for (const auto& focus: branchFocuses)
 	{
-		Log(LogLevel::Info) << "<- Adding " << focus;
 		if (const auto& originalFocus = loadedFocuses.find(focus); originalFocus != loadedFocuses.end())
 		{
 			const auto& newFocus = std::make_shared<HoI4Focus>(originalFocus->second);
@@ -515,32 +511,14 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 
 void HoI4FocusTree::createBranches()
 {
-	Log(LogLevel::Info) << "Branch heads";
 	for (const auto& [id, focus]: loadedFocuses)
 	{
 		if (!focus.prerequisites.empty())
 		{
 			continue;
 		}
-		Log(LogLevel::Info) << id;
 		branches[id].push_back(id);
 		addChildrenToBranch(id, id);
-		Log(LogLevel::Info) << "_____________________";
-	}
-}
-
-
-void HoI4FocusTree::verifyBranches()
-{
-	Log(LogLevel::Debug) << "Verifying branches";
-	for (const auto& [branch, focuses]: branches)
-	{
-		Log(LogLevel::Info) << branch;
-		for (const auto& focus: focuses)
-		{
-			Log(LogLevel::Info) << "\t" << focus;
-		}
-		Log(LogLevel::Info) << "___________________";
 	}
 }
 
