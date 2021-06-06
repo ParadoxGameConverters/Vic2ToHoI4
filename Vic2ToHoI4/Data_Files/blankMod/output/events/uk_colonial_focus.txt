@@ -8,6 +8,7 @@ country_event = {
 	picture = GFX_report_event_hitler_handshake
 
 	is_triggered_only = yes
+	hidden = yes
 
 	immediate = {
 		random_owned_controlled_state = {
@@ -73,9 +74,23 @@ country_event = {
 					owner = { tag = ROOT }
 					owner = { is_subject_of = ROOT }
 				}
+				is_in_home_area = yes
 				any_neighbor_state = {
-					is_owned_by = event_target:uk_colonial_focus_china
-					is_controlled_by = event_target:uk_colonial_focus_china
+					OR = {
+						AND = {
+							is_owned_by = event_target:uk_colonial_focus_china
+							is_controlled_by = event_target:uk_colonial_focus_china
+						}
+						AND = {
+							owner = { NOT = { tag = ROOT } }
+							owner = { NOT = { is_subject_of = ROOT } }
+							owner = { is_in_faction_with = event_target:uk_colonial_focus_china}
+							any_neighbor_state = {
+								is_owned_by = event_target:uk_colonial_focus_china
+								is_controlled_by = event_target:uk_colonial_focus_china
+							}
+						}
+					}
 				}
 			}
 			save_global_event_target_as = uk_colonial_focus_mandalay
