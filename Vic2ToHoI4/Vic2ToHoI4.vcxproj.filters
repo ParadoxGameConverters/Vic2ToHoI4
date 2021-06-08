@@ -22808,6 +22808,9 @@
     <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\TUR_operative_codenames.txt">
       <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\Greater Flavor Mod_province_mappings.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
