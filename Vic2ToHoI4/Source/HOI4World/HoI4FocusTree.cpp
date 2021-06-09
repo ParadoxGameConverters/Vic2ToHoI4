@@ -495,7 +495,7 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 			if (focus == branch)
 			{
 				branchWidth = newFocus->xPos;
-				newFocus->xPos = nextFreeColumn + branchWidth/2 - 1;
+				newFocus->xPos = nextFreeColumn + branchWidth/2;
 				onActions.addFocusEvent(tag, focus);
 			}
 			focuses.push_back(newFocus);
@@ -505,7 +505,7 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 			throw std::runtime_error("Could not load focus " + focus);
 		}
 	}
-	nextFreeColumn += branchWidth;
+	nextFreeColumn += branchWidth + 2;
 }
 
 
@@ -1051,7 +1051,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 			throw std::runtime_error("Could not load focus WAR");
 		}
 	}
-	nextFreeColumn += 2;
+	nextFreeColumn += 2 * static_cast<int>(CountriesToContain.size());
 }
 
 
