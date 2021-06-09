@@ -16,6 +16,15 @@ focus_tree = {
 	
 	focus = {
 		id = uk_colonial_focus 
+		allow_branch = {
+			country_exists = event_target:uk_colonial_focus_japan
+			country_exists = event_target:uk_colonial_focus_china
+			country_exists = event_target:uk_colonial_focus_RAJ
+			country_exists = event_target:uk_colonial_focus_CAN
+			country_exists = event_target:uk_colonial_focus_SAF
+			country_exists = event_target:uk_colonial_focus_AST
+			country_exists = event_target:uk_colonial_focus_NZL
+		}
 		available = {
 			NOT = { has_government = communism }
 			num_subjects > 0
@@ -34,11 +43,18 @@ focus_tree = {
 
 	focus = {
 		id = uk_asia_focus 
+		allow_branch = {
+			country_exists = event_target:uk_colonial_focus_japan
+			country_exists = event_target:uk_colonial_focus_china
+			OR = {
+				any_state = { state = event_target:uk_colonial_focus_mandalay }
+				any_state = { state = event_target:uk_colonial_focus_singapore }
+				any_state = { state = event_target:uk_colonial_focus_hongkong }
+			}
+		}
 		prerequisite = { focus = uk_colonial_focus }
 		
 		available = {
-			country_exists = event_target:uk_colonial_focus_japan
-			country_exists = event_target:uk_colonial_focus_china
 			event_target:uk_colonial_focus_singapore = {
 				CONTROLLER = {
 					OR = {
@@ -152,6 +168,11 @@ focus_tree = {
 
 	focus = {
 		id = uk_burma_focus
+		allow_branch = {
+			country_exists = event_target:uk_colonial_focus_japan
+			country_exists = event_target:uk_colonial_focus_china
+			any_state = { state = event_target:uk_colonial_focus_mandalay }
+		}
 		prerequisite = { focus = uk_asia_focus } 
 		available = {
 			event_target:uk_colonial_focus_china = { 
@@ -312,6 +333,15 @@ focus_tree = {
 	}
 	focus = {
 		id = uk_sanction_japan_focus
+		allow_branch = {
+			country_exists = event_target:uk_colonial_focus_japan
+			country_exists = event_target:uk_colonial_focus_china
+			OR = {
+				any_state = { state = event_target:uk_colonial_focus_mandalay }
+				any_state = { state = event_target:uk_colonial_focus_singapore }
+				any_state = { state = event_target:uk_colonial_focus_hongkong }
+			}
+		}
 		available = {
 			event_target:uk_colonial_focus_japan = { 
 				ENG_focus_available_embargo_sanction = yes
@@ -342,6 +372,15 @@ focus_tree = {
 	}
 	focus = {
 		id = ENG_war_with_japan
+		allow_branch = {
+			country_exists = event_target:uk_colonial_focus_japan
+			country_exists = event_target:uk_colonial_focus_china
+			OR = {
+				any_state = { state = event_target:uk_colonial_focus_mandalay }
+				any_state = { state = event_target:uk_colonial_focus_singapore }
+				any_state = { state = event_target:uk_colonial_focus_hongkong }
+			}
+		}
 		available = {
 			has_offensive_war = no
 			event_target:uk_colonial_focus_japan = {
@@ -376,6 +415,11 @@ focus_tree = {
 
 	focus = {
 		id = singapore_focus
+		allow_branch = {
+			country_exists = event_target:uk_colonial_focus_japan
+			country_exists = event_target:uk_colonial_focus_china
+			any_state = { state = event_target:uk_colonial_focus_singapore }
+		}
 		prerequisite = { focus = uk_asia_focus }
 		icon = GFX_goal_generic_fortify_city
 		x = 0
@@ -553,6 +597,11 @@ focus_tree = {
 	}
 	focus = {
 		id = hongkong_focus
+		allow_branch = {
+			country_exists = event_target:uk_colonial_focus_japan
+			country_exists = event_target:uk_colonial_focus_china
+			any_state = { state = event_target:uk_colonial_focus_hongkong }
+		}
 		prerequisite = { focus = uk_asia_focus }
 		icon = GFX_goal_generic_fortify_city
 		x = 2
@@ -698,6 +747,15 @@ focus_tree = {
 	
 	focus = {
 		id = uk_china_focus 
+		allow_branch = {
+			country_exists = event_target:uk_colonial_focus_japan
+			country_exists = event_target:uk_colonial_focus_china
+			OR = {
+				any_state = { state = event_target:uk_colonial_focus_mandalay }
+				any_state = { state = event_target:uk_colonial_focus_singapore }
+				any_state = { state = event_target:uk_colonial_focus_hongkong }
+			}
+		}
 		prerequisite = { focus = hk_air_focus  }
 		available = {
 			event_target:uk_colonial_focus_china = { exists = yes }
@@ -739,6 +797,13 @@ focus_tree = {
 	
 	focus = {
 		id = uk_commonwealth_focus 
+		allow_branch = {
+			country_exists = event_target:uk_colonial_focus_CAN
+			country_exists = event_target:uk_colonial_focus_SAF
+			country_exists = event_target:uk_colonial_focus_AST
+			country_exists = event_target:uk_colonial_focus_NZL
+			country_exists = event_target:uk_colonial_focus_RAJ
+		}
 		prerequisite = { focus = uk_colonial_focus }
 		available = {
 			OR = {
@@ -1727,6 +1792,11 @@ focus_tree = {
 
 		allow_branch = {
 			has_dlc = "Man the Guns"
+			country_exists = event_target:uk_colonial_focus_CAN
+			country_exists = event_target:uk_colonial_focus_SAF
+			country_exists = event_target:uk_colonial_focus_AST
+			country_exists = event_target:uk_colonial_focus_NZL
+			country_exists = event_target:uk_colonial_focus_RAJ
 		}
 
 		available = { 	
@@ -1767,6 +1837,11 @@ focus_tree = {
 
 		allow_branch = {
 			has_dlc = "Man the Guns"
+			country_exists = event_target:uk_colonial_focus_CAN
+			country_exists = event_target:uk_colonial_focus_SAF
+			country_exists = event_target:uk_colonial_focus_AST
+			country_exists = event_target:uk_colonial_focus_NZL
+			country_exists = event_target:uk_colonial_focus_RAJ
 		}
 
 		available = {

@@ -1130,33 +1130,9 @@ void HoI4::World::addFocusTrees()
 		if (genericFocusTree.getBranches().contains("uk_colonial_focus")
 			 && country->isGreatPower() && country->getDominionTag("south_asia"))
 		{
-			// Make sure there's a great power in asia
-			bool asiaHasGP;
-			for (const auto& gp: getGreatPowers())
-			{
-				const auto& capital = gp->getCapitalProvince();
-				if (!capital)
-				{
-					continue;
-				}
-				const auto& provincePoints = theMapData->getProvincePoints(*capital);
-				if (!provincePoints)
-				{
-					continue;
-				}
-				if (const auto& [x, y] = provincePoints->getCentermostPoint();
-					 x > 3637 && y < 1554)
-				{
-					asiaHasGP = true;
-					break;
-				}
-			}
-			if (asiaHasGP && country->getPuppets().size() >= 5)
-			{
-				country->addGlobalEventTarget("uk_colonial_focus_ENG");
-				country->addFocusTree("uk_colonial_focus", *onActions);
-				genericFocusTree.eraseBranch("uk_colonial_focus");
-			}
+			country->addGlobalEventTarget("uk_colonial_focus_ENG");
+			country->addFocusTree("uk_colonial_focus", *onActions);
+			genericFocusTree.eraseBranch("uk_colonial_focus");
 		}
 	}
 }
