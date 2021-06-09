@@ -2520,14 +2520,31 @@ focus_tree = {
 				}
 				add_core_of = ROOT
 			}
-			MAL = {
+			every_other_country = {
+				limit = {
+					is_subject_of = ROOT
+					compare_autonomy_state < autonomy_sphereling
+					NOT = { tag = event_target:uk_colonial_focus_RAJ }
+					NOT = { tag = event_target:uk_colonial_focus_CAN }
+					NOT = { tag = event_target:uk_colonial_focus_SAF }
+					NOT = { tag = event_target:uk_colonial_focus_AST }
+					NOT = { tag = event_target:uk_colonial_focus_NZL }
+				}
 				every_unit_leader = {
 					set_nationality = ROOT
 				}
-			}
-			annex_country = {
-			    target = MAL
-			    transfer_troops = yes
+				ROOT = {
+					annex_country = {
+					    target = PREV
+					    transfer_troops = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = PREV
+					}
+					add_core_of = ROOT
+				}
 			}
 		}
 	}
