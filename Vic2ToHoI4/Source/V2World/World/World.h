@@ -36,6 +36,7 @@ class World
 	[[nodiscard]] const auto& getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] const auto& getStateDefinitions() const { return *theStateDefinitions; }
 	[[nodiscard]] const auto& getLocalisations() const { return *theLocalisations; }
+	[[nodiscard]] const auto& getDate() const { return *theDate; }
 
   private:
 	std::map<int, std::shared_ptr<Province>> provinces;
@@ -44,6 +45,7 @@ class World
 	std::vector<std::string> greatPowers;
 	std::unique_ptr<StateDefinitions> theStateDefinitions;
 	std::unique_ptr<Localisations> theLocalisations;
+	std::unique_ptr<date> theDate;
 };
 
 

@@ -72,6 +72,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	auto vic2Localisations = sourceWorld.getLocalisations();
 	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration);
 
+	theDate = std::make_unique<date>(sourceWorld.getDate());
+
 	ProvinceDefinitions provinceDefinitions =
 		 ProvinceDefinitions::Importer().importProvinceDefinitions(theConfiguration);
 	theMapData = std::make_unique<MapData>(provinceDefinitions, theConfiguration);

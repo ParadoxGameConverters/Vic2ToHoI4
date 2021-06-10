@@ -28,10 +28,10 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 	allParties = allParties_;
 	countriesData = CountriesData::Factory().importCountriesData(theConfiguration);
 
-	registerKeyword("date", [](std::istream& theStream) {
-		const date theDate{commonItems::singleString{theStream}.getString()};
-		Log(LogLevel::Info) << "The date is " << theDate;
+	registerKeyword("date", [this](std::istream& theStream) {
+		world->theDate = std::make_unique<date>(date(commonItems::singleString{theStream}.getString()));
 	});
+	
 	registerKeyword("great_nations", [this](std::istream& theStream) {
 		greatPowerIndexes = commonItems::intList{theStream}.getInts();
 	});
