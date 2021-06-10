@@ -388,6 +388,7 @@ configure_file("${DATA_FILE_DIR}/configurables/FlagsToIdeasMappings.txt" "${CONV
 configure_file("${DATA_FILE_DIR}/configurables/foreignInfluenceDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/foreignInfluenceDecisions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/GovernmentMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/GovernmentMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/grammar.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/grammar.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/Greater Flavor Mod_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Greater Flavor Mod_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Historical Flavour Mod v1.27I_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Flavour Mod v1.27I_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Historical Project Mod 0.4.6_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Project Mod 0.4.6_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/HoI4CountryLeaders.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/HoI4CountryLeaders.txt" COPYONLY)

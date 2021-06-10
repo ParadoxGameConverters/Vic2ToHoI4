@@ -2153,3 +2153,693 @@ default = {
 		motorized = light_armor
 	}
 }
+
+
+"Greater Flavor Mod" = {
+	unit_map = {
+
+		link = {
+			vic = irregular
+		}
+
+		link = {
+			vic = infantry
+			hoi = {
+				category = land
+				type = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = regular
+			hoi = {
+				category = land
+				type = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = engineer
+			hoi = {
+				category = land
+				type = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = guard
+			hoi = {
+				category = land
+				type = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = artillery
+			hoi = {
+				category = land
+				type = artillery_brigade
+				equipment = artillery_equipment_1
+				size = 3
+			}
+		}
+
+		link = {
+			vic = horse_artillery
+			hoi = {
+				category = land
+				type = artillery_brigade
+				equipment = artillery_equipment_1
+				size = 3
+			}
+		}
+
+		link = {
+			vic = cavalry
+		}
+
+		link = {
+			vic = hussar
+			hoi = {
+				category = land
+				type = cavalry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = cuirassier
+			hoi = {
+				category = land
+				type = cavalry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = dragoon
+			hoi = {
+				category = land
+				type = cavalry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = tank
+			hoi = {
+				category = land
+				type = light_armor
+				equipment = gw_tank_equipment
+				size = 1
+			}
+		}
+
+		link = {
+			vic = plane
+			hoi = {
+				category = air
+				type = fighter
+				equipment = fighter_equipment_0
+				size = 20
+			}
+		}
+
+		link = {
+			vic = manowar
+		}
+
+		link = {
+			vic = frigate
+		}
+
+		link = {
+			vic = commerce_raider
+			hoi = {
+				category = naval
+				type = destroyer
+				equipment = destroyer_1
+				version = "Early Destroyer"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = destroyer
+				equipment = destroyer_2
+				version = "1936 Destroyer"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = ironclad
+		}
+
+		link = {
+			vic = monitor
+		}
+
+		link = {
+			vic = cruiser
+			hoi = {
+				category = naval
+				type = light_cruiser
+				equipment = light_cruiser_1
+				version = "Early Light Cruiser"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = light_cruiser
+				equipment = light_cruiser_2
+				version = "1936 Light Cruiser"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = battleship
+			hoi = {
+				category = naval
+				type = heavy_cruiser
+				equipment = heavy_cruiser_1
+				version = "Early Heavy Cruiser"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = heavy_cruiser
+				equipment = heavy_cruiser_2
+				version = "1936 Heavy Cruiser"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = dreadnought
+			hoi = {
+				category = naval
+				type = battleship
+				equipment = battleship_1
+				version = "Early Battleship"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = battleship
+				equipment = battleship_2
+				version = "1936 Battleship"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = submarine
+			hoi = {
+				category = naval
+				type = submarine
+				equipment = submarine_1
+				version = "Early Submarine"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = submarine
+				equipment = submarine_2
+				version = "1936 Submarine"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = clipper_transport
+		}
+
+		link = {
+			vic = steam_transport
+			hoi = {
+				category = convoy
+				type = convoy
+				equipment = convoy_1
+				size = 1
+			}
+		}
+	}
+
+	mtg_unit_map = {
+
+		link = {
+			vic = irregular
+		}
+
+		link = {
+			vic = infantry
+			hoi = {
+				category = land
+				type = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = regular
+			hoi = {
+				category = land
+				type = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = engineer
+			hoi = {
+				category = land
+				type = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = guard
+			hoi = {
+				category = land
+				type = infantry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = artillery
+			hoi = {
+				category = land
+				type = artillery_brigade
+				equipment = artillery_equipment_1
+				size = 3
+			}
+		}
+
+		link = {
+			vic = horse_artillery
+			hoi = {
+				category = land
+				type = artillery_brigade
+				equipment = artillery_equipment_1
+				size = 3
+			}
+		}
+
+		link = {
+			vic = cavalry
+		}
+
+		link = {
+			vic = hussar
+			hoi = {
+				category = land
+				type = cavalry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = cuirassier
+			hoi = {
+				category = land
+				type = cavalry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = dragoon
+			hoi = {
+				category = land
+				type = cavalry
+				equipment = infantry_equipment_0
+				size = 3
+			}
+		}
+
+		link = {
+			vic = tank
+			hoi = {
+				category = land
+				type = light_armor
+				equipment = gw_tank_equipment
+				size = 1
+			}
+		}
+
+		link = {
+			vic = plane
+			hoi = {
+				category = air
+				type = fighter
+				equipment = fighter_equipment_0
+				size = 20
+			}
+		}
+
+		link = {
+			vic = manowar
+		}
+
+		link = {
+			vic = frigate
+		}
+
+		link = {
+			vic = commerce_raider
+			hoi = {
+				category = naval
+				type = destroyer
+				equipment = ship_hull_light_1
+				version = "Early Destroyer"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = destroyer
+				equipment = ship_hull_light_2
+				version = "1936 Destroyer"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = ironclad
+		}
+
+		link = {
+			vic = monitor
+		}
+
+		link = {
+			vic = cruiser
+			hoi = {
+				category = naval
+				type = light_cruiser
+				equipment = ship_hull_cruiser_1
+				version = "Early Light Cruiser"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = light_cruiser
+				equipment = ship_hull_cruiser_2
+				version = "1936 Light Cruiser"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = battleship
+			hoi = {
+				category = naval
+				type = heavy_cruiser
+				equipment = ship_hull_cruiser_1
+				version = "Early Heavy Cruiser"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = heavy_cruiser
+				equipment = ship_hull_cruiser_2
+				version = "1936 Heavy Cruiser"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = dreadnought
+			hoi = {
+				category = naval
+				type = battleship
+				equipment = ship_hull_heavy_1
+				version = "Early Battleship"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = battleship
+				equipment = ship_hull_heavy_2
+				version = "1936 Battleship"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = submarine
+			hoi = {
+				category = naval
+				type = submarine
+				equipment = ship_hull_submarine_1
+				version = "Early Submarine"
+				size = 1
+			}
+			hoi = {
+				category = naval
+				type = submarine
+				equipment = ship_hull_submarine_2
+				version = "1936 Submarine"
+				size = 1
+			}
+		}
+
+		link = {
+			vic = clipper_transport
+		}
+
+		link = {
+			vic = steam_transport
+			hoi = {
+				category = convoy
+				type = convoy
+				equipment = convoy_1
+				size = 1
+			}
+		}
+	}
+
+	division_templates = {
+
+		division_template = {
+			name = "Armored Division"
+			regiments = {
+				light_armor = { x = 0 y = 0 }
+				light_armor = { x = 0 y = 1 }
+				light_armor = { x = 0 y = 2 }
+
+				light_armor = { x = 1 y = 0 }
+				light_armor = { x = 1 y = 1 }
+				light_armor = { x = 1 y = 2 }
+
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
+			}
+			support = {
+				artillery = { x = 0 y = 0 }
+			}
+			priority = 2
+			required_technology = gwtank
+			required_technology = motorised_infantry
+		}
+
+		division_template = {
+			name = "Mechanized Division"
+			regiments = {
+				light_armor = { x = 0 y = 0 }
+				light_armor = { x = 0 y = 1 }
+				light_armor = { x = 0 y = 2 }
+
+				motorized = { x = 1 y = 0 }
+				motorized = { x = 1 y = 1 }
+				motorized = { x = 1 y = 2 }
+
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
+			}
+			support = {
+				artillery = { x = 0 y = 0 }
+			}
+			priority = 2
+			required_technology = gwtank
+			required_technology = motorised_infantry
+		}
+
+		division_template = {
+			name = "Motorized Division"
+			regiments = {
+				motorized = { x = 0 y = 0 }
+				motorized = { x = 0 y = 1 }
+				motorized = { x = 0 y = 2 }
+
+				motorized = { x = 1 y = 0 }
+				motorized = { x = 1 y = 1 }
+				motorized = { x = 1 y = 2 }
+
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
+			}
+			support = {
+				artillery = { x = 0 y = 0 }
+			}
+			priority = 2
+			required_technology = motorised_infantry
+		}
+
+		division_template = {
+			name = "Assault Division"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+
+				artillery_brigade = { x = 3 y = 0 }
+				artillery_brigade = { x = 3 y = 1 }
+				artillery_brigade = { x = 3 y = 2 }
+
+				light_armor = { x = 4 y = 0 }
+			}
+			priority = 2
+		}
+
+		division_template = {
+			name = "Assault Brigade"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				artillery_brigade = { x = 1 y = 0 }
+
+				light_armor = { x = 2 y = 0 }
+			}
+			priority = 2
+		}
+
+		division_template = {
+			name = "Infantry Division"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+
+				artillery_brigade = { x = 3 y = 0 }
+				artillery_brigade = { x = 3 y = 1 }
+				artillery_brigade = { x = 3 y = 2 }
+			}
+			priority = 1
+		}
+
+		division_template = {
+			name = "Infantry Brigade"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				artillery_brigade = { x = 1 y = 0 }
+			}
+			priority = 1
+		}
+
+		division_template = {
+			name = "Light Infantry Division"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
+				infantry = { x = 2 y = 2 }
+			}
+			priority = 0
+		}
+
+		division_template = {
+			name = "Light Infantry Brigade"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+			}
+			priority = 0
+		}
+
+		division_template = {
+			name = "Cavalry Division"
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+
+				cavalry = { x = 1 y = 0 }
+				cavalry = { x = 1 y = 1 }
+				cavalry = { x = 1 y = 2 }
+
+				cavalry = { x = 2 y = 0 }
+				cavalry = { x = 2 y = 1 }
+				cavalry = { x = 2 y = 2 }
+			}
+			priority = 2
+		}
+
+		division_template = {
+			name = "Cavalry Brigade"
+			regiments = {
+				cavalry = { x = 0 y = 0 }
+				cavalry = { x = 0 y = 1 }
+				cavalry = { x = 0 y = 2 }
+			}
+			priority = 2
+		}
+	}
+
+	substitutes = {
+		# This allows artillery to be used in the place of artillery_brigade
+		artillery = artillery_brigade
+		motorized = light_armor
+	}
+}
