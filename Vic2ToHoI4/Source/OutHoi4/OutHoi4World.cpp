@@ -532,7 +532,9 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 		bookmarkFile << "\t\tname = " + uppercaseBookmarkName + "_NAME\n";
 		bookmarkFile << "\t\tdesc = " + uppercaseBookmarkName + "_DESC\n";
 		bookmarkFile << "\t\tdate = " + startDate.toString() + ".12\n";
-		bookmarkFile << "\t\tpicture = GFX_select_date_1936\n";
+
+		bookmarkFile << ((startDate.toString() == "1936.1.1") ? "\t\tpicture = GFX_select_date_1936\n" : "\t\tpicture = GFX_select_date_1939\n");
+
 
 		if (humanCountry)
 		{
