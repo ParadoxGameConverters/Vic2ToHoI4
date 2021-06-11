@@ -515,7 +515,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 {
 	Log(LogLevel::Info) << "\t\tWriting bookmarks";
 
-	auto outputBookmark = [&](date startDate, std::string bookmarkName) 
+	const auto outputBookmark = [&](date startDate, const std::string& bookmarkName) 
 	{
 		std::string uppercaseBookmarkName = bookmarkName;
 		std::transform(uppercaseBookmarkName.begin(), uppercaseBookmarkName.end(), uppercaseBookmarkName.begin(), ::toupper);
@@ -616,5 +616,4 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 
 	outputBookmark(vic2Date, "grand_campaign");
 	outputBookmark(date("1936.1.1"), "gathering_storm");
-
 }
