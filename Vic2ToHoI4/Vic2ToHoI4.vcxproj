@@ -206,6 +206,9 @@
     <ClCompile Include="Source\Mappers\Country\CountryMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Country\CountryMapper.cpp" />
     <ClCompile Include="Source\Mappers\Country\CountryMappingRuleFactory.cpp" />
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMapper.cpp" />
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMapperFactory.cpp" />
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\Government\GovernmentMapperFactory.cpp" />
@@ -569,6 +572,10 @@
     <ClInclude Include="Source\Mappers\Country\CountryMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\Country\CountryMapper.h" />
     <ClInclude Include="Source\Mappers\Country\CountryMappingRuleFactory.h" />
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapper.h" />
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapperFactory.h" />
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapping.h" />
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMappingFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h" />
     <ClInclude Include="Source\Mappers\Government\GovernmentMapper.h" />

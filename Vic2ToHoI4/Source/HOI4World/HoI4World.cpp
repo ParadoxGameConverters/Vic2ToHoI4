@@ -30,6 +30,7 @@
 #include "Mappers/Ideology/IdeologyMapperFactory.h"
 #include "Mappers/Technology/ResearchBonusMapper.h"
 #include "Mappers/Technology/ResearchBonusMapperFactory.h"
+#include "Mappers/FactionName/FactionNameMapperFactory.h"
 #include "Mappers/Technology/TechMapper.h"
 #include "Mappers/Technology/TechMapperFactory.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
@@ -167,6 +168,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	states->convertAirBases(countries, greatPowers);
 	if (theConfiguration.getCreateFactions())
 	{
+		factionNameMapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
 		createFactions(theConfiguration);
 	}
 
@@ -1026,11 +1028,12 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 
 		if (factionMembers.size() > 1)
 		{
-			auto newFaction = make_shared<HoI4::Faction>(leader, factionMembers);
+			auto newFaction = make_shared<HoI4::Faction>(leader, factionMembers, factionNameMapper->getFactionName(leader->getGovernmentIdeology(), leader->getPrimaryCulture(), leader->getPrimaryCultureGroup()));
 			for (auto member: factionMembers)
 			{
 				member->setFaction(newFaction);
 			}
+			
 			factions.push_back(newFaction);
 
 			if (theConfiguration.getDebug())

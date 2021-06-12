@@ -350,7 +350,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		 theCountry.areElectionsAllowed(),
 		 theCountry.getIdeologySupport());
 	outputRelations(output, tag, theCountry.getRelations());
-	outputFactions(output, tag, theCountry.getFaction(), theCountry.getName());
+	outputFactions(output, tag, theCountry.getFaction(), theCountry.getAdjective());
 	outputGuaranteedSpherelings(output, theCountry.getGuaranteed());
 	outputIdeas(output,
 		 theCountry.isGreatPower(),
@@ -645,14 +645,16 @@ void outputFactions(std::ostream& output,
 		std::string allianceName;
 		if (possibleLeaderName)
 		{
-			allianceName = "Alliance of " + *possibleLeaderName;
+			allianceName = (faction->getFactionName().has_value())
+									? faction->getFactionName().value() : 
+									("\"Alliance Of" + *possibleLeaderName + "\"");
 		}
 		else
 		{
 			Log(LogLevel::Warning) << "Could not name alliance";
 			allianceName = "faction";
 		}
-		output << "create_faction = \"" + allianceName + "\"\n";
+		output << "create_faction = " + allianceName + "\n";
 		for (const auto& factionMember: faction->getMembers())
 		{
 			output << "add_to_faction = " + factionMember->getTag() + "\n";
