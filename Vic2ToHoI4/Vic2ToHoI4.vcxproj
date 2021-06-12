@@ -534,6 +534,7 @@
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSet.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.h" />
+    <ClInclude Include="Source\HOI4World\Operatives\Operative.h" />
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />
     <ClInclude Include="Source\HOI4World\Regions\Region.h" />
     <ClInclude Include="Source\HOI4World\Regions\RegionFactory.h" />

@@ -29,6 +29,7 @@
 #include "Names/Names.h"
 #include "Navies/Navies.h"
 #include "Navies/NavyNames.h"
+#include "Operatives/Operative.h"
 #include "ProvinceDefinitions.h"
 #include "Regions/Regions.h"
 #include "ShipTypes/ShipVariants.h"
@@ -211,6 +212,8 @@ class Country
 	[[nodiscard]] const std::vector<General>& getGenerals() const { return generals; }
 	[[nodiscard]] const std::vector<Admiral>& getAdmirals() const { return admirals; }
 
+	[[nodiscard]] const auto& getOperatives() const { return operatives_; }
+
 	[[nodiscard]] const std::map<std::string, HoI4::Relations>& getRelations() const { return relations; }
 	[[nodiscard]] const auto& getAIStrategies() const { return aiStrategies; }
 	[[nodiscard]] const auto& getConquerStrategies() const { return conquerStrategies; }
@@ -253,6 +256,7 @@ class Country
   private:
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
+	void createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names);
 	void convertLaws();
 	void convertLeaders(const Vic2::Country& sourceCountry);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
@@ -354,6 +358,8 @@ class Country
 	std::vector<General> generals;
 	std::vector<Admiral> admirals;
 	std::map<std::string, std::vector<std::string>> shipNames;
+
+	std::vector<Operative> operatives_;
 
 	std::map<std::string, HoI4::Relations> relations;
 	std::vector<HoI4::AIStrategy> aiStrategies;

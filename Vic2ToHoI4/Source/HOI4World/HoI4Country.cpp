@@ -106,6 +106,8 @@ HoI4::Country::Country(std::string tag,
 	shipNames = sourceCountry.getAllShipNames();
 
 	sourceCountryGoods = sourceCountry.getGoodsStockpile();
+
+	createOperatives(graphicsMapper, names);
 }
 
 
@@ -169,6 +171,8 @@ HoI4::Country::Country(const std::string& tag_,
 	{
 		ideas.insert(owner.tag + "_monarch");
 	}
+
+	createOperatives(graphicsMapper, names);
 
 	convertLaws();
 }
@@ -292,6 +296,50 @@ void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations) con
 	hoi4Localisations.addIdeaLocalisation(tag + "_naval_manufacturer", names.takeNavalCompanyName(primaryCulture));
 	hoi4Localisations.addIdeaLocalisation(tag + "_industrial_concern", names.takeIndustryCompanyName(primaryCulture));
 	hoi4Localisations.addIdeaLocalisation(tag + "_electronics_concern", names.takeElectronicCompanyName(primaryCulture));
+}
+
+
+void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names)
+{
+	for (const auto& operativePortrait: graphicsMapper.getFemaleOperativePortraits(primaryCultureGroup))
+	{
+		const auto firstName = names.getFemaleName(primaryCulture);
+		if (!firstName)
+		{
+			break;
+		}
+
+		auto surname = names.getFemaleSurname(primaryCulture);
+		if (!surname)
+		{
+			surname = names.getSurname(primaryCulture);
+		}
+		if (!surname)
+		{
+			break;
+		}
+
+		const std::string name = *firstName + " " + *surname;
+		operatives_.push_back(Operative(name, operativePortrait, /*female=*/ true, tag));
+	}
+
+	for (const auto& operativePortrait: graphicsMapper.getMaleOperativePortraits(primaryCultureGroup))
+	{
+		const auto firstName = names.getMaleName(primaryCulture);
+		if (!firstName)
+		{
+			break;
+		}
+
+		auto surname = names.getSurname(primaryCulture);
+		if (!surname)
+		{
+			break;
+		}
+
+		const std::string name = *firstName + " " + *surname;
+		operatives_.push_back(Operative(name, operativePortrait, /*female=*/false, tag));
+	}
 }
 
 

@@ -271,6 +271,9 @@
     <Filter Include="Data Files\Configurables\CodenamesOperatives">
       <UniqueIdentifier>{a5a483a6-422e-4433-b0e9-4dbfaeb0ba09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Operatives">
+      <UniqueIdentifier>{851a9450-325f-48c1-9172-bcf2cc18affd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -2513,6 +2516,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Regions\RegionFactory.h">
       <Filter>HoI4World\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Operatives\Operative.h">
+      <Filter>HoI4World\Operatives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
