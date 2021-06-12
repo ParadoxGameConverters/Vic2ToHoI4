@@ -192,7 +192,7 @@ void HoI4::OutputWorld(const World& world,
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
 	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), world.getCountries(), outputName);
 	outDynamicModifiers(world.getDynamicModifiers(), theConfiguration);
-	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), *world.getDate(), outputName);
+	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), world.getDate(), outputName);
 	outputScriptedLocalisations(outputName, *world.getScriptedLocalisations());
 	outputScriptedTriggers(world.getScriptedTriggers(), outputName);
 	outputDifficultySettings(world.getGreatPowers(), outputName);
@@ -510,7 +510,7 @@ void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::strin
 void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::optional<std::string> humanCountry, 
-	 const date vic2Date,
+	 const date& vic2Date,
 	 const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting bookmarks";
