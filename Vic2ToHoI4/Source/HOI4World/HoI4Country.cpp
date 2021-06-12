@@ -541,6 +541,10 @@ void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap, 
 	{
 		if (const auto& HoI4Tag = countryMap.getHoI4Tag(vic2Tag); HoI4Tag)
 		{
+			if (HoI4Tag == tag)
+			{
+				continue;
+			}
 			HoI4::AIStrategy newStrategy("conquer", *HoI4Tag, strategy);
 			conquerStrategies.push_back(newStrategy);
 		}
