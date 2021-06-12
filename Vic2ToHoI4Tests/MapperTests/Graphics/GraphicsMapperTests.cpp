@@ -108,6 +108,32 @@ TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedIdeologyMinisterPortraitsAre
 }
 
 
+TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedMaleOperativePortraitsAreEmpty)
+{
+	ASSERT_TRUE(graphicsMapper->getMaleOperativePortraits("nonexistent_culture_group").empty());
+}
+
+
+TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedMaleOperativePortraitsAreReturned)
+{
+	ASSERT_THAT(graphicsMapper->getMaleOperativePortraits("test_culture_group"),
+		 testing::ElementsAre("path/test_male_operative_portrait.dds", "path/test_male_operative_portrait2.dds"));
+}
+
+
+TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedFemaleOperativePortraitsAreEmpty)
+{
+	ASSERT_TRUE(graphicsMapper->getFemaleOperativePortraits("nonexistent_culture_group").empty());
+}
+
+
+TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedFemaleOperativePortraitsAreReturned)
+{
+	ASSERT_THAT(graphicsMapper->getFemaleOperativePortraits("test_culture_group"),
+		 testing::ElementsAre("path/test_female_operative_portrait.dds", "path/test_female_operative_portrait2.dds"));
+}
+
+
 TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedGraphicalCultureIsNullopt)
 {
 	ASSERT_EQ(std::nullopt, graphicsMapper->getGraphicalCulture("nonexistent_culture_group"));

@@ -17,6 +17,8 @@ Mappers::GraphicsMapper::Factory::Factory()
 		graphicsMapper->femaleMonarchMappings[cultureGroupName] = newCultureGroup->getFemaleMonarchPortraits();
 		graphicsMapper->graphicalCultureMap[cultureGroupName] = newCultureGroup->getGraphicalCulture();
 		graphicsMapper->graphicalCulture2dMap[cultureGroupName] = newCultureGroup->getGraphicalCulture2D();
+		graphicsMapper->maleOperativeMappings[cultureGroupName] = newCultureGroup->getMaleOperativePortraits();
+		graphicsMapper->femaleOperativeMappings[cultureGroupName] = newCultureGroup->getFemaleOperativePortraits();
 		loadLeaderPortraitMappings(cultureGroupName, newCultureGroup->getLeaderPortraits());
 		loadIdeologyMinisterPortraitMappings(cultureGroupName, newCultureGroup->getIdeologyMinisterPortraits());
 	});

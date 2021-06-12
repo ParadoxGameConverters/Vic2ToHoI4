@@ -128,6 +128,30 @@ std::vector<std::string> Mappers::GraphicsMapper::getIdeologyMinisterPortraits(c
 }
 
 
+std::vector<std::string> Mappers::GraphicsMapper::getMaleOperativePortraits(const std::string& cultureGroup) const
+{
+	if (const auto operativePortraitMapping = maleOperativeMappings.find(cultureGroup);
+		 operativePortraitMapping != maleOperativeMappings.end())
+	{
+		return operativePortraitMapping->second;
+	}
+
+	return {};
+}
+
+
+std::vector<std::string> Mappers::GraphicsMapper::getFemaleOperativePortraits(const std::string& cultureGroup) const
+{
+	if (const auto operativePortraitMapping = femaleOperativeMappings.find(cultureGroup);
+		 operativePortraitMapping != femaleOperativeMappings.end())
+	{
+		return operativePortraitMapping->second;
+	}
+
+	return {};
+}
+
+
 std::optional<std::string> Mappers::GraphicsMapper::getGraphicalCulture(const std::string& cultureGroup) const
 {
 	if (const auto graphicalCulture = graphicalCultureMap.find(cultureGroup);
