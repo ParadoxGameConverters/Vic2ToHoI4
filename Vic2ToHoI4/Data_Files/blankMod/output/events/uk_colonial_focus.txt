@@ -135,6 +135,17 @@ country_event = {
 			}
 			save_global_event_target_as = uk_colonial_focus_RAJ
 		}
+		if = {
+			limit = { NOT = { country_exists = event_target:uk_colonial_focus_RAJ } }
+			random_country = {
+				limit = {
+					is_subject_of = ROOT
+					compare_autonomy_state < autonomy_sphereling
+					capital_scope = { is_on_continent = asia }
+				}
+				save_global_event_target_as = uk_colonial_focus_RAJ
+			}
+		}
 		random_country = {
 			limit = {
 				NOT = { tag = event_target:uk_colonial_focus_RAJ }
