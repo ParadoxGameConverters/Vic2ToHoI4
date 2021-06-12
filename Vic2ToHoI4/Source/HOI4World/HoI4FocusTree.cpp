@@ -486,23 +486,32 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 		return;
 	}
 	const auto& branchFocuses = branches.at(branch);
-	int branchWidth;
-	for (const auto& focus: branchFocuses)
+	std::map<int, std::vector<std::string>> branchLevels;
+	for (const auto& [focus, level]: branchFocuses)
 	{
-		if (const auto& originalFocus = loadedFocuses.find(focus); originalFocus != loadedFocuses.end())
+		branchLevels[level].push_back(focus);
+	}
+
+	int branchWidth;
+	for (const auto& [level, levelFocuses]: branchLevels)
+	{
+		for (const auto& focus: levelFocuses)
 		{
-			const auto& newFocus = std::make_shared<HoI4Focus>(originalFocus->second);
-			if (focus == branch)
+			if (const auto& originalFocus = loadedFocuses.find(focus); originalFocus != loadedFocuses.end())
 			{
-				branchWidth = newFocus->xPos;
-				newFocus->xPos = nextFreeColumn + branchWidth/2;
-				onActions.addFocusEvent(tag, focus);
+				const auto& newFocus = std::make_shared<HoI4Focus>(originalFocus->second);
+				if (focus == branch)
+				{
+					branchWidth = newFocus->xPos;
+					newFocus->xPos = nextFreeColumn + branchWidth/2;
+					onActions.addFocusEvent(tag, focus);
+				}
+				focuses.push_back(newFocus);
 			}
-			focuses.push_back(newFocus);
-		}
-		else
-		{
-			throw std::runtime_error("Could not load focus " + focus);
+			else
+			{
+				throw std::runtime_error("Could not load focus " + focus);
+			}
 		}
 	}
 	nextFreeColumn += branchWidth + 2;
@@ -511,23 +520,25 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 
 void HoI4FocusTree::createBranches()
 {
+	int branchLevel = 0;
 	for (const auto& [id, focus]: loadedFocuses)
 	{
 		if (!focus.prerequisites.empty())
 		{
 			continue;
 		}
-		branches[id].push_back(id);
-		addChildrenToBranch(id, id);
+		branches[id].insert(std::make_pair(id, branchLevel));
+		addChildrenToBranch(id, id, branchLevel);
 	}
 }
 
 
-void HoI4FocusTree::addChildrenToBranch(const std::string& head, const std::string& id)
+void HoI4FocusTree::addChildrenToBranch(const std::string& head, const std::string& id, int branchLevel)
 {
+	branchLevel++;
 	for (const auto& [childId, childFocus]: loadedFocuses)
 	{
-		if (std::find(branches[head].begin(), branches[head].end(), childId) != branches[head].end())
+		if (branches[head].contains(childId))
 		{
 			continue;
 		}
@@ -536,8 +547,8 @@ void HoI4FocusTree::addChildrenToBranch(const std::string& head, const std::stri
 			const auto& prerequisites = extractIds(prerequisiteStr);
 			if (prerequisites.contains(id))
 			{
-				branches[head].push_back(childId);
-				addChildrenToBranch(head, childId);
+				branches[head].insert(std::make_pair(childId, branchLevel));
+				addChildrenToBranch(head, childId, branchLevel);
 			}
 		}
 	}
