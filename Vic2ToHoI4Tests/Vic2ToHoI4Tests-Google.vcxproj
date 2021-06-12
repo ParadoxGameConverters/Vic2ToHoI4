@@ -170,6 +170,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operations\OutOperations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OperativeNames\OutOperativeNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OperativeNames\OutOperativeNamesSet.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operative\OutOperative.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdea.cpp" />

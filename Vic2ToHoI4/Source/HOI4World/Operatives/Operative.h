@@ -23,6 +23,8 @@ class Operative
 	[[nodiscard]] const auto& isFemale() const { return female_; }
 	[[nodiscard]] const auto& getNationality() const { return nationality_; }
 
+	friend std::ostream& operator<<(std::ostream& out, const Operative& operative);
+
   private:
 	std::string name_;
 	std::string portrait_;
