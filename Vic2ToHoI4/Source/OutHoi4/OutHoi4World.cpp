@@ -63,6 +63,7 @@ void outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& i
 void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::optional<std::string> humanCountry,
+	 const date& vic2Date,
 	 const std::string& outputName);
 
 } // namespace HoI4
@@ -191,7 +192,7 @@ void HoI4::OutputWorld(const World& world,
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
 	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), world.getCountries(), outputName);
 	outDynamicModifiers(world.getDynamicModifiers(), theConfiguration);
-	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), outputName);
+	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), world.getDate(), outputName);
 	outputScriptedLocalisations(outputName, *world.getScriptedLocalisations());
 	outputScriptedTriggers(world.getScriptedTriggers(), outputName);
 	outputDifficultySettings(world.getGreatPowers(), outputName);
@@ -508,98 +509,111 @@ void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::strin
 
 void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 const std::optional<std::string> humanCountry,
+	 const std::optional<std::string> humanCountry, 
+	 const date& vic2Date,
 	 const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting bookmarks";
 
-	std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_gathering_storm.txt");
-	if (!bookmarkFile.is_open())
+	const auto outputBookmark = [&](date startDate, const std::string& bookmarkName) 
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/bookmarks/the_gathering_storm.txt");
-	}
+		std::string uppercaseBookmarkName = bookmarkName;
+		std::transform(uppercaseBookmarkName.begin(), uppercaseBookmarkName.end(), uppercaseBookmarkName.begin(), ::toupper);
 
-	bookmarkFile << "bookmarks = {\n";
-	bookmarkFile << "\tbookmark = {\n";
-	bookmarkFile << "\t\tname = GATHERING_STORM_NAME\n";
-	bookmarkFile << "\t\tdesc = GATHERING_STORM_DESC\n";
-	bookmarkFile << "\t\tdate = 1936.1.1.12\n";
-	bookmarkFile << "\t\tpicture = GFX_select_date_1936\n";
-	if (humanCountry)
-	{
-		bookmarkFile << "\t\tdefault_country = \"" << *humanCountry << "\"\n";
-	}
-	else
-	{
-		bookmarkFile << "\t\tdefault_country = \"---\"\n";
-	}
-	bookmarkFile << "\t\tdefault = yes\n";
-
-	for (const auto& greatPower: greatPowers)
-	{
-		// Vic2 Great powers become majors in bookmark
-		bookmarkFile << "\t\t" + greatPower->getTag() + "= {\n";
-		bookmarkFile << "\t\t\thistory = \"" + greatPower->getGovernmentIdeology() + "_GP_CONV_DESC\"\n";
-		bookmarkFile << "\t\t\tideology = " + greatPower->getGovernmentIdeology() + "\n";
-		bookmarkFile << "\t\t\tideas = { great_power ";
-		for (const auto& idea: greatPower->getIdeas())
+		std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_" + bookmarkName + ".txt");
+		if (!bookmarkFile.is_open())
 		{
-			bookmarkFile << idea << " ";
+			throw std::runtime_error(
+				 "Could not create output/" + outputName + "/common/bookmarks/the_" + bookmarkName + ".txt");
 		}
-		bookmarkFile << "}\n";
+
+		bookmarkFile << "bookmarks = {\n";
+		bookmarkFile << "\tbookmark = {\n";
+		bookmarkFile << "\t\tname = " + uppercaseBookmarkName + "_NAME\n";
+		bookmarkFile << "\t\tdesc = " + uppercaseBookmarkName + "_DESC\n";
+		bookmarkFile << "\t\tdate = " + startDate.toString() + ".12\n";
+
+		bookmarkFile << ((startDate.toString() == "1936.1.1") ? "\t\tpicture = GFX_select_date_1936\n" : "\t\tpicture = GFX_select_date_1939\n");
+
+
+		if (humanCountry)
+		{
+			bookmarkFile << "\t\tdefault_country = \"" << *humanCountry << "\"\n";
+		}
+		else
+		{
+			bookmarkFile << "\t\tdefault_country = \"---\"\n";
+		}
+
+		for (const auto& greatPower: greatPowers)
+		{
+			// Vic2 Great powers become majors in bookmark
+			bookmarkFile << "\t\t" + greatPower->getTag() + "= {\n";
+			bookmarkFile << "\t\t\thistory = \"" + greatPower->getGovernmentIdeology() + "_GP_CONV_DESC\"\n";
+			bookmarkFile << "\t\t\tideology = " + greatPower->getGovernmentIdeology() + "\n";
+			bookmarkFile << "\t\t\tideas = { great_power ";
+			for (const auto& idea: greatPower->getIdeas())
+			{
+				bookmarkFile << idea << " ";
+			}
+			bookmarkFile << "}\n";
+			bookmarkFile << "\t\t}\n";
+		}
+
+		bookmarkFile << "\t\t\"---\"= {\n";
+		bookmarkFile << "\t\t\thistory = \"OTHER_" + uppercaseBookmarkName + "_DESC\"\n";
 		bookmarkFile << "\t\t}\n";
-	}
 
-	bookmarkFile << "\t\t\"---\"= {\n";
-	bookmarkFile << "\t\t\thistory = \"OTHER_GATHERING_STORM_DESC\"\n";
-	bookmarkFile << "\t\t}\n";
-
-	// sort non-GP tags by strength
-	std::vector<std::string> tags;
-	for (const auto& [tag, country]: countries)
-	{
-		if (!country->isGreatPower())
+		// sort non-GP tags by strength
+		std::vector<std::string> tags;
+		for (const auto& [tag, country]: countries)
 		{
-			tags.push_back(tag);
+			if (!country->isGreatPower())
+			{
+				tags.push_back(tag);
+			}
 		}
-	}
-	std::sort(tags.begin(), tags.end(), [countries](const std::string& a, const std::string& b) {
-		return countries.at(a)->getStrengthOverTime(1.0) > countries.at(b)->getStrengthOverTime(3.0);
-	});
+		std::sort(tags.begin(), tags.end(), [countries](const std::string& a, const std::string& b) {
+			return countries.at(a)->getStrengthOverTime(1.0) > countries.at(b)->getStrengthOverTime(3.0);
+		});
 
-	// then remove all but the strongest 22
-	auto trimHere = tags.begin();
-	std::advance(trimHere, 23);
-	tags.erase(trimHere, tags.end());
+		// then remove all but the strongest 22
+		auto trimHere = tags.begin();
+		std::advance(trimHere, 23);
+		tags.erase(trimHere, tags.end());
 
-	// then alphabetize them
-	std::sort(tags.begin(), tags.end());
+		// then alphabetize them
+		std::sort(tags.begin(), tags.end());
 
-	for (const auto& tag: tags)
-	{
-		const auto& country = countries.at(tag);
-
-		// add minor countries to the bookmark, only those with custom focus trees are visible due to Hoi4
-		// limitations Bookmark window has room for 22 minor countries, going over this seems to not cause any
-		// issues however
-		bookmarkFile << "\t\t" + country->getTag() + " = {\n";
-		bookmarkFile << "\t\t\tminor = yes\n";
-		bookmarkFile << "\t\t\thistory = \"" + country->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
-		bookmarkFile << "\t\t\tideology = " + country->getGovernmentIdeology() + "\n";
-		bookmarkFile << "\t\t\tideas = { ";
-		for (const auto& idea: country->getIdeas())
+		for (const auto& tag: tags)
 		{
-			bookmarkFile << idea << " ";
+			const auto& country = countries.at(tag);
+
+			// add minor countries to the bookmark, only those with custom focus trees are visible due to Hoi4
+			// limitations Bookmark window has room for 22 minor countries, going over this seems to not cause any
+			// issues however
+			bookmarkFile << "\t\t" + country->getTag() + " = {\n";
+			bookmarkFile << "\t\t\tminor = yes\n";
+			bookmarkFile << "\t\t\thistory = \"" + country->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
+			bookmarkFile << "\t\t\tideology = " + country->getGovernmentIdeology() + "\n";
+			bookmarkFile << "\t\t\tideas = { ";
+			for (const auto& idea: country->getIdeas())
+			{
+				bookmarkFile << idea << " ";
+			}
+			bookmarkFile << "}\n";
+			bookmarkFile << "\t\t}\n";
 		}
-		bookmarkFile << "}\n";
+
+		bookmarkFile << "\t\teffect = {\n";
+		bookmarkFile << "\t\t\trandomize_weather = 22345 # <-Obligatory in every bookmark !\n";
+		bookmarkFile << "\t\t\t#123 = { rain_light = yes }\n";
 		bookmarkFile << "\t\t}\n";
-	}
+		bookmarkFile << "\t}\n";
+		bookmarkFile << "}\n";
+		bookmarkFile.close();
+	};
 
-	bookmarkFile << "\t\teffect = {\n";
-	bookmarkFile << "\t\t\trandomize_weather = 22345 # <-Obligatory in every bookmark !\n";
-	bookmarkFile << "\t\t\t#123 = { rain_light = yes }\n";
-	bookmarkFile << "\t\t}\n";
-	bookmarkFile << "\t}\n";
-	bookmarkFile << "}\n";
-	bookmarkFile.close();
+	outputBookmark(vic2Date, "grand_campaign");
+	outputBookmark(date("1936.1.1"), "gathering_storm");
 }
