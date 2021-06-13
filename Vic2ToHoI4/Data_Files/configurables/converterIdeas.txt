@@ -1574,9 +1574,7 @@
 			}
 
 			allowed_civil_war = {
-				NOT = {
-					has_government = communism
-				}
+				# ideologies added in code
 			}
 
 			picture = generic_research_bonus
@@ -1698,7 +1696,7 @@
 			}
 
 			allowed_civil_war = {
-				has_government = democratic
+				# ideologies added in code
 			}
 
 			picture = generic_morale_bonus
@@ -1707,24 +1705,6 @@
 			
 			modifier = {
 				stability_factor = -0.1
-			}
-		}
-
-		RAJ_azad_hind = {
-			picture = generic_morale_bonus
-
-			allowed = {
-				original_tag = event_target:uk_colonial_focus_RAJ
-			}
-
-			allowed_civil_war = {
-				always = no
-			}
-
-			removal_cost = -1
-
-			modifier = {
-				fascism_drift = 0.05
 			}
 		}
 
