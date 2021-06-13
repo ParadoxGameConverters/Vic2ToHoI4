@@ -58,9 +58,6 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	{
 		onActionsFile << "\t\t\tif = {\n";
 		onActionsFile << "\t\t\t\tlimit = { has_government = democratic }\n";
-		onActionsFile << "\t\t\t\tset_politics = {\n";
-		onActionsFile << "\t\t\t\t\telections_allowed = yes\n";
-		onActionsFile << "\t\t\t\t}\n";
 		onActionsFile << "\t\t\t\tif = {\n";
 		onActionsFile << "\t\t\t\t\tlimit = { has_idea = democratic_opposition_voicing_protests }\n";
 		onActionsFile << "\t\t\t\t\tremove_ideas = democratic_opposition_voicing_protests\n";
