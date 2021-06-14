@@ -24,7 +24,7 @@ void outputLocalisations(const std::string& filenameStart, const HoI4::languageT
 
 		for (const auto& mapping: languageToLocalisations.second)
 		{
-			localisationFile << " " << mapping.first << ":10 \"" << mapping.second << "\"" << std::endl;
+			localisationFile << " " << mapping.first << ":0 \"" << mapping.second << "\"" << std::endl;
 		}
 	}
 }

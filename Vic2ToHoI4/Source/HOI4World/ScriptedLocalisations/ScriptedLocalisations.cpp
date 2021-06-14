@@ -142,8 +142,8 @@ void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::vector
 		text += "\t\t\t\t\t}\n";
 		text += "\t\t\t\t}\n";
 		text += "\t\t\t}\n";
-		text += "\t\t}\n";
 	}
+	text += "\t\t}\n";
 	text += "\t\tlocalization_key = Naval_treaty_over_100\n";
 	text += "\t}";
 	GetStrengthRatioBritain.addText(text);
