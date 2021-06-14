@@ -3,6 +3,52 @@
 # I support the idea of giving an historical figure a wrong name rather than using
 # John Jackson Adams, 1st Baron thereof
 
+# sample_culture = {
+#	army_portraits = {
+#		"gfx/leaders/GER/sample_portrait_land.dds"
+#		"gfx/leaders/GER/sample_portrait_land2.dds"
+#	}
+#	navy_portraits = {
+#		"gfx/leaders/GER/sample_portrait_navy.dds"
+#		"gfx/leaders/GER/sample_portrait_navy2.dds"
+#	}
+#	leader_portraits = {
+#		communism = { "gfx/leaders/GER/sample_portrait_communism.dds" }
+#		democratic = { "gfx/leaders/GER/sample_portrait_democratic.dds" }
+#		fascism = { "gfx/leaders/GER/sample_portrait_fascism.dds" "gfx/leaders/GER/sample_portrait_fascism2.dds" }
+#		absolutist = { "sample_portrait_absolutist" }
+#		neutrality = { "sample_portrait_neutrality" }
+#		radical = { "gfx/leaders/Europe/sample_portrait_radical.dds" }
+#	}
+#	ideology_minister_portraits = 
+#	{
+#		communism = { "gfx/interface/ideas/sample_portrait_communism.dds" }
+#		democratic = { "gfx/interface/ideas/sample_portrait_democratic.dds" }
+#		fascism = { "gfx/interface/ideas/sample_portrait_fascism.dds" "gfx/interface/ideas/sample_portrait_fascism2.dds" }
+#		absolutist = { "gfx/interface/ideas/sample_portrait_absolutist.dds" }
+#		neutrality = { "gfx/interface/ideas/sample_portrait_neutrality.dds" }
+#		radical = { "gfx/interface/ideas/sample_portrait_radical.dds" } 
+#	}
+#	male_operative_portraits =
+#	{
+#		"sample_male_operative.dds"
+#		"sample_male_operative2.dds"
+#	}
+#	female_operative_portraits =
+#	{
+#		"sample_female_operative.dds"
+#		"sample_female_operative2.dds"
+#	}
+#	male_monarch_portraits = {
+#		"gfx/interface/ideas/crowns/sample.dds"	
+#	}
+#	female_monarch_portraits = {
+#		"gfx/interface/ideas/crowns/sample.dds"
+#	}
+#	graphical_culture = western_european_gfx
+#	graphical_culture_2d = western_european_2d
+#}
+
 germanic = {
 	army_portraits = {
 		"gfx/leaders/GER/Portrait_Germany_Generic_land_1.dds"

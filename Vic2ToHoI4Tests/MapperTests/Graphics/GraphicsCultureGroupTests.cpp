@@ -177,6 +177,31 @@ TEST(Mappers_Graphics_GraphicsCultureGroupTests, IdeologyMinisterPortraitsCanBeI
 }
 
 
+TEST(Mappers_Graphics_GraphicsCultureGroupTests, MaleOperativePortraitsDefaultToEmpty)
+{
+	std::stringstream input;
+
+	const auto graphicsCultureGroup = Mappers::GraphicsCultureGroup::Factory().importCultureGroup(input);
+
+	ASSERT_TRUE(graphicsCultureGroup->getMaleOperativePortraits().empty());
+}
+
+
+TEST(Mappers_Graphics_GraphicsCultureGroupTests, MaleOperativePortraitsCanBeImported)
+{
+	std::stringstream input;
+	input << "male_operative_portraits = {\n";
+	input << "\tpath/test_portrait.dds\n";
+	input << "\tpath/test_portrait2.dds\n";
+	input << "}";
+
+	const auto graphicsCultureGroup = Mappers::GraphicsCultureGroup::Factory().importCultureGroup(input);
+
+	ASSERT_THAT(graphicsCultureGroup->getMaleOperativePortraits(),
+		 testing::ElementsAre("path/test_portrait.dds", "path/test_portrait2.dds"));
+}
+
+
 TEST(Mappers_Graphics_GraphicsCultureGroupTests, GraphicalCultureDefaultsToEmpty)
 {
 	std::stringstream input;

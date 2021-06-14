@@ -1529,6 +1529,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operative\OutOperative.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Operative</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2034,6 +2037,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\OutHoi4\CountryCategories">
       <UniqueIdentifier>{e0d61698-9b2b-432a-9cb7-84b7180ae023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Operative">
+      <UniqueIdentifier>{afa95475-f885-4a5f-88b8-ae95a74a96a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

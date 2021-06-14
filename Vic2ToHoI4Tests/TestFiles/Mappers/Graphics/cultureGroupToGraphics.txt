@@ -21,6 +21,14 @@ test_culture_group = {
 		"path/test_female_monarch_portrait.dds"
 		"path/test_female_monarch_portrait2.dds"
 	}
+	male_operative_portraits = {
+		"path/test_male_operative_portrait.dds"
+		"path/test_male_operative_portrait2.dds"
+	}
+	female_operative_portraits = {
+		"path/test_female_operative_portrait.dds"
+		"path/test_female_operative_portrait2.dds"
+	}
 	graphical_culture = test_graphical_culture
 	graphical_culture_2d = test_graphical_culture_2d
 }
