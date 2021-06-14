@@ -45,7 +45,7 @@ country_event = {
 				any_owned_state = {
 					OR = {
 						any_neighbor_state = {
-							owner = { tag = event_target:uk_colonial_focus_japan }
+							OWNER = { tag = event_target:uk_colonial_focus_japan }
 						}
 						AND = {
 							is_coastal = yes
@@ -60,8 +60,8 @@ country_event = {
 					is_controlled_by = PREV
 					any_neighbor_state = {
 						OR = {
-							owner = { tag = ROOT }
-							owner = { is_subject_of = ROOT }
+							OWNER = { tag = ROOT }
+							OWNER = { is_subject_of = ROOT }
 						}
 					}
 				}
@@ -71,8 +71,8 @@ country_event = {
 		random_state = {
 			limit = {
 				OR = {
-					owner = { tag = ROOT }
-					owner = { is_subject_of = ROOT }
+					OWNER = { tag = ROOT }
+					OWNER = { is_subject_of = ROOT }
 				}
 				is_in_home_area = yes
 				any_neighbor_state = {
@@ -82,9 +82,9 @@ country_event = {
 							is_controlled_by = event_target:uk_colonial_focus_china
 						}
 						AND = {
-							owner = { NOT = { tag = ROOT } }
-							owner = { NOT = { is_subject_of = ROOT } }
-							owner = { is_in_faction_with = event_target:uk_colonial_focus_china}
+							OWNER = { NOT = { tag = ROOT } }
+							OWNER = { NOT = { is_subject_of = ROOT } }
+							OWNER = { is_in_faction_with = event_target:uk_colonial_focus_china}
 							any_neighbor_state = {
 								is_owned_by = event_target:uk_colonial_focus_china
 								is_controlled_by = event_target:uk_colonial_focus_china
@@ -107,7 +107,7 @@ country_event = {
 					is_owned_by = event_target:uk_colonial_focus_china
 				}
 				save_global_event_target_as = uk_colonial_focus_yunnan
-				owner = { save_global_event_target_as = uk_colonial_focus_yunnan_owner }
+				OWNER = { save_global_event_target_as = uk_colonial_focus_yunnan_owner }
 			}
 		}
 		else = {
@@ -116,7 +116,7 @@ country_event = {
 					any_neighbor_state = { state = event_target:uk_colonial_focus_mandalay }
 				}
 				save_global_event_target_as = uk_colonial_focus_yunnan
-				owner = { save_global_event_target_as = uk_colonial_focus_yunnan_owner }
+				OWNER = { save_global_event_target_as = uk_colonial_focus_yunnan_owner }
 			}
 		}
 		random_state = {
