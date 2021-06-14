@@ -295,7 +295,7 @@ void outputIdeas(std::ostream& output,
 	 const bool& civilized,
 	 const std::set<std::string>& ideas,
 	 const std::string& mobilizationLaw,
-	 const HoI4::EconomicLaw& economicLaw,
+	 const std::string& economicLaw,
 	 const std::string& tradeLaw,
 	 const std::string& primaryCulture,
 	 const bool navalTreatyAdherent,
@@ -674,7 +674,7 @@ void outputIdeas(std::ostream& output,
 	 const bool& civilized,
 	 const std::set<std::string>& ideas,
 	 const std::string& mobilizationLaw,
-	 const HoI4::EconomicLaw& economicLaw,
+	 const std::string& economicLaw,
 	 const std::string& tradeLaw,
 	 const std::string& primaryCulture,
 	 const bool navalTreatyAdherent,
@@ -712,32 +712,7 @@ void outputIdeas(std::ostream& output,
 	}
 
 	output << "\t" << mobilizationLaw << "\n";
-	switch (economicLaw)
-	{
-		case HoI4::EconomicLaw::UndisturbedIsolation:
-			output << "\tundisturbed_isolation\n";
-			break;
-		case HoI4::EconomicLaw::Isolation:
-			output << "\tisolation\n";
-			break;
-		case HoI4::EconomicLaw::CivilianEconomy:
-			output << "\tcivilian_economy\n";
-			break;
-		case HoI4::EconomicLaw::EarlyMobilization:
-			output << "\tlow_economic_mobilisation\n";
-			break;
-		case HoI4::EconomicLaw::PartialMobilization:
-			output << "\tpartial_economic_mobilisation\n";
-			break;
-		case HoI4::EconomicLaw::WarEconomy:
-			output << "\twar_economy\n";
-			break;
-		case HoI4::EconomicLaw::TotalMobilization:
-			output << "\ttot_economic_mobilisation\n";
-			break;
-		default:
-			output << "\tcivilian_economy\n";
-	}
+	output << "\t" << economicLaw << "\n";
 	output << "\t" << tradeLaw << "\n";
 	output << "\tculture_" << primaryCulture << "\n";
 

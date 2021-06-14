@@ -50,18 +50,6 @@
 namespace HoI4
 {
 
-enum class EconomicLaw
-{
-	UndisturbedIsolation = 0,
-	Isolation,
-	CivilianEconomy,
-	EarlyMobilization,
-	PartialMobilization,
-	WarEconomy,
-	TotalMobilization
-};
-
-
 class Country
 {
   public:
@@ -188,7 +176,7 @@ class Country
 	[[nodiscard]] int getStability() const { return stability; }
 	[[nodiscard]] int getWarSupport() const { return warSupport; }
 	[[nodiscard]] const std::string& getMobilizationLaw() const { return mobilizationLaw; }
-	[[nodiscard]] const auto& getEconomicLaw() const { return economicLaw; }
+	[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
 	[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
 	[[nodiscard]] const auto& getLeaders() const { return leaders; }
 
@@ -337,7 +325,7 @@ class Country
 	int stability = 60;
 	int warSupport = 60;
 	std::string mobilizationLaw = "volunteer_only";
-	EconomicLaw economicLaw = EconomicLaw::CivilianEconomy;
+	std::string economicLaw = "civilian_economy";
 	std::string tradeLaw = "export_focus";
 
 	std::vector<CountryLeader> leaders;

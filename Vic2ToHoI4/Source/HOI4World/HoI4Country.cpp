@@ -307,22 +307,16 @@ void HoI4::Country::convertLaws()
 		mobilizationLaw = "disarmed_nation";
 	}
 
-	// if protectionist, less economic mobilization
-	if (rulingParty->getTradePolicy() == "protectionism")
-	{
-		economicLaw = static_cast<EconomicLaw>(static_cast<int>(economicLaw) - 1);
-	}
-
 	// if at war, more economic mobilization
 	if (atWar)
 	{
-		economicLaw = static_cast<EconomicLaw>(static_cast<int>(economicLaw) + 1);
+		economicLaw = "low_economic_mobilisation";
 	}
 
 	// some ideologies have non-default laws
 	if (governmentIdeology == "fascism")
 	{
-		economicLaw = static_cast<EconomicLaw>(static_cast<int>(economicLaw) + 2);
+		economicLaw = "partial_economic_mobilisation";
 		tradeLaw = "limited_exports";
 	}
 	else if (governmentIdeology == "radical")
