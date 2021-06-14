@@ -742,18 +742,21 @@ void HoI4::States::giveProvinceControlToCountry(int provinceNum,
 	{
 		return;
 	}
+	const auto HoI4StateId = stateIdMapping->second;
 
-	const auto state = states.find(stateIdMapping->second);
-	if (state == states.end())
+	const auto stateItr = states.find(HoI4StateId);
+	if (stateItr == states.end())
 	{
 		return;
 	}
+	auto& state = stateItr->second;
 
-	if (ownersToSkip.contains(state->second.getOwner()))
+	state.removeControlledProvince(provinceNum);
+	if (ownersToSkip.contains(state.getOwner()))
 	{
 		return;
 	}
-	states.at(stateIdMapping->second).setControlledProvince(provinceNum, country);
+	state.setControlledProvince(provinceNum, country);
 }
 
 
