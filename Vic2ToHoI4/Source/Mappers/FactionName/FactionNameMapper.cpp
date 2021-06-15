@@ -3,7 +3,6 @@
 std::optional<std::string> Mappers::FactionNameMapper::getFactionName(const std::string& HoI4Ideology,
 	 const std::string& Hoi4Culture, const std::string& Hoi4CultureGroup)
 {
-	
 	for (const auto& mapping: mappings)
 	{
 		if ((mapping.hoi4Ideology == "any" || HoI4Ideology == mapping.hoi4Ideology) &&
@@ -14,7 +13,7 @@ std::optional<std::string> Mappers::FactionNameMapper::getFactionName(const std:
 				return (faction.factionName == factionName);
 			};
 
-			std::remove_if(mappings.begin(), mappings.end()-1, (hasSameName));
+			mappings.erase(std::remove_if(mappings.begin(), mappings.end()-1, (hasSameName)));
 			return factionName;
 		}
 	}

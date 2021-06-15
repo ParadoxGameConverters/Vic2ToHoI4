@@ -277,6 +277,9 @@
     <Filter Include="OutHoi4\Operatives">
       <UniqueIdentifier>{d1a9316d-e5f9-432d-b319-8bd62be6b500}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\FactionName">
+      <UniqueIdentifier>{2551d8ad-d00a-4e34-addd-b8cc1512b6e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1281,6 +1284,15 @@
     </ClCompile>
     <ClCompile Include="Source\OutHoi4\Operative\OutOperative.cpp">
       <Filter>OutHoi4\Operatives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMapper.cpp">
+      <Filter>Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMapperFactory.cpp">
+      <Filter>Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMappingFactory.cpp">
+      <Filter>Mappers\FactionName</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2528,6 +2540,18 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Operative\OutOperative.h">
       <Filter>OutHoi4\Operatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapper.h">
+      <Filter>Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapperFactory.h">
+      <Filter>Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapping.h">
+      <Filter>Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMappingFactory.h">
+      <Filter>Mappers\FactionName</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
