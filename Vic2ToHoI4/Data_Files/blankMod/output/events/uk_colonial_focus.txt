@@ -38,6 +38,7 @@ country_event = {
 		}
 		random_other_country = {
 			limit = {
+				country_exists = event_target:uk_colonial_focus_japan
 				NOT = { has_idea = great_power }
 				NOT = { is_in_faction_with = event_target:uk_colonial_focus_japan }
 				has_opinion = { target = event_target:uk_colonial_focus_japan value < 0 }
@@ -97,6 +98,7 @@ country_event = {
 		}
 		if = {
 			limit = {
+				any_state = { state = event_target:uk_colonial_focus_mandalay }
 				event_target:uk_colonial_focus_mandalay = {
 					any_neighbor_state = { is_owned_by = event_target:uk_colonial_focus_china }
 				}
@@ -110,7 +112,8 @@ country_event = {
 				OWNER = { save_global_event_target_as = uk_colonial_focus_yunnan_owner }
 			}
 		}
-		else = {
+		else_if = {
+			limit = { any_state = { state = event_target:uk_colonial_focus_mandalay } }
 			random_state = {
 				limit = {
 					any_neighbor_state = { state = event_target:uk_colonial_focus_mandalay }
@@ -132,6 +135,7 @@ country_event = {
 			limit = {
 				is_subject_of = ROOT
 				compare_autonomy_state < autonomy_dominion
+				capital_scope = { is_on_continent = asia }
 			}
 			save_global_event_target_as = uk_colonial_focus_RAJ
 		}
