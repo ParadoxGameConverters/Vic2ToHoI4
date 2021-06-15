@@ -1127,6 +1127,13 @@ void HoI4::World::addFocusTrees()
 			country->addGenericFocusTree(ideologies->getMajorIdeologies());
 			country->addPuppetsIntegrationTree(*hoi4Localisations);
 		}
+		if (genericFocusTree.getBranches().contains("uk_colonial_focus")
+			 && country->isGreatPower() && country->getDominionTag("south_asia"))
+		{
+			country->addGlobalEventTarget("uk_colonial_focus_ENG");
+			country->addFocusTreeBranch("uk_colonial_focus", *onActions);
+			genericFocusTree.eraseBranch("uk_colonial_focus");
+		}
 	}
 }
 

@@ -308,6 +308,8 @@ void outputCommanders(std::ostream& output,
 	 const std::vector<HoI4::General>& generals,
 	 const std::vector<HoI4::Admiral>& admirals);
 void outputOperatives(std::ostream& output, const std::vector<HoI4::Operative>& operatives);
+void outputGlobalEventTargets(std::ostream& output,
+	 const std::set<std::string>& eventTargets);
 
 
 void outputHistory(const HoI4::Country& theCountry, const Configuration& theConfiguration)
@@ -375,6 +377,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	outputCommanders(output, theCountry.getGenerals(), theCountry.getAdmirals());
 	outputOperatives(output, theCountry.getOperatives());
 	output << theCountry.getTheShipVariants();
+	outputGlobalEventTargets(output, theCountry.getGlobalEventTargets());
 
 	output.close();
 }
@@ -1207,5 +1210,14 @@ void HoI4::reportIndustry(std::ostream& out, const Country& theCountry)
 		out << theCountry.getCivilianFactories() << ',';
 		out << theCountry.getDockyards() << ',';
 		out << theCountry.getMilitaryFactories() + theCountry.getCivilianFactories() + theCountry.getDockyards() << '\n';
+	}
+}
+
+void outputGlobalEventTargets(std::ostream& output,
+	 const std::set<std::string>& eventTargets)
+{
+	for (const auto& eventTarget: eventTargets)
+	{
+		output << "save_global_event_target_as = " << eventTarget << "\n";
 	}
 }
