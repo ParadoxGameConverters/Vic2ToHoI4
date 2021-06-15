@@ -1137,9 +1137,9 @@ focus_tree = {
 				else = {					
 					set_global_flag = indian_independence_promised
 					add_timed_idea = { idea = indian_independence_promised_idea days = 1460 }
-					event_target:uk_colonial_focus_RAJ = {
-						remove_ideas = RAJ_azad_hind
-					}				
+					#event_target:uk_colonial_focus_RAJ = {
+					#	remove_ideas = RAJ_azad_hind
+					#}				
 				}
 			}
 		}
