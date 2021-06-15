@@ -116,6 +116,7 @@ link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_2 }
 link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_3 }
 link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_4 }
 link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_5 }
+link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_6 }
 
 #Democratic
 link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_1 }
