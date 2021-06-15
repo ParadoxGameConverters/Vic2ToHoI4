@@ -1880,13 +1880,7 @@ country_event = {
 		name = mtg_britain.103.a
 		if = {
 			limit = {
-				OR = {
-					has_dlc = "Together for Victory"
-					AND = {
-						has_dlc = "Death or Dishonor"
-						has_government = fascism
-					}
-				}
+				has_dlc = "Together for Victory"
 			}
 			every_country = {
 				limit = {
@@ -1971,13 +1965,7 @@ country_event = {
 		name = mtg_britain.104.a
 		if = {
 			limit = {
-				OR = {
-					has_dlc = "Together for Victory"
-					AND = {
-						has_dlc = "Death or Dishonor"
-						has_government = fascism
-					}
-				}
+				has_dlc = "Together for Victory"
 			}
 			every_country = {
 				limit = {
