@@ -1532,6 +1532,21 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operative\OutOperative.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Operative</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\FactionName\FactionNameMapperTests.cpp">
+      <Filter>MapperTests\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\FactionName\FactionNameMappingTests.cpp">
+      <Filter>MapperTests\FactionName</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2040,6 +2055,15 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\OutHoi4\Operative">
       <UniqueIdentifier>{afa95475-f885-4a5f-88b8-ae95a74a96a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\FactionName">
+      <UniqueIdentifier>{d0928767-ef82-4322-87af-767cb57813f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\FactionName">
+      <UniqueIdentifier>{9412cc98-65e2-417d-a2fc-9dc765cee8a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\FactionName">
+      <UniqueIdentifier>{cb2830a6-3fc3-443f-bbed-bb6a5612ee3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3012,6 +3036,18 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.h">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3317,6 +3353,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\HoI4Files\CountryCategories\CountryGrammar.txt">
       <Filter>TestFiles\HoI4\CountryCategories</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\FactionName\factions_mappings.txt">
+      <Filter>TestFiles\Mappers\FactionName</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

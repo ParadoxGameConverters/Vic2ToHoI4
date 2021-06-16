@@ -155,6 +155,9 @@ set(MAPPERS_TECHNOLOGY_SOURCES ${MAPPERS_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_D
 set(MAPPERS_TECHNOLOGY_SOURCES ${MAPPERS_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/ResearchBonusMapperFactory.cpp")
 set(MAPPERS_TECHNOLOGY_SOURCES ${MAPPERS_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/TechMapperFactory.cpp")
 set(MAPPERS_TECHNOLOGY_SOURCES ${MAPPERS_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/TechMappingFactory.cpp")
+set(MAPPERS_FACTIONNAME_SOURCES ${MAPPERS_FACTIONNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/FactionName/FactionNameMapperFactory.cpp")
+set(MAPPERS_FACTIONNAME_SOURCES ${MAPPERS_FACTIONNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/FactionName/FactionNameMappingFactory.cpp")
+set(MAPPERS_FACTIONNAME_SOURCES ${MAPPERS_FACTIONNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/FactionName/FactionNameMapper.cpp")
 file(GLOB OUTHOI4_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/*.cpp")
 set(OUTHOI4_AI_STRATEGY_SOURCES ${OUTHOI4_AI_STRATEGY_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/AiStrategy/OutAiStrategy.cpp")
 set(OUTHOI4_COUNTRY_CATEGORIES_SOURCES ${OUTHOI4_COUNTRY_CATEGORIES_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/CountryCategories/OutCountryCategories.cpp")
@@ -307,6 +310,7 @@ add_executable(
 	${MAPPERS_MERGE_RULES_SOURCES}
 	${MAPPERS_TECHNOLOGY_SOURCES}
 	${MAPPERS_PROVINCES_SOURCES}
+	${MAPPERS_FACTIONNAME_SOURCES}
 	${OUTHOI4_SOURCES}
 	${OUTHOI4_COUNTRY_CATEGORIES_SOURCES}
 	${OUTHOI4_DECISIONS_SOURCES}
@@ -389,6 +393,7 @@ configure_file("${DATA_FILE_DIR}/configurables/cultureGroupToGraphics.txt" "${CO
 configure_file("${DATA_FILE_DIR}/configurables/FlagsToIdeasMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/foreignInfluenceDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/foreignInfluenceDecisions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/GovernmentMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/GovernmentMappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/factions_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/factions_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/grammar.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/grammar.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Greater Flavor Mod_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Greater Flavor Mod_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Historical Flavour Mod v1.27I_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Flavour Mod v1.27I_province_mappings.txt" COPYONLY)
@@ -488,6 +493,8 @@ set(MAPPERS_TECHNOLOGY_TESTS_SOURCES ${MAPPERS_TECHNOLOGY_TESTS_SOURCES} "${TEST
 set(MAPPERS_TECHNOLOGY_TESTS_SOURCES ${MAPPERS_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/ResearchBonusMappingTests.cpp")
 set(MAPPERS_TECHNOLOGY_TESTS_SOURCES ${MAPPERS_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/TechMapperTests.cpp")
 set(MAPPERS_TECHNOLOGY_TESTS_SOURCES ${MAPPERS_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/TechMappingTests.cpp")
+set(MAPPERS_FACTIONNAME_TESTS_SOURCES ${MAPPERS_FACTIONNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/FactionNameMapperTests.cpp")
+set(MAPPERS_FACTIONNAME_TESTS_SOURCES ${MAPPERS_FACTIONNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/FactionNameMappingTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AIStrategyTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AITests.cpp")
 set(VIC2WORLD_COUNTRIES_TESTS_SOURCES ${VIC2WORLD_COUNTRIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Countries/CommonCountriesDataFactoryTests.cpp")
@@ -670,6 +677,7 @@ add_executable(
 	${MAPPERS_MERGE_RULES_TESTS_SOURCES}
 	${MAPPERS_PROVINCES_TESTS_SOURCES}
 	${MAPPERS_TECHNOLOGY_TESTS_SOURCES}
+	${MAPPERS_FACTIONNAME_TESTS_SOURCES}
 	${VIC2WORLD_AI_TESTS_SOURCES}
 	${VIC2WORLD_COUNTRIES_TESTS_SOURCES}
 	${VIC2WORLD_CULTURE_TESTS_SOURCES}
@@ -747,6 +755,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/mod_province_mapping
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/vanilla_province_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/province_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/research_bonus_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/tech_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FactionName/factions_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/factions_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependencies.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/Dependencies.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependent.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/Dependent.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DependencyOne.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DependencyOne.mod" COPYONLY)

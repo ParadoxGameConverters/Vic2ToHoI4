@@ -118,6 +118,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMappingRuleFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapperFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
@@ -484,6 +487,8 @@
     <ClCompile Include="MapperTests\CountryName\CountryNameMappingTests.cpp" />
     <ClCompile Include="MapperTests\Country\CountryMapperTests.cpp" />
     <ClCompile Include="MapperTests\Country\CountryMappingRuleFactoryTests.cpp" />
+    <ClCompile Include="MapperTests\FactionName\FactionNameMapperTests.cpp" />
+    <ClCompile Include="MapperTests\FactionName\FactionNameMappingTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\Government\GovernmentMapperTests.cpp" />
@@ -867,6 +872,10 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMappingRuleFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapper.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapperFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapping.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
@@ -1518,6 +1527,11 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\HoI4Files\CountryCategories\CountryGrammar.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\FactionName\factions_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>

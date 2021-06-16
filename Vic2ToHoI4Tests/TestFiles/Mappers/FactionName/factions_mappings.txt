@@ -1,0 +1,5 @@
+link = { culture = test_culture ideology = test_ideology faction = matching_culture_matching_ideology }
+link = { culture = test_culture_group ideology = test_ideology faction = matching_culture_group_matching_ideology }
+link = { culture = any ideology = test_ideology faction = any_culture_matching_ideology }
+link = { culture = test_culture ideology = any faction = matching_culture_any_ideology }
+link = { culture = any ideology = any faction = any_culture_any_ideology }
