@@ -58,9 +58,6 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	{
 		onActionsFile << "\t\t\tif = {\n";
 		onActionsFile << "\t\t\t\tlimit = { has_government = democratic }\n";
-		onActionsFile << "\t\t\t\tset_politics = {\n";
-		onActionsFile << "\t\t\t\t\telections_allowed = yes\n";
-		onActionsFile << "\t\t\t\t}\n";
 		onActionsFile << "\t\t\t\tif = {\n";
 		onActionsFile << "\t\t\t\t\tlimit = { has_idea = democratic_opposition_voicing_protests }\n";
 		onActionsFile << "\t\t\t\t\tremove_ideas = democratic_opposition_voicing_protests\n";
@@ -130,6 +127,10 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	onActionsFile << "\t\t\tset_province_name = { id = 7371 name = \"Kuching\"} #Brunei\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 11437 name = \"Dnipropetrovsk\"} #Ekaterinoslav\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 12674 name = \"Reykjavik\"} #Iceland\n";
+	for (const auto& [tag, focusId]: onActions.getFocusEvents())
+	{
+		onActionsFile << "\t\t\t" << tag << " = { country_event = " << focusId << ".1 }\n";
+	}
 	onActionsFile << "\t\t}\n";
 	onActionsFile << "\t}\n";
 

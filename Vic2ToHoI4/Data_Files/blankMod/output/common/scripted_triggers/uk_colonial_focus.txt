@@ -1,0 +1,21 @@
+ENG_focus_available_embargo_sanction = {
+	exists = yes
+	OR = {
+		has_offensive_war = yes
+		has_added_tension_amount > 15
+	}
+	NOT = { is_in_faction_with = ROOT }
+	NOT = { has_war_with = ROOT }
+}
+
+ENG_focus_available_war = {
+	exists = yes
+	OR = {
+		has_offensive_war = yes
+		has_added_tension_amount > 30
+	}
+	NOT = { has_government = ROOT }
+	NOT = { is_in_faction_with = ROOT }
+	NOT = { has_war_with = ROOT }
+}
+

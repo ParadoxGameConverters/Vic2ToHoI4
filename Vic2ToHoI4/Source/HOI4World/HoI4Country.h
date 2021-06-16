@@ -112,6 +112,7 @@ class Country
 	void transferPuppets(const std::set<std::string>& transferingPuppets, std::shared_ptr<HoI4::Country> dominion);
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
+	void addFocusTreeBranch(const std::string& branch, OnActions& onActions);
 	void adjustResearchFocuses() const;
 
 	void setSphereLeader(const std::string& SphereLeader) { sphereLeader = SphereLeader; }
@@ -252,6 +253,9 @@ class Country
 
 	void addGeneratedDominion(const std::string& region, const std::string& tag) { generatedDominions[region] = tag; }
 	std::optional<std::string> getDominionTag(const std::string& region);
+	void addGlobalEventTarget(const std::string& name) { globalEventTargets.insert(name); }
+
+	[[nodiscard]] const auto& getGlobalEventTargets() const { return globalEventTargets; }
 
   private:
 	void determineFilename();
@@ -340,7 +344,7 @@ class Country
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
 	std::set<std::string> flags;
 
-	std::string monarchIdeaTexture = "GFX_idea_george_v";
+	std::string monarchIdeaTexture = "gfx/interface/ideas/idea_george_v.dds";
 
 	double militaryFactories = 0.0;
 	double civilianFactories = 0.0;
@@ -390,6 +394,7 @@ class Country
 	std::mt19937 generator;
 
 	std::map<std::string, float> sourceCountryGoods;
+	std::set<std::string> globalEventTargets;
 };
 
 } // namespace HoI4

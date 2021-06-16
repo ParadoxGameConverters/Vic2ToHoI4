@@ -80,6 +80,9 @@ HoI4Focus::HoI4Focus(std::istream& theStream)
 		commonItems::stringOfItem prerequisiteString(theStream);
 		prerequisites.push_back(prerequisiteString.getString());
 	});
+	registerKeyword("allow_branch", [this](std::istream& theStream) {
+		allowBranch = commonItems::stringOfItem(theStream).getString();
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);

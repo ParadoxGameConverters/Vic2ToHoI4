@@ -1,0 +1,2064 @@
+﻿add_namespace = uk_colonial_focus
+
+# uk_colonial_focus
+country_event = {
+	id = uk_colonial_focus.1
+	title = uk_colonial_focus.1.t
+	desc = uk_colonial_focus.1.desc
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		random_owned_controlled_state = {
+			limit = {
+				is_on_continent = asia
+				is_coastal = yes
+				any_neighbor_state = { NOT = { is_owned_by = ROOT } }
+			}
+			save_global_event_target_as = uk_colonial_focus_singapore
+		}
+		random_owned_controlled_state = {
+			limit = {
+				NOT = { state = event_target:uk_colonial_focus_singapore }
+				is_on_continent = asia
+				is_coastal = yes
+				any_neighbor_state = { NOT = { is_owned_by = ROOT } }
+			}
+			save_global_event_target_as = uk_colonial_focus_hongkong
+		}
+		random_other_country = {
+			limit = {
+				has_idea = great_power
+				capital_scope = { is_on_continent = asia }
+				NOT = { is_in_faction_with = ROOT }
+			}
+			save_global_event_target_as = uk_colonial_focus_japan
+		}
+		random_other_country = {
+			limit = {
+				country_exists = event_target:uk_colonial_focus_japan
+				NOT = { has_idea = great_power }
+				NOT = { is_in_faction_with = event_target:uk_colonial_focus_japan }
+				has_opinion = { target = event_target:uk_colonial_focus_japan value < 0 }
+				capital_scope = { is_on_continent = asia }
+				any_owned_state = {
+					OR = {
+						any_neighbor_state = {
+							OWNER = { tag = event_target:uk_colonial_focus_japan }
+						}
+						AND = {
+							is_coastal = yes
+							event_target:uk_colonial_focus_japan = {
+								any_owned_state = { is_coastal = yes }
+							}
+						}
+					}
+				}
+				is_subject = no
+				any_owned_state = {
+					is_controlled_by = PREV
+					any_neighbor_state = {
+						OR = {
+							OWNER = { tag = ROOT }
+							OWNER = { is_subject_of = ROOT }
+						}
+					}
+				}
+			}
+			save_global_event_target_as = uk_colonial_focus_china
+		}
+		random_state = {
+			limit = {
+				OR = {
+					OWNER = { tag = ROOT }
+					OWNER = { is_subject_of = ROOT }
+				}
+				is_in_home_area = yes
+				any_neighbor_state = {
+					OR = {
+						AND = {
+							is_owned_by = event_target:uk_colonial_focus_china
+							is_controlled_by = event_target:uk_colonial_focus_china
+						}
+						AND = {
+							OWNER = { NOT = { tag = ROOT } }
+							OWNER = { NOT = { is_subject_of = ROOT } }
+							OWNER = { is_in_faction_with = event_target:uk_colonial_focus_china}
+							any_neighbor_state = {
+								is_owned_by = event_target:uk_colonial_focus_china
+								is_controlled_by = event_target:uk_colonial_focus_china
+							}
+						}
+					}
+				}
+			}
+			save_global_event_target_as = uk_colonial_focus_mandalay
+		}
+		if = {
+			limit = {
+				any_state = { state = event_target:uk_colonial_focus_mandalay }
+				event_target:uk_colonial_focus_mandalay = {
+					any_neighbor_state = { is_owned_by = event_target:uk_colonial_focus_china }
+				}
+			}
+			random_state = {
+				limit = {
+					any_neighbor_state = { state = event_target:uk_colonial_focus_mandalay }
+					is_owned_by = event_target:uk_colonial_focus_china
+				}
+				save_global_event_target_as = uk_colonial_focus_yunnan
+				OWNER = { save_global_event_target_as = uk_colonial_focus_yunnan_owner }
+			}
+		}
+		else_if = {
+			limit = { any_state = { state = event_target:uk_colonial_focus_mandalay } }
+			random_state = {
+				limit = {
+					any_neighbor_state = { state = event_target:uk_colonial_focus_mandalay }
+				}
+				save_global_event_target_as = uk_colonial_focus_yunnan
+				OWNER = { save_global_event_target_as = uk_colonial_focus_yunnan_owner }
+			}
+		}
+		random_state = {
+			limit = {
+				any_neighbor_state = { state = event_target:uk_colonial_focus_yunnan }
+				is_owned_by = event_target:uk_colonial_focus_china
+			}
+			save_global_event_target_as = uk_colonial_focus_xikang
+		}
+
+		# uk_commonwealth_focus
+		random_country = {
+			limit = {
+				is_subject_of = ROOT
+				compare_autonomy_state < autonomy_dominion
+				capital_scope = { is_on_continent = asia }
+			}
+			save_global_event_target_as = uk_colonial_focus_RAJ
+		}
+		if = {
+			limit = { NOT = { country_exists = event_target:uk_colonial_focus_RAJ } }
+			random_country = {
+				limit = {
+					is_subject_of = ROOT
+					compare_autonomy_state < autonomy_sphereling
+					capital_scope = { is_on_continent = asia }
+				}
+				save_global_event_target_as = uk_colonial_focus_RAJ
+			}
+		}
+		random_country = {
+			limit = {
+				NOT = { tag = event_target:uk_colonial_focus_RAJ }
+				is_subject_of = ROOT
+				compare_autonomy_state < autonomy_sphereling
+				NOT = {
+					any_other_country = {
+						NOT = { tag = event_target:uk_colonial_focus_RAJ }
+						is_subject_of = ROOT
+						compare_autonomy_state < autonomy_sphereling
+						ic_ratio = { tag = PREV ratio > 1.0 }
+					}
+				}
+			}
+			save_global_event_target_as = uk_colonial_focus_CAN
+		}
+		random_country = {
+			limit = {
+				NOT = { tag = event_target:uk_colonial_focus_RAJ }
+				NOT = { tag = event_target:uk_colonial_focus_CAN }
+				is_subject_of = ROOT
+				compare_autonomy_state < autonomy_sphereling
+				NOT = {
+					any_other_country = {
+						NOT = { tag = event_target:uk_colonial_focus_RAJ }
+						NOT = { tag = event_target:uk_colonial_focus_CAN }
+						is_subject_of = ROOT
+						compare_autonomy_state < autonomy_sphereling
+						ic_ratio = { tag = PREV ratio > 1.0 }
+					}
+				}
+			}
+			save_global_event_target_as = uk_colonial_focus_SAF
+		}
+		random_country = {
+			limit = {
+				NOT = { tag = event_target:uk_colonial_focus_RAJ }
+				NOT = { tag = event_target:uk_colonial_focus_CAN }
+				NOT = { tag = event_target:uk_colonial_focus_SAF }
+				is_subject_of = ROOT
+				compare_autonomy_state < autonomy_sphereling
+				NOT = {
+					any_other_country = {
+						NOT = { tag = event_target:uk_colonial_focus_RAJ }
+						NOT = { tag = event_target:uk_colonial_focus_CAN }
+						NOT = { tag = event_target:uk_colonial_focus_SAF }
+						is_subject_of = ROOT
+						compare_autonomy_state < autonomy_sphereling
+						ic_ratio = { tag = PREV ratio > 1.0 }
+					}
+				}
+			}
+			save_global_event_target_as = uk_colonial_focus_AST
+		}
+		random_country = {
+			limit = {
+				NOT = { tag = event_target:uk_colonial_focus_RAJ }
+				NOT = { tag = event_target:uk_colonial_focus_CAN }
+				NOT = { tag = event_target:uk_colonial_focus_SAF }
+				NOT = { tag = event_target:uk_colonial_focus_AST }
+				is_subject_of = ROOT
+				compare_autonomy_state < autonomy_sphereling
+				NOT = {
+					any_other_country = {
+						NOT = { tag = event_target:uk_colonial_focus_RAJ }
+						NOT = { tag = event_target:uk_colonial_focus_CAN }
+						NOT = { tag = event_target:uk_colonial_focus_SAF }
+						NOT = { tag = event_target:uk_colonial_focus_AST }
+						is_subject_of = ROOT
+						compare_autonomy_state < autonomy_sphereling
+						ic_ratio = { tag = PREV ratio > 1.0 }
+					}
+				}
+			}
+			save_global_event_target_as = uk_colonial_focus_NZL
+		}
+	}
+	
+	option = {
+		name = uk_colonial_focus.1.a
+	}
+}
+
+# Triggered events
+
+add_namespace = britain
+# Burma road china
+country_event = {
+	id = britain.4
+	title = britain.4.t
+	desc = britain.4.d
+	picture = GFX_report_event_burma_road
+
+	is_triggered_only = yes
+	
+	option = {
+		name = britain.4.a
+	}
+}
+
+# Burma road yunnan
+country_event = {
+	id = britain.5
+	title = britain.4.t
+	desc = britain.4.d
+	picture = GFX_report_event_burma_road
+
+	is_triggered_only = yes
+	
+	option = {
+		name = britain.4.a
+	}
+}
+
+
+add_namespace = mtg_britain
+# Event for ENG and Dominions notifying of Imperial Conference
+country_event = {
+	id = mtg_britain.82
+	title = mtg_britain.82.t
+	desc = mtg_britain.82.d
+	picture = GFX_report_event_imperial_conference
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.82.a
+		trigger = {
+			tag = ROOT
+		}
+		activate_mission = ENG_imperial_conference_decision
+		set_country_flag = { flag = ENG_imperial_conference_timer_flag value = 1 days = 60 }
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			add_opinion_modifier = { target = ROOT modifier = ENG_imperial_conference_opinion }
+			custom_effect_tooltip = mtg_britain.82_tt
+		}
+	}
+
+	# Ok
+	option = {
+		name = mtg_britain.82.b
+		trigger = {
+			NOT = { tag = ROOT }
+		}
+		effect_tooltip = { add_opinion_modifier = { target = FROM modifier = ENG_imperial_conference_opinion } }
+	}
+}
+
+add_namespace = mtg_news
+# UK Imperial Conference
+news_event = {
+	id = mtg_news.13
+	title = mtg_britain.82.t
+	desc = mtg_news.13.desc
+	picture = GFX_news_event_imperial_conference
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = mtg_news.13.a
+		trigger = {
+			original_tag = ROOT
+		}
+	}
+	option = {
+		name = mtg_news.13.b
+		trigger = { 
+			is_subject_of = ROOT
+			OR = {
+				original_tag = events_target:uk_colonial_focus_CAN
+				original_tag = events_target:uk_colonial_focus_SAF
+				original_tag = events_target:uk_colonial_focus_RAJ
+				original_tag = events_target:uk_colonial_focus_AST
+				original_tag = events_target:uk_colonial_focus_NZL
+			}
+		}
+	}
+	option = {
+		name = mtg_news.13.c
+		trigger = { 
+			NOT = { original_tag = ROOT }
+			NOT = {
+				AND = {
+					is_subject_of = ROOT
+					OR = {
+						original_tag = events_target:uk_colonial_focus_CAN
+						original_tag = events_target:uk_colonial_focus_SAF
+						original_tag = events_target:uk_colonial_focus_RAJ
+						original_tag = events_target:uk_colonial_focus_AST
+						original_tag = events_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+		}
+	}
+}
+
+# UK Imperial Federation (Without India)
+news_event = {
+	id = mtg_news.8
+	title = mtg_news.8.t
+	desc = mtg_news.8.desc
+	picture = GFX_news_event_eng_imperial_federation
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = mtg_news.8.a
+		trigger = {
+			original_tag = ROOT
+		}
+	}
+	option = {
+		name = mtg_news.8.b
+		trigger = { 
+			NOT = { original_tag = ROOT }
+		}
+	}
+}
+
+# UK Imperial Federation (With India)
+news_event = {
+	id = mtg_news.9
+	title = mtg_news.8.t
+	desc = mtg_news.9.desc
+	picture = GFX_news_event_eng_imperial_federation_india
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = mtg_news.8.a
+		trigger = {
+			original_tag = ROOT
+		}
+	}
+	option = {
+		name = mtg_news.8.b
+		trigger = { 
+			NOT = { original_tag = ROOT }
+		}
+	}
+}
+
+# Event for ENG beginning discussions on Imperial Defense
+country_event = {
+	id = mtg_britain.83
+	title = mtg_britain.83.t
+	desc = mtg_britain.83.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = ENG_imperial_defense_flag
+		}
+	}
+	
+	# Ask them if they want to agree to commit
+	option = {
+		name = mtg_britain.83.a
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.84 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+
+	# Exert diplomatic pressure
+	option = {
+		name = mtg_britain.83.b
+		add_political_power = -25
+		set_country_flag = ENG_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.84 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+	# Exert extensive diplomatic pressure
+	option = {
+		name = mtg_britain.83.c
+		add_political_power = -50
+		set_country_flag = ENG_extensive_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.84 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+}
+
+# Event for Dominions asking for vote on Imperial Defense
+country_event = {
+	id = mtg_britain.84
+	title = mtg_britain.83.t
+	desc = mtg_britain.84.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	# Accept
+	option = {
+		name = mtg_britain.84.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				FROM = { has_country_flag = ENG_diplomatic_pressure_flag }
+			}
+			modifier = {
+				factor = 3
+				FROM = { has_country_flag = ENG_extensive_diplomatic_pressure_flag }
+			}
+		}
+		add_political_power = -25
+		add_timed_idea = { idea = ENG_imperial_conference_defense_dominion days = 365 }
+		add_opinion_modifier = {
+			target = FROM
+			modifier = ENG_imperial_conference_approved_resolution
+		}
+		FROM = { country_event = { id = mtg_britain.85 } }
+		FROM = {
+			if = {
+				limit = {
+					NOT = {
+						check_variable = {
+							var = ENG_imperial_conference_defense_accepted
+							value = 1
+							compare = greater_than_or_equals
+						}
+					}
+				}
+				set_variable = {
+					var = ENG_imperial_conference_defense_accepted
+					value = 0
+				}
+			}
+			add_to_variable = {
+				var = ENG_imperial_conference_defense_accepted
+				value = 1
+			}
+		}
+	}
+
+	# Reject
+	option = {
+		name = mtg_britain.84.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 0 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 25 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 50 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 75 }
+			}
+		}
+		FROM = { country_event = { id = mtg_britain.86 } }
+	}
+}
+
+# Event for ENG telling FROM voted yes on Imperial Defense
+country_event = {
+	id = mtg_britain.85
+	title = mtg_britain.85.t
+	desc = mtg_britain.85.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.85.a
+		effect_tooltip = {
+			FROM = {
+				add_political_power = -25
+				add_timed_idea = { idea = ENG_imperial_conference_defense_dominion days = 365 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = ENG_imperial_conference_approved_resolution
+				}
+			}
+		}
+		ENG_imperial_conference_defense_level_up = yes
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_defense_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_defense_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_defense_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+	}
+}
+
+# Event for ENG telling FROM voted no on Imperial Defense
+country_event = {
+	id = mtg_britain.86
+	title = mtg_britain.86.t
+	desc = mtg_britain.86.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.86.a
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_defense_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_defense_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_defense_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+	}
+}
+
+# Event for ENG beginning discussions on Imperial Trade
+country_event = {
+	id = mtg_britain.87
+	title = mtg_britain.87.t
+	desc = mtg_britain.87.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = ENG_imperial_trade_flag
+		}
+	}
+	
+	# Ask them if they want to agree to commit
+	option = {
+		name = mtg_britain.83.a
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.88 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+
+	# Exert diplomatic pressure
+	option = {
+		name = mtg_britain.83.b
+		add_political_power = -25
+		set_country_flag = ENG_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.88 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+	# Exert extensive diplomatic pressure
+	option = {
+		name = mtg_britain.83.c
+		add_political_power = -50
+		set_country_flag = ENG_extensive_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.88 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+}
+
+# Event for Dominions asking for vote on Imperial Trade
+country_event = {
+	id = mtg_britain.88
+	title = mtg_britain.87.t
+	desc = mtg_britain.88.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	# Accept
+	option = {
+		name = mtg_britain.88.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				FROM = { has_country_flag = ENG_diplomatic_pressure_flag }
+			}
+			modifier = {
+				factor = 3
+				FROM = { has_country_flag = ENG_extensive_diplomatic_pressure_flag }
+			}
+		}
+		add_ideas = free_trade
+		add_opinion_modifier = {
+			target = FROM
+			modifier = ENG_imperial_conference_approved_resolution
+		}
+		reverse_add_opinion_modifier = { target = FROM modifier = ENG_imperial_trade }
+		FROM = { country_event = { id = mtg_britain.89 } }
+	}
+
+	# Reject
+	option = {
+		name = mtg_britain.88.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 0 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 25 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 50 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 75 }
+			}
+		}
+		FROM = { country_event = { id = mtg_britain.90 } }
+	}
+}
+
+# Event for ENG telling FROM voted yes on Imperial Trade
+country_event = {
+	id = mtg_britain.89
+	title = mtg_britain.89.t
+	desc = mtg_britain.89.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.89.a
+		effect_tooltip = {
+			FROM = {
+				add_ideas = free_trade
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = ENG_imperial_conference_approved_resolution
+				}
+			}
+			add_opinion_modifier = { target = FROM modifier = ENG_imperial_trade }
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_trade_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_trade_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_trade_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+	}
+}
+
+# Event for ENG telling FROM voted no on Imperial Trade
+country_event = {
+	id = mtg_britain.90
+	title = mtg_britain.90.t
+	desc = mtg_britain.90.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.90.a
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_trade_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_trade_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_trade_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+	}
+}
+
+# Event for ENG beginning discussions on Imperial Economy
+country_event = {
+	id = mtg_britain.91
+	title = mtg_britain.91.t
+	desc = mtg_britain.91.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = ENG_imperial_economy_flag
+		}
+	}
+	
+	# Ask them if they want to agree to commit
+	option = {
+		name = mtg_britain.83.a
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.92 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+
+	# Exert diplomatic pressure
+	option = {
+		name = mtg_britain.83.b
+		add_political_power = -25
+		set_country_flag = ENG_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.92 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+	# Exert extensive diplomatic pressure
+	option = {
+		name = mtg_britain.83.c
+		add_political_power = -50
+		set_country_flag = ENG_extensive_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.92 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+}
+
+# Event for Dominions asking for vote on Imperial Economy
+country_event = {
+	id = mtg_britain.92
+	title = mtg_britain.91.t
+	desc = mtg_britain.92.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	# Accept
+	option = {
+		name = mtg_britain.92.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				FROM = { has_country_flag = ENG_diplomatic_pressure_flag }
+			}
+			modifier = {
+				factor = 3
+				FROM = { has_country_flag = ENG_extensive_diplomatic_pressure_flag }
+			}
+		}
+		add_political_power = -25
+		add_timed_idea = { idea = ENG_imperial_conference_economy_dominion days = 365 }
+		add_opinion_modifier = {
+			target = FROM
+			modifier = ENG_imperial_conference_approved_resolution
+		}
+		FROM = { country_event = { id = mtg_britain.93 } }
+		FROM = {
+			if = {
+				limit = {
+					NOT = {
+						check_variable = {
+							var = ENG_imperial_conference_economy_accepted
+							value = 1
+							compare = greater_than_or_equals
+						}
+					}
+				}
+				set_variable = {
+					var = ENG_imperial_conference_economy_accepted
+					value = 0
+				}
+			}
+			add_to_variable = {
+				var = ENG_imperial_conference_economy_accepted
+				value = 1
+			}
+		}
+	}
+
+	# Reject
+	option = {
+		name = mtg_britain.92.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 0 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 25 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 50 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 75 }
+			}
+		}
+		FROM = { country_event = { id = mtg_britain.94 } }
+	}
+}
+
+# Event for ENG telling FROM voted yes on Imperial Economy
+country_event = {
+	id = mtg_britain.93
+	title = mtg_britain.93.t
+	desc = mtg_britain.93.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.93.a
+		effect_tooltip = {
+			FROM = {
+				add_political_power = -25
+				add_timed_idea = { idea = ENG_imperial_conference_economy_dominion days = 365 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = ENG_imperial_conference_approved_resolution
+				}
+			}
+		}
+		ENG_imperial_conference_economy_level_up = yes
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_economy_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_economy_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_economy_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+	}
+}
+
+# Event for ENG telling FROM voted no on Imperial Economy
+country_event = {
+	id = mtg_britain.94
+	title = mtg_britain.94.t
+	desc = mtg_britain.94.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.94.a
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_economy_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_economy_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_economy_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+	}
+}
+
+# Event for ENG beginning discussions on Appeasement
+country_event = {
+	id = mtg_britain.95
+	title = mtg_britain.95.t
+	desc = mtg_britain.95.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = ENG_imperial_appeasement_flag
+		}
+	}
+	
+	# Ask them if they want to agree to commit
+	option = {
+		name = mtg_britain.83.a
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.96 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+
+	# Exert diplomatic pressure
+	option = {
+		name = mtg_britain.83.b
+		add_political_power = -25
+		set_country_flag = ENG_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.96 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+	# Exert extensive diplomatic pressure
+	option = {
+		name = mtg_britain.83.c
+		add_political_power = -50
+		set_country_flag = ENG_extensive_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = FROM
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.96 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+}
+
+# Event for Dominions asking for vote on Appeasement
+country_event = {
+	id = mtg_britain.96
+	title = mtg_britain.95.t
+	desc = mtg_britain.96.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	# Accept
+	option = {
+		name = mtg_britain.96.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				FROM = { has_country_flag = ENG_diplomatic_pressure_flag }
+			}
+			modifier = {
+				factor = 3
+				FROM = { has_country_flag = ENG_extensive_diplomatic_pressure_flag }
+			}
+		}
+		add_political_power = -25
+		add_war_support = 0.1
+		add_opinion_modifier = {
+			target = FROM
+			modifier = ENG_imperial_conference_approved_resolution
+		}
+		effect_tooltip = { FROM = { add_war_support = 0.03 } }
+		FROM = { country_event = { id = mtg_britain.97 } }
+	}
+
+	# Reject
+	option = {
+		name = mtg_britain.96.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 0 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 25 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 50 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 75 }
+			}
+		}
+		FROM = { country_event = { id = mtg_britain.98 } }
+	}
+}
+
+# Event for ENG telling FROM voted yes on Appeasement
+country_event = {
+	id = mtg_britain.97
+	title = mtg_britain.97.t
+	desc = mtg_britain.97.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.97.a
+		effect_tooltip = {
+			FROM = {
+				add_political_power = -25
+				add_war_support = 0.1
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = ENG_imperial_conference_approved_resolution
+				}
+			}
+		}
+		add_war_support = 0.03
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_appeasement_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_appeasement_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_appeasement_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+	}
+}
+
+# Event for ENG telling FROM voted no on Appeasement
+country_event = {
+	id = mtg_britain.98
+	title = mtg_britain.98.t
+	desc = mtg_britain.98.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.98.a
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_appeasement_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_appeasement_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_appeasement_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+	}
+}
+
+# Event for ENG beginning discussions on Imperial Federation
+country_event = {
+	id = mtg_britain.99
+	title = mtg_britain.99.t
+	desc = mtg_britain.99.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = ENG_imperial_federation_flag
+		}
+	}
+	
+	# Ask them if they want to agree to Federate
+	option = {
+		name = mtg_britain.83.a
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.100 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+
+	# Exert diplomatic pressure
+	option = {
+		name = mtg_britain.83.b
+		add_political_power = -25
+		set_country_flag = ENG_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.100 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+	# Exert extensive diplomatic pressure
+	option = {
+		name = mtg_britain.83.c
+		add_political_power = -50
+		set_country_flag = ENG_extensive_diplomatic_pressure_flag
+		every_country = {
+			limit = {
+				OR = {
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_CAN
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_SAF
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_RAJ
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_AST
+					}
+					AND = {
+						is_subject_of = ROOT
+						tag = event_target:uk_colonial_focus_NZL
+					}
+				}
+			}
+			country_event = { id = mtg_britain.100 hours = 48 random_hours = 24 }
+		}
+		ENG_imperial_conference_set_subject_counter = yes
+	}
+}
+
+# Event for Dominions asking for vote on Imperial Federation
+country_event = {
+	id = mtg_britain.100
+	title = mtg_britain.99.t
+	desc = mtg_britain.100.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	# Accept
+	option = {
+		name = mtg_britain.100.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				FROM = { has_country_flag = ENG_diplomatic_pressure_flag }
+			}
+			modifier = {
+				factor = 3
+				FROM = { has_country_flag = ENG_extensive_diplomatic_pressure_flag }
+			}
+			modifier = {
+				factor = 0
+				tag = event_target:uk_colonial_focus_RAJ
+				FROM = { NOT = { has_completed_focus = ENG_indian_autonomy } }
+			}
+		}
+		custom_effect_tooltip = mtg_britain.100_tt #"If all accept you will get:"
+		effect_tooltip = { add_ideas = ENG_federal_integration }
+		set_country_flag = ENG_accepted_federation
+		FROM = { country_event = { id = mtg_britain.101 } }
+	}
+
+	# Reject
+	option = {
+		name = mtg_britain.100.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 0 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 25 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 50 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 75 }
+			}
+			modifier = {
+				factor = 0
+				tag = event_target:uk_colonial_focus_RAJ
+				FROM = { has_completed_focus = ENG_indian_autonomy }
+				has_opinion = { target = FROM value > 99 }
+			}
+			modifier = {
+				factor = 0
+				tag = event_target:uk_colonial_focus_RAJ
+				FROM = { has_completed_focus = ENG_indian_autonomy }
+				has_opinion = { target = FROM value > 89 }
+				FROM = { has_country_flag = ENG_diplomatic_pressure_flag }
+			}
+			modifier = {
+				factor = 0
+				tag = event_target:uk_colonial_focus_RAJ
+				FROM = { has_completed_focus = ENG_indian_autonomy }
+				has_opinion = { target = FROM value > 79 }
+				FROM = { has_country_flag = ENG_extensive_diplomatic_pressure_flag }
+			}
+			modifier = {
+				factor = 0
+				NOT = { tag = event_target:uk_colonial_focus_RAJ }
+				has_opinion = { target = FROM value > 99 }
+			}
+			modifier = {
+				factor = 0
+				NOT = { tag = event_target:uk_colonial_focus_RAJ }
+				has_opinion = { target = FROM value > 89 }
+				FROM = { has_country_flag = ENG_diplomatic_pressure_flag }
+			}
+			modifier = {
+				factor = 0
+				NOT = { tag = event_target:uk_colonial_focus_RAJ }
+				has_opinion = { target = FROM value > 79 }
+				FROM = { has_country_flag = ENG_extensive_diplomatic_pressure_flag }
+			}
+		}
+		set_country_flag = ENG_rejected_federation
+		FROM = { country_event = { id = mtg_britain.102 } }
+	}
+}
+
+# Event for ENG telling FROM voted yes on Imperial Federation
+country_event = {
+	id = mtg_britain.101
+	title = mtg_britain.101.t
+	desc = mtg_britain.101.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.101.a
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_federation_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_federation_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_federation_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+		if = {
+			limit = {
+				check_variable = { var = ENG_imperial_conference_federation_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+				NOT = {
+					any_country = {
+						OR = {
+							tag = event_target:uk_colonial_focus_CAN
+							tag = event_target:uk_colonial_focus_SAF
+							tag = event_target:uk_colonial_focus_RAJ
+							tag = event_target:uk_colonial_focus_AST
+							tag = event_target:uk_colonial_focus_NZL
+						}
+						has_country_flag = ENG_rejected_federation
+					}
+				}
+			}
+			country_event = { id = mtg_britain.103 hours = 6 }
+		}
+		if = {
+			limit = {
+				event_target:uk_colonial_focus_RAJ = {
+					is_subject_of = ROOT
+					has_country_flag = ENG_rejected_federation
+				}
+				check_variable = { var = ENG_imperial_conference_federation_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+				NOT = {
+					any_country = {
+						OR = {
+							tag = event_target:uk_colonial_focus_CAN
+							tag = event_target:uk_colonial_focus_SAF
+							tag = event_target:uk_colonial_focus_AST
+							tag = event_target:uk_colonial_focus_NZL
+						}
+						has_country_flag = ENG_rejected_federation
+					}
+				}
+			}
+			country_event = { id = mtg_britain.104 hours = 6 }
+		}
+		if = {
+			limit = {
+				check_variable = { var = ENG_imperial_conference_federation_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+				any_country = {
+					OR = {
+						tag = event_target:uk_colonial_focus_CAN
+						tag = event_target:uk_colonial_focus_SAF
+						tag = event_target:uk_colonial_focus_AST
+						tag = event_target:uk_colonial_focus_NZL
+					}
+					has_country_flag = ENG_rejected_federation
+				}
+			}
+			country_event = { id = mtg_britain.105 hours = 6 }
+		}
+	}
+}
+
+# Event for ENG telling FROM voted no on Imperial Federation
+country_event = {
+	id = mtg_britain.102
+	title = mtg_britain.102.t
+	desc = mtg_britain.102.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.102.a
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						var = ENG_imperial_conference_federation_answers
+						value = 1
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			set_variable = {
+				var = ENG_imperial_conference_federation_answers
+				value = 0
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_federation_answers
+			value = 1
+		}
+		ENG_imperial_conference_clear_in_progress_flags = yes
+		if = {
+			limit = {
+				event_target:uk_colonial_focus_RAJ = {
+					is_subject_of = ROOT
+					has_country_flag = ENG_rejected_federation
+				}
+				check_variable = { var = ENG_imperial_conference_federation_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+				NOT = {
+					any_country = {
+						OR = {
+							tag = event_target:uk_colonial_focus_CAN
+							tag = event_target:uk_colonial_focus_SAF
+							tag = event_target:uk_colonial_focus_AST
+							tag = event_target:uk_colonial_focus_NZL
+						}
+						has_country_flag = ENG_rejected_federation
+					}
+				}
+			}
+			country_event = { id = mtg_britain.104 hours = 6 }
+		}
+		if = {
+			limit = {
+				check_variable = { var = ENG_imperial_conference_federation_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+				any_country = {
+					OR = {
+						tag = event_target:uk_colonial_focus_CAN
+						tag = event_target:uk_colonial_focus_SAF
+						tag = event_target:uk_colonial_focus_AST
+						tag = event_target:uk_colonial_focus_NZL
+					}
+					has_country_flag = ENG_rejected_federation
+				}
+			}
+			country_event = { id = mtg_britain.105 hours = 6 }
+		}
+	}
+}
+
+# Event for ENG telling all Dominions accepted
+country_event = {
+	id = mtg_britain.103
+	title = mtg_britain.103.t
+	desc = mtg_britain.103.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.103.a
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			every_country = {
+				limit = {
+					OR = {
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_CAN
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_SAF
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_RAJ
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_AST
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_NZL
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = MAL
+						}
+					}
+				}
+				add_ideas = ENG_federal_integration
+			}
+		}
+		else = {
+			every_country = {
+				limit = {
+					OR = {
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_CAN
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_SAF
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_RAJ
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_AST
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_NZL
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = MAL
+						}
+					}
+				}
+				add_ideas = ENG_federal_integration_tfv
+			}
+		}
+		set_country_flag = ENG_dominions_accepted_federation
+	}
+}
+
+# Event for ENG telling all Dominions except India accepted
+country_event = {
+	id = mtg_britain.104
+	title = mtg_britain.104.t
+	desc = mtg_britain.104.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	# Go through with it anyway - give India independence
+	option = {
+		name = mtg_britain.104.a
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			every_country = {
+				limit = {
+					OR = {
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_CAN
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_SAF
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_AST
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_NZL
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = MAL
+						}
+					}
+				}
+				add_ideas = ENG_federal_integration
+			}
+		}
+		else = {
+			every_country = {
+				limit = {
+					OR = {
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_CAN
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_SAF
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_AST
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = event_target:uk_colonial_focus_NZL
+						}
+						AND = {
+							is_subject_of = ROOT
+							tag = MAL
+						}
+					}
+				}
+				add_ideas = ENG_federal_integration_tfv
+			}
+		}
+		set_country_flag = ENG_dominions_accepted_federation
+		set_autonomy = {
+			target = event_target:uk_colonial_focus_RAJ
+			autonomy_state = autonomy_free
+		}
+		remove_from_faction = event_target:uk_colonial_focus_RAJ
+		event_target:uk_colonial_focus_RAJ = {
+			drop_cosmetic_tag = yes
+			retire_country_leader = yes
+			remove_from_tech_sharing_group = commonwealth_research
+		}
+	}
+
+	# We're all in this together - unanimous, or not at all
+	option = {
+		name = mtg_britain.104.b
+	}
+}
+
+# Event for ENG telling Federation plans fell through
+country_event = {
+	id = mtg_britain.105
+	title = mtg_britain.105.t
+	desc = mtg_britain.105.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	# Ok
+	option = {
+		name = mtg_britain.105.a
+	}
+}
+

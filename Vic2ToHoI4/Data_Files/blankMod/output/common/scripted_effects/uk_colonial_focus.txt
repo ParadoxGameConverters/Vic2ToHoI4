@@ -1,0 +1,222 @@
+# Set amount of subjects in variable
+ENG_imperial_conference_set_subject_counter = {
+	set_variable = {
+		var = ENG_imperial_conference_number_of_subjects
+		value = 0
+	}
+	if = {
+		limit = {
+			event_target:uk_colonial_focus_CAN = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_number_of_subjects
+			value = 1
+		}
+	}
+	if = {
+		limit = {
+			event_target:uk_colonial_focus_SAF = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_number_of_subjects
+			value = 1
+		}
+	}
+	if = {
+		limit = {
+			event_target:uk_colonial_focus_RAJ = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_number_of_subjects
+			value = 1
+		}
+	}
+	if = {
+		limit = {
+			event_target:uk_colonial_focus_AST = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_number_of_subjects
+			value = 1
+		}
+	}
+	if = {
+		limit = {
+			event_target:uk_colonial_focus_NZL = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		add_to_variable = {
+			var = ENG_imperial_conference_number_of_subjects
+			value = 1
+		}
+	}
+}
+
+# Increase Imperial Defense spirit
+ENG_imperial_conference_defense_level_up = {
+	if = {
+		limit = {
+			has_idea = ENG_imperial_conference_defense_4
+		}
+		swap_ideas = {
+			remove_idea = ENG_imperial_conference_defense_4
+			add_idea = ENG_imperial_conference_defense_5
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ENG_imperial_conference_defense_3
+		}
+		swap_ideas = {
+			remove_idea = ENG_imperial_conference_defense_3
+			add_idea = ENG_imperial_conference_defense_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ENG_imperial_conference_defense_2
+		}
+		swap_ideas = {
+			remove_idea = ENG_imperial_conference_defense_2
+			add_idea = ENG_imperial_conference_defense_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ENG_imperial_conference_defense_1
+		}
+		swap_ideas = {
+			remove_idea = ENG_imperial_conference_defense_1
+			add_idea = ENG_imperial_conference_defense_2
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_idea = ENG_imperial_conference_defense_1 }
+			NOT = { has_idea = ENG_imperial_conference_defense_2 }
+			NOT = { has_idea = ENG_imperial_conference_defense_3 }
+			NOT = { has_idea = ENG_imperial_conference_defense_4 }
+			NOT = { has_idea = ENG_imperial_conference_defense_5 }
+		}
+		add_timed_idea = { idea = ENG_imperial_conference_defense_1 days = 365 }
+	}
+}
+
+# Clear Imperial Conference flags
+ENG_imperial_conference_clear_in_progress_flags = {
+	if = {
+		limit = {
+			has_country_flag = ENG_imperial_defense_flag
+			check_variable = { var = ENG_imperial_conference_defense_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+		}
+		clr_country_flag = ENG_imperial_conference_discussion_in_progress
+		clr_country_flag = ENG_diplomatic_pressure_flag
+		clr_country_flag = ENG_extensive_diplomatic_pressure_flag
+		clr_country_flag = ENG_imperial_defense_flag
+	}
+	if = {
+		limit = {
+			has_country_flag = ENG_imperial_trade_flag
+			check_variable = { var = ENG_imperial_conference_trade_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+		}
+		clr_country_flag = ENG_imperial_conference_discussion_in_progress
+		clr_country_flag = ENG_diplomatic_pressure_flag
+		clr_country_flag = ENG_extensive_diplomatic_pressure_flag
+		clr_country_flag = ENG_imperial_trade_flag
+	}
+	if = {
+		limit = {
+			has_country_flag = ENG_imperial_economy_flag
+			check_variable = { var = ENG_imperial_conference_economy_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+		}
+		clr_country_flag = ENG_imperial_conference_discussion_in_progress
+		clr_country_flag = ENG_diplomatic_pressure_flag
+		clr_country_flag = ENG_extensive_diplomatic_pressure_flag
+		clr_country_flag = ENG_imperial_economy_flag
+	}
+	if = {
+		limit = {
+			has_country_flag = ENG_imperial_appeasement_flag
+			check_variable = { var = ENG_imperial_conference_appeasement_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+		}
+		clr_country_flag = ENG_imperial_conference_discussion_in_progress
+		clr_country_flag = ENG_diplomatic_pressure_flag
+		clr_country_flag = ENG_extensive_diplomatic_pressure_flag
+		clr_country_flag = ENG_imperial_appeasement_flag
+	}
+	if = {
+		limit = {
+			has_country_flag = ENG_imperial_federation_flag
+			check_variable = { var = ENG_imperial_conference_federation_answers value = ENG_imperial_conference_number_of_subjects compare = equals }
+		}
+		clr_country_flag = ENG_imperial_conference_discussion_in_progress
+		clr_country_flag = ENG_diplomatic_pressure_flag
+		clr_country_flag = ENG_extensive_diplomatic_pressure_flag
+		clr_country_flag = ENG_imperial_federation_flag
+	}
+}
+
+# Increase Imperial Economy spirit
+ENG_imperial_conference_economy_level_up = {
+	if = {
+		limit = {
+			has_idea = ENG_imperial_conference_economy_4
+		}
+		swap_ideas = {
+			remove_idea = ENG_imperial_conference_economy_4
+			add_idea = ENG_imperial_conference_economy_5
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ENG_imperial_conference_economy_3
+		}
+		swap_ideas = {
+			remove_idea = ENG_imperial_conference_economy_3
+			add_idea = ENG_imperial_conference_economy_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ENG_imperial_conference_economy_2
+		}
+		swap_ideas = {
+			remove_idea = ENG_imperial_conference_economy_2
+			add_idea = ENG_imperial_conference_economy_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ENG_imperial_conference_economy_1
+		}
+		swap_ideas = {
+			remove_idea = ENG_imperial_conference_economy_1
+			add_idea = ENG_imperial_conference_economy_2
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_idea = ENG_imperial_conference_economy_1 }
+			NOT = { has_idea = ENG_imperial_conference_economy_2 }
+			NOT = { has_idea = ENG_imperial_conference_economy_3 }
+			NOT = { has_idea = ENG_imperial_conference_economy_4 }
+			NOT = { has_idea = ENG_imperial_conference_economy_5 }
+		}
+		add_timed_idea = { idea = ENG_imperial_conference_economy_1 days = 365 }
+	}
+}
+

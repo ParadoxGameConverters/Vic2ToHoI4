@@ -59,6 +59,10 @@ std::ostream& operator<<(std::ostream& output, const HoI4Focus& focus)
 	{
 		output << "\t\tai_will_do " << focus.aiWillDo << "\n";
 	}
+	if (!focus.allowBranch.empty())
+	{
+		output << "\t\tallow_branch " << focus.allowBranch << "\n";
+	}
 
 	output << "\t}\n";
 

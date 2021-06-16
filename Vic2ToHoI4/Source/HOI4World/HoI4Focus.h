@@ -44,6 +44,7 @@ class HoI4Focus: commonItems::parser
 	std::string completeTooltip;
 	std::string completionReward;
 	std::string aiWillDo;
+	std::string allowBranch;
 
   private:
 	HoI4Focus& operator=(const HoI4Focus&) = delete;

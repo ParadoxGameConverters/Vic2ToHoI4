@@ -279,6 +279,9 @@
     </Filter>
     <Filter Include="Mappers\FactionName">
       <UniqueIdentifier>{2551d8ad-d00a-4e34-addd-b8cc1512b6e4}</UniqueIdentifier>
+	</Filter>
+    <Filter Include="Data Files\Configurables\ConverterFocuses">
+      <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -22849,6 +22852,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\Greater Flavor Mod_province_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\ConverterFocuses\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\ConverterFocuses</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

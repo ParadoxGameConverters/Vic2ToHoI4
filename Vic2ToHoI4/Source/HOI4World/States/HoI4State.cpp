@@ -155,6 +155,15 @@ void HoI4::State::convertControlledProvinces(const std::vector<std::pair<int, st
 }
 
 
+void HoI4::State::removeControlledProvince(int provinceNum)
+{
+	for (auto& [owner, controlledProvinces]: controlledProvinces)
+	{
+		controlledProvinces.erase(provinceNum);
+	}
+}
+
+
 void HoI4::State::setControlledProvince(int provinceNum, const std::string& country)
 {
 	if (country == ownerTag)
