@@ -352,7 +352,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		 theCountry.areElectionsAllowed(),
 		 theCountry.getIdeologySupport());
 	outputRelations(output, tag, theCountry.getRelations());
-	outputFactions(output, tag, theCountry.getFaction(), theCountry.getAdjective());
+	outputFactions(output, tag, theCountry.getFaction(), theCountry.getName());
 	outputGuaranteedSpherelings(output, theCountry.getGuaranteed());
 	outputIdeas(output,
 		 theCountry.isGreatPower(),

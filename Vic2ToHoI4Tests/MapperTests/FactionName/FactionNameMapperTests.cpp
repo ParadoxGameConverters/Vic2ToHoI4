@@ -15,7 +15,7 @@ TEST(Mappers_FactionName_FactionNameMapperTests, MatchingCultureGroupMatchingIde
 {
 	const auto mapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
 
-	ASSERT_EQ("matching_culture_group_matching_ideology", mapper->getFactionName("test_ideology", "ignored", "test_cultureGroup"));
+	ASSERT_EQ("matching_culture_group_matching_ideology", mapper->getFactionName("test_ideology", "ignored", "test_culture_group"));
 }
 
 
@@ -40,4 +40,12 @@ TEST(Mappers_FactionName_FactionNameMapperTests, AnyCultureAnyIdeology)
 	const auto mapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
 
 	ASSERT_EQ("any_culture_any_ideology", mapper->getFactionName("ignored", "ignored", "ignored"));
+}
+
+TEST(Mappers_FactionName_FactionNameMapperTests, DuplicateRemoval)
+{
+	const auto mapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
+
+	mapper->getFactionName("duplicate_test", "duplicate_test", "duplicate_test");
+	ASSERT_EQ("any_culture_any_ideology", mapper->getFactionName("duplicate_test", "ignored", "ignored"));
 }
