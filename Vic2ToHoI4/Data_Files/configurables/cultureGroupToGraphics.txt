@@ -2187,10 +2187,10 @@ dytic_g = {
 		radical = { "gfx/interface/ideas/idea_domenico_cavagnari.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_gre_venerate_the_ancient_hellenes_hoplite.dds"
+		"gfx/interface/ideas/idea_gre_venerate_the_ancient_hellenes_alexander_the_great.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/greece.dds" # Revise
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -2414,10 +2414,10 @@ turko_semitic = {
 		radical = { "gfx/interface/ideas/idea_tur_ismet_inonu.dds" } 
 	}
 	male_monarch_portraits = {
-		"GFX_focus_TUR_pivot_to_the_past"
+		"gfx/interface/goals/focus_TUR_pivot_to_the_past.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_focus_TUR_pivot_to_the_past"
+		"gfx/interface/goals/focus_TUR_pivot_to_the_past.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -3426,10 +3426,10 @@ east_asian = {
 		radical = { "gfx/interface/ideas/idea_hino_kumazo.dds" }
 	}
 	male_monarch_portraits = {
-		"GFX_focus_man_claim_the_mandate_of_heaven"
+		"gfx/interface/goals/focus_man_claim_the_mandate_of_heaven.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_focus_man_claim_the_mandate_of_heaven"
+		"gfx/interface/goals/focus_man_claim_the_mandate_of_heaven.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
