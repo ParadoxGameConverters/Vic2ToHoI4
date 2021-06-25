@@ -18,6 +18,7 @@
 #include "Navies/OutNavies.h"
 #include "OSCompatibilityLayer.h"
 #include "OutFocusTree.h"
+#include "OutHoi4/Operative/OutOperative.h"
 #include "OutTechnologies.h"
 #include "V2World/Countries/Country.h"
 #include <string>
@@ -306,6 +307,9 @@ void outputWarSupport(std::ostream& output, const int& warSupport);
 void outputCommanders(std::ostream& output,
 	 const std::vector<HoI4::General>& generals,
 	 const std::vector<HoI4::Admiral>& admirals);
+void outputOperatives(std::ostream& output, const std::vector<HoI4::Operative>& operatives);
+void outputGlobalEventTargets(std::ostream& output,
+	 const std::set<std::string>& eventTargets);
 
 
 void outputHistory(const HoI4::Country& theCountry, const Configuration& theConfiguration)
@@ -371,7 +375,9 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		HoI4::outputCountryLeader(output, leader);
 	}
 	outputCommanders(output, theCountry.getGenerals(), theCountry.getAdmirals());
+	outputOperatives(output, theCountry.getOperatives());
 	output << theCountry.getTheShipVariants();
+	outputGlobalEventTargets(output, theCountry.getGlobalEventTargets());
 
 	output.close();
 }
@@ -746,6 +752,26 @@ void outputCommanders(std::ostream& output,
 		output << admiral;
 		output << "\n";
 	}
+}
+
+
+void outputOperatives(std::ostream& output, const std::vector<HoI4::Operative>& operatives)
+{
+	if (operatives.empty())
+	{
+		return;
+	}
+
+	output << "if = {\n";
+	output << "\tlimit = {\n";
+	output << "\t\thas_dlc = \"La Resistance\"\n";
+	output << "\t}\n";
+	for (const auto& operative: operatives)
+	{
+		output << operative;
+		output << "\n";
+	}
+	output << "}\n";
 }
 
 
@@ -1184,5 +1210,14 @@ void HoI4::reportIndustry(std::ostream& out, const Country& theCountry)
 		out << theCountry.getCivilianFactories() << ',';
 		out << theCountry.getDockyards() << ',';
 		out << theCountry.getMilitaryFactories() + theCountry.getCivilianFactories() + theCountry.getDockyards() << '\n';
+	}
+}
+
+void outputGlobalEventTargets(std::ostream& output,
+	 const std::set<std::string>& eventTargets)
+{
+	for (const auto& eventTarget: eventTargets)
+	{
+		output << "save_global_event_target_as = " << eventTarget << "\n";
 	}
 }

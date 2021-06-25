@@ -20,3 +20,12 @@ link = { codenames = ROM_OPERATIVE_CODENAME_HISTORICAL culture = lumenoua cultur
 link = { codenames = SOV_OPERATIVE_CODENAME_HISTORICAL culture = novvymir culture = russian culture = smugly culture = ugrian culture = yuzhny }
 link = { codenames = SPR_OPERATIVE_CODENAME_HISTORICAL culture = galician culture = spanish }
 link = { codenames = SWE_OPERATIVE_CODENAME_HISTORICAL culture = swedish culture = dummy }
+link = { codenames = CZE_OPERATIVE_CODENAME_HISTORICAL culture = czech }
+link = { codenames = EST_OPERATIVE_CODENAME_HISTORICAL culture = estonian }
+link = { codenames = LAT_OPERATIVE_CODENAME_HISTORICAL culture = latvian }
+link = { codenames = NOR_OPERATIVE_CODENAME_HISTORICAL culture = norwegian }
+link = { codenames = GRE_OPERATIVE_CODENAME_HISTORICAL culture = greek }
+link = { codenames = TUR_OPERATIVE_CODENAME_HISTORICAL culture = turkish }
+link = { codenames = SIA_OPERATIVE_CODENAME_HISTORICAL culture = thai }
+link = { codenames = HUN_OPERATIVE_CODENAME_HISTORICAL culture = hungarian }
+link = { codenames = ARABIC_OPERATIVE_CODENAME_HISTORICAL culture = misri culture = mashriqi culture = bedouin }

@@ -268,6 +268,18 @@
     <Filter Include="OutHoi4\CountryCategories">
       <UniqueIdentifier>{f88af672-93e0-4688-8cc1-4687cdc63a9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files\Configurables\CodenamesOperatives">
+      <UniqueIdentifier>{a5a483a6-422e-4433-b0e9-4dbfaeb0ba09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4World\Operatives">
+      <UniqueIdentifier>{851a9450-325f-48c1-9172-bcf2cc18affd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Operatives">
+      <UniqueIdentifier>{d1a9316d-e5f9-432d-b319-8bd62be6b500}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\ConverterFocuses">
+      <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1269,6 +1281,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Regions\RegionFactory.cpp">
       <Filter>HoI4World\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Operative\OutOperative.cpp">
+      <Filter>OutHoi4\Operatives</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2510,6 +2525,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Regions\RegionFactory.h">
       <Filter>HoI4World\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Operatives\Operative.h">
+      <Filter>HoI4World\Operatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Operative\OutOperative.h">
+      <Filter>OutHoi4\Operatives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -16196,6 +16217,9 @@
     <CopyFileToFolders Include="Data_Files\flags\SOS_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\southeast_asia_emblem.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\SPA.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
@@ -18900,9 +18924,6 @@
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Configurables\Resources.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\RME_operative_codenames.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Configurables\shipTypes.txt">
@@ -22765,6 +22786,51 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\NVG_republic.tga">
       <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\arabic_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\CZE_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\ENG_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\EST_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\GRE_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\HUN_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\LAT_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\NOR_opertive_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\RME_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\SIA_opertive_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\SOV_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\SWE_opertive_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CodenamesOperatives\TUR_operative_codenames.txt">
+      <Filter>Data Files\Configurables\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\Greater Flavor Mod_province_mappings.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\ConverterFocuses\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\ConverterFocuses</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,7 @@
 #include "Names/Names.h"
 #include "Navies/Navies.h"
 #include "Navies/NavyNames.h"
+#include "Operatives/Operative.h"
 #include "ProvinceDefinitions.h"
 #include "Regions/Regions.h"
 #include "ShipTypes/ShipVariants.h"
@@ -111,6 +112,7 @@ class Country
 	void transferPuppets(const std::set<std::string>& transferingPuppets, std::shared_ptr<HoI4::Country> dominion);
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
+	void addFocusTreeBranch(const std::string& branch, OnActions& onActions);
 	void adjustResearchFocuses() const;
 
 	void setSphereLeader(const std::string& SphereLeader) { sphereLeader = SphereLeader; }
@@ -211,6 +213,8 @@ class Country
 	[[nodiscard]] const std::vector<General>& getGenerals() const { return generals; }
 	[[nodiscard]] const std::vector<Admiral>& getAdmirals() const { return admirals; }
 
+	[[nodiscard]] const auto& getOperatives() const { return operatives_; }
+
 	[[nodiscard]] const std::map<std::string, HoI4::Relations>& getRelations() const { return relations; }
 	[[nodiscard]] const auto& getAIStrategies() const { return aiStrategies; }
 	[[nodiscard]] const auto& getConquerStrategies() const { return conquerStrategies; }
@@ -249,10 +253,14 @@ class Country
 
 	void addGeneratedDominion(const std::string& region, const std::string& tag) { generatedDominions[region] = tag; }
 	std::optional<std::string> getDominionTag(const std::string& region);
+	void addGlobalEventTarget(const std::string& name) { globalEventTargets.insert(name); }
+
+	[[nodiscard]] const auto& getGlobalEventTargets() const { return globalEventTargets; }
 
   private:
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
+	void createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names);
 	void convertLaws();
 	void convertLeaders(const Vic2::Country& sourceCountry);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
@@ -336,7 +344,7 @@ class Country
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
 	std::set<std::string> flags;
 
-	std::string monarchIdeaTexture = "GFX_idea_george_v";
+	std::string monarchIdeaTexture = "gfx/interface/ideas/idea_george_v.dds";
 
 	double militaryFactories = 0.0;
 	double civilianFactories = 0.0;
@@ -354,6 +362,8 @@ class Country
 	std::vector<General> generals;
 	std::vector<Admiral> admirals;
 	std::map<std::string, std::vector<std::string>> shipNames;
+
+	std::vector<Operative> operatives_;
 
 	std::map<std::string, HoI4::Relations> relations;
 	std::vector<HoI4::AIStrategy> aiStrategies;
@@ -384,6 +394,7 @@ class Country
 	std::mt19937 generator;
 
 	std::map<std::string, float> sourceCountryGoods;
+	std::set<std::string> globalEventTargets;
 };
 
 } // namespace HoI4

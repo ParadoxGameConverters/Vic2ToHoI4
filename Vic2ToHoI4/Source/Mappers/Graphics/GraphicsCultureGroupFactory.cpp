@@ -23,6 +23,12 @@ Mappers::GraphicsCultureGroup::Factory::Factory()
 	registerKeyword("ideology_minister_portraits", [this](std::istream& theStream) {
 		graphicsCultureGroup->ideologyMinisterPortraits = ideologyToPortraitsMappingFactory.importMapping(theStream);
 	});
+	registerKeyword("male_operative_portraits", [this](std::istream& theStream) {
+		graphicsCultureGroup->maleOperativePortraits = commonItems::stringList(theStream).getStrings();
+	});
+	registerKeyword("female_operative_portraits", [this](std::istream& theStream) {
+		graphicsCultureGroup->femaleOperativePortraits = commonItems::stringList(theStream).getStrings();
+	});
 	registerKeyword("graphical_culture", [this](std::istream& theStream) {
 		graphicsCultureGroup->graphicalCulture = commonItems::singleString(theStream).getString();
 	});

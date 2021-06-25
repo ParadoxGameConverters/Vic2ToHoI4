@@ -1446,12 +1446,598 @@
 				conscription_factor = 0.2
 			}
 		}
+		
+		# Civil War Ideas
+		civil_war_surprise_attack_plan = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+			
+			modifier = {
+				army_core_attack_factor = 0.25 
+			}
+		}	
+
+		idea_weapons_for_the_resistance = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = chi_war_of_resistance3
+			
+			modifier = {
+				resistance_growth_on_our_occupied_states = 0.1 
+				resistance_damage_to_garrison_on_our_occupied_states = 0.25 
+			}
+		}	
+		MTG_naval_treaty_adherent = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = MTG_naval_treaty_adherent
+			
+			modifier = {
+				production_cost_max_ship_hull_cruiser = 5300
+				production_cost_max_ship_hull_heavy = 10000
+				production_cost_max_ship_hull_carrier = 9500
+			}
+		}
+		MTG_naval_treaty_adherent_reduced = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = MTG_naval_treaty_adherent_reduced
+			
+			modifier = {
+				production_cost_max_ship_hull_cruiser = 6000
+				production_cost_max_ship_hull_heavy = 12000
+				production_cost_max_ship_hull_carrier = 10500
+			}
+		}
+		MTG_naval_treaty_cheating = {
+			name = MTG_naval_treaty_adherent
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = MTG_naval_treaty_adherent
+			
+			modifier = {
+				production_cost_max_ship_hull_cruiser = 5700
+				production_cost_max_ship_hull_heavy = 11500
+				production_cost_max_ship_hull_carrier = 10250
+			}
+		}
+		MTG_naval_treaty_cheating_reduced = {
+			name = MTG_naval_treaty_adherent_reduced
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = MTG_naval_treaty_adherent_reduced
+			
+			modifier = {
+				production_cost_max_ship_hull_cruiser = 6500
+				production_cost_max_ship_hull_heavy = 14000
+				production_cost_max_ship_hull_carrier = 10750
+			}
+		}
+
+		ENG_colonial_elite = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				# ideologies added in code
+			}
+
+			picture = generic_research_bonus
+			
+			removal_cost = -1
+			
+			modifier = {
+				research_speed_factor = 0.07
+			}
+		}
+
+		ENG_fortify_the_empire_1 = {
+
+			name = ENG_fortify_the_empire
+
+			picture = generic_fortify_the_borders
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				production_speed_bunker_factor = 0.05
+				production_speed_coastal_bunker_factor = 0.05
+			}
+		}
+
+		ENG_fortify_the_empire_2 = {
+
+			name = ENG_fortify_the_empire
+
+			picture = generic_fortify_the_borders
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				production_speed_bunker_factor = 0.1
+				production_speed_coastal_bunker_factor = 0.1
+			}
+		}
+
+		ENG_british_commonwealth_air_training_plan = {
+
+			picture = generic_air_bonus
+		
+			allowed = {
+				always = no
+			}
+
+			available = {
+				OR = {
+					tag = event_target:uk_colonial_focus_ENG
+					is_subject_of = event_target:uk_colonial_focus_ENG
+				}
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				experience_gain_air = 0.05
+				experience_gain_air_factor = 0.1
+				air_mission_xp_gain_factor = 0.05
+				air_training_xp_gain_factor = 0.2
+			}
+		}
+
+		ENG_joint_air_training_scheme = {
+
+			picture = generic_air_bonus
+		
+			allowed = {
+				always = no
+			}
+
+			available = {
+				OR = {
+					tag = event_target:uk_colonial_focus_ENG
+					is_subject_of = event_target:uk_colonial_focus_ENG
+				}
+			}
+
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				experience_gain_air = 0.05
+				experience_gain_air_factor = 0.1
+				air_mission_xp_gain_factor = 0.1
+				air_training_xp_gain_factor = 0.2
+			}
+		}
+
+		indian_independence_promised_idea  = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				# ideologies added in code
+			}
+
+			picture = generic_morale_bonus
+			
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+
+		ENG_indian_autonomy_RAJ_idea = {
+
+			name = ENG_indian_autonomy
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				autonomy_gain = 0.5
+			}
+
+			picture = generic_pp_unity_bonus
+
+			removal_cost = -1
+		}
+
+		ENG_imperial_conference_defense_dominion = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+			}
+
+			picture = generic_war_preparation
+
+			removal_cost = -1
+		}
+
+		ENG_imperial_conference_defense_1 = {
+
+			name = ENG_imperial_conference_defense_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				industrial_capacity_factory = 0.03
+				industrial_capacity_dockyard = 0.03
+			}
+
+			picture = generic_war_preparation
+
+			removal_cost = -1
+		}
+
+		ENG_imperial_conference_defense_2 = {
+
+			name = ENG_imperial_conference_defense_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				industrial_capacity_factory = 0.06
+				industrial_capacity_dockyard = 0.06
+			}
+
+			picture = generic_war_preparation
+
+			removal_cost = -1
+		}
+
+		ENG_imperial_conference_defense_3 = {
+
+			name = ENG_imperial_conference_defense_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				industrial_capacity_factory = 0.09
+				industrial_capacity_dockyard = 0.09
+			}
+
+			picture = generic_war_preparation
+
+			removal_cost = -1
+		}
+
+		ENG_imperial_conference_defense_4 = {
+
+			name = ENG_imperial_conference_defense_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				industrial_capacity_factory = 0.12
+				industrial_capacity_dockyard = 0.12
+			}
+
+			picture = generic_war_preparation
+
+			removal_cost = -1
+		}
+
+		ENG_imperial_conference_defense_5 = {
+
+			name = ENG_imperial_conference_defense_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+			}
+
+			picture = generic_war_preparation
+
+			removal_cost = -1
+		}
+
+		ENG_imperial_conference_economy_dominion = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_arms_factory_factor = 0.1
+				production_speed_dockyard_factor = 0.1
+			}
+
+			picture = generic_exploit_mines
+
+			removal_cost = -1
+		}
+
+		ENG_imperial_conference_economy_1 = {
+
+			name = ENG_imperial_conference_economy_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				production_speed_industrial_complex_factor = 0.03
+				production_speed_arms_factory_factor = 0.03
+				production_speed_dockyard_factor = 0.03
+			}
+
+			picture = generic_exploit_mines
+
+			removal_cost = -1
+		}
+		ENG_imperial_conference_economy_2 = {
+
+			name = ENG_imperial_conference_economy_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				production_speed_industrial_complex_factor = 0.06
+				production_speed_arms_factory_factor = 0.06
+				production_speed_dockyard_factor = 0.06
+			}
+
+			picture = generic_exploit_mines
+
+			removal_cost = -1
+		}
+		ENG_imperial_conference_economy_3 = {
+
+			name = ENG_imperial_conference_economy_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				production_speed_industrial_complex_factor = 0.09
+				production_speed_arms_factory_factor = 0.09
+				production_speed_dockyard_factor = 0.09
+			}
+
+			picture = generic_exploit_mines
+
+			removal_cost = -1
+		}
+		ENG_imperial_conference_economy_4 = {
+
+			name = ENG_imperial_conference_economy_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				production_speed_industrial_complex_factor = 0.12
+				production_speed_arms_factory_factor = 0.12
+				production_speed_dockyard_factor = 0.12
+			}
+
+			picture = generic_exploit_mines
+
+			removal_cost = -1
+		}
+
+		ENG_imperial_conference_economy_5 = {
+
+			name = ENG_imperial_conference_economy_dominion
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_arms_factory_factor = 0.15
+				production_speed_dockyard_factor = 0.15
+			}
+
+			picture = generic_exploit_mines
+
+			removal_cost = -1
+		}
+
+		ENG_federal_integration = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				autonomy_gain = -3
+			}
+
+			picture = eng_guided_by_britain
+			
+			removal_cost = -1	
+
+		}
+
+		ENG_federal_integration_tfv = {
+
+			name = ENG_federal_integration
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				autonomy_gain = -1
+			}
+
+			picture = eng_guided_by_britain
+			
+			removal_cost = -1	
+
+		}
 	}
 
 	political_advisor = {
 		# POLITICAL
-		}
-
+	}
 
 
 	# TECHNOLOGY

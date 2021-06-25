@@ -55,6 +55,7 @@ configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_german.yml" "${FRONTER_OUTP
 configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_italian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_italian.yml" COPYONLY)
 configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_latin.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_latin.yml" COPYONLY)
 configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_russian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_russian.yml" COPYONLY)
+configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_simp_chinese.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_simp_chinese.yml" COPYONLY)
 configure_file("${FRONTER_DATA_FILE_DIR}/converter_languages.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_languages.yml" COPYONLY)
 
 file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/main.cpp")
@@ -178,6 +179,7 @@ file(GLOB OUTHOI4_NAVIES_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/Navies/*.cpp")
 file(GLOB OUTHOI4_OCCUPATION_LAWS_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/OccupationLaws/*.cpp")
 file(GLOB OUTHOI4_OPERATIONS_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/Operations/*.cpp")
 file(GLOB OUTHOI4_OPERATIVE_NAMES_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/OperativeNames/*.cpp")
+set(OUTHOI4_OPERATIVE_SOURCES ${OUTHOI4_OPERATIVE_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/Operative/OutOperative.cpp")
 set(OUTHOI4_SCRIPTED_EFFECTS_SOURCES ${OUTHOI4_SCRIPTED_EFFECTS_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/ScriptedEffects/OutScriptedEffects.cpp")
 set(OUTHOI4_SCRIPTED_EFFECTS_SOURCES ${OUTHOI4_SCRIPTED_EFFECTS_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/ScriptedEffects/OutScriptedEffect.cpp")
 file(GLOB OUTHOI4_SCRIPTED_LOCALISATIONS_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/ScriptedLocalisations/*.cpp")
@@ -323,6 +325,7 @@ add_executable(
 	${OUTHOI4_OCCUPATION_LAWS_SOURCES}
 	${OUTHOI4_OPERATIONS_SOURCES}
 	${OUTHOI4_OPERATIVE_NAMES_SOURCES}
+	${OUTHOI4_OPERATIVE_SOURCES}
 	${OUTHOI4_NAVIES_SOURCES}
 	${OUTHOI4_SCRIPTED_EFFECTS_SOURCES}
 	${OUTHOI4_SCRIPTED_LOCALISATIONS_SOURCES}
@@ -356,7 +359,19 @@ set_target_properties( Vic2ToHoi4Converter
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/RME_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/RME_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/arabic_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/arabic_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/CZE_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/CZE_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/ENG_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/ENG_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/EST_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/EST_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/GRE_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/GRE_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/HUN_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/HUN_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/LAT_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/LAT_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/NOR_opertive_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/NOR_opertive_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/RME_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/RME_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SIA_opertive_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/SIA_opertive_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SOV_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/SOV_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SWE_opertive_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/SWE_opertive_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/TUR_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/TUR_operative_codenames.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ArticleRules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/ArticleRules.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/StateCategories.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/StateCategories.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/regions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Map/regions.txt" COPYONLY)
@@ -375,6 +390,7 @@ configure_file("${DATA_FILE_DIR}/configurables/FlagsToIdeasMappings.txt" "${CONV
 configure_file("${DATA_FILE_DIR}/configurables/foreignInfluenceDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/foreignInfluenceDecisions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/GovernmentMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/GovernmentMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/grammar.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/grammar.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/Greater Flavor Mod_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Greater Flavor Mod_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Historical Flavour Mod v1.27I_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Flavour Mod v1.27I_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Historical Project Mod 0.4.6_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Project Mod 0.4.6_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/HoI4CountryLeaders.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/HoI4CountryLeaders.txt" COPYONLY)
@@ -588,6 +604,7 @@ add_executable(
 	${OUTHOI4_OCCUPATION_LAWS_SOURCES}
 	${OUTHOI4_OPERATIONS_SOURCES}
 	${OUTHOI4_OPERATIVE_NAMES_SOURCES}
+	${OUTHOI4_OPERATIVE_SOURCES}
 	${OUTHOI4_NAVIES_SOURCES}
 	${OUTHOI4_SCRIPTED_EFFECTS_SOURCES}
 	${OUTHOI4_SCRIPTED_LOCALISATIONS_SOURCES}

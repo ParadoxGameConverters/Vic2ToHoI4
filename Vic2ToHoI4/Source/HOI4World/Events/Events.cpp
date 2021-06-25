@@ -10,11 +10,11 @@
 #include "HOI4World/OnActions.h"
 #include "LarOccupationEvents.h"
 #include "Log.h"
+#include "NavalTreatyEventsUpdaters.h"
 #include "ParserHelpers.h"
 #include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
 #include <fstream>
-#include "NavalTreatyEventsUpdaters.h"
 
 
 
@@ -1564,6 +1564,10 @@ void HoI4::Events::importMtgNavalTreatyEvents(const Configuration& theConfigurat
 		else if (event.getId() == "MTG_naval_treaty.4")
 		{
 			updateNavalTreatyEventFour(event, majorIdeologies);
+		}
+		else if (event.getId() == "MTG_naval_treaty.6")
+		{
+			updateNavalTreatyEventSix(event, majorIdeologies);
 		}
 		else if (event.getId() == "MTG_naval_treaty.10")
 		{

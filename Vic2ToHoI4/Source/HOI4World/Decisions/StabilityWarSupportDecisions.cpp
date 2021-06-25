@@ -26,6 +26,27 @@ void HoI4::StabilityWarSupportDecisions::updateDecisions(const std::set<std::str
 				category.replaceDecision(decision);
 				updated = true;
 			}
+			if (decision.getName() == "demobilization_manpower")
+			{
+				decision.setVisible(
+					 "= {\n"
+					 "\t\t\thas_unsupported_manpower_law = yes\n"
+					 "\t\t\thas_war = no\n"
+					 "\t\t}");
+				category.replaceDecision(decision);
+				updated = true;
+			}
+			if (decision.getName() == "demob_manpower_mission")
+			{
+				decision.setActivation(
+					 "= {\n"
+					 "\t\t\thas_unsupported_manpower_law = yes\n"
+					 "\t\t\thas_war = no\n"
+					 "\t\t}");
+				decision.setVisible("");
+				category.replaceDecision(decision);
+				updated = true;
+			}
 		}
 		if (updated)
 		{

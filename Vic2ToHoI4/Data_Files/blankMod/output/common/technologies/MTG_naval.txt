@@ -2190,7 +2190,7 @@ early_ship_hull_carrier = {
 		xp_research_bonus = 1.50
 		research_cost = 1.5
 
-		start_year = 1938
+		start_year = 1936
 
 		path = {
 			leads_to_tech = improved_heavy_shell

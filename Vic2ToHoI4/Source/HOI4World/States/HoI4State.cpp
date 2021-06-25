@@ -104,6 +104,10 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 	for (auto newCore: newCores)
 	{
 		cores.insert(newCore);
+		if (claims.contains(newCore))
+		{
+			claims.erase(newCore);
+		}
 	}
 }
 
@@ -147,6 +151,15 @@ void HoI4::State::convertControlledProvinces(const std::vector<std::pair<int, st
 				controlledProvinces.find(*possibleController)->second.insert(destinationProvince);
 			}
 		}
+	}
+}
+
+
+void HoI4::State::removeControlledProvince(int provinceNum)
+{
+	for (auto& [owner, controlledProvinces]: controlledProvinces)
+	{
+		controlledProvinces.erase(provinceNum);
 	}
 }
 

@@ -237,6 +237,28 @@ void HoI4::updateGeneralIdeas(IdeaGroup& generalIdeas, const std::set<std::strin
 		nationalUnification->updateCancel(cancel);
 		generalIdeas.replaceIdea(*nationalUnification);
 	}
+
+	auto colonialElite = generalIdeas.getIdea("ENG_colonial_elite");
+	if (colonialElite && majorIdeologies.contains("communism"))
+	{
+		std::string allowedCivilWar = "= {\n";
+		allowedCivilWar += "\t\t\t\tNOT = {\n";
+		allowedCivilWar += "\t\t\t\t\thas_government = communism\n";
+		allowedCivilWar += "\t\t\t\t}\n";
+		allowedCivilWar += "\t\t\t}";
+		colonialElite->setAllowedCivilWar(allowedCivilWar);
+		generalIdeas.replaceIdea(*colonialElite);
+	}
+
+	auto indianIndependencePromised = generalIdeas.getIdea("indian_independence_promised_idea");
+	if (indianIndependencePromised && majorIdeologies.contains("democratic"))
+	{
+		std::string allowedCivilWar = "= {\n";
+		allowedCivilWar += "\t\t\t\thas_government = democratic\n";
+		allowedCivilWar += "\t\t\t}";
+		indianIndependencePromised->setAllowedCivilWar(allowedCivilWar);
+		generalIdeas.replaceIdea(*indianIndependencePromised);
+	}
 }
 
 

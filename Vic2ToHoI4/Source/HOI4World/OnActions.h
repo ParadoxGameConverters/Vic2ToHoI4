@@ -26,6 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+#include <map>
 #include <string>
 #include <vector>
 
@@ -40,14 +41,17 @@ class OnActions
 		OnActions() noexcept;
 
 		void addElectionEvent(const std::string& electionEvent) { electionEvents.push_back(electionEvent); }
+		void addFocusEvent(const std::string& tag, const std::string& focusId) { focusEvents[tag] = focusId; }
 
 		[[nodiscard]] const auto& getElectionEvents() const { return electionEvents; }
+		[[nodiscard]] const auto& getFocusEvents() const { return focusEvents; }
 
 	private:
 		OnActions(const OnActions&) = delete;
 		OnActions& operator=(const OnActions&) = delete;
 
 		std::vector<std::string> electionEvents;
+		std::map<std::string, std::string> focusEvents;
 };
 
 }

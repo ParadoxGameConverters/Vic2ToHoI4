@@ -62,6 +62,7 @@ class State
 	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const Mappers::CountryMapper& countryMapper);
+	void removeControlledProvince(int provinceNum);
 	void setControlledProvince(int provinceNum, const std::string& country);
 	void setOwner(std::string newOwner) { ownerTag = std::move(newOwner); }
 
