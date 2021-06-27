@@ -6,7 +6,7 @@
 
 
 
-TEST(CasusBelliTests, DefaultsAreEmpty)
+TEST(Mappers_CasusBelli_CasusBelliTests, DefaultsAreEmpty)
 {
 	std::stringstream input;
 	const auto casusBelli = Mappers::CasusBelliFactory{}.importCasusBelli(input);
@@ -16,7 +16,7 @@ TEST(CasusBelliTests, DefaultsAreEmpty)
 }
 
 
-TEST(CasusBelliTests, CBsCanBeSet)
+TEST(Mappers_CasusBelli_CasusBelliTests, CBsCanBeSet)
 {
 	std::stringstream input;
 	input << "vic = test_cb_one vic = test_cb_two";
@@ -26,7 +26,7 @@ TEST(CasusBelliTests, CBsCanBeSet)
 }
 
 
-TEST(CasusBelliTests, WarGoalCanBeSet)
+TEST(Mappers_CasusBelli_CasusBelliTests, WarGoalCanBeSet)
 {
 	std::stringstream input;
 	input << "hoi = test_war_goal";

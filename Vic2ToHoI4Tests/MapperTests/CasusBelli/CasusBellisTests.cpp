@@ -5,7 +5,7 @@
 
 
 
-TEST(CasusBellisTests, UnmatchedCasusBelliGoesToDefault)
+TEST(Mappers_CasusBelli_CasusBellisTests, UnmatchedCasusBelliGoesToDefault)
 {
 	const auto casusBellis = Mappers::CasusBellis({});
 
@@ -13,7 +13,7 @@ TEST(CasusBellisTests, UnmatchedCasusBelliGoesToDefault)
 }
 
 
-TEST(CasusBellisTests, MatchedCasusBelliGivesMatchingWarGoal)
+TEST(Mappers_CasusBelli_CasusBellisTests, MatchedCasusBelliGivesMatchingWarGoal)
 {
 	const auto casusBellis =
 		 Mappers::CasusBellis(std::unordered_map<std::string, std::string>{{"matched_cb", "matching_war_goal"}});
@@ -22,7 +22,7 @@ TEST(CasusBellisTests, MatchedCasusBelliGivesMatchingWarGoal)
 }
 
 
-TEST(CasusBellisTests, CasusBellisCanBeImported)
+TEST(Mappers_CasusBelli_CasusBellisTests, CasusBellisCanBeImported)
 {
 	const auto casusBellis = Mappers::CasusBellisFactory{}.importCasusBellis();
 	EXPECT_EQ(casusBellis->getWarGoalFromCasusBelli("demand_concession_casus_belli"), "take_state");
