@@ -1538,6 +1538,9 @@
     <ClCompile Include="MapperTests\CasusBelli\CasusBellisTests.cpp">
       <Filter>MapperTests\CasusBelli</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -3028,6 +3031,12 @@
       <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelli.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
     </ClInclude>
   </ItemGroup>

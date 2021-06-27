@@ -3,19 +3,27 @@
 
 
 
+#include "CasusBelliFactory.h"
 #include "CasusBellis.h"
+#include "Parser.h"
 #include <memory>
+
 
 
 namespace Mappers
 {
 
-class CasusBellisFactory
+class CasusBellisFactory: commonItems::parser
 {
   public:
 	CasusBellisFactory();
 
 	std::unique_ptr<CasusBellis> importCasusBellis();
+
+  private:
+	std::unordered_map<std::string, std::string> mappings;
+
+	CasusBelliFactory casusBelliFactory;
 };
 
 } // namespace Mappers

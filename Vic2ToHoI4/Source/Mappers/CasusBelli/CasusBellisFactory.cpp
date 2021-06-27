@@ -1,14 +1,24 @@
 #include "CasusBellisFactory.h"
+#include "CommonRegexes.h"
+#include "ParserHelpers.h"
 
 
 
 Mappers::CasusBellisFactory::CasusBellisFactory()
 {
+	registerKeyword("link", [this](std::istream& theStream) {
+		for (const auto casusBelli = casusBelliFactory.importCasusBelli(theStream); const auto& cb: casusBelli.getCBs())
+		{
+			mappings.emplace(cb, casusBelli.getWarGoal());
+		}
+	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 
 std::unique_ptr<Mappers::CasusBellis> Mappers::CasusBellisFactory::importCasusBellis()
 {
-	return std::make_unique<CasusBellis>(
-		 std::unordered_map<std::string, std::string>{{"demand_concession_casus_belli", "take_state"}});
+	mappings.clear();
+	parseFile("Configurables/casus_bellis_mappings.txt");
+	return std::make_unique<CasusBellis>(mappings);
 }

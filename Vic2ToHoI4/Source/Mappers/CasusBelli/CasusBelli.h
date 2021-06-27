@@ -1,0 +1,34 @@
+#ifndef CASUS_BELLI_H
+#define CASUS_BELLI_H
+
+
+
+#include <string>
+#include <unordered_set>
+
+
+
+namespace Mappers
+{
+
+class CasusBelli
+{
+  public:
+	CasusBelli(std::unordered_set<std::string> cbs, std::string warGoal):
+		 cbs_(std::move(cbs)), warGoal_(std::move(warGoal))
+	{
+	}
+
+	[[nodiscard]] const auto& getCBs() const { return cbs_; }
+	[[nodiscard]] const auto& getWarGoal() const { return warGoal_; }
+
+  private:
+	std::unordered_set<std::string> cbs_;
+	std::string warGoal_;
+};
+
+} // namespace Mappers
+
+
+
+#endif // CASUS_BELLI_H

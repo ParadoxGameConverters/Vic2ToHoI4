@@ -200,6 +200,7 @@
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="Source\HOI4World\WarCreator\MapUtils.cpp" />
+    <ClCompile Include="Source\Mappers\CasusBelli\CasusBelliFactory.cpp" />
     <ClCompile Include="Source\Mappers\CasusBelli\CasusBellis.cpp" />
     <ClCompile Include="Source\Mappers\CasusBelli\CasusBellisFactory.cpp" />
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMapper.cpp" />
@@ -563,6 +564,8 @@
     <ClInclude Include="Source\HOI4World\States\StateCategoriesBuilder.h" />
     <ClInclude Include="Source\HOI4World\TechnologiesBuilder.h" />
     <ClInclude Include="Source\HOI4World\WarCreator\MapUtils.h" />
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelli.h" />
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliFactory.h" />
     <ClInclude Include="Source\Mappers\CasusBelli\CasusBellis.h" />
     <ClInclude Include="Source\Mappers\CasusBelli\CasusBellisFactory.h" />
     <ClInclude Include="Source\Mappers\CountryName\CountryNameMapper.h" />
@@ -27980,6 +27983,11 @@
     <CopyFileToFolders Include="Data_Files\configurables\ConverterFocuses\uk_colonial_focus.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables/ConverterFocuses</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables/ConverterFocuses</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\configurables\casus_bellis_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
