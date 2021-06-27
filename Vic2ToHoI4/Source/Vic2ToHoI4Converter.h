@@ -3,7 +3,7 @@
 
 
 
-void ConvertV2ToHoI4();
+void ConvertV2ToHoI4(const mappers::ConverterVersion& converterVersion);
 
 
 

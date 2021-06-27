@@ -131,7 +131,6 @@
     <ClCompile Include="..\common_items\Color.cpp" />
     <ClCompile Include="..\common_items\CommonFunctions.cpp" />
     <ClCompile Include="..\common_items\ConvenientParser.cpp" />
-    <ClCompile Include="..\common_items\ConverterVersion.cpp" />
     <ClCompile Include="..\common_items\Date.cpp" />
     <ClCompile Include="..\common_items\GameVersion.cpp" />
     <ClCompile Include="..\common_items\iconvlite.cpp" />
@@ -200,6 +199,7 @@
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="Source\HOI4World\WarCreator\MapUtils.cpp" />
+    <ClCompile Include="Source\Mappers\ConverterVersion\ConverterVersion.cpp" />
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMapper.cpp" />
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
@@ -472,7 +472,6 @@
     <ClInclude Include="..\common_items\CommonFunctions.h" />
     <ClInclude Include="..\common_items\CommonRegexes.h" />
     <ClInclude Include="..\common_items\ConvenientParser.h" />
-    <ClInclude Include="..\common_items\ConverterVersion.h" />
     <ClInclude Include="..\common_items\Date.h" />
     <ClInclude Include="..\common_items\GameVersion.h" />
     <ClInclude Include="..\common_items\iconvlite.h" />
@@ -561,6 +560,7 @@
     <ClInclude Include="Source\HOI4World\States\StateCategoriesBuilder.h" />
     <ClInclude Include="Source\HOI4World\TechnologiesBuilder.h" />
     <ClInclude Include="Source\HOI4World\WarCreator\MapUtils.h" />
+    <ClInclude Include="Source\Mappers\ConverterVersion\ConverterVersion.h" />
     <ClInclude Include="Source\Mappers\CountryName\CountryNameMapper.h" />
     <ClInclude Include="Source\Mappers\CountryName\CountryNameMapperFactory.h" />
     <ClInclude Include="Source\Mappers\CountryName\CountryNameMapping.h" />

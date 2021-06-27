@@ -3,12 +3,12 @@
 
 
 
+#include "Mappers/ConverterVersion/ConverterVersion.h"
 #include "Parser.h"
 #include "V2World/Mods/Mod.h"
 #include <set>
 #include <string>
 #include <vector>
-
 
 
 enum class ideologyOptions
@@ -80,13 +80,19 @@ class Configuration::Factory: commonItems::parser
 {
   public:
 	Factory();
-	std::unique_ptr<Configuration> importConfiguration(const std::string& filename);
-	std::unique_ptr<Configuration> importConfiguration(std::istream& theStream);
+	std::unique_ptr<Configuration> importConfiguration(const std::string& filename,
+		 const mappers::ConverterVersion& converterVersion);
+	std::unique_ptr<Configuration> importConfiguration(std::istream& theStream,
+		 const mappers::ConverterVersion& converterVersion);
 
   private:
 	void setOutputName(const std::string& V2SaveFileName, const std::string& OutputCustomName);
 	void importMods();
 	void sortMods();
+	void verifyVic2Version(const mappers::ConverterVersion& converterVersion) const;
+	void verifyHoI4Version(const mappers::ConverterVersion& converterVersion) const;
+	[[nodiscard]] std::optional<GameVersion> getRawVersion(const std::string& filePath) const;
+	[[nodiscard]] std::optional<GameVersion> getReadmeVersion(const std::string& filePath) const;
 
 	std::unique_ptr<Configuration> configuration;
 

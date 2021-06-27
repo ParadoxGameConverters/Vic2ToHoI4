@@ -1532,6 +1532,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operative\OutOperative.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Operative</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\ConverterVersion\ConverterVersionTests.cpp">
+      <Filter>MapperTests\ConverterVersion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ConverterVersion\ConverterVersion.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\ConverterVersion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2040,6 +2046,12 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\OutHoi4\Operative">
       <UniqueIdentifier>{afa95475-f885-4a5f-88b8-ae95a74a96a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\ConverterVersion">
+      <UniqueIdentifier>{61505942-325e-4630-8254-79e471847ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\ConverterVersion">
+      <UniqueIdentifier>{e3bbc458-e63b-442a-ac40-4397a586249e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3325,6 +3337,12 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt">
       <Filter>TestFiles\Vic2Military</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\launcher-settings.json">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\ReadMe.txt">
+      <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

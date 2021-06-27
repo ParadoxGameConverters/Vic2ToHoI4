@@ -280,6 +280,9 @@
     <Filter Include="Data Files\Configurables\ConverterFocuses">
       <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\ConverterVersion">
+      <UniqueIdentifier>{25a5a342-65b1-4d30-8d45-e7dc55e9c184}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1189,9 +1192,6 @@
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapperFactory.cpp">
       <Filter>Mappers\Provinces</Filter>
     </ClCompile>
-    <ClCompile Include="..\common_items\ConverterVersion.cpp">
-      <Filter>CommonItems</Filter>
-    </ClCompile>
     <ClCompile Include="..\common_items\ConvenientParser.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
@@ -1284,6 +1284,9 @@
     </ClCompile>
     <ClCompile Include="Source\OutHoi4\Operative\OutOperative.cpp">
       <Filter>OutHoi4\Operatives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\ConverterVersion\ConverterVersion.cpp">
+      <Filter>Mappers\ConverterVersion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2394,9 +2397,6 @@
     <ClInclude Include="Source\OutHoi4\Modifiers\OutModifier.h">
       <Filter>OutHoi4\Modifiers</Filter>
     </ClInclude>
-    <ClInclude Include="..\common_items\ConverterVersion.h">
-      <Filter>CommonItems</Filter>
-    </ClInclude>
     <ClInclude Include="..\common_items\ConvenientParser.h">
       <Filter>CommonItems</Filter>
     </ClInclude>
@@ -2531,6 +2531,9 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Operative\OutOperative.h">
       <Filter>OutHoi4\Operatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\ConverterVersion\ConverterVersion.h">
+      <Filter>Mappers\ConverterVersion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
