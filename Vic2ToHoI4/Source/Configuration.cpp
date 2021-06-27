@@ -172,11 +172,14 @@ Configuration::Factory::Factory()
 }
 
 
-std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::string& filename)
+std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::string& filename,
+	 const mappers::ConverterVersion& converterVersion)
 {
 	Log(LogLevel::Info) << "Reading configuration file";
 	configuration = std::make_unique<Configuration>();
 	parseFile(filename);
+	verifyVic2Version(converterVersion);
+	verifyHoI4Version(converterVersion);
 	setOutputName(configuration->inputFile, configuration->customOutputName);
 	importMods();
 
@@ -184,11 +187,14 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const
 }
 
 
-std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::istream& theStream)
+std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::istream& theStream,
+	 const mappers::ConverterVersion& converterVersion)
 {
 	Log(LogLevel::Info) << "Reading configuration file";
 	configuration = std::make_unique<Configuration>();
 	parseStream(theStream);
+	verifyVic2Version(converterVersion);
+	verifyHoI4Version(converterVersion);
 	setOutputName(configuration->inputFile, configuration->customOutputName);
 	importMods();
 
@@ -289,4 +295,154 @@ void Configuration::Factory::sortMods()
 	}
 
 	configuration->Vic2Mods = sortedMods;
+}
+
+void Configuration::Factory::verifyVic2Version(const mappers::ConverterVersion& converterVersion) const
+{
+	GameVersion vic2version;
+	if (commonItems::DoesFileExist(configuration->Vic2Path + "/changelog_3.04.txt"))
+	{
+		Log(LogLevel::Info) << "\tVic2 version is: 3.0.4";
+		return;
+	}
+
+	std::string readmePath = configuration->Vic2Path + "/ReadMe.txt";
+	if (!commonItems::DoesFileExist(readmePath))
+	{
+		readmePath = configuration->Vic2Path + "/Readme.txt";
+		if (!commonItems::DoesFileExist(readmePath))
+		{
+			Log(LogLevel::Error) << "Vic2 version could not be determined, proceeding blind!";
+			return;
+		}
+	}
+
+	const auto V2Version = getReadmeVersion(readmePath);
+	if (!V2Version)
+	{
+		Log(LogLevel::Error) << "Vic2 version could not be determined, proceeding blind!";
+		return;
+	}
+
+	if (converterVersion.getMinSource() > *V2Version)
+	{
+		Log(LogLevel::Error) << "Vic2 version is v" << V2Version->toShortString() << ", converter requires minimum v"
+									<< converterVersion.getMinSource().toShortString() << "!";
+		throw std::runtime_error("Converter vs Vic2 installation mismatch!");
+	}
+	if (!converterVersion.getMaxSource().isLargerishThan(*V2Version))
+	{
+		Log(LogLevel::Error) << "Vic2 version is v" << V2Version->toShortString() << ", converter requires maximum v"
+									<< converterVersion.getMaxSource().toShortString() << "!";
+		throw std::runtime_error("Converter vs Vic2 installation mismatch!");
+	}
+}
+
+void Configuration::Factory::verifyHoI4Version(const mappers::ConverterVersion& converterVersion) const
+{
+	const auto HoI4Version = getRawVersion(configuration->HoI4Path + "/launcher-settings.json");
+	if (!HoI4Version)
+	{
+		Log(LogLevel::Error) << "HoI4 version could not be determined, proceeding blind!";
+		return;
+	}
+
+	if (converterVersion.getMinTarget() > *HoI4Version)
+	{
+		Log(LogLevel::Error) << "HoI4 version is v" << HoI4Version->toShortString() << ", converter requires minimum v"
+									<< converterVersion.getMinTarget().toShortString() << "!";
+		throw std::runtime_error("Converter vs HoI4 installation mismatch!");
+	}
+	if (!converterVersion.getMaxTarget().isLargerishThan(*HoI4Version))
+	{
+		Log(LogLevel::Error) << "HoI4 version is v" << HoI4Version->toShortString() << ", converter requires maximum v"
+									<< converterVersion.getMaxTarget().toShortString() << "!";
+		throw std::runtime_error("Converter vs HoI4 installation mismatch!");
+	}
+}
+
+std::optional<GameVersion> Configuration::Factory::getRawVersion(const std::string& filePath) const
+{
+	if (!commonItems::DoesFileExist(filePath))
+	{
+		Log(LogLevel::Warning) << "Failure verifying version: " << filePath << " does not exist. Proceeding blind.";
+		return std::nullopt;
+	}
+
+	std::ifstream versionFile(filePath);
+	if (!versionFile.is_open())
+	{
+		Log(LogLevel::Warning) << "Failure verifying version: " << filePath << " cannot be opened. Proceeding blind.";
+		return std::nullopt;
+	}
+
+	while (!versionFile.eof())
+	{
+		std::string line;
+		std::getline(versionFile, line);
+		if (line.find("rawVersion") == std::string::npos)
+			continue;
+		auto pos = line.find(':');
+		if (pos == std::string::npos)
+		{
+			Log(LogLevel::Warning) << "Failure extracting version: " << filePath
+										  << " has broken rawVersion. Proceeding blind.";
+			return std::nullopt;
+		}
+		line = line.substr(pos + 1, line.length());
+		pos = line.find_first_of('\"');
+		if (pos == std::string::npos)
+		{
+			Log(LogLevel::Warning) << "Failure extracting version: " << filePath
+										  << " has broken rawVersion. Proceeding blind.";
+			return std::nullopt;
+		}
+		line = line.substr(pos + 1, line.length());
+		pos = line.find_first_of('\"');
+		if (pos == std::string::npos)
+		{
+			Log(LogLevel::Warning) << "Failure extracting version: " << filePath
+										  << " has broken rawVersion. Proceeding blind.";
+			return std::nullopt;
+		}
+		line = line.substr(0, pos);
+		Log(LogLevel::Info) << "\tHoI4 version is: " << line;
+		return GameVersion(line);
+	}
+
+	Log(LogLevel::Warning) << "Failure verifying version: " << filePath
+								  << " doesn't contain rawVersion. Proceeding blind.";
+	return std::nullopt;
+}
+
+std::optional<GameVersion> Configuration::Factory::getReadmeVersion(const std::string& filePath) const
+{
+	std::ifstream versionFile(filePath);
+	if (!versionFile.is_open())
+	{
+		Log(LogLevel::Warning) << "Failure verifying version: " << filePath << " cannot be opened. Proceeding blind.";
+		return std::nullopt;
+	}
+
+	std::string line;
+	std::getline(versionFile, line);
+	if (versionFile.eof())
+	{
+		Log(LogLevel::Warning) << "Failure verifying version: " << filePath << " is broken. Proceeding blind.";
+		return std::nullopt;
+	}
+	std::getline(versionFile, line);
+
+	auto pos = line.find(" below");
+	if (pos == std::string::npos)
+	{
+		Log(LogLevel::Warning) << "Failure verifying version: " << filePath << " is broken. Proceeding blind.";
+		return std::nullopt;
+	}
+
+	line = line.substr(0, pos);
+	pos = line.find_last_of(' ');
+	line = line.substr(pos + 1, line.length());
+	Log(LogLevel::Info) << "\tVic2 version is: " << line;
+	return GameVersion(line);
 }

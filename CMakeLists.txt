@@ -10,7 +10,7 @@ set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Linux)
 set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Linux/Vic2ToHoI4)
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Tests)
 
-add_compile_options("-std=c++2a")
+add_compile_options("-std=c++20")
 add_compile_options("-O3")
 #add_compile_options("-g")
 
@@ -127,6 +127,7 @@ set(HOI4WORLD_SOUNDS_SOURCES ${HOI4WORLD_SOUNDS_SOURCES} "${PROJECT_SOURCE_DIR}/
 file(GLOB HOI4WORLD_STATES_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/States/*.cpp")
 set(HOI4WORLD_WAR_CREATOR_SOURCES ${HOI4WORLD_WAR_CREATOR_SOURCES} "${PROJECT_SOURCE_DIR}/HOI4World/WarCreator/MapUtils.cpp")
 set(HOI4WORLD_WAR_CREATOR_SOURCES ${HOI4WORLD_WAR_CREATOR_SOURCES} "${PROJECT_SOURCE_DIR}/HOI4World/WarCreator/HoI4WarCreator.cpp")
+set(MAPPERS_CONVERTER_VERSION_SOURCES ${MAPPERS_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/ConverterVersion/ConverterVersion.cpp")
 set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMapper.cpp")
 set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMapperFactory.cpp")
 set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMappingRuleFactory.cpp")
@@ -244,7 +245,6 @@ set(VIC2WORLD_WORLD_SOURCES ${VIC2WORLD_WORLD_SOURCES} "${PROJECT_SOURCE_DIR}/V2
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Color.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/CommonFunctions.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ConvenientParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ConverterVersion.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Date.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/GameVersion.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/iconvlite.cpp")
@@ -298,6 +298,7 @@ add_executable(
 	${HOI4WORLD_SOUNDS_SOURCES}
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPERS_SOURCES}
+	${MAPPERS_CONVERTER_VERSION_SOURCES}
 	${MAPPERS_COUNTRY_SOURCES}
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
@@ -466,6 +467,7 @@ file(GLOB HOI4WORLD_SCRIPTED_TRIGGERS_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4Worl
 file(GLOB HOI4WORLD_SHIP_TYPES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/ShipTypes/*.cpp")
 file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/States/*.cpp")
 file(GLOB MAPPER_TESTS_SOURCES "${TEST_SOURCE_DIR}/MapperTests/*.cpp")
+set(MAPPERS_CONVERTER_VERSION_TESTS_SOURCES ${MAPPERS_COUNTRY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/ConverterVersion/ConverterVersionTests.cpp")
 set(MAPPERS_COUNTRY_TESTS_SOURCES ${MAPPERS_COUNTRY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Country/CountryMapperTests.cpp")
 set(MAPPERS_COUNTRY_TESTS_SOURCES ${MAPPERS_COUNTRY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Country/CountryMappingRuleFactoryTests.cpp")
 set(MAPPERS_COUNTRYNAME_TESTS_SOURCES ${MAPPERS_COUNTRYNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CountryName/CountryNameMapperTests.cpp")
@@ -577,6 +579,7 @@ add_executable(
 	${HOI4WORLD_STATES_SOURCES}
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPERS_SOURCES}
+	${MAPPERS_CONVERTER_VERSION_SOURCES}
 	${MAPPERS_COUNTRY_SOURCES}
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
@@ -661,6 +664,7 @@ add_executable(
 	${HOI4WORLD_SOUNDS_TESTS_SOURCES}
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${MAPPER_TESTS_SOURCES}
+	${MAPPERS_CONVERTER_VERSION_TESTS_SOURCES}
 	${MAPPERS_COUNTRY_TESTS_SOURCES}
 	${MAPPERS_COUNTRYNAME_TESTS_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_TESTS_SOURCES}
@@ -725,6 +729,8 @@ configure_file("Vic2ToHoI4Tests/TestFiles/hoi4.exe" "${TEST_OUTPUT_DIRECTORY}/Ho
 configure_file("Vic2ToHoI4Tests/TestFiles/IntelligenceAgencyLogos.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/IntelligenceAgencyLogos.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Issues/emptyIssues.txt" "${TEST_OUTPUT_DIRECTORY}/EmptyIssues/common/issues.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Issues/issues.txt" "${TEST_OUTPUT_DIRECTORY}/common/issues.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/launcher-settings.json" "${TEST_OUTPUT_DIRECTORY}/HoI4Windows/launcher-settings.json" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/launcher-settings.json" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/launcher-settings.json" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Leaders/HoI4CountryLeaders.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/HoI4CountryLeaders.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ArticleRules.txt" "${TEST_OUTPUT_DIRECTORY}/ArticleRules.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/grammar.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/grammar.txt" COPYONLY)
@@ -756,12 +762,13 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryUnspecified.mod" "${TEST
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/dummy.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/test_directory/dummy.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/EmptyModFile.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/EmptyModFile.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Test.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/Test.mod" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Vic2Military/traits.txt" "${TEST_OUTPUT_DIRECTORY}/common/traits.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/OccupationLaws.txt" "${TEST_OUTPUT_DIRECTORY}/OccupationLaws/common/occupation_laws/occupation_laws.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/OperativeNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/OperativeNamesMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/operations.txt" "${TEST_OUTPUT_DIRECTORY}/operations/common/operations/00_operations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/operations_to_update.txt" "${TEST_OUTPUT_DIRECTORY}/operationsToUpdate/common/operations/00_operations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/regions.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Map/regions.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/ReadMe.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/ReadMe.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/ReadMe.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/ReadMe.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/effects_file.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/empty_effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/empty_effects_file.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Sounds/CultureToVoiceMappings.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
@@ -771,6 +778,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTech3.txt" "${TEST_OUTPU
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTech4.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod2/inventions/Tech4.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTechOverride1.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod3/inventions/Tech1.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTechOverride2.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod3/inventions/Tech3.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Vic2Military/traits.txt" "${TEST_OUTPUT_DIRECTORY}/common/traits.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/BAR.txt" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/common/countries/BAR.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/BlankWorld.v2" "${TEST_OUTPUT_DIRECTORY}/V2World/BlankWorld.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/countries.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries.txt" COPYONLY)
