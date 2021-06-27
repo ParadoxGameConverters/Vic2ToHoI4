@@ -112,6 +112,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
@@ -392,7 +393,6 @@
     <ClCompile Include="HoI4WorldTests\GameRules\GameRuleOptionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\GameRules\GameRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\GameRules\GameRuleTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaGroupTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyFileTests.cpp" />
@@ -859,6 +859,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\TechnologiesBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapping.h" />

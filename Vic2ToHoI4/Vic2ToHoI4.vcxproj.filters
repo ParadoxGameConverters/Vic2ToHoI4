@@ -280,6 +280,9 @@
     <Filter Include="Data Files\Configurables\ConverterFocuses">
       <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\CasusBelli">
+      <UniqueIdentifier>{8b3d14a7-b50f-4a6a-9126-d662b52723bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1284,6 +1287,9 @@
     </ClCompile>
     <ClCompile Include="Source\OutHoi4\Operative\OutOperative.cpp">
       <Filter>OutHoi4\Operatives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\CasusBelli\CasusBellis.cpp">
+      <Filter>Mappers\CasusBelli</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2531,6 +2537,9 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Operative\OutOperative.h">
       <Filter>OutHoi4\Operatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBellis.h">
+      <Filter>Mappers\CasusBelli</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
