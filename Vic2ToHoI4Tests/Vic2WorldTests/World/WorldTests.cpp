@@ -9,22 +9,6 @@
 
 
 
-TEST(Vic2World_World_WorldTests, DateIsLogged)
-{
-	std::stringstream log;
-	auto* stdOutBuf = std::cout.rdbuf();
-	std::cout.rdbuf(log.rdbuf());
-
-	const auto world = Vic2::World::Factory(*Configuration::Builder().build()).importWorld(
-		 *Configuration::Builder().setInputFile("V2World/TestWorld.v2").build(),
-		 *Mappers::ProvinceMapper::Builder().Build());
-
-	std::cout.rdbuf(stdOutBuf);
-
-	ASSERT_THAT(log.str(), testing::HasSubstr("    [INFO] The date is 2020.12.18\n"));
-}
-
-
 TEST(Vic2World_World_WorldTests, ProvincesDefaultToEmpty)
 {
 	const auto world = Vic2::World::Factory(*Configuration::Builder().build()).importWorld(
