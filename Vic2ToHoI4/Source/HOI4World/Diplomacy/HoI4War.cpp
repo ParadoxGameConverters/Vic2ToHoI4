@@ -3,7 +3,9 @@
 
 
 
-HoI4::War::War(const Vic2::War& sourceWar, const Mappers::CountryMapper& countryMapper)
+HoI4::War::War(const Vic2::War& sourceWar,
+	 const Mappers::CountryMapper& countryMapper,
+	 const Mappers::CasusBellis& casusBellis)
 {
 	auto possibleOriginalDefender = countryMapper.getHoI4Tag(sourceWar.getOriginalDefender());
 	if (possibleOriginalDefender)
@@ -56,4 +58,6 @@ HoI4::War::War(const Vic2::War& sourceWar, const Mappers::CountryMapper& country
 			}
 		}
 	}
+
+	CB = casusBellis.getWarGoalFromCasusBelli(sourceWar.getCB());
 }

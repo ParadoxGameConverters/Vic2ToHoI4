@@ -28,7 +28,8 @@ HoI4::Country::Country(std::string tag,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 const Mappers::CountryMapper& countryMap,
 	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-	 Localisation& hoi4Localisations):
+	 Localisation& hoi4Localisations,
+	 const Mappers::CasusBellis& casusBellis):
 	 tag(std::move(tag)),
 	 name(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
@@ -97,7 +98,7 @@ HoI4::Country::Country(std::string tag,
 	convertRelations(countryMap, sourceCountry);
 	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
-	convertWars(sourceCountry, countryMap);
+	convertWars(sourceCountry, countryMap, casusBellis);
 
 	employedWorkers = sourceCountry.getEmployedWorkers();
 
@@ -320,7 +321,7 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 		}
 
 		const std::string name = *firstName + " " + *surname;
-		operatives_.push_back(Operative(name, operativePortrait, /*female=*/ true, tag));
+		operatives_.push_back(Operative(name, operativePortrait, /*female=*/true, tag));
 	}
 
 	for (const auto& operativePortrait: graphicsMapper.getMaleOperativePortraits(primaryCultureGroup))
@@ -614,11 +615,13 @@ void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap, 
 }
 
 
-void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry, const Mappers::CountryMapper& countryMap)
+void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
+	 const Mappers::CountryMapper& countryMap,
+	 const Mappers::CasusBellis& casusBellis)
 {
 	for (const auto& sourceWar: theSourceCountry.getWars())
 	{
-		War theWar(sourceWar, countryMap);
+		War theWar(sourceWar, countryMap, casusBellis);
 		wars.push_back(theWar);
 	}
 }
@@ -1335,9 +1338,10 @@ void HoI4::Country::addGenericFocusTree(const std::set<std::string>& majorIdeolo
 }
 
 
-void HoI4::Country::transferPuppets(const std::set<std::string>& transferingPuppets, std::shared_ptr<HoI4::Country> dominion)
+void HoI4::Country::transferPuppets(const std::set<std::string>& transferringPuppets,
+	 std::shared_ptr<HoI4::Country> dominion)
 {
-	for (const auto& puppet: transferingPuppets)
+	for (const auto& puppet: transferringPuppets)
 	{
 		puppets.erase(puppet);
 		spherelings.erase(puppet);

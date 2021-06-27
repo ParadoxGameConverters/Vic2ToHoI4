@@ -83,6 +83,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	names = Names::Factory().getNames(theConfiguration);
 	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
 	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
+	casusBellis = std::make_unique<Mappers::CasusBellis>();
 	convertCountries(sourceWorld);
 	determineGreatPowers(sourceWorld);
 	governmentMapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
@@ -268,7 +269,8 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 			 *graphicsMapper,
 			 *countryMap,
 			 flagsToIdeasMapper,
-			 *hoi4Localisations);
+			 *hoi4Localisations,
+			 *casusBellis);
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
 	}
 }
@@ -1127,8 +1129,8 @@ void HoI4::World::addFocusTrees()
 			country->addGenericFocusTree(ideologies->getMajorIdeologies());
 			country->addPuppetsIntegrationTree(*hoi4Localisations);
 		}
-		if (genericFocusTree.getBranches().contains("uk_colonial_focus")
-			 && country->isGreatPower() && country->getDominionTag("south_asia"))
+		if (genericFocusTree.getBranches().contains("uk_colonial_focus") && country->isGreatPower() &&
+			 country->getDominionTag("south_asia"))
 		{
 			country->addGlobalEventTarget("uk_colonial_focus_ENG");
 			country->addFocusTreeBranch("uk_colonial_focus", *onActions);

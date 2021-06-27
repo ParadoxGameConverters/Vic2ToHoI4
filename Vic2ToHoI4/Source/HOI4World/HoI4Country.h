@@ -60,7 +60,8 @@ class Country
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-		 Localisation& hoi4Localisations);
+		 Localisation& hoi4Localisations,
+		 const Mappers::CasusBellis& casusBellis);
 	explicit Country(const std::string& tag_,
 		 const Country& owner,
 		 const std::string& region_,
@@ -109,7 +110,7 @@ class Country
 	void addState(const State& state);
 	void addCoreState(const int stateId) { coreStates.insert(stateId); }
 	void calculateIndustry(const std::map<int, State>& allStates);
-	void transferPuppets(const std::set<std::string>& transferingPuppets, std::shared_ptr<HoI4::Country> dominion);
+	void transferPuppets(const std::set<std::string>& transferringPuppets, std::shared_ptr<HoI4::Country> dominion);
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
 	void addFocusTreeBranch(const std::string& branch, OnActions& onActions);
@@ -268,7 +269,9 @@ class Country
 		 Localisation& hoi4Localisations);
 	void convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
-	void convertWars(const Vic2::Country& sourceCountry, const Mappers::CountryMapper& countryMap);
+	void convertWars(const Vic2::Country& sourceCountry,
+		 const Mappers::CountryMapper& countryMap,
+		 const Mappers::CasusBellis& casusBellis);
 
 	bool attemptToPutCapitalInPreferredNonWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,

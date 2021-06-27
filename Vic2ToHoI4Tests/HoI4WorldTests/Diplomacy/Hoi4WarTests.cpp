@@ -10,7 +10,7 @@ TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
 {
 	auto sourceWar = *Vic2::War::Builder().build();
 
-	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().Build());
+	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().Build(), Mappers::CasusBellis{});
 	std::stringstream output;
 	output << war;
 
@@ -33,7 +33,9 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().addMapping("OAT", "NAT").Build());
+	const HoI4::War war(sourceWar,
+		 *Mappers::CountryMapper::Builder().addMapping("OAT", "NAT").Build(),
+		 Mappers::CasusBellis{});
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -51,7 +53,8 @@ TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 				.addMapping("ODF", "NDF")
 				.addMapping("OED", "NED")
 				.addMapping("OAT", "NAT")
-				.Build());
+				.Build(),
+		 Mappers::CasusBellis{});
 	std::stringstream output;
 	output << war;
 
@@ -82,7 +85,8 @@ TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 				.addMapping("ODF", "NDF")
 				.addMapping("OEA", "NEA")
 				.addMapping("OAT", "NAT")
-				.Build());
+				.Build(),
+		 Mappers::CasusBellis{});
 	std::stringstream output;
 	output << war;
 
@@ -111,7 +115,9 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().addMapping("ODF", "NDF").Build());
+	const HoI4::War war(sourceWar,
+		 *Mappers::CountryMapper::Builder().addMapping("ODF", "NDF").Build(),
+		 Mappers::CasusBellis{});
 
 	std::cout.rdbuf(stdOutBuf);
 

@@ -22,6 +22,7 @@
 #include "Map/StrategicRegion.h"
 #include "Map/StrategicRegions.h"
 #include "Map/SupplyZones.h"
+#include "Mappers/CasusBelli/CasusBellis.h"
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/CountryName/CountryNameMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
@@ -215,6 +216,7 @@ class World: commonItems::parser
 	std::unique_ptr<Mappers::IdeologyMapper> ideologyMapper;
 	std::unique_ptr<Mappers::CountryMapper> countryMap;
 	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;
+	std::unique_ptr<Mappers::CasusBellis> casusBellis;
 	std::unique_ptr<date> theDate;
 
 	std::unique_ptr<States> states;
