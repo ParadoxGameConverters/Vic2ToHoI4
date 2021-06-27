@@ -1291,6 +1291,9 @@
     <ClCompile Include="Source\Mappers\CasusBelli\CasusBellis.cpp">
       <Filter>Mappers\CasusBelli</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\CasusBelli\CasusBellisFactory.cpp">
+      <Filter>Mappers\CasusBelli</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2539,6 +2542,9 @@
       <Filter>OutHoi4\Operatives</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\CasusBelli\CasusBellis.h">
+      <Filter>Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBellisFactory.h">
       <Filter>Mappers\CasusBelli</Filter>
     </ClInclude>
   </ItemGroup>

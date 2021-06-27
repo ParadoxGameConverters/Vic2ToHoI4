@@ -21,6 +21,7 @@
 #include "Map/HoI4Provinces.h"
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
+#include "Mappers/CasusBelli/CasusBellisFactory.h"
 #include "Mappers/Country/CountryMapperFactory.h"
 #include "Mappers/CountryName/CountryNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
@@ -83,7 +84,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	names = Names::Factory().getNames(theConfiguration);
 	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
 	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
-	casusBellis = std::make_unique<Mappers::CasusBellis>();
+	casusBellis = Mappers::CasusBellisFactory{}.importCasusBellis();
 	convertCountries(sourceWorld);
 	determineGreatPowers(sourceWorld);
 	governmentMapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
