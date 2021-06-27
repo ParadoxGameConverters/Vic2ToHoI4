@@ -1541,6 +1541,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\CasusBelli\CasusBelliTests.cpp">
+      <Filter>MapperTests\CasusBelli</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2055,6 +2058,9 @@
     </Filter>
     <Filter Include="MapperTests\CasusBelli">
       <UniqueIdentifier>{88e849a4-7776-40a7-99ae-784d490f49a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\CasusBelli">
+      <UniqueIdentifier>{deb28b9b-ffe5-4178-a08b-c8fcc624cb89}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3352,6 +3358,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt">
       <Filter>TestFiles\Vic2Military</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\CasusBelli\casus_bellis_mappings.txt">
+      <Filter>TestFiles\Mappers\CasusBelli</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
