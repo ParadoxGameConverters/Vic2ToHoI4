@@ -1547,6 +1547,12 @@
     <ClCompile Include="MapperTests\FactionName\FactionNameMappingTests.cpp">
       <Filter>MapperTests\FactionName</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\ConverterVersion\ConverterVersionTests.cpp">
+      <Filter>MapperTests\ConverterVersion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ConverterVersion\ConverterVersion.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\ConverterVersion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2064,6 +2070,12 @@
     </Filter>
     <Filter Include="TestFiles\Mappers\FactionName">
       <UniqueIdentifier>{cb2830a6-3fc3-443f-bbed-bb6a5612ee3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\ConverterVersion">
+      <UniqueIdentifier>{61505942-325e-4630-8254-79e471847ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\ConverterVersion">
+      <UniqueIdentifier>{e3bbc458-e63b-442a-ac40-4397a586249e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3224,15 +3236,6 @@
     <CopyFileToFolders Include="TestFiles\Countries\TestTechnologyFile.txt">
       <Filter>TestFiles\Countries</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Countries\BlankTraitsFile.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\World\DED.txt">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
@@ -3278,9 +3281,6 @@
     <CopyFileToFolders Include="TestFiles\World\TWO.txt">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\World\ResolveBattlesWorld.v2">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
@@ -3305,10 +3305,6 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Provinces\good_definition.csv">
       <Filter>TestFiles\Mappers\Provinces</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mods\Dependencies.mod" />
-    <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod" />
-    <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod" />
-    <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod" />
     <CopyFileToFolders Include="TestFiles\Mods\Dependencies.mod">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
@@ -3321,38 +3317,68 @@
     <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Localisations\grammar.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
       <Filter>TestFiles\Mappers\Ideology</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\MergeRules\merge_nations.txt">
       <Filter>TestFiles\Mappers\MergeRules</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Graphics\cultureGroupToGraphics.txt">
       <Filter>TestFiles\Mappers\Graphics</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\HoI4Files\CountryCategories\CountryGrammar.txt">
       <Filter>TestFiles\HoI4\CountryCategories</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\BlankTraitsFile.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
+      <Filter>TestFiles\Vic2\EU4ToVic2Data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt">
+      <Filter>TestFiles\Mappers\Country</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\Dependencies.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt">
+      <Filter>TestFiles\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt">
+      <Filter>TestFiles\Mappers\FlagsToIdeas</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
+      <Filter>TestFiles\Mappers\Government</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Localisations\grammar.txt">
+      <Filter>TestFiles\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt">
+      <Filter>TestFiles\Leaders</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt">
+      <Filter>TestFiles\Mappers\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt">
+      <Filter>TestFiles\Mappers\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt">
+      <Filter>TestFiles\Vic2Military</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\launcher-settings.json">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\ReadMe.txt">
+      <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\FactionName\factions_mappings.txt">
       <Filter>TestFiles\Mappers\FactionName</Filter>

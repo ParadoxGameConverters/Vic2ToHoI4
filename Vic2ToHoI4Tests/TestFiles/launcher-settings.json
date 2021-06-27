@@ -1,0 +1,29 @@
+{
+    "browserDlcUrl": "https://store.steampowered.com/dlc/394360/Hearts_of_Iron_IV/",
+    "distPlatform": "steam",
+    "exeArgs": [
+        "-gdpr-compliant"
+    ],
+    "exePath": "hoi4.exe",
+    "gameCachePaths": [
+        "buildings_nudger_markers.txt",
+        "cache/",
+        "continue_game.json",
+        "game rules/",
+        "map/",
+        "mod/",
+        "naval_dist.cache",
+        "naval_dist_checksum.cache",
+        "playlists/",
+        "pops_filestorage.index",
+        "pops_filestorage/",
+        "shadercache/"
+    ],
+    "gameDataPath": "%USER_DOCUMENTS%/Paradox Interactive/Hearts of Iron IV",
+    "gameId": "hoi4",
+    "ingameSettingsLayoutPath": "settings-layout.json",
+    "modLoadOrderDisabled": true,
+    "rawVersion": "1.10.7",
+    "themeFile": "launcher-assets/theme-settings.json",
+    "version": "Collie v1.10.7 (02cc)"
+}
