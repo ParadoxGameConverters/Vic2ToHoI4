@@ -4,5 +4,10 @@
 
 std::string Mappers::CasusBellis::getWarGoalFromCasusBelli(const std::string& casusBelli) const
 {
-	return "annex_everything";
+	if (const auto& mapping = casusBelliToWarGoalMap_.find(casusBelli); mapping != casusBelliToWarGoalMap_.end())
+	{
+		return mapping->second;
+	}
+
+	return "topple_government";
 }

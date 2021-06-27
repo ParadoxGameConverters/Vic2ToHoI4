@@ -10,14 +10,14 @@ TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
 {
 	auto sourceWar = *Vic2::War::Builder().build();
 
-	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().Build(), Mappers::CasusBellis{});
+	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().Build(), Mappers::CasusBellis({}));
 	std::stringstream output;
 	output << war;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "declare_war_on = {\n";
 	expectedOutput << "\ttarget = \n";
-	expectedOutput << "\ttype = annex_everything\n";
+	expectedOutput << "\ttype = topple_government\n";
 	expectedOutput << "}\n";
 	expectedOutput << "\n";
 
@@ -35,7 +35,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 
 	const HoI4::War war(sourceWar,
 		 *Mappers::CountryMapper::Builder().addMapping("OAT", "NAT").Build(),
-		 Mappers::CasusBellis{});
+		 Mappers::CasusBellis({}));
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -54,14 +54,14 @@ TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 				.addMapping("OED", "NED")
 				.addMapping("OAT", "NAT")
 				.Build(),
-		 Mappers::CasusBellis{});
+		 Mappers::CasusBellis({}));
 	std::stringstream output;
 	output << war;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "declare_war_on = {\n";
 	expectedOutput << "\ttarget = NDF\n";
-	expectedOutput << "\ttype = annex_everything\n";
+	expectedOutput << "\ttype = topple_government\n";
 	expectedOutput << "}\n";
 	expectedOutput << "NED = {\n";
 	expectedOutput << "\tadd_to_war = {\n";
@@ -86,14 +86,14 @@ TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 				.addMapping("OEA", "NEA")
 				.addMapping("OAT", "NAT")
 				.Build(),
-		 Mappers::CasusBellis{});
+		 Mappers::CasusBellis({}));
 	std::stringstream output;
 	output << war;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "declare_war_on = {\n";
 	expectedOutput << "\ttarget = NDF\n";
-	expectedOutput << "\ttype = annex_everything\n";
+	expectedOutput << "\ttype = topple_government\n";
 	expectedOutput << "}\n";
 	expectedOutput << "NEA = {\n";
 	expectedOutput << "\tadd_to_war = {\n";
@@ -117,7 +117,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 
 	const HoI4::War war(sourceWar,
 		 *Mappers::CountryMapper::Builder().addMapping("ODF", "NDF").Build(),
-		 Mappers::CasusBellis{});
+		 Mappers::CasusBellis({}));
 
 	std::cout.rdbuf(stdOutBuf);
 

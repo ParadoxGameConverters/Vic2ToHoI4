@@ -113,6 +113,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
@@ -860,6 +861,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapping.h" />
