@@ -1340,7 +1340,6 @@ void HoI4::Country::transferPuppets(const std::set<std::string>& transferingPupp
 	for (const auto& puppet: transferingPuppets)
 	{
 		puppets.erase(puppet);
-		spherelings.erase(puppet);
 		dominion->addPuppet(puppet);
 	}
 }
@@ -1448,33 +1447,7 @@ bool HoI4::Country::hasMonarchIdea() const
 }
 
 
-// Calculates Influence Factor = Σ Outside Influence - 1.5 * Leader Influence
-double HoI4::Country::calculateInfluenceFactor()
-{
-	if (sphereLeader.empty())
-	{
-		Log(LogLevel::Debug) << tag << " has no sphere leader set";
-		return 55.5;
-	}
-	else
-	{
-		double influenceFactor = 0;
-		for (auto& influenceItr: GPInfluences)
-		{
-			if (influenceItr.first != sphereLeader)
-			{
-				influenceFactor += influenceItr.second;
-			}
-			if (influenceItr.first == sphereLeader)
-			{
-				influenceFactor -= 1.5 * influenceItr.second;
-			}
-		}
-		// 1 is used because if freedom_level is too close to 0 (how close?)
-		// it's displayed ingame as being halfway: 0.5 instead of 0.0000something
-		return std::clamp(influenceFactor, 1.0, 100.0);
-	}
-}
+
 const bool HoI4::Country::isEligibleEnemy(std::string target)
 {
 	std::set<std::string> allies;
