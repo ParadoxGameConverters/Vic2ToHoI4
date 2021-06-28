@@ -1019,9 +1019,6 @@
     <ClCompile Include="Vic2WorldTests\Wars\WarFactoryTests.cpp">
       <Filter>Vic2WorldTests\Wars</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp">
-      <Filter>Vic2WorldTests\Wars</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Regions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
     </ClCompile>

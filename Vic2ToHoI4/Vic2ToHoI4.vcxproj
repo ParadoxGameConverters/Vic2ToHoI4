@@ -884,8 +884,8 @@
     <ClInclude Include="Source\V2World\Technology\InventionsFactory.h" />
     <ClInclude Include="Source\V2World\Technology\TechnologyFactory.h" />
     <ClInclude Include="Source\V2World\Wars\War.h" />
-    <ClInclude Include="Source\V2World\Wars\WarBuilder.h" />
     <ClInclude Include="Source\V2World\Wars\WarFactory.h" />
+    <ClInclude Include="Source\V2World\Wars\WarGoal.h" />
     <ClInclude Include="Source\V2World\Wars\WarGoalFactory.h" />
     <ClInclude Include="Source\V2World\World\World.h" />
     <ClInclude Include="Source\V2World\World\WorldBuilder.h" />

@@ -549,7 +549,6 @@
     <ClCompile Include="Vic2WorldTests\Stockpiles\StockpileTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Technology\InventionTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Technology\TechnologyFactoryTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarGoalFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\World\WorldTests.cpp" />

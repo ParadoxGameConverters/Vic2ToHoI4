@@ -1,6 +1,5 @@
 #include "HOI4World/Diplomacy/HoI4War.h"
 #include "Mappers/Country/CountryMapperBuilder.h"
-#include "V2World/Wars/WarBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -8,9 +7,7 @@
 
 TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
 {
-	auto sourceWar = *Vic2::War::Builder().build();
-
-	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().Build(), Mappers::CasusBellis({}));
+	const HoI4::War war(Vic2::War({}), *Mappers::CountryMapper::Builder().Build(), Mappers::CasusBellis({}));
 	std::stringstream output;
 	output << war;
 
@@ -27,13 +24,11 @@ TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
 
 TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 {
-	auto sourceWar = *Vic2::War::Builder().setOriginalAttacker("OAT").setOriginalDefender("ODF").build();
-
 	std::stringstream log;
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar,
+	const HoI4::War war(Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}}),
 		 *Mappers::CountryMapper::Builder().addMapping("OAT", "NAT").Build(),
 		 Mappers::CasusBellis({}));
 
@@ -45,10 +40,8 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 
 TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 {
-	auto sourceWar =
-		 *Vic2::War::Builder().setOriginalAttacker("OAT").setOriginalDefender("ODF").setDefenders({"OED"}).build();
-
-	const HoI4::War war(sourceWar,
+	const HoI4::War war(
+		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}, .defenders{{"OED"}}}),
 		 *Mappers::CountryMapper::Builder()
 				.addMapping("ODF", "NDF")
 				.addMapping("OED", "NED")
@@ -77,10 +70,8 @@ TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 
 TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 {
-	auto sourceWar =
-		 *Vic2::War::Builder().setOriginalAttacker("OAT").setAttackers({"OEA"}).setOriginalDefender("ODF").build();
-
-	const HoI4::War war(sourceWar,
+	const HoI4::War war(
+		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .attackers{{"OEA"}}, .originalDefender{"ODF"}}),
 		 *Mappers::CountryMapper::Builder()
 				.addMapping("ODF", "NDF")
 				.addMapping("OEA", "NEA")
@@ -109,13 +100,11 @@ TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 
 TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 {
-	auto sourceWar = *Vic2::War::Builder().setOriginalAttacker("OAT").setOriginalDefender("ODF").build();
-
 	std::stringstream log;
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar,
+	const HoI4::War war(Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}}),
 		 *Mappers::CountryMapper::Builder().addMapping("ODF", "NDF").Build(),
 		 Mappers::CasusBellis({}));
 

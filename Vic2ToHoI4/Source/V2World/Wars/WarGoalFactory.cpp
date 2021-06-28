@@ -7,15 +7,19 @@
 Vic2::WarGoalFactory::WarGoalFactory()
 {
 	registerKeyword("casus_belli", [this](std::istream& theStream) {
-		CB = commonItems::singleString{theStream}.getString();
+		casusBelli = commonItems::getString(theStream);
+	});
+	registerKeyword("state_province_id", [this](std::istream& theStream) {
+		province = commonItems::getInt(theStream);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 
-std::string Vic2::WarGoalFactory::getCB(std::istream& theStream)
+Vic2::WarGoal Vic2::WarGoalFactory::getWarGoal(std::istream& theStream)
 {
-	CB.clear();
+	casusBelli.clear();
+	province.reset();
 	parseStream(theStream);
-	return CB;
+	return WarGoal{.casusBelli = casusBelli, .province = province};
 }

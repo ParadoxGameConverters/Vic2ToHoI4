@@ -3,6 +3,7 @@
 
 
 
+#include "WarGoal.h"
 #include "Parser.h"
 
 
@@ -15,10 +16,11 @@ class WarGoalFactory: commonItems::parser
   public:
 	WarGoalFactory();
 
-	std::string getCB(std::istream& theStream);
+	WarGoal getWarGoal(std::istream& theStream);
 
   private:
-	std::string CB;
+	std::string casusBelli;
+	std::optional<int> province;
 };
 
 } // namespace Vic2

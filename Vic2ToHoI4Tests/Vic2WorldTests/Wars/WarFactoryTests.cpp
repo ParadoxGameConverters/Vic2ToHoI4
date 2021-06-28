@@ -1,5 +1,6 @@
 #include "V2World/Wars/WarFactory.h"
 #include "gtest/gtest.h"
+#include <gmock/gmock-matchers.h>
 #include <sstream>
 
 
@@ -14,13 +15,18 @@ class Vic2World_WarTests: public testing::Test
 
 
 
-TEST_F(Vic2World_WarTests, OriginalAttackerDefaultsToBlank)
+TEST_F(Vic2World_WarTests, DefaultsAreAppropriate)
 {
 	std::stringstream input;
 
-	const auto theWar = *warFactory.getWar(input);
+	const auto theWar = warFactory.getWar(input);
 
-	ASSERT_EQ(theWar.getOriginalAttacker(), "");
+	EXPECT_TRUE(theWar.getOriginalAttacker().empty());
+	EXPECT_EQ(theWar.getAttackers().size(), 0);
+	EXPECT_TRUE(theWar.getOriginalDefender().empty());
+	EXPECT_TRUE(theWar.getDefenders().empty());
+	EXPECT_TRUE(theWar.getCasusBelli().empty());
+	EXPECT_FALSE(theWar.getProvince().has_value());
 }
 
 
@@ -32,19 +38,9 @@ TEST_F(Vic2World_WarTests, OriginalAttackerCanBeSet)
 	input << "\toriginal_attacker=\"TAG\"\n";
 	input << "}";
 
-	const auto theWar = *warFactory.getWar(input);
+	const auto theWar = warFactory.getWar(input);
 
-	ASSERT_EQ(theWar.getOriginalAttacker(), "TAG");
-}
-
-
-TEST_F(Vic2World_WarTests, AttackersDefaultToEmpty)
-{
-	std::stringstream input;
-
-	const auto theWar = *warFactory.getWar(input);
-
-	ASSERT_EQ(theWar.getAttackers().size(), 0);
+	EXPECT_EQ(theWar.getOriginalAttacker(), "TAG");
 }
 
 
@@ -57,21 +53,9 @@ TEST_F(Vic2World_WarTests, AttackersCanBeAdded)
 	input << "\tattacker=\"TWO\"\n";
 	input << "}";
 
-	const auto theWar = *warFactory.getWar(input);
+	const auto theWar = warFactory.getWar(input);
 
-	ASSERT_EQ(theWar.getAttackers().size(), 2);
-	ASSERT_TRUE(theWar.getAttackers().contains("TAG"));
-	ASSERT_TRUE(theWar.getAttackers().contains("TWO"));
-}
-
-
-TEST_F(Vic2World_WarTests, OriginalDefenderDefaultsToBlank)
-{
-	std::stringstream input;
-
-	const auto theWar = *warFactory.getWar(input);
-
-	ASSERT_EQ(theWar.getOriginalDefender(), "");
+	EXPECT_THAT(theWar.getAttackers(), testing::ElementsAre("TAG", "TWO"));
 }
 
 
@@ -83,19 +67,9 @@ TEST_F(Vic2World_WarTests, OriginalDefenderCanBeSet)
 	input << "\toriginal_defender=\"TAG\"\n";
 	input << "}";
 
-	const auto theWar = *warFactory.getWar(input);
+	const auto theWar = warFactory.getWar(input);
 
-	ASSERT_EQ(theWar.getOriginalDefender(), "TAG");
-}
-
-
-TEST_F(Vic2World_WarTests, DefendersDefaultToEmpty)
-{
-	std::stringstream input;
-
-	const auto theWar = *warFactory.getWar(input);
-
-	ASSERT_EQ(theWar.getDefenders().size(), 0);
+	EXPECT_EQ(theWar.getOriginalDefender(), "TAG");
 }
 
 
@@ -108,25 +82,13 @@ TEST_F(Vic2World_WarTests, DefendersCanBeAdded)
 	input << "\tdefender=\"TWO\"\n";
 	input << "}";
 
-	const auto theWar = *warFactory.getWar(input);
+	const auto theWar = warFactory.getWar(input);
 
-	ASSERT_EQ(theWar.getDefenders().size(), 2);
-	ASSERT_TRUE(theWar.getDefenders().contains("TAG"));
-	ASSERT_TRUE(theWar.getDefenders().contains("TWO"));
+	EXPECT_THAT(theWar.getDefenders(), testing::ElementsAre("TAG", "TWO"));
 }
 
 
-TEST_F(Vic2World_WarTests, CBDefaultsToBlank)
-{
-	std::stringstream input;
-
-	const auto theWar = *warFactory.getWar(input);
-
-	ASSERT_EQ(theWar.getCB(), "");
-}
-
-
-TEST_F(Vic2World_WarTests, CBCanBeSet)
+TEST_F(Vic2World_WarTests, CasusBelliCanBeSet)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -136,7 +98,24 @@ TEST_F(Vic2World_WarTests, CBCanBeSet)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theWar = *warFactory.getWar(input);
+	const auto theWar = warFactory.getWar(input);
 
-	ASSERT_EQ(theWar.getCB(), "theCB");
+	EXPECT_EQ(theWar.getCasusBelli(), "theCB");
+}
+
+
+TEST_F(Vic2World_WarTests, ProvinceCanBeSet)
+{
+	std::stringstream input;
+	input << "=\n";
+	input << "{\n";
+	input << "\toriginal_wargoal={\n";
+	input << "\t\tstate_province_id=42\n";
+	input << "\t}\n";
+	input << "}";
+
+	const auto theWar = warFactory.getWar(input);
+
+	ASSERT_TRUE(theWar.getProvince().has_value());
+	EXPECT_EQ(*theWar.getProvince(), 42);
 }

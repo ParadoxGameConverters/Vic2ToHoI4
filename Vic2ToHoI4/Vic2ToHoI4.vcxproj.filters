@@ -2090,9 +2090,6 @@
     <ClInclude Include="Source\V2World\Wars\WarFactory.h">
       <Filter>Vic2World\Wars</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\Wars\WarBuilder.h">
-      <Filter>Vic2World\Wars</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Regions\Regions.h">
       <Filter>HoI4World\Regions</Filter>
     </ClInclude>
@@ -2555,6 +2552,9 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliFactory.h">
       <Filter>Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Wars\WarGoal.h">
+      <Filter>Vic2World\Wars</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

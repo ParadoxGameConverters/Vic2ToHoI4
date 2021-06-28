@@ -31,7 +31,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 	registerKeyword("date", [this](std::istream& theStream) {
 		world->theDate = std::make_unique<date>(date(commonItems::singleString{theStream}.getString()));
 	});
-	
+
 	registerKeyword("great_nations", [this](std::istream& theStream) {
 		greatPowerIndexes = commonItems::intList{theStream}.getInts();
 	});
@@ -63,7 +63,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 		world->diplomacy = diplomacyFactory->getDiplomacy(theStream);
 	});
 	registerKeyword("active_war", [this](std::istream& theStream) {
-		wars.push_back(*warFactory.getWar(theStream));
+		wars.push_back(warFactory.getWar(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

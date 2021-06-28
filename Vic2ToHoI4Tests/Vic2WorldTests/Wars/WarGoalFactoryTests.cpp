@@ -4,36 +4,38 @@
 
 
 
-TEST(Vic2World_WarGoalFactoryTests, CBDefaultsToBlank)
+TEST(Vic2World_WarGoalFactoryTests, DefaultsAreBlanks)
 {
 	Vic2::WarGoalFactory theFactory;
 
 	std::stringstream input;
+	const auto warGoal = theFactory.getWarGoal(input);
 
-	ASSERT_TRUE(theFactory.getCB(input).empty());
+	EXPECT_TRUE(warGoal.casusBelli.empty());
+	EXPECT_EQ(warGoal.province, std::nullopt);
 }
 
 
-TEST(Vic2World_WarGoalFactoryTests, CBCanBeExtracted)
+TEST(Vic2World_WarGoalFactoryTests, CasusBelliCanBeSet)
 {
 	Vic2::WarGoalFactory theFactory;
 
 	std::stringstream input;
 	input << "casus_belli = test_cb";
+	const auto warGoal = theFactory.getWarGoal(input);
 
-	ASSERT_EQ("test_cb", theFactory.getCB(input));
+	EXPECT_EQ(warGoal.casusBelli, "test_cb");
 }
 
 
-TEST(Vic2World_WarGoalFactoryTests, FactoryIsReset)
+TEST(Vic2World_WarGoalFactoryTests, ProvinceCanBeSet)
 {
 	Vic2::WarGoalFactory theFactory;
 
 	std::stringstream input;
-	input << "casus_belli = test_cb";
-	theFactory.getCB(input);
+	input << "state_province_id = 42";
+	const auto warGoal = theFactory.getWarGoal(input);
 
-	std::stringstream input2;
-
-	ASSERT_TRUE(theFactory.getCB(input2).empty());
+	ASSERT_TRUE(warGoal.province.has_value());
+	EXPECT_EQ(*warGoal.province, 42);
 }
