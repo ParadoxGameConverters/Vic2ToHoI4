@@ -3961,6 +3961,7 @@ neo_european_cultures = {
 		neutrality = { "gfx/interface/ideas/idea_charles_portal.dds" }
 		radical = { "gfx/interface/ideas/idea_claude_auchinleck.dds" }
 	}
+	female_operator_portraits = { "gfx/leaders/ENG/portrait_eng_nancy_wake.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
 	}
@@ -4123,6 +4124,7 @@ southern_african = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_africa.dds" } # Revise
 	}
+	female_operator_portraits = { "gfx/leaders/Africa/portrait_africa_generic_operative_female_3.dds" "gfx/leaders/Africa/portrait_africa_generic_operative_female_7.dds" "gfx/leaders/Africa/portrait_africa_generic_operative_female_8.dds" "gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds" } # Phuti Mahanyele
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
 	}
@@ -4152,6 +4154,7 @@ bears = {
 		neutrality = { "gfx/interface/nuke_icon.dds" }
 		radical = { "gfx/interface/nuke_icon.dds" }
 	}
+	male_operative_portraits = { "gfx/leaders/OC/portrait_bear_buisnessman_operator.dds" }
 	male_monarch_portraits = {
 		"gfx/achievements/vojtek_commander.dds"
 	}
@@ -4181,6 +4184,7 @@ equine = {
 		neutrality = { "gfx/interface/nuke_icon.dds" } 
 		radical = { "gfx/interface/nuke_icon.dds" } 
 	}
+	male_operator_portraits = { "gfx/leaders/OC/portrait_unicorn_disguise_buisness.dds" } 
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_porsche.dds"
 	}
@@ -4220,8 +4224,8 @@ non_human = {
 	graphical_culture_2d = western_european_2d
 }
 anti_human = {
-	army_portraits = { "gfx/leaders/OC/portrait_Non_Human.dds" "tools/art/portrait_leader_background.png" }
-	navy_portraits = { "gfx/leaders/OC/portrait_Non_Human.dds" "tools/art/portrait_leader_background.png" }
+	army_portraits = { "gfx/leaders/OC/portrait_Non_Human.dds" }
+	navy_portraits = { "gfx/leaders/OC/portrait_Non_Human.dds" }
 	leader_portraits = {
 		communism = { "GFX_portrait_eng_fallen_government" } 
 		democratic = { "GFX_portrait_eng_fallen_government" } 
@@ -4239,8 +4243,8 @@ anti_human = {
 		neutrality = { "gfx/interface/nuke_icon.dds" }
 		radical = { "gfx/interface/nuke_icon.dds" }
 	}
-	male_operative_portraits = { "tools/art/portrait_operative_background.png" }
-	female_operative_portraits = { "tools/art/portrait_operative_background.png" }
+	male_operative_portraits = { "gfx/leaders/OC/portrait_Non_Human.dds" }
+	female_operative_portraits = { "gfx/leaders/OC/portrait_Non_Human.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/eldritch.dds"
 	}
