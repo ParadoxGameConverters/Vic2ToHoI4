@@ -1,7 +1,7 @@
 #include "Configuration.h"
+#include "ConverterVersion.h"
 #include "HOI4World/HoI4World.h"
 #include "Log.h"
-#include "Mappers/ConverterVersion/ConverterVersion.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mappers/Provinces/ProvinceMapperFactory.h"
 #include "OSCompatibilityLayer.h"
@@ -10,9 +10,8 @@
 #include "V2World/World/WorldFactory.h"
 #include <stdexcept>
 
-
 void checkMods(const Configuration& theConfiguration);
-void ConvertV2ToHoI4(const mappers::ConverterVersion& converterVersion)
+void ConvertV2ToHoI4(const commonItems::ConverterVersion& converterVersion)
 {
 	const auto theConfiguration = Configuration::Factory().importConfiguration("configuration.txt", converterVersion);
 	checkMods(*theConfiguration);
