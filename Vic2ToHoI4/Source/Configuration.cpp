@@ -1,13 +1,13 @@
 #include "Configuration.h"
 #include "CommonFunctions.h"
 #include "CommonRegexes.h"
+#include "GameVersion.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "V2World/Mods/ModFactory.h"
 #include <fstream>
 #include <vector>
-
 
 
 Configuration::Factory::Factory()
@@ -172,11 +172,14 @@ Configuration::Factory::Factory()
 }
 
 
-std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::string& filename)
+std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::string& filename,
+	 const commonItems::ConverterVersion& converterVersion)
 {
 	Log(LogLevel::Info) << "Reading configuration file";
 	configuration = std::make_unique<Configuration>();
 	parseFile(filename);
+	verifyVic2Version(converterVersion);
+	verifyHoI4Version(converterVersion);
 	setOutputName(configuration->inputFile, configuration->customOutputName);
 	importMods();
 
@@ -184,11 +187,14 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const
 }
 
 
-std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::istream& theStream)
+std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::istream& theStream,
+	 const commonItems::ConverterVersion& converterVersion)
 {
 	Log(LogLevel::Info) << "Reading configuration file";
 	configuration = std::make_unique<Configuration>();
 	parseStream(theStream);
+	verifyVic2Version(converterVersion);
+	verifyHoI4Version(converterVersion);
 	setOutputName(configuration->inputFile, configuration->customOutputName);
 	importMods();
 
@@ -289,4 +295,73 @@ void Configuration::Factory::sortMods()
 	}
 
 	configuration->Vic2Mods = sortedMods;
+}
+
+void Configuration::Factory::verifyVic2Version(const commonItems::ConverterVersion& converterVersion) const
+{
+	GameVersion vic2version;
+	if (commonItems::DoesFileExist(configuration->Vic2Path + "/changelog_3.04.txt"))
+	{
+		Log(LogLevel::Info) << "\tVic2 version: 3.0.4";
+		return;
+	}
+
+	std::string readmePath = configuration->Vic2Path + "/ReadMe.txt";
+	if (!commonItems::DoesFileExist(readmePath))
+	{
+		readmePath = configuration->Vic2Path + "/Readme.txt";
+		if (!commonItems::DoesFileExist(readmePath))
+		{
+			Log(LogLevel::Error) << "Vic2 version could not be determined, proceeding blind!";
+			return;
+		}
+	}
+
+	const auto V2Version = GameVersion::extractVersionFromReadMe(readmePath);
+	if (!V2Version)
+	{
+		Log(LogLevel::Error) << "Vic2 version could not be determined, proceeding blind!";
+		return;
+	}
+
+	Log(LogLevel::Info) << "\tVic2 version: " << V2Version->toShortString();
+
+	if (converterVersion.getMinSource() > *V2Version)
+	{
+		Log(LogLevel::Error) << "Vic2 version is v" << V2Version->toShortString() << ", converter requires minimum v"
+									<< converterVersion.getMinSource().toShortString() << "!";
+		throw std::runtime_error("Converter vs Vic2 installation mismatch!");
+	}
+	if (!converterVersion.getMaxSource().isLargerishThan(*V2Version))
+	{
+		Log(LogLevel::Error) << "Vic2 version is v" << V2Version->toShortString() << ", converter requires maximum v"
+									<< converterVersion.getMaxSource().toShortString() << "!";
+		throw std::runtime_error("Converter vs Vic2 installation mismatch!");
+	}
+}
+
+void Configuration::Factory::verifyHoI4Version(const commonItems::ConverterVersion& converterVersion) const
+{
+	const auto HoI4Version =
+		 GameVersion::extractVersionFromLauncher(configuration->HoI4Path + "/launcher-settings.json");
+	if (!HoI4Version)
+	{
+		Log(LogLevel::Error) << "HoI4 version could not be determined, proceeding blind!";
+		return;
+	}
+
+	Log(LogLevel::Info) << "\tHoI4 version: " << HoI4Version->toShortString();
+
+	if (converterVersion.getMinTarget() > *HoI4Version)
+	{
+		Log(LogLevel::Error) << "HoI4 version is v" << HoI4Version->toShortString() << ", converter requires minimum v"
+									<< converterVersion.getMinTarget().toShortString() << "!";
+		throw std::runtime_error("Converter vs HoI4 installation mismatch!");
+	}
+	if (!converterVersion.getMaxTarget().isLargerishThan(*HoI4Version))
+	{
+		Log(LogLevel::Error) << "HoI4 version is v" << HoI4Version->toShortString() << ", converter requires maximum v"
+									<< converterVersion.getMaxTarget().toShortString() << "!";
+		throw std::runtime_error("Converter vs HoI4 installation mismatch!");
+	}
 }

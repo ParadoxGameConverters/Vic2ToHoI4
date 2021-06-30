@@ -25,7 +25,7 @@ Vic2::Relations::Factory::Factory()
 		relations->truceUntil = date(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("influence_value", [this](std::istream& theStream) {
-		relations->influenceValue = commonItems::singleInt{theStream}.getInt();
+		relations->influenceValue = static_cast<int>(commonItems::getDouble(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

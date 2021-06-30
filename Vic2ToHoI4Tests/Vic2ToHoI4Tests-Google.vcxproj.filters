@@ -3359,5 +3359,11 @@
     <CopyFileToFolders Include="TestFiles\Mappers\CasusBelli\casus_bellis_mappings.txt">
       <Filter>TestFiles\Mappers\CasusBelli</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\launcher-settings.json">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\ReadMe.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

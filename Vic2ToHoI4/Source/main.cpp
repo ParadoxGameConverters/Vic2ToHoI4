@@ -1,4 +1,3 @@
-#include "ConverterVersion.h"
 #include "Log.h"
 #include "Vic2ToHoI4Converter.h"
 
@@ -8,10 +7,11 @@ int main(const int argc, const char* argv[])
 {
 	try
 	{
-		Log(LogLevel::Info) << commonItems::ConverterVersionParser().importVersion("../version.txt");
-		Log(LogLevel::Info) << "Built on " << __TIMESTAMP__;
+		commonItems::ConverterVersion converterVersion;
+		converterVersion.loadVersion("../version.txt");
+		Log(LogLevel::Info) << converterVersion;
 		Log(LogLevel::Progress) << "0%";
-		ConvertV2ToHoI4();
+		ConvertV2ToHoI4(converterVersion);
 
 		return 0;
 	}

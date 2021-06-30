@@ -1,4 +1,5 @@
 #include "Configuration.h"
+#include "ConverterVersion.h"
 #include "HOI4World/HoI4World.h"
 #include "Log.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
@@ -9,12 +10,10 @@
 #include "V2World/World/WorldFactory.h"
 #include <stdexcept>
 
-
-
 void checkMods(const Configuration& theConfiguration);
-void ConvertV2ToHoI4()
+void ConvertV2ToHoI4(const commonItems::ConverterVersion& converterVersion)
 {
-	const auto theConfiguration = Configuration::Factory().importConfiguration("configuration.txt");
+	const auto theConfiguration = Configuration::Factory().importConfiguration("configuration.txt", converterVersion);
 	checkMods(*theConfiguration);
 	clearOutputFolder(theConfiguration->getOutputName());
 

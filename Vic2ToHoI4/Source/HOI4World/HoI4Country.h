@@ -238,16 +238,6 @@ class Country
 	std::set<std::string>& editAllies() { return allies; }
 
 	void addLeader(CountryLeader leader) { leaders.push_back(std::move(leader)); }
-	void addGPInfluence(std::string GPTag, int influenceValue) { GPInfluences.insert({GPTag, influenceValue}); }
-	[[nodiscard]] const std::map<std::string, double>& getSpherelings() const { return spherelings; }
-	void addSphereling(std::string sphereling) { spherelings.insert(make_pair(sphereling, 0.5)); }
-	void setSpherelingAutonomy(std::string sphereling, double autonomy)
-	{
-		spherelings.find(sphereling)->second = autonomy;
-	}
-	double calculateInfluenceFactor();
-	const auto& getGuaranteed() const { return guaranteed; }
-	void addGuaranteed(std::string guaranteedTag) { guaranteed.push_back(guaranteedTag); }
 
 	[[nodiscard]] const bool isEligibleEnemy(std::string target);
 
@@ -387,10 +377,6 @@ class Country
 	bool civilized = false;
 	bool generatedDominion = false;
 	std::string region;
-
-	std::map<std::string, int> GPInfluences;
-	std::map<std::string, double> spherelings;
-	std::vector<std::string> guaranteed;
 
 	bool navalTreatyAdherent = false;
 	bool greatestNavalPower = false;
