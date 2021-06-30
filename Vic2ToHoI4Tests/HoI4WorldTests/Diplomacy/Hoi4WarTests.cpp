@@ -1,5 +1,6 @@
 #include "HOI4World/Diplomacy/HoI4War.h"
 #include "Mappers/Country/CountryMapperBuilder.h"
+#include "Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -123,4 +124,26 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ(" [WARNING] Could not map OAT, original attacker in a war\n", log.str());
+}
+
+
+TEST(HoI4World_Diplomacy_WarTests, TargetStateCanBeSet)
+{
+	const HoI4::War war(Vic2::War({.province = 42}),
+		 *Mappers::CountryMapper::Builder().Build(),
+		 Mappers::CasusBellis({}),
+		 *Mappers::ProvinceMapper::Builder{}.addVic2ToHoI4ProvinceMap(42, {84}).Build(),
+		 std::map<int, int>{{84, 3}});
+	std::stringstream output;
+	output << war;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "declare_war_on = {\n";
+	expectedOutput << "\ttarget = \n";
+	expectedOutput << "\ttype = topple_government\n";
+	expectedOutput << "\tgenerator = { 3 }\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
