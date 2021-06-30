@@ -7,9 +7,13 @@ std::ostream& HoI4::operator<<(std::ostream& out, const War& theWar)
 	out << "declare_war_on = {\n";
 	out << "\ttarget = " << theWar.originalDefender << "\n";
 	out << "\ttype = " << theWar.CB << "\n";
+	if (theWar.state)
+	{
+		out << "\tgenerator = { " << *theWar.state << " }\n";
+	}
 	out << "}\n";
 
-	for (const auto& extraAttacker : theWar.extraAttackers)
+	for (const auto& extraAttacker: theWar.extraAttackers)
 	{
 		out << extraAttacker << " = {\n";
 		out << "\tadd_to_war = {\n";
@@ -19,7 +23,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const War& theWar)
 		out << "}\n";
 	}
 
-	for (const auto& extraDefender : theWar.extraDefenders)
+	for (const auto& extraDefender: theWar.extraDefenders)
 	{
 		out << extraDefender << " = {\n";
 		out << "\tadd_to_war = {\n";

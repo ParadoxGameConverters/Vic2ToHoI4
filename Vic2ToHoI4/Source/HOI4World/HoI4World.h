@@ -123,10 +123,11 @@ class World: commonItems::parser
 	World(const World&) = delete;
 	World& operator=(const World&) = delete;
 
-	void convertCountries(const Vic2::World& sourceWorld);
+	void convertCountries(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper);
 	void convertCountry(const std::string& oldTag,
 		 const Vic2::Country& oldCountry,
-		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper);
+		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
+		 const Mappers::ProvinceMapper& provinceMapper);
 
 	void importLeaderTraits();
 	void importIdeologicalMinisters();
@@ -159,6 +160,7 @@ class World: commonItems::parser
 
 	void convertDiplomacy(const Vic2::World& sourceWorld);
 	void convertAgreements(const Vic2::World& sourceWorld);
+	void convertWars(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper);
 
 	void convertTechs();
 

@@ -60,8 +60,7 @@ class Country
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-		 Localisation& hoi4Localisations,
-		 const Mappers::CasusBellis& casusBellis);
+		 Localisation& hoi4Localisations);
 	explicit Country(const std::string& tag_,
 		 const Country& owner,
 		 const std::string& region_,
@@ -252,6 +251,12 @@ class Country
 
 	[[nodiscard]] const bool isEligibleEnemy(std::string target);
 
+	void convertWars(const Vic2::Country& sourceCountry,
+		 const Mappers::CountryMapper& countryMap,
+		 const Mappers::CasusBellis& casusBellis,
+		 const Mappers::ProvinceMapper& provinceMapper,
+		 const std::map<int, int>& provinceToStateIDMap);
+
 	void addGeneratedDominion(const std::string& region, const std::string& tag) { generatedDominions[region] = tag; }
 	std::optional<std::string> getDominionTag(const std::string& region);
 	void addGlobalEventTarget(const std::string& name) { globalEventTargets.insert(name); }
@@ -269,9 +274,6 @@ class Country
 		 Localisation& hoi4Localisations);
 	void convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
-	void convertWars(const Vic2::Country& sourceCountry,
-		 const Mappers::CountryMapper& countryMap,
-		 const Mappers::CasusBellis& casusBellis);
 
 	bool attemptToPutCapitalInPreferredNonWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,

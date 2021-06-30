@@ -28,8 +28,7 @@ HoI4::Country::Country(std::string tag,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 const Mappers::CountryMapper& countryMap,
 	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-	 Localisation& hoi4Localisations,
-	 const Mappers::CasusBellis& casusBellis):
+	 Localisation& hoi4Localisations):
 	 tag(std::move(tag)),
 	 name(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
@@ -98,7 +97,6 @@ HoI4::Country::Country(std::string tag,
 	convertRelations(countryMap, sourceCountry);
 	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
-	convertWars(sourceCountry, countryMap, casusBellis);
 
 	employedWorkers = sourceCountry.getEmployedWorkers();
 
@@ -617,11 +615,13 @@ void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap, 
 
 void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
 	 const Mappers::CountryMapper& countryMap,
-	 const Mappers::CasusBellis& casusBellis)
+	 const Mappers::CasusBellis& casusBellis,
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const std::map<int, int>& provinceToStateIDMap)
 {
 	for (const auto& sourceWar: theSourceCountry.getWars())
 	{
-		War theWar(sourceWar, countryMap, casusBellis);
+		War theWar(sourceWar, countryMap, casusBellis, provinceMapper, provinceToStateIDMap);
 		wars.push_back(theWar);
 	}
 }

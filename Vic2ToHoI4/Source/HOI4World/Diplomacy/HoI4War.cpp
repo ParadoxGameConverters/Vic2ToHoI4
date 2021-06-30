@@ -5,7 +5,9 @@
 
 HoI4::War::War(const Vic2::War& sourceWar,
 	 const Mappers::CountryMapper& countryMapper,
-	 const Mappers::CasusBellis& casusBellis)
+	 const Mappers::CasusBellis& casusBellis,
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const std::map<int, int>& provinceToStateIDMap)
 {
 	auto possibleOriginalDefender = countryMapper.getHoI4Tag(sourceWar.getOriginalDefender());
 	if (possibleOriginalDefender)
@@ -59,5 +61,18 @@ HoI4::War::War(const Vic2::War& sourceWar,
 		}
 	}
 
-	CB = casusBellis.getWarGoalFromCasusBelli(sourceWar.getCB());
+	CB = casusBellis.getWarGoalFromCasusBelli(sourceWar.getCasusBelli());
+
+	if (const auto possibleVic2Province = sourceWar.getProvince(); possibleVic2Province)
+	{
+		if (const auto HoI4Provinces = provinceMapper.getVic2ToHoI4ProvinceMapping(*possibleVic2Province);
+			 !HoI4Provinces.empty())
+		{
+			if (const auto provinceToStateIDMapping = provinceToStateIDMap.find(HoI4Provinces[0]);
+				 provinceToStateIDMapping != provinceToStateIDMap.end())
+			{
+				state = provinceToStateIDMapping->second;
+			}
+		}
+	}
 }
