@@ -105,11 +105,6 @@ spriteTypes = {
 	}
 	
 	spriteType = {
-		name = "GFX_autonomy_sphereling_icon"
-		textureFile = "gfx/interface/autonomy/autonomy_sphereling_icon.dds"
-	}
-
-	spriteType = {
 		name = "GFX_autonomy_dominion_icon"
 		textureFile = "gfx/interface/autonomy/autonomy_dominion_icon.dds"
 	}

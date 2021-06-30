@@ -113,11 +113,6 @@ class World: commonItems::parser
 	std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag) const;
 	std::set<HoI4::Advisor> getActiveIdeologicalAdvisors() const;
 
-	void setSphereLeaders();
-	void processInfluence();
-	void determineSpherelings();
-	void calculateSpherelingAutonomy();
-
   private:
 	World(const World&) = delete;
 	World& operator=(const World&) = delete;

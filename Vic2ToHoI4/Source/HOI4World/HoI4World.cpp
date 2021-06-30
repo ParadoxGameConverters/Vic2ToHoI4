@@ -172,10 +172,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	HoI4WarCreator warCreator(this, *theMapData, provinceDefinitions, *hoi4Localisations, theConfiguration);
 
-	setSphereLeaders();
-	processInfluence();
-	determineSpherelings();
-	calculateSpherelingAutonomy();
 	transferPuppetsToDominions();
 
 	addFocusTrees();
@@ -1321,82 +1317,6 @@ std::vector<std::string> HoI4::World::getStrongestNavyGps()
 }
 
 
-void HoI4::World::setSphereLeaders()
-{
-	Log(LogLevel::Info) << "\tSetting sphere leaders";
-	for (auto GP: greatPowers)
-	{
-		for (auto& relationItr: GP->getRelations())
-		{
-			if (relationItr.second.getSphereLeader())
-			{
-				auto sphereling = findCountry(relationItr.first);
-				sphereling->setSphereLeader(GP->getTag());
-			}
-		}
-	}
-}
-
-void HoI4::World::processInfluence()
-{
-	Log(LogLevel::Info) << "\tAdding influence";
-	for (auto GP: greatPowers)
-	{
-		for (auto& relationItr: GP->getRelations())
-		{
-			auto influencedCountry = findCountry(relationItr.first);
-			bool isFriendlyCountry = relationItr.second.getGuarantee();
-			auto influenceValue = relationItr.second.getInfluenceValue();
-
-			if (isFriendlyCountry)
-			{
-				influencedCountry->addGPInfluence(GP->getTag(), influenceValue);
-			}
-		}
-	}
-}
-
-void HoI4::World::determineSpherelings()
-{
-	Log(LogLevel::Info) << "\tDetermining spherelings";
-	for (auto& GP: greatPowers)
-	{
-		for (auto relationItr: GP->getRelations())
-		{
-			bool isInSphere = relationItr.second.getSphereLeader();
-			bool notPuppet = !GP->getPuppets().contains(relationItr.first);
-			auto allies = GP->getAllies();
-			bool isAlly = allies.contains(relationItr.first);
-
-			if (isInSphere && notPuppet && isAlly)
-			{
-				GP->addSphereling(relationItr.first);
-			}
-			if (isInSphere && notPuppet && !isAlly)
-			{
-				GP->addGuaranteed(relationItr.first);
-			}
-		}
-	}
-}
-
-
-void HoI4::World::calculateSpherelingAutonomy()
-{
-	Log(LogLevel::Info) << "\tCalculating sphereling autonomy";
-	for (auto& GP: greatPowers)
-	{
-		for (auto& sphereling: GP->getSpherelings())
-		{
-			auto spherelingCountry = findCountry(sphereling.first);
-			double influenceFactor = spherelingCountry->calculateInfluenceFactor();
-
-			double spherelingAutonomy = 3.6 * influenceFactor / 400;
-
-			GP->setSpherelingAutonomy(sphereling.first, spherelingAutonomy);
-		}
-	}
-}
 
 
 std::set<std::string> HoI4::World::getSouthAsianCountries() const
