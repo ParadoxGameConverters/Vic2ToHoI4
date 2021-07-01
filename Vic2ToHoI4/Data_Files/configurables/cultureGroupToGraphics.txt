@@ -557,6 +557,7 @@ italian = {
 		neutrality = { "gfx/interface/ideas/idea_alberto_da_zara.dds" } 
 		radical = { "gfx/interface/ideas/idea_alfredo_guzzoni.dds" } 
 	}
+	male_operative_portraits = { "gfx/leaders/ITA/portrait_ita_maurizio_giglio.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/italy.dds"
 	}
@@ -678,6 +679,7 @@ iberian = {
 		neutrality = { "gfx/interface/ideas/idea_emilio_de_bono.dds" }
 		radical = { "gfx/interface/ideas/idea_francesco_pricolo.dds" }
 	}
+	male_operator_portraits = { "gfx/leaders/SPA/portrait_spa_juan_pujol.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/spain.dds"
 	}
@@ -909,6 +911,8 @@ french = {
 		neutrality = { "gfx/interface/ideas/idea_alfred_heurtaux.dds" }
 		radical = { "gfx/interface/ideas/idea_alphonse_georges.dds" } 
 	}
+	male_operator_portraits = { "gfx/leaders/FRA/portrait_fra_gilbert_renault.dds" }
+	female_operator_portraits = { "gfx/leaders/FRA/portrait_fra_jennie_rousseau.dds" "gfx/leaders/FRA/portrait_fra_odette_samson.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/france.dds"
 	}
@@ -936,6 +940,7 @@ south_slavic = {
 		neutrality = { "gfx/interface/ideas/idea_alexander_yegorov.dds" } 
 		radical = { "gfx/interface/ideas/idea_igor_kurchatov.dds" }
 	}
+	male_operator_portraits = { "gfx/leaders/ENG/portrait_eng_dusko_popov.dds" "gfx/leaders/BUL/portrait_bul_vladimir_zaimov.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/bulgaria.dds"
 	}
@@ -963,6 +968,7 @@ pan_albanian = { #HFM
 		neutrality = { "gfx/interface/ideas/idea_kliment_voroshilov.dds" }
 		radical = { "gfx/interface/ideas/idea_konstantin_vershinin.dds" }
 	}
+	male_monarch_portraits = { "gfx/leaders/GER/portrait_ger_elyesa_bazna.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
 	}
@@ -1075,6 +1081,8 @@ polish_culture_group = {
 		neutrality = { "gfx/interface/ideas/idea_sergei_rudenko.dds" }
 		radical = { "gfx/interface/ideas/idea_stepan_krasovsky.dds" }
 	}
+	male_operator_portraits = { "gfx/leaders/POL/portrait_pol_roman_czerniawski.dds" }
+	female_operator_portraits = { "gfx/leaders/POL/portrait_pol_krystyna_skarbek.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/poland.dds"
 	}
@@ -1102,6 +1110,7 @@ czecho_slovak_culture_group = {
 		neutrality = { "gfx/interface/ideas/idea_rom_michael_figurehead.dds" }
 		radical = { "gfx/interface/ideas/idea_rom_carol_ii_deal.dds" }
 	}
+	female_operator_portraits = { portrait_europe_generic_operative_female_11.dds portrait_europe_generic_operative_female_13.dds portrait_europe_generic_operative_female_19.dds portrait_europe_generic_operative_female_20.dds portrait_europe_generic_operative_female_21.dds } # Lucia Popp
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/bohemia.dds"
 	}
