@@ -3293,6 +3293,7 @@ central_asian = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_asia.dds" } # Revise
 	}
+	male_operator_portraits = { "gfx/leaders/TUR/portrait_tur_ruzi_nazar.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
 	}
@@ -3485,13 +3486,14 @@ oceanic = {
 	}
 	ideology_minister_portraits = 
 	{
-		communism = { "gfx/interface/ideas/idea_generic_communist_south_.dds" } # Revise
+		communism = { "gfx/interface/ideas/idea_generic_communist_south_america.dds" } # Revise
 		democratic = { "gfx/interface/ideas/idea_generic_democratic_south_america.dds" } # Revise
 		fascism = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 		absolutist = { "gfx/interface/ideas/idea_francisco_franco.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 	}
+	female_operator_portraits = { "gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_2.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_3.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_4.dds" } # Tetsuko Murakami which is used for Teri'i-nui-o-Tahiti a Pomare
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/tonga.dds"
 	}
