@@ -1972,7 +1972,7 @@ TEST(Vic2World_Countries_CountryTests, WarsCanBeAdded)
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
 								  std::nullopt);
-	country->addWar(Vic2::War{});
+	country->addWar(Vic2::War({}));
 
 	ASSERT_FALSE(country->getWars().empty());
 }

@@ -1,0 +1,1 @@
+link = { hoi = take_state vic = demand_concession_casus_belli }

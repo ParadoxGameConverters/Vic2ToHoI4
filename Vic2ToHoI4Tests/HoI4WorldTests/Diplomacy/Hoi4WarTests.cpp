@@ -1,6 +1,6 @@
 #include "HOI4World/Diplomacy/HoI4War.h"
 #include "Mappers/Country/CountryMapperBuilder.h"
-#include "V2World/Wars/WarBuilder.h"
+#include "Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -8,16 +8,18 @@
 
 TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
 {
-	auto sourceWar = *Vic2::War::Builder().build();
-
-	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().Build());
+	const HoI4::War war(Vic2::War({}),
+		 *Mappers::CountryMapper::Builder().Build(),
+		 Mappers::CasusBellis({}),
+		 Mappers::ProvinceMapper{},
+		 std::map<int, int>{});
 	std::stringstream output;
 	output << war;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "declare_war_on = {\n";
 	expectedOutput << "\ttarget = \n";
-	expectedOutput << "\ttype = annex_everything\n";
+	expectedOutput << "\ttype = topple_government\n";
 	expectedOutput << "}\n";
 	expectedOutput << "\n";
 
@@ -27,13 +29,15 @@ TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
 
 TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 {
-	auto sourceWar = *Vic2::War::Builder().setOriginalAttacker("OAT").setOriginalDefender("ODF").build();
-
 	std::stringstream log;
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().addMapping("OAT", "NAT").Build());
+	const HoI4::War war(Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}}),
+		 *Mappers::CountryMapper::Builder().addMapping("OAT", "NAT").Build(),
+		 Mappers::CasusBellis({}),
+		 Mappers::ProvinceMapper{},
+		 std::map<int, int>{});
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -43,22 +47,23 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 
 TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 {
-	auto sourceWar =
-		 *Vic2::War::Builder().setOriginalAttacker("OAT").setOriginalDefender("ODF").setDefenders({"OED"}).build();
-
-	const HoI4::War war(sourceWar,
+	const HoI4::War war(
+		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}, .defenders{{"OED"}}}),
 		 *Mappers::CountryMapper::Builder()
 				.addMapping("ODF", "NDF")
 				.addMapping("OED", "NED")
 				.addMapping("OAT", "NAT")
-				.Build());
+				.Build(),
+		 Mappers::CasusBellis({}),
+		 Mappers::ProvinceMapper{},
+		 std::map<int, int>{});
 	std::stringstream output;
 	output << war;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "declare_war_on = {\n";
 	expectedOutput << "\ttarget = NDF\n";
-	expectedOutput << "\ttype = annex_everything\n";
+	expectedOutput << "\ttype = topple_government\n";
 	expectedOutput << "}\n";
 	expectedOutput << "NED = {\n";
 	expectedOutput << "\tadd_to_war = {\n";
@@ -74,22 +79,23 @@ TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 
 TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 {
-	auto sourceWar =
-		 *Vic2::War::Builder().setOriginalAttacker("OAT").setAttackers({"OEA"}).setOriginalDefender("ODF").build();
-
-	const HoI4::War war(sourceWar,
+	const HoI4::War war(
+		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .attackers{{"OEA"}}, .originalDefender{"ODF"}}),
 		 *Mappers::CountryMapper::Builder()
 				.addMapping("ODF", "NDF")
 				.addMapping("OEA", "NEA")
 				.addMapping("OAT", "NAT")
-				.Build());
+				.Build(),
+		 Mappers::CasusBellis({}),
+		 Mappers::ProvinceMapper{},
+		 std::map<int, int>{});
 	std::stringstream output;
 	output << war;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "declare_war_on = {\n";
 	expectedOutput << "\ttarget = NDF\n";
-	expectedOutput << "\ttype = annex_everything\n";
+	expectedOutput << "\ttype = topple_government\n";
 	expectedOutput << "}\n";
 	expectedOutput << "NEA = {\n";
 	expectedOutput << "\tadd_to_war = {\n";
@@ -105,15 +111,39 @@ TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 
 TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 {
-	auto sourceWar = *Vic2::War::Builder().setOriginalAttacker("OAT").setOriginalDefender("ODF").build();
-
 	std::stringstream log;
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder().addMapping("ODF", "NDF").Build());
+	const HoI4::War war(Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}}),
+		 *Mappers::CountryMapper::Builder().addMapping("ODF", "NDF").Build(),
+		 Mappers::CasusBellis({}),
+		 Mappers::ProvinceMapper{},
+		 std::map<int, int>{});
 
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ(" [WARNING] Could not map OAT, original attacker in a war\n", log.str());
+}
+
+
+TEST(HoI4World_Diplomacy_WarTests, TargetStateCanBeSet)
+{
+	const HoI4::War war(Vic2::War({.province = 42}),
+		 *Mappers::CountryMapper::Builder().Build(),
+		 Mappers::CasusBellis({}),
+		 *Mappers::ProvinceMapper::Builder{}.addVic2ToHoI4ProvinceMap(42, {84}).Build(),
+		 std::map<int, int>{{84, 3}});
+	std::stringstream output;
+	output << war;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "declare_war_on = {\n";
+	expectedOutput << "\ttarget = \n";
+	expectedOutput << "\ttype = topple_government\n";
+	expectedOutput << "\tgenerator = { 3 }\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }

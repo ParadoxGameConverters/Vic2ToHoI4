@@ -3,6 +3,7 @@
 
 
 
+#include <optional>
 #include <set>
 #include <string>
 
@@ -11,26 +12,42 @@
 namespace Vic2
 {
 
+struct WarOptions
+{
+	std::string originalAttacker;
+	std::set<std::string> attackers;
+	std::string originalDefender;
+	std::set<std::string> defenders;
+	std::string casusBelli;
+	std::optional<int> province;
+};
+
 
 class War
 {
   public:
 	class Factory;
-	class Builder;
-	War() = default;
+	War(const WarOptions& options):
+		 originalAttacker(options.originalAttacker), attackers(options.attackers),
+		 originalDefender(options.originalDefender), defenders(options.defenders), casusBelli(options.casusBelli),
+		 province(options.province)
+	{
+	}
 
-	[[nodiscard]] std::string getOriginalAttacker() const { return originalAttacker; }
-	[[nodiscard]] std::set<std::string> getAttackers() const { return attackers; }
-	[[nodiscard]] std::string getOriginalDefender() const { return originalDefender; }
-	[[nodiscard]] std::set<std::string> getDefenders() const { return defenders; }
-	[[nodiscard]] std::string getCB() const { return CB; }
+	[[nodiscard]] const auto& getOriginalAttacker() const { return originalAttacker; }
+	[[nodiscard]] const auto& getAttackers() const { return attackers; }
+	[[nodiscard]] const auto& getOriginalDefender() const { return originalDefender; }
+	[[nodiscard]] const auto& getDefenders() const { return defenders; }
+	[[nodiscard]] const auto& getCasusBelli() const { return casusBelli; }
+	[[nodiscard]] const auto& getProvince() const { return province; }
 
   private:
 	std::string originalAttacker;
 	std::set<std::string> attackers;
 	std::string originalDefender;
 	std::set<std::string> defenders;
-	std::string CB;
+	std::string casusBelli;
+	std::optional<int> province;
 };
 
 

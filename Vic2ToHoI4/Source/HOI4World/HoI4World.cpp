@@ -21,6 +21,7 @@
 #include "Map/HoI4Provinces.h"
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
+#include "Mappers/CasusBelli/CasusBellisFactory.h"
 #include "Mappers/Country/CountryMapperFactory.h"
 #include "Mappers/CountryName/CountryNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
@@ -83,7 +84,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	names = Names::Factory().getNames(theConfiguration);
 	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
 	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
-	convertCountries(sourceWorld);
+	casusBellis = Mappers::CasusBellisFactory{}.importCasusBellis();
+	convertCountries(sourceWorld, provinceMapper);
 	determineGreatPowers(sourceWorld);
 	governmentMapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
 	ideologyMapper = Mappers::IdeologyMapper::Factory().importIdeologyMapper();
@@ -102,6 +104,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 *hoi4Localisations,
 		 provinceMapper,
 		 theConfiguration);
+	convertWars(sourceWorld, provinceMapper);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
 	theRegions = Regions::Factory().getRegions();
@@ -213,7 +216,7 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag) con
 }
 
 
-void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
+void HoI4::World::convertCountries(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper)
 {
 	Log(LogLevel::Info) << "\tConverting countries";
 
@@ -221,7 +224,7 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
 
 	for (const auto& [tag, country]: sourceWorld.getCountries())
 	{
-		convertCountry(tag, country, *flagsToIdeasMapper);
+		convertCountry(tag, country, *flagsToIdeasMapper, provinceMapper);
 	}
 
 	int numHumanCountries = 0;
@@ -242,7 +245,8 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
 
 void HoI4::World::convertCountry(const std::string& oldTag,
 	 const Vic2::Country& oldCountry,
-	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper)
+	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	// don't convert rebels
 	if (oldTag == "REB")
@@ -797,6 +801,31 @@ void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 }
 
 
+void HoI4::World::convertWars(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper)
+{
+	for (const auto& [sourceTag, sourceCountry]: sourceWorld.getCountries())
+	{
+		auto possibleHoI4Tag = countryMap->getHoI4Tag(sourceTag);
+		if (!possibleHoI4Tag)
+		{
+			continue;
+		}
+
+		auto country = countries.find(*possibleHoI4Tag);
+		if (country == countries.end())
+		{
+			continue;
+		}
+
+		country->second->convertWars(sourceCountry,
+			 *countryMap,
+			 *casusBellis,
+			 provinceMapper,
+			 states->getProvinceToStateIDMap());
+	}
+}
+
+
 void HoI4::World::convertTechs()
 {
 	Log(LogLevel::Info) << "\tConverting techs and research bonuses";
@@ -1123,8 +1152,8 @@ void HoI4::World::addFocusTrees()
 			country->addGenericFocusTree(ideologies->getMajorIdeologies());
 			country->addPuppetsIntegrationTree(*hoi4Localisations);
 		}
-		if (genericFocusTree.getBranches().contains("uk_colonial_focus")
-			 && country->isGreatPower() && country->getDominionTag("south_asia"))
+		if (genericFocusTree.getBranches().contains("uk_colonial_focus") && country->isGreatPower() &&
+			 country->getDominionTag("south_asia"))
 		{
 			country->addGlobalEventTarget("uk_colonial_focus_ENG");
 			country->addFocusTreeBranch("uk_colonial_focus", *onActions);

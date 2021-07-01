@@ -17,10 +17,10 @@ class War::Factory: commonItems::parser
 {
   public:
 	Factory();
-	[[nodiscard]] std::unique_ptr<War> getWar(std::istream& theStream);
+	[[nodiscard]] War getWar(std::istream& theStream);
 
   private:
-	std::unique_ptr<War> theWar;
+	WarOptions options;
 	WarGoalFactory warGoalFactory;
 };
 

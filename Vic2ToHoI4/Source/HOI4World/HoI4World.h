@@ -22,6 +22,7 @@
 #include "Map/StrategicRegion.h"
 #include "Map/StrategicRegions.h"
 #include "Map/SupplyZones.h"
+#include "Mappers/CasusBelli/CasusBellis.h"
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/CountryName/CountryNameMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
@@ -117,10 +118,11 @@ class World: commonItems::parser
 	World(const World&) = delete;
 	World& operator=(const World&) = delete;
 
-	void convertCountries(const Vic2::World& sourceWorld);
+	void convertCountries(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper);
 	void convertCountry(const std::string& oldTag,
 		 const Vic2::Country& oldCountry,
-		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper);
+		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
+		 const Mappers::ProvinceMapper& provinceMapper);
 
 	void importLeaderTraits();
 	void importIdeologicalMinisters();
@@ -153,6 +155,7 @@ class World: commonItems::parser
 
 	void convertDiplomacy(const Vic2::World& sourceWorld);
 	void convertAgreements(const Vic2::World& sourceWorld);
+	void convertWars(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper);
 
 	void convertTechs();
 
@@ -210,6 +213,7 @@ class World: commonItems::parser
 	std::unique_ptr<Mappers::IdeologyMapper> ideologyMapper;
 	std::unique_ptr<Mappers::CountryMapper> countryMap;
 	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;
+	std::unique_ptr<Mappers::CasusBellis> casusBellis;
 	std::unique_ptr<date> theDate;
 
 	std::unique_ptr<States> states;

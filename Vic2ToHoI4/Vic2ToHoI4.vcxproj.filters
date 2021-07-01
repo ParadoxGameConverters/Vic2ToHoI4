@@ -280,6 +280,9 @@
     <Filter Include="Data Files\Configurables\ConverterFocuses">
       <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\CasusBelli">
+      <UniqueIdentifier>{8b3d14a7-b50f-4a6a-9126-d662b52723bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1282,6 +1285,15 @@
     <ClCompile Include="Source\OutHoi4\Operative\OutOperative.cpp">
       <Filter>OutHoi4\Operatives</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\CasusBelli\CasusBellis.cpp">
+      <Filter>Mappers\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\CasusBelli\CasusBellisFactory.cpp">
+      <Filter>Mappers\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\CasusBelli\CasusBelliMappingFactory.cpp">
+      <Filter>Mappers\CasusBelli</Filter>
+    </ClCompile>
     <ClCompile Include="..\common_items\ConverterVersion.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
@@ -2078,9 +2090,6 @@
     <ClInclude Include="Source\V2World\Wars\WarFactory.h">
       <Filter>Vic2World\Wars</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\Wars\WarBuilder.h">
-      <Filter>Vic2World\Wars</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Regions\Regions.h">
       <Filter>HoI4World\Regions</Filter>
     </ClInclude>
@@ -2528,6 +2537,21 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Operative\OutOperative.h">
       <Filter>OutHoi4\Operatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBellis.h">
+      <Filter>Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBellisFactory.h">
+      <Filter>Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliMapping.h">
+      <Filter>Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliMappingFactory.h">
+      <Filter>Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Wars\WarGoal.h">
+      <Filter>Vic2World\Wars</Filter>
     </ClInclude>
     <ClInclude Include="..\common_items\ConverterVersion.h">
       <Filter>CommonItems</Filter>
@@ -22831,6 +22855,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\ConverterFocuses\uk_colonial_focus.txt">
       <Filter>Data Files\Configurables\ConverterFocuses</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\casus_bellis_mappings.txt">
+      <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

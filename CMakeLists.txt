@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.7)
+cmake_minimum_required(VERSION 3.13)
 #set(CMAKE_VERBOSE_MAKEFILE on)
 
 project(Vic2ToHoI4)
@@ -9,8 +9,10 @@ set(TEST_SOURCE_DIR ${CMAKE_SOURCE_DIR}/Vic2ToHoI4Tests)
 set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Linux)
 set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Linux/Vic2ToHoI4)
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Tests)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
 add_compile_options("-std=c++20")
+add_compile_options("-lstdc++fs")
 add_compile_options("-O3")
 #add_compile_options("-g")
 
@@ -127,6 +129,9 @@ set(HOI4WORLD_SOUNDS_SOURCES ${HOI4WORLD_SOUNDS_SOURCES} "${PROJECT_SOURCE_DIR}/
 file(GLOB HOI4WORLD_STATES_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/States/*.cpp")
 set(HOI4WORLD_WAR_CREATOR_SOURCES ${HOI4WORLD_WAR_CREATOR_SOURCES} "${PROJECT_SOURCE_DIR}/HOI4World/WarCreator/MapUtils.cpp")
 set(HOI4WORLD_WAR_CREATOR_SOURCES ${HOI4WORLD_WAR_CREATOR_SOURCES} "${PROJECT_SOURCE_DIR}/HOI4World/WarCreator/HoI4WarCreator.cpp")
+set(MAPPERS_CASUS_BELLIS_SOURCES ${MAPPERS_CASUS_BELLIS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CasusBelli/CasusBelliMappingFactory.cpp")
+set(MAPPERS_CASUS_BELLIS_SOURCES ${MAPPERS_CASUS_BELLIS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CasusBelli/CasusBellis.cpp")
+set(MAPPERS_CASUS_BELLIS_SOURCES ${MAPPERS_CASUS_BELLIS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CasusBelli/CasusBellisFactory.cpp")
 set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMapper.cpp")
 set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMapperFactory.cpp")
 set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMappingRuleFactory.cpp")
@@ -298,6 +303,7 @@ add_executable(
 	${HOI4WORLD_SOUNDS_SOURCES}
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPERS_SOURCES}
+	${MAPPERS_CASUS_BELLIS_SOURCES}
 	${MAPPERS_COUNTRY_SOURCES}
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
@@ -375,6 +381,7 @@ configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/TUR_operative
 configure_file("${DATA_FILE_DIR}/configurables/ArticleRules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/ArticleRules.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/StateCategories.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/StateCategories.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/regions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Map/regions.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/casus_bellis_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/casus_bellis_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterDynamicModifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterDynamicModifiers.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CultureToVoiceMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ai_peaces.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ai_peaces.txt" COPYONLY)
@@ -466,6 +473,8 @@ file(GLOB HOI4WORLD_SCRIPTED_TRIGGERS_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4Worl
 file(GLOB HOI4WORLD_SHIP_TYPES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/ShipTypes/*.cpp")
 file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/States/*.cpp")
 file(GLOB MAPPER_TESTS_SOURCES "${TEST_SOURCE_DIR}/MapperTests/*.cpp")
+set(MAPPERS_CASUS_BELLIS_TESTS_SOURCES ${MAPPERS_CASUS_BELLIS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CasusBelli/CasusBelliMappingTests.cpp")
+set(MAPPERS_CASUS_BELLIS_TESTS_SOURCES ${MAPPERS_CASUS_BELLIS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CasusBelli/CasusBellisTests.cpp")
 set(MAPPERS_COUNTRY_TESTS_SOURCES ${MAPPERS_COUNTRY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Country/CountryMapperTests.cpp")
 set(MAPPERS_COUNTRY_TESTS_SOURCES ${MAPPERS_COUNTRY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Country/CountryMappingRuleFactoryTests.cpp")
 set(MAPPERS_COUNTRYNAME_TESTS_SOURCES ${MAPPERS_COUNTRYNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CountryName/CountryNameMapperTests.cpp")
@@ -531,7 +540,6 @@ set(VIC2WORLD_STATES_TESTS_SOURCES ${VIC2WORLD_STATES_TESTS_SOURCES} "${TEST_SOU
 set(VIC2WORLD_STOCKPILES_TESTS_SOURCES ${VIC2WORLD_STOCKPILES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Stockpiles/StockpileTests.cpp")
 set(VIC2WORLD_TECHNOLOGY_TESTS_SOURCES ${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Technology/InventionTests.cpp")
 set(VIC2WORLD_TECHNOLOGY_TESTS_SOURCES ${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Technology/TechnologyFactoryTests.cpp")
-set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarBuilderTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarFactoryTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarGoalFactoryTests.cpp")
 set(VIC2WORLD_WORLD_TESTS_SOURCES ${VIC2WORLD_WORLD_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/World/WorldTests.cpp")
@@ -577,6 +585,7 @@ add_executable(
 	${HOI4WORLD_STATES_SOURCES}
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPERS_SOURCES}
+	${MAPPERS_CASUS_BELLIS_SOURCES}
 	${MAPPERS_COUNTRY_SOURCES}
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
@@ -661,6 +670,7 @@ add_executable(
 	${HOI4WORLD_SOUNDS_TESTS_SOURCES}
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${MAPPER_TESTS_SOURCES}
+	${MAPPERS_CASUS_BELLIS_TESTS_SOURCES}
 	${MAPPERS_COUNTRY_TESTS_SOURCES}
 	${MAPPERS_COUNTRYNAME_TESTS_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_TESTS_SOURCES}
@@ -735,6 +745,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ConverterLocalisations.t
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/EmptyLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/BlankLocalisations/localisation/EmptyLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ModLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/modLocalisations/localisation/ModLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Localisations/StateCategories.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/CasusBelli/casus_bellis_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/casus_bellis_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Country/country_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FlagsToIdeas/FlagsToIdeasMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Government/GovernmentMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/GovernmentMappings.txt" COPYONLY)

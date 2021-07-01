@@ -1,0 +1,12 @@
+# Mappings between Victoria 2 casus bellis and Hearts of Iron 4
+# There can be one war goal per mapping, but many CBs per mapping
+
+# Example: link = { hoi = liberate_wargoal vic = free_peoples vic = liberate_country }
+
+link = { hoi = civil_war vic = civil_war }
+link = { hoi = liberate_wargoal vic = free_peoples vic = liberate_country vic = release_puppet vic = become_independent vic = unification_release_puppet_cb }
+link = { hoi = puppet_wargoal_focus vic = add_to_sphere vic = take_from_sphere vic = make_puppet vic = estabilish_protectorate_casus_belli vic = install_communist_gov_cb }
+link = { hoi = take_core_state vic = acquire_core_state vic = unification_casus_belli }
+link = { hoi = take_state vic = acquire_state vic = acquire_substate_region vic = place_in_the_sun vic = colonial_competition vic = demand_concession_casus_belli }
+link = { hoi = annex_everything vic = conquest vic = annex_core_country vic = unification_annex_casus_belli vic = annex }
+link = { hoi = topple_government vic = status_quo vic = gunboat vic = cut_down_to_size_boxer vic = cut_down_to_size vic = dismantle_forts vic = humiliate vic = unification_humiliate_cb vic = rude_boy vic = uninstall_communist_gov_cb vic = great_war_penalty_cb }

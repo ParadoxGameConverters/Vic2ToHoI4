@@ -112,6 +112,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
@@ -392,7 +395,6 @@
     <ClCompile Include="HoI4WorldTests\GameRules\GameRuleOptionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\GameRules\GameRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\GameRules\GameRuleTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaGroupTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyFileTests.cpp" />
@@ -480,6 +482,8 @@
     <ClCompile Include="HoI4WorldTests\States\StateCategoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\States\StateHistoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp" />
+    <ClCompile Include="MapperTests\CasusBelli\CasusBellisTests.cpp" />
+    <ClCompile Include="MapperTests\CasusBelli\CasusBelliMappingTests.cpp" />
     <ClCompile Include="MapperTests\CountryName\CountryNameMapperTests.cpp" />
     <ClCompile Include="MapperTests\CountryName\CountryNameMappingTests.cpp" />
     <ClCompile Include="MapperTests\Country\CountryMapperTests.cpp" />
@@ -545,7 +549,6 @@
     <ClCompile Include="Vic2WorldTests\Stockpiles\StockpileTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Technology\InventionTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Technology\TechnologyFactoryTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarGoalFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\World\WorldTests.cpp" />
@@ -859,6 +862,10 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\TechnologiesBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMapping.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapping.h" />
@@ -1526,8 +1533,13 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\CasusBelli\casus_bellis_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\ReadMe.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2Windows;$(OutDir)/Vic2Linux</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2Windows;$(OutDir)/Vic2Linux</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

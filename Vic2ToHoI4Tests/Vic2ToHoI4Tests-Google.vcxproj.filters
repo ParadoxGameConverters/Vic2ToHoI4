@@ -115,9 +115,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultState.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     </ClCompile>
@@ -1022,9 +1019,6 @@
     <ClCompile Include="Vic2WorldTests\Wars\WarFactoryTests.cpp">
       <Filter>Vic2WorldTests\Wars</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp">
-      <Filter>Vic2WorldTests\Wars</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Regions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
     </ClCompile>
@@ -1531,6 +1525,21 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operative\OutOperative.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Operative</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\CasusBelli\CasusBellisTests.cpp">
+      <Filter>MapperTests\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\CasusBelli\CasusBelliMappingTests.cpp">
+      <Filter>MapperTests\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2040,6 +2049,15 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\OutHoi4\Operative">
       <UniqueIdentifier>{afa95475-f885-4a5f-88b8-ae95a74a96a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\CasusBelli">
+      <UniqueIdentifier>{89c3e83e-e159-4cf0-8f07-c64f8a649d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\CasusBelli">
+      <UniqueIdentifier>{88e849a4-7776-40a7-99ae-784d490f49a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\CasusBelli">
+      <UniqueIdentifier>{deb28b9b-ffe5-4178-a08b-c8fcc624cb89}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3012,6 +3030,18 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.h">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3325,6 +3355,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt">
       <Filter>TestFiles\Vic2Military</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\CasusBelli\casus_bellis_mappings.txt">
+      <Filter>TestFiles\Mappers\CasusBelli</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\launcher-settings.json">
       <Filter>TestFiles</Filter>

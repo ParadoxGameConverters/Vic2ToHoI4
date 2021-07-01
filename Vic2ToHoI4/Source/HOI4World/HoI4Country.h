@@ -109,7 +109,7 @@ class Country
 	void addState(const State& state);
 	void addCoreState(const int stateId) { coreStates.insert(stateId); }
 	void calculateIndustry(const std::map<int, State>& allStates);
-	void transferPuppets(const std::set<std::string>& transferingPuppets, std::shared_ptr<HoI4::Country> dominion);
+	void transferPuppets(const std::set<std::string>& transferringPuppets, std::shared_ptr<HoI4::Country> dominion);
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
 	void addFocusTreeBranch(const std::string& branch, OnActions& onActions);
@@ -241,6 +241,12 @@ class Country
 
 	[[nodiscard]] const bool isEligibleEnemy(std::string target);
 
+	void convertWars(const Vic2::Country& sourceCountry,
+		 const Mappers::CountryMapper& countryMap,
+		 const Mappers::CasusBellis& casusBellis,
+		 const Mappers::ProvinceMapper& provinceMapper,
+		 const std::map<int, int>& provinceToStateIDMap);
+
 	void addGeneratedDominion(const std::string& region, const std::string& tag) { generatedDominions[region] = tag; }
 	std::optional<std::string> getDominionTag(const std::string& region);
 	void addGlobalEventTarget(const std::string& name) { globalEventTargets.insert(name); }
@@ -258,7 +264,6 @@ class Country
 		 Localisation& hoi4Localisations);
 	void convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
-	void convertWars(const Vic2::Country& sourceCountry, const Mappers::CountryMapper& countryMap);
 
 	bool attemptToPutCapitalInPreferredNonWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
