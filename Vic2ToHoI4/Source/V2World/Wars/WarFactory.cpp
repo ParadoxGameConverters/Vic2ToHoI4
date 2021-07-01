@@ -7,16 +7,16 @@
 Vic2::War::Factory::Factory()
 {
 	registerKeyword("attacker", [this](std::istream& theStream) {
-		options.attackers.insert(commonItems::singleString{theStream}.getString());
+		options.attackers.insert(commonItems::getString(theStream));
 	});
 	registerKeyword("original_attacker", [this](std::istream& theStream) {
-		options.originalAttacker = commonItems::singleString{theStream}.getString();
+		options.originalAttacker = commonItems::getString(theStream);
 	});
 	registerKeyword("defender", [this](std::istream& theStream) {
-		options.defenders.insert(commonItems::singleString{theStream}.getString());
+		options.defenders.insert(commonItems::getString(theStream));
 	});
 	registerKeyword("original_defender", [this](std::istream& theStream) {
-		options.originalDefender = commonItems::singleString{theStream}.getString();
+		options.originalDefender = commonItems::getString(theStream);
 	});
 	registerKeyword("original_wargoal", [this](std::istream& theStream) {
 		const auto warGoal = warGoalFactory.getWarGoal(theStream);
