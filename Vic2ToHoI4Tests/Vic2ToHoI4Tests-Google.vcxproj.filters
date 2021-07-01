@@ -1535,11 +1535,11 @@
     <ClCompile Include="MapperTests\CasusBelli\CasusBellisTests.cpp">
       <Filter>MapperTests\CasusBelli</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliFactory.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
-    </ClCompile>
-    <ClCompile Include="MapperTests\CasusBelli\CasusBelliTests.cpp">
+    <ClCompile Include="MapperTests\CasusBelli\CasusBelliMappingTests.cpp">
       <Filter>MapperTests\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3036,10 +3036,10 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelli.h">
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMapping.h">
       <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliFactory.h">
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
     </ClInclude>
   </ItemGroup>

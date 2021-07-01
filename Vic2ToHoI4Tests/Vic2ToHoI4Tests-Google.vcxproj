@@ -112,7 +112,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.cpp" />
@@ -483,7 +483,7 @@
     <ClCompile Include="HoI4WorldTests\States\StateHistoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp" />
     <ClCompile Include="MapperTests\CasusBelli\CasusBellisTests.cpp" />
-    <ClCompile Include="MapperTests\CasusBelli\CasusBelliTests.cpp" />
+    <ClCompile Include="MapperTests\CasusBelli\CasusBelliMappingTests.cpp" />
     <ClCompile Include="MapperTests\CountryName\CountryNameMapperTests.cpp" />
     <ClCompile Include="MapperTests\CountryName\CountryNameMappingTests.cpp" />
     <ClCompile Include="MapperTests\Country\CountryMapperTests.cpp" />
@@ -862,8 +862,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\TechnologiesBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelli.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMapping.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellis.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBellisFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.h" />

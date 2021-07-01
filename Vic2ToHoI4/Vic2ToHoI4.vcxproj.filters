@@ -1291,7 +1291,7 @@
     <ClCompile Include="Source\Mappers\CasusBelli\CasusBellisFactory.cpp">
       <Filter>Mappers\CasusBelli</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\CasusBelli\CasusBelliFactory.cpp">
+    <ClCompile Include="Source\Mappers\CasusBelli\CasusBelliMappingFactory.cpp">
       <Filter>Mappers\CasusBelli</Filter>
     </ClCompile>
     <ClCompile Include="..\common_items\ConverterVersion.cpp">
@@ -2544,10 +2544,10 @@
     <ClInclude Include="Source\Mappers\CasusBelli\CasusBellisFactory.h">
       <Filter>Mappers\CasusBelli</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelli.h">
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliMapping.h">
       <Filter>Mappers\CasusBelli</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliFactory.h">
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliMappingFactory.h">
       <Filter>Mappers\CasusBelli</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Wars\WarGoal.h">

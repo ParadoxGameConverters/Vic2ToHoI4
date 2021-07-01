@@ -1,11 +1,11 @@
-#include "CasusBelliFactory.h"
+#include "CasusBelliMappingFactory.h"
 #include "CommonRegexes.h"
 #include "ParserHelpers.h"
 using commonItems::getString;
 
 
 
-Mappers::CasusBelliFactory::CasusBelliFactory()
+Mappers::CasusBelliMappingFactory::CasusBelliMappingFactory()
 {
 	registerKeyword("vic", [this](std::istream& theStream) {
 		cbs_.insert(getString(theStream));
@@ -17,10 +17,10 @@ Mappers::CasusBelliFactory::CasusBelliFactory()
 }
 
 
-Mappers::CasusBelli Mappers::CasusBelliFactory::importCasusBelli(std::istream& theStream)
+Mappers::CasusBelliMapping Mappers::CasusBelliMappingFactory::importCasusBelli(std::istream& theStream)
 {
 	cbs_.clear();
 	warGoal_.clear();
 	parseStream(theStream);
-	return CasusBelli(cbs_, warGoal_);
+	return CasusBelliMapping{.cbs_ = cbs_, .warGoal_ = warGoal_};
 }

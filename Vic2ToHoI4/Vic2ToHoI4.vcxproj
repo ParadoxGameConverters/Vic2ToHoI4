@@ -200,7 +200,7 @@
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="Source\HOI4World\WarCreator\MapUtils.cpp" />
-    <ClCompile Include="Source\Mappers\CasusBelli\CasusBelliFactory.cpp" />
+    <ClCompile Include="Source\Mappers\CasusBelli\CasusBelliMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\CasusBelli\CasusBellis.cpp" />
     <ClCompile Include="Source\Mappers\CasusBelli\CasusBellisFactory.cpp" />
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMapper.cpp" />
@@ -564,8 +564,8 @@
     <ClInclude Include="Source\HOI4World\States\StateCategoriesBuilder.h" />
     <ClInclude Include="Source\HOI4World\TechnologiesBuilder.h" />
     <ClInclude Include="Source\HOI4World\WarCreator\MapUtils.h" />
-    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelli.h" />
-    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliFactory.h" />
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliMapping.h" />
+    <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliMappingFactory.h" />
     <ClInclude Include="Source\Mappers\CasusBelli\CasusBellis.h" />
     <ClInclude Include="Source\Mappers\CasusBelli\CasusBellisFactory.h" />
     <ClInclude Include="Source\Mappers\CountryName\CountryNameMapper.h" />

@@ -7,9 +7,9 @@
 Mappers::CasusBellisFactory::CasusBellisFactory()
 {
 	registerKeyword("link", [this](std::istream& theStream) {
-		for (const auto casusBelli = casusBelliFactory.importCasusBelli(theStream); const auto& cb: casusBelli.getCBs())
+		for (const auto casusBelli = casusBelliFactory.importCasusBelli(theStream); const auto& cb: casusBelli.cbs_)
 		{
-			mappings.emplace(cb, casusBelli.getWarGoal());
+			mappings.emplace(cb, casusBelli.warGoal_);
 		}
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

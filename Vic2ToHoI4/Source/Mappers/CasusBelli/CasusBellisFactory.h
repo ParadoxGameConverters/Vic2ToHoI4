@@ -3,7 +3,7 @@
 
 
 
-#include "CasusBelliFactory.h"
+#include "CasusBelliMappingFactory.h"
 #include "CasusBellis.h"
 #include "Parser.h"
 #include <memory>
@@ -23,7 +23,7 @@ class CasusBellisFactory: commonItems::parser
   private:
 	std::unordered_map<std::string, std::string> mappings;
 
-	CasusBelliFactory casusBelliFactory;
+	CasusBelliMappingFactory casusBelliFactory;
 };
 
 } // namespace Mappers
