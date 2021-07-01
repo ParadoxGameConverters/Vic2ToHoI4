@@ -3336,6 +3336,8 @@ south_asian = {
 		neutrality = { "gfx/interface/ideas/generic_political_advisor_india_1.dds" }
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
+	male_monarch_portraits = { }
+	female_monarch_portraits = { "gfx/leaders/Arabia/portrait_arabia_generic_operative_female_1.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_female_2.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_female_3.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_female_4.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_female_5.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds" } # Katrina Kaif
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/bhutan.dds"
 	}
@@ -3378,6 +3380,7 @@ indo_iranian = { #HFM
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
+	female_operator_portraits = { "gfx/leaders/RAJ/portrait_raj_noor_inayat_khan.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
 	}
@@ -3461,7 +3464,7 @@ far_east_asian = {
 		neutrality = { "gfx/interface/ideas/idea_chuichi_nagumo.dds" } 
 		radical = { "gfx/interface/ideas/idea_fushimi_hiroyasu.dds" }
 	}
-	male_operative_portraits = { "gfx/leaders/Asia/portrait_asia_generic_operative_male_3.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_male_5.dds"  "gfx/leaders/Asia/portrait_asia_generic_operative_male_8.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_male_9.dds" } # All of these are Korean
+	male_operative_portraits = { "gfx/leaders/Asia/portrait_asia_generic_operative_male_3.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_male_5.dds"  "gfx/leaders/Asia/portrait_asia_generic_operative_male_8.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_male_9.dds" gfx/leaders/JAP/portrait_jap_takeo_yoshikawa.dds } # All of the generic ones are Korean
 	female_operative_portraits = { "gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_2.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_3.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_4.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_5.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_6.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_7.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_8.dds" "gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds" } # All of these are Japanese
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_jap_hirohito.dds"
