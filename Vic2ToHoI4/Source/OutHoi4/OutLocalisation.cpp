@@ -50,7 +50,7 @@ void outputStateLocalisations(const std::string& localisationPath,
 
 		for (const auto& mapping: languageToLocalisations.second)
 		{
-			localisationFile << " STATE_" << mapping.first << ":10 \"" << mapping.second << "\"" << std::endl;
+			localisationFile << " STATE_" << mapping.first << ":0 \"" << mapping.second << "\"" << std::endl;
 		}
 	}
 }
