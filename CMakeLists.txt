@@ -780,7 +780,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/ReadMe.txt" "${TEST_OUTPUT_DIRECTORY}/
 configure_file("Vic2ToHoI4Tests/TestFiles/ReadMe.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/ReadMe.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/effects_file.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/empty_effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/empty_effects_file.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Sounds/CultureToVoiceMappings.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Sounds/CultureToVoiceMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/BaseGameTech1.txt" "${TEST_OUTPUT_DIRECTORY}/BaseGameInventions/inventions/Tech1.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/BaseGameTech2.txt" "${TEST_OUTPUT_DIRECTORY}/BaseGameInventions/inventions/Tech2.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTech3.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod1/inventions/Tech3.txt" COPYONLY)
