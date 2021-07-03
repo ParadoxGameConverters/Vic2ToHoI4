@@ -18,8 +18,8 @@ TEST(Vic2World_EU4ToVic2Data_CountriesDataTests, CountryDataCanBeImported)
 {
 	const auto countriesData = Vic2::CountriesData::Factory().importCountriesData(
 		 *Configuration::Builder()
-				.addVic2Mod(Mod{"boring", "uninteresting_mod"})
-				.addVic2Mod(Mod{"interesting", "Vic2/mod/test_directory"})
+				.addVic2Mod(Mod("boring", "uninteresting_mod"))
+				.addVic2Mod(Mod("interesting", "Vic2/mod/test_directory"))
 				.build());
 
 	ASSERT_EQ("test_dynasty", countriesData->getCountryData("TAG")->getLastDynasty());

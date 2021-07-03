@@ -34,7 +34,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, ColorCanBeSetFromMod)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryModTestData.txt",
-			  {Mod{"mod", "mod/"}},
+			  {Mod("mod", "mod/")},
 			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_TRUE(commonCountryData->getColor().has_value());
@@ -47,7 +47,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaColor)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryTestData.txt",
-			  {Mod{"missing mod", "missing_mod/"}},
+			  {Mod("missing mod", "missing_mod/")},
 			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_TRUE(commonCountryData->getColor().has_value());
@@ -85,7 +85,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesCanBeSetFromMod)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryModTestData.txt",
-			  {Mod{"mod", "mod/"}},
+			  {Mod("mod", "mod/")},
 			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_THAT(commonCountryData->getUnitNames(),
@@ -99,7 +99,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaUnitNames)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryTestData.txt",
-			  {Mod{"missing mod", "missing_mod/"}},
+			  {Mod("missing mod", "missing_mod/")},
 			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_THAT(commonCountryData->getUnitNames(),
@@ -138,7 +138,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, PartiesCanBeSetFromMod)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryModTestData.txt",
-			  {Mod{"mod", "mod/"}},
+			  {Mod("mod", "mod/")},
 			  *Configuration::Builder().setVic2Path("./").build());
 
 	const auto parties = commonCountryData->getParties();
@@ -152,7 +152,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaParties)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryTestData.txt",
-			  {Mod{"missing mod", "missing_mod/"}},
+			  {Mod("missing mod", "missing_mod/")},
 			  *Configuration::Builder().setVic2Path("./").build());
 
 	const auto parties = commonCountryData->getParties();
