@@ -163,9 +163,6 @@
     <Filter Include="OutHoi4\Operations">
       <UniqueIdentifier>{142629c2-e215-4ab7-86c4-389ac8a199ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2World\Mods">
-      <UniqueIdentifier>{6f01c38e-bff8-4c35-b0a1-730228759ecc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vic2World\Provinces">
       <UniqueIdentifier>{320b203a-a9cb-4728-8958-a55bbf9e6dad}</UniqueIdentifier>
     </Filter>
@@ -282,6 +279,9 @@
     </Filter>
     <Filter Include="Mappers\CasusBelli">
       <UniqueIdentifier>{8b3d14a7-b50f-4a6a-9126-d662b52723bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonItems\ModLoader">
+      <UniqueIdentifier>{40906980-dde2-4955-898c-e4da9c9181c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -934,9 +934,6 @@
     <ClCompile Include="Source\HOI4World\Operations\Operations.cpp">
       <Filter>HoI4World\Operations</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Mods\ModFactory.cpp">
-      <Filter>Vic2World\Mods</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Provinces\Province.cpp">
       <Filter>Vic2World\Provinces</Filter>
     </ClCompile>
@@ -1296,6 +1293,12 @@
     </ClCompile>
     <ClCompile Include="..\common_items\ConverterVersion.cpp">
       <Filter>CommonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\ModLoader\ModLoader.cpp">
+      <Filter>CommonItems\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\ModLoader\ModParser.cpp">
+      <Filter>CommonItems\ModLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2027,15 +2030,6 @@
     <ClInclude Include="Source\OutHoi4\Operations\OutOperations.h">
       <Filter>OutHoi4\Operations</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\Mods\Mod.h">
-      <Filter>Vic2World\Mods</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Mods\ModFactory.h">
-      <Filter>Vic2World\Mods</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Mods\ModBuilder.h">
-      <Filter>Vic2World\Mods</Filter>
-    </ClInclude>
     <ClInclude Include="Source\V2World\Provinces\Province.h">
       <Filter>Vic2World\Provinces</Filter>
     </ClInclude>
@@ -2555,6 +2549,12 @@
     </ClInclude>
     <ClInclude Include="..\common_items\ConverterVersion.h">
       <Filter>CommonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common_items\ModLoader\ModLoader.h">
+      <Filter>CommonItems\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common_items\ModLoader\ModParser.h">
+      <Filter>CommonItems\ModLoader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

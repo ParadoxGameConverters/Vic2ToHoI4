@@ -5,7 +5,6 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "V2World/Mods/ModFactory.h"
 #include <fstream>
 #include <vector>
 
@@ -52,15 +51,6 @@ Configuration::Factory::Factory()
 		}
 
 		Log(LogLevel::Info) << "\tVictoria 2 install path is " << configuration->Vic2Path;
-	});
-	registerKeyword("Vic2ModPath", [this](std::istream& theStream) {
-		configuration->Vic2ModPath = commonItems::singleString{theStream}.getString();
-		if (configuration->Vic2ModPath.empty() || !commonItems::DoesFolderExist(configuration->Vic2ModPath))
-		{
-			throw std::runtime_error("No Victoria 2 mod path was specified in configuration.txt, or the path was invalid");
-		}
-
-		Log(LogLevel::Info) << "\tVictoria 2 mod path is " << configuration->Vic2ModPath;
 	});
 	registerKeyword("targetGameModPath", [this](std::istream& theStream) {
 		Log(LogLevel::Info) << "\tHoI4 mod path is " << commonItems::getString(theStream);
@@ -232,16 +222,12 @@ void Configuration::Factory::setOutputName(const std::string& V2SaveFileName, co
 
 void Configuration::Factory::importMods()
 {
-	Vic2::Mod::Factory modFactory;
+	commonItems::ModLoader modLoader;
+	Mods incomingMods;
 	for (const auto& modFileName: modFileNames)
-	{
-		if (commonItems::DoesFileExist(configuration->Vic2ModPath + "/" + modFileName))
-		{
-			auto mod = modFactory.getMod(modFileName, configuration->Vic2ModPath);
-			configuration->Vic2Mods.push_back(std::move(*mod));
-		}
-	}
-
+		incomingMods.emplace_back(Mod("", modFileName));
+	modLoader.loadMods(configuration->getVic2Path(), incomingMods);
+	configuration->Vic2Mods = modLoader.getMods();
 	sortMods();
 }
 
@@ -255,22 +241,22 @@ void Configuration::Factory::sortMods()
 	std::map<std::string, std::set<std::string>> incomingDependencies;
 	for (const auto& mod: unsortedMods)
 	{
-		for (const auto& dependency: mod.getDependencies())
+		for (const auto& dependency: mod.dependencies)
 		{
-			auto [itr, inserted] = incomingDependencies.emplace(dependency, std::set{mod.getName()});
+			auto [itr, inserted] = incomingDependencies.emplace(dependency, std::set{mod.name});
 			if (!inserted)
 			{
-				itr->second.insert(mod.getName());
+				itr->second.insert(mod.name);
 			}
 		}
 	}
 
 	// add mods with no incoming edges to the sorted mods
-	std::vector<Vic2::Mod> sortedMods;
+	Mods sortedMods;
 	while (!unsortedMods.empty())
 	{
 		auto itr = unsortedMods.begin();
-		while (incomingDependencies.contains(itr->getName()))
+		while (incomingDependencies.contains(itr->name))
 		{
 			++itr;
 			if (itr == unsortedMods.end())
@@ -281,10 +267,10 @@ void Configuration::Factory::sortMods()
 
 		sortedMods.push_back(*itr);
 
-		for (const auto& dependencyName: itr->getDependencies())
+		for (const auto& dependencyName: itr->dependencies)
 		{
 			auto dependency = incomingDependencies.find(dependencyName);
-			dependency->second.erase(itr->getName());
+			dependency->second.erase(itr->name);
 			if (dependency->second.empty())
 			{
 				incomingDependencies.erase(dependencyName);

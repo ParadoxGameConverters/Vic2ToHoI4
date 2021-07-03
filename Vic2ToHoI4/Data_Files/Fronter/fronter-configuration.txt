@@ -38,16 +38,6 @@ requiredFolder = {
 }
 
 requiredFolder = {
-	name = Vic2ModPath
-	displayName = VIC2MOD
-	tooltip = VIC2MODTIP
-	mandatory = true
-	searchPathType = steamFolder
-	searchPathID = 42960
-	searchPath = "mod"
-}
-
-requiredFolder = {
 	name = HoI4directory
 	displayName = HOI4FOLDER
 	tooltip = HOI4FOLDERTIP

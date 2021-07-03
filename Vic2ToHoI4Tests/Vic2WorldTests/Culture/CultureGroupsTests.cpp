@@ -1,6 +1,5 @@
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Culture/CultureGroupsFactory.h"
-#include "V2World/Mods/ModBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -26,10 +25,7 @@ TEST(Vic2World_CultureGroupsTests, BaseGameCulturesCanBeMatched)
 TEST(Vic2World_CultureGroupsTests, ModCulturesCanBeMatched)
 {
 	const auto cultureGroups = Vic2::CultureGroups::Factory().getCultureGroups(
-		 *Configuration::Builder()
-				.setVic2ModPath("./ModCultures")
-				.addVic2Mod(*Vic2::Mod::Builder().setDirectory("ModOne").build())
-				.build());
+		 *Configuration::Builder().addVic2Mod(Mod("ModOne", "ModCultures/ModOne/")).build());
 
 	ASSERT_EQ("mod_one_group", cultureGroups->getGroup("matched_mod_one_culture"));
 }
@@ -37,13 +33,12 @@ TEST(Vic2World_CultureGroupsTests, ModCulturesCanBeMatched)
 
 TEST(Vic2World_CultureGroupsTests, OnlyFinalModCulturesCanBeMatched)
 {
-	const auto cultureGroups = Vic2::CultureGroups::Factory().getCultureGroups(
-		 *Configuration::Builder()
-				.setVic2Path("./BaseCultures")
-				.setVic2ModPath("./ModCultures")
-				.addVic2Mod(*Vic2::Mod::Builder().setDirectory("ModOne").build())
-				.addVic2Mod(*Vic2::Mod::Builder().setDirectory("ModTwo").build())
-				.build());
+	const auto cultureGroups =
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder()
+																				.setVic2Path("./BaseCultures")
+																				.addVic2Mod(Mod("ModOne", "ModCultures/ModOne/"))
+																				.addVic2Mod(Mod("ModTwo", "ModCultures/ModTwo/"))
+																				.build());
 
 	ASSERT_NE("base_game_group", cultureGroups->getGroup("matched_culture"));
 	ASSERT_NE("mod_one_group", cultureGroups->getGroup("matched_mod_one_culture"));

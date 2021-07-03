@@ -52,7 +52,7 @@ std::map<std::string, std::string> Vic2::Inventions::Factory::getTechFilesAndPat
 	}
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		auto modInventionsPath = theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/inventions/";
+		const auto modInventionsPath = mod.path + "/inventions/";
 		if (commonItems::DoesFolderExist(modInventionsPath))
 		{
 			for (const auto& file: commonItems::GetAllFilesInFolder(modInventionsPath))

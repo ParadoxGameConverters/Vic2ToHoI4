@@ -26,12 +26,11 @@ std::unique_ptr<Vic2::CultureGroups> Vic2::CultureGroups::Factory::getCultureGro
 	parseFile(theConfiguration.getVic2Path() + "/common/cultures.txt");
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		if (commonItems::DoesFileExist(
-				  theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/common/cultures.txt"))
+		if (commonItems::DoesFileExist(mod.path + "/common/cultures.txt"))
 		{
-			Log(LogLevel::Info) << "\tReading mod cultures from " << mod.getName();
+			Log(LogLevel::Info) << "\tReading mod cultures from " << mod.name;
 			cultureGroups->mappings.clear();
-			parseFile(theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/common/cultures.txt");
+			parseFile(mod.path + "/common/cultures.txt");
 		}
 	}
 

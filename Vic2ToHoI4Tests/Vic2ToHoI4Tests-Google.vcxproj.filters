@@ -926,15 +926,6 @@
     <ClCompile Include="HoI4WorldTests\Operations\OperationFactoryTests.cpp">
       <Filter>HoI4WorldTests\Operations</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Mods</Filter>
-    </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp">
-      <Filter>Vic2WorldTests\Mods</Filter>
-    </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp">
-      <Filter>Vic2WorldTests\Mods</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Provinces</Filter>
     </ClCompile>
@@ -1337,9 +1328,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Mods\ModTests.cpp">
-      <Filter>Vic2WorldTests\Mods</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
     </ClCompile>
@@ -1540,6 +1528,12 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\ModLoader\ModLoader.cpp">
+      <Filter>Vic2ToHoI4 files\common items\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\ModLoader\ModParser.cpp">
+      <Filter>Vic2ToHoI4 files\common items\ModLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1779,12 +1773,6 @@
     </Filter>
     <Filter Include="HoI4WorldTests\Operations">
       <UniqueIdentifier>{bd1f6857-8d52-41ff-8325-f0417e78c69d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2ToHoI4 files\Vic2\Mods">
-      <UniqueIdentifier>{a87b1b5f-ef7e-4c38-aa1e-14e090bc6b85}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2WorldTests\Mods">
-      <UniqueIdentifier>{e1e9456a-3556-4a2b-8326-b7151789a6c1}</UniqueIdentifier>
     </Filter>
     <Filter Include="TestFiles\Mods">
       <UniqueIdentifier>{255ad4b3-2739-44bd-bff1-e462fa70c6df}</UniqueIdentifier>
@@ -2059,6 +2047,9 @@
     <Filter Include="TestFiles\Mappers\CasusBelli">
       <UniqueIdentifier>{deb28b9b-ffe5-4178-a08b-c8fcc624cb89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\common items\ModLoader">
+      <UniqueIdentifier>{b7736806-a5dc-4af5-bc5c-240a5ec89f45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2270,15 +2261,6 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\UnitFactory.h">
       <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Mods\Mod.h">
-      <Filter>Vic2ToHoI4 files\Vic2\Mods</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Mods\ModBuilder.h">
-      <Filter>Vic2ToHoI4 files\Vic2\Mods</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.h">
-      <Filter>Vic2ToHoI4 files\Vic2\Mods</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.h">
       <Filter>Vic2ToHoI4 files\Vic2\Politics</Filter>

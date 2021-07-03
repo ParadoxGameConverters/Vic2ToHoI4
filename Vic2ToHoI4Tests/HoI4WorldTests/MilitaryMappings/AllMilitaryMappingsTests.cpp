@@ -1,5 +1,4 @@
 #include "HOI4World/MilitaryMappings/AllMilitaryMappings.h"
-#include "V2World/Mods/ModBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -36,7 +35,7 @@ HoI4World_MilitaryMappings_allMilitaryMappingsTests::HoI4World_MilitaryMappings_
 
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWithNoMods)
 {
-	const std::vector<Vic2::Mod> mods;
+	const Mods mods;
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
@@ -44,8 +43,8 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWi
 
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWithInvalidMod)
 {
-	std::vector<Vic2::Mod> mods;
-	mods.push_back(*Vic2::Mod::Builder().setName("NotAMod").build());
+	Mods mods;
+	mods.emplace_back(Mod("NotAMod", ""));
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
@@ -53,8 +52,8 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWi
 
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithSimpleName)
 {
-	std::vector<Vic2::Mod> mods;
-	mods.push_back(*Vic2::Mod::Builder().setName("PDM").build());
+	Mods mods;
+	mods.emplace_back(Mod("PDM", "PDM/"));
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("PDM"), specificMappings.getMappingsName());
 }
@@ -62,8 +61,8 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithSi
 
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithQuotedName)
 {
-	std::vector<Vic2::Mod> mods;
-	mods.push_back(*Vic2::Mod::Builder().setName("POPs of Darkness").build());
+	Mods mods;
+	mods.emplace_back(Mod("POPs of Darkness", "POP/"));
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("POPs of Darkness"), specificMappings.getMappingsName());
 }

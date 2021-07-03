@@ -19,8 +19,7 @@ std::unique_ptr<Vic2::CountriesData> Vic2::CountriesData::Factory::importCountri
 
 	for (const auto& mod: configuration.getVic2Mods())
 	{
-		const auto filename =
-			 configuration.getVic2ModPath() + "/" + mod.getDirectory() + "/common/botanical_expedition.txt";
+		const auto filename = mod.path + "/common/botanical_expedition.txt";
 		if (!commonItems::DoesFileExist(filename))
 		{
 			continue;

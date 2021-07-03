@@ -25,6 +25,7 @@ include(ExternalProject)
 #    BUILD_COMMAND make
 #)
 include_directories(common_items)
+include_directories(common_items/ZipLib)
 include_directories(bitmap)
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${TEST_SOURCE_DIR})
@@ -32,6 +33,8 @@ include_directories(googletest/googletest)
 include_directories(googletest/googletest/include)
 include_directories(googletest/googlemock)
 include_directories(googletest/googlemock/include)
+
+add_subdirectory(common_items/ZipLib [binary_dir])
 
 configure_file("${DATA_FILE_DIR}/FAQ.txt" "${FRONTER_OUTPUT_DIRECTORY}/FAQ.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/license.txt" "${FRONTER_OUTPUT_DIRECTORY}/license.txt" COPYONLY)
@@ -364,6 +367,9 @@ set_target_properties( Vic2ToHoi4Converter
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
+
+target_link_libraries(Vic2ToHoi4Converter ZIPLIB pthread)
+
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/arabic_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/arabic_operative_codenames.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/CZE_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/CZE_operative_codenames.txt" COPYONLY)
@@ -805,10 +811,11 @@ configure_file("Vic2ToHoI4Tests/TestFiles/World/TWO.txt" "${TEST_OUTPUT_DIRECTOR
 configure_file("Vic2ToHoI4Tests/TestFiles/Vic2World/EU4ToVic2Data/botanical_expedition.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/test_directory/common/botanical_expedition.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2/v2game.exe" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMac" "${TEST_OUTPUT_DIRECTORY}/somethingWithMacOS/somethingElse/Vic2Path/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacApp" "${TEST_OUTPUT_DIRECTORY}/Vic2MacApp/Victoria 2 - Heart Of Darkness.app/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}/somethingWithMacOS/MacOS/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests pthread)
+target_link_libraries(Vic2ToHoi4ConverterTests ZIPLIB pthread)

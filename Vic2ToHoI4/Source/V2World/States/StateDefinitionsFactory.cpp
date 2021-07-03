@@ -40,7 +40,7 @@ std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Factory::getStat
 	auto stateMapInitialized = false;
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		const auto regionFileName = theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/map/region.txt";
+		const auto regionFileName = mod.path + "/map/region.txt";
 		if (commonItems::DoesFileExist(regionFileName))
 		{
 			parseFile(regionFileName);

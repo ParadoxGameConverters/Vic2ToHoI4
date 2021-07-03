@@ -1,9 +1,7 @@
 #include "Configuration.h"
-#include "V2World/Mods/ModBuilder.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>
-
 
 
 TEST(ConfigurationTests, InputNameDefaultsToInputDotV2)
@@ -298,37 +296,6 @@ TEST(ConfigurationTests, Vic2PathThrowsExceptionOnPathWithoutVic2)
 	ASSERT_THROW(Configuration::Factory().importConfiguration(input, converterVersion), std::runtime_error);
 }
 
-
-TEST(ConfigurationTests, Vic2ModPathDefaultsToEmpty)
-{
-	std::stringstream input;
-	const commonItems::ConverterVersion converterVersion;
-	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
-
-	ASSERT_TRUE(theConfiguration->getVic2ModPath().empty());
-}
-
-
-TEST(ConfigurationTests, Vic2ModPathCanBeSet)
-{
-	std::stringstream input;
-	input << R"(Vic2ModPath = "./Vic2/Mod")";
-	const commonItems::ConverterVersion converterVersion;
-	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
-
-	ASSERT_EQ("./Vic2/Mod", theConfiguration->getVic2ModPath());
-}
-
-
-TEST(ConfigurationTests, Vic2PathThrowsExceptionOnNonExistantPath)
-{
-	std::stringstream input;
-	input << R"(Vic2ModPath = "./Vic2/FakeMod")";
-	const commonItems::ConverterVersion converterVersion;
-
-	ASSERT_THROW(Configuration::Factory().importConfiguration(input, converterVersion), std::runtime_error);
-}
-
 TEST(ConfigurationTests, InstallationVersionsAreLogged)
 {
 	std::stringstream input;
@@ -350,7 +317,8 @@ TEST(ConfigurationTests, InstallationVersionsAreLogged)
 		 "    [INFO] \tHoI4 path install path is ./HoI4Windows\n"
 		 "    [INFO] \tVic2 version: 1.3\n"
 		 "    [INFO] \tHoI4 version: 1.10.7\n"
-		 "    [INFO] Using output name input\n",
+		 "    [INFO] Using output name input\n"
+		 "    [INFO] No mods were detected in savegame. Skipping mod processing.\n",
 		 log.str());
 }
 
@@ -374,7 +342,8 @@ TEST(ConfigurationTests, HoI4ModPathIsLogged)
 		 "   [ERROR] Vic2 version could not be determined, proceeding blind!\n"
 		 " [WARNING] Failure extracting version: /launcher-settings.json does not exist.\n"
 		 "   [ERROR] HoI4 version could not be determined, proceeding blind!\n"
-		 "    [INFO] Using output name input\n",
+		 "    [INFO] Using output name input\n"
+		 "    [INFO] No mods were detected in savegame. Skipping mod processing.\n",
 		 log.str());
 }
 
@@ -391,7 +360,7 @@ TEST(ConfigurationTests, Vic2ModsDefaultsToEmpty)
 TEST(ConfigurationTests, Vic2ModsCanBeSet)
 {
 	std::stringstream input;
-	input << R"(Vic2ModPath = "./Vic2/Mod")";
+	input << R"(Vic2directory = "./Vic2")";
 	input << "selectedMods = { \n";
 	input << "\t\"Test.mod\"\n";
 	input << "\t\"NonExistentFile.mod\"\n";
@@ -400,14 +369,14 @@ TEST(ConfigurationTests, Vic2ModsCanBeSet)
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
 
 	ASSERT_EQ(1, theConfiguration->getVic2Mods().size());
-	ASSERT_EQ("Test Mod", theConfiguration->getVic2Mods()[0].getName());
+	ASSERT_EQ("Test Mod", theConfiguration->getVic2Mods()[0].name);
 }
 
 
 TEST(ConfigurationTests, Vic2ModsWithDependenciesAreBeforeTheirDependencies)
 {
 	std::stringstream input;
-	input << R"(Vic2ModPath = "./Vic2/Mod")";
+	input << R"(Vic2directory = "./Vic2")";
 	input << "selectedMods = { \n";
 	input << "\t\"DependencyTwo.mod\"\n";
 	input << "\t\"DependencyOne.mod\"\n";
@@ -418,10 +387,10 @@ TEST(ConfigurationTests, Vic2ModsWithDependenciesAreBeforeTheirDependencies)
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
 
 	ASSERT_THAT(theConfiguration->getVic2Mods(),
-		 testing::ElementsAre(*Vic2::Mod::Builder().setName("Dependent Mod").build(),
-			  *Vic2::Mod::Builder().setName("Dependency One").build(),
-			  *Vic2::Mod::Builder().setName("Dependency Two").build(),
-			  *Vic2::Mod::Builder().setName("Test Mod").build()));
+		 testing::ElementsAre(Mod("Dependent Mod", "./Vic2/mod/test_directory/", std::set<Name>{"Dependency One"}),
+			  Mod("Dependency One", "./Vic2/mod/test_directory/", std::set<Name>{"Dependency Two"}),
+			  Mod("Dependency Two", "./Vic2/mod/test_directory/"),
+			  Mod("Test Mod", "./Vic2/mod/test_directory/")));
 }
 
 

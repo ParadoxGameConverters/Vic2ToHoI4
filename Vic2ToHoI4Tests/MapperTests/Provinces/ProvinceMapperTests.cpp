@@ -1,7 +1,6 @@
 #include "Configuration.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mappers/Provinces/ProvinceMapperFactory.h"
-#include "V2World/Mods/ModBuilder.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -36,12 +35,10 @@ TEST(Mappers_Provinces_ProvinceMapperTests, ProvinceMappingsCanBeImportedFromMod
 {
 	const auto province_mappings =
 		 Mappers::ProvinceMapper::Factory(*Configuration::Builder().setHoI4Path("./empty_definition/").build())
-			  .importProvinceMapper(
-					*Configuration::Builder()
-						  .addVic2Mod(
-								*Vic2::Mod::Builder().setName("no_mappings_mod").setDirectory("no_mappings_mod").build())
-						  .addVic2Mod(*Vic2::Mod::Builder().setName("mod").setDirectory("mod").build())
-						  .build());
+			  .importProvinceMapper(*Configuration::Builder()
+												  .addVic2Mod(Mod("no_mappings_mod", "no_mappings_mod"))
+												  .addVic2Mod(Mod("mod", "mod/"))
+												  .build());
 
 	ASSERT_THAT(province_mappings->getVic2ToHoI4ProvinceMapping(5), testing::ElementsAre(5, 50));
 	ASSERT_THAT(province_mappings->getVic2ToHoI4ProvinceMapping(6), testing::ElementsAre(6));

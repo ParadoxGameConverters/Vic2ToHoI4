@@ -3,12 +3,11 @@
 
 
 
-#include "V2World/Mods/Mod.h"
 #include "MilitaryMappings.h"
+#include "ModLoader/ModLoader.h"
 #include "Parser.h"
 #include <map>
 #include <string>
-#include <vector>
 
 
 
@@ -20,7 +19,7 @@ class allMilitaryMappings: commonItems::parser
   public:
 	explicit allMilitaryMappings(std::istream& theStream);
 
-	[[nodiscard]] const militaryMappings& getMilitaryMappings(const std::vector<Vic2::Mod>& Vic2Mods) const;
+	[[nodiscard]] const militaryMappings& getMilitaryMappings(const Mods& Vic2Mods) const;
 
   private:
 	std::map<std::string, militaryMappings> theMappings;
