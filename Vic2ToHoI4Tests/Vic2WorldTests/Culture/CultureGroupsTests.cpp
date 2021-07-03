@@ -25,7 +25,7 @@ TEST(Vic2World_CultureGroupsTests, BaseGameCulturesCanBeMatched)
 TEST(Vic2World_CultureGroupsTests, ModCulturesCanBeMatched)
 {
 	const auto cultureGroups = Vic2::CultureGroups::Factory().getCultureGroups(
-		 *Configuration::Builder().addVic2Mod(Mod("ModOne", "ModCultures/ModOne/")).build());
+		 *Configuration::Builder().addVic2Mod(Mod{"ModOne", "ModCultures/ModOne/"}).build());
 
 	ASSERT_EQ("mod_one_group", cultureGroups->getGroup("matched_mod_one_culture"));
 }
@@ -36,8 +36,8 @@ TEST(Vic2World_CultureGroupsTests, OnlyFinalModCulturesCanBeMatched)
 	const auto cultureGroups =
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder()
 																				.setVic2Path("./BaseCultures")
-																				.addVic2Mod(Mod("ModOne", "ModCultures/ModOne/"))
-																				.addVic2Mod(Mod("ModTwo", "ModCultures/ModTwo/"))
+																				.addVic2Mod(Mod{"ModOne", "ModCultures/ModOne/"})
+																				.addVic2Mod(Mod{"ModTwo", "ModCultures/ModTwo/"})
 																				.build());
 
 	ASSERT_NE("base_game_group", cultureGroups->getGroup("matched_culture"));

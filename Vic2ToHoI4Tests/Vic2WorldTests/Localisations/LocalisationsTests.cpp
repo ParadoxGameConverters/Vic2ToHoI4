@@ -102,7 +102,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, TextInAllLanguagesTextInAllLang
 TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromMod)
 {
 	const auto configuration =
-		 Configuration::Builder().setVic2Path("./").addVic2Mod(Mod("Mod Locs", "modLocalisations/")).build();
+		 Configuration::Builder().setVic2Path("./").addVic2Mod(Mod{"Mod Locs", "modLocalisations/"}).build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_EQ("english_mod_loc", localisations->getTextInLanguage("mod_key", "english"));

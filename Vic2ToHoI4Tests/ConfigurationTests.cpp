@@ -387,10 +387,10 @@ TEST(ConfigurationTests, Vic2ModsWithDependenciesAreBeforeTheirDependencies)
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
 
 	ASSERT_THAT(theConfiguration->getVic2Mods(),
-		 testing::ElementsAre(Mod("Dependent Mod", "./Vic2/mod/test_directory/", std::set<Name>{"Dependency One"}),
-			  Mod("Dependency One", "./Vic2/mod/test_directory/", std::set<Name>{"Dependency Two"}),
-			  Mod("Dependency Two", "./Vic2/mod/test_directory/"),
-			  Mod("Test Mod", "./Vic2/mod/test_directory/")));
+		 testing::ElementsAre(Mod{"Dependent Mod", "./Vic2/mod/test_directory/", {"Dependency One"}},
+			  Mod{"Dependency One", "./Vic2/mod/test_directory/", {"Dependency Two"}},
+			  Mod{"Dependency Two", "./Vic2/mod/test_directory/"},
+			  Mod{"Test Mod", "./Vic2/mod/test_directory/"}));
 }
 
 

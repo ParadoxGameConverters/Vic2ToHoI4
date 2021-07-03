@@ -72,7 +72,7 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesAreRead)
 {
 	const auto configuration = Configuration::Builder()
 											 .setVic2Path("./BaseGameInventions")
-											 .addVic2Mod(Mod("one", "ModInventions/Mod1"))
+											 .addVic2Mod(Mod{"one", "ModInventions/Mod1"})
 											 .build();
 	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
@@ -84,8 +84,8 @@ TEST(Vic2World_Technology_InventionTests, MultipleModInventionFilesAreRead)
 {
 	const auto configuration = Configuration::Builder()
 											 .setVic2Path("./BaseGameInventions")
-											 .addVic2Mod(Mod("one", "ModInventions/Mod1"))
-											 .addVic2Mod(Mod("two", "ModInventions/Mod2"))
+											 .addVic2Mod(Mod{"one", "ModInventions/Mod1"})
+											 .addVic2Mod(Mod{"two", "ModInventions/Mod2"})
 											 .build();
 	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
@@ -97,7 +97,7 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDefaultOnes)
 {
 	const auto configuration = Configuration::Builder()
 											 .setVic2Path("./BaseGameInventions")
-											 .addVic2Mod(Mod("three", "ModInventions/Mod3"))
+											 .addVic2Mod(Mod{"three", "ModInventions/Mod3"})
 											 .build();
 	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
@@ -109,9 +109,9 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDependeeMods)
 {
 	const auto configuration = Configuration::Builder()
 											 .setVic2Path("./BaseGameInventions")
-											 .addVic2Mod(Mod("Mod1", "ModInventions/Mod1"))
-											 .addVic2Mod(Mod("Mod2", "ModInventions/Mod2", std::set<Name>{"Mod1"}))
-											 .addVic2Mod(Mod("Mod3", "ModInventions/Mod3", std::set<Name>{"Mod2"}))
+											 .addVic2Mod(Mod{"Mod1", "ModInventions/Mod1"})
+											 .addVic2Mod(Mod{"Mod2", "ModInventions/Mod2", {"Mod1"}})
+											 .addVic2Mod(Mod{"Mod3", "ModInventions/Mod3", {"Mod2"}})
 											 .build();
 	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 

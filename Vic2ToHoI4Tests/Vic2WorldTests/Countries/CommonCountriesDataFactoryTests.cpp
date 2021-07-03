@@ -35,7 +35,7 @@ TEST(Vic2World_Countries_CommonCountriesDataTests, commonCountryDataCanBeImporte
 	const auto& [commonCountryData, unused] =
 		 Vic2::importCommonCountriesData(*Configuration::Builder()
 														  .setVic2Path("./vanilla_common_countries_data/")
-														  .addVic2Mod(Mod("MOD", "common_countries_mod"))
+														  .addVic2Mod(Mod{"MOD", "common_countries_mod"})
 														  .build());
 
 	ASSERT_EQ(1, commonCountryData.size());
@@ -51,7 +51,7 @@ TEST(Vic2World_Countries_CommonCountriesDataTests, commonCountryDataDefaultsToVa
 	const auto& [commonCountryData, unused] =
 		 Vic2::importCommonCountriesData(*Configuration::Builder()
 														  .setVic2Path("./vanilla_common_countries_data/")
-														  .addVic2Mod(Mod("missing", "missing_mod"))
+														  .addVic2Mod(Mod{"missing", "missing_mod"})
 														  .build());
 
 	ASSERT_EQ(2, commonCountryData.size());
@@ -93,7 +93,7 @@ TEST(Vic2World_Countries_CommonCountriesDataTests, partiesCanBeImportedFromMods)
 	const auto& [unused, parties] =
 		 Vic2::importCommonCountriesData(*Configuration::Builder()
 														  .setVic2Path("./vanilla_common_countries_data/")
-														  .addVic2Mod(Mod("the mod", "common_countries_mod/"))
+														  .addVic2Mod(Mod{"the mod", "common_countries_mod/"})
 														  .build());
 
 	ASSERT_EQ(2, parties.size());
@@ -106,7 +106,7 @@ TEST(Vic2World_Countries_CommonCountriesDataTests, partiesDefaultToVanillaForMis
 {
 	const auto& [unused, parties] = Vic2::importCommonCountriesData(*Configuration::Builder()
 																								.setVic2Path("./vanilla_common_countries_data/")
-																								.addVic2Mod(Mod("missing", "missing_mod"))
+																								.addVic2Mod(Mod{"missing", "missing_mod"})
 																								.build());
 
 	ASSERT_EQ(4, parties.size());

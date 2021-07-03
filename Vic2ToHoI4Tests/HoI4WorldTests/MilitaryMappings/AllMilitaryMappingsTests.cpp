@@ -44,7 +44,7 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWi
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWithInvalidMod)
 {
 	Mods mods;
-	mods.emplace_back(Mod("NotAMod", ""));
+	mods.emplace_back(Mod{"NotAMod", ""});
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
@@ -53,7 +53,7 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWi
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithSimpleName)
 {
 	Mods mods;
-	mods.emplace_back(Mod("PDM", "PDM/"));
+	mods.emplace_back(Mod{"PDM", "PDM/"});
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("PDM"), specificMappings.getMappingsName());
 }
@@ -62,7 +62,7 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithSi
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithQuotedName)
 {
 	Mods mods;
-	mods.emplace_back(Mod("POPs of Darkness", "POP/"));
+	mods.emplace_back(Mod{"POPs of Darkness", "POP/"});
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("POPs of Darkness"), specificMappings.getMappingsName());
 }
