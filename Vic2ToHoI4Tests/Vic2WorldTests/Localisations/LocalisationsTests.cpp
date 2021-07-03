@@ -123,7 +123,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromMod
 
 TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromConverter)
 {
-	const auto configuration = Configuration::Builder().build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_EQ("english_converter_loc", localisations->getTextInLanguage("converter_key", "english"));
