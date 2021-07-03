@@ -33,7 +33,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Color.cpp" />
@@ -43,6 +42,8 @@
     <ClCompile Include="..\common_items\GameVersion.cpp" />
     <ClCompile Include="..\common_items\iconvlite.cpp" />
     <ClCompile Include="..\common_items\Log.cpp" />
+    <ClCompile Include="..\common_items\ModLoader\ModLoader.cpp" />
+    <ClCompile Include="..\common_items\ModLoader\ModParser.cpp" />
     <ClCompile Include="..\common_items\OSCommonLayer.cpp" />
     <ClCompile Include="..\common_items\Parser.cpp" />
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />
@@ -354,7 +355,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Traits.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\UnitFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\PartyFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp" />
@@ -530,9 +530,6 @@
     <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\UnitTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Mods\ModTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Politics\PartyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
@@ -577,7 +574,7 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\v2game.exe">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2Windows</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2Windows;$(OutDir)/Vic2</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2Windows</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\definition.csv">
@@ -961,9 +958,6 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitsFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Unit.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\UnitFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Mods\Mod.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Mods\ModBuilder.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Politics\PartyBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Politics\PartyFactory.h" />
@@ -1574,7 +1568,6 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;_SILENCE_CXX20_U8PATH_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -1583,7 +1576,7 @@
       <OmitFramePointers>false</OmitFramePointers>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Vic2ToHoI4/Source;../common_items;../bitmap;../googletest/googletest;../googletest/googletest/include;../googletest/googlemock;../googletest/googlemock/include;$(ProjectDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Vic2ToHoI4/Source;../common_items;../bitmap;../googletest/googletest;../googletest/googletest/include;../googletest/googlemock;../googletest/googlemock/include;$(ProjectDir);..\common_items\ZipLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -1591,6 +1584,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies>$(SolutionDir)$(Platform)\$(Configuration)\ZipLib.lib;$(SolutionDir)$(Platform)\$(Configuration)\bzip2.lib;$(SolutionDir)$(Platform)\$(Configuration)\lzma.lib;$(SolutionDir)$(Platform)\$(Configuration)\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -18,12 +18,11 @@ HoI4::allMilitaryMappings::allMilitaryMappings(std::istream& theStream)
 }
 
 
-const HoI4::militaryMappings& HoI4::allMilitaryMappings::getMilitaryMappings(
-	 const std::vector<Vic2::Mod>& Vic2Mods) const
+const HoI4::militaryMappings& HoI4::allMilitaryMappings::getMilitaryMappings(const Mods& Vic2Mods) const
 {
 	for (const auto& mod: Vic2Mods)
 	{
-		auto mapping = theMappings.find(mod.getName());
+		auto mapping = theMappings.find(mod.name);
 		if (mapping != theMappings.end())
 		{
 			return mapping->second;

@@ -17,7 +17,7 @@ std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Factory::importLocalis
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
 		Log(LogLevel::Info) << "\tReading mod localisation";
-		ReadFromAllFilesInFolder(theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/localisation");
+		ReadFromAllFilesInFolder(mod.path + "/localisation");
 	}
 
 	if (commonItems::DoesFileExist("Configurables/Vic2Localisations.csv"))

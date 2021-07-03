@@ -11,8 +11,7 @@ void clearOutputFolder(const std::string& outputName);
 void output(const HoI4::World& destWorld,
 	 const std::string& outputName,
 	 bool debugEnabled,
-	 const std::vector<Vic2::Mod>& vic2Mods,
-	 const std::string& vic2ModPath,
+	 const Mods& vic2Mods,
 	 const Configuration& theConfiguration);
 
 

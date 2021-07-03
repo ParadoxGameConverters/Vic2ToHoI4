@@ -3,7 +3,7 @@ converterFolder = Vic2ToHoI4
 displayName = VIC2DISPLAYNAME
 sourceGame = VIC2GAME
 targetGame = HOI4GAME
-autoGenerateModsFrom = Vic2ModPath
+autoGenerateModsFrom = Vic2directory
 
 requiredFile = {
 	name = SaveGame
@@ -35,16 +35,6 @@ requiredFolder = {
 	mandatory = true
 	searchPathType = steamFolder
 	searchPathID = 42960
-}
-
-requiredFolder = {
-	name = Vic2ModPath
-	displayName = VIC2MOD
-	tooltip = VIC2MODTIP
-	mandatory = true
-	searchPathType = steamFolder
-	searchPathID = 42960
-	searchPath = "mod"
 }
 
 requiredFolder = {

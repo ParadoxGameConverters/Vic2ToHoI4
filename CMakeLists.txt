@@ -25,6 +25,7 @@ include(ExternalProject)
 #    BUILD_COMMAND make
 #)
 include_directories(common_items)
+include_directories(common_items/ZipLib)
 include_directories(bitmap)
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${TEST_SOURCE_DIR})
@@ -32,6 +33,8 @@ include_directories(googletest/googletest)
 include_directories(googletest/googletest/include)
 include_directories(googletest/googlemock)
 include_directories(googletest/googlemock/include)
+
+add_subdirectory(common_items/ZipLib [binary_dir])
 
 configure_file("${DATA_FILE_DIR}/FAQ.txt" "${FRONTER_OUTPUT_DIRECTORY}/FAQ.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/license.txt" "${FRONTER_OUTPUT_DIRECTORY}/license.txt" COPYONLY)
@@ -224,7 +227,6 @@ set(VIC2WORLD_MILITARY_LEADERS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_SOURCES} "${
 set(VIC2WORLD_MILITARY_LEADERS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Military/Leaders/TraitGroup.cpp")
 set(VIC2WORLD_MILITARY_LEADERS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Military/Leaders/Traits.cpp")
 set(VIC2WORLD_MILITARY_LEADERS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Military/Leaders/TraitsFactory.cpp")
-set(VIC2WORLD_MODS_SOURCES ${VIC2WORLD_MODS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Mods/ModFactory.cpp")
 set(VIC2WORLD_POLITICS_SOURCES ${VIC2WORLD_POLITICS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Politics/Party.cpp")
 set(VIC2WORLD_POLITICS_SOURCES ${VIC2WORLD_POLITICS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Politics/PartyFactory.cpp")
 set(VIC2WORLD_POPS_SOURCES ${VIC2WORLD_POPS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Pops/Pop.cpp")
@@ -255,6 +257,8 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/GameVersion.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/iconvlite.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/LinuxUtils.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Log.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ModLoader/ModLoader.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ModLoader/ModParser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/OSCommonLayer.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Parser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ParserHelpers.cpp")
@@ -349,7 +353,6 @@ add_executable(
 	${VIC2WORLD_LOCALISATIONS_SOURCES}
 	${VIC2WORLD_MILITARY_SOURCES}
 	${VIC2WORLD_MILITARY_LEADERS_SOURCES}
-	${VIC2WORLD_MODS_SOURCES}
 	${VIC2WORLD_POLITICS_SOURCES}
 	${VIC2WORLD_POPS_SOURCES}
 	${VIC2WORLD_PROVINCES_SOURCES}
@@ -364,6 +367,9 @@ set_target_properties( Vic2ToHoi4Converter
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
+
+target_link_libraries(Vic2ToHoi4Converter ZIPLIB pthread)
+
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/arabic_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/arabic_operative_codenames.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/CZE_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/CZE_operative_codenames.txt" COPYONLY)
@@ -521,9 +527,6 @@ set(VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_TESTS_
 set(VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Military/Leaders/TraitGroupTests.cpp")
 set(VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Military/Leaders/TraitsTests.cpp")
 set(VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Military/Leaders/TraitTests.cpp")
-set(VIC2WORLD_MODS_TESTS_SOURCES ${VIC2WORLD_MODS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Mods/ModBuilderTests.cpp")
-set(VIC2WORLD_MODS_TESTS_SOURCES ${VIC2WORLD_MODS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Mods/ModFactoryTests.cpp")
-set(VIC2WORLD_MODS_TESTS_SOURCES ${VIC2WORLD_MODS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Mods/ModTests.cpp")
 set(VIC2WORLD_POLITICS_TESTS_SOURCES ${VIC2WORLD_POLITICS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Politics/PartyTests.cpp")
 set(VIC2WORLD_POPS_TESTS_SOURCES ${VIC2WORLD_POPS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Pops/PopFactoryTests.cpp")
 set(VIC2WORLD_POPS_TESTS_SOURCES ${VIC2WORLD_POPS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Pops/PopTests.cpp")
@@ -631,7 +634,6 @@ add_executable(
 	${VIC2WORLD_LOCALISATIONS_SOURCES}
 	${VIC2WORLD_MILITARY_SOURCES}
 	${VIC2WORLD_MILITARY_LEADERS_SOURCES}
-	${VIC2WORLD_MODS_SOURCES}
 	${VIC2WORLD_POLITICS_SOURCES}
 	${VIC2WORLD_POPS_SOURCES}
 	${VIC2WORLD_PROVINCES_SOURCES}
@@ -721,7 +723,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestCountryOne.txt" "${TEST_
 configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestCountryTwo.txt" "${TEST_OUTPUT_DIRECTORY}/vanilla_common_countries_data/common/countries/TestCountryTwo.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestTechnologyFile.txt" "${TEST_OUTPUT_DIRECTORY}/countryTests/inventions/TestTechnologyFile.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Countries/VanillaCommonCountriesData.txt" "${TEST_OUTPUT_DIRECTORY}/vanilla_common_countries_data/common/countries.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/CountryNames/CountryNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/CountryNamesMappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/CountryNames/CountryNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/CountryNamesMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/BaseCultures.txt" "${TEST_OUTPUT_DIRECTORY}/BaseCultures/common/cultures.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/ModOneCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModOne/common/cultures.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/ModTwoCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModTwo/common/cultures.txt" COPYONLY)
@@ -732,19 +734,19 @@ configure_file("Vic2ToHoI4Tests/TestFiles/generic_opertive_codenames.txt" "${TES
 configure_file("Vic2ToHoI4Tests/TestFiles/HoI4Files/CountryCategories/CountryGrammar.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/CountryGrammar.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/hoi4" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/hoi4" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/hoi4.exe" "${TEST_OUTPUT_DIRECTORY}/HoI4Windows/hoi4.exe" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/IntelligenceAgencyLogos.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/IntelligenceAgencyLogos.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/IntelligenceAgencyLogos.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/IntelligenceAgencyLogos.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Issues/emptyIssues.txt" "${TEST_OUTPUT_DIRECTORY}/EmptyIssues/common/issues.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Issues/issues.txt" "${TEST_OUTPUT_DIRECTORY}/common/issues.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/launcher-settings.json" "${TEST_OUTPUT_DIRECTORY}/HoI4Windows/launcher-settings.json" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/launcher-settings.json" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/launcher-settings.json" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Leaders/HoI4CountryLeaders.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/HoI4CountryLeaders.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Leaders/HoI4CountryLeaders.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/HoI4CountryLeaders.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ArticleRules.txt" "${TEST_OUTPUT_DIRECTORY}/ArticleRules.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/grammar.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/grammar.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/BaseLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/localisation/BaseLocalisations.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ConverterLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Vic2Localisations.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ConverterLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations.csv" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/EmptyLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/BlankLocalisations/localisation/EmptyLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ModLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/modLocalisations/localisation/ModLocalisations.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Localisations/StateCategories.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Localisations/StateCategories.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/CasusBelli/casus_bellis_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/casus_bellis_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Country/country_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FlagsToIdeas/FlagsToIdeasMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
@@ -760,25 +762,25 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/mod_province_mapping
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/vanilla_province_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/province_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/research_bonus_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/tech_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependencies.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/Dependencies.mod" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependent.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/Dependent.mod" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DependencyOne.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DependencyOne.mod" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DependencyTwo.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DependencyTwo.mod" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryMissing.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DirectoryMissing.mod" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryUnspecified.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DirectoryUnspecified.mod" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Mods/dummy.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/test_directory/dummy.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Mods/EmptyModFile.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/EmptyModFile.mod" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Test.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/Test.mod" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependencies.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/Dependencies.mod" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependent.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/Dependent.mod" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DependencyOne.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/DependencyOne.mod" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DependencyTwo.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/DependencyTwo.mod" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryMissing.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/DirectoryMissing.mod" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryUnspecified.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/DirectoryUnspecified.mod" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/dummy.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/test_directory/dummy.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/EmptyModFile.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/EmptyModFile.mod" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Test.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/Test.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/OccupationLaws.txt" "${TEST_OUTPUT_DIRECTORY}/OccupationLaws/common/occupation_laws/occupation_laws.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/OperativeNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/OperativeNamesMappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/OperativeNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/OperativeNamesMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/operations.txt" "${TEST_OUTPUT_DIRECTORY}/operations/common/operations/00_operations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/operations_to_update.txt" "${TEST_OUTPUT_DIRECTORY}/operationsToUpdate/common/operations/00_operations.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/regions.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Map/regions.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/regions.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Map/regions.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ReadMe.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/ReadMe.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ReadMe.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/ReadMe.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/effects_file.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/empty_effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/empty_effects_file.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Sounds/CultureToVoiceMappings.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Sounds/CultureToVoiceMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/BaseGameTech1.txt" "${TEST_OUTPUT_DIRECTORY}/BaseGameInventions/inventions/Tech1.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/BaseGameTech2.txt" "${TEST_OUTPUT_DIRECTORY}/BaseGameInventions/inventions/Tech2.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTech3.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod1/inventions/Tech3.txt" COPYONLY)
@@ -802,13 +804,14 @@ configure_file("Vic2ToHoI4Tests/TestFiles/World/ResolveBattlesWorld.v2" "${TEST_
 configure_file("Vic2ToHoI4Tests/TestFiles/World/TestWorld.v2" "${TEST_OUTPUT_DIRECTORY}/V2World/TestWorld.v2" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/test_localisations.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/localisation/test_localisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/TWO.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/TWO.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Vic2World/EU4ToVic2Data/botanical_expedition.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/test_directory/common/botanical_expedition.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Vic2World/EU4ToVic2Data/botanical_expedition.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/test_directory/common/botanical_expedition.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2/v2game.exe" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMac" "${TEST_OUTPUT_DIRECTORY}/somethingWithMacOS/somethingElse/Vic2Path/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacApp" "${TEST_OUTPUT_DIRECTORY}/Vic2MacApp/Victoria 2 - Heart Of Darkness.app/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}/somethingWithMacOS/MacOS/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests pthread)
+target_link_libraries(Vic2ToHoi4ConverterTests ZIPLIB pthread)

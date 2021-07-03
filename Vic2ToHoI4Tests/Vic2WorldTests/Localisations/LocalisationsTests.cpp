@@ -1,7 +1,6 @@
 #include "Configuration.h"
 #include "V2World/Localisations/LocalisationsFactory.h"
 #include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/Mods/ModBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -102,11 +101,8 @@ TEST(Vic2World_Localisations_LocalisationsTests, TextInAllLanguagesTextInAllLang
 
 TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromMod)
 {
-	const auto configuration = Configuration::Builder()
-											 .setVic2Path("./")
-											 .setVic2ModPath("./")
-											 .addVic2Mod(*Vic2::Mod::Builder().setDirectory("ModLocalisations").build())
-											 .build();
+	const auto configuration =
+		 Configuration::Builder().setVic2Path("./").addVic2Mod(Mod("Mod Locs", "modLocalisations/")).build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_EQ("english_mod_loc", localisations->getTextInLanguage("mod_key", "english"));
@@ -127,7 +123,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromMod
 
 TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromConverter)
 {
-	const auto configuration = Configuration::Builder().build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_EQ("english_converter_loc", localisations->getTextInLanguage("converter_key", "english"));
