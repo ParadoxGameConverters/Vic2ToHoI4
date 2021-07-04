@@ -14,7 +14,8 @@ namespace HoI4
 void processFlagsForCountry(const std::string&,
 	 const Country& country,
 	 const std::string& outputName,
-	 const Mods& vic2Mods);
+	 const Mods& vic2Mods,
+	 const std::set<std::string>& majorIdeologies);
 std::optional<tga_image*> createDominionFlag(const std::string& hoi4Suffix,
 	 const std::string& vic2Suffix,
 	 const std::string& overlord,
@@ -39,7 +40,8 @@ std::optional<std::string> getAllowModFlags(const std::string& flagFilename, con
 
 void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName,
-	 const Mods& vic2Mods)
+	 const Mods& vic2Mods,
+	 const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\tCreating flags";
 
@@ -62,12 +64,14 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 
 	for (const auto& [tag, country]: countries)
 	{
-		processFlagsForCountry(tag, *country, outputName, vic2Mods);
+		processFlagsForCountry(tag, *country, outputName, vic2Mods, majorIdeologies);
 	}
 }
 
 
 constexpr int numFlagsPerCountry = 6;
+
+constexpr std::array ideologies{"neutrality", "communism", "democratic", "fascism", "absolutist", "republic"};
 
 constexpr std::array<const char*, numFlagsPerCountry> vic2Suffixes{
 	 ".tga",				 // base flag
@@ -96,10 +100,16 @@ static std::set<std::string> allowedMods = {"POPs of Darkness",
 void HoI4::processFlagsForCountry(const std::string& tag,
 	 const Country& country,
 	 const std::string& outputName,
-	 const Mods& vic2Mods)
+	 const Mods& vic2Mods,
+	 const std::set<std::string>& majorIdeologies)
 {
 	for (size_t i = 0; i < numFlagsPerCountry; i++)
 	{
+		if (!majorIdeologies.contains(ideologies[i]))
+		{
+			continue;
+		}
+
 		std::optional<tga_image*> sourceFlag;
 
 		if (country.isGeneratedDominion())

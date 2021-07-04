@@ -38,7 +38,7 @@ void output(const HoI4::World& destWorld,
 
 	createOutputFolder(outputName);
 	createModFiles(outputName);
-	copyFlags(destWorld.getCountries(), outputName, vic2Mods);
+	copyFlags(destWorld.getCountries(), outputName, vic2Mods, destWorld.getMajorIdeologies());
 	OutputWorld(destWorld, outputName, debugEnabled, theConfiguration);
 }
 
