@@ -377,6 +377,7 @@ scandinavian = {
 		"gfx/leaders/MotE/Unit_SWE_Stedingk.tga" }
 		radical = { "gfx/leaders/OC/Portrait_SWE_Podcat.dds" }
 	}
+	male_operative_portraits = { "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_europe_1.dds" } # Tryggvithor Hallsson (Icelandic)
 	ideology_minister_portraits = 
 	{
 		communism = { "gfx/interface/ideas/idea_martin_bormann.dds" }
@@ -2391,6 +2392,7 @@ latin_american_cultures = {
 		neutrality = { "gfx/leaders/ARG/Portrait_Argentina_Agustin_Pedro_Justo.dds" "gfx/leaders/BRA/Portrait_Brazil_Getulio_Vargas.dds" "gfx/leaders/COL/portrait_col_alfonso_lopez_pumarejo.dds" "gfx/leaders/COS/portrait_cos_ricardo_jiminez_oreamuno.dds" "gfx/leaders/ECU/portrait_ecu_federico_paez.dds" "gfx/leaders/OC/portrait_Vic1_Benito_Suarez.tga" "gfx/leaders/OC/portrait_Vic1_Pedro_II.tga" }
 		radical = { "gfx/leaders/OC/portrait_The_Che.dds" }
 	}
+	male_operative_portraits = { "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_south_america_3.dds" "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_south_america_4.dds" "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_south_america_5.dds" } # Elidoro Yanez, Ismael Tocornal, Luis Claro Solar
 	ideology_minister_portraits = 
 	{
 		communism = { "gfx/interface/ideas/idea_generic_communist_south_america.dds" } # Revise
