@@ -12,6 +12,10 @@ std::ostream& HoI4::operator<<(std::ostream& out, const War& theWar)
 		out << "\tgenerator = { " << *theWar.state << " }\n";
 	}
 	out << "}\n";
+	if (theWar.CB == "civil_war")
+	{
+		out << "add_civil_war_target = " << theWar.originalDefender << "\n";
+	}
 
 	for (const auto& extraAttacker: theWar.extraAttackers)
 	{
