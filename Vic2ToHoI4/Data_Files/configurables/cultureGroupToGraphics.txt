@@ -514,7 +514,7 @@ celtic = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	male_operative_portraits = { "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_commonwealth_1.dds" }
+	male_operative_portraits = { "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_commonwealth_1.dds" } # James Bond
 	graphical_culture = commonwealth_gfx
 	graphical_culture_2d = commonwealth_2d
 }
@@ -1001,6 +1001,7 @@ pan_romanian = {
 		neutrality = { "gfx/interface/ideas/idea_rom_michael_figurehead.dds" }
 		radical = { "gfx/interface/ideas/idea_nikolay_kuznetsov.dds" }
 	}
+	male_operator_portraits = { "gfx/leaders/South America/portrait_south_america_generic_operative_male_1.dds" "gfx/leaders/South America/portrait_south_america_generic_operative_male_2.dds" "gfx/leaders/South America/portrait_south_america_generic_operative_male_3.dds" "gfx/leaders/South America/portrait_south_america_generic_operative_male_4.dds" "gfx/leaders/South America/portrait_south_america_generic_operative_male_5.dds" "gfx/leaders/South America/portrait_south_america_generic_operative_male_6.dds" } # Viorel Sima
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/romania.dds"
 	}
@@ -1426,6 +1427,7 @@ arab = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
+	male_operative_portraits = { "gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_male_2.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_male_3.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_male_5.dds" "gfx/leaders/Arabia/portrait_arabia_generic_operative_male_6.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/egypt.dds" # Revise
 	}
@@ -1463,184 +1465,6 @@ punic = {
 	graphical_culture_2d = middle_eastern_2d
 }
 iranian_turanian = {
-	army_portraits = { 
-		"gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_land_5.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_land_6.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_land_7.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_navy_3.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_navy_4.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_navy_5.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_2.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_3.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_5.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_6.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_communism1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_democratic1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_fascism1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/OC/portrait_IRQ_Hashim_al_Atassi.dds"
-		"gfx/leaders/OC/portrait_IRQ_Rashid_Ali_al_Gaylani.dds"
-		"gfx/leaders/OC/portrait_IRQ_Yusuf_Salman_Yusuf.dds"
-		"gfx/leaders/OC/portrait_ISR_Itzhak_Gaster.dds"
-		"gfx/leaders/OC/portrait_ISR_King_David.dds"
-		"gfx/leaders/OC/portrait_ISR_Rudolf_Szabo.dds"
-		"gfx/leaders/OC/portrait_ISR_Shmuel_Mikunis.dds"
-		"gfx/leaders/OC/portrait_JAP_Yi_Un.dds"
-		"gfx/leaders/OC/portrait_PAK_Haji_Mohammad_Danesh.dds"
-		"gfx/leaders/OC/portrait_PAK_Muhammad_Ali_Jinnah.dds"
-		"gfx/leaders/OC/portrait_PAK_Qazi_Muhammad_Essa.dds"
-		"gfx/leaders/OC/portrait_PER_Abdolhossein_Teymourtash.dds"
-		"gfx/leaders/OC/portrait_PER_Jalaleddin_Tehrani.dds"
-		"gfx/leaders/OC/portrait_TUR_Alparslan_Turkesh.dds"
-		"gfx/leaders/OMA/portrait_oma_said_bin_taimur.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/PER/Portrait_Iran_Reza_Shah_Pahlavi.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_communism1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_democratic1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_fascism1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/SAU/Portrait_Saudi_Arabia_Abdulazis_Ibn_Saud.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/TUR/Portrait_Turkey_Ismet_Inonu.dds"
-		"gfx/leaders/TUR/Portrait_Turkey_Mustafa_Kemal_Ataturk_Military.dds"
-		"gfx/leaders/TUR/Portrait_Turkey_Sefik_Husnu.dds"
-		"gfx/leaders/YEM/portrait_yem_imam_yaha.dds"
-		"gfx/leaders/TUN/Portrait_Tunisia_Abdelaziz_Thaalbi.dds"
-		"gfx/leaders/OC/portrait_Vic1_Mozaffar_al-Din_Shah_Qajar.tga"
-	}
-	navy_portraits = { 
-		"gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_land_5.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_land_6.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_land_7.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_navy_3.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_navy_4.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_navy_5.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_2.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_3.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_5.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_6.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_communism1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_democratic1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_fascism1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/LEB/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/OC/portrait_IRQ_Hashim_al_Atassi.dds"
-		"gfx/leaders/OC/portrait_IRQ_Rashid_Ali_al_Gaylani.dds"
-		"gfx/leaders/OC/portrait_IRQ_Yusuf_Salman_Yusuf.dds"
-		"gfx/leaders/OC/portrait_ISR_Itzhak_Gaster.dds"
-		"gfx/leaders/OC/portrait_ISR_King_David.dds"
-		"gfx/leaders/OC/portrait_ISR_Rudolf_Szabo.dds"
-		"gfx/leaders/OC/portrait_ISR_Shmuel_Mikunis.dds"
-		"gfx/leaders/OC/portrait_JAP_Yi_Un.dds"
-		"gfx/leaders/OC/portrait_PAK_Haji_Mohammad_Danesh.dds"
-		"gfx/leaders/OC/portrait_PAK_Muhammad_Ali_Jinnah.dds"
-		"gfx/leaders/OC/portrait_PAK_Qazi_Muhammad_Essa.dds"
-		"gfx/leaders/OC/portrait_PER_Abdolhossein_Teymourtash.dds"
-		"gfx/leaders/OC/portrait_PER_Jalaleddin_Tehrani.dds"
-		"gfx/leaders/OC/portrait_TUR_Alparslan_Turkesh.dds"
-		"gfx/leaders/OMA/portrait_oma_said_bin_taimur.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/PAL/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/PER/Portrait_Iran_Reza_Shah_Pahlavi.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_communism1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_democratic1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_fascism1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/SAU/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/SAU/Portrait_Saudi_Arabia_Abdulazis_Ibn_Saud.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_1.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_2.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_3.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_land_3.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/SYR/Portrait_Arabia_Generic_navy_3.dds"
-		"gfx/leaders/TUR/Portrait_Turkey_Ismet_Inonu.dds"
-		"gfx/leaders/TUR/Portrait_Turkey_Mustafa_Kemal_Ataturk_Military.dds"
-		"gfx/leaders/TUR/Portrait_Turkey_Sefik_Husnu.dds"
-		"gfx/leaders/YEM/portrait_yem_imam_yaha.dds"
-		"gfx/leaders/TUN/Portrait_Tunisia_Abdelaziz_Thaalbi.dds"
-		"gfx/leaders/OC/portrait_Vic1_Mozaffar_al-Din_Shah_Qajar.tga"
-	}
 	leader_portraits = {
 		communism = { "gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds" }
 		democratic = { "gfx/leaders/OC/portrait_PER_Jalaleddin_Tehrani.dds" } 
@@ -1691,10 +1515,10 @@ central_asian = {
 	}
 	male_operator_portraits = { "gfx/leaders/TUR/portrait_tur_ruzi_nazar.dds" }
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/goals/focus_TUR_turanist_ambition.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/goals/focus_TUR_turanist_ambition.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -1866,7 +1690,7 @@ far_east_asian = {
 		"gfx/interface/ideas/idea_jap_hirohito.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/state_shintoism.dds" 
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -2060,7 +1884,6 @@ native_central_american = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 	}
-	female_operative_portraits = { "gfx/leaders/USA/portrait_usa_josephine_baker.dds" }
 	male_monarch_portraits = {
 		"gfx/achievements/sunset_invasion.dds"
 	}
@@ -2144,7 +1967,6 @@ native_south_american = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 	}
-	female_operative_portraits = { "gfx/leaders/USA/portrait_usa_josephine_baker.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
 	}
@@ -2312,7 +2134,6 @@ native_carribean = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 	}
-	female_operative_portraits = { "gfx/leaders/USA/portrait_usa_josephine_baker.dds" }
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
 	}
@@ -2538,7 +2359,7 @@ southern_african = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_africa.dds" } # Revise
 	}
-	female_operator_portraits = { "gfx/leaders/Africa/portrait_africa_generic_operative_female_3.dds" "gfx/leaders/Africa/portrait_africa_generic_operative_female_7.dds" "gfx/leaders/Africa/portrait_africa_generic_operative_female_8.dds" "gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds" } # Phuti Mahanyele
+	female_operator_portraits = { "gfx/leaders/Africa/portrait_africa_generic_operative_female_3.dds" "gfx/leaders/Africa/portrait_africa_generic_operative_female_7.dds" "gfx/leaders/Africa/portrait_africa_generic_operative_female_8.dds" "gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds" "gfx/leaders/India/portrait_india_generic_operative_female_1.dds" "gfx/leaders/India/portrait_india_generic_operative_female_2.dds" "gfx/leaders/India/portrait_india_generic_operative_female_3.dds" "gfx/leaders/India/portrait_india_generic_operative_female_4.dds" "gfx/leaders/India/portrait_india_generic_operative_female_5.dds" "gfx/leaders/India/portrait_india_generic_operative_female_6.dds" } # Phuti Mahanyele, Robyn Shrikker
 	male_monarch_portraits = {
 		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
 	}
@@ -2561,12 +2382,12 @@ bears = {
 	}
 	ideology_minister_portraits = 
 	{
-		communism = { "gfx/interface/nuke_icon.dds" }
-		democratic = { "gfx/interface/nuke_icon.dds" }
-		fascism = { "gfx/interface/nuke_icon.dds" }
-		absolutist = { "gfx/interface/nuke_icon.dds" }
-		neutrality = { "gfx/interface/nuke_icon.dds" }
-		radical = { "gfx/interface/nuke_icon.dds" }
+		communism = { "gfx/achievements/panda_monium.dds" }
+		democratic = { "gfx/achievements/panda_monium.dds" }
+		fascism = { "gfx/achievements/panda_monium.dds" }
+		absolutist = { "gfx/achievements/panda_monium.dds" }
+		neutrality = { "gfx/achievements/panda_monium.dds" }
+		radical = { "gfx/achievements/panda_monium.dds" }
 	}
 	male_operative_portraits = { "gfx/leaders/OC/portrait_bear_buisnessman_operator.dds" }
 	male_monarch_portraits = {
@@ -2651,12 +2472,12 @@ anti_human = {
 	}
 	ideology_minister_portraits = 
 	{
-		communism = { "gfx/interface/nuke_icon.dds" }
-		democratic = { "gfx/interface/nuke_icon.dds" }
-		fascism = { "gfx/interface/nuke_icon.dds" }
-		absolutist = { "gfx/interface/nuke_icon.dds" }
-		neutrality = { "gfx/interface/nuke_icon.dds" }
-		radical = { "gfx/interface/nuke_icon.dds" }
+		communism = { "gfx/achievements/wunderwaffen.dds" } # This is a stereotypical UFO
+		democratic = { "gfx/achievements/wunderwaffen.dds" }
+		fascism = { "gfx/achievements/wunderwaffen.dds" }
+		absolutist = { "gfx/achievements/wunderwaffen.dds" }
+		neutrality = { "gfx/achievements/wunderwaffen.dds" }
+		radical = { "gfx/achievements/wunderwaffen.dds" }
 	}
 	male_operative_portraits = { "gfx/leaders/OC/portrait_Non_Human.dds" }
 	female_operative_portraits = { "gfx/leaders/OC/portrait_Non_Human.dds" }
