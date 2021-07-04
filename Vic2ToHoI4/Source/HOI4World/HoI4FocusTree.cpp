@@ -66,15 +66,18 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			newFocus->available += "\t\t}";
 			newFocus->xPos = -(numCollectovistIdeologies / 2) - 1;
 			newFocus->completionReward = "= {\n";
+			newFocus->completionReward += "\t\tadd_timed_idea = {\n";
 			if (majorIdeologies.contains("democratic"))
 			{
-				newFocus->completionReward += "\t\t\tadd_ideas = collectivist_ethos_focus_democratic\n";
+				newFocus->completionReward += "\t\t\tidea = collectivist_ethos_focus_democratic\n";
 			}
 			else
 			{
-				newFocus->completionReward += "\t\t\tadd_ideas = collectivist_ethos_focus_neutral\n";
+				newFocus->completionReward += "\t\t\tidea = collectivist_ethos_focus_neutral\n";
 			}
-			newFocus->completionReward += "\t\t}";
+			newFocus->completionReward += "\t\t\tdays = 1095\n";
+			newFocus->completionReward += "\t\t}\n";
+			newFocus->completionReward += "\t}";
 			sharedFocuses.push_back(newFocus);
 		}
 		else
