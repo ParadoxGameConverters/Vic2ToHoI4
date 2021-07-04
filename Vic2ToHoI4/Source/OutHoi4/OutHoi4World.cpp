@@ -56,7 +56,7 @@ void outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	 const allMilitaryMappings& theMilitaryMappings,
 	 const std::string& outputName,
 	 const Configuration& theConfiguration);
-void outputRelations(const std::string& outputName);
+void outputRelations(const std::string& outputName, const std::set<std::string>& majorIdeologies);
 void outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& ideologicalLeaderTraits,
 	 const std::set<std::string>& majorIdeologies,
 	 const std::string& outputName);
@@ -176,7 +176,7 @@ void HoI4::OutputWorld(const World& world,
 	outputStates(world.getTheStates(), outputName, debugEnabled);
 	outputMap(world.getTheStates(), world.getStrategicRegions(), outputName);
 	outputSupplyZones(world.getSupplyZones(), outputName);
-	outputRelations(outputName);
+	outputRelations(outputName, world.getMajorIdeologies());
 	outputGenericFocusTree(world.getGenericFocusTree(), outputName);
 	outputCountries(world.getActiveIdeologicalAdvisors(),
 		 world.getCountries(),
@@ -423,7 +423,7 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 }
 
 
-void HoI4::outputRelations(const std::string& outputName)
+void HoI4::outputRelations(const std::string& outputName, const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\t\tWriting opinion modifiers";
 
@@ -458,18 +458,16 @@ void HoI4::outputRelations(const std::string& outputName)
 	out << "\ttrade = yes\n";
 	out << "\tvalue = 15\n";
 	out << "}\n";
-	out << "absolutist_in_government = {\n";
-	out << "\tvalue = 30\n";
-	out << "}\n";
-	out << "communism_in_government = {\n";
-	out << "\tvalue = 30\n";
-	out << "}\n";
-	out << "fascism_in_government = {\n";
-	out << "\tvalue = 30\n";
-	out << "}\n";
-	out << "radical_in_government = {\n";
-	out << "\tvalue = 30\n";
-	out << "}\n";
+	for (const auto& ideology: majorIdeologies)
+	{
+		if (ideology == "neutrality" || ideology == "democratic")
+		{
+			continue;
+		}
+		out << ideology << "_in_government = {\n";
+		out << "\tvalue = 30\n";
+		out << "}\n";
+	}
 
 	out << "}\n";
 
