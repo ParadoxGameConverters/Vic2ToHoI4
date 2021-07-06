@@ -252,7 +252,7 @@ void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
 		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters, theConfiguration);
 		outputAIStrategy(theCountry, theConfiguration.getOutputName());
 
-		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
+		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus && theCountry.getTag() != "UCV")
 		{
 			outputFocusTree(*nationalFocus,
 				 "output/" + theConfiguration.getOutputName() + "/common/national_focus/" + theCountry.getTag() +
