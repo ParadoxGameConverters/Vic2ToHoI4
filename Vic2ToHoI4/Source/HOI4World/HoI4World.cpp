@@ -983,7 +983,7 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 	if (theConfiguration.getDebug())
 	{
 		factionsLog.open("factions-logs.csv");
-		factionsLog << "name,government,initial strength,factory strength per year,factory strength by 1939\n";
+		factionsLog << "name,government,initial military strength,strength per year,strength by 1939\n";
 	}
 
 	for (const auto& leader: greatPowers)
@@ -997,8 +997,7 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 		factionMembers.push_back(leader);
 
 		std::string leaderIdeology = leader->getGovernmentIdeology();
-		double factionMilStrength = leader->getStrengthOverTime(3.0);
-
+		
 		for (const auto& allyTag: leader->getAllies())
 		{
 			auto allyCountry = findCountry(allyTag);
@@ -1020,12 +1019,15 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 				factionsLog << "\n";
 			}
 
+			double factionStrength = 0.0;
+
 			auto newFaction = make_shared<Faction>(leader, factionMembers);
 			for (const auto& member: factionMembers)
 			{
 				if (theConfiguration.getDebug())
 				{
-					logFactionMember(factionsLog, member);
+					logFactionMember(factionsLog, *member);
+					factionStrength += member->getStrengthOverTime(3.0);
 				}
 				member->setFaction(newFaction);
 			}
@@ -1033,7 +1035,7 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 
 			if (theConfiguration.getDebug())
 			{
-				factionsLog << "Faction Strength in 1939," << factionMilStrength << "\n";
+				factionsLog << "Faction Strength in 1939," << factionStrength << "\n";
 			}
 		}
 	}
@@ -1045,16 +1047,15 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 }
 
 
-void HoI4::World::logFactionMember(ofstream& factionsLog, shared_ptr<HoI4::Country> member) const
+void HoI4::World::logFactionMember(std::ofstream& factionsLog, const Country& member) const
 {
-	auto possibleName = member->getName();
-	if (possibleName)
+	if (auto possibleName = member.getName(); possibleName)
 	{
 		factionsLog << *possibleName << ",";
-		factionsLog << member->getGovernmentIdeology() << ",";
-		factionsLog << member->getMilitaryStrength() << ",";
-		factionsLog << member->getEconomicStrength(1.0) << ",";
-		factionsLog << member->getEconomicStrength(3.0) << "\n";
+		factionsLog << member.getGovernmentIdeology() << ",";
+		factionsLog << member.getMilitaryStrength() << ",";
+		factionsLog << member.getEconomicStrength(1.0) << ",";
+		factionsLog << member.getEconomicStrength(3.0) << "\n";
 	}
 	else
 	{
