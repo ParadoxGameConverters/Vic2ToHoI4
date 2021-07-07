@@ -1002,7 +1002,7 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 		for (const auto& allyTag: leader->getAllies())
 		{
 			auto allyCountry = findCountry(allyTag);
-			if (!allyCountry || allyCountry->isGreatPower() || allyCountry->isInFaction())
+			if (!allyCountry || !allyCountry->isGreatPower() || allyCountry->isInFaction())
 			{
 				continue;
 			}
