@@ -992,19 +992,11 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 		{
 			continue;
 		}
-		if (theConfiguration.getDebug())
-		{
-			factionsLog << "\n";
-		}
 
-		vector<shared_ptr<Country>> factionMembers;
+		std::vector<std::shared_ptr<Country>> factionMembers;
 		factionMembers.push_back(leader);
 
-		string leaderIdeology = leader->getGovernmentIdeology();
-		if (theConfiguration.getDebug())
-		{
-			logFactionMember(factionsLog, leader);
-		}
+		std::string leaderIdeology = leader->getGovernmentIdeology();
 		double factionMilStrength = leader->getStrengthOverTime(3.0);
 
 		for (const auto& allyTag: leader->getAllies())
@@ -1017,19 +1009,24 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 
 			if (governmentsAllowFaction(leaderIdeology, allyCountry->getGovernmentIdeology()))
 			{
-				if (theConfiguration.getDebug())
-				{
-					logFactionMember(factionsLog, allyCountry);
-				}
 				factionMembers.push_back(allyCountry);
 			}
 		}
 
 		if (factionMembers.size() > 1)
 		{
-			auto newFaction = make_shared<HoI4::Faction>(leader, factionMembers);
+			if (theConfiguration.getDebug())
+			{
+				factionsLog << "\n";
+			}
+
+			auto newFaction = make_shared<Faction>(leader, factionMembers);
 			for (const auto& member: factionMembers)
 			{
+				if (theConfiguration.getDebug())
+				{
+					logFactionMember(factionsLog, member);
+				}
 				member->setFaction(newFaction);
 			}
 			factions.push_back(newFaction);
