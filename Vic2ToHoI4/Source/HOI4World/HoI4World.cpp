@@ -983,84 +983,59 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 	if (theConfiguration.getDebug())
 	{
 		factionsLog.open("factions-logs.csv");
-		factionsLog << "name,government,initial strength,factory strength per year,factory strength by 1939\n";
+		factionsLog << "name,government,initial military strength,strength per year,strength by 1939\n";
 	}
 
-	for (auto leader: greatPowers)
+	for (const auto& leader: greatPowers)
 	{
 		if (leader->isInFaction())
 		{
 			continue;
 		}
-		if (theConfiguration.getDebug())
-		{
-			factionsLog << "\n";
-		}
 
-		vector<shared_ptr<HoI4::Country>> factionMembers;
+		std::vector<std::shared_ptr<Country>> factionMembers;
 		factionMembers.push_back(leader);
 
-		string leaderIdeology = leader->getGovernmentIdeology();
-		if (theConfiguration.getDebug())
+		std::string leaderIdeology = leader->getGovernmentIdeology();
+		
+		for (const auto& allyTag: leader->getAllies())
 		{
-			logFactionMember(factionsLog, leader);
-		}
-		double factionMilStrength = leader->getStrengthOverTime(3.0);
-
-		std::set<std::string> alliesAndPuppets = leader->getAllies();
-		for (auto puppetTag: leader->getPuppets())
-		{
-			alliesAndPuppets.insert(puppetTag);
-		}
-
-		for (auto allyTag: alliesAndPuppets)
-		{
-			auto allycountry = findCountry(allyTag);
-			if (!allycountry)
+			auto allyCountry = findCountry(allyTag);
+			if (!allyCountry || !allyCountry->isGreatPower() || allyCountry->isInFaction())
 			{
 				continue;
 			}
-			string allygovernment = allycountry->getGovernmentIdeology();
-			auto possibleSphereLeader = returnSphereLeader(allycountry);
 
-			if (((possibleSphereLeader) && (*possibleSphereLeader == leader->getTag())) ||
-				 ((!possibleSphereLeader) && governmentsAllowFaction(leaderIdeology, allygovernment)))
+			if (governmentsAllowFaction(leaderIdeology, allyCountry->getGovernmentIdeology()))
 			{
-				if (theConfiguration.getDebug())
-				{
-					logFactionMember(factionsLog, allycountry);
-				}
-				factionMembers.push_back(allycountry);
-
-				factionMilStrength += (allycountry)->getStrengthOverTime(1.0);
-				// also add the allies' puppets to the faction
-				for (auto puppetTag: (allycountry)->getPuppets())
-				{
-					auto puppetcountry = findCountry(puppetTag);
-					if (!puppetcountry)
-					{
-						continue;
-					}
-					logFactionMember(factionsLog, puppetcountry);
-					factionMembers.push_back(puppetcountry);
-
-					factionMilStrength += (puppetcountry)->getStrengthOverTime(1.0);
-				}
+				factionMembers.push_back(allyCountry);
 			}
 		}
 
 		if (factionMembers.size() > 1)
 		{
-			auto newFaction = make_shared<HoI4::Faction>(leader, factionMembers);
-			for (auto member: factionMembers)
+			if (theConfiguration.getDebug())
 			{
+				factionsLog << "\n";
+			}
+
+			double factionStrength = 0.0;
+
+			auto newFaction = make_shared<Faction>(leader, factionMembers);
+			for (const auto& member: factionMembers)
+			{
+				if (theConfiguration.getDebug())
+				{
+					logFactionMember(factionsLog, *member);
+					factionStrength += member->getStrengthOverTime(3.0);
+				}
 				member->setFaction(newFaction);
 			}
 			factions.push_back(newFaction);
 
 			if (theConfiguration.getDebug())
 			{
-				factionsLog << "Faction Strength in 1939," << factionMilStrength << "\n";
+				factionsLog << "Faction Strength in 1939," << factionStrength << "\n";
 			}
 		}
 	}
@@ -1072,16 +1047,15 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 }
 
 
-void HoI4::World::logFactionMember(ofstream& factionsLog, shared_ptr<HoI4::Country> member) const
+void HoI4::World::logFactionMember(std::ofstream& factionsLog, const Country& member) const
 {
-	auto possibleName = member->getName();
-	if (possibleName)
+	if (auto possibleName = member.getName(); possibleName)
 	{
 		factionsLog << *possibleName << ",";
-		factionsLog << member->getGovernmentIdeology() << ",";
-		factionsLog << member->getMilitaryStrength() << ",";
-		factionsLog << member->getEconomicStrength(1.0) << ",";
-		factionsLog << member->getEconomicStrength(3.0) << "\n";
+		factionsLog << member.getGovernmentIdeology() << ",";
+		factionsLog << member.getMilitaryStrength() << ",";
+		factionsLog << member.getEconomicStrength(1.0) << ",";
+		factionsLog << member.getEconomicStrength(3.0) << "\n";
 	}
 	else
 	{
@@ -1344,8 +1318,6 @@ std::vector<std::string> HoI4::World::getStrongestNavyGps()
 
 	return std::max_element(model.means.begin(), model.means.end())->tags;
 }
-
-
 
 
 std::set<std::string> HoI4::World::getSouthAsianCountries() const

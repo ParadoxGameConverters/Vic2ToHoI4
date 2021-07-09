@@ -176,7 +176,7 @@ class World: commonItems::parser
 	void setupNavalTreaty();
 
 	void createFactions(const Configuration& theConfiguration);
-	void logFactionMember(std::ofstream& factionsLog, std::shared_ptr<HoI4::Country> member) const;
+	void logFactionMember(std::ofstream& factionsLog, const Country& member) const;
 	std::optional<std::string> returnSphereLeader(std::shared_ptr<HoI4::Country> possibleSphereling) const;
 	bool governmentsAllowFaction(const std::string& leaderGovernment, const std::string& allyGovernment) const;
 
