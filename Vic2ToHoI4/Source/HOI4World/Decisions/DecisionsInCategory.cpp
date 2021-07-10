@@ -64,34 +64,6 @@ void updateOpenUpPoliticalDiscourse(HoI4::decision& decisionToUpdate, const std:
 }
 
 
-std::string getIdeologicalMinisters(const std::string& ideology)
-{
-	if (ideology == "fascism")
-	{
-		return "\t\t\tOR = {\n"
-				 "\t\t\t\thas_idea_with_trait = fascist_demagogue\n"
-				 "\t\t\t\thas_idea_with_trait = syncretic_revanchist\n"
-				 "\t\t\t}\n";
-	}
-	if (ideology == "democratic")
-	{
-		return "\t\t\tOR = {\n"
-				 "\t\t\t\thas_idea_with_trait = democratic_reformer\n"
-				 "\t\t\t\thas_idea_with_trait = social_reformer\n"
-				 "\t\t\t}\n";
-	}
-	if (ideology == "communism")
-	{
-		return "\t\t\tOR = {\n"
-				 "\t\t\t\thas_idea_with_trait = communist_revolutionary\n"
-				 "\t\t\t\thas_idea_with_trait = ambitious_union_boss\n"
-				 "\t\t\t}\n";
-	}
-
-	return "\t\t\thas_idea_with_trait = " + ideology + "_minister\n";
-}
-
-
 void updateDiscreditGovernment(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies)
 {
 	const auto decisionIdeology = decisionToUpdate.getName().substr(21, decisionToUpdate.getName().length());
@@ -100,7 +72,7 @@ void updateDiscreditGovernment(HoI4::decision& decisionToUpdate, const std::set<
 	{
 		available += "\t\t\t" + ideology + " < 0.8\n";
 	}
-	available += getIdeologicalMinisters(decisionIdeology);
+	available += "\t\t\thas_idea_with_trait = " + decisionIdeology + "_minister\n";
 	available += "\t\t}";
 	decisionToUpdate.setAvailable(available);
 	std::string completeEffect = "= {\n";

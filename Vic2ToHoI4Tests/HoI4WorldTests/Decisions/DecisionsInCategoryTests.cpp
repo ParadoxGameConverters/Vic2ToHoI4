@@ -247,10 +247,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, DiscreditGovernmentCanBeUpdat
 	expectedOutput << "\t\t\tcommunism < 0.8\n";
 	expectedOutput << "\t\t\tdemocracy < 0.8\n";
 	expectedOutput << "\t\t\tfascism < 0.8\n";
-	expectedOutput << "\t\t\tOR = {\n";
-	expectedOutput << "\t\t\t\thas_idea_with_trait = communist_revolutionary\n";
-	expectedOutput << "\t\t\t\thas_idea_with_trait = ambitious_union_boss\n";
-	expectedOutput << "\t\t\t}\n";
+	expectedOutput << "\t\t\thas_idea_with_trait = communism_minister\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\n";
 	expectedOutput << "\t\tcomplete_effect = {\n";
