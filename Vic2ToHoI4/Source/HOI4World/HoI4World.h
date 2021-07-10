@@ -31,6 +31,7 @@
 #include "Mappers/Ideology/IdeologyMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mappers/Technology/TechMapper.h"
+#include "Mappers/FactionName/FactionNameMapperFactory.h"
 #include "Military/DivisionTemplate.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/HoI4UnitType.h"
@@ -214,6 +215,7 @@ class World: commonItems::parser
 	std::unique_ptr<Mappers::CountryMapper> countryMap;
 	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;
 	std::unique_ptr<Mappers::CasusBellis> casusBellis;
+	std::unique_ptr<Mappers::FactionNameMapper> factionNameMapper;
 	std::unique_ptr<date> theDate;
 
 	std::unique_ptr<States> states;

@@ -274,6 +274,9 @@
     <Filter Include="OutHoi4\Operatives">
       <UniqueIdentifier>{d1a9316d-e5f9-432d-b319-8bd62be6b500}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\FactionName">
+      <UniqueIdentifier>{2551d8ad-d00a-4e34-addd-b8cc1512b6e4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Data Files\Configurables\ConverterFocuses">
       <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
     </Filter>
@@ -1299,6 +1302,18 @@
     </ClCompile>
     <ClCompile Include="..\common_items\ModLoader\ModParser.cpp">
       <Filter>CommonItems\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMapper.cpp">
+      <Filter>Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMapperFactory.cpp">
+      <Filter>Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMappingFactory.cpp">
+      <Filter>Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\ConverterVersion\ConverterVersion.cpp">
+      <Filter>Mappers\ConverterVersion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2555,6 +2570,21 @@
     </ClInclude>
     <ClInclude Include="..\common_items\ModLoader\ModParser.h">
       <Filter>CommonItems\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapper.h">
+      <Filter>Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapperFactory.h">
+      <Filter>Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapping.h">
+      <Filter>Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMappingFactory.h">
+      <Filter>Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\ConverterVersion\ConverterVersion.h">
+      <Filter>Mappers\ConverterVersion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -22857,6 +22887,9 @@
       <Filter>Data Files\Configurables\ConverterFocuses</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\casus_bellis_mappings.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\factions_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>

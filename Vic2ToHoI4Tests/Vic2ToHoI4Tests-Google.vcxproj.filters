@@ -1532,6 +1532,24 @@
     <ClCompile Include="..\common_items\ModLoader\ModLoader.cpp">
       <Filter>Vic2ToHoI4 files\common items\ModLoader</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\FactionName\FactionNameMapperTests.cpp">
+      <Filter>MapperTests\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\FactionName\FactionNameMappingTests.cpp">
+      <Filter>MapperTests\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\ConverterVersion\ConverterVersionTests.cpp">
+      <Filter>MapperTests\ConverterVersion</Filter>
+    </ClCompile>
     <ClCompile Include="..\common_items\ModLoader\ModParser.cpp">
       <Filter>Vic2ToHoI4 files\common items\ModLoader</Filter>
     </ClCompile>
@@ -2043,6 +2061,18 @@
     </Filter>
     <Filter Include="MapperTests\CasusBelli">
       <UniqueIdentifier>{88e849a4-7776-40a7-99ae-784d490f49a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\FactionName">
+      <UniqueIdentifier>{d0928767-ef82-4322-87af-767cb57813f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\FactionName">
+      <UniqueIdentifier>{9412cc98-65e2-417d-a2fc-9dc765cee8a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\FactionName">
+      <UniqueIdentifier>{cb2830a6-3fc3-443f-bbed-bb6a5612ee3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\ConverterVersion">
+      <UniqueIdentifier>{61505942-325e-4630-8254-79e471847ed6}</UniqueIdentifier>
     </Filter>
     <Filter Include="TestFiles\Mappers\CasusBelli">
       <UniqueIdentifier>{deb28b9b-ffe5-4178-a08b-c8fcc624cb89}</UniqueIdentifier>
@@ -3024,6 +3054,18 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CasusBelli\CasusBelliMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\CasusBelli</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3269,18 +3311,6 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Provinces\good_definition.csv">
       <Filter>TestFiles\Mappers\Provinces</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mods\Dependencies.mod">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
       <Filter>TestFiles\Mappers\Ideology</Filter>
     </CopyFileToFolders>
@@ -3346,6 +3376,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\ReadMe.txt">
       <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\FactionName\factions_mappings.txt">
+      <Filter>TestFiles\Mappers\FactionName</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
