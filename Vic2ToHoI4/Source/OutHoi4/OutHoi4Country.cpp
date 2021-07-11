@@ -326,6 +326,10 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
 	outputCapital(output, theCountry.getCapitalState());
+	if (theCountry.isGreatPower())
+	{
+		output << "set_major = yes\n";
+	}
 	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.isCivilized());
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
