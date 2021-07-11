@@ -181,6 +181,15 @@ void HoI4::MapData::addNeighbor(const int mainProvince, const int neighborProvin
 }
 
 
+void HoI4::MapData::removeNeighbor(const int mainProvince, const int neighborProvince)
+{
+	if (auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
+	{
+		centerMapping->second.erase(neighborProvince);
+	}
+}
+
+
 void HoI4::MapData::addPointToBorder(int mainProvince, int neighborProvince, const point position)
 {
 	auto bordersWithNeighbors = borders.find(mainProvince);
@@ -241,6 +250,11 @@ void HoI4::MapData::importAdjacencies(const std::string& hoi4Path)
 			{
 				addNeighbor(firstProvince, secondProvince);
 				addNeighbor(secondProvince, firstProvince);
+			}
+			else
+			{
+				removeNeighbor(firstProvince, secondProvince);
+				removeNeighbor(secondProvince, firstProvince);
 			}
 		}
 	}

@@ -43,6 +43,7 @@ class MapData
 		 const point& position,
 		 const ProvinceDefinitions& provinceDefinitions);
 	void addNeighbor(int mainProvince, int neighborProvince);
+	void removeNeighbor(int mainProvince, int neighborProvince);
 	void addPointToBorder(int mainProvince, int neighborProvince, point position);
 
 	void importAdjacencies(const std::string& hoi4Path);
