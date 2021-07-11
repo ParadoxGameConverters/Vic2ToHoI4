@@ -237,8 +237,11 @@ void HoI4::MapData::importAdjacencies(const std::string& hoi4Path)
 
 			const int firstProvince = std::stoi(matches[1]);
 			const int secondProvince = std::stoi(matches[2]);
-			addNeighbor(firstProvince, secondProvince);
-			addNeighbor(secondProvince, firstProvince);
+			if (matches[3] != "impassable")
+			{
+				addNeighbor(firstProvince, secondProvince);
+				addNeighbor(secondProvince, firstProvince);
+			}
 		}
 	}
 }
