@@ -210,6 +210,9 @@
     <ClCompile Include="Source\Mappers\Country\CountryMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Country\CountryMapper.cpp" />
     <ClCompile Include="Source\Mappers\Country\CountryMappingRuleFactory.cpp" />
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMapper.cpp" />
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMapperFactory.cpp" />
+    <ClCompile Include="Source\Mappers\FactionName\FactionNameMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\Government\GovernmentMapperFactory.cpp" />
@@ -578,6 +581,10 @@
     <ClInclude Include="Source\Mappers\Country\CountryMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\Country\CountryMapper.h" />
     <ClInclude Include="Source\Mappers\Country\CountryMappingRuleFactory.h" />
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapper.h" />
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapperFactory.h" />
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMapping.h" />
+    <ClInclude Include="Source\Mappers\FactionName\FactionNameMappingFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h" />
     <ClInclude Include="Source\Mappers\Government\GovernmentMapper.h" />
@@ -27987,6 +27994,13 @@
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\configurables\casus_bellis_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+	  <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\configurables\factions_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+	  <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

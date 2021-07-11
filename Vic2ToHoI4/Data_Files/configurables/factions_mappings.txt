@@ -1,0 +1,137 @@
+## "any" can be used as key for ideology (meaning it can be of any ideology)
+# The "culture" refers to a culture group.
+# The "ideology" refers to HoI4 ruling party
+# The fallback at last is used if no appropriate is found
+
+##VANILLA
+
+#Allies
+link = { culture = british ideology = democratic faction = allies }
+link = { culture = british ideology = neutrality faction = allies }
+
+#Axis
+link = { culture = germanic ideology = fascism faction = axis }
+link = { culture = germanic ideology = absolutist faction = axis }
+
+#Domination Française
+link = { culture = french ideology = fascism faction = domination_francaise }
+
+#French Entente
+link = { culture = french ideology = democratic faction = french_entente_alliance }
+link = { culture = french ideology = neutrality faction = french_entente_alliance }
+link = { culture = french ideology = radical faction = french_entente_alliance }
+
+#The French Alliance
+link = { culture = french ideology = any faction = french_alliance }
+
+#Daitoa Kyoeiken
+#link = { culture = east_asian ideology = any faction = daitoa_kyoeiken }
+#Japanese is in the Chinese culture group. Letting China have this faction sounds bad.
+
+#Novus Imperium Romanum
+link = { culture = italian ideology = absolutist faction = italy_empire_faction }
+link = { culture = italian ideology = fascist faction = italy_empire_faction }
+
+#Chinese United Front
+link = { culture = east_asian ideology = any faction = chinese_united_front }
+
+#Międzymorze
+link = { culture = polish_culture_group ideology = any faction = miedzymorze_faction }
+
+#Northern Sovereignity Coalition
+link = { culture = american_cultures ideology = fascism faction = northern_sovereignty_coalition }
+
+#North American Alliance
+link = { culture = american_cultures ideology = any faction = north_american_alliance }
+
+#African People's Union
+link = { culture = african_diaspora_cultures ideology = any faction = SAF_faction_uotap }
+link = { culture = west_african ideology = any faction = SAF_faction_uotap }
+link = { culture = central_african ideology = any faction = SAF_faction_uotap }
+link = { culture = east_african ideology = any faction = SAF_faction_uotap }
+link = { culture = southern_african ideology = any faction = SAF_faction_uotap }
+
+#Pact of Rome
+link = { culture = hungarian_culture_group ideology = fascism faction = HUN_PACT_OF_ROME_FACTION }
+
+#Cordon Sanitaire
+link = { culture = pan_romanian ideology = democratic faction = ROM_CORDON_SANITAIRE_FACTION }
+
+#Bucharest Accords
+link = { culture = pan_romanian ideology = any faction = ROM_BALKAN_FACTION }
+
+#Balkan Pact
+link = { culture = hungarian_culture_group ideology = any faction = HUN_BALKAN_FACTION }
+
+#Balkan Entente
+link = { culture = south_slavic ideology = any faction = BALKAN_ENTENTE_FACTION }
+
+#Czech Entente
+link = { culture = czecho_slovak_culture_group ideology = any faction = CZE_little_entente }
+
+#Left out: western_pacific_sphere, south_west_pacific_initiative
+
+##Default Faction Names
+
+#Absolutist
+link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_1 }
+link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_2 }
+link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_3 }
+link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_4 }
+link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_5 }
+
+#Radical
+link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_1 }
+link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_2 }
+link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_3 }
+link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_4 }
+link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_5 }
+link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_6 }
+
+#Democratic
+link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_1 }
+link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_2 }
+link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_3 }
+link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_4 }
+link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_5 }
+
+#Communist
+link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_1 }
+link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_2 }
+link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_3 }
+link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_4 }
+link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_5 }
+
+#Facism
+link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_1 }
+link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_2 }
+link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_3 }
+link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_4 }
+link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_5 }
+
+#Non-Aligned
+link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_1 }
+link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_2 }
+link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_3 }
+link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_4 }
+link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_5 }
+
+##FALLBACKS
+
+#Allies
+link = { culture = any ideology = democratic faction = allies }
+link = { culture = any ideology = neutrality faction = allies }
+
+#Axis
+link = { culture = any ideology = fascism faction = axis }
+link = { culture = any ideology = absolutist faction = axis }
+
+#Comintern
+link = { culture = any ideology = communism faction = comintern }
+
+#Comintern
+link = { culture = any ideology = communism faction = comintern }
+
+#Default Fallback - DO NOT CHANGE THIS, DO NOT ADD ANYTHING AFTER THIS
+
+link = { culture = any ideology = any faction = FACTION_NAME_IDEOLOGY_DEFAULT }
