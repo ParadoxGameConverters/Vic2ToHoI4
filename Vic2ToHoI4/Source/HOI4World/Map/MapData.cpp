@@ -16,13 +16,20 @@ commonItems::Color getRightColor(point position, int width, bitmap_image& provin
 HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration):
 	 provinceMap(theConfiguration.getHoI4Path() + "/map/provinces.bmp")
 {
+	importProvinces(provinceDefinitions, theConfiguration.getHoI4Path());
+	importAdjacencies(theConfiguration.getHoI4Path());
+}
+
+
+void HoI4::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitions, const std::string& hoi4Path)
+{
 	if (!provinceMap)
 	{
-		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/map/provinces.bmp");
+		throw std::runtime_error("Could not open " + hoi4Path + "/map/provinces.bmp");
 	}
 
-	auto height = provinceMap.height();
-	auto width = provinceMap.width();
+	const auto height = provinceMap.height();
+	const auto width = provinceMap.width();
 	for (unsigned int y = 0; y < height; y++)
 	{
 		for (unsigned int x = 0; x < width; x++)
@@ -53,11 +60,10 @@ HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Con
 				handleNeighbor(centerColor, leftColor, position, provinceDefinitions);
 			}
 
-			auto province = provinceDefinitions.getProvinceFromColor(centerColor);
-			if (province)
+			if (auto province = provinceDefinitions.getProvinceFromColor(centerColor); province)
 			{
-				auto specificProvincePoints = theProvincePoints.find(*province);
-				if (specificProvincePoints != theProvincePoints.end())
+				if (auto specificProvincePoints = theProvincePoints.find(*province);
+					 specificProvincePoints != theProvincePoints.end())
 				{
 					specificProvincePoints->second.addPoint(position);
 				}
@@ -175,6 +181,15 @@ void HoI4::MapData::addNeighbor(const int mainProvince, const int neighborProvin
 }
 
 
+void HoI4::MapData::removeNeighbor(const int mainProvince, const int neighborProvince)
+{
+	if (auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
+	{
+		centerMapping->second.erase(neighborProvince);
+	}
+}
+
+
 void HoI4::MapData::addPointToBorder(int mainProvince, int neighborProvince, const point position)
 {
 	auto bordersWithNeighbors = borders.find(mainProvince);
@@ -199,10 +214,48 @@ void HoI4::MapData::addPointToBorder(int mainProvince, int neighborProvince, con
 	}
 	else
 	{
-		const auto lastPoint = border->second.back();
-		if ((lastPoint.first != position.first) || (lastPoint.second != position.second))
+		if (const auto lastPoint = border->second.back();
+			 (lastPoint.first != position.first) || (lastPoint.second != position.second))
 		{
 			border->second.push_back(position);
+		}
+	}
+}
+
+
+void HoI4::MapData::importAdjacencies(const std::string& hoi4Path)
+{
+	std::ifstream adjacenciesFile(hoi4Path + "/map/adjacencies.csv");
+	if (!adjacenciesFile.is_open())
+	{
+		throw std::runtime_error("Could not open " + hoi4Path + "/map/adjacencies.csv");
+	}
+
+	while (!adjacenciesFile.eof())
+	{
+		std::string line;
+		getline(adjacenciesFile, line);
+
+		const std::regex pattern("(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*)");
+		if (std::smatch matches; regex_match(line, matches, pattern))
+		{
+			if (matches[1] == "From" || matches[1] == "-1")
+			{
+				continue;
+			}
+
+			const int firstProvince = std::stoi(matches[1]);
+			const int secondProvince = std::stoi(matches[2]);
+			if (matches[3] != "impassable")
+			{
+				addNeighbor(firstProvince, secondProvince);
+				addNeighbor(secondProvince, firstProvince);
+			}
+			else
+			{
+				removeNeighbor(firstProvince, secondProvince);
+				removeNeighbor(secondProvince, firstProvince);
+			}
 		}
 	}
 }
