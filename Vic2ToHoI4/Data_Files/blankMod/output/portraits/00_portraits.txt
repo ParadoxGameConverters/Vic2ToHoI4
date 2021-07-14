@@ -665,7 +665,7 @@ continent = {
 			"gfx/leaders/FRA/portrait_fra_leon_blum.dds"
 			"gfx/leaders/FRA/portrait_fra_marie_pierre_koenig.dds"
 			"gfx/leaders/FRA/portrait_fra_maurice_thorez.dds"
-			"gfx/leaders/FRA/portrait_fra_pierre_laval.dds
+			"gfx/leaders/FRA/portrait_fra_pierre_laval.dds"
 			"gfx/leaders/GER/Portrait_Germany_Albert_Kesselring.dds"
 			"gfx/leaders/GER/Portrait_Germany_Alfred_Jodl.dds"
 			"gfx/leaders/GER/Portrait_Germany_Alfred_Saalwachter.dds"
