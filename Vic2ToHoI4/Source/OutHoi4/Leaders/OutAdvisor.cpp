@@ -16,7 +16,7 @@ void HoI4::outputAdvisor(std::ostream& output, const std::string& tag, const Adv
 	output << "}\n";
 	if (!theAdvisor.getPicture().empty())
 	{
-		output << "\t\t\tpicture = " << theAdvisor.getPicture() << "\n";
+		output << "\t\t\tpicture = \"" << theAdvisor.getPicture() << "\"\n";
 	}
 	output << "\t\t\tdo_effect = {\n";
 	output << "\t\t\t\tNOT = {\n";
