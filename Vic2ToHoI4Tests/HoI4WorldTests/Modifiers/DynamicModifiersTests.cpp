@@ -189,5 +189,3 @@ TEST(HoI4World_Modifiers_DynamicModifiersTests, EffectCanBeAdded)
 
 	ASSERT_EQ(expectedOutput.str(), actualOutput.str());
 }
-
-

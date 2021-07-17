@@ -6,7 +6,7 @@
 
 class HoI4World_CountryCategories_CountryGrammarRuleTests: public testing::Test
 {
-protected:
+  protected:
 	HoI4World_CountryCategories_CountryGrammarRuleTests() {}
 
 	HoI4::CountryGrammarRuleFactory countryGrammarRuleFactory;
@@ -17,7 +17,7 @@ protected:
 TEST_F(HoI4World_CountryCategories_CountryGrammarRuleTests, CategoryDefaultsToEmpty)
 {
 	std::stringstream input;
-	
+
 	const auto rule = countryGrammarRuleFactory.importCountryGrammarRule(input);
 
 	ASSERT_TRUE(rule.category.empty());

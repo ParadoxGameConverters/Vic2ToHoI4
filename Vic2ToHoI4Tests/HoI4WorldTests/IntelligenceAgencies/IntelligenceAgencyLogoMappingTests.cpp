@@ -8,7 +8,7 @@ TEST(HoI4World_IntelligenceAgencies_IntelligenceAgencyLogoMappingTests, Cultures
 {
 	std::stringstream input;
 	HoI4::IntelligenceAgencyLogoMapping mapping(input);
-	
+
 	ASSERT_TRUE(mapping.takeCultures().empty());
 }
 

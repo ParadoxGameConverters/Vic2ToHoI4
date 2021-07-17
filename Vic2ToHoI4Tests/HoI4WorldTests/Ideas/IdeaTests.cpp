@@ -213,8 +213,8 @@ TEST(HoI4World_Ideas_IdeaTests, CancelCanBeUpdated)
 	HoI4::Idea theIdea("theIdea", input);
 
 	std::string newString = "= {\n";
-	newString +="\t\t\t\tat_war = yes\n";
-	newString +="\t\t\t}";
+	newString += "\t\t\t\tat_war = yes\n";
+	newString += "\t\t\t}";
 	theIdea.updateCancel(newString);
 
 	std::stringstream actualOutput;

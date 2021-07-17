@@ -15,7 +15,8 @@ TEST(Mappers_FactionName_FactionNameMapperTests, MatchingCultureGroupMatchingIde
 {
 	const auto mapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
 
-	ASSERT_EQ("matching_culture_group_matching_ideology", mapper->getFactionName("test_ideology", "ignored", "test_culture_group"));
+	ASSERT_EQ("matching_culture_group_matching_ideology",
+		 mapper->getFactionName("test_ideology", "ignored", "test_culture_group"));
 }
 
 
