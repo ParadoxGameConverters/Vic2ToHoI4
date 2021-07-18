@@ -14,16 +14,16 @@ namespace HoI4
 
 class substitutesImporter: commonItems::parser
 {
-	public:
-		explicit substitutesImporter(std::istream& theStream);
+  public:
+	explicit substitutesImporter(std::istream& theStream);
 
-		[[nodiscard]] auto getSubstitutes() const { return substitutes; }
+	[[nodiscard]] auto getSubstitutes() const { return substitutes; }
 
-	private:
-		std::map<std::string, std::string> substitutes;
+  private:
+	std::map<std::string, std::string> substitutes;
 };
 
-}
+} // namespace HoI4
 
 
 
