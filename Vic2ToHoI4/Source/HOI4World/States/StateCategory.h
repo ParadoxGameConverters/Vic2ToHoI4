@@ -12,17 +12,16 @@ namespace HoI4
 
 class StateCategory: commonItems::parser
 {
-	public:
-		explicit StateCategory(std::istream& theStream);
+  public:
+	explicit StateCategory(std::istream& theStream);
 
-		auto getNumberOfSlots() const { return numberOfSlots; }
+	auto getNumberOfSlots() const { return numberOfSlots; }
 
-	private:
-		int numberOfSlots = 0;
+  private:
+	int numberOfSlots = 0;
 };
 
-}
-
+} // namespace HoI4
 
 
 

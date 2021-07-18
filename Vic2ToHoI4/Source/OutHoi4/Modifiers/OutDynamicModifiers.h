@@ -3,8 +3,8 @@
 
 
 
-#include "HOI4World/Modifiers/DynamicModifiers.h"
 #include "Configuration.h"
+#include "HOI4World/Modifiers/DynamicModifiers.h"
 
 
 

@@ -17,5 +17,4 @@ std::ostream& operator<<(std::ostream& outStream, const AiPeace& outPeace);
 
 
 
-
 #endif // OUT_AI_PEACE_H

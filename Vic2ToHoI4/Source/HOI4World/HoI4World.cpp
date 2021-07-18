@@ -24,6 +24,7 @@
 #include "Mappers/CasusBelli/CasusBellisFactory.h"
 #include "Mappers/Country/CountryMapperFactory.h"
 #include "Mappers/CountryName/CountryNameMapperFactory.h"
+#include "Mappers/FactionName/FactionNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
 #include "Mappers/Government/GovernmentMapperFactory.h"
@@ -31,7 +32,6 @@
 #include "Mappers/Ideology/IdeologyMapperFactory.h"
 #include "Mappers/Technology/ResearchBonusMapper.h"
 #include "Mappers/Technology/ResearchBonusMapperFactory.h"
-#include "Mappers/FactionName/FactionNameMapperFactory.h"
 #include "Mappers/Technology/TechMapper.h"
 #include "Mappers/Technology/TechMapperFactory.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
@@ -999,7 +999,7 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 		factionMembers.push_back(leader);
 
 		std::string leaderIdeology = leader->getGovernmentIdeology();
-		
+
 		for (const auto& allyTag: leader->getAllies())
 		{
 			auto allyCountry = findCountry(allyTag);
@@ -1023,7 +1023,11 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 
 			double factionStrength = 0.0;
 
-			auto newFaction = make_shared<Faction>(leader, factionMembers, factionNameMapper->getFactionName(leader->getGovernmentIdeology(), leader->getPrimaryCulture(), leader->getPrimaryCultureGroup()));
+			auto newFaction = make_shared<Faction>(leader,
+				 factionMembers,
+				 factionNameMapper->getFactionName(leader->getGovernmentIdeology(),
+					  leader->getPrimaryCulture(),
+					  leader->getPrimaryCultureGroup()));
 			for (const auto& member: factionMembers)
 			{
 				if (theConfiguration.getDebug())
@@ -1033,7 +1037,7 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 				}
 				member->setFaction(newFaction);
 			}
-			
+
 			factions.push_back(newFaction);
 
 			if (theConfiguration.getDebug())

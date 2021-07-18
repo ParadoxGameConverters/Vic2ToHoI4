@@ -14,20 +14,20 @@ namespace HoI4
 
 class LegacyNavy final: public Navy
 {
-	public:
-		LegacyNavy(const std::string& name, const int location, const int base): Navy(name, location, base) {}
+  public:
+	LegacyNavy(const std::string& name, const int location, const int base): Navy(name, location, base) {}
 
-		void addShip(Ship& newShip) override { ships.push_back(dynamic_cast<LegacyShip&>(newShip)); }
+	void addShip(Ship& newShip) override { ships.push_back(dynamic_cast<LegacyShip&>(newShip)); }
 
-		[[nodiscard]] size_t getNumShips() const override { return ships.size(); }
+	[[nodiscard]] size_t getNumShips() const override { return ships.size(); }
 
-		friend std::ostream& operator << (std::ostream& output, const LegacyNavy& instance);
+	friend std::ostream& operator<<(std::ostream& output, const LegacyNavy& instance);
 
-	private:
-		std::vector<LegacyShip> ships;
+  private:
+	std::vector<LegacyShip> ships;
 };
 
-}
+} // namespace HoI4
 
 
 

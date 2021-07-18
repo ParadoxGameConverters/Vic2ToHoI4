@@ -12,11 +12,11 @@ namespace HoI4
 
 class ForeignInfluenceDecisions: public DecisionsFile
 {
-	public:
-		void updateDecisions(const std::set<std::string>& majorIdeologies);
+  public:
+	void updateDecisions(const std::set<std::string>& majorIdeologies);
 };
 
-}
+} // namespace HoI4
 
 
 

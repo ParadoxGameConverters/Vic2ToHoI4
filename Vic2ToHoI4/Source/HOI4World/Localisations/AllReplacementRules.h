@@ -16,16 +16,16 @@ namespace HoI4
 
 class AllReplacementRules: commonItems::parser
 {
-	public:
-		AllReplacementRules(std::istream& theStream);
+  public:
+	AllReplacementRules(std::istream& theStream);
 
-		std::optional<LanguageReplacementRules> getRulesForLanguage(const std::string& language);
+	std::optional<LanguageReplacementRules> getRulesForLanguage(const std::string& language);
 
-	private:
-		std::map<std::string, LanguageReplacementRules> rulesInLanguages;
+  private:
+	std::map<std::string, LanguageReplacementRules> rulesInLanguages;
 };
 
-}
+} // namespace HoI4
 
 
 

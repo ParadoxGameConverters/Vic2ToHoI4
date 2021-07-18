@@ -13,7 +13,8 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, CategoriesCanBeCreated)
 																				  .addMapping("BGL", "BGL")
 																				  .Build(),
 		 {},
-		 {"absolutist", "democratic"}, false);
+		 {"absolutist", "democratic"},
+		 false);
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
@@ -53,8 +54,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, UnmappedTagsAreSkipped)
 	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder().Build(), {}, {}, false);
 
 	ASSERT_THAT(categories,
-		 testing::UnorderedElementsAre(
-			  testing::Pair("tag_mscad", testing::UnorderedElementsAre()),
+		 testing::UnorderedElementsAre(testing::Pair("tag_mscad", testing::UnorderedElementsAre()),
 			  testing::Pair("tag_mscae", testing::UnorderedElementsAre())));
 }
 

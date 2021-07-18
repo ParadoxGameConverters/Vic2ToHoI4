@@ -14,16 +14,16 @@ namespace HoI4
 
 class LanguageReplacementRules: commonItems::parser
 {
-	public:
-		LanguageReplacementRules(std::istream& theStream);
+  public:
+	LanguageReplacementRules(std::istream& theStream);
 
-		const auto& getTheRules() const { return theRules; }
+	const auto& getTheRules() const { return theRules; }
 
-	private:
-		std::vector<LanguageReplacementRule> theRules;
+  private:
+	std::vector<LanguageReplacementRule> theRules;
 };
 
-}
+} // namespace HoI4
 
 
 

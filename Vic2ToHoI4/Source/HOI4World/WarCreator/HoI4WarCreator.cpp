@@ -1000,7 +1000,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 		{
 			continue;
 		}
-		
+
 		std::string HowToTakeGC = HowToTakeLand(greatPower, Leader, 3);
 		if (HowToTakeGC == "noactionneeded" || HowToTakeGC == "factionneeded")
 		{
@@ -1337,7 +1337,8 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakColonies(std
 	}
 	std::sort(weakColonies.begin(),
 		 weakColonies.end(),
-		 [](const std::pair<std::shared_ptr<HoI4::Country>, float>& a, const std::pair<std::shared_ptr<HoI4::Country>, float>& b) {
+		 [](const std::pair<std::shared_ptr<HoI4::Country>, float>& a,
+			  const std::pair<std::shared_ptr<HoI4::Country>, float>& b) {
 			 return a.second < b.second;
 		 });
 	std::vector<std::shared_ptr<HoI4::Country>> sortedWeakColonies;

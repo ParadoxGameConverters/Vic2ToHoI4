@@ -1,6 +1,6 @@
-#include <gmock/gmock-matchers.h>
 #include "HOI4World/CountryCategories/CountryGrammarFactory.h"
 #include "gtest/gtest.h"
+#include <gmock/gmock-matchers.h>
 
 
 
@@ -20,6 +20,8 @@ TEST_F(HoI4World_CountryCategories_CountryGrammarTests, RulesCanBeImported)
 
 	ASSERT_THAT(grammar,
 		 testing::ElementsAre(HoI4::CountryGrammarRule{.category = "tag_mscad", .tag = "BAN"},
-			  HoI4::CountryGrammarRule{.category = "tag_mscad", .tag = "ENG", .extra = R"(NOT = { $ABSOLUTIST $DEMOCRATIC })"},
+			  HoI4::CountryGrammarRule{.category = "tag_mscad",
+					.tag = "ENG",
+					.extra = R"(NOT = { $ABSOLUTIST $DEMOCRATIC })"},
 			  HoI4::CountryGrammarRule{.category = "tag_mscae", .tag = "BGL"}));
 }

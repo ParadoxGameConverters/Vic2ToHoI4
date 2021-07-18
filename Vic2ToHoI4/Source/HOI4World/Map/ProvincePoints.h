@@ -17,20 +17,20 @@ namespace HoI4
 
 class ProvincePoints
 {
-	public:
-		void addPoint(const point& thePoint);
+  public:
+	void addPoint(const point& thePoint);
 
-		[[nodiscard]] point getCentermostPoint() const;
+	[[nodiscard]] point getCentermostPoint() const;
 
-	private:
-		std::set<point> thePoints;
-		point leftmostPoint = { INT_MAX, 0 };
-		point rightmostPoint = { -1, 0 };
-		point highestPoint = { 0, -1 };
-		point lowestPoint = { 0, INT_MAX };
+  private:
+	std::set<point> thePoints;
+	point leftmostPoint = {INT_MAX, 0};
+	point rightmostPoint = {-1, 0};
+	point highestPoint = {0, -1};
+	point lowestPoint = {0, INT_MAX};
 };
 
-}
+} // namespace HoI4
 
 
 

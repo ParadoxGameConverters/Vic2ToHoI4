@@ -14,20 +14,17 @@ namespace HoI4
 
 class MtgShipTypeNames
 {
-	public:
-		explicit MtgShipTypeNames(
-			std::string _type,
-			std::string _theme,
-			std::set<std::string> _shipTypes,
-			std::string _fallbackName,
-			std::vector<std::string> _names
-		):
-			type(std::move(_type)),
-			theme(std::move(_theme)),
-			shipTypes(std::move(_shipTypes)),
-			fallbackName(std::move(_fallbackName)),
-			names(std::move(_names))
-		{}
+  public:
+	explicit MtgShipTypeNames(std::string _type,
+		 std::string _theme,
+		 std::set<std::string> _shipTypes,
+		 std::string _fallbackName,
+		 std::vector<std::string> _names):
+		 type(std::move(_type)),
+		 theme(std::move(_theme)), shipTypes(std::move(_shipTypes)), fallbackName(std::move(_fallbackName)),
+		 names(std::move(_names))
+	{
+	}
 
 	bool operator<(const MtgShipTypeNames& rhs) const { return type < rhs.type; }
 
@@ -38,15 +35,15 @@ class MtgShipTypeNames
 	[[nodiscard]] std::string_view getFallbackName() const { return fallbackName; }
 	[[nodiscard]] std::vector<std::string> getNames() const { return names; }
 
-	private:
+  private:
 	std::string type;
 	std::string theme;
 	std::set<std::string> shipTypes;
 	std::string fallbackName;
 	std::vector<std::string> names;
 };
-	
-}
+
+} // namespace HoI4
 
 
 

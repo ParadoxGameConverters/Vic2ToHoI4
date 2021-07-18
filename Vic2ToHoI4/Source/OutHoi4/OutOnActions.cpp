@@ -119,7 +119,9 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	onActionsFile << "\t\t\tset_province_name = { id = 3152 name = \"Tallinn\"} #Reval\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 3529 name = \"Stalingrad\"} #Tsaritsyn\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 4180 name = \"Honolulu\"} #Hawaii\n";
-	onActionsFile << "\t\t\tset_province_name = { id = 4268 name = \"Noum" "\xC3\xA9" "a\"} #New Caledonia\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 4268 name = \"Noum"
+						  "\xC3\xA9"
+						  "a\"} #New Caledonia\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 4333 name = \"Astana\"} #Qaraganda\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 4709 name = \"\xC3\x9Cr\xC3\xBCmqi\"} #D\xC3\xADhu\xC3\xA0\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 4801 name = \"Ulaanbaatar\"} #Urga\n";

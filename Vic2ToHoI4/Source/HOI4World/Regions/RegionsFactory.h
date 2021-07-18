@@ -4,8 +4,8 @@
 
 
 #include "Parser.h"
-#include "Regions.h"
 #include "RegionFactory.h"
+#include "Regions.h"
 #include <memory>
 
 
@@ -22,7 +22,7 @@ class Regions::Factory: commonItems::parser
 
   private:
 	Region::Factory regionFactory;
-	
+
 	std::unique_ptr<Regions> theRegions;
 };
 

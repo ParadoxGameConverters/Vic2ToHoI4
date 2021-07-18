@@ -229,11 +229,11 @@ void HoI4::updateGeneralIdeas(IdeaGroup& generalIdeas, const std::set<std::strin
 	if (nationalUnification && majorIdeologies.contains("fascism"))
 	{
 		std::string cancel = "= {\n";
-		cancel +="\t\t\t\tNOT = {\n";
-		cancel +="\t\t\t\t\thas_dynamic_modifier = { modifier = revanchism }\n";
-		cancel +="\t\t\t\t\thas_dynamic_modifier = { modifier = revanchism_fasc }\n";
-		cancel +="\t\t\t\t}\n";
-		cancel +="\t\t\t}\n";
+		cancel += "\t\t\t\tNOT = {\n";
+		cancel += "\t\t\t\t\thas_dynamic_modifier = { modifier = revanchism }\n";
+		cancel += "\t\t\t\t\thas_dynamic_modifier = { modifier = revanchism_fasc }\n";
+		cancel += "\t\t\t\t}\n";
+		cancel += "\t\t\t}\n";
 		nationalUnification->updateCancel(cancel);
 		generalIdeas.replaceIdea(*nationalUnification);
 	}

@@ -16,7 +16,7 @@ namespace HoI4
 {
 
 class States; // forward declaration to break circular dependency
-	
+
 
 class StrategicRegions
 {

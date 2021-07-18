@@ -15,14 +15,11 @@ namespace HoI4
 
 class GenericDecisions: public DecisionsFile
 {
-	public:
-		void updateDecisions(
-			const std::map<int, int>& provinceToStateIdMap,
-			const std::set<std::string>& majorIdeologies
-		);
+  public:
+	void updateDecisions(const std::map<int, int>& provinceToStateIdMap, const std::set<std::string>& majorIdeologies);
 };
 
-}
+} // namespace HoI4
 
 
 

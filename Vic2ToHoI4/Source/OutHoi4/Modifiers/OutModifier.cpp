@@ -1,6 +1,8 @@
 #include "OutModifier.h"
 
-std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Modifier& modifier)
+
+
+std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::Modifier& modifier)
 {
 	output << modifier.getName() << " = {\n";
 	if (!modifier.getIcon().empty())

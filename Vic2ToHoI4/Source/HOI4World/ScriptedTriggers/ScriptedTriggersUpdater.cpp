@@ -257,8 +257,7 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 	return body;
 }
 
-void updateNationalFocusTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
-	 const std::set<std::string>& majorIdeologies)
+void updateNationalFocusTriggers(HoI4::ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies)
 {
 	if (majorIdeologies.contains("communism"))
 	{

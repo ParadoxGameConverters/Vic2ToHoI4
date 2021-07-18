@@ -10,8 +10,8 @@
 #include "V2World/Provinces/Province.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/StateBuilder.h"
-#include "gtest/gtest.h"
 #include "gmock/gmock-matchers.h"
+#include "gtest/gtest.h"
 #include <optional>
 #include <sstream>
 

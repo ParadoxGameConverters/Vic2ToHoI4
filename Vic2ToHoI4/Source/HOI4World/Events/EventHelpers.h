@@ -9,7 +9,7 @@
 
 namespace HoI4
 {
-	
+
 std::string getElectionsAllowedString(const std::string& ideology);
 
 }

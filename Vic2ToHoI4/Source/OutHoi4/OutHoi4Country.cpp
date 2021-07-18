@@ -306,8 +306,7 @@ void outputCommanders(std::ostream& output,
 	 const std::vector<HoI4::General>& generals,
 	 const std::vector<HoI4::Admiral>& admirals);
 void outputOperatives(std::ostream& output, const std::vector<HoI4::Operative>& operatives);
-void outputGlobalEventTargets(std::ostream& output,
-	 const std::set<std::string>& eventTargets);
+void outputGlobalEventTargets(std::ostream& output, const std::set<std::string>& eventTargets);
 
 
 void outputHistory(const HoI4::Country& theCountry, const Configuration& theConfiguration)
@@ -342,20 +341,12 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	outputFlags(output, theCountry.getFlags());
 	outputConvoys(output, theCountry.getConvoys());
 	outputEquipmentStockpile(output, theCountry.getEquipmentStockpile(), tag);
-	outputPuppets(
-		output,
-		tag,
-		governmentIdeology,
-		theCountry.getPuppets(),
-		theCountry.getPuppetMaster()
-	);
-	outputPolitics(
-		output,
-		governmentIdeology,
-		theCountry.getLastElection(),
-		theCountry.areElectionsAllowed(),
-		theCountry.getIdeologySupport()
-	);
+	outputPuppets(output, tag, governmentIdeology, theCountry.getPuppets(), theCountry.getPuppetMaster());
+	outputPolitics(output,
+		 governmentIdeology,
+		 theCountry.getLastElection(),
+		 theCountry.areElectionsAllowed(),
+		 theCountry.getIdeologySupport());
 	outputRelations(output, tag, theCountry.getRelations());
 	outputFactions(output, tag, theCountry.getFaction(), theCountry.getName());
 	outputIdeas(output,
@@ -500,7 +491,7 @@ void outputPuppets(std::ostream& output,
 		output << "    limit = {\n";
 		output << "        has_dlc = \"Together for Victory\"\n";
 		output << "    }\n";
-		for (const auto& puppet : puppets)
+		for (const auto& puppet: puppets)
 		{
 			if (governmentIdeology == "fascism")
 			{
@@ -629,9 +620,8 @@ void outputFactions(std::ostream& output,
 		std::string allianceName;
 		if (possibleLeaderName)
 		{
-			allianceName = (faction->getFactionName().has_value())
-									? faction->getFactionName().value() : 
-									("\"Alliance Of" + *possibleLeaderName + "\"");
+			allianceName = (faction->getFactionName().has_value()) ? faction->getFactionName().value()
+																					 : ("\"Alliance Of" + *possibleLeaderName + "\"");
 		}
 		else
 		{
@@ -1187,8 +1177,7 @@ void HoI4::reportIndustry(std::ostream& out, const Country& theCountry)
 	}
 }
 
-void outputGlobalEventTargets(std::ostream& output,
-	 const std::set<std::string>& eventTargets)
+void outputGlobalEventTargets(std::ostream& output, const std::set<std::string>& eventTargets)
 {
 	for (const auto& eventTarget: eventTargets)
 	{

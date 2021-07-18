@@ -15,18 +15,18 @@ namespace HoI4
 
 class AiPeaces: commonItems::parser
 {
-	public:
-		AiPeaces() noexcept;
+  public:
+	AiPeaces() noexcept;
 
-		void updateAiPeace(std::string_view name, const std::string& replacementEnable);
+	void updateAiPeace(std::string_view name, const std::string& replacementEnable);
 
-		[[nodiscard]] const auto& getThePeaces() const { return thePeaces; }
+	[[nodiscard]] const auto& getThePeaces() const { return thePeaces; }
 
-	private:
-		std::vector<AiPeace> thePeaces;
+  private:
+	std::vector<AiPeace> thePeaces;
 };
 
-}
+} // namespace HoI4
 
 
 

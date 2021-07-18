@@ -13,17 +13,17 @@ namespace HoI4
 
 class MtgUnitMapping: commonItems::parser
 {
-	public:
-		explicit MtgUnitMapping(std::istream& theStream);
+  public:
+	explicit MtgUnitMapping(std::istream& theStream);
 
-		[[nodiscard]] auto getMapping() const { return std::make_pair(Vic2Type, HoI4Types); }
+	[[nodiscard]] auto getMapping() const { return std::make_pair(Vic2Type, HoI4Types); }
 
-	private:
-		std::string Vic2Type;
-		std::vector<HoI4UnitType> HoI4Types;
+  private:
+	std::string Vic2Type;
+	std::vector<HoI4UnitType> HoI4Types;
 };
 
-}
+} // namespace HoI4
 
 
 
