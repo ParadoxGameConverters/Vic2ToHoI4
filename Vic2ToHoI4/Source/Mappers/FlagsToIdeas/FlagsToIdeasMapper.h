@@ -23,7 +23,7 @@ class FlagsToIdeasMapper
 	std::map<std::string, std::string> mappings;
 };
 
-} // namespace mappers
+} // namespace Mappers
 
 
 

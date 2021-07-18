@@ -14,16 +14,16 @@ namespace HoI4
 
 class StateCategoryFile: commonItems::parser
 {
-	public:
-		explicit StateCategoryFile(std::istream& theStream);
+  public:
+	explicit StateCategoryFile(std::istream& theStream);
 
-		auto getCategories() const { return theCategories; }
+	auto getCategories() const { return theCategories; }
 
-	private:
-		std::map<int, std::string> theCategories;
+  private:
+	std::map<int, std::string> theCategories;
 };
 
-}
+} // namespace HoI4
 
 
 

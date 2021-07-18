@@ -3,8 +3,8 @@
 
 
 
-#include "RegimentType.h"
 #include "Parser.h"
+#include "RegimentType.h"
 
 
 

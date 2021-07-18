@@ -14,25 +14,22 @@ namespace HoI4
 
 class NavyNames
 {
-	public:
-		[[nodiscard]] std::set<LegacyShipTypeNames> getLegacyShipTypeNames() const { return legacyShipTypeNames; }
-		[[nodiscard]] std::set<MtgShipTypeNames> getMtgShipTypeNames() const { return mtgShipTypeNames; }
+  public:
+	[[nodiscard]] std::set<LegacyShipTypeNames> getLegacyShipTypeNames() const { return legacyShipTypeNames; }
+	[[nodiscard]] std::set<MtgShipTypeNames> getMtgShipTypeNames() const { return mtgShipTypeNames; }
 
-		void addLegacyShipTypeNames(const LegacyShipTypeNames& newShipTypeNames)
-		{
-			legacyShipTypeNames.insert(newShipTypeNames);
-		}
-		void addMtgShipTypeNames(const MtgShipTypeNames& newShipTypeNames)
-		{
-			mtgShipTypeNames.insert(newShipTypeNames);
-		}
-	
-	private:
-		std::set<LegacyShipTypeNames> legacyShipTypeNames;
-		std::set<MtgShipTypeNames> mtgShipTypeNames;
+	void addLegacyShipTypeNames(const LegacyShipTypeNames& newShipTypeNames)
+	{
+		legacyShipTypeNames.insert(newShipTypeNames);
+	}
+	void addMtgShipTypeNames(const MtgShipTypeNames& newShipTypeNames) { mtgShipTypeNames.insert(newShipTypeNames); }
+
+  private:
+	std::set<LegacyShipTypeNames> legacyShipTypeNames;
+	std::set<MtgShipTypeNames> mtgShipTypeNames;
 };
 
-}
+} // namespace HoI4
 
 
 

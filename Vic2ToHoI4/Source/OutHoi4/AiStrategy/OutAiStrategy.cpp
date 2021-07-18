@@ -1,5 +1,5 @@
-#include "../../common_items/CommonFunctions.h"
 #include "OutAiStrategy.h"
+#include "../../common_items/CommonFunctions.h"
 #include "HOI4World/HoI4Country.h"
 
 void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const std::string& outputName)

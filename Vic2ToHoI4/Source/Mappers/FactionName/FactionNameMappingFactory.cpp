@@ -1,5 +1,5 @@
-#include "CommonRegexes.h"
 #include "FactionNameMappingFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

@@ -1,17 +1,20 @@
 #include "DynamicModifiers.h"
-#include "Modifier.h"
 #include "Log.h"
+#include "Modifier.h"
+
+
 
 HoI4::DynamicModifiers::DynamicModifiers()
 {
 	clearRegisteredKeywords();
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& modifierName, std::istream& theStream){
+	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& modifierName, std::istream& theStream) {
 		Modifier modifier(modifierName, theStream);
 		dynamicModifiers.insert(make_pair(modifierName, modifier));
 	});
 	parseFile("configurables/converterDynamicModifiers.txt");
 	clearRegisteredKeywords();
 }
+
 
 void HoI4::DynamicModifiers::updateDynamicModifiers(const std::set<std::string>& majorIdeologies)
 {

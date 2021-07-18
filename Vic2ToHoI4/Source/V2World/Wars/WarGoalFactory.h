@@ -3,8 +3,8 @@
 
 
 
-#include "WarGoal.h"
 #include "Parser.h"
+#include "WarGoal.h"
 
 
 

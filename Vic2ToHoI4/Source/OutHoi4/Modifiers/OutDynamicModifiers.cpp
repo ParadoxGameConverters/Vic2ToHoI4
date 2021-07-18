@@ -4,6 +4,8 @@
 #include "OSCompatibilityLayer.h"
 #include <fstream>
 
+
+
 namespace HoI4
 {
 
@@ -11,8 +13,8 @@ void outDynamicModifiers(const DynamicModifiers& dynamicModifiers, const Configu
 {
 	if (!commonItems::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/common/dynamic_modifiers"))
 	{
-		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() +
-											 "/common/dynamic_modifiers/");
+		throw std::runtime_error(
+			 "Could not create output/" + theConfiguration.getOutputName() + "/common/dynamic_modifiers/");
 	}
 
 	std::ofstream out(

@@ -12,22 +12,22 @@ namespace HoI4
 
 class SupplyZone
 {
-	public:
-		SupplyZone(const int _ID, const int _value): ID(_ID), value(_value) {}
+  public:
+	SupplyZone(const int _ID, const int _value): ID(_ID), value(_value) {}
 
-		void addState(const int state) { states.push_back(state); }
+	void addState(const int state) { states.push_back(state); }
 
-		[[nodiscard]] auto getId() const { return ID; }
-		[[nodiscard]] const auto& getStates() const { return states; }
-		[[nodiscard]] auto getValue() const { return value; }
+	[[nodiscard]] auto getId() const { return ID; }
+	[[nodiscard]] const auto& getStates() const { return states; }
+	[[nodiscard]] auto getValue() const { return value; }
 
-	private:
-		int ID;
-		std::vector<int> states;
-		int value;
+  private:
+	int ID;
+	std::vector<int> states;
+	int value;
 };
 
-}
+} // namespace HoI4
 
 
 

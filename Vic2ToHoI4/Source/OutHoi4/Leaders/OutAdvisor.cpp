@@ -9,7 +9,7 @@ void HoI4::outputAdvisor(std::ostream& output, const std::string& tag, const Adv
 	output << "\t\t\t\toriginal_tag = \"" << tag << "\"\n";
 	output << "\t\t\t}\n";
 	output << "\t\t\ttraits = { ";
-	for (const auto& trait : theAdvisor.getTraits())
+	for (const auto& trait: theAdvisor.getTraits())
 	{
 		output << trait << " ";
 	}

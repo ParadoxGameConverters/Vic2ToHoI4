@@ -13,22 +13,22 @@ namespace HoI4
 
 class StateHistory: commonItems::parser
 {
-	public:
-		explicit StateHistory(std::istream& theStream);
+  public:
+	explicit StateHistory(std::istream& theStream);
 
-		int getCivFactories() const { return civFactories; }
-		int getMilFactories() const { return milFactories; }
-		int getDockyards() const { return dockyards; }
-		std::string getOwner() const { return owner; }
+	int getCivFactories() const { return civFactories; }
+	int getMilFactories() const { return milFactories; }
+	int getDockyards() const { return dockyards; }
+	std::string getOwner() const { return owner; }
 
-	private:
-		int civFactories = 0;
-		int milFactories = 0;
-		int dockyards = 0;
-		std::string owner;
+  private:
+	int civFactories = 0;
+	int milFactories = 0;
+	int dockyards = 0;
+	std::string owner;
 };
 
-}
+} // namespace HoI4
 
 
 

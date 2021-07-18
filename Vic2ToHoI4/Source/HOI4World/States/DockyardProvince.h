@@ -12,16 +12,16 @@ namespace HoI4
 
 class DockyardProvince: commonItems::parser
 {
-	public:
-		explicit DockyardProvince(std::istream& theStream);
+  public:
+	explicit DockyardProvince(std::istream& theStream);
 
-		int getDockyardsLevel() const { return dockyardsLevel; }
+	int getDockyardsLevel() const { return dockyardsLevel; }
 
-	private:
-		int dockyardsLevel = 0;
+  private:
+	int dockyardsLevel = 0;
 };
 
-}
+} // namespace HoI4
 
 
 

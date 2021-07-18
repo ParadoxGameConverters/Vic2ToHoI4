@@ -5,8 +5,8 @@
 
 #include "Parser.h"
 #include <map>
-#include <string>
 #include <random>
+#include <string>
 
 
 
@@ -17,7 +17,10 @@ class IntelligenceAgencyLogos
 {
   public:
 	class Factory;
-	explicit IntelligenceAgencyLogos(std::map<std::string, std::string> cultureToLogoMap): cultureToLogoMap(std::move(cultureToLogoMap)) {}
+	explicit IntelligenceAgencyLogos(std::map<std::string, std::string> cultureToLogoMap):
+		 cultureToLogoMap(std::move(cultureToLogoMap))
+	{
+	}
 	std::string getLogo(const std::string& culture);
 
   private:

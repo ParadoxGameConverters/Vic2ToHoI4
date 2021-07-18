@@ -11,11 +11,7 @@
 namespace HoI4
 {
 
-void outAiPeaces(
-	const AiPeaces& aiPeaces,
-	const std::set<std::string>& majorIdeologies,
-	const std::string& outputName
-);
+void outAiPeaces(const AiPeaces& aiPeaces, const std::set<std::string>& majorIdeologies, const std::string& outputName);
 
 }
 

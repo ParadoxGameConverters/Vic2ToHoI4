@@ -288,7 +288,8 @@ void updateCapitulationEvent(HoI4::Event& theEvent, const std::set<std::string>&
 
 	HoI4::EventOption optionA;
 	optionA.giveName("country_capitulated.0.a");
-	optionA.giveTrigger("OR = {\n"
+	optionA.giveTrigger(
+		 "OR = {\n"
 		 "\t\t\t\tany_allied_country = {\n"
 		 "\t\t\t\t\thas_war_with = ROOT\n"
 		 "\t\t\t\t}\n"
@@ -298,7 +299,8 @@ void updateCapitulationEvent(HoI4::Event& theEvent, const std::set<std::string>&
 
 	HoI4::EventOption optionB;
 	optionB.giveName("country_capitulated.0.b");
-	optionB.giveTrigger("OR = {\n"
+	optionB.giveTrigger(
+		 "OR = {\n"
 		 "\t\t\t\thas_war_together_with = ROOT\n"
 		 "\t\t\t\tis_in_faction_with = ROOT\n"
 		 "\t\t\t\ttag = ROOT\n"
@@ -307,7 +309,8 @@ void updateCapitulationEvent(HoI4::Event& theEvent, const std::set<std::string>&
 
 	HoI4::EventOption optionC;
 	optionC.giveName("country_capitulated.0.c");
-	optionC.giveTrigger("NOT = { has_war_together_with = ROOT }\n"
+	optionC.giveTrigger(
+		 "NOT = { has_war_together_with = ROOT }\n"
 		 "\t\t\tNOT = { is_in_faction_with = ROOT }\n"
 		 "\t\t\tNOT = { any_allied_country = { has_war_with = ROOT } }\n"
 		 "\t\t\tNOT = { has_war_with = ROOT }\n"

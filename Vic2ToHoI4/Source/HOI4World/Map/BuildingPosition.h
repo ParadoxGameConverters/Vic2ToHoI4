@@ -3,9 +3,9 @@
 
 
 
-namespace  HoI4
+namespace HoI4
 {
-	
+
 struct BuildingPosition
 {
 	double xCoordinate = 0.0;
@@ -13,8 +13,8 @@ struct BuildingPosition
 	double zCoordinate = 0.0;
 	double rotation = 0.0;
 };
-	
-}
+
+} // namespace HoI4
 
 
 

@@ -11,19 +11,19 @@
 
 namespace HoI4
 {
-	
+
 class militaryMappingsFile: commonItems::parser
 {
-	public:
-		militaryMappingsFile();
+  public:
+	militaryMappingsFile();
 
-		auto takeAllMilitaryMappings() { return std::move(theMilitaryMappings); }
+	auto takeAllMilitaryMappings() { return std::move(theMilitaryMappings); }
 
-	private:
-		std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
+  private:
+	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 };
-	
-}
+
+} // namespace HoI4
 
 
 

@@ -14,11 +14,11 @@ namespace HoI4
 
 class StabilityWarSupportDecisions: public DecisionsFile
 {
-	public:
-		void updateDecisions(const std::set<std::string>& majorIdeologies);
+  public:
+	void updateDecisions(const std::set<std::string>& majorIdeologies);
 };
 
-}
+} // namespace HoI4
 
 
 #endif // STABILITY_WAR_SUPPORT_DECISIONS_H

@@ -2,8 +2,9 @@
 #define OUT_OCCUPATION_LAW_H
 
 
-#include <ostream>
+
 #include "HOI4World/OccupationLaws/OccupationLaw.h"
+#include <ostream>
 
 
 
@@ -11,7 +12,7 @@ namespace HoI4
 {
 
 std::ostream& operator<<(std::ostream& output, const OccupationLaw& occupationLaw);
-	
+
 }
 
 

@@ -22,6 +22,7 @@ class Unit
 	[[nodiscard]] const auto& getExperience() const { return experience; }
 
 	bool operator==(const Unit& rhs) const = default;
+
   private:
 	std::string name;
 	std::string type;

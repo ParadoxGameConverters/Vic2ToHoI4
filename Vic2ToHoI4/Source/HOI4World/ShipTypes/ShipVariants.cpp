@@ -3,8 +3,8 @@
 
 
 HoI4::ShipVariants::ShipVariants(const PossibleShipVariants& possibleShipVariants,
-	const technologies& ownedTechs,
-	const std::string& countryTag)
+	 const technologies& ownedTechs,
+	 const std::string& countryTag)
 {
 	for (auto& possibleVariant: possibleShipVariants.getPossibleMtgVariants())
 	{
@@ -15,7 +15,7 @@ HoI4::ShipVariants::ShipVariants(const PossibleShipVariants& possibleShipVariant
 			mtgVariants.insert(std::make_pair(newVariant.getName(), newVariant));
 		}
 	}
-	for (auto& possibleVariant : possibleShipVariants.getPossibleLegacyVariants())
+	for (auto& possibleVariant: possibleShipVariants.getPossibleLegacyVariants())
 	{
 		if (possibleVariant.isValidVariant(ownedTechs))
 		{

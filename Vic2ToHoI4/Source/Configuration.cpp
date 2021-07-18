@@ -226,7 +226,7 @@ void Configuration::Factory::importMods()
 	Mods incomingMods;
 	for (const auto& modFileName: modFileNames)
 	{
-		incomingMods.emplace_back(Mod("", modFileName));		
+		incomingMods.emplace_back(Mod("", modFileName));
 	}
 	modLoader.loadMods(configuration->getVic2Path(), incomingMods);
 	configuration->Vic2Mods = modLoader.getMods();
