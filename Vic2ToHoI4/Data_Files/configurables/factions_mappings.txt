@@ -66,7 +66,6 @@ link = { culture = italian ideology = absolutist faction = italy_empire_faction 
 link = { culture = italian ideology = fascist faction = italy_empire_faction }
 
 #Chinese United Front
-link = { culture = manchu ideology = any faction = chinese_united_front }
 link = { culture = hakka ideology = any faction = chinese_united_front }
 link = { culture = yue ideology = any faction = chinese_united_front }
 link = { culture = min ideology = any faction = chinese_united_front } 
@@ -122,7 +121,6 @@ link = { culture = beneluxian ideology = any faction = HOL_benelux }
 
 #Latin Bloc
 link = { culture = romantic ideology = any faction = SPA_latin_bloc }
-link = { culture = latin_american_cultures ideology = any faction = SPA_latin_bloc } 
 
 #Smyrna Pact
 link = { culture = dytic_g ideology = any faction = the_smyrna_friendship_pact } 
@@ -140,12 +138,19 @@ link = { culture = iberian ideology = absolutist faction = POR_royal_iberian_all
 link = { culture = iranian_turanian ideology = absolutist faction = the_saadabad_concordat }
 link = { culture = iranian_turanian ideology = neutrality faction = the_saadabad_concordat }
 
-#Balkan Entente
-link = { culture = south_slavic ideology = democratic faction = BUL_balkan_federation_democratic }
-
 #Union of Communist Soviets
 link = { culture = east_slavic ideology = communist faction = HUN_FACTION_COMMIE }
-#Left out: western_pacific_sphere, south_west_pacific_initiative
+
+#Bolivarian Alliance
+link = { culture = latin_american_cultures ideology = communism faction = faction_mexico_bolivarian_alliance }
+
+#Hispanic Alliance
+link = { culture = latin_american_cultures ideology = democratic faction = faction_mexico_hispanic_alliance }
+link = { culture = latin_american_cultures ideology = neutrality faction = faction_mexico_hispanic_alliance }
+link = { culture = latin_american_cultures ideology = radical faction = faction_mexico_hispanic_alliance }
+link = { culture = latin_american_cultures ideology = fascism faction = faction_mexico_hispanic_alliance }
+
+#Left out: western_pacific_sphere, 
 
 ##Default Faction Names
 
