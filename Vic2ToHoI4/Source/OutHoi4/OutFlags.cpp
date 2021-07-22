@@ -276,16 +276,16 @@ std::optional<tga_image*> HoI4::createDominionFlag(const std::string& hoi4Suffix
 		}
 	}
 
-	const auto ownerSourcePath = getSourceFlagPath(overlord, vic2Suffix, vic2Mods);
-	if (ownerSourcePath)
+	if (const auto ownerSourcePath = getSourceFlagPath(overlord, vic2Suffix, vic2Mods); ownerSourcePath)
 	{
-		const auto ownerSourceFlag = readFlag(*ownerSourcePath);
-		if (ownerSourceFlag)
+		if (const auto ownerSourceFlag = readFlag(*ownerSourcePath); ownerSourceFlag)
 		{
 			const auto sourceBytesPerPixel = (*ownerSourceFlag)->pixel_depth / 8;
-			for (unsigned int y = 0; y < (*ownerSourceFlag)->height; y += 2)
+			const auto maxHeight = std::min<int>((*ownerSourceFlag)->height, sizeY);
+			const auto maxWidth = std::min<int>((*ownerSourceFlag)->width, sizeX);
+			for (unsigned int y = 0; y < maxHeight; y += 2)
 			{
-				for (unsigned int x = 0; x < (*ownerSourceFlag)->width; x += 2)
+				for (unsigned int x = 0; x < maxWidth; x += 2)
 				{
 					const auto sourceIndex = (y * (*ownerSourceFlag)->width + x) * sourceBytesPerPixel;
 					const auto destIndex = ((y / 2 + (sizeY / 2)) * sizeX + (x / 2)) * 4;
