@@ -2311,7 +2311,7 @@ focus = {
 		x = 1
 		y = 0
 		available = {
-			always = yes
+			is_subject = no
 		}
 		select_effect = {
 			# Block built by the Converter
@@ -2351,6 +2351,7 @@ focus = {
 		}
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = $TARGET
 				is_in_faction_with = $TARGET
 				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
@@ -2404,6 +2405,7 @@ focus = {
 		}
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = $TARGET
 				is_in_faction_with = $TARGET
 				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
@@ -2468,6 +2470,7 @@ focus = {
 		}
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = $TARGET
 				is_in_faction_with = $TARGET
 				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
@@ -2525,6 +2528,7 @@ focus = {
 		}
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = $TARGET
 				is_in_faction_with = $TARGET
 				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
@@ -2577,6 +2581,7 @@ focus = {
 		}
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = $TARGET
 				is_in_faction_with = $TARGET
 				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
@@ -2644,6 +2649,7 @@ focus = {
 		cost = 10
 
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			any_neighbor_country = {
@@ -2722,6 +2728,7 @@ focus = {
 		cost = 4
 
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			var:neighbor_war_defender = {
@@ -2869,6 +2876,7 @@ focus = {
 		cost = 10
 
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			$TARGET = {
@@ -2919,6 +2927,7 @@ focus = {
 		cost = 4
 
 		available = {
+			is_subject = no
 			date > $STARTDATE
 			has_war = no
 			not_in_border_conflict = yes
@@ -3063,6 +3072,7 @@ focus = {
 		cost = 10
 
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = $TARGET value < 0 }
@@ -3120,6 +3130,7 @@ focus = {
 		cost = 4
 
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = $TARGET value < 0 }
