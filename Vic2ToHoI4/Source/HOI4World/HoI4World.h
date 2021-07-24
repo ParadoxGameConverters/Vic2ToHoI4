@@ -202,6 +202,7 @@ class World: commonItems::parser
 		 Localisation& hoi4Localisations);
 
 	bool dominionIsReleasable(const Country& dominion, const Country& overlord);
+	void addProvincesToHomeAreas();
 
 	// vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
 	// HoI4AdjacencyMap);

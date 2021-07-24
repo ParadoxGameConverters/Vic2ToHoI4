@@ -114,6 +114,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	convertIndustry(theConfiguration);
+	addProvincesToHomeAreas();
 	addDominions(countryMapperFactory);
 	states->addCoresToCorelessStates(sourceWorld.getCountries(),
 		 provinceMapper,
@@ -460,6 +461,10 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 
 		const auto& owner = countries.find(state.getOwner());
 		if (owner == countries.end())
+		{
+			continue;
+		}
+		if (owner->second->isProvinceInHomeArea(*provinces.begin()))
 		{
 			continue;
 		}
@@ -1339,4 +1344,19 @@ std::set<std::string> HoI4::World::getSouthAsianCountries() const
 	}
 
 	return southAsianCountries;
+}
+
+
+void HoI4::World::addProvincesToHomeAreas()
+{
+	Log(LogLevel::Info) << "Adding provinces to home areas";
+	for (const auto& country: landedCountries | std::views::values)
+	{
+		const auto& capital = country->getCapitalProvince();
+		if (!capital)
+		{
+			continue;
+		}
+		country->addProvincesToHomeArea(*capital, theMapData, getStates(), getProvinceToStateIDMap());
+	}
 }

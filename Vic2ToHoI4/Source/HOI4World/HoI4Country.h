@@ -126,6 +126,11 @@ class Country
 	void makeGreatestNavalPower() { greatestNavalPower = true; }
 	void setNumberOfAdherents(int num) { numAdherents = num; }
 
+	void addProvincesToHomeArea(int provinceId,
+		 const std::unique_ptr<HoI4::MapData>& theMapData,
+		 const std::map<int, HoI4::State>& states,
+		 const std::map<int, int>& provinceToStateIdMap);
+
 	[[nodiscard]] std::optional<HoI4::Relations> getRelations(const std::string& withWhom) const;
 	[[nodiscard]] double getStrengthOverTime(const double& years) const;
 	static double getMilitaryStrength();
@@ -252,6 +257,7 @@ class Country
 	void addGlobalEventTarget(const std::string& name) { globalEventTargets.insert(name); }
 
 	[[nodiscard]] const auto& getGlobalEventTargets() const { return globalEventTargets; }
+	[[nodiscard]] bool isProvinceInHomeArea(int provinceId) const { return homeAreaProvinces.contains(provinceId); }
 
   private:
 	void determineFilename();
@@ -386,6 +392,7 @@ class Country
 
 	std::map<std::string, float> sourceCountryGoods;
 	std::set<std::string> globalEventTargets;
+	std::set<int> homeAreaProvinces;
 };
 
 } // namespace HoI4
