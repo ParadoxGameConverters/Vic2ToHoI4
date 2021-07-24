@@ -155,7 +155,7 @@ void HoI4::outputIdeaGraphics(std::ostream& ideasFile, const Country& theCountry
 	const auto& primaryCultureGroup = theCountry.getPrimaryCultureGroup();
 
 	ideasFile << "\tspriteType = {\n";
-	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_communist_advisor\"\n";
+	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_communism_advisor\"\n";
 	ideasFile << "\t\ttexturefile = \"" << theCountry.getCommunistAdvisorPortrait() << "\"\n";
 	ideasFile << "\t}\n";
 
@@ -180,7 +180,7 @@ void HoI4::outputIdeaGraphics(std::ostream& ideasFile, const Country& theCountry
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
-	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_fascist_advisor\"\n";
+	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_fascism_advisor\"\n";
 	ideasFile << "\t\ttexturefile = \"" << theCountry.getFascistAdvisorPortrait() << "\"\n";
 	ideasFile << "\t}\n";
 }

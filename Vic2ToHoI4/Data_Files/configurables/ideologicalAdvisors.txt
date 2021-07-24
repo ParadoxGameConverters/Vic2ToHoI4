@@ -45,8 +45,6 @@ neutrality = {
 		}
 	}
 
-	picture = neutral_foreign_policy
-
 	traits = { neutrality_minister }
 
 	ai_will_do = {

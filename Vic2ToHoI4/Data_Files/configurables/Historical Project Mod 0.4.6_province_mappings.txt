@@ -1137,8 +1137,7 @@
 	link = { vic2 = 2399 hoi4 = 5173 hoi4 = 12946 } # Rio Galleagos -> Río Gallegos, land
 	link = { vic2 = 2400 hoi4 = 11009 } # Rio Grande -> Ushuaia
 	link = { comment = "# British Atlantis" }
-	link = { vic2 = 2131 hoi4 = 12960 } # Falkland & South Georgia -> Stanley
-	link = { vic2 = 2133 hoi4 = 10995 } # Gizab -> Grytviken
+	link = { vic2 = 2131 hoi4 = 10995 hoi4 = 12960 } # Falkland & South Georgia -> Stanley
 	link = { vic2 = 2129 vic2 = 2132 vic2 = 2130 hoi4 = 13016 hoi4 = 13013 } # MANY-TO-MANY: Saint Helena, Tristan da Cunha, Ascension -> Jamestown, Georgetown
 	link = { comment = "# # Europe" }
 	link = { comment = "# Danish Iceland" }
@@ -2653,8 +2652,9 @@
 	link = { vic2 = 1215 hoi4 = 4949 hoi4 = 5020 } # Kandahar -> Bahramcha, land
 	link = { vic2 = 1213 hoi4 = 1995 hoi4 = 12788 hoi4 = 2078 hoi4 = 7916 hoi4 = 10896 hoi4 = 7984 } # Bamyan -> Nili, Chaghcharan, Lashkargah, Panjab, land, land
 	link = { vic2 = 1211 hoi4 = 7584 hoi4 = 7448 hoi4 = 12877 hoi4 = 10852 hoi4 = 12248 } # Balkh -> Mazar-e Sharif, Meymaneh, Sar-e Pul, Aibak, Khulm
-	link = { vic2 = 1217 hoi4 = 10789 hoi4 = 5064 hoi4 = 8090 hoi4 = 5082 hoi4 = 12769 hoi4 = 12831 } # Ghazni -> Tarinkot, Kandahar, Qalat, Sharan, Ghazni, Jalalabad
+	link = { vic2 = 1217 hoi4 = 10789 hoi4 = 5064 hoi4 = 8090 hoi4 = 5082 hoi4 = 12831 } # Ghazni -> Tarinkot, Kandahar, Qalat, Sharan, Ghazni, Jalalabad
 	link = { vic2 = 1209 hoi4 = 10737 } # Kabul -> Kabul
+	link = { vic2 = 2133 hoi4 = 12769 } # Gizab -> Grytviken
 	link = { vic2 = 1216 hoi4 = 10826 } # Jalalabad -> Asadabad
 	link = { vic2 = 1210 hoi4 = 12653 hoi4 = 12314 hoi4 = 10781 hoi4 = 7519 } # Kunduz -> Fayzabad, Kunduz, Pul-e Khumri, Khandud
 	link = { comment = "# The Raj" }
