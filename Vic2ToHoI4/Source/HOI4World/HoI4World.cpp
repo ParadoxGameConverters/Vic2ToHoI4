@@ -1357,6 +1357,6 @@ void HoI4::World::addProvincesToHomeAreas()
 		{
 			continue;
 		}
-		country->addProvincesToHomeArea(*capital, theMapData, getStates(), getProvinceToStateIDMap());
+		country->addProvincesToHomeArea(*capital, theMapData, states->getStates(), states->getProvinceToStateIDMap());
 	}
 }
