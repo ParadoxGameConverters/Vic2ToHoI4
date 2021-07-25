@@ -74,6 +74,6 @@ CSRZ			- Art (Intelligence Agencies Logos)
 PPSYRIUS		- Voices
 
 Special thanks to LukyLucaz, who allowed us to incoroporate Increased Resources into the converter.
-
+Special thanks to the Kaiserreich Team who allowed us to use their gfx, especially their leader portraits.
 
  - AND ALL THE OTHERS WHO GAVE THEIR INPUT ON THE FORUM -
