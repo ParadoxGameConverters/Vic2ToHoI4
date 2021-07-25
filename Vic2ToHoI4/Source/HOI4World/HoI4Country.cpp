@@ -1488,7 +1488,7 @@ void HoI4::Country::addProvincesToHomeArea(int provinceId,
 	{
 		return;
 	}
-	const auto& stateId = provinceToStateIdMapping.second;
+	const auto& stateId = provinceToStateIdMapping->second;
 	if (const auto& state = states.find(stateId); state->second.getOwner() != tag)
 	{
 		return;
