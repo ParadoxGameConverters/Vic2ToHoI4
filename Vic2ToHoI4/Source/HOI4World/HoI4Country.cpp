@@ -1472,3 +1472,30 @@ std::optional<std::string> HoI4::Country::getDominionTag(const std::string& regi
 	}
 	return generatedDominions.at(region);
 }
+
+
+void HoI4::Country::addProvincesToHomeArea(int provinceId,
+	 const std::unique_ptr<HoI4::MapData>& theMapData,
+	 const std::map<int, HoI4::State>& states,
+	 const std::map<int, int>& provinceToStateIdMap)
+{
+	if (homeAreaProvinces.contains(provinceId))
+	{
+		return;
+	}
+	auto provinceToStateIdMapping = provinceToStateIdMap.find(provinceId);
+	if (provinceToStateIdMapping == provinceToStateIdMap.end())
+	{
+		return;
+	}
+	const auto& stateId = provinceToStateIdMapping->second;
+	if (const auto& state = states.find(stateId); state->second.getOwner() != tag)
+	{
+		return;
+	}
+	homeAreaProvinces.insert(provinceId);
+	for (const auto& neighbor: theMapData->getNeighbors(provinceId))
+	{
+		addProvincesToHomeArea(neighbor, theMapData, states, provinceToStateIdMap);
+	}
+}
