@@ -1483,11 +1483,12 @@ void HoI4::Country::addProvincesToHomeArea(int provinceId,
 	{
 		return;
 	}
-	if (!provinceToStateIdMap.contains(provinceId))
+	auto provinceToStateIdMapping = provinceToStateIdMap.find(provinceId);
+	if (!provinceToStateIdMapping == provinceToStateIdMap.end())
 	{
 		return;
 	}
-	const auto& stateId = provinceToStateIdMap.at(provinceId);
+	const auto& stateId = provinceToStateIdMapping.second;
 	if (const auto& state = states.find(stateId); state->second.getOwner() != tag)
 	{
 		return;
