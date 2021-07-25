@@ -12,6 +12,9 @@ HoI4::Region::Factory::Factory()
 	registerKeyword("adjective", [this](std::istream& theStream) {
 		region->adjective = commonItems::getString(theStream);
 	});
+	registerKeyword("level", [this](std::istream& theStream) {
+		region->level = commonItems::getString(theStream);
+	});
 	registerKeyword("provinces", [this](std::istream& theStream) {
 		region->provinces = commonItems::getInts(theStream);
 	});

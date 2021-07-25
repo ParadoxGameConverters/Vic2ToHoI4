@@ -1,6 +1,7 @@
 central_asia = {
 	name = "Central Asia"
 	adjective = "Central Asian"
+	level = autonomy_colony
 	provinces = {
 		# Ural'sk (407)
 		432 468 470 508 545 566 576 1290 1318 3404 3406 3467 3502 3515 3538 4351 6491 6525 6551 6564 6588 7438 9462 9487 9513 9526 9528 9538 9549 11457 11472 11473 11480 11482 11510 11524 11537 11538 11552
@@ -42,6 +43,7 @@ central_asia = {
 south_asia = {
 	name = "South Asia"
 	adjective = "South Asian"
+	level = autonomy_colony
 	provinces = {
 		# Assam (432)
 		997 1075 1497 1525 1553 1581 7455 7634 10090 10349 10514 12366 12395
@@ -111,6 +113,7 @@ south_asia = {
 southeast_asia = {
 	name = "Southeast Asia"
 	adjective = "Southeast Asian"
+	level = autonomy_integrated_puppet
 	provinces = {
 		# Southern Indochina (286)
 		1285 1300 1328 1396 1400 1423 1605 4223 4284 4334 4341 4363 4401 4405 7238 7271 7303 7331 7347 7380 10162 10232 10261 12109 12133 12150 12176 12204 12232

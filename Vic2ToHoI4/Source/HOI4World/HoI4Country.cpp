@@ -1344,7 +1344,7 @@ void HoI4::Country::transferPuppets(const std::set<std::string>& transferringPup
 	for (const auto& puppet: transferringPuppets)
 	{
 		puppets.erase(puppet);
-		dominion->addPuppet(puppet);
+		dominion->addPuppet(puppet, "autonomy_dominion");
 	}
 }
 

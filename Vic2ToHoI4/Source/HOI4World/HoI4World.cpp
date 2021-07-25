@@ -516,7 +516,15 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 
 			if (dominionIsReleasable(*dominion->second, *overlord->second))
 			{
-				overlord->second->addPuppet(dominionTag);
+				const auto& dominionLevel = theRegions->getRegionLevel(dominion->second->getRegion());
+				if (dominionLevel)
+				{
+					overlord->second->addPuppet(dominionTag, *dominionLevel);
+				}
+				else
+				{
+					overlord->second->addPuppet(dominionTag, "autonomy_dominion");
+				}
 				overlord->second->addGeneratedDominion(dominion->second->getRegion(), dominionTag);
 				for (const auto& stateId: dominion->second->getCoreStates())
 				{
@@ -572,7 +580,7 @@ void HoI4::World::transferPuppetsToDominions()
 	for (auto& country: countries | std::views::values)
 	{
 		std::map<std::string, std::set<std::string>> regionalPuppets; // <region, puppets>
-		for (const auto& puppetTag: country->getPuppets())
+		for (const auto& puppetTag: country->getPuppets() | std::views::keys)
 		{
 			const auto& puppetItr = countries.find(puppetTag);
 			if (puppetItr == countries.end())
@@ -801,7 +809,7 @@ void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 
 		if (agreement.getType() == "vassal")
 		{
-			HoI4Country1->second->addPuppet(*possibleHoI4Tag2);
+			HoI4Country1->second->addPuppet(*possibleHoI4Tag2, "autonomy_dominion");
 			HoI4Country2->second->setPuppetMaster(*possibleHoI4Tag1);
 		}
 	}
@@ -872,7 +880,11 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 
 	for (auto& [tag, country]: countries)
 	{
-		auto ownersToSkip = country->getPuppets();
+		std::set<std::string> ownersToSkip;
+		for (const auto& puppetTag: country->getPuppets() | std::views::keys)
+		{
+			ownersToSkip.insert(puppetTag);
+		}
 		for (const auto& [tag, relation]: country->getRelations())
 		{
 			if (relation.hasMilitaryAccess())
