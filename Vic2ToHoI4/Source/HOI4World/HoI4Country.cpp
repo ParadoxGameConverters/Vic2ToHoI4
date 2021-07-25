@@ -1484,7 +1484,7 @@ void HoI4::Country::addProvincesToHomeArea(int provinceId,
 		return;
 	}
 	auto provinceToStateIdMapping = provinceToStateIdMap.find(provinceId);
-	if (!provinceToStateIdMapping == provinceToStateIdMap.end())
+	if (provinceToStateIdMapping == provinceToStateIdMap.end())
 	{
 		return;
 	}
