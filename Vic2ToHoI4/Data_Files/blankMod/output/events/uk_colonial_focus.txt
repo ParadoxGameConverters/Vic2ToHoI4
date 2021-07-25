@@ -144,7 +144,6 @@ country_event = {
 			random_country = {
 				limit = {
 					is_subject_of = ROOT
-					compare_autonomy_state < autonomy_sphereling
 					capital_scope = { is_on_continent = asia }
 				}
 				save_global_event_target_as = uk_colonial_focus_RAJ
@@ -154,12 +153,10 @@ country_event = {
 			limit = {
 				NOT = { tag = event_target:uk_colonial_focus_RAJ }
 				is_subject_of = ROOT
-				compare_autonomy_state < autonomy_sphereling
 				NOT = {
 					any_other_country = {
 						NOT = { tag = event_target:uk_colonial_focus_RAJ }
 						is_subject_of = ROOT
-						compare_autonomy_state < autonomy_sphereling
 						ic_ratio = { tag = PREV ratio > 1.0 }
 					}
 				}
@@ -171,13 +168,11 @@ country_event = {
 				NOT = { tag = event_target:uk_colonial_focus_RAJ }
 				NOT = { tag = event_target:uk_colonial_focus_CAN }
 				is_subject_of = ROOT
-				compare_autonomy_state < autonomy_sphereling
 				NOT = {
 					any_other_country = {
 						NOT = { tag = event_target:uk_colonial_focus_RAJ }
 						NOT = { tag = event_target:uk_colonial_focus_CAN }
 						is_subject_of = ROOT
-						compare_autonomy_state < autonomy_sphereling
 						ic_ratio = { tag = PREV ratio > 1.0 }
 					}
 				}
@@ -190,14 +185,12 @@ country_event = {
 				NOT = { tag = event_target:uk_colonial_focus_CAN }
 				NOT = { tag = event_target:uk_colonial_focus_SAF }
 				is_subject_of = ROOT
-				compare_autonomy_state < autonomy_sphereling
 				NOT = {
 					any_other_country = {
 						NOT = { tag = event_target:uk_colonial_focus_RAJ }
 						NOT = { tag = event_target:uk_colonial_focus_CAN }
 						NOT = { tag = event_target:uk_colonial_focus_SAF }
 						is_subject_of = ROOT
-						compare_autonomy_state < autonomy_sphereling
 						ic_ratio = { tag = PREV ratio > 1.0 }
 					}
 				}
@@ -211,7 +204,6 @@ country_event = {
 				NOT = { tag = event_target:uk_colonial_focus_SAF }
 				NOT = { tag = event_target:uk_colonial_focus_AST }
 				is_subject_of = ROOT
-				compare_autonomy_state < autonomy_sphereling
 				NOT = {
 					any_other_country = {
 						NOT = { tag = event_target:uk_colonial_focus_RAJ }
@@ -219,7 +211,6 @@ country_event = {
 						NOT = { tag = event_target:uk_colonial_focus_SAF }
 						NOT = { tag = event_target:uk_colonial_focus_AST }
 						is_subject_of = ROOT
-						compare_autonomy_state < autonomy_sphereling
 						ic_ratio = { tag = PREV ratio > 1.0 }
 					}
 				}

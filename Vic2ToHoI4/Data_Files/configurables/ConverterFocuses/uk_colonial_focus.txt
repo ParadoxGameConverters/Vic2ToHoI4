@@ -958,7 +958,6 @@ focus_tree = {
 			every_country = {
 				limit = {
 					is_subject_of = ROOT
-					compare_autonomy_state < autonomy_sphereling
 					NOT = { original_tag = event_target:uk_colonial_focus_SAF }
 				}
 				add_ideas = ENG_british_commonwealth_air_training_plan
@@ -967,7 +966,6 @@ focus_tree = {
 				if = {
 					limit = {
 						is_subject_of = ROOT
-						compare_autonomy_state < autonomy_sphereling
 					}
 					add_ideas = ENG_joint_air_training_scheme
 				}
@@ -2328,7 +2326,6 @@ focus_tree = {
 			every_other_country = {
 				limit = {
 					is_subject_of = ROOT
-					compare_autonomy_state < autonomy_sphereling
 					NOT = { tag = event_target:uk_colonial_focus_RAJ }
 					NOT = { tag = event_target:uk_colonial_focus_CAN }
 					NOT = { tag = event_target:uk_colonial_focus_SAF }
