@@ -120,7 +120,7 @@ class Country
 	void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 	void setGreatPower() { greatPower = true; }
 	void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
-	void addPuppet(const std::string& countryTag, const std::string& puppetLevel) { puppets.insert(std::make_pair(countryTag, puppetLevel)); }
+	void addPuppet(const std::string& countryTag, const std::string& puppetLevel) { puppets[countryTag] = puppetLevel; }
 
 	void makeNavalTreatyAdherent() { navalTreatyAdherent = true; }
 	void makeGreatestNavalPower() { greatestNavalPower = true; }
@@ -375,7 +375,7 @@ class Country
 	std::shared_ptr<const Faction> faction;
 	std::string sphereLeader;
 	std::set<std::string> allies;
-	std::map<std::string, std::string> puppets;	// tag, level
+	std::map<std::string, std::string> puppets; // tag, level
 	std::map<std::string, std::string> generatedDominions;
 	std::string puppetMaster;
 	std::string puppetMasterOldTag;
