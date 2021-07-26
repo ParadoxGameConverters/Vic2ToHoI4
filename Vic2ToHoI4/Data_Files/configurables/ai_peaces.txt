@@ -1453,26 +1453,6 @@ fascist_peace = {
 		}
 
 		
-		modifier = {# Italy doesn't care about Asia, but might consider taking south american colonies held by the allies.
-			factor = 0
-			OR = {
-				#For now don't take Russian or Northern European lands at all if in the same faction as germany.
-				FROM = {
-					NOT = {
-						OR = {
-							is_on_continent = africa
-							is_on_continent = europe
-							is_on_continent = middle_east
-							AND = {
-								is_on_continent = south_america
-								is_island_state = yes
-							}
-						}
-					}
-				}
-			}
-		}
-
 		modifier = { #Deter expansion outside of continent
 			factor = 0.1
 			OR = {
