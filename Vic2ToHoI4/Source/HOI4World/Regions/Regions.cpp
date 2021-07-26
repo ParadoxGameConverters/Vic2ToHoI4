@@ -33,3 +33,14 @@ std::optional<std::string> HoI4::Regions::getRegionAdjective(const std::string& 
 
 	return std::nullopt;
 }
+
+
+std::optional<std::string> HoI4::Regions::getRegionLevel(const std::string& regionName) const
+{
+	if (const auto& level = regionLevels.find(regionName); level != regionLevels.end())
+	{
+		return level->second;
+	}
+
+	return std::nullopt;
+}

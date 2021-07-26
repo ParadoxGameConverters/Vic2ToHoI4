@@ -120,7 +120,7 @@ class Country
 	void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 	void setGreatPower() { greatPower = true; }
 	void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
-	void addPuppet(const std::string& countryTag) { puppets.insert(countryTag); }
+	void addPuppet(const std::string& countryTag, const std::string& puppetLevel) { puppets[countryTag] = puppetLevel; }
 
 	void makeNavalTreatyAdherent() { navalTreatyAdherent = true; }
 	void makeGreatestNavalPower() { greatestNavalPower = true; }
@@ -228,7 +228,7 @@ class Country
 	[[nodiscard]] bool isInFaction() const { return faction.operator bool(); }
 	[[nodiscard]] const std::string& getSphereLeader() const { return sphereLeader; }
 	[[nodiscard]] const std::set<std::string>& getAllies() const { return allies; }
-	[[nodiscard]] const std::set<std::string>& getPuppets() const { return puppets; }
+	[[nodiscard]] const std::map<std::string, std::string>& getPuppets() const { return puppets; }
 	[[nodiscard]] const std::string& getPuppetMaster() const { return puppetMaster; }
 	[[nodiscard]] const std::string& getPuppetMasterOldTag() const { return puppetMasterOldTag; }
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
@@ -375,7 +375,7 @@ class Country
 	std::shared_ptr<const Faction> faction;
 	std::string sphereLeader;
 	std::set<std::string> allies;
-	std::set<std::string> puppets;
+	std::map<std::string, std::string> puppets; // tag, level
 	std::map<std::string, std::string> generatedDominions;
 	std::string puppetMaster;
 	std::string puppetMasterOldTag;

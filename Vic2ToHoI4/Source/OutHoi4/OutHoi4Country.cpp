@@ -21,6 +21,7 @@
 #include "OutHoi4/Operative/OutOperative.h"
 #include "OutTechnologies.h"
 #include "V2World/Countries/Country.h"
+#include <ranges>
 #include <string>
 
 
@@ -275,7 +276,7 @@ void outputEquipmentStockpile(std::ostream& output,
 void outputPuppets(std::ostream& output,
 	 const std::string& tag,
 	 const std::string& governmentIdeology,
-	 const std::set<std::string>& puppets,
+	 const std::map<std::string, std::string>& puppets,
 	 const std::string& puppetMaster);
 void outputPolitics(std::ostream& output,
 	 const std::string& governmentIdeology,
@@ -481,7 +482,7 @@ void outputEquipmentStockpile(std::ostream& output,
 void outputPuppets(std::ostream& output,
 	 const std::string& tag,
 	 const std::string& governmentIdeology,
-	 const std::set<std::string>& puppets,
+	 const std::map<std::string, std::string>& puppets,
 	 const std::string& puppetMaster)
 {
 	if (!puppets.empty())
@@ -491,7 +492,7 @@ void outputPuppets(std::ostream& output,
 		output << "    limit = {\n";
 		output << "        has_dlc = \"Together for Victory\"\n";
 		output << "    }\n";
-		for (const auto& puppet: puppets)
+		for (const auto& [puppet, level]: puppets)
 		{
 			if (governmentIdeology == "fascism")
 			{
@@ -504,13 +505,13 @@ void outputPuppets(std::ostream& output,
 			{
 				output << "    set_autonomy = {\n";
 				output << "        target = " << puppet << "\n";
-				output << "        autonomous_state = autonomy_dominion\n";
+				output << "        autonomous_state = " << level << "\n";
 				output << "        freedom_level = 0.4\n";
 				output << "    }\n";
 			}
 		}
 		output << "    else = {\n";
-		for (const auto& puppet: puppets)
+		for (const auto& puppet: puppets | std::views::keys)
 		{
 			if (governmentIdeology == "fascism")
 			{

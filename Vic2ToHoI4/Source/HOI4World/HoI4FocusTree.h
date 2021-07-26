@@ -97,7 +97,7 @@ class HoI4FocusTree: commonItems::parser
 		 const std::set<std::string>& majorIdeologies,
 		 HoI4::Localisation& hoi4Localisations);
 	void addIntegratePuppetsBranch(const std::string& tag,
-		 const std::set<std::string>& puppetTags,
+		 const std::map<std::string, std::string>& puppets,
 		 HoI4::Localisation& hoi4Localisations);
 	std::map<std::string, int> determineEnemyCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
 		 const std::map<int, HoI4::State>& states);

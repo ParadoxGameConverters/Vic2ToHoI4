@@ -10,6 +10,7 @@
 #include "SharedFocus.h"
 #include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
+#include <ranges>
 using namespace std;
 
 
@@ -2921,14 +2922,14 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 }
 
 void HoI4FocusTree::addIntegratePuppetsBranch(const std::string& tag,
-	 const std::set<std::string>& puppetTags,
+	 const std::map<std::string, std::string>& puppets,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	if (const auto& originalFocus = loadedFocuses.find("integrate_satellite"); originalFocus != loadedFocuses.end())
 	{
 		int yPos = 0;
 
-		for (const auto& puppet: puppetTags)
+		for (const auto& puppet: puppets | std::views::keys)
 		{
 			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeTargetedCopy(tag, puppet, hoi4Localisations);
 			newFocus->xPos = nextFreeColumn;
