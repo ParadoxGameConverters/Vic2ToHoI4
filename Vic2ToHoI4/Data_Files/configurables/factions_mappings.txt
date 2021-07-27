@@ -8,12 +8,12 @@
 #Commonwealth of Nations
 link = { culture = british ideology = absolutist faction = ENG_commonwealth_of_nations }
 
+#British Communist Alternative
+link = { culture = british ideology = communism faction = ENG_british_communist_alternative }
+
 #Allies
 link = { culture = british ideology = democratic faction = allies }
 link = { culture = british ideology = neutrality faction = allies }
-
-#British Communist Alternative
-link = { culture = british ideology = communism faction = ENG_british_communist_alternative }
 
 #Axis
 link = { culture = germanic ideology = fascism faction = axis }
@@ -21,21 +21,27 @@ link = { culture = germanic ideology = fascism faction = axis }
 #Central Powers
 link = { culture = germanic ideology = absolutist faction = GER_central_powers_faction }
 
+#Central European Alliance
+link = { culture = germanic ideology = communism faction = GER_central_european_alliance }
+link = { culture = germanic ideology = democratic faction = GER_central_european_alliance }
+link = { culture = germanic ideology = neutrality faction = GER_central_european_alliance }
+link = { culture = germanic ideology = radical faction = GER_central_european_alliance }
+
 #Confédération du Rhin
 link = { culture = french ideology = absolutist faction = FRA_confederation_of_the_rhine }
 
 #Paris Accords
 link = { culture = french ideology = communist faction = FRA_communist_faction }
 
-#French Entente
-link = { culture = french ideology = democratic faction = french_entente_alliance }
-link = { culture = french ideology = radical faction = french_entente_alliance }
-
 #Domination Française
 link = { culture = french ideology = fascism faction = domination_francaise }
 
 #The French Alliance
 link = { culture = french ideology = neutrality faction = french_alliance }
+
+#French Entente
+link = { culture = french ideology = democratic faction = french_entente_alliance }
+link = { culture = french ideology = radical faction = french_entente_alliance }
 
 #The Old Alliance
 link = { culture = japanese ideology = absolutist faction = JAP_the_old_alliance }
@@ -55,15 +61,24 @@ link = { culture = heiren ideology = democratic faction = JAP_west_pacific_treat
 link = { culture = nanren ideology = democratic faction = JAP_west_pacific_treaty_organization }
 link = { culture = dongren ideology = democratic faction = JAP_west_pacific_treaty_organization }
 
-#Greater East Asian Co-Prosperity Sphere
-link = { culture = japanese ideology = fascism faction = JAP_greater_east_asian_co_prosperity_sphere }
-link = { culture = heiren ideology = fascism faction = JAP_greater_east_asian_co_prosperity_sphere }
-link = { culture = nanren ideology = fascism faction = JAP_greater_east_asian_co_prosperity_sphere }
-link = { culture = dongren ideology = fascism faction = JAP_greater_east_asian_co_prosperity_sphere }
+#Daitoa Kyoeiken
+link = { culture = japanese ideology = fascism faction = daitoa_kyoeiken }
+link = { culture = heiren ideology = fascism faction = daitoa_kyoeiken }
+link = { culture = nanren ideology = fascism faction = daitoa_kyoeiken }
+link = { culture = dongren ideology = fascism faction = daitoa_kyoeiken }
 
 #Novus Imperium Romanum
 link = { culture = italian ideology = absolutist faction = italy_empire_faction }
 link = { culture = italian ideology = fascist faction = italy_empire_faction }
+
+#Government of National Defense 
+link = { culture = hakka ideology = communism faction = chinese_united_front }
+link = { culture = yue ideology = communism faction = chinese_united_front }
+link = { culture = min ideology = communism faction = chinese_united_front } 
+link = { culture = beifaren ideology = communism faction = chinese_united_front } 
+link = { culture = nanfaren ideology = communism faction = chinese_united_front }
+link = { culture = xiyeren ideology = communism faction = chinese_united_front }
+link = { culture = beieren ideology = communism faction = chinese_united_front }
 
 #Chinese United Front
 link = { culture = hakka ideology = any faction = chinese_united_front }
@@ -102,6 +117,9 @@ link = { culture = pan_romanian ideology = any faction = ROM_BALKAN_FACTION }
 #Balkan Pact
 link = { culture = hungarian_culture_group ideology = any faction = HUN_BALKAN_FACTION }
 
+#Pan-Slavic Worker's Congress
+link = { culture = panslavic_workers_congress ideology = any faction = panslavic_workers_congress }
+
 #Balkan Entente
 link = { culture = south_slavic ideology = any faction = BALKAN_ENTENTE_FACTION }
 
@@ -112,9 +130,6 @@ link = { culture = czecho_slovak_culture_group ideology = any faction = CZE_litt
 link = { culture = australian ideology = any faction = south_west_pacific_initiative }  
 link = { culture = aborigine ideology = any faction = south_west_pacific_initiative }  
 link = { culture = maori ideology = any faction = south_west_pacific_initiative }  
-
-#Treaty of Reciprocal Assistance
-link = { culture = brazilian ideology = democratic faction = USA_hemisphere_defense_faction } 
 
 #Benelux
 link = { culture = beneluxian ideology = any faction = HOL_benelux } 
@@ -150,7 +165,7 @@ link = { culture = latin_american_cultures ideology = neutrality faction = facti
 link = { culture = latin_american_cultures ideology = radical faction = faction_mexico_hispanic_alliance }
 link = { culture = latin_american_cultures ideology = fascism faction = faction_mexico_hispanic_alliance }
 
-#Left out: western_pacific_sphere, 
+#Left out: Comintern, the_berlin_moscow_axis, anti_soviet_pact, FRA_little_entente, FRA_stresa_front, panbalkan_workers_congress, house_bernadotte, GER_anti_communist_bloc, JAP_asian_communist_solidarity, PRC_mao_faction, CHI_the_peoples_front, USA_hemisphere_defense_faction, anglo_italian_pact, western_pacific_sphere, and many more.
 
 ##Default Faction Names
 
