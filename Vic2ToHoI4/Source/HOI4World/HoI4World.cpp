@@ -506,6 +506,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		if (auto dominion = countries.find(dominionTag); dominion != countries.end())
 		{
 			dominion->second->determineBestCapital(states->getStates());
+			dominion->second->setCapitalRegionFlag(*theRegions);
 
 			const auto overlordTag = dominion->second->getPuppetMaster();
 			auto overlord = countries.find(overlordTag);
