@@ -28,7 +28,8 @@ HoI4::Country::Country(std::string tag,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 const Mappers::CountryMapper& countryMap,
 	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-	 Localisation& hoi4Localisations):
+	 Localisation& hoi4Localisations,
+	 const date& startDate):
 	 tag(std::move(tag)),
 	 name(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
@@ -94,7 +95,7 @@ HoI4::Country::Country(std::string tag,
 
 	lastDynasty = sourceCountry.getLastDynasty();
 	convertLeaders(sourceCountry);
-	convertRelations(countryMap, sourceCountry);
+	convertRelations(countryMap, sourceCountry, startDate);
 	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
 
@@ -566,7 +567,9 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 }
 
 
-void HoI4::Country::convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry)
+void HoI4::Country::convertRelations(const Mappers::CountryMapper& countryMap,
+	 const Vic2::Country& sourceCountry,
+	 const date& startDate)
 {
 	auto srcRelations = sourceCountry.getRelations();
 	for (const auto& srcRelation: srcRelations)
@@ -574,7 +577,7 @@ void HoI4::Country::convertRelations(const Mappers::CountryMapper& countryMap, c
 		auto HoI4Tag = countryMap.getHoI4Tag(srcRelation.first);
 		if (HoI4Tag)
 		{
-			HoI4::Relations newRelation(*HoI4Tag, srcRelation.second);
+			HoI4::Relations newRelation(*HoI4Tag, srcRelation.second, startDate);
 			relations.insert(std::make_pair(*HoI4Tag, std::move(newRelation)));
 		}
 	}

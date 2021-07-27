@@ -271,7 +271,8 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 			 *graphicsMapper,
 			 *countryMap,
 			 flagsToIdeasMapper,
-			 *hoi4Localisations);
+			 *hoi4Localisations,
+			 *theDate);
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
 	}
 }

@@ -60,7 +60,8 @@ class Country
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-		 Localisation& hoi4Localisations);
+		 Localisation& hoi4Localisations,
+		 const date& startDate);
 	explicit Country(const std::string& tag_,
 		 const Country& owner,
 		 const std::string& region_,
@@ -268,7 +269,9 @@ class Country
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
 		 Localisation& hoi4Localisations);
-	void convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
+	void convertRelations(const Mappers::CountryMapper& countryMap,
+		 const Vic2::Country& sourceCountry,
+		 const date& startDate);
 	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 
 	bool attemptToPutCapitalInPreferredNonWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,

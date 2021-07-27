@@ -1312,6 +1312,9 @@
     <ClCompile Include="Source\Mappers\FactionName\FactionNameMappingFactory.cpp">
       <Filter>Mappers\FactionName</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Relations.cpp">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
