@@ -259,7 +259,6 @@ std::optional<std::string> HoI4::Names::getFemaleSurname(const std::string& cult
 		return names->at(std::uniform_int_distribution<int>{0, static_cast<int>(names->size() - 1)}(generator));
 	}
 
-	Log(LogLevel::Warning) << "No female surname could be found for " << culture;
 	return std::nullopt;
 }
 
