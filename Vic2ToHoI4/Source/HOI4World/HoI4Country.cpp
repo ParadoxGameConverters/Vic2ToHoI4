@@ -433,15 +433,14 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 	else
 	{
 		firstName = names.getMaleName(primaryCulture);
-		const auto newSurname = names.getSurname(primaryCulture);
+		auto newSurname = names.getSurname(primaryCulture);
 
 		if (!firstName)
 		{
 			firstName = names.getFemaleName(primaryCulture);
-			auto femaleSurname = names.getFemaleSurname(primaryCulture);
-			if (!newSurname && femaleSurname)
+			if (auto femaleSurname = names.getFemaleSurname(primaryCulture); femaleSurname)
 			{
-				surname = femaleSurname;
+				newSurname = femaleSurname;
 			}
 			female = true;
 		}
