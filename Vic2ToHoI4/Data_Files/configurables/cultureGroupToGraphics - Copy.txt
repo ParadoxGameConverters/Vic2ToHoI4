@@ -58,10 +58,10 @@
 #western_european, semitic, barbaric, mediterranean, balkans, eastern_european,
 #turkic_steppe, arabic_persian, asian_steppe, indian, indo_chinese_nesia, sino,
 #aborigine_polynesia, north_american_native, central_american_native,
-#south_american_native, 
+#south_american_native, hispanic, african, deathbringers, animalia
 
 western_european = {
-	culture_groups = { germanic beneluxian pan_swiss scandinavian british celtic french }
+	culture_groups = { germanic beneluxian pan_swiss scandinavian british celtic french american_cultures neo_european_cultures }
 	army_portraits = {
 		#Generic European
 		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
@@ -245,6 +245,7 @@ western_european = {
 			"gfx/leaders/GER/Portrait_Germany_Generic_3.dds"
 			"gfx/leaders/NOR/Portrait_Norway_Vidkun_Quisling.dds"
 			"gfx/leaders/SAF/Portrait_SouthAfrica_Jan_Smuts.dds"
+			"gfx/leaders/USA/USA_mr_hilt.dds"
 			"gfx/leaders/Western_European/Portrait_Ireland_Michael_Collins.tga"
 		}
 		absolutist = {
@@ -509,7 +510,7 @@ barbaric = {
 }
 
 mediterranean = {
-	culture_groups = { italian old_italian iberian levantine dytic_g varangian_g }
+	culture_groups = { italian old_italian iberian levantine dytic_g varangian_g tyrrhenian }
 	
 	army_portraits = {
 		#Generic European
@@ -1630,6 +1631,7 @@ asian_steppe = {
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds"
 			"gfx/leaders/Asian_Steppe/Portrait_UZB_Yoldashbay_Babayev.tga"
+			"gfx/leaders/African/Portrait_SOM_Ibrahim_Sultan_Ali.tga"
 		} 
 		fascism = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
@@ -2566,6 +2568,7 @@ north_american_native = {
 		"gfx/leaders/North_American_Native/portrait_nat_north_democratic.tga" #Revise
 		"gfx/leaders/North_American_Native/portrait_native_north_american_general.tga" #Revise
 		"gfx/leaders/North_American_Native/portrait_native_north_american_radical.tga" #Revise
+		"gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds" #Revise
 	}
 	leader_portraits = {
 		communism = {
@@ -2578,6 +2581,7 @@ north_american_native = {
 			"gfx/leaders/North_American_Native/portrait_native_north_american_democratic.dds"
 		} 
 		fascism = {
+			"gfx/leaders/ARG/portrait_south_america_generic_leader_1.dds"
 			"gfx/leaders/North_American_Native/portrait_nat_north_fascist.dds"
 			"gfx/leaders/North_American_Native/portrait_native_north_american_fascist.dds"
 		}
@@ -2622,17 +2626,28 @@ north_american_native = {
 		}
 	}
 	male_operative_portraits = {
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds"
-		
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_21.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_6.dds"	
 	}
 	female_operative_portraits = {
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_2.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_5.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/tonga.dds"
+		"gfx/interface/ideas/brazil.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/tonga.dds"
+		"gfx/interface/ideas/brazil.dds"
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
@@ -2652,6 +2667,7 @@ central_american_native = {
 		#Generic
 		#Other
 		"gfx/leaders/Central_American_Native/Portrait_Ramon_Vasquez_Rivera.tga"
+		"gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds" #Revise
 	}
 	leader_portraits = {
 		communism = {
@@ -2660,12 +2676,13 @@ central_american_native = {
 			"gfx/leaders/Central_American_Native/portrait_Apocalypto_communist.dds"
 		} 
 		democratic = {
-			"gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.dds"	
-			"gfx/leaders/Central_American_Native/r56_portrait_generic_politician_south_america_1.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_south_america_1.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.dds"
 			"gfx/leaders/Central_American_Native/portrait_Apocalypto_democratic.dds"
 			"gfx/leaders/Central_American_Native/Portrait_HON_Jose_Maria_Moncada.tga"
 		} 
 		fascism = {
+			"gfx/leaders/ARG/portrait_south_america_generic_leader_1.dds"
 			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
 			"gfx/leaders/HAI/portrait_hai_stenio_vincent.dds"
 			"gfx/leaders/Central_American_Native/portrait_nat_carib_fascist.dds"
@@ -2725,8 +2742,6 @@ central_american_native = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_male_4.dds"
 		"gfx/leaders/South America/portrait_south_america_generic_operative_male_5.dds"
 		"gfx/leaders/South America/portrait_south_america_generic_operative_male_6.dds"
-		
-		
 	}
 	female_operative_portraits = {
 		"gfx/leaders/India/portrait_india_generic_operative_female_2.dds"
@@ -2739,10 +2754,10 @@ central_american_native = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/tonga.dds"
+		"gfx/interface/ideas/brazil.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/tonga.dds"
+		"gfx/interface/ideas/brazil.dds"
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
@@ -2753,38 +2768,58 @@ south_american_native = {
 	
 	army_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_3.dds"
-		#Other		
-		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_1.tga"
+		#Other
+		"gfx/leaders/Central_American_Native/Portrait_ELS_general_Maximiliano_Martinez.tga" #Revise
+		"gfx/leaders/South_American_Native/portrait_nat_south_fascist.dds" #Revise
+		"gfx/leaders/South_American_Native/portrait_nat_south_absolutist.dds" #Revise		
 	}
 	navy_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
 		#Other
-		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+		"gfx/leaders/Central_American_Native/Portrait_PAN_Boris_Salazar.tga" #Revise
+		"gfx/leaders/Central_American_Native/Portrait_Ramon_Vasquez_Rivera.tga" #Revise
+		"gfx/leaders/South_American_Native/portrait_nat_south_radical.dds" #Revise
+		"gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds" #Revise
 	}
 	leader_portraits = {
 		communism = {
-			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
+			"gfx/leaders/ELS/portrait_els_maximiliano_hernandez_martinez.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_south_america_1.tga"			
+			"gfx/leaders/South_American_Native/portrait_nat_south_communist.dds"			
+			"gfx/leaders/South_American_Native/Portrait_FOP_Micaela_Feldman.dds"			
 		} 
 		democratic = {
-			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"	
+			"gfx/leaders/COL/portrait_col_alfonso_lopez_pumarejo.dds"
+			"gfx/leaders/HON/portrait_hon_tiburcio_carias_andino.dds"
+			"gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds"		
+			"gfx/leaders/South_American_Native/QCH_Pahacutec.tga"
 		} 
 		fascism = {
-			"gfx/leaders/Aborigine_Polynesia/Portrait_KIK_Mathenge.dds"
+			"gfx/leaders/ARG/portrait_south_america_generic_leader_1.dds"
+			"gfx/leaders/CHL/portrait_chl_arturo_alessandri.dds"
+			"gfx/leaders/PAN/portrait_pan_harmodio_arias_madrid.dds"
+			"gfx/leaders/South_American_Native/portrait_nat_south_fascist.dds"
 		}
 		absolutist = {
-			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_David_Kawananakoa.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_absolutist.tga" #Revise
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.tga" #Revise
+			"gfx/leaders/South_American_Native/portrait_nat_south_absolutist.dds"
+			"gfx/leaders/South_American_Native/Portrait_Bolivia_Carlos_Quiroga.tga"
 		}
 		neutrality = {
-			"gfx/leaders/HAI/portrait_hai_stenio_vincent.tga"
+			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.tga"
+			"gfx/leaders/ECU/portrait_ecu_federico_paez.dds"
+			"gfx/leaders/South_American_Native/portrait_nat_south_neutral.tga"
 		} 
 		radical = {
-			"gfx/leaders/Africa/Portrait_Africa_Generic_4.dds"
+			"gfx/leaders/CUB/portrait_cub_jose_barnet.dds"
+			"gfx/leaders/South_American_Native/portrait_nat_south_radical.dds"
+			"gfx/leaders/South_American_Native/Portrait_Columbia_Mariano_Ospina.tga"
 		}
 	}
 	female_portraits = {
-		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+		"gfx/leaders/ARG/Portrait_Argentina_Fanny_Jabcovsky.dds"
+		"gfx/leaders/South_American_Native/Female/Portrait_Ecuador_Dolores_Caucango.tga"
 	}
 		
 	ideology_minister_portraits = 
@@ -2809,11 +2844,539 @@ south_american_native = {
 		}
 	}
 	male_operative_portraits = {
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds"
-		
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_2.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_1.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_2.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_4.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_5.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_6.dds"
 	}
 	female_operative_portraits = {
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_1.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_female_2.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_female_5.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_1.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_2.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_4.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_5.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/brazil.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/brazil.dds"
+	}
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
+}
+
+hispanic = {
+	culture_groups = { latin_american_cultures }
+	
+	army_portraits = {
+		#Generic
+		"gfx/leaders/South America/Portrait_South_America_Generic_land_1.dds"
+		"gfx/leaders/South America/Portrait_South_America_Generic_land_2.dds"
+		"gfx/leaders/South America/Portrait_South_America_Generic_land_3.dds"
+		"gfx/leaders/South America/Portrait_South_America_Generic_land_4.dds"
+		"gfx/leaders/South America/Portrait_South_America_Generic_land_5.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_South_America_Generic_land_new_1.tga"
+		"gfx/leaders/Generic/Portrait_South_America_Generic_land_new_2.tga"
+		"gfx/leaders/Generic/Portrait_South_America_Generic_land_new_3.tga"
+		"gfx/leaders/Hispanic/r56_portrait_Bartolome_Blanche.dds"
+		"gfx/leaders/Hispanic/Portrait_BOL_Angel_Ayora.tga"
+		"gfx/leaders/Hispanic/Portrait_Bolivia_Bernardino_Rioja.tga"
+		"gfx/leaders/Hispanic/Portrait_CAF_Eustace_Fiennes.tga"
+		"gfx/leaders/Hispanic/Portrait_Chile_Jorge_Von_Marees.tga"
+		"gfx/leaders/Hispanic/Portrait_CHL_Bennett.tga"
+		"gfx/leaders/Hispanic/Portrait_CHL_Fransico_Javier_Dias_Valderrama.tga"
+		"gfx/leaders/Hispanic/Portrait_COS_Fernando_Figuls_Quiros.tga"
+		"gfx/leaders/Hispanic/Portrait_Cuba_Alberto_Bayo_Giroud.tga"
+		"gfx/leaders/Hispanic/Portrait_Cuba_Martin_Diaz.tga"
+		"gfx/leaders/Hispanic/Portrait_ECU_Luis_Larrea_Alba.tga"
+		"gfx/leaders/Hispanic/Portrait_ELS_general_Maximiliano_Martinez.tga"
+		"gfx/leaders/Hispanic/Portrait_ELS_Maximiliano_Martinez.tga"
+		"gfx/leaders/Hispanic/Portrait_FOP_Guillermo_Mac_Hannaford.tga"
+		"gfx/leaders/Hispanic/Portrait_FOP_Luis_Alberto_Quesada.tga"
+		"gfx/leaders/Hispanic/Portrait_HON_Anastasio_Somoza_Garcia_2.tga"
+		"gfx/leaders/Hispanic/Portrait_HON_Augustine_Warner_Robbins.tga"
+		"gfx/leaders/Hispanic/Portrait_HON_Frederic_Ives_Lord.tga"
+		"gfx/leaders/Hispanic/Portrait_HON_Oswaldo_Lopez_Arellano.tga"
+		"gfx/leaders/Hispanic/Portrait_MEX_Maximino_Avila_Camacho.tga"
+		"gfx/leaders/Hispanic/Portrait_MEX_Pablo_Abelardo_Rodriguez.tga"
+		"gfx/leaders/Hispanic/Portrait_MEX_Pablo_Macias_Valenzuela.tga"
+		"gfx/leaders/Hispanic/Portrait_MEX_Pancho_Villa_General.tga"
+		"gfx/leaders/Hispanic/Portrait_MEX_Quiroga_Escamilla.tga"
+		"gfx/leaders/Hispanic/Portrait_Mexico_Don_Fernando.tga"
+		"gfx/leaders/Hispanic/Portrait_Mexico_Garza.tga"
+		"gfx/leaders/Hispanic/Portrait_Mexico_Ruben_Jaramillo.tga"
+		"gfx/leaders/Hispanic/Portrait_PAN_Boris_Salazar.tga"
+		"gfx/leaders/Hispanic/Portrait_PAN_Manuel_Pino.tga"
+		"gfx/leaders/Hispanic/Portrait_PAR_Alfredo_Stroessner.tga"
+		"gfx/leaders/Hispanic/Portrait_PAR_Estigarribia.tga"
+		"gfx/leaders/Hispanic/Portrait_Paraguay_Hugenio_Morinigi.tga"
+		"gfx/leaders/Hispanic/Portrait_Paraguay_Rafael_Franco_KR.tga"
+		"gfx/leaders/Hispanic/Portrait_Salvador_Alvarado.tga"
+	}
+	navy_portraits = {
+		#Generic
+		"gfx/leaders/South America/Portrait_South_America_Generic_navy_1.dds"
+		"gfx/leaders/South America/Portrait_South_America_Generic_navy_2.dds"
+		"gfx/leaders/South America/Portrait_South_America_Generic_navy_3.dds"
+		#Other
+		"gfx/leaders/Generic/r56_portrait_generic_admiral_south_america_1.dds"
+		"gfx/leaders/Generic/r56_portrait_generic_admiral_GRE_1.dds"
+		"gfx/leaders/Hispanic/Portrait_Chile_Aurelio_Palma.tga"
+		"gfx/leaders/Hispanic/Portrait_Cuba_Alberto_Herrera_Franchi.tga"
+		"gfx/leaders/Hispanic/Portrait_Cuba_Genovevo_Perez_Damera.tga"
+		"gfx/leaders/Hispanic/Portrait_Cuba_Manuel_Lopez_Migoya.tga"
+		"gfx/leaders/Hispanic/Portrait_ECU_Rafael_Valverde.tga"
+		"gfx/leaders/Hispanic/Portrait_ELS_Salvador_Castaneda_Castro.tga"
+		
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/South America/Portrait_South_America_Generic_1.dds"
+			"gfx/leaders/South America/Portrait_South_America_Generic_4.dds"
+			"gfx/leaders/PAR/portrait_par_rafael_franco.dds"
+			"gfx/leaders/URG/portrait_urg_gabriel_terra.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_south_america_1.dds"
+			"gfx/leaders/Hispanic/Portrait_BOL_Alcides_Arguedas.tga"
+			"gfx/leaders/Hispanic/Portrait_BOL_Javier_Granado.tga"
+			"gfx/leaders/Hispanic/Portrait_CHL_Cesar_Urrutia.tga"
+			"gfx/leaders/Hispanic/Portrait_CHL_Jorge Alessandri.tga"
+			"gfx/leaders/Hispanic/Portrait_Columbia_Eduardo_Montejo.tga"
+			"gfx/leaders/Hispanic/Portrait_Cuba_Lazaro_Pena_Gonzalez.tga"
+			"gfx/leaders/Hispanic/Portrait_GRP_Cordeiro.tga"
+			"gfx/leaders/Hispanic/Portrait_GUA_Sandino.tga"
+			"gfx/leaders/Hispanic/Portrait_GUA_Silverio_Oritz.tga"
+			"gfx/leaders/Hispanic/Portrait_HON_Tiburcio_Carias_Andino.tga"
+			"gfx/leaders/Hispanic/Portrait_Mexico_Rosendo_Salazar.tga"
+			"gfx/leaders/Hispanic/Portrait_PAN_Ricardo_Jovane.tga"
+			"gfx/leaders/Hispanic/Portrait_Paraguay_Rafael_Franco_KR.tga"
+			"gfx/leaders/Hispanic/Portrait_URG_Luis Herrera.tga"
+		} 
+		democratic = {
+			"gfx/leaders/South America/Portrait_South_America_Generic_5.dds"
+			"gfx/leaders/BRA/Portrait_Brazil_Plinio_Salgado.dds"
+			"gfx/leaders/COL/portrait_col_alfonso_lopez_pumarejo.dds"
+			"gfx/leaders/COS/portrait_cos_ricardo_jiminez_oreamuno.dds"
+			"gfx/leaders/ELS/portrait_els_maximiliano_hernandez_martinez.dds"	
+			"gfx/leaders/HAI/portrait_hai_stenio_vincent.dds"	
+			"gfx/leaders/HON/portrait_hon_tiburcio_carias_andino.dds"
+			"gfx/leaders/Hispanic/Portrait_Bolivia_Franz_Tamayo.tga"
+			"gfx/leaders/Hispanic/Portrait_Chile_Arturo_Alessandri_Palma.tga"
+			"gfx/leaders/Hispanic/Portrait_Columbia_Lauro_Gomez_Castro.tga"
+			"gfx/leaders/Hispanic/Portrait_COS_Manuel_Mora_Valverde.tga"
+			"gfx/leaders/Hispanic/Portrait_Cuba_Juan_Blas_Hernandez.tga"
+			"gfx/leaders/Hispanic/Portrait_ECU_Jose_Ibarra.tga"
+			"gfx/leaders/Hispanic/Portrait_FOP_Alfredo_Palacios.tga"
+			"gfx/leaders/Hispanic/Portrait_FOP_Antonio_Soto.tga"
+			"gfx/leaders/Hispanic/Portrait_NIC_Juan_Jose_Arevalo_Bermejo.tga"
+			"gfx/leaders/Hispanic/Portrait_HON_Juan_Manuel_Galvez.tga"
+			"gfx/leaders/Hispanic/Portrait_Mexico_Emilio_Gil.tga"
+			"gfx/leaders/Hispanic/Portrait_Mexico_Pascual_Rubio.tga"
+			"gfx/leaders/Hispanic/Portrait_PAN_Arnulfo_Arias_Madrid.tga"
+			"gfx/leaders/Hispanic/Portrait_PAN_Harmodio_Arias_Madrid_our.tga"
+		} 
+		fascism = {
+			"gfx/leaders/ARG/portrait_south_america_generic_leader_3.dds"
+			"gfx/leaders/ARG/portrait_south_america_generic_leader_8.dds"
+			"gfx/leaders/CHL/portrait_chl_arturo_alessandri.dds"
+			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"			
+			"gfx/leaders/VEN/Portrait_Venezuela_Elezar_Lopez_Contreras.dds"
+			"gfx/leaders/Hispanic/Portrait_Bolivia_Mamerto_Urriolagoitia.tga"
+			"gfx/leaders/Hispanic/Portrait_CHL_Juan_Esteban_Montero.tga"
+			"gfx/leaders/Hispanic/Portrait_COS_Ricardo_Oreamuno.tga"
+			"gfx/leaders/Hispanic/Portrait_COS_Teodoro_Picado_Michalski.tga"
+			"gfx/leaders/Hispanic/Portrait_Cuba_Antonio_Guiteras.tga"
+			"gfx/leaders/Hispanic/Portrait_ELS_Feliciano_Ama.tga"
+			"gfx/leaders/Hispanic/Portrait_NIC_Jorge_Ubico_Casteneda.tga"
+			"gfx/leaders/Hispanic/Portrait_Mexico_Antonio_Villarreal.tga"
+			"gfx/leaders/Hispanic/Portrait_Mexico_Emiliano_Zapata.tga"
+			"gfx/leaders/Hispanic/Portrait_Mexico_Juan_Almazan.tga"
+			"gfx/leaders/Hispanic/Portrait_PAN_Jose_Antonio_Remon_Cantera.tga"
+		}
+		absolutist = {
+			"gfx/leaders/BRA/Portrait_Brazil_Getulio_Vargas.dds"
+			"gfx/leaders/PRU/portrait_per_oscar_benavides.dds"
+			"gfx/leaders/Hispanic/Portrait_Bolivia_Carlos_Quiroga.tga"
+			"gfx/leaders/Hispanic/Portrait_Ecuador_Alberto_Gallo.tga"
+			"gfx/leaders/Hispanic/Portrait_Paraguay_Raimundo_Rolon.tga"
+			"gfx/leaders/Hispanic/Portrait_Peru_Carlos_Miro_Quesada.tga"
+		}
+		neutrality = {
+			"gfx/leaders/South America/Portrait_South_America_Generic_6.dds"
+			"gfx/leaders/South America/Portrait_South_America_Generic_9.dds"
+			"gfx/leaders/ARG/Portrait_Argentina_Agustin_Pedro_Justo.dds"
+			"gfx/leaders/ARG/Portrait_Bolivia_Jose_Luis_Tejada_Sorzano.dds"
+			"gfx/leaders/ECU/portrait_ecu_federico_paez.dds"
+			"gfx/leaders/NIC/portrait_nic_anastasio_somoza_garcia.dds"
+			"gfx/leaders/Hispanic/Portrait_Bolivia_Enrique_Castillo.tga"
+			"gfx/leaders/Hispanic/Portrait_Chile_Carlos_Labarca.tga"
+			"gfx/leaders/Hispanic/Portrait_COS_Leon_Cortes_Castro.tga"
+			"gfx/leaders/Hispanic/Portrait_Cuba_Carlos_Mendieta_Montefur.tga"
+			"gfx/leaders/Hispanic/Portrait_ELS_Alfonso_Quinonez_Molina.tga"
+			"gfx/leaders/Hispanic/Portrait_FOP_Jacques_Antoine_Bernard.tga"
+			"gfx/leaders/Hispanic/Portrait_GUA_Yank_Levy.tga"
+			"gfx/leaders/Hispanic/Portrait_HON_Jose_Maria_Moncada.tga"
+			"gfx/leaders/Hispanic/Portrait_Mexico_Fidel_Velazquez.tga"
+			"gfx/leaders/Hispanic/Portrait_Mexico_Lazaro_Cardenas.tga"
+			"gfx/leaders/Hispanic/Portrait_PAR_Eusebio_Ayala.tga"
+			"gfx/leaders/Hispanic/Portrait_Yucatan_Gustavo_Correa.tga"
+		} 
+		radical = {
+			"gfx/leaders/South America/Portrait_South_America_Generic_2.dds"
+			"gfx/leaders/South America/Portrait_South_America_Generic_7.dds"
+			"gfx/leaders/CUB/portrait_cub_jose_barnet.dds"
+			"gfx/leaders/GUA/portrait_gua_jorge_ubico.dds"
+			"gfx/leaders/PAN/portrait_pan_harmodio_arias_madrid.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_south_america_2.dds"
+			"gfx/leaders/Hispanic/Portrait_CAF_Joseph_Lagrosilliere.tga"
+			"gfx/leaders/Hispanic/Portrait_Chile_Marmaduke_Grove.tga"
+			"gfx/leaders/Hispanic/Portrait_Columbia_Turbay_Ayala.tga"
+			"gfx/leaders/Hispanic/Portrait_Cuba_Clemente_Vazquez_Bello.tga"
+			"gfx/leaders/Hispanic/Portrait_Cuba_Mario_Garcia_Menocal.tga"
+			"gfx/leaders/Hispanic/Portrait_FOP_Micaela_Feldman.tga"
+			"gfx/leaders/Hispanic/Portrait_FOP_Miguel_Arcangel.tga"
+			"gfx/leaders/Hispanic/Portrait_HON_Federico_Davidson_Blanco.tga"
+			"gfx/leaders/Hispanic/Portrait_MEX_Zermeno_Araico.tga"
+			"gfx/leaders/Hispanic/Portrait_PRU_Victor_Raul_Haya.tga"
+			"gfx/leaders/Hispanic/Portrait_PRU_Luis_Heysen.tga"
+			"gfx/leaders/Hispanic/Portrait_YUC_Arturo_Campillo_Seyde.tga"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/ARG/Portrait_Argentina_Fanny_Jabcovsky.dds"
+		"gfx/leaders/Hispanic/Female/Portrait_Chile_Gabriela.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_Cuba_Tina_Modotti.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_Ecuador_Nela_Martinez.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_FOP_Paulina_Mansurova.tga"
+		"gfx/leaders/Hispanic/Female/WomanPortrait_Peru_Manuel_Odria.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_Uruguay_Paulina_Luisi.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_YUC_Elvia_Carrillo_Puerto.tga"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_francisco_franco.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_2.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_1.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_2.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_4.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_5.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_6.dds"
+		"gfx/leaders/Generic/r56_portrait_generic_operative_south_america_1.dds"
+		"gfx/leaders/Generic/r56_portrait_generic_operative_south_america_2.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/India/portrait_india_generic_operative_female_2.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_female_5.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_1.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_2.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_4.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_5.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/brazil.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/brazil.dds"
+	}
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
+}
+
+african = {
+	culture_groups = { african_diaspora_cultures west_african central_african east_african southern_african }
+	
+	army_portraits = {
+		#Generic
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_1.dds"	
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_2.dds"	
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_3.dds"	
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_4.dds"
+		#Other
+		"gfx/leaders/SAF/Portrait_South_Africa_Army_Generic.dds"
+		"gfx/leaders/SAF/Portrait_South_Africa_Army_Generic_2.dds"
+		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_2.tga"
+		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_3.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_1.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_2.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_3.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_4.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_5.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_6.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_7.tga"
+		"gfx/leaders/Africa/Portrait_Ethiopia_Abiye_Abebe.tga"
+		"gfx/leaders/Africa/Portrait_Ethiopia_Kassa_Haile_Darge.tga"
+		"gfx/leaders/Africa/Portrait_Ethiopia_Mulugeta_Yeggazu.tga"
+		"gfx/leaders/Africa/Portrait_GAB_Tchorere.tga"
+		"gfx/leaders/Africa/Portrait_Haiti_Antonio_Kebreau.tga"
+		"gfx/leaders/Africa/Portrait_KIV_Louis_de_Gonzague_Bobozo.tga"
+		"gfx/leaders/Africa/Portrait_LIB_Alford_Russ.tga"
+		"gfx/leaders/Africa/Portrait_LIB_Jenkins_Yancey.tga"
+		"gfx/leaders/Africa/Portrait_Mittelafrika_Karl_Atanga.tga"
+		"gfx/leaders/Africa/Portrait_NAM_Samuel_Maharero.tga"
+		"gfx/leaders/Africa/Portrait_SUD_Ali_Latif.tga"
+		"gfx/leaders/Africa/Portrait_SUD_Ferik_Abboud.tga"
+		"gfx/leaders/Africa/Portrait_CSA_Oliver_Law.tga"
+		"gfx/leaders/Africa/Portrait_SOM_Barre.tga"
+		"gfx/leaders/Africa/Portrait_TOG_Alhaji.tga"
+	}
+	navy_portraits = {
+		#Generic
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_1.dds"
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_2.dds"
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_4.dds"
+		#Other
+		"gfx/leaders/African/Portrait_CAF_Felix_Eboue.tga"
+		"gfx/leaders/African/Portrait_Haiti_John_Russell.tga"
+		"gfx/leaders/African/Portrait_LIB_James_Cooper.tga"
+		"gfx/leaders/African/Portrait_LIB_William_Carter.tga"
+		"gfx/leaders/African/Portrait_CSA_youngblood_nance.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Africa/Portrait_Africa_Generic_1.dds"
+			"gfx/leaders/Africa/Portrait_Africa_Generic_4.dds"
+			"gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic_2.dds"	
+			"gfx/leaders/African/Portrait_CAF_Hegesippe_Jean_Legitimus.tga"
+			"gfx/leaders/African/Portrait_GNE_Yacine.tga"
+			"gfx/leaders/African/Portrait_Haiti_Jacques_Romain.tga"
+			"gfx/leaders/African/Portrait_LIB_Marcus_Garvey.tga"
+			"gfx/leaders/African/Portrait_SEN_Sedar.tga"
+			"gfx/leaders/African/Portrait_CSA_Bayard_Rustin.tga"
+			"gfx/leaders/African/Portrait_Haiti_Stenio_Vincent.tga"
+			"gfx/leaders/African/Portrait_SOM_Ughaz.tga"
+			"gfx/leaders/African/Portrait_TOG_Tove.tga"
+		} 
+		democratic = {
+			"gfx/leaders/LIB/Portrait_LIB_edwin_barclay.dds"
+			"gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic.dds"
+			"gfx/leaders/Generic/Portrait_Africa_Generic_new_1.dds"
+			"gfx/leaders/African/Portrait_Barot_YetaIII.tga"
+			"gfx/leaders/African/Portrait_CAF_Tubal_Uriah_Butler.tga"
+			"gfx/leaders/African/Portrait_Dahomey_Soglo.tga"
+			"gfx/leaders/African/Portrait_LIB_Clarence_Simpson.tga"
+			"gfx/leaders/African/Portrait_LIB_Momolu_Massaquoi.tga"
+			"gfx/leaders/African/Portrait_LIB_William_Tubman.tga"
+			"gfx/leaders/African/Portrait_NGR_Benjamin_Azikiwe.tga"
+			"gfx/leaders/African/Portrait_SOM_Ibrahim_Sultan_Ali.tga"
+			"gfx/leaders/African/Portrait_TOG_Olympio.tga"
+		} 
+		fascism = {
+			"gfx/leaders/Africa/Portrait_Africa_Generic_3.dds"
+			"gfx/leaders/African/Portrait_Ashanti_Kwame.tga"
+			"gfx/leaders/African/r56_portrait_generic_politician_africa_1.tga"
+			"gfx/leaders/African/Portrait_Burkina_Nazi_Boni.tga"
+			"gfx/leaders/African/Portrait_GUY_Hubert_Critchlow.tga"
+			"gfx/leaders/African/Portrait_Haiti_Georges_Rigaud.tga"
+			"gfx/leaders/African/Portrait_KIK_Mathenge.tga"
+			"gfx/leaders/African/Portrait_LIB_Anthony_Wilson.tga"
+			"gfx/leaders/African/Portrait_MLW_Banda.tga"
+			"gfx/leaders/African/Portrait_SOM_Osman_Yusuf_Kenadid.tga"
+			"gfx/leaders/African/Portrait_SOM_Abdirashid_Ali_Shermarke.tga"
+			"gfx/leaders/African/Portrait_TUA_Akhemuk_ag_Ihemma.tga"
+		}
+		absolutist = {
+			"gfx/leaders/ETH/Portrait_Ethiopia_Haile_Selassie.dds"
+			"gfx/leaders/African/Portrait_Burundi_Mwambutsa_Fourth.tga"
+			"gfx/leaders/African/Portrait_ERT_Sellasie.tga"
+			"gfx/leaders/African/Portrait_KBR_Shehu_Masta_II.tga"
+			"gfx/leaders/African/Portrait_Kongo_Pedro_VII_Afonso.tga"
+			"gfx/leaders/African/Portrait_KTG_Mabumba_Kitanika.tga"
+			"gfx/leaders/African/Portrait_NAM_Otto_Schimming.tga"
+			"gfx/leaders/African/Portrait_SUD_Abd_Mahdi.tga"
+			"gfx/leaders/African/Portrait_Mittelafrika_Achirimbi.tga"
+			"gfx/leaders/African/Portrait_RWA_Yuhi_V.tga"
+			"gfx/leaders/African/Portrait_SOM_Ali_Shire.tga"
+			"gfx/leaders/African/Portrait_SOM_Cismaan_III_Maxamuud.tga"
+			"gfx/leaders/African/Portrait_Tunisia_Moncef_Bey.tga"
+			"gfx/leaders/African/Portrait_Zanzibar_Sultan_Khalifa.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_YEM_Ahmad_bin_Yahya.tga"
+		}
+		neutrality = {
+			"gfx/leaders/Africa/portrait_dom_rafael_trujillo.tga"
+			"gfx/leaders/African/Portrait_Africa_Generic_new_2.tga"
+			"gfx/leaders/African/Portrait_CAF_CLR_James.tga"
+			"gfx/leaders/African/Portrait_Dahomey_Apithy.tga"
+			"gfx/leaders/African/Portrait_Dahomey_Moumouni.tga"
+			"gfx/leaders/African/Portrait_Haiti_Elie_Lescot.tga"
+			"gfx/leaders/African/Portrait_Haiti_Frank_Lavaud.tga"
+			"gfx/leaders/African/Portrait_Haiti_Paul_Magloire.tga"
+			"gfx/leaders/African/Portrait_LIB_Frank_Tolbert.tga"
+			"gfx/leaders/African/Portrait_NAM_Hosea_Kutako.tga"
+			"gfx/leaders/African/Portrait_NAM_Leonard_Auala.tga"
+			"gfx/leaders/African/Portrait_MOR_Zayani.tga"
+			"gfx/leaders/African/Portrait_SOM_Haji_Bashir_Ismail_Yusuf.tga"
+		} 
+		radical = {
+			"gfx/leaders/Africa/Portrait_Africa_Generic_2.dds"
+			"gfx/leaders/African/Portrait_Ashanti_Addo.tga"
+			"gfx/leaders/African/r56_portrait_generic_politician_africa_2.tga"
+			"gfx/leaders/African/Portrait_Dahomey_Angoli.tga"
+			"gfx/leaders/African/Portrait_GAB_Leon.tga"
+			"gfx/leaders/African/Portrait_Haiti_Jean_Price_Mars.tga"
+			"gfx/leaders/African/Portrait_LIB_George_Padmore.tga"
+			"gfx/leaders/African/Portrait_NAM_Friedrich_Maharero.tga"
+			"gfx/leaders/African/Portrait_SOM_Haaji.tga"
+			"gfx/leaders/African/Portrait_SOM_Aden_Daar.tga"
+			"gfx/leaders/African/Portrait_Uganda_Musaazi.tga"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/African/Female/Portrait_Teke_Queen_Ngalifourou.tga"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_africa.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_africa.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_generic_army_africa_3.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_1.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_2.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_3.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_4.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_5.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_6.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_7.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_8.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_9.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_1.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_2.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_3.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_4.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_5.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_6.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_7.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_8.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds"
+		"gfx/leaders/USA/portrait_usa_josephine_baker.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/ethiopia.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/ethiopia.dds"
+	}
+	graphical_culture = african_gfx
+	graphical_culture_2d = african_2d
+}
+
+deathbringers = {
+	culture_groups = { anti_human }
+	
+	army_portraits = {
+		#Generic
+		#Other
+		"gfx/leaders/Central_American_Native/Portrait_ELS_general_Maximiliano_Martinez.tga"	
+	}
+	navy_portraits = {
+		#Generic
+		#Other
+		"gfx/leaders/Central_American_Native/Portrait_PAN_Boris_Salazar.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/ELS/portrait_els_maximiliano_hernandez_martinez.dds"		
+		} 
+		democratic = {
+			"gfx/leaders/COL/portrait_col_alfonso_lopez_pumarejo.dds"
+		} 
+		fascism = {
+			"gfx/leaders/ARG/portrait_south_america_generic_leader_1.dds"
+		}
+		absolutist = {
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_absolutist.tga"
+		}
+		neutrality = {
+			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.tga"
+		} 
+		radical = {
+			"gfx/leaders/CUB/portrait_cub_jose_barnet.dds"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/ARG/Portrait_Argentina_Fanny_Jabcovsky.dds"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_francisco_franco.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/India/portrait_india_generic_operative_female_2.dds"
 	}
 	male_monarch_portraits = {
 		"gfx/interface/ideas/tonga.dds"
@@ -2821,6 +3384,170 @@ south_american_native = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/tonga.dds"
 	}
-	graphical_culture = southamerican_gfx
-	graphical_culture_2d = southamerican_2d
+	graphical_culture = african_gfx
+	graphical_culture_2d = african_2d
+}
+
+animalia = {
+	culture_groups = { non_human }
+	
+	army_portraits = {
+		#Roar
+		"gfx/leaders/Animalia/portrait_bear_buisnessman_leader.dds"
+		"gfx/leaders/Animalia/portrait_cat_leader.dds"
+		"gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
+		"gfx/leaders/Animalia/portrait_dog_leader.dds"
+		"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
+		"gfx/leaders/Animalia/portrait_duck_leader.dds"
+		"gfx/leaders/Animalia/portrait_elephant_leader.dds"
+		"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
+		"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
+		"gfx/leaders/Animalia/portrait_unicorn_leader.dds"
+	}
+	navy_portraits = {
+		#Tseeeer
+		"gfx/leaders/Animalia/portrait_bear_buisnessman_leader.dds"
+		"gfx/leaders/Animalia/portrait_cat_leader.dds"
+		"gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
+		"gfx/leaders/Animalia/portrait_dog_leader.dds"
+		"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
+		"gfx/leaders/Animalia/portrait_duck_leader.dds"
+		"gfx/leaders/Animalia/portrait_elephant_leader.dds"
+		"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
+		"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
+		"gfx/leaders/Animalia/portrait_unicorn_leader.dds"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Animalia/portrait_bear_buisnessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_cat_leader.dds"
+			"gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_duck_leader.dds"
+			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
+			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
+			"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
+			"gfx/leaders/Animalia/portrait_unicorn_leader.dds"
+		} 
+		democratic = {
+			"gfx/leaders/Animalia/portrait_bear_buisnessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_cat_leader.dds"
+			"gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_duck_leader.dds"
+			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
+			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
+			"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
+			"gfx/leaders/Animalia/portrait_unicorn_leader.dds"
+		} 
+		fascism = {
+			"gfx/leaders/Animalia/portrait_bear_buisnessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_cat_leader.dds"
+			"gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_duck_leader.dds"
+			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
+			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
+			"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
+			"gfx/leaders/Animalia/portrait_unicorn_leader.dds"
+		}
+		absolutist = {
+			"gfx/leaders/Animalia/portrait_bear_buisnessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_cat_leader.dds"
+			"gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_duck_leader.dds"
+			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
+			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
+			"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
+			"gfx/leaders/Animalia/portrait_unicorn_leader.dds"
+		}
+		neutrality = {
+			"gfx/leaders/Animalia/portrait_bear_buisnessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_cat_leader.dds"
+			"gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_duck_leader.dds"
+			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
+			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
+			"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
+			"gfx/leaders/Animalia/portrait_unicorn_leader.dds"
+		} 
+		radical = {
+			"gfx/leaders/Animalia/portrait_bear_buisnessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_cat_leader.dds"
+			"gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
+			"gfx/leaders/Animalia/portrait_duck_leader.dds"
+			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
+			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
+			"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
+			"gfx/leaders/Animalia/portrait_unicorn_leader.dds"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/Animalia/portrait_cat_leader_F.dds"
+		"gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof_F.dds"
+		"gfx/leaders/Animalia/portrait_dog_leader_F.dds"
+		"gfx/leaders/Animalia/portrait_duck_leader_F.dds"
+		"gfx/leaders/Animalia/portrait_elephant_leader_F.dds"
+		"gfx/leaders/Animalia/portrait_hedgehog_leader_F.dds"
+		"gfx/leaders/Animalia/portrait_red_panda_leader_F.dds"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/spr_anarchist_society.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Animalia/portrait_bear_buisnessman_operator.dds"
+		"gfx/leaders/Animalia/portrait_cat_operative.dds"
+		"gfx/leaders/Animalia/portrait_dog_operative.dds"
+		"gfx/leaders/Animalia/portrait_dragon_businessman_operative.dds"
+		"gfx/leaders/Animalia/portrait_duck_operative.dds"
+		"gfx/leaders/Animalia/portrait_elephant_operative.dds"
+		"gfx/leaders/Animalia/portrait_hedgehog_operative.dds"
+		"gfx/leaders/Animalia/portrait_red_panda_operative.dds"
+		"gfx/leaders/Animalia/portrait_Spymaster_Glitterhoof.dds"
+		"gfx/leaders/Animalia/portrait_unicorn_disguise_buisness.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Animalia/Female/portrait_cat_operative_F.dds"
+		"gfx/leaders/Animalia/Female/portrait_dog_operative_F.dds"
+		"gfx/leaders/Animalia/Female/portrait_duck_operative_F.dds"
+		"gfx/leaders/Animalia/Female/portrait_elephant_operative_F.dds"
+		"gfx/leaders/Animalia/Female/portrait_hedgehog_operative_F.dds"
+		"gfx/leaders/Animalia/Female/portrait_red_panda_operative_F.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/zoo.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/zoo.dds"
+	}
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
