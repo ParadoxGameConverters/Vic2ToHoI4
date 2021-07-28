@@ -56,7 +56,8 @@
 
 ##Group List
 #western_european, semitic, barbaric, mediterranean, balkans, eastern_european,
-#turkic_steppe, arabic_persian, asian_steppe, indian
+#turkic_steppe, arabic_persian, asian_steppe, indian, indo_chinese_nesia, sino,
+#aborigine_polynesia
 
 western_european = {
 	culture_groups = { germanic beneluxian pan_swiss scandinavian british celtic french }
@@ -1130,6 +1131,7 @@ eastern_european = {
 			"gfx/leaders/Eastern_European/Portrait_Soviet_Vladimir_Romanov.tga"
 			"gfx/leaders/Eastern_European/Portrait_Soviet_Kyril_Romanov.tga"
 			"gfx/leaders/Eastern_European/Portrait_Soviet_Dmitri_Romanov_Tsar.tga"
+			"gfx/leaders/Eastern_European/Portrait_Cyprus_Makarios_Third.tga"
 		}
 		neutrality = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
@@ -1511,6 +1513,9 @@ arabic_persian = {
 			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Abdelaziz_Thaalbi.tga"
 		}
 	}
+	female_portraits = {
+		"gfx/leaders/Arabic_Persian/Female/Portrait_SYR_Nazik_Abid.tga"
+	}
 	ideology_minister_portraits = 
 	{
 		communism = {
@@ -1608,6 +1613,8 @@ asian_steppe = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
 			"gfx/leaders/MON/portrait_mon_anandyn_amar.dds"
 			"gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds"
 			"gfx/leaders/Asian_Steppe/Zhumabay_Shayakhmetov.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_SIB_Vadim_Podbelsky.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_TAN_Salchak_Toka.tga"
@@ -1619,14 +1626,18 @@ asian_steppe = {
 			"gfx/leaders/KAZ/portrait_kaz_nikolay_skvortsov.dds"
 			"gfx/leaders/Generic/Portrait_Asia_Generic_new_2.tga"
 			"gfx/leaders/Generic/Portrait_Asia_Generic_new_3.tga"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds"
 			"gfx/leaders/Asian_Steppe/Portrait_UZB_Yoldashbay_Babayev.tga"
 		} 
 		fascism = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
 			"gfx/leaders/Asia/portrait_asia_generic_4.dds"
 			"gfx/leaders/MEN/portrait_men_demchugdongrub.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds"
 			"gfx/leaders/Asian_Steppe/Portrait_Mongolia_Sternberg.tga"
-			"gfx/leaders/Asian_Steppe/Portrait_SIK_Muhammed_Amin_Bughra.tga"
+			"gfx/leaders/Asian_Steppe/Portrait_SIK_Muhammed_Amin_Bughra.tga"			
 		} 
 		absolutist = {
 			"gfx/leaders/MAN/Portrait_Manchuria_Henry_Pu_Yi.dds"
@@ -1652,6 +1663,9 @@ asian_steppe = {
 			"gfx/leaders/Asian_Steppe/Portrait_SIB_Nikolay_Avksentyev.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_XSM_Han_Youwen.tga"
 		}
+	}
+	female_portraits = {
+		"gfx/leaders/Asian_Steppe/Female/Portrait_TAN_Khertek_Anchimaa_Toka.tga"
 	}
 	ideology_minister_portraits = 
 	{
@@ -1708,14 +1722,28 @@ asian_steppe = {
 }
 
 indian = {
-	culture_groups = { south_asian }
+	culture_groups = { southeast_asian }
 	
 	army_portraits = {
 		#Generic Indian
 		"gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic.dds"
 		"gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic_2.dds"
 		#Other
+		"gfx/leaders/Generic/Portrait_India_Generic_land_new_1.tga"
+		"gfx/leaders/Generic/Portrait_India_Generic_land_new_2.tga"
+		"gfx/leaders/Generic/Portrait_India_Generic_land_new_3.tga"
+		"gfx/leaders/Generic/Portrait_India_Generic_land_new_4.tga"
+		"gfx/leaders/Generic/Portrait_India_Generic_land_new_5.tga"
 		"gfx/leaders/Indian/Portrait_BHC_Janjuh_Khan.tga"
+		"gfx/leaders/Indian/Portrait_Madras_Thimayya.tga"
+		"gfx/leaders/Indian/Portrait_PRF_Shahamad_Khan.tga"
+		"gfx/leaders/Indian/Portrait_PRF_Khan_Chhatari.tga"
+		"gfx/leaders/Indian/Portrait_PRF_Ishar_Singh.tga"
+		"gfx/leaders/Indian/Portrait_PRF_Haque.tga"
+		"gfx/leaders/Indian/Portrait_PRF_El_Edroos.tga"
+		"gfx/leaders/Indian/Portrait_Burma_Smith_Dun.tga"
+		"gfx/leaders/Indian/Portrait_DEH_Maharaja_Rajendrasinhji_Jadeja.tga"
+		"gfx/leaders/Indian/Portrait_DEH_Malik_Khizar_Hayat_Tiwana.tga"
 	}
 	navy_portraits = {
 		#Generic Indian
@@ -1726,27 +1754,61 @@ indian = {
 	}
 	leader_portraits = {
 		communism = {
-			"gfx/leaders/Indian/Portrait_BHC_M_N_Roy.dds"
-			"gfx/leaders/Indian/Portrait_BHC_Shripad_Amrit_Dange.dds"
+			"gfx/leaders/Generic/Portrait_India_Generic_new_2.tga"
+			"gfx/leaders/Indian/Portrait_BHC_M_N_Roy.tga"
+			"gfx/leaders/Indian/Portrait_BHC_Shripad_Amrit_Dange.tga"
+			"gfx/leaders/Indian/Portrait_Burma_Ba_Cho.tga"
 		}
 		democratic = {
 			"gfx/leaders/RAJ/Portrait_The_Raj_Political_Leader_Generic_2.dds"
 			"gfx/leaders/Indian/Portrait_BHC_Mohandas_Karamchand_Gandhi.tga"
 			"gfx/leaders/Indian/Portrait_BHC_Jawaharlal_Nehru.tga"
 			"gfx/leaders/Indian/Portrait_BHC_Nirmal_Kumar_Bose.tga"
+			"gfx/leaders/Indian/Portrait_Madras_C_Rajagopalachari.tga"
+			"gfx/leaders/Indian/Portrait_MYS_Kaka_Kalekar.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Khengarji_III_Sawai_Bahadur.tga"
 		} 
 		fascism = {
-			"gfx/leaders/Indian/Portrait_BHC_Chandra_Bose.dds"
+			"gfx/leaders/Generic/Portrait_India_Generic_new_1.tga"
+			"gfx/leaders/Indian/Portrait_BHC_Chandra_Bose.tga"
+			"gfx/leaders/Indian/Portrait_Princely_Osman_Ali_Khan.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Singhji.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Iftikhar_'Ali_Khan_of_Jaora.tga"
+			"gfx/leaders/Indian/Portrait_Burma_Pe_Maung_Tin.tga"
+			"gfx/leaders/Indian/Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.tga"
+			"gfx/leaders/Indian/Portrait_DEH_Kanaiyalal_Maneklal_Munshi.tga"
 		} 
 		absolutist = {
-			"gfx/leaders/MAN/Portrait_Manchuria_Henry_Pu_Yi.dds"
+			"gfx/leaders/Indian/Portrait_Madras_Sri_Ramakrishna_Ranga_Rao.tga"
+			"gfx/leaders/Indian/Portrait_MYS_Krishna_Wadiyar.tga"
+			"gfx/leaders/Indian/Portrait_Princely_Osman_Ali_Khan2.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Taley_Muhammed_Khan_of_Palanpur.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Rajaram_II_of_Kolhapur.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Maharaja_Ranbir_Singh.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Kshatriya_of_Dewas.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Kishore_Debbarman.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Bhupinder_Singh.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Balarama_Varma_of_Travancore.tga"
+			"gfx/leaders/Indian/Portrait_PRF_Ahmad_Ali_of_Malerjotla.tga"
+			"gfx/leaders/Indian/portrait_PAK_Mirza_Mughal.tga"
+			"gfx/leaders/Indian/Portrait_DEH_Maharaja_Ganga_Singh.tga"
 		}
 		neutrality = {
 			"gfx/leaders/RAJ/Portrait_The_Raj_Political_Leader_Generic.dds"
 			"gfx/leaders/Indian/Portrait_Bengal_Lala_Lajpat_Rai.tga"
-		} 
+			"gfx/leaders/Indian/Portrait_Madras_Periyar_Ramasavy.tga"
+			"gfx/leaders/Indian/Portrait_DEH_Muhammad_Ali_Jinnah.tga"
+			"gfx/leaders/Indian/Portrait_DEH_Sir_Chhotu_Ram.tga"
+			"gfx/leaders/Indian/Portrait_DEH_Sir_Sikander_Hayat_Khan.tga"
+			"gfx/leaders/Indian/Portrait_DEH_V_K_Krishna_Menon.tga"
+		}
 		radical = {
-			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
+			"gfx/leaders/Indian/Portrait_Madras_Rettamalai_Srinivasan.tga"
+			"gfx/leaders/Indian/Portrait_Madras_Paramasiva_Subbarayan.tga"
+			"gfx/leaders/Indian/Portrait_Burma_Maung_Gyi.tga"
+			"gfx/leaders/Indian/Portrait_DEH_B_R_Ambedkar.tga"
+			"gfx/leaders/Indian/Portrait_DEH_Minocher_Rustom_Masani.tga"
+			"gfx/leaders/Indian/Portrait_DEH_V_S_Srinivasa_Sastri.tga"
 		}
 	}
 	ideology_minister_portraits = 
@@ -1756,12 +1818,13 @@ indian = {
 		}
 		democratic = {
 			"gfx/interface/ideas/idea_chakravarti_rajagopalachari.dds"
+			"gfx/interface/ideas/idea_sir_mohammed_iqbal.dds"
 		}
 		fascism = {
 			"gfx/interface/ideas/idea_subhas_chanda_bose.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_raj_quit_india_movement.dds" #Revise
+			"gfx/leaders/ideas/idea_agha_khan.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/generic_political_advisor_india_1.dds"
@@ -1795,3 +1858,686 @@ indian = {
 	graphical_culture_2d = commonwealth_2d
 }
 
+indo_chinese_nesia = {
+	culture_groups = { southeast_asian  }
+	
+	army_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_6.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_AOG_Generic_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_2.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Cambodia_Sisowath_Monipong.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Chu_Van_Tan.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Hoang_Van_Thai.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Nguyen_Binh.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Nguyen_Chi_Thanh.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Van_Tien_Dung.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Vo_Nguyen_Giap.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Rachmat.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Sudirman.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Suhadi.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Suharto.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Urip_Sumohardjo.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Alfredo_M_Santos.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Basilio_J_Valdez.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Carlos_P_Romulo.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Macario_Peralta_Jr.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Manuel_F_Cabal.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Mateo_Capinpin.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Paulino_Santos.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Charun_Rattanakun_Seriroengri.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Duong_Van_Minh.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Le_Quang_Vinh.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Le_Van_Ty.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Nguyen_Van_Hinh.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Tran_Quang_Vinh.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Tran_Van_Don.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portait_Sarawak_Ye_Jianying.tga"
+	}
+	navy_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_4.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_2.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_3.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_GEA_Rudolph_Firle.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Ta_Xuan_Thu.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Yos_Sudarso.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Luang_Karjsongkhram.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Phraya_Witchitchollathi.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Le_Quang_My.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Tran_Van_Chon.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_1.dds"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Ho_chi_minh.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Le_Duc_Tho.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Pham_Van_Dong_old.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Pham_Van_Dong_old_happy.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Ta_Thu_Thau.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Crisanto_Evangelista.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Ong Kee Hui.tga"
+		} 
+		democratic = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
+			"gfx/leaders/PHI/Portrait_Philippines_Manuel_Luis_Quezon.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Cambodia_Cheng_Heng.dds"			
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Cambodia_Khuang_Aphaiwong.tga"			
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_DEI_Palar.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Bui_Quang_Chieu.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Mohammad_Hatta.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Elpidio_Quirino.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Manuel_Luis_Quezon_KR.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Manuel_Roxas.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Kuekrit_Pramoj.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Ong_Tiang_Swee.tga"
+		} 
+		fascism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
+			"gfx/leaders/Asia/portrait_asia_generic_4.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Hashim_Asyari.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Kartosoewirjo.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Sutomo.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Phao_Sriyanond.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Pham_Cong_Tac.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Burma_Pe_Maung_Tin.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Datu_Patinggi.tga"
+		} 
+		absolutist = {
+			"gfx/leaders/SIA/Portrait_Siam_Phraya_Phahon.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_CAM_Norodom_Sihanouk.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Cambodia_Sisowath_Monivong.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Hamengkubuwono_IX.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Malaya_Iskander_I_Perak.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Malaya_Abdul_Rahman_Negeri_Sembilan.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Malaya_Hisamuddin_of_Selangor.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Shan_Sao_Shwe_Thaik.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Rama_IX.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Rama_VII.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Ahmad_Tajuddin.tga"
+		}
+		neutrality = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_fascism.dds"
+			"gfx/leaders/GXC/Portrait_Guanxi_Clique_Li_Zongren.dds"
+			"gfx/leaders/YUN/portrait_yun_long_yun.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Cambodia_Norodom_Suramarit.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Sukarno.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Malaya_Yusof_bin_Ishak.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Emilio_Aguinaldo.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Juan_Sumulong.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Sanya_Thammasak.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Thawan_Thamrongnawasawat_Civilian.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Ngo_Din_Diem.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Abang_Haji_Abdillah.tga"
+		} 
+		radical = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Cambodia_Son_Ngoc_Than.dds"			
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_INC_Nguyen_An_Ninh.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Sutan_Sjahrir.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Indonesia_Tan_Malaka.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Thawi_Bunyakaet.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Burma_Ba_Cho.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Burma_Maung_Gyi.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Charles_Vyner_Brooke.tga"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+	}
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_hideki_tojo.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_1.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_2.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_4.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_6.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_7.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_8.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_9.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_2.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_4.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_6.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_7.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_8.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/cambodia.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/cambodia.dds"
+	}
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
+
+sino = {
+	culture_groups = { east_asian  }
+	
+	army_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_6.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_AOG_Generic_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_2.tga"
+		"gfx/leaders/Sino/Portrait_FNG_Wan_Fulin.tga"
+		"gfx/leaders/Sino/Portrait_FNG_Wang_Shuchang.tga"
+		"gfx/leaders/Sino/Portrait_FNG_Wu_Junsheng.tga"
+		"gfx/leaders/Sino/Portrait_FNG_Zhang_Haipeng.tga"
+		"gfx/leaders/Sino/Portrait_FNG_Zhang_Zuoxiang.tga"
+		"gfx/leaders/Sino/Portrait_China_Chang_Tzuchung.tga"
+		"gfx/leaders/Sino/portrait_SQI_wang_yaowu.dds"
+		"gfx/leaders/Sino/Portrait_XSM_Ma_Zhongying.dds"
+		"gfx/leaders/Sino/Portrait_XSM_Sun_Lianguang.dds"
+	}
+	navy_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_4.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_2.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_3.tga"
+		"gfx/leaders/Sino/Portrait_XSM_Ma_Dunjing.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_1.dds"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
+			"gfx/leaders/CHI/Portrait_China_Mao_Zedong.dds"
+			"gfx/leaders/CHI/portrait_prc_mao_zedong.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds"
+			"gfx/leaders/Sino/Portrait_CHI_Chen_Jiongming.tga"
+			"gfx/leaders/Sino/Portrait_XSM_Ma_Fuxiang.tga"
+			"gfx/leaders/Sino/Portrait_XSM_Ma_Hongbin.tga"
+			"gfx/leaders/Sino/Portrait_XSM_Ma_Hongkui.tga"
+		} 
+		democratic = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
+			"gfx/leaders/CHI/Portrait_China_weng_wenhao.dds"
+			"gfx/leaders/CHI/Portrait_CHI_Hu_shi.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
+			"gfx/leaders/Sino/Portrait_XSM_Ma_Lin.dds"
+		} 
+		fascism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
+			"gfx/leaders/Asia/portrait_asia_generic_4.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds"
+			"gfx/leaders/Sino/Portrait_LEC_Big_Ears.tga"
+			"gfx/leaders/Sino/Portrait_LEC_Huang_Jinrong.tga"
+			"gfx/leaders/Sino/Portrait_SQI_Zhang_Tianran.tga"
+		}
+		absolutist = {
+			"gfx/leaders/CHI/Portrait_China_Chiang_Kai_Shek.dds"
+			"gfx/leaders/MAN/Portrait_Manchuria_Henry_Pu_Yi.dds"
+			"gfx/leaders/Sino/Portrait_CHI_Yuan_Shikai.dds"
+			"gfx/leaders/Sino/Portrait_China_Puyi.tga"
+			"gfx/leaders/Sino/Portrait_China_Pujie.tga"
+		}
+		neutrality = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_fascism.dds"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_warlord1.dds"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_warlord2.dds"
+			"gfx/leaders/GXC/Portrait_Guanxi_Clique_Li_Zongren.dds"
+			"gfx/leaders/SHX/portrait_shx_yan_xishan.dds"
+			"gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds"
+			"gfx/leaders/XSM/portrait_xsm_ma_bufang.dds"
+			"gfx/leaders/YUN/portrait_yun_long_yun.dds"
+			"gfx/leaders/Sino/Portrait_FNG_Zhang_Zuolin.tga"
+			"gfx/leaders/Sino/Portrait_China_Wu_Peifu.tga"
+		} 
+		radical = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds"
+			"gfx/leaders/Sino/Portrait_FNG_Shen_Honglie.tga"
+			"gfx/leaders/Sino/Portrait_XSM_Han_Youwen.tga"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+		"gfx/leaders/Sino/Female/Portrait_CHI_Soong_Ching_Ling.tga"
+		"gfx/leaders/Sino/Female/Portrait_LEC_Jiang_Qing.tga"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
+			"gfx/interface/ideas/idea_prc_zhou_enlai.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+			"gfx/interface/ideas/idea_chi_chiang_ching_kuo.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_hideki_tojo.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
+			"gfx/interface/ideas/idea_hino_kumazo.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_1.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_2.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_4.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_6.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_7.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_8.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_9.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_2.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_4.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_6.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_7.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_8.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
+		"gfx/leaders/CHI/portrait_chi_yoshiko_kawashima.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/cambodia.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/cambodia.dds"
+	}
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
+
+korean_japan = {
+	culture_groups = { far_east_asian  }
+	
+	army_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_6.dds"
+		#Japan
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_1.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_2.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_3.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_4.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_5.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Akira_Muto.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Harukichi_Hyakutake.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Hatazo_Adachi.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Hisaichi_Terauchi.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Hitoshi_Imamura.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Iwane_Matsui.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Jo_Iimura.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Kanji_Ishiwara.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Keisuke_Fujie.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Kenji_Doihara.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Kenkichi_Ueda.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Kiichiro_Higuchi.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Kuniaki_Koiso.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Masaharu_Homma.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Masatane_Kanda.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Morihiro_Higashikuni.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Naruhiko_Higashikuni.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Nobuyoshi_Muto.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Rikichi_Ando.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Sadao_Araki.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Seishiro_Itagaki.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Shigeru_Honjo.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Shizuichi_Tanaka.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Shunroku_Hata.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Takashi_Sakai.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Tomoyuki_Yamashita.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Toshizo_Nishio.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Yasuji_Okamura.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Yoshijiro_Umezu.dds"
+		#Other		
+		"gfx/leaders/Generic/Portrait_AOG_Generic_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_2.tga"
+	}
+	navy_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_4.dds"
+		#Japan
+		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_1.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_2.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_3.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Gengo_Hyakutake.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Hasegawa_Kiyoshi.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Hiroaki_Abe.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Isoroku_Yamamoto.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Jisaburo_Ozawa.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Mineichi_Koga.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Nishizo_Tsukahara.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Nobutake_Kondo.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Shigeyoshi_Inoue.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Tadashige_Daigo.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Takeo_Takagi.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Zengo_Yoshida.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_2.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_3.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_1.dds"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
+			"gfx/leaders/JAP/Portrait_Japan_Generic_1.dds"
+			"gfx/leaders/JAP/portrait_jap_kyuichi_tokuda.dds"
+			"gfx/leaders/JAP/Portrait_KOR_Kim_Il-Sung.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds"
+		} 
+		democratic = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
+			"gfx/leaders/JAP/portrait_jap_tetsu_katayama.dds"
+			"gfx/leaders/JAP/Portrait_Japan_Soemu_Toyoda.dds"
+			"gfx/leaders/JAP/Portrait_KOR_Syngman_Rhee.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
+		} 
+		fascism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
+			"gfx/leaders/Asia/portrait_asia_generic_4.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds"
+		}
+		absolutist = {
+			"gfx/leaders/JAP/Portrait_Japan_Hirohito.dds"
+			"gfx/leaders/Korean_Japan/Yi_Un.tga"
+			"gfx/leaders/Korean_Japan/Portrait_Japan_Hirohito_kr.tga"
+			"gfx/leaders/Korean_Japan/Portrait_Japan_Yasuhito.tga"
+		}
+		neutrality = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_fascism.dds"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_warlord1.dds"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_warlord2.dds"
+			"gfx/leaders/JAP/Portrait_Japan_Generic_3.dds"
+			"gfx/leaders/JAP/Portrait_Japan_Otozo_Yamada.dds"
+		} 
+		radical = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
+			"gfx/leaders/JAP/Portrait_Japan_Generic_2.dds"
+			"gfx/leaders/Generic/Portrait_Japan_Generic_1.tga"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
+			"gfx/interface/ideas/idea_sanzo_nosaka.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+			"gfx/interface/ideas/idea_kijuro_shidehara.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
+			"gfx/interface/ideas/idea_kingoro_hashimoto.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_hideki_tojo.dds"
+			"gfx/leaders/ideas/idea_jap_hirohito.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
+			"gfx/interface/ideas/idea_chuichi_nagumo.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
+			"gfx/interface/ideas/idea_hino_kumazo.dds"
+			"gfx/interface/ideas/idea_fushimi_hiroyasu.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_1.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_2.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_4.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_6.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_7.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_8.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_9.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_2.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_4.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_6.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_7.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_8.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
+		"gfx/leaders/CHI/portrait_chi_yoshiko_kawashima.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/state_shintoism.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/state_shintoism.dds"
+	}
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
+
+aborigine_polynesia = {
+	culture_groups = { oceanic }
+	
+	army_portraits = {
+		#Generic
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_3.dds"
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_4.dds"
+		"gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic.dds"
+		#Other		
+		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_2.tga"
+		"gfx/leaders/Generic/Portrait_AOG_Generic_1.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_barney_hajiro.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portrait_INC_Nguyen_Binh.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Samuel_Maharero.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Samuel.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portait_Sarawak_Ye_Jianying.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portrait_YEM_Abdullah_as_Sallal.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portrait_YEM_Hassal_Al_Amiri.tga"
+	}
+	navy_portraits = {
+		#Generic
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_4.dds"
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_gordon_hoon.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
+			"gfx/leaders/African/Portrait_Haiti_Louis_Dejoie.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_INC_Pham_Van_Dong_old_happy.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Friedrich_Maharero.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ong Kee Hui.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_SOM_Ughaz.tga"
+		} 
+		democratic = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
+			"gfx/leaders/LIB/Portrait_LIB_edwin_barclay.dds"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Mittelafrika_Alexandre_Douala_Bell.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_NZL_Eruera_Tirikatene.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Charles_Vyner_Brooke.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_SOM_Aden_Daar.tga"
+		} 
+		fascism = {
+			"gfx/leaders/Aborigine_Polynesia/Portrait_KIK_Mathenge.dds"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_MOR_Ali_Yata.dds"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_PAL_Alami.dds"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Abang_Haji_Abdillah.dds"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Datu_Patinggi.dds"
+		}
+		absolutist = {
+			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_David_Kalakaua.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_jonah_kuhio.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_KTG_Mabumba_Kitanika.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ahmad_Tajuddin.tga"
+		}
+		neutrality = {
+			"gfx/leaders/HAI/portrait_hai_stenio_vincent.tga"
+			"gfx/leaders/Generic/Portrait_Africa_Generic_new_1.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Otto_Schimming.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ong_Tiang_Swee.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Vietnam_Pham_Cong_Tac.tga"
+		} 
+		radical = {
+			"gfx/leaders/Africa/Portrait_Africa_Generic_4.dds"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_KUR_Mihemed.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Ottoman_Ali_Adnan_Bey.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Siam_Sanya_Thammasak.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_TOG_Tove.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_YUC_Arturo_Campillo_Seyde.tga"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+		"gfx/leaders/Aborigine_Polynesia/Female/Portrait_HAW_Lydia_Liliuokalani.tga"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_francisco_franco.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_2.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_3.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_5.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_6.dds"
+		"gfx/leaders/Australia/portrait_africa_generic_operative_male_3.dds"
+		"gfx/leaders/Australia/portrait_asia_generic_operative_male_1.dds"
+		"gfx/leaders/Australia/portrait_asia_generic_operative_male_5.dds"
+		"gfx/leaders/Australia/portrait_asia_generic_operative_male_6.dds"
+		"gfx/leaders/Australia/portrait_asia_generic_operative_male_7.dds"
+		"gfx/leaders/Australia/portrait_europe_generic_operative_male_7.dds"
+		"gfx/leaders/Australia/portrait_europe_generic_operative_male_10.dds"
+		"gfx/leaders/Australia/portrait_europe_generic_operative_male_15.dds"
+		"gfx/leaders/Australia/portrait_europe_generic_operative_male_17.dds"
+		
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_1.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_2.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_3.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_4.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_5.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
+		"gfx/leaders/Australia/portrait_africa_generic_operative_female_8.dds"
+		"gfx/leaders/Australia/portrait_asia_generic_operative_female_2.dds"
+		"gfx/leaders/Australia/portrait_asia_generic_operative_female_8.dds"
+		"gfx/leaders/Australia/portrait_asia_generic_operative_female_9.dds"
+		"gfx/leaders/Australia/portrait_europe_generic_operative_female_6.dds"
+		"gfx/leaders/Australia/portrait_europe_generic_operative_female_25.dds"
+		"gfx/leaders/USA/portrait_usa_josephine_baker.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/tonga.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/tonga.dds"
+	}
+	graphical_culture = african_gfx
+	graphical_culture_2d = asian_2d
+}
