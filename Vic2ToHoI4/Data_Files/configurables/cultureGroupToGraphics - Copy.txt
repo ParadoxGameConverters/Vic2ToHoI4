@@ -57,7 +57,8 @@
 ##Group List
 #western_european, semitic, barbaric, mediterranean, balkans, eastern_european,
 #turkic_steppe, arabic_persian, asian_steppe, indian, indo_chinese_nesia, sino,
-#aborigine_polynesia
+#aborigine_polynesia, north_american_native, central_american_native,
+#south_american_native, 
 
 western_european = {
 	culture_groups = { germanic beneluxian pan_swiss scandinavian british celtic french }
@@ -2426,6 +2427,7 @@ aborigine_polynesia = {
 		#Other
 		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
 		"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_gordon_hoon.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portrait_CAF_Felix_Eboue.tga"
 	}
 	leader_portraits = {
 		communism = {
@@ -2435,14 +2437,16 @@ aborigine_polynesia = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Friedrich_Maharero.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ong Kee Hui.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_SOM_Ughaz.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_GNE_Yacine.tga"
 		} 
 		democratic = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
 			"gfx/leaders/LIB/Portrait_LIB_edwin_barclay.dds"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_NZL_Apirana_Ngata.dds"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Mittelafrika_Alexandre_Douala_Bell.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NZL_Eruera_Tirikatene.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Charles_Vyner_Brooke.tga"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_SOM_Aden_Daar.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_SOM_Aden_Daar.tga"			
 		} 
 		fascism = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_KIK_Mathenge.dds"
@@ -2452,6 +2456,7 @@ aborigine_polynesia = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Datu_Patinggi.dds"
 		}
 		absolutist = {
+			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_David_Kawananakoa.dds"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_David_Kalakaua.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_jonah_kuhio.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_KTG_Mabumba_Kitanika.tga"
@@ -2463,6 +2468,7 @@ aborigine_polynesia = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Otto_Schimming.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ong_Tiang_Swee.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Vietnam_Pham_Cong_Tac.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_CAF_Tubal_Uriah_Butler.tga"
 		} 
 		radical = {
 			"gfx/leaders/Africa/Portrait_Africa_Generic_4.dds"
@@ -2471,10 +2477,12 @@ aborigine_polynesia = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Siam_Sanya_Thammasak.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_TOG_Tove.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_YUC_Arturo_Campillo_Seyde.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_CAF_CLR_James.tga"
 		}
 	}
 	female_portraits = {
 		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+		"gfx/leaders/Aborigine_Polynesia/Female/Portrait_HAW_Theresa_Laanui.dds"
 		"gfx/leaders/Aborigine_Polynesia/Female/Portrait_HAW_Lydia_Liliuokalani.tga"
 	}
 		
@@ -2540,4 +2548,279 @@ aborigine_polynesia = {
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = asian_2d
+}
+
+north_american_native = {
+	culture_groups = { native_north_american }
+	
+	army_portraits = {
+		#Generic
+		#Other
+		"gfx/leaders/North_American_Native/portrait_native_north_american_general.dds"
+		"gfx/leaders/North_American_Native/portrait_nat_north_radical.dds" #Revise
+		"gfx/leaders/North_American_Native/portrait_nat_north_communist.dds" #Revise
+	}
+	navy_portraits = {
+		#Generic
+		#Other
+		"gfx/leaders/North_American_Native/portrait_nat_north_democratic.tga" #Revise
+		"gfx/leaders/North_American_Native/portrait_native_north_american_general.tga" #Revise
+		"gfx/leaders/North_American_Native/portrait_native_north_american_radical.tga" #Revise
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/North_American_Native/portrait_nat_north_communist.dds"			
+			"gfx/leaders/North_American_Native/portrait_native_north_american_communist.dds"
+		} 
+		democratic = {
+			"gfx/leaders/North_American_Native/portrait_nat_north_democratic.dds"
+			"gfx/leaders/North_American_Native/Portrait_Lakota_Russell_Means.dds"
+			"gfx/leaders/North_American_Native/portrait_native_north_american_democratic.dds"
+		} 
+		fascism = {
+			"gfx/leaders/North_American_Native/portrait_nat_north_fascist.dds"
+			"gfx/leaders/North_American_Native/portrait_native_north_american_fascist.dds"
+		}
+		absolutist = {
+			"gfx/leaders/North_American_Native/portrait_nat_north_absolutist.dds"
+			"gfx/leaders/North_American_Native/portrait_Native_American.dds"
+			"gfx/leaders/North_American_Native/portrait_native_north_american_absolutist.dds"
+		}
+		neutrality = {
+			"gfx/leaders/North_American_Native/portrait_nat_north_neutral.tga"
+			"gfx/leaders/North_American_Native/portrait_native_north_american_neutral.dds"
+		} 
+		radical = {
+			"gfx/leaders/North_American_Native/portrait_nat_north_radical.dds"
+			"gfx/leaders/North_American_Native/portrait_native_north_american_radical.dds"			
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/North_American_Native/portrait_Native_American_female.dds"
+		"gfx/leaders/North_American_Native/portrait_Native_American_female_2.dds"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_francisco_franco.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds"
+		
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_1.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/tonga.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/tonga.dds"
+	}
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
+}
+
+central_american_native = {
+	culture_groups = { native_central_american native_carribean }
+	
+	army_portraits = {
+		#Generic
+		#Other		
+		"gfx/leaders/Central_American_Native/Portrait_PAN_Boris_Salazar.tga"
+		"gfx/leaders/Central_American_Native/Portrait_MEX_Pancho_Villa_General.tga"
+		"gfx/leaders/Central_American_Native/Portrait_ELS_general_Maximiliano_Martinez.tga"
+	}
+	navy_portraits = {
+		#Generic
+		#Other
+		"gfx/leaders/Central_American_Native/Portrait_Ramon_Vasquez_Rivera.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/CUB/portrait_cub_jose_barnet.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_communist.dds"
+			"gfx/leaders/Central_American_Native/portrait_Apocalypto_communist.dds"
+		} 
+		democratic = {
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.dds"	
+			"gfx/leaders/Central_American_Native/r56_portrait_generic_politician_south_america_1.dds"
+			"gfx/leaders/Central_American_Native/portrait_Apocalypto_democratic.dds"
+			"gfx/leaders/Central_American_Native/Portrait_HON_Jose_Maria_Moncada.tga"
+		} 
+		fascism = {
+			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
+			"gfx/leaders/HAI/portrait_hai_stenio_vincent.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_fascist.dds"
+			"gfx/leaders/Central_American_Native/portrait_Apocalypto_fascist.dds"
+		}
+		absolutist = {
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_absolutist.dds"
+			"gfx/leaders/Central_American_Native/portrait_Apocalypto_absolutist.dds"
+		}
+		neutrality = {
+			"gfx/leaders/CHL/portrait_chl_arturo_alessandri.dds"
+			"gfx/leaders/HON/portrait_hon_tiburcio_carias_andino.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_neutral.dds"
+			"gfx/leaders/Central_American_Native/portrait_Apocalypto_neutral.dds"
+		} 
+		radical = {
+			"gfx/leaders/ECU/portrait_ecu_federico_paez.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_radical.dds"
+			"gfx/leaders/Central_American_Native/portrait_Apocalypto_radical.dds"
+			"gfx/leaders/Central_American_Native/Portrait_Haiti_Jacques_Romain.tga"
+			"gfx/leaders/Central_American_Native/Portrait_COS_Teodoro_Picado_Michalski.tga"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/Central_American_Native/Female/Portrait_Ecuador_Dolores_Caucango.tga"
+		"gfx/leaders/Central_American_Native/Female/Portrait_Cuba_Tina_Modotti.tga"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_francisco_franco.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_2.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_1.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_2.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_4.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_5.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_male_6.dds"
+		
+		
+	}
+	female_operative_portraits = {
+		"gfx/leaders/India/portrait_india_generic_operative_female_2.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_female_5.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_1.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_2.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_3.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_4.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_5.dds"
+		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/tonga.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/tonga.dds"
+	}
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
+}
+
+south_american_native = {
+	culture_groups = { native_south_american }
+	
+	army_portraits = {
+		#Generic
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_3.dds"
+		#Other		
+		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_1.tga"
+	}
+	navy_portraits = {
+		#Generic
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
+		} 
+		democratic = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"	
+		} 
+		fascism = {
+			"gfx/leaders/Aborigine_Polynesia/Portrait_KIK_Mathenge.dds"
+		}
+		absolutist = {
+			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_David_Kawananakoa.dds"
+		}
+		neutrality = {
+			"gfx/leaders/HAI/portrait_hai_stenio_vincent.tga"
+		} 
+		radical = {
+			"gfx/leaders/Africa/Portrait_Africa_Generic_4.dds"
+		}
+	}
+	female_portraits = {
+		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+	}
+		
+	ideology_minister_portraits = 
+	{
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_francisco_franco.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds"
+		
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_1.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/tonga.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/tonga.dds"
+	}
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
 }
