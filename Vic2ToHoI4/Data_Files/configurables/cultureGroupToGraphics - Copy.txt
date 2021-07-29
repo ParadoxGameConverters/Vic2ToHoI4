@@ -173,6 +173,7 @@ western_european = {
 		"gfx/leaders/Western_European/Portrait_Finland_Paavo_Talvela.tga"
 		"gfx/leaders/Western_European/Portrait_Finland_Kurt_Martti_Wallenius.tga"
 		"gfx/leaders/Western_European/Portrait_Canada_Adrian_Wiart.tga"
+		"gfx/leaders/Western_European/Portrait_Galicia_Aleksander_Litwinowicz.tga"
 	}
 	navy_portraits = {
 		#Generic European
@@ -301,6 +302,7 @@ western_european = {
 			"gfx/leaders/Western_European/Portrait_TEX_William_Dudley_Pelley.tga"
 			"gfx/leaders/Western_European/Portrait_Holland_Wijnkoop.tga"
 			"gfx/leaders/Western_European/Portrait_Belgium_LEON_DEGRELLE.tga"
+			"gfx/leaders/Western_European/Portrait_Galicia_Jozef_Haller_von_Hallenburg.tga"
 		}
 		absolutist = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_7.dds"
@@ -373,6 +375,10 @@ western_european = {
 		"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
 		"gfx/leaders/Western_European/Female/Portrait_Holland_Juliana.tga"
 		"gfx/leaders/Western_European/Female/Portrait_Holland_Wilhelmina.tga"
+		"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+		"gfx/leaders/Western_European/Female/Portrait_France_May_Picqueray.tga"
+		"gfx/leaders/Western_European/Female/Portrait_Normandy_Anna_I.tga"
+		"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
 	}
 	ideology_minister_portraits = 
 	{
@@ -566,6 +572,9 @@ mediterranean = {
 		"gfx/leaders/Mediterranean/Portrait_TUS_Chiariotti_Raoul.tga"
 		"gfx/leaders/Mediterranean/Portrait_TUS_Umberto_Soma.tga"
 		"gfx/leaders/Mediterranean/Portrait_VNC_Antonio_Scaramuzza.tga"
+		"gfx/leaders/Mediterranean/Portrait_LOM_Italo_Gariboldi.tga"
+		"gfx/leaders/Mediterranean/Portrait_LOM_Alberto_Pariani.tga"
+		"gfx/leaders/Mediterranean/Portrait_LOM_Adriano_Visconti.tga"
 	}
 	navy_portraits = {
 		#Generic European
@@ -631,6 +640,9 @@ mediterranean = {
 			"gfx/leaders/GRE/portrait_gre_adolfos_i.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Benito_Mussolini.dds"
 			"gfx/leaders/SPR/Portrait_Spain_Francisco_Franco_old.dds"
+			"gfx/leaders/Mediterranean/Portrait_Italy_Alcide_de_Gasperi.tga"
+			"gfx/leaders/Mediterranean/Portrait_Italy_Carlo_Sforza.tga"
+			"gfx/leaders/Mediterranean/Portrait_CAR_Mariano_Gamir_Ulibarri.tga"
 		} 
 		absolutist = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_7.dds"
@@ -640,6 +652,10 @@ mediterranean = {
 			"gfx/leaders/Mediterranean/Portrait_Portugal_Duarte_Nuno.tga"
 			"gfx/leaders/Mediterranean/Portrait_GRE_Alexander.tga"
 			"gfx/leaders/Mediterranean/Portrait_GRE_George.tga"
+			"gfx/leaders/Mediterranean/Portrait_SPR_Jaime_I.tga"
+			"gfx/leaders/Mediterranean/Danilo_I.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Paul.tga"
+			"gfx/leaders/Mediterranean/Portrait_Javier_I.tga"
 		} 
 		neutrality = {
 			"gfx/leaders/Europe/portrait_europe_generic_3.dds"
@@ -661,7 +677,16 @@ mediterranean = {
 			"gfx/leaders/Mediterranean/Portrait_GRE_Konstantinos_Tsatsos.tga"
 			"gfx/leaders/Mediterranean/Portrait_GRE_Nikolaos_Plastiras.tga"
 			"gfx/leaders/Mediterranean/Portrait_VNC_Bonaventura_Ferrazzutto.tga"
+			"gfx/leaders/Mediterranean/Portrait_Italy_Ivanoe_Bonomi.tga"
 		}
+	}
+	female_portraits = {
+		"gfx/leaders/Mediterranean/Female/Portrait_CNT_Dolores_Ibaurri_Gomez.tga"
+		"gfx/leaders/Mediterranean/Female/Portrait_Portugal_Maria_Adelaide.tga"
+		"gfx/leaders/Mediterranean/Female/Portrait_Portugal_Maria_Ana.tga"
+		"gfx/leaders/Mediterranean/Female/Portrait_SRI_Ines_Donati.tga"
+		
+		"gfx/leaders/Hispanic/Female/Portrait_ARG_Elvira_Rawson.tga"
 	}
 	ideology_minister_portraits = 
 	{
@@ -871,6 +896,14 @@ balkans = {
 			"gfx/leaders/Balkans/Portrait_BUL_Aleksandar_Stamboliyski.tga"
 		}
 	}
+	female_portraits = {
+		"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+		"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+		"gfx/leaders/Western_European/Female/Portrait_England_Sylvia_Pankhurst.tga"
+		"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+		"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		"gfx/leaders/Western_European/Female/Portrait_Holland_Juliana.tga"
+	}
 	ideology_minister_portraits = 
 	{
 		communism = {
@@ -1064,6 +1097,7 @@ eastern_european = {
 		"gfx/leaders/Eastern_European/Portrait_Soviet_Mitrofan_Nezhentsev.tga"
 		"gfx/leaders/Eastern_European/Portrait_Soviet_Aleksander_Kutepov.tga"
 		"gfx/leaders/Eastern_European/Portrait_Soviet_Abram_Dragomirov.tga"
+		"gfx/leaders/Eastern_European/Portrait_Russia_Pyotr_Wrangel_Tsar.tga"
 	}
 	navy_portraits = {
 		#Generic European
@@ -1092,6 +1126,7 @@ eastern_european = {
 		"gfx/leaders/Eastern_European/Portrait_Baltic_Johan_Pitka.tga"
 		"gfx/leaders/Eastern_European/Portrait_Russia_Mikhail_Berens.tga"
 		"gfx/leaders/Eastern_European/Portrait_Russia_Alexandr_Kolchak.tga"
+		"gfx/leaders/Eastern_European/Portrait_Soviet_Nestor_Monastyrev.tga"
 	}
 	leader_portraits = {
 		communism = {
@@ -1149,6 +1184,7 @@ eastern_european = {
 			"gfx/leaders/Eastern_European/Portrait_Soviet_Kyril_Romanov.tga"
 			"gfx/leaders/Eastern_European/Portrait_Soviet_Dmitri_Romanov_Tsar.tga"
 			"gfx/leaders/Eastern_European/Portrait_Cyprus_Makarios_Third.tga"
+			"gfx/leaders/Eastern_European/Portrait_RRM_Carol_II.tga"
 		}
 		neutrality = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
@@ -1169,6 +1205,15 @@ eastern_european = {
 			"gfx/leaders/Eastern_European/Portrait_LAT_Peteris_Jurasevskis.tga"
 			"gfx/leaders/Eastern_European/Portrait_Armenia_Andranik_Toros_Ozanian.tga"
 		}
+	}
+	female_portraits = {
+		"gfx/leaders/Eastern_European/Female/Portriat_Poland_Roza_Luksemburg.tga"
+		
+		"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+		"gfx/leaders/Western_European/Female/Portrait_England_Sylvia_Pankhurst.tga"
+		"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+		"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		"gfx/leaders/Western_European/Female/Portrait_Holland_Wilhelmina.tga"
 	}
 	ideology_minister_portraits = 
 	{
@@ -1361,6 +1406,9 @@ turkic_steppe = {
 			"gfx/leaders/Turkic_Steppe/Portrait_KUR_Kamuran.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_Azerbaijan_Rasulzade.tga"
 		}
+	}
+	female_portraits = {
+		"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
 	}
 	ideology_minister_portraits = 
 	{
@@ -1686,6 +1734,7 @@ asian_steppe = {
 		}
 	}
 	female_portraits = {
+		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
 		"gfx/leaders/Asian_Steppe/Female/Portrait_TAN_Khertek_Anchimaa_Toka.tga"
 	}
 	ideology_minister_portraits = 
@@ -1765,6 +1814,7 @@ indian = {
 		"gfx/leaders/Indian/Portrait_Burma_Smith_Dun.tga"
 		"gfx/leaders/Indian/Portrait_DEH_Maharaja_Rajendrasinhji_Jadeja.tga"
 		"gfx/leaders/Indian/Portrait_DEH_Malik_Khizar_Hayat_Tiwana.tga"
+		"gfx/leaders/Indian/Portrait_Nepal_Tribhuvana.tga"
 	}
 	navy_portraits = {
 		#Generic Indian
@@ -1814,6 +1864,7 @@ indian = {
 			"gfx/leaders/Indian/Portrait_PRF_Ahmad_Ali_of_Malerjotla.tga"
 			"gfx/leaders/Indian/portrait_PAK_Mirza_Mughal.tga"
 			"gfx/leaders/Indian/Portrait_DEH_Maharaja_Ganga_Singh.tga"
+			"gfx/leaders/Indian/Portrait_Nepal_Mahendra.tga"
 		}
 		neutrality = {
 			"gfx/leaders/RAJ/Portrait_The_Raj_Political_Leader_Generic.dds"
@@ -1832,6 +1883,15 @@ indian = {
 			"gfx/leaders/Indian/Portrait_DEH_Minocher_Rustom_Masani.tga"
 			"gfx/leaders/Indian/Portrait_DEH_V_S_Srinivasa_Sastri.tga"
 		}
+	}
+	female_portraits = {
+		"gfx/leaders/Indian/Female/Portrait_BHC_Kalyani_Sen.tga"
+		"gfx/leaders/Indian/Female/Portrait_BHC_Laskshmi_Sahgal.tga"
+		"gfx/leaders/Indian/Female/Portrait_BHC_Sarojini_Naidu.tga"
+		"gfx/leaders/Indian/Female/Portrait_BHC_Sreedhar_Goswami.tga"
+		
+		"gfx/leaders/Asia/Female/Portrait_Burma_Myat_Paya_Lat.tga"
+		"gfx/leaders/Asia/Female/Portrait_Burma_Daw_Mya_Sein.tga"
 	}
 	ideology_minister_portraits = 
 	{
@@ -2025,6 +2085,8 @@ indo_chinese_nesia = {
 	}
 	female_portraits = {
 		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+		"gfx/leaders/Asia/Female/Portrait_Burma_Myat_Paya_Lat.tga"
+		"gfx/leaders/Asia/Female/Portrait_Burma_Daw_Mya_Sein.tga"
 	}
 	ideology_minister_portraits = 
 	{
@@ -2357,6 +2419,8 @@ korean_japan = {
 	}
 	female_portraits = {
 		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+		
+		"gfx/leaders/Sino/Female/Portrait_CHI_Soong_Ching_Ling.tga"
 	}
 		
 	ideology_minister_portraits = 
@@ -2839,6 +2903,8 @@ south_american_native = {
 	female_portraits = {
 		"gfx/leaders/ARG/Portrait_Argentina_Fanny_Jabcovsky.dds"
 		"gfx/leaders/South_American_Native/Female/Portrait_Ecuador_Dolores_Caucango.tga"
+		
+		"gfx/leaders/Hispanic/Female/Portrait_BRA_Eugenia_Moreyra.tga"
 	}
 		
 	ideology_minister_portraits = 
@@ -3080,6 +3146,12 @@ hispanic = {
 		"gfx/leaders/Hispanic/Female/WomanPortrait_Peru_Manuel_Odria.tga"
 		"gfx/leaders/Hispanic/Female/Portrait_Uruguay_Paulina_Luisi.tga"
 		"gfx/leaders/Hispanic/Female/Portrait_YUC_Elvia_Carrillo_Puerto.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_ARG_Elvira_Rawson.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_Argentine_Alicia_Justo.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_BRA_Eugenia_Moreyra.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_BRA_Maria_Lacerda_Moura.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_BRA_Pagu.tga"
+		"gfx/leaders/Hispanic/Female/Portrait_BRA_Rachel de Queiroz.tga"
 	}
 		
 	ideology_minister_portraits = 
@@ -3785,7 +3857,12 @@ romantic_barbarian = {
 		}
 	}
 	female_portraits = {
+		"gfx/leaders/Mediterranean/Female/Portrait_CNT_Dolores_Ibaurri_Gomez.tga"
+		"gfx/leaders/Mediterranean/Female/Portrait_Portugal_Maria_Adelaide.tga"
+		"gfx/leaders/Mediterranean/Female/Portrait_Portugal_Maria_Ana.tga"
+		"gfx/leaders/Mediterranean/Female/Portrait_SRI_Ines_Donati.tga"
 		
+		"gfx/leaders/Hispanic/Female/Portrait_ARG_Elvira_Rawson.tga"
 	}
 	ideology_minister_portraits = 
 	{
