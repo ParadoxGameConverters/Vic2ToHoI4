@@ -1417,13 +1417,13 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(st
 
 			countriesAtWar.push_back(findFaction(country));
 
-			const auto& truceUntil = country->getRelations(target->getTag())->getTruceUntil();
 			std::shared_ptr<HoI4Focus> newFocus = std::make_shared<HoI4Focus>();
 			newFocus->id = "War_with" + target->getTag() + country->getTag();
 			newFocus->icon = "GFX_goal_generic_major_war";
 			newFocus->text = "War_with" + target->getTag();
 			newFocus->available = "= {\n";
 			newFocus->available += "			has_war = no\n";
+			const auto& truceUntil = country->getTruceUntil(target->getTag());
 			if (truceUntil && *truceUntil > date("1939.1.1"))
 			{
 				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";

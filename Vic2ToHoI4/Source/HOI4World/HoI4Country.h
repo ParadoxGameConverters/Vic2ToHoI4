@@ -133,6 +133,7 @@ class Country
 		 const std::map<int, int>& provinceToStateIdMap);
 
 	[[nodiscard]] std::optional<HoI4::Relations> getRelations(const std::string& withWhom) const;
+	[[nodiscard]] std::optional<date> getTruceUntil(const std::string& withWhom) const;
 	[[nodiscard]] double getStrengthOverTime(const double& years) const;
 	static double getMilitaryStrength();
 	[[nodiscard]] float getNavalStrength() const;

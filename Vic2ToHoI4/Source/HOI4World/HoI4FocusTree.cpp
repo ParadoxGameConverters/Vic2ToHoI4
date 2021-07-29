@@ -965,7 +965,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 			containedCountryName.clear();
 		}
 
-		const auto& truceUntil = Home->getRelations(country->getTag())->getTruceUntil();
+		const auto& truceUntil = Home->getTruceUntil(country->getTag());
 		if (const auto& originalFocus = loadedFocuses.find("WarPlan"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), country->getTag(), hoi4Localisations);
@@ -2152,12 +2152,12 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 			}
 			int v1 = rand() % 12 + 1;
 			int v2 = rand() % 12 + 1;
-			const auto& truceUntil = Home->getRelations(GC->getTag())->getTruceUntil();
 			newFocus->id = "GP_War" + GC->getTag() + Home->getTag();
 			newFocus->text += GC->getTag();
 			newFocus->available = "= {\n";
 			newFocus->available += "\t\t\thas_war = no\n";
-			if (const auto& dateAvailable = date("1939." + std::to_string(v1) + "." + std::to_string(v2));
+			const auto& dateAvailable = date("1939." + std::to_string(v1) + "." + std::to_string(v2));
+			if (const auto& truceUntil = Home->getTruceUntil(GC->getTag());
 				truceUntil && *truceUntil > dateAvailable)
 			{
 				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
@@ -2326,7 +2326,7 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 	for (const auto& [target, numProvinces]: coreHolders)
 	{
 		const auto& aiChance = std::to_string(std::max(static_cast<int>(0.1 * numProvinces), 1));
-		const auto& truceUntil = theCountry->getRelations(target)->getTruceUntil();
+		const auto& truceUntil = theCountry->getTruceUntil(target);
 
 		if (const auto& originalFocus = loadedFocuses.find("raise_matter"); originalFocus != loadedFocuses.end())
 		{
@@ -2335,7 +2335,7 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 			newFocus->xPos = nextFreeColumn;
 			if (truceUntil)
 			{
-				newFocus->updateFocusElement(newFocus->available, "#TRUCE", truceUntil->toString());
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
 			else
 			{
@@ -2386,7 +2386,7 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 			newFocus->relativePositionId += target;
 			if (truceUntil)
 			{
-				newFocus->updateFocusElement(newFocus->available, "#TRUCE", truceUntil->toString());
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
 			else
 			{
@@ -2440,7 +2440,7 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 			newFocus->relativePositionId += target;
 			if (truceUntil)
 			{
-				newFocus->updateFocusElement(newFocus->available, "#TRUCE", truceUntil->toString());
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
 			else
 			{
@@ -2476,7 +2476,7 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 			newFocus->relativePositionId += target;
 			if (truceUntil)
 			{
-				newFocus->updateFocusElement(newFocus->available, "#TRUCE", truceUntil->toString());
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
 			else
 			{
@@ -2512,7 +2512,7 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 			newFocus->relativePositionId += target;
 			if (truceUntil)
 			{
-				newFocus->updateFocusElement(newFocus->available, "#TRUCE", truceUntil->toString());
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
 			else
 			{
@@ -2620,7 +2620,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 		date startDate = date("1936.01.01");
 		startDate.increaseByMonths((200 + relations->getRelations()) / 8);
 
-		const auto& truceUntil = relations->getTruceUntil();
+		const auto& truceUntil = theCountry->getTruceUntil(strategy.getID());
 		if (const auto& originalFocus = loadedFocuses.find("border_disputes_conquer");
 			 originalFocus != loadedFocuses.end())
 		{
@@ -2833,7 +2833,7 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 	 const std::set<std::string>& majorIdeologies,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	const auto& truceUntil = targetNeighbors->getRelations(tag)->getTruceUntil();
+	const auto& truceUntil = targetNeighbors->getTruceUntil(tag);
 	if (const auto& originalFocus = loadedFocuses.find("border_disputes_nw"); originalFocus != loadedFocuses.end())
 	{
 		shared_ptr<HoI4Focus> newFocus =

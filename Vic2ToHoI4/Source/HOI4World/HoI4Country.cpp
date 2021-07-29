@@ -1315,6 +1315,19 @@ std::optional<HoI4::Relations> HoI4::Country::getRelations(const std::string& wi
 }
 
 
+std::optional<date> HoI4::Country::getTruceUntil(const std::string& withWhom) const
+{
+	if (const auto& relations = getRelations(withWhom); relations && relations->getTruceDuration())
+	{
+		return relations->getTruceUntil();
+	}
+	else
+	{
+		return {};
+	}
+}
+
+
 void HoI4::Country::calculateIndustry(const std::map<int, State>& allStates)
 {
 	for (const auto& state: allStates)
