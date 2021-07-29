@@ -1216,6 +1216,11 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
 			newFocus->available += "= {\n";
+			if (const auto& truceUntil = Home->getRelations(target->getTag())->getTruceUntil();
+				truceUntil)
+			{
+				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+			}
 			newFocus->available += "\t\t\t" + target->getTag() + " = { is_in_faction = no }\n";
 			newFocus->available += "\t\t}";
 			newFocus->prerequisites.push_back("= { focus = ColonialArmy" + Home->getTag() + " }");
@@ -1272,6 +1277,11 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
 			newFocus->available += "= {\n";
+			if (const auto& truceUntil = Home->getRelations(target->getTag())->getTruceUntil();
+				truceUntil)
+			{
+				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+			}
 			newFocus->available += "\t\t\t" + target->getTag() + " = { is_in_faction = no }\n";
 			newFocus->available += "\t\t}";
 			newFocus->prerequisites.push_back(
@@ -1422,6 +1432,11 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Annex" + Home->getTag() + target->getTag();
 			newFocus->available += "= {\n";
+			if (const auto& truceUntil = Home->getRelations(target->getTag())->getTruceUntil();
+				truceUntil)
+			{
+				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+			}
 			newFocus->available += "\t\t\t" + target->getTag() + " = { is_in_faction = no }\n";
 			newFocus->available += "\t\t}";
 			newFocus->prerequisites.push_back("= { focus = PrepTheBorder" + Home->getTag() + " }");
@@ -1478,6 +1493,11 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Annex" + Home->getTag() + target->getTag();
 			newFocus->available += "= {\n";
+			if (const auto& truceUntil = Home->getRelations(target->getTag())->getTruceUntil();
+				truceUntil)
+			{
+				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+			}
 			newFocus->available += "\t\t\t\"" + target->getTag() + "\" = { is_in_faction = no }\n";
 			newFocus->available += "\t\t}";
 			newFocus->prerequisites.push_back("= { focus = NatSpirit" + Home->getTag() + " }");
@@ -1723,7 +1743,16 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 						 originalFocus->second.makeTargetedCopy(Home->getTag(), warTargets[i]->getTag(), hoi4Localisations);
 					newFocus->id = "War" + warTargets[i]->getTag() + Home->getTag();
 					newFocus->available = "= {\n";
-					newFocus->available += "\t\t\tdate > 1938." + to_string(v1) + "." + to_string(v2) + "\n";
+					const date& dateAvailable = date("1938." + to_string(v1) + "." + to_string(v2));
+					if (const auto& truceUntil = Home->getRelations(warTargets[i]->getTag())->getTruceUntil();
+						truceUntil && *truceUntil > dateAvailable)
+					{
+						newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+					}
+					else
+					{
+						newFocus->available += "\t\t\tdate > " + dateAvailable.toString() + "\n";
+					}
 					newFocus->available += "\t\t}";
 					newFocus->xPos = nextFreeColumn + i * 2;
 					newFocus->yPos = 2;
@@ -1849,6 +1878,11 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 				 originalFocus->second.makeTargetedCopy(Home->getTag(), annexationTargets[i]->getTag(), hoi4Localisations);
 			newFocus->id = Home->getTag() + "_anschluss_" + annexationTargets[i]->getTag();
 			newFocus->available += "= {\n";
+			if (const auto& truceUntil = Home->getRelations(annexationTargets[i]->getTag())->getTruceUntil();
+				truceUntil)
+			{
+				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+			}
 			newFocus->available += "\t\t\t" + annexationTargets[i]->getTag() + " = {\n";
 			newFocus->available += "\t\t\t\tis_in_faction = no\n";
 			newFocus->available += "\t\t\t}\n";
@@ -1995,6 +2029,11 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 				 originalFocus->second.makeTargetedCopy(Home->getTag(), sudetenTargets[i]->getTag(), hoi4Localisations);
 			newFocus->id = Home->getTag() + "_finish_" + sudetenTargets[i]->getTag();
 			newFocus->available = "= {\n";
+			if (const auto& truceUntil = Home->getRelations(sudetenTargets[i]->getTag())->getTruceUntil();
+				truceUntil)
+			{
+				newFocus->available += "\tdate > " + truceUntil->toString() + "\n";
+			}
 			newFocus->available += "\t" + sudetenTargets[i]->getTag() + " = { is_in_faction = no }\n";
 			newFocus->available += "\t\t}";
 			newFocus->prerequisites.push_back(
