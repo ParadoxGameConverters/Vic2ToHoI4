@@ -50,18 +50,14 @@
 #	graphical_culture_2d = western_european_2d
 #}
 
-
-####CULTURES TBD WHERE TO PLACE
-##romantic
-
 ##Group List
-#western_european, semitic, barbaric, mediterranean, balkans, eastern_european,
+#western_european, semitic, romantic_barbaric, mediterranean, balkans, eastern_european,
 #turkic_steppe, arabic_persian, asian_steppe, indian, indo_chinese_nesia, sino,
-#aborigine_polynesia, north_american_native, central_american_native,
-#south_american_native, hispanic, african, deathbringers, animalia
+#aborigine_polynesia, north_american_native, central_american_native, south_american_native,
+#hispanic, african, deathbringers, animalia
 
 western_european = {
-	culture_groups = { germanic beneluxian pan_swiss scandinavian british celtic french american_cultures neo_european_cultures }
+	culture_groups = { germanic beneluxian pan_swiss jewish_group scandinavian british celtic french american_cultures neo_european_cultures }
 	army_portraits = {
 		#Generic European
 		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
@@ -141,16 +137,22 @@ western_european = {
 		"gfx/leaders/ENG/Portrait_Britain_William_Platt.dds"
 		"gfx/leaders/ENG/Portrait_Britain_William_Slim.dds"
 		#French
-		"gfx/leaders/FRA/Portrait_France_Alphonse_Joseph_Georges.dds"
-		"gfx/leaders/FRA/Portrait_France_Charles_De_Gaulle.dds"
-		"gfx/leaders/FRA/portrait_france_charles_huntziger.dds"
 		"gfx/leaders/FRA/Portrait_France_Generic_land_1.dds"
 		"gfx/leaders/FRA/Portrait_France_Generic_land_2.dds"
 		"gfx/leaders/FRA/Portrait_France_Generic_land_3.dds"
 		"gfx/leaders/FRA/Portrait_France_Generic_land_4.dds"
 		"gfx/leaders/FRA/Portrait_France_Generic_land_5.dds"
+		"gfx/leaders/FRA/Portrait_France_Alphonse_Joseph_Georges.dds"
+		"gfx/leaders/FRA/Portrait_France_Charles_De_Gaulle.dds"
+		"gfx/leaders/FRA/portrait_france_charles_huntziger.dds"		
 		"gfx/leaders/FRA/Portrait_France_Philippe_Petain.dds"
 		"gfx/leaders/FRA/Portrait_France_Jean_de_Lattre_de_Tassigny.dds"
+		"gfx/leaders/FRA/portrait_france_henri_giraud.dds"
+		"gfx/leaders/FRA/Portrait_France_Maurice_Gamelin.dds"
+		"gfx/leaders/FRA/portrait_france_philippe_leclerc.dds"
+		#USA - All portraits with "US" on the uniform are being avoided, sorry Eisenhower
+		"gfx/leaders/USA/Portrait_USA_Douglas_MacArthur.dds"
+		"gfx/leaders/USA/Portrait_USA_Oscar_Griswold.dds"
 		#Other
 		"gfx/leaders/Finland/portrait_fin_carl_mannerheim.dds"
 		"gfx/leaders/Western_European/Portrait_Denmark_Christian_von_Schalburg.tga"
@@ -159,6 +161,18 @@ western_european = {
 		"gfx/leaders/Western_European/Portrait_Norway_Wilhelm_Tangen_Hansteen.tga"
 		"gfx/leaders/Western_European/Portrait_Norway_William_Steffens.tga"
 		"gfx/leaders/Western_European/Portrait_Norway_Oliver_Moystad.tga"
+		"gfx/leaders/Western_European/Portrait_USA_gen_Clarence_Huebner.tga"
+		"gfx/leaders/Western_European/Portrait_USA_gen_omar_bradley.tga"
+		"gfx/leaders/Western_European/Portrait_CSA_edward_carter.tga"
+		"gfx/leaders/Western_European/Portrait_CSA_john_tisa.tga"
+		"gfx/leaders/Western_European/Portrait_TEX_george_patton.tga"
+		"gfx/leaders/Western_European/Portrait_England_William_Gott.tga"
+		"gfx/leaders/Western_European/Portrait_HOL_van_Andel.tga"
+		"gfx/leaders/Western_European/Portrait_Belgium_Curt_Hasse.tga"
+		"gfx/leaders/Western_European/Portrait_Finland_Hjalmar_Siilasvuo.tga"
+		"gfx/leaders/Western_European/Portrait_Finland_Paavo_Talvela.tga"
+		"gfx/leaders/Western_European/Portrait_Finland_Kurt_Martti_Wallenius.tga"
+		"gfx/leaders/Western_European/Portrait_Canada_Adrian_Wiart.tga"
 	}
 	navy_portraits = {
 		#Generic European
@@ -192,17 +206,38 @@ western_european = {
 		"gfx/leaders/ENG/Portrait_Britain_John_Cunningham.dds"
 		"gfx/leaders/ENG/Portrait_Britain_John_Tovey.dds"
 		#French
+		"gfx/leaders/FRA/Portrait_France_Generic_navy_1.dds"
+		"gfx/leaders/FRA/Portrait_France_Generic_navy_2.dds"
+		"gfx/leaders/FRA/Portrait_France_Generic_navy_3.dds"
 		"gfx/leaders/FRA/Portrait_France_Francois_Darlan.dds"
 		"gfx/leaders/FRA/Portrait_France_Rene-Emile_Godfroy.dds"
+		"gfx/leaders/FRA/Portrait_France_Jean_de_Laborde.dds"
+		"gfx/leaders/FRA/Portrait_France_Jean-Marie_Charles_Abrial.dds"
+		"gfx/leaders/FRA/Portrait_France_Jean-Pierre_Esteva.dds"
+		#USA
+		"gfx/leaders/USA/Portrait_USA_Generic_navy_1.dds"
+		"gfx/leaders/USA/Portrait_USA_Generic_navy_2.dds"
+		"gfx/leaders/USA/Portrait_USA_Generic_navy_3.dds"
+		"gfx/leaders/USA/Portrait_USA_Arleigh_Burke.dds"
+		"gfx/leaders/USA/Portrait_USA_Charles_M_Cooke.dds"
+		"gfx/leaders/USA/Portrait_USA_Chester_W_Nimitz.dds"
+		"gfx/leaders/USA/Portrait_USA_Earnest_King.dds"
+		"gfx/leaders/USA/Portrait_USA_Frank_Jack_Fletcher.dds"
+		"gfx/leaders/USA/Portrait_USA_Raymond_A_Spruance.dds"
+		"gfx/leaders/USA/Portrait_USA_William_Halsey_Jr.dds"
 		#Other
-		"gfx/leaders/Western_European/Portrait_Sweden_Fabian_Tamm.tga"
-		"gfx/leaders/Western_European/Portrait_Norway_Carsten_Tank_Nielsen.tga"
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_1.tga"
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_2.tga"
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_3.tga"
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_4.tga"
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_5.tga"
-		
+		"gfx/leaders/Western_European/Portrait_Sweden_Fabian_Tamm.tga"
+		"gfx/leaders/Western_European/Portrait_Norway_Carsten_Tank_Nielsen.tga"
+		"gfx/leaders/Western_European/Portrait_CSA_arthur_carpender.tga"
+		"gfx/leaders/Western_European/Portrait_CSA_george_anderson.tga"
+		"gfx/leaders/Western_European/Portrait_CSA_willard_smith.tga"
+		"gfx/leaders/Western_European/Portrait_NEE_joseph_kennedy.tga"
+		"gfx/leaders/Western_European/Portrait_France_Lucien_Lacaze.tga"
 	}
 	leader_portraits = {
 		communism = {
@@ -216,8 +251,14 @@ western_european = {
 			"gfx/leaders/FRA/Portrait_France_Generic_1.dds"
 			"gfx/leaders/GER/Portrait_Germany_Wilhelm_Pieck.dds"
 			"gfx/leaders/GER/Portrait_Germany_Generic_1.dds"
+			"gfx/leaders/USA/Portrait_USA_Generic_1.dds"
+			"gfx/leaders/USA/portrait_USA_earl_browder.dds"
 			"gfx/leaders/Western_European/Portrait_Ireland_Jack_White.tga"
 			"gfx/leaders/Western_European/Portrait_Rhineland_Paul_Frolich.tga"
+			"gfx/leaders/Western_European/Portrait_CSA_Earl_Bowder.tga"
+			"gfx/leaders/Western_European/Portrait_CSA_Meyer_London.tga"
+			"gfx/leaders/Western_European/Portrait_USA_Huey_Long.tga" #As required in any alt-history mod
+			"gfx/leaders/Western_European/Portrait_England_Tom_Mann.tga"
 		}
 		democratic = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_5.dds"
@@ -234,6 +275,12 @@ western_european = {
 			"gfx/leaders/HOL/Portrait_Netherlands_Dirk_Jan_de_Geer.dds"
 			"gfx/leaders/ICE/portrait_ice_sveinn_bjornsson.dds"
 			"gfx/leaders/NZL/Portrait_NewZealand_Peter_Fraser.dds"
+			"gfx/leaders/USA/Portrait_USA_Franklin_Roosevelt.dds"
+			"gfx/leaders/USA/Portrait_USA_Harry_Truman.dds"
+			"gfx/leaders/USA/Portrait_USA_Wendell_Willkie.dds"
+			"gfx/leaders/Western_European/Portrait_USA_Happy_Chandler.dds"
+			"gfx/leaders/Western_European/Portrait_USA_John_Nance_Garner.dds"
+			"gfx/leaders/Western_European/Portrait_NEE_joseph_kennedy_sr.dds"
 		}
 		fascism = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_6.dds"
@@ -246,7 +293,14 @@ western_european = {
 			"gfx/leaders/NOR/Portrait_Norway_Vidkun_Quisling.dds"
 			"gfx/leaders/SAF/Portrait_SouthAfrica_Jan_Smuts.dds"
 			"gfx/leaders/USA/USA_mr_hilt.dds"
+			"gfx/leaders/USA/Portrait_USA_Harold_Rainsford_Stark.dds"
+			"gfx/leaders/USA/Portrait_USA_William_Dudley_Pelley.dds"
 			"gfx/leaders/Western_European/Portrait_Ireland_Michael_Collins.tga"
+			"gfx/leaders/Western_European/Portrait_USA_glasses_douglas_macarthur.tga"
+			"gfx/leaders/Western_European/Portrait_NEE_Robert_Bradford.tga"
+			"gfx/leaders/Western_European/Portrait_TEX_William_Dudley_Pelley.tga"
+			"gfx/leaders/Western_European/Portrait_Holland_Wijnkoop.tga"
+			"gfx/leaders/Western_European/Portrait_Belgium_LEON_DEGRELLE.tga"
 		}
 		absolutist = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_7.dds"
@@ -261,7 +315,12 @@ western_european = {
 			"gfx/leaders/Western_European/Portrait_Canada_King_Edward_VIII.tga"
 			"gfx/leaders/Western_European/portrait_mal_shenton_thomas.tga"
 			"gfx/leaders/Western_European/Portrait_Norway_Haakon_VII.tga"
-			"gfx/leaders/Western_European/Portrait_Germany_August_Mackensen_kr.tga"			
+			"gfx/leaders/Western_European/Portrait_Germany_August_Mackensen_kr.tga"	
+			"gfx/leaders/Western_European/Portrait_Belgium_King_Albert.tga"
+			"gfx/leaders/Western_European/Portrait_Bavaria_Rupprecht_von_Bayern.tga"
+			"gfx/leaders/Western_European/Portrait_Finland_Fredrik_Kaarle_I.tga"
+			"gfx/leaders/Western_European/Portrait_Canada_Prince_Albert.tga"
+			"gfx/leaders/Western_European/Portrait_Schleswig_Holstein_Harald_I.tga"
 		}
 		neutrality = {
 			"gfx/leaders/Europe/portrait_europe_generic_3.dds"
@@ -278,7 +337,11 @@ western_european = {
 			"gfx/leaders/INS/portrait_ins_at_van_starkenborgh.dds"
 			"gfx/leaders/RAJ/Portrait_British_Raj_Lord_Linlithgow.dds"
 			"gfx/leaders/SWE/Portrait_Sweden_Per_Albin_Hansson.dds"
+			"gfx/leaders/USA/Portrait_USA_Generic_3.dds"
+			"gfx/leaders/USA/portrait_USA_alf_landon.dds"
 			"gfx/leaders/Western_European/Portrait_Germany_Alfred_Hugenberg.tga"
+			"gfx/leaders/Western_European/Portrait_USA_civ_douglas_macarthur.tga"
+			"gfx/leaders/Western_European/Portrait_TEX_charles_lindbergh.tga"
 		}
 		radical = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
@@ -288,11 +351,28 @@ western_european = {
 			"gfx/leaders/FRA/Portrait_France_Edouard_Daladier.dds"
 			"gfx/leaders/FRA/Portrait_France_Generic_2.dds"
 			"gfx/leaders/GER/Portrait_Germany_Generic_2.dds"
+			"gfx/leaders/USA/Portrait_USA_Generic_2.dds"
+			"gfx/leaders/USA/portrait_USA_thomas_dewey.dds"
 			"gfx/leaders/Western_European/Portrait_Netherlands_Theo_Heemskerk.dds"
 			"gfx/leaders/Western_European/Portrait_Finland_Ernst_von_Born.dds"
 			"gfx/leaders/Western_European/Portrait_SWE_Podcat.dds"
-			"gfx/leaders/Western_European/Portrait_Wales_Niclas_y_Glais.dds"
+			"gfx/leaders/Western_European/Portrait_Wales_Niclas_y_Glais.tga"
+			"gfx/leaders/Western_European/Portrait_CSA_John_Bernard.tga"
+			"gfx/leaders/Western_European/Portrait_CSA_benjamin_katine.tga"
+			"gfx/leaders/Western_European/Portrait_NEE_Nelson_Rockefeller.tga"
+			"gfx/leaders/Western_European/Portrait_TEX_james_richardson.tga"
+			"gfx/leaders/Western_European/Portrait_Belgium_Frans_Van_Cauwelaert.tga"
+			"gfx/leaders/Western_European/Portrait_Bavaria_Kurt_Eisner.tga"
 		}
+	}
+	female_portraits = {
+		"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Nord.tga"
+		"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Gurley_Flynn.tga"
+		"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+		"gfx/leaders/Western_European/Female/Portrait_England_Sylvia_Pankhurst.tga"
+		"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+		"gfx/leaders/Western_European/Female/Portrait_Holland_Juliana.tga"
+		"gfx/leaders/Western_European/Female/Portrait_Holland_Wilhelmina.tga"
 	}
 	ideology_minister_portraits = 
 	{
@@ -439,71 +519,6 @@ western_european = {
 		"gfx/interface/ideas/crowns/germany.dds"
 		"gfx/interface/ideas/crowns/netherlands.dds"
 		"gfx/interface/ideas/crowns/sweden.dds"
-	}
-	graphical_culture = western_european_gfx
-	graphical_culture_2d = western_european_2d
-}
-
-semitic = {
-	culture_groups = { jewish_group }
-	army_portraits = {
-		
-	}
-	navy_portraits = {
-	
-	}
-	leader_portraits = {
-		communism = { "gfx/leaders/OC/portrait_ISR_Shmuel_Mikunis.dds" } 
-		democratic = { "gfx/leaders/OC/portrait_ISR_David_Ben_Gurion.dds" } 
-		fascism = { "gfx/leaders/OC/portrait_ISR_Itzhak_Gaster.dds" } 
-		absolutist = { "gfx/leaders/OC/portrait_ISR_King_David.dds" } 
-		neutrality = { "gfx/leaders/OC/portrait_ISR_Rudolf_Szabo.dds" } 
-		radical = { "gfx/leaders/OC/Portrait_ISR_Chaim_Weizmann.tga" }
-	}
-	ideology_minister_portraits = 
-	{
-		communism = { "gfx/interface/ideas/generic_spy_political.dds" }
-		democratic = { "gfx/interface/ideas/generic_spy_intel.dds" }
-		fascism = { "gfx/interface/ideas/idea_hol_liberation.dds" }
-		absolutist = { "gfx/leaders/ideas/idea_eng_service_overseas.dds" }
-		neutrality = { "gfx/interface/ideas/generic_spy_coup.dds" }
-		radical = { "gfx/interface/ideas/idea_hol_depillarization.dds" }
-	}
-	male_operative_portraits = { "gfx/leaders/SOV/portrait_sov_alexander_rado.dds" }
-	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
-	}
-	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
-	}
-	graphical_culture = western_european_gfx
-	graphical_culture_2d = western_european_2d
-}
-
-barbaric = {
-	culture_groups = { barbarian gothic_g }
-	leader_portraits = {
-		communism = { "gfx/leaders/OC/portrait_VAT_Boniface_II.dds" } # Revise
-		democratic = { "gfx/leaders/OC/portrait_ITA_Odoacer.dds" }  # Revise
-		fascism = { "gfx/leaders/AUS/Portrait_Austria_Kurt_Schuschnigg.dds" }
-		absolutist = { "gfx/leaders/OC/portrait_ITA_Theoderic_the_Great.dds" }  # Revise
-		neutrality = { "gfx/leaders/GER/Portrait_Germany_Maximilian_von_Weichs.dds" }
-		radical = { "gfx/leaders/GER/Portrait_Germany_Generic_3.dds" } # Revise
-	}
-	ideology_minister_portraits = 
-	{
-		communism = { "gfx/interface/ideas/idea_joachim_von_ribbentrop.dds" } # Revise
-		democratic = { "gfx/interface/ideas/idea_heisenberg.dds" } # Revise
-		fascism = { "gfx/interface/ideas/idea_heinz_guderian.dds" } # Revise
-		absolutist = { "gfx/interface/ideas/idea_hugo_sperrle" } # Revise
-		neutrality = { "gfx/interface/ideas/idea_konstantin_von_neurath.dds" } # Revise
-		radical = { "gfx/interface/ideas/idea_louis_kahn.dds" } # Revise
-	}
-	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/longobards.dds"
-	}
-	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/longobards.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -1643,7 +1658,10 @@ asian_steppe = {
 			"gfx/leaders/Asian_Steppe/Portrait_SIK_Muhammed_Amin_Bughra.tga"			
 		} 
 		absolutist = {
+			"gfx/leaders/BHU/portrait_bhu_jigme_wangchuk.dds"
 			"gfx/leaders/MAN/Portrait_Manchuria_Henry_Pu_Yi.dds"
+			"gfx/leaders/NEP/portrait_nep_juddah_rana.dds"
+			"gfx/leaders/TIB/Portrait_Tibet_Jamphel_Yeshe_Gyaltsen.dds"
 			"gfx/leaders/Asian_Steppe/portrait_MON_Gengis_Khan.dds"
 			"gfx/leaders/Asian_Steppe/Portrait_FNG_Zhang_Zuolin.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_China_Pujie.tga"
@@ -1782,6 +1800,7 @@ indian = {
 			"gfx/leaders/Indian/Portrait_DEH_Kanaiyalal_Maneklal_Munshi.tga"
 		} 
 		absolutist = {
+			"gfx/leaders/NEP/portrait_nep_juddah_rana.dds"
 			"gfx/leaders/Indian/Portrait_Madras_Sri_Ramakrishna_Ranga_Rao.tga"
 			"gfx/leaders/Indian/Portrait_MYS_Krishna_Wadiyar.tga"
 			"gfx/leaders/Indian/Portrait_Princely_Osman_Ali_Khan2.tga"
@@ -2946,6 +2965,7 @@ hispanic = {
 			"gfx/leaders/PAR/portrait_par_rafael_franco.dds"
 			"gfx/leaders/URG/portrait_urg_gabriel_terra.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_south_america_1.dds"
+			"gfx/leaders/Hispanic/portrait_The_Che.dds"
 			"gfx/leaders/Hispanic/Portrait_BOL_Alcides_Arguedas.tga"
 			"gfx/leaders/Hispanic/Portrait_BOL_Javier_Granado.tga"
 			"gfx/leaders/Hispanic/Portrait_CHL_Cesar_Urrutia.tga"
@@ -3181,6 +3201,7 @@ african = {
 			"gfx/leaders/African/Portrait_Haiti_Stenio_Vincent.tga"
 			"gfx/leaders/African/Portrait_SOM_Ughaz.tga"
 			"gfx/leaders/African/Portrait_TOG_Tove.tga"
+			"gfx/leaders/African/Portrait_CSA_Paul_Robeson.tga"
 		} 
 		democratic = {
 			"gfx/leaders/LIB/Portrait_LIB_edwin_barclay.dds"
@@ -3314,78 +3335,549 @@ african = {
 	graphical_culture_2d = african_2d
 }
 
+romantic_barbarian = {
+	culture_groups = { romantic barbarian gothic_g  }
+	
+	army_portraits = {
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Augustus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aurelian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Balbinus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caligula.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caracalla.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carinus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius_Gothicus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Commodus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Decius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Diadumenian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Didus_Julianus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Domitian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Elagabalus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Florianus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Galba.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gallienus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Geta.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_I.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_II.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_III.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hadrian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Herennius_Etruscus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hostilian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Lucius_Verus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Macrinus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Marcus_Aurelius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Maximinus_Thrax.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nero.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nerva.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Numerian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Otho.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pertinax.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_II.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_the_Arab.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Probus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pupienus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Quintillus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Saloninus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Septimius_Severus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Severus_Alexander.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tacitus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tiberius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Titus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trajan.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trebonianus_Gallus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Valerian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
+	}
+	navy_portraits = {
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Augustus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aurelian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Balbinus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caligula.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caracalla.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carinus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius_Gothicus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Commodus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Decius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Diadumenian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Didus_Julianus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Domitian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Elagabalus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Florianus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Galba.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gallienus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Geta.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_I.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_II.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_III.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hadrian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Herennius_Etruscus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hostilian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Lucius_Verus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Macrinus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Marcus_Aurelius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Maximinus_Thrax.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nero.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nerva.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Numerian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Otho.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pertinax.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_II.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_the_Arab.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Probus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pupienus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Quintillus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Saloninus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Septimius_Severus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Severus_Alexander.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tacitus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tiberius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Titus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trajan.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trebonianus_Gallus.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Valerian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
+		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
+	}
+	leader_portraits = {
+		communism = { 
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Augustus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aurelian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Balbinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caligula.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caracalla.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius_Gothicus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Commodus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Decius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Diadumenian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Didus_Julianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Domitian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Elagabalus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Florianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Galba.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gallienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Geta.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_I.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_III.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hadrian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Herennius_Etruscus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hostilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Lucius_Verus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Macrinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Marcus_Aurelius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Maximinus_Thrax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nero.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nerva.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Numerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Otho.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pertinax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_the_Arab.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Probus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pupienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Quintillus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Saloninus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Septimius_Severus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Severus_Alexander.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tacitus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tiberius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Titus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trajan.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trebonianus_Gallus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Valerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
+		}
+		democratic = {
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Augustus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aurelian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Balbinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caligula.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caracalla.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius_Gothicus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Commodus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Decius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Diadumenian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Didus_Julianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Domitian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Elagabalus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Florianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Galba.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gallienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Geta.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_I.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_III.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hadrian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Herennius_Etruscus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hostilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Lucius_Verus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Macrinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Marcus_Aurelius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Maximinus_Thrax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nero.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nerva.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Numerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Otho.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pertinax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_the_Arab.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Probus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pupienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Quintillus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Saloninus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Septimius_Severus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Severus_Alexander.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tacitus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tiberius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Titus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trajan.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trebonianus_Gallus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Valerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
+
+		}
+		fascism = {
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Augustus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aurelian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Balbinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caligula.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caracalla.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius_Gothicus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Commodus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Decius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Diadumenian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Didus_Julianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Domitian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Elagabalus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Florianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Galba.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gallienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Geta.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_I.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_III.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hadrian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Herennius_Etruscus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hostilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Lucius_Verus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Macrinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Marcus_Aurelius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Maximinus_Thrax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nero.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nerva.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Numerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Otho.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pertinax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_the_Arab.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Probus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pupienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Quintillus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Saloninus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Septimius_Severus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Severus_Alexander.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tacitus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tiberius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Titus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trajan.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trebonianus_Gallus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Valerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
+
+		}
+		absolutist = {
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Augustus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aurelian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Balbinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caligula.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caracalla.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius_Gothicus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Commodus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Decius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Diadumenian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Didus_Julianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Domitian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Elagabalus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Florianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Galba.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gallienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Geta.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_I.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_III.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hadrian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Herennius_Etruscus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hostilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Lucius_Verus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Macrinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Marcus_Aurelius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Maximinus_Thrax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nero.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nerva.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Numerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Otho.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pertinax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_the_Arab.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Probus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pupienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Quintillus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Saloninus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Septimius_Severus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Severus_Alexander.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tacitus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tiberius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Titus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trajan.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trebonianus_Gallus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Valerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
+
+		}
+		neutrality = {
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Augustus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aurelian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Balbinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caligula.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caracalla.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius_Gothicus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Commodus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Decius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Diadumenian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Didus_Julianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Domitian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Elagabalus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Florianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Galba.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gallienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Geta.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_I.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_III.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hadrian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Herennius_Etruscus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hostilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Lucius_Verus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Macrinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Marcus_Aurelius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Maximinus_Thrax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nero.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nerva.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Numerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Otho.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pertinax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_the_Arab.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Probus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pupienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Quintillus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Saloninus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Septimius_Severus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Severus_Alexander.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tacitus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tiberius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Titus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trajan.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trebonianus_Gallus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Valerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
+
+		}
+		radical = {
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Augustus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aurelian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Balbinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caligula.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caracalla.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius_Gothicus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Commodus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Decius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Diadumenian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Didus_Julianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Domitian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Elagabalus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Florianus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Galba.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gallienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Geta.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_I.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_III.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hadrian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Herennius_Etruscus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hostilian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Lucius_Verus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Macrinus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Marcus_Aurelius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Maximinus_Thrax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nero.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nerva.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Numerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Otho.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pertinax.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_II.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_the_Arab.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Probus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pupienus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Quintillus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Saloninus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Septimius_Severus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Severus_Alexander.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tacitus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tiberius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Titus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trajan.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trebonianus_Gallus.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Valerian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
+			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
+		}
+	}
+	female_portraits = {
+		
+	}
+	ideology_minister_portraits = 
+	{
+		communism = { "gfx/interface/ideas/idea_amadeo_bordiga.dds" } # Revise
+		democratic = { "gfx/interface/ideas/idea_ivanoe_bonomi.dds" } # Revise
+		fascism = { "gfx/interface/ideas/idea_carlo_scorza.dds" } # Revise
+		absolutist = { "gfx/interface/ideas/idea_victor_emmanuel" } # Revise
+		neutrality = { "gfx/interface/ideas/idea_alberto_da_zara.dds" } # Revise
+		radical = { "gfx/interface/ideas/idea_alfredo_guzzoni.dds" } # Revise
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/camp_crown.dds"
+		"gfx/interface/ideas/crowns/longobards.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/camp_crown.dds"
+		"gfx/interface/ideas/crowns/longobards.dds"
+	}
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
+}
+
 deathbringers = {
 	culture_groups = { anti_human }
 	
 	army_portraits = {
-		#Generic
-		#Other
-		"gfx/leaders/Central_American_Native/Portrait_ELS_general_Maximiliano_Martinez.tga"	
+		#01000100 01100101 01100001 01110100 01101000
+		"gfx/leaders/Deathbringers/portrait_synthetic_leader.dds"	
 	}
 	navy_portraits = {
-		#Generic
-		#Other
-		"gfx/leaders/Central_American_Native/Portrait_PAN_Boris_Salazar.tga"
+		#01010100 01101111 00100000 01001000 01110101 01101101 01100001 01101110 01110011
+		"gfx/leaders/Deathbringers/portrait_synthetic_leader.dds"
 	}
 	leader_portraits = {
 		communism = {
-			"gfx/leaders/ELS/portrait_els_maximiliano_hernandez_martinez.dds"		
+			"gfx/leaders/Deathbringers/portrait_synthetic_leader_communism.dds"
 		} 
 		democratic = {
-			"gfx/leaders/COL/portrait_col_alfonso_lopez_pumarejo.dds"
+			"gfx/leaders/Deathbringers/portrait_synthetic_leader_democratic.dds"
 		} 
 		fascism = {
-			"gfx/leaders/ARG/portrait_south_america_generic_leader_1.dds"
+			"gfx/leaders/Deathbringers/portrait_synthetic_leader_fascism.dds"
 		}
 		absolutist = {
-			"gfx/leaders/Central_American_Native/portrait_nat_carib_absolutist.tga"
+			"gfx/leaders/Deathbringers/portrait_synthetic_leader_absolutism.dds"
 		}
 		neutrality = {
-			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.tga"
+			"gfx/leaders/Deathbringers/portrait_synthetic_leader_neutrality.dds"
 		} 
 		radical = {
-			"gfx/leaders/CUB/portrait_cub_jose_barnet.dds"
+			"gfx/leaders/Deathbringers/portrait_synthetic_leader_radical.dds"
 		}
 	}
 	female_portraits = {
-		"gfx/leaders/ARG/Portrait_Argentina_Fanny_Jabcovsky.dds"
+		"gfx/leaders/Deathbringers/portrait_synthetic_leader.dds"
 	}
 		
 	ideology_minister_portraits = 
 	{
 		communism = {
-			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_francisco_franco.dds"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
+		"gfx/leaders/Deathbringers/portrait_synthetic_operative.dds"
 	}
 	female_operative_portraits = {
-		"gfx/leaders/India/portrait_india_generic_operative_female_2.dds"
+		"gfx/leaders/Deathbringers/portrait_synthetic_operative.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/tonga.dds"
+		"gfx/interface/ideas/eldritch.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/tonga.dds"
+		"gfx/interface/ideas/eldritch.dds"
 	}
-	graphical_culture = african_gfx
-	graphical_culture_2d = african_2d
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 
 animalia = {
