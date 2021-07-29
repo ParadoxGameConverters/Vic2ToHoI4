@@ -26,7 +26,7 @@ TEST(Mappers_Graphics_GraphicsCultureGroupTests, DefaultsAreProperlySet)
 }
 
 
-TEST(Mappers_Graphics_GraphicsCultureGroupTests, ArmyPortraitsCanBeImported)
+TEST(Mappers_Graphics_GraphicsCultureGroupTests, ItemsCanBeImported)
 {
 	std::stringstream input;
 	input << "culture_groups = { test_culture_group test_culture_group2 }\n";
