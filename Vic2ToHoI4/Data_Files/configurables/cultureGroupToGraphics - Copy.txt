@@ -380,8 +380,7 @@ western_european = {
 		"gfx/leaders/Western_European/Female/Portrait_Normandy_Anna_I.tga"
 		"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_ernst_thalmann.dds"
 			"gfx/interface/ideas/idea_henri_giraud.dds"
@@ -688,8 +687,7 @@ mediterranean = {
 		
 		"gfx/leaders/Hispanic/Female/Portrait_ARG_Elvira_Rawson.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_amadeo_bordiga.dds"
 			"gfx/interface/ideas/idea_dolores_ibarruri.dds"
@@ -904,8 +902,7 @@ balkans = {
 		"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
 		"gfx/leaders/Western_European/Female/Portrait_Holland_Juliana.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_georgy_zhukov.dds"
 			"gfx/interface/ideas/idea_konstantin_rokossovsky.dds"
@@ -1215,8 +1212,7 @@ eastern_european = {
 		"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
 		"gfx/leaders/Western_European/Female/Portrait_Holland_Wilhelmina.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_Stanislaw_Radkiewicz.dds"
 			"gfx/interface/ideas/idea_nikita_khrushchev.dds"
@@ -1410,8 +1406,7 @@ turkic_steppe = {
 	female_portraits = {
 		"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_tur_nazim_hikmet.dds"
 			"gfx/interface/ideas/idea_generic_communist_arab.dds"
@@ -1581,8 +1576,7 @@ arabic_persian = {
 	female_portraits = {
 		"gfx/leaders/Arabic_Persian/Female/Portrait_SYR_Nazik_Abid.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_arab.dds"
 		}
@@ -1737,8 +1731,7 @@ asian_steppe = {
 		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
 		"gfx/leaders/Asian_Steppe/Female/Portrait_TAN_Khertek_Anchimaa_Toka.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 		}
@@ -1893,8 +1886,7 @@ indian = {
 		"gfx/leaders/Asia/Female/Portrait_Burma_Myat_Paya_Lat.tga"
 		"gfx/leaders/Asia/Female/Portrait_Burma_Daw_Mya_Sein.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/generic_political_advisor_india_2.dds"
 		}
@@ -2088,8 +2080,7 @@ indo_chinese_nesia = {
 		"gfx/leaders/Asia/Female/Portrait_Burma_Myat_Paya_Lat.tga"
 		"gfx/leaders/Asia/Female/Portrait_Burma_Daw_Mya_Sein.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 		}
@@ -2239,8 +2230,7 @@ sino = {
 		"gfx/leaders/Sino/Female/Portrait_LEC_Jiang_Qing.tga"
 	}
 		
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 			"gfx/interface/ideas/idea_prc_zhou_enlai.dds"
@@ -2423,8 +2413,7 @@ korean_japan = {
 		"gfx/leaders/Sino/Female/Portrait_CHI_Soong_Ching_Ling.tga"
 	}
 		
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 			"gfx/interface/ideas/idea_sanzo_nosaka.dds"
@@ -2569,10 +2558,8 @@ aborigine_polynesia = {
 		"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
 		"gfx/leaders/Aborigine_Polynesia/Female/Portrait_HAW_Theresa_Laanui.dds"
 		"gfx/leaders/Aborigine_Polynesia/Female/Portrait_HAW_Lydia_Liliuokalani.tga"
-	}
-		
-	ideology_minister_portraits = 
-	{
+	}		
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
 		}
@@ -2657,12 +2644,12 @@ north_american_native = {
 		communism = {
 			"gfx/leaders/North_American_Native/portrait_nat_north_communist.dds"			
 			"gfx/leaders/North_American_Native/portrait_native_north_american_communist.dds"
-		} 
+		}
 		democratic = {
 			"gfx/leaders/North_American_Native/portrait_nat_north_democratic.dds"
 			"gfx/leaders/North_American_Native/Portrait_Lakota_Russell_Means.dds"
 			"gfx/leaders/North_American_Native/portrait_native_north_american_democratic.dds"
-		} 
+		}
 		fascism = {
 			"gfx/leaders/ARG/portrait_south_america_generic_leader_1.dds"
 			"gfx/leaders/North_American_Native/portrait_nat_north_fascist.dds"
@@ -2676,7 +2663,7 @@ north_american_native = {
 		neutrality = {
 			"gfx/leaders/North_American_Native/portrait_nat_north_neutral.dds"
 			"gfx/leaders/North_American_Native/portrait_native_north_american_neutral.dds"
-		} 
+		}
 		radical = {
 			"gfx/leaders/North_American_Native/portrait_nat_north_radical.dds"
 			"gfx/leaders/North_American_Native/portrait_native_north_american_radical.dds"			
@@ -2687,8 +2674,7 @@ north_american_native = {
 		"gfx/leaders/North_American_Native/portrait_Native_American_female_2.dds"
 	}
 		
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
 		}
@@ -2794,8 +2780,7 @@ central_american_native = {
 		"gfx/leaders/Central_American_Native/Female/Portrait_Cuba_Tina_Modotti.tga"
 	}
 		
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
 		}
@@ -2907,8 +2892,7 @@ south_american_native = {
 		"gfx/leaders/Hispanic/Female/Portrait_BRA_Eugenia_Moreyra.tga"
 	}
 		
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
 		}
@@ -3154,8 +3138,7 @@ hispanic = {
 		"gfx/leaders/Hispanic/Female/Portrait_BRA_Rachel de Queiroz.tga"
 	}
 		
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
 		}
@@ -3353,8 +3336,7 @@ african = {
 		"gfx/leaders/African/Female/Portrait_Teke_Queen_Ngalifourou.tga"
 	}
 		
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_generic_communist_africa.dds"
 		}
@@ -3864,8 +3846,7 @@ romantic_barbarian = {
 		
 		"gfx/leaders/Hispanic/Female/Portrait_ARG_Elvira_Rawson.tga"
 	}
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = { "gfx/interface/ideas/idea_amadeo_bordiga.dds" } # Revise
 		democratic = { "gfx/interface/ideas/idea_ivanoe_bonomi.dds" } # Revise
 		fascism = { "gfx/interface/ideas/idea_carlo_scorza.dds" } # Revise
@@ -3920,8 +3901,7 @@ deathbringers = {
 		"gfx/leaders/Deathbringers/portrait_synthetic_leader.dds"
 	}
 		
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
@@ -4070,8 +4050,7 @@ animalia = {
 		"gfx/leaders/Animalia/portrait_red_panda_leader_F.dds"
 	}
 		
-	ideology_minister_portraits = 
-	{
+	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
