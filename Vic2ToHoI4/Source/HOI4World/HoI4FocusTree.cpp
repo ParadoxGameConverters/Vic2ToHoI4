@@ -1523,10 +1523,11 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 {
 	if (coupTargets.size() > 0)
 	{
+		int coupTargetsNum = std::min(static_cast<int>(coupTargets.size()), 2);
 		if (const auto& originalFocus = loadedFocuses.find("Home_of_Revolution"); originalFocus != loadedFocuses.end())
 		{
 			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-			newFocus->xPos = nextFreeColumn + static_cast<int>(coupTargets.size()) - 1;
+			newFocus->xPos = nextFreeColumn + coupTargetsNum - 1;
 			newFocus->yPos = 0;
 			focuses.push_back(newFocus);
 		}
@@ -1654,7 +1655,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 				}
 			}
 		}
-		nextFreeColumn += 2 * static_cast<int>(coupTargets.size());
+		nextFreeColumn += 2 * coupTargetsNum;
 	}
 	return;
 }
@@ -1666,11 +1667,11 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 {
 	if (warTargets.size() > 0)
 	{
-
+		int warTargetsNum = std::min(static_cast<int>(warTargets.size()), 3);
 		if (const auto& originalFocus = loadedFocuses.find("StrengthCom"); originalFocus != loadedFocuses.end())
 		{
 			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-			newFocus->xPos = nextFreeColumn + static_cast<int>(warTargets.size()) - 1;
+			newFocus->xPos = nextFreeColumn + warTargetsNum - 1;
 			newFocus->yPos = 0;
 			focuses.push_back(newFocus);
 		}
@@ -1768,7 +1769,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 				}
 			}
 		}
-		nextFreeColumn += static_cast<int>(warTargets.size()) * 2;
+		nextFreeColumn += warTargetsNum * 2;
 	}
 }
 
