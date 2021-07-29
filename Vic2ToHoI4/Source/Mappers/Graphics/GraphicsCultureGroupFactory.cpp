@@ -5,6 +5,9 @@
 
 Mappers::GraphicsCultureGroup::Factory::Factory()
 {
+	registerKeyword("culture_groups", [this](std::istream& theStream) {
+		graphicsCultureGroup->cultureGroups = commonItems::stringList(theStream).getStrings();
+	});
 	registerKeyword("army_portraits", [this](std::istream& theStream) {
 		graphicsCultureGroup->armyPortraits = commonItems::stringList(theStream).getStrings();
 	});

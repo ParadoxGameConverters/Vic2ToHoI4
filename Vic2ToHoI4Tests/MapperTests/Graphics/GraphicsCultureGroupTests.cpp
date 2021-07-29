@@ -13,6 +13,7 @@ TEST(Mappers_Graphics_GraphicsCultureGroupTests, DefaultsAreProperlySet)
 
 	const auto graphicsCultureGroup = Mappers::GraphicsCultureGroup::Factory().importCultureGroup(input);
 
+	EXPECT_TRUE(graphicsCultureGroup->getCultureGroups().empty());
 	EXPECT_TRUE(graphicsCultureGroup->getArmyPortraits().empty());
 	EXPECT_TRUE(graphicsCultureGroup->getNavyPortraits().empty());
 	EXPECT_TRUE(graphicsCultureGroup->getMaleMonarchPortraits().empty());
@@ -28,6 +29,7 @@ TEST(Mappers_Graphics_GraphicsCultureGroupTests, DefaultsAreProperlySet)
 TEST(Mappers_Graphics_GraphicsCultureGroupTests, ArmyPortraitsCanBeImported)
 {
 	std::stringstream input;
+	input << "culture_groups = { test_culture_group test_culture_group2 }\n";
 	input << "army_portraits = {\n";
 	input << "\tpath/test_portrait.dds\n";
 	input << "\tpath/test_portrait2.dds\n";
@@ -73,6 +75,8 @@ TEST(Mappers_Graphics_GraphicsCultureGroupTests, ArmyPortraitsCanBeImported)
 
 	const auto graphicsCultureGroup = Mappers::GraphicsCultureGroup::Factory().importCultureGroup(input);
 
+	EXPECT_THAT(graphicsCultureGroup->getCultureGroups(),
+		 testing::ElementsAre("test_culture_group", "test_culture_group2"));
 	EXPECT_THAT(graphicsCultureGroup->getArmyPortraits(),
 		 testing::ElementsAre("path/test_portrait.dds", "path/test_portrait2.dds"));
 	EXPECT_THAT(graphicsCultureGroup->getNavyPortraits(),
