@@ -9,18 +9,18 @@
 
 Mappers::GraphicsMapper::Factory::Factory()
 {
-	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureGroupName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& mappingName, std::istream& theStream) {
 		const auto newCultureGroup = graphicsCultureGroupFactory.importCultureGroup(theStream);
-		graphicsMapper->armyPortraitMappings[cultureGroupName] = newCultureGroup->getArmyPortraits();
-		graphicsMapper->navyPortraitMappings[cultureGroupName] = newCultureGroup->getNavyPortraits();
-		graphicsMapper->maleMonarchMappings[cultureGroupName] = newCultureGroup->getMaleMonarchPortraits();
-		graphicsMapper->femaleMonarchMappings[cultureGroupName] = newCultureGroup->getFemaleMonarchPortraits();
-		graphicsMapper->graphicalCultureMap[cultureGroupName] = newCultureGroup->getGraphicalCulture();
-		graphicsMapper->graphicalCulture2dMap[cultureGroupName] = newCultureGroup->getGraphicalCulture2D();
-		graphicsMapper->maleOperativeMappings[cultureGroupName] = newCultureGroup->getMaleOperativePortraits();
-		graphicsMapper->femaleOperativeMappings[cultureGroupName] = newCultureGroup->getFemaleOperativePortraits();
-		loadLeaderPortraitMappings(cultureGroupName, newCultureGroup->getLeaderPortraits());
-		loadIdeologyMinisterPortraitMappings(cultureGroupName, newCultureGroup->getIdeologyMinisterPortraits());
+
+		const auto& cultureGroups = newCultureGroup->getCultureGroups();
+		if (cultureGroups.empty())
+		{
+			loadMappings(mappingName, *newCultureGroup);
+		}
+		for (const auto& cultureGroup: cultureGroups)
+		{
+			loadMappings(cultureGroup, *newCultureGroup);
+		}
 	});
 }
 
@@ -32,6 +32,22 @@ std::unique_ptr<Mappers::GraphicsMapper> Mappers::GraphicsMapper::Factory::impor
 	graphicsMapper = std::make_unique<GraphicsMapper>();
 	parseFile("Configurables/cultureGroupToGraphics.txt");
 	return std::move(graphicsMapper);
+}
+
+
+void Mappers::GraphicsMapper::Factory::loadMappings(const std::string& cultureGroupName,
+	 const GraphicsCultureGroup& graphicsCultureGroup)
+{
+	graphicsMapper->armyPortraitMappings[cultureGroupName] = graphicsCultureGroup.getArmyPortraits();
+	graphicsMapper->navyPortraitMappings[cultureGroupName] = graphicsCultureGroup.getNavyPortraits();
+	graphicsMapper->maleMonarchMappings[cultureGroupName] = graphicsCultureGroup.getMaleMonarchPortraits();
+	graphicsMapper->femaleMonarchMappings[cultureGroupName] = graphicsCultureGroup.getFemaleMonarchPortraits();
+	graphicsMapper->graphicalCultureMap[cultureGroupName] = graphicsCultureGroup.getGraphicalCulture();
+	graphicsMapper->graphicalCulture2dMap[cultureGroupName] = graphicsCultureGroup.getGraphicalCulture2D();
+	graphicsMapper->maleOperativeMappings[cultureGroupName] = graphicsCultureGroup.getMaleOperativePortraits();
+	graphicsMapper->femaleOperativeMappings[cultureGroupName] = graphicsCultureGroup.getFemaleOperativePortraits();
+	loadLeaderPortraitMappings(cultureGroupName, graphicsCultureGroup.getLeaderPortraits());
+	loadIdeologyMinisterPortraitMappings(cultureGroupName, graphicsCultureGroup.getIdeologyMinisterPortraits());
 }
 
 
