@@ -1216,8 +1216,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
 			newFocus->available += "= {\n";
-			if (const auto& truceUntil = Home->getTruceUntil(target->getTag());
-				truceUntil)
+			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
 				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
 			}
@@ -1277,8 +1276,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
 			newFocus->available += "= {\n";
-			if (const auto& truceUntil = Home->getTruceUntil(target->getTag());
-				truceUntil)
+			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
 				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
 			}
@@ -1432,8 +1430,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Annex" + Home->getTag() + target->getTag();
 			newFocus->available += "= {\n";
-			if (const auto& truceUntil = Home->getTruceUntil(target->getTag());
-				truceUntil)
+			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
 				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
 			}
@@ -1493,8 +1490,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Annex" + Home->getTag() + target->getTag();
 			newFocus->available += "= {\n";
-			if (const auto& truceUntil = Home->getTruceUntil(target->getTag());
-				truceUntil)
+			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
 				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
 			}
@@ -1745,7 +1741,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 					newFocus->available = "= {\n";
 					const date& dateAvailable = date("1938." + to_string(v1) + "." + to_string(v2));
 					if (const auto& truceUntil = Home->getTruceUntil(warTargets[i]->getTag());
-						truceUntil && *truceUntil > dateAvailable)
+						 truceUntil && *truceUntil > dateAvailable)
 					{
 						newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
 					}
@@ -1878,8 +1874,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 				 originalFocus->second.makeTargetedCopy(Home->getTag(), annexationTargets[i]->getTag(), hoi4Localisations);
 			newFocus->id = Home->getTag() + "_anschluss_" + annexationTargets[i]->getTag();
 			newFocus->available += "= {\n";
-			if (const auto& truceUntil = Home->getTruceUntil(annexationTargets[i]->getTag());
-				truceUntil)
+			if (const auto& truceUntil = Home->getTruceUntil(annexationTargets[i]->getTag()); truceUntil)
 			{
 				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
 			}
@@ -2029,8 +2024,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 				 originalFocus->second.makeTargetedCopy(Home->getTag(), sudetenTargets[i]->getTag(), hoi4Localisations);
 			newFocus->id = Home->getTag() + "_finish_" + sudetenTargets[i]->getTag();
 			newFocus->available = "= {\n";
-			if (const auto& truceUntil = Home->getTruceUntil(sudetenTargets[i]->getTag());
-				truceUntil)
+			if (const auto& truceUntil = Home->getTruceUntil(sudetenTargets[i]->getTag()); truceUntil)
 			{
 				newFocus->available += "\tdate > " + truceUntil->toString() + "\n";
 			}
@@ -2197,8 +2191,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 			newFocus->available = "= {\n";
 			newFocus->available += "\t\t\thas_war = no\n";
 			const auto& dateAvailable = date("1939." + std::to_string(v1) + "." + std::to_string(v2));
-			if (const auto& truceUntil = Home->getTruceUntil(GC->getTag());
-				truceUntil && *truceUntil > dateAvailable)
+			if (const auto& truceUntil = Home->getTruceUntil(GC->getTag()); truceUntil && *truceUntil > dateAvailable)
 			{
 				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
 			}
