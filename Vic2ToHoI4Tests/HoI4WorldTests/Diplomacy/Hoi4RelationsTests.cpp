@@ -147,3 +147,31 @@ TEST(HoI4World_Diplomacy_RelationsTests, truceUntilInheritedFromOldRelations)
 
 	ASSERT_EQ(relations.getTruceUntil()->toString(), "1939.1.1");
 }
+
+
+TEST(HoI4World_Diplomacy_RelationsTests, truceDurationDefaultsToNullopt)
+{
+	const HoI4::Relations relations("TAG");
+
+	ASSERT_EQ(relations.getTruceDuration(), std::nullopt);
+}
+
+
+TEST(HoI4World_Diplomacy_RelationsTests, truceDurationCanBeSet)
+{
+	const HoI4::Relations relations("TAG",
+		 *Vic2::Relations::Builder().setTruceUntil(date("1939.1.1")).build(),
+		 date("1936.1.1"));
+
+	ASSERT_EQ(*relations.getTruceDuration(), 1095);
+}
+
+
+TEST(HoI4World_Diplomacy_RelationsTests, expiredTrucesDontSetTruceDuration)
+{
+	const HoI4::Relations relations("TAG",
+		 *Vic2::Relations::Builder().setTruceUntil(date("1888.1.1")).build(),
+		 date("1936.1.1"));
+
+	ASSERT_EQ(relations.getTruceDuration(), std::nullopt);
+}

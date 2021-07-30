@@ -1323,7 +1323,7 @@ std::optional<date> HoI4::Country::getTruceUntil(const std::string& withWhom) co
 	}
 	else
 	{
-		return {};
+		return std::nullopt;
 	}
 }
 
