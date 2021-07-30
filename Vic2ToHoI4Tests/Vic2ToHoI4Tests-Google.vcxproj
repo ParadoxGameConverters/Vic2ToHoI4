@@ -62,6 +62,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\CapitulationEvents.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\LarOccupationEvents.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\NavalTreatyEventsUpdaters.cpp" />
@@ -1544,7 +1545,7 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mappers\FactionName\factions_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-	  <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
