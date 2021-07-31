@@ -55,6 +55,7 @@
 #include "V2World/Countries/Country.h"
 #include "V2World/World/World.h"
 #include <map>
+#include <memory>
 #include <optional>
 #include <set>
 #include <string>

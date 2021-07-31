@@ -811,8 +811,7 @@ void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 		if (agreement.getType() == "vassal")
 		{
 			HoI4Country1->second->addPuppet(*possibleHoI4Tag2, "autonomy_dominion");
-			const auto& tempCountry = HoI4Country1;
-			HoI4Country2->second->setPuppetMaster(*tempCountry->second);
+			HoI4Country2->second->setPuppetMaster(HoI4Country1->second);
 		}
 	}
 }
