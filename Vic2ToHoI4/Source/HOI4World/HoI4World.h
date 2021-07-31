@@ -192,7 +192,7 @@ class World: commonItems::parser
 	std::set<std::string> getSouthAsianCountries() const;
 
 	std::pair<std::string, std::shared_ptr<Country>> getDominion(const std::string& ownerTag,
-		 const Country& owner,
+		 const std::shared_ptr<Country> owner,
 		 const std::string& region,
 		 std::map<std::string, std::shared_ptr<Country>>& countries,
 		 Mappers::CountryMapper::Factory& countryMapperFactory,

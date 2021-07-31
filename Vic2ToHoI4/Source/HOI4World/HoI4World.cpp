@@ -488,7 +488,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		}
 
 		auto [dominionTag, dominion] = getDominion(owner->first,
-			 *owner->second,
+			 owner->second,
 			 *stateRegion,
 			 countries,
 			 countryMapperFactory,
@@ -508,25 +508,24 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			dominion->second->determineBestCapital(states->getStates());
 			dominion->second->setCapitalRegionFlag(*theRegions);
 
-			const auto overlordTag = dominion->second->getPuppetMaster();
-			auto overlord = countries.find(overlordTag);
-			if (overlord == countries.end())
+			const auto overlord = dominion->second->getPuppetMaster();
+			if (!overlord)
 			{
 				continue;
 			}
 
-			if (dominionIsReleasable(*dominion->second, *overlord->second))
+			if (dominionIsReleasable(*dominion->second, *overlord))
 			{
 				const auto& dominionLevel = theRegions->getRegionLevel(dominion->second->getRegion());
 				if (dominionLevel)
 				{
-					overlord->second->addPuppet(dominionTag, *dominionLevel);
+					overlord->addPuppet(dominionTag, *dominionLevel);
 				}
 				else
 				{
-					overlord->second->addPuppet(dominionTag, "autonomy_dominion");
+					overlord->addPuppet(dominionTag, "autonomy_dominion");
 				}
-				overlord->second->addGeneratedDominion(dominion->second->getRegion(), dominionTag);
+				overlord->addGeneratedDominion(dominion->second->getRegion(), dominionTag);
 				for (const auto& stateId: dominion->second->getCoreStates())
 				{
 					if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
@@ -542,7 +541,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 
 
 std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(const std::string& ownerTag,
-	 const Country& owner,
+	 const std::shared_ptr<Country> owner,
 	 const std::string& region,
 	 std::map<std::string, std::shared_ptr<Country>>& countries,
 	 Mappers::CountryMapper::Factory& countryMapperFactory,
@@ -811,7 +810,7 @@ void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 		if (agreement.getType() == "vassal")
 		{
 			HoI4Country1->second->addPuppet(*possibleHoI4Tag2, "autonomy_dominion");
-			HoI4Country2->second->setPuppetMaster(*possibleHoI4Tag1);
+			HoI4Country2->second->setPuppetMaster(HoI4Country1->second);
 		}
 	}
 }

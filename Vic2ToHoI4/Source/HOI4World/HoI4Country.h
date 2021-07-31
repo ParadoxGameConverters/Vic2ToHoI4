@@ -62,7 +62,7 @@ class Country
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 Localisation& hoi4Localisations);
 	explicit Country(const std::string& tag_,
-		 const Country& owner,
+		 const std::shared_ptr<Country> owner,
 		 const std::string& region_,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
@@ -119,7 +119,7 @@ class Country
 	void setFaction(const std::shared_ptr<const Faction>& newFaction) { faction = newFaction; }
 	void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 	void setGreatPower() { greatPower = true; }
-	void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
+	void setPuppetMaster(const std::shared_ptr<Country> master) { puppetMaster = master; }
 	void addPuppet(const std::string& countryTag, const std::string& puppetLevel) { puppets[countryTag] = puppetLevel; }
 
 	void makeNavalTreatyAdherent() { navalTreatyAdherent = true; }
@@ -229,7 +229,7 @@ class Country
 	[[nodiscard]] const std::string& getSphereLeader() const { return sphereLeader; }
 	[[nodiscard]] const std::set<std::string>& getAllies() const { return allies; }
 	[[nodiscard]] const std::map<std::string, std::string>& getPuppets() const { return puppets; }
-	[[nodiscard]] const std::string& getPuppetMaster() const { return puppetMaster; }
+	[[nodiscard]] const auto getPuppetMaster() const { return puppetMaster; }
 	[[nodiscard]] const std::string& getPuppetMasterOldTag() const { return puppetMasterOldTag; }
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
@@ -377,7 +377,7 @@ class Country
 	std::set<std::string> allies;
 	std::map<std::string, std::string> puppets; // tag, level
 	std::map<std::string, std::string> generatedDominions;
-	std::string puppetMaster;
+	std::shared_ptr<Country> puppetMaster;
 	std::string puppetMasterOldTag;
 	bool greatPower = false;
 	bool civilized = false;

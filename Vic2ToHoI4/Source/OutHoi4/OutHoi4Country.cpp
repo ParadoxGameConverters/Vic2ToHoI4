@@ -277,7 +277,7 @@ void outputPuppets(std::ostream& output,
 	 const std::string& tag,
 	 const std::string& governmentIdeology,
 	 const std::map<std::string, std::string>& puppets,
-	 const std::string& puppetMaster);
+	 const std::shared_ptr<HoI4::Country> puppetMaster);
 void outputPolitics(std::ostream& output,
 	 const std::string& governmentIdeology,
 	 const date& lastElection,
@@ -483,7 +483,7 @@ void outputPuppets(std::ostream& output,
 	 const std::string& tag,
 	 const std::string& governmentIdeology,
 	 const std::map<std::string, std::string>& puppets,
-	 const std::string& puppetMaster)
+	 const std::shared_ptr<HoI4::Country> puppetMaster)
 {
 	if (!puppets.empty())
 	{
@@ -536,12 +536,12 @@ void outputPuppets(std::ostream& output,
 		output << "}\n\n";
 	}
 
-	if (!puppetMaster.empty())
+	if (puppetMaster)
 	{
 		output << "if = {\n";
 		output << "    limit = {has_dlc = \"Together for Victory\" }\n";
 		output << "\n";
-		output << "    add_to_tech_sharing_group = " << puppetMaster << "_research\n";
+		output << "    add_to_tech_sharing_group = " << puppetMaster->getTag() << "_research\n";
 		output << "}\n\n";
 	}
 }
