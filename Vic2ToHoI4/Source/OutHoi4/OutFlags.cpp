@@ -283,9 +283,9 @@ std::optional<tga_image*> HoI4::createDominionFlag(const std::string& hoi4Suffix
 			const auto sourceBytesPerPixel = (*ownerSourceFlag)->pixel_depth / 8;
 			const auto maxHeight = std::min<int>((*ownerSourceFlag)->height, sizeY);
 			const auto maxWidth = std::min<int>((*ownerSourceFlag)->width, sizeX);
-			for (unsigned int y = 0; y < maxHeight; y += 2)
+			for (int y = 0; y < maxHeight; y += 2)
 			{
-				for (unsigned int x = 0; x < maxWidth; x += 2)
+				for (int x = 0; x < maxWidth; x += 2)
 				{
 					const auto sourceIndex = (y * (*ownerSourceFlag)->width + x) * sourceBytesPerPixel;
 					const auto destIndex = ((y / 2 + (sizeY / 2)) * sizeX + (x / 2)) * 4;

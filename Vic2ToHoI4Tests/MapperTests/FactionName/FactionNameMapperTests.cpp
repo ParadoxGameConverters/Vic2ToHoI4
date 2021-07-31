@@ -47,6 +47,6 @@ TEST(Mappers_FactionName_FactionNameMapperTests, DuplicateRemoval)
 {
 	const auto mapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
 
-	mapper->getFactionName("duplicate_test", "duplicate_test", "duplicate_test");
+	std::ignore = mapper->getFactionName("duplicate_test", "duplicate_test", "duplicate_test");
 	ASSERT_EQ("any_culture_any_ideology", mapper->getFactionName("duplicate_test", "ignored", "ignored"));
 }
