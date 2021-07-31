@@ -120,7 +120,7 @@ HoI4::Country::Country(std::string tag,
 
 
 HoI4::Country::Country(const std::string& tag_,
-	 std::shared_ptr<Country> owner,
+	 const std::shared_ptr<Country> owner,
 	 const std::string& region_,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
@@ -983,16 +983,16 @@ void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIde
 	auto remainingSupport = 100;
 	for (auto& ideology: ideologySupport)
 	{
-		if (ideology.first == getLeaderIdeology() && !getPuppetMaster().getTag().empty()) //Add support for puppetmaster's ideology
+		if (ideology.first == getLeaderIdeology() && !getPuppetMaster()->getTag().empty()) //Add support for puppetmaster's ideology
 		{
 			if (ideology.second > 20)
 			{
 				ideology.second -= 20;
-				ideologySupport.find(getPuppetMaster().getLeaderIdeology())->second += 20;
+				ideologySupport.find(getPuppetMaster()->getLeaderIdeology())->second += 20;
 			}
 			else
 			{
-				ideologySupport.find(getPuppetMaster().getLeaderIdeology())->second += ideology.second;
+				ideologySupport.find(getPuppetMaster()->getLeaderIdeology())->second += ideology.second;
 				ideology.second = 0;
 			}
 		}
@@ -1493,7 +1493,7 @@ const bool HoI4::Country::isEligibleEnemy(std::string target)
 		allies.insert(faction->getLeader()->getTag());
 	}
 
-	return !allies.contains(target) && !puppets.contains(target) && target != puppetMaster->getTag();
+	return !allies.contains(target) && !puppets.contains(target) && puppetMaster && target != puppetMaster->getTag();
 }
 
 std::optional<std::string> HoI4::Country::getDominionTag(const std::string& region)
