@@ -1547,9 +1547,6 @@
     <ClCompile Include="MapperTests\FactionName\FactionNameMappingTests.cpp">
       <Filter>MapperTests\FactionName</Filter>
     </ClCompile>
-    <ClCompile Include="MapperTests\ConverterVersion\ConverterVersionTests.cpp">
-      <Filter>MapperTests\ConverterVersion</Filter>
-    </ClCompile>
     <ClCompile Include="..\common_items\ModLoader\ModParser.cpp">
       <Filter>Vic2ToHoI4 files\common items\ModLoader</Filter>
     </ClCompile>

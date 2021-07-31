@@ -1544,7 +1544,7 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mappers\FactionName\factions_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-	  <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -1573,6 +1573,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>$(SolutionDir)/Vic2ToHoI4/Source;../common_items;../bitmap;../googletest/googletest;../googletest/googletest/include;../googletest/googlemock;../googletest/googlemock/include;$(ProjectDir)</AdditionalIncludeDirectories>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -1594,6 +1595,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>$(SolutionDir)/Vic2ToHoI4/Source;../common_items;../bitmap;../googletest/googletest;../googletest/googletest/include;../googletest/googlemock;../googletest/googlemock/include;$(ProjectDir);..\common_items\ZipLib</AdditionalIncludeDirectories>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
