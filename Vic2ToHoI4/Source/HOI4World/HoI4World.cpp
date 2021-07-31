@@ -812,6 +812,8 @@ void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 		{
 			HoI4Country1->second->addPuppet(*possibleHoI4Tag2, "autonomy_dominion");
 			HoI4Country2->second->setPuppetMaster(*possibleHoI4Tag1);
+			HoI4Country2->second->setPuppetMasterOldTag(HoI4Country1->second->getOldTag());
+			HoI4Country2->second->setPuppetMasterIdeology(HoI4Country1->second->getGovernmentIdeology());
 		}
 	}
 }

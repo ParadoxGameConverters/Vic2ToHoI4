@@ -119,7 +119,9 @@ class Country
 	void setFaction(const std::shared_ptr<const Faction>& newFaction) { faction = newFaction; }
 	void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 	void setGreatPower() { greatPower = true; }
-	void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
+	void setPuppetMaster(const std::string& master) { puppetMaster = master; }
+	void setPuppetMasterOldTag(const std::string& masterOldTag) { puppetMasterOldTag = masterOldTag; }
+	void setPuppetMasterIdeology(const std::string& masterIdeology) { puppetMasterIdeology = masterIdeology; }
 	void addPuppet(const std::string& countryTag, const std::string& puppetLevel) { puppets[countryTag] = puppetLevel; }
 
 	void makeNavalTreatyAdherent() { navalTreatyAdherent = true; }
@@ -231,6 +233,7 @@ class Country
 	[[nodiscard]] const std::map<std::string, std::string>& getPuppets() const { return puppets; }
 	[[nodiscard]] const std::string& getPuppetMaster() const { return puppetMaster; }
 	[[nodiscard]] const std::string& getPuppetMasterOldTag() const { return puppetMasterOldTag; }
+	[[nodiscard]] const auto& getPuppetMasterIdeology() const { return puppetMasterIdeology; }
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
 	[[nodiscard]] bool isGeneratedDominion() const { return generatedDominion; }
@@ -379,6 +382,7 @@ class Country
 	std::map<std::string, std::string> generatedDominions;
 	std::string puppetMaster;
 	std::string puppetMasterOldTag;
+	std::string puppetMasterIdeology;
 	bool greatPower = false;
 	bool civilized = false;
 	bool generatedDominion = false;
