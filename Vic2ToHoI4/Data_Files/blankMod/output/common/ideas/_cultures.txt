@@ -3061,6 +3061,18 @@ ideas = {
 			picture = culture_turkmen
 			modifier = { }
 		}
+		culture_tupi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_tupi
+			modifier = { }
+		}
+		culture_tupinamba = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_tupi
+			modifier = { }
+		}
 		culture_tyrrhafrican = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }

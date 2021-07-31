@@ -191,22 +191,37 @@ void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& the
 {
 	const auto& armyPortraits = theCountry.getArmyPortraits();
 	const auto& navyPortraits = theCountry.getNavyPortraits();
-	if (armyPortraits.empty() && navyPortraits.empty())
+	const auto& femaleMilitaryPortraits = theCountry.getFemaleMilitaryPortraits();
+	const auto& femaleMonarchPortraits = theCountry.getFemaleMonarchPortraits();
+	const auto& femaleIdeologicalPortraits = theCountry.getFemaleIeologicalPortraits();
+
+
+	/*if (armyPortraits.empty() && navyPortraits.empty())
 	{
 		return;
-	}
+	}*/
 
 	portraitsFile << theCountry.getTag() << " = {\n";
 
+	//Military
 	if (!armyPortraits.empty())
 	{
 		portraitsFile << "\tarmy = {\n";
+		//Men
 		portraitsFile << "\t\tmale = {\n";
 		for (const auto& portrait: armyPortraits)
 		{
 			portraitsFile << "\t\t\t\"" << portrait << "\"\n";
 		}
 		portraitsFile << "\t\t}\n";
+		//Women
+		portraitsFile << "\t\tfemale = {\n";
+		for (const auto& portrait: femaleMilitaryPortraits)
+		{
+			portraitsFile << "\t\t\t\"" << portrait << "\"\n";
+		}
+		portraitsFile << "\t\t}\n";
+
 		portraitsFile << "\t}\n";
 	}
 
@@ -218,15 +233,157 @@ void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& the
 	if (!navyPortraits.empty())
 	{
 		portraitsFile << "\tnavy = {\n";
+		//Men
 		portraitsFile << "\t\tmale = {\n";
 		for (const auto& portrait: navyPortraits)
 		{
 			portraitsFile << "\t\t\t\"" << portrait << "\"\n";
 		}
 		portraitsFile << "\t\t}\n";
+		//Women
+		portraitsFile << "\t\tfemale = {\n";
+		for (const auto& portrait: femaleMilitaryPortraits)
+		{
+			portraitsFile << "\t\t\t\"" << portrait << "\"\n";
+		}
+		portraitsFile << "\t\t}\n";
+
 		portraitsFile << "\t}\n";
 	}
 
+	//Political
+	portraitsFile << "\tpolitical = {\n";
+		//Communism
+		portraitsFile << "\t\tcommunism = {\n";
+			// Men
+			const auto& maleIdeologicalPortraitsC = theCountry.getMaleCommunistPortraits();
+			portraitsFile << "\t\t\tmale = {\n";
+			for (const auto& portrait: maleIdeologicalPortraitsC )
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+			// Women
+			portraitsFile << "\t\t\tfemale = {\n";
+			for (const auto& portrait: femaleIdeologicalPortraits)
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+		portraitsFile << "\t\t}\n";
+		//Democracy
+			portraitsFile << "\t\tdemocratic = {\n";
+			// Men
+			const auto& maleIdeologicalPortraitsD = theCountry.getMaleDemocraticPortraits();
+			portraitsFile << "\t\t\tmale = {\n";
+			for (const auto& portrait: maleIdeologicalPortraitsD )
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+			// Women
+			portraitsFile << "\t\t\tfemale = {\n";
+			for (const auto& portrait: femaleIdeologicalPortraits)
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+		portraitsFile << "\t\t}\n";
+		//Fascism
+			portraitsFile << "\t\tfascism = {\n";
+			// Men
+			const auto& maleIdeologicalPortraitsF = theCountry.getMaleFascistPortraits();
+			portraitsFile << "\t\t\tmale = {\n";
+			for (const auto& portrait: maleIdeologicalPortraitsF )
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+			// Women
+			portraitsFile << "\t\t\tfemale = {\n";
+			for (const auto& portrait: femaleIdeologicalPortraits)
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+		portraitsFile << "\t\t}\n";
+		//Absolutism
+			portraitsFile << "\t\tabsolutist = {\n";
+			// Men
+			const auto& maleIdeologicalPortraitsA = theCountry.getMaleAbsolutistPortraits();
+			portraitsFile << "\t\t\tmale = {\n";
+			for (const auto& portrait: maleIdeologicalPortraitsA )
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+			// Women
+			portraitsFile << "\t\t\tfemale = {\n";
+			for (const auto& portrait: femaleMonarchPortraits)
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+		portraitsFile << "\t\t}\n";
+		//Neutrality
+			portraitsFile << "\t\tneutrality = {\n";
+			// Men
+			const auto& maleIdeologicalPortraitsN = theCountry.getMaleNeutralPortraits();
+			portraitsFile << "\t\t\tmale = {\n";
+			for (const auto& portrait: maleIdeologicalPortraitsN )
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+			// Women
+			portraitsFile << "\t\t\tfemale = {\n";
+			for (const auto& portrait: femaleIdeologicalPortraits)
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+		portraitsFile << "\t\t}\n";
+		//Radical
+			portraitsFile << "\t\tradical = {\n";
+			// Men
+			const auto& maleIdeologicalPortraitsR = theCountry.getMaleRadicalPortraits();
+			portraitsFile << "\t\t\tmale = {\n";
+			for (const auto& portrait: maleIdeologicalPortraitsR )
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+			// Women
+			portraitsFile << "\t\t\tfemale = {\n";
+			for (const auto& portrait: femaleIdeologicalPortraits)
+			{
+				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
+			}
+			portraitsFile << "\t\t\t}\n";
+		portraitsFile << "\t\t}\n";
+	portraitsFile << "\t}\n";
+
+	//Operatives
+	portraitsFile << "\toperative = {\n";
+		// Men
+		portraitsFile << "\t\tmale = {\n";
+		for (const auto& operative: theCountry.getOperatives())
+		{
+			if (!operative.isFemale())
+				portraitsFile << "\t\t\t\"" << operative.getPortrait() << "\"\n";
+		}
+		portraitsFile << "\t\t}\n";
+		// Women
+		portraitsFile << "\t\tfemale = {\n";
+		for (const auto& operative: theCountry.getOperatives())
+		{
+			if (operative.isFemale())
+				portraitsFile << "\t\t\t\"" << operative.getPortrait() << "\"\n";
+		}
+		portraitsFile << "\t\t}\n";
+	portraitsFile << "\t}\n";
+
+	//End
 	portraitsFile << "}\n\n";
 }
 
@@ -306,7 +463,7 @@ void outputWarSupport(std::ostream& output, const int& warSupport);
 void outputCommanders(std::ostream& output,
 	 const std::vector<HoI4::General>& generals,
 	 const std::vector<HoI4::Admiral>& admirals);
-void outputOperatives(std::ostream& output, const std::vector<HoI4::Operative>& operatives);
+void outputOperatives(std::ostream& output, const HoI4::Country& theCountry, const std::vector<HoI4::Operative>& operatives);
 void outputGlobalEventTargets(std::ostream& output, const std::set<std::string>& eventTargets);
 
 
@@ -342,12 +499,12 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	outputFlags(output, theCountry.getFlags());
 	outputConvoys(output, theCountry.getConvoys());
 	outputEquipmentStockpile(output, theCountry.getEquipmentStockpile(), tag);
-	outputPuppets(output, tag, governmentIdeology, theCountry.getPuppets(), theCountry.getPuppetMaster());
 	outputPolitics(output,
 		 governmentIdeology,
 		 theCountry.getLastElection(),
 		 theCountry.areElectionsAllowed(),
 		 theCountry.getIdeologySupport());
+	outputPuppets(output, tag, governmentIdeology, theCountry.getPuppets(), theCountry.getPuppetMaster());	
 	outputRelations(output, tag, theCountry.getRelations());
 	outputFactions(output, tag, theCountry.getFaction(), theCountry.getName());
 	outputIdeas(output,
@@ -371,7 +528,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		HoI4::outputCountryLeader(output, leader);
 	}
 	outputCommanders(output, theCountry.getGenerals(), theCountry.getAdmirals());
-	outputOperatives(output, theCountry.getOperatives());
+	outputOperatives(output, theCountry, theCountry.getOperatives());
 	output << theCountry.getTheShipVariants();
 	outputGlobalEventTargets(output, theCountry.getGlobalEventTargets());
 
@@ -478,6 +635,35 @@ void outputEquipmentStockpile(std::ostream& output,
 	output << "\n";
 }
 
+void outputPolitics(std::ostream& output,
+	 const std::string& governmentIdeology,
+	 const date& lastElection,
+	 const bool& areElectionsAllowed,
+	 const std::map<std::string, int>& ideologySupport)
+{
+	output << "set_politics = {\n";
+	output << "    ruling_party = " << governmentIdeology << "\n";
+	output << "    last_election = \"" << lastElection << "\"\n";
+	output << "    election_frequency = 48\n";
+	if (areElectionsAllowed)
+	{
+		output << "    elections_allowed = yes\n";
+	}
+	else
+	{
+		output << "    elections_allowed = no\n";
+	}
+	output << "}\n";
+	output << "\n";
+
+	output << "set_popularities = {\n";
+	for (const auto& ideology: ideologySupport)
+	{
+		output << "\t" << ideology.first << " = " << ideology.second << "\n";
+	}
+	output << "}\n";
+	output << "\n";
+}
 
 void outputPuppets(std::ostream& output,
 	 const std::string& tag,
@@ -499,7 +685,6 @@ void outputPuppets(std::ostream& output,
 				output << "    set_autonomy = {\n";
 				output << "        target = " << puppet << "\n";
 				output << "        autonomous_state = autonomy_integrated_puppet\n";
-				output << "    }\n";
 			}
 			else
 			{
@@ -507,8 +692,9 @@ void outputPuppets(std::ostream& output,
 				output << "        target = " << puppet << "\n";
 				output << "        autonomous_state = " << level << "\n";
 				output << "        freedom_level = 0.4\n";
-				output << "    }\n";
+				
 			}
+			output << "    }\n";
 		}
 		output << "    else = {\n";
 		for (const auto& puppet: puppets | std::views::keys)
@@ -544,37 +730,6 @@ void outputPuppets(std::ostream& output,
 		output << "    add_to_tech_sharing_group = " << puppetMaster << "_research\n";
 		output << "}\n\n";
 	}
-}
-
-
-void outputPolitics(std::ostream& output,
-	 const std::string& governmentIdeology,
-	 const date& lastElection,
-	 const bool& areElectionsAllowed,
-	 const std::map<std::string, int>& ideologySupport)
-{
-	output << "set_politics = {\n";
-	output << "    ruling_party = " << governmentIdeology << "\n";
-	output << "    last_election = \"" << lastElection << "\"\n";
-	output << "    election_frequency = 48\n";
-	if (areElectionsAllowed)
-	{
-		output << "    elections_allowed = yes\n";
-	}
-	else
-	{
-		output << "    elections_allowed = no\n";
-	}
-	output << "}\n";
-	output << "\n";
-
-	output << "set_popularities = {\n";
-	for (const auto& ideology: ideologySupport)
-	{
-		output << "\t" << ideology.first << " = " << ideology.second << "\n";
-	}
-	output << "}\n";
-	output << "\n";
 }
 
 void outputRelations(std::ostream& output,
@@ -720,9 +875,11 @@ void outputCommanders(std::ostream& output,
 }
 
 
-void outputOperatives(std::ostream& output, const std::vector<HoI4::Operative>& operatives)
+void outputOperatives(std::ostream& output,
+	 const HoI4::Country& theCountry, const std::vector<HoI4::Operative>& operatives)
 {
-	if (operatives.empty())
+		
+	if (operatives.empty()) 
 	{
 		return;
 	}
@@ -731,11 +888,15 @@ void outputOperatives(std::ostream& output, const std::vector<HoI4::Operative>& 
 	output << "\tlimit = {\n";
 	output << "\t\thas_dlc = \"La Resistance\"\n";
 	output << "\t}\n";
-	for (const auto& operative: operatives)
-	{
-		output << operative;
-		output << "\n";
-	}
+	if (!theCountry.getPuppetMaster().empty()) // Prevents colonies from having more than 1 wrong ethnic operative
+		output << operatives[0] << "\n";
+	else 
+		for (const auto& operative: operatives)
+		{
+			output << operative;
+			output << "\n";
+		
+		}
 	output << "}\n";
 }
 

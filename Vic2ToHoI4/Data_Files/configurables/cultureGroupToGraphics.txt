@@ -72,6 +72,8 @@ western_european = {
 		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
 		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
 		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
 		#German
 		"gfx/leaders/GER/Portrait_Germany_Generic_land_1.dds"
 		"gfx/leaders/GER/Portrait_Germany_Generic_land_2.dds"
@@ -328,7 +330,7 @@ western_european = {
 			"gfx/leaders/Western_European/Portrait_Schleswig_Holstein_Harald_I.tga"
 		}
 		neutrality = {
-			"gfx/leaders/Europe/portrait_europe_generic_3.dds"
+			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
 			"gfx/leaders/AUS/Portrait_Austria_Kurt_Schuschnigg.dds"
 			"gfx/leaders/DEN/Portrait_Denmark_Thorvald_Stauning.dds"
 			"gfx/leaders/DEN/Portrait_Britain_Generic_3.dds"
@@ -558,6 +560,8 @@ mediterranean = {
 		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
 		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
 		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
 		#Italian
 		"gfx/leaders/ITA/Portrait_Italy_Generic_land_1.dds"
 		"gfx/leaders/ITA/Portrait_Italy_Generic_land_2.dds"
@@ -672,7 +676,7 @@ mediterranean = {
 			"gfx/leaders/Mediterranean/Portrait_Javier_I.tga"
 		} 
 		neutrality = {
-			"gfx/leaders/Europe/portrait_europe_generic_3.dds"
+			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
 			"gfx/leaders/GRE/Portrait_Greece_Ioannis_Metaxas.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Generic_3.dds"
 			"gfx/leaders/POR/portrait_por_antonio_de_oliveira_salazar.dds"
@@ -826,6 +830,8 @@ balkans = {
 		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
 		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
 		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
 		#Other
 		"gfx/leaders/YUG/portrait_yugoslavia_josef_depre.dds"
 		"gfx/leaders/Balkans/Portrait_Balkan_Generic_land_new_1.tga"
@@ -1060,6 +1066,8 @@ eastern_european = {
 		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
 		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
 		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
 		#Soviets
 		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_1.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_2.dds"
@@ -2250,9 +2258,9 @@ sino = {
 		"gfx/leaders/Sino/Portrait_FNG_Zhang_Haipeng.tga"
 		"gfx/leaders/Sino/Portrait_FNG_Zhang_Zuoxiang.tga"
 		"gfx/leaders/Sino/Portrait_China_Chang_Tzuchung.tga"
-		"gfx/leaders/Sino/portrait_SQI_wang_yaowu.dds"
-		"gfx/leaders/Sino/Portrait_XSM_Ma_Zhongying.dds"
-		"gfx/leaders/Sino/Portrait_XSM_Sun_Lianguang.dds"
+		"gfx/leaders/Sino/portrait_SQI_wang_yaowu.tga"
+		"gfx/leaders/Sino/Portrait_XSM_Ma_Zhongying.tga"
+		"gfx/leaders/Sino/Portrait_XSM_Sun_Lianguang.tga"
 	}
 	navy_portraits = {
 		#Generic Asian
@@ -2281,9 +2289,9 @@ sino = {
 		} 
 		democratic = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
-			"gfx/leaders/CHI/Portrait_China_weng_wenhao.dds"
-			"gfx/leaders/CHI/Portrait_CHI_Hu_shi.dds"
+			"gfx/leaders/CHI/Portrait_China_weng_wenhao.dds"			
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
+			"gfx/leaders/Sino/Portrait_CHI_Hu_shi.tga"
 			"gfx/leaders/Sino/Portrait_XSM_Ma_Lin.dds"
 		} 
 		fascism = {
@@ -3033,7 +3041,7 @@ south_american_native = {
 			"gfx/leaders/South_American_Native/Portrait_Bolivia_Carlos_Quiroga.tga"
 		}
 		neutrality = {
-			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.tga"
+			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
 			"gfx/leaders/ECU/portrait_ecu_federico_paez.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_neutral.tga"
 		} 
@@ -3442,7 +3450,7 @@ african = {
 		democratic = {
 			"gfx/leaders/LIB/Portrait_LIB_edwin_barclay.dds"
 			"gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic.dds"
-			"gfx/leaders/Generic/Portrait_Africa_Generic_new_1.dds"
+			"gfx/leaders/Generic/Portrait_Africa_Generic_new_1.tga"
 			"gfx/leaders/African/Portrait_Barot_YetaIII.tga"
 			"gfx/leaders/African/Portrait_CAF_Tubal_Uriah_Butler.tga"
 			"gfx/leaders/African/Portrait_Dahomey_Soglo.tga"
@@ -3485,8 +3493,8 @@ african = {
 			"gfx/leaders/Arabic_Persian/Portrait_YEM_Ahmad_bin_Yahya.tga"
 		}
 		neutrality = {
-			"gfx/leaders/Africa/portrait_dom_rafael_trujillo.tga"
-			"gfx/leaders/African/Portrait_Africa_Generic_new_2.tga"
+			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
+			"gfx/leaders/Generic/Portrait_Africa_Generic_new_2.tga"
 			"gfx/leaders/African/Portrait_CAF_CLR_James.tga"
 			"gfx/leaders/African/Portrait_Dahomey_Apithy.tga"
 			"gfx/leaders/African/Portrait_Dahomey_Moumouni.tga"

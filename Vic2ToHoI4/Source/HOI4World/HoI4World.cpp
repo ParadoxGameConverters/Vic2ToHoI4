@@ -508,7 +508,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			dominion->second->determineBestCapital(states->getStates());
 			dominion->second->setCapitalRegionFlag(*theRegions);
 
-			const auto overlordTag = dominion->second->getPuppetMaster();
+			const auto overlordTag = dominion->second->getPuppetMaster().getTag();
 			auto overlord = countries.find(overlordTag);
 			if (overlord == countries.end())
 			{
@@ -811,7 +811,8 @@ void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 		if (agreement.getType() == "vassal")
 		{
 			HoI4Country1->second->addPuppet(*possibleHoI4Tag2, "autonomy_dominion");
-			HoI4Country2->second->setPuppetMaster(*possibleHoI4Tag1);
+			const auto& tempCountry = HoI4Country1;
+			HoI4Country2->second->setPuppetMaster(*tempCountry->second);
 		}
 	}
 }
