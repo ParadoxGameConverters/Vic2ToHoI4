@@ -10,7 +10,6 @@
 #include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4FocusTree.h"
-#include "HoI4World.h"
 #include "Ideologies/Ideologies.h"
 #include "Leaders/Admiral.h"
 #include "Leaders/CountryLeader.h"
@@ -94,7 +93,6 @@ class Country
 		 Localisation& hoi4Localisations);
 	void convertIdeologySupport(const std::set<std::string>& majorIdeologies,
 		 const Mappers::IdeologyMapper& partyMapper);
-	void determineShipVariants(const PossibleShipVariants& possibleVariants);
 	void determineShipVariants(const PossibleShipVariants& possibleVariants);
 	void convertNavies(const UnitMappings& unitMap,
 		 const MtgUnitMappings& mtgUnitMap,

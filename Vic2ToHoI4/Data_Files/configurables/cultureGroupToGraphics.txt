@@ -54,13 +54,13 @@
 #}
 
 ##Group List
-#western_european, semitic, romantic_barbaric, mediterranean, balkans, eastern_european,
+#western_european, romantic_barbaric, mediterranean, balkans, eastern_european,
 #turkic_steppe, arabic_persian, asian_steppe, indian, indo_chinese_nesia, sino,
 #aborigine_polynesia, north_american_native, central_american_native, south_american_native,
 #hispanic, african, deathbringers, animalia
 
 western_european = {
-	culture_groups = { germanic beneluxian pan_swiss jewish_group scandinavian british celtic french american_cultures neo_european_cultures }
+	culture_groups = { germanic beneluxian pan_swiss jewish_group jewish_cultures scandinavian british celtic french american_cultures neo_european_cultures }
 	army_portraits = {
 		#Generic European
 		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
@@ -1868,7 +1868,7 @@ asian_steppe = {
 }
 
 indian = {
-	culture_groups = { south_asian }
+	culture_groups = { south_asian indo_iranian }
 	
 	army_portraits = {
 		#Generic Indian
