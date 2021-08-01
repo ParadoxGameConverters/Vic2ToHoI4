@@ -104,8 +104,10 @@ TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedLeaderPortraitIsReturned)
 
 TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedLeaderPortraitsAreDefault)
 {
-	EXPECT_EQ("gfx/leaders/leader_unknown.dds", graphicsMapper->getLeaderPortrait("nonexistent_culture_group", "good_ideology"));
-	EXPECT_EQ("gfx/leaders/leader_unknown.dds", graphicsMapper->getLeaderPortrait("test_culture_group", "missing_ideology"));
+	EXPECT_EQ("gfx/leaders/leader_unknown.dds",
+		 graphicsMapper->getLeaderPortrait("nonexistent_culture_group", "good_ideology"));
+	EXPECT_EQ("gfx/leaders/leader_unknown.dds",
+		 graphicsMapper->getLeaderPortrait("test_culture_group", "missing_ideology"));
 }
 
 
