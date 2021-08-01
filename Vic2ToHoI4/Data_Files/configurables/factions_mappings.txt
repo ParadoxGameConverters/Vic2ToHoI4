@@ -72,13 +72,13 @@ link = { culture = italian ideology = absolutist faction = italy_empire_faction 
 link = { culture = italian ideology = fascist faction = italy_empire_faction }
 
 #Government of National Defense 
-link = { culture = hakka ideology = communism faction = chinese_united_front }
-link = { culture = yue ideology = communism faction = chinese_united_front }
-link = { culture = min ideology = communism faction = chinese_united_front } 
-link = { culture = beifaren ideology = communism faction = chinese_united_front } 
-link = { culture = nanfaren ideology = communism faction = chinese_united_front }
-link = { culture = xiyeren ideology = communism faction = chinese_united_front }
-link = { culture = beieren ideology = communism faction = chinese_united_front }
+link = { culture = hakka ideology = communism faction = PRC_government_of_national_defense }
+link = { culture = yue ideology = communism faction = PRC_government_of_national_defense }
+link = { culture = min ideology = communism faction = PRC_government_of_national_defense } 
+link = { culture = beifaren ideology = communism faction = PRC_government_of_national_defense } 
+link = { culture = nanfaren ideology = communism faction = PRC_government_of_national_defense }
+link = { culture = xiyeren ideology = communism faction = PRC_government_of_national_defense }
+link = { culture = beieren ideology = communism faction = PRC_government_of_national_defense }
 
 #Chinese United Front
 link = { culture = hakka ideology = any faction = chinese_united_front }
@@ -118,10 +118,34 @@ link = { culture = pan_romanian ideology = any faction = ROM_BALKAN_FACTION }
 link = { culture = hungarian_culture_group ideology = any faction = HUN_BALKAN_FACTION }
 
 #Pan-Slavic Worker's Congress
-link = { culture = panslavic_workers_congress ideology = any faction = panslavic_workers_congress }
+link = { culture = bosniak ideology = communism faction = panslavic_workers_congress }
+link = { culture = croat ideology = communism faction = panslavic_workers_congress }
+link = { culture = crni ideology = communism faction = panslavic_workers_congress } 
+link = { culture = juzhno ideology = communism faction = panslavic_workers_congress } 
+link = { culture = novisvet ideology = communism faction = panslavic_workers_congress }
+link = { culture = serb ideology = communism faction = panslavic_workers_congress }
+link = { culture = slovene ideology = communism faction = panslavic_workers_congress }
+
+#Balkan Federation of Socialist Republics
+link = { culture = bulgarian ideology = communism faction = BUL_balkan_federation_of_socialist_republics }
+link = { culture = macedonian ideology = communism faction = BUL_balkan_federation_of_socialist_republics }
+
+#Greater Bulgarian Federation 
+link = { culture = bulgarian ideology = fascism faction = BUL_greater_bulgarian_federation }
+
+#League of Balkan Confederacies
+link = { culture = south_slavic ideology = democratic faction = BUL_balkan_federation_democratic }
 
 #Balkan Entente
 link = { culture = south_slavic ideology = any faction = BALKAN_ENTENTE_FACTION }
+
+#Corfu Cooperative
+link = { culture = greek ideology = communist faction = GRE_corfu_cooperative }
+link = { culture = greek ideology = radical faction = GRE_corfu_cooperative }
+
+#Argos Alliance
+link = { culture = greek ideology = democratic faction = GRE_argos_alliance }
+link = { culture = greek ideology = fascism faction = GRE_argos_alliance }
 
 #Czech Entente
 link = { culture = czecho_slovak_culture_group ideology = any faction = CZE_little_entente }
