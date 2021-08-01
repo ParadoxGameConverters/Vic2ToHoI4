@@ -761,6 +761,10 @@ void outputRelations(std::ostream& output,
 		{
 			output << "give_military_access = " << relationTarget << "\n";
 		}
+		if (const auto& truceDuration = relation.getTruceDuration(); truceDuration)
+		{
+			output << "set_truce = { target = " << relationTarget << " days = " << *truceDuration << " }\n";
+		}
 	}
 	output << "\n";
 }

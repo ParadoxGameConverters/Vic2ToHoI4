@@ -3,6 +3,7 @@
 
 
 
+#include "Date.h"
 #include "V2World/Diplomacy/Relations.h"
 
 
@@ -17,14 +18,7 @@ class Relations
 		 tag(std::move(newTag)), value(0), guarantee(false), sphereLeader(false), influenceValue(0)
 	{
 	}
-
-	Relations(std::string newTag, const Vic2::Relations& oldRelations):
-		 tag(std::move(newTag)), value(oldRelations.getRelations()),
-		 guarantee(oldRelations.getLevel() >= Vic2::opinionLevel::friendly),
-		 sphereLeader(oldRelations.getLevel() == Vic2::opinionLevel::in_sphere),
-		 influenceValue(oldRelations.getInfluenceValue()), militaryAccess(oldRelations.hasMilitaryAccess())
-	{
-	}
+	Relations(std::string newTag, const Vic2::Relations& oldRelations, const date& startDate);
 
 	[[nodiscard]] const auto& getTag() const { return tag; }
 	[[nodiscard]] int getRelations() const { return value; }
@@ -32,6 +26,8 @@ class Relations
 	[[nodiscard]] bool getSphereLeader() const { return sphereLeader; }
 	[[nodiscard]] int getInfluenceValue() const { return influenceValue; }
 	[[nodiscard]] bool hasMilitaryAccess() const { return militaryAccess; }
+	[[nodiscard]] const auto& getTruceUntil() const { return truceUntil; }
+	[[nodiscard]] std::optional<int> getTruceDuration() const { return truceDuration; }
 
   private:
 	std::string tag;
@@ -40,6 +36,8 @@ class Relations
 	bool sphereLeader;
 	int influenceValue;
 	bool militaryAccess = false;
+	std::optional<date> truceUntil;
+	std::optional<int> truceDuration;
 };
 
 } // namespace HoI4

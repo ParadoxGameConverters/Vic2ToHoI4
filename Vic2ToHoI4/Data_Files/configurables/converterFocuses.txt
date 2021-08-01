@@ -2335,6 +2335,7 @@ focus = {
 		x = 0
 		y = 1
 		available = {
+			#TRUCE
 			NOT = { is_in_faction_with = $TARGET }
 			NOT = { has_war_with = $TARGET }
 		}
@@ -2388,6 +2389,7 @@ focus = {
 		y = 1
 		relative_position_id = raise_matter
 		available = {
+			#TRUCE
 			NOT = { is_in_faction_with = $TARGET }
 			NOT = { has_war_with = $TARGET }
 		}
@@ -2446,6 +2448,7 @@ focus = {
 		y = 1
 		relative_position_id = build_public_support
 		available = {
+			#TRUCE
 			NOT = { is_in_faction_with = $TARGET }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
@@ -2511,6 +2514,7 @@ focus = {
 		y = 1
 		relative_position_id = territory_or_war
 		available = {
+			#TRUCE
 			NOT = { is_in_faction_with = $TARGET }
 			has_war = no
 		}
@@ -2568,6 +2572,7 @@ focus = {
 		y = 1
 		relative_position_id = war_plan
 		available = {
+			#TRUCE
 			NOT = { is_in_faction_with = $TARGET }
 			has_war = no
 		}
@@ -2876,6 +2881,7 @@ focus = {
 		cost = 10
 
 		available = {
+			#TRUCE
 			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
@@ -2927,6 +2933,7 @@ focus = {
 		cost = 4
 
 		available = {
+			#TRUCE
 			is_subject = no
 			date > $STARTDATE
 			has_war = no
@@ -2992,6 +2999,7 @@ focus = {
 		cost = 3
 
 		available = {
+			#TRUCE
 			has_war = no
 			hidden_trigger = {
 				NOT = { any_owned_state = { has_border_war = yes } }
@@ -3072,6 +3080,7 @@ focus = {
 		cost = 10
 
 		available = {
+			#TRUCE
 			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
@@ -3130,6 +3139,7 @@ focus = {
 		cost = 4
 
 		available = {
+			#TRUCE
 			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
@@ -3198,6 +3208,7 @@ focus = {
 		cost = 3
 
 		available = {
+			#TRUCE
 			has_war = no
 			hidden_trigger = {
 				NOT = { any_owned_state = { has_border_war = yes } }

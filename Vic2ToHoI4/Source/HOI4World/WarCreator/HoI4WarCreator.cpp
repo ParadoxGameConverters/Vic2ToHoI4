@@ -1423,7 +1423,15 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(st
 			newFocus->text = "War_with" + target->getTag();
 			newFocus->available = "= {\n";
 			newFocus->available += "			has_war = no\n";
-			newFocus->available += "			date > 1939.1.1\n";
+			const auto& truceUntil = country->getTruceUntil(target->getTag());
+			if (truceUntil && *truceUntil > date("1939.1.1"))
+			{
+				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+			}
+			else
+			{
+				newFocus->available += "			date > 1939.1.1\n";
+			}
 			newFocus->available += "		}";
 			newFocus->xPos = 31 + numWarsWithGreatPowers * 2;
 			newFocus->yPos = 5;
