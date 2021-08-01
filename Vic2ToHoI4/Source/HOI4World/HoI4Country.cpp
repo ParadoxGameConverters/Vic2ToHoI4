@@ -133,7 +133,7 @@ HoI4::Country::Country(const std::string& tag_,
 	 lastElection(owner->lastElection), color(owner->color), graphicalCulture(owner->graphicalCulture),
 	 graphicalCulture2d(owner->graphicalCulture2d), warSupport(owner->warSupport),
 	 oldTechnologiesAndInventions(owner->oldTechnologiesAndInventions), atWar(owner->atWar), shipNames(owner->shipNames),
-	 generatedDominion(true), region(region_), puppetMaster(owner), puppetMasterOldTag(owner->getTag()),
+	 generatedDominion(true), region(region_), puppetMaster(owner), puppetMasterOldTag(owner->getOldTag()),
 	 governmentIdeology(owner->getGovernmentIdeology()), leaderIdeology(owner->getLeaderIdeology()), oldCapital(-1)
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
@@ -179,11 +179,11 @@ HoI4::Country::Country(const std::string& tag_,
 	maleRadicalPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "radical");
 	communistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
 	democraticAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
-	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");	
+	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
 	absolutistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
 	neutralityAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
 	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
-	
+
 
 	initIdeas(names, hoi4Localisations);
 	if (owner->hasMonarchIdea())
@@ -985,7 +985,7 @@ void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIde
 	auto remainingSupport = 100;
 	for (auto& ideology: ideologySupport)
 	{
-		if (ideology.first == getLeaderIdeology() && !getPuppetMaster()->getTag().empty()) //Add support for puppetmaster's ideology
+		if (puppetMaster && ideology.first == getLeaderIdeology()) // Add support for puppetmaster's ideology
 		{
 			if (ideology.second > 20)
 			{

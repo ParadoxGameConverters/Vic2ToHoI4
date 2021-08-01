@@ -195,12 +195,6 @@ void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& the
 	const auto& femaleMonarchPortraits = theCountry.getFemaleMonarchPortraits();
 	const auto& femaleIdeologicalPortraits = theCountry.getFemaleIeologicalPortraits();
 
-
-	/*if (armyPortraits.empty() && navyPortraits.empty())
-	{
-		return;
-	}*/
-
 	portraitsFile << theCountry.getTag() << " = {\n";
 
 	//Military
@@ -256,9 +250,9 @@ void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& the
 		//Communism
 		portraitsFile << "\t\tcommunism = {\n";
 			// Men
-			const auto& maleIdeologicalPortraitsC = theCountry.getMaleCommunistPortraits();
+			const auto& maleCommunistPortraits = theCountry.getMaleCommunistPortraits();
 			portraitsFile << "\t\t\tmale = {\n";
-			for (const auto& portrait: maleIdeologicalPortraitsC )
+			for (const auto& portrait: maleCommunistPortraits)
 			{
 				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
 			}
@@ -274,9 +268,9 @@ void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& the
 		//Democracy
 			portraitsFile << "\t\tdemocratic = {\n";
 			// Men
-			const auto& maleIdeologicalPortraitsD = theCountry.getMaleDemocraticPortraits();
+			const auto& maleDemocraticPortraits = theCountry.getMaleDemocraticPortraits();
 			portraitsFile << "\t\t\tmale = {\n";
-			for (const auto& portrait: maleIdeologicalPortraitsD )
+			for (const auto& portrait: maleDemocraticPortraits)
 			{
 				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
 			}
@@ -292,9 +286,9 @@ void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& the
 		//Fascism
 			portraitsFile << "\t\tfascism = {\n";
 			// Men
-			const auto& maleIdeologicalPortraitsF = theCountry.getMaleFascistPortraits();
+			const auto& maleFascistPortraits = theCountry.getMaleFascistPortraits();
 			portraitsFile << "\t\t\tmale = {\n";
-			for (const auto& portrait: maleIdeologicalPortraitsF )
+			for (const auto& portrait: maleFascistPortraits)
 			{
 				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
 			}
@@ -310,9 +304,9 @@ void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& the
 		//Absolutism
 			portraitsFile << "\t\tabsolutist = {\n";
 			// Men
-			const auto& maleIdeologicalPortraitsA = theCountry.getMaleAbsolutistPortraits();
+			const auto& maleAbsolutistPortraits = theCountry.getMaleAbsolutistPortraits();
 			portraitsFile << "\t\t\tmale = {\n";
-			for (const auto& portrait: maleIdeologicalPortraitsA )
+			for (const auto& portrait: maleAbsolutistPortraits)
 			{
 				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
 			}
@@ -328,9 +322,9 @@ void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& the
 		//Neutrality
 			portraitsFile << "\t\tneutrality = {\n";
 			// Men
-			const auto& maleIdeologicalPortraitsN = theCountry.getMaleNeutralPortraits();
+			const auto& maleNeutralPortraits = theCountry.getMaleNeutralPortraits();
 			portraitsFile << "\t\t\tmale = {\n";
-			for (const auto& portrait: maleIdeologicalPortraitsN )
+			for (const auto& portrait: maleNeutralPortraits)
 			{
 				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
 			}
@@ -346,9 +340,9 @@ void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& the
 		//Radical
 			portraitsFile << "\t\tradical = {\n";
 			// Men
-			const auto& maleIdeologicalPortraitsR = theCountry.getMaleRadicalPortraits();
+			const auto& maleRadicalPortraits = theCountry.getMaleRadicalPortraits();
 			portraitsFile << "\t\t\tmale = {\n";
-			for (const auto& portrait: maleIdeologicalPortraitsR )
+			for (const auto& portrait: maleRadicalPortraits)
 			{
 				portraitsFile << "\t\t\t\t\"" << portrait << "\"\n";
 			}
@@ -893,14 +887,17 @@ void outputOperatives(std::ostream& output,
 	output << "\t\thas_dlc = \"La Resistance\"\n";
 	output << "\t}\n";
 	if (theCountry.getPuppetMaster()) // Prevents colonies from having more than 1 wrong ethnic operative
+	{
 		output << operatives[0] << "\n";
-	else 
+	}
+	else
+	{
 		for (const auto& operative: operatives)
 		{
 			output << operative;
 			output << "\n";
-		
 		}
+	}
 	output << "}\n";
 }
 

@@ -28,8 +28,10 @@ class GraphicsMapper
 	[[nodiscard]] std::vector<std::string> getMaleMonarchPortraits(const std::string& cultureGroup) const;
 	[[nodiscard]] std::vector<std::string> getFemaleMonarchPortraits(const std::string& cultureGroup) const;
 	[[nodiscard]] std::string getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology);
-	[[nodiscard]] std::vector<std::string> getLeaderPortraits(const std::string& cultureGroup, const std::string& ideology) const;
-	[[nodiscard]] std::vector<std::string> getFemalePortraits(const std::string& cultureGroup, const std::string& type) const;
+	[[nodiscard]] std::vector<std::string> getLeaderPortraits(const std::string& cultureGroup,
+		 const std::string& ideology) const;
+	[[nodiscard]] std::vector<std::string> getFemalePortraits(const std::string& cultureGroup,
+		 const std::string& type) const;
 	[[nodiscard]] std::string getIdeologyMinisterPortrait(const std::string& cultureGroup, const std::string& ideology);
 	[[nodiscard]] std::vector<std::string> getMaleOperativePortraits(const std::string& cultureGroup) const;
 	[[nodiscard]] std::vector<std::string> getFemaleOperativePortraits(const std::string& cultureGroup) const;

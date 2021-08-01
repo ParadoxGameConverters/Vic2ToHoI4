@@ -109,6 +109,35 @@ TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedLeaderPortraitsAreReturned)
 			  "gfx/leaders/test_leader_portrait3.dds"));
 }
 
+TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedFemalePortraitsAreDefault)
+{
+	EXPECT_EQ("gfx/leaders/leader_unknown_female.dds",
+		 graphicsMapper->getFemalePortraits("nonexistent_culture_group", "good_ideology"));
+	EXPECT_EQ("gfx/leaders/leader_unknown_female.dds",
+		 graphicsMapper->getFemalePortraits("test_culture_group", "missing_ideology"));
+}
+
+
+TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedFemalePortraitsAreReturned)
+{
+	std::set<std::string> femalePortraits;
+	for (const auto& testPortrait: graphicsMapper->getFemalePortraits("test_culture_group", "good_ideology"))
+		femalePortraits.insert(testPortrait);
+	for (const auto& testPortrait: graphicsMapper->getFemalePortraits("test_culture_group", "good_ideology"))
+		femalePortraits.insert(testPortrait);
+	for (const auto& testPortrait: graphicsMapper->getFemalePortraits("test_culture_group2", "good_ideology"))
+		femalePortraits.insert(testPortrait);
+
+	EXPECT_THAT(femalePortraits,
+		 testing::UnorderedElementsAre("gfx/leaders/test_leader_portrait.dds",
+			  "gfx/leaders/test_leader_portrait2.dds",
+			  "gfx/leaders/test_leader_portrait3.dds"));
+	EXPECT_THAT(femalePortraits,
+		 testing::UnorderedElementsAre("gfx/leaders/test_leader_portrait.dds",
+			  "gfx/leaders/test_leader_portrait2.dds",
+			  "gfx/leaders/test_leader_portrait3.dds"));
+}
+
 
 TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedIdeologyMinisterPortraitsAreDefault)
 {
