@@ -136,7 +136,6 @@ HoI4::Country::Country(const std::string& tag_,
 	 generatedDominion(true), region(region_), puppetMaster(owner), puppetMasterOldTag(owner->getTag()),
 	 governmentIdeology(owner->getGovernmentIdeology()), leaderIdeology(owner->getLeaderIdeology()), oldCapital(-1)
 {
-
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
 		if (const auto& ownerAdjective = owner->adjective; ownerAdjective)
@@ -1485,7 +1484,7 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 	{
 		return std::make_optional(*nationalFocus);
 	}
-	elsehttps://www.youtube.com/
+	else
 	{
 		return std::nullopt;
 	}
