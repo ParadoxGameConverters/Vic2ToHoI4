@@ -2580,7 +2580,7 @@ focus = {
 			declare_war_on = {
 				target = $TARGET
 				type = take_core_state
-				generator = core_states
+				generator = { $CORE_STATES}
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
@@ -3030,7 +3030,7 @@ focus = {
 				declare_war_on = {
 					target = var:neighbor_war_defender
 					type = take_state_focus
-					generator = claimed_states
+					generator = $CLAIMED_STATES
 				}
 				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 			}
@@ -3239,7 +3239,7 @@ focus = {
 				declare_war_on = {
 					target = var:neighbor_war_defender
 					type = take_state_focus
-					generator = claimed_states
+					generator = $CLAIMED_STATES
 				}
 				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 			}

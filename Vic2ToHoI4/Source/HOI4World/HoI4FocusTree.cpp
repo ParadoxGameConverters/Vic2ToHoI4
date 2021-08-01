@@ -2263,12 +2263,13 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 }
 
 
-std::map<std::string, int> HoI4FocusTree::determineEnemyCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
+std::map<std::string, std::set<int>> HoI4FocusTree::determineWarTargets(std::shared_ptr<HoI4::Country> theCountry,
+	 const std::set<int>& stateIds,
 	 const std::map<int, HoI4::State>& states)
 {
-	std::map<std::string, int> coreHolders;
+	std::map<std::string, std::set<int>> targets;
 
-	for (const auto& stateID: theCountry->getCoreStates())
+	for (const auto& stateID: stateIds)
 	{
 		const auto& stateItr = states.find(stateID);
 		if (stateItr == states.end())
@@ -2280,46 +2281,55 @@ std::map<std::string, int> HoI4FocusTree::determineEnemyCoreHolders(std::shared_
 		{
 			if (theCountry->isEligibleEnemy(owner))
 			{
-				int numProvinces = std::min(static_cast<int>(state.getProvinces().size()), 10);
-				const auto& [existing, inserted] = coreHolders.insert(make_pair(owner, numProvinces));
-				if (!inserted)
-				{
-					existing->second += numProvinces;
-				}
+				targets[owner].emplace(stateID);
 			}
 		}
 	}
 
-	return coreHolders;
+	return targets;
 }
 
-int HoI4FocusTree::calculateNumEnemyOwnedCores(std::shared_ptr<HoI4::Country> theCountry,
+int HoI4FocusTree::calculateNumEnemyOwnedCores(const std::set<int>& coreStates,
 	 const std::map<int, HoI4::State>& states)
 {
 	int sumUnownedCores = 0;
 
-	for (const auto& [unused, numCores]: determineEnemyCoreHolders(theCountry, states))
+	for (const auto& stateId: coreStates)
 	{
-		sumUnownedCores += numCores;
+		const auto& stateItr = states.find(stateId);
+		if (stateItr == states.end())
+		{
+			continue;
+		}
+		const auto& state = stateItr->second;
+		int numProvinces = std::min(static_cast<int>(state.getProvinces().size()), 10);
+		sumUnownedCores += numProvinces;
 	}
 
 	return sumUnownedCores;
 }
 
 
-std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<HoI4::Country> theCountry,
+std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(std::shared_ptr<HoI4::Country> theCountry,
 	 int& numWarsWithNeighbors,
 	 const std::set<std::string>& majorIdeologies,
 	 const std::map<int, HoI4::State>& states,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	const auto& coreHolders = determineEnemyCoreHolders(theCountry, states);
+	const auto& coreHolders = determineWarTargets(theCountry, theCountry->getCoreStates(), states);
 	if (coreHolders.empty())
 	{
 		return coreHolders;
 	}
 
-	int sumUnownedCores = calculateNumEnemyOwnedCores(theCountry, states);
+	int sumUnownedCores = 0;
+	std::map<std::string, int> provinceCount;
+	for (const auto& [tag, coreStates]: coreHolders)
+	{
+		const auto& numProvinces = calculateNumEnemyOwnedCores(coreStates, states);
+		provinceCount[tag] = numProvinces;
+		sumUnownedCores += numProvinces;
+	}
 
 	numWarsWithNeighbors = std::min(static_cast<int>(coreHolders.size()), 4);
 
@@ -2327,8 +2337,9 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 	{
 		shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(theCountry->getTag());
 		newFocus->selectEffect = "= {\n";
-		for (const auto& [tag, numProvinces]: coreHolders)
+		for (const auto& tag: coreHolders | std::views::keys)
 		{
+			const auto& numProvinces = provinceCount.at(tag);
 			newFocus->selectEffect +=
 				 "\t\t\tset_variable = { unowned_cores_@" + tag + " = " + std::to_string(numProvinces) + " }\n";
 		}
@@ -2356,8 +2367,9 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 	fascistGovernmentCheck += "\t\t\t\thas_government = fascism\n";
 	fascistGovernmentCheck += "\t\t\t}";
 
-	for (const auto& [target, numProvinces]: coreHolders)
+	for (const auto& [target, coreStates]: coreHolders)
 	{
+		const auto& numProvinces = provinceCount.at(target);
 		const auto& aiChance = std::to_string(std::max(static_cast<int>(0.1 * numProvinces), 1));
 		const auto& truceUntil = theCountry->getTruceUntil(target);
 
@@ -2561,6 +2573,12 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", target);
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target);
+			std::string coresString;
+			for (const auto& stateId: coreStates)
+			{
+				coresString += std::to_string(stateId) + " ";
+			}
+			newFocus->updateFocusElement(newFocus->completionReward, "$CORE_STATES", coresString);
 			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target);
 			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target);
 			newFocus->updateFocusElement(newFocus->aiWillDo, "$TAG", theCountry->getTag());
@@ -2613,7 +2631,8 @@ int HoI4FocusTree::getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conqu
 std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Country> theCountry,
 	 int& numWarsWithNeighbors,
 	 const std::set<std::string>& majorIdeologies,
-	 const std::map<std::string, int>& coreHolders,
+	 const std::map<std::string, std::set<int>>& coreHolders,
+	 const std::map<int, HoI4::State>& states,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	std::string tag = theCountry->getTag();
@@ -2845,6 +2864,21 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			}
 			newFocus->updateFocusElement(newFocus->completionReward, "var:neighbor_war_defender", strategy.getID());
 			newFocus->updateFocusElement(newFocus->completionReward, "var:ROOT.neighbor_war_defender", strategy.getID());
+
+			std::string claimsString = "claimed_states";
+			const auto& claimsHolders = determineWarTargets(theCountry, theCountry->getClaimedStates(), states);
+			if (const auto& claimedStatesItr = claimsHolders.find(strategy.getID());
+				 claimedStatesItr != claimsHolders.end())
+			{
+				claimsString = "{ ";
+				for (const auto& stateId: claimedStatesItr->second)
+				{
+					claimsString += std::to_string(stateId) + " ";
+				}
+				claimsString += "}";
+			}
+			newFocus->updateFocusElement(newFocus->completionReward, "$CLAIMED_STATES", claimsString);
+
 			newFocus->updateFocusElement(newFocus->bypass, "var:neighbor_war_defender", strategy.getID());
 			focuses.push_back(newFocus);
 		}
@@ -2859,13 +2893,15 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 	return conquerTags;
 }
 
-void HoI4FocusTree::addNeighborWarBranch(const string& tag,
+void HoI4FocusTree::addNeighborWarBranch(const std::shared_ptr<HoI4::Country>& theCountry,
 	 const shared_ptr<HoI4::Country>& targetNeighbors,
 	 const string& targetName,
 	 const date& startDate,
 	 const std::set<std::string>& majorIdeologies,
+	 const std::map<int, HoI4::State>& states,
 	 HoI4::Localisation& hoi4Localisations)
 {
+	const auto& tag = theCountry->getTag();
 	const auto& truceUntil = targetNeighbors->getTruceUntil(tag);
 	if (const auto& originalFocus = loadedFocuses.find("border_disputes_nw"); originalFocus != loadedFocuses.end())
 	{
@@ -3056,6 +3092,21 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 		newFocus->updateFocusElement(newFocus->completionReward,
 			 "var:ROOT.neighbor_war_defender",
 			 targetNeighbors->getTag());
+
+		std::string claimsString = "claimed_states";
+		const auto& claimsHolders = determineWarTargets(theCountry, theCountry->getClaimedStates(), states);
+		if (const auto& claimedStatesItr = claimsHolders.find(targetNeighbors->getTag());
+			 claimedStatesItr != claimsHolders.end())
+		{
+			claimsString = "{ ";
+			for (const auto& stateId: claimedStatesItr->second)
+			{
+				claimsString += std::to_string(stateId) + " ";
+			}
+			claimsString += "}";
+		}
+		newFocus->updateFocusElement(newFocus->completionReward, "$CLAIMED_STATES", claimsString);
+
 		newFocus->updateFocusElement(newFocus->bypass, "var:neighbor_war_defender", targetNeighbors->getTag());
 		focuses.push_back(newFocus);
 	}

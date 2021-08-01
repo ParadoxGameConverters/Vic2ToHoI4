@@ -80,7 +80,7 @@ class HoI4FocusTree: commonItems::parser
 		 HoI4::Events& events,
 		 HoI4::Localisation& hoi4Localisations);
 	int getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conquerStrategies);
-	std::map<std::string, int> addReconquestBranch(std::shared_ptr<HoI4::Country> theCountry,
+	std::map<std::string, std::set<int>> addReconquestBranch(std::shared_ptr<HoI4::Country> theCountry,
 		 int& numWarsWithNeighbors,
 		 const std::set<std::string>& majorIdeologies,
 		 const std::map<int, HoI4::State>& states,
@@ -88,20 +88,23 @@ class HoI4FocusTree: commonItems::parser
 	std::set<std::string> addConquerBranch(std::shared_ptr<HoI4::Country> theCountry,
 		 int& numWarsWithNeighbors,
 		 const std::set<std::string>& majorIdeologies,
-		 const std::map<std::string, int>& coreHolders,
+		 const std::map<std::string, std::set<int>>& coreHolders,
+		 const std::map<int, HoI4::State>& states,
 		 HoI4::Localisation& hoi4Localisations);
-	void addNeighborWarBranch(const std::string& tag,
+	void addNeighborWarBranch(const std::shared_ptr<HoI4::Country>& theCountry,
 		 const std::shared_ptr<HoI4::Country>& targetNeighbors,
 		 const std::string& targetName,
 		 const date& startDate,
 		 const std::set<std::string>& majorIdeologies,
+		 const std::map<int, HoI4::State>& states,
 		 HoI4::Localisation& hoi4Localisations);
 	void addIntegratePuppetsBranch(const std::string& tag,
 		 const std::map<std::string, std::string>& puppets,
 		 HoI4::Localisation& hoi4Localisations);
-	std::map<std::string, int> determineEnemyCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
+	std::map<std::string, std::set<int>> determineWarTargets(std::shared_ptr<HoI4::Country> theCountry,
+		 const std::set<int>& stateIds,
 		 const std::map<int, HoI4::State>& states);
-	int calculateNumEnemyOwnedCores(std::shared_ptr<HoI4::Country> theCountry, const std::map<int, HoI4::State>& states);
+	int calculateNumEnemyOwnedCores(const std::set<int>& coreStates, const std::map<int, HoI4::State>& states);
 	void removeFocus(const std::string& id);
 
 	void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }
