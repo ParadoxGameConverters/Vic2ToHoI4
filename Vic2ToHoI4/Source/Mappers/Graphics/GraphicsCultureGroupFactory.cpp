@@ -13,7 +13,7 @@ Mappers::GraphicsCultureGroup::Factory::Factory()
 	});
 	registerKeyword("navy_portraits", [this](std::istream& theStream) {
 		graphicsCultureGroup->navyPortraits = commonItems::stringList(theStream).getStrings();
-	});	
+	});
 	registerKeyword("leader_portraits", [this](std::istream& theStream) {
 		graphicsCultureGroup->leaderPortraits = ideologyToPortraitsMappingFactory.importMapping(theStream);
 	});
