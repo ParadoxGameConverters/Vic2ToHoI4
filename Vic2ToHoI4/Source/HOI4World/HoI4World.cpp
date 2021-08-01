@@ -120,7 +120,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 provinceMapper,
 		 sourceWorld.getProvinces(),
 		 theConfiguration.getDebug());
-	determineCoreStates();
+	determineCoresAndClaims();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
@@ -623,7 +623,7 @@ void HoI4::World::transferPuppetsToDominions()
 }
 
 
-void HoI4::World::determineCoreStates()
+void HoI4::World::determineCoresAndClaims()
 {
 	for (const auto& [id, state]: states->getStates())
 	{
@@ -632,6 +632,13 @@ void HoI4::World::determineCoreStates()
 			if (const auto& coreCountry = findCountry(coreTag); coreCountry)
 			{
 				coreCountry->addCoreState(id);
+			}
+		}
+		for (const auto& claimTag: state.getClaims())
+		{
+			if (const auto& claimCountry = findCountry(claimTag); claimCountry)
+			{
+				claimCountry->addClaimedState(id);
 			}
 		}
 	}

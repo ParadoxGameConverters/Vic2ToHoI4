@@ -1171,6 +1171,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 		 numWarsWithNeighbors,
 		 theWorld->getMajorIdeologies(),
 		 coreHolders,
+		 theWorld->getStates(),
 		 hoi4Localisations);
 
 	for (const auto& targetTag: closeNeighbors)
@@ -1218,11 +1219,12 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 
 			date startDate = date("1936.01.01");
 			startDate.increaseByMonths((200 + relations->getRelations()) / 8);
-			focusTree->addNeighborWarBranch(country->getTag(),
+			focusTree->addNeighborWarBranch(country,
 				 target,
 				 targetName,
 				 startDate,
 				 theWorld->getMajorIdeologies(),
+				 theWorld->getStates(),
 				 hoi4Localisations);
 
 			numWarsWithNeighbors++;
