@@ -85,7 +85,7 @@ std::vector<std::string> Mappers::GraphicsMapper::getLeaderPortraits(const std::
 		}
 	}
 
-	return { "gfx/leaders/leader_unknown.dds" };
+	return {"gfx/leaders/leader_unknown.dds"};
 }
 
 std::vector<std::string> Mappers::GraphicsMapper::getFemalePortraits(const std::string& cultureGroup,
@@ -94,14 +94,13 @@ std::vector<std::string> Mappers::GraphicsMapper::getFemalePortraits(const std::
 	if (const auto femaleLeaderMapping = femalePortraitMappings.find(cultureGroup);
 		 femaleLeaderMapping != femalePortraitMappings.end())
 	{
-		if (const auto portraits = femaleLeaderMapping->second.find(type);
-			 portraits != femaleLeaderMapping->second.end())
+		if (const auto portraits = femaleLeaderMapping->second.find(type); portraits != femaleLeaderMapping->second.end())
 		{
 			return portraits->second;
 		}
 	}
 
-	return { "gfx/leaders/leader_unknown_female.dds" };
+	return {"gfx/leaders/leader_unknown_female.dds"};
 }
 
 std::string Mappers::GraphicsMapper::getIdeologyMinisterPortrait(const std::string& cultureGroup,
