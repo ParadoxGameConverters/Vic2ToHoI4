@@ -5,35 +5,89 @@
 
 ##VANILLA
 
+#Commonwealth of Nations
+link = { culture = british ideology = absolutist faction = ENG_commonwealth_of_nations }
+
+#British Communist Alternative
+link = { culture = british ideology = communism faction = ENG_british_communist_alternative }
+
 #Allies
 link = { culture = british ideology = democratic faction = allies }
 link = { culture = british ideology = neutrality faction = allies }
 
 #Axis
 link = { culture = germanic ideology = fascism faction = axis }
-link = { culture = germanic ideology = absolutist faction = axis }
+
+#Central Powers
+link = { culture = germanic ideology = absolutist faction = GER_central_powers_faction }
+
+#Central European Alliance
+link = { culture = germanic ideology = communism faction = GER_central_european_alliance }
+link = { culture = germanic ideology = democratic faction = GER_central_european_alliance }
+link = { culture = germanic ideology = neutrality faction = GER_central_european_alliance }
+link = { culture = germanic ideology = radical faction = GER_central_european_alliance }
+
+#Confédération du Rhin
+link = { culture = french ideology = absolutist faction = FRA_confederation_of_the_rhine }
+
+#Paris Accords
+link = { culture = french ideology = communist faction = FRA_communist_faction }
 
 #Domination Française
 link = { culture = french ideology = fascism faction = domination_francaise }
 
+#The French Alliance
+link = { culture = french ideology = neutrality faction = french_alliance }
+
 #French Entente
 link = { culture = french ideology = democratic faction = french_entente_alliance }
-link = { culture = french ideology = neutrality faction = french_entente_alliance }
 link = { culture = french ideology = radical faction = french_entente_alliance }
 
-#The French Alliance
-link = { culture = french ideology = any faction = french_alliance }
+#The Old Alliance
+link = { culture = japanese ideology = absolutist faction = JAP_the_old_alliance }
+link = { culture = heiren ideology = absolutist faction = JAP_the_old_alliance }
+link = { culture = nanren ideology = absolutist faction = JAP_the_old_alliance }
+link = { culture = dongren ideology = absolutist faction = JAP_the_old_alliance }
+
+#The New International
+link = { culture = japanese ideology = communism faction = JAP_the_new_international }
+link = { culture = heiren ideology = communism faction = JAP_the_new_international }
+link = { culture = nanren ideology = communism faction = JAP_the_new_international }
+link = { culture = dongren ideology = communism faction = JAP_the_new_international }
+
+#Western Pacific Treaty Organization
+link = { culture = japanese ideology = democratic faction = JAP_west_pacific_treaty_organization }
+link = { culture = heiren ideology = democratic faction = JAP_west_pacific_treaty_organization }
+link = { culture = nanren ideology = democratic faction = JAP_west_pacific_treaty_organization }
+link = { culture = dongren ideology = democratic faction = JAP_west_pacific_treaty_organization }
 
 #Daitoa Kyoeiken
-#link = { culture = east_asian ideology = any faction = daitoa_kyoeiken }
-#Japanese is in the Chinese culture group. Letting China have this faction sounds bad.
+link = { culture = japanese ideology = fascism faction = daitoa_kyoeiken }
+link = { culture = heiren ideology = fascism faction = daitoa_kyoeiken }
+link = { culture = nanren ideology = fascism faction = daitoa_kyoeiken }
+link = { culture = dongren ideology = fascism faction = daitoa_kyoeiken }
 
 #Novus Imperium Romanum
 link = { culture = italian ideology = absolutist faction = italy_empire_faction }
 link = { culture = italian ideology = fascist faction = italy_empire_faction }
 
+#Government of National Defense 
+link = { culture = hakka ideology = communism faction = PRC_government_of_national_defense }
+link = { culture = yue ideology = communism faction = PRC_government_of_national_defense }
+link = { culture = min ideology = communism faction = PRC_government_of_national_defense } 
+link = { culture = beifaren ideology = communism faction = PRC_government_of_national_defense } 
+link = { culture = nanfaren ideology = communism faction = PRC_government_of_national_defense }
+link = { culture = xiyeren ideology = communism faction = PRC_government_of_national_defense }
+link = { culture = beieren ideology = communism faction = PRC_government_of_national_defense }
+
 #Chinese United Front
-link = { culture = east_asian ideology = any faction = chinese_united_front }
+link = { culture = hakka ideology = any faction = chinese_united_front }
+link = { culture = yue ideology = any faction = chinese_united_front }
+link = { culture = min ideology = any faction = chinese_united_front } 
+link = { culture = beifaren ideology = any faction = chinese_united_front } 
+link = { culture = nanfaren ideology = any faction = chinese_united_front }
+link = { culture = xiyeren ideology = any faction = chinese_united_front }
+link = { culture = beieren ideology = any faction = chinese_united_front }
 
 #Międzymorze
 link = { culture = polish_culture_group ideology = any faction = miedzymorze_faction }
@@ -63,13 +117,79 @@ link = { culture = pan_romanian ideology = any faction = ROM_BALKAN_FACTION }
 #Balkan Pact
 link = { culture = hungarian_culture_group ideology = any faction = HUN_BALKAN_FACTION }
 
+#Pan-Slavic Worker's Congress
+link = { culture = bosniak ideology = communism faction = panslavic_workers_congress }
+link = { culture = croat ideology = communism faction = panslavic_workers_congress }
+link = { culture = crni ideology = communism faction = panslavic_workers_congress } 
+link = { culture = juzhno ideology = communism faction = panslavic_workers_congress } 
+link = { culture = novisvet ideology = communism faction = panslavic_workers_congress }
+link = { culture = serb ideology = communism faction = panslavic_workers_congress }
+link = { culture = slovene ideology = communism faction = panslavic_workers_congress }
+
+#Balkan Federation of Socialist Republics
+link = { culture = bulgarian ideology = communism faction = BUL_balkan_federation_of_socialist_republics }
+link = { culture = macedonian ideology = communism faction = BUL_balkan_federation_of_socialist_republics }
+
+#Greater Bulgarian Federation 
+link = { culture = bulgarian ideology = fascism faction = BUL_greater_bulgarian_federation }
+
+#League of Balkan Confederacies
+link = { culture = south_slavic ideology = democratic faction = BUL_balkan_federation_democratic }
+
 #Balkan Entente
 link = { culture = south_slavic ideology = any faction = BALKAN_ENTENTE_FACTION }
+
+#Corfu Cooperative
+link = { culture = greek ideology = communist faction = GRE_corfu_cooperative }
+link = { culture = greek ideology = radical faction = GRE_corfu_cooperative }
+
+#Argos Alliance
+link = { culture = greek ideology = democratic faction = GRE_argos_alliance }
+link = { culture = greek ideology = fascism faction = GRE_argos_alliance }
 
 #Czech Entente
 link = { culture = czecho_slovak_culture_group ideology = any faction = CZE_little_entente }
 
-#Left out: western_pacific_sphere, south_west_pacific_initiative
+#Southwest Pacific Initiative
+link = { culture = australian ideology = any faction = south_west_pacific_initiative }  
+link = { culture = aborigine ideology = any faction = south_west_pacific_initiative }  
+link = { culture = maori ideology = any faction = south_west_pacific_initiative }  
+
+#Benelux
+link = { culture = beneluxian ideology = any faction = HOL_benelux } 
+
+#Latin Bloc
+link = { culture = romantic ideology = any faction = SPA_latin_bloc }
+
+#Smyrna Pact
+link = { culture = dytic_g ideology = any faction = the_smyrna_friendship_pact } 
+
+#Coalition of Free Commonwealth States
+link = { culture = neo_european_cultures ideology = any faction = ENG_coalition_of_free_commonwealth_states }
+
+#International Bureau of Revolutionary Socialist Unity
+link = { culture = iberian ideology = communist faction = SPC_international_bureau_of_revolutionary_socialist_unity }
+
+#Royal Iberian Alliance
+link = { culture = iberian ideology = absolutist faction = POR_royal_iberian_alliance }
+
+#Saadabad Concordat
+link = { culture = iranian_turanian ideology = absolutist faction = the_saadabad_concordat }
+link = { culture = iranian_turanian ideology = neutrality faction = the_saadabad_concordat }
+
+#Union of Communist Soviets
+link = { culture = east_slavic ideology = communist faction = HUN_FACTION_COMMIE }
+
+#Bolivarian Alliance
+link = { culture = latin_american_cultures ideology = communism faction = faction_mexico_bolivarian_alliance }
+
+#Hispanic Alliance
+link = { culture = latin_american_cultures ideology = democratic faction = faction_mexico_hispanic_alliance }
+link = { culture = latin_american_cultures ideology = neutrality faction = faction_mexico_hispanic_alliance }
+link = { culture = latin_american_cultures ideology = radical faction = faction_mexico_hispanic_alliance }
+link = { culture = latin_american_cultures ideology = fascism faction = faction_mexico_hispanic_alliance }
+
+#Left out: Comintern, the_berlin_moscow_axis, anti_soviet_pact, FRA_little_entente, FRA_stresa_front, panbalkan_workers_congress, house_bernadotte, GER_anti_communist_bloc, JAP_asian_communist_solidarity, PRC_mao_faction, CHI_the_peoples_front, USA_hemisphere_defense_faction, anglo_italian_pact, western_pacific_sphere, and many more.
 
 ##Default Faction Names
 
