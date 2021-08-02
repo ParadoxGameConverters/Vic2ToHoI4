@@ -10,6 +10,9 @@ test_culture_group = {
 	leader_portraits = {
 		good_ideology = { "gfx/leaders/test_leader_portrait.dds" "gfx/leaders/test_leader_portrait2.dds" }
 	}
+	female_portraits = {
+		good_ideology = { "gfx/leaders/test_leader_portraitF.dds" "gfx/leaders/test_leader_portraitF2.dds" }
+	}
 	ideology_minister_portraits = {
 		good_ideology = { "gfx/interface/ideas/test_minister_portrait.dds" "gfx/interface/ideas/test_minister_portrait2.dds" }
 	}
@@ -46,6 +49,9 @@ test_culture_groups = {
 	}
 	leader_portraits = {
 		good_ideology = { "gfx/leaders/test_leader_portrait3.dds" }
+	}
+	female_portraits = {
+		good_ideology = { "gfx/leaders/test_leader_portraitF3.dds" }
 	}
 	ideology_minister_portraits = {
 		good_ideology = { "gfx/interface/ideas/test_minister_portrait3.dds" }

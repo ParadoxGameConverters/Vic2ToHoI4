@@ -14,14 +14,11 @@ Mappers::GraphicsCultureGroup::Factory::Factory()
 	registerKeyword("navy_portraits", [this](std::istream& theStream) {
 		graphicsCultureGroup->navyPortraits = commonItems::stringList(theStream).getStrings();
 	});
-	registerKeyword("male_monarch_portraits", [this](std::istream& theStream) {
-		graphicsCultureGroup->maleMonarchPortraits = commonItems::stringList(theStream).getStrings();
-	});
-	registerKeyword("female_monarch_portraits", [this](std::istream& theStream) {
-		graphicsCultureGroup->femaleMonarchPortraits = commonItems::stringList(theStream).getStrings();
-	});
 	registerKeyword("leader_portraits", [this](std::istream& theStream) {
 		graphicsCultureGroup->leaderPortraits = ideologyToPortraitsMappingFactory.importMapping(theStream);
+	});
+	registerKeyword("female_portraits", [this](std::istream& theStream) {
+		graphicsCultureGroup->femalePortraits = ideologyToPortraitsMappingFactory.importMapping(theStream);
 	});
 	registerKeyword("ideology_minister_portraits", [this](std::istream& theStream) {
 		graphicsCultureGroup->ideologyMinisterPortraits = ideologyToPortraitsMappingFactory.importMapping(theStream);
@@ -31,6 +28,12 @@ Mappers::GraphicsCultureGroup::Factory::Factory()
 	});
 	registerKeyword("female_operative_portraits", [this](std::istream& theStream) {
 		graphicsCultureGroup->femaleOperativePortraits = commonItems::stringList(theStream).getStrings();
+	});
+	registerKeyword("male_monarch_portraits", [this](std::istream& theStream) {
+		graphicsCultureGroup->maleMonarchPortraits = commonItems::stringList(theStream).getStrings();
+	});
+	registerKeyword("female_monarch_portraits", [this](std::istream& theStream) {
+		graphicsCultureGroup->femaleMonarchPortraits = commonItems::stringList(theStream).getStrings();
 	});
 	registerKeyword("graphical_culture", [this](std::istream& theStream) {
 		graphicsCultureGroup->graphicalCulture = commonItems::singleString(theStream).getString();

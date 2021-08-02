@@ -59,6 +59,15 @@ HoI4::Country::Country(std::string tag,
 	}
 	armyPortraits = graphicsMapper.getArmyPortraits(primaryCultureGroup);
 	navyPortraits = graphicsMapper.getNavyPortraits(primaryCultureGroup);
+	femaleMilitaryPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "military");
+	femaleMonarchPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "monarch");
+	femaleIdeologicalPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "ideological_leader");
+	maleCommunistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "communism");
+	maleDemocraticPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "democratic");
+	maleFascistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "fascism");
+	maleAbsolutistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "absolutist");
+	maleNeutralPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "neutrality");
+	maleRadicalPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "radical");
 	communistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
 	democraticAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
 	neutralityAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
@@ -112,24 +121,24 @@ HoI4::Country::Country(std::string tag,
 
 
 HoI4::Country::Country(const std::string& tag_,
-	 const Country& owner,
+	 const std::shared_ptr<Country> owner,
 	 const std::string& region_,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names,
 	 Localisation& hoi4Localisations):
 	 tag(tag_),
-	 primaryCulture(owner.primaryCulture), primaryCultureGroup(owner.primaryCultureGroup), civilized(owner.civilized),
-	 rulingParty(owner.rulingParty), parties(owner.parties), upperHouseComposition(owner.upperHouseComposition),
-	 lastElection(owner.lastElection), color(owner.color), graphicalCulture(owner.graphicalCulture),
-	 graphicalCulture2d(owner.graphicalCulture2d), warSupport(owner.warSupport),
-	 oldTechnologiesAndInventions(owner.oldTechnologiesAndInventions), atWar(owner.atWar), shipNames(owner.shipNames),
-	 generatedDominion(true), region(region_), puppetMaster(owner.getTag()), puppetMasterOldTag(owner.getOldTag()),
-	 governmentIdeology(owner.getGovernmentIdeology()), leaderIdeology(owner.getLeaderIdeology()), oldCapital(-1)
+	 primaryCulture(owner->primaryCulture), primaryCultureGroup(owner->primaryCultureGroup), civilized(owner->civilized),
+	 rulingParty(owner->rulingParty), parties(owner->parties), upperHouseComposition(owner->upperHouseComposition),
+	 lastElection(owner->lastElection), color(owner->color), graphicalCulture(owner->graphicalCulture),
+	 graphicalCulture2d(owner->graphicalCulture2d), warSupport(owner->warSupport),
+	 oldTechnologiesAndInventions(owner->oldTechnologiesAndInventions), atWar(owner->atWar), shipNames(owner->shipNames),
+	 generatedDominion(true), region(region_), puppetMaster(owner), puppetMasterOldTag(owner->getOldTag()),
+	 governmentIdeology(owner->getGovernmentIdeology()), leaderIdeology(owner->getLeaderIdeology()), oldCapital(-1)
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
-		if (const auto& ownerAdjective = owner.adjective; ownerAdjective)
+		if (const auto& ownerAdjective = owner->adjective; ownerAdjective)
 		{
 			name = *ownerAdjective + " " + *regionName;
 		}
@@ -159,17 +168,27 @@ HoI4::Country::Country(const std::string& tag_,
 
 	armyPortraits = graphicsMapper.getArmyPortraits(primaryCultureGroup);
 	navyPortraits = graphicsMapper.getNavyPortraits(primaryCultureGroup);
+	femaleMilitaryPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "military");
+	femaleMonarchPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "monarch");
+	femaleIdeologicalPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "ideological_leader");
+	maleCommunistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "communism");
+	maleDemocraticPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "democratic");
+	maleFascistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "fascism");
+	maleAbsolutistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "absolutist");
+	maleNeutralPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "neutrality");
+	maleRadicalPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "radical");
 	communistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
 	democraticAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
-	neutralityAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
-	absolutistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
-	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
 	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
+	absolutistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
+	neutralityAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
+	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
+
 
 	initIdeas(names, hoi4Localisations);
-	if (owner.hasMonarchIdea())
+	if (owner->hasMonarchIdea())
 	{
-		ideas.insert(owner.tag + "_monarch");
+		ideas.insert(owner->tag + "_monarch");
 	}
 
 	createOperatives(graphicsMapper, names);
@@ -964,8 +983,21 @@ void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIde
 	}
 
 	auto remainingSupport = 100;
-	for (const auto& ideology: ideologySupport)
+	for (auto& ideology: ideologySupport)
 	{
+		if (puppetMaster && ideology.first == getLeaderIdeology()) // Add support for puppetmaster's ideology
+		{
+			if (ideology.second > 20)
+			{
+				ideology.second -= 20;
+				ideologySupport.find(getPuppetMaster()->getLeaderIdeology())->second += 20;
+			}
+			else
+			{
+				ideologySupport.find(getPuppetMaster()->getLeaderIdeology())->second += ideology.second;
+				ideology.second = 0;
+			}
+		}
 		remainingSupport -= ideology.second;
 	}
 	if (remainingSupport > 0)
@@ -1476,7 +1508,7 @@ const bool HoI4::Country::isEligibleEnemy(std::string target)
 		allies.insert(faction->getLeader()->getTag());
 	}
 
-	return !allies.contains(target) && !puppets.contains(target) && target != puppetMaster;
+	return !allies.contains(target) && !puppets.contains(target) && puppetMaster && target != puppetMaster->getTag();
 }
 
 std::optional<std::string> HoI4::Country::getDominionTag(const std::string& region)

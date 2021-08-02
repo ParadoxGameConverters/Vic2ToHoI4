@@ -63,7 +63,7 @@ class Country
 		 Localisation& hoi4Localisations,
 		 const date& startDate);
 	explicit Country(const std::string& tag_,
-		 const Country& owner,
+		 const std::shared_ptr<Country> owner,
 		 const std::string& region_,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
@@ -121,7 +121,7 @@ class Country
 	void setFaction(const std::shared_ptr<const Faction>& newFaction) { faction = newFaction; }
 	void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 	void setGreatPower() { greatPower = true; }
-	void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
+	void setPuppetMaster(const std::shared_ptr<Country> master) { puppetMaster = master; }
 	void addPuppet(const std::string& countryTag, const std::string& puppetLevel) { puppets[countryTag] = puppetLevel; }
 
 	void makeNavalTreatyAdherent() { navalTreatyAdherent = true; }
@@ -162,6 +162,15 @@ class Country
 	[[nodiscard]] const std::string& getGraphicalCulture2d() const { return graphicalCulture2d; }
 	[[nodiscard]] const auto& getArmyPortraits() const { return armyPortraits; }
 	[[nodiscard]] const auto& getNavyPortraits() const { return navyPortraits; }
+	[[nodiscard]] const auto& getFemaleMilitaryPortraits() const { return femaleMilitaryPortraits; }
+	[[nodiscard]] const auto& getFemaleMonarchPortraits() const { return femaleMonarchPortraits; }
+	[[nodiscard]] const auto& getFemaleIeologicalPortraits() const { return femaleIdeologicalPortraits; }
+	[[nodiscard]] const auto& getMaleCommunistPortraits() const { return maleCommunistPortraits; }
+	[[nodiscard]] const auto& getMaleDemocraticPortraits() const { return maleDemocraticPortraits; }
+	[[nodiscard]] const auto& getMaleFascistPortraits() const { return maleFascistPortraits; }
+	[[nodiscard]] const auto& getMaleAbsolutistPortraits() const { return maleAbsolutistPortraits; }
+	[[nodiscard]] const auto& getMaleNeutralPortraits() const { return maleNeutralPortraits; }
+	[[nodiscard]] const auto& getMaleRadicalPortraits() const { return maleRadicalPortraits; }
 	[[nodiscard]] const auto& getCommunistAdvisorPortrait() const { return communistAdvisorPortrait; }
 	[[nodiscard]] const auto& getDemocraticAdvisorPortrait() const { return democraticAdvisorPortrait; }
 	[[nodiscard]] const auto& getNeutralityAdvisorPortrait() const { return neutralityAdvisorPortrait; }
@@ -233,7 +242,7 @@ class Country
 	[[nodiscard]] const std::string& getSphereLeader() const { return sphereLeader; }
 	[[nodiscard]] const std::set<std::string>& getAllies() const { return allies; }
 	[[nodiscard]] const std::map<std::string, std::string>& getPuppets() const { return puppets; }
-	[[nodiscard]] const std::string& getPuppetMaster() const { return puppetMaster; }
+	[[nodiscard]] const auto getPuppetMaster() const { return puppetMaster; }
 	[[nodiscard]] const std::string& getPuppetMasterOldTag() const { return puppetMasterOldTag; }
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
@@ -315,6 +324,15 @@ class Country
 	std::string graphicalCulture2d = "western_european_2d";
 	std::vector<std::string> armyPortraits;
 	std::vector<std::string> navyPortraits;
+	std::vector<std::string> femaleMilitaryPortraits;
+	std::vector<std::string> femaleMonarchPortraits;
+	std::vector<std::string> femaleIdeologicalPortraits;
+	std::vector<std::string> maleCommunistPortraits;
+	std::vector<std::string> maleDemocraticPortraits;
+	std::vector<std::string> maleFascistPortraits;
+	std::vector<std::string> maleAbsolutistPortraits;
+	std::vector<std::string> maleNeutralPortraits;
+	std::vector<std::string> maleRadicalPortraits;
 	std::string communistAdvisorPortrait;
 	std::string democraticAdvisorPortrait;
 	std::string neutralityAdvisorPortrait;
@@ -361,6 +379,7 @@ class Country
 
 	std::vector<Vic2::Army> oldArmies;
 	Army theArmy;
+	std::shared_ptr<Country> puppetMaster;
 	std::unique_ptr<ShipVariants> theShipVariants;
 	std::unique_ptr<Navies> theNavies;
 	NavyNames navyNames;
@@ -384,7 +403,6 @@ class Country
 	std::set<std::string> allies;
 	std::map<std::string, std::string> puppets; // tag, level
 	std::map<std::string, std::string> generatedDominions;
-	std::string puppetMaster;
 	std::string puppetMasterOldTag;
 	bool greatPower = false;
 	bool civilized = false;
