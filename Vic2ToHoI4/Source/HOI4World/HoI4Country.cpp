@@ -1507,8 +1507,13 @@ const bool HoI4::Country::isEligibleEnemy(std::string target)
 		allies = faction->getLeader()->getAllies();
 		allies.insert(faction->getLeader()->getTag());
 	}
+	std::string puppetMasterTag;
+	if (puppetMaster)
+	{
+		puppetMasterTag = puppetMaster->getTag();
+	}
 
-	return !allies.contains(target) && !puppets.contains(target) && puppetMaster && target != puppetMaster->getTag();
+	return !allies.contains(target) && !puppets.contains(target) && target != puppetMasterTag;
 }
 
 std::optional<std::string> HoI4::Country::getDominionTag(const std::string& region)
