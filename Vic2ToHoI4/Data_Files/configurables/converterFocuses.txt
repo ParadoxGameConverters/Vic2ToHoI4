@@ -18,10 +18,7 @@ shared_focus = {
 	prerequisite = { focus = political_effort }
 	mutually_exclusive = { focus = liberty_ethos}
 	available = {
-		OR = {
-			has_government = fascism
-			has_government = communism
-			has_government = neutrality
+		OR = {$GOVERNMENTS
 		}
 	}
 	x = -1
@@ -48,7 +45,7 @@ shared_focus = {
 
 	completion_reward = {
 		add_timed_idea = {
-			idea = collectivist_ethos_focus
+			idea = $IDEA
 			days = 1095
 		}
 	}

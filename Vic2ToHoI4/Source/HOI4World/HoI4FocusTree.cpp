@@ -53,32 +53,27 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		if (const auto& originalFocus = loadedFocuses.find("collectivist_ethos"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
-			newFocus->available = "= {\n";
-			newFocus->available += "\t\t\tOR = {\n";
+			std::string governments;
 			for (auto majorIdeology: majorIdeologies)
 			{
 				if (majorIdeology == "democratic")
 				{
 					continue;
 				}
-				newFocus->available += "\t\t\t\thas_government = " + majorIdeology + "\n";
+				governments += "\n\t\t\thas_government = " + majorIdeology;
 			}
-			newFocus->available += "\t\t\t}\n";
-			newFocus->available += "\t\t}";
+			newFocus->updateFocusElement(newFocus->available, "$GOVERNMENTS", governments);
 			newFocus->xPos = -(numCollectovistIdeologies / 2) - 1;
-			newFocus->completionReward = "= {\n";
-			newFocus->completionReward += "\t\tadd_timed_idea = {\n";
+			std::string idea;
 			if (majorIdeologies.contains("democratic"))
 			{
-				newFocus->completionReward += "\t\t\tidea = collectivist_ethos_focus_democratic\n";
+				idea = "collectivist_ethos_focus_democratic";
 			}
 			else
 			{
-				newFocus->completionReward += "\t\t\tidea = collectivist_ethos_focus_neutral\n";
+				idea = "collectivist_ethos_focus_neutral";
 			}
-			newFocus->completionReward += "\t\t\tdays = 1095\n";
-			newFocus->completionReward += "\t\t}\n";
-			newFocus->completionReward += "\t}";
+			newFocus->updateFocusElement(newFocus->completionReward, "$IDEA", idea);
 			sharedFocuses.push_back(newFocus);
 		}
 		else
