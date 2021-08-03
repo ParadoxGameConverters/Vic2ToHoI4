@@ -1511,7 +1511,7 @@ turkic_steppe = {
 		"gfx/interface/ideas/crowns/eastern_crown.dds"
 	}
 	graphical_culture = middle_eastern_gfx
-	graphical_culture_2d = middle_eastern_gfx_2d
+	graphical_culture_2d = middle_eastern_2d
 }
 
 arabic_persian = {
@@ -1690,7 +1690,7 @@ arabic_persian = {
 		"gfx/interface/ideas/crowns/persia.dds"
 	}
 	graphical_culture = middle_eastern_gfx
-	graphical_culture_2d = middle_eastern_gfx_2d
+	graphical_culture_2d = middle_eastern_2d
 }
 
 asian_steppe = {
@@ -2023,8 +2023,8 @@ indian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/crowns/bhutan.dds"
 	}
-	graphical_culture = western_european_gfx
-	graphical_culture_2d = commonwealth_2d
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
 }
 
 indo_chinese_nesia = {
