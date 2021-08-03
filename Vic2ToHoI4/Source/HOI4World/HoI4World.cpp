@@ -1147,8 +1147,12 @@ bool HoI4::World::governmentsAllowFaction(const string& leaderIdeology, const st
 void HoI4::World::addFocusTrees()
 {
 	Log(LogLevel::Info) << "\tAdding focus trees";
-	for (auto [unused, country]: countries)
+	for (auto [tag, country]: countries)
 	{
+		if (tag == "UCV")
+		{
+			continue;
+		}
 		if (country->isGreatPower() || (country->getStrengthOverTime(3) > 4500))
 		{
 			country->addGenericFocusTree(ideologies->getMajorIdeologies());

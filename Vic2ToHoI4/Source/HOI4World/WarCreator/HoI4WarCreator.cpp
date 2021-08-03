@@ -229,7 +229,7 @@ void HoI4WarCreator::generateAdditionalWars(std::ofstream& AILog,
 
 	for (auto country = countriesEvilnessSorted.rbegin(); country != countriesEvilnessSorted.rend(); country++)
 	{
-		if (!isImportantCountry(*country))
+		if (!isImportantCountry(*country) && (*country)->getTag() != "UCV")
 		{
 			if (theConfiguration.getDebug())
 			{
@@ -1110,8 +1110,12 @@ void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
 		AILog << "Creating Reconquest wars\n";
 	}
 
-	for (const auto& [unused, country]: theWorld->getCountries())
+	for (const auto& [tag, country]: theWorld->getCountries())
 	{
+		if (tag == "UCV")
+		{
+			continue;
+		}
 		if (country->getNationalFocus())
 		{
 			continue;
