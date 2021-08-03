@@ -1855,7 +1855,7 @@ asian_steppe = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_7.dds"
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_8.dds"
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
-		"gfx/leaders/MAN/portrait_man_yoshiko_kawashima.dds"
+		"gfx/leaders/CHI/portrait_man_yoshiko_kawashima.dds"
 	}
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/eastern_crown.dds"
