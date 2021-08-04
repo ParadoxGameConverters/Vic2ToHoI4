@@ -18,7 +18,8 @@ shared_focus = {
 	prerequisite = { focus = political_effort }
 	mutually_exclusive = { focus = liberty_ethos}
 	available = {
-		OR = {$GOVERNMENTS
+		OR = {
+			$GOVERNMENTS
 		}
 	}
 	x = -1

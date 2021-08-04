@@ -60,7 +60,14 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 				{
 					continue;
 				}
-				governments += "\n\t\t\thas_government = " + majorIdeology;
+				if (majorIdeology == *majorIdeologies.begin())
+				{
+					governments += "has_government = " + majorIdeology + "\n";
+				}
+				else
+				{
+					governments += "\t\t\thas_government = " + majorIdeology + "\n";
+				}
 			}
 			newFocus->updateFocusElement(newFocus->available, "$GOVERNMENTS", governments);
 			newFocus->xPos = -(numCollectovistIdeologies / 2) - 1;
