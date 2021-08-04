@@ -88,8 +88,6 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			throw std::runtime_error("Could not load focus collectivist_ethos");
 		}
 
-		determineMutualExclusions(majorIdeologies);
-
 		string ideolgicalFanaticsmPrereqs;
 		int relativePosition = 1 - numCollectovistIdeologies;
 		if (majorIdeologies.contains("fascism"))
@@ -101,7 +99,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		}
 		if (majorIdeologies.contains("communism"))
 		{
-			addCommunistGenericFocuses(relativePosition);
+			addCommunistGenericFocuses(relativePosition, majorIdeologies);
 			if (ideolgicalFanaticsmPrereqs.size() > 0)
 			{
 				ideolgicalFanaticsmPrereqs += " ";
@@ -111,7 +109,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		}
 		if (majorIdeologies.contains("absolutist"))
 		{
-			addAbsolutistGenericFocuses(relativePosition);
+			addAbsolutistGenericFocuses(relativePosition, majorIdeologies);
 			if (ideolgicalFanaticsmPrereqs.size() > 0)
 			{
 				ideolgicalFanaticsmPrereqs += " ";
@@ -121,7 +119,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		}
 		if (majorIdeologies.contains("radical"))
 		{
-			addRadicalGenericFocuses(relativePosition);
+			addRadicalGenericFocuses(relativePosition, majorIdeologies);
 			if (ideolgicalFanaticsmPrereqs.size() > 0)
 			{
 				ideolgicalFanaticsmPrereqs += " ";
@@ -588,68 +586,29 @@ size_t HoI4FocusTree::calculateNumCollectovistIdeologies(const set<string>& majo
 }
 
 
-void HoI4FocusTree::determineMutualExclusions(const set<string>& majorIdeologies)
+std::string HoI4FocusTree::getMutualExclusions(const std::string& ideology, const std::set<string>& majorIdeologies)
 {
-	if (majorIdeologies.contains("fascism"))
+	std::map<std::string, std::string> ideologyFocuses = {{"fascism", "nationalism_focus"},
+		 {"communism", "internationalism_focus"},
+		 {"absolutist", "absolutism_focus"},
+		 {"radical", "radical_focus"}};
+
+
+	std::string returnString = "= {";
+	for (const auto& majorIdeology: majorIdeologies)
 	{
-		communistMutualExclusions += "focus = nationalism_focus";
-		absolutistMutualExlusions += "focus = nationalism_focus";
-		radicalMutualExclusions += "focus = nationalism_focus";
+		if (majorIdeology == ideology)
+		{
+			continue;
+		}
+		if (!ideologyFocuses.contains(majorIdeology))
+		{
+			continue;
+		}
+		returnString += " focus = " + ideologyFocuses[majorIdeology];
 	}
-	if (majorIdeologies.contains("communism"))
-	{
-		if (fascistMutualExlusions.size() > 0)
-		{
-			fascistMutualExlusions += " ";
-		}
-		if (absolutistMutualExlusions.size() > 0)
-		{
-			absolutistMutualExlusions += " ";
-		}
-		if (radicalMutualExclusions.size() > 0)
-		{
-			radicalMutualExclusions += " ";
-		}
-		fascistMutualExlusions += "focus = internationalism_focus";
-		absolutistMutualExlusions += "focus = internationalism_focus";
-		radicalMutualExclusions += "focus = internationalism_focus";
-	}
-	if (majorIdeologies.contains("absolutist"))
-	{
-		if (fascistMutualExlusions.size() > 0)
-		{
-			fascistMutualExlusions += " ";
-		}
-		if (communistMutualExclusions.size() > 0)
-		{
-			communistMutualExclusions += " ";
-		}
-		if (radicalMutualExclusions.size() > 0)
-		{
-			radicalMutualExclusions += " ";
-		}
-		fascistMutualExlusions += "focus = absolutism_focus";
-		communistMutualExclusions += "focus = absolutism_focus";
-		radicalMutualExclusions += "focus = absolutism_focus";
-	}
-	if (majorIdeologies.contains("radical"))
-	{
-		if (fascistMutualExlusions.size() > 0)
-		{
-			fascistMutualExlusions += " ";
-		}
-		if (communistMutualExclusions.size() > 0)
-		{
-			communistMutualExclusions += " ";
-		}
-		if (absolutistMutualExlusions.size() > 0)
-		{
-			absolutistMutualExlusions += " ";
-		}
-		fascistMutualExlusions += "focus = radical_focus";
-		communistMutualExclusions += "focus = radical_focus";
-		absolutistMutualExlusions += "focus = radical_focus";
-	}
+	returnString += " }";
+	return returnString;
 }
 
 
@@ -658,7 +617,7 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 	if (const auto& originalFocus = loadedFocuses.find("nationalism_focus"); originalFocus != loadedFocuses.end())
 	{
 		const auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
-		newFocus->mutuallyExclusive = "= { " + fascistMutualExlusions + " }";
+		newFocus->mutuallyExclusive = getMutualExclusions("fascism", majorIdeologies);
 		newFocus->xPos = relativePosition;
 		sharedFocuses.push_back(newFocus);
 	}
@@ -712,12 +671,12 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 }
 
 
-void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
+void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies)
 {
 	if (const auto& originalFocus = loadedFocuses.find("internationalism_focus"); originalFocus != loadedFocuses.end())
 	{
 		const auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
-		newFocus->mutuallyExclusive = "= { " + communistMutualExclusions + " }";
+		newFocus->mutuallyExclusive = getMutualExclusions("communism", majorIdeologies);
 		newFocus->available = "= {\n";
 		newFocus->available += "\t\t\tOR = {\n";
 		newFocus->available += "\t\t\t\thas_government = communism\n";
@@ -775,12 +734,12 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
 }
 
 
-void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
+void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies)
 {
 	if (const auto& originalFocus = loadedFocuses.find("absolutism_focus"); originalFocus != loadedFocuses.end())
 	{
 		const auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
-		newFocus->mutuallyExclusive = "= { " + absolutistMutualExlusions + " }";
+		newFocus->mutuallyExclusive = getMutualExclusions("absolutist", majorIdeologies);
 		newFocus->xPos = relativePosition;
 		sharedFocuses.push_back(newFocus);
 	}
@@ -822,12 +781,12 @@ void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
 }
 
 
-void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
+void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies)
 {
 	if (const auto& originalFocus = loadedFocuses.find("radical_focus"); originalFocus != loadedFocuses.end())
 	{
 		const auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
-		newFocus->mutuallyExclusive = "= { " + radicalMutualExclusions + " }";
+		newFocus->mutuallyExclusive = getMutualExclusions("radical", majorIdeologies);
 		newFocus->xPos = relativePosition;
 		sharedFocuses.push_back(newFocus);
 	}
