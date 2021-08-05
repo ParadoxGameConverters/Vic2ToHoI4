@@ -113,6 +113,8 @@ class HoI4FocusTree: commonItems::parser
 	[[nodiscard]] const auto& getFocuses() const { return focuses; }
 	[[nodiscard]] const auto& getSharedFocuses() const { return sharedFocuses; }
 	[[nodiscard]] const auto& getBranches() const { return branches; }
+	[[nodiscard]] std::string getMutualExclusions(const std::string& ideology,
+		 const std::set<std::string>& majorIdeologies);
 
 	void addBranch(const std::string& tag, const std::string& branch, HoI4::OnActions& onActions);
 	void eraseBranch(const std::string& branch) { branches.erase(branch); }
@@ -125,22 +127,16 @@ class HoI4FocusTree: commonItems::parser
 	void addChildrenToBranch(const std::string& head, const std::string& id, int branchLevel);
 
 	size_t calculateNumCollectovistIdeologies(const std::set<std::string>& majorIdeologies);
-	void determineMutualExclusions(const std::set<std::string>& majorIdeologies);
 	void addFascistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies);
-	void addCommunistGenericFocuses(int relativePosition);
-	void addAbsolutistGenericFocuses(int relativePosition);
-	void addRadicalGenericFocuses(int relativePosition);
+	void addCommunistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies);
+	void addAbsolutistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies);
+	void addRadicalGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies);
 
 	std::string dstCountryTag;
 	std::vector<std::shared_ptr<HoI4Focus>> focuses;
 	std::vector<std::shared_ptr<HoI4::SharedFocus>> sharedFocuses;
 	std::map<std::string, std::map<std::string, int>> branches; // <first focus, all focuses>
 	int nextFreeColumn = 0;
-
-	std::string fascistMutualExlusions;
-	std::string communistMutualExclusions;
-	std::string absolutistMutualExlusions;
-	std::string radicalMutualExclusions;
 };
 
 
