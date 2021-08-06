@@ -752,7 +752,7 @@ central_africa = {
 }
 
 eastern_africa = {
-name = "Eastern Africa"
+	name = "Eastern Africa"
 	adjective = "Eastern African"
 	level = autonomy_integrated_puppet
 	provinces = {
@@ -792,5 +792,23 @@ name = "Eastern Africa"
 		2255 12908 12986 13209
 		# Zambia (771)
 		697 1846 5199 5221 7872 10538 10594 10930 12504 12677 13173
+	}
+}
+
+southern_africa = {
+	name = "Southern Africa"
+	adjective = "Southern African"
+	level = autonomy_integrated_puppet
+	provinces = {
+		# Transvaal (275)
+		1688 2171 2213 5106 5217 5231 10400 10566 10668 12064 12648
+		# South West Africa (541)
+		2207 2229 4879 5154 5189 7605 7770 8136 10957 10963 10978 12519 12921 13217
+		# Bechuanaland (542)
+		1580 8214 10525 12940 12963
+		# Cape (681)
+		1509 4528 4822 5203 10415 10442 10697 12419 12547 12589 12692
+		# Natal (719)
+		1468 1494 1833 4556 4584 4696 7576 7900 8178
 	}
 }
