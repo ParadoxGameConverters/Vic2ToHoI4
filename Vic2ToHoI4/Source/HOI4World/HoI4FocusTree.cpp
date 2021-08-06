@@ -668,12 +668,6 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition, const std::
 	{
 		const auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		newFocus->mutuallyExclusive = getMutualExclusions("communism", majorIdeologies);
-		newFocus->available = "= {\n";
-		newFocus->available += "\t\t\tOR = {\n";
-		newFocus->available += "\t\t\t\thas_government = communism\n";
-		newFocus->available += "\t\t\t\thas_government = neutrality\n";
-		newFocus->available += "\t\t\t}\n";
-		newFocus->available += "\t\t}";
 		newFocus->xPos = relativePosition;
 		sharedFocuses.push_back(newFocus);
 	}
@@ -705,17 +699,6 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition, const std::
 	if (const auto& originalFocus = loadedFocuses.find("political_commissars"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
-		newFocus->completionReward = "= {\n";
-		newFocus->completionReward += "\t\t\tadd_ideas = political_commissars_focus\n";
-		newFocus->completionReward += "\t\t\tif = {\n";
-		newFocus->completionReward += "\t\t\t\tlimit = { has_government = communism }\n";
-		newFocus->completionReward += "\t\t\t\tadd_popularity = {\n";
-		newFocus->completionReward += "\t\t\t\t\tideology = communism\n";
-		newFocus->completionReward += "\t\t\t\t\tpopularity = 0.2\n";
-		newFocus->completionReward += "\t\t\t\t}\n";
-		newFocus->completionReward += "\t\t\t}\n";
-		newFocus->completionReward += "\t\t\tadd_political_power = 200\n";
-		newFocus->completionReward += "\t\t}";
 		sharedFocuses.push_back(newFocus);
 	}
 	else
