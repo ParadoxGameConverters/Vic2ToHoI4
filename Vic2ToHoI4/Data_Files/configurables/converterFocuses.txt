@@ -174,16 +174,10 @@ shared_focus = {
 			any_neighbor_country = {
 				is_major = yes
 				OR = {
-					has_government = communism
-					has_government = fascism
+					$GOVERNMENTS
 				}
 			}
-			NOT = {
-				any_neighbor_country = {
-					is_major = yes
-					has_government = democratic
-				}
-			}
+			#NO_MAJOR_DEMOCRATIC_NEIGHBOR
 		}
 	}
 
