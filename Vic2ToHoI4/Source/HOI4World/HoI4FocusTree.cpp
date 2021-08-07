@@ -825,7 +825,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 	{
 		if (const auto& rulingParty = Home->getRulingParty(); rulingParty != std::nullopt)
 		{
-			string warPol = rulingParty->getWarPolicy();
+			std::string warPol = rulingParty->getWarPolicy();
 			if (warPol == "jingoism")
 			{
 				WTModifier = 0;
@@ -847,10 +847,8 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 
 	if (const auto& originalFocus = loadedFocuses.find("WarProp"); originalFocus != loadedFocuses.end())
 	{
-		shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->available = "= {\n";
-		newFocus->available += "\t\t\tthreat > " + to_string(0.20 * WTModifier / 1000) + "\n";
-		newFocus->available += "\t\t}";
+		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+		newFocus->updateFocusElement(newFocus->available, "$WTMODIFIER", std::to_string(0.20 * WTModifier / 1000));
 		newFocus->xPos = nextFreeColumn + static_cast<int>(CountriesToContain.size()) - 1;
 		focuses.push_back(newFocus);
 	}
@@ -862,9 +860,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 	if (const auto& originalFocus = loadedFocuses.find("PrepInter"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->available = "= {\n";
-		newFocus->available += "\t\t\tthreat > " + to_string(0.30 * WTModifier / 1000) + "\n";
-		newFocus->available += "\t\t}";
+		newFocus->updateFocusElement(newFocus->available, "$WTMODIFIER", std::to_string(0.30 * WTModifier / 1000));
 		focuses.push_back(newFocus);
 	}
 	else
@@ -875,9 +871,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 	if (const auto& originalFocus = loadedFocuses.find("Lim"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->available = "= {\n";
-		newFocus->available += "\t\t\tthreat > " + to_string(0.50 * WTModifier / 1000) + "\n";
-		newFocus->available += "\t\t}";
+		newFocus->updateFocusElement(newFocus->available, "$WTMODIFIER", std::to_string(0.50 * WTModifier / 1000));
 		focuses.push_back(newFocus);
 	}
 	else
@@ -886,10 +880,10 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 	}
 
 	auto relativePos = 1 - static_cast<int>(CountriesToContain.size());
-	for (auto country: CountriesToContain)
+	for (const auto& country: CountriesToContain)
 	{
-		auto possibleContainedCountryName = country->getName();
-		string containedCountryName;
+		const auto& possibleContainedCountryName = country->getName();
+		std::string containedCountryName;
 		if (possibleContainedCountryName)
 		{
 			containedCountryName = *possibleContainedCountryName;
@@ -904,26 +898,17 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 		if (const auto& originalFocus = loadedFocuses.find("WarPlan"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), country->getTag(), hoi4Localisations);
-			newFocus->bypass = "= {\n";
-			newFocus->bypass += "\t\t\thas_war_with = " + country->getTag() + "\n";
-			newFocus->bypass += "\t\t}";
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", country->getTag());
 			newFocus->xPos = relativePos;
-			newFocus->available = "= {\n";
 			if (truceUntil)
 			{
-				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
-			newFocus->available += "\t\t\tany_other_country = {\n";
-			newFocus->available += "\t\t\t\toriginal_tag = " + country->getTag() + "\n";
-			newFocus->available += "\t\t\t\texists = yes\n";
-			newFocus->available += "\t\t\t\tNOT = { has_government = democratic } \n";
-			newFocus->available += "\t\t\t\tNOT = { is_in_faction_with = " + Home->getTag() + " }\n";
-			newFocus->available += "\t\t\t\tOR = {\n";
-			newFocus->available += "\t\t\t\t\thas_offensive_war = yes\n";
-			newFocus->available += "\t\t\t\t\thas_added_tension_amount > 30\n";
-			newFocus->available += "\t\t\t\t}\n";
-			newFocus->available += "\t\t\t}\n";
-			newFocus->available += "\t\t}";
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", country->getTag());
 			focuses.push_back(newFocus);
 		}
 		else
@@ -936,33 +921,18 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), country->getTag(), hoi4Localisations);
 			newFocus->prerequisites.clear();
 			newFocus->prerequisites.push_back("= { focus =  WarPlan" + Home->getTag() + country->getTag() + " }");
-			newFocus->bypass = "= {\n";
-			newFocus->bypass += "\t\t\thas_war_with = " + country->getTag() + "\n";
-			newFocus->bypass += "\t\t}";
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", country->getTag());
 			newFocus->relativePositionId += country->getTag();
-			newFocus->available = "= {\n";
 			if (truceUntil)
 			{
-				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
-			newFocus->available += "\t\t\tany_other_country = {\n";
-			newFocus->available += "\t\t\t\toriginal_tag = " + country->getTag() + "\n";
-			newFocus->available += "\t\t\t\texists = yes\n";
-			newFocus->available += "\t\t\t\tNOT = { has_government = democratic } \n";
-			newFocus->available += "\t\t\t\tNOT = { is_in_faction_with = " + Home->getTag() + " }\n";
-			newFocus->available += "\t\t\t\tOR = {\n";
-			newFocus->available += "\t\t\t\t\thas_offensive_war = yes\n";
-			newFocus->available += "\t\t\t\t\thas_added_tension_amount > 30\n";
-			newFocus->available += "\t\t\t\t\tthreat > 0.6\n";
-			newFocus->available += "\t\t\t\t}\n";
-			newFocus->available += "\t\t\t}\n";
-			newFocus->available += "\t\t}";
-			newFocus->completionReward = "= {\n";
-			newFocus->completionReward += "\t\t\t" + country->getTag() + " = {\n";
-			newFocus->completionReward +=
-				 "\t\t\t\tadd_opinion_modifier = { target = " + Home->getTag() + " modifier = embargo }\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", country->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", country->getTag());
 			focuses.push_back(newFocus);
 		}
 		else
@@ -975,37 +945,18 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), country->getTag(), hoi4Localisations);
 			newFocus->prerequisites.clear();
 			newFocus->prerequisites.push_back("= { focus =  Embargo" + Home->getTag() + country->getTag() + " }");
-			newFocus->bypass = "= {\n";
-			newFocus->bypass += "\t\t\thas_war_with = " + country->getTag() + "\n";
-			newFocus->bypass += "\t\t}";
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", country->getTag());
 			newFocus->relativePositionId += country->getTag();
-			newFocus->available = "= {\n";
 			if (truceUntil)
 			{
-				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
-			newFocus->available += "\t\t\thas_war = no\n";
-			newFocus->available += "\t\t\tany_other_country = {\n";
-			newFocus->available += "\t\t\t\toriginal_tag = " + country->getTag() + "\n";
-			newFocus->available += "\t\t\t\texists = yes\n";
-			newFocus->available += "\t\t\t\tNOT = { has_government = democratic } \n";
-			newFocus->available += "\t\t\t\tNOT = { is_in_faction_with = " + Home->getTag() + " }\n";
-			newFocus->available += "\t\t\t\tOR = {\n";
-			newFocus->available += "\t\t\t\t\thas_offensive_war = yes\n";
-			newFocus->available += "\t\t\t\t\thas_added_tension_amount > 30\n";
-			newFocus->available += "\t\t\t\t\tthreat > 0.6\n";
-			newFocus->available += "\t\t\t\t}\n";
-			newFocus->available += "\t\t\t}\n";
-			newFocus->available += "\t\t}";
-			newFocus->aiWillDo = "= {\n";
-			newFocus->aiWillDo += "\t\t\tfactor = 10\n";
-			newFocus->aiWillDo += "\t\t}";
-			newFocus->completionReward = "= {\n";
-			newFocus->completionReward += "\t\t\tdeclare_war_on = {\n";
-			newFocus->completionReward += "\t\t\t\ttype = puppet_wargoal_focus\n";
-			newFocus->completionReward += "\t\t\t\ttarget = " + country->getTag() + "\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", country->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", country->getTag());
 			focuses.push_back(newFocus);
 
 			relativePos += 2;
