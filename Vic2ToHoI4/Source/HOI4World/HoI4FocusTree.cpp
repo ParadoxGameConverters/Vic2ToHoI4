@@ -88,43 +88,30 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			throw std::runtime_error("Could not load focus collectivist_ethos");
 		}
 
-		string ideolgicalFanaticsmPrereqs;
+		std::string ideolgicalFanaticsmPrereqs;
 		int relativePosition = 1 - numCollectovistIdeologies;
 		if (majorIdeologies.contains("fascism"))
 		{
 			addFascistGenericFocuses(relativePosition, majorIdeologies);
-			ideolgicalFanaticsmPrereqs += " ";
-			ideolgicalFanaticsmPrereqs += "focus = paramilitarism";
+			ideolgicalFanaticsmPrereqs += " focus = paramilitarism";
 			relativePosition += 2;
 		}
 		if (majorIdeologies.contains("communism"))
 		{
 			addCommunistGenericFocuses(relativePosition, majorIdeologies);
-			if (ideolgicalFanaticsmPrereqs.size() > 0)
-			{
-				ideolgicalFanaticsmPrereqs += " ";
-			}
-			ideolgicalFanaticsmPrereqs += "focus = political_commissars";
+			ideolgicalFanaticsmPrereqs += " focus = political_commissars";
 			relativePosition += 2;
 		}
 		if (majorIdeologies.contains("absolutist"))
 		{
 			addAbsolutistGenericFocuses(relativePosition, majorIdeologies);
-			if (ideolgicalFanaticsmPrereqs.size() > 0)
-			{
-				ideolgicalFanaticsmPrereqs += " ";
-			}
-			ideolgicalFanaticsmPrereqs += "focus = historical_claims_focus";
+			ideolgicalFanaticsmPrereqs += " focus = historical_claims_focus";
 			relativePosition += 2;
 		}
 		if (majorIdeologies.contains("radical"))
 		{
 			addRadicalGenericFocuses(relativePosition, majorIdeologies);
-			if (ideolgicalFanaticsmPrereqs.size() > 0)
-			{
-				ideolgicalFanaticsmPrereqs += " ";
-			}
-			ideolgicalFanaticsmPrereqs += "focus = army_provides_focus";
+			ideolgicalFanaticsmPrereqs += " focus = army_provides_focus";
 		}
 
 		if (const auto& originalFocus = loadedFocuses.find("ideological_fanaticism");
@@ -132,7 +119,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		{
 			auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 			newFocus->prerequisites.clear();
-			newFocus->prerequisites.push_back("= { " + ideolgicalFanaticsmPrereqs + " }");
+			newFocus->prerequisites.push_back("= {" + ideolgicalFanaticsmPrereqs + " }");
 			newFocus->xPos = 0;
 			newFocus->yPos = 5;
 			newFocus->relativePositionId = "collectivist_ethos";
@@ -162,30 +149,34 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			newFocus->completionReward += "}";
 		}
 		newFocus->xPos = (numCollectovistIdeologies + 1) / 2;
-		newFocus->aiWillDo = "= {\n";
-		newFocus->aiWillDo += "\t\t\tfactor = 95\n";
-		newFocus->aiWillDo += "\t\t\tmodifier = {\n";
-		newFocus->aiWillDo += "\t\t\t\tfactor = 0.1\n";
-		newFocus->aiWillDo += "\t\t\t\tany_neighbor_country = {\n";
-		newFocus->aiWillDo += "\t\t\t\t\tis_major = yes\n";
-		newFocus->aiWillDo += "\t\t\t\t\tOR = {\n";
+		std::string governments;
 		for (auto majorIdeology: majorIdeologies)
 		{
-			newFocus->aiWillDo += "\t\t\t\t\t\thas_government = " + majorIdeology + "\n";
+			if (majorIdeology == *majorIdeologies.begin())
+			{
+				governments += "has_government = " + majorIdeology + "\n";
+			}
+			else
+			{
+				governments += "\t\t\t\t\thas_government = " + majorIdeology + "\n";
+			}
 		}
-		newFocus->aiWillDo += "\t\t\t\t\t}\n";
-		newFocus->aiWillDo += "\t\t\t\t}\n";
+		newFocus->updateFocusElement(newFocus->aiWillDo, "$GOVERNMENTS", governments);
+		std::string noMajorDemocraticNeighbor;
+		noMajorDemocraticNeighbor += "NOT = {\n";
+		noMajorDemocraticNeighbor += "\t\t\t\tany_neighbor_country = {\n";
+		noMajorDemocraticNeighbor += "\t\t\t\t\tis_major = yes\n";
+		noMajorDemocraticNeighbor += "\t\t\t\t\thas_government = democratic\n";
+		noMajorDemocraticNeighbor += "\t\t\t\t}\n";
+		noMajorDemocraticNeighbor += "\t\t\t}\n";
 		if (majorIdeologies.contains("democratic"))
 		{
-			newFocus->aiWillDo += "\t\t\t\tNOT = {\n";
-			newFocus->aiWillDo += "\t\t\t\t\tany_neighbor_country = {\n";
-			newFocus->aiWillDo += "\t\t\t\t\t\tis_major = yes\n";
-			newFocus->aiWillDo += "\t\t\t\t\t\thas_government = democratic\n";
-			newFocus->aiWillDo += "\t\t\t\t\t}\n";
-			newFocus->aiWillDo += "\t\t\t\t}\n";
+			newFocus->updateFocusElement(newFocus->aiWillDo, "#NO_MAJOR_DEMOCRATIC_NEIGHBOR", noMajorDemocraticNeighbor);
 		}
-		newFocus->aiWillDo += "\t\t\t}\n";
-		newFocus->aiWillDo += "\t\t}";
+		else
+		{
+			newFocus->removePlaceholder(newFocus->aiWillDo, "#NO_MAJOR_DEMOCRATIC_NEIGHBOR");
+		}
 		sharedFocuses.push_back(newFocus);
 	}
 	else
