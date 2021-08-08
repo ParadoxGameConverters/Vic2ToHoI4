@@ -103,15 +103,9 @@ shared_focus = {
 	prerequisite = { focus = collectivist_ethos }
 	mutually_exclusive = { focus = nationalism_focus }
 	available = {
-		if = {
-			limit = { original_tag = CHI }
+		OR = {
 			has_government = communism
-			else = {
-				OR = {
-					has_government = communism
-					has_government = neutrality
-				}
-			}
+			has_government = neutrality
 		}
 	}
 	x = 0
@@ -448,13 +442,6 @@ shared_focus = {
 	completion_reward = {
 		add_ideas = political_commissars_focus
 		if = {
-			limit = { has_government = fascism }
-			add_popularity = {
-				ideology = fascism
-				popularity = 0.2
-			}
-		}
-		if = {
 			limit = { has_government = communism }
 			add_popularity = {
 				ideology = communism
@@ -719,7 +706,7 @@ focus = {
 	y = 0
 	cost = 10
 	available = {
-		threat > 10 # determined in code from Vic2 war policy
+		threat > $WTMODIFIER
 	}
 	completion_reward = {
 		add_stability = 0.05
@@ -738,7 +725,7 @@ focus = {
 	relative_position_id = WarProp
 	cost = 10
 	available = {
-		threat > 15 # determined in code from Vic2 war policy
+		threat > $WTMODIFIER
 	}
 	completion_reward = {
 		add_political_power = 120
@@ -758,7 +745,7 @@ focus = {
 	relative_position_id = PrepInter
 	cost = 10
 	available = {
-		threat > 25 # determined in code from Vic2 war policy
+		threat > $WTMODIFIER
 	}
 	completion_reward = {
 		add_ideas = limited_interventionism
@@ -774,13 +761,23 @@ focus = {
 	text = "War Plan "
 	prerequisite = { focus = Lim }
 	bypass = {
-		# determined in code
+		has_war_with = $TARGET
 	}
 	y = 1
 	relative_position_id = Lim
 	cost = 10
 	available = {
-		# determined in code
+		#TRUCE
+		any_other_country = {
+			original_tag = $TARGET
+			exists = yes
+			NOT = { has_government = democratic } 
+			NOT = { is_in_faction_with = ROOT }
+			OR = {
+				has_offensive_war = yes
+				has_added_tension_amount > 30
+			}
+		}
 	}
 	completion_reward = {
 		army_experience = 20
@@ -802,16 +799,29 @@ focus = {
 	text = "Embargo "
 	prerequisite = { focus = WarPlan }
 	bypass = {
-		# determined in code
+		has_war_with = $TARGET
 	}
 	y = 1
 	relative_position_id = WarPlan
 	cost = 10
 	available = {
-		# determined in code
+		#TRUCE
+		any_other_country = {
+			original_tag = $TARGET
+			exists = yes
+			NOT = { has_government = democratic } 
+			NOT = { is_in_faction_with = ROOT }
+			OR = {
+				has_offensive_war = yes
+				has_added_tension_amount > 30
+				threat > 0.6
+			}
+		}
 	}
 	completion_reward = {
-		# determined in code
+		$TARGET = {
+			add_opinion_modifier = { target = ROOT modifier = embargo }
+		}
 	}
 	ai_will_do = {
 		factor = 10
@@ -825,17 +835,32 @@ focus = {
 	prerequisite = { focus = Embargo }
 	prerequisite = { focus = Lim }
 	bypass = {
-		# determined in code
+		has_war_with = $TARGET
 	}
 	x = 0
 	y = 1
 	relative_position_id = Embargo
 	cost = 10
 	available = {
-		# determined in code
+		#TRUCE
+		has_war = no
+		any_other_country = {
+			original_tag = $TARGET
+			exists = yes
+			NOT = { has_government = democratic } 
+			NOT = { is_in_faction_with = ROOT }
+			OR = {
+				has_offensive_war = yes
+				has_added_tension_amount > 30
+				threat > 0.6
+			}
+		}
 	}
 	completion_reward = {
-		# determined in code
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = $TARGET
+		}
 	}
 	ai_will_do = {
 		factor = 10
