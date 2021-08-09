@@ -1159,7 +1159,7 @@ focus = {
 	prerequisite = { focus = StrengthenColonies }
 	cost = 10
 	completion_reward = {
-		add_ideas = militarism_focus
+		add_ideas = militarism_focus_absolutist
 	}
 	ai_will_do = {
 		factor = 10
@@ -1172,6 +1172,32 @@ focus = {
 	id = Protectorate
 	icon = GFX_goal_generic_major_war
 	cost = 10
+	available = {
+		#TRUCE
+		$TARGET = { is_in_faction = no }
+	}
+	bypass = {
+		OR = {
+			ROOT = {
+				is_in_faction_with = $TARGET
+				has_war_with = $TARGET
+			}
+			NOT = { country_exists = $TARGET }
+		}
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			strength_ratio = { tag = $TARGET ratio < 1 }
+		}
+	}
+	completion_reward = {
+		create_wargoal = {
+			type = annex_everything
+			target = $TARGET
+		}
+	}
 }
 
 focus = {
@@ -1501,6 +1527,32 @@ focus = {
 	id = Annex
 	icon = GFX_goal_generic_major_war
 	cost = 10
+	available = {
+		#TRUCE
+		$TARGET = { is_in_faction = no }
+	}
+	bypass = {
+		OR = {
+			ROOT = {
+				is_in_faction_with = $TARGET
+				has_war_with = $TARGET
+			}
+			NOT = { country_exists = $TARGET }
+		}
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 0
+			strength_ratio = { tag = $TARGET ratio < 1 }
+		}
+	}
+	completion_reward = {
+		create_wargoal = {
+			type = annex_everything
+			target = $TARGET
+		}
+	}
 }
 
 focus = {
