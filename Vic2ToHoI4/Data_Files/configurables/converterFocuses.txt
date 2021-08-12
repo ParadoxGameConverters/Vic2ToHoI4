@@ -1585,6 +1585,17 @@ focus = {
 	ai_will_do = {
 		factor = 5
 	}
+	available = {
+		$TARGET = { communism > 0.5 }
+	}
+	completion_reward = {
+		$TARGET = {
+			start_civil_war = {
+				ideology = communism
+				size = 0.5
+			}
+		}
+	}
 }
 
 focus = {
