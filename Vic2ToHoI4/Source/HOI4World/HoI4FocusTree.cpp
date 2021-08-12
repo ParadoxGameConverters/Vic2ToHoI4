@@ -816,8 +816,8 @@ std::unique_ptr<HoI4FocusTree> HoI4FocusTree::makeCustomizedCopy(const HoI4::Cou
 }
 
 
-void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
-	 vector<shared_ptr<HoI4::Country>>& CountriesToContain,
+void HoI4FocusTree::addDemocracyNationalFocuses(std::shared_ptr<HoI4::Country> Home,
+	 std::vector<shared_ptr<HoI4::Country>>& CountriesToContain,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	double WTModifier = 1;
@@ -970,13 +970,13 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 }
 
 
-void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country> Home,
-	 const vector<shared_ptr<HoI4::Country>>& targetColonies,
-	 const vector<shared_ptr<HoI4::Country>>& annexationTargets,
+void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Country> Home,
+	 const std::vector<shared_ptr<HoI4::Country>>& targetColonies,
+	 const std::vector<shared_ptr<HoI4::Country>>& annexationTargets,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	auto possibleHomeCountryAdjective = Home->getAdjective();
-	string homeCountryAdjective;
+	const auto& possibleHomeCountryAdjective = Home->getAdjective();
+	std::string homeCountryAdjective;
 	if (possibleHomeCountryAdjective)
 	{
 		homeCountryAdjective = *possibleHomeCountryAdjective;
@@ -1070,9 +1070,6 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		newFocus->relativePositionId = "StrengthenColonies" + Home->getTag();
 		newFocus->xPos = 0;
 		newFocus->yPos = 1;
-		newFocus->completionReward = "= {\n";
-		newFocus->completionReward += "\t\tadd_ideas = militarism_focus_absolutist\n";
-		newFocus->completionReward += "}\n";
 		focuses.push_back(newFocus);
 	}
 	else
@@ -1083,10 +1080,10 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	// establish protectorate
 	if (targetColonies.size() >= 1)
 	{
-		auto target = targetColonies.front();
+		const auto& target = targetColonies.front();
 
-		auto possibleProtectorateCountryName = target->getName();
-		string protectorateCountryName;
+		const auto& possibleProtectorateCountryName = target->getName();
+		std::string protectorateCountryName;
 		if (possibleProtectorateCountryName)
 		{
 			protectorateCountryName = *possibleProtectorateCountryName;
@@ -1101,39 +1098,22 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
-			newFocus->available += "= {\n";
 			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
-				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
-			newFocus->available += "\t\t\t" + target->getTag() + " = { is_in_faction = no }\n";
-			newFocus->available += "\t\t}";
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
 			newFocus->prerequisites.push_back("= { focus = ColonialArmy" + Home->getTag() + " }");
 			newFocus->relativePositionId = "ColonialArmy" + Home->getTag();
 			newFocus->xPos = 0;
 			newFocus->yPos = 1;
-			newFocus->bypass += "= {\n";
-			newFocus->bypass += "\t\t\tOR = {\n";
-			newFocus->bypass += "\t\t\t\t" + Home->getTag() + " = {\n";
-			newFocus->bypass += "\t\t\t\t\tis_in_faction_with = " + target->getTag() + "\n";
-			newFocus->bypass += "\t\t\t\t\thas_war_with = " + target->getTag() + "\n";
-			newFocus->bypass += "\t\t\t\t}\n";
-			newFocus->bypass += "\t\t\t\tNOT = { country_exists = " + target->getTag() + " }\n";
-			newFocus->bypass += "\t\t\t}\n";
-			newFocus->bypass += "\t\t}";
-			newFocus->aiWillDo += "= {\n";
-			newFocus->aiWillDo += "\t\t\tfactor = 10\n";
-			newFocus->aiWillDo += "\t\t\tmodifier = {\n";
-			newFocus->aiWillDo += "\t\t\t\tfactor = 0\n";
-			newFocus->aiWillDo += "\t\t\t\tstrength_ratio = { tag = " + target->getTag() + " ratio < 1 }\n";
-			newFocus->aiWillDo += "\t\t\t}\n";
-			newFocus->aiWillDo += "\t\t}";
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "\t\t\tcreate_wargoal = {\n";
-			newFocus->completionReward += "\t\t\t\ttype = annex_everything\n";
-			newFocus->completionReward += "\t\t\t\ttarget = " + target->getTag() + "\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
 			focuses.push_back(newFocus);
 		}
 		else
@@ -1143,10 +1123,10 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	}
 	if (targetColonies.size() >= 2)
 	{
-		auto target = targetColonies.back();
+		const auto& target = targetColonies.back();
 
-		auto possibleProtectorateCountryName = target->getName();
-		string protectorateCountryName;
+		const auto& possibleProtectorateCountryName = target->getName();
+		std::string protectorateCountryName;
 		if (possibleProtectorateCountryName)
 		{
 			protectorateCountryName = *possibleProtectorateCountryName;
@@ -1161,40 +1141,24 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
-			newFocus->available += "= {\n";
 			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
-				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
-			newFocus->available += "\t\t\t" + target->getTag() + " = { is_in_faction = no }\n";
-			newFocus->available += "\t\t}";
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
 			newFocus->prerequisites.push_back(
 				 "= { focus = Protectorate" + Home->getTag() + targetColonies.front()->getTag() + " }");
 			newFocus->relativePositionId = "Protectorate" + Home->getTag() + targetColonies.front()->getTag();
 			newFocus->xPos = 0;
 			newFocus->yPos = 1;
-			newFocus->bypass += "= {\n";
-			newFocus->bypass += "\t\t\tOR = {\n";
-			newFocus->bypass += "\t\t\t\t" + Home->getTag() + " = {\n";
-			newFocus->bypass += "\t\t\t\t\tis_in_faction_with = " + target->getTag() + "\n";
-			newFocus->bypass += "\t\t\t\t\thas_war_with = " + target->getTag() + "\n";
-			newFocus->bypass += "\t\t\t\t}\n";
-			newFocus->bypass += "\t\t\t\tNOT = { country_exists = " + target->getTag() + " }\n";
-			newFocus->bypass += "\t\t\t}\n";
-			newFocus->bypass += "\t\t}";
-			newFocus->aiWillDo += "= {\n";
-			newFocus->aiWillDo += "\t\t\tfactor = 5\n";
-			newFocus->aiWillDo += "\t\t\tmodifier = {\n";
-			newFocus->aiWillDo += "\t\t\t\tfactor = 0\n";
-			newFocus->aiWillDo += "\t\t\t\tstrength_ratio = { tag = " + target->getTag() + " ratio < 1 }\n";
-			newFocus->aiWillDo += "\t\t\t}\n";
-			newFocus->aiWillDo += "\t\t}";
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "\t\t\tcreate_wargoal = {\n";
-			newFocus->completionReward += "\t\t\t\ttype = annex_everything\n";
-			newFocus->completionReward += "\t\t\t\ttarget = " + target->getTag() + "\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "factor = 10", "factor = 5");
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
 			focuses.push_back(newFocus);
 		}
 		else
@@ -1297,10 +1261,10 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	// ANNEX
 	if (annexationTargets.size() >= 1)
 	{
-		auto target = annexationTargets.front();
+		const auto& target = annexationTargets.front();
 
-		auto possibleTargetCountryName = target->getName();
-		string targetCountryName;
+		const auto& possibleTargetCountryName = target->getName();
+		std::string targetCountryName;
 		if (possibleTargetCountryName)
 		{
 			targetCountryName = *possibleTargetCountryName;
@@ -1315,39 +1279,22 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Annex" + Home->getTag() + target->getTag();
-			newFocus->available += "= {\n";
 			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
-				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
-			newFocus->available += "\t\t\t" + target->getTag() + " = { is_in_faction = no }\n";
-			newFocus->available += "\t\t}";
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
 			newFocus->prerequisites.push_back("= { focus = PrepTheBorder" + Home->getTag() + " }");
 			newFocus->relativePositionId = "PrepTheBorder" + Home->getTag();
 			newFocus->xPos = 2;
 			newFocus->yPos = 1;
-			newFocus->bypass += "= {\n";
-			newFocus->bypass += "\t\t\tOR = {\n";
-			newFocus->bypass += "\t\t\t\t" + Home->getTag() + "= {\n";
-			newFocus->bypass += "\t\t\t\t\tis_in_faction_with = " + target->getTag() + "\n";
-			newFocus->bypass += "\t\t\t\t\thas_war_with = " + target->getTag() + "\n";
-			newFocus->bypass += "\t\t\t\t}\n";
-			newFocus->bypass += "\t\t\t\tNOT = { country_exists = " + target->getTag() + " }\n";
-			newFocus->bypass += "\t\t\t}\n";
-			newFocus->bypass += "\t\t}";
-			newFocus->aiWillDo += "= {\n";
-			newFocus->aiWillDo += "\t\t\tfactor = 5\n";
-			newFocus->aiWillDo += "\t\t\tmodifier = {\n";
-			newFocus->aiWillDo += "\t\t\t\tfactor = 0\n";
-			newFocus->aiWillDo += "\t\t\t\tstrength_ratio = { tag = " + target->getTag() + " ratio < 1 }\n";
-			newFocus->aiWillDo += "\t\t\t}\n";
-			newFocus->aiWillDo += "\t\t}";
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "\t\t\tcreate_wargoal = {\n";
-			newFocus->completionReward += "\t\t\t\ttype = annex_everything\n";
-			newFocus->completionReward += "\t\t\t\ttarget = " + target->getTag() + "\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
 			focuses.push_back(newFocus);
 		}
 		else
@@ -1357,10 +1304,10 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	}
 	if (annexationTargets.size() >= 2)
 	{
-		auto target = annexationTargets.back();
+		const auto& target = annexationTargets.back();
 
-		auto possibleTargetCountryName = target->getName();
-		string targetCountryName;
+		const auto& possibleTargetCountryName = target->getName();
+		std::string targetCountryName;
 		if (possibleTargetCountryName)
 		{
 			targetCountryName = *possibleTargetCountryName;
@@ -1375,39 +1322,23 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = "Annex" + Home->getTag() + target->getTag();
-			newFocus->available += "= {\n";
 			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
-				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
 			}
-			newFocus->available += "\t\t\t\"" + target->getTag() + "\" = { is_in_faction = no }\n";
-			newFocus->available += "\t\t}";
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
 			newFocus->prerequisites.push_back("= { focus = NatSpirit" + Home->getTag() + " }");
 			newFocus->relativePositionId = "NatSpirit" + Home->getTag();
 			newFocus->xPos = 1;
 			newFocus->yPos = 1;
-			newFocus->bypass += "= {\n";
-			newFocus->bypass += "\t\t\tOR = {\n";
-			newFocus->bypass += "\t\t\t\t" + Home->getTag() + " = {\n";
-			newFocus->bypass += "\t\t\t\t\tis_in_faction_with = " + target->getTag() + "\n";
-			newFocus->bypass += "\t\t\t\t\thas_war_with = " + target->getTag() + "\n";
-			newFocus->bypass += "\t\t\t\t}\n";
-			newFocus->bypass += "\t\t\t\tNOT = { country_exists = " + target->getTag() + " }\n";
-			newFocus->bypass += "\t\t\t}\n";
-			newFocus->bypass += "\t\t}";
-			newFocus->aiWillDo += "= {\n";
-			newFocus->aiWillDo += "\t\t\tfactor = 5\n";
-			newFocus->aiWillDo += "\t\t\tmodifier = {\n";
-			newFocus->aiWillDo += "\t\t\t\tfactor = 0\n";
-			newFocus->aiWillDo += "\t\t\t\tstrength_ratio = { tag = " + target->getTag() + " ratio < 1 }\n";
-			newFocus->aiWillDo += "\t\t\t}\n";
-			newFocus->aiWillDo += "\t\t}";
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "\t\t\tcreate_wargoal = {\n";
-			newFocus->completionReward += "\t\t\t\ttype = annex_everything\n";
-			newFocus->completionReward += "\t\t\t\ttarget = " + target->getTag() + "\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
 			focuses.push_back(newFocus);
 		}
 		else
