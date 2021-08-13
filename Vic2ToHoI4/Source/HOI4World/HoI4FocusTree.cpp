@@ -1349,17 +1349,17 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 	nextFreeColumn += 2;
 }
 
-void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
-	 const vector<shared_ptr<HoI4::Country>>& coupTargets,
+void HoI4FocusTree::addCommunistCoupBranch(std::shared_ptr<HoI4::Country> Home,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& coupTargets,
 	 const std::set<std::string>& majorIdeologies,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	if (coupTargets.size() > 0)
+	if (!coupTargets.empty())
 	{
 		int coupTargetsNum = std::min(static_cast<int>(coupTargets.size()), 2);
 		if (const auto& originalFocus = loadedFocuses.find("Home_of_Revolution"); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
 			newFocus->xPos = nextFreeColumn + coupTargetsNum - 1;
 			newFocus->yPos = 0;
 			focuses.push_back(newFocus);
@@ -1373,8 +1373,8 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 		{
 			if (i < coupTargets.size())
 			{
-				auto possibleCoupCountryName = coupTargets[i]->getName();
-				string coupCountryName;
+				const auto& possibleCoupCountryName = coupTargets[i]->getName();
+				std::string coupCountryName;
 				if (possibleCoupCountryName)
 				{
 					coupCountryName = *possibleCoupCountryName;
@@ -1394,59 +1394,24 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 					newFocus->yPos = 1;
 					newFocus->completionReward += "= {\n";
 					newFocus->completionReward += "\t\t\t" + coupTargets[i]->getTag() + " = {\n";
-					if (majorIdeologies.contains("fascism"))
+					std::map<std::string, std::string> ideologyIdeas = {{"fascism", "fascist_influence"},
+						 {"communism", "communist_influence"},
+						 {"democratic", "democratic_influence"},
+						 {"absolutist", "absolutist_influence"},
+						 {"radical", "radical_influence"}};
+					for (const auto& majorIdeology: majorIdeologies)
 					{
+						if (!ideologyIdeas.contains(majorIdeology))
+						{
+							continue;
+						}
 						newFocus->completionReward += "\t\t\t\tif = {\n";
 						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t" + Home->getTag() + " = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t\thas_government = fascism\n";
+						newFocus->completionReward += "\t\t\t\t\t\tROOT = {\n";
+						newFocus->completionReward += "\t\t\t\t\t\t\thas_government = " + majorIdeology + "\n";
 						newFocus->completionReward += "\t\t\t\t\t\t}\n";
 						newFocus->completionReward += "\t\t\t\t\t}\n";
-						newFocus->completionReward += "\t\t\t\t\tadd_ideas = fascist_influence\n";
-						newFocus->completionReward += "\t\t\t\t}\n";
-					}
-					if (majorIdeologies.contains("communism"))
-					{
-						newFocus->completionReward += "\t\t\t\tif = {\n";
-						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t" + Home->getTag() + " = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t\thas_government = communism\n";
-						newFocus->completionReward += "\t\t\t\t\t\t}\n";
-						newFocus->completionReward += "\t\t\t\t\t}\n";
-						newFocus->completionReward += "\t\t\t\t\tadd_ideas = communist_influence\n";
-						newFocus->completionReward += "\t\t\t\t}\n";
-					}
-					if (majorIdeologies.contains("democratic"))
-					{
-						newFocus->completionReward += "\t\t\t\tif = {\n";
-						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t" + Home->getTag() + " = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t\thas_government = democratic\n";
-						newFocus->completionReward += "\t\t\t\t\t\t}\n";
-						newFocus->completionReward += "\t\t\t\t\t}\n";
-						newFocus->completionReward += "\t\t\t\t\tadd_ideas = democratic_influence\n";
-						newFocus->completionReward += "\t\t\t\t}\n";
-					}
-					if (majorIdeologies.contains("absolutist"))
-					{
-						newFocus->completionReward += "\t\t\t\tif = {\n";
-						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t" + Home->getTag() + " = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t\thas_government = absolutist\n";
-						newFocus->completionReward += "\t\t\t\t\t\t}\n";
-						newFocus->completionReward += "\t\t\t\t\t}\n";
-						newFocus->completionReward += "\t\t\t\t\tadd_ideas = absolutist_influence\n";
-						newFocus->completionReward += "\t\t\t\t}\n";
-					}
-					if (majorIdeologies.contains("radical"))
-					{
-						newFocus->completionReward += "\t\t\t\tif = {\n";
-						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t" + Home->getTag() + " = {\n";
-						newFocus->completionReward += "\t\t\t\t\t\t\thas_government = radical\n";
-						newFocus->completionReward += "\t\t\t\t\t\t}\n";
-						newFocus->completionReward += "\t\t\t\t\t}\n";
-						newFocus->completionReward += "\t\t\t\t\tadd_ideas = radical_influence\n";
+						newFocus->completionReward += "\t\t\t\t\tadd_ideas = " + ideologyIdeas[majorIdeology] + "\n";
 						newFocus->completionReward += "\t\t\t\t}\n";
 					}
 					newFocus->completionReward += "\t\t\t\tcountry_event = { id = generic.1 }\n";
@@ -1469,17 +1434,8 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 					newFocus->relativePositionId = "Influence_" + coupTargets[i]->getTag() + "_" + Home->getTag();
 					newFocus->xPos = 0;
 					newFocus->yPos = 1;
-					newFocus->available = "= {\n";
-					newFocus->available += "\t\t\t" + coupTargets[i]->getTag() + " = { communism > 0.5 }\n";
-					newFocus->available += "\t\t}";
-					newFocus->completionReward += "= {\n";
-					newFocus->completionReward += "\t\t\t" + coupTargets[i]->getTag() + " = {\n";
-					newFocus->completionReward += "\t\t\t\tstart_civil_war = {\n";
-					newFocus->completionReward += "\t\t\t\t\tideology = communism\n";
-					newFocus->completionReward += "\t\t\t\t\tsize = 0.5\n";
-					newFocus->completionReward += "\t\t\t\t}\n";
-					newFocus->completionReward += "\t\t\t}\n";
-					newFocus->completionReward += "\t\t}";
+					newFocus->updateFocusElement(newFocus->available, "$TARGET", coupTargets[i]->getTag());
+					newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", coupTargets[i]->getTag());
 					focuses.push_back(newFocus);
 				}
 				else
