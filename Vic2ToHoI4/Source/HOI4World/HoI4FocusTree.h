@@ -61,7 +61,7 @@ class HoI4FocusTree: commonItems::parser
 		 const std::set<std::string>& majorIdeologies,
 		 HoI4::Localisation& hoi4Localisations);
 	void addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
-		 const std::vector<std::shared_ptr<HoI4::Country>>& warTargets,
+		 std::vector<std::shared_ptr<HoI4::Country>> warTargets,
 		 HoI4::Events& events,
 		 HoI4::Localisation& hoi4Localisations);
 	void addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Home,
