@@ -815,7 +815,7 @@ southern_africa = {
 
 southern_europe = {
 	name = "Southern Europe"
-	adjective = "Southern Europe"
+	adjective = "Southern European"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Corsica (1)
@@ -955,7 +955,7 @@ southern_europe = {
 
 western_europe = {
 	name = "Western Europe"
-	adjective = "Western Europe"
+	adjective = "Western European"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Switzerland (3)
@@ -1063,7 +1063,7 @@ western_europe = {
 
 northern_europe = {
 	name = "Northern Europe"
-	adjective = "Northern Europe"
+	adjective = "Northern European"
 	level = autonomy_integrated_puppet
 	provinces = {
 		#states
@@ -1203,5 +1203,143 @@ northern_europe = {
 		13119 
 		# Petsamo (722)
 		6012 6183 9140 11142
+	}
+}
+
+eastern_europe = {
+	name = "Eastern Europe"
+	adjective = "Eastern European"
+	level = autonomy_integrated_puppet
+	provinces = {
+		# (5)
+		# (9)
+		# (10)
+		# (43)
+		# (46)
+		# (48)
+		# (63)
+		# (66)
+		# (67)
+		# (68)
+		# (69)
+		# (70)
+		# (71)
+		# (72)
+		# (73)
+		# (74)
+		# (75)
+		# (76)
+		# (77)
+		# (78)
+		# (79)
+		# (80)
+		# (81)
+		# (82)
+		# (83)
+		# (84)
+		# (85)
+		# (86)
+		# (87)
+		# (88)
+		# (89)
+		# (90)
+		# (91)
+		# (92)
+		# (93)
+		# (94)
+		# (95)
+		# (96)
+		# (97)
+		# (98)
+		# (137)
+		# (154)
+		# (155)
+		# (192)
+		# (193)
+		# (194)
+		# (196)
+		# (197)
+		# (198)
+		# (199)
+		# (200)
+		# (201)
+		# (202)
+		# (203)
+		# (204)
+		# (205)
+		# (206)
+		# (207)
+		# (208)
+		# (209)
+		# (210)
+		# (211)
+		# (212)
+		# (214)
+		# (215)
+		# (216)
+		# (217)
+		# (218)
+		# (219)
+		# (220)
+		# (221)
+		# (222)
+		# (223)
+		# (224)
+		# (225)
+		# (226)
+		# (227)
+		# (228)
+		# (232)
+		# (233)
+		# (234)
+		# (235)
+		# (236)
+		# (237)
+		# (238)
+		# (239)
+		# (240)
+		# (241)
+		# (242)
+		# (243)
+		# (244)
+		# (245)
+		# (246)
+		# (247)
+		# (248)
+		# (249)
+		# (250)
+		# (251)
+		# (252)
+		# (253)
+		# (254)
+		# (255)
+		# (256)
+		# (257)
+		# (258)
+		# (259)
+		# (260)
+		# (262)
+		# (263)
+		# (264)
+		# (265)
+		# (351)
+		# (397)
+		# (398)
+		# (399)
+		# (400)
+		# (401)
+		# (406)
+		# (407)
+		# (573)
+		# (581)
+		# (582)
+		# (651)
+		# (652)
+		# (664)
+		# (762)
+		# (763)
+		# (766)
+		# (784)
+		# (801)
 	}
 }
