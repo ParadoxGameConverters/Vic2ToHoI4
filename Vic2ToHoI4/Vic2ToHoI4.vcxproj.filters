@@ -283,6 +283,9 @@
     <Filter Include="CommonItems\ModLoader">
       <UniqueIdentifier>{40906980-dde2-4955-898c-e4da9c9181c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{b58e7fd9-09ad-40ad-a06a-719749bafa61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -2806,6 +2809,15 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\factions_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Resources\msvcp140_codecvt_ids.dll">
+      <Filter>Resources</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Resources\VC_redist.x64.exe">
+      <Filter>Resources</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\Resources\vcruntime140_1.dll">
+      <Filter>Resources</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
