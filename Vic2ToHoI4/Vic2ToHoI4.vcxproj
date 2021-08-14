@@ -1234,7 +1234,14 @@
         <DeploymentContent>true</DeploymentContent>
         <Link>flags\%(Filename)%(Extension)</Link>
     </Content>
-</ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data_Files\blankMod\**\*.*">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <DeploymentContent>true</DeploymentContent>
+        <Link>blankmod\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
