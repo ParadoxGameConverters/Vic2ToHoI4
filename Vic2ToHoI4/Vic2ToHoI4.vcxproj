@@ -77,6 +77,7 @@
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <OmitFramePointers>false</OmitFramePointers>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,6 +110,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <OmitFramePointers>false</OmitFramePointers>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,6 +153,7 @@
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp" />
+    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Relations.cpp" />
     <ClCompile Include="Source\HOI4World\Events\CapitulationEvents.cpp" />
     <ClCompile Include="Source\HOI4World\Events\LarOccupationEvents.cpp" />
     <ClCompile Include="Source\HOI4World\Events\NavalTreatyEventsUpdaters.cpp" />

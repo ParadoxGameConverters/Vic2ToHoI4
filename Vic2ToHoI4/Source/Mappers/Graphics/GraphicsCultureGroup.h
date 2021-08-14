@@ -24,6 +24,7 @@ class GraphicsCultureGroup
 	[[nodiscard]] const auto& getMaleMonarchPortraits() const { return maleMonarchPortraits; }
 	[[nodiscard]] const auto& getFemaleMonarchPortraits() const { return femaleMonarchPortraits; }
 	[[nodiscard]] const auto& getLeaderPortraits() const { return leaderPortraits; }
+	[[nodiscard]] const auto& getFemalePortraits() const { return femalePortraits; }
 	[[nodiscard]] const auto& getIdeologyMinisterPortraits() const { return ideologyMinisterPortraits; }
 	[[nodiscard]] const auto& getMaleOperativePortraits() const { return maleOperativePortraits; }
 	[[nodiscard]] const auto& getFemaleOperativePortraits() const { return femaleOperativePortraits; }
@@ -37,6 +38,7 @@ class GraphicsCultureGroup
 	std::vector<std::string> maleMonarchPortraits;
 	std::vector<std::string> femaleMonarchPortraits;
 	std::map<std::string, std::vector<std::string>> leaderPortraits;
+	std::map<std::string, std::vector<std::string>> femalePortraits;
 	std::map<std::string, std::vector<std::string>> ideologyMinisterPortraits;
 	std::vector<std::string> maleOperativePortraits;
 	std::vector<std::string> femaleOperativePortraits;

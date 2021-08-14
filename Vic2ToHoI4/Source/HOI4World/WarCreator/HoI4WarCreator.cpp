@@ -229,7 +229,7 @@ void HoI4WarCreator::generateAdditionalWars(std::ofstream& AILog,
 
 	for (auto country = countriesEvilnessSorted.rbegin(); country != countriesEvilnessSorted.rend(); country++)
 	{
-		if (!isImportantCountry(*country))
+		if (!isImportantCountry(*country) && (*country)->getTag() != "UCV")
 		{
 			if (theConfiguration.getDebug())
 			{
@@ -1110,8 +1110,12 @@ void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
 		AILog << "Creating Reconquest wars\n";
 	}
 
-	for (const auto& [unused, country]: theWorld->getCountries())
+	for (const auto& [tag, country]: theWorld->getCountries())
 	{
+		if (tag == "UCV")
+		{
+			continue;
+		}
 		if (country->getNationalFocus())
 		{
 			continue;
@@ -1171,6 +1175,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 		 numWarsWithNeighbors,
 		 theWorld->getMajorIdeologies(),
 		 coreHolders,
+		 theWorld->getStates(),
 		 hoi4Localisations);
 
 	for (const auto& targetTag: closeNeighbors)
@@ -1218,11 +1223,12 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 
 			date startDate = date("1936.01.01");
 			startDate.increaseByMonths((200 + relations->getRelations()) / 8);
-			focusTree->addNeighborWarBranch(country->getTag(),
+			focusTree->addNeighborWarBranch(country,
 				 target,
 				 targetName,
 				 startDate,
 				 theWorld->getMajorIdeologies(),
+				 theWorld->getStates(),
 				 hoi4Localisations);
 
 			numWarsWithNeighbors++;
@@ -1423,7 +1429,15 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(st
 			newFocus->text = "War_with" + target->getTag();
 			newFocus->available = "= {\n";
 			newFocus->available += "			has_war = no\n";
-			newFocus->available += "			date > 1939.1.1\n";
+			const auto& truceUntil = country->getTruceUntil(target->getTag());
+			if (truceUntil && *truceUntil > date("1939.1.1"))
+			{
+				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+			}
+			else
+			{
+				newFocus->available += "			date > 1939.1.1\n";
+			}
 			newFocus->available += "		}";
 			newFocus->xPos = 31 + numWarsWithGreatPowers * 2;
 			newFocus->yPos = 5;

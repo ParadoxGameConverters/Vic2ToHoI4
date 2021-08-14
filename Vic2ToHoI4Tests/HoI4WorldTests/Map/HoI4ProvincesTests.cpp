@@ -11,7 +11,7 @@ TEST(HoI4World_Map_ProvincesTests, MissingMapDefinitionsThrowsException)
 	const commonItems::ConverterVersion converterVersion;
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
 
-	ASSERT_THROW(HoI4::importProvinces(*theConfiguration), std::runtime_error);
+	ASSERT_THROW(std::ignore = HoI4::importProvinces(*theConfiguration), std::runtime_error);
 }
 
 

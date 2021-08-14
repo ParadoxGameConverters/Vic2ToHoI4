@@ -47,6 +47,7 @@ void Mappers::GraphicsMapper::Factory::loadMappings(const std::string& cultureGr
 	graphicsMapper->maleOperativeMappings[cultureGroupName] = graphicsCultureGroup.getMaleOperativePortraits();
 	graphicsMapper->femaleOperativeMappings[cultureGroupName] = graphicsCultureGroup.getFemaleOperativePortraits();
 	loadLeaderPortraitMappings(cultureGroupName, graphicsCultureGroup.getLeaderPortraits());
+	loadFemalePortraitMappings(cultureGroupName, graphicsCultureGroup.getFemalePortraits());
 	loadIdeologyMinisterPortraitMappings(cultureGroupName, graphicsCultureGroup.getIdeologyMinisterPortraits());
 }
 
@@ -60,6 +61,23 @@ void Mappers::GraphicsMapper::Factory::loadLeaderPortraitMappings(const std::str
 		cultureGroupToPortraitsMap newCultureGroupMappings;
 		graphicsMapper->leaderPortraitMappings.insert(make_pair(cultureGroup, newCultureGroupMappings));
 		cultureGroupMappings = graphicsMapper->leaderPortraitMappings.find(cultureGroup);
+	}
+
+	for (const auto& portraitMapping: portraitMappings)
+	{
+		cultureGroupMappings->second.insert(portraitMapping);
+	}
+}
+
+void Mappers::GraphicsMapper::Factory::loadFemalePortraitMappings(const std::string& cultureGroup,
+	 const std::map<std::string, std::vector<std::string>>& portraitMappings)
+{
+	auto cultureGroupMappings = graphicsMapper->femalePortraitMappings.find(cultureGroup);
+	if (cultureGroupMappings == graphicsMapper->femalePortraitMappings.end())
+	{
+		cultureGroupToPortraitsMap newCultureGroupMappings;
+		graphicsMapper->femalePortraitMappings.insert(make_pair(cultureGroup, newCultureGroupMappings));
+		cultureGroupMappings = graphicsMapper->femalePortraitMappings.find(cultureGroup);
 	}
 
 	for (const auto& portraitMapping: portraitMappings)

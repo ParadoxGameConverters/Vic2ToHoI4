@@ -1,0 +1,14 @@
+focus_tree = {
+	id = UCV_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = UCV
+		}
+	}
+	
+	default = no
+}

@@ -41,7 +41,7 @@ void HoI4::Events::createFactionEvents(const Country& leader, const Country& new
 	else
 	{
 		Log(LogLevel::Warning) << "Could not determine new ally name for faction events";
-		newAllyName = *possibleNewAllyName;
+		newAllyName.clear();
 	}
 
 	Event nfEvent;

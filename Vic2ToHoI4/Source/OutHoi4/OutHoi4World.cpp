@@ -616,5 +616,11 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	};
 
 	outputBookmark(vic2Date, "grand_campaign");
-	outputBookmark(date("1936.1.1"), "gathering_storm");
+
+	// Vic2 end dates within diffInDays of 1936.1.1 are considered too close to create another bookmark
+	constexpr unsigned int diffInDays = 1;
+	if (static_cast<unsigned long>(std::abs(365 * vic2Date.diffInYears(date("1936.1.1")))) > diffInDays)
+	{
+		outputBookmark(date("1936.1.1"), "gathering_storm");
+	}
 }

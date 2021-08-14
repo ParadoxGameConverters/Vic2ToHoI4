@@ -22,6 +22,8 @@ class GraphicsMapper::Factory: commonItems::parser
 	void loadMappings(const std::string& cultureGroupName, const GraphicsCultureGroup& graphicsCultureGroup);
 	void loadLeaderPortraitMappings(const std::string& cultureGroup,
 		 const std::map<std::string, std::vector<std::string>>& portraitMappings);
+	void loadFemalePortraitMappings(const std::string& cultureGroup,
+		 const std::map<std::string, std::vector<std::string>>& portraitMappings);
 	void loadIdeologyMinisterPortraitMappings(const std::string& cultureGroup,
 		 const std::map<std::string, std::vector<std::string>>& portraitMappings);
 

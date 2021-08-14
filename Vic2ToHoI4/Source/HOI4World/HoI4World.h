@@ -55,6 +55,7 @@
 #include "V2World/Countries/Country.h"
 #include "V2World/World/World.h"
 #include <map>
+#include <memory>
 #include <optional>
 #include <set>
 #include <string>
@@ -141,7 +142,7 @@ class World: commonItems::parser
 	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper);
 	void addDominions(Mappers::CountryMapper::Factory& countryMapperFactory);
 	void transferPuppetsToDominions();
-	void determineCoreStates();
+	void determineCoresAndClaims();
 	std::map<std::string, double> calculateFactoryWorkerRatios(const Configuration& theConfiguration);
 	std::map<std::string, double> getIndustrialWorkersPerCountry();
 	double getTotalWorldWorkers(const std::map<std::string, double>& industrialWorkersPerCountry);
@@ -192,7 +193,7 @@ class World: commonItems::parser
 	std::set<std::string> getSouthAsianCountries() const;
 
 	std::pair<std::string, std::shared_ptr<Country>> getDominion(const std::string& ownerTag,
-		 const Country& owner,
+		 const std::shared_ptr<Country> owner,
 		 const std::string& region,
 		 std::map<std::string, std::shared_ptr<Country>>& countries,
 		 Mappers::CountryMapper::Factory& countryMapperFactory,
