@@ -58,6 +58,25 @@ using namespace std;
 
 
 
+namespace
+{
+	
+void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
+	 const std::map<int, HoI4::Province>& theProvinces)
+{
+	for (const auto provinceNumber: theProvinces | std::views::keys)
+	{
+		if (const auto region = theRegions.getRegion(provinceNumber); !region.has_value())
+		{
+			Log(LogLevel::Warning) << "Province " << provinceNumber << " was not assigned to a region.";
+		}
+	}
+}
+
+}
+
+
+
 HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
@@ -109,6 +128,11 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
 	theRegions = Regions::Factory().getRegions();
+	if (theConfiguration.getDebug())
+	{
+		checkAllProvincesAssignedToRegion(*theRegions, theProvinces);
+	}
+	
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
