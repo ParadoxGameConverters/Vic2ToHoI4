@@ -1,5 +1,6 @@
 #include "RegionsFactory.h"
 #include "CommonRegexes.h"
+#include "Log.h"
 #include "ParserHelpers.h"
 
 
@@ -10,6 +11,10 @@ HoI4::Regions::Factory::Factory()
 		const auto region = regionFactory.importRegion(theStream);
 		for (const auto province: region->getProvinces())
 		{
+			if (theRegions->regionsMap.contains(province))
+			{
+				Log(LogLevel::Warning) << "Province " << province << " was assigned to multiple regions";
+			}
 			theRegions->regionsMap.emplace(province, regionId);
 		}
 		theRegions->regionNames.emplace(regionId, region->getName());
