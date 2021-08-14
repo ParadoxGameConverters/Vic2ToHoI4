@@ -60,7 +60,7 @@ using namespace std;
 
 namespace
 {
-	
+
 void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
 	 const std::map<int, HoI4::Province>& theProvinces)
 {
@@ -73,7 +73,7 @@ void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
 	}
 }
 
-}
+} // namespace
 
 
 
@@ -132,7 +132,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	{
 		checkAllProvincesAssignedToRegion(*theRegions, theProvinces);
 	}
-	
+
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
