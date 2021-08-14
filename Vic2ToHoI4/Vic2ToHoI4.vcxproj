@@ -89,7 +89,7 @@
       <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <PostBuildEvent>
-      <Command>Copy_Files.bat</Command>
+      <Command>save_commit_id.bat</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copying Data Files</Message>
@@ -122,7 +122,7 @@
       <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <PostBuildEvent>
-      <Command>Copy_Files_debug.bat</Command>
+      <Command>save_commit_id.bat</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copying Data Files</Message>
@@ -1127,7 +1127,6 @@
     <CopyFileToFolders Include="..\Resources\VC_redist.x64.exe">
       <FileType>Document</FileType>
     </CopyFileToFolders>
-    <None Include="Copy_Files.bat" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\configurables\tech_mappings.txt">
