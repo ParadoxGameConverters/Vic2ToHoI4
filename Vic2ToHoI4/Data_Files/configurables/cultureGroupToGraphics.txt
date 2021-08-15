@@ -1855,7 +1855,7 @@ asian_steppe = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_7.dds"
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_8.dds"
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
-		"gfx/leaders/CHI/portrait_man_yoshiko_kawashima.dds"
+		"gfx/leaders/CHI/portrait_chi_yoshiko_kawashima.dds"
 	}
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/eastern_crown.dds"
@@ -2500,6 +2500,7 @@ korean_japan = {
 			"gfx/leaders/JAP/Portrait_Japan_Soemu_Toyoda.dds"
 			"gfx/leaders/JAP/Portrait_KOR_Syngman_Rhee.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
+			"gfx/leaders/Korean_Japan/Portrait_Ainu_Shigeru_Kayano.png"
 		} 
 		fascism = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
@@ -3866,6 +3867,8 @@ romantic_barbarian = {
 			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
 			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
 			"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
+			"gfx/leaders/GRE/portrait_gre_adolfos_i.dds"
+			"gfx/leaders/ITA/emperor_mussolini.dds"
 
 		}
 		absolutist = {
