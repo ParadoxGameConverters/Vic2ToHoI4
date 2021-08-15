@@ -1508,9 +1508,11 @@ void HoI4FocusTree::addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
 					auto newFocus =
 						 originalFocus->second.makeTargetedCopy(Home->getTag(), warTarget->getTag(), hoi4Localisations);
 					newFocus->id = "War" + warTarget->getTag() + Home->getTag();
-					int v1 = rand() % 12 + 1;
-					int v2 = rand() % 12 + 1;
-					const date& dateAvailable = date("1938." + to_string(v1) + "." + to_string(v2));
+					date dateAvailable = date("1938.1.1");
+					if (const auto& relations = Home->getRelations(warTarget->getTag()); relations)
+					{
+						dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
+					}
 					if (const auto& truceUntil = Home->getTruceUntil(warTarget->getTag());
 						 truceUntil && *truceUntil > dateAvailable)
 					{
