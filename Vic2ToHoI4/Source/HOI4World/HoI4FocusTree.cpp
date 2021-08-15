@@ -1491,70 +1491,70 @@ void HoI4FocusTree::addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
 
 		for (const auto& warTarget: warTargets)
 		{
-				const auto& possibleWarTargetCountryName = warTarget->getName();
-				std::string warTargetCountryName;
-				if (possibleWarTargetCountryName)
+			const auto& possibleWarTargetCountryName = warTarget->getName();
+			std::string warTargetCountryName;
+			if (possibleWarTargetCountryName)
+			{
+				warTargetCountryName = *possibleWarTargetCountryName;
+			}
+			else
+			{
+				Log(LogLevel::Warning) << "Could not determine war target country name for communist war focuses";
+				warTargetCountryName.clear();
+			}
+
+			if (const auto& originalFocus = loadedFocuses.find("War"); originalFocus != loadedFocuses.end())
+			{
+				auto newFocus =
+					 originalFocus->second.makeTargetedCopy(Home->getTag(), warTarget->getTag(), hoi4Localisations);
+				newFocus->id = "War" + warTarget->getTag() + Home->getTag();
+				date dateAvailable = date("1938.1.1");
+				if (const auto& relations = Home->getRelations(warTarget->getTag()); relations)
 				{
-					warTargetCountryName = *possibleWarTargetCountryName;
+					dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
+				}
+				if (const auto& truceUntil = Home->getTruceUntil(warTarget->getTag());
+					 truceUntil && *truceUntil > dateAvailable)
+				{
+					newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 				}
 				else
 				{
-					Log(LogLevel::Warning) << "Could not determine war target country name for communist war focuses";
-					warTargetCountryName.clear();
+					newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString() + "\n");
 				}
-
-				if (const auto& originalFocus = loadedFocuses.find("War"); originalFocus != loadedFocuses.end())
+				newFocus->xPos = nextFreeColumn;
+				newFocus->yPos = 2;
+				newFocus->updateFocusElement(newFocus->bypass, "$TARGET", warTarget->getTag());
+				newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", warTarget->getTag());
+				std::string warWithTargets;
+				if (warTargets.size() > 1)
 				{
-					auto newFocus =
-						 originalFocus->second.makeTargetedCopy(Home->getTag(), warTarget->getTag(), hoi4Localisations);
-					newFocus->id = "War" + warTarget->getTag() + Home->getTag();
-					date dateAvailable = date("1938.1.1");
-					if (const auto& relations = Home->getRelations(warTarget->getTag()); relations)
+					for (const auto& otherTarget: warTargets)
 					{
-						dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
-					}
-					if (const auto& truceUntil = Home->getTruceUntil(warTarget->getTag());
-						 truceUntil && *truceUntil > dateAvailable)
-					{
-						newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
-					}
-					else
-					{
-						newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString() + "\n");
-					}
-					newFocus->xPos = nextFreeColumn;
-					newFocus->yPos = 2;
-					newFocus->updateFocusElement(newFocus->bypass, "$TARGET", warTarget->getTag());
-					newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", warTarget->getTag());
-					std::string warWithTargets;
-					if (warTargets.size() > 1)
-					{
-						for (const auto& otherTarget: warTargets)
+						if (otherTarget->getTag() == warTarget->getTag())
 						{
-							if (otherTarget->getTag() == warTarget->getTag())
-							{
-								continue;
-							}
-							if (warWithTargets.empty())
-							{
-								warWithTargets = "has_war_with = " + otherTarget->getTag() + "\n";
-							}
-							else
-							{
-								warWithTargets += "\t\t\t\thas_war_with = " + otherTarget->getTag() + "\n";
-							}
+							continue;
+						}
+						if (warWithTargets.empty())
+						{
+							warWithTargets = "has_war_with = " + otherTarget->getTag() + "\n";
+						}
+						else
+						{
+							warWithTargets += "\t\t\t\thas_war_with = " + otherTarget->getTag() + "\n";
 						}
 					}
-					newFocus->updateFocusElement(newFocus->aiWillDo, "#WAR_WITH_TARGETS", warWithTargets);
-					newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", warTargetCountryName);
-					newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", warTarget->getTag());
-					focuses.push_back(newFocus);
-					nextFreeColumn += 2;
 				}
-				else
-				{
-					throw std::runtime_error("Could not load focus War");
-				}
+				newFocus->updateFocusElement(newFocus->aiWillDo, "#WAR_WITH_TARGETS", warWithTargets);
+				newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", warTargetCountryName);
+				newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", warTarget->getTag());
+				focuses.push_back(newFocus);
+				nextFreeColumn += 2;
+			}
+			else
+			{
+				throw std::runtime_error("Could not load focus War");
+			}
 		}
 	}
 }
