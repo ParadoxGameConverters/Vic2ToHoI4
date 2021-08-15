@@ -1449,17 +1449,21 @@ void HoI4FocusTree::addCommunistCoupBranch(std::shared_ptr<HoI4::Country> Home,
 	return;
 }
 
-void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
-	 const vector<shared_ptr<HoI4::Country>>& warTargets,
+void HoI4FocusTree::addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
+	 std::vector<std::shared_ptr<HoI4::Country>> warTargets,
 	 HoI4::Events& events,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	if (warTargets.size() > 0)
+	if (!warTargets.empty())
 	{
-		int warTargetsNum = std::min(static_cast<int>(warTargets.size()), 3);
+		if (warTargets.size() > 3)
+		{
+			warTargets.resize(3);
+		}
+		int warTargetsNum = static_cast<int>(warTargets.size());
 		if (const auto& originalFocus = loadedFocuses.find("StrengthCom"); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
 			newFocus->xPos = nextFreeColumn + warTargetsNum - 1;
 			newFocus->yPos = 0;
 			focuses.push_back(newFocus);
@@ -1475,10 +1479,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 			newFocus->relativePositionId = "StrengthCom" + Home->getTag();
 			newFocus->xPos = 0;
 			newFocus->yPos = 1;
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "\t\t\tadd_named_threat = { threat = 2 name = " + newFocus->text + " }\n";
-			newFocus->completionReward += "\t\t\tadd_political_power = 150\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->completionReward, "$TEXT", newFocus->text);
 			// FIXME
 			// maybe add some claims?
 			focuses.push_back(newFocus);
@@ -1488,86 +1489,73 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 			throw std::runtime_error("Could not load focus Inter_Com_Pres");
 		}
 
-		for (unsigned int i = 0; i < 3; i++)
+		for (const auto& warTarget: warTargets)
 		{
-			if (i < warTargets.size())
+			const auto& possibleWarTargetCountryName = warTarget->getName();
+			std::string warTargetCountryName;
+			if (possibleWarTargetCountryName)
 			{
-				auto possibleWarTargetCountryName = warTargets[i]->getName();
-				string warTargetCountryName;
-				if (possibleWarTargetCountryName)
+				warTargetCountryName = *possibleWarTargetCountryName;
+			}
+			else
+			{
+				Log(LogLevel::Warning) << "Could not determine war target country name for communist war focuses";
+				warTargetCountryName.clear();
+			}
+
+			if (const auto& originalFocus = loadedFocuses.find("War"); originalFocus != loadedFocuses.end())
+			{
+				auto newFocus =
+					 originalFocus->second.makeTargetedCopy(Home->getTag(), warTarget->getTag(), hoi4Localisations);
+				newFocus->id = "War" + warTarget->getTag() + Home->getTag();
+				date dateAvailable = date("1938.1.1");
+				if (const auto& relations = Home->getRelations(warTarget->getTag()); relations)
 				{
-					warTargetCountryName = *possibleWarTargetCountryName;
+					dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
+				}
+				if (const auto& truceUntil = Home->getTruceUntil(warTarget->getTag());
+					 truceUntil && *truceUntil > dateAvailable)
+				{
+					newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 				}
 				else
 				{
-					Log(LogLevel::Warning) << "Could not determine war target country name for communist war focuses";
-					warTargetCountryName.clear();
+					newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString() + "\n");
 				}
-
-				int v1 = rand() % 12 + 1;
-				int v2 = rand() % 12 + 1;
-				if (const auto& originalFocus = loadedFocuses.find("War"); originalFocus != loadedFocuses.end())
+				newFocus->xPos = nextFreeColumn;
+				newFocus->yPos = 2;
+				newFocus->updateFocusElement(newFocus->bypass, "$TARGET", warTarget->getTag());
+				newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", warTarget->getTag());
+				std::string warWithTargets;
+				if (warTargets.size() > 1)
 				{
-					auto newFocus =
-						 originalFocus->second.makeTargetedCopy(Home->getTag(), warTargets[i]->getTag(), hoi4Localisations);
-					newFocus->id = "War" + warTargets[i]->getTag() + Home->getTag();
-					newFocus->available = "= {\n";
-					const date& dateAvailable = date("1938." + to_string(v1) + "." + to_string(v2));
-					if (const auto& truceUntil = Home->getTruceUntil(warTargets[i]->getTag());
-						 truceUntil && *truceUntil > dateAvailable)
+					for (const auto& otherTarget: warTargets)
 					{
-						newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
-					}
-					else
-					{
-						newFocus->available += "\t\t\tdate > " + dateAvailable.toString() + "\n";
-					}
-					newFocus->available += "\t\t}";
-					newFocus->xPos = nextFreeColumn + i * 2;
-					newFocus->yPos = 2;
-					newFocus->bypass = "= {\n";
-					newFocus->bypass += "\t\t\t\t\thas_war_with = " + warTargets[i]->getTag() + "\n";
-					newFocus->bypass += "\t\t\t\t}";
-					newFocus->aiWillDo = "= {\n";
-					newFocus->aiWillDo += "\t\t\tfactor = 5\n";
-					newFocus->aiWillDo += "\t\t\tmodifier = {\n";
-					newFocus->aiWillDo += "\t\t\t\tfactor = 0\n";
-					newFocus->aiWillDo += "\t\t\t\tstrength_ratio = { tag = " + warTargets[i]->getTag() + " ratio < 1 }\n";
-					newFocus->aiWillDo += "\t\t\t}";
-					if (warTargets.size() > 1)
-					{
-						newFocus->aiWillDo += "\n";
-						newFocus->aiWillDo += "\t\t\tmodifier = {\n";
-						newFocus->aiWillDo += "\t\t\t\tfactor = 0\n";
-						newFocus->aiWillDo += "\t\t\t\tOR = {\n";
-						for (unsigned int i2 = 0; i2 < warTargets.size(); i2++)
+						if (otherTarget->getTag() == warTarget->getTag())
 						{
-							if (i != i2)
-								newFocus->aiWillDo += "\t\t\t\t\thas_war_with = " + warTargets[i2]->getTag() + "\n";
+							continue;
 						}
-						newFocus->aiWillDo += "\t\t\t\t}\n";
-						newFocus->aiWillDo += "\t\t\t}";
+						if (warWithTargets.empty())
+						{
+							warWithTargets = "has_war_with = " + otherTarget->getTag() + "\n";
+						}
+						else
+						{
+							warWithTargets += "\t\t\t\thas_war_with = " + otherTarget->getTag() + "\n";
+						}
 					}
-					newFocus->aiWillDo += "\n";
-					newFocus->aiWillDo += "\t\t}";
-
-					newFocus->completionReward += "= {\n";
-					newFocus->completionReward +=
-						 "\t\t\tadd_named_threat = { threat = 3 name = \"War with " + warTargetCountryName + "\" }\n";
-					newFocus->completionReward += "\t\t\tcreate_wargoal = {\n";
-					newFocus->completionReward += "\t\t\t\ttype = puppet_wargoal_focus\n";
-					newFocus->completionReward += "\t\t\t\ttarget = " + warTargets[i]->getTag() + "\n";
-					newFocus->completionReward += "\t\t\t}\n";
-					newFocus->completionReward += "\t\t}";
-					focuses.push_back(newFocus);
 				}
-				else
-				{
-					throw std::runtime_error("Could not load focus War");
-				}
+				newFocus->updateFocusElement(newFocus->aiWillDo, "#WAR_WITH_TARGETS", warWithTargets);
+				newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", warTargetCountryName);
+				newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", warTarget->getTag());
+				focuses.push_back(newFocus);
+				nextFreeColumn += 2;
+			}
+			else
+			{
+				throw std::runtime_error("Could not load focus War");
 			}
 		}
-		nextFreeColumn += warTargetsNum * 2;
 	}
 }
 

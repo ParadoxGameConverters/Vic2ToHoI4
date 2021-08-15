@@ -1629,6 +1629,10 @@ focus = {
 	ai_will_do = {
 		factor = 5
 	}
+	completion_reward = {
+		add_named_threat = { threat = 2 name = $TEXT }
+		add_political_power = 150
+	}
 }
 
 focus = {
@@ -1636,6 +1640,32 @@ focus = {
 	icon = GFX_goal_generic_major_war
 	prerequisite = { focus = Inter_Com_Pres }
 	cost = 10
+	available = {
+		#DATE
+	}
+	bypass = {
+		has_war_with = $TARGET
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 0
+			strength_ratio = { tag = $TARGET ratio < 1 }
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				#WAR_WITH_TARGETS
+			}
+		}
+	}
+	completion_reward = {
+		add_named_threat = { threat = 3 name = "War with $TARGETNAME" }
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = $TARGET
+		}
+	}
 }
 
 focus = {
