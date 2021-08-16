@@ -1621,16 +1621,14 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 
 		if (const auto& originalFocus = loadedFocuses.find("_anschluss_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus =
-				 originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = Home->getTag() + "_anschluss_" + target->getTag();
 			date dateAvailable = date("1937.1.1");
 			if (const auto& relations = Home->getRelations(target->getTag()); relations)
 			{
 				dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
 			}
-			if (const auto& truceUntil = Home->getTruceUntil(target->getTag());
-				 truceUntil && *truceUntil > dateAvailable)
+			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil && *truceUntil > dateAvailable)
 			{
 				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 			}
@@ -1643,7 +1641,9 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 			newFocus->yPos = 2;
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", annexationTargetCountryName);
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
-			newFocus->updateFocusElement(newFocus->completionReward, "$EVENTID", std::to_string(events.getCurrentNationFocusEventNum()));
+			newFocus->updateFocusElement(newFocus->completionReward,
+				 "$EVENTID",
+				 std::to_string(events.getCurrentNationFocusEventNum()));
 			focuses.push_back(newFocus);
 			nextFreeColumn += 2;
 
