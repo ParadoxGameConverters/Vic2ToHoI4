@@ -1559,8 +1559,8 @@ void HoI4FocusTree::addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
 	}
 }
 
-void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
-	 const vector<shared_ptr<HoI4::Country>>& annexationTargets,
+void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Home,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& annexationTargets,
 	 HoI4::Events& events,
 	 HoI4::Localisation& hoi4Localisations)
 {
@@ -1570,13 +1570,11 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 	//{
 	if (const auto& originalFocus = loadedFocuses.find("The_third_way"); originalFocus != loadedFocuses.end())
 	{
-		shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		if (annexationTargets.size() >= 1)
+		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+		if (!annexationTargets.empty())
 		{
 			newFocus->xPos = nextFreeColumn + static_cast<int>(annexationTargets.size()) - 1;
 		}
-
-		//'else' statement is there in case annexationTargets.size() is <1.  Need to fix in the future.
 		else
 		{
 			newFocus->xPos = nextFreeColumn;
@@ -1586,10 +1584,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 		// Need to get Drift Defense to work
 		// in modified generic focus? (tk)
 		// newFocus->completionReward += "\t\t\tdrift_defence_factor = 0.5\n";
-		newFocus->completionReward += "= {\n";
-		newFocus->completionReward += "\t\t\tadd_named_threat = { threat = 2 name = " + newFocus->text + " }\n";
-		newFocus->completionReward += "\t\t\tadd_ideas = fascist_influence\n";
-		newFocus->completionReward += "\t\t}";
+		newFocus->updateFocusElement(newFocus->completionReward, "$TEXT", newFocus->text);
 		focuses.push_back(newFocus);
 	}
 	else
@@ -1610,10 +1605,10 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 		throw std::runtime_error("Could not load focus mil_march");
 	}
 
-	for (unsigned int i = 0; i < annexationTargets.size(); i++)
+	for (const auto& target: annexationTargets)
 	{
-		auto possibleAnnexationTargetCountryName = annexationTargets[i]->getName();
-		string annexationTargetCountryName;
+		const auto& possibleAnnexationTargetCountryName = target->getName();
+		std::string annexationTargetCountryName;
 		if (possibleAnnexationTargetCountryName)
 		{
 			annexationTargetCountryName = *possibleAnnexationTargetCountryName;
@@ -1624,59 +1619,40 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 			annexationTargetCountryName.clear();
 		}
 
-		// int x = i * 3;
-		// for random date
-		int v1 = rand() % 5 + 1;
-		int v2 = rand() % 5 + 1;
-
 		if (const auto& originalFocus = loadedFocuses.find("_anschluss_"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus =
-				 originalFocus->second.makeTargetedCopy(Home->getTag(), annexationTargets[i]->getTag(), hoi4Localisations);
-			newFocus->id = Home->getTag() + "_anschluss_" + annexationTargets[i]->getTag();
-			newFocus->available += "= {\n";
-			if (const auto& truceUntil = Home->getTruceUntil(annexationTargets[i]->getTag()); truceUntil)
+				 originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
+			newFocus->id = Home->getTag() + "_anschluss_" + target->getTag();
+			date dateAvailable = date("1937.1.1");
+			if (const auto& relations = Home->getRelations(target->getTag()); relations)
 			{
-				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+				dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
 			}
-			newFocus->available += "\t\t\t" + annexationTargets[i]->getTag() + " = {\n";
-			newFocus->available += "\t\t\t\tis_in_faction = no\n";
-			newFocus->available += "\t\t\t}\n";
-			newFocus->available += "\t\t\tis_puppet = no\n";
-			newFocus->available += "\t\t\tdate > 1937." + to_string(v1 + 5) + "." + to_string(v2 + 5) + "\n";
-			newFocus->available += "\t\t}";
-			newFocus->xPos = nextFreeColumn + i * 2;
+			if (const auto& truceUntil = Home->getTruceUntil(target->getTag());
+				 truceUntil && *truceUntil > dateAvailable)
+			{
+				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
+			}
+			else
+			{
+				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString() + "\n");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
+			newFocus->xPos = nextFreeColumn;
 			newFocus->yPos = 2;
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward +=
-				 "\t\t\tadd_named_threat = { threat = 2 name = \"Union with " + annexationTargetCountryName + "\" }\n";
-			newFocus->completionReward += "\t\t\tarmy_experience = 10\n";
-			newFocus->completionReward += "\t\t\tif = {\n";
-			newFocus->completionReward += "\t\t\t\tlimit = {\n";
-			newFocus->completionReward += "\t\t\t\t\tcountry_exists = " + annexationTargets[i]->getTag() + "\n";
-			newFocus->completionReward += "\t\t\t\t}\n";
-			newFocus->completionReward += "\t\t\t\t" + annexationTargets[i]->getTag() + " = {\n";
-			newFocus->completionReward +=
-				 "\t\t\t\t\tcountry_event = NFEvents." + to_string(events.getCurrentNationFocusEventNum()) + "\n";
-			newFocus->completionReward += "\t\t\t\t}\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", annexationTargetCountryName);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$EVENTID", std::to_string(events.getCurrentNationFocusEventNum()));
 			focuses.push_back(newFocus);
+			nextFreeColumn += 2;
 
-			events.createAnnexEvent(*Home, *annexationTargets[i]);
+			events.createAnnexEvent(*Home, *target);
 		}
 		else
 		{
 			throw std::runtime_error("Could not load focus _anschluss_");
 		}
-	}
-	if (annexationTargets.size() >= 1)
-	{
-		nextFreeColumn += static_cast<int>(annexationTargets.size()) * 2;
-	}
-	else
-	{
-		nextFreeColumn += 2;
 	}
 	//}
 }
