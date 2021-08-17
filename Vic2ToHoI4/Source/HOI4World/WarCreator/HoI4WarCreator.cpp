@@ -655,7 +655,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 		}
 	}
 	// std::string that contains all events
-	std::vector<std::shared_ptr<HoI4::Country>> nan;
+	std::vector<std::shared_ptr<HoI4::Country>> anschlussTargets;
 
 	// look through every anchluss and see its difficulty
 	for (auto target: Anschluss)
@@ -670,15 +670,15 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 		if (type == "noactionneeded")
 		{
 			// too many std::vectors, need to clean up
-			nan.push_back(target);
+			anschlussTargets.push_back(target);
 		}
 	}
 	// gives us generic focus tree start
 	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
 
-	FocusTree->addFascistAnnexationBranch(Leader, nan, theWorld->getEvents(), hoi4Localisations);
-	nan.clear();
+	FocusTree->addFascistAnnexationBranch(Leader, anschlussTargets, theWorld->getEvents(), hoi4Localisations);
 
+	std::vector<std::shared_ptr<HoI4::Country>> sudetenTargets;
 	for (auto target: Sudeten)
 	{
 		std::string type;
@@ -691,27 +691,26 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 
 		if (type == "noactionneeded")
 		{
-			nan.push_back(target);
+			sudetenTargets.push_back(target);
 		}
 	}
 	// find neighboring states to take in sudeten deal
-	std::vector<std::vector<int>> demandedStates;
+	std::map<std::string, std::vector<int>> demandedStates;
 
 	const auto leaderCapitalPosition = mapUtils.getCapitalPosition(*Leader);
 	if (leaderCapitalPosition)
 	{
-		for (unsigned int i = 0; i < nan.size(); ++i)
+		for (const auto& target: sudetenTargets)
 		{
 			std::set<int> borderStates = mapUtils.findBorderStates(*Leader,
-				 *nan[i],
+				 *target,
 				 world->getProvinceToStateIDMap(),
 				 theMapData,
 				 provinceDefinitions);
-			demandedStates.push_back(
-				 mapUtils.sortStatesByDistance(borderStates, *leaderCapitalPosition, world->getStates()));
+			demandedStates[target->getTag()] =
+				 mapUtils.sortStatesByDistance(borderStates, *leaderCapitalPosition, world->getStates());
 		}
-		FocusTree->addFascistSudetenBranch(Leader, nan, demandedStates, *theWorld, hoi4Localisations);
-		nan.clear();
+		FocusTree->addFascistSudetenBranch(Leader, anschlussTargets, sudetenTargets, demandedStates, theWorld->getEvents(), hoi4Localisations);
 	}
 
 	// events for allies
