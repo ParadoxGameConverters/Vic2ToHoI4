@@ -2299,7 +2299,11 @@ focus = {
 	cost = 10
 	ai_will_do = {
 		factor = 5
-		}
+	}
+	completion_reward = {
+		add_named_threat = { threat = 2 name = $TEXT }
+		add_ideas = fascist_influence
+	}
 }
 
 focus = {
@@ -2331,6 +2335,25 @@ focus = {
 		modifier = {
 			factor = 0
 			date < 1937.6.6
+		}
+	}
+	available = {
+		$TARGET = {
+			is_in_faction = no
+		}
+		is_puppet = no
+		#DATE
+	}
+	completion_reward = {
+		add_named_threat = { threat = 2 name = "Union with $TARGETNAME" }
+		army_experience = 10
+		if = {
+			limit = {
+				country_exists = $TARGET
+			}
+			$TARGET = {
+				country_event = NFEvents.$EVENTID
+			}
 		}
 	}
 }
