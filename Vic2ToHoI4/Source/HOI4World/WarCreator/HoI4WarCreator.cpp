@@ -710,7 +710,12 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 			demandedStates[target->getTag()] =
 				 mapUtils.sortStatesByDistance(borderStates, *leaderCapitalPosition, world->getStates());
 		}
-		FocusTree->addFascistSudetenBranch(Leader, anschlussTargets, sudetenTargets, demandedStates, theWorld->getEvents(), hoi4Localisations);
+		FocusTree->addFascistSudetenBranch(Leader,
+			 anschlussTargets,
+			 sudetenTargets,
+			 demandedStates,
+			 theWorld->getEvents(),
+			 hoi4Localisations);
 	}
 
 	// events for allies
