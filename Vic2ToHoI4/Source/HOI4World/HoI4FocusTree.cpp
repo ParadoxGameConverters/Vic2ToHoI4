@@ -1714,8 +1714,7 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 
 		if (const auto& originalFocus = loadedFocuses.find("_sudeten_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus =
-				 originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = Home->getTag() + "_sudeten_" + target->getTag();
 			date dateAvailable = date("1938.1.1");
 			if (const auto& relations = Home->getRelations(target->getTag()); relations)
@@ -1729,7 +1728,9 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", sudetenTargetCountryName);
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
-			newFocus->updateFocusElement(newFocus->completionReward, "$EVENTID", std::to_string(events.getCurrentNationFocusEventNum()));
+			newFocus->updateFocusElement(newFocus->completionReward,
+				 "$EVENTID",
+				 std::to_string(events.getCurrentNationFocusEventNum()));
 			addFocus(newFocus);
 			sudetenFreeColumn += 2;
 		}
@@ -1741,8 +1742,7 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 		// FINISH HIM
 		if (const auto& originalFocus = loadedFocuses.find("_finish_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus =
-				 originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
 			newFocus->id = Home->getTag() + "_finish_" + target->getTag();
 			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
@@ -1753,8 +1753,7 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 				newFocus->removePlaceholder(newFocus->available, "#DATE");
 			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
-			newFocus->prerequisites.push_back(
-				 "= { focus =  " + Home->getTag() + "_sudeten_" + target->getTag() + " }");
+			newFocus->prerequisites.push_back("= { focus =  " + Home->getTag() + "_sudeten_" + target->getTag() + " }");
 			newFocus->relativePositionId = Home->getTag() + "_sudeten_" + target->getTag();
 			newFocus->xPos = 0;
 			newFocus->yPos = 1;
