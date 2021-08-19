@@ -1830,7 +1830,9 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 			newFocus->yPos = 1;
 			newFocus->updateFocusElement(newFocus->bypass, "$ALLY", newAlly->getTag());
 			newFocus->updateFocusElement(newFocus->completionReward, "$ALLY", newAlly->getTag());
-			newFocus->updateFocusElement(newFocus->completionReward, "$EVENTID", std::to_string(events.getCurrentNationFocusEventNum()));
+			newFocus->updateFocusElement(newFocus->completionReward,
+				 "$EVENTID",
+				 std::to_string(events.getCurrentNationFocusEventNum()));
 			focuses.push_back(newFocus);
 			allianceFreeColumn += 2;
 
