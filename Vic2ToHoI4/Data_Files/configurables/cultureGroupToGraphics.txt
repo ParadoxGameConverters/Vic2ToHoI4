@@ -683,7 +683,7 @@ mediterranean = {
 			"gfx/leaders/POR/Portrait_Portugal_Antonio_de_Oliveira_Salazar_OLD.dds"
 			"gfx/leaders/SPR/portrait_spr_niceto_alcala_zamora.dds"
 			"gfx/leaders/Mediterranean/Portrait_Italy_Luigi_Sturzo.dds"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Ioannis_Metaxas_KR.dds"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Ioannis_Metaxas_KR.tga"
 		} 
 		radical = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
@@ -880,7 +880,7 @@ balkans = {
 			"gfx/leaders/BUL/Portrait_Bulgaria_Georgi_Dimitrov.dds"
 			"gfx/leaders/CZE/Portrait_Czech_Klement_Gottwald.dds"
 			"gfx/leaders/ROM/Portrait_Romania_Armand_Calinescu.dds"
-			"gfx/leaders/Balkans/Portrait_Romania_Sever_Bocu.dds"
+			"gfx/leaders/Balkans/Portrait_Romania_Sever_Bocu.tga"
 		} 
 		fascism = {
 			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
@@ -914,7 +914,7 @@ balkans = {
 			"gfx/leaders/Balkans/Portrait_Croatia_Stjepan_Radic.tga"
 			"gfx/leaders/Balkans/Portrait_Albania_Shefqet_Verlaci.tga"
 			"gfx/leaders/Balkans/Portrait_ALB_Midhat_Frasheri.tga"
-			"gfx/leaders/Balkans/Portrait_Albania_Mehdi_Frasheri.tga"
+			"gfx/leaders/Balkans/Portrait_Albania_Mehdi_Frasheri.dds"
 		} 
 		radical = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
@@ -1124,7 +1124,7 @@ eastern_european = {
 		"gfx/leaders/Eastern_European/Portrait_Belarus_Vital_Kazlou.tga"
 		"gfx/leaders/Eastern_European/Portrait_Baltic_Yudenich.tga"
 		"gfx/leaders/Eastern_European/Portrait_Baltic_Otto_Zeltins-Goldfelds.tga"
-		"gfx/leaders/Eastern_European/Portrait_Galicia_Jozef_Haller_von_Hallenburg-Goldfelds.tga"
+		"gfx/leaders/Eastern_European/Portrait_Galicia_Jozef_Haller_von_Hallenburg.tga"
 		"gfx/leaders/Eastern_European/Portrait_TRM_Baranovsky.tga"
 		"gfx/leaders/Eastern_European/Portrait_TRM_Stark.tga"
 		"gfx/leaders/Eastern_European/Portrait_TRM_Pepelyaev.tga"
@@ -1171,7 +1171,7 @@ eastern_european = {
 		communism = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"
 			"gfx/leaders/Europe/portrait_europe_generic_8.dds"
-			"gfx/leaders/LAT/vilis_lacis.dds"
+			"gfx/leaders/LAT/portrait_lat_vilis_lacis.dds"
 			"gfx/leaders/POL/Portrait_Poland_Wladyslaw_Gomulka.dds"
 			"gfx/leaders/SOV/Portrait_Soviet_Generic_1.dds"
 			"gfx/leaders/SOV/Portrait_Leon_Trotsky.dds"			
@@ -1378,7 +1378,6 @@ turkic_steppe = {
 		"gfx/leaders/Turkic_Steppe/OTTLeader05.tga"
 		"gfx/leaders/Turkic_Steppe/Portrait_OTT_Omer_Fahrettin.tga"
 		"gfx/leaders/Turkic_Steppe/Portrait_OTT_Ismail_Cevat.tga"
-		"gfx/leaders/Turkic_Steppe/Portrait_OTT_Mehmed_Vehip.tga"
 		"gfx/leaders/Turkic_Steppe/Portrait_OTT_Mustafa_Fevzi.tga"
 		"gfx/leaders/Turkic_Steppe/Portrait_OTT_Mustafa_Kemal.tga"
 		"gfx/leaders/Turkic_Steppe/Portrait_OTT_Osman_Fuad.tga"
@@ -1390,8 +1389,8 @@ turkic_steppe = {
 	navy_portraits = {
 		#Generic Middle Eastern
 		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_3.dds"
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
 		#Other
 		"gfx/leaders/Turkic_Steppe/OTTLeader_Navy_01.tga"
 		"gfx/leaders/Turkic_Steppe/Portrait_EGY_Suleiman_Ezzat.tga"
@@ -1424,7 +1423,7 @@ turkic_steppe = {
 			"gfx/leaders/JOR/Portrait_Arabia_Generic_3.dds"
 			"gfx/leaders/JOR/Portrait_Arabia_Generic_fascism1.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_middle_east_1.dds"
-			"gfx/leaders/Turkic_Steppe/portrait_TUR_Alparslan_Turkesh.tga"
+			"gfx/leaders/Turkic_Steppe/portrait_TUR_Alparslan_Turkesh.dds"
 			"gfx/leaders/Turkic_Steppe/Portrait_KYR_Turabej_Yusupov.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_TAJ_Behrang_Selesnev.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_Egypt_Abbas_II.tga"
@@ -1544,8 +1543,8 @@ arabic_persian = {
 	navy_portraits = {
 		#Generic Middle Eastern
 		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_3.dds"
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
 		#Other
 		"gfx/leaders/Arabic_Persian/Portrait_EGY_Suleiman_Ezzat.tga"
 		"gfx/leaders/Arabic_Persian/Portrait_EGY_Hussein_Refki.tga" #Marine
@@ -1606,7 +1605,7 @@ arabic_persian = {
 			"gfx/leaders/Arabic_Persian/Portrait_MOR_El_Glaui.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Persia_Ahmad_Shah_Qajar.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Persia_Hassan_Mirza_Qajar.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Saudi_Arabia_Abdulazis_Ibn_Saud.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_Saudi_Arabia_Abdulazis_Ibn_Saud.dds"
 			"gfx/leaders/Arabic_Persian/Portrait_Saudi_Arabia_Khalid_bin_Abdulaziz_Al_Saud.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Moncef_Bey.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_YEM_Ahmad_bin_Yahya.tga"
@@ -1629,7 +1628,7 @@ arabic_persian = {
 			"gfx/leaders/Arabic_Persian/Portrait_MOR_Abdallah_Ibrahim.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Persia_Mohammad_Mosaddegh.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_SYR_Shukri.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Abdelaziz_Thaalbi.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Abdelaziz_Thaalbi.dds"
 		}
 	}
 	female_portraits = {
@@ -1706,7 +1705,7 @@ asian_steppe = {
 		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
 		#Other
 		"gfx/leaders/Generic/Portrait_AOG_Generic_1.tga"
-		"gfx/leaders/Generic/r56_portrait_Turkey_Generic_land_1.tga"
+		"gfx/leaders/Generic/r56_portrait_Turkey_Generic_land_1.dds"
 		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_1.tga"
 		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_2.tga"
 		"gfx/leaders/Asian_Steppe/Portrait_ALO_Bauyrzhan_Momyshuly.tga"
@@ -1743,7 +1742,6 @@ asian_steppe = {
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds"
 			"gfx/leaders/Asian_Steppe/Zhumabay_Shayakhmetov.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_SIB_Vadim_Podbelsky.tga"
-			"gfx/leaders/Asian_Steppe/Portrait_TAN_Salchak_Toka.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_UZB_Usman_Yusupov.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_XSM_Sun_Lianguang.tga"
 		} 
@@ -1789,7 +1787,6 @@ asian_steppe = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
 			"gfx/leaders/KAZ/portrait_kaz_ilyas_zhansugurov.dds"
 			"gfx/leaders/Generic/Portrait_Asia_Generic_new_1.tga"
-			"gfx/leaders/Asian_Steppe/portrait_mongolia_sukhbaa.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_SIB_Nikolay_Avksentyev.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_XSM_Han_Youwen.tga"
 		}
@@ -2258,7 +2255,7 @@ sino = {
 		"gfx/leaders/Sino/Portrait_FNG_Zhang_Haipeng.tga"
 		"gfx/leaders/Sino/Portrait_FNG_Zhang_Zuoxiang.tga"
 		"gfx/leaders/Sino/Portrait_China_Chang_Tzuchung.tga"
-		"gfx/leaders/Sino/portrait_SQI_wang_yaowu.tga"
+		"gfx/leaders/Sino/portrait_SQI_wang_yaowu.dds"
 		"gfx/leaders/Sino/Portrait_XSM_Ma_Zhongying.tga"
 		"gfx/leaders/Sino/Portrait_XSM_Sun_Lianguang.tga"
 	}
@@ -2292,7 +2289,7 @@ sino = {
 			"gfx/leaders/CHI/Portrait_China_weng_wenhao.dds"			
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
 			"gfx/leaders/Sino/Portrait_CHI_Hu_shi.tga"
-			"gfx/leaders/Sino/Portrait_XSM_Ma_Lin.dds"
+			"gfx/leaders/Sino/Portrait_XSM_Ma_Lin.tga"
 		} 
 		fascism = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
@@ -2641,7 +2638,6 @@ aborigine_polynesia = {
 	leader_portraits = {
 		communism = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
-			"gfx/leaders/African/Portrait_Haiti_Louis_Dejoie.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_INC_Pham_Van_Dong_old_happy.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Friedrich_Maharero.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ong Kee Hui.tga"
@@ -2658,21 +2654,21 @@ aborigine_polynesia = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_SOM_Aden_Daar.tga"			
 		} 
 		fascism = {
-			"gfx/leaders/Aborigine_Polynesia/Portrait_KIK_Mathenge.dds"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_MOR_Ali_Yata.dds"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_PAL_Alami.dds"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Abang_Haji_Abdillah.dds"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Datu_Patinggi.dds"
+			"gfx/leaders/African/Portrait_KIK_Mathenge.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_MOR_Ali_Yata.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_PAL_Alami.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Abang_Haji_Abdillah.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Datu_Patinggi.tga"
 		}
 		absolutist = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_David_Kawananakoa.dds"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_David_Kalakaua.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_jonah_kuhio.tga"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_KTG_Mabumba_Kitanika.tga"
+			"gfx/leaders/African/Portrait_KTG_Mabumba_Kitanika.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ahmad_Tajuddin.tga"
 		}
 		neutrality = {
-			"gfx/leaders/HAI/portrait_hai_stenio_vincent.tga"
+			"gfx/leaders/HAI/portrait_hai_stenio_vincent.dds"
 			"gfx/leaders/Generic/Portrait_Africa_Generic_new_1.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Otto_Schimming.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ong_Tiang_Swee.tga"
@@ -2817,16 +2813,16 @@ north_american_native = {
 	}
 	female_portraits = {
 		military = {
-			"gfx/leaders/North_American_Native/portrait_Native_American_female.dds"
-			"gfx/leaders/North_American_Native/portrait_Native_American_female_2.dds"
+			"gfx/leaders/North_American_Native/Female/portrait_Native_American_female.dds"
+			"gfx/leaders/North_American_Native/Female/portrait_Native_American_female_2.dds"
 		}
 		monarch = {
-			"gfx/leaders/North_American_Native/portrait_Native_American_female.dds"
-			"gfx/leaders/North_American_Native/portrait_Native_American_female_2.dds"
+			"gfx/leaders/North_American_Native/Female/portrait_Native_American_female.dds"
+			"gfx/leaders/North_American_Native/Female/portrait_Native_American_female_2.dds"
 		}
 		ideological_leader = {
-			"gfx/leaders/North_American_Native/portrait_Native_American_female.dds"
-			"gfx/leaders/North_American_Native/portrait_Native_American_female_2.dds"
+			"gfx/leaders/North_American_Native/Female/portrait_Native_American_female.dds"
+			"gfx/leaders/North_American_Native/Female/portrait_Native_American_female_2.dds"
 		}
 	}
 		
@@ -3192,7 +3188,6 @@ hispanic = {
 			"gfx/leaders/Hispanic/portrait_The_Che.dds"
 			"gfx/leaders/Hispanic/Portrait_BOL_Alcides_Arguedas.tga"
 			"gfx/leaders/Hispanic/Portrait_BOL_Javier_Granado.tga"
-			"gfx/leaders/Hispanic/Portrait_CHL_Cesar_Urrutia.tga"
 			"gfx/leaders/Hispanic/Portrait_CHL_Jorge Alessandri.tga"
 			"gfx/leaders/Hispanic/Portrait_Columbia_Eduardo_Montejo.tga"
 			"gfx/leaders/Hispanic/Portrait_Cuba_Lazaro_Pena_Gonzalez.tga"
@@ -3258,7 +3253,7 @@ hispanic = {
 			"gfx/leaders/South America/Portrait_South_America_Generic_6.dds"
 			"gfx/leaders/South America/portrait_south_america_generic_9.dds"
 			"gfx/leaders/ARG/Portrait_Argentina_Agustin_Pedro_Justo.dds"
-			"gfx/leaders/ARG/Portrait_Bolivia_Jose_Luis_Tejada_Sorzano.dds"
+			"gfx/leaders/BOL/Portrait_Bolivia_Jose_Luis_Tejada_Sorzano.dds"
 			"gfx/leaders/ECU/portrait_ecu_federico_paez.dds"
 			"gfx/leaders/NIC/portrait_nic_anastasio_somoza_garcia.dds"
 			"gfx/leaders/Hispanic/Portrait_Bolivia_Enrique_Castillo.tga"
@@ -3509,7 +3504,7 @@ african = {
 		} 
 		radical = {
 			"gfx/leaders/Africa/Portrait_Africa_Generic_2.dds"
-			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_2.tga"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_2.dds"
 			"gfx/leaders/African/Portrait_Ashanti_Addo.tga"			
 			"gfx/leaders/African/Portrait_Dahomey_Angoli.tga"
 			"gfx/leaders/African/Portrait_GAB_Leon.tga"
