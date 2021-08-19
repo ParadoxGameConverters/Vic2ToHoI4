@@ -2339,6 +2339,8 @@ focus = {
 	}
 	available = {
 		$TARGET = {
+			has_war = no
+			is_puppet = no
 			is_in_faction = no
 		}
 		is_puppet = no
@@ -2461,10 +2463,21 @@ focus = {
 	id = Alliance_
 	icon = GFX_goal_generic_allies_build_infantry
 	available = {
+		OR = {
+			is_faction_leader = yes
+			is_in_faction = no
+		}
+		$ALLY = {
 			OR = {
 				is_faction_leader = yes
 				is_in_faction = no
+				has_war = no
 			}
+			has_opinion = {
+				target = ROOT
+				value > -50
+			}
+		}
 	}
 	cost = 10
 	ai_will_do = {
@@ -2472,14 +2485,28 @@ focus = {
 	}
 	bypass = {
 		OR = {
-			ROOT = { is_in_faction_with = $ALLY}
+			NOT = { has_government = $ALLY }
+			$ALLY = { is_subject = yes }
+			is_in_faction_with = $ALLY
 			has_war_with = $ALLY
 			NOT = { country_exists = $ALLY }
 		}
 	}
 	completion_reward = {
+		if = {
+			limit = { $ALLY = { is_faction_leader = yes } }
+			every_country = {
+				limit = {
+					is_in_faction_with = $ALLY
+					is_subject = no
+				}
+				country_event = { hours = 6 id = NFEvents.$EVENTID }
+			}
+		}
+		else = {
+			$ALLY = { country_event = { hours = 6 id = NFEvents.$EVENTID } }
+		}
 		$ALLY = {
-			country_event = { hours = 6 id = NFEvents.$EVENTID }
 			add_opinion_modifier = { target = ROOT modifier = positive_50 }
 		}
 	}

@@ -1781,6 +1781,7 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 	 const std::vector<std::shared_ptr<HoI4::Country>>& GCTargets,
 	 const std::string& ideology,
 	 HoI4::Events& events,
+	 Mappers::FactionNameMapper& factionNameMapper,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	const auto& ideologyShort = ideology.substr(0, 3);
@@ -1828,6 +1829,7 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 			newFocus->relativePositionId = ideologyShort + "_Summit" + Home->getTag();
 			newFocus->xPos = allianceFreeColumn;
 			newFocus->yPos = 1;
+			newFocus->updateFocusElement(newFocus->available, "$ALLY", newAlly->getTag());
 			newFocus->updateFocusElement(newFocus->bypass, "$ALLY", newAlly->getTag());
 			newFocus->updateFocusElement(newFocus->completionReward, "$ALLY", newAlly->getTag());
 			newFocus->updateFocusElement(newFocus->completionReward,
@@ -1836,7 +1838,7 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 			focuses.push_back(newFocus);
 			allianceFreeColumn += 2;
 
-			events.createFactionEvents(*Home, *newAlly);
+			events.createFactionEvents(*Home, *newAlly, factionNameMapper);
 		}
 		else
 		{

@@ -811,7 +811,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 							auto newFaction = std::make_shared<HoI4::Faction>(GC, self);
 							GC->setFaction(newFaction);
 						}
-						theWorld->getEvents().createFactionEvents(*Leader, *GC);
+						theWorld->getEvents().createFactionEvents(*Leader, *GC, theWorld->getFactionNameMapper());
 					}
 					newAllies.push_back(GC);
 					maxGCAlliance++;
@@ -844,7 +844,13 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 		}
 	}
 
-	FocusTree->addGPWarBranch(Leader, newAllies, GCTargets, "Fascist", theWorld->getEvents(), hoi4Localisations);
+	FocusTree->addGPWarBranch(Leader,
+		 newAllies,
+		 GCTargets,
+		 "Fascist",
+		 theWorld->getEvents(),
+		 theWorld->getFactionNameMapper(),
+		 hoi4Localisations);
 
 	Leader->giveNationalFocus(FocusTree);
 	return CountriesAtWar;
@@ -1031,7 +1037,13 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
 	FocusTree->addCommunistCoupBranch(Leader, forcedtakeover, majorIdeologies, hoi4Localisations);
 	FocusTree->addCommunistWarBranch(Leader, TargetsByTech, theWorld->getEvents(), hoi4Localisations);
-	FocusTree->addGPWarBranch(Leader, newAllies, finalTargets, "Communist", theWorld->getEvents(), hoi4Localisations);
+	FocusTree->addGPWarBranch(Leader,
+		 newAllies,
+		 finalTargets,
+		 "Communist",
+		 theWorld->getEvents(),
+		 theWorld->getFactionNameMapper(),
+		 hoi4Localisations);
 	Leader->giveNationalFocus(FocusTree);
 
 	return CountriesAtWar;

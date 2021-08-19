@@ -18,7 +18,9 @@
 
 
 
-void HoI4::Events::createFactionEvents(const Country& leader, const Country& newAlly)
+void HoI4::Events::createFactionEvents(const Country& leader,
+	 const Country& newAlly,
+	 Mappers::FactionNameMapper& factionNameMapper)
 {
 	auto possibleLeaderName = leader.getName();
 	std::string leaderName;
@@ -44,6 +46,19 @@ void HoI4::Events::createFactionEvents(const Country& leader, const Country& new
 		newAllyName.clear();
 	}
 
+	const auto& possibleFactionName = factionNameMapper.getFactionName(leader.getGovernmentIdeology(),
+		 leader.getPrimaryCulture(),
+		 leader.getPrimaryCultureGroup());
+	std::string factionName;
+	if (possibleFactionName)
+	{
+		factionName = *possibleFactionName;
+	}
+	else
+	{
+		factionName = "Faction of " + leaderName;
+	}
+
 	Event nfEvent;
 	nfEvent.giveType("country_event");
 	nfEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber++));
@@ -54,43 +69,61 @@ void HoI4::Events::createFactionEvents(const Country& leader, const Country& new
 	nfEvent.setTriggeredOnly();
 	EventOption yesOption;
 	yesOption.giveName("\"Yes\"");
-	if (leader.isInFaction())
-	{
-		auto allyStrategy = newAlly.getTag() + " = {\n";
-		allyStrategy += "\t\t\tadd_ai_strategy = {\n";
-		allyStrategy += "\t\t\t\ttype = alliance\n";
-		allyStrategy += "\t\t\t\tid = \"" + leader.getTag() + "\"\n";
-		allyStrategy += "\t\t\t\tvalue = 200\n";
-		allyStrategy += "\t\t\t}\n";
-		allyStrategy += "\t\t\tdismantle_faction = yes\n";
-		allyStrategy += "\t\t}";
-		yesOption.giveScriptBlock(std::move(allyStrategy));
-		std::string createFaction = "if = {\n";
-		createFaction += "\t\t\tlimit = {\n";
-		createFaction += "\t\t\t\t" + leader.getTag() + " = {\n";
-		createFaction += "\t\t\t\t\tis_in_faction = no\n";
-		createFaction += "\t\t\t\t}\n";
-		createFaction += "\t\t\t}\n";
-		createFaction += "\t\t\t" + leader.getTag() + " = {\n";
-		createFaction += "\t\t\t\tcreate_faction = \"" + leaderName + "\"\n";
-		createFaction += "\t\t\t}\n";
-		createFaction += "\t\t}";
-		yesOption.giveScriptBlock(std::move(createFaction));
-		auto addToFaction = leader.getTag() + " = {\n";
-		addToFaction += "\t\t\tadd_to_faction = " + newAlly.getTag() + "\n";
-		addToFaction += "\t\t}";
-		yesOption.giveScriptBlock(std::move(addToFaction));
-	}
+	std::string createFaction = "if = {\n";
+	createFaction += "\t\t\tlimit = {\n";
+	createFaction += "\t\t\t\t" + leader.getTag() + " = {\n";
+	createFaction += "\t\t\t\t\tis_in_faction = no\n";
+	createFaction += "\t\t\t\t}\n";
+	createFaction += "\t\t\t}\n";
+	createFaction += "\t\t\t" + leader.getTag() + " = {\n";
+	createFaction += "\t\t\t\tcreate_faction = \"" + factionName + "\"\n";
+	createFaction += "\t\t\t}\n";
+	createFaction += "\t\t}";
+	yesOption.giveScriptBlock(std::move(createFaction));
+	auto addToFaction = leader.getTag() + " = {\n";
+	addToFaction += "\t\t\tadd_to_faction = ROOT\n";
+	addToFaction += "\t\t}";
+	yesOption.giveScriptBlock(std::move(addToFaction));
 	yesOption.giveHiddenEffect(
 		 "= {\n"
 		 "\t\t\tnews_event = { id = news." +
 		 std::to_string(newsEventNumber) +
 		 " }\n"
 		 "\t\t}");
+	std::string yesOptionChance;
+	yesOptionChance = "= {\n";
+	yesOptionChance += "\t\t\tfactor = 3\n";
+	yesOptionChance += "\t\t\tmodifier = {\n";
+	yesOptionChance += "\t\t\t\tfactor = 0\n";
+	yesOptionChance += "\t\t\t\tNOT = { has_government = " + leader.getTag() + " }\n";
+	yesOptionChance += "\t\t\t}\n";
+	yesOptionChance += "\t\t\tmodifier = {\n";
+	yesOptionChance += "\t\t\t\tfactor = 0.5\n";
+	yesOptionChance += "\t\t\t\thas_opinion = {\n";
+	yesOptionChance += "\t\t\t\t\ttarget = " + leader.getTag() + "\n";
+	yesOptionChance += "\t\t\t\t\tvalue < 100\n";
+	yesOptionChance += "\t\t\t\t}\n";
+	yesOptionChance += "\t\t\t}\n";
+	yesOptionChance += "\t\t\tmodifier = {\n";
+	yesOptionChance += "\t\t\t\tfactor = 0.5\n";
+	yesOptionChance += "\t\t\t\thas_opinion = {\n";
+	yesOptionChance += "\t\t\t\t\ttarget = " + leader.getTag() + "\n";
+	yesOptionChance += "\t\t\t\t\tvalue < 50\n";
+	yesOptionChance += "\t\t\t\t}\n";
+	yesOptionChance += "\t\t\t}\n";
+	yesOptionChance += "\t\t\tmodifier = {\n";
+	yesOptionChance += "\t\t\t\tfactor = 0\n";
+	yesOptionChance += "\t\t\t\thas_opinion = {\n";
+	yesOptionChance += "\t\t\t\t\ttarget = " + leader.getTag() + "\n";
+	yesOptionChance += "\t\t\t\t\tvalue < 0\n";
+	yesOptionChance += "\t\t\t\t}\n";
+	yesOptionChance += "\t\t\t}\n";
+	yesOptionChance += "\t\t}\n";
+	yesOption.giveAiChance(std::move(yesOptionChance));
 	nfEvent.giveOption(std::move(yesOption));
 	EventOption noOption;
 	noOption.giveName("\"No\"");
-	noOption.giveAiChance("= { factor = 0 }");
+	noOption.giveAiChance("= { factor = 1 }");
 	noOption.giveHiddenEffect(
 		 "= {\n"
 		 "\t\t\tnews_event = { id = news." +
@@ -103,7 +136,7 @@ void HoI4::Events::createFactionEvents(const Country& leader, const Country& new
 	Event newsEventYes;
 	newsEventYes.giveType("news_event");
 	newsEventYes.giveId("news." + std::to_string(newsEventNumber));
-	newsEventYes.giveTitle("\"" + newAllyName + " formalizes alliance with " + leaderName + "\"");
+	newsEventYes.giveTitle("\"[From.GetName] formalizes alliance with " + leaderName + "\"");
 	newsEventYes.giveDescription(
 		 "= \"The leaders of both countries have announced their intent of military cooperation.\"");
 	newsEventYes.givePicture("news_event_generic_sign_treaty1");
@@ -117,7 +150,7 @@ void HoI4::Events::createFactionEvents(const Country& leader, const Country& new
 	Event newsEventNo;
 	newsEventNo.giveType("news_event");
 	newsEventNo.giveId("news." + std::to_string(newsEventNumber + 1));
-	newsEventNo.giveTitle("\"" + newAllyName + " refuses the alliance offer of " + leaderName + "\"");
+	newsEventNo.giveTitle("\"[From.GetName] refuses the alliance offer of " + leaderName + "\"");
 	newsEventNo.giveDescription("= \"The alliance negotiations ended in disagreement.\"");
 	newsEventNo.givePicture("news_event_generic_sign_treaty1");
 	newsEventNo.setMajor();
