@@ -69,9 +69,10 @@ class HoI4FocusTree: commonItems::parser
 		 HoI4::Events& events,
 		 HoI4::Localisation& hoi4Localisations);
 	void addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
+		 const std::vector<std::shared_ptr<HoI4::Country>>& anschlussTargets,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& sudetenTargets,
-		 const std::vector<std::vector<int>>& demandedStates,
-		 HoI4::World& world,
+		 const std::map<std::string, std::vector<int>>& demandedStates,
+		 HoI4::Events& events,
 		 HoI4::Localisation& hoi4Localisations);
 	void addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& newAllies,

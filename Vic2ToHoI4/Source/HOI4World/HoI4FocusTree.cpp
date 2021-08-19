@@ -1578,6 +1578,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 		else
 		{
 			newFocus->xPos = nextFreeColumn;
+			nextFreeColumn += 2;
 		}
 		newFocus->yPos = 0;
 		// FIXME
@@ -1657,44 +1658,38 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 	//}
 }
 
-void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
-	 const vector<shared_ptr<HoI4::Country>>& sudetenTargets,
-	 const vector<vector<int>>& demandedStates,
-	 HoI4::World& world,
+void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& anschlussTargets,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& sudetenTargets,
+	 const std::map<std::string, std::vector<int>>& demandedStates,
+	 HoI4::Events& events,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	auto& events = world.getEvents();
-
 	// if it can easily take these targets as they are not in an alliance, you can get annexation event
 
 	if (const auto& originalFocus = loadedFocuses.find("expand_the_reich"); originalFocus != loadedFocuses.end())
 	{
-		shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		if (sudetenTargets.size() == 1 || sudetenTargets.size() >= 2)
+		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+		if (!anschlussTargets.empty())
 		{
 			// if there are anschlusses, make this event require at least 1 anschluss, else, its the start of a tree
-			for (unsigned int i = 0; i < 2; i++)
+			std::string prereq = "= {";
+			for (const auto& target: anschlussTargets)
 			{
-				if (i < sudetenTargets.size())
-				{
-					//					newFocus->prerequisites.push_back("= { focus = " + Home->getTag() + "_anschluss_" +
-					// sudetenTargets[i]->getTag() + " }");
-				}
+				prereq += " focus = " + Home->getTag() + "_anschluss_" + target->getTag();
 			}
-			newFocus->xPos = nextFreeColumn + static_cast<int>(sudetenTargets.size()) - 1;
+			newFocus->prerequisites.push_back(prereq + " }\n");
+			newFocus->relativePositionId = "The_third_way" + Home->getTag();
+			newFocus->xPos = 0;
+			newFocus->yPos = 3;
 		}
-
-		//'else' statement is there in case sudetenTargets.size() is <1.  Need to fix in the future.
 		else
 		{
 			newFocus->xPos = nextFreeColumn;
+			nextFreeColumn += 2;
+			newFocus->yPos = 0;
 		}
-		newFocus->yPos = 0;
-		newFocus->completionReward += "= {\n";
-		newFocus->completionReward +=
-			 "\t\t\tadd_named_threat = { threat = 3 name = " + newFocus->text + " }\n"; // give some claims or cores
-		newFocus->completionReward += "\t\t\tadd_political_power = 150\n";
-		newFocus->completionReward += "\t\t}";
+		newFocus->updateFocusElement(newFocus->completionReward, "$TEXT", newFocus->text);
 		addFocus(newFocus);
 	}
 	else
@@ -1702,10 +1697,11 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 		throw std::runtime_error("Could not load focus expand_the_reich");
 	}
 
-	for (unsigned int i = 0; i < sudetenTargets.size(); i++)
+	int sudetenFreeColumn = 1 - static_cast<int>(sudetenTargets.size());
+	for (const auto& target: sudetenTargets)
 	{
-		auto possibleSudetenTargetCountryName = sudetenTargets[i]->getName();
-		string sudetenTargetCountryName;
+		const auto& possibleSudetenTargetCountryName = target->getName();
+		std::string sudetenTargetCountryName;
 		if (possibleSudetenTargetCountryName)
 		{
 			sudetenTargetCountryName = *possibleSudetenTargetCountryName;
@@ -1716,38 +1712,27 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 			sudetenTargetCountryName.clear();
 		}
 
-		int v1 = rand() % 8 + 1;
-		int v2 = rand() % 8 + 1;
-
 		if (const auto& originalFocus = loadedFocuses.find("_sudeten_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus =
-				 originalFocus->second.makeTargetedCopy(Home->getTag(), sudetenTargets[i]->getTag(), hoi4Localisations);
-			newFocus->id = Home->getTag() + "_sudeten_" + sudetenTargets[i]->getTag();
-			newFocus->available = "= {\n";
-			newFocus->available += "\t\t\tis_puppet = no\n";
-			newFocus->available += "\t\t\tdate > 1938." + to_string(v1) + "." + to_string(v2) + "\n";
-			newFocus->available += "\t\t}";
-			newFocus->xPos = nextFreeColumn + 2 * i;
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
+			newFocus->id = Home->getTag() + "_sudeten_" + target->getTag();
+			date dateAvailable = date("1938.1.1");
+			if (const auto& relations = Home->getRelations(target->getTag()); relations)
+			{
+				dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
+			}
+			newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString() + "\n");
+			newFocus->relativePositionId = "expand_the_reich" + Home->getTag();
+			newFocus->xPos = sudetenFreeColumn;
 			newFocus->yPos = 1;
-			newFocus->bypass += "= {\n";
-			newFocus->bypass += "  has_war_with = " + sudetenTargets[i]->getTag() + "\n";
-			newFocus->bypass += "}";
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "\t\t\tadd_named_threat = { threat = 2 name = \"Demand Territory from " +
-													sudetenTargetCountryName + "\" }\n";
-			newFocus->completionReward += "\t\t\tarmy_experience = 10\n";
-			newFocus->completionReward += "\t\t\tif = {\n";
-			newFocus->completionReward += "\t\t\t\tlimit = {\n";
-			newFocus->completionReward += "\t\t\t\t\tcountry_exists = " + sudetenTargets[i]->getTag() + "\n";
-			newFocus->completionReward += "\t\t\t\t}\n";
-			newFocus->completionReward += "\t\t\t\t" + sudetenTargets[i]->getTag() + " = {\n";
-			newFocus->completionReward +=
-				 "\t\t\t\t\tcountry_event = NFEvents." + to_string(events.getCurrentNationFocusEventNum()) + "\n";
-			newFocus->completionReward += "\t\t\t\t}\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", sudetenTargetCountryName);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward,
+				 "$EVENTID",
+				 std::to_string(events.getCurrentNationFocusEventNum()));
 			addFocus(newFocus);
+			sudetenFreeColumn += 2;
 		}
 		else
 		{
@@ -1757,31 +1742,24 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 		// FINISH HIM
 		if (const auto& originalFocus = loadedFocuses.find("_finish_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus =
-				 originalFocus->second.makeTargetedCopy(Home->getTag(), sudetenTargets[i]->getTag(), hoi4Localisations);
-			newFocus->id = Home->getTag() + "_finish_" + sudetenTargets[i]->getTag();
-			newFocus->available = "= {\n";
-			if (const auto& truceUntil = Home->getTruceUntil(sudetenTargets[i]->getTag()); truceUntil)
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
+			newFocus->id = Home->getTag() + "_finish_" + target->getTag();
+			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
-				newFocus->available += "\tdate > " + truceUntil->toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 			}
-			newFocus->available += "\t" + sudetenTargets[i]->getTag() + " = { is_in_faction = no }\n";
-			newFocus->available += "\t\t}";
-			newFocus->prerequisites.push_back(
-				 "= { focus =  " + Home->getTag() + "_sudeten_" + sudetenTargets[i]->getTag() + " }");
-			newFocus->xPos = nextFreeColumn + 2 * i;
-			newFocus->yPos = 2;
-			newFocus->bypass += "= {\n";
-			newFocus->bypass += "\t\thas_war_with = " + sudetenTargets[i]->getTag() + "\n";
-			newFocus->bypass += "\t}";
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward +=
-				 "\t\t\tadd_named_threat = { threat = 3 name = \"Fate of " + sudetenTargetCountryName + "\" }\n";
-			newFocus->completionReward += "\t\t\tcreate_wargoal = {\n";
-			newFocus->completionReward += "\t\t\t\ttype = annex_everything\n";
-			newFocus->completionReward += "\t\t\t\ttarget = " + sudetenTargets[i]->getTag() + "\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#DATE");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
+			newFocus->prerequisites.push_back("= { focus =  " + Home->getTag() + "_sudeten_" + target->getTag() + " }");
+			newFocus->relativePositionId = Home->getTag() + "_sudeten_" + target->getTag();
+			newFocus->xPos = 0;
+			newFocus->yPos = 1;
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", sudetenTargetCountryName);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
 			addFocus(newFocus);
 		}
 		else
@@ -1790,9 +1768,11 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 		}
 
 		// events
-		events.createSudetenEvent(*Home, *sudetenTargets[i], demandedStates[i]);
+		if (demandedStates.contains(target->getTag()))
+		{
+			events.createSudetenEvent(*Home, *target, demandedStates.at(target->getTag()));
+		}
 	}
-	nextFreeColumn += 2 * static_cast<int>(sudetenTargets.size());
 }
 
 

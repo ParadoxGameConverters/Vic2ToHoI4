@@ -2365,7 +2365,10 @@ focus = {
 	cost = 10
 	ai_will_do = {
 		factor = 5
-		}
+	}
+	completion_reward = {
+		add_named_threat = { threat = 3 name = $TEXT }
+		add_political_power = 150
 	}
 }
 
@@ -2374,11 +2377,31 @@ focus = {
 	icon = GFX_goal_anschluss
 	prerequisite = { focus = expand_the_reich }
 	cost = 10
+	relative_position_id = expand_the_reich
 	ai_will_do = {
 		factor = 10
 		modifier = {
 			factor = 0
 			date < 1937.6.6
+		}
+	}
+	available = {
+		is_puppet = no
+		#DATE
+	}
+	bypass = {
+	  has_war_with = $TARGET
+	}
+	completion_reward = {
+		add_named_threat = { threat = 2 name = "Demand Territory from $TARGETNAME" }
+		army_experience = 10
+		if = {
+			limit = {
+				country_exists = $TARGET
+			}
+			$TARGET = {
+				country_event = NFEvents.$EVENTID
+			}
 		}
 	}
 }
@@ -2393,6 +2416,20 @@ focus = {
 		modifier = {
 			factor = 0
 			date < 1937.6.6
+		}
+	}
+	available = {
+		#DATE
+		$TARGET = { is_in_faction = no }
+	}
+	bypass = {
+		has_war_with = $TARGET
+	}
+	completion_reward = {
+		add_named_threat = { threat = 3 name = "Fate of $TARGETNAME" }
+		create_wargoal = {
+			type = annex_everything
+			target = $TARGET
 		}
 	}
 }
