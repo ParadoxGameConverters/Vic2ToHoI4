@@ -52,13 +52,6 @@ class HoI4WarCreator
 	void generateReconquestWars(std::ofstream& AILog,
 		 HoI4::Localisation& hoi4Localisations,
 		 const Configuration& theConfiguration);
-	void generateAdditionalWars(std::ofstream& AILog,
-		 std::set<std::shared_ptr<HoI4::Faction>>& factionsAtWar,
-		 double worldStrength,
-		 const HoI4::MapData& theMapData,
-		 const HoI4::ProvinceDefinitions& provinceDefinitions,
-		 HoI4::Localisation& hoi4Localisations,
-		 const Configuration& theConfiguration);
 	bool isImportantCountry(std::shared_ptr<HoI4::Country> country);
 
 	std::vector<std::shared_ptr<HoI4::Faction>> fascistWarMaker(std::shared_ptr<HoI4::Country> country,
@@ -80,18 +73,10 @@ class HoI4WarCreator
 		 const HoI4::MapData& theMapData,
 		 const HoI4::ProvinceDefinitions& provinceDefinitions,
 		 HoI4::Localisation& hoi4Localisations);
-	std::vector<std::shared_ptr<HoI4::Faction>> neighborWarCreator(std::shared_ptr<HoI4::Country> country,
-		 std::ofstream& AILog,
-		 const HoI4::MapData& theMapData,
-		 const HoI4::ProvinceDefinitions& provinceDefinitions,
-		 HoI4::Localisation& hoi4Localisations,
-		 const Configuration& theConfiguration);
 	std::vector<std::shared_ptr<HoI4::Faction>> radicalWarCreator(std::shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
 		 const HoI4::ProvinceDefinitions& provinceDefinitions,
 		 HoI4::Localisation& hoi4Localisations);
-
-	std::vector<std::shared_ptr<HoI4::Country>> findEvilCountries() const;
 
 	std::vector<std::shared_ptr<HoI4::Country>> findWeakNeighbors(std::shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
@@ -107,7 +92,6 @@ class HoI4WarCreator
 	void addTradeEvents(std::shared_ptr<HoI4::Country> country,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowerTargets);
 
-	void setSphereLeaders(const Vic2::World* sourceWorld);
 	double GetFactionStrength(const std::shared_ptr<HoI4::Faction>& Faction, int years) const;
 	std::string HowToTakeLand(std::shared_ptr<HoI4::Country> TargetCountry,
 		 std::shared_ptr<HoI4::Country> AttackingCountry,
