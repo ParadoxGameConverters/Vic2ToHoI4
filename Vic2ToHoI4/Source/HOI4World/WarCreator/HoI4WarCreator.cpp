@@ -1194,63 +1194,6 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 		 theWorld->getStates(),
 		 hoi4Localisations);
 
-	for (const auto& targetTag: closeNeighbors)
-	{
-		if (numWarsWithNeighbors >= 5)
-		{
-			break;
-		}
-
-		auto target = theWorld->findCountry(targetTag);
-		if (target == nullptr)
-		{
-			continue;
-		}
-
-		if (coreHolders.contains(targetTag) || conquerTags.contains(targetTag))
-		{
-			continue;
-		}
-
-
-		auto relations = country->getRelations(targetTag);
-		if (!relations || (relations->getRelations() > 0) || (country == target))
-		{
-			continue;
-		}
-
-		if (auto allies = country->getAllies(); !allies.contains(targetTag))
-		{
-			std::string targetName;
-			if (auto possibleTargetName = target->getName(); possibleTargetName)
-			{
-				targetName = *possibleTargetName;
-			}
-			else
-			{
-				Log(LogLevel::Warning) << "Could not set target name in neighbor war creator";
-			}
-
-			countriesAtWar.push_back(findFaction(country));
-			if (theConfiguration.getDebug())
-			{
-				AILog << "Creating focus to attack " + targetName << "\n";
-			}
-
-			date startDate = date("1936.01.01");
-			startDate.increaseByMonths((200 + relations->getRelations()) / 8);
-			focusTree->addNeighborWarBranch(country,
-				 target,
-				 targetName,
-				 startDate,
-				 theWorld->getMajorIdeologies(),
-				 theWorld->getStates(),
-				 hoi4Localisations);
-
-			numWarsWithNeighbors++;
-		}
-	}
-
 	if (numWarsWithNeighbors > 0)
 	{
 		country->giveNationalFocus(focusTree);
