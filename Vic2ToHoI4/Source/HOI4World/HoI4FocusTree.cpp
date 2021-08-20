@@ -354,7 +354,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	}
 	else
 	{
-		throw std::runtime_error("Could not load focus border_disputes");
+		throw std::runtime_error("Could not load focus border_disputes_shared");
 	}
 
 	if (const auto& originalFocus = loadedFocuses.find("prepare_for_war_shared"); originalFocus != loadedFocuses.end())
@@ -1776,36 +1776,24 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 }
 
 
-void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
-	 const vector<shared_ptr<HoI4::Country>>& newAllies,
-	 const vector<shared_ptr<HoI4::Country>>& GCTargets,
-	 const string& ideology,
+void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& newAllies,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& GCTargets,
+	 const std::string& ideology,
 	 HoI4::Events& events,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	int numAllies = static_cast<int>(newAllies.size());
-	string ideologyShort = ideology.substr(0, 3);
-	if (newAllies.size() > 0)
+	const auto& ideologyShort = ideology.substr(0, 3);
+	if (!newAllies.empty())
 	{
 		if (const auto& originalFocus = loadedFocuses.find("_Summit"); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
 			newFocus->id = ideologyShort + "_Summit" + Home->getTag();
 			newFocus->text = ideology + "_Summit";
-			if (numAllies == 0)
-			{
-				newFocus->xPos = nextFreeColumn + static_cast<int>(newAllies.size());
-			}
-			else
-			{
-				newFocus->xPos = nextFreeColumn + static_cast<int>(newAllies.size()) - 1;
-			}
+			newFocus->xPos = nextFreeColumn + static_cast<int>(newAllies.size()) - 1;
 			newFocus->yPos = 0;
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward +=
-				 "\t\t\tadd_named_threat = { threat = 3 name = \"Call for the " + ideology + " Summit\" }\n";
-			newFocus->completionReward += "\t\t\tadd_political_power = 150\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->completionReward, "$IDEOLOGY", ideology);
 			focuses.push_back(newFocus);
 			hoi4Localisations.copyFocusLocalisations("_Summit", newFocus->text);
 			hoi4Localisations.updateLocalisationText(newFocus->text, "$TARGET", ideology);
@@ -1817,11 +1805,11 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 		}
 	}
 
-	unsigned int i = 0;
-	for (auto newAlly: newAllies)
+	int allianceFreeColumn = 1 - static_cast<int>(newAllies.size());
+	for (const auto& newAlly: newAllies)
 	{
-		auto possibleAllyCountryName = newAlly->getName();
-		string allyCountryName;
+		const auto& possibleAllyCountryName = newAlly->getName();
+		std::string allyCountryName;
 		if (possibleAllyCountryName)
 		{
 			allyCountryName = *possibleAllyCountryName;
@@ -1834,39 +1822,21 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 
 		if (const auto& originalFocus = loadedFocuses.find("Alliance_"); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus =
-				 originalFocus->second.makeTargetedCopy(Home->getTag(), newAlly->getTag(), hoi4Localisations);
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), newAlly->getTag(), hoi4Localisations);
 			newFocus->id = "Alliance_" + newAlly->getTag() + Home->getTag();
 			newFocus->prerequisites.push_back("= { focus = " + ideologyShort + "_Summit" + Home->getTag() + " }");
 			newFocus->relativePositionId = ideologyShort + "_Summit" + Home->getTag();
-			if (numAllies == 1)
-			{
-				newFocus->xPos = 0;
-			}
-			else
-			{
-				newFocus->xPos = (i * 2) - 1;
-			}
+			newFocus->xPos = allianceFreeColumn;
 			newFocus->yPos = 1;
-			newFocus->bypass += "= {\n";
-			newFocus->bypass += "\t\t\tOR = {\n";
-			newFocus->bypass += "\t\t\t\t" + Home->getTag() + " = { is_in_faction_with = " + newAlly->getTag() + "}\n";
-			newFocus->bypass += "\t\t\t\thas_war_with = " + newAlly->getTag() + "\n";
-			newFocus->bypass += "\t\t\t\tNOT = { country_exists = " + newAlly->getTag() + " }\n";
-			newFocus->bypass += "\t\t\t}\n";
-			newFocus->bypass += "\t\t}";
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "\t\t\t" + newAlly->getTag() + " = {\n";
-			newFocus->completionReward += "\t\t\t\tcountry_event = { hours = 6 id = NFEvents." +
-													to_string(events.getCurrentNationFocusEventNum()) + " }\n";
-			newFocus->completionReward +=
-				 "\t\t\t\tadd_opinion_modifier = { target = " + Home->getTag() + " modifier = positive_50 }\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->bypass, "$ALLY", newAlly->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$ALLY", newAlly->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward,
+				 "$EVENTID",
+				 std::to_string(events.getCurrentNationFocusEventNum()));
 			focuses.push_back(newFocus);
+			allianceFreeColumn += 2;
 
 			events.createFactionEvents(*Home, *newAlly);
-			i++;
 		}
 		else
 		{
@@ -1874,11 +1844,11 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 		}
 	}
 
-	i = 0;
-	for (auto GC: GCTargets)
+	int GCfreeColumn = 1 - static_cast<int>(GCTargets.size());
+	for (const auto& GC: GCTargets)
 	{
-		auto possibleWarTargetCountryName = GC->getName();
-		string warTargetCountryName;
+		const auto& possibleWarTargetCountryName = GC->getName();
+		std::string warTargetCountryName;
 		if (possibleWarTargetCountryName)
 		{
 			warTargetCountryName = *possibleWarTargetCountryName;
@@ -1892,35 +1862,30 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 		// figuring out location of WG
 		if (const auto& originalFocus = loadedFocuses.find("GP_War"); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-			if (newAllies.size() > 0)
+			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			for (const auto& ally: newAllies)
 			{
-				for (unsigned int i2 = 0; i2 < newAllies.size(); i2++)
-				{
-					newFocus->prerequisites.push_back(
-						 "= { focus = Alliance_" + newAllies[i2]->getTag() + Home->getTag() + " }");
-				}
+				newFocus->prerequisites.push_back("= { focus = Alliance_" + ally->getTag() + Home->getTag() + " }");
 			}
-			int v1 = rand() % 12 + 1;
-			int v2 = rand() % 12 + 1;
 			newFocus->id = "GP_War" + GC->getTag() + Home->getTag();
 			newFocus->text += GC->getTag();
-			newFocus->available = "= {\n";
-			newFocus->available += "\t\t\thas_war = no\n";
-			const auto& dateAvailable = date("1939." + std::to_string(v1) + "." + std::to_string(v2));
+			date dateAvailable = date("1939.1.1");
+			if (const auto& relations = Home->getRelations(GC->getTag()); relations)
+			{
+				dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
+			}
 			if (const auto& truceUntil = Home->getTruceUntil(GC->getTag()); truceUntil && *truceUntil > dateAvailable)
 			{
-				newFocus->available += "\t\t\tdate > " + truceUntil->toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 			}
 			else
 			{
-				newFocus->available += "\t\t\tdate > " + dateAvailable.toString() + "\n";
+				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString());
 			}
-			newFocus->available += "\t\t}";
-			if (newAllies.size() > 0)
+			if (!newAllies.empty())
 			{
 				newFocus->relativePositionId = ideologyShort + "_Summit" + Home->getTag();
-				newFocus->xPos = 0;
+				newFocus->xPos = GCfreeColumn;
 				newFocus->yPos = 2;
 			}
 			else
@@ -1928,48 +1893,33 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 				newFocus->xPos = nextFreeColumn;
 				newFocus->yPos = 0;
 			}
-			newFocus->bypass = "= {\n";
-			newFocus->bypass += "\t\t   has_war_with = " + GC->getTag() + "\n";
-			newFocus->bypass += "\t\t}";
-			newFocus->aiWillDo = "= {\n";
-			newFocus->aiWillDo += "\t\t\tfactor = " + to_string(10 - GCTargets.size() * 5) + "\n";
-			newFocus->aiWillDo += "\t\t\tmodifier = {\n";
-			newFocus->aiWillDo += "\t\t\t\t\tfactor = 0\n";
-			newFocus->aiWillDo += "\t\t\t\t\tstrength_ratio = { tag = " + GC->getTag() + " ratio < 1 }\n";
-			newFocus->aiWillDo += "\t\t\t}";
-			if (GCTargets.size() > 1)
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", GC->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$FACTOR", std::to_string(10 - GCTargets.size() * 5));
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", GC->getTag());
+			std::string warWithTargets;
+			for (const auto& otherTarget: GCTargets)
 			{
-				newFocus->aiWillDo = "\n";
-
-				// make ai have this as a 0 modifier if they are at war
-				newFocus->aiWillDo += "\t\t\tmodifier = {\n";
-				newFocus->aiWillDo += "\t\t\t\tfactor = 0\n";
-				newFocus->aiWillDo += "\t\t\t\tOR = {\n";
-				for (unsigned int i2 = 0; i2 < GCTargets.size(); i2++)
+				if (otherTarget->getTag() == GC->getTag())
 				{
-					if (GC != GCTargets[i2])
-					{
-						newFocus->aiWillDo += "\t\t\t\t\thas_war_with = " + GCTargets[i2]->getTag() + "\n";
-					}
+					continue;
 				}
-				newFocus->aiWillDo += "\t\t\t\t}\n";
-				newFocus->aiWillDo += "\t\t\t}";
+				if (warWithTargets.empty())
+				{
+					warWithTargets = "has_war_with = " + otherTarget->getTag() + "\n";
+				}
+				else
+				{
+					warWithTargets += "\t\t\t\thas_war_with = " + otherTarget->getTag() + "\n";
+				}
 			}
-			newFocus->aiWillDo += "\n";
-			newFocus->aiWillDo += "\t\t}";
-			newFocus->completionReward += "= {\n";
-			newFocus->completionReward +=
-				 "\t\t\tadd_named_threat = { threat = 5 name = \"War with " + warTargetCountryName + "\" }\n";
-			newFocus->completionReward += "\t\t\tdeclare_war_on = {\n";
-			newFocus->completionReward += "\t\t\t\ttype = puppet_wargoal_focus\n";
-			newFocus->completionReward += "\t\t\t\ttarget = " + GC->getTag() + "\n";
-			newFocus->completionReward += "\t\t\t}\n";
-			newFocus->completionReward += "\t\t}";
+			newFocus->updateFocusElement(newFocus->aiWillDo, "#WAR_WITH_TARGETS", warWithTargets);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", warTargetCountryName);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", GC->getTag());
 			focuses.push_back(newFocus);
+			GCfreeColumn += 2;
 			hoi4Localisations.copyFocusLocalisations("GPWar", newFocus->text);
 			hoi4Localisations.updateLocalisationText(newFocus->text, "$TARGET", GC->getTag());
 			hoi4Localisations.updateLocalisationText(newFocus->text + "_desc", "$TARGET", GC->getTag());
-			i++;
 		}
 		else
 		{
@@ -2479,7 +2429,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 		}
 		else
 		{
-			throw std::runtime_error("Could not load focus border_disputes");
+			throw std::runtime_error("Could not load focus border_disputes_conquer");
 		}
 
 		if (const auto& originalFocus = loadedFocuses.find("prepare_for_war_conquer");
@@ -2708,7 +2658,7 @@ void HoI4FocusTree::addNeighborWarBranch(const std::shared_ptr<HoI4::Country>& t
 	}
 	else
 	{
-		throw std::runtime_error("Could not load focus border_disputes");
+		throw std::runtime_error("Could not load focus border_disputes_nw");
 	}
 
 	if (const auto& originalFocus = loadedFocuses.find("prepare_for_war_nw"); originalFocus != loadedFocuses.end())

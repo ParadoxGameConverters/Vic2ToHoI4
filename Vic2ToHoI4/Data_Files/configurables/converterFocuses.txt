@@ -2451,6 +2451,10 @@ focus = {
 			date > 1938.1.1
 		}
 	}
+	completion_reward = {
+		add_named_threat = { threat = 3 name = "Call for the $IDEOLOGY Summit" }
+		add_political_power = 150
+	}
 }
 
 focus = {
@@ -2466,12 +2470,52 @@ focus = {
 	ai_will_do = {
 			factor = 10
 	}
+	bypass = {
+		OR = {
+			ROOT = { is_in_faction_with = $ALLY}
+			has_war_with = $ALLY
+			NOT = { country_exists = $ALLY }
+		}
+	}
+	completion_reward = {
+		$ALLY = {
+			country_event = { hours = 6 id = NFEvents.$EVENTID }
+			add_opinion_modifier = { target = ROOT modifier = positive_50 }
+		}
+	}
 }
 
 focus = {
 	id = GP_War
 	icon = GFX_goal_generic_major_war
 	cost = 10
+	available = {
+		has_war = no
+		#DATE
+	}
+	bypass = {
+		has_war_with = $TARGET
+	}
+	ai_will_do = {
+		factor = $FACTOR
+		modifier = {
+			factor = 0
+			strength_ratio = { tag = $TARGET ratio < 1 }
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				#WAR_WITH_TARGETS
+			}
+		}
+	}
+	completion_reward = {
+		add_named_threat = { threat = 5 name = "War with $TARGETNAME" }
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = $TARGET
+		}
+	}
 }
 
 	focus = {
