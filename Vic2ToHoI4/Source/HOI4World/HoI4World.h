@@ -82,6 +82,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getCountries() const { return countries; }
 	[[nodiscard]] const auto& getMilitaryMappings() const { return *theMilitaryMappings; }
 	[[nodiscard]] auto& getGraphicsMapper() { return *graphicsMapper; }
+	[[nodiscard]] auto& getFactionNameMapper() { return *factionNameMapper; }
 	[[nodiscard]] const auto& getIdeologicalLeaderTraits() const { return ideologicalLeaderTraits; }
 	[[nodiscard]] const auto& getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] const auto& getSupplyZones() const { return *supplyZones; }
