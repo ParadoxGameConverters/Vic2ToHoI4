@@ -312,7 +312,7 @@ std::optional<tga_image*> HoI4::createDominionFlag(const std::string& hoi4Suffix
 				const auto destIndex = (y * sizeX + (sizeX - (*emblem)->width) + x) * 4;
 
 				// skip pixels masked by the alpha channel
-				if ((*emblem)->image_data[sourceIndex + 2] == 0)
+				if ((*emblem)->image_data[sourceIndex + 3] == 0)
 				{
 					continue;
 				}
