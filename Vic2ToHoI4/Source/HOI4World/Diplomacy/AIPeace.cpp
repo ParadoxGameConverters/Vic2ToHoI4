@@ -42,6 +42,14 @@ HoI4::AiPeace::AiPeace(const std::string& theName, std::istream& theStream): nam
 		const commonItems::stringOfItem puppetString(theStream);
 		puppet = puppetString.getString();
 	});
+	registerKeyword("puppet_all", [this](std::istream& theStream) {
+		const commonItems::stringOfItem puppetString(theStream);
+		puppetAll = puppetString.getString();
+	});
+	registerKeyword("puppet_state", [this](std::istream& theStream) {
+		const commonItems::stringOfItem puppetString(theStream);
+		puppetState = puppetString.getString();
+	});
 	registerKeyword("take_states", [this](std::istream& theStream) {
 		const commonItems::stringOfItem takeStatesString(theStream);
 		takeStates = takeStatesString.getString();
