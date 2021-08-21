@@ -46,7 +46,7 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 		 hoi4Localisations,
 		 theConfiguration);
 	Log(LogLevel::Info) << "\t\tGenerating reconquest wars";
-	generateReconquestWars(AILog, hoi4Localisations, theConfiguration);
+	generateReconquestWars(AILog, theMapData, provinceDefinitions, hoi4Localisations, theConfiguration);
 
 	if (theConfiguration.getDebug())
 	{
@@ -967,6 +967,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator
 
 
 void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
+	 const HoI4::MapData& theMapData,
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
 	 HoI4::Localisation& hoi4Localisations,
 	 const Configuration& theConfiguration)
 {
@@ -992,11 +994,29 @@ void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
 			 theWorld->getMajorIdeologies(),
 			 theWorld->getStates(),
 			 hoi4Localisations);
+
+		std::map<std::string, std::set<int>> potentialClaims;
+		for (const auto& target: country->getConquerStrategies())
+		{
+			const auto& targetCountry = theWorld->findCountry(target.getID());
+			if (!targetCountry)
+			{
+				continue;
+			}
+			const auto& borderStates = mapUtils.findBorderStates(*country,
+				 *targetCountry,
+				 theWorld->getProvinceToStateIDMap(),
+				 theMapData,
+				 provinceDefinitions);
+			potentialClaims[target.getID()] = borderStates;
+		}
+
 		const auto& conquerTags = focusTree->addConquerBranch(country,
 			 numWarsWithNeighbors,
 			 theWorld->getMajorIdeologies(),
 			 coreHolders,
 			 theWorld->getStates(),
+			 potentialClaims,
 			 hoi4Localisations);
 
 		if (numWarsWithNeighbors > 0)
