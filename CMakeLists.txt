@@ -13,7 +13,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
 add_compile_options("-std=c++20")
 add_compile_options("-lstdc++fs")
-add_compile_options("-O3")
 #add_compile_options("-g")
 
 include(ExternalProject)
