@@ -281,14 +281,16 @@ std::optional<tga_image*> HoI4::createDominionFlag(const std::string& hoi4Suffix
 		if (const auto ownerSourceFlag = readFlag(*ownerSourcePath); ownerSourceFlag)
 		{
 			const auto sourceBytesPerPixel = (*ownerSourceFlag)->pixel_depth / 8;
-			const auto maxHeight = std::min<int>((*ownerSourceFlag)->height, sizeY);
-			const auto maxWidth = std::min<int>((*ownerSourceFlag)->width, sizeX);
-			for (int y = 0; y < maxHeight; y += 2)
+			const auto sourceHeight = (*ownerSourceFlag)->height;
+			const auto sourceWidth = (*ownerSourceFlag)->width;
+
+			const auto verticalStartLine = sizeY - (sourceHeight / 2);
+			for (int y = 0; y < sourceHeight; y += 2)
 			{
-				for (int x = 0; x < maxWidth; x += 2)
+				for (int x = 0; x < sourceWidth; x += 2)
 				{
-					const auto sourceIndex = (y * (*ownerSourceFlag)->width + x) * sourceBytesPerPixel;
-					const auto destIndex = ((y / 2 + (sizeY / 2)) * sizeX + (x / 2)) * 4;
+					const auto sourceIndex = (y * sourceWidth + x) * sourceBytesPerPixel;
+					const auto destIndex = ((y / 2 + verticalStartLine) * sizeX + (x / 2)) * 4;
 
 					flag->image_data[destIndex + 0] = (*ownerSourceFlag)->image_data[sourceIndex + 0];
 					flag->image_data[destIndex + 1] = (*ownerSourceFlag)->image_data[sourceIndex + 1];
@@ -312,7 +314,7 @@ std::optional<tga_image*> HoI4::createDominionFlag(const std::string& hoi4Suffix
 				const auto destIndex = (y * sizeX + (sizeX - (*emblem)->width) + x) * 4;
 
 				// skip pixels masked by the alpha channel
-				if ((*emblem)->image_data[sourceIndex + 2] == 0)
+				if ((*emblem)->image_data[sourceIndex + 3] == 0)
 				{
 					continue;
 				}
