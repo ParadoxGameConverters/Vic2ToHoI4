@@ -47,19 +47,11 @@ HoI4::Country::Country(std::string tag,
 		color = *sourceColor;
 	}
 	auto possibleGraphicalCulture = graphicsMapper.getGraphicalCulture(primaryCulture, primaryCultureGroup);
-	if (!possibleGraphicalCulture)
-	{
-		possibleGraphicalCulture = graphicsMapper.getGraphicalCulture(primaryCulture, primaryCultureGroup);
-	}
 	if (possibleGraphicalCulture)
 	{
 		graphicalCulture = *possibleGraphicalCulture;
 	}
 	auto possibleGraphicalCulture2d = graphicsMapper.get2dGraphicalCulture(primaryCulture, primaryCultureGroup);
-	if (!possibleGraphicalCulture2d)
-	{
-		possibleGraphicalCulture2d = graphicsMapper.get2dGraphicalCulture(primaryCulture, primaryCultureGroup);
-	}
 	if (possibleGraphicalCulture2d)
 	{
 		graphicalCulture2d = *possibleGraphicalCulture2d;
@@ -337,8 +329,7 @@ void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations) con
 
 void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names)
 {
-	for (const auto& operativePortrait:
-				graphicsMapper.getFemaleOperativePortraits(primaryCulture, primaryCultureGroup))
+	for (const auto& operativePortrait: graphicsMapper.getFemaleOperativePortraits(primaryCulture, primaryCultureGroup))
 	{
 		const auto firstName = names.getFemaleName(primaryCulture);
 		if (!firstName)

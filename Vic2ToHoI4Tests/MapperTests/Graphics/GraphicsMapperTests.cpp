@@ -129,13 +129,11 @@ TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedLeaderPortraitsAreReturned)
 	{
 		leaderPortraits.insert(portrait);
 	}
-	for (const auto& portrait:
-		 graphicsMapper->getLeaderPortraits("", "test_culture_group2", "good_ideology"))
+	for (const auto& portrait: graphicsMapper->getLeaderPortraits("", "test_culture_group2", "good_ideology"))
 	{
 		leaderPortraits.insert(portrait);
 	}
-	for (const auto& portrait:
-		 graphicsMapper->getLeaderPortraits("test_culture2", "", "good_ideology"))
+	for (const auto& portrait: graphicsMapper->getLeaderPortraits("test_culture2", "", "good_ideology"))
 	{
 		leaderPortraits.insert(portrait);
 	}
@@ -163,8 +161,7 @@ TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedFemalePortraitsAreReturned)
 	{
 		femalePortraits.insert(testPortrait);
 	}
-	for (const auto& testPortrait:
-		 graphicsMapper->getFemalePortraits("", "test_culture_group2", "good_ideology"))
+	for (const auto& testPortrait: graphicsMapper->getFemalePortraits("", "test_culture_group2", "good_ideology"))
 	{
 		femalePortraits.insert(testPortrait);
 	}
