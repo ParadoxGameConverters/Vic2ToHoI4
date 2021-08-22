@@ -50,6 +50,8 @@ class HoI4WarCreator
 		 double worldStrength,
 		 const Configuration& theConfiguration) const;
 	void generateReconquestWars(std::ofstream& AILog,
+		 const HoI4::MapData& theMapData,
+		 const HoI4::ProvinceDefinitions& provinceDefinitions,
 		 HoI4::Localisation& hoi4Localisations,
 		 const Configuration& theConfiguration);
 	bool isImportantCountry(std::shared_ptr<HoI4::Country> country);

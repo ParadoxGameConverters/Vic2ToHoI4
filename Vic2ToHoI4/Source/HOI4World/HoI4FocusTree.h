@@ -92,6 +92,7 @@ class HoI4FocusTree: commonItems::parser
 		 const std::set<std::string>& majorIdeologies,
 		 const std::map<std::string, std::set<int>>& coreHolders,
 		 const std::map<int, HoI4::State>& states,
+		 const std::map<std::string, std::set<int>>& potentialClaims,
 		 HoI4::Localisation& hoi4Localisations);
 	void addIntegratePuppetsBranch(const std::string& tag,
 		 const std::map<std::string, std::string>& puppets,

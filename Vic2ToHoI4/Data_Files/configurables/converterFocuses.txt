@@ -2936,10 +2936,11 @@ focus = {
 			$TARGET = {
 				exists = yes
 				not_allies_or_subjects = yes
-				potential_take_state_target = yes
+				#OWNSCLAIM
 			}
 		}
 		completion_reward = {
+			#ADDCLAIM
 			add_manpower = 10000
 		}
 		ai_will_do = {
