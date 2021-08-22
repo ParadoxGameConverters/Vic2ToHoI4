@@ -274,6 +274,10 @@ class Country
 	[[nodiscard]] const auto& getGlobalEventTargets() const { return globalEventTargets; }
 	[[nodiscard]] bool isProvinceInHomeArea(int provinceId) const { return homeAreaProvinces.contains(provinceId); }
 
+	void convertStrategies(const Mappers::CountryMapper& countryMap,
+		 const Vic2::Country& sourceCountry,
+		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+
   private:
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
@@ -286,7 +290,6 @@ class Country
 	void convertRelations(const Mappers::CountryMapper& countryMap,
 		 const Vic2::Country& sourceCountry,
 		 const date& startDate);
-	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 
 	bool attemptToPutCapitalInPreferredNonWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,

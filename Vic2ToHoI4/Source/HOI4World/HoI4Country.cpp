@@ -116,7 +116,6 @@ HoI4::Country::Country(std::string tag,
 	lastDynasty = sourceCountry.getLastDynasty();
 	convertLeaders(sourceCountry);
 	convertRelations(countryMap, sourceCountry, startDate);
-	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
 
 	employedWorkers = sourceCountry.getEmployedWorkers();
@@ -619,11 +618,13 @@ void HoI4::Country::convertRelations(const Mappers::CountryMapper& countryMap,
 }
 
 
-void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry)
+void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap,
+	 const Vic2::Country& sourceCountry,
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
 {
 	for (const auto& [vic2Tag, strategy]: sourceCountry.getAI().getConsolidatedStrategies())
 	{
-		if (const auto& HoI4Tag = countryMap.getHoI4Tag(vic2Tag); HoI4Tag)
+		if (const auto& HoI4Tag = countryMap.getHoI4Tag(vic2Tag); HoI4Tag && countries.contains(*HoI4Tag))
 		{
 			if (HoI4Tag == tag)
 			{
@@ -641,7 +642,7 @@ void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap, 
 
 	for (const auto& srcStrategy: sourceCountry.getAI().getStrategies())
 	{
-		if (const auto& HoI4Tag = countryMap.getHoI4Tag(srcStrategy.getID()); HoI4Tag)
+		if (const auto& HoI4Tag = countryMap.getHoI4Tag(srcStrategy.getID()); HoI4Tag && countries.contains(*HoI4Tag))
 		{
 			HoI4::AIStrategy newStrategy(srcStrategy, *HoI4Tag);
 			aiStrategies.push_back(newStrategy);
