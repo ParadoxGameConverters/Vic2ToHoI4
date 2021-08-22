@@ -47,14 +47,6 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 		 theConfiguration);
 	Log(LogLevel::Info) << "\t\tGenerating reconquest wars";
 	generateReconquestWars(AILog, hoi4Localisations, theConfiguration);
-	Log(LogLevel::Info) << "\t\tGenerating additional wars";
-	generateAdditionalWars(AILog,
-		 factionsAtWar,
-		 worldStrength,
-		 theMapData,
-		 provinceDefinitions,
-		 hoi4Localisations,
-		 theConfiguration);
 
 	if (theConfiguration.getDebug())
 	{
@@ -217,44 +209,6 @@ double HoI4WarCreator::calculatePercentOfWorldAtWar(std::ofstream& AILog,
 }
 
 
-void HoI4WarCreator::generateAdditionalWars(std::ofstream& AILog,
-	 std::set<std::shared_ptr<HoI4::Faction>>& factionsAtWar,
-	 double worldStrength,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions,
-	 HoI4::Localisation& hoi4Localisations,
-	 const Configuration& theConfiguration)
-{
-	auto countriesEvilnessSorted = findEvilCountries();
-
-	for (auto country = countriesEvilnessSorted.rbegin(); country != countriesEvilnessSorted.rend(); country++)
-	{
-		if (!isImportantCountry(*country) && (*country)->getTag() != "UCV")
-		{
-			if (theConfiguration.getDebug())
-			{
-				auto name = (*country)->getName();
-				if (name)
-				{
-					AILog << "Checking for war in " + *name << "\n";
-				}
-			}
-			std::vector<std::shared_ptr<HoI4::Faction>> newCountriesatWar;
-			newCountriesatWar =
-				 neighborWarCreator(*country, AILog, theMapData, provinceDefinitions, hoi4Localisations, theConfiguration);
-
-			for (auto addedFactions: newCountriesatWar)
-			{
-				if (!factionsAtWar.contains(addedFactions))
-				{
-					factionsAtWar.insert(addedFactions);
-				}
-			}
-		}
-	}
-}
-
-
 bool HoI4WarCreator::isImportantCountry(std::shared_ptr<HoI4::Country> country)
 {
 	if (country->isGreatPower() || country->isHuman())
@@ -262,111 +216,6 @@ bool HoI4WarCreator::isImportantCountry(std::shared_ptr<HoI4::Country> country)
 		return true;
 	}
 	return false;
-}
-
-
-std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findEvilCountries() const
-{
-	std::multimap<double, std::shared_ptr<HoI4::Country>> countryEvilness;
-	std::vector<std::shared_ptr<HoI4::Country>> countriesEvilnessSorted;
-
-	for (auto country: theWorld->getCountries())
-	{
-		double evilness = 0.5;
-		auto ideology = country.second->getGovernmentIdeology();
-		if (ideology == "fascism")
-		{
-			evilness += 5;
-		}
-		else if (ideology == "absolutist")
-		{
-			evilness += 3;
-		}
-		else if (ideology == "communism")
-		{
-			evilness += 3;
-		}
-		else if (ideology == "radical")
-		{
-			evilness += 3;
-		}
-		else if (ideology == "neutrality")
-		{
-			auto leaderIdeology = country.second->getLeaderIdeology();
-			if (leaderIdeology == "fascism_ideology_neutral")
-			{
-				evilness += 5;
-			}
-			else if ((leaderIdeology == "prussian_const_neutral") || (leaderIdeology == "absolute_monarchy_neutral") ||
-						(leaderIdeology == "dictatorship_neutral") || (leaderIdeology == "theocracy_neutral") ||
-						(leaderIdeology == "despotism"))
-			{
-				evilness += 3;
-			}
-			else if (leaderIdeology == "leninism_neutral")
-			{
-				evilness += 5;
-			}
-			else if ((leaderIdeology == "minarchism_neutral") || (leaderIdeology == "oligarchism"))
-			{
-				evilness += 5;
-			}
-		}
-
-		if (const auto& rulingParty = country.second->getRulingParty(); rulingParty != std::nullopt)
-		{
-			auto warPolicy = rulingParty->getWarPolicy();
-			if (warPolicy == "jingoism")
-			{
-				evilness += 3;
-			}
-			else if (warPolicy == "pro_military")
-			{
-				evilness += 2;
-			}
-			else if (warPolicy == "anti_military")
-			{
-				evilness -= 1;
-			}
-			else if (warPolicy == "pacifism")
-			{
-				evilness -= 3;
-			}
-		}
-
-		if (evilness > 2)
-		{
-			countryEvilness.insert(std::make_pair(evilness, country.second));
-		}
-	}
-
-	// put them into a std::vector so we know their order
-	for (auto iterator = countryEvilness.begin(); iterator != countryEvilness.end(); ++iterator)
-	{
-		countriesEvilnessSorted.push_back(iterator->second);
-	}
-
-	return countriesEvilnessSorted;
-}
-
-
-void HoI4WarCreator::setSphereLeaders(const Vic2::World* sourceWorld)
-{
-	for (auto greatPower: theWorld->getGreatPowers())
-	{
-		auto relations = greatPower->getRelations();
-		for (auto relation: relations)
-		{
-			if (relation.second.getSphereLeader())
-			{
-				auto spheredcountry = theWorld->getCountries().find(relation.second.getTag());
-				if (spheredcountry != theWorld->getCountries().end())
-				{
-					spheredcountry->second->setSphereLeader(greatPower->getTag());
-				}
-			}
-		}
-	}
 }
 
 
@@ -1143,63 +992,18 @@ void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
 			 theWorld->getMajorIdeologies(),
 			 theWorld->getStates(),
 			 hoi4Localisations);
-		if (!coreHolders.empty())
+		const auto& conquerTags = focusTree->addConquerBranch(country,
+			 numWarsWithNeighbors,
+			 theWorld->getMajorIdeologies(),
+			 coreHolders,
+			 theWorld->getStates(),
+			 hoi4Localisations);
+
+		if (numWarsWithNeighbors > 0)
 		{
 			country->giveNationalFocus(focusTree);
 		}
 	}
-}
-
-
-std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(std::shared_ptr<HoI4::Country> country,
-	 std::ofstream& AILog,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions,
-	 HoI4::Localisation& hoi4Localisations,
-	 const Configuration& theConfiguration)
-{
-	if (theConfiguration.getDebug())
-	{
-		auto name = country->getName();
-		if (name)
-		{
-			AILog << "Look for neighbors to attack for " + *name << "\n";
-		}
-		else
-		{
-			AILog << "Look for neighbors to attack for a country\n";
-		}
-	}
-
-	std::vector<std::shared_ptr<HoI4::Faction>> countriesAtWar;
-
-	auto closeNeighbors = mapUtils.getNearbyCountries(country->getTag(), 100);
-	if (closeNeighbors.empty())
-	{
-		return countriesAtWar;
-	}
-
-	int numWarsWithNeighbors = 0;
-	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
-
-	const auto& coreHolders = focusTree->addReconquestBranch(country,
-		 numWarsWithNeighbors,
-		 theWorld->getMajorIdeologies(),
-		 theWorld->getStates(),
-		 hoi4Localisations);
-	const auto& conquerTags = focusTree->addConquerBranch(country,
-		 numWarsWithNeighbors,
-		 theWorld->getMajorIdeologies(),
-		 coreHolders,
-		 theWorld->getStates(),
-		 hoi4Localisations);
-
-	if (numWarsWithNeighbors > 0)
-	{
-		country->giveNationalFocus(focusTree);
-	}
-
-	return countriesAtWar;
 }
 
 
