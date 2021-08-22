@@ -2608,6 +2608,13 @@ focus = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = $TARGET
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = $TARGET value > 0 }
 			}
 			#FASCGOV
@@ -2660,6 +2667,13 @@ focus = {
 			modifier = {
 				factor = 0
 				$TARGET = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = $TARGET
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -2729,6 +2743,13 @@ focus = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = $TARGET
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = $TARGET value > 0 }
 			}
 			modifier = {
@@ -2787,6 +2808,13 @@ focus = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = $TARGET
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = $TARGET value > 0 }
 			}
 			modifier = {
@@ -2838,6 +2866,13 @@ focus = {
 			modifier = {
 				factor = 0
 				$TARGET = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = $TARGET
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -2927,8 +2962,29 @@ focus = {
 				$TARGET = { in_weak_faction = no }
 			}
 			modifier = {
-				factor = 0.1
+				factor = 0
+				any_country = {
+					has_subject = $TARGET
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
 				threat > 0.25
+				date < 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
 			}
 			modifier = {
 				factor = 2
@@ -2989,12 +3045,33 @@ focus = {
 				has_opinion = { target = $TARGET value > 0 }
 			}
 			modifier = {
-				factor = 0.1
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
 				threat > 0.25
+				date < 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
 			}
 			modifier = {
 				factor = 0
 				$TARGET = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = $TARGET
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 2
