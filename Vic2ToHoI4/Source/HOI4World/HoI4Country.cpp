@@ -46,34 +46,46 @@ HoI4::Country::Country(std::string tag,
 	{
 		color = *sourceColor;
 	}
-
-	auto possibleGraphicalCulture = graphicsMapper.getGraphicalCulture(primaryCultureGroup);
+	auto possibleGraphicalCulture = graphicsMapper.getGraphicalCulture(primaryCulture, primaryCultureGroup);
+	if (!possibleGraphicalCulture)
+	{
+		possibleGraphicalCulture = graphicsMapper.getGraphicalCulture(primaryCulture, primaryCultureGroup);
+	}
 	if (possibleGraphicalCulture)
 	{
 		graphicalCulture = *possibleGraphicalCulture;
 	}
-	auto possibleGraphicalCulture2d = graphicsMapper.get2dGraphicalCulture(primaryCultureGroup);
+	auto possibleGraphicalCulture2d = graphicsMapper.get2dGraphicalCulture(primaryCulture, primaryCultureGroup);
+	if (!possibleGraphicalCulture2d)
+	{
+		possibleGraphicalCulture2d = graphicsMapper.get2dGraphicalCulture(primaryCulture, primaryCultureGroup);
+	}
 	if (possibleGraphicalCulture2d)
 	{
 		graphicalCulture2d = *possibleGraphicalCulture2d;
 	}
-	armyPortraits = graphicsMapper.getArmyPortraits(primaryCultureGroup);
-	navyPortraits = graphicsMapper.getNavyPortraits(primaryCultureGroup);
-	femaleMilitaryPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "military");
-	femaleMonarchPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "monarch");
-	femaleIdeologicalPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "ideological_leader");
-	maleCommunistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "communism");
-	maleDemocraticPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "democratic");
-	maleFascistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "fascism");
-	maleAbsolutistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "absolutist");
-	maleNeutralPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "neutrality");
-	maleRadicalPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "radical");
-	communistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
-	democraticAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
-	neutralityAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
-	absolutistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
-	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
-	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
+	armyPortraits = graphicsMapper.getArmyPortraits(primaryCulture, primaryCultureGroup);
+	navyPortraits = graphicsMapper.getNavyPortraits(primaryCulture, primaryCultureGroup);
+	femaleMilitaryPortraits = graphicsMapper.getFemalePortraits(primaryCulture, primaryCultureGroup, "military");
+	femaleMonarchPortraits = graphicsMapper.getFemalePortraits(primaryCulture, primaryCultureGroup, "monarch");
+	femaleIdeologicalPortraits =
+		 graphicsMapper.getFemalePortraits(primaryCulture, primaryCultureGroup, "ideological_leader");
+	maleCommunistPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "communism");
+	maleDemocraticPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "democratic");
+	maleFascistPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "fascism");
+	maleAbsolutistPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "absolutist");
+	maleNeutralPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "neutrality");
+	maleRadicalPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "radical");
+	communistAdvisorPortrait =
+		 graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "communism");
+	democraticAdvisorPortrait =
+		 graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "democratic");
+	neutralityAdvisorPortrait =
+		 graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "neutrality");
+	absolutistAdvisorPortrait =
+		 graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "absolutist");
+	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "radical");
+	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "fascism");
 
 	initIdeas(names, hoi4Localisations);
 
@@ -166,23 +178,28 @@ HoI4::Country::Country(const std::string& tag_,
 	}
 	color = commonItems::Color(hsv);
 
-	armyPortraits = graphicsMapper.getArmyPortraits(primaryCultureGroup);
-	navyPortraits = graphicsMapper.getNavyPortraits(primaryCultureGroup);
-	femaleMilitaryPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "military");
-	femaleMonarchPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "monarch");
-	femaleIdeologicalPortraits = graphicsMapper.getFemalePortraits(primaryCultureGroup, "ideological_leader");
-	maleCommunistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "communism");
-	maleDemocraticPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "democratic");
-	maleFascistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "fascism");
-	maleAbsolutistPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "absolutist");
-	maleNeutralPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "neutrality");
-	maleRadicalPortraits = graphicsMapper.getLeaderPortraits(primaryCultureGroup, "radical");
-	communistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
-	democraticAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
-	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
-	absolutistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
-	neutralityAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
-	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
+	armyPortraits = graphicsMapper.getArmyPortraits(primaryCulture, primaryCultureGroup);
+	navyPortraits = graphicsMapper.getNavyPortraits(primaryCulture, primaryCultureGroup);
+	femaleMilitaryPortraits = graphicsMapper.getFemalePortraits(primaryCulture, primaryCultureGroup, "military");
+	femaleMonarchPortraits = graphicsMapper.getFemalePortraits(primaryCulture, primaryCultureGroup, "monarch");
+	femaleIdeologicalPortraits =
+		 graphicsMapper.getFemalePortraits(primaryCulture, primaryCultureGroup, "ideological_leader");
+	maleCommunistPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "communism");
+	maleDemocraticPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "democratic");
+	maleFascistPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "fascism");
+	maleAbsolutistPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "absolutist");
+	maleNeutralPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "neutrality");
+	maleRadicalPortraits = graphicsMapper.getLeaderPortraits(primaryCulture, primaryCultureGroup, "radical");
+	communistAdvisorPortrait =
+		 graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "communism");
+	democraticAdvisorPortrait =
+		 graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "democratic");
+	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "fascism");
+	absolutistAdvisorPortrait =
+		 graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "absolutist");
+	neutralityAdvisorPortrait =
+		 graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "neutrality");
+	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "radical");
 
 
 	initIdeas(names, hoi4Localisations);
@@ -320,7 +337,8 @@ void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations) con
 
 void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names)
 {
-	for (const auto& operativePortrait: graphicsMapper.getFemaleOperativePortraits(primaryCultureGroup))
+	for (const auto& operativePortrait:
+				graphicsMapper.getFemaleOperativePortraits(primaryCulture, primaryCultureGroup))
 	{
 		const auto firstName = names.getFemaleName(primaryCulture);
 		if (!firstName)
@@ -342,7 +360,7 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 		operatives_.push_back(Operative(name, operativePortrait, /*female=*/true, tag));
 	}
 
-	for (const auto& operativePortrait: graphicsMapper.getMaleOperativePortraits(primaryCultureGroup))
+	for (const auto& operativePortrait: graphicsMapper.getMaleOperativePortraits(primaryCulture, primaryCultureGroup))
 	{
 		const auto firstName = names.getMaleName(primaryCulture);
 		if (!firstName)
@@ -565,8 +583,8 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 
 	if (!female)
 	{
-		const auto monarchPortraits = graphicsMapper.getMaleMonarchPortraits(primaryCultureGroup);
-		if (!monarchPortraits.empty())
+		if (const auto monarchPortraits = graphicsMapper.getMaleMonarchPortraits(primaryCulture, primaryCultureGroup);
+			 !monarchPortraits.empty())
 		{
 			monarchIdeaTexture = monarchPortraits.at(
 				 std::uniform_int_distribution<int>{0, static_cast<int>(monarchPortraits.size() - 1)}(generator));
@@ -574,8 +592,8 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 	}
 	else
 	{
-		const auto monarchPortraits = graphicsMapper.getFemaleMonarchPortraits(primaryCultureGroup);
-		if (!monarchPortraits.empty())
+		if (const auto monarchPortraits = graphicsMapper.getFemaleMonarchPortraits(primaryCulture, primaryCultureGroup);
+			 !monarchPortraits.empty())
 		{
 			monarchIdeaTexture = monarchPortraits.at(
 				 std::uniform_int_distribution<int>{0, static_cast<int>(monarchPortraits.size() - 1)}(generator));

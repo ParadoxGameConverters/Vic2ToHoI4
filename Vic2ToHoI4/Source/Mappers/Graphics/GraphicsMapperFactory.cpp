@@ -12,7 +12,7 @@ Mappers::GraphicsMapper::Factory::Factory()
 	registerRegex(commonItems::catchallRegex, [this](const std::string& mappingName, std::istream& theStream) {
 		const auto newCultureGroup = graphicsCultureGroupFactory.importCultureGroup(theStream);
 
-		const auto& cultureGroups = newCultureGroup->getCultureGroups();
+		const auto& cultureGroups = newCultureGroup->getCulturesAndGroups();
 		if (cultureGroups.empty())
 		{
 			loadMappings(mappingName, *newCultureGroup);
@@ -58,7 +58,7 @@ void Mappers::GraphicsMapper::Factory::loadLeaderPortraitMappings(const std::str
 	auto cultureGroupMappings = graphicsMapper->leaderPortraitMappings.find(cultureGroup);
 	if (cultureGroupMappings == graphicsMapper->leaderPortraitMappings.end())
 	{
-		cultureGroupToPortraitsMap newCultureGroupMappings;
+		culturesAndGroupsToPortraitsMap newCultureGroupMappings;
 		graphicsMapper->leaderPortraitMappings.insert(make_pair(cultureGroup, newCultureGroupMappings));
 		cultureGroupMappings = graphicsMapper->leaderPortraitMappings.find(cultureGroup);
 	}
@@ -75,7 +75,7 @@ void Mappers::GraphicsMapper::Factory::loadFemalePortraitMappings(const std::str
 	auto cultureGroupMappings = graphicsMapper->femalePortraitMappings.find(cultureGroup);
 	if (cultureGroupMappings == graphicsMapper->femalePortraitMappings.end())
 	{
-		cultureGroupToPortraitsMap newCultureGroupMappings;
+		culturesAndGroupsToPortraitsMap newCultureGroupMappings;
 		graphicsMapper->femalePortraitMappings.insert(make_pair(cultureGroup, newCultureGroupMappings));
 		cultureGroupMappings = graphicsMapper->femalePortraitMappings.find(cultureGroup);
 	}
@@ -93,7 +93,7 @@ void Mappers::GraphicsMapper::Factory::loadIdeologyMinisterPortraitMappings(cons
 	auto cultureGroupMappings = graphicsMapper->ideologyMinisterMappings.find(cultureGroup);
 	if (cultureGroupMappings == graphicsMapper->ideologyMinisterMappings.end())
 	{
-		cultureGroupToPortraitsMap newCultureGroupMappings;
+		culturesAndGroupsToPortraitsMap newCultureGroupMappings;
 		graphicsMapper->ideologyMinisterMappings.insert(make_pair(cultureGroup, newCultureGroupMappings));
 		cultureGroupMappings = graphicsMapper->ideologyMinisterMappings.find(cultureGroup);
 	}

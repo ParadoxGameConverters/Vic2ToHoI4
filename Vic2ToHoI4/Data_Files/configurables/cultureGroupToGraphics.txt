@@ -4,7 +4,7 @@
 # John Jackson Adams, 1st Baron thereof
 
 # sample_group = {
-#	culture_groups = { germanic beneluxian }
+#	cultures_and_groups = { germanic beneluxian }
 #	army_portraits = {
 #		"gfx/leaders/GER/sample_portrait_land.dds"
 #		"gfx/leaders/GER/sample_portrait_land2.dds"
@@ -60,7 +60,7 @@
 #hispanic, african, deathbringers, animalia
 
 western_european = {
-	culture_groups = { germanic beneluxian pan_swiss jewish_group jewish_cultures scandinavian british celtic french american_cultures neo_european_cultures }
+	cultures_and_groups = { germanic beneluxian pan_swiss jewish_group jewish_cultures scandinavian british celtic french american_cultures neo_european_cultures }
 	army_portraits = {
 		#Generic European
 		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
@@ -547,7 +547,7 @@ western_european = {
 }
 
 mediterranean = {
-	culture_groups = { italian old_italian iberian levantine dytic_g varangian_g tyrrhenian }
+	cultures_and_groups = { italian old_italian iberian levantine dytic_g varangian_g tyrrhenian }
 	
 	army_portraits = {
 		#Generic European
@@ -817,7 +817,7 @@ mediterranean = {
 }
 
 balkans = {
-	culture_groups = { south_slavic pan_albanian pan_romanian balkan hungarian_culture_group czecho_slovak_culture_group }
+	cultures_and_groups = { south_slavic pan_albanian pan_romanian balkan hungarian_culture_group czecho_slovak_culture_group }
 	
 	army_portraits = {
 		#Generic European
@@ -1053,7 +1053,7 @@ balkans = {
 }
 
 eastern_european = {
-	culture_groups = { polish_culture_group east_slavic baltic caucasian }
+	cultures_and_groups = { polish_culture_group east_slavic baltic caucasian }
 	
 	army_portraits = {
 		#Generic European
@@ -1363,7 +1363,7 @@ eastern_european = {
 }
 
 turkic_steppe = {
-	culture_groups = { turko_semitic hittite_g }
+	cultures_and_groups = { turko_semitic hittite_g }
 	
 	army_portraits = {
 		#Generic Middle Eastern
@@ -1514,7 +1514,7 @@ turkic_steppe = {
 }
 
 arabic_persian = {
-	culture_groups = { arab punic iranian_turanian }
+	cultures_and_groups = { arab punic iranian_turanian }
 	
 	army_portraits = {
 		#Generic Middle Eastern
@@ -1693,7 +1693,7 @@ arabic_persian = {
 }
 
 asian_steppe = {
-	culture_groups = { central_asian }
+	cultures_and_groups = { central_asian }
 	
 	army_portraits = {
 		#Generic Asian
@@ -1865,7 +1865,7 @@ asian_steppe = {
 }
 
 indian = {
-	culture_groups = { south_asian indo_iranian }
+	cultures_and_groups = { south_asian indo_iranian }
 	
 	army_portraits = {
 		#Generic Indian
@@ -2025,7 +2025,7 @@ indian = {
 }
 
 indo_chinese_nesia = {
-	culture_groups = { southeast_asian }
+	cultures_and_groups = { southeast_asian }
 	
 	army_portraits = {
 		#Generic Asian
@@ -2235,7 +2235,7 @@ indo_chinese_nesia = {
 }
 
 sino = {
-	culture_groups = { east_asian }
+	cultures_and_groups = { east_asian }
 	
 	army_portraits = {
 		#Generic Asian
@@ -2404,7 +2404,7 @@ sino = {
 }
 
 korean_japan = {
-	culture_groups = { far_east_asian  }
+	cultures_and_groups = { far_east_asian  }
 	
 	army_portraits = {
 		#Generic Asian
@@ -2606,7 +2606,7 @@ korean_japan = {
 }
 
 aborigine_polynesia = {
-	culture_groups = { oceanic }
+	cultures_and_groups = { oceanic }
 	
 	army_portraits = {
 		#Generic
@@ -2765,7 +2765,7 @@ aborigine_polynesia = {
 }
 
 north_american_native = {
-	culture_groups = { native_north_american }
+	cultures_and_groups = { native_north_american }
 	
 	army_portraits = {
 		#Generic
@@ -2875,7 +2875,7 @@ north_american_native = {
 }
 
 central_american_native = {
-	culture_groups = { native_central_american native_carribean }
+	cultures_and_groups = { native_central_american native_carribean }
 	
 	army_portraits = {
 		#Generic
@@ -2994,7 +2994,7 @@ central_american_native = {
 }
 
 south_american_native = {
-	culture_groups = { native_south_american }
+	cultures_and_groups = { native_south_american }
 	
 	army_portraits = {
 		#Generic
@@ -3114,7 +3114,7 @@ south_american_native = {
 }
 
 hispanic = {
-	culture_groups = { latin_american_cultures }
+	cultures_and_groups = { latin_american_cultures }
 	
 	army_portraits = {
 		#Generic
@@ -3376,7 +3376,7 @@ hispanic = {
 }
 
 african = {
-	culture_groups = { african_diaspora_cultures west_african central_african east_african southern_african }
+	cultures_and_groups = { african_diaspora_cultures west_african central_african east_african southern_african }
 	
 	army_portraits = {
 		#Generic
@@ -3583,7 +3583,7 @@ african = {
 }
 
 romantic_barbarian = {
-	culture_groups = { romantic barbarian gothic_g  }
+	cultures_and_groups = { romantic barbarian gothic_g  }
 	
 	army_portraits = {
 		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
@@ -4069,7 +4069,7 @@ romantic_barbarian = {
 }
 
 deathbringers = {
-	culture_groups = { anti_human }
+	cultures_and_groups = { anti_human }
 	
 	army_portraits = {
 		#01000100 01100101 01100001 01110100 01101000
@@ -4148,7 +4148,7 @@ deathbringers = {
 }
 
 animalia = {
-	culture_groups = { non_human }
+	cultures_and_groups = { non_human }
 	
 	army_portraits = {
 		#Roar

@@ -3,8 +3,15 @@
 
 
 
-std::vector<std::string> Mappers::GraphicsMapper::getArmyPortraits(const std::string& cultureGroup) const
+std::vector<std::string> Mappers::GraphicsMapper::getArmyPortraits(const std::string& culture,
+	 const std::string& cultureGroup) const
 {
+	if (const auto armyPortraitMapping = armyPortraitMappings.find(culture);
+		 armyPortraitMapping != armyPortraitMappings.end())
+	{
+		return armyPortraitMapping->second;
+	}
+
 	if (const auto armyPortraitMapping = armyPortraitMappings.find(cultureGroup);
 		 armyPortraitMapping != armyPortraitMappings.end())
 	{
@@ -15,8 +22,15 @@ std::vector<std::string> Mappers::GraphicsMapper::getArmyPortraits(const std::st
 }
 
 
-std::vector<std::string> Mappers::GraphicsMapper::getNavyPortraits(const std::string& cultureGroup) const
+std::vector<std::string> Mappers::GraphicsMapper::getNavyPortraits(const std::string& culture,
+	 const std::string& cultureGroup) const
 {
+	if (const auto navyPortraitMapping = navyPortraitMappings.find(culture);
+		 navyPortraitMapping != navyPortraitMappings.end())
+	{
+		return navyPortraitMapping->second;
+	}
+
 	if (const auto navyPortraitMapping = navyPortraitMappings.find(cultureGroup);
 		 navyPortraitMapping != navyPortraitMappings.end())
 	{
@@ -27,8 +41,15 @@ std::vector<std::string> Mappers::GraphicsMapper::getNavyPortraits(const std::st
 }
 
 
-std::vector<std::string> Mappers::GraphicsMapper::getMaleMonarchPortraits(const std::string& cultureGroup) const
+std::vector<std::string> Mappers::GraphicsMapper::getMaleMonarchPortraits(const std::string& culture,
+	 const std::string& cultureGroup) const
 {
+	if (const auto maleMonarchMapping = maleMonarchMappings.find(culture);
+		 maleMonarchMapping != maleMonarchMappings.end())
+	{
+		return maleMonarchMapping->second;
+	}
+
 	if (const auto maleMonarchMapping = maleMonarchMappings.find(cultureGroup);
 		 maleMonarchMapping != maleMonarchMappings.end())
 	{
@@ -39,8 +60,15 @@ std::vector<std::string> Mappers::GraphicsMapper::getMaleMonarchPortraits(const 
 }
 
 
-std::vector<std::string> Mappers::GraphicsMapper::getFemaleMonarchPortraits(const std::string& cultureGroup) const
+std::vector<std::string> Mappers::GraphicsMapper::getFemaleMonarchPortraits(const std::string& culture,
+	 const std::string& cultureGroup) const
 {
+	if (const auto femaleMonarchMapping = femaleMonarchMappings.find(culture);
+		 femaleMonarchMapping != femaleMonarchMappings.end())
+	{
+		return femaleMonarchMapping->second;
+	}
+
 	if (const auto femaleMonarchMapping = femaleMonarchMappings.find(cultureGroup);
 		 femaleMonarchMapping != femaleMonarchMappings.end())
 	{
@@ -51,9 +79,26 @@ std::vector<std::string> Mappers::GraphicsMapper::getFemaleMonarchPortraits(cons
 }
 
 
-std::string Mappers::GraphicsMapper::getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology)
+std::string Mappers::GraphicsMapper::getLeaderPortrait(const std::string& culture,
+	 const std::string& cultureGroup,
+	 const std::string& ideology)
 {
-	auto portraits = getLeaderPortraits(cultureGroup, ideology);
+	auto portraits = getLeaderPortraits(culture, ideology);
+	if (!portraits.empty())
+	{
+		const auto key = std::make_pair(culture, ideology);
+		auto index = leaderPortraitIndexes.find(key);
+		if (index == leaderPortraitIndexes.end())
+		{
+			leaderPortraitIndexes.emplace(key, 0);
+			index = leaderPortraitIndexes.find(key);
+		}
+		auto portrait = portraits[index->second];
+		index->second = (index->second + 1) % portraits.size();
+		return portrait;
+	}
+
+	portraits = getLeaderPortraits(cultureGroup, ideology);
 	if (!portraits.empty())
 	{
 		const auto key = std::make_pair(cultureGroup, ideology);
@@ -72,9 +117,20 @@ std::string Mappers::GraphicsMapper::getLeaderPortrait(const std::string& cultur
 }
 
 
-std::vector<std::string> Mappers::GraphicsMapper::getLeaderPortraits(const std::string& cultureGroup,
+std::vector<std::string> Mappers::GraphicsMapper::getLeaderPortraits(const std::string& culture,
+	 const std::string& cultureGroup,
 	 const std::string& ideology) const
 {
+	if (const auto leaderPortraitMapping = leaderPortraitMappings.find(culture);
+		 leaderPortraitMapping != leaderPortraitMappings.end())
+	{
+		if (const auto portraits = leaderPortraitMapping->second.find(ideology);
+			 portraits != leaderPortraitMapping->second.end())
+		{
+			return portraits->second;
+		}
+	}
+
 	if (const auto leaderPortraitMapping = leaderPortraitMappings.find(cultureGroup);
 		 leaderPortraitMapping != leaderPortraitMappings.end())
 	{
@@ -88,9 +144,20 @@ std::vector<std::string> Mappers::GraphicsMapper::getLeaderPortraits(const std::
 	return {"gfx/leaders/leader_unknown.dds"};
 }
 
-std::vector<std::string> Mappers::GraphicsMapper::getFemalePortraits(const std::string& cultureGroup,
+
+std::vector<std::string> Mappers::GraphicsMapper::getFemalePortraits(const std::string& culture,
+	 const std::string& cultureGroup,
 	 const std::string& type) const
 {
+	if (const auto femaleLeaderMapping = femalePortraitMappings.find(culture);
+		 femaleLeaderMapping != femalePortraitMappings.end())
+	{
+		if (const auto portraits = femaleLeaderMapping->second.find(type); portraits != femaleLeaderMapping->second.end())
+		{
+			return portraits->second;
+		}
+	}
+
 	if (const auto femaleLeaderMapping = femalePortraitMappings.find(cultureGroup);
 		 femaleLeaderMapping != femalePortraitMappings.end())
 	{
@@ -103,10 +170,27 @@ std::vector<std::string> Mappers::GraphicsMapper::getFemalePortraits(const std::
 	return {"gfx/leaders/leader_unknown_female.dds"};
 }
 
-std::string Mappers::GraphicsMapper::getIdeologyMinisterPortrait(const std::string& cultureGroup,
+
+std::string Mappers::GraphicsMapper::getIdeologyMinisterPortrait(const std::string& culture,
+	 const std::string& cultureGroup,
 	 const std::string& ideology)
 {
-	auto portraits = getIdeologyMinisterPortraits(cultureGroup, ideology);
+	auto portraits = getIdeologyMinisterPortraits(culture, ideology);
+	if (!portraits.empty())
+	{
+		const auto key = std::make_pair(culture, ideology);
+		auto index = ministerPortraitIndexes.find(key);
+		if (index == ministerPortraitIndexes.end())
+		{
+			ministerPortraitIndexes.emplace(key, 0);
+			index = ministerPortraitIndexes.find(key);
+		}
+		auto portrait = portraits[index->second];
+		index->second = (index->second + 1) % portraits.size();
+		return portrait;
+	}
+
+	portraits = getIdeologyMinisterPortraits(cultureGroup, ideology);
 	if (!portraits.empty())
 	{
 		const auto key = std::make_pair(cultureGroup, ideology);
@@ -125,10 +209,27 @@ std::string Mappers::GraphicsMapper::getIdeologyMinisterPortrait(const std::stri
 }
 
 
-std::vector<std::string> Mappers::GraphicsMapper::getIdeologyMinisterPortraits(const std::string& cultureGroup,
+std::vector<std::string> Mappers::GraphicsMapper::getLeaderPortraits(const std::string& cultureOrGroup,
 	 const std::string& ideology) const
 {
-	if (const auto ideologyMinisterMapping = ideologyMinisterMappings.find(cultureGroup);
+	if (const auto leaderPortraitMapping = leaderPortraitMappings.find(cultureOrGroup);
+		 leaderPortraitMapping != leaderPortraitMappings.end())
+	{
+		if (const auto portraits = leaderPortraitMapping->second.find(ideology);
+			 portraits != leaderPortraitMapping->second.end())
+		{
+			return portraits->second;
+		}
+	}
+
+	return {};
+}
+
+
+std::vector<std::string> Mappers::GraphicsMapper::getIdeologyMinisterPortraits(const std::string& cultureOrGroup,
+	 const std::string& ideology) const
+{
+	if (const auto ideologyMinisterMapping = ideologyMinisterMappings.find(cultureOrGroup);
 		 ideologyMinisterMapping != ideologyMinisterMappings.end())
 	{
 		if (const auto portraits = ideologyMinisterMapping->second.find(ideology);
@@ -142,8 +243,15 @@ std::vector<std::string> Mappers::GraphicsMapper::getIdeologyMinisterPortraits(c
 }
 
 
-std::vector<std::string> Mappers::GraphicsMapper::getMaleOperativePortraits(const std::string& cultureGroup) const
+std::vector<std::string> Mappers::GraphicsMapper::getMaleOperativePortraits(const std::string& culture,
+	 const std::string& cultureGroup) const
 {
+	if (const auto operativePortraitMapping = maleOperativeMappings.find(culture);
+		 operativePortraitMapping != maleOperativeMappings.end())
+	{
+		return operativePortraitMapping->second;
+	}
+
 	if (const auto operativePortraitMapping = maleOperativeMappings.find(cultureGroup);
 		 operativePortraitMapping != maleOperativeMappings.end())
 	{
@@ -154,8 +262,15 @@ std::vector<std::string> Mappers::GraphicsMapper::getMaleOperativePortraits(cons
 }
 
 
-std::vector<std::string> Mappers::GraphicsMapper::getFemaleOperativePortraits(const std::string& cultureGroup) const
+std::vector<std::string> Mappers::GraphicsMapper::getFemaleOperativePortraits(const std::string& culture,
+	 const std::string& cultureGroup) const
 {
+	if (const auto operativePortraitMapping = femaleOperativeMappings.find(culture);
+		 operativePortraitMapping != femaleOperativeMappings.end())
+	{
+		return operativePortraitMapping->second;
+	}
+
 	if (const auto operativePortraitMapping = femaleOperativeMappings.find(cultureGroup);
 		 operativePortraitMapping != femaleOperativeMappings.end())
 	{
@@ -166,8 +281,14 @@ std::vector<std::string> Mappers::GraphicsMapper::getFemaleOperativePortraits(co
 }
 
 
-std::optional<std::string> Mappers::GraphicsMapper::getGraphicalCulture(const std::string& cultureGroup) const
+std::optional<std::string> Mappers::GraphicsMapper::getGraphicalCulture(const std::string& culture,
+	 const std::string& cultureGroup) const
 {
+	if (const auto graphicalCulture = graphicalCultureMap.find(culture); graphicalCulture != graphicalCultureMap.end())
+	{
+		return graphicalCulture->second;
+	}
+
 	if (const auto graphicalCulture = graphicalCultureMap.find(cultureGroup);
 		 graphicalCulture != graphicalCultureMap.end())
 	{
@@ -178,8 +299,15 @@ std::optional<std::string> Mappers::GraphicsMapper::getGraphicalCulture(const st
 }
 
 
-std::optional<std::string> Mappers::GraphicsMapper::get2dGraphicalCulture(const std::string& cultureGroup) const
+std::optional<std::string> Mappers::GraphicsMapper::get2dGraphicalCulture(const std::string& culture,
+	 const std::string& cultureGroup) const
 {
+	if (const auto graphicalCulture2d = graphicalCulture2dMap.find(culture);
+		 graphicalCulture2d != graphicalCulture2dMap.end())
+	{
+		return graphicalCulture2d->second;
+	}
+
 	if (const auto graphicalCulture2d = graphicalCulture2dMap.find(cultureGroup);
 		 graphicalCulture2d != graphicalCulture2dMap.end())
 	{
