@@ -35,7 +35,7 @@ HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(const std::str
 {
 	CountryLeader leader;
 	leader.ideology = leaderIdeology;
-	leader.picture = graphicsMapper.getLeaderPortrait(primaryCultureGroup, governmentIdeology);
+	leader.picture = graphicsMapper.getLeaderPortrait(primaryCulture, primaryCultureGroup, governmentIdeology);
 
 	const auto firstName = names.getMaleName(primaryCulture);
 	const auto surname = names.getSurname(primaryCulture);

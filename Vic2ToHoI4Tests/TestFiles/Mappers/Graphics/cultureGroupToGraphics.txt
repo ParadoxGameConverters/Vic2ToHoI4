@@ -38,7 +38,7 @@ test_culture_group = {
 
 
 test_culture_groups = {
-	culture_groups = { test_culture_group2 test_culture_group3 }
+	cultures_and_groups = { test_culture test_culture_group2 test_culture_group3 }
 	army_portraits = {
 		"path/test_army_portrait3.dds"
 		"path/test_army_portrait4.dds"
@@ -74,4 +74,18 @@ test_culture_groups = {
 	}
 	graphical_culture = test_graphical_culture2
 	graphical_culture_2d = test_graphical_culture2_2d
+}
+
+
+test_culture = {
+	cultures_and_groups = { test_culture2 }
+	female_portraits = {
+		good_ideology = { "gfx/leaders/test_leader_portraitF4.dds" }
+	}
+	leader_portraits = {
+		good_ideology = { "gfx/leaders/test_leader_portrait4.dds" }
+	}
+	ideology_minister_portraits = {
+		good_ideology = { "gfx/interface/ideas/test_minister_portrait4.dds" }
+	}
 }

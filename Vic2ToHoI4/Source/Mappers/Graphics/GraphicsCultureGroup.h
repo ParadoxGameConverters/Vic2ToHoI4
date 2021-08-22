@@ -18,7 +18,7 @@ class GraphicsCultureGroup
   public:
 	class Factory;
 
-	[[nodiscard]] const auto& getCultureGroups() const { return cultureGroups; }
+	[[nodiscard]] const auto& getCulturesAndGroups() const { return culturesAndGroups; }
 	[[nodiscard]] const auto& getArmyPortraits() const { return armyPortraits; }
 	[[nodiscard]] const auto& getNavyPortraits() const { return navyPortraits; }
 	[[nodiscard]] const auto& getMaleMonarchPortraits() const { return maleMonarchPortraits; }
@@ -32,7 +32,7 @@ class GraphicsCultureGroup
 	[[nodiscard]] const auto& getGraphicalCulture2D() const { return graphicalCulture2D; }
 
   private:
-	std::vector<std::string> cultureGroups;
+	std::vector<std::string> culturesAndGroups;
 	std::vector<std::string> armyPortraits;
 	std::vector<std::string> navyPortraits;
 	std::vector<std::string> maleMonarchPortraits;
