@@ -7,48 +7,43 @@
 HoI4::AiPeace::AiPeace(const std::string& theName, std::istream& theStream): name(theName)
 {
 	registerKeyword("enable", [this](std::istream& theStream) {
-		const commonItems::stringOfItem enableString(theStream);
-		enable = enableString.getString();
+		enable = commonItems::stringOfItem(theStream).getString();
 	});
 	registerKeyword("annex_randomness", [this](std::istream& theStream) {
-		const commonItems::singleInt randomnessInt(theStream);
-		annexRandomness = randomnessInt.getInt();
+		annexRandomness = commonItems::singleInt(theStream).getInt();
 	});
 	registerKeyword("liberate_randomness", [this](std::istream& theStream) {
-		const commonItems::singleInt randomnessInt(theStream);
-		liberateRandomness = randomnessInt.getInt();
+		liberateRandomness = commonItems::singleInt(theStream).getInt();
 	});
 	registerKeyword("puppet_randomness", [this](std::istream& theStream) {
-		const commonItems::singleInt randomnessInt(theStream);
-		puppetRandomness = randomnessInt.getInt();
+		puppetRandomness = commonItems::singleInt(theStream).getInt();
 	});
 	registerKeyword("take_states_randomness", [this](std::istream& theStream) {
-		const commonItems::singleInt randomnessInt(theStream);
-		takeStatesRandomness = randomnessInt.getInt();
+		takeStatesRandomness = commonItems::singleInt(theStream).getInt();
 	});
 	registerKeyword("force_government_randomness", [this](std::istream& theStream) {
-		const commonItems::singleInt randomnessInt(theStream);
-		forceGovernmentRandomness = randomnessInt.getInt();
+		forceGovernmentRandomness = commonItems::singleInt(theStream).getInt();
 	});
 	registerKeyword("annex", [this](std::istream& theStream) {
-		const commonItems::stringOfItem annexString(theStream);
-		annex = annexString.getString();
+		annex = commonItems::stringOfItem(theStream).getString();
 	});
 	registerKeyword("liberate", [this](std::istream& theStream) {
-		const commonItems::stringOfItem liberateString(theStream);
-		liberate = liberateString.getString();
+		liberate = commonItems::stringOfItem(theStream).getString();
 	});
 	registerKeyword("puppet", [this](std::istream& theStream) {
-		const commonItems::stringOfItem puppetString(theStream);
-		puppet = puppetString.getString();
+		puppet = commonItems::stringOfItem(theStream).getString();
+	});
+	registerKeyword("puppet_all", [this](std::istream& theStream) {
+		puppetAll = commonItems::stringOfItem(theStream).getString();
+	});
+	registerKeyword("puppet_state", [this](std::istream& theStream) {
+		puppetState = commonItems::stringOfItem(theStream).getString();
 	});
 	registerKeyword("take_states", [this](std::istream& theStream) {
-		const commonItems::stringOfItem takeStatesString(theStream);
-		takeStates = takeStatesString.getString();
+		takeStates = commonItems::stringOfItem(theStream).getString();
 	});
 	registerKeyword("force_government", [this](std::istream& theStream) {
-		const commonItems::stringOfItem forceGovernmentString(theStream);
-		forceGovernment = forceGovernmentString.getString();
+		forceGovernment = commonItems::stringOfItem(theStream).getString();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 

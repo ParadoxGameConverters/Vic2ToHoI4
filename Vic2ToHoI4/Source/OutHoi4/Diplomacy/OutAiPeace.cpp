@@ -19,6 +19,8 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const AiPeace& outPeace)
 	outStream << "\tannex " << outPeace.annex << "\n";
 	outStream << "\tliberate " << outPeace.liberate << "\n";
 	outStream << "\tpuppet " << outPeace.puppet << "\n";
+	outStream << "\tpuppet_all " << outPeace.puppetAll << "\n";
+	outStream << "\tpuppet_state " << outPeace.puppetState << "\n";
 	outStream << "\ttake_states " << outPeace.takeStates << "\n";
 	outStream << "\tforce_government " << outPeace.forceGovernment << "\n";
 

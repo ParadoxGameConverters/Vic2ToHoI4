@@ -36,6 +36,8 @@ class AiPeace: commonItems::parser
 	std::string annex;
 	std::string liberate;
 	std::string puppet;
+	std::string puppetAll;
+	std::string puppetState;
 	std::string takeStates;
 	std::string forceGovernment;
 };
