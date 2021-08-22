@@ -1,38 +1,3 @@
-similar_strength = {
-	custom_trigger_tooltip = {
-		tooltip = similar_strength_tooltip
-		ROOT = { num_divisions < 11 }
-		strength_ratio = { tag = ROOT ratio > 0.6 }
-		strength_ratio = { tag = ROOT ratio < 1 }
-	}
-}
-
-# Used for testing purposes
-border_war_2_to_5_divisions = {
-	custom_trigger_tooltip = {
-		tooltip = both_have_2_to_5_divisions_tooltip
-		ROOT = { AND = { num_divisions > 1 num_divisions < 6 } }
-		AND = { num_divisions > 1 num_divisions < 6 }
-	}
-}
-
-border_war_6_to_10_divisions = {
-	custom_trigger_tooltip = {
-		tooltip = both_have_6_to_10_divisions_tooltip
-		ROOT = { AND = { num_divisions > 5 num_divisions < 11 } }
-		AND = { num_divisions > 5 num_divisions < 11 }
-	}
-}
-
-is_beatable = {
-	custom_trigger_tooltip = {
-		tooltip = is_beatable_tooltip
-		hidden_trigger = {
-			strength_ratio = { tag = ROOT ratio < 1.2 }
-		}
-	}
-}
-
 in_weak_faction = {
 	custom_trigger_tooltip = {
 		tooltip = in_weak_faction_tooltip
@@ -86,23 +51,6 @@ not_allies_or_subjects = {
 	}
 }
 
-not_in_border_conflict = {
-	custom_trigger_tooltip = {
-		tooltip = not_in_border_conflict_tooltip
-		NOT = { any_owned_state = { has_border_war = yes } }
-		NOT = { any_owned_state = { has_state_flag = border_incident_active } }
-	}
-}
-
-potential_take_core_target = {
-	custom_trigger_tooltip = {
-		tooltip = potential_take_core_target_tooltip
-		hidden_trigger = {
-			any_owned_state = { is_core_of = ROOT }
-		}
-	}
-}
-
 potential_take_state_target = {
 	custom_trigger_tooltip = {
 		tooltip = potential_take_state_target_tooltip
@@ -111,18 +59,3 @@ potential_take_state_target = {
 		}
 	}
 }
-
-potential_border_war_target = {
-	custom_trigger_tooltip = {
-		tooltip = potential_border_war_target_tooltip
-		hidden_trigger = {
-			NOT = { capital_scope = { is_on_continent = europe } }
-			OR = {
-				border_war_2_to_5_divisions = yes
-				border_war_6_to_10_divisions = yes
-			}
-			check_variable = { var = num_divisions value = ROOT.num_divisions compare = less_than }
-		}
-	}
-}
-

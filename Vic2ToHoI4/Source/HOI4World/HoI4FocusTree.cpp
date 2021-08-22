@@ -2183,83 +2183,12 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 
 		conquerTags.insert(strategy.getID());
 		numWarsWithNeighbors++;
-		auto relations = theCountry->getRelations(strategy.getID());
-		date startDate = date("1936.01.01");
-		startDate.increaseByMonths((200 + relations->getRelations()) / 8);
 
 		const auto& truceUntil = theCountry->getTruceUntil(strategy.getID());
-		if (const auto& originalFocus = loadedFocuses.find("border_disputes_conquer");
-			 originalFocus != loadedFocuses.end())
+		if (const auto& originalFocus = loadedFocuses.find("border_disputes"); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus =
-				 originalFocus->second.makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
+			auto newFocus = originalFocus->second.makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
 			newFocus->relativePositionId.clear();
-			if (majorIdeologies.contains("communism"))
-			{
-				std::string comm;
-				comm = "if = {\n";
-				comm += "\t\t\t\t\t\tlimit = { ROOT = { has_government = communism } }\n";
-				comm += "\t\t\t\t\t\tpotential_communist_puppet_target = yes\n";
-				comm += "\t\t\t\t\t}";
-				newFocus->updateFocusElement(newFocus->available, "#COMMUNISM", comm);
-			}
-			else
-			{
-				newFocus->removePlaceholder(newFocus->available, "#COMMUNISM");
-			}
-			if (majorIdeologies.contains("fascism"))
-			{
-				std::string fasc;
-				if (!majorIdeologies.contains("communism"))
-				{
-					fasc = "if = {\n";
-				}
-				else
-				{
-					fasc = "else_if = {\n";
-				}
-				fasc += "\t\t\t\t\t\tlimit = { ROOT = { has_government = fascism } }\n";
-				fasc += "\t\t\t\t\t\tpotential_fascist_annex_target = yes\n";
-				fasc += "\t\t\t\t\t}";
-				newFocus->updateFocusElement(newFocus->available, "#FASCISM", fasc);
-			}
-			else
-			{
-				newFocus->removePlaceholder(newFocus->available, "#FASCISM");
-			}
-			if (majorIdeologies.contains("radical"))
-			{
-				std::string rad;
-				if (!majorIdeologies.contains("communism") && !majorIdeologies.contains("fascism"))
-				{
-					rad = "if = {\n";
-				}
-				else
-				{
-					rad = "else_if = {\n";
-				}
-				rad += "\t\t\t\t\t\tlimit = { ROOT = { has_government = radical } }\n";
-				rad += "\t\t\t\t\t\tpotential_radical_annex_target = yes\n";
-				rad += "\t\t\t\t\t}";
-				newFocus->updateFocusElement(newFocus->available, "#RADICAL", rad);
-			}
-			else
-			{
-				newFocus->removePlaceholder(newFocus->available, "#RADICAL");
-			}
-			if (majorIdeologies.contains("communism") || majorIdeologies.contains("fascism") ||
-				 majorIdeologies.contains("radical"))
-			{
-				std::string els;
-				els = "else = {\n";
-				els += "\t\t\t\t\t\thidden_trigger = { always = no }\n";
-				els += "\t\t\t\t\t}";
-				newFocus->updateFocusElement(newFocus->available, "#ELSE", els);
-			}
-			else
-			{
-				newFocus->removePlaceholder(newFocus->available, "#ELSE");
-			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", strategy.getID());
 			if (truceUntil)
 			{
@@ -2277,31 +2206,32 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 		}
 		else
 		{
-			throw std::runtime_error("Could not load focus border_disputes_conquer");
+			throw std::runtime_error("Could not load focus border_disputes");
 		}
 
-		if (const auto& originalFocus = loadedFocuses.find("prepare_for_war_conquer");
-			 originalFocus != loadedFocuses.end())
+		if (const auto& originalFocus = loadedFocuses.find("prepare_for_war"); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus =
-				 originalFocus->second.makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
+			auto newFocus = originalFocus->second.makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
 			newFocus->prerequisites.clear();
-			newFocus->prerequisites.push_back("= { focus = border_disputes_conquer" + tag + strategy.getID() + " }");
+			newFocus->prerequisites.push_back("= { focus = border_disputes" + tag + strategy.getID() + " }");
 			newFocus->relativePositionId += strategy.getID();
-			newFocus->updateFocusElement(newFocus->available, "$STARTDATE", startDate.toString());
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", strategy.getID());
-			if (truceUntil && *truceUntil > startDate)
+			date dateAvailable = date("1936.1.1");
+			if (const auto& relations = theCountry->getRelations(strategy.getID()); relations)
 			{
-				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
+				dateAvailable.increaseByMonths((200 + relations->getRelations()) / 8);
+			}
+			if (const auto& truceUntil = theCountry->getTruceUntil(strategy.getID());
+				 truceUntil && *truceUntil > dateAvailable)
+			{
+				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 			}
 			else
 			{
-				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
+				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString());
 			}
 			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", strategy.getID());
-			newFocus->updateFocusElement(newFocus->selectEffect, "var:ROOT.neighbor_war_defender", strategy.getID());
-			newFocus->updateFocusElement(newFocus->completionReward, "var:neighbor_war_defender", strategy.getID());
-			newFocus->updateFocusElement(newFocus->bypass, "var:neighbor_war_defender", strategy.getID());
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", strategy.getID());
 			focuses.push_back(newFocus);
 		}
 		else
@@ -2309,15 +2239,12 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			throw std::runtime_error("Could not load focus prepare_for_war");
 		}
 
-		if (const auto& originalFocus = loadedFocuses.find("neighbor_war_conquer"); originalFocus != loadedFocuses.end())
+		if (const auto& originalFocus = loadedFocuses.find("neighbor_war"); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus =
-				 originalFocus->second.makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
+			auto newFocus = originalFocus->second.makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
 			newFocus->prerequisites.clear();
-			newFocus->prerequisites.push_back("= { focus = prepare_for_war_conquer" + tag + strategy.getID() + " }");
+			newFocus->prerequisites.push_back("= { focus = prepare_for_war" + tag + strategy.getID() + " }");
 			newFocus->relativePositionId += strategy.getID();
-			newFocus->updateFocusElement(newFocus->available, "var:neighbor_war_defender", strategy.getID());
-			newFocus->updateFocusElement(newFocus->available, "var:ROOT.neighbor_war_defender", strategy.getID());
 			if (truceUntil)
 			{
 				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
@@ -2326,59 +2253,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			{
 				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
 			}
-			if (majorIdeologies.contains("communism"))
-			{
-				std::string comm;
-				comm = "else_if = {\n";
-				comm += "\t\t\t\tlimit = { var:neighbor_war_defender = { potential_communist_puppet_target = yes } }\n";
-				comm += "\t\t\t\tdeclare_war_on = {\n";
-				comm += "\t\t\t\t\ttarget = var:neighbor_war_defender\n";
-				comm += "\t\t\t\t\ttype = puppet_wargoal_focus\n";
-				comm += "\t\t\t\t}\n";
-				comm += "\t\t\t\tadd_named_threat = { threat = 3 name = neighbor_war_NF_threat }\n";
-				comm += "\t\t\t}";
-				newFocus->updateFocusElement(newFocus->completionReward, "#COMMUNISM", comm);
-			}
-			else
-			{
-				newFocus->removePlaceholder(newFocus->completionReward, "#COMMUNISM");
-			}
-			if (majorIdeologies.contains("fascism"))
-			{
-				std::string fasc;
-				fasc = "else_if = {\n";
-				fasc += "\t\t\t\tlimit = { var:neighbor_war_defender = { potential_fascist_annex_target = yes } }\n";
-				fasc += "\t\t\t\tdeclare_war_on = {\n";
-				fasc += "\t\t\t\t\ttarget = var:neighbor_war_defender\n";
-				fasc += "\t\t\t\t\ttype = annex_everything\n";
-				fasc += "\t\t\t\t}\n";
-				fasc += "\t\t\t\tadd_named_threat = { threat = 3 name = neighbor_war_NF_threat }\n";
-				fasc += "\t\t\t}";
-				newFocus->updateFocusElement(newFocus->completionReward, "#FASCISM", fasc);
-			}
-			else
-			{
-				newFocus->removePlaceholder(newFocus->completionReward, "#FASCISM");
-			}
-			if (majorIdeologies.contains("radical"))
-			{
-				std::string rad;
-				rad = "else_if = {\n";
-				rad += "\t\t\t\tlimit = { var:neighbor_war_defender = { potential_radical_annex_target = yes } }\n";
-				rad += "\t\t\t\tdeclare_war_on = {\n";
-				rad += "\t\t\t\t\ttarget = var:neighbor_war_defender\n";
-				rad += "\t\t\t\t\ttype = annex_everything\n";
-				rad += "\t\t\t\t}\n";
-				rad += "\t\t\t\tadd_named_threat = { threat = 3 name = neighbor_war_NF_threat }\n";
-				rad += "\t\t\t}";
-				newFocus->updateFocusElement(newFocus->completionReward, "#RADICAL", rad);
-			}
-			else
-			{
-				newFocus->removePlaceholder(newFocus->completionReward, "#RADICAL");
-			}
-			newFocus->updateFocusElement(newFocus->completionReward, "var:neighbor_war_defender", strategy.getID());
-			newFocus->updateFocusElement(newFocus->completionReward, "var:ROOT.neighbor_war_defender", strategy.getID());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", strategy.getID());
 
 			std::string claimsString = "claimed_states";
 			const auto& claimsHolders = determineWarTargets(theCountry, theCountry->getClaimedStates(), states);
@@ -2394,7 +2269,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			}
 			newFocus->updateFocusElement(newFocus->completionReward, "$CLAIMED_STATES", claimsString);
 
-			newFocus->updateFocusElement(newFocus->bypass, "var:neighbor_war_defender", strategy.getID());
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", strategy.getID());
 			focuses.push_back(newFocus);
 		}
 		else
