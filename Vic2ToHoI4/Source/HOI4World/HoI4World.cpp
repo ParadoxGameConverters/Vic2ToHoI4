@@ -822,15 +822,10 @@ void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 		auto HoI4Country2 = countries.find(*possibleHoI4Tag2);
 		if (HoI4Country1 == countries.end())
 		{
-			Log(LogLevel::Warning) << "HoI4 country " << *possibleHoI4Tag1
-										  << " used in diplomatic agreement doesn't exist";
 			continue;
 		}
 		if (HoI4Country2 == countries.end())
 		{
-			Log(LogLevel::Warning) << "HoI4 country " << *possibleHoI4Tag2
-										  << " used in diplomatic agreement doesn't exist";
-			continue;
 		}
 
 		if (agreement.getType() == "alliance")
