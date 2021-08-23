@@ -29,7 +29,9 @@ HoI4::Country::Country(std::string tag,
 	 const Mappers::CountryMapper& countryMap,
 	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 	 Localisation& hoi4Localisations,
-	 const date& startDate):
+	 const date& startDate,
+	 const Mappers::ProvinceMapper& theProvinceMapper,
+	 const States& worldStates):
 	 tag(std::move(tag)),
 	 name(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
@@ -39,6 +41,11 @@ HoI4::Country::Country(std::string tag,
 	 oldGovernment(sourceCountry.getGovernment()), upperHouseComposition(sourceCountry.getUpperHouseComposition()),
 	 lastElection(sourceCountry.getLastElection())
 {
+	determineCapitalFromVic2(theProvinceMapper, worldStates.getProvinceToStateIDMap(), worldStates.getStates());
+	if (!getCapitalState())
+	{
+		return;
+	}
 	determineFilename();
 
 	const auto& sourceColor = sourceCountry.getColor();
