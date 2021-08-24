@@ -4,7 +4,7 @@
 # John Jackson Adams, 1st Baron thereof
 
 # sample_group = {
-#	culture_groups = { germanic beneluxian }
+#	culture_and_groups = { germanic beneluxian newswiss }
 #	army_portraits = {
 #		"gfx/leaders/GER/sample_portrait_land.dds"
 #		"gfx/leaders/GER/sample_portrait_land2.dds"
@@ -59,6 +59,604 @@
 #aborigine_polynesia, north_american_native, central_american_native, south_american_native,
 #hispanic, african, deathbringers, animalia
 
+north_germanic = {
+	culture_and_groups = { north_german ashkenazi amerikaner geheimnisdeutsch maximilianish german }
+	army_portraits = {
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_1.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_2.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_3.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_4.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_5.dds"
+		"gfx/leaders/GER/portrait_ger_felix_steiner.dds"
+		"gfx/leaders/GER/portrait_ger_hans_von_luck.dds"
+		"gfx/leaders/GER/Portrait_Germany_Albert_Kesselring.dds"
+		"gfx/leaders/GER/Portrait_Germany_Alfred_Jodl.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erhard_Milch.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erich_von_Manstein.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erwin_Rommel.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erwin_von_Witzleben.dds"
+		"gfx/leaders/GER/Portrait_Germany_Ewald_von_Kleist.dds"
+		"gfx/leaders/GER/Portrait_Germany_Fedor_von_Bock.dds"
+		"gfx/leaders/GER/Portrait_Germany_Friedrich_Paulus.dds"
+		"gfx/leaders/GER/Portrait_Germany_Georg_von_Kuchler.dds"
+		"gfx/leaders/GER/Portrait_Germany_Georg_von_Reinhardt.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gerd_von_Rundstedt.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gotthard_Heinrici.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gunther_von_Kluge.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hans-Karl_Freiherr_von_Esebeck.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hasso_von_Manteuffel.dds"
+		"gfx/leaders/GER/Portrait_Germany_Heinz_Guderian.dds"
+		"gfx/leaders/GER/Portrait_Germany_Herman_Hoth.dds"
+		"gfx/leaders/GER/Portrait_Germany_Johannes_Blaskowitz.dds"
+		"gfx/leaders/GER/Portrait_Germany_Josef_Dietrich.dds"
+		"gfx/leaders/GER/Portrait_Germany_Kurt_Student.dds"
+		"gfx/leaders/GER/Portrait_Germany_Maximilian_von_Weichs.dds"
+		"gfx/leaders/GER/Portrait_Germany_Paul_Hausser.dds"
+		"gfx/leaders/GER/Portrait_Germany_Walter_Kruger.dds"
+		"gfx/leaders/GER/Portrait_Germany_Walter_Model.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wilhelm_List.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wilhelm_Ritter_von_Leeb.dds"
+		"gfx/leaders/GER/Portrait_Germany_Willi_Reschke.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wolfram_Freiherr_von_Richthofen.dds"
+	}
+	navy_portraits = {
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_1.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_2.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_3.dds"
+		"gfx/leaders/GER/Portrait_Germany_Alfred_Saalwachter.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erich_Raeder.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gunter_Lutjens.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hermann_Boehm.dds"
+		"gfx/leaders/GER/Portrait_Germany_Karl_Donitz.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wilhelm_Marschall.dds"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/GER/Portrait_Germany_Wilhelm_Pieck.dds"
+			"gfx/leaders/GER/Portrait_Germany_Generic_1.dds"
+			"gfx/leaders/Europe/portrait_europe_generic_8.dds"
+			"gfx/leaders/Western_European/Portrait_Rhineland_Paul_Frolich.tga"
+		}
+		democratic = {
+			"gfx/leaders/Europe/portrait_europe_generic_5.dds"
+			"gfx/leaders/GER/Portrait_Germany_Konrad_Adenauer.dds"			
+		}
+		fascism = {
+			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
+			"gfx/leaders/GER/Portrait_Germany_Heinrich_Himmler.dds"
+			"gfx/leaders/GER/Portrait_Germany_Hermann_Goring.dds"
+			"gfx/leaders/GER/Portrait_Germany_Generic_3.dds"
+		}
+		absolutist = {
+			"gfx/leaders/Europe/Portrait_europe_generic_7.dds"
+			"gfx/leaders/Western_European/Portrait_Germany_Wilhelm_II.tga"
+			"gfx/leaders/Western_European/Portrait_Germany_Wilhelm_III.tga"
+			"gfx/leaders/Western_European/Portrait_Germany_Wilhelm_V.tga"
+			"gfx/leaders/Western_European/Portrait_Schleswig_Holstein_Harald_I.tga"
+			"gfx/leaders/HUN/Portrait_friedrich_franz.dds"
+		}
+		neutrality = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
+			"gfx/leaders/Western_European/Portrait_Germany_Alfred_Hugenberg.tga"
+			"gfx/leaders/LUX/portrait_lux_joseph_bech.dds"
+		}
+		radical = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+			"gfx/leaders/Europe/portrait_europe_generic_4.dds"
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+			"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Gurley_Flynn.tga"
+			"gfx/leaders/Western_European/Female/Portrait_France_May_Picqueray.tga"
+			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		}
+		monarch = {
+			"gfx/leaders/Western_European/Female/Portrait_Holland_Juliana.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Holland_Wilhelmina.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Normandy_Anna_I.tga"
+			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+		}
+		ideological_leader = {
+			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+			"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Gurley_Flynn.tga"
+			"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Nord.tga"
+			"gfx/leaders/Western_European/Female/Portrait_France_May_Picqueray.tga"
+			"gfx/leaders/Western_European/Female/Portrait_England_Sylvia_Pankhurst.tga"
+			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_ernst_thalmann.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_kurt_schumacher.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_joseph_goebbels.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/idea_ger_wilhelm_iii.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_albert_kesselring.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_hjalmar_schacht.dds"
+		} 
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_11.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_12.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_25.dds"
+		"gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		"gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hilter_M.dds"
+		"gfx/leaders/GER/portrait_ger_elyesa_bazna.dds"
+		"gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		"gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		"gfx/leaders/SOV/portrait_sov_richard_sorge.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_11.dds" #No 12
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_25.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hilter_F.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/germany.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/germany.dds"
+	}
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
+}
+
+south_germanic = {
+	culture_and_groups = { south_german boehmisch pan_swiss newswiss } 
+	army_portraits = {
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_1.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_2.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_3.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_4.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_5.dds"
+		"gfx/leaders/GER/portrait_ger_felix_steiner.dds"
+		"gfx/leaders/GER/portrait_ger_hans_von_luck.dds"
+		"gfx/leaders/GER/Portrait_Germany_Albert_Kesselring.dds" 
+		"gfx/leaders/GER/Portrait_Germany_Alfred_Jodl.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erhard_Milch.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erich_von_Manstein.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erwin_Rommel.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erwin_von_Witzleben.dds"
+		"gfx/leaders/GER/Portrait_Germany_Ewald_von_Kleist.dds"
+		"gfx/leaders/GER/Portrait_Germany_Fedor_von_Bock.dds"
+		"gfx/leaders/GER/Portrait_Germany_Friedrich_Paulus.dds"
+		"gfx/leaders/GER/Portrait_Germany_Georg_von_Kuchler.dds"
+		"gfx/leaders/GER/Portrait_Germany_Georg_von_Reinhardt.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gerd_von_Rundstedt.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gotthard_Heinrici.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gunther_von_Kluge.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hans-Karl_Freiherr_von_Esebeck.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hasso_von_Manteuffel.dds"
+		"gfx/leaders/GER/Portrait_Germany_Heinz_Guderian.dds"
+		"gfx/leaders/GER/Portrait_Germany_Herman_Hoth.dds"
+		"gfx/leaders/GER/Portrait_Germany_Johannes_Blaskowitz.dds"
+		"gfx/leaders/GER/Portrait_Germany_Josef_Dietrich.dds"
+		"gfx/leaders/GER/Portrait_Germany_Kurt_Student.dds"
+		"gfx/leaders/GER/Portrait_Germany_Maximilian_von_Weichs.dds"
+		"gfx/leaders/GER/Portrait_Germany_Paul_Hausser.dds"
+		"gfx/leaders/GER/Portrait_Germany_Walter_Kruger.dds"
+		"gfx/leaders/GER/Portrait_Germany_Walter_Model.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wilhelm_List.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wilhelm_Ritter_von_Leeb.dds"
+		"gfx/leaders/GER/Portrait_Germany_Willi_Reschke.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wolfram_Freiherr_von_Richthofen.dds"
+	}
+	navy_portraits = {
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_1.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_2.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_3.dds"
+		"gfx/leaders/GER/Portrait_Germany_Alfred_Saalwachter.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erich_Raeder.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gunter_Lutjens.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hermann_Boehm.dds"
+		"gfx/leaders/GER/Portrait_Germany_Karl_Donitz.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wilhelm_Marschall.dds"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/GER/Portrait_Germany_Wilhelm_Pieck.dds"
+			"gfx/leaders/GER/Portrait_Germany_Generic_1.dds"
+		}
+		democratic = {
+			"gfx/leaders/Europe/portrait_europe_generic_5.dds"
+			"gfx/leaders/GER/Portrait_Germany_Konrad_Adenauer.dds"			
+		}
+		fascism = {
+			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
+			"gfx/leaders/GER/Portrait_Germany_Heinrich_Himmler.dds"
+			"gfx/leaders/GER/Portrait_Germany_Hermann_Goring.dds"
+			"gfx/leaders/GER/Portrait_Germany_Generic_3.dds"
+		}
+		absolutist = {
+			"gfx/leaders/Europe/Portrait_europe_generic_7.dds"
+			"gfx/leaders/Western_European/Portrait_Austria_Otto_I.tga"
+			"gfx/leaders/Western_European/Portrait_Bavaria_Rupprecht_von_Bayern.tga"
+		}
+		neutrality = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
+			"gfx/leaders/AUS/Portrait_Austria_Kurt_Schuschnigg.dds"
+		}
+		radical = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+			"gfx/leaders/Europe/portrait_europe_generic_4.dds"
+			"gfx/leaders/Western_European/Portrait_Bavaria_Kurt_Eisner.tga"
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+			"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Gurley_Flynn.tga"
+			"gfx/leaders/Western_European/Female/Portrait_France_May_Picqueray.tga"
+			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		}
+		monarch = {
+			"gfx/leaders/Western_European/Female/Portrait_Holland_Juliana.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Holland_Wilhelmina.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Normandy_Anna_I.tga"
+			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+		}
+		ideological_leader = {
+			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+			"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Gurley_Flynn.tga"
+			"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Nord.tga"
+			"gfx/leaders/Western_European/Female/Portrait_France_May_Picqueray.tga"
+			"gfx/leaders/Western_European/Female/Portrait_England_Sylvia_Pankhurst.tga"
+			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_ernst_thalmann.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_kurt_schumacher.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_joseph_goebbels.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/idea_gerd_von_rundstedt.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_albert_kesselring.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_hjalmar_schacht.dds"
+		} 
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_11.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_12.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_25.dds"
+		"gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		"gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hilter_M.dds"
+		"gfx/leaders/GER/portrait_ger_elyesa_bazna.dds"
+		"gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		"gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		"gfx/leaders/SOV/portrait_sov_richard_sorge.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_11.dds" #No 12
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_25.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hilter_F.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/germany.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/germany.dds"
+	}
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
+}
+
+neo_german = {
+	culture_and_groups = { germanic } #fallback for germanic cultures not specified
+	army_portraits = {
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_1.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_2.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_3.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_4.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_5.dds"
+		"gfx/leaders/GER/portrait_ger_felix_steiner.dds"
+		"gfx/leaders/GER/portrait_ger_hans_von_luck.dds"
+		"gfx/leaders/GER/Portrait_Germany_Albert_Kesselring.dds" 
+		"gfx/leaders/GER/Portrait_Germany_Alfred_Jodl.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erhard_Milch.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erich_von_Manstein.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erwin_Rommel.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erwin_von_Witzleben.dds"
+		"gfx/leaders/GER/Portrait_Germany_Ewald_von_Kleist.dds"
+		"gfx/leaders/GER/Portrait_Germany_Fedor_von_Bock.dds"
+		"gfx/leaders/GER/Portrait_Germany_Friedrich_Paulus.dds"
+		"gfx/leaders/GER/Portrait_Germany_Georg_von_Kuchler.dds"
+		"gfx/leaders/GER/Portrait_Germany_Georg_von_Reinhardt.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gerd_von_Rundstedt.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gotthard_Heinrici.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gunther_von_Kluge.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hans-Karl_Freiherr_von_Esebeck.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hasso_von_Manteuffel.dds"
+		"gfx/leaders/GER/Portrait_Germany_Heinz_Guderian.dds"
+		"gfx/leaders/GER/Portrait_Germany_Herman_Hoth.dds"
+		"gfx/leaders/GER/Portrait_Germany_Johannes_Blaskowitz.dds"
+		"gfx/leaders/GER/Portrait_Germany_Josef_Dietrich.dds"
+		"gfx/leaders/GER/Portrait_Germany_Kurt_Student.dds"
+		"gfx/leaders/GER/Portrait_Germany_Maximilian_von_Weichs.dds"
+		"gfx/leaders/GER/Portrait_Germany_Paul_Hausser.dds"
+		"gfx/leaders/GER/Portrait_Germany_Walter_Kruger.dds"
+		"gfx/leaders/GER/Portrait_Germany_Walter_Model.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wilhelm_List.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wilhelm_Ritter_von_Leeb.dds"
+		"gfx/leaders/GER/Portrait_Germany_Willi_Reschke.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wolfram_Freiherr_von_Richthofen.dds"
+	}
+	navy_portraits = {
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_1.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_2.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_3.dds"
+		"gfx/leaders/GER/Portrait_Germany_Alfred_Saalwachter.dds"
+		"gfx/leaders/GER/Portrait_Germany_Erich_Raeder.dds"
+		"gfx/leaders/GER/Portrait_Germany_Gunter_Lutjens.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hermann_Boehm.dds"
+		"gfx/leaders/GER/Portrait_Germany_Karl_Donitz.dds"
+		"gfx/leaders/GER/Portrait_Germany_Wilhelm_Marschall.dds"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/GER/Portrait_Germany_Wilhelm_Pieck.dds"
+			"gfx/leaders/GER/Portrait_Germany_Generic_1.dds"
+		}
+		democratic = {
+			"gfx/leaders/Europe/portrait_europe_generic_5.dds"
+			"gfx/leaders/GER/Portrait_Germany_Konrad_Adenauer.dds"			
+		}
+		fascism = {
+			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
+			"gfx/leaders/GER/Portrait_Germany_Heinrich_Himmler.dds"
+			"gfx/leaders/GER/Portrait_Germany_Hermann_Goring.dds"
+			"gfx/leaders/GER/Portrait_Germany_Generic_3.dds"
+		}
+		absolutist = {
+			"gfx/leaders/Europe/Portrait_europe_generic_7.dds"
+			"gfx/leaders/Western_European/Portrait_Austria_Otto_I.tga"
+			"gfx/leaders/Western_European/Portrait_Bavaria_Rupprecht_von_Bayern.tga"
+		}
+		neutrality = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
+			"gfx/leaders/AUS/Portrait_Austria_Kurt_Schuschnigg.dds"
+		}
+		radical = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+			"gfx/leaders/Europe/portrait_europe_generic_4.dds"
+			"gfx/leaders/Western_European/Portrait_Bavaria_Kurt_Eisner.tga"
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+			"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Gurley_Flynn.tga"
+			"gfx/leaders/Western_European/Female/Portrait_France_May_Picqueray.tga"
+			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		}
+		monarch = {
+			"gfx/leaders/Western_European/Female/Portrait_Holland_Juliana.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Holland_Wilhelmina.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Normandy_Anna_I.tga"
+			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+		}
+		ideological_leader = {
+			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+			"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Gurley_Flynn.tga"
+			"gfx/leaders/Western_European/Female/Portrait_CSA_Elizabeth_Nord.tga"
+			"gfx/leaders/Western_European/Female/Portrait_France_May_Picqueray.tga"
+			"gfx/leaders/Western_European/Female/Portrait_England_Sylvia_Pankhurst.tga"
+			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_ernst_thalmann.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_kurt_schumacher.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_joseph_goebbels.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/idea_gerd_von_rundstedt.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_albert_kesselring.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_hjalmar_schacht.dds"
+		} 
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_11.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_12.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_25.dds"
+		"gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		"gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hilter_M.dds"
+		"gfx/leaders/GER/portrait_ger_elyesa_bazna.dds"
+		"gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		"gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		"gfx/leaders/SOV/portrait_sov_richard_sorge.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_11.dds" #No 12
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_25.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
+		"gfx/leaders/GER/Portrait_Germany_Hilter_F.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/germany.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/germany.dds"
+	}
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
+}
 western_european = {
 	culture_groups = { germanic beneluxian pan_swiss jewish_group jewish_cultures scandinavian british celtic french american_cultures neo_european_cultures }
 	army_portraits = {
