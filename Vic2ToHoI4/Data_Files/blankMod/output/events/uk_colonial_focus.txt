@@ -11,16 +11,30 @@ country_event = {
 	hidden = yes
 
 	immediate = {
-		random_owned_controlled_state = {
+		random_state = {
 			limit = {
+				OR = {
+					is_owned_by = ROOT
+					any_other_country = {
+						owns_state = PREV
+						is_subject_of = ROOT
+					}
+				}
 				is_on_continent = asia
 				is_coastal = yes
 				any_neighbor_state = { NOT = { is_owned_by = ROOT } }
 			}
 			save_global_event_target_as = uk_colonial_focus_singapore
 		}
-		random_owned_controlled_state = {
+		random_state = {
 			limit = {
+				OR = {
+					is_owned_by = ROOT
+					any_other_country = {
+						owns_state = PREV
+						is_subject_of = ROOT
+					}
+				}
 				NOT = { state = event_target:uk_colonial_focus_singapore }
 				is_on_continent = asia
 				is_coastal = yes
