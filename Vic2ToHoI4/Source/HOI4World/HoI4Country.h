@@ -61,7 +61,9 @@ class Country
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 Localisation& hoi4Localisations,
-		 const date& startDate);
+		 const date& startDate,
+		 const Mappers::ProvinceMapper& theProvinceMapper,
+		 const States& worldStates);
 	explicit Country(const std::string& tag_,
 		 const std::shared_ptr<Country> owner,
 		 const std::string& region_,

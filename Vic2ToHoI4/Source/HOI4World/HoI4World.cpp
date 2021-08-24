@@ -101,17 +101,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
 	strategicRegions = StrategicRegions::Factory().importStrategicRegions(theConfiguration);
-	names = Names::Factory().getNames(theConfiguration);
-	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
-	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
-	casusBellis = Mappers::CasusBellisFactory{}.importCasusBellis();
-	convertCountries(sourceWorld, provinceMapper);
-	determineGreatPowers(sourceWorld);
-	governmentMapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
-	ideologyMapper = Mappers::IdeologyMapper::Factory().importIdeologyMapper();
-	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
-	ideologies = std::make_unique<Ideologies>(theConfiguration);
-	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
 	states = std::make_unique<States>(sourceWorld,
 		 *countryMap,
 		 theProvinces,
@@ -124,6 +113,17 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 *hoi4Localisations,
 		 provinceMapper,
 		 theConfiguration);
+	names = Names::Factory().getNames(theConfiguration);
+	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
+	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
+	casusBellis = Mappers::CasusBellisFactory{}.importCasusBellis();
+	convertCountries(sourceWorld, provinceMapper);
+	determineGreatPowers(sourceWorld);
+	governmentMapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
+	ideologyMapper = Mappers::IdeologyMapper::Factory().importIdeologyMapper();
+	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
+	ideologies = std::make_unique<Ideologies>(theConfiguration);
+	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
 	convertWars(sourceWorld, provinceMapper);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
@@ -296,8 +296,13 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 			 *countryMap,
 			 flagsToIdeasMapper,
 			 *hoi4Localisations,
-			 *theDate);
-		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
+			 *theDate,
+			 provinceMapper,
+			 *states);
+		if (destCountry->getCapitalState())
+		{
+			countries.insert(make_pair(*possibleHoI4Tag, destCountry));
+		}
 	}
 }
 
