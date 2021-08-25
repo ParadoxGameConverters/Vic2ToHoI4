@@ -115,6 +115,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 theConfiguration);
 	names = Names::Factory().getNames(theConfiguration);
 	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
+	graphicsMapper->debugPortraits(theConfiguration);
 	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
 	casusBellis = Mappers::CasusBellisFactory{}.importCasusBellis();
 	convertCountries(sourceWorld, provinceMapper);

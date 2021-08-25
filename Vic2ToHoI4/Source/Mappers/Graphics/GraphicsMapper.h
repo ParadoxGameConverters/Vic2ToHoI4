@@ -3,6 +3,7 @@
 
 
 
+#include "Configuration.h"
 #include <map>
 #include <optional>
 #include <string>
@@ -52,11 +53,20 @@ class GraphicsMapper
 	[[nodiscard]] std::optional<std::string> get2dGraphicalCulture(const std::string& culture,
 		 const std::string& cultureGroup) const;
 
+	void debugPortraits(const Configuration& theConfiguration);
+
   private:
 	[[nodiscard]] std::vector<std::string> getLeaderPortraits(const std::string& cultureOrGroup,
 		 const std::string& ideology) const;
 	[[nodiscard]] std::vector<std::string> getIdeologyMinisterPortraits(const std::string& cultureOrGroup,
 		 const std::string& ideology) const;
+
+	void loadPortraitFiles(const std::string& path, const std::string& gfxFolder, std::set<std::string>& portraitFiles);
+	void loadPortraitMappings(const culturesAndGroupsToPortraitsMap& mappings, std::set<std::string>& mapperPortraits);
+	void loadPortraitMappings(const ideologyToPortraitsMap& mappings, std::set<std::string>& mapperPortraits);
+	std::string toLower(const std::string& oldString);
+	void tryFindingPortrait(const std::string& path, std::set<std::string> portraitFiles);
+	std::string determineFilename(const std::string& path);
 
 	culturesAndGroupsToPortraitsMap armyPortraitMappings;
 	culturesAndGroupsToPortraitsMap navyPortraitMappings;
