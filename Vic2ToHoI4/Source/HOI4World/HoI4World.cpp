@@ -194,9 +194,9 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertIdeologySupport();
 	states->convertCapitalVPs(countries, greatPowers);
 	states->convertAirBases(countries, greatPowers);
+	factionNameMapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
 	if (theConfiguration.getCreateFactions())
 	{
-		factionNameMapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
 		createFactions(theConfiguration);
 	}
 
