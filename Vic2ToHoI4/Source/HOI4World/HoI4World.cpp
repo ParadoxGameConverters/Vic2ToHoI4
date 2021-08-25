@@ -827,6 +827,7 @@ void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 		}
 		if (HoI4Country2 == countries.end())
 		{
+			continue;
 		}
 
 		if (agreement.getType() == "alliance")
