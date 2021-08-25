@@ -791,9 +791,12 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 		else
 		{
 			localisedName = name + " Wasteland";
-			Log(LogLevel::Warning) << name << " had a wasteland section with no localisation. Add "
-										  << vic2State.getStateID()
-										  << "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
+			if (language == "english")
+			{
+				Log(LogLevel::Warning) << name << " had a wasteland section with no localisation. Add "
+											  << vic2State.getStateID()
+											  << "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
+			}
 		}
 	}
 	else
