@@ -1,5 +1,9 @@
 #include "GraphicsMapper.h"
+#include "CommonFunctions.h"
 #include "GraphicsCultureGroup.h"
+#include "Log.h"
+#include "OSCompatibilityLayer.h"
+#include <ranges>
 
 
 
@@ -315,4 +319,105 @@ std::optional<std::string> Mappers::GraphicsMapper::get2dGraphicalCulture(const 
 	}
 
 	return std::nullopt;
+}
+
+
+void Mappers::GraphicsMapper::debugPortraits(const Configuration& theConfiguration)
+{
+	if (!theConfiguration.getDebug())
+	{
+		return;
+	}
+
+	Log(LogLevel::Debug) << "Debugging portraits";
+	std::set<std::string> portraitFiles;
+	portraitFiles.merge(loadPortraitFiles(theConfiguration.getHoI4Path() + "/", "gfx/leaders/"));
+	portraitFiles.merge(loadPortraitFiles("blankMod/output/", "gfx/leaders/"));
+	portraitFiles.merge(loadPortraitFiles(theConfiguration.getHoI4Path() + "/", "gfx/interface/ideas/"));
+	portraitFiles.merge(loadPortraitFiles("blankMod/output/", "gfx/interface/ideas/"));
+
+	std::set<std::string> mapperPortraits;
+	mapperPortraits.merge(loadPortraitMappings(armyPortraitMappings));
+	mapperPortraits.merge(loadPortraitMappings(navyPortraitMappings));
+	mapperPortraits.merge(loadPortraitMappings(maleMonarchMappings));
+	mapperPortraits.merge(loadPortraitMappings(femaleMonarchMappings));
+	mapperPortraits.merge(loadPortraitMappings(leaderPortraitMappings));
+	mapperPortraits.merge(loadPortraitMappings(femalePortraitMappings));
+	mapperPortraits.merge(loadPortraitMappings(ideologyMinisterMappings));
+
+	for (const auto& portrait: mapperPortraits)
+	{
+		if (!portraitFiles.contains(portrait))
+		{
+			Log(LogLevel::Debug) << "Missing portrait: " << portrait;
+			tryFindingPortrait(portrait, portraitFiles);
+		}
+	}
+}
+
+
+std::set<std::string> Mappers::GraphicsMapper::loadPortraitFiles(const std::string& root, const std::string& gfxFolder)
+{
+	std::set<std::string> portraitFiles;
+	for (auto path: commonItems::GetAllFilesInFolderRecursive(root + gfxFolder))
+	{
+		path = gfxFolder + path;
+		path = std::regex_replace(path, std::regex(R"(\\)"), "/");
+		portraitFiles.insert(toLower(path));
+	}
+	return portraitFiles;
+}
+
+
+std::set<std::string> Mappers::GraphicsMapper::loadPortraitMappings(const culturesAndGroupsToPortraitsMap& mappings)
+{
+	std::set<std::string> mapperPortraits;
+	for (const auto& culture: mappings | std::views::values)
+	{
+		for (const auto& portrait: culture)
+		{
+			mapperPortraits.insert(toLower(portrait));
+		}
+	}
+	return mapperPortraits;
+}
+
+
+std::set<std::string> Mappers::GraphicsMapper::loadPortraitMappings(const ideologyToPortraitsMap& mappings)
+{
+	std::set<std::string> mapperPortraits;
+	for (const auto& cultureGroup: mappings | std::views::values)
+	{
+		for (const auto& culture: cultureGroup | std::views::values)
+		{
+			for (const auto& portrait: culture)
+			{
+				mapperPortraits.insert(toLower(portrait));
+			}
+		}
+	}
+	return mapperPortraits;
+}
+
+
+std::string Mappers::GraphicsMapper::toLower(const std::string& oldString)
+{
+	std::string newString = oldString;
+	std::transform(newString.begin(), newString.end(), newString.begin(),
+		[](unsigned char c){ return std::tolower(c); });
+	return newString;
+}
+
+
+void Mappers::GraphicsMapper::tryFindingPortrait(const std::string& path, std::set<std::string> portraitFiles)
+{
+	const auto& portraitName = trimExtension(trimPath(path));
+	for (const auto& portraitFile: portraitFiles)
+	{
+		const auto& filename = trimExtension(trimPath(portraitFile));
+		if (filename == portraitName)
+		{
+			Log(LogLevel::Debug) << " -> Potential match in " << portraitFile;
+		}
+	}
 }

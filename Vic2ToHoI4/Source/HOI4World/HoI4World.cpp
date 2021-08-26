@@ -115,6 +115,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 theConfiguration);
 	names = Names::Factory().getNames(theConfiguration);
 	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
+	graphicsMapper->debugPortraits(theConfiguration);
 	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
 	casusBellis = Mappers::CasusBellisFactory{}.importCasusBellis();
 	convertCountries(sourceWorld, provinceMapper);
@@ -149,6 +150,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
 	convertDiplomacy(sourceWorld);
+	convertStrategies(sourceWorld);
 	convertTechs();
 
 	convertCountryNames(vic2Localisations);
@@ -803,12 +805,6 @@ void HoI4::World::reportIndustryLevels() const
 void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tConverting diplomacy";
-	convertAgreements(sourceWorld);
-}
-
-
-void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
-{
 	const auto& diplomacy = sourceWorld.getDiplomacy();
 	for (auto agreement: diplomacy.getAgreements())
 	{
@@ -827,14 +823,10 @@ void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 		auto HoI4Country2 = countries.find(*possibleHoI4Tag2);
 		if (HoI4Country1 == countries.end())
 		{
-			Log(LogLevel::Warning) << "HoI4 country " << *possibleHoI4Tag1
-										  << " used in diplomatic agreement doesn't exist";
 			continue;
 		}
 		if (HoI4Country2 == countries.end())
 		{
-			Log(LogLevel::Warning) << "HoI4 country " << *possibleHoI4Tag2
-										  << " used in diplomatic agreement doesn't exist";
 			continue;
 		}
 
@@ -848,6 +840,19 @@ void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 		{
 			HoI4Country1->second->addPuppet(*possibleHoI4Tag2, "autonomy_dominion");
 			HoI4Country2->second->setPuppetMaster(HoI4Country1->second);
+		}
+	}
+}
+
+
+void HoI4::World::convertStrategies(const Vic2::World& sourceWorld)
+{
+	Log(LogLevel::Info) << "\tConverting strategies";
+	for (const auto& country: countries | std::views::values)
+	{
+		if (const auto& sourceCountries = sourceWorld.getCountries(); sourceCountries.contains(country->getOldTag()))
+		{
+			country->convertStrategies(*countryMap, sourceCountries.at(country->getOldTag()), countries);
 		}
 	}
 }

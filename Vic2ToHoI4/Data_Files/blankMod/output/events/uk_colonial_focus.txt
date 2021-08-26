@@ -11,16 +11,30 @@ country_event = {
 	hidden = yes
 
 	immediate = {
-		random_owned_controlled_state = {
+		random_state = {
 			limit = {
+				OR = {
+					is_owned_by = ROOT
+					any_other_country = {
+						owns_state = PREV
+						is_subject_of = ROOT
+					}
+				}
 				is_on_continent = asia
 				is_coastal = yes
 				any_neighbor_state = { NOT = { is_owned_by = ROOT } }
 			}
 			save_global_event_target_as = uk_colonial_focus_singapore
 		}
-		random_owned_controlled_state = {
+		random_state = {
 			limit = {
+				OR = {
+					is_owned_by = ROOT
+					any_other_country = {
+						owns_state = PREV
+						is_subject_of = ROOT
+					}
+				}
 				NOT = { state = event_target:uk_colonial_focus_singapore }
 				is_on_continent = asia
 				is_coastal = yes
@@ -46,7 +60,7 @@ country_event = {
 				any_owned_state = {
 					OR = {
 						any_neighbor_state = {
-							OWNER = { tag = event_target:uk_colonial_focus_japan }
+							is_owned_by = event_target:uk_colonial_focus_japan
 						}
 						AND = {
 							is_coastal = yes
@@ -61,8 +75,11 @@ country_event = {
 					is_controlled_by = PREV
 					any_neighbor_state = {
 						OR = {
-							OWNER = { tag = ROOT }
-							OWNER = { is_subject_of = ROOT }
+							is_owned_by = ROOT
+							any_other_country = {
+								owns_state = PREV
+								is_subject_of = ROOT
+							}
 						}
 					}
 				}
@@ -72,8 +89,11 @@ country_event = {
 		random_state = {
 			limit = {
 				OR = {
-					OWNER = { tag = ROOT }
-					OWNER = { is_subject_of = ROOT }
+					is_owned_by = ROOT
+					any_other_country = {
+						owns_state = PREV
+						is_subject_of = ROOT
+					}
 				}
 				is_in_home_area = yes
 				any_neighbor_state = {
@@ -83,9 +103,12 @@ country_event = {
 							is_controlled_by = event_target:uk_colonial_focus_china
 						}
 						AND = {
-							OWNER = { NOT = { tag = ROOT } }
-							OWNER = { NOT = { is_subject_of = ROOT } }
-							OWNER = { is_in_faction_with = event_target:uk_colonial_focus_china}
+							any_other_country = {
+								owns_state = PREV
+								NOT = { tag = ROOT }
+								NOT = { is_subject_of = ROOT }
+								is_in_faction_with = event_target:uk_colonial_focus_china
+							}
 							any_neighbor_state = {
 								is_owned_by = event_target:uk_colonial_focus_china
 								is_controlled_by = event_target:uk_colonial_focus_china
@@ -113,7 +136,16 @@ country_event = {
 			}
 		}
 		else_if = {
-			limit = { any_state = { state = event_target:uk_colonial_focus_mandalay } }
+			limit = {
+				any_state = { state = event_target:uk_colonial_focus_mandalay }
+				event_target:uk_colonial_focus_mandalay = {
+					any_neighbor_state = {
+						any_other_country = {
+							owns_state = PREV
+						}
+					}
+				}
+			}
 			random_state = {
 				limit = {
 					any_neighbor_state = { state = event_target:uk_colonial_focus_mandalay }

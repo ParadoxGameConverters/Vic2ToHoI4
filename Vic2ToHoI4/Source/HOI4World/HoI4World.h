@@ -157,7 +157,7 @@ class World: commonItems::parser
 	void reportIndustryLevels() const;
 
 	void convertDiplomacy(const Vic2::World& sourceWorld);
-	void convertAgreements(const Vic2::World& sourceWorld);
+	void convertStrategies(const Vic2::World& sourceWorld);
 	void convertWars(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper);
 
 	void convertTechs();
