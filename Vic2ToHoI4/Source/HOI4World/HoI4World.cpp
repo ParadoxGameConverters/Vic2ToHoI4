@@ -848,7 +848,7 @@ void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 void HoI4::World::convertStrategies(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tConverting strategies";
-	for (const auto& [unused, country]: countries)
+	for (const auto& country: countries | std::views::values)
 	{
 		if (const auto& sourceCountries = sourceWorld.getCountries(); sourceCountries.contains(country->getOldTag()))
 		{

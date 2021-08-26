@@ -61,12 +61,11 @@ class GraphicsMapper
 	[[nodiscard]] std::vector<std::string> getIdeologyMinisterPortraits(const std::string& cultureOrGroup,
 		 const std::string& ideology) const;
 
-	void loadPortraitFiles(const std::string& path, const std::string& gfxFolder, std::set<std::string>& portraitFiles);
-	void loadPortraitMappings(const culturesAndGroupsToPortraitsMap& mappings, std::set<std::string>& mapperPortraits);
-	void loadPortraitMappings(const ideologyToPortraitsMap& mappings, std::set<std::string>& mapperPortraits);
+	std::set<std::string> loadPortraitFiles(const std::string& path, const std::string& gfxFolder);
+	std::set<std::string> loadPortraitMappings(const culturesAndGroupsToPortraitsMap& mappings);
+	std::set<std::string> loadPortraitMappings(const ideologyToPortraitsMap& mappings);
 	std::string toLower(const std::string& oldString);
 	void tryFindingPortrait(const std::string& path, std::set<std::string> portraitFiles);
-	std::string determineFilename(const std::string& path);
 
 	culturesAndGroupsToPortraitsMap armyPortraitMappings;
 	culturesAndGroupsToPortraitsMap navyPortraitMappings;
