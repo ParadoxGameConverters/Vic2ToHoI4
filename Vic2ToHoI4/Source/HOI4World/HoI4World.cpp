@@ -533,38 +533,36 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 	}
 
 	auto& modifiableStates = states->getModifiableStates();
-	for (auto& dominionTag: dominions | std::views::values)
+	for (auto& dominion: dominions | std::views::values)
 	{
-		if (auto dominion = countries.find(dominionTag); dominion != countries.end())
+		const auto& dominionTag = dominion->getTag();
+		dominion->determineBestCapital(states->getStates());
+		dominion->setCapitalRegionFlag(*theRegions);
+
+		const auto overlord = dominion->getPuppetMaster();
+		if (!overlord)
 		{
-			dominion->second->determineBestCapital(states->getStates());
-			dominion->second->setCapitalRegionFlag(*theRegions);
+			continue;
+		}
 
-			const auto overlord = dominion->second->getPuppetMaster();
-			if (!overlord)
+		if (dominionIsReleasable(*dominion, *overlord))
+		{
+			const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion());
+			if (dominionLevel)
 			{
-				continue;
+				overlord->addPuppet(dominionTag, *dominionLevel);
 			}
-
-			if (dominionIsReleasable(*dominion->second, *overlord))
+			else
 			{
-				const auto& dominionLevel = theRegions->getRegionLevel(dominion->second->getRegion());
-				if (dominionLevel)
+				overlord->addPuppet(dominionTag, "autonomy_dominion");
+			}
+			overlord->addGeneratedDominion(dominion->getRegion(), dominionTag);
+			for (const auto& stateId: dominion->getCoreStates())
+			{
+				if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
 				{
-					overlord->addPuppet(dominionTag, *dominionLevel);
-				}
-				else
-				{
-					overlord->addPuppet(dominionTag, "autonomy_dominion");
-				}
-				overlord->addGeneratedDominion(dominion->second->getRegion(), dominionTag);
-				for (const auto& stateId: dominion->second->getCoreStates())
-				{
-					if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
-					{
-						state->second.setOwner(dominionTag);
-						dominion->second->addState(state->second);
-					}
+					state->second.setOwner(dominionTag);
+					dominion->addState(state->second);
 				}
 			}
 		}
@@ -582,19 +580,16 @@ std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(
 	 Names& names,
 	 Localisation& hoi4Localisations)
 {
-	if (const auto& dominionTag = dominions.find(std::make_pair(ownerTag, region)); dominionTag != dominions.end())
+	if (dominions.contains(std::make_pair(ownerTag, region)))
 	{
-		if (const auto dominion = countries.find(dominionTag->second); dominion != countries.end())
-		{
-			return *dominion;
-		}
-		return std::make_pair(dominionTag->second, nullptr);
+		const auto& dominion = dominions.at(std::make_pair(ownerTag, region));
+		return std::make_pair(dominion->getTag(), dominion);
 	}
 
 	const auto dominionTag = countryMapperFactory.generateNewHoI4Tag();
-	dominions.emplace(std::make_pair(ownerTag, region), dominionTag);
 	auto dominion =
 		 std::make_shared<Country>(dominionTag, owner, region, regions, graphicsMapper, names, hoi4Localisations);
+	dominions.emplace(std::make_pair(ownerTag, region), dominion);
 	countries.emplace(dominionTag, dominion);
 
 	return std::make_pair(dominionTag, dominion);

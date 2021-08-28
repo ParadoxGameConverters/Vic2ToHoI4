@@ -270,7 +270,7 @@ class World: commonItems::parser
 	std::vector<std::string> strongestGpNavies;
 
 	std::unique_ptr<Regions> theRegions;
-	std::map<std::pair<std::string, std::string>, std::string> dominions;
+	std::map<std::pair<std::string, std::string>, std::shared_ptr<HoI4::Country>> dominions;
 };
 
 } // namespace HoI4
