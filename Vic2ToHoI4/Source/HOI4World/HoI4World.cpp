@@ -547,6 +547,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 
 		if (dominionIsReleasable(*dominion, *overlord))
 		{
+			countries.emplace(dominionTag, dominion);
 			const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion());
 			if (dominionLevel)
 			{
@@ -590,7 +591,6 @@ std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(
 	auto dominion =
 		 std::make_shared<Country>(dominionTag, owner, region, regions, graphicsMapper, names, hoi4Localisations);
 	dominions.emplace(std::make_pair(ownerTag, region), dominion);
-	countries.emplace(dominionTag, dominion);
 
 	return std::make_pair(dominionTag, dominion);
 }
