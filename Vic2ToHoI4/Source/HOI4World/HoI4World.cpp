@@ -528,45 +528,48 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			 *graphicsMapper,
 			 *names,
 			 *hoi4Localisations);
-		state.addCores({dominionTag});
 		dominion->addCoreState(stateId);
 	}
 
 	auto& modifiableStates = states->getModifiableStates();
 	for (auto& dominion: dominions | std::views::values)
 	{
-		const auto& dominionTag = dominion->getTag();
-		dominion->determineBestCapital(states->getStates());
-		dominion->setCapitalRegionFlag(*theRegions);
-
 		const auto overlord = dominion->getPuppetMaster();
 		if (!overlord)
 		{
 			continue;
 		}
-
-		if (dominionIsReleasable(*dominion, *overlord))
+		if (!dominionIsReleasable(*dominion, *overlord))
 		{
-			countries.emplace(dominionTag, dominion);
-			const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion());
-			if (dominionLevel)
+			continue;
+		}
+
+		const auto& dominionTag = dominion->getTag();
+		countries.emplace(dominionTag, dominion);
+
+		const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion());
+		if (dominionLevel)
+		{
+			overlord->addPuppet(dominionTag, *dominionLevel);
+		}
+		else
+		{
+			overlord->addPuppet(dominionTag, "autonomy_dominion");
+		}
+		overlord->addGeneratedDominion(dominion->getRegion(), dominionTag);
+
+		for (const auto& stateId: dominion->getCoreStates())
+		{
+			if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
 			{
-				overlord->addPuppet(dominionTag, *dominionLevel);
-			}
-			else
-			{
-				overlord->addPuppet(dominionTag, "autonomy_dominion");
-			}
-			overlord->addGeneratedDominion(dominion->getRegion(), dominionTag);
-			for (const auto& stateId: dominion->getCoreStates())
-			{
-				if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
-				{
-					state->second.setOwner(dominionTag);
-					dominion->addState(state->second);
-				}
+				state->second.addCores({dominionTag});
+				state->second.setOwner(dominionTag);
+				dominion->addState(state->second);
 			}
 		}
+
+		dominion->determineBestCapital(states->getStates());
+		dominion->setCapitalRegionFlag(*theRegions);
 	}
 }
 
