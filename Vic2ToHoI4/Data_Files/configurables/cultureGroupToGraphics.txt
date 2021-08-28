@@ -3236,6 +3236,72 @@ korean_japan = {
 	graphical_culture_2d = asian_2d
 }
 
+paleosiberian = {
+	cultures_and_groups = { ainu eskaleut }
+	
+	army_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		#Japan
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_1.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_2.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_3.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_4.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_land_5.dds"
+	}
+	navy_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		#Japan
+		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_1.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_2.dds"
+		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_3.dds"
+		}
+	leader_portraits = {
+		communism = {
+		 	"gfx/leaders/Generic/Portrait_Asia_Generic_new_2.tga"
+		}
+		democratic = {
+		}
+		fascism = { 
+		}
+		absolutist = {
+		}
+		neutrality = {
+		}
+		radical = {
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_sanzo_nosaka.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_kijuro_shidehara.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/idea_kingoro_hashimoto.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
+			"gfx/interface/ideas/idea_chuichi_nagumo.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_hino_kumazo.dds"
+			"gfx/interface/ideas/idea_fushimi_hiroyasu.dds"
+		}
+	}
 aborigine_polynesia = {
 	culture_groups = { oceanic }
 	
