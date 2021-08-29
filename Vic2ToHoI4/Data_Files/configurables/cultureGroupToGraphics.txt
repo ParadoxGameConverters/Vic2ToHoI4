@@ -2864,6 +2864,139 @@ indo_chinese_nesia = {
 	graphical_culture_2d = asian_2d
 }
 
+tungustic = {
+	cultures_and_groups = { manchu }
+	
+	army_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		#Fengtian
+		"gfx/leaders/Sino/Portrait_FNG_Wan_Fulin.tga"
+		"gfx/leaders/Sino/Portrait_FNG_Wang_Shuchang.tga"
+		"gfx/leaders/Sino/Portrait_FNG_Wu_Junsheng.tga"
+		"gfx/leaders/Sino/Portrait_FNG_Zhang_Haipeng.tga"
+		"gfx/leaders/Sino/Portrait_FNG_Zhang_Zuoxiang.tga"
+		"gfx/leaders/Asian_Steppe/Portrait_FNG_Ma_Zhanshan.tga"
+	}
+	navy_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_2.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_3.tga"
+		"gfx/leaders/Asian_Steppe/Portrait_FNG_Shen_Honglie.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Asian_Steppe/Portrait_FNG_Ma_Zhanshan.tga"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_1.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds"
+		} 
+		democratic = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"			
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
+			"gfx/leaders/CHI/portrait_chi_zhang_xueliang.dds"
+		} 
+		fascism = {
+			"gfx/leaders/Sino/Portrait_FNG_Zhang_Haipeng.tga"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds"
+		}
+		absolutist = {
+			"gfx/leaders/MAN/Portrait_Manchuria_Henry_Pu_Yi.dds"
+			"gfx/leaders/MAN/portrait_man_aisin_gioro_xiqia.dds"
+			"gfx/leaders/Sino/Portrait_China_Puyi.tga"
+			"gfx/leaders/Sino/Portrait_China_Pujie.tga"
+		}
+		neutrality = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_fascism.dds"
+			"gfx/leaders/Sino/Portrait_FNG_Zhang_Zuolin.tga"
+		} 
+		radical = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds"
+			"gfx/leaders/Sino/Portrait_FNG_Shen_Honglie.tga"
+		}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+			"gfx/leaders/MAN/portrait_man_yoshiko_kawashima.dds"
+		}
+		monarch = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+			"gfx/leaders/MAN/portrait_man_yoshiko_kawashima.dds"
+		}
+		ideological_leader = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+			"gfx/leaders/Asian_Steppe/Female/Portrait_TAN_Khertek_Anchimaa_Toka.tga"
+			"gfx/leaders/Sino/Female/Portrait_CHI_Soong_Ching_Ling.tga"
+			"gfx/leaders/Sino/Female/Portrait_LEC_Jiang_Qing.tga"
+		}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_prc_deng_xiaoping.dds"
+			"gfx/interface/ideas/idea_prc_zhou_enlai.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_chi_chen_cheng.dds"
+			"gfx/interface/ideas/idea_chi_chiang_ching_kuo.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_hideki_tojo.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
+			"gfx/interface/ideas/idea_hino_kumazo.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_1.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_2.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_4.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_6.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_7.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_8.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_male_9.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_2.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_4.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_6.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_7.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_8.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
+		"gfx/leaders/CHI/portrait_chi_yoshiko_kawashima.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/idea_man_low_legitimacy5.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/idea_man_low_legitimacy5.dds"
+	}
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
 sino = {
 	culture_groups = { east_asian }
 	
@@ -2979,11 +3112,11 @@ sino = {
 		
 	ideology_minister_portraits = {
 		communism = {
-			"gfx/interface/ideas/idea_generic_communist_asia.dds"
+			"gfx/interface/ideas/idea_prc_deng_xiaoping.dds"
 			"gfx/interface/ideas/idea_prc_zhou_enlai.dds"
 		}
 		democratic = {
-			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+			"gfx/interface/ideas/idea_chi_chen_cheng.dds"
 			"gfx/interface/ideas/idea_chi_chiang_ching_kuo.dds"
 		}
 		fascism = {
@@ -3024,10 +3157,10 @@ sino = {
 		"gfx/leaders/CHI/portrait_chi_yoshiko_kawashima.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/cambodia.dds"
+		"gfx/interface/goals/focus_man_claim_the_mandate_of_heaven.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/cambodia.dds"
+		"gfx/interface/goals/focus_man_claim_the_mandate_of_heaven.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3282,6 +3415,7 @@ paleosiberian = {
 		}
 		absolutist = {
 			"gfx/leaders/Korean_Japan/Portrait_Ainu_Generic_Absolutist_1.dds"
+			"gfx/leaders/Korean_Japan/Portrait_Ainu_Generic_Absolutist_2.dds"
 		}
 		neutrality = {
 			"gfx/leaders/Korean_Japan/Portrait_Ainu_Ukaji_Takashi.dds"
@@ -3292,6 +3426,16 @@ paleosiberian = {
 			"gfx/leaders/Korean_Japan/Portrait_Ainu_Ukaji_Takashi.dds"
 			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
 			"gfx/leaders/JAP/Portrait_Japan_Generic_2.dds"
+		}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+		}
+		monarch = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+		}
+		ideological_leader = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
 		}
 	}
 	ideology_minister_portraits = {
