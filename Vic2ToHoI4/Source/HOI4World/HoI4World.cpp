@@ -610,7 +610,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 
-		if (state.getCores().contains(owner->first))
+		if (state.getCores().contains(owner->first) && !state.isImpassable())
 		{
 			continue;
 		}
@@ -652,6 +652,10 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
 			{
 				state->second.addCores({dominionTag});
+				if (state->second.isImpassable())
+				{
+					state->second.removeCore(overlord->getTag());
+				}
 				state->second.setOwner(dominionTag);
 				dominion->addState(state->second);
 			}

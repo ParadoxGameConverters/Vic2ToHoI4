@@ -59,6 +59,7 @@ class State
 	void addNavalBase(int level, int location);
 	void smashNavalBases();
 	void addCores(const std::set<std::string>& newCores);
+	void removeCore(const std::string& theCore) { cores.erase(theCore); }
 	void addClaims(const std::set<std::string>& newClaims);
 	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
