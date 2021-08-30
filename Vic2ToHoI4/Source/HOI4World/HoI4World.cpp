@@ -584,10 +584,9 @@ std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(
 	 Names& names,
 	 Localisation& hoi4Localisations)
 {
-	if (dominions.contains(std::make_pair(ownerTag, region)))
+	if (const auto& dominionItr = dominions.find(std::make_pair(ownerTag, region)); dominionItr != dominions.end())
 	{
-		const auto& dominion = dominions.at(std::make_pair(ownerTag, region));
-		return std::make_pair(dominion->getTag(), dominion);
+		return std::make_pair(dominionItr->second->getTag(), dominionItr->second);
 	}
 
 	const auto dominionTag = countryMapperFactory.generateNewHoI4Tag();
