@@ -269,6 +269,15 @@ bool HoI4::Localisation::addNeutralLocalisation(const std::pair<const std::strin
 				 nameInLanguage.second,
 				 hoi4Suffix,
 				 articleRules);
+
+			// For collaboration governments using non-ideological keys
+			newKey = tags.second + vic2Suffix;
+			addLocalisation(newKey,
+				 nameInLanguage.first,
+				 existingLanguage->second,
+				 nameInLanguage.second,
+				 hoi4Suffix,
+				 articleRules);
 		}
 		return true;
 	}
