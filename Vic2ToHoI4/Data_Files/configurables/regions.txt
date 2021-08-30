@@ -786,6 +786,10 @@ eastern_africa = {
 		13072
 		# Seychelles (709)
 		2188
+		# Rwanda (768)
+		9962
+		# Burundi (769)
+		2220
 		# Malawi (770)
 		2255 12908 12986 13209
 		# Zambia (771)
