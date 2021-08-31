@@ -1553,6 +1553,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Relations.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Rebellions\RebellionTests.cpp">
+      <Filter>Vic2WorldTests\Rebellions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Rebellions\RebellionFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Rebellions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Rebellions\Rebellion.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Rebellions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2079,6 +2088,12 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\common items\ModLoader">
       <UniqueIdentifier>{b7736806-a5dc-4af5-bc5c-240a5ec89f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Rebellions">
+      <UniqueIdentifier>{c3606a2f-ccf0-467e-8511-86a53425a278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Rebellions">
+      <UniqueIdentifier>{34942160-01c6-407a-b7e4-d17f11942dea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3065,6 +3080,12 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Rebellions\Rebellion.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Rebellions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Rebellions\RebellionFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Rebellions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@
 #include "V2World/Issues/IssuesFactory.h"
 #include "V2World/Localisations/LocalisationsFactory.h"
 #include "V2World/Pops/PopFactory.h"
+#include "V2World/Rebellions/RebellionFactory.h"
 #include "V2World/States/StateDefinitionsFactory.h"
 #include "V2World/States/StateLanguageCategoriesFactory.h"
 
@@ -64,6 +65,9 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 	});
 	registerKeyword("active_war", [this](std::istream& theStream) {
 		wars.push_back(warFactory.getWar(theStream));
+	});
+	registerKeyword("rebel_faction", [this](std::istream& theStream) {
+		world->rebellions.push_back(*Rebellion::Factory().importRebellion(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

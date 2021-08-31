@@ -286,6 +286,9 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{b58e7fd9-09ad-40ad-a06a-719749bafa61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Rebellions">
+      <UniqueIdentifier>{ceb58a29-aaa5-4212-8b09-9b1f6bb0c61d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1314,6 +1317,12 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Relations.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Rebellions\RebellionFactory.cpp">
+      <Filter>Vic2World\Rebellions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Rebellions\Rebellion.cpp">
+      <Filter>Vic2World\Rebellions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2582,6 +2591,12 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\FactionName\FactionNameMappingFactory.h">
       <Filter>Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Rebellions\Rebellion.h">
+      <Filter>Vic2World\Rebellions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Rebellions\RebellionFactory.h">
+      <Filter>Vic2World\Rebellions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

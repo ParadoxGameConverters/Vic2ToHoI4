@@ -365,6 +365,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\ProvinceFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Rebellions\Rebellion.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Rebellions\RebellionFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\BuildingReader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitions.cpp" />
@@ -542,6 +544,7 @@
     <ClCompile Include="Vic2WorldTests\Provinces\ProvinceBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Provinces\ProvinceFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Provinces\ProvinceTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Rebellions\RebellionTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\BuildingTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsTests.cpp" />
@@ -977,6 +980,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Provinces\ProvinceBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Provinces\ProvinceFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Rebellions\Rebellion.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Rebellions\RebellionFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\BuildingReader.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\State.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateBuilder.h" />

@@ -8,6 +8,7 @@
 #include "V2World/Diplomacy/Diplomacy.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Provinces/Province.h"
+#include "V2World/Rebellions/Rebellion.h"
 #include "V2World/States/StateDefinitions.h"
 #include <map>
 #include <memory>
@@ -37,6 +38,7 @@ class World
 	[[nodiscard]] const auto& getStateDefinitions() const { return *theStateDefinitions; }
 	[[nodiscard]] const auto& getLocalisations() const { return *theLocalisations; }
 	[[nodiscard]] const auto& getDate() const { return *theDate; }
+	[[nodiscard]] const auto& getRebellions() const { return rebellions; }
 
   private:
 	std::map<int, std::shared_ptr<Province>> provinces;
@@ -46,6 +48,7 @@ class World
 	std::unique_ptr<StateDefinitions> theStateDefinitions;
 	std::unique_ptr<Localisations> theLocalisations;
 	std::unique_ptr<date> theDate;
+	std::vector<Rebellion> rebellions;
 };
 
 
