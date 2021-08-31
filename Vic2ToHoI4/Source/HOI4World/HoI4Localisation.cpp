@@ -1,5 +1,6 @@
 #include "HoI4Localisation.h"
 #include "Configuration.h"
+#include "HoI4Country.h"
 #include "Localisations/AllReplacementRules.h"
 #include "Log.h"
 #include "Mappers/Government/GovernmentMapper.h"
@@ -12,6 +13,56 @@
 #include "V2World/States/StateDefinitions.h"
 #include <fstream>
 
+
+namespace
+{
+std::optional<Vic2::LanguageToLocalisationMap> getConfigurableDominionNames(
+	 const Vic2::Localisations& vic2Localisations,
+	 const std::string& region,
+	 const std::string& cultureGroup,
+	 const std::string& culture,
+	 const std::string& government)
+{
+	if (const auto localisations =
+			  vic2Localisations.getTextInEachLanguage("dom_" + cultureGroup + "_" + government + "_" + region);
+		 !localisations.empty())
+	{
+		return localisations;
+	}
+
+	if (const auto localisations = vic2Localisations.getTextInEachLanguage("dom_" + cultureGroup + "_" + region);
+		 !localisations.empty())
+	{
+		return localisations;
+	}
+
+	if (const auto localisations =
+			  vic2Localisations.getTextInEachLanguage("dom_" + culture + "_" + government + "_" + region);
+		 !localisations.empty())
+	{
+		return localisations;
+	}
+
+	if (const auto localisations = vic2Localisations.getTextInEachLanguage("dom_" + culture + "_" + region);
+		 !localisations.empty())
+	{
+		return localisations;
+	}
+
+	if (const auto localisations = vic2Localisations.getTextInEachLanguage("dom_" + government + "_" + region);
+		 !localisations.empty())
+	{
+		return localisations;
+	}
+
+	if (const auto localisations = vic2Localisations.getTextInEachLanguage("dom_" + region); !localisations.empty())
+	{
+		return localisations;
+	}
+
+	return std::nullopt;
+}
+} // namespace
 
 
 std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocalisations(
@@ -328,13 +379,15 @@ void HoI4::Localisation::addLocalisation(const std::string& newKey,
 
 
 void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string& tag,
-	 const std::string& region,
+	 const Country& dominion,
 	 const std::string& ownerOldTag,
 	 const Vic2::Localisations& vic2Localisations,
 	 const Mappers::CountryNameMapper& countryNameMapper,
 	 const std::set<std::string>& majorIdeologies,
 	 const ArticleRules& articleRules)
 {
+	const auto region = dominion.getRegion();
+
 	for (const auto& ideology: majorIdeologies)
 	{
 		const auto vic2Government = countryNameMapper.getVic2Government(ideology, ownerOldTag);
@@ -343,19 +396,37 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 			continue;
 		}
 
-		auto localisationsForGovernment =
-			 vic2Localisations.getTextInEachLanguage(ownerOldTag + "_" + *vic2Government + "_ADJ");
-		if (localisationsForGovernment.empty())
+		Vic2::LanguageToLocalisationMap localisationsForGovernment;
+		if (auto possibleConfigurableDominionNames = getConfigurableDominionNames(vic2Localisations,
+				  region,
+				  dominion.getPrimaryCultureGroup(),
+				  dominion.getPrimaryCulture(),
+				  *vic2Government);
+			 possibleConfigurableDominionNames)
 		{
-			localisationsForGovernment = vic2Localisations.getTextInEachLanguage(ownerOldTag + "_ADJ");
-		}
-		for (auto& [language, localisation]: localisationsForGovernment)
-		{
-			if (const auto& secondPart = vic2Localisations.getTextInLanguage(region, language); secondPart)
+			for (auto& [language, localisation]: *possibleConfigurableDominionNames)
 			{
-				localisation += " " + *secondPart;
+				localisationsForGovernment.emplace(language, localisation);
 			}
 		}
+		else
+		{
+
+			localisationsForGovernment =
+				 vic2Localisations.getTextInEachLanguage(ownerOldTag + "_" + *vic2Government + "_ADJ");
+			if (localisationsForGovernment.empty())
+			{
+				localisationsForGovernment = vic2Localisations.getTextInEachLanguage(ownerOldTag + "_ADJ");
+			}
+			for (auto& [language, localisation]: localisationsForGovernment)
+			{
+				if (const auto& secondPart = vic2Localisations.getTextInLanguage(region, language); secondPart)
+				{
+					localisation += " " + *secondPart;
+				}
+			}
+		}
+
 		addLocalisationsInAllLanguages(tag, "", "_DEF", ideology, localisationsForGovernment, articleRules);
 		if (localisationsForGovernment.empty())
 		{
