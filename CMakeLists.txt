@@ -430,6 +430,7 @@ configure_file("${DATA_FILE_DIR}/configurables/tech_mappings.txt" "${CONVERTER_O
 configure_file("${DATA_FILE_DIR}/configurables/The Concert of Europe_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/The Concert of Europe_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/unit_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/unit_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/Vic2Localisations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/Vic2Localisations.csv" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/dominions.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/dominions.csv" COPYONLY)
 file(COPY "${DATA_FILE_DIR}/blankMod" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
 file(COPY "${DATA_FILE_DIR}/flags" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
 add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > Release-Linux/commit_id.txt)
