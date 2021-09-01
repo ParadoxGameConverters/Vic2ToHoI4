@@ -21,10 +21,10 @@ std::optional<Vic2::LanguageToLocalisationMap> getConfigurableDominionNames(
 	 const std::string& region,
 	 const std::string& cultureGroup,
 	 const std::string& culture,
-	 const std::string& government)
+	 const std::string& ideology)
 {
 	if (const auto localisations =
-			  vic2Localisations.getTextInEachLanguage("dom_" + cultureGroup + "_" + government + "_" + region);
+			  vic2Localisations.getTextInEachLanguage("dom_" + cultureGroup + "_" + ideology + "_" + region);
 		 !localisations.empty())
 	{
 		return localisations;
@@ -37,7 +37,7 @@ std::optional<Vic2::LanguageToLocalisationMap> getConfigurableDominionNames(
 	}
 
 	if (const auto localisations =
-			  vic2Localisations.getTextInEachLanguage("dom_" + culture + "_" + government + "_" + region);
+			  vic2Localisations.getTextInEachLanguage("dom_" + culture + "_" + ideology + "_" + region);
 		 !localisations.empty())
 	{
 		return localisations;
@@ -49,7 +49,7 @@ std::optional<Vic2::LanguageToLocalisationMap> getConfigurableDominionNames(
 		return localisations;
 	}
 
-	if (const auto localisations = vic2Localisations.getTextInEachLanguage("dom_" + government + "_" + region);
+	if (const auto localisations = vic2Localisations.getTextInEachLanguage("dom_" + ideology + "_" + region);
 		 !localisations.empty())
 	{
 		return localisations;
@@ -413,7 +413,7 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 				  region,
 				  dominion.getPrimaryCultureGroup(),
 				  dominion.getPrimaryCulture(),
-				  *vic2Government);
+				  ideology);
 			 possibleConfigurableDominionNames)
 		{
 			for (auto& [language, localisation]: *possibleConfigurableDominionNames)
