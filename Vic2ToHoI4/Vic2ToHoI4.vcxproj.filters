@@ -286,6 +286,9 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{b58e7fd9-09ad-40ad-a06a-719749bafa61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files\Configurables\Vic2Localisations">
+      <UniqueIdentifier>{08285fb8-fe10-4ea0-bbe2-ce589a5043b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -2732,9 +2735,6 @@
     <CopyFileToFolders Include="Data_Files\Configurables\unit_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\Vic2Localisations.csv">
-      <Filter>Data Files\Configurables</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\research_bonus_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
@@ -2818,6 +2818,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="..\Resources\vcruntime140_1.dll">
       <Filter>Resources</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\Vic2Localisations\Vic2Localisations.csv">
+      <Filter>Data Files\Configurables\Vic2Localisations</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
