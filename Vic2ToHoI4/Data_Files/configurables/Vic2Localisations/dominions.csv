@@ -10,9 +10,10 @@
 #
 
 # Examples:
-dom_western_africa;Test Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
-dom_communism_western_africa;Test Communist Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
-dom_british_western_africa;Test $OVERLORD_ADJ$ Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
-dom_british_communism_western_africa;Test $OVERLORD_ADJ$ Communist Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
-dom_scandinavian_western_africa;Test $OVERLORD$ Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
-dom_scandinavian_communism_western_africa;Test $OVERLORD$ Communist Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
+#dom_western_africa;Test Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
+#dom_communism_western_africa;Test Communist Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
+#dom_british_western_africa;Test $OVERLORD_ADJ$ Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
+#dom_british_communism_western_africa;Test $OVERLORD_ADJ$ Communist Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
+#dom_scandinavian_western_africa;Test $OVERLORD$ Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
+#dom_scandinavian_communism_western_africa;Test $OVERLORD$ Communist Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Western Africa;Áàâèòè;Western Africa;x
+
