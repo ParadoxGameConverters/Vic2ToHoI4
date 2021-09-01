@@ -396,6 +396,18 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 			continue;
 		}
 
+		auto ownerNames = vic2Localisations.getTextInEachLanguage(ownerOldTag + "_" + *vic2Government);
+		if (ownerNames.empty())
+		{
+			ownerNames = vic2Localisations.getTextInEachLanguage(ownerOldTag);
+		}
+		auto ownerAdjectives = 
+			 vic2Localisations.getTextInEachLanguage(ownerOldTag + "_" + *vic2Government + "_ADJ");
+		if (ownerAdjectives.empty())
+		{
+			ownerAdjectives = vic2Localisations.getTextInEachLanguage(ownerOldTag + "_ADJ");
+		}
+
 		Vic2::LanguageToLocalisationMap localisationsForGovernment;
 		if (auto possibleConfigurableDominionNames = getConfigurableDominionNames(vic2Localisations,
 				  region,
@@ -406,6 +418,21 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 		{
 			for (auto& [language, localisation]: *possibleConfigurableDominionNames)
 			{
+				if (const auto ownerName = ownerNames.find(language); ownerName != ownerNames.end())
+				{
+					while (localisation.find("$OVERLORD$") != std::string::npos)
+					{
+						localisation.replace(localisation.find("$OVERLORD$"), 10, ownerName->second);
+					}
+				}
+				if (const auto ownerAdjective = ownerAdjectives.find(language); ownerAdjective != ownerAdjectives.end())
+				{
+					while (localisation.find("$OVERLORD_ADJ$") != std::string::npos)
+					{
+						localisation.replace(localisation.find("$OVERLORD_ADJ$"), 14, ownerAdjective->second);
+					}
+				}
+				
 				localisationsForGovernment.emplace(language, localisation);
 			}
 		}
