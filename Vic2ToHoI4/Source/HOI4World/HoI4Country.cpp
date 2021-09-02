@@ -162,8 +162,6 @@ HoI4::Country::Country(const std::shared_ptr<Country> owner,
 		adjective = *regionAdjective;
 	}
 
-	determineFilename();
-
 	auto hsv = color.getHsvComponents();
 	if (hsv[2] > 0.2F)
 	{
@@ -662,6 +660,7 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
 void HoI4::Country::addTag(const std::shared_ptr<Country> owner, const std::string& tag_)
 {
 	tag = tag_;
+	determineFilename();
 	if (owner->hasMonarchIdea())
 	{
 		ideas.insert(owner->tag + "_monarch");
