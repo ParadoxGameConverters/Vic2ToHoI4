@@ -49,7 +49,7 @@ link = { vic = CZH hoi = CZE } # Czechoslovakia
 link = { vic = BOH hoi = CZE } # Bohemia-Moravia => Czechoslovakia
 link = { vic = CYP hoi = CYP } # Cyprus
 link = { vic = DAH hoi = DAH } # Dahomey
-link = { vic = SGF hoi = DDR } # South => East Germany
+#link = { vic = SGF hoi = DDR } # South => East Germany
 link = { vic = DEN hoi = DEN } # Denmark
 link = { vic = DJI hoi = DJI } # Djibouti
 link = { vic = DOM hoi = DOM } # Dominican Republic
@@ -221,7 +221,7 @@ link = { vic = VNZ hoi = VEN } # Venezuela
 link = { vic = DAI hoi = VIN } # Vietnam
 link = { vic = MOS hoi = VOL } # Mossi Kingdom => Upper Volta
 link = { vic = WSH hoi = WES } # Western Sahara
-link = { vic = NGF hoi = WGR } # North => West Germany
+#link = { vic = NGF hoi = WGR } # North => West Germany
 link = { vic = WHA hoi = WLS } # Wales
 link = { vic = WUR hoi = WUR } # Württemberg
 link = { vic = XBI hoi = XSM } # Xibei San Ma
