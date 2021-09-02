@@ -522,8 +522,6 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		auto dominion = getDominion(owner->first,
 			 owner->second,
 			 *stateRegion,
-			 countries,
-			 countryMapperFactory,
 			 *theRegions,
 			 *graphicsMapper,
 			 *names,
@@ -539,7 +537,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		{
 			continue;
 		}
-		if (!dominionIsReleasable(*dominion, *overlord))
+		if (!dominionIsReleasable(*dominion))
 		{
 			continue;
 		}
@@ -548,8 +546,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		dominion->addTag(*overlord, dominionTag);
 		countries.emplace(dominionTag, dominion);
 
-		const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion());
-		if (dominionLevel)
+		if (const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion()); dominionLevel)
 		{
 			overlord->addPuppet(dominionTag, *dominionLevel);
 		}
@@ -576,10 +573,8 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 
 
 std::shared_ptr<HoI4::Country> HoI4::World::getDominion(const std::string& ownerTag,
-	 const std::shared_ptr<Country> owner,
+	 const std::shared_ptr<Country>& owner,
 	 const std::string& region,
-	 std::map<std::string, std::shared_ptr<Country>>& countries,
-	 Mappers::CountryMapper::Factory& countryMapperFactory,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names,
@@ -597,7 +592,7 @@ std::shared_ptr<HoI4::Country> HoI4::World::getDominion(const std::string& owner
 }
 
 
-bool HoI4::World::dominionIsReleasable(const Country& dominion, const Country& overlord)
+bool HoI4::World::dominionIsReleasable(const Country& dominion)
 {
 	return dominion.getCoreStates().size() > 1;
 }
