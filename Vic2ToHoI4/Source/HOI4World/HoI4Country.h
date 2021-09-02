@@ -71,7 +71,7 @@ class Country
 		 Names& names,
 		 Localisation& hoi4Localisations);
 
-	void addTag(const std::shared_ptr<Country> owner, const std::string& tag_);
+	void addTag(const Country& owner, const std::string& tag_);
 	void determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
