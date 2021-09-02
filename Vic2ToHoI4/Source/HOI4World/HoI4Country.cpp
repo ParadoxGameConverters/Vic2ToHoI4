@@ -130,21 +130,20 @@ HoI4::Country::Country(std::string tag,
 }
 
 
-HoI4::Country::Country(const std::string& tag_,
-	 const std::shared_ptr<Country> owner,
+HoI4::Country::Country(const std::shared_ptr<Country> owner,
 	 const std::string& region_,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names,
 	 Localisation& hoi4Localisations):
-	 tag(tag_),
-	 primaryCulture(owner->primaryCulture), primaryCultureGroup(owner->primaryCultureGroup), civilized(owner->civilized),
-	 rulingParty(owner->rulingParty), parties(owner->parties), upperHouseComposition(owner->upperHouseComposition),
-	 lastElection(owner->lastElection), color(owner->color), graphicalCulture(owner->graphicalCulture),
-	 graphicalCulture2d(owner->graphicalCulture2d), warSupport(owner->warSupport),
-	 oldTechnologiesAndInventions(owner->oldTechnologiesAndInventions), atWar(owner->atWar), shipNames(owner->shipNames),
-	 generatedDominion(true), region(region_), puppetMaster(owner), puppetMasterOldTag(owner->getOldTag()),
-	 governmentIdeology(owner->getGovernmentIdeology()), leaderIdeology(owner->getLeaderIdeology()), oldCapital(-1)
+	 primaryCulture(owner->primaryCulture),
+	 primaryCultureGroup(owner->primaryCultureGroup), civilized(owner->civilized), rulingParty(owner->rulingParty),
+	 parties(owner->parties), upperHouseComposition(owner->upperHouseComposition), lastElection(owner->lastElection),
+	 color(owner->color), graphicalCulture(owner->graphicalCulture), graphicalCulture2d(owner->graphicalCulture2d),
+	 warSupport(owner->warSupport), oldTechnologiesAndInventions(owner->oldTechnologiesAndInventions),
+	 atWar(owner->atWar), shipNames(owner->shipNames), generatedDominion(true), region(region_), puppetMaster(owner),
+	 puppetMasterOldTag(owner->getOldTag()), governmentIdeology(owner->getGovernmentIdeology()),
+	 leaderIdeology(owner->getLeaderIdeology()), oldCapital(-1)
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
@@ -162,8 +161,6 @@ HoI4::Country::Country(const std::string& tag_,
 	{
 		adjective = *regionAdjective;
 	}
-
-	determineFilename();
 
 	auto hsv = color.getHsvComponents();
 	if (hsv[2] > 0.2F)
@@ -201,11 +198,6 @@ HoI4::Country::Country(const std::string& tag_,
 
 
 	initIdeas(names, hoi4Localisations);
-	if (owner->hasMonarchIdea())
-	{
-		ideas.insert(owner->tag + "_monarch");
-	}
-
 	createOperatives(graphicsMapper, names);
 
 	convertLaws();
@@ -661,6 +653,17 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
 	{
 		War theWar(sourceWar, countryMap, casusBellis, provinceMapper, provinceToStateIDMap);
 		wars.push_back(theWar);
+	}
+}
+
+
+void HoI4::Country::addTag(const Country& owner, const std::string& tag_)
+{
+	tag = tag_;
+	determineFilename();
+	if (owner.hasMonarchIdea())
+	{
+		ideas.insert(owner.tag + "_monarch");
 	}
 }
 
