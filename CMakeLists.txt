@@ -754,7 +754,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Leaders/HoI4CountryLeaders.txt" "${TES
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ArticleRules.txt" "${TEST_OUTPUT_DIRECTORY}/ArticleRules.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/grammar.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/grammar.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/BaseLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/localisation/BaseLocalisations.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ConverterLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ConverterLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/Vic2Localisations.csv" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/EmptyLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/BlankLocalisations/localisation/EmptyLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ModLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/modLocalisations/localisation/ModLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Localisations/StateCategories.txt" COPYONLY)
