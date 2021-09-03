@@ -8,6 +8,7 @@
 #include "Mappers/FactionName/FactionNameMapper.h"
 #include "Parser.h"
 #include "V2World/Politics/Party.h"
+#include "V2World/Rebellions/Rebellion.h"
 #include <map>
 #include <set>
 #include <string>
@@ -61,6 +62,10 @@ class Events: commonItems::parser
 	void importCapitulationEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
 	void importMtgNavalTreatyEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
 	void importLarOccupationEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
+	void createCivilWarEvent(const std::string& tag,
+		 std::set<std::string> occupiedStates,
+		 const Vic2::Rebellion& rebellion,
+		 OnActions& onActions);
 
 	void giveGovernmentInExileEvent(Event&& gieEvent) { governmentInExileEvent = gieEvent; }
 
@@ -80,6 +85,7 @@ class Events: commonItems::parser
 	[[nodiscard]] const auto& getCapitulationEvents() const { return capitulationEvents; }
 	[[nodiscard]] const auto& getMtgNavalTreatyEvents() const { return mtgNavalTreatyEvents; }
 	[[nodiscard]] const auto& getLarOccupationEvents() const { return larOccupationEvents; }
+	[[nodiscard]] const auto& getCivilWarEvents() const { return civilWarEvents; }
 
   private:
 	void addOnTheRise(const std::set<std::string>& majorIdeologies, Localisation& localisation);
@@ -108,6 +114,8 @@ class Events: commonItems::parser
 	std::vector<Event> capitulationEvents;
 	std::vector<Event> mtgNavalTreatyEvents;
 	std::vector<Event> larOccupationEvents;
+	std::vector<Event> civilWarEvents;
+	int civilWarEventsNumber = 1;
 
 	std::map<std::string, int> eventNumbers;
 };

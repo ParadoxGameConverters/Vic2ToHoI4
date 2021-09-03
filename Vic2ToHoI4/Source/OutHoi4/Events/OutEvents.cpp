@@ -43,6 +43,7 @@ void HoI4::outputEvents(const Events& theEvents, const std::string& outputName)
 		 theEvents.getMtgNavalTreatyEvents(),
 		 outputName);
 	outputActualEvents("LAR_occupation.txt", "occupied_countries", theEvents.getLarOccupationEvents(), outputName);
+	outputActualEvents("converterCivilWars.txt", "civil_wars", theEvents.getCivilWarEvents(), outputName);
 }
 
 

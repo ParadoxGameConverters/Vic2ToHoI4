@@ -230,6 +230,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	operations->updateOperations(ideologies->getMajorIdeologies());
 
 	soundEffects = SoundEffectsFactory().createSoundEffects(countries);
+	convertRebellions(sourceWorld, *onActions, *countryMap, provinceMapper, states->getProvinceToStateIDMap());
 }
 
 
@@ -1404,7 +1405,7 @@ std::set<std::string> HoI4::World::getSouthAsianCountries() const
 
 void HoI4::World::addProvincesToHomeAreas()
 {
-	Log(LogLevel::Info) << "Adding provinces to home areas";
+	Log(LogLevel::Info) << "\tAdding provinces to home areas";
 	for (const auto& country: landedCountries | std::views::values)
 	{
 		const auto& capital = country->getCapitalProvince();
@@ -1414,4 +1415,138 @@ void HoI4::World::addProvincesToHomeAreas()
 		}
 		country->addProvincesToHomeArea(*capital, theMapData, states->getStates(), states->getProvinceToStateIDMap());
 	}
+}
+
+
+void HoI4::World::convertRebellions(const Vic2::World& sourceWorld,
+	 OnActions& onActions,
+	 const Mappers::CountryMapper& countryMapper,
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const std::map<int, int>& provinceToStateIDMap)
+{
+	Log(LogLevel::Info) << "\tConverting rebellions";
+	for (const auto& rebellion: sourceWorld.getRebellions())
+	{
+		const auto& hoi4Tag = countryMap->getHoI4Tag(rebellion.getCountry());
+		if (!hoi4Tag)
+		{
+			continue;
+		}
+		const auto& countryItr = countries.find(*hoi4Tag);
+		if (countryItr == countries.end())
+		{
+			continue;
+		}
+		if (!rebellion.getIdeology())
+		{
+			continue;
+		}
+		if (!getMajorIdeologies().contains(*rebellion.getIdeology()))
+		{
+			continue;
+		}
+		if (rebellion.getProvinces().empty())
+		{
+			continue;
+		}
+		const auto& occupationRatios =
+			 getOccupationRatios(rebellion, sourceWorld.getStateDefinitions(), sourceWorld.getProvinces());
+		const auto& occupiedStates = getOccupiedStates(countryItr->second,
+			 rebellion.getProvinces(),
+			 provinceMapper,
+			 provinceToStateIDMap,
+			 occupationRatios);
+
+		events->createCivilWarEvent(*hoi4Tag, occupiedStates, rebellion, onActions);
+	}
+}
+
+
+std::map<int, float> HoI4::World::getOccupationRatios(const Vic2::Rebellion& rebellion,
+	 const Vic2::StateDefinitions& stateDefinitions,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces)
+{
+	std::map<int, float> ratios;
+	const auto& provinces = rebellion.getProvinces();
+	for (const auto& province: provinces)
+	{
+		std::set<int> ownedProvinces;
+		for (const auto& provinceId: stateDefinitions.getAllProvinces(province))
+		{
+			if (const auto& provinceItr = vic2Provinces.find(provinceId);
+				 provinceItr != vic2Provinces.end() && provinceItr->second->getOwner() == rebellion.getCountry())
+			{
+				ownedProvinces.insert(provinceId);
+			}
+		}
+		int numOccupied = 0;
+		for (const auto& province: ownedProvinces)
+		{
+			if (std::find(provinces.begin(), provinces.end(), province) != provinces.end())
+			{
+				numOccupied++;
+			}
+		}
+		ratios[province] = static_cast<float>(numOccupied) / ownedProvinces.size();
+	}
+
+	return ratios;
+}
+
+
+constexpr float requiredOccupationPercentage = 0.5;
+
+std::set<std::string> HoI4::World::getOccupiedStates(const std::shared_ptr<HoI4::Country>& country,
+	 const std::vector<int>& srcProvinces,
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const std::map<int, int>& provinceToStateIDMap,
+	 const std::map<int, float>& occupationRatios)
+{
+	std::set<std::string> occupiedStates;
+	std::set<int> partiallyOccupiedStates;
+
+	for (const auto& srcProvince: srcProvinces)
+	{
+		const auto& mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(srcProvince);
+		if (mapping.empty())
+		{
+			continue;
+		}
+		const auto& hoi4StateIdItr = provinceToStateIDMap.find(*mapping.begin());
+		if (hoi4StateIdItr == provinceToStateIDMap.end())
+		{
+			continue;
+		}
+		const auto& hoi4StateId = hoi4StateIdItr->second;
+		const auto& hoi4StateItr = states->getStates().find(hoi4StateId);
+		if (hoi4StateItr == states->getStates().end())
+		{
+			continue;
+		}
+		const auto& hoi4State = hoi4StateItr->second;
+		if (const auto& owner = hoi4State.getOwner(); owner != country->getTag())
+		{
+			continue;
+		}
+
+		partiallyOccupiedStates.insert(hoi4StateId);
+
+		if (occupationRatios.contains(srcProvince) && occupationRatios.at(srcProvince) > requiredOccupationPercentage)
+		{
+			occupiedStates.insert(std::to_string(hoi4StateId));
+		}
+	}
+
+	if (occupiedStates.empty())
+	{
+		for (const auto& hoi4StateId: partiallyOccupiedStates)
+		{
+			if (country->getCapitalState() != hoi4StateId)
+			{
+				occupiedStates.insert(std::to_string(hoi4StateId));
+				break;
+			}
+		}
+	}
+	return occupiedStates;
 }

@@ -1632,3 +1632,52 @@ void HoI4::Events::importLarOccupationEvents(const Configuration& theConfigurati
 		}
 	}
 }
+
+
+void HoI4::Events::createCivilWarEvent(const std::string& tag,
+	 std::set<std::string> occupiedStates,
+	 const Vic2::Rebellion& rebellion,
+	 OnActions& onActions)
+{
+	const auto& rebelIdeology = rebellion.getIdeology();
+	if (!rebelIdeology)
+	{
+		return;
+	}
+
+	Event civilWarEvent;
+	civilWarEvent.giveType("country_event");
+	civilWarEvent.giveId("civil_wars." + std::to_string(civilWarEventsNumber));
+	civilWarEvent.giveTitle("none");
+	civilWarEvent.giveDescription("= none");
+	civilWarEvent.givePicture("none");
+	civilWarEvent.setHidden();
+	civilWarEvent.setFireOnlyOnce();
+	civilWarEvent.setTriggeredOnly();
+
+	std::string immediate;
+	immediate = "{\n";
+	immediate += "\t\tstart_civil_war = {\n";
+	immediate += "\t\t\tideology = " + *rebelIdeology + "\n";
+	immediate += "\t\t\tsize = 0.1\n";
+	if (!occupiedStates.empty())
+	{
+		immediate += "\t\t\tstates = {";
+		for (const auto& state: occupiedStates)
+		{
+			immediate += " " + state;
+		}
+		immediate += " }\n";
+	}
+	immediate += "\t\t}\n";
+	immediate += "\t}\n";
+	civilWarEvent.giveImmediate(std::move(immediate));
+
+	EventOption option;
+	option.giveName("none");
+	civilWarEvent.giveOption(std::move(option));
+
+	civilWarEvents.push_back(civilWarEvent);
+	onActions.addCivilWarEvent(tag, "civil_wars." + std::to_string(civilWarEventsNumber));
+	civilWarEventsNumber++;
+}

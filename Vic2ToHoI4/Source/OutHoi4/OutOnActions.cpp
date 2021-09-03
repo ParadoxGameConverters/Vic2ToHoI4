@@ -133,6 +133,10 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	{
 		onActionsFile << "\t\t\t" << tag << " = { country_event = " << focusId << ".1 }\n";
 	}
+	for (const auto& [tag, eventId]: onActions.getCivilWarEvents())
+	{
+		onActionsFile << "\t\t\t" << tag << " = { country_event = " << eventId << " }\n";
+	}
 	onActionsFile << "\t\t}\n";
 	onActionsFile << "\t}\n";
 

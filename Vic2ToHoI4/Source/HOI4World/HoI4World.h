@@ -205,6 +205,19 @@ class World: commonItems::parser
 
 	bool dominionIsReleasable(const Country& dominion, const Country& overlord);
 	void addProvincesToHomeAreas();
+	void convertRebellions(const Vic2::World& sourceWorld,
+		 OnActions& onActions,
+		 const Mappers::CountryMapper& countryMapper,
+		 const Mappers::ProvinceMapper& provinceMapper,
+		 const std::map<int, int>& provinceToStateIDMap);
+	std::map<int, float> getOccupationRatios(const Vic2::Rebellion& rebellion,
+		 const Vic2::StateDefinitions& stateDefinitions,
+		 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces);
+	std::set<std::string> getOccupiedStates(const std::shared_ptr<HoI4::Country>& country,
+		 const std::vector<int>& srcProvinces,
+		 const Mappers::ProvinceMapper& provinceMapper,
+		 const std::map<int, int>& provinceToStateIDMap,
+		 const std::map<int, float>& occupationRatios);
 
 	// vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
 	// HoI4AdjacencyMap);

@@ -27,6 +27,7 @@ class Event: commonItems::parser
 	void givePicture(std::string&& newPicture) { picture = newPicture; }
 	void setMajor() { majorEvent = true; }
 	void setTriggeredOnly() { triggeredOnly = true; }
+	void setHidden() { hidden = true; }
 	void giveTrigger(std::string&& newTrigger) { trigger = newTrigger; }
 	void setFireOnlyOnce() { fireOnlyOnce = true; }
 	void giveMeanTimeToHappen(std::string&& newMttH) { meanTimeToHappen = newMttH; }
