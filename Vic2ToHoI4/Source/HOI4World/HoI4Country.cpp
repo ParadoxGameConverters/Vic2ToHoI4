@@ -33,7 +33,7 @@ HoI4::Country::Country(std::string tag,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
 	 const States& worldStates):
 	 tag(std::move(tag)),
-	 name(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
+	 name_(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
 	 oldCapital(sourceCountry.getCapital()), primaryCulture(sourceCountry.getPrimaryCulture()),
 	 civilized(sourceCountry.isCivilized()), primaryCultureGroup(sourceCountry.getPrimaryCultureGroup()),
@@ -130,40 +130,34 @@ HoI4::Country::Country(std::string tag,
 }
 
 
-HoI4::Country::Country(const std::string& tag_,
-	 const std::shared_ptr<Country> owner,
+HoI4::Country::Country(const std::shared_ptr<Country> owner,
 	 const std::string& region_,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names,
 	 Localisation& hoi4Localisations):
-	 tag(tag_),
-	 primaryCulture(owner->primaryCulture), primaryCultureGroup(owner->primaryCultureGroup), civilized(owner->civilized),
-	 rulingParty(owner->rulingParty), parties(owner->parties), upperHouseComposition(owner->upperHouseComposition),
-	 lastElection(owner->lastElection), color(owner->color), graphicalCulture(owner->graphicalCulture),
-	 graphicalCulture2d(owner->graphicalCulture2d), warSupport(owner->warSupport),
-	 oldTechnologiesAndInventions(owner->oldTechnologiesAndInventions), atWar(owner->atWar), shipNames(owner->shipNames),
-	 generatedDominion(true), region(region_), puppetMaster(owner), puppetMasterOldTag(owner->getOldTag()),
-	 governmentIdeology(owner->getGovernmentIdeology()), leaderIdeology(owner->getLeaderIdeology()), oldCapital(-1)
+	 primaryCulture(owner->primaryCulture),
+	 primaryCultureGroup(owner->primaryCultureGroup), civilized(owner->civilized), rulingParty(owner->rulingParty),
+	 parties(owner->parties), upperHouseComposition(owner->upperHouseComposition), lastElection(owner->lastElection),
+	 color(owner->color), graphicalCulture(owner->graphicalCulture), graphicalCulture2d(owner->graphicalCulture2d),
+	 warSupport(owner->warSupport), oldTechnologiesAndInventions(owner->oldTechnologiesAndInventions),
+	 atWar(owner->atWar), shipNames(owner->shipNames), generatedDominion(true), region(region_), puppetMaster(owner),
+	 puppetMasterOldTag(owner->getOldTag()), governmentIdeology(owner->getGovernmentIdeology()),
+	 leaderIdeology(owner->getLeaderIdeology()), oldCapital(-1)
 {
-	if (const auto& regionName = regions.getRegionName(region); regionName)
+	if (const auto& ownerAdjective = owner->adjective; ownerAdjective)
 	{
-		if (const auto& ownerAdjective = owner->adjective; ownerAdjective)
-		{
-			name = *ownerAdjective + " " + *regionName;
-		}
-		else
-		{
-			name = *regionName;
-		}
+		name_ = *ownerAdjective + " " + region;
+	}
+	else
+	{
+		name_ = region;
 	}
 
 	if (const auto& regionAdjective = regions.getRegionAdjective(region); regionAdjective)
 	{
 		adjective = *regionAdjective;
 	}
-
-	determineFilename();
 
 	auto hsv = color.getHsvComponents();
 	if (hsv[2] > 0.2F)
@@ -201,11 +195,6 @@ HoI4::Country::Country(const std::string& tag_,
 
 
 	initIdeas(names, hoi4Localisations);
-	if (owner->hasMonarchIdea())
-	{
-		ideas.insert(owner->tag + "_monarch");
-	}
-
 	createOperatives(graphicsMapper, names);
 
 	convertLaws();
@@ -214,9 +203,9 @@ HoI4::Country::Country(const std::string& tag_,
 
 void HoI4::Country::determineFilename()
 {
-	if (name)
+	if (name_)
 	{
-		filename = commonItems::convertWin1252ToUTF8(*name);
+		filename = commonItems::convertWin1252ToUTF8(*name_);
 		auto pipe = filename.find_first_of('|');
 		while (pipe != std::string::npos)
 		{
@@ -512,68 +501,68 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Reina " + *firstName + " " + *surname, "spanish");
 	}
 
-	if (name && adjective)
+	if (name_ && adjective)
 	{
 		if (!female)
 		{
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Rallying around the King of " + *name + " and the " + *adjective + " Dominions, the " + *adjective +
+				 "Rallying around the King of " + *name_ + " and the " + *adjective + " Dominions, the " + *adjective +
 					  " people stand united and proud of their imperial legacy.",
 				 "english");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Reunindo-se em torno do Rei da " + *name + " e dos Domínios " + *adjective + ", o povo " + *adjective +
+				 "Reunindo-se em torno do Rei da " + *name_ + " e dos Domínios " + *adjective + ", o povo " + *adjective +
 					  " se mantém unido e orgulhoso de seu legado imperial.",
 				 "braz_por");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Rassemblant autour du Roi de " + *name + " et des colonies " + *adjective + "s, la nation " + *adjective +
-					  " est unie et fière de son héritage impérial.",
+				 "Rassemblant autour du Roi de " + *name_ + " et des colonies " + *adjective + "s, la nation " +
+					  *adjective + " est unie et fière de son héritage impérial.",
 				 "french");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Das " + *adjective + "e Volk versammelt sich um den König von " + *name + " und die " + *adjective +
+				 "Das " + *adjective + "e Volk versammelt sich um den König von " + *name_ + " und die " + *adjective +
 					  "e Kolonien und ist vereint und stolz auf sein kaiserliches Erbe.",
 				 "german");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Gromadząc się wokół Króla " + *name + " i " + *adjective + "ich Dominiów, " + *adjective +
+				 "Gromadząc się wokół Króla " + *name_ + " i " + *adjective + "ich Dominiów, " + *adjective +
 					  " są zjednoczeni i dumni ze swojego imperialnego dziedzictwa.",
 				 "polish");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Сплотившись вокруг Короля " + *name + " и " + *adjective + "их Доминионов, " + *adjective +
+				 "Сплотившись вокруг Короля " + *name_ + " и " + *adjective + "их Доминионов, " + *adjective +
 					  "ий народ объединяется и гордится своим имперским наследием.",
 				 "russian");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Reunida en torno al Rey de " + *name + " y las tierras " + *adjective + "s, la nación " + *adjective +
+				 "Reunida en torno al Rey de " + *name_ + " y las tierras " + *adjective + "s, la nación " + *adjective +
 					  " está unida y orgullosa de su legado imperial.",
 				 "spanish");
 		}
 		else
 		{
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Rallying around the Queen of " + *name + " and the " + *adjective + " Dominions, the " + *adjective +
+				 "Rallying around the Queen of " + *name_ + " and the " + *adjective + " Dominions, the " + *adjective +
 					  " people stand united and proud of their imperial legacy.",
 				 "english");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Reunindo-se em torno da Rainha da " + *name + " e dos Domínios " + *adjective + ", o povo " + *adjective +
-					  " se mantém unido e orgulhoso de seu legado imperial.",
+				 "Reunindo-se em torno da Rainha da " + *name_ + " e dos Domínios " + *adjective + ", o povo " +
+					  *adjective + " se mantém unido e orgulhoso de seu legado imperial.",
 				 "braz_por");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Rassemblant autour de la Reine de " + *name + " et des colonies " + *adjective + "s, la nation " +
+				 "Rassemblant autour de la Reine de " + *name_ + " et des colonies " + *adjective + "s, la nation " +
 					  *adjective + " est unie et fière de son héritage impérial.",
 				 "french");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Das " + *adjective + "e Volk versammelt sich um die Königin von " + *name + " und die " + *adjective +
+				 "Das " + *adjective + "e Volk versammelt sich um die Königin von " + *name_ + " und die " + *adjective +
 					  "e Kolonien und ist vereint und stolz auf sein kaiserliches Erbe.",
 				 "german");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Gromadząc się wokół Królowej " + *name + " i " + *adjective + "ich Dominiów, " + *adjective +
+				 "Gromadząc się wokół Królowej " + *name_ + " i " + *adjective + "ich Dominiów, " + *adjective +
 					  " są zjednoczeni i dumni ze swojego imperialnego dziedzictwa.",
 				 "polish");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Сплотившись вокруг Королевы " + *name + " и " + *adjective + "их Доминионов, " + *adjective +
+				 "Сплотившись вокруг Королевы " + *name_ + " и " + *adjective + "их Доминионов, " + *adjective +
 					  "ий народ объединяется и гордится своим имперским наследием.",
 				 "russian");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Reunida en torno a la Reina de " + *name + " y las tierras " + *adjective + "s, la nación " + *adjective +
-					  " está unida y orgullosa de su legado imperial.",
+				 "Reunida en torno a la Reina de " + *name_ + " y las tierras " + *adjective + "s, la nación " +
+					  *adjective + " está unida y orgullosa de su legado imperial.",
 				 "spanish");
 		}
 	}
@@ -661,6 +650,17 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
 	{
 		War theWar(sourceWar, countryMap, casusBellis, provinceMapper, provinceToStateIDMap);
 		wars.push_back(theWar);
+	}
+}
+
+
+void HoI4::Country::addTag(const Country& owner, const std::string& tag_)
+{
+	tag = tag_;
+	determineFilename();
+	if (owner.hasMonarchIdea())
+	{
+		ideas.insert(owner.tag + "_monarch");
 	}
 }
 

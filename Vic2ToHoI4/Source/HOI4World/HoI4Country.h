@@ -64,14 +64,14 @@ class Country
 		 const date& startDate,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const States& worldStates);
-	explicit Country(const std::string& tag_,
-		 const std::shared_ptr<Country> owner,
+	explicit Country(const std::shared_ptr<Country> owner,
 		 const std::string& region_,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
 		 Localisation& hoi4Localisations);
 
+	void addTag(const Country& owner, const std::string& tag_);
 	void determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
@@ -148,7 +148,7 @@ class Country
 
 	[[nodiscard]] const std::string& getTag() const { return tag; }
 	[[nodiscard]] const auto& getOldTag() const { return oldTag; }
-	[[nodiscard]] const auto& getName() const { return name; }
+	[[nodiscard]] const auto& getName() const { return name_; }
 	[[nodiscard]] const auto& getAdjective() const { return adjective; }
 	[[nodiscard]] const std::string& getFilename() const { return filename; }
 	[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
@@ -314,7 +314,7 @@ class Country
 
 	std::string tag;
 	std::string oldTag;
-	std::optional<std::string> name;
+	std::optional<std::string> name_;
 	std::optional<std::string> adjective;
 	std::string filename;
 	std::string commonCountryFile;
