@@ -439,8 +439,7 @@ void outputRelations(std::ostream& output,
 	 const std::map<std::string, HoI4::Relations>& relations);
 void outputFactions(std::ostream& output,
 	 const std::string& tag,
-	 const std::optional<HoI4::Faction>& faction,
-	 const std::optional<std::string>& possibleLeaderName);
+	 const std::optional<HoI4::Faction>& faction);
 void outputIdeas(std::ostream& output,
 	 const bool& greatPower,
 	 const bool& civilized,
@@ -502,7 +501,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		 theCountry.getIdeologySupport());
 	outputPuppets(output, tag, governmentIdeology, theCountry.getPuppets(), theCountry.getPuppetMaster());
 	outputRelations(output, tag, theCountry.getRelations());
-	outputFactions(output, tag, theCountry.getFaction(), theCountry.getName());
+	outputFactions(output, tag, theCountry.getFaction());
 	outputIdeas(output,
 		 theCountry.isGreatPower(),
 		 theCountry.isCivilized(),
@@ -767,22 +766,12 @@ void outputRelations(std::ostream& output,
 
 void outputFactions(std::ostream& output,
 	 const std::string& tag,
-	 const std::optional<HoI4::Faction>& faction,
-	 const std::optional<std::string>& possibleLeaderName)
+	 const std::optional<HoI4::Faction>& faction)
 {
 	if (faction && (faction->getLeader()->getTag() == tag))
 	{
-		std::string allianceName;
-		if (possibleLeaderName)
-		{
-			allianceName = (faction->getFactionName().has_value()) ? faction->getFactionName().value()
-																					 : ("\"Alliance Of" + *possibleLeaderName + "\"");
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not name alliance";
-			allianceName = "faction";
-		}
+		const std::string allianceName = faction->getFactionName().has_value() ? faction->getFactionName().value()
+																					 : ("\"Alliance Of ["+tag +".getName]\"");
 		output << "create_faction = " + allianceName + "\n";
 		for (const auto& factionMember: faction->getMembers())
 		{
