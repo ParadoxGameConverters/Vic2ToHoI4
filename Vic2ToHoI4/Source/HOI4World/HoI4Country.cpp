@@ -33,7 +33,7 @@ HoI4::Country::Country(std::string tag,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
 	 const States& worldStates):
 	 tag(std::move(tag)),
-	 name(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
+	 name_(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
 	 oldCapital(sourceCountry.getCapital()), primaryCulture(sourceCountry.getPrimaryCulture()),
 	 civilized(sourceCountry.isCivilized()), primaryCultureGroup(sourceCountry.getPrimaryCultureGroup()),
@@ -148,11 +148,11 @@ HoI4::Country::Country(const std::shared_ptr<Country> owner,
 	{
 		if (const auto& ownerAdjective = owner->adjective; ownerAdjective)
 		{
-			name = *ownerAdjective + " " + *regionName;
+			name_ = *ownerAdjective + " " + *regionName;
 		}
 		else
 		{
-			name = *regionName;
+			name_ = *regionName;
 		}
 	}
 
@@ -203,9 +203,9 @@ HoI4::Country::Country(const std::shared_ptr<Country> owner,
 
 void HoI4::Country::determineFilename()
 {
-	if (name)
+	if (name_)
 	{
-		filename = commonItems::convertWin1252ToUTF8(*name);
+		filename = commonItems::convertWin1252ToUTF8(*name_);
 		auto pipe = filename.find_first_of('|');
 		while (pipe != std::string::npos)
 		{

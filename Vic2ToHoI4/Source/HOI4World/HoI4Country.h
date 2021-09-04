@@ -147,7 +147,6 @@ class Country
 
 	[[nodiscard]] const std::string& getTag() const { return tag; }
 	[[nodiscard]] const auto& getOldTag() const { return oldTag; }
-	[[nodiscard]] const auto& getName() const { return name; }
 	[[nodiscard]] const auto& getAdjective() const { return adjective; }
 	[[nodiscard]] const std::string& getFilename() const { return filename; }
 	[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
@@ -313,7 +312,7 @@ class Country
 
 	std::string tag;
 	std::string oldTag;
-	std::optional<std::string> name;
+	std::optional<std::string> name_;
 	std::optional<std::string> adjective;
 	std::string filename;
 	std::string commonCountryFile;
