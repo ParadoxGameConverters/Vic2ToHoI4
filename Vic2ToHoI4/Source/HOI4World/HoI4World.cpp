@@ -1099,18 +1099,11 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 
 void HoI4::World::logFactionMember(std::ofstream& factionsLog, const Country& member) const
 {
-	if (auto possibleName = member.getName(); possibleName)
-	{
-		factionsLog << *possibleName << ",";
-		factionsLog << member.getGovernmentIdeology() << ",";
-		factionsLog << member.getMilitaryStrength() << ",";
-		factionsLog << member.getEconomicStrength(1.0) << ",";
-		factionsLog << member.getEconomicStrength(3.0) << "\n";
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not get name when logging faction member";
-	}
+	factionsLog << member.getTag() << ",";
+	factionsLog << member.getGovernmentIdeology() << ",";
+	factionsLog << member.getMilitaryStrength() << ",";
+	factionsLog << member.getEconomicStrength(1.0) << ",";
+	factionsLog << member.getEconomicStrength(3.0) << "\n";
 }
 
 
