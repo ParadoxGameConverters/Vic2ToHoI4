@@ -437,9 +437,7 @@ void outputPolitics(std::ostream& output,
 void outputRelations(std::ostream& output,
 	 const std::string& tag,
 	 const std::map<std::string, HoI4::Relations>& relations);
-void outputFactions(std::ostream& output,
-	 const std::string& tag,
-	 const std::optional<HoI4::Faction>& faction);
+void outputFactions(std::ostream& output, const std::string& tag, const std::optional<HoI4::Faction>& faction);
 void outputIdeas(std::ostream& output,
 	 const bool& greatPower,
 	 const bool& civilized,
@@ -764,14 +762,13 @@ void outputRelations(std::ostream& output,
 }
 
 
-void outputFactions(std::ostream& output,
-	 const std::string& tag,
-	 const std::optional<HoI4::Faction>& faction)
+void outputFactions(std::ostream& output, const std::string& tag, const std::optional<HoI4::Faction>& faction)
 {
 	if (faction && (faction->getLeader()->getTag() == tag))
 	{
-		const std::string allianceName = faction->getFactionName().has_value() ? faction->getFactionName().value()
-																					 : ("\"Alliance Of ["+tag +".getName]\"");
+		const std::string allianceName = faction->getFactionName().has_value()
+														 ? faction->getFactionName().value()
+														 : ("\"Alliance Of [" + tag + ".getName]\"");
 		output << "create_faction = " + allianceName + "\n";
 		for (const auto& factionMember: faction->getMembers())
 		{
