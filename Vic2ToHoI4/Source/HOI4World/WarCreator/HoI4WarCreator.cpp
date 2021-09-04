@@ -1167,7 +1167,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(st
 			newFocus->bypass += " 	}";
 			newFocus->completionReward += "= {\n";
 			newFocus->completionReward +=
-				 "			add_named_threat = { threat = 5 name = \"War with [" + target->getTag() + ".getName]\" }\n";
+				 "			add_named_threat = { threat = 5 name = \"War with [" + target->getTag() + ".GetName]\" }\n";
 			newFocus->completionReward += "			declare_war_on = {\n";
 			newFocus->completionReward += "				type = annex_everything\n";
 			newFocus->completionReward += "				target = " + target->getTag() + "\n";
