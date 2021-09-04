@@ -17,7 +17,7 @@
 namespace Vic2
 {
 class Localisations;
-}
+} // namespace Vic2
 
 
 
@@ -46,7 +46,7 @@ class Events: commonItems::parser
 	void createSudetenEvent(const std::string& annexerTag,
 		 const std::string& annexedTag,
 		 const std::vector<int>& claimedStates);
-	void createTradeEvent(const Country& leader, const Country& greatPower);
+	void createTradeEvent(const Country& leader, const std::string& aggressorTag);
 	void createPoliticalEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);
 	void createWarJustificationEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);
 	void importElectionEvents(const std::set<std::string>& majorIdeologies, OnActions& onActions);

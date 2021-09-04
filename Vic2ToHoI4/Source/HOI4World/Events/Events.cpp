@@ -413,25 +413,13 @@ void HoI4::Events::createSudetenEvent(const std::string& annexerTag,
 }
 
 
-void HoI4::Events::createTradeEvent(const Country& leader, const Country& greatPower)
+void HoI4::Events::createTradeEvent(const Country& leader, const std::string& aggressorTag)
 {
-	auto possibleAggressorName = greatPower.getName();
-	std::string aggressorName;
-	if (possibleAggressorName)
-	{
-		aggressorName = *possibleAggressorName;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not determine aggressor name for trade events";
-		aggressorName.clear();
-	}
-
 	Event tradeIncidentEvent;
 	tradeIncidentEvent.giveType("country_event");
 	tradeIncidentEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber++));
 	tradeIncidentEvent.giveTitle("\"Trade Incident\"");
-	tradeIncidentEvent.giveDescription("= \"One of our convoys was sunk by " + aggressorName + "\"");
+	tradeIncidentEvent.giveDescription("= \"One of our convoys was sunk by [" + aggressorTag + ".GetName]\"");
 	tradeIncidentEvent.givePicture("GFX_report_event_chinese_soldiers_fighting");
 	tradeIncidentEvent.setTriggeredOnly();
 	std::string trigger = "= {\n";
@@ -448,7 +436,7 @@ void HoI4::Events::createTradeEvent(const Country& leader, const Country& greatP
 	effectTooltip += "\t\t\t\tset_country_flag = established_traders_activated\n";
 	effectTooltip += "\t\t\t\tcreate_wargoal = {\n";
 	effectTooltip += "\t\t\t\t\ttype = annex_everything\n";
-	effectTooltip += "\t\t\t\t\ttarget = " + greatPower.getTag() + "\n";
+	effectTooltip += "\t\t\t\t\ttarget = " + aggressorTag + "\n";
 	effectTooltip += "\t\t\t\t}\n";
 	effectTooltip += "\t\t\t}\n";
 	effectTooltip += "\t\t}";
