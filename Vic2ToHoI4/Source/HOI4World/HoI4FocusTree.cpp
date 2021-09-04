@@ -809,21 +809,11 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 	 const std::vector<shared_ptr<HoI4::Country>>& annexationTargets,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	const auto& possibleHomeCountryAdjective = Home->getAdjective();
-	std::string homeCountryAdjective;
-	if (possibleHomeCountryAdjective)
-	{
-		homeCountryAdjective = *possibleHomeCountryAdjective;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not determine home country adjective for absolutist focuses";
-		homeCountryAdjective.clear();
-	}
+	const auto& homeTag = Home->getTag();
 
 	if (const auto& originalFocus = loadedFocuses.find("EmpireGlory"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
 		newFocus->xPos = nextFreeColumn + 5;
 		newFocus->yPos = 0;
 		focuses.push_back(newFocus);
@@ -835,8 +825,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("StrengthenColonies"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "EmpireGlory" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "EmpireGlory" + homeTag;
 		newFocus->xPos = -1;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -848,8 +838,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("StrengthenHome"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "EmpireGlory" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "EmpireGlory" + homeTag;
 		newFocus->xPos = 1;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -861,8 +851,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("ColonialInd"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "StrengthenColonies" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "StrengthenColonies" + homeTag;
 		newFocus->xPos = -2;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -874,8 +864,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("ColonialHwy"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "ColonialInd" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "ColonialInd" + homeTag;
 		newFocus->xPos = -2;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -887,8 +877,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("ResourceFac"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "ColonialInd" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "ColonialInd" + homeTag;
 		newFocus->xPos = 0;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -900,8 +890,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("ColonialArmy"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "StrengthenColonies" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "StrengthenColonies" + homeTag;
 		newFocus->xPos = 0;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -918,8 +908,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 		if (const auto& originalFocus = loadedFocuses.find("Protectorate"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
-			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
+			auto newFocus = originalFocus->second.makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
+			newFocus->id = "Protectorate" + homeTag + target->getTag();
 			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
 				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
@@ -929,8 +919,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
 			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
-			newFocus->prerequisites.push_back("= { focus = ColonialArmy" + Home->getTag() + " }");
-			newFocus->relativePositionId = "ColonialArmy" + Home->getTag();
+			newFocus->prerequisites.push_back("= { focus = ColonialArmy" + homeTag + " }");
+			newFocus->relativePositionId = "ColonialArmy" + homeTag;
 			newFocus->xPos = 0;
 			newFocus->yPos = 1;
 			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
@@ -949,8 +939,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 		if (const auto& originalFocus = loadedFocuses.find("Protectorate"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
-			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
+			auto newFocus = originalFocus->second.makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
+			newFocus->id = "Protectorate" + homeTag + target->getTag();
 			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
 				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
@@ -961,8 +951,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
 			newFocus->prerequisites.push_back(
-				 "= { focus = Protectorate" + Home->getTag() + targetColonies.front()->getTag() + " }");
-			newFocus->relativePositionId = "Protectorate" + Home->getTag() + targetColonies.front()->getTag();
+				 "= { focus = Protectorate" + homeTag + targetColonies.front()->getTag() + " }");
+			newFocus->relativePositionId = "Protectorate" + homeTag + targetColonies.front()->getTag();
 			newFocus->xPos = 0;
 			newFocus->yPos = 1;
 			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
@@ -979,8 +969,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("TradeEmpire"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "ColonialInd" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "ColonialInd" + homeTag;
 		newFocus->xPos = -1;
 		newFocus->yPos = 2;
 		focuses.push_back(newFocus);
@@ -992,8 +982,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("IndHome"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "StrengthenHome" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "StrengthenHome" + homeTag;
 		newFocus->xPos = 1;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -1005,8 +995,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("NationalHwy"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "IndHome" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "IndHome" + homeTag;
 		newFocus->xPos = -1;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -1018,8 +1008,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("NatCollege"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "IndHome" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "IndHome" + homeTag;
 		newFocus->xPos = 1;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -1031,8 +1021,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("MilitaryBuildup"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "IndHome" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "IndHome" + homeTag;
 		newFocus->xPos = 2;
 		newFocus->yPos = 2;
 		focuses.push_back(newFocus);
@@ -1044,8 +1034,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("PrepTheBorder"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "StrengthenHome" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "StrengthenHome" + homeTag;
 		newFocus->xPos = 4;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -1057,8 +1047,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 	if (const auto& originalFocus = loadedFocuses.find("NatSpirit"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->relativePositionId = "PrepTheBorder" + Home->getTag();
+		auto newFocus = originalFocus->second.makeCustomizedCopy(homeTag);
+		newFocus->relativePositionId = "PrepTheBorder" + homeTag;
 		newFocus->xPos = 0;
 		newFocus->yPos = 1;
 		focuses.push_back(newFocus);
@@ -1075,8 +1065,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 		if (const auto& originalFocus = loadedFocuses.find("Annex"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
-			newFocus->id = "Annex" + Home->getTag() + target->getTag();
+			auto newFocus = originalFocus->second.makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
+			newFocus->id = "Annex" + homeTag + target->getTag();
 			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
 				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
@@ -1086,8 +1076,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
 			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
-			newFocus->prerequisites.push_back("= { focus = PrepTheBorder" + Home->getTag() + " }");
-			newFocus->relativePositionId = "PrepTheBorder" + Home->getTag();
+			newFocus->prerequisites.push_back("= { focus = PrepTheBorder" + homeTag + " }");
+			newFocus->relativePositionId = "PrepTheBorder" + homeTag;
 			newFocus->xPos = 2;
 			newFocus->yPos = 1;
 			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
@@ -1106,8 +1096,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 
 		if (const auto& originalFocus = loadedFocuses.find("Annex"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
-			newFocus->id = "Annex" + Home->getTag() + target->getTag();
+			auto newFocus = originalFocus->second.makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
+			newFocus->id = "Annex" + homeTag + target->getTag();
 			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
 			{
 				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
@@ -1118,7 +1108,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
 			newFocus->prerequisites.push_back("= { focus = NatSpirit" + Home->getTag() + " }");
-			newFocus->relativePositionId = "NatSpirit" + Home->getTag();
+			newFocus->relativePositionId = "NatSpirit" + homeTag;
 			newFocus->xPos = 1;
 			newFocus->yPos = 1;
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
