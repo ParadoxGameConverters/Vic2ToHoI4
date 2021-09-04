@@ -18,10 +18,9 @@
 
 
 
-void HoI4::Events::createFactionEvents(const Country& leader,
-	 Mappers::FactionNameMapper& factionNameMapper)
+void HoI4::Events::createFactionEvents(const Country& leader, Mappers::FactionNameMapper& factionNameMapper)
 {
-	const auto leaderTag = leader.getTag();
+	const auto& leaderTag = leader.getTag();
 
 	const auto& possibleFactionName = factionNameMapper.getFactionName(leader.getGovernmentIdeology(),
 		 leader.getPrimaryCulture(),
@@ -48,16 +47,16 @@ void HoI4::Events::createFactionEvents(const Country& leader,
 	yesOption.giveName("\"Yes\"");
 	std::string createFaction = "if = {\n";
 	createFaction += "\t\t\tlimit = {\n";
-	createFaction += "\t\t\t\t" + leader.getTag() + " = {\n";
+	createFaction += "\t\t\t\t" + leaderTag + " = {\n";
 	createFaction += "\t\t\t\t\tis_in_faction = no\n";
 	createFaction += "\t\t\t\t}\n";
 	createFaction += "\t\t\t}\n";
-	createFaction += "\t\t\t" + leader.getTag() + " = {\n";
+	createFaction += "\t\t\t" + leaderTag + " = {\n";
 	createFaction += "\t\t\t\tcreate_faction = \"" + factionName + "\"\n";
 	createFaction += "\t\t\t}\n";
 	createFaction += "\t\t}";
 	yesOption.giveScriptBlock(std::move(createFaction));
-	auto addToFaction = leader.getTag() + " = {\n";
+	auto addToFaction = leaderTag + " = {\n";
 	addToFaction += "\t\t\tadd_to_faction = ROOT\n";
 	addToFaction += "\t\t}";
 	yesOption.giveScriptBlock(std::move(addToFaction));
@@ -72,26 +71,26 @@ void HoI4::Events::createFactionEvents(const Country& leader,
 	yesOptionChance += "\t\t\tfactor = 3\n";
 	yesOptionChance += "\t\t\tmodifier = {\n";
 	yesOptionChance += "\t\t\t\tfactor = 0\n";
-	yesOptionChance += "\t\t\t\tNOT = { has_government = " + leader.getTag() + " }\n";
+	yesOptionChance += "\t\t\t\tNOT = { has_government = " + leaderTag + " }\n";
 	yesOptionChance += "\t\t\t}\n";
 	yesOptionChance += "\t\t\tmodifier = {\n";
 	yesOptionChance += "\t\t\t\tfactor = 0.5\n";
 	yesOptionChance += "\t\t\t\thas_opinion = {\n";
-	yesOptionChance += "\t\t\t\t\ttarget = " + leader.getTag() + "\n";
+	yesOptionChance += "\t\t\t\t\ttarget = " + leaderTag + "\n";
 	yesOptionChance += "\t\t\t\t\tvalue < 100\n";
 	yesOptionChance += "\t\t\t\t}\n";
 	yesOptionChance += "\t\t\t}\n";
 	yesOptionChance += "\t\t\tmodifier = {\n";
 	yesOptionChance += "\t\t\t\tfactor = 0.5\n";
 	yesOptionChance += "\t\t\t\thas_opinion = {\n";
-	yesOptionChance += "\t\t\t\t\ttarget = " + leader.getTag() + "\n";
+	yesOptionChance += "\t\t\t\t\ttarget = " + leaderTag + "\n";
 	yesOptionChance += "\t\t\t\t\tvalue < 50\n";
 	yesOptionChance += "\t\t\t\t}\n";
 	yesOptionChance += "\t\t\t}\n";
 	yesOptionChance += "\t\t\tmodifier = {\n";
 	yesOptionChance += "\t\t\t\tfactor = 0\n";
 	yesOptionChance += "\t\t\t\thas_opinion = {\n";
-	yesOptionChance += "\t\t\t\t\ttarget = " + leader.getTag() + "\n";
+	yesOptionChance += "\t\t\t\t\ttarget = " + leaderTag + "\n";
 	yesOptionChance += "\t\t\t\t\tvalue < 0\n";
 	yesOptionChance += "\t\t\t\t}\n";
 	yesOptionChance += "\t\t\t}\n";
@@ -141,41 +140,20 @@ void HoI4::Events::createFactionEvents(const Country& leader,
 }
 
 
-void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annexed)
+void HoI4::Events::createAnnexEvent(const std::string& annexerTag, const Country& annexed)
 {
-	auto possibleAnnexerName = annexer.getName();
-	std::string annexerName;
-	if (possibleAnnexerName)
-	{
-		annexerName = *possibleAnnexerName;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not determine annexer name for annexation events";
-		annexerName.clear();
-	}
-
-	auto possibleAnnexedName = annexed.getName();
-	std::string annexedName;
-	if (possibleAnnexedName)
-	{
-		annexedName = *possibleAnnexedName;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not determine annexed country name for annexation events";
-		annexedName.clear();
-	}
+	const auto& annexedTag = annexed.getTag();
 
 	Event annexEvent;
 	annexEvent.giveType("country_event");
 	annexEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber));
-	annexEvent.giveTitle("\"" + annexerName + " Demands " + annexedName + "!\"");
-	auto description = "= \"Today " + annexerName + " sent an envoy to us with a proposition of an union. ";
-	description += "We are alone and in this world, and a union with " + annexerName + " might prove to be fruitful. ";
-	description += "Our people would be safe with the mighty army of " + annexerName +
-						" and we could possibly flourish with their established economy. ";
-	description += "Or we could refuse the union which would surely lead to war, but maybe we can hold them off!\"";
+	annexEvent.giveTitle("\"[" + annexerTag + ".GetName] Demands [" + annexedTag + ".GetName]!\"");
+	auto description = "= \"Today [" + annexerTag + ".GetName] sent an envoy to us with a proposition of an union. ";
+	description +=
+		 "We are alone and in this world, and a union with [" + annexerTag + ".GetName might prove to be fruitful. ";
+	description += "Our people would be safe with the mighty army of [" + annexerTag +
+						".GetName] and we could possibly flourish with their established economy. Or we could refuse the "
+						"union which would surely lead to war, but maybe we can hold them off!\"";
 	annexEvent.giveDescription(std::move(description));
 	annexEvent.givePicture("GFX_report_event_hitler_parade");
 	annexEvent.setTriggeredOnly();
@@ -248,9 +226,10 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	Event refusedEvent;
 	refusedEvent.giveType("country_event");
 	refusedEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber + 2));
-	refusedEvent.giveTitle("\"" + annexedName + " Refuses!\"");
+	refusedEvent.giveTitle("\"[" + annexedTag + ".GetName] Refuses!\"");
 	refusedEvent.giveDescription(
-		 "= \"" + annexedName + " Refused our proposed union! This is an insult to us that cannot go unanswered!\"");
+		 "= \"[" + annexedTag +
+		 ".GetName] Refused our proposed union! This is an insult to us that cannot go unanswered!\"");
 	refusedEvent.givePicture("GFX_report_event_german_troops");
 	refusedEvent.setTriggeredOnly();
 
@@ -269,9 +248,10 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	Event acceptedEvent;
 	acceptedEvent.giveType("country_event");
 	acceptedEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber + 1));
-	acceptedEvent.giveTitle("\"" + annexedName + " accepts!\"");
+	acceptedEvent.giveTitle("\"[" + annexedTag + ".GetName] accepts!\"");
 	acceptedEvent.giveDescription(
-		 "= \"" + annexedName + " accepted our proposed union, their added strength will push us to greatness!\"");
+		 "= \"[" + annexedTag +
+		 ".GetName] accepted our proposed union, their added strength will push us to greatness!\"");
 	acceptedEvent.givePicture("GFX_report_event_german_speech");
 	acceptedEvent.setTriggeredOnly();
 
@@ -289,8 +269,8 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	}
 	acceptedOption.giveScriptBlock("annex_country = { target = " + annexed.getTag() + " transfer_troops = yes }");
 	acceptedOption.giveScriptBlock("add_political_power = 50");
-	acceptedOption.giveScriptBlock(
-		 "add_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }");
+	acceptedOption.giveScriptBlock("add_named_threat = { threat = 2 name = \"[" + annexerTag + ".GetName] annexed [" +
+											 annexedTag + ".GetName]\" }");
 	acceptedOption.giveScriptBlock("set_country_flag = " + annexed.getTag() + "_annexed");
 	acceptedEvent.giveOption(std::move(acceptedOption));
 
