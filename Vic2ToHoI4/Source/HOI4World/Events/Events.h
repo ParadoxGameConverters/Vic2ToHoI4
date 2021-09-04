@@ -43,7 +43,9 @@ class Events: commonItems::parser
 
 	void createFactionEvents(const Country& leader, Mappers::FactionNameMapper& factionNameMapper);
 	void createAnnexEvent(const std::string& annexerTag, const Country& annexed);
-	void createSudetenEvent(const Country& annexer, const Country& annexed, const std::vector<int>& claimedStates);
+	void createSudetenEvent(const std::string& annexerTag,
+		 const std::string& annexedTag,
+		 const std::vector<int>& claimedStates);
 	void createTradeEvent(const Country& leader, const Country& greatPower);
 	void createPoliticalEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);
 	void createWarJustificationEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);

@@ -281,61 +281,27 @@ void HoI4::Events::createAnnexEvent(const std::string& annexerTag, const Country
 }
 
 
-void HoI4::Events::createSudetenEvent(const Country& annexer,
-	 const Country& annexed,
+void HoI4::Events::createSudetenEvent(const std::string& annexerTag,
+	 const std::string& annexedTag,
 	 const std::vector<int>& claimedStates)
 {
-	auto possibleAnnexerName = annexer.getName();
-	std::string annexerName;
-	if (possibleAnnexerName)
-	{
-		annexerName = *possibleAnnexerName;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not determine annexer name for sudeten events";
-		annexerName.clear();
-	}
-
-	auto possibleAnnexerAdjective = annexer.getName();
-	std::string annexerAdjective;
-	if (possibleAnnexerAdjective)
-	{
-		annexerAdjective = *possibleAnnexerAdjective;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not determine annexer adjective for sudeten events";
-		annexerAdjective.clear();
-	}
-
-	auto possibleAnnexedName = annexed.getName();
-	std::string annexedName;
-	if (possibleAnnexedName)
-	{
-		annexedName = *possibleAnnexedName;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not determine annexed country name for sudeten events";
-		annexedName.clear();
-	}
-
 	Event sudetenEvent;
 	sudetenEvent.giveType("country_event");
 	sudetenEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber));
-	sudetenEvent.giveTitle("\"" + annexerName + " Demands " + annexedName + "!\"");
-	auto description = "= \"" + annexerName + " has recently been making claims to our bordering states, ";
-	description += "saying that these states are full of " + annexerAdjective +
-						" people and that the territory should be given to them. ";
-	description += "Although it is true that recently our neighboring states have had an influx of " + annexerAdjective +
-						" people in the recent years, ";
-	description += "we cannot give up our lands because a few " + annexerAdjective + " settled down in our land. ";
-	description += "In response " + annexerName +
-						" has called for a conference, demanding their territory in exchange for peace. How do we respond? ";
-	description += "Our people would be safe with the mighty army of " + annexerName +
-						" and we could possibly flourish with their established economy. ";
-	description += "Or we could refuse the union which would surely lead to war, but maybe we can hold them off!\"";
+	sudetenEvent.giveTitle("\"[" + annexerTag + ".GetName] Demands [" + annexedTag + ".GetName]!\"");
+	auto description =
+		 "= \"[" + annexerTag +
+		 ".GetName] has recently been making claims to our bordering states, saying that these states are full of [" +
+		 annexerTag +
+		 ".GetAdjective] people and that the territory should be given to them. Although it is true that recently our "
+		 "neighboring states have had an influx of [" +
+		 annexerTag + ".GetAdjective] people in the recent years, we cannot give up our lands because a few [" +
+		 annexerTag + ".GetAdjective] settled down in our land. In response [" + annexerTag +
+		 ".GetName] has called for a conference, demanding their territory in exchange for peace. How do we respond? Our "
+		 "people would be safe with the mighty army of [" +
+		 annexerTag +
+		 ".GetName] and we could possibly flourish with their established economy. Or we could refuse the union which "
+		 "would surely lead to war, but maybe we can hold them off!\"";
 	sudetenEvent.giveDescription(std::move(description));
 	sudetenEvent.givePicture("GFX_report_event_hitler_parade");
 	sudetenEvent.setTriggeredOnly();
@@ -346,15 +312,15 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	acceptAiChance += "\t\t\tbase = 30\n";
 	acceptAiChance += "\t\t\tmodifier = {\n";
 	acceptAiChance += "\t\t\t\tadd = -15\n";
-	acceptAiChance += "\t\t\t\t" + annexer.getTag() + " = { has_army_size = { size < 40 } }\n";
+	acceptAiChance += "\t\t\t\t" + annexerTag + " = { has_army_size = { size < 40 } }\n";
 	acceptAiChance += "\t\t\t}\n";
 	acceptAiChance += "\t\t\tmodifier = {\n";
 	acceptAiChance += "\t\t\t\tadd = 45\n";
-	acceptAiChance += "\t\t\t\t" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
+	acceptAiChance += "\t\t\t\t" + annexerTag + " = { has_army_size = { size > 39 } }\n";
 	acceptAiChance += "\t\t\t}\n";
 	acceptAiChance += "\t\t}";
 	acceptOption.giveAiChance(std::move(acceptAiChance));
-	auto acceptNewsEvent = annexer.getTag() + " = {\n";
+	auto acceptNewsEvent = annexerTag + " = {\n";
 	acceptNewsEvent +=
 		 "\t\t\tcountry_event = { "
 		 "hours = 2 "
@@ -372,15 +338,15 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	refuseAiChance += "\t\t\tbase = 10\n";
 	refuseAiChance += "\t\t\tmodifier = {\n";
 	refuseAiChance += "\t\t\t\tfactor = 0\n";
-	refuseAiChance += "\t\t\t\t" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
+	refuseAiChance += "\t\t\t\t" + annexerTag + " = { has_army_size = { size > 39 } }\n";
 	refuseAiChance += "\t\t\t}\n";
 	refuseAiChance += "\t\t\tmodifier = {\n";
 	refuseAiChance += "\t\t\t\tadd = 20\n";
-	refuseAiChance += "\t\t\t\t" + annexer.getTag() + " = { has_army_size = { size < 30 } }\n";
+	refuseAiChance += "\t\t\t\t" + annexerTag + " = { has_army_size = { size < 30 } }\n";
 	refuseAiChance += "\t\t\t}\n";
 	refuseAiChance += "\t\t}";
 	refuseOption.giveAiChance(std::move(refuseAiChance));
-	auto removeFromFaction = annexer.getTag() + " = {\n";
+	auto removeFromFaction = annexerTag + " = {\n";
 	removeFromFaction +=
 		 "\t\t\tcountry_event = { "
 		 "hours = 2 "
@@ -389,8 +355,8 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 		 " "
 		 "}\n";
 	removeFromFaction += "\t\t\tif = {\n";
-	removeFromFaction += "\t\t\t\tlimit = { is_in_faction_with = " + annexed.getTag() + " }\n";
-	removeFromFaction += "\t\t\t\tremove_from_faction = " + annexed.getTag() + "\n";
+	removeFromFaction += "\t\t\t\tlimit = { is_in_faction_with = " + annexedTag + " }\n";
+	removeFromFaction += "\t\t\t\tremove_from_faction = " + annexedTag + "\n";
 	removeFromFaction += "\t\t\t}\n";
 	removeFromFaction += "\t\t}";
 	refuseOption.giveScriptBlock(std::move(removeFromFaction));
@@ -402,10 +368,10 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	Event refusedEvent;
 	refusedEvent.giveType("country_event");
 	refusedEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber + 2));
-	refusedEvent.giveTitle("\"" + annexedName + " Refuses!\"");
+	refusedEvent.giveTitle("\"[" + annexedTag + ".GetName] Refuses!\"");
 	refusedEvent.giveDescription(
-		 "= \"" + annexedName +
-		 " Refused our proposed proposition! This is an insult to us that cannot go unanswered!\"");
+		 "= \"[" + annexedTag +
+		 ".GetName] Refused our proposed proposition! This is an insult to us that cannot go unanswered!\"");
 	refusedEvent.givePicture("GFX_report_event_german_troops");
 	refusedEvent.setTriggeredOnly();
 
@@ -413,7 +379,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	refusedOption.giveName("\"It's time for war\"");
 	std::string createWargoal = "create_wargoal = {\n";
 	createWargoal += "\t\t\ttype = annex_everything\n";
-	createWargoal += "\t\t\ttarget = " + annexed.getTag() + "\n";
+	createWargoal += "\t\t\ttarget = " + annexedTag + "\n";
 	createWargoal += "\t\t}";
 	refusedOption.giveScriptBlock(std::move(createWargoal));
 	refusedEvent.giveOption(std::move(refusedOption));
@@ -424,9 +390,9 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	Event acceptedEvent;
 	acceptedEvent.giveType("country_event");
 	acceptedEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber + 1));
-	acceptedEvent.giveTitle("\"" + annexedName + " accepts!\"");
+	acceptedEvent.giveTitle("\"[" + annexedTag + ".GetName] accepts!\"");
 	acceptedEvent.giveDescription(
-		 "= \"" + annexedName + " accepted our proposed demands, the added lands will push us to greatness!\"");
+		 "= \"[" + annexedTag + ".GetName] accepted our proposed demands, the added lands will push us to greatness!\"");
 	acceptedEvent.givePicture("GFX_report_event_german_speech");
 	acceptedEvent.setTriggeredOnly();
 
@@ -434,12 +400,10 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	acceptedOption.giveName("\"A stronger Union!\"");
 	for (unsigned int i = 0; i <= 1 && i < claimedStates.size(); i++)
 	{
-		acceptedOption.giveScriptBlock(
-			 std::to_string(claimedStates[i]) + " = { add_core_of = " + annexer.getTag() + " }");
-		acceptedOption.giveScriptBlock(
-			 annexer.getTag() + " = { transfer_state = " + std::to_string(claimedStates[i]) + " }");
+		acceptedOption.giveScriptBlock(std::to_string(claimedStates[i]) + " = { add_core_of = " + annexerTag + " }");
+		acceptedOption.giveScriptBlock(annexerTag + " = { transfer_state = " + std::to_string(claimedStates[i]) + " }");
 	}
-	acceptedOption.giveScriptBlock("set_country_flag = " + annexed.getTag() + "_demanded");
+	acceptedOption.giveScriptBlock("set_country_flag = " + annexedTag + "_demanded");
 	acceptedEvent.giveOption(std::move(acceptedOption));
 
 	nationalFocusEvents.push_back(acceptedEvent);
