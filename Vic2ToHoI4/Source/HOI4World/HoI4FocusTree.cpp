@@ -728,18 +728,6 @@ void HoI4FocusTree::addDemocracyNationalFocuses(std::shared_ptr<HoI4::Country> H
 	auto relativePos = 1 - static_cast<int>(CountriesToContain.size());
 	for (const auto& country: CountriesToContain)
 	{
-		const auto& possibleContainedCountryName = country->getName();
-		std::string containedCountryName;
-		if (possibleContainedCountryName)
-		{
-			containedCountryName = *possibleContainedCountryName;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not determine contained country name for democratic focuses";
-			containedCountryName.clear();
-		}
-
 		const auto& truceUntil = Home->getTruceUntil(country->getTag());
 		if (const auto& originalFocus = loadedFocuses.find("WarPlan"); originalFocus != loadedFocuses.end())
 		{
@@ -928,18 +916,6 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 	{
 		const auto& target = targetColonies.front();
 
-		const auto& possibleProtectorateCountryName = target->getName();
-		std::string protectorateCountryName;
-		if (possibleProtectorateCountryName)
-		{
-			protectorateCountryName = *possibleProtectorateCountryName;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not determine protectorate country name for absolutist focuses";
-			protectorateCountryName.clear();
-		}
-
 		if (const auto& originalFocus = loadedFocuses.find("Protectorate"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
@@ -970,18 +946,6 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 	if (targetColonies.size() >= 2)
 	{
 		const auto& target = targetColonies.back();
-
-		const auto& possibleProtectorateCountryName = target->getName();
-		std::string protectorateCountryName;
-		if (possibleProtectorateCountryName)
-		{
-			protectorateCountryName = *possibleProtectorateCountryName;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not determine protectorate country name for absolutist focuses";
-			protectorateCountryName.clear();
-		}
 
 		if (const auto& originalFocus = loadedFocuses.find("Protectorate"); originalFocus != loadedFocuses.end())
 		{
@@ -1109,18 +1073,6 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 	{
 		const auto& target = annexationTargets.front();
 
-		const auto& possibleTargetCountryName = target->getName();
-		std::string targetCountryName;
-		if (possibleTargetCountryName)
-		{
-			targetCountryName = *possibleTargetCountryName;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not determine target country name for absolutist focuses";
-			targetCountryName.clear();
-		}
-
 		if (const auto& originalFocus = loadedFocuses.find("Annex"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
@@ -1151,18 +1103,6 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 	if (annexationTargets.size() >= 2)
 	{
 		const auto& target = annexationTargets.back();
-
-		const auto& possibleTargetCountryName = target->getName();
-		std::string targetCountryName;
-		if (possibleTargetCountryName)
-		{
-			targetCountryName = *possibleTargetCountryName;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not determine target country name for absolutist focuses";
-			targetCountryName.clear();
-		}
 
 		if (const auto& originalFocus = loadedFocuses.find("Annex"); originalFocus != loadedFocuses.end())
 		{
@@ -1219,18 +1159,6 @@ void HoI4FocusTree::addCommunistCoupBranch(std::shared_ptr<HoI4::Country> Home,
 		{
 			if (i < coupTargets.size())
 			{
-				const auto& possibleCoupCountryName = coupTargets[i]->getName();
-				std::string coupCountryName;
-				if (possibleCoupCountryName)
-				{
-					coupCountryName = *possibleCoupCountryName;
-				}
-				else
-				{
-					Log(LogLevel::Warning) << "Could not determine coup country name for communist coup focuses";
-					coupCountryName.clear();
-				}
-
 				if (const auto& originalFocus = loadedFocuses.find("Influence_"); originalFocus != loadedFocuses.end())
 				{
 					auto newFocus =
@@ -1616,7 +1544,7 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 		// events
 		if (demandedStates.contains(target->getTag()))
 		{
-			events.createSudetenEvent(*Home, *target, demandedStates.at(target->getTag()));
+			events.createSudetenEvent(Home->getTag(), target->getTag(), demandedStates.at(target->getTag()));
 		}
 	}
 }
@@ -1655,18 +1583,6 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 	int allianceFreeColumn = 1 - static_cast<int>(newAllies.size());
 	for (const auto& newAlly: newAllies)
 	{
-		const auto& possibleAllyCountryName = newAlly->getName();
-		std::string allyCountryName;
-		if (possibleAllyCountryName)
-		{
-			allyCountryName = *possibleAllyCountryName;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not determine ally country name for GP alliance focuses";
-			allyCountryName.clear();
-		}
-
 		if (const auto& originalFocus = loadedFocuses.find("Alliance_"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), newAlly->getTag(), hoi4Localisations);
@@ -1684,7 +1600,7 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 			focuses.push_back(newFocus);
 			allianceFreeColumn += 2;
 
-			events.createFactionEvents(*Home, *newAlly, factionNameMapper);
+			events.createFactionEvents(*Home, factionNameMapper);
 		}
 		else
 		{
