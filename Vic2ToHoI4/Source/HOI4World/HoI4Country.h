@@ -68,10 +68,9 @@ class Country
 		 const std::string& region_,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
-		 Names& names,
-		 Localisation& hoi4Localisations);
+		 Names& names);
 
-	void addTag(const Country& owner, const std::string& tag_);
+	void addTag(const Country& owner, const std::string& tag_, Names& names, Localisation& hoi4Localisations);
 	void determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);

@@ -134,8 +134,7 @@ HoI4::Country::Country(const std::shared_ptr<Country> owner,
 	 const std::string& region_,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
-	 Names& names,
-	 Localisation& hoi4Localisations):
+	 Names& names):
 	 primaryCulture(owner->primaryCulture),
 	 primaryCultureGroup(owner->primaryCultureGroup), civilized(owner->civilized), rulingParty(owner->rulingParty),
 	 parties(owner->parties), upperHouseComposition(owner->upperHouseComposition), lastElection(owner->lastElection),
@@ -196,8 +195,6 @@ HoI4::Country::Country(const std::shared_ptr<Country> owner,
 		 graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "neutrality");
 	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCulture, primaryCultureGroup, "radical");
 
-
-	initIdeas(names, hoi4Localisations);
 	createOperatives(graphicsMapper, names);
 
 	convertLaws();
@@ -657,10 +654,11 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
 }
 
 
-void HoI4::Country::addTag(const Country& owner, const std::string& tag_)
+void HoI4::Country::addTag(const Country& owner, const std::string& tag_, Names& names, Localisation& hoi4Localisations)
 {
 	tag = tag_;
 	determineFilename();
+	initIdeas(names, hoi4Localisations);
 	if (owner.hasMonarchIdea())
 	{
 		ideas.insert(owner.tag + "_monarch");

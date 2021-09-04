@@ -519,13 +519,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 
-		auto dominion = getDominion(owner->first,
-			 owner->second,
-			 *stateRegion,
-			 *theRegions,
-			 *graphicsMapper,
-			 *names,
-			 *hoi4Localisations);
+		auto dominion = getDominion(owner->first, owner->second, *stateRegion, *theRegions, *graphicsMapper, *names);
 		dominion->addCoreState(stateId);
 	}
 
@@ -543,7 +537,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		}
 
 		const auto dominionTag = countryMapperFactory.generateNewHoI4Tag();
-		dominion->addTag(*overlord, dominionTag);
+		dominion->addTag(*overlord, dominionTag, *names, *hoi4Localisations);
 		countries.emplace(dominionTag, dominion);
 
 		if (const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion()); dominionLevel)
@@ -577,15 +571,14 @@ std::shared_ptr<HoI4::Country> HoI4::World::getDominion(const std::string& owner
 	 const std::string& region,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
-	 Names& names,
-	 Localisation& hoi4Localisations)
+	 Names& names)
 {
 	if (const auto& dominionItr = dominions.find(std::make_pair(ownerTag, region)); dominionItr != dominions.end())
 	{
 		return dominionItr->second;
 	}
 
-	auto dominion = std::make_shared<Country>(owner, region, regions, graphicsMapper, names, hoi4Localisations);
+	auto dominion = std::make_shared<Country>(owner, region, regions, graphicsMapper, names);
 	dominions.emplace(std::make_pair(ownerTag, region), dominion);
 
 	return dominion;
