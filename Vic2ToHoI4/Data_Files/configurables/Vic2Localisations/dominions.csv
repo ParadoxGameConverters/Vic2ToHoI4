@@ -1,81 +1,81 @@
 ;en;fr;de;pl;es;it;sw;cz;hu;nl;pt;ru;fi;
 # Localisations for generated dominions
 # The converter tries to find localisations in this order:
-#   * dom_<culture group>_<ideology>_<region>
-#   * dom_<culture group>_<region>
-#   * dom_<culture>_<ideology>_<region>
-#   * dom_<culture>_<region>
-#   * dom_<ideology>_<region>
-#   * dom_<region>
+#  * dom_<culture group>_<ideology>_<region>
+#  * dom_<culture group>_<region>
+#  * dom_<culture>_<ideology>_<region>
+#  * dom_<culture>_<region>
+#  * dom_<ideology>_<region>
+#  * dom_<region>
 # If no localisation is found, the final localisation will be "$OWNER_ADJ$ $REGION$"
 #
 dom_scandinavian_canada;Secret Denmark;Danemark Secret;Geheimnes Dдnemark;Tajna Dania;Dinamarca Secreta;Danimarca Segreta;Titkos Dбnia;Tajnй Dбnsko;Titkos Dбnia;Geheim Denemarken;Dinamarca Secreta;Тайная Дания;Salainen Tanska;x
 ####;EN;FR;DE;PL;ES;IT;SW;CZ;HU;NL;PT;RU;FI;x
-dom_canada;$OVERLORD_ADJ$ Canada;Canada $OVERLORD_ADJ$;$OVERLORD_ADJ$es Kanada;$OVERLORD_ADJ$a Kanada;Canadб $OVERLORD_ADJ$;;;;;;Canadб $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Канада;;x
-dom_california;$OVERLORD_ADJ$ California;Californie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Kalifornien;$OVERLORD_ADJ$a Kalifornia;California $OVERLORD_ADJ$;;;;;;Califуrnia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Калифорния;;x
-dom_us_central;$OVERLORD_ADJ$ Louisiana;Louisiane $OVERLORD_ADJ$;$OVERLORD_ADJ$es Louisiana;$OVERLORD_ADJ$a Luizjana;Luisiana $OVERLORD_ADJ$;;;;;;Louisiana $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Луизиана;;x
-dom_us_north_east;$OVERLORD_ADJ$ Thirteen Colonies;Treize Colonies $OVERLORD_ADJ$s;$OVERLORD_ADJ$e Dreizehn Kolonien;$OVERLORD_ADJ$ie Trzynaњcie Kolonii;Las Trece Colonias $OVERLORD_ADJ$s;;;;;;Treze Colфnias $OVERLORD_ADJ$s;$OVERLORD_ADJ$ие Тринадцать Колоний;;x
-dom_dixieland;$OVERLORD_ADJ$ Dixia;Dixie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Dixien;$OVERLORD_ADJ$i Dixia;Dixia $OVERLORD_ADJ$;;;;;;Dixia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Диксия;;x
-dom_britain;$OVERLORD_ADJ$ Britain;Bretagne $OVERLORD_ADJ$;$OVERLORD_ADJ$es GroЯbritannien;$OVERLORD_ADJ$a Brytania;Gran Bretaсa $OVERLORD_ADJ$;;;;;;Grг-Bretanha $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Британия;;x
-dom_scandinavia;$OVERLORD_ADJ$ Scandinavia;Scandinavie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Skandinavien;$OVERLORD_ADJ$a Skandynawia;Escandinavia $OVERLORD_ADJ$;;;;;;Escandinбvia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Скандинавия;;x
-dom_baltic;The $OVERLORD_ADJ$ Baltic;La Baltique $OVERLORD_ADJ$;Die $OVERLORD_ADJ$e Ostsee;$OVERLORD_ADJ$i Baіtyk;El Bбltico $OVERLORD_ADJ$;;;;;;O Bбltico $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Прибалтика;;x
-dom_dutchland;$OVERLORD_ADJ$ Netherlands;Les Pays-Bas $OVERLORD_ADJ$;$OVERLORD_ADJ$e Niederlande;$OVERLORD_ADJ$ie Niderlandy;Paнses Bajos $OVERLORD_ADJ$s;;;;;;Holanda $OVERLORD_ADJ$;$OVERLORD_ADJ$ие Нидерланды;;x
-dom_france;$OVERLORD_ADJ$ France;France $OVERLORD_ADJ$;$OVERLORD_ADJ$es Frankreich;$OVERLORD_ADJ$a Francja;Francia $OVERLORD_ADJ$;;;;;;Franзa $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Франция;;x
-dom_iberia;$OVERLORD_ADJ$ Iberia;Ibйrie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Iberia;$OVERLORD_ADJ$a Iberia;Iberia $OVERLORD_ADJ$;;;;;;Iberia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Иберия;;x
-dom_germany;$OVERLORD_ADJ$ Germany;Allemagne $OVERLORD_ADJ$;$OVERLORD_ADJ$es Deutschland;$OVERLORD_ADJ$ie Niemcy;Alemania $OVERLORD_ADJ$;;;;;;Alemanha $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Германия;;x
-dom_austria;$OVERLORD_ADJ$ Mitteleuropa;Mitteleurope $OVERLORD_ADJ$;$OVERLORD_ADJ$es Mitteleuropa;$OVERLORD_ADJ$i Mitteleuropa;Mitteleuropa $OVERLORD_ADJ$;;;;;;Mitteleuropa $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Миттелевропа;;x
-dom_hungary;$OVERLORD_ADJ$ Pannonia;Pannonie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Pannonien;$OVERLORD_ADJ$a Panonia;Panonia $OVERLORD_ADJ$;;;;;;Panфnia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Паннония;;x
-dom_romania;$OVERLORD_ADJ$ Wallachia;Valachie $OVERLORD_ADJ$;$OVERLORD_ADJ$e Walachei;$OVERLORD_ADJ$a Woіoszczyzna;Valaquia $OVERLORD_ADJ$;;;;;;Wallachia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Валахия;;x
-dom_poland;$OVERLORD_ADJ$ Poland;Pologne $OVERLORD_ADJ$;$OVERLORD_ADJ$es Polen;$OVERLORD_ADJ$a Polska;Polonia $OVERLORD_ADJ$;;;;;;Polфnia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Польша;;x
-dom_italy;$OVERLORD_ADJ$ Italy;Italie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Italien;$OVERLORD_ADJ$ie Wіochy;Italia $OVERLORD_ADJ$;;;;;;Itбlia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Италия;;x
-dom_yugoslavia;The $OVERLORD_ADJ$ Balkans;Les Balkans $OVERLORD_ADJ$;Der $OVERLORD_ADJ$e Balkan;$OVERLORD_ADJ$ie Balkany;Los Balcanes $OVERLORD_ADJ$s;;;;;;Os Balcгs $OVERLORD_ADJ$s;$OVERLORD_ADJ$ие Балканы;;x
-dom_bulgaria;$OVERLORD_ADJ$ Bulgaria;Bulgarie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Bulgarien;$OVERLORD_ADJ$i Buіgaria;Bulgaria $OVERLORD_ADJ$;;;;;;Bulgбria $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Болгария;;x
-dom_greece;$OVERLORD_ADJ$ Greece;Grиce $OVERLORD_ADJ$;$OVERLORD_ADJ$es Griechenland;$OVERLORD_ADJ$a Grecja;Grecia $OVERLORD_ADJ$;;;;;;Grйcia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Греция;;x
-dom_turkey;$OVERLORD_ADJ$ Anatolia;Anatolie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Anatolien;$OVERLORD_ADJ$a Anatolia;Anatolia $OVERLORD_ADJ$;;;;;;Anatуlia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Анатолия;;x
-dom_levant;The $OVERLORD_ADJ$ Levant;Le Levant $OVERLORD_ADJ$;Die $OVERLORD_ADJ$e Levante;$OVERLORD_ADJ$i Lewant;El Levante $OVERLORD_ADJ$;;;;;;O Levante $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Левант;;x
-dom_iraq;$OVERLORD_ADJ$ Mesopotamia;Mйsopotamie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Mesopotamien;$OVERLORD_ADJ$a Mezopotamia;Mesopotamia $OVERLORD_ADJ$;;;;;;Mesopotвmia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Месопотамия;;x
-dom_belarus;$OVERLORD_ADJ$ Byelorrussia;Biйlorussie $OVERLORD_ADJ$;$OVERLORD_ADJ$es WeiЯrussland;$OVERLORD_ADJ$a Biaіoruњ;Bielorrusia $OVERLORD_ADJ$;;;;;;Bielorrъssia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Белоруссия;;x
-dom_ukraine;$OVERLORD_ADJ$ Malarussia;Malarussie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Kleinrussland;$OVERLORD_ADJ$a Malaruњ;Malorrusia $OVERLORD_ADJ$;;;;;;Malarrъssia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Малоруссия;;x
-dom_russia;$OVERLORD_ADJ$ Russia;Russie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Russland;$OVERLORD_ADJ$a Rosja;Rusia $OVERLORD_ADJ$;;;;;;Rъssia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Россия;;x
-dom_siberia;$OVERLORD_ADJ$ Siberia;Sibйrie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Sibirien;$OVERLORD_ADJ$a Syberia;Siberia $OVERLORD_ADJ$;;;;;;Sibйria $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Сибирь;;x
-dom_transcaucasia;$OVERLORD_ADJ$ Transcaucasia;Transcaucasie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Transkaukasien;$OVERLORD_ADJ$ie Zakaukazie;Transcaucasia $OVERLORD_ADJ$;;;;;;Transcaucбsia $OVERLORD_ADJ$;$OVERLORD_ADJ$ое Закавказье;;x
-dom_persia;$OVERLORD_ADJ$ Persia;Perse $OVERLORD_ADJ$;$OVERLORD_ADJ$es Persien;$OVERLORD_ADJ$a Persja;Persia $OVERLORD_ADJ$;;;;;;Pйrsia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Персия;;x
-dom_arabia;$OVERLORD_ADJ$ Arabia;Arabie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Arabien;$OVERLORD_ADJ$a Arabia;Arabia $OVERLORD_ADJ$;;;;;;Arбbia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Аравия;;x
-dom_central_asia;$OVERLORD_ADJ$ Central Asia;Asie Centrale $OVERLORD_ADJ$;$OVERLORD_ADJ$es Zentralasien;$OVERLORD_ADJ$a Azja Њrodkowa;Asia Central $OVERLORD_ADJ$;;;;;;Бsia Central $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Центральная Азия;;x
-dom_south_asia;The $OVERLORD_ADJ$ Raj;Le Raj $OVERLORD_ADJ$;Das $OVERLORD_ADJ$e Raj;$OVERLORD_ADJ$i Raj;El Raj $OVERLORD_ADJ$;;;;;;O Raj $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Радж;;x
-dom_burma;$OVERLORD_ADJ$ Burma;Birmanie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Birma;$OVERLORD_ADJ$a Birma;Birmania $OVERLORD_ADJ$;;;;;;Birmвnia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Бирма;;x
-dom_siam;$OVERLORD_ADJ$ Siam;Siam $OVERLORD_ADJ$;$OVERLORD_ADJ$es Siam;$OVERLORD_ADJ$i Syjam;Siam $OVERLORD_ADJ$;;;;;;Siгo $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Сиам;;x
-dom_indochina;$OVERLORD_ADJ$ Indochina;Indochine $OVERLORD_ADJ$;$OVERLORD_ADJ$es Indochina;$OVERLORD_ADJ$ie Indochiny;Indochina $OVERLORD_ADJ$;;;;;;Indochina $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Индокитай;;x
-dom_malaysia;$OVERLORD_ADJ$ Malaysia;Malaisie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Malaysia;$OVERLORD_ADJ$a Malezja;Malasia $OVERLORD_ADJ$;;;;;;Malбsia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Малайзия;;x
-dom_indonesia;The $OVERLORD_ADJ$ East Indies;Les Indes Orientales $OVERLORD_ADJ$s;Die $OVERLORD_ADJ$en Ostindien;$OVERLORD_ADJ$ie Indie Wschodnie;Las Indias Orientales $OVERLORD_ADJ$s;;;;;;As Нndias Orientais $OVERLORD_ADJ$s;$OVERLORD_ADJ$ая Ост-Индия;;x
-dom_philippines;The $OVERLORD_ADJ$ Philippines;Les Philippines $OVERLORD_ADJ$s;Die $OVERLORD_ADJ$en Philippinen;$OVERLORD_ADJ$ie Filipiny;Filipinas $OVERLORD_ADJ$s;;;;;;As Filipinas $OVERLORD_ADJ$s;$OVERLORD_ADJ$ие Филиппины;;x
-dom_china;$OVERLORD_ADJ$ China;Chine $OVERLORD_ADJ$;$OVERLORD_ADJ$es China;$OVERLORD_ADJ$a China;China $OVERLORD_ADJ$;;;;;;China $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Китай;;x
-dom_korea;$OVERLORD_ADJ$ Korea;Corйe $OVERLORD_ADJ$;$OVERLORD_ADJ$es Korea;$OVERLORD_ADJ$a Korea;Corea $OVERLORD_ADJ$;;;;;;Corйia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Корея;;x
-dom_japan;$OVERLORD_ADJ$ Japan;Japon $OVERLORD_ADJ$;$OVERLORD_ADJ$es Japan;$OVERLORD_ADJ$a Japonia;Japуn $OVERLORD_ADJ$;;;;;;Japгo $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Япония;;x
-dom_maghreb;The $OVERLORD_ADJ$ Maghreb;Le Maghreb $OVERLORD_ADJ$;Der $OVERLORD_ADJ$e Maghreb;$OVERLORD_ADJ$i Maghreb;El Magreb $OVERLORD_ADJ$;;;;;;O Magrebe $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Магриб;;x
-dom_libya;$OVERLORD_ADJ$ Libya;Libye $OVERLORD_ADJ$;$OVERLORD_ADJ$es Libyen;$OVERLORD_ADJ$a Libia;Libia $OVERLORD_ADJ$;;;;;;Lнbia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Ливия;;x
-dom_egypt;$OVERLORD_ADJ$ Egypt;Йgypte $OVERLORD_ADJ$;$OVERLORD_ADJ$es Дgypten;$OVERLORD_ADJ$i Egipt;Egipto $OVERLORD_ADJ$;;;;;;Egito $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Египет;;x
-dom_western_africa;$OVERLORD_ADJ$ Western Africa;Afrique Occidentale $OVERLORD_ADJ$;$OVERLORD_ADJ$es Westafrika;$OVERLORD_ADJ$a Afryka Zachodnia;Бfrica Occidental $OVERLORD_ADJ$;;;;;;Бfrica Ocidental $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Западная Африка;;x
-dom_sudan;$OVERLORD_ADJ$ Sudan;Soudan $OVERLORD_ADJ$;Der $OVERLORD_ADJ$e Sudan;$OVERLORD_ADJ$i Sudan;Sudбn $OVERLORD_ADJ$;;;;;;Sudгo $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Судан;;x
-dom_abyssinia;$OVERLORD_ADJ$ Abyssinia;Abyssinie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Abessinien;$OVERLORD_ADJ$a Abisynia;Abisinia $OVERLORD_ADJ$;;;;;;Abissнnia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Абиссиния;;x
-dom_nigeria;$OVERLORD_ADJ$ Nigeria;Nigйria $OVERLORD_ADJ$;$OVERLORD_ADJ$es Nigeria;$OVERLORD_ADJ$a Nigeria;Nigeria $OVERLORD_ADJ$;;;;;;Nigйria $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Нигерия;;x
-dom_congo;$OVERLORD_ADJ$ Congo;Congo $OVERLORD_ADJ$;$OVERLORD_ADJ$es Kongo;$OVERLORD_ADJ$ie Kongo;Congo $OVERLORD_ADJ$;;;;;;Congo $OVERLORD_ADJ$;$OVERLORD_ADJ$ое Конго;;x
-dom_equatorial_africa;$OVERLORD_ADJ$ Equatorial Africa;Afrique Йquatoriale $OVERLORD_ADJ$;$OVERLORD_ADJ$es Дquatorialafrika;$OVERLORD_ADJ$a Afryka Rуwnikowa;Бfrica Ecuatorial $OVERLORD_ADJ$;;;;;;Бfrica Equatorial $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Экваториальная Африка;;x
-dom_angola;$OVERLORD_ADJ$ Angola;Angola $OVERLORD_ADJ$;$OVERLORD_ADJ$es Angola;$OVERLORD_ADJ$a Angola;Angola $OVERLORD_ADJ$;;;;;;Angola $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Ангола;;x
-dom_east_africa;$OVERLORD_ADJ$ East Africa;Afrique Orientale $OVERLORD_ADJ$;$OVERLORD_ADJ$es Ostafrika;$OVERLORD_ADJ$a Afryka Wschodnia;Бfrica Oriental $OVERLORD_ADJ$;;;;;;Бfrica Oriental $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Восточная Африка;;x
-dom_mozambique;$OVERLORD_ADJ$ Mozambique;Mozambique $OVERLORD_ADJ$;$OVERLORD_ADJ$es Mosambik;$OVERLORD_ADJ$i Mozambik;Mozambique $OVERLORD_ADJ$;;;;;;Moзambique $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Мозамбик;;x
-dom_southern_africa;$OVERLORD_ADJ$ Southern Africa;Afrique Australe $OVERLORD_ADJ$;$OVERLORD_ADJ$es Sьdafrika;$OVERLORD_ADJ$a Afryka Poіudniowa;Бfrica Austral $OVERLORD_ADJ$;;;;;;Бfrica Austral $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Южная Африка;;x
-dom_rhodesia;$OVERLORD_ADJ$ Rhodesia;Rhodйsie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Rhodesien;$OVERLORD_ADJ$a Rodezja;Rodesia $OVERLORD_ADJ$;;;;;;Rodйsia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Родезия;;x
-dom_madagascar;$OVERLORD_ADJ$ Madagascar;Madagascar $OVERLORD_ADJ$;$OVERLORD_ADJ$es Madagaskar;$OVERLORD_ADJ$i Madagaskar;Madagascar $OVERLORD_ADJ$;;;;;;Madagascar $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Мадагаскар;;x
-dom_mexico;$OVERLORD_ADJ$ Mexico;Mexique $OVERLORD_ADJ$;$OVERLORD_ADJ$es Mexiko;$OVERLORD_ADJ$i Meksyk;Mйxico $OVERLORD_ADJ$;;;;;;Mйxico $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Мексика;;x
-dom_central_america;$OVERLORD_ADJ$ Central America;Amйrique Centrale $OVERLORD_ADJ$;$OVERLORD_ADJ$es Zentralamerika;$OVERLORD_ADJ$a Ameryka Њrodkowa;Centroamйrica $OVERLORD_ADJ$;;;;;;Amйrica Central $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Центральная Америка;;x
-dom_caribbean;The $OVERLORD_ADJ$ Caribbean;Les Caraпbes $OVERLORD_ADJ$s;Die $OVERLORD_ADJ$e Karibik;$OVERLORD_ADJ$ie Karaiby;El Caribe $OVERLORD_ADJ$;;;;;;Caribe $OVERLORD_ADJ$;$OVERLORD_ADJ$ое Карибское;;x
-dom_gran_colombia;$OVERLORD_ADJ$ New Grenada;Nouvelle Grenade $OVERLORD_ADJ$;$OVERLORD_ADJ$es Neu-Grenada;$OVERLORD_ADJ$a Nowa Grenada;Nueva Granada $OVERLORD_ADJ$;;;;;;Nova Granada $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Новая Гренада;;x
-dom_peru_bolivia;$OVERLORD_ADJ$ Peru-Bolivia;Pйrou-Bolivie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Peru-Bolivien;$OVERLORD_ADJ$ie Peru-Boliwia;Perъ-Bolivia $OVERLORD_ADJ$;;;;;;Peru-Bolнvia $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Перу-Боливия;;x
-dom_patagonia;The $OVERLORD_ADJ$ Rнo de la Plata;Le Rнo-de-la-Plata $OVERLORD_ADJ$;Der $OVERLORD_ADJ$e Rнo de la Plata;$OVERLORD_ADJ$ie Rio de la Plata;El Rнo de la Plata $OVERLORD_ADJ$;;;;;;O Rнo de la Plata $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Рио-де-ла-Плата;;x
-dom_brazil;$OVERLORD_ADJ$ Brazil;Brйsil $OVERLORD_ADJ$;$OVERLORD_ADJ$es Brasilien;$OVERLORD_ADJ$a Brazylia;Brasil $OVERLORD_ADJ$;;;;;;Brasil $OVERLORD_ADJ$;$OVERLORD_ADJ$ий Бразилия;;x
-dom_australia;$OVERLORD_ADJ$ Australia;Australie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Australien;$OVERLORD_ADJ$a Australia;Australia $OVERLORD_ADJ$;;;;;;Austrбlia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Австралия;;x
-dom_oceania;The $OVERLORD_ADJ$ Pacific;Le Pacifique $OVERLORD_ADJ$;Der $OVERLORD_ADJ$e Pazifik;$OVERLORD_ADJ$i Pacyfik;El Pacнfico $OVERLORD_ADJ$;;;;;;O Pacнfico $OVERLORD_ADJ$;$OVERLORD_ADJ$ое Тихое;;
+dom_canada;Canada;Canada;Kanada;Kanada;Canadб;;;;;;Canadб;Канада;;x
+dom_california;California;Californie;Kalifornien;Kalifornia;California;;;;;;Califуrnia;Калифорния;;x
+dom_us_central;Louisiana;Louisiane;Louisiana;Luizjana;Luisiana;;;;;;Louisiana;Луизиана;;x
+dom_us_north_east;Thirteen Colonies;Treize Colonies;Dreizehn Kolonien;Trzynaњcie Kolonii;Las Trece Colonias;;;;;;Treze Colфnias;Тринадцать Колоний;;x
+dom_dixieland;Dixia;Dixie;Dixien;Dixia;Dixia;;;;;;Dixia;Диксия;;x
+dom_britain;Britain;Bretagne;GroЯbritannien;Brytania;Gran Bretaсa;;;;;;Grг-Bretanha;Британия;;x
+dom_scandinavia;Scandinavia;Scandinavie;Skandinavien;Skandynawia;Escandinavia;;;;;;Escandinбvia;Скандинавия;;x
+dom_baltic;The Baltic;La Baltique;Die Ostsee;Baіtyk;El Bбltico;;;;;;O Bбltico;Прибалтика;;x
+dom_dutchland;Netherlands;Les Pays-Bas;Niederlande;Niderlandy;Paнses Bajos;;;;;;Holanda;Нидерланды;;x
+dom_france;France;France;Frankreich;Francja;Francia;;;;;;Franзa;Франция;;x
+dom_iberia;Iberia;Ibйrie;Iberia;Iberia;Iberia;;;;;;Iberia;Иберия;;x
+dom_germany;Germany;Allemagne;Deutschland;Niemcy;Alemania;;;;;;Alemanha;Германия;;x
+dom_austria;Mitteleuropa;Mitteleurope;Mitteleuropa;Mitteleuropa;Mitteleuropa;;;;;;Mitteleuropa;Миттелевропа;;x
+dom_hungary;Pannonia;Pannonie;Pannonien;Panonia;Panonia;;;;;;Panфnia;Паннония;;x
+dom_romania;Wallachia;Valachie;Walachei;Woіoszczyzna;Valaquia;;;;;;Wallachia;Валахия;;x
+dom_poland;Poland;Pologne;Polen;Polska;Polonia;;;;;;Polфnia;Польша;;x
+dom_italy;Italy;Italie;Italien;Wіochy;Italia;;;;;;Itбlia;Италия;;x
+dom_yugoslavia;The Balkans;Les Balkans;Der Balkan;Balkany;Los Balcanes;;;;;;Os Balcгs;Балканы;;x
+dom_bulgaria;Bulgaria;Bulgarie;Bulgarien;Buіgaria;Bulgaria;;;;;;Bulgбria;Болгария;;x
+dom_greece;Greece;Grиce;Griechenland;Grecja;Grecia;;;;;;Grйcia;Греция;;x
+dom_turkey;Anatolia;Anatolie;Anatolien;Anatolia;Anatolia;;;;;;Anatуlia;Анатолия;;x
+dom_levant;The Levant;Le Levant;Die Levante;Lewant;El Levante;;;;;;O Levante;Левант;;x
+dom_iraq;Mesopotamia;Mйsopotamie;Mesopotamien;Mezopotamia;Mesopotamia;;;;;;Mesopotвmia;Месопотамия;;x
+dom_belarus;Byelorrussia;Biйlorussie;WeiЯrussland;Biaіoruњ;Bielorrusia;;;;;;Bielorrъssia;Белоруссия;;x
+dom_ukraine;Malarussia;Malarussie;Kleinrussland;Malaruњ;Malorrusia;;;;;;Malarrъssia;Малоруссия;;x
+dom_russia;Russia;Russie;Russland;Rosja;Rusia;;;;;;Rъssia;Россия;;x
+dom_siberia;Siberia;Sibйrie;Sibirien;Syberia;Siberia;;;;;;Sibйria;Сибирь;;x
+dom_transcaucasia;Transcaucasia;Transcaucasie;Transkaukasien;Zakaukazie;Transcaucasia;;;;;;Transcaucбsia;ое Закавказье;;x
+dom_persia;Persia;Perse;Persien;Persja;Persia;;;;;;Pйrsia;Персия;;x
+dom_arabia;Arabia;Arabie;Arabien;Arabia;Arabia;;;;;;Arбbia;Аравия;;x
+dom_central_asia;Central Asia;Asie Centrale;Zentralasien;Azja Њrodkowa;Asia Central;;;;;;Бsia Central;Центральная Азия;;x
+dom_south_asia;The Raj;Le Raj;Das Raj;Raj;El Raj;;;;;;O Raj;Радж;;x
+dom_burma;Burma;Birmanie;Birma;Birma;Birmania;;;;;;Birmвnia;Бирма;;x
+dom_siam;Siam;Siam;Siam;Syjam;Siam;;;;;;Siгo;Сиам;;x
+dom_indochina;Indochina;Indochine;Indochina;Indochiny;Indochina;;;;;;Indochina;Индокитай;;x
+dom_malaysia;Malaysia;Malaisie;Malaysia;Malezja;Malasia;;;;;;Malбsia;Малайзия;;x
+dom_indonesia;The East Indies;Les Indes Orientales;Die Ostindien;Indie Wschodnie;Las Indias Orientales;;;;;;As Нndias Orientais;Ост-Индия;;x
+dom_philippines;The Philippines;Les Philippines;Die Philippinen;Filipiny;Filipinas;;;;;;As Filipinas;Филиппины;;x
+dom_china;China;Chine;China;China;China;;;;;;China;Китай;;x
+dom_korea;Korea;Corйe;Korea;Korea;Corea;;;;;;Corйia;Корея;;x
+dom_japan;Japan;Japon;Japan;Japonia;Japуn;;;;;;Japгo;Япония;;x
+dom_maghreb;The Maghreb;Le Maghreb;Der Maghreb;Maghreb;El Magreb;;;;;;O Magrebe;Магриб;;x
+dom_libya;Libya;Libye;Libyen;Libia;Libia;;;;;;Lнbia;Ливия;;x
+dom_egypt;Egypt;Йgypte;Дgypten;Egipt;Egipto;;;;;;Egito;Египет;;x
+dom_western_africa;Western Africa;Afrique Occidentale;Westafrika;Afryka Zachodnia;Бfrica Occidental;;;;;;Бfrica Ocidental;Западная Африка;;x
+dom_sudan;Sudan;Soudan;Der Sudan;Sudan;Sudбn;;;;;;Sudгo;Судан;;x
+dom_abyssinia;Abyssinia;Abyssinie;Abessinien;Abisynia;Abisinia;;;;;;Abissнnia;Абиссиния;;x
+dom_nigeria;Nigeria;Nigйria;Nigeria;Nigeria;Nigeria;;;;;;Nigйria;Нигерия;;x
+dom_congo;Congo;Congo;Kongo;Kongo;Congo;;;;;;Congo;ое Конго;;x
+dom_equatorial_africa;Equatorial Africa;Afrique Йquatoriale;Дquatorialafrika;Afryka Rуwnikowa;Бfrica Ecuatorial;;;;;;Бfrica Equatorial;Экваториальная Африка;;x
+dom_angola;Angola;Angola;Angola;Angola;Angola;;;;;;Angola;Ангола;;x
+dom_east_africa;East Africa;Afrique Orientale;Ostafrika;Afryka Wschodnia;Бfrica Oriental;;;;;;Бfrica Oriental;Восточная Африка;;x
+dom_mozambique;Mozambique;Mozambique;Mosambik;Mozambik;Mozambique;;;;;;Moзambique;Мозамбик;;x
+dom_southern_africa;Southern Africa;Afrique Australe;Sьdafrika;Afryka Poіudniowa;Бfrica Austral;;;;;;Бfrica Austral;Южная Африка;;x
+dom_rhodesia;Rhodesia;Rhodйsie;Rhodesien;Rodezja;Rodesia;;;;;;Rodйsia;Родезия;;x
+dom_madagascar;Madagascar;Madagascar;Madagaskar;Madagaskar;Madagascar;;;;;;Madagascar;Мадагаскар;;x
+dom_mexico;Mexico;Mexique;Mexiko;Meksyk;Mйxico;;;;;;Mйxico;Мексика;;x
+dom_central_america;Central America;Amйrique Centrale;Zentralamerika;Ameryka Њrodkowa;Centroamйrica;;;;;;Amйrica Central;Центральная Америка;;x
+dom_caribbean;The Caribbean;Les Caraпbes;Die Karibik;Karaiby;El Caribe;;;;;;Caribe;ое Карибское;;x
+dom_gran_colombia;New Grenada;Nouvelle Grenade;Neu-Grenada;Nowa Grenada;Nueva Granada;;;;;;Nova Granada;Новая Гренада;;x
+dom_peru_bolivia;Peru-Bolivia;Pйrou-Bolivie;Peru-Bolivien;Peru-Boliwia;Perъ-Bolivia;;;;;;Peru-Bolнvia;Перу-Боливия;;x
+dom_patagonia;The Rнo de la Plata;Le Rнo-de-la-Plata;Der Rнo de la Plata;Rio de la Plata;El Rнo de la Plata;;;;;;O Rнo de la Plata;Рио-де-ла-Плата;;x
+dom_brazil;Brazil;Brйsil;Brasilien;Brazylia;Brasil;;;;;;Brasil;Бразилия;;x
+dom_australia;Australia;Australie;Australien;Australia;Australia;;;;;;Austrбlia;Австралия;;x
+dom_oceania;The Pacific;Le Pacifique;Der Pazifik;Pacyfik;El Pacнfico;;;;;;O Pacнfico;ое Тихое;;
 dom_canada_ADJ;Canadian;Canadienne;kanadisch;kanadyjsk;Canadiense;;;;;;Canadense;канадск;;x
 dom_california_ADJ;Californian;Californienne;kalifornisch;kalifornijsk;Californiana;;;;;;Californiano;калифорнийск;;x
 dom_us_central_ADJ;Louisianan;Louisianienne;louisianisch;luizjaсsk;Louisianesa;;;;;;Louisianano;луизианск;;x
