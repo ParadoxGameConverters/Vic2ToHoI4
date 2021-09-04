@@ -19,32 +19,9 @@
 
 
 void HoI4::Events::createFactionEvents(const Country& leader,
-	 const Country& newAlly,
 	 Mappers::FactionNameMapper& factionNameMapper)
 {
-	auto possibleLeaderName = leader.getName();
-	std::string leaderName;
-	if (possibleLeaderName)
-	{
-		leaderName = *possibleLeaderName;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not determine leader name for faction events";
-		leaderName.clear();
-	}
-
-	auto possibleNewAllyName = newAlly.getName();
-	std::string newAllyName;
-	if (possibleNewAllyName)
-	{
-		newAllyName = *possibleNewAllyName;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not determine new ally name for faction events";
-		newAllyName.clear();
-	}
+	const auto leaderTag = leader.getTag();
 
 	const auto& possibleFactionName = factionNameMapper.getFactionName(leader.getGovernmentIdeology(),
 		 leader.getPrimaryCulture(),
@@ -56,7 +33,7 @@ void HoI4::Events::createFactionEvents(const Country& leader,
 	}
 	else
 	{
-		factionName = "Faction of " + leaderName;
+		factionName = "Faction of [" + leaderTag + ".GetName]";
 	}
 
 	Event nfEvent;
@@ -64,7 +41,7 @@ void HoI4::Events::createFactionEvents(const Country& leader,
 	nfEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber++));
 	nfEvent.giveTitle("\"Alliance Offer\"");
 	nfEvent.giveDescription(
-		 "= \"We have been invited to an alliance with " + leaderName + ". Should we accept the invitation?\"");
+		 "= \"We have been invited to an alliance with [" + leaderTag + ".GetName]. Should we accept the invitation?\"");
 	nfEvent.givePicture("news_event_generic_sign_treaty1");
 	nfEvent.setTriggeredOnly();
 	EventOption yesOption;
@@ -136,7 +113,7 @@ void HoI4::Events::createFactionEvents(const Country& leader,
 	Event newsEventYes;
 	newsEventYes.giveType("news_event");
 	newsEventYes.giveId("news." + std::to_string(newsEventNumber));
-	newsEventYes.giveTitle("\"[From.GetName] formalizes alliance with " + leaderName + "\"");
+	newsEventYes.giveTitle("\"[From.GetName] formalizes alliance with [" + leaderTag + ".GetName]\"");
 	newsEventYes.giveDescription(
 		 "= \"The leaders of both countries have announced their intent of military cooperation.\"");
 	newsEventYes.givePicture("news_event_generic_sign_treaty1");
@@ -150,7 +127,7 @@ void HoI4::Events::createFactionEvents(const Country& leader,
 	Event newsEventNo;
 	newsEventNo.giveType("news_event");
 	newsEventNo.giveId("news." + std::to_string(newsEventNumber + 1));
-	newsEventNo.giveTitle("\"[From.GetName] refuses the alliance offer of " + leaderName + "\"");
+	newsEventNo.giveTitle("\"[From.GetName] refuses the alliance offer of [" + leaderTag + ".GetName]\"");
 	newsEventNo.giveDescription("= \"The alliance negotiations ended in disagreement.\"");
 	newsEventNo.givePicture("news_event_generic_sign_treaty1");
 	newsEventNo.setMajor();
