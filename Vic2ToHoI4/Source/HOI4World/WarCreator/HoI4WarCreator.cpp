@@ -422,15 +422,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	 const Configuration& theConfiguration)
 {
 	std::vector<std::shared_ptr<HoI4::Faction>> CountriesAtWar;
-	auto name = Leader->getName();
-	if (name)
-	{
-		Log(LogLevel::Info) << "\t\t\tCalculating AI for " + *name;
-	}
-	else
-	{
-		Log(LogLevel::Info) << "\t\t\tCalculating AI";
-	}
+	Log(LogLevel::Info) << "\t\t\tCalculating AI for " + Leader->getTag();
 	// too many lists, need to clean up
 	std::vector<std::shared_ptr<HoI4::Country>> Anschluss;
 	std::vector<std::shared_ptr<HoI4::Country>> Sudeten;
@@ -453,14 +445,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	// should add method to look for more allies
 
 	// lets look for weak neighbors
-	if (name)
-	{
-		Log(LogLevel::Info) << "\t\t\tDoing Neighbor calcs for " + *name;
-	}
-	else
-	{
-		Log(LogLevel::Info) << "\t\t\tDoing Neighbor calcs";
-	}
+	Log(LogLevel::Info) << "\t\t\tDoing Neighbor calcs for " + Leader->getTag();
 	for (const auto& neighborTag: neighbors)
 	{
 		const auto neighbor = world->findCountry(neighborTag);
@@ -599,71 +584,35 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 		}
 		if (theConfiguration.getDebug())
 		{
-			if (name)
-			{
-				AILog << "\t" << *name << " is under threat, there are " << FactionsAttackingMe.size()
-						<< " faction(s) attacking them, I have a strength of " << GetFactionStrength(findFaction(Leader), 3)
-						<< " and they have a strength of " << FactionsAttackingMeStrength << "\n";
-			}
-			else
-			{
-				AILog << "\t"
-						<< "A country is under threat, there are " << FactionsAttackingMe.size()
-						<< " faction(s) attacking them, I have a strength of " << GetFactionStrength(findFaction(Leader), 3)
-						<< " and they have a strength of " << FactionsAttackingMeStrength << "\n";
-			}
+			AILog << "\t" << Leader->getTag() << " is under threat, there are " << FactionsAttackingMe.size()
+					<< " faction(s) attacking them, I have a strength of " << GetFactionStrength(findFaction(Leader), 3)
+					<< " and they have a strength of " << FactionsAttackingMeStrength << "\n";
 		}
 		if (FactionsAttackingMeStrength > GetFactionStrength(findFaction(Leader), 3))
 		{
-			int maxGCAlliance = 0;
-
-			for (auto GC: theWorld->getGreatPowers())
+			int numAlliances = 0;
+			for (auto& greatPower: theWorld->getGreatPowers())
 			{
-				auto allyName = GC->getName();
-
-				auto relations = Leader->getRelations(GC->getTag());
-				if ((relations) && (relations->getRelations() > 0) && (maxGCAlliance < 1))
+				if (const auto relations = Leader->getRelations(greatPower->getTag());
+					 (relations) && (relations->getRelations() > 0) && (numAlliances < 1))
 				{
 					if (theConfiguration.getDebug())
 					{
-						if (name)
-						{
-							if (allyName)
-							{
-								AILog << "\t" << *name << " can attempt to ally " << *allyName << "\n";
-							}
-							else
-							{
-								AILog << "\t" << *name << " can attempt to ally a country\n";
-							}
-						}
-						else
-						{
-							if (allyName)
-							{
-								AILog << "\t"
-										<< "A country can attempt to ally " << *allyName << "\n";
-							}
-							else
-							{
-								AILog << "\t"
-										<< "A country can attempt to ally a country\n";
-							}
-						}
+						AILog << "\t" << Leader->getTag() << " can attempt to ally " << greatPower->getTag() << "\n";
 					}
 					if (theConfiguration.getCreateFactions())
 					{
-						if (GC->isInFaction())
+						if (greatPower->isInFaction())
 						{
 							std::vector<std::shared_ptr<HoI4::Country>> self;
-							self.push_back(GC);
-							auto newFaction = std::make_shared<HoI4::Faction>(GC, self);
-							GC->setFaction(newFaction);
+							self.push_back(greatPower);
+							auto newFaction = std::make_shared<HoI4::Faction>(greatPower, self);
+							greatPower->setFaction(newFaction);
 						}
-						theWorld->getEvents().createFactionEvents(*Leader, *GC, theWorld->getFactionNameMapper());
+						theWorld->getEvents().createFactionEvents(*Leader, theWorld->getFactionNameMapper());
 					}
-					newAllies.push_back(GC);
-					maxGCAlliance++;
+					newAllies.push_back(greatPower);
+					numAlliances++;
 				}
 			}
 		}
@@ -715,17 +664,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 {
 	std::vector<std::shared_ptr<HoI4::Faction>> CountriesAtWar;
 	// communism still needs great country war events
-	auto name = Leader->getName();
-	if (name)
-	{
-		Log(LogLevel::Info) << "\t\t\tCalculating AI for " + *name;
-		Log(LogLevel::Info) << "\t\t\tCalculating Neighbors for " + *name;
-	}
-	else
-	{
-		Log(LogLevel::Info) << "\t\t\tCalculating AI for a country";
-		Log(LogLevel::Info) << "\t\t\tCalculating Neighbors for a country";
-	}
+	Log(LogLevel::Info) << "\t\t\tCalculating AI for " + Leader->getTag();
+	Log(LogLevel::Info) << "\t\t\tCalculating Neighbors for " + Leader->getTag();
 	std::set<std::string> neighbors;
 	const auto& nearbyCountries = mapUtils.getNearbyCountries(Leader->getTag(), 400);
 	const auto& targets = Leader->getConquerStrategies();
@@ -745,14 +685,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 	// Decide between Anti - Democratic Focus, Anti - Monarch Focus, or Anti - Fascist Focus(Look at all great powers and
 	// get average relation between each ideology, the one with the lowest average relation leads to that focus). Attempt
 	// to ally with other Communist Countries(with Permanant Revolution)
-	if (name)
-	{
-		Log(LogLevel::Info) << "\t\t\tDoing Neighbor calcs for " + *name;
-	}
-	else
-	{
-		Log(LogLevel::Info) << "\t\t\tDoing Neighbor calcs for a country";
-	}
+	Log(LogLevel::Info) << "\t\t\tDoing Neighbor calcs for " + Leader->getTag();
 	for (const auto& neighborTag: neighbors)
 	{
 		const auto neighbor = theWorld->findCountry(neighborTag);
@@ -942,15 +875,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator
 {
 	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 
-	auto name = country->getName();
-	if (name)
-	{
-		Log(LogLevel::Info) << "\t\t\tDoing neighbor calcs for " + *name;
-	}
-	else
-	{
-		Log(LogLevel::Info) << "\t\t\tDoing neighbor calcs for a country";
-	}
+	Log(LogLevel::Info) << "\t\t\tDoing neighbor calcs for " + country->getTag();
 
 	auto weakNeighbors = findWeakNeighbors(country, theMapData, provinceDefinitions);
 	auto weakColonies = findWeakColonies(country, theMapData, provinceDefinitions);
@@ -1192,18 +1117,6 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(st
 		std::set<std::string> Allies = country->getAllies();
 		if (!Allies.contains(target->getTag()))
 		{
-			auto possibleTargetName = target->getName();
-			std::string targetName;
-			if (possibleTargetName)
-			{
-				targetName = *possibleTargetName;
-			}
-			else
-			{
-				Log(LogLevel::Warning) << "Could not set target name in great power war creator";
-				targetName.clear();
-			}
-
 			countriesAtWar.push_back(findFaction(country));
 
 			std::shared_ptr<HoI4Focus> newFocus = std::make_shared<HoI4Focus>();
@@ -1254,7 +1167,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(st
 			newFocus->bypass += " 	}";
 			newFocus->completionReward += "= {\n";
 			newFocus->completionReward +=
-				 "			add_named_threat = { threat = 5 name = \"War with " + targetName + "\" }\n";
+				 "			add_named_threat = { threat = 5 name = \"War with [" + target->getTag() + ".getName]\" }\n";
 			newFocus->completionReward += "			declare_war_on = {\n";
 			newFocus->completionReward += "				type = annex_everything\n";
 			newFocus->completionReward += "				target = " + target->getTag() + "\n";
@@ -1284,6 +1197,6 @@ void HoI4WarCreator::addTradeEvents(std::shared_ptr<HoI4::Country> country,
 			continue;
 		}
 
-		theWorld->getEvents().createTradeEvent(*country, *greatPowerTarget);
+		theWorld->getEvents().createTradeEvent(*country, greatPowerTarget->getTag());
 	}
 }
