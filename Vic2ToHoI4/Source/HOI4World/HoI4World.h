@@ -198,8 +198,7 @@ class World: commonItems::parser
 		 const std::string& region,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
-		 Names& names,
-		 Localisation& hoi4Localisations);
+		 Names& names);
 
 	bool dominionIsReleasable(const Country& dominion);
 	void addProvincesToHomeAreas();
