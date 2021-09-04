@@ -1265,30 +1265,18 @@ void HoI4FocusTree::addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
 
 		for (const auto& warTarget: warTargets)
 		{
-			const auto& possibleWarTargetCountryName = warTarget->getName();
-			std::string warTargetCountryName;
-			if (possibleWarTargetCountryName)
-			{
-				warTargetCountryName = *possibleWarTargetCountryName;
-			}
-			else
-			{
-				Log(LogLevel::Warning) << "Could not determine war target country name for communist war focuses";
-				warTargetCountryName.clear();
-			}
+			const auto& warTargetTag = warTarget->getTag();
 
 			if (const auto& originalFocus = loadedFocuses.find("War"); originalFocus != loadedFocuses.end())
 			{
-				auto newFocus =
-					 originalFocus->second.makeTargetedCopy(Home->getTag(), warTarget->getTag(), hoi4Localisations);
-				newFocus->id = "War" + warTarget->getTag() + Home->getTag();
+				auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), warTargetTag, hoi4Localisations);
+				newFocus->id = "War" + warTargetTag + Home->getTag();
 				date dateAvailable = date("1938.1.1");
-				if (const auto& relations = Home->getRelations(warTarget->getTag()); relations)
+				if (const auto& relations = Home->getRelations(warTargetTag); relations)
 				{
 					dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
 				}
-				if (const auto& truceUntil = Home->getTruceUntil(warTarget->getTag());
-					 truceUntil && *truceUntil > dateAvailable)
+				if (const auto& truceUntil = Home->getTruceUntil(warTargetTag); truceUntil && *truceUntil > dateAvailable)
 				{
 					newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 				}
@@ -1298,14 +1286,14 @@ void HoI4FocusTree::addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
 				}
 				newFocus->xPos = nextFreeColumn;
 				newFocus->yPos = 2;
-				newFocus->updateFocusElement(newFocus->bypass, "$TARGET", warTarget->getTag());
-				newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", warTarget->getTag());
+				newFocus->updateFocusElement(newFocus->bypass, "$TARGET", warTargetTag);
+				newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", warTargetTag);
 				std::string warWithTargets;
 				if (warTargets.size() > 1)
 				{
 					for (const auto& otherTarget: warTargets)
 					{
-						if (otherTarget->getTag() == warTarget->getTag())
+						if (otherTarget->getTag() == warTargetTag)
 						{
 							continue;
 						}
@@ -1320,8 +1308,8 @@ void HoI4FocusTree::addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
 					}
 				}
 				newFocus->updateFocusElement(newFocus->aiWillDo, "#WAR_WITH_TARGETS", warWithTargets);
-				newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", warTargetCountryName);
-				newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", warTarget->getTag());
+				newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", "[" + warTargetTag + ".GetName]");
+				newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", warTargetTag);
 				focuses.push_back(newFocus);
 				nextFreeColumn += 2;
 			}
@@ -1340,8 +1328,6 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 {
 	// The Following 'if' statement prevents converter from generating focuses if annexationTargets.size > 1
 	// Keep this 'if' statement off until we figure out how to handle Fascist NF's
-	// if (annexationTargets.size() >= 1)
-	//{
 	if (const auto& originalFocus = loadedFocuses.find("The_third_way"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
@@ -1382,28 +1368,18 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 
 	for (const auto& target: annexationTargets)
 	{
-		const auto& possibleAnnexationTargetCountryName = target->getName();
-		std::string annexationTargetCountryName;
-		if (possibleAnnexationTargetCountryName)
-		{
-			annexationTargetCountryName = *possibleAnnexationTargetCountryName;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not determine annexation target country name for fascist annexation focuses";
-			annexationTargetCountryName.clear();
-		}
+		const auto& targetTag = target->getTag();
 
 		if (const auto& originalFocus = loadedFocuses.find("_anschluss_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
-			newFocus->id = Home->getTag() + "_anschluss_" + target->getTag();
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), targetTag, hoi4Localisations);
+			newFocus->id = Home->getTag() + "_anschluss_" + targetTag;
 			date dateAvailable = date("1937.1.1");
-			if (const auto& relations = Home->getRelations(target->getTag()); relations)
+			if (const auto& relations = Home->getRelations(targetTag); relations)
 			{
 				dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
 			}
-			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil && *truceUntil > dateAvailable)
+			if (const auto& truceUntil = Home->getTruceUntil(targetTag); truceUntil && *truceUntil > dateAvailable)
 			{
 				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 			}
@@ -1411,25 +1387,24 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 			{
 				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString() + "\n");
 			}
-			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", targetTag);
 			newFocus->xPos = nextFreeColumn;
 			newFocus->yPos = 2;
-			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", annexationTargetCountryName);
-			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", "[" + targetTag + ".GetName]");
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", targetTag);
 			newFocus->updateFocusElement(newFocus->completionReward,
 				 "$EVENTID",
 				 std::to_string(events.getCurrentNationFocusEventNum()));
 			focuses.push_back(newFocus);
 			nextFreeColumn += 2;
 
-			events.createAnnexEvent(*Home, *target);
+			events.createAnnexEvent(Home->getTag(), *target);
 		}
 		else
 		{
 			throw std::runtime_error("Could not load focus _anschluss_");
 		}
 	}
-	//}
 }
 
 void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
@@ -1474,24 +1449,14 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 	int sudetenFreeColumn = 1 - static_cast<int>(sudetenTargets.size());
 	for (const auto& target: sudetenTargets)
 	{
-		const auto& possibleSudetenTargetCountryName = target->getName();
-		std::string sudetenTargetCountryName;
-		if (possibleSudetenTargetCountryName)
-		{
-			sudetenTargetCountryName = *possibleSudetenTargetCountryName;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not determine annexation target country name for fascist sudeten focuses";
-			sudetenTargetCountryName.clear();
-		}
+		const auto& targetTag = target->getTag();
 
 		if (const auto& originalFocus = loadedFocuses.find("_sudeten_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
-			newFocus->id = Home->getTag() + "_sudeten_" + target->getTag();
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), targetTag, hoi4Localisations);
+			newFocus->id = Home->getTag() + "_sudeten_" + targetTag;
 			date dateAvailable = date("1938.1.1");
-			if (const auto& relations = Home->getRelations(target->getTag()); relations)
+			if (const auto& relations = Home->getRelations(targetTag); relations)
 			{
 				dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
 			}
@@ -1499,9 +1464,9 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 			newFocus->relativePositionId = "expand_the_reich" + Home->getTag();
 			newFocus->xPos = sudetenFreeColumn;
 			newFocus->yPos = 1;
-			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
-			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", sudetenTargetCountryName);
-			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", targetTag);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", "[" + targetTag + ".GetTag]");
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", targetTag);
 			newFocus->updateFocusElement(newFocus->completionReward,
 				 "$EVENTID",
 				 std::to_string(events.getCurrentNationFocusEventNum()));
@@ -1516,9 +1481,9 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 		// FINISH HIM
 		if (const auto& originalFocus = loadedFocuses.find("_finish_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag(), hoi4Localisations);
-			newFocus->id = Home->getTag() + "_finish_" + target->getTag();
-			if (const auto& truceUntil = Home->getTruceUntil(target->getTag()); truceUntil)
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), targetTag, hoi4Localisations);
+			newFocus->id = Home->getTag() + "_finish_" + targetTag;
+			if (const auto& truceUntil = Home->getTruceUntil(targetTag); truceUntil)
 			{
 				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 			}
@@ -1526,14 +1491,14 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 			{
 				newFocus->removePlaceholder(newFocus->available, "#DATE");
 			}
-			newFocus->updateFocusElement(newFocus->available, "$TARGET", target->getTag());
-			newFocus->prerequisites.push_back("= { focus =  " + Home->getTag() + "_sudeten_" + target->getTag() + " }");
-			newFocus->relativePositionId = Home->getTag() + "_sudeten_" + target->getTag();
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", targetTag);
+			newFocus->prerequisites.push_back("= { focus =  " + Home->getTag() + "_sudeten_" + targetTag + " }");
+			newFocus->relativePositionId = Home->getTag() + "_sudeten_" + targetTag;
 			newFocus->xPos = 0;
 			newFocus->yPos = 1;
-			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target->getTag());
-			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", sudetenTargetCountryName);
-			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target->getTag());
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", targetTag);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", "[" + targetTag + ".GetName]");
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", targetTag);
 			addFocus(newFocus);
 		}
 		else
@@ -1542,9 +1507,9 @@ void HoI4FocusTree::addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 		}
 
 		// events
-		if (demandedStates.contains(target->getTag()))
+		if (demandedStates.contains(targetTag))
 		{
-			events.createSudetenEvent(Home->getTag(), target->getTag(), demandedStates.at(target->getTag()));
+			events.createSudetenEvent(Home->getTag(), targetTag, demandedStates.at(targetTag));
 		}
 	}
 }
@@ -1609,20 +1574,9 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 	}
 
 	int GCfreeColumn = 1 - static_cast<int>(GCTargets.size());
-	for (const auto& GC: GCTargets)
+	for (const auto& greatPower: GCTargets)
 	{
-		const auto& possibleWarTargetCountryName = GC->getName();
-		std::string warTargetCountryName;
-		if (possibleWarTargetCountryName)
-		{
-			warTargetCountryName = *possibleWarTargetCountryName;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not determine war target country name for GP war focuses";
-			warTargetCountryName.clear();
-		}
-
+		const auto& greatPowerTag = greatPower->getTag();
 		// figuring out location of WG
 		if (const auto& originalFocus = loadedFocuses.find("GP_War"); originalFocus != loadedFocuses.end())
 		{
@@ -1631,14 +1585,14 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 			{
 				newFocus->prerequisites.push_back("= { focus = Alliance_" + ally->getTag() + Home->getTag() + " }");
 			}
-			newFocus->id = "GP_War" + GC->getTag() + Home->getTag();
-			newFocus->text += GC->getTag();
+			newFocus->id = "GP_War" + greatPowerTag + Home->getTag();
+			newFocus->text += greatPowerTag;
 			date dateAvailable = date("1939.1.1");
-			if (const auto& relations = Home->getRelations(GC->getTag()); relations)
+			if (const auto& relations = Home->getRelations(greatPowerTag); relations)
 			{
 				dateAvailable.increaseByMonths((200 + relations->getRelations()) / 16);
 			}
-			if (const auto& truceUntil = Home->getTruceUntil(GC->getTag()); truceUntil && *truceUntil > dateAvailable)
+			if (const auto& truceUntil = Home->getTruceUntil(greatPowerTag); truceUntil && *truceUntil > dateAvailable)
 			{
 				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + truceUntil->toString());
 			}
@@ -1657,13 +1611,13 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 				newFocus->xPos = nextFreeColumn;
 				newFocus->yPos = 0;
 			}
-			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", GC->getTag());
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", greatPowerTag);
 			newFocus->updateFocusElement(newFocus->aiWillDo, "$FACTOR", std::to_string(10 - GCTargets.size() * 5));
-			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", GC->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", greatPowerTag);
 			std::string warWithTargets;
 			for (const auto& otherTarget: GCTargets)
 			{
-				if (otherTarget->getTag() == GC->getTag())
+				if (otherTarget->getTag() == greatPowerTag)
 				{
 					continue;
 				}
@@ -1677,13 +1631,13 @@ void HoI4FocusTree::addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 				}
 			}
 			newFocus->updateFocusElement(newFocus->aiWillDo, "#WAR_WITH_TARGETS", warWithTargets);
-			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", warTargetCountryName);
-			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", GC->getTag());
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", "[" + greatPowerTag + ".GetName]");
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", greatPowerTag);
 			focuses.push_back(newFocus);
 			GCfreeColumn += 2;
 			hoi4Localisations.copyFocusLocalisations("GPWar", newFocus->text);
-			hoi4Localisations.updateLocalisationText(newFocus->text, "$TARGET", GC->getTag());
-			hoi4Localisations.updateLocalisationText(newFocus->text + "_desc", "$TARGET", GC->getTag());
+			hoi4Localisations.updateLocalisationText(newFocus->text, "$TARGET", greatPowerTag);
+			hoi4Localisations.updateLocalisationText(newFocus->text + "_desc", "$TARGET", greatPowerTag);
 		}
 		else
 		{
