@@ -505,6 +505,10 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		{
 			continue;
 		}
+		if (owner->second->getPrimaryCulture() == "alien" || owner->second->getPrimaryCulture() == "undead")
+		{
+			continue;
+		}
 		const auto& ownerCapitalProvince = owner->second->getCapitalProvince();
 		if (!ownerCapitalProvince)
 		{
