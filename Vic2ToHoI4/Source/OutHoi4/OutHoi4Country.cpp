@@ -768,7 +768,7 @@ void outputFactions(std::ostream& output, const std::string& tag, const std::opt
 	{
 		const std::string allianceName = faction->getFactionName().has_value()
 														 ? faction->getFactionName().value()
-														 : ("\"Alliance Of [" + tag + ".getName]\"");
+														 : ("\"Alliance Of [" + tag + ".GetName]\"");
 		output << "create_faction = " + allianceName + "\n";
 		for (const auto& factionMember: faction->getMembers())
 		{
