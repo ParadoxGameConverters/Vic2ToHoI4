@@ -63,7 +63,7 @@ std::optional<Vic2::LanguageToLocalisationMap> getConfigurableDominionNames(
 	return std::nullopt;
 }
 
-	
+
 Vic2::LanguageToLocalisationMap configureDominionNames(const Vic2::LanguageToLocalisationMap& configurableDominionNames,
 	 const Vic2::LanguageToLocalisationMap& ownerNames,
 	 const Vic2::LanguageToLocalisationMap& ownerAdjectives)

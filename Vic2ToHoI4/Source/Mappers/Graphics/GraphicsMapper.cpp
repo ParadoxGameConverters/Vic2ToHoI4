@@ -403,8 +403,9 @@ std::set<std::string> Mappers::GraphicsMapper::loadPortraitMappings(const ideolo
 std::string Mappers::GraphicsMapper::toLower(const std::string& oldString)
 {
 	std::string newString = oldString;
-	std::transform(newString.begin(), newString.end(), newString.begin(),
-		[](unsigned char c){ return std::tolower(c); });
+	std::transform(newString.begin(), newString.end(), newString.begin(), [](unsigned char c) {
+		return std::tolower(c);
+	});
 	return newString;
 }
 
