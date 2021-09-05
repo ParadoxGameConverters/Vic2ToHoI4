@@ -5,10 +5,10 @@
 # Freed name and adjective yet to be implemented
 
 canada = {
-	name = "$canada$"
-	adjective = "$canada_adj$"
-	freed_name = "$canada$"
-	freed_adjective = "$canada_adj$"
+	name = "canada"
+	adjective = "canada_adj"
+	freed_name = "canada"
+	freed_adjective = "canada_adj"
 	level = autonomy_colony
 	provinces = {
 		# Alaska
@@ -53,10 +53,10 @@ canada = {
 }
 
 california = {
-	name = "$california$"
-	adjective = "$california_adj$"
-	freed_name = "$california$"
-	freed_adjective = "$california_adj$"
+	name = "california"
+	adjective = "california_adj"
+	freed_name = "california"
+	freed_adjective = "california_adj"
 	level = autonomy_colony
 	provinces = {
 		# Washington
@@ -91,10 +91,10 @@ california = {
 	}	
 }
 us_central = {
-	name = "$louisiana$"
-	adjective = "$louisiana_adj$"
-	freed_name = "$louisiana$"
-	freed_adjective = "$louisiana_adj$"
+	name = "louisiana"
+	adjective = "louisiana_adj"
+	freed_name = "louisiana"
+	freed_adjective = "louisiana_adj"
 	level = autonomy_colony
 	provinces = {
 		# North Dakota
@@ -126,10 +126,10 @@ us_central = {
 	}
 }
 us_north_east = {
-	name = "$thirteen_colonies$"
-	adjective = "$thirteen_colonies_adj$"
-	freed_name = "$great_columbia$"
-	freed_adjective = "$great_columbia_adj$"
+	name = "thirteen_colonies"
+	adjective = "thirteen_colonies_adj"
+	freed_name = "great_columbia"
+	freed_adjective = "great_columbia_adj"
 	level = autonomy_colony
 	provinces = {
 		# Wisconsin
@@ -174,10 +174,10 @@ us_north_east = {
 	}
 }
 dixieland = {
-	name = "$dixie$"
-	adjective = "$dixie_adj$"
-	freed_name = "$dixie$"
-	freed_adjective = "$dixie_adj$"
+	name = "dixie"
+	adjective = "dixie_adj"
+	freed_name = "dixie"
+	freed_adjective = "dixie_adj"
 	level = autonomy_colony
 	provinces = {
 		# Tennessee
@@ -203,10 +203,10 @@ dixieland = {
 	}
 }
 britain = {
-	name = "$britain$"
-	adjective = "$britain_adj$"
-	freed_name = "$britain$"
-	freed_adjective = "$britain_adj$"
+	name = "britain"
+	adjective = "britain_adj"
+	freed_name = "britain"
+	freed_adjective = "britain_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Ulster
@@ -247,10 +247,10 @@ britain = {
 	}
 }
 scandinavia = {
-	name = "$scandinavia$"
-	adjective = "$scandinavia_adj$"
-	freed_name = "$scandinavia$"
-	freed_adjective = "$scandinavia_adj$"
+	name = "scandinavia"
+	adjective = "scandinavia_adj"
+	freed_name = "scandinavia"
+	freed_adjective = "scandinavia_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Iceland & Greenland
@@ -294,10 +294,10 @@ scandinavia = {
 	}
 }
 baltic = {
-	name = "$baltic$"
-	adjective = "$baltic_adj$"
-	freed_name = "$baltic$"
-	freed_adjective = "$baltic_adj$"
+	name = "baltic"
+	adjective = "baltic_adj"
+	freed_name = "baltic"
+	freed_adjective = "baltic_adj"
 	level = autonomy_colony
 	provinces = {
 		# Estonia
@@ -311,10 +311,10 @@ baltic = {
 	}
 }
 dutchland = {
-	name = "$netherlands$"
-	adjective = "$netherlands_adj$"
-	freed_name = "$dutchland$"
-	freed_adjective = "$dutchland_adj$"
+	name = "netherlands"
+	adjective = "netherlands_adj"
+	freed_name = "dutchland"
+	freed_adjective = "dutchland_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Holland
@@ -334,10 +334,10 @@ dutchland = {
 	}
 }
 france = {
-	name = "$france$"
-	adjective = "$france_adj$"
-	freed_name = "$france$"
-	freed_adjective = "$france_adj$"
+	name = "france"
+	adjective = "france_adj"
+	freed_name = "france"
+	freed_adjective = "france_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Picardie
@@ -399,10 +399,10 @@ france = {
 	}
 }
 iberia = {
-	name = "$iberia$"
-	adjective = "$iberia_adj$"
-	freed_name = "$iberia$"
-	freed_adjective = "$iberia_adj$"
+	name = "iberia"
+	adjective = "iberia_adj"
+	freed_name = "iberia"
+	freed_adjective = "iberia_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Galicia
@@ -446,10 +446,10 @@ iberia = {
 	}
 }
 germany = {
-	name = "$germany$"
-	adjective = "$germany_adj$"
-	freed_name = "$germany$"
-	freed_adjective = "$germany_adj$"
+	name = "germany"
+	adjective = "germany_adj"
+	freed_name = "germany"
+	freed_adjective = "germany_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Schleswig-Holstein
@@ -517,10 +517,10 @@ germany = {
 	}
 }
 austria = {
-	name = "$mitteleuropa$"
-	adjective = "$mitteleuropa_adj$"
-	freed_name = "$kakania$"
-	freed_adjective = "$kakania_adj$"
+	name = "mitteleuropa"
+	adjective = "mitteleuropa_adj"
+	freed_name = "kakania"
+	freed_adjective = "kakania_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# East Switzerland
@@ -555,10 +555,10 @@ austria = {
 	}
 }
 hungary = {
-	name = "$pannonia$"
-	adjective = "$pannonia_adj$"
-	freed_name = "$hungary$"
-	freed_adjective = "$hungary_adj$"
+	name = "pannonia"
+	adjective = "pannonia_adj"
+	freed_name = "hungary"
+	freed_adjective = "hungary_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Transdanubia
@@ -578,10 +578,10 @@ hungary = {
 	}
 }
 romania = {
-	name = "$wallachia$"
-	adjective = "$wallachia_adj$"
-	freed_name = "$romania$"
-	freed_adjective = "$romania_adj$"
+	name = "wallachia"
+	adjective = "wallachia_adj"
+	freed_name = "romania"
+	freed_adjective = "romania_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Moldavia
@@ -598,10 +598,10 @@ romania = {
 	}
 }
 poland = {
-	name = "$poland$"
-	adjective = "$poland_adj$"
-	freed_name = "$poland$"
-	freed_adjective = "$poland_adj$"
+	name = "poland"
+	adjective = "poland_adj"
+	freed_name = "poland"
+	freed_adjective = "poland_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Mazowieckie
@@ -615,10 +615,10 @@ poland = {
 	}
 }
 italy = {
-	name = "$italy$"
-	adjective = "$italy_adj$"
-	freed_name = "$italy$"
-	freed_adjective = "$italy_adj$"
+	name = "italy"
+	adjective = "italy_adj"
+	freed_name = "italy"
+	freed_adjective = "italy_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Piemonte
@@ -662,10 +662,10 @@ italy = {
 	}
 }
 yugoslavia = {
-	name = "$balkans$"
-	adjective = "$balkans_adj$"
-	freed_name = "$yugoslavia$"
-	freed_adjective = "$yugoslavia_adj$"
+	name = "balkans"
+	adjective = "balkans_adj"
+	freed_name = "yugoslavia"
+	freed_adjective = "yugoslavia_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Slovenia
@@ -697,10 +697,10 @@ yugoslavia = {
 	}
 }
 bulgaria = {
-	name = "$bulgaria$"
-	adjective = "$bulgaria_adj$"
-	freed_name = "$bulgaria$"
-	freed_adjective = "$bulgaria_adj$"
+	name = "bulgaria"
+	adjective = "bulgaria_adj"
+	freed_name = "bulgaria"
+	freed_adjective = "bulgaria_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# North Macedonia
@@ -714,10 +714,10 @@ bulgaria = {
 	}
 }
 greece = {
-	name = "$greece$"
-	adjective = "$greece_adj$"
-	freed_name = "$greece$"
-	freed_adjective = "$greece_adj$"
+	name = "greece"
+	adjective = "greece_adj"
+	freed_name = "greece"
+	freed_adjective = "greece_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# West Macedonia
@@ -746,10 +746,10 @@ greece = {
 	}
 }
 turkey = {
-	name = "$anatolia$"
-	adjective = "$anatolia_adj$"
-	freed_name = "$turkey$"
-	freed_adjective = "$turkey_adj$"
+	name = "anatolia"
+	adjective = "anatolia_adj"
+	freed_name = "turkey"
+	freed_adjective = "turkey_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Hudavendigar
@@ -778,10 +778,10 @@ turkey = {
 	}
 }
 levant = {
-	name = "$levant$"
-	adjective = "$levant_adj$"
-	freed_name = "$ash_sham$"
-	freed_adjective = "$ash_sham_adj$"
+	name = "levant"
+	adjective = "levant_adj"
+	freed_name = "ash_sham"
+	freed_adjective = "ash_sham_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Aleppo
@@ -801,10 +801,10 @@ levant = {
 	}
 }
 iraq = {
-	name = "$mesopotamia$"
-	adjective = "$mesopotamia_adj$"
-	freed_name = "$iraq$"
-	freed_adjective = "$iraq_adj$"
+	name = "mesopotamia"
+	adjective = "mesopotamia_adj"
+	freed_name = "iraq"
+	freed_adjective = "iraq_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Mosul
@@ -818,10 +818,10 @@ iraq = {
 	}
 }
 belarus = {
-	name = "$white_russia$"
-	adjective = "$white_russia_adj$"
-	freed_name = "$belarus$"
-	freed_adjective = "$belarus_adj$"
+	name = "white_russia"
+	adjective = "white_russia_adj"
+	freed_name = "belarus"
+	freed_adjective = "belarus_adj"
 	level = autonomy_colony
 	provinces = {
 		# Minsk
@@ -835,10 +835,10 @@ belarus = {
 	}
 }
 ukraine = {
-	name = "$little_russia$"
-	adjective = "$little_russia_adj$"
-	freed_name = "$ukraine$"
-	freed_adjective = "$ukraine_adj$"
+	name = "little_russia"
+	adjective = "little_russia_adj"
+	freed_name = "ukraine"
+	freed_adjective = "ukraine_adj"
 	level = autonomy_colony
 	provinces = {
 		# Kiev
@@ -858,10 +858,10 @@ ukraine = {
 	}
 }
 russia = {
-	name = "$russia$"
-	adjective = "$russia_adj$"
-	freed_name = "$russia$"
-	freed_adjective = "$russia_adj$"
+	name = "russia"
+	adjective = "russia_adj"
+	freed_name = "russia"
+	freed_adjective = "russia_adj"
 	level = autonomy_colony
 	provinces = {
 		# Kursk
@@ -920,10 +920,10 @@ russia = {
 	}
 }
 siberia = {
-	name = "$siberia$"
-	adjective = "$siberia_adj$"
-	freed_name = "$siberia$"
-	freed_adjective = "$siberia_adj$"
+	name = "siberia"
+	adjective = "siberia_adj"
+	freed_name = "siberia"
+	freed_adjective = "siberia_adj"
 	level = autonomy_colony
 	provinces = {
 		# Ural
@@ -985,10 +985,10 @@ siberia = {
 	}
 }
 transcaucasia = {
-	name = "$transcaucasia$"
-	adjective = "$transcaucasia_adj$"
-	freed_name = "$transcaucasia$"
-	freed_adjective = "$transcaucasia_adj$"
+	name = "transcaucasia"
+	adjective = "transcaucasia_adj"
+	freed_name = "transcaucasia"
+	freed_adjective = "transcaucasia_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Georgia - Tbilisi
@@ -1002,10 +1002,10 @@ transcaucasia = {
 	}
 }
 persia = {
-	name = "$persia$"
-	adjective = "$persia_adj$"
-	freed_name = "$iran$"
-	freed_adjective = "$iran_adj$"
+	name = "persia"
+	adjective = "persia_adj"
+	freed_name = "iran"
+	freed_adjective = "iran_adj"
 	level = autonomy_colony
 	provinces = {
 		# Tabriz
@@ -1043,10 +1043,10 @@ persia = {
 	}
 }
 arabia = {
-	name = "$arabia$"
-	adjective = "$arabia_adj$"
-	freed_name = "$arabia$"
-	freed_adjective = "$arabia_adj$"
+	name = "arabia"
+	adjective = "arabia_adj"
+	freed_name = "arabia"
+	freed_adjective = "arabia_adj"
 	level = autonomy_colony
 	provinces = {
 		# Hedjaz
@@ -1069,10 +1069,10 @@ arabia = {
 	}
 }
 central_asia = {
-	name = "$central_asia$"
-	adjective = "$central_asia_adj$"
-	freed_name = "$merkezia$"
-	freed_adjective = "$merkezia_adj$"
+	name = "central_asia"
+	adjective = "central_asia_adj"
+	freed_name = "merkezia"
+	freed_adjective = "merkezia_adj"
 	level = autonomy_colony
 	provinces = {
 		# Akmolinsk
@@ -1098,10 +1098,10 @@ central_asia = {
 	}
 }
 south_asia = {
-	name = "$raj$"
-	adjective = "$raj_adj$"
-	freed_name = "$india$"
-	freed_adjective = "$india_adj$"
+	name = "raj"
+	adjective = "raj_adj"
+	freed_name = "india"
+	freed_adjective = "india_adj"
 	level = autonomy_colony
 	provinces = {
 		# Baluchistan
@@ -1175,10 +1175,10 @@ south_asia = {
 	}
 }
 burma = {
-	name = "$burma$"
-	adjective = "$burma_adj$"
-	freed_name = "$myanmar$"
-	freed_adjective = "$myanmar_adj$"
+	name = "burma"
+	adjective = "burma_adj"
+	freed_name = "myanmar"
+	freed_adjective = "myanmar_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Pegu
@@ -1195,10 +1195,10 @@ burma = {
 	}
 }
 siam = {
-	name = "$siam$"
-	adjective = "$siam_adj$"
-	freed_name = "$thailand$"
-	freed_adjective = "$thailand_adj$"
+	name = "siam"
+	adjective = "siam_adj"
+	freed_name = "thailand"
+	freed_adjective = "thailand_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Bangkok
@@ -1212,10 +1212,10 @@ siam = {
 	}
 }
 indochina = {
-	name = "$indochina$"
-	adjective = "$indochina_adj$"
-	freed_name = "$dongduong$"
-	freed_adjective = "$dongduong_adj$"
+	name = "indochina"
+	adjective = "indochina_adj"
+	freed_name = "dongduong"
+	freed_adjective = "dongduong_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Laos
@@ -1235,10 +1235,10 @@ indochina = {
 	}
 }
 malaysia = {
-	name = "$malaya$"
-	adjective = "$malaya_adj$"
-	freed_name = "$malaysia$"
-	freed_adjective = "$malaysia_adj$"
+	name = "malaya"
+	adjective = "malaya_adj"
+	freed_name = "malaysia"
+	freed_adjective = "malaysia_adj"
 	level = autonomy_colony
 	provinces = {
 		# Malaya
@@ -1249,10 +1249,10 @@ malaysia = {
 	}
 }
 indonesia = {
-	name = "$east_indies$"
-	adjective = "$east_indies_adj$"
-	freed_name = "$indonesia$"
-	freed_adjective = "$indonesia_adj$"
+	name = "east_indies"
+	adjective = "east_indies_adj"
+	freed_name = "indonesia"
+	freed_adjective = "indonesia_adj"
 	level = autonomy_colony
 	provinces = {
 		# Sumatra
@@ -1278,10 +1278,10 @@ indonesia = {
 	}
 }
 philippines = {
-	name = "$philippines$"
-	adjective = "$philippines_adj$"
-	freed_name = "$philippines$"
-	freed_adjective = "$philippines_adj$"
+	name = "philippines"
+	adjective = "philippines_adj"
+	freed_name = "philippines"
+	freed_adjective = "philippines_adj"
 	level = autonomy_colony
 	provinces = {
 		# Luzón
@@ -1295,10 +1295,10 @@ philippines = {
 	}
 }
 china = {
-	name = "$china$"
-	adjective = "$china_adj$"
-	freed_name = "$china$"
-	freed_adjective = "$china_adj$"
+	name = "china"
+	adjective = "china_adj"
+	freed_name = "china"
+	freed_adjective = "china_adj"
 	level = autonomy_colony
 	provinces = {
 		# Mongolia
@@ -1397,10 +1397,10 @@ china = {
 }
 	
 korea = {
-	name = "$korea$"
-	adjective = "$korea_adj$"
-	freed_name = "$korea$"
-	freed_adjective = "$korea_adj$"
+	name = "korea"
+	adjective = "korea_adj"
+	freed_name = "korea"
+	freed_adjective = "korea_adj"
 	level = autonomy_colony
 	provinces = {
 		# Pyongyang
@@ -1417,10 +1417,10 @@ korea = {
 	}
 }
 japan = {
-	name = "$japan$"
-	adjective = "$japan_adj$"
-	freed_name = "$japan$"
-	freed_adjective = "$japan_adj$"
+	name = "japan"
+	adjective = "japan_adj"
+	freed_name = "japan"
+	freed_adjective = "japan_adj"
 	level = autonomy_colony
 	provinces = {
 
@@ -1450,10 +1450,10 @@ japan = {
 	}
 }
 maghreb = {
-	name = "$maghreb$"
-	adjective = "$maghreb_adj$"
-	freed_name = "$maghreb$"
-	freed_adjective = "$maghreb_adj$"
+	name = "maghreb"
+	adjective = "maghreb_adj"
+	freed_name = "maghreb"
+	freed_adjective = "maghreb_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 
@@ -1491,10 +1491,10 @@ maghreb = {
 }
 
 libya = {
-	name = "$libya$"
-	adjective = "$libya_adj$"
-	freed_name = "$libya$"
-	freed_adjective = "$libya_adj$"
+	name = "libya"
+	adjective = "libya_adj"
+	freed_name = "libya"
+	freed_adjective = "libya_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Tunisia
@@ -1517,10 +1517,10 @@ libya = {
 	}
 }
 egypt = {
-	name = "$egypt$"
-	adjective = "$egypt_adj$"
-	freed_name = "$egypt$"
-	freed_adjective = "$egypt_adj$"
+	name = "egypt"
+	adjective = "egypt_adj"
+	freed_name = "egypt"
+	freed_adjective = "egypt_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 
@@ -1544,10 +1544,10 @@ egypt = {
 	}
 }
 western_africa = {
-	name = "$west_africa$"
-	adjective = "$west_africa_adj$"
-	freed_name = "$afrique_occidentale$"
-	freed_adjective = "$afrique_occidentale_adj$"
+	name = "west_africa"
+	adjective = "west_africa_adj"
+	freed_name = "afrique_occidentale"
+	freed_adjective = "afrique_occidentale_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 
@@ -1616,10 +1616,10 @@ western_africa = {
 	}
 }
 sudan = {
-	name = "$sudan$"
-	adjective = "$sudan_adj$"
-	freed_name = "$sudan$"
-	freed_adjective = "$sudan_adj$"
+	name = "sudan"
+	adjective = "sudan_adj"
+	freed_name = "sudan"
+	freed_adjective = "sudan_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Sudan
@@ -1636,10 +1636,10 @@ sudan = {
 	}
 }
 abyssinia = {
-	name = "$abyssinia$"
-	adjective = "$abyssinia_adj$"
-	freed_name = "$abyssinia$"
-	freed_adjective = "$abyssinia_adj$"
+	name = "abyssinia"
+	adjective = "abyssinia_adj"
+	freed_name = "abyssinia"
+	freed_adjective = "abyssinia_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 
@@ -1660,10 +1660,10 @@ abyssinia = {
 	}
 }
 nigeria = {
-	name = "$nigeria$"
-	adjective = "$nigeria_adj$"
-	freed_name = "$nigeria$"
-	freed_adjective = "$nigeria_adj$"
+	name = "nigeria"
+	adjective = "nigeria_adj"
+	freed_name = "nigeria"
+	freed_adjective = "nigeria_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 
@@ -1690,10 +1690,10 @@ nigeria = {
 	}
 }
 congo = {
-	name = "$congo$"
-	adjective = "$congo_adj$"
-	freed_name = "$congo$"
-	freed_adjective = "$congo_adj$"
+	name = "congo"
+	adjective = "congo_adj"
+	freed_name = "congo"
+	freed_adjective = "congo_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 
@@ -1717,10 +1717,10 @@ congo = {
 	}
 }
 equatorial_africa = {
-	name = "$equatorial_africa$"
-	adjective = "$equatorial_africa_adj$"
-	freed_name = "$equatorial_africa$"
-	freed_adjective = "$equatorial_africa_adj$"
+	name = "equatorial_africa"
+	adjective = "equatorial_africa_adj"
+	freed_name = "equatorial_africa"
+	freed_adjective = "equatorial_africa_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Waddai
@@ -1746,10 +1746,10 @@ equatorial_africa = {
 	}
 }
 angola = {
-	name = "$angola$"
-	adjective = "$angola_adj$"
-	freed_name = "$angola$"
-	freed_adjective = "$angola_adj$"
+	name = "angola"
+	adjective = "angola_adj"
+	freed_name = "angola"
+	freed_adjective = "angola_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# North Angola
@@ -1763,10 +1763,10 @@ angola = {
 	}
 }
 east_africa = {
-	name = "$east_africa$"
-	adjective = "$east_africa_adj$"
-	freed_name = "$swahilia$"
-	freed_adjective = "$swahilia_adj$"
+	name = "east_africa"
+	adjective = "east_africa_adj"
+	freed_name = "swahilia"
+	freed_adjective = "swahilia_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Uganda
@@ -1786,10 +1786,10 @@ east_africa = {
 	}
 }
 mozambique = {
-	name = "$mozambique$"
-	adjective = "$mozambique_adj$"
-	freed_name = "$mozambique$"
-	freed_adjective = "$mozambique_adj$"
+	name = "mozambique"
+	adjective = "mozambique_adj"
+	freed_name = "mozambique"
+	freed_adjective = "mozambique_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		
@@ -1807,10 +1807,10 @@ mozambique = {
 	}
 }
 southern_africa = {
-	name = "$south_africa$"
-	adjective = "$south_africa_adj$"
-	freed_name = "$south_africa$"
-	freed_adjective = "$south_africa_adj$"
+	name = "south_africa"
+	adjective = "south_africa_adj"
+	freed_name = "south_africa"
+	freed_adjective = "south_africa_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 
@@ -1840,10 +1840,10 @@ southern_africa = {
 	}
 }
 rhodesia = {
-	name = "$rhodesia$"
-	adjective = "$rhodesia_adj$"
-	freed_name = "$rhodesia$"
-	freed_adjective = "$rhodesia_adj$"
+	name = "rhodesia"
+	adjective = "rhodesia_adj"
+	freed_name = "rhodesia"
+	freed_adjective = "rhodesia_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 		# Zambia
@@ -1860,10 +1860,10 @@ rhodesia = {
 	}
 }
 madagascar = {
-	name = "$madagascar$"
-	adjective = "$madagascar_adj$"
-	freed_name = "$madagascar$"
-	freed_adjective = "$madagascar_adj$"
+	name = "madagascar"
+	adjective = "madagascar_adj"
+	freed_name = "madagascar"
+	freed_adjective = "madagascar_adj"
 	level = autonomy_integrated_puppet
 	provinces = {
 
@@ -1884,10 +1884,10 @@ madagascar = {
 	}
 }
 mexico = {
-	name = "$mexico$"
-	adjective = "$mexico_adj$"
-	freed_name = "$mexico$"
-	freed_adjective = "$mexico_adj$"
+	name = "mexico"
+	adjective = "mexico_adj"
+	freed_name = "mexico"
+	freed_adjective = "mexico_adj"
 	level = autonomy_colony
 	provinces = {
 
@@ -1926,10 +1926,10 @@ mexico = {
 	}
 }
 central_america = {
-	name = "$central_america$"
-	adjective = "$central_america_adj$"
-	freed_name = "$frca$"
-	freed_adjective = "$central_america_adj$"
+	name = "central_america"
+	adjective = "central_america_adj"
+	freed_name = "frca"
+	freed_adjective = "central_america_adj"
 	level = autonomy_colony
 	provinces = {
 
@@ -1950,10 +1950,10 @@ central_america = {
 	}
 }
 caribbean = {
-	name = "$caribbean$"
-	adjective = "$caribbean_adj$"
-	freed_name = "$caribbean$"
-	freed_adjective = "$caribbean_adj$"
+	name = "caribbean"
+	adjective = "caribbean_adj"
+	freed_name = "caribbean"
+	freed_adjective = "caribbean_adj"
 	level = autonomy_colony
 	provinces = {
 
@@ -1980,10 +1980,10 @@ caribbean = {
 	}
 }
 gran_colombia = {
-	name = "$new_granada$"
-	adjective = "$new_granada_adj$"
-	freed_name = "$gran_colombia$"
-	freed_adjective = "$gran_colombia_adj$"
+	name = "new_granada"
+	adjective = "new_granada_adj"
+	freed_name = "gran_colombia"
+	freed_adjective = "gran_colombia_adj"
 	level = autonomy_colony
 	provinces = {
 
@@ -2022,10 +2022,10 @@ gran_colombia = {
 	}
 }
 peru_bolivia = {
-	name = "$peru_bolivia$"
-	adjective = "$peru_bolivia_adj$"
-	freed_name = "$peru_bolivia$"
-	freed_adjective = "$peru_bolivia_adj$"
+	name = "peru_bolivia"
+	adjective = "peru_bolivia_adj"
+	freed_name = "peru_bolivia"
+	freed_adjective = "peru_bolivia_adj"
 	level = autonomy_colony
 	provinces = {
 		# Cajamarca
@@ -2060,10 +2060,10 @@ peru_bolivia = {
 	}
 }
 patagonia = {
-	name = "$rio_de_la_plata$"
-	adjective = "$rio_de_la_plata_adj$"
-	freed_name = "$platinea$"
-	freed_adjective = "$rio_de_la_plata_adj$"
+	name = "rio_de_la_plata"
+	adjective = "rio_de_la_plata_adj"
+	freed_name = "platinea"
+	freed_adjective = "rio_de_la_plata_adj"
 	level = autonomy_colony
 	provinces = {
 
@@ -2126,10 +2126,10 @@ patagonia = {
 	}
 }
 brazil = {
-	name = "$brazil$"
-	adjective = "$brazil_adj$"
-	freed_name = "$brazil$"
-	freed_adjective = "$brazil_adj$"
+	name = "brazil"
+	adjective = "brazil_adj"
+	freed_name = "brazil"
+	freed_adjective = "brazil_adj"
 	level = autonomy_colony
 	provinces = {
 
@@ -2168,10 +2168,10 @@ brazil = {
 	}
 }
 australia = {
-	name = "$australia$"
-	adjective = "$australia_adj$"
-	freed_name = "$australia$"
-	freed_adjective = "$australia_adj$"
+	name = "australia"
+	adjective = "australia_adj"
+	freed_name = "australia"
+	freed_adjective = "australia_adj"
 	level = autonomy_colony
 	provinces = {
 
@@ -2210,10 +2210,10 @@ australia = {
 	}
 }
 oceania = {
-	name = "$pacific$"
-	adjective = "$pacific_adj$"
-	freed_name = "$oligonesia$"
-	freed_adjective = "$oligonesia_adj$"
+	name = "pacific"
+	adjective = "pacific_adj"
+	freed_name = "oligonesia"
+	freed_adjective = "oligonesia_adj"
 	level = autonomy_colony
 	provinces = {
 		# Marshall Islands
