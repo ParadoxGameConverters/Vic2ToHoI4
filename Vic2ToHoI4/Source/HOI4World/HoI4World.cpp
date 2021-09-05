@@ -491,12 +491,21 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		}
 		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
 
-		const auto& owner = countries.find(state.getOwner());
+		const auto& ownerTag = state.getOwner();
+		if (ownerTag == "UCV")
+		{
+			continue;
+		}
+		const auto& owner = countries.find(ownerTag);
 		if (owner == countries.end())
 		{
 			continue;
 		}
 		if (owner->second->isProvinceInHomeArea(*provinces.begin()))
+		{
+			continue;
+		}
+		if (owner->second->getPrimaryCulture() == "alien" || owner->second->getPrimaryCulture() == "undead")
 		{
 			continue;
 		}
