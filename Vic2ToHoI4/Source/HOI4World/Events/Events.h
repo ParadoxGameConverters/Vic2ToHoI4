@@ -42,7 +42,7 @@ class Events: commonItems::parser
 	class Builder;
 
 	void createFactionEvents(const Country& leader, Mappers::FactionNameMapper& factionNameMapper);
-	void createAnnexEvent(const std::string& annexerTag, const Country& annexed);
+	void createAnnexEvent(const Country& annexer, const Country& annexed);
 	void createSudetenEvent(const std::string& annexerTag,
 		 const std::string& annexedTag,
 		 const std::vector<int>& claimedStates);

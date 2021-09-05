@@ -140,8 +140,33 @@ void HoI4::Events::createFactionEvents(const Country& leader, Mappers::FactionNa
 }
 
 
-void HoI4::Events::createAnnexEvent(const std::string& annexerTag, const Country& annexed)
+void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annexed)
 {
+	auto possibleAnnexerName = annexer.getName();
+	std::string annexerName;
+	if (possibleAnnexerName)
+	{
+		annexerName = *possibleAnnexerName;
+	}
+	else
+	{
+		Log(LogLevel::Warning) << "Could not determine annexer name for annexation events";
+		annexerName.clear();
+	}
+
+	auto possibleAnnexedName = annexed.getName();
+	std::string annexedName;
+	if (possibleAnnexedName)
+	{
+		annexedName = *possibleAnnexedName;
+	}
+	else
+	{
+		Log(LogLevel::Warning) << "Could not determine annexed country name for annexation events";
+		annexedName.clear();
+	}
+
+	const auto& annexerTag = annexer.getTag();
 	const auto& annexedTag = annexed.getTag();
 
 	Event annexEvent;
@@ -269,8 +294,8 @@ void HoI4::Events::createAnnexEvent(const std::string& annexerTag, const Country
 	}
 	acceptedOption.giveScriptBlock("annex_country = { target = " + annexed.getTag() + " transfer_troops = yes }");
 	acceptedOption.giveScriptBlock("add_political_power = 50");
-	acceptedOption.giveScriptBlock("add_named_threat = { threat = 2 name = \"[" + annexerTag + ".GetName] annexed [" +
-											 annexedTag + ".GetName]\" }");
+	acceptedOption.giveScriptBlock(
+		 "add_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }");
 	acceptedOption.giveScriptBlock("set_country_flag = " + annexed.getTag() + "_annexed");
 	acceptedEvent.giveOption(std::move(acceptedOption));
 

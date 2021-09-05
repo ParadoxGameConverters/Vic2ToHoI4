@@ -1117,6 +1117,18 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(st
 		std::set<std::string> Allies = country->getAllies();
 		if (!Allies.contains(target->getTag()))
 		{
+			auto possibleTargetName = target->getName();
+			std::string targetName;
+			if (possibleTargetName)
+			{
+				targetName = *possibleTargetName;
+			}
+			else
+			{
+				Log(LogLevel::Warning) << "Could not set target name in great power war creator";
+				targetName.clear();
+			}
+
 			countriesAtWar.push_back(findFaction(country));
 
 			std::shared_ptr<HoI4Focus> newFocus = std::make_shared<HoI4Focus>();
@@ -1167,7 +1179,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(st
 			newFocus->bypass += " 	}";
 			newFocus->completionReward += "= {\n";
 			newFocus->completionReward +=
-				 "			add_named_threat = { threat = 5 name = \"War with [" + target->getTag() + ".GetName]\" }\n";
+				 "			add_named_threat = { threat = 5 name = \"War with " + targetName + "\" }\n";
 			newFocus->completionReward += "			declare_war_on = {\n";
 			newFocus->completionReward += "				type = annex_everything\n";
 			newFocus->completionReward += "				target = " + target->getTag() + "\n";
