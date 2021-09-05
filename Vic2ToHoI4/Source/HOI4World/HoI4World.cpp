@@ -490,7 +490,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
-		
+
 		const auto& ownerTag = state.getOwner();
 		if (ownerTag == "UCV")
 		{
