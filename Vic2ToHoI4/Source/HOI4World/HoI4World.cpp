@@ -64,8 +64,13 @@ namespace
 void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
 	 const std::map<int, HoI4::Province>& theProvinces)
 {
-	for (const auto provinceNumber: theProvinces | std::views::keys)
+	for (const auto& [provinceNumber, province]: theProvinces)
 	{
+		if (!province.isLandProvince())
+		{
+			continue;
+		}
+
 		if (const auto region = theRegions.getRegion(provinceNumber); !region.has_value())
 		{
 			Log(LogLevel::Warning) << "Province " << provinceNumber << " was not assigned to a region.";
