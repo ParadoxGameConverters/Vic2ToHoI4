@@ -74,8 +74,8 @@ class Country
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
 
-	void addTag(const Country& owner, const std::string& tag_, Names& names, Localisation& hoi4Localisations);
 	void addTag(const std::string& tag_, Names& names, Localisation& hoi4Localisations);
+	void addMonarchIdea(const Country& owner);
 	void determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);

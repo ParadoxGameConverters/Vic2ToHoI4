@@ -671,23 +671,20 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
 }
 
 
-void HoI4::Country::addTag(const Country& owner, const std::string& tag_, Names& names, Localisation& hoi4Localisations)
-{
-	tag = tag_;
-	determineFilename();
-	initIdeas(names, hoi4Localisations);
-	if (owner.hasMonarchIdea())
-	{
-		ideas.insert(owner.tag + "_monarch");
-	}
-}
-
-
 void HoI4::Country::addTag(const std::string& tag_, Names& names, Localisation& hoi4Localisations)
 {
 	tag = tag_;
 	determineFilename();
 	initIdeas(names, hoi4Localisations);
+}
+
+
+void HoI4::Country::addMonarchIdea(const Country& owner)
+{
+	if (owner.hasMonarchIdea())
+	{
+		ideas.insert(owner.tag + "_monarch");
+	}
 }
 
 

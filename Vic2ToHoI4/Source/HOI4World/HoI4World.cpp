@@ -552,7 +552,8 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		}
 
 		const auto dominionTag = countryMapperFactory.generateNewHoI4Tag();
-		dominion->addTag(*overlord, dominionTag, *names, *hoi4Localisations);
+		dominion->addTag(dominionTag, *names, *hoi4Localisations);
+		dominion->addMonarchIdea(*overlord);
 		countries.emplace(dominionTag, dominion);
 
 		if (const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion()); dominionLevel)
