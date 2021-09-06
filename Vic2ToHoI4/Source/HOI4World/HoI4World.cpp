@@ -146,6 +146,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertIndustry(theConfiguration);
 	addProvincesToHomeAreas();
 	addDominions(countryMapperFactory);
+	addUnrecognizedNations(countryMapperFactory);
 	states->addCoresToCorelessStates(sourceWorld.getCountries(),
 		 provinceMapper,
 		 sourceWorld.getProvinces(),
@@ -648,6 +649,67 @@ void HoI4::World::transferPuppetsToDominions()
 			}
 		}
 	}
+}
+
+
+void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countryMapperFactory)
+{
+	for (auto& [stateId, state]: states->getModifiableStates())
+	{
+		const auto& provinces = state.getProvinces();
+		if (provinces.empty())
+		{
+			continue;
+		}
+		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
+
+		const auto& ownerTag = state.getOwner();
+		if (!ownerTag.empty())
+		{
+			continue;
+		}
+
+		auto nation = getUnrecognizedNation(*stateRegion, *theRegions, *graphicsMapper, *names);
+		nation->addCoreState(stateId);
+	}
+
+	auto& modifiableStates = states->getModifiableStates();
+	for (auto& nation: unrecognizedNations | std::views::values)
+	{
+		const auto nationTag = countryMapperFactory.generateNewHoI4Tag();
+		nation->addTag(nationTag, *names, *hoi4Localisations);
+		countries.emplace(nationTag, nation);
+
+		for (const auto& stateId: nation->getCoreStates())
+		{
+			if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
+			{
+				state->second.addCores({nationTag});
+				state->second.setOwner(nationTag);
+				nation->addState(state->second);
+			}
+		}
+
+		nation->determineBestCapital(states->getStates());
+		nation->setCapitalRegionFlag(*theRegions);
+	}
+}
+
+
+std::shared_ptr<HoI4::Country> HoI4::World::getUnrecognizedNation(const std::string& region,
+	 const Regions& regions,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names)
+{
+	if (const auto& unrecognizedItr = unrecognizedNations.find(region); unrecognizedItr != unrecognizedNations.end())
+	{
+		return unrecognizedItr->second;
+	}
+
+	auto nation = std::make_shared<Country>(region, regions, graphicsMapper, names);
+	unrecognizedNations.emplace(region, nation);
+
+	return nation;
 }
 
 

@@ -143,6 +143,7 @@ class World: commonItems::parser
 	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper);
 	void addDominions(Mappers::CountryMapper::Factory& countryMapperFactory);
 	void transferPuppetsToDominions();
+	void addUnrecognizedNations(Mappers::CountryMapper::Factory& countryMapperFactory);
 	void determineCoresAndClaims();
 	std::map<std::string, double> calculateFactoryWorkerRatios(const Configuration& theConfiguration);
 	std::map<std::string, double> getIndustrialWorkersPerCountry();
@@ -196,6 +197,10 @@ class World: commonItems::parser
 	std::shared_ptr<Country> getDominion(const std::string& ownerTag,
 		 const std::shared_ptr<Country>& owner,
 		 const std::string& region,
+		 const Regions& regions,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Names& names);
+	std::shared_ptr<Country> getUnrecognizedNation(const std::string& region,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
@@ -267,7 +272,8 @@ class World: commonItems::parser
 	std::vector<std::string> strongestGpNavies;
 
 	std::unique_ptr<Regions> theRegions;
-	std::map<std::pair<std::string, std::string>, std::shared_ptr<HoI4::Country>> dominions;
+	std::map<std::pair<std::string, std::string>, std::shared_ptr<Country>> dominions;
+	std::map<std::string, std::shared_ptr<Country>> unrecognizedNations;
 };
 
 } // namespace HoI4

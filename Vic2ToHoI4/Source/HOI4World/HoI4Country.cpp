@@ -201,6 +201,26 @@ HoI4::Country::Country(const std::shared_ptr<Country> owner,
 }
 
 
+HoI4::Country::Country(const std::string& region_,
+	 const Regions& regions,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names):
+	 generatedDominion(true), region(region_), oldCapital(-1)
+{
+	if (const auto& regionName = regions.getRegionName(region); regionName)
+	{
+		name_ = "Unrecognized " + * regionName;
+	}
+
+	if (const auto& regionAdjective = regions.getRegionAdjective(region); regionAdjective)
+	{
+		adjective_ = *regionAdjective;
+	}
+
+	color = commonItems::Color(std::array{128,128,128});
+}
+
+
 void HoI4::Country::determineFilename()
 {
 	if (name_)
@@ -660,6 +680,14 @@ void HoI4::Country::addTag(const Country& owner, const std::string& tag_, Names&
 	{
 		ideas.insert(owner.tag + "_monarch");
 	}
+}
+
+
+void HoI4::Country::addTag(const std::string& tag_, Names& names, Localisation& hoi4Localisations)
+{
+	tag = tag_;
+	determineFilename();
+	initIdeas(names, hoi4Localisations);
 }
 
 
