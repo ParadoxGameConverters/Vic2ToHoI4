@@ -1,14 +1,13 @@
-;en;fr;de;pl;es;it;sw;cz;hu;nl;pt;ru;fi;
-# Localisations for generated dominions;;;;;;;;;;;;;;
-# The converter tries to find localisations in this order:;;;;;;;;;;;;;;
-#   * dom_<culture group>_<ideology>_<region>;;;;;;;;;;;;;;
-#   * dom_<culture group>_<region>;;;;;;;;;;;;;;
-#   * dom_<culture>_<ideology>_<region>;;;;;;;;;;;;;;
-#   * dom_<culture>_<region>;;;;;;;;;;;;;;
-#   * dom_<ideology>_<region>;;;;;;;;;;;;;;
-#   * dom_<region>;;;;;;;;;;;;;;
-# If no localisation is found, the final localisation will be "$OWNER_ADJ$ $REGION$";;;;;;;;;;;;;;
-#;;;;;;;;;;;;;;
+# Localisations for generated dominions
+# The converter tries to find localisations in this order:
+#   * dom_<culture group>_<ideology>_<region>
+#   * dom_<culture group>_<region>
+#   * dom_<culture>_<ideology>_<region>
+#   * dom_<culture>_<region>
+#   * dom_<ideology>_<region>
+#   * dom_<region>
+# If no localisation is found, the final localisation will be "$OWNER_ADJ$ $REGION$"
+#
 dom_scandinavian_canada;Secret Denmark;Danemark Secret;Geheimnes D‰nemark;Tajna Dania;Dinamarca Secreta;Danimarca Segreta;Titkos D·nia;TajnÈ D·nsko;Titkos D·nia;Geheim Denemarken;Dinamarca Secreta;“‡ÈÌ‡ˇ ƒ‡ÌËˇ;Salainen Tanska;x
 ####;EN;FR;DE;PL;ES;IT;SW;CZ;HU;NL;PT;RU;FI;x
 dom_canada;Canada;Canada $OVERLORD_ADJ$;$OVERLORD_ADJ$es Kanada;$OVERLORD_ADJ$a Kanada;Canad· $OVERLORD_ADJ$;Canada $OVERLORD_ADJ$;;;;;Canad· $OVERLORD_ADJ$;$OVERLORD_ADJ$‡ˇ  ‡Ì‡‰‡;;x

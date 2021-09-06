@@ -2825,5 +2825,8 @@
     <CopyFileToFolders Include="Data_Files\configurables\Vic2Localisations\dominions.csv">
       <Filter>Data Files\Configurables\Vic2Localisations</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\Vic2Localisations\unrecognized_nations.csv">
+      <Filter>Data Files\Configurables\Vic2Localisations</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

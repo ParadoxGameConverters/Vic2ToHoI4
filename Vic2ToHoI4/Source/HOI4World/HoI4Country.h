@@ -252,6 +252,7 @@ class Country
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
 	[[nodiscard]] bool isGeneratedDominion() const { return generatedDominion; }
+	[[nodiscard]] bool isUnrecognizedNation() const { return unrecognizedNation; }
 	[[nodiscard]] const auto& getRegion() const { return region; }
 
 	[[nodiscard]] bool isNavalTreatyAdherent() const { return navalTreatyAdherent; }
@@ -415,6 +416,7 @@ class Country
 	bool greatPower = false;
 	bool civilized = false;
 	bool generatedDominion = false;
+	bool unrecognizedNation = false;
 	std::string region;
 
 	bool navalTreatyAdherent = false;

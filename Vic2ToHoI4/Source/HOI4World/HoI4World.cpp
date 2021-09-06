@@ -373,6 +373,15 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 				 ideologies->getMajorIdeologies(),
 				 *articleRules);
 		}
+		else if (country->isUnrecognizedNation())
+		{
+			hoi4Localisations->createUnrecognizedNationLocalisations(tag,
+				 *country,
+				 vic2Localisations,
+				 *countryNameMapper,
+				 ideologies->getMajorIdeologies(),
+				 *articleRules);
+		}
 		else
 		{
 			hoi4Localisations->createCountryLocalisations(std::make_pair(country->getOldTag(), tag),

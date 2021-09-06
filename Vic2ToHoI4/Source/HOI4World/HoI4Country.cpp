@@ -205,7 +205,7 @@ HoI4::Country::Country(const std::string& region_,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names):
-	 generatedDominion(true), region(region_), oldCapital(-1)
+	 unrecognizedNation(true), region(region_), oldCapital(-1)
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
