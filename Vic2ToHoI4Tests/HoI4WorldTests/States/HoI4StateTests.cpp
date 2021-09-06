@@ -400,8 +400,8 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 			  .setController("REB")
 			  .setPops(std::vector{Pop(PopOptions{.type = "farmers", .size = 12'345})})
 			  .build();
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
-	provinces.insert(theProvince);
+	std::vector<std::shared_ptr<Vic2::Province>> provinces;
+	provinces.push_back(theProvince);
 
 	const auto sourceState = *Vic2::State::Builder().build();
 	HoI4::State theState(sourceState, 42, "TAG");

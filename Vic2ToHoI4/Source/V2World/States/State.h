@@ -34,7 +34,7 @@ class State
 	void determineEmployedWorkers();
 	void eatState(const State& state, const StateDefinitions& stateDefinitions);
 
-	void addProvince(std::shared_ptr<Province> province) { provinces.insert(std::move(province)); }
+	void addProvince(std::shared_ptr<Province> province) { provinces.push_back(std::move(province)); }
 	void setOwner(std::string newOwner) { owner = std::move(newOwner); }
 	void setLanguageCategory(std::string newLanguageCategory) { languageCategory = std::move(newLanguageCategory); }
 
@@ -49,7 +49,7 @@ class State
 	[[nodiscard]] std::string getStateID() const { return stateID; }
 	[[nodiscard]] bool isPartialState() const { return partialState; }
 	[[nodiscard]] std::set<int> getProvinceNumbers() const { return provinceNumbers; }
-	[[nodiscard]] std::set<std::shared_ptr<Province>> getProvinces() const { return provinces; }
+	[[nodiscard]] const auto& getProvinces() const { return provinces; }
 	[[nodiscard]] std::optional<int> getCapitalProvince() const { return capitalProvince; }
 	[[nodiscard]] const std::string& getLanguageCategory() const { return languageCategory; }
 	[[nodiscard]] int getEmployedWorkers() const { return employedWorkers; }
@@ -64,7 +64,7 @@ class State
 	bool partialState = false;
 
 	std::set<int> provinceNumbers;
-	std::set<std::shared_ptr<Province>> provinces;
+	std::vector<std::shared_ptr<Province>> provinces;
 	std::optional<int> capitalProvince;
 
 	std::string languageCategory;

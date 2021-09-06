@@ -76,7 +76,7 @@ TEST(Vic2World_States_StateFactoryTests, GetUnownedStateSetsProvinces)
 		 Vic2::State::Factory().getUnownedState({{42, nullptr}}, *Vic2::StateDefinitions::Builder().build());
 
 	ASSERT_EQ(1, state->getProvinces().size());
-	ASSERT_TRUE(state->getProvinces().contains(nullptr));
+	EXPECT_TRUE(state->getProvinces()[0] == nullptr);
 }
 
 

@@ -93,7 +93,7 @@ class State
 	void tryToCreateVP(const Vic2::State& sourceState,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
-	void addManpower(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
+	void addManpower(const std::vector<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
 

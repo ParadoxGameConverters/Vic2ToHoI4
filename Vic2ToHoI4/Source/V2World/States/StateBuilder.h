@@ -41,7 +41,7 @@ class State::Builder
 		return *this;
 	}
 
-	Builder& setProvinces(std::set<std::shared_ptr<Province>> provinces)
+	Builder& setProvinces(std::vector<std::shared_ptr<Province>> provinces)
 	{
 		state->provinces = std::move(provinces);
 		return *this;

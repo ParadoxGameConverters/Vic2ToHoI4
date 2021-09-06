@@ -233,7 +233,6 @@ int HoI4::State::getManpower() const
 }
 
 
-
 void HoI4::State::tryToCreateVP(const Vic2::State& sourceState,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
 	 const Configuration& theConfiguration)
@@ -297,7 +296,7 @@ void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const Mappers::Pro
 }
 
 
-void HoI4::State::addManpower(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
+void HoI4::State::addManpower(const std::vector<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
 	 const Configuration& theConfiguration)
 {
