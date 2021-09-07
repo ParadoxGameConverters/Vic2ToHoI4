@@ -868,6 +868,10 @@ void HoI4::States::addCapitalVictoryPoints(const std::map<std::string, std::shar
 	for (; i < 4 && i < tags.size(); i++)
 	{
 		auto country = countries.at(tags[i]);
+		if (country->isUnrecognizedNation())
+		{
+			continue;
+		}
 		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
 		{
 			capitalState->second.setVPValue(30);
@@ -876,6 +880,10 @@ void HoI4::States::addCapitalVictoryPoints(const std::map<std::string, std::shar
 	for (; i < 8 && i < tags.size(); i++)
 	{
 		auto country = countries.at(tags[i]);
+		if (country->isUnrecognizedNation())
+		{
+			continue;
+		}
 		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
 		{
 			capitalState->second.setVPValue(25);
@@ -884,6 +892,10 @@ void HoI4::States::addCapitalVictoryPoints(const std::map<std::string, std::shar
 	for (; i < 16 && i < tags.size(); i++)
 	{
 		auto country = countries.at(tags[i]);
+		if (country->isUnrecognizedNation())
+		{
+			continue;
+		}
 		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
 		{
 			capitalState->second.setVPValue(20);
@@ -892,6 +904,10 @@ void HoI4::States::addCapitalVictoryPoints(const std::map<std::string, std::shar
 	for (; i < tags.size() / 2; i++)
 	{
 		auto country = countries.at(tags[i]);
+		if (country->isUnrecognizedNation())
+		{
+			continue;
+		}
 		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
 		{
 			capitalState->second.setVPValue(15);
@@ -900,6 +916,10 @@ void HoI4::States::addCapitalVictoryPoints(const std::map<std::string, std::shar
 	for (; i < tags.size(); i++)
 	{
 		auto country = countries.at(tags[i]);
+		if (country->isUnrecognizedNation())
+		{
+			continue;
+		}
 		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
 		{
 			capitalState->second.setVPValue(10);
