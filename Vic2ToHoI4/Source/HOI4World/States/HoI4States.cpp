@@ -633,6 +633,11 @@ void HoI4::States::addCapitalAirBases(const std::map<std::string, std::shared_pt
 {
 	for (const auto& country: countries)
 	{
+		if (country.second->isUnrecognizedNation())
+		{
+			continue;
+		}
+
 		if (auto capitalState = states.find(*country.second->getCapitalState()); capitalState != states.end())
 		{
 			capitalState->second.addAirBase(5);
