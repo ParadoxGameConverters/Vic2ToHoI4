@@ -3,6 +3,8 @@
 # If a culture lacks an entry, the converter will output a line to remind you
 
 # [Vic2 culture] = {
+#     first_names = { [pool of male names] }
+#     last_names = { [pool of surnames] }
 #     female_names = { [pool of female names] }
 #     female_surnames = { [pool of female surnames] }
 #     callsigns = { [pool of callsigns] }
@@ -6930,6 +6932,12 @@ undead = {
 	weapon_companies = { £industry }
 	aircraft_companies = { £industry }
 	intelligence_agencies = { £locked }
+}
+unrecognized = {
+	first_names = { John }
+	female_names = { Jane }
+	last_names = { Doe }
+	callsigns = { MIA }
 }
 unyamwezi = {
 	female_names = { Nyamwezi }
