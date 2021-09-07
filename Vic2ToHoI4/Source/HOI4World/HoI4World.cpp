@@ -681,6 +681,7 @@ void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countr
 
 		auto nation = getUnrecognizedNation(*stateRegion, *theRegions, *graphicsMapper, *names);
 		nation->addCoreState(stateId);
+		state.smashNavalBases();
 	}
 
 	auto& modifiableStates = states->getModifiableStates();

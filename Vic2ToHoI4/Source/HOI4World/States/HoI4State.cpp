@@ -4,6 +4,7 @@
 #include "StateCategories.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
+#include <ranges>
 
 
 
@@ -95,6 +96,15 @@ void HoI4::State::addNavalBase(int level, int location)
 	if ((level > 0) && provinces.contains(location))
 	{
 		navalBases[location] = level;
+	}
+}
+
+
+void HoI4::State::smashNavalBases()
+{
+	for (auto& baseLevel: navalBases | std::views::values)
+	{
+		baseLevel = 0;
 	}
 }
 

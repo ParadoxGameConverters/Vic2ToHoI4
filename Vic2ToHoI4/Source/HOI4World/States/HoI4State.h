@@ -57,6 +57,7 @@ class State
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
+	void smashNavalBases();
 	void addCores(const std::set<std::string>& newCores);
 	void addClaims(const std::set<std::string>& newClaims);
 	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
