@@ -1288,10 +1288,14 @@ void HoI4::World::addCountryElectionEvents(const std::set<string>& theMajorIdeol
 {
 	Log(LogLevel::Info) << "\tAdding country election events";
 
-	for (auto country: countries)
+	for (auto& [tag, country]: countries)
 	{
-		events->addPartyChoiceEvent(country.first,
-			 country.second->getParties(),
+		if (country->isUnrecognizedNation())
+		{
+			continue;
+		}
+		events->addPartyChoiceEvent(tag,
+			 country->getParties(),
 			 *onActions,
 			 theMajorIdeologies,
 			 vic2Localisations,
