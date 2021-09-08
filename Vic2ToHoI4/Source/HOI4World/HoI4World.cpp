@@ -1251,6 +1251,12 @@ void HoI4::World::addFocusTrees()
 		{
 			continue;
 		}
+		if (country->isUnrecognizedNation())
+		{
+			country->addEmptyFocusTree();
+			continue;
+		}
+		
 		if (country->isGreatPower() || (country->getStrengthOverTime(3) > 4500))
 		{
 			country->addGenericFocusTree(ideologies->getMajorIdeologies());

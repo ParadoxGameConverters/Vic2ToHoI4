@@ -1416,6 +1416,17 @@ void HoI4::Country::calculateIndustry(const std::map<int, State>& allStates)
 }
 
 
+void HoI4::Country::addEmptyFocusTree()
+{
+	if (!nationalFocus)
+	{
+		HoI4FocusTree emptyNationalFocus(*this);
+		emptyNationalFocus.makeEmpty();
+		nationalFocus = emptyNationalFocus.makeCustomizedCopy(*this);
+	}
+}
+
+
 void HoI4::Country::addGenericFocusTree(const std::set<std::string>& majorIdeologies)
 {
 	if (!nationalFocus)

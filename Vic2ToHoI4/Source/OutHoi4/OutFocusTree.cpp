@@ -30,12 +30,15 @@ void HoI4::outputFocusTree(const HoI4FocusTree& focusTree, const std::string& fi
 		out << "\t\n";
 		out << "\tdefault = no\n";
 		out << "\t\n";
-		out << "\tshared_focus = army_effort\n";
-		out << "\tshared_focus = aviation_effort\n";
-		out << "\tshared_focus = naval_effort\n";
-		out << "\tshared_focus = industrial_effort\n";
-		out << "\tshared_focus = political_effort\n";
-		out << "\n";
+		if (!focusTree.isEmpty())
+		{
+			out << "\tshared_focus = army_effort\n";
+			out << "\tshared_focus = aviation_effort\n";
+			out << "\tshared_focus = naval_effort\n";
+			out << "\tshared_focus = industrial_effort\n";
+			out << "\tshared_focus = political_effort\n";
+			out << "\n";
+		}
 	}
 
 	for (const auto& focus: focusTree.getFocuses())

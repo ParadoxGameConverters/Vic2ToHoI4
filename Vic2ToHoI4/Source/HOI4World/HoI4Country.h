@@ -118,6 +118,7 @@ class Country
 	void addClaimedState(const int stateId) { claimedStates.insert(stateId); }
 	void calculateIndustry(const std::map<int, State>& allStates);
 	void transferPuppets(const std::set<std::string>& transferringPuppets, std::shared_ptr<HoI4::Country> dominion);
+	void addEmptyFocusTree();
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
 	void addFocusTreeBranch(const std::string& branch, OnActions& onActions);
