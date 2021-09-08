@@ -496,7 +496,8 @@ void HoI4::Localisation::createUnrecognizedNationLocalisations(const std::string
 	for (const auto& ideology: majorIdeologies)
 	{
 		Vic2::LanguageToLocalisationMap localisationsForGovernment;
-		if (const auto localisations = vic2Localisations.getTextInEachLanguage("unrecognized_" + region); !localisations.empty())
+		if (const auto localisations = vic2Localisations.getTextInEachLanguage("unrecognized_" + region);
+			 !localisations.empty())
 		{
 			localisationsForGovernment =
 				 configureDominionNames(localisations, unrecognizedNameLocalisations, unrecognizedAdjectiveLocalisations);

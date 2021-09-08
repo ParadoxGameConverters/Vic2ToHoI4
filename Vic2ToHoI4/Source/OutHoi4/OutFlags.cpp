@@ -126,10 +126,7 @@ void HoI4::processFlagsForCountry(const std::string& tag,
 		}
 		else if (country.isUnrecognizedNation())
 		{
-			sourceFlag = createUnrecognizedNationFlag(hoi4Suffixes[i],
-				 vic2Suffixes[i],
-				 country.getRegion(),
-				 vic2Mods);
+			sourceFlag = createUnrecognizedNationFlag(hoi4Suffixes[i], vic2Suffixes[i], country.getRegion(), vic2Mods);
 		}
 		else
 		{

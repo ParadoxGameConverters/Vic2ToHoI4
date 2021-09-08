@@ -206,12 +206,11 @@ HoI4::Country::Country(const std::string& region_,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names):
 	 primaryCulture("unrecognized"),
-	 primaryCultureGroup("unrecognized"),
-	 unrecognizedNation(true), region(region_), oldCapital(-1)
+	 primaryCultureGroup("unrecognized"), unrecognizedNation(true), region(region_), oldCapital(-1)
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
-		name_ = "Unrecognized " + * regionName;
+		name_ = "Unrecognized " + *regionName;
 	}
 
 	if (const auto& regionAdjective = regions.getRegionAdjective(region); regionAdjective)
@@ -219,7 +218,7 @@ HoI4::Country::Country(const std::string& region_,
 		adjective_ = *regionAdjective;
 	}
 
-	color = commonItems::Color(std::array{128,128,128});
+	color = commonItems::Color(std::array{128, 128, 128});
 }
 
 
