@@ -1247,11 +1247,7 @@ void HoI4::World::addFocusTrees()
 	Log(LogLevel::Info) << "\tAdding focus trees";
 	for (auto [tag, country]: countries)
 	{
-		if (tag == "UCV")
-		{
-			continue;
-		}
-		if (country->isUnrecognizedNation())
+		if (tag == "UCV" || country->isUnrecognizedNation())
 		{
 			country->addEmptyFocusTree();
 			continue;
