@@ -8,8 +8,8 @@
 #   * dom_<region>
 # If no localisation is found, the final localisation will be "$OWNER_ADJ$ $REGION$"
 #
-dom_scandinavian_canada;Secret Denmark;Danemark Secret;Geheimnes Dдnemark;Tajna Dania;Dinamarca Secreta;Danimarca Segreta;Titkos Dбnia;Tajnй Dбnsko;Titkos Dбnia;Geheim Denemarken;Dinamarca Secreta;Тайная Дания;Salainen Tanska;x
 ####;EN;FR;DE;PL;ES;IT;SW;CZ;HU;NL;PT;RU;FI;x
+dom_scandinavian_canada;Secret Denmark;Danemark Secret;Geheimnes Dдnemark;Tajna Dania;Dinamarca Secreta;Danimarca Segreta;Titkos Dбnia;Tajnй Dбnsko;Titkos Dбnia;Geheim Denemarken;Dinamarca Secreta;Тайная Дания;Salainen Tanska;x
 dom_canada;Canada;Canada $OVERLORD_ADJ$;$OVERLORD_ADJ$es Kanada;$OVERLORD_ADJ$a Kanada;Canadб $OVERLORD_ADJ$;Canada $OVERLORD_ADJ$;;;;;Canadб $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Канада;;x
 dom_california;California;Californie $OVERLORD_ADJ$;$OVERLORD_ADJ$es Kalifornien;$OVERLORD_ADJ$a Kalifornia;California $OVERLORD_ADJ$;California $OVERLORD_ADJ$;;;;;Califуrnia $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Калифорния;;x
 dom_us_central;Louisiana;Louisiane $OVERLORD_ADJ$;$OVERLORD_ADJ$es Louisiana;$OVERLORD_ADJ$a Luizjana;Luisiana $OVERLORD_ADJ$;Luisiana $OVERLORD_ADJ$;;;;;Louisiana $OVERLORD_ADJ$;$OVERLORD_ADJ$ая Луизиана;;x

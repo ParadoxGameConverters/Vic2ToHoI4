@@ -496,12 +496,14 @@ void HoI4::Localisation::createUnrecognizedNationLocalisations(const std::string
 	for (const auto& ideology: majorIdeologies)
 	{
 		Vic2::LanguageToLocalisationMap localisationsForGovernment;
+		// if there is a pre-set localisation of the form 'unrecognized_<region>', use it
 		if (const auto localisations = vic2Localisations.getTextInEachLanguage("unrecognized_" + region);
 			 !localisations.empty())
 		{
 			localisationsForGovernment =
 				 configureDominionNames(localisations, unrecognizedNameLocalisations, unrecognizedAdjectiveLocalisations);
 		}
+		// otherwise do 'Unrecognized $Region$'
 		else
 		{
 			for (const auto& [language, localisation]: unrecognizedAdjectiveLocalisations)

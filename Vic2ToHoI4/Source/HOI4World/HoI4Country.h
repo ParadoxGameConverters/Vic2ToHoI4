@@ -54,6 +54,7 @@ namespace HoI4
 class Country
 {
   public:
+	// For creating countries from Vic2 countries
 	explicit Country(std::string tag,
 		 const Vic2::Country& sourceCountry,
 		 Names& names,
@@ -64,11 +65,15 @@ class Country
 		 const date& startDate,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const States& worldStates);
+
+	/// For creating generated dominions
 	explicit Country(const std::shared_ptr<Country> owner,
 		 const std::string& region_,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
+
+	// For creating unrecognized nations
 	explicit Country(const std::string& region_,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
