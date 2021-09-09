@@ -657,6 +657,7 @@ std::unique_ptr<HoI4FocusTree> HoI4FocusTree::makeCustomizedCopy(const HoI4::Cou
 		newFocusTree.addFocus(newFocus);
 	}
 	newFocusTree.setNextFreeColumn(nextFreeColumn);
+	newFocusTree.emptyFocusTree = emptyFocusTree;
 
 	return std::make_unique<HoI4FocusTree>(std::move(newFocusTree));
 }

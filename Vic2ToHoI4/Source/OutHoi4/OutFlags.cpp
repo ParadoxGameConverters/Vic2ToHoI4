@@ -22,6 +22,10 @@ std::optional<tga_image*> createDominionFlag(const std::string& hoi4Suffix,
 	 const std::string& region,
 	 const Mods& vic2Mods);
 std::tuple<uint8_t, uint8_t, uint8_t> getDominionFlagBaseColor(std::string_view hoi4Suffix);
+std::optional<tga_image*> createUnrecognizedNationFlag(const std::string& hoi4Suffix,
+	 const std::string& vic2Suffix,
+	 const std::string& region,
+	 const Mods& vic2Mods);
 std::optional<tga_image*> readFlag(const std::string& path);
 tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
 void createBigFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
@@ -119,6 +123,10 @@ void HoI4::processFlagsForCountry(const std::string& tag,
 				 country.getPuppetMasterOldTag(),
 				 country.getRegion(),
 				 vic2Mods);
+		}
+		else if (country.isUnrecognizedNation())
+		{
+			sourceFlag = createUnrecognizedNationFlag(hoi4Suffixes[i], vic2Suffixes[i], country.getRegion(), vic2Mods);
 		}
 		else
 		{
@@ -355,6 +363,81 @@ std::tuple<uint8_t, uint8_t, uint8_t> HoI4::getDominionFlagBaseColor(std::string
 	}
 
 	return {0x7C, 0x7C, 0x7C};
+}
+
+
+std::optional<tga_image*> HoI4::createUnrecognizedNationFlag(const std::string& hoi4Suffix,
+	 const std::string& vic2Suffix,
+	 const std::string& region,
+	 const Mods& vic2Mods)
+{
+	constexpr int sizeX = 93;
+	constexpr int sizeY = 64;
+
+	const auto flag = new tga_image;
+	flag->image_id_length = 0;
+	flag->color_map_type = TGA_COLOR_MAP_ABSENT;
+	flag->image_type = TGA_IMAGE_TYPE_BGR;
+	flag->color_map_origin = 0;
+	flag->color_map_length = 0;
+	flag->color_map_depth = 0;
+	flag->origin_x = 0;
+	flag->origin_y = 0;
+	flag->width = sizeX;
+	flag->height = sizeY;
+	flag->pixel_depth = 32;
+	flag->image_descriptor = 8;
+	flag->image_id = nullptr;
+	flag->color_map_data = nullptr;
+
+	flag->image_data = static_cast<uint8_t*>(malloc(sizeX * sizeY * 4));
+	if (flag->image_data == nullptr)
+	{
+		return flag;
+	}
+
+	for (unsigned int y = 0; y < sizeY; y++)
+	{
+		for (unsigned int x = 0; x < sizeX; x++)
+		{
+			const auto destIndex = (y * sizeX + x) * 4;
+
+			flag->image_data[destIndex + 0] = 128;
+			flag->image_data[destIndex + 1] = 128;
+			flag->image_data[destIndex + 2] = 128;
+			flag->image_data[destIndex + 3] = 0xFF;
+		}
+	}
+
+	const auto emblemPath = "flags/" + region + "_emblem.tga";
+	const auto emblem = readFlag(emblemPath);
+	if (emblem)
+	{
+		const auto sourceBytesPerPixel = (*emblem)->pixel_depth / 8;
+		for (unsigned int y = 0; y < (*emblem)->height; y++)
+		{
+			for (unsigned int x = 0; x < (*emblem)->width; x++)
+			{
+				const auto sourceIndex = (y * (*emblem)->width + x) * sourceBytesPerPixel;
+				const auto destX = sizeX / 2 - (*emblem)->width / 2 + x;
+				const auto destY = y + sizeY / 2 - (*emblem)->height / 2;
+				const auto destIndex = (destY * sizeX + destX) * 4;
+
+				// skip pixels masked by the alpha channel
+				if ((*emblem)->image_data[sourceIndex + 3] == 0)
+				{
+					continue;
+				}
+
+				flag->image_data[destIndex + 0] = (*emblem)->image_data[sourceIndex + 0];
+				flag->image_data[destIndex + 1] = (*emblem)->image_data[sourceIndex + 1];
+				flag->image_data[destIndex + 2] = (*emblem)->image_data[sourceIndex + 2];
+				flag->image_data[destIndex + 3] = 0xFF;
+			}
+		}
+	}
+
+	return flag;
 }
 
 

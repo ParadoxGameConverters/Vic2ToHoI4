@@ -3141,6 +3141,12 @@ ideas = {
 				trade_opinion_factor = -1
 			}
 		}
+		culture_unrecognized = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = no }
+			picture = culture_unrecognized
+			modifier = { }
+		}
 		culture_unyamwezi = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }

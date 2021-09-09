@@ -482,6 +482,62 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 }
 
 
+void HoI4::Localisation::createUnrecognizedNationLocalisations(const std::string& tag,
+	 const Country& nation,
+	 const Vic2::Localisations& vic2Localisations,
+	 const Mappers::CountryNameMapper& countryNameMapper,
+	 const std::set<std::string>& majorIdeologies,
+	 const ArticleRules& articleRules)
+{
+	const auto region = nation.getRegion();
+
+	const auto unrecognizedNameLocalisations = vic2Localisations.getTextInEachLanguage("unrecognized_name");
+	const auto unrecognizedAdjectiveLocalisations = vic2Localisations.getTextInEachLanguage("unrecognized_adjective");
+	for (const auto& ideology: majorIdeologies)
+	{
+		Vic2::LanguageToLocalisationMap localisationsForGovernment;
+		// if there is a pre-set localisation of the form 'unrecognized_<region>', use it
+		if (const auto localisations = vic2Localisations.getTextInEachLanguage("unrecognized_" + region);
+			 !localisations.empty())
+		{
+			localisationsForGovernment =
+				 configureDominionNames(localisations, unrecognizedNameLocalisations, unrecognizedAdjectiveLocalisations);
+		}
+		// otherwise do 'Unrecognized $Region$'
+		else
+		{
+			for (const auto& [language, localisation]: unrecognizedAdjectiveLocalisations)
+			{
+				auto newLocalisation = localisation;
+				if (const auto& secondPart = vic2Localisations.getTextInLanguage(region, language); secondPart)
+				{
+					newLocalisation += " " + *secondPart;
+				}
+				localisationsForGovernment.emplace(language, newLocalisation);
+			}
+		}
+
+		addLocalisationsInAllLanguages(tag, "", "_DEF", ideology, localisationsForGovernment, articleRules);
+		if (localisationsForGovernment.empty())
+		{
+			addLocalisationsInAllLanguages(tag,
+				 "",
+				 "_DEF",
+				 ideology,
+				 vic2Localisations.getTextInEachLanguage(region),
+				 articleRules);
+		}
+
+		addLocalisationsInAllLanguages(tag,
+			 "_ADJ",
+			 "",
+			 ideology,
+			 vic2Localisations.getTextInEachLanguage(region + "_ADJ"),
+			 articleRules);
+	}
+}
+
+
 void HoI4::Localisation::updateMainCountryLocalisation(const std::string& HoI4Key,
 	 const std::string& Vic2Tag,
 	 const std::string& Vic2Government,

@@ -102,6 +102,7 @@ class HoI4FocusTree: commonItems::parser
 		 const std::map<int, HoI4::State>& states);
 	int calculateNumEnemyOwnedCores(const std::set<int>& coreStates, const std::map<int, HoI4::State>& states);
 	void removeFocus(const std::string& id);
+	void makeEmpty() { emptyFocusTree = true; }
 
 	void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }
 
@@ -111,6 +112,7 @@ class HoI4FocusTree: commonItems::parser
 	[[nodiscard]] const auto& getBranches() const { return branches; }
 	[[nodiscard]] std::string getMutualExclusions(const std::string& ideology,
 		 const std::set<std::string>& majorIdeologies);
+	[[nodiscard]] const bool isEmpty() const { return emptyFocusTree; }
 
 	void addBranch(const std::string& tag, const std::string& branch, HoI4::OnActions& onActions);
 	void eraseBranch(const std::string& branch) { branches.erase(branch); }
@@ -133,6 +135,8 @@ class HoI4FocusTree: commonItems::parser
 	std::vector<std::shared_ptr<HoI4::SharedFocus>> sharedFocuses;
 	std::map<std::string, std::map<std::string, int>> branches; // <first focus, all focuses>
 	int nextFreeColumn = 0;
+
+	bool emptyFocusTree = false;
 };
 
 

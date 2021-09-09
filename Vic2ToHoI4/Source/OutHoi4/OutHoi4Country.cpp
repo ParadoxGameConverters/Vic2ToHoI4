@@ -415,7 +415,7 @@ void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
 
 
 void outputCapital(std::ostream& output, const std::optional<int>& capitalStateNum);
-void outputResearchSlots(std::ostream& output, const bool& greatPower, const bool& civilized);
+void outputResearchSlots(std::ostream& output, bool greatPower, bool civilized, bool unrecognized);
 void outputThreat(std::ostream& output, const double& threat);
 void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars);
 void outputOOBLines(std::ostream& output, const std::string& tag);
@@ -480,7 +480,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	{
 		output << "set_major = yes\n";
 	}
-	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.isCivilized());
+	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.isCivilized(), theCountry.isUnrecognizedNation());
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
 	outputOOBLines(output, tag);
@@ -542,7 +542,7 @@ void outputCapital(std::ostream& output, const std::optional<int>& capitalStateN
 }
 
 
-void outputResearchSlots(std::ostream& output, const bool& greatPower, const bool& civilized)
+void outputResearchSlots(std::ostream& output, bool greatPower, bool civilized, bool unrecognized)
 {
 	if (greatPower)
 	{
@@ -551,6 +551,10 @@ void outputResearchSlots(std::ostream& output, const bool& greatPower, const boo
 	else if (civilized)
 	{
 		output << "set_research_slots = 3\n";
+	}
+	else if (unrecognized)
+	{
+		output << "set_research_slots = 0\n";
 	}
 	else
 	{

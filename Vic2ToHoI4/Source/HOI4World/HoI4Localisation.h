@@ -81,6 +81,12 @@ class Localisation
 		 const Mappers::CountryNameMapper& countryNameMapper,
 		 const std::set<std::string>& majorIdeologies,
 		 const ArticleRules& articleRules);
+	void createUnrecognizedNationLocalisations(const std::string& tag,
+		 const Country& nation,
+		 const Vic2::Localisations& vic2Localisations,
+		 const Mappers::CountryNameMapper& countryNameMapper,
+		 const std::set<std::string>& majorIdeologies,
+		 const ArticleRules& articleRules);
 	void updateMainCountryLocalisation(const std::string& HoI4Key,
 		 const std::string& Vic2Tag,
 		 const std::string& Vic2Government,

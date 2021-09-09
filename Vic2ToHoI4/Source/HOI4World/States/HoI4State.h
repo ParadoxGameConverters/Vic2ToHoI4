@@ -57,6 +57,7 @@ class State
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
+	void smashNavalBases();
 	void addCores(const std::set<std::string>& newCores);
 	void addClaims(const std::set<std::string>& newClaims);
 	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
@@ -93,7 +94,7 @@ class State
 	void tryToCreateVP(const Vic2::State& sourceState,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
-	void addManpower(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
+	void addManpower(const std::vector<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
 

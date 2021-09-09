@@ -904,7 +904,7 @@ void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
 
 	for (const auto& [tag, country]: theWorld->getCountries())
 	{
-		if (tag == "UCV")
+		if (tag == "UCV" || country->isUnrecognizedNation())
 		{
 			continue;
 		}

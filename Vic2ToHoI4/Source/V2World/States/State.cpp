@@ -56,7 +56,7 @@ int Vic2::State::determineEmployedWorkersScore(const workerStruct& workers)
 void Vic2::State::eatState(const State& state, const StateDefinitions& stateDefinitions)
 {
 	provinceNumbers.insert(state.provinceNumbers.begin(), state.provinceNumbers.end());
-	provinces.insert(state.provinces.begin(), state.provinces.end());
+	provinces.insert(provinces.end(), state.provinces.begin(), state.provinces.end());
 
 	partialState = false;
 	for (const auto provinceNumber: stateDefinitions.getAllProvinces(*provinceNumbers.begin()))

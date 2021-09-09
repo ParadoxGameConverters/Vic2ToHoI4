@@ -146,6 +146,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertIndustry(theConfiguration);
 	addProvincesToHomeAreas();
 	addDominions(countryMapperFactory);
+	addUnrecognizedNations(countryMapperFactory);
 	states->addCoresToCorelessStates(sourceWorld.getCountries(),
 		 provinceMapper,
 		 sourceWorld.getProvinces(),
@@ -372,6 +373,15 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 				 ideologies->getMajorIdeologies(),
 				 *articleRules);
 		}
+		else if (country->isUnrecognizedNation())
+		{
+			hoi4Localisations->createUnrecognizedNationLocalisations(tag,
+				 *country,
+				 vic2Localisations,
+				 *countryNameMapper,
+				 ideologies->getMajorIdeologies(),
+				 *articleRules);
+		}
 		else
 		{
 			hoi4Localisations->createCountryLocalisations(std::make_pair(country->getOldTag(), tag),
@@ -551,7 +561,8 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		}
 
 		const auto dominionTag = countryMapperFactory.generateNewHoI4Tag();
-		dominion->addTag(*overlord, dominionTag, *names, *hoi4Localisations);
+		dominion->addTag(dominionTag, *names, *hoi4Localisations);
+		dominion->addMonarchIdea(*overlord);
 		countries.emplace(dominionTag, dominion);
 
 		if (const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion()); dominionLevel)
@@ -648,6 +659,68 @@ void HoI4::World::transferPuppetsToDominions()
 			}
 		}
 	}
+}
+
+
+void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countryMapperFactory)
+{
+	for (auto& [stateId, state]: states->getModifiableStates())
+	{
+		const auto& provinces = state.getProvinces();
+		if (provinces.empty())
+		{
+			continue;
+		}
+		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
+
+		const auto& ownerTag = state.getOwner();
+		if (!ownerTag.empty())
+		{
+			continue;
+		}
+
+		auto nation = getUnrecognizedNation(*stateRegion, *theRegions, *graphicsMapper, *names);
+		nation->addCoreState(stateId);
+		state.smashNavalBases();
+	}
+
+	auto& modifiableStates = states->getModifiableStates();
+	for (auto& nation: unrecognizedNations | std::views::values)
+	{
+		const auto nationTag = countryMapperFactory.generateNewHoI4Tag();
+		nation->addTag(nationTag, *names, *hoi4Localisations);
+		countries.emplace(nationTag, nation);
+
+		for (const auto& stateId: nation->getCoreStates())
+		{
+			if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
+			{
+				state->second.addCores({nationTag});
+				state->second.setOwner(nationTag);
+				nation->addState(state->second);
+			}
+		}
+
+		nation->determineBestCapital(states->getStates());
+		nation->setCapitalRegionFlag(*theRegions);
+	}
+}
+
+
+std::shared_ptr<HoI4::Country> HoI4::World::getUnrecognizedNation(const std::string& region,
+	 const Regions& regions,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names)
+{
+	if (const auto& unrecognizedItr = unrecognizedNations.find(region); unrecognizedItr != unrecognizedNations.end())
+	{
+		return unrecognizedItr->second;
+	}
+
+	auto nation = std::make_shared<Country>(region, regions, graphicsMapper, names);
+	unrecognizedNations.emplace(region, nation);
+
+	return nation;
 }
 
 
@@ -1174,10 +1247,12 @@ void HoI4::World::addFocusTrees()
 	Log(LogLevel::Info) << "\tAdding focus trees";
 	for (auto [tag, country]: countries)
 	{
-		if (tag == "UCV")
+		if (tag == "UCV" || country->isUnrecognizedNation())
 		{
+			country->addEmptyFocusTree();
 			continue;
 		}
+
 		if (country->isGreatPower() || (country->getStrengthOverTime(3) > 4500))
 		{
 			country->addGenericFocusTree(ideologies->getMajorIdeologies());
@@ -1213,10 +1288,14 @@ void HoI4::World::addCountryElectionEvents(const std::set<string>& theMajorIdeol
 {
 	Log(LogLevel::Info) << "\tAdding country election events";
 
-	for (auto country: countries)
+	for (auto& [tag, country]: countries)
 	{
-		events->addPartyChoiceEvent(country.first,
-			 country.second->getParties(),
+		if (country->isUnrecognizedNation())
+		{
+			continue;
+		}
+		events->addPartyChoiceEvent(tag,
+			 country->getParties(),
 			 *onActions,
 			 theMajorIdeologies,
 			 vic2Localisations,

@@ -201,6 +201,27 @@ HoI4::Country::Country(const std::shared_ptr<Country> owner,
 }
 
 
+HoI4::Country::Country(const std::string& region_,
+	 const Regions& regions,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names):
+	 primaryCulture("unrecognized"),
+	 primaryCultureGroup("unrecognized"), unrecognizedNation(true), region(region_), oldCapital(-1)
+{
+	if (const auto& regionName = regions.getRegionName(region); regionName)
+	{
+		name_ = "Unrecognized " + *regionName;
+	}
+
+	if (const auto& regionAdjective = regions.getRegionAdjective(region); regionAdjective)
+	{
+		adjective_ = *regionAdjective;
+	}
+
+	color = commonItems::Color(std::array{128, 128, 128});
+}
+
+
 void HoI4::Country::determineFilename()
 {
 	if (name_)
@@ -651,11 +672,16 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
 }
 
 
-void HoI4::Country::addTag(const Country& owner, const std::string& tag_, Names& names, Localisation& hoi4Localisations)
+void HoI4::Country::addTag(const std::string& tag_, Names& names, Localisation& hoi4Localisations)
 {
 	tag = tag_;
 	determineFilename();
 	initIdeas(names, hoi4Localisations);
+}
+
+
+void HoI4::Country::addMonarchIdea(const Country& owner)
+{
 	if (owner.hasMonarchIdea())
 	{
 		ideas.insert(owner.tag + "_monarch");
@@ -1385,6 +1411,17 @@ void HoI4::Country::calculateIndustry(const std::map<int, State>& allStates)
 			militaryFactories += state.second.getMilFactories();
 			dockyards += state.second.getDockyards();
 		}
+	}
+}
+
+
+void HoI4::Country::addEmptyFocusTree()
+{
+	if (!nationalFocus)
+	{
+		HoI4FocusTree emptyNationalFocus(*this);
+		emptyNationalFocus.makeEmpty();
+		nationalFocus = emptyNationalFocus.makeCustomizedCopy(*this);
 	}
 }
 

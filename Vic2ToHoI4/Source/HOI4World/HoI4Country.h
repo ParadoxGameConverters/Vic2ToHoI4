@@ -54,6 +54,7 @@ namespace HoI4
 class Country
 {
   public:
+	// For creating countries from Vic2 countries
 	explicit Country(std::string tag,
 		 const Vic2::Country& sourceCountry,
 		 Names& names,
@@ -64,13 +65,22 @@ class Country
 		 const date& startDate,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const States& worldStates);
+
+	/// For creating generated dominions
 	explicit Country(const std::shared_ptr<Country> owner,
 		 const std::string& region_,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
 
-	void addTag(const Country& owner, const std::string& tag_, Names& names, Localisation& hoi4Localisations);
+	// For creating unrecognized nations
+	explicit Country(const std::string& region_,
+		 const Regions& regions,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Names& names);
+
+	void addTag(const std::string& tag_, Names& names, Localisation& hoi4Localisations);
+	void addMonarchIdea(const Country& owner);
 	void determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
@@ -113,6 +123,7 @@ class Country
 	void addClaimedState(const int stateId) { claimedStates.insert(stateId); }
 	void calculateIndustry(const std::map<int, State>& allStates);
 	void transferPuppets(const std::set<std::string>& transferringPuppets, std::shared_ptr<HoI4::Country> dominion);
+	void addEmptyFocusTree();
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
 	void addFocusTreeBranch(const std::string& branch, OnActions& onActions);
@@ -247,6 +258,7 @@ class Country
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
 	[[nodiscard]] bool isGeneratedDominion() const { return generatedDominion; }
+	[[nodiscard]] bool isUnrecognizedNation() const { return unrecognizedNation; }
 	[[nodiscard]] const auto& getRegion() const { return region; }
 
 	[[nodiscard]] bool isNavalTreatyAdherent() const { return navalTreatyAdherent; }
@@ -353,7 +365,7 @@ class Country
 
 	std::string oldGovernment;
 	std::string governmentIdeology = "neutrality";
-	std::string leaderIdeology = "anarchism";
+	std::string leaderIdeology = "dictatorship_neutral";
 	std::optional<Vic2::Party> rulingParty;
 	std::set<Vic2::Party> parties;
 	std::map<std::string, double> upperHouseComposition;
@@ -410,6 +422,7 @@ class Country
 	bool greatPower = false;
 	bool civilized = false;
 	bool generatedDominion = false;
+	bool unrecognizedNation = false;
 	std::string region;
 
 	bool navalTreatyAdherent = false;
