@@ -2,262 +2,193 @@
 
 
 
-HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap);
-HoI4::decision&& updateBlowPanama(HoI4::decision&& blowPanamaDecision, const std::map<int, int>& provinceToStateIdMap);
-HoI4::decision&& updateRebuildSuez(HoI4::decision&& rebuildSuezDecision,
-	 const std::map<int, int>& provinceToStateIdMap);
-HoI4::decision&& updateRebuildPanama(HoI4::decision&& rebuildPanamaDecision,
-	 const std::map<int, int>& provinceToStateIdMap);
-HoI4::decision&& updateWomenInTheWorkforce(HoI4::decision&& womenInTheWorkforceDecision,
-	 const std::set<std::string>& majorIdeologies);
-HoI4::decision&& updateWarBonds(HoI4::decision&& warBondsDecision, const std::set<std::string>& majorIdeologies);
-HoI4::decision&& updateImprovedWorkerConditions(HoI4::decision&& improvedWorkerConditionsDecision);
-HoI4::decision&& updatePromisesOfPeace(HoI4::decision&& promisesOfPeaceDecision);
-HoI4::decision&& updateWarPropaganda(HoI4::decision&& warPropagandaDecision);
-HoI4::decision&& updateWarPropagandaAgainstWarmonger(HoI4::decision&& warPropagandaDecision);
-HoI4::decision&& updateObjectToAttaches(HoI4::decision&& objectToAttachesDecision);
-
-
-
-void HoI4::GenericDecisions::updateDecisions(const std::map<int, int>& provinceToStateIdMap,
-	 const std::set<std::string>& majorIdeologies)
+namespace HoI4
 {
-	for (auto& category: decisions)
-	{
-		if (category.getName() == "economy_decisions")
-		{
-			auto decisions = category.getDecisions();
-			decisions.erase(std::remove_if(decisions.begin(),
-									  decisions.end(),
-									  [](auto& decision) {
-										  return decision.getName() == "dismantle_maginot";
-									  }),
-				 decisions.end());
-			category.replaceDecisions(decisions);
-		}
+namespace
+{
 
-		for (auto& decision: category.getDecisions())
-		{
-			if (decision.getName() == "blow_suez_canal")
-			{
-				category.replaceDecision(updateBlowSuez(std::move(decision), provinceToStateIdMap));
-			}
-			else if (decision.getName() == "blow_panama_canal")
-			{
-				category.replaceDecision(updateBlowPanama(std::move(decision), provinceToStateIdMap));
-			}
-			else if (decision.getName() == "rebuild_suez_canal")
-			{
-				category.replaceDecision(updateRebuildSuez(std::move(decision), provinceToStateIdMap));
-			}
-			else if (decision.getName() == "rebuild_panama_canal")
-			{
-				category.replaceDecision(updateRebuildPanama(std::move(decision), provinceToStateIdMap));
-			}
-			else if (decision.getName() == "women_in_the_workforce")
-			{
-				category.replaceDecision(updateWomenInTheWorkforce(std::move(decision), majorIdeologies));
-			}
-			else if (decision.getName() == "war_bonds")
-			{
-				category.replaceDecision(updateWarBonds(std::move(decision), majorIdeologies));
-			}
-			else if (decision.getName() == "improved_worker_conditions")
-			{
-				category.replaceDecision(updateImprovedWorkerConditions(std::move(decision)));
-			}
-			else if (decision.getName() == "promises_of_peace")
-			{
-				category.replaceDecision(updatePromisesOfPeace(std::move(decision)));
-			}
-			else if (decision.getName() == "war_propaganda")
-			{
-				category.replaceDecision(updateWarPropaganda(std::move(decision)));
-			}
-			else if (decision.getName() == "war_propaganda_against_warmonger")
-			{
-				category.replaceDecision(updateWarPropagandaAgainstWarmonger(std::move(decision)));
-			}
-			else if (decision.getName() == "object_to_attaches")
-			{
-				category.replaceDecision(updateObjectToAttaches(std::move(decision)));
-			}
-		}
-	}
-
-	decisions.erase(std::remove_if(decisions.begin(),
-							  decisions.end(),
-							  [](auto& decisionCategory) {
-								  return decisionCategory.getName() == "foreign_support";
-							  }),
-		 decisions.end());
-}
-
+	const std::set suezRegionProvinces{
+	 7079,
+	 5078,
+	 9989,
+	 12033,
+	 11967,
+	 12091,
+	 10061,
+	 7148,
+	 11910, // Marsa Matruh (452)
+	 1071,
+	 4145,
+	 4076,
+	 7164,
+	 7091,
+	 10073,
+	 11964, // Alexandria (447)
+	 992,
+	 7117,
+	 3996,
+	 4055,
+	 1068,
+	 10031,
+	 10005,
+	 7011,
+	 12004,
+	 4143,
+	 7188, // Cairo (446)
+	 7144,
+	 7030,
+	 11974,
+	 10028,
+	 12044,
+	 1151,
+	 10097,
+	 7073,
+	 12071,
+	 1028,
+	 1064,
+	 11999,
+	 1206,
+	 12771,
+	 10844, // Aswan (456)
+	 10126,
+	 1080,
+	 9957,
+	 12002,
+	 12889,
+	 4068,
+	 7156,
+	 5069,
+	 4910, // Eastern Desert (457)
+	 11979,
+	 4161,
+	 11922,
+	 10002,
+	 1112,
+	 12073,
+	 10099, // Sinai (453)
+	 1065,
+	 1201,
+	 4206,
+	 4088,
+	 11970,
+	 7107,
+	 1086,
+	 7176,
+	 1015, // Palestine (454)
+	 7170,
+	 7001,
+	 1544,
+	 4440,
+	 7151,
+	 4574,
+	 10089,
+	 4017,
+	 4591,
+	 4562,
+	 4115,
+	 11976,
+	 4603 // Jordan (455)
+};
+const std::set aswanAndEasternDesertProvinces{
+	 7144,
+	 7030,
+	 11974,
+	 10028,
+	 12044,
+	 1151,
+	 10097,
+	 7073,
+	 12071,
+	 1028,
+	 1064,
+	 11999,
+	 1206,
+	 12771,
+	 10844, // Aswan (456)
+	 10126,
+	 1080,
+	 9957,
+	 12002,
+	 12889,
+	 4068,
+	 7156,
+	 5069,
+	 4910, // Eastern Desert (457)
+};
+const std::set khartoumProvinces{1977, 12725, 2003};
+const std::set eritriaAndSomalilandProvinces{
+	 5047,
+	 5091,
+	 12766,
+	 8043, // Eritria
+	 4985,
+	 8124,
+	 10777,
+	 10833,
+	 12759,
+	 10921,
+	 1966,
+	 10891,
+	 10818,
+	 12840,
+	 5065,
+	 12991,
+	 10928,
+	 8164,
+	 12941 // Somaliland
+};
+const int gibraltarProvince = 4135;
+const std::set suezCanalProvinces{
+	 12049, // north-west suez canal
+	 4073,  // south-west suez canal
+	 1155,  // north-east suez canal
+	 9947	  // south-east suez canal
+};
+const std::set panamaCanalProvinces{
+	 7617 // Panama province
+};
+const std::set panamaPeninsulaProvinces{
+	 10482,
+	 7630,
+	 7617,
+	 4624,
+	 1633,
+	 4611 // Panama state
+};
 
 std::set<int> getRelevantStatesFromProvinces(const std::set<int>& provinces,
 	 const std::set<int>& statesToExclude,
-	 const std::map<int, int>& provinceToStateIdMap);
-
-
-HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap)
+	 const std::map<int, int>& provinceToStateIdMap)
 {
-	auto relevantCanalStates = getRelevantStatesFromProvinces(
-		 {
-			  12049, // north-west suez canal
-			  4073,	// south-west suez canal
-			  1155,	// north-east suez canal
-			  9947	// south-east suez canal
-		 },
-		 {},
-		 provinceToStateIdMap);
+	std::set<int> relevantStates;
+	for (const auto& province: provinces)
+	{
+		if (auto mapping = provinceToStateIdMap.find(province);
+			 mapping != provinceToStateIdMap.end() && !statesToExclude.contains(mapping->second))
+		{
+			relevantStates.insert(mapping->second);
+		}
+	}
+
+	return relevantStates;
+}
+
+
+decision&& updateBlowSuez(decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap)
+{
+	auto relevantCanalStates = getRelevantStatesFromProvinces(suezCanalProvinces, {}, provinceToStateIdMap);
 
 	auto relevantOtherStates = getRelevantStatesFromProvinces(
-		 {
-			  7079,
-			  5078,
-			  9989,
-			  12033,
-			  11967,
-			  12091,
-			  10061,
-			  7148,
-			  11910, // Marsa Matruh (452)
-			  1071,
-			  4145,
-			  4076,
-			  7164,
-			  7091,
-			  10073,
-			  11964, // Alexandria (447)
-			  992,
-			  7117,
-			  3996,
-			  4055,
-			  1068,
-			  10031,
-			  10005,
-			  7011,
-			  12004,
-			  4143,
-			  7188, // Cairo (446)
-			  7144,
-			  7030,
-			  11974,
-			  10028,
-			  12044,
-			  1151,
-			  10097,
-			  7073,
-			  12071,
-			  1028,
-			  1064,
-			  11999,
-			  1206,
-			  12771,
-			  10844, // Aswan (456)
-			  10126,
-			  1080,
-			  9957,
-			  12002,
-			  12889,
-			  4068,
-			  7156,
-			  5069,
-			  4910, // Eastern Desert (457)
-			  11979,
-			  4161,
-			  11922,
-			  10002,
-			  1112,
-			  12073,
-			  10099, // Sinai (453)
-			  1065,
-			  1201,
-			  4206,
-			  4088,
-			  11970,
-			  7107,
-			  1086,
-			  7176,
-			  1015, // Palestine (454)
-			  7170,
-			  7001,
-			  1544,
-			  4440,
-			  7151,
-			  4574,
-			  10089,
-			  4017,
-			  4591,
-			  4562,
-			  4115,
-			  11976,
-			  4603 // Jordan (455)
-		 },
+		 suezRegionProvinces,
 		 relevantCanalStates,
 		 provinceToStateIdMap);
 
-	auto relevantNileStates = getRelevantStatesFromProvinces(
-		 {
-			  7144,
-			  7030,
-			  11974,
-			  10028,
-			  12044,
-			  1151,
-			  10097,
-			  7073,
-			  12071,
-			  1028,
-			  1064,
-			  11999,
-			  1206,
-			  12771,
-			  10844, // Aswan (456)
-			  10126,
-			  1080,
-			  9957,
-			  12002,
-			  12889,
-			  4068,
-			  7156,
-			  5069,
-			  4910, // Eastern Desert (457)
-		 },
-		 {},
-		 provinceToStateIdMap);
-
-	auto relevantLandRouteStates = getRelevantStatesFromProvinces({1977, 12725, 2003}, // Khartoum
-		 {},
-		 provinceToStateIdMap);
-
-	auto relevantSupplyStates = getRelevantStatesFromProvinces(
-		 {
-			  5047,
-			  5091,
-			  12766,
-			  8043, // Eritria
-			  4985,
-			  8124,
-			  10777,
-			  10833,
-			  12759,
-			  10921,
-			  1966,
-			  10891,
-			  10818,
-			  12840,
-			  5065,
-			  12991,
-			  10928,
-			  8164,
-			  12941 // Somaliland
-		 },
-		 {},
-		 provinceToStateIdMap);
+	auto relevantNileStates = getRelevantStatesFromProvinces(aswanAndEasternDesertProvinces, {}, provinceToStateIdMap);
+	auto relevantLandRouteStates = getRelevantStatesFromProvinces(khartoumProvinces, {}, provinceToStateIdMap);
+	auto relevantSupplyStates = getRelevantStatesFromProvinces(eritriaAndSomalilandProvinces, {}, provinceToStateIdMap);
 
 	std::optional<int> gibraltar;
-	if (auto mapping = provinceToStateIdMap.find(4135); mapping != provinceToStateIdMap.end())
+	if (auto mapping = provinceToStateIdMap.find(gibraltarProvince); mapping != provinceToStateIdMap.end())
 	{
 		gibraltar = mapping->second;
 	}
@@ -399,26 +330,10 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 }
 
 
-HoI4::decision&& updateBlowPanama(HoI4::decision&& blowPanamaDecision, const std::map<int, int>& provinceToStateIdMap)
+decision&& updateBlowPanama(decision&& blowPanamaDecision, const std::map<int, int>& provinceToStateIdMap)
 {
-	auto canalState = getRelevantStatesFromProvinces(
-		 {
-			  7617 // Panama province
-		 },
-		 {},
-		 provinceToStateIdMap);
-
-	auto peninsulaState = getRelevantStatesFromProvinces(
-		 {
-			  10482,
-			  7630,
-			  7617,
-			  4624,
-			  1633,
-			  4611 // Panama state
-		 },
-		 {},
-		 provinceToStateIdMap);
+	auto canalState = getRelevantStatesFromProvinces(panamaCanalProvinces, {}, provinceToStateIdMap);
+	auto peninsulaState = getRelevantStatesFromProvinces(panamaPeninsulaProvinces, {}, provinceToStateIdMap);
 
 	std::string available;
 	available += "= {\n";
@@ -496,35 +411,9 @@ HoI4::decision&& updateBlowPanama(HoI4::decision&& blowPanamaDecision, const std
 }
 
 
-std::set<int> getRelevantStatesFromProvinces(const std::set<int>& provinces,
-	 const std::set<int>& statesToExclude,
-	 const std::map<int, int>& provinceToStateIdMap)
+decision&& updateRebuildSuez(decision&& rebuildSuezDecision, const std::map<int, int>& provinceToStateIdMap)
 {
-	std::set<int> relevantStates;
-	for (const auto& province: provinces)
-	{
-		if (auto mapping = provinceToStateIdMap.find(province);
-			 mapping != provinceToStateIdMap.end() && !statesToExclude.contains(mapping->second))
-		{
-			relevantStates.insert(mapping->second);
-		}
-	}
-
-	return relevantStates;
-}
-
-
-HoI4::decision&& updateRebuildSuez(HoI4::decision&& rebuildSuezDecision, const std::map<int, int>& provinceToStateIdMap)
-{
-	auto relevantCanalStates = getRelevantStatesFromProvinces(
-		 {
-			  12049, // north-west suez canal
-			  4073,	// south-west suez canal
-			  1155,	// north-east suez canal
-			  9947	// south-east suez canal
-		 },
-		 {},
-		 provinceToStateIdMap);
+	auto relevantCanalStates = getRelevantStatesFromProvinces(suezCanalProvinces, {}, provinceToStateIdMap);
 
 	std::string available;
 	available += "= {\n";
@@ -570,27 +459,10 @@ HoI4::decision&& updateRebuildSuez(HoI4::decision&& rebuildSuezDecision, const s
 }
 
 
-HoI4::decision&& updateRebuildPanama(HoI4::decision&& rebuildPanamaDecision,
-	 const std::map<int, int>& provinceToStateIdMap)
+decision&& updateRebuildPanama(decision&& rebuildPanamaDecision, const std::map<int, int>& provinceToStateIdMap)
 {
-	auto canalState = getRelevantStatesFromProvinces(
-		 {
-			  7617 // Panama province
-		 },
-		 {},
-		 provinceToStateIdMap);
-
-	auto peninsulaState = getRelevantStatesFromProvinces(
-		 {
-			  10482,
-			  7630,
-			  7617,
-			  4624,
-			  1633,
-			  4611 // Panama state
-		 },
-		 canalState,
-		 provinceToStateIdMap);
+	auto canalState = getRelevantStatesFromProvinces(panamaCanalProvinces, {}, provinceToStateIdMap);
+	auto peninsulaState = getRelevantStatesFromProvinces(panamaPeninsulaProvinces, canalState, provinceToStateIdMap);
 
 	std::string available;
 	available += "= {\n";
@@ -653,7 +525,7 @@ HoI4::decision&& updateRebuildPanama(HoI4::decision&& rebuildPanamaDecision,
 }
 
 
-HoI4::decision&& updateWomenInTheWorkforce(HoI4::decision&& womenInTheWorkforceDecision,
+decision&& updateWomenInTheWorkforce(decision&& womenInTheWorkforceDecision,
 	 const std::set<std::string>& majorIdeologies)
 {
 	std::string available;
@@ -692,7 +564,7 @@ HoI4::decision&& updateWomenInTheWorkforce(HoI4::decision&& womenInTheWorkforceD
 }
 
 
-HoI4::decision&& updateWarBonds(HoI4::decision&& warBondsDecision, const std::set<std::string>& majorIdeologies)
+decision&& updateWarBonds(decision&& warBondsDecision, const std::set<std::string>& majorIdeologies)
 {
 	std::string available;
 	available += "= {\n";
@@ -742,7 +614,7 @@ HoI4::decision&& updateWarBonds(HoI4::decision&& warBondsDecision, const std::se
 }
 
 
-HoI4::decision&& updateImprovedWorkerConditions(HoI4::decision&& improvedWorkerConditionsDecision)
+decision&& updateImprovedWorkerConditions(decision&& improvedWorkerConditionsDecision)
 {
 	improvedWorkerConditionsDecision.setAvailable(
 		 "= {\n"
@@ -761,7 +633,7 @@ HoI4::decision&& updateImprovedWorkerConditions(HoI4::decision&& improvedWorkerC
 }
 
 
-HoI4::decision&& updatePromisesOfPeace(HoI4::decision&& promisesOfPeaceDecision)
+decision&& updatePromisesOfPeace(decision&& promisesOfPeaceDecision)
 {
 	promisesOfPeaceDecision.setAvailable(
 		 "= {\n"
@@ -782,7 +654,7 @@ HoI4::decision&& updatePromisesOfPeace(HoI4::decision&& promisesOfPeaceDecision)
 }
 
 
-HoI4::decision&& updateWarPropaganda(HoI4::decision&& warPropagandaDecision)
+decision&& updateWarPropaganda(decision&& warPropagandaDecision)
 {
 	warPropagandaDecision.setAvailable(
 		 "= {\n"
@@ -796,7 +668,7 @@ HoI4::decision&& updateWarPropaganda(HoI4::decision&& warPropagandaDecision)
 }
 
 
-HoI4::decision&& updateWarPropagandaAgainstWarmonger(HoI4::decision&& warPropagandaDecision)
+decision&& updateWarPropagandaAgainstWarmonger(decision&& warPropagandaDecision)
 {
 	warPropagandaDecision.setAvailable(
 		 "= {\n"
@@ -817,7 +689,7 @@ HoI4::decision&& updateWarPropagandaAgainstWarmonger(HoI4::decision&& warPropaga
 }
 
 
-HoI4::decision&& updateObjectToAttaches(HoI4::decision&& objectToAttachesDecision)
+decision&& updateObjectToAttaches(decision&& objectToAttachesDecision)
 {
 	objectToAttachesDecision.setVisible(
 		 "= {\n"
@@ -836,3 +708,83 @@ HoI4::decision&& updateObjectToAttaches(HoI4::decision&& objectToAttachesDecisio
 
 	return std::move(objectToAttachesDecision);
 }
+
+} // namespace
+
+
+
+void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToStateIdMap,
+	 const std::set<std::string>& majorIdeologies)
+{
+	for (auto& category: decisions)
+	{
+		if (category.getName() == "economy_decisions")
+		{
+			auto decisions = category.getDecisions();
+			decisions.erase(std::remove_if(decisions.begin(),
+									  decisions.end(),
+									  [](auto& decision) {
+										  return decision.getName() == "dismantle_maginot";
+									  }),
+				 decisions.end());
+			category.replaceDecisions(decisions);
+		}
+
+		for (auto& decision: category.getDecisions())
+		{
+			if (decision.getName() == "blow_suez_canal")
+			{
+				category.replaceDecision(updateBlowSuez(std::move(decision), provinceToStateIdMap));
+			}
+			else if (decision.getName() == "blow_panama_canal")
+			{
+				category.replaceDecision(updateBlowPanama(std::move(decision), provinceToStateIdMap));
+			}
+			else if (decision.getName() == "rebuild_suez_canal")
+			{
+				category.replaceDecision(updateRebuildSuez(std::move(decision), provinceToStateIdMap));
+			}
+			else if (decision.getName() == "rebuild_panama_canal")
+			{
+				category.replaceDecision(updateRebuildPanama(std::move(decision), provinceToStateIdMap));
+			}
+			else if (decision.getName() == "women_in_the_workforce")
+			{
+				category.replaceDecision(updateWomenInTheWorkforce(std::move(decision), majorIdeologies));
+			}
+			else if (decision.getName() == "war_bonds")
+			{
+				category.replaceDecision(updateWarBonds(std::move(decision), majorIdeologies));
+			}
+			else if (decision.getName() == "improved_worker_conditions")
+			{
+				category.replaceDecision(updateImprovedWorkerConditions(std::move(decision)));
+			}
+			else if (decision.getName() == "promises_of_peace")
+			{
+				category.replaceDecision(updatePromisesOfPeace(std::move(decision)));
+			}
+			else if (decision.getName() == "war_propaganda")
+			{
+				category.replaceDecision(updateWarPropaganda(std::move(decision)));
+			}
+			else if (decision.getName() == "war_propaganda_against_warmonger")
+			{
+				category.replaceDecision(updateWarPropagandaAgainstWarmonger(std::move(decision)));
+			}
+			else if (decision.getName() == "object_to_attaches")
+			{
+				category.replaceDecision(updateObjectToAttaches(std::move(decision)));
+			}
+		}
+	}
+
+	decisions.erase(std::remove_if(decisions.begin(),
+							  decisions.end(),
+							  [](auto& decisionCategory) {
+								  return decisionCategory.getName() == "foreign_support";
+							  }),
+		 decisions.end());
+}
+
+} // namespace HoI4
