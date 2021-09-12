@@ -1,4 +1,5 @@
 #include "GenericDecisions.h"
+#include <algorithm>
 #include <array>
 
 
@@ -719,12 +720,10 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 		if (category.getName() == "economy_decisions")
 		{
 			auto decisions = category.getDecisions();
-			decisions.erase(std::remove_if(decisions.begin(),
-									  decisions.end(),
-									  [](auto& decision) {
-										  return decision.getName() == "dismantle_maginot";
-									  }),
-				 decisions.end());
+			const auto [first, last] = std::ranges::remove_if(decisions, [](auto& decision) {
+				return decision.getName() == "dismantle_maginot";
+			});
+			decisions.erase(first, last);
 			category.replaceDecisions(decisions);
 		}
 
@@ -777,12 +776,10 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 		}
 	}
 
-	decisions.erase(std::remove_if(decisions.begin(),
-							  decisions.end(),
-							  [](auto& decisionCategory) {
-								  return decisionCategory.getName() == "foreign_support";
-							  }),
-		 decisions.end());
+	const auto [first, last] = std::ranges::remove_if(decisions, [](auto& decisionCategory) {
+		return decisionCategory.getName() == "foreign_support";
+	});
+	decisions.erase(first, last);
 }
 
 } // namespace HoI4
