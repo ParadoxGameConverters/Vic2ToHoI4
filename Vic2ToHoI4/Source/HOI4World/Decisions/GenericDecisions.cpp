@@ -1,4 +1,5 @@
 #include "GenericDecisions.h"
+#include <array>
 
 
 
@@ -7,7 +8,7 @@ namespace HoI4
 namespace
 {
 
-	const std::set suezRegionProvinces{
+constexpr std::array suezRegionProvinces{
 	 7079,
 	 5078,
 	 9989,
@@ -89,7 +90,7 @@ namespace
 	 11976,
 	 4603 // Jordan (455)
 };
-const std::set aswanAndEasternDesertProvinces{
+constexpr std::array aswanAndEasternDesertProvinces{
 	 7144,
 	 7030,
 	 11974,
@@ -115,8 +116,8 @@ const std::set aswanAndEasternDesertProvinces{
 	 5069,
 	 4910, // Eastern Desert (457)
 };
-const std::set khartoumProvinces{1977, 12725, 2003};
-const std::set eritriaAndSomalilandProvinces{
+constexpr std::array khartoumProvinces{1977, 12725, 2003};
+constexpr std::array eritriaAndSomalilandProvinces{
 	 5047,
 	 5091,
 	 12766,
@@ -138,16 +139,16 @@ const std::set eritriaAndSomalilandProvinces{
 	 12941 // Somaliland
 };
 const int gibraltarProvince = 4135;
-const std::set suezCanalProvinces{
+constexpr std::array suezCanalProvinces{
 	 12049, // north-west suez canal
 	 4073,  // south-west suez canal
 	 1155,  // north-east suez canal
 	 9947	  // south-east suez canal
 };
-const std::set panamaCanalProvinces{
+constexpr std::array panamaCanalProvinces{
 	 7617 // Panama province
 };
-const std::set panamaPeninsulaProvinces{
+constexpr std::array panamaPeninsulaProvinces{
 	 10482,
 	 7630,
 	 7617,
@@ -156,7 +157,8 @@ const std::set panamaPeninsulaProvinces{
 	 4611 // Panama state
 };
 
-std::set<int> getRelevantStatesFromProvinces(const std::set<int>& provinces,
+template <size_t N>
+std::set<int> getRelevantStatesFromProvinces(const std::array<int, N>& provinces,
 	 const std::set<int>& statesToExclude,
 	 const std::map<int, int>& provinceToStateIdMap)
 {
@@ -177,12 +179,8 @@ std::set<int> getRelevantStatesFromProvinces(const std::set<int>& provinces,
 decision&& updateBlowSuez(decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap)
 {
 	auto relevantCanalStates = getRelevantStatesFromProvinces(suezCanalProvinces, {}, provinceToStateIdMap);
-
-	auto relevantOtherStates = getRelevantStatesFromProvinces(
-		 suezRegionProvinces,
-		 relevantCanalStates,
-		 provinceToStateIdMap);
-
+	auto relevantOtherStates =
+		 getRelevantStatesFromProvinces(suezRegionProvinces, relevantCanalStates, provinceToStateIdMap);
 	auto relevantNileStates = getRelevantStatesFromProvinces(aswanAndEasternDesertProvinces, {}, provinceToStateIdMap);
 	auto relevantLandRouteStates = getRelevantStatesFromProvinces(khartoumProvinces, {}, provinceToStateIdMap);
 	auto relevantSupplyStates = getRelevantStatesFromProvinces(eritriaAndSomalilandProvinces, {}, provinceToStateIdMap);
