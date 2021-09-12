@@ -5167,6 +5167,80 @@ deathbringers = {
 	graphical_culture_2d = western_european_2d
 }
 
+silhoutte_o = {
+	cultures_and_groups = { uninhabited }
+	
+	army_portraits = {
+		"gfx/leaders/leader_unknown.dds"
+	}
+	navy_portraits = {
+		"gfx/leaders/leader_unknown.dds"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		democratic = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		fascism = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		absolutist = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		neutrality = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		radical = {
+			"gfx/leaders/leader_marshall_unknown.dds" # Get it? Since the portrait is flipped because it's rad? Guys?
+		}
+		female_portraits = {
+			military = {
+				"gfx/leaders/leader_unknown_female.dds"
+			}
+			monarch = {
+				"gfx/leaders/leader_unknown_female.dds"
+			}
+			ideological_leader = {
+				"gfx/leaders/leader_unknown_female.dds"
+			}
+		}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/operative_unknown.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/operative_unknown.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/spr_anarchist_society.dds"
+	}
+	female_monarch_portaits = {
+		"gfx/interface/ideas/spr_anarchist_society.dds"
+	}
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = african_2d
+}
 the_portraitless = {
 	cultures_and_groups = { undead }
 	
@@ -5193,6 +5267,17 @@ the_portraitless = {
 			"tools/art/portrait_leader_background.png"
 		}
 		radical = {
+			"tools/art/portrait_leader_background.png"
+		}
+	}
+	female_portraits = {
+		military = {
+			"tools/art/portrait_leader_background.png"
+		}
+		monarch = {
+			"tools/art/portrait_leader_background.png"
+		}
+		ideological_leader = {
 			"tools/art/portrait_leader_background.png"
 		}
 	}
@@ -5455,6 +5540,81 @@ falklands_sunset_invasion = {
 	graphical_culture_2d = western_european_2d
 }
 
+canine = {
+	cultures_and_groups = { dog_culture }
+	
+	army_portraits = {
+		"gfx/leaders/Animalia/portrait_dog_leader.dds"
+	}
+	navy_portraits = {
+		"gfx/leaders/Animalia/portrait_dog_leader.dds"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+		}
+		democratic = {
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+		}
+		fascism = {
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+		}
+		absolutist = {
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+		}
+		neutrality = {
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+		}
+		radical = {
+			"gfx/leaders/Animalia/portrait_dog_leader.dds"
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Animalia/portrait_dog_leader_F.dds"
+		}
+		monarch = {
+			"gfx/leaders/Animalia/portrait_dog_leader_F.dds"
+		}
+		ideological_leader = {
+			"gfx/leaders/Animalia/portrait_dog_leader_F.dds"
+		}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+		}
+		democratic = {
+			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+		}
+		fascism = {
+			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+		}
+		absolutist = {
+			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+		}
+		neutrality = {
+			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+		}
+		radical = {
+			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Animalia/portrait_dog_operative.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Animalia/Female/portrait_dog_operative_F.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf"
+	}
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
+}
+
 komodo = {
 	cultures_and_groups = { dragon_culture }
 	
@@ -5486,22 +5646,22 @@ komodo = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"gfx/interface/ideas/spr_anarchist_society.dds"
+			"gfx/interface/ideas/idea_man_low_legitimacy4.dds"
 		}
 		democratic = {
-			"gfx/interface/ideas/spr_anarchist_society.dds"
+			"gfx/interface/ideas/idea_man_low_legitimacy4.dds"
 		}
 		fascism = {
-			"gfx/interface/ideas/spr_anarchist_society.dds"
+			"gfx/interface/ideas/idea_man_low_legitimacy4.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/spr_anarchist_society.dds"
+			"gfx/interface/ideas/idea_man_low_legitimacy4.dds"
 		}
 		neutrality = {
-			"gfx/interface/ideas/spr_anarchist_society.dds"
+			"gfx/interface/ideas/idea_man_low_legitimacy4.dds"
 		}
 		radical = {
-			"gfx/interface/ideas/spr_anarchist_society.dds"
+			"gfx/interface/ideas/idea_man_low_legitimacy4.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -5526,7 +5686,6 @@ animalia = {
 	army_portraits = {
 		#Roar
 		"gfx/leaders/Animalia/portrait_dog_leader.dds"
-		"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
 		"gfx/leaders/Animalia/portrait_duck_leader.dds"
 		"gfx/leaders/Animalia/portrait_elephant_leader.dds"
 		"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
@@ -5536,7 +5695,6 @@ animalia = {
 	navy_portraits = {
 		#Tseeeer
 		"gfx/leaders/Animalia/portrait_dog_leader.dds"
-		"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
 		"gfx/leaders/Animalia/portrait_duck_leader.dds"
 		"gfx/leaders/Animalia/portrait_elephant_leader.dds"
 		"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
@@ -5546,7 +5704,6 @@ animalia = {
 	leader_portraits = {
 		communism = {
 			"gfx/leaders/Animalia/portrait_dog_leader.dds"
-			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
 			"gfx/leaders/Animalia/portrait_duck_leader.dds"
 			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
 			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
@@ -5555,7 +5712,6 @@ animalia = {
 		} 
 		democratic = {
 			"gfx/leaders/Animalia/portrait_dog_leader.dds"
-			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
 			"gfx/leaders/Animalia/portrait_duck_leader.dds"
 			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
 			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
@@ -5564,7 +5720,6 @@ animalia = {
 		} 
 		fascism = {
 			"gfx/leaders/Animalia/portrait_dog_leader.dds"
-			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
 			"gfx/leaders/Animalia/portrait_duck_leader.dds"
 			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
 			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
@@ -5573,7 +5728,6 @@ animalia = {
 		}
 		absolutist = {
 			"gfx/leaders/Animalia/portrait_dog_leader.dds"
-			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
 			"gfx/leaders/Animalia/portrait_duck_leader.dds"
 			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
 			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
@@ -5582,7 +5736,6 @@ animalia = {
 		}
 		neutrality = {
 			"gfx/leaders/Animalia/portrait_dog_leader.dds"
-			"gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
 			"gfx/leaders/Animalia/portrait_duck_leader.dds"
 			"gfx/leaders/Animalia/portrait_elephant_leader.dds"
 			"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
@@ -5644,7 +5797,6 @@ animalia = {
 		}
 	}
 	male_operative_portraits = {
-		"gfx/leaders/Animalia/portrait_dragon_businessman_operative.dds"
 		"gfx/leaders/Animalia/portrait_duck_operative.dds"
 		"gfx/leaders/Animalia/portrait_elephant_operative.dds"
 		"gfx/leaders/Animalia/portrait_hedgehog_operative.dds"
