@@ -20,11 +20,11 @@ HoI4::decisions::decisions(const Configuration& theConfiguration)
 	foreignInfluenceDecisions.importDecisions("Configurables/foreignInfluenceDecisions.txt");
 	navalTreatyDecisions.importDecisions(theConfiguration.getHoI4Path() + "/common/decisions/MTG_naval_treaty.txt");
 	resourceProspectingDecisions.importDecisions("blankmod/output/common/decisions/resource_prospecting.txt");
-	genericDecisions.importDecisions(theConfiguration.getHoI4Path() + "/common/decisions/_generic_decisions.txt");
+	genericDecisions.importDecisions("blankmod/output/common/decisions/_generic_decisions.txt");
 }
 
 
-void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologies,
+void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologies, 
 	 const std::map<int, int>& provinceToStateIdMap,
 	 const std::map<int, DefaultState>& defaultStates,
 	 const Events& theEvents,
@@ -35,7 +35,7 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 
 	generateIdeologicalCategories(majorIdeologies, provinceToStateIdMap);
 
-	agentRecruitmentDecisions.updateDecisions(southAsianCountries);
+	agentRecruitmentDecisions.updateDecisions(southAsianCountries); 
 	stabilityDecisions.updateDecisions(majorIdeologies);
 	politicalDecisions.updateDecisions(majorIdeologies, theEvents);
 	exiledGovernmentsDecisions.updateDecisions(majorIdeologies);
