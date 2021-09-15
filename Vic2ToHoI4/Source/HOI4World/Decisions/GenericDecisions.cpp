@@ -768,11 +768,7 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 			else if (decision.getName() == "war_propaganda_against_warmonger")
 			{
 				category.replaceDecision(updateWarPropagandaAgainstWarmonger(std::move(decision)));
-			}
-			else if (decision.getName() == "object_to_attaches")
-			{
-				category.replaceDecision(updateObjectToAttaches(std::move(decision)));
-			}
+			} 
 		}
 	}
 
