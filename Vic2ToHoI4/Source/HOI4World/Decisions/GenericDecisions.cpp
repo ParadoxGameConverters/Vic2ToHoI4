@@ -565,147 +565,39 @@ decision&& updateWomenInTheWorkforce(decision&& womenInTheWorkforceDecision,
 
 decision&& updateWarBonds(decision&& warBondsDecision, const std::set<std::string>& majorIdeologies)
 {
-	std::string available;
-	available += "= {\n";
-	available += "\t\t\thas_war = yes\n";
-	available += "\t\t\tOR = {\n";
-	for (const auto& ideology: majorIdeologies)
+	auto available = warBondsDecision.getAvailable();
+	for (const auto& [ideology, placeholderText]:
+		 std::vector<std::tuple<std::string, std::string>>{
+			  {"absolutist", "\t\t\t\t$ABSOLUTIST\n"},
+			  {"communism", "\t\t\t\t$COMMUNISM\n"},
+			  {"democratic", "\t\t\t\t$DEMOCRATIC\n"},
+			  {"fascism", "\t\t\t\t$FASCISM\n"},
+			  {"radical", "\t\t\t\t$RADICAL\n"}})
 	{
-		if (ideology == "neutrality")
+		if (majorIdeologies.contains(ideology))
 		{
-			continue;
+			std::string ideologyAvailable;
+			ideologyAvailable += "\t\t\t\tAND = {\n";
+			ideologyAvailable += "\t\t\t\t\thas_government = " + ideology + "\n";
+			ideologyAvailable += "\t\t\t\t\thas_war_support > 0.79\n";
+			if (ideology == "fascism")
+			{
+				ideologyAvailable += "\t\t\t\t\tsurrender_progress > 0\n";
+			}
+			ideologyAvailable += "\t\t\t\t}\n"; 
+			while (available.find(placeholderText) != std::string::npos)
+			{
+				available.replace(available.find(placeholderText), placeholderText.size(), ideologyAvailable);
+			} 
 		}
-
-		available += "\t\t\t\tAND = {\n";
-		available += "\t\t\t\t\thas_government = " + ideology + "\n";
-		available += "\t\t\t\t\thas_war_support > 0.79\n";
-		if (ideology == "fascism")
+		else
 		{
-			available += "\t\t\t\t\tsurrender_progress > 0\n";
+			available.replace(available.find(placeholderText), placeholderText.size(), "");
 		}
-		available += "\t\t\t\t}\n";
 	}
-	available += "\t\t\t\tAND = {\n";
-	available += "\t\t\t\t\thas_government = neutrality\n";
-	available += "\t\t\t\t\thas_war_support > 0.84\n";
-	available += "\t\t\t\t\thas_stability > 0.7\n";
-	available += "\t\t\t\t}\n";
-	available += "\t\t\t}\n";
-	available += "\t\t}";
 	warBondsDecision.setAvailable(available);
 
-	std::string aiWillDo;
-	aiWillDo += "= {\n";
-	aiWillDo += "\t\t\tfactor = 1\n";
-	aiWillDo += "\t\t\tmodifier = {\n";
-	aiWillDo += "\t\t\t\thas_political_power < 100\n";
-	aiWillDo += "\t\t\t\tfactor = 0 #use as pp dump\n";
-	aiWillDo += "\t\t\t}\n";
-	aiWillDo += "\t\t}";
-	warBondsDecision.setAiWillDo(aiWillDo);
-
-	warBondsDecision.setVisible(
-		 "={\n"
-		 "\t\t\thas_war = yes\n"
-		 "\t\t}");
-
 	return std::move(warBondsDecision);
-}
-
-
-decision&& updateImprovedWorkerConditions(decision&& improvedWorkerConditionsDecision)
-{
-	improvedWorkerConditionsDecision.setAvailable(
-		 "= {\n"
-		 "\t\t\thas_stability < 1.0\n"
-		 "\t\t}");
-	improvedWorkerConditionsDecision.setAiWillDo(
-		 "= {\n"
-		 "\t\t\tbase = 0\n"
-		 "\t\t\tmodifier = {\n"
-		 "\t\t\t\tadd = 1\n"
-		 "\t\t\t\thas_stability < 0.6\n"
-		 "\t\t\t}\n"
-		 "\t\t}");
-
-	return std::move(improvedWorkerConditionsDecision);
-}
-
-
-decision&& updatePromisesOfPeace(decision&& promisesOfPeaceDecision)
-{
-	promisesOfPeaceDecision.setAvailable(
-		 "= {\n"
-		 "\t\t\thas_war = no\n"
-		 "\t\t\thas_war_support > 0.2\n"
-		 "\t\t\thas_stability < 1.0\n"
-		 "\t\t}");
-	promisesOfPeaceDecision.setAiWillDo(
-		 "= {\n"
-		 "\t\t\tbase = 0\n"
-		 "\t\t\tmodifier = {\n"
-		 "\t\t\t\tadd = 1\n"
-		 "\t\t\t\thas_stability < 0.4\n"
-		 "\t\t\t}\n"
-		 "\t\t}");
-
-	return std::move(promisesOfPeaceDecision);
-}
-
-
-decision&& updateWarPropaganda(decision&& warPropagandaDecision)
-{
-	warPropagandaDecision.setAvailable(
-		 "= {\n"
-		 "\t\t\tNOT = { has_country_flag = war_propaganda_campaign_running }\n"
-		 "\t\t\tthreat > 0.5\n"
-		 "\t\t\thas_war_support < 0.5\n"
-		 "\t\t\thas_offensive_war = no\n"
-		 "\t\t}");
-
-	return std::move(warPropagandaDecision);
-}
-
-
-decision&& updateWarPropagandaAgainstWarmonger(decision&& warPropagandaDecision)
-{
-	warPropagandaDecision.setAvailable(
-		 "= {\n"
-		 "\t\t\tNOT = { has_country_flag = war_propaganda_campaign_running }\n"
-		 "\t\t\tFROM = {\n"
-		 "\t\t\t\tOR = {\n"
-		 "\t\t\t\t\tis_justifying_wargoal_against = ROOT\n"
-		 "\t\t\t\t\tAND = {\n"
-		 "\t\t\t\t\t\thas_war_with = ROOT\n"
-		 "\t\t\t\t\t\tis_neighbor_of = ROOT\n"
-		 "\t\t\t\t\t}\n"
-		 "\t\t\t\t\thas_offensive_war = yes\n"
-		 "\t\t\t\t}\n"
-		 "\t\t\t}\n"
-		 "\t\t}");
-
-	return std::move(warPropagandaDecision);
-}
-
-
-decision&& updateObjectToAttaches(decision&& objectToAttachesDecision)
-{
-	objectToAttachesDecision.setVisible(
-		 "= {\n"
-		 "\t\t\tFROM = {\n"
-		 "\t\t\t\tNOT = { has_country_flag = rejected_withdrawing_attache }\n"
-		 "\t\t\t\tNOT = { has_country_flag = rejected_withdrawing_attache@ROOT }\n"
-		 "\t\t\t\tNOT = { has_country_flag = object_attache_going_on }\n"
-		 "\t\t\t}\n"
-		 "\t\t\thas_war = yes\n"
-		 "\t\t\thas_capitulated = no\n"
-		 "\t\t\tNOT = { has_war_with = FROM }\n"
-		 "\t\t\tany_enemy_country = {\n"
-		 "\t\t\t\thas_attache_from = FROM\n"
-		 "\t\t\t}\n"
-		 "\t\t}");
-
-	return std::move(objectToAttachesDecision);
 }
 
 } // namespace
@@ -753,22 +645,6 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 			{
 				category.replaceDecision(updateWarBonds(std::move(decision), majorIdeologies));
 			}
-			else if (decision.getName() == "improved_worker_conditions")
-			{
-				category.replaceDecision(updateImprovedWorkerConditions(std::move(decision)));
-			}
-			else if (decision.getName() == "promises_of_peace")
-			{
-				category.replaceDecision(updatePromisesOfPeace(std::move(decision)));
-			}
-			else if (decision.getName() == "war_propaganda")
-			{
-				category.replaceDecision(updateWarPropaganda(std::move(decision)));
-			}
-			else if (decision.getName() == "war_propaganda_against_warmonger")
-			{
-				category.replaceDecision(updateWarPropagandaAgainstWarmonger(std::move(decision)));
-			} 
 		}
 	}
 

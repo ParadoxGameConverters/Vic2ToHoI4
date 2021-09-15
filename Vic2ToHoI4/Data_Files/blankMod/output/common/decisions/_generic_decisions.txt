@@ -1363,7 +1363,18 @@ war_measures = {
 
 		available = {
 			has_war = yes
-				has_war_support > 0.79
+			OR = {
+				$ABSOLUTIST
+				$COMMUNISM
+				$DEMOCRATIC
+				$FASCISM
+				$RADICAL
+				AND = {
+					has_government = neutrality
+					has_war_support > 0.84
+					has_stability > 0.7
+				}
+			}
 		}
 		visible = {
 			has_war = yes
