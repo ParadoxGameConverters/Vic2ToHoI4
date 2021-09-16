@@ -20,8 +20,10 @@ class decision: commonItems::parser
 	[[nodiscard]] std::string getHighlightStateTargets() const { return highlightStateTargets; }
 	[[nodiscard]] std::string getAvailable() const { return available; }
 	[[nodiscard]] std::string getVisible() const { return visible; }
+	[[nodiscard]] std::string getCompleteEffect() const { return completeEffect; }
 	[[nodiscard]] std::string getRemoveEffect() const { return removeEffect; }
 	[[nodiscard]] std::string getTimeoutEffect() const { return timeoutEffect; }
+	[[nodiscard]] std::string getAiWillDo() const { return aiWillDo; }
 
 	void setAllowed(const std::string& newAllowed) { allowed = newAllowed; }
 	void setAvailable(const std::string& newAvailable) { available = newAvailable; }

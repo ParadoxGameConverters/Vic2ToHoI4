@@ -831,21 +831,14 @@ operations = {
 			has_dlc = "Waking the Tiger"
 		}
 		available = {
-			controls_state = 446
-			controls_state = 453
+			$CANAL_STATES
 			OR = {
 				NOT = {
-					owns_state = 446
-					owns_state = 453
+					$CANAL_STATES
 				}
 				any_enemy_country = {
 					OR = {
-						controls_state = 452
-						controls_state = 447
-						controls_state = 456
-						controls_state = 457
-						controls_state = 454
-						controls_state = 455
+						$OTHER_STATES
 					}
 				}
 			}
@@ -877,14 +870,12 @@ operations = {
 				if = {
 					limit = {
 						NOT = {
-							owns_state = 446
-							owns_state = 453
+							$CANAL_STATES
 						}
 					}
 					random_country = {
 						limit = {
-							owns_state = 446
-							owns_state = 453
+							$CANAL_STATES
 						}
 						country_event = { id = generic.12 days = 1 }
 					}
@@ -896,25 +887,12 @@ operations = {
 			if = {
 				limit = {
 					OR = {
-						has_full_control_of_state = 446
-						has_full_control_of_state = 453
+						$CANAL_STATES
 					}
 				}
 				set_country_flag = blew_up_suez
 				set_global_flag = SUEZ_CANAL_BLOCKED
 				country_event = { id = wtt_news.40 hours = 6}
-			}
-			effect_tooltip = {
-				if = {
-					limit = {
-						ENG = {
-							owns_state = 446
-							owns_state = 453
-						}
-					}
-					add_war_support = -0.05
-					add_stability = -0.05
-				}
 			}
 		}
 		ai_will_do = {
@@ -924,17 +902,9 @@ operations = {
 				NOT = {
 					any_enemy_country = {
 						OR = {
-							controls_state = 452
-							controls_state = 447
-							controls_state = 456
-							controls_state = 457
-							controls_state = 454
-							controls_state = 455
+							$OTHER_STATES
 							OR = {
-								divisions_in_state = { state = 454 size > 2 }
-								divisions_in_state = { state = 447 size > 2 }
-								divisions_in_state = { state = 457 size > 2 }
-								divisions_in_state = { state = 456 size > 2 }
+								$TWO_DIVISIONS_IN_STATES
 							}
 						}
 					}
@@ -945,29 +915,14 @@ operations = {
 				any_allied_country = {
 					NOT = {
 						OR = {
-							has_full_control_of_state = 457
-							has_full_control_of_state = 456
+							$NILE_STATES
 						}
 					}
-					NOT = { has_full_control_of_state = 551 }
+					$LAND_ROUTE_STATES
 					OR = {
-						divisions_in_state = { state = 550 size > 0 }
-						divisions_in_state = { state = 268 size > 0 }
-						divisions_in_state = { state = 269 size > 0 }
-						divisions_in_state = { state = 559 size > 0 }
+						$SUPPLY_STATES
 					}
 				}
-			}
-			modifier = {
-				factor = 200 # Try to cut the enemy off from the mediterranean if you also occupy Gibraltar
-				OR = {
-					has_full_control_of_state = 118
-					any_allied_country = {
-						has_full_control_of_state = 118
-					}
-				}
-				has_war = yes
-				NOT = { tag = ENG }
 			}
 		}
 	}
@@ -980,7 +935,7 @@ operations = {
 			
 		}
 		available = {
-			has_full_control_of_state = 685
+			$CANAL_STATES
 		}
 	
 		visible = {
@@ -1009,12 +964,12 @@ operations = {
 				if = {
 					limit = {
 						NOT = {
-							owns_state = 685
+							$CANAL_STATES
 						}
 					}
 					random_country = {
 						limit = {
-							owns_state = 685
+							$CANAL_STATES
 						}
 						country_event = { id = generic.13 days = 1 }
 					}
@@ -1026,30 +981,16 @@ operations = {
 			if = {
 				limit = {
 					OR = {
-						has_full_control_of_state = 685
-						has_full_control_of_state = 304
+						$PENINSULA_STATES
 					}
 				}
 				set_country_flag = blew_up_panama
 				set_global_flag = PANAMA_CANAL_BLOCKED
 				country_event = { id = wtt_news.41 hours = 6}
 			}
-			effect_tooltip = {
-				if = {
-					limit = {
-						USA = { owns_state = 685 }
-					}
-					add_war_support = -0.05
-					add_stability = -0.05
-				}
-			}
 		}
 		ai_will_do = {
 			factor = 1
-			modifier = {
-				factor = 0 # Don't blow up the canal as USA. Ever.
-				tag = USA
-			}
 			modifier = {
 				factor = 0 # Don't blow up the canal if enemies have weak navies but you are a strong naval power
 				has_navy_size = {
@@ -1063,14 +1004,6 @@ operations = {
 					}
 				}
 			}
-			modifier = {
-				factor = 200 # Always blow up the canal as JAP or GER when at war with USA (priority)
-				OR = {
-					is_in_faction_with = JAP
-					is_in_faction_with = GER
-				}
-				has_war_with = USA
-			}
 		}
 	}
 }
@@ -1082,8 +1015,7 @@ special_projects = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 446
-			has_full_control_of_state = 453
+			$CANAL_STATES
 			num_of_civilian_factories > 15
 		}
 	
@@ -1104,8 +1036,7 @@ special_projects = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_full_control_of_state = 446
-					has_full_control_of_state = 453
+					$CANAL_STATES
 				}
 				set_country_flag = rebuilt_suez
 				clr_global_flag = SUEZ_CANAL_BLOCKED
@@ -1116,32 +1047,8 @@ special_projects = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				factor = 0 # Don't bother if your navy is weak AND not ENG
+				factor = 0 # Don't bother if your navy is weak
 				has_navy_size = { size < 100 }
-				NOT = { tag = ENG }
-			}
-			modifier = {
-				factor = 200 # Prioritize if Italy is being invaded and you can't get to the battlefront (no control of Gibraltar strait)
-				NOT = {
-					OR = {
-						has_full_control_of_state = 118
-						any_allied_country = {
-							has_full_control_of_state = 118
-						}
-					}
-				}
-				has_war_with = ITA
-				ITA = { surrender_progress > 0.1 }
-				has_full_control_of_state = 447
-				has_full_control_of_state = 454
-				has_full_control_of_state = 452
-				has_full_control_of_state = 456
-				has_full_control_of_state = 457
-				NOT = { has_country_flag = blew_up_suez }
-			}
-			modifier = {
-				factor = 200 # Prioritize if UK
-				tag = ENG
 			}
 			modifier = {
 				factor = 10 # Prioritize if not at war
@@ -1155,10 +1062,10 @@ special_projects = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 685
+			$CANAL_STATES
 			NOT = {
 				any_enemy_country = {
-					controls_state = 304
+					$PENINSULA_STATES
 				}
 			}
 			num_of_civilian_factories > 25
@@ -1181,10 +1088,10 @@ special_projects = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_full_control_of_state = 685
+					$CANAL_STATES
 					NOT = {
 						any_enemy_country = {
-							controls_state = 304
+							$PENINSULA_STATES
 						}
 					}
 				}
@@ -1196,20 +1103,9 @@ special_projects = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				factor = 0 # Don't bother if your navy is weak AND not USA
+				factor = 0 # Don't bother if your navy is weak
 				has_navy_size = { size < 50 }
-				NOT = { tag = USA }
 				has_war = yes
-			}
-			modifier = {
-				factor = 200 # Prioritize if you decisively beat USA's navy
-				has_war_with = USA
-				USA = { has_navy_size = { size < 50 } }
-				has_navy_size = { size > 100 }
-			}
-			modifier = {
-				factor = 200 # Prioritize if USA
-				tag = USA
 			}
 			modifier = {
 				factor = 10 # Prioritize if not at war
@@ -1324,7 +1220,18 @@ war_measures = {
 		available = {
 			has_war = yes
 			has_idea = tot_economic_mobilisation
-				has_war_support > 0.79
+			OR = {
+				$ABSOLUTIST
+				$COMMUNISM
+				$DEMOCRATIC
+				$FASCISM
+				$RADICAL
+				AND = {
+					has_government = neutrality
+					has_war_support > 0.84
+					has_stability > 0.7
+				}
+			}
 		}
 		visible = {
 			has_war = yes
