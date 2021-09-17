@@ -4393,8 +4393,8 @@ hispanic = {
 	graphical_culture_2d = southamerican_2d
 }
 
-african = {
-	culture_groups = { african_diaspora_cultures west_african central_african east_african southern_african }
+other_african = {
+	cultures_and_groups = { african_diaspora_cultures west_african central_african east_african southern_african }
 	
 	army_portraits = {
 		#Generic
@@ -4599,9 +4599,172 @@ african = {
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
 }
-
+niger_congo = {
+	cultures_and_groups = { chewa nyasa herero lomwe makua nguni southern_bantu ovimbundu sena shona sotho tonga tswana xhosa yao zulu azande baganda kikuyu nuba ruanda rundi sukuma kilombero lacustrine_bantu akan bambara dyula ewe fon fulbe ibibio itsekari ibo kru mande western_nigritic mossi gur senufo songhai tiv wolof yoruba east_kwa }
+	army_portraits = {
+		#Generic
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_1.dds"	
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_2.dds"	
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_3.dds"	
+		"gfx/leaders/Africa/Portrait_Africa_Generic_land_4.dds"
+		#Other
+		"gfx/leaders/SAF/Portrait_South_Africa_Army_Generic.dds"
+		"gfx/leaders/SAF/Portrait_South_Africa_Army_Generic_2.dds"
+		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_2.tga"
+		"gfx/leaders/Generic/Portrait_Africa_Generic_land_new_3.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_1.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_2.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_3.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_4.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_5.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_6.tga"
+		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_7.tga"
+		"gfx/leaders/African/Portrait_GAB_Tchorere.tga"
+		"gfx/leaders/African/Portrait_KIV_Louis_de_Gonzague_Bobozo.tga"
+		"gfx/leaders/African/Portrait_LIB_Alford_Russ.tga"
+		"gfx/leaders/African/Portrait_LIB_Jenkins_Yancey.tga"
+		"gfx/leaders/African/Portrait_Mittelafrika_Karl_Atanga.tga"
+		"gfx/leaders/African/Portrait_NAM_Samuel_Maharero.tga"
+		"gfx/leaders/African/Portrait_TOG_Alhaji.tga"
+	}
+	navy_portraits = {
+		#Generic
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_1.dds"
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_2.dds"
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
+		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_4.dds"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Africa/Portrait_Africa_Generic_1.dds"
+			"gfx/leaders/Africa/Portrait_Africa_Generic_4.dds"
+			"gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic_2.dds"	
+			"gfx/leaders/African/Portrait_GNE_Yacine.tga"
+			"gfx/leaders/African/Portrait_LIB_Marcus_Garvey.tga"
+			"gfx/leaders/African/Portrait_SEN_Sedar.tga"
+			"gfx/leaders/African/Portrait_Haiti_Stenio_Vincent.tga"
+			"gfx/leaders/African/Portrait_SOM_Ughaz.tga"
+			"gfx/leaders/African/Portrait_TOG_Tove.tga"
+		} 
+		democratic = {
+			"gfx/leaders/LIB/Portrait_LIB_edwin_barclay.dds"
+			"gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic.dds"
+			"gfx/leaders/Generic/Portrait_Africa_Generic_new_1.tga"
+			"gfx/leaders/African/Portrait_Barot_YetaIII.tga"
+			"gfx/leaders/African/Portrait_Dahomey_Soglo.tga"
+			"gfx/leaders/African/Portrait_LIB_Clarence_Simpson.tga"
+			"gfx/leaders/African/Portrait_LIB_Momolu_Massaquoi.tga"
+			"gfx/leaders/African/Portrait_LIB_William_Tubman.tga"
+			"gfx/leaders/African/Portrait_NGR_Benjamin_Azikiwe.tga"
+			"gfx/leaders/African/Portrait_TOG_Olympio.tga"
+		} 
+		fascism = {			
+			"gfx/leaders/Africa/Portrait_Africa_Generic_3.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_1.dds"
+			"gfx/leaders/African/Portrait_Ashanti_Kwame.tga"			
+			"gfx/leaders/African/Portrait_Burkina_Nazi_Boni.tga"
+			"gfx/leaders/African/Portrait_KIK_Mathenge.tga"
+			"gfx/leaders/African/Portrait_LIB_Anthony_Wilson.tga"
+			"gfx/leaders/African/Portrait_MLW_Banda.tga"
+		}
+		absolutist = {
+			"gfx/leaders/African/Portrait_Burundi_Mwambutsa_Fourth.tga"
+			"gfx/leaders/African/Portrait_KBR_Shehu_Masta_II.tga"
+			"gfx/leaders/African/Portrait_Kongo_Pedro_VII_Afonso.tga"
+			"gfx/leaders/African/Portrait_KTG_Mabumba_Kitanika.tga"
+			"gfx/leaders/African/Portrait_NAM_Otto_Schimming.tga"
+			"gfx/leaders/African/Portrait_Mittelafrika_Achirimbi.tga"
+			"gfx/leaders/African/Portrait_RWA_Yuhi_V.tga"			
+			"gfx/leaders/African/Portrait_Zanzibar_Sultan_Khalifa.tga"
+		}
+		neutrality = {
+			"gfx/leaders/Generic/Portrait_Africa_Generic_new_2.tga"
+			"gfx/leaders/African/Portrait_CAF_CLR_James.tga"
+			"gfx/leaders/African/Portrait_Dahomey_Apithy.tga"
+			"gfx/leaders/African/Portrait_Dahomey_Moumouni.tga"
+			"gfx/leaders/African/Portrait_LIB_Frank_Tolbert.tga"
+			"gfx/leaders/African/Portrait_NAM_Hosea_Kutako.tga"
+			"gfx/leaders/African/Portrait_NAM_Leonard_Auala.tga"
+			"gfx/leaders/African/Portrait_MOR_Zayani.tga"
+		} 
+		radical = {
+			"gfx/leaders/Africa/Portrait_Africa_Generic_2.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_2.tga"
+			"gfx/leaders/African/Portrait_Ashanti_Addo.tga"			
+			"gfx/leaders/African/Portrait_Dahomey_Angoli.tga"
+			"gfx/leaders/African/Portrait_GAB_Leon.tga"
+			"gfx/leaders/African/Portrait_LIB_George_Padmore.tga"
+			"gfx/leaders/African/Portrait_NAM_Friedrich_Maharero.tga"
+			"gfx/leaders/African/Portrait_Uganda_Musaazi.tga"
+			"gfx/leaders/African/Portrait_Uganda_Mutesa.tga"
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/African/Female/Portrait_Teke_Queen_Ngalifourou.tga"
+		}
+		monarch = {
+			"gfx/leaders/African/Female/Portrait_Teke_Queen_Ngalifourou.tga"
+		}
+		ideological_leader = {
+			"gfx/leaders/African/Female/Portrait_Teke_Queen_Ngalifourou.tga"
+		}
+	}
+		
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_africa.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_africa.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_generic_army_africa_3.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_generic_political_advisor_africa_3.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_army_africa_5.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_1.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_2.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_3.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_4.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_5.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_6.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_7.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_8.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_male_9.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_1.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_2.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_3.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_4.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_5.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_6.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_7.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_8.dds"
+		"gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/central_africa.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/central_africa.dds"
+	}
+	graphical_culture = african_gfx
+	graphical_culture_2d = african_2d
+}
 classical_latin = {
-	culture_groups = { romantic  }
+	cultures_and_groups = { romantic }
 	
 	army_portraits = {
 		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
