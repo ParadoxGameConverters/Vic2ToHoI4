@@ -236,6 +236,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	operations->updateOperations(ideologies->getMajorIdeologies());
 
 	soundEffects = SoundEffectsFactory().createSoundEffects(countries);
+
+	recordUnbuiltCanals(sourceWorld);
 }
 
 
@@ -1486,5 +1488,42 @@ void HoI4::World::addProvincesToHomeAreas()
 			continue;
 		}
 		country->addProvincesToHomeArea(*capital, theMapData, states->getStates(), states->getProvinceToStateIDMap());
+	}
+}
+
+
+void HoI4::World::recordUnbuiltCanals(const Vic2::World& sourceWorld)
+{
+	bool kielCanalBuilt = false;
+	bool panamaCanalBuilt = false;
+	bool suezCanalBuilt = false;
+	for (const auto& province: sourceWorld.getProvinces() | std::views::values)
+	{
+		const auto& flags = province->getFlags();
+		if (flags.contains("kiel_canal"))
+		{
+			kielCanalBuilt = true;
+		}
+		if (flags.contains("panama_canal"))
+		{
+			panamaCanalBuilt = true;
+		}
+		if (flags.contains("suez_canal"))
+		{
+			suezCanalBuilt = true;
+		}
+	}
+
+	if (!kielCanalBuilt)
+	{
+		onActions->addUnbuiltCanal("KIEL_CANAL_UNBUILT");
+	}
+	if (!panamaCanalBuilt)
+	{
+		onActions->addUnbuiltCanal("PANAMA_CANAL_UNBUILT");
+	}
+	if (!suezCanalBuilt)
+	{
+		onActions->addUnbuiltCanal("SUEZ_CANAL_UNBUILT");
 	}
 }

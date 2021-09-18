@@ -823,6 +823,47 @@ operations = {
 	#		set_war_support = 1
 	#	}
 	#}
+	
+	
+	build_kiel_canal = {
+
+		icon = GFX_decision_generic_special_project
+
+		available = {
+			has_full_control_of_state = 228		# significant_number - Schleswig
+			has_full_control_of_state = 221		# significant_number - Holstein
+			num_of_civilian_factories > 10
+		}
+	
+		visible = {
+			has_global_flag = KIEL_CANAL_UNBUILT
+		}
+	
+		fire_only_once = yes
+	
+		days_remove = 365
+	
+		cost = 200
+	
+		modifier = {
+			civilian_factory_use = 10
+		}
+	
+		remove_effect = {
+			clr_global_flag = KIEL_CANAL_UNBUILT
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_navy_size = { size < 25 }
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
 
 	blow_suez_canal = {
 

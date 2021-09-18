@@ -89,3 +89,5 @@
  committee_of_public_safety_desc:0 "[From.GetNameDef] verlangt von einem Ausschuss die Verteidigung der öffentlichen Sicherheit und des Eigentums."
  national_convention:0 "Nationalkongress in [From.DEGetDat]"
  national_convention_desc:0 "Eine nationale Konvention muss eingerichtet werden, um [From.DEGetAkk] zu regieren."
+ build_kiel_canal:0 "Baue den Nord-Ostsee-Kanal"
+ build_kiel_canal_desc:0 "Unsere Ingenieure haben vorgeschlagen, einen Kanal durch die Schleswig zu bauen. Dies würde es unseren Schiffen ermöglichen, den Öresund und den Dänischen Gürtel zu umgehen, solange wir das Territorium kontrollieren, das es durchquert."

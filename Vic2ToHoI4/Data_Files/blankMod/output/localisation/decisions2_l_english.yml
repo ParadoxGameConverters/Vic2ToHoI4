@@ -83,3 +83,5 @@
  committee_of_public_safety_desc:0 "[From.GetNameDef] requires a committee to defend public safety and property."
  national_convention:0 "National Convention in [From.GetNameDef]"
  national_convention_desc:0 "A National Convention must be established to govern [From.GetNameDef]."
+ build_kiel_canal:0 "Build the Kiel Canal"
+ build_kiel_canal_desc:0 "Our engineers have proposed to build a canal across the Schleswig. This would allow our ships to bypass the Oresund and Danish Belts, so long as we control the territory it passes through."

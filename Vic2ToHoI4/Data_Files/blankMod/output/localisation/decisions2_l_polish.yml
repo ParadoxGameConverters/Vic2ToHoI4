@@ -89,3 +89,5 @@
  committee_of_public_safety_desc:0 "[From.GetNameDef] wymaga komitetu do obrony bezpieczeństwa publicznego i mienia."
  national_convention:0 "Konwencja krajowa w [From.GetNameDef]"
  national_convention_desc:0 "Należy ustanowić konwencję krajową, aby rządzić [From.GetNameDef]."
+ build_kiel_canal:0 "Zbuduj Kanał Kiloński"
+ build_kiel_canal_desc:0 "Nasi inżynierowie zaproponowali budowę kanału przez Szlezwik. Umożliwiłoby to naszym statkom ominięcie pasów Oresund i Danish, o ile będziemy kontrolować terytorium, przez które przepływają."

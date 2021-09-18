@@ -89,3 +89,5 @@
  committee_of_public_safety_desc:0 "O [From.GetNameDef] exige um comitê para defender a segurança e a propriedade públicas."
  national_convention:0 "Convenção Nacional no [From.GetNameDef]"
  national_convention_desc:0 "Uma Convenção Nacional deve ser estabelecida para governar o [From.GetNameDef]."
+ build_kiel_canal:0 "Construir o Canal Kiel"
+ build_kiel_canal_desc:0 "Nossos engenheiros propuseram construir um canal em Schleswig. Isso permitiria que nossos navios contornassem os cinturões de Oresund e dinamarqueses, contanto que controlássemos o território por onde eles passam."

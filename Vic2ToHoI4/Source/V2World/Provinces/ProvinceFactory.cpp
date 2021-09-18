@@ -27,6 +27,12 @@ Vic2::Province::Factory::Factory(std::unique_ptr<PopFactory>&& _popFactory): pop
 		 [this](const std::string& popType, std::istream& theStream) {
 			 province->pops.push_back(popFactory->getPop(popType, theStream));
 		 });
+	registerKeyword("flags", [this](std::istream& theStream) {
+		for (const auto& [flag, unused]: commonItems::assignments{theStream}.getAssignments())
+		{
+			province->flags.insert(flag);
+		}
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

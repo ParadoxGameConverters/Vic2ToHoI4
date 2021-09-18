@@ -208,8 +208,7 @@ class World: commonItems::parser
 	bool dominionIsReleasable(const Country& dominion);
 	void addProvincesToHomeAreas();
 
-	// vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
-	// HoI4AdjacencyMap);
+	void recordUnbuiltCanals(const Vic2::World& sourceWorld);
 
 	std::optional<std::string> humanCountry;
 
