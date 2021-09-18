@@ -384,7 +384,12 @@ decision&& updateRebuildSuez(decision&& rebuildSuezDecision, const std::map<int,
 	available.replace(available.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalStatesString);
 	rebuildSuezDecision.setAvailable(available);
 
-	canalStatesString.replace(canalStatesString.find("\n\t\t\t"), 4, "\n\t\t\t\t\t");
+	canalStatesString.clear();
+	for (const auto& state: canalStates)
+	{
+		canalStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t\t\t";
+	}
+	canalStatesString = canalStatesString.substr(0, canalStatesString.length() - 6);
 	std::string removeEffect = rebuildSuezDecision.getRemoveEffect();
 	removeEffect.replace(removeEffect.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalStatesString);
 	rebuildSuezDecision.setRemoveEffect(removeEffect);
