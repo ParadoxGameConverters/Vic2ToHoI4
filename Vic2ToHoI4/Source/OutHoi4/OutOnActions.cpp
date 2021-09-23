@@ -107,10 +107,6 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	onActionsFile << "\t}\n";
 
 	onActionsFile << "\ton_startup = {\n";
-	for (const auto& unbuiltCanal: onActions.getUnbuiltCanals())
-	{
-		onActionsFile << "\t\tset_global_flag = " << unbuiltCanal << "\n";
-	}
 	onActionsFile << "\t\teffect = {\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 587 name = \"K\xC3\xB6ln\"} #Cologne\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 957 name = \"Vladivostok\"} #Haishenwai\n";

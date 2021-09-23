@@ -448,7 +448,8 @@ void outputIdeas(std::ostream& output,
 	 const std::string& primaryCulture,
 	 const bool navalTreatyAdherent,
 	 const bool greatestNavalPower,
-	 std::optional<int> numAdherents);
+	 std::optional<int> numAdherents,
+	 const std::vector<std::string>& unbuiltCanals);
 void outputStability(std::ostream& output, const int& stability);
 void outputWarSupport(std::ostream& output, const int& warSupport);
 void outputCommanders(std::ostream& output,
@@ -510,7 +511,8 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		 primaryCulture,
 		 theCountry.isNavalTreatyAdherent(),
 		 theCountry.isGreatestNavalPower(),
-		 theCountry.getNumAdherents());
+		 theCountry.getNumAdherents(),
+		 theCountry.getUnbuiltCanals());
 	if (theCountry.hasProvinces())
 	{
 		outputStability(output, theCountry.getStability());
@@ -794,7 +796,8 @@ void outputIdeas(std::ostream& output,
 	 const std::string& primaryCulture,
 	 const bool navalTreatyAdherent,
 	 const bool greatestNavalPower,
-	 std::optional<int> numAdherents)
+	 std::optional<int> numAdherents,
+	 const std::vector<std::string>& unbuiltCanals)
 {
 	if (navalTreatyAdherent)
 	{
@@ -810,6 +813,10 @@ void outputIdeas(std::ostream& output,
 			output << "\tset_global_flag = { flag = MTG_naval_treaty_signatories value = " << *numAdherents << " }\n";
 		}
 		output << "}\n";
+	}
+	for (const auto& unbuiltCanal: unbuiltCanals)
+	{
+		output << "set_global_flag = " << unbuiltCanal << "\n";
 	}
 	output << "add_ideas = {\n";
 	if (greatPower)

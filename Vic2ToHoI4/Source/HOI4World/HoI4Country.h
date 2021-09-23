@@ -140,6 +140,8 @@ class Country
 	void makeGreatestNavalPower() { greatestNavalPower = true; }
 	void setNumberOfAdherents(int num) { numAdherents = num; }
 
+	void addUnbuiltCanal(const std::string& unbuiltCanal) { unbuiltCanals.push_back(unbuiltCanal); }
+
 	void addProvincesToHomeArea(int provinceId,
 		 const std::unique_ptr<HoI4::MapData>& theMapData,
 		 const std::map<int, HoI4::State>& states,
@@ -264,6 +266,8 @@ class Country
 	[[nodiscard]] bool isNavalTreatyAdherent() const { return navalTreatyAdherent; }
 	[[nodiscard]] bool isGreatestNavalPower() const { return greatestNavalPower; }
 	[[nodiscard]] const auto& getNumAdherents() const { return numAdherents; }
+
+	[[nodiscard]] const auto& getUnbuiltCanals() const { return unbuiltCanals; }
 
 	std::set<std::string>& editAllies() { return allies; }
 
@@ -434,6 +438,8 @@ class Country
 	std::map<std::string, float> sourceCountryGoods;
 	std::set<std::string> globalEventTargets;
 	std::set<int> homeAreaProvinces;
+
+	std::vector<std::string> unbuiltCanals;
 };
 
 } // namespace HoI4

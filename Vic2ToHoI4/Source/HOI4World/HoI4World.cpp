@@ -1494,6 +1494,8 @@ void HoI4::World::addProvincesToHomeAreas()
 
 void HoI4::World::recordUnbuiltCanals(const Vic2::World& sourceWorld)
 {
+	auto greatestCountry = greatPowers.front();
+
 	bool kielCanalBuilt = false;
 	bool panamaCanalBuilt = false;
 	bool suezCanalBuilt = false;
@@ -1516,14 +1518,14 @@ void HoI4::World::recordUnbuiltCanals(const Vic2::World& sourceWorld)
 
 	if (!kielCanalBuilt)
 	{
-		onActions->addUnbuiltCanal("KIEL_CANAL_UNBUILT");
+		greatestCountry->addUnbuiltCanal("KIEL_CANAL_UNBUILT");
 	}
 	if (!panamaCanalBuilt)
 	{
-		onActions->addUnbuiltCanal("PANAMA_CANAL_UNBUILT");
+		greatestCountry->addUnbuiltCanal("PANAMA_CANAL_UNBUILT");
 	}
 	if (!suezCanalBuilt)
 	{
-		onActions->addUnbuiltCanal("SUEZ_CANAL_UNBUILT");
+		greatestCountry->addUnbuiltCanal("SUEZ_CANAL_UNBUILT");
 	}
 }
