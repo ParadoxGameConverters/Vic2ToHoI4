@@ -91,3 +91,4 @@
  national_convention_desc:0 "Se debe establecer una Convención Nacional para gobernar [From.GetNameDef]."
  build_kiel_canal:0 "Construye el canal de Kiel"
  build_kiel_canal_desc:0 "Nuestros ingenieros han propuesto construir un canal a través del Schleswig. Esto permitiría a nuestros barcos pasar por alto los cinturones de Oresund y Dinamarca, siempre que controlemos el territorio por el que pasa."
+ canal_unbuilt_tt:0 "Este canal es solo teórico hasta ahora. Alguien debe esforzarse para construirlo."

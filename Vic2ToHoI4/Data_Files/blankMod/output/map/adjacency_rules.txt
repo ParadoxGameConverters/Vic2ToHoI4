@@ -315,6 +315,7 @@ adjacency_rule
 	
 	is_disabled = {
 		has_global_flag = KIEL_CANAL_UNBUILT
+		tooltip = canal_unbuilt_tt
 	}
 		
 	icon = 11366

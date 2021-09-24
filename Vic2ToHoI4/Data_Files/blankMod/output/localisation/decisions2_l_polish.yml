@@ -91,3 +91,4 @@
  national_convention_desc:0 "Należy ustanowić konwencję krajową, aby rządzić [From.GetNameDef]."
  build_kiel_canal:0 "Zbuduj Kanał Kiloński"
  build_kiel_canal_desc:0 "Nasi inżynierowie zaproponowali budowę kanału przez Szlezwik. Umożliwiłoby to naszym statkom ominięcie pasów Oresund i Danish, o ile będziemy kontrolować terytorium, przez które przepływają."
+ canal_unbuilt_tt:0 "Ten kanał jest na razie tylko teoretyczny. Ktoś musi włożyć wysiłek, aby to zbudować."
