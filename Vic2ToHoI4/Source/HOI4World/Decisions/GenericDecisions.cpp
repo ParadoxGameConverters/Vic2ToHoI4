@@ -9,6 +9,8 @@ namespace HoI4
 namespace
 {
 
+constexpr std::array kielCanalProvinces{317, 3231, 11366};
+
 constexpr std::array suezRegionProvinces{
 	 7079,
 	 5078,
@@ -176,6 +178,27 @@ std::set<int> getRelevantStatesFromProvinces(const std::array<int, N>& provinces
 	return relevantStates;
 }
 
+decision&& updateBuildKiel(decision&& buildKielDecision, const std::map<int, int>& provinceToStateIdMap)
+{
+	const std::string canalStatesPlaceholder = "$CANAL_STATES";
+	auto relevantCanalStates = getRelevantStatesFromProvinces(kielCanalProvinces, {}, provinceToStateIdMap);
+
+	std::string canalFullControlStatesString;
+	for (const auto& state: relevantCanalStates)
+	{
+		canalFullControlStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t";
+	}
+	canalFullControlStatesString = canalFullControlStatesString.substr(0, canalFullControlStatesString.length() - 4);
+
+	std::string removeEffect = buildKielDecision.getAvailable();
+	removeEffect.replace(removeEffect.find(canalStatesPlaceholder),
+		 canalStatesPlaceholder.size(),
+		 canalFullControlStatesString);
+	buildKielDecision.setAvailable(removeEffect);
+
+	return std::move(buildKielDecision);
+}
+
 
 decision&& updateBlowSuez(decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap)
 {
@@ -227,7 +250,7 @@ decision&& updateBlowSuez(decision&& blowSuezDecision, const std::map<int, int>&
 	blowSuezDecision.setAvailable(available);
 
 	canalOwnsStateString.clear();
-	for (const auto& state: relevantCanalStates) 
+	for (const auto& state: relevantCanalStates)
 	{
 		canalOwnsStateString += "owns_state = " + std::to_string(state) + "\n\t\t\t\t\t\t\t";
 	}
@@ -265,7 +288,8 @@ decision&& updateBlowSuez(decision&& blowSuezDecision, const std::map<int, int>&
 	std::string twoDivisionsInStateString;
 	for (const auto& state: relevantOtherStates)
 	{
-		twoDivisionsInStateString += "divisions_in_state = { state = " + std::to_string(state) + " size > 2 }\n\t\t\t\t\t\t\t\t";
+		twoDivisionsInStateString +=
+			 "divisions_in_state = { state = " + std::to_string(state) + " size > 2 }\n\t\t\t\t\t\t\t\t";
 	}
 	twoDivisionsInStateString = twoDivisionsInStateString.substr(0, twoDivisionsInStateString.length() - 9);
 	aiWillDo.replace(aiWillDo.find(twoDivisionsInStatesPlaceholder),
@@ -274,8 +298,7 @@ decision&& updateBlowSuez(decision&& blowSuezDecision, const std::map<int, int>&
 	std::string nileStatesString;
 	for (const auto& state: relevantNileStates)
 	{
-		nileStatesString +=
-			 "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t\t\t\t\t";
+		nileStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t\t\t\t\t";
 	}
 	nileStatesString = nileStatesString.substr(0, nileStatesString.length() - 8);
 	aiWillDo.replace(aiWillDo.find(nileStatesPlaceholder), nileStatesPlaceholder.size(), nileStatesString);
@@ -524,15 +547,21 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 		if (category.getName() == "economy_decisions")
 		{
 			auto decisions = category.getDecisions();
-			const auto [first, last] = std::ranges::remove_if(decisions, [](auto& decision) {
-				return decision.getName() == "dismantle_maginot";
-			});
+			const auto [first, last] = std::ranges::remove_if(decisions,
+				 [](auto& decision)
+				 {
+					 return decision.getName() == "dismantle_maginot";
+				 });
 			decisions.erase(first, last);
 			category.replaceDecisions(decisions);
 		}
 
 		for (auto& decision: category.getDecisions())
 		{
+			if (decision.getName() == "build_kiel_canal")
+			{
+				category.replaceDecision(updateBuildKiel(std::move(decision), provinceToStateIdMap));
+			}
 			if (decision.getName() == "blow_suez_canal")
 			{
 				category.replaceDecision(updateBlowSuez(std::move(decision), provinceToStateIdMap));
@@ -560,9 +589,11 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 		}
 	}
 
-	const auto [first, last] = std::ranges::remove_if(decisions, [](auto& decisionCategory) {
-		return decisionCategory.getName() == "foreign_support";
-	});
+	const auto [first, last] = std::ranges::remove_if(decisions,
+		 [](auto& decisionCategory)
+		 {
+			 return decisionCategory.getName() == "foreign_support";
+		 });
 	decisions.erase(first, last);
 }
 

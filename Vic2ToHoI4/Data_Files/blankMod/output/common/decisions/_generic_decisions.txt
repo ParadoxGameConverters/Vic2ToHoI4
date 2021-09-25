@@ -830,8 +830,7 @@ operations = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 228		# significant_number - Schleswig
-			has_full_control_of_state = 221		# significant_number - Holstein
+			$CANAL_STATES
 			num_of_civilian_factories > 10
 		}
 	
