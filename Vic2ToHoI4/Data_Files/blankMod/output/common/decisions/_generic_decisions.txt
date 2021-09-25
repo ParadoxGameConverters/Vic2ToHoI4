@@ -863,6 +863,84 @@ operations = {
 			}
 		}
 	}
+	
+	build_suez_canal = {
+
+		icon = GFX_decision_generic_special_project
+
+		available = {
+			$CANAL_STATES
+			num_of_civilian_factories > 15
+		}
+	
+		visible = {
+			has_global_flag = SUEZ_CANAL_UNBUILT
+		}
+	
+		fire_only_once = yes
+	
+		days_remove = 365
+	
+		cost = 300
+	
+		modifier = {
+			civilian_factory_use = 15
+		}
+	
+		remove_effect = {
+			clr_global_flag = SUEZ_CANAL_UNBUILT
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_navy_size = { size < 25 }
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
+	
+	build_panama_canal = {
+
+		icon = GFX_decision_generic_special_project
+
+		available = {
+			$CANAL_STATES
+			num_of_civilian_factories > 20
+		}
+	
+		visible = {
+			has_global_flag = PANAMA_CANAL_UNBUILT
+		}
+	
+		fire_only_once = yes
+	
+		days_remove = 365
+	
+		cost = 300
+	
+		modifier = {
+			civilian_factory_use = 20
+		}
+	
+		remove_effect = {
+			clr_global_flag = PANAMA_CANAL_UNBUILT
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_navy_size = { size < 25 }
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
 
 	blow_suez_canal = {
 

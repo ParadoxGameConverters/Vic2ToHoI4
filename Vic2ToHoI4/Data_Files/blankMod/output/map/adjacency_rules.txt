@@ -49,6 +49,7 @@ adjacency_rule
 
 	is_disabled = {
 		OR = {
+			has_global_flag = SUEZ_CANAL_UNBUILT
 			has_global_flag = SUEZ_CANAL_BLOCKED
 			has_country_flag = SUEZ_CANAL_BLOCKED_FOR_COUNTRY
 		}
@@ -177,6 +178,7 @@ adjacency_rule
 
 	is_disabled = {
 		OR = {
+			has_global_flag = PANAMA_CANAL_UNBUILT
 			has_global_flag = PANAMA_CANAL_BLOCKED
 			has_country_flag = PANAMA_CANAL_BLOCKED_FOR_COUNTRY
 		}
