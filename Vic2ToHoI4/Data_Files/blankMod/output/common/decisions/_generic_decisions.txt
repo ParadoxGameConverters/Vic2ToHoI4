@@ -965,6 +965,7 @@ operations = {
 		visible = {
 			has_war = yes
 			NOT = { has_global_flag = SUEZ_CANAL_BLOCKED }
+			NOT = { has_global_flag = SUEZ_CANAL_UNBUILT }
 			any_controlled_state = {
 				OR = {
 					region = 28
@@ -1059,6 +1060,7 @@ operations = {
 		visible = {
 			has_war = yes
 			NOT = { has_global_flag = PANAMA_CANAL_BLOCKED }
+			NOT = { has_global_flag = PANAMA_CANAL_UNBUILT }
 			any_controlled_state = {
 				OR = {
 					region = 34
