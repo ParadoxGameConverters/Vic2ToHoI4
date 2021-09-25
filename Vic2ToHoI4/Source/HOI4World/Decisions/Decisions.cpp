@@ -24,7 +24,7 @@ HoI4::decisions::decisions(const Configuration& theConfiguration)
 }
 
 
-void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologies, 
+void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologies,
 	 const std::map<int, int>& provinceToStateIdMap,
 	 const std::map<int, DefaultState>& defaultStates,
 	 const Events& theEvents,
@@ -35,7 +35,7 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 
 	generateIdeologicalCategories(majorIdeologies, provinceToStateIdMap);
 
-	agentRecruitmentDecisions.updateDecisions(southAsianCountries); 
+	agentRecruitmentDecisions.updateDecisions(southAsianCountries);
 	stabilityDecisions.updateDecisions(majorIdeologies);
 	politicalDecisions.updateDecisions(majorIdeologies, theEvents);
 	exiledGovernmentsDecisions.updateDecisions(majorIdeologies);

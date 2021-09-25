@@ -591,11 +591,9 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 		if (category.getName() == "economy_decisions")
 		{
 			auto decisions = category.getDecisions();
-			const auto [first, last] = std::ranges::remove_if(decisions,
-				 [](auto& decision)
-				 {
-					 return decision.getName() == "dismantle_maginot";
-				 });
+			const auto [first, last] = std::ranges::remove_if(decisions, [](auto& decision) {
+				return decision.getName() == "dismantle_maginot";
+			});
 			decisions.erase(first, last);
 			category.replaceDecisions(decisions);
 		}
@@ -641,11 +639,9 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 		}
 	}
 
-	const auto [first, last] = std::ranges::remove_if(decisions,
-		 [](auto& decisionCategory)
-		 {
-			 return decisionCategory.getName() == "foreign_support";
-		 });
+	const auto [first, last] = std::ranges::remove_if(decisions, [](auto& decisionCategory) {
+			return decisionCategory.getName() == "foreign_support";
+	});
 	decisions.erase(first, last);
 }
 
