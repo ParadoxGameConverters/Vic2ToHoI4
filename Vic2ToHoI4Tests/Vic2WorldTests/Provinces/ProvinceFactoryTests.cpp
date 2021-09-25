@@ -1,8 +1,8 @@
 #include "V2World/Issues/Issues.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/Provinces/ProvinceFactory.h"
-#include "gtest/gtest.h"
 #include "gmock/gmock-matchers.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
