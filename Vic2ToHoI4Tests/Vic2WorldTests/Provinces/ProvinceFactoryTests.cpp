@@ -2,6 +2,7 @@
 #include "V2World/Provinces/Province.h"
 #include "V2World/Provinces/ProvinceFactory.h"
 #include "gtest/gtest.h"
+#include "gmock/gmock-matchers.h"
 #include <sstream>
 
 
@@ -396,4 +397,26 @@ TEST_F(Vic2World_ProvinceFactoryTests, railLevelCanBeSet)
 	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getRailLevel(), 5);
+}
+
+
+TEST_F(Vic2World_ProvinceFactoryTests, FlagsDefaultToEmpty)
+{
+	std::stringstream input;
+	const auto theProvince = provinceFactory->getProvince(42, input);
+
+	EXPECT_TRUE(theProvince->getFlags().empty());
+}
+
+
+TEST_F(Vic2World_ProvinceFactoryTests, getTotalPopulationReturnsTotalPopulation)
+{
+	std::stringstream input;
+	input << "flags = {\n";
+	input << "\tflag_one=yes\n";
+	input << "\tflag_two=no\n";
+	input << "}";
+	const auto theProvince = provinceFactory->getProvince(42, input);
+
+	EXPECT_THAT(theProvince->getFlags(), testing::UnorderedElementsAre("flag_one", "flag_two"));
 }
