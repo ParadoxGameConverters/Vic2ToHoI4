@@ -160,6 +160,7 @@ constexpr std::array panamaPeninsulaProvinces{
 	 4611 // Panama state
 };
 
+
 template <size_t N>
 std::set<int> getRelevantStatesFromProvinces(const std::array<int, N>& provinces,
 	 const std::set<int>& statesToExclude,
@@ -178,10 +179,14 @@ std::set<int> getRelevantStatesFromProvinces(const std::array<int, N>& provinces
 	return relevantStates;
 }
 
-decision&& updateBuildKiel(decision&& buildKielDecision, const std::map<int, int>& provinceToStateIdMap)
+
+template <size_t N>
+decision&& updateBuildCanal(decision&& buildCanalDecision,
+	 const std::array<int, N>& provinces,
+	 const std::map<int, int>& provinceToStateIdMap)
 {
 	const std::string canalStatesPlaceholder = "$CANAL_STATES";
-	auto relevantCanalStates = getRelevantStatesFromProvinces(kielCanalProvinces, {}, provinceToStateIdMap);
+	auto relevantCanalStates = getRelevantStatesFromProvinces(provinces, {}, provinceToStateIdMap);
 
 	std::string canalFullControlStatesString;
 	for (const auto& state: relevantCanalStates)
@@ -190,57 +195,13 @@ decision&& updateBuildKiel(decision&& buildKielDecision, const std::map<int, int
 	}
 	canalFullControlStatesString = canalFullControlStatesString.substr(0, canalFullControlStatesString.length() - 4);
 
-	std::string removeEffect = buildKielDecision.getAvailable();
+	std::string removeEffect = buildCanalDecision.getAvailable();
 	removeEffect.replace(removeEffect.find(canalStatesPlaceholder),
 		 canalStatesPlaceholder.size(),
 		 canalFullControlStatesString);
-	buildKielDecision.setAvailable(removeEffect);
+	buildCanalDecision.setAvailable(removeEffect);
 
-	return std::move(buildKielDecision);
-}
-
-
-decision&& updateBuildSuez(decision&& buildSuezDecision, const std::map<int, int>& provinceToStateIdMap)
-{
-	const std::string canalStatesPlaceholder = "$CANAL_STATES";
-	auto relevantCanalStates = getRelevantStatesFromProvinces(suezCanalProvinces, {}, provinceToStateIdMap);
-
-	std::string canalFullControlStatesString;
-	for (const auto& state: relevantCanalStates)
-	{
-		canalFullControlStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t";
-	}
-	canalFullControlStatesString = canalFullControlStatesString.substr(0, canalFullControlStatesString.length() - 4);
-
-	std::string removeEffect = buildSuezDecision.getAvailable();
-	removeEffect.replace(removeEffect.find(canalStatesPlaceholder),
-		 canalStatesPlaceholder.size(),
-		 canalFullControlStatesString);
-	buildSuezDecision.setAvailable(removeEffect);
-
-	return std::move(buildSuezDecision);
-}
-
-
-decision&& updateBuildPanama(decision&& buildPanamaDecision, const std::map<int, int>& provinceToStateIdMap)
-{
-	const std::string canalStatesPlaceholder = "$CANAL_STATES";
-	auto relevantCanalStates = getRelevantStatesFromProvinces(panamaCanalProvinces, {}, provinceToStateIdMap);
-
-	std::string canalFullControlStatesString;
-	for (const auto& state: relevantCanalStates)
-	{
-		canalFullControlStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t";
-	}
-	canalFullControlStatesString = canalFullControlStatesString.substr(0, canalFullControlStatesString.length() - 4);
-
-	std::string removeEffect = buildPanamaDecision.getAvailable();
-	removeEffect.replace(removeEffect.find(canalStatesPlaceholder),
-		 canalStatesPlaceholder.size(),
-		 canalFullControlStatesString);
-	buildPanamaDecision.setAvailable(removeEffect);
-
-	return std::move(buildPanamaDecision);
+	return std::move(buildCanalDecision);
 }
 
 
@@ -602,15 +563,15 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 		{
 			if (decision.getName() == "build_kiel_canal")
 			{
-				category.replaceDecision(updateBuildKiel(std::move(decision), provinceToStateIdMap));
+				category.replaceDecision(updateBuildCanal(std::move(decision), kielCanalProvinces, provinceToStateIdMap));
 			}
 			if (decision.getName() == "build_suez_canal")
 			{
-				category.replaceDecision(updateBuildSuez(std::move(decision), provinceToStateIdMap));
+				category.replaceDecision(updateBuildCanal(std::move(decision), suezCanalProvinces, provinceToStateIdMap));
 			}
 			if (decision.getName() == "build_panama_canal")
 			{
-				category.replaceDecision(updateBuildPanama(std::move(decision), provinceToStateIdMap));
+				category.replaceDecision(updateBuildCanal(std::move(decision), panamaCanalProvinces, provinceToStateIdMap));
 			}
 			if (decision.getName() == "blow_suez_canal")
 			{

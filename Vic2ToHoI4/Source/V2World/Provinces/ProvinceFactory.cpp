@@ -1,6 +1,7 @@
 #include "ProvinceFactory.h"
 #include "CommonRegexes.h"
 #include "ParserHelpers.h"
+#include <ranges>
 
 
 
@@ -28,7 +29,8 @@ Vic2::Province::Factory::Factory(std::unique_ptr<PopFactory>&& _popFactory): pop
 			 province->pops.push_back(popFactory->getPop(popType, theStream));
 		 });
 	registerKeyword("flags", [this](std::istream& theStream) {
-		for (const auto& [flag, unused]: commonItems::assignments{theStream}.getAssignments())
+		const auto assignments = commonItems::assignments{theStream}.getAssignments();
+		for (const auto& flag: assignments | std::views::keys)
 		{
 			province->flags.insert(flag);
 		}

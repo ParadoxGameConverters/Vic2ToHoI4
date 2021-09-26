@@ -1506,11 +1506,11 @@ void HoI4::World::recordUnbuiltCanals(const Vic2::World& sourceWorld)
 		{
 			kielCanalBuilt = true;
 		}
-		if (flags.contains("panama_canal"))
+		else if (flags.contains("panama_canal"))
 		{
 			panamaCanalBuilt = true;
 		}
-		if (flags.contains("suez_canal"))
+		else if (flags.contains("suez_canal"))
 		{
 			suezCanalBuilt = true;
 		}

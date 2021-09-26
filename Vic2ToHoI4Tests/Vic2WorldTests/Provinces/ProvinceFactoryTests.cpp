@@ -409,7 +409,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, FlagsDefaultToEmpty)
 }
 
 
-TEST_F(Vic2World_ProvinceFactoryTests, getTotalPopulationReturnsTotalPopulation)
+TEST_F(Vic2World_ProvinceFactoryTests, FlagsCanBeSet)
 {
 	std::stringstream input;
 	input << "flags = {\n";
