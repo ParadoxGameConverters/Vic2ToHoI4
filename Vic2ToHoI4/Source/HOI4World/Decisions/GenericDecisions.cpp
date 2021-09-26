@@ -141,7 +141,7 @@ constexpr std::array eritriaAndSomalilandProvinces{
 	 8164,
 	 12941 // Somaliland
 };
-const int gibraltarProvince = 4135;
+constexpr int gibraltarProvince = 4135;
 constexpr std::array suezCanalProvinces{
 	 12049, // north-west suez canal
 	 4073,  // south-west suez canal
@@ -180,22 +180,34 @@ std::set<int> getRelevantStatesFromProvinces(const std::array<int, N>& provinces
 }
 
 
+std::string createReplacementText(const std::set<int>& states,
+	 const std::string& prefix,
+	 const std::string& suffix,
+	 int amountToTrim)
+{
+	std::string replacementText;
+	for (const auto& state: states)
+	{
+		replacementText += prefix + std::to_string(state) + suffix;
+	}
+	replacementText = replacementText.substr(0, replacementText.length() - amountToTrim);
+
+	return replacementText;
+}
+
+
 template <size_t N>
 decision&& updateBuildCanal(decision&& buildCanalDecision,
 	 const std::array<int, N>& provinces,
 	 const std::map<int, int>& provinceToStateIdMap)
 {
 	const std::string canalStatesPlaceholder = "$CANAL_STATES";
-	auto relevantCanalStates = getRelevantStatesFromProvinces(provinces, {}, provinceToStateIdMap);
 
-	std::string canalFullControlStatesString;
-	for (const auto& state: relevantCanalStates)
-	{
-		canalFullControlStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t";
-	}
-	canalFullControlStatesString = canalFullControlStatesString.substr(0, canalFullControlStatesString.length() - 4);
+	const auto relevantCanalStates = getRelevantStatesFromProvinces(provinces, {}, provinceToStateIdMap);
+	const auto canalFullControlStatesString =
+		 createReplacementText(relevantCanalStates, "has_full_control_of_state = ", "\n\t\t\t", 4);
 
-	std::string removeEffect = buildCanalDecision.getAvailable();
+	auto removeEffect = buildCanalDecision.getAvailable();
 	removeEffect.replace(removeEffect.find(canalStatesPlaceholder),
 		 canalStatesPlaceholder.size(),
 		 canalFullControlStatesString);
@@ -207,6 +219,7 @@ decision&& updateBuildCanal(decision&& buildCanalDecision,
 
 decision&& updateBlowSuez(decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap)
 {
+	// define placeholders
 	const std::string canalStatesPlaceholder = "$CANAL_STATES";
 	const std::string otherStatesPlaceholder = "$OTHER_STATES";
 	const std::string twoDivisionsInStatesPlaceholder = "$TWO_DIVISIONS_IN_STATES";
@@ -214,52 +227,39 @@ decision&& updateBlowSuez(decision&& blowSuezDecision, const std::map<int, int>&
 	const std::string landRoutesStatesPlaceholder = "$LAND_ROUTE_STATES";
 	const std::string supplyStatesPlaceholder = "$SUPPLY_STATES";
 
-	auto relevantCanalStates = getRelevantStatesFromProvinces(suezCanalProvinces, {}, provinceToStateIdMap);
-	auto relevantOtherStates =
+	// sets of states and provinces
+	const auto relevantCanalStates = getRelevantStatesFromProvinces(suezCanalProvinces, {}, provinceToStateIdMap);
+	const auto relevantOtherStates =
 		 getRelevantStatesFromProvinces(suezRegionProvinces, relevantCanalStates, provinceToStateIdMap);
-	auto relevantNileStates = getRelevantStatesFromProvinces(aswanAndEasternDesertProvinces, {}, provinceToStateIdMap);
-	auto relevantLandRouteStates = getRelevantStatesFromProvinces(khartoumProvinces, {}, provinceToStateIdMap);
-	auto relevantSupplyStates = getRelevantStatesFromProvinces(eritriaAndSomalilandProvinces, {}, provinceToStateIdMap);
+	const auto relevantNileStates =
+		 getRelevantStatesFromProvinces(aswanAndEasternDesertProvinces, {}, provinceToStateIdMap);
+	const auto relevantLandRouteStates = getRelevantStatesFromProvinces(khartoumProvinces, {}, provinceToStateIdMap);
+	const auto relevantSupplyStates =
+		 getRelevantStatesFromProvinces(eritriaAndSomalilandProvinces, {}, provinceToStateIdMap);
 
 	std::optional<int> gibraltar;
-	if (auto mapping = provinceToStateIdMap.find(gibraltarProvince); mapping != provinceToStateIdMap.end())
+	if (const auto mapping = provinceToStateIdMap.find(gibraltarProvince); mapping != provinceToStateIdMap.end())
 	{
 		gibraltar = mapping->second;
 	}
 
-	std::string canalControlStatesString;
-	for (const auto& state: relevantCanalStates)
-	{
-		canalControlStatesString += "controls_state = " + std::to_string(state) + "\n\t\t\t";
-	}
-	canalControlStatesString = canalControlStatesString.substr(0, canalControlStatesString.length() - 4);
-
-	std::string canalOwnsStateString;
-	for (const auto& state: relevantCanalStates)
-	{
-		canalOwnsStateString += "owns_state = " + std::to_string(state) + "\n\t\t\t\t\t";
-	}
-	canalOwnsStateString = canalOwnsStateString.substr(0, canalOwnsStateString.length() - 6);
-
-	std::string otherStatesString;
-	for (const auto& state: relevantOtherStates)
-	{
-		otherStatesString += "controls_state = " + std::to_string(state) + "\n\t\t\t\t\t\t";
-	}
-	otherStatesString = otherStatesString.substr(0, otherStatesString.length() - 7);
-
+	// update available block
 	auto available = blowSuezDecision.getAvailable();
+
+	const auto canalControlStatesString = createReplacementText(relevantCanalStates, "controls_state = ", "\n\t\t\t", 4);
 	available.replace(available.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalControlStatesString);
+
+	auto canalOwnsStateString = createReplacementText(relevantCanalStates, "owns_state = ", "\n\t\t\t\t\t", 6);
 	available.replace(available.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalOwnsStateString);
+
+	auto otherStatesString = createReplacementText(relevantOtherStates, "controls_state = ", "\n\t\t\t\t\t\t", 7);
 	available.replace(available.find(otherStatesPlaceholder), otherStatesPlaceholder.size(), otherStatesString);
+
 	blowSuezDecision.setAvailable(available);
 
-	canalOwnsStateString.clear();
-	for (const auto& state: relevantCanalStates)
-	{
-		canalOwnsStateString += "owns_state = " + std::to_string(state) + "\n\t\t\t\t\t\t\t";
-	}
-	canalOwnsStateString = canalOwnsStateString.substr(0, canalOwnsStateString.length() - 8);
+	// update complete_effect block
+	canalOwnsStateString = createReplacementText(relevantCanalStates, "owns_state = ", "\n\t\t\t\t\t\t\t", 8);
+
 	std::string completeEffect = blowSuezDecision.getCompleteEffect();
 	completeEffect.replace(completeEffect.find(canalStatesPlaceholder),
 		 canalStatesPlaceholder.size(),
@@ -267,62 +267,48 @@ decision&& updateBlowSuez(decision&& blowSuezDecision, const std::map<int, int>&
 	completeEffect.replace(completeEffect.find(canalStatesPlaceholder),
 		 canalStatesPlaceholder.size(),
 		 canalOwnsStateString);
+
 	blowSuezDecision.setCompleteEffect(completeEffect);
 
-	std::string canalFullControlStatesString;
-	for (const auto& state: relevantCanalStates)
-	{
-		canalFullControlStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t\t\t\t";
-	}
-	canalFullControlStatesString = canalFullControlStatesString.substr(0, canalFullControlStatesString.length() - 7);
+	// update remove_effect block
+	std::string canalFullControlStatesString =
+		 createReplacementText(relevantCanalStates, "has_full_control_of_state = ", "\n\t\t\t\t\t\t", 7);
 
 	std::string removeEffect = blowSuezDecision.getRemoveEffect();
 	removeEffect.replace(removeEffect.find(canalStatesPlaceholder),
 		 canalStatesPlaceholder.size(),
 		 canalFullControlStatesString);
+
 	blowSuezDecision.setRemoveEffect(removeEffect);
 
+	// update ai_will_do
 	std::string aiWillDo = blowSuezDecision.getAiWillDo();
-	otherStatesString.clear();
-	for (const auto& state: relevantOtherStates)
-	{
-		otherStatesString += "controls_state = " + std::to_string(state) + "\n\t\t\t\t\t\t\t";
-	}
-	otherStatesString = otherStatesString.substr(0, otherStatesString.length() - 8);
+
+	otherStatesString = createReplacementText(relevantOtherStates, "controls_state = ", "\n\t\t\t\t\t\t\t", 8);
 	aiWillDo.replace(aiWillDo.find(otherStatesPlaceholder), otherStatesPlaceholder.size(), otherStatesString);
-	std::string twoDivisionsInStateString;
-	for (const auto& state: relevantOtherStates)
-	{
-		twoDivisionsInStateString +=
-			 "divisions_in_state = { state = " + std::to_string(state) + " size > 2 }\n\t\t\t\t\t\t\t\t";
-	}
-	twoDivisionsInStateString = twoDivisionsInStateString.substr(0, twoDivisionsInStateString.length() - 9);
+
+	const auto twoDivisionsInStateString = createReplacementText(relevantOtherStates,
+		 "divisions_in_state = { state = ",
+		 " size > 2 }\n\t\t\t\t\t\t\t\t",
+		 9);
 	aiWillDo.replace(aiWillDo.find(twoDivisionsInStatesPlaceholder),
 		 twoDivisionsInStatesPlaceholder.size(),
 		 twoDivisionsInStateString);
-	std::string nileStatesString;
-	for (const auto& state: relevantNileStates)
-	{
-		nileStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t\t\t\t\t";
-	}
-	nileStatesString = nileStatesString.substr(0, nileStatesString.length() - 8);
+
+	const auto nileStatesString =
+		 createReplacementText(relevantNileStates, "has_full_control_of_state = ", "\n\t\t\t\t\t\t\t", 8);
 	aiWillDo.replace(aiWillDo.find(nileStatesPlaceholder), nileStatesPlaceholder.size(), nileStatesString);
-	std::string landRoutesStatesString;
-	for (const auto& state: relevantLandRouteStates)
-	{
-		landRoutesStatesString += "NOT = { has_full_control_of_state = " + std::to_string(state) + " }\n\t\t\t\t\t";
-	}
-	landRoutesStatesString = landRoutesStatesString.substr(0, landRoutesStatesString.length() - 6);
+
+	const auto landRoutesStatesString =
+		 createReplacementText(relevantLandRouteStates, "NOT = { has_full_control_of_state = ", " }\n\t\t\t\t\t", 6);
 	aiWillDo.replace(aiWillDo.find(landRoutesStatesPlaceholder),
 		 landRoutesStatesPlaceholder.size(),
 		 landRoutesStatesString);
-	std::string supplyStatesString;
-	for (const auto& state: relevantSupplyStates)
-	{
-		supplyStatesString += "divisions_in_state = { state = " + std::to_string(state) + " size > 0 }\n\t\t\t\t\t\t";
-	}
-	supplyStatesString = supplyStatesString.substr(0, supplyStatesString.length() - 7);
+
+	const auto supplyStatesString =
+		 createReplacementText(relevantSupplyStates, "divisions_in_state = { state = ", " size > 0 }\n\t\t\t\t\t\t", 7);
 	aiWillDo.replace(aiWillDo.find(supplyStatesPlaceholder), supplyStatesPlaceholder.size(), supplyStatesString);
+
 	if (gibraltar)
 	{
 		aiWillDo = aiWillDo.substr(0, aiWillDo.length() - 3);
@@ -350,26 +336,16 @@ decision&& updateBlowPanama(decision&& blowPanamaDecision, const std::map<int, i
 	const std::string canalStatesPlaceholder = "$CANAL_STATES";
 	const std::string peninsulaStatesPlaceholder = "$PENINSULA_STATES";
 
-	auto canalStates = getRelevantStatesFromProvinces(panamaCanalProvinces, {}, provinceToStateIdMap);
-	auto peninsulaStates = getRelevantStatesFromProvinces(panamaPeninsulaProvinces, {}, provinceToStateIdMap);
+	const auto canalStates = getRelevantStatesFromProvinces(panamaCanalProvinces, {}, provinceToStateIdMap);
+	const auto peninsulaStates = getRelevantStatesFromProvinces(panamaPeninsulaProvinces, {}, provinceToStateIdMap);
 
-	std::string canalControlStatesString;
-	for (const auto& state: canalStates)
-	{
-		canalControlStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t";
-	}
-	canalControlStatesString = canalControlStatesString.substr(0, canalControlStatesString.length() - 4);
-
+	const auto canalControlStatesString =
+		 createReplacementText(canalStates, "has_full_control_of_state = ", "\n\t\t\t", 4);
 	auto available = blowPanamaDecision.getAvailable();
 	available.replace(available.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalControlStatesString);
 	blowPanamaDecision.setAvailable(available);
 
-	std::string canalOwnershipStatesString;
-	for (const auto& state: canalStates)
-	{
-		canalOwnershipStatesString += "owns_state = " + std::to_string(state) + "\n\t\t\t";
-	}
-	canalOwnershipStatesString = canalOwnershipStatesString.substr(0, canalOwnershipStatesString.length() - 4);
+	const auto canalOwnershipStatesString = createReplacementText(canalStates, "owns_state = ", "\n\t\t\t", 4);
 	auto completeEffect = blowPanamaDecision.getCompleteEffect();
 	completeEffect.replace(completeEffect.find(canalStatesPlaceholder),
 		 canalStatesPlaceholder.size(),
@@ -379,13 +355,8 @@ decision&& updateBlowPanama(decision&& blowPanamaDecision, const std::map<int, i
 		 canalOwnershipStatesString);
 	blowPanamaDecision.setCompleteEffect(completeEffect);
 
-	std::string peninsulaStatesString;
-	for (const auto& state: peninsulaStates)
-	{
-		peninsulaStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t\t\t\t";
-	}
-	peninsulaStatesString = peninsulaStatesString.substr(0, peninsulaStatesString.length() - 7);
-
+	const auto peninsulaStatesString =
+		 createReplacementText(peninsulaStates, "has_full_control_of_state = ", "\n\t\t\t\t\t\t", 7);
 	auto removeEffect = blowPanamaDecision.getRemoveEffect();
 	removeEffect.replace(removeEffect.find(peninsulaStatesPlaceholder),
 		 peninsulaStatesPlaceholder.size(),
@@ -400,25 +371,15 @@ decision&& updateRebuildSuez(decision&& rebuildSuezDecision, const std::map<int,
 {
 	const std::string canalStatesPlaceholder = "$CANAL_STATES";
 
-	auto canalStates = getRelevantStatesFromProvinces(suezCanalProvinces, {}, provinceToStateIdMap);
-	std::string canalStatesString;
-	for (const auto& state: canalStates)
-	{
-		canalStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t";
-	}
-	canalStatesString = canalStatesString.substr(0, canalStatesString.length() - 4);
+	const auto canalStates = getRelevantStatesFromProvinces(suezCanalProvinces, {}, provinceToStateIdMap);
+	auto canalStatesString = createReplacementText(canalStates, "has_full_control_of_state = ", "\n\t\t\t", 4);
 
 	auto available = rebuildSuezDecision.getAvailable();
 	available.replace(available.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalStatesString);
 	rebuildSuezDecision.setAvailable(available);
 
-	canalStatesString.clear();
-	for (const auto& state: canalStates)
-	{
-		canalStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t\t\t";
-	}
-	canalStatesString = canalStatesString.substr(0, canalStatesString.length() - 6);
-	std::string removeEffect = rebuildSuezDecision.getRemoveEffect();
+	canalStatesString = createReplacementText(canalStates, "has_full_control_of_state = ", "\n\t\t\t\t\t", 6);
+	auto removeEffect = rebuildSuezDecision.getRemoveEffect();
 	removeEffect.replace(removeEffect.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalStatesString);
 	rebuildSuezDecision.setRemoveEffect(removeEffect);
 
@@ -431,22 +392,12 @@ decision&& updateRebuildPanama(decision&& rebuildPanamaDecision, const std::map<
 	const std::string canalStatesPlaceholder = "$CANAL_STATES";
 	const std::string peninsulaStatesPlaceholder = "$PENINSULA_STATES";
 
-	auto canalStates = getRelevantStatesFromProvinces(panamaCanalProvinces, {}, provinceToStateIdMap);
-	auto peninsulaStates = getRelevantStatesFromProvinces(panamaPeninsulaProvinces, canalStates, provinceToStateIdMap);
+	const auto canalStates = getRelevantStatesFromProvinces(panamaCanalProvinces, {}, provinceToStateIdMap);
+	const auto peninsulaStates =
+		 getRelevantStatesFromProvinces(panamaPeninsulaProvinces, canalStates, provinceToStateIdMap);
 
-	std::string canalStatesString;
-	for (const auto& state: canalStates)
-	{
-		canalStatesString += "has_full_control_of_state = " + std::to_string(state) + "\n\t\t\t";
-	}
-	canalStatesString = canalStatesString.substr(0, canalStatesString.length() - 4);
-
-	std::string peninsulaStatesString;
-	for (const auto& state: peninsulaStates)
-	{
-		peninsulaStatesString += "controls_state = " + std::to_string(state) + "\n\t\t\t\t";
-	}
-	peninsulaStatesString = peninsulaStatesString.substr(0, peninsulaStatesString.length() - 5);
+	const auto canalStatesString = createReplacementText(canalStates, "has_full_control_of_state = ", "\n\t\t\t", 4);
+	const auto peninsulaStatesString = createReplacementText(peninsulaStates, "controls_state = ", "\n\t\t\t\t", 5);
 
 	auto available = rebuildPanamaDecision.getAvailable();
 	available.replace(available.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalStatesString);
@@ -565,15 +516,15 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 			{
 				category.replaceDecision(updateBuildCanal(std::move(decision), kielCanalProvinces, provinceToStateIdMap));
 			}
-			if (decision.getName() == "build_suez_canal")
+			else if (decision.getName() == "build_suez_canal")
 			{
 				category.replaceDecision(updateBuildCanal(std::move(decision), suezCanalProvinces, provinceToStateIdMap));
 			}
-			if (decision.getName() == "build_panama_canal")
+			else if (decision.getName() == "build_panama_canal")
 			{
 				category.replaceDecision(updateBuildCanal(std::move(decision), panamaCanalProvinces, provinceToStateIdMap));
 			}
-			if (decision.getName() == "blow_suez_canal")
+			else if (decision.getName() == "blow_suez_canal")
 			{
 				category.replaceDecision(updateBlowSuez(std::move(decision), provinceToStateIdMap));
 			}
