@@ -640,7 +640,7 @@ void GenericDecisions::updateDecisions(const std::map<int, int>& provinceToState
 	}
 
 	const auto [first, last] = std::ranges::remove_if(decisions, [](auto& decisionCategory) {
-			return decisionCategory.getName() == "foreign_support";
+		return decisionCategory.getName() == "foreign_support";
 	});
 	decisions.erase(first, last);
 }
