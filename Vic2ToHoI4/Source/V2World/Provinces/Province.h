@@ -38,6 +38,7 @@ class Province
 	[[nodiscard]] const auto& getPops() const { return pops; }
 	[[nodiscard]] const auto& getNavalBaseLevel() const { return navalBaseLevel; }
 	[[nodiscard]] const auto& getRailLevel() const { return railLevel; }
+	[[nodiscard]] const auto& getFlags() const { return flags; }
 
   private:
 	[[nodiscard]] static int calculateLiteracyWeightedPop(const Pop& thePop);
@@ -52,6 +53,8 @@ class Province
 
 	int navalBaseLevel = 0;
 	int railLevel = 0;
+
+	std::set<std::string> flags;
 };
 
 } // namespace Vic2

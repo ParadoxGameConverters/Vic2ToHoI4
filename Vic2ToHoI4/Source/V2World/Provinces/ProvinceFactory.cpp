@@ -1,25 +1,26 @@
 #include "ProvinceFactory.h"
 #include "CommonRegexes.h"
 #include "ParserHelpers.h"
+#include <ranges>
 
 
 
 Vic2::Province::Factory::Factory(std::unique_ptr<PopFactory>&& _popFactory): popFactory(std::move(_popFactory))
 {
 	registerKeyword("owner", [this](std::istream& theStream) {
-		province->owner = commonItems::singleString{theStream}.getString();
+		province->owner = commonItems::singleString(theStream).getString();
 	});
 	registerKeyword("core", [this](std::istream& theStream) {
-		province->cores.insert(commonItems::singleString{theStream}.getString());
+		province->cores.insert(commonItems::singleString(theStream).getString());
 	});
 	registerKeyword("controller", [this](std::istream& theStream) {
-		province->controller = commonItems::singleString{theStream}.getString();
+		province->controller = commonItems::singleString(theStream).getString();
 	});
 	registerKeyword("naval_base", [this](std::istream& theStream) {
-		province->navalBaseLevel = static_cast<int>(commonItems::doubleList{theStream}.getDoubles()[0]);
+		province->navalBaseLevel = static_cast<int>(commonItems::doubleList(theStream).getDoubles()[0]);
 	});
 	registerKeyword("railroad", [this](std::istream& theStream) {
-		province->railLevel = static_cast<int>(commonItems::doubleList{theStream}.getDoubles()[0]);
+		province->railLevel = static_cast<int>(commonItems::doubleList(theStream).getDoubles()[0]);
 	});
 	registerRegex(
 		 "aristocrats|artisans|bureaucrats|capitalists|clergymen|craftsmen|clerks|farmers|soldiers|officers|labourers|"
@@ -27,6 +28,13 @@ Vic2::Province::Factory::Factory(std::unique_ptr<PopFactory>&& _popFactory): pop
 		 [this](const std::string& popType, std::istream& theStream) {
 			 province->pops.push_back(popFactory->getPop(popType, theStream));
 		 });
+	registerKeyword("flags", [this](std::istream& theStream) {
+		const auto assignments = commonItems::assignments(theStream).getAssignments();
+		for (const auto& flag: assignments | std::views::keys)
+		{
+			province->flags.insert(flag);
+		}
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

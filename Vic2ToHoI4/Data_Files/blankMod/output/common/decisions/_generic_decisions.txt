@@ -1,4 +1,5 @@
 political_actions = {
+
 	
 	targeted_race_for_the_bomb = {
 
@@ -16,16 +17,16 @@ political_actions = {
 		}
 
 		target_root_trigger = {
-            has_tech = atomic_research
-            NOT = { has_global_flag = first_nuke_dropped }
-            NOT = { has_idea = race_for_the_bomb }
+			has_tech = atomic_research
+			NOT = { has_global_flag = first_nuke_dropped }
+			NOT = { has_idea = race_for_the_bomb }
 		}
 
 		#If this trigger matches a country.
 		target_trigger = {
 			#Target is FROM
 			FROM = {
-        		NOT = { is_in_faction_with = ROOT }
+				NOT = { is_in_faction_with = ROOT }
 				has_tech = nuclear_reactor
 				any_owned_state = {
 					nuclear_reactor > 0
@@ -34,12 +35,12 @@ political_actions = {
 		}
 
 		visible = {
-            #Target is FROM
-            has_tech = atomic_research
-            NOT = { has_global_flag = first_nuke_dropped }
-            NOT = { has_idea = race_for_the_bomb }
-            FROM = {
-        		NOT = { is_in_faction_with = ROOT }
+			#Target is FROM
+			has_tech = atomic_research
+			NOT = { has_global_flag = first_nuke_dropped }
+			NOT = { has_idea = race_for_the_bomb }
+			FROM = {
+				NOT = { is_in_faction_with = ROOT }
 				has_tech = nuclear_reactor
 				any_owned_state = {
 					nuclear_reactor > 0
@@ -211,6 +212,16 @@ propaganda_efforts = {
 					has_offensive_war = yes
 				}
 			}
+			
+			# lower the cost for neighbors
+			if = {
+				limit = {
+					FROM = {
+						is_neighbor_of = ROOT
+					}
+					set_temp_variable = { war_propaganda_cost = 50 }
+				}
+			}
 		}
 
 		visible = {
@@ -273,14 +284,6 @@ propaganda_efforts = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					FROM = {
-						is_neighbor_of = ROOT
-					}
-					set_temp_variable = { war_propaganda_cost = 50 }
-				}
-			}
 		}
 
 		days_remove = 90
@@ -314,7 +317,922 @@ propaganda_efforts = {
 }
 
 operations = {
+	#MTG_TEST_NAVAL_MIXED_VS_MIXED_EARLY = { #MTG_TODO_GABRIEL: remove before launch (no seriously do not ship with this (hehe get it don't SHIP with it)) 
+#
+	#	icon = generic
+	#	name = "TEST: Mix vs Mix"
+	#
+	#	allowed = {
+	#		tag = CUB
+	#	}
+#
+	#	available = {
+	#	
+	#	}
+	#
+	#	cost = 0
+	#	
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#	days_remove = -1
+	#	
+	#	complete_effect = {
+	#		set_technology = {
+	#			early_battleship = 1
+	#			early_heavy_cruiser = 1
+	#			early_light_cruiser = 1
+	#			early_destroyer = 1
+	#			early_carrier = 1
+	#			early_submarine = 1
+	#			cv_fighter1 = 1
+	#			cv_CAS1 = 1
+	#			cv_naval_bomber1 = 1
+	#		}
+	#		load_oob = "MTG_NAVAL_TEST_OOB_MIXED_VS_MIXED_EARLY_BLUE"
+	#		add_ideas = {
+	#			MTG_TEST_NAVAL_IDEA
+	#		}
+	#		add_fuel = 10000000
+	#		DOM = {
+	#			set_technology = {
+	#				early_battleship = 1
+	#				early_heavy_cruiser = 1
+	#				early_light_cruiser = 1
+	#				early_destroyer = 1
+	#				early_carrier = 1
+	#				early_submarine = 1
+	#				cv_fighter1 = 1
+	#				cv_CAS1 = 1
+	#				cv_naval_bomber1 = 1
+	#			}
+	#			load_oob = "MTG_NAVAL_TEST_OOB_MIXED_VS_MIXED_EARLY_RED"
+	#			add_fuel = 10000000
+	#			add_ideas = {
+	#				MTG_TEST_NAVAL_IDEA
+	#			}
+	#			set_stability = 1
+	#			set_war_support = 1
+	#		}
+	#		declare_war_on = { target = DOM type = annex_everything }
+	#		set_stability = 1
+	#		set_war_support = 1
+	#	}
+	#}
+	#MTG_TEST_NAVAL_MIXED_VS_CV_MIXED_EARLY = { #MTG_TODO_GABRIEL: remove before launch (no seriously do not ship with this (hehe get it don't SHIP with it)) 
+#
+	#	icon = generic
+	#	name = "TEST: Mix vs Mix (with CVs)"
+	#
+	#	allowed = {
+	#		tag = CUB
+	#	}
+#
+	#	available = {
+	#	
+	#	}
+	#
+	#	cost = 0
+	#	
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#	days_remove = -1
+	#	
+	#	complete_effect = {
+	#		set_technology = {
+	#			early_battleship = 1
+	#			early_heavy_cruiser = 1
+	#			early_light_cruiser = 1
+	#			early_destroyer = 1
+	#			early_carrier = 1
+	#			early_submarine = 1
+	#			cv_fighter1 = 1
+	#			cv_CAS1 = 1
+	#			cv_naval_bomber1 = 1
+	#		}
+	#		load_oob = "MTG_NAVAL_TEST_OOB_MIXED_VS_MIXED_EARLY_BLUE"
+	#		add_ideas = {
+	#			MTG_TEST_NAVAL_IDEA
+	#		}
+	#		add_fuel = 10000000
+	#		DOM = {
+	#			set_technology = {
+	#				early_battleship = 1
+	#				early_heavy_cruiser = 1
+	#				early_light_cruiser = 1
+	#				early_destroyer = 1
+	#				early_carrier = 1
+	#				early_submarine = 1
+	#				cv_fighter1 = 1
+	#				cv_CAS1 = 1
+	#				cv_naval_bomber1 = 1
+	#			}
+	#			load_oob = "MTG_NAVAL_TEST_OOB_CV_MIXED_VS_CV_MIXED_EARLY_RED"
+	#			add_fuel = 10000000
+	#			add_ideas = {
+	#				MTG_TEST_NAVAL_IDEA
+	#			}
+	#			set_stability = 1
+	#			set_war_support = 1
+	#		}
+	#		declare_war_on = { target = DOM type = annex_everything }
+	#		set_stability = 1
+	#		set_war_support = 1
+	#	}
+	#}
+	#MTG_TEST_NAVAL_MIXED_VS_MIXED_SUBS_EARLY = { #MTG_TODO_GABRIEL: remove before launch (no seriously do not ship with this (hehe get it don't SHIP with it)) 
+#
+	#	icon = generic
+	#	name = "TEST: Mix vs Mix (with subs)"
+#
+	#	allowed = {
+	#		tag = CUB
+	#	}
+#
+	#	available = {
+	#	
+	#	}
+	#
+	#	cost = 0
+	#	
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#	days_remove = -1
+	#	modifier = {
+	#		navy_fuel_consumption_factor = -1
+	#	}
+	#	complete_effect = {
+	#		set_technology = {
+	#			early_battleship = 1
+	#			early_heavy_cruiser = 1
+	#			early_light_cruiser = 1
+	#			early_destroyer = 1
+	#			early_carrier = 1
+	#			early_submarine = 1
+	#			cv_fighter1 = 1
+	#			cv_CAS1 = 1
+	#			cv_naval_bomber1 = 1
+	#		}
+	#		load_oob = "MTG_NAVAL_TEST_OOB_MIXED_VS_MIXED_SUBS_EARLY_BLUE"
+	#		add_ideas = {
+	#			MTG_TEST_NAVAL_IDEA
+	#		}
+	#		add_fuel = 10000000
+	#		DOM = {
+	#			set_technology = {
+	#				early_battleship = 1
+	#				early_heavy_cruiser = 1
+	#				early_light_cruiser = 1
+	#				early_destroyer = 1
+	#				early_carrier = 1
+	#				early_submarine = 1
+	#				cv_fighter1 = 1
+	#				cv_CAS1 = 1
+	#				cv_naval_bomber1 = 1
+	#			}
+	#			load_oob = "MTG_NAVAL_TEST_OOB_MIXED_VS_MIXED_SUBS_EARLY_RED"
+	#			add_fuel = 10000000
+	#			set_stability = 1
+	#			set_war_support = 1
+	#			add_ideas = {
+	#				MTG_TEST_NAVAL_IDEA
+	#			}
+	#		}
+	#		declare_war_on = { target = DOM type = annex_everything }
+	#		set_stability = 1
+	#		set_war_support = 1
+	#	}
+	#}
+	#MTG_TEST_NAVAL_SCREENS_VS_MIXED_EARLY = { #MTG_TODO_GABRIEL: remove before launch (no seriously do not ship with this (hehe get it don't SHIP with it)) 
+#
+	#	icon = generic
+	#	name = "TEST: Screens vs Mix"
+#
+	#	allowed = {
+	#		tag = CUB
+	#	}
+#
+	#	available = {
+	#	
+	#	}
+	#
+	#	cost = 0
+	#	
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#	days_remove = -1
+	#	
+	#	complete_effect = {
+	#		set_technology = {
+	#			early_battleship = 1
+	#			early_battlecruiser = 1
+	#			early_heavy_cruiser = 1
+	#			early_light_cruiser = 1
+	#			early_destroyer = 1
+	#			early_carrier = 1
+	#			early_submarine = 1
+	#			cv_fighter1 = 1
+	#			cv_CAS1 = 1
+	#			cv_naval_bomber1 = 1
+	#		}
+	#		load_oob = "MTG_NAVAL_TEST_OOB_SCREENS_EARLY_BLUE"
+	#		add_ideas = {
+	#			MTG_TEST_NAVAL_IDEA
+	#		}
+	#		add_fuel = 10000000
+	#		DOM = {
+	#			set_technology = {
+	#				early_battleship = 1
+	#				early_battlecruiser = 1
+	#				early_heavy_cruiser = 1
+	#				early_light_cruiser = 1
+	#				early_destroyer = 1
+	#				early_carrier = 1
+	#				early_submarine = 1
+	#				cv_fighter1 = 1
+	#				cv_CAS1 = 1
+	#				cv_naval_bomber1 = 1
+	#			}
+	#			load_oob = "MTG_NAVAL_TEST_OOB_MIXED_VS_MIXED_EARLY_RED"
+	#			add_fuel = 10000000
+	#			set_stability = 1
+	#			set_war_support = 1
+	#			add_ideas = {
+	#				MTG_TEST_NAVAL_IDEA
+	#			}
+	#		}
+	#		declare_war_on = { target = DOM type = annex_everything }
+	#		set_stability = 1
+	#		set_war_support = 1
+	#	}
+	#}
+	#MTG_TEST_NAVAL_SCREENS_VS_CV_MIXED_EARLY = { #MTG_TODO_GABRIEL: remove before launch (no seriously do not ship with this (hehe get it don't SHIP with it)) 
+#
+	#	icon = generic
+	#	name = "TEST: Screens vs Mix (with CV)"
+#
+	#	allowed = {
+	#		tag = CUB
+	#	}
+#
+	#	available = {
+	#	
+	#	}
+	#
+	#	cost = 0
+	#	
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#	days_remove = -1
+	#	
+	#	complete_effect = {
+	#		set_technology = {
+	#			early_battleship = 1
+	#			early_battlecruiser = 1
+	#			early_heavy_cruiser = 1
+	#			early_light_cruiser = 1
+	#			early_destroyer = 1
+	#			early_carrier = 1
+	#			early_submarine = 1
+	#			cv_fighter1 = 1
+	#			cv_CAS1 = 1
+	#			cv_naval_bomber1 = 1
+	#		}
+	#		load_oob = "MTG_NAVAL_TEST_OOB_SCREENS_EARLY_BLUE"
+	#		add_ideas = {
+	#			MTG_TEST_NAVAL_IDEA
+	#		}
+	#		add_fuel = 10000000
+	#		DOM = {
+	#			set_technology = {
+	#				early_battleship = 1
+	#				early_battlecruiser = 1
+	#				early_heavy_cruiser = 1
+	#				early_light_cruiser = 1
+	#				early_destroyer = 1
+	#				early_carrier = 1
+	#				early_submarine = 1
+	#				cv_fighter1 = 1
+	#				cv_CAS1 = 1
+	#				cv_naval_bomber1 = 1
+	#			}
+	#			load_oob = "MTG_NAVAL_TEST_OOB_CV_MIXED_VS_CV_MIXED_EARLY_RED"
+	#			add_fuel = 10000000
+	#			set_stability = 1
+	#			set_war_support = 1
+	#			add_ideas = {
+	#				MTG_TEST_NAVAL_IDEA
+	#			}
+	#		}
+	#		declare_war_on = { target = DOM type = annex_everything }
+	#		set_stability = 1
+	#		set_war_support = 1
+	#	}
+	#}
+	#MTG_TEST_NAVAL_SCREENS_VS_CAPITALS_EARLY = { #MTG_TODO_GABRIEL: remove before launch (no seriously do not ship with this (hehe get it don't SHIP with it)) 
+#
+	#	icon = generic
+	#	name = "TEST: Screens vs Capitals"
+#
+	#	allowed = {
+	#		tag = CUB
+	#	}
+#
+	#	available = {
+	#	
+	#	}
+	#
+	#	cost = 0
+	#	
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#	days_remove = -1
+	#	complete_effect = {
+	#		set_technology = {
+	#			early_battleship = 1
+	#			early_battlecruiser = 1
+	#			early_heavy_cruiser = 1
+	#			early_light_cruiser = 1
+	#			early_destroyer = 1
+	#			early_carrier = 1
+	#			early_submarine = 1
+	#			cv_fighter1 = 1
+	#			cv_CAS1 = 1
+	#			cv_naval_bomber1 = 1
+	#		}
+	#		load_oob = "MTG_NAVAL_TEST_OOB_SCREENS_EARLY_BLUE"
+	#		add_ideas = {
+	#			MTG_TEST_NAVAL_IDEA
+	#		}
+	#		add_fuel = 10000000
+	#		DOM = {
+	#			set_technology = {
+	#				early_battleship = 1
+	#				early_battlecruiser = 1
+	#				early_heavy_cruiser = 1
+	#				early_light_cruiser = 1
+	#				early_destroyer = 1
+	#				early_carrier = 1
+	#				early_submarine = 1
+	#				cv_fighter1 = 1
+	#				cv_CAS1 = 1
+	#				cv_naval_bomber1 = 1
+	#			}
+	#			load_oob = "MTG_NAVAL_TEST_OOB_CAPITAL_EARLY_RED"
+	#			add_ideas = {
+	#				MTG_TEST_NAVAL_IDEA
+	#			}
+	#			add_fuel = 10000000
+	#			set_stability = 1
+	#			set_war_support = 1
+	#		}
+	#		declare_war_on = { target = DOM type = annex_everything }
+	#		set_stability = 1
+	#		set_war_support = 1
+	#	}
+	#}
+	#MTG_TEST_NAVAL_CAPITALS_VS_MIXED_EARLY = { #MTG_TODO_GABRIEL: remove before launch (no seriously do not ship with this (hehe get it don't SHIP with it)) 
+#
+	#	icon = generic
+	#	name = "TEST: Capitals vs Mix"
+	#
+	#	allowed = {
+	#		tag = CUB
+	#	}
+#
+	#	available = {
+	#	
+	#	}
+	#
+	#	cost = 0
+	#	
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#	days_remove = -1
+	#	complete_effect = {
+	#		set_technology = {
+	#			early_battleship = 1
+	#			early_battlecruiser = 1
+	#			early_heavy_cruiser = 1
+	#			early_light_cruiser = 1
+	#			early_destroyer = 1
+	#			early_carrier = 1
+	#			early_submarine = 1
+	#			cv_fighter1 = 1
+	#			cv_CAS1 = 1
+	#			cv_naval_bomber1 = 1
+	#		}
+	#		load_oob = "MTG_NAVAL_TEST_OOB_CAPITAL_EARLY_BLUE"
+	#		add_ideas = {
+	#			MTG_TEST_NAVAL_IDEA
+	#		}
+	#		add_fuel = 10000000
+	#		DOM = {
+	#			set_technology = {
+	#				early_battleship = 1
+	#				early_battlecruiser = 1
+	#				early_heavy_cruiser = 1
+	#				early_light_cruiser = 1
+	#				early_destroyer = 1
+	#				early_carrier = 1
+	#				early_submarine = 1
+	#				cv_fighter1 = 1
+	#				cv_CAS1 = 1
+	#				cv_naval_bomber1 = 1
+	#			}
+	#			load_oob = "MTG_NAVAL_TEST_OOB_MIXED_VS_MIXED_EARLY_RED"
+	#			add_ideas = {
+	#				MTG_TEST_NAVAL_IDEA
+	#			}
+	#			add_fuel = 10000000
+	#			set_stability = 1
+	#			set_war_support = 1
+	#		}
+	#		declare_war_on = { target = DOM type = annex_everything }
+	#		set_stability = 1
+	#		set_war_support = 1
+	#	}
+	#}
+	#MTG_TEST_NAVAL_CAPITALS_VS_CV_MIXED_EARLY = { #MTG_TODO_GABRIEL: remove before launch (no seriously do not ship with this (hehe get it don't SHIP with it)) 
+#
+	#	icon = generic
+#
+	#	name = "TEST: Capitals vs Mix (with CV)"
+	#
+	#	allowed = {
+	#		tag = CUB
+	#	}
+#
+	#	available = {
+	#	
+	#	}
+	#
+	#	cost = 0
+	#	
+	#	ai_will_do = {
+	#		factor = 0
+	#	}
+	#	days_remove = -1
+	#	complete_effect = {
+	#		set_technology = {
+	#			early_battleship = 1
+	#			early_battlecruiser = 1
+	#			early_heavy_cruiser = 1
+	#			early_light_cruiser = 1
+	#			early_destroyer = 1
+	#			early_carrier = 1
+	#			early_submarine = 1
+	#			cv_fighter1 = 1
+	#			cv_CAS1 = 1
+	#			cv_naval_bomber1 = 1
+	#		}
+	#		load_oob = "MTG_NAVAL_TEST_OOB_CAPITAL_EARLY_BLUE"
+	#		add_ideas = {
+	#			MTG_TEST_NAVAL_IDEA
+	#		}
+	#		add_fuel = 10000000
+	#		DOM = {
+	#			set_technology = {
+	#				early_battleship = 1
+	#				early_battlecruiser = 1
+	#				early_heavy_cruiser = 1
+	#				early_light_cruiser = 1
+	#				early_destroyer = 1
+	#				early_carrier = 1
+	#				early_submarine = 1
+	#				cv_fighter1 = 1
+	#				cv_CAS1 = 1
+	#				cv_naval_bomber1 = 1
+	#			}
+	#			load_oob = "MTG_NAVAL_TEST_OOB_CV_MIXED_VS_CV_MIXED_EARLY_RED"
+	#			add_ideas = {
+	#				MTG_TEST_NAVAL_IDEA
+	#			}
+	#			add_fuel = 10000000
+	#			set_stability = 1
+	#			set_war_support = 1
+	#		}
+	#		declare_war_on = { target = DOM type = annex_everything }
+	#		set_stability = 1
+	#		set_war_support = 1
+	#	}
+	#}
 	
+	
+	build_kiel_canal = {
+
+		icon = GFX_decision_generic_special_project
+
+		available = {
+			$CANAL_STATES
+			num_of_civilian_factories > 10
+		}
+	
+		visible = {
+			has_global_flag = KIEL_CANAL_UNBUILT
+		}
+	
+		fire_only_once = yes
+	
+		days_remove = 365
+	
+		cost = 200
+	
+		modifier = {
+			civilian_factory_use = 10
+		}
+	
+		remove_effect = {
+			clr_global_flag = KIEL_CANAL_UNBUILT
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_navy_size = { size < 25 }
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
+	
+	build_suez_canal = {
+
+		icon = GFX_decision_generic_special_project
+
+		available = {
+			$CANAL_STATES
+			num_of_civilian_factories > 15
+		}
+	
+		visible = {
+			has_global_flag = SUEZ_CANAL_UNBUILT
+		}
+	
+		fire_only_once = yes
+	
+		days_remove = 365
+	
+		cost = 300
+	
+		modifier = {
+			civilian_factory_use = 15
+		}
+	
+		remove_effect = {
+			clr_global_flag = SUEZ_CANAL_UNBUILT
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_navy_size = { size < 25 }
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
+	
+	build_panama_canal = {
+
+		icon = GFX_decision_generic_special_project
+
+		available = {
+			$CANAL_STATES
+			num_of_civilian_factories > 20
+		}
+	
+		visible = {
+			has_global_flag = PANAMA_CANAL_UNBUILT
+		}
+	
+		fire_only_once = yes
+	
+		days_remove = 365
+	
+		cost = 300
+	
+		modifier = {
+			civilian_factory_use = 20
+		}
+	
+		remove_effect = {
+			clr_global_flag = PANAMA_CANAL_UNBUILT
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_navy_size = { size < 25 }
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
+
+	blow_suez_canal = {
+
+		icon = GFX_decision_generic_ignite_civil_war
+		allowed = {
+			has_dlc = "Waking the Tiger"
+		}
+		available = {
+			$CANAL_STATES
+			OR = {
+				NOT = {
+					$CANAL_STATES
+				}
+				any_enemy_country = {
+					OR = {
+						$OTHER_STATES
+					}
+				}
+			}
+		}
+	
+		visible = {
+			has_war = yes
+			NOT = { has_global_flag = SUEZ_CANAL_BLOCKED }
+			NOT = { has_global_flag = SUEZ_CANAL_UNBUILT }
+			any_controlled_state = {
+				OR = {
+					region = 28
+					region = 128
+				}
+			}
+		}
+	
+		fire_only_once = no
+	
+		days_remove = 30
+	
+		cost = 75
+	
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							$CANAL_STATES
+						}
+					}
+					random_country = {
+						limit = {
+							$CANAL_STATES
+						}
+						country_event = { id = generic.12 days = 1 }
+					}
+				}
+			}
+		}
+	
+		remove_effect = {
+			if = {
+				limit = {
+					OR = {
+						$CANAL_STATES
+					}
+				}
+				set_country_flag = blew_up_suez
+				set_global_flag = SUEZ_CANAL_BLOCKED
+				country_event = { id = wtt_news.40 hours = 6}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					any_enemy_country = {
+						OR = {
+							$OTHER_STATES
+							OR = {
+								$TWO_DIVISIONS_IN_STATES
+							}
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0 # Don't blow the canal when you've got troops needing supplies in the Horn of Africa, and no land route has been established there
+				any_allied_country = {
+					NOT = {
+						OR = {
+							$NILE_STATES
+						}
+					}
+					$LAND_ROUTE_STATES
+					OR = {
+						$SUPPLY_STATES
+					}
+				}
+			}
+		}
+	}
+
+	blow_panama_canal = {
+
+		icon = GFX_decision_generic_ignite_civil_war
+		allowed = {
+			has_dlc = "Waking the Tiger"
+			
+		}
+		available = {
+			$CANAL_STATES
+		}
+	
+		visible = {
+			has_war = yes
+			NOT = { has_global_flag = PANAMA_CANAL_BLOCKED }
+			NOT = { has_global_flag = PANAMA_CANAL_UNBUILT }
+			any_controlled_state = {
+				OR = {
+					region = 34
+					region = 124
+				}
+			}
+		}
+	
+		fire_only_once = no
+	
+		days_remove = 30
+	
+		cost = 75
+	
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							$CANAL_STATES
+						}
+					}
+					random_country = {
+						limit = {
+							$CANAL_STATES
+						}
+						country_event = { id = generic.13 days = 1 }
+					}
+				}
+			}
+		}
+	
+		remove_effect = {
+			if = {
+				limit = {
+					OR = {
+						$PENINSULA_STATES
+					}
+				}
+				set_country_flag = blew_up_panama
+				set_global_flag = PANAMA_CANAL_BLOCKED
+				country_event = { id = wtt_news.41 hours = 6}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0 # Don't blow up the canal if enemies have weak navies but you are a strong naval power
+				has_navy_size = {
+					size > 50
+				}
+				NOT = {
+					any_enemy_country = {
+						has_navy_size = {
+							size > 50
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+special_projects = {
+
+	rebuild_suez_canal = {
+
+		icon = GFX_decision_generic_special_project
+
+		available = {
+			$CANAL_STATES
+			num_of_civilian_factories > 15
+		}
+	
+		visible = {
+			has_global_flag = SUEZ_CANAL_BLOCKED
+		}
+	
+		fire_only_once = no
+	
+		days_remove = 365
+	
+		cost = 120
+	
+		modifier = {
+			civilian_factory_use = 15
+		}
+	
+		remove_effect = {
+			if = {
+				limit = {
+					$CANAL_STATES
+				}
+				set_country_flag = rebuilt_suez
+				clr_global_flag = SUEZ_CANAL_BLOCKED
+				country_event = { id = wtt_news.42 hours = 6}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0 # Don't bother if your navy is weak
+				has_navy_size = { size < 100 }
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
+
+	rebuild_panama_canal = {
+
+		icon = GFX_decision_generic_special_project
+
+		available = {
+			$CANAL_STATES
+			NOT = {
+				any_enemy_country = {
+					$PENINSULA_STATES
+				}
+			}
+			num_of_civilian_factories > 25
+		}
+	
+		visible = {
+			has_global_flag = PANAMA_CANAL_BLOCKED
+		}
+	
+		fire_only_once = no
+	
+		days_remove = 180
+	
+		cost = 400
+	
+		modifier = {
+			civilian_factory_use = 25
+		}
+	
+		remove_effect = {
+			if = {
+				limit = {
+					$CANAL_STATES
+					NOT = {
+						any_enemy_country = {
+							$PENINSULA_STATES
+						}
+					}
+				}
+				set_country_flag = rebuilt_panama
+				clr_global_flag = PANAMA_CANAL_BLOCKED
+				country_event = { id = wtt_news.43 hours = 6 }
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0 # Don't bother if your navy is weak
+				has_navy_size = { size < 50 }
+				has_war = yes
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
 }
 
 war_measures = {
@@ -415,31 +1333,42 @@ war_measures = {
 
 		icon = generic_industry
 
-        allowed = {
-            always = yes
-        }
+		allowed = {
+			always = yes
+		}
 
-        available = {
-            has_war = yes
-            has_idea = tot_economic_mobilisation
-				has_war_support > 0.79
-        }
-        visible = {
-            has_war = yes
-        }
-        cost = 100
-        days_remove = -1
-        remove_trigger = {
-        	OR = {
-            	has_war = no
-            	not = { has_idea = tot_economic_mobilisation }
-            }
-        }
-        modifier = {
-            conscription = 0.03
-            stability_factor = -0.05
-        }
-        ai_will_do = {
+		available = {
+			has_war = yes
+			has_idea = tot_economic_mobilisation
+			OR = {
+				$ABSOLUTIST
+				$COMMUNISM
+				$DEMOCRATIC
+				$FASCISM
+				$RADICAL
+				AND = {
+					has_government = neutrality
+					has_war_support > 0.84
+					has_stability > 0.7
+				}
+			}
+		}
+		visible = {
+			has_war = yes
+		}
+		cost = 100
+		days_remove = -1
+		remove_trigger = {
+			OR = {
+				has_war = no
+				not = { has_idea = tot_economic_mobilisation }
+			}
+		}
+		modifier = {
+			conscription = 0.03
+			stability_factor = -0.05
+		}
+		ai_will_do = {
 			factor = 1
 
 			modifier = {
@@ -448,26 +1377,37 @@ war_measures = {
 			}
 		}
 		complete_effect = {
-        }
+		}
    }
 
-    war_bonds = {
+	war_bonds = {
 
-    	icon = generic_industry
+		icon = generic_industry
 
-    	allowed = {
-            always = yes
-        }
+		allowed = {
+			always = yes
+		}
 
-        available = {
-            has_war = yes
-				has_war_support > 0.79
-        }
-        visible = {
-            has_war = yes
-        }
+		available = {
+			has_war = yes
+			OR = {
+				$ABSOLUTIST
+				$COMMUNISM
+				$DEMOCRATIC
+				$FASCISM
+				$RADICAL
+				AND = {
+					has_government = neutrality
+					has_war_support > 0.84
+					has_stability > 0.7
+				}
+			}
+		}
+		visible = {
+			has_war = yes
+		}
 
-        fire_only_once = no
+		fire_only_once = no
 
 		days_remove = 180
 
@@ -540,34 +1480,34 @@ war_measures = {
 				add_war_support = GER_war_bonds_war_support_var
 			}
 		}
-    }
+	}
 }
 
 foreign_politics = {
 	object_to_attaches = {
 
 		allowed = {
-            has_dlc = "Waking the Tiger"
-        }
+			has_dlc = "Waking the Tiger"
+		}
 
-        cost = 50
-        fire_only_once = no
+		cost = 50
+		fire_only_once = no
 
-        days_re_enable = 30
+		days_re_enable = 30
 
-        available = {
-        }
+		available = {
+		}
 
-        visible = {
-        	FROM = {
-        		NOT = { has_country_flag = rejected_withdrawing_attache }
-        		NOT = { has_country_flag = rejected_withdrawing_attache@ROOT }
-        		NOT = { has_country_flag = object_attache_going_on }
-        	}
-        	has_war = yes
-        	has_capitulated = no
-        	NOT = { has_war_with = FROM }
-        	any_enemy_country = {
+		visible = {
+			FROM = {
+				NOT = { has_country_flag = rejected_withdrawing_attache }
+				NOT = { has_country_flag = rejected_withdrawing_attache@ROOT }
+				NOT = { has_country_flag = object_attache_going_on }
+			}
+			has_war = yes
+			has_capitulated = no
+			NOT = { has_war_with = FROM }
+			any_enemy_country = {
 				has_attache_from = FROM
 			}
 		}
@@ -585,7 +1525,7 @@ foreign_politics = {
 			}			
 		}
 
-        complete_effect = {
+		complete_effect = {
 			FROM = { country_event = { id = generic.14 hours = 6 } }
 			hidden_effect = {
 				FROM = { set_country_flag = object_attache_going_on }
@@ -602,14 +1542,14 @@ economy_decisions = {
 
 		icon = generic_construction
 
-        allowed = {
-            always = yes
-        }
+		allowed = {
+			always = yes
+		}
 
-        cost = 100
-        fire_only_once = no
+		cost = 100
+		fire_only_once = no
 
-        days_re_enable = 30
+		days_re_enable = 30
 
 	available = {
 		any_owned_state = {
@@ -633,12 +1573,12 @@ economy_decisions = {
 		}
 	}
 
-        complete_effect = {
+		complete_effect = {
 			random_owned_state = {
 				limit = {
 					is_fully_controlled_by = ROOT
 					is_owned_by = ROOT
-            		free_building_slots = {
+					free_building_slots = {
 						building = industrial_complex
 						size > 1
 						include_locked = yes
@@ -660,28 +1600,20 @@ economy_decisions = {
 				any_owned_state = { free_building_slots = { building = industrial_complex size < 1 include_locked = no } }
 			}
 		}
-    }
+	}
 
-    war_building_slot = {
+	war_building_slot = {
 
-    	icon = generic_construction
+		icon = generic_construction
 
-        allowed = {
-            always = yes
-        }
+		allowed = {
+			always = yes
+		}
 
-        cost = 50
-        fire_only_once = no
+		cost = 50
+		fire_only_once = no
 
-        available = {
-            has_war = yes
-            any_owned_state = {
-            	NOT = { has_state_flag = war_building_slot_flag }
-            	is_fully_controlled_by = ROOT
-            }
-        }
-
-        visible = {
+		available = {
 			has_war = yes
 			any_owned_state = {
 				NOT = { has_state_flag = war_building_slot_flag }
@@ -689,14 +1621,22 @@ economy_decisions = {
 			}
 		}
 
-        complete_effect = {
-        	add_war_support = -0.025
+		visible = {
+			has_war = yes
+			any_owned_state = {
+				NOT = { has_state_flag = war_building_slot_flag }
+				is_fully_controlled_by = ROOT
+			}
+		}
+
+		complete_effect = {
+			add_war_support = -0.025
 			add_stability = -0.025
 			if = {
 				limit = {
 					any_owned_state = {
 						is_fully_controlled_by = ROOT
-            			free_building_slots = {
+						free_building_slots = {
 							building = industrial_complex
 							size > 1
 							include_locked = yes
@@ -708,7 +1648,7 @@ economy_decisions = {
 				random_owned_state = {
 					limit = {
 						is_fully_controlled_by = ROOT
-            			free_building_slots = {
+						free_building_slots = {
 							building = industrial_complex
 							size > 1
 							include_locked = yes
@@ -724,7 +1664,7 @@ economy_decisions = {
 				limit = {
 					any_owned_state = {
 						is_fully_controlled_by = ROOT
-            			free_building_slots = {
+						free_building_slots = {
 							building = industrial_complex
 							size > 1
 							include_locked = yes
@@ -736,7 +1676,7 @@ economy_decisions = {
 				random_owned_state = {
 					limit = {
 						is_fully_controlled_by = ROOT
-            			free_building_slots = {
+						free_building_slots = {
 							building = industrial_complex
 							size > 1
 							include_locked = yes
@@ -752,7 +1692,7 @@ economy_decisions = {
 				random_owned_state = {
 					limit = {
 						is_fully_controlled_by = ROOT
-            			free_building_slots = {
+						free_building_slots = {
 							building = industrial_complex
 							size > 1
 							include_locked = yes
@@ -779,7 +1719,7 @@ economy_decisions = {
 				factor = 0
 			}
 		}
-    }
+	}
 }
 
 foreign_support = {
@@ -1282,48 +2222,48 @@ foreign_support = {
 	#    #   #  #  #  ##  
 	#  # #   #  #   # #   
 	 ##  ###  ##  ##  ### 
- 	CHI_close_the_hump = {
+	CHI_close_the_hump = {
 
- 		allowed = {
- 			#Everyone
- 		}
+		allowed = {
+			#Everyone
+		}
 
- 		available = {
- 			any_state = {
- 				has_state_flag = CHI_needed_for_the_hump
- 				OR = {
- 					is_controlled_by = ROOT
- 					CONTROLLER = { is_subject_of = ROOT }
- 				}
- 			}			
- 		}
+		available = {
+			any_state = {
+				has_state_flag = CHI_needed_for_the_hump
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = { is_subject_of = ROOT }
+				}
+			}			
+		}
 
- 		visible = {
- 			is_subject = no
- 			any_country = {
- 				check_variable = { CHI_the_hump_current_level > 0 }
- 				NOT = { is_in_faction_with = ROOT }
- 				NOT = { tag = ROOT }
- 			}
- 			any_state = {
- 				has_state_flag = CHI_needed_for_the_hump
- 				OR = {
- 					is_controlled_by = ROOT
- 					CONTROLLER = { is_subject_of = ROOT }
- 				}
- 			}
- 		}
+		visible = {
+			is_subject = no
+			any_country = {
+				check_variable = { CHI_the_hump_current_level > 0 }
+				NOT = { is_in_faction_with = ROOT }
+				NOT = { tag = ROOT }
+			}
+			any_state = {
+				has_state_flag = CHI_needed_for_the_hump
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}
 
- 		fire_only_once = no
+		fire_only_once = no
 
- 		cost = 0
+		cost = 0
 
- 		modifier = {
+		modifier = {
 
- 		}
+		}
 
- 		ai_will_do = {
- 			factor = 1
+		ai_will_do = {
+			factor = 1
 			modifier = {
 				factor = 0
 				any_country = {
@@ -1350,91 +2290,91 @@ foreign_support = {
 					}
 				}
 			}
- 		}
+		}
 
- 		complete_effect = {
- 			hidden_effect = {
- 				every_state = {
- 					limit = {
- 						has_state_flag = CHI_needed_for_the_hump
- 						OR = {
- 							is_controlled_by = ROOT
- 							CONTROLLER = { is_subject_of = ROOT }
- 						}
- 					}
- 					set_state_flag = CHI_the_hump_closed_state
- 				}
- 			}
- 			random_country = {
- 				#Country that had the route
- 				limit = { check_variable = { CHI_the_hump_current_level > 0 } }
- 				hidden_effect = {					
- 					set_variable = { tempvar = 0 }
- 					subtract_from_variable = { var = tempvar value = CHI_the_hump_current_level }
+		complete_effect = {
+			hidden_effect = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_needed_for_the_hump
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = { is_subject_of = ROOT }
+						}
+					}
+					set_state_flag = CHI_the_hump_closed_state
+				}
+			}
+			random_country = {
+				#Country that had the route
+				limit = { check_variable = { CHI_the_hump_current_level > 0 } }
+				hidden_effect = {					
+					set_variable = { tempvar = 0 }
+					subtract_from_variable = { var = tempvar value = CHI_the_hump_current_level }
 
- 					add_offsite_building = { type = arms_factory level = tempvar }
- 					#In case we need to reopen
- 					set_variable = { CHI_the_hump_closed_level = CHI_the_hump_current_level }
- 					set_variable = { CHI_the_hump_current_level = 0 }
- 					clear_variable = tempvar
- 				}
- 				country_event = { id = wtt_the_hump.2 }
+					add_offsite_building = { type = arms_factory level = tempvar }
+					#In case we need to reopen
+					set_variable = { CHI_the_hump_closed_level = CHI_the_hump_current_level }
+					set_variable = { CHI_the_hump_current_level = 0 }
+					clear_variable = tempvar
+				}
+				country_event = { id = wtt_the_hump.2 }
 				custom_effect_tooltip = close_the_hump_explanation # Prints the contents of the CHI_the_hump_current_level variable
- 			}
- 		}
- 	}
+			}
+		}
+	}
 
  	###  ###  ##  ###  ### #  # 
  	#  # #   #  # #  # #   ## # 
  	###  ##  #  # ###  ##  # ## 
  	#  # #   #  # #    #   #  # 
  	#  # ###  ##  #    ### #  # 
- 	CHI_reopen_the_hump = {
+	CHI_reopen_the_hump = {
 
- 		allowed = {
- 			#Everyone
- 		}
+		allowed = {
+			#Everyone
+		}
 
- 		available = {
- 			any_state = {
- 				has_state_flag = CHI_the_hump_closed_state
- 				OR = {
- 					is_controlled_by = ROOT
- 					CONTROLLER = { is_subject_of = ROOT }
- 				}
- 			}
- 		}
+		available = {
+			any_state = {
+				has_state_flag = CHI_the_hump_closed_state
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = { is_subject_of = ROOT }
+				}
+			}
+		}
 
- 		visible = {
- 			is_subject = no
- 			any_country = {
- 				check_variable = { CHI_the_hump_closed_level > 0 }
- 				NOT = { has_war_with = ROOT }
- 			}
- 			any_state = {
- 				has_state_flag = CHI_the_hump_closed_state
- 				OR = {
- 					is_controlled_by = ROOT
- 					CONTROLLER = {
- 						OR = {
- 							is_subject_of = ROOT
- 							check_variable = { CHI_the_hump_closed_level > 0 }
- 						}
- 					}
- 				}
- 			}
- 		}
+		visible = {
+			is_subject = no
+			any_country = {
+				check_variable = { CHI_the_hump_closed_level > 0 }
+				NOT = { has_war_with = ROOT }
+			}
+			any_state = {
+				has_state_flag = CHI_the_hump_closed_state
+				OR = {
+					is_controlled_by = ROOT
+					CONTROLLER = {
+						OR = {
+							is_subject_of = ROOT
+							check_variable = { CHI_the_hump_closed_level > 0 }
+						}
+					}
+				}
+			}
+		}
 
- 		fire_only_once = no
+		fire_only_once = no
 
- 		cost = 0
+		cost = 0
 
- 		modifier = {
+		modifier = {
 
- 		}
+		}
 
- 		ai_will_do = {
- 			factor = 1
+		ai_will_do = {
+			factor = 1
 			modifier = {
 				factor = 200
 				any_country = {
@@ -1461,57 +2401,57 @@ foreign_support = {
 					}
 				}
 			}
- 		}
+		}
 
- 		complete_effect = {
- 			every_state = {
- 				limit = {
- 					has_state_flag = CHI_the_hump_closed_state
- 					OR = {
- 						is_controlled_by = ROOT
- 						CONTROLLER = {
- 							OR = {
- 								is_subject_of = ROOT
- 								check_variable = { CHI_the_hump_closed_level > 0 }
- 							}
- 						}
- 					}
- 				}
- 				custom_effect_tooltip = CHI_the_hump_reopen_state
- 				clr_state_flag = CHI_the_hump_closed_state
- 			}
+		complete_effect = {
+			every_state = {
+				limit = {
+					has_state_flag = CHI_the_hump_closed_state
+					OR = {
+						is_controlled_by = ROOT
+						CONTROLLER = {
+							OR = {
+								is_subject_of = ROOT
+								check_variable = { CHI_the_hump_closed_level > 0 }
+							}
+						}
+					}
+				}
+				custom_effect_tooltip = CHI_the_hump_reopen_state
+				clr_state_flag = CHI_the_hump_closed_state
+			}
 
- 			random_country = {
- 				limit = { check_variable = { CHI_the_hump_closed_level > 0 } }
- 				if = {
- 					limit = {
- 						any_state = {
- 							has_state_flag = CHI_the_hump_closed_state							
- 							NOT = { is_controlled_by = ROOT }
- 							CONTROLLER = {
- 								NOT = { is_subject_of = ROOT }
- 								NOT = { check_variable = { CHI_the_hump_closed_level > 0 } }
- 							}
- 						}
- 					}
- 					country_event = { id = wtt_the_hump.3 } #We opened our part of the road
- 				}
- 				else = {
- 					#Road is fully reopened
- 					if = {
- 						limit = { NOT = { tag = ROOT } }
- 						country_event = { id = wtt_the_hump.4 }
- 					}
- 					hidden_effect = {					
- 						add_offsite_building = { type = arms_factory level = CHI_the_hump_closed_level }
- 						set_variable = { CHI_the_hump_current_level = CHI_the_hump_closed_level }
- 						clear_variable = CHI_the_hump_closed_level
- 					}
+			random_country = {
+				limit = { check_variable = { CHI_the_hump_closed_level > 0 } }
+				if = {
+					limit = {
+						any_state = {
+							has_state_flag = CHI_the_hump_closed_state							
+							NOT = { is_controlled_by = ROOT }
+							CONTROLLER = {
+								NOT = { is_subject_of = ROOT }
+								NOT = { check_variable = { CHI_the_hump_closed_level > 0 } }
+							}
+						}
+					}
+					country_event = { id = wtt_the_hump.3 } #We opened our part of the road
+				}
+				else = {
+					#Road is fully reopened
+					if = {
+						limit = { NOT = { tag = ROOT } }
+						country_event = { id = wtt_the_hump.4 }
+					}
+					hidden_effect = {					
+						add_offsite_building = { type = arms_factory level = CHI_the_hump_closed_level }
+						set_variable = { CHI_the_hump_current_level = CHI_the_hump_closed_level }
+						clear_variable = CHI_the_hump_closed_level
+					}
 					custom_effect_tooltip = reopen_the_hump_explanation # Prints the contents of the CHI_the_hump_closed_level variable
- 				}
- 			}
- 		}
- 	}
+				}
+			}
+		}
+	}
 
 
 #  #  ##  #  #  ##  ###     ###   ##  #  # ### ### 
