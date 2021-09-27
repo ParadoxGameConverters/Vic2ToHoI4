@@ -290,9 +290,6 @@ add_library(Vic2World
 	${VIC2WORLD_WORLD_SOURCES}
 )
 
-file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/main.cpp")
-file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Configuration.cpp")
-file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Vic2toHOI4Converter.cpp")
 file(GLOB OUTHOI4_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/*.cpp")
 set(OUTHOI4_AI_STRATEGY_SOURCES ${OUTHOI4_AI_STRATEGY_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/AiStrategy/OutAiStrategy.cpp")
 set(OUTHOI4_COUNTRY_CATEGORIES_SOURCES ${OUTHOI4_COUNTRY_CATEGORIES_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/CountryCategories/OutCountryCategories.cpp")
@@ -325,27 +322,7 @@ file(GLOB OUTHOI4_SCRIPTED_TRIGGERS_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/Scrip
 file(GLOB OUTHOI4_SHIP_TYPES_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/ShipTypes/*.cpp")
 set(OUTHOI4_SOUNDS_SOURCES ${OUTHOI4_SOUNDS_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/Sounds/OutSounds.cpp")
 file(GLOB OUTHOI4_STATES_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/States/*.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Color.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/CommonFunctions.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ConvenientParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ConverterVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Date.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/GameVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/iconvlite.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/LinuxUtils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Log.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ModLoader/ModLoader.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ModLoader/ModParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/OSCommonLayer.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Parser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ParserHelpers.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/StringUtils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/targa.cpp")
-
-add_executable(
-	Vic2ToHoi4Converter
-	${MAIN_SOURCE}
-	${CONVERTER_SOURCES}
+add_library(OutHoI4World
 	${OUTHOI4_SOURCES}
 	${OUTHOI4_COUNTRY_CATEGORIES_SOURCES}
 	${OUTHOI4_DECISIONS_SOURCES}
@@ -373,13 +350,40 @@ add_executable(
 	${OUTHOI4_SOUNDS_SOURCES}
 	${OUTHOI4_STATES_SOURCES}
 	${OUTHOI4_VERSION}
+)
+
+file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/main.cpp")
+file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Configuration.cpp")
+file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Vic2toHOI4Converter.cpp")
+
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Color.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/CommonFunctions.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ConvenientParser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ConverterVersion.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Date.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/GameVersion.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/iconvlite.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/LinuxUtils.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Log.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ModLoader/ModLoader.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ModLoader/ModParser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/OSCommonLayer.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Parser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ParserHelpers.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/StringUtils.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/targa.cpp")
+
+add_executable(
+	Vic2ToHoi4Converter
+	${MAIN_SOURCE}
+	${CONVERTER_SOURCES}
 	${COMMON_SOURCES}
 )
 set_target_properties( Vic2ToHoi4Converter
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
-target_link_libraries(Vic2ToHoi4Converter HoI4World Vic2World Mappers ZIPLIB pthread)
+target_link_libraries(Vic2ToHoi4Converter OutHoI4World HoI4World Vic2World Mappers ZIPLIB pthread)
 
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/arabic_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/arabic_operative_codenames.txt" COPYONLY)
@@ -567,33 +571,6 @@ set(VIC2WORLD_WORLD_TESTS_SOURCES ${VIC2WORLD_WORLD_TESTS_SOURCES} "${TEST_SOURC
 add_executable(
 	Vic2ToHoi4ConverterTests
 	${CONVERTER_SOURCES}
-	${OUTHOI4_SOURCES}
-	${OUTHOI4_AI_STRATEGY_SOURCES}
-	${OUTHOI4_COUNTRY_CATEGORIES_SOURCES}
-	${OUTHOI4_DECISIONS_SOURCES}
-	${OUTHOI4_DIPLOMACY_SOURCES}
-	${OUTHOI4_EVENTS_SOURCES}
-	${OUTHOI4_GAME_RULES_SOURCES}
-	${OUTHOI4_IDEAS_SOURCES}
-	${OUTHOI4_IDEOLOGIES_SOURCES}
-	${OUTHOI4_INTELLIGENCE_AGENCIES_SOURCES}
-	${OUTHOI4_INTERFACE_SOURCES}
-	${OUTHOI4_LEADERS_SOURCES}
-	${OUTHOI4_MAP_SOURCES}
-	${OUTHOI4_MODIFIERS_SOURCES}
-	${OUTHOI4_MILITARY_SOURCES}
-	${OUTHOI4_OCCUPATION_LAWS_SOURCES}
-	${OUTHOI4_OPERATIONS_SOURCES}
-	${OUTHOI4_OPERATIVE_NAMES_SOURCES}
-	${OUTHOI4_OPERATIVE_SOURCES}
-	${OUTHOI4_NAVIES_SOURCES}
-	${OUTHOI4_SCRIPTED_EFFECTS_SOURCES}
-	${OUTHOI4_SCRIPTED_LOCALISATIONS_SOURCES}
-	${OUTHOI4_SCRIPTED_TRIGGERS_SOURCES}
-	${OUTHOI4_SHIP_TYPES_SOURCES}
-	${OUTHOI4_SOUNDS_SOURCES}
-	${OUTHOI4_STATES_SOURCES}
-	${OUTHOI4_VERSION}
 	${CONFIGURATION_TESTS_SOURCES}
 	${HOI4WORLD_TESTS_SOURCES}
 	${HOI4WORLD_COUNTRY_CATEGORIES_TESTS_SOURCES}
@@ -768,4 +745,4 @@ configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests HoI4World Vic2World Mappers ZIPLIB pthread)
+target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Vic2World Mappers ZIPLIB pthread)
