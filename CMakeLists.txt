@@ -352,6 +352,10 @@ add_library(OutHoI4World
 	${OUTHOI4_VERSION}
 )
 
+file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/main.cpp")
+file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Configuration.cpp")
+file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Vic2toHOI4Converter.cpp")
+
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Color.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/CommonFunctions.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ConvenientParser.cpp")
@@ -368,25 +372,18 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Parser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ParserHelpers.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/StringUtils.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/targa.cpp")
-add_library(Commons
-	${COMMON_SOURCES}
-)
-
-file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Configuration.cpp")
-file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Vic2toHOI4Converter.cpp")
-add_library(Converter
-	${CONVERTER_SOURCES}
-)
 
 add_executable(
 	Vic2ToHoi4Converter
-	"${PROJECT_SOURCE_DIR}/main.cpp"
+	${MAIN_SOURCE}
+	${CONVERTER_SOURCES}
+	${COMMON_SOURCES}
 )
 set_target_properties( Vic2ToHoi4Converter
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
-target_link_libraries(Vic2ToHoi4Converter Converter OutHoI4World HoI4World Vic2World Mappers Commons ZIPLIB pthread)
+target_link_libraries(Vic2ToHoi4Converter OutHoI4World HoI4World Vic2World Mappers ZIPLIB pthread)
 
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/arabic_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/arabic_operative_codenames.txt" COPYONLY)
@@ -573,6 +570,7 @@ set(VIC2WORLD_WORLD_TESTS_SOURCES ${VIC2WORLD_WORLD_TESTS_SOURCES} "${TEST_SOURC
 
 add_executable(
 	Vic2ToHoi4ConverterTests
+	${CONVERTER_SOURCES}
 	${CONFIGURATION_TESTS_SOURCES}
 	${HOI4WORLD_TESTS_SOURCES}
 	${HOI4WORLD_COUNTRY_CATEGORIES_TESTS_SOURCES}
@@ -632,6 +630,7 @@ add_executable(
 	${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES}
 	${VIC2WORLD_WAR_TESTS_SOURCES}
 	${VIC2WORLD_WORLD_TESTS_SOURCES}
+	${COMMON_SOURCES}
 	${GMOCK_SOURCES}
 )
 set_target_properties( Vic2ToHoi4ConverterTests
@@ -746,4 +745,4 @@ configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests Converter OutHoI4World HoI4World Vic2World Mappers Commons ZIPLIB pthread)
+target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Vic2World Mappers ZIPLIB pthread)
