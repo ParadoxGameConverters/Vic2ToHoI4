@@ -248,12 +248,6 @@ link = { vic = TEX hoi = TEX } # Texas
 link = { vic = URA hoi = TRA } # (Trans)uralia
 link = { vic = PAP hoi = VAT } # Papal States => Holy See
 link = { vic = WLL hoi = WLL } # Wallonia
-link = { vic = ANN hoi = U72 } # Annam
-link = { vic = ENL hoi = U73 } # England
-link = { vic = YUA hoi = U74 } # Yuan
-link = { vic = GCO hoi = U77 } # Great Colombia
-link = { vic = UCA hoi = U78 } # UPCA
-link = { vic = KAS hoi = U80 } # Kashmir
 
 link = { vic = SPQ hoi = RME } # Roman Empire
 link = { vic = HRE hoi = HRE } # Holy Roman Empire
