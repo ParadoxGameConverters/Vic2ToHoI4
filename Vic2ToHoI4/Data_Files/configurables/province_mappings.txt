@@ -275,7 +275,7 @@
 	link = { vic2 = 21 hoi4 = 12578 hoi4 = 4877 hoi4 = 7820 } # Vernon -> Nelson, Golden, Cranbrook
 	link = { comment = "# # Alberta" }
 	link = { vic2 = 22 hoi4 = 3010 hoi4 = 12166 hoi4 = 7787 hoi4 = 6754 } # Edmonton -> Edmonton, Lac la Biche, Red Deer, Whitecourt
-	link = { vic2 = 23 hoi4 = 13192 hoi4 = 7348 hoi4 = 12534 } # Athabaska Landing -> (Lake), Fort McMurray, land
+	link = { vic2 = 23 hoi4 = 7348 hoi4 = 12534 } # Athabaska Landing -> Fort McMurray, land
 	link = { vic2 = 24 hoi4 = 1347 } # Jasper -> Jasper
 	link = { vic2 = 25 hoi4 = 4765 } # Banff -> Canmore
 	link = { vic2 = 26 hoi4 = 3706 } # Calgary -> Calgary
@@ -343,7 +343,7 @@
 	link = { vic2 = 73 hoi4 = 4430 } # Cape Breton Island -> Sydney
 	link = { comment = "# # Northern Lakes" }
 	link = { vic2 = 3227 hoi4 = 8653 hoi4 = 4272 } # Great Slave Lake -> (Lake), (Lake)
-	link = { vic2 = 3228 hoi4 = 13167 hoi4 = 2976 } # Lake Athabasca -> (Lake), (Lake)
+	link = { vic2 = 3228 hoi4 = 13167 hoi4 = 2976 hoi4 = 13192 } # Lake Athabasca -> (Lake), (Lake), (Lake)
 	link = { vic2 = 3229 hoi4 = 13168 hoi4 = 13187 } # Reindeer Lake -> (Lake), (Lake)
 	link = { vic2 = 3116 hoi4 = 13159 } # Lake Superior -> (Lake)
 	link = { vic2 = 3117 hoi4 = 13161 } # Lake Nipigon -> (Lake)
