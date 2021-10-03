@@ -4881,21 +4881,17 @@ north_african = {
 		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/eastern_crown.dds"
 		"gfx/interface/ideas/crowns/egypt.dds"
-		"gfx/interface/ideas/crowns/persia.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/eastern_crown.dds"
 		"gfx/interface/ideas/crowns/egypt.dds"
-		"gfx/interface/ideas/crowns/persia.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
 }
 
 african_diaspora = {
-	cultures_and_groups = { }
+	cultures_and_groups = { african_diaspora_cultures khoisan } # I don't know where else to put Khoisan
 	
 	army_portraits = {
 		#Generic
@@ -4916,21 +4912,12 @@ african_diaspora = {
 		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_5.tga"
 		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_6.tga"
 		"gfx/leaders/Generic/Portrait_German_Africa_Generic_land_7.tga"
-		"gfx/leaders/African/Portrait_Ethiopia_Abiye_Abebe.tga"
-		"gfx/leaders/African/Portrait_Ethiopia_Kassa_Haile_Darge.tga"
-		"gfx/leaders/African/Portrait_Ethiopia_Mulugeta_Yeggazu.tga"
 		"gfx/leaders/African/Portrait_GAB_Tchorere.tga"
 		"gfx/leaders/African/Portrait_Haiti_Antonio_Kebreau.tga"
-		"gfx/leaders/African/Portrait_KIV_Louis_de_Gonzague_Bobozo.tga"
 		"gfx/leaders/African/Portrait_LIB_Alford_Russ.tga"
 		"gfx/leaders/African/Portrait_LIB_Jenkins_Yancey.tga"
 		"gfx/leaders/African/Portrait_Mittelafrika_Karl_Atanga.tga"
-		"gfx/leaders/African/Portrait_NAM_Samuel_Maharero.tga"
-		"gfx/leaders/African/Portrait_SUD_Ali_Latif.tga"
-		"gfx/leaders/African/Portrait_SUD_Ferik_Abboud.tga"
 		"gfx/leaders/African/Portrait_CSA_Oliver_Law.tga"
-		"gfx/leaders/African/Portrait_SOM_Barre.tga"
-		"gfx/leaders/African/Portrait_TOG_Alhaji.tga"
 	}
 	navy_portraits = {
 		#Generic
@@ -4939,7 +4926,6 @@ african_diaspora = {
 		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
 		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_4.dds"
 		#Other
-		"gfx/leaders/African/Portrait_CAF_Felix_Eboue.tga"
 		"gfx/leaders/African/Portrait_Haiti_John_Russell.tga"
 		"gfx/leaders/African/Portrait_LIB_James_Cooper.tga"
 		"gfx/leaders/African/Portrait_LIB_William_Carter.tga"
@@ -4950,88 +4936,52 @@ african_diaspora = {
 			"gfx/leaders/Africa/Portrait_Africa_Generic_1.dds"
 			"gfx/leaders/Africa/Portrait_Africa_Generic_4.dds"
 			"gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic_2.dds"	
-			"gfx/leaders/African/Portrait_CAF_Hegesippe_Jean_Legitimus.tga"
-			"gfx/leaders/African/Portrait_GNE_Yacine.tga"
 			"gfx/leaders/African/Portrait_Haiti_Jacques_Romain.tga"
 			"gfx/leaders/African/Portrait_LIB_Marcus_Garvey.tga"
-			"gfx/leaders/African/Portrait_SEN_Sedar.tga"
 			"gfx/leaders/African/Portrait_CSA_Bayard_Rustin.tga"
 			"gfx/leaders/African/Portrait_Haiti_Stenio_Vincent.tga"
-			"gfx/leaders/African/Portrait_SOM_Ughaz.tga"
-			"gfx/leaders/African/Portrait_TOG_Tove.tga"
 			"gfx/leaders/African/Portrait_CSA_Paul_Robeson.tga"
 		} 
 		democratic = {
 			"gfx/leaders/LIB/Portrait_LIB_edwin_barclay.dds"
 			"gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic.dds"
 			"gfx/leaders/Generic/Portrait_Africa_Generic_new_1.tga"
-			"gfx/leaders/African/Portrait_Barot_YetaIII.tga"
-			"gfx/leaders/African/Portrait_CAF_Tubal_Uriah_Butler.tga"
-			"gfx/leaders/African/Portrait_Dahomey_Soglo.tga"
 			"gfx/leaders/African/Portrait_LIB_Clarence_Simpson.tga"
 			"gfx/leaders/African/Portrait_LIB_Momolu_Massaquoi.tga"
 			"gfx/leaders/African/Portrait_LIB_William_Tubman.tga"
-			"gfx/leaders/African/Portrait_NGR_Benjamin_Azikiwe.tga"
-			"gfx/leaders/African/Portrait_SOM_Ibrahim_Sultan_Ali.tga"
-			"gfx/leaders/African/Portrait_TOG_Olympio.tga"
 		} 
 		fascism = {			
 			"gfx/leaders/Africa/Portrait_Africa_Generic_3.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_1.dds"
-			"gfx/leaders/African/Portrait_Ashanti_Kwame.tga"			
-			"gfx/leaders/African/Portrait_Burkina_Nazi_Boni.tga"
-			"gfx/leaders/African/Portrait_GUY_Hubert_Critchlow.tga"
 			"gfx/leaders/African/Portrait_Haiti_Georges_Rigaud.tga"
-			"gfx/leaders/African/Portrait_KIK_Mathenge.tga"
 			"gfx/leaders/African/Portrait_LIB_Anthony_Wilson.tga"
-			"gfx/leaders/African/Portrait_MLW_Banda.tga"
-			"gfx/leaders/African/Portrait_SOM_Osman_Yusuf_Kenadid.tga"
-			"gfx/leaders/African/Portrait_SOM_Abdirashid_Ali_Shermarke.tga"
-			"gfx/leaders/African/Portrait_TUA_Akhemuk_ag_Ihemma.tga"
 		}
 		absolutist = {
-			"gfx/leaders/ETH/Portrait_Ethiopia_Haile_Selassie.dds"
 			"gfx/leaders/African/Portrait_Burundi_Mwambutsa_Fourth.tga"
 			"gfx/leaders/African/Portrait_ERT_Sellasie.tga"
 			"gfx/leaders/African/Portrait_KBR_Shehu_Masta_II.tga"
-			"gfx/leaders/African/Portrait_Kongo_Pedro_VII_Afonso.tga"
 			"gfx/leaders/African/Portrait_KTG_Mabumba_Kitanika.tga"
 			"gfx/leaders/African/Portrait_NAM_Otto_Schimming.tga"
 			"gfx/leaders/African/Portrait_SUD_Abd_Mahdi.tga"
 			"gfx/leaders/African/Portrait_Mittelafrika_Achirimbi.tga"
 			"gfx/leaders/African/Portrait_RWA_Yuhi_V.tga"
-			"gfx/leaders/African/Portrait_SOM_Ali_Shire.tga"
-			"gfx/leaders/African/Portrait_SOM_Cismaan_III_Maxamuud.tga"			
-			"gfx/leaders/African/Portrait_Zanzibar_Sultan_Khalifa.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Moncef_Bey.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_YEM_Ahmad_bin_Yahya.tga"
 		}
 		neutrality = {
 			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
 			"gfx/leaders/Generic/Portrait_Africa_Generic_new_2.tga"
-			"gfx/leaders/African/Portrait_CAF_CLR_James.tga"
-			"gfx/leaders/African/Portrait_Dahomey_Apithy.tga"
-			"gfx/leaders/African/Portrait_Dahomey_Moumouni.tga"
 			"gfx/leaders/African/Portrait_Haiti_Elie_Lescot.tga"
 			"gfx/leaders/African/Portrait_Haiti_Frank_Lavaud.tga"
 			"gfx/leaders/African/Portrait_Haiti_Paul_Magloire.tga"
 			"gfx/leaders/African/Portrait_LIB_Frank_Tolbert.tga"
 			"gfx/leaders/African/Portrait_NAM_Hosea_Kutako.tga"
 			"gfx/leaders/African/Portrait_NAM_Leonard_Auala.tga"
-			"gfx/leaders/African/Portrait_MOR_Zayani.tga"
-			"gfx/leaders/African/Portrait_SOM_Haji_Bashir_Ismail_Yusuf.tga"
 		} 
 		radical = {
 			"gfx/leaders/Africa/Portrait_Africa_Generic_2.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_2.tga"
-			"gfx/leaders/African/Portrait_Ashanti_Addo.tga"			
-			"gfx/leaders/African/Portrait_Dahomey_Angoli.tga"
-			"gfx/leaders/African/Portrait_GAB_Leon.tga"
 			"gfx/leaders/African/Portrait_Haiti_Jean_Price_Mars.tga"
 			"gfx/leaders/African/Portrait_LIB_George_Padmore.tga"
 			"gfx/leaders/African/Portrait_NAM_Friedrich_Maharero.tga"
-			"gfx/leaders/African/Portrait_SOM_Haaji.tga"
-			"gfx/leaders/African/Portrait_SOM_Aden_Daar.tga"
 			"gfx/leaders/African/Portrait_Uganda_Musaazi.tga"
 			"gfx/leaders/African/Portrait_Uganda_Mutesa.tga"
 		}
@@ -5062,10 +5012,10 @@ african_diaspora = {
 			"gfx/leaders/ideas/idea_generic_army_africa_3.dds"
 		}
 		neutrality = {
-			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
+			"gfx/interface/ideas/idea_generic_political_advisor_africa_3.dds"
 		}
 		radical = {
-			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
+			"gfx/interface/ideas/idea_generic_army_africa_5.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -5092,10 +5042,10 @@ african_diaspora = {
 		"gfx/leaders/USA/portrait_usa_josephine_baker.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/ethiopia.dds"
+		"gfx/interface/ideas/france.dds" # Haiti
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/ethiopia.dds"
+		"gfx/interface/ideas/france.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
