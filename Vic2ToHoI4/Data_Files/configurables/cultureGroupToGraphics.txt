@@ -3723,10 +3723,10 @@ japonic = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/state_shintoism.dds"
+		"gfx/interface/goals/focus_jap_pacific_guardian.dds" # This is a shield with the Japanese flag on it
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/state_shintoism.dds"
+		"gfx/interface/goals/focus_jap_pacific_guardian.dds" # This is so it matches with Europe
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3849,10 +3849,10 @@ paleosiberian = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/state_shintoism.dds" # Revise
+		"gfx/achievements/vojtek_commander.dds" # Iomante 
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/state_shintoism.dds" # Revise
+		"gfx/achievements/vojtek_commander.dds"
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = asian_2d
@@ -6185,10 +6185,10 @@ cats = {
 		"gfx/leaders/Animalia/portrait_cat_operative_F.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/zoo.dds"
+		"gfx/interface/goals/focus_usa_tank_destroyer_doctrine.dds" # This is some kind of big cat
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/zoo.dds"
+		"gfx/interface/goals/focus_usa_tank_destroyer_doctrine.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -6648,7 +6648,7 @@ SHH_protein = {
 }
 
 animalia = {
-	culture_groups = { non_human } #Fallback, I doubt know why we havve these portraits but I found a use for them
+	culture_groups = { non_human } #Fallback, I doubt know why we have these portraits but I found a use for them
 	
 	army_portraits = {
 		"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
