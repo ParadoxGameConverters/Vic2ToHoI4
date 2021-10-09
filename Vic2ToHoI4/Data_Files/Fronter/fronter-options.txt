@@ -118,15 +118,33 @@ option = {
 	tooltip = REMOVECORESTIP
 	radioSelector = {
 		radioOption = {
-			name = yes
-			displayName = YES
-			tooltip = REMOVECORESYESTIP
+			name = extreme_removal
+			displayName = REMOVECORESEXTREME
+			tooltip = REMOVECORESEXTREMETIP
+			default = false
+		}
+		radioOption = {
+			name = remove_accepted_culture_by_owner
+			displayName = REMOVECORESACCEPTEDCULTURE
+			tooltip = REMOVECORESACCEPTEDCULTURETIP
 			default = true
 		}
 		radioOption = {
-			name = no
-			displayName = NO
-			tooltip = REMOVECORESNOTIP
+			name = remove_same_culture_as_owner
+			displayName = REMOVECORESSAMECULTURE
+			tooltip = REMOVECORESSAMECULTURETIP
+			default = false
+		}
+		radioOption = {
+			name = remove_too_little_culture
+			displayName = REMOVECORESTOOLITTLECULTURE
+			tooltip = REMOVECORESTOOLITTLECULTURETIP
+			default = false
+		}
+		radioOption = {
+			name = remove_none
+			displayName = REMOVECORESNONE
+			tooltip = REMOVECORESNONETIP
 			default = false
 		}
 	}

@@ -71,7 +71,7 @@ TEST(Vic2World_World_WorldTests, CountriesCanBeAdded)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(false)
+														  .setRemoveCores(removeCoresOptions::remove_none)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -110,7 +110,7 @@ TEST(Vic2World_World_WorldTests, EmptyCountriesCanBeRemoved)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(false)
+														  .setRemoveCores(removeCoresOptions::remove_none)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -292,7 +292,7 @@ TEST(Vic2World_World_WorldTests, WarsCanBeAdded)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(false)
+														  .setRemoveCores(removeCoresOptions::remove_none)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -315,7 +315,7 @@ TEST(Vic2World_World_WorldTests, CoresAreAssignedToCountries)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(false)
+														  .setRemoveCores(removeCoresOptions::remove_none)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -344,7 +344,7 @@ TEST(Vic2World_World_WorldTests, SimpleLandlessNationsAreRemoved)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(true)
+														  .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -368,7 +368,7 @@ TEST(Vic2World_World_WorldTests, EmployedWorkersAreAssigned)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(true)
+														  //.setRemoveCores(true)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -385,7 +385,7 @@ TEST(Vic2World_World_WorldTests, MergingNationsWorks)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("MergeWorld")
 														  .setInputFile("MergeWorld/MergeWorld.v2")
-														  .setRemoveCores(true)
+														  //.setRemoveCores(true)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -422,7 +422,7 @@ TEST(Vic2World_World_WorldTests, ConquerStrategiesAreConsolidated)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(true)
+														  //.setRemoveCores(true)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -438,7 +438,7 @@ TEST(Vic2World_World_WorldTests, ArmiesAreMovedHome)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("MoveArmiesWorld")
 														  .setInputFile("MoveArmiesWorld/MoveArmiesWorld.v2")
-														  .setRemoveCores(false)
+														  //.setRemoveCores(false)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -472,7 +472,7 @@ TEST(Vic2World_World_WorldTests, BattlesAreResolved)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("ResolveBattlesWorld")
 														  .setInputFile("ResolveBattlesWorld/ResolveBattlesWorld.v2")
-														  .setRemoveCores(false)
+														  //.setRemoveCores(false)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
