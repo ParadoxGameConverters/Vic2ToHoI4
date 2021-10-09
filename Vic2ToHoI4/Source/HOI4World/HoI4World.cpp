@@ -97,6 +97,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	auto vic2Localisations = sourceWorld.getLocalisations();
 	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration);
+	Log(LogLevel::Progress) << "28%";
 
 	theDate = std::make_unique<date>(sourceWorld.getDate());
 
@@ -118,11 +119,13 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 *hoi4Localisations,
 		 provinceMapper,
 		 theConfiguration);
+	Log(LogLevel::Progress) << "32%";
 	names = Names::Factory().getNames(theConfiguration);
 	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
 	graphicsMapper->debugPortraits(theConfiguration);
 	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
 	casusBellis = Mappers::CasusBellisFactory{}.importCasusBellis();
+	Log(LogLevel::Progress) << "36%";
 	convertCountries(sourceWorld, provinceMapper);
 	determineGreatPowers(sourceWorld);
 	governmentMapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
@@ -130,10 +133,12 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
+	Log(LogLevel::Progress) << "40%";
 	convertWars(sourceWorld, provinceMapper);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
 	theRegions = Regions::Factory().getRegions();
+	Log(LogLevel::Progress) << "44%";
 	if (theConfiguration.getDebug())
 	{
 		checkAllProvincesAssignedToRegion(*theRegions, theProvinces);
@@ -143,6 +148,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
+	Log(LogLevel::Progress) << "48%";
 	convertIndustry(theConfiguration);
 	addProvincesToHomeAreas();
 	addDominions(countryMapperFactory);
@@ -152,18 +158,21 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 sourceWorld.getProvinces(),
 		 theConfiguration.getDebug());
 	determineCoresAndClaims();
+	Log(LogLevel::Progress) << "52%";
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
 	convertDiplomacy(sourceWorld);
 	convertStrategies(sourceWorld);
 	convertTechs();
+	Log(LogLevel::Progress) << "56%";
 
 	convertCountryNames(vic2Localisations);
 	scriptedLocalisations = ScriptedLocalisations::Factory().getScriptedLocalisations();
 	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
 	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
 	hoi4Localisations->generateCustomLocalisations(*scriptedLocalisations, ideologies->getMajorIdeologies());
+	Log(LogLevel::Progress) << "60%";
 
 	militaryMappingsFile importedMilitaryMappings;
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
@@ -171,6 +180,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	scriptedEffects = std::make_unique<ScriptedEffects>(theConfiguration.getHoI4Path());
 	setupNavalTreaty();
+	Log(LogLevel::Progress) << "64%";
 
 	importLeaderTraits();
 
@@ -190,6 +200,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	events->generateGenericEvents(theConfiguration, ideologies->getMajorIdeologies());
 	events->giveGovernmentInExileEvent(createGovernmentInExileEvent(ideologies->getMajorIdeologies()));
 	theIdeas->updateIdeas(ideologies->getMajorIdeologies());
+	Log(LogLevel::Progress) << "68%";
 	theDecisions->updateDecisions(ideologies->getMajorIdeologies(),
 		 states->getProvinceToStateIDMap(),
 		 states->getDefaultStates(),
@@ -200,6 +211,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	addNeutrality(theConfiguration.getDebug());
 	addLeaders();
 	convertIdeologySupport();
+	Log(LogLevel::Progress) << "72%";
 	states->convertCapitalVPs(countries, greatPowers);
 	states->convertAirBases(countries, greatPowers);
 	factionNameMapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
@@ -218,6 +230,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	dynamicModifiers.updateDynamicModifiers(ideologies->getMajorIdeologies());
 	scriptedTriggers.importScriptedTriggers(theConfiguration);
 	updateScriptedTriggers(scriptedTriggers, ideologies->getMajorIdeologies());
+	Log(LogLevel::Progress) << "76%";
 
 	countryCategories =
 		 createCountryCategories(*countryMap, countries, ideologies->getMajorIdeologies(), theConfiguration.getDebug());

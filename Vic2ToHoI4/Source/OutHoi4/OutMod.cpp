@@ -33,12 +33,14 @@ void output(const HoI4::World& destWorld,
 	 const Mods& vic2Mods,
 	 const Configuration& theConfiguration)
 {
-	Log(LogLevel::Progress) << "45%";
+	Log(LogLevel::Progress) << "80%";
 	Log(LogLevel::Info) << "Outputting mod";
 
 	createOutputFolder(outputName);
 	createModFiles(outputName);
+	Log(LogLevel::Progress) << "85%";
 	copyFlags(destWorld.getCountries(), outputName, vic2Mods, destWorld.getMajorIdeologies());
+	Log(LogLevel::Progress) << "90%";
 	OutputWorld(destWorld, outputName, debugEnabled, theConfiguration);
 }
 

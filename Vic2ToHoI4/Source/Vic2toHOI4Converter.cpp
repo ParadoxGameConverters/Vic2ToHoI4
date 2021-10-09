@@ -25,5 +25,5 @@ void ConvertV2ToHoI4(const commonItems::ConverterVersion& converterVersion)
 		 theConfiguration->getVic2Mods(),
 		 *theConfiguration);
 	Log(LogLevel::Progress) << "100%";
-	Log(LogLevel::Info) << "* Conversion complete *";
+	Log(LogLevel::Notice) << "* Conversion complete *";
 }
