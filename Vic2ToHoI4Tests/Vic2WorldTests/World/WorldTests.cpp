@@ -553,7 +553,6 @@ TEST(Vic2World_World_WorldTests, EmployedWorkersAreAssigned)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
-														  //.setRemoveCores(true)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -570,7 +569,6 @@ TEST(Vic2World_World_WorldTests, MergingNationsWorks)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("MergeWorld")
 														  .setInputFile("MergeWorld/MergeWorld.v2")
-														  //.setRemoveCores(true)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
