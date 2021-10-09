@@ -362,6 +362,191 @@ TEST(Vic2World_World_WorldTests, SimpleLandlessNationsAreRemoved)
 }
 
 
+TEST(Vic2World_World_WorldTests, CoresAreKeptIfRemovesetToNone)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::remove_none)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province = world->getProvince(1);
+	ASSERT_TRUE(province.has_value());
+	EXPECT_TRUE((*province)->getCores().contains("NOT"));
+
+	const auto province2 = world->getProvince(2);
+	ASSERT_TRUE(province2.has_value());
+	EXPECT_TRUE((*province2)->getCores().contains("NON"));
+	EXPECT_TRUE((*province2)->getCores().contains("NOT"));
+
+	const auto province4 = world->getProvince(4);
+	ASSERT_TRUE(province4.has_value());
+	EXPECT_TRUE((*province4)->getCores().contains("NON"));
+
+	const auto province5 = world->getProvince(5);
+	ASSERT_TRUE(province5.has_value());
+	EXPECT_TRUE((*province5)->getCores().contains("NON"));
+
+	const auto province6 = world->getProvince(6);
+	ASSERT_TRUE(province6.has_value());
+	EXPECT_TRUE((*province6)->getCores().contains("NON"));
+}
+
+
+TEST(Vic2World_World_WorldTests, CoresWithoutOwnerAreRemoved)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province4 = world->getProvince(4);
+	ASSERT_TRUE(province4.has_value());
+	EXPECT_FALSE((*province4)->getCores().contains("NON"));
+}
+
+
+TEST(Vic2World_World_WorldTests, CoresWithInvalidOwnerAreRemoved)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province = world->getProvince(5);
+	ASSERT_TRUE(province.has_value());
+	EXPECT_FALSE((*province)->getCores().contains("NON"));
+}
+
+
+TEST(Vic2World_World_WorldTests, CoresWithTooLowPopulationAreRemoved)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province = world->getProvince(1);
+	ASSERT_TRUE(province.has_value());
+	EXPECT_FALSE((*province)->getCores().contains("NOT"));
+}
+
+
+TEST(Vic2World_World_WorldTests, CoresWithSameCultureAsOwnerAreNotRemovedIfOptionTooLow)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province = world->getProvince(2);
+	ASSERT_TRUE(province.has_value());
+	EXPECT_TRUE((*province)->getCores().contains("NON"));
+	EXPECT_TRUE((*province)->getCores().contains("NOT"));
+
+	const auto province6 = world->getProvince(6);
+	ASSERT_TRUE(province6.has_value());
+	EXPECT_TRUE((*province6)->getCores().contains("NON"));
+}
+
+
+TEST(Vic2World_World_WorldTests, CoresWithSameCultureAsOwnerAreRemoved)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::remove_same_culture_as_owner)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province = world->getProvince(2);
+	ASSERT_TRUE(province.has_value());
+	EXPECT_FALSE((*province)->getCores().contains("NON"));
+}
+
+
+TEST(Vic2World_World_WorldTests, CoresWithAccepctedCultureAsOwnerAreNotRemovedIfSettingTooLow)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::remove_same_culture_as_owner)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province = world->getProvince(2);
+	ASSERT_TRUE(province.has_value());
+	EXPECT_TRUE((*province)->getCores().contains("NOT"));
+
+	const auto province6 = world->getProvince(6);
+	ASSERT_TRUE(province6.has_value());
+	EXPECT_TRUE((*province6)->getCores().contains("NON"));
+}
+
+
+TEST(Vic2World_World_WorldTests, CoresWithAccepctedCultureAsOwnerAreRemoved)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province = world->getProvince(2);
+	ASSERT_TRUE(province.has_value());
+	EXPECT_FALSE((*province)->getCores().contains("NOT"));
+}
+
+
+TEST(Vic2World_World_WorldTests, CoresFromDeadNationAreNotRemovedIfSettingTooLow)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province = world->getProvince(6);
+	ASSERT_TRUE(province.has_value());
+	EXPECT_TRUE((*province)->getCores().contains("NON"));
+}
+
+
+TEST(Vic2World_World_WorldTests, CoresFromDeadNationAreRemoved)
+{
+	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+								  .importWorld(*Configuration::Builder()
+														  .setVic2Path("V2World")
+														  .setInputFile("V2World/TestWorld.v2")
+														  .setRemoveCores(removeCoresOptions::extreme_removal)
+														  .build(),
+										*Mappers::ProvinceMapper::Builder().Build());
+
+	const auto province = world->getProvince(6);
+	ASSERT_TRUE(province.has_value());
+	EXPECT_FALSE((*province)->getCores().contains("NON"));
+}
+
 TEST(Vic2World_World_WorldTests, EmployedWorkersAreAssigned)
 {
 	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
@@ -418,13 +603,10 @@ TEST(Vic2World_World_WorldTests, ProvinceMappingsAreChecked)
 
 TEST(Vic2World_World_WorldTests, ConquerStrategiesAreConsolidated)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
-								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  //.setRemoveCores(true)
-														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+	const auto world =
+		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
+					*Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
 	ASSERT_THAT(world->getCountries().at("ONE").getAI().getConsolidatedStrategies(),
@@ -438,7 +620,6 @@ TEST(Vic2World_World_WorldTests, ArmiesAreMovedHome)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("MoveArmiesWorld")
 														  .setInputFile("MoveArmiesWorld/MoveArmiesWorld.v2")
-														  //.setRemoveCores(false)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
@@ -472,7 +653,6 @@ TEST(Vic2World_World_WorldTests, BattlesAreResolved)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("ResolveBattlesWorld")
 														  .setInputFile("ResolveBattlesWorld/ResolveBattlesWorld.v2")
-														  //.setRemoveCores(false)
 														  .build(),
 										*Mappers::ProvinceMapper::Builder().Build());
 
