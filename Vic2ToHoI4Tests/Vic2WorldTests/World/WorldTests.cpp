@@ -549,12 +549,10 @@ TEST(Vic2World_World_WorldTests, CoresFromDeadNationAreRemoved)
 
 TEST(Vic2World_World_WorldTests, EmployedWorkersAreAssigned)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
-								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+	const auto world =
+		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
+					*Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
 	ASSERT_EQ(5, world->getCountries().at("ONE").getEmployedWorkers());
@@ -565,12 +563,11 @@ TEST(Vic2World_World_WorldTests, EmployedWorkersAreAssigned)
 
 TEST(Vic2World_World_WorldTests, MergingNationsWorks)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("MergeWorld").build())
-								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("MergeWorld")
-														  .setInputFile("MergeWorld/MergeWorld.v2")
-														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+	const auto world =
+		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("MergeWorld").build())
+			  .importWorld(
+					*Configuration::Builder().setVic2Path("MergeWorld").setInputFile("MergeWorld/MergeWorld.v2").build(),
+					*Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_EQ(1, world->getCountries().size());
 	ASSERT_TRUE(world->getCountries().contains("FOO"));
