@@ -358,14 +358,16 @@ void HoI4::World::convertGovernments(const Vic2::World& sourceWorld,
 	 bool debug)
 {
 	Log(LogLevel::Info) << "\tConverting governments";
-	for (auto country: countries)
+	std::mt19937 femaleChanceGenerator;
+	for (auto& country: countries | std::views::values)
 	{
-		country.second->convertGovernment(sourceWorld,
+		country->convertGovernment(sourceWorld,
 			 *governmentMapper,
 			 vic2Localisations,
 			 *hoi4Localisations,
 			 *graphicsMapper,
 			 *names,
+			 femaleChanceGenerator,
 			 debug);
 	}
 }

@@ -42,6 +42,7 @@
 #include <map>
 #include <memory>
 #include <optional>
+#include <random>
 #include <set>
 #include <string>
 #include <vector>
@@ -97,6 +98,7 @@ class Country
 		 Localisation& hoi4Localisations,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
+		 std::mt19937& femaleChanceGenerator,
 		 bool debug);
 	void convertParties(const std::set<std::string>& majorIdeologies,
 		 const Mappers::IdeologyMapper& ideologyMapper,
@@ -300,7 +302,8 @@ class Country
 	void convertLeaders(const Vic2::Country& sourceCountry);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
-		 Localisation& hoi4Localisations);
+		 Localisation& hoi4Localisations,
+		 std::mt19937& femaleChanceGenerator);
 	void convertRelations(const Mappers::CountryMapper& countryMap,
 		 const Vic2::Country& sourceCountry,
 		 const date& startDate);

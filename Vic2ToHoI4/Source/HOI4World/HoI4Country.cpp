@@ -263,6 +263,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	 Localisation& hoi4Localisations,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names,
+	 std::mt19937& femaleChanceGenerator,
 	 bool debug)
 {
 	if (rulingParty == std::nullopt)
@@ -289,7 +290,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	}
 
 	convertLaws();
-	convertMonarchIdea(graphicsMapper, names, hoi4Localisations);
+	convertMonarchIdea(graphicsMapper, names, hoi4Localisations, femaleChanceGenerator);
 }
 
 
@@ -439,7 +440,8 @@ void HoI4::Country::convertLeaders(const Vic2::Country& sourceCountry)
 
 void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names,
-	 Localisation& hoi4Localisations)
+	 Localisation& hoi4Localisations,
+	 std::mt19937& femaleChanceGenerator)
 {
 	if (!hasMonarchIdea())
 	{
@@ -449,7 +451,7 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 	std::optional<std::string> firstName;
 	std::optional<std::string> surname = lastDynasty;
 
-	bool female = false; // todo(#897): Add chance of female monarchs
+	bool female = std::uniform_int_distribution{1, 20}(femaleChanceGenerator) == 20;
 	if (female)
 	{
 		firstName = names.getFemaleName(primaryCulture);
@@ -1318,8 +1320,8 @@ void HoI4::Country::convertStockpile()
 	sourceCountryGoods["fuel"] -= fuel_supply_required_for_light_armor * armorSupply;
 
 	// convert supply into artillery equipment via artillery_brigade
-	std::set<float> artillerySupplyLevels{
-		 getSourceCountryGoodAmount("artillery") / artillery_supply_required_for_artillery,
+	std::set<float> artillerySupplyLevels{getSourceCountryGoodAmount("artillery") /
+															artillery_supply_required_for_artillery,
 		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_artillery};
 	const auto artillerySupply = *std::min_element(artillerySupplyLevels.begin(), artillerySupplyLevels.end());
 	if (const auto artillery = divisionTypesAndAmounts.find("artillery_brigade");
@@ -1333,8 +1335,8 @@ void HoI4::Country::convertStockpile()
 	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_artillery * artillerySupply;
 
 	// convert supply into infantry equipment via infantry
-	std::set<float> infantrySupplyLevels{
-		 getSourceCountryGoodAmount("small_arms") / small_arms_supply_required_for_infantry,
+	std::set<float> infantrySupplyLevels{getSourceCountryGoodAmount("small_arms") /
+														  small_arms_supply_required_for_infantry,
 		 getSourceCountryGoodAmount("ammunition") / ammunition_supply_required_for_infantry,
 		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_infantry};
 	const auto infantrySupply = *std::min_element(infantrySupplyLevels.begin(), infantrySupplyLevels.end());
@@ -1348,8 +1350,8 @@ void HoI4::Country::convertStockpile()
 	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_infantry * infantrySupply;
 
 	// convert supply into infantry equipment via cavalry
-	std::set<float> cavalrySupplyLevels{
-		 getSourceCountryGoodAmount("small_arms") / small_arms_supply_required_for_cavalry,
+	std::set<float> cavalrySupplyLevels{getSourceCountryGoodAmount("small_arms") /
+														 small_arms_supply_required_for_cavalry,
 		 getSourceCountryGoodAmount("ammunition") / ammunition_supply_required_for_cavalry,
 		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_cavalry};
 	const auto cavalrySupply = *std::min_element(cavalrySupplyLevels.begin(), cavalrySupplyLevels.end());
