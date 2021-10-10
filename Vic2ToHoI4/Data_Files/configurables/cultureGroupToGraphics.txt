@@ -4009,7 +4009,7 @@ japonic = {
 }
 
 paleosiberian = {
-	cultures_and_groups = { ainu eskaleut }
+	cultures_and_groups = { ainu eskaleut inuit }
 	
 	army_portraits = {
 		#Generic Asian
@@ -4488,8 +4488,8 @@ north_american_native = {
 	graphical_culture_2d = southamerican_2d
 }
 
-central_american_native = {
-	culture_groups = { native_central_american native_carribean }
+other_south_american_native = {
+	culture_groups = { tupi tupinamba guarani amazonian je araucanian patagonian guajiro chacoan native_carribean }
 	
 	army_portraits = {
 		#Generic
@@ -4598,6 +4598,12 @@ mesoamerican_andean = {
 		"gfx/leaders/Central_American_Native/Portrait_ELS_general_Maximiliano_Martinez.tga"
 		"gfx/leaders/South_American_Native/portrait_nat_south_fascist.dds" 
 		"gfx/leaders/South_American_Native/portrait_nat_south_absolutist.dds"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_1.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_2.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_3.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_4.dds"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_5.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_6.tga"
 	}
 	navy_portraits = {
 		#Generic
@@ -4637,6 +4643,8 @@ mesoamerican_andean = {
 			"gfx/leaders/Central_American_Native/portrait_Apocalypto_absolutist.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_absolutist.dds"
 			"gfx/leaders/South_American_Native/Portrait_Bolivia_Carlos_Quiroga.tga"
+			"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_3.tga"
+			"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_6.tga"
 		}
 		neutrality = {
 			"gfx/leaders/South_American_Native/portrait_nat_south_neutral.tga"
@@ -5433,10 +5441,10 @@ cushitic_omotic_nilotic = {
 		"gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/ethiopia.dds" 
+		"gfx/interface/ideas/crowns/ethiopia_emblem.dds" 
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/ethiopia.dds"
+		"gfx/interface/ideas/crowns/ethiopia_emblem.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
