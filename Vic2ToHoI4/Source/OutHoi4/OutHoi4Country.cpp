@@ -429,6 +429,7 @@ void outputPuppets(std::ostream& output,
 	 const std::string& governmentIdeology,
 	 const std::map<std::string, std::string>& puppets,
 	 const std::shared_ptr<HoI4::Country> puppetMaster);
+void outputAlliances(std::ostream& output, const std::set<std::string>& allies);
 void outputPolitics(std::ostream& output,
 	 const std::string& governmentIdeology,
 	 const date& lastElection,
@@ -499,6 +500,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		 theCountry.areElectionsAllowed(),
 		 theCountry.getIdeologySupport());
 	outputPuppets(output, tag, governmentIdeology, theCountry.getPuppets(), theCountry.getPuppetMaster());
+	outputAlliances(output, theCountry.getAllies());
 	outputRelations(output, tag, theCountry.getRelations());
 	outputFactions(output, tag, theCountry.getFaction());
 	outputIdeas(output,
@@ -664,6 +666,7 @@ void outputPolitics(std::ostream& output,
 	output << "\n";
 }
 
+
 void outputPuppets(std::ostream& output,
 	 const std::string& tag,
 	 const std::string& governmentIdeology,
@@ -727,6 +730,17 @@ void outputPuppets(std::ostream& output,
 		output << "\n";
 		output << "    add_to_tech_sharing_group = " << puppetMaster->getTag() << "_research\n";
 		output << "}\n\n";
+	}
+}
+
+
+void outputAlliances(std::ostream& output, const std::set<std::string>& allies)
+{
+	for (const auto& ally: allies)
+	{
+		output << "give_guarantee = " << ally << "\n";
+		output << "diplomatic_relation = { country = " << ally << " relation = non_aggression_pact }\n";
+		output << "\n";
 	}
 }
 
