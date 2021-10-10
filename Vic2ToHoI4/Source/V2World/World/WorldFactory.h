@@ -33,8 +33,10 @@ class World::Factory: commonItems::parser
 	void setGreatPowerStatus();
 	void setProvinceOwners();
 	void addProvinceCoreInfoToCountries();
-	void removeSimpleLandlessNations();
-	[[nodiscard]] bool shouldCoreBeRemoved(const Province& core, const Country& country) const;
+	void removeSimpleLandlessNations(removeCoresOptions option);
+	[[nodiscard]] bool shouldCoreBeRemoved(const Province& core,
+		 const Country& country,
+		 removeCoresOptions option) const;
 	void determineEmployedWorkers();
 	void removeEmptyNations();
 	void addWarsToCountries(const std::vector<War>& wars);

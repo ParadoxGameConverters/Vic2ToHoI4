@@ -780,36 +780,57 @@ TEST(ConfigurationTests, DebugCanBeSetToNo)
 }
 
 
-TEST(ConfigurationTests, RemoveCoresDefaultsToYes)
+TEST(ConfigurationTests, RemoveCoresDefaultsToAcceptedCulture)
 {
 	std::stringstream input;
 	const commonItems::ConverterVersion converterVersion;
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
 
-	ASSERT_TRUE(theConfiguration->getRemoveCores());
+	ASSERT_EQ(removeCoresOptions::remove_accepted_culture_by_owner, theConfiguration->getRemoveCores());
 }
 
 
-TEST(ConfigurationTests, RemoveCoresCanBeSetToNo)
+TEST(ConfigurationTests, RemoveCoresCanBeSetToRemoveAcceptedCulture)
 {
 	std::stringstream input;
-	input << R"(remove_cores = "no")";
+	input << R"(remove_cores = "remove_accepted_culture_by_owner")";
 	const commonItems::ConverterVersion converterVersion;
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
 
-	ASSERT_FALSE(theConfiguration->getRemoveCores());
+	ASSERT_EQ(removeCoresOptions::remove_accepted_culture_by_owner, theConfiguration->getRemoveCores());
 }
 
 
-TEST(ConfigurationTests, RemoveCoresCanBeSetToYes)
+TEST(ConfigurationTests, RemoveCoresCanBeSetToRemoveTooLittleCulture)
 {
 	std::stringstream input;
-	input << "remove_cores = \"no\"\n";
-	input << R"(remove_cores = "yes")";
+	input << R"(remove_cores = "remove_too_little_culture")";
 	const commonItems::ConverterVersion converterVersion;
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
 
-	ASSERT_TRUE(theConfiguration->getRemoveCores());
+	ASSERT_EQ(removeCoresOptions::remove_too_little_culture, theConfiguration->getRemoveCores());
+}
+
+
+TEST(ConfigurationTests, RemoveCoresCanBeSetToRemoveSameCulture)
+{
+	std::stringstream input;
+	input << R"(remove_cores = "remove_same_culture_as_owner")";
+	const commonItems::ConverterVersion converterVersion;
+	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
+
+	ASSERT_EQ(removeCoresOptions::remove_same_culture_as_owner, theConfiguration->getRemoveCores());
+}
+
+
+TEST(ConfigurationTests, RemoveCoresCanBeSetToRemoveNone)
+{
+	std::stringstream input;
+	input << R"(remove_cores = "remove_none")";
+	const commonItems::ConverterVersion converterVersion;
+	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
+
+	ASSERT_EQ(removeCoresOptions::remove_none, theConfiguration->getRemoveCores());
 }
 
 

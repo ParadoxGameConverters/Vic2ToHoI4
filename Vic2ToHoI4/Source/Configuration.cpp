@@ -126,15 +126,30 @@ Configuration::Factory::Factory()
 	});
 	registerKeyword("remove_cores", [this](std::istream& theStream) {
 		const commonItems::singleString removeCoresValue(theStream);
-		if (removeCoresValue.getString() == "no")
+		if (removeCoresValue.getString() == "remove_none")
 		{
-			configuration->removeCores = false;
+			configuration->removeCores = removeCoresOptions::remove_none;
 			Log(LogLevel::Info) << "\tDisabling remove cores";
 		}
-		else
+		else if (removeCoresValue.getString() == "remove_too_little_culture")
 		{
-			configuration->removeCores = true;
-			Log(LogLevel::Info) << "\tEnabling remove cores";
+			configuration->removeCores = removeCoresOptions::remove_too_little_culture;
+			Log(LogLevel::Info) << "\tRemoving cores with too little accepted culture";
+		}
+		else if (removeCoresValue.getString() == "remove_same_culture_as_owner")
+		{
+			configuration->removeCores = removeCoresOptions::remove_same_culture_as_owner;
+			Log(LogLevel::Info) << "\tRemoving cores with the same culture as the owner";
+		}
+		else if (removeCoresValue.getString() == "remove_accepted_culture_by_owner")
+		{
+			configuration->removeCores = removeCoresOptions::remove_accepted_culture_by_owner;
+			Log(LogLevel::Info) << "\tRemoving cores where the owner accepts the culture";
+		}
+		else // if (removeCoresValue.getString() == "extreme_removal")
+		{
+			configuration->removeCores = removeCoresOptions::extreme_removal;
+			Log(LogLevel::Info) << "\tRemoving cores wherever appropriate";
 		}
 	});
 	registerKeyword("create_factions", [this](std::istream& theStream) {

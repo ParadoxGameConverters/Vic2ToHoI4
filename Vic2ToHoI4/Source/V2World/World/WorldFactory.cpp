@@ -95,10 +95,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	setGreatPowerStatus();
 	setProvinceOwners();
 	addProvinceCoreInfoToCountries();
-	if (theConfiguration.getRemoveCores())
-	{
-		removeSimpleLandlessNations();
-	}
+	removeSimpleLandlessNations(theConfiguration.getRemoveCores());
 	determineEmployedWorkers();
 	overallMergeNations(theConfiguration.getDebug());
 	removeEmptyNations();
@@ -176,8 +173,13 @@ void Vic2::World::Factory::addProvinceCoreInfoToCountries()
 }
 
 
-void Vic2::World::Factory::removeSimpleLandlessNations()
+void Vic2::World::Factory::removeSimpleLandlessNations(removeCoresOptions option)
 {
+	if (option == removeCoresOptions::remove_none)
+	{
+		return;
+	}
+
 	Log(LogLevel::Info) << "\tRemoving simple landless nations";
 	for (auto& [tag, country]: world->countries)
 	{
@@ -189,7 +191,7 @@ void Vic2::World::Factory::removeSimpleLandlessNations()
 		std::vector<std::shared_ptr<Province>> coresToKeep;
 		for (auto& core: country.getCores())
 		{
-			if (shouldCoreBeRemoved(*core, country))
+			if (shouldCoreBeRemoved(*core, country, option))
 			{
 				core->removeCore(tag);
 			}
@@ -209,7 +211,9 @@ void Vic2::World::Factory::removeSimpleLandlessNations()
 
 
 constexpr double ACCEPTED_CULTURE_THRESHOLD = 0.25;
-bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core, const Country& country) const
+bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core,
+	 const Country& country,
+	 removeCoresOptions option) const
 {
 	if (core.getOwner().empty())
 	{
@@ -221,20 +225,35 @@ bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core, const Count
 	{
 		return true;
 	}
-	if (country.getPrimaryCulture() == owner->second.getPrimaryCulture())
-	{
-		return true;
-	}
-	if (owner->second.isAnAcceptedCulture(country.getPrimaryCulture()))
-	{
-		return true;
-	}
+
 	if (core.getPercentageWithCultures(country.getAcceptedCultures()) < ACCEPTED_CULTURE_THRESHOLD)
 	{
 		return true;
 	}
+	if (option == removeCoresOptions::remove_too_little_culture)
+	{
+		return false;
+	}
 
-	return false;
+	if (country.getPrimaryCulture() == owner->second.getPrimaryCulture())
+	{
+		return true;
+	}
+	if (option == removeCoresOptions::remove_same_culture_as_owner)
+	{
+		return false;
+	}
+
+	if (owner->second.isAnAcceptedCulture(country.getPrimaryCulture()))
+	{
+		return true;
+	}
+	if (option == removeCoresOptions::remove_accepted_culture_by_owner)
+	{
+		return false;
+	}
+
+	return true; // extreme removal
 }
 
 

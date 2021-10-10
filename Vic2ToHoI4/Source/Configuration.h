@@ -19,6 +19,15 @@ enum class ideologyOptions
 	keep_default
 };
 
+enum class removeCoresOptions
+{
+	remove_none,
+	remove_too_little_culture,
+	remove_same_culture_as_owner,
+	remove_accepted_culture_by_owner,
+	extreme_removal
+};
+
 
 
 class Configuration
@@ -65,7 +74,7 @@ class Configuration
 	ideologyOptions ideologiesOptions = ideologyOptions::keep_major;
 	std::vector<std::string> specifiedIdeologies{"neutrality"};
 	bool debug = false;
-	bool removeCores = true;
+	removeCoresOptions removeCores = removeCoresOptions::remove_accepted_culture_by_owner;
 	bool createFactions = true;
 	float percentOfCommanders = 0.05F;
 
@@ -122,7 +131,7 @@ class Configuration::Builder
 		configuration->inputFile = std::move(inputFile);
 		return *this;
 	}
-	Builder& setRemoveCores(bool removeCores)
+	Builder& setRemoveCores(removeCoresOptions removeCores)
 	{
 		configuration->removeCores = removeCores;
 		return *this;

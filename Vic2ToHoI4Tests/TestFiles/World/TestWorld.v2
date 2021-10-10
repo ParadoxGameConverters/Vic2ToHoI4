@@ -18,6 +18,14 @@ great_nations={ 1 42 }
 		size = 5
 		test_culture=test_religion
 	}
+	farmers={
+		size = 5
+		other_culture=test_religion
+	}
+	farmers={
+		size = 5
+		third_culture=test_religion
+	}
 }
 3 = {
 	owner="HUH"
@@ -31,7 +39,7 @@ great_nations={ 1 42 }
 }
 6 = {
 	owner="ONE"	# core is not removed (owner has land)
-	core="NON"	# core is not removed (survives all removal conditions)
+	core="NON"	# core is not removed except for extreme (survives all removal conditions)
 	farmers={
 		size = 5
 		other_culture=test_religion
