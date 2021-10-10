@@ -480,7 +480,7 @@ TEST(Vic2World_World_WorldTests, CoresWithSameCultureAsOwnerAreRemoved)
 }
 
 
-TEST(Vic2World_World_WorldTests, CoresWithAccepctedCultureAsOwnerAreNotRemovedIfSettingTooLow)
+TEST(Vic2World_World_WorldTests, CoresWithAcceptedCultureAsOwnerAreNotRemovedIfSettingTooLow)
 {
 	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
 								  .importWorld(*Configuration::Builder()
@@ -500,7 +500,7 @@ TEST(Vic2World_World_WorldTests, CoresWithAccepctedCultureAsOwnerAreNotRemovedIf
 }
 
 
-TEST(Vic2World_World_WorldTests, CoresWithAccepctedCultureAsOwnerAreRemoved)
+TEST(Vic2World_World_WorldTests, CoresWithAcceptedCultureAsOwnerAreRemoved)
 {
 	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
 								  .importWorld(*Configuration::Builder()
