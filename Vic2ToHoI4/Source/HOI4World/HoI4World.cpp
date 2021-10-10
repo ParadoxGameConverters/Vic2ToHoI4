@@ -500,7 +500,7 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		}
 	}
 
-	for (auto country: countries)
+	for (auto& country: countries)
 	{
 		if (country.second->getStates().size() > 0)
 		{
@@ -508,6 +508,17 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		}
 		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
 		country.second->setCapitalRegionFlag(*theRegions);
+
+		auto possibleCapitalState = country.second->getCapitalState();
+		if (!possibleCapitalState)
+		{
+			return;
+		}
+		auto& modifiableStates = states->getModifiableStates();
+		if (auto capital = modifiableStates.find(*possibleCapitalState); capital != modifiableStates.end())
+		{
+			capital->second.addCores({country.first});
+		}
 	}
 }
 
@@ -604,6 +615,17 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 
 		dominion->determineBestCapital(states->getStates());
 		dominion->setCapitalRegionFlag(*theRegions);
+
+		auto possibleCapitalState = dominion->getCapitalState();
+		if (!possibleCapitalState)
+		{
+			return;
+		}
+		auto& modifiableStates = states->getModifiableStates();
+		if (auto capital = modifiableStates.find(*possibleCapitalState); capital != modifiableStates.end())
+		{
+			capital->second.addCores({dominionTag});
+		}
 	}
 }
 
@@ -720,6 +742,17 @@ void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countr
 
 		nation->determineBestCapital(states->getStates());
 		nation->setCapitalRegionFlag(*theRegions);
+
+		auto possibleCapitalState = nation->getCapitalState();
+		if (!possibleCapitalState)
+		{
+			return;
+		}
+		auto& modifiableStates = states->getModifiableStates();
+		if (auto capital = modifiableStates.find(*possibleCapitalState); capital != modifiableStates.end())
+		{
+			capital->second.addCores({nationTag});
+		}
 	}
 }
 
