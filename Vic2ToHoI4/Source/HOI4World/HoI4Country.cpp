@@ -1320,8 +1320,7 @@ void HoI4::Country::convertStockpile()
 	sourceCountryGoods["fuel"] -= fuel_supply_required_for_light_armor * armorSupply;
 
 	// convert supply into artillery equipment via artillery_brigade
-	std::set<float> artillerySupplyLevels{getSourceCountryGoodAmount("artillery") /
-															artillery_supply_required_for_artillery,
+	std::set artillerySupplyLevels{getSourceCountryGoodAmount("artillery") / artillery_supply_required_for_artillery,
 		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_artillery};
 	const auto artillerySupply = *std::min_element(artillerySupplyLevels.begin(), artillerySupplyLevels.end());
 	if (const auto artillery = divisionTypesAndAmounts.find("artillery_brigade");
@@ -1335,8 +1334,7 @@ void HoI4::Country::convertStockpile()
 	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_artillery * artillerySupply;
 
 	// convert supply into infantry equipment via infantry
-	std::set<float> infantrySupplyLevels{getSourceCountryGoodAmount("small_arms") /
-														  small_arms_supply_required_for_infantry,
+	std::set infantrySupplyLevels{getSourceCountryGoodAmount("small_arms") / small_arms_supply_required_for_infantry,
 		 getSourceCountryGoodAmount("ammunition") / ammunition_supply_required_for_infantry,
 		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_infantry};
 	const auto infantrySupply = *std::min_element(infantrySupplyLevels.begin(), infantrySupplyLevels.end());
@@ -1350,8 +1348,7 @@ void HoI4::Country::convertStockpile()
 	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_infantry * infantrySupply;
 
 	// convert supply into infantry equipment via cavalry
-	std::set<float> cavalrySupplyLevels{getSourceCountryGoodAmount("small_arms") /
-														 small_arms_supply_required_for_cavalry,
+	std::set cavalrySupplyLevels{getSourceCountryGoodAmount("small_arms") / small_arms_supply_required_for_cavalry,
 		 getSourceCountryGoodAmount("ammunition") / ammunition_supply_required_for_cavalry,
 		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_cavalry};
 	const auto cavalrySupply = *std::min_element(cavalrySupplyLevels.begin(), cavalrySupplyLevels.end());
