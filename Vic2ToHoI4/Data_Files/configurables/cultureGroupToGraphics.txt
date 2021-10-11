@@ -1599,6 +1599,181 @@ mediterranean = {
 	graphical_culture_2d = western_european_2d
 }
 
+magyar = {
+	culture_groups = { hungarian_culture_group }
+	
+	army_portraits = {
+		#Generic European
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_19.dds"
+		#Other
+		"gfx/leaders/Balkans/Portrait_HUN_Karoly_Beregfy.tga"
+		"gfx/leaders/Balkans/Portrait_HUN_Janky_Kocsard.tga"
+		"gfx/leaders/HUN/Portrait_Hungary_Miklos_Horthy.dds"
+		"gfx/leaders/HUN/portrait_lajos_veress.dds"
+	}
+	navy_portraits = {
+		#Generic European
+		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		#Other
+		"gfx/leaders/Balkans/Portrait_Austria_Miklos_Horthy.tga"
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_2.tga"
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_3.tga"
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_4.tga"
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_5.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"
+			"gfx/leaders/Europe/portrait_europe_generic_8.dds"
+			"gfx/leaders/HUN/Portrait_Hungary_Matyas_Rakoski.dds"
+			"gfx/leaders/HUN/portrait_karoly_beregfy.dds"
+			"gfx/leaders/HUN/Portrait_bela_kun.dds"
+		} 
+		democratic = {
+			"gfx/leaders/Europe/portrait_europe_generic_5.dds"
+			"gfx/leaders/ROM/Portrait_Romania_Armand_Calinescu.dds"
+			"gfx/leaders/Balkans/Portrait_Romania_Sever_Bocu.dds"
+		} 
+		fascism = {
+			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
+			"gfx/leaders/HUN/portrait_ivan_hindy.dds"
+			"gfx/leaders/HUN/portrait_ferenc_feketehalmy_czeydner.dds"
+		} 
+		absolutist = {
+			"gfx/leaders/Europe/Portrait_europe_generic_7.dds"
+			"gfx/leaders/HUN/Portrait_Hungary_Miklos_Horthy.dds"
+			"gfx/leaders/HUN/portrait_geza_lakatos.dds"
+		} 
+		neutrality = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
+			"gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Grol.dds"
+		} 
+		radical = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+			"gfx/leaders/Europe/portrait_europe_generic_4.dds"
+			"gfx/leaders/Balkans/Slobodan_Jovanovic.tga"
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		}
+		monarch = {
+			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Holland_Juliana.tga"
+		}
+		ideological_leader = {
+			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
+			"gfx/leaders/Western_European/Female/Portrait_Britain_Felicia_Browne.tga"
+			"gfx/leaders/Western_European/Female/Portrait_England_Sylvia_Pankhurst.tga"
+			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
+			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_hun_laszlo_rajk.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_hun_shvoy_kalman.dds"
+			"gfx/leaders/ideas/idea_hun_zoltan_tildy.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_hun_gyula_gombos_de_jakfa.dds"
+			"gfx/leaders/ideas/idea_hun_jozsef_szell.dds"
+		}
+		absolutist = {
+			"gfx/leaders/ideas/idea_hun_gusztav_gratz.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_hun_kalman_kanya.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_hun_sandor_magyarossy.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_11.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_12.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_25.dds"
+		"gfx/leaders/SOV/portrait_sov_alexander_rado.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_11.dds" #No 12
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_25.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/hungary_shield.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/hungary_shield.dds"
+	}
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
+}
+
 balkans = {
 	culture_groups = { south_slavic pan_albanian pan_romanian balkan hungarian_culture_group czecho_slovak_culture_group }
 	
