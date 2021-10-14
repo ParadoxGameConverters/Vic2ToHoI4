@@ -4865,11 +4865,21 @@ other_south_american_native = {
 	army_portraits = {
 		#Generic
 		#Other		
-
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_1.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_2.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_3.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_4.dds"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_5.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_6.tga"
 	}
 	navy_portraits = {
 		#Generic
 		#Other
+		"gfx/leaders/Central_American_Native/Portrait_PAN_Boris_Salazar.tga"
+		"gfx/leaders/Central_American_Native/Portrait_Ramon_Vasquez_Rivera.tga"
+		"gfx/leaders/South_American_Native/portrait_nat_south_radical.dds"
+		"gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds"
+		"gfx/leaders/Central_American_Native/Portrait_Ramon_Vasquez_Rivera.tga"
 	}
 	leader_portraits = {
 		communism = {
@@ -5100,7 +5110,7 @@ mesoamerican_andean = {
 }
 
 hispanic = {
-	culture_groups = { latin_american_cultures }
+	cultures_and_groups = { latin_american_cultures }
 	
 	army_portraits = {
 		#Generic
@@ -5383,11 +5393,9 @@ north_african = {
 		"gfx/leaders/Arabic_Persian/Portrait_Oman_Suleiman_Ryami.tga"
 		"gfx/leaders/Arabic_Persian/Portrait_PAL_al_Husayni.tga"
 		"gfx/leaders/Arabic_Persian/Portrait_PAL_Hasan_Salama.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_Persia_Amanollah_Jahanbani.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_Persia_Amir_Ahmadi.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_Persia_Bahram_Aryiana.tga"
 		"gfx/leaders/Arabic_Persian/Portrait_SYR_Sami_Al_Hinawi.tga"
 		"gfx/leaders/Arabic_Persian/Portrait_YEM_Ali_Nasser_Al-Qardai.tga"
+		"gfx/leaders/SPA/portrait_spa_mohamed_meziane.dds"
 	}
 	navy_portraits = {
 		#Generic Middle Eastern
@@ -5405,8 +5413,6 @@ north_african = {
 			"gfx/leaders/Arabic_Persian/Portrait_KUR_Haji_Baba.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_LBA_Nuri_Al_Khikia.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_MOR_Ali_Yata.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Persia_Avetis_Soltanzade.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Persia_Iraj_Eskandari.tga"
 		} 
 		democratic = {
 			"gfx/leaders/JOR/Portrait_Arabia_Generic_democratic1.dds"
@@ -5417,8 +5423,6 @@ north_african = {
 			"gfx/leaders/Arabic_Persian/Portrait_PAL_Abraham.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_PAL_Alami.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_PAL_Nashashibi.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Persia_Ahmad_Qavam.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Persia_Mohammad_Ali_Foroughi.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_SYR_Sabri.tga"
 		} 
 		fascism = {
@@ -5449,11 +5453,7 @@ north_african = {
 			"gfx/leaders/Arabic_Persian/Portrait_KUR_Mahmud_Barzanji.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Oman_Talib_Hina.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Oman_Said_Ibn_Taimur.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Afgahnistan_Habibullah_Khan.dds"
-			"gfx/leaders/Arabic_Persian/Portrait_Afghan_Mohammed_Zahir.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_MOR_El_Glaui.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Persia_Ahmad_Shah_Qajar.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Persia_Hassan_Mirza_Qajar.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Saudi_Arabia_Abdulazis_Ibn_Saud.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Saudi_Arabia_Khalid_bin_Abdulaziz_Al_Saud.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Moncef_Bey.tga"
@@ -5493,10 +5493,10 @@ north_african = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"gfx/interface/ideas/idea_generic_communist_arab.dds"
+			"gfx/interface/ideas/idea_tur_sevket_sureyya_aydemir.dds"
 		}
 		democratic = {
-			"gfx/interface/ideas/idea_generic_democratic_arab.dds"
+			"gfx/interface/ideas/idea_tur_recep_peker.dds"
 		}
 		fascism = {
 			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
@@ -5505,7 +5505,7 @@ north_african = {
 			"gfx/leaders/ideas/idea_generic_army_arab_3.dds" #Revise
 		}
 		neutrality = {
-			"gfx/interface/ideas/idea_tur_sukru_saracoglu.dds"
+			"gfx/interface/ideas/idea_generic_political_advisor_arab_2.dds"
 		}
 		radical = {
 			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
@@ -6965,22 +6965,22 @@ canine = {
 		}
 	ideology_minister_portraits = {
 		communism = {
-			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+			"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf.dds"
 		}
 		democratic = {
-			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+			"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf.dds"
 		}
 		fascism = {
-			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+			"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf.dds"
 		}
 		absolutist = {
-			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+			"gfx/interface/ideas/idea_eng_corgis_1.dds"
 		}
 		neutrality = {
-			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+			"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf.dds"
 		}
 		radical = {
-			"gfx/interface/goals/goal_generic_wolf_pack.dds"
+			"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -6990,10 +6990,10 @@ canine = {
 		"gfx/leaders/Animalia/Female/portrait_dog_operative_F.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf.dds"
+		"gfx/interface/ideas/idea_eng_corgis_2.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf.dds"
+		"gfx/interface/ideas/idea_eng_corgis_3.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
