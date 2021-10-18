@@ -56,6 +56,12 @@ jobs:
       run: |
        chmod u+x build_Vic2ToHoI4_release.sh
        ./build_Vic2ToHoI4_release.sh
+       
+    - name: Collect Code Coverage
+      run: |
+       lcov -c -o test.info -d .
+       genhtml test.info -o result
+       bash <(curl -s https://codecov.io/bash) -f test.info || echo "Codecov did not collect coverage reports"
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
@@ -115,6 +121,8 @@ jobs:
        sudo apt-get update
        sudo apt-get install gcc-11 g++-11
        sudo apt-get install libwxbase3.1-0-unofficial3 libwxbase3.1unofficial3-dev libwxgtk3.1-0-unofficial3 libwxgtk3.1unofficial3-dev wx3.1-headers wx-common
+       sudo apt install libgtest-dev
+       sudo apt-get install lcov
        # Link gcc-11 and g++-11 to their standard commands
        sudo ln -s /usr/bin/gcc-11 /usr/local/bin/gcc
        sudo ln -s /usr/bin/g++-11 /usr/local/bin/g++
@@ -126,18 +134,9 @@ jobs:
        # Run your build commands next
        chmod u+x build_Vic2ToHoI4_release_foreign.sh
        ./build_Vic2ToHoI4_release_foreign.sh
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
-
-  coverage:
-    name: Collect Code Coverage
-    if: github.repository_owner == 'ParadoxGameConverters'
-    runs-on: [self-hosted, linux]
-
-    steps:
-    - name: Collect Code Coverage
-      run: |
        lcov -c -o test.info -d .
        genhtml test.info -o result
        bash <(curl -s https://codecov.io/bash) -f test.info || echo "Codecov did not collect coverage reports"
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
