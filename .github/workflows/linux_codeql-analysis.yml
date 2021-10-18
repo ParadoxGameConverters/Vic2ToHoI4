@@ -129,3 +129,15 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+
+  coverage:
+    name: Collect Code Coverage
+    if: github.repository_owner == 'ParadoxGameConverters'
+    runs-on: [self-hosted, linux]
+
+    steps:
+    - name: Collect Code Coverage
+      run: |
+       lcov -c -o test.info -d .
+       genhtml test.info -o result
+       bash <(curl -s https://codecov.io/bash) -f test.info || echo "Codecov did not collect coverage reports"

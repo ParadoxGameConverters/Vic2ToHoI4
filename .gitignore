@@ -15,3 +15,5 @@ changelog.txt
 .vs/
 packages/
 Debug_x64.json
+test.info
+result/

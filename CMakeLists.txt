@@ -9,7 +9,7 @@ set(TEST_SOURCE_DIR ${CMAKE_SOURCE_DIR}/Vic2ToHoI4Tests)
 set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Linux)
 set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Linux/Vic2ToHoI4)
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Release-Tests)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -g -O0 -Wall -fprofile-arcs --coverage")
 
 add_compile_options("-std=c++20")
 add_compile_options("-lstdc++fs")
@@ -745,4 +745,4 @@ configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Vic2World Mappers ZIPLIB pthread)
+target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Vic2World Mappers ZIPLIB pthread -fprofile-arcs -lgcov)
