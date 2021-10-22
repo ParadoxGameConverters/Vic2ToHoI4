@@ -292,7 +292,7 @@ std::optional<tga_image*> HoI4::createDominionFlag(const std::string& hoi4Suffix
 			const auto sourceHeight = (*ownerSourceFlag)->height;
 			const auto sourceWidth = (*ownerSourceFlag)->width;
 
-			const auto verticalStartLine = sizeY - (sourceHeight / 2);
+			const auto verticalStartLine = sizeY - ((sourceHeight + 1) / 2);
 			for (int y = 0; y < sourceHeight; y += 2)
 			{
 				for (int x = 0; x < sourceWidth; x += 2)
