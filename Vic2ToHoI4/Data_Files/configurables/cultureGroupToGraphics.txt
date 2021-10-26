@@ -4590,7 +4590,7 @@ lemonade_stand = {
 }
 
 indian_calvary = {
-	culture_groups = { elephant_culture }
+	cultures_and_groups = { elephant_culture }
 	
 	army_portraits = {
 		"gfx/leaders/Animalia/portrait_elephant_leader.dds"
@@ -4667,7 +4667,7 @@ indian_calvary = {
 }
 
 SHH_protein = {
-	culture_groups = { hedgehog_culture }
+	cultures_and_groups = { hedgehog_culture }
 	
 	army_portraits = {
 		"gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
@@ -4744,7 +4744,7 @@ SHH_protein = {
 }
 
 animalia = {
-	culture_groups = { non_human } #Fallback, I doubt know why we have these portraits but I found a use for them
+	cultures_and_groups = { non_human } #Fallback, I doubt know why we have these portraits but I found a use for them
 	
 	army_portraits = {
 		"gfx/leaders/Animalia/portrait_red_panda_leader.dds"
