@@ -4149,7 +4149,7 @@ deathbringers = {
 }
 
 silhoutte_o = {
-	cultures_and_groups = { uninhabited }
+	cultures_and_groups = { unrecognized }
 	
 	army_portraits = {
 		"gfx/leaders/leader_unknown.dds"
