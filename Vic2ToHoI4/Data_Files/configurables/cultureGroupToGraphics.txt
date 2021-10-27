@@ -4176,17 +4176,18 @@ silhoutte_o = {
 		radical = {
 			"gfx/leaders/leader_marshall_unknown.dds" # Get it? Since the portrait is flipped because it's rad? Guys?
 		}
-		female_portraits = {
-			military = {
-				"gfx/leaders/leader_unknown_female.dds"
-			}
-			monarch = {
-				"gfx/leaders/leader_unknown_female.dds"
-			}
-			ideological_leader = {
-				"gfx/leaders/leader_unknown_female.dds"
-			}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/leader_unknown_female.dds"
 		}
+		monarch = {
+			"gfx/leaders/leader_unknown_female.dds"
+		}
+		ideological_leader = {
+			"gfx/leaders/leader_unknown_female.dds"
+		}
+	}
 	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/spr_anarchist_society.dds"
