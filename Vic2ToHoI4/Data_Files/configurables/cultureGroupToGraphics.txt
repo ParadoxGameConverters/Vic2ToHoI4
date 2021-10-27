@@ -4412,6 +4412,7 @@ canine = {
 		ideological_leader = {
 			"gfx/leaders/Animalia/Female/portrait_dog_leader_F.dds"
 		}
+	}
 	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_tur_golden_age_of_the_wolf.dds"
