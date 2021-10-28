@@ -4070,7 +4070,7 @@ romantic_barbarian = {
 }
 
 deathbringers = {
-	cultures_and_groups = { anti_human }
+	cultures_and_groups = { alien }
 	
 	army_portraits = {
 		#01000100 01100101 01100001 01110100 01101000
@@ -4143,6 +4143,157 @@ deathbringers = {
 	}
 	female_monarch_portraits = {
 		"gfx/interface/ideas/crowns/eldritch.dds"
+	}
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
+}
+
+silhoutte_o = {
+	cultures_and_groups = { unrecognized }
+	
+	army_portraits = {
+		"gfx/leaders/leader_unknown.dds"
+	}
+	navy_portraits = {
+		"gfx/leaders/leader_unknown.dds"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		democratic = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		fascism = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		absolutist = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		neutrality = {
+			"gfx/leaders/leader_unknown.dds"
+		}
+		radical = {
+			"gfx/leaders/leader_marshall_unknown.dds" # Get it? Since the portrait is flipped because it's rad? Guys?
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/leader_unknown_female.dds"
+		}
+		monarch = {
+			"gfx/leaders/leader_unknown_female.dds"
+		}
+		ideological_leader = {
+			"gfx/leaders/leader_unknown_female.dds"
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/operative_unknown.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/operative_unknown.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/spr_anarchist_society.dds"
+	}
+	female_monarch_portaits = {
+		"gfx/interface/ideas/spr_anarchist_society.dds"
+	}
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = african_2d
+}
+the_portraitless = {
+	cultures_and_groups = { undead }
+	
+	army_portraits = {
+		"tools/art/portrait_leader_background.png"
+	}
+	navy_portraits = {
+		"tools/art/portrait_leader_background.png"
+	}
+	leader_portraits = {
+		communism = {
+			"tools/art/portrait_leader_background.png"
+		}
+		democratic = {
+			"tools/art/portrait_leader_background.png"
+		}
+		fascism = {
+			"tools/art/portrait_leader_background.png"
+		}
+		absolutist = {
+			"tools/art/portrait_leader_background.png"
+		}
+		neutrality = {
+			"tools/art/portrait_leader_background.png"
+		}
+		radical = {
+			"tools/art/portrait_leader_background.png"
+		}
+	}
+	female_portraits = {
+		military = {
+			"tools/art/portrait_leader_background.png"
+		}
+		monarch = {
+			"tools/art/portrait_leader_background.png"
+		}
+		ideological_leader = {
+			"tools/art/portrait_leader_background.png"
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/spr_anarchist_society.dds"
+		}
+	}
+	male_operative_portraits = {
+		"tools/art/portrait_operative_background.png"
+	}
+	female_operative_portraits = {
+		"tools/art/portrait_operative_background.png"
+	}
+	male_monarch_portraits = {
+		"gfx/achievements/brains.dds"
+	}
+	female_monarch_portaits = {
+		"gfx/achievements/brains.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
