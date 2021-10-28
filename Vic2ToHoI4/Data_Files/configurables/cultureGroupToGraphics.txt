@@ -4217,7 +4217,7 @@ silhoutte_o = {
 	male_monarch_portraits = {
 		"gfx/interface/ideas/spr_anarchist_society.dds"
 	}
-	female_monarch_portaits = {
+	female_monarch_portraits = {
 		"gfx/interface/ideas/spr_anarchist_society.dds"
 	}
 	graphical_culture = southamerican_gfx
@@ -4292,7 +4292,7 @@ the_portraitless = {
 	male_monarch_portraits = {
 		"gfx/achievements/brains.dds"
 	}
-	female_monarch_portaits = {
+	female_monarch_portraits = {
 		"gfx/achievements/brains.dds"
 	}
 	graphical_culture = western_european_gfx
