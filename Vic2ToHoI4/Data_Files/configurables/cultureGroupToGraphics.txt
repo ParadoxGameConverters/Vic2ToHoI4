@@ -2829,7 +2829,7 @@ north_american_native = {
 		
 	ideology_minister_portraits = {
 		communism = {
-			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+			"gfx/interface/ideas/idea_generic_political_advisor_asia_3.dds"
 		}
 		democratic = {
 			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
@@ -2838,13 +2838,13 @@ north_american_native = {
 			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/idea_francisco_franco.dds"
+			"gfx/interface/ideas/idea_mex_alberto_pani.dds"
 		}
 		neutrality = {
-			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+			"gfx/interface/ideas/idea_mex_luis_montes_de_oca.dds"
 		}
 		radical = {
-			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+			"gfx/interface/ideas/idea_generic_army_asia_6.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -2866,17 +2866,17 @@ north_american_native = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_female_5.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/brazil.dds"
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/brazil.dds"
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
 }
 
 central_american_native = {
-	cultures_and_groups = { native_central_american native_carribean }
+	cultures_and_groups = { native_central_american }
 	
 	army_portraits = {
 		#Generic
@@ -2894,37 +2894,35 @@ central_american_native = {
 	leader_portraits = {
 		communism = {
 			"gfx/leaders/CUB/portrait_cub_jose_barnet.dds"
-			"gfx/leaders/Central_American_Native/portrait_nat_carib_communist.dds"
+			"gfx/leaders/South_American_Native/portrait_nat_south_communist.dds" #Revise
 			"gfx/leaders/Central_American_Native/portrait_Apocalypto_communist.dds"
 		} 
 		democratic = {
 			"gfx/leaders/Generic/r56_portrait_generic_politician_south_america_1.dds"
-			"gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.dds" #Revise
 			"gfx/leaders/Central_American_Native/portrait_Apocalypto_democratic.dds"
 			"gfx/leaders/Central_American_Native/Portrait_HON_Jose_Maria_Moncada.tga"
 		} 
 		fascism = {
 			"gfx/leaders/ARG/portrait_south_america_generic_leader_1.dds"
 			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
-			"gfx/leaders/HAI/portrait_hai_stenio_vincent.dds"
-			"gfx/leaders/Central_American_Native/portrait_nat_carib_fascist.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_fascist.dds" #Revise
 			"gfx/leaders/Central_American_Native/portrait_Apocalypto_fascist.dds"
 		}
 		absolutist = {
-			"gfx/leaders/Central_American_Native/portrait_nat_carib_absolutist.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_absolutist.dds" #Revise
 			"gfx/leaders/Central_American_Native/portrait_Apocalypto_absolutist.dds"
 		}
 		neutrality = {
 			"gfx/leaders/CHL/portrait_chl_arturo_alessandri.dds"
 			"gfx/leaders/HON/portrait_hon_tiburcio_carias_andino.dds"
-			"gfx/leaders/Central_American_Native/portrait_nat_carib_neutral.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_neutral.dds" #Revise
 			"gfx/leaders/Central_American_Native/portrait_Apocalypto_neutral.dds"
 		} 
 		radical = {
 			"gfx/leaders/ECU/portrait_ecu_federico_paez.dds"
-			"gfx/leaders/Central_American_Native/portrait_nat_carib_radical.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_radical.dds" #Revise
 			"gfx/leaders/Central_American_Native/portrait_Apocalypto_radical.dds"
-			"gfx/leaders/Central_American_Native/Portrait_Haiti_Jacques_Romain.tga"
 			"gfx/leaders/Central_American_Native/Portrait_COS_Teodoro_Picado_Michalski.tga"
 		}
 	}
@@ -2945,7 +2943,7 @@ central_american_native = {
 		
 	ideology_minister_portraits = {
 		communism = {
-			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+			"gfx/interface/ideas/idea_generic_political_advisor_asia_3.dds"
 		}
 		democratic = {
 			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
@@ -2954,13 +2952,13 @@ central_american_native = {
 			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/idea_francisco_franco.dds"
+			"gfx/interface/ideas/idea_mex_alberto_pani.dds"
 		}
 		neutrality = {
-			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+			"gfx/interface/ideas/idea_mex_luis_montes_de_oca.dds"
 		}
 		radical = {
-			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+			"gfx/interface/ideas/idea_generic_army_asia_6.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -2985,17 +2983,17 @@ central_american_native = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/brazil.dds"
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/brazil.dds"
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
 }
 
 south_american_native = {
-	cultures_and_groups = { native_south_american }
+	cultures_and_groups = { native_south_american native_carribean }
 	
 	army_portraits = {
 		#Generic
@@ -3015,14 +3013,16 @@ south_american_native = {
 	leader_portraits = {
 		communism = {
 			"gfx/leaders/ELS/portrait_els_maximiliano_hernandez_martinez.dds"
-			"gfx/leaders/generic/r56_portrait_generic_politician_south_america_1.dds"			
+			"gfx/leaders/generic/r56_portrait_generic_politician_south_america_1.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_communist.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_communist.dds"			
 			"gfx/leaders/south_american_native/portrait_fop_micaela_feldman.tga"			
 		} 
 		democratic = {
 			"gfx/leaders/COL/portrait_col_alfonso_lopez_pumarejo.dds"
 			"gfx/leaders/HON/portrait_hon_tiburcio_carias_andino.dds"
-			"gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds"		
+			"gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds"	
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.dds"
 			"gfx/leaders/South_American_Native/QCH_Pahacutec.tga"
 		} 
 		fascism = {
@@ -3030,10 +3030,11 @@ south_american_native = {
 			"gfx/leaders/CHL/portrait_chl_arturo_alessandri.dds"
 			"gfx/leaders/PAN/portrait_pan_harmodio_arias_madrid.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_fascist.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_fascist.dds"
 		}
 		absolutist = {
-			"gfx/leaders/central_american_native/portrait_nat_carib_absolutist.dds" #Revise
-			"gfx/leaders/central_american_native/portrait_nat_carib_democratic.dds" #Revise
+			"gfx/leaders/central_american_native/portrait_nat_carib_absolutist.dds" 
+			"gfx/leaders/central_american_native/portrait_nat_carib_democratic.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_absolutist.dds"
 			"gfx/leaders/South_American_Native/Portrait_Bolivia_Carlos_Quiroga.tga"
 		}
@@ -3041,11 +3042,13 @@ south_american_native = {
 			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
 			"gfx/leaders/ECU/portrait_ecu_federico_paez.dds"
 			"gfx/leaders/south_american_native/portrait_nat_south_neutral.dds"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_neutral.dds"
 		} 
 		radical = {
 			"gfx/leaders/CUB/portrait_cub_jose_barnet.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_radical.dds"
 			"gfx/leaders/South_American_Native/Portrait_Columbia_Mariano_Ospina.tga"
+			"gfx/leaders/Central_American_Native/portrait_nat_carib_radical.dds"
 		}
 	}
 	female_portraits = {
@@ -3065,7 +3068,7 @@ south_american_native = {
 		
 	ideology_minister_portraits = {
 		communism = {
-			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
+			"gfx/interface/ideas/idea_generic_political_advisor_asia_3.dds"
 		}
 		democratic = {
 			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
@@ -3074,13 +3077,13 @@ south_american_native = {
 			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/idea_francisco_franco.dds"
+			"gfx/interface/ideas/idea_mex_alberto_pani.dds"
 		}
 		neutrality = {
-			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+			"gfx/interface/ideas/idea_mex_luis_montes_de_oca.dds"
 		}
 		radical = {
-			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+			"gfx/interface/ideas/idea_generic_army_asia_6.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -3105,10 +3108,10 @@ south_american_native = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/brazil.dds"
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/brazil.dds"
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
@@ -3367,10 +3370,10 @@ hispanic = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/brazil.dds"
+		"gfx/interface/ideas/crowns/brazil_shield.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/brazil.dds"
+		"gfx/interface/ideas/crowns/brazil_shield.dds"
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
