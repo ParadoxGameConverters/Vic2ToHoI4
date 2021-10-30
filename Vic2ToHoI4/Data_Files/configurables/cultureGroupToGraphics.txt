@@ -3664,7 +3664,7 @@ cushitic_omotic_nilotic = {
 }
 
 niger_congo = {
-	cultures_and_groups = { central_african chewa nyasa herero lomwe makua nguni southern_bantu ovimbundu sena shona sotho tonga tswana xhosa yao zulu azande baganda kikuyu nuba ruanda rundi sukuma kilombero lacustrine_bantu akan bambara dyula ewe fon fulbe ibibio itsekari ibo kru mande western_nigritic mossi gur senufo songhai tiv wolof yoruba east_kwa fur swahili unyamwezi edo }
+	cultures_and_groups = { central_african chewa nyasa herero lomwe makua nguni southern_bantu ovimbundu sena shona sotho tonga tswana xhosa yao zulu azande baganda kikuyu nuba ruanda rundi sukuma kilombero lacustrine_bantu akan bambara dyula ewe fon fulbe ibibio itsekari ibo kru mande western_nigritic mossi gur senufo songhai tiv wolof yoruba east_kwa fur swahili unyamwezi edo malagasy } # Move Malagasy later
 	army_portraits = {
 		#Generic
 		"gfx/leaders/Africa/Portrait_Africa_Generic_land_1.dds"	
@@ -4036,7 +4036,7 @@ african = {
 }
 
 classical_latin = {
-	cultures_and_groups = { romantic }
+	cultures_and_groups = { romantic gothic_g barbarian } # Move gothic_g and barbarian later
 	army_portraits = {
 		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
 		"gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
