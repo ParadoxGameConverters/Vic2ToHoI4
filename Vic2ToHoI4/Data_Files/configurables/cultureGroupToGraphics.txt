@@ -2815,8 +2815,8 @@ japonic = {
 			"gfx/interface/ideas/idea_kingoro_hashimoto.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_hideki_tojo.dds"
-			"gfx/leaders/ideas/idea_jap_hirohito.dds"
+			"gfx/interface/ideas/idea_hideki_tojo.dds"
+			"gfx/interface/ideas/idea_jap_hirohito.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
@@ -2939,7 +2939,7 @@ australia_melanesia_madagascar = {
 			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_generic_army_africa_3.dds"
+			"gfx/interface/ideas/idea_generic_army_africa_3.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_generic_political_advisor_africa_3.dds"
@@ -3065,7 +3065,7 @@ polynesia_micronesia = {
 			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_generic_political_advisor_south_america_2.dds"
+			"gfx/interface/ideas/idea_generic_political_advisor_south_america_2.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
@@ -3851,7 +3851,7 @@ north_african = {
 			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_generic_army_arab_3.dds" #Revise
+			"gfx/interface/ideas/idea_generic_army_arab_3.dds" #Revise
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_generic_political_advisor_arab_2.dds"
@@ -3968,7 +3968,7 @@ cushitic_omotic_nilotic = {
 			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_generic_army_africa_3.dds"
+			"gfx/interface/ideas/idea_generic_army_africa_3.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_generic_political_advisor_africa_3.dds"
@@ -4133,7 +4133,7 @@ niger_congo = {
 			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_generic_army_africa_3.dds"
+			"gfx/interface/ideas/idea_generic_army_africa_3.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_generic_political_advisor_africa_3.dds"
