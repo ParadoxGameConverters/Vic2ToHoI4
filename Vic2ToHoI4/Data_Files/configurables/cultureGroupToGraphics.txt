@@ -2595,6 +2595,7 @@ paleosiberian = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
 			"gfx/leaders/JAP/Portrait_Japan_Generic_2.dds"
 		}
+	}
 	female_portraits = {
 		military = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
