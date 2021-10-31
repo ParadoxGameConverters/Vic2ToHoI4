@@ -3231,8 +3231,12 @@ central_american_native = {
 	navy_portraits = {
 		#Generic
 		#Other
-		"gfx/leaders/Central_American_Native/Portrait_Ramon_Vasquez_Rivera.tga"
-		"gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds" #Revise
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_1.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_2.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_3.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_4.dds"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_5.tga"
+		"gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_6.tga"
 	}
 	leader_portraits = {
 		communism = {
