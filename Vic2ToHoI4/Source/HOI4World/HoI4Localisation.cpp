@@ -478,6 +478,16 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 			 ideology,
 			 vic2Localisations.getTextInEachLanguage(region + "_ADJ"),
 			 articleRules);
+
+		const auto& tags = std::make_pair(ownerOldTag, tag);
+		if (!addNeutralLocalisation(tags, "", "_DEF", vic2Localisations, articleRules))
+		{
+			Log(LogLevel::Warning) << "Could not find plain localisation for " << tags.first;
+		}
+		if (!addNeutralLocalisation(tags, "_ADJ", "", vic2Localisations, articleRules))
+		{
+			Log(LogLevel::Warning) << "Could not find plain adjective localisation for " << tags.first;
+		}
 	}
 }
 
