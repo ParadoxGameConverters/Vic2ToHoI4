@@ -2663,7 +2663,7 @@ paleosiberian = {
 }
 
 japonic = {
-	cultures_and_groups = { far_east_asian } # Fallback
+	cultures_and_groups = { far_east_asian japanese } # Acts as a fallback in addition
 	
 	army_portraits = {
 		#Generic Asian
