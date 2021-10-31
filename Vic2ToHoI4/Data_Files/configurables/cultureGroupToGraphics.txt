@@ -2631,6 +2631,7 @@ paleosiberian = {
 			"gfx/interface/ideas/idea_hino_kumazo.dds"
 			"gfx/interface/ideas/idea_fushimi_hiroyasu.dds"
 		}
+	}
 	male_operative_portraits = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_male_1.dds"
 		"gfx/leaders/Asia/portrait_asia_generic_operative_male_2.dds"
