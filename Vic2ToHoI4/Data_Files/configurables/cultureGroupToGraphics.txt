@@ -2535,6 +2535,7 @@ tungustic = {
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds"
 			"gfx/leaders/Sino/Portrait_FNG_Shen_Honglie.tga"
 		}
+	}
 	female_portraits = {
 		military = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
