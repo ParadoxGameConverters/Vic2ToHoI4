@@ -76,9 +76,7 @@ class Localisation
 		 const ArticleRules& articleRules);
 	void createGeneratedDominionLocalisations(const std::string& tag,
 		 const Country& dominion,
-		 const std::string& ownerOldTag,
 		 const Vic2::Localisations& vic2Localisations,
-		 const Mappers::CountryNameMapper& countryNameMapper,
 		 const std::set<std::string>& majorIdeologies,
 		 const ArticleRules& articleRules);
 	void createUnrecognizedNationLocalisations(const std::string& tag,
