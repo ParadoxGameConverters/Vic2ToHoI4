@@ -294,7 +294,7 @@ void HoI4::Localisation::addLocalisationsInAllLanguages(const std::string& destT
 		auto newKey = destTag;
 		if (!HoI4GovernmentIdeology.empty())
 		{
-		 newKey += "_" + HoI4GovernmentIdeology;
+			newKey += "_" + HoI4GovernmentIdeology;
 		}
 		newKey += vic2Suffix;
 		addLocalisation(newKey,
