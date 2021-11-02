@@ -421,7 +421,7 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 			 "_ADJ",
 			 "",
 			 ideology,
-			 vic2Localisations.getTextInEachLanguage(region + "_ADJ"),
+			 vic2Localisations.getTextInEachLanguage("dom_" + region + "_ADJ"),
 			 articleRules);
 	}
 }
