@@ -1970,10 +1970,10 @@ asian_steppe = {
 		"gfx/leaders/CHI/portrait_man_yoshiko_kawashima.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/eastern_crown.dds"
+		"gfx/interface/ideas/crowns/bhutan.dds" # Revise
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/eastern_crown.dds"
+		"gfx/interface/ideas/crowns/bhutan.dds" # Revise
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
