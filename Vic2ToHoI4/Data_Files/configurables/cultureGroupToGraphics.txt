@@ -1692,8 +1692,135 @@ arabic_persian = {
 	graphical_culture_2d = middle_eastern_2d
 }
 
+tibetian_burman_karenic = {
+	cultures_and_groups = { burmese miao yi karen kachin tibetan }
+
+	army_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_AOG_Generic_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_1.tga"
+		"gfx/leaders/Indian/Portrait_Burma_Smith_Dun.tga"
+	}
+	navy_portraits = {
+		#Generic Asian
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
+		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
+		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_2.tga"
+		"gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_3.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_GEA_Rudolph_Firle.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_1.dds"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds"
+			"gfx/leaders/Indian/Portrait_Burma_Ba_Cho.tga"
+			"gfx/leaders/Asian_Steppe/Portrait_XSM_Sun_Lianguang.tga"
+		} 
+		democratic = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"		
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_DEI_Palar.tga"
+		} 
+		fascism = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
+			"gfx/leaders/Asia/portrait_asia_generic_4.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds"
+			"gfx/leaders/Indian/Portrait_Burma_Pe_Maung_Tin.tga"
+		} 
+		absolutist = {
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Shan_Sao_Shwe_Thaik.tga"
+			"gfx/leaders/BHU/portrait_bhu_jigme_wangchuk.dds"
+			"gfx/leaders/TIB/Portrait_Tibet_Jamphel_Yeshe_Gyaltsen.dds"
+			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
+		}
+		neutrality = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_fascism.dds"
+			"gfx/leaders/GXC/Portrait_Guanxi_Clique_Li_Zongren.dds"
+			"gfx/leaders/YUN/portrait_yun_long_yun.dds"
+		} 
+		radical = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Burma_Ba_Cho.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Portrait_Burma_Maung_Gyi.tga"
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Female/Portrait_Burma_Myat_Paya_Lat.tga"
+		}
+		monarch = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Female/Portrait_Burma_Myat_Paya_Lat.tga"
+		}
+		ideological_leader = {
+			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
+			"gfx/leaders/Indo_Chinese_Nesia/Female/Portrait_Burma_Myat_Paya_Lat.tga"
+			"gfx/leaders/Indo_Chinese_Nesia/Female/Portrait_Burma_Daw_Mya_Sein.tga"
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_army_asia_1.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/idea_china_luo_ruiqing.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_tur_sukru_saracoglu.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/India/portrait_india_generic_operative_male_1.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_2.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_3.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_4.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_male_5.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/India/portrait_india_generic_operative_female_1.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_female_2.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_female_3.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_female_4.dds"
+		"gfx/leaders/India/portrait_india_generic_operative_female_5.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/bhutan.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/bhutan.dds"
+	}
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
+}
+
+	
 asian_steppe = {
-	cultures_and_groups = { central_asian }
+	cultures_and_groups = { central_asian } # Fallback, will move most cultures out of here later
 	
 	army_portraits = {
 		#Generic Asian
@@ -1710,7 +1837,6 @@ asian_steppe = {
 		"gfx/leaders/Generic/Portrait_Asia_Generic_land_new_2.tga"
 		"gfx/leaders/Asian_Steppe/Portrait_ALO_Bauyrzhan_Momyshuly.tga"
 		"gfx/leaders/Asian_Steppe/Portrait_FNG_Wan_Fulin.tga"
-		"gfx/leaders/Asian_Steppe/Portrait_FNG_Zhang_Haipeng.tga"
 		"gfx/leaders/Asian_Steppe/Portrait_FNG_Ma_Zhanshan.tga"
 		"gfx/leaders/Asian_Steppe/Portrait_SIB_Aleksey_Grishin_Almazov.tga"
 		"gfx/leaders/Asian_Steppe/Portrait_XSM_Ma_Dunjing.tga"
@@ -1737,24 +1863,17 @@ asian_steppe = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_1.dds"
 			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
 			"gfx/leaders/MON/portrait_mon_anandyn_amar.dds"
-			"gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds"
 			"gfx/leaders/Asian_Steppe/Zhumabay_Shayakhmetov.tga"
-			"gfx/leaders/Asian_Steppe/Portrait_SIB_Vadim_Podbelsky.tga"
-			"gfx/leaders/tan/portrait_tan_salchak_toka.dds"
-			"gfx/leaders/Asian_Steppe/Portrait_UZB_Usman_Yusupov.tga"
-			"gfx/leaders/Asian_Steppe/Portrait_XSM_Sun_Lianguang.tga"
 		} 
 		democratic = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
-			"gfx/leaders/KAZ/portrait_kaz_nikolay_skvortsov.dds"
 			"gfx/leaders/Generic/Portrait_Asia_Generic_new_2.tga"
 			"gfx/leaders/Generic/Portrait_Asia_Generic_new_3.tga"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds"
 			"gfx/leaders/Asian_Steppe/Portrait_UZB_Yoldashbay_Babayev.tga"
-			"gfx/leaders/African/Portrait_SOM_Ibrahim_Sultan_Ali.tga"
 		} 
 		fascism = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
@@ -1762,18 +1881,13 @@ asian_steppe = {
 			"gfx/leaders/MEN/portrait_men_demchugdongrub.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds"
-			"gfx/leaders/Asian_Steppe/Portrait_Mongolia_Sternberg.tga"
-			"gfx/leaders/Asian_Steppe/Portrait_SIK_Muhammed_Amin_Bughra.tga"			
+			"gfx/leaders/Asian_Steppe/Portrait_Mongolia_Sternberg.tga"			
 		} 
 		absolutist = {
-			"gfx/leaders/BHU/portrait_bhu_jigme_wangchuk.dds"
-			"gfx/leaders/MAN/Portrait_Manchuria_Henry_Pu_Yi.dds"
-			"gfx/leaders/NEP/portrait_nep_juddah_rana.dds"
-			"gfx/leaders/TIB/Portrait_Tibet_Jamphel_Yeshe_Gyaltsen.dds"
 			"gfx/leaders/Asian_Steppe/portrait_MON_Gengis_Khan.dds"
 			"gfx/leaders/Asian_Steppe/Portrait_FNG_Zhang_Zuolin.tga"
-			"gfx/leaders/Asian_Steppe/Portrait_China_Pujie.tga"
 			"gfx/leaders/Asian_Steppe/Portrait_SIK_Hoja_Niyaz_Haji.tga"
+			"gfx/leaders/MEN/portrait_men_demchugdongrub.dds"
 		}
 		neutrality = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_fascism.dds"
@@ -1820,10 +1934,10 @@ asian_steppe = {
 			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
 		}
 		fascism = {
-			"gfx/interface/ideas/idea_tur_nejdet_sancar.dds"
+			"gfx/interface/ideas/idea_generic_army_asia_1.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/idea_generic_army_asia_1.dds" #Revise
+			"gfx/interface/ideas/idea_china_luo_ruiqing.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_tur_sukru_saracoglu.dds"
@@ -1866,7 +1980,7 @@ asian_steppe = {
 }
 
 indian = {
-	cultures_and_groups = { south_asian indo_iranian }
+	cultures_and_groups = { south_asian indo_iranian gypsy asian_minor nepali } # Double Fallback
 	
 	army_portraits = {
 		#Generic Indian
@@ -1885,7 +1999,6 @@ indian = {
 		"gfx/leaders/Indian/Portrait_PRF_Ishar_Singh.tga"
 		"gfx/leaders/Indian/Portrait_PRF_Haque.tga"
 		"gfx/leaders/Indian/Portrait_PRF_El_Edroos.tga"
-		"gfx/leaders/Indian/Portrait_Burma_Smith_Dun.tga"
 		"gfx/leaders/Indian/Portrait_DEH_Maharaja_Rajendrasinhji_Jadeja.tga"
 		"gfx/leaders/Indian/Portrait_DEH_Malik_Khizar_Hayat_Tiwana.tga"
 		"gfx/leaders/Indian/Portrait_Nepal_Tribhuvana.tga"
@@ -1902,7 +2015,6 @@ indian = {
 			"gfx/leaders/Generic/Portrait_India_Generic_new_2.tga"
 			"gfx/leaders/Indian/Portrait_BHC_M_N_Roy.tga"
 			"gfx/leaders/Indian/Portrait_BHC_Shripad_Amrit_Dange.tga"
-			"gfx/leaders/Indian/Portrait_Burma_Ba_Cho.tga"
 		}
 		democratic = {
 			"gfx/leaders/RAJ/Portrait_The_Raj_Political_Leader_Generic_2.dds"
@@ -1919,7 +2031,6 @@ indian = {
 			"gfx/leaders/Indian/Portrait_Princely_Osman_Ali_Khan.tga"
 			"gfx/leaders/Indian/Portrait_PRF_Singhji.tga"
 			"gfx/leaders/Indian/Portrait_PRF_Iftikhar_'Ali_Khan_of_Jaora.tga"
-			"gfx/leaders/Indian/Portrait_Burma_Pe_Maung_Tin.tga"
 			"gfx/leaders/Indian/Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.tga"
 			"gfx/leaders/Indian/Portrait_DEH_Kanaiyalal_Maneklal_Munshi.tga"
 		} 
@@ -1952,7 +2063,6 @@ indian = {
 		radical = {
 			"gfx/leaders/Indian/Portrait_Madras_Rettamalai_Srinivasan.tga"
 			"gfx/leaders/Indian/Portrait_Madras_Paramasiva_Subbarayan.tga"
-			"gfx/leaders/Indian/Portrait_Burma_Maung_Gyi.tga"
 			"gfx/leaders/Indian/Portrait_DEH_B_R_Ambedkar.tga"
 			"gfx/leaders/Indian/Portrait_DEH_Minocher_Rustom_Masani.tga"
 			"gfx/leaders/Indian/Portrait_DEH_V_S_Srinivasa_Sastri.tga"
@@ -2016,10 +2126,10 @@ indian = {
 		"gfx/leaders/RAJ/portrait_raj_noor_inayat_khan.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/bhutan.dds"
+		"gfx/interface/ideas/idea_raj_indian_gentlemen_officers.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/bhutan.dds"
+		"gfx/interface/ideas/idea_raj_indian_gentlemen_officers.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -2187,7 +2297,7 @@ austronesian = {
 }
 
 tai = {
-	cultures_and_groups = { thai lao shan zhuang burmese miao yi karen kachin asian_minor } # Move Burmese, Miao, Yi, Karen, Kachin, and Asian_Minor later
+	cultures_and_groups = { thai lao shan zhuang }
 	
 	army_portraits = {
 		#Generic Asian
