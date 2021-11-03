@@ -64,6 +64,34 @@ std::optional<Vic2::LanguageToLocalisationMap> getConfigurableDominionNames(
 }
 
 
+Vic2::LanguageToLocalisationMap configureDominionNames(const Vic2::LanguageToLocalisationMap& configurableDominionNames,
+	 const Vic2::LanguageToLocalisationMap& ownerNames,
+	 const Vic2::LanguageToLocalisationMap& ownerAdjectives)
+{
+	Vic2::LanguageToLocalisationMap localisationsForGovernment;
+	for (auto& [language, localisation]: configurableDominionNames)
+	{
+		auto newLocalisation = localisation;
+		if (const auto ownerName = ownerNames.find(language); ownerName != ownerNames.end())
+		{
+			while (newLocalisation.find("$OVERLORD$") != std::string::npos)
+			{
+				newLocalisation.replace(newLocalisation.find("$OVERLORD$"), 10, ownerName->second);
+			}
+		}
+		if (const auto ownerAdjective = ownerAdjectives.find(language); ownerAdjective != ownerAdjectives.end())
+		{
+			while (newLocalisation.find("$OVERLORD_ADJ$") != std::string::npos)
+			{
+				newLocalisation.replace(newLocalisation.find("$OVERLORD_ADJ$"), 14, ownerAdjective->second);
+			}
+		}
+
+		localisationsForGovernment.emplace(language, newLocalisation);
+	}
+
+	return localisationsForGovernment;
+}
 } // namespace
 
 
@@ -387,7 +415,9 @@ void HoI4::Localisation::addLocalisation(const std::string& newKey,
 
 void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string& tag,
 	 const Country& dominion,
+	 const std::string& ownerOldTag,
 	 const Vic2::Localisations& vic2Localisations,
+	 const Mappers::CountryNameMapper& countryNameMapper,
 	 const std::set<std::string>& majorIdeologies,
 	 const ArticleRules& articleRules)
 {
@@ -398,6 +428,23 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 
 	for (const auto& ideology: localisationIdeologies)
 	{
+		const auto vic2Government = countryNameMapper.getVic2Government(ideology, ownerOldTag);
+		if (!vic2Government)
+		{
+			continue;
+		}
+
+		auto ownerNames = vic2Localisations.getTextInEachLanguage(ownerOldTag + "_" + *vic2Government);
+		if (ownerNames.empty())
+		{
+			ownerNames = vic2Localisations.getTextInEachLanguage(ownerOldTag);
+		}
+		auto ownerAdjectives = vic2Localisations.getTextInEachLanguage(ownerOldTag + "_" + *vic2Government + "_ADJ");
+		if (ownerAdjectives.empty())
+		{
+			ownerAdjectives = vic2Localisations.getTextInEachLanguage(ownerOldTag + "_ADJ");
+		}
+
 		Vic2::LanguageToLocalisationMap localisationsForGovernment;
 		if (auto possibleConfigurableDominionNames = getConfigurableDominionNames(vic2Localisations,
 				  region,
@@ -406,17 +453,33 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 				  ideology);
 			 possibleConfigurableDominionNames)
 		{
-			localisationsForGovernment = *possibleConfigurableDominionNames;
+			localisationsForGovernment =
+				 configureDominionNames(*possibleConfigurableDominionNames, ownerNames, ownerAdjectives);
 		}
 		else
 		{
-			for (const auto& [language, localisation]: vic2Localisations.getTextInEachLanguage(region))
+			for (const auto& [language, localisation]: ownerAdjectives)
 			{
-				localisationsForGovernment.emplace(language, "$OVERLORDADJ$ " + localisation);
+				auto newLocalisation = localisation;
+				if (const auto& secondPart = vic2Localisations.getTextInLanguage(region, language); secondPart)
+				{
+					newLocalisation += " " + *secondPart;
+				}
+				localisationsForGovernment.emplace(language, newLocalisation);
 			}
 		}
 
 		addLocalisationsInAllLanguages(tag, "", "_DEF", ideology, localisationsForGovernment, articleRules);
+		if (localisationsForGovernment.empty())
+		{
+			addLocalisationsInAllLanguages(tag,
+				 "",
+				 "_DEF",
+				 ideology,
+				 vic2Localisations.getTextInEachLanguage(region),
+				 articleRules);
+		}
+
 		addLocalisationsInAllLanguages(tag,
 			 "_ADJ",
 			 "",
@@ -445,7 +508,8 @@ void HoI4::Localisation::createUnrecognizedNationLocalisations(const std::string
 		if (const auto localisations = vic2Localisations.getTextInEachLanguage("unrecognized_" + region);
 			 !localisations.empty())
 		{
-			localisationsForGovernment = localisations;
+			localisationsForGovernment =
+				 configureDominionNames(localisations, unrecognizedNameLocalisations, unrecognizedAdjectiveLocalisations);
 		}
 		// otherwise do 'Unrecognized $Region$'
 		else

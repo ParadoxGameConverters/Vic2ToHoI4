@@ -384,7 +384,9 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 			const auto& ownerOldTag = country->getPuppetMasterOldTag();
 			hoi4Localisations->createGeneratedDominionLocalisations(tag,
 				 *country,
+				 ownerOldTag,
 				 vic2Localisations,
+				 *countryNameMapper,
 				 ideologies->getMajorIdeologies(),
 				 *articleRules);
 		}
