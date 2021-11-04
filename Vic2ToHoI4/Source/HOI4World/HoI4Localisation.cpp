@@ -319,7 +319,12 @@ void HoI4::Localisation::addLocalisationsInAllLanguages(const std::string& destT
 	{
 		auto existingLanguage = getExistingLocalisationsInLanguage(nameInLanguage.first);
 
-		auto newKey = destTag + "_" + HoI4GovernmentIdeology + vic2Suffix;
+		auto newKey = destTag;
+		if (!HoI4GovernmentIdeology.empty())
+		{
+			newKey += "_" + HoI4GovernmentIdeology;
+		}
+		newKey += vic2Suffix;
 		addLocalisation(newKey,
 			 nameInLanguage.first,
 			 existingLanguage->second,
@@ -417,8 +422,11 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 	 const ArticleRules& articleRules)
 {
 	const auto region = dominion.getRegion();
+	auto localisationIdeologies = majorIdeologies;
+	localisationIdeologies.insert("neutrality");
+	localisationIdeologies.insert("");
 
-	for (const auto& ideology: majorIdeologies)
+	for (const auto& ideology: localisationIdeologies)
 	{
 		const auto vic2Government = countryNameMapper.getVic2Government(ideology, ownerOldTag);
 		if (!vic2Government)
@@ -476,18 +484,8 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 			 "_ADJ",
 			 "",
 			 ideology,
-			 vic2Localisations.getTextInEachLanguage(region + "_ADJ"),
+			 vic2Localisations.getTextInEachLanguage("dom_" + region + "_ADJ"),
 			 articleRules);
-
-		const auto& tags = std::make_pair(ownerOldTag, tag);
-		if (!addNeutralLocalisation(tags, "", "_DEF", vic2Localisations, articleRules))
-		{
-			Log(LogLevel::Warning) << "Could not find plain localisation for " << tags.first;
-		}
-		if (!addNeutralLocalisation(tags, "_ADJ", "", vic2Localisations, articleRules))
-		{
-			Log(LogLevel::Warning) << "Could not find plain adjective localisation for " << tags.first;
-		}
 	}
 }
 
