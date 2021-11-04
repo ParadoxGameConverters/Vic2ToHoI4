@@ -13,3 +13,5 @@ name_mapping = { vic2_gov = proletarian_dictatorship hoi4_ideology = communism }
 name_mapping = { vic2_gov = bourgeois_dictatorship hoi4_ideology = radical }
 name_mapping = { vic2_gov = fascist_dictatorship hoi4_ideology = fascism }
 name_mapping = { vic2_gov = absolute_monarchy hoi4_ideology = absolutist }
+name_mapping = { vic2_gov = "" hoi4_ideology = neutrality }
+name_mapping = { vic2_gov = "" hoi4_ideology = "" }
