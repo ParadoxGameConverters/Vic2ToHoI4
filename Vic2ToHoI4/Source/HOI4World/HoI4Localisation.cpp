@@ -501,7 +501,10 @@ void HoI4::Localisation::createUnrecognizedNationLocalisations(const std::string
 
 	const auto unrecognizedNameLocalisations = vic2Localisations.getTextInEachLanguage("unrecognized_name");
 	const auto unrecognizedAdjectiveLocalisations = vic2Localisations.getTextInEachLanguage("unrecognized_adjective");
-	for (const auto& ideology: majorIdeologies)
+	auto localisationIdeologies = majorIdeologies;
+	localisationIdeologies.insert("");
+
+	for (const auto& ideology: localisationIdeologies)
 	{
 		Vic2::LanguageToLocalisationMap localisationsForGovernment;
 		// if there is a pre-set localisation of the form 'unrecognized_<region>', use it
