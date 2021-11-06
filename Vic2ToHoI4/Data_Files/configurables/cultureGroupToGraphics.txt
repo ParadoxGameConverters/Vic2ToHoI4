@@ -1362,8 +1362,8 @@ eastern_european = {
 	graphical_culture_2d = eastern_european_2d
 }
 
-turkic_steppe = {
-	cultures_and_groups = { turko_semitic hittite_g }
+turkic = {
+	cultures_and_groups = { turkish azerbaijani pecheneg yenidun guney esmer uzbek kazak kirgiz uighur turkmen hittite_g yakut siberian } # Move hittite_g later
 	
 	army_portraits = {
 		#Generic Middle Eastern
@@ -1400,6 +1400,7 @@ turkic_steppe = {
 		communism = {
 			"gfx/leaders/JOR/Portrait_Arabia_Generic_1.dds"
 			"gfx/leaders/JOR/Portrait_Arabia_Generic_communism1.dds"
+			"gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds"
 			"gfx/leaders/KAZ/portrait_kaz_nikolay_skvortsov.dds"
 			"gfx/leaders/TUR/Portrait_Turkey_Sefik_Husnu.dds"
 			"gfx/leaders/Turkic_Steppe/Portrait_TUR_Sefik_Husnu.tga"
@@ -1430,7 +1431,6 @@ turkic_steppe = {
 		} 
 		absolutist = {
 			"gfx/leaders/ALB/Portrait_Albania_King_Zog.dds"
-			"gfx/leaders/EGY/Portrait_EGY_faud_i.dds"
 			"gfx/leaders/Turkic_Steppe/Portrait_Ottoman_Abdulmecid.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_Ottoman_AhmedNihad.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_KUR_Mahmud_Barzanji.tga"
@@ -1442,14 +1442,12 @@ turkic_steppe = {
 			"gfx/leaders/TUR/Portrait_Turkey_Mustafa_Kemal_Ataturk_Old.dds"
 			"gfx/leaders/TUR/Portrait_Turkey_Mustafa_Kemal_Ataturk.dds"
 			"gfx/leaders/Turkic_Steppe/Portrait_TUR_Adnan_Menderes.tga"
-			"gfx/leaders/Turkic_Steppe/Portrait_TAJ_Bobodzhan_Gafurov.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_ALO_Alikhan_Bukeikhanov.tga"
 		} 
 		radical = {
 			"gfx/leaders/JOR/Portrait_Arabia_Generic_2.dds"
 			"gfx/leaders/Turkic_Steppe/Portrait_Mehmed_Cavid.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_Ottoman_Ali_Sukru_Pasa.tga"
-			"gfx/leaders/Turkic_Steppe/Portrait_KUR_Kamuran.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_Azerbaijan_Rasulzade.tga"
 		}
 	}
@@ -1467,24 +1465,21 @@ turkic_steppe = {
 	ideology_minister_portraits = {
 		communism = {
 			"gfx/interface/ideas/idea_tur_nazim_hikmet.dds"
-			"gfx/interface/ideas/idea_generic_communist_arab.dds"
 		}
 		democratic = {
 			"gfx/interface/ideas/idea_tur_celal_bayar.dds"
-			"gfx/interface/ideas/idea_sabiha_gocen.dds"
 		}
 		fascism = {
 			"gfx/interface/ideas/idea_tur_zeki_velidi_togan.dds"
-			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/idea_generic_army_arab_1.dds" #Revise
+			"gfx/interface/ideas/idea_tur_halil_kut.dds" 
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_tur_sukru_saracoglu.dds"
 		}
 		radical = {
-			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
+			"gfx/interface/ideas/idea_tur_mehmet_fahri_engin.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -1504,15 +1499,16 @@ turkic_steppe = {
 		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/eastern_crown.dds"
+		"gfx/interface/goals/focus_TUR_turanist_ambition.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/eastern_crown.dds"
+		"gfx/interface/goals/focus_TUR_turanist_ambition.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
 }
 
+iranian = {
 arabic_persian = {
 	cultures_and_groups = { arab punic iranian_turanian }
 	
@@ -1751,6 +1747,7 @@ tibetian_burman_karenic = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_fascism.dds"
 			"gfx/leaders/GXC/Portrait_Guanxi_Clique_Li_Zongren.dds"
 			"gfx/leaders/YUN/portrait_yun_long_yun.dds"
+			"gfx/leaders/Turkic_Steppe/Portrait_TAJ_Bobodzhan_Gafurov.tga"
 		} 
 		radical = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
