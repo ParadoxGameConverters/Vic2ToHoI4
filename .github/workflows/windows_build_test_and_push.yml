@@ -34,6 +34,14 @@ jobs:
        cd $Env:GITHUB_WORKSPACE\Vic2ToHoI4Tests\Release
        .\Vic2ToHoI4Tests.exe
        
+    - name: "Build updater executable"
+      run: |
+       cd Fronter/Updater
+       pip3 install -r requirements.txt
+       pyinstaller --onefile --icon=updater.ico updater.py
+       mkdir ../../Release/Updater
+       mv dist/updater.exe ../../Release/Updater/updater.exe
+       
     - name: "Prepare release"
       if: ${{ github.event_name == 'push' }}
       run: |
