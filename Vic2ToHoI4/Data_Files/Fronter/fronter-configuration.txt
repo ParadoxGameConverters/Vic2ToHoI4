@@ -1,5 +1,10 @@
 name = Vic2ToHoI4
 converterFolder = Vic2ToHoI4
+enableUpdateChecker = true
+checkForUpdatesOnStartup = true
+latestGitHubConverterReleaseUrl = "https://github.com/ParadoxGameConverters/Vic2ToHoI4/releases/download/0.3Oppenheimer/Vic2ToHoI4-0.3Oppenheimer.zip"
+converterReleaseForumThread = "https://forum.paradoxplaza.com/forum/threads/vic2-to-hoi4-converter-release-thread.948992/"
+pagesCommitIdUrl = "https://paradoxgameconverters.com/commit_ids/Vic2ToHoI4.txt"
 displayName = VIC2DISPLAYNAME
 sourceGame = VIC2GAME
 targetGame = HOI4GAME
