@@ -1,7 +1,7 @@
 #include "OutBuildings.h"
 #include "OutBuilding.h"
 #include <fstream>
-
+#include <ranges>
 
 
 void HoI4::outputBuildings(const Buildings& buildings, const std::string& outputName)
@@ -11,9 +11,9 @@ void HoI4::outputBuildings(const Buildings& buildings, const std::string& output
 	{
 		throw std::runtime_error("Could not open output/" + outputName + "/map/buildings.txt");
 	}
-	for (const auto& building: buildings.getBuildings())
+	for (const auto& building : buildings.getBuildings() | std::views::values)
 	{
-		out << building.second;
+		out << building;
 	}
 	out.close();
 

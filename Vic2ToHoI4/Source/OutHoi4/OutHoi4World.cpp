@@ -30,6 +30,7 @@
 #include <fstream>
 #include <iterator>
 #include <optional>
+#include <ranges>
 
 
 namespace HoI4
@@ -85,9 +86,9 @@ void HoI4::reportcountriesIndustry(const std::map<std::string, std::shared_ptr<H
 	if (report.is_open())
 	{
 		report << "tag,military factories,civilian factories,dockyards,total factories\n";
-		for (const auto& country: countries)
+		for (const auto& county : countries | std::views::values)
 		{
-			reportIndustry(report, *country.second);
+			reportIndustry(report, *county);
 		}
 	}
 }
@@ -97,9 +98,9 @@ void HoI4::reportDefaultIndustry(const World& world)
 {
 	std::map<std::string, std::array<int, 3>> countriesIndustry;
 
-	for (const auto& state: world.getTheStates().getDefaultStates())
+	for (const auto& state : world.getTheStates().getDefaultStates() | std::views::values)
 	{
-		auto stateData = getDefaultStateIndustry(state.second);
+		auto stateData = getDefaultStateIndustry(state);
 		if (auto countryIndustry = countriesIndustry.find(stateData.first); countryIndustry == countriesIndustry.end())
 		{
 			countriesIndustry.insert(make_pair(stateData.first, stateData.second));
@@ -223,19 +224,19 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 		throw std::runtime_error("Could not create output/" + outputName + "/common/country_tags/00_countries.txt");
 	}
 
-	for (const auto& country: countries)
+	for (const auto& country : countries | std::views::values)
 	{
-		if (country.second->isGreatPower() && country.second->getCapitalState())
+		if (country->isGreatPower() && country->getCapitalState())
 		{
-			outputToCommonCountriesFile(allCountriesFile, *country.second);
+			outputToCommonCountriesFile(allCountriesFile, *country);
 		}
 	}
 
-	for (const auto& country: countries)
+	for (const auto& country : countries | std::views::values)
 	{
-		if (!country.second->isGreatPower() && country.second->getCapitalState())
+		if (!country->isGreatPower() && country->getCapitalState())
 		{
-			outputToCommonCountriesFile(allCountriesFile, *country.second);
+			outputToCommonCountriesFile(allCountriesFile, *country);
 		}
 	}
 
@@ -261,11 +262,11 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>
 	}
 
 	output << "#reload countrycolors\n";
-	for (const auto& country: countries)
+	for (const auto& country : countries | std::views::values)
 	{
-		if (country.second->getCapitalState())
+		if (country->getCapitalState())
 		{
-			outputColors(output, *country.second);
+			outputColors(output, *country);
 		}
 	}
 
@@ -287,11 +288,11 @@ void HoI4::outputNames(const Names& names,
 
 	namesFile << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
-	for (const auto& country: countries)
+	for (const auto& country : countries | std::views::values)
 	{
-		if (country.second->getCapitalState())
+		if (country->getCapitalState())
 		{
-			outputToNamesFiles(namesFile, names, *country.second);
+			outputToNamesFiles(namesFile, names, *country);
 		}
 	}
 }
@@ -302,11 +303,11 @@ void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>
 {
 	Log(LogLevel::Info) << "\t\tWriting unit names";
 
-	for (const auto& country: countries)
+	for (const auto& country : countries | std::views::values)
 	{
-		if (country.second->getCapitalState())
+		if (country->getCapitalState())
 		{
-			outputToUnitNamesFiles(*country.second, theConfiguration);
+			outputToUnitNamesFiles(*country, theConfiguration);
 		}
 	}
 }
@@ -326,11 +327,11 @@ void HoI4::outputMap(const States& states, const StrategicRegions& strategicRegi
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/map/rocketsites.txt");
 	}
-	for (const auto& state: states.getStates())
+	for (const auto& state : states.getStates() | std::views::values)
 	{
-		if (auto provinces = state.second.getProvinces(); !provinces.empty())
+		if (auto provinces = state.getProvinces(); !provinces.empty())
 		{
-			rocketSitesFile << state.second.getID() << "={" << *provinces.cbegin() << " }\n";
+			rocketSitesFile << state.getID() << "={" << *provinces.cbegin() << " }\n";
 		}
 	}
 	rocketSitesFile.close();
@@ -377,14 +378,14 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 		throw std::runtime_error("Could not create output/" + outputName + "/history/units");
 	}
 
-	for (const auto& country: countries)
+	for (const auto& country : countries | std::views::values)
 	{
-		if (country.second->getCapitalState())
+		if (country->getCapitalState())
 		{
 			const auto& specificMilitaryMappings = theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
 			outputCountry(activeIdeologicalAdvisors,
 				 specificMilitaryMappings.getDivisionTemplates(),
-				 *country.second,
+				 *country,
 				 theConfiguration);
 		}
 	}
@@ -396,11 +397,11 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	}
 
 	ideasFile << "spriteTypes = {\n";
-	for (const auto& country: countries)
+	for (const auto& country : countries | std::views::values)
 	{
-		if (country.second->getCapitalState())
+		if (country->getCapitalState())
 		{
-			outputIdeaGraphics(ideasFile, *country.second);
+			outputIdeaGraphics(ideasFile, *country);
 		}
 	}
 	ideasFile << "\n";
@@ -412,11 +413,11 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	{
 		throw std::runtime_error("Could not open output/" + outputName + "/interface/conv_portraits.gfx");
 	}
-	for (const auto& country: countries)
+	for (const auto& country : countries | std::views::values)
 	{
-		if (country.second->getCapitalState())
+		if (country->getCapitalState())
 		{
-			outputPortraits(portraitsFile, *country.second);
+			outputPortraits(portraitsFile, *country);
 		}
 	}
 	portraitsFile.close();
@@ -515,10 +516,9 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 
 	const auto outputBookmark = [&](date startDate, const std::string& bookmarkName) {
 		std::string uppercaseBookmarkName = bookmarkName;
-		std::transform(uppercaseBookmarkName.begin(),
-			 uppercaseBookmarkName.end(),
-			 uppercaseBookmarkName.begin(),
-			 ::toupper);
+		std::ranges::transform(uppercaseBookmarkName,
+		                       uppercaseBookmarkName.begin(),
+		                       ::toupper);
 
 		std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_" + bookmarkName + ".txt");
 		if (!bookmarkFile.is_open())
@@ -574,7 +574,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 				tags.push_back(tag);
 			}
 		}
-		std::sort(tags.begin(), tags.end(), [countries](const std::string& a, const std::string& b) {
+		std::ranges::sort(tags, [countries](const std::string& a, const std::string& b) {
 			return countries.at(a)->getStrengthOverTime(1.0) > countries.at(b)->getStrengthOverTime(3.0);
 		});
 
@@ -584,7 +584,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 		tags.erase(trimHere, tags.end());
 
 		// then alphabetize them
-		std::sort(tags.begin(), tags.end());
+		std::ranges::sort(tags);
 
 		for (const auto& tag: tags)
 		{

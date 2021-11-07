@@ -1,6 +1,7 @@
 #include "OutStrategicRegions.h"
 #include "OSCompatibilityLayer.h"
 #include "OutStrategicRegion.h"
+#include <ranges>
 
 
 
@@ -10,8 +11,8 @@ void HoI4::outputStrategicRegions(const StrategicRegions& strategicRegions, cons
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/map/strategicregions");
 	}
-	for (const auto& strategicRegion: strategicRegions.getStrategicRegions())
+	for (const auto& strategicRegion: strategicRegions.getStrategicRegions() | std::views::values)
 	{
-		outputStrategicRegion(strategicRegion.second, "output/" + outputName + "/map/strategicregions/");
+		outputStrategicRegion(strategicRegion, "output/" + outputName + "/map/strategicregions/");
 	}
 }
