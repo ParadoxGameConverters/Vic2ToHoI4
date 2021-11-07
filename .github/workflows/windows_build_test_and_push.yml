@@ -58,7 +58,7 @@ jobs:
         omitNameDuringUpdate: true
         artifacts: Vic2ToHoI4-0.3Oppenheimer.zip
         token: ${{ secrets.API_TOKEN_GITHUB }}
-        
+
     - name: "Cleanup"
       if: ${{ true }}
       run: |
