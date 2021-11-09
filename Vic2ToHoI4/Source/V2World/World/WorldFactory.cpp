@@ -148,7 +148,7 @@ void Vic2::World::Factory::setProvinceOwners()
 										  << ", but country does not exist.";
 		}
 	}
-	for (auto& country : world->countries | std::views::values)
+	for (auto& country: world->countries | std::views::values)
 	{
 		country.putProvincesInStates();
 		country.handleMissingCulture(*theCultureGroups);
@@ -159,7 +159,7 @@ void Vic2::World::Factory::setProvinceOwners()
 void Vic2::World::Factory::addProvinceCoreInfoToCountries()
 {
 	Log(LogLevel::Info) << "\tAssigning cores to countries";
-	for (const auto& province : world->provinces | std::views::values)
+	for (const auto& province: world->provinces | std::views::values)
 	{
 		auto provinceCores = province->getCores();
 		for (const auto& coreCountryString: provinceCores)
@@ -261,7 +261,7 @@ bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core,
 void Vic2::World::Factory::determineEmployedWorkers()
 {
 	Log(LogLevel::Info) << "\tFinding employed workers";
-	for (auto& country : world->countries | std::views::values)
+	for (auto& country: world->countries | std::views::values)
 	{
 		country.determineEmployedWorkers();
 	}
@@ -353,7 +353,7 @@ void Vic2::World::Factory::mergeNations(const std::string& masterTag,
 void Vic2::World::Factory::setLocalisations(Localisations& vic2Localisations)
 {
 	Log(LogLevel::Info) << "\tSetting localisations";
-	for (auto& country : world->countries | std::views::values)
+	for (auto& country: world->countries | std::views::values)
 	{
 		country.setLocalisationNames(vic2Localisations);
 		country.setLocalisationAdjectives(vic2Localisations);
@@ -364,7 +364,7 @@ void Vic2::World::Factory::setLocalisations(Localisations& vic2Localisations)
 void Vic2::World::Factory::checkAllProvincesMapped(const Mappers::ProvinceMapper& provinceMapper) const
 {
 	Log(LogLevel::Info) << "\tChecking all provinces are mapped";
-	for (const auto& provinceNum : world->provinces | std::views::keys)
+	for (const auto& provinceNum: world->provinces | std::views::keys)
 	{
 		if (!provinceMapper.isVic2ProvinceMapped(provinceNum))
 		{
@@ -376,7 +376,7 @@ void Vic2::World::Factory::checkAllProvincesMapped(const Mappers::ProvinceMapper
 
 void Vic2::World::Factory::consolidateConquerStrategies()
 {
-	for (auto& country : world->countries | std::views::values)
+	for (auto& country: world->countries | std::views::values)
 	{
 		country.consolidateConquerStrategies(world->provinces);
 	}
@@ -483,7 +483,7 @@ std::map<int, std::vector<Vic2::Army*>> Vic2::World::Factory::determineArmyLocat
 {
 	std::map<int, std::vector<Army*>> armyLocations;
 
-	for (auto& country : world->countries | std::views::values)
+	for (auto& country: world->countries | std::views::values)
 	{
 		for (auto& army: country.getModifiableArmies())
 		{

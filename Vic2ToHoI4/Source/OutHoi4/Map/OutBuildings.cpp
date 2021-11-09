@@ -11,7 +11,7 @@ void HoI4::outputBuildings(const Buildings& buildings, const std::string& output
 	{
 		throw std::runtime_error("Could not open output/" + outputName + "/map/buildings.txt");
 	}
-	for (const auto& building : buildings.getBuildings() | std::views::values)
+	for (const auto& building: buildings.getBuildings() | std::views::values)
 	{
 		out << building;
 	}

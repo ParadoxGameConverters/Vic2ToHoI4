@@ -86,7 +86,7 @@ void HoI4::reportcountriesIndustry(const std::map<std::string, std::shared_ptr<H
 	if (report.is_open())
 	{
 		report << "tag,military factories,civilian factories,dockyards,total factories\n";
-		for (const auto& county : countries | std::views::values)
+		for (const auto& county: countries | std::views::values)
 		{
 			reportIndustry(report, *county);
 		}
@@ -98,7 +98,7 @@ void HoI4::reportDefaultIndustry(const World& world)
 {
 	std::map<std::string, std::array<int, 3>> countriesIndustry;
 
-	for (const auto& state : world.getTheStates().getDefaultStates() | std::views::values)
+	for (const auto& state: world.getTheStates().getDefaultStates() | std::views::values)
 	{
 		auto stateData = getDefaultStateIndustry(state);
 		if (auto countryIndustry = countriesIndustry.find(stateData.first); countryIndustry == countriesIndustry.end())
@@ -224,7 +224,7 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 		throw std::runtime_error("Could not create output/" + outputName + "/common/country_tags/00_countries.txt");
 	}
 
-	for (const auto& country : countries | std::views::values)
+	for (const auto& country: countries | std::views::values)
 	{
 		if (country->isGreatPower() && country->getCapitalState())
 		{
@@ -232,7 +232,7 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 		}
 	}
 
-	for (const auto& country : countries | std::views::values)
+	for (const auto& country: countries | std::views::values)
 	{
 		if (!country->isGreatPower() && country->getCapitalState())
 		{
@@ -262,7 +262,7 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>
 	}
 
 	output << "#reload countrycolors\n";
-	for (const auto& country : countries | std::views::values)
+	for (const auto& country: countries | std::views::values)
 	{
 		if (country->getCapitalState())
 		{
@@ -288,7 +288,7 @@ void HoI4::outputNames(const Names& names,
 
 	namesFile << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
-	for (const auto& country : countries | std::views::values)
+	for (const auto& country: countries | std::views::values)
 	{
 		if (country->getCapitalState())
 		{
@@ -303,7 +303,7 @@ void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>
 {
 	Log(LogLevel::Info) << "\t\tWriting unit names";
 
-	for (const auto& country : countries | std::views::values)
+	for (const auto& country: countries | std::views::values)
 	{
 		if (country->getCapitalState())
 		{
@@ -327,7 +327,7 @@ void HoI4::outputMap(const States& states, const StrategicRegions& strategicRegi
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/map/rocketsites.txt");
 	}
-	for (const auto& state : states.getStates() | std::views::values)
+	for (const auto& state: states.getStates() | std::views::values)
 	{
 		if (auto provinces = state.getProvinces(); !provinces.empty())
 		{
@@ -378,7 +378,7 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 		throw std::runtime_error("Could not create output/" + outputName + "/history/units");
 	}
 
-	for (const auto& country : countries | std::views::values)
+	for (const auto& country: countries | std::views::values)
 	{
 		if (country->getCapitalState())
 		{
@@ -397,7 +397,7 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	}
 
 	ideasFile << "spriteTypes = {\n";
-	for (const auto& country : countries | std::views::values)
+	for (const auto& country: countries | std::views::values)
 	{
 		if (country->getCapitalState())
 		{
@@ -413,7 +413,7 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	{
 		throw std::runtime_error("Could not open output/" + outputName + "/interface/conv_portraits.gfx");
 	}
-	for (const auto& country : countries | std::views::values)
+	for (const auto& country: countries | std::views::values)
 	{
 		if (country->getCapitalState())
 		{
@@ -516,9 +516,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 
 	const auto outputBookmark = [&](date startDate, const std::string& bookmarkName) {
 		std::string uppercaseBookmarkName = bookmarkName;
-		std::ranges::transform(uppercaseBookmarkName,
-		                       uppercaseBookmarkName.begin(),
-		                       ::toupper);
+		std::ranges::transform(uppercaseBookmarkName, uppercaseBookmarkName.begin(), ::toupper);
 
 		std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_" + bookmarkName + ".txt");
 		if (!bookmarkFile.is_open())

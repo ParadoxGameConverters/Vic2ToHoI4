@@ -7,7 +7,7 @@ std::ostream& HoI4::operator<<(std::ostream& output, const ShipVariants& theVari
 	output << "### VARIANTS ###\n";
 	output << "if = {\n";
 	output << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	for (const auto& variant : theVariants.legacyVariants | std::views::values)
+	for (const auto& variant: theVariants.legacyVariants | std::views::values)
 	{
 		output << variant;
 	}

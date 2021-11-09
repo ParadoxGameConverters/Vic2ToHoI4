@@ -24,7 +24,7 @@ void outDynamicModifiers(const DynamicModifiers& dynamicModifiers, const Configu
 		throw std::runtime_error("Could not create 01_converter_modifiers.txt.");
 	}
 
-	for (const auto& modifier : dynamicModifiers.getDynamicModifiers() | std::views::values)
+	for (const auto& modifier: dynamicModifiers.getDynamicModifiers() | std::views::values)
 	{
 		out << modifier << "\n";
 	}

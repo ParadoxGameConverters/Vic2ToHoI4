@@ -123,11 +123,11 @@ std::vector<int> Vic2::State::getProvincesOrderedByPopulation() const
 	{
 		provincesOrderedByPopulation.insert(
 			 std::ranges::upper_bound(provincesOrderedByPopulation,
-			                          province,
-			                          [](const std::shared_ptr<Province>& a, const std::shared_ptr<Province>& b) {
-				                          // provide a 'backwards' comparison to force the sort order we want
-				                          return a->getTotalPopulation() > b->getTotalPopulation();
-			                          }),
+				  province,
+				  [](const std::shared_ptr<Province>& a, const std::shared_ptr<Province>& b) {
+					  // provide a 'backwards' comparison to force the sort order we want
+					  return a->getTotalPopulation() > b->getTotalPopulation();
+				  }),
 			 province);
 	}
 

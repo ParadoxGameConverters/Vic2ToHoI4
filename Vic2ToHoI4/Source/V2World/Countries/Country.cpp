@@ -166,7 +166,7 @@ std::map<std::string, int> Vic2::Country::determineCultureSizes()
 {
 	std::map<std::string, int> cultureSizes;
 
-	for (auto province : provinces | std::views::values)
+	for (auto province: provinces | std::views::values)
 	{
 		for (const auto& pop: province->getPops())
 		{
@@ -231,7 +231,7 @@ float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
 {
 	float totalPopulation = 0.0;
 	float totalSupport = 0.0;
-	for (const auto& province : provinces | std::views::values)
+	for (const auto& province: provinces | std::views::values)
 	{
 		for (const auto& pop: province->getPops())
 		{

@@ -5,9 +5,9 @@
 
 
 void outputActualEvents(const std::string& eventsFileName,
-                        const std::string& eventNamespace,
-                        const std::vector<HoI4::Event>& events,
-                        const std::string& outputName);
+	 const std::string& eventNamespace,
+	 const std::vector<HoI4::Event>& events,
+	 const std::string& outputName);
 void outputWarJustificationEvents(const std::vector<HoI4::Event>& warJustificationEvents,
 	 const std::string& outputName);
 void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEvents,
@@ -106,7 +106,7 @@ void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEv
 	outStabilityEvents << "add_namespace = stability\n";
 	outStabilityEvents << "\n";
 
-	for (const auto& theEvent : stabilityEvents | std::views::values)
+	for (const auto& theEvent: stabilityEvents | std::views::values)
 	{
 		outStabilityEvents << "\n";
 		outStabilityEvents << theEvent;
