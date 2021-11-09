@@ -328,6 +328,7 @@ class Country
 
 	void convertStockpile();
 	float getSourceCountryGoodAmount(const std::string& goodType);
+	bool hasRulingDynasty();
 
 	std::string tag;
 	std::string oldTag;

@@ -286,7 +286,9 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	{
 		auto partyName = party.getName();
 		auto trimmedName = partyName.substr(4, partyName.size());
-		hoi4Localisations.addPoliticalPartyLocalisation(partyName, tag + "_" + trimmedName + "_party", vic2Localisations);
+		hoi4Localisations.addPoliticalPartyLocalisation(partyName,
+			 tag + "_" + trimmedName + "_party",
+			 vic2Localisations);
 	}
 
 	convertLaws();
@@ -315,10 +317,26 @@ void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 
 	if (rulingParty != std::nullopt)
 	{
-		hoi4Localisations.addPoliticalPartyLocalisation(rulingParty->getName(),
-			 tag + "_" + governmentIdeology + "_party",
-			 vic2Localisations);
+		const auto& HoI4Key = tag + "_" + governmentIdeology + "_party";
+		if (hasRulingDynasty())
+		{
+			hoi4Localisations.addRulingHouseLocalisations(HoI4Key, *lastDynasty);
+		}
+		else
+		{
+			hoi4Localisations.addPoliticalPartyLocalisation(rulingParty->getName(), HoI4Key, vic2Localisations);
+		}
 	}
+}
+
+
+bool HoI4::Country::hasRulingDynasty()
+{
+	if (lastDynasty && governmentIdeology == "absolutist")
+	{
+		return true;
+	}
+	return false;
 }
 
 
