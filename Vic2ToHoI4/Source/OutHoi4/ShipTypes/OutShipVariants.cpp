@@ -1,5 +1,5 @@
 #include "OutShipVariants.h"
-
+#include <ranges>
 
 
 std::ostream& HoI4::operator<<(std::ostream& output, const ShipVariants& theVariants)
@@ -7,16 +7,16 @@ std::ostream& HoI4::operator<<(std::ostream& output, const ShipVariants& theVari
 	output << "### VARIANTS ###\n";
 	output << "if = {\n";
 	output << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	for (const auto& variant: theVariants.legacyVariants)
+	for (const auto& variant: theVariants.legacyVariants | std::views::values)
 	{
-		output << variant.second;
+		output << variant;
 	}
 	output << "}\n";
 	output << "if = {\n";
 	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	for (const auto& variant: theVariants.mtgVariants)
+	for (const auto& variant: theVariants.mtgVariants | std::views::values)
 	{
-		output << variant.second;
+		output << variant;
 	}
 	output << "}\n";
 

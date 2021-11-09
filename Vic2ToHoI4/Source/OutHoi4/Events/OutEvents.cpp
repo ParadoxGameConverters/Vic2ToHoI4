@@ -1,7 +1,7 @@
 #include "OutEvents.h"
 #include "OSCompatibilityLayer.h"
 #include <fstream>
-
+#include <ranges>
 
 
 void outputActualEvents(const std::string& eventsFileName,
@@ -106,24 +106,24 @@ void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEv
 	outStabilityEvents << "add_namespace = stability\n";
 	outStabilityEvents << "\n";
 
-	for (const auto& theEvent: stabilityEvents)
+	for (const auto& theEvent: stabilityEvents | std::views::values)
 	{
 		outStabilityEvents << "\n";
-		outStabilityEvents << theEvent.second;
+		outStabilityEvents << theEvent;
 	}
 
 	outStabilityEvents << "add_namespace = strikes_event\n";
-	for (const auto& theEvent: strikesEvents)
+	for (const auto& theEvent: strikesEvents | std::views::values)
 	{
 		outStabilityEvents << "\n";
-		outStabilityEvents << theEvent.second;
+		outStabilityEvents << theEvent;
 	}
 
 	outStabilityEvents << "add_namespace = mutiny_event\n";
-	for (const auto& theEvent: mutinyEvents)
+	for (const auto& theEvent: mutinyEvents | std::views::values)
 	{
 		outStabilityEvents << "\n";
-		outStabilityEvents << theEvent.second;
+		outStabilityEvents << theEvent;
 	}
 
 	outStabilityEvents.close();

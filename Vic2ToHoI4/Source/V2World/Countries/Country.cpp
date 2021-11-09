@@ -5,6 +5,7 @@
 #include "V2World/Pops/Pop.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
+#include <ranges>
 
 
 
@@ -165,7 +166,7 @@ std::map<std::string, int> Vic2::Country::determineCultureSizes()
 {
 	std::map<std::string, int> cultureSizes;
 
-	for (auto [unused, province]: provinces)
+	for (auto province: provinces | std::views::values)
 	{
 		for (const auto& pop: province->getPops())
 		{
@@ -230,7 +231,7 @@ float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
 {
 	float totalPopulation = 0.0;
 	float totalSupport = 0.0;
-	for (const auto& [unused, province]: provinces)
+	for (const auto& province: provinces | std::views::values)
 	{
 		for (const auto& pop: province->getPops())
 		{
