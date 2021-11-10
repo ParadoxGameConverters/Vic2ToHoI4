@@ -54,7 +54,7 @@ void HoI4::ExiledGovernmentsDecisions::updateDecisions(const std::set<std::strin
 				decision.setTargetTrigger(visibleAndTT.str());
 
 				std::stringstream targetedModifier;
-				targetedModifier << "{\n";
+				targetedModifier << "= {\n";
 				targetedModifier << "\t\t\ttag = FROM\n";
 				targetedModifier << "\t\t\ttargeted_legitimacy_daily = -1\n";
 				if (majorIdeologies.contains("democratic"))
