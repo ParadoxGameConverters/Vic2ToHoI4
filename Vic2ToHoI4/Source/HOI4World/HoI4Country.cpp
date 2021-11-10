@@ -1007,7 +1007,9 @@ void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphics
 		}
 	}
 
-	leaders.push_back(CountryLeader::Factory::createNewLeader(primaryCulture,
+	leaders.push_back(CountryLeader::Factory::createNewLeader(hasRulingDynasty(),
+		 generator,
+		 primaryCulture,
 		 primaryCultureGroup,
 		 governmentIdeology,
 		 leaderIdeology,

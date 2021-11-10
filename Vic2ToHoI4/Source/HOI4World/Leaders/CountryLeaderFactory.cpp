@@ -1,4 +1,5 @@
 #include "CountryLeaderFactory.h"
+#include "CommonFunctions.h"
 #include "CommonRegexes.h"
 #include "Log.h"
 #include "ParserHelpers.h"
@@ -26,7 +27,9 @@ HoI4::CountryLeader::Factory::Factory()
 }
 
 
-HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(const std::string& primaryCulture,
+HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(bool hasRulingDynasty,
+	 std::mt19937& generator,
+	 const std::string& primaryCulture,
 	 const std::string& primaryCultureGroup,
 	 const std::string& governmentIdeology,
 	 const std::string& leaderIdeology,
@@ -53,6 +56,17 @@ HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(const std::str
 	auto upperSurname = *surname;
 	std::transform(upperSurname.begin(), upperSurname.end(), upperSurname.begin(), toupper);
 	leader.description = "POLITICS_" + upperFirstName + "_" + upperSurname + "_DESC";
+
+	if (hasRulingDynasty)
+	{
+		std::string title = "King";
+		auto regal = cardinalToRoman(std::uniform_int_distribution{5, 20}(generator));
+		leader.name = title + " " + *firstName + " " + regal;
+
+		std::transform(title.begin(), title.end(), title.begin(), toupper);
+		std::transform(regal.begin(), regal.end(), regal.begin(), toupper);
+		leader.description = "POLITICS_" + title + "_" + upperFirstName + "_" + regal + "_DESC";
+	}
 
 	return leader;
 }
