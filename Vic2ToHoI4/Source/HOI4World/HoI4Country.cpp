@@ -286,9 +286,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	{
 		auto partyName = party.getName();
 		auto trimmedName = partyName.substr(4, partyName.size());
-		hoi4Localisations.addPoliticalPartyLocalisation(partyName,
-			 tag + "_" + trimmedName + "_party",
-			 vic2Localisations);
+		hoi4Localisations.addPoliticalPartyLocalisation(partyName, tag + "_" + trimmedName + "_party", vic2Localisations);
 	}
 
 	convertLaws();
