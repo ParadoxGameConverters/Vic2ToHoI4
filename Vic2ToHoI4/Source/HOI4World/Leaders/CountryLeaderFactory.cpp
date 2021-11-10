@@ -60,12 +60,12 @@ HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(bool hasRuling
 	if (hasRulingDynasty)
 	{
 		std::string title = "King";
-		auto regal = cardinalToRoman(std::uniform_int_distribution{5, 20}(generator));
-		leader.name = title + " " + *firstName + " " + regal;
+		auto regnal = cardinalToRoman(std::uniform_int_distribution{5, 20}(generator));
+		leader.name = title + " " + *firstName + " " + regnal;
 
 		std::transform(title.begin(), title.end(), title.begin(), toupper);
-		std::transform(regal.begin(), regal.end(), regal.begin(), toupper);
-		leader.description = "POLITICS_" + title + "_" + upperFirstName + "_" + regal + "_DESC";
+		std::transform(regnal.begin(), regnal.end(), regnal.begin(), toupper);
+		leader.description = "POLITICS_" + title + "_" + upperFirstName + "_" + regnal + "_DESC";
 	}
 
 	return leader;
