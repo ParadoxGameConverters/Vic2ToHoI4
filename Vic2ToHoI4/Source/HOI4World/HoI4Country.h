@@ -92,7 +92,7 @@ class Country
 		 const Mappers::GovernmentMapper& governmentMap,
 		 Localisation& hoi4Localisations,
 		 bool debug);
-	void createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper);
+	void createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper, std::mt19937& regnalGenerator);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const Mappers::GovernmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,

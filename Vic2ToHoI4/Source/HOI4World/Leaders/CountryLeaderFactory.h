@@ -20,7 +20,7 @@ class CountryLeader::Factory: commonItems::parser
 	Factory();
 
 	static CountryLeader createNewLeader(bool hasRulingDynasty,
-		 std::mt19937& generator,
+		 std::mt19937& regnalGenerator,
 		 const std::string& primaryCulture,
 		 const std::string& primaryCultureGroup,
 		 const std::string& governmentIdeology,

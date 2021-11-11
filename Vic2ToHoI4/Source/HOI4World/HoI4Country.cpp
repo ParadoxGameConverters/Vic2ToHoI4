@@ -1000,7 +1000,7 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 }
 
 
-void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper)
+void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper, std::mt19937& regnalGenerator)
 {
 	for (const auto& configuredLeader: leaders)
 	{
@@ -1011,7 +1011,7 @@ void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphics
 	}
 
 	leaders.push_back(CountryLeader::Factory::createNewLeader(hasRulingDynasty(),
-		 generator,
+		 regnalGenerator,
 		 primaryCulture,
 		 primaryCultureGroup,
 		 governmentIdeology,

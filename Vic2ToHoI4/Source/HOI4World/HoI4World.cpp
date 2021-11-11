@@ -454,6 +454,7 @@ void HoI4::World::addLeaders()
 	Log(LogLevel::Info) << "\tAdding leaders";
 	auto configurableLeaders = CountryLeadersFactory().importCountryLeaders();
 
+	std::mt19937 regnalGenerator;
 	for (auto& [tag, country]: countries)
 	{
 		auto leaders = configurableLeaders.equal_range(tag);
@@ -462,7 +463,7 @@ void HoI4::World::addLeaders()
 			country->addLeader(i->second);
 		}
 
-		country->createLeader(*names, *graphicsMapper);
+		country->createLeader(*names, *graphicsMapper, regnalGenerator);
 	}
 }
 

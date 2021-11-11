@@ -28,7 +28,7 @@ HoI4::CountryLeader::Factory::Factory()
 
 
 HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(bool hasRulingDynasty,
-	 std::mt19937& generator,
+	 std::mt19937& regnalGenerator,
 	 const std::string& primaryCulture,
 	 const std::string& primaryCultureGroup,
 	 const std::string& governmentIdeology,
@@ -60,7 +60,7 @@ HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(bool hasRuling
 	if (hasRulingDynasty)
 	{
 		std::string title = "King";
-		auto regnal = cardinalToRoman(std::uniform_int_distribution{5, 20}(generator));
+		auto regnal = cardinalToRoman(std::uniform_int_distribution{3, 7}(regnalGenerator));
 		leader.name = title + " " + *firstName + " " + regnal;
 
 		std::transform(title.begin(), title.end(), title.begin(), toupper);
