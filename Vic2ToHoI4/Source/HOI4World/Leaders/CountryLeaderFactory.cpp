@@ -27,7 +27,8 @@ HoI4::CountryLeader::Factory::Factory()
 }
 
 
-HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(const std::pair<std::string, std::string>& nextMonarch,
+HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(
+	 const std::pair<std::string, std::string>& nextMonarch,
 	 const std::string& primaryCulture,
 	 const std::string& primaryCultureGroup,
 	 const std::string& governmentIdeology,
