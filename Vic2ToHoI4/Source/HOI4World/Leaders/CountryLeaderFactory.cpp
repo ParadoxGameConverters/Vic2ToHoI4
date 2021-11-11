@@ -27,8 +27,7 @@ HoI4::CountryLeader::Factory::Factory()
 }
 
 
-HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(bool hasRulingDynasty,
-	 std::mt19937& regnalGenerator,
+HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(const std::pair<std::string, std::string>& nextMonarch,
 	 const std::string& primaryCulture,
 	 const std::string& primaryCultureGroup,
 	 const std::string& governmentIdeology,
@@ -57,15 +56,20 @@ HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(bool hasRuling
 	std::transform(upperSurname.begin(), upperSurname.end(), upperSurname.begin(), toupper);
 	leader.description = "POLITICS_" + upperFirstName + "_" + upperSurname + "_DESC";
 
-	if (hasRulingDynasty)
+	if (auto [regnalName, regnalNumber] = nextMonarch; !regnalName.empty())
 	{
-		std::string title = "King";
-		auto regnal = cardinalToRoman(std::uniform_int_distribution{3, 7}(regnalGenerator));
-		leader.name = title + " " + *firstName + " " + regnal;
-
-		std::transform(title.begin(), title.end(), title.begin(), toupper);
-		std::transform(regnal.begin(), regnal.end(), regnal.begin(), toupper);
-		leader.description = "POLITICS_" + title + "_" + upperFirstName + "_" + regnal + "_DESC";
+		if (!regnalNumber.empty())
+		{
+			leader.name = "King " + regnalName + " " + regnalNumber;
+			std::transform(regnalName.begin(), regnalName.end(), regnalName.begin(), toupper);
+			std::transform(regnalNumber.begin(), regnalNumber.end(), regnalNumber.begin(), toupper);
+			leader.description = "POLITICS_KING_" + regnalName + "_" + regnalNumber + "_DESC";
+		}
+		else
+		{
+			leader.name = "King " + *firstName;
+			leader.description = "POLITICS_KING_" + upperFirstName + "_DESC";
+		}
 	}
 
 	return leader;

@@ -1,4 +1,5 @@
 #include "HoI4Country.h"
+#include "CommonFunctions.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Localisation.h"
 #include "HoI4World.h"
@@ -114,6 +115,10 @@ HoI4::Country::Country(std::string tag,
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
 	lastDynasty = sourceCountry.getLastDynasty();
+	if (const auto& lastMonarch = sourceCountry.getLastMonarch(); lastMonarch)
+	{
+		convertMonarch(*lastMonarch);
+	}
 	convertLeaders(sourceCountry);
 	convertRelations(countryMap, sourceCountry, startDate);
 	atWar = sourceCountry.isAtWar();
@@ -431,6 +436,28 @@ void HoI4::Country::convertLaws()
 	else if (governmentIdeology == "radical")
 	{
 		tradeLaw = "free_trade";
+	}
+}
+
+
+void HoI4::Country::convertMonarch(const std::string& lastMonarch)
+{
+	nextMonarch = std::make_pair(lastMonarch, "");
+	const auto& lastSpacePos = lastMonarch.find_last_of(" ");
+	if (lastSpacePos == std::string::npos)
+	{
+		return;
+	}
+
+	const auto& regnalName = lastMonarch.substr(0, lastSpacePos);
+	const auto& potentialRegnalNumber = lastMonarch.substr(lastSpacePos + 1, lastMonarch.size());
+	for (int i = 0; i < 30; ++i)
+	{
+		if (!potentialRegnalNumber.empty() && cardinalToRoman(i) == potentialRegnalNumber)
+		{
+			nextMonarch = std::make_pair(regnalName, cardinalToRoman(i + 1));
+			break;
+		}
 	}
 }
 
@@ -1000,7 +1027,7 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 }
 
 
-void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper, std::mt19937& regnalGenerator)
+void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper)
 {
 	for (const auto& configuredLeader: leaders)
 	{
@@ -1010,8 +1037,7 @@ void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphics
 		}
 	}
 
-	leaders.push_back(CountryLeader::Factory::createNewLeader(hasRulingDynasty(),
-		 regnalGenerator,
+	leaders.push_back(CountryLeader::Factory::createNewLeader(nextMonarch,
 		 primaryCulture,
 		 primaryCultureGroup,
 		 governmentIdeology,

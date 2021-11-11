@@ -2914,6 +2914,27 @@ TEST(Vic2World_Countries_CountryTests, DynastyDefaultsToNullopt)
 }
 
 
+TEST(Vic2World_Countries_CountryTests, MonarchDefaultsToNullopt)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder().build(),
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder().Build(),
+										  std::vector{*Vic2::Party::Builder().Build()},
+										  *Vic2::StateLanguageCategories::Builder().build(),
+										  0.05F,
+										  std::nullopt);
+
+	ASSERT_EQ(std::nullopt, country->getLastMonarch());
+}
+
+
 TEST(Vic2World_Countries_CountryTests, DynastyImportedFromCountryData)
 {
 	std::stringstream theStream;
@@ -2932,6 +2953,27 @@ TEST(Vic2World_Countries_CountryTests, DynastyImportedFromCountryData)
 										  *Vic2::CountryData::Builder().setLastDynasty("test_dynasty").Build());
 
 	ASSERT_EQ("test_dynasty", country->getLastDynasty());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, MonarchImportedFromCountryData)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder().build(),
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder().Build(),
+										  std::vector{*Vic2::Party::Builder().Build()},
+										  *Vic2::StateLanguageCategories::Builder().build(),
+										  0.05F,
+										  *Vic2::CountryData::Builder().setLastMonarch("test_monarch").Build());
+
+	ASSERT_EQ("test_monarch", country->getLastMonarch());
 }
 
 

@@ -94,6 +94,7 @@ class Country
 	[[nodiscard]] bool isAtWar() const { return atWar; }
 	[[nodiscard]] const auto& getWars() const { return wars; }
 	[[nodiscard]] const auto& getLastDynasty() const { return lastDynasty; }
+	[[nodiscard]] const auto& getLastMonarch() const { return lastMonarch; }
 	[[nodiscard]] const auto& getGoodsStockpile() const { return stockpile; }
 
 	[[nodiscard]] auto& getModifiableArmies() { return armies; }
@@ -157,6 +158,7 @@ class Country
 	std::vector<War> wars; // only the country that started a war owns it here
 
 	std::optional<std::string> lastDynasty;
+	std::optional<std::string> lastMonarch;
 
 	std::map<std::string, float> stockpile;
 };

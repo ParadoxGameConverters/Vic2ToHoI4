@@ -18,9 +18,11 @@ class CountryData
 	class Builder;
 
 	[[nodiscard]] const auto& getLastDynasty() const { return lastDynasty; }
+	[[nodiscard]] const auto& getLastMonarch() const { return lastMonarch; }
 
   private:
 	std::optional<std::string> lastDynasty;
+	std::optional<std::string> lastMonarch;
 };
 
 } // namespace Vic2

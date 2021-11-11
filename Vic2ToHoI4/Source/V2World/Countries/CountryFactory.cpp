@@ -170,6 +170,7 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	if (countryData)
 	{
 		country->lastDynasty = countryData->getLastDynasty();
+		country->lastMonarch = countryData->getLastMonarch();
 	}
 
 	return std::move(country);

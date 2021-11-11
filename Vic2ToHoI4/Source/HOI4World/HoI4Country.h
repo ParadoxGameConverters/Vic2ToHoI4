@@ -92,7 +92,7 @@ class Country
 		 const Mappers::GovernmentMapper& governmentMap,
 		 Localisation& hoi4Localisations,
 		 bool debug);
-	void createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper, std::mt19937& regnalGenerator);
+	void createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const Mappers::GovernmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,
@@ -301,6 +301,7 @@ class Country
 	void createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names);
 	void convertLaws();
 	void convertLeaders(const Vic2::Country& sourceCountry);
+	void convertMonarch(const std::string& lastMonarch);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
 		 Localisation& hoi4Localisations,
@@ -339,6 +340,7 @@ class Country
 	std::string commonCountryFile;
 	bool human = false;
 	std::optional<std::string> lastDynasty;
+	std::pair<std::string, std::string> nextMonarch; // name, regnal number
 
 	std::string primaryCulture;
 	std::string primaryCultureGroup;

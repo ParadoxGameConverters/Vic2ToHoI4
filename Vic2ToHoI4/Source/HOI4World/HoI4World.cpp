@@ -463,7 +463,7 @@ void HoI4::World::addLeaders()
 			country->addLeader(i->second);
 		}
 
-		country->createLeader(*names, *graphicsMapper, regnalGenerator);
+		country->createLeader(*names, *graphicsMapper);
 	}
 }
 
