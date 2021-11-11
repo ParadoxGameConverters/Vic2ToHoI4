@@ -42,8 +42,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -51,8 +50,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -60,8 +58,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -69,8 +66,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -78,8 +74,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -87,8 +82,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -96,8 +90,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -105,8 +98,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -114,8 +106,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -123,8 +114,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -132,8 +122,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -141,8 +130,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -150,8 +138,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -159,8 +146,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -168,8 +154,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -177,8 +162,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -186,8 +170,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -195,8 +178,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = GER
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -204,8 +186,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -213,8 +194,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -222,8 +202,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -231,8 +210,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -240,8 +218,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -249,8 +226,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -258,8 +234,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -267,8 +242,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -276,8 +250,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -285,8 +258,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -294,8 +266,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = ENG
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -303,8 +274,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = USA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -312,8 +282,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = USA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -321,8 +290,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = USA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -330,8 +298,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = USA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -339,8 +306,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = USA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -348,8 +314,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = USA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -357,8 +322,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = USA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -366,8 +330,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = USA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -375,8 +338,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = FRA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -384,8 +346,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = FRA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -393,8 +354,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = FRA
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -429,12 +389,7 @@
 			has_dlc = "Waking the Tiger"
 			NOT = 
 			{
-				tag = FRA
-				tag = GER
-				tag = ENG
-				tag = USA
-				tag = SOV
-			}
+	  	  	  	  	  			}
 		}
 	}
 	icon = {
@@ -445,12 +400,7 @@
 			has_dlc = "Waking the Tiger"
 			NOT = 
 			{
-				tag = FRA
-				tag = GER
-				tag = ENG
-				tag = USA
-				tag = SOV
-			}
+	  	  	  	  	  			}
 		}
 	}
 	icon = {
@@ -461,12 +411,7 @@
 			has_dlc = "Waking the Tiger"
 			NOT = 
 			{
-				tag = FRA
-				tag = GER
-				tag = ENG
-				tag = USA
-				tag = SOV
-			}
+	  	  	  	  	  			}
 		}
 	}
 	icon = 
@@ -494,12 +439,7 @@
 			has_dlc = "Waking the Tiger"
 			NOT = 
 			{
-				tag = FRA
-				tag = GER
-				tag = ENG
-				tag = USA
-				tag = SOV
-			}
+	  	  	  	  	  			}
 		}
 	}
 	icon = {
@@ -510,12 +450,7 @@
 			has_dlc = "Waking the Tiger"
 			NOT = 
 			{
-				tag = FRA
-				tag = GER
-				tag = ENG
-				tag = USA
-				tag = SOV
-			}
+	  	  	  	  	  			}
 		}
 	}
 	icon = {
@@ -524,8 +459,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -533,8 +467,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -542,8 +475,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -551,8 +483,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -560,8 +491,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -569,8 +499,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -578,8 +507,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -587,16 +515,14 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
 		name = "213. Tanks"
 		available = {
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
@@ -604,8 +530,7 @@
 		available = 
 		{
 			has_dlc = "Waking the Tiger"
-			tag = SOV
-		}
+  		}
 	}
 	icon = {
 		color_override = no
