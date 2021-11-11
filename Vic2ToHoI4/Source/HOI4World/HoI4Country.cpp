@@ -330,7 +330,7 @@ void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 
 bool HoI4::Country::hasRulingDynasty()
 {
-	if (lastDynasty && governmentIdeology == "absolutist")
+	if (lastDynasty && oldGovernment == "absolute_monarchy")
 	{
 		return true;
 	}
@@ -973,6 +973,7 @@ void HoI4::Country::convertTechnology(const Mappers::TechMapper& techMapper,
 void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 	 const Ideologies& ideologies,
 	 const Mappers::GovernmentMapper& governmentMap,
+	 Localisation& hoi4Localisations,
 	 bool debug)
 {
 	if (rulingParty == std::nullopt)
@@ -992,6 +993,10 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 		 majorIdeologies,
 		 ideologies,
 		 debug);
+	if (hasRulingDynasty())
+	{
+		hoi4Localisations.addRulingHouseLocalisations(tag + "_" + governmentIdeology + "_party", *lastDynasty);
+	}
 }
 
 

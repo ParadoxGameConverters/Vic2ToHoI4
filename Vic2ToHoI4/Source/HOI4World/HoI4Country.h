@@ -90,6 +90,7 @@ class Country
 	void setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 		 const Ideologies& ideologies,
 		 const Mappers::GovernmentMapper& governmentMap,
+		 Localisation& hoi4Localisations,
 		 bool debug);
 	void createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper);
 	void convertGovernment(const Vic2::World& sourceWorld,

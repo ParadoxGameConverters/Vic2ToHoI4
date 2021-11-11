@@ -442,6 +442,7 @@ void HoI4::World::addNeutrality(bool debug)
 			country.second->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(),
 				 *ideologies,
 				 *governmentMapper,
+				 *hoi4Localisations,
 				 debug);
 		}
 	}
