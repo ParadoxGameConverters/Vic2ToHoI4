@@ -1,5 +1,4 @@
-
- technology_sharing_group = {
+technology_sharing_group = {
 
 	id = continuous_tech_share
 	name = continuous_tech_share_group_name
