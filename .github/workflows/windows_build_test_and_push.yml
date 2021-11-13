@@ -46,7 +46,7 @@ jobs:
       if: ${{ github.event_name == 'push' }}
       run: |
        cd "C:\Program Files\7-Zip\"
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic2ToHoI4-0.3, NSB.zip $Env:GITHUB_WORKSPACE\Release\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic2ToHoI4-0.3Patton, NSB.zip $Env:GITHUB_WORKSPACE\Release\*
        
     - name: "Upload binaries to release"
       if: ${{ github.event_name == 'push' }}
