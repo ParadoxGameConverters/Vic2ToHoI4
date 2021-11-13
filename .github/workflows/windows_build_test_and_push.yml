@@ -2,10 +2,12 @@ name: Build, test and publish
 on:
   push:
     branches:
-      - master, NSB
+      - master
+      - NSB
   pull_request:
     branches:
-      - master, NSB
+      - master
+      - NSB
 
 jobs:
   build_test_and_publish:
