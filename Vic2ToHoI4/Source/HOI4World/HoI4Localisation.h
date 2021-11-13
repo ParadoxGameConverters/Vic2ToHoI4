@@ -104,6 +104,7 @@ class Localisation
 	void addPoliticalPartyLocalisation(const std::string& Vic2Key,
 		 const std::string& HoI4Key,
 		 const Vic2::Localisations& vic2Localisations);
+	void addRulingHouseLocalisations(const std::string& rulingParty, const std::string& lastDynasty);
 	void addDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation);
 	void generateCustomLocalisations(ScriptedLocalisations& scriptedLocalisations,
 		 const std::set<std::string>& majorIdeologies);

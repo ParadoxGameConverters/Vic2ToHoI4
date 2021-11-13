@@ -442,6 +442,7 @@ void HoI4::World::addNeutrality(bool debug)
 			country.second->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(),
 				 *ideologies,
 				 *governmentMapper,
+				 *hoi4Localisations,
 				 debug);
 		}
 	}
@@ -453,6 +454,7 @@ void HoI4::World::addLeaders()
 	Log(LogLevel::Info) << "\tAdding leaders";
 	auto configurableLeaders = CountryLeadersFactory().importCountryLeaders();
 
+	std::mt19937 regnalGenerator;
 	for (auto& [tag, country]: countries)
 	{
 		auto leaders = configurableLeaders.equal_range(tag);

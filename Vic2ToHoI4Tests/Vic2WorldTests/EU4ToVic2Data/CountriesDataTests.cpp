@@ -23,4 +23,5 @@ TEST(Vic2World_EU4ToVic2Data_CountriesDataTests, CountryDataCanBeImported)
 				.build());
 
 	ASSERT_EQ("test_dynasty", countriesData->getCountryData("TAG")->getLastDynasty());
+	ASSERT_EQ("test_monarch", countriesData->getCountryData("TAG")->getLastMonarch());
 }

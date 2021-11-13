@@ -1,4 +1,5 @@
 TAG = {
 	monarchy = yes
+	last_ruler_name = test_monarch
 	last_dynasty = test_dynasty
 }

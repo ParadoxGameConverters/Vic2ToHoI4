@@ -22,6 +22,11 @@ class CountryData::Builder
 		countryData->lastDynasty = lastDynasty;
 		return *this;
 	}
+	Builder& setLastMonarch(const std::string& lastMonarch)
+	{
+		countryData->lastMonarch = lastMonarch;
+		return *this;
+	}
 
   private:
 	std::unique_ptr<CountryData> countryData;

@@ -1,4 +1,5 @@
 #include "CountryLeaderFactory.h"
+#include "CommonFunctions.h"
 #include "CommonRegexes.h"
 #include "Log.h"
 #include "ParserHelpers.h"
@@ -26,7 +27,9 @@ HoI4::CountryLeader::Factory::Factory()
 }
 
 
-HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(const std::string& primaryCulture,
+HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(
+	 const std::pair<std::string, std::string>& nextMonarch,
+	 const std::string& primaryCulture,
 	 const std::string& primaryCultureGroup,
 	 const std::string& governmentIdeology,
 	 const std::string& leaderIdeology,
@@ -53,6 +56,22 @@ HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(const std::str
 	auto upperSurname = *surname;
 	std::transform(upperSurname.begin(), upperSurname.end(), upperSurname.begin(), toupper);
 	leader.description = "POLITICS_" + upperFirstName + "_" + upperSurname + "_DESC";
+
+	if (auto [regnalName, regnalNumber] = nextMonarch; !regnalName.empty())
+	{
+		if (!regnalNumber.empty())
+		{
+			leader.name = "King " + regnalName + " " + regnalNumber;
+			std::transform(regnalName.begin(), regnalName.end(), regnalName.begin(), toupper);
+			std::transform(regnalNumber.begin(), regnalNumber.end(), regnalNumber.begin(), toupper);
+			leader.description = "POLITICS_KING_" + regnalName + "_" + regnalNumber + "_DESC";
+		}
+		else
+		{
+			leader.name = "King " + *firstName;
+			leader.description = "POLITICS_KING_" + upperFirstName + "_DESC";
+		}
+	}
 
 	return leader;
 }

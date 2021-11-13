@@ -90,6 +90,7 @@ class Country
 	void setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 		 const Ideologies& ideologies,
 		 const Mappers::GovernmentMapper& governmentMap,
+		 Localisation& hoi4Localisations,
 		 bool debug);
 	void createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper);
 	void convertGovernment(const Vic2::World& sourceWorld,
@@ -300,6 +301,7 @@ class Country
 	void createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names);
 	void convertLaws();
 	void convertLeaders(const Vic2::Country& sourceCountry);
+	void convertMonarch(const std::string& lastMonarch);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
 		 Localisation& hoi4Localisations,
@@ -328,6 +330,7 @@ class Country
 
 	void convertStockpile();
 	float getSourceCountryGoodAmount(const std::string& goodType);
+	bool hasRulingDynasty();
 
 	std::string tag;
 	std::string oldTag;
@@ -337,6 +340,7 @@ class Country
 	std::string commonCountryFile;
 	bool human = false;
 	std::optional<std::string> lastDynasty;
+	std::pair<std::string, std::string> nextMonarch; // name, regnal number
 
 	std::string primaryCulture;
 	std::string primaryCultureGroup;

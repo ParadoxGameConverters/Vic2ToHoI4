@@ -24,3 +24,24 @@ TEST(Vic2World_EU4ToVic2Data_CountryDataTests, LastDynastyCanBeSet)
 
 	ASSERT_EQ("test_dynasty", countryData->getLastDynasty());
 }
+
+
+TEST(Vic2World_EU4ToVic2Data_CountryDataTests, LastMonarchDefaultsToNullopt)
+{
+	const Vic2::CountryData countryData;
+
+	ASSERT_EQ(std::nullopt, countryData.getLastMonarch());
+}
+
+
+TEST(Vic2World_EU4ToVic2Data_CountryDataTests, LastMonarchCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\tlast_ruler_name = test_monarch\n";
+	input << "}";
+
+	const auto countryData = Vic2::CountryData::Factory().importCountryData(input);
+
+	ASSERT_EQ("test_monarch", countryData->getLastMonarch());
+}

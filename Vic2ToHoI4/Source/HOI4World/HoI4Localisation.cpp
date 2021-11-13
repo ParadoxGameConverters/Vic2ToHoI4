@@ -1157,6 +1157,19 @@ void HoI4::Localisation::addPoliticalPartyLocalisation(const std::string& Vic2Ke
 }
 
 
+void HoI4::Localisation::addRulingHouseLocalisations(const std::string& rulingParty, const std::string& lastDynasty)
+{
+	const auto& utf8Dynasty = commonItems::convertWin1252ToUTF8(lastDynasty);
+	politicalPartyLocalisations["english"][rulingParty] = "House of " + utf8Dynasty;
+	politicalPartyLocalisations["braz_por"][rulingParty] = "Casa de " + utf8Dynasty;
+	politicalPartyLocalisations["french"][rulingParty] = "Dynastie " + utf8Dynasty;
+	politicalPartyLocalisations["german"][rulingParty] = "Dynastie der " + utf8Dynasty;
+	politicalPartyLocalisations["polish"][rulingParty] = "Dynastia " + utf8Dynasty + "ów";
+	politicalPartyLocalisations["russian"][rulingParty] = "Династия " + utf8Dynasty;
+	politicalPartyLocalisations["spanish"][rulingParty] = "Casa de " + utf8Dynasty;
+}
+
+
 void HoI4::Localisation::addDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation)
 {
 	for (const auto& localisationInLanguage: decisionLocalisations)

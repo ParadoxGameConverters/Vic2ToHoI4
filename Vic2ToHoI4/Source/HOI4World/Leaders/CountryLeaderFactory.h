@@ -19,7 +19,8 @@ class CountryLeader::Factory: commonItems::parser
   public:
 	Factory();
 
-	static CountryLeader createNewLeader(const std::string& primaryCulture,
+	static CountryLeader createNewLeader(const std::pair<std::string, std::string>& nextMonarch,
+		 const std::string& primaryCulture,
 		 const std::string& primaryCultureGroup,
 		 const std::string& governmentIdeology,
 		 const std::string& leaderIdeology,

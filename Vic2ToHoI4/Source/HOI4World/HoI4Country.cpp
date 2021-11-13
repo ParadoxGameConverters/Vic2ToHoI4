@@ -1,4 +1,5 @@
 #include "HoI4Country.h"
+#include "CommonFunctions.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Localisation.h"
 #include "HoI4World.h"
@@ -114,6 +115,10 @@ HoI4::Country::Country(std::string tag,
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
 	lastDynasty = sourceCountry.getLastDynasty();
+	if (const auto& lastMonarch = sourceCountry.getLastMonarch(); lastMonarch)
+	{
+		convertMonarch(*lastMonarch);
+	}
 	convertLeaders(sourceCountry);
 	convertRelations(countryMap, sourceCountry, startDate);
 	atWar = sourceCountry.isAtWar();
@@ -315,10 +320,26 @@ void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 
 	if (rulingParty != std::nullopt)
 	{
-		hoi4Localisations.addPoliticalPartyLocalisation(rulingParty->getName(),
-			 tag + "_" + governmentIdeology + "_party",
-			 vic2Localisations);
+		const auto& HoI4Key = tag + "_" + governmentIdeology + "_party";
+		if (hasRulingDynasty())
+		{
+			hoi4Localisations.addRulingHouseLocalisations(HoI4Key, *lastDynasty);
+		}
+		else
+		{
+			hoi4Localisations.addPoliticalPartyLocalisation(rulingParty->getName(), HoI4Key, vic2Localisations);
+		}
 	}
+}
+
+
+bool HoI4::Country::hasRulingDynasty()
+{
+	if (lastDynasty && oldGovernment == "absolute_monarchy")
+	{
+		return true;
+	}
+	return false;
 }
 
 
@@ -415,6 +436,28 @@ void HoI4::Country::convertLaws()
 	else if (governmentIdeology == "radical")
 	{
 		tradeLaw = "free_trade";
+	}
+}
+
+
+void HoI4::Country::convertMonarch(const std::string& lastMonarch)
+{
+	nextMonarch = std::make_pair(lastMonarch, "");
+	const auto& lastSpacePos = lastMonarch.find_last_of(" ");
+	if (lastSpacePos == std::string::npos)
+	{
+		return;
+	}
+
+	const auto& regnalName = lastMonarch.substr(0, lastSpacePos);
+	const auto& potentialRegnalNumber = lastMonarch.substr(lastSpacePos + 1, lastMonarch.size());
+	for (int i = 0; i < 30; ++i)
+	{
+		if (!potentialRegnalNumber.empty() && cardinalToRoman(i) == potentialRegnalNumber)
+		{
+			nextMonarch = std::make_pair(regnalName, cardinalToRoman(i + 1));
+			break;
+		}
 	}
 }
 
@@ -957,6 +1000,7 @@ void HoI4::Country::convertTechnology(const Mappers::TechMapper& techMapper,
 void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 	 const Ideologies& ideologies,
 	 const Mappers::GovernmentMapper& governmentMap,
+	 Localisation& hoi4Localisations,
 	 bool debug)
 {
 	if (rulingParty == std::nullopt)
@@ -976,6 +1020,10 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 		 majorIdeologies,
 		 ideologies,
 		 debug);
+	if (hasRulingDynasty())
+	{
+		hoi4Localisations.addRulingHouseLocalisations(tag + "_" + governmentIdeology + "_party", *lastDynasty);
+	}
 }
 
 
@@ -989,7 +1037,8 @@ void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphics
 		}
 	}
 
-	leaders.push_back(CountryLeader::Factory::createNewLeader(primaryCulture,
+	leaders.push_back(CountryLeader::Factory::createNewLeader(nextMonarch,
+		 primaryCulture,
 		 primaryCultureGroup,
 		 governmentIdeology,
 		 leaderIdeology,
