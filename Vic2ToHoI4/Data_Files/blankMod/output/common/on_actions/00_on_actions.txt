@@ -166,7 +166,8 @@ on_actions = {
 
 	#FROM is country getting invited.
 	on_offer_join_faction = {
-		effect = {			#Give achievement to nation joining a faction, but not in one from game start
+		effect = {
+			#Give achievement to nation joining a faction, but not in one from game start
 			if = {
 				limit = {
 					date > 1936.01.02
@@ -180,18 +181,6 @@ on_actions = {
 				}
 			}
 			#Remove anti_soviet_pact if joining commie Soviet in faction
-			#if = {
-			#	limit = {
-			#		original_tag = SOV
-			#		has_government = communism
-			#		FROM = {
-			#			has_idea = anti_soviet_pact 
-			#		}
-			#	}
-			#	FROM = {
-			#		remove_ideas = anti_soviet_pact
-			#	}
-			#}
 	
 			# Sunset invasion check
 			if = {
@@ -199,7 +188,6 @@ on_actions = {
 					is_puppet = no
 					OR = {
 						AND = {
-							#tag = MEX
 							FROM = {
 								capital_scope = {
 									NOT = { is_on_continent = south_america }
@@ -207,9 +195,6 @@ on_actions = {
 							}
 						}
 						AND = {
-							#FROM = {
-							#	tag = MEX
-							#}
 							capital_scope = {
 								NOT = { is_on_continent = south_america }
 							}
@@ -217,31 +202,21 @@ on_actions = {
 					}
 				}
 				set_country_flag = achievement_failed_sunset_invasion
-			}	
+			}			
 		}
 	}
 
 	#FROM is faction leader on join faction requests. THIS DOES NOT FIRE ON ADD_TO_FACTION EFFECT! USE ON_OFFER_JOIN_FACTION!
 	on_join_faction = {
-		effect = {			
+		effect = {
 			#Remove anti_soviet_pact if joining commie Soviet in faction
-			#if = {
-			#	limit = {
-			#		has_idea = anti_soviet_pact 
-			#		FROM = {
-			#			original_tag = SOV
-			#			has_government = communism
-			#		}
-			#	}
-			#	remove_ideas = anti_soviet_pact
-			#}
+
 			# Sunset invasion check
 			if = {
 				limit = {
 					is_puppet = no
 					OR = {
 						AND = {
-							#tag = MEX
 							FROM = {
 								capital_scope = {
 									NOT = { is_on_continent = south_america }
@@ -249,9 +224,6 @@ on_actions = {
 							}
 						}
 						AND = {
-							#FROM = {
-							#	tag = MEX
-							#}
 							capital_scope = {
 								NOT = { is_on_continent = south_america }
 							}
@@ -260,6 +232,7 @@ on_actions = {
 				}
 				set_country_flag = achievement_failed_sunset_invasion
 			}
+
 			# Romania shouldn't declare war on Bulgaria on historical mode, if both are going to join the Axis
 			# Removed because based on HoI4 Vanilla
 		}
@@ -285,6 +258,7 @@ on_actions = {
 					}
 				}
 			}
+
 			#If prepared with surprise attack plan, get bonus
 			if = {
 				limit = {
@@ -327,10 +301,10 @@ on_actions = {
 	}
 
 	on_government_change = {
-		effect = {
+		effect = {			
 		}
 	}
-	
+
 	on_coup_succeeded = {
 	### Handled in 99_converter_on_actions.txt
 	}
@@ -386,6 +360,8 @@ on_actions = {
 		effect = {
 		}
 	}
+	
+
 	#ROOT = country that joined a war
 	on_war = {
 		effect = {
@@ -415,6 +391,8 @@ on_actions = {
 			
 		}
 	}
+	
+	
 	
 	# From is owner country
 	on_army_leader_daily = {

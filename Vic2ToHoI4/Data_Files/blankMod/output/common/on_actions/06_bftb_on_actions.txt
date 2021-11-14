@@ -6,8 +6,15 @@ on_actions = {
 	}
 	on_state_control_changed = {
 	}
+
+	#FROM is faction leader on join faction requests. THIS DOES NOT FIRE ON ADD_TO_FACTION EFFECT! USE ON_OFFER_JOIN_FACTION!
 	on_join_faction = {
 	}
+
+	#FROM is country getting invited.
+	on_offer_join_faction = {
+	}
+
 	on_startup = {
 	}
 

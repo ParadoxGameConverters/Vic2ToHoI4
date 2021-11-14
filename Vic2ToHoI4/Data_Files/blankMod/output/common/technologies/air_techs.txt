@@ -155,6 +155,7 @@ technologies = {
 		
 		ai_will_do = {
 			factor = 1
+			
 			modifier = {
 				factor = 0
 				OR = {
@@ -214,7 +215,7 @@ technologies = {
 				factor = 4
 				is_major = yes
 			}
-			
+
 			modifier = {
 				factor = 1.2
 				date > "1941.1.1"
@@ -474,6 +475,7 @@ technologies = {
 		categories = {
 			naval_air
 			air_equipment
+			cas_bomber
 		}
 		
 		ai_will_do = {
@@ -550,6 +552,7 @@ technologies = {
 		categories = {
 			naval_air
 			air_equipment
+			cas_bomber
 		}
 		
 		ai_will_do = {
@@ -602,6 +605,7 @@ technologies = {
 		
 		ai_will_do = {
 			factor = 1
+			
 			modifier = {
 				has_deployed_air_force_size = {
 					size > 500
@@ -624,6 +628,7 @@ technologies = {
 		categories = {
 			naval_air
 			air_equipment
+			cas_bomber
 		}
 		
 		ai_will_do = {
