@@ -508,7 +508,7 @@ equipments = {
 		build_cost_ic = 30.4 # cv_version costs 20% more of base archetype
 		resources = {
 			#oil = 2
-			aluminium = 2
+			aluminium = 3
 			rubber = 1
 		}
 		naval_strike_attack = 6

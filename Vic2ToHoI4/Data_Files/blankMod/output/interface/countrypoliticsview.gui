@@ -405,9 +405,8 @@ guiTypes = {
 			
 			containerWindowType = {
 				name = "national_spirit_container"
-				position = { x = 90 y = 19 }
-				size = { width = 365 height = 68 }
-				
+				position = { x = 99 y = 16 }
+				size = { width = 364 height = 74 }
 				verticalScrollbar = "right_vertical_slider"
 				
 				background = {
@@ -417,16 +416,17 @@ guiTypes = {
 				
 				gridboxtype = {
 					name = "spirit_grid"
-					position = { x = 12 y = 0 }
-					size = { width = 350 height = 100%% }
-					slotsize = { width = 60 height = 68 }
-					max_slots = { x = 8 y = 1 }
+					position = { x = 1 y = 2 }
+					size = { width = 354 height = 68 }
+					slotsize = { width = 59 height = 68 }
+					max_slots = { x = 6 y = 1 }
 					format = "UPPER_LEFT"
 				}
 				gridboxtype = {
 					name = "spirit_grid_over_defined"
-					size = { width = 350 height = 100%% }
-					slotsize = { width = 33 height = 32 }
+					position = { x = 10 y = 1 }
+					size = { width = 330 height = 68 }
+					slotsize = { width = 33 height = 34 }
 					max_slots_horizontal = 10
 					format = "UPPER_LEFT"
 				}
@@ -801,7 +801,6 @@ guiTypes = {
 			alwaystransparent = yes
 			frame = 1
 		}
-		
 	}
 	
 	containerWindowType = {
@@ -1100,7 +1099,7 @@ guiTypes = {
 		buttonType = {
 			name = "autonomy_country_flag"
 			quadTextureSprite ="GFX_player_flag"
-			position = { x= 10 y = 9 }
+			position = { x= 12 y = 10 }
 			Orientation = "UPPER_LEFT"
 		}	
 
@@ -1282,7 +1281,7 @@ guiTypes = {
 		buttonType = {
 			name = "country_flag"
 			quadTextureSprite ="GFX_player_flag"
-			position = { x= 10 y = 5 }
+			position = { x= 12 y = 8 }
 			Orientation = "UPPER_LEFT"
 		}
 
@@ -1361,7 +1360,7 @@ guiTypes = {
 		buttonType = {
 			name = "exile_country_flag"
 			quadTextureSprite ="GFX_player_flag"
-			position = { x= 10 y = 5 }
+			position = { x= 12 y = 7 }
 			Orientation = "UPPER_LEFT"
 		}
 
@@ -1517,7 +1516,7 @@ guiTypes = {
 		iconType = {
 			name = "flag"
 			quadTextureSprite ="GFX_flag_small2"
-			position = { x= 50 y = 6 }
+			position = { x= 51 y = 7 }
 			Orientation = "UPPER_LEFT"
 		}
 		

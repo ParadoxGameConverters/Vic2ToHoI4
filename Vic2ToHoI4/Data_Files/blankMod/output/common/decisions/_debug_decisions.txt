@@ -26,6 +26,8 @@ debug_decisions = {
 		}
 	}
 
+	
+
 	create_recruitable_operative_not_to_spy_master_debug = {
 		icon = generic_research
 

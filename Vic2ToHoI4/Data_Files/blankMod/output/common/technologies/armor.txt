@@ -4,9 +4,11 @@ technologies = {
 
 		enable_equipments = {
 			gw_tank_equipment
+
 		}
 		enable_subunits = {
 			light_armor
+
 		}
 		on_research_complete_limit = {
 			NOT = {	has_template_containing_unit = light_armor }
@@ -652,7 +654,6 @@ technologies = {
 				is_major = yes
 				date > "1938.1.1"
 			}
-			
 			modifier = {
 				factor = 1.1
 				date > "1940.1.1"
