@@ -398,7 +398,7 @@ communist_peace = {
 				}
 				FROM = {
 					owner = {
-						FROM = { is_core_of = PREV }
+						PREV = { is_core_of = PREV }
 					}
 				}
 			}
@@ -825,7 +825,7 @@ radical_peace = {
 				}
 				FROM = {
 					owner = {
-						FROM = { is_core_of = PREV }
+						PREV = { is_core_of = PREV }
 					}
 				}
 			}
@@ -1521,7 +1521,7 @@ fascist_peace = {
 			}
 			FROM = {
 				owner = {
-					FROM = { 
+					PREV = { 
 						is_core_of = PREV
 						is_on_continent = europe
 					}
@@ -2240,7 +2240,7 @@ absolutist_peace = {
 			}
 			FROM = {
 				owner = {
-					FROM = { 
+					PREV = { 
 						is_core_of = PREV
 						is_on_continent = europe
 					}
@@ -2761,7 +2761,7 @@ democratic_peace = {
 				}
 				FROM = {
 					owner = {
-						FROM = { is_core_of = PREV }
+						PREV = { is_core_of = PREV }
 					}
 				}
 			}
