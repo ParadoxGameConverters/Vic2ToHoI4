@@ -21,3 +21,24 @@ country_event = {
 		name = excellent
 	}
 }
+
+country_event = {
+	id = generic_debug.44
+	title = generic_debug.44.t
+	desc = TORPS
+	
+	picture = GFX_report_event_generic_factory
+
+	is_triggered_only = yes
+
+
+	immediate = {
+		
+	}
+
+	option = {
+		name = TORPS
+		add_ideas = bureau_of_ordnance_spirit
+	}
+}
+
