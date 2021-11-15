@@ -1519,7 +1519,7 @@ indian = {
 }
 
 turkic = {
-	cultures_and_groups = { turkish azerbaijani pecheneg yenidun guney esmer uzbek kazak kirgiz uighur turkmen tatar hittite_g yakut siberian } # Move hittite_g later
+	cultures_and_groups = { turkish azerbaijani pecheneg yenidun guney esmer uzbek kazak kirgiz uighur turkmen tatar yakut siberian } # Move hittite_g later
 	
 	army_portraits = {
 		#Generic Middle Eastern
@@ -1812,8 +1812,163 @@ iranian = {
 	graphical_culture_2d = middle_eastern_2d
 }
 
-arabic_persian = {
-	cultures_and_groups = { arab punic iranian_turanian }
+north_african = {
+	cultures_and_groups = { maghrebi berber maures frencharab andalucian ifriqi tuareg }
+	army_portraits = {
+		#Generic Middle Eastern
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_1.dds"
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_2.dds"
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_3.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_Arabia_Generic_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Arabia_Generic_land_new_2.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_EGY_Mahmoud_Shokry.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_EGY_Mohamed_Haidar.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_EGY_Mohammed_Naguib.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_EGY_Mohammed_Salim.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_EGY_abdel_hakim_amer.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_EGY_Ahmed_Mwawi.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_JOR_Jafar_Askari.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_Oman_Suleiman_Ryami.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_SYR_Sami_Al_Hinawi.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_YEM_Ali_Nasser_Al-Qardai.tga"
+		"gfx/leaders/SPA/portrait_spa_mohamed_meziane.dds"
+	}
+	navy_portraits = {
+		#Generic Middle Eastern
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
+		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_2.dds"
+		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_3.dds"
+		#Other
+		"gfx/leaders/Arabic_Persian/Portrait_EGY_Suleiman_Ezzat.tga"
+		"gfx/leaders/Arabic_Persian/Portrait_EGY_Hussein_Refki.tga" #Marine
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/JOR/Portrait_Arabia_Generic_1.dds"
+			"gfx/leaders/JOR/Portrait_Arabia_Generic_communism1.dds"
+			"gfx/leaders/Arabic_Persian/Portrait_KUR_Haji_Baba.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_LBA_Nuri_Al_Khikia.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_MOR_Ali_Yata.tga"
+		} 
+		democratic = {
+			"gfx/leaders/JOR/Portrait_Arabia_Generic_democratic1.dds"
+			"gfx/leaders/Arabic_Persian/Portrait_IRQ_maktoum.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_JOR_Salih_Jabr.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_KUR_Kamuran.tga"
+			"gfx/leaders/Arabic_Persian/Johannes_Bell.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_PAL_Abraham.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_PAL_Alami.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_PAL_Nashashibi.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_SYR_Sabri.tga"
+		} 
+		fascism = {
+			"gfx/leaders/JOR/Portrait_Arabia_Generic_3.dds"
+			"gfx/leaders/JOR/Portrait_Arabia_Generic_fascism1.dds"
+			"gfx/leaders/IRQ/portrait_irq_rashid_al_gaylani.dds"
+			"gfx/leaders/Generic/r56_portrait_generic_middle_east_1.dds"
+			"gfx/leaders/Arabic_Persian/Portrait_EGY_Ahmed_Aziz.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_LBA_Abu_Meniar.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_PAL_The_Mufti.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_YEM_Abdullah_as_Sallal.tga"
+		} 
+		absolutist = {
+			"gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
+			"gfx/leaders/EGY/Portrait_EGY_faud_i.dds"
+			"gfx/leaders/OMA/portrait_oma_said_bin_taimur.dds"
+			"gfx/leaders/YEM/portrait_yem_imam_yaha.dds"
+			"gfx/leaders/Arabic_Persian/Portrait_Egypt_Farouk.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_Arabia_Faisal_Bin_Hussein.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_IRQ_Sheikh_Gabdan.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_JBS_Abdulaziz_bin_Saud_bin_Abdulaziz.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_JBS_Aziz_Emir.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_JBS_Shakhbut_bin_Sultan_Al_Nahyan.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_JOR_Zeid_Hashmid.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_KUR_Mahmud_Barzanji.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_Oman_Talib_Hina.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_Oman_Said_Ibn_Taimur.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_MOR_El_Glaui.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Moncef_Bey.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_YEM_Ahmad_bin_Yahya.tga"
+		}
+		neutrality = {
+			"gfx/leaders/KUR/portrait_kur_seyid_riza.dds"
+			"gfx/leaders/Arabic_Persian/Portrait_EGY_Hussein_Al_Shafei.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_EGY_Aziz_Ezzat.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_EGY_Sabry_Pasha.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_JBS_Auda_Abu_Tayeh.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_MOR_Assou.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_MOR_Zayani.tga"
+		} 
+		radical = {
+			"gfx/leaders/JOR/Portrait_Arabia_Generic_2.dds"
+			"gfx/leaders/Arabic_Persian/Portrait_JBS_Al_Jaber.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_JOR_Yusuf.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_MOR_Abdallah_Ibrahim.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_Persia_Mohammad_Mosaddegh.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_SYR_Shukri.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Abdelaziz_Thaalbi.tga"
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
+		}
+		monarch = {
+			"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
+		}
+		ideological_leader = {
+			"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_tur_sevket_sureyya_aydemir.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_tur_recep_peker.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/idea_generic_army_arab_3.dds" #Revise
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_generic_political_advisor_arab_2.dds"
+		}
+		radical = {
+			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_2.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_3.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_5.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_6.dds"
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_1.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_2.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_3.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_4.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_5.dds"
+		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/egypt.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/egypt.dds"
+	}
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
+}
+
+near_eastern = {
+	cultures_and_groups = { arab punic hittite_g }
 	
 	army_portraits = {
 		#Generic Middle Eastern
@@ -1919,10 +2074,10 @@ arabic_persian = {
 		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/persia.dds"
+		"gfx/interface/ideas/crowns/egypt_emblem.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/persia.dds"
+		"gfx/interface/ideas/crowns/egypt_emblem.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -4290,170 +4445,6 @@ hispanic = {
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
-}
-
-north_african = {
-	cultures_and_groups = { maghrebi berber maures frencharab tuareg }
-	army_portraits = {
-		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_3.dds"
-		#Other
-		"gfx/leaders/Generic/Portrait_Arabia_Generic_new_1.tga"
-		"gfx/leaders/Generic/Portrait_Arabia_Generic_land_new_2.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_EGY_Mahmoud_Shokry.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_EGY_Mohamed_Haidar.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_EGY_Mohammed_Naguib.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_EGY_Mohammed_Salim.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_EGY_abdel_hakim_amer.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_EGY_Ahmed_Mwawi.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_JOR_Jafar_Askari.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_Oman_Suleiman_Ryami.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_PAL_al_Husayni.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_PAL_Hasan_Salama.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_SYR_Sami_Al_Hinawi.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_YEM_Ali_Nasser_Al-Qardai.tga"
-		"gfx/leaders/SPA/portrait_spa_mohamed_meziane.dds"
-	}
-	navy_portraits = {
-		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_3.dds"
-		#Other
-		"gfx/leaders/Arabic_Persian/Portrait_EGY_Suleiman_Ezzat.tga"
-		"gfx/leaders/Arabic_Persian/Portrait_EGY_Hussein_Refki.tga" #Marine
-	}
-	leader_portraits = {
-		communism = {
-			"gfx/leaders/JOR/Portrait_Arabia_Generic_1.dds"
-			"gfx/leaders/JOR/Portrait_Arabia_Generic_communism1.dds"
-			"gfx/leaders/Arabic_Persian/Portrait_KUR_Haji_Baba.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_LBA_Nuri_Al_Khikia.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_MOR_Ali_Yata.tga"
-		} 
-		democratic = {
-			"gfx/leaders/JOR/Portrait_Arabia_Generic_democratic1.dds"
-			"gfx/leaders/Arabic_Persian/Portrait_IRQ_maktoum.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_JOR_Salih_Jabr.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_KUR_Kamuran.tga"
-			"gfx/leaders/Arabic_Persian/Johannes_Bell.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_PAL_Abraham.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_PAL_Alami.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_PAL_Nashashibi.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_SYR_Sabri.tga"
-		} 
-		fascism = {
-			"gfx/leaders/JOR/Portrait_Arabia_Generic_3.dds"
-			"gfx/leaders/JOR/Portrait_Arabia_Generic_fascism1.dds"
-			"gfx/leaders/IRQ/portrait_irq_rashid_al_gaylani.dds"
-			"gfx/leaders/Generic/r56_portrait_generic_middle_east_1.dds"
-			"gfx/leaders/Arabic_Persian/Portrait_EGY_Ahmed_Aziz.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_LBA_Abu_Meniar.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_PAL_The_Mufti.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_YEM_Abdullah_as_Sallal.tga"
-		} 
-		absolutist = {
-			"gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
-			"gfx/leaders/EGY/Portrait_EGY_faud_i.dds"
-			"gfx/leaders/IRQ/portrait_irq_ghazi.dds"
-			"gfx/leaders/OMA/portrait_oma_said_bin_taimur.dds"
-			"gfx/leaders/PER/Portrait_Iran_Reza_Shah_Pahlavi.dds"
-			"gfx/leaders/SAU/Portrait_Saudi_Arabia_Abdulazis_Ibn_Saud.dds"
-			"gfx/leaders/YEM/portrait_yem_imam_yaha.dds"
-			"gfx/leaders/Arabic_Persian/Portrait_Egypt_Farouk.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Arabia_Faisal_Bin_Hussein.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_IRQ_Sheikh_Gabdan.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_JBS_Abdulaziz_bin_Saud_bin_Abdulaziz.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_JBS_Aziz_Emir.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_JBS_Shakhbut_bin_Sultan_Al_Nahyan.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_JOR_Zeid_Hashmid.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_KUR_Mahmud_Barzanji.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Oman_Talib_Hina.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Oman_Said_Ibn_Taimur.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_MOR_El_Glaui.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Saudi_Arabia_Abdulazis_Ibn_Saud.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Saudi_Arabia_Khalid_bin_Abdulaziz_Al_Saud.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Moncef_Bey.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_YEM_Ahmad_bin_Yahya.tga"
-		}
-		neutrality = {
-			"gfx/leaders/KUR/portrait_kur_seyid_riza.dds"
-			"gfx/leaders/Arabic_Persian/Portrait_EGY_Hussein_Al_Shafei.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_EGY_Aziz_Ezzat.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_EGY_Sabry_Pasha.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_JBS_Auda_Abu_Tayeh.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_MOR_Assou.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_MOR_Zayani.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Persia_Sayyed_Hasan_Taqizadeh.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Saudi_Arabia_Abdallah_bin_Abdul_Rahman_Al_Saud.tga"
-		} 
-		radical = {
-			"gfx/leaders/JOR/Portrait_Arabia_Generic_2.dds"
-			"gfx/leaders/Arabic_Persian/Portrait_JBS_Al_Jaber.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_JOR_Yusuf.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_MOR_Abdallah_Ibrahim.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Persia_Mohammad_Mosaddegh.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_SYR_Shukri.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Abdelaziz_Thaalbi.tga"
-		}
-	}
-	female_portraits = {
-		military = {
-			"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
-		}
-		monarch = {
-			"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
-		}
-		ideological_leader = {
-			"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
-		}
-	}
-	ideology_minister_portraits = {
-		communism = {
-			"gfx/interface/ideas/idea_tur_sevket_sureyya_aydemir.dds"
-		}
-		democratic = {
-			"gfx/interface/ideas/idea_tur_recep_peker.dds"
-		}
-		fascism = {
-			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
-		}
-		absolutist = {
-			"gfx/interface/ideas/idea_generic_army_arab_3.dds" #Revise
-		}
-		neutrality = {
-			"gfx/interface/ideas/idea_generic_political_advisor_arab_2.dds"
-		}
-		radical = {
-			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
-		}
-	}
-	male_operative_portraits = {
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_1.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_2.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_3.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_4.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_5.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_male_6.dds"
-	}
-	female_operative_portraits = {
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_1.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_2.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_3.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_4.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_5.dds"
-		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
-	}
-	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/egypt.dds"
-	}
-	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/egypt.dds"
-	}
-	graphical_culture = middle_eastern_gfx
-	graphical_culture_2d = middle_eastern_2d
 }
 
 cushitic_omotic_nilotic = {
