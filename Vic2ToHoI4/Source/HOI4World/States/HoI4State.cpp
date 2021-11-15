@@ -10,10 +10,9 @@
 
 constexpr int POP_CONVERSION_FACTOR = 4;
 constexpr int POPULATION_PER_STATE_SLOT = 120000;
-constexpr int FIRST_INFRASTRUCTURE_REWARD_LEVEL = 4;
+constexpr int FIRST_INFRASTRUCTURE_REWARD_LEVEL = 1;
 constexpr int SECOND_INFRASTRUCTURE_REWARD_LEVEL = 6;
 constexpr int THIRD_INFRASTRUCTURE_REWARD_LEVEL = 10;
-
 
 
 HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag): ID(_ID), ownerTag(_ownerTag)
@@ -343,9 +342,9 @@ void HoI4::State::convertIndustry(double workerFactoryRatio,
 	int factories = determineFactoryNumbers(workerFactoryRatio);
 
 	determineCategory(factories, theStateCategories);
-	addInfrastructureFromFactories(factories);
 	setIndustry(factories, theCoastalProvinces);
 	addVictoryPointValue(factories / 2);
+	addInfrastructureFromFactories(civFactories + milFactories + dockyards);
 }
 
 
@@ -402,23 +401,23 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 
 void HoI4::State::addInfrastructureFromRails(float averageRailLevels)
 {
-	infrastructure += static_cast<int>(averageRailLevels / 2);
+	infrastructure += averageRailLevels / 2;
 }
 
 
 void HoI4::State::addInfrastructureFromFactories(int factories)
 {
-	if (factories > FIRST_INFRASTRUCTURE_REWARD_LEVEL)
+	if (factories >= FIRST_INFRASTRUCTURE_REWARD_LEVEL)
 	{
-		infrastructure++;
+		infrastructure += 0.75F;
 	}
-	if (factories > SECOND_INFRASTRUCTURE_REWARD_LEVEL)
+	if (factories >= SECOND_INFRASTRUCTURE_REWARD_LEVEL)
 	{
-		infrastructure++;
+		infrastructure += 0.75F;
 	}
-	if (factories > THIRD_INFRASTRUCTURE_REWARD_LEVEL)
+	if (factories >= THIRD_INFRASTRUCTURE_REWARD_LEVEL)
 	{
-		infrastructure++;
+		infrastructure += 0.75F;
 	}
 }
 
