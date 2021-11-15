@@ -342,9 +342,9 @@ void HoI4::State::convertIndustry(double workerFactoryRatio,
 	int factories = determineFactoryNumbers(workerFactoryRatio);
 
 	determineCategory(factories, theStateCategories);
+	addInfrastructureFromFactories(factories + civFactories + milFactories + dockyards);
 	setIndustry(factories, theCoastalProvinces);
 	addVictoryPointValue(factories / 2);
-	addInfrastructureFromFactories(civFactories + milFactories + dockyards);
 }
 
 
