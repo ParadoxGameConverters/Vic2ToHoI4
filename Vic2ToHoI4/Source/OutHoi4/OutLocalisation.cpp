@@ -72,7 +72,7 @@ void HoI4::outputLocalisation(const Localisation& localisation, const std::strin
 		throw std::runtime_error("Could not create localisation folder");
 	}
 
-	outputLocalisations(localisationPath, "countries_l_", localisation.getCountryLocalisations());
+	outputLocalisations(localisationPath, "/countries_l_", localisation.getCountryLocalisations());
 	outputLocalisations(localisationPath, "/focus_mod_l_", localisation.getNewFocuses());
 	outputStateLocalisations(localisationPath, localisation.getStateLocalisations());
 	outputLocalisations(localisationPath, +"/victory_points_l_", localisation.getVPLocalisations());
