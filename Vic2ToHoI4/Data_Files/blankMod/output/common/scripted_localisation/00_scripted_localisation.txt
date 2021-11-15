@@ -50,36 +50,3 @@ defined_text = { # Country
 		localization_key = ""
 	}
 }
-
-defined_text = {
-	name = GetOperationName
-	text = {
-		random_list = {
-			25 = { localization_key = generic_operation_1 }
-			25 = { localization_key = generic_operation_2 }
-			25 = { localization_key = generic_operation_3 }
-			25 = { localization_key = generic_operation_4 }
-		}
-	}
-}
-defined_text = {
-	name = ROM_UnlockedArmor
-	text = {
-		trigger = {
-			OR ={
-					has_tech = basic_medium_tank
-					has_tech = basic_medium_tank_chassis
-				}
-		}
-		localization_key = EQUIPMENT_WEIGHT_MEDIUM
-	}
-	text = {
-		trigger = {
-			OR ={
-					NOT= {has_tech = basic_medium_tank}
-					NOT= {has_tech = basic_medium_tank_chassis}
-				}
-		}
-		localization_key = EQUIPMENT_WEIGHT_LIGHT
-	}
-}

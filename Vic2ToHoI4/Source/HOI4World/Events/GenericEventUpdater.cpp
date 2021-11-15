@@ -609,9 +609,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 			 "\t\t}");
 		option.giveScriptBlock(
 			 "FROM = {\n"
-			 "\t\t\tfaction_leader = {\n"
-			 "\t\t\t\tadd_to_faction = ROOT\n"
-			 "\t\t\t}\n"
+			 "\t\t\tadd_to_faction = ROOT\n"
 			 "\t\t\tcountry_event = { id = generic.6 hours = 6 }\n"
 			 "\t\t}");
 		option.giveScriptBlock(
@@ -819,9 +817,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 		 "\t\t}");
 	bothDifferent.giveScriptBlock(
 		 "FROM = {\n"
-		 "\t\t\tfaction_leader = {\n"
-		 "\t\t\t\tadd_to_faction = ROOT\n"
-		 "\t\t\t}\n"
+		 "\t\t\tadd_to_faction = ROOT\n"
 		 "\t\t\tcountry_event = { id = generic.6 hours = 6 }\n"
 		 "\t\t}");
 	bothDifferent.giveHiddenEffect(

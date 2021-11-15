@@ -4,7 +4,8 @@
 
 void HoI4::updateMobilizationLaws(IdeaGroup& mobilizationLaws, const std::set<std::string>& majorIdeologies)
 {
-	if (auto serviceByRequirement = mobilizationLaws.getIdea("service_by_requirement"); serviceByRequirement)
+	auto serviceByRequirement = mobilizationLaws.getIdea("service_by_requirement");
+	if (serviceByRequirement)
 	{
 		std::string available = "= {\n";
 		available += "\t\t\t\t#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }\n";
@@ -36,7 +37,8 @@ void HoI4::updateMobilizationLaws(IdeaGroup& mobilizationLaws, const std::set<st
 		mobilizationLaws.replaceIdea(*serviceByRequirement);
 	}
 
-	if (auto extensiveConscription = mobilizationLaws.getIdea("extensive_conscription"); extensiveConscription)
+	auto extensiveConscription = mobilizationLaws.getIdea("extensive_conscription");
+	if (extensiveConscription)
 	{
 		std::string available = "= {\n";
 		available += "\t\t\t\t#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }\n";
@@ -69,7 +71,8 @@ void HoI4::updateMobilizationLaws(IdeaGroup& mobilizationLaws, const std::set<st
 
 void HoI4::updateEconomyIdeas(IdeaGroup& economicIdeas, const std::set<std::string>& majorIdeologies)
 {
-	if (auto warEconomy = economicIdeas.getIdea("war_economy"); warEconomy)
+	auto warEconomy = economicIdeas.getIdea("war_economy");
+	if (warEconomy)
 	{
 		std::string available = "= {\n";
 		available += "\t\t\t\thas_war_support > 0.5\n";
@@ -95,38 +98,6 @@ void HoI4::updateEconomyIdeas(IdeaGroup& economicIdeas, const std::set<std::stri
 		available += "\t\t\t}";
 		warEconomy->setAvailable(available);
 		economicIdeas.replaceIdea(*warEconomy);
-	}
-
-	if (auto newEconomicPolicy = economicIdeas.getIdea("new_economic_policy"); newEconomicPolicy)
-	{
-		auto allowedToRemove = newEconomicPolicy->getAllowedToRemove();
-		if (majorIdeologies.contains("communism"))
-		{
-			allowedToRemove.replace(allowedToRemove.find("$COMMUNISM"), 10, "NOT = { has_government = communism }");
-		}
-		else
-		{
-			allowedToRemove.replace(allowedToRemove.find("\t\t\t\t\t$COMMUNISM\n"), 16, "");
-		}
-		newEconomicPolicy->setAllowedToRemove(allowedToRemove);
-
-		economicIdeas.replaceIdea(*newEconomicPolicy);
-	}
-
-	if (auto newEconomicPolicy = economicIdeas.getIdea("new_economic_policy_2"); newEconomicPolicy)
-	{
-		auto allowedToRemove = newEconomicPolicy->getAllowedToRemove();
-		if (majorIdeologies.contains("communism"))
-		{
-			allowedToRemove.replace(allowedToRemove.find("$COMMUNISM"), 10, "NOT = { has_government = communism }");
-		}
-		else
-		{
-			allowedToRemove.replace(allowedToRemove.find("\t\t\t\t\t$COMMUNISM\n"), 16, "");
-		}
-		newEconomicPolicy->setAllowedToRemove(allowedToRemove);
-
-		economicIdeas.replaceIdea(*newEconomicPolicy);
 	}
 }
 

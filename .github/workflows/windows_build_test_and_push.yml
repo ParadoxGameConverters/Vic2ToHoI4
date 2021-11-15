@@ -3,11 +3,9 @@ on:
   push:
     branches:
       - master
-      - NSB
   pull_request:
     branches:
       - master
-      - NSB
 
 jobs:
   build_test_and_publish:
@@ -48,7 +46,7 @@ jobs:
       if: ${{ github.event_name == 'push' }}
       run: |
        cd "C:\Program Files\7-Zip\"
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic2ToHoI4-0.3Patton.zip $Env:GITHUB_WORKSPACE\Release\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic2ToHoI4-0.3Oppenheimer.zip $Env:GITHUB_WORKSPACE\Release\*
        
     - name: "Upload binaries to release"
       if: ${{ github.event_name == 'push' }}
@@ -58,7 +56,7 @@ jobs:
         allowUpdates: true
         omitBodyDuringUpdate: true
         omitNameDuringUpdate: true
-        artifacts: Vic2ToHoI4-0.3Patton.zip
+        artifacts: Vic2ToHoI4-0.3Oppenheimer.zip
         token: ${{ secrets.API_TOKEN_GITHUB }}
 
     - name: "Cleanup"

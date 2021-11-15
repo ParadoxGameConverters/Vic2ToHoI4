@@ -533,8 +533,7 @@ political_actions = {
 				multiply_temp_variable = {
 					var = ban_ideology_var
 					value = 0.66
-				}
-				set_country_flag = banned_fascism_flag
+				}				
 			}
 			custom_effect_tooltip = ban_fascist_party_tt
 			add_stability = ban_ideology_var
@@ -2250,8 +2249,7 @@ political_actions = {
 				multiply_temp_variable = {
 					var = ban_ideology_var
 					value = 0.66
-				}
-				set_country_flag = banned_absolutist_flag
+				}				
 			}
 			custom_effect_tooltip = ban_absolutist_party_tt
 			add_stability = ban_ideology_var
