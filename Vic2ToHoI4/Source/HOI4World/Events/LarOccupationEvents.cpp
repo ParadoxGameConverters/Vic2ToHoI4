@@ -97,17 +97,32 @@ void HoI4::updateCreateUprisingEvent(HoI4::Event& theEvent, const std::set<std::
 	immediateStream << "\t\t\t\t\t\n";
 	immediateStream << "\t\t\t\t\t# change government if necesarry\n";
 	immediateStream << "\t\t\t\t\tvar:new_occupied_country = {\n";
-	immediateStream << "\t\t\t\t\t\trandom_list = {\n";
+	immediateStream << "\t\t\t\t\t\tif = {\n";
+	immediateStream << "\t\t\t\t\t\t\t# check if our current ideology is OK\n";
+	immediateStream << "\t\t\t\t\t\t\tlimit = { \n";
+	immediateStream << "\t\t\t\t\t\t\t\tOR = {\n";
 	for (const auto& ideology: majorIdeologies)
 	{
-		immediateStream << "\t\t\t\t\t\t\tallowed_party_" << ideology << " = {\n";
-		immediateStream << "\t\t\t\t\t\t\t\tset_popularities = {\n";
-		immediateStream << "\t\t\t\t\t\t\t\t\t" << ideology << " = 100\n";
-		immediateStream << "\t\t\t\t\t\t\t\t}\n";
-		immediateStream << "\t\t\t\t\t\t\t\tset_politics = { ruling_party = " << ideology
-							 << " elections_allowed = " << (ideology == "democratic" ? "yes" : "no") << " }\n";
-		immediateStream << "\t\t\t\t\t\t\t}\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\tAND = {\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t\thas_government = " << ideology << "\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t\tcheck_variable = { allowed_party_" << ideology << " = 0 }\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
 	}
+	immediateStream << "\t\t\t\t\t\t\t\t}\n";
+	immediateStream << "\t\t\t\t\t\t\t}\n";
+	immediateStream << "\t\t\t\t\t\t\t\n";
+	immediateStream << "\t\t\t\t\t\t\trandom_list = {\n";
+	for (const auto& ideology: majorIdeologies)
+	{
+		immediateStream << "\t\t\t\t\t\t\t\tallowed_party_" << ideology << " = {\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\tset_popularities = {\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t\t" << ideology << " = 100\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\tset_politics = { ruling_party = " << ideology
+							 << " elections_allowed = " << (ideology == "democratic" ? "yes" : "no") << " }\n";
+		immediateStream << "\t\t\t\t\t\t\t\t}\n";
+	}
+	immediateStream << "\t\t\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t}\n";

@@ -18,12 +18,10 @@ class Idea: commonItems::parser
 	friend std::ostream& operator<<(std::ostream& outStream, const Idea& outIdea);
 
 	[[nodiscard]] std::string getName() const { return name; }
-	[[nodiscard]] const auto& getAllowedToRemove() const { return allowedToRemove; }
 
 	void setAvailable(const std::string& newAvailable) { available = newAvailable; }
 	void setAllowedCivilWar(const std::string& newAllowedCivilWar) { allowedCivilWar = newAllowedCivilWar; }
 	void updateCancel(const std::string& newCancel) { cancel = newCancel; }
-	void setAllowedToRemove(const std::string& newAllowedToRemove) { allowedToRemove = newAllowedToRemove; }
 
   private:
 	std::string name;
