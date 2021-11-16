@@ -327,16 +327,26 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesResearchBonuses)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_tech");
-	HoI4::technologies theTechnologies(*techMapper, *researchBonusMapper, oldTechsAndInventions);
+	const HoI4::technologies theTechnologies(*techMapper, *researchBonusMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputResearchBonuses(theTechnologies, outputStream);
-	std::string output = outputStream.str();
 
-	std::string expectedOutput = "# Research Bonuses\n";
-	expectedOutput += "add_tech_bonus = { name = bonus1_doc_bonus bonus = 50 uses = 1 category = bonus1_doctrine }\n";
-	expectedOutput += "add_tech_bonus = { name = bonus2_doc_bonus bonus = 60 uses = 1 category = bonus2_doctrine }\n";
-	ASSERT_EQ(expectedOutput, output);
+	std::stringstream expectedOutput;
+	expectedOutput << "# Research Bonuses\n";
+	expectedOutput << "add_doctrine_cost_reduction = {\n";
+	expectedOutput << "\tname = bonus1_doc_bonus\n";
+	expectedOutput << "\tcost_reduction = 5.5\n";
+	expectedOutput << "\tuses = 1\n";
+	expectedOutput << "\tcategory = bonus1_doctrine\n";
+	expectedOutput << "}\n";
+	expectedOutput << "add_doctrine_cost_reduction = {\n";
+	expectedOutput << "\tname = bonus2_doc_bonus\n";
+	expectedOutput << "\tcost_reduction = 6.6\n";
+	expectedOutput << "\tuses = 1\n";
+	expectedOutput << "\tcategory = bonus2_doctrine\n";
+	expectedOutput << "}\n";
+	ASSERT_EQ(expectedOutput.str(), outputStream.str());
 }
 
 
@@ -344,16 +354,26 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesResearchBonuses)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_invention");
-	HoI4::technologies theTechnologies(*techMapper, *researchBonusMapper, oldTechsAndInventions);
+	const HoI4::technologies theTechnologies(*techMapper, *researchBonusMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputResearchBonuses(theTechnologies, outputStream);
-	std::string output = outputStream.str();
 
-	std::string expectedOutput = "# Research Bonuses\n";
-	expectedOutput += "add_tech_bonus = { name = bonus2_doc_bonus bonus = 60 uses = 1 category = bonus2_doctrine }\n";
-	expectedOutput += "add_tech_bonus = { name = bonus3_doc_bonus bonus = 70 uses = 1 category = bonus3_doctrine }\n";
-	ASSERT_EQ(expectedOutput, output);
+	std::stringstream expectedOutput;
+	expectedOutput << "# Research Bonuses\n";
+	expectedOutput << "add_doctrine_cost_reduction = {\n";
+	expectedOutput << "\tname = bonus2_doc_bonus\n";
+	expectedOutput << "\tcost_reduction = 6.6\n";
+	expectedOutput << "\tuses = 1\n";
+	expectedOutput << "\tcategory = bonus2_doctrine\n";
+	expectedOutput << "}\n";
+	expectedOutput << "add_doctrine_cost_reduction = {\n";
+	expectedOutput << "\tname = bonus3_doc_bonus\n";
+	expectedOutput << "\tcost_reduction = 7.7\n";
+	expectedOutput << "\tuses = 1\n";
+	expectedOutput << "\tcategory = bonus3_doctrine\n";
+	expectedOutput << "}\n";
+	EXPECT_EQ(outputStream.str(), expectedOutput.str());
 }
 
 
@@ -362,15 +382,30 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachResearchBonuses)
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_tech");
 	oldTechsAndInventions.insert("Vic2_invention");
-	HoI4::technologies theTechnologies(*techMapper, *researchBonusMapper, oldTechsAndInventions);
+	const HoI4::technologies theTechnologies(*techMapper, *researchBonusMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputResearchBonuses(theTechnologies, outputStream);
-	std::string output = outputStream.str();
 
-	std::string expectedOutput = "# Research Bonuses\n";
-	expectedOutput += "add_tech_bonus = { name = bonus1_doc_bonus bonus = 50 uses = 1 category = bonus1_doctrine }\n";
-	expectedOutput += "add_tech_bonus = { name = bonus2_doc_bonus bonus = 60 uses = 1 category = bonus2_doctrine }\n";
-	expectedOutput += "add_tech_bonus = { name = bonus3_doc_bonus bonus = 70 uses = 1 category = bonus3_doctrine }\n";
-	ASSERT_EQ(expectedOutput, output);
+	std::stringstream expectedOutput;
+	expectedOutput << "# Research Bonuses\n";
+	expectedOutput << "add_doctrine_cost_reduction = {\n";
+	expectedOutput << "\tname = bonus1_doc_bonus\n";
+	expectedOutput << "\tcost_reduction = 5.5\n";
+	expectedOutput << "\tuses = 1\n";
+	expectedOutput << "\tcategory = bonus1_doctrine\n";
+	expectedOutput << "}\n";
+	expectedOutput << "add_doctrine_cost_reduction = {\n";
+	expectedOutput << "\tname = bonus2_doc_bonus\n";
+	expectedOutput << "\tcost_reduction = 6.6\n";
+	expectedOutput << "\tuses = 1\n";
+	expectedOutput << "\tcategory = bonus2_doctrine\n";
+	expectedOutput << "}\n";
+	expectedOutput << "add_doctrine_cost_reduction = {\n";
+	expectedOutput << "\tname = bonus3_doc_bonus\n";
+	expectedOutput << "\tcost_reduction = 7.7\n";
+	expectedOutput << "\tuses = 1\n";
+	expectedOutput << "\tcategory = bonus3_doctrine\n";
+	expectedOutput << "}\n";
+	EXPECT_EQ(outputStream.str(), expectedOutput.str());
 }

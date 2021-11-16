@@ -7,11 +7,11 @@
 Mappers::ResearchBonusMapping::Factory::Factory()
 {
 	registerKeyword("vic2", [this](std::istream& theStream) {
-		researchBonusMapping->vic2Requirements.insert(commonItems::singleString{theStream}.getString());
+		researchBonusMapping->vic2Requirements.insert(commonItems::getString(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, [this](const std::string& valueName, std::istream& theStream) {
 		researchBonusMapping->researchBonuses.insert(
-			 std::make_pair(valueName, commonItems::singleInt{theStream}.getInt()));
+			 std::make_pair(valueName, static_cast<float>(commonItems::getDouble(theStream))));
 	});
 }
 
