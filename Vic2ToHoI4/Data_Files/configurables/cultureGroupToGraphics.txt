@@ -1519,7 +1519,7 @@ indian = {
 }
 
 turkic = {
-	cultures_and_groups = { turkish azerbaijani pecheneg yenidun guney esmer uzbek kazak kirgiz uighur turkmen tatar yakut siberian } # Move hittite_g later
+	cultures_and_groups = { turkish azerbaijani pecheneg yenidun guney esmer uzbek kazak kirgiz uighur turkmen tatar yakut siberian }
 	
 	army_portraits = {
 		#Generic Middle Eastern
@@ -1665,7 +1665,7 @@ turkic = {
 }
 
 iranian = {
-	cultures_and_groups = { iranian_turanian }
+	cultures_and_groups = { iranian_turanian } # Fallback
 	
 	army_portraits = {
 		#Generic Middle Eastern
@@ -1968,7 +1968,7 @@ north_african = {
 }
 
 near_eastern = {
-	cultures_and_groups = { arab punic hittite_g }
+	cultures_and_groups = { arab punic hittite_g } # Fallback
 	
 	army_portraits = {
 		#Generic Middle Eastern
