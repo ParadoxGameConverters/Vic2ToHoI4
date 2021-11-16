@@ -78,7 +78,7 @@ class State
 	int getCivFactories() const { return civFactories; }
 	int getMilFactories() const { return milFactories; }
 	const std::string& getCategory() const { return category; }
-	int getInfrastructure() const { return infrastructure; }
+	[[nodiscard]] auto getInfrastructure() const { return infrastructure; }
 	const std::map<int, int>& getNavalBases() const { return navalBases; }
 	int getAirbaseLevel() const { return airbaseLevel; }
 	bool hasResources() const { return !resources.empty(); }
@@ -142,7 +142,7 @@ class State
 	int milFactories = 0;
 	int dockyards = 0;
 	std::string category = "wasteland";
-	int infrastructure = 3;
+	float infrastructure = 1.0F;
 
 	std::map<int, int> navalBases;
 

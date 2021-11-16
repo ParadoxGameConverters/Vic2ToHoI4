@@ -35,7 +35,7 @@ TEST(HoI4World_States_StateTests, DefaultsAreAsSet)
 	EXPECT_EQ(0, theState.getDockyards());
 	EXPECT_EQ(0, theState.getCivFactories());
 	EXPECT_EQ(theState.getMilFactories(), 0);
-	EXPECT_EQ(3, theState.getInfrastructure());
+	EXPECT_FLOAT_EQ(1.0F, theState.getInfrastructure());
 	EXPECT_TRUE(theState.getNavalBases().empty());
 	EXPECT_EQ(0, theState.getAirbaseLevel());
 	EXPECT_EQ(1, theState.getManpower());
@@ -280,20 +280,17 @@ TEST(HoI4World_States_StateTests, InfrastructureAddedPerTwoRailLevels)
 		 *HoI4::StateCategories::Builder().addCategory(2, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	EXPECT_EQ(6, theState.getInfrastructure());
+	EXPECT_FLOAT_EQ(4.0F, theState.getInfrastructure());
 }
 
 
-TEST(HoI4World_States_StateTests, InfrastructureForOverFourFactories)
+TEST(HoI4World_States_StateTests, InfrastructureForAnyFactories)
 {
-	const auto sourceState = *Vic2::State::Builder()
-											.setEmployedWorkers(50000)
-											.setProvinces({Vic2::Province::Builder()
-																	 .setNumber(0)
-																	 .setPops({Pop(PopOptions{.size = 100'000})})
-																	 .setRailLevel(6)
-																	 .build()})
-											.build();
+	const auto sourceState =
+		 *Vic2::State::Builder()
+				.setEmployedWorkers(10'000)
+				.setProvinces({Vic2::Province::Builder().setNumber(0).setPops({Pop(PopOptions{.size = 100'000})}).build()})
+				.build();
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
@@ -301,18 +298,18 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverFourFactories)
 		 *HoI4::StateCategories::Builder().addCategory(7, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	EXPECT_EQ(7, theState.getInfrastructure());
+	EXPECT_FLOAT_EQ(1.75F, theState.getInfrastructure());
 }
 
 
-TEST(HoI4World_States_StateTests, InfrastructureForOverSixFactories)
+TEST(HoI4World_States_StateTests, InfrastructureForSixFactories)
 {
 	const auto sourceState = *Vic2::State::Builder()
-											.setEmployedWorkers(70000)
+											.setEmployedWorkers(60'000)
 											.setProvinces({Vic2::Province::Builder()
 																	 .setNumber(0)
 																	 .setPops({Pop(PopOptions{.size = 100'000})})
-																	 .setRailLevel(6)
+
 																	 .build()})
 											.build();
 
@@ -322,20 +319,17 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverSixFactories)
 		 *HoI4::StateCategories::Builder().addCategory(9, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	EXPECT_EQ(8, theState.getInfrastructure());
+	EXPECT_FLOAT_EQ(2.5F, theState.getInfrastructure());
 }
 
 
-TEST(HoI4World_States_StateTests, InfrastructureForOverTenFactories)
+TEST(HoI4World_States_StateTests, InfrastructureForTenFactories)
 {
-	const auto sourceState = *Vic2::State::Builder()
-											.setEmployedWorkers(110000)
-											.setProvinces({Vic2::Province::Builder()
-																	 .setNumber(0)
-																	 .setPops({Pop(PopOptions{.size = 100'000})})
-																	 .setRailLevel(6)
-																	 .build()})
-											.build();
+	const auto sourceState =
+		 *Vic2::State::Builder()
+				.setEmployedWorkers(100'000)
+				.setProvinces({Vic2::Province::Builder().setNumber(0).setPops({Pop(PopOptions{.size = 100'000})}).build()})
+				.build();
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
@@ -343,7 +337,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverTenFactories)
 		 *HoI4::StateCategories::Builder().addCategory(13, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
-	EXPECT_EQ(9, theState.getInfrastructure());
+	EXPECT_FLOAT_EQ(3.25F, theState.getInfrastructure());
 }
 
 
@@ -437,7 +431,7 @@ TEST(HoI4World_States_StateTests, ResourcesCanBeAdded)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 3\n";
+	expectedOutput << "\t\t\tinfrastructure = 1\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";
@@ -716,7 +710,7 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 	expectedOutput << "\t\tvictory_points = { 24 1 }\n";
 	expectedOutput << "\t\tvictory_points = { 25 1 }\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 3\n";
+	expectedOutput << "\t\t\tinfrastructure = 1\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";

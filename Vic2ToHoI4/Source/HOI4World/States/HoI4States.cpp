@@ -27,7 +27,7 @@
 
 
 constexpr int NUM_FACTORIES_PER_AIRBASE = 4;
-constexpr int AIRBASES_FOR_INFRASTRUCTURE_LEVEL = 6;
+constexpr int AIRBASES_FOR_INFRASTRUCTURE_LEVEL = 3;
 
 
 
