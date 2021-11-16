@@ -118,35 +118,43 @@ std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocali
 
 void HoI4::Localisation::Importer::importLocalisations(const Configuration& theConfiguration)
 {
-	for (const auto& fileName: commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/localisation"))
+	for (const auto& subdirectory: commonItems::GetAllSubfolders(theConfiguration.getHoI4Path() + "/localisation"))
 	{
-		if (fileName.substr(0, 5) == "focus")
+		for (const auto& fileName:
+			 commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/localisation/" + subdirectory))
 		{
-			importFocusLocalisations(theConfiguration.getHoI4Path() + "/localisation/" + fileName);
-		}
-		else if (fileName.substr(0, 5) == "ideas")
-		{
-			importGenericIdeaLocalisations(theConfiguration.getHoI4Path() + "/localisation/" + fileName);
-		}
-		else if (fileName.substr(0, 6) == "events")
-		{
-			importEventLocalisations(theConfiguration.getHoI4Path() + "/localisation/" + fileName);
+			if (fileName.starts_with("focus"))
+			{
+				importFocusLocalisations(theConfiguration.getHoI4Path() + "/localisation/" + subdirectory + '/' + fileName);
+			}
+			else if (fileName.starts_with("ideas"))
+			{
+				importGenericIdeaLocalisations(
+					 theConfiguration.getHoI4Path() + "/localisation/" + subdirectory + '/' + fileName);
+			}
+			else if (fileName.starts_with("events"))
+			{
+				importEventLocalisations(theConfiguration.getHoI4Path() + "/localisation/" + subdirectory + '/' + fileName);
+			}
 		}
 	}
 
-	for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/output/localisation"))
+	for (const auto& subdirectory: commonItems::GetAllSubfolders("blankmod/output/localisation"))
 	{
-		if (fileName.substr(0, 5) == "focus")
+		for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/output/localisation/" + subdirectory))
 		{
-			importFocusLocalisations("blankmod/output/localisation/" + fileName);
-		}
-		else if (fileName.substr(0, 5) == "ideas")
-		{
-			importGenericIdeaLocalisations("blankmod/output/localisation/" + fileName);
-		}
-		else if (fileName.substr(0, 6) == "events")
-		{
-			importEventLocalisations("blankmod/output/localisation/" + fileName);
+			if (fileName.starts_with("focus"))
+			{
+				importFocusLocalisations("blankmod/output/localisation/" + subdirectory + '/' + fileName);
+			}
+			else if (fileName.starts_with("ideas"))
+			{
+				importGenericIdeaLocalisations("blankmod/output/localisation/" + subdirectory + '/' + fileName);
+			}
+			else if (fileName.starts_with("events"))
+			{
+				importEventLocalisations("blankmod/output/localisation/" + subdirectory + '/' + fileName);
+			}
 		}
 	}
 }
@@ -190,7 +198,7 @@ void HoI4::Localisation::Importer::importLocalisationFile(const std::string& fil
 		char buffer[2048];
 		file.getline(buffer, sizeof buffer);
 		std::string line(buffer);
-		if (line.substr(0, 2) == "l_")
+		if (line.starts_with("l_"))
 		{
 			language = line.substr(2, line.length() - 3);
 			continue;
