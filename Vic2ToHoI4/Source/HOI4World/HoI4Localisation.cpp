@@ -123,16 +123,16 @@ void HoI4::Localisation::Importer::importLocalisations(const Configuration& theC
 		for (const auto& fileName:
 			 commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/localisation/" + subdirectory))
 		{
-			if (fileName.substr(0, 5) == "focus")
+			if (fileName.starts_with("focus"))
 			{
 				importFocusLocalisations(theConfiguration.getHoI4Path() + "/localisation/" + subdirectory + '/' + fileName);
 			}
-			else if (fileName.substr(0, 5) == "ideas")
+			else if (fileName.starts_with("ideas"))
 			{
 				importGenericIdeaLocalisations(
 					 theConfiguration.getHoI4Path() + "/localisation/" + subdirectory + '/' + fileName);
 			}
-			else if (fileName.substr(0, 6) == "events")
+			else if (fileName.starts_with("events"))
 			{
 				importEventLocalisations(theConfiguration.getHoI4Path() + "/localisation/" + subdirectory + '/' + fileName);
 			}
@@ -143,15 +143,15 @@ void HoI4::Localisation::Importer::importLocalisations(const Configuration& theC
 	{
 		for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/output/localisation/" + subdirectory))
 		{
-			if (fileName.substr(0, 5) == "focus")
+			if (fileName.starts_with("focus"))
 			{
 				importFocusLocalisations("blankmod/output/localisation/" + subdirectory + '/' + fileName);
 			}
-			else if (fileName.substr(0, 5) == "ideas")
+			else if (fileName.starts_with("ideas"))
 			{
 				importGenericIdeaLocalisations("blankmod/output/localisation/" + subdirectory + '/' + fileName);
 			}
-			else if (fileName.substr(0, 6) == "events")
+			else if (fileName.starts_with("events"))
 			{
 				importEventLocalisations("blankmod/output/localisation/" + subdirectory + '/' + fileName);
 			}
@@ -198,7 +198,7 @@ void HoI4::Localisation::Importer::importLocalisationFile(const std::string& fil
 		char buffer[2048];
 		file.getline(buffer, sizeof buffer);
 		std::string line(buffer);
-		if (line.substr(0, 2) == "l_")
+		if (line.starts_with("l_"))
 		{
 			language = line.substr(2, line.length() - 3);
 			continue;
