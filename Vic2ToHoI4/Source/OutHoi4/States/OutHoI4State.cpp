@@ -69,7 +69,7 @@ void HoI4::outputHoI4State(std::ostream& output, const State& theState, const bo
 	if (!theState.isImpassable())
 	{
 		output << "\t\tbuildings = {\n";
-		output << "\t\t\tinfrastructure = " << theState.getInfrastructure() << "\n";
+		output << "\t\t\tinfrastructure = " << static_cast<int>(theState.getInfrastructure()) << "\n";
 		output << "\t\t\tindustrial_complex = " << theState.getCivFactories() << "\n";
 		output << "\t\t\tarms_factory = " << theState.getMilFactories() << "\n";
 		if (theState.getDockyards() > 0)
