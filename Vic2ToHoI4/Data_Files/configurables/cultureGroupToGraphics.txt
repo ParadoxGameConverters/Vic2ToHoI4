@@ -1665,7 +1665,7 @@ turkic = {
 }
 
 iranian = {
-	cultures_and_groups = { iranian_turanian } # Fallback
+	cultures_and_groups = { iranian_turanian kurdish turko_semitic } # Fallback
 	
 	army_portraits = {
 		#Generic Middle Eastern
