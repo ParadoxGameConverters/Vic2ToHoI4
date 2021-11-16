@@ -115,7 +115,7 @@ HoI4::Country::Country(std::string tag,
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
 	lastDynasty = sourceCountry.getLastDynasty();
-	if (const auto& lastMonarch = sourceCountry.getLastMonarch(); lastMonarch)
+	if (const auto& lastMonarch = sourceCountry.getLastMonarch(); lastMonarch && hasRulingDynasty())
 	{
 		convertMonarch(*lastMonarch);
 	}
