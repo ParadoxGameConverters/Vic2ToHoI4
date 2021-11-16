@@ -17,6 +17,7 @@ news_event = {
 	picture = GFX_news_event_generic_parliament
 
 	is_triggered_only = yes
+	major = yes
 	
 	option = {
 		name = wtt_news.53.b
@@ -40,6 +41,7 @@ news_event = {
 	picture = GFX_news_event_generic_parliament
 
 	is_triggered_only = yes
+	major = yes
 	
 	option = {
 		name = wtt_news.57.b
@@ -63,6 +65,7 @@ news_event = {
 	picture = GFX_news_event_generic_parliament
 
 	is_triggered_only = yes
+	major = yes
 	
 	option = {
 		name = wtt_news.60.b
@@ -86,7 +89,8 @@ news_event = {
 	picture = GFX_news_event_generic_parliament
 
 	is_triggered_only = yes
-
+	major = yes
+	
 	option = {
 		name = wtt_news.61.b
 		trigger = {
@@ -109,6 +113,7 @@ news_event = {
 	picture = GFX_news_event_generic_parliament
 
 	is_triggered_only = yes
+	major = yes
 	
 	option = {
 		name = wtt_news.67.b
