@@ -2027,15 +2027,6 @@ generic_super_heavy_tanks = {
 	}
 
 	basic_super_heavy_tank_default = {
-		priority = {
-			factor = 10
-			modifier = { 
-				has_government = fascism
-				factor = 5
-			}
-			
-		}
-
 		target_variant = {
 			match_value = 1000
 			type = super_heavy_tank_chassis
