@@ -1547,6 +1547,8 @@ turkic = {
 		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
 		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
 		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
+		#Turkey
+		"gfx/leaders/TUR/portrait_tur_sukru_okan.dds"
 		#Other
 		"gfx/leaders/Turkic_Steppe/OTTLeader_Navy_01.tga"
 		"gfx/leaders/Turkic_Steppe/Portrait_EGY_Suleiman_Ezzat.tga"
@@ -1587,6 +1589,7 @@ turkic = {
 		} 
 		absolutist = {
 			"gfx/leaders/ALB/Portrait_Albania_King_Zog.dds"
+			"gfx/leaders/TUR/portrait_tur_abdulmejid_ii.dds"
 			"gfx/leaders/Turkic_Steppe/Portrait_Ottoman_Abdulmecid.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_Ottoman_AhmedNihad.tga"
 			"gfx/leaders/Turkic_Steppe/Portrait_KUR_Mahmud_Barzanji.tga"
@@ -1613,6 +1616,7 @@ turkic = {
 		}
 		monarch = {
 			"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
+			"gfx/leaders/TUR/portrait_tur_durrusehvar_sultan.dds"
 		}
 		ideological_leader = {
 			"gfx/leaders/Turkic_Steppe/Female/Portrait_SYR_Nazik_Abid.tga"
@@ -2048,7 +2052,8 @@ near_eastern = {
 			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/idea_generic_army_arab_3.dds" #Revise
+			"gfx/interface/ideas/idea_generic_army_arab_3.dds"
+			"gfx/interface/ideas/idea_generic_army_arab_2.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_tur_sukru_saracoglu.dds"
