@@ -118,5 +118,7 @@ void HoI4::outputHoI4State(std::ostream& output, const State& theState, const bo
 	output << "\tmanpower=" << theState.getManpower() << "\n";
 	output << "\tbuildings_max_level_factor=1.000\n";
 	output << "\tstate_category=" << theState.getCategory() << "\n";
+	output << "\n";
+	output << "\tlocal_supplies=10.0\n";
 	output << "}\n";
 }
