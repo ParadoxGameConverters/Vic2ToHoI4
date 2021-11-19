@@ -446,6 +446,8 @@ TEST(HoI4World_States_StateTests, ResourcesCanBeAdded)
 	expectedOutput << "\tmanpower=1\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
 	expectedOutput << "\tstate_category=wasteland\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tlocal_supplies=10.0\n";
 	expectedOutput << "}\n";
 
 	std::stringstream output;
@@ -725,6 +727,8 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 	expectedOutput << "\tmanpower=1\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
 	expectedOutput << "\tstate_category=wasteland\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tlocal_supplies=10.0\n";
 	expectedOutput << "}\n";
 
 	std::stringstream output;
