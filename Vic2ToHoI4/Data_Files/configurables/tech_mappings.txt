@@ -75,6 +75,16 @@ link = {
 	hoi4 = armored_car1
 }
 
+# ===========================
+# === HOI4 SUPPORT FOLDER ===
+# ===========================
+
+link = {
+	vic2 = integral_rail_system
+	hoi4 = basic_train
+}
+
+
 # =========================
 # === HOI4 ARMOR FOLDER ===
 # =========================
@@ -82,19 +92,42 @@ link = {
 # HoI4 Great War Tank <- Vic2 Invention Army/Army Doctrine/Infiltration/Tank Experiments
 link = {
 	vic2 = tank_exploits
+	limit = R"(NOT = { has_dlc = "No Step Back" })"
 	hoi4 = gwtank
+}
+
+link = {
+	vic2 = tank_exploits
+	limit = R"(has_dlc = "No Step Back")"
+	hoi4 = gwtank_chassis
 }
 
 # HoI4 Light Tank I <- Vic2 Invention Army/Heavy Armament/Heavy Armament/Tankette
 link = {
 	vic2 = tankette
+	limit = R"(NOT = { has_dlc = "No Step Back" })"
 	hoi4 = basic_light_tank
+}
+
+link = {
+	vic2 = tankette
+	limit = R"(has_dlc = "No Step Back")"
+	hoi4 = basic_light_tank_chassis
 }
 
 # HoI4 Light Tank II <- Vic2 Invention Army/Heavy Armament/Heavy Armament/Light Tank
 link = {
 	vic2 = light_tank
+	limit = R"(NOT = { has_dlc = "No Step Back" })"
 	hoi4 = improved_light_tank
+}
+
+link = {
+	vic2 = light_tank
+	limit = R"(has_dlc = "No Step Back")"
+	hoi4 = improved_light_tank_chassis
+	hoi4 = basic_medium_tank_chassis
+	hoi4 = basic_heavy_tank_chassis
 }
 
 # =============================
