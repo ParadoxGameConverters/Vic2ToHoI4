@@ -928,47 +928,11 @@ void HoI4::World::reportIndustryLevels() const
 
 void HoI4::World::setTrainMultipliers()
 {
-	auto greatPower = greatPowers.begin();
-	if (greatPower == greatPowers.end())
+	const std::vector multipliers{5.0F, 4.0F, 3.0F, 2.0F, 2.0F, 1.5F};
+	for (int i = 0; i < greatPowers.size() && i < multipliers.size(); i++)
 	{
-		return;
+		greatPowers[i]->setTrainsMultiplier(multipliers[i]);
 	}
-	(*greatPower)->setTrainsMultiplier(5.0F);
-
-	++greatPower;
-	if (greatPower == greatPowers.end())
-	{
-		return;
-	}
-	(*greatPower)->setTrainsMultiplier(4.0F);
-
-	++greatPower;
-	if (greatPower == greatPowers.end())
-	{
-		return;
-	}
-	(*greatPower)->setTrainsMultiplier(3.0F);
-
-	++greatPower;
-	if (greatPower == greatPowers.end())
-	{
-		return;
-	}
-	(*greatPower)->setTrainsMultiplier(2.0F);
-
-	++greatPower;
-	if (greatPower == greatPowers.end())
-	{
-		return;
-	}
-	(*greatPower)->setTrainsMultiplier(2.0F);
-
-	++greatPower;
-	if (greatPower == greatPowers.end())
-	{
-		return;
-	}
-	(*greatPower)->setTrainsMultiplier(1.5F);
 }
 
 
