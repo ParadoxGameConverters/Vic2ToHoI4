@@ -22,7 +22,7 @@ class ResearchBonusMapping
 
   private:
 	std::set<std::string> vic2Requirements;
-	std::map<std::string, int> researchBonuses;
+	std::map<std::string, float> researchBonuses;
 };
 
 } // namespace Mappers

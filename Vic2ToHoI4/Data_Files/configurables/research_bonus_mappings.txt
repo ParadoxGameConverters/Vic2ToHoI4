@@ -11,12 +11,12 @@
 
 link = {
 	vic2 = human_wave_vs_spearhead
-	land_doctrine = 1000
+	land_doctrine = 0.99
 }
 
 link = {
 	vic2 = grand_battle_plan_vs_superior_firepower
-	land_doctrine = 1000
+	land_doctrine = 0.99
 }
 
 # ================================
@@ -25,17 +25,17 @@ link = {
 
 link = {
 	vic2 = strategic_destruction_doctrine
-	air_doctrine = 1000
+	air_doctrine = 0.99
 }
 
 link = {
 	vic2 = operational_destruction_doctrine
-	air_doctrine = 1000
+	air_doctrine = 0.99
 }
 
 link = {
 	vic2 = strategic_destruction_doctrine
-	air_doctrine = 1000
+	air_doctrine = 0.99
 }
 
 # ==================================
@@ -44,5 +44,5 @@ link = {
 
 link = {
 	vic2 = naval_firepower_doctrine
-	naval_doctrine = 1000
+	naval_doctrine = 0.99
 }

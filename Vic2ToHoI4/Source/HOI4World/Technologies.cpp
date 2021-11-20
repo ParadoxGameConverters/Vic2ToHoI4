@@ -69,9 +69,9 @@ int HoI4::technologies::getTechnologyCount() const
 }
 
 
-void HoI4::technologies::setResearchBonus(const std::string& tech, int bonus)
+void HoI4::technologies::setResearchBonus(const std::string& tech, float bonus)
 {
-	std::map<std::string, int>::iterator researchBonusEntry = researchBonuses.find(tech);
+	const auto& researchBonusEntry = researchBonuses.find(tech);
 	if ((researchBonusEntry == researchBonuses.end()) || (researchBonusEntry->second < bonus))
 	{
 		researchBonuses[tech] = bonus;

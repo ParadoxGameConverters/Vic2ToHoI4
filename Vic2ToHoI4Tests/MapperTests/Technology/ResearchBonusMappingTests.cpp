@@ -37,10 +37,10 @@ TEST(ResearchMappingTests, ResearchBonusesDefaultsToEmpty)
 TEST(ResearchMappingTests, ResearchBonusesCanBeAdded)
 {
 	std::stringstream input;
-	input << "test_item = 0\n";
-	input << "test_item2 = 42";
+	input << "test_item = 0.0\n";
+	input << "test_item2 = 4.2";
 	const auto mapping = Mappers::ResearchBonusMapping::Factory().importResearchBonusMapping(input);
 
-	ASSERT_THAT(mapping->getResearchBonuses(),
-		 testing::UnorderedElementsAre(std::pair("test_item", 0), std::pair("test_item2", 42)));
+	EXPECT_THAT(mapping->getResearchBonuses(),
+		 testing::UnorderedElementsAre(testing::Pair("test_item", 0.0F), testing::Pair("test_item2", 4.2F)));
 }

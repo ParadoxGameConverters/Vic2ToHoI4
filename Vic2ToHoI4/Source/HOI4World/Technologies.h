@@ -26,7 +26,7 @@ class technologies
 		 const Mappers::ResearchBonusMapper& researchBonusMapper,
 		 const std::set<std::string>& oldTechnologiesAndInventions);
 
-	void setResearchBonus(const std::string& tech, int bonus);
+	void setResearchBonus(const std::string& tech, float bonus);
 
 	[[nodiscard]] int getTechnologyCount() const;
 	[[nodiscard]] bool hasTechnology(const std::string& technology) const;
@@ -38,7 +38,7 @@ class technologies
 	// technologies are sorted by limits that can be applied to them
 	std::map<std::string, std::set<std::string>> technologiesByLimits;
 
-	std::map<std::string, int> researchBonuses;
+	std::map<std::string, float> researchBonuses;
 };
 
 } // namespace HoI4
