@@ -421,6 +421,7 @@ void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars);
 void outputOOBLines(std::ostream& output, const std::string& tag);
 void outputFlags(std::ostream& output, const std::set<std::string>& flags);
 void outputConvoys(std::ostream& output, const int& convoys);
+void outputTrainsModifier(std::ostream& output, const std::optional<float>& trainsMultiplier);
 void outputEquipmentStockpile(std::ostream& output,
 	 const std::map<std::string, unsigned int>& equipmentStockpile,
 	 const std::string& tag);
@@ -492,6 +493,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		outputResearchBonuses(*theTechnologies, output);
 	}
 	outputFlags(output, theCountry.getFlags());
+	outputTrainsModifier(output, theCountry.getTrainsMultiplier());
 	outputConvoys(output, theCountry.getConvoys());
 	outputEquipmentStockpile(output, theCountry.getEquipmentStockpile(), tag);
 	outputPolitics(output,
@@ -618,6 +620,15 @@ void outputConvoys(std::ostream& output, const int& convoys)
 {
 	output << "set_convoys = " << convoys << '\n';
 	output << "\n";
+}
+
+
+void outputTrainsModifier(std::ostream& output, const std::optional<float>& trainsMultiplier)
+{
+	if (trainsMultiplier)
+	{
+		output << "starting_train_buffer = " << *trainsMultiplier << "\n";
+	}
 }
 
 

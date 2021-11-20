@@ -157,6 +157,8 @@ class World: commonItems::parser
 	void calculateIndustryInCountries();
 	void reportIndustryLevels() const;
 
+	void setTrainMultipliers();
+
 	void convertDiplomacy(const Vic2::World& sourceWorld);
 	void convertStrategies(const Vic2::World& sourceWorld);
 	void convertWars(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper);
