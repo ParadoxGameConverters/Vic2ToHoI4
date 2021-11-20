@@ -133,6 +133,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
+	setTrainMultipliers();
 	Log(LogLevel::Progress) << "40%";
 	convertWars(sourceWorld, provinceMapper);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
@@ -922,6 +923,52 @@ void HoI4::World::reportIndustryLevels() const
 	Log(LogLevel::Info) << "\t\t" << militaryFactories << " military factories";
 	Log(LogLevel::Info) << "\t\t" << civilianFactories << " civilian factories";
 	Log(LogLevel::Info) << "\t\t" << dockyards << " dockyards";
+}
+
+
+void HoI4::World::setTrainMultipliers()
+{
+	auto greatPower = greatPowers.begin();
+	if (greatPower == greatPowers.end())
+	{
+		return;
+	}
+	(*greatPower)->setTrainsMultiplier(5.0F);
+
+	++greatPower;
+	if (greatPower == greatPowers.end())
+	{
+		return;
+	}
+	(*greatPower)->setTrainsMultiplier(4.0F);
+
+	++greatPower;
+	if (greatPower == greatPowers.end())
+	{
+		return;
+	}
+	(*greatPower)->setTrainsMultiplier(3.0F);
+
+	++greatPower;
+	if (greatPower == greatPowers.end())
+	{
+		return;
+	}
+	(*greatPower)->setTrainsMultiplier(2.0F);
+
+	++greatPower;
+	if (greatPower == greatPowers.end())
+	{
+		return;
+	}
+	(*greatPower)->setTrainsMultiplier(2.0F);
+
+	++greatPower;
+	if (greatPower == greatPowers.end())
+	{
+		return;
+	}
+	(*greatPower)->setTrainsMultiplier(1.5F);
 }
 
 

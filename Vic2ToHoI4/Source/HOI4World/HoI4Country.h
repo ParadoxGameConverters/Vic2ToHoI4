@@ -242,6 +242,7 @@ class Country
 	[[nodiscard]] const Navies& getNavies() const { return *theNavies; }
 	[[nodiscard]] const auto& getNavyNames() const { return navyNames; }
 	[[nodiscard]] int getConvoys() const { return convoys; }
+	[[nodiscard]] auto getTrainsMultiplier() const { return trainsMultiplier; }
 	[[nodiscard]] const std::vector<Airplane>& getPlanes() const { return planes; }
 	[[nodiscard]] const std::map<std::string, unsigned int>& getEquipmentStockpile() const { return equipmentStockpile; }
 	[[nodiscard]] const std::vector<General>& getGenerals() const { return generals; }
@@ -287,6 +288,8 @@ class Country
 	void addGeneratedDominion(const std::string& region, const std::string& tag) { generatedDominions[region] = tag; }
 	std::optional<std::string> getDominionTag(const std::string& region);
 	void addGlobalEventTarget(const std::string& name) { globalEventTargets.insert(name); }
+
+	void setTrainsMultiplier(float multiplier) { trainsMultiplier = multiplier; }
 
 	[[nodiscard]] const auto& getGlobalEventTargets() const { return globalEventTargets; }
 	[[nodiscard]] bool isProvinceInHomeArea(int provinceId) const { return homeAreaProvinces.contains(provinceId); }
@@ -410,6 +413,7 @@ class Country
 	std::unique_ptr<Navies> theNavies;
 	NavyNames navyNames;
 	int convoys = 0;
+	std::optional<float> trainsMultiplier;
 	std::vector<Airplane> planes;
 	std::map<std::string, unsigned int> equipmentStockpile;
 	std::vector<General> generals;
