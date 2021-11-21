@@ -5,11 +5,11 @@
 
 
 
-commonItems::Color getCenterColor(point position, bitmap_image& provinceMap);
-commonItems::Color getAboveColor(point position, bitmap_image& provinceMap);
-commonItems::Color getBelowColor(point position, int height, bitmap_image& provinceMap);
-commonItems::Color getLeftColor(point position, int width, bitmap_image& provinceMap);
-commonItems::Color getRightColor(point position, int width, bitmap_image& provinceMap);
+commonItems::Color getCenterColor(Maps::Point position, bitmap_image& provinceMap);
+commonItems::Color getAboveColor(Maps::Point position, bitmap_image& provinceMap);
+commonItems::Color getBelowColor(Maps::Point position, int height, bitmap_image& provinceMap);
+commonItems::Color getLeftColor(Maps::Point position, int width, bitmap_image& provinceMap);
+commonItems::Color getRightColor(Maps::Point position, int width, bitmap_image& provinceMap);
 
 
 Maps::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration):
@@ -33,7 +33,7 @@ void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitio
 	{
 		for (unsigned int x = 0; x < width; x++)
 		{
-			point position = {x, y};
+			Maps::Point position = {x, y};
 
 			auto centerColor = getCenterColor(position, provinceMap);
 			auto aboveColor = getAboveColor(position, provinceMap);
@@ -78,7 +78,7 @@ void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitio
 }
 
 
-commonItems::Color getCenterColor(const point position, bitmap_image& provinceMap)
+commonItems::Color getCenterColor(const Maps::Point position, bitmap_image& provinceMap)
 {
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
@@ -87,7 +87,7 @@ commonItems::Color getCenterColor(const point position, bitmap_image& provinceMa
 }
 
 
-commonItems::Color getAboveColor(point position, bitmap_image& provinceMap)
+commonItems::Color getAboveColor(Maps::Point position, bitmap_image& provinceMap)
 {
 	if (position.second > 0)
 	{
@@ -101,7 +101,7 @@ commonItems::Color getAboveColor(point position, bitmap_image& provinceMap)
 }
 
 
-commonItems::Color getBelowColor(point position, const int height, bitmap_image& provinceMap)
+commonItems::Color getBelowColor(Maps::Point position, const int height, bitmap_image& provinceMap)
 {
 	if (position.second < height - 1)
 	{
@@ -115,7 +115,7 @@ commonItems::Color getBelowColor(point position, const int height, bitmap_image&
 }
 
 
-commonItems::Color getLeftColor(point position, const int width, bitmap_image& provinceMap)
+commonItems::Color getLeftColor(Maps::Point position, const int width, bitmap_image& provinceMap)
 {
 	if (position.first > 0)
 	{
@@ -133,7 +133,7 @@ commonItems::Color getLeftColor(point position, const int width, bitmap_image& p
 }
 
 
-commonItems::Color getRightColor(point position, const int width, bitmap_image& provinceMap)
+commonItems::Color getRightColor(Maps::Point position, const int width, bitmap_image& provinceMap)
 {
 	if (position.first < width - 1)
 	{
@@ -153,7 +153,7 @@ commonItems::Color getRightColor(point position, const int width, bitmap_image& 
 
 void Maps::MapData::handleNeighbor(const commonItems::Color& centerColor,
 	 const commonItems::Color& otherColor,
-	 const point& position,
+	 const Maps::Point& position,
 	 const ProvinceDefinitions& provinceDefinitions)
 {
 	auto centerProvince = provinceDefinitions.getProvinceFromColor(centerColor);
@@ -189,7 +189,7 @@ void Maps::MapData::removeNeighbor(const int mainProvince, const int neighborPro
 }
 
 
-void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, const point position)
+void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, const Maps::Point position)
 {
 	auto bordersWithNeighbors = borders.find(mainProvince);
 	if (bordersWithNeighbors == borders.end())
@@ -274,7 +274,7 @@ std::set<int> Maps::MapData::getNeighbors(const int province) const
 }
 
 
-std::optional<point> Maps::MapData::getSpecifiedBorderCenter(const int mainProvince, const int neighbor) const
+std::optional<Maps::Point> Maps::MapData::getSpecifiedBorderCenter(const int mainProvince, const int neighbor) const
 {
 	const auto bordersWithNeighbors = borders.find(mainProvince);
 	if (bordersWithNeighbors == borders.end())
@@ -294,7 +294,7 @@ std::optional<point> Maps::MapData::getSpecifiedBorderCenter(const int mainProvi
 }
 
 
-std::optional<point> Maps::MapData::getAnyBorderCenter(const int province) const
+std::optional<Maps::Point> Maps::MapData::getAnyBorderCenter(const int province) const
 {
 	const auto bordersWithNeighbors = borders.find(province);
 	if (bordersWithNeighbors == borders.end())

@@ -14,7 +14,7 @@
 
 
 
-typedef std::vector<point> borderPoints;
+typedef std::vector<Maps::Point> borderPoints;
 typedef std::map<int, borderPoints> bordersWith;
 
 
@@ -28,8 +28,8 @@ class MapData
 	MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration);
 
 	[[nodiscard]] std::set<int> getNeighbors(int province) const;
-	[[nodiscard]] std::optional<point> getSpecifiedBorderCenter(int mainProvince, int neighbor) const;
-	[[nodiscard]] std::optional<point> getAnyBorderCenter(int province) const;
+	[[nodiscard]] std::optional<Point> getSpecifiedBorderCenter(int mainProvince, int neighbor) const;
+	[[nodiscard]] std::optional<Point> getAnyBorderCenter(int province) const;
 	[[nodiscard]] std::optional<int> getProvinceNumber(double x,
 		 double y,
 		 const ProvinceDefinitions& provinceDefinitions) const;
@@ -40,11 +40,11 @@ class MapData
 	void importProvinces(const ProvinceDefinitions& provinceDefinitions, const std::string& hoi4Path);
 	void handleNeighbor(const commonItems::Color& centerColor,
 		 const commonItems::Color& otherColor,
-		 const point& position,
+		 const Point& position,
 		 const ProvinceDefinitions& provinceDefinitions);
 	void addNeighbor(int mainProvince, int neighborProvince);
 	void removeNeighbor(int mainProvince, int neighborProvince);
-	void addPointToBorder(int mainProvince, int neighborProvince, point position);
+	void addPointToBorder(int mainProvince, int neighborProvince, Point position);
 
 	void importAdjacencies(const std::string& hoi4Path);
 

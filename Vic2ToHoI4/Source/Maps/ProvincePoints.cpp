@@ -3,7 +3,21 @@
 
 
 
-void Maps::ProvincePoints::addPoint(const point& thePoint)
+namespace
+{
+
+double calculateDistanceSquared(const Maps::Point point, const Maps::Point center)
+{
+	const auto deltaX = static_cast<double>(point.first) - static_cast<double>(center.first);
+	const auto deltaY = static_cast<double>(point.second) - static_cast<double>(center.second);
+	return deltaX * deltaX + deltaY * deltaY;
+}
+
+} // namespace
+
+
+
+void Maps::ProvincePoints::addPoint(const Point& thePoint)
 {
 	thePoints.emplace(thePoint);
 	if (thePoint.first < leftmostPoint.first)
@@ -25,40 +39,26 @@ void Maps::ProvincePoints::addPoint(const point& thePoint)
 }
 
 
-double calculateDistanceSquared(int pointX, int pointY, int centerX, int centerY);
-point Maps::ProvincePoints::getCentermostPoint() const
+Maps::Point Maps::ProvincePoints::getCentermostPoint() const
 {
-	point possibleCenter;
+	Point possibleCenter;
 	possibleCenter.first = std::midpoint(leftmostPoint.first, rightmostPoint.first);
 	possibleCenter.second = std::midpoint(lowestPoint.second, highestPoint.second);
 	if (thePoints.contains(possibleCenter))
 	{
 		return possibleCenter;
 	}
-	else
+
+	auto shortestDistance = std::numeric_limits<double>::max();
+	Point closestPoint;
+	for (const auto& possiblePoint: thePoints)
 	{
-		auto shortestDistance = std::numeric_limits<double>::max();
-		point closestPoint;
-		for (const auto& possiblePoint: thePoints)
+		const auto distanceSquared = calculateDistanceSquared(possiblePoint, possibleCenter);
+		if (distanceSquared < shortestDistance)
 		{
-			const auto distanceSquared = calculateDistanceSquared(possiblePoint.first,
-				 possiblePoint.second,
-				 possibleCenter.first,
-				 possibleCenter.second);
-			if (distanceSquared < shortestDistance)
-			{
-				shortestDistance = distanceSquared;
-				closestPoint = possiblePoint;
-			}
+			shortestDistance = distanceSquared;
+			closestPoint = possiblePoint;
 		}
-		return closestPoint;
 	}
-}
-
-
-double calculateDistanceSquared(const int pointX, const int pointY, const int centerX, const int centerY)
-{
-	const auto deltaX = static_cast<double>(pointX) - static_cast<double>(centerX);
-	const auto deltaY = static_cast<double>(pointY) - static_cast<double>(centerY);
-	return deltaX * deltaX + deltaY * deltaY;
+	return closestPoint;
 }

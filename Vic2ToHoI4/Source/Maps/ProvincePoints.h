@@ -1,4 +1,4 @@
-#ifndef PROVINCE_POINTS_H
+#ifndef MAPS_PROVINCE_POINTS_H
 #define PROVINCE_POINTS_H
 
 
@@ -8,30 +8,28 @@
 
 
 
-typedef std::pair<int, int> point;
-
-
-
 namespace Maps
 {
+
+using Point = std::pair<int, int>;
 
 class ProvincePoints
 {
   public:
-	void addPoint(const point& thePoint);
+	void addPoint(const Point& thePoint);
 
-	[[nodiscard]] point getCentermostPoint() const;
+	[[nodiscard]] Point getCentermostPoint() const;
 
   private:
-	std::set<point> thePoints;
-	point leftmostPoint = {INT_MAX, 0};
-	point rightmostPoint = {-1, 0};
-	point highestPoint = {0, -1};
-	point lowestPoint = {0, INT_MAX};
+	std::set<Point> thePoints;
+	Point leftmostPoint = {INT_MAX, 0};
+	Point rightmostPoint = {-1, 0};
+	Point highestPoint = {0, -1};
+	Point lowestPoint = {0, INT_MAX};
 };
 
 } // namespace Maps
 
 
 
-#endif // PROVINCE_POINTS_H
+#endif // MAPS_PROVINCE_POINTS_H
