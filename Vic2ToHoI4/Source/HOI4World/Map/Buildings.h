@@ -6,10 +6,10 @@
 #include "BuildingPosition.h"
 #include "Configuration.h"
 #include "HOI4World/Map/CoastalProvinces.h"
-#include "HOI4World/Map/MapData.h"
-#include "HOI4World/ProvinceDefinitions.h"
 #include "HOI4World/States/HoI4States.h"
 #include "Hoi4Building.h"
+#include "Maps/MapData.h"
+#include "Maps/ProvinceDefinitions.h"
 #include <map>
 #include <optional>
 #include <regex>

@@ -5,7 +5,6 @@
 
 #include "DefaultState.h"
 #include "HOI4World/Map/Hoi4Province.h"
-#include "HOI4World/Map/MapData.h"
 #include "HOI4World/Map/StrategicRegions.h"
 #include "HOI4World/Names/Names.h"
 #include "HOI4World/Regions/Regions.h"
@@ -13,6 +12,7 @@
 #include "Mappers/Country/CountryMapperFactory.h"
 #include "Mappers/Graphics/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
+#include "Maps/MapData.h"
 #include "Parser.h"
 #include "V2World/Countries/Country.h"
 #include "V2World/States/State.h"

@@ -289,6 +289,9 @@
     <Filter Include="Data Files\Configurables\Vic2Localisations">
       <UniqueIdentifier>{08285fb8-fe10-4ea0-bbe2-ce589a5043b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Maps">
+      <UniqueIdentifier>{cc997cde-017a-4006-96e3-d762cd519883}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -489,9 +492,6 @@
     <ClCompile Include="Source\HOI4World\Map\ImpassableProvinces.cpp">
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Map\MapData.cpp">
-      <Filter>HoI4World\Map</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Map\Resources.cpp">
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
@@ -515,9 +515,6 @@
     </ClCompile>
     <ClCompile Include="Source\OutHoi4\Map\OutSupplyZone.cpp">
       <Filter>OutHoi4\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Map\ProvincePoints.cpp">
-      <Filter>HoI4World\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Map\ResourcesLink.cpp">
       <Filter>HoI4World\Map</Filter>
@@ -788,9 +785,6 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp">
       <Filter>Vic2World\Issues</Filter>
@@ -1318,6 +1312,15 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Relations.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Maps\MapData.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Maps\ProvincePoints.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Maps\ProvinceDefinitions.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1547,9 +1550,6 @@
     <ClInclude Include="Source\HOI4World\Map\ImpassableProvinces.h">
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Map\MapData.h">
-      <Filter>HoI4World\Map</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Map\Resources.h">
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
@@ -1579,9 +1579,6 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Map\OutSupplyZone.h">
       <Filter>OutHoi4\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Map\ProvincePoints.h">
-      <Filter>HoI4World\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Map\ResourcesLink.h">
       <Filter>HoI4World\Map</Filter>
@@ -1891,9 +1888,6 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.h">
       <Filter>HoI4World\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Issues\IssueHelper.h">
       <Filter>Vic2World\Issues</Filter>
@@ -2585,6 +2579,15 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\FactionName\FactionNameMappingFactory.h">
       <Filter>Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Maps\MapData.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Maps\ProvincePoints.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Maps\ProvinceDefinitions.h">
+      <Filter>Maps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

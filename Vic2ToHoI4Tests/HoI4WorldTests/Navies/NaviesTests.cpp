@@ -1,7 +1,7 @@
 #include "HOI4World/Navies/Navies.h"
-#include "HOI4World/ProvinceDefinitions.h"
 #include "HOI4World/TechnologiesBuilder.h"
 #include "Mappers/Provinces/ProvinceMapperBuilder.h"
+#include "Maps/ProvinceDefinitions.h"
 #include "OutHoi4/Navies/OutNavies.h"
 #include "V2World/Military/ArmyFactory.h"
 #include "gtest/gtest.h"

@@ -6,9 +6,9 @@
 #include "HOI4World/HoI4Country.h"
 #include "HOI4World/HoI4Localisation.h"
 #include "HOI4World/HoI4World.h"
-#include "HOI4World/Map/MapData.h"
-#include "HOI4World/ProvinceDefinitions.h"
 #include "MapUtils.h"
+#include "Maps/MapData.h"
+#include "Maps/ProvinceDefinitions.h"
 #include "V2World/World/World.h"
 #include <fstream>
 #include <map>

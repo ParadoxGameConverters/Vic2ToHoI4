@@ -5,7 +5,7 @@
 
 #include "Color.h"
 #include "Configuration.h"
-#include "HOI4World/ProvinceDefinitions.h"
+#include "Maps/ProvinceDefinitions.h"
 #include "ProvincePoints.h"
 #include "bitmap_image.hpp"
 #include <map>
