@@ -168,6 +168,7 @@
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\GrammarMappings.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="Source\HOI4World\Modifiers\DynamicModifiers.cpp" />
@@ -523,6 +524,7 @@
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.h" />
     <ClInclude Include="Source\HOI4World\Localisations\GrammarMappings.h" />
     <ClInclude Include="Source\HOI4World\Map\CoastalProvincesBuilder.h" />
+    <ClInclude Include="Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
     <ClInclude Include="Source\HOI4World\Modifiers\DynamicModifiers.h" />

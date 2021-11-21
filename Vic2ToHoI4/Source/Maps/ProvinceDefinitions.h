@@ -35,9 +35,6 @@ class ProvinceDefinitions
 														// Colors to work directly, please replace this hack.
 };
 
-
-[[nodiscard]] ProvinceDefinitions importProvinceDefinitions(const std::string& path);
-
 } // namespace Maps
 
 

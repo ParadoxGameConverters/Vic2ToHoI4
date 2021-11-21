@@ -6,6 +6,7 @@
 #include "Diplomacy/Faction.h"
 #include "Events/Events.h"
 #include "Events/GovernmentInExileEvent.h"
+#include "HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
 #include "HoI4Country.h"
 #include "HoI4FocusTree.h"
 #include "HoI4Localisation.h"
@@ -101,7 +102,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	theDate = std::make_unique<date>(sourceWorld.getDate());
 
-	Maps::ProvinceDefinitions provinceDefinitions = Maps::importProvinceDefinitions(theConfiguration.getHoI4Path());
+	Maps::ProvinceDefinitions provinceDefinitions = importProvinceDefinitions(theConfiguration.getHoI4Path());
 	theMapData = std::make_unique<Maps::MapData>(provinceDefinitions, theConfiguration.getHoI4Path());
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
