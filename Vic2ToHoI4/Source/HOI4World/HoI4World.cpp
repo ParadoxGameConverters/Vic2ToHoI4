@@ -101,9 +101,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	theDate = std::make_unique<date>(sourceWorld.getDate());
 
-	Maps::ProvinceDefinitions provinceDefinitions =
-		 Maps::ProvinceDefinitions::Importer().importProvinceDefinitions(theConfiguration);
-	theMapData = std::make_unique<Maps::MapData>(provinceDefinitions, theConfiguration);
+	Maps::ProvinceDefinitions provinceDefinitions = Maps::importProvinceDefinitions(theConfiguration.getHoI4Path());
+	theMapData = std::make_unique<Maps::MapData>(provinceDefinitions, theConfiguration.getHoI4Path());
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
 	strategicRegions = StrategicRegions::Factory().importStrategicRegions(theConfiguration);

@@ -106,8 +106,10 @@ void HoI4::Buildings::importDefaultBuilding(const std::smatch& matches,
 
 	auto connectingSeaProvince = stoi(matches[7].str());
 
-	auto province = theMapData.getProvinceNumber(position.xCoordinate, position.zCoordinate, provinceDefinitions);
-	if (province)
+	if (auto province = theMapData.getProvinceNumber(
+			  {static_cast<int>(position.xCoordinate), static_cast<int>(position.zCoordinate)},
+			  provinceDefinitions);
+		 province)
 	{
 		const auto key = std::make_pair(*province, connectingSeaProvince);
 		positions[key] = position;

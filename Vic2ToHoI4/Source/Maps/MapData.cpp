@@ -5,18 +5,89 @@
 
 
 
-commonItems::Color getCenterColor(Maps::Point position, bitmap_image& provinceMap);
-commonItems::Color getAboveColor(Maps::Point position, bitmap_image& provinceMap);
-commonItems::Color getBelowColor(Maps::Point position, int height, bitmap_image& provinceMap);
-commonItems::Color getLeftColor(Maps::Point position, int width, bitmap_image& provinceMap);
-commonItems::Color getRightColor(Maps::Point position, int width, bitmap_image& provinceMap);
-
-
-Maps::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration):
-	 provinceMap(theConfiguration.getHoI4Path() + "/map/provinces.bmp")
+namespace
 {
-	importProvinces(provinceDefinitions, theConfiguration.getHoI4Path());
-	importAdjacencies(theConfiguration.getHoI4Path());
+
+commonItems::Color getCenterColor(const Maps::Point position, const bitmap_image& provinceMap)
+{
+	rgb_t color{0, 0, 0};
+	provinceMap.get_pixel(position.first, position.second, color);
+
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
+}
+
+
+commonItems::Color getAboveColor(Maps::Point position, const bitmap_image& provinceMap)
+{
+	if (position.second > 0)
+	{
+		position.second--;
+	}
+
+	rgb_t color{0, 0, 0};
+	provinceMap.get_pixel(position.first, position.second, color);
+
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
+}
+
+
+commonItems::Color getBelowColor(Maps::Point position, const unsigned int height, const bitmap_image& provinceMap)
+{
+	if (position.second < height - 1)
+	{
+		position.second++;
+	}
+
+	rgb_t color{0, 0, 0};
+	provinceMap.get_pixel(position.first, position.second, color);
+
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
+}
+
+
+commonItems::Color getLeftColor(Maps::Point position, const unsigned int width, const bitmap_image& provinceMap)
+{
+	if (position.first > 0)
+	{
+		position.first--;
+	}
+	else
+	{
+		position.first = width - 1;
+	}
+
+	rgb_t color{0, 0, 0};
+	provinceMap.get_pixel(position.first, position.second, color);
+
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
+}
+
+
+commonItems::Color getRightColor(Maps::Point position, const unsigned int width, const bitmap_image& provinceMap)
+{
+	if (position.first < width - 1)
+	{
+		position.first++;
+	}
+	else
+	{
+		position.first = 0;
+	}
+
+	rgb_t color{0, 0, 0};
+	provinceMap.get_pixel(position.first, position.second, color);
+
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
+}
+
+} // namespace
+
+
+Maps::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const std::string& path):
+	 provinceMap(path + "/map/provinces.bmp")
+{
+	importProvinces(provinceDefinitions, path);
+	importAdjacencies(path);
 }
 
 
@@ -33,7 +104,7 @@ void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitio
 	{
 		for (unsigned int x = 0; x < width; x++)
 		{
-			Maps::Point position = {x, y};
+			Point position = {x, y};
 
 			auto centerColor = getCenterColor(position, provinceMap);
 			auto aboveColor = getAboveColor(position, provinceMap);
@@ -41,7 +112,7 @@ void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitio
 			auto leftColor = getLeftColor(position, width, provinceMap);
 			auto rightColor = getRightColor(position, width, provinceMap);
 
-			position.second = height - position.second - 1;
+			position.second = height - y - 1;
 			if (centerColor != aboveColor)
 			{
 				handleNeighbor(centerColor, aboveColor, position, provinceDefinitions);
@@ -78,82 +149,9 @@ void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitio
 }
 
 
-commonItems::Color getCenterColor(const Maps::Point position, bitmap_image& provinceMap)
-{
-	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
-
-	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
-}
-
-
-commonItems::Color getAboveColor(Maps::Point position, bitmap_image& provinceMap)
-{
-	if (position.second > 0)
-	{
-		position.second--;
-	}
-
-	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
-
-	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
-}
-
-
-commonItems::Color getBelowColor(Maps::Point position, const int height, bitmap_image& provinceMap)
-{
-	if (position.second < height - 1)
-	{
-		position.second++;
-	}
-
-	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
-
-	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
-}
-
-
-commonItems::Color getLeftColor(Maps::Point position, const int width, bitmap_image& provinceMap)
-{
-	if (position.first > 0)
-	{
-		position.first--;
-	}
-	else
-	{
-		position.first = width - 1;
-	}
-
-	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
-
-	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
-}
-
-
-commonItems::Color getRightColor(Maps::Point position, const int width, bitmap_image& provinceMap)
-{
-	if (position.first < width - 1)
-	{
-		position.first++;
-	}
-	else
-	{
-		position.first = 0;
-	}
-
-	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
-
-	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
-}
-
-
 void Maps::MapData::handleNeighbor(const commonItems::Color& centerColor,
 	 const commonItems::Color& otherColor,
-	 const Maps::Point& position,
+	 const Point& position,
 	 const ProvinceDefinitions& provinceDefinitions)
 {
 	auto centerProvince = provinceDefinitions.getProvinceFromColor(centerColor);
@@ -168,7 +166,7 @@ void Maps::MapData::handleNeighbor(const commonItems::Color& centerColor,
 
 void Maps::MapData::addNeighbor(const int mainProvince, const int neighborProvince)
 {
-	if (auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
+	if (const auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
 	{
 		centerMapping->second.insert(neighborProvince);
 	}
@@ -182,14 +180,14 @@ void Maps::MapData::addNeighbor(const int mainProvince, const int neighborProvin
 
 void Maps::MapData::removeNeighbor(const int mainProvince, const int neighborProvince)
 {
-	if (auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
+	if (const auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
 	{
 		centerMapping->second.erase(neighborProvince);
 	}
 }
 
 
-void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, const Maps::Point position)
+void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, const Point position)
 {
 	auto bordersWithNeighbors = borders.find(mainProvince);
 	if (bordersWithNeighbors == borders.end())
@@ -314,14 +312,11 @@ std::optional<Maps::Point> Maps::MapData::getAnyBorderCenter(const int province)
 }
 
 
-std::optional<int> Maps::MapData::getProvinceNumber(const double x,
-	 const double y,
+std::optional<int> Maps::MapData::getProvinceNumber(const Point& point,
 	 const ProvinceDefinitions& provinceDefinitions) const
 {
 	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(static_cast<unsigned int>(x),
-		 (provinceMap.height() - 1) - static_cast<unsigned int>(y),
-		 color);
+	provinceMap.get_pixel(point.first, (provinceMap.height() - 1) - point.second, color);
 	return provinceDefinitions.getProvinceFromColor(
 		 commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue}));
 }
