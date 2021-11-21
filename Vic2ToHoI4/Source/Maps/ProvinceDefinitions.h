@@ -1,10 +1,9 @@
-#ifndef PROVINCE_DEFINITIONS_H
-#define PROVINCE_DEFINITIONS_H
+#ifndef MAPS_PROVINCE_DEFINITIONS_H
+#define MAPS_PROVINCE_DEFINITIONS_H
 
 
 
 #include "Color.h"
-#include "Configuration.h"
 #include <map>
 #include <optional>
 #include <set>
@@ -17,8 +16,6 @@ namespace Maps
 class ProvinceDefinitions
 {
   public:
-	class Importer;
-
 	ProvinceDefinitions(std::set<int> landProvinces, std::set<int> seaProvinces, std::map<int, int> colorToProvinceMap):
 		 landProvinces(std::move(landProvinces)), seaProvinces(std::move(seaProvinces)),
 		 colorToProvinceMap(std::move(colorToProvinceMap))
@@ -26,8 +23,8 @@ class ProvinceDefinitions
 	}
 
 	[[nodiscard]] const auto& getLandProvinces() const { return landProvinces; }
-	[[nodiscard]] bool isLandProvince(const int province) const { return (landProvinces.contains(province)); }
-	[[nodiscard]] bool isSeaProvince(const int province) const { return (seaProvinces.contains(province)); }
+	[[nodiscard]] bool isLandProvince(const int province) const { return landProvinces.contains(province); }
+	[[nodiscard]] bool isSeaProvince(const int province) const { return seaProvinces.contains(province); }
 
 	[[nodiscard]] std::optional<int> getProvinceFromColor(const commonItems::Color& color) const;
 
@@ -39,14 +36,10 @@ class ProvinceDefinitions
 };
 
 
-class ProvinceDefinitions::Importer
-{
-  public:
-	[[nodiscard]] ProvinceDefinitions importProvinceDefinitions(const Configuration& theConfiguration) const;
-};
+[[nodiscard]] ProvinceDefinitions importProvinceDefinitions(const std::string& path);
 
 } // namespace Maps
 
 
 
-#endif // PROVINCE_DEFINITIONS_H
+#endif // MAPS_PROVINCE_DEFINITIONS_H

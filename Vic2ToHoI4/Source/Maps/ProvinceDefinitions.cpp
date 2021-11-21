@@ -12,13 +12,12 @@ int getIntFromColor(const commonItems::Color& color)
 }
 
 
-Maps::ProvinceDefinitions Maps::ProvinceDefinitions::Importer::importProvinceDefinitions(
-	 const Configuration& theConfiguration) const
+Maps::ProvinceDefinitions Maps::importProvinceDefinitions(const std::string& path)
 {
-	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
+	std::ifstream definitions(path + "/map/definition.csv");
 	if (!definitions.is_open())
 	{
-		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/map/definition.csv");
+		throw std::runtime_error("Could not open " + path + "/map/definition.csv");
 	}
 
 	std::set<int> landProvinces;
@@ -42,15 +41,15 @@ Maps::ProvinceDefinitions Maps::ProvinceDefinitions::Importer::importProvinceDef
 		line = line.substr(pos + 1, line.length());
 
 		pos = line.find_first_of(';');
-		int red(stoi(line.substr(0, pos)));
+		const int red(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
 
 		pos = line.find_first_of(';');
-		int green(stoi(line.substr(0, pos)));
+		const int green(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
 
 		pos = line.find_first_of(';');
-		int blue(stoi(line.substr(0, pos)));
+		const int blue(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
 
 		auto colorInt = getIntFromColor(commonItems::Color(std::array{red, green, blue}));
