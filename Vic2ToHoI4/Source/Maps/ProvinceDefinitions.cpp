@@ -12,7 +12,7 @@ int getIntFromColor(const commonItems::Color& color)
 }
 
 
-HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDefinitions(
+Maps::ProvinceDefinitions Maps::ProvinceDefinitions::Importer::importProvinceDefinitions(
 	 const Configuration& theConfiguration) const
 {
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
@@ -72,7 +72,7 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 }
 
 
-std::optional<int> HoI4::ProvinceDefinitions::getProvinceFromColor(const commonItems::Color& color) const
+std::optional<int> Maps::ProvinceDefinitions::getProvinceFromColor(const commonItems::Color& color) const
 {
 	const auto colorInt = getIntFromColor(color);
 

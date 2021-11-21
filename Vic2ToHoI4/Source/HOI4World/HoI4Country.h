@@ -112,7 +112,7 @@ class Country
 		 const MtgUnitMappings& mtgUnitMap,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates,
-		 const ProvinceDefinitions& provinceDefinitions,
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Mappers::ProvinceMapper& provinceMapper);
 	void convertConvoys(const UnitMappings& unitMap);
 	void convertAirForce(const UnitMappings& unitMap);
@@ -146,7 +146,7 @@ class Country
 	void addUnbuiltCanal(const std::string& unbuiltCanal) { unbuiltCanals.push_back(unbuiltCanal); }
 
 	void addProvincesToHomeArea(int provinceId,
-		 const std::unique_ptr<HoI4::MapData>& theMapData,
+		 const std::unique_ptr<Maps::MapData>& theMapData,
 		 const std::map<int, HoI4::State>& states,
 		 const std::map<int, int>& provinceToStateIdMap);
 

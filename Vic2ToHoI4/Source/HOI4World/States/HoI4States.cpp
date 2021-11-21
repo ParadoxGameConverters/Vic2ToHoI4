@@ -38,8 +38,8 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const StrategicRegions& strategicRegions,
 	 const Vic2::Localisations& vic2Localisations,
-	 const ProvinceDefinitions& provinceDefinitions,
-	 const MapData& mapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
+	 const Maps::MapData& mapData,
 	 Localisation& hoi4Localisations,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration)
@@ -95,7 +95,7 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 
 void HoI4::States::determineOwnersAndCores(const Mappers::CountryMapper& countryMap,
 	 const Vic2::World& sourceWorld,
-	 const ProvinceDefinitions& provinceDefinitions,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	for (auto provinceNumber: provinceDefinitions.getLandProvinces())
@@ -250,7 +250,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country>& sour
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
 	 const Mappers::ProvinceMapper& provinceMapper,
-	 const MapData& mapData,
+	 const Maps::MapData& mapData,
 	 const Configuration& theConfiguration)
 {
 	const auto grammarMappings = GrammarMappings().importGrammarMappings();
@@ -353,7 +353,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
 	 const Mappers::ProvinceMapper& provinceMapper,
-	 const MapData& mapData,
+	 const Maps::MapData& mapData,
 	 const std::map<int, Province>& provinces,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces,
 	 const Configuration& theConfiguration,
@@ -456,7 +456,7 @@ std::set<int> HoI4::States::getProvincesInState(const Vic2::State& vic2State,
 
 
 std::vector<std::set<int>> HoI4::States::getConnectedProvinceSets(std::set<int> provinceNumbers,
-	 const MapData& mapData,
+	 const Maps::MapData& mapData,
 	 const std::map<int, Province>& provinces)
 {
 	std::vector<std::set<int>> connectedProvinceSets;

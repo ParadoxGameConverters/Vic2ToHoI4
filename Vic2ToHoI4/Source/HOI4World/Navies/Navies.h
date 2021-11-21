@@ -31,7 +31,7 @@ class Navies
 		 const std::map<int, int>& provinceToStateIDMap,
 		 std::map<int, State> states,
 		 const std::string& tag,
-		 const ProvinceDefinitions& provinceDefinitions,
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Mappers::ProvinceMapper& provinceMapper);
 
 	Navies() = delete;
@@ -48,7 +48,7 @@ class Navies
 	std::tuple<int, int> getLocationAndBase(std::optional<int> vic2Location,
 		 int backupNavalLocation,
 		 const Mappers::ProvinceMapper& provinceMapper,
-		 const ProvinceDefinitions& provinceDefinitions,
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 std::map<int, State> states);
 

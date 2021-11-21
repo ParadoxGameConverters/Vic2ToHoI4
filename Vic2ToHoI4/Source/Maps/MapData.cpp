@@ -12,7 +12,7 @@ commonItems::Color getLeftColor(point position, int width, bitmap_image& provinc
 commonItems::Color getRightColor(point position, int width, bitmap_image& provinceMap);
 
 
-HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration):
+Maps::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration):
 	 provinceMap(theConfiguration.getHoI4Path() + "/map/provinces.bmp")
 {
 	importProvinces(provinceDefinitions, theConfiguration.getHoI4Path());
@@ -20,7 +20,7 @@ HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Con
 }
 
 
-void HoI4::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitions, const std::string& hoi4Path)
+void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitions, const std::string& hoi4Path)
 {
 	if (!provinceMap)
 	{
@@ -151,7 +151,7 @@ commonItems::Color getRightColor(point position, const int width, bitmap_image& 
 }
 
 
-void HoI4::MapData::handleNeighbor(const commonItems::Color& centerColor,
+void Maps::MapData::handleNeighbor(const commonItems::Color& centerColor,
 	 const commonItems::Color& otherColor,
 	 const point& position,
 	 const ProvinceDefinitions& provinceDefinitions)
@@ -166,7 +166,7 @@ void HoI4::MapData::handleNeighbor(const commonItems::Color& centerColor,
 }
 
 
-void HoI4::MapData::addNeighbor(const int mainProvince, const int neighborProvince)
+void Maps::MapData::addNeighbor(const int mainProvince, const int neighborProvince)
 {
 	if (auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
 	{
@@ -180,7 +180,7 @@ void HoI4::MapData::addNeighbor(const int mainProvince, const int neighborProvin
 }
 
 
-void HoI4::MapData::removeNeighbor(const int mainProvince, const int neighborProvince)
+void Maps::MapData::removeNeighbor(const int mainProvince, const int neighborProvince)
 {
 	if (auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
 	{
@@ -189,7 +189,7 @@ void HoI4::MapData::removeNeighbor(const int mainProvince, const int neighborPro
 }
 
 
-void HoI4::MapData::addPointToBorder(int mainProvince, int neighborProvince, const point position)
+void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, const point position)
 {
 	auto bordersWithNeighbors = borders.find(mainProvince);
 	if (bordersWithNeighbors == borders.end())
@@ -222,7 +222,7 @@ void HoI4::MapData::addPointToBorder(int mainProvince, int neighborProvince, con
 }
 
 
-void HoI4::MapData::importAdjacencies(const std::string& hoi4Path)
+void Maps::MapData::importAdjacencies(const std::string& hoi4Path)
 {
 	std::ifstream adjacenciesFile(hoi4Path + "/map/adjacencies.csv");
 	if (!adjacenciesFile.is_open())
@@ -260,7 +260,7 @@ void HoI4::MapData::importAdjacencies(const std::string& hoi4Path)
 }
 
 
-std::set<int> HoI4::MapData::getNeighbors(const int province) const
+std::set<int> Maps::MapData::getNeighbors(const int province) const
 {
 	if (const auto neighbors = provinceNeighbors.find(province); neighbors != provinceNeighbors.end())
 	{
@@ -274,7 +274,7 @@ std::set<int> HoI4::MapData::getNeighbors(const int province) const
 }
 
 
-std::optional<point> HoI4::MapData::getSpecifiedBorderCenter(const int mainProvince, const int neighbor) const
+std::optional<point> Maps::MapData::getSpecifiedBorderCenter(const int mainProvince, const int neighbor) const
 {
 	const auto bordersWithNeighbors = borders.find(mainProvince);
 	if (bordersWithNeighbors == borders.end())
@@ -294,7 +294,7 @@ std::optional<point> HoI4::MapData::getSpecifiedBorderCenter(const int mainProvi
 }
 
 
-std::optional<point> HoI4::MapData::getAnyBorderCenter(const int province) const
+std::optional<point> Maps::MapData::getAnyBorderCenter(const int province) const
 {
 	const auto bordersWithNeighbors = borders.find(province);
 	if (bordersWithNeighbors == borders.end())
@@ -314,7 +314,7 @@ std::optional<point> HoI4::MapData::getAnyBorderCenter(const int province) const
 }
 
 
-std::optional<int> HoI4::MapData::getProvinceNumber(const double x,
+std::optional<int> Maps::MapData::getProvinceNumber(const double x,
 	 const double y,
 	 const ProvinceDefinitions& provinceDefinitions) const
 {
@@ -327,7 +327,7 @@ std::optional<int> HoI4::MapData::getProvinceNumber(const double x,
 }
 
 
-std::optional<HoI4::ProvincePoints> HoI4::MapData::getProvincePoints(const int provinceNum) const
+std::optional<Maps::ProvincePoints> Maps::MapData::getProvincePoints(const int provinceNum) const
 {
 	if (const auto possiblePoints = theProvincePoints.find(provinceNum); possiblePoints != theProvincePoints.end())
 	{

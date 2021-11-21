@@ -6,7 +6,7 @@
 
 
 
-void HoI4::CoastalProvinces::init(const MapData& theMapData, const std::map<int, Province>& theProvinces)
+void HoI4::CoastalProvinces::init(const Maps::MapData& theMapData, const std::map<int, Province>& theProvinces)
 {
 	Log(LogLevel::Info) << "\tInitializing coastal provinces";
 

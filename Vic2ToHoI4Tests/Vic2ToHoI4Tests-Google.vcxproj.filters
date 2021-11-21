@@ -415,9 +415,6 @@
     <ClCompile Include="HoI4WorldTests\Map\ImpassableProvincesTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Map\ProvincePointsTests.cpp">
-      <Filter>HoI4WorldTests\Map</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\Map\MapRegionTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
@@ -1553,6 +1550,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Maps\ProvinceDefinitions.cpp">
       <Filter>Vic2ToHoI4 files\Maps</Filter>
     </ClCompile>
+    <ClCompile Include="MapsTests\ProvincePointsTests.cpp">
+      <Filter>MapsTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2082,6 +2082,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Maps">
       <UniqueIdentifier>{d4ab90cb-4d73-46c7-8c34-56d18bfcc030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapsTests">
+      <UniqueIdentifier>{45ca0961-0ad9-418b-b2d8-269f9170ebb0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

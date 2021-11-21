@@ -15,8 +15,8 @@
 
 
 HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 HoI4::Localisation& hoi4Localisations,
 	 const Configuration& theConfiguration):
 	 genericFocusTree(new HoI4FocusTree),
@@ -133,8 +133,8 @@ void HoI4WarCreator::generateMajorWars(std::ofstream& AILog,
 	 std::set<std::shared_ptr<HoI4::Faction>>& factionsAtWar,
 	 const std::set<std::string>& majorIdeologies,
 	 const HoI4::World* world,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 HoI4::Localisation& hoi4Localisations,
 	 const Configuration& theConfiguration)
 {
@@ -416,8 +416,8 @@ double HoI4WarCreator::GetFactionStrength(const std::shared_ptr<HoI4::Faction>& 
 std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std::shared_ptr<HoI4::Country> Leader,
 	 std::ofstream& AILog,
 	 const HoI4::World* world,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 HoI4::Localisation& hoi4Localisations,
 	 const Configuration& theConfiguration)
 {
@@ -658,8 +658,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(std::shared_ptr<HoI4::Country> Leader,
 	 const std::set<std::string>& majorIdeologies,
 	 std::ofstream& AILog,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	std::vector<std::shared_ptr<HoI4::Faction>> CountriesAtWar;
@@ -869,8 +869,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::democracyWarCreator(
 
 
 std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator(std::shared_ptr<HoI4::Country> country,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
@@ -892,8 +892,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator
 
 
 void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 HoI4::Localisation& hoi4Localisations,
 	 const Configuration& theConfiguration)
 {
@@ -953,8 +953,8 @@ void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
 
 
 std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::radicalWarCreator(std::shared_ptr<HoI4::Country> country,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	return absolutistWarCreator(country, theMapData, provinceDefinitions, hoi4Localisations);
@@ -962,8 +962,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::radicalWarCreator(st
 
 
 std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakNeighbors(std::shared_ptr<HoI4::Country> country,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions)
 {
 	std::vector<std::shared_ptr<HoI4::Country>> weakNeighbors;
 
@@ -1006,8 +1006,8 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakNeighbors(st
 
 
 std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakColonies(std::shared_ptr<HoI4::Country> country,
-	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions)
 {
 	std::vector<std::pair<std::shared_ptr<HoI4::Country>, float>> weakColonies;
 

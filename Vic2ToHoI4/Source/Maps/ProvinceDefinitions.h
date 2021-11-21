@@ -11,7 +11,7 @@
 
 
 
-namespace HoI4
+namespace Maps
 {
 
 class ProvinceDefinitions
@@ -45,7 +45,7 @@ class ProvinceDefinitions::Importer
 	[[nodiscard]] ProvinceDefinitions importProvinceDefinitions(const Configuration& theConfiguration) const;
 };
 
-} // namespace HoI4
+} // namespace Maps
 
 
 

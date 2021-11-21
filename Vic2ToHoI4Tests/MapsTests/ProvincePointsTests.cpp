@@ -1,11 +1,11 @@
-#include "HOI4World/Map/ProvincePoints.h"
+#include "Maps/ProvincePoints.h"
 #include "gtest/gtest.h"
 
 
 
 TEST(HoI4World_Map_ProvincePoints, CentermostIsOriginIfNoPoints)
 {
-	const HoI4::ProvincePoints provincePoints;
+	const Maps::ProvincePoints provincePoints;
 
 	const point expectedPoint{0, 0};
 	ASSERT_EQ(expectedPoint, provincePoints.getCentermostPoint());
@@ -14,7 +14,7 @@ TEST(HoI4World_Map_ProvincePoints, CentermostIsOriginIfNoPoints)
 
 TEST(HoI4World_Map_ProvincePoints, CenterPointIsAverageLatitude)
 {
-	HoI4::ProvincePoints provincePoints;
+	Maps::ProvincePoints provincePoints;
 	provincePoints.addPoint(point{0, 1});
 	provincePoints.addPoint(point{0, 2});
 	provincePoints.addPoint(point{0, 3});
@@ -27,7 +27,7 @@ TEST(HoI4World_Map_ProvincePoints, CenterPointIsAverageLatitude)
 
 TEST(HoI4World_Map_ProvincePoints, CenterPointIsAverageLongitude)
 {
-	HoI4::ProvincePoints provincePoints;
+	Maps::ProvincePoints provincePoints;
 	provincePoints.addPoint(point{1, 0});
 	provincePoints.addPoint(point{2, 0});
 	provincePoints.addPoint(point{3, 0});
@@ -40,7 +40,7 @@ TEST(HoI4World_Map_ProvincePoints, CenterPointIsAverageLongitude)
 
 TEST(HoI4World_Map_ProvincePoints, CentermostPointWhenCenterNotControlled)
 {
-	HoI4::ProvincePoints provincePoints;
+	Maps::ProvincePoints provincePoints;
 	provincePoints.addPoint(point{1, 0});
 	provincePoints.addPoint(point{3, 0});
 	provincePoints.addPoint(point{10, 0});

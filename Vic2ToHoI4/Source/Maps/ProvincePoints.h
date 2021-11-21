@@ -12,7 +12,7 @@ typedef std::pair<int, int> point;
 
 
 
-namespace HoI4
+namespace Maps
 {
 
 class ProvincePoints
@@ -30,7 +30,7 @@ class ProvincePoints
 	point lowestPoint = {0, INT_MAX};
 };
 
-} // namespace HoI4
+} // namespace Maps
 
 
 

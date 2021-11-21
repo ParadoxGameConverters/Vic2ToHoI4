@@ -165,7 +165,7 @@ class World: commonItems::parser
 
 	void convertTechs();
 
-	void convertMilitaries(const ProvinceDefinitions& provinceDefinitions,
+	void convertMilitaries(const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
 	void convertArmies(const militaryMappings& localMilitaryMappings,
@@ -173,7 +173,7 @@ class World: commonItems::parser
 		 const Configuration& theConfiguration);
 	void convertNavies(const UnitMappings& unitMap,
 		 const MtgUnitMappings& mtgUnitMap,
-		 const ProvinceDefinitions& provinceDefinitions,
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Mappers::ProvinceMapper& provinceMapper);
 	void convertAirforces(const UnitMappings& unitMap);
 
@@ -253,7 +253,7 @@ class World: commonItems::parser
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 
 	CoastalProvinces theCoastalProvinces;
-	std::unique_ptr<MapData> theMapData;
+	std::unique_ptr<Maps::MapData> theMapData;
 
 	std::unique_ptr<ScriptedEffects> scriptedEffects;
 

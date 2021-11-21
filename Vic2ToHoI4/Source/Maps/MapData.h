@@ -19,7 +19,7 @@ typedef std::map<int, borderPoints> bordersWith;
 
 
 
-namespace HoI4
+namespace Maps
 {
 
 class MapData
@@ -55,7 +55,7 @@ class MapData
 	bitmap_image provinceMap;
 };
 
-} // namespace HoI4
+} // namespace Maps
 
 
 
