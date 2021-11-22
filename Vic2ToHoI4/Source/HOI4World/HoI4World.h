@@ -18,7 +18,6 @@
 #include "Localisations/ArticleRules/ArticleRules.h"
 #include "Map/Buildings.h"
 #include "Map/CoastalProvinces.h"
-#include "Map/MapData.h"
 #include "Map/StrategicRegion.h"
 #include "Map/StrategicRegions.h"
 #include "Map/SupplyZones.h"
@@ -32,6 +31,8 @@
 #include "Mappers/Ideology/IdeologyMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mappers/Technology/TechMapper.h"
+#include "Maps/MapData.h"
+#include "Maps/ProvinceDefinitions.h"
 #include "Military/DivisionTemplate.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/HoI4UnitType.h"
@@ -44,7 +45,6 @@
 #include "Operations/Operations.h"
 #include "OperativeNames/OperativeNames.h"
 #include "Parser.h"
-#include "ProvinceDefinitions.h"
 #include "ScriptedEffects/ScriptedEffects.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "ScriptedTriggers/ScriptedTriggers.h"
@@ -165,7 +165,7 @@ class World: commonItems::parser
 
 	void convertTechs();
 
-	void convertMilitaries(const ProvinceDefinitions& provinceDefinitions,
+	void convertMilitaries(const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
 	void convertArmies(const militaryMappings& localMilitaryMappings,
@@ -173,7 +173,7 @@ class World: commonItems::parser
 		 const Configuration& theConfiguration);
 	void convertNavies(const UnitMappings& unitMap,
 		 const MtgUnitMappings& mtgUnitMap,
-		 const ProvinceDefinitions& provinceDefinitions,
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Mappers::ProvinceMapper& provinceMapper);
 	void convertAirforces(const UnitMappings& unitMap);
 
@@ -253,7 +253,7 @@ class World: commonItems::parser
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 
 	CoastalProvinces theCoastalProvinces;
-	std::unique_ptr<MapData> theMapData;
+	std::unique_ptr<Maps::MapData> theMapData;
 
 	std::unique_ptr<ScriptedEffects> scriptedEffects;
 

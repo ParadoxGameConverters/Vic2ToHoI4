@@ -154,8 +154,8 @@ std::optional<HoI4::Coordinate> HoI4::MapUtils::getCapitalPosition(const Country
 std::set<int> HoI4::MapUtils::findBorderStates(const Country& country,
 	 const Country& neighbor,
 	 const std::map<int, int>& provinceToStateIdMapping,
-	 const MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions) const
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions) const
 {
 	const auto& ownProvinces = country.getProvinces();
 

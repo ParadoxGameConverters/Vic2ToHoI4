@@ -301,9 +301,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapData.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
@@ -324,9 +321,6 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZone.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ProvincePoints.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ResourcesLink.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
@@ -419,9 +413,6 @@
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Map\ImpassableProvincesTests.cpp">
-      <Filter>HoI4WorldTests\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Map\ProvincePointsTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Map\MapRegionTests.cpp">
@@ -699,9 +690,6 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
@@ -1553,6 +1541,21 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Relations.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Maps\MapData.cpp">
+      <Filter>Vic2ToHoI4 files\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Maps\ProvincePoints.cpp">
+      <Filter>Vic2ToHoI4 files\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Maps\ProvinceDefinitions.cpp">
+      <Filter>Vic2ToHoI4 files\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="MapsTests\ProvincePointsTests.cpp">
+      <Filter>MapsTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2080,6 +2083,12 @@
     <Filter Include="Vic2ToHoI4 files\common items\ModLoader">
       <UniqueIdentifier>{b7736806-a5dc-4af5-bc5c-240a5ec89f45}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Maps">
+      <UniqueIdentifier>{d4ab90cb-4d73-46c7-8c34-56d18bfcc030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapsTests">
+      <UniqueIdentifier>{45ca0961-0ad9-418b-b2d8-269f9170ebb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2601,12 +2610,6 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.h">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapData.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ProvincePoints.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
-    </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.h">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
@@ -2902,9 +2905,6 @@
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OnActions.h">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.h">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\SharedFocus.h">

@@ -1,11 +1,10 @@
-#ifndef MAP_DATA_H
-#define MAP_DATA_H
+#ifndef MAPS_MAPDATA_H
+#define MAPS_MAPDATA_H
 
 
 
 #include "Color.h"
-#include "Configuration.h"
-#include "HOI4World/ProvinceDefinitions.h"
+#include "Maps/ProvinceDefinitions.h"
 #include "ProvincePoints.h"
 #include "bitmap_image.hpp"
 #include <map>
@@ -14,24 +13,22 @@
 
 
 
-typedef std::vector<point> borderPoints;
-typedef std::map<int, borderPoints> bordersWith;
-
-
-
-namespace HoI4
+namespace Maps
 {
+
+using borderPoints = std::vector<Point>;
+using bordersWith = std::map<int, borderPoints>;
+
 
 class MapData
 {
   public:
-	MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration);
+	MapData(const ProvinceDefinitions& provinceDefinitions, const std::string& path);
 
 	[[nodiscard]] std::set<int> getNeighbors(int province) const;
-	[[nodiscard]] std::optional<point> getSpecifiedBorderCenter(int mainProvince, int neighbor) const;
-	[[nodiscard]] std::optional<point> getAnyBorderCenter(int province) const;
-	[[nodiscard]] std::optional<int> getProvinceNumber(double x,
-		 double y,
+	[[nodiscard]] std::optional<Point> getSpecifiedBorderCenter(int mainProvince, int neighbor) const;
+	[[nodiscard]] std::optional<Point> getAnyBorderCenter(int province) const;
+	[[nodiscard]] std::optional<int> getProvinceNumber(const Point& point,
 		 const ProvinceDefinitions& provinceDefinitions) const;
 
 	[[nodiscard]] std::optional<ProvincePoints> getProvincePoints(int provinceNum) const;
@@ -40,11 +37,11 @@ class MapData
 	void importProvinces(const ProvinceDefinitions& provinceDefinitions, const std::string& hoi4Path);
 	void handleNeighbor(const commonItems::Color& centerColor,
 		 const commonItems::Color& otherColor,
-		 const point& position,
+		 const Point& position,
 		 const ProvinceDefinitions& provinceDefinitions);
 	void addNeighbor(int mainProvince, int neighborProvince);
 	void removeNeighbor(int mainProvince, int neighborProvince);
-	void addPointToBorder(int mainProvince, int neighborProvince, point position);
+	void addPointToBorder(int mainProvince, int neighborProvince, Point position);
 
 	void importAdjacencies(const std::string& hoi4Path);
 
@@ -55,8 +52,8 @@ class MapData
 	bitmap_image provinceMap;
 };
 
-} // namespace HoI4
+} // namespace Maps
 
 
 
-#endif // MAP_DATA_H
+#endif // MAPS_MAPDATA_H

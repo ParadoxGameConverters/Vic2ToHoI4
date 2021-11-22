@@ -36,8 +36,8 @@ class MapUtils
 	[[nodiscard]] std::set<int> findBorderStates(const Country& country,
 		 const Country& neighbor,
 		 const std::map<int, int>& provinceToStateIdMapping,
-		 const MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions) const;
+		 const Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions) const;
 	[[nodiscard]] std::vector<int> sortStatesByDistance(const std::set<int>& stateList,
 		 const Coordinate& location,
 		 const std::map<int, State>& states);

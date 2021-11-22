@@ -6,7 +6,7 @@
 #include "Diplomacy/Faction.h"
 #include "Events/Events.h"
 #include "Events/GovernmentInExileEvent.h"
-#include "HOI4World/ProvinceDefinitions.h"
+#include "HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
 #include "HoI4Country.h"
 #include "HoI4FocusTree.h"
 #include "HoI4Localisation.h"
@@ -34,6 +34,7 @@
 #include "Mappers/Technology/ResearchBonusMapperFactory.h"
 #include "Mappers/Technology/TechMapper.h"
 #include "Mappers/Technology/TechMapperFactory.h"
+#include "Maps/ProvinceDefinitions.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
 #include "Modifiers/DynamicModifiers.h"
 #include "Names/Names.h"
@@ -101,9 +102,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	theDate = std::make_unique<date>(sourceWorld.getDate());
 
-	ProvinceDefinitions provinceDefinitions =
-		 ProvinceDefinitions::Importer().importProvinceDefinitions(theConfiguration);
-	theMapData = std::make_unique<MapData>(provinceDefinitions, theConfiguration);
+	Maps::ProvinceDefinitions provinceDefinitions = importProvinceDefinitions(theConfiguration.getHoI4Path());
+	theMapData = std::make_unique<Maps::MapData>(provinceDefinitions, theConfiguration.getHoI4Path());
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
 	strategicRegions = StrategicRegions::Factory().importStrategicRegions(theConfiguration);
@@ -1030,7 +1030,7 @@ void HoI4::World::convertTechs()
 }
 
 
-void HoI4::World::convertMilitaries(const ProvinceDefinitions& provinceDefinitions,
+void HoI4::World::convertMilitaries(const Maps::ProvinceDefinitions& provinceDefinitions,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration)
 {
@@ -1082,7 +1082,7 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 
 void HoI4::World::convertNavies(const UnitMappings& unitMap,
 	 const MtgUnitMappings& mtgUnitMap,
-	 const ProvinceDefinitions& provinceDefinitions,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	Log(LogLevel::Info) << "\t\tConverting navies";
