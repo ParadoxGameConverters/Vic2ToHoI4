@@ -817,7 +817,7 @@ mediterranean = {
 }
 
 balkans = {
-	cultures_and_groups = { south_slavic pan_albanian pan_romanian balkan hungarian_culture_group czecho_slovak_culture_group }
+	cultures_and_groups = { south_slavic pan_albanian pan_romanian balkan hungarian_culture_group }
 	
 	army_portraits = {
 		#Generic European
@@ -878,7 +878,6 @@ balkans = {
 		democratic = {
 			"gfx/leaders/Europe/portrait_europe_generic_5.dds"
 			"gfx/leaders/BUL/Portrait_Bulgaria_Georgi_Dimitrov.dds"
-			"gfx/leaders/CZE/Portrait_Czech_Klement_Gottwald.dds"
 			"gfx/leaders/ROM/Portrait_Romania_Armand_Calinescu.dds"
 			"gfx/leaders/Balkans/Portrait_Romania_Sever_Bocu.tga"
 		} 
@@ -886,10 +885,8 @@ balkans = {
 			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
 			"gfx/leaders/BUL/portrait_bul_hristo_lukov.dds"
 			"gfx/leaders/CRO/Portrait_Croatia_Ante_Pavelic.dds"
-			"gfx/leaders/CZE/Portrait_Czech_Jaroslav_Krejci.dds"
 			"gfx/leaders/ROM/Portrait_Romania_Ion_Antonescu.dds"
 			"gfx/leaders/ROM/Portrait_Romania_Octavian_Goga.dds"
-			"gfx/leaders/SLO/Portrait_Slovakia_Jozef_Tiso.dds"
 			"gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Stojadinovic.dds"
 			"gfx/leaders/Balkans/Portrait_BUL_Kimon_Griogiev.tga"
 			"gfx/leaders/Balkans/Portrait_Romania_Horia_Sima.tga"
@@ -909,7 +906,6 @@ balkans = {
 		neutrality = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
 			"gfx/leaders/CRO/portrait_CRO_vladko_macek.dds"
-			"gfx/leaders/CZE/Portrait_Czech_Edvard_Benes.dds"
 			"gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Grol.dds"
 			"gfx/leaders/Balkans/Portrait_Croatia_Stjepan_Radic.tga"
 			"gfx/leaders/Balkans/Portrait_Albania_Shefqet_Verlaci.tga"
@@ -1052,8 +1048,8 @@ balkans = {
 	graphical_culture_2d = eastern_european_2d
 }
 
-polish_baltic = {
-	cultures_and_groups = { polish_culture_group baltic }
+other_balto_slavic = {
+	cultures_and_groups = { polish_culture_group baltic czecho_slovak_culture_group }
 	
 	army_portraits = {
 		#Generic European
@@ -1116,12 +1112,15 @@ polish_baltic = {
 			"gfx/leaders/Eastern_European/Portrait_Estonia_Jaan_Tonisson.tga"
 			"gfx/leaders/Eastern_European/Portrait_LAT_Margers_Skujenieks.tga"
 			"gfx/leaders/Eastern_European/Portrait_Baltic_August_Rei.tga"
+			"gfx/leaders/CZE/Portrait_Czech_Klement_Gottwald.dds"
 		} 
 		fascism = {
 			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
 			"gfx/leaders/POL/Portrait_POL_Boleslaw_Piasecki.dds"
 			"gfx/leaders/Eastern_European/portrait_LAT_Gustavs_Celminsh.dds"
 			"gfx/leaders/Eastern_European/Portrait_Latvia_Hans_Heinrich_Lohse.tga"
+			"gfx/leaders/CZE/Portrait_Czech_Jaroslav_Krejci.dds"
+			"gfx/leaders/SLO/Portrait_Slovakia_Jozef_Tiso.dds"
 		} 
 		absolutist = {
 			"gfx/leaders/Europe/Portrait_europe_generic_7.dds"
@@ -1137,6 +1136,7 @@ polish_baltic = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
 			"gfx/leaders/LAT/portrait_lat_karlis_ulmanis.dds"
 			"gfx/leaders/POL/Portrait_Poland_Ignacy_Moscicki.dds"
+			"gfx/leaders/CZE/Portrait_Czech_Edvard_Benes.dds"
 		} 
 		radical = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
