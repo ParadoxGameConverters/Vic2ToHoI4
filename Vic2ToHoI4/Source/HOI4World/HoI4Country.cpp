@@ -1115,7 +1115,7 @@ void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 	 const MtgUnitMappings& mtgUnitMap,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates,
-	 const ProvinceDefinitions& provinceDefinitions,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	auto backupNavalLocation = 0;
@@ -1627,7 +1627,7 @@ std::optional<std::string> HoI4::Country::getDominionTag(const std::string& regi
 
 
 void HoI4::Country::addProvincesToHomeArea(int provinceId,
-	 const std::unique_ptr<HoI4::MapData>& theMapData,
+	 const std::unique_ptr<Maps::MapData>& theMapData,
 	 const std::map<int, HoI4::State>& states,
 	 const std::map<int, int>& provinceToStateIdMap)
 {

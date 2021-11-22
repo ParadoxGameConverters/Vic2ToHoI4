@@ -217,6 +217,13 @@ add_library(Mappers
 	${MAPPERS_FACTIONNAME_SOURCES}
 )
 
+set (MAPS_SOURCES ${MAPS_SOURCES} "${PROJECT_SOURCE_DIR}/Maps/MapData.cpp")
+set (MAPS_SOURCES ${MAPS_SOURCES} "${PROJECT_SOURCE_DIR}/Maps/ProvinceDefinitions.cpp")
+set (MAPS_SOURCES ${MAPS_SOURCES} "${PROJECT_SOURCE_DIR}/Maps/ProvincePoints.cpp")
+add_library(Map
+	${MAPS_SOURCES}
+)
+
 set(VIC2WORLD_AI_SOURCES ${VIC2WORLD_AI_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Ai/AI.cpp")
 set(VIC2WORLD_AI_SOURCES ${VIC2WORLD_AI_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Ai/AIFactory.cpp")
 set(VIC2WORLD_AI_SOURCES ${VIC2WORLD_AI_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Ai/AIStrategyFactory.cpp")
@@ -383,7 +390,7 @@ set_target_properties( Vic2ToHoi4Converter
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
-target_link_libraries(Vic2ToHoi4Converter OutHoI4World HoI4World Vic2World Mappers ZIPLIB pthread)
+target_link_libraries(Vic2ToHoi4Converter OutHoI4World HoI4World Map Vic2World Mappers ZIPLIB pthread)
 
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/arabic_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/arabic_operative_codenames.txt" COPYONLY)
@@ -745,4 +752,4 @@ configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Vic2World Mappers ZIPLIB pthread)
+target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Map Vic2World Mappers ZIPLIB pthread)

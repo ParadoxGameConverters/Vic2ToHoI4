@@ -6,10 +6,10 @@
 #include "BuildingPosition.h"
 #include "Configuration.h"
 #include "HOI4World/Map/CoastalProvinces.h"
-#include "HOI4World/Map/MapData.h"
-#include "HOI4World/ProvinceDefinitions.h"
 #include "HOI4World/States/HoI4States.h"
 #include "Hoi4Building.h"
+#include "Maps/MapData.h"
+#include "Maps/ProvinceDefinitions.h"
 #include <map>
 #include <optional>
 #include <regex>
@@ -29,57 +29,59 @@ class Buildings
   public:
 	explicit Buildings(const States& theStates,
 		 const CoastalProvinces& theCoastalProvinces,
-		 MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions,
+		 Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Configuration& theConfiguration);
 
 	[[nodiscard]] const auto& getBuildings() const { return buildings; }
 	[[nodiscard]] const auto& getAirportLocations() const { return airportLocations; }
 
   private:
-	void importDefaultBuildings(MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions,
+	void importDefaultBuildings(Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Configuration& theConfiguration);
-	void processLine(const std::string& line, MapData& theMapData, const ProvinceDefinitions& provinceDefinitions);
+	void processLine(const std::string& line,
+		 Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions);
 	void importDefaultBuilding(const std::smatch& matches,
 		 defaultPositions& positions,
-		 MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions) const;
+		 Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions) const;
 
 	void placeBuildings(const States& theStates,
 		 const CoastalProvinces& theCoastalProvinces,
-		 const MapData& theMapData,
+		 const Maps::MapData& theMapData,
 		 const Configuration& theConfiguration);
-	void placeArmsFactories(const States& theStates, const MapData& theMapData);
-	void placeIndustrialComplexes(const States& theStates, const MapData& theMapData);
-	void placeAirports(const States& theStates, const MapData& theMapData);
+	void placeArmsFactories(const States& theStates, const Maps::MapData& theMapData);
+	void placeIndustrialComplexes(const States& theStates, const Maps::MapData& theMapData);
+	void placeAirports(const States& theStates, const Maps::MapData& theMapData);
 	void placeNavalBases(const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, std::vector<int>>& actualCoastalProvinces,
-		 const MapData& theMapData,
+		 const Maps::MapData& theMapData,
 		 const Configuration& theConfiguration);
 	void addNavalBase(int stateID,
 		 const std::pair<int, std::vector<int>>& province,
-		 const MapData& theMapData,
+		 const Maps::MapData& theMapData,
 		 const Configuration& theConfiguration);
 	void placeBunkers(const std::map<int, int>& provinceToStateIDMap,
-		 const MapData& theMapData,
+		 const Maps::MapData& theMapData,
 		 const Configuration& theConfiguration);
-	void addBunker(int stateID, int province, const MapData& theMapData, const Configuration& theConfiguration);
+	void addBunker(int stateID, int province, const Maps::MapData& theMapData, const Configuration& theConfiguration);
 	void placeCoastalBunkers(const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, std::vector<int>>& actualCoastalProvinces,
-		 const MapData& theMapData,
+		 const Maps::MapData& theMapData,
 		 const Configuration& theConfiguration);
 	void addCoastalBunker(int stateID,
 		 const std::pair<int, std::vector<int>>& province,
-		 const MapData& theMapData,
+		 const Maps::MapData& theMapData,
 		 const Configuration& theConfiguration);
 	void placeDockyards(const States& theStates,
 		 const CoastalProvinces& theCoastalProvinces,
 		 std::map<int, std::vector<int>> actualCoastalProvinces,
-		 const MapData& theMapData);
-	void placeAntiAir(const States& theStates, const MapData& theMapData);
-	void placeSyntheticRefineries(const States& theStates, const MapData& theMapData);
-	void placeNuclearReactors(const States& theStates, const MapData& theMapData);
+		 const Maps::MapData& theMapData);
+	void placeAntiAir(const States& theStates, const Maps::MapData& theMapData);
+	void placeSyntheticRefineries(const States& theStates, const Maps::MapData& theMapData);
+	void placeNuclearReactors(const States& theStates, const Maps::MapData& theMapData);
 
 	std::multimap<int, Building> buildings;
 

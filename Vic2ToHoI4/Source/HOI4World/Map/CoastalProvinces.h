@@ -3,9 +3,8 @@
 
 
 
-#include "Configuration.h"
 #include "HOI4World/Map/Hoi4Province.h"
-#include "MapData.h"
+#include "Maps/MapData.h"
 #include <map>
 #include <vector>
 
@@ -26,7 +25,7 @@ class CoastalProvinces
 
 	class Builder;
 
-	void init(const MapData& theMapData, const std::map<int, Province>& theProvinces);
+	void init(const Maps::MapData& theMapData, const std::map<int, Province>& theProvinces);
 
 	[[nodiscard]] auto getCoastalProvinces() const { return theCoastalProvinces; }
 	[[nodiscard]] bool isProvinceCoastal(int provinceNum) const;

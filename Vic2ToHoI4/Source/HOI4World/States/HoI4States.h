@@ -5,7 +5,6 @@
 
 #include "DefaultState.h"
 #include "HOI4World/Map/Hoi4Province.h"
-#include "HOI4World/Map/MapData.h"
 #include "HOI4World/Map/StrategicRegions.h"
 #include "HOI4World/Names/Names.h"
 #include "HOI4World/Regions/Regions.h"
@@ -13,6 +12,7 @@
 #include "Mappers/Country/CountryMapperFactory.h"
 #include "Mappers/Graphics/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
+#include "Maps/MapData.h"
 #include "Parser.h"
 #include "V2World/Countries/Country.h"
 #include "V2World/States/State.h"
@@ -45,7 +45,6 @@ class Country;
 class CoastalProvinces;
 class ImpassableProvinces;
 class Localisation;
-class ProvinceDefinitions;
 class State;
 
 
@@ -60,8 +59,8 @@ class States: commonItems::parser
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const StrategicRegions& strategicRegions,
 		 const Vic2::Localisations& vic2Localisations,
-		 const ProvinceDefinitions& provinceDefinitions,
-		 const MapData& mapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
+		 const Maps::MapData& mapData,
 		 Localisation& hoi4Localisations,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
@@ -93,7 +92,7 @@ class States: commonItems::parser
   private:
 	void determineOwnersAndCores(const Mappers::CountryMapper& countryMap,
 		 const Vic2::World& sourceWorld,
-		 const ProvinceDefinitions& provinceDefinitions,
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Mappers::ProvinceMapper& provinceMapper);
 	[[nodiscard]] static std::optional<std::vector<int>> retrieveSourceProvinceNumbers(int provNum,
 		 const Mappers::ProvinceMapper& provinceMapper);
@@ -120,7 +119,7 @@ class States: commonItems::parser
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
 		 const Mappers::ProvinceMapper& provinceMapper,
-		 const MapData& mapData,
+		 const Maps::MapData& mapData,
 		 const Configuration& theConfiguration);
 	void createMatchingHoI4State(const Vic2::State& vic2State,
 		 const std::string& stateOwner,
@@ -133,7 +132,7 @@ class States: commonItems::parser
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
 		 const Mappers::ProvinceMapper& provinceMapper,
-		 const MapData& mapData,
+		 const Maps::MapData& mapData,
 		 const std::map<int, Province>& provinces,
 		 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces,
 		 const Configuration& theConfiguration,
@@ -142,7 +141,7 @@ class States: commonItems::parser
 		 const std::string& owner,
 		 const Mappers::ProvinceMapper& provinceMapper);
 	static std::vector<std::set<int>> getConnectedProvinceSets(std::set<int> provinceNumbers,
-		 const MapData& mapData,
+		 const Maps::MapData& mapData,
 		 const std::map<int, Province>& provinces);
 	static std::vector<std::set<int>> consolidateProvinceSets(std::vector<std::set<int>> connectedProvinceSets,
 		 const std::map<int, int>& provinceToStrategicRegionMap);

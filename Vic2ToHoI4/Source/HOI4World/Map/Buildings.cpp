@@ -5,14 +5,14 @@
 #include "HOI4World/States/HoI4States.h"
 #include "Hoi4Building.h"
 #include "Log.h"
-#include "MapData.h"
+#include "Maps/MapData.h"
 
 
 
 HoI4::Buildings::Buildings(const States& theStates,
 	 const CoastalProvinces& theCoastalProvinces,
-	 MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions,
+	 Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 const Configuration& theConfiguration)
 {
 	Log(LogLevel::Info) << "\tCreating buildings";
@@ -22,8 +22,8 @@ HoI4::Buildings::Buildings(const States& theStates,
 }
 
 
-void HoI4::Buildings::importDefaultBuildings(MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions,
+void HoI4::Buildings::importDefaultBuildings(Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 const Configuration& theConfiguration)
 {
 	std::ifstream buildingsFile(theConfiguration.getHoI4Path() + "/map/buildings.txt");
@@ -42,8 +42,8 @@ void HoI4::Buildings::importDefaultBuildings(MapData& theMapData,
 
 
 void HoI4::Buildings::processLine(const std::string& line,
-	 MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions)
+	 Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions)
 {
 	const std::regex pattern("(.+);(.+);(.+);(.+);(.+);(.+);(.+)");
 	std::smatch matches;
@@ -95,8 +95,8 @@ void HoI4::Buildings::processLine(const std::string& line,
 
 void HoI4::Buildings::importDefaultBuilding(const std::smatch& matches,
 	 defaultPositions& positions,
-	 MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions) const
+	 Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions) const
 {
 	BuildingPosition position;
 	position.xCoordinate = stof(matches[3].str());
@@ -106,8 +106,10 @@ void HoI4::Buildings::importDefaultBuilding(const std::smatch& matches,
 
 	auto connectingSeaProvince = stoi(matches[7].str());
 
-	auto province = theMapData.getProvinceNumber(position.xCoordinate, position.zCoordinate, provinceDefinitions);
-	if (province)
+	if (auto province = theMapData.getProvinceNumber(
+			  {static_cast<int>(position.xCoordinate), static_cast<int>(position.zCoordinate)},
+			  provinceDefinitions);
+		 province)
 	{
 		const auto key = std::make_pair(*province, connectingSeaProvince);
 		positions[key] = position;
@@ -117,7 +119,7 @@ void HoI4::Buildings::importDefaultBuilding(const std::smatch& matches,
 
 void HoI4::Buildings::placeBuildings(const States& theStates,
 	 const CoastalProvinces& theCoastalProvinces,
-	 const MapData& theMapData,
+	 const Maps::MapData& theMapData,
 	 const Configuration& theConfiguration)
 {
 	const auto& provinceToStateIDMap = theStates.getProvinceToStateIDMap();
@@ -136,7 +138,7 @@ void HoI4::Buildings::placeBuildings(const States& theStates,
 }
 
 
-void HoI4::Buildings::placeArmsFactories(const States& theStates, const MapData& theMapData)
+void HoI4::Buildings::placeArmsFactories(const States& theStates, const Maps::MapData& theMapData)
 {
 	for (const auto& state: theStates.getStates())
 	{
@@ -191,7 +193,7 @@ void HoI4::Buildings::placeArmsFactories(const States& theStates, const MapData&
 }
 
 
-void HoI4::Buildings::placeIndustrialComplexes(const States& theStates, const MapData& theMapData)
+void HoI4::Buildings::placeIndustrialComplexes(const States& theStates, const Maps::MapData& theMapData)
 {
 	for (const auto& state: theStates.getStates())
 	{
@@ -247,7 +249,7 @@ void HoI4::Buildings::placeIndustrialComplexes(const States& theStates, const Ma
 }
 
 
-void HoI4::Buildings::placeAirports(const States& theStates, const MapData& theMapData)
+void HoI4::Buildings::placeAirports(const States& theStates, const Maps::MapData& theMapData)
 {
 	for (const auto& state: theStates.getStates())
 	{
@@ -292,7 +294,7 @@ void HoI4::Buildings::placeAirports(const States& theStates, const MapData& theM
 }
 
 
-void HoI4::Buildings::placeAntiAir(const States& theStates, const MapData& theMapData)
+void HoI4::Buildings::placeAntiAir(const States& theStates, const Maps::MapData& theMapData)
 {
 	for (const auto& state: theStates.getStates())
 	{
@@ -350,7 +352,7 @@ void HoI4::Buildings::placeAntiAir(const States& theStates, const MapData& theMa
 
 void HoI4::Buildings::placeNavalBases(const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, std::vector<int>>& actualCoastalProvinces,
-	 const MapData& theMapData,
+	 const Maps::MapData& theMapData,
 	 const Configuration& theConfiguration)
 {
 	for (const auto& province: actualCoastalProvinces)
@@ -368,7 +370,7 @@ void HoI4::Buildings::placeNavalBases(const std::map<int, int>& provinceToStateI
 
 
 void HoI4::Buildings::placeBunkers(const std::map<int, int>& provinceToStateIDMap,
-	 const MapData& theMapData,
+	 const Maps::MapData& theMapData,
 	 const Configuration& theConfiguration)
 {
 	for (const auto& provinceAndStateID: provinceToStateIDMap)
@@ -380,7 +382,7 @@ void HoI4::Buildings::placeBunkers(const std::map<int, int>& provinceToStateIDMa
 
 void HoI4::Buildings::addNavalBase(int stateID,
 	 const std::pair<int, std::vector<int>>& province,
-	 const MapData& theMapData,
+	 const Maps::MapData& theMapData,
 	 const Configuration& theConfiguration)
 {
 	BuildingPosition position;
@@ -429,7 +431,7 @@ void HoI4::Buildings::addNavalBase(int stateID,
 
 void HoI4::Buildings::addBunker(int stateID,
 	 int province,
-	 const MapData& theMapData,
+	 const Maps::MapData& theMapData,
 	 const Configuration& theConfiguration)
 {
 	BuildingPosition position;
@@ -473,7 +475,7 @@ void HoI4::Buildings::addBunker(int stateID,
 
 void HoI4::Buildings::placeCoastalBunkers(const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, std::vector<int>>& actualCoastalProvinces,
-	 const MapData& theMapData,
+	 const Maps::MapData& theMapData,
 	 const Configuration& theConfiguration)
 {
 	for (const auto& province: actualCoastalProvinces)
@@ -493,7 +495,7 @@ void HoI4::Buildings::placeCoastalBunkers(const std::map<int, int>& provinceToSt
 
 void HoI4::Buildings::addCoastalBunker(int stateID,
 	 const std::pair<int, std::vector<int>>& province,
-	 const MapData& theMapData,
+	 const Maps::MapData& theMapData,
 	 const Configuration& theConfiguration)
 {
 	BuildingPosition position;
@@ -539,7 +541,7 @@ void HoI4::Buildings::addCoastalBunker(int stateID,
 void HoI4::Buildings::placeDockyards(const States& theStates,
 	 const CoastalProvinces& theCoastalProvinces,
 	 std::map<int, std::vector<int>> actualCoastalProvinces,
-	 const MapData& theMapData)
+	 const Maps::MapData& theMapData)
 {
 	for (const auto& state: theStates.getStates())
 	{
@@ -596,7 +598,7 @@ void HoI4::Buildings::placeDockyards(const States& theStates,
 }
 
 
-void HoI4::Buildings::placeSyntheticRefineries(const States& theStates, const MapData& theMapData)
+void HoI4::Buildings::placeSyntheticRefineries(const States& theStates, const Maps::MapData& theMapData)
 {
 	for (const auto& state: theStates.getStates())
 	{
@@ -638,7 +640,7 @@ void HoI4::Buildings::placeSyntheticRefineries(const States& theStates, const Ma
 }
 
 
-void HoI4::Buildings::placeNuclearReactors(const States& theStates, const MapData& theMapData)
+void HoI4::Buildings::placeNuclearReactors(const States& theStates, const Maps::MapData& theMapData)
 {
 	for (const auto& state: theStates.getStates())
 	{
