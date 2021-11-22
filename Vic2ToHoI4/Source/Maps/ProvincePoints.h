@@ -23,8 +23,8 @@ class ProvincePoints
   private:
 	std::set<Point> thePoints;
 	Point leftmostPoint = {INT_MAX, 0};
-	Point rightmostPoint = {-1, 0};
-	Point highestPoint = {0, -1};
+	Point rightmostPoint = {0, 0};
+	Point highestPoint = {0, 0};
 	Point lowestPoint = {0, INT_MAX};
 };
 
