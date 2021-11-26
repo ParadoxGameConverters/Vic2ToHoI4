@@ -514,7 +514,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 {
 	Log(LogLevel::Info) << "\t\tWriting bookmarks";
 
-	const auto outputBookmark = [&](date startDate, const std::string& bookmarkName) {
+	const auto outputBookmark = [&](date startDate, const std::string& bookmarkName, bool defaultBookmark) {
 		std::string uppercaseBookmarkName = bookmarkName;
 		std::ranges::transform(uppercaseBookmarkName, uppercaseBookmarkName.begin(), ::toupper);
 
@@ -542,6 +542,10 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 		else
 		{
 			bookmarkFile << "\t\tdefault_country = \"---\"\n";
+		}
+		if (defaultBookmark)
+		{
+			bookmarkFile << "\t\tdefault = yes\n";
 		}
 
 		for (const auto& greatPower: greatPowers)
@@ -613,12 +617,12 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 		bookmarkFile.close();
 	};
 
-	outputBookmark(vic2Date, "grand_campaign");
+	outputBookmark(vic2Date, "grand_campaign", true);
 
 	// Vic2 end dates within diffInDays of 1936.1.1 are considered too close to create another bookmark
 	constexpr unsigned int diffInDays = 1;
 	if (static_cast<unsigned long>(std::abs(365 * vic2Date.diffInYears(date("1936.1.1")))) > diffInDays)
 	{
-		outputBookmark(date("1936.1.1"), "gathering_storm");
+		outputBookmark(date("1936.1.1"), "gathering_storm", false);
 	}
 }
