@@ -1556,6 +1556,48 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\PossibleTankDesigns.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankDesign.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankDesigns.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankModules.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankUpgrades.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankDesign.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankDesigns.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankModules.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankUpgrades.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\TankDesigns\PossibleTankDesignsTests.cpp">
+      <Filter>HoI4WorldTests\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\TankDesigns\TankDesignsTests.cpp">
+      <Filter>HoI4WorldTests\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\TankDesigns\TankDesignTests.cpp">
+      <Filter>HoI4WorldTests\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\TankDesigns\TankModulesTests.cpp">
+      <Filter>HoI4WorldTests\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\TankDesigns\TankUpgradesTests.cpp">
+      <Filter>HoI4WorldTests\TankDesigns</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2088,6 +2130,15 @@
     </Filter>
     <Filter Include="MapsTests">
       <UniqueIdentifier>{45ca0961-0ad9-418b-b2d8-269f9170ebb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\TankDesigns">
+      <UniqueIdentifier>{1d680198-8795-45cf-9d79-8ff5c14ba6d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\TankDesigns">
+      <UniqueIdentifier>{e4dd1e73-703c-43a5-bce4-59ecd87faf95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\TankDesigns">
+      <UniqueIdentifier>{dd72e658-4d3b-4c7e-91b0-1eb87cf8b739}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3065,6 +3116,33 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FactionName\FactionNameMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\PossibleTankDesigns.h">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankDesign.h">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankDesigns.h">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankModules.h">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankUpgrades.h">
+      <Filter>Vic2ToHoI4 files\HoI4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankDesign.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankDesigns.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankModules.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankUpgrades.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
