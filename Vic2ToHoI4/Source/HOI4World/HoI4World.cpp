@@ -1076,6 +1076,17 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 				states->giveProvinceControlToCountry(divisionLocation, tag, ownersToSkip);
 			}
 		}
+
+		ifstream designsFile("Configurables/tankDesigns.txt");
+		if (!designsFile.is_open())
+		{
+			std::runtime_error e("Could not open Configurables/tankDesigns.txt. Double-check your converter installation");
+			throw e;
+		}
+		PossibleTankDesigns possibleDesigns(designsFile);
+		designsFile.close();
+
+		country->addTankDesigns(possibleDesigns);
 	}
 }
 

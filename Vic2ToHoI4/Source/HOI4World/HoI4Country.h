@@ -34,6 +34,7 @@
 #include "Regions/Regions.h"
 #include "ShipTypes/ShipVariants.h"
 #include "States/HoI4State.h"
+#include "TankDesigns/TankDesigns.h"
 #include "Technologies.h"
 #include "V2World/Countries/Country.h"
 #include "V2World/Localisations/Vic2Localisations.h"
@@ -120,6 +121,7 @@ class Country
 		 const HoI4::States& theStates,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
+	void addTankDesigns(const PossibleTankDesigns& possibleDesigns);
 	void convertTechnology(const Mappers::TechMapper& techMapper, const Mappers::ResearchBonusMapper& theTechMapper);
 	void addState(const State& state);
 	void addCoreState(const int stateId) { coreStates.insert(stateId); }
@@ -238,6 +240,7 @@ class Country
 
 	[[nodiscard]] const Army& getArmy() const { return theArmy; }
 	[[nodiscard]] const auto& getDivisionLocations() const { return theArmy.getDivisionLocations(); }
+	[[nodiscard]] const TankDesigns& getTankDesigns() const { return *tankDesigns; }
 	[[nodiscard]] const ShipVariants& getTheShipVariants() const { return *theShipVariants; }
 	[[nodiscard]] const Navies& getNavies() const { return *theNavies; }
 	[[nodiscard]] const auto& getNavyNames() const { return navyNames; }
@@ -409,6 +412,7 @@ class Country
 	std::vector<Vic2::Army> oldArmies;
 	Army theArmy;
 	std::shared_ptr<Country> puppetMaster;
+	std::unique_ptr<TankDesigns> tankDesigns;
 	std::unique_ptr<ShipVariants> theShipVariants;
 	std::unique_ptr<Navies> theNavies;
 	NavyNames navyNames;

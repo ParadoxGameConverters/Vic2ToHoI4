@@ -203,6 +203,11 @@
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapper.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\TankDesigns\PossibleTankDesigns.cpp" />
+    <ClCompile Include="Source\HOI4World\TankDesigns\TankDesign.cpp" />
+    <ClCompile Include="Source\HOI4World\TankDesigns\TankDesigns.cpp" />
+    <ClCompile Include="Source\HOI4World\TankDesigns\TankModules.cpp" />
+    <ClCompile Include="Source\HOI4World\TankDesigns\TankUpgrades.cpp" />
     <ClCompile Include="Source\HOI4World\WarCreator\MapUtils.cpp" />
     <ClCompile Include="Source\Mappers\CasusBelli\CasusBelliMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\CasusBelli\CasusBellis.cpp" />
@@ -421,6 +426,10 @@
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
+    <ClCompile Include="Source\OutHoi4\TankDesigns\OutTankDesign.cpp" />
+    <ClCompile Include="Source\OutHoi4\TankDesigns\OutTankDesigns.cpp" />
+    <ClCompile Include="Source\OutHoi4\TankDesigns\OutTankModules.cpp" />
+    <ClCompile Include="Source\OutHoi4\TankDesigns\OutTankUpgrades.cpp" />
     <ClCompile Include="Source\V2World\Ai\AIFactory.cpp" />
     <ClCompile Include="Source\V2World\Countries\CommonCountriesDataFactory.cpp" />
     <ClCompile Include="Source\V2World\Countries\CommonCountryDataFactory.cpp" />
@@ -571,6 +580,11 @@
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapping.h" />
     <ClInclude Include="Source\HOI4World\States\HoI4StateBuilder.h" />
     <ClInclude Include="Source\HOI4World\States\StateCategoriesBuilder.h" />
+    <ClInclude Include="Source\HOI4World\TankDesigns\PossibleTankDesigns.h" />
+    <ClInclude Include="Source\HOI4World\TankDesigns\TankDesign.h" />
+    <ClInclude Include="Source\HOI4World\TankDesigns\TankDesigns.h" />
+    <ClInclude Include="Source\HOI4World\TankDesigns\TankModules.h" />
+    <ClInclude Include="Source\HOI4World\TankDesigns\TankUpgrades.h" />
     <ClInclude Include="Source\HOI4World\TechnologiesBuilder.h" />
     <ClInclude Include="Source\HOI4World\WarCreator\MapUtils.h" />
     <ClInclude Include="Source\Mappers\CasusBelli\CasusBelliMapping.h" />
@@ -826,6 +840,10 @@
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapping.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h" />
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
+    <ClInclude Include="Source\OutHoi4\TankDesigns\OutTankDesign.h" />
+    <ClInclude Include="Source\OutHoi4\TankDesigns\OutTankDesigns.h" />
+    <ClInclude Include="Source\OutHoi4\TankDesigns\OutTankModules.h" />
+    <ClInclude Include="Source\OutHoi4\TankDesigns\OutTankUpgrades.h" />
     <ClInclude Include="Source\V2World\Ai\AIStrategyFactory.h" />
     <ClInclude Include="Source\V2World\Ai\AIFactory.h" />
     <ClInclude Include="Source\V2World\Countries\CommonCountriesDataFactory.h" />
@@ -1267,6 +1285,13 @@
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables/Vic2Localisations</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables/Vic2Localisations</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\configurables\tankDesigns.txt">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
