@@ -213,8 +213,7 @@ TEST(HoI4World_TankDesigns_TankDesignTests, HavingRequiredTechsMeansDesignIsVali
 	input << "}";
 	const HoI4::TankDesign theTankDesign(input);
 
-	ASSERT_TRUE(
-		 theTankDesign.isValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
+	ASSERT_TRUE(theTankDesign.isValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -229,8 +228,7 @@ TEST(HoI4World_TankDesigns_TankDesignTests, HavingOnlySomeRequiredTechsMeansDesi
 	input << "}";
 	const HoI4::TankDesign theTankDesign(input);
 
-	ASSERT_FALSE(
-		 theTankDesign.isValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
+	ASSERT_FALSE(theTankDesign.isValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -244,8 +242,7 @@ TEST(HoI4World_TankDesigns_TankDesignTests, HavingBlockingTechsMeansDesignIsInva
 	input << "}";
 	const HoI4::TankDesign theTankDesign(input);
 
-	ASSERT_FALSE(
-		 theTankDesign.isValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
+	ASSERT_FALSE(theTankDesign.isValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 

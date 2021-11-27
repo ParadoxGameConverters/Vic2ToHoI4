@@ -51,10 +51,7 @@ TEST(HoI4World_TankDesigns_TankDesignsTests, CanReceiveTankDesign)
 	HoI4::PossibleTankDesigns possibleDesigns(input);
 
 	HoI4::TankDesigns theDesigns(possibleDesigns,
-		 *HoI4::technologies::Builder()
-			.addTechnology("gwtank_chassis")
-			.addTechnology("gw_artillery")
-			.Build());
+		 *HoI4::technologies::Builder().addTechnology("gwtank_chassis").addTechnology("gw_artillery").Build());
 
 	std::stringstream output;
 	output << theDesigns;
@@ -194,10 +191,7 @@ TEST(HoI4World_TankDesigns_TankDesignsTests, TankDesignsNeedRequiredTechs)
 	HoI4::PossibleTankDesigns possibleDesigns(input);
 
 	HoI4::TankDesigns theDesigns(possibleDesigns,
-			*HoI4::technologies::Builder()
-				.addTechnology("gwtank_chassis")
-				.addTechnology("gw_artillery")
-				.Build());
+		 *HoI4::technologies::Builder().addTechnology("gwtank_chassis").addTechnology("gw_artillery").Build());
 
 	std::stringstream output;
 	output << theDesigns;
