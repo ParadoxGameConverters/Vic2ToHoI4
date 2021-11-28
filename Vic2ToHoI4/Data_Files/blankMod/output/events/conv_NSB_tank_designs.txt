@@ -1,0 +1,140 @@
+add_namespace = nsb_tank_designs
+
+country_event = {
+	id = nsb_tank_designs.1
+	title = none
+	desc = none
+	picture = none
+
+	is_triggered_only = yes
+	hidden = yes
+
+	trigger = {
+		has_dlc = "No Step Back"
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_tech = gwtank_chassis
+				has_tech = gw_artillery
+			}
+			create_equipment_variant = {
+				name = "GW Light Tank"
+				type = light_tank_chassis_0
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_cannon
+					turret_type_slot = tank_light_one_man_tank_turret
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+				}
+			}
+
+			create_equipment_variant = {
+				name = "GW Medium Tank"
+				type = medium_tank_chassis_0
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_cannon
+					turret_type_slot = tank_medium_one_man_tank_turret
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+				}
+			}
+
+			create_equipment_variant = {
+				name = "GW Heavy Tank"
+				type = heavy_tank_chassis_0
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_cannon
+					turret_type_slot = tank_heavy_three_man_tank_turret
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				has_tech = basic_light_tank_chassis
+				has_tech = gw_artillery
+			}
+			create_equipment_variant = {
+				name = "Basic Light Tank"
+				type = light_tank_chassis_1
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_cannon
+					turret_type_slot = tank_light_two_man_tank_turret
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				has_tech = improved_light_tank_chassis
+				has_tech = gw_artillery
+			}
+			create_equipment_variant = {
+				name = "Improved Light Tank"
+				type = light_tank_chassis_2
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_cannon
+					turret_type_slot = tank_light_two_man_tank_turret
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				has_tech = basic_medium_tank_chassis
+				has_tech = gw_artillery
+			}
+			create_equipment_variant = {
+				name = "Basic Medium Tank"
+				type = medium_tank_chassis_1
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_cannon
+					turret_type_slot = tank_medium_one_man_tank_turret
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				has_tech = basic_heavy_tank_chassis
+				has_tech = gw_artillery
+			}
+			create_equipment_variant = {
+				name = "Basic Heavy Tank"
+				type = heavy_tank_chassis_1
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_small_cannon
+					turret_type_slot = tank_heavy_three_man_tank_turret
+					suspension_type_slot = tank_bogie_suspension
+					armor_type_slot = tank_riveted_armor
+					engine_type_slot = tank_gasoline_engine
+				}
+			}
+		}
+	}
+
+	option = {}
+}
