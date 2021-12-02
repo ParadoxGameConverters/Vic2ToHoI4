@@ -1601,11 +1601,11 @@ bool HoI4::Country::hasMonarchIdea() const
 
 const bool HoI4::Country::isEligibleEnemy(std::string target)
 {
-	std::set<std::string> allies;
+	auto allAllies = allies;
 	if (faction)
 	{
-		allies = faction->getLeader()->getAllies();
-		allies.insert(faction->getLeader()->getTag());
+		allAllies.insert(faction->getLeader()->getAllies().begin(), faction->getLeader()->getAllies().end());
+		allAllies.insert(faction->getLeader()->getTag());
 	}
 	std::string puppetMasterTag;
 	if (puppetMaster)
@@ -1613,7 +1613,7 @@ const bool HoI4::Country::isEligibleEnemy(std::string target)
 		puppetMasterTag = puppetMaster->getTag();
 	}
 
-	return !allies.contains(target) && !puppets.contains(target) && target != puppetMasterTag;
+	return !allAllies.contains(target) && !puppets.contains(target) && target != puppetMasterTag;
 }
 
 std::optional<std::string> HoI4::Country::getDominionTag(const std::string& region)
