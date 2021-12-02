@@ -5,9 +5,6 @@
 
 #include "AIStrategy.h"
 #include "V2World/Provinces/Province.h"
-#include <map>
-#include <string>
-#include <vector>
 
 
 
@@ -28,7 +25,7 @@ class AI
   private:
 	std::vector<AIStrategy> aiStrategies;
 	std::vector<AIStrategy> conquerStrategies;
-	std::map<std::string, int> consolidatedConquerStrategies;
+	std::map<std::string, std::pair<int, std::vector<int>>> consolidatedConquerStrategies; // tag -> value, provinces
 };
 
 } // namespace Vic2

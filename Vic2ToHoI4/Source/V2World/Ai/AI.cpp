@@ -1,4 +1,6 @@
 #include "AI.h"
+#include "Log.h"
+#include <ranges>
 
 
 
@@ -18,12 +20,14 @@ void Vic2::AI::consolidateConquerStrategies(const std::map<int, std::shared_ptr<
 		}
 
 		const auto& owner = province->getOwner();
-		const auto& value = strategy.getValue();
+		// value, provinces
+		const auto& data = std::make_pair(strategy.getValue(), std::vector{strategy.getProvID()});
 
-		auto [existingStrategy, inserted] = consolidatedConquerStrategies.insert(make_pair(owner, value));
+		auto [existingStrategy, inserted] = consolidatedConquerStrategies.insert(make_pair(owner, data));
 		if (!inserted)
 		{
-			existingStrategy->second += value;
+			existingStrategy->second.first += strategy.getValue();
+			existingStrategy->second.second.push_back(strategy.getProvID());
 		}
 	}
 }

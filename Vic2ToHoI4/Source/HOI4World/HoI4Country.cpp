@@ -672,9 +672,11 @@ void HoI4::Country::convertRelations(const Mappers::CountryMapper& countryMap,
 
 void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap,
 	 const Vic2::Country& sourceCountry,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const States& states,
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
-	for (const auto& [vic2Tag, strategy]: sourceCountry.getAI().getConsolidatedStrategies())
+	for (const auto& [vic2Tag, data]: sourceCountry.getAI().getConsolidatedStrategies())
 	{
 		if (const auto& HoI4Tag = countryMap.getHoI4Tag(vic2Tag); HoI4Tag && countries.contains(*HoI4Tag))
 		{
@@ -682,7 +684,7 @@ void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap,
 			{
 				continue;
 			}
-			HoI4::AIStrategy newStrategy("conquer", *HoI4Tag, strategy);
+			HoI4::AIStrategy newStrategy("conquer", *HoI4Tag, data, states, provinceMapper);
 			conquerStrategies.push_back(newStrategy);
 		}
 	}
