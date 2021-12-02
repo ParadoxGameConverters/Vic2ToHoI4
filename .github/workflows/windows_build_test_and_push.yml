@@ -3,11 +3,9 @@ on:
   push:
     branches:
       - master
-      - NSB
   pull_request:
     branches:
       - master
-      - NSB
 
 jobs:
   build_test_and_publish:
