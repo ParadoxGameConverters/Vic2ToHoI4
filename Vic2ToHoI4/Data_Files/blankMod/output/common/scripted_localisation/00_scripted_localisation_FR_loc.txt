@@ -1927,6 +1927,29 @@ defined_text = {
 
 
 
+### Ex. "[this] champion of imperialism" => "[ce] / [cette] chantre de l'impérialisme" (lower case / minuscule)
+defined_text = {
+	name = GetCeCetteFDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CETTE
+	}
+}
+### Ex. "[This] champion of imperialism" => "[Ce] / [Cette] chantre de l'impérialisme" (upper case / majuscule)
+defined_text = {
+	name = GetCeCetteFDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CE_CAP
+	}
+}
+
+
+
 ### Ex. "The letter has been given [to] Adolf Hitler/Charles de Gaulle / [to the] Federal Council." => "La lettre a été remise [à] Adolf Hitler/Charles de Gaulle / [au] Conseil fédéral / [à la] Junte militaire." (lower case / minuscule)
 defined_text = {
 	name = GetAuAlaAlDir
@@ -2240,7 +2263,7 @@ defined_text = {
 
 
 
-### Ex. "He/She's kept silent." => "Il/Elle est silenci[eux/euse] sur la question." (lower case / minuscule)
+### Ex. "He/She's kept silent." => "Il/Elle est silenci[eux/euse] sur la question."
 defined_text = {
 	name = GetEuxEuseDir
 	text = {
@@ -2250,6 +2273,20 @@ defined_text = {
 		localization_key = FRLOC_EUX
 	}
 }
+
+
+
+### Ex. "He/She's a dictator" => "c'est un dicta[teur] / une dicta[trice]"
+defined_text = {
+	name = GetTeurTriceDir
+	text = {
+		trigger = {
+			always = yes
+		localization_key = FRLOC_TEUR
+	}
+}
+
+
 
 
 ####################################
@@ -2338,6 +2375,60 @@ defined_text = {
 
 
 
+### Ex. "According to [him/her]..." => "Selon [lui/elle]..." (lower case / minuscule)
+defined_text = {
+	name = GetLuiEllePers
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_LUI
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_ELLE
+	}
+}
+### Ex. "[Him/Her] deserves a good ol' purge..." => "[Lui/Elle] mérite bien une petite purge..." (upper case / majuscule)
+defined_text = {
+	name = GetLuiEllePersCap
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_LUI_CAP
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_ELLE_CAP
+	}
+}
+
+
+
+### Ex. "X tries to  [him/her]..." => "Il/Elle cherche à détourner l'attention [de lui/d'elle]..." (lower case / minuscule)
+defined_text = {
+	name = GetDeluiDellePers
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_DELUI
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_DELLE
+	}
+}
+### Ex. "[From him/her] came the order..." => "[De lui/D'elle] est venu l'ordre de..." (upper case / majuscule)
+defined_text = {
+	name = GetDeluiDellePersCap
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_DELUI_CAP
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_DELLE_CAP
+	}
+}
+
+
+
 ### Ex. "This is a very skilled operative." => "C'est un[ø/e] agent très compétent[ø/e]" (lower case / minuscule)
 defined_text = {
 	name = GetXEPers
@@ -2380,6 +2471,9 @@ defined_text = {
 		localization_key = FRLOC_HEROINE
 	}
 }
+
+
+
 
 ###############################
 ###   Factions / Factions   ###

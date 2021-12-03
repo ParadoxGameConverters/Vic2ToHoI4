@@ -553,7 +553,10 @@ leader_traits = {
 		field_marshal_modifier = {
 			max_dig_in_factor = 0.30
 		}
-		
+		slot = army_chief
+		specialist_advisor_trait = army_chief_entrenchment_1
+		expert_advisor_trait = army_chief_entrenchment_2
+		genius_advisor_trait = army_chief_entrenchment_3
 		ai_will_do = {
 			factor = 1
 		}
