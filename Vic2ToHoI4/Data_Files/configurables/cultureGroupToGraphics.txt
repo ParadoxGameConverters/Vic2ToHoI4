@@ -2330,7 +2330,7 @@ near_eastern = {
 		communism = {
 			"gfx/leaders/JOR/Portrait_Arabia_Generic_1.dds"
 			"gfx/leaders/JOR/Portrait_Arabia_Generic_communism1.dds"
-			"gfx/leaders/Arabic_Persian/Portrait_KUR_Haji_Baba.tga""
+			"gfx/leaders/Arabic_Persian/Portrait_KUR_Haji_Baba.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Persia_Avetis_Soltanzade.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Persia_Iraj_Eskandari.tga"
 		} 
