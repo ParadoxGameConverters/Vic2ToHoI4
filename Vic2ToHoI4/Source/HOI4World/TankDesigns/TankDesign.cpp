@@ -45,19 +45,15 @@ HoI4::TankDesign::TankDesign(std::istream& theStream)
 }
 
 
-HoI4::TankDesign::TankDesign(const TankDesign& source): parser(source)
+HoI4::TankDesign::TankDesign(const TankDesign& source):
+	 parser(source), name(source.name), type(source.type), modules(std::make_unique<TankModules>(*source.modules)),
+	 icon(source.icon), obsolete(source.obsolete), requiredTechnologies(source.requiredTechnologies),
+	 blockingTechnologies(source.blockingTechnologies)
 {
-	name = source.name;
-	type = source.type;
-	modules = std::make_unique<TankModules>(*source.modules);
 	if (source.upgrades)
 	{
 		upgrades = std::make_unique<TankUpgrades>(*source.upgrades);
 	}
-	icon = source.icon;
-	obsolete = source.obsolete;
-	requiredTechnologies = source.requiredTechnologies;
-	blockingTechnologies = source.blockingTechnologies;
 }
 
 
