@@ -30,23 +30,15 @@ class Buildings
 	explicit Buildings(const States& theStates,
 		 const CoastalProvinces& theCoastalProvinces,
 		 Maps::MapData& theMapData,
-		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 const Configuration& theConfiguration);
 
 	[[nodiscard]] const auto& getBuildings() const { return buildings; }
 	[[nodiscard]] const auto& getAirportLocations() const { return airportLocations; }
 
   private:
-	void importDefaultBuildings(Maps::MapData& theMapData,
-		 const Maps::ProvinceDefinitions& provinceDefinitions,
-		 const Configuration& theConfiguration);
-	void processLine(const std::string& line,
-		 Maps::MapData& theMapData,
-		 const Maps::ProvinceDefinitions& provinceDefinitions);
-	void importDefaultBuilding(const std::smatch& matches,
-		 defaultPositions& positions,
-		 Maps::MapData& theMapData,
-		 const Maps::ProvinceDefinitions& provinceDefinitions) const;
+	void importDefaultBuildings(Maps::MapData& theMapData, const Configuration& theConfiguration);
+	void processLine(const std::string& line, Maps::MapData& theMapData);
+	void importDefaultBuilding(const std::smatch& matches, defaultPositions& positions, Maps::MapData& theMapData) const;
 
 	void placeBuildings(const States& theStates,
 		 const CoastalProvinces& theCoastalProvinces,
