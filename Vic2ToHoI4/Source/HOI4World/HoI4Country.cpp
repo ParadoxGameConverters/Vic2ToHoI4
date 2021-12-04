@@ -1651,3 +1651,9 @@ void HoI4::Country::addProvincesToHomeArea(int provinceId,
 		addProvincesToHomeArea(neighbor, theMapData, states, provinceToStateIdMap);
 	}
 }
+
+
+void HoI4::Country::addTankDesigns(const PossibleTankDesigns& possibleDesigns)
+{
+	tankDesigns = std::make_unique<TankDesigns>(possibleDesigns, *theTechnologies);
+}

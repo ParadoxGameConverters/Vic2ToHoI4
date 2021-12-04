@@ -292,6 +292,12 @@
     <Filter Include="Maps">
       <UniqueIdentifier>{cc997cde-017a-4006-96e3-d762cd519883}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\TankDesigns">
+      <UniqueIdentifier>{8077b376-725f-41cf-8fbe-b397c567760b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\TankDesigns">
+      <UniqueIdentifier>{82f7dabb-696f-4a88-aad3-3a91ce4b0c0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1323,6 +1329,33 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp">
       <Filter>HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\TankDesigns\TankDesign.cpp">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\TankDesigns\PossibleTankDesigns.cpp">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\TankDesigns\TankModules.cpp">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\TankDesigns\TankDesigns.cpp">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\TankDesigns\OutTankDesign.cpp">
+      <Filter>OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\TankDesigns\OutTankDesigns.cpp">
+      <Filter>OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\TankDesigns\OutTankModules.cpp">
+      <Filter>OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\TankDesigns\TankUpgrades.cpp">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\TankDesigns\OutTankUpgrades.cpp">
+      <Filter>OutHoi4\TankDesigns</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2595,6 +2628,33 @@
     <ClInclude Include="Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.h">
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HOI4World\TankDesigns\TankDesign.h">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\TankDesigns\PossibleTankDesigns.h">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\TankDesigns\TankModules.h">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\TankDesigns\TankDesigns.h">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\TankDesigns\OutTankDesign.h">
+      <Filter>OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\TankDesigns\OutTankDesigns.h">
+      <Filter>OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\TankDesigns\OutTankModules.h">
+      <Filter>OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\TankDesigns\TankUpgrades.h">
+      <Filter>HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\TankDesigns\OutTankUpgrades.h">
+      <Filter>OutHoi4\TankDesigns</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\FAQ.txt">
@@ -2836,6 +2896,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\Vic2Localisations\unrecognized_nations.csv">
       <Filter>Data Files\Configurables\Vic2Localisations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\tankDesigns.txt">
+      <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

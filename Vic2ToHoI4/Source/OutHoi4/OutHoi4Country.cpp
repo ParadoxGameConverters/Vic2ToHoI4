@@ -529,6 +529,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	outputCommanders(output, theCountry.getGenerals(), theCountry.getAdmirals());
 	outputOperatives(output, theCountry, theCountry.getOperatives());
 	output << theCountry.getTheShipVariants();
+	output << theCountry.getTankDesigns();
 	outputGlobalEventTargets(output, theCountry.getGlobalEventTargets());
 
 	output.close();
