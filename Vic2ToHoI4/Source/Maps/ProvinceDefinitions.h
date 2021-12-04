@@ -35,6 +35,10 @@ class ProvinceDefinitions
 														// Colors to work directly, please replace this hack.
 };
 
+
+// utility function for province definition importers
+int getIntFromColor(const commonItems::Color& color);
+
 } // namespace Maps
 
 
