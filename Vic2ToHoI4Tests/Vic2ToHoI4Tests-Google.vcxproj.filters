@@ -1598,6 +1598,9 @@
     <ClCompile Include="HoI4WorldTests\TankDesigns\TankUpgradesTests.cpp">
       <Filter>HoI4WorldTests\TankDesigns</Filter>
     </ClCompile>
+    <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp">
+      <Filter>MapsTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

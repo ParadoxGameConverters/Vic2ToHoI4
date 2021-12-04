@@ -526,6 +526,7 @@
     <ClCompile Include="MapperTests\Technology\ResearchBonusMappingTests.cpp" />
     <ClCompile Include="MapperTests\Technology\TechMapperTests.cpp" />
     <ClCompile Include="MapperTests\Technology\TechMappingTests.cpp" />
+    <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp" />
     <ClCompile Include="MapsTests\ProvincePointsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AITests.cpp" />

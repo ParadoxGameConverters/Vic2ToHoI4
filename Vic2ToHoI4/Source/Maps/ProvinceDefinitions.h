@@ -13,6 +13,10 @@
 namespace Maps
 {
 
+// utility function for province definition importers
+int getIntFromColor(const commonItems::Color& color);
+
+
 class ProvinceDefinitions
 {
   public:
@@ -34,10 +38,6 @@ class ProvinceDefinitions
 	std::map<int, int> colorToProvinceMap; // colors are a packed integer to work around some issues. If you can get
 														// Colors to work directly, please replace this hack.
 };
-
-
-// utility function for province definition importers
-int getIntFromColor(const commonItems::Color& color);
 
 } // namespace Maps
 
