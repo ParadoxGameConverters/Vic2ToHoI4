@@ -246,3 +246,29 @@ TEST(Maps_MapData, ProvinceNumberForDefinedPoint)
 	ASSERT_TRUE(provinceNumber);
 	EXPECT_EQ(*provinceNumber, 1);
 }
+
+
+TEST(Maps_MapData, NoProvincePointsForUndefinedProvince)
+{
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::MapData mapData(provinceDefinitions, "maptests");
+
+	EXPECT_EQ(mapData.getProvincePoints(42), std::nullopt);
+}
+
+
+TEST(Maps_MapData, ProvincePointsForDefinedProvince)
+{
+	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
+		 {
+			  {0x88'00'15, 1}, // the dark red one on top
+		 });
+	const Maps::MapData mapData(provinceDefinitions, "maptests");
+
+	const auto provincePoints = mapData.getProvincePoints(1);
+	ASSERT_TRUE(provincePoints);
+
+	Maps::Point expectedPoint{13, 595};
+	EXPECT_EQ(provincePoints->getCentermostPoint(), expectedPoint);
+}
