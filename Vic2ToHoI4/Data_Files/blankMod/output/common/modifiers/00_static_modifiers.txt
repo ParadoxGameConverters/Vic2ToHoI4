@@ -60,9 +60,9 @@ weather_blizzard = { # on Region
 	org_loss_when_moving = 0.25
 	positioning = -0.2
 	supply_consumption_factor = 0.15
-	supply_factor = -0.20
+	supply_factor = -0.25
 	truck_attrition_factor = 1.0
-	army_attack_speed_factor = -0.2
+	army_attack_speed_factor = -0.25
 }
 weather_sandstorm = { # on Region
 	air_accidents = 0.6
@@ -98,13 +98,13 @@ weather_extreme_cold = { # on Province
 	local_org_regain = -0.05
 	supply_factor = -0.15
 	truck_attrition_factor = 1.0
-	winter_attrition = 0.2
+	winter_attrition = 0.25
 }
 weather_very_cold = { # on Province
 	army_attack_factor = -0.1
 	breakthrough_factor = -0.15
 	dig_in_speed_factor = -0.3
-	winter_attrition = 0.2
+	winter_attrition = 0.25
 }
 weather_very_hot = { # on Province
 	heat_attrition = 0.1
@@ -119,17 +119,18 @@ weather_extreme_hot = { # on Province
 	truck_attrition_factor = 0.1
 }
 weather_ground_snow_medium = { # on Province
-	army_attack_factor = -0.1
-	army_speed_factor = -0.1
-	army_attack_speed_factor = -0.2
+	army_attack_factor = -0.2
+	army_speed_factor = -0.2
+	army_attack_speed_factor = -0.25
 	breakthrough_factor = -0.15
 	org_loss_when_moving = 0.1
 	supply_factor = -0.20
+	truck_attrition_factor = 0.5
 	dig_in_speed_factor = 0.05
 }
 weather_ground_snow_high = { # on Province
-	army_attack_factor = -0.3
-	army_speed_factor = -0.25
+	army_attack_factor = -0.4
+	army_speed_factor = -0.5
 	army_attack_speed_factor = -0.5
 	breakthrough_factor = -0.3
 	local_org_regain = -0.05
@@ -348,6 +349,7 @@ diff_very_easy_player = {
 	air_fuel_consumption_factor = -0.5
  	navy_fuel_consumption_factor = -0.5
 	supply_consumption_factor = -0.1
+	no_supply_grace = 72
 }
 
 diff_easy_player = {
@@ -359,9 +361,11 @@ diff_easy_player = {
 	air_fuel_consumption_factor = -0.25
  	navy_fuel_consumption_factor = -0.25
 	supply_consumption_factor = -0.05
+	no_supply_grace = 48
 }
 
 diff_normal_player = {
+	no_supply_grace = 36
 }
 
 diff_hard_player = {
@@ -369,6 +373,7 @@ diff_hard_player = {
 	research_speed_factor = -0.15
 	political_power_factor = -0.1
 	supply_consumption_factor = 0.05
+	no_supply_grace = 24
 }
 
 diff_very_hard_player = {
@@ -383,22 +388,25 @@ diff_very_easy_ai = {
 }
 
 diff_easy_ai = {
-
+	no_supply_grace = 24
 }
 
 diff_normal_ai = {
+	no_supply_grace = 36
 }
 
 diff_hard_ai = {
 	army_fuel_consumption_factor = -0.25
 	air_fuel_consumption_factor = -0.25
  	navy_fuel_consumption_factor = -0.25
+	no_supply_grace = 48
 }
 
 diff_very_hard_ai = {
 	army_fuel_consumption_factor = -0.5
 	air_fuel_consumption_factor = -0.5
  	navy_fuel_consumption_factor = -0.5
+	no_supply_grace = 72
 }
 
 
