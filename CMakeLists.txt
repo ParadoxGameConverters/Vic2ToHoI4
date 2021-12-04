@@ -547,6 +547,9 @@ set(MAPPERS_TECHNOLOGY_TESTS_SOURCES ${MAPPERS_TECHNOLOGY_TESTS_SOURCES} "${TEST
 set(MAPPERS_TECHNOLOGY_TESTS_SOURCES ${MAPPERS_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/TechMappingTests.cpp")
 set(MAPPERS_FACTIONNAME_TESTS_SOURCES ${MAPPERS_FACTIONNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/FactionName/FactionNameMapperTests.cpp")
 set(MAPPERS_FACTIONNAME_TESTS_SOURCES ${MAPPERS_FACTIONNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/FactionName/FactionNameMappingTests.cpp")
+set(MAPS_TESTS_SOURCES ${MAPS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapsTests/MapDataTests.cpp")
+set(MAPS_TESTS_SOURCES ${MAPS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapsTests/ProvinceDefinitionsTests.cpp")
+set(MAPS_TESTS_SOURCES ${MAPS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapsTests/ProvincePointsTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AIStrategyTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AITests.cpp")
 set(VIC2WORLD_COUNTRIES_TESTS_SOURCES ${VIC2WORLD_COUNTRIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Countries/CommonCountriesDataFactoryTests.cpp")
@@ -636,6 +639,7 @@ add_executable(
 	${MAPPERS_PROVINCES_TESTS_SOURCES}
 	${MAPPERS_TECHNOLOGY_TESTS_SOURCES}
 	${MAPPERS_FACTIONNAME_TESTS_SOURCES}
+	${MAPS_TESTS_SOURCES}
 	${VIC2WORLD_AI_TESTS_SOURCES}
 	${VIC2WORLD_COUNTRIES_TESTS_SOURCES}
 	${VIC2WORLD_CULTURE_TESTS_SOURCES}
@@ -717,6 +721,9 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/vanilla_province_map
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/research_bonus_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/tech_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FactionName/factions_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/factions_mappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Maps/adjacencies.csv" "${TEST_OUTPUT_DIRECTORY}/maptests/map/adjacencies.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Maps/nocsv.bmp" "${TEST_OUTPUT_DIRECTORY}/maptests/nocsv/map/nocsv.bmp" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Maps/provinces.bmp" "${TEST_OUTPUT_DIRECTORY}/maptests/map/provinces.bmp" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependencies.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/Dependencies.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependent.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/Dependent.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DependencyOne.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/DependencyOne.mod" COPYONLY)

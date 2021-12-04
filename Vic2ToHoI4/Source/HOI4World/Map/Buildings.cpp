@@ -12,19 +12,16 @@
 HoI4::Buildings::Buildings(const States& theStates,
 	 const CoastalProvinces& theCoastalProvinces,
 	 Maps::MapData& theMapData,
-	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 const Configuration& theConfiguration)
 {
 	Log(LogLevel::Info) << "\tCreating buildings";
 
-	importDefaultBuildings(theMapData, provinceDefinitions, theConfiguration);
+	importDefaultBuildings(theMapData, theConfiguration);
 	placeBuildings(theStates, theCoastalProvinces, theMapData, theConfiguration);
 }
 
 
-void HoI4::Buildings::importDefaultBuildings(Maps::MapData& theMapData,
-	 const Maps::ProvinceDefinitions& provinceDefinitions,
-	 const Configuration& theConfiguration)
+void HoI4::Buildings::importDefaultBuildings(Maps::MapData& theMapData, const Configuration& theConfiguration)
 {
 	std::ifstream buildingsFile(theConfiguration.getHoI4Path() + "/map/buildings.txt");
 	if (!buildingsFile.is_open())
@@ -36,14 +33,12 @@ void HoI4::Buildings::importDefaultBuildings(Maps::MapData& theMapData,
 	{
 		std::string line;
 		getline(buildingsFile, line);
-		processLine(line, theMapData, provinceDefinitions);
+		processLine(line, theMapData);
 	}
 }
 
 
-void HoI4::Buildings::processLine(const std::string& line,
-	 Maps::MapData& theMapData,
-	 const Maps::ProvinceDefinitions& provinceDefinitions)
+void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMapData)
 {
 	const std::regex pattern("(.+);(.+);(.+);(.+);(.+);(.+);(.+)");
 	std::smatch matches;
@@ -51,43 +46,43 @@ void HoI4::Buildings::processLine(const std::string& line,
 	{
 		if (matches[2] == "arms_factory")
 		{
-			importDefaultBuilding(matches, defaultArmsFactories, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultArmsFactories, theMapData);
 		}
 		else if (matches[2] == "industrial_complex")
 		{
-			importDefaultBuilding(matches, defaultIndustrialComplexes, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultIndustrialComplexes, theMapData);
 		}
 		else if (matches[2] == "air_base")
 		{
-			importDefaultBuilding(matches, defaultAirBases, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultAirBases, theMapData);
 		}
 		else if (matches[2] == "naval_base")
 		{
-			importDefaultBuilding(matches, defaultNavalBases, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultNavalBases, theMapData);
 		}
 		else if (matches[2] == "bunker")
 		{
-			importDefaultBuilding(matches, defaultBunkers, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultBunkers, theMapData);
 		}
 		else if (matches[2] == "coastal_bunker")
 		{
-			importDefaultBuilding(matches, defaultCoastalBunkers, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultCoastalBunkers, theMapData);
 		}
 		else if (matches[2] == "dockyard")
 		{
-			importDefaultBuilding(matches, defaultDockyards, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultDockyards, theMapData);
 		}
 		else if (matches[2] == "anti_air_building")
 		{
-			importDefaultBuilding(matches, defaultAntiAirs, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultAntiAirs, theMapData);
 		}
 		else if (matches[2] == "synthetic_refinery")
 		{
-			importDefaultBuilding(matches, defaultSyntheticRefineries, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultSyntheticRefineries, theMapData);
 		}
 		else if (matches[2] == "nuclear_reactor")
 		{
-			importDefaultBuilding(matches, defaultNuclearReactors, theMapData, provinceDefinitions);
+			importDefaultBuilding(matches, defaultNuclearReactors, theMapData);
 		}
 	}
 }
@@ -95,8 +90,7 @@ void HoI4::Buildings::processLine(const std::string& line,
 
 void HoI4::Buildings::importDefaultBuilding(const std::smatch& matches,
 	 defaultPositions& positions,
-	 Maps::MapData& theMapData,
-	 const Maps::ProvinceDefinitions& provinceDefinitions) const
+	 Maps::MapData& theMapData) const
 {
 	BuildingPosition position;
 	position.xCoordinate = stof(matches[3].str());
@@ -107,8 +101,7 @@ void HoI4::Buildings::importDefaultBuilding(const std::smatch& matches,
 	auto connectingSeaProvince = stoi(matches[7].str());
 
 	if (auto province = theMapData.getProvinceNumber(
-			  {static_cast<int>(position.xCoordinate), static_cast<int>(position.zCoordinate)},
-			  provinceDefinitions);
+			  {static_cast<int>(position.xCoordinate), static_cast<int>(position.zCoordinate)});
 		 province)
 	{
 		const auto key = std::make_pair(*province, connectingSeaProvince);

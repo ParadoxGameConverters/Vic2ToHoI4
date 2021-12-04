@@ -84,20 +84,21 @@ commonItems::Color getRightColor(Maps::Point position, const unsigned int width,
 
 
 Maps::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const std::string& path):
-	 provinceMap(path + "/map/provinces.bmp")
+	 provinceDefinitions_(provinceDefinitions)
 {
-	importProvinces(provinceDefinitions, path);
+	bitmap_image provinceMap(path + "/map/provinces.bmp");
+	if (!provinceMap)
+	{
+		throw std::runtime_error("Could not open " + path + "/map/provinces.bmp");
+	}
+
+	importProvinces(provinceMap);
 	importAdjacencies(path);
 }
 
 
-void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitions, const std::string& hoi4Path)
+void Maps::MapData::importProvinces(const bitmap_image& provinceMap)
 {
-	if (!provinceMap)
-	{
-		throw std::runtime_error("Could not open " + hoi4Path + "/map/provinces.bmp");
-	}
-
 	const auto height = provinceMap.height();
 	const auto width = provinceMap.width();
 	for (unsigned int y = 0; y < height; y++)
@@ -115,23 +116,24 @@ void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitio
 			position.second = height - y - 1;
 			if (centerColor != aboveColor)
 			{
-				handleNeighbor(centerColor, aboveColor, position, provinceDefinitions);
+				handleNeighbor(centerColor, aboveColor, position);
 			}
 			if (centerColor != rightColor)
 			{
-				handleNeighbor(centerColor, rightColor, position, provinceDefinitions);
+				handleNeighbor(centerColor, rightColor, position);
 			}
 			if (centerColor != belowColor)
 			{
-				handleNeighbor(centerColor, belowColor, position, provinceDefinitions);
+				handleNeighbor(centerColor, belowColor, position);
 			}
 			if (centerColor != leftColor)
 			{
-				handleNeighbor(centerColor, leftColor, position, provinceDefinitions);
+				handleNeighbor(centerColor, leftColor, position);
 			}
 
-			if (auto province = provinceDefinitions.getProvinceFromColor(centerColor); province)
+			if (auto province = provinceDefinitions_.getProvinceFromColor(centerColor); province)
 			{
+				pointsToProvinces_.emplace(position, *province);
 				if (auto specificProvincePoints = theProvincePoints.find(*province);
 					 specificProvincePoints != theProvincePoints.end())
 				{
@@ -151,11 +153,10 @@ void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitio
 
 void Maps::MapData::handleNeighbor(const commonItems::Color& centerColor,
 	 const commonItems::Color& otherColor,
-	 const Point& position,
-	 const ProvinceDefinitions& provinceDefinitions)
+	 const Point& position)
 {
-	auto centerProvince = provinceDefinitions.getProvinceFromColor(centerColor);
-	auto otherProvince = provinceDefinitions.getProvinceFromColor(otherColor);
+	auto centerProvince = provinceDefinitions_.getProvinceFromColor(centerColor);
+	auto otherProvince = provinceDefinitions_.getProvinceFromColor(otherColor);
 	if (centerProvince && otherProvince)
 	{
 		addNeighbor(*centerProvince, *otherProvince);
@@ -220,12 +221,12 @@ void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, con
 }
 
 
-void Maps::MapData::importAdjacencies(const std::string& hoi4Path)
+void Maps::MapData::importAdjacencies(const std::string& path)
 {
-	std::ifstream adjacenciesFile(hoi4Path + "/map/adjacencies.csv");
+	std::ifstream adjacenciesFile(path + "/map/adjacencies.csv");
 	if (!adjacenciesFile.is_open())
 	{
-		throw std::runtime_error("Could not open " + hoi4Path + "/map/adjacencies.csv");
+		throw std::runtime_error("Could not open " + path + "/map/adjacencies.csv");
 	}
 
 	while (!adjacenciesFile.eof())
@@ -233,7 +234,7 @@ void Maps::MapData::importAdjacencies(const std::string& hoi4Path)
 		std::string line;
 		getline(adjacenciesFile, line);
 
-		const std::regex pattern("(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*)");
+		const std::regex pattern("(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*)\r?");
 		if (std::smatch matches; regex_match(line, matches, pattern))
 		{
 			if (matches[1] == "From" || matches[1] == "-1")
@@ -312,13 +313,16 @@ std::optional<Maps::Point> Maps::MapData::getAnyBorderCenter(const int province)
 }
 
 
-std::optional<int> Maps::MapData::getProvinceNumber(const Point& point,
-	 const ProvinceDefinitions& provinceDefinitions) const
+std::optional<int> Maps::MapData::getProvinceNumber(const Point& point) const
 {
-	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(point.first, (provinceMap.height() - 1) - point.second, color);
-	return provinceDefinitions.getProvinceFromColor(
-		 commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue}));
+	if (const auto i = pointsToProvinces_.find(point); i != pointsToProvinces_.end())
+	{
+		return i->second;
+	}
+	else
+	{
+		return std::nullopt;
+	}
 }
 
 

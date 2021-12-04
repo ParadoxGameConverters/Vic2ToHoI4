@@ -526,6 +526,8 @@
     <ClCompile Include="MapperTests\Technology\ResearchBonusMappingTests.cpp" />
     <ClCompile Include="MapperTests\Technology\TechMapperTests.cpp" />
     <ClCompile Include="MapperTests\Technology\TechMappingTests.cpp" />
+    <ClCompile Include="MapsTests\MapDataTests.cpp" />
+    <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp" />
     <ClCompile Include="MapsTests\ProvincePointsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AITests.cpp" />
@@ -1441,6 +1443,11 @@
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Windows;$(OutDir)/HoI4Linux</DestinationFolders>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Maps\adjacencies.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/maptests/map</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/maptests/map</DestinationFolders>
+    </CopyFileToFolders>
     <None Include="TestFiles\World\merge_nations.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
@@ -1573,6 +1580,20 @@
     <CopyFileToFolders Include="TestFiles\ReadMe.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2Windows;$(OutDir)/Vic2Linux</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2Windows;$(OutDir)/Vic2Linux</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Maps\nocsv.bmp">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/maptests/nocsv/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">provinces%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/maptests/nocsv/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">provinces%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Maps\provinces.bmp">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/maptests/map</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/maptests/map</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

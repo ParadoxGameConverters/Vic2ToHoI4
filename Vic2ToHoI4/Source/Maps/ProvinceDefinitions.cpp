@@ -3,7 +3,7 @@
 
 
 
-int getIntFromColor(const commonItems::Color& color)
+int Maps::getIntFromColor(const commonItems::Color& color)
 {
 	auto [r, g, b] = color.getRgbComponents();
 

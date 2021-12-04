@@ -13,6 +13,10 @@
 namespace Maps
 {
 
+// utility function for province definition importers
+int getIntFromColor(const commonItems::Color& color);
+
+
 class ProvinceDefinitions
 {
   public:

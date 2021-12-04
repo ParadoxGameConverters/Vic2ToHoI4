@@ -3,20 +3,6 @@
 
 
 
-namespace
-{
-
-int getIntFromColor(const commonItems::Color& color)
-{
-	auto [r, g, b] = color.getRgbComponents();
-
-	return ((r & 0xFF) << 16) + ((g & 0xFF) << 8) + (b & 0xFF);
-}
-
-} // namespace
-
-
-
 Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& path)
 {
 	std::ifstream definitions(path + "/map/definition.csv");
@@ -57,7 +43,7 @@ Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& pat
 		const int blue(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
 
-		auto colorInt = getIntFromColor(commonItems::Color(std::array{red, green, blue}));
+		auto colorInt = Maps::getIntFromColor(commonItems::Color(std::array{red, green, blue}));
 		colorToProvinceMap.insert(std::make_pair(colorInt, provNum));
 
 		pos = line.find_first_of(';');
