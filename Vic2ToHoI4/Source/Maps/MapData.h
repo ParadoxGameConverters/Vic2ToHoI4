@@ -33,7 +33,7 @@ class MapData
 	[[nodiscard]] std::optional<ProvincePoints> getProvincePoints(int provinceNum) const;
 
   private:
-	void importProvinces();
+	void importProvinces(const bitmap_image& provinceMap);
 	void handleNeighbor(const commonItems::Color& centerColor,
 		 const commonItems::Color& otherColor,
 		 const Point& position);
@@ -47,8 +47,8 @@ class MapData
 	std::map<int, bordersWith> borders;
 	std::map<int, ProvincePoints> theProvincePoints;
 
-	bitmap_image provinceMap;
 	ProvinceDefinitions provinceDefinitions_;
+	std::map<Point, int> pointsToProvinces_;
 };
 
 } // namespace Maps

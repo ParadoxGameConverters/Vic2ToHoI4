@@ -84,19 +84,20 @@ commonItems::Color getRightColor(Maps::Point position, const unsigned int width,
 
 
 Maps::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const std::string& path):
-	 provinceMap(path + "/map/provinces.bmp"), provinceDefinitions_(provinceDefinitions)
+	 provinceDefinitions_(provinceDefinitions)
 {
+	bitmap_image provinceMap(path + "/map/provinces.bmp");
 	if (!provinceMap)
 	{
 		throw std::runtime_error("Could not open " + path + "/map/provinces.bmp");
 	}
 
-	importProvinces();
+	importProvinces(provinceMap);
 	importAdjacencies(path);
 }
 
 
-void Maps::MapData::importProvinces()
+void Maps::MapData::importProvinces(const bitmap_image& provinceMap)
 {
 	const auto height = provinceMap.height();
 	const auto width = provinceMap.width();
@@ -132,6 +133,7 @@ void Maps::MapData::importProvinces()
 
 			if (auto province = provinceDefinitions_.getProvinceFromColor(centerColor); province)
 			{
+				pointsToProvinces_.emplace(position, *province);
 				if (auto specificProvincePoints = theProvincePoints.find(*province);
 					 specificProvincePoints != theProvincePoints.end())
 				{
@@ -313,10 +315,14 @@ std::optional<Maps::Point> Maps::MapData::getAnyBorderCenter(const int province)
 
 std::optional<int> Maps::MapData::getProvinceNumber(const Point& point) const
 {
-	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(point.first, (provinceMap.height() - 1) - point.second, color);
-	return provinceDefinitions_.getProvinceFromColor(
-		 commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue}));
+	if (const auto i = pointsToProvinces_.find(point); i != pointsToProvinces_.end())
+	{
+		return i->second;
+	}
+	else
+	{
+		return std::nullopt;
+	}
 }
 
 
