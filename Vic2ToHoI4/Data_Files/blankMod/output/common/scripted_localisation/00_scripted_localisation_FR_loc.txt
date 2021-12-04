@@ -2282,6 +2282,7 @@ defined_text = {
 	text = {
 		trigger = {
 			always = yes
+		}
 		localization_key = FRLOC_TEUR
 	}
 }
