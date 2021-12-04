@@ -222,3 +222,27 @@ TEST(Maps_MapData, AnyBorderForBorderingProvinces)
 	const Maps::Point expectedPoint{13, 590}; // y-axis is from the bottom
 	EXPECT_EQ(*borderPoint, expectedPoint);
 }
+
+
+TEST(Maps_MapData, NoProvinceNumberForUndefinedPoint)
+{
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::MapData mapData(provinceDefinitions, "maptests");
+
+	EXPECT_EQ(mapData.getProvinceNumber({0, 0}), std::nullopt);
+}
+
+
+TEST(Maps_MapData, ProvinceNumberForDefinedPoint)
+{
+	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
+		 {
+			  {0x88'00'15, 1}, // the dark red one on top
+		 });
+	const Maps::MapData mapData(provinceDefinitions, "maptests");
+
+	const auto provinceNumber = mapData.getProvinceNumber({13, 595});
+	ASSERT_TRUE(provinceNumber);
+	EXPECT_EQ(*provinceNumber, 1);
+}
