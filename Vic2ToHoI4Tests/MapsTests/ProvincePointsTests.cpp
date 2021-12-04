@@ -3,16 +3,16 @@
 
 
 
-TEST(HoI4World_Map_ProvincePoints, CentermostIsOriginIfNoPoints)
+TEST(Maps_ProvincePoints, CentermostIsOriginIfNoPoints)
 {
 	const Maps::ProvincePoints provincePoints;
 
 	constexpr Maps::Point expectedPoint{0, 0};
-	ASSERT_EQ(expectedPoint, provincePoints.getCentermostPoint());
+	EXPECT_EQ(expectedPoint, provincePoints.getCentermostPoint());
 }
 
 
-TEST(HoI4World_Map_ProvincePoints, CenterPointIsAverageLatitude)
+TEST(Maps_ProvincePoints, CenterPointIsAverageLatitude)
 {
 	Maps::ProvincePoints provincePoints;
 	provincePoints.addPoint(Maps::Point{0, 1});
@@ -21,11 +21,11 @@ TEST(HoI4World_Map_ProvincePoints, CenterPointIsAverageLatitude)
 	provincePoints.addPoint(Maps::Point{0, 4});
 
 	constexpr Maps::Point expectedPoint{0, 2};
-	ASSERT_EQ(expectedPoint, provincePoints.getCentermostPoint());
+	EXPECT_EQ(expectedPoint, provincePoints.getCentermostPoint());
 }
 
 
-TEST(HoI4World_Map_ProvincePoints, CenterPointIsAverageLongitude)
+TEST(Maps_ProvincePoints, CenterPointIsAverageLongitude)
 {
 	Maps::ProvincePoints provincePoints;
 	provincePoints.addPoint(Maps::Point{1, 0});
@@ -34,11 +34,11 @@ TEST(HoI4World_Map_ProvincePoints, CenterPointIsAverageLongitude)
 	provincePoints.addPoint(Maps::Point{4, 0});
 
 	constexpr Maps::Point expectedPoint{2, 0};
-	ASSERT_EQ(expectedPoint, provincePoints.getCentermostPoint());
+	EXPECT_EQ(expectedPoint, provincePoints.getCentermostPoint());
 }
 
 
-TEST(HoI4World_Map_ProvincePoints, CentermostPointWhenCenterNotControlled)
+TEST(Maps_ProvincePoints, CentermostPointWhenCenterNotControlled)
 {
 	Maps::ProvincePoints provincePoints;
 	provincePoints.addPoint(Maps::Point{1, 0});
@@ -46,5 +46,5 @@ TEST(HoI4World_Map_ProvincePoints, CentermostPointWhenCenterNotControlled)
 	provincePoints.addPoint(Maps::Point{10, 0});
 
 	constexpr Maps::Point expectedPoint{3, 0};
-	ASSERT_EQ(expectedPoint, provincePoints.getCentermostPoint());
+	EXPECT_EQ(expectedPoint, provincePoints.getCentermostPoint());
 }
