@@ -34,7 +34,7 @@ class MapData
 	[[nodiscard]] std::optional<ProvincePoints> getProvincePoints(int provinceNum) const;
 
   private:
-	void importProvinces(const ProvinceDefinitions& provinceDefinitions, const std::string& hoi4Path);
+	void importProvinces(const ProvinceDefinitions& provinceDefinitions);
 	void handleNeighbor(const commonItems::Color& centerColor,
 		 const commonItems::Color& otherColor,
 		 const Point& position,
@@ -43,7 +43,7 @@ class MapData
 	void removeNeighbor(int mainProvince, int neighborProvince);
 	void addPointToBorder(int mainProvince, int neighborProvince, Point position);
 
-	void importAdjacencies(const std::string& hoi4Path);
+	void importAdjacencies(const std::string& path);
 
 	std::map<int, std::set<int>> provinceNeighbors;
 	std::map<int, bordersWith> borders;

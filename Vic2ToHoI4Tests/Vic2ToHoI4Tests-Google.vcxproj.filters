@@ -1601,6 +1601,9 @@
     <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp">
       <Filter>MapsTests</Filter>
     </ClCompile>
+    <ClCompile Include="MapsTests\MapDataTests.cpp">
+      <Filter>MapsTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2142,6 +2145,9 @@
     </Filter>
     <Filter Include="HoI4WorldTests\TankDesigns">
       <UniqueIdentifier>{dd72e658-4d3b-4c7e-91b0-1eb87cf8b739}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Maps">
+      <UniqueIdentifier>{afc250e7-f9f8-426c-8026-0baf1832ac55}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3472,6 +3478,15 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\FactionName\factions_mappings.txt">
       <Filter>TestFiles\Mappers\FactionName</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Maps\nocsv.bmp">
+      <Filter>TestFiles\Maps</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Maps\provinces.bmp">
+      <Filter>TestFiles\Maps</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Maps\adjacencies.csv">
+      <Filter>TestFiles\Maps</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

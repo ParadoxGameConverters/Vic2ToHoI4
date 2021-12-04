@@ -86,18 +86,18 @@ commonItems::Color getRightColor(Maps::Point position, const unsigned int width,
 Maps::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const std::string& path):
 	 provinceMap(path + "/map/provinces.bmp")
 {
-	importProvinces(provinceDefinitions, path);
+	if (!provinceMap)
+	{
+		throw std::runtime_error("Could not open " + path + "/map/provinces.bmp");
+	}
+
+	importProvinces(provinceDefinitions);
 	importAdjacencies(path);
 }
 
 
-void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitions, const std::string& hoi4Path)
+void Maps::MapData::importProvinces(const ProvinceDefinitions& provinceDefinitions)
 {
-	if (!provinceMap)
-	{
-		throw std::runtime_error("Could not open " + hoi4Path + "/map/provinces.bmp");
-	}
-
 	const auto height = provinceMap.height();
 	const auto width = provinceMap.width();
 	for (unsigned int y = 0; y < height; y++)
@@ -220,12 +220,12 @@ void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, con
 }
 
 
-void Maps::MapData::importAdjacencies(const std::string& hoi4Path)
+void Maps::MapData::importAdjacencies(const std::string& path)
 {
-	std::ifstream adjacenciesFile(hoi4Path + "/map/adjacencies.csv");
+	std::ifstream adjacenciesFile(path + "/map/adjacencies.csv");
 	if (!adjacenciesFile.is_open())
 	{
-		throw std::runtime_error("Could not open " + hoi4Path + "/map/adjacencies.csv");
+		throw std::runtime_error("Could not open " + path + "/map/adjacencies.csv");
 	}
 
 	while (!adjacenciesFile.eof())
