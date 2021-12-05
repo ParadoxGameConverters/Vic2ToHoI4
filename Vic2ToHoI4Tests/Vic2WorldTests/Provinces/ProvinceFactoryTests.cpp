@@ -37,6 +37,31 @@ TEST_F(Vic2World_ProvinceFactoryTests, numberCanBeSet)
 }
 
 
+TEST_F(Vic2World_ProvinceFactoryTests, isLandDefaultsToFalse)
+{
+	std::stringstream input;
+	input << "=\n";
+	input << "{\n";
+	input << "}";
+
+	const auto theProvince = provinceFactory->getProvince(42, input);
+	ASSERT_FALSE(theProvince->isLandProvince());
+}
+
+
+TEST_F(Vic2World_ProvinceFactoryTests, isLandTrueWhenLifeRatingExists)
+{
+	std::stringstream input;
+	input << "=\n";
+	input << "{\n";
+	input << "\tlife_rating=35\n";
+	input << "}";
+
+	const auto theProvince = provinceFactory->getProvince(42, input);
+	ASSERT_TRUE(theProvince->isLandProvince());
+}
+
+
 TEST_F(Vic2World_ProvinceFactoryTests, ownerDefaultsToBlank)
 {
 	std::stringstream input;

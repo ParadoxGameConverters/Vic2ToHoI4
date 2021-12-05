@@ -35,6 +35,10 @@ Vic2::Province::Factory::Factory(std::unique_ptr<PopFactory>&& _popFactory): pop
 			province->flags.insert(flag);
 		}
 	});
+	registerKeyword("life_rating", [this](std::istream& theStream) {
+		province->landProvince_ = true;
+		const auto unused = commonItems::getInt(theStream);
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
