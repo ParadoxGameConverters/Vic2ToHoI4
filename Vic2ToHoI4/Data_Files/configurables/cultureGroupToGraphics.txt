@@ -1453,7 +1453,7 @@ eastern_slavic = {
 		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_4.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_5.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Aleksandr_Vasilevsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Alexander_Gorbatov.dds"
+		"gfx/leaders/SOV/Portrait_Soviet_Alexandr_Gorbatov.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Andrei_Antonovich_Grechko.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Andrey_Yeryomenko.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Boris_Shaposhnikov.dds"
@@ -1483,7 +1483,7 @@ eastern_slavic = {
 		"gfx/leaders/SOV/Portrait_Soviet_Rodion_Malinovsky.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Semyon_Budyonny.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Semyon_Timoshenko.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Vasily_Chuikov.dds"
+		"gfx/leaders/SOV/Portrait_Soviet_Vasily_Chuykov.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Vasily_Kuznetsov.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Yakov_Cherevichenko.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Gregory_Zhukov.dds"
@@ -1596,7 +1596,7 @@ eastern_slavic = {
 		}
 		ideological_leader = {
 			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
-			"gfx/leaders/Western_European/Female/Portrait_England_Sylvia_Pankhurst.tga"
+			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Edelman.dds"
 			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
 			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
 			"gfx/leaders/Eastern_European/Female/Portriat_Poland_Roza_Luksemburg.tga"
@@ -2172,8 +2172,8 @@ north_african = {
 	navy_portraits = {
 		#Generic Middle Eastern
 		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Europe_Generic_navy_3.dds"
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
+		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
 		#Other
 		"gfx/leaders/Arabic_Persian/Portrait_EGY_Suleiman_Ezzat.tga"
 		"gfx/leaders/Arabic_Persian/Portrait_EGY_Hussein_Refki.tga" #Marine
@@ -2242,7 +2242,7 @@ north_african = {
 			"gfx/leaders/Arabic_Persian/Portrait_MOR_Abdallah_Ibrahim.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_Persia_Mohammad_Mosaddegh.tga"
 			"gfx/leaders/Arabic_Persian/Portrait_SYR_Shukri.tga"
-			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Abdelaziz_Thaalbi.tga"
+			"gfx/leaders/Arabic_Persian/Portrait_Tunisia_Abdelaziz_Thaalbi.dds"
 		}
 	}
 	female_portraits = {
@@ -3817,7 +3817,6 @@ sinitic = {
 		}
 		absolutist = {
 			"gfx/leaders/CHI/Portrait_China_Chiang_Kai_Shek.dds"
-			"gfx/leaders/MAN/Portrait_Manchuria_Henry_Pu_Yi.dds"
 			"gfx/leaders/Sino/Portrait_CHI_Yuan_Shikai.dds"
 			"gfx/leaders/Sino/Portrait_China_Puyi.tga"
 			"gfx/leaders/Sino/Portrait_China_Pujie.tga"
@@ -3951,7 +3950,7 @@ australia_melanesia_madagascar = {
 			"gfx/leaders/African/Portrait_SOM_Cismaan_III_Maxamuud.tga"	
 		} 
 		fascism = {
-			"gfx/leaders/Aborigine_Polynesia/Portrait_KIK_Mathenge.dds"
+			"gfx/leaders/African/Portrait_KIK_Mathenge.dds"
 			"gfx/leaders/African/Portrait_SUD_Abd_Mahdi.tga"
 			"gfx/leaders/African/Portrait_SOM_Ali_Shire.tga"
 			"gfx/leaders/African/Portrait_SOM_Cismaan_III_Maxamuud.tga"	
@@ -3962,7 +3961,7 @@ australia_melanesia_madagascar = {
 			"gfx/leaders/African/Portrait_SOM_Cismaan_III_Maxamuud.tga"
 		}
 		neutrality = {
-			"gfx/leaders/HAI/portrait_hai_stenio_vincent.tga"
+			"gfx/leaders/HAI/portrait_hai_stenio_vincent.dds"
 			"gfx/leaders/Generic/Portrait_Africa_Generic_new_1.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Otto_Schimming.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_CAF_Tubal_Uriah_Butler.tga"
@@ -4072,7 +4071,7 @@ polynesia_micronesia = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NZL_Eruera_Tirikatene.tga"		
 		} 
 		fascism = {
-			"gfx/leaders/Aborigine_Polynesia/Portrait_KIK_Mathenge.dds"
+			"gfx/leaders/African/Portrait_KIK_Mathenge.dds"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_MOR_Ali_Yata.dds"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_PAL_Alami.dds"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Abang_Haji_Abdillah.dds"
@@ -4457,14 +4456,14 @@ south_american_native = {
 	}
 	female_portraits = {
 		military = {
-			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Jabcovsky.dds"
+			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Schoonheyt.dds"
 			"gfx/leaders/Hispanic/Female/Portrait_BRA_Eugenia_Moreyra.tga"
 		}
 		monarch = {
 			"gfx/leaders/South_American_Native/Female/Portrait_Ecuador_Dolores_Caucango.tga"
 		}
 		ideological_leader = {
-			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Jabcovsky.dds"
+			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Schoonheyt.dds"
 			"gfx/leaders/South_American_Native/Female/Portrait_Ecuador_Dolores_Caucango.tga"
 			"gfx/leaders/Hispanic/Female/Portrait_BRA_Eugenia_Moreyra.tga"
 		}
@@ -4632,8 +4631,8 @@ hispanic = {
 			"gfx/leaders/Hispanic/Portrait_PAN_Harmodio_Arias_Madrid_our.tga"
 		} 
 		fascism = {
-			"gfx/leaders/ARG/portrait_south_america_generic_leader_3.dds"
-			"gfx/leaders/ARG/portrait_south_america_generic_leader_8.dds"
+			"gfx/leaders/South America/portrait_south_america_generic_3.dds"
+			"gfx/leaders/South America/portrait_south_america_generic_8.dds"
 			"gfx/leaders/CHL/portrait_chl_arturo_alessandri.dds"
 			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"			
 			"gfx/leaders/VEN/Portrait_Venezuela_Elezar_Lopez_Contreras.dds"
@@ -4700,7 +4699,7 @@ hispanic = {
 	}
 	female_portraits = {
 		military = {
-			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Jabcovsky.dds"
+			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Schoonheyt.dds"
 			"gfx/leaders/Hispanic/Female/Portrait_Argentine_Alicia_Justo.tga"
 			"gfx/leaders/Hispanic/Female/Portrait_BRA_Eugenia_Moreyra.tga"
 			"gfx/leaders/Hispanic/Female/Portrait_Chile_Gabriela.tga"
@@ -4715,7 +4714,7 @@ hispanic = {
 			"gfx/leaders/Hispanic/Female/Portrait_Uruguay_Paulina_Luisi.tga"
 		}
 		ideological_leader = {
-			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Jabcovsky.dds"
+			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Schoonheyt.dds"
 			"gfx/leaders/Hispanic/Female/Portrait_ARG_Elvira_Rawson.tga"
 			"gfx/leaders/Hispanic/Female/Portrait_Argentine_Alicia_Justo.tga"
 			"gfx/leaders/Hispanic/Female/Portrait_BRA_Eugenia_Moreyra.tga"
@@ -4837,7 +4836,7 @@ cushitic_omotic_nilotic = {
 		} 
 		radical = {
 			"gfx/leaders/Africa/Portrait_Africa_Generic_2.dds"
-			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_2.tga"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_2.dds"
 			"gfx/leaders/African/Portrait_SOM_Haaji.tga"
 			"gfx/leaders/African/Portrait_SOM_Aden_Daar.tga"
 		}
@@ -4997,7 +4996,7 @@ niger_congo = {
 		} 
 		radical = {
 			"gfx/leaders/Africa/Portrait_Africa_Generic_2.dds"
-			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_2.tga"
+			"gfx/leaders/Generic/r56_portrait_generic_politician_africa_2.dds"
 			"gfx/leaders/African/Portrait_Ashanti_Addo.tga"			
 			"gfx/leaders/African/Portrait_Dahomey_Angoli.tga"
 			"gfx/leaders/African/Portrait_GAB_Leon.tga"
