@@ -31,8 +31,13 @@ Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& pat
 			break;
 		}
 
-		const int provinceNum = stoi(line.substr(0, pos));
-		if (provinceNum == 0)
+		const auto provinceNumberString = line.substr(0, pos);
+		if (provinceNumberString.empty())
+		{
+			continue;
+		}
+		const int provinceNumber = stoi(provinceNumberString);
+		if (provinceNumber == 0)
 		{
 			continue;
 		}
@@ -51,9 +56,9 @@ Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& pat
 		line = line.substr(pos + 1, line.length());
 
 		auto colorInt = Maps::getIntFromColor(commonItems::Color(std::array{red, green, blue}));
-		colorToProvinceMap.insert(std::make_pair(colorInt, provinceNum));
+		colorToProvinceMap.insert(std::make_pair(colorInt, provinceNumber));
 
-		const auto possibleProvince = provinces.find(provinceNum);
+		const auto possibleProvince = provinces.find(provinceNumber);
 		if (possibleProvince == provinces.end() || !possibleProvince->second)
 		{
 			continue;
@@ -61,11 +66,11 @@ Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& pat
 
 		if (possibleProvince->second->isLandProvince())
 		{
-			landProvinces.insert(provinceNum);
+			landProvinces.insert(provinceNumber);
 		}
 		else
 		{
-			seaProvinces.insert(provinceNum);
+			seaProvinces.insert(provinceNumber);
 		}
 	}
 
