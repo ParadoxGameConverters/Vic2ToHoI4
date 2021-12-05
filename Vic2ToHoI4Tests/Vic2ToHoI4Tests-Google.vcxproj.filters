@@ -1604,6 +1604,12 @@
     <ClCompile Include="MapsTests\MapDataTests.cpp">
       <Filter>MapsTests</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Map\Vic2ProvinceDefinitionImporterTests.cpp">
+      <Filter>Vic2WorldTests\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Map\Vic2ProvinceDefinitionImporter.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2148,6 +2154,15 @@
     </Filter>
     <Filter Include="TestFiles\Maps">
       <UniqueIdentifier>{afc250e7-f9f8-426c-8026-0baf1832ac55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Map">
+      <UniqueIdentifier>{1ae1a73d-2be0-492b-a96b-1297bf3bb0ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Map">
+      <UniqueIdentifier>{7bc4fa8f-e5f5-4faf-ac01-79fb71ad2c2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Vic2\Map">
+      <UniqueIdentifier>{d233c4b9-7570-4cd1-ba23-9d2088973870}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3153,6 +3168,9 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankUpgrades.h">
       <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Map\Vic2ProvinceDefinitionImporter.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3487,6 +3505,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Maps\adjacencies.csv">
       <Filter>TestFiles\Maps</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Vic2World\Map\definition.csv">
+      <Filter>TestFiles\Vic2\Map</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

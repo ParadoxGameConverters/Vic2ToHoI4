@@ -451,6 +451,7 @@
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="Source\V2World\Localisations\LocalisationsFactory.cpp" />
     <ClCompile Include="Source\V2World\Localisations\Vic2Localisations.cpp" />
+    <ClCompile Include="Source\V2World\Map\Vic2ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="Source\V2World\Military\ArmyFactory.cpp" />
     <ClCompile Include="Source\V2World\Military\Leaders\Leader.cpp" />
     <ClCompile Include="Source\V2World\Military\Leaders\LeaderFactory.cpp" />
@@ -878,6 +879,7 @@
     <ClInclude Include="Source\V2World\Issues\IssueCategoryHelper.h" />
     <ClInclude Include="Source\V2World\Localisations\LocalisationsFactory.h" />
     <ClInclude Include="Source\V2World\Localisations\Vic2Localisations.h" />
+    <ClInclude Include="Source\V2World\Map\Vic2ProvinceDefinitionImporter.h" />
     <ClInclude Include="Source\V2World\Military\Army.h" />
     <ClInclude Include="Source\V2World\Military\ArmyBuilder.h" />
     <ClInclude Include="Source\V2World\Military\ArmyFactory.h" />

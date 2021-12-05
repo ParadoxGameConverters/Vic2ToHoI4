@@ -23,6 +23,20 @@ TEST(Vic2World_Provinces_ProvinceBuilderTests, NumberCanBeSet)
 }
 
 
+TEST(Vic2World_Provinces_ProvinceBuilderTests, IsLandProvinceDefaultsToFalse)
+{
+	const auto province = Vic2::Province::Builder().setNumber(42).build();
+	ASSERT_FALSE(province->isLandProvince());
+}
+
+
+TEST(Vic2World_Provinces_ProvinceBuilderTests, IsLandProvinceCanBeSet)
+{
+	const auto province = Vic2::Province::Builder().setNumber(42).setIsLand().build();
+	ASSERT_TRUE(province->isLandProvince());
+}
+
+
 TEST(Vic2World_Provinces_ProvinceBuilderTests, OwnerDefaultsToEmpty)
 {
 	const auto province = Vic2::Province::Builder().setNumber(42).build();
