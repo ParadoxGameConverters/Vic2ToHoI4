@@ -3509,5 +3509,50 @@
     <CopyFileToFolders Include="TestFiles\Vic2World\Map\definition.csv">
       <Filter>TestFiles\Vic2\Map</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\moveArmiesProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\moveArmiesProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\moveArmiesProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\resolveBattlesProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\resolvebattlesProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\resolveBattlesProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TestWorldProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TestWorldProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TestWorldProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\MergeWorldProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\MergeWorldProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\mergeWorldProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
