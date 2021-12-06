@@ -2091,9 +2091,13 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 		}
 		const auto& claimsHolders = determineWarTargets(theCountry, theCountry->getClaimedStates(), states);
 		std::optional<int> newClaim;
-		if (!claimsHolders.contains(strategy.getID()) && strategy.getClaimedState())
+		if (!claimsHolders.contains(strategy.getID()))
 		{
 			newClaim = strategy.getClaimedState();
+		}
+		if (!newClaim)
+		{
+			continue;
 		}
 
 		conquerTags.insert(strategy.getID());
@@ -2113,17 +2117,8 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			{
 				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
 			}
-			if (newClaim)
-			{
-				const auto& stateId = std::to_string(*newClaim);
-				newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
-				newFocus->updateFocusElement(newFocus->completionReward, "#ADDCLAIM", "add_state_claim = " + stateId);
-			}
-			else
-			{
-				newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "potential_take_state_target = yes");
-				newFocus->removePlaceholder(newFocus->completionReward, "#ADDCLAIM");
-			}
+			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + std::to_string(*newClaim));
+			newFocus->updateFocusElement(newFocus->completionReward, "#ADDCLAIM", "add_state_claim = " + std::to_string(*newClaim));
 			newFocus->xPos = nextFreeColumn;
 			newFocus->yPos = 0;
 			newFocus->updateFocusElement(newFocus->aiWillDo, "$AICHANCE", to_string(aiChance));

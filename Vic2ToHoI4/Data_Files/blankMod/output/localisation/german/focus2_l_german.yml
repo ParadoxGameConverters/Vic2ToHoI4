@@ -61,7 +61,6 @@
  neighbor_war:0 "Nachbarschaftskrieg"
  neighbor_war_desc:0 "Alles, was zu tun bleibt, ist eine formelle Kriegserklärung."
  neighbour_war_NF_threat:0 "Nachbarschaftskrieg"
- potential_take_state_target_tooltip:0 "Besitzt unsere Forderungen"
  not_allied_or_subject_of_one_another_tooltip:0 "Nicht Verbündete oder Untertanen voneinander"
  in_weak_faction_tooltip:0 "Schwächere Fraktion als unsere"
  reclaim_cores:0 "Kerngebiet zurückfordern"

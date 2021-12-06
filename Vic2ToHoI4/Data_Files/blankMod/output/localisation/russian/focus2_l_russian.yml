@@ -61,7 +61,6 @@
  neighbor_war:0 "Война соседей"
  neighbor_war_desc:0 "Все, что осталось сделать, это формальное объявление войны."
  neighbor War_NF_threat:0 "Война соседей"
- potential_take_state_target_tooltip:0 "Владеет нашими претензиями"
  not_allied_or_subject_of_one_another_tooltip:0 "Не союзники или подданные друг друга"
  in_weak_faction_tooltip:0 "Более слабая фракция, чем наша"
  reclaim_cores:0 "Восстановить национальные территории"

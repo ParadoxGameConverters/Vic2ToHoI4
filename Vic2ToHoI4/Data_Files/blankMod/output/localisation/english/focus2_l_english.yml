@@ -101,7 +101,6 @@
  neighbor_war:0 "Neighbor War"
  neighbor_war_desc:0 "All that is left to do is a formal declaration of war."
  neighbor_war_NF_threat:0 "Neighbor War"
- potential_take_state_target_tooltip:0 "Owns our claims"
  not_allied_or_subject_of_one_another_tooltip:0 "Not allies or subjects of one another"
  in_weak_faction_tooltip:0 "Weaker faction than ours"
  reclaim_cores:0 "Reclaim Cores"
