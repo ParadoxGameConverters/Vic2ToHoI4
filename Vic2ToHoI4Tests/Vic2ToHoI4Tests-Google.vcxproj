@@ -178,6 +178,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutModifier.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp" />
@@ -986,6 +987,13 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuilding.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuildings.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZone.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZones.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankDesign.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankDesigns.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankModules.h" />

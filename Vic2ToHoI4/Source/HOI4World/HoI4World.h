@@ -87,6 +87,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] const auto& getSupplyZones() const { return *supplyZones; }
 	[[nodiscard]] const auto& getBuildings() const { return *buildings; }
+	[[nodiscard]] const auto& getSupplyNodes() const { return supplyNodes_; }
 	[[nodiscard]] const auto& getDecisions() const { return *theDecisions; }
 	[[nodiscard]] auto& getEvents() { return *events; }
 	[[nodiscard]] const auto& getEvents() const { return *events; }
@@ -229,6 +230,7 @@ class World: commonItems::parser
 	HoI4::SupplyZones* supplyZones = nullptr;
 	std::unique_ptr<StrategicRegions> strategicRegions;
 	Buildings* buildings = nullptr;
+	std::set<int> supplyNodes_;
 
 	std::map<std::string, std::shared_ptr<HoI4::Country>> countries;
 	std::map<std::string, std::shared_ptr<HoI4::Country>> landedCountries;

@@ -1610,6 +1610,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Map\Vic2ProvinceDefinitionImporter.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -3170,6 +3173,27 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Map\Vic2ProvinceDefinitionImporter.h">
       <Filter>Vic2ToHoI4 files\Vic2\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuilding.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuildings.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZone.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZones.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

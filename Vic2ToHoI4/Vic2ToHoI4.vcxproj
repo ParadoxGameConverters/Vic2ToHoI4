@@ -274,6 +274,7 @@
     <ClCompile Include="Source\OutHoi4\Map\OutBuildings.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutStrategicRegion.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutStrategicRegions.cpp" />
+    <ClCompile Include="Source\OutHoi4\Map\OutSupplyNodes.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutSupplyZone.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutSupplyZones.cpp" />
     <ClCompile Include="Source\OutHoi4\Military\OutAirplane.cpp" />
@@ -537,6 +538,7 @@
     <ClInclude Include="Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
+    <ClInclude Include="Source\HOI4World\Map\SupplyNodes.h" />
     <ClInclude Include="Source\HOI4World\Modifiers\DynamicModifiers.h" />
     <ClInclude Include="Source\HOI4World\Modifiers\Modifier.h" />
     <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h" />
@@ -664,6 +666,7 @@
     <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
+    <ClInclude Include="Source\OutHoi4\Map\OutSupplyNodes.h" />
     <ClInclude Include="Source\OutHoi4\Modifiers\OutDynamicModifiers.h" />
     <ClInclude Include="Source\OutHoi4\Modifiers\OutModifier.h" />
     <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.h" />
