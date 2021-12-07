@@ -982,7 +982,7 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 		 {std::make_pair(1, Vic2::Province::Builder().setNumber(1).setOwner("TWO").build()),
 			  std::make_pair(2, Vic2::Province::Builder().setNumber(2).setOwner("TWO").build())});
 
-	ASSERT_EQ(12, country->getAI().getConsolidatedStrategies().find("TWO")->second);
+	ASSERT_EQ(12, country->getAI().getConsolidatedStrategies().find("TWO")->second.first);
 }
 
 

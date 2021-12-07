@@ -605,7 +605,7 @@ TEST(Vic2World_World_WorldTests, ConquerStrategiesAreConsolidated)
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
 	ASSERT_THAT(world->getCountries().at("ONE").getAI().getConsolidatedStrategies(),
-		 testing::UnorderedElementsAre(std::make_pair(std::string("TWO"), 182)));
+		 testing::UnorderedElementsAre(std::make_pair(std::string("TWO"), std::make_pair(182, std::vector<int>{2}))));
 }
 
 
