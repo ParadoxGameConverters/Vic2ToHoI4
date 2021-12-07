@@ -23,7 +23,7 @@ TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, ProvinceFromDefinedColor
 {
 	const auto definitions = Vic2::importProvinceDefinitions("V2World", {});
 
-	const auto province = definitions.getProvinceFromColor(commonItems::Color(std::array{1, 2, 3}));
+	const auto province = definitions.getProvinceFromColor(commonItems::Color(std::array{136, 0, 21}));
 	ASSERT_TRUE(province);
 	EXPECT_EQ(*province, 1);
 }
