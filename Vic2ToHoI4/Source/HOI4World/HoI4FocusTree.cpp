@@ -2117,8 +2117,9 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			{
 				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
 			}
-			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + std::to_string(*newClaim));
-			newFocus->updateFocusElement(newFocus->completionReward, "#ADDCLAIM", "add_state_claim = " + std::to_string(*newClaim));
+			const auto& stateId = std::to_string(*newClaim);
+			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
+			newFocus->updateFocusElement(newFocus->completionReward, "#ADDCLAIM", "add_state_claim = " + stateId);
 			newFocus->xPos = nextFreeColumn;
 			newFocus->yPos = 0;
 			newFocus->updateFocusElement(newFocus->aiWillDo, "$AICHANCE", to_string(aiChance));
