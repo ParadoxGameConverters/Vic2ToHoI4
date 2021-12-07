@@ -987,7 +987,6 @@ void HoI4::World::convertStrategies(const Vic2::World& sourceWorld,
 	{
 		if (const auto& sourceCountries = sourceWorld.getCountries(); sourceCountries.contains(country->getOldTag()))
 		{
-			Log(LogLevel::Info) << country->getTag();
 			country->convertStrategies(*countryMap,
 				 sourceCountries.at(country->getOldTag()),
 				 countries,
