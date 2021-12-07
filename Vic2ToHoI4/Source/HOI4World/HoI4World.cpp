@@ -139,7 +139,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertWars(sourceWorld, provinceMapper);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
-	supplyNodes_ = determineSupplyNodes();
+	supplyNodes_ = determineSupplyNodes(sourceWorld.getProvinces(), provinceMapper);
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";
 	if (theConfiguration.getDebug())

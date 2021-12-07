@@ -171,6 +171,7 @@
     <ClCompile Include="Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\SupplyNodes.cpp" />
     <ClCompile Include="Source\HOI4World\Modifiers\DynamicModifiers.cpp" />
     <ClCompile Include="Source\HOI4World\Modifiers\Modifier.cpp" />
     <ClCompile Include="Source\HOI4World\Names\CultureGroupNames.cpp" />
