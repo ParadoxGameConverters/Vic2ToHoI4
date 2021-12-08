@@ -2935,16 +2935,16 @@
 	link = { vic2 = 1357 hoi4 = 1464 hoi4 = 1507 hoi4 = 12332 } # Vientiane -> Vientiane, Phon Hong, Paksane
 	link = { vic2 = 1360 hoi4 = 10330 hoi4 = 10356 hoi4 = 10456 } # Xiangabouli -> Phiang, Pak Lay, Sienghone
 	link = { vic2 = 1361 hoi4 = 1520 hoi4 = 10326 hoi4 = 4260 hoi4 = 10195 hoi4 = 4539 hoi4 = 1362 hoi4 = 1390 } # Savannakhet -> Thakhek, Khamkeut, Boualapha, Seponh, Savannakhet, Saychamphone, Hineboune
-	link = { vic2 = 1362 hoi4 = 1563 hoi4 = 1374 hoi4 = 10238 hoi4 = 12210 hoi4 = 7426 hoi4 = 4554 hoi4 = 1577 hoi4 = 4596 } # Salavan -> Paksé, Sanasomboune, Nong, Saravane, Kaleum, Sekong, Attapeu, Banlung
-	link = { vic2 = 1363 hoi4 = 10453 hoi4 = 12167 } # Pakche -> Pathoomphone, Stung Treng
+	link = { vic2 = 1362 hoi4 = 1374 hoi4 = 10238 hoi4 = 12210 hoi4 = 7426 hoi4 = 4554 hoi4 = 1577 } # Salavan -> Sanasomboune, Nong, Saravane, Kaleum, Sekong, Attapeu
+	link = { vic2 = 1363 hoi4 = 10453 hoi4 = 1563 } # Pakche -> Pathoomphone, Paksé
 	link = { comment = "# " }
 	link = { comment = "# ## Cambodia" }
 	link = { comment = "# # Cambodia" }
-	link = { vic2 = 1364 hoi4 = 7376 hoi4 = 10289 hoi4 = 7319 hoi4 = 1324 hoi4 = 12260 hoi4 = 4330 hoi4 = 12475 hoi4 = 4639 hoi4 = 12191 } # Oudong -> Phnom Penh, Kampong Speu, Kampong Chhnang, Kampong Thom, Prey Veng, Suong, Roneam, Kampong Cham, Pursat
+	link = { vic2 = 1364 hoi4 = 7376 hoi4 = 10289 hoi4 = 7319 hoi4 = 1324 hoi4 = 12260 hoi4 = 4330 hoi4 = 12475 hoi4 = 4639 hoi4 = 12191 hoi4 = 12288 } # Oudong -> Phnom Penh, Kampong Speu, Kampong Chhnang, Kampong Thom, Prey Veng, Suong, Roneam, Kampong Cham, Pursat, Svay Rieng
 	link = { vic2 = 1365 hoi4 = 1244 hoi4 = 7292 } # Chanthaburi -> Chanthaburi, Trat
 	link = { vic2 = 1366 hoi4 = 10177 hoi4 = 10134 hoi4 = 4251 hoi4 = 10467 hoi4 = 4302 hoi4 = 12460 hoi4 = 12447 hoi4 = 5236 } # Battambang -> Battambang, Pailin, Poipet, Samraong, Siem Reap, Anlong Veng, Preah Vihear, (Lake)
 	link = { vic2 = 1367 hoi4 = 7432 hoi4 = 7404 hoi4 = 4359 hoi4 = 1353 hoi4 = 10317 } # Kampot -> Sihanoukville, Sre Ambel, Koh Kong, Samlout, Kampot
-	link = { vic2 = 1368 hoi4 = 7645 hoi4 = 12150 hoi4 = 10204 hoi4 = 1620 } # Stongtreng -> Kratié, Saen Monourom, Memot, Kaoh Nheaek
+	link = { vic2 = 1368 hoi4 = 7645 hoi4 = 12150 hoi4 = 10204 hoi4 = 1620 hoi4 = 12167 hoi4 = 4596 } # Stongtreng -> Kratié, Saen Monourom, Memot, Kaoh Nheaek, Stung Treng, Banlung
 	link = { comment = "# " }
 	link = { comment = "# ## Vietnam" }
 	link = { comment = "# # Tonkin" }
@@ -2963,7 +2963,7 @@
 	link = { comment = "# # Saigon" }
 	link = { vic2 = 1380 hoi4 = 4401 hoi4 = 12232 hoi4 = 1396 } # Saigon -> Saïgon, Vung Tau, My Tho
 	link = { vic2 = 1381 hoi4 = 10232 hoi4 = 12204 hoi4 = 1285 hoi4 = 7271 hoi4 = 12176 hoi4 = 7347 hoi4 = 7238 } # Dong Quai -> Phan Thiet, Phan Rang, Nha Trang, Da Lat, Lien Nghia, Bao Loc, Dong Xoai
-	link = { vic2 = 1382 hoi4 = 4223 hoi4 = 10261 hoi4 = 12288 hoi4 = 4284 hoi4 = 12133 } # Hatien -> Long Xuyen, Tay Ninh, Svay Rieng, Rach Gia, Can Tho
+	link = { vic2 = 1382 hoi4 = 4223 hoi4 = 10261 hoi4 = 4284 hoi4 = 12133 } # Hatien -> Long Xuyen, Tay Ninh, Rach Gia, Can Tho
 	link = { vic2 = 1383 hoi4 = 4341 hoi4 = 7331 hoi4 = 7303 hoi4 = 1423 } # Vinhlong -> Ca Mau, Soc Trang, Tra Vinh, Vinh Long
 	link = { comment = "# " }
 	link = { comment = "# ## Malaysia" }
