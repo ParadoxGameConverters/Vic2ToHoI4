@@ -5,7 +5,7 @@
 
 #include "HOI4World/States/HoI4States.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
-#include "V2World/Ai/AIStrategy.h"
+#include "V2World/Ai/AI.h"
 #include <vector>
 
 
@@ -18,12 +18,12 @@ class AIStrategy
   public:
 	explicit AIStrategy(const std::string& strategyType,
 		 const std::string& HoI4Tag,
-		 const std::pair<int, std::vector<int>>& vic2StrategyData,
+		 const Vic2::StrategyData& data,
 		 const States& states,
 		 const Mappers::ProvinceMapper& provinceMapper);
 	AIStrategy(const Vic2::AIStrategy& oldStrategy, const std::string& HoI4Tag);
 
-	void determineClaimedState(const std::pair<int, std::vector<int>>& vic2StrategyData,
+	void determineClaimedState(const std::vector<int>& provinces,
 		 const States& states,
 		 const Mappers::ProvinceMapper& provinceMapper);
 

@@ -4,13 +4,13 @@
 
 HoI4::AIStrategy::AIStrategy(const std::string& strategyType,
 	 const std::string& HoI4Tag,
-	 const std::pair<int, std::vector<int>>& vic2StrategyData,
+	 const Vic2::StrategyData& data,
 	 const States& states,
 	 const Mappers::ProvinceMapper& provinceMapper):
 	 type(strategyType),
-	 id(HoI4Tag), value(vic2StrategyData.first)
+	 id(HoI4Tag), value(data.value)
 {
-	determineClaimedState(vic2StrategyData, states, provinceMapper);
+	determineClaimedState(data.provinces, states, provinceMapper);
 }
 
 
@@ -34,11 +34,11 @@ HoI4::AIStrategy::AIStrategy(const Vic2::AIStrategy& oldStrategy, const std::str
 }
 
 
-void HoI4::AIStrategy::determineClaimedState(const std::pair<int, std::vector<int>>& vic2StrategyData,
+void HoI4::AIStrategy::determineClaimedState(const std::vector<int>& provinces,
 	 const States& states,
 	 const Mappers::ProvinceMapper& provinceMapper)
 {
-	for (const auto& vic2Province: vic2StrategyData.second)
+	for (const auto& vic2Province: provinces)
 	{
 		for (const auto& hoi4Province: provinceMapper.getVic2ToHoI4ProvinceMapping(vic2Province))
 		{

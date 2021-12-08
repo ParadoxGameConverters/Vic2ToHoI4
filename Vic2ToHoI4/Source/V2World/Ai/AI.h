@@ -11,6 +11,12 @@
 namespace Vic2
 {
 
+struct StrategyData
+{
+	int value;
+	std::vector<int> provinces;
+};
+
 class AI
 {
   public:
@@ -25,7 +31,7 @@ class AI
   private:
 	std::vector<AIStrategy> aiStrategies;
 	std::vector<AIStrategy> conquerStrategies;
-	std::map<std::string, std::pair<int, std::vector<int>>> consolidatedConquerStrategies; // tag -> value, provinces
+	std::map<std::string, StrategyData> consolidatedConquerStrategies;
 };
 
 } // namespace Vic2
