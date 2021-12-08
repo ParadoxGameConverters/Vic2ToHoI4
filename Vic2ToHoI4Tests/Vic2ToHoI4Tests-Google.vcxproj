@@ -81,6 +81,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyNodes.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\DynamicModifiers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\Modifier.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp" />
@@ -820,6 +821,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\CoastalProvincesBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Building.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Province.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.h" />
@@ -828,6 +830,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegion.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyArea.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyNodes.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZone.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZones.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />
@@ -1748,6 +1751,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;$(SolutionDir)$(Platform)\$(Configuration)\ZipLib.lib;$(SolutionDir)$(Platform)\$(Configuration)\bzip2.lib;$(SolutionDir)$(Platform)\$(Configuration)\lzma.lib;$(SolutionDir)$(Platform)\$(Configuration)\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

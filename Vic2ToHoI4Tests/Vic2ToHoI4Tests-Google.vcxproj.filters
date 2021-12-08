@@ -1613,6 +1613,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyNodes.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -3194,6 +3197,12 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZones.h">
       <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyNodes.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
