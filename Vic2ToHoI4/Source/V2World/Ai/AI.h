@@ -34,6 +34,8 @@ class AI
 	std::map<std::string, StrategyData> consolidatedConquerStrategies;
 };
 
+bool operator==(const StrategyData& one, const StrategyData& other);
+
 } // namespace Vic2
 
 

@@ -30,3 +30,9 @@ void Vic2::AI::consolidateConquerStrategies(const std::map<int, std::shared_ptr<
 		}
 	}
 }
+
+
+bool Vic2::operator==(const StrategyData& one, const StrategyData& other)
+{
+	return one.value == other.value && one.provinces == other.provinces;
+}
