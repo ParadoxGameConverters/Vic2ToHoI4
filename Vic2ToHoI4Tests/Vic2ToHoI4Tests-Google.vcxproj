@@ -602,7 +602,7 @@
     <CopyFileToFolders Include="TestFiles\v2game.exe">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2Windows;$(OutDir)/Vic2</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2Windows</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2Windows;$(OutDir)/Vic2</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\definition.csv">
       <FileType>Document</FileType>
@@ -1498,6 +1498,7 @@
     <CopyFileToFolders Include="TestFiles\launcher-settings.json">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Windows;$(OutDir)/HoI4Linux</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/HoI4Windows;$(OutDir)/HoI4Linux</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Maps\adjacencies.csv">
       <FileType>Document</FileType>
@@ -1506,8 +1507,8 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Vic2World\Map\definition.csv">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\V2World\map</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\V2World\map</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\ProvinceDefinition\map</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\ProvinceDefinition\map</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinceAdjacencies.csv">
       <FileType>Document</FileType>
