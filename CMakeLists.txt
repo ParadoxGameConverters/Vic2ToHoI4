@@ -786,7 +786,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/World/TestWorld.v2" "${TEST_OUTPUT_DIR
 configure_file("Vic2ToHoI4Tests/TestFiles/World/test_localisations.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/localisation/test_localisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/TWO.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/TWO.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Vic2World/EU4ToVic2Data/botanical_expedition.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/test_directory/common/botanical_expedition.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/Vic2World/Map/definition.csv" "${TEST_OUTPUT_DIRECTORY}/V2World/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Vic2World/Map/definition.csv" "${TEST_OUTPUT_DIRECTORY}/ProvinceDefinition/map/definition.csv" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2/v2game.exe" COPYONLY)
