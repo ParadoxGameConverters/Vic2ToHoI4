@@ -133,7 +133,6 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	{
 		onActionsFile << "\t\t\t" << tag << " = { country_event = " << focusId << ".1 }\n";
 	}
-	onActionsFile << "\t\t\tevery_country = { country_event = nsb_tank_designs.1 }\n";
 	onActionsFile << "\t\t}\n";
 	onActionsFile << "\t}\n";
 
