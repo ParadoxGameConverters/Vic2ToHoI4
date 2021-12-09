@@ -5,14 +5,17 @@
 
 #include "AIStrategy.h"
 #include "V2World/Provinces/Province.h"
-#include <map>
-#include <string>
-#include <vector>
 
 
 
 namespace Vic2
 {
+
+struct StrategyData
+{
+	int value;
+	std::vector<int> provinces;
+};
 
 class AI
 {
@@ -28,8 +31,10 @@ class AI
   private:
 	std::vector<AIStrategy> aiStrategies;
 	std::vector<AIStrategy> conquerStrategies;
-	std::map<std::string, int> consolidatedConquerStrategies;
+	std::map<std::string, StrategyData> consolidatedConquerStrategies;
 };
+
+bool operator==(const StrategyData& one, const StrategyData& other);
 
 } // namespace Vic2
 

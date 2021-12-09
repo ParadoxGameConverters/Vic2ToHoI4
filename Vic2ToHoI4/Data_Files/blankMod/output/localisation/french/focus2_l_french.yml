@@ -61,7 +61,6 @@
  neighbor_war:0 "Guerre de voisin"
  neighbor_war_desc:0 "Il ne reste plus qu'à faire une déclaration de guerre formelle."
  neighbor_war_NF_threat:0 "Guerre de voisin"
- potential_take_state_target_tooltip:0 "Possède nos revendications"
  not_allied_or_subject_of_one_another_tooltip:0 "Pas des alliés ou des sujets l'un de l'autre"
  in_weak_faction_tooltip:0 "Faction plus faible que la nôtre"
  reclaim_cores:0 "Récupérer les cœurs"

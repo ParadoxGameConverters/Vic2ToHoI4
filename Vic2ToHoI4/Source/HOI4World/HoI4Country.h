@@ -299,7 +299,9 @@ class Country
 
 	void convertStrategies(const Mappers::CountryMapper& countryMap,
 		 const Vic2::Country& sourceCountry,
-		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+		 const States& states,
+		 const Mappers::ProvinceMapper& provinceMapper);
 
   private:
 	void determineFilename();

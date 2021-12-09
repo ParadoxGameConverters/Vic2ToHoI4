@@ -61,7 +61,6 @@
  neighbor_war:0 "Wojna sąsiadów"
  neighbor_war_desc:0 "Jedyne, co pozostaje do zrobienia, to formalne wypowiedzenie wojny."
  neighbour_war_NF_threat:0 "Wojna sąsiadów"
- potential_take_state_target_tooltip:0 "Jest właścicielem naszych roszczeń"
  not_allied_or_subject_of_one_another_tooltip:0 "Nie są sojusznikami ani poddanymi siebie nawzajem"
  in_weak_faction_tooltip:0 "Frakcja słabsza niż nasza"
  reclaim_cores:0 "Odzyskaj region narodowy"

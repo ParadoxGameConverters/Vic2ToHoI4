@@ -672,9 +672,11 @@ void HoI4::Country::convertRelations(const Mappers::CountryMapper& countryMap,
 
 void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap,
 	 const Vic2::Country& sourceCountry,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const States& states,
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
-	for (const auto& [vic2Tag, strategy]: sourceCountry.getAI().getConsolidatedStrategies())
+	for (const auto& [vic2Tag, data]: sourceCountry.getAI().getConsolidatedStrategies())
 	{
 		if (const auto& HoI4Tag = countryMap.getHoI4Tag(vic2Tag); HoI4Tag && countries.contains(*HoI4Tag))
 		{
@@ -682,7 +684,7 @@ void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap,
 			{
 				continue;
 			}
-			HoI4::AIStrategy newStrategy("conquer", *HoI4Tag, strategy);
+			HoI4::AIStrategy newStrategy("conquer", *HoI4Tag, data, states, provinceMapper);
 			conquerStrategies.push_back(newStrategy);
 		}
 	}
@@ -1601,11 +1603,11 @@ bool HoI4::Country::hasMonarchIdea() const
 
 const bool HoI4::Country::isEligibleEnemy(std::string target)
 {
-	std::set<std::string> allies;
+	auto allAllies = allies;
 	if (faction)
 	{
-		allies = faction->getLeader()->getAllies();
-		allies.insert(faction->getLeader()->getTag());
+		allAllies.insert(faction->getLeader()->getAllies().begin(), faction->getLeader()->getAllies().end());
+		allAllies.insert(faction->getLeader()->getTag());
 	}
 	std::string puppetMasterTag;
 	if (puppetMaster)
@@ -1613,7 +1615,7 @@ const bool HoI4::Country::isEligibleEnemy(std::string target)
 		puppetMasterTag = puppetMaster->getTag();
 	}
 
-	return !allies.contains(target) && !puppets.contains(target) && target != puppetMasterTag;
+	return !allAllies.contains(target) && !puppets.contains(target) && target != puppetMasterTag;
 }
 
 std::optional<std::string> HoI4::Country::getDominionTag(const std::string& region)

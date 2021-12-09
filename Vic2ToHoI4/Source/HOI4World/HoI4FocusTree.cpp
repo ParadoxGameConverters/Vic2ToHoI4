@@ -2057,7 +2057,6 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 	 const std::set<std::string>& majorIdeologies,
 	 const std::map<std::string, std::set<int>>& coreHolders,
 	 const std::map<int, HoI4::State>& states,
-	 const std::map<std::string, std::set<int>>& potentialClaims,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	std::string tag = theCountry->getTag();
@@ -2090,21 +2089,21 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 		{
 			continue;
 		}
+		const auto& claimsHolders = determineWarTargets(theCountry, theCountry->getClaimedStates(), states);
+		std::optional<int> newClaim;
+		if (!claimsHolders.contains(strategy.getID()))
+		{
+			newClaim = strategy.getClaimedState();
+		}
+		if (!newClaim)
+		{
+			continue;
+		}
 
 		conquerTags.insert(strategy.getID());
 		numWarsWithNeighbors++;
 
 		const auto& truceUntil = theCountry->getTruceUntil(strategy.getID());
-		std::optional<int> newClaim;
-		const auto& claimsHolders = determineWarTargets(theCountry, theCountry->getClaimedStates(), states);
-		if (!claimsHolders.contains(strategy.getID()) && potentialClaims.contains(strategy.getID()))
-		{
-			const auto& borderStates = potentialClaims.at(strategy.getID());
-			if (!borderStates.empty())
-			{
-				newClaim = *borderStates.begin();
-			}
-		}
 		if (const auto& originalFocus = loadedFocuses.find("border_disputes"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
@@ -2118,17 +2117,9 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			{
 				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
 			}
-			if (newClaim)
-			{
-				const auto& stateId = std::to_string(*newClaim);
-				newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
-				newFocus->updateFocusElement(newFocus->completionReward, "#ADDCLAIM", "add_state_claim = " + stateId);
-			}
-			else
-			{
-				newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "potential_take_state_target = yes");
-				newFocus->removePlaceholder(newFocus->completionReward, "#ADDCLAIM");
-			}
+			const auto& stateId = std::to_string(*newClaim);
+			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
+			newFocus->updateFocusElement(newFocus->completionReward, "#ADDCLAIM", "add_state_claim = " + stateId);
 			newFocus->xPos = nextFreeColumn;
 			newFocus->yPos = 0;
 			newFocus->updateFocusElement(newFocus->aiWillDo, "$AICHANCE", to_string(aiChance));

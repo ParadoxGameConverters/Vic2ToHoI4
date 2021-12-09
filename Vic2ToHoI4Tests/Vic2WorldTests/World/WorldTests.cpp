@@ -604,8 +604,10 @@ TEST(Vic2World_World_WorldTests, ConquerStrategiesAreConsolidated)
 					*Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
+
+	const Vic2::StrategyData data{.value = 182, .provinces = std::vector<int>{2}};
 	ASSERT_THAT(world->getCountries().at("ONE").getAI().getConsolidatedStrategies(),
-		 testing::UnorderedElementsAre(std::make_pair(std::string("TWO"), 182)));
+		 testing::UnorderedElementsAre(std::make_pair(std::string("TWO"), data)));
 }
 
 

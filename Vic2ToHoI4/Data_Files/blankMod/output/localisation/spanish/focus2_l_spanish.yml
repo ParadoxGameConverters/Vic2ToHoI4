@@ -61,7 +61,6 @@
  neighbor_war:0 "Guerra de vecinos"
  neighbor_war_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra."
  neighbour_war_NF_threat:0 "Guerra de vecinos"
- potential_take_state_target_tooltip:0 "Posee nuestros derechos"
  not_allied_or_subject_of_one_another_tooltip:0 "No son aliados ni súbditos unos de otros"
  in_weak_faction_tooltip:0 "Facción más débil que la nuestra"
  reclaim_cores:0 "Reclamar territorios esenciales"

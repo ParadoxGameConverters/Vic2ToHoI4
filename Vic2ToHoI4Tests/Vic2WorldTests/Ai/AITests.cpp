@@ -122,5 +122,5 @@ TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesProperlyConsolidated)
 
 	newVic2Ai->consolidateConquerStrategies(provinceMap);
 
-	ASSERT_EQ(5, newVic2Ai->getConsolidatedStrategies().find("TAG")->second);
+	ASSERT_EQ(5, newVic2Ai->getConsolidatedStrategies().find("TAG")->second.value);
 }

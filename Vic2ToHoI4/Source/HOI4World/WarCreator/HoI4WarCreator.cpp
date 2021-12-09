@@ -920,28 +920,11 @@ void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
 			 theWorld->getStates(),
 			 hoi4Localisations);
 
-		std::map<std::string, std::set<int>> potentialClaims;
-		for (const auto& target: country->getConquerStrategies())
-		{
-			const auto& targetCountry = theWorld->findCountry(target.getID());
-			if (!targetCountry)
-			{
-				continue;
-			}
-			const auto& borderStates = mapUtils.findBorderStates(*country,
-				 *targetCountry,
-				 theWorld->getProvinceToStateIDMap(),
-				 theMapData,
-				 provinceDefinitions);
-			potentialClaims[target.getID()] = borderStates;
-		}
-
 		const auto& conquerTags = focusTree->addConquerBranch(country,
 			 numWarsWithNeighbors,
 			 theWorld->getMajorIdeologies(),
 			 coreHolders,
 			 theWorld->getStates(),
-			 potentialClaims,
 			 hoi4Localisations);
 
 		if (numWarsWithNeighbors > 0)
