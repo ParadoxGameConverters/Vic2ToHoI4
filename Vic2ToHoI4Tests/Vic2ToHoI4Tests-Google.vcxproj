@@ -533,6 +533,7 @@
     <ClCompile Include="MapsTests\MapDataTests.cpp" />
     <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp" />
     <ClCompile Include="MapsTests\ProvincePointsTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Map\OutSupplyNodesTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AITests.cpp" />
     <ClCompile Include="Vic2WorldTests\Countries\CommonCountriesDataFactoryTests.cpp" />

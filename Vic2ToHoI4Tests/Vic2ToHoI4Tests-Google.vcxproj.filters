@@ -1619,6 +1619,9 @@
     <ClCompile Include="HoI4WorldTests\Map\SupplyNodesTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
+    <ClCompile Include="OutHoI4Tests\Map\OutSupplyNodesTests.cpp">
+      <Filter>OutHoI4Tests\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2172,6 +2175,12 @@
     </Filter>
     <Filter Include="TestFiles\Vic2\Map">
       <UniqueIdentifier>{d233c4b9-7570-4cd1-ba23-9d2088973870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoI4Tests">
+      <UniqueIdentifier>{b1891784-6f49-4deb-9c5f-6601424aa1f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoI4Tests\Map">
+      <UniqueIdentifier>{2388c5ed-61a7-4ddb-9000-d93bd3dddce8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
