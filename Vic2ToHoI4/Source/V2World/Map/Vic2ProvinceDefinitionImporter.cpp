@@ -37,10 +37,6 @@ Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& pat
 			continue;
 		}
 		const int provinceNumber = stoi(provinceNumberString);
-		if (provinceNumber == 0)
-		{
-			continue;
-		}
 		line = line.substr(pos + 1, line.length());
 
 		pos = line.find_first_of(';');

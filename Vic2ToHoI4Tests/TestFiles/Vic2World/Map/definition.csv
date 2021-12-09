@@ -1,5 +1,6 @@
 province;red;green;blue;x;x
 1;136;0;21;Test 1
+1;136;0;22;Test 1 repeated (should be dropped)
 2;237;28;36;Test 2
 3;34;177;76;Test 3
 4;255;127;39;Test 4
