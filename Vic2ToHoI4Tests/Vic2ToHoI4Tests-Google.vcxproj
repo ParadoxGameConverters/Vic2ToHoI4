@@ -178,6 +178,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp" />
@@ -436,6 +437,8 @@
     <ClCompile Include="HoI4WorldTests\Map\HoI4ProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ImpassableProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\MapRegionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\OutRailwayTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\RailwayTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ResourcesLinkTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\SupplyAreaTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\SupplyNodesTests.cpp" />
@@ -994,6 +997,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuilding.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuildings.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.h" />
