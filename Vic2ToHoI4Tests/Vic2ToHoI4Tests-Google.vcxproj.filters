@@ -1631,6 +1631,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailways.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railways.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="OutHoI4Tests\Map\OutRailwaysTests.cpp">
+      <Filter>OutHoI4Tests\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -3227,6 +3236,15 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.h">
       <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailways.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railway.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railways.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

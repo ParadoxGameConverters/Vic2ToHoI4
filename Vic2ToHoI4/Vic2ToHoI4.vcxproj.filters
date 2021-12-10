@@ -1372,6 +1372,12 @@
     <ClCompile Include="Source\OutHoi4\Map\OutRailway.cpp">
       <Filter>OutHoi4\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Map\Railways.cpp">
+      <Filter>HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Map\OutRailways.cpp">
+      <Filter>OutHoi4\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2683,6 +2689,12 @@
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Map\OutRailway.h">
+      <Filter>OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Map\Railways.h">
+      <Filter>HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Map\OutRailways.h">
       <Filter>OutHoi4\Map</Filter>
     </ClInclude>
   </ItemGroup>

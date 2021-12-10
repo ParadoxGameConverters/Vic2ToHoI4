@@ -80,6 +80,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railways.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyNodes.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\DynamicModifiers.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailways.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp" />
@@ -536,6 +538,7 @@
     <ClCompile Include="MapsTests\MapDataTests.cpp" />
     <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp" />
     <ClCompile Include="MapsTests\ProvincePointsTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Map\OutRailwaysTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Map\OutSupplyNodesTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AITests.cpp" />
@@ -830,6 +833,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railway.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railways.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ResourcesLink.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegion.h" />
@@ -998,6 +1003,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuilding.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuildings.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailways.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.h" />

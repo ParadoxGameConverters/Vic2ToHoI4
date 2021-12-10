@@ -8,6 +8,7 @@
 #include "Diplomacy/AIPeaces.h"
 #include "Events/Events.h"
 #include "GameRules/GameRules.h"
+#include "HOI4World/Map/Railway.h"
 #include "HoI4Country.h"
 #include "HoI4Localisation.h"
 #include "Ideas/Ideas.h"
@@ -88,6 +89,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getSupplyZones() const { return *supplyZones; }
 	[[nodiscard]] const auto& getBuildings() const { return *buildings; }
 	[[nodiscard]] const auto& getSupplyNodes() const { return supplyNodes_; }
+	[[nodiscard]] const auto& getRailways() const { return railways_; }
 	[[nodiscard]] const auto& getDecisions() const { return *theDecisions; }
 	[[nodiscard]] auto& getEvents() { return *events; }
 	[[nodiscard]] const auto& getEvents() const { return *events; }
@@ -231,6 +233,7 @@ class World: commonItems::parser
 	std::unique_ptr<StrategicRegions> strategicRegions;
 	Buildings* buildings = nullptr;
 	std::set<int> supplyNodes_;
+	std::vector<Railway> railways_;
 
 	std::map<std::string, std::shared_ptr<HoI4::Country>> countries;
 	std::map<std::string, std::shared_ptr<HoI4::Country>> landedCountries;

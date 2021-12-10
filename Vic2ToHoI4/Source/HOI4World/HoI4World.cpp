@@ -7,6 +7,7 @@
 #include "Events/Events.h"
 #include "Events/GovernmentInExileEvent.h"
 #include "HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
+#include "HOI4World/Map/Railways.h"
 #include "HOI4World/Map/SupplyNodes.h"
 #include "HoI4Country.h"
 #include "HoI4FocusTree.h"
@@ -140,6 +141,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
 	supplyNodes_ = determineSupplyNodes(sourceWorld.getProvinces(), provinceMapper);
+	railways_ = determineRailways();
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";
 	if (theConfiguration.getDebug())
