@@ -258,6 +258,7 @@ class World: commonItems::parser
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 
 	CoastalProvinces theCoastalProvinces;
+	std::unique_ptr<Maps::ProvinceDefinitions> provinceDefinitions;
 	std::unique_ptr<Maps::MapData> theMapData;
 
 	std::unique_ptr<ScriptedEffects> scriptedEffects;
