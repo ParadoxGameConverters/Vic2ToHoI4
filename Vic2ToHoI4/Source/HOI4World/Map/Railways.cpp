@@ -27,6 +27,12 @@ std::shared_ptr<Vic2::Province> getValidVic2Province(int provinceNum,
 }
 
 
+int getRailwayLevel(int provinceOneRailLevel, int provinceTwoRailLevel)
+{
+	return (std::max((provinceOneRailLevel - 3), 0) + std::max((provinceTwoRailLevel - 3), 0)) / 2;
+}
+
+
 std::optional<int> getHoI4ProvinceNumber(int Vic2ProvinceNum, const Mappers::ProvinceMapper& provinceMapper)
 {
 	const auto& HoI4ProvinceNumbers = provinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNum);
@@ -123,7 +129,7 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 				continue;
 			}
 
-			const int railwayLevel = (Vic2Province->getRailLevel() + Vic2NeighborProvince->getRailLevel()) / 4;
+			const int railwayLevel = getRailwayLevel(Vic2Province->getRailLevel(), Vic2NeighborProvince->getRailLevel());
 			if (railwayLevel < 1)
 			{
 				continue;
