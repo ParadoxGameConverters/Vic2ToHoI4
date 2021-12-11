@@ -9,6 +9,42 @@ using HoI4::Railway;
 namespace
 {
 
+std::shared_ptr<Vic2::Province> getValidVic2Province(int provinceNum,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces)
+{
+	const auto& itr = Vic2Provinces.find(provinceNum);
+	if (itr == Vic2Provinces.end())
+	{
+		return nullptr;
+	}
+	const auto& Vic2NeighborProvince = itr->second;
+	if (!Vic2NeighborProvince->isLandProvince())
+	{
+		return nullptr;
+	}
+
+	return Vic2NeighborProvince;
+}
+
+
+std::optional<int> getHoI4ProvinceNumber(int Vic2ProvinceNum, const Mappers::ProvinceMapper& provinceMapper)
+{
+	const auto& HoI4ProvinceNumbers = provinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNum);
+	if (HoI4ProvinceNumbers.empty())
+	{
+		return std::nullopt;
+	}
+
+	return HoI4ProvinceNumbers[0];
+}
+
+
+bool HoI4ProvinceNumbersAreValid(std::optional<int> firstNumber, std::optional<int> secondNumber)
+{
+	return firstNumber && secondNumber && *firstNumber == *secondNumber;
+}
+
+
 std::optional<std::vector<int>> findPath(int startProvince,
 	 int endProvince,
 	 const Maps::MapData& HoI4MapData,
@@ -81,13 +117,8 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 			}
 			processedPairs.insert(std::make_pair(Vic2ProvinceNum, Vic2NeighborProvinceNum));
 
-			const auto& itr = Vic2Provinces.find(Vic2NeighborProvinceNum);
-			if (itr == Vic2Provinces.end())
-			{
-				continue;
-			}
-			const auto& Vic2NeighborProvince = itr->second;
-			if (!Vic2NeighborProvince->isLandProvince())
+			const auto& Vic2NeighborProvince = getValidVic2Province(Vic2NeighborProvinceNum, Vic2Provinces);
+			if (Vic2NeighborProvince == nullptr)
 			{
 				continue;
 			}
@@ -98,27 +129,15 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 				continue;
 			}
 
-			const auto& HoI4ProvinceNumbers = provinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNum);
-			if (HoI4ProvinceNumbers.empty())
-			{
-				continue;
-			}
-			const int HoI4ProvinceNumber = HoI4ProvinceNumbers[0];
-
-			const auto& HoI4NeighborProvinceNumbers = provinceMapper.getVic2ToHoI4ProvinceMapping(Vic2NeighborProvinceNum);
-			if (HoI4NeighborProvinceNumbers.empty())
-			{
-				continue;
-			}
-			const int HoI4NeighborProvinceNumber = HoI4NeighborProvinceNumbers[0];
-
-			if (HoI4ProvinceNumber == HoI4NeighborProvinceNumber)
+			const auto HoI4ProvinceNumber = getHoI4ProvinceNumber(Vic2ProvinceNum, provinceMapper);
+			const auto HoI4NeighborProvinceNumber = getHoI4ProvinceNumber(Vic2NeighborProvinceNum, provinceMapper);
+			if (!HoI4ProvinceNumbersAreValid(HoI4ProvinceNumber, HoI4NeighborProvinceNumber))
 			{
 				continue;
 			}
 
 			if (const auto possiblePath =
-					  findPath(HoI4ProvinceNumber, HoI4NeighborProvinceNumber, HoI4MapData, HoI4ProvinceDefinitions);
+					  findPath(*HoI4ProvinceNumber, *HoI4NeighborProvinceNumber, HoI4MapData, HoI4ProvinceDefinitions);
 				 possiblePath)
 			{
 				Railway railway(railwayLevel, *possiblePath);
