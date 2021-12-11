@@ -17,13 +17,13 @@ std::shared_ptr<Vic2::Province> getValidVic2Province(int provinceNum,
 	{
 		return nullptr;
 	}
-	const auto& Vic2NeighborProvince = itr->second;
-	if (!Vic2NeighborProvince->isLandProvince())
+	const auto& province = itr->second;
+	if (!province->isLandProvince())
 	{
 		return nullptr;
 	}
 
-	return Vic2NeighborProvince;
+	return province;
 }
 
 
