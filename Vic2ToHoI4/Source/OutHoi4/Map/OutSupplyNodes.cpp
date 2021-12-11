@@ -6,10 +6,11 @@
 
 void HoI4::outputSupplyNodes(const std::string& path, const std::set<int>& SupplyNodes)
 {
-	std::ofstream out(path + "/map/supply_nodes.txt");
+	const auto filePath = path + "/map/supply_nodes.txt";
+	std::ofstream out(filePath);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not open " + path + "/map/supply_nodes.txt");
+		throw std::runtime_error("Could not open " + filePath);
 	}
 
 	for (const auto& supplyNode: SupplyNodes)

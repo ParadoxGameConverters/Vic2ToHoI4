@@ -6,10 +6,11 @@
 
 void HoI4::outputRailways(const std::string& path, const std::vector<Railway>& railways)
 {
-	std::ofstream out(path + "/map/railways.txt");
+	const auto filePath = path + "/map/railways.txt";
+	std::ofstream out(filePath);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not open " + path + "/map/railways.txt");
+		throw std::runtime_error("Could not open " + filePath);
 	}
 
 	for (const auto& railway: railways)

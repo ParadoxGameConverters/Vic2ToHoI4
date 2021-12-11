@@ -6,10 +6,11 @@
 Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& path,
 	 const std::map<int, std::shared_ptr<Province>>& provinces)
 {
-	std::ifstream definitions(path + "/map/definition.csv");
+	const auto filepath = path + "/map/definition.csv";
+	std::ifstream definitions(filepath);
 	if (!definitions.is_open())
 	{
-		throw std::runtime_error("Could not open " + path + "/map/definition.csv");
+		throw std::runtime_error("Could not open " + filepath);
 	}
 
 	std::set<int> landProvinces;
