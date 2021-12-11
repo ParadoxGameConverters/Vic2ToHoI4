@@ -163,7 +163,9 @@ class World: commonItems::parser
 	void setTrainMultipliers();
 
 	void convertDiplomacy(const Vic2::World& sourceWorld);
-	void convertStrategies(const Vic2::World& sourceWorld);
+	void convertStrategies(const Vic2::World& sourceWorld,
+		 const States& states,
+		 const Mappers::ProvinceMapper& provinceMapper);
 	void convertWars(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper);
 
 	void convertTechs();

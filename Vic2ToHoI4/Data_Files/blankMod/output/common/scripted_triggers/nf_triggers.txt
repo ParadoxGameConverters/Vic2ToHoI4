@@ -50,12 +50,3 @@ not_allies_or_subjects = {
 		ROOT = { NOT = { is_subject_of = PREV } }
 	}
 }
-
-potential_take_state_target = {
-	custom_trigger_tooltip = {
-		tooltip = potential_take_state_target_tooltip
-		hidden_trigger = {
-			any_owned_state = { is_claimed_by = ROOT }
-		}
-	}
-}

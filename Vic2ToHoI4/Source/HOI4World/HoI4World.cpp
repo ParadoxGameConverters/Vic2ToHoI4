@@ -173,7 +173,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
 	convertDiplomacy(sourceWorld);
-	convertStrategies(sourceWorld);
+	convertStrategies(sourceWorld, *states, provinceMapper);
 	convertTechs();
 	Log(LogLevel::Progress) << "56%";
 
@@ -987,14 +987,20 @@ void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 }
 
 
-void HoI4::World::convertStrategies(const Vic2::World& sourceWorld)
+void HoI4::World::convertStrategies(const Vic2::World& sourceWorld,
+	 const States& states,
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	Log(LogLevel::Info) << "\tConverting strategies";
 	for (const auto& country: countries | std::views::values)
 	{
 		if (const auto& sourceCountries = sourceWorld.getCountries(); sourceCountries.contains(country->getOldTag()))
 		{
-			country->convertStrategies(*countryMap, sourceCountries.at(country->getOldTag()), countries);
+			country->convertStrategies(*countryMap,
+				 sourceCountries.at(country->getOldTag()),
+				 countries,
+				 states,
+				 provinceMapper);
 		}
 	}
 }
