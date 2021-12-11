@@ -41,7 +41,7 @@ std::optional<int> getHoI4ProvinceNumber(int Vic2ProvinceNum, const Mappers::Pro
 
 bool HoI4ProvinceNumbersAreValid(std::optional<int> firstNumber, std::optional<int> secondNumber)
 {
-	return firstNumber && secondNumber && *firstNumber == *secondNumber;
+	return firstNumber && secondNumber && *firstNumber != *secondNumber;
 }
 
 
