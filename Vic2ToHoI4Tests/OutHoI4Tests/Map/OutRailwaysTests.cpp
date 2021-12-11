@@ -15,7 +15,7 @@ TEST(OutHoI4_Map_OutRailways, ExceptionThrownOnBadPath)
 }
 
 
-TEST(OutHoI4_Map_OutRailways, SupplyNodesAreOutput)
+TEST(OutHoI4_Map_OutRailways, RailwaysAreOutput)
 {
 	commonItems::TryCreateFolder("OutHoI4Tests");
 	commonItems::TryCreateFolder("OutHoI4Tests/Map");
