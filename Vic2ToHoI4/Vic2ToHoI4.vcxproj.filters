@@ -298,6 +298,9 @@
     <Filter Include="OutHoi4\TankDesigns">
       <UniqueIdentifier>{82f7dabb-696f-4a88-aad3-3a91ce4b0c0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Characters">
+      <UniqueIdentifier>{30a20136-8355-43ea-a549-c7357d784526}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Vic2World\Map">
       <UniqueIdentifier>{39ce1a54-bd26-4db4-aa39-9f99cff21e07}</UniqueIdentifier>
     </Filter>
@@ -2675,6 +2678,12 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\TankDesigns\OutTankUpgrades.h">
       <Filter>OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Characters\Character.h">
+      <Filter>HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Characters\Portrait.h">
+      <Filter>HoI4World\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Map\Vic2ProvinceDefinitionImporter.h">
       <Filter>Vic2World\Map</Filter>

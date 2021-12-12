@@ -510,6 +510,8 @@
     <ClInclude Include="..\common_items\StringUtils.h" />
     <ClInclude Include="..\common_items\targa.h" />
     <ClInclude Include="Source\Configuration.h" />
+    <ClInclude Include="Source\HOI4World\Characters\Character.h" />
+    <ClInclude Include="Source\HOI4World\Characters\Portrait.h" />
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryCategories.h" />
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarRule.h" />
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.h" />

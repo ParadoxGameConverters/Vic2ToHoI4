@@ -1604,6 +1604,9 @@
     <ClCompile Include="MapsTests\MapDataTests.cpp">
       <Filter>MapsTests</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\PortraitTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
     <ClCompile Include="Vic2WorldTests\Map\Vic2ProvinceDefinitionImporterTests.cpp">
       <Filter>Vic2WorldTests\Map</Filter>
     </ClCompile>
@@ -2184,6 +2187,9 @@
     </Filter>
     <Filter Include="TestFiles\Maps">
       <UniqueIdentifier>{afc250e7-f9f8-426c-8026-0baf1832ac55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Characters">
+      <UniqueIdentifier>{7be55b79-0b19-4f60-ba80-74bfe6693176}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vic2WorldTests\Map">
       <UniqueIdentifier>{1ae1a73d-2be0-492b-a96b-1297bf3bb0ce}</UniqueIdentifier>
