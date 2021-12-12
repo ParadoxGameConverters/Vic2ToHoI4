@@ -3,6 +3,38 @@
 
 
 
+namespace
+{
+
+std::optional<int> extractNumber(std::string& string)
+{
+	const auto pos = string.find_first_of(';');
+	if (pos == std::string::npos)
+	{
+		return std::nullopt;
+	}
+
+	const auto provinceNumberString = string.substr(0, pos);
+	string = string.substr(pos + 1, string.length());
+
+	if (provinceNumberString.empty())
+	{
+		return std::nullopt;
+	}
+	try
+	{
+		return std::stoi(provinceNumberString);
+	}
+	catch (...)
+	{
+		return std::nullopt;
+	}
+}
+
+} // namespace
+
+
+
 Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& path,
 	 const std::map<int, std::shared_ptr<Province>>& provinces)
 {
@@ -21,41 +53,43 @@ Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& pat
 	{
 		std::string line;
 		getline(definitions, line);
+		if (line.empty())
+		{
+			break;
+		}
 		if (line.starts_with("province"))
 		{
 			continue;
 		}
 
-		auto pos = line.find_first_of(';');
-		if (pos == std::string::npos)
-		{
-			break;
-		}
-
-		const auto provinceNumberString = line.substr(0, pos);
-		if (provinceNumberString.empty())
+		const auto provinceNumber = extractNumber(line);
+		if (!provinceNumber)
 		{
 			continue;
 		}
-		const int provinceNumber = stoi(provinceNumberString);
-		line = line.substr(pos + 1, line.length());
 
-		pos = line.find_first_of(';');
-		const int red(stoi(line.substr(0, pos)));
-		line = line.substr(pos + 1, line.length());
+		const auto red = extractNumber(line);
+		if (!red)
+		{
+			continue;
+		}
 
-		pos = line.find_first_of(';');
-		const int green(stoi(line.substr(0, pos)));
-		line = line.substr(pos + 1, line.length());
+		const auto green = extractNumber(line);
+		if (!green)
+		{
+			continue;
+		}
 
-		pos = line.find_first_of(';');
-		const int blue(stoi(line.substr(0, pos)));
-		line = line.substr(pos + 1, line.length());
+		const auto blue = extractNumber(line);
+		if (!blue)
+		{
+			continue;
+		}
 
-		auto colorInt = Maps::getIntFromColor(commonItems::Color(std::array{red, green, blue}));
-		colorToProvinceMap.insert(std::make_pair(colorInt, provinceNumber));
+		auto colorInt = Maps::getIntFromColor(commonItems::Color(std::array{*red, *green, *blue}));
+		colorToProvinceMap.insert(std::make_pair(colorInt, *provinceNumber));
 
-		const auto possibleProvince = provinces.find(provinceNumber);
+		const auto possibleProvince = provinces.find(*provinceNumber);
 		if (possibleProvince == provinces.end() || !possibleProvince->second)
 		{
 			continue;
@@ -63,11 +97,11 @@ Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& pat
 
 		if (possibleProvince->second->isLandProvince())
 		{
-			landProvinces.insert(provinceNumber);
+			landProvinces.insert(*provinceNumber);
 		}
 		else
 		{
-			seaProvinces.insert(provinceNumber);
+			seaProvinces.insert(*provinceNumber);
 		}
 	}
 
