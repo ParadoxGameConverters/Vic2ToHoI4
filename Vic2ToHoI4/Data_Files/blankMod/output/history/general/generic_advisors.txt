@@ -14,6 +14,12 @@ every_possible_country = {
 		advisor = {
 			slot = political_advisor
 			traits = { communist_revolutionary }
+			available = {
+				if = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
 			ai_will_do = {
 				factor = 0
 			}
@@ -36,6 +42,12 @@ every_possible_country = {
 		advisor = {
 			slot = political_advisor
 			traits = { democratic_reformer }
+			available = {
+				if = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
 			ai_will_do = {
 				factor = 0
 			}
@@ -58,6 +70,12 @@ every_possible_country = {
 		advisor = {
 			slot = political_advisor
 			traits = { fascist_demagogue }
+			available = {
+				if = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}				
+			}
 			ai_will_do = {
 				factor = 0
 			}
