@@ -159,6 +159,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Maps\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Maps\ProvincePoints.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutPortrait.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
@@ -539,6 +540,7 @@
     <ClCompile Include="MapsTests\MapDataTests.cpp" />
     <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp" />
     <ClCompile Include="MapsTests\ProvincePointsTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Characters\OutPortraitTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Map\OutRailwaysTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Map\OutSupplyNodesTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
@@ -998,6 +1000,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutPortrait.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.h" />
