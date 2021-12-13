@@ -245,6 +245,7 @@
     <ClCompile Include="Source\Maps\ProvinceDefinitions.cpp" />
     <ClCompile Include="Source\Maps\ProvincePoints.cpp" />
     <ClCompile Include="Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
+    <ClCompile Include="Source\OutHoi4\Characters\OutCharacter.cpp" />
     <ClCompile Include="Source\OutHoi4\Characters\OutPortrait.cpp" />
     <ClCompile Include="Source\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
     <ClCompile Include="Source\OutHoi4\CountryCategories\OutCountryCategory.cpp" />
@@ -654,6 +655,7 @@
     <ClInclude Include="Source\Maps\ProvinceDefinitions.h" />
     <ClInclude Include="Source\Maps\ProvincePoints.h" />
     <ClInclude Include="Source\OutHoi4\AiStrategy\OutAiStrategy.h" />
+    <ClInclude Include="Source\OutHoi4\Characters\OutCharacter.h" />
     <ClInclude Include="Source\OutHoi4\Characters\OutPortrait.h" />
     <ClInclude Include="Source\OutHoi4\CountryCategories\OutCountryCategories.h" />
     <ClInclude Include="Source\OutHoi4\CountryCategories\OutCountryCategory.h" />

@@ -1372,6 +1372,9 @@
     <ClCompile Include="Source\OutHoi4\Characters\OutPortrait.cpp">
       <Filter>OutHoi4\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Characters\OutCharacter.cpp">
+      <Filter>OutHoi4\Characters</Filter>
+    </ClCompile>
     <ClCompile Include="Source\V2World\Map\Vic2ProvinceDefinitionImporter.cpp">
       <Filter>Vic2World\Map</Filter>
     </ClCompile>
@@ -2698,6 +2701,9 @@
       <Filter>HoI4World\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Characters\OutPortrait.h">
+      <Filter>OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Characters\OutCharacter.h">
       <Filter>OutHoi4\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Map\Vic2ProvinceDefinitionImporter.h">
