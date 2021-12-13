@@ -261,15 +261,13 @@ void Maps::MapData::importAdjacencies(const std::string& path)
 
 std::set<int> Maps::MapData::getNeighbors(const int province) const
 {
-	if (const auto neighbors = provinceNeighbors.find(province); neighbors != provinceNeighbors.end())
+	const auto neighbors = provinceNeighbors.find(province);
+	if (neighbors == provinceNeighbors.end())
 	{
-		return neighbors->second;
+		return {};
 	}
-	else
-	{
-		std::set<int> empty;
-		return empty;
-	}
+
+	return neighbors->second;
 }
 
 
@@ -303,37 +301,28 @@ std::optional<Maps::Point> Maps::MapData::getAnyBorderCenter(const int province)
 	}
 
 	const auto border = bordersWithNeighbors->second.begin();
-	if (border == bordersWithNeighbors->second.end())
-	{
-		Log(LogLevel::Warning) << "Province " << province << " has no borders.";
-		return std::nullopt;
-	}
-
+	// if a province has borders, by definition they're with some number of neighbors and of some length
 	return border->second[(border->second.size() / 2)];
 }
 
 
 std::optional<int> Maps::MapData::getProvinceNumber(const Point& point) const
 {
-	if (const auto i = pointsToProvinces_.find(point); i != pointsToProvinces_.end())
-	{
-		return i->second;
-	}
-	else
+	const auto i = pointsToProvinces_.find(point);
+	if (i == pointsToProvinces_.end())
 	{
 		return std::nullopt;
 	}
+	return i->second;
 }
 
 
 std::optional<Maps::ProvincePoints> Maps::MapData::getProvincePoints(const int provinceNum) const
 {
-	if (const auto possiblePoints = theProvincePoints.find(provinceNum); possiblePoints != theProvincePoints.end())
-	{
-		return possiblePoints->second;
-	}
-	else
+	const auto possiblePoints = theProvincePoints.find(provinceNum);
+	if (possiblePoints == theProvincePoints.end())
 	{
 		return std::nullopt;
 	}
+	return possiblePoints->second;
 }

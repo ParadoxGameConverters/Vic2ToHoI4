@@ -34,6 +34,12 @@ class Province::Builder
 		return *this;
 	}
 
+	Builder& setIsLand()
+	{
+		province->landProvince_ = true;
+		return *this;
+	}
+
 	Builder& setOwner(std::string owner)
 	{
 		province->owner = std::move(owner);

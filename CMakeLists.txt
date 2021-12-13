@@ -254,6 +254,7 @@ set(VIC2WORLD_ISSUES_SOURCES ${VIC2WORLD_ISSUES_SOURCES} "${PROJECT_SOURCE_DIR}/
 set(VIC2WORLD_ISSUES_SOURCES ${VIC2WORLD_ISSUES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Issues/IssuesFactory.cpp")
 set(VIC2WORLD_LOCALISATIONS_SOURCES ${VIC2WORLD_LOCALISATIONS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Localisations/LocalisationsFactory.cpp")
 set(VIC2WORLD_LOCALISATIONS_SOURCES ${VIC2WORLD_LOCALISATIONS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Localisations/Vic2Localisations.cpp")
+set(VIC2WORLD_MAP_SOURCES ${VIC2WORLD_MAP_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Map/Vic2ProvinceDefinitionImporter.cpp")
 set(VIC2WORLD_MILITARY_SOURCES ${VIC2WORLD_MILITARY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Military/ArmyFactory.cpp")
 set(VIC2WORLD_MILITARY_SOURCES ${VIC2WORLD_MILITARY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Military/UnitFactory.cpp")
 set(VIC2WORLD_MILITARY_LEADERS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Military/Leaders/Leader.cpp")
@@ -291,6 +292,7 @@ add_library(Vic2World
 	${VIC2WORLD_EU4TOVIC2DATA_SOURCES}
 	${VIC2WORLD_ISSUES_SOURCES}
 	${VIC2WORLD_LOCALISATIONS_SOURCES}
+	${VIC2WORLD_MAP_SOURCES}
 	${VIC2WORLD_MILITARY_SOURCES}
 	${VIC2WORLD_MILITARY_LEADERS_SOURCES}
 	${VIC2WORLD_POLITICS_SOURCES}
@@ -550,6 +552,8 @@ set(MAPPERS_FACTIONNAME_TESTS_SOURCES ${MAPPERS_FACTIONNAME_TESTS_SOURCES} "${TE
 set(MAPS_TESTS_SOURCES ${MAPS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapsTests/MapDataTests.cpp")
 set(MAPS_TESTS_SOURCES ${MAPS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapsTests/ProvinceDefinitionsTests.cpp")
 set(MAPS_TESTS_SOURCES ${MAPS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapsTests/ProvincePointsTests.cpp")
+set(OUTHOI4_MAP_TESTS_SOURCES ${OUTHOI4_MAP_TESTS_SOURCES} "${TEST_SOURCE_DIR}/OutHoI4Tests/Map/OutRailwaysTests.cpp")
+set(OUTHOI4_MAP_TESTS_SOURCES ${OUTHOI4_MAP_TESTS_SOURCES} "${TEST_SOURCE_DIR}/OutHoI4Tests/Map/OutSupplyNodesTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AIStrategyTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AITests.cpp")
 set(VIC2WORLD_COUNTRIES_TESTS_SOURCES ${VIC2WORLD_COUNTRIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Countries/CommonCountriesDataFactoryTests.cpp")
@@ -568,6 +572,7 @@ set(VIC2WORLD_ISSUES_TESTS_SOURCES ${VIC2WORLD_ISSUES_TESTS_SOURCES} "${TEST_SOU
 set(VIC2WORLD_ISSUES_TESTS_SOURCES ${VIC2WORLD_ISSUES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Issues/IssuesBuilderTests.cpp")
 set(VIC2WORLD_ISSUES_TESTS_SOURCES ${VIC2WORLD_ISSUES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Issues/IssuesFactoryTests.cpp")
 set(VIC2WORLD_LOCALISATIONS_TESTS_SOURCES ${VIC2WORLD_LOCALISATIONS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Localisations/LocalisationsTests.cpp")
+set(VIC2WORLD_MAP_TESTS_SOURCES ${VIC2WORLD_MAP_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Map/Vic2ProvinceDefinitionImporterTests.cpp")
 set(VIC2WORLD_MILITARY_TESTS_SOURCES ${VIC2WORLD_MILITARY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Military/ArmyTests.cpp")
 set(VIC2WORLD_MILITARY_TESTS_SOURCES ${VIC2WORLD_MILITARY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Military/UnitTests.cpp")
 set(VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES ${VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Military/Leaders/LeaderTests.cpp")
@@ -640,6 +645,7 @@ add_executable(
 	${MAPPERS_TECHNOLOGY_TESTS_SOURCES}
 	${MAPPERS_FACTIONNAME_TESTS_SOURCES}
 	${MAPS_TESTS_SOURCES}
+	${OUTHOI4_MAP_TESTS_SOURCES}
 	${VIC2WORLD_AI_TESTS_SOURCES}
 	${VIC2WORLD_COUNTRIES_TESTS_SOURCES}
 	${VIC2WORLD_CULTURE_TESTS_SOURCES}
@@ -647,6 +653,7 @@ add_executable(
 	${VIC2WORLD_EU4TOVIC2DATA_TESTS_SOURCES}
 	${VIC2WORLD_ISSUES_TESTS_SOURCES}
 	${VIC2WORLD_LOCALISATIONS_TESTS_SOURCES}
+	${VIC2WORLD_MAP_TESTS_SOURCES}
 	${VIC2WORLD_MILITARY_TESTS_SOURCES}
 	${VIC2WORLD_MILITARY_LEADERS_TESTS_SOURCES}
 	${VIC2WORLD_MODS_TESTS_SOURCES}
@@ -752,21 +759,37 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTechOverride2.txt" "${TE
 configure_file("Vic2ToHoI4Tests/TestFiles/Vic2Military/traits.txt" "${TEST_OUTPUT_DIRECTORY}/common/traits.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/BAR.txt" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/common/countries/BAR.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/BlankWorld.v2" "${TEST_OUTPUT_DIRECTORY}/V2World/BlankWorld.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/BlankWorldProvinceAdjacencies.csv" "${TEST_OUTPUT_DIRECTORY}/BlankWorld/map/adjacencies.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/BlankWorldProvinceDefinitions.csv" "${TEST_OUTPUT_DIRECTORY}/BlankWorld/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/BlankWorldProvinces.bmp" "${TEST_OUTPUT_DIRECTORY}/BlankWorld/map/provinces.bmp" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/countries.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/DED.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/DED.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/FOO.txt" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/common/countries/FOO.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/MergeWorld.v2" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/MergeWorld.v2" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/MergeWorldProvinceAdjacencies.csv" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/map/adjacencies.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/MergeWorldProvinceDefinitions.csv" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/mergeWorldProvinces.bmp" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/map/provinces.bmp" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/merge_countries.txt" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/common/countries.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/MoveArmiesProvinceAdjacencies.csv" "${TEST_OUTPUT_DIRECTORY}/MoveArmiesWorld/map/adjacencies.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/MoveArmiesProvinceDefinitions.csv" "${TEST_OUTPUT_DIRECTORY}/MoveArmiesWorld/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/moveArmiesProvinces.bmp" "${TEST_OUTPUT_DIRECTORY}/MoveArmiesWorld/map/provinces.bmp" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/MoveArmiesWorld.v2" "${TEST_OUTPUT_DIRECTORY}/MoveArmiesWorld/MoveArmiesWorld.v2" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/NON.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/NON.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/NOT.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/NOT.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/ONE.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/ONE.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/region.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/map/region.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/ResolveBattlesProvinceAdjacencies.csv" "${TEST_OUTPUT_DIRECTORY}/ResolveBattlesWorld/map/adjacencies.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/ResolveBattlesProvinceDefinitions.csv" "${TEST_OUTPUT_DIRECTORY}/ResolveBattlesWorld/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/resolveBattlesProvinces.bmp" "${TEST_OUTPUT_DIRECTORY}/ResolveBattlesWorld/map/provinces.bmp" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/ResolveBattlesWorld.v2" "${TEST_OUTPUT_DIRECTORY}/ResolveBattlesWorld/ResolveBattlesWorld.v2" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/TestWorldProvinceAdjacencies.csv" "${TEST_OUTPUT_DIRECTORY}/V2World/map/adjacencies.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/TestWorldProvinceDefinitions.csv" "${TEST_OUTPUT_DIRECTORY}/V2World/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/TestWorldProvinces.bmp" "${TEST_OUTPUT_DIRECTORY}/V2World/map/provinces.bmp" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/TestWorld.v2" "${TEST_OUTPUT_DIRECTORY}/V2World/TestWorld.v2" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/test_localisations.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/localisation/test_localisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/TWO.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/TWO.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Vic2World/EU4ToVic2Data/botanical_expedition.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/test_directory/common/botanical_expedition.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Vic2World/Map/definition.csv" "${TEST_OUTPUT_DIRECTORY}/ProvinceDefinition/map/definition.csv" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2/v2game.exe" COPYONLY)

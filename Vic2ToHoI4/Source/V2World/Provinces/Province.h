@@ -32,6 +32,7 @@ class Province
 	void removeCore(const std::string& core) { cores.erase(core); }
 
 	[[nodiscard]] const auto& getNumber() const { return number; }
+	[[nodiscard]] auto isLandProvince() const { return landProvince_; }
 	[[nodiscard]] const auto& getOwner() const { return owner; }
 	[[nodiscard]] const auto& getController() const { return controller; }
 	[[nodiscard]] const auto& getCores() const { return cores; }
@@ -44,6 +45,8 @@ class Province
 	[[nodiscard]] static int calculateLiteracyWeightedPop(const Pop& thePop);
 
 	int number = 0;
+
+	bool landProvince_ = false;
 
 	std::string owner;
 	std::string controller;

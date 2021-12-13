@@ -18,6 +18,8 @@
 #include "OperativeNames/OutOperativeNames.h"
 #include "OutFocusTree.h"
 #include "OutHoi4/Interface/OutMonarchsInterface.h"
+#include "OutHoi4/Map/OutRailways.h"
+#include "OutHoi4/Map/OutSupplyNodes.h"
 #include "OutHoi4Country.h"
 #include "OutLocalisation.h"
 #include "OutOnActions.h"
@@ -185,6 +187,8 @@ void HoI4::OutputWorld(const World& world,
 		 outputName,
 		 theConfiguration);
 	outputBuildings(world.getBuildings(), outputName);
+	outputSupplyNodes("output/" + outputName, world.getSupplyNodes());
+	outputRailways("output/" + outputName, world.getRailways());
 	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), outputName);
 	outputEvents(world.getEvents(), outputName);
 	outputOnActions(world.getOnActions(), world.getMajorIdeologies(), outputName);

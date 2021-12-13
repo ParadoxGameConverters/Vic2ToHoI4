@@ -1604,6 +1604,42 @@
     <ClCompile Include="MapsTests\MapDataTests.cpp">
       <Filter>MapsTests</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Map\Vic2ProvinceDefinitionImporterTests.cpp">
+      <Filter>Vic2WorldTests\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Map\Vic2ProvinceDefinitionImporter.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyNodes.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Map\SupplyNodesTests.cpp">
+      <Filter>HoI4WorldTests\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="OutHoI4Tests\Map\OutSupplyNodesTests.cpp">
+      <Filter>OutHoI4Tests\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Map\RailwayTests.cpp">
+      <Filter>HoI4WorldTests\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Map\OutRailwayTests.cpp">
+      <Filter>OutHoI4Tests\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailways.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railways.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="OutHoI4Tests\Map\OutRailwaysTests.cpp">
+      <Filter>OutHoI4Tests\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2148,6 +2184,21 @@
     </Filter>
     <Filter Include="TestFiles\Maps">
       <UniqueIdentifier>{afc250e7-f9f8-426c-8026-0baf1832ac55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Map">
+      <UniqueIdentifier>{1ae1a73d-2be0-492b-a96b-1297bf3bb0ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Map">
+      <UniqueIdentifier>{7bc4fa8f-e5f5-4faf-ac01-79fb71ad2c2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Vic2\Map">
+      <UniqueIdentifier>{d233c4b9-7570-4cd1-ba23-9d2088973870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoI4Tests">
+      <UniqueIdentifier>{b1891784-6f49-4deb-9c5f-6601424aa1f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoI4Tests\Map">
+      <UniqueIdentifier>{2388c5ed-61a7-4ddb-9000-d93bd3dddce8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3153,6 +3204,48 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankUpgrades.h">
       <Filter>Vic2ToHoI4 files\OutHoi4\TankDesigns</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Map\Vic2ProvinceDefinitionImporter.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuilding.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuildings.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZone.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZones.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyNodes.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailways.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railway.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railways.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3487,6 +3580,54 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Maps\adjacencies.csv">
       <Filter>TestFiles\Maps</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Vic2World\Map\definition.csv">
+      <Filter>TestFiles\Vic2\Map</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\moveArmiesProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\moveArmiesProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\moveArmiesProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\resolveBattlesProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\resolvebattlesProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\resolveBattlesProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TestWorldProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TestWorldProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TestWorldProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\MergeWorldProvinceAdjacencies.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\MergeWorldProvinceDefinitions.csv">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\mergeWorldProvinces.bmp">
+      <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

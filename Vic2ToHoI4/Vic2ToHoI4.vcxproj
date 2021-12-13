@@ -109,7 +109,7 @@
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <OmitFramePointers>false</OmitFramePointers>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -117,7 +117,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)$(Platform)\$(Configuration)\ZipLib.lib;$(SolutionDir)$(Platform)\$(Configuration)\bzip2.lib;$(SolutionDir)$(Platform)\$(Configuration)\lzma.lib;$(SolutionDir)$(Platform)\$(Configuration)\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LargeAddressAware>true</LargeAddressAware>
     </Link>
@@ -170,7 +170,9 @@
     <ClCompile Include="Source\HOI4World\Localisations\GrammarMappings.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\Railways.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\SupplyNodes.cpp" />
     <ClCompile Include="Source\HOI4World\Modifiers\DynamicModifiers.cpp" />
     <ClCompile Include="Source\HOI4World\Modifiers\Modifier.cpp" />
     <ClCompile Include="Source\HOI4World\Names\CultureGroupNames.cpp" />
@@ -272,8 +274,11 @@
     <ClCompile Include="Source\OutHoi4\Leaders\OutGeneral.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuilding.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuildings.cpp" />
+    <ClCompile Include="Source\OutHoi4\Map\OutRailway.cpp" />
+    <ClCompile Include="Source\OutHoi4\Map\OutRailways.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutStrategicRegion.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutStrategicRegions.cpp" />
+    <ClCompile Include="Source\OutHoi4\Map\OutSupplyNodes.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutSupplyZone.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutSupplyZones.cpp" />
     <ClCompile Include="Source\OutHoi4\Military\OutAirplane.cpp" />
@@ -451,6 +456,7 @@
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="Source\V2World\Localisations\LocalisationsFactory.cpp" />
     <ClCompile Include="Source\V2World\Localisations\Vic2Localisations.cpp" />
+    <ClCompile Include="Source\V2World\Map\Vic2ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="Source\V2World\Military\ArmyFactory.cpp" />
     <ClCompile Include="Source\V2World\Military\Leaders\Leader.cpp" />
     <ClCompile Include="Source\V2World\Military\Leaders\LeaderFactory.cpp" />
@@ -535,7 +541,10 @@
     <ClInclude Include="Source\HOI4World\Map\CoastalProvincesBuilder.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
+    <ClInclude Include="Source\HOI4World\Map\Railway.h" />
+    <ClInclude Include="Source\HOI4World\Map\Railways.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
+    <ClInclude Include="Source\HOI4World\Map\SupplyNodes.h" />
     <ClInclude Include="Source\HOI4World\Modifiers\DynamicModifiers.h" />
     <ClInclude Include="Source\HOI4World\Modifiers\Modifier.h" />
     <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h" />
@@ -662,7 +671,10 @@
     <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />
+    <ClInclude Include="Source\OutHoi4\Map\OutRailway.h" />
+    <ClInclude Include="Source\OutHoi4\Map\OutRailways.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
+    <ClInclude Include="Source\OutHoi4\Map\OutSupplyNodes.h" />
     <ClInclude Include="Source\OutHoi4\Modifiers\OutDynamicModifiers.h" />
     <ClInclude Include="Source\OutHoi4\Modifiers\OutModifier.h" />
     <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.h" />
@@ -878,6 +890,7 @@
     <ClInclude Include="Source\V2World\Issues\IssueCategoryHelper.h" />
     <ClInclude Include="Source\V2World\Localisations\LocalisationsFactory.h" />
     <ClInclude Include="Source\V2World\Localisations\Vic2Localisations.h" />
+    <ClInclude Include="Source\V2World\Map\Vic2ProvinceDefinitionImporter.h" />
     <ClInclude Include="Source\V2World\Military\Army.h" />
     <ClInclude Include="Source\V2World\Military\ArmyBuilder.h" />
     <ClInclude Include="Source\V2World\Military\ArmyFactory.h" />

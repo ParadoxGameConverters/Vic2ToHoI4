@@ -8,6 +8,7 @@
 #include "V2World/Culture/CultureGroupsFactory.h"
 #include "V2World/Issues/IssuesFactory.h"
 #include "V2World/Localisations/LocalisationsFactory.h"
+#include "V2World/Map/Vic2ProvinceDefinitionImporter.h"
 #include "V2World/Pops/PopFactory.h"
 #include "V2World/States/StateDefinitionsFactory.h"
 #include "V2World/States/StateLanguageCategoriesFactory.h"
@@ -106,6 +107,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	consolidateConquerStrategies();
 	moveArmiesHome();
 	removeBattles();
+	importMapData(theConfiguration.getVic2Path());
 
 	return std::move(world);
 }
@@ -518,4 +520,12 @@ bool Vic2::World::Factory::armiesHaveDifferentOwners(const std::vector<Army*>& a
 	}
 
 	return armiesFromDifferentOwners;
+}
+
+
+void Vic2::World::Factory::importMapData(const std::string& path)
+{
+	Log(LogLevel::Info) << "\tImporting map data";
+	const auto& provinceDefinitions = importProvinceDefinitions(path, world->provinces);
+	world->mapData_ = std::make_unique<Maps::MapData>(provinceDefinitions, path);
 }

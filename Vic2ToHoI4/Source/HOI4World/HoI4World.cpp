@@ -7,6 +7,8 @@
 #include "Events/Events.h"
 #include "Events/GovernmentInExileEvent.h"
 #include "HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
+#include "HOI4World/Map/Railways.h"
+#include "HOI4World/Map/SupplyNodes.h"
 #include "HoI4Country.h"
 #include "HoI4FocusTree.h"
 #include "HoI4Localisation.h"
@@ -102,8 +104,9 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	theDate = std::make_unique<date>(sourceWorld.getDate());
 
-	Maps::ProvinceDefinitions provinceDefinitions = importProvinceDefinitions(theConfiguration.getHoI4Path());
-	theMapData = std::make_unique<Maps::MapData>(provinceDefinitions, theConfiguration.getHoI4Path());
+	provinceDefinitions =
+		 std::make_unique<Maps::ProvinceDefinitions>(importProvinceDefinitions(theConfiguration.getHoI4Path()));
+	theMapData = std::make_unique<Maps::MapData>(*provinceDefinitions, theConfiguration.getHoI4Path());
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
 	strategicRegions = StrategicRegions::Factory().importStrategicRegions(theConfiguration);
@@ -114,7 +117,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 sourceWorld.getStateDefinitions(),
 		 *strategicRegions,
 		 vic2Localisations,
-		 provinceDefinitions,
+		 *provinceDefinitions,
 		 *theMapData,
 		 *hoi4Localisations,
 		 provinceMapper,
@@ -138,6 +141,12 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertWars(sourceWorld, provinceMapper);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
+	supplyNodes_ = determineSupplyNodes(sourceWorld.getProvinces(), provinceMapper);
+	railways_ = determineRailways(sourceWorld.getProvinces(),
+		 sourceWorld.getMapData(),
+		 provinceMapper,
+		 *theMapData,
+		 *provinceDefinitions);
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";
 	if (theConfiguration.getDebug())
@@ -177,7 +186,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	militaryMappingsFile importedMilitaryMappings;
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
-	convertMilitaries(provinceDefinitions, provinceMapper, theConfiguration);
+	convertMilitaries(*provinceDefinitions, provinceMapper, theConfiguration);
 
 	scriptedEffects = std::make_unique<ScriptedEffects>(theConfiguration.getHoI4Path());
 	setupNavalTreaty();
@@ -221,7 +230,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		createFactions(theConfiguration);
 	}
 
-	HoI4WarCreator warCreator(this, *theMapData, provinceDefinitions, *hoi4Localisations, theConfiguration);
+	HoI4WarCreator warCreator(this, *theMapData, *provinceDefinitions, *hoi4Localisations, theConfiguration);
 
 	transferPuppetsToDominions();
 

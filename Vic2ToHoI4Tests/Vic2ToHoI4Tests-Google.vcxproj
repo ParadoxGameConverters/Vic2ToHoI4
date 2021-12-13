@@ -80,7 +80,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railways.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyNodes.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\DynamicModifiers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\Modifier.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp" />
@@ -177,7 +179,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailways.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutModifier.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp" />
@@ -361,6 +366,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Localisations\LocalisationsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Localisations\Vic2Localisations.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Map\Vic2ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\ArmyFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\LeaderFactory.cpp" />
@@ -433,8 +439,11 @@
     <ClCompile Include="HoI4WorldTests\Map\HoI4ProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ImpassableProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\MapRegionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\OutRailwayTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\RailwayTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ResourcesLinkTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\SupplyAreaTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\SupplyNodesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\DivisionTemplateImporterTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\HoI4UnitTypeTests.cpp" />
@@ -529,6 +538,8 @@
     <ClCompile Include="MapsTests\MapDataTests.cpp" />
     <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp" />
     <ClCompile Include="MapsTests\ProvincePointsTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Map\OutRailwaysTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Map\OutSupplyNodesTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AITests.cpp" />
     <ClCompile Include="Vic2WorldTests\Countries\CommonCountriesDataFactoryTests.cpp" />
@@ -547,6 +558,7 @@
     <ClCompile Include="Vic2WorldTests\Issues\IssuesFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssueCategoryHelperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Localisations\LocalisationsTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Map\Vic2ProvinceDefinitionImporterTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\ArmyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\Leaders\LeaderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitGroupTests.cpp" />
@@ -598,7 +610,7 @@
     <CopyFileToFolders Include="TestFiles\v2game.exe">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2Windows;$(OutDir)/Vic2</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2Windows</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2Windows;$(OutDir)/Vic2</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\definition.csv">
       <FileType>Document</FileType>
@@ -688,6 +700,48 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/good_definition/map/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\moveArmiesProvinceDefinitions.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/moveArmiesWorld/map</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/moveArmiesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">definition%(Extension)</DestinationFileName>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\moveArmiesProvinceAdjacencies.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/MoveArmiesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">adjacencies%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/MoveArmiesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">adjacencies%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\resolveBattlesProvinceAdjacencies.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)ResolveBattlesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">adjacencies%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)ResolveBattlesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">adjacencies%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\resolvebattlesProvinceDefinitions.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)ResolveBattlesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">definition%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)ResolveBattlesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TestWorldProvinceAdjacencies.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)V2World/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">adjacencies%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)V2World/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">adjacencies%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TestWorldProvinceDefinitions.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)V2World/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">definition%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)V2World/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\Configuration.h" />
@@ -775,14 +829,18 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\CoastalProvincesBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Building.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Province.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railway.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Railways.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ResourcesLink.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegion.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyArea.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyNodes.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZone.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZones.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />
@@ -942,6 +1000,15 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuilding.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuildings.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailways.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyNodes.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZone.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZones.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankDesign.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankDesigns.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\TankDesigns\OutTankModules.h" />
@@ -979,6 +1046,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Localisations\LocalisationsFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Localisations\Vic2Localisations.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Map\Vic2ProvinceDefinitionImporter.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Army.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\ArmyBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\ArmyFactory.h" />
@@ -1442,11 +1510,45 @@
     <CopyFileToFolders Include="TestFiles\launcher-settings.json">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Windows;$(OutDir)/HoI4Linux</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/HoI4Windows;$(OutDir)/HoI4Linux</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Maps\adjacencies.csv">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/maptests/map</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/maptests/map</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Vic2World\Map\definition.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\ProvinceDefinition\map</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\ProvinceDefinition\map</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinceAdjacencies.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)BlankWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">adjacencies%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)BlankWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">adjacencies%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinceDefinitions.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)BlankWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">definition%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)BlankWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\MergeWorldProvinceAdjacencies.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)MergeWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">adjacencies%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)MergeWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">adjacencies%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\MergeWorldProvinceDefinitions.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)MergeWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">definition%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)MergeWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
     </CopyFileToFolders>
     <None Include="TestFiles\World\merge_nations.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
@@ -1596,6 +1698,46 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/maptests/map</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\World\moveArmiesProvinces.bmp">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/moveArmiesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">provinces%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/moveArmiesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">provinces%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\World\resolveBattlesProvinces.bmp">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)ResolveBattlesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">provinces%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)ResolveBattlesWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">provinces%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\World\TestWorldProvinces.bmp">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)V2World/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">provinces%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)V2World/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">provinces%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorldProvinces.bmp">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)BlankWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">provinces%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)BlankWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">provinces%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\World\mergeWorldProvinces.bmp">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)MergeWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">provinces%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)MergeWorld/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">provinces%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
@@ -1622,6 +1764,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;$(SolutionDir)$(Platform)\$(Configuration)\ZipLib.lib;$(SolutionDir)$(Platform)\$(Configuration)\bzip2.lib;$(SolutionDir)$(Platform)\$(Configuration)\lzma.lib;$(SolutionDir)$(Platform)\$(Configuration)\zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

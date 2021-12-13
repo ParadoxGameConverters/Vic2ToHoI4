@@ -15,12 +15,10 @@ std::optional<int> Maps::ProvinceDefinitions::getProvinceFromColor(const commonI
 {
 	const auto colorInt = getIntFromColor(color);
 
-	if (const auto mapping = colorToProvinceMap.find(colorInt); mapping != colorToProvinceMap.end())
-	{
-		return mapping->second;
-	}
-	else
+	const auto mapping = colorToProvinceMap.find(colorInt);
+	if (mapping == colorToProvinceMap.end())
 	{
 		return std::nullopt;
 	}
+	return mapping->second;
 }
