@@ -1,6 +1,7 @@
 #include "OutHoi4Country.h"
 #include "AiStrategy/OutAiStrategy.h"
 #include "Date.h"
+#include "HOI4World/Characters/Character.h"
 #include "HOI4World/Diplomacy/Faction.h"
 #include "HOI4World/HoI4Country.h"
 #include "HOI4World/Leaders/Advisor.h"
@@ -18,11 +19,37 @@
 #include "Navies/OutNavies.h"
 #include "OSCompatibilityLayer.h"
 #include "OutFocusTree.h"
+#include "OutHoi4/Characters/OutCharacter.h"
 #include "OutHoi4/Operative/OutOperative.h"
 #include "OutTechnologies.h"
 #include "V2World/Countries/Country.h"
 #include <ranges>
 #include <string>
+
+
+
+namespace
+{
+
+void outputCharacters(const std::string& filename, const std::vector<HoI4::Character>& characters)
+{
+	std::ofstream out(filename);
+	if (!out.is_open())
+	{
+		throw std::runtime_error("Could not open " + filename);
+	}
+
+	out << "characters={\n";
+	for (const auto& character: characters)
+	{
+		out << character << "\n";
+	}
+	out << "}";
+
+	out.close();
+}
+
+} // namespace
 
 
 
@@ -403,6 +430,9 @@ void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
 		outputCommonCountryFile(theCountry, theConfiguration);
 		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters, theConfiguration);
 		outputAIStrategy(theCountry, theConfiguration.getOutputName());
+		outputCharacters("output/" + theConfiguration.getOutputName() + "/common/characters/" + theCountry.getTag() +
+									".txt",
+			 theCountry.getCharacters());
 
 		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
 		{
@@ -521,6 +551,10 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	{
 		outputStability(output, theCountry.getStability());
 		outputWarSupport(output, theCountry.getWarSupport());
+	}
+	for (const auto& character: theCountry.getCharacters())
+	{
+		output << "recruit_character = " << character.getName() << "\n";
 	}
 	for (const auto& leader: theCountry.getLeaders())
 	{

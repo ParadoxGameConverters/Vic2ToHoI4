@@ -21,6 +21,7 @@
 #include <algorithm>
 #include <cmath>
 
+#include "Characters/CharacterFactory.h"
 
 
 HoI4::Country::Country(std::string tag,
@@ -1029,7 +1030,9 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 }
 
 
-void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper)
+void HoI4::Country::createLeader(Names& names,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 const Character::Factory& characterFactory)
 {
 	for (const auto& configuredLeader: leaders)
 	{
@@ -1039,7 +1042,7 @@ void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphics
 		}
 	}
 
-	leaders.push_back(CountryLeader::Factory::createNewLeader(nextMonarch,
+	characters_.push_back(characterFactory.createNewCountryLeader(nextMonarch,
 		 primaryCulture,
 		 primaryCultureGroup,
 		 governmentIdeology,

@@ -1649,6 +1649,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutPortrait.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2205,6 +2211,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\OutHoi4\Characters">
       <UniqueIdentifier>{879e9023-1edc-4fa0-8887-c1b2febb1ca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Characters">
+      <UniqueIdentifier>{755d14e2-9e7e-4e29-beaf-d223d5406ef3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vic2WorldTests\Map">
       <UniqueIdentifier>{1ae1a73d-2be0-492b-a96b-1297bf3bb0ce}</UniqueIdentifier>
@@ -3268,6 +3277,18 @@
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutPortrait.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\Character.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\Portrait.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.h">
       <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
     </ClInclude>
   </ItemGroup>
