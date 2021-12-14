@@ -94,7 +94,10 @@ class Country
 		 const Mappers::GovernmentMapper& governmentMap,
 		 Localisation& hoi4Localisations,
 		 bool debug);
-	void createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper, const Character::Factory& characterFactory);
+	void createLeader(Names& names,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 const Character::Factory& characterFactory,
+		 Localisation& localisation);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const Mappers::GovernmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,

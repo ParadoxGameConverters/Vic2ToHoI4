@@ -1,15 +1,18 @@
 #include "CharacterFactory.h"
 #include "Log.h"
+#include "OSCompatibilityLayer.h"
 
 
 
-HoI4::Character HoI4::Character::Factory::createNewCountryLeader(const std::pair<std::string, std::string>& nextMonarch,
+HoI4::Character HoI4::Character::Factory::createNewCountryLeader(const std::string& tag,
+	 const std::pair<std::string, std::string>& nextMonarch,
 	 const std::string& primaryCulture,
 	 const std::string& primaryCultureGroup,
 	 const std::string& governmentIdeology,
 	 const std::string& leaderIdeology,
 	 Names& names,
-	 Mappers::GraphicsMapper& graphicsMapper)
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Localisation& localisation)
 {
 	Character leader;
 	leader.leader_ideology_ = leaderIdeology;
@@ -39,6 +42,16 @@ HoI4::Character HoI4::Character::Factory::createNewCountryLeader(const std::pair
 			leader.name_ = "King " + *firstName;
 		}
 	}
+
+	leader.id_ = commonItems::convertUTF8ToASCII(leader.name_);
+	std::ranges::transform(leader.id_, leader.id_.begin(), [](unsigned char c) {
+		return std::tolower(c);
+	});
+	std::ranges::transform(leader.id_, leader.id_.begin(), [](unsigned char c) {
+		return c == ' ' ? '_' : c;
+	});
+	leader.id_ = tag + "_" + leader.id_;
+	localisation.addCharacterLocalisation(leader.id_, leader.name_);
 
 	return leader;
 }

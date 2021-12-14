@@ -552,10 +552,12 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		outputStability(output, theCountry.getStability());
 		outputWarSupport(output, theCountry.getWarSupport());
 	}
+	output << '\n';
 	for (const auto& character: theCountry.getCharacters())
 	{
-		output << "recruit_character = " << character.getName() << "\n";
+		output << "recruit_character = " << character.getId() << "\n";
 	}
+	output << '\n';
 	for (const auto& leader: theCountry.getLeaders())
 	{
 		HoI4::outputCountryLeader(output, leader);

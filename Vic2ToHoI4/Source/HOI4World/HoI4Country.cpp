@@ -1032,7 +1032,8 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 
 void HoI4::Country::createLeader(Names& names,
 	 Mappers::GraphicsMapper& graphicsMapper,
-	 const Character::Factory& characterFactory)
+	 const Character::Factory& characterFactory,
+	 Localisation& localisation)
 {
 	for (const auto& configuredLeader: leaders)
 	{
@@ -1042,13 +1043,15 @@ void HoI4::Country::createLeader(Names& names,
 		}
 	}
 
-	characters_.push_back(characterFactory.createNewCountryLeader(nextMonarch,
+	characters_.push_back(characterFactory.createNewCountryLeader(tag,
+		 nextMonarch,
 		 primaryCulture,
 		 primaryCultureGroup,
 		 governmentIdeology,
 		 leaderIdeology,
 		 names,
-		 graphicsMapper));
+		 graphicsMapper,
+		 localisation));
 }
 
 

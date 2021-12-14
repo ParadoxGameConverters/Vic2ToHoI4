@@ -19,6 +19,7 @@ class Character
   public:
 	class Factory;
 
+	[[nodiscard]] const auto& getId() const { return id_; }
 	[[nodiscard]] const auto& getName() const { return name_; }
 	[[nodiscard]] const auto& getPortraits() const { return portraits_; }
 
@@ -27,6 +28,7 @@ class Character
 	[[nodiscard]] const auto& getLeaderTraits() const { return leader_traits_; }
 
   private:
+	std::string id_ = "Nomen_Nescio";
 	std::string name_ = "Nomen Nescio"; // Nescio Nomen (or N.N.) literally means "I don't know the name" and is
 													// sometimes used when the name of a person is unknown
 	std::vector<Portrait> portraits_;

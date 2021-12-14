@@ -4,6 +4,7 @@
 
 
 #include "HOI4World/Characters/Character.h"
+#include "HOI4World/HoI4Localisation.h"
 #include "HOI4World/Names/Names.h"
 #include "Mappers/Graphics/GraphicsMapper.h"
 
@@ -15,17 +16,18 @@ namespace HoI4
 class Character::Factory
 {
   public:
-	static Character createNewCountryLeader(const std::pair<std::string, std::string>& nextMonarch,
+	static Character createNewCountryLeader(const std::string& tag,
+		 const std::pair<std::string, std::string>& nextMonarch,
 		 const std::string& primaryCulture,
 		 const std::string& primaryCultureGroup,
 		 const std::string& governmentIdeology,
 		 const std::string& leaderIdeology,
 		 Names& names,
-		 Mappers::GraphicsMapper& graphicsMapper);
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Localisation& localisation);
 };
 
-}
-
+} // namespace HoI4
 
 
 

@@ -5,8 +5,8 @@
 
 std::ostream& HoI4::operator<<(std::ostream& out, const Character& character)
 {
-	out << "\t" << character.getName() << "={\n";
-	out << "\t\tname=" << character.getName() << "\n";
+	out << "\t" << character.getId() << "={\n";
+	out << "\t\tname=" << character.getId() << "\n";
 	if (!character.getPortraits().empty())
 	{
 		out << "\t\tportraits={\n";
@@ -30,6 +30,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Character& character)
 	out << "\t\t\texpire=\"1965.1.1.1\"\n";
 	out << "\t\t\tid=-1\n";
 	out << "\t\t}\n";
+	out << "\t}\n";
 
 	return out;
 }

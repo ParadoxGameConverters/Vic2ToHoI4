@@ -81,4 +81,7 @@ void HoI4::outputLocalisation(const Localisation& localisation, const std::strin
 	outputLocalisations(localisationPath, "/parties3_l_", localisation.getPoliticalPartyLocalisations());
 	outputLocalisations(localisationPath, "/decisions3_l_", localisation.getDecisionLocalisations());
 	outputLocalisations(localisationPath, "/custom_localization_converter_l_", localisation.getCustomLocalisations());
+	outputLocalisations(localisationPath,
+		 "/converted_character_localisation_l_",
+		 localisation.getCharacterLocalisations());
 }

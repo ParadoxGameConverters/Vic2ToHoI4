@@ -474,7 +474,7 @@ void HoI4::World::addLeaders()
 			country->addLeader(i->second);
 		}
 
-		country->createLeader(*names, *graphicsMapper, characterFactory);
+		country->createLeader(*names, *graphicsMapper, characterFactory, *hoi4Localisations);
 	}
 }
 

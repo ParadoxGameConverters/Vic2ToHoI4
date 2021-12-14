@@ -112,7 +112,8 @@ std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocali
 		 newEventLocalisations,
 		 politicalPartyLocalisations,
 		 decisionLocalisations,
-		 customLocalisations);
+		 customLocalisations,
+		 characterLocalisations_);
 }
 
 
@@ -1371,4 +1372,22 @@ void HoI4::Localisation::insertScriptedLocalisation(const std::string& localisat
 	text += "\t\tlocalization_key = " + localisationKey + replacementKey + "\n";
 	text += "\t}";
 	scriptedLocalisation.addText(text);
+}
+
+
+void HoI4::Localisation::addCharacterLocalisation(const std::string& id, const std::string& name)
+{
+	characterLocalisations_["braz_por"].emplace(id, name);
+	characterLocalisations_["czech"].emplace(id, name);
+	characterLocalisations_["dutch"].emplace(id, name);
+	characterLocalisations_["english"].emplace(id, name);
+	characterLocalisations_["finnish"].emplace(id, name);
+	characterLocalisations_["french"].emplace(id, name);
+	characterLocalisations_["german"].emplace(id, name);
+	characterLocalisations_["hungarian"].emplace(id, name);
+	characterLocalisations_["italian"].emplace(id, name);
+	characterLocalisations_["polish"].emplace(id, name);
+	characterLocalisations_["russian"].emplace(id, name);
+	characterLocalisations_["spanish"].emplace(id, name);
+	characterLocalisations_["swedish"].emplace(id, name);
 }
