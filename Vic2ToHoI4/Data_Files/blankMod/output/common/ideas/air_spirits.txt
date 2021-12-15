@@ -20,7 +20,7 @@ ideas = {
 				jet_strat_bomber_equipment_design_cost_factor = -0.75
 			}
 			ai_will_do = {
-				factor = 1.5
+				factor = 1
 			}
 		}
 		dive_bombing_spirit = {
@@ -34,7 +34,7 @@ ideas = {
 				cv_CAS_equipment_design_cost_factor = -0.75
 			}
 			ai_will_do = {
-				factor = 1.5
+				factor = 1
 			}
 		}
 		material_destruction_spirit = {
@@ -48,7 +48,7 @@ ideas = {
 				jet_tac_bomber_equipment_design_cost_factor = -0.75
 			}
 			ai_will_do = {
-				factor = 1.5
+				factor = 1
 			}
 		}
 		industry_liasons_spirit = {
@@ -112,7 +112,7 @@ ideas = {
 				air_carrier_night_penalty_reduction_factor = 0.33
 			}
 			ai_will_do = {
-				factor = 1.5
+				factor = 1
 			}
 		}
 		veteran_air_instructors_spirit = {
@@ -140,7 +140,7 @@ ideas = {
 				air_untrained_pilots_penalty_factor = -0.33
 			}
 			ai_will_do = {
-				factor = 1.5
+				factor = 1
 			}
 		}
 		home_defence_spirit = {
@@ -168,7 +168,7 @@ ideas = {
 				army_bonus_air_superiority_factor = 0.05
 			}
 			ai_will_do = {
-				factor = 1.5
+				factor = 1
 			}
 		}
 		continuous_strike_spirit = {
@@ -178,7 +178,7 @@ ideas = {
 				air_cas_efficiency = 0.25
 			}
 			ai_will_do = {
-				factor = 1.5
+				factor = 1
 			}
 		}
 		strategic_strike_spirit = { 
@@ -188,7 +188,7 @@ ideas = {
 				air_strategic_bomber_bombing_factor = 0.1
 			}
 			ai_will_do = {
-				factor = 1.5
+				factor = 1
 			}
 		}
 	}
