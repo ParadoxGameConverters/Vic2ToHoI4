@@ -29,7 +29,7 @@ class Portrait
 	std::string definition_;
 };
 
-} // namespace
+} // namespace HoI4
 
 
 

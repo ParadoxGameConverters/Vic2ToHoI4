@@ -425,20 +425,19 @@ void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
 {
 	if (theCountry.getCapitalState())
 	{
+		const auto& outputName = theConfiguration.getOutputName();
+		const auto& tag = theCountry.getTag();
+
 		outputHistory(theCountry, theConfiguration);
 		outputOOB(divisionTemplates, theCountry, theConfiguration);
 		outputCommonCountryFile(theCountry, theConfiguration);
-		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters, theConfiguration);
-		outputAIStrategy(theCountry, theConfiguration.getOutputName());
-		outputCharacters("output/" + theConfiguration.getOutputName() + "/common/characters/" + theCountry.getTag() +
-									".txt",
-			 theCountry.getCharacters());
+		outputAdvisorIdeas(tag, ideologicalMinisters, theConfiguration);
+		outputAIStrategy(theCountry, outputName);
+		outputCharacters("output/" + outputName + "/common/characters/" + tag + ".txt ", theCountry.getCharacters());
 
 		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
 		{
-			outputFocusTree(*nationalFocus,
-				 "output/" + theConfiguration.getOutputName() + "/common/national_focus/" + theCountry.getTag() +
-					  "_NF.txt");
+			outputFocusTree(*nationalFocus, "output/" + outputName + "/common/national_focus/" + tag + "_NF.txt");
 		}
 	}
 }
