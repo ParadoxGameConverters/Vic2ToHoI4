@@ -1,6 +1,7 @@
 #include "OutHoi4Country.h"
 #include "AiStrategy/OutAiStrategy.h"
 #include "Date.h"
+#include "HOI4World/Characters/Character.h"
 #include "HOI4World/Diplomacy/Faction.h"
 #include "HOI4World/HoI4Country.h"
 #include "HOI4World/Leaders/Advisor.h"
@@ -18,11 +19,37 @@
 #include "Navies/OutNavies.h"
 #include "OSCompatibilityLayer.h"
 #include "OutFocusTree.h"
+#include "OutHoi4/Characters/OutCharacter.h"
 #include "OutHoi4/Operative/OutOperative.h"
 #include "OutTechnologies.h"
 #include "V2World/Countries/Country.h"
 #include <ranges>
 #include <string>
+
+
+
+namespace
+{
+
+void outputCharacters(const std::string& filename, const std::vector<HoI4::Character>& characters)
+{
+	std::ofstream out(filename);
+	if (!out.is_open())
+	{
+		throw std::runtime_error("Could not open " + filename);
+	}
+
+	out << "characters={\n";
+	for (const auto& character: characters)
+	{
+		out << character << "\n";
+	}
+	out << "}";
+
+	out.close();
+}
+
+} // namespace
 
 
 
@@ -398,17 +425,19 @@ void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
 {
 	if (theCountry.getCapitalState())
 	{
+		const auto& outputName = theConfiguration.getOutputName();
+		const auto& tag = theCountry.getTag();
+
 		outputHistory(theCountry, theConfiguration);
 		outputOOB(divisionTemplates, theCountry, theConfiguration);
 		outputCommonCountryFile(theCountry, theConfiguration);
-		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters, theConfiguration);
-		outputAIStrategy(theCountry, theConfiguration.getOutputName());
+		outputAdvisorIdeas(tag, ideologicalMinisters, theConfiguration);
+		outputAIStrategy(theCountry, outputName);
+		outputCharacters("output/" + outputName + "/common/characters/" + tag + ".txt ", theCountry.getCharacters());
 
 		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
 		{
-			outputFocusTree(*nationalFocus,
-				 "output/" + theConfiguration.getOutputName() + "/common/national_focus/" + theCountry.getTag() +
-					  "_NF.txt");
+			outputFocusTree(*nationalFocus, "output/" + outputName + "/common/national_focus/" + tag + "_NF.txt");
 		}
 	}
 }
@@ -522,6 +551,12 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		outputStability(output, theCountry.getStability());
 		outputWarSupport(output, theCountry.getWarSupport());
 	}
+	output << '\n';
+	for (const auto& character: theCountry.getCharacters())
+	{
+		output << "recruit_character = " << character.getId() << "\n";
+	}
+	output << '\n';
 	for (const auto& leader: theCountry.getLeaders())
 	{
 		HoI4::outputCountryLeader(output, leader);

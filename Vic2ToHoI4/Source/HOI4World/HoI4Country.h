@@ -9,6 +9,7 @@
 #include "Diplomacy/HoI4AIStrategy.h"
 #include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4War.h"
+#include "HOI4World/Characters/Character.h"
 #include "HoI4FocusTree.h"
 #include "Ideologies/Ideologies.h"
 #include "Leaders/Admiral.h"
@@ -93,7 +94,10 @@ class Country
 		 const Mappers::GovernmentMapper& governmentMap,
 		 Localisation& hoi4Localisations,
 		 bool debug);
-	void createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper);
+	void createLeader(Names& names,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 const Character::Factory& characterFactory,
+		 Localisation& localisation);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const Mappers::GovernmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,
@@ -217,6 +221,7 @@ class Country
 	[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
 	[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
 	[[nodiscard]] const auto& getLeaders() const { return leaders; }
+	[[nodiscard]] const auto& getCharacters() const { return characters_; }
 
 	[[nodiscard]] auto getTechnologyCount() const
 	{
@@ -397,6 +402,7 @@ class Country
 	std::string tradeLaw = "export_focus";
 
 	std::vector<CountryLeader> leaders;
+	std::vector<Character> characters_;
 
 	std::set<std::string> oldTechnologiesAndInventions;
 	std::optional<technologies> theTechnologies;

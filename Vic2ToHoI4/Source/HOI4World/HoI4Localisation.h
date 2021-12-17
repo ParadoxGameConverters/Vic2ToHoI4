@@ -47,7 +47,8 @@ class Localisation
 		 languageToLocalisationsMap newEventLocalisations,
 		 languageToLocalisationsMap politicalPartyLocalisations,
 		 languageToLocalisationsMap decisionLocalisations,
-		 languageToLocalisationsMap customLocalisations):
+		 languageToLocalisationsMap customLocalisations,
+		 languageToLocalisationsMap characterLocalisations):
 		 stateLocalisations(std::move(stateLocalisations)),
 		 VPLocalisations(std::move(VPLocalisations)), countryLocalisations(std::move(countryLocalisations)),
 		 originalFocuses(std::move(originalFocuses)), newFocuses(std::move(newFocuses)),
@@ -55,8 +56,22 @@ class Localisation
 		 originalEventLocalisations(std::move(originalEventLocalisations)),
 		 newEventLocalisations(std::move(newEventLocalisations)),
 		 politicalPartyLocalisations(std::move(politicalPartyLocalisations)),
-		 decisionLocalisations(std::move(decisionLocalisations)), customLocalisations(std::move(customLocalisations))
+		 decisionLocalisations(std::move(decisionLocalisations)), customLocalisations(std::move(customLocalisations)),
+		 characterLocalisations_(std::move(characterLocalisations))
 	{
+		characterLocalisations_.insert({"braz_por", {}});
+		characterLocalisations_.insert({"czech", {}});
+		characterLocalisations_.insert({"dutch", {}});
+		characterLocalisations_.insert({"english", {}});
+		characterLocalisations_.insert({"finnish", {}});
+		characterLocalisations_.insert({"french", {}});
+		characterLocalisations_.insert({"german", {}});
+		characterLocalisations_.insert({"hungarian", {}});
+		characterLocalisations_.insert({"italian", {}});
+		characterLocalisations_.insert({"polish", {}});
+		characterLocalisations_.insert({"russian", {}});
+		characterLocalisations_.insert({"spanish", {}});
+		characterLocalisations_.insert({"swedish", {}});
 	}
 
 	void addStateLocalisation(const State& hoi4State,
@@ -109,6 +124,7 @@ class Localisation
 	void generateCustomLocalisations(ScriptedLocalisations& scriptedLocalisations,
 		 const std::set<std::string>& majorIdeologies);
 	void updateLocalisationText(const std::string& key, const std::string& oldText, const std::string& newText);
+	void addCharacterLocalisation(const std::string& id, const std::string& name);
 
 	[[nodiscard]] const auto& getStateLocalisations() const { return stateLocalisations; }
 	[[nodiscard]] const auto& getVPLocalisations() const { return VPLocalisations; }
@@ -122,6 +138,7 @@ class Localisation
 	[[nodiscard]] const auto& getPoliticalPartyLocalisations() const { return politicalPartyLocalisations; }
 	[[nodiscard]] const auto& getDecisionLocalisations() const { return decisionLocalisations; }
 	[[nodiscard]] const auto& getCustomLocalisations() const { return customLocalisations; }
+	[[nodiscard]] const auto& getCharacterLocalisations() const { return characterLocalisations_; }
 
   private:
 	void addLocalisationsForAllGovernments(const std::pair<const std::string&, const std::string&>& tags,
@@ -204,6 +221,7 @@ class Localisation
 	languageToLocalisationsMap politicalPartyLocalisations;
 	languageToLocalisationsMap decisionLocalisations;
 	languageToLocalisationsMap customLocalisations;
+	languageToLocalisationsMap characterLocalisations_;
 };
 
 
@@ -232,6 +250,7 @@ class Localisation::Importer
 	languageToLocalisationsMap politicalPartyLocalisations;
 	languageToLocalisationsMap decisionLocalisations;
 	languageToLocalisationsMap customLocalisations;
+	languageToLocalisationsMap characterLocalisations_;
 };
 
 } // namespace HoI4

@@ -6,6 +6,7 @@
 #include "Diplomacy/Faction.h"
 #include "Events/Events.h"
 #include "Events/GovernmentInExileEvent.h"
+#include "HOI4World/Characters/CharacterFactory.h"
 #include "HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
 #include "HOI4World/Map/Railways.h"
 #include "HOI4World/Map/SupplyNodes.h"
@@ -463,6 +464,7 @@ void HoI4::World::addLeaders()
 {
 	Log(LogLevel::Info) << "\tAdding leaders";
 	auto configurableLeaders = CountryLeadersFactory().importCountryLeaders();
+	Character::Factory characterFactory;
 
 	for (auto& [tag, country]: countries)
 	{
@@ -472,7 +474,7 @@ void HoI4::World::addLeaders()
 			country->addLeader(i->second);
 		}
 
-		country->createLeader(*names, *graphicsMapper);
+		country->createLeader(*names, *graphicsMapper, characterFactory, *hoi4Localisations);
 	}
 }
 
