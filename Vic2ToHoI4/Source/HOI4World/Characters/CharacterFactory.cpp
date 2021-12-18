@@ -35,7 +35,6 @@ std::string Character::Factory::determineId(const std::string& name, const std::
 }
 
 
-
 Character Character::Factory::createNewCountryLeader(const std::string& tag,
 	 const std::pair<std::string, std::string>& nextMonarch,
 	 const std::string& primaryCulture,
