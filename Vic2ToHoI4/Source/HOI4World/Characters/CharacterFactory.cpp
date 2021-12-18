@@ -1,4 +1,5 @@
 #include "CharacterFactory.h"
+#include "CommonFunctions.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 
@@ -15,9 +16,7 @@ std::string Character::Factory::determineId(const std::string& name, const std::
 	std::ranges::transform(id, id.begin(), [](unsigned char c) {
 		return std::tolower(c);
 	});
-	std::ranges::transform(id, id.begin(), [](unsigned char c) {
-		return c == ' ' ? '_' : c;
-	});
+	id = normalizeStringPath(id);
 	id = tag + "_" + id;
 
 	if (used_ids_.contains(id))
