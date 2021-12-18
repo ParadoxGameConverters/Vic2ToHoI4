@@ -12,9 +12,7 @@
 #include "HOI4World/Characters/Character.h"
 #include "HoI4FocusTree.h"
 #include "Ideologies/Ideologies.h"
-#include "Leaders/Admiral.h"
 #include "Leaders/CountryLeader.h"
-#include "Leaders/General.h"
 #include "Map/CoastalProvinces.h"
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
@@ -67,7 +65,8 @@ class Country
 		 Localisation& hoi4Localisations,
 		 const date& startDate,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
-		 const States& worldStates);
+		 const States& worldStates,
+		 Character::Factory& characterFactory);
 
 	/// For creating generated dominions
 	explicit Country(const std::shared_ptr<Country> owner,
@@ -96,7 +95,7 @@ class Country
 		 bool debug);
 	void createLeader(Names& names,
 		 Mappers::GraphicsMapper& graphicsMapper,
-		 const Character::Factory& characterFactory,
+		 Character::Factory& characterFactory,
 		 Localisation& localisation);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const Mappers::GovernmentMapper& governmentMap,
@@ -253,8 +252,6 @@ class Country
 	[[nodiscard]] auto getTrainsMultiplier() const { return trainsMultiplier; }
 	[[nodiscard]] const std::vector<Airplane>& getPlanes() const { return planes; }
 	[[nodiscard]] const std::map<std::string, unsigned int>& getEquipmentStockpile() const { return equipmentStockpile; }
-	[[nodiscard]] const std::vector<General>& getGenerals() const { return generals; }
-	[[nodiscard]] const std::vector<Admiral>& getAdmirals() const { return admirals; }
 
 	[[nodiscard]] const auto& getOperatives() const { return operatives_; }
 
@@ -313,7 +310,9 @@ class Country
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names);
 	void convertLaws();
-	void convertLeaders(const Vic2::Country& sourceCountry);
+	void convertLeaders(const Vic2::Country& sourceCountry,
+		 Character::Factory& characterFactory,
+		 Localisation& localisation);
 	void convertMonarch(const std::string& lastMonarch);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
@@ -428,8 +427,6 @@ class Country
 	std::optional<float> trainsMultiplier;
 	std::vector<Airplane> planes;
 	std::map<std::string, unsigned int> equipmentStockpile;
-	std::vector<General> generals;
-	std::vector<Admiral> admirals;
 	std::map<std::string, std::vector<std::string>> shipNames;
 
 	std::vector<Operative> operatives_;

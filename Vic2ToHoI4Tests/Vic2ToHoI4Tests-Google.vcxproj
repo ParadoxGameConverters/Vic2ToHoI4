@@ -202,9 +202,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdeas.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideologies\OutIdeologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideologies\OutIdeology.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutAdvisor.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutGeneral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuilding.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuildings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.cpp" />
@@ -281,10 +279,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideology.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyItems.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
@@ -811,13 +806,10 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeader.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRule.h" />

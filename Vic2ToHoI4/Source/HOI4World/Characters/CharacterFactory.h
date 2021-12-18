@@ -16,7 +16,7 @@ namespace HoI4
 class Character::Factory
 {
   public:
-	static Character createNewCountryLeader(const std::string& tag,
+	Character createNewCountryLeader(const std::string& tag,
 		 const std::pair<std::string, std::string>& nextMonarch,
 		 const std::string& primaryCulture,
 		 const std::string& primaryCultureGroup,
@@ -25,6 +25,13 @@ class Character::Factory
 		 Names& names,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Localisation& localisation);
+	Character createNewGeneral(const Vic2::Leader& src_general, const std::string& tag, Localisation& localisation);
+	Character createNewAdmiral(const Vic2::Leader& src_admiral, const std::string& tag, Localisation& localisation);
+
+  private:
+	std::string determineId(const std::string& name, const std::string& tag);
+
+	std::set<std::string> used_ids_;
 };
 
 } // namespace HoI4
