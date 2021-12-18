@@ -126,12 +126,12 @@ class World: commonItems::parser
 
 	void convertCountries(const Vic2::World& sourceWorld,
 		 const Mappers::ProvinceMapper& provinceMapper,
-		 const Character::Factory& characterFactory);
+		 Character::Factory& characterFactory);
 	void convertCountry(const std::string& oldTag,
 		 const Vic2::Country& oldCountry,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 const Mappers::ProvinceMapper& provinceMapper,
-		 const Character::Factory& characterFactory);
+		 Character::Factory& characterFactory);
 
 	void importLeaderTraits();
 	void importIdeologicalMinisters();
@@ -142,7 +142,7 @@ class World: commonItems::parser
 	void convertParties(const Vic2::Localisations& vic2Localisations);
 
 	void addNeutrality(bool debug);
-	void addLeaders(const Character::Factory& characterFactory);
+	void addLeaders(Character::Factory& characterFactory);
 	void convertIdeologySupport();
 
 	void convertIndustry(const Configuration& theConfiguration);

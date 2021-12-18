@@ -34,7 +34,7 @@ HoI4::Country::Country(std::string tag,
 	 const date& startDate,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
 	 const States& worldStates,
-	 const Character::Factory& characterFactory):
+	 Character::Factory& characterFactory):
 	 tag(std::move(tag)),
 	 name_(sourceCountry.getName("english")), adjective_(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
@@ -465,7 +465,7 @@ void HoI4::Country::convertMonarch(const std::string& lastMonarch)
 
 
 void HoI4::Country::convertLeaders(const Vic2::Country& sourceCountry,
-	 const Character::Factory& characterFactory,
+	 Character::Factory& characterFactory,
 	 Localisation& localisation)
 {
 	for (const auto& srcLeader: sourceCountry.getLeaders())
@@ -1034,7 +1034,7 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 
 void HoI4::Country::createLeader(Names& names,
 	 Mappers::GraphicsMapper& graphicsMapper,
-	 const Character::Factory& characterFactory,
+	 Character::Factory& characterFactory,
 	 Localisation& localisation)
 {
 	for (const auto& configuredLeader: leaders)

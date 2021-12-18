@@ -55,6 +55,16 @@ Character Character::Factory::createNewCountryLeader(const std::string& tag,
 		return c == ' ' ? '_' : c;
 	});
 	leader.id_ = tag + "_" + leader.id_;
+	if (used_ids_.contains(leader.id_))
+	{
+		int suffix = 1;
+		while (used_ids_.contains(leader.id_ + std::to_string(suffix)))
+		{
+			++suffix;
+		}
+		leader.id_ = leader.id_ + std::to_string(suffix);
+	}
+	used_ids_.insert(leader.id_);
 	localisation.addCharacterLocalisation(leader.id_, leader.name_);
 
 	return leader;
@@ -91,6 +101,16 @@ Character Character::Factory::createNewGeneral(const Vic2::Leader& src_general,
 		return c == ' ' ? '_' : c;
 	});
 	general.id_ = tag + "_" + general.id_;
+	if (used_ids_.contains(general.id_))
+	{
+		int suffix = 1;
+		while (used_ids_.contains(general.id_ + std::to_string(suffix)))
+		{
+			++suffix;
+		}
+		general.id_ = general.id_ + std::to_string(suffix);
+	}
+	used_ids_.insert(general.id_);
 	localisation.addCharacterLocalisation(general.id_, general.name_);
 
 	return general;
@@ -127,6 +147,16 @@ Character Character::Factory::createNewAdmiral(const Vic2::Leader& src_admiral,
 		return c == ' ' ? '_' : c;
 	});
 	admiral.id_ = tag + "_" + admiral.id_;
+	if (used_ids_.contains(admiral.id_))
+	{
+		int suffix = 1;
+		while (used_ids_.contains(admiral.id_ + std::to_string(suffix)))
+		{
+			++suffix;
+		}
+		admiral.id_ = admiral.id_ + std::to_string(suffix);
+	}
+	used_ids_.insert(admiral.id_);
 	localisation.addCharacterLocalisation(admiral.id_, admiral.name_);
 
 	return admiral;

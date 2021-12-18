@@ -105,7 +105,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	theDate = std::make_unique<date>(sourceWorld.getDate());
 
-	const Character::Factory characterFactory;
+	Character::Factory characterFactory;
 	provinceDefinitions =
 		 std::make_unique<Maps::ProvinceDefinitions>(importProvinceDefinitions(theConfiguration.getHoI4Path()));
 	theMapData = std::make_unique<Maps::MapData>(*provinceDefinitions, theConfiguration.getHoI4Path());
@@ -280,7 +280,7 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag) con
 
 void HoI4::World::convertCountries(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
-	 const Character::Factory& characterFactory)
+	 Character::Factory& characterFactory)
 {
 	Log(LogLevel::Info) << "\tConverting countries";
 
@@ -311,7 +311,7 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 	 const Vic2::Country& oldCountry,
 	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 	 const Mappers::ProvinceMapper& provinceMapper,
-	 const Character::Factory& characterFactory)
+	 Character::Factory& characterFactory)
 {
 	// don't convert rebels
 	if (oldTag == "REB")
@@ -465,7 +465,7 @@ void HoI4::World::addNeutrality(bool debug)
 }
 
 
-void HoI4::World::addLeaders(const Character::Factory& characterFactory)
+void HoI4::World::addLeaders(Character::Factory& characterFactory)
 {
 	Log(LogLevel::Info) << "\tAdding leaders";
 	auto configurableLeaders = CountryLeadersFactory().importCountryLeaders();
