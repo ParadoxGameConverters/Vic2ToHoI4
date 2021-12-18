@@ -9,7 +9,6 @@
 #include "HOI4World/Military/DivisionTemplate.h"
 #include "HOI4World/Names/Names.h"
 #include "HOI4World/Navies/NavyNames.h"
-#include "Leaders/OutAdmiral.h"
 #include "Leaders/OutAdvisor.h"
 #include "Leaders/OutCountryLeader.h"
 #include "Mappers/Graphics/GraphicsMapper.h"
@@ -482,7 +481,6 @@ void outputIdeas(std::ostream& output,
 	 const std::vector<std::string>& unbuiltCanals);
 void outputStability(std::ostream& output, const int& stability);
 void outputWarSupport(std::ostream& output, const int& warSupport);
-void outputCommanders(std::ostream& output, const std::vector<HoI4::Admiral>& admirals);
 void outputOperatives(std::ostream& output,
 	 const HoI4::Country& theCountry,
 	 const std::vector<HoI4::Operative>& operatives);
@@ -558,7 +556,6 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	{
 		HoI4::outputCountryLeader(output, leader);
 	}
-	outputCommanders(output, theCountry.getAdmirals());
 	outputOperatives(output, theCountry, theCountry.getOperatives());
 	output << theCountry.getTheShipVariants();
 	output << theCountry.getTankDesigns();
@@ -909,16 +906,6 @@ void outputStability(std::ostream& output, const int& stability)
 void outputWarSupport(std::ostream& output, const int& warSupport)
 {
 	output << "set_war_support = 0." << warSupport << "\n";
-}
-
-
-void outputCommanders(std::ostream& output, const std::vector<HoI4::Admiral>& admirals)
-{
-	for (const auto& admiral: admirals)
-	{
-		output << admiral;
-		output << "\n";
-	}
 }
 
 

@@ -271,12 +271,6 @@
     <ClCompile Include="HoI4WorldTests\Events\EventTests.cpp">
       <Filter>HoI4WorldTests\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutAdmiral.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClCompile>
@@ -285,9 +279,6 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutAdvisor.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\CoastalProvinces.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
@@ -2661,13 +2652,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h">
       <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.h">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeader.h">

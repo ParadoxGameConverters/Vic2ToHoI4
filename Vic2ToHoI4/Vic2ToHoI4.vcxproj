@@ -271,7 +271,6 @@
     <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
-    <ClCompile Include="Source\OutHoi4\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuilding.cpp" />
@@ -369,9 +368,7 @@
     <ClCompile Include="Source\HOI4World\Ideologies\Ideology.cpp" />
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyFile.cpp" />
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyItems.cpp" />
-    <ClCompile Include="Source\HOI4World\Leaders\Admiral.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Advisor.cpp" />
-    <ClCompile Include="Source\HOI4World\Leaders\Commander.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\IdeologicalAdvisors.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\AllReplacementRules.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
@@ -674,7 +671,6 @@
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h" />
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h" />
     <ClInclude Include="Source\OutHoi4\Interface\OutMonarchsInterface.h" />
-    <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutRailway.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutRailways.h" />
@@ -779,9 +775,7 @@
     <ClInclude Include="Source\HOI4World\Ideologies\Ideology.h" />
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyFile.h" />
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyItems.h" />
-    <ClInclude Include="Source\HOI4World\Leaders\Admiral.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Advisor.h" />
-    <ClInclude Include="Source\HOI4World\Leaders\Commander.h" />
     <ClInclude Include="Source\HOI4World\Leaders\IdeologicalAdvisors.h" />
     <ClInclude Include="Source\HOI4World\Localisations\AllReplacementRules.h" />
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRule.h" />
