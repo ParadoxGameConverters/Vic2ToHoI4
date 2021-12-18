@@ -86,6 +86,6 @@ void createModFiles(const std::string& outputName)
 	descriptorFile << "replace_path=\"common/ideologies\"\n";
 	descriptorFile << "replace_path=\"history/countries\"\n";
 	descriptorFile << "replace_path=\"history/states\"\n";
-	descriptorFile << "supported_version=\"1.10.*\"";
+	descriptorFile << "supported_version=\"1.11.*\"";
 	descriptorFile.close();
 }
