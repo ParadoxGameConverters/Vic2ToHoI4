@@ -4,7 +4,11 @@
 
 
 
-HoI4::Character HoI4::Character::Factory::createNewCountryLeader(const std::string& tag,
+using HoI4::Character;
+
+
+
+Character Character::Factory::createNewCountryLeader(const std::string& tag,
 	 const std::pair<std::string, std::string>& nextMonarch,
 	 const std::string& primaryCulture,
 	 const std::string& primaryCultureGroup,
@@ -54,4 +58,40 @@ HoI4::Character HoI4::Character::Factory::createNewCountryLeader(const std::stri
 	localisation.addCharacterLocalisation(leader.id_, leader.name_);
 
 	return leader;
+}
+
+
+Character Character::Factory::createNewGeneral(const Vic2::Leader& src_general,
+	 const std::string& tag,
+	 Localisation& localisation)
+{
+	Character general;
+	general.is_commander_ = true;
+	general.name_ = commonItems::convertWin1252ToUTF8(src_general.getName());
+	general.id_ = commonItems::convertUTF8ToASCII(general.name_);
+	general.commander_attack_skill_ =
+		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("attack"))) + 1, 1, 7);
+	general.commander_defense_skill_ =
+		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("defence"))) + 1, 1, 7);
+	general.commander_planning_skill_ =
+		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("morale") * 8.0F)) + 1, 1, 5);
+	general.commander_logistics_skill_ =
+		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("organisation") * 25.0F)) + 1, 1, 5);
+	general.commander_skill_ = std::clamp((general.commander_attack_skill_ + general.commander_defense_skill_ +
+															general.commander_planning_skill_ + general.commander_logistics_skill_) /
+															3,
+		 1,
+		 5);
+
+	general.id_ = commonItems::convertUTF8ToASCII(general.name_);
+	std::ranges::transform(general.id_, general.id_.begin(), [](unsigned char c) {
+		return std::tolower(c);
+	});
+	std::ranges::transform(general.id_, general.id_.begin(), [](unsigned char c) {
+		return c == ' ' ? '_' : c;
+	});
+	general.id_ = tag + "_" + general.id_;
+	localisation.addCharacterLocalisation(general.id_, general.name_);
+
+	return general;
 }

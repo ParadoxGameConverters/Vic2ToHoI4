@@ -105,6 +105,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	theDate = std::make_unique<date>(sourceWorld.getDate());
 
+	const Character::Factory characterFactory;
 	provinceDefinitions =
 		 std::make_unique<Maps::ProvinceDefinitions>(importProvinceDefinitions(theConfiguration.getHoI4Path()));
 	theMapData = std::make_unique<Maps::MapData>(*provinceDefinitions, theConfiguration.getHoI4Path());
@@ -130,7 +131,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
 	casusBellis = Mappers::CasusBellisFactory{}.importCasusBellis();
 	Log(LogLevel::Progress) << "36%";
-	convertCountries(sourceWorld, provinceMapper);
+	convertCountries(sourceWorld, provinceMapper, characterFactory);
 	determineGreatPowers(sourceWorld);
 	governmentMapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
 	ideologyMapper = Mappers::IdeologyMapper::Factory().importIdeologyMapper();
@@ -220,7 +221,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 strongestGpNavies);
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
-	addLeaders();
+	addLeaders(characterFactory);
 	convertIdeologySupport();
 	Log(LogLevel::Progress) << "72%";
 	states->convertCapitalVPs(countries, greatPowers);
@@ -277,7 +278,9 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag) con
 }
 
 
-void HoI4::World::convertCountries(const Vic2::World& sourceWorld, const Mappers::ProvinceMapper& provinceMapper)
+void HoI4::World::convertCountries(const Vic2::World& sourceWorld,
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const Character::Factory& characterFactory)
 {
 	Log(LogLevel::Info) << "\tConverting countries";
 
@@ -285,7 +288,7 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld, const Mappers
 
 	for (const auto& [tag, country]: sourceWorld.getCountries())
 	{
-		convertCountry(tag, country, *flagsToIdeasMapper, provinceMapper);
+		convertCountry(tag, country, *flagsToIdeasMapper, provinceMapper, characterFactory);
 	}
 
 	int numHumanCountries = 0;
@@ -307,7 +310,8 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld, const Mappers
 void HoI4::World::convertCountry(const std::string& oldTag,
 	 const Vic2::Country& oldCountry,
 	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-	 const Mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const Character::Factory& characterFactory)
 {
 	// don't convert rebels
 	if (oldTag == "REB")
@@ -332,7 +336,8 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 			 *hoi4Localisations,
 			 *theDate,
 			 provinceMapper,
-			 *states);
+			 *states,
+			 characterFactory);
 		if (destCountry->getCapitalState())
 		{
 			countries.insert(make_pair(*possibleHoI4Tag, destCountry));
@@ -460,11 +465,10 @@ void HoI4::World::addNeutrality(bool debug)
 }
 
 
-void HoI4::World::addLeaders()
+void HoI4::World::addLeaders(const Character::Factory& characterFactory)
 {
 	Log(LogLevel::Info) << "\tAdding leaders";
 	auto configurableLeaders = CountryLeadersFactory().importCountryLeaders();
-	Character::Factory characterFactory;
 
 	for (auto& [tag, country]: countries)
 	{

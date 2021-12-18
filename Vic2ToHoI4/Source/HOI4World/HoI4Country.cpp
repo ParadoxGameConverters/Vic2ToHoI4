@@ -33,7 +33,8 @@ HoI4::Country::Country(std::string tag,
 	 Localisation& hoi4Localisations,
 	 const date& startDate,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
-	 const States& worldStates):
+	 const States& worldStates,
+	 const Character::Factory& characterFactory):
 	 tag(std::move(tag)),
 	 name_(sourceCountry.getName("english")), adjective_(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
@@ -120,7 +121,7 @@ HoI4::Country::Country(std::string tag,
 	{
 		convertMonarch(*lastMonarch);
 	}
-	convertLeaders(sourceCountry);
+	convertLeaders(sourceCountry, characterFactory, hoi4Localisations);
 	convertRelations(countryMap, sourceCountry, startDate);
 	atWar = sourceCountry.isAtWar();
 
@@ -463,15 +464,16 @@ void HoI4::Country::convertMonarch(const std::string& lastMonarch)
 }
 
 
-void HoI4::Country::convertLeaders(const Vic2::Country& sourceCountry)
+void HoI4::Country::convertLeaders(const Vic2::Country& sourceCountry,
+	 const Character::Factory& characterFactory,
+	 Localisation& localisation)
 {
-	auto srcLeaders = sourceCountry.getLeaders();
-	for (auto srcLeader: srcLeaders)
+	for (const auto& srcLeader: sourceCountry.getLeaders())
 	{
 		if (srcLeader.getType() == "land")
 		{
-			General newLeader(srcLeader);
-			generals.push_back(newLeader);
+			Character newCommander = characterFactory.createNewGeneral(srcLeader, tag, localisation);
+			characters_.push_back(newCommander);
 		}
 		else if (srcLeader.getType() == "sea")
 		{

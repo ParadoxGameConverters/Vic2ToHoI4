@@ -25,6 +25,10 @@ class Character::Factory
 		 Names& names,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Localisation& localisation);
+
+	static Character createNewGeneral(const Vic2::Leader& src_general,
+		 const std::string& tag,
+		 Localisation& localisation);
 };
 
 } // namespace HoI4

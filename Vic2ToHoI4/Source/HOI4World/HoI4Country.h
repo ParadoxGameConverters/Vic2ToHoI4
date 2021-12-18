@@ -67,7 +67,8 @@ class Country
 		 Localisation& hoi4Localisations,
 		 const date& startDate,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
-		 const States& worldStates);
+		 const States& worldStates,
+		 const Character::Factory& characterFactory);
 
 	/// For creating generated dominions
 	explicit Country(const std::shared_ptr<Country> owner,
@@ -313,7 +314,9 @@ class Country
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names);
 	void convertLaws();
-	void convertLeaders(const Vic2::Country& sourceCountry);
+	void convertLeaders(const Vic2::Country& sourceCountry,
+		 const Character::Factory& characterFactory,
+		 Localisation& localisation);
 	void convertMonarch(const std::string& lastMonarch);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
