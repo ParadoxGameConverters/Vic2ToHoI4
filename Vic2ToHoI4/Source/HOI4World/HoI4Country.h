@@ -14,7 +14,6 @@
 #include "Ideologies/Ideologies.h"
 #include "Leaders/Admiral.h"
 #include "Leaders/CountryLeader.h"
-#include "Leaders/General.h"
 #include "Map/CoastalProvinces.h"
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
@@ -254,7 +253,6 @@ class Country
 	[[nodiscard]] auto getTrainsMultiplier() const { return trainsMultiplier; }
 	[[nodiscard]] const std::vector<Airplane>& getPlanes() const { return planes; }
 	[[nodiscard]] const std::map<std::string, unsigned int>& getEquipmentStockpile() const { return equipmentStockpile; }
-	[[nodiscard]] const std::vector<General>& getGenerals() const { return generals; }
 	[[nodiscard]] const std::vector<Admiral>& getAdmirals() const { return admirals; }
 
 	[[nodiscard]] const auto& getOperatives() const { return operatives_; }
@@ -431,7 +429,6 @@ class Country
 	std::optional<float> trainsMultiplier;
 	std::vector<Airplane> planes;
 	std::map<std::string, unsigned int> equipmentStockpile;
-	std::vector<General> generals;
 	std::vector<Admiral> admirals;
 	std::map<std::string, std::vector<std::string>> shipNames;
 

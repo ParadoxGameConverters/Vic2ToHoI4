@@ -204,7 +204,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideologies\OutIdeology.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutAdvisor.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutGeneral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuilding.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuildings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.cpp" />
@@ -284,7 +283,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
@@ -817,7 +815,6 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeader.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRule.h" />

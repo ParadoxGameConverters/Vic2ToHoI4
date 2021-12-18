@@ -274,13 +274,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutAdmiral.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutGeneral.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.cpp">
@@ -2683,9 +2677,6 @@
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.h">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.h">

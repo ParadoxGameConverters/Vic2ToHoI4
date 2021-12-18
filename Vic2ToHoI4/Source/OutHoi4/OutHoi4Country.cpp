@@ -12,7 +12,6 @@
 #include "Leaders/OutAdmiral.h"
 #include "Leaders/OutAdvisor.h"
 #include "Leaders/OutCountryLeader.h"
-#include "Leaders/OutGeneral.h"
 #include "Mappers/Graphics/GraphicsMapper.h"
 #include "Navies/OutLegacyNavyNames.h"
 #include "Navies/OutMtgNavyNames.h"
@@ -483,9 +482,7 @@ void outputIdeas(std::ostream& output,
 	 const std::vector<std::string>& unbuiltCanals);
 void outputStability(std::ostream& output, const int& stability);
 void outputWarSupport(std::ostream& output, const int& warSupport);
-void outputCommanders(std::ostream& output,
-	 const std::vector<HoI4::General>& generals,
-	 const std::vector<HoI4::Admiral>& admirals);
+void outputCommanders(std::ostream& output, const std::vector<HoI4::Admiral>& admirals);
 void outputOperatives(std::ostream& output,
 	 const HoI4::Country& theCountry,
 	 const std::vector<HoI4::Operative>& operatives);
@@ -561,7 +558,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	{
 		HoI4::outputCountryLeader(output, leader);
 	}
-	outputCommanders(output, theCountry.getGenerals(), theCountry.getAdmirals());
+	outputCommanders(output, theCountry.getAdmirals());
 	outputOperatives(output, theCountry, theCountry.getOperatives());
 	output << theCountry.getTheShipVariants();
 	output << theCountry.getTankDesigns();
@@ -915,15 +912,8 @@ void outputWarSupport(std::ostream& output, const int& warSupport)
 }
 
 
-void outputCommanders(std::ostream& output,
-	 const std::vector<HoI4::General>& generals,
-	 const std::vector<HoI4::Admiral>& admirals)
+void outputCommanders(std::ostream& output, const std::vector<HoI4::Admiral>& admirals)
 {
-	for (const auto& general: generals)
-	{
-		output << general;
-		output << "\n";
-	}
 	for (const auto& admiral: admirals)
 	{
 		output << admiral;

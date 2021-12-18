@@ -477,16 +477,10 @@
     <ClCompile Include="Source\HOI4World\Events\EventOption.cpp">
       <Filter>HoI4World\Events</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Leaders\General.cpp">
-      <Filter>HoI4World\Leaders</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Leaders\Admiral.cpp">
       <Filter>HoI4World\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdmiral.cpp">
-      <Filter>OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\OutHoi4\Leaders\OutGeneral.cpp">
       <Filter>OutHoi4\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Leaders\Advisor.cpp">
@@ -1598,9 +1592,6 @@
     <ClInclude Include="Source\HOI4World\Events\EventOption.h">
       <Filter>HoI4World\Events</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Leaders\General.h">
-      <Filter>HoI4World\Leaders</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Leaders\Admiral.h">
       <Filter>HoI4World\Leaders</Filter>
     </ClInclude>
@@ -1944,9 +1935,6 @@
       <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h">
-      <Filter>OutHoi4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h">
       <Filter>OutHoi4\Leaders</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\SharedFocus.h">
