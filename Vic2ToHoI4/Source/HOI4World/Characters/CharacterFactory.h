@@ -29,6 +29,8 @@ class Character::Factory
 	Character createNewAdmiral(const Vic2::Leader& src_admiral, const std::string& tag, Localisation& localisation);
 
   private:
+	std::string determineId(const std::string& name, const std::string& tag);
+
 	std::set<std::string> used_ids_;
 };
 

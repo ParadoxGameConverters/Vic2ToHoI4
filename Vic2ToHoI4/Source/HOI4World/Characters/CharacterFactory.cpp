@@ -8,6 +8,34 @@ using HoI4::Character;
 
 
 
+std::string Character::Factory::determineId(const std::string& name, const std::string& tag)
+{
+	auto id = commonItems::convertUTF8ToASCII(name);
+
+	std::ranges::transform(id, id.begin(), [](unsigned char c) {
+		return std::tolower(c);
+	});
+	std::ranges::transform(id, id.begin(), [](unsigned char c) {
+		return c == ' ' ? '_' : c;
+	});
+	id = tag + "_" + id;
+
+	if (used_ids_.contains(id))
+	{
+		int suffix = 1;
+		while (used_ids_.contains(id + '_' + std::to_string(suffix)))
+		{
+			++suffix;
+		}
+		id = id + '_' + std::to_string(suffix);
+	}
+	used_ids_.insert(id);
+
+	return id;
+}
+
+
+
 Character Character::Factory::createNewCountryLeader(const std::string& tag,
 	 const std::pair<std::string, std::string>& nextMonarch,
 	 const std::string& primaryCulture,
@@ -47,24 +75,7 @@ Character Character::Factory::createNewCountryLeader(const std::string& tag,
 		}
 	}
 
-	leader.id_ = commonItems::convertUTF8ToASCII(leader.name_);
-	std::ranges::transform(leader.id_, leader.id_.begin(), [](unsigned char c) {
-		return std::tolower(c);
-	});
-	std::ranges::transform(leader.id_, leader.id_.begin(), [](unsigned char c) {
-		return c == ' ' ? '_' : c;
-	});
-	leader.id_ = tag + "_" + leader.id_;
-	if (used_ids_.contains(leader.id_))
-	{
-		int suffix = 1;
-		while (used_ids_.contains(leader.id_ + std::to_string(suffix)))
-		{
-			++suffix;
-		}
-		leader.id_ = leader.id_ + std::to_string(suffix);
-	}
-	used_ids_.insert(leader.id_);
+	leader.id_ = determineId(leader.name_, tag);
 	localisation.addCharacterLocalisation(leader.id_, leader.name_);
 
 	return leader;
@@ -93,24 +104,7 @@ Character Character::Factory::createNewGeneral(const Vic2::Leader& src_general,
 		 1,
 		 5);
 
-	general.id_ = commonItems::convertUTF8ToASCII(general.name_);
-	std::ranges::transform(general.id_, general.id_.begin(), [](unsigned char c) {
-		return std::tolower(c);
-	});
-	std::ranges::transform(general.id_, general.id_.begin(), [](unsigned char c) {
-		return c == ' ' ? '_' : c;
-	});
-	general.id_ = tag + "_" + general.id_;
-	if (used_ids_.contains(general.id_))
-	{
-		int suffix = 1;
-		while (used_ids_.contains(general.id_ + std::to_string(suffix)))
-		{
-			++suffix;
-		}
-		general.id_ = general.id_ + std::to_string(suffix);
-	}
-	used_ids_.insert(general.id_);
+	general.id_ = determineId(general.name_, tag);
 	localisation.addCharacterLocalisation(general.id_, general.name_);
 
 	return general;
@@ -139,24 +133,7 @@ Character Character::Factory::createNewAdmiral(const Vic2::Leader& src_admiral,
 		 1,
 		 5);
 
-	admiral.id_ = commonItems::convertUTF8ToASCII(admiral.name_);
-	std::ranges::transform(admiral.id_, admiral.id_.begin(), [](unsigned char c) {
-		return std::tolower(c);
-	});
-	std::ranges::transform(admiral.id_, admiral.id_.begin(), [](unsigned char c) {
-		return c == ' ' ? '_' : c;
-	});
-	admiral.id_ = tag + "_" + admiral.id_;
-	if (used_ids_.contains(admiral.id_))
-	{
-		int suffix = 1;
-		while (used_ids_.contains(admiral.id_ + std::to_string(suffix)))
-		{
-			++suffix;
-		}
-		admiral.id_ = admiral.id_ + std::to_string(suffix);
-	}
-	used_ids_.insert(admiral.id_);
+	admiral.id_ = determineId(admiral.name_, tag);
 	localisation.addCharacterLocalisation(admiral.id_, admiral.name_);
 
 	return admiral;
