@@ -95,3 +95,39 @@ Character Character::Factory::createNewGeneral(const Vic2::Leader& src_general,
 
 	return general;
 }
+
+
+Character Character::Factory::createNewAdmiral(const Vic2::Leader& src_admiral,
+	 const std::string& tag,
+	 Localisation& localisation)
+{
+	Character admiral;
+	admiral.is_admiral_ = true;
+	admiral.name_ = commonItems::convertWin1252ToUTF8(src_admiral.getName());
+	admiral.id_ = commonItems::convertUTF8ToASCII(admiral.name_);
+	admiral.admiral_attack_skill_ =
+		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("attack"))) + 1, 1, 7);
+	admiral.admiral_defense_skill_ =
+		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("defence"))) + 1, 1, 7);
+	admiral.admiral_maneuvering_skill_ =
+		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("morale") * 8.0F)) + 1, 1, 7);
+	admiral.admiral_coordination_skill_ =
+		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("organisation") * 25.0F)) + 1, 1, 7);
+	admiral.admiral_skill_ = std::clamp((admiral.admiral_attack_skill_ + admiral.admiral_defense_skill_ +
+														 admiral.admiral_maneuvering_skill_ + admiral.admiral_coordination_skill_) /
+														 3,
+		 1,
+		 5);
+
+	admiral.id_ = commonItems::convertUTF8ToASCII(admiral.name_);
+	std::ranges::transform(admiral.id_, admiral.id_.begin(), [](unsigned char c) {
+		return std::tolower(c);
+	});
+	std::ranges::transform(admiral.id_, admiral.id_.begin(), [](unsigned char c) {
+		return c == ' ' ? '_' : c;
+	});
+	admiral.id_ = tag + "_" + admiral.id_;
+	localisation.addCharacterLocalisation(admiral.id_, admiral.name_);
+
+	return admiral;
+}

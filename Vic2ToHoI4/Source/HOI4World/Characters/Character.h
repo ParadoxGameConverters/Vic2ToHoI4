@@ -33,7 +33,15 @@ class Character
 	[[nodiscard]] const auto& getCommanderAttackSkill() const { return commander_attack_skill_; }
 	[[nodiscard]] const auto& getCommanderDefenseSkill() const { return commander_defense_skill_; }
 	[[nodiscard]] const auto& getCommanderPlanningSkill() const { return commander_planning_skill_; }
-	[[nodiscard]] const auto& getCommanderLogiticsSkill() const { return commander_logistics_skill_; }
+	[[nodiscard]] const auto& getCommanderLogisticsSkill() const { return commander_logistics_skill_; }
+
+	[[nodiscard]] bool isAdmiral() const { return is_admiral_; }
+	[[nodiscard]] const auto& getAdmiralTraits() const { return admiral_traits_; }
+	[[nodiscard]] const auto& getAdmiralSkill() const { return admiral_skill_; }
+	[[nodiscard]] const auto& getAdmiralAttackSkill() const { return admiral_attack_skill_; }
+	[[nodiscard]] const auto& getAdmiralDefenseSkill() const { return admiral_defense_skill_; }
+	[[nodiscard]] const auto& getAdmiralManeuveringSkill() const { return admiral_maneuvering_skill_; }
+	[[nodiscard]] const auto& getAdmiralCoordinationSkill() const { return admiral_coordination_skill_; }
 
   private:
 	std::string id_ = "nomen_nescio";
@@ -51,6 +59,14 @@ class Character
 	int commander_defense_skill_ = 1;
 	int commander_planning_skill_ = 1;
 	int commander_logistics_skill_ = 1;
+
+	bool is_admiral_ = false;
+	std::vector<std::string> admiral_traits_;
+	int admiral_skill_ = 1;
+	int admiral_attack_skill_ = 1;
+	int admiral_defense_skill_ = 1;
+	int admiral_maneuvering_skill_ = 1;
+	int admiral_coordination_skill_ = 1;
 };
 
 } // namespace HoI4

@@ -477,8 +477,8 @@ void HoI4::Country::convertLeaders(const Vic2::Country& sourceCountry,
 		}
 		else if (srcLeader.getType() == "sea")
 		{
-			Admiral newLeader(srcLeader);
-			admirals.push_back(newLeader);
+			Character newAdmiral = characterFactory.createNewAdmiral(srcLeader, tag, localisation);
+			characters_.push_back(newAdmiral);
 		}
 	}
 }

@@ -29,6 +29,10 @@ class Character::Factory
 	static Character createNewGeneral(const Vic2::Leader& src_general,
 		 const std::string& tag,
 		 Localisation& localisation);
+
+	static Character createNewAdmiral(const Vic2::Leader& src_admiral,
+		 const std::string& tag,
+		 Localisation& localisation);
 };
 
 } // namespace HoI4
