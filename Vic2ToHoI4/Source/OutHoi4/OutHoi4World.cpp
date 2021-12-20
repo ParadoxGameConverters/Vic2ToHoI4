@@ -54,8 +54,7 @@ void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& coun
 	 const Configuration& theConfiguration);
 void outputMap(const States& states, const StrategicRegions& strategicRegions, const std::string& outputName);
 void outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::string& outputName);
-void outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
-	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+void outputCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
 	 const std::string& outputName,
 	 const Configuration& theConfiguration);
@@ -181,11 +180,7 @@ void HoI4::OutputWorld(const World& world,
 	outputSupplyZones(world.getSupplyZones(), outputName);
 	outputRelations(outputName, world.getMajorIdeologies());
 	outputGenericFocusTree(world.getGenericFocusTree(), outputName);
-	outputCountries(world.getActiveIdeologicalAdvisors(),
-		 world.getCountries(),
-		 world.getMilitaryMappings(),
-		 outputName,
-		 theConfiguration);
+	outputCountries(world.getCountries(), world.getMilitaryMappings(), outputName, theConfiguration);
 	outputBuildings(world.getBuildings(), outputName);
 	outputSupplyNodes("output/" + outputName, world.getSupplyNodes());
 	outputRailways("output/" + outputName, world.getRailways());
@@ -357,8 +352,7 @@ void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const s
 }
 
 
-void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
-	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+void HoI4::outputCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
 	 const std::string& outputName,
 	 const Configuration& theConfiguration)
