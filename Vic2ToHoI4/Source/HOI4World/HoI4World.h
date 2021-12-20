@@ -118,7 +118,7 @@ class World: commonItems::parser
 	const auto& getMajorIdeologies() const { return ideologies->getMajorIdeologies(); }
 
 	std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag) const;
-	std::set<HoI4::Advisor> getActiveIdeologicalAdvisors() const;
+	std::set<Advisor> getActiveIdeologicalAdvisors() const;
 
   private:
 	World(const World&) = delete;

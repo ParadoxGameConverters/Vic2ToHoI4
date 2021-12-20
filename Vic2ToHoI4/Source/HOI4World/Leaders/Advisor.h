@@ -25,8 +25,8 @@ class Advisor: commonItems::parser
 
   private:
 	std::vector<std::string> traits;
-	std::string picture = "";
-	std::string ideology = "";
+	std::string picture;
+	std::string ideology;
 };
 
 } // namespace HoI4

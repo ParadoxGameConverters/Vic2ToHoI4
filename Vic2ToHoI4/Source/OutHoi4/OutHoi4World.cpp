@@ -7,6 +7,7 @@
 #include "Ideas/OutIdeas.h"
 #include "Ideologies/OutIdeologies.h"
 #include "IntelligenceAgencies/OutIntelligenceAgencies.h"
+#include "Leaders/OutAdvisor.h"
 #include "Log.h"
 #include "Map/OutBuildings.h"
 #include "Map/OutStrategicRegions.h"
@@ -33,6 +34,7 @@
 #include <iterator>
 #include <optional>
 #include <ranges>
+
 
 
 namespace HoI4
@@ -69,6 +71,29 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::string& outputName);
 
 } // namespace HoI4
+
+
+namespace
+{
+
+void outputGenericAdvisors(const std::set<HoI4::Advisor>& advisors, const std::string& outputName)
+{
+	std::ofstream advisorsFile("output/" + outputName + "/history/general/convertedAdvisors.txt");
+	if (!advisorsFile.is_open())
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/history/general/convertedAdvisors.txt");
+	}
+
+	for (const auto& advisor: advisors)
+	{
+		HoI4::outputAdvisor(advisorsFile, advisor);
+		advisorsFile << '\n';
+	}
+
+	advisorsFile.close();
+}
+
+} // namespace
 
 
 void HoI4::reportIndustryLevels(const World& world, const Configuration& theConfiguration)
@@ -190,6 +215,7 @@ void HoI4::OutputWorld(const World& world,
 	outAiPeaces(world.getPeaces(), world.getMajorIdeologies(), outputName);
 	outputIdeologies(world.getIdeologies(), outputName);
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
+	outputGenericAdvisors(world.getActiveIdeologicalAdvisors(), outputName);
 	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), world.getCountries(), outputName);
 	outDynamicModifiers(world.getDynamicModifiers(), theConfiguration);
 	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), world.getDate(), outputName);
