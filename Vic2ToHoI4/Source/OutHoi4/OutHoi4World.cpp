@@ -387,30 +387,9 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 		if (country->getCapitalState())
 		{
 			const auto& specificMilitaryMappings = theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
-			outputCountry(activeIdeologicalAdvisors,
-				 specificMilitaryMappings.getDivisionTemplates(),
-				 *country,
-				 theConfiguration);
+			outputCountry(specificMilitaryMappings.getDivisionTemplates(), *country, theConfiguration);
 		}
 	}
-
-	std::ofstream ideasFile("output/" + outputName + "/interface/converter_ideas.gfx");
-	if (!ideasFile.is_open())
-	{
-		throw std::runtime_error("Could not open output/" + outputName + "/interface/converter_ideas.gfx");
-	}
-
-	ideasFile << "spriteTypes = {\n";
-	for (const auto& country: countries | std::views::values)
-	{
-		if (country->getCapitalState())
-		{
-			outputIdeaGraphics(ideasFile, *country);
-		}
-	}
-	ideasFile << "\n";
-	ideasFile << "}\n";
-	ideasFile.close();
 
 	std::ofstream portraitsFile("output/" + outputName + "/portraits/conv_portraits.txt");
 	if (!portraitsFile.is_open())
