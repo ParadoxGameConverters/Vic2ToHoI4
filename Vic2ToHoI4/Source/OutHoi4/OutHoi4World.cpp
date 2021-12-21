@@ -7,6 +7,7 @@
 #include "Ideas/OutIdeas.h"
 #include "Ideologies/OutIdeologies.h"
 #include "IntelligenceAgencies/OutIntelligenceAgencies.h"
+#include "Leaders/OutAdvisor.h"
 #include "Log.h"
 #include "Map/OutBuildings.h"
 #include "Map/OutStrategicRegions.h"
@@ -35,6 +36,7 @@
 #include <ranges>
 
 
+
 namespace HoI4
 {
 
@@ -54,8 +56,7 @@ void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& coun
 	 const Configuration& theConfiguration);
 void outputMap(const States& states, const StrategicRegions& strategicRegions, const std::string& outputName);
 void outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::string& outputName);
-void outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
-	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+void outputCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
 	 const std::string& outputName,
 	 const Configuration& theConfiguration);
@@ -70,6 +71,29 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::string& outputName);
 
 } // namespace HoI4
+
+
+namespace
+{
+
+void outputGenericAdvisors(const std::set<HoI4::Advisor>& advisors, const std::string& outputName)
+{
+	std::ofstream advisorsFile("output/" + outputName + "/history/general/convertedAdvisors.txt");
+	if (!advisorsFile.is_open())
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/history/general/convertedAdvisors.txt");
+	}
+
+	for (const auto& advisor: advisors)
+	{
+		HoI4::outputAdvisor(advisorsFile, advisor);
+		advisorsFile << '\n';
+	}
+
+	advisorsFile.close();
+}
+
+} // namespace
 
 
 void HoI4::reportIndustryLevels(const World& world, const Configuration& theConfiguration)
@@ -181,11 +205,7 @@ void HoI4::OutputWorld(const World& world,
 	outputSupplyZones(world.getSupplyZones(), outputName);
 	outputRelations(outputName, world.getMajorIdeologies());
 	outputGenericFocusTree(world.getGenericFocusTree(), outputName);
-	outputCountries(world.getActiveIdeologicalAdvisors(),
-		 world.getCountries(),
-		 world.getMilitaryMappings(),
-		 outputName,
-		 theConfiguration);
+	outputCountries(world.getCountries(), world.getMilitaryMappings(), outputName, theConfiguration);
 	outputBuildings(world.getBuildings(), outputName);
 	outputSupplyNodes("output/" + outputName, world.getSupplyNodes());
 	outputRailways("output/" + outputName, world.getRailways());
@@ -195,6 +215,7 @@ void HoI4::OutputWorld(const World& world,
 	outAiPeaces(world.getPeaces(), world.getMajorIdeologies(), outputName);
 	outputIdeologies(world.getIdeologies(), outputName);
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
+	outputGenericAdvisors(world.getActiveIdeologicalAdvisors(), outputName);
 	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), world.getCountries(), outputName);
 	outDynamicModifiers(world.getDynamicModifiers(), theConfiguration);
 	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), world.getDate(), outputName);
@@ -357,8 +378,7 @@ void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const s
 }
 
 
-void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
-	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+void HoI4::outputCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
 	 const std::string& outputName,
 	 const Configuration& theConfiguration)
@@ -387,30 +407,9 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 		if (country->getCapitalState())
 		{
 			const auto& specificMilitaryMappings = theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
-			outputCountry(activeIdeologicalAdvisors,
-				 specificMilitaryMappings.getDivisionTemplates(),
-				 *country,
-				 theConfiguration);
+			outputCountry(specificMilitaryMappings.getDivisionTemplates(), *country, theConfiguration);
 		}
 	}
-
-	std::ofstream ideasFile("output/" + outputName + "/interface/converter_ideas.gfx");
-	if (!ideasFile.is_open())
-	{
-		throw std::runtime_error("Could not open output/" + outputName + "/interface/converter_ideas.gfx");
-	}
-
-	ideasFile << "spriteTypes = {\n";
-	for (const auto& country: countries | std::views::values)
-	{
-		if (country->getCapitalState())
-		{
-			outputIdeaGraphics(ideasFile, *country);
-		}
-	}
-	ideasFile << "\n";
-	ideasFile << "}\n";
-	ideasFile.close();
 
 	std::ofstream portraitsFile("output/" + outputName + "/portraits/conv_portraits.txt");
 	if (!portraitsFile.is_open())

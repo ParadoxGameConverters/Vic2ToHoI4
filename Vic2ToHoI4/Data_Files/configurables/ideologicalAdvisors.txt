@@ -1,187 +1,29 @@
 radical = {
-	allowed = {
-		
-		NOT = {
-			has_available_idea_with_traits = { idea = radical_minister limit = 1 }
-		}
-	}
-
-	picture = generic_goods_red_bonus
-
 	traits = { radical_minister }
-
-	do_effect = {
-		NOT = {
-			has_government = radical
-		}
-	}
-
-	ai_will_do = {
-		factor = 0
-		modifier = {
-			has_idea = radicalism
-			NOT = {
-				OR = {
-					AND = {
-						is_puppet = yes
-						NOT = {
-							has_government = radical
-						}
-					}
-					radical > 0.7
-					radical < 0.15
-				}						
-			}
-			add = 20
-		}			
-	}
+	picture = generic_goods_red_bonus
 }
 
 neutrality = {
-	allowed = {
-		
-		NOT = {
-			has_available_idea_with_traits = { idea = neutrality_minister limit = 1 }
-		}
-	}
-
 	traits = { neutrality_minister }
-
-	ai_will_do = {
-		factor = 1
-	}
+	picture = GFX_idea_generic_democratic_reformer
 }
 
 absolutist = {
-	allowed = {
-		
-		NOT = {
-			has_available_idea_with_traits = { idea = absolutist_minister limit = 1 }
-		}
-	}
-
 	traits = { absolutist_minister }
-
 	picture = triumphant_will
-
-	do_effect = {
-		NOT = {
-			has_government = absolutist
-		}
-	}
-
-	ai_will_do = {
-		factor = 0
-		modifier = {
-			has_idea = absolutism
-			NOT = {
-				OR = {
-					AND = {
-						is_puppet = yes
-						NOT = {
-							has_government = absolutist
-						}
-					}
-					absolutist > 0.7
-					absolutist < 0.15
-				}						
-			}
-			add = 20
-		}		
-	}
 }
 
 communism = {
-	allowed = {
-		NOT = {
-			has_available_idea_with_traits = { idea = communism_minister limit = 1 }
-		}
-	}
-
 	traits = { communism_minister }
-
-	do_effect = {
-		NOT = {
-			has_government = communism
-		}
-	}
-
-	ai_will_do = {
-		factor = 0
-		modifier = {
-			has_idea = internationalism
-			NOT = {
-				OR = {
-					AND = {
-						is_puppet = yes
-						NOT = {
-							has_government = communism
-						}
-					}
-					communism > 0.7
-					communism < 0.15
-				}						
-			}
-			add = 20
-		}		
-	}
+	picture = GFX_idea_generic_communist_revolutionary
 }
 
 democratic = {
-	allowed = {
-		NOT = {
-			has_available_idea_with_traits = { idea = democratic_minister limit = 1 }
-		}
-	}
-
 	traits = { democratic_minister }
-
-	do_effect = {
-		NOT = {
-			has_government = democratic
-		}
-	}
-
-	ai_will_do = {
-		factor = 0
-	}
+	picture = GFX_idea_generic_democratic_reformer
 }
 
 fascism = {
-	allowed = {
-		NOT = {
-			has_available_idea_with_traits = { idea = fascism_minister limit = 1 }
-		}
-	}
-
 	traits = { fascism_minister }
-
-	do_effect = {
-		NOT = {
-			has_government = fascism
-		}
-	}
-
-	ai_will_do = {
-		factor = 0
-		modifier = {
-			OR = {
-				has_idea = nationalism
-			}
-			
-			NOT = {
-				OR = {
-					AND = {
-						is_puppet = yes
-						NOT = {
-							has_government = fascism
-						}
-					}
-					fascism > 0.7
-					fascism < 0.15
-				}						
-			}
-			add = 20
-		}		
-	}
+	picture = GFX_idea_generic_fascist_demagogue
 }
