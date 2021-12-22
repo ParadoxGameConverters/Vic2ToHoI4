@@ -233,8 +233,12 @@ void Maps::MapData::importAdjacencies(const std::string& path)
 	{
 		std::string line;
 		getline(adjacenciesFile, line);
+		if (line.starts_with('#'))
+		{
+			continue;
+		}
 
-		const std::regex pattern("(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*);(.*)\r?");
+		const std::regex pattern("([^;]*);([^;]*);([^;]*)(.*)\r?");
 		if (std::smatch matches; regex_match(line, matches, pattern))
 		{
 			if (matches[1] == "From" || matches[1] == "-1")
