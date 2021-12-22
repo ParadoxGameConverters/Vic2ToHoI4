@@ -88,6 +88,7 @@ TEST(Maps_MapData, NeighborDefinedFromNonImpassableAdjacency)
 	const Maps::MapData mapData(provinceDefinitions, "maptests");
 
 	EXPECT_THAT(mapData.getNeighbors(101), testing::UnorderedElementsAre(102));
+	EXPECT_THAT(mapData.getNeighbors(254), testing::UnorderedElementsAre(271));
 }
 
 
