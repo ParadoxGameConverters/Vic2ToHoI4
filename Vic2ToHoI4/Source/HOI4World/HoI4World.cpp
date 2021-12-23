@@ -155,7 +155,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 provinceMapper,
 		 *theMapData,
 		 *provinceDefinitions,
-		 impassableProvinces);
+		 impassableProvinces,
+		 theProvinces);
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";
 	if (theConfiguration.getDebug())
