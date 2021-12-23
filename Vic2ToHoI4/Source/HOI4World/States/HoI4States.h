@@ -63,9 +63,11 @@ class States: commonItems::parser
 		 const Maps::MapData& mapData,
 		 Localisation& hoi4Localisations,
 		 const Mappers::ProvinceMapper& provinceMapper,
+		 const ImpassableProvinces& impassableProvinces,
+		 const std::map<int, DefaultState>& defaultStates,
 		 const Configuration& theConfiguration);
 
-	[[nodiscard]] const std::map<int, DefaultState>& getDefaultStates() const { return defaultStates; }
+	[[nodiscard]] const std::map<int, DefaultState>& getDefaultStates() const { return defaultStates_; }
 	[[nodiscard]] const std::map<int, State>& getStates() const { return states; }
 	[[nodiscard]] const std::map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
 	[[nodiscard]] const auto& getLanguageCategories() const { return languageCategories; }
@@ -120,6 +122,7 @@ class States: commonItems::parser
 		 Localisation& hoi4Localisations,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Maps::MapData& mapData,
+		 const ImpassableProvinces& impassableProvinces,
 		 const Configuration& theConfiguration);
 	void createMatchingHoI4State(const Vic2::State& vic2State,
 		 const std::string& stateOwner,
@@ -136,7 +139,8 @@ class States: commonItems::parser
 		 const std::map<int, Province>& provinces,
 		 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces,
 		 const Configuration& theConfiguration,
-		 const std::map<std::string, std::string>& grammarMappings);
+		 const std::map<std::string, std::string>& grammarMappings,
+		 const ImpassableProvinces& impassableProvinces);
 	std::set<int> getProvincesInState(const Vic2::State& vic2State,
 		 const std::string& owner,
 		 const Mappers::ProvinceMapper& provinceMapper);
@@ -165,7 +169,7 @@ class States: commonItems::parser
 	std::map<int, std::set<std::pair<std::string, std::string>>> coresMap;
 	std::set<int> assignedProvinces;
 
-	std::map<int, DefaultState> defaultStates;
+	std::map<int, DefaultState> defaultStates_;
 	std::map<int, State> states;
 	std::map<int, int> provinceToStateIDMap;
 	int nextStateID = 1;

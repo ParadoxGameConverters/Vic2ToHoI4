@@ -8,8 +8,10 @@
 #include "Events/GovernmentInExileEvent.h"
 #include "HOI4World/Characters/CharacterFactory.h"
 #include "HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
+#include "HOI4World/Map/ImpassableProvinces.h"
 #include "HOI4World/Map/Railways.h"
 #include "HOI4World/Map/SupplyNodes.h"
+#include "HOI4World/States/DefaultStatesImporter.h"
 #include "HoI4Country.h"
 #include "HoI4FocusTree.h"
 #include "HoI4Localisation.h"
@@ -112,6 +114,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
 	strategicRegions = StrategicRegions::Factory().importStrategicRegions(theConfiguration);
+	const auto defaultStates = DefaultStatesImporter().ImportDefaultStates(theConfiguration.getHoI4Path());
+	const ImpassableProvinces impassableProvinces(defaultStates);
 	states = std::make_unique<States>(sourceWorld,
 		 *countryMap,
 		 theProvinces,
@@ -123,6 +127,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 *theMapData,
 		 *hoi4Localisations,
 		 provinceMapper,
+		 impassableProvinces,
+		 defaultStates,
 		 theConfiguration);
 	Log(LogLevel::Progress) << "32%";
 	names = Names::Factory().getNames(theConfiguration);

@@ -206,6 +206,7 @@
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapper.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\States\DefaultStatesImporter.cpp" />
     <ClCompile Include="Source\HOI4World\TankDesigns\PossibleTankDesigns.cpp" />
     <ClCompile Include="Source\HOI4World\TankDesigns\TankDesign.cpp" />
     <ClCompile Include="Source\HOI4World\TankDesigns\TankDesigns.cpp" />
@@ -588,6 +589,7 @@
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLink.h" />
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.h" />
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapping.h" />
+    <ClInclude Include="Source\HOI4World\States\DefaultStatesImporter.h" />
     <ClInclude Include="Source\HOI4World\States\HoI4StateBuilder.h" />
     <ClInclude Include="Source\HOI4World\States\StateCategoriesBuilder.h" />
     <ClInclude Include="Source\HOI4World\TankDesigns\PossibleTankDesigns.h" />
