@@ -6,6 +6,7 @@
 using HoI4::Railway;
 
 
+
 namespace
 {
 
@@ -33,7 +34,9 @@ int getRailwayLevel(int provinceOneRailLevel, int provinceTwoRailLevel)
 }
 
 
-std::optional<int> getHoI4ProvinceNumber(int Vic2ProvinceNum, const Mappers::ProvinceMapper& provinceMapper)
+std::optional<int> getHoI4ProvinceNumber(int Vic2ProvinceNum,
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const HoI4::ImpassableProvinces& impassableProvinces)
 {
 	const auto& HoI4ProvinceNumbers = provinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNum);
 	if (HoI4ProvinceNumbers.empty())
@@ -41,7 +44,15 @@ std::optional<int> getHoI4ProvinceNumber(int Vic2ProvinceNum, const Mappers::Pro
 		return std::nullopt;
 	}
 
-	return HoI4ProvinceNumbers[0];
+	for (const auto provinceNumber: HoI4ProvinceNumbers)
+	{
+		if (!impassableProvinces.isProvinceImpassable(provinceNumber))
+		{
+			return provinceNumber;
+		}
+	}
+
+	return std::nullopt;
 }
 
 
@@ -101,7 +112,8 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 	 const Maps::MapData& Vic2MapData,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
-	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions)
+	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
+	 const ImpassableProvinces& impassableProvinces)
 {
 	Log(LogLevel::Info) << "\tDetermining railways";
 
@@ -135,8 +147,9 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 				continue;
 			}
 
-			const auto HoI4ProvinceNumber = getHoI4ProvinceNumber(Vic2ProvinceNum, provinceMapper);
-			const auto HoI4NeighborProvinceNumber = getHoI4ProvinceNumber(Vic2NeighborProvinceNum, provinceMapper);
+			const auto HoI4ProvinceNumber = getHoI4ProvinceNumber(Vic2ProvinceNum, provinceMapper, impassableProvinces);
+			const auto HoI4NeighborProvinceNumber =
+				 getHoI4ProvinceNumber(Vic2NeighborProvinceNum, provinceMapper, impassableProvinces);
 			if (!HoI4ProvinceNumbersAreValid(HoI4ProvinceNumber, HoI4NeighborProvinceNumber))
 			{
 				continue;

@@ -3,6 +3,7 @@
 
 
 
+#include "HOI4World/Map/Hoi4Province.h"
 #include "HOI4World/Map/Railway.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Maps/MapData.h"
@@ -10,6 +11,7 @@
 #include <map>
 #include <memory>
 #include <vector>
+#include "ImpassableProvinces.h"
 
 
 
@@ -20,7 +22,8 @@ std::vector<Railway> determineRailways(const std::map<int, std::shared_ptr<Vic2:
 	 const Maps::MapData& Vic2MapData,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
-	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions);
+	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
+	 const ImpassableProvinces& impassableProvinces);
 
 }
 
