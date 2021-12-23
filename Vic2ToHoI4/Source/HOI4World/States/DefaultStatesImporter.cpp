@@ -18,7 +18,7 @@ std::map<int, HoI4::DefaultState> HoI4::DefaultStatesImporter::ImportDefaultStat
 	for (const auto& stateFile: commonItems::GetAllFilesInFolder(path))
 	{
 		num_ = std::stoi(stateFile.substr(0, stateFile.find_first_of('-')));
-		parseFile(path + stateFile);
+		parseFile(path + '/' + stateFile);
 	}
 
 	return defaultStates_;
