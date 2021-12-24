@@ -27,10 +27,25 @@ std::shared_ptr<Vic2::Province> getValidVic2Province(int provinceNum,
 	return province;
 }
 
-
+// For the given inputs, these are the outputs
+//
+//   0 1 2 3 4 5 6
+//  +-------------
+// 0|0 0 0 0 0 0 0
+// 1|0 0 0 0 0 1 1
+// 2|0 0 0 0 1 1 2
+// 3|0 0 0 1 1 2 2
+// 4|0 0 1 1 2 2 3
+// 5|0 1 1 2 2 3 3
+// 6|0 1 2 2 3 3 3
 int getRailwayLevel(int provinceOneRailLevel, int provinceTwoRailLevel)
 {
-	return (std::max((provinceOneRailLevel - 3), 0) + std::max((provinceTwoRailLevel - 3), 0)) / 2;
+	if (provinceOneRailLevel == 0 || provinceTwoRailLevel == 0)
+	{
+		return 0;
+	}
+
+	return std::clamp((provinceOneRailLevel - 2 + provinceTwoRailLevel - 2) / 2, 0, 3);
 }
 
 
