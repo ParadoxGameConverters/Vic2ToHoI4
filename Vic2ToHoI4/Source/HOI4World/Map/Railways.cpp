@@ -34,7 +34,7 @@ int getRailwayLevel(int provinceOneRailLevel, int provinceTwoRailLevel)
 }
 
 
-std::optional<int> getHoI4ProvinceNumber(int Vic2ProvinceNum,
+std::optional<int> getValidHoI4ProvinceNumber(int Vic2ProvinceNum,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const HoI4::ImpassableProvinces& impassableProvinces,
 	 const std::map<int, HoI4::Province>& hoi4Provinces)
@@ -161,9 +161,9 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 			}
 
 			const auto HoI4ProvinceNumber =
-				 getHoI4ProvinceNumber(Vic2ProvinceNum, provinceMapper, impassableProvinces, hoi4Provinces);
+				 getValidHoI4ProvinceNumber(Vic2ProvinceNum, provinceMapper, impassableProvinces, hoi4Provinces);
 			const auto HoI4NeighborProvinceNumber =
-				 getHoI4ProvinceNumber(Vic2NeighborProvinceNum, provinceMapper, impassableProvinces, hoi4Provinces);
+				 getValidHoI4ProvinceNumber(Vic2NeighborProvinceNum, provinceMapper, impassableProvinces, hoi4Provinces);
 			if (!HoI4ProvinceNumbersAreValid(HoI4ProvinceNumber, HoI4NeighborProvinceNumber))
 			{
 				continue;
