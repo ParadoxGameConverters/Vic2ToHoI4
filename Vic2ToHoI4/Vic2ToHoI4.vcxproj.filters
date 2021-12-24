@@ -1378,6 +1378,9 @@
     <ClCompile Include="Source\OutHoi4\Map\OutRailways.cpp">
       <Filter>OutHoi4\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\States\DefaultStatesImporter.cpp">
+      <Filter>HoI4World\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2696,6 +2699,9 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Map\OutRailways.h">
       <Filter>OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\States\DefaultStatesImporter.h">
+      <Filter>HoI4World\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

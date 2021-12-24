@@ -116,6 +116,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultStatesImporter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\PossibleTankDesigns.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankDesign.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\TankDesigns\TankDesigns.cpp" />
@@ -923,6 +924,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultState.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultStatesImporter.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\DockyardProvince.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4StateBuilder.h" />

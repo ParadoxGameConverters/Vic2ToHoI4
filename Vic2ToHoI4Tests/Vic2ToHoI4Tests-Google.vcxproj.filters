@@ -1640,6 +1640,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultStatesImporter.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -3266,6 +3269,9 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.h">
       <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultStatesImporter.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

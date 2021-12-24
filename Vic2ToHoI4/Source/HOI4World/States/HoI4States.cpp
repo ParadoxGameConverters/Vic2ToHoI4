@@ -1,6 +1,5 @@
 #include "HoI4States.h"
 #include "Configuration.h"
-#include "DefaultState.h"
 #include "HOI4World/HoI4Country.h"
 #include "HOI4World/HoI4Localisation.h"
 #include "HOI4World/Localisations/GrammarMappings.h"
@@ -42,28 +41,18 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 	 const Maps::MapData& mapData,
 	 Localisation& hoi4Localisations,
 	 const Mappers::ProvinceMapper& provinceMapper,
-	 const Configuration& theConfiguration)
+	 const ImpassableProvinces& impassableProvinces,
+	 const std::map<int, DefaultState>& defaultStates,
+	 const Configuration& theConfiguration):
+	 defaultStates_(defaultStates)
 {
-	int num;
-
 	Log(LogLevel::Info) << "\tConverting states";
-	registerKeyword("state", [this, &num](std::istream& theStream) {
-		defaultStates.insert(std::make_pair(num, DefaultState(theStream)));
-	});
-
-	for (const auto& stateFile: commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/history/states"))
-	{
-		num = stoi(stateFile.substr(0, stateFile.find_first_of('-')));
-		parseFile(theConfiguration.getHoI4Path() + "/history/states/" + stateFile);
-	}
-
-	const ImpassableProvinces theImpassableProvinces(defaultStates);
 
 	determineOwnersAndCores(countryMap, sourceWorld, provinceDefinitions, provinceMapper);
 	createStates(sourceWorld.getCountries(),
 		 sourceWorld.getProvinces(),
 		 theProvinces,
-		 theImpassableProvinces,
+		 impassableProvinces,
 		 countryMap,
 		 theCoastalProvinces,
 		 theStateDefinitions,
@@ -72,6 +61,7 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 		 hoi4Localisations,
 		 provinceMapper,
 		 mapData,
+		 impassableProvinces,
 		 theConfiguration);
 
 	languageCategories.emplace("msnc", std::set<int>{});
@@ -251,6 +241,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country>& sour
 	 Localisation& hoi4Localisations,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& mapData,
+	 const ImpassableProvinces& impassableProvinces,
 	 const Configuration& theConfiguration)
 {
 	const auto grammarMappings = GrammarMappings().importGrammarMappings();
@@ -279,7 +270,8 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country>& sour
 					 theProvinces,
 					 sourceProvinces,
 					 theConfiguration,
-					 grammarMappings);
+					 grammarMappings,
+					 impassableProvinces);
 				for (const auto& province: vic2State.getProvinceNumbers())
 				{
 					ownedProvinces.insert(province);
@@ -333,7 +325,8 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country>& sour
 			 theProvinces,
 			 sourceProvinces,
 			 theConfiguration,
-			 grammarMappings);
+			 grammarMappings,
+			 impassableProvinces);
 	}
 
 	const auto manpower = getTotalManpower();
@@ -357,7 +350,8 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	 const std::map<int, Province>& provinces,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces,
 	 const Configuration& theConfiguration,
-	 const std::map<std::string, std::string>& grammarMappings)
+	 const std::map<std::string, std::string>& grammarMappings,
+	 const ImpassableProvinces& impassableProvinces)
 {
 	const auto allProvinces = getProvincesInState(vic2State, stateOwner, provinceMapper);
 	const auto initialConnectedProvinceSets = getConnectedProvinceSets(allProvinces, mapData, provinces);
@@ -367,12 +361,12 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	for (const auto& connectedProvinces: finalConnectedProvinceSets)
 	{
 		std::set<int> passableProvinces;
-		std::set<int> impassableProvinces;
+		std::set<int> localImpassableProvinces;
 		for (auto province: connectedProvinces)
 		{
-			if (theImpassableProvinces.isProvinceImpassable(province))
+			if (impassableProvinces.isProvinceImpassable(province))
 			{
-				impassableProvinces.insert(province);
+				localImpassableProvinces.insert(province);
 			}
 			else
 			{
@@ -388,7 +382,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 				existing->second.insert(nextStateID);
 			}
 			State newState(vic2State, nextStateID, stateOwner);
-			if (!impassableProvinces.empty())
+			if (!localImpassableProvinces.empty())
 			{
 				newState.markHadImpassablePart();
 			}
@@ -407,7 +401,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 				 grammarMappings);
 		}
 
-		if (!impassableProvinces.empty())
+		if (!localImpassableProvinces.empty())
 		{
 			auto [existing, emplaced] = languageCategories.emplace(vic2State.getLanguageCategory(), std::set{nextStateID});
 			if (!emplaced)
@@ -415,7 +409,11 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 				existing->second.insert(nextStateID);
 			}
 			State newState(vic2State, nextStateID, stateOwner);
-			addProvincesAndCoresToNewState(newState, sourceCountries, impassableProvinces, provinceMapper, vic2Provinces);
+			addProvincesAndCoresToNewState(newState,
+				 sourceCountries,
+				 localImpassableProvinces,
+				 provinceMapper,
+				 vic2Provinces);
 			newState.makeImpassable();
 			newState.tryToCreateVP(vic2State, provinceMapper, theConfiguration);
 			newState.addManpower(vic2State.getProvinces(), provinceMapper, theConfiguration);
