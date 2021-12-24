@@ -5,8 +5,8 @@
 
 #include "DefaultState.h"
 #include "Parser.h"
+#include <filesystem>
 #include <map>
-#include <string>
 
 
 
@@ -18,7 +18,7 @@ class DefaultStatesImporter: commonItems::parser
   public:
 	DefaultStatesImporter();
 
-	std::map<int, DefaultState> ImportDefaultStates(const std::string& hoi4Path);
+	std::map<int, DefaultState> ImportDefaultStates(const std::filesystem::path& hoi4Path);
 
   private:
 	int num_ = 0;
