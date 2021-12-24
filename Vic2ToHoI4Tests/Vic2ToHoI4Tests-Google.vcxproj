@@ -397,6 +397,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="ConfigurationTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\CharacterFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\PortraitTests.cpp" />
     <ClCompile Include="HoI4WorldTests\CountryCategories\CountryCategoriesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarRuleTests.cpp" />

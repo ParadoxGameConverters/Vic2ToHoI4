@@ -9,6 +9,13 @@ using HoI4::Character;
 
 
 
+Character::Factory::Factory()
+{
+	
+}
+
+
+
 std::string Character::Factory::determineId(const std::string& name, const std::string& tag)
 {
 	auto id = commonItems::convertUTF8ToASCII(name);
@@ -135,4 +142,12 @@ Character Character::Factory::createNewAdmiral(const Vic2::Leader& src_admiral,
 	localisation.addCharacterLocalisation(admiral.id_, admiral.name_);
 
 	return admiral;
+}
+
+
+Character Character::Factory::importCharacter(std::istream& input)
+{
+	imported_character_ = std::make_unique<Character>();
+	parseStream(input);
+	return *imported_character_;
 }
