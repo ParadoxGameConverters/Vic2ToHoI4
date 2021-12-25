@@ -160,6 +160,9 @@ int getCostForTerrainType(const std::string& terrainType)
 
 std::optional<std::vector<int>> findPath(int startProvince,
 	 int endProvince,
+	 int vic2StartProvince,
+	 int vic2EndProvince,
+	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
 	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions)
 {
@@ -182,6 +185,20 @@ std::optional<std::vector<int>> findPath(int startProvince,
 			}
 			reachedProvinces.insert(neighborNumber);
 			if (!HoI4ProvinceDefinitions.isLandProvince(neighborNumber))
+			{
+				continue;
+			}
+			const auto& vic2NeighborNumbers = provinceMapper.getHoI4ToVic2ProvinceMapping(neighborNumber);
+			bool neighborIsValid = false;
+			for (const auto& vic2NeighborNumber: vic2NeighborNumbers)
+			{
+				if (vic2NeighborNumber == vic2StartProvince || vic2NeighborNumber == vic2EndProvince)
+				{
+					neighborIsValid = true;
+					break;
+				}
+			}
+			if (!neighborIsValid)
 			{
 				continue;
 			}
@@ -260,8 +277,13 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 				continue;
 			}
 
-			if (const auto possiblePath =
-					  findPath(*HoI4ProvinceNumber, *HoI4NeighborProvinceNumber, HoI4MapData, HoI4ProvinceDefinitions);
+			if (const auto possiblePath = findPath(*HoI4ProvinceNumber,
+					  *HoI4NeighborProvinceNumber,
+					  Vic2ProvinceNum,
+					  Vic2NeighborProvinceNum,
+					  provinceMapper,
+					  HoI4MapData,
+					  HoI4ProvinceDefinitions);
 				 possiblePath)
 			{
 				Railway railway(railwayLevel, *possiblePath);
