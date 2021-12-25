@@ -118,43 +118,52 @@ bool HoI4ProvinceNumbersAreValid(std::optional<int> firstNumber, std::optional<i
 }
 
 
+constexpr int urban_cost = 1;
+constexpr int plains_cost = 2;
+constexpr int forest_cost = 3;
+constexpr int hills_cost = 3;
+constexpr int desert_cost = 5;
+constexpr int marsh_cost = 5;
+constexpr int jungle_cost = 8;
+constexpr int mountain_cost = 8;
+constexpr int unhandled_cost = 100;
 int getCostForTerrainType(const std::string& terrainType)
 {
 	if (terrainType == "urban")
 	{
-		return 1;
+		return urban_cost;
 	}
 	if (terrainType == "plains")
 	{
-		return 2;
+		return plains_cost;
 	}
 	if (terrainType == "forest")
 	{
-		return 3;
+		return forest_cost;
 	}
 	if (terrainType == "hills")
 	{
-		return 3;
+		return hills_cost;
 	}
 	if (terrainType == "desert")
 	{
-		return 5;
+		return desert_cost;
 	}
 	if (terrainType == "marsh")
 	{
-		return 5;
+		return marsh_cost;
 	}
 	if (terrainType == "jungle")
 	{
-		return 8;
+		return jungle_cost;
 	}
 	if (terrainType == "mountain")
 	{
-		return 8;
+		return mountain_cost;
 	}
 
 	Log(LogLevel::Warning) << "Unhandled terrain type " << terrainType << ". Please inform the converter team.";
-	return 100;
+	return unhandled_cost;
 }
 
 
@@ -221,18 +230,16 @@ std::optional<std::vector<int>> findPath(int startProvince,
 
 
 
-std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
+HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
 	 const Maps::MapData& Vic2MapData,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
 	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
 	 const ImpassableProvinces& impassableProvinces,
-	 const std::map<int, HoI4::Province>& hoi4Provinces,
+	 const std::map<int, Province>& hoi4Provinces,
 	 const std::set<int>& navalBaseLocations)
 {
 	Log(LogLevel::Info) << "\tDetermining railways";
-
-	std::vector<Railway> railways;
 
 	std::set<std::pair<int, int>> processedPairs;
 	for (const auto& [Vic2ProvinceNum, Vic2Province]: Vic2Provinces)
@@ -287,10 +294,10 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 				 possiblePath)
 			{
 				Railway railway(railwayLevel, *possiblePath);
-				railways.push_back(railway);
+				railways_.push_back(railway);
+				railway_endpoints_.insert(*HoI4ProvinceNumber);
+				railway_endpoints_.insert(*HoI4NeighborProvinceNumber);
 			}
 		}
 	}
-
-	return railways;
 }

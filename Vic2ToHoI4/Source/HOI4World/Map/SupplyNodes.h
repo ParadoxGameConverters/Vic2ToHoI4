@@ -12,7 +12,7 @@ namespace HoI4
 {
 
 [[nodiscard]] std::set<int> determineSupplyNodes(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
-	 const Mappers::ProvinceMapper& provinceMapper);
+	 const Mappers::ProvinceMapper& provinceMapper, const std::set<int>& railwayEndpoints);
 
 } // namespace HoI4
 
