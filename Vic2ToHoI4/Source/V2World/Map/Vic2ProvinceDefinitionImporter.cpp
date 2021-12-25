@@ -47,6 +47,7 @@ Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& pat
 
 	std::set<int> landProvinces;
 	std::set<int> seaProvinces;
+	std::map<int, std::string> terrain_types;
 	std::map<int, int> colorToProvinceMap;
 
 	while (true)
@@ -105,5 +106,5 @@ Maps::ProvinceDefinitions Vic2::importProvinceDefinitions(const std::string& pat
 		}
 	}
 
-	return Maps::ProvinceDefinitions(landProvinces, seaProvinces, colorToProvinceMap);
+	return Maps::ProvinceDefinitions(landProvinces, seaProvinces, terrain_types, colorToProvinceMap);
 }
