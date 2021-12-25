@@ -1,5 +1,7 @@
 #include "Railways.h"
+#include "HOI4World/Map/PossiblePath.h"
 #include "Log.h"
+#include <queue>
 
 
 
@@ -121,18 +123,18 @@ std::optional<std::vector<int>> findPath(int startProvince,
 	 const Maps::MapData& HoI4MapData,
 	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions)
 {
-	std::vector<std::vector<int>> possibleRailwayPaths{{startProvince}};
+	std::priority_queue<HoI4::PossiblePath> possibleRailwayPaths;
 	std::set reachedProvinces{startProvince};
 
-	while (!possibleRailwayPaths.empty())
-	{
-		std::vector<int> possibleRailwayPath = possibleRailwayPaths[0];
-		if (possibleRailwayPath[possibleRailwayPath.size() - 1] == endProvince)
-		{
-			break;
-		}
+	const HoI4::PossiblePath startingPath(startProvince);
+	possibleRailwayPaths.push(startingPath);
 
-		for (const auto& neighborNumber: HoI4MapData.getNeighbors(possibleRailwayPath[possibleRailwayPath.size() - 1]))
+	while (!possibleRailwayPaths.empty() && possibleRailwayPaths.top().getLastProvince() != endProvince)
+	{
+		auto possibleRailwayPath = possibleRailwayPaths.top();
+		possibleRailwayPaths.pop();
+
+		for (const auto& neighborNumber: HoI4MapData.getNeighbors(possibleRailwayPath.getLastProvince()))
 		{
 			if (reachedProvinces.contains(neighborNumber))
 			{
@@ -144,18 +146,17 @@ std::optional<std::vector<int>> findPath(int startProvince,
 				continue;
 			}
 
-			std::vector<int> newPossibleRailwayPath = possibleRailwayPath;
-			newPossibleRailwayPath.push_back(neighborNumber);
-			possibleRailwayPaths.push_back(newPossibleRailwayPath);
+			auto newPossibleRailwayPath = possibleRailwayPath;
+			newPossibleRailwayPath.addProvince(neighborNumber);
+			possibleRailwayPaths.push(newPossibleRailwayPath);
 		}
-		possibleRailwayPaths.erase(possibleRailwayPaths.begin());
 	}
 
 	if (possibleRailwayPaths.empty())
 	{
 		return std::nullopt;
 	}
-	return possibleRailwayPaths[0];
+	return possibleRailwayPaths.top().getProvinces();
 }
 
 } // namespace
