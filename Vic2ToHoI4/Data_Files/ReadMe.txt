@@ -5,14 +5,14 @@ IMPORTANT LINKS
 ----
 
 Forum thread: https://forum.paradoxplaza.com/forum/index.php?threads/the-vic2-to-hoi4-converter-project-development-thread.915440
-Github project: https://github.com/Idhrendur/paradoxGameConverters
+GitHub project: https://github.com/Idhrendur/paradoxGameConverters
 Documentation: http://www.hoi4wiki.com/Victoria_2_to_Hearts_of_Iron_IV_converter
 Development version download: https://github.com/ParadoxGameConverters/Vic2ToHoI4/releases/tag/windows_development_build
 
 ----
 REQUIREMENTS
 ----
-HoI4 - 
+HoI4 -
 V2 - HoD required
 
 
@@ -74,7 +74,7 @@ Plati			- Art
 កាបូន២៦			- Art, Voices
 PPSYRIUS		- Voices
 
-Special thanks to LukyLucaz, who allowed us to incoroporate Increased Resources into the converter.
+Special thanks to LukyLucaz, who allowed us to incorporate Increased Resources into the converter.
 Special thanks to the Kaiserreich Team who allowed us to use their gfx, especially their leader portraits.
 
  - AND ALL THE OTHERS WHO GAVE THEIR INPUT ON THE FORUM -
