@@ -83,6 +83,22 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 }
 
 
+std::set<int> HoI4::States::getNavalBaseLocations() const
+{
+	std::set<int> navalBaseLocations;
+
+	for (const auto& state: states | std::views::values)
+	{
+		for (const auto navalBaseLocation: state.getNavalBases() | std::views::keys)
+		{
+			navalBaseLocations.insert(navalBaseLocation);
+		}
+	}
+
+	return navalBaseLocations;
+}
+
+
 void HoI4::States::determineOwnersAndCores(const Mappers::CountryMapper& countryMap,
 	 const Vic2::World& sourceWorld,
 	 const Maps::ProvinceDefinitions& provinceDefinitions,

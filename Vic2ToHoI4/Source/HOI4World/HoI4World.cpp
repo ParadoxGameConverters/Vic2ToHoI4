@@ -156,7 +156,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 *theMapData,
 		 *provinceDefinitions,
 		 impassableProvinces,
-		 theProvinces);
+		 theProvinces, states->getNavalBaseLocations());
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";
 	if (theConfiguration.getDebug())

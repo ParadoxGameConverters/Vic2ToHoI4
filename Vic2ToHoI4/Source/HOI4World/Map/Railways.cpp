@@ -49,10 +49,11 @@ int getRailwayLevel(int provinceOneRailLevel, int provinceTwoRailLevel)
 }
 
 
-std::optional<int> getValidHoI4ProvinceNumber(int Vic2ProvinceNum,
+std::optional<int> getBestHoI4ProvinceNumber(int Vic2ProvinceNum,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const HoI4::ImpassableProvinces& impassableProvinces,
-	 const std::map<int, HoI4::Province>& hoi4Provinces)
+	 const std::map<int, HoI4::Province>& hoi4Provinces,
+	 const std::set<int>& navalBaseLocations)
 {
 	const auto& HoI4ProvinceNumbers = provinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNum);
 	if (HoI4ProvinceNumbers.empty())
@@ -60,6 +61,32 @@ std::optional<int> getValidHoI4ProvinceNumber(int Vic2ProvinceNum,
 		return std::nullopt;
 	}
 
+	// prefer naval bases
+	for (const auto provinceNumber: HoI4ProvinceNumbers)
+	{
+		if (!navalBaseLocations.contains(provinceNumber))
+		{
+			continue;
+		}
+
+		const auto province = hoi4Provinces.find(provinceNumber);
+		if (province == hoi4Provinces.end())
+		{
+			continue;
+		}
+		if (!province->second.isLandProvince())
+		{
+			continue;
+		}
+		if (impassableProvinces.isProvinceImpassable(provinceNumber))
+		{
+			continue;
+		}
+
+		return provinceNumber;
+	}
+
+	// find an appropriate province in priority of the mapping
 	for (const auto provinceNumber: HoI4ProvinceNumbers)
 	{
 		const auto province = hoi4Provinces.find(provinceNumber);
@@ -141,7 +168,8 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 	 const Maps::MapData& HoI4MapData,
 	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
 	 const ImpassableProvinces& impassableProvinces,
-	 const std::map<int, HoI4::Province>& hoi4Provinces)
+	 const std::map<int, HoI4::Province>& hoi4Provinces,
+	 const std::set<int>& navalBaseLocations)
 {
 	Log(LogLevel::Info) << "\tDetermining railways";
 
@@ -175,10 +203,16 @@ std::vector<Railway> HoI4::determineRailways(const std::map<int, std::shared_ptr
 				continue;
 			}
 
-			const auto HoI4ProvinceNumber =
-				 getValidHoI4ProvinceNumber(Vic2ProvinceNum, provinceMapper, impassableProvinces, hoi4Provinces);
-			const auto HoI4NeighborProvinceNumber =
-				 getValidHoI4ProvinceNumber(Vic2NeighborProvinceNum, provinceMapper, impassableProvinces, hoi4Provinces);
+			const auto HoI4ProvinceNumber = getBestHoI4ProvinceNumber(Vic2ProvinceNum,
+				 provinceMapper,
+				 impassableProvinces,
+				 hoi4Provinces,
+				 navalBaseLocations);
+			const auto HoI4NeighborProvinceNumber = getBestHoI4ProvinceNumber(Vic2NeighborProvinceNum,
+				 provinceMapper,
+				 impassableProvinces,
+				 hoi4Provinces,
+				 navalBaseLocations);
 			if (!HoI4ProvinceNumbersAreValid(HoI4ProvinceNumber, HoI4NeighborProvinceNumber))
 			{
 				continue;

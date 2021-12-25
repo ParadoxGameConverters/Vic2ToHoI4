@@ -24,7 +24,8 @@ std::vector<Railway> determineRailways(const std::map<int, std::shared_ptr<Vic2:
 	 const Maps::MapData& HoI4MapData,
 	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
 	 const ImpassableProvinces& impassableProvinces,
-	 const std::map<int, HoI4::Province>& hoi4Provinces);
+	 const std::map<int, HoI4::Province>& hoi4Provinces,
+	 const std::set<int>& navalBaseLocations);
 
 }
 
