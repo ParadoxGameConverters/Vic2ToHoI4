@@ -118,6 +118,46 @@ bool HoI4ProvinceNumbersAreValid(std::optional<int> firstNumber, std::optional<i
 }
 
 
+int getCostForTerrainType(const std::string& terrainType)
+{
+	if (terrainType == "urban")
+	{
+		return 1;
+	}
+	if (terrainType == "plains")
+	{
+		return 2;
+	}
+	if (terrainType == "forest")
+	{
+		return 3;
+	}
+	if (terrainType == "hills")
+	{
+		return 3;
+	}
+	if (terrainType == "desert")
+	{
+		return 5;
+	}
+	if (terrainType == "marsh")
+	{
+		return 5;
+	}
+	if (terrainType == "jungle")
+	{
+		return 8;
+	}
+	if (terrainType == "mountain")
+	{
+		return 8;
+	}
+
+	Log(LogLevel::Warning) << "Unhandled terrain type " << terrainType << ". Please inform the converter team.";
+	return 100;
+}
+
+
 std::optional<std::vector<int>> findPath(int startProvince,
 	 int endProvince,
 	 const Maps::MapData& HoI4MapData,
@@ -147,7 +187,8 @@ std::optional<std::vector<int>> findPath(int startProvince,
 			}
 
 			auto newPossibleRailwayPath = possibleRailwayPath;
-			newPossibleRailwayPath.addProvince(neighborNumber);
+			newPossibleRailwayPath.addProvince(neighborNumber,
+				 getCostForTerrainType(HoI4ProvinceDefinitions.getTerrainType(neighborNumber)));
 			possibleRailwayPaths.push(newPossibleRailwayPath);
 		}
 	}
