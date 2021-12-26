@@ -23,6 +23,8 @@ class Portrait
 	[[nodiscard]] const auto& getSize() const { return size_; }
 	[[nodiscard]] const auto& getDefinition() const { return definition_; }
 
+	bool operator==(const Portrait& rhs) const = default;
+
   private:
 	std::string type_;
 	std::string size_;

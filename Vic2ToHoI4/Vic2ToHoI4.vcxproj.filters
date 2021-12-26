@@ -1384,6 +1384,9 @@
     <ClCompile Include="Source\HOI4World\Map\PossiblePath.h">
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Characters\PortraitFactory.cpp">
+      <Filter>HoI4World\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2705,6 +2708,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\States\DefaultStatesImporter.h">
       <Filter>HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Characters\PortraitsFactory.h">
+      <Filter>HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Characters\PortraitFactory.h">
+      <Filter>HoI4World\Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

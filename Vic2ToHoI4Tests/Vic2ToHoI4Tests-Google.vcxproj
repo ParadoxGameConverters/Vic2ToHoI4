@@ -55,6 +55,7 @@
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp" />
@@ -398,6 +399,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="ConfigurationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\CharacterFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\PortraitFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\PortraitTests.cpp" />
     <ClCompile Include="HoI4WorldTests\CountryCategories\CountryCategoriesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarRuleTests.cpp" />
@@ -750,6 +752,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\Character.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\Portrait.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitsFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRule.h" />
