@@ -48,5 +48,11 @@ not_allies_or_subjects = {
 		NOT = { is_subject_of = ROOT }
 		NOT = { is_in_faction_with = ROOT }
 		ROOT = { NOT = { is_subject_of = PREV } }
+		NOT = {
+			AND = {
+				has_guaranteed = ROOT
+				ROOT = { has_guaranteed = PREV }
+			}
+		}
 	}
 }

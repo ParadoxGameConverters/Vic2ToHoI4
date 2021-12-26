@@ -525,7 +525,7 @@
  neighbor_war.3.d:0 "Ни одна из сторон не смогла добиться победы во [?neighbor_war_attacker.GetAdjectiveCap]-[?neighbor_war_defender.GetAdjectiveCap]ом конфликте."
  neighbor_war.3.a:0 "Мы попробуем ещё раз."
  neighbor_war.3.b:0 "Спасибо нашим храбрым соладатам."
- reconquest_wars.1.t:0 "[From.GetAdjectiveCap] ультиматум"
+ reconquest_wars.1.t:0 "[From.GetAdjectiveCap]ий ультиматум"
  reconquest_wars.1.d:0 "[From.GetName] прислала нам ультиматум - верните свои ядра или готовьтесь к войне!"
  reconquest_wars.1.a:0 "Я не вижу другого выхода"
  reconquest_wars.1.b:0 "Мы рискнем"
@@ -538,3 +538,6 @@
  reconquest_wars.4.t:0 "Найдите подходящих врагов"
  reconquest_wars.4.d:0 "Находит возможных союзников, чтобы добавить их силы к нашему счету силы"
  reconquest_wars.4.a:0 "Ладно"
+ reconquest_news.1.t:0 "[From.GetAdjectiveCap]ий экспансионизм"
+ reconquest_news.1.d:0 "[From.GetName] становится все более смелым, заявляя о своих претензиях на территорию [Root.GetName]. Их экспансионистская политика вызывает беспокойство, поскольку она только увеличивает мировую напряженность".
+ reconquest_news.1.a:0 "Кто-то должен вмешаться"

@@ -56,6 +56,8 @@
  War_with:0 "Guerra con [$TARGET.GetName]"
  border_disputes:0 "Disputa territorial [$TARGET.GetAdjFS]"
  border_disputes_desc:0 "Es probable que impulsemos la resolución de las disputas territoriales [$TARGET.GetAdjFP]. Sin embargo, deberíamos estar preparados para la guerra."
+ assert_claims:0 "Afirmar reivindicaciones"
+ assert_claims_desc:0 "Antes de invadir [$TARGET.GetName], debemos asegurarnos de que el mundo comprenda que nuestra guerra está justificada".
  prepare_for_war:0 "Prepararnos para la guerra"
  prepare_for_war_desc:0 "Lo sabemos, ellos lo saben, la guerra es inevitable. Seguramente estarán preparados y debemos asegurarnos de que nosotros también lo estemos."
  neighbor_war:0 "Guerra de vecinos"

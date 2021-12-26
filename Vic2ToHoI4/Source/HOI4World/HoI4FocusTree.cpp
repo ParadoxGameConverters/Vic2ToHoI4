@@ -2042,16 +2042,6 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(std::sha
 	return coreHolders;
 }
 
-int HoI4FocusTree::getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conquerStrategies)
-{
-	const auto& maxConquerValueItr = std::max_element(conquerStrategies.begin(),
-		 conquerStrategies.end(),
-		 [](const HoI4::AIStrategy& a, const HoI4::AIStrategy& b) {
-			 return a.getValue() < b.getValue();
-		 });
-	return maxConquerValueItr->getValue();
-}
-
 std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Country> theCountry,
 	 int& numWarsWithNeighbors,
 	 const std::set<std::string>& majorIdeologies,
@@ -2068,7 +2058,6 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 		return conquerTags;
 	}
 
-	const auto& maxConquerValue = getMaxConquerValue(conquerStrategies);
 	for (const auto& strategy: conquerStrategies)
 	{
 		if (strategy.getID() == tag)
@@ -2076,8 +2065,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			continue;
 		}
 
-		int aiChance = 10 * strategy.getValue() / maxConquerValue;
-		if (hasMaxNeighborWars(numWarsWithNeighbors) || aiChance < 1)
+		if (hasMaxNeighborWars(numWarsWithNeighbors))
 		{
 			break;
 		}
@@ -2119,10 +2107,8 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			}
 			const auto& stateId = std::to_string(*newClaim);
 			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
-			newFocus->updateFocusElement(newFocus->completionReward, "#ADDCLAIM", "add_state_claim = " + stateId);
 			newFocus->xPos = nextFreeColumn;
 			newFocus->yPos = 0;
-			newFocus->updateFocusElement(newFocus->aiWillDo, "$AICHANCE", to_string(aiChance));
 			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", strategy.getID());
 			focuses.push_back(newFocus);
 		}
@@ -2131,7 +2117,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			throw std::runtime_error("Could not load focus border_disputes");
 		}
 
-		if (const auto& originalFocus = loadedFocuses.find("prepare_for_war"); originalFocus != loadedFocuses.end())
+		if (const auto& originalFocus = loadedFocuses.find("assert_claims"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = originalFocus->second.makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
 			newFocus->prerequisites.clear();
@@ -2152,7 +2138,33 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			{
 				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString());
 			}
+			const auto& stateId = std::to_string(*newClaim);
+			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", strategy.getID());
+			newFocus->updateFocusElement(newFocus->completionReward, "#ADDCLAIM", "add_state_claim = " + stateId);
 			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", strategy.getID());
+			focuses.push_back(newFocus);
+		}
+		else
+		{
+			throw std::runtime_error("Could not load focus assert_claims");
+		}
+
+		if (const auto& originalFocus = loadedFocuses.find("prepare_for_war"); originalFocus != loadedFocuses.end())
+		{
+			auto newFocus = originalFocus->second.makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
+			newFocus->prerequisites.clear();
+			newFocus->prerequisites.push_back("= { focus = assert_claims" + tag + strategy.getID() + " }");
+			newFocus->relativePositionId += strategy.getID();
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", strategy.getID());
+			if (truceUntil)
+			{
+				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
+			}
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
+			}
 			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", strategy.getID());
 			focuses.push_back(newFocus);
 		}

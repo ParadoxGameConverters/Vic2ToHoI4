@@ -1,4 +1,5 @@
 add_namespace = reconquest_wars
+add_namespace = reconquest_news
 
 # Territory or war Ultimatum
 country_event = {
@@ -131,5 +132,19 @@ country_event = {
 
 	option = {
 		name = reconquest_wars.4.a
+	}
+}
+
+news_event = {
+	id = reconquest_news.1
+	title = reconquest_news.1.t
+	desc = reconquest_news.1.d
+	picture = GFX_news_event_038
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = reconquest_news.1.a
 	}
 }
