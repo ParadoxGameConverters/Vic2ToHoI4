@@ -105,7 +105,7 @@ TEST(Maps_ProvinceDefinitions, TerrainTypeDefaultsToEmpty)
 }
 
 
-TEST(Maps_ProvinceDefinitions, TerrainTypeCanBeLokkedUp)
+TEST(Maps_ProvinceDefinitions, TerrainTypeCanBeLookedUp)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {{1, "test_terrain"}}, {});
 
