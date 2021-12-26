@@ -14,6 +14,7 @@ void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const std::string& 
 
 	output << "converted_war_strategies_" << theCountry.getTag() << " = {\n";
 	output << "\tenable = {\n";
+	output << "\t\ttag = " + theCountry.getTag() + "\n";
 	output << "\t\talways = no\n";
 	output << "\t}\n";
 	output << "\t\n";
@@ -31,6 +32,7 @@ void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const std::string& 
 	output << "converted_diplo_strategies_" << theCountry.getTag() << " = {\n";
 	output << "\tenable = {\n";
 	output << "\t\ttag = " + theCountry.getTag() + "\n";
+	output << "\t\talways = no\n";
 	output << "\t}\n";
 	output << "\tabort = {\n";
 	output << "\t\talways = no\n";

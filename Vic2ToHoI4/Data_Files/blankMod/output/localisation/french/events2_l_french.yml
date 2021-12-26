@@ -539,3 +539,6 @@
  reconquest_wars.4.t:0 "Trouvez des ennemis pertinents"
  reconquest_wars.4.d:0 "Trouve des alliés possibles pour ajouter leur force à notre nombre de forces"
  reconquest_wars.4.a:0 "D'accord!"
+ reconquest_news.1.t:0 "[From.GetAdjMS] Expansionnisme"
+ reconquest_news.1.d:0 "[From.GetName] est devenu de plus en plus audacieux dans l'affirmation de ses revendications sur le territoire de [Root.GetName]. Leur politique expanioniste est une source de préoccupation car elle ne fait qu'augmenter la tension mondiale."
+ reconquest_news.1.a:0 "Quelqu'un devrait intervenir"

@@ -56,6 +56,8 @@
  War_with:0 "Wojna z [$TARGET.GetName]"
  border_disputes:0 "[$TARGET.GetAdjective] Spór terytorialny"
  border_disputes_desc:0 "Naciskanie na rozwiązanie [$TARGET.GetAdjective]ch sporów terytorialnych prawdopodobnie pójdzie po naszej myśli. Powinniśmy być jednak przygotowani na wojnę."
+ assert_claims:0 "Zgłoś roszczenia"
+ assert_claims_desc:0 "Zanim zaatakujemy [$TARGET.GetName], musimy upewnić się, że świat rozumie, że nasza wojna jest uzasadniona."
  prepare_for_war:0 "Przygotuj się na wojnę"
  prepare_for_war_desc:0 "My to wiemy, oni wiedzą - wojna jest nieunikniona. Z pewnością będą przygotowani i musimy się upewnić, że my też."
  neighbor_war:0 "Wojna sąsiadów"
