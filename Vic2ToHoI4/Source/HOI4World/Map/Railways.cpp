@@ -167,6 +167,28 @@ int getCostForTerrainType(const std::string& terrainType)
 }
 
 
+double getDistanceBetweenProvinces(int provinceOne, int provinceTwo, const Maps::MapData& HoI4MapData)
+{
+	const auto possibleProvinceOnePoints = HoI4MapData.getProvincePoints(provinceOne);
+	if (!possibleProvinceOnePoints)
+	{
+		return std::numeric_limits<double>::max();
+	}
+	const auto provinceOneCentermostPoint = possibleProvinceOnePoints->getCentermostPoint();
+
+	const auto possibleProvinceTwoPoints = HoI4MapData.getProvincePoints(provinceTwo);
+	if (!possibleProvinceTwoPoints)
+	{
+		return std::numeric_limits<double>::max();
+	}
+	const auto provinceTwoCentermostPoint = possibleProvinceTwoPoints->getCentermostPoint();
+
+	const int deltaX = provinceOneCentermostPoint.first - provinceTwoCentermostPoint.first;
+	const int deltaY = provinceOneCentermostPoint.second - provinceTwoCentermostPoint.second;
+	return std::sqrt(deltaX * deltaX + deltaY * deltaY);
+}
+
+
 std::optional<std::vector<int>> findPath(int startProvince,
 	 int endProvince,
 	 int vic2StartProvince,
@@ -186,7 +208,8 @@ std::optional<std::vector<int>> findPath(int startProvince,
 		auto possibleRailwayPath = possibleRailwayPaths.top();
 		possibleRailwayPaths.pop();
 
-		for (const auto& neighborNumber: HoI4MapData.getNeighbors(possibleRailwayPath.getLastProvince()))
+		const auto lastProvince = possibleRailwayPath.getLastProvince();
+		for (const auto& neighborNumber: HoI4MapData.getNeighbors(lastProvince))
 		{
 			if (reachedProvinces.contains(neighborNumber))
 			{
@@ -214,7 +237,8 @@ std::optional<std::vector<int>> findPath(int startProvince,
 
 			auto newPossibleRailwayPath = possibleRailwayPath;
 			newPossibleRailwayPath.addProvince(neighborNumber,
-				 getCostForTerrainType(HoI4ProvinceDefinitions.getTerrainType(neighborNumber)));
+				 getCostForTerrainType(HoI4ProvinceDefinitions.getTerrainType(neighborNumber)) *
+					  getDistanceBetweenProvinces(neighborNumber, lastProvince, HoI4MapData));
 			possibleRailwayPaths.push(newPossibleRailwayPath);
 		}
 	}

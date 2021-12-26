@@ -13,22 +13,22 @@ namespace HoI4
 class PossiblePath
 {
   public:
-	explicit PossiblePath(int initialProvince) { provinces.push_back(initialProvince); }
+	explicit PossiblePath(int initialProvince) { provinces_.push_back(initialProvince); }
 
-	void addProvince(int province, int additionalCost)
+	void addProvince(int province, double additionalCost)
 	{
-		provinces.push_back(province);
-		cost += additionalCost;
+		provinces_.push_back(province);
+		cost_ += additionalCost;
 	}
 
 	// higher is prioritized where we want lower to be, so reverse the meaning of less than
-	[[nodiscard]] bool operator<(const PossiblePath& rhs) const { return cost > rhs.cost; }
-	[[nodiscard]] int getLastProvince() const { return provinces[provinces.size() - 1]; }
-	[[nodiscard]] std::vector<int> getProvinces() const { return provinces; }
+	[[nodiscard]] bool operator<(const PossiblePath& rhs) const { return cost_ > rhs.cost_; }
+	[[nodiscard]] int getLastProvince() const { return provinces_[provinces_.size() - 1]; }
+	[[nodiscard]] std::vector<int> getProvinces() const { return provinces_; }
 
   private:
-	std::vector<int> provinces;
-	int cost = 0;
+	std::vector<int> provinces_;
+	double cost_ = 0;
 };
 
 } // namespace HoI4
