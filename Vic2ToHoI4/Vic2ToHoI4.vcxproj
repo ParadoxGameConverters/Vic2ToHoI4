@@ -171,6 +171,7 @@
     <ClCompile Include="Source\HOI4World\Localisations\GrammarMappings.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\PossiblePath.h" />
     <ClCompile Include="Source\HOI4World\Map\Railways.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="Source\HOI4World\Map\SupplyNodes.cpp" />

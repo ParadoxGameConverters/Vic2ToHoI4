@@ -22,3 +22,15 @@ std::optional<int> Maps::ProvinceDefinitions::getProvinceFromColor(const commonI
 	}
 	return mapping->second;
 }
+
+
+std::string Maps::ProvinceDefinitions::getTerrainType(int province) const
+{
+	const auto terrain = terrain_types_.find(province);
+	if (terrain == terrain_types_.end())
+	{
+		return "";
+	}
+
+	return terrain->second;
+}

@@ -5,21 +5,21 @@
 
 TEST(Maps_MapData, ExceptionThrownForMissingProvincesBmp)
 {
-	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {}, {});
 	ASSERT_THROW(const Maps::MapData mapData(provinceDefinitions, ""), std::runtime_error);
 }
 
 
 TEST(Maps_MapData, ExceptionThrownForMissingAdjacenciesCsv)
 {
-	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {}, {});
 	ASSERT_THROW(const Maps::MapData mapData(provinceDefinitions, "maptests/nocsv"), std::runtime_error);
 }
 
 
 TEST(Maps_MapData, NoNeighborsForNonexistentProvince)
 {
-	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {}, {});
 	const Maps::MapData mapData(provinceDefinitions, "maptests");
 
 	EXPECT_THAT(mapData.getNeighbors(42), testing::UnorderedElementsAre());
@@ -29,6 +29,7 @@ TEST(Maps_MapData, NoNeighborsForNonexistentProvince)
 TEST(Maps_MapData, NeighborDefinedFromBelow)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
 		 {},
 		 {
 			  {0x88'00'15, 1}, // the dark red one on top
@@ -44,6 +45,7 @@ TEST(Maps_MapData, NeighborDefinedFromRight)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
 		 {},
+		 {},
 		 {
 			  {0xED'1C'24, 2}, // the red red one on the left
 			  {0x22'B1'4C, 3}, // the green one in the middle
@@ -57,6 +59,7 @@ TEST(Maps_MapData, NeighborDefinedFromRight)
 TEST(Maps_MapData, NeighborDefinedFromLeft)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
 		 {},
 		 {
 			  {0x22'B1'4C, 3}, // the green one in the middle
@@ -72,6 +75,7 @@ TEST(Maps_MapData, NeighborDefinedFromAbove)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
 		 {},
+		 {},
 		 {
 			  {0x22'B1'4C, 3}, // the green one in the middle
 			  {0xFF'F2'00, 5}, // the yellow red one below
@@ -84,7 +88,7 @@ TEST(Maps_MapData, NeighborDefinedFromAbove)
 
 TEST(Maps_MapData, NeighborDefinedFromNonImpassableAdjacency)
 {
-	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {}, {});
 	const Maps::MapData mapData(provinceDefinitions, "maptests");
 
 	EXPECT_THAT(mapData.getNeighbors(101), testing::UnorderedElementsAre(102));
@@ -95,6 +99,7 @@ TEST(Maps_MapData, NeighborDefinedFromNonImpassableAdjacency)
 TEST(Maps_MapData, NeighborRemovedFromImpassableAdjacency)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
 		 {},
 		 {
 			  {0x3F'48'CC, 6}, // the indigo one on the far right
@@ -108,7 +113,7 @@ TEST(Maps_MapData, NeighborRemovedFromImpassableAdjacency)
 
 TEST(Maps_MapData, NoSpecifiedBorderForNonexistentProvince)
 {
-	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {}, {});
 	const Maps::MapData mapData(provinceDefinitions, "maptests");
 
 	EXPECT_EQ(mapData.getSpecifiedBorderCenter(42, 1), std::nullopt);
@@ -118,6 +123,7 @@ TEST(Maps_MapData, NoSpecifiedBorderForNonexistentProvince)
 TEST(Maps_MapData, NoBorderForNonBorderingProvinces)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
 		 {},
 		 {
 			  {0x88'00'15, 1}, // the dark red one on top
@@ -137,6 +143,7 @@ TEST(Maps_MapData, NoBorderForNonBorderingProvinces)
 TEST(Maps_MapData, SpecifiedBorderForBorderingProvinces)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
 		 {},
 		 {
 			  {0x88'00'15, 1}, // the dark red one on top
@@ -161,6 +168,7 @@ TEST(Maps_MapData, SpecifiedBorderForImpassableBorderProvinces)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
 		 {},
+		 {},
 		 {
 			  {0x88'00'15, 1}, // the dark red one on top
 			  {0xED'1C'24, 2}, // the red red one on the left
@@ -182,7 +190,7 @@ TEST(Maps_MapData, SpecifiedBorderForImpassableBorderProvinces)
 
 TEST(Maps_MapData, NoBorderForNonexistentProvince)
 {
-	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {}, {});
 	const Maps::MapData mapData(provinceDefinitions, "maptests");
 
 	EXPECT_EQ(mapData.getAnyBorderCenter(42), std::nullopt);
@@ -192,6 +200,7 @@ TEST(Maps_MapData, NoBorderForNonexistentProvince)
 TEST(Maps_MapData, NoBorderForProvinceWithNoBorders)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
 		 {},
 		 {
 			  {0x00'A2'E8, 8}, // the blue province to the very far right
@@ -205,6 +214,7 @@ TEST(Maps_MapData, NoBorderForProvinceWithNoBorders)
 TEST(Maps_MapData, AnyBorderForBorderingProvinces)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
 		 {},
 		 {
 			  {0x88'00'15, 1}, // the dark red one on top
@@ -227,7 +237,7 @@ TEST(Maps_MapData, AnyBorderForBorderingProvinces)
 
 TEST(Maps_MapData, NoProvinceNumberForUndefinedPoint)
 {
-	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {}, {});
 	const Maps::MapData mapData(provinceDefinitions, "maptests");
 
 	EXPECT_EQ(mapData.getProvinceNumber({0, 0}), std::nullopt);
@@ -237,6 +247,7 @@ TEST(Maps_MapData, NoProvinceNumberForUndefinedPoint)
 TEST(Maps_MapData, ProvinceNumberForDefinedPoint)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
 		 {},
 		 {
 			  {0x88'00'15, 1}, // the dark red one on top
@@ -251,7 +262,7 @@ TEST(Maps_MapData, ProvinceNumberForDefinedPoint)
 
 TEST(Maps_MapData, NoProvincePointsForUndefinedProvince)
 {
-	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {});
+	const Maps::ProvinceDefinitions provinceDefinitions({}, {}, {}, {});
 	const Maps::MapData mapData(provinceDefinitions, "maptests");
 
 	EXPECT_EQ(mapData.getProvincePoints(42), std::nullopt);
@@ -261,6 +272,7 @@ TEST(Maps_MapData, NoProvincePointsForUndefinedProvince)
 TEST(Maps_MapData, ProvincePointsForDefinedProvince)
 {
 	const Maps::ProvinceDefinitions provinceDefinitions({},
+		 {},
 		 {},
 		 {
 			  {0x88'00'15, 1}, // the dark red one on top

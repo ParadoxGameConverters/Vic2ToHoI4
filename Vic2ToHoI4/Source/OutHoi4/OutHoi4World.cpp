@@ -208,7 +208,7 @@ void HoI4::OutputWorld(const World& world,
 	outputCountries(world.getCountries(), world.getMilitaryMappings(), outputName, theConfiguration);
 	outputBuildings(world.getBuildings(), outputName);
 	outputSupplyNodes("output/" + outputName, world.getSupplyNodes());
-	outputRailways("output/" + outputName, world.getRailways());
+	outputRailways("output/" + outputName, world.getRailways()->getRailways());
 	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), outputName);
 	outputEvents(world.getEvents(), outputName);
 	outputOnActions(world.getOnActions(), world.getMajorIdeologies(), outputName);

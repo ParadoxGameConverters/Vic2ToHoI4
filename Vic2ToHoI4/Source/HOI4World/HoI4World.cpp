@@ -149,14 +149,15 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertWars(sourceWorld, provinceMapper);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
-	supplyNodes_ = determineSupplyNodes(sourceWorld.getProvinces(), provinceMapper);
-	railways_ = determineRailways(sourceWorld.getProvinces(),
+	railways_ = std::make_unique<Railways>(sourceWorld.getProvinces(),
 		 sourceWorld.getMapData(),
 		 provinceMapper,
 		 *theMapData,
 		 *provinceDefinitions,
 		 impassableProvinces,
-		 theProvinces);
+		 theProvinces,
+		 states->getNavalBaseLocations());
+	supplyNodes_ = determineSupplyNodes(sourceWorld.getProvinces(), provinceMapper, railways_->getRailwayEndpoints());
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";
 	if (theConfiguration.getDebug())

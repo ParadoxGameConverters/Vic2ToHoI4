@@ -19,6 +19,7 @@
 #include "Localisations/ArticleRules/ArticleRules.h"
 #include "Map/Buildings.h"
 #include "Map/CoastalProvinces.h"
+#include "Map/Railways.h"
 #include "Map/StrategicRegion.h"
 #include "Map/StrategicRegions.h"
 #include "Map/SupplyZones.h"
@@ -238,7 +239,7 @@ class World: commonItems::parser
 	std::unique_ptr<StrategicRegions> strategicRegions;
 	Buildings* buildings = nullptr;
 	std::set<int> supplyNodes_;
-	std::vector<Railway> railways_;
+	std::unique_ptr<Railways> railways_;
 
 	std::map<std::string, std::shared_ptr<HoI4::Country>> countries;
 	std::map<std::string, std::shared_ptr<HoI4::Country>> landedCountries;

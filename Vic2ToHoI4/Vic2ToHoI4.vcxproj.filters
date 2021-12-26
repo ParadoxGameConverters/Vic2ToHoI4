@@ -1381,6 +1381,9 @@
     <ClCompile Include="Source\HOI4World\States\DefaultStatesImporter.cpp">
       <Filter>HoI4World\States</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Map\PossiblePath.h">
+      <Filter>HoI4World\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
