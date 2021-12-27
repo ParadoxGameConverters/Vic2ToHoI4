@@ -1390,6 +1390,15 @@
     <ClCompile Include="Source\HOI4World\Characters\PortraitTypeFactory.cpp">
       <Filter>HoI4World\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Characters\CountryLeaderDataFactory.cpp">
+      <Filter>HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Characters\OutCountryLeaderData.h">
+      <Filter>OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Characters\OutCountryLeaderData.cpp">
+      <Filter>OutHoi4\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2716,6 +2725,12 @@
       <Filter>HoI4World\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Characters\PortraitTypeFactory.h">
+      <Filter>HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Characters\CountryLeaderData.h">
+      <Filter>HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Characters\CountryLeaderDataFactory.h">
       <Filter>HoI4World\Characters</Filter>
     </ClInclude>
   </ItemGroup>

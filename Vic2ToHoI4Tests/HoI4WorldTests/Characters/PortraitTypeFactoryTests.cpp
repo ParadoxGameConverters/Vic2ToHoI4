@@ -1,6 +1,6 @@
 #include "HOI4World/Characters/PortraitTypeFactory.h"
+#include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
-#include <gmock/gmock-matchers.h>
 
 
 

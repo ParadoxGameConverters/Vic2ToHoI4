@@ -1658,6 +1658,18 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitTypeFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderDataFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\CountryLeaderDataTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="OutHoI4Tests\Characters\OutCountryLeaderDataTests.cpp">
+      <Filter>OutHoI4Tests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -3293,6 +3305,15 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitTypeFactory.h">
       <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderData.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderDataFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 
 
 
+#include "HOI4World/Characters/CountryLeaderData.h"
 #include "HOI4World/Characters/Portrait.h"
 #include <optional>
 #include <string>
@@ -23,9 +24,7 @@ class Character
 	[[nodiscard]] const auto& getName() const { return name_; }
 	[[nodiscard]] const auto& getPortraits() const { return portraits_; }
 
-	[[nodiscard]] bool isLeader() const { return leader_ideology_.has_value(); }
-	[[nodiscard]] const auto& getLeaderIdeology() const { return *leader_ideology_; }
-	[[nodiscard]] const auto& getLeaderTraits() const { return leader_traits_; }
+	[[nodiscard]] const auto& getCountryLeaderData() const { return country_leader_data_; }
 
 	[[nodiscard]] bool isCommander() const { return is_commander_; }
 	[[nodiscard]] const auto& getCommanderTraits() const { return commander_traits_; }
@@ -49,8 +48,7 @@ class Character
 													// sometimes used when the name of a person is unknown
 	std::vector<Portrait> portraits_;
 
-	std::optional<std::string> leader_ideology_;
-	std::vector<std::string> leader_traits_;
+	std::optional<CountryLeaderData> country_leader_data_;
 
 	bool is_commander_ = false;
 	std::vector<std::string> commander_traits_;

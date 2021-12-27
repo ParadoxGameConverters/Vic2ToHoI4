@@ -147,6 +147,7 @@
     <ClCompile Include="..\common_items\targa.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="Source\HOI4World\Characters\CharacterFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\Characters\CountryLeaderDataFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Characters\PortraitsFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Characters\PortraitTypeFactory.cpp" />
     <ClCompile Include="Source\HOI4World\CountryCategories\CountryCategories.cpp" />
@@ -250,6 +251,8 @@
     <ClCompile Include="Source\Maps\ProvincePoints.cpp" />
     <ClCompile Include="Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
     <ClCompile Include="Source\OutHoi4\Characters\OutCharacter.cpp" />
+    <ClCompile Include="Source\OutHoi4\Characters\OutCountryLeaderData.cpp" />
+    <ClCompile Include="Source\OutHoi4\Characters\OutCountryLeaderData.h" />
     <ClCompile Include="Source\OutHoi4\Characters\OutPortrait.cpp" />
     <ClCompile Include="Source\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
     <ClCompile Include="Source\OutHoi4\CountryCategories\OutCountryCategory.cpp" />
@@ -514,6 +517,8 @@
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="Source\HOI4World\Characters\Character.h" />
     <ClInclude Include="Source\HOI4World\Characters\CharacterFactory.h" />
+    <ClInclude Include="Source\HOI4World\Characters\CountryLeaderData.h" />
+    <ClInclude Include="Source\HOI4World\Characters\CountryLeaderDataFactory.h" />
     <ClInclude Include="Source\HOI4World\Characters\Portrait.h" />
     <ClInclude Include="Source\HOI4World\Characters\PortraitsFactory.h" />
     <ClInclude Include="Source\HOI4World\Characters\PortraitTypeFactory.h" />
