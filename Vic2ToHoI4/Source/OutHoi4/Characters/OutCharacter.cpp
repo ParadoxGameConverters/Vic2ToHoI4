@@ -1,4 +1,5 @@
 #include "OutCharacter.h"
+#include "OutHoi4/Characters/OutCommanderData.h"
 #include "OutHoi4/Characters/OutCountryLeaderData.h"
 #include "OutHoi4/Characters/OutPortrait.h"
 
@@ -18,37 +19,20 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Character& character)
 		out << "\t\t}\n";
 	}
 
-	const auto& countryLeaderData = character.getCountryLeaderData();
-	if (countryLeaderData.has_value())
+	if (const auto& countryLeaderData = character.getCountryLeaderData(); countryLeaderData.has_value())
 	{
 		out << *countryLeaderData;
 	}
 
-	if (character.isCommander())
+	if (const auto& commanderData = character.getCommanderData(); commanderData.has_value())
 	{
-		out << "\t\tcorps_commander={\n";
-		if (!character.getCommanderTraits().empty())
-		{
-			out << "\t\t\ttraits={ ";
-			for (const auto& trait: character.getCommanderTraits())
-			{
-				out << trait << " ";
-			}
-			out << "}\n";
-		}
-		out << "\t\t\tskill=" << character.getCommanderSkill() << "\n";
-		out << "\t\t\tattack_skill = " << character.getCommanderAttackSkill() << "\n";
-		out << "\t\t\tdefense_skill = " << character.getCommanderDefenseSkill() << "\n";
-		out << "\t\t\tplanning_skill = " << character.getCommanderPlanningSkill() << "\n";
-		out << "\t\t\tlogistics_skill = " << character.getCommanderLogisticsSkill() << "\n";
-		out << "\t\t\tlegacy_id = 0\n";
-		out << "\t\t}\n";
+		out << *commanderData;
 	}
 
 	if (character.isAdmiral())
 	{
 		out << "\t\tnavy_leader={\n";
-		if (!character.getCommanderTraits().empty())
+		if (!character.getAdmiralTraits().empty())
 		{
 			out << "\t\t\ttraits={ ";
 			for (const auto& trait: character.getAdmiralTraits())

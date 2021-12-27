@@ -2,6 +2,7 @@
 #include "CommonFunctions.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include "ParserHelpers.h"
 
 
 
@@ -11,7 +12,21 @@ using HoI4::Character;
 
 Character::Factory::Factory()
 {
-	
+	registerKeyword("name", [this](std::istream& input) {
+		imported_character_->name_ = commonItems::getString(input);
+	});
+	registerKeyword("portraits", [this](std::istream& input) {
+		imported_character_->portraits_ = portraits_factory_.importPortraits(input);
+	});
+	registerKeyword("country_leader", [this](std::istream& input) {
+		imported_character_->country_leader_data_ = country_leader_data_factory_.importCountryLeaderData(input);
+	});
+	registerKeyword("corps_commander", [this](const std::string& commanderType, std::istream& input) {
+		imported_character_->commander_data_ = commander_data_factory_.importCommanderData(commanderType, input);
+	});
+	registerKeyword("field_marshal", [this](const std::string& commanderType, std::istream& input) {
+		imported_character_->commander_data_ = commander_data_factory_.importCommanderData(commanderType, input);
+	});
 }
 
 
@@ -52,10 +67,6 @@ Character Character::Factory::createNewCountryLeader(const std::string& tag,
 	 Localisation& localisation)
 {
 	Character leader;
-	leader.leader_ideology_ = leaderIdeology;
-	leader.portraits_.emplace_back(Portrait("civilian",
-		 "large",
-		 graphicsMapper.getLeaderPortrait(primaryCulture, primaryCultureGroup, governmentIdeology)));
 
 	const auto firstName = names.getMaleName(primaryCulture);
 	const auto surname = names.getSurname(primaryCulture);
@@ -83,6 +94,11 @@ Character Character::Factory::createNewCountryLeader(const std::string& tag,
 	leader.id_ = determineId(leader.name_, tag);
 	localisation.addCharacterLocalisation(leader.id_, leader.name_);
 
+	leader.portraits_.emplace_back(Portrait("civilian",
+		 "large",
+		 graphicsMapper.getLeaderPortrait(primaryCulture, primaryCultureGroup, governmentIdeology)));
+	leader.country_leader_data_ = CountryLeaderData(leaderIdeology, {});
+
 	return leader;
 }
 
@@ -92,25 +108,27 @@ Character Character::Factory::createNewGeneral(const Vic2::Leader& src_general,
 	 Localisation& localisation)
 {
 	Character general;
-	general.is_commander_ = true;
 	general.name_ = commonItems::convertWin1252ToUTF8(src_general.getName());
 	general.id_ = commonItems::convertUTF8ToASCII(general.name_);
-	general.commander_attack_skill_ =
-		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("attack"))) + 1, 1, 7);
-	general.commander_defense_skill_ =
-		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("defence"))) + 1, 1, 7);
-	general.commander_planning_skill_ =
-		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("morale") * 8.0F)) + 1, 1, 5);
-	general.commander_logistics_skill_ =
-		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("organisation") * 25.0F)) + 1, 1, 5);
-	general.commander_skill_ = std::clamp((general.commander_attack_skill_ + general.commander_defense_skill_ +
-															general.commander_planning_skill_ + general.commander_logistics_skill_) /
-															3,
-		 1,
-		 5);
-
 	general.id_ = determineId(general.name_, tag);
 	localisation.addCharacterLocalisation(general.id_, general.name_);
+
+	const int attack_skill =
+		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("attack"))) + 1, 1, 7);
+	const int defense_skill =
+		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("defence"))) + 1, 1, 7);
+	const int planning_skill =
+		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("morale") * 8.0F)) + 1, 1, 5);
+	const int logistics_skill =
+		 std::clamp(static_cast<int>(std::round(src_general.getTraitEffectValue("organisation") * 25.0F)) + 1, 1, 5);
+	const int skill = std::clamp((attack_skill + defense_skill + planning_skill + logistics_skill) / 3, 1, 5);
+	general.commander_data_ = CommanderData(CommanderLevel::CorpsCommander,
+		 {},
+		 skill,
+		 attack_skill,
+		 defense_skill,
+		 planning_skill,
+		 logistics_skill);
 
 	return general;
 }
@@ -145,9 +163,10 @@ Character Character::Factory::createNewAdmiral(const Vic2::Leader& src_admiral,
 }
 
 
-Character Character::Factory::importCharacter(std::istream& input)
+Character Character::Factory::importCharacter(std::string_view id, std::istream& input)
 {
 	imported_character_ = std::make_unique<Character>();
+	imported_character_->id_ = id;
 	parseStream(input);
 	return *imported_character_;
 }

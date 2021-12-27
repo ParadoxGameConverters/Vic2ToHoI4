@@ -3,6 +3,7 @@
 
 
 
+#include "HOI4World/Characters/CommanderData.h"
 #include "HOI4World/Characters/CountryLeaderData.h"
 #include "HOI4World/Characters/Portrait.h"
 #include <optional>
@@ -25,14 +26,7 @@ class Character
 	[[nodiscard]] const auto& getPortraits() const { return portraits_; }
 
 	[[nodiscard]] const auto& getCountryLeaderData() const { return country_leader_data_; }
-
-	[[nodiscard]] bool isCommander() const { return is_commander_; }
-	[[nodiscard]] const auto& getCommanderTraits() const { return commander_traits_; }
-	[[nodiscard]] const auto& getCommanderSkill() const { return commander_skill_; }
-	[[nodiscard]] const auto& getCommanderAttackSkill() const { return commander_attack_skill_; }
-	[[nodiscard]] const auto& getCommanderDefenseSkill() const { return commander_defense_skill_; }
-	[[nodiscard]] const auto& getCommanderPlanningSkill() const { return commander_planning_skill_; }
-	[[nodiscard]] const auto& getCommanderLogisticsSkill() const { return commander_logistics_skill_; }
+	[[nodiscard]] const auto& getCommanderData() const { return commander_data_; }
 
 	[[nodiscard]] bool isAdmiral() const { return is_admiral_; }
 	[[nodiscard]] const auto& getAdmiralTraits() const { return admiral_traits_; }
@@ -49,14 +43,7 @@ class Character
 	std::vector<Portrait> portraits_;
 
 	std::optional<CountryLeaderData> country_leader_data_;
-
-	bool is_commander_ = false;
-	std::vector<std::string> commander_traits_;
-	int commander_skill_ = 1;
-	int commander_attack_skill_ = 1;
-	int commander_defense_skill_ = 1;
-	int commander_planning_skill_ = 1;
-	int commander_logistics_skill_ = 1;
+	std::optional<CommanderData> commander_data_;
 
 	bool is_admiral_ = false;
 	std::vector<std::string> admiral_traits_;
