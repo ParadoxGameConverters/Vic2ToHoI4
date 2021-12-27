@@ -81,6 +81,7 @@ class HoI4FocusTree: commonItems::parser
 		 HoI4::Events& events,
 		 Mappers::FactionNameMapper& factionNameMapper,
 		 HoI4::Localisation& hoi4Localisations);
+	double getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conquerStrategies);
 	std::map<std::string, std::set<int>> addReconquestBranch(std::shared_ptr<HoI4::Country> theCountry,
 		 int& numWarsWithNeighbors,
 		 const std::set<std::string>& majorIdeologies,
