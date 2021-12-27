@@ -2042,6 +2042,16 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(std::sha
 	return coreHolders;
 }
 
+double HoI4FocusTree::getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conquerStrategies)
+{
+	const auto& maxConquerValueItr = std::max_element(conquerStrategies.begin(),
+		 conquerStrategies.end(),
+		 [](const HoI4::AIStrategy& a, const HoI4::AIStrategy& b) {
+			 return a.getValue() < b.getValue();
+		 });
+	return maxConquerValueItr->getValue();
+}
+
 std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Country> theCountry,
 	 int& numWarsWithNeighbors,
 	 const std::set<std::string>& majorIdeologies,
@@ -2049,6 +2059,9 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 	 const std::map<int, HoI4::State>& states,
 	 HoI4::Localisation& hoi4Localisations)
 {
+	// less than this % of highest strategy value means theCountry doesn't get a focus on this target
+	// compensating for the Vic2 AI error of wanting to conquer provinces across ocean(s)
+	constexpr double strategyValueTreshold = 0.1;
 	std::string tag = theCountry->getTag();
 	std::set<std::string> conquerTags;
 
@@ -2065,7 +2078,8 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			continue;
 		}
 
-		if (hasMaxNeighborWars(numWarsWithNeighbors))
+		double relativeValue = strategy.getValue() / getMaxConquerValue(conquerStrategies);
+		if (hasMaxNeighborWars(numWarsWithNeighbors) || relativeValue < strategyValueTreshold)
 		{
 			break;
 		}
