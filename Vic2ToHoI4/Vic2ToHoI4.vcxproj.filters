@@ -1384,7 +1384,10 @@
     <ClCompile Include="Source\HOI4World\Map\PossiblePath.h">
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Characters\PortraitFactory.cpp">
+    <ClCompile Include="Source\HOI4World\Characters\PortraitsFactory.cpp">
+      <Filter>HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Characters\PortraitTypeFactory.cpp">
       <Filter>HoI4World\Characters</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2712,7 +2715,7 @@
     <ClInclude Include="Source\HOI4World\Characters\PortraitsFactory.h">
       <Filter>HoI4World\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Characters\PortraitFactory.h">
+    <ClInclude Include="Source\HOI4World\Characters\PortraitTypeFactory.h">
       <Filter>HoI4World\Characters</Filter>
     </ClInclude>
   </ItemGroup>

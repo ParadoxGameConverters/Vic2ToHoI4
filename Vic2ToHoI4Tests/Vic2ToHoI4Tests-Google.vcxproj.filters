@@ -1646,10 +1646,16 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultStatesImporter.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Characters\PortraitFactoryTests.cpp">
+    <ClCompile Include="HoI4WorldTests\Characters\PortraitTypeFactoryTests.cpp">
       <Filter>HoI4WorldTests\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitFactory.cpp">
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\PortraitsFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitTypeFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
     </ClCompile>
   </ItemGroup>
@@ -3282,10 +3288,10 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultStatesImporter.h">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitFactory.h">
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitsFactory.h">
       <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitsFactory.h">
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitTypeFactory.h">
       <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
     </ClInclude>
   </ItemGroup>
