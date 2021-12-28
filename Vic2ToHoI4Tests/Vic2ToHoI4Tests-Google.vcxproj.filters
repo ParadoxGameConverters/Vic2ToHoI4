@@ -1682,6 +1682,18 @@
     <ClCompile Include="OutHoI4Tests\Characters\OutCommanderDataTests.cpp">
       <Filter>OutHoI4Tests\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="OutHoI4Tests\Characters\OutAdmiralDataTests.cpp">
+      <Filter>OutHoI4Tests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\AdmiralDataTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -3335,6 +3347,15 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderDataFactory.h">
       <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralData.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.h">
+      <Filter>HoI4WorldTests\Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

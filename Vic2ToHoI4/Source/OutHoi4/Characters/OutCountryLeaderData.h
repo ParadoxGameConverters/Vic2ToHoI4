@@ -13,7 +13,7 @@ namespace HoI4
 
 std::ostream& operator<<(std::ostream& out, const CountryLeaderData& countryLeaderData);
 
-}
+} // namespace HoI4
 
 
 

@@ -139,25 +139,21 @@ Character Character::Factory::createNewAdmiral(const Vic2::Leader& src_admiral,
 	 Localisation& localisation)
 {
 	Character admiral;
-	admiral.is_admiral_ = true;
 	admiral.name_ = commonItems::convertWin1252ToUTF8(src_admiral.getName());
 	admiral.id_ = commonItems::convertUTF8ToASCII(admiral.name_);
-	admiral.admiral_attack_skill_ =
-		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("attack"))) + 1, 1, 7);
-	admiral.admiral_defense_skill_ =
-		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("defence"))) + 1, 1, 7);
-	admiral.admiral_maneuvering_skill_ =
-		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("morale") * 8.0F)) + 1, 1, 7);
-	admiral.admiral_coordination_skill_ =
-		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("organisation") * 25.0F)) + 1, 1, 7);
-	admiral.admiral_skill_ = std::clamp((admiral.admiral_attack_skill_ + admiral.admiral_defense_skill_ +
-														 admiral.admiral_maneuvering_skill_ + admiral.admiral_coordination_skill_) /
-														 3,
-		 1,
-		 5);
-
 	admiral.id_ = determineId(admiral.name_, tag);
 	localisation.addCharacterLocalisation(admiral.id_, admiral.name_);
+
+	const int attack_skill =
+		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("attack"))) + 1, 1, 7);
+	const int defense_skill =
+		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("defence"))) + 1, 1, 7);
+	const int maneuvering_skill =
+		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("morale") * 8.0F)) + 1, 1, 7);
+	const int coordination_skill =
+		 std::clamp(static_cast<int>(std::round(src_admiral.getTraitEffectValue("organisation") * 25.0F)) + 1, 1, 7);
+	const int skill = std::clamp((attack_skill + defense_skill + maneuvering_skill + coordination_skill) / 3, 1, 5);
+	admiral.admiral_data_ = AdmiralData({}, skill, attack_skill, defense_skill, maneuvering_skill, coordination_skill);
 
 	return admiral;
 }

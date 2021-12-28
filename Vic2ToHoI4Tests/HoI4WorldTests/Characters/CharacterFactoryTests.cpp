@@ -16,13 +16,7 @@ TEST(HoI4World_Characters_CharacterFactory, AllImportedItemsAreDefaulted)
 	EXPECT_TRUE(character.getPortraits().empty());
 	EXPECT_FALSE(character.getCountryLeaderData().has_value());
 	EXPECT_FALSE(character.getCommanderData().has_value());
-	EXPECT_FALSE(character.isAdmiral());
-	EXPECT_TRUE(character.getAdmiralTraits().empty());
-	EXPECT_EQ(character.getAdmiralSkill(), 1);
-	EXPECT_EQ(character.getAdmiralAttackSkill(), 1);
-	EXPECT_EQ(character.getAdmiralDefenseSkill(), 1);
-	EXPECT_EQ(character.getAdmiralManeuveringSkill(), 1);
-	EXPECT_EQ(character.getAdmiralCoordinationSkill(), 1);
+	EXPECT_FALSE(character.getAdmiralData().has_value());
 }
 
 
@@ -85,11 +79,12 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 	EXPECT_EQ(character.getCommanderData()->getDefenseSkill(), 3);
 	EXPECT_EQ(character.getCommanderData()->getPlanningSkill(), 2);
 	EXPECT_EQ(character.getCommanderData()->getLogisticsSkill(), 4);
-	EXPECT_TRUE(character.isAdmiral());
-	EXPECT_THAT(character.getAdmiralTraits(), testing::ElementsAre("test_admiral_trait_1", "test_admiral_trait_2"));
-	EXPECT_EQ(character.getAdmiralSkill(), 5);
-	EXPECT_EQ(character.getAdmiralAttackSkill(), 4);
-	EXPECT_EQ(character.getAdmiralDefenseSkill(), 2);
-	EXPECT_EQ(character.getAdmiralManeuveringSkill(), 2);
-	EXPECT_EQ(character.getAdmiralCoordinationSkill(), 6);
+	ASSERT_TRUE(character.getAdmiralData().has_value());
+	EXPECT_THAT(character.getAdmiralData()->getTraits(),
+		 testing::ElementsAre("test_admiral_trait_1", "test_admiral_trait_2"));
+	EXPECT_EQ(character.getAdmiralData()->getSkill(), 5);
+	EXPECT_EQ(character.getAdmiralData()->getAttackSkill(), 4);
+	EXPECT_EQ(character.getAdmiralData()->getDefenseSkill(), 2);
+	EXPECT_EQ(character.getAdmiralData()->getManeuveringSkill(), 2);
+	EXPECT_EQ(character.getAdmiralData()->getCoordinationSkill(), 6);
 }

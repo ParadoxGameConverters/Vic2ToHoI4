@@ -13,7 +13,7 @@ namespace HoI4
 
 std::ostream& operator<<(std::ostream& out, const CommanderData& commanderData);
 
-}
+} // namespace HoI4
 
 
 
