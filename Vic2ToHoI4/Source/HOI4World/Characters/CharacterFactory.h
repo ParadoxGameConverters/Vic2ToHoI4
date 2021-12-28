@@ -3,9 +3,9 @@
 
 
 
+#include "HOI4World/Characters/AdmiralDataFactory.h"
 #include "HOI4World/Characters/Character.h"
 #include "HOI4World/Characters/CommanderDataFactory.h"
-#include "HOI4World/Characters/AdmiralDataFactory.h"
 #include "HOI4World/Characters/CountryLeaderDataFactory.h"
 #include "HOI4World/Characters/PortraitsFactory.h"
 #include "HOI4World/HoI4Localisation.h"
