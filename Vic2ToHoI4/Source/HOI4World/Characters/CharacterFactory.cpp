@@ -27,6 +27,9 @@ Character::Factory::Factory()
 	registerKeyword("field_marshal", [this](const std::string& commanderType, std::istream& input) {
 		imported_character_->commander_data_ = commander_data_factory_.importCommanderData(commanderType, input);
 	});
+	registerKeyword("navy_leader", [this](std::istream& input) {
+		imported_character_->admiral_data_ = admiral_data_factory_.importAdmiralData(input);
+	});
 }
 
 

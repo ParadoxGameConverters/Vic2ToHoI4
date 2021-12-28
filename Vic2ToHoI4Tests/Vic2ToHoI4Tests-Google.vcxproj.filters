@@ -1692,7 +1692,7 @@
       <Filter>HoI4WorldTests\Characters</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.cpp">
-      <Filter>HoI4WorldTests\Characters</Filter>
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3355,7 +3355,7 @@
       <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.h">
-      <Filter>HoI4WorldTests\Characters</Filter>
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

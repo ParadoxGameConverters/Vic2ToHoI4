@@ -5,6 +5,7 @@
 
 #include "HOI4World/Characters/Character.h"
 #include "HOI4World/Characters/CommanderDataFactory.h"
+#include "HOI4World/Characters/AdmiralDataFactory.h"
 #include "HOI4World/Characters/CountryLeaderDataFactory.h"
 #include "HOI4World/Characters/PortraitsFactory.h"
 #include "HOI4World/HoI4Localisation.h"
@@ -42,6 +43,7 @@ class Character::Factory: commonItems::parser
 	PortraitsFactory portraits_factory_;
 	CountryLeaderDataFactory country_leader_data_factory_;
 	CommanderDataFactory commander_data_factory_;
+	AdmiralDataFactory admiral_data_factory_;
 
 	std::unique_ptr<Character> imported_character_;
 };

@@ -50,8 +50,8 @@ TEST(HoI4World_Characters_AdmiralData, ImportedItemsCanBeSet)
 	input << "\t\t\tskill=2\n";
 	input << "\t\t\tattack_skill=3\n";
 	input << "\t\t\tdefense_skill=4\n";
-	input << "\t\t\tplanning_skill=5\n";
-	input << "\t\t\tlogistics_skill=6\n";
+	input << "\t\t\tmaneuvering_skill=5\n";
+	input << "\t\t\tcoordination_skill=6\n";
 	input << "\t\t\tlegacy_id=0\n";
 	input << "\t\t}\n";
 

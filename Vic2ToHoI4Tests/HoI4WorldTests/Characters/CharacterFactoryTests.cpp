@@ -84,7 +84,7 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 		 testing::ElementsAre("test_admiral_trait_1", "test_admiral_trait_2"));
 	EXPECT_EQ(character.getAdmiralData()->getSkill(), 5);
 	EXPECT_EQ(character.getAdmiralData()->getAttackSkill(), 4);
-	EXPECT_EQ(character.getAdmiralData()->getDefenseSkill(), 2);
+	EXPECT_EQ(character.getAdmiralData()->getDefenseSkill(), 3);
 	EXPECT_EQ(character.getAdmiralData()->getManeuveringSkill(), 2);
 	EXPECT_EQ(character.getAdmiralData()->getCoordinationSkill(), 6);
 }

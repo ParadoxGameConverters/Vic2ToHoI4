@@ -18,10 +18,10 @@ HoI4::AdmiralDataFactory::AdmiralDataFactory()
 	registerKeyword("defense_skill", [this](std::istream& input) {
 		defense_skill_ = commonItems::getInt(input);
 	});
-	registerKeyword("planning_skill", [this](std::istream& input) {
+	registerKeyword("maneuvering_skill", [this](std::istream& input) {
 		maneuvering_skill_ = commonItems::getInt(input);
 	});
-	registerKeyword("logistics_skill", [this](std::istream& input) {
+	registerKeyword("coordination_skill", [this](std::istream& input) {
 		coordination_skill_ = commonItems::getInt(input);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
