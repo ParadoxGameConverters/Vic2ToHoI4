@@ -1490,7 +1490,7 @@ eastern_slavic = {
 		"gfx/leaders/SOV/Portrait_Soviet_Boris_Shaposhnikov.dds"
 		#Other
 		"gfx/leaders/Eastern_European/Portrait_Belarus_Bronislav_Kaminski.tga"
-		"gfx/leaders/Eastern_European/Portrait_Belarus_Vital_Kazlou.tga""
+		"gfx/leaders/Eastern_European/Portrait_Belarus_Vital_Kazlou.tga"
 		"gfx/leaders/Eastern_European/Portrait_TRM_Baranovsky.tga"
 		"gfx/leaders/Eastern_European/Portrait_TRM_Stark.tga"
 		"gfx/leaders/Eastern_European/Portrait_TRM_Pepelyaev.tga"
@@ -2827,7 +2827,7 @@ austronesian = {
 			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_hideki_tojo.dds"
+			"gfx/interface/ideas/idea_hideki_tojo.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
@@ -2962,7 +2962,7 @@ tai = {
 			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_hideki_tojo.dds"
+			"gfx/interface/ideas/idea_hideki_tojo.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
@@ -3113,7 +3113,7 @@ austroasiatic = {
 			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_hideki_tojo.dds"
+			"gfx/interface/ideas/idea_hideki_tojo.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
@@ -3247,7 +3247,7 @@ tungustic = {
 			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_hideki_tojo.dds"
+			"gfx/interface/ideas/idea_hideki_tojo.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
@@ -3770,7 +3770,7 @@ sinitic = {
 		"gfx/leaders/Sino/Portrait_FNG_Zhang_Haipeng.tga"
 		"gfx/leaders/Sino/Portrait_FNG_Zhang_Zuoxiang.tga"
 		"gfx/leaders/Sino/Portrait_China_Chang_Tzuchung.tga"
-		"gfx/leaders/Sino/portrait_SQI_wang_yaowu.tga"
+		"gfx/leaders/Sino/portrait_SQI_wang_yaowu.dds"
 		"gfx/leaders/Sino/Portrait_XSM_Ma_Zhongying.tga"
 		"gfx/leaders/Sino/Portrait_XSM_Sun_Lianguang.tga"
 	}
@@ -3804,7 +3804,7 @@ sinitic = {
 			"gfx/leaders/CHI/Portrait_China_weng_wenhao.dds"			
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds"
 			"gfx/leaders/Sino/Portrait_CHI_Hu_shi.tga"
-			"gfx/leaders/Sino/Portrait_XSM_Ma_Lin.dds"
+			"gfx/leaders/Sino/Portrait_XSM_Ma_Lin.tga"
 		} 
 		fascism = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_3.dds"
@@ -3874,7 +3874,7 @@ sinitic = {
 			"gfx/interface/ideas/idea_hitoshi_imamura.dds"
 		}
 		absolutist = {
-			"gfx/leaders/ideas/idea_hideki_tojo.dds"
+			"gfx/interface/ideas/idea_hideki_tojo.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_hajime_sugiyama.dds"
@@ -3950,7 +3950,7 @@ australia_melanesia_madagascar = {
 			"gfx/leaders/African/Portrait_SOM_Cismaan_III_Maxamuud.tga"	
 		} 
 		fascism = {
-			"gfx/leaders/African/Portrait_KIK_Mathenge.dds"
+			"gfx/leaders/African/Portrait_KIK_Mathenge.tga"
 			"gfx/leaders/African/Portrait_SUD_Abd_Mahdi.tga"
 			"gfx/leaders/African/Portrait_SOM_Ali_Shire.tga"
 			"gfx/leaders/African/Portrait_SOM_Cismaan_III_Maxamuud.tga"	
@@ -4071,11 +4071,11 @@ polynesia_micronesia = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NZL_Eruera_Tirikatene.tga"		
 		} 
 		fascism = {
-			"gfx/leaders/African/Portrait_KIK_Mathenge.dds"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_MOR_Ali_Yata.dds"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_PAL_Alami.dds"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Abang_Haji_Abdillah.dds"
-			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Datu_Patinggi.dds"
+			"gfx/leaders/African/Portrait_KIK_Mathenge.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_MOR_Ali_Yata.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_PAL_Alami.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Abang_Haji_Abdillah.tga"
+			"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Datu_Patinggi.tga"
 		}
 		absolutist = {
 			"gfx/leaders/Aborigine_Polynesia/Portrait_HAW_David_Kawananakoa.dds"
@@ -6463,13 +6463,13 @@ indian_calvary = {
 	}
 	female_portraits = {
 		military = {
-			"gfx/leaders/Animalia/portrait_elephant_leader_F.dds"
+			"gfx/leaders/Animalia/Female/portrait_elephant_leader_F.dds"
 		}
 		monarch = {
-			"gfx/leaders/Animalia/portrait_elephant_leader_F.dds"
+			"gfx/leaders/Animalia/Female/portrait_elephant_leader_F.dds"
 		}
 		ideological_leader = {
-			"gfx/leaders/Animalia/portrait_elephant_leader_F.dds"
+			"gfx/leaders/Animalia/Female/portrait_elephant_leader_F.dds"
 		}
 	}
 		
@@ -6540,13 +6540,13 @@ SHH_protein = {
 	}
 	female_portraits = {
 		military = {
-			"gfx/leaders/Animalia/portrait_hedgehog_leader_F.dds"
+			"gfx/leaders/Animalia/Female/portrait_hedgehog_leader_F.dds"
 		}
 		monarch = {
-			"gfx/leaders/Animalia/portrait_hedgehog_leader_F.dds"
+			"gfx/leaders/Animalia/Female/portrait_hedgehog_leader_F.dds"
 		}
 		ideological_leader = {
-			"gfx/leaders/Animalia/portrait_hedgehog_leader_F.dds"
+			"gfx/leaders/Animalia/Female/portrait_hedgehog_leader_F.dds"
 		}
 	}
 		
@@ -6617,13 +6617,13 @@ animalia = {
 	}
 	female_portraits = {
 		military = {
-			"gfx/leaders/Animalia/portrait_red_panda_leader_F.dds"
+			"gfx/leaders/Animalia/Female/portrait_red_panda_leader_F.dds"
 		}
 		monarch = {
-			"gfx/leaders/Animalia/portrait_red_panda_leader_F.dds"
+			"gfx/leaders/Animalia/Female/portrait_red_panda_leader_F.dds"
 		}
 		ideological_leader = {
-			"gfx/leaders/Animalia/portrait_red_panda_leader_F.dds"
+			"gfx/leaders/Animalia/Female/portrait_red_panda_leader_F.dds"
 		}
 	}
 		
