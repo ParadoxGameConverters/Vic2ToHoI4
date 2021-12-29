@@ -2101,6 +2101,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 		{
 			continue;
 		}
+		const auto& stateId = std::to_string(*newClaim);
 
 		conquerTags.insert(strategy.getID());
 		numWarsWithNeighbors++;
@@ -2119,7 +2120,6 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			{
 				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
 			}
-			const auto& stateId = std::to_string(*newClaim);
 			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
 			newFocus->xPos = nextFreeColumn;
 			newFocus->yPos = 0;
@@ -2152,7 +2152,6 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			{
 				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString());
 			}
-			const auto& stateId = std::to_string(*newClaim);
 			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", strategy.getID());
 			newFocus->updateFocusElement(newFocus->completionReward, "#ADDCLAIM", "add_state_claim = " + stateId);
@@ -2171,14 +2170,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			newFocus->prerequisites.push_back("= { focus = assert_claims" + tag + strategy.getID() + " }");
 			newFocus->relativePositionId += strategy.getID();
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", strategy.getID());
-			if (truceUntil)
-			{
-				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
-			}
-			else
-			{
-				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
-			}
+			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
 			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", strategy.getID());
 			focuses.push_back(newFocus);
 		}
@@ -2193,14 +2185,8 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(std::shared_ptr<HoI4::Coun
 			newFocus->prerequisites.clear();
 			newFocus->prerequisites.push_back("= { focus = prepare_for_war" + tag + strategy.getID() + " }");
 			newFocus->relativePositionId += strategy.getID();
-			if (truceUntil)
-			{
-				newFocus->updateFocusElement(newFocus->available, "#TRUCE", "date > " + truceUntil->toString());
-			}
-			else
-			{
-				newFocus->removePlaceholder(newFocus->available, "#TRUCE");
-			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", strategy.getID());
+			newFocus->updateFocusElement(newFocus->available, "#OWNSCLAIM", "owns_state = " + stateId);
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", strategy.getID());
 
 			std::string claimsString = "claimed_states";
