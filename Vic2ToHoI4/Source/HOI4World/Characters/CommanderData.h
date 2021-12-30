@@ -42,6 +42,8 @@ class CommanderData
 	[[nodiscard]] const auto& getPlanningSkill() const { return planning_skill_; }
 	[[nodiscard]] const auto& getLogisticsSkill() const { return logistics_skill_; }
 
+	[[nodiscard]] bool operator==(const CommanderData&) const = default;
+
   private:
 	CommanderLevel level_ = CommanderLevel::CorpsCommander;
 	std::vector<std::string> traits_;

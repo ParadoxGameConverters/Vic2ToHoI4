@@ -56,6 +56,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitsFactory.cpp" />
@@ -407,6 +409,8 @@
     <ClCompile Include="ConfigurationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\AdmiralDataTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\CharacterFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\CharactersCountryFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\CharactersFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\CommanderDataTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\CountryLeaderDataTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\PortraitTypeFactoryTests.cpp" />
@@ -767,6 +771,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\Character.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderData.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderDataFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderData.h" />
@@ -1768,6 +1774,11 @@
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">provinces%(Extension)</DestinationFileName>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)MergeWorld/map</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">provinces%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\HoI4Files\Characters\ImportCharacters.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

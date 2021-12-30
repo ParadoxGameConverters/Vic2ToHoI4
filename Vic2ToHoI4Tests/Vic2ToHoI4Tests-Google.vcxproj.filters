@@ -1694,6 +1694,18 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\CharactersFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\CharactersCountryFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2268,6 +2280,9 @@
     </Filter>
     <Filter Include="OutHoI4Tests\Map">
       <UniqueIdentifier>{2388c5ed-61a7-4ddb-9000-d93bd3dddce8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\HoI4\Characters">
+      <UniqueIdentifier>{254437e9-83f9-40b0-9162-7516f1f481d6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3357,6 +3372,12 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.h">
       <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3739,6 +3760,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\World\mergeWorldProvinces.bmp">
       <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\HoI4Files\Characters\ImportCharacters.txt">
+      <Filter>TestFiles\HoI4\Characters</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

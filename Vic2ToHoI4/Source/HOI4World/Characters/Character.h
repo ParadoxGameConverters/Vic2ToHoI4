@@ -30,6 +30,8 @@ class Character
 	[[nodiscard]] const auto& getCommanderData() const { return commander_data_; }
 	[[nodiscard]] const auto& getAdmiralData() const { return admiral_data_; }
 
+	[[nodiscard]] bool operator==(const Character& rhs) const = default;
+
   private:
 	std::string id_ = "nomen_nescio";
 	std::string name_ = "Nomen Nescio"; // Nescio Nomen (or N.N.) literally means "I don't know the name" and is

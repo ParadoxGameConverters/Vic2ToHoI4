@@ -1,0 +1,25 @@
+ONE={
+	ONE_only_character={
+	}
+}
+
+TWO={
+	TWO_first_character=
+	{
+	}
+	TWO_second_character=
+	{
+	}
+}
+
+FOO={
+	FOO_first_character=
+	{
+	}
+}
+
+FOO={
+	FOO_second_character=
+	{
+	}
+}

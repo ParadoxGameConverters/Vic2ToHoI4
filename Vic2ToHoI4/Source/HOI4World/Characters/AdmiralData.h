@@ -33,6 +33,8 @@ class AdmiralData
 	[[nodiscard]] const auto& getManeuveringSkill() const { return maneuvering_skill_; }
 	[[nodiscard]] const auto& getCoordinationSkill() const { return coordination_skill_; }
 
+	[[nodiscard]] bool operator==(const AdmiralData&) const = default;
+
   private:
 	std::vector<std::string> traits_;
 	int skill_ = 1;

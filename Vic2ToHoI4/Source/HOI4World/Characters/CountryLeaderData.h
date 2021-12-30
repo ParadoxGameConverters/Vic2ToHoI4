@@ -22,6 +22,8 @@ class CountryLeaderData
 	[[nodiscard]] const auto& getIdeology() const { return ideology_; }
 	[[nodiscard]] const auto& getTraits() const { return traits_; }
 
+	[[nodiscard]] bool operator==(const CountryLeaderData&) const = default;
+
   private:
 	std::string ideology_;
 	std::vector<std::string> traits_;
