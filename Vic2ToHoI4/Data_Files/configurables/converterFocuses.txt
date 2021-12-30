@@ -3133,10 +3133,13 @@ focus = {
 		cost = 10
 
 		available = {
-			#TRUCE
 			is_subject = no
 			has_war = no
-			$TARGET = { exists = yes }
+			$TARGET = {
+				exists = yes
+				not_allies_or_subjects = yes
+				#OWNSCLAIM
+			}
 		}
 		completion_reward = {
 			add_manpower = 10000
@@ -3159,8 +3162,13 @@ focus = {
 		cost = 10
 
 		available = {
-			#TRUCE
+			is_subject = no
 			has_war = no
+			$TARGET = {
+				exists = yes
+				not_allies_or_subjects = yes
+				#OWNSCLAIM
+			}
 		}
 		completion_reward = {
 			declare_war_on = {
