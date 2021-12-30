@@ -1389,6 +1389,7 @@ void HoI4::World::addFocusTrees()
 			country->addGlobalEventTarget("uk_colonial_focus_ENG");
 			country->addFocusTreeBranch("uk_colonial_focus", *onActions);
 			genericFocusTree.eraseBranch("uk_colonial_focus");
+			customizedFocusBranches.push_back("uk_colonial_focus");
 		}
 	}
 }

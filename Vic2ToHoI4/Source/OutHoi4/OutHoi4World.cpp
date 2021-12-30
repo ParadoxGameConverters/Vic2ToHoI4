@@ -69,6 +69,7 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::optional<std::string> humanCountry,
 	 const date& vic2Date,
 	 const std::string& outputName);
+void copyCustomizedFocusFiles(const std::string& outputName, const std::vector<std::string>& branchNames);
 
 } // namespace HoI4
 
@@ -231,6 +232,7 @@ void HoI4::OutputWorld(const World& world,
 	outCountryCategories(world.getCountryCategories(), outputName);
 	outputSounds(outputName, world.getSoundEffects());
 	outMonarchInterface(outputName, world.getCountries());
+	copyCustomizedFocusFiles(outputName, world.getCustomizedFocusBranches());
 }
 
 
@@ -627,5 +629,13 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	if (static_cast<unsigned long>(std::abs(365 * vic2Date.diffInYears(date("1936.1.1")))) > diffInDays)
 	{
 		outputBookmark(date("1936.1.1"), "gathering_storm", false);
+	}
+}
+
+void HoI4::copyCustomizedFocusFiles(const std::string& outputName, const std::vector<std::string>& branchNames)
+{
+	for (const auto& branch: branchNames)
+	{
+		commonItems::CopyFolder("Configurables/CustomizedFocusBranches/" + branch, "output/" + outputName);
 	}
 }

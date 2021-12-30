@@ -274,9 +274,6 @@
     <Filter Include="Mappers\FactionName">
       <UniqueIdentifier>{2551d8ad-d00a-4e34-addd-b8cc1512b6e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\ConverterFocuses">
-      <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Mappers\CasusBelli">
       <UniqueIdentifier>{8b3d14a7-b50f-4a6a-9126-d662b52723bc}</UniqueIdentifier>
     </Filter>
@@ -306,6 +303,39 @@
     </Filter>
     <Filter Include="OutHoi4\Characters">
       <UniqueIdentifier>{d11879db-f0e5-487a-b954-60ababf30c78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches">
+      <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus">
+      <UniqueIdentifier>{eeada828-a810-46ef-820b-79ce4638aebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\events">
+      <UniqueIdentifier>{f7996503-7b54-4fe1-974e-ff6150aed1a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common">
+      <UniqueIdentifier>{a4ee71c8-1633-4e2b-94e0-9b40293919b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions">
+      <UniqueIdentifier>{9f46f616-58c1-4c7c-bf10-258821cea7a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation">
+      <UniqueIdentifier>{ca9e2354-c4a5-4bde-9149-71182dd3d48e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace">
+      <UniqueIdentifier>{c47b7c99-d5b0-46f9-90d4-39c69e07832e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_effects">
+      <UniqueIdentifier>{7798083c-2a7d-47bd-b9ab-47601848d3b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions\categories">
+      <UniqueIdentifier>{27c6a737-c60e-4187-a86c-aaf9c077367d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_triggers">
+      <UniqueIdentifier>{a2d0df5a-6483-4dcf-aadf-94dd08444ae1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\ideas">
+      <UniqueIdentifier>{d395b384-48b9-4b80-be8d-da5c7c903d0e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2966,9 +2996,6 @@
     <CopyFileToFolders Include="Data_Files\configurables\Greater Flavor Mod_province_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\configurables\ConverterFocuses\uk_colonial_focus.txt">
-      <Filter>Data Files\Configurables\ConverterFocuses</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\casus_bellis_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
@@ -2996,6 +3023,47 @@
     <CopyFileToFolders Include="Data_Files\configurables\tankDesigns.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\events\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\events</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace\uk_colonial_focus_l_braz_por.yml">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace\uk_colonial_focus_l_english.yml">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace\uk_colonial_focus_l_french.yml">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace\uk_colonial_focus_l_german.yml">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace\uk_colonial_focus_l_polish.yml">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace\uk_colonial_focus_l_russian.yml">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace\uk_colonial_focus_l_spanish.yml">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_effects\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_effects</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions\categories\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions\categories</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_triggers\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_triggers</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\common\ideas\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\ideas</Filter>
     <CopyFileToFolders Include="Data_Files\configurables\ImportCharacters.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
