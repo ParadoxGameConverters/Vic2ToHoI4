@@ -325,6 +325,9 @@
     <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace">
       <UniqueIdentifier>{c47b7c99-d5b0-46f9-90d4-39c69e07832e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_effects">
+      <UniqueIdentifier>{7798083c-2a7d-47bd-b9ab-47601848d3b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -2995,6 +2998,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace\uk_colonial_focus_l_spanish.yml">
       <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_effects\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_effects</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
