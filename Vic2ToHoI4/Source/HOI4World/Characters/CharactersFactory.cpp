@@ -18,6 +18,6 @@ HoI4::CharactersFactory::CharactersFactory(Character::Factory& characterFactory)
 std::multimap<std::string, HoI4::Character> HoI4::CharactersFactory::importCharacters()
 {
 	characters_.clear();
-	parseFile("configurables/ImportCharacters.txt");
+	parseFile("Configurables/ImportCharacters.txt");
 	return characters_;
 }
