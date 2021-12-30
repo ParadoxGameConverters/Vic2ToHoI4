@@ -145,6 +145,7 @@ class World: commonItems::parser
 
 	void addNeutrality(bool debug);
 	void addLeaders(Character::Factory& characterFactory);
+	void importCharacters(Character::Factory& characterFactory);
 	void convertIdeologySupport();
 
 	void convertIndustry(const Configuration& theConfiguration);
