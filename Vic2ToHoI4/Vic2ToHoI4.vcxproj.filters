@@ -274,9 +274,6 @@
     <Filter Include="Mappers\FactionName">
       <UniqueIdentifier>{2551d8ad-d00a-4e34-addd-b8cc1512b6e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\ConverterFocuses">
-      <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Mappers\CasusBelli">
       <UniqueIdentifier>{8b3d14a7-b50f-4a6a-9126-d662b52723bc}</UniqueIdentifier>
     </Filter>
@@ -306,6 +303,21 @@
     </Filter>
     <Filter Include="OutHoi4\Characters">
       <UniqueIdentifier>{d11879db-f0e5-487a-b954-60ababf30c78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches">
+      <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus">
+      <UniqueIdentifier>{eeada828-a810-46ef-820b-79ce4638aebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\events">
+      <UniqueIdentifier>{f7996503-7b54-4fe1-974e-ff6150aed1a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common">
+      <UniqueIdentifier>{a4ee71c8-1633-4e2b-94e0-9b40293919b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions">
+      <UniqueIdentifier>{9f46f616-58c1-4c7c-bf10-258821cea7a7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2921,9 +2933,6 @@
     <CopyFileToFolders Include="Data_Files\configurables\Greater Flavor Mod_province_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\configurables\ConverterFocuses\uk_colonial_focus.txt">
-      <Filter>Data Files\Configurables\ConverterFocuses</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\casus_bellis_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
@@ -2950,6 +2959,15 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\tankDesigns.txt">
       <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\events\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\events</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions\uk_colonial_focus.txt">
+      <Filter>Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

@@ -112,6 +112,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getLocalisation() const { return *hoi4Localisations; }
 	[[nodiscard]] const auto& getSoundEffects() const { return soundEffects; }
 	[[nodiscard]] const auto& getDate() const { return *theDate; }
+	[[nodiscard]] const auto& getCustomizedFocusBranches() const { return customizedFocusBranches; }
 
 	const std::map<int, HoI4::State>& getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
@@ -287,6 +288,7 @@ class World: commonItems::parser
 	std::unique_ptr<Regions> theRegions;
 	std::map<std::pair<std::string, std::string>, std::shared_ptr<Country>> dominions;
 	std::map<std::string, std::shared_ptr<Country>> unrecognizedNations;
+	std::vector<std::string> customizedFocusBranches;
 };
 
 } // namespace HoI4
