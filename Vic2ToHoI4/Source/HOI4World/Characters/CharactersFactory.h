@@ -18,7 +18,7 @@ namespace HoI4
 class CharactersFactory: commonItems::parser
 {
   public:
-	CharactersFactory(Character::Factory& characterFactory);
+	explicit CharactersFactory(Character::Factory& characterFactory);
 
 	std::multimap<std::string, Character> importCharacters();
 

@@ -1,0 +1,25 @@
+# This file can be used to add characters to the conversion mod. If a character is a country leader it will override 
+# the generated country leader with the same idieology in the specified country. However, you can still add multiple 
+# leaders for different ideologies.
+#
+# You will need to add extra localisations for them in blankMod. If you use portraits not included in the base game or 
+# the converter you will need to add them to blankMod.
+#
+# Add characters to the file like so:
+#
+# USA={
+#	USA_abraham_lincoln={
+#		name = USA_abraham_lincoln
+#		portraits={
+#			civilian={
+#				large="gfx/leaders/USA/portrait_usa_abraham_lincoln.dds"
+#			}
+#		}
+#		country_leader={
+#			ideology=liberalism
+#			traits={ the_great_emancipator }
+#			expire="1953.1.1.12"
+#			id=-1
+#		}
+#	}
+# }

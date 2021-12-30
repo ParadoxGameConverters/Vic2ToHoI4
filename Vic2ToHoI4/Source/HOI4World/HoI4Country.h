@@ -281,6 +281,7 @@ class Country
 	std::set<std::string>& editAllies() { return allies; }
 
 	void addLeader(CountryLeader leader) { leaders.push_back(std::move(leader)); }
+	void addCharacter(const Character& character) { characters_.push_back(character); }
 
 	[[nodiscard]] const bool isEligibleEnemy(std::string target);
 

@@ -15,7 +15,7 @@ namespace HoI4
 class CharactersCountryFactory: commonItems::parser
 {
   public:
-	CharactersCountryFactory(Character::Factory& characterFactory);
+	explicit CharactersCountryFactory(Character::Factory& characterFactory);
 
 	std::vector<Character> importCharacters(std::istream& input);
 

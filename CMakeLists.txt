@@ -457,6 +457,7 @@ configure_file("${DATA_FILE_DIR}/configurables/ideologicalAdvisors.txt" "${CONVE
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalDecisions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/IdeologyMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ImportCharacters.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ImportCharacters.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/IntelligenceAgencyLogos.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IntelligenceAgencyLogos.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/languageReplacements.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacements.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/merge_nations.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/merge_nations.txt" COPYONLY)

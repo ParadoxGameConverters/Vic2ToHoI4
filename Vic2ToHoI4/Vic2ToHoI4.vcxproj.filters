@@ -3020,5 +3020,8 @@
     <CopyFileToFolders Include="Data_Files\configurables\tankDesigns.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\ImportCharacters.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

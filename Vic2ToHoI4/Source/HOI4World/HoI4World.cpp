@@ -7,6 +7,7 @@
 #include "Events/Events.h"
 #include "Events/GovernmentInExileEvent.h"
 #include "HOI4World/Characters/CharacterFactory.h"
+#include "HOI4World/Characters/CharactersFactory.h"
 #include "HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
 #include "HOI4World/Map/ImpassableProvinces.h"
 #include "HOI4World/Map/Railways.h"
@@ -230,6 +231,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 strongestGpNavies);
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
+	importCharacters(characterFactory);
 	addLeaders(characterFactory);
 	convertIdeologySupport();
 	Log(LogLevel::Progress) << "72%";
@@ -485,6 +487,24 @@ void HoI4::World::addLeaders(Character::Factory& characterFactory)
 		for (auto i = leaders.first; i != leaders.second; ++i)
 		{
 			country->addLeader(i->second);
+		}
+
+		country->createLeader(*names, *graphicsMapper, characterFactory, *hoi4Localisations);
+	}
+}
+
+
+void HoI4::World::importCharacters(Character::Factory& characterFactory)
+{
+	CharactersFactory charactersFactory(characterFactory);
+	const auto importedCharacters = charactersFactory.importCharacters();
+
+	for (auto& [tag, country]: countries)
+	{
+		auto characters = importedCharacters.equal_range(tag);
+		for (auto i = characters.first; i != characters.second; ++i)
+		{
+			country->addCharacter(i->second);
 		}
 
 		country->createLeader(*names, *graphicsMapper, characterFactory, *hoi4Localisations);
