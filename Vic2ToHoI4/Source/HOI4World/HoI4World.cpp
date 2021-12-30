@@ -7,6 +7,7 @@
 #include "Events/Events.h"
 #include "Events/GovernmentInExileEvent.h"
 #include "HOI4World/Characters/CharacterFactory.h"
+#include "HOI4World/Characters/CharactersFactory.h"
 #include "HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
 #include "HOI4World/Map/ImpassableProvinces.h"
 #include "HOI4World/Map/Railways.h"
@@ -17,7 +18,6 @@
 #include "HoI4Localisation.h"
 #include "Ideas/Ideas.h"
 #include "Leaders/Advisor.h"
-#include "Leaders/CountryLeadersFactory.h"
 #include "Leaders/IdeologicalAdvisors.h"
 #include "Localisations/ArticleRules/ArticleRules.h"
 #include "Localisations/ArticleRules/ArticleRulesFactory.h"
@@ -43,6 +43,7 @@
 #include "MilitaryMappings/MilitaryMappingsFile.h"
 #include "Modifiers/DynamicModifiers.h"
 #include "Names/Names.h"
+#include "OSCompatibilityLayer.h"
 #include "Operations/OperationsFactory.h"
 #include "OperativeNames/OperativeNamesFactory.h"
 #include "ParserHelpers.h"
@@ -230,6 +231,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 strongestGpNavies);
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
+	importCharacters(characterFactory);
 	addLeaders(characterFactory);
 	convertIdeologySupport();
 	Log(LogLevel::Progress) << "72%";
@@ -477,14 +479,30 @@ void HoI4::World::addNeutrality(bool debug)
 void HoI4::World::addLeaders(Character::Factory& characterFactory)
 {
 	Log(LogLevel::Info) << "\tAdding leaders";
-	auto configurableLeaders = CountryLeadersFactory().importCountryLeaders();
+	if (commonItems::DoesFileExist("./Configurables/HoI4CountryLeaders.txt"))
+	{
+		Log(LogLevel::Warning)
+			 << "HoI4CountryLeaders.txt is no longer used, convert your imported characters to use HoI4CountryLeaders.txt";
+	}
+
+	for (auto& country: countries | std::views::values)
+	{
+		country->createLeader(*names, *graphicsMapper, characterFactory, *hoi4Localisations);
+	}
+}
+
+
+void HoI4::World::importCharacters(Character::Factory& characterFactory)
+{
+	CharactersFactory charactersFactory(characterFactory);
+	const auto importedCharacters = charactersFactory.importCharacters();
 
 	for (auto& [tag, country]: countries)
 	{
-		auto leaders = configurableLeaders.equal_range(tag);
-		for (auto i = leaders.first; i != leaders.second; ++i)
+		auto characters = importedCharacters.equal_range(tag);
+		for (auto i = characters.first; i != characters.second; ++i)
 		{
-			country->addLeader(i->second);
+			country->addCharacter(i->second);
 		}
 
 		country->createLeader(*names, *graphicsMapper, characterFactory, *hoi4Localisations);

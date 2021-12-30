@@ -1163,21 +1163,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Leader.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Leader\CountryLeaderFactoryTests.cpp">
-      <Filter>HoI4WorldTests\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Leader\CountryLeadersFactoryTests.cpp">
-      <Filter>HoI4WorldTests\Leaders</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\AiStrategy</Filter>
     </ClCompile>
@@ -1640,8 +1625,71 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\CharacterFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultStatesImporter.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\PortraitTypeFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\PortraitsFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitTypeFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderDataFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\CountryLeaderDataTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="OutHoI4Tests\Characters\OutCountryLeaderDataTests.cpp">
+      <Filter>OutHoI4Tests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCommanderData.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderDataFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\CommanderDataTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="OutHoI4Tests\Characters\OutCommanderDataTests.cpp">
+      <Filter>OutHoI4Tests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="OutHoI4Tests\Characters\OutAdmiralDataTests.cpp">
+      <Filter>OutHoI4Tests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\AdmiralDataTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\CharactersFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Characters\CharactersCountryFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2218,6 +2266,9 @@
     <Filter Include="OutHoI4Tests\Map">
       <UniqueIdentifier>{2388c5ed-61a7-4ddb-9000-d93bd3dddce8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\HoI4\Characters">
+      <UniqueIdentifier>{254437e9-83f9-40b0-9162-7516f1f481d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2656,15 +2707,6 @@
       <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeader.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.h">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.h">
@@ -3273,6 +3315,45 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultStatesImporter.h">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitsFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitTypeFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderData.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderDataFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCommanderData.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderData.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderDataFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralData.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3655,6 +3736,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\World\mergeWorldProvinces.bmp">
       <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\HoI4Files\Characters\ImportCharacters.txt">
+      <Filter>TestFiles\HoI4\Characters</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

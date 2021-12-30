@@ -54,7 +54,14 @@
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderDataFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderDataFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitTypeFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp" />
@@ -71,8 +78,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp" />
@@ -161,7 +166,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Maps\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Maps\ProvincePoints.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCommanderData.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutPortrait.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.cpp" />
@@ -182,7 +190,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailway.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutRailways.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
@@ -397,6 +404,14 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="ConfigurationTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\AdmiralDataTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\CharacterFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\CharactersCountryFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\CharactersFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\CommanderDataTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\CountryLeaderDataTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\PortraitTypeFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\PortraitsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\PortraitTests.cpp" />
     <ClCompile Include="HoI4WorldTests\CountryCategories\CountryCategoriesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarRuleTests.cpp" />
@@ -423,8 +438,6 @@
     <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogoMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Leader\CountryLeaderFactoryTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Leader\CountryLeadersFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesDefinitionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesFactoryTests.cpp" />
@@ -538,6 +551,9 @@
     <ClCompile Include="MapsTests\MapDataTests.cpp" />
     <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp" />
     <ClCompile Include="MapsTests\ProvincePointsTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Characters\OutAdmiralDataTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Characters\OutCommanderDataTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Characters\OutCountryLeaderDataTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Characters\OutPortraitTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Map\OutRailwaysTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Map\OutSupplyNodesTests.cpp" />
@@ -746,9 +762,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\Configuration.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\Character.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CommanderDataFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CountryLeaderDataFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\Portrait.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitsFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\PortraitTypeFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRule.h" />
@@ -808,9 +834,6 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeader.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRule.h" />
@@ -999,7 +1022,10 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCommanderData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutPortrait.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.h" />
@@ -1740,6 +1766,11 @@
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">provinces%(Extension)</DestinationFileName>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)MergeWorld/map</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">provinces%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\HoI4Files\Characters\ImportCharacters.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

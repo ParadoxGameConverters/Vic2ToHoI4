@@ -13,7 +13,7 @@ namespace HoI4
 
 std::ostream& operator<<(std::ostream& out, const Portrait& portrait);
 
-}
+} // namespace HoI4
 
 
 
