@@ -18,7 +18,6 @@
 #include "HoI4Localisation.h"
 #include "Ideas/Ideas.h"
 #include "Leaders/Advisor.h"
-#include "Leaders/CountryLeadersFactory.h"
 #include "Leaders/IdeologicalAdvisors.h"
 #include "Localisations/ArticleRules/ArticleRules.h"
 #include "Localisations/ArticleRules/ArticleRulesFactory.h"
@@ -44,6 +43,7 @@
 #include "MilitaryMappings/MilitaryMappingsFile.h"
 #include "Modifiers/DynamicModifiers.h"
 #include "Names/Names.h"
+#include "OSCompatibilityLayer.h"
 #include "Operations/OperationsFactory.h"
 #include "OperativeNames/OperativeNamesFactory.h"
 #include "ParserHelpers.h"
@@ -479,16 +479,14 @@ void HoI4::World::addNeutrality(bool debug)
 void HoI4::World::addLeaders(Character::Factory& characterFactory)
 {
 	Log(LogLevel::Info) << "\tAdding leaders";
-	auto configurableLeaders = CountryLeadersFactory().importCountryLeaders();
-
-	for (auto& [tag, country]: countries)
+	if (commonItems::DoesFileExist("./Configurables/HoI4CountryLeaders.txt"))
 	{
-		auto leaders = configurableLeaders.equal_range(tag);
-		for (auto i = leaders.first; i != leaders.second; ++i)
-		{
-			country->addLeader(i->second);
-		}
+		Log(LogLevel::Warning)
+			 << "HoI4CountryLeaders.txt is no longer used, convert your imported characters to use HoI4CountryLeaders.txt";
+	}
 
+	for (auto& country: countries | std::views::values)
+	{
 		country->createLeader(*names, *graphicsMapper, characterFactory, *hoi4Localisations);
 	}
 }

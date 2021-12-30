@@ -1163,21 +1163,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Leader.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Leader\CountryLeaderFactoryTests.cpp">
-      <Filter>HoI4WorldTests\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Leader\CountryLeadersFactoryTests.cpp">
-      <Filter>HoI4WorldTests\Leaders</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\AiStrategy</Filter>
     </ClCompile>
@@ -2722,15 +2707,6 @@
       <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeader.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.h">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.h">

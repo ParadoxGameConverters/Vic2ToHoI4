@@ -12,7 +12,6 @@
 #include "HOI4World/Characters/Character.h"
 #include "HoI4FocusTree.h"
 #include "Ideologies/Ideologies.h"
-#include "Leaders/CountryLeader.h"
 #include "Map/CoastalProvinces.h"
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
@@ -219,7 +218,6 @@ class Country
 	[[nodiscard]] const std::string& getMobilizationLaw() const { return mobilizationLaw; }
 	[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
 	[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
-	[[nodiscard]] const auto& getLeaders() const { return leaders; }
 	[[nodiscard]] const auto& getCharacters() const { return characters_; }
 
 	[[nodiscard]] auto getTechnologyCount() const
@@ -280,7 +278,6 @@ class Country
 
 	std::set<std::string>& editAllies() { return allies; }
 
-	void addLeader(CountryLeader leader) { leaders.push_back(std::move(leader)); }
 	void addCharacter(const Character& character) { characters_.push_back(character); }
 
 	[[nodiscard]] const bool isEligibleEnemy(std::string target);
@@ -401,7 +398,6 @@ class Country
 	std::string economicLaw = "civilian_economy";
 	std::string tradeLaw = "export_focus";
 
-	std::vector<CountryLeader> leaders;
 	std::vector<Character> characters_;
 
 	std::set<std::string> oldTechnologiesAndInventions;

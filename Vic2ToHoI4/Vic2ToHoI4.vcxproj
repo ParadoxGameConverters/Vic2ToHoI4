@@ -169,8 +169,6 @@
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
-    <ClCompile Include="Source\HOI4World\Leaders\CountryLeaderFactory.cpp" />
-    <ClCompile Include="Source\HOI4World\Leaders\CountryLeadersFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp" />
@@ -285,7 +283,6 @@
     <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdvisor.cpp" />
-    <ClCompile Include="Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuilding.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuildings.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutRailway.cpp" />
@@ -552,9 +549,6 @@
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h" />
-    <ClInclude Include="Source\HOI4World\Leaders\CountryLeader.h" />
-    <ClInclude Include="Source\HOI4World\Leaders\CountryLeaderFactory.h" />
-    <ClInclude Include="Source\HOI4World\Leaders\CountryLeadersFactory.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRuleBuilder.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.h" />
@@ -697,7 +691,6 @@
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h" />
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h" />
     <ClInclude Include="Source\OutHoi4\Interface\OutMonarchsInterface.h" />
-    <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutRailway.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutRailways.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
@@ -1156,10 +1149,6 @@
     <CopyFileToFolders Include="Data_Files\configurables\CultureToVoiceMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables/Sounds</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables/Sounds</DestinationFolders>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\configurables\HoI4CountryLeaders.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\The Concert of Europe_province_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>

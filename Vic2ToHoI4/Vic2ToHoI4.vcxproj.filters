@@ -1087,15 +1087,6 @@
     <ClCompile Include="Source\V2World\Military\Leaders\Leader.cpp">
       <Filter>Vic2World\Military\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="Source\OutHoi4\Leaders\OutCountryLeader.cpp">
-      <Filter>OutHoi4\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Leaders\CountryLeaderFactory.cpp">
-      <Filter>HoI4World\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Leaders\CountryLeadersFactory.cpp">
-      <Filter>HoI4World\Leaders</Filter>
-    </ClCompile>
     <ClCompile Include="Source\OutHoi4\AiStrategy\OutAiStrategy.cpp">
       <Filter>OutHoi4\AiStrategy</Filter>
     </ClCompile>
@@ -2330,18 +2321,6 @@
     <ClInclude Include="Source\V2World\Military\Leaders\TraitsBuilder.h">
       <Filter>Vic2World\Military\Leaders</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Leaders\CountryLeader.h">
-      <Filter>HoI4World\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h">
-      <Filter>OutHoi4\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Leaders\CountryLeaderFactory.h">
-      <Filter>HoI4World\Leaders</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Leaders\CountryLeadersFactory.h">
-      <Filter>HoI4World\Leaders</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\EventsBuilder.h">
       <Filter>HoI4World\Events</Filter>
     </ClInclude>
@@ -2841,9 +2820,6 @@
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Configurables\converterFocuses.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\HoI4CountryLeaders.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Configurables\converterIdeas.txt">

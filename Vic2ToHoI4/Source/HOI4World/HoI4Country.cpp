@@ -3,7 +3,6 @@
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Localisation.h"
 #include "HoI4World.h"
-#include "Leaders/CountryLeaderFactory.h"
 #include "Log.h"
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/Government/GovernmentMapper.h"
@@ -1037,9 +1036,10 @@ void HoI4::Country::createLeader(Names& names,
 	 Character::Factory& characterFactory,
 	 Localisation& localisation)
 {
-	for (const auto& configuredLeader: leaders)
+	for (const auto& character: characters_)
 	{
-		if (configuredLeader.getIdeology() == leaderIdeology)
+		const auto& countryLeaderData = character.getCountryLeaderData();
+		if (countryLeaderData.has_value() && countryLeaderData->getIdeology() == leaderIdeology)
 		{
 			return;
 		}
