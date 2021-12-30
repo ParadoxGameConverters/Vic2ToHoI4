@@ -1,0 +1,8 @@
+ENG_imperial_conference_decision = {
+	icon = eng_imperial_conference
+
+	allowed = {
+		original_tag = event_target:uk_colonial_focus_ENG
+	}
+}
+
