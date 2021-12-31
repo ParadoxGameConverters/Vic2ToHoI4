@@ -6,6 +6,7 @@
 #include "Configuration.h"
 #include <map>
 #include <optional>
+#include <random>
 #include <string>
 #include <vector>
 
@@ -81,6 +82,8 @@ class GraphicsMapper
 
 	std::map<std::pair<std::string, std::string>, int> leaderPortraitIndexes;
 	std::map<std::pair<std::string, std::string>, int> ministerPortraitIndexes;
+
+	std::mt19937 leader_portrait_generator_;
 };
 
 } // namespace Mappers

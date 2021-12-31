@@ -94,7 +94,8 @@ std::string Mappers::GraphicsMapper::getLeaderPortrait(const std::string& cultur
 		auto index = leaderPortraitIndexes.find(key);
 		if (index == leaderPortraitIndexes.end())
 		{
-			leaderPortraitIndexes.emplace(key, 0);
+			leaderPortraitIndexes.emplace(key,
+				 std::uniform_int_distribution{0, static_cast<int>(portraits.size() - 1)}(leader_portrait_generator_));
 			index = leaderPortraitIndexes.find(key);
 		}
 		auto portrait = portraits[index->second];
