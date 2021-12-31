@@ -377,7 +377,6 @@ prospect_for_resources = {
 		icon = aluminium
 
 		allowed = {
-			NOT = { tag = MAN }
 		}
 
 		available = {
@@ -981,9 +980,6 @@ prospect_for_resources = {
 		icon = oil
 
 		allowed = {
-			NOT = {
-				tag = ITA
-			}
 		}
 
 		available = {
@@ -1061,9 +1057,6 @@ prospect_for_resources = {
 		icon = oil
 
 		allowed = {
-			NOT = {
-				tag = ITA
-			}
 		}
 
 		available = {

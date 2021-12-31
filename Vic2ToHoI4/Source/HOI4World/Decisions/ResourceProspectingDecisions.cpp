@@ -31,13 +31,6 @@ std::optional<int> getRelevantStateFromOldState(const int oldStateNum,
 }
 
 
-bool allowedNeedsStripping(const std::string_view decisionName)
-{
-	return decisionName == "develop_kirin_aluminium_deposits" || decisionName == "develop_sirte_oil_fields" ||
-			 decisionName == "develop_benghazi_oil_fields";
-}
-
-
 HoI4::decision updateDecision(HoI4::decision decisionToUpdate,
 	 const std::map<int, int>& provinceToStateIdMap,
 	 const std::map<int, HoI4::DefaultState>& defaultStates)
@@ -59,11 +52,6 @@ HoI4::decision updateDecision(HoI4::decision decisionToUpdate,
 	auto newHighlightStates =
 		 std::regex_replace(highlightStates, std::regex(std::to_string(oldStateNum)), std::to_string(newStateNum));
 	decisionToUpdate.setHighlightStateTargets(newHighlightStates);
-
-	if (allowedNeedsStripping(decisionToUpdate.getName()))
-	{
-		decisionToUpdate.setAllowed("= {\n\n\t\t}");
-	}
 
 	auto available = decisionToUpdate.getAvailable();
 	auto newAvailable =
