@@ -80,10 +80,9 @@ class GraphicsMapper
 	culturesAndGroupsToGraphicalCultureMap graphicalCultureMap;
 	culturesAndGroupsToGraphicalCultureMap graphicalCulture2dMap;
 
-	std::map<std::pair<std::string, std::string>, int> leaderPortraitIndexes;
 	std::map<std::pair<std::string, std::string>, int> ministerPortraitIndexes;
 
-	std::mt19937 leader_portrait_generator_;
+	std::map<std::string, int> used_portraits_;
 };
 
 } // namespace Mappers
