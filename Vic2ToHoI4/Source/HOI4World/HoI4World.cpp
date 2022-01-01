@@ -494,6 +494,7 @@ void HoI4::World::addLeaders(Character::Factory& characterFactory)
 
 void HoI4::World::importCharacters(Character::Factory& characterFactory)
 {
+	Log(LogLevel::Info) << "\tImporting characters";
 	CharactersFactory charactersFactory(characterFactory);
 	const auto importedCharacters = charactersFactory.importCharacters();
 
