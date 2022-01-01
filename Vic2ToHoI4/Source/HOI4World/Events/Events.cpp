@@ -1283,7 +1283,6 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 		EventOption option;
 		option.giveName("[Root.GetRulingPartyLong]");
 		partyChoiceEvent.giveOption(std::move(option));
-		optionLetter++;
 	}
 
 	onActions.addElectionEvent(partyChoiceEvent.getId());
