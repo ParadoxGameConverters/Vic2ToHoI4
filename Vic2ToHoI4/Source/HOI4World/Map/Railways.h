@@ -9,6 +9,7 @@
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Maps/MapData.h"
 #include "V2World/Provinces/Province.h"
+#include "V2World/States/State.h"
 #include <map>
 #include <memory>
 #include <vector>
@@ -22,6 +23,7 @@ class Railways
 {
   public:
 	Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
+		 std::vector<std::reference_wrapper<const Vic2::State>> states,
 		 const Maps::MapData& Vic2MapData,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Maps::MapData& HoI4MapData,
