@@ -80,8 +80,6 @@ class GraphicsMapper
 	culturesAndGroupsToGraphicalCultureMap graphicalCultureMap;
 	culturesAndGroupsToGraphicalCultureMap graphicalCulture2dMap;
 
-	std::map<std::pair<std::string, std::string>, int> ministerPortraitIndexes;
-
 	std::map<std::string, int> used_portraits_;
 };
 
