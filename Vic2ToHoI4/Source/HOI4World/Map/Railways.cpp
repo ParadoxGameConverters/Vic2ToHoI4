@@ -20,7 +20,7 @@ std::set<int> findValidVic2ProvinceNumbers(const std::vector<std::reference_wrap
 	for (const auto& state: states)
 	{
 		const auto provinces = state.get().getProvincesOrderedByPopulation();
-		const int provinceLimit = static_cast<int>(provinces.size()); //*2 / 3;
+		const int provinceLimit = static_cast<int>(provinces.size());// * 2 / 3;
 		for (int i = 0; i < provinceLimit; i++)
 		{
 			validVic2ProvinceNumbers.insert(provinces[i]);
@@ -49,6 +49,7 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 		{
 			continue;
 		}
+		std::set handledProvinces{vic2ProvinceNum};
 
 		std::priority_queue<std::vector<int>> newPaths;
 		newPaths.push({vic2ProvinceNum});
@@ -57,12 +58,6 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 		{
 			auto path = newPaths.top();
 			newPaths.pop();
-
-			std::set<int> handledProvinces;
-			for (const auto& province: path)
-			{
-				handledProvinces.insert(province);
-			}
 
 			const auto lastProvince = path[path.size() - 1];
 			for (const auto& neighborNumber: Vic2MapData.getNeighbors(lastProvince))
