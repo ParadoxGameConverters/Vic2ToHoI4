@@ -1277,6 +1277,14 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 			optionLetter++;
 		}
 	}
+	// Fallback for utility tags, e.g. AAA - Observer
+	if (optionLetter == 'a')
+	{
+		EventOption option;
+		option.giveName("[Root.GetRulingPartyLong]");
+		partyChoiceEvent.giveOption(std::move(option));
+		optionLetter++;
+	}
 
 	onActions.addElectionEvent(partyChoiceEvent.getId());
 	electionEvents.push_back(partyChoiceEvent);
