@@ -3,6 +3,7 @@
 #include "GraphicsCultureGroup.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include <limits>
 #include <ranges>
 
 
