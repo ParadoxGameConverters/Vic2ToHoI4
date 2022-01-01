@@ -3934,7 +3934,6 @@ australia_melanesia_madagascar = {
 	}
 	leader_portraits = {
 		communism = {
-			"gfx/leaders/African/Portrait_Haiti_Louis_Dejoie.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Friedrich_Maharero.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_SOM_Ughaz.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_GNE_Yacine.tga"
