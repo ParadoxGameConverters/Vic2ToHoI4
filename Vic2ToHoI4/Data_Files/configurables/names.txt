@@ -1593,6 +1593,20 @@ chacoan = {
 	electronic_companies = { "Electricidad" }
 	intelligence_agencies = { "Red & Black" }
 }
+chechen = {
+	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
+			Zaynap Zelimat Zulay Zulikha }
+	female_surnames = {	Mollaha Beyeha Abdulayeva Abdurakhmanova Akhmadova Alieva Aslanbekova Barayeva Basayeva Dudayeva Dudina Džabrailova Džokharova Elmurzaeva Ibragimova Isaeva Kadyrova Khasanova Kurbanova Magomedova Maskhadova Mayrbekova Murtazalieva Musaeva Otarsultanova
+			Sadulaeva Sagaipova Šapieva Šišhani Taymaskhanova Tsarnaeva Umarova Vagabova Vakhaeva Varayeva Yamadaeva Yandarbieva Zelimkhanova }
+	callsigns = { Urysybzé Adygébzé }
+	industry_companies = { "Lʺépkʺ"}
+	electronic_companies = { Šyblé }
+	car_companies = { KӀON }
+	naval_companies = { HY }
+	weapon_companies = { ŽYR }
+	aircraft_companies = { "Ž'ygʺogu" }
+	intelligence_agencies = { "Vladikavkaz" }
+}
 cherokee = {
 	female_names = { Asmita Nanyehi Cuhtahlatah Sequoya Adsila Amadahy Awenasa Awinita Ayita Galilahi Leotie Usdi Galilani Hialeah 
 	Immookalee Tayanita Sequoia Ahyoka Ama Galilani Ghigau Hiawassee Immokalee Inola Knasgowa Nanye-hi Ninovan 
@@ -1639,6 +1653,20 @@ chokwe = {
 	electronic_companies = { "Wizara wa Mphezi" }
 	car_companies = { "Auto Angola" }
 	intelligence_agencies = { "A.I.A." }
+}
+circassian = {
+	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
+			Zaynap Zelimat Zulay Zulikha }
+	female_surnames = {	Mollaha Beyeha Abdulayeva Abdurakhmanova Akhmadova Alieva Aslanbekova Barayeva Basayeva Dudayeva Dudina Džabrailova Džokharova Elmurzaeva Ibragimova Isaeva Kadyrova Khasanova Kurbanova Magomedova Maskhadova Mayrbekova Murtazalieva Musaeva Otarsultanova
+			Sadulaeva Sagaipova Šapieva Šišhani Taymaskhanova Tsarnaeva Umarova Vagabova Vakhaeva Varayeva Yamadaeva Yandarbieva Zelimkhanova }
+	callsigns = { Urysybzé Adygébzé }
+	industry_companies = { "Lʺépkʺ"}
+	electronic_companies = { Šyblé }
+	car_companies = { KӀON }
+	naval_companies = { HY }
+	weapon_companies = { ŽYR }
+	aircraft_companies = { "Ž'ygʺogu" }
+	intelligence_agencies = { "Vladikavkaz" }
 }
 coptic = {
 	female_names = { Cleopatra Anthelia Demiana Ese Fibruniyah Kattrin Lucra Ourt Tanoute Nephertiti }
@@ -1775,6 +1803,20 @@ dacian_australian = {
 	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
 	aircraft_companies = { IAR ICAR SET }
 	intelligence_agencies = { "Serviciul Român de Informatii" }
+}
+dagestani = {
+	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
+			Zaynap Zelimat Zulay Zulikha }
+	female_surnames = {	Mollaha Beyeha Abdulayeva Abdurakhmanova Akhmadova Alieva Aslanbekova Barayeva Basayeva Dudayeva Dudina Džabrailova Džokharova Elmurzaeva Ibragimova Isaeva Kadyrova Khasanova Kurbanova Magomedova Maskhadova Mayrbekova Murtazalieva Musaeva Otarsultanova
+			Sadulaeva Sagaipova Šapieva Šišhani Taymaskhanova Tsarnaeva Umarova Vagabova Vakhaeva Varayeva Yamadaeva Yandarbieva Zelimkhanova }
+	callsigns = { Urysybzé Adygébzé }
+	industry_companies = { "Lʺépkʺ"}
+	electronic_companies = { Šyblé }
+	car_companies = { KӀON }
+	naval_companies = { HY }
+	weapon_companies = { ŽYR }
+	aircraft_companies = { "Ž'ygʺogu" }
+	intelligence_agencies = { "Vladikavkaz" }
 }
 dakota = {
 	female_names = { Tasinasapewin Thasinamani Tasinahlahlawin Dohumme Chapa Chapawee Chumani Dowanhowee Ehawee Hantaywee Kimimela 
@@ -6776,6 +6818,17 @@ tuareg = {
 	intelligence_agencies = { "A.I.A." }
 }
 tupi = {
+	female_names = { Bartira Potira Porasy Jougousa Azelene }
+	callsigns = { Tupi "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+	intelligence_agencies = { "Red & Black" }
+}
+tupinamba = {
 	female_names = { Bartira Potira Porasy Jougousa Azelene }
 	callsigns = { Tupi "the European" "Blood God" Demon Devil Spirit Ghost }
 	car_companies = { COCHE }
