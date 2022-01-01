@@ -199,7 +199,7 @@ double getDistanceBetweenProvinces(int provinceOne, int provinceTwo, const Maps:
 
 std::optional<std::vector<int>> findPath(int startProvince,
 	 int endProvince,
-	 std::vector<int> vic2Provinces,
+	 const std::vector<int>& vic2Provinces,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
 	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions)
@@ -265,7 +265,7 @@ std::optional<std::vector<int>> findPath(int startProvince,
 
 
 HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
-	 std::vector<std::reference_wrapper<const Vic2::State>> states,
+	 const std::vector<std::reference_wrapper<const Vic2::State>>& states,
 	 const Maps::MapData& Vic2MapData,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
@@ -281,7 +281,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& V
 	for (const auto& state: states)
 	{
 		const auto provinces = state.get().getProvincesOrderedByPopulation();
-		const auto provinceLimit = provinces.size(); //*2 / 3;
+		const int provinceLimit = static_cast<int>(provinces.size()); //*2 / 3;
 		for (int i = 0; i < provinceLimit; i++)
 		{
 			validVic2ProvinceNumbers.insert(provinces[i]);
@@ -342,7 +342,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& V
 				if (validVic2ProvinceNumbers.contains(neighborNumber))
 				{
 					auto reversedPath = newPath;
-					std::reverse(reversedPath.begin(), reversedPath.end());
+					std::ranges::reverse(reversedPath);
 					if (!vic2provincePaths.contains(reversedPath))
 					{
 						vic2provincePaths.insert(newPath);

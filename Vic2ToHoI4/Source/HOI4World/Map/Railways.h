@@ -23,7 +23,7 @@ class Railways
 {
   public:
 	Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
-		 std::vector<std::reference_wrapper<const Vic2::State>> states,
+		 const std::vector<std::reference_wrapper<const Vic2::State>>& states,
 		 const Maps::MapData& Vic2MapData,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Maps::MapData& HoI4MapData,
