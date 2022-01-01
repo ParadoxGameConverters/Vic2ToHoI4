@@ -504,8 +504,6 @@ void HoI4::World::importCharacters(Character::Factory& characterFactory)
 		{
 			country->addCharacter(i->second);
 		}
-
-		country->createLeader(*names, *graphicsMapper, characterFactory, *hoi4Localisations);
 	}
 }
 

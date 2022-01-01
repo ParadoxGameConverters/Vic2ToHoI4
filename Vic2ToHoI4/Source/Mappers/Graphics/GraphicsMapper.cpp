@@ -3,6 +3,7 @@
 #include "GraphicsCultureGroup.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include <limits>
 #include <ranges>
 
 
@@ -90,31 +91,57 @@ std::string Mappers::GraphicsMapper::getLeaderPortrait(const std::string& cultur
 	auto portraits = getLeaderPortraits(culture, ideology);
 	if (!portraits.empty())
 	{
-		const auto key = std::make_pair(culture, ideology);
-		auto index = leaderPortraitIndexes.find(key);
-		if (index == leaderPortraitIndexes.end())
+		std::string least_used_portrait;
+		int least_used_times = std::numeric_limits<int>::max();
+		for (const auto& portrait: portraits)
 		{
-			leaderPortraitIndexes.emplace(key, 0);
-			index = leaderPortraitIndexes.find(key);
+			int times_used = 0;
+			if (const auto& itr = used_portraits_.find(portrait); itr != used_portraits_.end())
+			{
+				times_used = itr->second;
+			}
+
+			if (times_used < least_used_times)
+			{
+				least_used_portrait = portrait;
+				least_used_times = times_used;
+			}
 		}
-		auto portrait = portraits[index->second];
-		index->second = (index->second + 1) % portraits.size();
-		return portrait;
+
+		if (const auto& [itr, inserted] = used_portraits_.emplace(least_used_portrait, 1); itr != used_portraits_.end())
+		{
+			++itr->second;
+		}
+
+		return least_used_portrait;
 	}
 
 	portraits = getLeaderPortraits(cultureGroup, ideology);
 	if (!portraits.empty())
 	{
-		const auto key = std::make_pair(cultureGroup, ideology);
-		auto index = leaderPortraitIndexes.find(key);
-		if (index == leaderPortraitIndexes.end())
+		std::string least_used_portrait;
+		int least_used_times = std::numeric_limits<int>::max();
+		for (const auto& portrait: portraits)
 		{
-			leaderPortraitIndexes.emplace(key, 0);
-			index = leaderPortraitIndexes.find(key);
+			int times_used = 0;
+			if (const auto& itr = used_portraits_.find(portrait); itr != used_portraits_.end())
+			{
+				times_used = itr->second;
+			}
+
+			if (times_used < least_used_times)
+			{
+				least_used_portrait = portrait;
+				least_used_times = times_used;
+			}
 		}
-		auto portrait = portraits[index->second];
-		index->second = (index->second + 1) % portraits.size();
-		return portrait;
+
+		if (const auto& [itr, inserted] = used_portraits_.emplace(least_used_portrait, 1); itr != used_portraits_.end())
+		{
+			++itr->second;
+		}
+
+		return least_used_portrait;
 	}
 
 	return "gfx/leaders/leader_unknown.dds";
@@ -182,31 +209,57 @@ std::string Mappers::GraphicsMapper::getIdeologyMinisterPortrait(const std::stri
 	auto portraits = getIdeologyMinisterPortraits(culture, ideology);
 	if (!portraits.empty())
 	{
-		const auto key = std::make_pair(culture, ideology);
-		auto index = ministerPortraitIndexes.find(key);
-		if (index == ministerPortraitIndexes.end())
+		std::string least_used_portrait;
+		int least_used_times = std::numeric_limits<int>::max();
+		for (const auto& portrait: portraits)
 		{
-			ministerPortraitIndexes.emplace(key, 0);
-			index = ministerPortraitIndexes.find(key);
+			int times_used = 0;
+			if (const auto& itr = used_portraits_.find(portrait); itr != used_portraits_.end())
+			{
+				times_used = itr->second;
+			}
+
+			if (times_used < least_used_times)
+			{
+				least_used_portrait = portrait;
+				least_used_times = times_used;
+			}
 		}
-		auto portrait = portraits[index->second];
-		index->second = (index->second + 1) % portraits.size();
-		return portrait;
+
+		if (const auto& [itr, inserted] = used_portraits_.emplace(least_used_portrait, 1); itr != used_portraits_.end())
+		{
+			++itr->second;
+		}
+
+		return least_used_portrait;
 	}
 
 	portraits = getIdeologyMinisterPortraits(cultureGroup, ideology);
 	if (!portraits.empty())
 	{
-		const auto key = std::make_pair(cultureGroup, ideology);
-		auto index = ministerPortraitIndexes.find(key);
-		if (index == ministerPortraitIndexes.end())
+		std::string least_used_portrait;
+		int least_used_times = std::numeric_limits<int>::max();
+		for (const auto& portrait: portraits)
 		{
-			ministerPortraitIndexes.emplace(key, 0);
-			index = ministerPortraitIndexes.find(key);
+			int times_used = 0;
+			if (const auto& itr = used_portraits_.find(portrait); itr != used_portraits_.end())
+			{
+				times_used = itr->second;
+			}
+
+			if (times_used < least_used_times)
+			{
+				least_used_portrait = portrait;
+				least_used_times = times_used;
+			}
 		}
-		auto portrait = portraits[index->second];
-		index->second = (index->second + 1) % portraits.size();
-		return portrait;
+
+		if (const auto& [itr, inserted] = used_portraits_.emplace(least_used_portrait, 1); itr != used_portraits_.end())
+		{
+			++itr->second;
+		}
+
+		return least_used_portrait;
 	}
 
 	return "gfx/interface/ideas/idea_unknown.dds";
