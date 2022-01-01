@@ -39,6 +39,8 @@ class World
 	[[nodiscard]] const auto& getDate() const { return *theDate; }
 	[[nodiscard]] const auto& getMapData() const { return *mapData_; }
 
+	[[nodiscard]] std::vector<std::reference_wrapper<const State>> getStates() const;
+
   private:
 	std::map<int, std::shared_ptr<Province>> provinces;
 	std::map<std::string, Country> countries;
