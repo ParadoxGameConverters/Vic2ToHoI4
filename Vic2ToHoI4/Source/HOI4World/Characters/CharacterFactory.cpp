@@ -77,6 +77,7 @@ Character Character::Factory::createNewCountryLeader(const std::string& tag,
 	if (!firstName || !surname)
 	{
 		Log(LogLevel::Warning) << "Could not set leader for " << tag << ", as there were no names for " << primaryCulture << ".";
+		leader.id_ = determineId("Nomen Nescio", tag);
 		return leader;
 	}
 
