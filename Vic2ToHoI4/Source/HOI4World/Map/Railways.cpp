@@ -372,7 +372,8 @@ std::optional<std::vector<int>> findPath(int startProvince,
 	 const std::vector<int>& vic2Provinces,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
-	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions)
+	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
+	 const HoI4::ImpassableProvinces& impassableProvinces)
 {
 	std::priority_queue<HoI4::PossiblePath> possibleRailwayPaths;
 	std::set reachedProvinces{startProvince};
@@ -394,6 +395,10 @@ std::optional<std::vector<int>> findPath(int startProvince,
 			}
 			reachedProvinces.insert(neighborNumber);
 			if (!HoI4ProvinceDefinitions.isLandProvince(neighborNumber))
+			{
+				continue;
+			}
+			if (impassableProvinces.isProvinceImpassable(neighborNumber))
 			{
 				continue;
 			}
@@ -477,7 +482,8 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& V
 				  vic2provincePath,
 				  provinceMapper,
 				  HoI4MapData,
-				  HoI4ProvinceDefinitions);
+				  HoI4ProvinceDefinitions,
+				  impassableProvinces);
 			 possiblePath)
 		{
 			Railway railway(railwayLevel, *possiblePath);
