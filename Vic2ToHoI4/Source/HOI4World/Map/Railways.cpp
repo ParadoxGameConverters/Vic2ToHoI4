@@ -13,17 +13,34 @@ using HoI4::Railway;
 namespace
 {
 
-std::set<int> findValidVic2ProvinceNumbers(const std::vector<std::reference_wrapper<const Vic2::State>>& states)
+std::set<int> findValidVic2ProvinceNumbers(const std::vector<std::reference_wrapper<const Vic2::State>>& states,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces)
 {
 	std::set<int> validVic2ProvinceNumbers;
 
 	for (const auto& state: states)
 	{
-		const auto provinces = state.get().getProvincesOrderedByPopulation();
-		const int provinceLimit = static_cast<int>(provinces.size()) * 2 / 3;
+		const auto provinceNumbers = state.get().getProvincesOrderedByPopulation();
+
+		// first select any ports
+		int numPorts = 0;
+		for (const auto& provinceNumber: provinceNumbers)
+		{
+			if (const auto& provinceItr = vic2Provinces.find(provinceNumber); provinceItr != vic2Provinces.end())
+			{
+				if (provinceItr->second->getNavalBaseLevel() > 0)
+				{
+					validVic2ProvinceNumbers.insert(provinceNumber);
+					++numPorts;
+				}
+			}
+		}
+
+		// then select the remaining 2/3rd largest provinces
+		const int provinceLimit = static_cast<int>(provinceNumbers.size()) * 2 / 3 - numPorts;
 		for (int i = 0; i < provinceLimit; i++)
 		{
-			validVic2ProvinceNumbers.insert(provinces[i]);
+			validVic2ProvinceNumbers.insert(provinceNumbers[i]);
 		}
 	}
 
@@ -415,7 +432,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& V
 {
 	Log(LogLevel::Info) << "\tDetermining railways";
 
-	const auto validVic2ProvinceNumbers = findValidVic2ProvinceNumbers(states);
+	const auto validVic2ProvinceNumbers = findValidVic2ProvinceNumbers(states, Vic2Provinces);
 	const auto vic2provincePaths = determineVic2ProvincePaths(validVic2ProvinceNumbers, Vic2Provinces, Vic2MapData);
 
 	for (const auto& vic2provincePath: vic2provincePaths)
