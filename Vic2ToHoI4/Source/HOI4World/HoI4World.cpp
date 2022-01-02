@@ -151,6 +151,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
 	railways_ = std::make_unique<Railways>(sourceWorld.getProvinces(),
+		 sourceWorld.getStates(),
 		 sourceWorld.getMapData(),
 		 provinceMapper,
 		 *theMapData,
