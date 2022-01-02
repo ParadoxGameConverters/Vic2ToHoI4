@@ -102,12 +102,7 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 				newPath.push_back(neighborNumber);
 				if (validVic2ProvinceNumbers.contains(neighborNumber))
 				{
-					auto reversedPath = newPath;
-					std::ranges::reverse(reversedPath);
-					if (!potentialNewVic2ProvincePaths.contains(reversedPath))
-					{
-						potentialNewVic2ProvincePaths.insert(newPath);
-					}
+					potentialNewVic2ProvincePaths.insert(newPath);
 				}
 				else
 				{
@@ -121,7 +116,12 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 		{
 			if (potentialNewVic2ProvincePath.size() == 2)
 			{
-				vic2ProvincePaths.insert(potentialNewVic2ProvincePath);
+				auto reversedPath = potentialNewVic2ProvincePath;
+				std::ranges::reverse(reversedPath);
+				if (!vic2ProvincePaths.contains(reversedPath))
+				{
+					vic2ProvincePaths.insert(potentialNewVic2ProvincePath);
+				}
 				continue;
 			}
 
@@ -132,7 +132,12 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 		}
 		if (!longestPotentialNewPath.empty())
 		{
-			vic2ProvincePaths.insert(longestPotentialNewPath);
+			auto reversedPath = longestPotentialNewPath;
+			std::ranges::reverse(reversedPath);
+			if (!vic2ProvincePaths.contains(reversedPath))
+			{
+				vic2ProvincePaths.insert(longestPotentialNewPath);
+			}
 		}
 	}
 
