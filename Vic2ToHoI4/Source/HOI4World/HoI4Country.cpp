@@ -775,7 +775,14 @@ void HoI4::Country::determineCapitalFromVic2(const Mappers::ProvinceMapper& theP
 	}
 	if (!success)
 	{
-		Log(LogLevel::Warning) << "Could not properly set capital for " << tag;
+		if (name_)
+		{
+			Log(LogLevel::Warning) << "Could not properly set capital for " << tag << " - " << *name_;
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Could not properly set capital for " << tag;
+		}
 	}
 }
 
