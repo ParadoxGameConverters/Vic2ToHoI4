@@ -3,7 +3,6 @@
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Localisation.h"
 #include "HoI4World.h"
-#include "Leaders/CountryLeaderFactory.h"
 #include "Log.h"
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/Government/GovernmentMapper.h"
@@ -444,15 +443,17 @@ void HoI4::Country::convertLaws()
 
 void HoI4::Country::convertMonarch(const std::string& lastMonarch)
 {
-	nextMonarch = std::make_pair(lastMonarch, "");
-	const auto& lastSpacePos = lastMonarch.find_last_of(" ");
+	const auto newLastMonarch = commonItems::convertWin1252ToUTF8(lastMonarch);
+
+	nextMonarch = std::make_pair(newLastMonarch, "");
+	const auto& lastSpacePos = newLastMonarch.find_last_of(" ");
 	if (lastSpacePos == std::string::npos)
 	{
 		return;
 	}
 
-	const auto& regnalName = lastMonarch.substr(0, lastSpacePos);
-	const auto& potentialRegnalNumber = lastMonarch.substr(lastSpacePos + 1, lastMonarch.size());
+	const auto& regnalName = newLastMonarch.substr(0, lastSpacePos);
+	const auto& potentialRegnalNumber = newLastMonarch.substr(lastSpacePos + 1, newLastMonarch.size());
 	for (int i = 0; i < 30; ++i)
 	{
 		if (!potentialRegnalNumber.empty() && cardinalToRoman(i) == potentialRegnalNumber)
@@ -1037,9 +1038,10 @@ void HoI4::Country::createLeader(Names& names,
 	 Character::Factory& characterFactory,
 	 Localisation& localisation)
 {
-	for (const auto& configuredLeader: leaders)
+	for (const auto& character: characters_)
 	{
-		if (configuredLeader.getIdeology() == leaderIdeology)
+		const auto& countryLeaderData = character.getCountryLeaderData();
+		if (countryLeaderData.has_value() && countryLeaderData->getIdeology() == leaderIdeology)
 		{
 			return;
 		}

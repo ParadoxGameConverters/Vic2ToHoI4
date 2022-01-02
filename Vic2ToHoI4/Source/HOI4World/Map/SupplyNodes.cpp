@@ -3,7 +3,8 @@
 
 
 std::set<int> HoI4::determineSupplyNodes(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
-	 const Mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const std::set<int>& railwayEndpoints)
 {
 	std::set<int> supplyNodes;
 	for (const auto& [Vic2ProvinceNumber, Vic2Province]: Vic2Provinces)
@@ -18,8 +19,14 @@ std::set<int> HoI4::determineSupplyNodes(const std::map<int, std::shared_ptr<Vic
 		{
 			continue;
 		}
-
-		supplyNodes.insert(HoI4ProvinceNumbers[0]);
+		for (const auto& hoi4ProvinceNumber: HoI4ProvinceNumbers)
+		{
+			if (railwayEndpoints.contains(hoi4ProvinceNumber))
+			{
+				supplyNodes.insert(hoi4ProvinceNumber);
+				break;
+			}
+		}
 	}
 
 	return supplyNodes;

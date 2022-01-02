@@ -970,6 +970,10 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakNeighbors(st
 		{
 			continue;
 		}
+		if (neighbor->isUnrecognizedNation() || neighbor->isGeneratedDominion())
+		{
+			continue;
+		}
 
 		if (neighbor->isGreatPower())
 		{
@@ -1004,6 +1008,10 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakColonies(std
 
 		auto neighbor = theWorld->findCountry(neighborTag);
 		if (neighbor == nullptr)
+		{
+			continue;
+		}
+		if (neighbor->isUnrecognizedNation() || neighbor->isGeneratedDominion())
 		{
 			continue;
 		}

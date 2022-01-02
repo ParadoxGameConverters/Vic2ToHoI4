@@ -18,15 +18,27 @@
 namespace HoI4
 {
 
-std::vector<Railway> determineRailways(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
-	 const Maps::MapData& Vic2MapData,
-	 const Mappers::ProvinceMapper& provinceMapper,
-	 const Maps::MapData& HoI4MapData,
-	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
-	 const ImpassableProvinces& impassableProvinces,
-	 const std::map<int, HoI4::Province>& hoi4Provinces);
+class Railways
+{
+  public:
+	Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
+		 const Maps::MapData& Vic2MapData,
+		 const Mappers::ProvinceMapper& provinceMapper,
+		 const Maps::MapData& HoI4MapData,
+		 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
+		 const ImpassableProvinces& impassableProvinces,
+		 const std::map<int, Province>& hoi4Provinces,
+		 const std::set<int>& navalBaseLocations);
 
-}
+	[[nodiscard]] const auto& getRailways() const { return railways_; }
+	[[nodiscard]] const auto& getRailwayEndpoints() const { return railway_endpoints_; }
+
+  private:
+	std::vector<Railway> railways_;
+	std::set<int> railway_endpoints_;
+};
+
+} // namespace HoI4
 
 
 

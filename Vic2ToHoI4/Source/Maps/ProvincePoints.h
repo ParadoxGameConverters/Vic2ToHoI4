@@ -11,7 +11,7 @@
 namespace Maps
 {
 
-using Point = std::pair<unsigned int, unsigned int>;
+using Point = std::pair<int, int>;
 
 class ProvincePoints
 {

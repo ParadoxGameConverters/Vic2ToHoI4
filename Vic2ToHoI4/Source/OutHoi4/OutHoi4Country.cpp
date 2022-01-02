@@ -4,11 +4,9 @@
 #include "HOI4World/Characters/Character.h"
 #include "HOI4World/Diplomacy/Faction.h"
 #include "HOI4World/HoI4Country.h"
-#include "HOI4World/Leaders/CountryLeader.h"
 #include "HOI4World/Military/DivisionTemplate.h"
 #include "HOI4World/Names/Names.h"
 #include "HOI4World/Navies/NavyNames.h"
-#include "Leaders/OutCountryLeader.h"
 #include "Navies/OutLegacyNavyNames.h"
 #include "Navies/OutMtgNavyNames.h"
 #include "Navies/OutNavies.h"
@@ -512,10 +510,6 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		output << "recruit_character = " << character.getId() << "\n";
 	}
 	output << '\n';
-	for (const auto& leader: theCountry.getLeaders())
-	{
-		HoI4::outputCountryLeader(output, leader);
-	}
 	outputOperatives(output, theCountry, theCountry.getOperatives());
 	output << theCountry.getTheShipVariants();
 	output << theCountry.getTankDesigns();

@@ -71,8 +71,9 @@ class States: commonItems::parser
 	[[nodiscard]] const std::map<int, State>& getStates() const { return states; }
 	[[nodiscard]] const std::map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
 	[[nodiscard]] const auto& getLanguageCategories() const { return languageCategories; }
-
 	[[nodiscard]] std::map<int, State>& getModifiableStates() { return states; }
+
+	[[nodiscard]] std::set<int> getNavalBaseLocations() const;
 
 	void convertAirBases(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::vector<std::shared_ptr<Country>>& greatPowers);

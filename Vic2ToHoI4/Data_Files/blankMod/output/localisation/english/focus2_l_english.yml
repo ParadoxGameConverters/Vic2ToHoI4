@@ -96,6 +96,8 @@
  War_with_desc:0 "With newly acquired allies, a favorable outcome of a war with [$TARGET.GetName] looks more and more promising."
  border_disputes:0 "[$TARGET.GetAdjective] Territorial Dispute"
  border_disputes_desc:0 "Pushing for the resolution of the [$TARGET.GetAdjective] territorial disputes is likely to go our way. We should however be prepared for war."
+ assert_claims:0 "Assert Claims"
+ assert_claims_desc:0 "Before we invade [$TARGET.GetName], we must ensure that the world understands our war is justified."
  prepare_for_war:0 "Prepare for War"
  prepare_for_war_desc:0 "We know it, they know it - war is inevitable. They'll certainly be prepared and we must make sure we are as well."
  neighbor_war:0 "Neighbor War"

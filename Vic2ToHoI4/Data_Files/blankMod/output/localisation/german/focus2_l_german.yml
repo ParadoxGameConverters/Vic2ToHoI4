@@ -56,6 +56,8 @@
  War_with:0 "Krieg mit [$TARGET.DEGetDat]"
  border_disputes:0 "[$TARGET.GetAdjective]er Territorialstreit"
  border_disputes_desc:0 "Die Lösung der [$TARGET.GetAdjective]en territorialen Streitigkeiten wird wahrscheinlich unseren Weg gehen. Wir sollten jedoch auf den Krieg vorbereitet sein."
+ assert_claims:0 "Forderungen geltend machen"
+ assert_claims_desc:0 "Bevor wir in [$TARGET.GetName] einfallen, müssen wir sicherstellen, dass die Welt versteht, dass unser Krieg gerechtfertigt ist."
  prepare_for_war:0 "Bereite dich auf den Krieg vor"
  prepare_for_war_desc:0 "Wir wissen es, sie wissen es - Krieg ist unvermeidlich. Sie werden auf jeden Fall vorbereitet sein und wir müssen sicherstellen, dass wir es auch sind."
  neighbor_war:0 "Nachbarschaftskrieg"

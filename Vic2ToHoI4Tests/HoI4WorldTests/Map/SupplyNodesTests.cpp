@@ -15,7 +15,7 @@ using Vic2::Province;
 
 TEST(HoI4World_Map_SupplyNodes, SupplyNodesDefaultToNone)
 {
-	const auto supplyNodes = determineSupplyNodes({}, *ProvinceMapper::Builder{}.Build());
+	const auto supplyNodes = determineSupplyNodes({}, *ProvinceMapper::Builder{}.Build(), {});
 
 	EXPECT_TRUE(supplyNodes.empty());
 }
@@ -23,8 +23,9 @@ TEST(HoI4World_Map_SupplyNodes, SupplyNodesDefaultToNone)
 
 TEST(HoI4World_Map_SupplyNodes, SeaProvincesDoNotGetNodes)
 {
-	const auto supplyNodes =
-		 determineSupplyNodes({{1, Province::Builder{}.setNumber(1).build()}}, *ProvinceMapper::Builder{}.Build());
+	const auto supplyNodes = determineSupplyNodes({{1, Province::Builder{}.setNumber(1).build()}},
+		 *ProvinceMapper::Builder{}.addVic2ToHoI4ProvinceMap(1, {10}).Build(),
+		 {1});
 
 	EXPECT_TRUE(supplyNodes.empty());
 }
@@ -33,7 +34,18 @@ TEST(HoI4World_Map_SupplyNodes, SeaProvincesDoNotGetNodes)
 TEST(HoI4World_Map_SupplyNodes, UnmappedProvincesDoNotGetNodes)
 {
 	const auto supplyNodes = determineSupplyNodes({{1, Province::Builder{}.setNumber(1).setIsLand().build()}},
-		 *ProvinceMapper::Builder{}.Build());
+		 *ProvinceMapper::Builder{}.Build(),
+		 {10});
+
+	EXPECT_TRUE(supplyNodes.empty());
+}
+
+
+TEST(HoI4World_Map_SupplyNodes, provincesWithoutRailEndpointsDoNotGetNodes)
+{
+	const auto supplyNodes = determineSupplyNodes({{1, Province::Builder{}.setNumber(1).setIsLand().build()}},
+		 *ProvinceMapper::Builder{}.addVic2ToHoI4ProvinceMap(1, {10}).Build(),
+		 {});
 
 	EXPECT_TRUE(supplyNodes.empty());
 }
@@ -42,7 +54,8 @@ TEST(HoI4World_Map_SupplyNodes, UnmappedProvincesDoNotGetNodes)
 TEST(HoI4World_Map_SupplyNodes, SupplyNodesGetCreated)
 {
 	const auto supplyNodes = determineSupplyNodes({{1, Province::Builder{}.setNumber(1).setIsLand().build()}},
-		 *ProvinceMapper::Builder{}.addVic2ToHoI4ProvinceMap(1, {10}).Build());
+		 *ProvinceMapper::Builder{}.addVic2ToHoI4ProvinceMap(1, {10}).Build(),
+		 {10});
 
 	EXPECT_THAT(supplyNodes, testing::UnorderedElementsAre(10));
 }

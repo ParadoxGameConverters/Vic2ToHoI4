@@ -538,3 +538,6 @@
  reconquest_wars.4.t:0 "Znajdź odpowiednich wrogów"
  reconquest_wars.4.d:0 "Znajduje potencjalnych sprzymierzeńców, którzy zwiększą naszą siłę"
  reconquest_wars.4.a:0 "W porządku"
+ reconquest_news.1.t:0 "[From.GetAdjectiveCap] ekspansjonizm"
+ reconquest_news.1.d:0 "[From.GetName] staje się coraz bardziej odważny w dochodzeniu swoich roszczeń do terytorium [Root.GetName]. Ich ekspansywna polityka jest powodem do niepokoju, ponieważ tylko zwiększa napięcie na świecie."
+ reconquest_news.1.a:0 "Ktoś powinien wkroczyć"

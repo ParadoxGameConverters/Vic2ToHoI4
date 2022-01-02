@@ -539,3 +539,6 @@
  reconquest_wars.4.t:0 "Finde relevante Feinde"
  reconquest_wars.4.d:0 "Findet mögliche Verbündete, um ihre Stärke zu unserer Stärkezahl hinzuzufügen"
  reconquest_wars.4.a:0 "Schon gut!"
+ reconquest_news.1.t:0 "[From.GetAdjectiveCap]er Expansionismus"
+ reconquest_news.1.d:0 "[From.GetName] ist bei der Geltendmachung ihrer Ansprüche auf das Territorium von [Root.GetName] immer mutiger geworden. Ihre expanionistische Politik gibt Anlass zur Sorge, da sie die weltweiten Spannungen nur verstärkt."
+ reconquest_news.1.a:0 "Jemand sollte einspringen"
