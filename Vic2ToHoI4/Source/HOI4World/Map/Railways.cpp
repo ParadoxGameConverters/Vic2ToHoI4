@@ -20,7 +20,7 @@ std::set<int> findValidVic2ProvinceNumbers(const std::vector<std::reference_wrap
 	for (const auto& state: states)
 	{
 		const auto provinces = state.get().getProvincesOrderedByPopulation();
-		const int provinceLimit = static_cast<int>(provinces.size());// * 2 / 3;
+		const int provinceLimit = static_cast<int>(provinces.size()) * 2 / 3;
 		for (int i = 0; i < provinceLimit; i++)
 		{
 			validVic2ProvinceNumbers.insert(provinces[i]);
@@ -35,7 +35,7 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
 	 const Maps::MapData& Vic2MapData)
 {
-	std::set<std::vector<int>> vic2provincePaths;
+	std::set<std::vector<int>> vic2ProvincePaths;
 	for (const auto& vic2ProvinceNum: validVic2ProvinceNumbers)
 	{
 		const auto provinceItr = Vic2Provinces.find(vic2ProvinceNum);
@@ -50,6 +50,8 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 			continue;
 		}
 		std::set handledProvinces{vic2ProvinceNum};
+
+		std::set<std::vector<int>> potentialNewVic2ProvincePaths;
 
 		std::priority_queue<std::vector<int>> newPaths;
 		newPaths.push({vic2ProvinceNum});
@@ -85,9 +87,9 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 				{
 					auto reversedPath = newPath;
 					std::ranges::reverse(reversedPath);
-					if (!vic2provincePaths.contains(reversedPath))
+					if (!potentialNewVic2ProvincePaths.contains(reversedPath))
 					{
-						vic2provincePaths.insert(newPath);
+						potentialNewVic2ProvincePaths.insert(newPath);
 					}
 				}
 				else
@@ -96,9 +98,28 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 				}
 			}
 		}
+
+		std::vector<int> longestPotentialNewPath;
+		for (const auto& potentialNewVic2ProvincePath: potentialNewVic2ProvincePaths)
+		{
+			if (potentialNewVic2ProvincePath.size() == 2)
+			{
+				vic2ProvincePaths.insert(potentialNewVic2ProvincePath);
+				continue;
+			}
+
+			if (potentialNewVic2ProvincePath.size() > longestPotentialNewPath.size())
+			{
+				longestPotentialNewPath = potentialNewVic2ProvincePath;
+			}
+		}
+		if (!longestPotentialNewPath.empty())
+		{
+			vic2ProvincePaths.insert(longestPotentialNewPath);
+		}
 	}
 
-	return vic2provincePaths;
+	return vic2ProvincePaths;
 }
 
 
