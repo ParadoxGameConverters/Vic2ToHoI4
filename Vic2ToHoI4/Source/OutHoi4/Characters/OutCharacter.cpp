@@ -1,5 +1,6 @@
 #include "OutCharacter.h"
 #include "OutHoi4/Characters/OutAdmiralData.h"
+#include "OutHoi4/Characters/OutAdvisorData.h"
 #include "OutHoi4/Characters/OutCommanderData.h"
 #include "OutHoi4/Characters/OutCountryLeaderData.h"
 #include "OutHoi4/Characters/OutPortrait.h"
@@ -18,6 +19,11 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Character& character)
 			out << portrait;
 		}
 		out << "\t\t}\n";
+	}
+
+	if (const auto& advisorData = character.getAdvisorData(); advisorData.has_value())
+	{
+		out << *advisorData;
 	}
 
 	if (const auto& countryLeaderData = character.getCountryLeaderData(); countryLeaderData.has_value())

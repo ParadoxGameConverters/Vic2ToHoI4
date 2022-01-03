@@ -4,6 +4,7 @@
 
 
 #include "HOI4World/Characters/AdmiralDataFactory.h"
+#include "HOI4World/Characters/AdvisorDataFactory.h"
 #include "HOI4World/Characters/Character.h"
 #include "HOI4World/Characters/CommanderDataFactory.h"
 #include "HOI4World/Characters/CountryLeaderDataFactory.h"
@@ -45,6 +46,7 @@ class Character::Factory: commonItems::parser
 
 	std::set<std::string> used_ids_;
 	PortraitsFactory portraits_factory_;
+	AdvisorDataFactory advisor_data_factory_;
 	CountryLeaderDataFactory country_leader_data_factory_;
 	CommanderDataFactory commander_data_factory_;
 	AdmiralDataFactory admiral_data_factory_;
