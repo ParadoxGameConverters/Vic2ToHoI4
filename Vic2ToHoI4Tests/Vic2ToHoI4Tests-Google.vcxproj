@@ -168,6 +168,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Maps\ProvincePoints.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdvisorData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCommanderData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.cpp" />
@@ -554,6 +555,7 @@
     <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp" />
     <ClCompile Include="MapsTests\ProvincePointsTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Characters\OutAdmiralDataTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Characters\OutAdvisorDataTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Characters\OutCommanderDataTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Characters\OutCountryLeaderDataTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Characters\OutPortraitTests.cpp" />
@@ -1027,6 +1029,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdvisorData.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCommanderData.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.h" />

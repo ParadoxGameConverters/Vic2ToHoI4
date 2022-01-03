@@ -254,6 +254,7 @@
     <ClCompile Include="Source\Maps\ProvincePoints.cpp" />
     <ClCompile Include="Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
     <ClCompile Include="Source\OutHoi4\Characters\OutAdmiralData.cpp" />
+    <ClCompile Include="Source\OutHoi4\Characters\OutAdvisorData.cpp" />
     <ClCompile Include="Source\OutHoi4\Characters\OutCharacter.cpp" />
     <ClCompile Include="Source\OutHoi4\Characters\OutCommanderData.cpp" />
     <ClCompile Include="Source\OutHoi4\Characters\OutCountryLeaderData.cpp" />
@@ -672,6 +673,7 @@
     <ClInclude Include="Source\Maps\ProvincePoints.h" />
     <ClInclude Include="Source\OutHoi4\AiStrategy\OutAiStrategy.h" />
     <ClInclude Include="Source\OutHoi4\Characters\OutAdmiralData.h" />
+    <ClInclude Include="Source\OutHoi4\Characters\OutAdvisorData.h" />
     <ClInclude Include="Source\OutHoi4\Characters\OutCharacter.h" />
     <ClInclude Include="Source\OutHoi4\Characters\OutCommanderData.h" />
     <ClInclude Include="Source\OutHoi4\Characters\OutPortrait.h" />
