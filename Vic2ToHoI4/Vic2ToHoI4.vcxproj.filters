@@ -1438,6 +1438,9 @@
     <ClCompile Include="Source\HOI4World\Characters\CharactersCountryFactory.cpp">
       <Filter>HoI4World\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Characters\AdvisorDataFactory.cpp">
+      <Filter>HoI4World\Characters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2782,6 +2785,12 @@
       <Filter>HoI4World\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Characters\CharactersCountryFactory.h">
+      <Filter>HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Characters\AdvisorData.h">
+      <Filter>HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Characters\AdvisorDataFactory.h">
       <Filter>HoI4World\Characters</Filter>
     </ClInclude>
   </ItemGroup>

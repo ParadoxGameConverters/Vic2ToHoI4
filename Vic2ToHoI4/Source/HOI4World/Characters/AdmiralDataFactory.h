@@ -31,4 +31,4 @@ class AdmiralDataFactory: commonItems::parser
 
 
 
-#endif // HOI4WORLD_CHARACTERS_COMMANDER_DATA_FACTORY_H
+#endif // HOI4WORLD_CHARACTERS_ADMIRAL_DATA_FACTORY_H
