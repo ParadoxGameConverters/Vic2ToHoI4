@@ -13,12 +13,12 @@ namespace HoI4
 
 class AdvisorDataFactory: commonItems::parser
 {
-	public:
+  public:
 	AdvisorDataFactory();
 
 	AdvisorData importAdvisorData(std::istream& input);
 
-	private:
+  private:
 	std::string slot_;
 	std::string idea_token_;
 	std::optional<std::string> ledger_;
