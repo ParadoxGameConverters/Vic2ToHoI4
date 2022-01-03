@@ -14,6 +14,7 @@ TEST(HoI4World_Characters_CharacterFactory, AllImportedItemsAreDefaulted)
 	EXPECT_EQ(character.getId(), "");
 	EXPECT_EQ(character.getName(), "Nomen Nescio");
 	EXPECT_TRUE(character.getPortraits().empty());
+	EXPECT_FALSE(character.getAdvisorData().has_value());
 	EXPECT_FALSE(character.getCountryLeaderData().has_value());
 	EXPECT_FALSE(character.getCommanderData().has_value());
 	EXPECT_FALSE(character.getAdmiralData().has_value());
@@ -31,6 +32,13 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 	input << "\t\t\t}\n";
 	input << "\t\t\tarmy={\n";
 	input << "\t\t\t\tsmall=\"gfx/interface/ideas/idea_TAG_test_character.dds\"\n";
+	input << "\t\t\t}\n";
+	input << "\t\t}\n";
+	input << "\t\tadvisor={\n";
+	input << "\t\t\tslot = political_advisor\n";
+	input << "\t\t\tidea_token = thomas_kinkaid\n";
+	input << "\t\t\tallowed = {\n";
+	input << "\t\t\t\toriginal_tag = USA\n";
 	input << "\t\t\t}\n";
 	input << "\t\t}\n";
 	input << "\t\tcountry_leader={\n";
@@ -67,6 +75,13 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 	HoI4::Portrait portraitOne("civilian", "large", "gfx/leaders/TAG/TAG_test_character.dds");
 	HoI4::Portrait portraitTwo("army", "small", "gfx/interface/ideas/idea_TAG_test_character.dds");
 	EXPECT_THAT(character.getPortraits(), testing::ElementsAre(portraitOne, portraitTwo));
+	ASSERT_TRUE(character.getAdvisorData().has_value());
+	EXPECT_EQ(character.getAdvisorData()->getSlot(), "political_advisor");
+	EXPECT_EQ(character.getAdvisorData()->getIdeaToken(), "thomas_kinkaid");
+	EXPECT_EQ(character.getAdvisorData()->getAllowed(),
+		 "{\n"
+		 "\t\t\t\toriginal_tag = USA\n"
+		 "\t\t\t}");
 	ASSERT_TRUE(character.getCountryLeaderData().has_value());
 	EXPECT_EQ(character.getCountryLeaderData()->getIdeology(), "test_ideology");
 	EXPECT_THAT(character.getCountryLeaderData()->getTraits(),
