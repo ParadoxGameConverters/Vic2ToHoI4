@@ -3063,13 +3063,7 @@ focus = {
 		}
 		completion_reward = {
 			#ADDCLAIM
-			if = {
-				limit = { has_government = fascism }
-				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
-			}
-			else = {
-				add_named_threat = { threat = 1 name = neighbor_war_NF_threat }
-			}
+			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 			hidden_effect = {
 				$TARGET = { country_event = { id = reconquest_news.1 } }
 			}
