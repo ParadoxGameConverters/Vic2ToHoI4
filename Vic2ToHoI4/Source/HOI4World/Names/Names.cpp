@@ -119,13 +119,11 @@ void HoI4::Names::Factory::checkForNames()
 		{
 			Log(LogLevel::Warning) << "Too few male names for " << culture;
 		}
-		if (auto names = surnames.find(culture);
-			 (names == surnames.end()) || names->second.empty() || (names->second.size() < 3))
+		if (auto names = surnames.find(culture); (names == surnames.end()) || (names->second.size() < 3))
 		{
 			Log(LogLevel::Warning) << "Too few surnames for " << culture;
 		}
-		if (auto names = femaleNames.find(culture);
-			 (names == femaleNames.end()) || names->second.empty() || (names->second.size() < 2))
+		if (auto names = femaleNames.find(culture); (names == femaleNames.end()) || (names->second.size() < 2))
 		{
 			Log(LogLevel::Warning) << "Too few female names for " << culture;
 		}
