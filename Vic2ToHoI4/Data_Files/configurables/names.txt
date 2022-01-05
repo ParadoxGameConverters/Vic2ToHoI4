@@ -30,6 +30,9 @@
 
 # Supports Vanilla Vic2, HPM and the EU4Vic2 converter project
 
+### NOTE TO SELF: in case of empty input name pools, the generated country leader
+### is named "Nomen Nescio" (from Latin, "I don't know the name")
+
 aborigine = {
 	female_names = { Alinta Bindi Jedda Kirra Marlee Merindah Lowanna Rianna
 		Talia Allira Tarni Mia Merri Maya Kalina Kalinda Allora Koori Cardinia
