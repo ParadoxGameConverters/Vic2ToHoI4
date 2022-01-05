@@ -6,6 +6,7 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include <ranges>
 
 
 
@@ -112,13 +113,19 @@ void HoI4::Names::Factory::addNamesToMap(std::map<std::string, std::vector<std::
 
 void HoI4::Names::Factory::checkForNames()
 {
-	for (const auto& maleNamesMapping: maleNames)
+	for (const auto& [culture, maleNamesInCulture]: maleNames)
 	{
-		auto culture = maleNamesMapping.first;
-
-		if (auto names = femaleNames.find(culture); (names == femaleNames.end()) || names->second.empty())
+		if (maleNamesInCulture.size() < 8)
 		{
-			Log(LogLevel::Warning) << "No female names for " << culture;
+			Log(LogLevel::Warning) << "Too few male names for " << culture;
+		}
+		if (auto names = surnames.find(culture); (names == surnames.end()) || (names->second.size() < 3))
+		{
+			Log(LogLevel::Warning) << "Too few surnames for " << culture;
+		}
+		if (auto names = femaleNames.find(culture); (names == femaleNames.end()) || (names->second.size() < 2))
+		{
+			Log(LogLevel::Warning) << "Too few female names for " << culture;
 		}
 		// female surnames being missing is a common and acceptable case
 		if (auto names = callsigns.find(culture); (names == callsigns.end()) || names->second.empty())
