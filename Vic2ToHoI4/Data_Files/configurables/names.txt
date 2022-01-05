@@ -30,6 +30,9 @@
 
 # Supports Vanilla Vic2, HPM and the EU4Vic2 converter project
 
+### NOTE TO SELF: in case of empty input name pools, the generated country leader
+### is named "Nomen Nescio" (from Latin, "I don't know the name")
+
 aborigine = {
 	female_names = { Alinta Bindi Jedda Kirra Marlee Merindah Lowanna Rianna
 		Talia Allira Tarni Mia Merri Maya Kalina Kalinda Allora Koori Cardinia
@@ -411,7 +414,7 @@ algonquish = {
 	aircraft_companies = { "Ut Mercurio Talares" }
 	intelligence_agencies = { "Legio Ignota Hesperia" }
 }
-alien = {
+alien = { # Synthetics
 	female_names = { Xirgliss Cathiox Zir Zarax Rekaxir Cax Zidlaxi Cabroxi Xidlor Zeraxim Moz Zoz Xaz Zax Zacadliss Cothaxir Xoblagiss Rezicax Morezac Midloxec }
 	callsigns = { Flatwood Grey Gray Green Reptilian Martian Venusian Stargazer "Ford Prefect" "the AI" Blorg Demogorgon }
 	industry_companies = { "The Flesh" }
@@ -6986,12 +6989,6 @@ undead = {
 	aircraft_companies = { £industry }
 	intelligence_agencies = { £locked }
 }
-unrecognized = {
-	first_names = { John }
-	female_names = { Jane }
-	last_names = { Doe }
-	callsigns = { MIA }
-}
 unyamwezi = {
 	female_names = { Nyamwezi }
 	callsigns = { Black Africa Nyamwezi "the Foreigner" "the White" Colonizer Hunter }
@@ -7595,30 +7592,63 @@ zulu = {
 	intelligence_agencies = { "Rorke's Drift" }
 }
 
-# EU4Vic2 converter project not cultures - dummy, noculture and the religious ones
-dummy = {
-	female_names = { " " }
-	female_surnames = { " " }
-	callsigns = { " " }
-	industry_companies = { " " }
-	electronic_companies = { " " }
-	car_companies = { " " }
-	naval_companies = { " " }
-	weapon_companies = { " " }
-	aircraft_companies = { " " }
-	intelligence_agencies = { " " }
+# EU4Vic2 converter project not cultures - dummy, noculture, unrecognized and the religious ones
+dummy = { # It is in German culture group
+        first_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "Ä." "Ö." "Ü." } # Using letters, yes.
+        last_names = {
+	"A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T." "U." "V." "W." "X." "Y." "Z." "Ä." "Ö." "Ü."
+	# Von ...
+	"von A." "von B." "von C." "von D." "von E." "von F." "von G." "von H." "von I." "von J." "von K." "von L." "von M." "von N." "von O." "von P." "von Q." "von R." "von S." "von T." "von U." "von V." "von W." "von X." "von Y." "von Z." "von Ä." "von Ö." "von Ü."
+	# Vom ...
+	"vom A." "vom B." "vom C." "vom D." "vom E." "vom F." "vom G." "vom H." "vom I." "vom J." "vom K." "vom L." "vom M." "vom N." "vom O." "vom P." "vom Q." "vom R." "vom S." "vom T." "vom U." "vom V." "vom W." "vom X." "vom Y." "vom Z." "vom Ä." "vom Ö." "vom Ü."
+	# Von der ...
+	"von der A." "von der B." "von der C." "von der D." "von der E." "von der F." "von der G." "von der H." "von der I." "von der J." "von der K." "von der L." "von der M." "von der N." "von der O." "von der P." "von der Q." "von der R." "von der S." "von der T." "von der U." "von der V." "von der W." "von der X." "von der Y." "von der Z." "von der Ä." "von der Ö." "von der Ü."
+	# Zu ...
+	"zu A." "zu B." "zu C." "zu D." "zu E." "zu F." "zu G." "zu H." "zu I." "zu J." "zu K." "zu L." "zu M." "zu N." "zu O." "zu P." "zu Q." "zu R." "zu S." "zu T." "zu U." "zu V." "zu W." "zu X." "zu Y." "zu Z." "zu Ä." "zu Ö." "zu Ü."
+	}
+	female_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "Ä." "Ö." "Ü." } # Using letters, yes.
+	callsigns = { "N.N." }
+	industry_companies = { "Acme GmbH" }
+	electronic_companies = { "E." }
+	car_companies = { "Wg." }
+	naval_companies = { "S." }
+	weapon_companies = { "Wf." }
+	aircraft_companies = { "Fl." }
+	intelligence_agencies = { "[Expunged]" }
 }
-noculture = {
-	female_names = { " " }
-	female_surnames = { " " }
-	callsigns = { " " }
-	industry_companies = { " " }
-	electronic_companies = { " " }
-	car_companies = { " " }
-	naval_companies = { " " }
-	weapon_companies = { " " }
-	aircraft_companies = { " " }
-	intelligence_agencies = { " " }
+noculture = { # Should not be appearing, but _who knows_
+        first_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "À." "Á." "Â." "Ã." "Ä." "Å." "Ç." "È. "É." "Ë." "Ì." "Í." "Î." "Ï." "Ð." "Ñ." "Ò." "Ó."
+	"Õ." "Ö." "Ø." "Ú." "Û." "Ü." "Ý." "Þ." "Š." "Ž." "Ł." "Ą." "Ş." "Ś." "Ť." "Ź." "Ż." "Ŕ." "Ă." "Ć." "Č." "Ę." "Ě." "Ř." "Ţ." "Ğ." } # Using letters, yes.
+        last_names = { " " }
+	female_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "À." "Á." "Â." "Ã." "Ä." "Å." "Ç." "È. "É." "Ë." "Ì." "Í." "Î." "Ï." "Ð." "Ñ." "Ò." "Ó."
+	"Õ." "Ö." "Ø." "Ú." "Û." "Ü." "Ý." "Þ." "Š." "Ž." "Ł." "Ą." "Ş." "Ś." "Ť." "Ź." "Ż." "Ŕ." "Ă." "Ć." "Č." "Ę." "Ě." "Ř." "Ţ." "Ğ." } # Using letters, yes.
+	callsigns = { "N.N." }
+	industry_companies = { "---" }
+	electronic_companies = { "---" }
+	car_companies = { "---" }
+	naval_companies = { "---" }
+	weapon_companies = { "---" }
+	aircraft_companies = { "---" }
+	intelligence_agencies = { "[Expunged]" }
+}
+unrecognized = {
+	first_names = { "Mr." }
+	female_names = { "Mrs." "Ms." }
+        last_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "À." "Á." "Â." "Ã." "Ä." "Å." "Ç." "È. "É." "Ë." "Ì." "Í." "Î." "Ï." "Ð." "Ñ." "Ò." "Ó."
+	"Õ." "Ö." "Ø." "Ú." "Û." "Ü." "Ý." "Þ." "Š." "Ž." "Ł." "Ą." "Ş." "Ś." "Ť." "Ź." "Ż." "Ŕ." "Ă." "Ć." "Č." "Ę." "Ě." "Ř." "Ţ." "Ğ." } # Using letters, yes.
+	callsigns = { "[---]" }
+	industry_companies = { "[Redacted] Industries" }
+	electronic_companies = { "[Redacted] Electronics" }
+	car_companies = { "[Redacted] Wheels Inc." }
+	naval_companies = { "[Redacted] Navy Arsenal" }
+	weapon_companies = { "[Redacted] Iron&Steel" }
+	aircraft_companies = { "[Redacted] Air Utd." }
+	intelligence_agencies = { "[Expunged]" }
 }
 zzz_religion_adamites = {
 	female_names = { " " }
