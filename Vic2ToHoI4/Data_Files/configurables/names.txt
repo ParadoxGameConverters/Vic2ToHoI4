@@ -7626,9 +7626,9 @@ zulu = {
 
 # EU4Vic2 converter project not cultures - dummy, noculture, unrecognized and the religious ones
 dummy = { # It is in German culture group
-        first_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	first_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
 	"U." "V." "W." "X." "Y." "Z." "Ä." "Ö." "Ü." } # Using letters, yes.
-        last_names = {
+	last_names = {
 	"A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T." "U." "V." "W." "X." "Y." "Z." "Ä." "Ö." "Ü."
 	# Von ...
 	"von A." "von B." "von C." "von D." "von E." "von F." "von G." "von H." "von I." "von J." "von K." "von L." "von M." "von N." "von O." "von P." "von Q." "von R." "von S." "von T." "von U." "von V." "von W." "von X." "von Y." "von Z." "von Ä." "von Ö." "von Ü."
@@ -7651,13 +7651,9 @@ dummy = { # It is in German culture group
 	intelligence_agencies = { "[Expunged]" }
 }
 noculture = { # Should not be appearing, but _who knows_
-        first_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
-	"U." "V." "W." "X." "Y." "Z." "À." "Á." "Â." "Ã." "Ä." "Å." "Ç." "È. "É." "Ë." "Ì." "Í." "Î." "Ï." "Ð." "Ñ." "Ò." "Ó."
-	"Õ." "Ö." "Ø." "Ú." "Û." "Ü." "Ý." "Þ." "Š." "Ž." "Ł." "Ą." "Ş." "Ś." "Ť." "Ź." "Ż." "Ŕ." "Ă." "Ć." "Č." "Ę." "Ě." "Ř." "Ţ." "Ğ." } # Using letters, yes.
-        last_names = { " " }
-	female_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
-	"U." "V." "W." "X." "Y." "Z." "À." "Á." "Â." "Ã." "Ä." "Å." "Ç." "È. "É." "Ë." "Ì." "Í." "Î." "Ï." "Ð." "Ñ." "Ò." "Ó."
-	"Õ." "Ö." "Ø." "Ú." "Û." "Ü." "Ý." "Þ." "Š." "Ž." "Ł." "Ą." "Ş." "Ś." "Ť." "Ź." "Ż." "Ŕ." "Ă." "Ć." "Č." "Ę." "Ě." "Ř." "Ţ." "Ğ." } # Using letters, yes.
+	first_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T." "U." "V." "W." "X." "Y." "Z." } # Using letters, yes.
+	last_names = { " " }
+	female_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T." "U." "V." "W." "X." "Y." "Z." } # Using letters, yes.
 	callsigns = { "N.N." }
 	industry_companies = { "---" }
 	electronic_companies = { "---" }
@@ -7670,9 +7666,7 @@ noculture = { # Should not be appearing, but _who knows_
 unrecognized = {
 	first_names = { "Mr." }
 	female_names = { "Mrs." "Ms." }
-        last_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
-	"U." "V." "W." "X." "Y." "Z." "À." "Á." "Â." "Ã." "Ä." "Å." "Ç." "È. "É." "Ë." "Ì." "Í." "Î." "Ï." "Ð." "Ñ." "Ò." "Ó."
-	"Õ." "Ö." "Ø." "Ú." "Û." "Ü." "Ý." "Þ." "Š." "Ž." "Ł." "Ą." "Ş." "Ś." "Ť." "Ź." "Ż." "Ŕ." "Ă." "Ć." "Č." "Ę." "Ě." "Ř." "Ţ." "Ğ." } # Using letters, yes.
+	last_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T." "U." "V." "W." "X." "Y." "Z." } # Using letters, yes.
 	callsigns = { "[---]" }
 	industry_companies = { "[Redacted] Industries" }
 	electronic_companies = { "[Redacted] Electronics" }

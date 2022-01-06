@@ -152,7 +152,9 @@ class World: commonItems::parser
 	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper);
 	void addDominions(Mappers::CountryMapper::Factory& countryMapperFactory);
 	void transferPuppetsToDominions();
-	void addUnrecognizedNations(Mappers::CountryMapper::Factory& countryMapperFactory);
+	void addUnrecognizedNations(Mappers::CountryMapper::Factory& countryMapperFactory,
+		 const Mappers::ProvinceMapper& provinceMapper,
+		 const Vic2::World& sourceWorld);
 	void determineCoresAndClaims();
 	std::map<std::string, double> calculateFactoryWorkerRatios(const Configuration& theConfiguration);
 	std::map<std::string, double> getIndustrialWorkersPerCountry();
