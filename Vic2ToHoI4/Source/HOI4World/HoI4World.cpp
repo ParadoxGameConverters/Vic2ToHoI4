@@ -175,7 +175,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertIndustry(theConfiguration);
 	addProvincesToHomeAreas();
 	addDominions(countryMapperFactory);
-	addUnrecognizedNations(countryMapperFactory);
+	addUnrecognizedNations(countryMapperFactory, provinceMapper, sourceWorld);
 	states->addCoresToCorelessStates(sourceWorld.getCountries(),
 		 provinceMapper,
 		 sourceWorld.getProvinces(),
@@ -745,7 +745,9 @@ void HoI4::World::transferPuppetsToDominions()
 }
 
 
-void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countryMapperFactory)
+void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countryMapperFactory,
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const Vic2::World& sourceWorld)
 {
 	for (auto& [stateId, state]: states->getModifiableStates())
 	{
@@ -774,6 +776,7 @@ void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countr
 		nation->addTag(nationTag, *names, *hoi4Localisations);
 		countries.emplace(nationTag, nation);
 
+		std::map<std::string, int> popTotalsByCulture;
 		for (const auto& stateId: nation->getCoreStates())
 		{
 			if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
@@ -781,8 +784,35 @@ void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countr
 				state->second.addCores({nationTag});
 				state->second.setOwner(nationTag);
 				nation->addState(state->second);
+
+				for (const auto& hoi4ProvinceNumber: state->second.getProvinces())
+				{
+					for (const auto& vic2ProvinceNumber: provinceMapper.getHoI4ToVic2ProvinceMapping(hoi4ProvinceNumber))
+					{
+						const auto& vic2Province = sourceWorld.getProvince(vic2ProvinceNumber);
+						if (!vic2Province)
+						{
+							continue;
+						}
+
+						for (const auto& pop: (*vic2Province)->getPops())
+						{
+							auto [itr, success] = popTotalsByCulture.emplace(pop.getCulture(), pop.getSize());
+							if (!success)
+							{
+								itr->second += pop.getSize();
+							}
+						}
+					}
+				}
 			}
 		}
+		const auto largestCulture = std::max_element(popTotalsByCulture.begin(),
+			 popTotalsByCulture.end(),
+			 [](const std::pair<std::string, int>& a, const std::pair<std::string, int>& b) {
+				 return a.second < b.second;
+			 });
+		nation->setPrimaryCulture(largestCulture->first);
 
 		nation->determineBestCapital(states->getStates());
 		nation->setCapitalRegionFlag(*theRegions);
@@ -790,9 +820,8 @@ void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countr
 		auto possibleCapitalState = nation->getCapitalState();
 		if (!possibleCapitalState)
 		{
-			return;
+			continue;
 		}
-		auto& modifiableStates = states->getModifiableStates();
 		if (auto capital = modifiableStates.find(*possibleCapitalState); capital != modifiableStates.end())
 		{
 			capital->second.addCores({nationTag});
