@@ -647,7 +647,7 @@ void HoI4::Events::addDemocraticMinisterRevolutionEvents(Localisation& localisat
 	localisation.copyEventLocalisations("democratic_opposition_forming.d", description);
 	opposition.givePicture(getIdeologicalPicture("democratic"));
 	std::string oppositionTrigger = "= {\n";
-	oppositionTrigger += "\t\thas_idea_with_trait = democratic_reformer\n";
+	oppositionTrigger += "\t\thas_idea_with_trait = democratic_minister\n";
 	oppositionTrigger += "\t\tNOT = { has_government = democratic }\n";
 	oppositionTrigger += "\t\tNOT = { has_country_flag = democracy_opposition_formed }\n";
 	oppositionTrigger += "\t\tis_puppet = no\n";
@@ -687,7 +687,7 @@ void HoI4::Events::addDemocraticMinisterRevolutionEvents(Localisation& localisat
 	localisation.copyEventLocalisations("democratic_call_for_elections.d", description2);
 	callForElections.givePicture(getIdeologicalPicture("democratic"));
 	std::string callForElectionsTrigger = "= {\n";
-	callForElectionsTrigger += "\t\thas_idea_with_trait = democratic_reformer\n";
+	callForElectionsTrigger += "\t\thas_idea_with_trait = democratic_minister\n";
 	callForElectionsTrigger += "\t\tNOT = { has_government = democratic }\n";
 	callForElectionsTrigger += "\t\thas_country_flag = democracy_opposition_formed\n";
 	callForElectionsTrigger += "\t\tNOT = { has_idea = democratic_opposition_voicing_protests }\n";
@@ -1276,6 +1276,13 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 			partyChoiceEvent.giveOption(std::move(option));
 			optionLetter++;
 		}
+	}
+	// Fallback for utility tags, e.g. AAA - Observer
+	if (optionLetter == 'a')
+	{
+		EventOption option;
+		option.giveName("[Root.GetRulingPartyLong]");
+		partyChoiceEvent.giveOption(std::move(option));
 	}
 
 	onActions.addElectionEvent(partyChoiceEvent.getId());

@@ -1,6 +1,7 @@
 #include "Railways.h"
 #include "HOI4World/Map/PossiblePath.h"
 #include "Log.h"
+#include <numeric>
 #include <queue>
 
 
@@ -11,6 +12,147 @@ using HoI4::Railway;
 
 namespace
 {
+
+std::set<int> findValidVic2ProvinceNumbers(const std::vector<std::reference_wrapper<const Vic2::State>>& states,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces)
+{
+	std::set<int> validVic2ProvinceNumbers;
+
+	for (const auto& state: states)
+	{
+		const auto provinceNumbers = state.get().getProvincesOrderedByPopulation();
+
+		// first select any ports
+		int numPorts = 0;
+		for (const auto& provinceNumber: provinceNumbers)
+		{
+			if (const auto& provinceItr = vic2Provinces.find(provinceNumber); provinceItr != vic2Provinces.end())
+			{
+				if (provinceItr->second->getNavalBaseLevel() > 0)
+				{
+					validVic2ProvinceNumbers.insert(provinceNumber);
+					++numPorts;
+				}
+			}
+		}
+
+		// then select the remaining 2/3rd largest provinces
+		const int provinceLimit = static_cast<int>(provinceNumbers.size()) * 2 / 3 - numPorts;
+		for (int i = 0; i < provinceLimit; i++)
+		{
+			validVic2ProvinceNumbers.insert(provinceNumbers[i]);
+		}
+	}
+
+	return validVic2ProvinceNumbers;
+}
+
+
+std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& validVic2ProvinceNumbers,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
+	 const Maps::MapData& Vic2MapData)
+{
+	std::set<std::vector<int>> vic2ProvincePaths;
+	for (const auto& vic2ProvinceNum: validVic2ProvinceNumbers)
+	{
+		const auto provinceItr = Vic2Provinces.find(vic2ProvinceNum);
+		if (provinceItr == Vic2Provinces.end())
+		{
+			continue;
+		}
+		const auto& vic2Province = provinceItr->second;
+
+		if (!vic2Province->isLandProvince())
+		{
+			continue;
+		}
+		std::set handledProvinces{vic2ProvinceNum};
+
+		std::set<std::vector<int>> potentialNewVic2ProvincePaths;
+
+		std::priority_queue<std::vector<int>> newPaths;
+		newPaths.push({vic2ProvinceNum});
+
+		while (!newPaths.empty())
+		{
+			auto path = newPaths.top();
+			newPaths.pop();
+
+			const auto lastProvince = path[path.size() - 1];
+			for (const auto& neighborNumber: Vic2MapData.getNeighbors(lastProvince))
+			{
+				if (handledProvinces.contains(neighborNumber))
+				{
+					continue;
+				}
+				handledProvinces.insert(neighborNumber);
+
+				const auto neighborItr = Vic2Provinces.find(neighborNumber);
+				if (neighborItr == Vic2Provinces.end())
+				{
+					continue;
+				}
+				const auto& neighborProvince = neighborItr->second;
+				if (!neighborProvince->isLandProvince())
+				{
+					continue;
+				}
+
+				auto newPath = path;
+				newPath.push_back(neighborNumber);
+				if (validVic2ProvinceNumbers.contains(neighborNumber))
+				{
+					potentialNewVic2ProvincePaths.insert(newPath);
+				}
+				else
+				{
+					newPaths.push(newPath);
+				}
+			}
+		}
+
+		std::vector<int> bestPotentialNewPath;
+		long potentialNewPathScore = 0;
+		for (const auto& potentialNewVic2ProvincePath: potentialNewVic2ProvincePaths)
+		{
+			if (potentialNewVic2ProvincePath.size() == 2)
+			{
+				auto reversedPath = potentialNewVic2ProvincePath;
+				std::ranges::reverse(reversedPath);
+				if (!vic2ProvincePaths.contains(reversedPath))
+				{
+					vic2ProvincePaths.insert(potentialNewVic2ProvincePath);
+				}
+				continue;
+			}
+
+			const int potentialLastProvinceNum = potentialNewVic2ProvincePath[potentialNewVic2ProvincePath.size() - 1];
+			const auto potentialLastProvinceItr = Vic2Provinces.find(potentialLastProvinceNum);
+			if (potentialLastProvinceItr == Vic2Provinces.end())
+			{
+				continue;
+			}
+			const int potentialLastProvincePopulation = potentialLastProvinceItr->second->getPopulation();
+			if (potentialLastProvincePopulation > potentialNewPathScore)
+			{
+				bestPotentialNewPath = potentialNewVic2ProvincePath;
+				potentialNewPathScore = potentialLastProvincePopulation;
+			}
+		}
+		if (!bestPotentialNewPath.empty())
+		{
+			auto reversedPath = bestPotentialNewPath;
+			std::ranges::reverse(reversedPath);
+			if (!vic2ProvincePaths.contains(reversedPath))
+			{
+				vic2ProvincePaths.insert(bestPotentialNewPath);
+			}
+		}
+	}
+
+	return vic2ProvincePaths;
+}
+
 
 std::shared_ptr<Vic2::Province> getValidVic2Province(int provinceNum,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces)
@@ -29,7 +171,26 @@ std::shared_ptr<Vic2::Province> getValidVic2Province(int provinceNum,
 	return province;
 }
 
-// For the given inputs, these are the outputs
+
+std::vector<std::shared_ptr<Vic2::Province>> getVic2ProvincesFromNumbers(const std::vector<int>& vic2ProvincePath,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces)
+{
+	std::vector<std::shared_ptr<Vic2::Province>> vic2Provinces;
+	for (const auto& vic2ProvinceNumber: vic2ProvincePath)
+	{
+		const auto vic2Province = getValidVic2Province(vic2ProvinceNumber, Vic2Provinces);
+		if (vic2Province == nullptr)
+		{
+			continue;
+		}
+		vic2Provinces.push_back(vic2Province);
+	}
+
+	return vic2Provinces;
+}
+
+
+// For the given length two inputs, these are the outputs
 //
 //   0 1 2 3 4 5 6
 //  +-------------
@@ -40,14 +201,31 @@ std::shared_ptr<Vic2::Province> getValidVic2Province(int provinceNum,
 // 4|0 0 1 1 2 2 3
 // 5|0 1 1 2 2 3 3
 // 6|0 1 2 2 3 3 3
-int getRailwayLevel(int provinceOneRailLevel, int provinceTwoRailLevel)
+int getRailwayLevel(const std::vector<int>& vic2ProvincePath,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces)
 {
-	if (provinceOneRailLevel == 0 || provinceTwoRailLevel == 0)
+	const auto vic2Provinces = getVic2ProvincesFromNumbers(vic2ProvincePath, Vic2Provinces);
+	if (vic2Provinces.size() != vic2ProvincePath.size())
 	{
 		return 0;
 	}
 
-	return std::clamp((provinceOneRailLevel - 2 + provinceTwoRailLevel - 2) / 2, 0, 3);
+	std::vector<int> railLevels;
+	for (const auto& vic2Province: vic2Provinces)
+	{
+		const auto railLevel = vic2Province->getRailLevel();
+		if (railLevel == 0)
+		{
+			return 0;
+		}
+		railLevels.push_back(vic2Province->getRailLevel());
+	}
+
+	int totalRailLevel = std::accumulate(railLevels.begin(), railLevels.end(), 0);
+	totalRailLevel -= 2 * static_cast<int>(railLevels.size());
+	const int railLevel = totalRailLevel / static_cast<int>(railLevels.size());
+
+	return std::clamp(railLevel, 0, 3);
 }
 
 
@@ -191,11 +369,11 @@ double getDistanceBetweenProvinces(int provinceOne, int provinceTwo, const Maps:
 
 std::optional<std::vector<int>> findPath(int startProvince,
 	 int endProvince,
-	 int vic2StartProvince,
-	 int vic2EndProvince,
+	 const std::vector<int>& vic2Provinces,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
-	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions)
+	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
+	 const HoI4::ImpassableProvinces& impassableProvinces)
 {
 	std::priority_queue<HoI4::PossiblePath> possibleRailwayPaths;
 	std::set reachedProvinces{startProvince};
@@ -220,14 +398,21 @@ std::optional<std::vector<int>> findPath(int startProvince,
 			{
 				continue;
 			}
+			if (impassableProvinces.isProvinceImpassable(neighborNumber))
+			{
+				continue;
+			}
 			const auto& vic2NeighborNumbers = provinceMapper.getHoI4ToVic2ProvinceMapping(neighborNumber);
 			bool neighborIsValid = false;
 			for (const auto& vic2NeighborNumber: vic2NeighborNumbers)
 			{
-				if (vic2NeighborNumber == vic2StartProvince || vic2NeighborNumber == vic2EndProvince)
+				for (const auto& vic2Province: vic2Provinces)
 				{
-					neighborIsValid = true;
-					break;
+					if (vic2NeighborNumber == vic2Province)
+					{
+						neighborIsValid = true;
+						break;
+					}
 				}
 			}
 			if (!neighborIsValid)
@@ -255,6 +440,7 @@ std::optional<std::vector<int>> findPath(int startProvince,
 
 
 HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
+	 const std::vector<std::reference_wrapper<const Vic2::State>>& states,
 	 const Maps::MapData& Vic2MapData,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
@@ -265,63 +451,45 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& V
 {
 	Log(LogLevel::Info) << "\tDetermining railways";
 
-	std::set<std::pair<int, int>> processedPairs;
-	for (const auto& [Vic2ProvinceNum, Vic2Province]: Vic2Provinces)
+	const auto validVic2ProvinceNumbers = findValidVic2ProvinceNumbers(states, Vic2Provinces);
+	const auto vic2provincePaths = determineVic2ProvincePaths(validVic2ProvinceNumbers, Vic2Provinces, Vic2MapData);
+
+	for (const auto& vic2provincePath: vic2provincePaths)
 	{
-		if (!Vic2Province->isLandProvince())
+		const int railwayLevel = getRailwayLevel(vic2provincePath, Vic2Provinces);
+		if (railwayLevel < 1)
 		{
 			continue;
 		}
 
-		for (const int Vic2NeighborProvinceNum: Vic2MapData.getNeighbors(Vic2ProvinceNum))
+		const auto HoI4StartProvinceNumber = getBestHoI4ProvinceNumber(vic2provincePath[0],
+			 provinceMapper,
+			 impassableProvinces,
+			 hoi4Provinces,
+			 navalBaseLocations);
+		const auto HoI4EndProvinceNumber = getBestHoI4ProvinceNumber(vic2provincePath[vic2provincePath.size() - 1],
+			 provinceMapper,
+			 impassableProvinces,
+			 hoi4Provinces,
+			 navalBaseLocations);
+		if (!HoI4ProvinceNumbersAreValid(HoI4StartProvinceNumber, HoI4EndProvinceNumber))
 		{
-			if (processedPairs.contains(std::make_pair(Vic2NeighborProvinceNum, Vic2ProvinceNum)))
-			{
-				continue;
-			}
-			processedPairs.insert(std::make_pair(Vic2ProvinceNum, Vic2NeighborProvinceNum));
+			continue;
+		}
 
-			const auto& Vic2NeighborProvince = getValidVic2Province(Vic2NeighborProvinceNum, Vic2Provinces);
-			if (Vic2NeighborProvince == nullptr)
-			{
-				continue;
-			}
-
-			const int railwayLevel = getRailwayLevel(Vic2Province->getRailLevel(), Vic2NeighborProvince->getRailLevel());
-			if (railwayLevel < 1)
-			{
-				continue;
-			}
-
-			const auto HoI4ProvinceNumber = getBestHoI4ProvinceNumber(Vic2ProvinceNum,
-				 provinceMapper,
-				 impassableProvinces,
-				 hoi4Provinces,
-				 navalBaseLocations);
-			const auto HoI4NeighborProvinceNumber = getBestHoI4ProvinceNumber(Vic2NeighborProvinceNum,
-				 provinceMapper,
-				 impassableProvinces,
-				 hoi4Provinces,
-				 navalBaseLocations);
-			if (!HoI4ProvinceNumbersAreValid(HoI4ProvinceNumber, HoI4NeighborProvinceNumber))
-			{
-				continue;
-			}
-
-			if (const auto possiblePath = findPath(*HoI4ProvinceNumber,
-					  *HoI4NeighborProvinceNumber,
-					  Vic2ProvinceNum,
-					  Vic2NeighborProvinceNum,
-					  provinceMapper,
-					  HoI4MapData,
-					  HoI4ProvinceDefinitions);
-				 possiblePath)
-			{
-				Railway railway(railwayLevel, *possiblePath);
-				railways_.push_back(railway);
-				railway_endpoints_.insert(*HoI4ProvinceNumber);
-				railway_endpoints_.insert(*HoI4NeighborProvinceNumber);
-			}
+		if (const auto possiblePath = findPath(*HoI4StartProvinceNumber,
+				  *HoI4EndProvinceNumber,
+				  vic2provincePath,
+				  provinceMapper,
+				  HoI4MapData,
+				  HoI4ProvinceDefinitions,
+				  impassableProvinces);
+			 possiblePath)
+		{
+			Railway railway(railwayLevel, *possiblePath);
+			railways_.push_back(railway);
+			railway_endpoints_.insert(*HoI4StartProvinceNumber);
+			railway_endpoints_.insert(*HoI4EndProvinceNumber);
 		}
 	}
 }

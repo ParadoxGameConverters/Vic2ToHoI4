@@ -15,7 +15,7 @@
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <ProjectName>Vic2ToHoI4Tests</ProjectName>
   </PropertyGroup>
@@ -55,6 +55,7 @@
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdvisorDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersFactory.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Maps\ProvincePoints.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdvisorData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCommanderData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.cpp" />
@@ -405,6 +407,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="ConfigurationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\AdmiralDataTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Characters\AdvisorDataTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\CharacterFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\CharactersCountryFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Characters\CharactersFactoryTests.cpp" />
@@ -552,6 +555,7 @@
     <ClCompile Include="MapsTests\ProvinceDefinitionsTests.cpp" />
     <ClCompile Include="MapsTests\ProvincePointsTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Characters\OutAdmiralDataTests.cpp" />
+    <ClCompile Include="OutHoI4Tests\Characters\OutAdvisorDataTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Characters\OutCommanderDataTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Characters\OutCountryLeaderDataTests.cpp" />
     <ClCompile Include="OutHoI4Tests\Characters\OutPortraitTests.cpp" />
@@ -764,6 +768,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Configuration.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralData.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdmiralDataFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdvisorData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\AdvisorDataFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\Character.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharacterFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Characters\CharactersCountryFactory.h" />
@@ -1023,6 +1029,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdmiralData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutAdvisorData.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCharacter.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCommanderData.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Characters\OutCountryLeaderData.h" />

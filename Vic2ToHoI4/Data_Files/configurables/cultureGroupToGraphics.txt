@@ -1453,7 +1453,7 @@ eastern_slavic = {
 		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_4.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_5.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Aleksandr_Vasilevsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Alexandr_Gorbatov.dds"
+		"gfx/leaders/SOV/Portrait_Soviet_Aleksandr_Gorbatov.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Andrei_Antonovich_Grechko.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Andrey_Yeryomenko.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Boris_Shaposhnikov.dds"
@@ -1477,7 +1477,7 @@ eastern_slavic = {
 		"gfx/leaders/SOV/Portrait_Soviet_Max_Andreyevich.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Mikhail_Tukhachevsky.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Nikandr_Yevlampyevich_Chibisov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Nikolai_Berzarin.dds"
+		"gfx/leaders/SOV/Portrait_Soviet_Nikolay_Berzarin.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Nikolai_Fyodorovich_Vatutin.dds"
 		"gfx/leaders/SOV/portrait_soviet_pdxcon_magic_winner.dds"
 		"gfx/leaders/SOV/Portrait_Soviet_Rodion_Malinovsky.dds"
@@ -2695,7 +2695,6 @@ asian_steppe = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_7.dds"
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_8.dds"
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
-		"gfx/leaders/CHI/portrait_man_yoshiko_kawashima.dds"
 	}
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/bhutan.dds" # Revise
@@ -3221,11 +3220,9 @@ tungustic = {
 	female_portraits = {
 		military = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
-			"gfx/leaders/MAN/portrait_man_yoshiko_kawashima.dds"
 		}
 		monarch = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
-			"gfx/leaders/MAN/portrait_man_yoshiko_kawashima.dds"
 		}
 		ideological_leader = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_female_1.dds"
@@ -3937,7 +3934,6 @@ australia_melanesia_madagascar = {
 	}
 	leader_portraits = {
 		communism = {
-			"gfx/leaders/African/Portrait_Haiti_Louis_Dejoie.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Friedrich_Maharero.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_SOM_Ughaz.tga"
 			"gfx/leaders/Aborigine_Polynesia/Portrait_GNE_Yacine.tga"

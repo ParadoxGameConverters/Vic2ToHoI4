@@ -30,6 +30,9 @@
 
 # Supports Vanilla Vic2, HPM and the EU4Vic2 converter project
 
+### NOTE TO SELF: in case of empty input name pools, the generated country leader
+### is named "Nomen Nescio" (from Latin, "I don't know the name")
+
 aborigine = {
 	female_names = { Alinta Bindi Jedda Kirra Marlee Merindah Lowanna Rianna
 		Talia Allira Tarni Mia Merri Maya Kalina Kalinda Allora Koori Cardinia
@@ -411,7 +414,7 @@ algonquish = {
 	aircraft_companies = { "Ut Mercurio Talares" }
 	intelligence_agencies = { "Legio Ignota Hesperia" }
 }
-alien = {
+alien = { # Synthetics
 	female_names = { Xirgliss Cathiox Zir Zarax Rekaxir Cax Zidlaxi Cabroxi Xidlor Zeraxim Moz Zoz Xaz Zax Zacadliss Cothaxir Xoblagiss Rezicax Morezac Midloxec }
 	callsigns = { Flatwood Grey Gray Green Reptilian Martian Venusian Stargazer "Ford Prefect" "the AI" Blorg Demogorgon }
 	industry_companies = { "The Flesh" }
@@ -1593,6 +1596,20 @@ chacoan = {
 	electronic_companies = { "Electricidad" }
 	intelligence_agencies = { "Red & Black" }
 }
+chechen = {
+	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
+			Zaynap Zelimat Zulay Zulikha }
+	female_surnames = {	Mollaha Beyeha Abdulayeva Abdurakhmanova Akhmadova Alieva Aslanbekova Barayeva Basayeva Dudayeva Dudina Džabrailova Džokharova Elmurzaeva Ibragimova Isaeva Kadyrova Khasanova Kurbanova Magomedova Maskhadova Mayrbekova Murtazalieva Musaeva Otarsultanova
+			Sadulaeva Sagaipova Šapieva Šišhani Taymaskhanova Tsarnaeva Umarova Vagabova Vakhaeva Varayeva Yamadaeva Yandarbieva Zelimkhanova }
+	callsigns = { Urysybzé Adygébzé }
+	industry_companies = { "Lʺépkʺ"}
+	electronic_companies = { Šyblé }
+	car_companies = { KӀON }
+	naval_companies = { HY }
+	weapon_companies = { ŽYR }
+	aircraft_companies = { "Ž'ygʺogu" }
+	intelligence_agencies = { "Vladikavkaz" }
+}
 cherokee = {
 	female_names = { Asmita Nanyehi Cuhtahlatah Sequoya Adsila Amadahy Awenasa Awinita Ayita Galilahi Leotie Usdi Galilani Hialeah 
 	Immookalee Tayanita Sequoia Ahyoka Ama Galilani Ghigau Hiawassee Immokalee Inola Knasgowa Nanye-hi Ninovan 
@@ -1639,6 +1656,20 @@ chokwe = {
 	electronic_companies = { "Wizara wa Mphezi" }
 	car_companies = { "Auto Angola" }
 	intelligence_agencies = { "A.I.A." }
+}
+circassian = {
+	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
+			Zaynap Zelimat Zulay Zulikha }
+	female_surnames = {	Mollaha Beyeha Abdulayeva Abdurakhmanova Akhmadova Alieva Aslanbekova Barayeva Basayeva Dudayeva Dudina Džabrailova Džokharova Elmurzaeva Ibragimova Isaeva Kadyrova Khasanova Kurbanova Magomedova Maskhadova Mayrbekova Murtazalieva Musaeva Otarsultanova
+			Sadulaeva Sagaipova Šapieva Šišhani Taymaskhanova Tsarnaeva Umarova Vagabova Vakhaeva Varayeva Yamadaeva Yandarbieva Zelimkhanova }
+	callsigns = { Urysybzé Adygébzé }
+	industry_companies = { "Lʺépkʺ"}
+	electronic_companies = { Šyblé }
+	car_companies = { KӀON }
+	naval_companies = { HY }
+	weapon_companies = { ŽYR }
+	aircraft_companies = { "Ž'ygʺogu" }
+	intelligence_agencies = { "Vladikavkaz" }
 }
 coptic = {
 	female_names = { Cleopatra Anthelia Demiana Ese Fibruniyah Kattrin Lucra Ourt Tanoute Nephertiti }
@@ -1775,6 +1806,20 @@ dacian_australian = {
 	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
 	aircraft_companies = { IAR ICAR SET }
 	intelligence_agencies = { "Serviciul Român de Informatii" }
+}
+dagestani = {
+	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
+			Zaynap Zelimat Zulay Zulikha }
+	female_surnames = {	Mollaha Beyeha Abdulayeva Abdurakhmanova Akhmadova Alieva Aslanbekova Barayeva Basayeva Dudayeva Dudina Džabrailova Džokharova Elmurzaeva Ibragimova Isaeva Kadyrova Khasanova Kurbanova Magomedova Maskhadova Mayrbekova Murtazalieva Musaeva Otarsultanova
+			Sadulaeva Sagaipova Šapieva Šišhani Taymaskhanova Tsarnaeva Umarova Vagabova Vakhaeva Varayeva Yamadaeva Yandarbieva Zelimkhanova }
+	callsigns = { Urysybzé Adygébzé }
+	industry_companies = { "Lʺépkʺ"}
+	electronic_companies = { Šyblé }
+	car_companies = { KӀON }
+	naval_companies = { HY }
+	weapon_companies = { ŽYR }
+	aircraft_companies = { "Ž'ygʺogu" }
+	intelligence_agencies = { "Vladikavkaz" }
 }
 dakota = {
 	female_names = { Tasinasapewin Thasinamani Tasinahlahlawin Dohumme Chapa Chapawee Chumani Dowanhowee Ehawee Hantaywee Kimimela 
@@ -6786,6 +6831,17 @@ tupi = {
 	electronic_companies = { "Thunder Inc." }
 	intelligence_agencies = { "Red & Black" }
 }
+tupinamba = {
+	female_names = { Bartira Potira Porasy Jougousa Azelene }
+	callsigns = { Tupi "the European" "Blood God" Demon Devil Spirit Ghost }
+	car_companies = { COCHE }
+	weapon_companies = { "European Steel Inc." }
+	aircraft_companies = { "National Airplanes" }
+	naval_companies = { "Shipyards United" }
+	industry_companies = { "Pyramid Inc." }
+	electronic_companies = { "Thunder Inc." }
+	intelligence_agencies = { "Red & Black" }
+}
 turkish = {
 	female_names = { Çiçek Çilen Çiltanesi Özgul Özlem Akgul }
 	callsigns = { Türk Kebap Selçuklu Yunan 1453 }
@@ -6932,12 +6988,6 @@ undead = {
 	weapon_companies = { £industry }
 	aircraft_companies = { £industry }
 	intelligence_agencies = { £locked }
-}
-unrecognized = {
-	first_names = { John }
-	female_names = { Jane }
-	last_names = { Doe }
-	callsigns = { MIA }
 }
 unyamwezi = {
 	female_names = { Nyamwezi }
@@ -7542,30 +7592,63 @@ zulu = {
 	intelligence_agencies = { "Rorke's Drift" }
 }
 
-# EU4Vic2 converter project not cultures - dummy, noculture and the religious ones
-dummy = {
-	female_names = { " " }
-	female_surnames = { " " }
-	callsigns = { " " }
-	industry_companies = { " " }
-	electronic_companies = { " " }
-	car_companies = { " " }
-	naval_companies = { " " }
-	weapon_companies = { " " }
-	aircraft_companies = { " " }
-	intelligence_agencies = { " " }
+# EU4Vic2 converter project not cultures - dummy, noculture, unrecognized and the religious ones
+dummy = { # It is in German culture group
+        first_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "Ä." "Ö." "Ü." } # Using letters, yes.
+        last_names = {
+	"A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T." "U." "V." "W." "X." "Y." "Z." "Ä." "Ö." "Ü."
+	# Von ...
+	"von A." "von B." "von C." "von D." "von E." "von F." "von G." "von H." "von I." "von J." "von K." "von L." "von M." "von N." "von O." "von P." "von Q." "von R." "von S." "von T." "von U." "von V." "von W." "von X." "von Y." "von Z." "von Ä." "von Ö." "von Ü."
+	# Vom ...
+	"vom A." "vom B." "vom C." "vom D." "vom E." "vom F." "vom G." "vom H." "vom I." "vom J." "vom K." "vom L." "vom M." "vom N." "vom O." "vom P." "vom Q." "vom R." "vom S." "vom T." "vom U." "vom V." "vom W." "vom X." "vom Y." "vom Z." "vom Ä." "vom Ö." "vom Ü."
+	# Von der ...
+	"von der A." "von der B." "von der C." "von der D." "von der E." "von der F." "von der G." "von der H." "von der I." "von der J." "von der K." "von der L." "von der M." "von der N." "von der O." "von der P." "von der Q." "von der R." "von der S." "von der T." "von der U." "von der V." "von der W." "von der X." "von der Y." "von der Z." "von der Ä." "von der Ö." "von der Ü."
+	# Zu ...
+	"zu A." "zu B." "zu C." "zu D." "zu E." "zu F." "zu G." "zu H." "zu I." "zu J." "zu K." "zu L." "zu M." "zu N." "zu O." "zu P." "zu Q." "zu R." "zu S." "zu T." "zu U." "zu V." "zu W." "zu X." "zu Y." "zu Z." "zu Ä." "zu Ö." "zu Ü."
+	}
+	female_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "Ä." "Ö." "Ü." } # Using letters, yes.
+	callsigns = { "N.N." }
+	industry_companies = { "Acme GmbH" }
+	electronic_companies = { "E." }
+	car_companies = { "Wg." }
+	naval_companies = { "S." }
+	weapon_companies = { "Wf." }
+	aircraft_companies = { "Fl." }
+	intelligence_agencies = { "[Expunged]" }
 }
-noculture = {
-	female_names = { " " }
-	female_surnames = { " " }
-	callsigns = { " " }
-	industry_companies = { " " }
-	electronic_companies = { " " }
-	car_companies = { " " }
-	naval_companies = { " " }
-	weapon_companies = { " " }
-	aircraft_companies = { " " }
-	intelligence_agencies = { " " }
+noculture = { # Should not be appearing, but _who knows_
+        first_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "À." "Á." "Â." "Ã." "Ä." "Å." "Ç." "È. "É." "Ë." "Ì." "Í." "Î." "Ï." "Ð." "Ñ." "Ò." "Ó."
+	"Õ." "Ö." "Ø." "Ú." "Û." "Ü." "Ý." "Þ." "Š." "Ž." "Ł." "Ą." "Ş." "Ś." "Ť." "Ź." "Ż." "Ŕ." "Ă." "Ć." "Č." "Ę." "Ě." "Ř." "Ţ." "Ğ." } # Using letters, yes.
+        last_names = { " " }
+	female_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "À." "Á." "Â." "Ã." "Ä." "Å." "Ç." "È. "É." "Ë." "Ì." "Í." "Î." "Ï." "Ð." "Ñ." "Ò." "Ó."
+	"Õ." "Ö." "Ø." "Ú." "Û." "Ü." "Ý." "Þ." "Š." "Ž." "Ł." "Ą." "Ş." "Ś." "Ť." "Ź." "Ż." "Ŕ." "Ă." "Ć." "Č." "Ę." "Ě." "Ř." "Ţ." "Ğ." } # Using letters, yes.
+	callsigns = { "N.N." }
+	industry_companies = { "---" }
+	electronic_companies = { "---" }
+	car_companies = { "---" }
+	naval_companies = { "---" }
+	weapon_companies = { "---" }
+	aircraft_companies = { "---" }
+	intelligence_agencies = { "[Expunged]" }
+}
+unrecognized = {
+	first_names = { "Mr." }
+	female_names = { "Mrs." "Ms." }
+        last_names = { "A." "B." "C." "D." "E." "F." "G." "H." "I." "J." "K." "L." "M." "N." "O." "P." "Q." "R." "S." "T."
+	"U." "V." "W." "X." "Y." "Z." "À." "Á." "Â." "Ã." "Ä." "Å." "Ç." "È. "É." "Ë." "Ì." "Í." "Î." "Ï." "Ð." "Ñ." "Ò." "Ó."
+	"Õ." "Ö." "Ø." "Ú." "Û." "Ü." "Ý." "Þ." "Š." "Ž." "Ł." "Ą." "Ş." "Ś." "Ť." "Ź." "Ż." "Ŕ." "Ă." "Ć." "Č." "Ę." "Ě." "Ř." "Ţ." "Ğ." } # Using letters, yes.
+	callsigns = { "[---]" }
+	industry_companies = { "[Redacted] Industries" }
+	electronic_companies = { "[Redacted] Electronics" }
+	car_companies = { "[Redacted] Wheels Inc." }
+	naval_companies = { "[Redacted] Navy Arsenal" }
+	weapon_companies = { "[Redacted] Iron&Steel" }
+	aircraft_companies = { "[Redacted] Air Utd." }
+	intelligence_agencies = { "[Expunged]" }
 }
 zzz_religion_adamites = {
 	female_names = { " " }

@@ -1,6 +1,6 @@
 radical = {
 	traits = { radical_minister }
-	picture = generic_goods_red_bonus
+	picture = GFX_idea_generic_goods_red_bonus
 }
 
 neutrality = {
@@ -10,7 +10,7 @@ neutrality = {
 
 absolutist = {
 	traits = { absolutist_minister }
-	picture = triumphant_will
+	picture = GFX_idea_triumphant_will
 }
 
 communism = {

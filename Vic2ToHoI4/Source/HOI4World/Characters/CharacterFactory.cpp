@@ -18,6 +18,9 @@ Character::Factory::Factory()
 	registerKeyword("portraits", [this](std::istream& input) {
 		imported_character_->portraits_ = portraits_factory_.importPortraits(input);
 	});
+	registerKeyword("advisor", [this](std::istream& input) {
+		imported_character_->advisor_data = advisor_data_factory_.importAdvisorData(input);
+	});
 	registerKeyword("country_leader", [this](std::istream& input) {
 		imported_character_->country_leader_data_ = country_leader_data_factory_.importCountryLeaderData(input);
 	});
@@ -76,7 +79,9 @@ Character Character::Factory::createNewCountryLeader(const std::string& tag,
 
 	if (!firstName || !surname)
 	{
-		Log(LogLevel::Warning) << "Could not set leader, as there were no names for " << primaryCulture << ".";
+		Log(LogLevel::Warning) << "Could not set leader for " << tag << ", as there were no names for " << primaryCulture
+									  << ".";
+		leader.id_ = determineId("Nomen Nescio", tag);
 		return leader;
 	}
 

@@ -122,6 +122,10 @@ std::unique_ptr<Mappers::ProvinceMapper> Mappers::ProvinceMapper::Factory::impor
 
 std::vector<int> Mappers::ProvinceMapper::getVic2ToHoI4ProvinceMapping(const int Vic2Province) const
 {
+	if (Vic2Province == 0)
+	{
+		return {};
+	}
 	const auto mapping = Vic2ToHoI4ProvinceMap.find(Vic2Province);
 	if (mapping == Vic2ToHoI4ProvinceMap.end())
 	{
