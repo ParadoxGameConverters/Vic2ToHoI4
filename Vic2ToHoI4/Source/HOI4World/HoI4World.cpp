@@ -483,7 +483,7 @@ void HoI4::World::addLeaders(Character::Factory& characterFactory)
 	if (commonItems::DoesFileExist("./Configurables/HoI4CountryLeaders.txt"))
 	{
 		Log(LogLevel::Warning)
-			 << "HoI4CountryLeaders.txt is no longer used, convert your imported characters to use HoI4CountryLeaders.txt";
+			 << "HoI4CountryLeaders.txt is no longer used, convert your imported characters to use ImportCharacters.txt";
 	}
 
 	for (auto& country: countries | std::views::values)
