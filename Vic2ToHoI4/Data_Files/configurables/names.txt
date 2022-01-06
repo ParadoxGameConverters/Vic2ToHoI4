@@ -1764,48 +1764,80 @@ czech = {
 	intelligence_agencies = { "Vojenské zpravodajství" }
 }
 dacian = {
-	female_names = { Andrea }
-	callsigns = { Dracula "the Vampire" Wallachia }
-	industry_companies = { ROMLOC }
-	electronic_companies = { RADET }
-	car_companies = { PZinż "Leonidas Works" }
-	naval_companies = { "Constanta Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
-	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
-	aircraft_companies = { IAR ICAR SET }
-	intelligence_agencies = { "Serviciul Român de Informatii" }
+	first_names = { Bastiza Bikilis Blegissa Blaesus Blaikisa Brasus Burebista Comosicus Cothelas Cotiso Dablosa Dadas Dadazai
+	Daizus Dapyx Dardiolai Danillo Decibalus Dida Denzibalus Diernais Dotouzi Duras Kaigiza Komozoi Moskon Mucapor Mucatra Natoporus
+	Orola Petipor Pierporus Rhemaxos Rholes Rubobostes Rolouzis Rigozus Scoris Tiati Tarbus Tsiru Zinna Vezina Zoutoula Dromichaetes }
+	last_names = { Gudilanus Gudilana Gudilanii Gudilanian Cotisus Cotisa Cotisi Cotisian Durasus Durasa Durasii Durasian Dromichaetus
+	Dromichaeta Dromichaeti Dromichaetid Komozus Komoza Komozii Komozian Moskosus Moskosa Moskosii Moskosian Mucatralus Mucatrala Mucatralii
+	Mucatralian Natoporus Natopora Natoporii Natoporian Orolosus Orolosa Orolosii Orolosian Pieporus Piepora Pieporii Pieporian Rhemaxilus Rhemaxila
+	Rhemaxilii Rhemaxilid Rholicus Rholica Rholici Rholicid Rubobosticus Rubobostica Rubobostici Rubobosticid Scorius Scoria Scorii Scorian Tiatus
+	Tiata Tiatii Tiatian Tarbus Tarba Tarbii Tarbian Tsiricus Tsirica Tsirici Tsiricid Zinnicus Zinnica Zinnici Zinnicid }
+	female_names = { Duccidava Rescuturme Zina Zinai Petriturme Zindurme Roibana Oriza Rescurai Raina Sanziana Claria Eccana }
+	callsigns = { Degisditas Kalas Suras "per Burebista" Akmon Čukbalos Rōka Dribas Visasbrukla Skabas "per Decebalus" Baidas }
+	industry_companies = { Akmonkarpa Butarabo Kedadava }
+	electronic_companies = { "Dacia Elektrinas" }
+	car_companies = { Zalmodacia Rebo }
+	naval_companies = { "Tomis Shipyard" Varpa Palmatauta }
+	weapon_companies = { "Rhemaxilid Small Arms" "Dromichaeta Artillery" Zurastut }
+	aircraft_companies = { Suraskalas Vaigas Spirus Drasda }
+	intelligence_agencies = { "Zud-astaras" }
 }
 dacian_african = {
-	female_names = { Andrea }
-	callsigns = { Dracula "the Vampire" Wallachia }
-	industry_companies = { ROMLOC }
-	electronic_companies = { RADET }
-	car_companies = { PZinż "Leonidas Works" }
-	naval_companies = { "Constanta Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
-	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
-	aircraft_companies = { IAR ICAR SET }
-	intelligence_agencies = { "Serviciul Român de Informatii" }
+	first_names = { Bastiza Bikilis Blegissa Blaesus Blaikisa Brasus Burebista Comosicus Cothelas Cotiso Dablosa Dadas Dadazai
+	Daizus Dapyx Dardiolai Danillo Decibalus Dida Denzibalus Diernais Dotouzi Duras Kaigiza Komozoi Moskon Mucapor Mucatra Natoporus
+	Orola Petipor Pierporus Rhemaxos Rholes Rubobostes Rolouzis Rigozus Scoris Tiati Tarbus Tsiru Zinna Vezina Zoutoula Dromichaetes }
+	last_names = { Gudilanus Gudilana Gudilanii Gudilanian Cotisus Cotisa Cotisi Cotisian Durasus Durasa Durasii Durasian Dromichaetus
+	Dromichaeta Dromichaeti Dromichaetid Komozus Komoza Komozii Komozian Moskosus Moskosa Moskosii Moskosian Mucatralus Mucatrala Mucatralii
+	Mucatralian Natoporus Natopora Natoporii Natoporian Orolosus Orolosa Orolosii Orolosian Pieporus Piepora Pieporii Pieporian Rhemaxilus Rhemaxila
+	Rhemaxilii Rhemaxilid Rholicus Rholica Rholici Rholicid Rubobosticus Rubobostica Rubobostici Rubobosticid Scorius Scoria Scorii Scorian Tiatus
+	Tiata Tiatii Tiatian Tarbus Tarba Tarbii Tarbian Tsiricus Tsirica Tsirici Tsiricid Zinnicus Zinnica Zinnici Zinnicid }
+	female_names = { Duccidava Rescuturme Zina Zinai Petriturme Zindurme Roibana Oriza Rescurai Raina Sanziana Claria Eccana }
+	callsigns = { Degisditas Kalas Suras "per Burebista" Akmon Čukbalos Rōka Dribas Visasbrukla Skabas "per Decebalus" Baidas }
+	industry_companies = { Akmonkarpa Butarabo Kedadava }
+	electronic_companies = { "Dacia Elektrinas" }
+	car_companies = { Zalmodacia Rebo }
+	naval_companies = { "Tomis Shipyard" Varpa Palmatauta }
+	weapon_companies = { "Rhemaxilid Small Arms" "Dromichaeta Artillery" Zurastut }
+	aircraft_companies = { Suraskalas Vaigas Spirus Drasda }
+	intelligence_agencies = { "Zud-astaras" }
 }
 dacian_american = {
-	female_names = { Andrea }
-	callsigns = { Dracula "the Vampire" Wallachia }
-	industry_companies = { ROMLOC }
-	electronic_companies = { RADET }
-	car_companies = { PZinż "Leonidas Works" }
-	naval_companies = { "Constanta Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
-	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
-	aircraft_companies = { IAR ICAR SET }
-	intelligence_agencies = { "Serviciul Român de Informatii" }
+	first_names = { Bastiza Bikilis Blegissa Blaesus Blaikisa Brasus Burebista Comosicus Cothelas Cotiso Dablosa Dadas Dadazai
+	Daizus Dapyx Dardiolai Danillo Decibalus Dida Denzibalus Diernais Dotouzi Duras Kaigiza Komozoi Moskon Mucapor Mucatra Natoporus
+	Orola Petipor Pierporus Rhemaxos Rholes Rubobostes Rolouzis Rigozus Scoris Tiati Tarbus Tsiru Zinna Vezina Zoutoula Dromichaetes }
+	last_names = { Gudilanus Gudilana Gudilanii Gudilanian Cotisus Cotisa Cotisi Cotisian Durasus Durasa Durasii Durasian Dromichaetus
+	Dromichaeta Dromichaeti Dromichaetid Komozus Komoza Komozii Komozian Moskosus Moskosa Moskosii Moskosian Mucatralus Mucatrala Mucatralii
+	Mucatralian Natoporus Natopora Natoporii Natoporian Orolosus Orolosa Orolosii Orolosian Pieporus Piepora Pieporii Pieporian Rhemaxilus Rhemaxila
+	Rhemaxilii Rhemaxilid Rholicus Rholica Rholici Rholicid Rubobosticus Rubobostica Rubobostici Rubobosticid Scorius Scoria Scorii Scorian Tiatus
+	Tiata Tiatii Tiatian Tarbus Tarba Tarbii Tarbian Tsiricus Tsirica Tsirici Tsiricid Zinnicus Zinnica Zinnici Zinnicid }
+	female_names = { Duccidava Rescuturme Zina Zinai Petriturme Zindurme Roibana Oriza Rescurai Raina Sanziana Claria Eccana }
+	callsigns = { Degisditas Kalas Suras "per Burebista" Akmon Čukbalos Rōka Dribas Visasbrukla Skabas "per Decebalus" Baidas }
+	industry_companies = { Akmonkarpa Butarabo Kedadava }
+	electronic_companies = { "Dacia Elektrinas" }
+	car_companies = { Zalmodacia Rebo }
+	naval_companies = { "Tomis Shipyard" Varpa Palmatauta }
+	weapon_companies = { "Rhemaxilid Small Arms" "Dromichaeta Artillery" Zurastut }
+	aircraft_companies = { Suraskalas Vaigas Spirus Drasda }
+	intelligence_agencies = { "Zud-astaras" }
 }
 dacian_australian = {
-	female_names = { Andrea }
-	callsigns = { Dracula "the Vampire" Wallachia }
-	industry_companies = { ROMLOC }
-	electronic_companies = { RADET }
-	car_companies = { PZinż "Leonidas Works" }
-	naval_companies = { "Constanta Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
-	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
-	aircraft_companies = { IAR ICAR SET }
-	intelligence_agencies = { "Serviciul Român de Informatii" }
+	first_names = { Bastiza Bikilis Blegissa Blaesus Blaikisa Brasus Burebista Comosicus Cothelas Cotiso Dablosa Dadas Dadazai
+	Daizus Dapyx Dardiolai Danillo Decibalus Dida Denzibalus Diernais Dotouzi Duras Kaigiza Komozoi Moskon Mucapor Mucatra Natoporus
+	Orola Petipor Pierporus Rhemaxos Rholes Rubobostes Rolouzis Rigozus Scoris Tiati Tarbus Tsiru Zinna Vezina Zoutoula Dromichaetes }
+	last_names = { Gudilanus Gudilana Gudilanii Gudilanian Cotisus Cotisa Cotisi Cotisian Durasus Durasa Durasii Durasian Dromichaetus
+	Dromichaeta Dromichaeti Dromichaetid Komozus Komoza Komozii Komozian Moskosus Moskosa Moskosii Moskosian Mucatralus Mucatrala Mucatralii
+	Mucatralian Natoporus Natopora Natoporii Natoporian Orolosus Orolosa Orolosii Orolosian Pieporus Piepora Pieporii Pieporian Rhemaxilus Rhemaxila
+	Rhemaxilii Rhemaxilid Rholicus Rholica Rholici Rholicid Rubobosticus Rubobostica Rubobostici Rubobosticid Scorius Scoria Scorii Scorian Tiatus
+	Tiata Tiatii Tiatian Tarbus Tarba Tarbii Tarbian Tsiricus Tsirica Tsirici Tsiricid Zinnicus Zinnica Zinnici Zinnicid }
+	female_names = { Duccidava Rescuturme Zina Zinai Petriturme Zindurme Roibana Oriza Rescurai Raina Sanziana Claria Eccana }
+	callsigns = { Degisditas Kalas Suras "per Burebista" Akmon Čukbalos Rōka Dribas Visasbrukla Skabas "per Decebalus" Baidas }
+	industry_companies = { Akmonkarpa Butarabo Kedadava }
+	electronic_companies = { "Dacia Elektrinas" }
+	car_companies = { Zalmodacia Rebo }
+	naval_companies = { "Tomis Shipyard" Varpa Palmatauta }
+	weapon_companies = { "Rhemaxilid Small Arms" "Dromichaeta Artillery" Zurastut }
+	aircraft_companies = { Suraskalas Vaigas Spirus Drasda }
+	intelligence_agencies = { "Zud-astaras" }
 }
 dagestani = {
 	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
