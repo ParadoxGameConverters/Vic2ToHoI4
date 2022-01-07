@@ -3518,15 +3518,21 @@ kepejokian = {
 	intelligence_agencies = { "PE TIEDOS" }
 }
 khmer = {
-	female_names = { "Boupha" "Sakngea" "Ang Mey" "Anak Moneang Krachap" "Neang Pou" }
-	callsigns = { Vietneam Kampouchea Lav Siem Chen Meale }
+	female_names = { Bouphka Sakngea "Ang Mey" "Anak Moneang Krachap" "Neang Pou" Achariya Akara Anchali Arunny Ary Botum 
+	Chamroeun Chankrisna Chanlina Chanmony Chanthavy Chantou Chantrea Chariya Chhaiya Chhean Chhorvin Chhorvon Chivy Darareaksmey 
+	Jorani Kalianne Kaliyanei Kanleakhana Kannareth Kannitha Kanya Kesor Kolab Kolthida Kravan Kunthea Leakena Makara 
+	Malis Mliss Nakry Thida Toch Tola Vanna Veasna Vimean Nearidei Neary Reach Reaksmey Reasmey Sokha Sokhanya Sokhom "Sok Mean" 
+	Cheng Rotha Samphy Roumduol Roumjong Samnang Saley Savady Seyha Sikha Sinuon Soboen Socheat Sombo Sonisay Sonith "Peou Nuon" 
+	Phally Phary Pheakdei Pheakkley Phhoung Ponlok Ponnleu Pisey Punthea Rachana Rachany
+	}
+	callsigns = { "Kampuchea Aer" Basasaka "Satvk Thom" "Kampu" "Lan Tmhei" Angkor }
 	industry_companies = { "Ussaahakamm Cheate" }
-	electronic_companies = { "Akkisani Samreab Teangoasaknea" }
+	electronic_companies = { "Akkisanni Samreab Teangoasaknea" }
 	car_companies = { "Kng Buon" }
 	naval_companies = { "Kanleng Phlit Neavea Da Aschary" }
 	weapon_companies = { "Dektheb Chen" }
 	aircraft_companies = { "Neavea Haohhaer" }
-	intelligence_agencies = { "FARK" }
+	intelligence_agencies = { "Charokam Srok Khmer" }
 }
 khoisan = {
 	female_names = { Behati }
