@@ -1,5 +1,6 @@
 name = Vic2ToHoI4
 converterFolder = Vic2ToHoI4
+backendExePath = Vic2ToHoI4Converter
 enableUpdateChecker = true
 checkForUpdatesOnStartup = true
 latestGitHubConverterReleaseUrl = "https://github.com/ParadoxGameConverters/Vic2ToHoI4/releases/download/0.3Oppenheimer/Vic2ToHoI4-0.3Oppenheimer.zip"
