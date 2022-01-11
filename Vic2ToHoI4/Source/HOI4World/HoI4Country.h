@@ -147,6 +147,8 @@ class Country
 	void makeGreatestNavalPower() { greatestNavalPower = true; }
 	void setNumberOfAdherents(int num) { numAdherents = num; }
 
+	void setPrimaryCulture(std::string_view culture) { primaryCulture = culture; }
+
 	void addUnbuiltCanal(const std::string& unbuiltCanal) { unbuiltCanals.push_back(unbuiltCanal); }
 
 	void addProvincesToHomeArea(int provinceId,
