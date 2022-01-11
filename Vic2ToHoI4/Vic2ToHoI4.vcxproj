@@ -45,7 +45,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(UniversalCRT_IncludePath);$(VCInstallDir)include;$(WindowsSdkDir)include;$(IncludePath)</IncludePath>
-    <TargetName>V2ToHoI4Converter</TargetName>
+    <TargetName>Vic2ToHoI4Converter</TargetName>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <EnableCppCoreCheck>false</EnableCppCoreCheck>
@@ -55,7 +55,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(UniversalCRT_IncludePath);$(VCInstallDir)include;$(WindowsSdkDir)include;$(IncludePath)</IncludePath>
-    <TargetName>V2ToHoI4Converter</TargetName>
+    <TargetName>Vic2ToHoI4Converter</TargetName>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <EnableCppCoreCheck>false</EnableCppCoreCheck>

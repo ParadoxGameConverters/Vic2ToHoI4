@@ -30,7 +30,7 @@ requiredFile = {
 	searchPathType = converterFolder
 	searchPath = "Vic2ToHoI4"
 	allowedExtension = "*.exe"
-	fileName = "V2ToHoI4Converter.exe"
+	fileName = "Vic2ToHoI4Converter.exe"
 }
 
 requiredFolder = {
