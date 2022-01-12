@@ -270,7 +270,7 @@ link = { vic = PAP hoi = VAT } # Papal States => Holy See
 link = { vic = WLL hoi = WLL } # Wallonia
 
 link = { vic = SPQ hoi = RME } # Roman Empire
-link = { vic = HRE hoi = HRE } # Holy Roman Empire
+link = { vic = HLR hoi = HLR } # Holy Roman Empire
 
 link = { vic = UCV hoi = UCV } # Terra Nullius - only for the purposes of generating no leader
 
