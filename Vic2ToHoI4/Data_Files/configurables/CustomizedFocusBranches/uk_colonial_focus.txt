@@ -1,9 +1,9 @@
 focus_tree = {
 	id = british_focus
-	
+
 	country = {
 		factor = 0
-		
+
 		modifier = {
 			add = 10
 			has_idea = culture_british
@@ -13,9 +13,9 @@ focus_tree = {
 	default = no
 
 	### END OF DECOLONIZATION ###
-	
+
 	focus = {
-		id = uk_colonial_focus 
+		id = uk_colonial_focus
 		allow_branch = {
 			country_exists = event_target:uk_colonial_focus_japan
 			country_exists = event_target:uk_colonial_focus_china
@@ -28,7 +28,7 @@ focus_tree = {
 		available = {
 			NOT = { has_government = communism }
 			num_subjects > 0
-		} 
+		}
 		icon = GFX_focus_research2
 		x = 12 # Entire branch width
 		y = 0
@@ -42,7 +42,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = uk_asia_focus 
+		id = uk_asia_focus
 		allow_branch = {
 			country_exists = event_target:uk_colonial_focus_japan
 			country_exists = event_target:uk_colonial_focus_china
@@ -53,7 +53,7 @@ focus_tree = {
 			}
 		}
 		prerequisite = { focus = uk_colonial_focus }
-		
+
 		available = {
 			if = {
 				limit = { any_state = { state = event_target:uk_colonial_focus_singapore } }
@@ -95,7 +95,7 @@ focus_tree = {
 						building = dockyard
 						size < 1
 						include_locked = yes
-					}				
+					}
 				}
 			}
 			if = {
@@ -144,7 +144,7 @@ focus_tree = {
 									is_subject_of = ROOT
 								}
 							}
-						} 
+						}
 						add_extra_state_shared_building_slots = 1
 						add_building_construction = {
 								type = dockyard
@@ -191,10 +191,10 @@ focus_tree = {
 			country_exists = event_target:uk_colonial_focus_china
 			any_state = { state = event_target:uk_colonial_focus_mandalay }
 		}
-		prerequisite = { focus = uk_asia_focus } 
+		prerequisite = { focus = uk_asia_focus }
 		available = {
-			event_target:uk_colonial_focus_china = { 
-				has_war_with = event_target:uk_colonial_focus_japan 
+			event_target:uk_colonial_focus_china = {
+				has_war_with = event_target:uk_colonial_focus_japan
 				NOT = { has_war_with = ROOT }
 			}
 			event_target:uk_colonial_focus_japan = { NOT = { is_in_faction_with = ROOT } }
@@ -248,13 +248,13 @@ focus_tree = {
 		completion_reward = {
 			event_target:uk_colonial_focus_mandalay = {
 				if = {
-					limit = { 
-						OR = { 
+					limit = {
+						OR = {
 							ROOT = { controls_state = event_target:uk_colonial_focus_mandalay }
 							any_other_country = {
 								is_in_faction_with = ROOT
 								controls_state = event_target:uk_colonial_focus_mandalay
-							} 
+							}
 						}
 					}
 					add_building_construction = {
@@ -271,13 +271,13 @@ focus_tree = {
 			}
 			event_target:uk_colonial_focus_yunnan = {
 				if = {
-					limit = { 
-					OR = { 
+					limit = {
+					OR = {
 							event_target:uk_colonial_focus_china = { controls_state = event_target:uk_colonial_focus_yunnan }
 							any_other_country = {
 								is_in_faction_with = event_target:uk_colonial_focus_china
 								controls_state = event_target:uk_colonial_focus_mandalay
-							} 
+							}
 						}
 					}
 					add_building_construction = {
@@ -294,13 +294,13 @@ focus_tree = {
 			}
 			event_target:uk_colonial_focus_xikang = {
 				if = {
-					limit = { 
-						OR = { 
+					limit = {
+						OR = {
 							event_target:uk_colonial_focus_china = { controls_state = event_target:uk_colonial_focus_xikang }
 							any_other_country = {
 								is_in_faction_with = event_target:uk_colonial_focus_china
 								controls_state = event_target:uk_colonial_focus_xikang
-							} 
+							}
 						} }
 					add_building_construction = {
 						type = infrastructure
@@ -328,7 +328,7 @@ focus_tree = {
 				#unlock_decision_tooltip = CHI_expand_the_burma_road # outside the project scope
 			}
 			event_target:uk_colonial_focus_china = {
-				add_opinion_modifier = { target = ROOT modifier = burma_road_good } 
+				add_opinion_modifier = { target = ROOT modifier = burma_road_good }
 				country_event = britain.4
 			}
 			if = {
@@ -340,13 +340,13 @@ focus_tree = {
 					}
 				}
 				event_target:uk_colonial_focus_yunnan_owner = {
-					add_opinion_modifier = { target = ROOT modifier = burma_road_good } 
+					add_opinion_modifier = { target = ROOT modifier = burma_road_good }
 					country_event = britain.5
 				}
 			}
 			event_target:uk_colonial_focus_japan = {
-				add_opinion_modifier = { target = ROOT modifier = burma_road_bad } 
-			} 
+				add_opinion_modifier = { target = ROOT modifier = burma_road_bad }
+			}
 		}
 	}
 	focus = {
@@ -361,9 +361,9 @@ focus_tree = {
 			}
 		}
 		available = {
-			event_target:uk_colonial_focus_japan = { 
+			event_target:uk_colonial_focus_japan = {
 				ENG_focus_available_embargo_sanction = yes
-			}	
+			}
 			has_government = democratic
 		}
 		bypass = {
@@ -384,7 +384,7 @@ focus_tree = {
 		completion_reward = {
 			event_target:uk_colonial_focus_japan = {
 				add_opinion_modifier = { target = ROOT modifier = embargo }
-				add_opinion_modifier = { target = ROOT modifier = sanctions_relations } 
+				add_opinion_modifier = { target = ROOT modifier = sanctions_relations }
 			}
 		}
 	}
@@ -403,7 +403,7 @@ focus_tree = {
 			has_offensive_war = no
 			event_target:uk_colonial_focus_japan = {
 				ENG_focus_available_war = yes
-			}	
+			}
 			has_government = democratic
 		}
 		bypass = {
@@ -420,13 +420,13 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 1
-		}	
+		}
 		completion_reward = {
 			create_wargoal = {
 				type = puppet_wargoal_focus
 				target = event_target:uk_colonial_focus_japan
 				expire = 0
-			} 
+			}
 		}
 	}
 
@@ -462,7 +462,7 @@ focus_tree = {
 
 		available_if_capitulated = yes
 
-		completion_reward = { 
+		completion_reward = {
 			navy_experience = 25
 			event_target:uk_colonial_focus_singapore = {
 				add_extra_state_shared_building_slots = 1
@@ -500,7 +500,7 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 1
-		}	
+		}
 		available = {
 			event_target:uk_colonial_focus_singapore = {
 				CONTROLLER = {
@@ -567,7 +567,7 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 1
-		}	
+		}
 		available = {
 			event_target:uk_colonial_focus_singapore = {
 				CONTROLLER = {
@@ -629,7 +629,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 0.25
 		}
-		available = { 
+		available = {
 			event_target:uk_colonial_focus_hongkong = {
 				CONTROLLER = {
 					OR = {
@@ -667,7 +667,7 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 1
-		}	
+		}
 		available = {
 			event_target:uk_colonial_focus_hongkong = {
 				CONTROLLER = {
@@ -682,7 +682,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		bypass = {
-			event_target:uk_colonial_focus_hongkong = { 
+			event_target:uk_colonial_focus_hongkong = {
 				free_building_slots = {
 					building = anti_air_building
 					size < 2
@@ -690,7 +690,7 @@ focus_tree = {
 			}
 		}
 
-		completion_reward = { 
+		completion_reward = {
 			event_target:uk_colonial_focus_hongkong = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -704,7 +704,7 @@ focus_tree = {
 				}
 				add_building_construction = {
 					type = anti_air_building
-					level = 2				
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -720,7 +720,7 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			factor = 1
-		}	
+		}
 		available = {
 			event_target:uk_colonial_focus_hongkong = {
 				CONTROLLER = {
@@ -735,11 +735,11 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		bypass = {
-			event_target:uk_colonial_focus_hongkong = { 
+			event_target:uk_colonial_focus_hongkong = {
 				free_building_slots = {
 					building = anti_air_building
 					size < 2
-				} 
+				}
 				free_building_slots = {
 					building = air_base
 					size < 2
@@ -753,7 +753,7 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-			
+
 				add_building_construction = {
 					type = air_base
 					level = 4
@@ -762,9 +762,9 @@ focus_tree = {
 			}
 		}
 	}
-	
+
 	focus = {
-		id = uk_china_focus 
+		id = uk_china_focus
 		allow_branch = {
 			country_exists = event_target:uk_colonial_focus_japan
 			country_exists = event_target:uk_colonial_focus_china
@@ -778,7 +778,7 @@ focus_tree = {
 		available = {
 			event_target:uk_colonial_focus_china = { exists = yes }
 			has_government = democratic
-		} 
+		}
 		cancel = {
 			event_target:uk_colonial_focus_china = { exists = no }
 		}
@@ -804,7 +804,7 @@ focus_tree = {
 				set_country_flag = ENG_influenced_by_britain_flag
 			}
 			every_other_country = {
-				limit = { 
+				limit = {
 					NOT = { has_government = democratic }
 					num_of_factories > 30
 				}
@@ -812,9 +812,9 @@ focus_tree = {
 			}
 		}
 	}
-	
+
 	focus = {
-		id = uk_commonwealth_focus 
+		id = uk_commonwealth_focus
 		allow_branch = {
 			country_exists = event_target:uk_colonial_focus_CAN
 			country_exists = event_target:uk_colonial_focus_SAF
@@ -974,14 +974,14 @@ focus_tree = {
 	}
 
 	focus = {
-		id = uk_india_focus 
+		id = uk_india_focus
 		prerequisite = { focus = uk_commonwealth_focus }
 		available = {
 			any_country = {
 				original_tag = event_target:uk_colonial_focus_RAJ
 				is_in_faction_with = ROOT
 			}
-		} 
+		}
 		icon = GFX_goal_generic_construct_civ_factory
 		x = -3
 		y = 1
@@ -1093,9 +1093,9 @@ focus_tree = {
 			}
 		}
 	}
-	
+
 	focus = {
-		id = uk_free_india_focus 
+		id = uk_free_india_focus
 		prerequisite = { focus = uk_india_focus }
 		mutually_exclusive = { focus = ENG_indian_autonomy }
 		available = {
@@ -1117,7 +1117,7 @@ focus_tree = {
 						}
 					}
 				}
-				else = {				
+				else = {
 					has_global_flag = indian_national_army_setup
 					has_government = democratic
 					event_target:uk_colonial_focus_RAJ = {
@@ -1150,20 +1150,20 @@ focus_tree = {
 						autonomy_state = autonomy_free
 					}
 				}
-				else = {					
+				else = {
 					set_global_flag = indian_independence_promised
 					add_timed_idea = { idea = indian_independence_promised_idea days = 1460 }
 					#event_target:uk_colonial_focus_RAJ = {
 					#	remove_ideas = RAJ_azad_hind
-					#}				
+					#}
 				}
 			}
 		}
 	}
-	
-	
+
+
 	focus = {
-		id = uk_australia_focus 
+		id = uk_australia_focus
 		prerequisite = { focus = uk_commonwealth_focus }
 		available = {
 			any_country = {
@@ -1324,7 +1324,7 @@ focus_tree = {
 
 
 	focus = {
-		id = uk_new_zealand_focus 
+		id = uk_new_zealand_focus
 		prerequisite = { focus = uk_australia_focus }
 		available = {
 			any_country = {
@@ -1484,7 +1484,7 @@ focus_tree = {
 
 
 	focus = {
-		id = uk_canada_focus 
+		id = uk_canada_focus
 		prerequisite = { focus = uk_commonwealth_focus }
 		available = {
 			any_country = {
@@ -1815,7 +1815,7 @@ focus_tree = {
 			country_exists = event_target:uk_colonial_focus_RAJ
 		}
 
-		available = { 	
+		available = {
 			event_target:uk_colonial_focus_RAJ = {
 				is_subject_of = ROOT
 			}
@@ -1834,7 +1834,7 @@ focus_tree = {
 			#modifier = {
 			#	factor = 0
 			#}
-		}	
+		}
 		completion_reward = {
 			set_autonomy = {
 				target = event_target:uk_colonial_focus_RAJ
@@ -1972,7 +1972,7 @@ focus_tree = {
 			#	factor = 0
 			#}
 		}
-		search_filters = {FOCUS_FILTER_POLITICAL}	
+		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			add_political_power = 120
 			every_country = {
@@ -2229,7 +2229,7 @@ focus_tree = {
 			#	factor = 0
 			#}
 		}
-		search_filters = {FOCUS_FILTER_ANNEXATION}	
+		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			if = {
 				limit = {

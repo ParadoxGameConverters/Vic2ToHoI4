@@ -116,7 +116,7 @@ shared_focus = {
 	y = 1
 	relative_position_id = collectivist_ethos
 	cost = 10
-	
+
 	search_filters = { FOCUS_FILTER_POLITICAL  }
 
 	available_if_capitulated = yes
@@ -130,7 +130,7 @@ shared_focus = {
 				is_major = yes
 				has_government = communism
 			}
-		}			
+		}
 		modifier = {
 			factor = 0
 			AND = {
@@ -146,7 +146,7 @@ shared_focus = {
 			days = 720
 		}
 	}
-}	
+}
 
 shared_focus = {
 	id = liberty_ethos
@@ -205,7 +205,7 @@ shared_focus = {
 		if = {
 			limit = { has_idea = neutrality_idea }
 			remove_ideas = neutrality_idea
-		}			
+		}
 		add_ideas = militarism_focus
 		army_experience = 20
 		set_rule = { can_send_volunteers = yes }
@@ -229,7 +229,7 @@ shared_focus = {
 		if = {
 			limit = { has_idea = neutrality_idea }
 			remove_ideas = neutrality_idea
-		}		
+		}
 		add_political_power = 200
 		add_ideas = idea_political_correctness
 	}
@@ -293,7 +293,7 @@ shared_focus = {
 		if = {
 			limit = { has_idea = neutrality_idea }
 			remove_ideas = neutrality_idea
-		}	
+		}
 		set_rule = { can_send_volunteers = yes }
 		add_political_power = 150
 	}
@@ -426,15 +426,15 @@ shared_focus = {
 	id = why_we_fight
 	icon = GFX_goal_generic_propaganda
 	prerequisite = { focus = foreign_expeditions focus = deterrence }
-	available = { 
-		OR = { 
-			threat > 0.75 
-			has_defensive_war = yes 
+	available = {
+		OR = {
+			threat > 0.75
+			has_defensive_war = yes
 		}
 	}
 
 	continue_if_invalid = yes
-	
+
 	x = -2
 	y = 1
 	relative_position_id = foreign_expeditions
@@ -451,7 +451,7 @@ shared_focus = {
 			if = {
 				limit = { NOT = { has_idea = neutrality_idea } }
 				set_rule = { can_create_factions = yes }
-			}			
+			}
 		}
 	}
 }
@@ -523,7 +523,7 @@ shared_focus = {
 				num_of_factories > 50
 			}
 		}
-	}		
+	}
 	x = 2
 	y = 1
 	relative_position_id = ideological_fanaticism
@@ -555,15 +555,15 @@ shared_focus = {
 				bonus = 1.0
 				uses = 1
 				category = industry
-			}	
+			}
 			add_tech_bonus = {
 				name = infantry_artillery_bonus #@#
 				bonus = 1.0
 				uses = 1
 				category = infantry_weapons
 				category = artillery
-			}				
-		}			
+			}
+		}
 	}
 }
 
@@ -815,7 +815,7 @@ focus = {
 		any_other_country = {
 			original_tag = $TARGET
 			exists = yes
-			NOT = { has_government = democratic } 
+			NOT = { has_government = democratic }
 			NOT = { is_in_faction_with = ROOT }
 			OR = {
 				has_offensive_war = yes
@@ -853,7 +853,7 @@ focus = {
 		any_other_country = {
 			original_tag = $TARGET
 			exists = yes
-			NOT = { has_government = democratic } 
+			NOT = { has_government = democratic }
 			NOT = { is_in_faction_with = ROOT }
 			OR = {
 				has_offensive_war = yes
@@ -891,7 +891,7 @@ focus = {
 		any_other_country = {
 			original_tag = $TARGET
 			exists = yes
-			NOT = { has_government = democratic } 
+			NOT = { has_government = democratic }
 			NOT = { is_in_faction_with = ROOT }
 			OR = {
 				has_offensive_war = yes
@@ -2451,7 +2451,7 @@ focus = {
 		}
 	}
 }
-	
+
 focus = {
 	id = _finish_
 	icon = GFX_goal_generic_territory_or_war

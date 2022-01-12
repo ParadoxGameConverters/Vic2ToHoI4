@@ -42,7 +42,7 @@ void HoI4::updateCreateUprisingEvent(HoI4::Event& theEvent, const std::set<std::
 	immediateStream << "\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\n";
 	immediateStream << "\t\t\t\tif = {\n";
-	immediateStream << "\t\t\t\t\t## create a new country if necesarry\n";
+	immediateStream << "\t\t\t\t\t## create a new country if necessary\n";
 	immediateStream << "\t\t\t\t\tlimit = {\n";
 	immediateStream << "\t\t\t\t\t\tcheck_variable = { civil_war_country_picked = 0 } \n";
 	immediateStream << "\t\t\t\t\t\tFROM = {\n";
@@ -95,7 +95,7 @@ void HoI4::updateCreateUprisingEvent(HoI4::Event& theEvent, const std::set<std::
 	immediateStream << "\t\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t\n";
-	immediateStream << "\t\t\t\t\t# change government if necesarry\n";
+	immediateStream << "\t\t\t\t\t# change government if necessary\n";
 	immediateStream << "\t\t\t\t\tvar:new_occupied_country = {\n";
 	immediateStream << "\t\t\t\t\t\trandom_list = {\n";
 	for (const auto& ideology: majorIdeologies)
@@ -189,7 +189,7 @@ void HoI4::updateCreateUprisingEvent(HoI4::Event& theEvent, const std::set<std::
 	immediateStream << "\t\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t\n";
-	immediateStream << "\t\t\t\t\t# also check neighbouring core states of the occupier that are not captured yet\n";
+	immediateStream << "\t\t\t\t\t# also check neighboring core states of the occupier that are not captured yet\n";
 	immediateStream << "\t\t\t\t\t# move our armies so they are not surrounded/create pockets\n";
 	immediateStream << "\t\t\t\t\tevery_neighbor_state = {\n";
 	immediateStream << "\t\t\t\t\t\tlimit = {\n";
@@ -218,7 +218,7 @@ void HoI4::updateCreateUprisingEvent(HoI4::Event& theEvent, const std::set<std::
 	immediateStream << "\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t}\n";
 	immediateStream << "\t\t\t\n";
-	immediateStream << "\t\t\t\t# create war if necesarry\n";
+	immediateStream << "\t\t\t\t# create war if necessary\n";
 	immediateStream << "\t\t\t\tif = {\n";
 	immediateStream << "\t\t\t\t\tlimit = { NOT = { has_war_with = new_occupied_country } }\n";
 	immediateStream << "\t\t\t\t\tdeclare_war_on = { target = new_occupied_country type = annex_everything }\n";

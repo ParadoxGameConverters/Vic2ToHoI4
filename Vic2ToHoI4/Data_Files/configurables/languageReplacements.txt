@@ -25,13 +25,13 @@
 #		}
 #	}
 #
-# Language should match the localisation files (eg. 'french', 'german', 'english')
+# Language should match the localization files (eg. 'french', 'german', 'english')
 # Matcher determines if to apply rules to an adjective, and is case insensitive.
-#	The first matcher to match is the only one applied for a localisation.
+#	The first matcher to match is the only one applied for a localization.
 #	It must be a regex, and must be in quotes
 #		"^de (.+)" would match all adjectives beginning with "de "
 #		"(.+)er$" would match all adjectives ending with "er"
-# Suffix is added to the end of the localisation key.
+# Suffix is added to the end of the localization key.
 #	_MS would make dfsdf become sfdfdf_MS
 # Replacement rule is a regex replacement rule applied to the matched adjective.
 #	If the matcher is written to only match some of the adjective ("er$"),
@@ -67,7 +67,7 @@ french = {
 		_MP_FR = "des $1"
 		_FP_FR = "des $1"
 	}
-	
+
 	#Special rules
 	"turc" = { #Turkish
 		_MS_FR = Turc
@@ -105,7 +105,7 @@ french = {
 		_MP_FR = Laotiens
 		_FP_FR = Laotiennes
 	}
-	
+
 	#Actual adjectives
 	"(.+)e$" = {
 		_MS_FR = $1e
@@ -130,13 +130,13 @@ french = {
 		_FS_FR = $1ane
 		_MP_FR = $1ans
 		_FP_FR = $1anes
-	}	
+	}
 	"(.+)el$" = {
 		_MS_FR = $1el
 		_FS_FR = $1elle
 		_MP_FR = $1els
 		_FP_FR = $1elles
-	}	
+	}
 	"(.+)er$" = {
 		_MS_FR = $1er
 		_FS_FR = $1ère
@@ -263,7 +263,7 @@ french = {
 		_MP_FR = $1ols
 		_FP_FR = $1oles
 	}
-	
+
 	#Fallback
 	"^(.+)$" = {
 		_MS = $1
@@ -333,7 +333,7 @@ italian = {
 		_MP_IT = $1i
 		_FP_IT = $1i
 	}
-	
+
 	#Special rules
 	"belga" = { #Belgian
 		_MS_IT = "Belga"
@@ -383,7 +383,7 @@ italian = {
 		_MP_IT = "Libici"
 		_FP_IT = "Libiche"
 	}
-	
+
 	#Actual adjectives
 	"(.+)ita$" = {
 		_MS_IT = $1ita
@@ -403,7 +403,7 @@ italian = {
 		_MP_IT = $1ani
 		_FP_IT = $1ane
 	}
-	"(.+)an$" = { #Fallback from English localisation
+	"(.+)an$" = { #Fallback from English localization
 		_MS_IT = $1ano
 		_FS_IT = $1ana
 		_MP_IT = $1ani
@@ -505,7 +505,7 @@ italian = {
 		_MP_IT = $1i
 		_FP_IT = $1e
 	}
-	
+
 	#Fallback
 	"^(.+)$" = {
 		_MS_IT = $1
@@ -533,7 +533,7 @@ spanish = {
 		_MP_ES = "del $1"
 		_FP_ES = "del $1"
 	}
-	
+
 	#Special rules
 	"alemana" = { #German
 		_MS_ES = "Alemán"
@@ -595,39 +595,39 @@ spanish = {
 		_MP_ES = "Saharauis"
 		_FP_ES = "Saharauis"
 	}
-	
+
 	#Actual adjectives
-	"(.+)stán$" = { 
+	"(.+)stán$" = {
 		_MS_ES = "de $1stán"
 		_FS_ES = "de $1stán"
 		_MP_ES = "de $1stán"
 		_FP_ES = "de $1stán"
 	}
-	"(.+)i$" = { 
+	"(.+)i$" = {
 		_MS_ES = $1í
 		_FS_ES = $1í
 		_MP_ES = $1íes
 		_FP_ES = $1íes
 	}
-	"(.+)í$" = { 
+	"(.+)í$" = {
 		_MS_ES = $1í
 		_FS_ES = $1í
 		_MP_ES = $1íes
 		_FP_ES = $1íes
 	}
-	"(.+)al$" = { 
+	"(.+)al$" = {
 		_MS_ES = $1al
 		_FS_ES = $1al
 		_MP_ES = $1ales
 		_FP_ES = $1ales
 	}
-	"(.+)e$" = { 
+	"(.+)e$" = {
 		_MS_ES = $1e
 		_FS_ES = $1e
 		_MP_ES = $1es
 		_FP_ES = $1es
 	}
-	"(.+)esa$" = { 
+	"(.+)esa$" = {
 		_MS_ES = $1és
 		_FS_ES = $1esa
 		_MP_ES = $1eses
@@ -639,7 +639,7 @@ spanish = {
 		_MP_ES = $1eses
 		_FP_ES = $1esas
 	}
-	"(.+)ola$" = { 
+	"(.+)ola$" = {
 		_MS_ES = $1ol
 		_FS_ES = $1ola
 		_MP_ES = $1oles
@@ -651,7 +651,7 @@ spanish = {
 		_MP_ES = $1oles
 		_FP_ES = $1olas
 	}
-	"(.+)ona$" = { 
+	"(.+)ona$" = {
 		_MS_ES = $1ón
 		_FS_ES = $1ona
 		_MP_ES = $1ones
@@ -663,25 +663,25 @@ spanish = {
 		_MP_ES = $1ones
 		_FP_ES = $1onas
 	}
-	"(.+)ita$" = { 
+	"(.+)ita$" = {
 		_MS_ES = $1ita
 		_FS_ES = $1ita
 		_MP_ES = $1itas
 		_FP_ES = $1itas
 	}
-	"(.+)ota$" = { 
+	"(.+)ota$" = {
 		_MS_ES = $1ota
 		_FS_ES = $1ota
 		_MP_ES = $1otas
 		_FP_ES = $1otas
 	}
-	"(.+)ista$" = { 
+	"(.+)ista$" = {
 		_MS_ES = $1ista
 		_FS_ES = $1ista
 		_MP_ES = $1istas
 		_FP_ES = $1istas
 	}
-	"(.+)a$" = { 
+	"(.+)a$" = {
 		_MS_ES = $1o
 		_FS_ES = $1a
 		_MP_ES = $1os
@@ -699,7 +699,7 @@ spanish = {
 		_MP_ES = $1eños
 		_FP_ES = $1eñas
 	}
-	
+
 	#Fallback
 	"(.+)ch$" = {
 		_MS_ES = $1ch
@@ -824,7 +824,7 @@ braz_por = {
 		_MP_PT = "dos $1"
 		_FP_PT = "dos $1"
 	}
-	
+
 	#Special rules
 	"belga" = { #Belgian
 		_MS_PT = "Belga"
@@ -844,7 +844,7 @@ braz_por = {
 		_MP_PT = latões
 		_FP_PT = letãs
 	}
-	
+
 	#Actual adjectives
 	"(.+)ota$" = {
 		_MS_PT = $1ota
@@ -924,7 +924,7 @@ braz_por = {
 		_MP_PT = $1as
 		_FP_PT = $1as
 	}
-	
+
 	#Fallback
 	"^(.+)$" = {
 		_MS_PT = $1

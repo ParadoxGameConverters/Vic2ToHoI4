@@ -1,7 +1,7 @@
-# Localisations for unrecognized nations
-# Localisations are of this form:
+# Localizations for unrecognized nations
+# Localizations are of this form:
 #   * unrecognized_<region>
-# If no localisation is found, the final localisation will be "$uncrecognized$ $REGION$"
+# If no localization is found, the final localization will be "$unrecognized$ $REGION$"
 #
 
 ####;EN;FR;DE;PL;ES;IT;SW;CZ;HU;NL;PT;RU;FI;x

@@ -5,7 +5,7 @@ foreign_influence = {
 		icon = eng_propaganda_campaigns
 
 		days_remove = 120
-		
+
 		available = {
 			FROM = {
 				is_puppet_of = ROOT
@@ -47,13 +47,13 @@ foreign_influence = {
 			factor = 0
 		}
 	}
-	
+
 	committee_of_public_safety = {
 
 		icon = eng_propaganda_campaigns
 
 		days_remove = 120
-		
+
 		available = {
 			FROM = {
 				is_puppet_of = ROOT
@@ -96,13 +96,13 @@ foreign_influence = {
 			factor = 0
 		}
 	}
-	
+
 	dictatorship_decision = {
 
 		icon = generic_prepare_civil_war
-		
+
 		cost = 50
-		
+
 		available = {
 			FROM = {
 				is_puppet_of = ROOT
@@ -146,18 +146,18 @@ foreign_influence = {
 				}
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	national_convention = {
 
 		icon = generic_prepare_civil_war
-		
+
 		cost = 50
-		
+
 		available = {
 			FROM = {
 				is_puppet_of = ROOT
@@ -201,7 +201,7 @@ foreign_influence = {
 				}
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}

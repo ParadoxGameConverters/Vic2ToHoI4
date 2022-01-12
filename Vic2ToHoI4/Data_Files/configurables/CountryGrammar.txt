@@ -7,7 +7,7 @@
 
 # link = { category = A vic2_tag = B extra = "C" }
 # B is considered part of the scripted trigger category A,
-# but it must also fullfill the C requirements (which must
+# but it must also fulfill the C requirements (which must
 # be written in HoI4 syntax)
 
 # While adding a comment is not needed, it is highly advised you do
@@ -41,7 +41,7 @@
 # tag_fpvae: (not used!) LES ... sont GRANDES / J'habite AUX ...
 # tag_fpvnd: (not used!) [Ø] ... sont GRANDES / J'habite DANS ...
 # tag_fpvne: [Ø] Hawaii sont GRANDES / J'habite AUX Hawaii.
- 
+
 
 # Of course, some gender/number categories will vary between French and
 # the other localization languages. This will be solved in later patches.

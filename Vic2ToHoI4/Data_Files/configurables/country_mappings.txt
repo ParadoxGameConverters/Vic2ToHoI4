@@ -205,8 +205,8 @@ link = { vic = SLO hoi = SLV } # Slovenia
 #link = { vic = ? hoi = SOL } # Solomon Islands
 link = { vic = SOM hoi = SOM } # Somalia
 link = { vic = RUS hoi = SOV } # Russia
-#link = { vic = CST hoi = SPA } # Castile => Nationalist Spain 
-link = { vic = SPC hoi = SPB } # Carlist Spain 
+#link = { vic = CST hoi = SPA } # Castile => Nationalist Spain
+link = { vic = SPC hoi = SPB } # Carlist Spain
 link = { vic = ARN hoi = SPC } # Aragon
 link = { vic = SPA hoi = SPR } # Spain
 link = { vic = SRI hoi = SRL } # Ceylon

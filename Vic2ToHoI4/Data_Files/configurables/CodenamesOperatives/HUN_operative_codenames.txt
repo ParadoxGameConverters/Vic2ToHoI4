@@ -9,7 +9,7 @@
 
 	unique = {
 		"Sas"
-		"Kerékpár"  
+		"Kerékpár"
 		"Gulyás"
 		"Párduc"
 		"Sakál"
@@ -18,9 +18,9 @@
 		"Oregano"
 		"Dzseki"
 		"Kék"
-		"Ón" 
-		"Légnyomásmérő" 
-		"Sütővas" 
+		"Ón"
+		"Légnyomásmérő"
+		"Sütővas"
 		"Kaktusz"
 		"Kandalló"
 		"Baba"

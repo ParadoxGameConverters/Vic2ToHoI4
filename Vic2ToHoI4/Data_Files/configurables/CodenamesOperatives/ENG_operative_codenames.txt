@@ -49,7 +49,7 @@ ENG_OPERATIVE_CODENAME_HISTORICAL = {
 		"Sweep"
 		"Sooty"
 		"Snuffles"
-		
+
 
 	}
 }

@@ -20,13 +20,13 @@
 #		}
 #	}
 #
-# Language should match the localisation files (eg. 'french', 'german', 'english')
+# Language should match the localization files (eg. 'french', 'german', 'english')
 # Matcher determines if to apply rules to an adjective, and is case insensitive.
-#	The first matcher to match is the only one applied for a localisation.
+#	The first matcher to match is the only one applied for a localization.
 #	It must be a regex, and must be in quotes
 #		"^de (.+)" would match all adjectives beginning with "de "
 #		"(.+)er$" would match all adjectives ending with "er"
-# Suffix is added to the end of the localisation key.
+# Suffix is added to the end of the localization key.
 #	_MS would make dfsdf become dfsdf_MS
 # Replacement rule is a regex replacement rule applied to the matched adjective.
 #	If the matcher is written to only match some of the adjective ("er$"),
@@ -44,7 +44,7 @@
 # _AKK = Accusative (... X)
 # _LOC = Locative (in X) // German does not have it
 # _INS = Instrumental (through X) // German does not have it
-# _PRE = Praepositional (according to X) // German does not have it
+# _PRE = Prepositional (according to X) // German does not have it
 
 # German specific grammar:
 # _VON = of [Country]
@@ -143,7 +143,7 @@ german = {
 		_IN = "bei Sankt-Johanni"
 		_NACH = "zu Sankt-Johanni"
 	}
-	
+
 	# Article supplied
 	"Islamische Republik" = { # The Islamic Republic
 		_GEN = "der Islamischen Republik"
@@ -361,7 +361,7 @@ german = {
 		_IN = "bei den Partisanen"
 		_NACH = "zu den Partisanen"
 	}
-	
+
 	# Dxx tags
 	"^Das Königreich (.+)" = { # The Kingdom ...
 		_GEN = "des Königreiches $1"
@@ -635,7 +635,7 @@ german = {
 		_IN = "in der $1en Region $2"
 		_NACH = "in die $1e Region $2"
 	}
-	
+
 	# Generic words
 	"^(.+)er Bund$" = { # The ... League
 		_GEN = "des $1en Bundes"
@@ -1181,7 +1181,7 @@ german = {
 		_IN = "im $1en Kalifat"
 		_NACH = "ins $1e Kalifat"
 	}
-	
+
 	# Articles
 	"^Der (.+)$" = { # The ... (masculine)
 		_GEN = "des $1s"
@@ -1619,7 +1619,7 @@ polish = {
 		_AKK = "Pomorze Gdańskie"
 		_INS = "Pomorzem Gdańskim"
 		_LOC = "Pomorzu Gdańskim"
-	}	
+	}
 	"^Sułtanat (.+)$" = { # The ... Sultanate
 		_GEN = "Sułtanatu $1"
 		_DAT = "Sułtanatowi $1"
@@ -1627,7 +1627,7 @@ polish = {
 		_INS = "Sułtanatem $1"
 		_LOC = "Sułtanacie $1"
 	}
-	
+
 	# Compound names
 	"Alien Invaders" = { # (sic)
 		_GEN = "Kosmitów Najeźdźców"
@@ -1691,140 +1691,140 @@ polish = {
 		_AKK = "Naród $1"
 		_INS = "Narodem $1"
 		_LOC = "Narodzie $1"
-	}	
+	}
 	"^Unia (.+)czna (.+)" = { # ... Union of ...
 		_GEN = "Unii $1cznej $2"
 		_DAT = "Unii $1cznej $2"
 		_AKK = "Unię $1czną $2"
 		_INS = "Unią $1czną $2"
 		_LOC = "Unii $1czniej $2"
-	}	
+	}
 	"^Unia (.+)owa (.+)" = { # ... Union of ...
 		_GEN = "Unii $1owej $2"
 		_DAT = "Unii $1owej $2"
 		_AKK = "Unię $1ową $2"
 		_INS = "Unią $1ową $2"
 		_LOC = "Unii $1owej $2"
-	}	
+	}
 	"^Unia (.+)ska (.+)czna$" = { # ... Union
 		_GEN = "Unii $1skiej $2cznej"
 		_DAT = "Unii $1skiej $2cznej"
 		_AKK = "Unię $1ską $2czną"
 		_INS = "Unią $1ską $2czną"
 		_LOC = "Unii $1skiej $2cznej"
-	}	
+	}
 	"^Unia (.+)ska$" = { # ... Union
 		_GEN = "Unii $1skiej"
 		_DAT = "Unii $1skiej"
 		_AKK = "Unię $1ską"
 		_INS = "Unią $1ską"
 		_LOC = "Unii $1skiej"
-	}	
+	}
 	"^Unia (.+)cka$" = { # ... Union
 		_GEN = "Unii $1ckiej"
 		_DAT = "Unii $1ckiej"
 		_AKK = "Unię $1cką"
 		_INS = "Unią $1cką"
 		_LOC = "Unii $1ckiej"
-	}	
+	}
 	"^Chwalebna Unia (.+)" = { # Glorious Union of ...
 		_GEN = "Chwalebnej Unii $1"
 		_DAT = "Chwalebnej Unii $1"
 		_AKK = "Chwalebną Unię $1"
 		_INS = "Chwalebną Unią $1"
 		_LOC = "Chwalebnej Unii $1"
-	}	
+	}
 	"^Święta Unia (.+)" = { # Holy Union of ...
 		_GEN = "Świętej Unii $1"
 		_DAT = "Świętej Unii $1"
 		_AKK = "Świętą Unię $1"
 		_INS = "Świętą Unią $1"
 		_LOC = "Świętej Unii $1"
-	}	
+	}
 	"^Pobożna Unia (.+)" = { # Pious Union of ...
 		_GEN = "Pobożnej Unii $1"
 		_DAT = "Pobożnej Unii $1"
 		_AKK = "Pobożną Unię $1"
 		_INS = "Pobożną Unią $1"
 		_LOC = "Pobożnej Unii $1"
-	}	
+	}
 	"^Unia (.+)" = { # Union of ...
 		_GEN = "Unii $1"
 		_DAT = "Unii $1"
 		_AKK = "Unię $1"
 		_INS = "Unią $1"
 		_LOC = "Unii $1"
-	}	
+	}
 	"(.+)zna Republika Ludowa (.+)" = { # ... People's Republic of ...
 		_GEN = "$1zniej Republiki Ludowej $2"
 		_DAT = "$1zniej Republice Ludowej $2"
 		_AKK = "$1zną Republikę Ludową $2"
 		_INS = "$1zną Republiką Ludową $2"
 		_LOC = "$1zniej Republice Ludowej $2"
-	}	
+	}
 	"(.+)skiej Republiki Ludowej" = { # (sic!) ... People's Republic
 		_GEN = "$1skiej Republiki Ludowej $2"
 		_DAT = "$1skiej Republice Ludowej $2"
 		_AKK = "$1ską Republikę Ludową $2"
 		_INS = "$1ską Republiką Ludową $2"
 		_LOC = "$1skiej Republice Ludowej $2"
-	}	
+	}
 	"(.+)ia Republiki Ludowej" = { # (sic!) ... People's Republic
 		_GEN = "$1ii Republiki Ludowej $2"
 		_DAT = "$1ii Republice Ludowej $2"
 		_AKK = "$1ię Republikę Ludową $2"
 		_INS = "$1ią Republiką Ludową $2"
 		_LOC = "$1ii Republice Ludowej $2"
-	}	
+	}
 	"(.+)ia Republika Ludowa" = { # ... People's Republic
 		_GEN = "$1ii Republiki Ludowej $2"
 		_DAT = "$1ii Republice Ludowej $2"
 		_AKK = "$1ię Republikę Ludową $2"
 		_INS = "$1ią Republiką Ludową $2"
 		_LOC = "$1ii Republice Ludowej $2"
-	}	
+	}
 	"(.+)ska Republika Ludowa$" = { # People's Republic of ...
 		_GEN = "$1skiej Republiki Ludowej"
 		_DAT = "$1skiej Republice Ludowej"
 		_AKK = "$1ską Republikę Ludową"
 		_INS = "$1ską Republiką Ludową"
 		_LOC = "$1skiej Republice Ludowej"
-	}	
+	}
 	"(.+)ska Republika Ludowa (.+)" = { # ... People's Republic of ...
 		_GEN = "$1skiej Republiki Ludowej $2"
 		_DAT = "$1skiej Republice Ludowej $2"
 		_AKK = "$1ską Republikę Ludową $2"
 		_INS = "$1ską Republiką Ludową $2"
 		_LOC = "$1skiej Republice Ludowej $2"
-	}	
+	}
 	"^Republiki Ludowej (.+)" = { # (sic!) People's Republic of ...
 		_GEN = "Republiki Ludowej $1"
 		_DAT = "Republice Ludowej $1"
 		_AKK = "Republikę Ludową $1"
 		_INS = "Republiką Ludową $1"
 		_LOC = "Republice Ludowej $1"
-	}	
+	}
 	"^Republika Ludowa (.+)" = { # People's Republic of ...
 		_GEN = "Republiki Ludowej $1"
 		_DAT = "Republice Ludowej $1"
 		_AKK = "Republikę Ludową $1"
 		_INS = "Republiką Ludową $1"
 		_LOC = "Republice Ludowej $1"
-	}	
+	}
 	"^Ludowa Republika (.+)" = { # People's Republic of ...
 		_GEN = "Ludowej Republiki $1"
 		_DAT = "Ludowej Republice $1"
 		_AKK = "Ludową Republikę $1"
 		_INS = "Ludową Republiką $1"
 		_LOC = "Ludowej Republice $1"
-	}	
+	}
 	"^Ludowa republika (.+)" = { # People's Republic of ...
 		_GEN = "Ludowej Republiki $1"
 		_DAT = "Ludowej Republice $1"
 		_AKK = "Ludową Republikę $1"
 		_INS = "Ludową Republiką $1"
 		_LOC = "Ludowej Republice $1"
-	}	
+	}
 	"^(.+)cka Republika$" = { # ... Republic
 		_GEN = "$1ckej Republiki"
 		_DAT = "$1ckej Republice"
@@ -1859,182 +1859,182 @@ polish = {
 		_AKK = "Republikę Demokratyczną $1"
 		_INS = "Republiką Demokratyczną $1"
 		_LOC = "Republice Demokratycznej $1"
-	}	
+	}
 	"^Republika (.+)" = { # Republic of ...
 		_GEN = "Republiki $1"
 		_DAT = "Republice $1"
 		_AKK = "Republikę $1"
 		_INS = "Republiką $1"
 		_LOC = "Republice $1"
-	}	
+	}
 	"Niebiańskie Królestwo" = { # Heavenly Kingdom
 		_GEN = "Niebiańskiego Królestwa"
 		_DAT = "Niebiańskiemu Królestwu"
 		_AKK = "Niebiańskie Królestwo"
 		_INS = "Niebiańskim Królestwem"
 		_LOC = "Niebiańskim Królestwie"
-	}	
+	}
 	"^Wysokie królestwo (.+)" = { # High Kingdom of ...
 		_GEN = "Wysokiego Królestwa $1"
 		_DAT = "Wysokiemu Królestwu $1"
 		_AKK = "Wysokie Królestwo $1"
 		_INS = "Wysokim Królestwem $1"
 		_LOC = "Wysokim Królestwie $1"
-	}	
+	}
 	"^Sekretne królestwo (.+)" = { # Secret Kingdom of ...
 		_GEN = "Sekretnego Królestwa $1"
 		_DAT = "Sekretnemu Królestwu $1"
 		_AKK = "Sekretne Królestwo $1"
 		_INS = "Sekretnym Królestwem $1"
 		_LOC = "Sekretnym Królestwie $1"
-	}	
+	}
 	"^Królestwo (.+)" = { # Kingdom of ...
 		_GEN = "Królestwa $1"
 		_DAT = "Królestwu $1"
 		_AKK = "Królestwo $1"
 		_INS = "Królestwem $1"
 		_LOC = "Królestwie $1"
-	}	
+	}
 	"^Senat (.+)" = { # Senate of ...
 		_GEN = "Senatu $1"
 		_DAT = "Senatowi $1"
 		_AKK = "Senat $1"
 		_INS = "Senatem $1"
 		_LOC = "Senacie $1"
-	}	
+	}
 	"^Gmina (.+)ska$" = { # Municipality of ...
 		_GEN = "Gminy $1skiej"
 		_DAT = "Gminie $1skiej"
 		_AKK = "Gminę $1ską"
 		_INS = "Gminą $1ską"
 		_LOC = "Gminie $1skiej"
-	}	
+	}
 	"^Gmina (.+)" = { # Municipality of ...
 		_GEN = "Gminy $1"
 		_DAT = "Gminie $1"
 		_AKK = "Gminę $1"
 		_INS = "Gminą $1"
 		_LOC = "Gminie $1"
-	}	
+	}
 	"^Papiestwo (.+)skie$" = { # Papacy of ...
 		_GEN = "Papiestwa $1skiego"
 		_DAT = "Papiestwu $1skiemu"
 		_AKK = "Papiestwo $1skie"
 		_INS = "Papiestwem $1skim"
 		_LOC = "Papiestwie $1skim"
-	}	
+	}
 	"^Papiestwo (.+)" = { # Papacy of ...
 		_GEN = "Papiestwa $1"
 		_DAT = "Papiestwu $1"
 		_AKK = "Papiestwo $1"
 		_INS = "Papiestwem $1"
 		_LOC = "Papiestwie $1"
-	}	
+	}
 	"Konfederacja" = { # (sic!) - CSA
 		_GEN = "Skonfederowanych Stanów"
 		_DAT = "Skonfederowanym Stamom"
 		_AKK = "Skonfederowane Stany"
 		_INS = "Skonfederowanymi Stanami"
 		_LOC = "Skonfederowanych Stanach"
-	}	
+	}
 	"Konfederacja Peru-Boliwia" = { # Peru-Bolivia
 		_GEN = "Konfederacji Peru-Boliwii"
 		_DAT = "Konfederacji Peru-Boliwii"
 		_AKK = "Konfederację Peru-Boliwię"
 		_INS = "Konfederacją Peru-Boliwią"
 		_LOC = "Konfederacji Peru-Boliwii"
-	}	
+	}
 	"^Konfederacja (.+)ska$" = { # ... Confederation
 		_GEN = "Konfederacji $1skiej"
 		_DAT = "Konfederacji $1skiej"
 		_AKK = "Konfederację $1ską"
 		_INS = "Konfederacją $1ską"
 		_LOC = "Konfederacji $1skiej"
-	}	
+	}
 	"^Konfederacja (.+)" = { # Confederation of ...
 		_GEN = "Konfederacji $1"
 		_DAT = "Konfederacji $1"
 		_AKK = "Konfederację $1"
 		_INS = "Konfederacją $1"
 		_LOC = "Konfederacji $1"
-	}	
+	}
 	"^Federacja (.+)ska$" = { # ... Federation
 		_GEN = "Federacji $1skiej"
 		_DAT = "Federacji $1skiej"
 		_AKK = "Federację $1ską"
 		_INS = "Federacją $1ską"
 		_LOC = "Federacji $1skiej"
-	}	
+	}
 	"^Federacja (.+)" = { # Federation of ...
 		_GEN = "Federacji $1"
 		_DAT = "Federacji $1"
 		_AKK = "Federację $1"
 		_INS = "Federacją $1"
 		_LOC = "Federacji $1"
-	}	
+	}
 	"^(.+)wie Chanat$" = { # ... Khanate
 		_GEN = "$1wego Chanatu"
 		_DAT = "$1wemu Chanatowi"
 		_AKK = "$1we Chanat"
 		_INS = "$1wym Chanatem"
 		_LOC = "$1wym Chanacie"
-	}	
+	}
 	"^Chanat (.+)ski$" = { # ... Khanate
 		_GEN = "Chanatu $1skiego"
 		_DAT = "Chanatowi $1skiemu"
 		_AKK = "Chanat $1ski"
 		_INS = "Chanatem $1skim"
 		_LOC = "Chanacie $1skim"
-	}	
+	}
 	"^Chanat (.+)$" = { # ... Khanate
 		_GEN = "Chanatu $1"
 		_DAT = "Chanatowi $1"
 		_AKK = "Chanat $1"
 		_INS = "Chanatem $1"
 		_LOC = "Chanacie $1"
-	}	
+	}
 	"(.+)i Proletariat$" = { # ... Proletariate
 		_GEN = "$1iego Proletariatu"
 		_DAT = "$1iemu Proletariatowi"
 		_AKK = "$1i Proletariat"
 		_INS = "$1im Proletariatem"
 		_LOC = "$1im Proletariacie"
-	}	
+	}
 	"^Proletariat (.+)i$" = { # ... Proletariate
 		_GEN = "Proletariatu $1iego"
 		_DAT = "Proletariatowi $1iemu"
 		_AKK = "Proletariat $1i"
 		_INS = "Proletariatem $1im"
 		_LOC = "Proletariacie $1im"
-	}	
+	}
 	"(.+)y Proletariat$" = { # ... Proletariate
 		_GEN = "$1ego Proletariatu"
 		_DAT = "$1emu Proletariatowi"
 		_AKK = "$1y Proletariat"
 		_INS = "$1ym Proletariatem"
 		_LOC = "$1ym Proletariacie"
-	}	
+	}
 	"(.+) Proletariat$" = { # ... Proletariate
 		_GEN = "$1 Proletariatu"
 		_DAT = "$1 Proletariatowi"
 		_AKK = "$1 Proletariat"
 		_INS = "$1 Proletariatem"
 		_LOC = "$1 Proletariacie"
-	}	
+	}
 	"^Proletariat (.+)$" = { # ... Proletariate
 		_GEN = "Proletariatu $1"
 		_DAT = "Proletariatowi $1"
 		_AKK = "Proletariat $1"
 		_INS = "Proletariatem $1"
 		_LOC = "Proletariacie $1"
-	}	
+	}
 	"(.+) Proletariate$" = { # ... Proletariate
 		_GEN = "$1 Proletariatu"
 		_DAT = "$1 Proletariatowi"
 		_AKK = "$1 Proletariat"
 		_INS = "$1 Proletariatem"
 		_LOC = "$1 Proletariacie"
-	}	
+	}
 	"Bawarska" = { # (sic!) - Bavarian Soviet Republic
 		_GEN = "Bawarskiej Republiki"
 		_DAT = "Bawarskiej Republice"
@@ -2104,84 +2104,84 @@ polish = {
 		_AKK = "$1o-Brazzaville"
 		_INS = "$1iem-Brazzaville"
 		_LOC = "$1u-Brazzaville"
-	}	
+	}
 	"Saksonia-Koburg-Gotha" = {
 		_GEN = "Saksonii-Koburga-Goty"
 		_DAT = "Saksonii-Koburgowi-Gocie"
 		_AKK = "Saksonię-Koburg-Gotę"
 		_INS = "Saksonią-Koburgiem-Gotą"
 		_LOC = "Saksonii-Koburgu-Gocie"
-	}	
+	}
 	"Komancze" = { # Comanche - not declined
 		_GEN = "Komancze"
 		_DAT = "Komancze"
 		_AKK = "Komancze"
 		_INS = "Komancze"
 		_LOC = "Komancze"
-	}	
+	}
 	"Wyspy Zielonego Przylądka" = { # Cabo Verde
 		_GEN = "Republiki Zielonego Przylądka"
 		_DAT = "Republice Zielonego Przylądka"
 		_AKK = "Republikę Zielonego Przylądka"
 		_INS = "Republiką Zielonego Przylądka"
 		_LOC = "Republice Zielonego Przylądka"
-	}	
+	}
 	"(.+) Dynasty$" = { # (sic!) - ... dynasty
 		_GEN = "$1 Dynastii"
 		_DAT = "$1 Dynastii"
 		_AKK = "$1 Dynastię"
 		_INS = "$1 Dynastią"
 		_LOC = "$1 Dynastii"
-	}	
+	}
 	"^Dynastia (.+)" = { # ... Dynasty
 		_GEN = "Dynastii $1"
 		_DAT = "Dynastii $1"
 		_AKK = "Dynastię $1"
 		_INS = "Dynastią $1"
 		_LOC = "Dynastii $1"
-	}	
+	}
 	"^Wspólnota Robotnicza$" = { # Workers' Commonwealth
 		_GEN = "Wspólnoty Robotniczej"
 		_DAT = "Wspólnocie Robotniczej"
 		_AKK = "Wspólnotę Robotniczą"
 		_INS = "Wspólnotą Robotniczą"
 		_LOC = "Wspólnocie Robotniczej"
-	}	
+	}
 	"^Wspólnota polityczna (.+)" = { # Commonwealth of ...
 		_GEN = "Wspólnoty Politycznej $1"
 		_DAT = "Wspónocie Politycznej $1"
 		_AKK = "Wspólnotę Polityczną $1"
 		_INS = "Wspólnotą Polityczną $1"
 		_LOC = "Wspólnocie Politycznej $1"
-	}	
+	}
 	"Wspólnota Rzymska" = { # (sic!)
 		_GEN = "Wspólnoty Rzymskiej"
 		_DAT = "Wspónocie Rzymskiej"
 		_AKK = "Wspólnotę Rzymską"
 		_INS = "Wspólnotą Rzymską"
 		_LOC = "Wspólnocie Rzymskiej"
-	}	
+	}
 	"Commonwealth of Rome" = { # (sic!)
 		_GEN = "Wspólnoty Rzymskiej"
 		_DAT = "Wspónocie Rzymskiej"
 		_AKK = "Wspólnotę Rzymską"
 		_INS = "Wspólnotą Rzymską"
 		_LOC = "Wspólnocie Rzymskiej"
-	}	
+	}
 	"Senatorskie Rzym = { # Senatorial Rome
 		_GEN = "Senatorskiego Rzymu"
 		_DAT = "Senatorskiemu Rzymowi"
 		_AKK = "Senatorskie Rzym"
 		_INS = "Senatorskim Rzymem"
 		_LOC = "Senatorskim Rzymie"
-	}	
+	}
 	"^Stan (.+)" = { # State of ...
 		_GEN = "Stanu $1"
 		_DAT = "Stanowi $1"
 		_AKK = "Stan $1"
 		_INS = "Stanem $1"
 		_LOC = "Stanie $1"
-	}	
+	}
 	"^Księstwo (.+)" = { # Grand Duchy of ...
 		_GEN = "Księstwa $1"
 		_DAT = "Księstwu $1"
@@ -2209,63 +2209,63 @@ polish = {
 		_AKK = "Dominium $1"
 		_INS = "Dominium $1"
 		_LOC = "Dominium $1"
-	}	
+	}
 	"^Dominium (.+)" = { # Dominion of ...
 		_GEN = "Dominium $1"
 		_DAT = "Dominium $1"
 		_AKK = "Dominium $1"
 		_INS = "Dominium $1"
 		_LOC = "Dominium $1"
-	}	
+	}
 	"^Stany Zjednoczone (.+)" = { # United States of ...
 		_GEN = "Stanów Zjednoczonych $1"
 		_DAT = "Stanom Zjednoczonym $1"
 		_AKK = "Stany Zjednoczone $1"
 		_INS = "Stanami Zjednoczonymi $1"
 		_LOC = "Stanach Zjednoczonych $1"
-	}	
+	}
 	"^Stany Federalne (.+)" = { # Federal States of ...
 		_GEN = "Stanów Federalnych $1"
 		_DAT = "Stanom Federalnym $1"
 		_AKK = "Stany Federalne $1"
 		_INS = "Stanami Federalnymi $1"
 		_LOC = "Stanach Federalnych $1"
-	}	
+	}
 	"^Stany Swobodne (.+)" = { # Free States of ...
 		_GEN = "Stanów Swobodnych $1"
 		_DAT = "Stanom Swobodnym $1"
 		_AKK = "Stany Swobodne $1"
 		_INS = "Stanami Swobodnymi $1"
 		_LOC = "Stanach Swobodnych $1"
-	}	
+	}
 	"^Wolne Stany (.+)" = { # Free States of ...
 		_GEN = "Wolnych Stanów $1"
 		_DAT = "Wolnym Stanom $1"
 		_AKK = "Wolne Stany $1"
 		_INS = "Wolnymi Stanami $1"
 		_LOC = "Wolnych Stanach $1"
-	}	
+	}
 	"^Obszar (.+)" = { # Area of ...
 		_GEN = "Obszaru $1"
 		_DAT = "Obszarowi $1"
 		_AKK = "Obszar $1"
 		_INS = "Obszarem $1"
 		_LOC = "Obszarze $1"
-	}	
+	}
 	"^Potężny region (.+)" = { # Mighty ...
 		_GEN = "Potężnego $1"
 		_DAT = "Potężnemu $1"
 		_AKK = "Potężne $1"
 		_INS = "Potężnym $1"
 		_LOC = "Potężnym $1"
-	}	
+	}
 	"^Wolni Ludzie (.+)" = { # Free People of ...
 		_GEN = "Wolnych Ludzi $1"
 		_DAT = "Wolnym Ludziom $1"
 		_AKK = "Wolnych Ludzi $1"
 		_INS = "Wolnymi Ludźmi $1"
 		_LOC = "Wolnych Ludziach $1"
-	}	
+	}
 	"^Ziemia (.+)" = { # ... Land
 		_GEN = "Ziemi $1"
 		_DAT = "Ziemi $1"
@@ -2286,7 +2286,7 @@ polish = {
 		_AKK = "Ród $1"
 		_INS = "Rodem $1"
 		_LOC = "Rodzie $1"
-	}	
+	}
 	"^Komuna (.+)" = { # ... Commune
 		_GEN = "Komuny $1"
 		_DAT = "Komunie $1"
@@ -2307,42 +2307,42 @@ polish = {
 		_AKK = "Świętą $1"
 		_INS = "Świętą $1"
 		_LOC = "Świętej $1"
-	}	
+	}
 	"Fryzja Wschodnia" = { # East Frisia
 		_GEN = "Fryzji Wschodniej"
 		_DAT = "Fryzji Wschodniej"
 		_AKK = "Fryzję Wschodnią"
 		_INS = "Fryzją Wschodnią"
 		_LOC = "Fryzji Wschodniej"
-	}	
+	}
 	"Wielka Kolumbia" = { # Gran Colombia
 		_GEN = "Wielkiej Kolumbii"
 		_DAT = "Wielkiej Kolumbii"
 		_AKK = "Wielką Kolumbię"
 		_INS = "Wielką Kolumbią"
 		_LOC = "Wielkiej Kolumbii"
-	}	
+	}
 	"Wielka Brytania" = { # Great Britain
 		_GEN = "Wielkiej Brytanii"
 		_DAT = "Wielkiej Brytanii"
 		_AKK = "Wielką Brytanię"
 		_INS = "Wielką Brytanią"
 		_LOC = "Wielkiej Brytanii"
-	}	
+	}
 	"Gwinea Równikowa" = { # Equatorial Guinea
 		_GEN = "Gwinei Równikowej"
 		_DAT = "Gwinei Równikowej"
 		_AKK = "Gwineę Równikową"
 		_INS = "Gwineą Równikową"
 		_LOC = "Gwinei Równikowej"
-	}	
+	}
 	"Gwinea Bissau" = { # Guinea-Bissau
 		_GEN = "Gwinei Bissau"
 		_DAT = "Gwinei Bissau"
 		_AKK = "Gwineę Bissau"
 		_INS = "Gwineą Bissau"
 		_LOC = "Gwinei Bissau"
-	}	
+	}
 	"Fiume" = { # Translated to Croatian name "Rijeka"
 		_GEN = "Rijeki"
 		_DAT = "Rijece"
@@ -2356,294 +2356,294 @@ polish = {
 		_AKK = "Wyspy Owcze"
 		_INS = "Wyspami Owczymi"
 		_LOC = "Wyspach Owczych"
-	}	
+	}
 	"Wyspy Owcze" = { # Faroe Islands
 		_GEN = "Wysp Owczych"
 		_DAT = "Wyspom Owczym"
 		_AKK = "Wyspy Owcze"
 		_INS = "Wyspami Owczymi"
 		_LOC = "Wyspach Owczych"
-	}	
+	}
 	"Wyspy Jońskie" = { # Ionian Islands
 		_GEN = "Wysp Jońskich"
 		_DAT = "Wyspom Jońskim"
 		_AKK = "Wyspy Jońskie"
 		_INS = "Wyspami Jońskimi"
 		_LOC = "Wyspach Jońskich"
-	}	
+	}
 	"Horda Nieumarłych" = { # Horde of the Undead
 		_GEN = "Ordi Nieumarłych"
 		_DAT = "Ordi Nieumarłych"
 		_AKK = "Ordę Nieumarłych"
 		_INS = "Ordą Nieumarłych"
 		_LOC = "Ordi Nieumarłych"
-	}	
+	}
 	"Oirat Horde" = { # Oirat Horde
 		_GEN = "Oiratów Ordi"
 		_DAT = "Oiratów Ordi"
 		_AKK = "Oiratów Ordę"
 		_INS = "Oiratów Ordą"
 		_LOC = "Oiratów Ordi"
-	}	
+	}
 	"Horda Oiratów" = { # Oirat Horde
 		_GEN = "Oiratów Ordi"
 		_DAT = "Oiratów Ordi"
 		_AKK = "Oiratów Ordę"
 		_INS = "Oiratów Ordą"
 		_LOC = "Oiratów Ordi"
-	}	
+	}
 	"Złota Orda" = { # Golden Horde
 		_GEN = "Złotej Ordi"
 		_DAT = "Złotej Ordi"
 		_AKK = "Złotą Ordę"
 		_INS = "Złotą Ordą"
 		_LOC = "Złotej Ordi"
-	}	
+	}
 	"Wielka Orda" = { # Great Horde
 		_GEN = "Wielkej Ordi"
 		_DAT = "Wielkej Ordi"
 		_AKK = "Wielką Ordę"
 		_INS = "Wielką Ordą"
 		_LOC = "Wielkej Ordi"
-	}	
+	}
 	"^Hesja-(.+)" = { # Hesse-...
 		_GEN = "Hesji-$1"
 		_DAT = "Hesji-$1"
 		_AKK = "Hesję-$1"
 		_INS = "Hesją-$1"
 		_LOC = "Hesji-$1"
-	}	
+	}
 	"Święte Cesarstwo Rzymskie" = { # HRE
 		_GEN = "Świętego Cesarstwa Rzymskich"
 		_DAT = "Świętemu Cesarstwu Rzymskim"
 		_AKK = "Święte Cesarstwo Rzymskie"
 		_INS = "Świętym Cesarstwem Rzymskimi"
 		_LOC = "Świętym Cesarstwie Rzymskich"
-	}	
+	}
 	"^Cesarstwo (.+)ski$" = { # (sic!) ... Empire
 		_GEN = "Cesarstwa $1skich"
 		_DAT = "Cesarstwu $1skim"
 		_AKK = "Cesarstwo $1skie"
 		_INS = "Cesarstwem $1skimi"
 		_LOC = "Cesarstwie $1skich"
-	}	
+	}
 	"^Cesarstwo (.+)skie" = { # ... Empire
 		_GEN = "Cesarstwa $1skich"
 		_DAT = "Cesarstwu $1skim"
 		_AKK = "Cesarstwo $1skie"
 		_INS = "Cesarstwem $1skimi"
 		_LOC = "Cesarstwie $1skich"
-	}	
+	}
 	"Holy Roman Republic" = { # (sic!) - HRE Republic
 		_GEN = "Świętej Republiki Rzymskej"
 		_DAT = "Świętej Republice Rzymskej"
 		_AKK = "Świętą Republikę Rzymską"
 		_INS = "Świętą Republiką Rzymską"
 		_LOC = "Świętej Republice Rzymskej"
-	}	
+	}
 	"proletariackiej Cesarstwo Rzymskie" = { # Soviet HRE
 		_GEN = "Proletariackiego Cesarstwa Rzymskich"
 		_DAT = "Proletariackiemu Cesarstwu Rzymskim"
 		_AKK = "Proletariackie Cesarstwo Rzymskie"
 		_INS = "Proletariackim Cesarstwem Rzymskimi"
 		_LOC = "Proletariackim Cesarstwie Rzymskich"
-	}	
+	}
 	"Mongolia Wewnętrzna" = { # Inner Mongolia
 		_GEN = "Mongolii Wewnętrznej"
 		_DAT = "Mongolii Wewnętrznej"
 		_AKK = "Mongolię Wewnętrzną"
 		_INS = "Mongolią Wewnętrzną"
 		_LOC = "Mongolii Wewnętrznej"
-	}		
+	}
 	"Papieskie Włochy" = { # Papal Italy
 		_GEN = "Papieskiego Włoch"
 		_DAT = "Papieskiemu Włochom"
 		_AKK = "Papieskie Włochy"
 		_INS = "Papieskim Włochami"
 		_LOC = "Papieiskim Włoszech"
-	}	
+	}
 	"Włochy" = { # Italy
 		_GEN = "Włoch"
 		_DAT = "Włochom"
 		_AKK = "Włochy"
 		_INS = "Włochami"
 		_LOC = "Włoszech"
-	}	
+	}
 	"Wybrzeże Kości Słoniowej" = { # Ivory Coast
 		_GEN = "Wybrzeża Kości Słoniowej"
 		_DAT = "Wybrzeżu Kości Słoniowej"
 		_AKK = "Wybrzeże Kości Słoniowej"
 		_INS = "Wybrzeżem Kości Słoniowej"
 		_LOC = "Wybrzeżu Kości Słoniowej"
-	}	
+	}
 	"^Wybrzeże (.+)" = { # ... Coast
 		_GEN = "Wybrzeża $1"
 		_DAT = "Wybrzeżu $1"
 		_AKK = "Wybrzeże $1"
 		_INS = "Wybrzeżem $1"
 		_LOC = "Wybrzeżu $1"
-	}	
+	}
 	"Święty Jan" = { # Saint John
 		_GEN = "Świętego Jana"
 		_DAT = "Świętemu Janowi"
 		_AKK = "Świętego Jana"
 		_INS = "Świętym Janem"
 		_LOC = "Świętym Janie"
-	}	
+	}
 	"Liège" = { # Liège - indeclinable
 		_GEN = "Liège"
 		_DAT = "Liège"
 		_AKK = "Liège"
 		_INS = "Liège"
 		_LOC = "Liège"
-	}	
+	}
 	"Illinois" = { # Illinois - indeclinable
 		_GEN = "Illinois"
 		_DAT = "Illinois"
 		_AKK = "Illinois"
 		_INS = "Illinois"
 		_LOC = "Illinois"
-	}	
+	}
 	"inflanckiemu" = { # (sic!) - Livonian Order
 		_GEN = "Zakonu Liwońskiego"
 		_DAT = "Zakonowi Liwońskiemu"
 		_AKK = "Zakon Liwoński"
 		_INS = "Zakonem Liwońskim"
 		_LOC = "Zakonie Liwońskim"
-	}	
+	}
 	"Los Altos" = { # Los Altos - indeclinable
 		_GEN = "Los Altos"
 		_DAT = "Los Altos"
 		_AKK = "Los Altos"
 		_INS = "Los Altos"
 		_LOC = "Los Altos"
-	}	
+	}
 	"La Plata" = { # La Plata - indeclinable
 		_GEN = "La Plata"
 		_DAT = "La Plata"
 		_AKK = "La Plata"
 		_INS = "La Plata"
 		_LOC = "La Plata"
-	}	
+	}
 	"Związek Rhomania" = { # Union of Rhomania
 		_GEN = "Związku Rhomanii"
 		_DAT = "Związkowi Rhomanii"
 		_AKK = "Związek Rhomanii"
 		_INS = "Związkiem Rhomanii"
 		_LOC = "Związku Rhomanii"
-	}	
+	}
 	"Lombardia-Wenecja" = { # Lombardy-Venice
 		_GEN = "Lombardii-Wenecji"
 		_DAT = "Lombardii-Wenecji"
 		_AKK = "Lombardię-Wenecję"
 		_INS = "Lombardią-Wenecją"
 		_LOC = "Lombardii-Wenecji"
-	}	
+	}
 	"Saksonia-Meiningen" = {
 		_GEN = "Saksonii-Meiningen"
 		_DAT = "Saksonii-Meiningen"
 		_AKK = "Saksonię-Meiningen"
 		_INS = "Saksonią-Meiningen"
 		_LOC = "Saksonii-Meiningen"
-	}	
+	}
 	"Górna Wolta" = { # Upper Volta
 		_GEN = "Górnej Wolty"
 		_DAT = "Górnej Wolcie"
 		_AKK = "Górną Woltę"
 		_INS = "Górną Woltą"
 		_LOC = "Górnej Wolcie"
-	}	
+	}
 	"Nowa Anglia" = { # New England
 		_GEN = "Nowej Anglii"
 		_DAT = "Nowej Anglii"
 		_AKK = "Nową Anglię"
 		_INS = "Nową Anglią"
 		_LOC = "Nowej Anglii"
-	}	
+	}
 	"Nowa Funlandia" = { # Newfoundland
 		_GEN = "Nowej Funlandii"
 		_DAT = "Nowej Funlandii"
 		_AKK = "Nową Funlandię"
 		_INS = "Nową Funlandią"
 		_LOC = "Nowej Funlandii"
-	}	
+	}
 	"^Związek (.+)cki$" = { # ... Union
 		_GEN = "Związku $1ckiego"
 		_DAT = "Związkowi $1ckiemu"
 		_AKK = "Związek $1cki"
 		_INS = "Związkiem $1ckim"
 		_LOC = "Związku $1ckim"
-	}	
+	}
 	"Północny Jemen" = { # North Yemen
 		_GEN = "Północnego Jemenu"
 		_DAT = "Północnemu Jemenowi"
 		_AKK = "Północny Jemen"
 		_INS = "Północnym Jemenem"
 		_LOC = "Północnym Jemenie"
-	}	
+	}
 	"Jemen Północny" = { # North Yemen
 		_GEN = "Jemenu Północnego"
 		_DAT = "Jemenowi Północnemu"
 		_AKK = "Jemen Północny"
 		_INS = "Jemenem Północnym"
 		_LOC = "Jemenie Północnym"
-	}	
+	}
 	"Niżny Nowogród" = { # Nizhny Novgorod
 		_GEN = "Niżnego Nowogrodu"
 		_DAT = "Niżnemu Nowogrodowi"
 		_AKK = "Niżny Nowogród"
 		_INS = "Niżnym Nowogrodem"
 		_LOC = "Niżnym Nowogrodzie"
-	}	
+	}
 	"Nizny Nowogród" = { # Nizhny Novgorod
 		_GEN = "Niżnego Nowogrodu"
 		_DAT = "Niżnemu Nowogrodowi"
 		_AKK = "Niżny Nowogród"
 		_INS = "Niżnym Nowogrodem"
 		_LOC = "Niżnym Nowogrodzie"
-	}	
+	}
 	"Nowa Zelandia" = { # New Zealand
 		_GEN = "Nowej Zelandii"
 		_DAT = "Nowej Zelandii"
 		_AKK = "Nową Zelandię"
 		_INS = "Nową Zelandią"
 		_LOC = "Nowej Zelandii"
-	}		
+	}
 	"Polska–Litwa" = { # Poland-Lithuania
 		_GEN = "Polski-Litwy"
 		_DAT = "Polsce-Litwie"
 		_AKK = "Polskę-Litwę"
 		_INS = "Polską-Litwą"
 		_LOC = "Polsce-Litwie"
-	}	
+	}
 	"Papua Nowa Guinea" = { # PNG
 		_GEN = "Papui-Nowej Gwinei"
 		_DAT = "Papui-Nowej Gwinei"
 		_AKK = "Papuę-Nową Gwineę"
 		_INS = "Papuą-Nową Gwineą"
 		_LOC = "Papui-Nowej Gwinei"
-	}	
+	}
 	"Korea Północna" = { # North Korea
 		_GEN = "Korei Północnej"
 		_DAT = "Korei Północnej"
 		_AKK = "Koreę Północną"
 		_INS = "Koreą Północną"
 		_LOC = "Korei Północnej"
-	}	
+	}
 	"południowa Rodezja" = { # Southern Rhodesia
 		_GEN = "Południowej Rodezji"
 		_DAT = "Południowej Rodezji"
 		_AKK = "Południową Rodezję"
 		_INS = "Południową Rodezją"
 		_LOC = "Południowej Rodezji"
-	}	
+	}
 	"Afryka Południowa" = { # South Africa
 		_GEN = "Afryki Południowej"
 		_DAT = "Afryce Południowej"
 		_AKK = "Afrykę Południową"
 		_INS = "Afryką Południową"
 		_LOC = "Afryce Południowej"
-	}	
+	}
 	"Wyspy Świętego Tomasza i Książęca" = { # Sao Tome
 		_GEN = "Wysp Świętego Tomasza i Książęcej"
 		_DAT = "Wyspom Świętego Tomasza i Książęcej"
@@ -2657,14 +2657,14 @@ polish = {
 		_AKK = "Sardynię-Piemont"
 		_INS = "Sardynią-Piemontem"
 		_LOC = "Sardynii-Piemoncie"
-	}	
+	}
 	"Shan Zjednoczone" = { # Shan States
 		_GEN = "Shanów Zjednoczonych"
 		_DAT = "Shanów Zjednoczonym"
 		_AKK = "Shanów Zjednoczone"
 		_INS = "Shanów Zjednoczonymi"
 		_LOC = "Shanów Zjednoczonych"
-	}	
+	}
 	"Sierra Leone" = { # Sierra Leone - indeclinable!
 		_GEN = "Sierra Leone"
 		_DAT = "Sierra Leone"
@@ -2699,49 +2699,49 @@ polish = {
 		_AKK = "Wyspę Południową"
 		_INS = "Wyspą Południową"
 		_LOC = "Wyspie Południowej"
-	}	
+	}
 	"Południowa Wyspa" = { # South Island
 		_GEN = "Południowej Wyspy"
 		_DAT = "Południowej Wyspie"
 		_AKK = "Południową Wyspę"
 		_INS = "Południową Wyspą"
 		_LOC = "Południowej Wyspie"
-	}	
+	}
 	"Południowy Peru" = { # South Peru
 		_GEN = "Południowego Peru"
 		_DAT = "Południowemu Peru"
 		_AKK = "Południowy Peru"
 		_INS = "Południowym Peru"
 		_LOC = "Południowym Peru"
-	}	
+	}
 	"Sudan Południowy" = { # South Sudan
 		_GEN = "Sudanu Południowego"
 		_DAT = "Sudanowi Południowemu"
 		_AKK = "Sudan Południowy"
 		_INS = "Sudanem Południowym"
 		_LOC = "Sudanie Południowym"
-	}	
+	}
 	"Południowy Sudan" = { # South Sudan
 		_GEN = "Południowego Sudanu"
 		_DAT = "Południowemu Sudanowi"
 		_AKK = "Południowy Sudan"
 		_INS = "Południowym Sudanem"
 		_LOC = "Południowym Sudanie"
-	}	
+	}
 	"Schleswig-Holstein" = {
 		_GEN = "Szlezwika-Holsztynu"
 		_DAT = "Szlezwikowi-Holsztynowi"
 		_AKK = "Szlezwik-Holsztyn"
 		_INS = "Szlezwikiem-Holsztynem"
 		_LOC = "Szlezwiku-Holsztynie"
-	}	
+	}
 	"Szlezwik-Holsztyn" = {
 		_GEN = "Szlezwika-Holsztynu"
 		_DAT = "Szlezwikowi-Holsztynowi"
 		_AKK = "Szlezwik-Holsztyn"
 		_INS = "Szlezwikiem-Holsztynem"
 		_LOC = "Szlezwiku-Holsztynie"
-	}	
+	}
 	"^Autonomiczne (.+)" = { # ... Clique
 		_GEN = "Autonomicznego $1"
 		_DAT = "Autonomicznemu $1"
@@ -2755,21 +2755,21 @@ polish = {
 		_AKK = "Południowy Tyrol"
 		_INS = "Południowym Tyrolem"
 		_LOC = "Południowym Tyrolu"
-	}		
+	}
 	"Zjednoczone prowincje bałtyckie" = { # United Baltic Provinces
 		_GEN = "Zjednoczonych Prowincji Bałtyckich"
 		_DAT = "Zjednoczonym Prowincjom Bałtyckim"
 		_AKK = "Zjednoczone Prowincje Bałtyckie"
 		_INS = "Zjednoczonymi Prowincjami Bałtyckimi"
 		_LOC = "Zjednoczonych Prowincjach Bałtyckich"
-	}	
+	}
 	"Zjednoczone Prowincje Ameryki Środkowej" = { # UPCA
 		_GEN = "Zjednoczonych Prowincji Ameryki Środkowej"
 		_DAT = "Zjednoczonym Prowincjom Ameryki Środkowej"
 		_AKK = "Zjednoczone Prowincje Ameryki Środkowej"
 		_INS = "Zjednoczonymi Prowincjami Ameryki Środkowej"
 		_LOC = "Zjednoczonych Prowincjach Ameryki Środkowej"
-	}	
+	}
 	"Nowy Meksyk" = { # New Mexico
 		_GEN = "Nowego Meksyku"
 		_DAT = "Nowemu Meksykowi"
@@ -2790,7 +2790,7 @@ polish = {
 		_AKK = "Saksonię-Weimar"
 		_INS = "Saksonią-Weimarem"
 		_LOC = "Saksonii-Weimarze"
-	}	
+	}
 	"Sahara Zachodnia" = {
 		_GEN = "Sahary Zachodniej"
 		_DAT = "Saharze Zachodniej"
@@ -2890,7 +2890,7 @@ polish = {
 		_INS = "Berry"
 		_LOC = "Berry"
 	}
-	
+
 	# Feminine declension - singular
 	"^Kongres (.+)ka$" = {
 		_GEN = "$1ki Kongresu"
@@ -3525,7 +3525,7 @@ russian = {
 #_RU is added because of the language
 # Of course, inanimate declension is preferred
 	# Special cases
-	
+
 	"^Наблюдатель$" = { # The Observer (animate noun)
 		_GEN = "Наблюдателя"
 		_DAT = "Наблюдателю"
@@ -4177,7 +4177,7 @@ russian = {
 		_INS = "Эдзо"
 		_PRE = "Эдзо"
 	}
-	
+
 	# Fuller names
 	"^ССР (.+)стан$" = { # ...stan SSR
 		_GEN = "ССР-и (.+)стана"

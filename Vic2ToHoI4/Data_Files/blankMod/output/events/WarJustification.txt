@@ -2,7 +2,7 @@
 # Wargoal Justification Events
 ###########################
 
-add_namespace = war_justification 
+add_namespace = war_justification
 
 # Generic: Neighbor
 country_event = {
@@ -10,14 +10,14 @@ country_event = {
 	title = war_justification.17.t
 	desc = war_justification.17.d
 	picture = GFX_report_event_riot_police_poland
-	
+
 	is_triggered_only = yes
 
 	trigger = {
 		is_neighbor_of = FROM
 		NOT = { has_country_flag = war_justification_last_event_neighbor }
 	}
-	
+
 	option = {
 		name = war_justification.17.a
 		FROM = { country_event = { id = war_justification.217 } }
@@ -35,7 +35,7 @@ country_event = {
 	title = war_justification.18.t
 	desc = war_justification.18.d
 	picture = GFX_report_event_korean_war_march
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -49,7 +49,7 @@ country_event = {
 		}
 		NOT = { has_country_flag = war_justification_last_event_mobilized }
 	}
-	
+
 	option = {
 		name = war_justification.18.a
 		FROM = { country_event = { id = war_justification.218 } }
@@ -67,7 +67,7 @@ country_event = {
 	title = war_justification.19.t
 	desc = war_justification.19.d
 	picture = GFX_report_event_soldiers_marching
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -80,12 +80,12 @@ country_event = {
 						state = PREV
 						size > 1
 					}
-				}	
+				}
 			}
 		}
 		NOT = { has_country_flag = war_justification_last_event_borderthreat }
 	}
-	
+
 	option = {
 		name = war_justification.19.a
 		FROM = { country_event = { id = war_justification.219 } }
@@ -103,13 +103,13 @@ country_event = {
 	title = war_justification.20.t
 	desc = war_justification.20.d
 	picture = GFX_report_event_tanks_vietnam
-	
+
 	is_triggered_only = yes
 
 	trigger = {
 		has_country_flag = war_justification_last_event_generic
 	}
-	
+
 	option = {
 		name = war_justification.20.a
 		FROM = { country_event = { id = war_justification.220 } }
@@ -127,9 +127,9 @@ country_event = {
 	title = war_justification.217.t
 	desc = war_justification.217.d
 	picture = GFX_report_event_riot_police_poland
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = war_justification.217.a
 	}
@@ -141,9 +141,9 @@ country_event = {
 	title = war_justification.218.t
 	desc = war_justification.218.d
 	picture = GFX_report_event_korean_war_march
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = war_justification.218.a
 	}
@@ -155,9 +155,9 @@ country_event = {
 	title = war_justification.219.t
 	desc = war_justification.219.d
 	picture = GFX_report_event_soldiers_marching
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = war_justification.219.a
 	}
@@ -170,9 +170,9 @@ country_event = {
 	title = war_justification.220.t
 	desc = war_justification.220.d
 	picture = GFX_report_event_tanks_vietnam
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = war_justification.220.a
 	}

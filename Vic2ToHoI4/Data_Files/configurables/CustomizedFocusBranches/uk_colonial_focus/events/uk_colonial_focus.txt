@@ -250,7 +250,7 @@ country_event = {
 			save_global_event_target_as = uk_colonial_focus_NZL
 		}
 	}
-	
+
 	option = {
 		name = uk_colonial_focus.1.a
 	}
@@ -267,7 +267,7 @@ country_event = {
 	picture = GFX_report_event_burma_road
 
 	is_triggered_only = yes
-	
+
 	option = {
 		name = britain.4.a
 	}
@@ -281,7 +281,7 @@ country_event = {
 	picture = GFX_report_event_burma_road
 
 	is_triggered_only = yes
-	
+
 	option = {
 		name = britain.4.a
 	}
@@ -297,7 +297,7 @@ country_event = {
 	picture = GFX_report_event_imperial_conference
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.82.a
@@ -353,11 +353,11 @@ news_event = {
 	title = mtg_britain.82.t
 	desc = mtg_news.13.desc
 	picture = GFX_news_event_imperial_conference
-	
+
 	major = yes
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = mtg_news.13.a
 		trigger = {
@@ -366,7 +366,7 @@ news_event = {
 	}
 	option = {
 		name = mtg_news.13.b
-		trigger = { 
+		trigger = {
 			is_subject_of = ROOT
 			OR = {
 				original_tag = events_target:uk_colonial_focus_CAN
@@ -379,7 +379,7 @@ news_event = {
 	}
 	option = {
 		name = mtg_news.13.c
-		trigger = { 
+		trigger = {
 			NOT = { original_tag = ROOT }
 			NOT = {
 				AND = {
@@ -403,11 +403,11 @@ news_event = {
 	title = mtg_news.8.t
 	desc = mtg_news.8.desc
 	picture = GFX_news_event_eng_imperial_federation
-	
+
 	major = yes
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = mtg_news.8.a
 		trigger = {
@@ -416,7 +416,7 @@ news_event = {
 	}
 	option = {
 		name = mtg_news.8.b
-		trigger = { 
+		trigger = {
 			NOT = { original_tag = ROOT }
 		}
 	}
@@ -428,11 +428,11 @@ news_event = {
 	title = mtg_news.8.t
 	desc = mtg_news.9.desc
 	picture = GFX_news_event_eng_imperial_federation_india
-	
+
 	major = yes
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = mtg_news.8.a
 		trigger = {
@@ -441,7 +441,7 @@ news_event = {
 	}
 	option = {
 		name = mtg_news.8.b
-		trigger = { 
+		trigger = {
 			NOT = { original_tag = ROOT }
 		}
 	}
@@ -461,7 +461,7 @@ country_event = {
 			set_country_flag = ENG_imperial_defense_flag
 		}
 	}
-	
+
 	# Ask them if they want to agree to commit
 	option = {
 		name = mtg_britain.83.a
@@ -573,7 +573,7 @@ country_event = {
 	picture = GFX_report_event_generic_conference
 
 	is_triggered_only = yes
-	
+
 	# Accept
 	option = {
 		name = mtg_britain.84.a
@@ -652,7 +652,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.85.a
@@ -698,7 +698,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.86.a
@@ -739,7 +739,7 @@ country_event = {
 			set_country_flag = ENG_imperial_trade_flag
 		}
 	}
-	
+
 	# Ask them if they want to agree to commit
 	option = {
 		name = mtg_britain.83.a
@@ -851,7 +851,7 @@ country_event = {
 	picture = GFX_report_event_generic_conference
 
 	is_triggered_only = yes
-	
+
 	# Accept
 	option = {
 		name = mtg_britain.88.a
@@ -909,7 +909,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.89.a
@@ -954,7 +954,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.90.a
@@ -995,7 +995,7 @@ country_event = {
 			set_country_flag = ENG_imperial_economy_flag
 		}
 	}
-	
+
 	# Ask them if they want to agree to commit
 	option = {
 		name = mtg_britain.83.a
@@ -1107,7 +1107,7 @@ country_event = {
 	picture = GFX_report_event_generic_conference
 
 	is_triggered_only = yes
-	
+
 	# Accept
 	option = {
 		name = mtg_britain.92.a
@@ -1186,7 +1186,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.93.a
@@ -1232,7 +1232,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.94.a
@@ -1273,7 +1273,7 @@ country_event = {
 			set_country_flag = ENG_imperial_appeasement_flag
 		}
 	}
-	
+
 	# Ask them if they want to agree to commit
 	option = {
 		name = mtg_britain.83.a
@@ -1385,7 +1385,7 @@ country_event = {
 	picture = GFX_report_event_generic_conference
 
 	is_triggered_only = yes
-	
+
 	# Accept
 	option = {
 		name = mtg_britain.96.a
@@ -1444,7 +1444,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.97.a
@@ -1490,7 +1490,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.98.a
@@ -1531,7 +1531,7 @@ country_event = {
 			set_country_flag = ENG_imperial_federation_flag
 		}
 	}
-	
+
 	# Ask them if they want to agree to Federate
 	option = {
 		name = mtg_britain.83.a
@@ -1643,7 +1643,7 @@ country_event = {
 	picture = GFX_report_event_generic_conference
 
 	is_triggered_only = yes
-	
+
 	# Accept
 	option = {
 		name = mtg_britain.100.a
@@ -1741,7 +1741,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.101.a
@@ -1830,7 +1830,7 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.102.a
@@ -1901,7 +1901,7 @@ country_event = {
 	picture = GFX_report_event_generic_conference
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.103.a
@@ -1986,7 +1986,7 @@ country_event = {
 	picture = GFX_report_event_generic_conference
 
 	is_triggered_only = yes
-	
+
 	# Go through with it anyway - give India independence
 	option = {
 		name = mtg_britain.104.a
@@ -2078,7 +2078,7 @@ country_event = {
 	picture = GFX_report_event_generic_conference
 
 	is_triggered_only = yes
-	
+
 	# Ok
 	option = {
 		name = mtg_britain.105.a

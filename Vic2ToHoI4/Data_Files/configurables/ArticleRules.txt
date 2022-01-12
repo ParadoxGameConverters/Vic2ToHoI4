@@ -1,14 +1,14 @@
 # How this file works:
 # Let's take the localization of a given country, let's tag it ABC
-# And let's choose to take the localisation it has in French
-# If this localisation starts with "Le " or "L'" or one of those others,
-# for this example, let's say the localisation is "Les Habitants",
+# And let's choose to take the localization it has in French
+# If this localization starts with "Le " or "L'" or one of those others,
+# for this example, let's say the localization is "Les Habitants",
 # the converter will remove the article accordingly, yielding
 # ABC as "Habitants" and ABC_DEF as "Les Habitants".
 
 # Language: self-explanatory
 # Matcher: use it to tell what is an article.
-#    (.+) means "the rest of the localisation" and must NEVER be forgotten
+#    (.+) means "the rest of the localization" and must NEVER be forgotten
 # Replacement: how the name should be with no article,
 #    using $1 to mean "the things that were in the matcher as (.+)"
 

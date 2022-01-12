@@ -476,7 +476,7 @@
 
 				modifier = {
 					add = 1800
-					
+
 					# revert from closed_economy if we have large allies
 					has_idea = closed_economy
 					has_large_ally_not_pick_closed_economy = yes
@@ -543,7 +543,7 @@
 		new_economic_policy = {
 
 			picture = new_economic_policy
-			
+
 			allowed = {
 				always = no
 			}
@@ -553,17 +553,17 @@
 					$COMMUNISM
 				}
 			}
-	
+
 			removal_cost = -1
-			
+
 			modifier = {
-				consumer_goods_factor = 0.15	
-				production_speed_buildings_factor = -0.15 
-				
+				consumer_goods_factor = 0.15
+				production_speed_buildings_factor = -0.15
+
 			}
-			
+
 			cancel_if_invalid = no
-			
+
 			ai_will_do = {
    				factor = 0
    			}
@@ -573,7 +573,7 @@
 			name = new_economic_policy
 
 			picture = new_economic_policy
-			
+
 			allowed = {
 				always = no
 			}
@@ -583,17 +583,17 @@
 					$COMMUNISM
 				}
 			}
-	
+
 			removal_cost = -1
-			
+
 			modifier = {
-				consumer_goods_factor = 0.10	
-				production_speed_buildings_factor = -0.2 
+				consumer_goods_factor = 0.10
+				production_speed_buildings_factor = -0.2
 				global_building_slots_factor = 0.1
 			}
-			
+
 			cancel_if_invalid = no
-			
+
 			ai_will_do = {
    				factor = 0
    			}
@@ -691,10 +691,10 @@
 					is_major = no
 					has_war = no
 				}
-				
+
 				modifier = {
 					add = 1500
-					
+
 					# revert from closed_economy if we have large allies
 					has_idea = closed_economy
 					has_large_ally_not_pick_closed_economy = yes
@@ -752,7 +752,7 @@
 
 				modifier = {
 					factor = 0
-					
+
 					# don't take if we have a reasonable sized ally
 					# since they will require our trades
 					has_large_ally_not_pick_closed_economy = yes
@@ -855,13 +855,13 @@
 				}
 				scout_plane_equipment = {
 					instant = yes
-					build_cost_ic = -0.10	
+					build_cost_ic = -0.10
 				}
 			}
 		}
 
-		reclaim_cores_idea = {			
-			
+		reclaim_cores_idea = {
+
 			allowed = {
 				always = no
 			}
@@ -873,9 +873,9 @@
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
-			
+
 			modifier = {
 				ai_focus_aggressive_factor = 0.5
 			}
@@ -917,7 +917,7 @@
 			removal_cost = -1
 
 			picture = generic_pp_unity_bonus
-			
+
 			modifier = {
 				neutrality_drift = 0.1
 				neutrality_acceptance = 35
@@ -1431,8 +1431,8 @@
 		}
 
 		limited_interventionism = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -1444,7 +1444,7 @@
 			removal_cost = -1
 
 			picture = generic_volunteer_expedition_bonus
-			
+
 			modifier = {
 				send_volunteers_tension = -0.20
 				send_volunteer_divisions_required = -0.25
@@ -1468,7 +1468,7 @@
 		generic_rapid_mobilization = {
 			allowed = { always = no }
 
-			picture = ast_volunteer_defence_corps 
+			picture = ast_volunteer_defence_corps
 
 			removal_cost = -1
 
@@ -1493,7 +1493,7 @@
 
 		generic_war_of_national_liberation = {
 
-			picture = generic_war_of_national_liberation			
+			picture = generic_war_of_national_liberation
 
 			allowed = {
 				always = no
@@ -1504,7 +1504,7 @@
 			}
 
 			removal_cost = -1
-			
+
 			modifier = {
 				army_core_attack_factor = 0.1
 			}
@@ -1526,7 +1526,7 @@
 				conscription_factor = 0.2
 			}
 		}
-		
+
 		# Civil War Ideas
 		civil_war_surprise_attack_plan = {
 
@@ -1537,15 +1537,15 @@
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			picture = generic_manpower_bonus
-			
+
 			modifier = {
-				army_core_attack_factor = 0.25 
+				army_core_attack_factor = 0.25
 			}
-		}	
+		}
 
 		idea_weapons_for_the_resistance = {
 
@@ -1556,16 +1556,16 @@
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			picture = chi_war_of_resistance3
-			
+
 			modifier = {
-				resistance_growth_on_our_occupied_states = 0.1 
-				resistance_damage_to_garrison_on_our_occupied_states = 0.25 
+				resistance_growth_on_our_occupied_states = 0.1
+				resistance_damage_to_garrison_on_our_occupied_states = 0.25
 			}
-		}	
+		}
 		MTG_naval_treaty_adherent = {
 
 			allowed = {
@@ -1575,11 +1575,11 @@
 			allowed_civil_war = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			picture = MTG_naval_treaty_adherent
-			
+
 			modifier = {
 				production_cost_max_ship_hull_cruiser = 5300
 				production_cost_max_ship_hull_heavy = 10000
@@ -1595,11 +1595,11 @@
 			allowed_civil_war = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			picture = MTG_naval_treaty_adherent_reduced
-			
+
 			modifier = {
 				production_cost_max_ship_hull_cruiser = 6000
 				production_cost_max_ship_hull_heavy = 12000
@@ -1615,11 +1615,11 @@
 			allowed_civil_war = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			picture = MTG_naval_treaty_adherent
-			
+
 			modifier = {
 				production_cost_max_ship_hull_cruiser = 5700
 				production_cost_max_ship_hull_heavy = 11500
@@ -1635,11 +1635,11 @@
 			allowed_civil_war = {
 				always = no
 			}
-			
+
 			removal_cost = -1
 
 			picture = MTG_naval_treaty_adherent_reduced
-			
+
 			modifier = {
 				production_cost_max_ship_hull_cruiser = 6500
 				production_cost_max_ship_hull_heavy = 14000

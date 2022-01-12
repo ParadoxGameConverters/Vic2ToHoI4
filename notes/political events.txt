@@ -28,14 +28,14 @@ Original events:
 	Fascism on the rise (7)
 		Happens if fascism support 0.6-0.7
 		Can switch to fascism
-	Fascist assualt divisions (11)
+	Fascist assault divisions (11)
 		Happens if fascism minister and fascism support 0.3-0.59
 		adds popularity to fascism and adds idea that increases fascism drift, increases conscription, and lowers stability
 	Threat of communism (12)
 		Happens if fascism minister, fascism support 0.25-0.59, and neighbors a communist country
 		adds popularity to fascism
 	Fascism revolution (21)
-		Happens if fascissm support > 0.7 and no existing civil war
+		Happens if fascism support > 0.7 and no existing civil war
 		Choice between starting civil war as fascist, starting civil war as old ideology, or switching to fascism
 
 	Ruling party debates Democracy (14)
@@ -50,7 +50,7 @@ Original events:
 	Democratic revolution (23)
 		Happens if Democratic support > 0.7 and no existing civil war
 		Choice between starting civil war as Democratic, starting civil war as old ideology, or switching to Democratic
-		
+
 	Fascists Demand Referendum (18)
 		triggered by decision
 		switches to fascism, disables elections, and decreases stability
@@ -60,7 +60,7 @@ Original events:
 	Democratic referendum (20)
 		triggered by decision
 		switches to democracy, enables elections, decreases stability, and adds idea for defeating other ideologies
-		
+
 	Remove fascist revolutionaries (24)
 		removes the fascist_revolutionaries idea, which looks like it is never set
 	Remove Communist revolutionaries (25)

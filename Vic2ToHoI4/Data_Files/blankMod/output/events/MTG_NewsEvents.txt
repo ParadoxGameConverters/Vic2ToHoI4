@@ -1,18 +1,17 @@
 ﻿add_namespace = mtg_news
 
 
-
 #London naval treaty is dead
 news_event = {
 	id = mtg_news.60
 	title = MTG_naval_treaty.8.t
 	desc = MTG_naval_treaty.8.desc
 	picture = GFX_news_event_generic_naval_treaty
-	
+
 	major = yes
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = MTG_naval_treaty.8.a
 		trigger = {
@@ -29,7 +28,7 @@ news_event = {
 	}
 	option = {
 		name = MTG_naval_treaty.8.c
-		trigger = { 
+		trigger = {
 			is_major = no
 		}
 	}
@@ -41,9 +40,9 @@ news_event = {
 	title = MTG_naval_treaty.9.t
 	desc = MTG_naval_treaty.9.desc
 	picture = GFX_news_event_generic_naval_treaty
-	
+
 	major = yes
-	
+
 	trigger = {
 		not = { has_global_flag = MTG_second_london_conference }
 		has_global_flag = {	flag = MTG_naval_treaty_signatories	value > 1 }	#can never be 1
@@ -56,7 +55,7 @@ news_event = {
 		}
 	}
 	mean_time_to_happen = { days = 2 }
-	
+
 	option = {
 		name = MTG_naval_treaty.9.a
 		trigger = {
@@ -72,7 +71,7 @@ news_event = {
 	}
 	option = {
 		name = MTG_naval_treaty.9.c
-		trigger = { 
+		trigger = {
 			is_major = no
 			not = { has_naval_treaty_trigger = yes }
 		}
