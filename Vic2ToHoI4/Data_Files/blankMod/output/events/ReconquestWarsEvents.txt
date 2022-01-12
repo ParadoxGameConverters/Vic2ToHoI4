@@ -7,9 +7,9 @@ country_event = {
 	title = reconquest_wars.1.t
 	desc = reconquest_wars.1.d
 	picture = GFX_report_event_german_troops
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = reconquest_wars.1.a
 		FROM = {
@@ -52,9 +52,9 @@ country_event = {
 	title = reconquest_wars.2.t
 	desc = reconquest_wars.2.d
 	picture = GFX_report_event_german_troops
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = reconquest_wars.2.a
 		FROM = {
@@ -72,9 +72,9 @@ country_event = {
 	title = reconquest_wars.3.t
 	desc = reconquest_wars.3.d
 	picture = GFX_report_event_german_troops
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = reconquest_wars.3.a
 		add_opinion_modifier = {
@@ -140,10 +140,10 @@ news_event = {
 	title = reconquest_news.1.t
 	desc = reconquest_news.1.d
 	picture = GFX_news_event_038
-	
+
 	is_triggered_only = yes
 	major = yes
-	
+
 	option = {
 		name = reconquest_news.1.a
 	}

@@ -3,31 +3,31 @@ radical = {
 		random = no
 		# Boosts Radicalism
 		radical_drift = 0.1
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
 }
 
-neutrality = {	
+neutrality = {
 	neutrality_minister = {
 		random = no
 		sprite = 13
 		neutrality_drift = 0.1
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
 }
 
-absolutist = {	
+absolutist = {
 	absolutist_minister = {
 		random = no
 		# Boosts Absolutism
 		absolutist_drift = 0.1
-		
+
 		ai_will_do = {
 			factor = 0
 		}
@@ -40,12 +40,12 @@ communism = {
 		# Boosts Communism
 		sprite = 13
 		communism_drift = 0.1
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	anti_communist = {
 		random = no
 		communism_acceptance = -50
@@ -57,13 +57,13 @@ communism = {
 	}
 }
 
-democratic = {	
+democratic = {
 	democratic_minister = {
 		random = no
 		# Boosts Democracy
 		sprite = 13
 		democratic_drift = 0.1
-		
+
 		ai_will_do = {
 			factor = 0
 		}
@@ -86,21 +86,21 @@ fascism = {
 		# Boosts Fascism
 		sprite = 13
 		fascism_drift = 0.1
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	fascist_sympathies = {
-		random = no		
+		random = no
 		fascism_acceptance = 70
 
 		ai_will_do = {
 			factor = 1
 		}
 	}
-	
+
 	incognito = {
 		fascism_drift = 0.1
 		drift_defence_factor = 0.15

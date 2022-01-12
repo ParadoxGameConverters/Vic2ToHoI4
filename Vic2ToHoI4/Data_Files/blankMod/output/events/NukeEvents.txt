@@ -20,7 +20,7 @@ news_event = {
 	immediate = {
 		news_event = { id = nuke_dropped.1 days = 1 }
 	}
-	
+
 	option = {
 		name = dummy_nuke_option
 	}
@@ -50,7 +50,7 @@ news_event = {
 						state = 282
 						state = 361
 						state = 2
-						state = 16 
+						state = 16
 						state = 219
 						state = 37
 						state = 141
@@ -66,7 +66,7 @@ news_event = {
 			NOT = { FROM = { FROM = { is_owned_by = ROOT } } }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.1.b
 		trigger = {
@@ -96,7 +96,7 @@ news_event = {
 			NOT = { owns_state = 529 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.2.b
 		trigger = {
@@ -126,7 +126,7 @@ news_event = {
 			NOT = { owns_state = 528 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.3.b
 		trigger = {
@@ -158,7 +158,7 @@ news_event = {
 			NOT = { owns_state = 64 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.4.b
 		trigger = {
@@ -188,7 +188,7 @@ news_event = {
 			NOT = { owns_state = 126 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.5.b
 		trigger = {
@@ -218,7 +218,7 @@ news_event = {
 			NOT = { owns_state = 531 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.6.b
 		trigger = {
@@ -248,7 +248,7 @@ news_event = {
 			NOT = { owns_state = 282 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.7.b
 		trigger = {
@@ -278,7 +278,7 @@ news_event = {
 			NOT = { owns_state = 361 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.8.b
 		trigger = {
@@ -308,7 +308,7 @@ news_event = {
 			NOT = { owns_state = 2 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.9.b
 		trigger = {
@@ -338,7 +338,7 @@ news_event = {
 			NOT = { owns_state = 16 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.10.b
 		trigger = {
@@ -368,7 +368,7 @@ news_event = {
 			NOT = { owns_state = 219 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.11.b
 		trigger = {
@@ -396,16 +396,16 @@ news_event = {
 		name = nuke_dropped.12.a
 		trigger = {
 			NOT = { owns_state = 39 }
-		}		
+		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.12.b
 		trigger = {
 			owns_state = 39
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.12.c
 		trigger = {
@@ -435,7 +435,7 @@ news_event = {
 			NOT = { owns_state = 141 }
 		}
 	}
-	
+
 	option = {
 		name = nuke_dropped.13.b
 		trigger = {

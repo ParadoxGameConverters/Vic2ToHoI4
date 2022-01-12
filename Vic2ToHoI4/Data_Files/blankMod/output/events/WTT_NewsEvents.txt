@@ -18,7 +18,7 @@ news_event = {
 
 	is_triggered_only = yes
 	major = yes
-	
+
 	option = {
 		name = wtt_news.53.b
 		trigger = {
@@ -42,7 +42,7 @@ news_event = {
 
 	is_triggered_only = yes
 	major = yes
-	
+
 	option = {
 		name = wtt_news.57.b
 		trigger = {
@@ -66,7 +66,7 @@ news_event = {
 
 	is_triggered_only = yes
 	major = yes
-	
+
 	option = {
 		name = wtt_news.60.b
 		trigger = {
@@ -90,7 +90,7 @@ news_event = {
 
 	is_triggered_only = yes
 	major = yes
-	
+
 	option = {
 		name = wtt_news.61.b
 		trigger = {
@@ -114,7 +114,7 @@ news_event = {
 
 	is_triggered_only = yes
 	major = yes
-	
+
 	option = {
 		name = wtt_news.67.b
 		trigger = {

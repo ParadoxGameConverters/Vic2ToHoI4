@@ -57,12 +57,12 @@ germany =
 	slave = WUR	# Wurttemberg
 }
 
-italy = 
+italy =
 {
 	merge = no # Change to yes to enable merging
 
 	master = ITA # Italy proper (if extant)
-	
+
 	slave = LOM	# Lombardia
 	slave = LUC	# Lucca
 	slave = MOD	# Modena
@@ -75,7 +75,7 @@ italy =
 	slave = VEN	# Venice
 }
 
-yugoslavia = 
+yugoslavia =
 {
 	merge = no # Change to yes to enable merging
 
@@ -99,7 +99,7 @@ greece =
 	slave = BYZ	# Byzantium
 }
 
-india = 
+india =
 {
 	merge = no # Change to yes to enable merging
 
@@ -120,7 +120,7 @@ india =
 	slave = KAL	# Kalat
 	slave = KAS	# Kashmir
 	slave = KUT	# Kutch
-	slave = LAD 	# Ladakh
+	slave = LAD	# Ladakh
 	slave = MAK	# Makran
 	slave = MEW	# Mewar
 	slave = MYS	# Mysore

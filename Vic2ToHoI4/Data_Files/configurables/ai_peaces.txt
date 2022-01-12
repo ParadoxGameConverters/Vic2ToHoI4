@@ -17,11 +17,11 @@ communist_peace = {
 	puppet_randomness = 0 #400
 	take_states_randomness = 0 #200
 	force_government_randomness = 0 #100
-	
+
 	# ROOT = Taker, FROM = Giver
 	annex = {
 		factor = 500
-		
+
 		modifier = {
 			factor = 0
 			OR = {
@@ -33,9 +33,9 @@ communist_peace = {
 				}
 			}
 			FROM = {
-				any_owned_state = { 
+				any_owned_state = {
 					NOT = {
-						OR = { 
+						OR = {
 							is_claimed_by = ROOT
 							is_core_of = ROOT
 							has_claimed_state_in_peace_conference = ROOT
@@ -47,12 +47,12 @@ communist_peace = {
 		#modifier = {
 		#	factor = 0
 		#	is_puppet = yes
-		#}		
+		#}
 	}
 
 	# ROOT = Taker, FROM = Liberated
 	liberate = { #Liberate might be buggy and might require country-specific workarounds...
-		factor = 200 
+		factor = 200
 
 		modifier = {
 			factor = 0
@@ -62,14 +62,14 @@ communist_peace = {
 					target = FROM
 					value > 0
 				}
-			}		
+			}
 			NOT = {
 				FROM = {
 					has_government = communism
-				}			
+				}
 			}
 		}
-		modifier = { 
+		modifier = {
 			factor = 0
 			OR = {
 				AND = {
@@ -111,7 +111,7 @@ communist_peace = {
 				FROM = { capital_scope = { is_on_continent = europe } }
 				NOT = {
 					FROM = {
-						any_owned_state = { 
+						any_owned_state = {
 							OR = {
 								is_coastal = yes
 								is_island_state = yes
@@ -128,7 +128,7 @@ communist_peace = {
 				any_owned_state = { NOT = { is_core_of = FROM } }
 			}
 		}
-		modifier = { 
+		modifier = {
 			factor = 0
 			OR = {
 				AND = {
@@ -152,12 +152,12 @@ communist_peace = {
 
 	# ROOT = Taker, FROM = Giver
 	puppet_all = {
-		base = 0 
+		base = 0
 	}
-	
+
 	# ROOT = STATE, FROM = Taker, FROM.FROM = Giver
 	puppet_state = {
-		base = 0 
+		base = 0
 		modifier = { #puppet state only if already puppeted
 			add = 200
 			#only if already puppetted the country
@@ -168,7 +168,7 @@ communist_peace = {
 			}
 		}
 	}
-	
+
 	# ROOT = Taker, FROM = State
 	take_states = {
 		factor = 200
@@ -184,32 +184,32 @@ communist_peace = {
 		}
 		modifier = { # prefer not to take from humans in our own faction
 			factor = 0.5
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			FROM = {
-				controller = { 
-					is_ai = no 
-					has_capitulated = no 
-					is_puppet = no 
+				controller = {
+					is_ai = no
+					has_capitulated = no
+					is_puppet = no
 					is_in_faction_with = ROOT
 				}
 			}
 		}
 		modifier = { #Don't steal claims and cores from faction members unless we also have a right to that clay unless they are puppets
 			factor = 0
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			any_country = {
 				is_in_faction_with = ROOT
@@ -222,7 +222,7 @@ communist_peace = {
 				}
 			}
 		}
-		
+
 		modifier = {
 			factor = 1.25
 
@@ -348,14 +348,14 @@ communist_peace = {
 		}
 
 		modifier = {
-			factor = 0		
-			NOT = { 
-				FROM = { 
+			factor = 0
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			NOT = {
 				FROM = {
@@ -369,7 +369,7 @@ communist_peace = {
 			}
 			OR = {
 				NOT = {
-					FROM = { 
+					FROM = {
 						OR = {
 							is_island_state = yes
 							is_coastal = yes
@@ -383,13 +383,13 @@ communist_peace = {
 
 		modifier = { #Only take claims - and colonial states (ie unclaimed) as well if major.
 			factor = 0
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			OR = {
 				AND = {
@@ -409,14 +409,14 @@ communist_peace = {
 			is_puppet = yes
 			FROM = {
 				NOT = {
-					OR = { 
+					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
 				}
 			}
 		}
-		
+
 	}
 
 	# ROOT = Taker, FROM = Giver
@@ -444,11 +444,11 @@ radical_peace = {
 	puppet_randomness = 0 #400
 	take_states_randomness = 0 #200
 	force_government_randomness = 0 #100
-	
+
 	# ROOT = Taker, FROM = Giver
 	annex = {
 		factor = 500
-		
+
 		modifier = {
 			factor = 0
 			OR = {
@@ -460,9 +460,9 @@ radical_peace = {
 				}
 			}
 			FROM = {
-				any_owned_state = { 
+				any_owned_state = {
 					NOT = {
-						OR = { 
+						OR = {
 							is_claimed_by = ROOT
 							is_core_of = ROOT
 							has_claimed_state_in_peace_conference = ROOT
@@ -474,12 +474,12 @@ radical_peace = {
 		#modifier = {
 		#	factor = 0
 		#	is_puppet = yes
-		#}		
+		#}
 	}
 
 	# ROOT = Taker, FROM = Liberated
 	liberate = { #Liberate might be buggy and might require country-specific workarounds...
-		factor = 200 
+		factor = 200
 
 		modifier = {
 			factor = 0
@@ -489,14 +489,14 @@ radical_peace = {
 					target = FROM
 					value > 0
 				}
-			}		
+			}
 			NOT = {
 				FROM = {
 					has_government = communism
-				}			
+				}
 			}
 		}
-		modifier = { 
+		modifier = {
 			factor = 0
 			OR = {
 				AND = {
@@ -538,7 +538,7 @@ radical_peace = {
 				FROM = { capital_scope = { is_on_continent = europe } }
 				NOT = {
 					FROM = {
-						any_owned_state = { 
+						any_owned_state = {
 							OR = {
 								is_coastal = yes
 								is_island_state = yes
@@ -555,7 +555,7 @@ radical_peace = {
 				any_owned_state = { NOT = { is_core_of = FROM } }
 			}
 		}
-		modifier = { 
+		modifier = {
 			factor = 0
 			OR = {
 				AND = {
@@ -579,12 +579,12 @@ radical_peace = {
 
 	# ROOT = Taker, FROM = Giver
 	puppet_all = {
-		base = 0 
+		base = 0
 	}
-	
+
 	# ROOT = STATE, FROM = Taker, FROM.FROM = Giver
 	puppet_state = {
-		base = 0 
+		base = 0
 		modifier = { #puppet state only if already puppeted
 			add = 200
 			#only if already puppetted the country
@@ -595,7 +595,7 @@ radical_peace = {
 			}
 		}
 	}
-	
+
 	# ROOT = Taker, FROM = State
 	take_states = {
 		factor = 200
@@ -611,32 +611,32 @@ radical_peace = {
 		}
 		modifier = { # prefer not to take from humans in our own faction
 			factor = 0.5
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			FROM = {
-				controller = { 
-					is_ai = no 
-					has_capitulated = no 
-					is_puppet = no 
+				controller = {
+					is_ai = no
+					has_capitulated = no
+					is_puppet = no
 					is_in_faction_with = ROOT
 				}
 			}
 		}
 		modifier = { #Don't steal claims and cores from faction members unless we also have a right to that clay unless they are puppets
 			factor = 0
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			any_country = {
 				is_in_faction_with = ROOT
@@ -649,7 +649,7 @@ radical_peace = {
 				}
 			}
 		}
-		
+
 		modifier = {
 			factor = 1.25
 
@@ -775,14 +775,14 @@ radical_peace = {
 		}
 
 		modifier = {
-			factor = 0		
-			NOT = { 
-				FROM = { 
+			factor = 0
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			NOT = {
 				FROM = {
@@ -796,7 +796,7 @@ radical_peace = {
 			}
 			OR = {
 				NOT = {
-					FROM = { 
+					FROM = {
 						OR = {
 							is_island_state = yes
 							is_coastal = yes
@@ -810,13 +810,13 @@ radical_peace = {
 
 		modifier = { #Only take claims - and colonial states (ie unclaimed) as well if major.
 			factor = 0
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			OR = {
 				AND = {
@@ -836,14 +836,14 @@ radical_peace = {
 			is_puppet = yes
 			FROM = {
 				NOT = {
-					OR = { 
+					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
 				}
 			}
 		}
-		
+
 	}
 
 	# ROOT = Taker, FROM = Giver
@@ -892,10 +892,10 @@ fascist_peace = {
 	puppet_randomness = 0 #200
 	take_states_randomness = 0 #250
 	force_government_randomness = 0 #50
-	
+
 	# ROOT = Taker, FROM = Giver
 	annex = {
-		factor = 1000 #800	
+		factor = 1000 #800
 
 		modifier = {
 			factor = 0
@@ -919,9 +919,9 @@ fascist_peace = {
 		#modifier = { #
 		#	factor = 0
 		#	FROM = {
-		#		any_owned_state = { 
+		#		any_owned_state = {
 		#			NOT = {
-		#				OR = { 
+		#				OR = {
 		#					is_claimed_by = ROOT
 		#					is_core_of = ROOT
 		#					has_claimed_state_in_peace_conference = ROOT
@@ -930,14 +930,14 @@ fascist_peace = {
 		#		}
 		#	}
 		#}
-		
+
 		modifier = {
 			factor = 0
 			is_puppet = yes
 			FROM = {
-				any_owned_state = { 
+				any_owned_state = {
 					NOT = {
-						OR = { 
+						OR = {
 							is_claimed_by = ROOT
 							is_core_of = ROOT
 							#has_claimed_state_in_peace_conference = ROOT
@@ -945,13 +945,13 @@ fascist_peace = {
 					}
 				}
 			}
-		}		
+		}
 	}
 
 	# ROOT = Taker, FROM = Liberated
 	liberate = {
 		factor = 0 #200 - disable for now
-		
+
 		modifier = {
 			factor = 0
 
@@ -981,7 +981,7 @@ fascist_peace = {
 		}
 		modifier = {
 			factor = 0
-			NOT = { 
+			NOT = {
 				any_owned_state = {
 					any_neighbor_state = {
 						NOT = { is_owned_by = FROM }
@@ -1014,7 +1014,7 @@ fascist_peace = {
 				FROM = { capital_scope = { is_on_continent = europe } }
 				NOT = {
 					FROM = {
-						any_owned_state = { 
+						any_owned_state = {
 							OR = {
 								is_coastal = yes
 								is_island_state = yes
@@ -1032,14 +1032,14 @@ fascist_peace = {
 		modifier = { #Not if we or our allies claim anything
 			factor = 0
 			OR = {
-				FROM = { 
-					any_owned_state = { 
+				FROM = {
+					any_owned_state = {
 						OR = {
 							is_claimed_by = ROOT
 							is_core_of = ROOT
 						}
 						NOT = { has_claimed_state_in_peace_conference = ROOT }
-					} 
+					}
 				}
 				#any_country = {
 				#	is_in_faction_with = ROOT
@@ -1112,12 +1112,12 @@ fascist_peace = {
 
 	# ROOT = Taker, FROM = Giver
 	puppet_all = {
-		base = 0 
+		base = 0
 	}
-	
+
 	# ROOT = STATE, FROM = Taker, FROM.FROM = Giver
 	puppet_state = {
-		base = 0 
+		base = 0
 		modifier = { #puppet state only if already puppeted
 			add = 200
 			#only if already puppetted the country
@@ -1128,25 +1128,25 @@ fascist_peace = {
 			}
 		}
 	}
-	
+
 	# ROOT = Taker, FROM = State
 	take_states = {
 		factor = 600 #Up from 500 #200 - vanilla
 		modifier = { # prefer not to take from humans in our own faction
 			factor = 0.5
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			FROM = {
-				controller = { 
-					is_ai = no 
-					has_capitulated = no 
-					is_puppet = no 
+				controller = {
+					is_ai = no
+					has_capitulated = no
+					is_puppet = no
 					is_in_faction_with = ROOT
 				}
 			}
@@ -1156,13 +1156,13 @@ fascist_peace = {
 			FROM = {
 				is_coastal = yes
 			}
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			NOT = {
 				FROM = {
@@ -1178,7 +1178,7 @@ fascist_peace = {
 							#		is_in_peace_conference = no
 							#		has_capitulated = yes
 							#	}
-							#}					
+							#}
 						}
 					}
 				}
@@ -1188,13 +1188,13 @@ fascist_peace = {
 		}
 		modifier = { #Don't steal claims and cores from faction members unless we also have a right to that clay unless they are puppets
 			factor = 0
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			any_country = {
 				is_in_faction_with = ROOT
@@ -1306,7 +1306,7 @@ fascist_peace = {
 					#			is_in_peace_conference = no
 					#			has_capitulated = yes
 					#		}
-					#	}					
+					#	}
 					#}
 				}
 			}
@@ -1380,14 +1380,14 @@ fascist_peace = {
 			FROM = { controller = { tag = ROOT } }
 		}
 		modifier = {
-			factor = 0		
-			NOT = { 
-				FROM = { 
+			factor = 0
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			NOT = {
 				FROM = {
@@ -1403,55 +1403,55 @@ fascist_peace = {
 							#		is_in_peace_conference = no
 							#		has_capitulated = yes
 							#	}
-							#}					
+							#}
 						}
 					}
 				}
 			}
 			OR = {
 				#Must be taken in contiguous chunks.
-				FROM = { 
+				FROM = {
 					is_on_continent = europe
 					is_coastal = yes
 					#Temp Workaround since "is_island_state" doesn't cover some cases like Gotland, Iceland, Crete, Norn Iron
 				}
-				#Minor old world AI sticks to their own continents 
+				#Minor old world AI sticks to their own continents
 				AND = {
 					#Is NOT a major
 					NOT = { num_of_factories > 100 }
 					OR = {
 						AND = {
 							capital_scope = { is_on_continent = europe }
-							NOT = { FROM = { is_on_continent = europe } } 
+							NOT = { FROM = { is_on_continent = europe } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = north_america }
-							NOT = { FROM = { is_on_continent = north_america } } 
+							NOT = { FROM = { is_on_continent = north_america } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = south_america }
-							NOT = { FROM = { is_on_continent = south_america } } 
+							NOT = { FROM = { is_on_continent = south_america } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = australia }
-							NOT = { FROM = { is_on_continent = australia } } 
+							NOT = { FROM = { is_on_continent = australia } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = africa }
-							NOT = { FROM = { is_on_continent = africa } } 
+							NOT = { FROM = { is_on_continent = africa } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = asia }
-							NOT = { FROM = { is_on_continent = asia } } 
+							NOT = { FROM = { is_on_continent = asia } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = middle_east }
-							NOT = { FROM =  { is_on_continent = middle_east } } 
+							NOT = { FROM =  { is_on_continent = middle_east } }
 						}
 					}
 				}
 				NOT = {
-					FROM = { 
+					FROM = {
 						OR = {
 							is_island_state = yes
 							is_coastal = yes
@@ -1462,37 +1462,37 @@ fascist_peace = {
 			}
 		}
 
-		
+
 		modifier = { #Deter expansion outside of continent
 			factor = 0.1
 			OR = {
 				AND = {
 					capital_scope = { is_on_continent = europe }
-					NOT = { FROM = {is_on_continent = europe } } 
+					NOT = { FROM = {is_on_continent = europe } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = north_america }
-					NOT = { FROM = { is_on_continent = north_america } } 
+					NOT = { FROM = { is_on_continent = north_america } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = south_america }
-					NOT = { FROM = { is_on_continent = south_america } } 
+					NOT = { FROM = { is_on_continent = south_america } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = australia }
-					NOT = { FROM = { is_on_continent = australia } } 
+					NOT = { FROM = { is_on_continent = australia } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = africa }
-					NOT = { FROM = { is_on_continent = africa } } 
+					NOT = { FROM = { is_on_continent = africa } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = asia }
-					NOT = { FROM = { is_on_continent = asia } } 
+					NOT = { FROM = { is_on_continent = asia } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = middle_east }
-					NOT = { FROM =  { is_on_continent = middle_east } } 
+					NOT = { FROM =  { is_on_continent = middle_east } }
 				}
 			}
 		}
@@ -1502,7 +1502,7 @@ fascist_peace = {
 			is_puppet = yes
 			FROM = {
 				NOT = {
-					OR = { 
+					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
@@ -1511,17 +1511,17 @@ fascist_peace = {
 		}
 		modifier = { #Old World AI will generally stick to the old world and new world to the new.
 			factor = 0
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			FROM = {
 				owner = {
-					PREV = { 
+					PREV = {
 						is_core_of = PREV
 						is_on_continent = europe
 					}
@@ -1532,7 +1532,7 @@ fascist_peace = {
 			#		any_neighbor_state = {
 			#			OR = {
 			#				owner = { tag = ROOT }
-			#				has_claimed_state_in_peace_conference = ROOT					
+			#				has_claimed_state_in_peace_conference = ROOT
 			#			}
 			#		}
 			#	}
@@ -1621,10 +1621,10 @@ absolutist_peace = {
 	puppet_randomness = 0 #200
 	take_states_randomness = 0 #250
 	force_government_randomness = 0 #50
-	
+
 	# ROOT = Taker, FROM = Giver
 	annex = {
-		factor = 1000 #800	
+		factor = 1000 #800
 
 		modifier = {
 			factor = 0
@@ -1638,9 +1638,9 @@ absolutist_peace = {
 		#modifier = { #
 		#	factor = 0
 		#	FROM = {
-		#		any_owned_state = { 
+		#		any_owned_state = {
 		#			NOT = {
-		#				OR = { 
+		#				OR = {
 		#					is_claimed_by = ROOT
 		#					is_core_of = ROOT
 		#					has_claimed_state_in_peace_conference = ROOT
@@ -1649,14 +1649,14 @@ absolutist_peace = {
 		#		}
 		#	}
 		#}
-		
+
 		modifier = {
 			factor = 0
 			is_puppet = yes
 			FROM = {
-				any_owned_state = { 
+				any_owned_state = {
 					NOT = {
-						OR = { 
+						OR = {
 							is_claimed_by = ROOT
 							is_core_of = ROOT
 							#has_claimed_state_in_peace_conference = ROOT
@@ -1664,13 +1664,13 @@ absolutist_peace = {
 					}
 				}
 			}
-		}		
+		}
 	}
 
 	# ROOT = Taker, FROM = Liberated
 	liberate = {
 		factor = 0 #200 - disable for now
-		
+
 		modifier = {
 			factor = 0
 
@@ -1700,7 +1700,7 @@ absolutist_peace = {
 		}
 		modifier = {
 			factor = 0
-			NOT = { 
+			NOT = {
 				any_owned_state = {
 					any_neighbor_state = {
 						NOT = { is_owned_by = FROM }
@@ -1733,7 +1733,7 @@ absolutist_peace = {
 				FROM = { capital_scope = { is_on_continent = europe } }
 				NOT = {
 					FROM = {
-						any_owned_state = { 
+						any_owned_state = {
 							OR = {
 								is_coastal = yes
 								is_island_state = yes
@@ -1751,14 +1751,14 @@ absolutist_peace = {
 		modifier = { #Not if we or our allies claim anything
 			factor = 0
 			OR = {
-				FROM = { 
-					any_owned_state = { 
+				FROM = {
+					any_owned_state = {
 						OR = {
 							is_claimed_by = ROOT
 							is_core_of = ROOT
 						}
 						NOT = { has_claimed_state_in_peace_conference = ROOT }
-					} 
+					}
 				}
 				#any_country = {
 				#	is_in_faction_with = ROOT
@@ -1831,12 +1831,12 @@ absolutist_peace = {
 
 	# ROOT = Taker, FROM = Giver
 	puppet_all = {
-		base = 0 
+		base = 0
 	}
-	
+
 	# ROOT = STATE, FROM = Taker, FROM.FROM = Giver
 	puppet_state = {
-		base = 0 
+		base = 0
 		modifier = { #puppet state only if already puppeted
 			add = 200
 			#only if already puppetted the country
@@ -1847,25 +1847,25 @@ absolutist_peace = {
 			}
 		}
 	}
-	
+
 	# ROOT = Taker, FROM = State
 	take_states = {
 		factor = 600 #Up from 500 #200 - vanilla
 		modifier = { # prefer not to take from humans in our own faction
 			factor = 0.5
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			FROM = {
-				controller = { 
-					is_ai = no 
-					has_capitulated = no 
-					is_puppet = no 
+				controller = {
+					is_ai = no
+					has_capitulated = no
+					is_puppet = no
 					is_in_faction_with = ROOT
 				}
 			}
@@ -1875,13 +1875,13 @@ absolutist_peace = {
 			FROM = {
 				is_coastal = yes
 			}
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			NOT = {
 				FROM = {
@@ -1897,7 +1897,7 @@ absolutist_peace = {
 							#		is_in_peace_conference = no
 							#		has_capitulated = yes
 							#	}
-							#}					
+							#}
 						}
 					}
 				}
@@ -1907,13 +1907,13 @@ absolutist_peace = {
 		}
 		modifier = { #Don't steal claims and cores from faction members unless we also have a right to that clay unless they are puppets
 			factor = 0
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			any_country = {
 				is_in_faction_with = ROOT
@@ -2025,7 +2025,7 @@ absolutist_peace = {
 					#			is_in_peace_conference = no
 					#			has_capitulated = yes
 					#		}
-					#	}					
+					#	}
 					#}
 				}
 			}
@@ -2099,14 +2099,14 @@ absolutist_peace = {
 			FROM = { controller = { tag = ROOT } }
 		}
 		modifier = {
-			factor = 0		
-			NOT = { 
-				FROM = { 
+			factor = 0
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			NOT = {
 				FROM = {
@@ -2122,55 +2122,55 @@ absolutist_peace = {
 							#		is_in_peace_conference = no
 							#		has_capitulated = yes
 							#	}
-							#}					
+							#}
 						}
 					}
 				}
 			}
 			OR = {
 				#Must be taken in contiguous chunks.
-				FROM = { 
+				FROM = {
 					is_on_continent = europe
 					is_coastal = yes
 					#Temp Workaround since "is_island_state" doesn't cover some cases like Gotland, Iceland, Crete, Norn Iron
 				}
-				#Minor old world AI sticks to their own continents 
+				#Minor old world AI sticks to their own continents
 				AND = {
 					#Is NOT a major
 					NOT = { num_of_factories > 100 }
 					OR = {
 						AND = {
 							capital_scope = { is_on_continent = europe }
-							NOT = { FROM = { is_on_continent = europe } } 
+							NOT = { FROM = { is_on_continent = europe } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = north_america }
-							NOT = { FROM = { is_on_continent = north_america } } 
+							NOT = { FROM = { is_on_continent = north_america } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = south_america }
-							NOT = { FROM = { is_on_continent = south_america } } 
+							NOT = { FROM = { is_on_continent = south_america } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = australia }
-							NOT = { FROM = { is_on_continent = australia } } 
+							NOT = { FROM = { is_on_continent = australia } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = africa }
-							NOT = { FROM = { is_on_continent = africa } } 
+							NOT = { FROM = { is_on_continent = africa } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = asia }
-							NOT = { FROM = { is_on_continent = asia } } 
+							NOT = { FROM = { is_on_continent = asia } }
 						}
 						AND = {
 							capital_scope = { is_on_continent = middle_east }
-							NOT = { FROM =  { is_on_continent = middle_east } } 
+							NOT = { FROM =  { is_on_continent = middle_east } }
 						}
 					}
 				}
 				NOT = {
-					FROM = { 
+					FROM = {
 						OR = {
 							is_island_state = yes
 							is_coastal = yes
@@ -2181,37 +2181,37 @@ absolutist_peace = {
 			}
 		}
 
-		
+
 		modifier = { #Deter expansion outside of continent
 			factor = 0.1
 			OR = {
 				AND = {
 					capital_scope = { is_on_continent = europe }
-					NOT = { FROM = {is_on_continent = europe } } 
+					NOT = { FROM = {is_on_continent = europe } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = north_america }
-					NOT = { FROM = { is_on_continent = north_america } } 
+					NOT = { FROM = { is_on_continent = north_america } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = south_america }
-					NOT = { FROM = { is_on_continent = south_america } } 
+					NOT = { FROM = { is_on_continent = south_america } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = australia }
-					NOT = { FROM = { is_on_continent = australia } } 
+					NOT = { FROM = { is_on_continent = australia } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = africa }
-					NOT = { FROM = { is_on_continent = africa } } 
+					NOT = { FROM = { is_on_continent = africa } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = asia }
-					NOT = { FROM = { is_on_continent = asia } } 
+					NOT = { FROM = { is_on_continent = asia } }
 				}
 				AND = {
 					capital_scope = { is_on_continent = middle_east }
-					NOT = { FROM =  { is_on_continent = middle_east } } 
+					NOT = { FROM =  { is_on_continent = middle_east } }
 				}
 			}
 		}
@@ -2221,7 +2221,7 @@ absolutist_peace = {
 			is_puppet = yes
 			FROM = {
 				NOT = {
-					OR = { 
+					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
@@ -2230,17 +2230,17 @@ absolutist_peace = {
 		}
 		modifier = { #Old World AI will generally stick to the old world and new world to the new.
 			factor = 0
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			FROM = {
 				owner = {
-					PREV = { 
+					PREV = {
 						is_core_of = PREV
 						is_on_continent = europe
 					}
@@ -2251,7 +2251,7 @@ absolutist_peace = {
 			#		any_neighbor_state = {
 			#			OR = {
 			#				owner = { tag = ROOT }
-			#				has_claimed_state_in_peace_conference = ROOT					
+			#				has_claimed_state_in_peace_conference = ROOT
 			#			}
 			#		}
 			#	}
@@ -2320,7 +2320,7 @@ absolutist_peace = {
 # Written by Henrik "Groogy" Hansson
 
 #Adjustments
-#The generic democratic AI will generally prefer liberation and will mostly seek to install government. 
+#The generic democratic AI will generally prefer liberation and will mostly seek to install government.
 #Major democratic nations and minors with overseas colonies can take colonies in peace deals and will prefer to do so after taking cores.
 #Democracies will never annex.
 
@@ -2334,7 +2334,7 @@ democratic_peace = {
 	puppet_randomness = 0 #200
 	take_states_randomness = 0 #100
 	force_government_randomness = 0 #500
-	
+
 	annex = {
 		factor = 5000 #1500 - insanely high, but necessary for reunification of some nations.
 
@@ -2348,9 +2348,9 @@ democratic_peace = {
 		modifier = { #
 			factor = 0
 			FROM = {
-				any_owned_state = { 
+				any_owned_state = {
 					NOT = {
-						OR = { 
+						OR = {
 							is_claimed_by = ROOT
 							is_core_of = ROOT
 							has_claimed_state_in_peace_conference = ROOT
@@ -2358,7 +2358,7 @@ democratic_peace = {
 					}
 				}
 			}
-		}		
+		}
 		#modifier = {
 		#	factor = 0
 		#	is_puppet = yes
@@ -2501,7 +2501,7 @@ democratic_peace = {
 			OR = {
 				NOT = {
 					FROM = {
-						any_owned_state = { 
+						any_owned_state = {
 							OR = {
 								is_coastal = yes
 								is_island_state = yes
@@ -2516,7 +2516,7 @@ democratic_peace = {
 		#	factor = 0
 		#	NOT = {
 		#		FROM = {
-		#			any_owned_state = { 
+		#			any_owned_state = {
 		#				is_core_of = ROOT
 		#				NOT = { has_claimed_state_in_peace_conference = ROOT }
 		#			}
@@ -2527,12 +2527,12 @@ democratic_peace = {
 
 	# ROOT = Taker, FROM = Giver
 	puppet_all = {
-		base = 0 
+		base = 0
 	}
-	
+
 	# ROOT = STATE, FROM = Taker, FROM.FROM = Giver
 	puppet_state = {
-		base = 0 
+		base = 0
 		modifier = { #puppet state only if already puppeted
 			add = 200
 			#only if already puppetted the country
@@ -2543,11 +2543,11 @@ democratic_peace = {
 			}
 		}
 	}
-	
+
 	# ROOT = Taker, FROM = State
 	take_states = {
 		factor = 400 #50
-		
+
 		modifier = {
 			factor = 20 #5
 
@@ -2557,22 +2557,22 @@ democratic_peace = {
 					is_core_of = ROOT
 				}
 			}
-		}		
+		}
 		modifier = { # prefer not to take from humans in our own faction
-			factor = 0.5 
-			NOT = { 
-				FROM = { 
+			factor = 0.5
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			FROM = {
-				controller = { 
-					is_ai = no 
-					has_capitulated = no 
-					is_puppet = no 
+				controller = {
+					is_ai = no
+					has_capitulated = no
+					is_puppet = no
 					is_in_faction_with = ROOT
 				}
 			}
@@ -2703,14 +2703,14 @@ democratic_peace = {
 
 
 		modifier = {
-			factor = 0		
-			NOT = { 
-				FROM = { 
+			factor = 0
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			NOT = {
 				FROM = {
@@ -2724,7 +2724,7 @@ democratic_peace = {
 			}
 			OR = {
 				NOT = {
-					FROM = { 
+					FROM = {
 						OR = {
 							is_island_state = yes
 							is_coastal = yes
@@ -2738,19 +2738,19 @@ democratic_peace = {
 
 		modifier = { #Only take claims - and colonial states (ie unclaimed) as well if major or if already colonial.
 			factor = 0
-			NOT = { 
-				FROM = { 
+			NOT = {
+				FROM = {
 					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
-				} 
+				}
 			}
 			OR = {
 				AND = {
 					#Is NOT a major
 					NOT = { num_of_factories > 100 }
-					NOT = { 
+					NOT = {
 						AND = {
 							capital_scope = { is_on_continent = europe }
 							any_owned_state = {
@@ -2786,7 +2786,7 @@ democratic_peace = {
 			is_puppet = yes
 			FROM = {
 				NOT = {
-					OR = { 
+					OR = {
 						is_claimed_by = ROOT
 						is_core_of = ROOT
 					}
@@ -2808,7 +2808,7 @@ democratic_peace = {
 		#	factor = 0
 		#	NOT = {
 		#		FROM = {
-		#			any_owned_state = { 
+		#			any_owned_state = {
 		#				is_claimed_by = ROOT
 		#				NOT = { has_claimed_state_in_peace_conference = ROOT }
 		#			}

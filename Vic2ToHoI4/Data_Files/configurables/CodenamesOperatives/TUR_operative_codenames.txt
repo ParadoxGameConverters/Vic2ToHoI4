@@ -9,7 +9,7 @@
 
 	unique = {
 		"Yakamoz"
-		"Gölge"  
+		"Gölge"
 		"Bordo"
 		"Nefer"
 		"Sarı"
@@ -18,9 +18,9 @@
 		"Araba"
 		"Kaftan"
 		"Çay"
-		"Eşref" 
-		"Kara" 
-		"Neşter" 
+		"Eşref"
+		"Kara"
+		"Neşter"
 		"Rüzgar"
 		"Ateş"
 	}

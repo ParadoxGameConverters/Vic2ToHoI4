@@ -1,9 +1,9 @@
 ENG_imperial_conference_decision = {
-	
+
 	ENG_imperial_conference_decision = {
 
 		icon = generic_political_discourse
-		
+
 		available = {
 			hidden_trigger = { always = no }
 		}
@@ -27,7 +27,7 @@ ENG_imperial_conference_decision = {
 		is_good = yes
 
 		complete_effect = {
-			
+
 		}
 
 		timeout_effect = {
@@ -62,7 +62,7 @@ ENG_imperial_conference_decision = {
 			}
 		}
 	}
-	
+
 	ENG_discuss_imperial_defense = {
 
 		icon = eng_trade_unions_support

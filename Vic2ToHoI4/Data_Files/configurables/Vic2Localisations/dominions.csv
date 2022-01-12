@@ -1,12 +1,12 @@
-# Localisations for generated dominions
-# The converter tries to find localisations in this order:
+# Localizations for generated dominions
+# The converter tries to find localizations in this order:
 #   * dom_<culture group>_<ideology>_<region>
 #   * dom_<culture group>_<region>
 #   * dom_<culture>_<ideology>_<region>
 #   * dom_<culture>_<region>
 #   * dom_<ideology>_<region>
 #   * dom_<region>
-# If no localisation is found, the final localisation will be "$OWNER_ADJ$ $REGION$"
+# If no localization is found, the final localization will be "$OWNER_ADJ$ $REGION$"
 #
 ####;EN;FR;DE;PL;ES;IT;SW;CZ;HU;NL;PT;RU;FI;x
 dom_scandinavian_canada;Secret Denmark;Danemark Secret;Geheimnes Dänemark;Tajna Dania;Dinamarca Secreta;Danimarca Segreta;Titkos Dánia;Tajné Dánsko;Titkos Dánia;Geheim Denemarken;Dinamarca Secreta;Òàéíàÿ Äàíèÿ;Salainen Tanska;x

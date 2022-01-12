@@ -176,8 +176,8 @@ afro_antillean = {
 }
 afro_brazilian = {
 	female_names = { Aldara Alduara Aldonça Aldonza Beatriz Beatrice Berengária Berengaria Branca Blanche
-	Constance Dórdia Elvira Elvira Estevainha Stephania Fruilhe Fronilde Gontinha Gontroda 
-	Guiomar Inês Agnes Joana Joan Leonor Eleanor Mafalda Matilda Margarida Margaret Maria 
+	Constance Dórdia Elvira Elvira Estevainha Stephania Fruilhe Fronilde Gontinha Gontroda
+	Guiomar Inês Agnes Joana Joan Leonor Eleanor Mafalda Matilda Margarida Margaret Maria
 	Marinha Marine Mor Mayor Ouroana Sancha Sancha Teresa Teresa Urraca Urraca Gotruda Constança }
 	callsigns = { Álvares "Ayres Gomes" "Borges do Canto" "da Costa" "da Silva" "de Amorim" "de Melo"
 	"de Mendonça" "dos Reis" "dos Santos" "Freire de Andrade" Gonzaga Lopes Maciel Melo
@@ -282,7 +282,7 @@ afro_slavic = {
 aimara = {
 	female_names = { Axomamma Cavillaca Kantuta Nina Ana Maiara }
 	callsigns = { Anquimarca Apo Atahualpa Apaza Auqui-Huaman
-	Canchari Chalcuchima Challco Chiaquitinta Chilche Colla-Topa Curiatao Cusi 
+	Canchari Chalcuchima Challco Chiaquitinta Chilche Colla-Topa Curiatao Cusi
 	Guacra Guaritito Guaritopa Huachuri Huaman Huascar Huaypalcon Illaquita Inquill
 	Llicllic Maila Maras Marcavilca Mayta  Ninancoro Ozcoc
 	Parinango Paucar Paullu Pomacapi Puma Pusca Puyu-Vilca
@@ -333,7 +333,7 @@ alan = {
 alaskan = {
 	female_names = { Jelena Ludmila Mary Jane }
 	female_surnames = { Smith Washington Grant Sherman Chamberlain Powell Clemens Abbott Abercrombie Allen Ames Anderson Barkhauer Andrews Appleton
-	Armstrong Arthur Atkins Asboth Babcock Baker Pope Banks Barnard Barnes Barnum Barry Barstow Bartlett Bates 
+	Armstrong Arthur Atkins Asboth Babcock Baker Pope Banks Barnard Barnes Barnum Barry Barstow Bartlett Bates
 	Baxter Beatty Belknap Benton Blair Blunt Bradley Brown Buell Buford Burnside Butler Caldwell Campbell Carr Kuropatkin Lazarev
 	Makarova Menshikova Nakhimova Nebogatova Nikolaevna Ostrovskaya Pavlova Putyatina Romanova Rozhestvenskaya Skobeleva Shuvalova Surkova Tukhachevskaya Yegorova Yudenicha Vorontsova Voroshilova Zavoyko }
 	callsigns = { "Goose" "Iceman" "Maverick" "Apollo" "Animal" "Boom-Boom" "Badger" "Brick" "Cajun" "Challenger" "Chip" "Eagle" "Ghost" "Hawk" "Jaws" "Moses" "Mad Dog" }
@@ -346,7 +346,7 @@ alaskan = {
 	intelligence_agencies = { "Office of Strategic Services" }
 }
 albanian = {
-	female_names = { Gjylo Afërdita Blerta Bora Dafina Dardana Era Fatmire Flutura Gentiana Jehona Lindita Lule Luljeta Pranvera Shpresa 
+	female_names = { Gjylo Afërdita Blerta Bora Dafina Dardana Era Fatmire Flutura Gentiana Jehona Lindita Lule Luljeta Pranvera Shpresa
 	Shqipe Teuta Venera Vera Vesa Yllka }
 	callsigns = { "the Albanian" "the Kosovar" "Serbian nightmare" }
 	car_companies = { "Industrinë e Makinave" }
@@ -449,8 +449,8 @@ alpine = {
 }
 amazonian = {
 	female_names = { Aldara Alduara Aldonça Aldonza Beatriz Beatrice Berengária Berengaria Branca Blanche
-	Constance Dórdia Elvira Elvira Estevainha Stephania Fruilhe Fronilde Gontinha Gontroda 
-	Guiomar Inês Agnes Joana Joan Leonor Eleanor Mafalda Matilda Margarida Margaret Maria 
+	Constance Dórdia Elvira Elvira Estevainha Stephania Fruilhe Fronilde Gontinha Gontroda
+	Guiomar Inês Agnes Joana Joan Leonor Eleanor Mafalda Matilda Margarida Margaret Maria
 	Marinha Marine Mor Mayor Ouroana Sancha Sancha Teresa Teresa Urraca Urraca Gotruda Constança }
 	callsigns = { Álvares "Ayres Gomes" "Borges do Canto" "da Costa" "da Silva" "de Amorim" "de Melo"
 	"de Mendonça" "dos Reis" "dos Santos" "Freire de Andrade" Gonzaga Lopes Maciel Melo
@@ -486,11 +486,11 @@ amerikaner = {
 	intelligence_agencies = { "Amerika-SS" }
 }
 amhara = {
-	female_names = { Habesha Abeba Abrihet Adanech Adina Alaworld Alitash Amhara Ayana Bathsheba Bekele Belkis Berhane Berta 
+	female_names = { Habesha Abeba Abrihet Adanech Adina Alaworld Alitash Amhara Ayana Bathsheba Bekele Belkis Berhane Berta
 	Cheren China Debre Debtera Desse }
-	callsigns = { "Darod" "Marisid" "Muqurrid" "Pakhoras" "Ramlid" "Sebsibeid" "Kebedeid" "Bekeleid" 
-	"Abateid" "Sabraid" "Astatkeid" "Habeshid" "Dubé" "Gobena" "Selassie" "Zagwe" "Dengel" "Sehul" 
-	"Daw" "Alwa" "Dahnay" "Gideon" "Assabi" "Afari" "Tamirat" "Mengesha" "Teka" "Getachew" "Na'akuelo" "Yostos" 
+	callsigns = { "Darod" "Marisid" "Muqurrid" "Pakhoras" "Ramlid" "Sebsibeid" "Kebedeid" "Bekeleid"
+	"Abateid" "Sabraid" "Astatkeid" "Habeshid" "Dubé" "Gobena" "Selassie" "Zagwe" "Dengel" "Sehul"
+	"Daw" "Alwa" "Dahnay" "Gideon" "Assabi" "Afari" "Tamirat" "Mengesha" "Teka" "Getachew" "Na'akuelo" "Yostos"
 	"Merkourios" "Shamumun" "Desta" }
 	car_companies = { "Yemekina Inidusitiriwochi" }
 	weapon_companies = { "Lemanimi T'iyiti" }
@@ -517,8 +517,8 @@ anatolian = {
 	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
 }
 andalucian = {
-	female_names = { Aliya Fahima Haifa Abda Ahu Aiza Aliyah Butayna Daniyah Dima Fahra Fahriya Fatima Gamila Ghada Habiba Huda 
-	Ibtisam Isra Karima Kera Khadija Layla Maha Malika Mariam Maria Munya Munia Nadia Naila Nur Rafiqa Rahat 
+	female_names = { Aliya Fahima Haifa Abda Ahu Aiza Aliyah Butayna Daniyah Dima Fahra Fahriya Fatima Gamila Ghada Habiba Huda
+	Ibtisam Isra Karima Kera Khadija Layla Maha Malika Mariam Maria Munya Munia Nadia Naila Nur Rafiqa Rahat
 	Raisa Randa Safiya Salma Shakira Suraya Tahira Tarifa Thashim Umm Wahida Yasmin Zahida Zahra }
 	callsigns = { "Ibn Abd al-Rahman" "Ibn Abbad" "Ibn Abd Allah" "Ibn Abi Hafs" "Ibn al-Azafi" "Ibn Ali"
 	"Ibn Hakan" "Ibn Hammud" "Ibn Hisam" "Ibn Husayn"
@@ -589,7 +589,7 @@ antivuorean = {
 	intelligence_agencies = { "PE TIEDOS" }
 }
 araucanian = {
-	female_names = { Suyai Yaima Collipal Curipan Cuyen Calfuray Cayfutray Ilchahueque Ipi Kuyen Lefitray Leflay Llanquipan 
+	female_names = { Suyai Yaima Collipal Curipan Cuyen Calfuray Cayfutray Ilchahueque Ipi Kuyen Lefitray Leflay Llanquipan
 	Llanquiray Manque Millaray Peyeche Piro Pitrel Quetroman Quimey Quintruy Quintuqueo Rayen Saqui Somoche }
 	callsigns = { Abajino Araucanía Choll-Choll Lonko Picunche Promaucae Toqui Nguluche Huilliche
 	Lafquenche }
@@ -684,10 +684,10 @@ arcansian = {
 	intelligence_agencies = { "Legio Ignota Hesperia" }
 }
 armenian = {
-	female_names = { Aghavni Alitz Alice Almasd Anahid Anna Anna Anoush Arda Arevig Arin Baydzar Berjanoush Berjouhi 
-	Datevig Dalita Eliz Eloise Gadar Gorandoukht Gorandukht Hasmig Houri Hranoush Hripsimeh 		
-	Keghanoush Keran Khorishah Kohar Latavri Leyli Lousin Mara Margarid Margaret Maria Maria 
-	Mariyam Mariam Meghranoush Nane Nazani Ovsanna Pounig Razmouhi Rita Satenik Satinik Seta Siran 
+	female_names = { Aghavni Alitz Alice Almasd Anahid Anna Anna Anoush Arda Arevig Arin Baydzar Berjanoush Berjouhi
+	Datevig Dalita Eliz Eloise Gadar Gorandoukht Gorandukht Hasmig Houri Hranoush Hripsimeh
+	Keghanoush Keran Khorishah Kohar Latavri Leyli Lousin Mara Margarid Margaret Maria Maria
+	Mariyam Mariam Meghranoush Nane Nazani Ovsanna Pounig Razmouhi Rita Satenik Satinik Seta Siran
 	Sirvart Srpouhi Shoushanig Takouhi Tamar Tamar Vartanoush Vartouhi Vosgi Yeva Zabel Elizabeth  }
 	callsigns = { Adamian Adomian Aghajanian Altounyan  Apkarian Bagian Babaian Babikian
 	Chobanian Bhobanyan Damadian Eskandarian Kapikian Kazanjian Kebabian Kevorkian Khachikyan
@@ -712,8 +712,8 @@ aromanian = {
 	intelligence_agencies = { "Serviciul Special de Informatii" }
 }
 ashkenazi = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -856,8 +856,8 @@ azande = {
 	intelligence_agencies = { "A.I.A." }
 }
 azerbaijani = {
-	female_names = { Malahat Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
-			Aaliyah Aamina Aamira Aaqila Aarifa Aazzi Adelah Adela Adiba Adilah Adilia Adiva Adjan Aeesha 
+	female_names = { Malahat Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
+			Aaliyah Aamina Aamira Aaqila Aarifa Aazzi Adelah Adela Adiba Adilah Adilia Adiva Adjan Aeesha
 			Adila Ikram }
 	female_surnames = { Ahmadbeka Ahmadzade Akbarzade Edigar Ganjavi Ibrahimbeka
 	Mehmandar Nakhchivani Qasimbeka Qasimzade Rasulzade Tahirzade Talishkhatun
@@ -917,29 +917,29 @@ bakongo = {
 	intelligence_agencies = { "CENAREF" }
 }
 baluchi = {
-	female_names = { Adan Adar Ara Ardil Arezo Arezu Ariyan Arêz Arîman Arîn Asan Asteng Asê Avan Azadî Azrîn Aštî 
+	female_names = { Adan Adar Ara Ardil Arezo Arezu Ariyan Arêz Arîman Arîn Asan Asteng Asê Avan Azadî Azrîn Aštî
 	Badil Bahar Balnexšîn Banê Barîn Bawan Baziyan Bazê Befraw Befrîn Begîxan Belalûk Belqis
-	Belîcan Benav Benaz Berbijîn Berdar Berdil Bersîn Berîcan Bexšîn Beyan Beybîn Beybûn Bezîn 
-	Bihar Bijîn Bilêse Binar Binav Binefš Binevš Biyan Biškoj Biškurîn Bohar Bênaz Bêrîcan Bêrîvan 
+	Belîcan Benav Benaz Berbijîn Berdar Berdil Bersîn Berîcan Bexšîn Beyan Beybîn Beybûn Bezîn
+	Bihar Bijîn Bilêse Binar Binav Binefš Binevš Biyan Biškoj Biškurîn Bohar Bênaz Bêrîcan Bêrîvan
 	Burandoxt Pourandokht
-	Dengîn Derav Derzîn Desmal Devken Dilar Dilaram Dilare Dilawaz Dilber Dilcan Dildar Dilgerm 
-	Dilistan Dilkanî Dilnaz Dilvîn Dilxoš Dilxweš Diyarî Doman Dêrsim Dîlan Dîristan Esmercan 
+	Dengîn Derav Derzîn Desmal Devken Dilar Dilaram Dilare Dilawaz Dilber Dilcan Dildar Dilgerm
+	Dilistan Dilkanî Dilnaz Dilvîn Dilxoš Dilxweš Diyarî Doman Dêrsim Dîlan Dîristan Esmercan
 	Esmerxan Khonza Ashraf Khanam Nur Khair Bibi
-	Estêre Evîn Ewrîn Eyšan Ezcan Felek Fener Ferašîn Firmêsk Fîdan Gazî Gelavêj Gerdengaz Gozel 
-	Gozê Grîvan Guhtem Gulbehar Golbahar Gulšen Gulnar Gulnaz Golnaz Gêlas Helez Heliz Helvîn 
-	Hemayîl 
-	Kejê Keser Kevok Kevî Kewser Kezîzer Koçer Leylê Leymîn Lezîn Lolav Lorkê Lorî Lorîcan Lorîn 
+	Estêre Evîn Ewrîn Eyšan Ezcan Felek Fener Ferašîn Firmêsk Fîdan Gazî Gelavêj Gerdengaz Gozel
+	Gozê Grîvan Guhtem Gulbehar Golbahar Gulšen Gulnar Gulnaz Golnaz Gêlas Helez Heliz Helvîn
+	Hemayîl
+	Kejê Keser Kevok Kevî Kewser Kezîzer Koçer Leylê Leymîn Lezîn Lolav Lorkê Lorî Lorîcan Lorîn
 	Lêlav Lêvken Lîlyan Lîza Maša Mebest Mehrîban Mehrîcan Mehrîvan
-	Mejbîr Mendal Mercam Merîvan Mirarîxan Miryem Mariam Mizgîn Muhabad Mêmê Mêrdîn Mêxek Mîdya 
-	Mîran Narîman Narîncan Navbihar Nawxoš Naz Nazdar Nazenîn Nazgul Nazgol Nazik Naznaz Nazê Nermê 
+	Mejbîr Mendal Mercam Merîvan Mirarîxan Miryem Mariam Mizgîn Muhabad Mêmê Mêrdîn Mêxek Mîdya
+	Mîran Narîman Narîncan Navbihar Nawxoš Naz Nazdar Nazenîn Nazgul Nazgol Nazik Naznaz Nazê Nermê
 	Nermîn Nesrîn Newbohar Nexšîn
-	Nešmîl Nešmîn Norcan Nêrgiz Nêrîn Nêzîk Nîdar Nîgar Nîroj Nîšan Nîštîman Perjîn Pervîn Perwane 
-	Parvaneh Perwîn Perçem Perî Perîgul Perînaz Perîxan Perîšan Pexšan Peyman Pirjîn Piršeng 
-	Piršing Pore Poršeng Pêlîn Pîroz Pîšeng 
-	Rana Rengîn Rewša Rewšen Rihan Rindê Rojhelat Rojê Ronahî Ronak Rondik Rêjîn Rêzan Rîhan Rîken 
-	Rûciwan Rûgeš Rûken Rûzerîn Sarê Serbar Sercan Serferaz Serfiraz Sergul Serçinar Seyran Xatûn 
-	Xêlîcan Xonçe Ghoncheh Zernîšan Zerya Zerê Zerî Zerîxan Zeytîn Zeytûn Zilfê Zoya Zozan Zêrîn 
-	Zîlan Zînet Zînê Šana Šanaz Šayan Šehrîban Šelal Šemam Šengê Šepal Šepirze Šermîn Ševba Ševîn 
+	Nešmîl Nešmîn Norcan Nêrgiz Nêrîn Nêzîk Nîdar Nîgar Nîroj Nîšan Nîštîman Perjîn Pervîn Perwane
+	Parvaneh Perwîn Perçem Perî Perîgul Perînaz Perîxan Perîšan Pexšan Peyman Pirjîn Piršeng
+	Piršing Pore Poršeng Pêlîn Pîroz Pîšeng
+	Rana Rengîn Rewša Rewšen Rihan Rindê Rojhelat Rojê Ronahî Ronak Rondik Rêjîn Rêzan Rîhan Rîken
+	Rûciwan Rûgeš Rûken Rûzerîn Sarê Serbar Sercan Serferaz Serfiraz Sergul Serçinar Seyran Xatûn
+	Xêlîcan Xonçe Ghoncheh Zernîšan Zerya Zerê Zerî Zerîxan Zeytîn Zeytûn Zilfê Zoya Zozan Zêrîn
+	Zîlan Zînet Zînê Šana Šanaz Šayan Šehrîban Šelal Šemam Šengê Šepal Šepirze Šermîn Ševba Ševîn
 	Šêlaz Šîlan Šînî Šîwen }
 	callsigns = { Jamot Bugti Zikri Ghilzai Barakzay Bozdar Mirrani Mihrabanid Khokhar
 	Rind Shar Lashari Lund Hooth Korai Jatoi Nausherwani }
@@ -967,9 +967,9 @@ bambara = {
 }
 basque = {
 	female_names = { Juana Catalina Leonor Blanca
-	Aines Agnes Aldontza Aldonza Andregoto Antsa Sancha Belaskita Berengaria Berengaria Blanka 
-	Blanche Elbira Elvira Eliza Emili Emily Estefania Stephania Joana Joan Konstantzia Constance 
-	Maior Mayor Maria Maria Mentzia Mencia Munia Munia Nuña Oneka Oneka Oria Plazentzia 
+	Aines Agnes Aldontza Aldonza Andregoto Antsa Sancha Belaskita Berengaria Berengaria Blanka
+	Blanche Elbira Elvira Eliza Emili Emily Estefania Stephania Joana Joan Konstantzia Constance
+	Maior Mayor Maria Maria Mentzia Mencia Munia Munia Nuña Oneka Oneka Oria Plazentzia
 	Teresa Teresa Toda Toda Urraka Urraca Ximena Ximena Plaisance }
 	callsigns = { "de Aguirre" "de Albret" "de Antillón" "de Aranda" "de Armendariz" "de Azagra" "de Azpilcueta"
 	"de Beaumont" "de Beortegui" Bergera "de Borbón" "de Carranza"	Elizalde
@@ -1009,15 +1009,15 @@ bazramani = {
 	intelligence_agencies = { "Legio Ignota Persica" }
 }
 bedouin = {
-	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
+	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
 	Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
-	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
+	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah
 	Sheeftah Sheeva Shogofa Shokouh Shola Sholah Simin Souzan
 	Taliba Tanaz Taneen Yagana Yakta Yasmin Zaynab }
 	female_surnames = { "al-Baghdadiyya" "al-Basriya" "al-Ghazzawiya" "al-Halabiyya" "al-Hamawiyya"
-	"al-Himsiyya" "al-Mawsiliyya" "al-Nablusiyya" "al-Qudsiyya" "al-Shamiyya"  
+	"al-Himsiyya" "al-Mawsiliyya" "al-Nablusiyya" "al-Qudsiyya" "al-Shamiyya"
 	"bint Abd Allah" "bint Abd al-Qadir" "bint Abu Bakr" "bint Ahmad" "bint Ali"
-	"bint Fuad" "bint Halil" "bint Hasan" "bint Hisham" "bint Ishaq" "bint Ja'far" "bint Kamil" "bint Khalid" 
+	"bint Fuad" "bint Halil" "bint Hasan" "bint Hisham" "bint Ishaq" "bint Ja'far" "bint Kamil" "bint Khalid"
 	"bint Muhammad" "bint Mustafa" "bint Salim" "bint Umar" "bint Uthman" "bint Yusuf" }
 	callsigns = { "Ibn Abd al-Rahman" "Ibn Abbad" "Ibn Abd Allah" "Ibn Abi Hafs" "Ibn al-Azafi" "Ibn Ali"
 	"Ibn Hakan" "Ibn Hammud" "Ibn Hisam" "Ibn Husayn"
@@ -1055,14 +1055,14 @@ beifaren = {
 	intelligence_agencies = { "NBIS" }
 }
 beja = {
-	female_names = { Agathe Alethia Anthelia Athanasia Chaelsoñoja Chrissa Christina Douriko Egaloskoura Eikkir 
+	female_names = { Agathe Alethia Anthelia Athanasia Chaelsoñoja Chrissa Christina Douriko Egaloskoura Eikkir
 	Eionmnne Eionñoka Eitou Elisabeth Elizabeth Eirena Eirene Eirota Eirotatouññlki
-	Entaeiri Eôneille Ephannê Epimachosi Eudosia Eudoxia Eulabia Eusebia Eustephanou Fatima 
+	Entaeiri Eôneille Ephannê Epimachosi Eudosia Eudoxia Eulabia Eusebia Eustephanou Fatima
 	Genseoua Hellene Helen Hemene Iannia Joan Iêsousyko Ioustina Justina Kel Kerike Kersiami Kettoudi
-	Keudonia Kurake Kyriake Maraña Maria Maria Mariam Maria Mariane Marianou Michaêliko Michaela 
-	Ñašša Ñeššadena Ñejin Ñilesa Ñojjl Ñoltou Ñonne Ñonnen Ñouddl Ñssitkitol Ouarenô Patrikia 
+	Keudonia Kurake Kyriake Maraña Maria Maria Mariam Maria Mariane Marianou Michaêliko Michaela
+	Ñašša Ñeššadena Ñejin Ñilesa Ñojjl Ñoltou Ñonne Ñonnen Ñouddl Ñssitkitol Ouarenô Patrikia
 	Patricia Pelagia Gulzar Maram
-	Penatti Pesanthia Petronia Prisisilla Priscilla Rahimah Sophia Sousanna Staurophania Theobronia 
+	Penatti Pesanthia Petronia Prisisilla Priscilla Rahimah Sophia Sousanna Staurophania Theobronia
 	Theodorake Theodosia Theognosta Theophania Theophilia Theipisthe Theozia Zerebekka }
 	female_surnames = { "bint Nul" Likaylik "bint Badi" "bint Isma'il" Muhammad "bint Tabl" Rabihi "wad Rajab" }
 	callsigns = { Tsige Barré Bol Deng Abdelrashid Semer Yagoub Leta Lemn Teka }
@@ -1109,8 +1109,8 @@ bengali = {
 	intelligence_agencies = { "Research and Analysis Wing" }
 }
 berber = {
-	female_names = { Randa Tabassum 	Dema Dimah Dinara Dua Durra Durriyya Edza Eleonorka Eleanor Faghissa Fahriya Fariza Fedada 
-	Tazenkwedt Tazirit Tazrurt Tella Temzi Tfit Tigmi Tikinas Tilelli Timmi Tinhinan Tintadefi 
+	female_names = { Randa Tabassum 	Dema Dimah Dinara Dua Durra Durriyya Edza Eleonorka Eleanor Faghissa Fahriya Fariza Fedada
+	Tazenkwedt Tazirit Tazrurt Tella Temzi Tfit Tigmi Tikinas Tilelli Timmi Tinhinan Tintadefi
 	Tintifawin Tinzert Tisent Tislit Titbirt Titrit Tizemt Tiziri Triya Tudert Tuh'r'ict Tureght  }
 	female_surnames = { "al-Jazuliyya" Belkadiyya Mukraniyya "al-Rifiyya" "al-Sahrawiyya" "al-Shawiyyatiyya" "al-Shiluhiyya" "al-Zanatawiyya" }
 	callsigns = { "al-Ilighi" "al-Tadsi" "Zayyanid" }
@@ -1170,9 +1170,9 @@ bomullborgar = {
 	intelligence_agencies = { "GVMSÍ" }
 }
 bornean = {
-	female_names = { "Rim" Merenui Metetini Miri Moea Moeata Moerani Mohea Nanihi Nu’utea Orama Poe Pear Poehina Poenui Poerava Puaiti 
-	Puatea Puaura Ra’ihau Ra’imere Ra’inui Ranitea Rarahu Raunui Raurii Tahiata Taiana Taina Tania Taurua Tautiare Tehani 
-	Tehea Teora Tera Tevai Titaina Titaua Tuianu Tumata Unutea Urarii Vaea Vaiana Vaianu Vaiata Vaihere Vaimiti Vairea 
+	female_names = { "Rim" Merenui Metetini Miri Moea Moeata Moerani Mohea Nanihi Nu’utea Orama Poe Pear Poehina Poenui Poerava Puaiti
+	Puatea Puaura Ra’ihau Ra’imere Ra’inui Ranitea Rarahu Raunui Raurii Tahiata Taiana Taina Tania Taurua Tautiare Tehani
+	Tehea Teora Tera Tevai Titaina Titaua Tuianu Tumata Unutea Urarii Vaea Vaiana Vaianu Vaiata Vaihere Vaimiti Vairea
 	Vaite Vaitiare }
 	callsigns = { Burnei Kutai Sibu Kuching }
 	car_companies = { "Kereta dan Tangki" }
@@ -1197,8 +1197,8 @@ bosniak = {
 }
 brazilian = {
 	female_names = { Aldara Alduara Aldonça Aldonza Beatriz Beatrice Berengária Berengaria Branca Blanche
-	Constance Dórdia Elvira Elvira Estevainha Stephania Fruilhe Fronilde Gontinha Gontroda 
-	Guiomar Inês Agnes Joana Joan Leonor Eleanor Mafalda Matilda Margarida Margaret Maria 
+	Constance Dórdia Elvira Elvira Estevainha Stephania Fruilhe Fronilde Gontinha Gontroda
+	Guiomar Inês Agnes Joana Joan Leonor Eleanor Mafalda Matilda Margarida Margaret Maria
 	Marinha Marine Mor Mayor Ouroana Sancha Sancha Teresa Teresa Urraca Urraca Gotruda Constança }
 	callsigns = { Álvares "Ayres Gomes" "Borges do Canto" "da Costa" "da Silva" "de Amorim" "de Melo"
 	"de Mendonça" "dos Reis" "dos Santos" "Freire de Andrade" Gonzaga Lopes Maciel Melo
@@ -1379,8 +1379,8 @@ calusan = {
 	intelligence_agencies = { "Legio Ignota Hesperia" }
 }
 camite = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -1529,9 +1529,9 @@ central_algonquian = {
 	intelligence_agencies = { "Red & Black" }
 }
 central_american = {
-	female_names = { Aldonza Aldonza Anderquina Beatriz Beatrice Berenguela Berengaria Blanca Blanche Constanza 
-	Constance Elvira Elvira Estefanía Stephania Fronilda Fronilde Gontroda Gotruda Inés Agnes 
-	Elisabeth Jimena Ximena Juana Joan Leonor Eleanor Mafalda Matilda María Maria Marina Marine 
+	female_names = { Aldonza Aldonza Anderquina Beatriz Beatrice Berenguela Berengaria Blanca Blanche Constanza
+	Constance Elvira Elvira Estefanía Stephania Fronilda Fronilde Gontroda Gotruda Inés Agnes
+	Elisabeth Jimena Ximena Juana Joan Leonor Eleanor Mafalda Matilda María Maria Marina Marine
 	Mayor Mayor Mencía Mencia Milia Emily Sancha Sancha Teresa Teresa Toda Toda Urraca Urraca
 	Isabel }
 	callsigns = { "Guatemala" "Salvador" "Honduras" "Nicaragua" "Costarrica" "Los Altos" "Mosquito" }
@@ -1585,7 +1585,7 @@ cetuan = {
 	intelligence_agencies = { "Legio Ignota Hesperia" }
 }
 chacoan = {
-	female_names = { Suyai Yaima Collipal Curipan Cuyen Calfuray Cayfutray Ilchahueque Ipi Kuyen Lefitray Leflay Llanquipan 
+	female_names = { Suyai Yaima Collipal Curipan Cuyen Calfuray Cayfutray Ilchahueque Ipi Kuyen Lefitray Leflay Llanquipan
 	Llanquiray Manque Millaray Peyeche Piro Pitrel Quetroman Quimey Quintruy Quintuqueo Rayen Saqui Somoche }
 	callsigns = { Wichí Chorote Nivaclé Maká }
 	weapon_companies = { "Arcabuces" }
@@ -1611,8 +1611,8 @@ chechen = {
 	intelligence_agencies = { "Vladikavkaz" }
 }
 cherokee = {
-	female_names = { Asmita Nanyehi Cuhtahlatah Sequoya Adsila Amadahy Awenasa Awinita Ayita Galilahi Leotie Usdi Galilani Hialeah 
-	Immookalee Tayanita Sequoia Ahyoka Ama Galilani Ghigau Hiawassee Immokalee Inola Knasgowa Nanye-hi Ninovan 
+	female_names = { Asmita Nanyehi Cuhtahlatah Sequoya Adsila Amadahy Awenasa Awinita Ayita Galilahi Leotie Usdi Galilani Hialeah
+	Immookalee Tayanita Sequoia Ahyoka Ama Galilani Ghigau Hiawassee Immokalee Inola Knasgowa Nanye-hi Ninovan
 	Salali Tsistunagiska Tsula Tayanita Yona }
 	callsigns = { "Sequoyah" "Oklahoma" "Keetoowah" "Tsalagi" }
 	weapon_companies = { Digotlvsgi }
@@ -1694,11 +1694,11 @@ cree = {
 	intelligence_agencies = { "Red & Black" }
 }
 crni = {
-	female_names = { Agata Agatha Barbara Branimira Desislava Dubravka Elena Helen Hicela Jelena Karolina 
+	female_names = { Agata Agatha Barbara Branimira Desislava Dubravka Elena Helen Hicela Jelena Karolina
 	Lovorka Marija Maria Milka Neda Radica Zdenka Andjela Antonija
-	Bastina Biljana Bistrina Bojana Casna Chasna Dejana Dragana Dragoslava Duga Dusica Gordana 
+	Bastina Biljana Bistrina Bojana Casna Chasna Dejana Dragana Dragoslava Duga Dusica Gordana
 	Grana Grubana Jagoda Jovana Jovanka Karika
-	Ljubica Luka Majka Malina Medeni Meki Milinka Miljana Miriti Mirjana Mudary Mudra Nada 
+	Ljubica Luka Majka Malina Medeni Meki Milinka Miljana Miriti Mirjana Mudary Mudra Nada
 	Namena Nadanje Keratza Branka Mirna }
 	callsigns = { Crn Slovene Bošnjak Hrvat Srbin Bugarski Austrijanac }
 	car_companies = { "Četiri Kotača" }
@@ -1750,9 +1750,9 @@ czarny = {
 czech = {
 	female_names = { "Marie" "Anna" "Hana" "Božena" "Alžběta" "Marta" }
 	female_surnames = { Albertová Balabánová Baschová Breisková Čelovská Dvoráková Fibichová Gajdová Gellnerová Háleková
-	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková 
+	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková
 	Miková Morávecová Němečková Neruda Nováčková Novotná Popperová Radecká Rokytanská Šafáriková
-	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová 
+	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová
 	Tomášková Tylová Vitáseková "von Mittrowitz-Nettolitzková" Voříšeková Wankelová Weberová Zíbrtová Zívrová Zoubeková }
 	callsigns = { Němec Žid Ďábel Maďarština Česky }
 	industry_companies = { Škoda }
@@ -1854,8 +1854,8 @@ dagestani = {
 	intelligence_agencies = { "Vladikavkaz" }
 }
 dakota = {
-	female_names = { Tasinasapewin Thasinamani Tasinahlahlawin Dohumme Chapa Chapawee Chumani Dowanhowee Ehawee Hantaywee Kimimela 
-	Macha Magaskawee Makawee Mika Ojinjintka Ptaysanwee Shappa Skah Wichahpi Winona Zitkala Zonta Mina Tahcawin 
+	female_names = { Tasinasapewin Thasinamani Tasinahlahlawin Dohumme Chapa Chapawee Chumani Dowanhowee Ehawee Hantaywee Kimimela
+	Macha Magaskawee Makawee Mika Ojinjintka Ptaysanwee Shappa Skah Wichahpi Winona Zitkala Zonta Mina Tahcawin
 	Talutah Wachiwi Wasula Weayaya Wichapi }
 	callsigns = { Sichangu Oglala Itazipcho Hunkpapha Mnikhowozu Sihasapa Oohenunpa }
 	car_companies = { Iyeçiŋkopte }
@@ -2074,15 +2074,15 @@ dyula = {
 	intelligence_agencies = { "A.I.A." }
 }
 ealimi = {
-	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
+	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
 	Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
-	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
+	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah
 	Sheeftah Sheeva Shogofa Shokouh Shola Sholah Simin Souzan
 	Taliba Tanaz Taneen Yagana Yakta Yasmin Zaynab }
 	female_surnames = { "al-Baghdadiyya" "al-Basriya" "al-Ghazzawiya" "al-Halabiyya" "al-Hamawiyya"
-	"al-Himsiyya" "al-Mawsiliyya" "al-Nablusiyya" "al-Qudsiyya" "al-Shamiyya"  
+	"al-Himsiyya" "al-Mawsiliyya" "al-Nablusiyya" "al-Qudsiyya" "al-Shamiyya"
 	"bint Abd Allah" "bint Abd al-Qadir" "bint Abu Bakr" "bint Ahmad" "bint Ali"
-	"bint Fuad" "bint Halil" "bint Hasan" "bint Hisham" "bint Ishaq" "bint Ja'far" "bint Kamil" "bint Khalid" 
+	"bint Fuad" "bint Halil" "bint Hasan" "bint Hisham" "bint Ishaq" "bint Ja'far" "bint Kamil" "bint Khalid"
 	"bint Muhammad" "bint Mustafa" "bint Salim" "bint Umar" "bint Uthman" "bint Yusuf" }
 	callsigns = { "Ibn Abd al-Rahman" "Ibn Abbad" "Ibn Abd Allah" "Ibn Abi Hafs" "Ibn al-Azafi" "Ibn Ali"
 	"Ibn Hakan" "Ibn Hammud" "Ibn Hisam" "Ibn Husayn"
@@ -2448,9 +2448,9 @@ french_canadian = {
 	intelligence_agencies = { "CBSA" }
 }
 frencharab = {
-	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
+	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
 	Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
-	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
+	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah
 	Sheeftah Sheeva Shogofa Shokouh Shola Sholah Simin Souzan
 	Taliba Tanaz Taneen Yagana Yakta Yasmin Zaynab }
 	callsigns = { "Draco" "Fast" "Tiger" "Sparrow" "Ripper" "Sundance" "Toad" "Twitch" "Farmer" "Weasel" "Target Practice" "Invisible" "Beach Boy" "Princess" "The Mute" "Carpenter" }
@@ -2982,9 +2982,9 @@ hjartnaaeter = {
 hnedy = {
 	female_names = { "Marie" "Anna" "Hana" "Božena" "Alžběta" "Marta" }
 	female_surnames = { Albertová Balabánová Baschová Breisková Čelovská Dvoráková Fibichová Gajdová Gellnerová Háleková
-	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková 
+	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková
 	Miková Morávecová Němečková Neruda Nováčková Novotná Popperová Radecká Rokytanská Šafáriková
-	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová 
+	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová
 	Tomášková Tylová Vitáseková "von Mittrowitz-Nettolitzková" Voříšeková Wankelová Weberová Zíbrtová Zívrová Zoubeková }
 	callsigns = { Němec Žid Ďábel Maďarština Česky }
 	industry_companies = { Škoda }
@@ -3031,8 +3031,8 @@ horse = {
 	intelligence_agencies = { "Foreign Meat Office" }
 }
 hulwud = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -3114,15 +3114,15 @@ icelandic = {
 	intelligence_agencies = { "GVMSÍ" }
 }
 ifriqi = {
-	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
+	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
 	Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
-	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
+	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah
 	Sheeftah Sheeva Shogofa Shokouh Shola Sholah Simin Souzan
 	Taliba Tanaz Taneen Yagana Yakta Yasmin Zaynab }
 	female_surnames = { "al-Baghdadiyya" "al-Basriya" "al-Ghazzawiya" "al-Halabiyya" "al-Hamawiyya"
-	"al-Himsiyya" "al-Mawsiliyya" "al-Nablusiyya" "al-Qudsiyya" "al-Shamiyya"  
+	"al-Himsiyya" "al-Mawsiliyya" "al-Nablusiyya" "al-Qudsiyya" "al-Shamiyya"
 	"bint Abd Allah" "bint Abd al-Qadir" "bint Abu Bakr" "bint Ahmad" "bint Ali"
-	"bint Fuad" "bint Halil" "bint Hasan" "bint Hisham" "bint Ishaq" "bint Ja'far" "bint Kamil" "bint Khalid" 
+	"bint Fuad" "bint Halil" "bint Hasan" "bint Hisham" "bint Ishaq" "bint Ja'far" "bint Kamil" "bint Khalid"
 	"bint Muhammad" "bint Mustafa" "bint Salim" "bint Umar" "bint Uthman" "bint Yusuf" }
 	callsigns = { "Ibn Abd al-Rahman" "Ibn Abbad" "Ibn Abd Allah" "Ibn Abi Hafs" "Ibn al-Azafi" "Ibn Ali"
 	"Ibn Hakan" "Ibn Hammud" "Ibn Hisam" "Ibn Husayn"
@@ -3164,7 +3164,7 @@ incacunapic = {
 	intelligence_agencies = { "River Plate" }
 }
 inuit = {
-	female_names = { Ahnah Akna Chena Corazon Desna Kaskae Kaya Kirima Koko Malina Adlartok Ahnah Akiak Anana Anernerk Annakpok Aput 
+	female_names = { Ahnah Akna Chena Corazon Desna Kaskae Kaya Kirima Koko Malina Adlartok Ahnah Akiak Anana Anernerk Annakpok Aput
 	Ataciare Atka Aukaneck Biisaiyowaq Buniq Chulyin Cikup Corazon Cupun Hey Iluak Iluq Imnek Ipiktok Iqniq Kakrayok  }
 	callsigns = { Eskimo Uyaquk Angakkuq Arnarsaq }
 	industry_companies = { IKinnaik }
@@ -3213,8 +3213,8 @@ iroquoian = {
 	intelligence_agencies = { "Red & Black" }
 }
 israeli = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -3270,15 +3270,15 @@ janub = {
 	intelligence_agencies = { "INIS" }
 }
 janubii = {
-	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
+	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
 	Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
-	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
+	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah
 	Sheeftah Sheeva Shogofa Shokouh Shola Sholah Simin Souzan
 	Taliba Tanaz Taneen Yagana Yakta Yasmin Zaynab }
 	female_surnames = { "al-Baghdadiyya" "al-Basriya" "al-Ghazzawiya" "al-Halabiyya" "al-Hamawiyya"
-	"al-Himsiyya" "al-Mawsiliyya" "al-Nablusiyya" "al-Qudsiyya" "al-Shamiyya"  
+	"al-Himsiyya" "al-Mawsiliyya" "al-Nablusiyya" "al-Qudsiyya" "al-Shamiyya"
 	"bint Abd Allah" "bint Abd al-Qadir" "bint Abu Bakr" "bint Ahmad" "bint Ali"
-	"bint Fuad" "bint Halil" "bint Hasan" "bint Hisham" "bint Ishaq" "bint Ja'far" "bint Kamil" "bint Khalid" 
+	"bint Fuad" "bint Halil" "bint Hasan" "bint Hisham" "bint Ishaq" "bint Ja'far" "bint Kamil" "bint Khalid"
 	"bint Muhammad" "bint Mustafa" "bint Salim" "bint Umar" "bint Uthman" "bint Yusuf" }
 	callsigns = { "Ibn Abd al-Rahman" "Ibn Abbad" "Ibn Abd Allah" "Ibn Abi Hafs" "Ibn al-Azafi" "Ibn Ali"
 	"Ibn Hakan" "Ibn Hammud" "Ibn Hisam" "Ibn Husayn"
@@ -3329,9 +3329,9 @@ je = {
 jizni = {
 	female_names = { "Marie" "Anna" "Hana" "Božena" "Alžběta" "Marta" }
 	female_surnames = { Albertová Balabánová Baschová Breisková Čelovská Dvoráková Fibichová Gajdová Gellnerová Háleková
-	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková 
+	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková
 	Miková Morávecová Němečková Neruda Nováčková Novotná Popperová Radecká Rokytanská Šafáriková
-	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová 
+	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová
 	Tomášková Tylová Vitáseková "von Mittrowitz-Nettolitzková" Voříšeková Wankelová Weberová Zíbrtová Zívrová Zoubeková }
 	callsigns = { Němec Žid Ďábel Maďarština Česky }
 	industry_companies = { Škoda }
@@ -3360,11 +3360,11 @@ juodaodis = {
 	intelligence_agencies = { "AOTD" }
 }
 juzhno = {
-	female_names = { Agata Agatha Barbara Branimira Desislava Dubravka Elena Helen Hicela Jelena Karolina 
+	female_names = { Agata Agatha Barbara Branimira Desislava Dubravka Elena Helen Hicela Jelena Karolina
 	Lovorka Marija Maria Milka Neda Radica Zdenka Andjela Antonija
-	Bastina Biljana Bistrina Bojana Casna Chasna Dejana Dragana Dragoslava Duga Dusica Gordana 
+	Bastina Biljana Bistrina Bojana Casna Chasna Dejana Dragana Dragoslava Duga Dusica Gordana
 	Grana Grubana Jagoda Jovana Jovanka Karika
-	Ljubica Luka Majka Malina Medeni Meki Milinka Miljana Miriti Mirjana Mudary Mudra Nada 
+	Ljubica Luka Majka Malina Medeni Meki Milinka Miljana Miriti Mirjana Mudary Mudra Nada
 	Namena Nadanje Keratza Branka Mirna }
 	callsigns = { Crn Slovene Bošnjak Hrvat Srbin Bugarski Austrijanac }
 	car_companies = { "Četiri Kotača" }
@@ -3399,8 +3399,8 @@ kachin = {
 	intelligence_agencies = { "Chin-Chin" }
 }
 kaifeng = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -3483,7 +3483,7 @@ kavango = {
 }
 kazak = {
 	female_names = { Aiday Aiman Aina Aliya Anar Anara Anargul Aruzhan Ayaulym Ayna Aynur Bibigul Gulnar Gulnara Gulnaz Inkar Inzhu Madina Saltanat Sezim Zhuldyz }
-	female_surnames = { Beyeha Khanin "Konanbai uli" "Kutebar uli" "Muhammad uli" "Qasim uli" 
+	female_surnames = { Beyeha Khanin "Konanbai uli" "Kutebar uli" "Muhammad uli" "Qasim uli"
 	Abdulayeva Abdulina Abdullayeva Abdulova Aitmukhambetova Aliyeva Aronova Bayžanova Ibragimova
 	Karimova Kedryuka Nabiyeva Niyazova Usenova Žakiyanova Nazarbayeva }
 	callsigns = { Orısşa Satwşı Jibek Qazaqşa Özbekşa Täjik Türkimen Qırğızşa }
@@ -3518,11 +3518,11 @@ kepejokian = {
 	intelligence_agencies = { "PE TIEDOS" }
 }
 khmer = {
-	female_names = { Bouphka Sakngea "Ang Mey" "Anak Moneang Krachap" "Neang Pou" Achariya Akara Anchali Arunny Ary Botum 
-	Chamroeun Chankrisna Chanlina Chanmony Chanthavy Chantou Chantrea Chariya Chhaiya Chhean Chhorvin Chhorvon Chivy Darareaksmey 
-	Jorani Kalianne Kaliyanei Kanleakhana Kannareth Kannitha Kanya Kesor Kolab Kolthida Kravan Kunthea Leakena Makara 
-	Malis Mliss Nakry Thida Toch Tola Vanna Veasna Vimean Nearidei Neary Reach Reaksmey Reasmey Sokha Sokhanya Sokhom "Sok Mean" 
-	Cheng Rotha Samphy Roumduol Roumjong Samnang Saley Savady Seyha Sikha Sinuon Soboen Socheat Sombo Sonisay Sonith "Peou Nuon" 
+	female_names = { Bouphka Sakngea "Ang Mey" "Anak Moneang Krachap" "Neang Pou" Achariya Akara Anchali Arunny Ary Botum
+	Chamroeun Chankrisna Chanlina Chanmony Chanthavy Chantou Chantrea Chariya Chhaiya Chhean Chhorvin Chhorvon Chivy Darareaksmey
+	Jorani Kalianne Kaliyanei Kanleakhana Kannareth Kannitha Kanya Kesor Kolab Kolthida Kravan Kunthea Leakena Makara
+	Malis Mliss Nakry Thida Toch Tola Vanna Veasna Vimean Nearidei Neary Reach Reaksmey Reasmey Sokha Sokhanya Sokhom "Sok Mean"
+	Cheng Rotha Samphy Roumduol Roumjong Samnang Saley Savady Seyha Sikha Sinuon Soboen Socheat Sombo Sonisay Sonith "Peou Nuon"
 	Phally Phary Pheakdei Pheakkley Phhoung Ponlok Ponnleu Pisey Punthea Rachana Rachany
 	}
 	callsigns = { "Kampuchea Aer" Basasaka "Satvk Thom" "Kampu" "Lan Tmhei" Angkor }
@@ -3620,8 +3620,8 @@ kleinvenedig = {
 	intelligence_agencies = { "Amerika-SS" }
 }
 knaanic = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -3699,8 +3699,8 @@ kurdish = {
 	intelligence_agencies = { "Asayish" }
 }
 laaz = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -4073,9 +4073,9 @@ maghreb_arabic = {
 	intelligence_agencies = { "Sychaeus" }
 }
 maghrebi = {
-	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
+	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
 	Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
-	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
+	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah
 	Sheeftah Sheeva Shogofa Shokouh Shola Sholah Simin Souzan
 	Taliba Tanaz Taneen Yagana Yakta Yasmin Zaynab }
 	callsigns = { "Ibn Abd al-Rahman" "Ibn Abbad" "Ibn Abd Allah" "Ibn Abi Hafs" "Ibn al-Azafi" "Ibn Ali"
@@ -4108,8 +4108,8 @@ magnagreek = {
 	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
 }
 magogic = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -4256,9 +4256,9 @@ marathi = {
 	intelligence_agencies = { "FMU" }
 }
 mashriqi = {
-	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
+	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
 	Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
-	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
+	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah
 	Sheeftah Sheeva Shogofa Shokouh Shola Sholah Simin Souzan
 	Taliba Tanaz Taneen Yagana Yakta Yasmin Zaynab }
 	callsigns = { "Ibn Abd al-Rahman" "Ibn Abbad" "Ibn Abd Allah" "Ibn Abi Hafs" "Ibn al-Azafi" "Ibn Ali"
@@ -4464,8 +4464,8 @@ min = {
 	intelligence_agencies = { "PLA-III" }
 }
 misrayim = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -4477,9 +4477,9 @@ misrayim = {
 	intelligence_agencies = { "Mossad" }
 }
 misri = {
-	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
+	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
 	Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
-	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
+	Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah
 	Sheeftah Sheeva Shogofa Shokouh Shola Sholah Simin Souzan
 	Taliba Tanaz Taneen Yagana Yakta Yasmin Zaynab }
 	callsigns = { "Ibn Abd al-Rahman" "Ibn Abbad" "Ibn Abd Allah" "Ibn Abi Hafs" "Ibn al-Azafi" "Ibn Ali"
@@ -4496,8 +4496,8 @@ misri = {
 	intelligence_agencies = { "OMIR" }
 }
 mizrahi = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -4937,11 +4937,11 @@ nova_scotian = {
 	intelligence_agencies = { "SNLA" }
 }
 novisvet = {
-	female_names = { Agata Agatha Barbara Branimira Desislava Dubravka Elena Helen Hicela Jelena Karolina 
+	female_names = { Agata Agatha Barbara Branimira Desislava Dubravka Elena Helen Hicela Jelena Karolina
 	Lovorka Marija Maria Milka Neda Radica Zdenka Andjela Antonija
-	Bastina Biljana Bistrina Bojana Casna Chasna Dejana Dragana Dragoslava Duga Dusica Gordana 
+	Bastina Biljana Bistrina Bojana Casna Chasna Dejana Dragana Dragoslava Duga Dusica Gordana
 	Grana Grubana Jagoda Jovana Jovanka Karika
-	Ljubica Luka Majka Malina Medeni Meki Milinka Miljana Miriti Mirjana Mudary Mudra Nada 
+	Ljubica Luka Majka Malina Medeni Meki Milinka Miljana Miriti Mirjana Mudary Mudra Nada
 	Namena Nadanje Keratza Branka Mirna }
 	callsigns = { Crn Slovene Bošnjak Hrvat Srbin Bugarski Austrijanac }
 	car_companies = { "Četiri Kotača" }
@@ -4971,9 +4971,9 @@ novvymir = {
 novysvet = {
 	female_names = { "Marie" "Anna" "Hana" "Božena" "Alžběta" "Marta" }
 	female_surnames = { Albertová Balabánová Baschová Breisková Čelovská Dvoráková Fibichová Gajdová Gellnerová Háleková
-	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková 
+	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková
 	Miková Morávecová Němečková Neruda Nováčková Novotná Popperová Radecká Rokytanská Šafáriková
-	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová 
+	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová
 	Tomášková Tylová Vitáseková "von Mittrowitz-Nettolitzková" Voříšeková Wankelová Weberová Zíbrtová Zívrová Zoubeková }
 	callsigns = { Němec Žid Ďábel Maďarština Česky }
 	industry_companies = { Škoda }
@@ -5028,16 +5028,16 @@ nuragic = {
 	Lestrigo Licinina Longonensis Macrina Opina Subasana
 	Sumbra Tarabena Tibulata Titiana Venacina Balar
 	Buduntina Coracensis Giddilitana Lucuidonensis Nurritana
-	Perfuga Turritana Uddadhaddaritana Iliensis Iolaes 
+	Perfuga Turritana Uddadhaddaritana Iliensis Iolaes
 	Diagesbes Acconitis Aechilenensis Aesaronenses Alcitana
 	Alticiensis Barbaricina Barsanis Beronicenssi Bulgar
-	Campana Caralitana Carensis Celsitana Corpicensis 
+	Campana Caralitana Carensis Celsitana Corpicensis
 	Cunusitana Euthychiana Fifensis Galillensis Hypsitana
-	Lesitana Maltamonensis Martensis Maura Moddol 
+	Lesitana Maltamonensis Martensis Maura Moddol
 	Muthonensis Neapolitana Noritana Norensis Nurrensis
 	Parata Patulcensis Patulcia Rubrensis Rubra Rubrinsis
-	Rucensis Salcitana Sarrapitana Scapitana Semilitensis 
-	Siculensis Sossinatis Sulcitana Uterina Uthicensis 
+	Rucensis Salcitana Sarrapitana Scapitana Semilitensis
+	Siculensis Sossinatis Sulcitana Uterina Uthicensis
 	Othocensis Valentina Vitensis Numisiara }
 	callsigns = { "Sardinian" "Alien" "Indo-European" }
 	industry_companies = { "Nuraghe Inc." }
@@ -5611,7 +5611,7 @@ polynesian = {
 	electronic_companies = { "Thunder Inc." }
 	intelligence_agencies = { "Plurimides" }
 }
-portuguese = { 
+portuguese = {
 	female_names = { Juana Catalina Leonor Blanca }
 	callsigns = { Castilla Aragón Navarra Portugal Galicia }
 	industry_companies = { "Industrias Nacionales" }
@@ -5657,7 +5657,7 @@ pruthenian = {
 }
 pueblo = {
 	female_names = { Ootcakao Kahavasooah Ootcakao Sacagawea Chipeta Tocmetone }
-	callsigns = { Acoma Cochiti Isleta Jemez Laguna Nambe "Ohkay Owingeh" Picuris Pojoaque Sandia 
+	callsigns = { Acoma Cochiti Isleta Jemez Laguna Nambe "Ohkay Owingeh" Picuris Pojoaque Sandia
 	Taos Tesuque Zia Zuni Hopi Piru }
 	industry_companies = { "K'áusam'é" }
 	electronic_companies = { Kâumûutsạ }
@@ -5979,8 +5979,8 @@ senufo = {
 	intelligence_agencies = { "A.I.A." }
 }
 sephardic = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -6262,9 +6262,9 @@ sonoran = {
 sorbian = {
 	female_names = { "Marie" "Anna" "Hana" "Božena" "Alžběta" "Marta" }
 	female_surnames = { Albertová Balabánová Baschová Breisková Čelovská Dvoráková Fibichová Gajdová Gellnerová Háleková
-	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková 
+	Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková
 	Miková Morávecová Němečková Neruda Nováčková Novotná Popperová Radecká Rokytanská Šafáriková
-	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová 
+	Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová
 	Tomášková Tylová Vitáseková "von Mittrowitz-Nettolitzková" Voříšeková Wankelová Weberová Zíbrtová Zívrová Zoubeková }
 	callsigns = { Němec Žid Ďábel Maďarština Česky }
 	industry_companies = { Škoda }
@@ -7451,8 +7451,8 @@ yenidun = {
 	intelligence_agencies = { "MGK" }
 }
 yevanic = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }
@@ -7584,8 +7584,8 @@ zapotec = {
 	intelligence_agencies = { "Red & Black" }
 }
 zarphatic = {
-	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
-	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther
+	Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa
 	Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
 	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
 	car_companies = { "Mashin Indastriz" }

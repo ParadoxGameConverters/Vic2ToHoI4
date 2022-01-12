@@ -1,7 +1,7 @@
 ideas = {
 	country = {
 		ENG_colonial_elite = {
-			
+
 			allowed = {
 				always = no
 			}
@@ -11,9 +11,9 @@ ideas = {
 			}
 
 			picture = generic_research_bonus
-			
+
 			removal_cost = -1
-			
+
 			modifier = {
 				research_speed_factor = 0.07
 			}
@@ -24,7 +24,7 @@ ideas = {
 			name = ENG_fortify_the_empire
 
 			picture = generic_fortify_the_borders
-		
+
 			allowed = {
 				always = no
 			}
@@ -32,7 +32,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			modifier = {
@@ -46,7 +46,7 @@ ideas = {
 			name = ENG_fortify_the_empire
 
 			picture = generic_fortify_the_borders
-		
+
 			allowed = {
 				always = no
 			}
@@ -54,7 +54,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			modifier = {
@@ -66,7 +66,7 @@ ideas = {
 		ENG_british_commonwealth_air_training_plan = {
 
 			picture = generic_air_bonus
-		
+
 			allowed = {
 				always = no
 			}
@@ -81,7 +81,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			modifier = {
@@ -95,7 +95,7 @@ ideas = {
 		ENG_joint_air_training_scheme = {
 
 			picture = generic_air_bonus
-		
+
 			allowed = {
 				always = no
 			}
@@ -111,7 +111,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
 
 			modifier = {
@@ -123,7 +123,7 @@ ideas = {
 		}
 
 		indian_independence_promised_idea  = {
-			
+
 			allowed = {
 				always = no
 			}
@@ -133,9 +133,9 @@ ideas = {
 			}
 
 			picture = generic_morale_bonus
-			
+
 			removal_cost = -1
-			
+
 			modifier = {
 				stability_factor = -0.1
 			}
@@ -152,7 +152,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				autonomy_gain = 0.5
 			}
@@ -171,7 +171,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				industrial_capacity_factory = 0.1
 				industrial_capacity_dockyard = 0.1
@@ -193,7 +193,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				industrial_capacity_factory = 0.03
 				industrial_capacity_dockyard = 0.03
@@ -215,7 +215,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				industrial_capacity_factory = 0.06
 				industrial_capacity_dockyard = 0.06
@@ -237,7 +237,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				industrial_capacity_factory = 0.09
 				industrial_capacity_dockyard = 0.09
@@ -259,7 +259,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				industrial_capacity_factory = 0.12
 				industrial_capacity_dockyard = 0.12
@@ -281,7 +281,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				industrial_capacity_factory = 0.15
 				industrial_capacity_dockyard = 0.15
@@ -301,7 +301,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				production_speed_industrial_complex_factor = 0.1
 				production_speed_arms_factory_factor = 0.1
@@ -324,7 +324,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				production_speed_industrial_complex_factor = 0.03
 				production_speed_arms_factory_factor = 0.03
@@ -346,7 +346,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				production_speed_industrial_complex_factor = 0.06
 				production_speed_arms_factory_factor = 0.06
@@ -368,7 +368,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				production_speed_industrial_complex_factor = 0.09
 				production_speed_arms_factory_factor = 0.09
@@ -390,7 +390,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				production_speed_industrial_complex_factor = 0.12
 				production_speed_arms_factory_factor = 0.12
@@ -413,7 +413,7 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			modifier = {
 				production_speed_industrial_complex_factor = 0.15
 				production_speed_arms_factory_factor = 0.15
@@ -440,8 +440,8 @@ ideas = {
 			}
 
 			picture = eng_guided_by_britain
-			
-			removal_cost = -1	
+
+			removal_cost = -1
 
 		}
 
@@ -462,8 +462,8 @@ ideas = {
 			}
 
 			picture = eng_guided_by_britain
-			
-			removal_cost = -1	
+
+			removal_cost = -1
 
 		}
 	}

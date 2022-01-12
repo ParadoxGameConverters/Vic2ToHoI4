@@ -11,9 +11,9 @@ country_event = {
 	title = election.2.t
 	desc = election.2.d
 	picture = GFX_report_event_airplane_factory
-	
+
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = {
 			OR = {
@@ -30,7 +30,7 @@ country_event = {
 	}
 
 	option = {
-		ai_chance = { 
+		ai_chance = {
 			base = 1
 		}
 		name = election.2.a
@@ -58,9 +58,9 @@ country_event = {
 	title = election.3.t
 	desc = election.3.d
 	picture = GFX_report_event_tank_factory
-	
+
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_government = democratic
 		has_war = no

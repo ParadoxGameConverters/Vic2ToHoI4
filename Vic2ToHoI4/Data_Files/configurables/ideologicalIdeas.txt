@@ -17,9 +17,9 @@ fascism = {
 				fascism_drift = -0.05
 			}
 		}
-		
+
 		fascist_influence = {
-			
+
 			allowed = {
 				always = no
 			}
@@ -31,13 +31,13 @@ fascism = {
 			removal_cost = -1
 
 			picture = generic_fascism_drift_bonus
-			
+
 			modifier = {
 				fascism_drift = 0.1
 				fascism_acceptance = 85
 			}
 		}
-		
+
 		#Weaker version
 		fascist_influence_weak = {
 			name = fascist_influence
@@ -53,15 +53,15 @@ fascism = {
 			removal_cost = -1
 
 			picture = generic_fascism_drift_bonus
-			
+
 			modifier = {
 				fascism_drift = 0.1
 				fascism_acceptance = 35
 			}
 		}
-		
+
 		nationalism = {
-			
+
 			allowed = {
 				always = no
 			}
@@ -74,26 +74,26 @@ fascism = {
 
 			picture = generic_infantry_bonus
 
-			
+
 			modifier = {
 				fascism_drift = 0.1
 			}
 		}
-		
+
 		fascist_assault_divisions = {
-			
+
 			allowed = {
 				always = no # Triggered via event
 			}
 
 			picture = generic_fascism_drift_bonus
-			
+
 			modifier = {
 				stability_factor = -0.05
 				conscription = 0.002
 				fascism_drift = 0.05
 			}
-	
+
 			ai_will_do = {
 				factor = 0
 			}
@@ -189,7 +189,7 @@ communism = {
 				communism_drift = -0.05
 			}
 		}
-		
+
 		communist_pressure = {
 			allowed = {
 				always = no
@@ -202,12 +202,12 @@ communism = {
 			removal_cost = -1
 
 			picture = generic_communism_drift_bonus
-			
+
 			modifier = {
 				communism_drift = 0.1
 			}
 		}
-		
+
 		communist_influence = {
 			allowed = {
 				always = no
@@ -220,16 +220,16 @@ communism = {
 			removal_cost = -1
 
 			picture = generic_communism_drift_bonus
-			
+
 			modifier = {
 				communism_drift = 0.1
 				communism_acceptance = 85
 			}
 		}
-		
+
 		communist_influence_weak = {
 			name = communist_influence
-			
+
 			allowed = {
 				always = no
 			}
@@ -241,13 +241,13 @@ communism = {
 			removal_cost = -1
 
 			picture = generic_communism_drift_bonus
-			
+
 			modifier = {
 				communism_drift = 0.1
 				communism_acceptance = 35
 			}
 		}
-		
+
 		internationalism = {
 			allowed = {
 				always = no
@@ -260,21 +260,21 @@ communism = {
 			removal_cost = -1
 
 			picture = generic_intel_bonus
-			
+
 			modifier = {
 				#justify_war_goal_time = -0.25
 				communism_drift = 0.1
 			}
 		}
-		
+
 		communism_partisans_recruiting = {
-			
+
 			allowed = {
 				always = no # Triggered via event
 			}
 
 			picture = generic_communism_drift_bonus
-			
+
 			modifier = {
 				conscription = -0.002
 				communism_drift = 0.05
@@ -299,10 +299,10 @@ communism = {
 				stability_factor = -0.1
 			}
 		}
-		
+
 		political_commissars_focus = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -310,11 +310,11 @@ communism = {
 			allowed_civil_war = {
 				has_government = communism
 			}
-			
+
 			removal_cost = -1
 
 			picture = generic_morale_bonus
-	
+
 			modifier = {
 				army_morale_factor = 0.1
 			}
@@ -352,7 +352,7 @@ democratic = {
 					NOT = { has_government = neutrality }
 				}
 			}
-		
+
 			removal_cost = -1
 
 			picture = generic_pp_unity_bonus
@@ -361,10 +361,10 @@ democratic = {
 				democratic_drift = -0.02
 			}
 		}
-		
+
 		democratic_influence = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -376,16 +376,16 @@ democratic = {
 			removal_cost = -1
 
 			picture = generic_democratic_drift_bonus
-			
+
 			modifier = {
 				democratic_drift = 0.1
 				democratic_acceptance = 85
 			}
 		}
-		
+
 		democratic_influence_weak = {
 			name = democratic_influence
-			
+
 			allowed = {
 				always = no
 			}
@@ -397,26 +397,26 @@ democratic = {
 			removal_cost = -1
 
 			picture = generic_democratic_drift_bonus
-			
+
 			modifier = {
 				democratic_drift = 0.1
 				democratic_acceptance = 35
 			}
 		}
-		
+
 		democratic_opposition_voicing_protests = {
-			
+
 			allowed = {
 				always = no # Triggered via event
 			}
 
 			picture = generic_democratic_drift_bonus
-			
+
 			modifier = {
 				political_power_factor = -0.2
 				democratic_drift = 0.05
 			}
-	
+
 			ai_will_do = {
 				factor = 0
 			}
@@ -463,8 +463,8 @@ democratic = {
 
 absolutist = {
 		royal_dictatorship_focus = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -472,19 +472,19 @@ absolutist = {
 			allowed_civil_war = {
 				has_government = absolutist
 			}
-			
+
 			removal_cost = -1
 
 			picture = generic_intel_bonus
-	
+
 			modifier = {
 				drift_defence_factor = 0.2
 			}
 		}
 
 		historical_claims_focus = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -492,11 +492,11 @@ absolutist = {
 			allowed_civil_war = {
 				has_government = absolutist
 			}
-			
+
 			removal_cost = -1
 
 			picture = Generic_constitutional_guarantee
-	
+
 			modifier = {
 				justify_war_goal_time = -0.5
 			}
@@ -527,13 +527,13 @@ absolutist = {
 			removal_cost = -1
 
 			picture = generic_democratic_drift_bonus
-			
+
 			modifier = {
 				absolutist_drift = 0.1
 				absolutist_acceptance = 85
 			}
 		}
-		
+
 		absolutism = {
 			allowed = {
 				always = no
@@ -547,7 +547,7 @@ absolutist = {
 
 			picture = generic_infantry_bonus
 
-			
+
 			modifier = {
 				absolutist_drift = 0.1
 			}
@@ -649,13 +649,13 @@ radical = {
 			removal_cost = -1
 
 			picture = generic_democratic_drift_bonus
-			
+
 			modifier = {
 				radical_drift = 0.1
 				radical_acceptance = 85
 			}
 		}
-		
+
 		radicalism = {
 			allowed = {
 				always = no
@@ -706,10 +706,10 @@ radical = {
 				factor = 0
 			}
 		}
-		
+
 		private_channels_focus = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -717,19 +717,19 @@ radical = {
 			allowed_civil_war = {
 				has_government = radical
 			}
-			
+
 			removal_cost = -1
 
 			picture = can_wartime_prices_and_trade_board
-	
+
 			modifier = {
 				trade_opinion_factor = 0.2
 			}
 		}
 
 		hardfought_market_focus = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -737,19 +737,19 @@ radical = {
 			allowed_civil_war = {
 				has_government = radical
 			}
-			
+
 			removal_cost = -1
 
 			picture = generic_license_production
-	
+
 			modifier = {
 				production_factory_max_efficiency_factor = 0.05
 			}
 		}
-		
+
 		army_provides_focus = {
-			
-			
+
+
 			allowed = {
 				always = no
 			}
@@ -757,11 +757,11 @@ radical = {
 			allowed_civil_war = {
 				has_government = radical
 			}
-			
+
 			removal_cost = -1
 
 			picture = generic_manpower_bonus
-	
+
 			modifier = {
 				conscription = 0.025
 			}
@@ -795,7 +795,7 @@ neutrality = {
 					NOT = { has_government = neutrality }
 				}
 			}
-		
+
 			removal_cost = -1
 
 			picture = generic_pp_unity_bonus
