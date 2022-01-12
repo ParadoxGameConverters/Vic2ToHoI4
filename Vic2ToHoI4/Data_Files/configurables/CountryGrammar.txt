@@ -69,7 +69,7 @@ link = { category = tag_mscad vic2_tag = LIV extra = "$COMMUNISM" } # Le Prolét
 link = { category = tag_mscad vic2_tag = OIR extra = "$COMMUNISM" } # Le Prolétariat d'Oirat
 link = { category = tag_mscad vic2_tag = KNI extra = "$COMMUNISM" } # Le Prolétariat Hôpital
 link = { category = tag_mscad vic2_tag = TEU extra = "$COMMUNISM" } # Le Prolétariat Teutonique
-link = { category = tag_mscad vic2_tag = HRE extra = "NOT = { $DEMOCRATIC }" } # Le Saint Empire Romain
+link = { category = tag_mscad vic2_tag = HLR extra = "NOT = { $DEMOCRATIC }" } # Le Saint Empire Romain
 link = { category = tag_mscad vic2_tag = USA extra = "$ABSOLUTIST" } # Le Royaume d'Amerique
 link = { category = tag_mscad vic2_tag = VAT extra = "$FASCISM" } # Le Royaume de Dieu
 link = { category = tag_mscad vic2_tag = TPG extra = "NOT = { $DEMOCRATIC $RADICAL $COMMUNISM $FASCISM }" } # Le Royaume Céleste
@@ -703,7 +703,7 @@ link = { category = tag_fscad vic2_tag = YRK extra = "$DEMOCRATIC" } # La Répub
 link = { category = tag_fscad vic2_tag = KHA extra = "$DEMOCRATIC" } # La République Khalkha
 link = { category = tag_fscad vic2_tag = LTN extra = "$DEMOCRATIC" } # La République Latine
 link = { category = tag_fscad vic2_tag = VAT extra = "$COMMUNISM" } # La République Populaire de Rome
-link = { category = tag_fscad vic2_tag = HRE extra = "$DEMOCRATIC" } # La Sainte République Romaine
+link = { category = tag_fscad vic2_tag = HLR extra = "$DEMOCRATIC" } # La Sainte République Romaine
 link = { category = tag_fscad vic2_tag = ALL extra = "OR = { $COMMUNISM $DEMOCRATIC }" } # La Nation de l'Islam / La République de l'Islam
 link = { category = tag_fscad vic2_tag = BAV extra = "$COMMUNISM" } # La Räterepublik Bavaroise
 link = { category = tag_fscad vic2_tag = GBR extra = "OR = { $FASCISM $RADICAL }" } # La République d'Albion
