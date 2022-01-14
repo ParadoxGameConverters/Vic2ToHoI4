@@ -5,6 +5,7 @@
 
 #include "ProvinceMappingTypes.h"
 #include <map>
+#include <set>
 #include <vector>
 
 
@@ -20,6 +21,7 @@ class ProvinceMapper
 
 	[[nodiscard]] std::vector<int> getVic2ToHoI4ProvinceMapping(int Vic2Province) const;
 	[[nodiscard]] std::vector<int> getHoI4ToVic2ProvinceMapping(int HoI4Province) const;
+	[[nodiscard]] std::set<int> getEquivalentVic2Provinces(const std::set<int>& hoi4_provinces) const;
 
 	[[nodiscard]] bool isVic2ProvinceMapped(int vic2ProvinceNum) const
 	{

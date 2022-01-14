@@ -12,6 +12,8 @@
 #include "V2World/States/State.h"
 #include "V2World/States/StateDefinitions.h"
 #include <fstream>
+#include <ranges>
+
 
 
 namespace
@@ -700,21 +702,182 @@ void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const
 
 void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 	 const Vic2::State& vic2State,
+	 const std::set<int>& sourceProvinceNumbers,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
 	 const std::map<std::string, std::string>& grammarMappings)
 {
-	for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+	std::map<std::string, std::string> localisedNames;
+
+	// Single province states get the name of the province in Vic2
+	// This is either one province in HoI4 or one province in Vic2
+	if (destinationStateHasOneProvince(hoi4State) || sourceProvinceNumbers.size() == 1)
 	{
-		addStateLocalisationForLanguage(hoi4State,
-			 vic2State,
-			 language,
-			 name,
-			 theStateDefinitions,
-			 vic2Localisations,
-			 theProvinceMapper,
-			 grammarMappings);
+		const auto hoi4Province = *hoi4State.getProvinces().begin();
+		if (const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
+			 !possibleVic2Provinces.empty())
+		{
+			const auto theProvince = possibleVic2Provinces[0];
+			const auto provinceNameInLanguages =
+				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string(theProvince));
+			if (provinceNameInLanguages.empty())
+			{
+				Log(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince;
+			}
+			for (const auto& [language, provinceName]: provinceNameInLanguages)
+			{
+				localisedNames[language] = provinceName;
+			}
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Could not find localization for HoI4 province " << hoi4Province;
+		}
+	}
+
+	// Complete states and states with only one missing province get the name of the state in Vic2
+	else if (sourceStateHasAllButOneProvinceFromDefinition(vic2State,
+					 *sourceProvinceNumbers.begin(),
+					 theStateDefinitions) ||
+				stateHasAllDefinedProvincesAfterConversion(hoi4State,
+					 sourceProvinceNumbers,
+					 theStateDefinitions,
+					 theProvinceMapper) ||
+				sourceProvincesHaveAllButOneProvinceFromDefinition(sourceProvinceNumbers, theStateDefinitions) ||
+				vic2State.getOwner().empty())
+	{
+		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			localisedNames[language] = name;
+		}
+	}
+
+	/* SPLIT STATES AND GRAMMAR */
+	/* Default: "French Guyana" */
+	/* French, Spanish, Portuguese, Italian: "Guyana French" */
+	/* Reason: Grammar rules */
+	/* */
+	/* German: "French-Guyana" */
+	/* Reason: To avoid having to deal with German adjective declension */
+	else if (vic2State.isPartialState())
+	{
+		for (auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			std::optional<std::string> possibleOwnerAdjective;
+			if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
+			{
+				std::string adjectiveKey = hoi4State.getOwner() + "_neutrality" + "_ADJ";
+				const auto& languageCategory = vic2State.getLanguageCategory();
+				if (const auto& grammarMapping = grammarMappings.find(languageCategory);
+					 grammarMapping != grammarMappings.end())
+				{
+					adjectiveKey += grammarMapping->second;
+					if (language == "french")
+					{
+						adjectiveKey += "_FR";
+					}
+					else if (language == "spanish")
+					{
+						adjectiveKey += "_ES";
+					}
+					else if (language == "braz_por")
+					{
+						adjectiveKey += "_PT";
+					}
+					else // (language == "italian")
+					{
+						adjectiveKey += "_IT";
+					}
+				}
+				if (const auto hoi4LocalisationsInLanguage = customLocalisations.find(language);
+					 hoi4LocalisationsInLanguage != customLocalisations.end())
+				{
+					if (const auto hoi4Localisation = hoi4LocalisationsInLanguage->second.find(adjectiveKey);
+						 hoi4Localisation != hoi4LocalisationsInLanguage->second.end())
+					{
+						possibleOwnerAdjective = hoi4Localisation->second;
+					}
+				}
+			}
+
+			if (!possibleOwnerAdjective)
+			{
+				// if the fancy localisations can't be found or doesn't apply, try to fall back to basic behavior
+				possibleOwnerAdjective = vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", language);
+			}
+
+			if (!possibleOwnerAdjective)
+			{
+				// in the final case, just use the word "partial"
+				Log(LogLevel::Warning) << "No localisation found for " << vic2State.getOwner() + "_ADJ"
+											  << " in " << language;
+				const auto& partial = vic2Localisations.getTextInLanguage("PARTIAL", language);
+				if (partial)
+				{
+					possibleOwnerAdjective = *partial;
+				}
+				else
+				{
+					possibleOwnerAdjective = "Partial";
+				}
+			}
+
+			if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
+			{
+				name += " " + *possibleOwnerAdjective;
+			}
+			else if (language == "german")
+			{
+				name = *possibleOwnerAdjective + "-" + name;
+			}
+			else
+			{
+				name = *possibleOwnerAdjective + " " + name;
+			}
+
+			localisedNames[language] = name;
+		}
+	}
+	else
+	{
+		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			localisedNames[language] = name;
+		}
+	}
+
+	// if wasteland localisations exist update or override other localisations
+	if (hoi4State.isImpassable())
+	{
+		if (!stateHasAllDefinedProvincesAfterConversion(hoi4State,
+				  sourceProvinceNumbers,
+				  theStateDefinitions,
+				  theProvinceMapper))
+		{
+			for (auto& localisation: localisedNames | std::ranges::views::values)
+			{
+				localisation += " Wasteland";
+			}
+		}
+
+		const auto& wastelandNameInLanguages =
+			 vic2Localisations.getTextInEachLanguage(vic2State.getStateID() + "_WASTELAND");
+		for (const auto& [language, localisation]: wastelandNameInLanguages)
+		{
+			localisedNames[language] = localisation;
+		}
+		if (wastelandNameInLanguages.empty())
+		{
+			Log(LogLevel::Warning) << vic2State.getStateID() << " had a wasteland section with no localisation. Add "
+										  << vic2State.getStateID()
+										  << "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
+		}
+	}
+
+	for (const auto& [language, localisation]: localisedNames)
+	{
+		getExistingStateLocalisation(language).insert(std::make_pair(hoi4State.getID(), localisation));
 	}
 }
 
@@ -786,19 +949,6 @@ void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>
 }
 
 
-bool HoI4::Localisation::sourceStateHasOneProvince(const State& hoi4State,
-	 const Mappers::ProvinceMapper& theProvinceMapper)
-{
-	std::set<int> allVic2Provinces;
-	for (const auto& hoi4Province: hoi4State.getProvinces())
-	{
-		const auto Vic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
-		allVic2Provinces.insert(Vic2Provinces.begin(), Vic2Provinces.end());
-	}
-	return allVic2Provinces.size() == 1;
-}
-
-
 bool HoI4::Localisation::destinationStateHasOneProvince(const State& hoi4State)
 {
 	return hoi4State.getProvinces().size() == 1;
@@ -806,22 +956,38 @@ bool HoI4::Localisation::destinationStateHasOneProvince(const State& hoi4State)
 
 
 bool HoI4::Localisation::sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
+	 int firstSourceProvince,
 	 const Vic2::StateDefinitions& theStateDefinitions)
 {
-	return sourceState.getProvinces().size() ==
-			 theStateDefinitions.getAllProvinces(*sourceState.getProvinceNumbers().begin()).size() - 1;
+	int missingProvinces = 0;
+	for (const auto definitionProvince: theStateDefinitions.getAllProvinces(firstSourceProvince))
+	{
+		bool hasProvince = false;
+		if (!sourceState.getProvinceNumbers().contains(definitionProvince))
+		{
+			++missingProvinces;
+		}
+	}
+	return missingProvinces == 1;
+}
+
+
+bool HoI4::Localisation::sourceProvincesHaveAllButOneProvinceFromDefinition(const std::set<int>& sourceProvinceNumbers,
+	 const Vic2::StateDefinitions& theStateDefinitions)
+{
+	return sourceProvinceNumbers.size() ==
+			 theStateDefinitions.getAllProvinces(*sourceProvinceNumbers.begin()).size() - 1;
 }
 
 
 bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State& state,
-	 const Vic2::State& sourceState,
+	 const std::set<int>& sourceProvinceNumbers,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Mappers::ProvinceMapper& theProvinceMapper)
 {
 	std::set<int> stateDefinitionDefinitionProvinces;
 
-	auto stateDefinitionSourceProvinces = theStateDefinitions.getAllProvinces(*sourceState.getProvinceNumbers().begin());
-	for (auto sourceProvince: stateDefinitionSourceProvinces)
+	for (const auto sourceProvince: theStateDefinitions.getAllProvinces(*sourceProvinceNumbers.begin()))
 	{
 		for (auto HoI4Province: theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince))
 		{
@@ -829,172 +995,9 @@ bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State&
 		}
 	}
 
-	for (auto definedProvince: stateDefinitionDefinitionProvinces)
-	{
-		if (!state.getProvinces().contains(definedProvince))
-		{
-			return false;
-		}
-	}
-
-	return true;
-}
-
-
-void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
-	 const Vic2::State& vic2State,
-	 const std::string& language,
-	 const std::string& name,
-	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const Vic2::Localisations& vic2Localisations,
-	 const Mappers::ProvinceMapper& theProvinceMapper,
-	 const std::map<std::string, std::string>& grammarMappings)
-{
-	std::string localisedName;
-	if (destinationStateHasOneProvince(hoi4State) || sourceStateHasOneProvince(hoi4State, theProvinceMapper))
-	{
-		const auto hoi4Province = *hoi4State.getProvinces().begin();
-		if (const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
-			 !possibleVic2Provinces.empty())
-		{
-			const auto theProvince = possibleVic2Provinces[0];
-			auto possibleProvinceName =
-				 vic2Localisations.getTextInLanguage("PROV" + std::to_string(theProvince), language);
-			if (possibleProvinceName)
-			{
-				localisedName = *possibleProvinceName;
-			}
-			else
-			{
-				Log(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince;
-			}
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not find localization for HoI4 province " << hoi4Province;
-		}
-	}
-	else if (sourceStateHasAllButOneProvinceFromDefinition(vic2State, theStateDefinitions))
-	{
-		localisedName = name;
-	}
-	else if (stateHasAllDefinedProvincesAfterConversion(hoi4State, vic2State, theStateDefinitions, theProvinceMapper))
-	{
-		localisedName = name;
-	}
-	else if (vic2State.isPartialState() && vic2State.getOwner().empty())
-	{
-		localisedName = name;
-	}
-	/* SPLIT STATES AND GRAMMAR */
-	/* Default: "French Guyana" */
-	/* French, Spanish, Portuguese, Italian: "Guyana French" */
-	/* Reason: Grammar rules */
-	/* */
-	/* German: "French-Guyana" */
-	/* Reason: To avoid having to deal with German adjective declension */
-	else if (vic2State.isPartialState())
-	{
-		std::optional<std::string> possibleOwnerAdjective;
-		if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
-		{
-			std::string adjectiveKey = hoi4State.getOwner() + "_neutrality" + "_ADJ";
-			const auto& languageCategory = vic2State.getLanguageCategory();
-			if (const auto& grammarMapping = grammarMappings.find(languageCategory);
-				 grammarMapping != grammarMappings.end())
-			{
-				adjectiveKey += grammarMapping->second;
-				if (language == "french")
-				{
-					adjectiveKey += "_FR";
-				}
-				else if (language == "spanish")
-				{
-					adjectiveKey += "_ES";
-				}
-				else if (language == "braz_por")
-				{
-					adjectiveKey += "_PT";
-				}
-				else // (language == "italian")
-				{
-					adjectiveKey += "_IT";
-				}
-			}
-			if (const auto hoi4LocalisationsInLanguage = customLocalisations.find(language);
-				 hoi4LocalisationsInLanguage != customLocalisations.end())
-			{
-				if (const auto hoi4Localisation = hoi4LocalisationsInLanguage->second.find(adjectiveKey);
-					 hoi4Localisation != hoi4LocalisationsInLanguage->second.end())
-				{
-					possibleOwnerAdjective = hoi4Localisation->second;
-				}
-			}
-		}
-
-		if (!possibleOwnerAdjective)
-		{
-			// if the fancy localisations can't be found or doesn't apply, try to fall back to basic behavior
-			possibleOwnerAdjective = vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", language);
-		}
-
-		if (!possibleOwnerAdjective)
-		{
-			// in the final case, just use the word "partial"
-			Log(LogLevel::Warning) << "No localisation found for " << vic2State.getOwner() + "_ADJ"
-										  << " in " << language;
-			const auto& partial = vic2Localisations.getTextInLanguage("PARTIAL", language);
-			if (partial)
-			{
-				possibleOwnerAdjective = *partial;
-			}
-			else
-			{
-				possibleOwnerAdjective = "Partial";
-			}
-		}
-
-		if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
-		{
-			localisedName = name + " " + *possibleOwnerAdjective;
-		}
-		else
-		{
-			if (language == "german")
-			{
-				localisedName = *possibleOwnerAdjective + "-" + name;
-			}
-			else
-			{
-				localisedName = *possibleOwnerAdjective + " " + name;
-			}
-		}
-	}
-	else if (hoi4State.isImpassable())
-	{
-		const auto& possibleWastelandName =
-			 vic2Localisations.getTextInLanguage(vic2State.getStateID() + "_WASTELAND", language);
-		if (possibleWastelandName)
-		{
-			localisedName = *possibleWastelandName;
-		}
-		else
-		{
-			localisedName = name + " Wasteland";
-			if (language == "english")
-			{
-				Log(LogLevel::Warning) << name << " had a wasteland section with no localisation. Add "
-											  << vic2State.getStateID()
-											  << "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
-			}
-		}
-	}
-	else
-	{
-		localisedName = name;
-	}
-
-	getExistingStateLocalisation(language).insert(std::make_pair(hoi4State.getID(), localisedName));
+	return std::ranges::all_of(stateDefinitionDefinitionProvinces, [state](int definedProvince) {
+		return state.getProvinces().contains(definedProvince);
+	});
 }
 
 

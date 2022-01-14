@@ -76,6 +76,7 @@ class Localisation
 
 	void addStateLocalisation(const State& hoi4State,
 		 const Vic2::State& vic2State,
+		 const std::set<int>& sourceProvinceNumbers,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
@@ -175,14 +176,6 @@ class Localisation
 		 const Vic2::Localisations& vic2Localisations,
 		 const ArticleRules& articleRules);
 
-	void addStateLocalisationForLanguage(const State& hoi4State,
-		 const Vic2::State& vic2State,
-		 const std::string& language,
-		 const std::string& name,
-		 const Vic2::StateDefinitions& theStateDefinitions,
-		 const Vic2::Localisations& vic2Localisations,
-		 const Mappers::ProvinceMapper& theProvinceMapper,
-		 const std::map<std::string, std::string>& grammarMappings);
 	void addVPLocalisationForLanguage(const State& state, const std::string& language, const std::string& name);
 	std::map<stateNumber, std::string>& getExistingStateLocalisation(const std::string& language);
 	keyToLocalisationMap& getExistingVPLocalisation(const std::string& language);
@@ -194,12 +187,13 @@ class Localisation
 		 const Vic2::Localisations& vic2Localisations,
 		 const Mappers::ProvinceMapper& theProvinceMapper);
 
-	static bool sourceStateHasOneProvince(const State& hoi4State, const Mappers::ProvinceMapper& theProvinceMapper);
 	static bool destinationStateHasOneProvince(const State& hoi4State);
-	static bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
+	static bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState, int firstSourceProvince,
+		 const Vic2::StateDefinitions& theStateDefinitions);
+	static bool sourceProvincesHaveAllButOneProvinceFromDefinition(const std::set<int>& sourceProvinceNumbers,
 		 const Vic2::StateDefinitions& theStateDefinitions);
 	static bool stateHasAllDefinedProvincesAfterConversion(const State& state,
-		 const Vic2::State& sourceState,
+		 const std::set<int>& sourceProvinceNumbers,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Mappers::ProvinceMapper& theProvinceMapper);
 
