@@ -18,6 +18,7 @@
 
 namespace
 {
+
 std::optional<Vic2::LanguageToLocalisationMap> getConfigurableDominionNames(
 	 const Vic2::Localisations& vic2Localisations,
 	 const std::string& region,
@@ -94,6 +95,25 @@ Vic2::LanguageToLocalisationMap configureDominionNames(const Vic2::LanguageToLoc
 
 	return localisationsForGovernment;
 }
+
+
+bool stateHasCapital(const std::set<int>& source_province_numbers, const Vic2::StateDefinitions& state_definitions)
+{
+	const auto state_id = state_definitions.getStateID(*source_province_numbers.begin());
+	if (!state_id.has_value())
+	{
+		return false;
+	}
+
+	const auto possible_capital = state_definitions.getCapitalProvince(state_id.value());
+	if (!possible_capital.has_value())
+	{
+		return false;
+	}
+
+	return source_province_numbers.contains(possible_capital.value());
+}
+
 } // namespace
 
 
@@ -710,7 +730,7 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 {
 	std::map<std::string, std::string> localisedNames;
 
-	// Single province states get the name of the province in Vic2
+	// Single province states get the Vic2 province name
 	// This is either one province in HoI4 or one province in Vic2
 	if (destinationStateHasOneProvince(hoi4State) || sourceProvinceNumbers.size() == 1)
 	{
@@ -736,16 +756,41 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 		}
 	}
 
-	// Complete states and states with only one missing province get the name of the state in Vic2
+	// Complete states get the Vic2 state name
+	else if (stateHasAllDefinedProvincesAfterConversion(hoi4State,
+					 sourceProvinceNumbers,
+					 theStateDefinitions,
+					 theProvinceMapper))
+	{
+		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			localisedNames[language] = name;
+		}
+	}
+
+	// States with only one missing province get the Vic2 state name
 	else if (sourceStateHasAllButOneProvinceFromDefinition(vic2State,
 					 *sourceProvinceNumbers.begin(),
 					 theStateDefinitions) ||
-				stateHasAllDefinedProvincesAfterConversion(hoi4State,
-					 sourceProvinceNumbers,
-					 theStateDefinitions,
-					 theProvinceMapper) ||
-				sourceProvincesHaveAllButOneProvinceFromDefinition(sourceProvinceNumbers, theStateDefinitions) ||
-				vic2State.getOwner().empty())
+				sourceProvincesHaveAllButOneProvinceFromDefinition(sourceProvinceNumbers, theStateDefinitions))
+	{
+		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			localisedNames[language] = name;
+		}
+	}
+
+	// unowned states get the Vic2 state name
+	else if (vic2State.getOwner().empty())
+	{
+		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			localisedNames[language] = name;
+		}
+	}
+
+	// states that were split by the converter and have the capital get the Vic2 state name
+	else if (!vic2State.isPartialState() && stateHasCapital(sourceProvinceNumbers, theStateDefinitions))
 	{
 		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
 		{
@@ -843,7 +888,7 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 	{
 		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
 		{
-			localisedNames[language] = name;
+			localisedNames[language] = "Unhandled case";
 		}
 	}
 
@@ -999,7 +1044,6 @@ bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State&
 		return state.getProvinces().contains(definedProvince);
 	});
 }
-
 
 void HoI4::Localisation::addVPLocalisationForLanguage(const State& state,
 	 const std::string& language,
