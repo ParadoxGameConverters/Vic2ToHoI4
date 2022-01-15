@@ -789,15 +789,6 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 		}
 	}
 
-	// states that were split by the converter and have the capital get the Vic2 state name
-	else if (!vic2State.isPartialState() && stateHasCapital(sourceProvinceNumbers, theStateDefinitions))
-	{
-		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
-		{
-			localisedNames[language] = name;
-		}
-	}
-
 	/* SPLIT STATES AND GRAMMAR */
 	/* Default: "French Guyana" */
 	/* French, Spanish, Portuguese, Italian: "Guyana French" */
@@ -884,11 +875,30 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 			localisedNames[language] = name;
 		}
 	}
-	else
+
+	// states that were split by the converter and have the capital get the Vic2 state name
+	else if (stateHasCapital(sourceProvinceNumbers, theStateDefinitions))
 	{
-		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		for (const auto& [language, name] : vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
 		{
-			localisedNames[language] = "Unhandled case";
+			localisedNames[language] = name;
+		}
+	}
+
+	// states split by the converter possibly get backup names
+	else if (!hoi4State.isImpassable())
+	{
+		const auto& splitNameInLanguages =
+			vic2Localisations.getTextInEachLanguage(vic2State.getStateID() + "_SPLIT");
+		for (const auto& [language, localisation] : splitNameInLanguages)
+		{
+			localisedNames[language] = localisation;
+		}
+		if (splitNameInLanguages.empty())
+		{
+			Log(LogLevel::Warning) << vic2State.getStateID() << " had a split section with no localisation. Add "
+				<< vic2State.getStateID()
+				<< "_SPLIT to Configurables/Vic2Localisations.csv for better conversion.";
 		}
 	}
 
@@ -896,27 +906,51 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 	if (hoi4State.isImpassable())
 	{
 		if (!stateHasAllDefinedProvincesAfterConversion(hoi4State,
-				  sourceProvinceNumbers,
-				  theStateDefinitions,
-				  theProvinceMapper))
+			sourceProvinceNumbers,
+			theStateDefinitions,
+			theProvinceMapper))
 		{
-			for (auto& localisation: localisedNames | std::ranges::views::values)
+			for (auto& localisation : localisedNames | std::ranges::views::values)
 			{
 				localisation += " Wasteland";
 			}
-		}
 
-		const auto& wastelandNameInLanguages =
-			 vic2Localisations.getTextInEachLanguage(vic2State.getStateID() + "_WASTELAND");
-		for (const auto& [language, localisation]: wastelandNameInLanguages)
-		{
-			localisedNames[language] = localisation;
+			const auto& wastelandNameInLanguages =
+				vic2Localisations.getTextInEachLanguage(vic2State.getStateID() + "_WASTELAND");
+			for (const auto& [language, localisation] : wastelandNameInLanguages)
+			{
+				localisedNames[language] = localisation;
+			}
+			if (wastelandNameInLanguages.empty())
+			{
+				Log(LogLevel::Warning) << vic2State.getStateID() << " had a wasteland section with no localisation. Add "
+					<< vic2State.getStateID()
+					<< "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
+			}
 		}
-		if (wastelandNameInLanguages.empty())
+	}
+
+	if (localisedNames.empty())
+	{
+		const auto hoi4Province = *hoi4State.getProvinces().begin();
+		if (const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
+			 !possibleVic2Provinces.empty())
 		{
-			Log(LogLevel::Warning) << vic2State.getStateID() << " had a wasteland section with no localisation. Add "
-										  << vic2State.getStateID()
-										  << "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
+			const auto theProvince = possibleVic2Provinces[0];
+			const auto provinceNameInLanguages =
+				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string(theProvince));
+			if (provinceNameInLanguages.empty())
+			{
+				Log(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince;
+			}
+			for (const auto& [language, provinceName]: provinceNameInLanguages)
+			{
+				localisedNames[language] = provinceName;
+			}
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Could not find localization for HoI4 province " << hoi4Province;
 		}
 	}
 
