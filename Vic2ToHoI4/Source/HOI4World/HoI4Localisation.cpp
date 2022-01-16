@@ -5,6 +5,7 @@
 #include "Log.h"
 #include "Mappers/Government/GovernmentMapper.h"
 #include "OSCompatibilityLayer.h"
+#include "Parser.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
 #include "V2World/Countries/Country.h"
@@ -28,15 +29,13 @@ void importLocalisationFile(const std::string& filename, HoI4::languageToLocalis
 	{
 		throw std::runtime_error("Could not open " + filename);
 	}
-	char bitBucket[3];
-	file.read(bitBucket, sizeof bitBucket);
+	commonItems::absorbBOM(file);
 
 	std::string language;
 	while (!file.eof())
 	{
-		char buffer[2048];
-		file.getline(buffer, sizeof buffer);
-		std::string line(buffer);
+		std::string line;
+		getline(file, line);
 		if (line.starts_with("l_"))
 		{
 			language = line.substr(2, line.length() - 3);
