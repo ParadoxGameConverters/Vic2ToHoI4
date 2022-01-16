@@ -5,6 +5,7 @@
 #include "Log.h"
 #include "Mappers/Government/GovernmentMapper.h"
 #include "OSCompatibilityLayer.h"
+#include "Parser.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
 #include "V2World/Countries/Country.h"
@@ -12,10 +13,138 @@
 #include "V2World/States/State.h"
 #include "V2World/States/StateDefinitions.h"
 #include <fstream>
+#include <ranges>
+
 
 
 namespace
 {
+
+void importLocalisationFile(const std::string& filename, HoI4::languageToLocalisationsMap& localisations)
+{
+	HoI4::keyToLocalisationMap newLocalisations;
+
+	std::ifstream file(filename);
+	if (!file.is_open())
+	{
+		throw std::runtime_error("Could not open " + filename);
+	}
+	commonItems::absorbBOM(file);
+
+	std::string language;
+	while (!file.eof())
+	{
+		std::string line;
+		getline(file, line);
+		if (line.starts_with("l_"))
+		{
+			language = line.substr(2, line.length() - 3);
+			continue;
+		}
+
+		const auto colon = line.find(':');
+		if (colon == std::string::npos)
+		{
+			continue;
+		}
+		auto key = line.substr(1, colon - 1);
+
+		line = line.substr(colon, line.length());
+		const auto quote = line.find('\"');
+		const auto value = line.substr(quote + 1, line.length() - quote - 2);
+
+		newLocalisations[key] = value;
+	}
+
+	auto [iterator, success] = localisations.emplace(language, newLocalisations);
+	if (!success)
+	{
+		iterator->second = newLocalisations;
+	}
+
+	file.close();
+}
+
+
+void addLocalisation(const std::string& newKey,
+	 const std::string& language,
+	 HoI4::keyToLocalisationMap& existingKeyToLocalisationMapping,
+	 const std::string& localisation,
+	 const std::string& HoI4Suffix,
+	 const HoI4::ArticleRules& articleRules)
+{
+	if (const auto existingLocalisation = existingKeyToLocalisationMapping.find(newKey);
+		 existingLocalisation == existingKeyToLocalisationMapping.end())
+	{
+		existingKeyToLocalisationMapping.insert(
+			 std::make_pair(newKey, articleRules.updateArticles(language, localisation)));
+		if (!HoI4Suffix.empty())
+		{
+			existingKeyToLocalisationMapping.insert(std::make_pair(newKey + HoI4Suffix, localisation));
+		}
+	}
+	else
+	{
+		existingKeyToLocalisationMapping[newKey] = articleRules.updateArticles(language, localisation);
+		if (!HoI4Suffix.empty())
+		{
+			existingKeyToLocalisationMapping[newKey + HoI4Suffix] = localisation;
+		}
+	}
+}
+
+
+bool destinationStateHasOneProvince(const HoI4::State& hoi4State)
+{
+	return hoi4State.getProvinces().size() == 1;
+}
+
+
+bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
+	 const int firstSourceProvince,
+	 const Vic2::StateDefinitions& theStateDefinitions)
+{
+	int missingProvinces = 0;
+	for (const auto definitionProvince: theStateDefinitions.getAllProvinces(firstSourceProvince))
+	{
+		if (!sourceState.getProvinceNumbers().contains(definitionProvince))
+		{
+			++missingProvinces;
+		}
+	}
+	return missingProvinces == 1;
+}
+
+
+bool sourceProvincesHaveAllButOneProvinceFromDefinition(const std::set<int>& sourceProvinceNumbers,
+	 const Vic2::StateDefinitions& theStateDefinitions)
+{
+	return sourceProvinceNumbers.size() ==
+			 theStateDefinitions.getAllProvinces(*sourceProvinceNumbers.begin()).size() - 1;
+}
+
+
+bool stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state,
+	 const std::set<int>& sourceProvinceNumbers,
+	 const Vic2::StateDefinitions& theStateDefinitions,
+	 const Mappers::ProvinceMapper& theProvinceMapper)
+{
+	std::set<int> stateDefinitionDefinitionProvinces;
+
+	for (const auto sourceProvince: theStateDefinitions.getAllProvinces(*sourceProvinceNumbers.begin()))
+	{
+		for (auto HoI4Province: theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince))
+		{
+			stateDefinitionDefinitionProvinces.insert(HoI4Province);
+		}
+	}
+
+	return std::ranges::all_of(stateDefinitionDefinitionProvinces, [state](int definedProvince) {
+		return state.getProvinces().contains(definedProvince);
+	});
+}
+
+
 std::optional<Vic2::LanguageToLocalisationMap> getConfigurableDominionNames(
 	 const Vic2::Localisations& vic2Localisations,
 	 const std::string& region,
@@ -64,6 +193,8 @@ std::optional<Vic2::LanguageToLocalisationMap> getConfigurableDominionNames(
 }
 
 
+constexpr std::string_view overlord_string = "$OVERLORD$";
+constexpr std::string_view overlord_adjective_string = "$OVERLORD_ADJ$";
 Vic2::LanguageToLocalisationMap configureDominionNames(const Vic2::LanguageToLocalisationMap& configurableDominionNames,
 	 const Vic2::LanguageToLocalisationMap& ownerNames,
 	 const Vic2::LanguageToLocalisationMap& ownerAdjectives)
@@ -71,19 +202,21 @@ Vic2::LanguageToLocalisationMap configureDominionNames(const Vic2::LanguageToLoc
 	Vic2::LanguageToLocalisationMap localisationsForGovernment;
 	for (auto& [language, localisation]: configurableDominionNames)
 	{
-		auto newLocalisation = localisation;
+		std::string newLocalisation = localisation;
 		if (const auto ownerName = ownerNames.find(language); ownerName != ownerNames.end())
 		{
-			while (newLocalisation.find("$OVERLORD$") != std::string::npos)
+			while (newLocalisation.find(overlord_string) != std::string::npos)
 			{
-				newLocalisation.replace(newLocalisation.find("$OVERLORD$"), 10, ownerName->second);
+				newLocalisation.replace(newLocalisation.find(overlord_string), overlord_string.length(), ownerName->second);
 			}
 		}
 		if (const auto ownerAdjective = ownerAdjectives.find(language); ownerAdjective != ownerAdjectives.end())
 		{
-			while (newLocalisation.find("$OVERLORD_ADJ$") != std::string::npos)
+			while (newLocalisation.find(overlord_adjective_string) != std::string::npos)
 			{
-				newLocalisation.replace(newLocalisation.find("$OVERLORD_ADJ$"), 14, ownerAdjective->second);
+				newLocalisation.replace(newLocalisation.find(overlord_adjective_string),
+					 overlord_adjective_string.length(),
+					 ownerAdjective->second);
 			}
 		}
 
@@ -92,13 +225,82 @@ Vic2::LanguageToLocalisationMap configureDominionNames(const Vic2::LanguageToLoc
 
 	return localisationsForGovernment;
 }
+
+
+bool stateHasCapital(const std::set<int>& source_province_numbers, const Vic2::StateDefinitions& state_definitions)
+{
+	const auto state_id = state_definitions.getStateID(*source_province_numbers.begin());
+	if (!state_id.has_value())
+	{
+		return false;
+	}
+
+	const auto possible_capital = state_definitions.getCapitalProvince(state_id.value());
+	if (!possible_capital.has_value())
+	{
+		return false;
+	}
+
+	return source_province_numbers.contains(possible_capital.value());
+}
+
+
+std::string getLanguageCode(const std::string& language)
+{
+	if (language == "braz_por")
+	{
+		return "PT";
+	}
+	if (language == "french")
+	{
+		return "FR";
+	}
+	if (language == "italian")
+	{
+		return "IT";
+	}
+	if (language == "spanish")
+	{
+		return "ES";
+	}
+
+	return "";
+}
+
+
+void insertScriptedLocalisation(const std::string& localisationKey,
+	 const std::string& replacementKey,
+	 HoI4::ScriptedLocalisation& scriptedLocalisation,
+	 const std::set<std::string>& majorIdeologies)
+{
+	const std::regex extractRegex("([A-Z0-9]{3})_([a-z]+)_ADJ");
+
+	std::smatch match;
+	std::regex_match(localisationKey, match, extractRegex);
+	const std::string tag = match[1];
+	const std::string ideology = match[2];
+	if (!majorIdeologies.contains(ideology))
+	{
+		return;
+	}
+
+	std::string text;
+	text += "= {\n";
+	text += "\t\ttrigger = {\n";
+	text += "\t\t\tOR = { tag = " + tag + " original_tag = " + tag + " }\n";
+	text += "\t\t\thas_government = " + ideology + "\n";
+	text += "\t\t}\n";
+	text += "\t\tlocalization_key = " + localisationKey + replacementKey + "\n";
+	text += "\t}";
+	scriptedLocalisation.addText(text);
+}
+
 } // namespace
 
 
-std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocalisations(
-	 const Configuration& theConfiguration)
+std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocalisations(std::string_view hoi4_directory)
 {
-	importLocalisations(theConfiguration);
+	importLocalisations(hoi4_directory);
 	prepareBlankLocalisations();
 
 	return std::make_unique<Localisation>(stateLocalisations,
@@ -117,25 +319,26 @@ std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocali
 }
 
 
-void HoI4::Localisation::Importer::importLocalisations(const Configuration& theConfiguration)
+void HoI4::Localisation::Importer::importLocalisations(std::string_view hoi4_directory)
 {
-	for (const auto& subdirectory: commonItems::GetAllSubfolders(theConfiguration.getHoI4Path() + "/localisation"))
+	for (const auto& subdirectory: commonItems::GetAllSubfolders(std::string(hoi4_directory).append("/localisation")))
 	{
 		for (const auto& fileName:
-			 commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/localisation/" + subdirectory))
+			 commonItems::GetAllFilesInFolder(std::string(hoi4_directory).append("/localisation/").append(subdirectory)))
 		{
+			const std::string full_path =
+				 std::string(hoi4_directory).append("/localisation/").append(subdirectory).append("/").append(fileName);
 			if (fileName.starts_with("focus"))
 			{
-				importFocusLocalisations(theConfiguration.getHoI4Path() + "/localisation/" + subdirectory + '/' + fileName);
+				importFocusLocalisations(full_path);
 			}
 			else if (fileName.starts_with("ideas"))
 			{
-				importGenericIdeaLocalisations(
-					 theConfiguration.getHoI4Path() + "/localisation/" + subdirectory + '/' + fileName);
+				importGenericIdeaLocalisations(full_path);
 			}
 			else if (fileName.starts_with("events"))
 			{
-				importEventLocalisations(theConfiguration.getHoI4Path() + "/localisation/" + subdirectory + '/' + fileName);
+				importEventLocalisations(full_path);
 			}
 		}
 	}
@@ -144,17 +347,19 @@ void HoI4::Localisation::Importer::importLocalisations(const Configuration& theC
 	{
 		for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/output/localisation/" + subdirectory))
 		{
+			const std::string full_path =
+				 std::string("blankmod/output/localisation/").append(subdirectory).append("/").append(fileName);
 			if (fileName.starts_with("focus"))
 			{
-				importFocusLocalisations("blankmod/output/localisation/" + subdirectory + '/' + fileName);
+				importFocusLocalisations(full_path);
 			}
 			else if (fileName.starts_with("ideas"))
 			{
-				importGenericIdeaLocalisations("blankmod/output/localisation/" + subdirectory + '/' + fileName);
+				importGenericIdeaLocalisations(full_path);
 			}
 			else if (fileName.starts_with("events"))
 			{
-				importEventLocalisations("blankmod/output/localisation/" + subdirectory + '/' + fileName);
+				importEventLocalisations(full_path);
 			}
 		}
 	}
@@ -179,70 +384,13 @@ void HoI4::Localisation::Importer::importEventLocalisations(const std::string& f
 }
 
 
-void HoI4::Localisation::Importer::importLocalisationFile(const std::string& filename,
-	 languageToLocalisationsMap& localisations)
-{
-	keyToLocalisationMap newLocalisations;
-
-	std::ifstream file(filename);
-	if (!file.is_open())
-	{
-		Log(LogLevel::Error) << "Could not open " << filename;
-		exit(-1);
-	}
-	char bitBucket[3];
-	file.read(bitBucket, sizeof bitBucket);
-
-	std::string language;
-	while (!file.eof())
-	{
-		char buffer[2048];
-		file.getline(buffer, sizeof buffer);
-		std::string line(buffer);
-		if (line.starts_with("l_"))
-		{
-			language = line.substr(2, line.length() - 3);
-			continue;
-		}
-
-		const auto colon = line.find(':');
-		if (colon == std::string::npos)
-		{
-			continue;
-		}
-		auto key = line.substr(1, colon - 1);
-
-		line = line.substr(colon, line.length());
-		const auto quote = line.find('\"');
-		const auto value = line.substr(quote + 1, line.length() - quote - 2);
-
-		newLocalisations[key] = value;
-	}
-
-	auto localisationsInLanguage = localisations.find(language);
-	if (localisationsInLanguage == localisations.end())
-	{
-		localisations[language] = newLocalisations;
-	}
-	else
-	{
-		for (const auto& localisation: newLocalisations)
-		{
-			localisationsInLanguage->second.insert(localisation);
-		}
-	}
-
-	file.close();
-}
-
-
 void HoI4::Localisation::Importer::prepareBlankLocalisations()
 {
-	for (const auto& genericLocalisationsInLanguage: genericIdeaLocalisations)
+	for (const auto& language: genericIdeaLocalisations | std::views::keys)
 	{
 		keyToLocalisationMap newLocalisationsMap;
-		ideaLocalisations.insert(make_pair(genericLocalisationsInLanguage.first, newLocalisationsMap));
-		decisionLocalisations.insert(make_pair(genericLocalisationsInLanguage.first, newLocalisationsMap));
+		ideaLocalisations.insert(make_pair(language, newLocalisationsMap));
+		decisionLocalisations.insert(make_pair(language, newLocalisationsMap));
 	}
 }
 
@@ -324,20 +472,20 @@ void HoI4::Localisation::addLocalisationsInAllLanguages(const std::string& destT
 	 const keyToLocalisationMap& namesInLanguage,
 	 const ArticleRules& articleRules)
 {
-	for (const auto& nameInLanguage: namesInLanguage)
+	for (const auto& [key, localisation]: namesInLanguage)
 	{
-		auto existingLanguage = getExistingLocalisationsInLanguage(nameInLanguage.first);
+		const auto existingLanguageToLocalisationMapping = getExistingLocalisationsInLanguage(key);
 
-		auto newKey = destTag;
+		std::string newKey = destTag;
 		if (!HoI4GovernmentIdeology.empty())
 		{
 			newKey += "_" + HoI4GovernmentIdeology;
 		}
 		newKey += vic2Suffix;
 		addLocalisation(newKey,
-			 nameInLanguage.first,
-			 existingLanguage->second,
-			 nameInLanguage.second,
+			 key,
+			 existingLanguageToLocalisationMapping->second,
+			 localisation,
 			 hoi4Suffix,
 			 articleRules);
 	}
@@ -350,29 +498,19 @@ bool HoI4::Localisation::addNeutralLocalisation(const std::pair<const std::strin
 	 const Vic2::Localisations& vic2Localisations,
 	 const ArticleRules& articleRules)
 {
-	auto plainLocalisation = vic2Localisations.getTextInEachLanguage(tags.first + vic2Suffix);
-	if (!plainLocalisation.empty())
+	if (const auto plainLocalisation = vic2Localisations.getTextInEachLanguage(tags.first + vic2Suffix);
+		 !plainLocalisation.empty())
 	{
-		for (const auto& nameInLanguage: plainLocalisation)
+		for (const auto& [name, language]: plainLocalisation)
 		{
-			auto existingLanguage = getExistingLocalisationsInLanguage(nameInLanguage.first);
+			auto& existingLocalisation = getExistingLocalisationsInLanguage(name)->second;
 
 			auto newKey = tags.second + "_neutrality" + vic2Suffix;
-			addLocalisation(newKey,
-				 nameInLanguage.first,
-				 existingLanguage->second,
-				 nameInLanguage.second,
-				 hoi4Suffix,
-				 articleRules);
+			addLocalisation(newKey, name, existingLocalisation, language, hoi4Suffix, articleRules);
 
 			// For collaboration governments using non-ideological keys
 			newKey = tags.second + vic2Suffix;
-			addLocalisation(newKey,
-				 nameInLanguage.first,
-				 existingLanguage->second,
-				 nameInLanguage.second,
-				 hoi4Suffix,
-				 articleRules);
+			addLocalisation(newKey, name, existingLocalisation, language, hoi4Suffix, articleRules);
 		}
 		return true;
 	}
@@ -396,32 +534,6 @@ HoI4::languageToLocalisationsMap::iterator HoI4::Localisation::getExistingLocali
 }
 
 
-void HoI4::Localisation::addLocalisation(const std::string& newKey,
-	 const std::string& language,
-	 keyToLocalisationMap& existingLanguage,
-	 const std::string& localisation,
-	 const std::string& HoI4Suffix,
-	 const ArticleRules& articleRules)
-{
-	if (const auto existingLocalisation = existingLanguage.find(newKey); existingLocalisation == existingLanguage.end())
-	{
-		existingLanguage.insert(std::make_pair(newKey, articleRules.updateArticles(language, localisation)));
-		if (!HoI4Suffix.empty())
-		{
-			existingLanguage.insert(std::make_pair(newKey + HoI4Suffix, localisation));
-		}
-	}
-	else
-	{
-		existingLanguage[newKey] = articleRules.updateArticles(language, localisation);
-		if (!HoI4Suffix.empty())
-		{
-			existingLanguage[newKey + HoI4Suffix] = localisation;
-		}
-	}
-}
-
-
 void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string& tag,
 	 const Country& dominion,
 	 const std::string& ownerOldTag,
@@ -430,8 +542,8 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 	 const std::set<std::string>& majorIdeologies,
 	 const ArticleRules& articleRules)
 {
-	const auto region = dominion.getRegion();
-	auto localisationIdeologies = majorIdeologies;
+	const auto& region = dominion.getRegion();
+	std::set<std::string> localisationIdeologies = majorIdeologies;
 	localisationIdeologies.insert("neutrality");
 	localisationIdeologies.insert("");
 
@@ -469,7 +581,7 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 		{
 			for (const auto& [language, localisation]: ownerAdjectives)
 			{
-				auto newLocalisation = localisation;
+				std::string newLocalisation = localisation;
 				if (const auto& secondPart = vic2Localisations.getTextInLanguage(region, language); secondPart)
 				{
 					newLocalisation += " " + *secondPart;
@@ -506,11 +618,11 @@ void HoI4::Localisation::createUnrecognizedNationLocalisations(const std::string
 	 const std::set<std::string>& majorIdeologies,
 	 const ArticleRules& articleRules)
 {
-	const auto region = nation.getRegion();
+	const auto& region = nation.getRegion();
 
 	const auto unrecognizedNameLocalisations = vic2Localisations.getTextInEachLanguage("unrecognized_name");
 	const auto unrecognizedAdjectiveLocalisations = vic2Localisations.getTextInEachLanguage("unrecognized_adjective");
-	auto localisationIdeologies = majorIdeologies;
+	std::set<std::string> localisationIdeologies = majorIdeologies;
 	localisationIdeologies.insert("");
 
 	for (const auto& ideology: localisationIdeologies)
@@ -528,7 +640,7 @@ void HoI4::Localisation::createUnrecognizedNationLocalisations(const std::string
 		{
 			for (const auto& [language, localisation]: unrecognizedAdjectiveLocalisations)
 			{
-				auto newLocalisation = localisation;
+				std::string newLocalisation = localisation;
 				if (const auto& secondPart = vic2Localisations.getTextInLanguage(region, language); secondPart)
 				{
 					newLocalisation += " " + *secondPart;
@@ -596,7 +708,7 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisation(const std::strin
 
 	for (const auto& [language, text]: Vic2Text)
 	{
-		auto localisations = getExistingLocalisationsInLanguage(language);
+		const auto localisations = getExistingLocalisationsInLanguage(language);
 		if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
 		{
 			localisation->second = text;
@@ -620,7 +732,7 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisationChangingArticles(
 
 	for (const auto& [language, text]: Vic2Text)
 	{
-		auto localisations = getExistingLocalisationsInLanguage(language);
+		const auto localisations = getExistingLocalisationsInLanguage(language);
 		if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
 		{
 			localisation->second = articleRules.updateArticles(language, text);
@@ -633,7 +745,7 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisationChangingArticles(
 
 void HoI4::Localisation::addNonenglishCountryLocalisations()
 {
-	auto englishLocalisations = countryLocalisations.find("english");
+	const auto englishLocalisations = countryLocalisations.find("english");
 	countryLocalisations.insert(make_pair("braz_por", englishLocalisations->second));
 	countryLocalisations.insert(make_pair("polish", englishLocalisations->second));
 	countryLocalisations.insert(make_pair("russian", englishLocalisations->second));
@@ -642,29 +754,27 @@ void HoI4::Localisation::addNonenglishCountryLocalisations()
 
 void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const std::string& newKey)
 {
-	for (auto languageLocalisations: originalFocuses)
+	for (const auto& [language, localisations]: originalFocuses)
 	{
-		auto newLanguage = newFocuses.find(languageLocalisations.first);
+		auto newLanguage = newFocuses.find(language);
 		if (newLanguage == newFocuses.end())
 		{
 			keyToLocalisationMap newLocalisations;
-			newFocuses.insert(make_pair(languageLocalisations.first, newLocalisations));
-			newLanguage = newFocuses.find(languageLocalisations.first);
+			newFocuses.insert(make_pair(language, newLocalisations));
+			newLanguage = newFocuses.find(language);
 		}
 
-		auto oldLocalisation = languageLocalisations.second.find(oldKey);
-		if (oldLocalisation != languageLocalisations.second.end())
+		if (auto oldLocalisation = localisations.find(oldKey); oldLocalisation != localisations.end())
 		{
 			newLanguage->second[newKey] = oldLocalisation->second;
 		}
 		else
 		{
-			Log(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in "
-										  << languageLocalisations.first;
+			Log(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in " << language;
 		}
 
-		auto oldLocalisationDescription = languageLocalisations.second.find(oldKey + "_desc");
-		if (oldLocalisationDescription != languageLocalisations.second.end())
+		if (auto oldLocalisationDescription = localisations.find(oldKey + "_desc");
+			 oldLocalisationDescription != localisations.end())
 		{
 			newLanguage->second[newKey + "_desc"] = oldLocalisationDescription->second;
 		}
@@ -674,25 +784,23 @@ void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const
 
 void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const std::string& newKey)
 {
-	for (auto languageLocalisations: originalEventLocalisations)
+	for (const auto& [language, localisations]: originalEventLocalisations)
 	{
-		auto newLanguage = newEventLocalisations.find(languageLocalisations.first);
+		auto newLanguage = newEventLocalisations.find(language);
 		if (newLanguage == newEventLocalisations.end())
 		{
 			keyToLocalisationMap newLocalisations;
-			newEventLocalisations.insert(make_pair(languageLocalisations.first, newLocalisations));
-			newLanguage = newEventLocalisations.find(languageLocalisations.first);
+			newEventLocalisations.insert(make_pair(language, newLocalisations));
+			newLanguage = newEventLocalisations.find(language);
 		}
 
-		auto oldLocalisation = languageLocalisations.second.find(oldKey);
-		if (oldLocalisation != languageLocalisations.second.end())
+		if (const auto& oldLocalisation = localisations.find(oldKey); oldLocalisation != localisations.end())
 		{
 			newLanguage->second[newKey] = oldLocalisation->second;
 		}
 		else
 		{
-			Log(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in "
-										  << languageLocalisations.first;
+			Log(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in " << language;
 		}
 	}
 }
@@ -700,21 +808,239 @@ void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const
 
 void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 	 const Vic2::State& vic2State,
+	 const std::set<int>& sourceProvinceNumbers,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
 	 const std::map<std::string, std::string>& grammarMappings)
 {
-	for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+	std::map<std::string, std::string> localisedNames;
+
+	// Single province states get the Vic2 province name
+	// This is either one province in HoI4 or one province in Vic2
+	if (destinationStateHasOneProvince(hoi4State) || sourceProvinceNumbers.size() == 1)
 	{
-		addStateLocalisationForLanguage(hoi4State,
-			 vic2State,
-			 language,
-			 name,
-			 theStateDefinitions,
-			 vic2Localisations,
-			 theProvinceMapper,
-			 grammarMappings);
+		const auto hoi4Province = *hoi4State.getProvinces().begin();
+		if (const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
+			 !possibleVic2Provinces.empty())
+		{
+			const auto theProvince = possibleVic2Provinces[0];
+			const auto provinceNameInLanguages =
+				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string(theProvince));
+			if (provinceNameInLanguages.empty())
+			{
+				Log(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince;
+			}
+			for (const auto& [language, provinceName]: provinceNameInLanguages)
+			{
+				localisedNames[language] = provinceName;
+			}
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Could not find localization for HoI4 province " << hoi4Province;
+		}
+	}
+
+	// Complete states get the Vic2 state name
+	else if (stateHasAllDefinedProvincesAfterConversion(hoi4State,
+					 sourceProvinceNumbers,
+					 theStateDefinitions,
+					 theProvinceMapper))
+	{
+		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			localisedNames[language] = name;
+		}
+	}
+
+	// States with only one missing province get the Vic2 state name
+	else if (sourceStateHasAllButOneProvinceFromDefinition(vic2State,
+					 *sourceProvinceNumbers.begin(),
+					 theStateDefinitions) ||
+				sourceProvincesHaveAllButOneProvinceFromDefinition(sourceProvinceNumbers, theStateDefinitions))
+	{
+		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			localisedNames[language] = name;
+		}
+	}
+
+	// unowned states get the Vic2 state name
+	else if (vic2State.getOwner().empty())
+	{
+		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			localisedNames[language] = name;
+		}
+	}
+
+	/* SPLIT STATES AND GRAMMAR */
+	/* Default: "French Guyana" */
+	/* French, Spanish, Portuguese, Italian: "Guyana French" */
+	/* Reason: Grammar rules */
+	/* */
+	/* German: "French-Guyana" */
+	/* Reason: To avoid having to deal with German adjective declension */
+	else if (vic2State.isPartialState())
+	{
+		for (auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			std::optional<std::string> possibleOwnerAdjective;
+			if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
+			{
+				std::string adjectiveKey = hoi4State.getOwner() + "_neutrality" + "_ADJ";
+				const auto& languageCategory = vic2State.getLanguageCategory();
+				if (const auto& grammarMapping = grammarMappings.find(languageCategory);
+					 grammarMapping != grammarMappings.end())
+				{
+					adjectiveKey += grammarMapping->second;
+					if (language == "french")
+					{
+						adjectiveKey += "_FR";
+					}
+					else if (language == "spanish")
+					{
+						adjectiveKey += "_ES";
+					}
+					else if (language == "braz_por")
+					{
+						adjectiveKey += "_PT";
+					}
+					else // (language == "italian")
+					{
+						adjectiveKey += "_IT";
+					}
+				}
+				if (const auto hoi4LocalisationsInLanguage = customLocalisations.find(language);
+					 hoi4LocalisationsInLanguage != customLocalisations.end())
+				{
+					if (const auto hoi4Localisation = hoi4LocalisationsInLanguage->second.find(adjectiveKey);
+						 hoi4Localisation != hoi4LocalisationsInLanguage->second.end())
+					{
+						possibleOwnerAdjective = hoi4Localisation->second;
+					}
+				}
+			}
+
+			if (!possibleOwnerAdjective)
+			{
+				// if the fancy localisations can't be found or doesn't apply, try to fall back to basic behavior
+				possibleOwnerAdjective = vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", language);
+			}
+
+			if (!possibleOwnerAdjective)
+			{
+				// in the final case, just use the word "partial"
+				Log(LogLevel::Warning) << "No localisation found for " << vic2State.getOwner() + "_ADJ"
+											  << " in " << language;
+				if (const auto& partial = vic2Localisations.getTextInLanguage("PARTIAL", language); partial)
+				{
+					possibleOwnerAdjective = *partial;
+				}
+				else
+				{
+					possibleOwnerAdjective = "Partial";
+				}
+			}
+
+			if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
+			{
+				name += " " + *possibleOwnerAdjective;
+			}
+			else if (language == "german")
+			{
+				name = possibleOwnerAdjective->append("-").append(name);
+			}
+			else
+			{
+				name = possibleOwnerAdjective->append(" ").append(name);
+			}
+
+			localisedNames[language] = name;
+		}
+	}
+
+	// states that were split by the converter and have the capital get the Vic2 state name
+	else if (stateHasCapital(sourceProvinceNumbers, theStateDefinitions))
+	{
+		for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+		{
+			localisedNames[language] = name;
+		}
+	}
+
+	// states split by the converter possibly get backup names
+	else if (!hoi4State.isImpassable())
+	{
+		const auto& splitNameInLanguages = vic2Localisations.getTextInEachLanguage(vic2State.getStateID() + "_SPLIT");
+		for (const auto& [language, localisation]: splitNameInLanguages)
+		{
+			localisedNames[language] = localisation;
+		}
+		if (splitNameInLanguages.empty())
+		{
+			Log(LogLevel::Warning) << vic2State.getStateID() << " had a split section with no localisation. Add "
+										  << vic2State.getStateID()
+										  << "_SPLIT to Configurables/Vic2Localisations.csv for better conversion.";
+		}
+	}
+
+	// if wasteland localisations exist update or override other localisations
+	if (hoi4State.isImpassable())
+	{
+		if (!stateHasAllDefinedProvincesAfterConversion(hoi4State,
+				  sourceProvinceNumbers,
+				  theStateDefinitions,
+				  theProvinceMapper))
+		{
+			for (auto& localisation: localisedNames | std::ranges::views::values)
+			{
+				localisation += " Wasteland";
+			}
+
+			const auto& wastelandNameInLanguages =
+				 vic2Localisations.getTextInEachLanguage(vic2State.getStateID() + "_WASTELAND");
+			for (const auto& [language, localisation]: wastelandNameInLanguages)
+			{
+				localisedNames[language] = localisation;
+			}
+			if (wastelandNameInLanguages.empty())
+			{
+				Log(LogLevel::Warning) << vic2State.getStateID() << " had a wasteland section with no localisation. Add "
+											  << vic2State.getStateID()
+											  << "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
+			}
+		}
+	}
+
+	if (localisedNames.empty())
+	{
+		const auto hoi4Province = *hoi4State.getProvinces().begin();
+		if (const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
+			 !possibleVic2Provinces.empty())
+		{
+			const auto theProvince = possibleVic2Provinces[0];
+			const auto provinceNameInLanguages =
+				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string(theProvince));
+			if (provinceNameInLanguages.empty())
+			{
+				Log(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince;
+			}
+			for (const auto& [language, provinceName]: provinceNameInLanguages)
+			{
+				localisedNames[language] = provinceName;
+			}
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Could not find localization for HoI4 province " << hoi4Province;
+		}
+	}
+
+	for (const auto& [language, localisation]: localisedNames)
+	{
+		getExistingStateLocalisation(language).insert(std::make_pair(hoi4State.getID(), localisation));
 	}
 }
 
@@ -727,8 +1053,7 @@ void HoI4::Localisation::addStateLocalisations(const States& states,
 	Log(LogLevel::Info) << "\tAdding state localisations";
 	for (const auto& state: states.getStates())
 	{
-		auto VPPositionInHoI4 = state.second.getVPLocation();
-		if (VPPositionInHoI4)
+		if (auto VPPositionInHoI4 = state.second.getVPLocation(); VPPositionInHoI4)
 		{
 			if (auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(*VPPositionInHoI4);
 				 !VPProvinceMapping.empty())
@@ -756,7 +1081,7 @@ void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>
 	 const Vic2::Localisations& vic2Localisations,
 	 const Mappers::ProvinceMapper& theProvinceMapper)
 {
-	for (auto VPPositionInHoI4: state.second.getDebugVPs())
+	for (const auto VPPositionInHoI4: state.second.getDebugVPs())
 	{
 		if (auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
 			 !VPProvinceMapping.empty())
@@ -770,7 +1095,7 @@ void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>
 		}
 	}
 
-	for (auto VPPositionInHoI4: state.second.getSecondaryDebugVPs())
+	for (const auto VPPositionInHoI4: state.second.getSecondaryDebugVPs())
 	{
 		if (auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
 			 !VPProvinceMapping.empty())
@@ -783,218 +1108,6 @@ void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>
 			}
 		}
 	}
-}
-
-
-bool HoI4::Localisation::sourceStateHasOneProvince(const State& hoi4State,
-	 const Mappers::ProvinceMapper& theProvinceMapper)
-{
-	std::set<int> allVic2Provinces;
-	for (const auto& hoi4Province: hoi4State.getProvinces())
-	{
-		const auto Vic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
-		allVic2Provinces.insert(Vic2Provinces.begin(), Vic2Provinces.end());
-	}
-	return allVic2Provinces.size() == 1;
-}
-
-
-bool HoI4::Localisation::destinationStateHasOneProvince(const State& hoi4State)
-{
-	return hoi4State.getProvinces().size() == 1;
-}
-
-
-bool HoI4::Localisation::sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
-	 const Vic2::StateDefinitions& theStateDefinitions)
-{
-	return sourceState.getProvinces().size() ==
-			 theStateDefinitions.getAllProvinces(*sourceState.getProvinceNumbers().begin()).size() - 1;
-}
-
-
-bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State& state,
-	 const Vic2::State& sourceState,
-	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const Mappers::ProvinceMapper& theProvinceMapper)
-{
-	std::set<int> stateDefinitionDefinitionProvinces;
-
-	auto stateDefinitionSourceProvinces = theStateDefinitions.getAllProvinces(*sourceState.getProvinceNumbers().begin());
-	for (auto sourceProvince: stateDefinitionSourceProvinces)
-	{
-		for (auto HoI4Province: theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince))
-		{
-			stateDefinitionDefinitionProvinces.insert(HoI4Province);
-		}
-	}
-
-	for (auto definedProvince: stateDefinitionDefinitionProvinces)
-	{
-		if (!state.getProvinces().contains(definedProvince))
-		{
-			return false;
-		}
-	}
-
-	return true;
-}
-
-
-void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
-	 const Vic2::State& vic2State,
-	 const std::string& language,
-	 const std::string& name,
-	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const Vic2::Localisations& vic2Localisations,
-	 const Mappers::ProvinceMapper& theProvinceMapper,
-	 const std::map<std::string, std::string>& grammarMappings)
-{
-	std::string localisedName;
-	if (destinationStateHasOneProvince(hoi4State) || sourceStateHasOneProvince(hoi4State, theProvinceMapper))
-	{
-		const auto hoi4Province = *hoi4State.getProvinces().begin();
-		if (const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
-			 !possibleVic2Provinces.empty())
-		{
-			const auto theProvince = possibleVic2Provinces[0];
-			auto possibleProvinceName =
-				 vic2Localisations.getTextInLanguage("PROV" + std::to_string(theProvince), language);
-			if (possibleProvinceName)
-			{
-				localisedName = *possibleProvinceName;
-			}
-			else
-			{
-				Log(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince;
-			}
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not find localization for HoI4 province " << hoi4Province;
-		}
-	}
-	else if (sourceStateHasAllButOneProvinceFromDefinition(vic2State, theStateDefinitions))
-	{
-		localisedName = name;
-	}
-	else if (stateHasAllDefinedProvincesAfterConversion(hoi4State, vic2State, theStateDefinitions, theProvinceMapper))
-	{
-		localisedName = name;
-	}
-	else if (vic2State.isPartialState() && vic2State.getOwner().empty())
-	{
-		localisedName = name;
-	}
-	/* SPLIT STATES AND GRAMMAR */
-	/* Default: "French Guyana" */
-	/* French, Spanish, Portuguese, Italian: "Guyana French" */
-	/* Reason: Grammar rules */
-	/* */
-	/* German: "French-Guyana" */
-	/* Reason: To avoid having to deal with German adjective declension */
-	else if (vic2State.isPartialState())
-	{
-		std::optional<std::string> possibleOwnerAdjective;
-		if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
-		{
-			std::string adjectiveKey = hoi4State.getOwner() + "_neutrality" + "_ADJ";
-			const auto& languageCategory = vic2State.getLanguageCategory();
-			if (const auto& grammarMapping = grammarMappings.find(languageCategory);
-				 grammarMapping != grammarMappings.end())
-			{
-				adjectiveKey += grammarMapping->second;
-				if (language == "french")
-				{
-					adjectiveKey += "_FR";
-				}
-				else if (language == "spanish")
-				{
-					adjectiveKey += "_ES";
-				}
-				else if (language == "braz_por")
-				{
-					adjectiveKey += "_PT";
-				}
-				else // (language == "italian")
-				{
-					adjectiveKey += "_IT";
-				}
-			}
-			if (const auto hoi4LocalisationsInLanguage = customLocalisations.find(language);
-				 hoi4LocalisationsInLanguage != customLocalisations.end())
-			{
-				if (const auto hoi4Localisation = hoi4LocalisationsInLanguage->second.find(adjectiveKey);
-					 hoi4Localisation != hoi4LocalisationsInLanguage->second.end())
-				{
-					possibleOwnerAdjective = hoi4Localisation->second;
-				}
-			}
-		}
-
-		if (!possibleOwnerAdjective)
-		{
-			// if the fancy localisations can't be found or doesn't apply, try to fall back to basic behavior
-			possibleOwnerAdjective = vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", language);
-		}
-
-		if (!possibleOwnerAdjective)
-		{
-			// in the final case, just use the word "partial"
-			Log(LogLevel::Warning) << "No localisation found for " << vic2State.getOwner() + "_ADJ"
-										  << " in " << language;
-			const auto& partial = vic2Localisations.getTextInLanguage("PARTIAL", language);
-			if (partial)
-			{
-				possibleOwnerAdjective = *partial;
-			}
-			else
-			{
-				possibleOwnerAdjective = "Partial";
-			}
-		}
-
-		if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
-		{
-			localisedName = name + " " + *possibleOwnerAdjective;
-		}
-		else
-		{
-			if (language == "german")
-			{
-				localisedName = *possibleOwnerAdjective + "-" + name;
-			}
-			else
-			{
-				localisedName = *possibleOwnerAdjective + " " + name;
-			}
-		}
-	}
-	else if (hoi4State.isImpassable())
-	{
-		const auto& possibleWastelandName =
-			 vic2Localisations.getTextInLanguage(vic2State.getStateID() + "_WASTELAND", language);
-		if (possibleWastelandName)
-		{
-			localisedName = *possibleWastelandName;
-		}
-		else
-		{
-			localisedName = name + " Wasteland";
-			if (language == "english")
-			{
-				Log(LogLevel::Warning) << name << " had a wasteland section with no localisation. Add "
-											  << vic2State.getStateID()
-											  << "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
-			}
-		}
-	}
-	else
-	{
-		localisedName = name;
-	}
-
-	getExistingStateLocalisation(language).insert(std::make_pair(hoi4State.getID(), localisedName));
 }
 
 
@@ -1052,27 +1165,27 @@ void HoI4::Localisation::addLanguageToVPLocalisations(const std::string& languag
 
 void HoI4::Localisation::addNonenglishStateLocalisations()
 {
-	auto englishLocalisations = stateLocalisations.find("english");
-	stateLocalisations.insert(make_pair("braz_por", englishLocalisations->second));
-	stateLocalisations.insert(make_pair("polish", englishLocalisations->second));
-	stateLocalisations.insert(make_pair("russian", englishLocalisations->second));
+	const auto& englishLocalisations = stateLocalisations.find("english")->second;
+	stateLocalisations.insert(make_pair("braz_por", englishLocalisations));
+	stateLocalisations.insert(make_pair("polish", englishLocalisations));
+	stateLocalisations.insert(make_pair("russian", englishLocalisations));
 }
 
 
 void HoI4::Localisation::addNonenglishVPLocalisations()
 {
-	auto englishLocalisations = VPLocalisations.find("english");
-	VPLocalisations.insert(make_pair("braz_por", englishLocalisations->second));
-	VPLocalisations.insert(make_pair("polish", englishLocalisations->second));
-	VPLocalisations.insert(make_pair("russian", englishLocalisations->second));
+	const auto& englishLocalisations = VPLocalisations.find("english")->second;
+	VPLocalisations.insert(make_pair("braz_por", englishLocalisations));
+	VPLocalisations.insert(make_pair("polish", englishLocalisations));
+	VPLocalisations.insert(make_pair("russian", englishLocalisations));
 }
 
 
 void HoI4::Localisation::addEventLocalisation(const std::string& event, const std::string& localisation)
 {
-	for (const auto& localisationInLanguage: newEventLocalisations)
+	for (const auto& language: newEventLocalisations | std::views::keys)
 	{
-		newEventLocalisations[localisationInLanguage.first][event] = localisation;
+		newEventLocalisations[language][event] = localisation;
 	}
 }
 
@@ -1081,9 +1194,8 @@ void HoI4::Localisation::addEventLocalisationFromVic2(const std::string& Vic2Key
 	 const std::string& HoI4Key,
 	 const Vic2::Localisations& vic2Localisations)
 {
-	for (const auto& textInLanguage: vic2Localisations.getTextInEachLanguage(Vic2Key))
+	for (const auto& [language, text]: vic2Localisations.getTextInEachLanguage(Vic2Key))
 	{
-		auto language = textInLanguage.first;
 		auto existingLanguage = newEventLocalisations.find(language);
 		if (existingLanguage == newEventLocalisations.end())
 		{
@@ -1092,39 +1204,38 @@ void HoI4::Localisation::addEventLocalisationFromVic2(const std::string& Vic2Key
 			existingLanguage = newEventLocalisations.find(language);
 		}
 
-		existingLanguage->second[HoI4Key] = textInLanguage.second;
+		existingLanguage->second[HoI4Key] = text;
 	}
 }
 
 
 void HoI4::Localisation::addIdeaLocalisation(const std::string& idea, const std::optional<std::string>& localisation)
 {
-	for (const auto& localisationInLanguage: ideaLocalisations)
+	for (const auto& language: ideaLocalisations | std::views::keys)
 	{
 		if (localisation)
 		{
-			ideaLocalisations[localisationInLanguage.first][idea] = *localisation;
+			ideaLocalisations[language][idea] = *localisation;
 		}
 		else
 		{
-			auto genericLocalisationsInLanguage = genericIdeaLocalisations.find(localisationInLanguage.first);
-			if (genericLocalisationsInLanguage != genericIdeaLocalisations.end())
+			if (auto genericLocalisationsInLanguage = genericIdeaLocalisations.find(language);
+				 genericLocalisationsInLanguage != genericIdeaLocalisations.end())
 			{
 				auto genericIdeaStr = "generic" + idea.substr(3, idea.size());
-				auto genericIdea = genericLocalisationsInLanguage->second.find(genericIdeaStr);
-				if (genericIdea != genericLocalisationsInLanguage->second.end())
+				if (auto genericIdea = genericLocalisationsInLanguage->second.find(genericIdeaStr);
+					 genericIdea != genericLocalisationsInLanguage->second.end())
 				{
-					ideaLocalisations[localisationInLanguage.first][idea] = genericIdea->second;
+					ideaLocalisations[language][idea] = genericIdea->second;
 				}
 				else
 				{
-					Log(LogLevel::Warning) << "Could not find localisation for " << genericIdeaStr << " in "
-												  << localisationInLanguage.first;
+					Log(LogLevel::Warning) << "Could not find localisation for " << genericIdeaStr << " in " << language;
 				}
 			}
 			else
 			{
-				Log(LogLevel::Warning) << "No generic idea localisations found for " << localisationInLanguage.first;
+				Log(LogLevel::Warning) << "No generic idea localisations found for " << language;
 			}
 		}
 	}
@@ -1135,8 +1246,8 @@ void HoI4::Localisation::addIdeaLocalisation(const std::string& idea,
 	 const std::string& localisation,
 	 const std::string& language)
 {
-	auto localisationInLanguage = ideaLocalisations.find(language);
-	if (localisationInLanguage != ideaLocalisations.end())
+	if (const auto& localisationInLanguage = ideaLocalisations.find(language);
+		 localisationInLanguage != ideaLocalisations.end())
 	{
 		localisationInLanguage->second[idea] = localisation;
 		return;
@@ -1150,9 +1261,8 @@ void HoI4::Localisation::addPoliticalPartyLocalisation(const std::string& Vic2Ke
 	 const std::string& HoI4Key,
 	 const Vic2::Localisations& vic2Localisations)
 {
-	for (const auto& textInLanguage: vic2Localisations.getTextInEachLanguage(Vic2Key))
+	for (const auto& [language, text]: vic2Localisations.getTextInEachLanguage(Vic2Key))
 	{
-		auto language = textInLanguage.first;
 		auto existingLanguage = politicalPartyLocalisations.find(language);
 		if (existingLanguage == politicalPartyLocalisations.end())
 		{
@@ -1161,7 +1271,7 @@ void HoI4::Localisation::addPoliticalPartyLocalisation(const std::string& Vic2Ke
 			existingLanguage = politicalPartyLocalisations.find(language);
 		}
 
-		existingLanguage->second[HoI4Key] = textInLanguage.second;
+		existingLanguage->second[HoI4Key] = text;
 	}
 }
 
@@ -1181,32 +1291,31 @@ void HoI4::Localisation::addRulingHouseLocalisations(const std::string& rulingPa
 
 void HoI4::Localisation::addDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation)
 {
-	for (const auto& localisationInLanguage: decisionLocalisations)
+	for (const auto& language: decisionLocalisations | std::views::keys)
 	{
 		if (localisation)
 		{
-			decisionLocalisations[localisationInLanguage.first][key] = *localisation;
+			decisionLocalisations[language][key] = *localisation;
 		}
 		else
 		{
-			auto genericLocalisationsInLanguage = genericIdeaLocalisations.find(localisationInLanguage.first);
+			auto genericLocalisationsInLanguage = genericIdeaLocalisations.find(language);
 			if (genericLocalisationsInLanguage != genericIdeaLocalisations.end())
 			{
 				auto genericIdeaStr = "generic" + key.substr(3, key.size());
 				auto genericIdea = genericLocalisationsInLanguage->second.find(genericIdeaStr);
 				if (genericIdea != genericLocalisationsInLanguage->second.end())
 				{
-					ideaLocalisations[localisationInLanguage.first][key] = genericIdea->second;
+					ideaLocalisations[language][key] = genericIdea->second;
 				}
 				else
 				{
-					Log(LogLevel::Warning) << "Could not find localisation for " << genericIdeaStr << " in "
-												  << localisationInLanguage.first;
+					Log(LogLevel::Warning) << "Could not find localisation for " << genericIdeaStr << " in " << language;
 				}
 			}
 			else
 			{
-				Log(LogLevel::Warning) << "No generic idea localisations found for " << localisationInLanguage.first;
+				Log(LogLevel::Warning) << "No generic idea localisations found for " << language;
 			}
 		}
 	}
@@ -1307,10 +1416,9 @@ void HoI4::Localisation::updateLocalisationText(const std::string& key,
 	 const std::string& oldText,
 	 const std::string& newText)
 {
-	for (const auto& localisationsInLanguage: newFocuses)
+	for (const auto& language: newFocuses | std::views::keys)
 	{
-		if (auto focusesInLanguage = newFocuses.find(localisationsInLanguage.first);
-			 focusesInLanguage != newFocuses.end())
+		if (auto focusesInLanguage = newFocuses.find(language); focusesInLanguage != newFocuses.end())
 		{
 			if (auto focusText = focusesInLanguage->second.find(key); focusText != focusesInLanguage->second.end())
 			{
@@ -1321,57 +1429,6 @@ void HoI4::Localisation::updateLocalisationText(const std::string& key,
 			}
 		}
 	}
-}
-
-
-std::string HoI4::Localisation::getLanguageCode(const std::string& language)
-{
-	if (language == "braz_por")
-	{
-		return "PT";
-	}
-	if (language == "french")
-	{
-		return "FR";
-	}
-	if (language == "italian")
-	{
-		return "IT";
-	}
-	if (language == "spanish")
-	{
-		return "ES";
-	}
-
-	return "";
-}
-
-
-void HoI4::Localisation::insertScriptedLocalisation(const std::string& localisationKey,
-	 const std::string& replacementKey,
-	 ScriptedLocalisation& scriptedLocalisation,
-	 const std::set<std::string>& majorIdeologies) const
-{
-	const std::regex extractRegex("([A-Z0-9]{3})_([a-z]+)_ADJ");
-
-	std::smatch match;
-	std::regex_match(localisationKey, match, extractRegex);
-	const std::string tag = match[1];
-	const std::string ideology = match[2];
-	if (!majorIdeologies.contains(ideology))
-	{
-		return;
-	}
-
-	std::string text;
-	text += "= {\n";
-	text += "\t\ttrigger = {\n";
-	text += "\t\t\tOR = { tag = " + tag + " original_tag = " + tag + " }\n";
-	text += "\t\t\thas_government = " + ideology + "\n";
-	text += "\t\t}\n";
-	text += "\t\tlocalization_key = " + localisationKey + replacementKey + "\n";
-	text += "\t}";
-	scriptedLocalisation.addText(text);
 }
 
 

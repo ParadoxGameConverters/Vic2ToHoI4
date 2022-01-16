@@ -6356,7 +6356,6 @@ FRA_1808;Niamey;Niamey;Niamey;Niamey;Niamey;Niamey;Niamey;Niamey;Niamey;Niamey;N
 FRA_1808_WASTELAND;Outer Hausaland;Hausaland Extйrieur;ДuЯeres Hausaland;Outer Hausaland;Hausaland Exterior;Hausaland Esterno;Kьlsх Hausaland;Vnмjљн Hausaland;Kьlsх Hausaland;Buitenste Hausaland;Hausaland Exterior;Внешний Хаусаленд;Ulkopuolinen Hausaland;x
 ENG_1825_WASTELAND;Zouar;Zouar;Zouar;Zouar;Zouar;Zouar;Zouar;Zouar;Zouar;Zouar;Zouar;Зуар;Zouar;x
 EGY_1842_WASTELAND;Junaynah;Junaynah;Junaynah;Junaynah;Junaynah;Junaynah;Junaynah;Junaynah;Junaynah;Junaynah;Junaynah;Джунайнах;Junaynah;x
-TRI_1739;Waddan Oasis;Oasis chez Ueddan;Waddan-Oase;Oaza Waddana;Oasis de Waddan;Oasi di Waddan;Waddan-oбzis;Waddan Oasis;Waddan-oбzis;Waddan-oase;Waddan Oasis;Оазис Ваддан;Waddanin-keidas;x
 TRI_1739_WASTELAND;Libyan Desert;Dйsert Libyen;Libysche Wьste;Libijska Pustynia;Desierto Libico;Deserto Libico;Lнbiai Sivatag;Libyjskб Pouљќ;Lнbiai Sivatag;Libische Woestijn;Deserto da Lнbia;Ливийская пустыня;Libyan Autiomaa;x
 TRI_1743_WASTELAND;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Феццан;Fezzan;x
 EGY_1754_WASTELAND;Butnan Oasis;Oasis chez Butnan;Butnan-Oase;Oaza Butnana;Oasis de Butnan;Oasi di Butnan;Butnan-oбzis;Butnan Oasis;Butnan-oбzis;Butnan-oase;Oбsis de Butnan;Оазис Бутнан;Butnan-keidas;x
@@ -6365,3 +6364,10 @@ ENG_2483_WASTELAND;Munga-Thirri;Munga-Thirri;Munga-Thirri;Munga-Thirri;Munga-Thi
 ENG_2491_WASTELAND;Witjira;Witjira;Witjira;Witjira;Witjira;Witjira;Witjira;Witjira;Witjira;Witjira;Witjira;Бавити;Witjira;x
 ENG_2497_WASTELAND;Gibson Desert;Gibson Desert;Gibson Desert;Gibson Desert;Gibson Desert;Gibson Desert;Gibson Desert;Gibson Desert;Gibson Desert;Gibson Desert;Gibson Desert;Бавити;Gibson Desert;x
 ENG_2505_WASTELAND;Tjoritja;Tjoritja;Tjoritja;Tjoritja;Tjoritja;Tjoritja;Tjoritja;Tjoritja;Tjoritja;Tjoritja;Tjoritja;Бавити;Tjoritja;x
+### SPLIT STATES
+ENG_1321_SPLIT;Maldives;Maldives;Malediven;Malediwy;Maldivas;Maldive;Maldiverna;Maledivy;Maldнv-szigetek;Maldiven;Maldivas;Мальдивские острова;Malediivit;x
+JAP_1660_SPLIT;Okinawa;Okinawa;Okinawa;Okinawa;Okinawa;Okinawa;Okinawa;Okinawa;Okinawa;Okinawa;Okinawa;Окинава;Okinawa;x
+TRI_1739_SPLIT;Waddan Oasis;Oasis chez Ueddan;Waddan-Oase;Oaza Waddana;Oasis de Waddan;Oasi di Waddan;Waddan-oбzis;Waddan Oasis;Waddan-oбzis;Waddan-oase;Waddan Oasis;Оазис Ваддан;Waddanin-keidas;x
+AST_2528_SPLIT;Solomon Islands;Оles Salomon;Salomon-Inseln;Wyspy Salomon;Islas Salomуn;Isole Salomone;Salomonцarna;Solomonovy ostrovy;Salamon-szigetek;Solomon eilanden;Ilhas Salomгo;Соломоновы о-ва;Solomonsaaret;x
+TRI_1743_SPLIT;Tripoli;Tripoli;Tripoli;Trypolis;Trнpoli;Tripoli;Trypolis;Trypolis;Trypolis;Trypolis;Tripoli;Триполи;Trypolis;x
+BRZ_2540_SPLIT;Apia;Apia;Apia;Apia;Apia;Apia;Apia;Apia;Apia;Apia;Apia;Апиа;Apia;x

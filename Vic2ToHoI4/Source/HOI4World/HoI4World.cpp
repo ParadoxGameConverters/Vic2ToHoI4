@@ -103,7 +103,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	countryMap = countryMapperFactory.importCountryMapper(sourceWorld, theConfiguration.getDebug());
 
 	auto vic2Localisations = sourceWorld.getLocalisations();
-	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration);
+	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration.getHoI4Path());
 	Log(LogLevel::Progress) << "28%";
 
 	theDate = std::make_unique<date>(sourceWorld.getDate());

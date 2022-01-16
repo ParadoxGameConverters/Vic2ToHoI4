@@ -148,3 +148,22 @@ std::vector<int> Mappers::ProvinceMapper::getHoI4ToVic2ProvinceMapping(const int
 
 	return mapping->second;
 }
+
+
+std::set<int> Mappers::ProvinceMapper::getEquivalentVic2Provinces(const std::set<int>& hoi4_provinces) const
+{
+	std::set<int> equivalentProvinces;
+
+	for (const auto hoi4_province: hoi4_provinces)
+	{
+		if (const auto mapping = HoI4ToVic2ProvinceMap.find(hoi4_province); mapping != HoI4ToVic2ProvinceMap.end())
+		{
+			for (const auto vic2_province: mapping->second)
+			{
+				equivalentProvinces.insert(vic2_province);
+			}
+		}
+	}
+
+	return equivalentProvinces;
+}
