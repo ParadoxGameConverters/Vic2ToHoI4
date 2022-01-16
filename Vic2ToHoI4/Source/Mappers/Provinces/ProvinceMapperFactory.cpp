@@ -156,7 +156,6 @@ std::set<int> Mappers::ProvinceMapper::getEquivalentVic2Provinces(const std::set
 
 	for (const auto hoi4_province: hoi4_provinces)
 	{
-
 		if (const auto mapping = HoI4ToVic2ProvinceMap.find(hoi4_province); mapping != HoI4ToVic2ProvinceMap.end())
 		{
 			for (const auto vic2_province: mapping->second)
