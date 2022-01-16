@@ -200,10 +200,10 @@ class Localisation
 class Localisation::Importer
 {
   public:
-	std::unique_ptr<Localisation> generateLocalisations(const Configuration& theConfiguration);
+	std::unique_ptr<Localisation> generateLocalisations(std::string_view hoi4_directory);
 
   private:
-	void importLocalisations(const Configuration& theConfiguration);
+	void importLocalisations(std::string_view hoi4_directory);
 	void importFocusLocalisations(const std::string& filename);
 	void importGenericIdeaLocalisations(const std::string& filename);
 	void importEventLocalisations(const std::string& filename);
