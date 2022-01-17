@@ -825,9 +825,9 @@ focus = {
 	}
 	completion_reward = {
 		army_experience = 20
-		add_tech_bonus = {
+		add_doctrine_cost_reduction = {
 			name = land_doc_bonus
-			bonus = 0.5
+			cost_reduction = 0.3
 			uses = 1
 			category = land_doctrine
 		}
@@ -1649,8 +1649,9 @@ focus = {
 	cost = 10
 	completion_reward = {
 		army_experience = 20
-		add_tech_bonus = {
-			bonus = 0.5
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.3
 			uses = 2
 			category = land_doctrine
 		}
@@ -2361,8 +2362,9 @@ focus = {
 		}
 	completion_reward = {
 		army_experience = 20
-		add_tech_bonus = {
-			bonus = 0.5
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.3
 			uses = 2
 			category = land_doctrine
 		}
