@@ -344,25 +344,63 @@ bool HoI4::Country::hasRulingDynasty()
 }
 
 
-void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations) const
+void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations)
 {
-	hoi4Localisations.addIdeaLocalisation(tag + "_tank_manufacturer", names.takeCarCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_motorized_equipment_manufacturer",
-		 names.takeCarCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_infantry_equipment_manufacturer",
-		 names.takeWeaponCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_artillery_manufacturer", names.takeWeaponCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_light_aircraft_manufacturer",
-		 names.takeAircraftCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_medium_aircraft_manufacturer",
-		 names.takeAircraftCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer",
-		 names.takeAircraftCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_naval_aircraft_manufacturer",
-		 names.takeAircraftCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_naval_manufacturer", names.takeNavalCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_industrial_concern", names.takeIndustryCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_electronics_concern", names.takeElectronicCompanyName(primaryCulture));
+	if (const auto name = names.takeCarCompanyName(primaryCulture); name.has_value())
+	{
+		has_tank_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_tank_manufacturer", name);
+	}
+	if (const auto name = names.takeCarCompanyName(primaryCulture); name.has_value())
+	{
+		has_motorized_equipment_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_motorized_equipment_manufacturer", name);
+	}
+	if (const auto name = names.takeWeaponCompanyName(primaryCulture); name.has_value())
+	{
+		has_infantry_equipment_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_infantry_equipment_manufacturer", name);
+	}
+	if (const auto name = names.takeWeaponCompanyName(primaryCulture); name.has_value())
+	{
+		has_artillery_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_artillery_manufacturer", name);
+	}
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture); name.has_value())
+	{
+		has_light_aircraft_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_light_aircraft_manufacturer", name);
+	}
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture); name.has_value())
+	{
+		has_medium_aircraft_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_medium_aircraft_manufacturer", name);
+	}
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture); name.has_value())
+	{
+		has_heavy_aircraft_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer", name);
+	}
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture); name.has_value())
+	{
+		has_naval_aircraft_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_naval_aircraft_manufacturer", name);
+	}
+	if (const auto name = names.takeNavalCompanyName(primaryCulture); name.has_value())
+	{
+		has_naval_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_naval_manufacturer", name);
+	}
+	if (const auto name = names.takeIndustryCompanyName(primaryCulture); name.has_value())
+	{
+		has_industrial_concern_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_industrial_concern", name);
+	}
+	if (const auto name = names.takeElectronicCompanyName(primaryCulture); name.has_value())
+	{
+		has_electronics_concern_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_electronics_concern", name);
+	}
 }
 
 
