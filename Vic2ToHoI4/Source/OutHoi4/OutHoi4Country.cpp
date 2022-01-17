@@ -373,7 +373,7 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	 const HoI4::Country& theCountry,
 	 const Configuration& theConfiguration);
 void outputCommonCountryFile(const HoI4::Country& theCountry, const Configuration& theConfiguration);
-void outputAdvisorIdeas(const std::string& tag, const Configuration& theConfiguration);
+void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, const HoI4::Country& country);
 
 void HoI4::outputCountry(const std::vector<DivisionTemplateType>& divisionTemplates,
 	 const Country& theCountry,
@@ -387,7 +387,7 @@ void HoI4::outputCountry(const std::vector<DivisionTemplateType>& divisionTempla
 		outputHistory(theCountry, theConfiguration);
 		outputOOB(divisionTemplates, theCountry, theConfiguration);
 		outputCommonCountryFile(theCountry, theConfiguration);
-		outputAdvisorIdeas(tag, theConfiguration);
+		outputAdvisorIdeas(tag, theConfiguration.getOutputName(), theCountry);
 		outputAIStrategy(theCountry, outputName);
 		outputCharacters("output/" + outputName + "/common/characters/" + tag + ".txt ", theCountry.getCharacters());
 
@@ -1041,270 +1041,320 @@ void outputCommonCountryFile(const HoI4::Country& theCountry, const Configuratio
 }
 
 
-void outputAdvisorIdeas(const std::string& tag, const Configuration& theConfiguration)
+void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, const HoI4::Country& country)
 {
-	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
+	const std::string output_file =
+		 std::string("output/").append(output_name).append("/common/ideas/").append(tag).append(".txt");
+	std::ofstream ideasFile(output_file);
 	if (!ideasFile.is_open())
 	{
-		throw std::runtime_error(
-			 "Could not open output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
+		throw std::runtime_error("Could not open output/" + output_file);
 	}
 
 	ideasFile << "ideas = {\n";
 	ideasFile << "\t# TECHNOLOGY\n";
-	ideasFile << "\ttank_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\tdesigner = yes\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_tank_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_tank_manufacturer_1\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tarmor = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { tank_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\tnaval_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\tdesigner = yes\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_naval_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_naval_manufacturer_1\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tnaval_equipment = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { naval_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\taircraft_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\tdesigner = yes\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_light_aircraft_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_air_manufacturer_1\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tair_equipment = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { light_aircraft_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_medium_aircraft_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_air_manufacturer_3\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tair_equipment = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { medium_aircraft_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_heavy_aircraft_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_air_manufacturer_2\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tair_equipment = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { heavy_aircraft_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_naval_aircraft_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_naval_manufacturer_2\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tair_equipment = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { naval_aircraft_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\tindustrial_concern = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_industrial_concern = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_industrial_concern_1\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = industrial_concern limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tindustry = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { industrial_concern }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_electronics_concern = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_electronics_concern_1\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = electronics_concern limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\telectronics = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { electronics_concern }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\tmateriel_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\tdesigner = yes\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_motorized_equipment_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_motorized_equipment_manufacturer_3\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tmotorized_equipment = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { motorized_equipment_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_infantry_equipment_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_infantry_equipment_manufacturer_2\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tinfantry_weapons = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { infantry_equipment_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t" << tag << "_artillery_manufacturer = {\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tpicture = generic_artillery_manufacturer_2\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t\tNOT = {\n";
-	ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = artillery_manufacturer limit = 1 }\n";
-	ideasFile << "\t\t\t\t}\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tartillery = 0.15\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\n";
-	ideasFile << "\t\t\ttraits = { artillery_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
+	if (country.hasTankManufacturer())
+	{
+		ideasFile << "\ttank_manufacturer = {\n";
+		ideasFile << "\n";
+		ideasFile << "\t\tdesigner = yes\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t" << tag << "_tank_manufacturer = {\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\tpicture = generic_tank_manufacturer_1\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\tallowed = {\n";
+		ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+		ideasFile << "\t\t\t\tNOT = {\n";
+		ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }\n";
+		ideasFile << "\t\t\t\t}\n";
+		ideasFile << "\t\t\t}\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\tcost = 150\n";
+		ideasFile << "\t\t\tremoval_cost = 10\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\tresearch_bonus = {\n";
+		ideasFile << "\t\t\t\tarmor = 0.15\n";
+		ideasFile << "\t\t\t}\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\ttraits = { tank_manufacturer }\n";
+		ideasFile << "\t\t}\n";
+		ideasFile << "\t}\n";
+		ideasFile << "\n";
+	}
+	if (country.hasNavalManufacturer())
+	{
+		ideasFile << "\tnaval_manufacturer = {\n";
+		ideasFile << "\n";
+		ideasFile << "\t\tdesigner = yes\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t" << tag << "_naval_manufacturer = {\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\tpicture = generic_naval_manufacturer_1\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\tallowed = {\n";
+		ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+		ideasFile << "\t\t\t\tNOT = {\n";
+		ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }\n";
+		ideasFile << "\t\t\t\t}\n";
+		ideasFile << "\t\t\t}\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\tcost = 150\n";
+		ideasFile << "\t\t\tremoval_cost = 10\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\tresearch_bonus = {\n";
+		ideasFile << "\t\t\t\tnaval_equipment = 0.15\n";
+		ideasFile << "\t\t\t}\n";
+		ideasFile << "\n";
+		ideasFile << "\t\t\ttraits = { naval_manufacturer }\n";
+		ideasFile << "\t\t}\n";
+		ideasFile << "\t}\n";
+		ideasFile << "\n";
+	}
+
+	if (country.hasLightAircraftManufacturer() || country.hasMediumAircraftManufacturer() ||
+		 country.hasHeavyAircraftManufacturer() || country.hasNavalAircraftManufacturer())
+	{
+		ideasFile << "\taircraft_manufacturer = {\n";
+		ideasFile << "\n";
+		ideasFile << "\t\tdesigner = yes\n";
+		ideasFile << "\n";
+		if (country.hasLightAircraftManufacturer())
+		{
+			ideasFile << "\t\t" << tag << "_light_aircraft_manufacturer = {\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tpicture = generic_air_manufacturer_1\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tallowed = {\n";
+			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+			ideasFile << "\t\t\t\tNOT = {\n";
+			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t}\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tcost = 150\n";
+			ideasFile << "\t\t\tremoval_cost = 10\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tresearch_bonus = {\n";
+			ideasFile << "\t\t\t\tair_equipment = 0.15\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\ttraits = { light_aircraft_manufacturer }\n";
+			ideasFile << "\t\t}\n";
+			ideasFile << "\n";
+		}
+		if (country.hasMediumAircraftManufacturer())
+		{
+			ideasFile << "\t\t" << tag << "_medium_aircraft_manufacturer = {\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tpicture = generic_air_manufacturer_3\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tallowed = {\n";
+			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+			ideasFile << "\t\t\t\tNOT = {\n";
+			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t}\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tcost = 150\n";
+			ideasFile << "\t\t\tremoval_cost = 10\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tresearch_bonus = {\n";
+			ideasFile << "\t\t\t\tair_equipment = 0.15\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\ttraits = { medium_aircraft_manufacturer }\n";
+			ideasFile << "\t\t}\n";
+			ideasFile << "\n";
+		}
+		if (country.hasHeavyAircraftManufacturer())
+		{
+			ideasFile << "\t\t" << tag << "_heavy_aircraft_manufacturer = {\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tpicture = generic_air_manufacturer_2\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tallowed = {\n";
+			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+			ideasFile << "\t\t\t\tNOT = {\n";
+			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t}\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tcost = 150\n";
+			ideasFile << "\t\t\tremoval_cost = 10\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tresearch_bonus = {\n";
+			ideasFile << "\t\t\t\tair_equipment = 0.15\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\ttraits = { heavy_aircraft_manufacturer }\n";
+			ideasFile << "\t\t}\n";
+			ideasFile << "\n";
+		}
+		if (country.hasNavalAircraftManufacturer())
+		{
+			ideasFile << "\t\t" << tag << "_naval_aircraft_manufacturer = {\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tpicture = generic_naval_manufacturer_2\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tallowed = {\n";
+			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+			ideasFile << "\t\t\t\tNOT = {\n";
+			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t}\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tcost = 150\n";
+			ideasFile << "\t\t\tremoval_cost = 10\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tresearch_bonus = {\n";
+			ideasFile << "\t\t\t\tair_equipment = 0.15\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\ttraits = { naval_aircraft_manufacturer }\n";
+			ideasFile << "\t\t}\n";
+		}
+		ideasFile << "\t}\n";
+		ideasFile << "\n";
+	}
+
+	if (country.hasIndustrialConcern() || country.hasElectronicsConcern())
+	{
+		ideasFile << "\tindustrial_concern = {\n";
+		ideasFile << "\n";
+		if (country.hasIndustrialConcern())
+		{
+			ideasFile << "\t\t" << tag << "_industrial_concern = {\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tpicture = generic_industrial_concern_1\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tallowed = {\n";
+			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+			ideasFile << "\t\t\t\tNOT = {\n";
+			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = industrial_concern limit = 1 }\n";
+			ideasFile << "\t\t\t\t}\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tcost = 150\n";
+			ideasFile << "\t\t\tremoval_cost = 10\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tresearch_bonus = {\n";
+			ideasFile << "\t\t\t\tindustry = 0.15\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\ttraits = { industrial_concern }\n";
+			ideasFile << "\t\t}\n";
+			ideasFile << "\n";
+		}
+		if (country.hasElectronicsConcern())
+		{
+			ideasFile << "\t\t" << tag << "_electronics_concern = {\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tpicture = generic_electronics_concern_1\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tallowed = {\n";
+			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+			ideasFile << "\t\t\t\tNOT = {\n";
+			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = electronics_concern limit = 1 }\n";
+			ideasFile << "\t\t\t\t}\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tcost = 150\n";
+			ideasFile << "\t\t\tremoval_cost = 10\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tresearch_bonus = {\n";
+			ideasFile << "\t\t\t\telectronics = 0.15\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\ttraits = { electronics_concern }\n";
+			ideasFile << "\t\t}\n";
+		}
+		ideasFile << "\t}\n";
+		ideasFile << "\n";
+	}
+
+	if (country.hasMotorizedEquipmentManufacturer() || country.hasInfantryEquipmentManufacturer() ||
+		 country.hasArtilleryManufacturer())
+	{
+		ideasFile << "\tmateriel_manufacturer = {\n";
+		ideasFile << "\n";
+		ideasFile << "\t\tdesigner = yes\n";
+		ideasFile << "\n";
+		if (country.hasMotorizedEquipmentManufacturer())
+		{
+			ideasFile << "\t\t" << tag << "_motorized_equipment_manufacturer = {\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tpicture = generic_motorized_equipment_manufacturer_3\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tallowed = {\n";
+			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+			ideasFile << "\t\t\t\tNOT = {\n";
+			ideasFile
+				 << "\t\t\t\t\thas_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t}\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tcost = 150\n";
+			ideasFile << "\t\t\tremoval_cost = 10\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tresearch_bonus = {\n";
+			ideasFile << "\t\t\t\tmotorized_equipment = 0.15\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\ttraits = { motorized_equipment_manufacturer }\n";
+			ideasFile << "\t\t}\n";
+			ideasFile << "\n";
+		}
+		if (country.hasInfantryEquipmentManufacturer())
+		{
+			ideasFile << "\t\t" << tag << "_infantry_equipment_manufacturer = {\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tpicture = generic_infantry_equipment_manufacturer_2\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tallowed = {\n";
+			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+			ideasFile << "\t\t\t\tNOT = {\n";
+			ideasFile
+				 << "\t\t\t\t\thas_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t}\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tcost = 150\n";
+			ideasFile << "\t\t\tremoval_cost = 10\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tresearch_bonus = {\n";
+			ideasFile << "\t\t\t\tinfantry_weapons = 0.15\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\ttraits = { infantry_equipment_manufacturer }\n";
+			ideasFile << "\t\t}\n";
+			ideasFile << "\n";
+		}
+		if (country.hasArtilleryManufacturer())
+		{
+			ideasFile << "\t\t" << tag << "_artillery_manufacturer = {\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tpicture = generic_artillery_manufacturer_2\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tallowed = {\n";
+			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+			ideasFile << "\t\t\t\tNOT = {\n";
+			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = artillery_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t}\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tcost = 150\n";
+			ideasFile << "\t\t\tremoval_cost = 10\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\tresearch_bonus = {\n";
+			ideasFile << "\t\t\t\tartillery = 0.15\n";
+			ideasFile << "\t\t\t}\n";
+			ideasFile << "\n";
+			ideasFile << "\t\t\ttraits = { artillery_manufacturer }\n";
+			ideasFile << "\t\t}\n";
+		}
+		ideasFile << "\t}\n";
+	}
 
 	ideasFile << "}\n";
 }

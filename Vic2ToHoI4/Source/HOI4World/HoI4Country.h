@@ -283,7 +283,7 @@ class Country
 	[[nodiscard]] bool hasInfantryEquipmentManufacturer() const { return has_infantry_equipment_manufacturer_; }
 	[[nodiscard]] bool hasArtilleryManufacturer() const { return has_artillery_manufacturer_; }
 	[[nodiscard]] bool hasLightAircraftManufacturer() const { return has_light_aircraft_manufacturer_; }
-	[[nodiscard]] bool hasmediumAircraftManufacturer() const { return has_medium_aircraft_manufacturer_; }
+	[[nodiscard]] bool hasMediumAircraftManufacturer() const { return has_medium_aircraft_manufacturer_; }
 	[[nodiscard]] bool hasHeavyAircraftManufacturer() const { return has_heavy_aircraft_manufacturer_; }
 	[[nodiscard]] bool hasNavalAircraftManufacturer() const { return has_naval_aircraft_manufacturer_; }
 	[[nodiscard]] bool hasNavalManufacturer() const { return has_naval_manufacturer_; }
