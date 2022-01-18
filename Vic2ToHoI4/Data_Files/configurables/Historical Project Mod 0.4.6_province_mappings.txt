@@ -1351,7 +1351,7 @@
 	link = { vic2 = 452 hoi4 = 3594 hoi4 = 3770 hoi4 = 6786 hoi4 = 11593 } # St Etienne -> Vichy, Montbrisson, Saint-Étienne, Roanne
 	link = { vic2 = 451 hoi4 = 6613 hoi4 = 9590 hoi4 = 6639 hoi4 = 3589 } # Lyon -> Lyon, Ambérieu-en-Bugey, Bellegarde-sur- Valserine, Vienne
 	link = { vic2 = 466 hoi4 = 6784 } # Chambery -> Chambéry
-	link = { hoi4 = 13124 } # NOTHING -> (Lake)
+	link = { vic2 = 3283 hoi4 = 13124 } # Lake Geneva -> (Lake)
 	link = { vic2 = 465 hoi4 = 778 hoi4 = 11573 hoi4 = 9603 hoi4 = 6609 hoi4 = 9745 } # Annency -> Cluses, Annecy, Thonon-les-Bains, Albertville, Bourg-Saint-Maurice
 	link = { vic2 = 433 hoi4 = 3650 hoi4 = 641 hoi4 = 6668 hoi4 = 817 hoi4 = 3646 } # Lons -> Lons-le-Saunier, Bourg-en-Bresse, Oyonnax, Dole, Lons-le-Saunier
 	link = { vic2 = 432 hoi4 = 9642 hoi4 = 3666 hoi4 = 698 hoi4 = 6698 } # Besancon -> Besançon, Montbéliard, Belfort, Vesoul
