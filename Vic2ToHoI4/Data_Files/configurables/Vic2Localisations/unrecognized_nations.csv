@@ -5,70 +5,135 @@
 #
 
 ####;EN;FR;DE;PL;ES;IT;SW;CZ;HU;NL;PT;RU;FI;x
-unrecognized_name;Unrecognized;Méconnue;Unerkannt;Nierozpoznany;Poco Reconocido;Non Riconosciuto;Okänd;Nerozpoznáno;Ismeretlen;Niet Herkend;Não Reconhecido;Íåîïîçíàíí;Tunnistamaton;x
-unrecognized_adjective;Unrecognized;Méconnue;Unerkannt;Nierozpoznany;Poco Reconocido;Non Riconosciuto;Okänd;Nerozpoznáno;Ismeretlen;Niet Herkend;Não Reconhecido;Íåîïîçíàíí;Tunnistamaton;x
-unrecognized_canada;Unrecognized Canada;Canada Méconnue;Unerkanntes Kanada;Nierozpoznanya Kanada;Canadá Poco Reconocido;Canada Non Riconosciuto;;;;;Canadá Não Reconhecido;Íåîïîçíàííàÿ Êàíàäà;;x
-unrecognized_california;Unrecognized California;Californie Méconnue;Unerkanntes Kalifornien;Nierozpoznanya Kalifornia;California Poco Reconocido;California Non Riconosciuto;;;;;Califórnia Não Reconhecido;Íåîïîçíàííàÿ Êàëèôîğíèÿ;;x
-unrecognized_us_central;Unrecognized Louisiana;Louisiane Méconnue;Unerkanntes Louisiana;Nierozpoznanya Luizjana;Luisiana Poco Reconocido;Luisiana Non Riconosciuto;;;;;Louisiana Não Reconhecido;Íåîïîçíàííàÿ Ëóèçèàíà;;x
-unrecognized_us_north_east;Unrecognized Thirteen Colonies;Treize Colonies Méconnues;Unerkannte Dreizehn Kolonien;Nierozpoznanyie Trzynaœcie Kolonii;Las Trece Colonias Poco Reconocidos;Tredici Colonie Non Riconosciuto;;;;;Treze Colônias Não Reconhecidos;Íåîïîçíàííèå Òğèíàäöàòü Êîëîíèé;;x
-unrecognized_dixieland;Unrecognized Dixia;Dixie Méconnue;Unerkanntes Dixien;Nierozpoznanyi Dixia;Dixia Poco Reconocido;Dixia Non Riconosciuto;;;;;Dixia Não Reconhecido;Íåîïîçíàííàÿ Äèêñèÿ;;x
-unrecognized_britain;Unrecognized Britain;Bretagne Méconnue;Unerkanntes Großbritannien;Nierozpoznanya Brytania;Bretaña Poco Reconocido;Bretagna Non Riconosciuto;;;;;Grã-Bretanha Não Reconhecido;Íåîïîçíàííàÿ Áğèòàíèÿ;;x
-unrecognized_scandinavia;Unrecognized Scandinavia;Scandinavie Méconnue;Unerkanntes Skandinavien;Nierozpoznanya Skandynawia;Escandinavia Poco Reconocido;Scandinavia Non Riconosciuto;;;;;Escandinávia Não Reconhecido;Íåîïîçíàííàÿ Ñêàíäèíàâèÿ;;x
-unrecognized_baltic;Unrecognized Baltic;La Baltique Méconnue;Die Unerkannte Ostsee;Nierozpoznanyi Ba³tyk;El Báltico Poco Reconocido;Baltico Non Riconosciuto;;;;;O Báltico Não Reconhecido;Íåîïîçíàííàÿ Ïğèáàëòèêà;;x
-unrecognized_dutchland;Unrecognized Netherlands;Les Pays-Bas Méconnue;Unerkannte Niederlande;Nierozpoznanyie Niderlandy;Países Bajos Poco Reconocidos;Paesi Bassi Non Riconosciuto;;;;;Holanda Não Reconhecido;Íåîïîçíàííèå Íèäåğëàíäû;;x
-unrecognized_france;Unrecognized France;France Méconnue;Unerkanntes Frankreich;Nierozpoznanya Francja;Francia Poco Reconocido;Francia Non Riconosciuto;;;;;França Não Reconhecido;Íåîïîçíàííèé Ôğàíöèÿ;;x
-unrecognized_iberia;Unrecognized Iberia;Ibérie Méconnue;Unerkanntes Iberia;Nierozpoznanya Iberia;Iberia Poco Reconocido;Iberia Non Riconosciuto;;;;;Iberia Não Reconhecido;Íåîïîçíàííàÿ Èáåğèÿ;;x
-unrecognized_germany;Unrecognized Germany;Allemagne Méconnue;Unerkanntes Deutschland;Nierozpoznanyie Niemcy;Alemania Poco Reconocido;Germania Non Riconosciuto;;;;;Alemanha Não Reconhecido;Íåîïîçíàííàÿ Ãåğìàíèÿ;;x
-unrecognized_austria;Unrecognized Mitteleuropa;Mitteleurope Méconnue;Unerkanntes Mitteleuropa;Nierozpoznanyi Mitteleuropa;Mitteleuropa Poco Reconocido;Mitteleuropa Non Riconosciuto;;;;;Mitteleuropa Não Reconhecido;Íåîïîçíàííèé Ìèòòåëåâğîïà;;x
-unrecognized_hungary;Unrecognized Pannonia;Pannonie Méconnue;Unerkanntes Pannonien;Nierozpoznanya Panonia;Panonia Poco Reconocido;Pannonia Non Riconosciuto;;;;;Panônia Não Reconhecido;Íåîïîçíàííàÿ Ïàííîíèÿ;;x
-unrecognized_romania;Unrecognized Wallachia;Valachie Méconnue;Unerkannte Walachei;Nierozpoznanya Wo³oszczyzna;Valaquia Poco Reconocido;Valacchia Non Riconosciuto;;;;;Wallachia Não Reconhecido;Íåîïîçíàííàÿ Âàëàõèÿ;;x
-unrecognized_poland;Unrecognized Poland;Pologne Méconnue;Unerkanntes Polen;Nierozpoznanya Polska;Polonia Poco Reconocido;Polonia Non Riconosciuto;;;;;Polônia Não Reconhecido;Íåîïîçíàííàÿ Ïîëüøà;;x
-unrecognized_italy;Unrecognized Italy;Italie Méconnue;Unerkanntes Italien;Nierozpoznanyie W³ochy;Italia Poco Reconocido;Italia Non Riconosciuto;;;;;Itália Não Reconhecido;Íåîïîçíàííàÿ Èòàëèÿ;;x
-unrecognized_yugoslavia;Unrecognized Balkans;Les Balkans Méconnue;Der Unerkannte Balkan;Nierozpoznanyie Balkany;Los Balcanes Poco Reconocidos;Balcani Non Riconosciuto;;;;;Os Balcãs Não Reconhecidos;Íåîïîçíàííèå Áàëêàíû;;x
-unrecognized_bulgaria;Unrecognized Bulgaria;Bulgarie Méconnue;Unerkanntes Bulgarien;Nierozpoznanyi Bu³garia;Bulgaria Poco Reconocido;Bulgaria Non Riconosciuto;;;;;Bulgária Não Reconhecido;Íåîïîçíàííàÿ Áîëãàğèÿ;;x
-unrecognized_greece;Unrecognized Greece;Grèce Méconnue;Unerkanntes Griechenland;Nierozpoznanya Grecja;Grecia Poco Reconocido;Grecia Non Riconosciuto;;;;;Grécia Não Reconhecido;Íåîïîçíàííàÿ Ãğåöèÿ;;x
-unrecognized_turkey;Unrecognized Anatolia;Anatolie Méconnue;Unerkanntes Anatolien;Nierozpoznanya Anatolia;Anatolia Poco Reconocido;Anatolia Non Riconosciuto;;;;;Anatólia Não Reconhecido;Íåîïîçíàííàÿ Àíàòîëèÿ;;x
-unrecognized_levant;Unrecognized Levant;Le Levant Méconnue;Die Unerkannte Levante;Nierozpoznanyi Lewant;El Levante Poco Reconocido;Levante Non Riconosciuto;;;;;O Levante Não Reconhecido;Íåîïîçíàííèé Ëåâàíò;;x
-unrecognized_iraq;Unrecognized Mesopotamia;Mésopotamie Méconnue;Unerkanntes Mesopotamien;Nierozpoznanya Mezopotamia;Mesopotamia Poco Reconocido;Mesopotamia Non Riconosciuto;;;;;Mesopotâmia Não Reconhecido;Íåîïîçíàííàÿ Ìåñîïîòàìèÿ;;x
-unrecognized_belarus;Unrecognized Byelorrussia;Biélorussie Méconnue;Unerkanntes Weißrussland;Nierozpoznanya Bia³oruœ;Bielorrusia Poco Reconocido;Bielorussia Non Riconosciuto;;;;;Bielorrússia Não Reconhecido;Íåîïîçíàííàÿ Áåëîğóññèÿ;;x
-unrecognized_ukraine;Unrecognized Malarussia;Malarussie Méconnue;Unerkanntes Kleinrussland;Nierozpoznanya Malaruœ;Malorrusia Poco Reconocido;Malorussia Non Riconosciuto;;;;;Malarrússia Não Reconhecido;Íåîïîçíàííàÿ Ìàëîğóññèÿ;;x
-unrecognized_russia;Unrecognized Russia;Russie Méconnue;Unerkanntes Russland;Nierozpoznanya Rosja;Rusia Poco Reconocido;Russia Non Riconosciuto;;;;;Rússia Não Reconhecido;Íåîïîçíàííàÿ Ğîññèÿ;;x
-unrecognized_siberia;Unrecognized Siberia;Sibérie Méconnue;Unerkanntes Sibirien;Nierozpoznanya Syberia;Siberia Poco Reconocido;Siberia Non Riconosciuto;;;;;Sibéria Não Reconhecido;Íåîïîçíàííàÿ Ñèáèğü;;x
-unrecognized_transcaucasia;Unrecognized Transcaucasia;Transcaucasie Méconnue;Unerkanntes Transkaukasien;Nierozpoznanyie Zakaukazie;Transcaucasia Poco Reconocido;Transcaucasia Non Riconosciuto;;;;;Transcaucásia Não Reconhecido;Íåîïîçíàííîå Çàêàâêàçüå;;x
-unrecognized_persia;Unrecognized Persia;Perse Méconnue;Unerkanntes Persien;Nierozpoznanya Persja;Persia Poco Reconocido;Persia Non Riconosciuto;;;;;Pérsia Não Reconhecido;Íåîïîçíàííàÿ Ïåğñèÿ;;x
-unrecognized_arabia;Unrecognized Arabia;Arabie Méconnue;Unerkanntes Arabien;Nierozpoznanya Arabia;Arabia Poco Reconocido;Arabia Non Riconosciuto;;;;;Arábia Não Reconhecido;Íåîïîçíàííàÿ Àğàâèÿ;;x
-unrecognized_central_asia;Unrecognized Central Asia;Asie Centrale Méconnue;Unerkanntes Zentralasien;Nierozpoznanya Azja Œrodkowa;Asia Central Poco Reconocido;Asia Centrale Non Riconosciuto;;;;;Ásia Central Não Reconhecido;Íåîïîçíàííàÿ Öåíòğàëüíàÿ Àçèÿ;;x
-unrecognized_south_asia;Unrecognized Raj;Le Raj Méconnue;Das Unerkannte Raj;Nierozpoznanyi Raj;El Raj Poco Reconocido;Raj Non Riconosciuto;;;;;O Raj Não Reconhecido;Íåîïîçíàííèé Ğàäæ;;x
-unrecognized_burma;Unrecognized Burma;Birmanie Méconnue;Unerkanntes Birma;Nierozpoznanya Birma;Birmania Poco Reconocido;Birmania Non Riconosciuto;;;;;Birmânia Não Reconhecido;Íåîïîçíàííàÿ Áèğìà;;x
-unrecognized_siam;Unrecognized Siam;Siam Méconnue;Unerkanntes Siam;Nierozpoznanyi Syjam;Siam Poco Reconocido;Siam Non Riconosciuto;;;;;Sião Não Reconhecido;Íåîïîçíàííèé Ñèàì;;x
-unrecognized_indochina;Unrecognized Indochina;Indochine Méconnue;Unerkanntes Indochina;Nierozpoznanyie Indochiny;Indochina Poco Reconocido;Indocina Non Riconosciuto;;;;;Indochina Não Reconhecido;Íåîïîçíàííèé Èíäîêèòàé;;x
-unrecognized_malaysia;Unrecognized Malaysia;Malaisie Méconnue;Unerkanntes Malaysia;Nierozpoznanya Malezja;Malasia Poco Reconocido;Malesia Non Riconosciuto;;;;;Malásia Não Reconhecido;Íåîïîçíàííàÿ Ìàëàéçèÿ;;x
-unrecognized_indonesia;Unrecognized East Indies;Les Indes Orientales Méconnues;Die Unerkannten Ostindien;Nierozpoznanyie Indie Wschodnie;Las Indias Orientales Poco Reconocidos;Indie Orientali Non Riconosciuto;;;;;As Índias Orientais Não Reconhecidos;Íåîïîçíàííàÿ Îñò-Èíäèÿ;;x
-unrecognized_philippines;Unrecognized Philippines;Les Philippines Méconnues;Die Unerkannten Philippinen;Nierozpoznanyie Filipiny;Filipinas Poco Reconocidos;Filippine Non Riconosciuto;;;;;As Filipinas Não Reconhecidos;Íåîïîçíàííèå Ôèëèïïèíû;;x
-unrecognized_china;Unrecognized China;Chine Méconnue;Unerkanntes China;Nierozpoznanya China;China Poco Reconocido;Cina Non Riconosciuto;;;;;China Não Reconhecido;Íåîïîçíàííèé Êèòàé;;x
-unrecognized_korea;Unrecognized Korea;Corée Méconnue;Unerkanntes Korea;Nierozpoznanya Korea;Corea Poco Reconocido;Corea Non Riconosciuto;;;;;Coréia Não Reconhecido;Íåîïîçíàííàÿ Êîğåÿ;;x
-unrecognized_japan;Unrecognized Japan;Japon Méconnue;Unerkanntes Japan;Nierozpoznanya Japonia;Japón Poco Reconocido;Giappone Non Riconosciuto;;;;;Japão Não Reconhecido;Íåîïîçíàííèé ßïîíèÿ;;x
-unrecognized_maghreb;Unrecognized Maghreb;Le Maghreb Méconnue;Der Unerkannte Maghreb;Nierozpoznanyi Maghreb;El Magreb Poco Reconocido;Magreb Non Riconosciuto;;;;;O Magrebe Não Reconhecido;Íåîïîçíàííèé Ìàãğèá;;x
-unrecognized_libya;Unrecognized Libya;Libye Méconnue;Unerkanntes Libyen;Nierozpoznanya Libia;Libia Poco Reconocido;Libia Non Riconosciuto;;;;;Líbia Não Reconhecido;Íåîïîçíàííàÿ Ëèâèÿ;;x
-unrecognized_egypt;Unrecognized Egypt;Égypte Méconnue;Unerkanntes Ägypten;Nierozpoznanyi Egipt;Egipto Poco Reconocido;Egitto Non Riconosciuto;;;;;Egito Não Reconhecido;Íåîïîçíàííèé Åãèïåò;;x
-unrecognized_western_africa;Unrecognized Western Africa;Afrique Occidentale Méconnue;Unerkanntes Westafrika;Nierozpoznanya Afryka Zachodnia;África Occidental Poco Reconocido;Africa Occidentale Non Riconosciuto;;;;;África Ocidental Não Reconhecido;Íåîïîçíàííàÿ Çàïàäíàÿ Àôğèêà;;x
-unrecognized_sudan;Unrecognized Sudan;Soudan Méconnue;Der Unerkannte Sudan;Nierozpoznanyi Sudan;Sudán Poco Reconocido;Sudan Non Riconosciuto;;;;;Sudão Não Reconhecido;Íåîïîçíàííèé Ñóäàí;;x
-unrecognized_abyssinia;Unrecognized Abyssinia;Abyssinie Méconnue;Unerkanntes Abessinien;Nierozpoznanya Abisynia;Abisinia Poco Reconocido;Abissinia Non Riconosciuto;;;;;Abissínia Não Reconhecido;Íåîïîçíàííàÿ Àáèññèíèÿ;;x
-unrecognized_nigeria;Unrecognized Nigeria;Nigéria Méconnue;Unerkanntes Nigeria;Nierozpoznanya Nigeria;Nigeria Poco Reconocido;Nigeria Non Riconosciuto;;;;;Nigéria Não Reconhecido;Íåîïîçíàííàÿ Íèãåğèÿ;;x
-unrecognized_congo;Unrecognized Congo;Congo Méconnue;Unerkanntes Kongo;Nierozpoznanyie Kongo;Congo Poco Reconocido;Congo Non Riconosciuto;;;;;Congo Não Reconhecido;Íåîïîçíàííîå Êîíãî;;x
-unrecognized_equatorial_africa;Unrecognized Equatorial Africa;Afrique Équatoriale Méconnue;Unerkanntes Äquatorialafrika;Nierozpoznanya Afryka Równikowa;África Ecuatorial Poco Reconocido;Africa Equatoriale Non Riconosciuto;;;;;África Equatorial Não Reconhecido;Íåîïîçíàííàÿ İêâàòîğèàëüíàÿ Àôğèêà;;x
-unrecognized_angola;Unrecognized Angola;Angola Méconnue;Unerkanntes Angola;Nierozpoznanya Angola;Angola Poco Reconocido;Angola Non Riconosciuto;;;;;Angola Não Reconhecido;Íåîïîçíàííàÿ Àíãîëà;;x
-unrecognized_east_africa;Unrecognized East Africa;Afrique Orientale Méconnue;Unerkanntes Ostafrika;Nierozpoznanya Afryka Wschodnia;África Oriental Poco Reconocido;Africa Orientale Non Riconosciuto;;;;;África Oriental Não Reconhecido;Íåîïîçíàííàÿ Âîñòî÷íàÿ Àôğèêà;;x
-unrecognized_mozambique;Unrecognized Mozambique;Mozambique Méconnue;Unerkanntes Mosambik;Nierozpoznanyi Mozambik;Mozambique Poco Reconocido;Mozambico Non Riconosciuto;;;;;Moçambique Não Reconhecido;Íåîïîçíàííèé Ìîçàìáèê;;x
-unrecognized_southern_africa;Unrecognized Southern Africa;Afrique Australe Méconnue;Unerkanntes Südafrika;Nierozpoznanya Afryka Po³udniowa;África Austral Poco Reconocido;Africa Meridionale Non Riconosciuto;;;;;África Austral Não Reconhecido;Íåîïîçíàííàÿ Şæíàÿ Àôğèêà;;x
-unrecognized_rhodesia;Unrecognized Rhodesia;Rhodésie Méconnue;Unerkanntes Rhodesien;Nierozpoznanya Rodezja;Rodesia Poco Reconocido;Rodesia Non Riconosciuto;;;;;Rodésia Não Reconhecido;Íåîïîçíàííàÿ Ğîäåçèÿ;;x
-unrecognized_madagascar;Unrecognized Madagascar;Madagascar Méconnue;Unerkanntes Madagaskar;Nierozpoznanyi Madagaskar;Madagascar Poco Reconocido;Madagascar Non Riconosciuto;;;;;Madagascar Não Reconhecido;Íåîïîçíàííèé Ìàäàãàñêàğ;;x
-unrecognized_mexico;Unrecognized Mexico;Mexique Méconnue;Unerkanntes Mexiko;Nierozpoznanyi Meksyk;México Poco Reconocido;Messico Non Riconosciuto;;;;;México Não Reconhecido;Íåîïîçíàííàÿ Ìåêñèêà;;x
-unrecognized_central_america;Unrecognized Central America;Amérique Centrale Méconnue;Unerkanntes Zentralamerika;Nierozpoznanya Ameryka Œrodkowa;Centroamérica Poco Reconocido;America Centrale Non Riconosciuto;;;;;América Central Não Reconhecido;Íåîïîçíàííàÿ Öåíòğàëüíàÿ Àìåğèêà;;x
-unrecognized_caribbean;Unrecognized Caribbean;Les Caraïbes Méconnues;Die Unerkannte Karibik;Nierozpoznanyie Karaiby;El Caribe Poco Reconocido;Caraibi Non Riconosciuto;;;;;Caribe Não Reconhecido;Íåîïîçíàííîå Êàğèáñêîå;;x
-unrecognized_gran_colombia;Unrecognized New Grenada;Nouvelle Grenade Méconnue;Unerkanntes Neu-Grenada;Nierozpoznanya Nowa Grenada;Nueva Granada Poco Reconocido;Nuova Granada Non Riconosciuto;;;;;Nova Granada Não Reconhecido;Íåîïîçíàííàÿ Íîâàÿ Ãğåíàäà;;x
-unrecognized_peru_bolivia;Unrecognized Peru-Bolivia;Pérou-Bolivie Méconnue;Unerkanntes Peru-Bolivien;Nierozpoznanyie Peru-Boliwia;Perú-Bolivia Poco Reconocido;Perù-Bolivia Non Riconosciuto;;;;;Peru-Bolívia Não Reconhecido;Íåîïîçíàííèé Ïåğó-Áîëèâèÿ;;x
-unrecognized_patagonia;Unrecognized Río de la Plata;Le Río-de-la-Plata Méconnue;Der Unerkannte Río de la Plata;Nierozpoznanyie Rio de la Plata;El Río de la Plata Poco Reconocido;Rio della Plata Non Riconosciuto;;;;;O Río de la Plata Não Reconhecido;Íåîïîçíàííèé Ğèî-äå-ëà-Ïëàòà;;x
-unrecognized_brazil;Unrecognized Brazil;Brésil Méconnue;Unerkanntes Brasilien;Nierozpoznanya Brazylia;Brasil Poco Reconocido;Brasile Non Riconosciuto;;;;;Brasil Não Reconhecido;Íåîïîçíàííèé Áğàçèëèÿ;;x
-unrecognized_australia;Unrecognized Australia;Australie Méconnue;Unerkanntes Australien;Nierozpoznanya Australia;Australia Poco Reconocido;Australia Non Riconosciuto;;;;;Austrália Não Reconhecido;Íåîïîçíàííàÿ Àâñòğàëèÿ;;x
-unrecognized_oceania;Unrecognized Pacific;Le Pacifique Méconnue;Der Unerkannte Pazifik;Nierozpoznanyi Pacyfik;El Pacífico Poco Reconocido;Pacifico Non Riconosciuto;;;;;O Pacífico Não Reconhecido;Íåîïîçíàííîå Òèõîå;;
+unrecognized_name;Unrecognized;MÃ©connue;Unerkannt;Nierozpoznany;Poco Reconocido;Non Riconosciuto;OkÃ¤nd;NerozpoznÃ¡no;Ismeretlen;Niet Herkend;NÃ£o Reconhecido;ÃÃ¥Ã®Ã¯Ã®Ã§Ã­Ã Ã­Ã­;Tunnistamaton;x
+unrecognized_adjective;Unrecognized;MÃ©connue;Unerkannt;Nierozpoznany;Poco Reconocido;Non Riconosciuto;OkÃ¤nd;NerozpoznÃ¡no;Ismeretlen;Niet Herkend;NÃ£o Reconhecido;ÃÃ¥Ã®Ã¯Ã®Ã§Ã­Ã Ã­Ã­;Tunnistamaton;x
+unrecognized_canada;Laurentia;Laurentia;Laurentien;Laurentia;Laurencia;;;;;;Laurentia;Ã‹Ã Ã¢Ã°Ã¥Ã­Ã²Ã¨Ã¿;;x
+unrecognized_canada_ADJ;Laurentian;laurentienne;laurentisch;laurentsk;laurentiana;;;;;;laurenciana;Ã«Ã Ã¢Ã°Ã¥Ã­Ã²Ã¼Ã¥Ã¢Ã±Ãª;;
+unrecognized_california;Angelinia;AngÃ©linia;Angelinien;Angelinia;Angelinia;;;;;;Angelina;Ã€Ã­Ã£Ã¥Ã«Ã¨Ã­Ã¨Ã¿;;x
+unrecognized_california_ADJ;Angelinian;angÃ©linienne;angelinisch;angeliÃ±sk;angelina;;;;;;angelina;Ã Ã­Ã£Ã¥Ã«Ã¨Ã­Ã±Ãª;;
+unrecognized_us_central;Mississippia;Mississippi;Mississippi;Missisipi;Mississippia;;;;;;Mississippia;ÃŒÃ¨Ã±Ã±Ã¨Ã±Ã¨Ã¯Ã¨;;x
+unrecognized_us_central_ADJ;Mississippian;mississippienne;mississippisch;missisipsk;misisipiense;;;;;;Mississipiana;Ã¬Ã¨Ã±Ã±Ã¨Ã±Ã¨Ã¯Ã±Ãª;;
+unrecognized_us_north_east;Jenkia;Jenkie;Jenkien;Jenkia;Jenquia;;;;;;Jenkia;Ã…Ã­ÃªÃ¨Ã¿;;x
+unrecognized_us_north_east_ADJ;Jenkian;jenkienne;jenkisch;jenksk;jenquiana;;;;;;jenkiana;Ã¥Ã­ÃªÃ¨Ã©Ã±Ãª;;
+unrecognized_dixieland;Dixia;Dixie;Dixien;Dixia;Dixia;;;;;;Dixia;Ã„Ã¨ÃªÃ±Ã¨Ã¿;;x
+unrecognized_dixieland_ADJ;Dixie;dixienne;dixisch;dixijsk;dixiana;;;;;;dixiesa;Ã¤Ã¨ÃªÃ±Ã¨Ã©Ã±Ãª;;
+unrecognized_britain;Albion;Albion;Albion;Albion;AlbiÃ³n;;;;;;Albion;Ã€Ã«Ã¼Ã¡Ã¨Ã®Ã­;;x
+unrecognized_britain_ADJ;Albionese;albionaise;albionesisch;albioÃ±ski;albionesa;;;;;;albionesa;Ã Ã«Ã¼Ã¡Ã¨Ã®Ã­Ã±Ãª;;
+unrecognized_scandinavia;Norseland;Norseland;Nordland;Nordland;Nordland;;;;;;Norseland;Ã‚Ã Ã°Ã¿Ã¦Ã¼;;x
+unrecognized_scandinavia_ADJ;Norse;norroise;nÃ¶rdisch;nordyck;nÃ³rdica;;;;;;nÃ³rdica;Ã¢Ã Ã°Ã¿Ã¦Ã±Ãª;;
+unrecognized_baltic;Balcia;Balcie;Balkien;BaÂ³cja;Balcia;;;;;;Balcia;ÃÃ Ã«Ã²Ã±ÃªÃ®Ã¥;;x
+unrecognized_baltic_ADJ;Baltic;baltique;baltisch;baÂ³tycki;bÃ¡ltica;;;;;;bÃ¡ltica;Ã¡Ã Ã«Ã²Ã±Ãª;;
+unrecognized_dutchland;Coastal Rhineland;RhÃ©nanie CÃ´tiÃ¨re;KÃ¼stenrheinland;Renia Nadmorska;Renania Costera;;;;;;RenÃ¢nia Costeira;ÃÃ°Ã¨Ã¡Ã°Ã¥Ã¦Ã­Ã Ã¿ ÃÃ¥Ã©Ã­Ã«Ã Ã­Ã¤;;x
+unrecognized_dutchland_ADJ;Coastal Rhenish;cÃ´to-rhÃ©nane;kÃ¼stenrheinisch;nadmorskoreÃ±sk;renana;;;;;;renÃ¢na;Ã¯Ã°Ã¨Ã¡Ã°Ã¥Ã¦Ã­Ã®Ã°Ã¥Ã©Ã­Ã±Ãª;;
+unrecognized_france;Transalpinia;Transalpinie;Transalpien;Zaalpejsko;Transalpinia;;;;;;Transalpinia;Ã’Ã°Ã Ã­Ã±Ã Ã«Ã¼Ã¯Ã¨Ã­Ã¨Ã¿;;x
+unrecognized_france_ADJ;Transalpine;transalpine;transalpinisch;zaalpejsk;transalpina;;;;;;transalpina;Ã²Ã°Ã Ã­Ã±Ã Ã«Ã¼Ã¯Ã¨Ã©Ã±Ãª;;
+unrecognized_iberia;Ebro;Ãˆbre;Ebro;Ebro;Ebro;;;;;;Ebro;ÃÃ¡Ã°Ã®;;x
+unrecognized_iberia_ADJ;Ebroan;Ã©brienne;ebroerisch;ebrojsk;ebresa;;;;;;ebresa;Ã½Ã¡Ã°Ã®Ã±Ãª;;
+unrecognized_germany;Nemacia;NÃ©macie;Nemakien;Nemacja;Nemacia;;;;;;Nemacia;ÃÃ¥Ã¬Ã Ã¶Ã¨Ã¿;;x
+unrecognized_germany_ADJ;Nemacian;nÃ©macienne;nemakisch;nemack;nemaciana;;;;;;nemaciana;Ã­Ã¥Ã¬Ã Ã¶Ã±Ãª;;
+unrecognized_austria;Danubia;Danubie;Donau;Dunaj;Danubio;;;;;;DanÃºbia;Ã„Ã³Ã­Ã Ã©;;x
+unrecognized_austria_ADJ;Danubian;danubienne;donauerisch;dunajsk;danubiana;;;;;;danÃºbia;Ã¤Ã³Ã­Ã Ã©Ã±Ãª;;
+unrecognized_hungary;Pannonia;Pannonie;Pannonien;Panonia;Panonia;;;;;;PanÃ´nia;ÃÃ Ã­Ã­Ã®Ã­Ã¨Ã¿;;x
+unrecognized_hungary_ADJ;Pannonian;pannonienne;pannonisch;panoÃ±sk;panonia;;;;;;pannoniana;Ã¯Ã Ã­Ã­Ã®Ã­Ã±Ãª;;
+unrecognized_romania;Carpathia;Carpates;Karpaten;Karpaty;Carpatia;;;;;;Carpathia;ÃŠÃ Ã°Ã¯Ã Ã²Ã»;;x
+unrecognized_romania_ADJ;Carpathian;carpatique;karpatisch;karpack;carpÃ¡tica;;;;;;cÃ¡rpata;ÃªÃ Ã°Ã¯Ã Ã²Ã±Ãª;;
+unrecognized_poland;Lechitia;LÃ©chitie;Lechitien;Lechicja;Lequicia;;;;;;LequÃ­cia;Ã‹Ã¥ÃµÃ¨Ã²Ã¨Ã¿;;x
+unrecognized_poland_ADJ;Lechitic;lÃ©chitique;lechitisch;lechick;lequÃ­tica;;;;;;lequÃ­tica;Ã«Ã¥ÃµÃ¨Ã²Ã¨Ã·Ã¥Ã±Ãª;;
+unrecognized_italy;Italiotia;Italiotie;Italiotei;Italia;Italiocia;;;;;;Italiotia;ÃˆÃ²Ã Ã«Ã¨Ã®Ã²Ã¨Ã¿;;x
+unrecognized_italy_ADJ;Italiote;italiote;italiotisch;italijsk;italiota;;;;;;italiote;Ã¨Ã²Ã Ã«Ã¨Ã®Ã²Ã±Ãª;;
+unrecognized_yugoslavia;Balkania;Balkanie;Balkanien;BaÂ³kania;Balcania;;;;;;BalcÃ¢nia;ÃÃ Ã«ÃªÃ Ã­Ã¨Ã¿;;x
+unrecognized_yugoslavia_ADJ;Balkan;balkanique;balkanisch;baÂ³kaÃ±sk;balcÃ¡nica;;;;;;balcÃ¢nica;Ã¡Ã Ã«ÃªÃ Ã­Ã±Ãª;;
+unrecognized_bulgaria;Serdicia;Serdicie;Serdikien;Serdycja;Serdicia;;;;;;SerdÃ­cia;Ã‘Ã¥Ã°Ã¤Ã¨Ã¶Ã¨Ã¿;;x
+unrecognized_bulgaria_ADJ;Serdic;serdique;serdisch;serdyjsk;serdica;;;;;;sÃ©rdica;Ã±Ã¥Ã°Ã¤Ã¨Ã²Ã±Ãª;;
+unrecognized_greece;Hellenia;HellÃ©nie;Hellenien;Hellenia;Helenia;;;;;;Helenia;Ã•Ã¥Ã«Ã«Ã¥Ã­Ã¨Ã¿;;x
+unrecognized_greece_ADJ;Hellenic;hellÃ©nique;hellenisch;helleÃ±sk;helÃ©nica;;;;;;helÃªnica;ÃµÃ¥Ã«Ã«Ã¥Ã­Ã¨Ã©Ã±Ãª;;
+unrecognized_turkey;Anatolia;Anatolie;Anatolien;Anatolia;Anatolia;;;;;;AnatÃ³lia;Ã€Ã­Ã Ã²Ã®Ã«Ã¨Ã¿;;x
+unrecognized_turkey_ADJ;Anatolian;anatolienne;anatolisch;anatolijck;anatolia;;;;;;anatÃ³lia;Ã Ã­Ã Ã²Ã®Ã«Ã¨Ã©Ã±Ãª;;
+unrecognized_levant;Levant;Levant;Levante;Lewant;Levante;;;;;;Levante;Ã‹Ã¥Ã¢Ã Ã­Ã²;;x
+unrecognized_levant_ADJ;Levantine;levantine;levantinisch;lewantyÃ±sk;levantina;;;;;;levantina;Ã«Ã¥Ã¢Ã Ã­Ã²Ã¨Ã©Ã±Ãª;;
+unrecognized_iraq;Mesopotamia;MÃ©sopotamie;Mesopotamien;Mezopotamia;Mesopotamia;;;;;;MesopotÃ¢mia;ÃŒÃ¥Ã±Ã®Ã¯Ã®Ã²Ã Ã¬Ã¨Ã¿;;x
+unrecognized_iraq_ADJ;Mesopotamian;mÃ©sopotamienne;mesopotamisch;mezopotamsk;mesopotÃ¡mica;;;;;;mesopotÃ¢mica;Ã¬Ã¥Ã±Ã®Ã¯Ã®Ã²Ã Ã¬Ã±Ãª;;
+unrecognized_belarus;White Slavia;Slavie Blanche;WeiÃŸslawien;BiaÂ³asÂ³awia;Eslavia Blanca;;;;;;Eslava Branca;ÃÃ¥Ã«Ã Ã¿ Ã‘Ã«Ã Ã¢Ã¨Ã¿;;x
+unrecognized_belarus_ADJ;White-Slavic;blanc-slave;weiÃŸslawisch;biaÂ³osÂ³owiaÃ±ski;blanco-eslava;;;;;;branco-eslava;Ã¡Ã¥Ã«Ã®Ã±Ã«Ã Ã¢Ã¿Ã­Ã±Ãª;;
+unrecognized_ukraine;Lesser Slavia;Slavie Petite;Kleinslawien;MaÂ³osÂ³awia;Eslavia Menor;;;;;;Pequena EslÃ¡via;ÃŒÃ Ã«Ã Ã¿ Ã‘Ã«Ã Ã¢Ã¨Ã¿;;x
+unrecognized_ukraine_ADJ;Lesser Slavic;petit-slave;kleinslawisch;maÂ³osÂ³owiaÃ±ski;menor-eslava;;;;;;pequeno-eslava;Ã¬Ã Ã«Ã®Ã±Ã«Ã Ã¢Ã¿Ã­Ã±Ãª;;
+unrecognized_russia;Greater Slavia;Grande Slavie;GroÃŸslawien;WielkosÂ³awia;Gran Eslavia;;;;;;Grande EslÃ¡via;Ã‚Ã¥Ã«Ã¨ÃªÃ Ã¿ Ã‘Ã«Ã Ã¢Ã¨Ã¿;;x
+unrecognized_russia_ADJ;Greater Slavic;grand-slave;groÃŸslawisch;wielkosÂ³owiaÃ±sk;gran-eslava;;;;;;grande-eslava;Ã¢Ã¥Ã«Ã¨ÃªÃ®Ã±Ã«Ã Ã¢Ã¿Ã­Ã±Ãª;;
+unrecognized_siberia;Hyperborea;HyperborÃ©e;Hyperborea;Hiperborea;HiperbÃ³rea;;;;;;HiperbÃ³rea;ÃƒÃ¨Ã¯Ã¥Ã°Ã¡Ã®Ã°Ã¥Ã¿;;x
+unrecognized_siberia_ADJ;Hyperborean;hyperborÃ©enne;hyperboreisch;hiperborejsk;hiperbÃ³rea;;;;;;hiperbÃ³rea;Ã£Ã¨Ã¯Ã¥Ã°Ã¡Ã®Ã°Ã¥Ã©Ã±Ãª;;
+unrecognized_transcaucasia;Caucasia;Caucase;Kaukasien;Kaukasia;CÃ¡ucaso;;;;;;CÃ¡ucaso;ÃŠÃ Ã¢ÃªÃ Ã§;;x
+unrecognized_transcaucasia_ADJ;Caucasic;caucasienne;kaukasisch;kaukask;caucÃ¡sica;;;;;;caucÃ¢sica;ÃªÃ Ã¢ÃªÃ Ã§Ã±Ãª;;
+unrecognized_persia;Tribal Persia;Perse Tribale;Stammes-Persien;Plemienna Persja;Persia tribal;;;;;;PÃ©rsia Tribal;ÃÃ«Ã¥Ã¬Ã¥Ã­Ã­Ã Ã¿ ÃÃ¥Ã°Ã±Ã¨Ã¿;;x
+unrecognized_persia_ADJ;Persian;persane;persisch;persk;persa;;;;;;persa;Ã¯Ã¥Ã°Ã±Ã¨Ã¤Ã±Ãª;;
+unrecognized_arabia;Bedouinia;BÃ©douinie;Beduinien;Beduinia;Beduinia;;;;;;BeduÃ­nia;ÃÃ¥Ã¤Ã³Ã¨Ã­Ã¨Ã¿;;x
+unrecognized_arabia_ADJ;Bedouin;bÃ©douine;beduinisch;beduiÃ±sk;beduina;;;;;;beduÃ­na;Ã¡Ã¥Ã¤Ã³Ã¨Ã­Ã±Ãª;;
+unrecognized_central_asia;Kazakh Steppe;Steppe Kazakhe;Kasachische Steppe;Step Kazachski;Estepa Kazaja;;;;;;Estepe Cazaque;ÃŠÃ Ã§Ã ÃµÃ±ÃªÃ Ã¿ Ã‘Ã²Ã¥Ã¯Ã¼;;x
+unrecognized_central_asia_ADJ;Kazakh;kazakhe;kasachisch;kazachsk;kazaja;;;;;;cazaque;ÃªÃ Ã§Ã ÃµÃ±Ãª;;
+unrecognized_south_asia;Bharatia;Bharatie;Bharatien;Bharatja;Bharatia;;;;;;Bharatia;ÃÃµÃ Ã°Ã Ã²Ã¨Ã¿;;x
+unrecognized_south_asia_ADJ;Bharatian;bharatienne;bharatisch;bharatsk;bharatiana;;;;;;bharatÃ­;Ã¡ÃµÃ Ã°Ã Ã²Ã±Ãª;;
+unrecognized_burma;Brahmadesh;Brahmadesh;Brahmadesch;Brahmadesza;Brahmadesh;;;;;;Brahmadesh;ÃÃ°Ã ÃµÃ¬Ã Ã¤Ã¥Ã¸;;x
+unrecognized_burma_ADJ;Brahmadeshi;brahmadeshoise;brahmadeschisch;brahmadesk;brahmadeshÃ­;;;;;;brahmadeshÃ­;Ã¡Ã°Ã ÃµÃ¬Ã Ã¤Ã¥Ã¸Ã±Ãª;;
+unrecognized_siam;Mueang;Mueang;MÃ¼ang;Muang;Mueang;;;;;;Mueang;ÃŒÃ³Ã Ã­Ã£;;x
+unrecognized_siam_ADJ;Mueangi;mueangoise;mÃ¼angisch;muangsk;mueangÃ­;;;;;;mueangÃ­;Ã¬Ã³Ã Ã­Ã£Ã±Ãª;;
+unrecognized_indochina;Tribal Indochina;Indochine Tribale;Stammes-Indochina;Plemienna Indochina;Indochina Tribal;;;;;;Indochina Tribal;ÃÃ«Ã¥Ã¬Ã¥Ã­Ã­Ã®Ã© ÃˆÃ­Ã¤Ã®ÃªÃ¨Ã²Ã Ã©;;x
+unrecognized_indochina_ADJ;Indochinese;indochinoise;indochinesisch;indochiÃ±sk;indochina Tribal;;;;;;indochinesa;Ã¨Ã­Ã¤Ã®ÃªÃ¨Ã²Ã Ã©Ã±Ãª;;
+unrecognized_malaysia;Northern Nusantara;Nusantara du Nord;NÃ¶rdliches Nusantara;PÃ³Â³nocny Nusantara;Nusantara del Norte;;;;;;Norte de Nusantara;Ã‘Ã¥Ã¢Ã¥Ã°Ã­Ã Ã¿ ÃÃ³Ã±Ã Ã­Ã²Ã Ã°Ã ;;x
+unrecognized_malaysia_ADJ;North Nusantaran;nord-nusantaraise;nordnusantarisch;pÃ³Â³nocnonusantarsk;nortenusantaresa;;;;;;norte-nusantaresa;Ã±Ã¥Ã¢Ã¥Ã°Ã­Ã®Ã­Ã³Ã±Ã Ã­Ã²Ã Ã°Ã±Ãª;;
+unrecognized_indonesia;Southern Nusantara;Nusantara du Sud;SÃ¼dliches Nusantara;PoÂ³udniowy Nusantara;Nusantara del Sur;;;;;;Sul de Nusantara;ÃÃ¦Ã­Ã Ã¿ ÃÃ³Ã±Ã Ã­Ã²Ã Ã°Ã ;;x
+unrecognized_indonesia_ADJ;South Nusantaran;sud-nusantaraise;sÃ¼dnusantarisch;poÂ³udniowonusantarsk;surnusantaresa;;;;;;sul-nusantaresa;Ã¾Ã¦Ã­Ã®Ã­Ã³Ã±Ã Ã­Ã²Ã Ã°Ã±Ãª;;
+unrecognized_philippines;Tagalogia;Tagaloguie;Tagalogien;Tagalogia;Tagaloguia;;;;;;Tagalogia;Ã’Ã Ã£Ã Ã«Ã®Ã£Ã¨Ã¿;;x
+unrecognized_philippines_ADJ;Tagalog;tagalog;tagalogisch;tagalogsk;tagalog;;;;;;tagalog;Ã²Ã Ã£Ã Ã«Ã®Ã£Ã±Ãª;;
+unrecognized_china;Hanguo;Hanguo;Hangou;Hanguo;Hanguo;;;;;;Hanguo;Ã•Ã Ã­Ã£Ã®;;x
+unrecognized_china_ADJ;Hanguo;hanguo;hanisch;hanguosk;hanguo;;;;;;hanguo;ÃµÃ Ã­Ã£Ã®Ã©Ã±Ãª;;
+unrecognized_korea;Cauli;Cauly;Kauli;Kauli;CaulÃ­;;;;;;Cauli;ÃŠÃ Ã³Ã«Ã¨;;x
+unrecognized_korea_ADJ;Caulian;caulienne;kaulisch;kaulijsk;caulÃ­;;;;;;cauliana;ÃªÃ Ã³Ã«Ã¨Ã©Ã±Ãª;;
+unrecognized_japan;Cipango;Cipango;Cipango;Cipango;Cipango;;;;;;Cipango;Ã—Ã¨Ã¯Ã Ã­Ã£Ã®;;x
+unrecognized_japan_ADJ;Cipangoan;cipangoise;cipangoisch;cipangowsk;cipangoana;;;;;;cipanguesa;Ã·Ã¨Ã¯Ã Ã­Ã£Ã®Ã©Ã±Ãª;;
+unrecognized_maghreb;Moorland;Terre Mauresque;Maurenland;Maurezemlja;Moria;;;;;;Mouria;Ã—Ã®Ã°Ã­Ã¨Ã¿;;x
+unrecognized_maghreb_ADJ;Moorish;mauresque;maurisch;maurezemlijsk;mora;;;;;;moura;Ã·Ã®Ã°Ã­Ã¨Ã©Ã±Ãª;;
+unrecognized_libya;Libuland;Terre aux Libous;Libuland;Libuland;Libulandia;;;;;;LibulÃ¢ndia;Ã‹Ã¨Ã¡Ã³Ã«Ã Ã­Ã¤;;x
+unrecognized_libya_ADJ;Libu;liboue;libuisch;libujsk;libÃº;;;;;;libu;Ã«Ã¨Ã¡Ã³Ã©Ã±Ãª;;
+unrecognized_egypt;Rankumatia;Rankumatie;Rankumatie;Rankumatia;Rankumatia;;;;;;RankumÃ¡cia;ÃÃ Ã­ÃªÃ³Ã¬Ã Ã²Ã¨Ã¿;;x
+unrecognized_egypt_ADJ;Rankumat;rankumate;rankumatisch;rankumatsk;rankumacia;;;;;;rankumata;Ã°Ã Ã­ÃªÃ³Ã¬Ã Ã¶Ãª;;
+unrecognized_western_africa;Niger;Niger;Niger;Niger;NÃ­ger;;;;;;NÃ­ger;ÃÃ¨Ã£Ã¥Ã°;;x
+unrecognized_western_africa_ADJ;Nigerian;nigÃ©rienne;nigerisch;nigersk;nigeriana;;;;;;nigeriana;Ã­Ã¨Ã£Ã¥Ã°Ã¨Ã©Ã±Ãª;;
+unrecognized_sudan;Nubia;Nubie;Nubien;Nubia;Nubia;;;;;;NÃºbia;ÃÃ³Ã¡Ã¨Ã¿;;x
+unrecognized_sudan_ADJ;Nubian;nubienne;nubisch;nubijsk;nubia;;;;;;nÃºbia;Ã­Ã³Ã¡Ã¨Ã©Ã±Ãª;;
+unrecognized_abyssinia;Abyssinia;Abyssinie;Abessinien;Abisynia;Abisinia;;;;;;AbissÃ­nia;Ã€Ã¡Ã¨Ã±Ã±Ã¨Ã­Ã¨Ã¿;;x
+unrecognized_abyssinia_ADJ;Abyssinian;abyssinienne;abessinisch;abisyÃ±sk;abisinia;;;;;;abissÃ­nia;Ã Ã¡Ã¨Ã±Ã±Ã¨Ã­Ã±Ãª;;
+unrecognized_nigeria;Nigeria;Nigerie;Nigeria;Nigeria;Nigeria;;;;;;NigÃ©ria;ÃÃ¨Ã£Ã¥Ã°Ã¨Ã¿;;x
+unrecognized_nigeria_ADJ;Nigerian;nigÃ©riane;nigerianisch;nigeriajsk;nigeriana;;;;;;nigeriana;Ã­Ã¨Ã£Ã¥Ã°Ã¨Ã©Ã±Ãª;;
+unrecognized_congo;Kongo;Kongo;Kongo;Kongo;Kongo;;;;;;Kongo;ÃŠÃ®Ã­Ã£Ã®;;x
+unrecognized_congo_ADJ;Congolese;congolaise;kongolesisch;kongijsk;congoleÃ±a;;;;;;congolesa;ÃªÃ®Ã­Ã£Ã®Ã«Ã¥Ã§Ã±Ãª;;
+unrecognized_equatorial_africa;Ubangia;Oubangie;Ubangien;Ubangia;Ubangia;;;;;;UbÃ¢ngia;Ã“Ã¡Ã Ã­Ã£Ã¨Ã¿;;x
+unrecognized_equatorial_africa_ADJ;Ubangian;oubangienne;ubangisch;ubangijsk;ubangiana;;;;;;ubangue;Ã³Ã¡Ã Ã­Ã£Ã¨Ã©Ã±Ãª;;
+unrecognized_angola;Bundua;Bondoue;Bunduen;Bundua;Bundua;;;;;;BÃºndua;ÃÃ³Ã­Ã¤Ã³Ã ;;x
+unrecognized_angola_ADJ;Bundu;bondoue;bunduisch;bundusk;bundu;;;;;;bundu;Ã¡Ã³Ã­Ã¤Ã¨Ã©Ã±Ãª;;
+unrecognized_east_africa;Swahilia;SouahÃ©lie;Suahelien;Suahilia;Suajilia;;;;;;SuaÃ­lia;Ã‘Ã³Ã ÃµÃ¨Ã«Ã¨Ã¿;;x
+unrecognized_east_africa_ADJ;Swahili;souahÃ©lie;suahelisch;suahilijsk;suajilÃ­;;;;;;suaÃ­li;Ã±Ã³Ã ÃµÃ¨Ã«Ã¨Ã©Ã±Ãª;;
+unrecognized_mozambique;Tsongaland;Tsongaland;Tsongaland;Tsongaland;Tsongalandia;;;;;;Tsongaland;Ã–Ã®Ã­Ã£Ã Ã«Ã Ã­Ã¤;;x
+unrecognized_mozambique_ADJ;Tsonga;tsonga;tsongaisch;tsongajsk;tsonga;;;;;;tsonga;Ã¶Ã®Ã­Ã£Ã Ã©Ã±Ãª;;
+unrecognized_southern_africa;Azania;Azanie;Azanien;Azania;Azania;;;;;;AzÃ¢nia;Ã€Ã§Ã Ã­Ã¨Ã¿;;x
+unrecognized_southern_africa_ADJ;Azanian;azanienne;azanisch;azaÃ±sk;azania;;;;;;azaniana;Ã Ã§Ã Ã­Ã¨Ã©Ã±Ãª;;
+unrecognized_rhodesia;Zambezia;ZambÃ¨ze;Sambezia;Zambezia;Zambezia;;;;;;ZambÃ©zia;Ã‡Ã Ã¬Ã¡Ã¥Ã§Ã¨Ã¿;;x
+unrecognized_rhodesia_ADJ;Zambezian;zambÃ©zienne;sambesisch;zambezsk;zambeziana;;;;;;zambeziana;Ã§Ã Ã¬Ã¡Ã¥Ã§Ã¨Ã©Ã±Ãª;;
+unrecognized_madagascar;Malagasia;Malgachie;Malagasia;Malgazja;Malgachia;;;;;;MalgÃ¢xia;ÃŒÃ Ã«Ã Ã£Ã Ã±Ã¨Ã¿;;x
+unrecognized_madagascar_ADJ;Malagasy;malgache;madagassisch;malgask;malgache;;;;;;malgaxe;Ã¬Ã Ã«Ã Ã£Ã Ã±Ã¨Ã©Ã±Ãª;;
+unrecognized_mexico;Nahua;Nahua;Nahua;Nahua;Nahua;;;;;;Nahua;ÃÃ Ã³Ã ;;x
+unrecognized_mexico_ADJ;Nahuan;nahua;nahuaisch;nahuajsk;nahua;;;;;;nahua;Ã­Ã Ã³Ã Ã©Ã±Ãª;;
+unrecognized_central_america;Isthmus;Isthme;Isthmus;Isthmus;Istmo;;;;;;Istmo;ÃˆÃ±Ã´Ã¬;;x
+unrecognized_central_america_ADJ;Isthmic;isthmique;isthmisch;isthmensk;Ã­stmica;;;;;;Ã­stmica;Ã¨Ã±Ã´Ã¥Ã¬Ã±Ãª;;
+unrecognized_caribbean;Antilia;Antilie;Antilien;Antylia;Antilia;;;;;;Antilia;Ã€Ã­Ã²Ã¨Ã«Ã¨Ã¿;;x
+unrecognized_caribbean_ADJ;Antillean;antillaise;antillisch;antylsk;antillana;;;;;;antilhana;Ã Ã­Ã²Ã¨Ã«Ã¼Ã±Ãª;;
+unrecognized_gran_colombia;North Andinia;Andinie du Nord;Nord-Andinien;PÃ³Â³nocna Andinia;Andinia del Norte;;;;;;Norte de Andinia;Ã‘Ã¥Ã¢Ã¥Ã°Ã­Ã Ã¿ Ã€Ã­Ã¤Ã¨Ã­Ã¨Ã¿;;x
+unrecognized_gran_colombia_ADJ;North Andine;nord-andine;nordandinisch;pÃ³Â³nocnoandiÃ±sk;norte-andina;;;;;;norte-andina;Ã±Ã¥Ã¢Ã¥Ã°Ã­Ã®Ã Ã­Ã¤Ã¨Ã­Ã±Ãª;;
+unrecognized_peru_bolivia;South Andinia;Andinie du Sud;SÃ¼d-Andinien;PoÂ³udniowa Andinia;Andinia del Sur;;;;;;Andinia do Sul;ÃÃ¦Ã­Ã Ã¿ Ã€Ã­Ã¤Ã¨Ã­Ã¨Ã¿;;x
+unrecognized_peru_bolivia_ADJ;South Andine;sud-andine;sÃ¼dandinisch;poÂ³udniowoandiÃ±sk;sur-andina;;;;;;sul-andina;Ã¾Ã¦Ã­Ã®Ã Ã­Ã¤Ã¨Ã­Ã±Ãª;;
+unrecognized_patagonia;Platinea;PlatinÃ©e;Platinien;Platynia;Platinea;;;;;;Platinea;ÃÃ«Ã Ã²Ã¨Ã­Ã¥Ã¿;;x
+unrecognized_patagonia_ADJ;Platinean;platinÃ©enne;platineisch;platynowsk;platinea;;;;;;platinea;Ã¯Ã«Ã Ã²Ã¨Ã­Ã®Ã¢Ã±Ãª;;
+unrecognized_brazil;Pindorama;Pindorama;Pindorama;Pindorama;Pindorama;;;;;;Pindorama;ÃÃ¨Ã­Ã¤Ã®Ã°Ã Ã¬Ã ;;x
+unrecognized_brazil_ADJ;Pindoraman;pindoramaise;pindoramisch;pindoramsk;pindoramesa;;;;;;pindoramesa;Ã¯Ã¨Ã­Ã¤Ã®Ã°Ã Ã¬Ã±Ãª;;
+unrecognized_australia;Terra-Australis;Terra-Australis;Terra-Australis;Terra-Australis;Terra-Australis;;;;;;Terra-AustrÃ¡lia;Ã’Ã¥Ã°Ã°Ã -Ã€Ã³Ã±Ã²Ã°Ã Ã«Ã¨Ã±;;x
+unrecognized_australia_ADJ;Australian;australienne;australisch;australijsk;australiana;;;;;;australiana;Ã Ã¢Ã±Ã²Ã°Ã Ã«Ã¨Ã©Ã±Ãª;;
+unrecognized_oceania;Scattered Islands;Ãles Ã‰parses;Verstreute Inseln;Rozrzucone Wyspy;Islas Dispersas;;;;;;Ilhas Dispersas;ÃÃ Ã±Ã±Ã¥Ã¿Ã­Ã­Ã»Ã¥ ÃÃ±Ã²Ã°Ã®Ã¢Ã ;;
+unrecognized_oceania_ADJ;Scattered;Ã©parsienne;verstreuterisch;rozrzucoÃ±sk;dispersa;;;;;;dispersa;Ã°Ã Ã±Ã±Ã¥Ã¿Ã­Ã±Ãª;;
