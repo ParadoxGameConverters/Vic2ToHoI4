@@ -224,9 +224,7 @@ decision&& updateBuildCanal(decision&& buildCanalDecision,
 		canalControlsStatesString += "\n\t\t\t}";
 	}
 	auto visible = buildCanalDecision.getVisible();
-	visible.replace(visible.find(canalStatesPlaceholder),
-		canalStatesPlaceholder.size(),
-		canalControlsStatesString);
+	visible.replace(visible.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalControlsStatesString);
 	buildCanalDecision.setVisible(visible);
 
 	return std::move(buildCanalDecision);
