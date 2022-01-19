@@ -636,7 +636,11 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 
 	if (!anschlussTargets.empty())
 	{
-		FocusTree->addFascistAnnexationBranch(Leader, anschlussTargets, theWorld->getEvents(), hoi4Localisations);
+		FocusTree->addFascistAnnexationBranch(Leader,
+			 anschlussTargets,
+			 sudetenTargets.size(),
+			 theWorld->getEvents(),
+			 hoi4Localisations);
 	}
 	
 	if (!sudetenTargets.empty() && !demandedStates.empty())

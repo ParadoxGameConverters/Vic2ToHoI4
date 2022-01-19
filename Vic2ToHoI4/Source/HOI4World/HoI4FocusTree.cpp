@@ -1326,6 +1326,7 @@ void HoI4FocusTree::addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
 
 void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Home,
 	 const std::vector<std::shared_ptr<HoI4::Country>>& annexationTargets,
+	 const size_t numSudetenTargets,
 	 HoI4::Events& events,
 	 HoI4::Localisation& hoi4Localisations)
 {
@@ -1334,14 +1335,13 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 	if (const auto& originalFocus = loadedFocuses.find("The_third_way"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		if (!annexationTargets.empty())
+		if (annexationTargets.size() > numSudetenTargets)
 		{
 			newFocus->xPos = nextFreeColumn + static_cast<int>(annexationTargets.size()) - 1;
 		}
 		else
 		{
-			newFocus->xPos = nextFreeColumn;
-			nextFreeColumn += 2;
+			newFocus->xPos = nextFreeColumn + static_cast<int>(numSudetenTargets) - 1;
 		}
 		newFocus->yPos = 0;
 		// FIXME

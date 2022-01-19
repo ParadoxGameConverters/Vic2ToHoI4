@@ -66,6 +66,7 @@ class HoI4FocusTree: commonItems::parser
 		 HoI4::Localisation& hoi4Localisations);
 	void addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Home,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& annexationTargets,
+		 const size_t numSudetenTargets,
 		 HoI4::Events& events,
 		 HoI4::Localisation& hoi4Localisations);
 	void addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
