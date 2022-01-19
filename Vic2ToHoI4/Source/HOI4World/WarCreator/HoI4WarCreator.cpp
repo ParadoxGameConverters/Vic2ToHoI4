@@ -641,7 +641,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 			 theWorld->getEvents(),
 			 hoi4Localisations);
 	}
-	
+
 	if (!sudetenTargets.empty() && !demandedStates.empty())
 	{
 		FocusTree->addFascistSudetenBranch(Leader,
@@ -912,7 +912,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator
 	auto weakColonies = findWeakColonies(country, theMapData, provinceDefinitions);
 	focusTree->addAbsolutistEmpireNationalFocuses(country, weakColonies, weakNeighbors, hoi4Localisations);
 
-	
+
 	if (auto greatPowerTargets = getGreatPowerTargets(country); !greatPowerTargets.empty())
 	{
 		CountriesAtWar = addGreatPowerWars(country, *focusTree, greatPowerTargets, hoi4Localisations);
