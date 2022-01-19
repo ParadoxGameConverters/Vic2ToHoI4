@@ -43,8 +43,8 @@ HoI4::Country::Country(std::string tag,
 	 oldGovernment(sourceCountry.getGovernment()), upperHouseComposition(sourceCountry.getUpperHouseComposition()),
 	 lastElection(sourceCountry.getLastElection())
 {
-	const std::seed_seq sseq{tag[0], tag[1], tag[2]};
-	generator.seed(sseq);
+	std::seed_seq seed{tag[0], tag[1], tag[2]};
+	generator.seed(seed);
 
 	determineCapitalFromVic2(theProvinceMapper, worldStates.getProvinceToStateIDMap(), worldStates.getStates());
 	if (!getCapitalState())
