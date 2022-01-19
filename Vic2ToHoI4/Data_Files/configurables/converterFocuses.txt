@@ -941,7 +941,7 @@ focus = {
 		navy_experience = 25
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 10
 		modifier = {
 		}
 	}
