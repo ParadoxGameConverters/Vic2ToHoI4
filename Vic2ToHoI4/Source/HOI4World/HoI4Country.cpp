@@ -43,6 +43,9 @@ HoI4::Country::Country(std::string tag,
 	 oldGovernment(sourceCountry.getGovernment()), upperHouseComposition(sourceCountry.getUpperHouseComposition()),
 	 lastElection(sourceCountry.getLastElection())
 {
+	const std::seed_seq sseq{tag[0], tag[1], tag[2]};
+	generator.seed(sseq);
+
 	determineCapitalFromVic2(theProvinceMapper, worldStates.getProvinceToStateIDMap(), worldStates.getStates());
 	if (!getCapitalState())
 	{
@@ -346,57 +349,57 @@ bool HoI4::Country::hasRulingDynasty()
 
 void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations)
 {
-	if (const auto name = names.takeCarCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeCarCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_tank_manufacturer_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_tank_manufacturer", name);
 	}
-	if (const auto name = names.takeCarCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeCarCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_motorized_equipment_manufacturer_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_motorized_equipment_manufacturer", name);
 	}
-	if (const auto name = names.takeWeaponCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeWeaponCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_infantry_equipment_manufacturer_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_infantry_equipment_manufacturer", name);
 	}
-	if (const auto name = names.takeWeaponCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeWeaponCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_artillery_manufacturer_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_artillery_manufacturer", name);
 	}
-	if (const auto name = names.takeAircraftCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_light_aircraft_manufacturer_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_light_aircraft_manufacturer", name);
 	}
-	if (const auto name = names.takeAircraftCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_medium_aircraft_manufacturer_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_medium_aircraft_manufacturer", name);
 	}
-	if (const auto name = names.takeAircraftCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_heavy_aircraft_manufacturer_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer", name);
 	}
-	if (const auto name = names.takeAircraftCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_naval_aircraft_manufacturer_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_naval_aircraft_manufacturer", name);
 	}
-	if (const auto name = names.takeNavalCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeNavalCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_naval_manufacturer_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_naval_manufacturer", name);
 	}
-	if (const auto name = names.takeIndustryCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeIndustryCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_industrial_concern_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_industrial_concern", name);
 	}
-	if (const auto name = names.takeElectronicCompanyName(primaryCulture); name.has_value())
+	if (const auto name = names.takeElectronicCompanyName(primaryCulture, generator); name.has_value())
 	{
 		has_electronics_concern_ = true;
 		hoi4Localisations.addIdeaLocalisation(tag + "_electronics_concern", name);
@@ -408,16 +411,16 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 {
 	for (const auto& operativePortrait: graphicsMapper.getFemaleOperativePortraits(primaryCulture, primaryCultureGroup))
 	{
-		const auto firstName = names.getFemaleName(primaryCulture);
+		const auto firstName = names.getFemaleName(primaryCulture, generator);
 		if (!firstName)
 		{
 			break;
 		}
 
-		auto surname = names.getFemaleSurname(primaryCulture);
+		auto surname = names.getFemaleSurname(primaryCulture, generator);
 		if (!surname)
 		{
-			surname = names.getSurname(primaryCulture);
+			surname = names.getSurname(primaryCulture, generator);
 		}
 		if (!surname)
 		{
@@ -430,13 +433,13 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 
 	for (const auto& operativePortrait: graphicsMapper.getMaleOperativePortraits(primaryCulture, primaryCultureGroup))
 	{
-		const auto firstName = names.getMaleName(primaryCulture);
+		const auto firstName = names.getMaleName(primaryCulture, generator);
 		if (!firstName)
 		{
 			break;
 		}
 
-		auto surname = names.getSurname(primaryCulture);
+		auto surname = names.getSurname(primaryCulture, generator);
 		if (!surname)
 		{
 			break;
@@ -539,14 +542,14 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 	bool female = std::uniform_int_distribution{1, 20}(femaleChanceGenerator) == 20;
 	if (female)
 	{
-		firstName = names.getFemaleName(primaryCulture);
-		auto femaleSurname = names.getFemaleSurname(primaryCulture);
+		firstName = names.getFemaleName(primaryCulture, generator);
+		auto femaleSurname = names.getFemaleSurname(primaryCulture, generator);
 		if (!firstName)
 		{
-			firstName = names.getMaleName(primaryCulture);
+			firstName = names.getMaleName(primaryCulture, generator);
 			if (!surname)
 			{
-				surname = names.getSurname(primaryCulture);
+				surname = names.getSurname(primaryCulture, generator);
 			}
 			female = false;
 		}
@@ -558,19 +561,19 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 			}
 			else
 			{
-				surname = names.getSurname(primaryCulture);
+				surname = names.getSurname(primaryCulture, generator);
 			}
 		}
 	}
 	else
 	{
-		firstName = names.getMaleName(primaryCulture);
-		auto newSurname = names.getSurname(primaryCulture);
+		firstName = names.getMaleName(primaryCulture, generator);
+		auto newSurname = names.getSurname(primaryCulture, generator);
 
 		if (!firstName)
 		{
-			firstName = names.getFemaleName(primaryCulture);
-			if (auto femaleSurname = names.getFemaleSurname(primaryCulture); femaleSurname)
+			firstName = names.getFemaleName(primaryCulture, generator);
+			if (auto femaleSurname = names.getFemaleSurname(primaryCulture, generator); femaleSurname)
 			{
 				newSurname = femaleSurname;
 			}
@@ -1100,7 +1103,8 @@ void HoI4::Country::createLeader(Names& names,
 		 leaderIdeology,
 		 names,
 		 graphicsMapper,
-		 localisation));
+		 localisation,
+		 generator));
 }
 
 

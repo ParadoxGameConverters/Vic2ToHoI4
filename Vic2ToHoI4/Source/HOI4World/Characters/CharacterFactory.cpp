@@ -70,12 +70,13 @@ Character Character::Factory::createNewCountryLeader(const std::string& tag,
 	 const std::string& leaderIdeology,
 	 Names& names,
 	 Mappers::GraphicsMapper& graphicsMapper,
-	 Localisation& localisation)
+	 Localisation& localisation,
+	 std::mt19937& generator)
 {
 	Character leader;
 
-	const auto firstName = names.getMaleName(primaryCulture);
-	const auto surname = names.getSurname(primaryCulture);
+	const auto firstName = names.getMaleName(primaryCulture, generator);
+	const auto surname = names.getSurname(primaryCulture, generator);
 
 	if (!firstName || !surname)
 	{

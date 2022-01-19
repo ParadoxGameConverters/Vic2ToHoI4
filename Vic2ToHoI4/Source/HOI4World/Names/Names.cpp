@@ -223,7 +223,7 @@ std::optional<std::vector<std::string>> HoI4::Names::getCallsigns(const std::str
 }
 
 
-std::optional<std::string> HoI4::Names::getMaleName(const std::string& culture)
+std::optional<std::string> HoI4::Names::getMaleName(const std::string& culture, std::mt19937& generator)
 {
 	if (auto names = getMaleNames(culture); names && !names->empty())
 	{
@@ -235,7 +235,7 @@ std::optional<std::string> HoI4::Names::getMaleName(const std::string& culture)
 }
 
 
-std::optional<std::string> HoI4::Names::getFemaleName(const std::string& culture)
+std::optional<std::string> HoI4::Names::getFemaleName(const std::string& culture, std::mt19937& generator)
 {
 	if (auto names = getFemaleNames(culture); names && !names->empty())
 	{
@@ -247,7 +247,7 @@ std::optional<std::string> HoI4::Names::getFemaleName(const std::string& culture
 }
 
 
-std::optional<std::string> HoI4::Names::getSurname(const std::string& culture)
+std::optional<std::string> HoI4::Names::getSurname(const std::string& culture, std::mt19937& generator)
 {
 	if (auto names = getSurnames(culture); names && !names->empty())
 	{
@@ -259,7 +259,7 @@ std::optional<std::string> HoI4::Names::getSurname(const std::string& culture)
 }
 
 
-std::optional<std::string> HoI4::Names::getFemaleSurname(const std::string& culture)
+std::optional<std::string> HoI4::Names::getFemaleSurname(const std::string& culture, std::mt19937& generator)
 {
 	if (auto names = getFemaleSurnames(culture); names && !names->empty())
 	{
@@ -270,7 +270,7 @@ std::optional<std::string> HoI4::Names::getFemaleSurname(const std::string& cult
 }
 
 
-std::optional<std::string> HoI4::Names::getCallsign(const std::string& culture)
+std::optional<std::string> HoI4::Names::getCallsign(const std::string& culture, std::mt19937& generator)
 {
 	if (auto names = getCallsigns(culture); names && !names->empty())
 	{
@@ -282,44 +282,45 @@ std::optional<std::string> HoI4::Names::getCallsign(const std::string& culture)
 }
 
 
-std::optional<std::string> HoI4::Names::takeCarCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeCarCompanyName(const std::string& culture, std::mt19937& generator)
 {
-	return takeCompanyName(carCompanyNames, culture);
+	return takeCompanyName(carCompanyNames, culture, generator);
 }
 
 
-std::optional<std::string> HoI4::Names::takeWeaponCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeWeaponCompanyName(const std::string& culture, std::mt19937& generator)
 {
-	return takeCompanyName(weaponCompanyNames, culture);
+	return takeCompanyName(weaponCompanyNames, culture, generator);
 }
 
 
-std::optional<std::string> HoI4::Names::takeAircraftCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeAircraftCompanyName(const std::string& culture, std::mt19937& generator)
 {
-	return takeCompanyName(aircraftCompanyNames, culture);
+	return takeCompanyName(aircraftCompanyNames, culture, generator);
 }
 
 
-std::optional<std::string> HoI4::Names::takeNavalCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeNavalCompanyName(const std::string& culture, std::mt19937& generator)
 {
-	return takeCompanyName(navalCompanyNames, culture);
+	return takeCompanyName(navalCompanyNames, culture, generator);
 }
 
 
-std::optional<std::string> HoI4::Names::takeIndustryCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeIndustryCompanyName(const std::string& culture, std::mt19937& generator)
 {
-	return takeCompanyName(industryCompanyNames, culture);
+	return takeCompanyName(industryCompanyNames, culture, generator);
 }
 
 
-std::optional<std::string> HoI4::Names::takeElectronicCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeElectronicCompanyName(const std::string& culture, std::mt19937& generator)
 {
-	return takeCompanyName(electronicCompanyNames, culture);
+	return takeCompanyName(electronicCompanyNames, culture, generator);
 }
 
 
 std::optional<std::string> HoI4::Names::takeCompanyName(std::map<std::string, std::vector<std::string>>& companyNames,
-	 const std::string& culture)
+	 const std::string& culture,
+	 std::mt19937& generator)
 {
 	if (auto namesItr = companyNames.find(culture); namesItr != companyNames.end())
 	{
@@ -338,7 +339,7 @@ std::optional<std::string> HoI4::Names::takeCompanyName(std::map<std::string, st
 }
 
 
-std::optional<std::string> HoI4::Names::takeIntelligenceAgencyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeIntelligenceAgencyName(const std::string& culture, std::mt19937& generator)
 {
 	if (auto namesItr = intelligenceAgencyNames.find(culture); namesItr != intelligenceAgencyNames.end())
 	{

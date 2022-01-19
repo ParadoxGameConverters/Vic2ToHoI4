@@ -317,6 +317,8 @@ class Country
 		 const States& states,
 		 const Mappers::ProvinceMapper& provinceMapper);
 
+	[[nodiscard]] std::mt19937& getGenerator() { return generator; }
+
   private:
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations);
