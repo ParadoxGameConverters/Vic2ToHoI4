@@ -601,7 +601,6 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 							auto newFaction = std::make_shared<HoI4::Faction>(greatPower, self);
 							greatPower->setFaction(newFaction);
 						}
-						theWorld->getEvents().createFactionEvents(*Leader, theWorld->getFactionNameMapper());
 					}
 					newAllies.push_back(greatPower);
 					++numAlliances;
