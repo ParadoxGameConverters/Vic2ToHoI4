@@ -429,6 +429,10 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 
 		const std::string name = *firstName + " " + *surname;
 		operatives_.push_back(Operative(name, operativePortrait, /*female=*/true, tag));
+		if (operatives_.size() > 2)
+		{
+			break;
+		}
 	}
 
 	for (const auto& operativePortrait: graphicsMapper.getMaleOperativePortraits(primaryCulture, primaryCultureGroup))
@@ -447,6 +451,10 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 
 		const std::string name = *firstName + " " + *surname;
 		operatives_.push_back(Operative(name, operativePortrait, /*female=*/false, tag));
+		if (operatives_.size() > 4)
+		{
+			break;
+		}
 	}
 }
 
