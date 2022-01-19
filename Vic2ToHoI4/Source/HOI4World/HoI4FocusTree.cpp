@@ -830,7 +830,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 		newFocus->relativePositionId = "EmpireGlory" + homeTag;
 		newFocus->xPos = -1;
 		newFocus->yPos = 1;
-		if (targetColonies.empty())
+		if (targetColonies.empty() && !annexationTargets.empty())
 		{
 			newFocus->aiWillDo = "= { factor = 0 }";
 		}
@@ -847,7 +847,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 		newFocus->relativePositionId = "EmpireGlory" + homeTag;
 		newFocus->xPos = 1;
 		newFocus->yPos = 1;
-		if (annexationTargets.empty())
+		if (annexationTargets.empty() && !targetColonies.empty())
 		{
 			newFocus->aiWillDo = "= { factor = 0 }";
 		}
