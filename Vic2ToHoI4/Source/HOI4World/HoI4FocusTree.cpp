@@ -1343,15 +1343,10 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 	if (const auto& originalFocus = loadedFocuses.find("The_third_way"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		if (annexationTargets.size() > numSudetenTargets)
-		{
-			newFocus->xPos = nextFreeColumn + static_cast<int>(annexationTargets.size()) - 1;
-		}
-		else
-		{
-			newFocus->xPos = nextFreeColumn + static_cast<int>(numSudetenTargets) - 1;
-		}
+		const auto& maxWidth = static_cast<int>(std::max(annexationTargets.size(), numSudetenTargets));
+		newFocus->xPos = nextFreeColumn + maxWidth - 1;
 		newFocus->yPos = 0;
+		nextFreeColumn += 2 * maxWidth;
 		// FIXME
 		// Need to get Drift Defense to work
 		// in modified generic focus? (tk)
@@ -1377,6 +1372,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 		throw std::runtime_error("Could not load focus mil_march");
 	}
 
+	int annexationFreeColumn = 1 - static_cast<int>(annexationTargets.size());
 	for (const auto& target: annexationTargets)
 	{
 		const auto& possibleAnnexationTargetCountryName = target->getName();
@@ -1411,15 +1407,15 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString() + "\n");
 			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", targetTag);
-			newFocus->xPos = nextFreeColumn;
-			newFocus->yPos = 2;
+			newFocus->xPos = annexationFreeColumn;
+			newFocus->yPos = 1;
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", annexationTargetCountryName);
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", targetTag);
 			newFocus->updateFocusElement(newFocus->completionReward,
 				 "$EVENTID",
 				 std::to_string(events.getCurrentNationFocusEventNum()));
 			focuses.push_back(newFocus);
-			nextFreeColumn += 2;
+			annexationFreeColumn += 2;
 
 			events.createAnnexEvent(*Home, *target);
 		}

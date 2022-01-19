@@ -422,7 +422,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	 const Configuration& theConfiguration)
 {
 	std::vector<std::shared_ptr<HoI4::Faction>> CountriesAtWar;
-	Log(LogLevel::Info) << "\t\tPicking targets for " + Leader->getTag();
+	Log(LogLevel::Info) << "\t\t\tPicking targets for " + Leader->getTag();
 	// too many lists, need to clean up
 	std::vector<std::shared_ptr<HoI4::Country>> Anschluss;
 	std::vector<std::shared_ptr<HoI4::Country>> Sudeten;
@@ -680,7 +680,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 {
 	std::vector<std::shared_ptr<HoI4::Faction>> CountriesAtWar;
 	// communism still needs great country war events
-	Log(LogLevel::Info) << "\t\tPicking targets for " + Leader->getTag();
+	Log(LogLevel::Info) << "\t\t\tPicking targets for " + Leader->getTag();
 	std::set<std::string> neighbors;
 	const auto& nearbyCountries = mapUtils.getNearbyCountries(Leader->getTag(), 400);
 	const auto& targets = Leader->getConquerStrategies();
@@ -906,7 +906,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator
 	std::vector<std::shared_ptr<HoI4::Faction>> CountriesAtWar;
 	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 
-	Log(LogLevel::Info) << "\t\tPicking targets for " + country->getTag();
+	Log(LogLevel::Info) << "\t\t\tPicking targets for " + country->getTag();
 
 	auto weakNeighbors = findWeakNeighbors(country, theMapData, provinceDefinitions);
 	auto weakColonies = findWeakColonies(country, theMapData, provinceDefinitions);
