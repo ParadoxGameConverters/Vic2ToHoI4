@@ -48,24 +48,29 @@ class Names
 	[[nodiscard]] std::optional<std::vector<std::string>> getFemaleSurnames(const std::string& culture) const;
 	[[nodiscard]] std::optional<std::vector<std::string>> getCallsigns(const std::string& culture) const;
 
-	[[nodiscard]] std::optional<std::string> getMaleName(const std::string& culture);
-	[[nodiscard]] std::optional<std::string> getFemaleName(const std::string& culture);
-	[[nodiscard]] std::optional<std::string> getSurname(const std::string& culture);
-	[[nodiscard]] std::optional<std::string> getFemaleSurname(const std::string& culture);
-	[[nodiscard]] std::optional<std::string> getCallsign(const std::string& culture);
+	[[nodiscard]] std::optional<std::string> getMaleName(const std::string& culture, std::mt19937& generator);
+	[[nodiscard]] std::optional<std::string> getFemaleName(const std::string& culture, std::mt19937& generator);
+	[[nodiscard]] std::optional<std::string> getSurname(const std::string& culture, std::mt19937& generator);
+	[[nodiscard]] std::optional<std::string> getFemaleSurname(const std::string& culture, std::mt19937& generator);
+	[[nodiscard]] std::optional<std::string> getCallsign(const std::string& culture, std::mt19937& generator);
 
-	[[nodiscard]] std::optional<std::string> takeCarCompanyName(const std::string& culture);
-	[[nodiscard]] std::optional<std::string> takeWeaponCompanyName(const std::string& culture);
-	[[nodiscard]] std::optional<std::string> takeAircraftCompanyName(const std::string& culture);
-	[[nodiscard]] std::optional<std::string> takeNavalCompanyName(const std::string& culture);
-	[[nodiscard]] std::optional<std::string> takeIndustryCompanyName(const std::string& culture);
-	[[nodiscard]] std::optional<std::string> takeElectronicCompanyName(const std::string& culture);
+	[[nodiscard]] std::optional<std::string> takeCarCompanyName(const std::string& culture, std::mt19937& generator);
+	[[nodiscard]] std::optional<std::string> takeWeaponCompanyName(const std::string& culture, std::mt19937& generator);
+	[[nodiscard]] std::optional<std::string> takeAircraftCompanyName(const std::string& culture,
+		 std::mt19937& generator);
+	[[nodiscard]] std::optional<std::string> takeNavalCompanyName(const std::string& culture, std::mt19937& generator);
+	[[nodiscard]] std::optional<std::string> takeIndustryCompanyName(const std::string& culture,
+		 std::mt19937& generator);
+	[[nodiscard]] std::optional<std::string> takeElectronicCompanyName(const std::string& culture,
+		 std::mt19937& generator);
 
-	[[nodiscard]] std::optional<std::string> takeIntelligenceAgencyName(const std::string& culture);
+	[[nodiscard]] std::optional<std::string> takeIntelligenceAgencyName(const std::string& culture,
+		 std::mt19937& generator);
 
   private:
 	std::optional<std::string> takeCompanyName(std::map<std::string, std::vector<std::string>>& companyNames,
-		 const std::string& culture);
+		 const std::string& culture,
+		 std::mt19937& generator);
 
 	std::map<std::string, std::vector<std::string>> maleNames;
 	std::map<std::string, std::vector<std::string>> femaleNames;
@@ -82,7 +87,7 @@ class Names
 
 	std::map<std::string, std::vector<std::string>> intelligenceAgencyNames;
 
-	std::mt19937 generator;
+	// std::mt19937 generator;
 };
 
 
