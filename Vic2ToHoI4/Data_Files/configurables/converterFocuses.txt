@@ -941,7 +941,7 @@ focus = {
 		navy_experience = 25
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 10
 		modifier = {
 		}
 	}
@@ -2375,6 +2375,7 @@ focus = {
 	id = _anschluss_
 	icon = GFX_goal_anschluss
 	prerequisite = { focus = mil_march }
+	relative_position_id = mil_march
 	cost = 10
 	ai_will_do = {
 		factor = 10

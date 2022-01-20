@@ -830,6 +830,10 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 		newFocus->relativePositionId = "EmpireGlory" + homeTag;
 		newFocus->xPos = -1;
 		newFocus->yPos = 1;
+		if (targetColonies.empty() && !annexationTargets.empty())
+		{
+			newFocus->aiWillDo = "= { factor = 0 }";
+		}
 		focuses.push_back(newFocus);
 	}
 	else
@@ -843,6 +847,10 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Cou
 		newFocus->relativePositionId = "EmpireGlory" + homeTag;
 		newFocus->xPos = 1;
 		newFocus->yPos = 1;
+		if (annexationTargets.empty() && !targetColonies.empty())
+		{
+			newFocus->aiWillDo = "= { factor = 0 }";
+		}
 		focuses.push_back(newFocus);
 	}
 	else
@@ -1326,6 +1334,7 @@ void HoI4FocusTree::addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
 
 void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Home,
 	 const std::vector<std::shared_ptr<HoI4::Country>>& annexationTargets,
+	 const size_t numSudetenTargets,
 	 HoI4::Events& events,
 	 HoI4::Localisation& hoi4Localisations)
 {
@@ -1334,16 +1343,10 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 	if (const auto& originalFocus = loadedFocuses.find("The_third_way"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		if (!annexationTargets.empty())
-		{
-			newFocus->xPos = nextFreeColumn + static_cast<int>(annexationTargets.size()) - 1;
-		}
-		else
-		{
-			newFocus->xPos = nextFreeColumn;
-			nextFreeColumn += 2;
-		}
+		const auto& maxWidth = static_cast<int>(std::max(annexationTargets.size(), numSudetenTargets));
+		newFocus->xPos = nextFreeColumn + maxWidth - 1;
 		newFocus->yPos = 0;
+		nextFreeColumn += 2 * maxWidth;
 		// FIXME
 		// Need to get Drift Defense to work
 		// in modified generic focus? (tk)
@@ -1369,6 +1372,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 		throw std::runtime_error("Could not load focus mil_march");
 	}
 
+	int annexationFreeColumn = 1 - static_cast<int>(annexationTargets.size());
 	for (const auto& target: annexationTargets)
 	{
 		const auto& possibleAnnexationTargetCountryName = target->getName();
@@ -1403,15 +1407,15 @@ void HoI4FocusTree::addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Ho
 				newFocus->updateFocusElement(newFocus->available, "#DATE", "date > " + dateAvailable.toString() + "\n");
 			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", targetTag);
-			newFocus->xPos = nextFreeColumn;
-			newFocus->yPos = 2;
+			newFocus->xPos = annexationFreeColumn;
+			newFocus->yPos = 1;
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGETNAME", annexationTargetCountryName);
 			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", targetTag);
 			newFocus->updateFocusElement(newFocus->completionReward,
 				 "$EVENTID",
 				 std::to_string(events.getCurrentNationFocusEventNum()));
 			focuses.push_back(newFocus);
-			nextFreeColumn += 2;
+			annexationFreeColumn += 2;
 
 			events.createAnnexEvent(*Home, *target);
 		}
