@@ -398,7 +398,11 @@ std::shared_ptr<HoI4::Faction> HoI4WarCreator::findFaction(std::shared_ptr<HoI4:
 
 	std::vector<std::shared_ptr<HoI4::Country>> myself;
 	myself.push_back(CheckingCountry);
-	return std::make_shared<HoI4::Faction>(CheckingCountry, myself);
+	return std::make_shared<HoI4::Faction>(CheckingCountry,
+		 myself,
+		 theWorld->getFactionNameMapper().getFactionName(CheckingCountry->getGovernmentIdeology(),
+			  CheckingCountry->getPrimaryCulture(),
+			  CheckingCountry->getPrimaryCultureGroup()));
 }
 
 
@@ -548,11 +552,15 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	auto newAllies = GetMorePossibleAllies(Leader);
 	if (theConfiguration.getCreateFactions())
 	{
-		if (newAllies.size() > 0 && Leader->isInFaction())
+		if (newAllies.size() > 0 && Leader->isInFaction() && Leader->getFaction()->getLeader() != Leader)
 		{
 			std::vector<std::shared_ptr<HoI4::Country>> self;
 			self.push_back(Leader);
-			auto newFaction = std::make_shared<HoI4::Faction>(Leader, self);
+			auto newFaction = std::make_shared<HoI4::Faction>(Leader,
+				 self,
+				 theWorld->getFactionNameMapper().getFactionName(Leader->getGovernmentIdeology(),
+					  Leader->getPrimaryCulture(),
+					  Leader->getPrimaryCultureGroup()));
 			Leader->setFaction(newFaction);
 		}
 	}
@@ -591,16 +599,6 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 					if (theConfiguration.getDebug())
 					{
 						AILog << "\t" << Leader->getTag() << " can attempt to ally " << greatPower->getTag() << "\n";
-					}
-					if (theConfiguration.getCreateFactions())
-					{
-						if (greatPower->isInFaction())
-						{
-							std::vector<std::shared_ptr<HoI4::Country>> self;
-							self.push_back(greatPower);
-							auto newFaction = std::make_shared<HoI4::Faction>(greatPower, self);
-							greatPower->setFaction(newFaction);
-						}
 					}
 					newAllies.push_back(greatPower);
 					++numAlliances;

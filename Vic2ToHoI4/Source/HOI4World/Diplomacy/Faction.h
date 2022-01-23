@@ -20,7 +20,7 @@ class Faction
   public:
 	Faction(std::shared_ptr<Country> leader,
 		 std::vector<std::shared_ptr<Country>> members,
-		 std::optional<std::string> name = std::nullopt):
+		 std::optional<std::string> name):
 		 factionLeader(std::move(leader)),
 		 factionMembers(std::move(members)), factionName(name)
 	{
