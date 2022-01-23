@@ -398,7 +398,11 @@ std::shared_ptr<HoI4::Faction> HoI4WarCreator::findFaction(std::shared_ptr<HoI4:
 
 	std::vector<std::shared_ptr<HoI4::Country>> myself;
 	myself.push_back(CheckingCountry);
-	return std::make_shared<HoI4::Faction>(CheckingCountry, myself);
+	return std::make_shared<HoI4::Faction>(CheckingCountry,
+		 myself,
+		 theWorld->getFactionNameMapper().getFactionName(CheckingCountry->getGovernmentIdeology(),
+			  CheckingCountry->getPrimaryCulture(),
+			  CheckingCountry->getPrimaryCultureGroup()));
 }
 
 
@@ -552,7 +556,11 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 		{
 			std::vector<std::shared_ptr<HoI4::Country>> self;
 			self.push_back(Leader);
-			auto newFaction = std::make_shared<HoI4::Faction>(Leader, self);
+			auto newFaction = std::make_shared<HoI4::Faction>(Leader,
+				 self,
+				 theWorld->getFactionNameMapper().getFactionName(Leader->getGovernmentIdeology(),
+					  Leader->getPrimaryCulture(),
+					  Leader->getPrimaryCultureGroup()));
 			Leader->setFaction(newFaction);
 		}
 	}
