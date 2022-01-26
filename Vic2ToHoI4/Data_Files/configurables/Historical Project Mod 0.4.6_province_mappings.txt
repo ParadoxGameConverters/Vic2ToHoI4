@@ -1577,7 +1577,7 @@
 	link = { vic2 = 767 hoi4 = 596 hoi4 = 3654 hoi4 = 665 hoi4 = 6672 } # Maribor -> Velenje, Celje, Maribor, Murksa Sobota
 	link = { vic2 = 774 hoi4 = 11901 hoi4 = 591 hoi4 = 6611 hoi4 = 984 } # Senj -> Gospic, Senj, Plitvicka Jezera, Korenica
 	link = { vic2 = 773 hoi4 = 3601 hoi4 = 11564 } # Karlovac -> Ogulin, Rijeka
-	link = { vic2 = 780 hoi4 = 3924 hoi4 = 3974 } # Split -> Split, Knin
+	link = { vic2 = 780 hoi4 = 3924 hoi4 = 3974 hoi4 = 11816 } # Split -> Split, Knin, Metkovic
 	link = { vic2 = 782 hoi4 = 6889 hoi4 = 3868 } # Dubrovnik -> Dubrovnik, Hvar
 	link = { vic2 = 771 hoi4 = 11581 hoi4 = 3592 } # Zagreb -> Zagreb, Karlovac
 	link = { vic2 = 775 hoi4 = 9611 } # Varadzin -> Varaždin
@@ -1590,7 +1590,7 @@
 	link = { vic2 = 785 hoi4 = 6983 hoi4 = 9588 hoi4 = 6619 hoi4 = 11572 hoi4 = 9591 } # Banja Luka -> Banja Luka, Derventa, Prijedor, Teslic, Doboj
 	link = { vic2 = 786 hoi4 = 6799 hoi4 = 11574 hoi4 = 606 } # Tuzla -> Tuzla, Brcko, Bijeljina
 	link = { vic2 = 789 hoi4 = 6957 hoi4 = 6942 } # Livno -> Posušje, Mostar
-	link = { vic2 = 788 hoi4 = 9894 hoi4 = 11845 hoi4 = 11816 } # Mostar -> Capljina, Trebinje, Metkovic
+	link = { vic2 = 788 hoi4 = 9894 hoi4 = 11845 } # Mostar -> Capljina, Trebinje
 	link = { vic2 = 783 hoi4 = 11899 hoi4 = 11872 hoi4 = 9922 } # Sarajevo -> Sarajevo, Zenica, Travnik
 	link = { vic2 = 787 hoi4 = 11741 hoi4 = 953 hoi4 = 982 } # Foca -> Bratunac, Foca, Višegrad
 	link = { vic2 = 2569 hoi4 = 11858 } # Niksic -> Nikšic

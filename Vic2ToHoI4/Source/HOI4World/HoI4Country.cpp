@@ -1201,16 +1201,19 @@ void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 		}
 	}
 
-	theNavies = std::make_unique<Navies>(oldArmies,
-		 backupNavalLocation,
-		 unitMap,
-		 mtgUnitMap,
-		 *theShipVariants,
-		 provinceToStateIDMap,
-		 allStates,
-		 tag,
-		 provinceDefinitions,
-		 provinceMapper);
+	if (backupNavalLocation != 0)
+	{
+		theNavies = std::make_unique<Navies>(oldArmies,
+			 backupNavalLocation,
+			 unitMap,
+			 mtgUnitMap,
+			 *theShipVariants,
+			 provinceToStateIDMap,
+			 allStates,
+			 tag,
+			 provinceDefinitions,
+			 provinceMapper);
+	}
 
 	navyNames.addLegacyShipTypeNames(LegacyShipTypeNames{"submarine", "Submarine", getShipNames("frigate")});
 	navyNames.addLegacyShipTypeNames(LegacyShipTypeNames{"carrier", "Carrier", getShipNames("monitor")});
@@ -1601,6 +1604,10 @@ double HoI4::Country::getMilitaryStrength()
 float HoI4::Country::getNavalStrength() const
 {
 	auto navalStrength = 0.0f;
+	if (!theNavies)
+	{
+		return navalStrength;
+	}
 
 	for (const auto& navy: theNavies->getMtgNavies())
 	{
@@ -1725,4 +1732,17 @@ void HoI4::Country::addProvincesToHomeArea(int provinceId,
 void HoI4::Country::addTankDesigns(const PossibleTankDesigns& possibleDesigns)
 {
 	tankDesigns = std::make_unique<TankDesigns>(possibleDesigns, *theTechnologies);
+}
+
+
+std::optional<HoI4::Navies> HoI4::Country::getNavies() const
+{
+	if (theNavies)
+	{
+		return std::make_optional(*theNavies);
+	}
+	else
+	{
+		return std::nullopt;
+	}
 }

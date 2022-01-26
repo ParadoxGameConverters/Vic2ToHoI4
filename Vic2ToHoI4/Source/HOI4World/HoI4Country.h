@@ -246,7 +246,7 @@ class Country
 	[[nodiscard]] const auto& getDivisionLocations() const { return theArmy.getDivisionLocations(); }
 	[[nodiscard]] const TankDesigns& getTankDesigns() const { return *tankDesigns; }
 	[[nodiscard]] const ShipVariants& getTheShipVariants() const { return *theShipVariants; }
-	[[nodiscard]] const Navies& getNavies() const { return *theNavies; }
+	[[nodiscard]] std::optional<Navies> getNavies() const;
 	[[nodiscard]] const auto& getNavyNames() const { return navyNames; }
 	[[nodiscard]] int getConvoys() const { return convoys; }
 	[[nodiscard]] auto getTrainsMultiplier() const { return trainsMultiplier; }

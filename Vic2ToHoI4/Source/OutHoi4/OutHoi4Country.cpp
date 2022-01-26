@@ -1324,14 +1324,16 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	}
 	output.close();
 
-	auto& navies = theCountry.getNavies();
-	std::ofstream legacyNavy(
-		 "output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_legacy.txt");
-	outputLegacyNavies(navies, *technologies, tag, legacyNavy);
+	if (const auto& navies = theCountry.getNavies(); navies)
+	{
+		std::ofstream legacyNavy(
+			 "output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_legacy.txt");
+		outputLegacyNavies(*navies, *technologies, tag, legacyNavy);
 
-	std::ofstream mtgNavy(
-		 "output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_mtg.txt");
-	outputMtgNavies(navies, *technologies, tag, mtgNavy);
+		std::ofstream mtgNavy(
+			 "output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_mtg.txt");
+		outputMtgNavies(*navies, *technologies, tag, mtgNavy);
+	}
 }
 
 
