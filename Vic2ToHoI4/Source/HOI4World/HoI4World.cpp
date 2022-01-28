@@ -613,21 +613,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 
-		bool isStateBlocked = false;
-		const auto& blockedRegions = theRegions->getBlockedRegions(*ownerRegion);
-		if (std::find(blockedRegions.begin(), blockedRegions.end(), *stateRegion) != blockedRegions.end())
-		{
-			isStateBlocked = true;
-		}
-		for (const auto& area: theRegions->getSuperregions(*stateRegion))
-		{
-			if (std::find(blockedRegions.begin(), blockedRegions.end(), area) != blockedRegions.end())
-			{
-				isStateBlocked = true;
-				break;
-			}
-		}
-		if (isStateBlocked)
+		if (isStateRegionBlockedForOwner(*stateRegion, *ownerRegion))
 		{
 			continue;
 		}
@@ -1703,4 +1689,22 @@ void HoI4::World::recordUnbuiltCanals(const Vic2::World& sourceWorld)
 	{
 		greatestCountry->addUnbuiltCanal("SUEZ_CANAL_UNBUILT");
 	}
+}
+
+
+bool HoI4::World::isStateRegionBlockedForOwner(const std::string& stateRegion, const std::string& ownerRegion)
+{
+	const auto& blockedRegions = theRegions->getBlockedRegions(ownerRegion);
+	if (std::find(blockedRegions.begin(), blockedRegions.end(), stateRegion) != blockedRegions.end())
+	{
+		return true;
+	}
+	for (const auto& superregion: theRegions->getSuperregions(stateRegion))
+	{
+		if (std::find(blockedRegions.begin(), blockedRegions.end(), superregion) != blockedRegions.end())
+		{
+			return true;
+		}
+	}
+	return false;
 }
