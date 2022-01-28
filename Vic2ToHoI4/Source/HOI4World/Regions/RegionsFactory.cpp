@@ -20,7 +20,7 @@ HoI4::Regions::Factory::Factory()
 		theRegions->regionNames.emplace(regionId, region->getName());
 		theRegions->regionAdjectives.emplace(regionId, region->getAdjective());
 		theRegions->regionLevels.emplace(regionId, region->getLevel());
-		theRegions->regionGeographies.emplace(regionId, region->getGeography());
+		theRegions->regionSubregions.emplace(regionId, region->getSubregions());
 		theRegions->regionBlocked.emplace(regionId, region->getBlocked());
 	});
 }

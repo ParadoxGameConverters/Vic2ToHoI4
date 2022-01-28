@@ -46,18 +46,18 @@ std::optional<std::string> HoI4::Regions::getRegionLevel(const std::string& regi
 }
 
 
-std::vector<std::string> HoI4::Regions::getRegionGeography(const std::string& regionName) const
+std::vector<std::string> HoI4::Regions::getSubregions(const std::string& regionName) const
 {
-	if (const auto& geography = regionGeographies.find(regionName); geography != regionGeographies.end())
+	if (const auto& subregions = regionSubregions.find(regionName); subregions != regionSubregions.end())
 	{
-		return geography->second;
+		return subregions->second;
 	}
 
 	return std::vector<std::string>{};
 }
 
 
-std::vector<std::string> HoI4::Regions::getRegionBlocked(const std::string& regionName) const
+std::vector<std::string> HoI4::Regions::getBlockedRegions(const std::string& regionName) const
 {
 	if (const auto& blocked = regionBlocked.find(regionName); blocked != regionBlocked.end())
 	{
@@ -65,4 +65,19 @@ std::vector<std::string> HoI4::Regions::getRegionBlocked(const std::string& regi
 	}
 
 	return std::vector<std::string>{};
+}
+
+
+std::vector<std::string> HoI4::Regions::getSuperregions(const std::string& regionName) const
+{
+	std::vector<std::string> superregions;
+	for (const auto& [region, subregions]: regionSubregions)
+	{
+		if (std::find(subregions.begin(), subregions.end(), regionName) != subregions.end())
+		{
+			superregions.push_back(region);
+		}
+	}
+
+	return superregions;
 }

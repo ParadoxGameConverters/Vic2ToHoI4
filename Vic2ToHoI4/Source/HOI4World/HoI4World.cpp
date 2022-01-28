@@ -613,13 +613,13 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 
-		bool isStateBlocked;
-		const auto& blockedRegions = theRegions->getRegionBlocked(*ownerRegion);
+		bool isStateBlocked = false;
+		const auto& blockedRegions = theRegions->getBlockedRegions(*ownerRegion);
 		if (std::find(blockedRegions.begin(), blockedRegions.end(), *stateRegion) != blockedRegions.end())
 		{
 			isStateBlocked = true;
 		}
-		for (const auto& area: theRegions->getRegionGeography(*stateRegion))
+		for (const auto& area: theRegions->getSuperregions(*stateRegion))
 		{
 			if (std::find(blockedRegions.begin(), blockedRegions.end(), area) != blockedRegions.end())
 			{

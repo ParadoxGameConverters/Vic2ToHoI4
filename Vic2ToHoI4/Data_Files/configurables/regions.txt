@@ -208,7 +208,6 @@ britain = {
 	freed_name = "britain"
 	freed_adjective = "britain_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Ulster
@@ -254,7 +253,6 @@ scandinavia = {
 	freed_name = "scandinavia"
 	freed_adjective = "scandinavia_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Iceland & Greenland
@@ -303,7 +301,6 @@ baltic = {
 	freed_name = "baltic"
 	freed_adjective = "baltic_adj"
 	level = autonomy_colony
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Estonia
@@ -322,7 +319,6 @@ dutchland = {
 	freed_name = "dutchland"
 	freed_adjective = "dutchland_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Holland
@@ -347,7 +343,6 @@ france = {
 	freed_name = "france"
 	freed_adjective = "france_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Picardie
@@ -414,7 +409,6 @@ iberia = {
 	freed_name = "iberia"
 	freed_adjective = "iberia_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Galicia
@@ -463,7 +457,6 @@ germany = {
 	freed_name = "germany"
 	freed_adjective = "germany_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Schleswig-Holstein
@@ -536,7 +529,6 @@ austria = {
 	freed_name = "kakania"
 	freed_adjective = "kakania_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# East Switzerland
@@ -576,7 +568,6 @@ hungary = {
 	freed_name = "hungary"
 	freed_adjective = "hungary_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Transdanubia
@@ -601,7 +592,6 @@ romania = {
 	freed_name = "romania"
 	freed_adjective = "romania_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Moldavia
@@ -623,7 +613,6 @@ poland = {
 	freed_name = "poland"
 	freed_adjective = "poland_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Mazowieckie
@@ -642,7 +631,6 @@ italy = {
 	freed_name = "italy"
 	freed_adjective = "italy_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Piemonte
@@ -691,7 +679,6 @@ yugoslavia = {
 	freed_name = "yugoslavia"
 	freed_adjective = "yugoslavia_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Slovenia
@@ -728,7 +715,6 @@ bulgaria = {
 	freed_name = "bulgaria"
 	freed_adjective = "bulgaria_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# North Macedonia
@@ -747,7 +733,6 @@ greece = {
 	freed_name = "greece"
 	freed_adjective = "greece_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# West Macedonia
@@ -781,7 +766,6 @@ turkey = {
 	freed_name = "turkey"
 	freed_adjective = "turkey_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Hudavendigar
@@ -855,7 +839,6 @@ belarus = {
 	freed_name = "belarus"
 	freed_adjective = "belarus_adj"
 	level = autonomy_colony
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Minsk
@@ -874,7 +857,6 @@ ukraine = {
 	freed_name = "ukraine"
 	freed_adjective = "ukraine_adj"
 	level = autonomy_colony
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Kiev
@@ -899,7 +881,6 @@ russia = {
 	freed_name = "russia"
 	freed_adjective = "russia_adj"
 	level = autonomy_colony
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Kursk
@@ -1028,7 +1009,6 @@ transcaucasia = {
 	freed_name = "transcaucasia"
 	freed_adjective = "transcaucasia_adj"
 	level = autonomy_integrated_puppet
-	geography = { europe }
 	blocked = { europe }
 	provinces = {
 		# Georgia - Tbilisi
@@ -2289,4 +2269,7 @@ oceania = {
 		# Vanuatu
 		13054 13055 13056 13057
 	}
+}
+europe = {
+	subregions = { britain scandinavia baltic dutchland france iberia germany austria hungary romania poland italy yugoslavia bulgaria greece turkey belarus ukraine russia }
 }
