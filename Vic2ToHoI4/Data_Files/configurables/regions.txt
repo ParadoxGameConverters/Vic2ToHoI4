@@ -208,6 +208,8 @@ britain = {
 	freed_name = "britain"
 	freed_adjective = "britain_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Ulster
 		276 337 385 3242 3329 3379 11257
@@ -252,6 +254,8 @@ scandinavia = {
 	freed_name = "scandinavia"
 	freed_adjective = "scandinavia_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Iceland & Greenland
 		10245 10636 12512 13058 13066 4861 12674 12689
@@ -299,6 +303,8 @@ baltic = {
 	freed_name = "baltic"
 	freed_adjective = "baltic_adj"
 	level = autonomy_colony
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Estonia
 		83 185 308 496 567 592 3074 3152 3174 4640 6099 6178 6201 6381 6408 9079 9221 9485 11057 11127 11291 11426 11443
@@ -316,6 +322,8 @@ dutchland = {
 	freed_name = "dutchland"
 	freed_adjective = "dutchland_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Holland
 		68 391 3211 3314 6241 9431 9498
@@ -339,6 +347,8 @@ france = {
 	freed_name = "france"
 	freed_adjective = "france_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Picardie
 		454 575 3476 3536 6504 6585 9500 9561 11420 11483 11548
@@ -404,6 +414,8 @@ iberia = {
 	freed_name = "iberia"
 	freed_adjective = "iberia_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Galicia
 		729 758 3729 3744 3761 6734 6749 6764 6955 9686 9689 9699 9703 9719 11675 11677 11688 11692 11707 11710 11840 13218
@@ -451,6 +463,8 @@ germany = {
 	freed_name = "germany"
 	freed_adjective = "germany_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Schleswig-Holstein
 		317 332 3231 6257 6389 9320 11251 11331 11366
@@ -522,6 +536,8 @@ austria = {
 	freed_name = "kakania"
 	freed_adjective = "kakania_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# East Switzerland
 		636 658 661 663 3641 3660 3662 9600 11601 11604 11623
@@ -560,6 +576,8 @@ hungary = {
 	freed_name = "hungary"
 	freed_adjective = "hungary_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Transdanubia
 		682 686 701 3670 3680 3683 6685 6703 6720 9624 9643 9676 11610 11627 11663
@@ -583,6 +601,8 @@ romania = {
 	freed_name = "romania"
 	freed_adjective = "romania_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Moldavia
 		723 744 3728 3741 6584 6706 6729 6747 6761 9548 9701 9716 11534 11652 11655 11672 11689
@@ -603,6 +623,8 @@ poland = {
 	freed_name = "poland"
 	freed_adjective = "poland_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Mazowieckie
 		400 402 467 524 3230 3254 3521 3544 3559 6259 6321 6484 6511 6567 6580 9290 9316 9400 9452 9521 9544 11274 11329 11357 11385 11399 11466 11492 12562
@@ -620,6 +642,8 @@ italy = {
 	freed_name = "italy"
 	freed_adjective = "italy_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Piemonte
 		611 770 771 776 3772 3782 6635 6780 6788 9738 9741 11570 11721 11723 11726 11730 11891
@@ -667,6 +691,8 @@ yugoslavia = {
 	freed_name = "yugoslavia"
 	freed_adjective = "yugoslavia_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Slovenia
 		596 665 3631 3654 6650 6672 9596 9627
@@ -702,6 +728,8 @@ bulgaria = {
 	freed_name = "bulgaria"
 	freed_adjective = "bulgaria_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# North Macedonia
 		833 867 907 974 3833 3865 3882 6886 11832 11856
@@ -719,6 +747,8 @@ greece = {
 	freed_name = "greece"
 	freed_adjective = "greece_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# West Macedonia
 		841 936 966 3844 3980 9837
@@ -751,6 +781,8 @@ turkey = {
 	freed_name = "turkey"
 	freed_adjective = "turkey_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Hudavendigar
 		856 909 947 981 3786 3851 3856 3907 3951 3983 6808 6877 6945 9878 11811 11831 11867
@@ -823,6 +855,8 @@ belarus = {
 	freed_name = "belarus"
 	freed_adjective = "belarus_adj"
 	level = autonomy_colony
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Minsk
 		215 216 294 304 331 360 386 3203 3267 3293 3350 3507 3759 6232 6319 6373 6556 9249 11216 11313 11370 11453
@@ -840,6 +874,8 @@ ukraine = {
 	freed_name = "ukraine"
 	freed_adjective = "ukraine_adj"
 	level = autonomy_colony
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Kiev
 		238 409 434 441 458 463 476 488 489 501 504 511 522 525 546 550 559 582 3225 3452 3455 3468 3470 3480 3494 3508 3520 3531 3542 3543 3557 3568 3570 3584 6455 6458 6480 6495 6497 6507 6508 6532 6565 6578 6589 6593 6605 9413 9423 9435 9437 9451 9463 9465 9466 9477 9479 9481 9491 9493 9506 9519 9543 9566 9568 9576 11397 11409 11424 11425 11438 11454 11462 11464 11477 11489 11490 11504 11514 11530 11553 11557
@@ -863,6 +899,8 @@ russia = {
 	freed_name = "russia"
 	freed_adjective = "russia_adj"
 	level = autonomy_colony
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Kursk
 		212 261 288 302 328 356 384 413 437 457 473 510 534 558 580 3199 3250 3291 3306 3318 3346 3376 3469 3492 3504 3527 3554 3567 3580 6254 6304 6317 6330 6341 6355 6369 6386 6398 6411 6432 6477 6481 6494 6517 6543 6553 6577 6591 6603 9260 9328 9339 9355 9384 9411 9424 9448 9449 9489 9518 9542 9552 9579 11214 11242 11244 11283 11310 11337 11368 11396 11412 11439 11475 11500 11526 11540
@@ -990,6 +1028,8 @@ transcaucasia = {
 	freed_name = "transcaucasia"
 	freed_adjective = "transcaucasia_adj"
 	level = autonomy_integrated_puppet
+	geography = { europe }
+	blocked = { europe }
 	provinces = {
 		# Georgia - Tbilisi
 		654 672 772 1455 1530 1599 3656 3658 3667 4534 4605 6436 6669 6671 6674 9626 9632 9702 11599 11609 11617 11647 12309
