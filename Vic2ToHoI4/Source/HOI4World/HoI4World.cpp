@@ -577,6 +577,11 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
+		if (!stateRegion)
+		{
+			Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
+			continue;
+		}
 
 		const auto& ownerTag = state.getOwner();
 		if (ownerTag == "UCV")
@@ -602,6 +607,11 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 		const auto& ownerRegion = theRegions->getRegion(*ownerCapitalProvince);
+		if (!ownerRegion)
+		{
+			Log(LogLevel::Debug) << "Province " << *ownerCapitalProvince << " is not defined in Configurables/regions.txt";
+			continue;
+		}
 
 		bool isStateBlocked;
 		const auto& blockedRegions = theRegions->getRegionBlocked(*ownerRegion);
