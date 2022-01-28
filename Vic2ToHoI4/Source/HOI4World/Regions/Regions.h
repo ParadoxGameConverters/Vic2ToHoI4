@@ -20,12 +20,16 @@ class Regions
 	[[nodiscard]] std::optional<std::string> getRegionName(const std::string& region) const;
 	[[nodiscard]] std::optional<std::string> getRegionAdjective(const std::string& region) const;
 	[[nodiscard]] std::optional<std::string> getRegionLevel(const std::string& region) const;
+	[[nodiscard]] std::vector<std::string> getRegionGeography(const std::string& region) const;
+	[[nodiscard]] std::vector<std::string> getRegionBlocked(const std::string& region) const;
 
   private:
 	std::unordered_map<int, std::string> regionsMap;
 	std::unordered_map<std::string, std::string> regionNames;
 	std::unordered_map<std::string, std::string> regionAdjectives;
 	std::unordered_map<std::string, std::string> regionLevels;
+	std::unordered_map<std::string, std::vector<std::string>> regionGeographies;
+	std::unordered_map<std::string, std::vector<std::string>> regionBlocked;
 };
 
 } // namespace HoI4

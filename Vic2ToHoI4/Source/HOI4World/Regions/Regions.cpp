@@ -44,3 +44,25 @@ std::optional<std::string> HoI4::Regions::getRegionLevel(const std::string& regi
 
 	return std::nullopt;
 }
+
+
+std::vector<std::string> HoI4::Regions::getRegionGeography(const std::string& regionName) const
+{
+	if (const auto& geography = regionGeographies.find(regionName); geography != regionGeographies.end())
+	{
+		return geography->second;
+	}
+
+	return std::vector<std::string>{};
+}
+
+
+std::vector<std::string> HoI4::Regions::getRegionBlocked(const std::string& regionName) const
+{
+	if (const auto& blocked = regionBlocked.find(regionName); blocked != regionBlocked.end())
+	{
+		return blocked->second;
+	}
+
+	return std::vector<std::string>{};
+}
