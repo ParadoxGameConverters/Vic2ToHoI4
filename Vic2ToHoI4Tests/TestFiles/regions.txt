@@ -1,5 +1,8 @@
 test_region = {
 	name = "Test Region"
 	adjective = "Test Regional"
+	level = "autonomy_test"
+	geography = { localregion superregion }
+	blocked = { localregion superregion }
 	provinces = { 42 }
 }
