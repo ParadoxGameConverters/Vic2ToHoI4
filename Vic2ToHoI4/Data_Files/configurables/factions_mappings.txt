@@ -194,47 +194,22 @@ link = { culture = latin_american_cultures ideology = fascism faction = faction_
 ##Default Faction Names
 
 #Absolutist
-link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_1 }
-link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_2 }
-link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_3 }
-link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_4 }
-link = { culture = any ideology = absolutist faction = FACTION_NAME_KINGDOM_5 }
+link = { culture = any ideology = absolutist faction = royal_league }
 
 #Radical
-link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_1 }
-link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_2 }
-link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_3 }
-link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_4 }
-link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_5 }
-link = { culture = any ideology = radical faction = FACTION_NAME_RADICAL_6 }
+link = { culture = any ideology = radical faction = temperance_league }
 
 #Democratic
-link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_1 }
-link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_2 }
-link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_3 }
-link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_4 }
-link = { culture = any ideology = democratic faction =  FACTION_NAME_DEMOCRATIC_5 }
+link = { culture = any ideology = democratic faction =  league_of_nations }
 
 #Communist
-link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_1 }
-link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_2 }
-link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_3 }
-link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_4 }
-link = { culture = any ideology = communism faction =  FACTION_NAME_COMMUNIST_5 }
+link = { culture = any ideology = communism faction =  league_of_the_fifth_international }
 
 #Facism
-link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_1 }
-link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_2 }
-link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_3 }
-link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_4 }
-link = { culture = any ideology = fascism faction =  FACTION_NAME_FASCIST_5 }
+link = { culture = any ideology = fascism faction =  nationalist_league }
 
 #Non-Aligned
-link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_1 }
-link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_2 }
-link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_3 }
-link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_4 }
-link = { culture = any ideology = neutrality faction =  FACTION_NAME_NONALIGNED_5 }
+link = { culture = any ideology = neutrality faction =  non_aligned_league }
 
 ##FALLBACKS
 
