@@ -603,11 +603,21 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		}
 		const auto& ownerRegion = theRegions->getRegion(*ownerCapitalProvince);
 
-		const auto& blocked = theRegions->getRegionBlocked(*ownerRegion);
-		const auto& geo = theRegions->getRegionGeography(*stateRegion);
-		std::vector<std::string> intersection;
-		std::set_intersection(blocked.begin(), blocked.end(), geo.begin(), geo.end(), std::back_inserter(intersection));
-		if (!intersection.empty())
+		bool isStateBlocked;
+		const auto& blockedRegions = theRegions->getRegionBlocked(*ownerRegion);
+		if (std::find(blockedRegions.begin(), blockedRegions.end(), *stateRegion) != blockedRegions.end())
+		{
+			isStateBlocked = true;
+		}
+		for (const auto& area: theRegions->getRegionGeography(*stateRegion))
+		{
+			if (std::find(blockedRegions.begin(), blockedRegions.end(), area) != blockedRegions.end())
+			{
+				isStateBlocked = true;
+				break;
+			}
+		}
+		if (isStateBlocked)
 		{
 			continue;
 		}
