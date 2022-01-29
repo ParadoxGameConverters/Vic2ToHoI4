@@ -1694,6 +1694,11 @@ void HoI4::World::recordUnbuiltCanals(const Vic2::World& sourceWorld)
 
 bool HoI4::World::isStateRegionBlockedForOwner(const std::string& stateRegion, const std::string& ownerRegion)
 {
+	if (stateRegion == ownerRegion)
+	{
+		return true;
+	}
+
 	const auto& blockedRegions = theRegions->getBlockedRegions(ownerRegion);
 	if (std::find(blockedRegions.begin(), blockedRegions.end(), stateRegion) != blockedRegions.end())
 	{
