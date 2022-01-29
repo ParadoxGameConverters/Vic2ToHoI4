@@ -771,7 +771,7 @@
 	link = { vic2 = 2397 hoi4 = 8161 hoi4 = 8176 } # Esquel -> San Carlos de Bariloche, land
 	link = { comment = "# # Patagonia Meridional" }
 	link = { vic2 = 2131 hoi4 = 12960 } # Falkland Islands -> Stanley
-	link = { vic2 = 2398 hoi4 = 12952 hoi4 = 2169 hoi4 = 8913 } # Puerto Deseado -> Caleta Olivia, Las Heras, land
+	link = { vic2 = 2398 hoi4 = 12952 hoi4 = 2169 hoi4 = 8913 } # Puerto Deseado -> Caleta Olivia, Las Heras, (Lake)
 	link = { vic2 = 2399 hoi4 = 5173 hoi4 = 12946 } # Río Gallegos -> Río Gallegos, land
 	link = { vic2 = 2400 hoi4 = 11009 } # Río Grande -> Ushuaia
 	link = { comment = "# " }

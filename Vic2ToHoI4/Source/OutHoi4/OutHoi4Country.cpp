@@ -360,6 +360,23 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 	ideasFile << "}\n";
 }
 
+void outputOOBLines(std::ostream& output, const std::string& tag, const HoI4::Country& theCountry)
+{
+	output << "oob = \"" << tag << "_OOB\"\n";
+	if (const auto& navies = theCountry.getNavies(); navies)
+	{
+		output << "if = {\n";
+		output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+		output << "\t\tset_naval_oob = \"" << tag << "_1936_naval_mtg\"\n";
+		output << "\telse = { \n";
+		output << "\t\tset_naval_oob = \"" << tag << "_1936_naval_legacy\"\n";
+		output << "\t}\n";
+		output << "}\n";
+	}
+
+	output << "\n";
+}
+
 } // namespace
 
 
@@ -721,7 +738,6 @@ void outputCapital(std::ostream& output, const std::optional<int>& capitalStateN
 void outputResearchSlots(std::ostream& output, bool greatPower, bool civilized, bool unrecognized);
 void outputThreat(std::ostream& output, const double& threat);
 void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars);
-void outputOOBLines(std::ostream& output, const std::string& tag);
 void outputFlags(std::ostream& output, const std::set<std::string>& flags);
 void outputConvoys(std::ostream& output, const int& convoys);
 void outputTrainsModifier(std::ostream& output, const std::optional<float>& trainsMultiplier);
@@ -786,7 +802,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.isCivilized(), theCountry.isUnrecognizedNation());
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
-	outputOOBLines(output, tag);
+	outputOOBLines(output, tag, theCountry);
 	if (const auto& theTechnologies = theCountry.getTechnologies(); theTechnologies)
 	{
 		outputTechnology(*theTechnologies, output);
@@ -887,21 +903,6 @@ void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars)
 	{
 		output << war;
 	}
-}
-
-
-void outputOOBLines(std::ostream& output, const std::string& tag)
-{
-	output << "oob = \"" << tag << "_OOB\"\n";
-	output << "if = {\n";
-	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	output << "\t\tset_naval_oob = \"" << tag << "_1936_naval_mtg\"\n";
-	output << "\telse = { \n";
-	output << "\t\tset_naval_oob = \"" << tag << "_1936_naval_legacy\"\n";
-	output << "\t}\n";
-	output << "}\n";
-
-	output << "\n";
 }
 
 
