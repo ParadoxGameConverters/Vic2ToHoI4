@@ -341,6 +341,7 @@ baltic = {
 	freed_adjective = "baltic_adj"
 	level = autonomy_colony
 	color = { 101 143 154 }
+	blocked = { europe }
 	provinces = {
 		# Estonia
 		83 185 308 496 567 592 3074 3152 3174 4640 6099 6178 6201 6381 6408 9079 9221 9485 11057 11127 11291 11426 11443
@@ -637,6 +638,7 @@ romania = {
 	freed_name = "romania"
 	freed_adjective = "romania_adj"
 	level = autonomy_integrated_puppet
+	blocked = { europe }
 	color = { 216 171 0 }
 	provinces = {
 		# Moldavia
@@ -817,6 +819,7 @@ turkey = {
 	freed_adjective = "turkey_adj"
 	level = autonomy_integrated_puppet
 	color = { 168 28 7 }
+	blocked = { europe }
 	provinces = {
 		# Hudavendigar
 		856 909 947 981 3786 3851 3856 3907 3951 3983 6808 6877 6945 9878 11811 11831 11867
@@ -1066,6 +1069,7 @@ transcaucasia = {
 	freed_adjective = "transcaucasia_adj"
 	level = autonomy_integrated_puppet
 	color = { 76 100 124 }
+	blocked = { europe }
 	provinces = {
 		# Georgia - Tbilisi
 		654 672 772 1455 1530 1599 3656 3658 3667 4534 4605 6436 6669 6671 6674 9626 9632 9702 11599 11609 11617 11647 12309
@@ -1317,16 +1321,6 @@ indochina = {
 		1248 1285 1300 1328 1396 1400 1423 1605 4223 4284 4334 4341 4363 4401 4405 7238 7271 7303 7331 7347 7380 10162 10180 10232 10261 12109 12133 12176 12204 12232 12288
 	}
 }
-#malaysia = {
-#	name = "malaya"
-#	adjective = "malaya_adj"
-#	freed_name = "malaysia"
-#	freed_adjective = "malaysia_adj"
-#	level = autonomy_colony
-#	color = { 106 226 174 }
-#	provinces = {
-#	}
-#}
 indonesia = {
 	name = "east_indies"
 	adjective = "east_indies_adj"
