@@ -222,6 +222,7 @@ class World: commonItems::parser
 
 	bool dominionIsReleasable(const Country& dominion);
 	void addProvincesToHomeAreas();
+	bool isStateRegionBlockedForOwner(const std::string& stateRegion, const std::string& ownerRegion);
 
 	void recordUnbuiltCanals(const Vic2::World& sourceWorld);
 

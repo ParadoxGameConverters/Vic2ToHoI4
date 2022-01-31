@@ -577,6 +577,11 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
+		if (!stateRegion)
+		{
+			Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
+			continue;
+		}
 
 		const auto& ownerTag = state.getOwner();
 		if (ownerTag == "UCV")
@@ -602,10 +607,13 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 		const auto& ownerRegion = theRegions->getRegion(*ownerCapitalProvince);
+		if (!ownerRegion)
+		{
+			Log(LogLevel::Debug) << "Province " << *ownerCapitalProvince << " is not defined in Configurables/regions.txt";
+			continue;
+		}
 
-		const bool differentRegions =
-			 ((stateRegion && !ownerRegion) || (stateRegion && ownerRegion && *stateRegion != *ownerRegion));
-		if (!differentRegions)
+		if (isStateRegionBlockedForOwner(*stateRegion, *ownerRegion))
 		{
 			continue;
 		}
@@ -1681,4 +1689,27 @@ void HoI4::World::recordUnbuiltCanals(const Vic2::World& sourceWorld)
 	{
 		greatestCountry->addUnbuiltCanal("SUEZ_CANAL_UNBUILT");
 	}
+}
+
+
+bool HoI4::World::isStateRegionBlockedForOwner(const std::string& stateRegion, const std::string& ownerRegion)
+{
+	if (stateRegion == ownerRegion)
+	{
+		return true;
+	}
+
+	const auto& blockedRegions = theRegions->getBlockedRegions(ownerRegion);
+	if (std::find(blockedRegions.begin(), blockedRegions.end(), stateRegion) != blockedRegions.end())
+	{
+		return true;
+	}
+	for (const auto& superregion: theRegions->getSuperregions(stateRegion))
+	{
+		if (std::find(blockedRegions.begin(), blockedRegions.end(), superregion) != blockedRegions.end())
+		{
+			return true;
+		}
+	}
+	return false;
 }
