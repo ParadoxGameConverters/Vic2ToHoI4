@@ -3,15 +3,14 @@
 # A dominion, to work, needs to have the corresponding
 # <region>_emblem.tga file in the flags folder
 # Freed name and adjective yet to be implemented
+# Use "blocked" section in region definition to prevent countries with capital in that region from creating dominions in blocked regions
+# Use "region groupings" to define your own superregions to use in blocked section in regions definitons
 
 ## REGION GROUPINGS
 europe = {
 	subregions = { britain scandinavia baltic dutchland france iberia germany austria hungary romania poland italy yugoslavia bulgaria greece turkey belarus ukraine russia }
 }
 north_america = {
-	subregions = { }
-}
-central_america = {
 	subregions = { }
 }
 south_america = {
@@ -23,7 +22,7 @@ mena = { # Middle East + North Africa
 subsaharan_africa = {
 	subregions = { }
 }
-central_asia = { # Central Asia + Iran + Afghanistan
+caia = { # Central Asia + Iran + Afghanistan
 	subregions = { }
 }
 southern_asia = { # India + Indochina
