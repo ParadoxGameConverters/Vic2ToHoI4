@@ -532,32 +532,32 @@ void HoI4::World::convertIndustry(const Configuration& theConfiguration)
 void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper)
 {
 	Log(LogLevel::Info) << "\tAdding states to countries";
-	for (auto state: states->getStates())
+	for (auto state: states->getStates() | std::views::values)
 	{
-		auto owner = countries.find(state.second.getOwner());
+		auto owner = countries.find(state.getOwner());
 		if (owner != countries.end())
 		{
-			owner->second->addState(state.second);
+			owner->second->addState(state);
 		}
 	}
 
 	std::set<std::string> tagsToRemove;
-	for (auto& country: countries)
+	for (auto& [tag, country]: countries)
 	{
-		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
-		if (!country.second->getCapitalState())
+		country->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
+		if (!country->getCapitalState())
 		{
-			tagsToRemove.insert(country.first);
+			tagsToRemove.insert(tag);
 			continue;
 		}
 
-		if (country.second->getStates().size() > 0)
+		if (country->getStates().size() > 0)
 		{
-			landedCountries.insert(country);
+			landedCountries[tag] = country;
 		}
-		country.second->setCapitalRegionFlag(*theRegions);
+		country->setCapitalRegionFlag(*theRegions);
 
-		auto possibleCapitalState = country.second->getCapitalState();
+		auto possibleCapitalState = country->getCapitalState();
 		if (!possibleCapitalState)
 		{
 			return;
@@ -565,7 +565,7 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		auto& modifiableStates = states->getModifiableStates();
 		if (auto capital = modifiableStates.find(*possibleCapitalState); capital != modifiableStates.end())
 		{
-			capital->second.addCores({country.first});
+			capital->second.addCores({tag});
 		}
 	}
 
