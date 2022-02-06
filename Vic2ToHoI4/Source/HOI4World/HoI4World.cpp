@@ -350,10 +350,7 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 			 provinceMapper,
 			 *states,
 			 characterFactory);
-		if (destCountry->getCapitalState())
-		{
-			countries.insert(make_pair(*possibleHoI4Tag, destCountry));
-		}
+		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
 	}
 }
 
@@ -535,25 +532,32 @@ void HoI4::World::convertIndustry(const Configuration& theConfiguration)
 void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper)
 {
 	Log(LogLevel::Info) << "\tAdding states to countries";
-	for (auto state: states->getStates())
+	for (auto state: states->getStates() | std::views::values)
 	{
-		auto owner = countries.find(state.second.getOwner());
+		auto owner = countries.find(state.getOwner());
 		if (owner != countries.end())
 		{
-			owner->second->addState(state.second);
+			owner->second->addState(state);
 		}
 	}
 
-	for (auto& country: countries)
+	std::set<std::string> tagsToRemove;
+	for (auto& [tag, country]: countries)
 	{
-		if (country.second->getStates().size() > 0)
+		country->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
+		if (!country->getCapitalState())
 		{
-			landedCountries.insert(country);
+			tagsToRemove.insert(tag);
+			continue;
 		}
-		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
-		country.second->setCapitalRegionFlag(*theRegions);
 
-		auto possibleCapitalState = country.second->getCapitalState();
+		if (country->getStates().size() > 0)
+		{
+			landedCountries[tag] = country;
+		}
+		country->setCapitalRegionFlag(*theRegions);
+
+		auto possibleCapitalState = country->getCapitalState();
 		if (!possibleCapitalState)
 		{
 			return;
@@ -561,8 +565,14 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		auto& modifiableStates = states->getModifiableStates();
 		if (auto capital = modifiableStates.find(*possibleCapitalState); capital != modifiableStates.end())
 		{
-			capital->second.addCores({country.first});
+			capital->second.addCores({tag});
 		}
+	}
+
+	Log(LogLevel::Info) << "\tDropping countries without properly set capitals";
+	for (const auto& tag: tagsToRemove)
+	{
+		countries.erase(tag);
 	}
 }
 
