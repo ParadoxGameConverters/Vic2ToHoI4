@@ -46,11 +46,6 @@ HoI4::Country::Country(std::string tag,
 	std::seed_seq seed{tag[0], tag[1], tag[2]};
 	generator.seed(seed);
 
-	determineCapitalFromVic2(theProvinceMapper, worldStates.getProvinceToStateIDMap(), worldStates.getStates());
-	if (!getCapitalState())
-	{
-		return;
-	}
 	determineFilename();
 
 	const auto& sourceColor = sourceCountry.getColor();

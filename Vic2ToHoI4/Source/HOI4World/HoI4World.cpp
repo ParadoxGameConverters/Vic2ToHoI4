@@ -350,10 +350,7 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 			 provinceMapper,
 			 *states,
 			 characterFactory);
-		if (destCountry->getCapitalState())
-		{
-			countries.insert(make_pair(*possibleHoI4Tag, destCountry));
-		}
+		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
 	}
 }
 
@@ -544,13 +541,20 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		}
 	}
 
+	std::set<std::string> tagsToRemove;
 	for (auto& country: countries)
 	{
+		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
+		if (!country.second->getCapitalState())
+		{
+			tagsToRemove.insert(country.first);
+			continue;
+		}
+
 		if (country.second->getStates().size() > 0)
 		{
 			landedCountries.insert(country);
 		}
-		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
 		country.second->setCapitalRegionFlag(*theRegions);
 
 		auto possibleCapitalState = country.second->getCapitalState();
@@ -563,6 +567,12 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		{
 			capital->second.addCores({country.first});
 		}
+	}
+
+	Log(LogLevel::Info) << "\tDropping countries without properly set capitals";
+	for (const auto& tag: tagsToRemove)
+	{
+		countries.erase(tag);
 	}
 }
 
