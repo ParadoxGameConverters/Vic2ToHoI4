@@ -287,7 +287,7 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 		auto addCore = std::to_string(state) + " = {\n";
 		addCore += "\t\t\tif = {\n";
 		addCore += "\t\t\t\tlimit = { is_owned_by = " + annexed.getTag() + " }\n";
-		addCore += "\t\t\t\tadd_core_of = " + annexed.getTag() + "\n";
+		addCore += "\t\t\t\tadd_core_of = " + annexer.getTag() + "\n";
 		addCore += "\t\t\t}\n";
 		addCore += "\t\t}";
 		acceptedOption.giveScriptBlock(std::move(addCore));
