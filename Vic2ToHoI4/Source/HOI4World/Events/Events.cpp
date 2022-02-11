@@ -193,11 +193,11 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	acceptAiChance += "\t\t\t}\n";
 	acceptAiChance += "\t\t\tmodifier = {\n";
 	acceptAiChance += "\t\t\t\tadd = -15\n";
-	acceptAiChance += "\t\t\t\t" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
+	acceptAiChance += "\t\t\t\t" + annexer.getTag() + " = { has_army_size = { size < 40 } }\n";
 	acceptAiChance += "\t\t\t}\n";
 	acceptAiChance += "\t\t\tmodifier = {\n";
 	acceptAiChance += "\t\t\t\tadd = 45\n";
-	acceptAiChance += "\t\t\t\t" + annexed.getTag() + " = { has_army_size = { size < 40 } }\n";
+	acceptAiChance += "\t\t\t\t" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
 	acceptAiChance += "\t\t\t}\n";
 	acceptAiChance += "\t\t}";
 	acceptOption.giveAiChance(std::move(acceptAiChance));
@@ -221,11 +221,11 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	refuseAiChance += "\t\t\tbase = 10\n";
 	refuseAiChance += "\t\t\tmodifier = {\n";
 	refuseAiChance += "\t\t\t\tfactor = 0\n";
-	refuseAiChance += "\t\t\t\t" + annexed.getTag() + " = { has_army_size = { size < 30 } }\n";
+	refuseAiChance += "\t\t\t\t" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
 	refuseAiChance += "\t\t\t}\n";
 	refuseAiChance += "\t\t\tmodifier = {\n";
 	refuseAiChance += "\t\t\t\tadd = 20\n";
-	refuseAiChance += "\t\t\t\t" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
+	refuseAiChance += "\t\t\t\t" + annexer.getTag() + " = { has_army_size = { size < 30 } }\n";
 	refuseAiChance += "\t\t\t}\n";
 	refuseAiChance += "\t\t}";
 	refuseOption.giveAiChance(std::move(refuseAiChance));
@@ -287,7 +287,7 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 		auto addCore = std::to_string(state) + " = {\n";
 		addCore += "\t\t\tif = {\n";
 		addCore += "\t\t\t\tlimit = { is_owned_by = " + annexed.getTag() + " }\n";
-		addCore += "\t\t\t\tadd_core_of = " + annexed.getTag() + "\n";
+		addCore += "\t\t\t\tadd_core_of = " + annexer.getTag() + "\n";
 		addCore += "\t\t\t}\n";
 		addCore += "\t\t}";
 		acceptedOption.giveScriptBlock(std::move(addCore));
