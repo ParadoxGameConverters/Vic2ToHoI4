@@ -11,28 +11,28 @@ europe = {
 	subregions = { britain scandinavia baltic dutchland france iberia germany austria hungary romania poland italy yugoslavia bulgaria greece turkey belarus ukraine russia }
 }
 north_america = {
-	subregions = { }
+	subregions = { canada california us_central us_north_east dixieland }
 }
 south_america = {
-	subregions = { }
+	subregions = { gran_colombia peru_bolivia patagonia brazil }
 }
 mena = { # Middle East + North Africa
-	subregions = { }
+	subregions = { levant iraq arabia maghreb libya egypt }
 }
 subsaharan_africa = {
-	subregions = { }
+	subregions = { western_africa sudan abyssinia nigeria congo equatorial_africa angola east_africa mozambique southern_africa rhodesia madagascar }
 }
 caia = { # Central Asia + Iran + Afghanistan
 	subregions = { }
 }
 southern_asia = { # India + Indochina
-	subregions = { }
+	subregions = { south_asia burma siam indochina }
 }
 east_asia = {
-	subregions = { }
+	subregions = { china korea japan }
 }
 many_islands = { # from Malaysia to Fiji, including Australia
-	subregions = { }
+	subregions = { australia oceania }
 }
 ## REGIONS
 canada = {
@@ -40,7 +40,8 @@ canada = {
 	adjective = "canada_adj"
 	freed_name = "canada"
 	freed_adjective = "canada_adj"
-	level = autonomy_colony
+	level = autonomy_dominion
+	blocked = { north_america }
 	color = { 255 199 72 }
 	provinces = {
 		# Alaska
@@ -89,7 +90,8 @@ california = {
 	adjective = "california_adj"
 	freed_name = "california"
 	freed_adjective = "california_adj"
-	level = autonomy_colony
+	level = autonomy_dominion
+	blocked = { north_america mexico central_america }
 	color = { 253 125 0 }
 	provinces = {
 		# Washington
@@ -128,7 +130,8 @@ us_central = {
 	adjective = "louisiana_adj"
 	freed_name = "louisiana"
 	freed_adjective = "louisiana_adj"
-	level = autonomy_colony
+	level = autonomy_dominion
+	blocked = { north_america mexico central_america caribbean }
 	color = { 203 186 125 }
 	provinces = {
 		# North Dakota
@@ -164,7 +167,8 @@ us_north_east = {
 	adjective = "thirteen_colonies_adj"
 	freed_name = "great_columbia"
 	freed_adjective = "great_columbia_adj"
-	level = autonomy_colony
+	level = autonomy_dominion
+	blocked = { north_america mexico central_america caribbean }
 	color = { 168 186 214 }
 	provinces = {
 		# Wisconsin
@@ -213,7 +217,8 @@ dixieland = {
 	adjective = "dixie_adj"
 	freed_name = "dixie"
 	freed_adjective = "dixie_adj"
-	level = autonomy_colony
+	level = autonomy_dominion
+	blocked = { north_america mexico central_america caribbean }
 	color = { 126 213 0 }
 	provinces = {
 		# Tennessee
@@ -384,7 +389,7 @@ france = {
 	freed_adjective = "france_adj"
 	level = autonomy_integrated_puppet
 	color = { 51 51 255 }
-	blocked = { europe }
+	blocked = { europe mena }
 	provinces = {
 		# Picardie
 		454 575 3476 3536 6504 6585 9500 9561 11420 11483 11548
@@ -451,7 +456,7 @@ iberia = {
 	freed_adjective = "iberia_adj"
 	level = autonomy_integrated_puppet
 	color = { 123 125 26 }
-	blocked = { europe }
+	blocked = { europe mena }
 	provinces = {
 		# Galicia
 		729 758 3729 3744 3761 6734 6749 6764 6955 9686 9689 9699 9703 9719 11675 11677 11688 11692 11707 11710 11840 13218
@@ -637,7 +642,7 @@ romania = {
 	freed_name = "romania"
 	freed_adjective = "romania_adj"
 	level = autonomy_integrated_puppet
-	blocked = { europe }
+	blocked = { europe mena }
 	color = { 216 171 0 }
 	provinces = {
 		# Moldavia
@@ -679,7 +684,7 @@ italy = {
 	freed_adjective = "italy_adj"
 	level = autonomy_integrated_puppet
 	color = { 111 189 72 }
-	blocked = { europe }
+	blocked = { europe mena }
 	provinces = {
 		# Piemonte
 		611 770 771 776 3772 3782 6635 6780 6788 9738 9741 11570 11721 11723 11726 11730 11891
@@ -728,7 +733,7 @@ yugoslavia = {
 	freed_adjective = "yugoslavia_adj"
 	level = autonomy_integrated_puppet
 	color = { 52 38 66 }
-	blocked = { europe }
+	blocked = { europe mena }
 	provinces = {
 		# Slovenia
 		596 665 3631 3654 6650 6672 9596 9627
@@ -765,7 +770,7 @@ bulgaria = {
 	freed_adjective = "bulgaria_adj"
 	level = autonomy_integrated_puppet
 	color = { 1 130 132 }
-	blocked = { europe }
+	blocked = { europe mena }
 	provinces = {
 		# North Macedonia
 		833 867 907 974 3833 3865 3882 6886 11832 11856
@@ -784,7 +789,7 @@ greece = {
 	freed_adjective = "greece_adj"
 	level = autonomy_integrated_puppet
 	color = { 113 40 99 }
-	blocked = { europe }
+	blocked = { europe mena }
 	provinces = {
 		# West Macedonia
 		841 936 966 3844 3980 9837
@@ -818,7 +823,7 @@ turkey = {
 	freed_adjective = "turkey_adj"
 	level = autonomy_integrated_puppet
 	color = { 168 28 7 }
-	blocked = { europe }
+	blocked = { europe mena }
 	provinces = {
 		# Hudavendigar
 		856 909 947 981 3786 3851 3856 3907 3951 3983 6808 6877 6945 9878 11811 11831 11867
@@ -851,6 +856,7 @@ levant = {
 	freed_name = "ash_sham"
 	freed_adjective = "ash_sham_adj"
 	level = autonomy_integrated_puppet
+	blocked = { europe mena }
 	color = { 141 107 164 }
 	provinces = {
 		# Aleppo
@@ -875,6 +881,7 @@ iraq = {
 	freed_name = "iraq"
 	freed_adjective = "iraq_adj"
 	level = autonomy_integrated_puppet
+	blocked = { mena persia central_asia }
 	color = { 144 145 254 }
 	provinces = {
 		# Mosul
@@ -938,7 +945,7 @@ russia = {
 	freed_adjective = "russia_adj"
 	level = autonomy_colony
 	color = { 80 126 94 }
-	blocked = { europe }
+	blocked = { europe siberia }
 	provinces = {
 		# Kursk
 		212 261 288 302 328 356 384 413 437 457 473 510 534 558 580 3199 3250 3291 3306 3318 3346 3376 3469 3492 3504 3527 3554 3567 3580 6254 6304 6317 6330 6341 6355 6369 6386 6398 6411 6432 6477 6481 6494 6517 6543 6553 6577 6591 6603 9260 9328 9339 9355 9384 9411 9424 9448 9449 9489 9518 9542 9552 9579 11214 11242 11244 11283 11310 11337 11368 11396 11412 11439 11475 11500 11526 11540
@@ -1068,7 +1075,7 @@ transcaucasia = {
 	freed_adjective = "transcaucasia_adj"
 	level = autonomy_integrated_puppet
 	color = { 76 100 124 }
-	blocked = { europe }
+	blocked = { europe mena }
 	provinces = {
 		# Georgia - Tbilisi
 		654 672 772 1455 1530 1599 3656 3658 3667 4534 4605 6436 6669 6671 6674 9626 9632 9702 11599 11609 11617 11647 12309
@@ -1086,6 +1093,7 @@ persia = {
 	freed_name = "iran"
 	freed_adjective = "iran_adj"
 	level = autonomy_colony
+	blocked = { turkey transcaucasia levant arabia central_asia south_asia }
 	color = { 234 176 43 }
 	provinces = {
 		# Tabriz
@@ -1128,6 +1136,7 @@ arabia = {
 	freed_name = "arabia"
 	freed_adjective = "arabia_adj"
 	level = autonomy_colony
+	blocked = { turkey transcaucasia mena south_asia east_africa }
 	color = { 0 84 0 }
 	provinces = {
 		# Hedjaz
@@ -1155,6 +1164,7 @@ central_asia = {
 	freed_name = "merkezia"
 	freed_adjective = "merkezia_adj"
 	level = autonomy_colony
+	blocked = { russia siberia persia turkey transcaucasia }
 	color = { 162 162 91 }
 	provinces = {
 		# Akmolinsk
@@ -1185,6 +1195,7 @@ south_asia = {
 	freed_name = "india"
 	freed_adjective = "india_adj"
 	level = autonomy_colony
+	blocked = { southern_asia east_asia persia arabia }
 	color = { 183 123 255 }
 	provinces = {
 		# Baluchistan
@@ -1263,6 +1274,7 @@ burma = {
 	freed_name = "myanmar"
 	freed_adjective = "myanmar_adj"
 	level = autonomy_integrated_puppet
+	blocked = { southern_asia east_asia indonesia philippines }
 	color = { 64 76 158 }
 	provinces = {
 		# Pegu
@@ -1284,6 +1296,7 @@ siam = {
 	freed_name = "thailand"
 	freed_adjective = "thailand_adj"
 	level = autonomy_integrated_puppet
+	blocked = { southern_asia east_asia indonesia philippines many_islands }
 	color = { 189 185 166 }
 	provinces = {
 		# Bangkok
@@ -1302,6 +1315,7 @@ indochina = {
 	freed_name = "dongduong"
 	freed_adjective = "dongduong_adj"
 	level = autonomy_integrated_puppet
+	blocked = { southern_asia east_asia indonesia philippines many_islands }
 	color = { 157 187 99 }
 	provinces = {
 		# Laos
@@ -1325,7 +1339,8 @@ indonesia = {
 	adjective = "east_indies_adj"
 	freed_name = "indonesia"
 	freed_adjective = "indonesia_adj"
-	level = autonomy_colony
+	level = autonomy_integrated_puppet
+	blocked = { southern_asia east_asia philippines many_islands }
 	color = { 73 0 207 }
 	provinces = {
 		### MOVED FROM MALAYA
@@ -1363,6 +1378,7 @@ philippines = {
 	freed_name = "philippines"
 	freed_adjective = "philippines_adj"
 	level = autonomy_colony
+	blocked = { southern_asia east_asia indonesia many_islands }
 	color = { 105 192 147 }
 	provinces = {
 		# Luzón
@@ -1381,6 +1397,7 @@ china = {
 	freed_name = "china"
 	freed_adjective = "china_adj"
 	level = autonomy_colony
+	blocked = { east_asia southern_asia philippines indonesia }
 	color = { 255 0 155 }
 	provinces = {
 		# Mongolia
@@ -1484,6 +1501,7 @@ korea = {
 	freed_name = "korea"
 	freed_adjective = "korea_adj"
 	level = autonomy_colony
+	blocked = { east_asia southern_asia philippines indonesia }
 	color = { 253 167 82 }
 	provinces = {
 		# Pyongyang
@@ -1505,6 +1523,7 @@ japan = {
 	freed_name = "japan"
 	freed_adjective = "japan_adj"
 	level = autonomy_colony
+	blocked = { east_asia southern_asia philippines indonesia }
 	color = { 255 223 0 }
 	provinces = {
 
@@ -1581,6 +1600,7 @@ libya = {
 	freed_name = "libya"
 	freed_adjective = "libya_adj"
 	level = autonomy_integrated_puppet
+	blocked = { mena turkey greece italy france iberia }
 	color = { 0 106 0 }
 	provinces = {
 		# Tunisia
@@ -1608,6 +1628,7 @@ egypt = {
 	freed_name = "egypt"
 	freed_adjective = "egypt_adj"
 	level = autonomy_integrated_puppet
+	blocked = { mena turkey greece italy france iberia east_africa }
 	color = { 164 131 83 }
 	provinces = {
 
@@ -1636,6 +1657,7 @@ western_africa = {
 	freed_name = "afrique_occidentale"
 	freed_adjective = "afrique_occidentale_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa }
 	color = { 141 38 55 }
 	provinces = {
 
@@ -1709,6 +1731,7 @@ sudan = {
 	freed_name = "sudan"
 	freed_adjective = "sudan_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa }
 	color = { 135 80 51 }
 	provinces = {
 		# Sudan
@@ -1730,6 +1753,7 @@ abyssinia = {
 	freed_name = "abyssinia"
 	freed_adjective = "abyssinia_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa arabia }
 	color = { 221 255 0 }
 	provinces = {
 
@@ -1755,6 +1779,7 @@ nigeria = {
 	freed_name = "nigeria"
 	freed_adjective = "nigeria_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa }
 	color = { 101 181 181 }
 	provinces = {
 
@@ -1786,6 +1811,7 @@ congo = {
 	freed_name = "congo"
 	freed_adjective = "congo_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa }
 	color = { 79 120 216 }
 	provinces = {
 
@@ -1814,6 +1840,7 @@ equatorial_africa = {
 	freed_name = "equatorial_africa"
 	freed_adjective = "equatorial_africa_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa }
 	color = { 214 231 139 }
 	provinces = {
 		# Waddai
@@ -1844,6 +1871,7 @@ angola = {
 	freed_name = "angola"
 	freed_adjective = "angola_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa }
 	color = { 0 163 255 }
 	provinces = {
 		# North Angola
@@ -1862,6 +1890,7 @@ east_africa = {
 	freed_name = "swahilia"
 	freed_adjective = "swahilia_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa arabia }
 	color = { 163 84 81 }
 	provinces = {
 		# Uganda
@@ -1886,6 +1915,7 @@ mozambique = {
 	freed_name = "mozambique"
 	freed_adjective = "mozambique_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa }
 	color = { 82 170 104 }
 	provinces = {
 
@@ -1907,7 +1937,8 @@ southern_africa = {
 	adjective = "south_africa_adj"
 	freed_name = "south_africa"
 	freed_adjective = "south_africa_adj"
-	level = autonomy_integrated_puppet
+	level = autonomy_dominion
+	blocked = { subsaharan_africa }
 	color = { 206 88 0 }
 	provinces = {
 
@@ -1942,6 +1973,7 @@ rhodesia = {
 	freed_name = "rhodesia"
 	freed_adjective = "rhodesia_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa }
 	color = { 223 165 78 }
 	provinces = {
 		# Zambia
@@ -1963,6 +1995,7 @@ madagascar = {
 	freed_name = "madagascar"
 	freed_adjective = "madagascar_adj"
 	level = autonomy_integrated_puppet
+	blocked = { subsaharan_africa }
 	color = { 186 111 134 }
 	provinces = {
 
@@ -1988,6 +2021,7 @@ mexico = {
 	freed_name = "mexico"
 	freed_adjective = "mexico_adj"
 	level = autonomy_colony
+	blocked = { north_america caribbean central_america }
 	color = { 242 13 106 }
 	provinces = {
 
@@ -2031,6 +2065,7 @@ central_america = {
 	freed_name = "frca"
 	freed_adjective = "central_america_adj"
 	level = autonomy_colony
+	blocked = { mexico caribbean gran_colombia }
 	color = { 116 193 252 }
 	provinces = {
 
@@ -2056,6 +2091,7 @@ caribbean = {
 	freed_name = "caribbean"
 	freed_adjective = "caribbean_adj"
 	level = autonomy_colony
+	blocked = { us_north_east us_central dixieland mexico central_america gran_colombia brazil }
 	color = { 51 35 34 }
 	provinces = {
 
@@ -2087,6 +2123,7 @@ gran_colombia = {
 	freed_name = "gran_colombia"
 	freed_adjective = "gran_colombia_adj"
 	level = autonomy_colony
+	blocked = { south_america caribbean us_north_east us_central dixieland mexico central_america }
 	color = { 215 185 127 }
 	provinces = {
 
@@ -2130,6 +2167,7 @@ peru_bolivia = {
 	freed_name = "peru_bolivia"
 	freed_adjective = "peru_bolivia_adj"
 	level = autonomy_colony
+	blocked = { south_america central_america mexico }
 	color = { 169 70 156 }
 	provinces = {
 		# Cajamarca
@@ -2169,6 +2207,7 @@ patagonia = {
 	freed_name = "platinea"
 	freed_adjective = "rio_de_la_plata_adj"
 	level = autonomy_colony
+	blocked = { south_america }
 	color = { 72 104 143 }
 	provinces = {
 
@@ -2236,6 +2275,7 @@ brazil = {
 	freed_name = "brazil"
 	freed_adjective = "brazil_adj"
 	level = autonomy_colony
+	blocked = { south_america caribbean }
 	color = { 86 142 77 }
 	provinces = {
 
@@ -2278,7 +2318,8 @@ australia = {
 	adjective = "australia_adj"
 	freed_name = "australia"
 	freed_adjective = "australia_adj"
-	level = autonomy_colony
+	level = autonomy_dominion
+	blocked = { many_islands indonesia philippines }
 	color = { 110 255 63 }
 	provinces = {
 
@@ -2322,6 +2363,7 @@ oceania = {
 	freed_name = "oligonesia"
 	freed_adjective = "oligonesia_adj"
 	level = autonomy_colony
+	blocked = { many_islands indonesia philippines }
 	color = { 87 130 4 }
 	provinces = {
 		# Marshall Islands
