@@ -81,3 +81,26 @@ std::vector<std::string> HoI4::Regions::getSuperregions(const std::string& regio
 
 	return superregions;
 }
+
+
+bool HoI4::Regions::isRegionBlocked(const std::string& stateRegion, const std::string& ownerRegion) const
+{
+	if (stateRegion == ownerRegion)
+	{
+		return true;
+	}
+
+	const auto& blockedRegions = getBlockedRegions(ownerRegion);
+	if (std::find(blockedRegions.begin(), blockedRegions.end(), stateRegion) != blockedRegions.end())
+	{
+		return true;
+	}
+	for (const auto& superregion: getSuperregions(stateRegion))
+	{
+		if (std::find(blockedRegions.begin(), blockedRegions.end(), superregion) != blockedRegions.end())
+		{
+			return true;
+		}
+	}
+	return false;
+}

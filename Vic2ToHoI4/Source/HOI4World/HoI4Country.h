@@ -129,7 +129,9 @@ class Country
 	void addCoreState(const int stateId) { coreStates.insert(stateId); }
 	void addClaimedState(const int stateId) { claimedStates.insert(stateId); }
 	void calculateIndustry(const std::map<int, State>& allStates);
-	void transferPuppets(const std::set<std::string>& transferringPuppets, std::shared_ptr<HoI4::Country> dominion);
+	void transferPuppets(const std::set<std::shared_ptr<HoI4::Country>>& transferringPuppets,
+		 std::shared_ptr<HoI4::Country> dominion,
+		 const Regions& theRegions);
 	void addEmptyFocusTree();
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
@@ -141,7 +143,7 @@ class Country
 	void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 	void setGreatPower() { greatPower = true; }
 	void setPuppetMaster(const std::shared_ptr<Country> master) { puppetMaster = master; }
-	void addPuppet(const std::string& countryTag, const std::string& puppetLevel) { puppets[countryTag] = puppetLevel; }
+	void addPuppet(const std::shared_ptr<Country> puppet, const Regions& theRegions);
 
 	void makeNavalTreatyAdherent() { navalTreatyAdherent = true; }
 	void makeGreatestNavalPower() { greatestNavalPower = true; }

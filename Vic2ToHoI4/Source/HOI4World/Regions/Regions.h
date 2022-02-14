@@ -25,6 +25,8 @@ class Regions
 	[[nodiscard]] std::vector<std::string> getBlockedRegions(const std::string& region) const;
 	[[nodiscard]] std::vector<std::string> getSuperregions(const std::string& region) const;
 
+	bool isRegionBlocked(const std::string& stateRegion, const std::string& ownerRegion) const;
+
   private:
 	std::unordered_map<int, std::string> regionsMap;
 	std::unordered_map<std::string, std::string> regionNames;

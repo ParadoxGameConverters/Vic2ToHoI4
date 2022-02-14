@@ -1552,13 +1552,14 @@ void HoI4::Country::addGenericFocusTree(const std::set<std::string>& majorIdeolo
 }
 
 
-void HoI4::Country::transferPuppets(const std::set<std::string>& transferringPuppets,
-	 std::shared_ptr<HoI4::Country> dominion)
+void HoI4::Country::transferPuppets(const std::set<std::shared_ptr<Country>>& transferringPuppets,
+	 std::shared_ptr<HoI4::Country> dominion,
+	 const Regions& theRegions)
 {
 	for (const auto& puppet: transferringPuppets)
 	{
-		puppets.erase(puppet);
-		dominion->addPuppet(puppet, "autonomy_dominion");
+		puppets.erase(puppet->getTag());
+		dominion->addPuppet(puppet, theRegions);
 	}
 }
 
@@ -1740,4 +1741,28 @@ std::optional<HoI4::Navies> HoI4::Country::getNavies() const
 	{
 		return std::nullopt;
 	}
+}
+
+
+void HoI4::Country::addPuppet(const std::shared_ptr<Country> puppet, const Regions& theRegions)
+{
+	const auto& masterRegion = theRegions.getRegion(*capitalProvince);
+	const auto& puppetRegion = theRegions.getRegion(*puppet->getCapitalProvince());
+
+	if (!masterRegion || !puppetRegion)
+	{
+		return;
+	}
+
+	std::string autonomyLevel = "autonomy_dominion";
+	if (theRegions.isRegionBlocked(*puppetRegion, *masterRegion))
+	{
+		autonomyLevel = "autonomy_puppet";
+	}
+	else if (const auto& regionLevel = theRegions.getRegionLevel(*puppetRegion); regionLevel)
+	{
+		autonomyLevel = *regionLevel;
+	}
+
+	puppets[puppet->getTag()] = autonomyLevel;
 }
