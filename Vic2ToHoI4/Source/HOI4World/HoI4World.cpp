@@ -174,6 +174,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Log(LogLevel::Progress) << "48%";
 	convertIndustry(theConfiguration);
 	addProvincesToHomeAreas();
+	convertDiplomacy(sourceWorld);
 	addDominions(countryMapperFactory);
 	addUnrecognizedNations(countryMapperFactory, provinceMapper, sourceWorld);
 	states->addCoresToCorelessStates(sourceWorld.getCountries(),
@@ -185,7 +186,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
-	convertDiplomacy(sourceWorld);
 	convertStrategies(sourceWorld, *states, provinceMapper);
 	convertTechs();
 	Log(LogLevel::Progress) << "56%";
@@ -608,6 +608,10 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 		if (owner->second->getPrimaryCulture() == "alien" || owner->second->getPrimaryCulture() == "undead")
+		{
+			continue;
+		}
+		if (owner->second->getPuppetMaster())
 		{
 			continue;
 		}
@@ -1650,7 +1654,7 @@ std::set<std::string> HoI4::World::getSouthAsianCountries() const
 
 void HoI4::World::addProvincesToHomeAreas()
 {
-	Log(LogLevel::Info) << "Adding provinces to home areas";
+	Log(LogLevel::Info) << "\tAdding provinces to home areas";
 	for (const auto& country: landedCountries | std::views::values)
 	{
 		const auto& capital = country->getCapitalProvince();
