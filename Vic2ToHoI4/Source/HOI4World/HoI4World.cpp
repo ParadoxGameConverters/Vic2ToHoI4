@@ -627,7 +627,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 
-		if (isStateRegionBlockedForOwner(*stateRegion, *ownerRegion))
+		if (theRegions->isRegionBlocked(*stateRegion, *ownerRegion))
 		{
 			continue;
 		}
@@ -659,14 +659,6 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		dominion->addMonarchIdea(*overlord);
 		countries.emplace(dominionTag, dominion);
 
-		if (const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion()); dominionLevel)
-		{
-			overlord->addPuppet(dominionTag, *dominionLevel);
-		}
-		else
-		{
-			overlord->addPuppet(dominionTag, "autonomy_dominion");
-		}
 		overlord->addGeneratedDominion(dominion->getRegion(), dominionTag);
 
 		for (const auto& stateId: dominion->getCoreStates())
@@ -684,6 +676,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		}
 
 		dominion->determineBestCapital(states->getStates());
+		overlord->addPuppet(dominion, *theRegions);
 		dominion->setCapitalRegionFlag(*theRegions);
 
 		auto possibleCapitalState = dominion->getCapitalState();
@@ -729,7 +722,7 @@ void HoI4::World::transferPuppetsToDominions()
 {
 	for (auto& country: countries | std::views::values)
 	{
-		std::map<std::string, std::set<std::string>> regionalPuppets; // <region, puppets>
+		std::map<std::string, std::set<std::shared_ptr<HoI4::Country>>> regionalPuppets; // <region, puppets>
 		for (const auto& puppetTag: country->getPuppets() | std::views::keys)
 		{
 			const auto& puppetItr = countries.find(puppetTag);
@@ -750,7 +743,7 @@ void HoI4::World::transferPuppetsToDominions()
 			const auto& region = theRegions->getRegion(*capital);
 			if (region)
 			{
-				regionalPuppets[*region].insert(puppetTag);
+				regionalPuppets[*region].insert(puppet);
 			}
 		}
 
@@ -764,7 +757,7 @@ void HoI4::World::transferPuppetsToDominions()
 			auto dominion = countries.find(*dominionTag);
 			if (dominion != countries.end())
 			{
-				country->transferPuppets(puppets, dominion->second);
+				country->transferPuppets(puppets, dominion->second, *theRegions);
 			}
 		}
 	}
@@ -1068,7 +1061,7 @@ void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 
 		if (agreement.getType() == "vassal")
 		{
-			HoI4Country1->second->addPuppet(*possibleHoI4Tag2, "autonomy_dominion");
+			HoI4Country1->second->addPuppet(HoI4Country2->second, *theRegions);
 			HoI4Country2->second->setPuppetMaster(HoI4Country1->second);
 		}
 	}
@@ -1703,27 +1696,4 @@ void HoI4::World::recordUnbuiltCanals(const Vic2::World& sourceWorld)
 	{
 		greatestCountry->addUnbuiltCanal("SUEZ_CANAL_UNBUILT");
 	}
-}
-
-
-bool HoI4::World::isStateRegionBlockedForOwner(const std::string& stateRegion, const std::string& ownerRegion)
-{
-	if (stateRegion == ownerRegion)
-	{
-		return true;
-	}
-
-	const auto& blockedRegions = theRegions->getBlockedRegions(ownerRegion);
-	if (std::find(blockedRegions.begin(), blockedRegions.end(), stateRegion) != blockedRegions.end())
-	{
-		return true;
-	}
-	for (const auto& superregion: theRegions->getSuperregions(stateRegion))
-	{
-		if (std::find(blockedRegions.begin(), blockedRegions.end(), superregion) != blockedRegions.end())
-		{
-			return true;
-		}
-	}
-	return false;
 }

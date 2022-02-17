@@ -1,4 +1,5 @@
 #include "Regions.h"
+#include <algorithm>
 
 
 
@@ -80,4 +81,32 @@ std::vector<std::string> HoI4::Regions::getSuperregions(const std::string& regio
 	}
 
 	return superregions;
+}
+
+
+bool HoI4::Regions::isRegionBlocked(const std::string& stateRegion, const std::string& ownerRegion) const
+{
+	if (stateRegion == ownerRegion)
+	{
+		return true;
+	}
+
+	const auto& blockedRegions = getBlockedRegions(ownerRegion);
+
+	if ((std::any_of(blockedRegions.cbegin(), blockedRegions.cend(), [stateRegion](const auto& region) {
+			 return region == stateRegion;
+		 })))
+	{
+		return true;
+	}
+	for (const auto& superregion: getSuperregions(stateRegion))
+	{
+		if (std::any_of(blockedRegions.cbegin(), blockedRegions.cend(), [superregion](const auto& region) {
+				 return region == superregion;
+			 }))
+		{
+			return true;
+		}
+	}
+	return false;
 }
