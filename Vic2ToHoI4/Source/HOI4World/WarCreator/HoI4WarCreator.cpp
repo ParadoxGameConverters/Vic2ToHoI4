@@ -398,11 +398,7 @@ std::shared_ptr<HoI4::Faction> HoI4WarCreator::findFaction(std::shared_ptr<HoI4:
 
 	std::vector<std::shared_ptr<HoI4::Country>> myself;
 	myself.push_back(CheckingCountry);
-	return std::make_shared<HoI4::Faction>(CheckingCountry,
-		 myself,
-		 theWorld->getFactionNameMapper().getFactionName(CheckingCountry->getGovernmentIdeology(),
-			  CheckingCountry->getPrimaryCulture(),
-			  CheckingCountry->getPrimaryCultureGroup()));
+	return std::make_shared<HoI4::Faction>(CheckingCountry, myself);
 }
 
 
