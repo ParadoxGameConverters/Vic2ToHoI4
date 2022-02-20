@@ -1697,8 +1697,8 @@
 	link = { vic2 = 953 hoi4 = 9425 hoi4 = 3743 hoi4 = 11550 hoi4 = 11411 hoi4 = 6460 } # Stanislavov -> Nadwórna, Kosów, Kolomyja, Stanislawów, Dolina
 	link = { vic2 = 955 hoi4 = 3430 hoi4 = 6429 hoi4 = 3457 hoi4 = 3511 hoi4 = 6509 hoi4 = 462 } # Proskorov -> Kam'yanets'-Podil's'kyi, Derazhnya, Proskuriv, Shepetivka, Volochys'k, Horodok
 	link = { vic2 = 952 hoi4 = 3562 hoi4 = 438 hoi4 = 3483 hoi4 = 11427 hoi4 = 491 hoi4 = 9454 } # Tarnopol -> Borszczów, Czortków, Tarnopol, Buczacz, Brzezany, Zloczów
-	link = { vic2 = 951 hoi4 = 6431 hoi4 = 6483 } # Stryi -> Sambor, Drohobycz
-	link = { vic2 = 705 hoi4 = 466 hoi4 = 3434 hoi4 = 9468 hoi4 = 6522 hoi4 = 11507 hoi4 = 6499 hoi4 = 3410 hoi4 = 442 } # Przemysl -> Krosno, Przemysl, Gródek, Rzeszów, Stalowa Wola, Mielec, Jaslo, Tarnów
+	link = { vic2 = 951 hoi4 = 6431 hoi4 = 6483 hoi4 = 9468} # Stryi -> Sambor, Drohobycz, Gródek
+	link = { vic2 = 705 hoi4 = 466 hoi4 = 3434 hoi4 = 6522 hoi4 = 11507 hoi4 = 6499 hoi4 = 3410 hoi4 = 442 hoi4 = 9494 } # Przemysl -> Krosno, Przemysl, Rzeszów, Stalowa Wola, Mielec, Jaslo, Tarnów, Zamosc
 	link = { vic2 = 704 hoi4 = 417 } # Nowy Sacz -> Nowy Sacz
 	link = { vic2 = 714 hoi4 = 11413 hoi4 = 11398 } # Tarnow -> Bochnia, Skawina
 	link = { vic2 = 2584 hoi4 = 9412 } # Bielsko -> Oswiecim
@@ -1710,7 +1710,7 @@
 	link = { vic2 = 710 hoi4 = 493 hoi4 = 548 hoi4 = 11515 hoi4 = 6401 hoi4 = 9400 hoi4 = 3482 hoi4 = 11492 } # Skierniewicz -> Borysew, Gostynin, Konin, Wloclawek, Pruszków, Tomaszów Mazowiecki, Sochaczew
 	link = { vic2 = 706 hoi4 = 3544 hoi4 = 6511 hoi4 = 12562 hoi4 = 524 hoi4 = 467 } # Warsaw -> Warszawa, Piaseczno, Minsk Mazowiecki, Legionowo, Grójec
 	link = { vic2 = 713 hoi4 = 6416 hoi4 = 3458 hoi4 = 562 } # Radom -> Starachowice, Radom, Ostrowiec
-	link = { vic2 = 715 hoi4 = 11399 hoi4 = 9521 hoi4 = 9494 hoi4 = 6580 hoi4 = 9452 hoi4 = 3559 } # Lublin -> Lublin, Krasnik, Jaroslaw, Zamosc, Chelm, Pulawy
+	link = { vic2 = 715 hoi4 = 11399 hoi4 = 9521 hoi4 = 6580 hoi4 = 9452 hoi4 = 3559 } # Lublin -> Lublin, Krasnik, Jaroslaw, Chelm, Pulawy
 	link = { vic2 = 711 hoi4 = 9544 hoi4 = 3521 hoi4 = 6484 hoi4 = 11466 hoi4 = 402 } # Siedlce -> Miedzyrzec Podlaski, Lukow, Lubartow, Biala Podlaska, Siedlce
 	link = { vic2 = 702 hoi4 = 11479 hoi4 = 536 hoi4 = 9558 } # Lemberg -> Lwów, Krystynopol, Busk
 	link = { vic2 = 956 hoi4 = 572 hoi4 = 6557 hoi4 = 11543 hoi4 = 6435 } # Rovne -> Luck, Równe, Korzec, Kostopol
