@@ -10,7 +10,7 @@ jobs:
           - 'Vic2ToHoI4/Source'
           - 'Vic2ToHoI4Tests'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Run clang-format style check for C/C++ programs.
       uses: jidicula/clang-format-action@v4.6.1
       with:
