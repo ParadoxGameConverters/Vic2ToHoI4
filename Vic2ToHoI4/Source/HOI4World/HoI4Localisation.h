@@ -76,6 +76,7 @@ class Localisation
 
 	void addStateLocalisation(const State& hoi4State,
 		 const Vic2::State& vic2State,
+		 const std::set<int>& sourceProvinceNumbers,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
@@ -155,12 +156,6 @@ class Localisation
 		 const keyToLocalisationMap& namesInLanguage,
 		 const ArticleRules& articleRules);
 	languageToLocalisationsMap::iterator getExistingLocalisationsInLanguage(const std::string& language);
-	static void addLocalisation(const std::string& newKey,
-		 const std::string& language,
-		 keyToLocalisationMap& existingLanguage,
-		 const std::string& localisation,
-		 const std::string& HoI4Suffix,
-		 const ArticleRules& articleRules);
 	bool addNeutralLocalisation(const std::pair<const std::string&, const std::string&>& tags,
 		 const std::string& vic2Suffix,
 		 const std::string& hoi4Suffix,
@@ -175,14 +170,6 @@ class Localisation
 		 const Vic2::Localisations& vic2Localisations,
 		 const ArticleRules& articleRules);
 
-	void addStateLocalisationForLanguage(const State& hoi4State,
-		 const Vic2::State& vic2State,
-		 const std::string& language,
-		 const std::string& name,
-		 const Vic2::StateDefinitions& theStateDefinitions,
-		 const Vic2::Localisations& vic2Localisations,
-		 const Mappers::ProvinceMapper& theProvinceMapper,
-		 const std::map<std::string, std::string>& grammarMappings);
 	void addVPLocalisationForLanguage(const State& state, const std::string& language, const std::string& name);
 	std::map<stateNumber, std::string>& getExistingStateLocalisation(const std::string& language);
 	keyToLocalisationMap& getExistingVPLocalisation(const std::string& language);
@@ -193,21 +180,6 @@ class Localisation
 	void addDebugLocalisations(const std::pair<const int, State>& state,
 		 const Vic2::Localisations& vic2Localisations,
 		 const Mappers::ProvinceMapper& theProvinceMapper);
-
-	static bool sourceStateHasOneProvince(const State& hoi4State, const Mappers::ProvinceMapper& theProvinceMapper);
-	static bool destinationStateHasOneProvince(const State& hoi4State);
-	static bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
-		 const Vic2::StateDefinitions& theStateDefinitions);
-	static bool stateHasAllDefinedProvincesAfterConversion(const State& state,
-		 const Vic2::State& sourceState,
-		 const Vic2::StateDefinitions& theStateDefinitions,
-		 const Mappers::ProvinceMapper& theProvinceMapper);
-
-	static std::string getLanguageCode(const std::string& language);
-	void insertScriptedLocalisation(const std::string& localisationKey,
-		 const std::string& replacementKey,
-		 ScriptedLocalisation& scriptedLocalisation,
-		 const std::set<std::string>& majorIdeologies) const;
 
 	std::map<language, std::map<stateNumber, std::string>> stateLocalisations;
 	languageToLocalisationsMap VPLocalisations;
@@ -228,14 +200,13 @@ class Localisation
 class Localisation::Importer
 {
   public:
-	std::unique_ptr<Localisation> generateLocalisations(const Configuration& theConfiguration);
+	std::unique_ptr<Localisation> generateLocalisations(std::string_view hoi4_directory);
 
   private:
-	void importLocalisations(const Configuration& theConfiguration);
+	void importLocalisations(std::string_view hoi4_directory);
 	void importFocusLocalisations(const std::string& filename);
 	void importGenericIdeaLocalisations(const std::string& filename);
 	void importEventLocalisations(const std::string& filename);
-	static void importLocalisationFile(const std::string& filename, languageToLocalisationsMap& localisations);
 	void prepareBlankLocalisations();
 
 	std::map<language, std::map<stateNumber, std::string>> stateLocalisations;

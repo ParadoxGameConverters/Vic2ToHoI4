@@ -15,6 +15,12 @@ HoI4::Region::Factory::Factory()
 	registerKeyword("level", [this](std::istream& theStream) {
 		region->level = commonItems::getString(theStream);
 	});
+	registerKeyword("subregions", [this](std::istream& theStream) {
+		region->subregions = commonItems::getStrings(theStream);
+	});
+	registerKeyword("blocked", [this](std::istream& theStream) {
+		region->blocked = commonItems::getStrings(theStream);
+	});
 	registerKeyword("provinces", [this](std::istream& theStream) {
 		region->provinces = commonItems::getInts(theStream);
 	});

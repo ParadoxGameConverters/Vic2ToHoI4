@@ -4892,10 +4892,10 @@ cushitic_omotic_nilotic = {
 		"gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/ethiopia_emblem.dds"
+		"gfx/interface/ideas/crowns/ethiopia.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/ethiopia_emblem.dds"
+		"gfx/interface/ideas/crowns/ethiopia.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
@@ -5057,10 +5057,10 @@ niger_congo = {
 		"gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/central_africa_shield.dds"
+		"gfx/interface/ideas/crowns/ethiopia_emblem.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/central_africa_shield.dds"
+		"gfx/interface/ideas/crowns/ethiopia_emblem.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
@@ -6119,10 +6119,10 @@ cats = {
 		"gfx/leaders/Animalia/portrait_cat_operative_F.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/goals/focus_usa_tank_destroyer_doctrine.dds" # This is some kind of big cat
+		"gfx/interface/ideas/idea_generic_motorized_equipment_manufacturer_1.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/goals/focus_usa_tank_destroyer_doctrine.dds"
+		"gfx/interface/ideas/idea_generic_motorized_equipment_manufacturer_1.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d

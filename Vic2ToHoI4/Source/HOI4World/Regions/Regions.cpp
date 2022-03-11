@@ -1,4 +1,5 @@
 #include "Regions.h"
+#include <algorithm>
 
 
 
@@ -43,4 +44,69 @@ std::optional<std::string> HoI4::Regions::getRegionLevel(const std::string& regi
 	}
 
 	return std::nullopt;
+}
+
+
+std::vector<std::string> HoI4::Regions::getSubregions(const std::string& regionName) const
+{
+	if (const auto& subregions = regionSubregions.find(regionName); subregions != regionSubregions.end())
+	{
+		return subregions->second;
+	}
+
+	return std::vector<std::string>{};
+}
+
+
+std::vector<std::string> HoI4::Regions::getBlockedRegions(const std::string& regionName) const
+{
+	if (const auto& blocked = regionBlocked.find(regionName); blocked != regionBlocked.end())
+	{
+		return blocked->second;
+	}
+
+	return std::vector<std::string>{};
+}
+
+
+std::vector<std::string> HoI4::Regions::getSuperregions(const std::string& regionName) const
+{
+	std::vector<std::string> superregions;
+	for (const auto& [region, subregions]: regionSubregions)
+	{
+		if (std::find(subregions.begin(), subregions.end(), regionName) != subregions.end())
+		{
+			superregions.push_back(region);
+		}
+	}
+
+	return superregions;
+}
+
+
+bool HoI4::Regions::isRegionBlocked(const std::string& stateRegion, const std::string& ownerRegion) const
+{
+	if (stateRegion == ownerRegion)
+	{
+		return true;
+	}
+
+	const auto& blockedRegions = getBlockedRegions(ownerRegion);
+
+	if ((std::any_of(blockedRegions.cbegin(), blockedRegions.cend(), [stateRegion](const auto& region) {
+			 return region == stateRegion;
+		 })))
+	{
+		return true;
+	}
+	for (const auto& superregion: getSuperregions(stateRegion))
+	{
+		if (std::any_of(blockedRegions.cbegin(), blockedRegions.cend(), [superregion](const auto& region) {
+				 return region == superregion;
+			 }))
+		{
+			return true;
+		}
+	}
+	return false;
 }

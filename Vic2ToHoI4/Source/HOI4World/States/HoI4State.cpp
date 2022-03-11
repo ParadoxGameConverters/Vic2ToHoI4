@@ -419,6 +419,7 @@ void HoI4::State::addInfrastructureFromFactories(int factories)
 	{
 		infrastructure += 0.75F;
 	}
+	infrastructure = std::clamp(infrastructure, 0.0F, 5.0F);
 }
 
 

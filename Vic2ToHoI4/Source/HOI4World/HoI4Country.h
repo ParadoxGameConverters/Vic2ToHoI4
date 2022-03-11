@@ -129,7 +129,9 @@ class Country
 	void addCoreState(const int stateId) { coreStates.insert(stateId); }
 	void addClaimedState(const int stateId) { claimedStates.insert(stateId); }
 	void calculateIndustry(const std::map<int, State>& allStates);
-	void transferPuppets(const std::set<std::string>& transferringPuppets, std::shared_ptr<HoI4::Country> dominion);
+	void transferPuppets(const std::set<std::shared_ptr<HoI4::Country>>& transferringPuppets,
+		 std::shared_ptr<HoI4::Country> dominion,
+		 const Regions& theRegions);
 	void addEmptyFocusTree();
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
@@ -141,7 +143,7 @@ class Country
 	void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 	void setGreatPower() { greatPower = true; }
 	void setPuppetMaster(const std::shared_ptr<Country> master) { puppetMaster = master; }
-	void addPuppet(const std::string& countryTag, const std::string& puppetLevel) { puppets[countryTag] = puppetLevel; }
+	void addPuppet(const std::shared_ptr<Country> puppet, const Regions& theRegions);
 
 	void makeNavalTreatyAdherent() { navalTreatyAdherent = true; }
 	void makeGreatestNavalPower() { greatestNavalPower = true; }
@@ -246,7 +248,7 @@ class Country
 	[[nodiscard]] const auto& getDivisionLocations() const { return theArmy.getDivisionLocations(); }
 	[[nodiscard]] const TankDesigns& getTankDesigns() const { return *tankDesigns; }
 	[[nodiscard]] const ShipVariants& getTheShipVariants() const { return *theShipVariants; }
-	[[nodiscard]] const Navies& getNavies() const { return *theNavies; }
+	[[nodiscard]] std::optional<Navies> getNavies() const;
 	[[nodiscard]] const auto& getNavyNames() const { return navyNames; }
 	[[nodiscard]] int getConvoys() const { return convoys; }
 	[[nodiscard]] auto getTrainsMultiplier() const { return trainsMultiplier; }
@@ -278,6 +280,18 @@ class Country
 
 	[[nodiscard]] const auto& getUnbuiltCanals() const { return unbuiltCanals; }
 
+	[[nodiscard]] bool hasTankManufacturer() const { return has_tank_manufacturer_; }
+	[[nodiscard]] bool hasMotorizedEquipmentManufacturer() const { return has_motorized_equipment_manufacturer_; }
+	[[nodiscard]] bool hasInfantryEquipmentManufacturer() const { return has_infantry_equipment_manufacturer_; }
+	[[nodiscard]] bool hasArtilleryManufacturer() const { return has_artillery_manufacturer_; }
+	[[nodiscard]] bool hasLightAircraftManufacturer() const { return has_light_aircraft_manufacturer_; }
+	[[nodiscard]] bool hasMediumAircraftManufacturer() const { return has_medium_aircraft_manufacturer_; }
+	[[nodiscard]] bool hasHeavyAircraftManufacturer() const { return has_heavy_aircraft_manufacturer_; }
+	[[nodiscard]] bool hasNavalAircraftManufacturer() const { return has_naval_aircraft_manufacturer_; }
+	[[nodiscard]] bool hasNavalManufacturer() const { return has_naval_manufacturer_; }
+	[[nodiscard]] bool hasIndustrialConcern() const { return has_industrial_concern_; }
+	[[nodiscard]] bool hasElectronicsConcern() const { return has_electronics_concern_; }
+
 	std::set<std::string>& editAllies() { return allies; }
 
 	void addCharacter(const Character& character) { characters_.push_back(character); }
@@ -305,9 +319,11 @@ class Country
 		 const States& states,
 		 const Mappers::ProvinceMapper& provinceMapper);
 
+	[[nodiscard]] std::mt19937& getGenerator() { return generator; }
+
   private:
 	void determineFilename();
-	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
+	void initIdeas(Names& names, Localisation& hoi4Localisations);
 	void createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names);
 	void convertLaws();
 	void convertLeaders(const Vic2::Country& sourceCountry,
@@ -459,6 +475,18 @@ class Country
 	std::set<int> homeAreaProvinces;
 
 	std::vector<std::string> unbuiltCanals;
+
+	bool has_tank_manufacturer_ = false;
+	bool has_motorized_equipment_manufacturer_ = false;
+	bool has_infantry_equipment_manufacturer_ = false;
+	bool has_artillery_manufacturer_ = false;
+	bool has_light_aircraft_manufacturer_ = false;
+	bool has_medium_aircraft_manufacturer_ = false;
+	bool has_heavy_aircraft_manufacturer_ = false;
+	bool has_naval_aircraft_manufacturer_ = false;
+	bool has_naval_manufacturer_ = false;
+	bool has_industrial_concern_ = false;
+	bool has_electronics_concern_ = false;
 };
 
 } // namespace HoI4

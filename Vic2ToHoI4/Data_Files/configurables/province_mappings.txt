@@ -771,7 +771,7 @@
 	link = { vic2 = 2397 hoi4 = 8161 hoi4 = 8176 } # Esquel -> San Carlos de Bariloche, land
 	link = { comment = "# # Patagonia Meridional" }
 	link = { vic2 = 2131 hoi4 = 12960 } # Falkland Islands -> Stanley
-	link = { vic2 = 2398 hoi4 = 12952 hoi4 = 2169 hoi4 = 8913 } # Puerto Deseado -> Caleta Olivia, Las Heras, land
+	link = { vic2 = 2398 hoi4 = 12952 hoi4 = 2169 hoi4 = 8913 } # Puerto Deseado -> Caleta Olivia, Las Heras, (Lake)
 	link = { vic2 = 2399 hoi4 = 5173 hoi4 = 12946 } # Río Gallegos -> Río Gallegos, land
 	link = { vic2 = 2400 hoi4 = 11009 } # Río Grande -> Ushuaia
 	link = { comment = "# " }
@@ -1755,7 +1755,8 @@
 	link = { comment = "# # East Friesland" }
 	link = { vic2 = 538 hoi4 = 11388 hoi4 = 247 } # Osnabrück -> Osnabrück, Vechta
 	link = { vic2 = 539 hoi4 = 3326 } # Bremen -> Bremen
-	link = { vic2 = 540 vic2 = 533 hoi4 = 336 hoi4 = 241 } # MANY-TO-MANY: Oldenburg, Heligoland -> Leer, Wilhelmshaven
+	link = { vic2 = 540 hoi4 = 336 hoi4 = 241 } # Oldenburg -> Leer, Wilhelmshaven
+	link = { vic2 = 533 } # Heligoland
 	link = { vic2 = 541 hoi4 = 309 } # Cloppenburg -> Oldenburg
 	link = { vic2 = 542 hoi4 = 9281 hoi4 = 11233 hoi4 = 11264 } # Lingen -> Lingen, Rheine, Meppen
 	link = { vic2 = 543 hoi4 = 11360 } # Emden -> Emden

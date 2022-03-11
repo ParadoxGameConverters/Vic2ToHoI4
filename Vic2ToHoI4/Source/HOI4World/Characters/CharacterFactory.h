@@ -32,7 +32,8 @@ class Character::Factory: commonItems::parser
 		 const std::string& leaderIdeology,
 		 Names& names,
 		 Mappers::GraphicsMapper& graphicsMapper,
-		 Localisation& localisation);
+		 Localisation& localisation,
+		 std::mt19937& generator);
 	[[nodiscard]] Character createNewGeneral(const Vic2::Leader& src_general,
 		 const std::string& tag,
 		 Localisation& localisation);

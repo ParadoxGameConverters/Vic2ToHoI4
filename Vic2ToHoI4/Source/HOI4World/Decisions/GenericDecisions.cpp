@@ -202,16 +202,30 @@ decision&& updateBuildCanal(decision&& buildCanalDecision,
 	 const std::map<int, int>& provinceToStateIdMap)
 {
 	const std::string canalStatesPlaceholder = "$CANAL_STATES";
-
 	const auto relevantCanalStates = getRelevantStatesFromProvinces(provinces, {}, provinceToStateIdMap);
+
 	const auto canalFullControlStatesString =
 		 createReplacementText(relevantCanalStates, "has_full_control_of_state = ", "\n\t\t\t", 4);
-
-	auto removeEffect = buildCanalDecision.getAvailable();
-	removeEffect.replace(removeEffect.find(canalStatesPlaceholder),
+	auto available = buildCanalDecision.getAvailable();
+	available.replace(available.find(canalStatesPlaceholder),
 		 canalStatesPlaceholder.size(),
 		 canalFullControlStatesString);
-	buildCanalDecision.setAvailable(removeEffect);
+	buildCanalDecision.setAvailable(available);
+
+	std::string canalControlsStatesString;
+	if (relevantCanalStates.size() == 1)
+	{
+		canalControlsStatesString += createReplacementText(relevantCanalStates, "controls_state = ", "\n\t\t\t", 4);
+	}
+	else
+	{
+		canalControlsStatesString = "OR = {\n\t\t\t\t";
+		canalControlsStatesString += createReplacementText(relevantCanalStates, "controls_state = ", "\n\t\t\t\t", 5);
+		canalControlsStatesString += "\n\t\t\t}";
+	}
+	auto visible = buildCanalDecision.getVisible();
+	visible.replace(visible.find(canalStatesPlaceholder), canalStatesPlaceholder.size(), canalControlsStatesString);
+	buildCanalDecision.setVisible(visible);
 
 	return std::move(buildCanalDecision);
 }

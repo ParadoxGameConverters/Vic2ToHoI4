@@ -56,3 +56,36 @@ not_allies_or_subjects = {
 		}
 	}
 }
+
+on_same_continent = {
+	OR = {
+		AND = {
+			capital_scope = { is_on_continent = europe }
+			ROOT = { capital_scope = { is_on_continent = europe } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = north_america }
+			ROOT = { capital_scope = { is_on_continent = north_america } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = south_america }
+			ROOT = { capital_scope = { is_on_continent = south_america } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = australia }
+			ROOT = { capital_scope = { is_on_continent = australia } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = africa }
+			ROOT = { capital_scope = { is_on_continent = africa } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = asia }
+			ROOT = { capital_scope = { is_on_continent = asia } }
+		}
+		AND = {
+			capital_scope = { is_on_continent = middle_east }
+			ROOT = { capital_scope = { is_on_continent = middle_east } }
+		}
+	}
+}

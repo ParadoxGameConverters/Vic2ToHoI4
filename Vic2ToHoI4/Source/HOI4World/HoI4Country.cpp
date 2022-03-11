@@ -43,11 +43,9 @@ HoI4::Country::Country(std::string tag,
 	 oldGovernment(sourceCountry.getGovernment()), upperHouseComposition(sourceCountry.getUpperHouseComposition()),
 	 lastElection(sourceCountry.getLastElection())
 {
-	determineCapitalFromVic2(theProvinceMapper, worldStates.getProvinceToStateIDMap(), worldStates.getStates());
-	if (!getCapitalState())
-	{
-		return;
-	}
+	std::seed_seq seed{tag[0], tag[1], tag[2]};
+	generator.seed(seed);
+
 	determineFilename();
 
 	const auto& sourceColor = sourceCountry.getColor();
@@ -344,25 +342,63 @@ bool HoI4::Country::hasRulingDynasty()
 }
 
 
-void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations) const
+void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations)
 {
-	hoi4Localisations.addIdeaLocalisation(tag + "_tank_manufacturer", names.takeCarCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_motorized_equipment_manufacturer",
-		 names.takeCarCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_infantry_equipment_manufacturer",
-		 names.takeWeaponCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_artillery_manufacturer", names.takeWeaponCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_light_aircraft_manufacturer",
-		 names.takeAircraftCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_medium_aircraft_manufacturer",
-		 names.takeAircraftCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer",
-		 names.takeAircraftCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_naval_aircraft_manufacturer",
-		 names.takeAircraftCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_naval_manufacturer", names.takeNavalCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_industrial_concern", names.takeIndustryCompanyName(primaryCulture));
-	hoi4Localisations.addIdeaLocalisation(tag + "_electronics_concern", names.takeElectronicCompanyName(primaryCulture));
+	if (const auto name = names.takeCarCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_tank_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_tank_manufacturer", name);
+	}
+	if (const auto name = names.takeCarCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_motorized_equipment_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_motorized_equipment_manufacturer", name);
+	}
+	if (const auto name = names.takeWeaponCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_infantry_equipment_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_infantry_equipment_manufacturer", name);
+	}
+	if (const auto name = names.takeWeaponCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_artillery_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_artillery_manufacturer", name);
+	}
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_light_aircraft_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_light_aircraft_manufacturer", name);
+	}
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_medium_aircraft_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_medium_aircraft_manufacturer", name);
+	}
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_heavy_aircraft_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer", name);
+	}
+	if (const auto name = names.takeAircraftCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_naval_aircraft_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_naval_aircraft_manufacturer", name);
+	}
+	if (const auto name = names.takeNavalCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_naval_manufacturer_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_naval_manufacturer", name);
+	}
+	if (const auto name = names.takeIndustryCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_industrial_concern_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_industrial_concern", name);
+	}
+	if (const auto name = names.takeElectronicCompanyName(primaryCulture, generator); name.has_value())
+	{
+		has_electronics_concern_ = true;
+		hoi4Localisations.addIdeaLocalisation(tag + "_electronics_concern", name);
+	}
 }
 
 
@@ -370,16 +406,16 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 {
 	for (const auto& operativePortrait: graphicsMapper.getFemaleOperativePortraits(primaryCulture, primaryCultureGroup))
 	{
-		const auto firstName = names.getFemaleName(primaryCulture);
+		const auto firstName = names.getFemaleName(primaryCulture, generator);
 		if (!firstName)
 		{
 			break;
 		}
 
-		auto surname = names.getFemaleSurname(primaryCulture);
+		auto surname = names.getFemaleSurname(primaryCulture, generator);
 		if (!surname)
 		{
-			surname = names.getSurname(primaryCulture);
+			surname = names.getSurname(primaryCulture, generator);
 		}
 		if (!surname)
 		{
@@ -388,17 +424,21 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 
 		const std::string name = *firstName + " " + *surname;
 		operatives_.push_back(Operative(name, operativePortrait, /*female=*/true, tag));
+		if (operatives_.size() > 2)
+		{
+			break;
+		}
 	}
 
 	for (const auto& operativePortrait: graphicsMapper.getMaleOperativePortraits(primaryCulture, primaryCultureGroup))
 	{
-		const auto firstName = names.getMaleName(primaryCulture);
+		const auto firstName = names.getMaleName(primaryCulture, generator);
 		if (!firstName)
 		{
 			break;
 		}
 
-		auto surname = names.getSurname(primaryCulture);
+		auto surname = names.getSurname(primaryCulture, generator);
 		if (!surname)
 		{
 			break;
@@ -406,6 +446,10 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 
 		const std::string name = *firstName + " " + *surname;
 		operatives_.push_back(Operative(name, operativePortrait, /*female=*/false, tag));
+		if (operatives_.size() > 4)
+		{
+			break;
+		}
 	}
 }
 
@@ -501,14 +545,14 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 	bool female = std::uniform_int_distribution{1, 20}(femaleChanceGenerator) == 20;
 	if (female)
 	{
-		firstName = names.getFemaleName(primaryCulture);
-		auto femaleSurname = names.getFemaleSurname(primaryCulture);
+		firstName = names.getFemaleName(primaryCulture, generator);
+		auto femaleSurname = names.getFemaleSurname(primaryCulture, generator);
 		if (!firstName)
 		{
-			firstName = names.getMaleName(primaryCulture);
+			firstName = names.getMaleName(primaryCulture, generator);
 			if (!surname)
 			{
-				surname = names.getSurname(primaryCulture);
+				surname = names.getSurname(primaryCulture, generator);
 			}
 			female = false;
 		}
@@ -520,19 +564,19 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 			}
 			else
 			{
-				surname = names.getSurname(primaryCulture);
+				surname = names.getSurname(primaryCulture, generator);
 			}
 		}
 	}
 	else
 	{
-		firstName = names.getMaleName(primaryCulture);
-		auto newSurname = names.getSurname(primaryCulture);
+		firstName = names.getMaleName(primaryCulture, generator);
+		auto newSurname = names.getSurname(primaryCulture, generator);
 
 		if (!firstName)
 		{
-			firstName = names.getFemaleName(primaryCulture);
-			if (auto femaleSurname = names.getFemaleSurname(primaryCulture); femaleSurname)
+			firstName = names.getFemaleName(primaryCulture, generator);
+			if (auto femaleSurname = names.getFemaleSurname(primaryCulture, generator); femaleSurname)
 			{
 				newSurname = femaleSurname;
 			}
@@ -1062,7 +1106,8 @@ void HoI4::Country::createLeader(Names& names,
 		 leaderIdeology,
 		 names,
 		 graphicsMapper,
-		 localisation));
+		 localisation,
+		 generator));
 }
 
 
@@ -1151,16 +1196,19 @@ void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 		}
 	}
 
-	theNavies = std::make_unique<Navies>(oldArmies,
-		 backupNavalLocation,
-		 unitMap,
-		 mtgUnitMap,
-		 *theShipVariants,
-		 provinceToStateIDMap,
-		 allStates,
-		 tag,
-		 provinceDefinitions,
-		 provinceMapper);
+	if (backupNavalLocation != 0)
+	{
+		theNavies = std::make_unique<Navies>(oldArmies,
+			 backupNavalLocation,
+			 unitMap,
+			 mtgUnitMap,
+			 *theShipVariants,
+			 provinceToStateIDMap,
+			 allStates,
+			 tag,
+			 provinceDefinitions,
+			 provinceMapper);
+	}
 
 	navyNames.addLegacyShipTypeNames(LegacyShipTypeNames{"submarine", "Submarine", getShipNames("frigate")});
 	navyNames.addLegacyShipTypeNames(LegacyShipTypeNames{"carrier", "Carrier", getShipNames("monitor")});
@@ -1504,13 +1552,14 @@ void HoI4::Country::addGenericFocusTree(const std::set<std::string>& majorIdeolo
 }
 
 
-void HoI4::Country::transferPuppets(const std::set<std::string>& transferringPuppets,
-	 std::shared_ptr<HoI4::Country> dominion)
+void HoI4::Country::transferPuppets(const std::set<std::shared_ptr<Country>>& transferringPuppets,
+	 std::shared_ptr<HoI4::Country> dominion,
+	 const Regions& theRegions)
 {
 	for (const auto& puppet: transferringPuppets)
 	{
-		puppets.erase(puppet);
-		dominion->addPuppet(puppet, "autonomy_dominion");
+		puppets.erase(puppet->getTag());
+		dominion->addPuppet(puppet, theRegions);
 	}
 }
 
@@ -1551,6 +1600,10 @@ double HoI4::Country::getMilitaryStrength()
 float HoI4::Country::getNavalStrength() const
 {
 	auto navalStrength = 0.0f;
+	if (!theNavies)
+	{
+		return navalStrength;
+	}
 
 	for (const auto& navy: theNavies->getMtgNavies())
 	{
@@ -1675,4 +1728,41 @@ void HoI4::Country::addProvincesToHomeArea(int provinceId,
 void HoI4::Country::addTankDesigns(const PossibleTankDesigns& possibleDesigns)
 {
 	tankDesigns = std::make_unique<TankDesigns>(possibleDesigns, *theTechnologies);
+}
+
+
+std::optional<HoI4::Navies> HoI4::Country::getNavies() const
+{
+	if (theNavies)
+	{
+		return std::make_optional(*theNavies);
+	}
+	else
+	{
+		return std::nullopt;
+	}
+}
+
+
+void HoI4::Country::addPuppet(const std::shared_ptr<Country> puppet, const Regions& theRegions)
+{
+	const auto& masterRegion = theRegions.getRegion(*capitalProvince);
+	const auto& puppetRegion = theRegions.getRegion(*puppet->getCapitalProvince());
+
+	if (!masterRegion || !puppetRegion)
+	{
+		return;
+	}
+
+	std::string autonomyLevel = "autonomy_dominion";
+	if (theRegions.isRegionBlocked(*puppetRegion, *masterRegion))
+	{
+		autonomyLevel = "autonomy_puppet";
+	}
+	else if (const auto& regionLevel = theRegions.getRegionLevel(*puppetRegion); regionLevel)
+	{
+		autonomyLevel = *regionLevel;
+	}
+
+	puppets[puppet->getTag()] = autonomyLevel;
 }

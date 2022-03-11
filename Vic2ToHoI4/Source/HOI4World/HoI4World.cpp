@@ -103,7 +103,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	countryMap = countryMapperFactory.importCountryMapper(sourceWorld, theConfiguration.getDebug());
 
 	auto vic2Localisations = sourceWorld.getLocalisations();
-	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration);
+	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration.getHoI4Path());
 	Log(LogLevel::Progress) << "28%";
 
 	theDate = std::make_unique<date>(sourceWorld.getDate());
@@ -174,6 +174,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Log(LogLevel::Progress) << "48%";
 	convertIndustry(theConfiguration);
 	addProvincesToHomeAreas();
+	convertDiplomacy(sourceWorld);
 	addDominions(countryMapperFactory);
 	addUnrecognizedNations(countryMapperFactory, provinceMapper, sourceWorld);
 	states->addCoresToCorelessStates(sourceWorld.getCountries(),
@@ -185,7 +186,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
-	convertDiplomacy(sourceWorld);
 	convertStrategies(sourceWorld, *states, provinceMapper);
 	convertTechs();
 	Log(LogLevel::Progress) << "56%";
@@ -350,10 +350,7 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 			 provinceMapper,
 			 *states,
 			 characterFactory);
-		if (destCountry->getCapitalState())
-		{
-			countries.insert(make_pair(*possibleHoI4Tag, destCountry));
-		}
+		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
 	}
 }
 
@@ -535,25 +532,32 @@ void HoI4::World::convertIndustry(const Configuration& theConfiguration)
 void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper)
 {
 	Log(LogLevel::Info) << "\tAdding states to countries";
-	for (auto state: states->getStates())
+	for (auto state: states->getStates() | std::views::values)
 	{
-		auto owner = countries.find(state.second.getOwner());
+		auto owner = countries.find(state.getOwner());
 		if (owner != countries.end())
 		{
-			owner->second->addState(state.second);
+			owner->second->addState(state);
 		}
 	}
 
-	for (auto& country: countries)
+	std::set<std::string> tagsToRemove;
+	for (auto& [tag, country]: countries)
 	{
-		if (country.second->getStates().size() > 0)
+		country->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
+		if (!country->getCapitalState())
 		{
-			landedCountries.insert(country);
+			tagsToRemove.insert(tag);
+			continue;
 		}
-		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
-		country.second->setCapitalRegionFlag(*theRegions);
 
-		auto possibleCapitalState = country.second->getCapitalState();
+		if (country->getStates().size() > 0)
+		{
+			landedCountries[tag] = country;
+		}
+		country->setCapitalRegionFlag(*theRegions);
+
+		auto possibleCapitalState = country->getCapitalState();
 		if (!possibleCapitalState)
 		{
 			return;
@@ -561,8 +565,14 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		auto& modifiableStates = states->getModifiableStates();
 		if (auto capital = modifiableStates.find(*possibleCapitalState); capital != modifiableStates.end())
 		{
-			capital->second.addCores({country.first});
+			capital->second.addCores({tag});
 		}
+	}
+
+	Log(LogLevel::Info) << "\tDropping countries without properly set capitals";
+	for (const auto& tag: tagsToRemove)
+	{
+		countries.erase(tag);
 	}
 }
 
@@ -577,6 +587,11 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
+		if (!stateRegion)
+		{
+			Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
+			continue;
+		}
 
 		const auto& ownerTag = state.getOwner();
 		if (ownerTag == "UCV")
@@ -596,21 +611,28 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		{
 			continue;
 		}
+		if (owner->second->getPuppetMaster())
+		{
+			continue;
+		}
 		const auto& ownerCapitalProvince = owner->second->getCapitalProvince();
 		if (!ownerCapitalProvince)
 		{
 			continue;
 		}
 		const auto& ownerRegion = theRegions->getRegion(*ownerCapitalProvince);
+		if (!ownerRegion)
+		{
+			Log(LogLevel::Debug) << "Province " << *ownerCapitalProvince << " is not defined in Configurables/regions.txt";
+			continue;
+		}
 
-		const bool differentRegions =
-			 ((stateRegion && !ownerRegion) || (stateRegion && ownerRegion && *stateRegion != *ownerRegion));
-		if (!differentRegions)
+		if (theRegions->isRegionBlocked(*stateRegion, *ownerRegion))
 		{
 			continue;
 		}
 
-		if (state.getCores().contains(owner->first))
+		if (state.getCores().contains(owner->first) && !state.isImpassable())
 		{
 			continue;
 		}
@@ -637,14 +659,6 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		dominion->addMonarchIdea(*overlord);
 		countries.emplace(dominionTag, dominion);
 
-		if (const auto& dominionLevel = theRegions->getRegionLevel(dominion->getRegion()); dominionLevel)
-		{
-			overlord->addPuppet(dominionTag, *dominionLevel);
-		}
-		else
-		{
-			overlord->addPuppet(dominionTag, "autonomy_dominion");
-		}
 		overlord->addGeneratedDominion(dominion->getRegion(), dominionTag);
 
 		for (const auto& stateId: dominion->getCoreStates())
@@ -652,12 +666,17 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
 			{
 				state->second.addCores({dominionTag});
+				if (state->second.isImpassable())
+				{
+					state->second.removeCore(overlord->getTag());
+				}
 				state->second.setOwner(dominionTag);
 				dominion->addState(state->second);
 			}
 		}
 
 		dominion->determineBestCapital(states->getStates());
+		overlord->addPuppet(dominion, *theRegions);
 		dominion->setCapitalRegionFlag(*theRegions);
 
 		auto possibleCapitalState = dominion->getCapitalState();
@@ -703,7 +722,7 @@ void HoI4::World::transferPuppetsToDominions()
 {
 	for (auto& country: countries | std::views::values)
 	{
-		std::map<std::string, std::set<std::string>> regionalPuppets; // <region, puppets>
+		std::map<std::string, std::set<std::shared_ptr<HoI4::Country>>> regionalPuppets; // <region, puppets>
 		for (const auto& puppetTag: country->getPuppets() | std::views::keys)
 		{
 			const auto& puppetItr = countries.find(puppetTag);
@@ -724,7 +743,7 @@ void HoI4::World::transferPuppetsToDominions()
 			const auto& region = theRegions->getRegion(*capital);
 			if (region)
 			{
-				regionalPuppets[*region].insert(puppetTag);
+				regionalPuppets[*region].insert(puppet);
 			}
 		}
 
@@ -738,7 +757,7 @@ void HoI4::World::transferPuppetsToDominions()
 			auto dominion = countries.find(*dominionTag);
 			if (dominion != countries.end())
 			{
-				country->transferPuppets(puppets, dominion->second);
+				country->transferPuppets(puppets, dominion->second, *theRegions);
 			}
 		}
 	}
@@ -1042,7 +1061,7 @@ void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 
 		if (agreement.getType() == "vassal")
 		{
-			HoI4Country1->second->addPuppet(*possibleHoI4Tag2, "autonomy_dominion");
+			HoI4Country1->second->addPuppet(HoI4Country2->second, *theRegions);
 			HoI4Country2->second->setPuppetMaster(HoI4Country1->second);
 		}
 	}
@@ -1628,7 +1647,7 @@ std::set<std::string> HoI4::World::getSouthAsianCountries() const
 
 void HoI4::World::addProvincesToHomeAreas()
 {
-	Log(LogLevel::Info) << "Adding provinces to home areas";
+	Log(LogLevel::Info) << "\tAdding provinces to home areas";
 	for (const auto& country: landedCountries | std::views::values)
 	{
 		const auto& capital = country->getCapitalProvince();
