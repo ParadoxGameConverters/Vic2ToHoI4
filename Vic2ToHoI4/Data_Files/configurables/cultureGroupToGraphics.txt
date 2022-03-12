@@ -894,34 +894,29 @@ hellenic_caucasian = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"gfx/interface/ideas/idea_amadeo_bordiga.dds"
-			"gfx/interface/ideas/idea_dolores_ibarruri.dds"
-			"gfx/interface/ideas/idea_carlo_bergamini.dds"
+			"gfx/interface/ideas/idea_GRE_aris_velouchiotis_advisor.dds"
+			"gfx/interface/ideas/idea_GRE_nikos_zachariadis.dds"
 		}
 		democratic = {
-			"gfx/interface/ideas/idea_ivanoe_bonomi.dds"
-			"gfx/interface/ideas/idea_ettore_muti.dds"
-			"gfx/interface/ideas/idea_arturo_riccardi.dds"
+			"gfx/interface/ideas/idea_GRE_dimitrios_psarros.dds"
+			"gfx/interface/ideas/idea_GRE_eleftherios_venizelos.dds"
+			"gfx/interface/ideas/idea_GRE_themistoklis_sofoulis.dds"
 		}
 		fascism = {
-			"gfx/interface/ideas/idea_carlo_scorza.dds"
-			"gfx/interface/ideas/idea_gaetano_crocco.dds"
-			"gfx/interface/ideas/idea_angelo_iachino.dds"
+			"gfx/interface/ideas/idea_GRE_charalambos_katsimitros.dds"
+			"gfx/interface/ideas/idea_GRE_theodoros_pangalos.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/idea_victor_emmanuel.dds"
-			"gfx/interface/ideas/idea_francisco_franco.dds"
-			"gfx/interface/ideas/idea_giovanni_messe.dds"
+			"gfx/interface/ideas/idea_GRE_emmanouil_tsouderos_advisor.dds"
+			"gfx/interface/ideas/idea_GRE_george_ii_advisor.dds"
 		}
 		neutrality = {
-			"gfx/interface/ideas/idea_alberto_da_zara.dds"
-			"gfx/interface/ideas/idea_emilio_de_bono.dds"
-			"gfx/interface/ideas/idea_amedeo_mecozzi.dds"
+			"gfx/interface/ideas/idea_alberto_da_zara.dds" # Revise
+			"gfx/interface/ideas/idea_emilio_de_bono.dds" # Revise
+			"gfx/interface/ideas/idea_amedeo_mecozzi.dds" # Revise
 		}
 		radical = {
-			"gfx/interface/ideas/idea_alfredo_guzzoni.dds"
-			"gfx/interface/ideas/idea_francesco_pricolo.dds"
-			"gfx/interface/ideas/idea_domenico_cavagnari.dds"
+			"gfx/interface/ideas/idea_GRE_aristotle_onassis.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -980,14 +975,10 @@ hellenic_caucasian = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/greece.dds"
-		"gfx/interface/ideas/crowns/italy.dds"
-		"gfx/interface/ideas/crowns/spain.dds"
+		"gfx/interface/ideas/crowns/greece_shield.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/greece.dds"
-		"gfx/interface/ideas/crowns/italy.dds"
-		"gfx/interface/ideas/crowns/spain.dds"
+		"gfx/interface/ideas/crowns/greece_shield.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
