@@ -4601,6 +4601,7 @@ south_american_native = {
 			"gfx/leaders/central_american_native/portrait_nat_carib_democratic.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_absolutist.dds"
 			"gfx/leaders/South_American_Native/Portrait_Bolivia_Carlos_Quiroga.tga"
+			"gfx/leaders/South_American_Native/portrait_quechua_saturnino.dds" 
 		}
 		neutrality = {
 			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
