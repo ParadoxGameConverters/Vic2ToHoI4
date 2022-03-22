@@ -586,9 +586,12 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 		});
 
 		// then remove all but the strongest 22
-		auto trimHere = tags.begin();
-		std::advance(trimHere, 23);
-		tags.erase(trimHere, tags.end());
+		if (tags.size() > 23)
+		{
+			auto trimHere = tags.begin();
+			std::advance(trimHere, 23);
+			tags.erase(trimHere, tags.end());
+		}
 
 		// then alphabetize them
 		std::ranges::sort(tags);
