@@ -11,7 +11,6 @@
 #include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
 #include <ranges>
-using namespace std;
 
 
 
@@ -58,7 +57,7 @@ std::set<std::string> extractIds(const std::string& prerequisiteStr)
 }
 
 
-size_t calculateNumCollectivistIdeologies(const set<string>& majorIdeologies)
+size_t calculateNumCollectivistIdeologies(const std::set<std::string>& majorIdeologies)
 {
 	size_t numCollectivistIdeologies = 0;
 	numCollectivistIdeologies += majorIdeologies.count("radical");
@@ -69,16 +68,16 @@ size_t calculateNumCollectivistIdeologies(const set<string>& majorIdeologies)
 }
 
 
-std::string getMutualExclusions(const std::string& ideology, const std::set<string>& majorIdeologies)
+std::string getMutualExclusions(const std::string& ideology, const std::set<std::string>& majorIdeologies)
 {
-	static const std::map<std::string, std::string> ideologyFocuses = { {"fascism", "nationalism_focus"},
+	static const std::map<std::string, std::string> ideologyFocuses = {{"fascism", "nationalism_focus"},
 		 {"communism", "internationalism_focus"},
 		 {"absolutist", "absolutism_focus"},
-		 {"radical", "radical_focus"} };
+		 {"radical", "radical_focus"}};
 
 
 	std::string returnString = "= {";
-	for (const auto& majorIdeology : majorIdeologies)
+	for (const auto& majorIdeology: majorIdeologies)
 	{
 		if (majorIdeology == ideology)
 		{
@@ -95,12 +94,11 @@ std::string getMutualExclusions(const std::string& ideology, const std::set<stri
 }
 
 
-int calculateNumEnemyOwnedCores(const std::set<int>& coreStates,
-	const std::map<int, HoI4::State>& states)
+int calculateNumEnemyOwnedCores(const std::set<int>& coreStates, const std::map<int, HoI4::State>& states)
 {
 	int sumUnownedCores = 0;
 
-	for (const auto& stateId : coreStates)
+	for (const auto& stateId: coreStates)
 	{
 		const auto& stateItr = states.find(stateId);
 		if (stateItr == states.end())
@@ -116,12 +114,12 @@ int calculateNumEnemyOwnedCores(const std::set<int>& coreStates,
 
 
 std::map<std::string, std::set<int>> determineWarTargets(const HoI4::Country& theCountry,
-	const std::set<int>& stateIds,
-	const std::map<int, HoI4::State>& states)
+	 const std::set<int>& stateIds,
+	 const std::map<int, HoI4::State>& states)
 {
 	std::map<std::string, std::set<int>> targets;
 
-	for (const auto& stateID : stateIds)
+	for (const auto& stateID: stateIds)
 	{
 		const auto& stateItr = states.find(stateID);
 		if (stateItr == states.end())
@@ -144,10 +142,10 @@ std::map<std::string, std::set<int>> determineWarTargets(const HoI4::Country& th
 
 double getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conquerStrategies)
 {
-	const auto& maxConquerValueItr = std::ranges::max_element(conquerStrategies,
-		[](const HoI4::AIStrategy& a, const HoI4::AIStrategy& b) {
-		return a.getValue() < b.getValue();
-	});
+	const auto& maxConquerValueItr =
+		 std::ranges::max_element(conquerStrategies, [](const HoI4::AIStrategy& a, const HoI4::AIStrategy& b) {
+			 return a.getValue() < b.getValue();
+		 });
 	return maxConquerValueItr->getValue();
 }
 
@@ -160,20 +158,20 @@ HoI4FocusTree::HoI4FocusTree(const HoI4::Country& country): dstCountryTag(countr
 }
 
 
-void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
+void HoI4FocusTree::addGenericFocusTree(const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\t\tCreating generic focus tree";
 	confirmLoadedFocuses();
 
 	auto numCollectivistIdeologies = static_cast<int>(calculateNumCollectivistIdeologies(majorIdeologies));
 
-	auto politicalEffortFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("political_effort"));
+	auto politicalEffortFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("political_effort"));
 	politicalEffortFocus->xPos = static_cast<int>((numCollectivistIdeologies * 1.5) + 16);
 	sharedFocuses.push_back(politicalEffortFocus);
 
 	if (numCollectivistIdeologies > 0)
 	{
-		auto collectivistEthosFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("collectivist_ethos"));
+		auto collectivistEthosFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("collectivist_ethos"));
 		std::string governments;
 		for (const auto& majorIdeology: majorIdeologies)
 		{
@@ -230,7 +228,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			ideologicalFanaticismPrerequisites += " focus = army_provides_focus";
 		}
 
-		auto ideologicalFanaticismFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("ideological_fanaticism"));
+		auto ideologicalFanaticismFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("ideological_fanaticism"));
 		ideologicalFanaticismFocus->prerequisites.clear();
 		ideologicalFanaticismFocus->prerequisites.push_back("= {" + ideologicalFanaticismPrerequisites + " }");
 		ideologicalFanaticismFocus->xPos = 0;
@@ -239,7 +237,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		sharedFocuses.push_back(ideologicalFanaticismFocus);
 	}
 
-	auto libertyEthosFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("liberty_ethos"));
+	auto libertyEthosFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("liberty_ethos"));
 	if (numCollectivistIdeologies == 0)
 	{
 		libertyEthosFocus->mutuallyExclusive.clear();
@@ -287,7 +285,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	}
 	sharedFocuses.push_back(libertyEthosFocus);
 
-	auto neutralityFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("neutrality_focus"));
+	auto neutralityFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("neutrality_focus"));
 	if (!majorIdeologies.contains("democratic"))
 	{
 		neutralityFocus->mutuallyExclusive.clear();
@@ -297,16 +295,16 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	neutralityFocus->aiWillDo += "\t\t}";
 	sharedFocuses.push_back(neutralityFocus);
 
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("deterrence")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("deterrence")));
 
 	if (majorIdeologies.contains("democratic"))
 	{
-		sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("interventionism_focus")));
-		sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("volunteer_corps")));
-		sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("foreign_expeditions")));
+		sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("interventionism_focus")));
+		sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("volunteer_corps")));
+		sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("foreign_expeditions")));
 	}
 
-	auto whyWeFightFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("why_we_fight"));
+	auto whyWeFightFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("why_we_fight"));
 	if (!majorIdeologies.contains("democratic"))
 	{
 		whyWeFightFocus->prerequisites.clear();
@@ -314,7 +312,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	}
 	sharedFocuses.push_back(whyWeFightFocus);
 
-	auto technologySharingFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("technology_sharing"));
+	auto technologySharingFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("technology_sharing"));
 	if (numCollectivistIdeologies == 0)
 	{
 		technologySharingFocus->prerequisites.clear();
@@ -441,14 +439,14 @@ void HoI4FocusTree::addChildrenToBranch(const std::string& head, const std::stri
 
 void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies)
 {
-	const auto nationalismFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("nationalism_focus"));
+	const auto nationalismFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("nationalism_focus"));
 	nationalismFocus->mutuallyExclusive = getMutualExclusions("fascism", majorIdeologies);
 	nationalismFocus->xPos = relativePosition;
 	sharedFocuses.push_back(nationalismFocus);
 
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("militarism")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("militarism")));
 
-	auto militaryYouthFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("military_youth"));
+	auto militaryYouthFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("military_youth"));
 	militaryYouthFocus->completionReward = "= {\n";
 	militaryYouthFocus->completionReward += "\t\t\tadd_ideas = military_youth_focus\n";
 	for (const auto& ideology: majorIdeologies)
@@ -464,46 +462,46 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 	militaryYouthFocus->completionReward += "\t\t}";
 	sharedFocuses.push_back(militaryYouthFocus);
 
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("paramilitarism")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("paramilitarism")));
 }
 
 
 void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies)
 {
-	const auto internationalismFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("internationalism_focus"));
+	const auto internationalismFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("internationalism_focus"));
 	internationalismFocus->mutuallyExclusive = getMutualExclusions("communism", majorIdeologies);
 	internationalismFocus->xPos = relativePosition;
 	sharedFocuses.push_back(internationalismFocus);
 
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("political_correctness")));
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("indoctrination_focus")));
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("political_commissars")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("political_correctness")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("indoctrination_focus")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("political_commissars")));
 }
 
 
 void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies)
 {
-	const auto absolutismFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("absolutism_focus"));
+	const auto absolutismFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("absolutism_focus"));
 	absolutismFocus->mutuallyExclusive = getMutualExclusions("absolutist", majorIdeologies);
 	absolutismFocus->xPos = relativePosition;
 	sharedFocuses.push_back(absolutismFocus);
 
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("royal_dictatorship_focus")));
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("royal_army_tradition_focus")));
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("historical_claims_focus")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("royal_dictatorship_focus")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("royal_army_tradition_focus")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("historical_claims_focus")));
 }
 
 
 void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies)
 {
-	const auto radicalFocus = make_shared<HoI4::SharedFocus>(GetLoadedFocus("radical_focus"));
+	const auto radicalFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("radical_focus"));
 	radicalFocus->mutuallyExclusive = getMutualExclusions("radical", majorIdeologies);
 	radicalFocus->xPos = relativePosition;
 	sharedFocuses.push_back(radicalFocus);
 
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("private_channels_focus")));
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("hardfought_market_focus")));
-	sharedFocuses.push_back(make_shared<HoI4::SharedFocus>(GetLoadedFocus("army_provides_focus")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("private_channels_focus")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("hardfought_market_focus")));
+	sharedFocuses.push_back(std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("army_provides_focus")));
 }
 
 
@@ -523,7 +521,7 @@ std::unique_ptr<HoI4FocusTree> HoI4FocusTree::makeCustomizedCopy(const HoI4::Cou
 
 
 void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
-	 const std::vector<shared_ptr<HoI4::Country>>& countriesToContain,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& countriesToContain,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	double WTModifier = 1;
@@ -572,8 +570,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
 		const auto tag = country->getTag();
 
 		const auto& truceUntil = home.getTruceUntil(tag);
-		auto warPlanFocus =
-			 GetLoadedFocus("WarPlan").makeTargetedCopy(home.getTag(), tag, hoi4Localisations);
+		auto warPlanFocus = GetLoadedFocus("WarPlan").makeTargetedCopy(home.getTag(), tag, hoi4Localisations);
 		warPlanFocus->updateFocusElement(warPlanFocus->bypass, "$TARGET", tag);
 		warPlanFocus->xPos = relativePos;
 		if (truceUntil)
@@ -587,8 +584,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
 		warPlanFocus->updateFocusElement(warPlanFocus->available, "$TARGET", tag);
 		focuses.push_back(warPlanFocus);
 
-		auto embargoFocus =
-			 GetLoadedFocus("Embargo").makeTargetedCopy(home.getTag(), tag, hoi4Localisations);
+		auto embargoFocus = GetLoadedFocus("Embargo").makeTargetedCopy(home.getTag(), tag, hoi4Localisations);
 		embargoFocus->prerequisites.clear();
 		embargoFocus->prerequisites.push_back("= { focus =  WarPlan" + home.getTag() + tag + " }");
 		embargoFocus->updateFocusElement(embargoFocus->bypass, "$TARGET", tag);
@@ -629,8 +625,8 @@ void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
 
 
 void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(const HoI4::Country& home,
-	 const std::vector<shared_ptr<HoI4::Country>>& targetColonies,
-	 const std::vector<shared_ptr<HoI4::Country>>& annexationTargets,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& targetColonies,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& annexationTargets,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	const auto& homeTag = home.getTag();
@@ -896,11 +892,9 @@ void HoI4FocusTree::addCommunistCoupBranch(const HoI4::Country& home,
 		influenceFocus->completionReward += "\t\t}";
 		focuses.push_back(influenceFocus);
 
-		auto coupFocus =
-			 GetLoadedFocus("Coup_").makeTargetedCopy(homeTag, coupTargets[i]->getTag(), hoi4Localisations);
+		auto coupFocus = GetLoadedFocus("Coup_").makeTargetedCopy(homeTag, coupTargets[i]->getTag(), hoi4Localisations);
 		coupFocus->id = "Coup_" + coupTargets[i]->getTag() + "_" + homeTag;
-		coupFocus->prerequisites.push_back(
-			 "= { focus = Influence_" + coupTargets[i]->getTag() + "_" + homeTag + " }");
+		coupFocus->prerequisites.push_back("= { focus = Influence_" + coupTargets[i]->getTag() + "_" + homeTag + " }");
 		coupFocus->relativePositionId = "Influence_" + coupTargets[i]->getTag() + "_" + homeTag;
 		coupFocus->xPos = 0;
 		coupFocus->yPos = 1;
@@ -1052,8 +1046,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(const HoI4::Country& home,
 
 		const auto& targetTag = target->getTag();
 
-		auto anschlussFocus =
-			 GetLoadedFocus("_anschluss_").makeTargetedCopy(homeTag, targetTag, hoi4Localisations);
+		auto anschlussFocus = GetLoadedFocus("_anschluss_").makeTargetedCopy(homeTag, targetTag, hoi4Localisations);
 		anschlussFocus->id = homeTag + "_anschluss_" + targetTag;
 		date dateAvailable = date("1937.1.1");
 		if (const auto& relations = home.getRelations(targetTag); relations)
@@ -1214,8 +1207,7 @@ void HoI4FocusTree::addGPWarBranch(const HoI4::Country& home,
 	int allianceFreeColumn = 1 - static_cast<int>(newAllies.size());
 	for (const auto& newAlly: newAllies)
 	{
-		auto allianceFocus =
-			 GetLoadedFocus("Alliance_").makeTargetedCopy(homeTag, newAlly->getTag(), hoi4Localisations);
+		auto allianceFocus = GetLoadedFocus("Alliance_").makeTargetedCopy(homeTag, newAlly->getTag(), hoi4Localisations);
 		allianceFocus->id = "Alliance_" + newAlly->getTag() + homeTag;
 		allianceFocus->prerequisites.push_back("= { focus = " + ideologyShort + "_Summit" + homeTag + " }");
 		allianceFocus->relativePositionId = ideologyShort + "_Summit" + homeTag;
@@ -1309,7 +1301,7 @@ void HoI4FocusTree::addGPWarBranch(const HoI4::Country& home,
 		hoi4Localisations.updateLocalisationText(gpWarFocus->text, "$TARGET", greatPowerTag);
 		hoi4Localisations.updateLocalisationText(gpWarFocus->text + "_desc", "$TARGET", greatPowerTag);
 	}
-	nextFreeColumn += 2 * static_cast<int>(max(newAllies.size(), GCTargets.size()));
+	nextFreeColumn += 2 * static_cast<int>(std::max(newAllies.size(), GCTargets.size()));
 }
 
 
@@ -1338,7 +1330,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 
 	numWarsWithNeighbors = std::min(static_cast<int>(coreHolders.size()), 4);
 
-	shared_ptr<HoI4Focus> reclaimCoresFocus = GetLoadedFocus("reclaim_cores").makeCustomizedCopy(theTag);
+	std::shared_ptr<HoI4Focus> reclaimCoresFocus = GetLoadedFocus("reclaim_cores").makeCustomizedCopy(theTag);
 	reclaimCoresFocus->selectEffect = "= {\n";
 	for (const auto& tag: coreHolders | std::views::keys)
 	{
@@ -1371,7 +1363,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		const auto& aiChance = std::to_string(std::max(static_cast<int>(0.1 * numProvinces), 1));
 		const auto& truceUntil = theCountry.getTruceUntil(target);
 
-		shared_ptr<HoI4Focus> raiseMatterFocus =
+		std::shared_ptr<HoI4Focus> raiseMatterFocus =
 			 GetLoadedFocus("raise_matter").makeTargetedCopy(theTag, target, hoi4Localisations);
 		raiseMatterFocus->xPos = nextFreeColumn;
 		if (truceUntil)
@@ -1416,10 +1408,11 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		focuses.push_back(raiseMatterFocus);
 		nextFreeColumn += 2;
 
-		shared_ptr<HoI4Focus> buildPublicSupportFocus =
+		std::shared_ptr<HoI4Focus> buildPublicSupportFocus =
 			 GetLoadedFocus("build_public_support").makeTargetedCopy(theTag, target, hoi4Localisations);
 		buildPublicSupportFocus->prerequisites.clear();
-		buildPublicSupportFocus->prerequisites.push_back(std::string("= { focus = raise_matter").append(theTag).append(target).append(" }"));
+		buildPublicSupportFocus->prerequisites.push_back(
+			 std::string("= { focus = raise_matter").append(theTag).append(target).append(" }"));
 		buildPublicSupportFocus->relativePositionId += target;
 		if (truceUntil)
 		{
@@ -1470,7 +1463,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->aiWillDo, "$REVANCHISM", aiChance);
 		focuses.push_back(buildPublicSupportFocus);
 
-		shared_ptr<HoI4Focus> territoryOrWarFocus =
+		std::shared_ptr<HoI4Focus> territoryOrWarFocus =
 			 GetLoadedFocus("territory_or_war").makeTargetedCopy(theTag, target, hoi4Localisations);
 		territoryOrWarFocus->prerequisites.clear();
 		territoryOrWarFocus->prerequisites.push_back("= { focus = build_public_support" + theTag + target + " }");
@@ -1501,7 +1494,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->aiWillDo, "$REVANCHISM", aiChance);
 		focuses.push_back(territoryOrWarFocus);
 
-		shared_ptr<HoI4Focus> warPlanFocus =
+		std::shared_ptr<HoI4Focus> warPlanFocus =
 			 GetLoadedFocus("war_plan").makeTargetedCopy(theTag, target, hoi4Localisations);
 		warPlanFocus->prerequisites.clear();
 		warPlanFocus->prerequisites.push_back("= { focus = territory_or_war" + theTag + target + " }");
@@ -1530,7 +1523,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		warPlanFocus->updateFocusElement(warPlanFocus->aiWillDo, "$REVANCHISM", aiChance);
 		focuses.push_back(warPlanFocus);
 
-		shared_ptr<HoI4Focus> declareWarFocus =
+		std::shared_ptr<HoI4Focus> declareWarFocus =
 			 GetLoadedFocus("declare_war").makeTargetedCopy(theTag, target, hoi4Localisations);
 		declareWarFocus->prerequisites.clear();
 		declareWarFocus->prerequisites.push_back("= { focus = war_plan" + theTag + target + " }");
@@ -1567,7 +1560,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 			 std::to_string(std::max(static_cast<int>(numProvinces), 1)));
 		focuses.push_back(declareWarFocus);
 
-		shared_ptr<HoI4Focus> cleanupRevanchismFocus =
+		std::shared_ptr<HoI4Focus> cleanupRevanchismFocus =
 			 GetLoadedFocus("cleanup_revanchism").makeTargetedCopy(theTag, target, hoi4Localisations);
 		cleanupRevanchismFocus->prerequisites.clear();
 		cleanupRevanchismFocus->prerequisites.push_back("= { focus = declare_war" + theTag + target + " }");
@@ -1656,7 +1649,9 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 		{
 			borderDisputesFocus->removePlaceholder(borderDisputesFocus->available, "#TRUCE");
 		}
-		borderDisputesFocus->updateFocusElement(borderDisputesFocus->available, "#OWNSCLAIM", "owns_state = " + claimStateId);
+		borderDisputesFocus->updateFocusElement(borderDisputesFocus->available,
+			 "#OWNSCLAIM",
+			 "owns_state = " + claimStateId);
 		borderDisputesFocus->xPos = nextFreeColumn;
 		borderDisputesFocus->yPos = 0;
 		borderDisputesFocus->updateFocusElement(borderDisputesFocus->aiWillDo, "$TARGET", strategy.getID());
@@ -1674,7 +1669,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 			dateAvailable.increaseByMonths((200 + relations->getRelations()) / 8);
 		}
 		if (const auto& assertClaimsTruceUntil = theCountry.getTruceUntil(strategy.getID());
-			 assertClaimsTruceUntil && * assertClaimsTruceUntil > dateAvailable)
+			 assertClaimsTruceUntil && *assertClaimsTruceUntil > dateAvailable)
 		{
 			assertClaimsFocus->updateFocusElement(assertClaimsFocus->available,
 				 "#DATE",
@@ -1700,7 +1695,9 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 		prepareForWarFocus->prerequisites.push_back("= { focus = assert_claims" + tag + strategy.getID() + " }");
 		prepareForWarFocus->relativePositionId += strategy.getID();
 		prepareForWarFocus->updateFocusElement(prepareForWarFocus->available, "$TARGET", strategy.getID());
-		prepareForWarFocus->updateFocusElement(prepareForWarFocus->available, "#OWNSCLAIM", "owns_state = " + claimStateId);
+		prepareForWarFocus->updateFocusElement(prepareForWarFocus->available,
+			 "#OWNSCLAIM",
+			 "owns_state = " + claimStateId);
 		prepareForWarFocus->updateFocusElement(prepareForWarFocus->bypass, "$TARGET", strategy.getID());
 		focuses.push_back(prepareForWarFocus);
 
@@ -1746,7 +1743,7 @@ void HoI4FocusTree::addIntegratePuppetsBranch(const std::string& tag,
 	const auto& originalFocus = GetLoadedFocus("integrate_satellite");
 	for (const auto& puppet: puppets | std::views::keys)
 	{
-		shared_ptr<HoI4Focus> newFocus = originalFocus.makeTargetedCopy(tag, puppet, hoi4Localisations);
+		std::shared_ptr<HoI4Focus> newFocus = originalFocus.makeTargetedCopy(tag, puppet, hoi4Localisations);
 		newFocus->xPos = nextFreeColumn;
 		newFocus->yPos = yPos;
 		newFocus->updateFocusElement(newFocus->selectEffect, "#TARGET", puppet);
@@ -1761,7 +1758,7 @@ void HoI4FocusTree::addIntegratePuppetsBranch(const std::string& tag,
 }
 
 
-void HoI4FocusTree::removeFocus(const string& id)
+void HoI4FocusTree::removeFocus(const std::string& id)
 {
 	focuses.erase(std::remove_if(focuses.begin(),
 							focuses.end(),
