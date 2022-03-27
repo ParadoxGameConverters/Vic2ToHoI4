@@ -362,7 +362,7 @@
  war_justification.239.a:0 "Trudno się rozbroić po tych zagrożeniach."
  war_justification.240.t:0 "[From.GetLeader] Zaleca inwazję [Root.GetName]"
  war_justification.240.d:0 "'Jeśli chcemy mieć przewagę strategiczną w przewidywalnej, nie mówiąc nieuniknionej wojnie z [Root.GetName], nie ma miejsca na wahanie się. Chodzi o ochronę przyszłości naszych dzieci i zapewnienie, że [Od.GetName] ma jutro miejsce w świecie. Jest to kwestia oddania dla naszej sprawy i ideałów, które przyjmujemy za pewnik. Czas działać '. \n\n Seria porywających przemówień od przywódców [From.GetRulingParty], najbardziej widoczna [From.GetLeader], wzywa ludzi do wspierania inwazji [Root.GetName]. Geopolityczne motywy inwazji są mniej widoczne w retoryce do nastrojów patriotycznych, ale ta kampania wydaje się wysoce skuteczna w przekonywaniu społeczeństwa o jej konieczności."
- war_justification.240.a:0 "Lepiej się przygotujmy. Wojna nadejdzie." 
+ war_justification.240.a:0 "Lepiej się przygotujmy. Wojna nadejdzie."
  war_justification.absolutistabsolutist.t:0 "[Root.GetLeader] wzywa do podboju ziemi [From.GetAdjectiveCap]"
  war_justification.absolutistabsolutist.d:0 "'Potężna moc [Root.GetName] nie jest powszechnie akceptowana. Przebieg historii sprawił, że Imperia narodziły się i upadły, a my, [Od.GetLeader], kanclerz rządzący naszą Ojczyzną, znaleźliśmy główne zagrożenie dla naszej supremacji i jest to nikczemny despotat [From.GetName]. '\n\nWładza [Root.GetLeader] wydaje się wskazywać na inwazję przeciwko narodowi [From.GetAdjective]. Nasza chwała, co najmniej boska, sprawiła, że ​​zazdrościli i odpowiadali grożąc konfliktem granicznym."
  war_justification.absolutistabsolutist.a:0 "Dla [Root.GetRulingParty]!"
