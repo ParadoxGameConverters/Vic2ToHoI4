@@ -1671,7 +1671,7 @@ bool HoI4::Country::hasMonarchIdea() const
 
 
 
-const bool HoI4::Country::isEligibleEnemy(std::string target)
+const bool HoI4::Country::isEligibleEnemy(std::string target) const
 {
 	auto allAllies = allies;
 	if (faction)
