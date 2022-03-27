@@ -291,7 +291,9 @@ void Vic2::World::Factory::removeEmptyNations()
 void Vic2::World::Factory::consolidatePartialStates()
 {
 	for (auto& country: world->countries | std::views::values)
+	{
 		country.mergeStates(*world->theStateDefinitions);
+	}
 }
 
 
