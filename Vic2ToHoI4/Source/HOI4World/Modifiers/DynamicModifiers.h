@@ -1,16 +1,19 @@
 #ifndef HOI4_DYNAMIC_MODIFIERS_H
 #define HOI4_DYNAMIC_MODIFIERS_H
 
+
+
 #include "Modifier.h"
 #include "Parser.h"
 #include <set>
+
+
 
 namespace HoI4
 {
 
 class DynamicModifiers: commonItems::parser
 {
-
   public:
 	DynamicModifiers();
 
@@ -23,5 +26,7 @@ class DynamicModifiers: commonItems::parser
 };
 
 } // namespace HoI4
+
+
 
 #endif // HOI4_DYNAMIC_MODIFIERS_H

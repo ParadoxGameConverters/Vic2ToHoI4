@@ -301,7 +301,6 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::GetMorePossibleAllie
 			 */
 		)
 		{
-
 			if (maxcountries < 2)
 			{
 				// FIXME
