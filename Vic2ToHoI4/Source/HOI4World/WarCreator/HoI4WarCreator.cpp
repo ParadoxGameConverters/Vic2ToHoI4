@@ -1105,9 +1105,6 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::getGreatPowerTargets
 				greatPowerTargets.push_back(greatPower);
 			}
 		}
-		if (prereqsNeeded == "morealliesneeded")
-		{
-		}
 	}
 
 	return greatPowerTargets;
