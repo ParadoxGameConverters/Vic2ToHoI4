@@ -101,6 +101,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	determineEmployedWorkers();
 	overallMergeNations(theConfiguration.getDebug());
 	removeEmptyNations();
+	consolidatePartialStates();
 	addWarsToCountries(wars);
 	setLocalisations(*world->theLocalisations);
 	checkAllProvincesMapped(provinceMapper);
@@ -284,6 +285,13 @@ void Vic2::World::Factory::removeEmptyNations()
 			++country;
 		}
 	}
+}
+
+
+void Vic2::World::Factory::consolidatePartialStates()
+{
+	for (auto& country: world->countries | std::views::values)
+		country.mergeStates(*world->theStateDefinitions);
 }
 
 
