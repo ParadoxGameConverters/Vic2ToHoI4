@@ -20,6 +20,16 @@
 const int maxGCWars = 1;
 
 
+enum class ConquestStrategies
+{
+	None,
+	NoActionNeeded,
+	FactionNeeded,
+	MoreAlliesNeeded,
+	Coup,
+};
+
+
 
 class HoI4WarCreator
 {
@@ -45,16 +55,11 @@ class HoI4WarCreator
 		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 HoI4::Localisation& hoi4Localisations,
 		 const Configuration& theConfiguration);
-	double calculatePercentOfWorldAtWar(std::ofstream& AILog,
-		 const std::set<std::shared_ptr<HoI4::Faction>>& factionsAtWar,
-		 double worldStrength,
-		 const Configuration& theConfiguration) const;
 	void generateReconquestWars(std::ofstream& AILog,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 HoI4::Localisation& hoi4Localisations,
 		 const Configuration& theConfiguration);
-	bool isImportantCountry(std::shared_ptr<HoI4::Country> country);
 
 	std::vector<std::shared_ptr<HoI4::Faction>> fascistWarMaker(std::shared_ptr<HoI4::Country> country,
 		 std::ofstream& AILog,
@@ -94,17 +99,15 @@ class HoI4WarCreator
 	void addTradeEvents(std::shared_ptr<HoI4::Country> country,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowerTargets);
 
-	double GetFactionStrength(const std::shared_ptr<HoI4::Faction>& Faction, int years) const;
-	std::string HowToTakeLand(std::shared_ptr<HoI4::Country> TargetCountry,
+	ConquestStrategies HowToTakeLand(std::shared_ptr<HoI4::Country> TargetCountry,
 		 std::shared_ptr<HoI4::Country> AttackingCountry,
 		 double time);
 	std::vector<std::shared_ptr<HoI4::Country>> GetMorePossibleAllies(
 		 const std::shared_ptr<HoI4::Country>& CountryThatWantsAllies);
 
-	double GetFactionStrengthWithDistance(std::shared_ptr<HoI4::Country> HomeCountry,
+	double GetFactionStrengthWithDistance(const HoI4::Country& homeCountry,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& Faction,
 		 double time);
-	std::shared_ptr<HoI4::Faction> findFaction(std::shared_ptr<HoI4::Country> checkingCountry);
 
 	HoI4FocusTree* genericFocusTree;
 	HoI4::World* theWorld;

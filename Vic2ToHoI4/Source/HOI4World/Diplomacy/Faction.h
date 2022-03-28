@@ -16,7 +16,6 @@ class Country; // forward include to break circular dependency with Country
 
 class Faction
 {
-
   public:
 	Faction(std::shared_ptr<Country> leader,
 		 std::vector<std::shared_ptr<Country>> members,

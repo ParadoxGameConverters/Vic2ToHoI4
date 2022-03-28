@@ -296,7 +296,7 @@ class Country
 
 	void addCharacter(const Character& character) { characters_.push_back(character); }
 
-	[[nodiscard]] const bool isEligibleEnemy(std::string target);
+	[[nodiscard]] const bool isEligibleEnemy(std::string target) const;
 
 	void convertWars(const Vic2::Country& sourceCountry,
 		 const Mappers::CountryMapper& countryMap,

@@ -1186,7 +1186,6 @@ void outputOperatives(std::ostream& output,
 	 const HoI4::Country& theCountry,
 	 const std::vector<HoI4::Operative>& operatives)
 {
-
 	if (operatives.empty())
 	{
 		return;

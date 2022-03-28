@@ -7,7 +7,6 @@ void HoI4::AgentRecruitmentDecisions::updateDecisions(const std::set<std::string
 {
 	for (auto category: decisions)
 	{
-
 		for (auto decision: category.getDecisions())
 		{
 			if (decision.getName() == "recruit_in_india")

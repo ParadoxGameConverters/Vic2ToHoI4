@@ -12,17 +12,17 @@ updates:
     directory: "/googletest"
     schedule:
       interval: "monthly"
-      
+
   - package-ecosystem: "gitsubmodule"
     directory: "/bitmap"
     schedule:
       interval: "monthly"
-      
+
   - package-ecosystem: "gitsubmodule"
     directory: "/common_items"
     schedule:
       interval: "daily"
-      
+
   - package-ecosystem: "gitsubmodule"
     directory: "/Fronter"
     schedule:

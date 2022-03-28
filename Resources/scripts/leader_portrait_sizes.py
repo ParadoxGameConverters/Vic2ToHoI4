@@ -25,9 +25,9 @@ print('Found ' + str(len(files)) + ' files')
 for f in files:
     if '.dds' in f:
         file = open(f,"rb")
-        bytes = list(file.read(20))
-        width = bytes[16] + 256 * bytes[17]
-        height = bytes[12] + 256 * bytes[13]
+        file_bytes = list(file.read(20))
+        width = file_bytes[16] + 256 * file_bytes[17]
+        height = file_bytes[12] + 256 * file_bytes[13]
         print(f + ' - ' + str(width) + ' x ' + str(height))
     else:
         image = Image.open(f)
