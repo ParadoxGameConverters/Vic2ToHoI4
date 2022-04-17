@@ -39,6 +39,7 @@ class World::Factory: commonItems::parser
 		 removeCoresOptions option) const;
 	void determineEmployedWorkers();
 	void removeEmptyNations();
+	void consolidatePartialStates();
 	void addWarsToCountries(const std::vector<War>& wars);
 	void overallMergeNations(bool debug);
 	void mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags, bool debug);

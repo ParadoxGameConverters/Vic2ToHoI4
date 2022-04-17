@@ -60,7 +60,7 @@
 #hispanic, african, deathbringers, animalia
 
 western_european = {
-	cultures_and_groups = { germanic beneluxian pan_swiss jewish_group jewish_cultures scandinavian british celtic french american_cultures neo_european_cultures }
+	cultures_and_groups = { germanic beneluxian pan_swiss jewish_group jewish_cultures scandinavian british celtic french american_cultures neo_european_cultures lepontic varangian_g }
 	army_portraits = {
 		#Generic European
 		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
@@ -546,8 +546,8 @@ western_european = {
 	graphical_culture_2d = western_european_2d
 }
 
-mediterranean = {
-	cultures_and_groups = { italian old_italian iberian levantine dytic_g varangian_g tyrrhenian }
+italic = {
+	cultures_and_groups = { italian old_italian iberian levantine tyrrhenian } # Move Iberian later
 
 	army_portraits = {
 		#Generic European
@@ -583,10 +583,6 @@ mediterranean = {
 		"gfx/leaders/Mediterranean/Portrait_SPR_Miguel_Cabanellas_Ferrer.tga"
 		"gfx/leaders/Mediterranean/Portrait_Portugal_Antonio_Carmona.tga"
 		"gfx/leaders/Mediterranean/Portrait_POR_Castro_Bilstein_Menezes.tga"
-		"gfx/leaders/Mediterranean/Portrait_GRE_Alexandros_Papagos.tga"
-		"gfx/leaders/Mediterranean/Portrait_GRE_George_army.tga"
-		"gfx/leaders/Mediterranean/Portrait_GRE_Manolis_Mantakas.tga"
-		"gfx/leaders/Mediterranean/Portrait_GRE_Napoleon_Zervas.tga"
 		"gfx/leaders/Mediterranean/Portrait_TUS_Chiariotti_Raoul.tga"
 		"gfx/leaders/Mediterranean/Portrait_TUS_Umberto_Soma.tga"
 		"gfx/leaders/Mediterranean/Portrait_VNC_Antonio_Scaramuzza.tga"
@@ -617,29 +613,17 @@ mediterranean = {
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_3.tga"
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_4.tga"
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_5.tga"
-		"gfx/leaders/Generic/r56_portrait_generic_admiral_GRE_1.dds"
-		"gfx/leaders/Generic/r56_portrait_generic_admiral_GRE_2.dds"
 		"gfx/leaders/Mediterranean/Portrait_POR_Americo_Thomaz.tga"
-		"gfx/leaders/Mediterranean/Portrait_GRE_Antonis_Mezeviris.tga"
-		"gfx/leaders/Mediterranean/Portrait_GRE_Alexandros_Sakellariou.tga"
-		"gfx/leaders/Mediterranean/Portrait_GRE_Ioannis_Toumbas.tga"
-		"gfx/leaders/Mediterranean/Portrait_GRE_Petros_Voulgaris.tga"
-		"gfx/leaders/Mediterranean/Portrait_GRE_Stylianos_Lykoudis.tga"
 		"gfx/leaders/Mediterranean/Portrait_Papal_State_Julio_Valerio_Borghese.tga"
 	}
 	leader_portraits = {
 		communism = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"
 			"gfx/leaders/Europe/portrait_europe_generic_8.dds"
-			"gfx/leaders/GRE/Portrait_Greece_Markos_Vafiadis.dds"
 			"gfx/leaders/ITA/portrait_ita_palmiro_togliatti.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Generic_1.dds"
 			"gfx/leaders/SPR/portrait_spr_jose_diaz.dds"
 			"gfx/leaders/Mediterranean/Portrait_Italy_Filippo_Turati.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Athanasios_Klaras.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Nikos_Beloyannis.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Nikos_Ploumpidis.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Stefanos_Sarafis.tga"
 			"gfx/leaders/Mediterranean/Portrait_VNC_Giovanni_Battista_Gianquinto.tga"
 		}
 		democratic = {
@@ -647,15 +631,10 @@ mediterranean = {
 			"gfx/leaders/ITA/portrait_ita_ferruccio_parri.dds"
 			"gfx/leaders/SPR/Portrait_Spain_Manuel_Azana.dds"
 			"gfx/leaders/Mediterranean/Portrait_SRI_Giacomo_Matteotti.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_George_Santios.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Konstantinos_Tsaldaris.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Panagiotis_Kanellopoulos.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Themistoklis_Sofoulis.tga"
 			"gfx/leaders/Mediterranean/Portrait_Papal_State_Angelo_Cerica.tga"
 		}
 		fascism = {
 			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
-			"gfx/leaders/GRE/portrait_gre_adolfos_i.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Benito_Mussolini.dds"
 			"gfx/leaders/SPR/Portrait_Spain_Francisco_Franco_old.dds"
 			"gfx/leaders/Mediterranean/Portrait_Italy_Alcide_de_Gasperi.tga"
@@ -668,32 +647,22 @@ mediterranean = {
 			"gfx/leaders/Mediterranean/Portrait_SPM_Infante_Jaime.tga"
 			"gfx/leaders/Mediterranean/Portrait_Alfonso_XIII.tga"
 			"gfx/leaders/Mediterranean/Portrait_Portugal_Duarte_Nuno.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Alexander.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_George.tga"
 			"gfx/leaders/Mediterranean/Portrait_SPR_Jaime_I.tga"
-			"gfx/leaders/Mediterranean/Danilo_I.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Paul.tga"
 			"gfx/leaders/Mediterranean/Portrait_Javier_I.tga"
 		}
 		neutrality = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
-			"gfx/leaders/GRE/Portrait_Greece_Ioannis_Metaxas.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Generic_3.dds"
 			"gfx/leaders/POR/portrait_por_antonio_de_oliveira_salazar.dds"
 			"gfx/leaders/POR/Portrait_Portugal_Antonio_de_Oliveira_Salazar_OLD.dds"
 			"gfx/leaders/SPR/portrait_spr_niceto_alcala_zamora.dds"
 			"gfx/leaders/Mediterranean/Portrait_Italy_Luigi_Sturzo.dds"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Ioannis_Metaxas_KR.tga"
 		}
 		radical = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
 			"gfx/leaders/Europe/portrait_europe_generic_4.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Generic_2.dds"
 			"gfx/leaders/Mediterranean/AlfredoPalacios.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Alexandros_Papanastasiou.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Alexandros_Svolos.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Konstantinos_Tsatsos.tga"
-			"gfx/leaders/Mediterranean/Portrait_GRE_Nikolaos_Plastiras.tga"
 			"gfx/leaders/Mediterranean/Portrait_VNC_Bonaventura_Ferrazzutto.tga"
 			"gfx/leaders/Mediterranean/Portrait_Italy_Ivanoe_Bonomi.tga"
 		}
@@ -732,13 +701,10 @@ mediterranean = {
 			"gfx/interface/ideas/idea_angelo_iachino.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/idea_victor_emmanuel.dds"
-			"gfx/interface/ideas/idea_francisco_franco.dds"
 			"gfx/interface/ideas/idea_giovanni_messe.dds"
 		}
 		neutrality = {
 			"gfx/interface/ideas/idea_alberto_da_zara.dds"
-			"gfx/interface/ideas/idea_emilio_de_bono.dds"
 			"gfx/interface/ideas/idea_amedeo_mecozzi.dds"
 		}
 		radical = {
@@ -803,19 +769,220 @@ mediterranean = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/crowns/greece.dds"
-		"gfx/interface/ideas/crowns/italy.dds"
-		"gfx/interface/ideas/crowns/spain.dds"
+		"gfx/interface/ideas/crowns/italy_shield.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/crowns/greece.dds"
-		"gfx/interface/ideas/crowns/italy.dds"
-		"gfx/interface/ideas/crowns/spain.dds"
+		"gfx/interface/ideas/crowns/italy_shield.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
 }
 
+hellenic_caucasian = {
+	cultures_and_groups = { levantine dytic_g caucasian }
+
+	army_portraits = {
+		#Generic European
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_land_19.dds"
+		#Other
+		"gfx/leaders/Mediterranean/Portrait_GRE_Alexandros_Papagos.tga"
+		"gfx/leaders/Mediterranean/Portrait_GRE_George_army.tga"
+		"gfx/leaders/Mediterranean/Portrait_GRE_Manolis_Mantakas.tga"
+		"gfx/leaders/Mediterranean/Portrait_GRE_Napoleon_Zervas.tga"
+	}
+	navy_portraits = {
+		#Generic European
+		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
+		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		#Italian
+		"gfx/leaders/ITA/Portrait_Italy_Generic_navy_1.dds"
+		"gfx/leaders/ITA/Portrait_Italy_Generic_navy_2.dds"
+		"gfx/leaders/ITA/Portrait_Italy_Generic_navy_3.dds"
+		"gfx/leaders/ITA/portrait_ITA_ferdinando_adalberto.dds"
+		"gfx/leaders/ITA/Portrait_Italy_Alberto_Da_Zara.dds"
+		"gfx/leaders/ITA/Portrait_Italy_Angelo_Iachino.dds"
+		"gfx/leaders/ITA/Portrait_Italy_Carlo_Bergamini.dds"
+		"gfx/leaders/ITA/Portrait_Italy_Giuseppe_Fioravanzo.dds"
+		"gfx/leaders/ITA/Portrait_Italy_Inigo_Campioni.dds"
+		#Other
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_1.tga"
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_2.tga"
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_3.tga"
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_4.tga"
+		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_5.tga"
+		"gfx/leaders/Generic/r56_portrait_generic_admiral_GRE_1.dds"
+		"gfx/leaders/Generic/r56_portrait_generic_admiral_GRE_2.dds"
+		"gfx/leaders/Mediterranean/Portrait_GRE_Antonis_Mezeviris.tga"
+		"gfx/leaders/Mediterranean/Portrait_GRE_Alexandros_Sakellariou.tga"
+		"gfx/leaders/Mediterranean/Portrait_GRE_Ioannis_Toumbas.tga"
+		"gfx/leaders/Mediterranean/Portrait_GRE_Petros_Voulgaris.tga"
+		"gfx/leaders/Mediterranean/Portrait_GRE_Stylianos_Lykoudis.tga"
+	}
+	leader_portraits = {
+		communism = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"
+			"gfx/leaders/Europe/portrait_europe_generic_8.dds"
+			"gfx/leaders/GRE/Portrait_Greece_Markos_Vafiadis.dds"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Athanasios_Klaras.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Nikos_Beloyannis.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Nikos_Ploumpidis.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Stefanos_Sarafis.tga"
+			"gfx/leaders/Eastern_European/portrait_GEO_Kandid_Charkviani.dds"
+		}
+		democratic = {
+			"gfx/leaders/Europe/portrait_europe_generic_5.dds"
+			"gfx/leaders/Mediterranean/Portrait_GRE_George_Santios.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Konstantinos_Tsaldaris.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Panagiotis_Kanellopoulos.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Themistoklis_Sofoulis.tga"
+			"gfx/leaders/Eastern_European/Portrait_Armenia_Andranik_Toros_Ozanian.tga"
+		}
+		fascism = {
+			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
+			"gfx/leaders/GRE/portrait_gre_adolfos_i.dds" # Wonder who this is?
+		}
+		absolutist = {
+			"gfx/leaders/Europe/Portrait_europe_generic_7.dds"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Alexander.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_George.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Paul.tga"
+			"gfx/leaders/Eastern_European/Portrait_Cyprus_Makarios_Third.tga" 
+		}
+		neutrality = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
+			"gfx/leaders/GRE/Portrait_Greece_Ioannis_Metaxas.dds"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Ioannis_Metaxas_KR.tga"
+		}
+		radical = {
+			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+			"gfx/leaders/Europe/portrait_europe_generic_4.dds"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Alexandros_Papanastasiou.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Alexandros_Svolos.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Konstantinos_Tsatsos.tga"
+			"gfx/leaders/Mediterranean/Portrait_GRE_Nikolaos_Plastiras.tga"
+		}
+	}
+	female_portraits = {
+		military = {
+			"gfx/leaders/Hispanic/Female/Portrait_ARG_Elvira_Rawson.tga"
+			"gfx/leaders/Mediterranean/Female/Portrait_CNT_Dolores_Ibaurri_Gomez.tga"
+			"gfx/leaders/Mediterranean/Female/Portrait_Portugal_Maria_Adelaide.tga"
+			"gfx/leaders/Mediterranean/Female/Portrait_SRI_Ines_Donati.tga"
+		}
+		monarch = {
+			"gfx/leaders/Mediterranean/Female/Portrait_Portugal_Maria_Ana.tga"
+		}
+		ideological_leader = {
+			"gfx/leaders/Hispanic/Female/Portrait_ARG_Elvira_Rawson.tga"
+			"gfx/leaders/Mediterranean/Female/Portrait_CNT_Dolores_Ibaurri_Gomez.tga"
+			"gfx/leaders/Mediterranean/Female/Portrait_Portugal_Maria_Adelaide.tga"
+			"gfx/leaders/Mediterranean/Female/Portrait_SRI_Ines_Donati.tga"
+		}
+	}
+	ideology_minister_portraits = {
+		communism = {
+			"gfx/interface/ideas/idea_GRE_aris_velouchiotis_advisor.dds"
+			"gfx/interface/ideas/idea_GRE_nikos_zachariadis.dds"
+		}
+		democratic = {
+			"gfx/interface/ideas/idea_GRE_dimitrios_psarros.dds"
+			"gfx/interface/ideas/idea_GRE_eleftherios_venizelos.dds"
+			"gfx/interface/ideas/idea_GRE_themistoklis_sofoulis.dds"
+		}
+		fascism = {
+			"gfx/interface/ideas/idea_GRE_charalambos_katsimitros.dds"
+			"gfx/interface/ideas/idea_GRE_theodoros_pangalos.dds"
+		}
+		absolutist = {
+			"gfx/interface/ideas/idea_GRE_emmanouil_tsouderos_advisor.dds"
+			"gfx/interface/ideas/idea_GRE_george_ii_advisor.dds"
+		}
+		neutrality = {
+			"gfx/interface/ideas/idea_alberto_da_zara.dds" # Revise
+			"gfx/interface/ideas/idea_emilio_de_bono.dds" # Revise
+			"gfx/interface/ideas/idea_amedeo_mecozzi.dds" # Revise
+		}
+		radical = {
+			"gfx/interface/ideas/idea_GRE_aristotle_onassis.dds"
+		}
+	}
+	male_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_11.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_12.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_male_25.dds"
+
+	}
+	female_operative_portraits = {
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_2.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_3.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_4.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_5.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_6.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_7.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_8.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_9.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_10.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_11.dds" #No 12
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_13.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_14.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_15.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_16.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_17.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_18.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_19.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_20.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_21.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_22.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_23.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_24.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_25.dds"
+		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
+	}
+	male_monarch_portraits = {
+		"gfx/interface/ideas/crowns/greece_shield.dds"
+	}
+	female_monarch_portraits = {
+		"gfx/interface/ideas/crowns/greece_shield.dds"
+	}
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
+}
 other_balkan = {
 	cultures_and_groups = { albanian pan_romanian balkan hungarian_culture_group } # move hungarian_culture_group later
 
@@ -1095,6 +1262,7 @@ serbo_croat_bulgarian = {
 			"gfx/leaders/YUG/Portrait_Yugoslavia_Prince_Paul.dds"
 			"gfx/leaders/Balkans/Alexander_II.tga"
 			"gfx/leaders/Balkans/Portrait_Bulgaria_Tsar_Ferdinand.tga"
+			"gfx/leaders/Mediterranean/Danilo_I.tga"
 		}
 		neutrality = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
@@ -1431,7 +1599,7 @@ other_balto_slavic = {
 }
 
 eastern_slavic = {
-	cultures_and_groups = { east_slavic caucasian } # move caucasian and corresponding portraits later
+	cultures_and_groups = { east_slavic }
 
 	army_portraits = {
 		#Generic European
@@ -1538,7 +1706,6 @@ eastern_slavic = {
 			"gfx/leaders/SOV/Portrait_Soviet_Generic_1.dds"
 			"gfx/leaders/SOV/Portrait_Leon_Trotsky.dds"
 			"gfx/leaders/SOV/Portrait_Soviet_Joseph_Stalin.dds"
-			"gfx/leaders/Eastern_European/portrait_GEO_Kandid_Charkviani.dds" # Move
 			"gfx/leaders/Eastern_European/Portrait_SOV_Vladimir_Lenin.dds"
 			"gfx/leaders/Eastern_European/Portrait_Ukraine_Vladimir_Vynnychenko.tga"
 			"gfx/leaders/Eastern_European/Portrait_Soviet_Nikolai_Iwanowitsch_Bucharin.tga"
@@ -1566,7 +1733,6 @@ eastern_slavic = {
 			"gfx/leaders/Eastern_European/Portrait_Soviet_Vladimir_Romanov.tga"
 			"gfx/leaders/Eastern_European/Portrait_Soviet_Kyril_Romanov.tga"
 			"gfx/leaders/Eastern_European/Portrait_Soviet_Dmitri_Romanov_Tsar.tga"
-			"gfx/leaders/Eastern_European/Portrait_Cyprus_Makarios_Third.tga" # Move
 		}
 		neutrality = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
@@ -1581,7 +1747,6 @@ eastern_slavic = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
 			"gfx/leaders/Europe/portrait_europe_generic_4.dds"
 			"gfx/leaders/SOV/Portrait_Soviet_Generic_2.dds"
-			"gfx/leaders/Eastern_European/Portrait_Armenia_Andranik_Toros_Ozanian.tga" # Move
 		}
 	}
 	female_portraits = {
@@ -4436,6 +4601,7 @@ south_american_native = {
 			"gfx/leaders/central_american_native/portrait_nat_carib_democratic.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_absolutist.dds"
 			"gfx/leaders/South_American_Native/Portrait_Bolivia_Carlos_Quiroga.tga"
+			"gfx/leaders/South_American_Native/portrait_quechua_saturnino.dds" 
 		}
 		neutrality = {
 			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"

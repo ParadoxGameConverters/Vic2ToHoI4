@@ -52,6 +52,7 @@ RaduM84			- Programming, Data Files
 King_of_Men		- Programming, Analysis
 icalamesa		- Programming
 PheonixScale		- Programming
+Gawquon			- Programming
 Italianajt		- Analysis, Data Files, QA
 Ordinary_Kraut		- Analysis, Data Files
 DasGuntLord01		- Analysis
@@ -73,6 +74,7 @@ CSRZ			- Art (Intelligence Agencies Logos)
 Plati			- Art
 កាបូន២៦			- Art, Voices
 PPSYRIUS		- Voices
+Pepper the Incaman - Art
 
 Special thanks to LukyLucaz, who allowed us to incorporate Increased Resources into the converter.
 Special thanks to the Kaiserreich Team who allowed us to use their gfx, especially their leader portraits.
