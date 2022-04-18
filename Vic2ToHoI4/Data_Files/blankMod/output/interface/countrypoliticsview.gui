@@ -53,10 +53,10 @@ guiTypes = {
 
 		containerWindowType = {
 			name = "chart_explanation"
-			position = { x = 334 y = 297 } 
-			size = { width = 216 height = 80 } 
-			clipping = yes 
-			verticalScrollbar = "right_vertical_slider" 
+			position = { x = 334 y = 297 }
+			size = { width = 216 height = 80 }
+			clipping = yes
+			verticalScrollbar = "right_vertical_slider"
 			margin = { top = 6 left = 0 bottom = 5 right = 0 }
 
 			background = {
