@@ -51,7 +51,7 @@ guiTypes = {
 			frame = 1
 		}
 
-		containerWindowType = { 
+		containerWindowType = {
 			name = "chart_explanation"
 			position = { x = 334 y = 297 } 
 			size = { width = 216 height = 80 } 
