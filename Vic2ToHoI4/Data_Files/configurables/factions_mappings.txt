@@ -45,27 +45,15 @@ link = { culture = french ideology = radical faction = french_entente_alliance }
 
 #The Old Alliance
 link = { culture = japanese ideology = absolutist faction = JAP_the_old_alliance }
-link = { culture = heiren ideology = absolutist faction = JAP_the_old_alliance }
-link = { culture = nanren ideology = absolutist faction = JAP_the_old_alliance }
-link = { culture = dongren ideology = absolutist faction = JAP_the_old_alliance }
 
 #The New International
 link = { culture = japanese ideology = communism faction = JAP_the_new_international }
-link = { culture = heiren ideology = communism faction = JAP_the_new_international }
-link = { culture = nanren ideology = communism faction = JAP_the_new_international }
-link = { culture = dongren ideology = communism faction = JAP_the_new_international }
 
 #Western Pacific Treaty Organization
 link = { culture = japanese ideology = democratic faction = JAP_west_pacific_treaty_organization }
-link = { culture = heiren ideology = democratic faction = JAP_west_pacific_treaty_organization }
-link = { culture = nanren ideology = democratic faction = JAP_west_pacific_treaty_organization }
-link = { culture = dongren ideology = democratic faction = JAP_west_pacific_treaty_organization }
 
 #Daitoa Kyoeiken
 link = { culture = japanese ideology = fascism faction = daitoa_kyoeiken }
-link = { culture = heiren ideology = fascism faction = daitoa_kyoeiken }
-link = { culture = nanren ideology = fascism faction = daitoa_kyoeiken }
-link = { culture = dongren ideology = fascism faction = daitoa_kyoeiken }
 
 #Novus Imperium Romanum
 link = { culture = italian ideology = absolutist faction = italy_empire_faction }
@@ -99,11 +87,11 @@ link = { culture = american_cultures ideology = fascism faction = northern_sover
 link = { culture = american_cultures ideology = any faction = north_american_alliance }
 
 #African People's Union
-link = { culture = african_diaspora_cultures ideology = any faction = SAF_faction_uotap }
-link = { culture = west_african ideology = any faction = SAF_faction_uotap }
-link = { culture = central_african ideology = any faction = SAF_faction_uotap }
-link = { culture = east_african ideology = any faction = SAF_faction_uotap }
-link = { culture = southern_african ideology = any faction = SAF_faction_uotap }
+link = { culture = african_diaspora_cultures ideology = communist faction = SAF_faction_uotap }
+link = { culture = west_african ideology = communist faction = SAF_faction_uotap }
+link = { culture = central_african ideology = communist faction = SAF_faction_uotap }
+link = { culture = east_african ideology = communist faction = SAF_faction_uotap }
+link = { culture = southern_african ideology = communist faction = SAF_faction_uotap }
 
 #Pact of Rome
 link = { culture = hungarian_culture_group ideology = fascism faction = HUN_PACT_OF_ROME_FACTION }
@@ -177,17 +165,41 @@ link = { culture = iberian ideology = absolutist faction = POR_royal_iberian_all
 link = { culture = iranian_turanian ideology = absolutist faction = the_saadabad_concordat }
 link = { culture = iranian_turanian ideology = neutrality faction = the_saadabad_concordat }
 
+#Triple Entente
+link = { culture = east_slavic ideology = absolutist faction = TRIPLE_ENTENTE }
+
 #Union of Communist Soviets
 link = { culture = east_slavic ideology = communist faction = HUN_FACTION_COMMIE }
+
+#North Pacific Treaty Organization
+link = { culture = east_slavic ideology = democratic faction = NPTO }
+link = { culture = ainu ideology = democratic faction = NPTO }
+link = { culture = inuit ideology = democratic faction = NPTO }
+link = { culture = eskaleut ideology = democratic faction = NPTO }
 
 #Bolivarian Alliance
 link = { culture = latin_american_cultures ideology = communism faction = faction_mexico_bolivarian_alliance }
 
 #Hispanic Alliance
+link = { culture = latin_american_cultures ideology = absolutist faction = faction_mexico_hispanic_alliance }
 link = { culture = latin_american_cultures ideology = democratic faction = faction_mexico_hispanic_alliance }
 link = { culture = latin_american_cultures ideology = neutrality faction = faction_mexico_hispanic_alliance }
 link = { culture = latin_american_cultures ideology = radical faction = faction_mexico_hispanic_alliance }
 link = { culture = latin_american_cultures ideology = fascism faction = faction_mexico_hispanic_alliance }
+
+#Finnic Supremacy League
+link = { culture = finnish ideology = fascism faction = FINNO_ESTONIAN_SUPREMACY_LEAGUE }
+link = { culture = estonian ideology = fascism faction = FINNO_ESTONIAN_SUPREMACY_LEAGUE }
+
+#Baltic Entente
+link = { culture = baltic ideology = democratic faction = BALTIC_ENTENTE_FACTION }
+
+#Baltic Alliance
+link = { culture = baltic ideology = absolutist faction = POL_baltic_alliance }
+link = { culture = baltic ideology = communism faction = POL_baltic_alliance }
+link = { culture = baltic ideology = neutrality faction = POL_baltic_alliance }
+link = { culture = baltic ideology = radical faction = POL_baltic_alliance }
+link = { culture = baltic ideology = fascism faction = POL_baltic_alliance }
 
 #Left out: Comintern, the_berlin_moscow_axis, anti_soviet_pact, FRA_little_entente, FRA_stresa_front, panbalkan_workers_congress, house_bernadotte, GER_anti_communist_bloc, JAP_asian_communist_solidarity, PRC_mao_faction, CHI_the_peoples_front, USA_hemisphere_defense_faction, anglo_italian_pact, western_pacific_sphere, and many more.
 
