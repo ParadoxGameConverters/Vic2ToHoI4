@@ -4,7 +4,7 @@
 # <region>_emblem.tga file in the flags folder
 # Freed name and adjective yet to be implemented
 # Use "blocked" section in region definition to prevent countries with capital in that region from creating dominions in blocked regions
-# Use "region groupings" to define your own superregions to use in blocked section in regions definitons
+# Use "region groupings" to define your own superregions to use in blocked section in regions definitions
 
 ## REGION GROUPINGS
 europe = {
