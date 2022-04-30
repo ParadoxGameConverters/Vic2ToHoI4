@@ -271,7 +271,7 @@ ConquestStrategies HoI4WarCreator::HowToTakeLand(std::shared_ptr<HoI4::Country> 
 	 std::shared_ptr<HoI4::Country> AttackingCountry,
 	 double time)
 {
-	if (TargetCountry != AttackingCountry)
+	if (TargetCountry == AttackingCountry)
 	{
 		return ConquestStrategies::None;
 	}
