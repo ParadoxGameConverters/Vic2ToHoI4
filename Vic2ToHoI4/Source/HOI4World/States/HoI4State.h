@@ -102,6 +102,7 @@ class State
 	void convertIndustry(double workerFactoryRatio,
 		 const HoI4::StateCategories& theStateCategories,
 		 const CoastalProvinces& theCoastalProvinces);
+	[[nodiscard]] const auto& getEmployedWorkers() const { return employedWorkers; }
 
   private:
 	int determineFactoryNumbers(double workerFactoryRatio) const;

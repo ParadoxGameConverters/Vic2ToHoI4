@@ -713,16 +713,25 @@ void HoI4::States::putIndustryInStates(const std::map<std::string, double>& fact
 	 const Configuration& theConfiguration)
 {
 	const StateCategories theStateCategories(theConfiguration);
-
-	for (auto& HoI4State: states)
+	std::vector<HoI4::State> sortedStates;
+	for (const auto& state: states | std::views::values)
 	{
-		auto ratioMapping = factoryWorkerRatios.find(HoI4State.second.getOwner());
+		sortedStates.push_back(state);
+	}
+	std::sort(sortedStates.begin(), sortedStates.end(), [](const HoI4::State& a, const HoI4::State& b) {
+		return a.getEmployedWorkers() > b.getEmployedWorkers();
+	});
+
+	for (const auto& state: sortedStates)
+	{
+		auto ratioMapping = factoryWorkerRatios.find(state.getOwner());
 		if (ratioMapping == factoryWorkerRatios.end())
 		{
 			continue;
 		}
 
-		HoI4State.second.convertIndustry(ratioMapping->second, theStateCategories, theCoastalProvinces);
+		auto& HoI4State = states[state.getID()];
+		HoI4State.convertIndustry(ratioMapping->second, theStateCategories, theCoastalProvinces);
 	}
 }
 
