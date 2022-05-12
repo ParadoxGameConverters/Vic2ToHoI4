@@ -722,6 +722,7 @@ void HoI4::States::putIndustryInStates(const std::map<std::string, double>& fact
 		return a.getEmployedWorkers() > b.getEmployedWorkers();
 	});
 
+	std::map<std::string, int> countryIndustryRemainder;
 	for (const auto& state: sortedStates)
 	{
 		auto ratioMapping = factoryWorkerRatios.find(state.getOwner());
@@ -731,7 +732,9 @@ void HoI4::States::putIndustryInStates(const std::map<std::string, double>& fact
 		}
 
 		auto& HoI4State = states[state.getID()];
-		HoI4State.convertIndustry(ratioMapping->second, theStateCategories, theCoastalProvinces);
+		auto& industryRemainder = countryIndustryRemainder[state.getOwner()];
+		HoI4State.convertIndustry(ratioMapping->second, industryRemainder, theStateCategories, theCoastalProvinces);
+		industryRemainder = HoI4State.getIndustryRemainder();
 	}
 }
 

@@ -100,13 +100,15 @@ class State
 		 const Configuration& theConfiguration);
 
 	void convertIndustry(double workerFactoryRatio,
+		 int ownerIndustryRemainder,
 		 const HoI4::StateCategories& theStateCategories,
 		 const CoastalProvinces& theCoastalProvinces);
 	[[nodiscard]] const auto& getEmployedWorkers() const { return employedWorkers; }
+	[[nodiscard]] int getIndustryRemainder() const { return industryRemainder; }
 
   private:
-	int determineFactoryNumbers(double workerFactoryRatio) const;
-	int constrainFactoryNumbers(double rawFactories) const;
+	int determineFactoryNumbers(double workerFactoryRatio, int ownerIndustryRemainder);
+	int constrainFactoryNumbers(double rawFactories);
 	void determineCategory(int factories, const HoI4::StateCategories& theStateCategories);
 	void addInfrastructureFromRails(float averageRailLevel);
 	void addInfrastructureFromFactories(int factories);
@@ -143,6 +145,7 @@ class State
 	int civFactories = 0;
 	int milFactories = 0;
 	int dockyards = 0;
+	int industryRemainder = 0;
 	std::string category = "wasteland";
 	float infrastructure = 1.0F;
 
