@@ -205,6 +205,7 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 
 	const HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001,
+		 0,
 		 *HoI4::StateCategories::Builder().addCategory(8, "mockedCategory").Build(),
 		 theCoastalProvinces);
 
@@ -223,6 +224,7 @@ TEST(HoI4World_States_StateTests, TotalFactoriesHalvedByMissingCore)
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.convertIndustry(0.0001,
+		 0,
 		 *HoI4::StateCategories::Builder().addCategory(8, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
@@ -242,10 +244,48 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
 	theState.addCores({"TAG"});
 
 	theState.convertIndustry(0.0001,
+		 0,
 		 *HoI4::StateCategories::Builder().addCategory(14, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
 	EXPECT_EQ(12, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
+}
+
+
+TEST(HoI4World_States_StateTests, CappedFactoriesTransferToNextState)
+{
+	const auto sourceStateOne =
+		 *Vic2::State::Builder()
+				.setEmployedWorkers(150000)
+				.setProvinces({Vic2::Province::Builder().setNumber(0).setPops({Pop(PopOptions{.size = 60'000})}).build()})
+				.build();
+	const auto sourceStateTwo =
+		 *Vic2::State::Builder()
+				.setEmployedWorkers(100000)
+				.setProvinces({Vic2::Province::Builder().setNumber(0).setPops({Pop(PopOptions{.size = 60'000})}).build()})
+				.build();
+
+	HoI4::State stateOne(sourceStateOne, 42, "TAG");
+	HoI4::State stateTwo(sourceStateTwo, 43, "TAG");
+	stateOne.addCores({"TAG"});
+	stateTwo.addCores({"TAG"});
+
+	int ownerIndustryRemainder = 0;
+	stateOne.convertIndustry(0.0001,
+		 ownerIndustryRemainder,
+		 *HoI4::StateCategories::Builder().addCategory(14, "mockedCategory").Build(),
+		 *HoI4::CoastalProvinces::Builder().Build());
+	ownerIndustryRemainder = stateOne.getIndustryRemainder();
+
+	stateTwo.convertIndustry(0.0001,
+		 ownerIndustryRemainder,
+		 *HoI4::StateCategories::Builder().addCategory(14, "mockedCategory").Build(),
+		 *HoI4::CoastalProvinces::Builder().Build());
+	ownerIndustryRemainder = stateTwo.getIndustryRemainder();
+
+	EXPECT_EQ(12, stateOne.getMilFactories() + stateOne.getCivFactories() + stateOne.getDockyards());
+	EXPECT_EQ(12, stateTwo.getMilFactories() + stateTwo.getCivFactories() + stateTwo.getDockyards());
+	EXPECT_EQ(1, ownerIndustryRemainder);
 }
 
 
@@ -262,6 +302,7 @@ TEST(HoI4World_States_StateTests, categoryCanBeChanged)
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.convertIndustry(0.0001,
+		 0,
 		 *HoI4::StateCategories::Builder().addCategory(14, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
@@ -277,6 +318,7 @@ TEST(HoI4World_States_StateTests, InfrastructureAddedPerTwoRailLevels)
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.convertIndustry(0.0001,
+		 0,
 		 *HoI4::StateCategories::Builder().addCategory(2, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
@@ -295,6 +337,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForAnyFactories)
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.convertIndustry(0.0001,
+		 0,
 		 *HoI4::StateCategories::Builder().addCategory(7, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
@@ -316,6 +359,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForSixFactories)
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.convertIndustry(0.0001,
+		 0,
 		 *HoI4::StateCategories::Builder().addCategory(9, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
@@ -334,6 +378,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForTenFactories)
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.convertIndustry(0.0001,
+		 0,
 		 *HoI4::StateCategories::Builder().addCategory(13, "mockedCategory").Build(),
 		 *HoI4::CoastalProvinces::Builder().Build());
 
