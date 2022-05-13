@@ -336,10 +336,11 @@ void HoI4::State::addManpower(const std::vector<std::shared_ptr<Vic2::Province>>
 
 
 void HoI4::State::convertIndustry(double workerFactoryRatio,
+	 int ownerIndustryRemainder,
 	 const HoI4::StateCategories& theStateCategories,
 	 const CoastalProvinces& theCoastalProvinces)
 {
-	int factories = determineFactoryNumbers(workerFactoryRatio);
+	int factories = determineFactoryNumbers(workerFactoryRatio, ownerIndustryRemainder);
 
 	determineCategory(factories, theStateCategories);
 	addInfrastructureFromFactories(factories + civFactories + milFactories + dockyards);
@@ -348,15 +349,15 @@ void HoI4::State::convertIndustry(double workerFactoryRatio,
 }
 
 
-int HoI4::State::determineFactoryNumbers(double workerFactoryRatio) const
+int HoI4::State::determineFactoryNumbers(double workerFactoryRatio, int ownerIndustryRemainder)
 {
 	double rawFactories = employedWorkers * workerFactoryRatio;
 	rawFactories = round(rawFactories);
-	return constrainFactoryNumbers(rawFactories);
+	return constrainFactoryNumbers(rawFactories + ownerIndustryRemainder);
 }
 
 
-int HoI4::State::constrainFactoryNumbers(double rawFactories) const
+int HoI4::State::constrainFactoryNumbers(double rawFactories)
 {
 	int factories = static_cast<int>(rawFactories);
 
@@ -374,6 +375,8 @@ int HoI4::State::constrainFactoryNumbers(double rawFactories) const
 	{
 		factories = upperLimit;
 	}
+
+	industryRemainder = static_cast<int>(rawFactories) - factories;
 
 	return factories;
 }

@@ -713,16 +713,29 @@ void HoI4::States::putIndustryInStates(const std::map<std::string, double>& fact
 	 const Configuration& theConfiguration)
 {
 	const StateCategories theStateCategories(theConfiguration);
-
-	for (auto& HoI4State: states)
+	std::vector<std::shared_ptr<HoI4::State>> sortedStates;
+	for (auto& state: states | std::views::values)
 	{
-		auto ratioMapping = factoryWorkerRatios.find(HoI4State.second.getOwner());
+		sortedStates.push_back(std::make_shared<HoI4::State>(state));
+	}
+	std::sort(sortedStates.begin(),
+		 sortedStates.end(),
+		 [](const std::shared_ptr<HoI4::State>& a, const std::shared_ptr<HoI4::State>& b) {
+			 return a->getEmployedWorkers() > b->getEmployedWorkers();
+		 });
+
+	std::map<std::string, int> countryIndustryRemainder;
+	for (const auto& HoI4State: sortedStates)
+	{
+		auto ratioMapping = factoryWorkerRatios.find(HoI4State->getOwner());
 		if (ratioMapping == factoryWorkerRatios.end())
 		{
 			continue;
 		}
 
-		HoI4State.second.convertIndustry(ratioMapping->second, theStateCategories, theCoastalProvinces);
+		auto& industryRemainder = countryIndustryRemainder[HoI4State->getOwner()];
+		HoI4State->convertIndustry(ratioMapping->second, industryRemainder, theStateCategories, theCoastalProvinces);
+		industryRemainder = HoI4State->getIndustryRemainder();
 	}
 }
 
