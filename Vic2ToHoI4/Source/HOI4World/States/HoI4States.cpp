@@ -676,15 +676,15 @@ void HoI4::States::addGreatPowerAirBases(const std::vector<std::shared_ptr<Count
 
 void HoI4::States::addBasicAirBases()
 {
-	for (auto& state: states)
+	for (auto& state: states | std::views::values)
 	{
 		const auto numAirbases =
-			 (state.second.getCivFactories() + state.second.getMilFactories()) / NUM_FACTORIES_PER_AIRBASE;
-		state.second.addAirBase(numAirbases);
+			 (state.getCivFactories() + state.getMilFactories() + state.getDockyards()) / NUM_FACTORIES_PER_AIRBASE;
+		state.addAirBase(numAirbases);
 
-		if (state.second.getInfrastructure() >= AIRBASES_FOR_INFRASTRUCTURE_LEVEL)
+		if (state.getInfrastructure() >= AIRBASES_FOR_INFRASTRUCTURE_LEVEL)
 		{
-			state.second.addAirBase(1);
+			state.addAirBase(1);
 		}
 	}
 }
