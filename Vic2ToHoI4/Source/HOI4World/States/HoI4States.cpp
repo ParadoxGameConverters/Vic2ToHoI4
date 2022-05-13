@@ -721,8 +721,8 @@ void HoI4::States::putIndustryInStates(const std::map<std::string, double>& fact
 	std::sort(sortedStates.begin(),
 		 sortedStates.end(),
 		 [](const std::shared_ptr<HoI4::State>& a, const std::shared_ptr<HoI4::State>& b) {
-		return a->getEmployedWorkers() > b->getEmployedWorkers();
-	});
+			 return a->getEmployedWorkers() > b->getEmployedWorkers();
+		 });
 
 	std::map<std::string, int> countryIndustryRemainder;
 	for (const auto& HoI4State: sortedStates)
