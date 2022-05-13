@@ -48,10 +48,11 @@ void HoI4::Events::createFactionEvents(const Country& leader, Mappers::FactionNa
 	std::string createFaction = "if = {\n";
 	createFaction += "\t\t\tlimit = {\n";
 	createFaction += "\t\t\t\t" + leaderTag + " = {\n";
-	createFaction += "\t\t\t\t\tis_in_faction = no\n";
+	createFaction += "\t\t\t\t\tis_faction_leader = no\n";
 	createFaction += "\t\t\t\t}\n";
 	createFaction += "\t\t\t}\n";
 	createFaction += "\t\t\t" + leaderTag + " = {\n";
+	createFaction += "\t\t\t\tleave_faction = yes\n";
 	createFaction += "\t\t\t\tcreate_faction = \"" + factionName + "\"\n";
 	createFaction += "\t\t\t}\n";
 	createFaction += "\t\t}";

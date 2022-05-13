@@ -2511,8 +2511,8 @@ focus = {
 	icon = GFX_goal_generic_allies_build_infantry
 	available = {
 		OR = {
-			is_faction_leader = yes
 			is_in_faction = no
+			faction_leader = { NOT = { has_war_together_with = ROOT } }
 		}
 		$ALLY = {
 			OR = {
