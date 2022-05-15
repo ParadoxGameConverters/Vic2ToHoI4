@@ -620,6 +620,11 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 				if (GCTargets.size() < maxGCWars)
 				{
 					GCTargets.push_back(greatPower);
+					if (const auto& gpItr = std::find(newAllies.begin(), newAllies.end(), greatPower);
+						gpItr != newAllies.end())
+					{
+						newAllies.erase(gpItr);
+					}
 				}
 			}
 		}
