@@ -79,6 +79,7 @@ class HoI4FocusTree: commonItems::parser
 		 const std::vector<std::shared_ptr<HoI4::Country>>& newAllies,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& GCTargets,
 		 const std::string& ideology,
+		 const std::set<std::string>& majorIdeologies,
 		 HoI4::Events& events,
 		 Mappers::FactionNameMapper& factionNameMapper,
 		 HoI4::Localisation& hoi4Localisations);

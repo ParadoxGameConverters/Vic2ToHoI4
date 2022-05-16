@@ -2503,6 +2503,8 @@ focus = {
 	completion_reward = {
 		add_named_threat = { threat = 3 name = "Call for the $IDEOLOGY Summit" }
 		add_political_power = 150
+		#FASC_NEWS
+		#COMM_NEWS
 	}
 }
 

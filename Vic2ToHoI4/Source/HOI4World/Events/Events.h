@@ -41,6 +41,7 @@ class Events: commonItems::parser
 
 	class Builder;
 
+	void createSummitNewsEvents(const std::set<std::string>& majorIdeologies);
 	void createFactionEvents(const Country& leader, Mappers::FactionNameMapper& factionNameMapper);
 	void createAnnexEvent(const Country& annexer, const Country& annexed);
 	void createSudetenEvent(const std::string& annexerTag,
@@ -80,6 +81,7 @@ class Events: commonItems::parser
 	[[nodiscard]] const auto& getCapitulationEvents() const { return capitulationEvents; }
 	[[nodiscard]] const auto& getMtgNavalTreatyEvents() const { return mtgNavalTreatyEvents; }
 	[[nodiscard]] const auto& getLarOccupationEvents() const { return larOccupationEvents; }
+	[[nodiscard]] const auto& getSummitNewsEventsIds() const { return summitNewsEventsIds; }
 
   private:
 	void addOnTheRise(const std::set<std::string>& majorIdeologies, Localisation& localisation);
@@ -93,6 +95,7 @@ class Events: commonItems::parser
 
 	std::vector<Event> newsEvents;
 	int newsEventNumber = 500;
+	std::map<std::string, std::string> summitNewsEventsIds;
 	std::vector<Event> nationalFocusEvents;
 	int nationalFocusEventNumber = 1;
 	std::vector<Event> politicalEvents;

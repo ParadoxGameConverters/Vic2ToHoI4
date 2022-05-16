@@ -621,7 +621,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 				{
 					GCTargets.push_back(greatPower);
 					if (const auto& gpItr = std::find(newAllies.begin(), newAllies.end(), greatPower);
-						gpItr != newAllies.end())
+						 gpItr != newAllies.end())
 					{
 						newAllies.erase(gpItr);
 					}
@@ -655,6 +655,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 			 newAllies,
 			 GCTargets,
 			 "Fascist",
+			 theWorld->getMajorIdeologies(),
 			 theWorld->getEvents(),
 			 theWorld->getFactionNameMapper(),
 			 hoi4Localisations);
@@ -838,6 +839,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 			 newAllies,
 			 finalTargets,
 			 "Communist",
+			 theWorld->getMajorIdeologies(),
 			 theWorld->getEvents(),
 			 theWorld->getFactionNameMapper(),
 			 hoi4Localisations);

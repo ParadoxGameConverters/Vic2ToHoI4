@@ -541,3 +541,7 @@
  reconquest_news.1.t:0 "Expansionismo [From.GetAdjMS]"
  reconquest_news.1.d:0 "[From.GetName] se ha vuelto cada vez más audaz al afirmar sus reivindicaciones sobre el territorio de [Root.GetName]. Su política expansionista es motivo de preocupación ya que solo aumenta la tensión mundial".
  reconquest_news.1.a:0 "Alguien debería intervenir"
+ fascist_summit.t:0 "Una cumbre fascista en [From.GetName]"
+ fascist_summit.d:0 "Se ha propuesto una cumbre [From.GetRulingIdeology] en [From.Capital.GetCapitalVictoryPointName] que acercaría a las naciones [From.GetRulingIdeology]"
+ fascist_summit.a:0 "Las tensiones aumentan"
+ communist_summit.t:0 "Una cumbre comunista en [From.GetName]"

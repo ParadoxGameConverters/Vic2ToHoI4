@@ -541,3 +541,7 @@
  reconquest_news.1.t:0 "[From.GetAdjectiveCap]ий экспансионизм"
  reconquest_news.1.d:0 "[From.GetName] становится все более смелым, заявляя о своих претензиях на территорию [Root.GetName]. Их экспансионистская политика вызывает беспокойство, поскольку она только увеличивает мировую напряженность".
  reconquest_news.1.a:0 "Кто-то должен вмешаться"
+ fascist_summit.t:0 "Фашистский саммит в [From.GetName]"
+ fascist_summit.d:0 "Предложен саммит [From.GetRulingIdeology] в [From.Capital.GetCapitalVictoryPointName], который сблизит страны [From.GetRulingIdeology]"
+ fascist_summit.a:0 "Напряженность растет"
+ communist_summit.t:0 "Коммунистический саммит в [From.GetName]"
