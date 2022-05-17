@@ -18,6 +18,50 @@
 
 
 
+void HoI4::Events::createSummitNewsEvents(const std::set<std::string>& majorIdeologies)
+{
+	for (const auto& ideology: majorIdeologies)
+	{
+		if (ideology != "fascism" && ideology != "communism")
+		{
+			continue;
+		}
+		Event newsEvent;
+		newsEvent.giveType("news_event");
+		newsEvent.giveId("news." + std::to_string(newsEventNumber));
+		if (ideology == "fascism")
+		{
+			newsEvent.giveTitle("fascist_summit.t");
+			newsEvent.givePicture("GFX_news_event_fascist_gathering");
+		}
+		else if (ideology == "communism")
+		{
+			newsEvent.giveTitle("communist_summit.t");
+			newsEvent.givePicture("GFX_news_event_generic_rally_3");
+		}
+		newsEvent.giveDescription("= fascist_summit.d");
+		newsEvent.setTriggeredOnly();
+		EventOption optionA;
+		optionA.giveName("fascist_summit.a");
+		optionA.giveScriptBlock("effect_tooltip = { FROM = { add_threat = 3 } }");
+		newsEvent.giveOption(std::move(optionA));
+
+		if (const auto& evtItr = std::find_if(newsEvents.begin(),
+				  newsEvents.end(),
+				  [newsEvent](const Event& evt) {
+					  return newsEvent.getTitle() == evt.getTitle();
+				  });
+			 evtItr == newsEvents.end())
+		{
+			newsEvents.push_back(newsEvent);
+			summitNewsEventsIds[ideology] = newsEvent.getId();
+			newsEventNumber++;
+		}
+	}
+}
+
+
+
 void HoI4::Events::createFactionEvents(const Country& leader, Mappers::FactionNameMapper& factionNameMapper)
 {
 	const auto& leaderTag = leader.getTag();

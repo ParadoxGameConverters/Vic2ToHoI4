@@ -541,3 +541,7 @@
  reconquest_news.1.t:0 "[From.GetAdjectiveCap] ekspansjonizm"
  reconquest_news.1.d:0 "[From.GetName] staje się coraz bardziej odważny w dochodzeniu swoich roszczeń do terytorium [Root.GetName]. Ich ekspansywna polityka jest powodem do niepokoju, ponieważ tylko zwiększa napięcie na świecie."
  reconquest_news.1.a:0 "Ktoś powinien wkroczyć"
+ fascist_summit.t:0 "Szczyt faszystowski w [From.GetName]"
+ fascist_summit.d:0 "W [From.Capital.GetCapitalVictoryPointName] zaproponowano zjazd [From.GetRulingIdeology], który przybliży narody [From.GetRulingIdeology]"
+ fascist_summit.a:0 "Napięcia rosną"
+ communist_summit.t:0 "Szczyt Komunistów w [From.GetName]"

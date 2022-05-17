@@ -1183,6 +1183,7 @@ void HoI4FocusTree::addGPWarBranch(const HoI4::Country& home,
 	 const std::vector<std::shared_ptr<HoI4::Country>>& newAllies,
 	 const std::vector<std::shared_ptr<HoI4::Country>>& GCTargets,
 	 const std::string& ideology,
+	 const std::set<std::string>& majorIdeologies,
 	 HoI4::Events& events,
 	 Mappers::FactionNameMapper& factionNameMapper,
 	 HoI4::Localisation& hoi4Localisations)
@@ -1198,6 +1199,43 @@ void HoI4FocusTree::addGPWarBranch(const HoI4::Country& home,
 		summitFocus->xPos = nextFreeColumn + static_cast<int>(newAllies.size()) - 1;
 		summitFocus->yPos = 0;
 		summitFocus->updateFocusElement(summitFocus->completionReward, "$IDEOLOGY", ideology);
+
+		events.createSummitNewsEvents(majorIdeologies);
+		auto eventIds = events.getSummitNewsEventsIds();
+		if (majorIdeologies.contains("fascism"))
+		{
+			std::string hiddenEffect = "hidden_effect = {\n";
+			hiddenEffect += "\t\t\tif = {\n";
+			hiddenEffect += "\t\t\t\tlimit = { has_government = fascism }\n";
+			hiddenEffect += "\t\t\t\tevery_other_country = {\n";
+			hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
+			hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds["fascism"] + " }\n";
+			hiddenEffect += "\t\t\t\t}\n";
+			hiddenEffect += "\t\t\t}\n";
+			hiddenEffect += "\t\t}\n";
+			summitFocus->updateFocusElement(summitFocus->completionReward, "#FASC_NEWS", hiddenEffect);
+		}
+		else
+		{
+			summitFocus->removePlaceholder(summitFocus->completionReward, "#FASC_NEWS");
+		}
+		if (majorIdeologies.contains("communism"))
+		{
+			std::string hiddenEffect = "hidden_effect = {\n";
+			hiddenEffect += "\t\t\tif = {\n";
+			hiddenEffect += "\t\t\t\tlimit = { has_government = communism }\n";
+			hiddenEffect += "\t\t\t\tevery_other_country = {\n";
+			hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
+			hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds["communism"] + " }\n";
+			hiddenEffect += "\t\t\t\t}\n";
+			hiddenEffect += "\t\t\t}\n";
+			hiddenEffect += "\t\t}\n";
+			summitFocus->updateFocusElement(summitFocus->completionReward, "#COMM_NEWS", hiddenEffect);
+		}
+		else
+		{
+			summitFocus->removePlaceholder(summitFocus->completionReward, "#COMM_NEWS");
+		}
 		focuses.push_back(summitFocus);
 		hoi4Localisations.copyFocusLocalisations("_Summit", summitFocus->text);
 		hoi4Localisations.updateLocalisationText(summitFocus->text, "$TARGET", ideology);
