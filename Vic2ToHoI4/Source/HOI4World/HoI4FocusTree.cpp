@@ -273,16 +273,10 @@ void HoI4FocusTree::addGenericFocusTree(const std::set<std::string>& majorIdeolo
 	noMajorDemocraticNeighbor += "\t\t\t\t\thas_government = democratic\n";
 	noMajorDemocraticNeighbor += "\t\t\t\t}\n";
 	noMajorDemocraticNeighbor += "\t\t\t}\n";
-	if (majorIdeologies.contains("democratic"))
-	{
-		libertyEthosFocus->updateFocusElement(libertyEthosFocus->aiWillDo,
-			 "#NO_MAJOR_DEMOCRATIC_NEIGHBOR",
-			 noMajorDemocraticNeighbor);
-	}
-	else
-	{
-		libertyEthosFocus->removePlaceholder(libertyEthosFocus->aiWillDo, "#NO_MAJOR_DEMOCRATIC_NEIGHBOR");
-	}
+	libertyEthosFocus->updateFocusElement(libertyEthosFocus->aiWillDo,
+		 "#NO_MAJOR_DEMOCRATIC_NEIGHBOR",
+		 noMajorDemocraticNeighbor,
+		 majorIdeologies.contains("democratic"));
 	sharedFocuses.push_back(libertyEthosFocus);
 
 	auto neutralityFocus = std::make_shared<HoI4::SharedFocus>(GetLoadedFocus("neutrality_focus"));
@@ -573,14 +567,10 @@ void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
 		auto warPlanFocus = GetLoadedFocus("WarPlan").makeTargetedCopy(home.getTag(), tag, hoi4Localisations);
 		warPlanFocus->updateFocusElement(warPlanFocus->bypass, "$TARGET", tag);
 		warPlanFocus->xPos = relativePos;
-		if (truceUntil)
-		{
-			warPlanFocus->updateFocusElement(warPlanFocus->available, "#TRUCE", "date > " + truceUntil->toString());
-		}
-		else
-		{
-			warPlanFocus->removePlaceholder(warPlanFocus->available, "#TRUCE");
-		}
+		warPlanFocus->updateFocusElement(warPlanFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
 		warPlanFocus->updateFocusElement(warPlanFocus->available, "$TARGET", tag);
 		focuses.push_back(warPlanFocus);
 
@@ -589,14 +579,10 @@ void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
 		embargoFocus->prerequisites.push_back("= { focus =  WarPlan" + home.getTag() + tag + " }");
 		embargoFocus->updateFocusElement(embargoFocus->bypass, "$TARGET", tag);
 		embargoFocus->relativePositionId += tag;
-		if (truceUntil)
-		{
-			embargoFocus->updateFocusElement(embargoFocus->available, "#TRUCE", "date > " + truceUntil->toString());
-		}
-		else
-		{
-			embargoFocus->removePlaceholder(embargoFocus->available, "#TRUCE");
-		}
+		embargoFocus->updateFocusElement(embargoFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
 		embargoFocus->updateFocusElement(embargoFocus->available, "$TARGET", tag);
 		embargoFocus->updateFocusElement(embargoFocus->completionReward, "$TARGET", tag);
 		focuses.push_back(embargoFocus);
@@ -606,14 +592,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
 		warFocus->prerequisites.push_back("= { focus =  Embargo" + home.getTag() + tag + " }");
 		warFocus->updateFocusElement(warFocus->bypass, "$TARGET", tag);
 		warFocus->relativePositionId += tag;
-		if (truceUntil)
-		{
-			warFocus->updateFocusElement(warFocus->available, "#TRUCE", "date > " + truceUntil->toString());
-		}
-		else
-		{
-			warFocus->removePlaceholder(warFocus->available, "#TRUCE");
-		}
+		warFocus->updateFocusElement(warFocus->available, "#TRUCE", "date > " + truceUntil->toString(), !!truceUntil);
 		warFocus->updateFocusElement(warFocus->available, "$TARGET", tag);
 		warFocus->updateFocusElement(warFocus->completionReward, "$TARGET", tag);
 		focuses.push_back(warFocus);
@@ -688,16 +667,11 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(const HoI4::Country& home
 		auto protectorateFocus =
 			 GetLoadedFocus("Protectorate").makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
 		protectorateFocus->id = "Protectorate" + homeTag + target->getTag();
-		if (const auto& truceUntil = home.getTruceUntil(target->getTag()); truceUntil)
-		{
-			protectorateFocus->updateFocusElement(protectorateFocus->available,
-				 "#TRUCE",
-				 "date > " + truceUntil->toString());
-		}
-		else
-		{
-			protectorateFocus->removePlaceholder(protectorateFocus->available, "#TRUCE");
-		}
+		const auto& truceUntil = home.getTruceUntil(target->getTag());
+		protectorateFocus->updateFocusElement(protectorateFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
 		protectorateFocus->updateFocusElement(protectorateFocus->available, "$TARGET", target->getTag());
 		protectorateFocus->prerequisites.push_back("= { focus = ColonialArmy" + homeTag + " }");
 		protectorateFocus->relativePositionId = "ColonialArmy" + homeTag;
@@ -715,16 +689,11 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(const HoI4::Country& home
 		auto protectorateFocus =
 			 GetLoadedFocus("Protectorate").makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
 		protectorateFocus->id = "Protectorate" + homeTag + target->getTag();
-		if (const auto& truceUntil = home.getTruceUntil(target->getTag()); truceUntil)
-		{
-			protectorateFocus->updateFocusElement(protectorateFocus->available,
-				 "#TRUCE",
-				 "date > " + truceUntil->toString());
-		}
-		else
-		{
-			protectorateFocus->removePlaceholder(protectorateFocus->available, "#TRUCE");
-		}
+		const auto& truceUntil = home.getTruceUntil(target->getTag());
+		protectorateFocus->updateFocusElement(protectorateFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
 		protectorateFocus->updateFocusElement(protectorateFocus->available, "$TARGET", target->getTag());
 		protectorateFocus->prerequisites.push_back(
 			 "= { focus = Protectorate" + homeTag + targetColonies.front()->getTag() + " }");
@@ -787,14 +756,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(const HoI4::Country& home
 
 		auto annexFocus = GetLoadedFocus("Annex").makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
 		annexFocus->id = "Annex" + homeTag + target->getTag();
-		if (const auto& truceUntil = home.getTruceUntil(target->getTag()); truceUntil)
-		{
-			annexFocus->updateFocusElement(annexFocus->available, "#TRUCE", "date > " + truceUntil->toString());
-		}
-		else
-		{
-			annexFocus->removePlaceholder(annexFocus->available, "#TRUCE");
-		}
+		const auto& truceUntil = home.getTruceUntil(target->getTag());
+		annexFocus->updateFocusElement(annexFocus->available, "#TRUCE", "date > " + truceUntil->toString(), !!truceUntil);
 		annexFocus->updateFocusElement(annexFocus->available, "$TARGET", target->getTag());
 		annexFocus->prerequisites.push_back("= { focus = PrepTheBorder" + homeTag + " }");
 		annexFocus->relativePositionId = "PrepTheBorder" + homeTag;
@@ -811,14 +774,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(const HoI4::Country& home
 
 		auto annexFocus = GetLoadedFocus("Annex").makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
 		annexFocus->id = "Annex" + homeTag + target->getTag();
-		if (const auto& truceUntil = home.getTruceUntil(target->getTag()); truceUntil)
-		{
-			annexFocus->updateFocusElement(annexFocus->available, "#TRUCE", "date > " + truceUntil->toString());
-		}
-		else
-		{
-			annexFocus->removePlaceholder(annexFocus->available, "#TRUCE");
-		}
+		const auto& truceUntil = home.getTruceUntil(target->getTag());
+		annexFocus->updateFocusElement(annexFocus->available, "#TRUCE", "date > " + truceUntil->toString(), !!truceUntil);
 		annexFocus->updateFocusElement(annexFocus->available, "$TARGET", target->getTag());
 		annexFocus->prerequisites.push_back("= { focus = NatSpirit" + home.getTag() + " }");
 		annexFocus->relativePositionId = "NatSpirit" + homeTag;
@@ -1152,14 +1109,11 @@ void HoI4FocusTree::addFascistSudetenBranch(const HoI4::Country& home,
 		// FINISH HIM
 		auto finishFocus = GetLoadedFocus("_finish_").makeTargetedCopy(homeTag, targetTag, hoi4Localisations);
 		finishFocus->id = homeTag + "_finish_" + targetTag;
-		if (const auto& truceUntil = home.getTruceUntil(targetTag); truceUntil)
-		{
-			finishFocus->updateFocusElement(finishFocus->available, "#DATE", "date > " + truceUntil->toString());
-		}
-		else
-		{
-			finishFocus->removePlaceholder(finishFocus->available, "#DATE");
-		}
+		const auto& truceUntil = home.getTruceUntil(targetTag);
+		finishFocus->updateFocusElement(finishFocus->available,
+			 "#DATE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
 		finishFocus->updateFocusElement(finishFocus->available, "$TARGET", targetTag);
 		finishFocus->prerequisites.push_back("= { focus =  " + homeTag + "_sudeten_" + targetTag + " }");
 		finishFocus->relativePositionId = homeTag + "_sudeten_" + targetTag;
@@ -1202,40 +1156,32 @@ void HoI4FocusTree::addGPWarBranch(const HoI4::Country& home,
 
 		events.createSummitNewsEvents(majorIdeologies);
 		auto eventIds = events.getSummitNewsEventsIds();
-		if (majorIdeologies.contains("fascism"))
-		{
-			std::string hiddenEffect = "hidden_effect = {\n";
-			hiddenEffect += "\t\t\tif = {\n";
-			hiddenEffect += "\t\t\t\tlimit = { has_government = fascism }\n";
-			hiddenEffect += "\t\t\t\tevery_other_country = {\n";
-			hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
-			hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds["fascism"] + " }\n";
-			hiddenEffect += "\t\t\t\t}\n";
-			hiddenEffect += "\t\t\t}\n";
-			hiddenEffect += "\t\t}\n";
-			summitFocus->updateFocusElement(summitFocus->completionReward, "#FASC_NEWS", hiddenEffect);
-		}
-		else
-		{
-			summitFocus->removePlaceholder(summitFocus->completionReward, "#FASC_NEWS");
-		}
-		if (majorIdeologies.contains("communism"))
-		{
-			std::string hiddenEffect = "hidden_effect = {\n";
-			hiddenEffect += "\t\t\tif = {\n";
-			hiddenEffect += "\t\t\t\tlimit = { has_government = communism }\n";
-			hiddenEffect += "\t\t\t\tevery_other_country = {\n";
-			hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
-			hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds["communism"] + " }\n";
-			hiddenEffect += "\t\t\t\t}\n";
-			hiddenEffect += "\t\t\t}\n";
-			hiddenEffect += "\t\t}\n";
-			summitFocus->updateFocusElement(summitFocus->completionReward, "#COMM_NEWS", hiddenEffect);
-		}
-		else
-		{
-			summitFocus->removePlaceholder(summitFocus->completionReward, "#COMM_NEWS");
-		}
+		std::string hiddenEffect = "hidden_effect = {\n";
+		hiddenEffect += "\t\t\tif = {\n";
+		hiddenEffect += "\t\t\t\tlimit = { has_government = fascism }\n";
+		hiddenEffect += "\t\t\t\tevery_other_country = {\n";
+		hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
+		hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds["fascism"] + " }\n";
+		hiddenEffect += "\t\t\t\t}\n";
+		hiddenEffect += "\t\t\t}\n";
+		hiddenEffect += "\t\t}\n";
+		summitFocus->updateFocusElement(summitFocus->completionReward,
+			 "#FASC_NEWS",
+			 hiddenEffect,
+			 majorIdeologies.contains("fascism"));
+		hiddenEffect = "hidden_effect = {\n";
+		hiddenEffect += "\t\t\tif = {\n";
+		hiddenEffect += "\t\t\t\tlimit = { has_government = communism }\n";
+		hiddenEffect += "\t\t\t\tevery_other_country = {\n";
+		hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
+		hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds["communism"] + " }\n";
+		hiddenEffect += "\t\t\t\t}\n";
+		hiddenEffect += "\t\t\t}\n";
+		hiddenEffect += "\t\t}\n";
+		summitFocus->updateFocusElement(summitFocus->completionReward,
+			 "#COMM_NEWS",
+			 hiddenEffect,
+			 majorIdeologies.contains("communism"));
 		focuses.push_back(summitFocus);
 		hoi4Localisations.copyFocusLocalisations("_Summit", summitFocus->text);
 		hoi4Localisations.updateLocalisationText(summitFocus->text, "$TARGET", ideology);
@@ -1404,28 +1350,25 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		std::shared_ptr<HoI4Focus> raiseMatterFocus =
 			 GetLoadedFocus("raise_matter").makeTargetedCopy(theTag, target, hoi4Localisations);
 		raiseMatterFocus->xPos = nextFreeColumn;
-		if (truceUntil)
-		{
-			raiseMatterFocus->updateFocusElement(raiseMatterFocus->available,
-				 "#TRUCE",
-				 "date > " + truceUntil->toString());
-		}
-		else
-		{
-			raiseMatterFocus->removePlaceholder(raiseMatterFocus->available, "#TRUCE");
-		}
-		if (majorIdeologies.contains("fascism"))
-		{
-			std::string fascismPopularityCheck;
-			fascismPopularityCheck = "modifier = {\n";
-			fascismPopularityCheck += "\t\t\t\tfactor = 0\n";
-			fascismPopularityCheck += "\t\t\t\tNOT = { has_government = fascism }\n";
-			fascismPopularityCheck += "\t\t\t\tNOT = { fascism > 0.35 }\n";
-			fascismPopularityCheck += "\t\t\t}";
-			raiseMatterFocus->updateFocusElement(raiseMatterFocus->aiWillDo, "#FASCPOP", fascismPopularityCheck);
-			raiseMatterFocus->updateFocusElement(raiseMatterFocus->aiWillDo, "#FASCGOV", fascistGovernmentCheck);
-		}
-		else
+		raiseMatterFocus->updateFocusElement(raiseMatterFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
+		std::string fascismPopularityCheck;
+		fascismPopularityCheck = "modifier = {\n";
+		fascismPopularityCheck += "\t\t\t\tfactor = 0\n";
+		fascismPopularityCheck += "\t\t\t\tNOT = { has_government = fascism }\n";
+		fascismPopularityCheck += "\t\t\t\tNOT = { fascism > 0.35 }\n";
+		fascismPopularityCheck += "\t\t\t}";
+		raiseMatterFocus->updateFocusElement(raiseMatterFocus->aiWillDo,
+			 "#FASCPOP",
+			 fascismPopularityCheck,
+			 majorIdeologies.contains("fascism"));
+		raiseMatterFocus->updateFocusElement(raiseMatterFocus->aiWillDo,
+			 "#FASCGOV",
+			 fascistGovernmentCheck,
+			 majorIdeologies.contains("fascism"));
+		if (!majorIdeologies.contains("fascism"))
 		{
 			raiseMatterFocus->completionReward = "= {\n";
 			raiseMatterFocus->completionReward += "\t\t\tadd_stability = 0.0001\n";
@@ -1433,8 +1376,6 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 			raiseMatterFocus->completionReward +=
 				 "\t\t\tadd_timed_idea = { idea = generic_military_industry days = 180 }\n";
 			raiseMatterFocus->completionReward += "\t\t}";
-			raiseMatterFocus->removePlaceholder(raiseMatterFocus->aiWillDo, "#FASCPOP");
-			raiseMatterFocus->removePlaceholder(raiseMatterFocus->aiWillDo, "#FASCGOV");
 		}
 		raiseMatterFocus->updateFocusElement(raiseMatterFocus->available, "$TARGET", target);
 		raiseMatterFocus->updateFocusElement(raiseMatterFocus->completionReward,
@@ -1452,32 +1393,24 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		buildPublicSupportFocus->prerequisites.push_back(
 			 std::string("= { focus = raise_matter").append(theTag).append(target).append(" }"));
 		buildPublicSupportFocus->relativePositionId += target;
-		if (truceUntil)
-		{
-			buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->available,
-				 "#TRUCE",
-				 "date > " + truceUntil->toString());
-		}
-		else
-		{
-			buildPublicSupportFocus->removePlaceholder(buildPublicSupportFocus->available, "#TRUCE");
-		}
-		if (majorIdeologies.contains("fascism"))
-		{
-			std::string fascismPopularityCheck;
-			fascismPopularityCheck = "modifier = {\n";
-			fascismPopularityCheck += "\t\t\t\tfactor = 0\n";
-			fascismPopularityCheck += "\t\t\t\tNOT = { has_government = fascism }\n";
-			fascismPopularityCheck += "\t\t\t\tNOT = { fascism > 0.4 }\n";
-			fascismPopularityCheck += "\t\t\t}";
-			buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->aiWillDo,
-				 "#FASCPOP",
-				 fascismPopularityCheck);
-			buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->aiWillDo,
-				 "#FASCGOV",
-				 fascistGovernmentCheck);
-		}
-		else
+		buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
+		fascismPopularityCheck = "modifier = {\n";
+		fascismPopularityCheck += "\t\t\t\tfactor = 0\n";
+		fascismPopularityCheck += "\t\t\t\tNOT = { has_government = fascism }\n";
+		fascismPopularityCheck += "\t\t\t\tNOT = { fascism > 0.4 }\n";
+		fascismPopularityCheck += "\t\t\t}";
+		buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->aiWillDo,
+			 "#FASCPOP",
+			 fascismPopularityCheck,
+			 majorIdeologies.contains("fascism"));
+		buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->aiWillDo,
+			 "#FASCGOV",
+			 fascistGovernmentCheck,
+			 majorIdeologies.contains("fascism"));
+		if (!majorIdeologies.contains("fascism"))
 		{
 			buildPublicSupportFocus->completionReward = " = {\n";
 			buildPublicSupportFocus->completionReward += "\t\t\tadd_stability = 0.0001\n";
@@ -1485,8 +1418,6 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 			buildPublicSupportFocus->completionReward +=
 				 "\t\t\tadd_timed_idea = { idea = generic_rapid_mobilization days = 180 }\n";
 			buildPublicSupportFocus->completionReward += "\t\t}";
-			buildPublicSupportFocus->removePlaceholder(buildPublicSupportFocus->aiWillDo, "#FASCPOP");
-			buildPublicSupportFocus->removePlaceholder(buildPublicSupportFocus->aiWillDo, "#FASCGOV");
 		}
 		buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->available, "$TARGET", target);
 		buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->completionReward,
@@ -1506,24 +1437,14 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		territoryOrWarFocus->prerequisites.clear();
 		territoryOrWarFocus->prerequisites.push_back("= { focus = build_public_support" + theTag + target + " }");
 		territoryOrWarFocus->relativePositionId += target;
-		if (truceUntil)
-		{
-			territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->available,
-				 "#TRUCE",
-				 "date > " + truceUntil->toString());
-		}
-		else
-		{
-			territoryOrWarFocus->removePlaceholder(territoryOrWarFocus->available, "#TRUCE");
-		}
-		if (majorIdeologies.contains("fascism"))
-		{
-			territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->aiWillDo, "#FASCGOV", fascistGovernmentCheck);
-		}
-		else
-		{
-			territoryOrWarFocus->removePlaceholder(territoryOrWarFocus->aiWillDo, "#FASCGOV");
-		}
+		territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
+		territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->aiWillDo,
+			 "#FASCGOV",
+			 fascistGovernmentCheck,
+			 majorIdeologies.contains("fascism"));
 		territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->available, "$TARGET", target);
 		territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->completionReward, "$TARGET", target);
 		territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->bypass, "$TARGET", target);
@@ -1537,22 +1458,14 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		warPlanFocus->prerequisites.clear();
 		warPlanFocus->prerequisites.push_back("= { focus = territory_or_war" + theTag + target + " }");
 		warPlanFocus->relativePositionId += target;
-		if (truceUntil)
-		{
-			warPlanFocus->updateFocusElement(warPlanFocus->available, "#TRUCE", "date > " + truceUntil->toString());
-		}
-		else
-		{
-			warPlanFocus->removePlaceholder(warPlanFocus->available, "#TRUCE");
-		}
-		if (majorIdeologies.contains("fascism"))
-		{
-			warPlanFocus->updateFocusElement(warPlanFocus->aiWillDo, "#FASCGOV", fascistGovernmentCheck);
-		}
-		else
-		{
-			warPlanFocus->removePlaceholder(warPlanFocus->aiWillDo, "#FASCGOV");
-		}
+		warPlanFocus->updateFocusElement(warPlanFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
+		warPlanFocus->updateFocusElement(warPlanFocus->aiWillDo,
+			 "#FASCGOV",
+			 fascistGovernmentCheck,
+			 majorIdeologies.contains("fascism"));
 		warPlanFocus->updateFocusElement(warPlanFocus->available, "$TARGET", target);
 		warPlanFocus->updateFocusElement(warPlanFocus->completionReward, "$TARGET", target);
 		warPlanFocus->updateFocusElement(warPlanFocus->bypass, "$TARGET", target);
@@ -1566,22 +1479,14 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		declareWarFocus->prerequisites.clear();
 		declareWarFocus->prerequisites.push_back("= { focus = war_plan" + theTag + target + " }");
 		declareWarFocus->relativePositionId += target;
-		if (truceUntil)
-		{
-			declareWarFocus->updateFocusElement(declareWarFocus->available, "#TRUCE", "date > " + truceUntil->toString());
-		}
-		else
-		{
-			declareWarFocus->removePlaceholder(declareWarFocus->available, "#TRUCE");
-		}
-		if (majorIdeologies.contains("fascism"))
-		{
-			declareWarFocus->updateFocusElement(declareWarFocus->aiWillDo, "#FASCGOV", fascistGovernmentCheck);
-		}
-		else
-		{
-			declareWarFocus->removePlaceholder(declareWarFocus->aiWillDo, "#FASCGOV");
-		}
+		declareWarFocus->updateFocusElement(declareWarFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 !!truceUntil);
+		declareWarFocus->updateFocusElement(declareWarFocus->aiWillDo,
+			 "#FASCGOV",
+			 fascistGovernmentCheck,
+			 majorIdeologies.contains("fascism"));
 		declareWarFocus->updateFocusElement(declareWarFocus->available, "$TARGET", target);
 		declareWarFocus->updateFocusElement(declareWarFocus->completionReward, "$TARGET", target);
 		std::string coresString;
@@ -1677,16 +1582,10 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 			 GetLoadedFocus("border_disputes").makeTargetedCopy(tag, strategy.getID(), hoi4Localisations);
 		borderDisputesFocus->relativePositionId.clear();
 		borderDisputesFocus->updateFocusElement(borderDisputesFocus->available, "$TARGET", strategy.getID());
-		if (borderDisputesTruceUntil)
-		{
-			borderDisputesFocus->updateFocusElement(borderDisputesFocus->available,
-				 "#TRUCE",
-				 "date > " + borderDisputesTruceUntil->toString());
-		}
-		else
-		{
-			borderDisputesFocus->removePlaceholder(borderDisputesFocus->available, "#TRUCE");
-		}
+		borderDisputesFocus->updateFocusElement(borderDisputesFocus->available,
+			 "#TRUCE",
+			 "date > " + borderDisputesTruceUntil->toString(),
+			 !!borderDisputesTruceUntil);
 		borderDisputesFocus->updateFocusElement(borderDisputesFocus->available,
 			 "#OWNSCLAIM",
 			 "owns_state = " + claimStateId);

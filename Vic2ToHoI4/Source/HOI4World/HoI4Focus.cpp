@@ -198,16 +198,22 @@ void HoI4Focus::customizePrerequisite(std::shared_ptr<HoI4Focus> newFocus,
 	newFocus->prerequisites.push_back(prerequisite);
 }
 
-void HoI4Focus::updateFocusElement(std::string& element, std::string_view oldText, std::string_view newText)
+void HoI4Focus::updateFocusElement(std::string& element,
+	 std::string_view oldText,
+	 std::string_view newText,
+	 bool prerequisite)
 {
-	while (element.find(oldText) != std::string::npos)
+	if (prerequisite)
 	{
-		element.replace(element.find(oldText), oldText.size(), newText);
+		while (element.find(oldText) != std::string::npos)
+		{
+			element.replace(element.find(oldText), oldText.size(), newText);
+		}
 	}
-}
-
-void HoI4Focus::removePlaceholder(std::string& element, const std::string& placeholder)
-{
-	std::regex placeholderLine("\n.*" + placeholder);
-	element = std::regex_replace(element, placeholderLine, "");
+	else
+	{
+		// remove placeholder
+		std::regex placeholderLine(std::basic_string("\n.*").append(oldText));
+		element = std::regex_replace(element, placeholderLine, "");
+	}
 }
