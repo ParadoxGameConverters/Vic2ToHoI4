@@ -22,7 +22,7 @@ void HoI4::Events::createSummitNewsEvents(const std::set<std::string>& majorIdeo
 {
 	for (const auto& ideology: majorIdeologies)
 	{
-		if (ideology != "fascism" && ideology != "communism")
+		if (ideology != "fascism" && ideology != "communism" || summitNewsEventsIds.contains(ideology))
 		{
 			continue;
 		}
@@ -45,18 +45,9 @@ void HoI4::Events::createSummitNewsEvents(const std::set<std::string>& majorIdeo
 		optionA.giveName("fascist_summit.a");
 		optionA.giveScriptBlock("effect_tooltip = { FROM = { add_threat = 3 } }");
 		newsEvent.giveOption(std::move(optionA));
-
-		if (const auto& evtItr = std::find_if(newsEvents.begin(),
-				  newsEvents.end(),
-				  [newsEvent](const Event& evt) {
-					  return newsEvent.getTitle() == evt.getTitle();
-				  });
-			 evtItr == newsEvents.end())
-		{
-			newsEvents.push_back(newsEvent);
-			summitNewsEventsIds[ideology] = newsEvent.getId();
-			newsEventNumber++;
-		}
+		newsEvents.push_back(newsEvent);
+		summitNewsEventsIds[ideology] = newsEvent.getId();
+		newsEventNumber++;
 	}
 }
 
