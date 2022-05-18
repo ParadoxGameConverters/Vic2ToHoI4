@@ -570,7 +570,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
 		warPlanFocus->updateFocusElement(warPlanFocus->available,
 			 "#TRUCE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		warPlanFocus->updateFocusElement(warPlanFocus->available, "$TARGET", tag);
 		focuses.push_back(warPlanFocus);
 
@@ -582,7 +582,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
 		embargoFocus->updateFocusElement(embargoFocus->available,
 			 "#TRUCE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		embargoFocus->updateFocusElement(embargoFocus->available, "$TARGET", tag);
 		embargoFocus->updateFocusElement(embargoFocus->completionReward, "$TARGET", tag);
 		focuses.push_back(embargoFocus);
@@ -592,7 +592,10 @@ void HoI4FocusTree::addDemocracyNationalFocuses(const HoI4::Country& home,
 		warFocus->prerequisites.push_back("= { focus =  Embargo" + home.getTag() + tag + " }");
 		warFocus->updateFocusElement(warFocus->bypass, "$TARGET", tag);
 		warFocus->relativePositionId += tag;
-		warFocus->updateFocusElement(warFocus->available, "#TRUCE", "date > " + truceUntil->toString(), !!truceUntil);
+		warFocus->updateFocusElement(warFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 truceUntil.has_value());
 		warFocus->updateFocusElement(warFocus->available, "$TARGET", tag);
 		warFocus->updateFocusElement(warFocus->completionReward, "$TARGET", tag);
 		focuses.push_back(warFocus);
@@ -671,7 +674,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(const HoI4::Country& home
 		protectorateFocus->updateFocusElement(protectorateFocus->available,
 			 "#TRUCE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		protectorateFocus->updateFocusElement(protectorateFocus->available, "$TARGET", target->getTag());
 		protectorateFocus->prerequisites.push_back("= { focus = ColonialArmy" + homeTag + " }");
 		protectorateFocus->relativePositionId = "ColonialArmy" + homeTag;
@@ -693,7 +696,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(const HoI4::Country& home
 		protectorateFocus->updateFocusElement(protectorateFocus->available,
 			 "#TRUCE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		protectorateFocus->updateFocusElement(protectorateFocus->available, "$TARGET", target->getTag());
 		protectorateFocus->prerequisites.push_back(
 			 "= { focus = Protectorate" + homeTag + targetColonies.front()->getTag() + " }");
@@ -757,7 +760,10 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(const HoI4::Country& home
 		auto annexFocus = GetLoadedFocus("Annex").makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
 		annexFocus->id = "Annex" + homeTag + target->getTag();
 		const auto& truceUntil = home.getTruceUntil(target->getTag());
-		annexFocus->updateFocusElement(annexFocus->available, "#TRUCE", "date > " + truceUntil->toString(), !!truceUntil);
+		annexFocus->updateFocusElement(annexFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 truceUntil.has_value());
 		annexFocus->updateFocusElement(annexFocus->available, "$TARGET", target->getTag());
 		annexFocus->prerequisites.push_back("= { focus = PrepTheBorder" + homeTag + " }");
 		annexFocus->relativePositionId = "PrepTheBorder" + homeTag;
@@ -775,7 +781,10 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(const HoI4::Country& home
 		auto annexFocus = GetLoadedFocus("Annex").makeTargetedCopy(homeTag, target->getTag(), hoi4Localisations);
 		annexFocus->id = "Annex" + homeTag + target->getTag();
 		const auto& truceUntil = home.getTruceUntil(target->getTag());
-		annexFocus->updateFocusElement(annexFocus->available, "#TRUCE", "date > " + truceUntil->toString(), !!truceUntil);
+		annexFocus->updateFocusElement(annexFocus->available,
+			 "#TRUCE",
+			 "date > " + truceUntil->toString(),
+			 truceUntil.has_value());
 		annexFocus->updateFocusElement(annexFocus->available, "$TARGET", target->getTag());
 		annexFocus->prerequisites.push_back("= { focus = NatSpirit" + home.getTag() + " }");
 		annexFocus->relativePositionId = "NatSpirit" + homeTag;
@@ -1113,7 +1122,7 @@ void HoI4FocusTree::addFascistSudetenBranch(const HoI4::Country& home,
 		finishFocus->updateFocusElement(finishFocus->available,
 			 "#DATE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		finishFocus->updateFocusElement(finishFocus->available, "$TARGET", targetTag);
 		finishFocus->prerequisites.push_back("= { focus =  " + homeTag + "_sudeten_" + targetTag + " }");
 		finishFocus->relativePositionId = homeTag + "_sudeten_" + targetTag;
@@ -1353,7 +1362,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		raiseMatterFocus->updateFocusElement(raiseMatterFocus->available,
 			 "#TRUCE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		std::string fascismPopularityCheck;
 		fascismPopularityCheck = "modifier = {\n";
 		fascismPopularityCheck += "\t\t\t\tfactor = 0\n";
@@ -1396,7 +1405,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		buildPublicSupportFocus->updateFocusElement(buildPublicSupportFocus->available,
 			 "#TRUCE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		fascismPopularityCheck = "modifier = {\n";
 		fascismPopularityCheck += "\t\t\t\tfactor = 0\n";
 		fascismPopularityCheck += "\t\t\t\tNOT = { has_government = fascism }\n";
@@ -1440,7 +1449,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->available,
 			 "#TRUCE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		territoryOrWarFocus->updateFocusElement(territoryOrWarFocus->aiWillDo,
 			 "#FASCGOV",
 			 fascistGovernmentCheck,
@@ -1461,7 +1470,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		warPlanFocus->updateFocusElement(warPlanFocus->available,
 			 "#TRUCE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		warPlanFocus->updateFocusElement(warPlanFocus->aiWillDo,
 			 "#FASCGOV",
 			 fascistGovernmentCheck,
@@ -1482,7 +1491,7 @@ std::map<std::string, std::set<int>> HoI4FocusTree::addReconquestBranch(const Ho
 		declareWarFocus->updateFocusElement(declareWarFocus->available,
 			 "#TRUCE",
 			 "date > " + truceUntil->toString(),
-			 !!truceUntil);
+			 truceUntil.has_value());
 		declareWarFocus->updateFocusElement(declareWarFocus->aiWillDo,
 			 "#FASCGOV",
 			 fascistGovernmentCheck,
