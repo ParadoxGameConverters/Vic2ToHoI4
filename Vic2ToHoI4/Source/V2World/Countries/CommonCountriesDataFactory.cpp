@@ -7,7 +7,9 @@
 
 bool shouldLineBeSkipped(const std::string& line)
 {
-	return line.starts_with('#') || line.size() < 3 || line.starts_with("dynamic_tags");
+	auto stripped_line = line;
+	stripped_line.erase(std::remove_if(stripped_line.begin(), stripped_line.end(), ::isspace), stripped_line.end());
+	return stripped_line.starts_with('#') || line.size() < 3 || line.starts_with("dynamic_tags");
 }
 
 
