@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic2ToHoI4", "Vic2ToHoI4\Vic2ToHoI4.vcxproj", "{F5433A7A-723C-4E55-AC01-9D146820C7B4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic2ToHoI4", "Vic2ToHoI4.vcxproj", "{F5433A7A-723C-4E55-AC01-9D146820C7B4}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D4E43E3D-E131-466D-9AA7-704C2298EACC} = {D4E43E3D-E131-466D-9AA7-704C2298EACC}
 		{5C9FD859-DDF9-4510-8397-B329B0AE8C48} = {5C9FD859-DDF9-4510-8397-B329B0AE8C48}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic2ToHoI4Tests", "Vic2ToHoI4Tests\Vic2ToHoI4Tests-Google.vcxproj", "{A302CB0C-8DE3-4CBD-A974-282C1C7AE62D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic2ToHoI4Tests", "Vic2ToHoI4Tests.vcxproj", "{A302CB0C-8DE3-4CBD-A974-282C1C7AE62D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fronter", "Fronter\Fronter.vcxproj", "{D4E43E3D-E131-466D-9AA7-704C2298EACC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fronter", "external\Fronter\Fronter.vcxproj", "{D4E43E3D-E131-466D-9AA7-704C2298EACC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZipLib", "common_items\ZipLib\ZipLib.vcxproj", "{5C9FD859-DDF9-4510-8397-B329B0AE8C48}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZipLib", "external\common_items\ZipLib\ZipLib.vcxproj", "{5C9FD859-DDF9-4510-8397-B329B0AE8C48}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzip2", "common_items\ZipLib\extlibs\bzip2\bzip2.vcxproj", "{DBBF348D-C221-4F2E-8A0D-24EFA0D98E71}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzip2", "external\common_items\ZipLib\extlibs\bzip2\bzip2.vcxproj", "{DBBF348D-C221-4F2E-8A0D-24EFA0D98E71}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lzma", "common_items\ZipLib\extlibs\lzma\lzma.vcxproj", "{7EAD1358-3E72-4FB6-A212-25D462B5C1E9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lzma", "external\common_items\ZipLib\extlibs\lzma\lzma.vcxproj", "{7EAD1358-3E72-4FB6-A212-25D462B5C1E9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "common_items\ZipLib\extlibs\zlib\zlib.vcxproj", "{BAEB16B3-DB4C-432F-9E6A-2ACADEA0691D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "external\common_items\ZipLib\extlibs\zlib\zlib.vcxproj", "{BAEB16B3-DB4C-432F-9E6A-2ACADEA0691D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
