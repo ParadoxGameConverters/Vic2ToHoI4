@@ -1,0 +1,21 @@
+Q: I used a mod, will the converter work with it?
+A: It depends on what the mod changed. Your best bet is to simply try (and let us know how it went). As far as we can
+   tell, it does work well with NNM, PDM, HPM, and games converted from EU4.
+
+Q: What should I put it the Victoria 2 mod directory option?
+A: It should be the directory where Victoria 2 stores mods.
+   If Victoria 2 was installed at C:\Program Files (x86)\Steam\steamapps\common\Victoria 2 then this option should be
+   C:\Program Files (x86)\Steam\steamapps\common\Victoria 2\mod.​
+
+Q: I'm trying to convert a EU4 To Vic2 game and keep getting an error. What do I do?
+A: You need to include the Vic2 mod from the EU4 to Vic2 converter
+
+Q: I loaded my mod, but vanilla HoI4 loaded. How do I make it load?
+A: Make sure you've added your mod to a new playlist and then activated that playlist. If that doesn't work, try the
+   solution in this thread: https://forum.paradoxplaza.com/forum/threads/launcher-solution.1455443/
+
+Q: The converter stops after just a few seconds. What went wrong?
+A: Run VC_redist.x64.exe in the converter directory.
+
+Q: The converter says "Saving Configuration: Failed!" How do I fix it?
+A: Disable your antivirus or whitelist the converter.
