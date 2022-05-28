@@ -37,9 +37,6 @@
     <Filter Include="HoI4World\States">
       <UniqueIdentifier>{a406c7c1-4094-4e2c-b635-d37cc87ac449}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files">
-      <UniqueIdentifier>{bd1c48a8-9c17-428e-b26d-b22f3bf225c3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4World\ScriptedLocalisations">
       <UniqueIdentifier>{e9a00c1c-cf76-4630-a043-e9498b7f9fca}</UniqueIdentifier>
     </Filter>
@@ -127,9 +124,6 @@
     <Filter Include="Vic2World\Issues">
       <UniqueIdentifier>{a25ec0d7-f1f4-43df-9fc6-01b43cbe78a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Fronter">
-      <UniqueIdentifier>{19aa6118-ccad-4df6-bb5f-c97fad2dcb0d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="OutHoi4\IntelligenceAgencies">
       <UniqueIdentifier>{36b857e6-f3fb-46a0-9ff8-11589886f8b6}</UniqueIdentifier>
     </Filter>
@@ -211,9 +205,6 @@
     <Filter Include="Vic2World\Military\Leaders">
       <UniqueIdentifier>{a7eb907f-5d39-4d82-8981-6792e3da00b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables">
-      <UniqueIdentifier>{80b12269-6621-4eb6-bfc8-56510a40b105}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vic2World\Countries">
       <UniqueIdentifier>{2629d2ed-6e4a-4b7c-be02-c4e55cd35614}</UniqueIdentifier>
     </Filter>
@@ -262,9 +253,6 @@
     <Filter Include="OutHoi4\CountryCategories">
       <UniqueIdentifier>{f88af672-93e0-4688-8cc1-4687cdc63a9f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CodenamesOperatives">
-      <UniqueIdentifier>{a5a483a6-422e-4433-b0e9-4dbfaeb0ba09}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4World\Operatives">
       <UniqueIdentifier>{851a9450-325f-48c1-9172-bcf2cc18affd}</UniqueIdentifier>
     </Filter>
@@ -282,9 +270,6 @@
     </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{b58e7fd9-09ad-40ad-a06a-719749bafa61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Data Files\Configurables\Vic2Localisations">
-      <UniqueIdentifier>{08285fb8-fe10-4ea0-bbe2-ce589a5043b3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Maps">
       <UniqueIdentifier>{cc997cde-017a-4006-96e3-d762cd519883}</UniqueIdentifier>
@@ -304,38 +289,32 @@
     <Filter Include="OutHoi4\Characters">
       <UniqueIdentifier>{d11879db-f0e5-487a-b954-60ababf30c78}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches">
-      <UniqueIdentifier>{8b152ac4-5c05-4d07-93a5-3789fed347d8}</UniqueIdentifier>
+    <Filter Include="data">
+      <UniqueIdentifier>{3b4ba49d-9534-41b3-ab1a-96aeabb151e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus">
-      <UniqueIdentifier>{eeada828-a810-46ef-820b-79ce4638aebf}</UniqueIdentifier>
+    <Filter Include="data\configurables">
+      <UniqueIdentifier>{143160c5-25af-468e-90af-d1453488471d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\events">
-      <UniqueIdentifier>{f7996503-7b54-4fe1-974e-ff6150aed1a9}</UniqueIdentifier>
+    <Filter Include="data\configurables\CodenamesOperatives">
+      <UniqueIdentifier>{c79ab2da-2453-4d1d-9ffc-5126d2480104}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common">
-      <UniqueIdentifier>{a4ee71c8-1633-4e2b-94e0-9b40293919b5}</UniqueIdentifier>
+    <Filter Include="data\configurables\CustomizedFocusBranches">
+      <UniqueIdentifier>{be65059b-5386-45fa-9697-09d3e396ad80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions">
-      <UniqueIdentifier>{9f46f616-58c1-4c7c-bf10-258821cea7a7}</UniqueIdentifier>
+    <Filter Include="data\configurables\Localisations">
+      <UniqueIdentifier>{e08734bd-abc6-4b76-ab75-6fa463bcc1ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation">
-      <UniqueIdentifier>{ca9e2354-c4a5-4bde-9149-71182dd3d48e}</UniqueIdentifier>
+    <Filter Include="data\configurables\Map">
+      <UniqueIdentifier>{37f54467-1be3-4b60-a0ae-8f7c0042cae5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\localisation\replace">
-      <UniqueIdentifier>{c47b7c99-d5b0-46f9-90d4-39c69e07832e}</UniqueIdentifier>
+    <Filter Include="data\configurables\Sounds">
+      <UniqueIdentifier>{79661f11-e107-41f7-9267-8a5150a3c4b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_effects">
-      <UniqueIdentifier>{7798083c-2a7d-47bd-b9ab-47601848d3b3}</UniqueIdentifier>
+    <Filter Include="data\configurables\Vic2Localisations">
+      <UniqueIdentifier>{756915c0-5b78-4b38-a60f-130809977a71}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\decisions\categories">
-      <UniqueIdentifier>{27c6a737-c60e-4187-a86c-aaf9c077367d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\scripted_triggers">
-      <UniqueIdentifier>{a2d0df5a-6483-4dcf-aadf-94dd08444ae1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Data Files\Configurables\CustomizedFocusBranches\uk_colonial_focus\common\ideas">
-      <UniqueIdentifier>{d395b384-48b9-4b80-be8d-da5c7c903d0e}</UniqueIdentifier>
+    <Filter Include="data\fronter">
+      <UniqueIdentifier>{c7841503-80c9-47c5-a3a6-04c74ef9a3e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2810,10 +2789,249 @@
     <CopyFileToFolders Include="..\Resources\vcruntime140_1.dll">
       <Filter>Resources</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="data\configuration-example.txt" />
-    <CopyFileToFolders Include="data\FAQ.txt" />
-    <CopyFileToFolders Include="data\license.txt" />
-    <CopyFileToFolders Include="data\ReadMe.txt" />
-    <CopyFileToFolders Include="data\version.txt" />
+    <CopyFileToFolders Include="data\configuration-example.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\FAQ.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\license.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\ReadMe.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\version.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\configurables\ai_peaces.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\casus_bellis_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\converterDynamicModifiers.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\converterFocuses.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\converterIdeas.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\converterIdeologies.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\converterLeaderTraits.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\country_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\CountryGrammar.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\CountryNamesMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\cultureGroupToGraphics.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\factions_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\FlagsToIdeasMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\foreignInfluenceDecisions.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\GovernmentMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\grammar.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\Greater Flavor Mod_province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\Historical Flavour Mod v1.27I_province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\Historical Project Mod 0.4.6_province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\ideologicalAdvisors.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\ideologicalDecisions.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\ideologicalIdeas.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\IdeologyMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\ImportCharacters.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\IntelligenceAgencyLogos.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\languageReplacements.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\languageReplacementsBis.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\merge_nations.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\names.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\OperativeNamesMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\positions.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\research_bonus_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\Resources.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\shipTypes.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\tankDesigns.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\tech_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\The Concert of Europe_province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\unit_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\arabic_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\CZE_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\ENG_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\EST_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\GRE_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\HUN_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\LAT_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\NOR_opertive_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\RME_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\SIA_opertive_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\SOV_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\SWE_opertive_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\TUR_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CustomizedFocusBranches\uk_colonial_focus.txt">
+      <Filter>data\configurables\CustomizedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\Localisations\ArticleRules.txt">
+      <Filter>data\configurables\Localisations</Filter>
+    </Text>
+    <Text Include="data\configurables\Localisations\StateCategories.txt">
+      <Filter>data\configurables\Localisations</Filter>
+    </Text>
+    <Text Include="data\configurables\Map\regions.txt">
+      <Filter>data\configurables\Map</Filter>
+    </Text>
+    <Text Include="data\configurables\Sounds\CultureToVoiceMappings.txt">
+      <Filter>data\configurables\Sounds</Filter>
+    </Text>
+    <Text Include="data\fronter\fronter-configuration.txt">
+      <Filter>data\fronter</Filter>
+    </Text>
+    <Text Include="data\fronter\fronter-options.txt">
+      <Filter>data\fronter</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\configurables\Vic2Localisations\dominions.csv">
+      <Filter>data\configurables\Vic2Localisations</Filter>
+    </None>
+    <None Include="data\configurables\Vic2Localisations\unrecognized_nations.csv">
+      <Filter>data\configurables\Vic2Localisations</Filter>
+    </None>
+    <None Include="data\configurables\Vic2Localisations\Vic2Localisations.csv">
+      <Filter>data\configurables\Vic2Localisations</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_english.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_french.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_german.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_italian.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_latin.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_russian.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_english.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_french.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_german.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_italian.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_latin.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_russian.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\!provincenames_l_english.yml">
+      <Filter>data</Filter>
+    </None>
   </ItemGroup>
 </Project>

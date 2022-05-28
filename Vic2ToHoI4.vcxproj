@@ -956,6 +956,85 @@
       <Link>Configurables\%(RecursiveDir)\%(Filename)%(Extension)</Link>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\configurables\ai_peaces.txt" />
+    <Text Include="data\configurables\casus_bellis_mappings.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\arabic_operative_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\CZE_operative_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\ENG_operative_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\EST_operative_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\GRE_operative_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\HUN_operative_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\LAT_operative_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\NOR_opertive_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\RME_operative_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\SIA_opertive_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\SOV_operative_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\SWE_opertive_codenames.txt" />
+    <Text Include="data\configurables\CodenamesOperatives\TUR_operative_codenames.txt" />
+    <Text Include="data\configurables\converterDynamicModifiers.txt" />
+    <Text Include="data\configurables\converterFocuses.txt" />
+    <Text Include="data\configurables\converterIdeas.txt" />
+    <Text Include="data\configurables\converterIdeologies.txt" />
+    <Text Include="data\configurables\converterLeaderTraits.txt" />
+    <Text Include="data\configurables\CountryGrammar.txt" />
+    <Text Include="data\configurables\CountryNamesMappings.txt" />
+    <Text Include="data\configurables\country_mappings.txt" />
+    <Text Include="data\configurables\cultureGroupToGraphics.txt" />
+    <Text Include="data\configurables\CustomizedFocusBranches\uk_colonial_focus.txt" />
+    <Text Include="data\configurables\factions_mappings.txt" />
+    <Text Include="data\configurables\FlagsToIdeasMappings.txt" />
+    <Text Include="data\configurables\foreignInfluenceDecisions.txt" />
+    <Text Include="data\configurables\GovernmentMappings.txt" />
+    <Text Include="data\configurables\grammar.txt" />
+    <Text Include="data\configurables\Greater Flavor Mod_province_mappings.txt" />
+    <Text Include="data\configurables\Historical Flavour Mod v1.27I_province_mappings.txt" />
+    <Text Include="data\configurables\Historical Project Mod 0.4.6_province_mappings.txt" />
+    <Text Include="data\configurables\ideologicalAdvisors.txt" />
+    <Text Include="data\configurables\ideologicalDecisions.txt" />
+    <Text Include="data\configurables\ideologicalIdeas.txt" />
+    <Text Include="data\configurables\IdeologyMappings.txt" />
+    <Text Include="data\configurables\ImportCharacters.txt" />
+    <Text Include="data\configurables\IntelligenceAgencyLogos.txt" />
+    <Text Include="data\configurables\languageReplacements.txt" />
+    <Text Include="data\configurables\languageReplacementsBis.txt" />
+    <Text Include="data\configurables\Localisations\ArticleRules.txt" />
+    <Text Include="data\configurables\Localisations\StateCategories.txt" />
+    <Text Include="data\configurables\Map\regions.txt" />
+    <Text Include="data\configurables\merge_nations.txt" />
+    <Text Include="data\configurables\names.txt" />
+    <Text Include="data\configurables\OperativeNamesMappings.txt" />
+    <Text Include="data\configurables\positions.txt" />
+    <Text Include="data\configurables\province_mappings.txt" />
+    <Text Include="data\configurables\research_bonus_mappings.txt" />
+    <Text Include="data\configurables\Resources.txt" />
+    <Text Include="data\configurables\shipTypes.txt" />
+    <Text Include="data\configurables\Sounds\CultureToVoiceMappings.txt" />
+    <Text Include="data\configurables\tankDesigns.txt" />
+    <Text Include="data\configurables\tech_mappings.txt" />
+    <Text Include="data\configurables\The Concert of Europe_province_mappings.txt" />
+    <Text Include="data\configurables\unit_mappings.txt" />
+    <Text Include="data\fronter\fronter-configuration.txt" />
+    <Text Include="data\fronter\fronter-options.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\!provincenames_l_english.yml" />
+    <None Include="data\configurables\Vic2Localisations\dominions.csv" />
+    <None Include="data\configurables\Vic2Localisations\unrecognized_nations.csv" />
+    <None Include="data\configurables\Vic2Localisations\Vic2Localisations.csv" />
+    <None Include="data\fronter\configuration_l_english.yml" />
+    <None Include="data\fronter\configuration_l_french.yml" />
+    <None Include="data\fronter\configuration_l_german.yml" />
+    <None Include="data\fronter\configuration_l_italian.yml" />
+    <None Include="data\fronter\configuration_l_latin.yml" />
+    <None Include="data\fronter\configuration_l_russian.yml" />
+    <None Include="data\fronter\options_l_english.yml" />
+    <None Include="data\fronter\options_l_french.yml" />
+    <None Include="data\fronter\options_l_german.yml" />
+    <None Include="data\fronter\options_l_italian.yml" />
+    <None Include="data\fronter\options_l_latin.yml" />
+    <None Include="data\fronter\options_l_russian.yml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
