@@ -36,8 +36,8 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <EnableCppCoreCheck>false</EnableCppCoreCheck>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\Vic2ToHoI4\</OutDir>
-    <IntDir>$(SolutionDir)$(Configuration)Intermediate\</IntDir>
+    <OutDir>$(SolutionDir)\build\$(Configuration)\Vic2ToHoI4\</OutDir>
+    <IntDir>$(SolutionDir)\build\$(Configuration)Intermediate\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -954,6 +954,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
       <Link>Configurables\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Release\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+      <Link>..\%(RecursiveDir)\%(Filename)%(Extension)</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
