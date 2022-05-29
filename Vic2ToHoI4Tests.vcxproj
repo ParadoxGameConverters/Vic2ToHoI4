@@ -598,11 +598,6 @@
     <ClCompile Include="src\Vic2toHOI4Converter.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vic2ToHoI4\Vic2ToHoI4.vcxproj">
-      <Project>{f5433a7a-723c-4e55-ac01-9d146820c7b4}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="data\test_files\HoI4">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Linux</DestinationFolders>
