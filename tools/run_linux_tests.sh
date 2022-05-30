@@ -1,7 +1,7 @@
 #!/bin/bash
-rm Release-Tests/Vic2ToHoi4ConverterTests
+rm build/Release-LinuxTests/Vic2ToHoi4ConverterTests
 cmake -H. -Bbuild/linux-intermediate && cmake --build ./build/linux-intermediate -- -j40
 (
-cd Release-Tests
+cd build/Release-LinuxTests
 ./Vic2ToHoi4ConverterTests
 )
