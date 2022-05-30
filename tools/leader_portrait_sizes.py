@@ -6,7 +6,7 @@ original_stdout = sys.stdout
 output_file = open('image_sizes.txt', 'w')
 sys.stdout = output_file
 
-path = '../../Vic2ToHoI4/Data_Files/blankMod/output/gfx/leaders'
+path = 'data/blank_mod/gfx/leaders'
 print('Path is ' + path)
 
 print('Gathering files')
