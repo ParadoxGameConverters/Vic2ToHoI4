@@ -54,8 +54,8 @@ jobs:
 
     - name: Build solution
       run: |
-       chmod u+x build_Vic2ToHoI4_release.sh
-       ./build_Vic2ToHoI4_release.sh
+       chmod u+x tools/build_Vic2ToHoI4_release.sh
+       tools/build_Vic2ToHoI4_release.sh
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
@@ -124,8 +124,8 @@ jobs:
        # Check versions of gcc, g++ and cmake
        gcc -v && g++ -v && cmake --version
        # Run your build commands next
-       chmod u+x build_Vic2ToHoI4_release_foreign.sh
-       ./build_Vic2ToHoI4_release_foreign.sh
+       chmod u+x tools/build_Vic2ToHoI4_release_foreign.sh
+       tools/build_Vic2ToHoI4_release_foreign.sh
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
