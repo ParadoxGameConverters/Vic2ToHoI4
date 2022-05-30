@@ -1,1 +1,1 @@
-git rev-parse HEAD > ..\Release\commit_id.txt
+git rev-parse HEAD > build\Release\commit_id.txt
