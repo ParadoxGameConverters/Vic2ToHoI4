@@ -385,9 +385,9 @@ void Mappers::GraphicsMapper::debugPortraits(const Configuration& theConfigurati
 	Log(LogLevel::Debug) << "Debugging portraits";
 	std::set<std::string> portraitFiles;
 	portraitFiles.merge(loadPortraitFiles(theConfiguration.getHoI4Path() + "/", "gfx/leaders/"));
-	portraitFiles.merge(loadPortraitFiles("blankMod/output/", "gfx/leaders/"));
+	portraitFiles.merge(loadPortraitFiles("blankmod/", "gfx/leaders/"));
 	portraitFiles.merge(loadPortraitFiles(theConfiguration.getHoI4Path() + "/", "gfx/interface/ideas/"));
-	portraitFiles.merge(loadPortraitFiles("blankMod/output/", "gfx/interface/ideas/"));
+	portraitFiles.merge(loadPortraitFiles("blankmod/", "gfx/interface/ideas/"));
 
 	std::set<std::string> mapperPortraits;
 	mapperPortraits.merge(loadPortraitMappings(armyPortraitMappings));

@@ -8,7 +8,7 @@
 HoI4::decisions::decisions(const Configuration& theConfiguration)
 {
 	ideologicalCategories = DecisionsCategories::Factory().getDecisionsCategories(
-		 "blankmod/output/common/decisions/categories/00_decision_categories.txt");
+		 "blankmod/common/decisions/categories/00_decision_categories.txt");
 	agentRecruitmentDecisions.importDecisions(
 		 theConfiguration.getHoI4Path() + "/common/decisions/lar_agent_recruitment_decisions.txt");
 	stabilityDecisions.importDecisions(theConfiguration.getHoI4Path() + "/common/decisions/stability_war_support.txt");
@@ -19,8 +19,8 @@ HoI4::decisions::decisions(const Configuration& theConfiguration)
 		 theConfiguration.getHoI4Path() + "/common/decisions/foreign_influence.txt");
 	foreignInfluenceDecisions.importDecisions("Configurables/foreignInfluenceDecisions.txt");
 	navalTreatyDecisions.importDecisions(theConfiguration.getHoI4Path() + "/common/decisions/MTG_naval_treaty.txt");
-	resourceProspectingDecisions.importDecisions("blankmod/output/common/decisions/resource_prospecting.txt");
-	genericDecisions.importDecisions("blankmod/output/common/decisions/_generic_decisions.txt");
+	resourceProspectingDecisions.importDecisions("blankmod/common/decisions/resource_prospecting.txt");
+	genericDecisions.importDecisions("blankmod/common/decisions/_generic_decisions.txt");
 }
 
 

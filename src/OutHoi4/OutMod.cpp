@@ -52,7 +52,7 @@ void createOutputFolder(const std::string& outputName)
 	{
 		throw std::runtime_error("Could not create output folder");
 	}
-	if (!commonItems::CopyFolder("blankMod/output", "output/" + outputName))
+	if (!commonItems::CopyFolder("blankmod", "output/" + outputName))
 	{
 		throw std::runtime_error("Could not copy blankMod");
 	}

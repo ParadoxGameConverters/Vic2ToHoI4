@@ -343,12 +343,12 @@ void HoI4::Localisation::Importer::importLocalisations(std::string_view hoi4_dir
 		}
 	}
 
-	for (const auto& subdirectory: commonItems::GetAllSubfolders("blankmod/output/localisation"))
+	for (const auto& subdirectory: commonItems::GetAllSubfolders("blankmod/localisation"))
 	{
-		for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/output/localisation/" + subdirectory))
+		for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/localisation/" + subdirectory))
 		{
 			const std::string full_path =
-				 std::string("blankmod/output/localisation/").append(subdirectory).append("/").append(fileName);
+				 std::string("blankmod/localisation/").append(subdirectory).append("/").append(fileName);
 			if (fileName.starts_with("focus"))
 			{
 				importFocusLocalisations(full_path);

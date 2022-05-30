@@ -936,7 +936,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\blankMod\**\*.*">
+    <Content Include="data\blank_mod\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
       <Link>blankmod\%(RecursiveDir)\%(Filename)%(Extension)</Link>

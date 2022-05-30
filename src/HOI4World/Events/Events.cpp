@@ -1156,7 +1156,7 @@ void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeolo
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile("blankmod/output/events/ElectionEvents.txt");
+	parseFile("blankmod/events/ElectionEvents.txt");
 	clearRegisteredKeywords();
 
 	if (majorIdeologies.contains("democratic"))
