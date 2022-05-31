@@ -305,6 +305,7 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	wargoal += "\t\t\ttarget = FROM\n";
 	wargoal += "\t\t}";
 	refusedOption.giveScriptBlock(std::move(wargoal));
+	refusedOption.giveScriptBlock("news_event = { id = static_news.3 hours = 6 }");
 	refusedEvent.giveOption(std::move(refusedOption));
 
 	nationalFocusEvents.push_back(refusedEvent);
@@ -336,6 +337,7 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	effect += "\t\t\tannex_country = { target = " + annexedTag + " transfer_troops = yes }\n";
 	effect += "\t\t\tadd_political_power = 50\n";
 	effect += "\t\t\tadd_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }\n";
+	effect += "\t\t\tnews_event = { id = static_news.2 hours = 6 }\n";
 	effect += "\t\t\tset_country_flag = " + annexedTag + "_annexed\n";
 	effect += "\t\t}\n";
 	effect += "\t\telse = {\n";

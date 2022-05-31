@@ -2348,6 +2348,9 @@ focus = {
 	completion_reward = {
 		add_named_threat = { threat = 2 name = $TEXT }
 		add_ideas = fascist_influence
+		hidden_effect = {
+			news_event = { id = static_news.1 hours = 5 }
+		}
 	}
 }
 
