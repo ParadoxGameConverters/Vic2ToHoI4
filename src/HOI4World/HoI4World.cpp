@@ -1103,8 +1103,16 @@ void HoI4::World::convertWars(const Vic2::World& sourceWorld, const Mappers::Pro
 			continue;
 		}
 
+		std::set<std::string> independentCountries;
+		for (const auto& [tag, country]: countries)
+		{
+			if (!country->getPuppetMaster())
+			{
+				independentCountries.insert(tag);
+			}
+		}
 		country->second->convertWars(sourceCountry,
-			 countries,
+			 independentCountries,
 			 *countryMap,
 			 *casusBellis,
 			 provinceMapper,

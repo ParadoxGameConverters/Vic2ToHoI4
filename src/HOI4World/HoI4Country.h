@@ -299,7 +299,7 @@ class Country
 	[[nodiscard]] const bool isEligibleEnemy(std::string target) const;
 
 	void convertWars(const Vic2::Country& sourceCountry,
-		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+		 const std::set<std::string>& independentCountries,
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::CasusBellis& casusBellis,
 		 const Mappers::ProvinceMapper& provinceMapper,

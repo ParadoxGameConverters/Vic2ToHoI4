@@ -16,14 +16,11 @@
 namespace HoI4
 {
 
-class Country;
-
-
 class War
 {
   public:
 	War(const Vic2::War& sourceWar,
-		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+		 const std::set<std::string>& independentCountries,
 		 const Mappers::CountryMapper& countryMapper,
 		 const Mappers::CasusBellis& casusBellis,
 		 const Mappers::ProvinceMapper& provinceMapper,

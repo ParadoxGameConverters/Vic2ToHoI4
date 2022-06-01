@@ -1,11 +1,10 @@
 #include "HoI4War.h"
-#include "HOI4World/HoI4Country.h"
 #include "Log.h"
 
 
 
 HoI4::War::War(const Vic2::War& sourceWar,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::set<std::string>& independentCountries,
 	 const Mappers::CountryMapper& countryMapper,
 	 const Mappers::CasusBellis& casusBellis,
 	 const Mappers::ProvinceMapper& provinceMapper,
@@ -33,8 +32,7 @@ HoI4::War::War(const Vic2::War& sourceWar,
 			Log(LogLevel::Warning) << "Could not map " << defender << ", defending in a war";
 			continue;
 		}
-		if (const auto& defCountry = countries.find(*possibleDefender);
-			 defCountry != countries.end() && !defCountry->second->getPuppetMaster())
+		if (independentCountries.contains(*possibleDefender))
 		{
 			extraDefenders.insert(*possibleDefender);
 		}
@@ -62,8 +60,7 @@ HoI4::War::War(const Vic2::War& sourceWar,
 			Log(LogLevel::Warning) << "Could not map " << attacker << ", attacking in a war";
 			continue;
 		}
-		if (const auto& attCountry = countries.find(*possibleAttacker);
-			 attCountry != countries.end() && !attCountry->second->getPuppetMaster())
+		if (independentCountries.contains(*possibleAttacker))
 		{
 			extraAttackers.insert(*possibleAttacker);
 		}
