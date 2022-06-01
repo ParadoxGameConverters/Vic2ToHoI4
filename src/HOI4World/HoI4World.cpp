@@ -147,7 +147,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
 	setTrainMultipliers();
 	Log(LogLevel::Progress) << "40%";
-	convertWars(sourceWorld, provinceMapper);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
 	railways_ = std::make_unique<Railways>(sourceWorld.getProvinces(),
@@ -175,6 +174,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertIndustry(theConfiguration);
 	addProvincesToHomeAreas();
 	convertDiplomacy(sourceWorld);
+	convertWars(sourceWorld, provinceMapper);
 	addDominions(countryMapperFactory);
 	addUnrecognizedNations(countryMapperFactory, provinceMapper, sourceWorld);
 	states->addCoresToCorelessStates(sourceWorld.getCountries(),
@@ -1104,6 +1104,7 @@ void HoI4::World::convertWars(const Vic2::World& sourceWorld, const Mappers::Pro
 		}
 
 		country->second->convertWars(sourceCountry,
+			 countries,
 			 *countryMap,
 			 *casusBellis,
 			 provinceMapper,
