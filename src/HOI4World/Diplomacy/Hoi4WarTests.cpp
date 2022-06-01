@@ -9,6 +9,7 @@
 TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
 {
 	const HoI4::War war(Vic2::War({}),
+		 std::set<std::string>{},
 		 *Mappers::CountryMapper::Builder().Build(),
 		 Mappers::CasusBellis({}),
 		 Mappers::ProvinceMapper{},
@@ -34,6 +35,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 	std::cout.rdbuf(log.rdbuf());
 
 	const HoI4::War war(Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}}),
+		 std::set<std::string>{},
 		 *Mappers::CountryMapper::Builder().addMapping("OAT", "NAT").Build(),
 		 Mappers::CasusBellis({}),
 		 Mappers::ProvinceMapper{},
@@ -49,6 +51,7 @@ TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 {
 	const HoI4::War war(
 		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}, .defenders{{"OED"}}}),
+		 std::set<std::string>{"NED"},
 		 *Mappers::CountryMapper::Builder()
 				.addMapping("ODF", "NDF")
 				.addMapping("OED", "NED")
@@ -81,6 +84,7 @@ TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 {
 	const HoI4::War war(
 		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .attackers{{"OEA"}}, .originalDefender{"ODF"}}),
+		 std::set<std::string>{"NEA"},
 		 *Mappers::CountryMapper::Builder()
 				.addMapping("ODF", "NDF")
 				.addMapping("OEA", "NEA")
@@ -116,6 +120,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 	std::cout.rdbuf(log.rdbuf());
 
 	const HoI4::War war(Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}}),
+		 std::set<std::string>{},
 		 *Mappers::CountryMapper::Builder().addMapping("ODF", "NDF").Build(),
 		 Mappers::CasusBellis({}),
 		 Mappers::ProvinceMapper{},
@@ -130,6 +135,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 TEST(HoI4World_Diplomacy_WarTests, TargetStateCanBeSet)
 {
 	const HoI4::War war(Vic2::War({.province = 42}),
+		 std::set<std::string>{},
 		 *Mappers::CountryMapper::Builder().Build(),
 		 Mappers::CasusBellis({}),
 		 *Mappers::ProvinceMapper::Builder{}.addVic2ToHoI4ProvinceMap(42, {84}).Build(),
