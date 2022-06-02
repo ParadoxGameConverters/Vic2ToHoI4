@@ -4,6 +4,7 @@
 
 
 HoI4::War::War(const Vic2::War& sourceWar,
+	 const std::set<std::string>& independentCountries,
 	 const Mappers::CountryMapper& countryMapper,
 	 const Mappers::CasusBellis& casusBellis,
 	 const Mappers::ProvinceMapper& provinceMapper,
@@ -21,17 +22,19 @@ HoI4::War::War(const Vic2::War& sourceWar,
 
 	for (const auto& defender: sourceWar.getDefenders())
 	{
-		if (defender != sourceWar.getOriginalDefender())
+		if (defender == sourceWar.getOriginalDefender())
 		{
-			auto possibleDefender = countryMapper.getHoI4Tag(defender);
-			if (possibleDefender)
-			{
-				extraDefenders.insert(*possibleDefender);
-			}
-			else
-			{
-				Log(LogLevel::Warning) << "Could not map " << defender << ", defending in a war";
-			}
+			continue;
+		}
+		const auto& possibleDefender = countryMapper.getHoI4Tag(defender);
+		if (!possibleDefender)
+		{
+			Log(LogLevel::Warning) << "Could not map " << defender << ", defending in a war";
+			continue;
+		}
+		if (independentCountries.contains(*possibleDefender))
+		{
+			extraDefenders.insert(*possibleDefender);
 		}
 	}
 
@@ -47,17 +50,19 @@ HoI4::War::War(const Vic2::War& sourceWar,
 
 	for (const auto& attacker: sourceWar.getAttackers())
 	{
-		if (attacker != sourceWar.getOriginalAttacker())
+		if (attacker == sourceWar.getOriginalAttacker())
 		{
-			auto possibleAttacker = countryMapper.getHoI4Tag(attacker);
-			if (possibleAttacker)
-			{
-				extraAttackers.insert(*possibleAttacker);
-			}
-			else
-			{
-				Log(LogLevel::Warning) << "Could not map " << attacker << ", attacking in a war";
-			}
+			continue;
+		}
+		auto possibleAttacker = countryMapper.getHoI4Tag(attacker);
+		if (!possibleAttacker)
+		{
+			Log(LogLevel::Warning) << "Could not map " << attacker << ", attacking in a war";
+			continue;
+		}
+		if (independentCountries.contains(*possibleAttacker))
+		{
+			extraAttackers.insert(*possibleAttacker);
 		}
 	}
 

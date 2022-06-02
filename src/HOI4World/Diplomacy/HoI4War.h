@@ -20,6 +20,7 @@ class War
 {
   public:
 	War(const Vic2::War& sourceWar,
+		 const std::set<std::string>& independentCountries,
 		 const Mappers::CountryMapper& countryMapper,
 		 const Mappers::CasusBellis& casusBellis,
 		 const Mappers::ProvinceMapper& provinceMapper,

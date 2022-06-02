@@ -754,6 +754,7 @@ void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap,
 
 
 void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
+	 const std::set<std::string>& independentCountries,
 	 const Mappers::CountryMapper& countryMap,
 	 const Mappers::CasusBellis& casusBellis,
 	 const Mappers::ProvinceMapper& provinceMapper,
@@ -761,7 +762,7 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry,
 {
 	for (const auto& sourceWar: theSourceCountry.getWars())
 	{
-		War theWar(sourceWar, countryMap, casusBellis, provinceMapper, provinceToStateIDMap);
+		War theWar(sourceWar, independentCountries, countryMap, casusBellis, provinceMapper, provinceToStateIDMap);
 		wars.push_back(theWar);
 	}
 }
