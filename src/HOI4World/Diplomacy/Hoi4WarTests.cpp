@@ -80,6 +80,33 @@ TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 }
 
 
+TEST(HoI4World_Diplomacy_WarTests, puppetDefendersAreNotAdded)
+{
+	const HoI4::War war(
+		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}, .defenders{{"OED"}}}),
+		 std::set<std::string>{},
+		 *Mappers::CountryMapper::Builder()
+				.addMapping("ODF", "NDF")
+				.addMapping("OED", "NED")
+				.addMapping("OAT", "NAT")
+				.Build(),
+		 Mappers::CasusBellis({}),
+		 Mappers::ProvinceMapper{},
+		 std::map<int, int>{});
+	std::stringstream output;
+	output << war;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "declare_war_on = {\n";
+	expectedOutput << "\ttarget = NDF\n";
+	expectedOutput << "\ttype = topple_government\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
 TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 {
 	const HoI4::War war(
@@ -106,6 +133,33 @@ TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 	expectedOutput << "\t\ttargeted_alliance = NAT\n";
 	expectedOutput << "\t\tenemy = NDF\n";
 	expectedOutput << "\t}\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_Diplomacy_WarTests, puppetAttackersAreNotAdded)
+{
+	const HoI4::War war(
+		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .attackers{{"OEA"}}, .originalDefender{"ODF"}}),
+		 std::set<std::string>{},
+		 *Mappers::CountryMapper::Builder()
+				.addMapping("ODF", "NDF")
+				.addMapping("OEA", "NEA")
+				.addMapping("OAT", "NAT")
+				.Build(),
+		 Mappers::CasusBellis({}),
+		 Mappers::ProvinceMapper{},
+		 std::map<int, int>{});
+	std::stringstream output;
+	output << war;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "declare_war_on = {\n";
+	expectedOutput << "\ttarget = NDF\n";
+	expectedOutput << "\ttype = topple_government\n";
 	expectedOutput << "}\n";
 	expectedOutput << "\n";
 
