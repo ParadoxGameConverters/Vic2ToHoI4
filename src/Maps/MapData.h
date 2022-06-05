@@ -6,7 +6,7 @@
 #include "Color.h"
 #include "Maps/ProvinceDefinitions.h"
 #include "ProvincePoints.h"
-#include "bitmap_image.hpp"
+#include "external/bitmap/bitmap_image.hpp"
 #include <map>
 #include <optional>
 #include <set>
