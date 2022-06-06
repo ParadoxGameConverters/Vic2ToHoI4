@@ -4,7 +4,7 @@
 #include "HOI4World/States/HoI4State.h"
 #include "HOI4World/States/HoI4States.h"
 #include "Hoi4Building.h"
-#include "Log.h"
+#include "external/common_items/Log.h"
 #include "Maps/MapData.h"
 
 

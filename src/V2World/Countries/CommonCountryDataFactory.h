@@ -5,8 +5,8 @@
 
 #include "CommonCountryData.h"
 #include "Configuration.h"
-#include "ModLoader/ModLoader.h"
-#include "Parser.h"
+#include "external/common_items/ModLoader/ModLoader.h"
+#include "external/common_items/ConvenientParser.h"
 #include "UnitNamesFactory.h"
 #include "V2World/Politics/PartyFactory.h"
 #include <memory>

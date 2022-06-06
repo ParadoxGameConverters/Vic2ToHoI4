@@ -6,7 +6,7 @@
 #include "Configuration.h"
 #include "Event.h"
 #include "Mappers/FactionName/FactionNameMapper.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include "V2World/Politics/Party.h"
 #include <map>
 #include <set>

@@ -2,7 +2,7 @@
 #include "Event.h"
 #include "EventHelpers.h"
 #include "EventOption.h"
-#include "Log.h"
+#include "external/common_items/Log.h"
 
 
 HoI4::Event HoI4::createGovernmentInExileEvent(const std::set<std::string>& majorIdeologies)

@@ -7,7 +7,7 @@
 #include "HOI4World/Map/CoastalProvinces.h"
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include "StateCategories.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"

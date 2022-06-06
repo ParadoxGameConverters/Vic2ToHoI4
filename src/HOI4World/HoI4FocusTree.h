@@ -3,11 +3,11 @@
 
 
 
-#include "Date.h"
+#include "external/common_items/Date.h"
 #include "Diplomacy/HoI4AIStrategy.h"
 #include "Events/Events.h"
 #include "OnActions.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include "States/HoI4State.h"
 #include <memory>
 #include <set>

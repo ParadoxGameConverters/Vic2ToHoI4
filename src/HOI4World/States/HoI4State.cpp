@@ -1,6 +1,6 @@
 #include "HoI4State.h"
 #include "HOI4World/Map/CoastalProvinces.h"
-#include "Log.h"
+#include "external/common_items/Log.h"
 #include "StateCategories.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"

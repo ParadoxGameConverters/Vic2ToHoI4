@@ -2,7 +2,7 @@
 #define HOI4_DECISION_H
 
 
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include <optional>
 #include <string>
 

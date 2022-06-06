@@ -46,7 +46,7 @@
 #include "OnActions.h"
 #include "Operations/Operations.h"
 #include "OperativeNames/OperativeNames.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include "ScriptedEffects/ScriptedEffects.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "ScriptedTriggers/ScriptedTriggers.h"

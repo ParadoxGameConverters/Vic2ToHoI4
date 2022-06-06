@@ -1,7 +1,7 @@
 #include "Inventions.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 

@@ -1,8 +1,8 @@
 #include "StateFactory.h"
 #include "BuildingReader.h"
-#include "CommonRegexes.h"
-#include "Log.h"
-#include "ParserHelpers.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/ParserHelpers.h"
 #include "StateDefinitions.h"
 
 

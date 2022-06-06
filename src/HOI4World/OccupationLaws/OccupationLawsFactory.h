@@ -5,7 +5,7 @@
 
 #include "Configuration.h"
 #include "OccupationLaws.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 
 
 namespace HoI4

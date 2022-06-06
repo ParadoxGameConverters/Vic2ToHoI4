@@ -7,7 +7,7 @@
 #include "HOI4World/Map/SupplyZone.h"
 #include "HOI4World/States/DefaultState.h"
 #include "HOI4World/States/HoI4States.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include <map>
 #include <set>
 #include <string>

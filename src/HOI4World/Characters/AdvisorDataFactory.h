@@ -4,7 +4,7 @@
 
 
 #include "HOI4World/Characters/AdvisorData.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 
 
 

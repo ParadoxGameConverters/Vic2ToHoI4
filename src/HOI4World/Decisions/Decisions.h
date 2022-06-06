@@ -13,7 +13,7 @@
 #include "HOI4World/Events/Events.h"
 #include "HOI4World/States/DefaultState.h"
 #include "NavalTreatyDecisions.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include "PoliticalDecisions.h"
 #include "ResourceProspectingDecisions.h"
 #include "StabilityWarSupportDecisions.h"

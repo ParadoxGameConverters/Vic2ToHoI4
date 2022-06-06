@@ -13,7 +13,7 @@
 #include "Mappers/Graphics/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Maps/MapData.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include "V2World/Countries/Country.h"
 #include "V2World/States/State.h"
 #include <map>

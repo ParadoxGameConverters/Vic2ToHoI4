@@ -4,7 +4,7 @@
 
 
 #include "HOI4World/HoI4Localisation.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include <string>
 #include <vector>
 

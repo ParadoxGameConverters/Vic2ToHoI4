@@ -1,5 +1,5 @@
 #include "MergeRulesFactory.h"
-#include "CommonRegexes.h"
+#include "external/common_items/CommonRegexes.h"
 #include "MergeRule.h"
 
 

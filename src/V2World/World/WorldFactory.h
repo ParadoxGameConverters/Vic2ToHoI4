@@ -5,7 +5,7 @@
 
 #include "Configuration.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include "V2World/Countries/CountryFactory.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/DiplomacyFactory.h"

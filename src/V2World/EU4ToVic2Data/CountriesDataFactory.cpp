@@ -1,6 +1,6 @@
 #include "CountriesDataFactory.h"
-#include "CommonRegexes.h"
-#include "OSCompatibilityLayer.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/OSCompatibilityLayer.h"
 
 
 

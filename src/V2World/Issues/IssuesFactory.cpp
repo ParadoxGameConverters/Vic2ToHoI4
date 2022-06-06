@@ -1,5 +1,5 @@
 #include "IssuesFactory.h"
-#include "CommonRegexes.h"
+#include "external/common_items/CommonRegexes.h"
 #include "Configuration.h"
 #include "IssueCategoryHelper.h"
 

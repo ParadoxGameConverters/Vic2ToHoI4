@@ -5,7 +5,7 @@
 
 #include "Decision.h"
 #include "HOI4World/Events/Events.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include <set>
 #include <string>
 #include <vector>

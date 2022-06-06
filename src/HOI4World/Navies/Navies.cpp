@@ -1,5 +1,5 @@
 #include "Navies.h"
-#include "Log.h"
+#include "external/common_items/Log.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Maps/ProvinceDefinitions.h"
 

@@ -1,6 +1,6 @@
 #include "OutMod.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/OSCompatibilityLayer.h"
 #include "OutFlags.h"
 #include "OutHoi4World.h"
 #include <string>

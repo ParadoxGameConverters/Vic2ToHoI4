@@ -12,7 +12,7 @@
 #include "HOI4World/HoI4Localisation.h"
 #include "HOI4World/Names/Names.h"
 #include "Mappers/Graphics/GraphicsMapper.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 
 
 

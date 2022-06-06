@@ -6,7 +6,7 @@
 #include "CommonCountryData.h"
 #include "Configuration.h"
 #include "Country.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include "V2World/Ai/AIFactory.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/RelationsFactory.h"

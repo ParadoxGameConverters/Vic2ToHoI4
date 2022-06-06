@@ -3,7 +3,7 @@
 
 
 
-#include "Color.h"
+#include "external/common_items/Color.h"
 #include "Maps/ProvinceDefinitions.h"
 #include "ProvincePoints.h"
 #include "external/bitmap/bitmap_image.hpp"

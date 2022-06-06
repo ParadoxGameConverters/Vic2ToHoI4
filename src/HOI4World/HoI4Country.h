@@ -3,8 +3,8 @@
 
 
 
-#include "Color.h"
-#include "Date.h"
+#include "external/common_items/Color.h"
+#include "external/common_items/Date.h"
 #include "Diplomacy/Faction.h"
 #include "Diplomacy/HoI4AIStrategy.h"
 #include "Diplomacy/HoI4Relations.h"

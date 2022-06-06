@@ -3,7 +3,7 @@
 
 
 
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include "War.h"
 #include "WarGoalFactory.h"
 #include <memory>

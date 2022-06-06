@@ -1,7 +1,7 @@
 #include "OutDynamicModifiers.h"
 #include "HOI4World/Modifiers/DynamicModifiers.h"
 #include "HOI4World/Modifiers/Modifier.h"
-#include "OSCompatibilityLayer.h"
+#include "external/common_items/OSCompatibilityLayer.h"
 #include <fstream>
 #include <ranges>
 

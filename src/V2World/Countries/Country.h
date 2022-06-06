@@ -3,9 +3,9 @@
 
 
 
-#include "Color.h"
-#include "Date.h"
-#include "Parser.h"
+#include "external/common_items/Color.h"
+#include "external/common_items/Date.h"
+#include "external/common_items/ConvenientParser.h"
 #include "V2World/Ai/AI.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/Relations.h"

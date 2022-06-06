@@ -1,10 +1,10 @@
 #include "CommonCountryDataFactory.h"
-#include "Color.h"
+#include "external/common_items/Color.h"
 #include "CommonCountryData.h"
-#include "CommonRegexes.h"
+#include "external/common_items/CommonRegexes.h"
 #include "Configuration.h"
-#include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "external/common_items/ParserHelpers.h"
 #include "V2World/Politics/PartyFactory.h"
 
 

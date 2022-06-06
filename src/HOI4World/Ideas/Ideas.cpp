@@ -1,9 +1,9 @@
 #include "Ideas.h"
-#include "CommonRegexes.h"
+#include "external/common_items/CommonRegexes.h"
 #include "IdeaGroup.h"
 #include "IdeaUpdaters.h"
-#include "Log.h"
-#include "ParserHelpers.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/ParserHelpers.h"
 #include <fstream>
 
 

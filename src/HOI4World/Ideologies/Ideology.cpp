@@ -1,8 +1,8 @@
 #include "Ideology.h"
-#include "Color.h"
-#include "CommonRegexes.h"
+#include "external/common_items/Color.h"
+#include "external/common_items/CommonRegexes.h"
 #include "IdeologyItems.h"
-#include "ParserHelpers.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 
