@@ -174,7 +174,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertIndustry(theConfiguration);
 	addProvincesToHomeAreas();
 	convertDiplomacy(sourceWorld);
-	convertWars(sourceWorld, provinceMapper);
+	//convertWars(sourceWorld, provinceMapper);
 	addDominions(countryMapperFactory);
 	addUnrecognizedNations(countryMapperFactory, provinceMapper, sourceWorld);
 	states->addCoresToCorelessStates(sourceWorld.getCountries(),
@@ -244,7 +244,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		createFactions(theConfiguration);
 	}
 
-	HoI4WarCreator warCreator(this, *theMapData, *provinceDefinitions, *hoi4Localisations, theConfiguration);
+	//HoI4WarCreator warCreator(this, *theMapData, *provinceDefinitions, *hoi4Localisations, theConfiguration);
 
 	transferPuppetsToDominions();
 

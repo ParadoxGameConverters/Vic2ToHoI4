@@ -800,7 +800,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		output << "set_major = yes\n";
 	}
 	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.isCivilized(), theCountry.isUnrecognizedNation());
-	outputThreat(output, theCountry.getThreat());
+	//outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
 	outputOOBLines(output, tag, theCountry);
 	if (const auto& theTechnologies = theCountry.getTechnologies(); theTechnologies)
