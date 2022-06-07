@@ -1,6 +1,6 @@
 #include "Names.h"
 #include "external/common_items/CommonRegexes.h"
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "CultureGroupNames.h"
 #include "CultureNames.h"
 #include "external/common_items/Log.h"

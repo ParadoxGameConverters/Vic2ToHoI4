@@ -1,4 +1,4 @@
-#include "HOI4World/Navies/MtgShipTypeNames.h"
+#include "src/HOI4World/Navies/MtgShipTypeNames.h"
 #include "gtest/gtest.h"
 
 

@@ -1,4 +1,4 @@
-#include "HOI4World/Decisions/IdeologicalDecisions.h"
+#include "src/HOI4World/Decisions/IdeologicalDecisions.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

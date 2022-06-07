@@ -3,12 +3,12 @@
 
 
 
-#include "Maps/MapData.h"
-#include "V2World/Countries/Country.h"
-#include "V2World/Diplomacy/Diplomacy.h"
-#include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/Provinces/Province.h"
-#include "V2World/States/StateDefinitions.h"
+#include "src/Maps/MapData.h"
+#include "src/V2World/Countries/Country.h"
+#include "src/V2World/Diplomacy/Diplomacy.h"
+#include "src/V2World/Localisations/Vic2Localisations.h"
+#include "src/V2World/Provinces/Province.h"
+#include "src/V2World/States/StateDefinitions.h"
 #include <map>
 #include <memory>
 #include <optional>

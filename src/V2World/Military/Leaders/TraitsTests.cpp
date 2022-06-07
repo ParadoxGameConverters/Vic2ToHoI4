@@ -1,5 +1,5 @@
-#include "V2World/Military/Leaders/Traits.h"
-#include "V2World/Military/Leaders/TraitsFactory.h"
+#include "src/V2World/Military/Leaders/Traits.h"
+#include "src/V2World/Military/Leaders/TraitsFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 

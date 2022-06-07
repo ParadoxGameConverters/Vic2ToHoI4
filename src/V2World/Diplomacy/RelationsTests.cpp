@@ -1,5 +1,5 @@
-#include "V2World/Diplomacy/Relations.h"
-#include "V2World/Diplomacy/RelationsFactory.h"
+#include "src/V2World/Diplomacy/Relations.h"
+#include "src/V2World/Diplomacy/RelationsFactory.h"
 #include "gtest/gtest.h"
 
 

@@ -1,7 +1,7 @@
-#include "HOI4World/Map/SupplyNodes.h"
-#include "Mappers/Provinces/ProvinceMapperBuilder.h"
-#include "V2World/Provinces/Province.h"
-#include "V2World/Provinces/ProvinceBuilder.h"
+#include "src/HOI4World/Map/SupplyNodes.h"
+#include "src/Mappers/Provinces/ProvinceMapperBuilder.h"
+#include "src/V2World/Provinces/Province.h"
+#include "src/V2World/Provinces/ProvinceBuilder.h"
 #include "gtest/gtest.h"
 #include <gmock/gmock-matchers.h>
 

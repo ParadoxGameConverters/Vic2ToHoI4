@@ -3,10 +3,10 @@
 
 
 
-#include "Configuration.h"
-#include "HOI4World/HoI4Country.h"
-#include "HOI4World/Military/DivisionTemplate.h"
-#include "HOI4World/Names/Names.h"
+#include "src/Configuration.h"
+#include "src/HOI4World/HoI4Country.h"
+#include "src/HOI4World/Military/DivisionTemplate.h"
+#include "src/HOI4World/Names/Names.h"
 #include <vector>
 
 

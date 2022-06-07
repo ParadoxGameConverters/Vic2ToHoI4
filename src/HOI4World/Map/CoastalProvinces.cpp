@@ -1,8 +1,8 @@
 #include "CoastalProvinces.h"
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "Hoi4Province.h"
 #include "external/common_items/Log.h"
-#include "Maps/MapData.h"
+#include "src/Maps/MapData.h"
 
 
 

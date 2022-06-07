@@ -1,4 +1,4 @@
-#include "Mappers/Country/CountryMappingRuleFactory.h"
+#include "src/Mappers/Country/CountryMappingRuleFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>

@@ -1,6 +1,6 @@
 #include "DecisionsInCategory.h"
 #include "external/common_items/CommonRegexes.h"
-#include "HOI4World/Events/Events.h"
+#include "src/HOI4World/Events/Events.h"
 #include "external/common_items/ParserHelpers.h"
 
 

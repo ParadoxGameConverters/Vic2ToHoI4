@@ -1,6 +1,6 @@
 #include "StrategicRegion.h"
 #include "external/common_items/CommonRegexes.h"
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "MapRegion.h"
 #include "external/common_items/ParserHelpers.h"
 #include <fstream>

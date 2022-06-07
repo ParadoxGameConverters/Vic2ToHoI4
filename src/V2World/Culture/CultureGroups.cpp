@@ -1,5 +1,5 @@
 #include "CultureGroups.h"
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 
 

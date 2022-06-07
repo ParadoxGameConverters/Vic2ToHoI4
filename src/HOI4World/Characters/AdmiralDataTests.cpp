@@ -1,5 +1,5 @@
-#include "HOI4World/Characters/AdmiralData.h"
-#include "HOI4World/Characters/AdmiralDataFactory.h"
+#include "src/HOI4World/Characters/AdmiralData.h"
+#include "src/HOI4World/Characters/AdmiralDataFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>

@@ -1,5 +1,5 @@
 #include "OutLocalisation.h"
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include <fstream>

@@ -3,7 +3,7 @@
 
 
 
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "Hoi4Province.h"
 #include <map>
 

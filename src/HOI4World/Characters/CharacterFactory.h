@@ -3,15 +3,15 @@
 
 
 
-#include "HOI4World/Characters/AdmiralDataFactory.h"
-#include "HOI4World/Characters/AdvisorDataFactory.h"
-#include "HOI4World/Characters/Character.h"
-#include "HOI4World/Characters/CommanderDataFactory.h"
-#include "HOI4World/Characters/CountryLeaderDataFactory.h"
-#include "HOI4World/Characters/PortraitsFactory.h"
-#include "HOI4World/HoI4Localisation.h"
-#include "HOI4World/Names/Names.h"
-#include "Mappers/Graphics/GraphicsMapper.h"
+#include "src/HOI4World/Characters/AdmiralDataFactory.h"
+#include "src/HOI4World/Characters/AdvisorDataFactory.h"
+#include "src/HOI4World/Characters/Character.h"
+#include "src/HOI4World/Characters/CommanderDataFactory.h"
+#include "src/HOI4World/Characters/CountryLeaderDataFactory.h"
+#include "src/HOI4World/Characters/PortraitsFactory.h"
+#include "src/HOI4World/HoI4Localisation.h"
+#include "src/HOI4World/Names/Names.h"
+#include "src/Mappers/Graphics/GraphicsMapper.h"
 #include "external/common_items/ConvenientParser.h"
 
 

@@ -3,13 +3,13 @@
 
 
 
-#include "HOI4World/HoI4Country.h"
-#include "HOI4World/HoI4Localisation.h"
-#include "HOI4World/HoI4World.h"
+#include "src/HOI4World/HoI4Country.h"
+#include "src/HOI4World/HoI4Localisation.h"
+#include "src/HOI4World/HoI4World.h"
 #include "MapUtils.h"
-#include "Maps/MapData.h"
-#include "Maps/ProvinceDefinitions.h"
-#include "V2World/World/World.h"
+#include "src/Maps/MapData.h"
+#include "src/Maps/ProvinceDefinitions.h"
+#include "src/V2World/World/World.h"
 #include <fstream>
 #include <map>
 #include <optional>

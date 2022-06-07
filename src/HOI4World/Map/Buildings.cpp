@@ -1,11 +1,11 @@
 #include "Buildings.h"
 #include "CoastalProvinces.h"
-#include "Configuration.h"
-#include "HOI4World/States/HoI4State.h"
-#include "HOI4World/States/HoI4States.h"
+#include "src/Configuration.h"
+#include "src/HOI4World/States/HoI4State.h"
+#include "src/HOI4World/States/HoI4States.h"
 #include "Hoi4Building.h"
 #include "external/common_items/Log.h"
-#include "Maps/MapData.h"
+#include "src/Maps/MapData.h"
 
 
 

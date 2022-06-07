@@ -1,7 +1,7 @@
-#include "V2World/Military/Leaders/Leader.h"
-#include "V2World/Military/Leaders/LeaderFactory.h"
-#include "V2World/Military/Leaders/Traits.h"
-#include "V2World/Military/Leaders/TraitsBuilder.h"
+#include "src/V2World/Military/Leaders/Leader.h"
+#include "src/V2World/Military/Leaders/LeaderFactory.h"
+#include "src/V2World/Military/Leaders/Traits.h"
+#include "src/V2World/Military/Leaders/TraitsBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

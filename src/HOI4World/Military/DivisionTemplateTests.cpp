@@ -1,4 +1,4 @@
-#include "HOI4World/Military/DivisionTemplate.h"
+#include "src/HOI4World/Military/DivisionTemplate.h"
 #include "gtest/gtest.h"
 
 

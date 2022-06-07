@@ -1,4 +1,4 @@
-#include "HOI4World/Characters/PortraitsFactory.h"
+#include "src/HOI4World/Characters/PortraitsFactory.h"
 #include "gtest/gtest.h"
 #include <gmock/gmock-matchers.h>
 #include <sstream>

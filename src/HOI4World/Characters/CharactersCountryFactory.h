@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/Characters/CharacterFactory.h"
+#include "src/HOI4World/Characters/CharacterFactory.h"
 #include "external/common_items/ConvenientParser.h"
 #include <vector>
 

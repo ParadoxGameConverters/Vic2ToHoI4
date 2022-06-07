@@ -2,8 +2,8 @@
 #define HOI4_SUPPLY_NODES_H
 
 
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "V2World/Provinces/Province.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/V2World/Provinces/Province.h"
 #include <set>
 
 

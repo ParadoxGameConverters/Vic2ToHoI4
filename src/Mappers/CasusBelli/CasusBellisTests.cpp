@@ -1,5 +1,5 @@
-#include "Mappers/CasusBelli/CasusBellis.h"
-#include "Mappers/CasusBelli/CasusBellisFactory.h"
+#include "src/Mappers/CasusBelli/CasusBellis.h"
+#include "src/Mappers/CasusBelli/CasusBellisFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 

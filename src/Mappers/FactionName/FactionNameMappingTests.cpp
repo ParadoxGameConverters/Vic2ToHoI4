@@ -1,4 +1,4 @@
-#include "Mappers/FactionName/FactionNameMappingFactory.h"
+#include "src/Mappers/FactionName/FactionNameMappingFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

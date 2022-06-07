@@ -1,4 +1,4 @@
-#include "HOI4World/ShipTypes/PossibleShipVariants.h"
+#include "src/HOI4World/ShipTypes/PossibleShipVariants.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

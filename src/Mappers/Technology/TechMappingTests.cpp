@@ -1,5 +1,5 @@
-#include "Mappers/Technology/TechMapping.h"
-#include "Mappers/Technology/TechMappingFactory.h"
+#include "src/Mappers/Technology/TechMapping.h"
+#include "src/Mappers/Technology/TechMappingFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 

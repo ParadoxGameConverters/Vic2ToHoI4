@@ -1,4 +1,4 @@
-#include "HOI4World/CountryCategories/CountryGrammarFactory.h"
+#include "src/HOI4World/CountryCategories/CountryGrammarFactory.h"
 #include "gtest/gtest.h"
 #include <gmock/gmock-matchers.h>
 

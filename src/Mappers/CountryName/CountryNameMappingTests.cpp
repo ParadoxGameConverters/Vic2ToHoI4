@@ -1,4 +1,4 @@
-#include "Mappers/CountryName/CountryNameMappingFactory.h"
+#include "src/Mappers/CountryName/CountryNameMappingFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

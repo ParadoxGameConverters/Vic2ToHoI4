@@ -3,8 +3,8 @@
 
 
 
-#include "Maps/ProvinceDefinitions.h"
-#include "V2World/Provinces/Province.h"
+#include "src/Maps/ProvinceDefinitions.h"
+#include "src/V2World/Provinces/Province.h"
 #include <map>
 #include <memory>
 #include <string>

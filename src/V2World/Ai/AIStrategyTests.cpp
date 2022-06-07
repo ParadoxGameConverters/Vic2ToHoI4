@@ -1,5 +1,5 @@
-#include "V2World/Ai/AIStrategy.h"
-#include "V2World/Ai/AIStrategyFactory.h"
+#include "src/V2World/Ai/AIStrategy.h"
+#include "src/V2World/Ai/AIStrategyFactory.h"
 #include "gtest/gtest.h"
 
 

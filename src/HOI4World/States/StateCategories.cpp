@@ -1,5 +1,5 @@
 #include "StateCategories.h"
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "StateCategoryFile.h"
 #include <set>

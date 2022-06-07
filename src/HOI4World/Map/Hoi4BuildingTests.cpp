@@ -1,4 +1,4 @@
-#include "HOI4World/Map/Hoi4Building.h"
+#include "src/HOI4World/Map/Hoi4Building.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

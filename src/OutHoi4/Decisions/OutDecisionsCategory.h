@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/Decisions/DecisionsCategory.h"
+#include "src/HOI4World/Decisions/DecisionsCategory.h"
 #include <ostream>
 
 

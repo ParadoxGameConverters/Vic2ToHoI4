@@ -1,4 +1,4 @@
-#include "HOI4World/OccupationLaws/OccupationLawsFactory.h"
+#include "src/HOI4World/OccupationLaws/OccupationLawsFactory.h"
 #include "gtest/gtest.h"
 
 

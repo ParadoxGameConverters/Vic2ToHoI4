@@ -1,5 +1,5 @@
-#include "HOI4World/Characters/CommanderData.h"
-#include "HOI4World/Characters/CommanderDataFactory.h"
+#include "src/HOI4World/Characters/CommanderData.h"
+#include "src/HOI4World/Characters/CommanderDataFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>

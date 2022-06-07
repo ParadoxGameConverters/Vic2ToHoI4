@@ -1,5 +1,5 @@
 #include "Railways.h"
-#include "HOI4World/Map/PossiblePath.h"
+#include "src/HOI4World/Map/PossiblePath.h"
 #include "external/common_items/Log.h"
 #include <numeric>
 #include <queue>

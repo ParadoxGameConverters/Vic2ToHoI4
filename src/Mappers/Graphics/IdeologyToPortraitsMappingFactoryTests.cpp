@@ -1,5 +1,5 @@
-#include "Configuration.h"
-#include "Mappers/Graphics/IdeologyToPortraitsMappingFactory.h"
+#include "src/Configuration.h"
+#include "src/Mappers/Graphics/IdeologyToPortraitsMappingFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>

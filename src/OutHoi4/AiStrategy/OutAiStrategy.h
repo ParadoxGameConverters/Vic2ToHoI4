@@ -1,7 +1,7 @@
 #ifndef OUT_AI_STRATEGY
 #define OUT_AI_STRATEGY
 
-#include "HOI4World/HoI4Country.h"
+#include "src/HOI4World/HoI4Country.h"
 
 namespace HoI4
 {

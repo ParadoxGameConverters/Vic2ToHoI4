@@ -1,4 +1,4 @@
-#include "HOI4World/Localisations/ArticleRules/ArticleRulesDefinition.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRulesDefinition.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

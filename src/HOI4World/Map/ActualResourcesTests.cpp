@@ -1,4 +1,4 @@
-#include "HOI4World/Map/ActualResources.h"
+#include "src/HOI4World/Map/ActualResources.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

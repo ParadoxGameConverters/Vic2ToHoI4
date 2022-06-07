@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/Technologies.h"
+#include "src/HOI4World/Technologies.h"
 #include "LegacyShipVariant.h"
 #include "MtgShipVariant.h"
 #include "external/common_items/ConvenientParser.h"

@@ -1,5 +1,5 @@
-#include "V2World/Military/Army.h"
-#include "V2World/Military/ArmyFactory.h"
+#include "src/V2World/Military/Army.h"
+#include "src/V2World/Military/ArmyFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

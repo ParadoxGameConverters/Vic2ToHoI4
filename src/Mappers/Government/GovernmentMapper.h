@@ -4,7 +4,7 @@
 
 
 #include "GovernmentMapping.h"
-#include "HOI4World/Ideologies/Ideologies.h"
+#include "src/HOI4World/Ideologies/Ideologies.h"
 #include <set>
 #include <string>
 #include <vector>

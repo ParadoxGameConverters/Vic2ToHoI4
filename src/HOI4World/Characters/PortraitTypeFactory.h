@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/Characters/Portrait.h"
+#include "src/HOI4World/Characters/Portrait.h"
 #include "external/common_items/ConvenientParser.h"
 #include <string_view>
 #include <vector>

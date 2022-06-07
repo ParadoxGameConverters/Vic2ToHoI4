@@ -1,4 +1,4 @@
-#include "HOI4World/Events/Event.h"
+#include "src/HOI4World/Events/Event.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

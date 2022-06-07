@@ -1,5 +1,5 @@
-#include "Mappers/Provinces/ProvinceMapping.h"
-#include "Mappers/Provinces/ProvinceMappingFactory.h"
+#include "src/Mappers/Provinces/ProvinceMapping.h"
+#include "src/Mappers/Provinces/ProvinceMappingFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>

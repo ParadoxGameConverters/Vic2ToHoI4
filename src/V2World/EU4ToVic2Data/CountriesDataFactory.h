@@ -3,7 +3,7 @@
 
 
 
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "CountriesData.h"
 #include "CountryDataFactory.h"
 #include "external/common_items/ConvenientParser.h"

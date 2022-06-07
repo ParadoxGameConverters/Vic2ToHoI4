@@ -1,4 +1,4 @@
-#include "HOI4World/IntelligenceAgencies/IntelligenceAgencyLogos.h"
+#include "src/HOI4World/IntelligenceAgencies/IntelligenceAgencyLogos.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

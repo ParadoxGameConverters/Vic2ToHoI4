@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/ScriptedTriggers/ScriptedTriggers.h"
+#include "src/HOI4World/ScriptedTriggers/ScriptedTriggers.h"
 
 
 

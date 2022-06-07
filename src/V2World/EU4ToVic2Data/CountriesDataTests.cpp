@@ -1,6 +1,6 @@
-#include "Configuration.h"
-#include "V2World/EU4ToVic2Data/CountriesData.h"
-#include "V2World/EU4ToVic2Data/CountriesDataFactory.h"
+#include "src/Configuration.h"
+#include "src/V2World/EU4ToVic2Data/CountriesData.h"
+#include "src/V2World/EU4ToVic2Data/CountriesDataFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

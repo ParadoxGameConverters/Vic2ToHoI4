@@ -1,5 +1,5 @@
-#include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
-#include "Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
+#include "src/Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
+#include "src/Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
 #include "gtest/gtest.h"
 
 

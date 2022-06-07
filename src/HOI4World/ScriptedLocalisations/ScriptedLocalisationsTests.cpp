@@ -1,4 +1,4 @@
-#include "HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
+#include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
 #include "gtest/gtest.h"
 
 

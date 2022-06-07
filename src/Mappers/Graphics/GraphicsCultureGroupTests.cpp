@@ -1,6 +1,6 @@
-#include "Configuration.h"
-#include "Mappers/Graphics/GraphicsCultureGroup.h"
-#include "Mappers/Graphics/GraphicsCultureGroupFactory.h"
+#include "src/Configuration.h"
+#include "src/Mappers/Graphics/GraphicsCultureGroup.h"
+#include "src/Mappers/Graphics/GraphicsCultureGroupFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>

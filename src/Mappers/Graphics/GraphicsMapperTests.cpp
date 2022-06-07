@@ -1,6 +1,6 @@
-#include "Configuration.h"
-#include "Mappers/Graphics/GraphicsMapper.h"
-#include "Mappers/Graphics/GraphicsMapperFactory.h"
+#include "src/Configuration.h"
+#include "src/Mappers/Graphics/GraphicsMapper.h"
+#include "src/Mappers/Graphics/GraphicsMapperFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 

@@ -3,11 +3,11 @@
 
 
 
-#include "HOI4World/Characters/AdmiralData.h"
-#include "HOI4World/Characters/AdvisorData.h"
-#include "HOI4World/Characters/CommanderData.h"
-#include "HOI4World/Characters/CountryLeaderData.h"
-#include "HOI4World/Characters/Portrait.h"
+#include "src/HOI4World/Characters/AdmiralData.h"
+#include "src/HOI4World/Characters/AdvisorData.h"
+#include "src/HOI4World/Characters/CommanderData.h"
+#include "src/HOI4World/Characters/CountryLeaderData.h"
+#include "src/HOI4World/Characters/Portrait.h"
 #include <optional>
 #include <string>
 #include <vector>

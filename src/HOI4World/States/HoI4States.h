@@ -4,18 +4,18 @@
 
 
 #include "DefaultState.h"
-#include "HOI4World/Map/Hoi4Province.h"
-#include "HOI4World/Map/StrategicRegions.h"
-#include "HOI4World/Names/Names.h"
-#include "HOI4World/Regions/Regions.h"
-#include "Mappers/Country/CountryMapper.h"
-#include "Mappers/Country/CountryMapperFactory.h"
-#include "Mappers/Graphics/GraphicsMapper.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "Maps/MapData.h"
+#include "src/HOI4World/Map/Hoi4Province.h"
+#include "src/HOI4World/Map/StrategicRegions.h"
+#include "src/HOI4World/Names/Names.h"
+#include "src/HOI4World/Regions/Regions.h"
+#include "src/Mappers/Country/CountryMapper.h"
+#include "src/Mappers/Country/CountryMapperFactory.h"
+#include "src/Mappers/Graphics/GraphicsMapper.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/Maps/MapData.h"
 #include "external/common_items/ConvenientParser.h"
-#include "V2World/Countries/Country.h"
-#include "V2World/States/State.h"
+#include "src/V2World/Countries/Country.h"
+#include "src/V2World/States/State.h"
 #include <map>
 #include <optional>
 #include <set>

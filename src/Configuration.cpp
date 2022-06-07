@@ -1,4 +1,4 @@
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "external/common_items/CommonFunctions.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/GameVersion.h"

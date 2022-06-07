@@ -1,4 +1,4 @@
-#include "HOI4World/Military/RegimentTypeGroup.h"
+#include "src/HOI4World/Military/RegimentTypeGroup.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

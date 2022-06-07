@@ -3,7 +3,7 @@
 
 
 
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "Inventions.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>

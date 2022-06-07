@@ -1,10 +1,10 @@
 #include "HoI4Army.h"
 #include "DivisionType.h"
-#include "HOI4World/MilitaryMappings/UnitMappings.h"
-#include "HOI4World/States/HoI4State.h"
+#include "src/HOI4World/MilitaryMappings/UnitMappings.h"
+#include "src/HOI4World/States/HoI4State.h"
 #include "external/common_items/Log.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "V2World/Military/Army.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/V2World/Military/Army.h"
 
 
 

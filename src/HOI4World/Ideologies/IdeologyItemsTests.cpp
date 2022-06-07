@@ -1,4 +1,4 @@
-#include "HOI4World/Ideologies/IdeologyItems.h"
+#include "src/HOI4World/Ideologies/IdeologyItems.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

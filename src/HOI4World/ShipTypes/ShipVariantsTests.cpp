@@ -1,6 +1,6 @@
-#include "HOI4World/ShipTypes/MtgShipVariant.h"
-#include "HOI4World/ShipTypes/ShipVariants.h"
-#include "HOI4World/TechnologiesBuilder.h"
+#include "src/HOI4World/ShipTypes/MtgShipVariant.h"
+#include "src/HOI4World/ShipTypes/ShipVariants.h"
+#include "src/HOI4World/TechnologiesBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

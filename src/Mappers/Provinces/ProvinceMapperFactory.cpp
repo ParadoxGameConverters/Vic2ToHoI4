@@ -1,6 +1,6 @@
 #include "ProvinceMapperFactory.h"
 #include "external/common_items/CommonRegexes.h"
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "external/common_items/GameVersion.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"

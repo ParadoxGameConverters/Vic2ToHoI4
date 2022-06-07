@@ -1,5 +1,5 @@
-#include "Mappers/Provinces/VersionedMappings.h"
-#include "Mappers/Provinces/VersionedMappingsFactory.h"
+#include "src/Mappers/Provinces/VersionedMappings.h"
+#include "src/Mappers/Provinces/VersionedMappingsFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>

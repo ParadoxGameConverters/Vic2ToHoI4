@@ -3,8 +3,8 @@
 
 
 
-#include "Configuration.h"
-#include "HOI4World/States/HoI4State.h"
+#include "src/Configuration.h"
+#include "src/HOI4World/States/HoI4State.h"
 #include "StrategicRegion.h"
 #include <map>
 #include <memory>

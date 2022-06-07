@@ -8,8 +8,8 @@
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
 #include "SharedFocus.h"
-#include "V2World/Countries/Country.h"
-#include "V2World/Politics/Party.h"
+#include "src/V2World/Countries/Country.h"
+#include "src/V2World/Politics/Party.h"
 #include <ranges>
 
 

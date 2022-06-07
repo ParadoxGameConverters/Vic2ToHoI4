@@ -1,5 +1,5 @@
-#include "HOI4World/CountryCategories/CountryGrammarRule.h"
-#include "HOI4World/CountryCategories/CountryGrammarRuleFactory.h"
+#include "src/HOI4World/CountryCategories/CountryGrammarRule.h"
+#include "src/HOI4World/CountryCategories/CountryGrammarRuleFactory.h"
 #include "gtest/gtest.h"
 
 

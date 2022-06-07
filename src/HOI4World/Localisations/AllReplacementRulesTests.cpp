@@ -1,4 +1,4 @@
-#include "HOI4World/Localisations/AllReplacementRules.h"
+#include "src/HOI4World/Localisations/AllReplacementRules.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

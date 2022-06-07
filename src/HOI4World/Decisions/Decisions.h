@@ -4,14 +4,14 @@
 
 
 #include "AgentRecruitmentDecisions.h"
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "DecisionsCategories.h"
 #include "DecisionsInCategory.h"
 #include "ExiledGovernmentsDecisions.h"
 #include "ForeignInfluenceDecisions.h"
 #include "GenericDecisions.h"
-#include "HOI4World/Events/Events.h"
-#include "HOI4World/States/DefaultState.h"
+#include "src/HOI4World/Events/Events.h"
+#include "src/HOI4World/States/DefaultState.h"
 #include "NavalTreatyDecisions.h"
 #include "external/common_items/ConvenientParser.h"
 #include "PoliticalDecisions.h"

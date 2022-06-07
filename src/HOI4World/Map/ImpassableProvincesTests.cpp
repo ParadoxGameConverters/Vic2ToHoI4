@@ -1,5 +1,5 @@
-#include "HOI4World/Map/ImpassableProvinces.h"
-#include "HOI4World/States/DefaultState.h"
+#include "src/HOI4World/Map/ImpassableProvinces.h"
+#include "src/HOI4World/States/DefaultState.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

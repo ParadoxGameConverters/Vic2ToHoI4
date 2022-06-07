@@ -1,5 +1,5 @@
-#include "HOI4World/Regions/Regions.h"
-#include "HOI4World/Regions/RegionsFactory.h"
+#include "src/HOI4World/Regions/Regions.h"
+#include "src/HOI4World/Regions/RegionsFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 

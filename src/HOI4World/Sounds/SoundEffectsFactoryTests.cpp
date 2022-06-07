@@ -1,5 +1,5 @@
-#include "HOI4World/Sounds/SoundEffect.h"
-#include "HOI4World/Sounds/SoundEffectsFactory.h"
+#include "src/HOI4World/Sounds/SoundEffect.h"
+#include "src/HOI4World/Sounds/SoundEffectsFactory.h"
 #include "gtest/gtest.h"
 
 

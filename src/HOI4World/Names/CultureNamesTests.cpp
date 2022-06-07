@@ -1,4 +1,4 @@
-#include "HOI4World/Names/CultureNames.h"
+#include "src/HOI4World/Names/CultureNames.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

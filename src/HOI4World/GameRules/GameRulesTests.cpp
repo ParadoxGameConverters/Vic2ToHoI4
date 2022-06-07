@@ -1,4 +1,4 @@
-#include "HOI4World/GameRules/GameRules.h"
+#include "src/HOI4World/GameRules/GameRules.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

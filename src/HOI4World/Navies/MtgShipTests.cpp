@@ -1,5 +1,5 @@
-#include "HOI4World/Navies/MtgShip.h"
-#include "OutHoi4/Navies/OutMtgShip.h"
+#include "src/HOI4World/Navies/MtgShip.h"
+#include "src/OutHoi4/Navies/OutMtgShip.h"
 #include "gtest/gtest.h"
 
 

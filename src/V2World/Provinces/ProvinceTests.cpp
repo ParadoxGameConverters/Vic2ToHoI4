@@ -1,7 +1,7 @@
-#include "V2World/Issues/Issues.h"
-#include "V2World/Pops/Pop.h"
-#include "V2World/Provinces/Province.h"
-#include "V2World/Provinces/ProvinceBuilder.h"
+#include "src/V2World/Issues/Issues.h"
+#include "src/V2World/Pops/Pop.h"
+#include "src/V2World/Provinces/Province.h"
+#include "src/V2World/Provinces/ProvinceBuilder.h"
 #include "gtest/gtest.h"
 
 

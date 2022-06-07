@@ -3,11 +3,11 @@
 
 
 
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "Event.h"
-#include "Mappers/FactionName/FactionNameMapper.h"
+#include "src/Mappers/FactionName/FactionNameMapper.h"
 #include "external/common_items/ConvenientParser.h"
-#include "V2World/Politics/Party.h"
+#include "src/V2World/Politics/Party.h"
 #include <map>
 #include <set>
 #include <string>

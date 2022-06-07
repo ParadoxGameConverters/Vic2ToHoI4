@@ -1,4 +1,4 @@
-#include "HOI4World/ScriptedTriggers/ScriptedTrigger.h"
+#include "src/HOI4World/ScriptedTriggers/ScriptedTrigger.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

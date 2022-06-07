@@ -1,5 +1,5 @@
-#include "Mappers/Ideology/IdeologyMapping.h"
-#include "Mappers/Ideology/IdeologyMappingFactory.h"
+#include "src/Mappers/Ideology/IdeologyMapping.h"
+#include "src/Mappers/Ideology/IdeologyMappingFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

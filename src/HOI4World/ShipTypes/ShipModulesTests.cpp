@@ -1,4 +1,4 @@
-#include "HOI4World/ShipTypes/ShipModules.h"
+#include "src/HOI4World/ShipTypes/ShipModules.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

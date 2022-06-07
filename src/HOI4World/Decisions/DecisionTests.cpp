@@ -1,5 +1,5 @@
-#include "HOI4World/Decisions/Decision.h"
-#include "OutHoi4/Decisions/OutDecision.h"
+#include "src/HOI4World/Decisions/Decision.h"
+#include "src/OutHoi4/Decisions/OutDecision.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

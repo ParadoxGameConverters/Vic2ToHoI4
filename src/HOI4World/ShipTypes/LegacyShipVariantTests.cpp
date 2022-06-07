@@ -1,5 +1,5 @@
-#include "HOI4World/ShipTypes/LegacyShipVariant.h"
-#include "HOI4World/TechnologiesBuilder.h"
+#include "src/HOI4World/ShipTypes/LegacyShipVariant.h"
+#include "src/HOI4World/TechnologiesBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

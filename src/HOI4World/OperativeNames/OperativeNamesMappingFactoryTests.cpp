@@ -1,4 +1,4 @@
-#include "HOI4World/OperativeNames/OperativeNamesMappingFactory.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesMappingFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

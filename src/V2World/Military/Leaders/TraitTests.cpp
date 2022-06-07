@@ -1,4 +1,4 @@
-#include "V2World/Military/Leaders/Trait.h"
+#include "src/V2World/Military/Leaders/Trait.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>

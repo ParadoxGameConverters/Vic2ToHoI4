@@ -1,17 +1,17 @@
 #include "HoI4Localisation.h"
-#include "Configuration.h"
+#include "src/Configuration.h"
 #include "HoI4Country.h"
 #include "Localisations/AllReplacementRules.h"
 #include "external/common_items/Log.h"
-#include "Mappers/Government/GovernmentMapper.h"
+#include "src/Mappers/Government/GovernmentMapper.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ConvenientParser.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
-#include "V2World/Countries/Country.h"
-#include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/States/State.h"
-#include "V2World/States/StateDefinitions.h"
+#include "src/V2World/Countries/Country.h"
+#include "src/V2World/Localisations/Vic2Localisations.h"
+#include "src/V2World/States/State.h"
+#include "src/V2World/States/StateDefinitions.h"
 #include <fstream>
 #include <ranges>
 

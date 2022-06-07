@@ -1,9 +1,9 @@
-#include "Configuration.h"
-#include "V2World/Pops/Pop.h"
-#include "V2World/Provinces/ProvinceBuilder.h"
-#include "V2World/States/StateDefinitions.h"
-#include "V2World/States/StateDefinitionsBuilder.h"
-#include "V2World/States/StateFactory.h"
+#include "src/Configuration.h"
+#include "src/V2World/Pops/Pop.h"
+#include "src/V2World/Provinces/ProvinceBuilder.h"
+#include "src/V2World/States/StateDefinitions.h"
+#include "src/V2World/States/StateDefinitionsBuilder.h"
+#include "src/V2World/States/StateFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

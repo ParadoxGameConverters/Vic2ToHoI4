@@ -1,6 +1,6 @@
-#include "Configuration.h"
-#include "Mappers/MergeRules/MergeRules.h"
-#include "Mappers/MergeRules/MergeRulesFactory.h"
+#include "src/Configuration.h"
+#include "src/Mappers/MergeRules/MergeRules.h"
+#include "src/Mappers/MergeRules/MergeRulesFactory.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 

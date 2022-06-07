@@ -1,4 +1,4 @@
-#include "HOI4World/Military/Airplane.h"
+#include "src/HOI4World/Military/Airplane.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

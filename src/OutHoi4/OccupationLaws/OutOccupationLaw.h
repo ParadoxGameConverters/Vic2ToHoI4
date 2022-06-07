@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/OccupationLaws/OccupationLaw.h"
+#include "src/HOI4World/OccupationLaws/OccupationLaw.h"
 #include <ostream>
 
 

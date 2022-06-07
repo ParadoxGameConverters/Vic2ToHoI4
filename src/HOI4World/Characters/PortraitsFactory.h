@@ -3,8 +3,8 @@
 
 
 
-#include "HOI4World/Characters/Portrait.h"
-#include "HOI4World/Characters/PortraitTypeFactory.h"
+#include "src/HOI4World/Characters/Portrait.h"
+#include "src/HOI4World/Characters/PortraitTypeFactory.h"
 #include "external/common_items/ConvenientParser.h"
 #include <vector>
 

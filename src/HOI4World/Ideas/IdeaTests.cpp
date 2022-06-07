@@ -1,4 +1,4 @@
-#include "HOI4World/Ideas/Idea.h"
+#include "src/HOI4World/Ideas/Idea.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

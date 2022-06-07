@@ -1,4 +1,4 @@
-#include "HOI4World/States/StateCategory.h"
+#include "src/HOI4World/States/StateCategory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

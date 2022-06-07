@@ -1,4 +1,4 @@
-#include "OutHoi4/Characters/OutAdvisorData.h"
+#include "src/OutHoi4/Characters/OutAdvisorData.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>

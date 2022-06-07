@@ -1,4 +1,4 @@
-#include "HOI4World/MilitaryMappings/SubstitutesImporter.h"
+#include "src/HOI4World/MilitaryMappings/SubstitutesImporter.h"
 #include "gtest/gtest.h"
 
 

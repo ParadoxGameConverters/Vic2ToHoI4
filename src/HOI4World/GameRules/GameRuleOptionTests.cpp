@@ -1,5 +1,5 @@
-#include "HOI4World/GameRules/GameRuleOption.h"
-#include "OutHoi4/GameRules/OutGameRuleOption.h"
+#include "src/HOI4World/GameRules/GameRuleOption.h"
+#include "src/OutHoi4/GameRules/OutGameRuleOption.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
