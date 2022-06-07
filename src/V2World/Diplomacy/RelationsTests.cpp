@@ -1,6 +1,6 @@
 #include "src/V2World/Diplomacy/Relations.h"
 #include "src/V2World/Diplomacy/RelationsFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

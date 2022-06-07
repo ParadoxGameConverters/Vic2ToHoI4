@@ -1,5 +1,5 @@
 #include "src/HOI4World/Map/MapRegion.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

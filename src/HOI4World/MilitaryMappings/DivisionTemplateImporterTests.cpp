@@ -1,5 +1,5 @@
 #include "src/HOI4World/MilitaryMappings/DivisionTemplatesImporter.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

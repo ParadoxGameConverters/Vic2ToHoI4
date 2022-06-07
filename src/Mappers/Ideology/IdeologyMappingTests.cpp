@@ -1,6 +1,6 @@
 #include "src/Mappers/Ideology/IdeologyMapping.h"
 #include "src/Mappers/Ideology/IdeologyMappingFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

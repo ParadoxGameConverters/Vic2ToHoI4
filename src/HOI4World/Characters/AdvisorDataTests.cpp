@@ -1,7 +1,7 @@
 #include "src/HOI4World/Characters/AdvisorData.h"
 #include "src/HOI4World/Characters/AdvisorDataFactory.h"
-#include "gmock/gmock-matchers.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

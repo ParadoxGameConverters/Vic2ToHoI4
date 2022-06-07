@@ -2,7 +2,7 @@
 #include "src/HOI4World/Ideologies/IdeologyBuilder.h"
 #include "src/Mappers/Government/GovernmentMapper.h"
 #include "src/Mappers/Government/GovernmentMapperFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

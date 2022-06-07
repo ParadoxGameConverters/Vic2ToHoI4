@@ -4,7 +4,7 @@
 #include "src/Mappers/Technology/TechMapper.h"
 #include "src/Mappers/Technology/TechMapperFactory.h"
 #include "src/OutHoi4/OutTechnologies.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <memory>
 #include <sstream>
 

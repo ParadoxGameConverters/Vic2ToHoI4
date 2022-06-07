@@ -1,6 +1,6 @@
 #include "src/HOI4World/Decisions/Decision.h"
 #include "src/OutHoi4/Decisions/OutDecision.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

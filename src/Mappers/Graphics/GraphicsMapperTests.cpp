@@ -1,8 +1,8 @@
 #include "src/Configuration.h"
 #include "src/Mappers/Graphics/GraphicsMapper.h"
 #include "src/Mappers/Graphics/GraphicsMapperFactory.h"
-#include "gmock/gmock-matchers.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

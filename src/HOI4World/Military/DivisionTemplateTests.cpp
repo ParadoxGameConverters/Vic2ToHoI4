@@ -1,5 +1,5 @@
 #include "src/HOI4World/Military/DivisionTemplate.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

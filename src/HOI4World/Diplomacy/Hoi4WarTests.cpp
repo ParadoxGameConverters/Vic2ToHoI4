@@ -1,7 +1,7 @@
 #include "src/HOI4World/Diplomacy/HoI4War.h"
 #include "src/Mappers/Country/CountryMapperBuilder.h"
 #include "src/Mappers/Provinces/ProvinceMapperBuilder.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

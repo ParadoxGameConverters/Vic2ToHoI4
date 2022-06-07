@@ -1,6 +1,6 @@
 #include "src/Maps/ProvinceDefinitions.h"
-#include "gmock/gmock-matchers.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

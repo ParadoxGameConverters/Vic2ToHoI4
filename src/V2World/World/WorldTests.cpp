@@ -4,8 +4,8 @@
 #include "src/V2World/Military/ArmyBuilder.h"
 #include "src/V2World/World/World.h"
 #include "src/V2World/World/WorldFactory.h"
-#include "gmock/gmock-matchers.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

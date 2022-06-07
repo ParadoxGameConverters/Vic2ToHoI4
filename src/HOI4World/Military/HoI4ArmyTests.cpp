@@ -6,8 +6,8 @@
 #include "src/Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "src/V2World/Military/Army.h"
 #include "src/V2World/Military/ArmyFactory.h"
-#include "gmock/gmock-matchers.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 TEST(HoI4World_Military_HoI4ArmyTests, ArmyStartsEmpty)

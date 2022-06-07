@@ -1,5 +1,5 @@
 #include "src/HOI4World/Map/Railway.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <gmock/gmock-matchers.h>
 
 

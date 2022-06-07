@@ -1,6 +1,6 @@
 #include "src/V2World/Politics/Party.h"
 #include "src/V2World/Politics/PartyFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

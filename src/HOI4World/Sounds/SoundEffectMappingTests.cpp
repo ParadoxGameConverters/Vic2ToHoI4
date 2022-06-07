@@ -1,6 +1,6 @@
 #include "src/HOI4World/Sounds/SoundEffectMapping.h"
 #include "src/HOI4World/Sounds/SoundEffectMappingFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

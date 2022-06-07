@@ -2,7 +2,7 @@
 #include "src/Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "src/V2World/Provinces/Province.h"
 #include "src/V2World/Provinces/ProvinceBuilder.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <gmock/gmock-matchers.h>
 
 
