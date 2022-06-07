@@ -1716,17 +1716,15 @@ void HoI4::Country::classifyProvincesByAreas(const std::unique_ptr<Maps::MapData
 		{
 			continue;
 		}
-		const auto& provinces = state->second.getProvinces();
-		if (provinces.empty())
-		{
-			continue;
-		}
-		if (isProvinceAssignedToArea(*provinces.begin()))
-		{
-			continue;
-		}
 		provincesInArea.clear();
-		addProvincesToHomeArea(*provinces.begin(), provincesInArea, theMapData, allStates, provinceToStateIdMap);
+		for (const auto& province: state->second.getProvinces())
+		{
+			if (isProvinceAssignedToArea(province))
+			{
+				continue;
+			}
+			addProvincesToHomeArea(province, provincesInArea, theMapData, allStates, provinceToStateIdMap);
+		}
 		homeAreaProvinces.push_back(provincesInArea);
 	}
 }
