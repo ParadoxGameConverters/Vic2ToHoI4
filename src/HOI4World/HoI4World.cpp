@@ -610,7 +610,6 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 
 		for (const auto& area: country->getHomeAreaProvinces())
 		{
-			std::optional<std::string> region;
 			std::set<int> regionStates;
 			for (const auto& province: area)
 			{
@@ -624,10 +623,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 					continue;
 				}
 				const auto& stateId = stateMapping->second;
-				if (!region)
-				{
-					region = theRegions->getRegion(province);
-				}
+				const auto& region = theRegions->getRegion(province);
 				if (!region)
 				{
 					Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
@@ -653,8 +649,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 				continue;
 			}
 
-			Log(LogLevel::Info) << " -> Processing " << tag << "_" << *region << " dominion";
-			auto dominion = getDominion(tag, country, *region, *theRegions, *graphicsMapper, *names);
+			auto dominion = getDominion(tag, country, area, *theRegions, *graphicsMapper, *names);
 
 			for (const auto& stateInArea: regionStates)
 			{
@@ -716,11 +711,13 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 
 std::shared_ptr<HoI4::Country> HoI4::World::getDominion(const std::string& ownerTag,
 	 const std::shared_ptr<Country>& owner,
-	 const std::string& region,
+	 const std::set<int>& area,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names)
 {
+	const auto& region = getBestRegion(area, ownerTag);
+	Log(LogLevel::Info) << " -> Processing " << ownerTag << "_" << region;
 	if (const auto& dominionItr = dominions.find(std::make_pair(ownerTag, region)); dominionItr != dominions.end())
 	{
 		return dominionItr->second;
@@ -730,6 +727,38 @@ std::shared_ptr<HoI4::Country> HoI4::World::getDominion(const std::string& owner
 	dominions.emplace(std::make_pair(ownerTag, region), dominion);
 
 	return dominion;
+}
+
+
+constexpr double minAreaLandInRegion = 0.6;
+std::string HoI4::World::getBestRegion(const std::set<int>& area, const std::string& ownerTag)
+{
+	std::map<std::string, int> regions;
+	for (const auto& province: area)
+	{
+		if (const auto& region = theRegions->getRegion(province); region)
+		{
+			regions[*region]++;
+		}
+	}
+	std::vector<std::pair<std::string, int>> sortedRegions;
+	for (const auto& region: regions)
+	{
+		sortedRegions.push_back(region);
+	}
+	std::sort(sortedRegions.begin(), sortedRegions.end(), [](std::pair<std::string, int>& a, std::pair<std::string, int>& b) {
+		return a.second > b.second;
+	});
+	for (const auto& [region, provinceNum]: sortedRegions)
+	{
+		if (const auto& dominionItr = dominions.find(std::make_pair(ownerTag, region));
+			dominionItr != dominions.end() && provinceNum / area.size() < minAreaLandInRegion)
+		{
+			continue;
+		}
+		return region;
+	}
+	return regions.begin()->first;
 }
 
 
