@@ -153,10 +153,15 @@ class Country
 
 	void addUnbuiltCanal(const std::string& unbuiltCanal) { unbuiltCanals.push_back(unbuiltCanal); }
 
-	void addProvincesToHomeArea(int provinceId,
-		 const std::unique_ptr<Maps::MapData>& theMapData,
-		 const std::map<int, HoI4::State>& states,
+	void classifyProvincesByAreas(const std::unique_ptr<Maps::MapData>& theMapData,
+		 const std::map<int, HoI4::State>& allStates,
 		 const std::map<int, int>& provinceToStateIdMap);
+	void addProvincesToHomeArea(int provinceId,
+		 std::set<int>& provincesInArea,
+		 const std::unique_ptr<Maps::MapData>& theMapData,
+		 const std::map<int, HoI4::State>& allStates,
+		 const std::map<int, int>& provinceToStateIdMap);
+	bool isProvinceAssignedToArea(int province);
 
 	[[nodiscard]] std::optional<HoI4::Relations> getRelations(const std::string& withWhom) const;
 	[[nodiscard]] std::optional<date> getTruceUntil(const std::string& withWhom) const;
@@ -312,7 +317,8 @@ class Country
 	void setTrainsMultiplier(float multiplier) { trainsMultiplier = multiplier; }
 
 	[[nodiscard]] const auto& getGlobalEventTargets() const { return globalEventTargets; }
-	[[nodiscard]] bool isProvinceInHomeArea(int provinceId) const { return homeAreaProvinces.contains(provinceId); }
+	[[nodiscard]] const auto& getHomeAreaProvinces() const { return homeAreaProvinces; }
+	[[nodiscard]] bool isProvinceInHomeArea(int provinceId) const { return homeAreaProvinces[0].contains(provinceId); }
 
 	void convertStrategies(const Mappers::CountryMapper& countryMap,
 		 const Vic2::Country& sourceCountry,
@@ -473,7 +479,7 @@ class Country
 
 	std::map<std::string, float> sourceCountryGoods;
 	std::set<std::string> globalEventTargets;
-	std::set<int> homeAreaProvinces;
+	std::vector<std::set<int>> homeAreaProvinces;
 
 	std::vector<std::string> unbuiltCanals;
 

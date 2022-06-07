@@ -579,69 +579,90 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 
 void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFactory)
 {
-	for (auto& [stateId, state]: states->getModifiableStates())
-	{
-		const auto& provinces = state.getProvinces();
-		if (provinces.empty())
-		{
-			continue;
-		}
-		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
-		if (!stateRegion)
-		{
-			Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
-			continue;
-		}
+	Log(LogLevel::Info) << "Adding dominions";
+	auto& modifiableStates = states->getModifiableStates();
 
-		const auto& ownerTag = state.getOwner();
-		if (ownerTag == "UCV")
+	for (auto& [tag, country]: countries)
+	{
+		if (tag == "UCV")
 		{
 			continue;
 		}
-		const auto& owner = countries.find(ownerTag);
-		if (owner == countries.end())
+		if (country->getPrimaryCulture() == "alien" || country->getPrimaryCulture() == "undead")
 		{
 			continue;
 		}
-		if (owner->second->isProvinceInHomeArea(*provinces.begin()))
+		if (country->getPuppetMaster())
 		{
 			continue;
 		}
-		if (owner->second->getPrimaryCulture() == "alien" || owner->second->getPrimaryCulture() == "undead")
+		const auto& capital = country->getCapitalProvince();
+		if (!capital)
 		{
 			continue;
 		}
-		if (owner->second->getPuppetMaster())
-		{
-			continue;
-		}
-		const auto& ownerCapitalProvince = owner->second->getCapitalProvince();
-		if (!ownerCapitalProvince)
-		{
-			continue;
-		}
-		const auto& ownerRegion = theRegions->getRegion(*ownerCapitalProvince);
+		const auto& ownerRegion = theRegions->getRegion(*capital);
 		if (!ownerRegion)
 		{
-			Log(LogLevel::Debug) << "Province " << *ownerCapitalProvince << " is not defined in Configurables/regions.txt";
+			Log(LogLevel::Debug) << "Province " << *capital << " is not defined in Configurables/regions.txt";
 			continue;
 		}
 
-		if (theRegions->isRegionBlocked(*stateRegion, *ownerRegion))
+		for (const auto& area: country->getHomeAreaProvinces())
 		{
-			continue;
-		}
+			std::optional<std::string> region;
+			std::set<int> regionStates;
+			for (const auto& province: area)
+			{
+				if (country->isProvinceInHomeArea(province))
+				{
+					continue;
+				}
+				const auto& stateMapping = states->getProvinceToStateIDMap().find(province);
+				if (stateMapping == states->getProvinceToStateIDMap().end())
+				{
+					continue;
+				}
+				const auto& stateId = stateMapping->second;
+				if (!region)
+				{
+					region = theRegions->getRegion(province);
+				}
+				if (!region)
+				{
+					Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
+					continue;
+				}
+				auto state = modifiableStates.find(stateId);
+				if (state == modifiableStates.end())
+				{
+					continue;
+				}
+				if (theRegions->isRegionBlocked(*region, *ownerRegion))
+				{
+					continue;
+				}
+				if (state->second.getCores().contains(tag) && !state->second.isImpassable())
+				{
+					continue;
+				}
+				regionStates.insert(stateId);
+			}
+			if (regionStates.empty())
+			{
+				continue;
+			}
 
-		if (state.getCores().contains(owner->first) && !state.isImpassable())
-		{
-			continue;
-		}
+			Log(LogLevel::Info) << " -> Processing " << tag << "_" << *region << " dominion";
+			auto dominion = getDominion(tag, country, *region, *theRegions, *graphicsMapper, *names);
 
-		auto dominion = getDominion(owner->first, owner->second, *stateRegion, *theRegions, *graphicsMapper, *names);
-		dominion->addCoreState(stateId);
+			for (const auto& stateInArea: regionStates)
+			{
+				dominion->addCoreState(stateInArea);
+			}
+		}
 	}
 
-	auto& modifiableStates = states->getModifiableStates();
 	for (auto& dominion: dominions | std::views::values)
 	{
 		const auto overlord = dominion->getPuppetMaster();
@@ -1659,12 +1680,11 @@ void HoI4::World::addProvincesToHomeAreas()
 	Log(LogLevel::Info) << "\tAdding provinces to home areas";
 	for (const auto& country: landedCountries | std::views::values)
 	{
-		const auto& capital = country->getCapitalProvince();
-		if (!capital)
+		if (!country->getCapitalProvince())
 		{
 			continue;
 		}
-		country->addProvincesToHomeArea(*capital, theMapData, states->getStates(), states->getProvinceToStateIDMap());
+		country->classifyProvincesByAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
 	}
 }
 

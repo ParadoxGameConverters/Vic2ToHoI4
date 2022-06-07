@@ -1699,12 +1699,46 @@ std::optional<std::string> HoI4::Country::getDominionTag(const std::string& regi
 }
 
 
-void HoI4::Country::addProvincesToHomeArea(int provinceId,
-	 const std::unique_ptr<Maps::MapData>& theMapData,
-	 const std::map<int, HoI4::State>& states,
+void HoI4::Country::classifyProvincesByAreas(const std::unique_ptr<Maps::MapData>& theMapData,
+	 const std::map<int, HoI4::State>& allStates,
 	 const std::map<int, int>& provinceToStateIdMap)
 {
-	if (homeAreaProvinces.contains(provinceId))
+	// Mark provinces with land connection to capital
+	std::set<int> provincesInArea;
+	addProvincesToHomeArea(*capitalProvince, provincesInArea, theMapData, allStates, provinceToStateIdMap);
+	homeAreaProvinces.push_back(provincesInArea);
+
+	// Then cycle through the rest and make province clusters
+	for (const auto& stateId: states)
+	{
+		const auto& state = allStates.find(stateId);
+		if (state == allStates.end())
+		{
+			continue;
+		}
+		const auto& provinces = state->second.getProvinces();
+		if (provinces.empty())
+		{
+			continue;
+		}
+		if (isProvinceAssignedToArea(*provinces.begin()))
+		{
+			continue;
+		}
+		provincesInArea.clear();
+		addProvincesToHomeArea(*provinces.begin(), provincesInArea, theMapData, allStates, provinceToStateIdMap);
+		homeAreaProvinces.push_back(provincesInArea);
+	}
+}
+
+
+void HoI4::Country::addProvincesToHomeArea(int provinceId,
+	 std::set<int>& provincesInArea,
+	 const std::unique_ptr<Maps::MapData>& theMapData,
+	 const std::map<int, HoI4::State>& allStates,
+	 const std::map<int, int>& provinceToStateIdMap)
+{
+	if (provincesInArea.contains(provinceId))
 	{
 		return;
 	}
@@ -1714,15 +1748,29 @@ void HoI4::Country::addProvincesToHomeArea(int provinceId,
 		return;
 	}
 	const auto& stateId = provinceToStateIdMapping->second;
-	if (const auto& state = states.find(stateId); state->second.getOwner() != tag)
+	if (const auto& state = allStates.find(stateId); state->second.getOwner() != tag)
 	{
 		return;
 	}
-	homeAreaProvinces.insert(provinceId);
+	provincesInArea.insert(provinceId);
+
 	for (const auto& neighbor: theMapData->getNeighbors(provinceId))
 	{
-		addProvincesToHomeArea(neighbor, theMapData, states, provinceToStateIdMap);
+		addProvincesToHomeArea(neighbor, provincesInArea, theMapData, allStates, provinceToStateIdMap);
 	}
+}
+
+
+bool HoI4::Country::isProvinceAssignedToArea(int province)
+{
+	for (const auto& area: homeAreaProvinces)
+	{
+		if (area.contains(province))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 
