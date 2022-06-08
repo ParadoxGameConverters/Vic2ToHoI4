@@ -1,5 +1,5 @@
-#include "OutHoi4Country.h"
-#include "AiStrategy/OutAiStrategy.h"
+#include "src/OutHoi4/OutHoi4Country.h"
+#include "src/OutHoi4/AiStrategy/OutAiStrategy.h"
 #include "external/common_items/Date.h"
 #include "src/HOI4World/Characters/Character.h"
 #include "src/HOI4World/Diplomacy/Faction.h"
@@ -7,14 +7,14 @@
 #include "src/HOI4World/Military/DivisionTemplate.h"
 #include "src/HOI4World/Names/Names.h"
 #include "src/HOI4World/Navies/NavyNames.h"
-#include "Navies/OutLegacyNavyNames.h"
-#include "Navies/OutMtgNavyNames.h"
-#include "Navies/OutNavies.h"
+#include "src/OutHoi4/Navies/OutLegacyNavyNames.h"
+#include "src/OutHoi4/Navies/OutMtgNavyNames.h"
+#include "src/OutHoi4/Navies/OutNavies.h"
 #include "external/common_items/OSCompatibilityLayer.h"
-#include "OutFocusTree.h"
+#include "src/OutHoi4/OutFocusTree.h"
 #include "src/OutHoi4/Characters/OutCharacter.h"
 #include "src/OutHoi4/Operative/OutOperative.h"
-#include "OutTechnologies.h"
+#include "src/OutHoi4/OutTechnologies.h"
 #include <ranges>
 #include <string>
 

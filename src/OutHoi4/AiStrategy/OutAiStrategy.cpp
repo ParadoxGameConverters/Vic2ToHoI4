@@ -1,4 +1,4 @@
-#include "OutAiStrategy.h"
+#include "src/OutHoi4/AiStrategy/OutAiStrategy.h"
 #include "src/HOI4World/HoI4Country.h"
 #include "external/common_items/CommonFunctions.h"
 

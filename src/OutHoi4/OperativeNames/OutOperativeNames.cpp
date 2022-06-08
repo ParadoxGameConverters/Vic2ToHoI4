@@ -1,4 +1,4 @@
-#include "OutOperativeNames.h"
+#include "src/OutHoi4/OperativeNames/OutOperativeNames.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "OutOperativeNamesSet.h"
 #include <ranges>

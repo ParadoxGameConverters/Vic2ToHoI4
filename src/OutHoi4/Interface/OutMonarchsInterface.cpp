@@ -1,4 +1,4 @@
-#include "OutMonarchsInterface.h"
+#include "src/OutHoi4/Interface/OutMonarchsInterface.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include <fstream>
 

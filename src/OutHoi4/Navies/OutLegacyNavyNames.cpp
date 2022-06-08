@@ -1,6 +1,6 @@
-#include "OutLegacyNavyNames.h"
+#include "src/OutHoi4/Navies/OutLegacyNavyNames.h"
 #include "src/HOI4World/Navies/NavyNames.h"
-#include "OutLegacyShipTypeNames.h"
+#include "src/OutHoi4/Navies/OutLegacyShipTypeNames.h"
 
 
 

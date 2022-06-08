@@ -1,4 +1,4 @@
-#include "OutIdea.h"
+#include "src/OutHoi4/Ideas/OutIdea.h"
 #include "src/HOI4World/Ideas/Idea.h"
 
 

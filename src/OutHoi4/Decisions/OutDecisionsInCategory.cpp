@@ -1,5 +1,5 @@
-#include "OutDecisionsInCategory.h"
-#include "OutDecision.h"
+#include "src/OutHoi4/Decisions/OutDecisionsInCategory.h"
+#include "src/OutHoi4/Decisions/OutDecision.h"
 
 
 

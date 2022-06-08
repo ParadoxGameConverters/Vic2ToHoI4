@@ -1,4 +1,4 @@
-#include "OutIdeologies.h"
+#include "src/OutHoi4/Ideologies/OutIdeologies.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include <fstream>
 

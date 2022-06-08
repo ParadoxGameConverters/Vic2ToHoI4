@@ -1,7 +1,7 @@
-#include "OutHoI4States.h"
+#include "src/OutHoi4/States/OutHoI4States.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
-#include "OutHoI4State.h"
+#include "src/OutHoi4/States/OutHoI4State.h"
 #include <fstream>
 
 

@@ -1,4 +1,4 @@
-#include "OutIdeas.h"
+#include "src/OutHoi4/Ideas/OutIdeas.h"
 #include "src/HOI4World/Ideas/IdeaGroup.h"
 #include "src/HOI4World/Ideas/Ideas.h"
 #include <fstream>

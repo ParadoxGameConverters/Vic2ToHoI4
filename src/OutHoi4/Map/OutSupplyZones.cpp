@@ -1,6 +1,6 @@
-#include "OutSupplyZones.h"
+#include "src/OutHoi4/Map/OutSupplyZones.h"
 #include "external/common_items/OSCompatibilityLayer.h"
-#include "OutSupplyZone.h"
+#include "src/OutHoi4/Map/OutSupplyZone.h"
 
 
 

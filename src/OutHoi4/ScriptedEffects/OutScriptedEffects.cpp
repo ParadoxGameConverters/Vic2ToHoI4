@@ -1,5 +1,5 @@
-#include "OutScriptedEffects.h"
-#include "OutScriptedEffect.h"
+#include "src/OutHoi4/ScriptedEffects/OutScriptedEffects.h"
+#include "src/OutHoi4/ScriptedEffects/OutScriptedEffect.h"
 #include <fstream>
 
 

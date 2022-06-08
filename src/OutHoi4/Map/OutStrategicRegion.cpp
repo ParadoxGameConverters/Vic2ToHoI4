@@ -1,4 +1,4 @@
-#include "OutStrategicRegion.h"
+#include "src/OutHoi4/Map/OutStrategicRegion.h"
 #include <fstream>
 
 

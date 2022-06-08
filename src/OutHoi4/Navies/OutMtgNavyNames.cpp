@@ -1,6 +1,6 @@
-#include "OutMtgNavyNames.h"
+#include "src/OutHoi4/Navies/OutMtgNavyNames.h"
 #include "src/HOI4World/Navies/NavyNames.h"
-#include "OutMtgShipTypeNames.h"
+#include "src/OutHoi4/Navies/OutMtgShipTypeNames.h"
 
 
 

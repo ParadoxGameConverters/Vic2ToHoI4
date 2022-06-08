@@ -1,4 +1,4 @@
-#include "OutGameRules.h"
+#include "src/OutHoi4/GameRules/OutGameRules.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include <fstream>
 
