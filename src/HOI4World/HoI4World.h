@@ -222,7 +222,7 @@ class World: commonItems::parser
 		 Names& names);
 
 	bool dominionIsReleasable(const Country& dominion);
-	void addProvincesToHomeAreas();
+	void addProvincesToDominionAreas();
 
 	void recordUnbuiltCanals(const Vic2::World& sourceWorld);
 

@@ -172,7 +172,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	Log(LogLevel::Progress) << "48%";
 	convertIndustry(theConfiguration);
-	addProvincesToHomeAreas();
+	addProvincesToDominionAreas();
 	convertDiplomacy(sourceWorld);
 	convertWars(sourceWorld, provinceMapper);
 	addDominions(countryMapperFactory);
@@ -608,12 +608,12 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 
-		for (const auto& area: country->getHomeAreaProvinces())
+		for (const auto& area: country->getDominionAreas())
 		{
-			std::set<int> regionStates;
+			std::set<int> areaStates;
 			for (const auto& province: area)
 			{
-				if (country->isProvinceInHomeArea(province))
+				if (country->isProvinceInCapitalArea(province))
 				{
 					continue;
 				}
@@ -642,16 +642,16 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 				{
 					continue;
 				}
-				regionStates.insert(stateId);
+				areaStates.insert(stateId);
 			}
-			if (regionStates.empty())
+			if (areaStates.empty())
 			{
 				continue;
 			}
 
 			auto dominion = getDominion(tag, country, area, *theRegions, *graphicsMapper, *names);
 
-			for (const auto& stateInArea: regionStates)
+			for (const auto& stateInArea: areaStates)
 			{
 				dominion->addCoreState(stateInArea);
 			}
@@ -717,7 +717,6 @@ std::shared_ptr<HoI4::Country> HoI4::World::getDominion(const std::string& owner
 	 Names& names)
 {
 	const auto& region = getBestRegion(area, ownerTag);
-	Log(LogLevel::Info) << " -> Processing " << ownerTag << "_" << region;
 	if (const auto& dominionItr = dominions.find(std::make_pair(ownerTag, region)); dominionItr != dominions.end())
 	{
 		return dominionItr->second;
@@ -730,7 +729,8 @@ std::shared_ptr<HoI4::Country> HoI4::World::getDominion(const std::string& owner
 }
 
 
-constexpr double minAreaLandInRegion = 0.6;
+// If an area has minProvincesInRegion percentage of provinces in a region, it will always get assigned to that region
+constexpr double minProvincesInRegion = 0.6;
 std::string HoI4::World::getBestRegion(const std::set<int>& area, const std::string& ownerTag)
 {
 	std::map<std::string, int> regions;
@@ -749,10 +749,10 @@ std::string HoI4::World::getBestRegion(const std::set<int>& area, const std::str
 	std::sort(sortedRegions.begin(), sortedRegions.end(), [](std::pair<std::string, int>& a, std::pair<std::string, int>& b) {
 		return a.second > b.second;
 	});
-	for (const auto& [region, provinceNum]: sortedRegions)
+	for (const auto& [region, provinces]: sortedRegions)
 	{
 		if (const auto& dominionItr = dominions.find(std::make_pair(ownerTag, region));
-			dominionItr != dominions.end() && provinceNum / area.size() < minAreaLandInRegion)
+			dominionItr != dominions.end() && provinces / area.size() < minProvincesInRegion)
 		{
 			continue;
 		}
@@ -1704,16 +1704,16 @@ std::set<std::string> HoI4::World::getSouthAsianCountries() const
 }
 
 
-void HoI4::World::addProvincesToHomeAreas()
+void HoI4::World::addProvincesToDominionAreas()
 {
-	Log(LogLevel::Info) << "\tAdding provinces to home areas";
+	Log(LogLevel::Info) << "\tAdding provinces to dominion areas";
 	for (const auto& country: landedCountries | std::views::values)
 	{
 		if (!country->getCapitalProvince())
 		{
 			continue;
 		}
-		country->classifyProvincesByAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
+		country->determineDominionAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
 	}
 }
 
