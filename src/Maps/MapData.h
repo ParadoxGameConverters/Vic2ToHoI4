@@ -5,7 +5,7 @@
 
 #include "external/common_items/Color.h"
 #include "src/Maps/ProvinceDefinitions.h"
-#include "ProvincePoints.h"
+#include "src/Maps/ProvincePoints.h"
 #include "external/bitmap/bitmap_image.hpp"
 #include <map>
 #include <optional>
