@@ -209,15 +209,12 @@ class World: commonItems::parser
 
 	std::set<std::string> getSouthAsianCountries() const;
 
-	std::shared_ptr<Country> getDominion(const std::string& ownerTag,
-		 const std::shared_ptr<Country>& owner,
+	std::shared_ptr<Country> getDominion(const std::shared_ptr<Country>& owner,
 		 const std::set<int>& area,
-		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
 	std::string getBestRegion(const std::set<int>& area, const std::string& ownerTag);
 	std::shared_ptr<Country> getUnrecognizedNation(const std::string& region,
-		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
 

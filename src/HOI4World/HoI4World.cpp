@@ -649,7 +649,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 				continue;
 			}
 
-			auto dominion = getDominion(tag, country, area, *theRegions, *graphicsMapper, *names);
+			auto dominion = getDominion(country, area, *graphicsMapper, *names);
 
 			for (const auto& stateInArea: areaStates)
 			{
@@ -709,21 +709,20 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 }
 
 
-std::shared_ptr<HoI4::Country> HoI4::World::getDominion(const std::string& ownerTag,
-	 const std::shared_ptr<Country>& owner,
+std::shared_ptr<HoI4::Country> HoI4::World::getDominion(const std::shared_ptr<Country>& owner,
 	 const std::set<int>& area,
-	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names)
 {
-	const auto& region = getBestRegion(area, ownerTag);
-	if (const auto& dominionItr = dominions.find(std::make_pair(ownerTag, region)); dominionItr != dominions.end())
+	const auto& region = getBestRegion(area, owner->getTag());
+	if (const auto& dominionItr = dominions.find(std::make_pair(owner->getTag(), region));
+		 dominionItr != dominions.end())
 	{
 		return dominionItr->second;
 	}
 
-	auto dominion = std::make_shared<Country>(owner, region, regions, graphicsMapper, names);
-	dominions.emplace(std::make_pair(ownerTag, region), dominion);
+	auto dominion = std::make_shared<Country>(owner, region, *theRegions, graphicsMapper, names);
+	dominions.emplace(std::make_pair(owner->getTag(), region), dominion);
 
 	return dominion;
 }
@@ -833,7 +832,7 @@ void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countr
 			continue;
 		}
 
-		auto nation = getUnrecognizedNation(*stateRegion, *theRegions, *graphicsMapper, *names);
+		auto nation = getUnrecognizedNation(*stateRegion, *graphicsMapper, *names);
 		nation->addCoreState(stateId);
 		state.smashNavalBases();
 	}
@@ -900,7 +899,6 @@ void HoI4::World::addUnrecognizedNations(Mappers::CountryMapper::Factory& countr
 
 
 std::shared_ptr<HoI4::Country> HoI4::World::getUnrecognizedNation(const std::string& region,
-	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names)
 {
@@ -909,7 +907,7 @@ std::shared_ptr<HoI4::Country> HoI4::World::getUnrecognizedNation(const std::str
 		return unrecognizedItr->second;
 	}
 
-	auto nation = std::make_shared<Country>(region, regions, graphicsMapper, names);
+	auto nation = std::make_shared<Country>(region, *theRegions, graphicsMapper, names);
 	unrecognizedNations.emplace(region, nation);
 
 	return nation;
