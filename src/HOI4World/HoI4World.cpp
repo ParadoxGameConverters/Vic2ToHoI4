@@ -172,7 +172,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	Log(LogLevel::Progress) << "48%";
 	convertIndustry(theConfiguration);
-	addProvincesToDominionAreas();
 	convertDiplomacy(sourceWorld);
 	convertWars(sourceWorld, provinceMapper);
 	addDominions(countryMapperFactory);
@@ -582,7 +581,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 	Log(LogLevel::Info) << "Adding dominions";
 	auto& modifiableStates = states->getModifiableStates();
 
-	for (auto& [tag, country]: countries)
+	for (auto& [tag, country]: landedCountries)
 	{
 		if (tag == "UCV")
 		{
@@ -607,6 +606,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			Log(LogLevel::Debug) << "Province " << *capital << " is not defined in Configurables/regions.txt";
 			continue;
 		}
+		country->determineDominionAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
 
 		for (const auto& area: country->getDominionAreas())
 		{
@@ -1701,20 +1701,6 @@ std::set<std::string> HoI4::World::getSouthAsianCountries() const
 	}
 
 	return southAsianCountries;
-}
-
-
-void HoI4::World::addProvincesToDominionAreas()
-{
-	Log(LogLevel::Info) << "\tAdding provinces to dominion areas";
-	for (const auto& country: landedCountries | std::views::values)
-	{
-		if (!country->getCapitalProvince())
-		{
-			continue;
-		}
-		country->determineDominionAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
-	}
 }
 
 
