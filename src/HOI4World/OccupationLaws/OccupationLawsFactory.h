@@ -4,7 +4,7 @@
 
 
 #include "src/Configuration.h"
-#include "OccupationLaws.h"
+#include "src/HOI4World/OccupationLaws/OccupationLaws.h"
 #include "external/common_items/ConvenientParser.h"
 
 

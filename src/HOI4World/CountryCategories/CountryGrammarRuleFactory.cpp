@@ -1,4 +1,4 @@
-#include "CountryGrammarRuleFactory.h"
+#include "src/HOI4World/CountryCategories/CountryGrammarRuleFactory.h"
 #include "external/common_items/ParserHelpers.h"
 #include "external/common_items/StringUtils.h"
 

@@ -1,6 +1,6 @@
-#include "StateBuildings.h"
+#include "src/HOI4World/States/StateBuildings.h"
 #include "external/common_items/CommonRegexes.h"
-#include "DockyardProvince.h"
+#include "src/HOI4World/States/DockyardProvince.h"
 #include "external/common_items/ParserHelpers.h"
 
 

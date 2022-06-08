@@ -6,7 +6,7 @@
 #include "src/HOI4World/HoI4Country.h"
 #include "src/HOI4World/HoI4Localisation.h"
 #include "src/HOI4World/HoI4World.h"
-#include "MapUtils.h"
+#include "src/HOI4World/WarCreator/MapUtils.h"
 #include "src/Maps/MapData.h"
 #include "src/Maps/ProvinceDefinitions.h"
 #include "src/V2World/World/World.h"

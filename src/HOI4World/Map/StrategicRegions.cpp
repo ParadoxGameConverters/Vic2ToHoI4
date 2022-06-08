@@ -1,4 +1,4 @@
-#include "StrategicRegions.h"
+#include "src/HOI4World/Map/StrategicRegions.h"
 #include "src/HOI4World/States/HoI4State.h"
 #include "src/HOI4World/States/HoI4States.h"
 #include "external/common_items/OSCompatibilityLayer.h"

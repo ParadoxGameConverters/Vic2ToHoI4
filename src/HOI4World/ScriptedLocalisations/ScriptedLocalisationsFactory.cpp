@@ -1,4 +1,4 @@
-#include "ScriptedLocalisationsFactory.h"
+#include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisationsFactory.h"
 #include "external/common_items/ParserHelpers.h"
 
 

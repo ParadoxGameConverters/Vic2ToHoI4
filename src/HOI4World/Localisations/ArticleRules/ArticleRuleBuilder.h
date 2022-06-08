@@ -3,7 +3,7 @@
 
 
 
-#include "ArticleRule.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRule.h"
 
 
 

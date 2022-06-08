@@ -1,4 +1,4 @@
-#include "AllReplacementRules.h"
+#include "src/HOI4World/Localisations/AllReplacementRules.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

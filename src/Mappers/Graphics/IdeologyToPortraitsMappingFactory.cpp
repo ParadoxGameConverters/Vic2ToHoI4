@@ -1,4 +1,4 @@
-#include "IdeologyToPortraitsMappingFactory.h"
+#include "src/Mappers/Graphics/IdeologyToPortraitsMappingFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

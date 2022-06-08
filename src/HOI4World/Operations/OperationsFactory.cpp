@@ -1,4 +1,4 @@
-#include "OperationsFactory.h"
+#include "src/HOI4World/Operations/OperationsFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "OperationFactory.h"
 #include "external/common_items/ParserHelpers.h"

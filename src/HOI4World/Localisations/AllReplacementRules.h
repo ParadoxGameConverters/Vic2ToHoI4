@@ -3,7 +3,7 @@
 
 
 
-#include "LanguageReplacementRules.h"
+#include "src/HOI4World/Localisations/LanguageReplacementRules.h"
 #include "external/common_items/ConvenientParser.h"
 #include <map>
 #include <optional>

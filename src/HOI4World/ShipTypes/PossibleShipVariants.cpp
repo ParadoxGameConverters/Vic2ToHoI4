@@ -1,4 +1,4 @@
-#include "PossibleShipVariants.h"
+#include "src/HOI4World/ShipTypes/PossibleShipVariants.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

@@ -1,4 +1,4 @@
-#include "FlagToIdeaMappingFactory.h"
+#include "src/Mappers/FlagsToIdeas/FlagToIdeaMappingFactory.h"
 #include "external/common_items/ParserHelpers.h"
 
 

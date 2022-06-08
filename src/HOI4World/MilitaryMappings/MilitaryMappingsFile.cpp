@@ -1,4 +1,4 @@
-#include "MilitaryMappingsFile.h"
+#include "src/HOI4World/MilitaryMappings/MilitaryMappingsFile.h"
 #include "external/common_items/Log.h"
 #include <fstream>
 

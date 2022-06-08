@@ -1,4 +1,4 @@
-#include "CasusBelliMappingFactory.h"
+#include "src/Mappers/CasusBelli/CasusBelliMappingFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 using commonItems::getString;

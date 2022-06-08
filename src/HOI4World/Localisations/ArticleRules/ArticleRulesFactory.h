@@ -3,7 +3,7 @@
 
 
 
-#include "ArticleRules.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRules.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 #include <string>

@@ -1,7 +1,7 @@
-#include "Resources.h"
+#include "src/HOI4World/Map/Resources.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
-#include "ResourcesLink.h"
+#include "src/HOI4World/Map/ResourcesLink.h"
 
 
 

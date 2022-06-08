@@ -3,8 +3,8 @@
 
 
 
-#include "GraphicsCultureGroupFactory.h"
-#include "GraphicsMapper.h"
+#include "src/Mappers/Graphics/GraphicsCultureGroupFactory.h"
+#include "src/Mappers/Graphics/GraphicsMapper.h"
 #include "external/common_items/ConvenientParser.h"
 
 

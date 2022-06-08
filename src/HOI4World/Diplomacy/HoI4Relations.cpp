@@ -1,4 +1,4 @@
-#include "HoI4Relations.h"
+#include "src/HOI4World/Diplomacy/HoI4Relations.h"
 
 
 HoI4::Relations::Relations(std::string newTag, const Vic2::Relations& oldRelations, const date& startDate):

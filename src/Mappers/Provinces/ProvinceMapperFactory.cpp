@@ -1,12 +1,12 @@
-#include "ProvinceMapperFactory.h"
+#include "src/Mappers/Provinces/ProvinceMapperFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "src/Configuration.h"
 #include "external/common_items/GameVersion.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
-#include "ProvinceMapper.h"
-#include "VersionedMappings.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/Mappers/Provinces/VersionedMappings.h"
 #include <fstream>
 
 

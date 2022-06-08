@@ -4,7 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include "SoundEffectsMapperLink.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapperLink.h"
 #include <memory>
 
 

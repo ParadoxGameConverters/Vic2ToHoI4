@@ -5,7 +5,7 @@
 
 #include "src/HOI4World/HoI4Country.h"
 #include "src/HOI4World/Names/Names.h"
-#include "IntelligenceAgency.h"
+#include "src/HOI4World/IntelligenceAgencies/IntelligenceAgency.h"
 #include <map>
 #include <memory>
 #include <vector>

@@ -4,8 +4,8 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include "RegionFactory.h"
-#include "Regions.h"
+#include "src/HOI4World/Regions/RegionFactory.h"
+#include "src/HOI4World/Regions/Regions.h"
 #include <memory>
 
 

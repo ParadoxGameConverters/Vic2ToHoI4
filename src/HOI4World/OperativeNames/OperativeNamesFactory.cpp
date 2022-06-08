@@ -1,6 +1,6 @@
-#include "OperativeNamesFactory.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesFactory.h"
 #include "external/common_items/OSCompatibilityLayer.h"
-#include "OperativeNamesSetFactory.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesSetFactory.h"
 
 
 

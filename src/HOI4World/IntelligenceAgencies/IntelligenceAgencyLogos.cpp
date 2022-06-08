@@ -1,5 +1,5 @@
-#include "IntelligenceAgencyLogos.h"
-#include "IntelligenceAgencyLogoMapping.h"
+#include "src/HOI4World/IntelligenceAgencies/IntelligenceAgencyLogos.h"
+#include "src/HOI4World/IntelligenceAgencies/IntelligenceAgencyLogoMapping.h"
 
 
 

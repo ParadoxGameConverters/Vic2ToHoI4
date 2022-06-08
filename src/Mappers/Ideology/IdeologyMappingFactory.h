@@ -4,7 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include "IdeologyMapping.h"
+#include "src/Mappers/Ideology/IdeologyMapping.h"
 #include <memory>
 
 

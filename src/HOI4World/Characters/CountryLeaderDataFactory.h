@@ -3,7 +3,7 @@
 
 
 
-#include "CountryLeaderData.h"
+#include "src/HOI4World/Characters/CountryLeaderData.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

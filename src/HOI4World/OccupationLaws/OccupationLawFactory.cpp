@@ -1,4 +1,4 @@
-#include "OccupationLawFactory.h"
+#include "src/HOI4World/OccupationLaws/OccupationLawFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

@@ -3,8 +3,8 @@
 
 
 
-#include "CountryMapper.h"
-#include "CountryMappingRuleFactory.h"
+#include "src/Mappers/Country/CountryMapper.h"
+#include "src/Mappers/Country/CountryMappingRuleFactory.h"
 #include "external/common_items/ConvenientParser.h"
 #include "src/V2World/World/World.h"
 #include <memory>

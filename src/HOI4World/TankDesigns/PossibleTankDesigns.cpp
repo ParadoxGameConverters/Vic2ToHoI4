@@ -1,4 +1,4 @@
-#include "PossibleTankDesigns.h"
+#include "src/HOI4World/TankDesigns/PossibleTankDesigns.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

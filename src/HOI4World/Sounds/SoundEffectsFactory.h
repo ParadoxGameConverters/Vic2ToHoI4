@@ -4,8 +4,8 @@
 
 
 #include "src/HOI4World/HoI4Country.h"
-#include "SoundEffect.h"
-#include "SoundEffectsMapper.h"
+#include "src/HOI4World/Sounds/SoundEffect.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapper.h"
 #include <map>
 #include <memory>
 #include <vector>

@@ -1,4 +1,4 @@
-#include "FactionNameMappingFactory.h"
+#include "src/Mappers/FactionName/FactionNameMappingFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

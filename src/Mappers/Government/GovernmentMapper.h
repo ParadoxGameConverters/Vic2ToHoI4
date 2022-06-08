@@ -3,7 +3,7 @@
 
 
 
-#include "GovernmentMapping.h"
+#include "src/Mappers/Government/GovernmentMapping.h"
 #include "src/HOI4World/Ideologies/Ideologies.h"
 #include <set>
 #include <string>

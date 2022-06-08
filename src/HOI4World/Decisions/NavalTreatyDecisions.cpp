@@ -1,4 +1,4 @@
-#include "NavalTreatyDecisions.h"
+#include "src/HOI4World/Decisions/NavalTreatyDecisions.h"
 #include <sstream>
 
 

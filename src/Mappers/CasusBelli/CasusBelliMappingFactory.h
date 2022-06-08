@@ -3,7 +3,7 @@
 
 
 
-#include "CasusBelliMapping.h"
+#include "src/Mappers/CasusBelli/CasusBelliMapping.h"
 #include "external/common_items/ConvenientParser.h"
 
 

@@ -5,7 +5,7 @@
 
 #include "src/HOI4World/HoI4Country.h"
 #include "src/HOI4World/Names/Names.h"
-#include "IntelligenceAgencyLogos.h"
+#include "src/HOI4World/IntelligenceAgencies/IntelligenceAgencyLogos.h"
 #include <string>
 
 

@@ -1,4 +1,4 @@
-#include "GraphicsMapperFactory.h"
+#include "src/Mappers/Graphics/GraphicsMapperFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/ParserHelpers.h"

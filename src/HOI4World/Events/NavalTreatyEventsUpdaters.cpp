@@ -1,5 +1,5 @@
-#include "NavalTreatyEventsUpdaters.h"
-#include "EventOption.h"
+#include "src/HOI4World/Events/NavalTreatyEventsUpdaters.h"
+#include "src/HOI4World/Events/EventOption.h"
 #include <sstream>
 
 

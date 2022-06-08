@@ -1,4 +1,4 @@
-#include "ShipUpgrades.h"
+#include "src/HOI4World/ShipTypes/ShipUpgrades.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

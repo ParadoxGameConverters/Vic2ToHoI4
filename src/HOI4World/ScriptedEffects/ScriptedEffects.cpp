@@ -1,5 +1,5 @@
-#include "ScriptedEffects.h"
-#include "ScriptedEffectFile.h"
+#include "src/HOI4World/ScriptedEffects/ScriptedEffects.h"
+#include "src/HOI4World/ScriptedEffects/ScriptedEffectFile.h"
 #include <sstream>
 
 

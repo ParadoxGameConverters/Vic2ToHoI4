@@ -3,7 +3,7 @@
 
 
 
-#include "Advisor.h"
+#include "src/HOI4World/Leaders/Advisor.h"
 #include "external/common_items/ConvenientParser.h"
 #include <map>
 #include <string>

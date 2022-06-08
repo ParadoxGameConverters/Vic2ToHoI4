@@ -5,8 +5,8 @@
 
 #include "src/HOI4World/Technologies.h"
 #include "external/common_items/ConvenientParser.h"
-#include "TankModules.h"
-#include "TankUpgrades.h"
+#include "src/HOI4World/TankDesigns/TankModules.h"
+#include "src/HOI4World/TankDesigns/TankUpgrades.h"
 
 
 

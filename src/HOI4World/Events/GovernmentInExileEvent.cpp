@@ -1,7 +1,7 @@
-#include "GovernmentInExileEvent.h"
-#include "Event.h"
-#include "EventHelpers.h"
-#include "EventOption.h"
+#include "src/HOI4World/Events/GovernmentInExileEvent.h"
+#include "src/HOI4World/Events/Event.h"
+#include "src/HOI4World/Events/EventHelpers.h"
+#include "src/HOI4World/Events/EventOption.h"
 #include "external/common_items/Log.h"
 
 

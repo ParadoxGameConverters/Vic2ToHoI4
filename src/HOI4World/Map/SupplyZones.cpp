@@ -1,4 +1,4 @@
-#include "SupplyZones.h"
+#include "src/HOI4World/Map/SupplyZones.h"
 #include "external/common_items/CommonRegexes.h"
 #include "src/Configuration.h"
 #include "src/HOI4World/States/DefaultState.h"
@@ -7,8 +7,8 @@
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
-#include "SupplyArea.h"
-#include "SupplyZone.h"
+#include "src/HOI4World/Map/SupplyArea.h"
+#include "src/HOI4World/Map/SupplyZone.h"
 
 
 

@@ -5,7 +5,7 @@
 
 #include "src/HOI4World/Map/Hoi4Province.h"
 #include "src/HOI4World/Map/Railway.h"
-#include "ImpassableProvinces.h"
+#include "src/HOI4World/Map/ImpassableProvinces.h"
 #include "src/Mappers/Provinces/ProvinceMapper.h"
 #include "src/Maps/MapData.h"
 #include "src/V2World/Provinces/Province.h"

@@ -1,4 +1,4 @@
-#include "StabilityWarSupportDecisions.h"
+#include "src/HOI4World/Decisions/StabilityWarSupportDecisions.h"
 
 
 

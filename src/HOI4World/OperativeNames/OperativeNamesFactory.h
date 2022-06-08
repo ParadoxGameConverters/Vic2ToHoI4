@@ -3,7 +3,7 @@
 
 
 
-#include "OperativeNames.h"
+#include "src/HOI4World/OperativeNames/OperativeNames.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

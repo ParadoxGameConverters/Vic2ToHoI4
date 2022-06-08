@@ -5,7 +5,7 @@
 
 #include "src/Configuration.h"
 #include "external/common_items/ConvenientParser.h"
-#include "ScriptedTrigger.h"
+#include "src/HOI4World/ScriptedTriggers/ScriptedTrigger.h"
 #include <map>
 #include <vector>
 

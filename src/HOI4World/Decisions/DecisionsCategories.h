@@ -3,7 +3,7 @@
 
 
 
-#include "DecisionsCategory.h"
+#include "src/HOI4World/Decisions/DecisionsCategory.h"
 #include "external/common_items/ConvenientParser.h"
 #include <string>
 

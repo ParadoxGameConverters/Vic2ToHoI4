@@ -1,4 +1,4 @@
-#include "HoI4War.h"
+#include "src/HOI4World/Diplomacy/HoI4War.h"
 #include "external/common_items/Log.h"
 
 

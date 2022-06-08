@@ -4,9 +4,9 @@
 
 
 #include "src/HOI4World/Military/DivisionTemplate.h"
-#include "MtgUnitMappings.h"
+#include "src/HOI4World/MilitaryMappings/MtgUnitMappings.h"
 #include "external/common_items/ConvenientParser.h"
-#include "UnitMappings.h"
+#include "src/HOI4World/MilitaryMappings/UnitMappings.h"
 #include <map>
 #include <memory>
 #include <string>

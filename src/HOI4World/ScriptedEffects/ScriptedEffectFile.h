@@ -4,8 +4,8 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include "ScriptedEffect.h"
-#include "ScriptedEffectFactory.h"
+#include "src/HOI4World/ScriptedEffects/ScriptedEffect.h"
+#include "src/HOI4World/ScriptedEffects/ScriptedEffectFactory.h"
 #include <vector>
 
 

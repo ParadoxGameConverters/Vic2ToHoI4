@@ -2,7 +2,7 @@
 #define LEGACY_SHIP_H
 
 
-#include "Ship.h"
+#include "src/HOI4World/Navies/Ship.h"
 #include <ostream>
 #include <string>
 

@@ -1,4 +1,4 @@
-#include "IntelligenceAgency.h"
+#include "src/HOI4World/IntelligenceAgencies/IntelligenceAgency.h"
 #include "src/V2World/Countries/Country.h"
 
 

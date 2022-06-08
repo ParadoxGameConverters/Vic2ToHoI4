@@ -1,6 +1,6 @@
-#include "OperativeNamesMappingsFactory.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesMappingsFactory.h"
 #include "external/common_items/CommonRegexes.h"
-#include "OperativeNamesMappingFactory.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesMappingFactory.h"
 #include "external/common_items/ParserHelpers.h"
 
 

@@ -1,4 +1,4 @@
-#include "CountryNameMappingFactory.h"
+#include "src/Mappers/CountryName/CountryNameMappingFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

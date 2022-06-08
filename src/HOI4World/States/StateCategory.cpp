@@ -1,4 +1,4 @@
-#include "StateCategory.h"
+#include "src/HOI4World/States/StateCategory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

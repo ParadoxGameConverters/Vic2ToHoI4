@@ -7,9 +7,9 @@
 #include "src/HOI4World/MilitaryMappings/UnitMappings.h"
 #include "src/HOI4World/ShipTypes/ShipVariants.h"
 #include "src/HOI4World/States/HoI4State.h"
-#include "LegacyNavy.h"
+#include "src/HOI4World/Navies/LegacyNavy.h"
 #include "src/Maps/ProvinceDefinitions.h"
-#include "MtgNavy.h"
+#include "src/HOI4World/Navies/MtgNavy.h"
 #include "src/V2World/Military/Army.h"
 #include <map>
 #include <string>

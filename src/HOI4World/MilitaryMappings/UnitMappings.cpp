@@ -1,7 +1,7 @@
-#include "UnitMappings.h"
+#include "src/HOI4World/MilitaryMappings/UnitMappings.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
-#include "UnitMapping.h"
+#include "src/HOI4World/MilitaryMappings/UnitMapping.h"
 
 
 HoI4::UnitMappings::UnitMappings(std::istream& theStream)

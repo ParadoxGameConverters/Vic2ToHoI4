@@ -4,7 +4,7 @@
 
 
 #include "src/Configuration.h"
-#include "Hoi4Province.h"
+#include "src/HOI4World/Map/Hoi4Province.h"
 #include <map>
 
 

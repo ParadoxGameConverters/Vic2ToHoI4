@@ -1,4 +1,4 @@
-#include "MtgShipVariant.h"
+#include "src/HOI4World/ShipTypes/MtgShipVariant.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

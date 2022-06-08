@@ -1,5 +1,5 @@
-#include "CountryCategories.h"
-#include "CountryGrammarFactory.h"
+#include "src/HOI4World/CountryCategories/CountryCategories.h"
+#include "src/HOI4World/CountryCategories/CountryGrammarFactory.h"
 #include "external/common_items/Log.h"
 #include <ranges>
 #include <unordered_set>

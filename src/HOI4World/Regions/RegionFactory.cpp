@@ -1,4 +1,4 @@
-#include "RegionFactory.h"
+#include "src/HOI4World/Regions/RegionFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

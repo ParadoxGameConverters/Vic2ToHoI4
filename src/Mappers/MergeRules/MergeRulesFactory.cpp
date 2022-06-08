@@ -1,6 +1,6 @@
-#include "MergeRulesFactory.h"
+#include "src/Mappers/MergeRules/MergeRulesFactory.h"
 #include "external/common_items/CommonRegexes.h"
-#include "MergeRule.h"
+#include "src/Mappers/MergeRules/MergeRule.h"
 
 
 

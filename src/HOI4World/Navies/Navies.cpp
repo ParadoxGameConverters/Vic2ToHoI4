@@ -1,4 +1,4 @@
-#include "Navies.h"
+#include "src/HOI4World/Navies/Navies.h"
 #include "external/common_items/Log.h"
 #include "src/Mappers/Provinces/ProvinceMapper.h"
 #include "src/Maps/ProvinceDefinitions.h"

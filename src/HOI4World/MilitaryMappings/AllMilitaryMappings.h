@@ -3,7 +3,7 @@
 
 
 
-#include "MilitaryMappings.h"
+#include "src/HOI4World/MilitaryMappings/MilitaryMappings.h"
 #include "external/common_items/ModLoader/ModLoader.h"
 #include "external/common_items/ConvenientParser.h"
 #include <map>

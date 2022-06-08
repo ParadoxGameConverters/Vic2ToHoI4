@@ -3,7 +3,7 @@
 
 
 
-#include "EventOption.h"
+#include "src/HOI4World/Events/EventOption.h"
 #include "external/common_items/ConvenientParser.h"
 #include <ostream>
 #include <string>

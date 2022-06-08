@@ -1,7 +1,7 @@
-#include "DivisionTemplate.h"
+#include "src/HOI4World/Military/DivisionTemplate.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
-#include "RegimentTypeGroup.h"
+#include "src/HOI4World/Military/RegimentTypeGroup.h"
 
 
 

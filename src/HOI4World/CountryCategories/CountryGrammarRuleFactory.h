@@ -3,7 +3,7 @@
 
 
 
-#include "CountryGrammarRule.h"
+#include "src/HOI4World/CountryCategories/CountryGrammarRule.h"
 #include "external/common_items/ConvenientParser.h"
 
 

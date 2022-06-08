@@ -3,8 +3,8 @@
 
 
 
-#include "GraphicsCultureGroup.h"
-#include "IdeologyToPortraitsMappingFactory.h"
+#include "src/Mappers/Graphics/GraphicsCultureGroup.h"
+#include "src/Mappers/Graphics/IdeologyToPortraitsMappingFactory.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

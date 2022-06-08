@@ -4,9 +4,9 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include "ProvinceMapping.h"
-#include "ProvinceMappingFactory.h"
-#include "VersionedMappings.h"
+#include "src/Mappers/Provinces/ProvinceMapping.h"
+#include "src/Mappers/Provinces/ProvinceMappingFactory.h"
+#include "src/Mappers/Provinces/VersionedMappings.h"
 #include <memory>
 
 

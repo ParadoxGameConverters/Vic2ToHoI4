@@ -1,5 +1,5 @@
-#include "IdeologicalAdvisors.h"
-#include "Advisor.h"
+#include "src/HOI4World/Leaders/IdeologicalAdvisors.h"
+#include "src/HOI4World/Leaders/Advisor.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

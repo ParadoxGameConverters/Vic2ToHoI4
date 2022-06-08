@@ -3,8 +3,8 @@
 
 
 
-#include "IdeologyMapper.h"
-#include "IdeologyMappingFactory.h"
+#include "src/Mappers/Ideology/IdeologyMapper.h"
+#include "src/Mappers/Ideology/IdeologyMappingFactory.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

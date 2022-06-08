@@ -1,4 +1,4 @@
-#include "IdeologyItems.h"
+#include "src/HOI4World/Ideologies/IdeologyItems.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

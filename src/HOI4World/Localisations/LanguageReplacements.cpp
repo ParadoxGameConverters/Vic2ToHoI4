@@ -1,4 +1,4 @@
-#include "LanguageReplacements.h"
+#include "src/HOI4World/Localisations/LanguageReplacements.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

@@ -1,4 +1,4 @@
-#include "HoI4WarCreator.h"
+#include "src/HOI4World/WarCreator/HoI4WarCreator.h"
 #include "src/HOI4World/Diplomacy/Faction.h"
 #include "src/HOI4World/Events/Events.h"
 #include "src/HOI4World/HoI4Focus.h"

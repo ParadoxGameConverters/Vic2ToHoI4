@@ -1,6 +1,6 @@
-#include "HoI4Focus.h"
+#include "src/HOI4World/HoI4Focus.h"
 #include "external/common_items/CommonRegexes.h"
-#include "HoI4Localisation.h"
+#include "src/HOI4World/HoI4Localisation.h"
 #include "external/common_items/ParserHelpers.h"
 #include <regex>
 

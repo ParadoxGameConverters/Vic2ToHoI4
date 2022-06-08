@@ -4,7 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include "TankDesign.h"
+#include "src/HOI4World/TankDesigns/TankDesign.h"
 #include <vector>
 
 

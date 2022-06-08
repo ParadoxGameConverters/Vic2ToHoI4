@@ -1,4 +1,4 @@
-#include "AllMilitaryMappings.h"
+#include "src/HOI4World/MilitaryMappings/AllMilitaryMappings.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 #include "external/common_items/StringUtils.h"

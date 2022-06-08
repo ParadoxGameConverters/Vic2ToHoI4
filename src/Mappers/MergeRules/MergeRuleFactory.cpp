@@ -1,4 +1,4 @@
-#include "MergeRuleFactory.h"
+#include "src/Mappers/MergeRules/MergeRuleFactory.h"
 #include "external/common_items/ParserHelpers.h"
 
 

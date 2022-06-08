@@ -4,7 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include "RegimentType.h"
+#include "src/HOI4World/Military/RegimentType.h"
 
 
 

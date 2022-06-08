@@ -4,11 +4,11 @@
 
 
 #include "external/common_items/Date.h"
-#include "Diplomacy/HoI4AIStrategy.h"
-#include "Events/Events.h"
-#include "OnActions.h"
+#include "src/HOI4World/Diplomacy/HoI4AIStrategy.h"
+#include "src/HOI4World/Events/Events.h"
+#include "src/HOI4World/OnActions.h"
 #include "external/common_items/ConvenientParser.h"
-#include "States/HoI4State.h"
+#include "src/HOI4World/States/HoI4State.h"
 #include <memory>
 #include <set>
 #include <string>

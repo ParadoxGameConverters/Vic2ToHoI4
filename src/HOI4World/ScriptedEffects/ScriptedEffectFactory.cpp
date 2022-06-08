@@ -1,4 +1,4 @@
-#include "ScriptedEffectFactory.h"
+#include "src/HOI4World/ScriptedEffects/ScriptedEffectFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

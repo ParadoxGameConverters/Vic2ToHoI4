@@ -3,7 +3,7 @@
 
 
 
-#include "Operations.h"
+#include "src/HOI4World/Operations/Operations.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 #include <string>

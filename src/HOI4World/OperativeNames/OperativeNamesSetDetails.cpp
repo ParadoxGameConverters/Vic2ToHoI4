@@ -1,4 +1,4 @@
-#include "OperativeNamesSetDetails.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesSetDetails.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

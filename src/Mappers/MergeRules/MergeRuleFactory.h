@@ -3,7 +3,7 @@
 
 
 
-#include "MergeRule.h"
+#include "src/Mappers/MergeRules/MergeRule.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

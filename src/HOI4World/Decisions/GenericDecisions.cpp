@@ -1,4 +1,4 @@
-#include "GenericDecisions.h"
+#include "src/HOI4World/Decisions/GenericDecisions.h"
 #include <algorithm>
 #include <array>
 

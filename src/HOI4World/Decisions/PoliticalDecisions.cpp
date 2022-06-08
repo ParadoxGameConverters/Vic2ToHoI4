@@ -1,4 +1,4 @@
-#include "PoliticalDecisions.h"
+#include "src/HOI4World/Decisions/PoliticalDecisions.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

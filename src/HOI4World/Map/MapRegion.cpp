@@ -1,4 +1,4 @@
-#include "MapRegion.h"
+#include "src/HOI4World/Map/MapRegion.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

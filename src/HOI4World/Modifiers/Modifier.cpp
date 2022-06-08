@@ -1,4 +1,4 @@
-#include "Modifier.h"
+#include "src/HOI4World/Modifiers/Modifier.h"
 #include "external/common_items/ParserHelpers.h"
 
 

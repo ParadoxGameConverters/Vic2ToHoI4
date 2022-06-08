@@ -3,7 +3,7 @@
 
 
 
-#include "GameRuleOption.h"
+#include "src/HOI4World/GameRules/GameRuleOption.h"
 #include "external/common_items/ConvenientParser.h"
 #include <optional>
 #include <ostream>

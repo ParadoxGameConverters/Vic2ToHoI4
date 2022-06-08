@@ -1,4 +1,4 @@
-#include "DecisionsFile.h"
+#include "src/HOI4World/Decisions/DecisionsFile.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

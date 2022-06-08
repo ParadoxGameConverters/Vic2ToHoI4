@@ -3,8 +3,8 @@
 
 
 
-#include "DecisionsInCategory.h"
-#include "IdeologicalDecisions.h"
+#include "src/HOI4World/Decisions/DecisionsInCategory.h"
+#include "src/HOI4World/Decisions/IdeologicalDecisions.h"
 #include "external/common_items/ConvenientParser.h"
 
 

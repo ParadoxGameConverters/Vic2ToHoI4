@@ -3,8 +3,8 @@
 
 
 
-#include "LegacyShipVariant.h"
-#include "MtgShipVariant.h"
+#include "src/HOI4World/ShipTypes/LegacyShipVariant.h"
+#include "src/HOI4World/ShipTypes/MtgShipVariant.h"
 #include "external/common_items/ConvenientParser.h"
 #include <vector>
 

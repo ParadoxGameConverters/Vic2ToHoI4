@@ -1,4 +1,4 @@
-#include "CharacterFactory.h"
+#include "src/HOI4World/Characters/CharacterFactory.h"
 #include "external/common_items/CommonFunctions.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"

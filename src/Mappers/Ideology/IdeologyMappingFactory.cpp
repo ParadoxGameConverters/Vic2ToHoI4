@@ -1,4 +1,4 @@
-#include "IdeologyMappingFactory.h"
+#include "src/Mappers/Ideology/IdeologyMappingFactory.h"
 #include "external/common_items/ParserHelpers.h"
 
 

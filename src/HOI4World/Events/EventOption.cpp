@@ -1,4 +1,4 @@
-#include "EventOption.h"
+#include "src/HOI4World/Events/EventOption.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

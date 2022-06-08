@@ -3,7 +3,7 @@
 
 
 
-#include "DivisionType.h"
+#include "src/HOI4World/Military/DivisionType.h"
 #include "src/HOI4World/MilitaryMappings/MilitaryMappings.h"
 #include "src/HOI4World/States/HoI4States.h"
 #include "src/HOI4World/Technologies.h"

@@ -3,8 +3,8 @@
 
 
 
-#include "FactionNameMapper.h"
-#include "FactionNameMappingFactory.h"
+#include "src/Mappers/FactionName/FactionNameMapper.h"
+#include "src/Mappers/FactionName/FactionNameMappingFactory.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

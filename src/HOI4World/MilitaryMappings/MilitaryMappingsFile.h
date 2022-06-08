@@ -3,7 +3,7 @@
 
 
 
-#include "AllMilitaryMappings.h"
+#include "src/HOI4World/MilitaryMappings/AllMilitaryMappings.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

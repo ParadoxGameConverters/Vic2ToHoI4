@@ -3,7 +3,7 @@
 
 
 
-#include "ScriptedLocalisation.h"
+#include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisation.h"
 #include <map>
 #include <set>
 #include <vector>

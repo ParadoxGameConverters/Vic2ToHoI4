@@ -4,7 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include "ScriptedLocalisation.h"
+#include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisation.h"
 #include <memory>
 
 

@@ -8,7 +8,7 @@
 #include "src/Mappers/Country/CountryMapper.h"
 #include "src/Mappers/Provinces/ProvinceMapper.h"
 #include "external/common_items/ConvenientParser.h"
-#include "StateCategories.h"
+#include "src/HOI4World/States/StateCategories.h"
 #include "src/V2World/Provinces/Province.h"
 #include "src/V2World/States/State.h"
 #include <map>

@@ -1,5 +1,5 @@
-#include "SoundEffectsFactory.h"
-#include "SoundEffectsMapperFactory.h"
+#include "src/HOI4World/Sounds/SoundEffectsFactory.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapperFactory.h"
 #include "src/V2World/Countries/Country.h"
 
 

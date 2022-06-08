@@ -1,4 +1,4 @@
-#include "SoundEffectsMapperLinkFactory.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapperLinkFactory.h"
 #include "external/common_items/ParserHelpers.h"
 
 

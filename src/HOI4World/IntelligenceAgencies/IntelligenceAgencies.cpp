@@ -1,5 +1,5 @@
-#include "IntelligenceAgencies.h"
-#include "IntelligenceAgencyLogos.h"
+#include "src/HOI4World/IntelligenceAgencies/IntelligenceAgencies.h"
+#include "src/HOI4World/IntelligenceAgencies/IntelligenceAgencyLogos.h"
 
 
 

@@ -1,4 +1,4 @@
-#include "SupplyArea.h"
+#include "src/HOI4World/Map/SupplyArea.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

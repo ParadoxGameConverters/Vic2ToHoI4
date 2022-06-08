@@ -1,4 +1,4 @@
-#include "AIPeaces.h"
+#include "src/HOI4World/Diplomacy/AIPeaces.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 #include <fstream>
