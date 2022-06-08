@@ -606,14 +606,14 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			Log(LogLevel::Debug) << "Province " << *capital << " is not defined in Configurables/regions.txt";
 			continue;
 		}
-		country->determineDominionAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
 
-		for (const auto& area: country->getDominionAreas())
+		const auto& areas = country->getDominionAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
+		for (const auto& area: areas)
 		{
 			std::set<int> areaStates;
 			for (const auto& province: area)
 			{
-				if (country->isProvinceInCapitalArea(province))
+				if (country->isProvinceInCapitalArea(province, areas))
 				{
 					continue;
 				}
@@ -745,13 +745,15 @@ std::string HoI4::World::getBestRegion(const std::set<int>& area, const std::str
 	{
 		sortedRegions.push_back(region);
 	}
-	std::sort(sortedRegions.begin(), sortedRegions.end(), [](std::pair<std::string, int>& a, std::pair<std::string, int>& b) {
-		return a.second > b.second;
-	});
+	std::sort(sortedRegions.begin(),
+		 sortedRegions.end(),
+		 [](std::pair<std::string, int>& a, std::pair<std::string, int>& b) {
+			 return a.second > b.second;
+		 });
 	for (const auto& [region, provinces]: sortedRegions)
 	{
 		if (const auto& dominionItr = dominions.find(std::make_pair(ownerTag, region));
-			dominionItr != dominions.end() && provinces / area.size() < minProvincesInRegion)
+			 dominionItr != dominions.end() && provinces / area.size() < minProvincesInRegion)
 		{
 			continue;
 		}
