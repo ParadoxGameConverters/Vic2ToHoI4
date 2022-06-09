@@ -1768,14 +1768,9 @@ void HoI4::Country::addProvincesToArea(int province,
 
 bool HoI4::Country::isProvinceInDominionArea(int province, const std::vector<std::set<int>>& dominionAreas)
 {
-	for (const auto& area: dominionAreas)
-	{
-		if (area.contains(province))
-		{
-			return true;
-		}
-	}
-	return false;
+	return std::ranges::any_of(dominionAreas, [province](const std::set<int>& area) {
+		return area.contains(province);
+	});
 }
 
 

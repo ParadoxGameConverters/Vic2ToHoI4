@@ -610,40 +610,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		const auto& areas = country->getDominionAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
 		for (const auto& area: areas)
 		{
-			std::set<int> areaStates;
-			for (const auto& province: area)
-			{
-				if (country->isProvinceInCapitalArea(province, areas))
-				{
-					continue;
-				}
-				const auto& stateMapping = states->getProvinceToStateIDMap().find(province);
-				if (stateMapping == states->getProvinceToStateIDMap().end())
-				{
-					continue;
-				}
-				const auto& stateId = stateMapping->second;
-				const auto& region = theRegions->getRegion(province);
-				if (!region)
-				{
-					Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
-					continue;
-				}
-				auto state = modifiableStates.find(stateId);
-				if (state == modifiableStates.end())
-				{
-					continue;
-				}
-				if (theRegions->isRegionBlocked(*region, *ownerRegion))
-				{
-					continue;
-				}
-				if (state->second.getCores().contains(tag) && !state->second.isImpassable())
-				{
-					continue;
-				}
-				areaStates.insert(stateId);
-			}
+			const auto& areaStates = getAreaStates(area, country, areas, *ownerRegion);
 			if (areaStates.empty())
 			{
 				continue;
@@ -740,17 +707,7 @@ std::string HoI4::World::getBestRegion(const std::set<int>& area, const std::str
 			regions[*region]++;
 		}
 	}
-	std::vector<std::pair<std::string, int>> sortedRegions;
-	for (const auto& region: regions)
-	{
-		sortedRegions.push_back(region);
-	}
-	std::sort(sortedRegions.begin(),
-		 sortedRegions.end(),
-		 [](std::pair<std::string, int>& a, std::pair<std::string, int>& b) {
-			 return a.second > b.second;
-		 });
-	for (const auto& [region, provinces]: sortedRegions)
+	for (const auto& [region, provinces]: sortAreaRegions(regions))
 	{
 		if (const auto& dominionItr = dominions.find(std::make_pair(ownerTag, region));
 			 dominionItr != dominions.end() && provinces / area.size() < minProvincesInRegion)
@@ -761,6 +718,66 @@ std::string HoI4::World::getBestRegion(const std::set<int>& area, const std::str
 	}
 	return regions.begin()->first;
 }
+
+
+std::set<int> HoI4::World::getAreaStates(const std::set<int>& area,
+	 const std::shared_ptr<Country>& country,
+	 const std::vector<std::set<int>>& areas,
+	 const std::string& ownerRegion)
+{
+	std::set<int> areaStates;
+	for (const auto& province: area)
+	{
+		if (country->isProvinceInCapitalArea(province, areas))
+		{
+			continue;
+		}
+		const auto& stateMapping = states->getProvinceToStateIDMap().find(province);
+		if (stateMapping == states->getProvinceToStateIDMap().end())
+		{
+			continue;
+		}
+		const auto& stateId = stateMapping->second;
+		const auto& region = theRegions->getRegion(province);
+		if (!region)
+		{
+			Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
+			continue;
+		}
+		auto state = states->getStates().find(stateId);
+		if (state == states->getStates().end())
+		{
+			continue;
+		}
+		if (theRegions->isRegionBlocked(*region, ownerRegion))
+		{
+			continue;
+		}
+		if (state->second.getCores().contains(country->getTag()) && !state->second.isImpassable())
+		{
+			continue;
+		}
+		areaStates.insert(stateId);
+	}
+	return areaStates;
+}
+
+
+std::vector<std::pair<std::string, int>> HoI4::World::sortAreaRegions(const std::map<std::string, int>& regions)
+{
+	std::vector<std::pair<std::string, int>> sortedRegions;
+	for (const auto& region: regions)
+	{
+		sortedRegions.push_back(region);
+	}
+	std::sort(sortedRegions.begin(),
+		 sortedRegions.end(),
+		 [](std::pair<std::string, int>& a, std::pair<std::string, int>& b) {
+			 return a.second > b.second;
+		 });
+	return sortedRegions;
+}
+
 
 
 bool HoI4::World::dominionIsReleasable(const Country& dominion)

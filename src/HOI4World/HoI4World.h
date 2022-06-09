@@ -214,6 +214,11 @@ class World: commonItems::parser
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
 	std::string getBestRegion(const std::set<int>& area, const std::string& ownerTag);
+	std::set<int> getAreaStates(const std::set<int>& area,
+		 const std::shared_ptr<Country>& country,
+		 const std::vector<std::set<int>>& areas,
+		 const std::string& ownerRegion);
+	std::vector<std::pair<std::string, int>> sortAreaRegions(const std::map<std::string, int>& regions);
 	std::shared_ptr<Country> getUnrecognizedNation(const std::string& region,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
