@@ -209,19 +209,21 @@ class World: commonItems::parser
 
 	std::set<std::string> getSouthAsianCountries() const;
 
-	std::shared_ptr<Country> getDominion(const std::string& ownerTag,
-		 const std::shared_ptr<Country>& owner,
-		 const std::string& region,
-		 const Regions& regions,
+	std::shared_ptr<Country> getDominion(const std::shared_ptr<Country>& owner,
+		 const std::set<int>& area,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
+	std::string getBestRegion(const std::set<int>& area, const std::string& ownerTag);
+	std::set<int> getAreaStates(const std::set<int>& area,
+		 const std::shared_ptr<Country>& country,
+		 const std::vector<std::set<int>>& areas,
+		 const std::string& ownerRegion);
+	std::vector<std::pair<std::string, int>> sortAreaRegions(const std::map<std::string, int>& regions);
 	std::shared_ptr<Country> getUnrecognizedNation(const std::string& region,
-		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names);
 
 	bool dominionIsReleasable(const Country& dominion);
-	void addProvincesToHomeAreas();
 
 	void recordUnbuiltCanals(const Vic2::World& sourceWorld);
 

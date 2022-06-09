@@ -1699,30 +1699,78 @@ std::optional<std::string> HoI4::Country::getDominionTag(const std::string& regi
 }
 
 
-void HoI4::Country::addProvincesToHomeArea(int provinceId,
-	 const std::unique_ptr<Maps::MapData>& theMapData,
-	 const std::map<int, HoI4::State>& states,
+std::vector<std::set<int>> HoI4::Country::getDominionAreas(const std::unique_ptr<Maps::MapData>& theMapData,
+	 const std::map<int, HoI4::State>& allStates,
 	 const std::map<int, int>& provinceToStateIdMap)
 {
-	if (homeAreaProvinces.contains(provinceId))
+	std::vector<std::set<int>> dominionAreas;
+	std::set<int> area;
+
+	// Provinces with land connection to capital take the 0 index in dominionAreas vector
+	addProvincesToArea(*capitalProvince, area, theMapData, allStates, provinceToStateIdMap);
+	dominionAreas.push_back(area);
+
+	// Then cycle through the rest and make province clusters for potential transfer to dominions
+	for (const auto& stateId: states)
+	{
+		const auto& state = allStates.find(stateId);
+		if (state == allStates.end())
+		{
+			continue;
+		}
+		area.clear();
+
+		// Check every province in state to ensure that island provinces are added properly
+		for (const auto& province: state->second.getProvinces())
+		{
+			if (isProvinceInDominionArea(province, dominionAreas))
+			{
+				continue;
+			}
+			addProvincesToArea(province, area, theMapData, allStates, provinceToStateIdMap);
+		}
+		dominionAreas.push_back(area);
+	}
+	return dominionAreas;
+}
+
+
+void HoI4::Country::addProvincesToArea(int province,
+	 std::set<int>& area,
+	 const std::unique_ptr<Maps::MapData>& theMapData,
+	 const std::map<int, HoI4::State>& allStates,
+	 const std::map<int, int>& provinceToStateIdMap)
+{
+	// If the province is in area, then it and all its neighbors have been processed and added to area
+	if (area.contains(province))
 	{
 		return;
 	}
-	auto provinceToStateIdMapping = provinceToStateIdMap.find(provinceId);
+	auto provinceToStateIdMapping = provinceToStateIdMap.find(province);
 	if (provinceToStateIdMapping == provinceToStateIdMap.end())
 	{
 		return;
 	}
 	const auto& stateId = provinceToStateIdMapping->second;
-	if (const auto& state = states.find(stateId); state->second.getOwner() != tag)
+	// Provinces owned by other countries break the contiguousness
+	if (const auto& state = allStates.find(stateId); state->second.getOwner() != tag)
 	{
 		return;
 	}
-	homeAreaProvinces.insert(provinceId);
-	for (const auto& neighbor: theMapData->getNeighbors(provinceId))
+	area.insert(province);
+
+	for (const auto& neighbor: theMapData->getNeighbors(province))
 	{
-		addProvincesToHomeArea(neighbor, theMapData, states, provinceToStateIdMap);
+		addProvincesToArea(neighbor, area, theMapData, allStates, provinceToStateIdMap);
 	}
+}
+
+
+bool HoI4::Country::isProvinceInDominionArea(int province, const std::vector<std::set<int>>& dominionAreas)
+{
+	return std::ranges::any_of(dominionAreas, [province](const std::set<int>& area) {
+		return area.contains(province);
+	});
 }
 
 
