@@ -16,7 +16,9 @@ add_compile_options("-O3")
 #add_compile_options("-g")
 
 include_directories(${PROJECT_SOURCE_DIR})
+include_directories(external/googletest/googletest)
 include_directories(external/googletest/googletest/include)
+include_directories(external/googletest/googlemock)
 include_directories(external/googletest/googlemock/include)
 
 add_subdirectory(external/common_items/ZipLib [binary_dir])
