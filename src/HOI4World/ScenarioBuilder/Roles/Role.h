@@ -1,7 +1,7 @@
 #ifndef ROLE_H
 #define ROLE_H
 
-#include "HOI4World/HoI4Country.h"
+#include "src/HOI4World/HoI4Country.h"
 
 class Role
 {

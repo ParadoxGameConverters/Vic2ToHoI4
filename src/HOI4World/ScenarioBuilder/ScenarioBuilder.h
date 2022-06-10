@@ -1,7 +1,7 @@
 #ifndef SCENARIO_BUILDER_H
 #define SCENARIO_BUILDER_H
 
-#include "Roles/Role.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/Role.h"
 
 class ScenarioBuilder
 {
