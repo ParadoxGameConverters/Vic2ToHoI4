@@ -1,6 +1,6 @@
-#include "ProvinceMappingFactory.h"
-#include "CommonRegexes.h"
-#include "ParserHelpers.h"
+#include "src/Mappers/Provinces/ProvinceMappingFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 

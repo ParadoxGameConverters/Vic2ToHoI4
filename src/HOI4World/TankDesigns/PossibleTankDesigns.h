@@ -3,8 +3,8 @@
 
 
 
-#include "Parser.h"
-#include "TankDesign.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/TankDesigns/TankDesign.h"
 #include <vector>
 
 

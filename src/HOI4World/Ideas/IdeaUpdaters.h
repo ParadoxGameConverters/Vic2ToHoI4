@@ -3,7 +3,7 @@
 
 
 
-#include "IdeaGroup.h"
+#include "src/HOI4World/Ideas/IdeaGroup.h"
 #include <set>
 #include <string>
 

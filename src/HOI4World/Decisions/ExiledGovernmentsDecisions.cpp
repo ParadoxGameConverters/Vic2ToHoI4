@@ -1,4 +1,4 @@
-#include "ExiledGovernmentsDecisions.h"
+#include "src/HOI4World/Decisions/ExiledGovernmentsDecisions.h"
 #include <sstream>
 
 

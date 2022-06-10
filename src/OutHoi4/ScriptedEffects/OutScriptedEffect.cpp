@@ -1,4 +1,4 @@
-#include "OutScriptedEffect.h"
+#include "src/OutHoi4/ScriptedEffects/OutScriptedEffect.h"
 
 
 

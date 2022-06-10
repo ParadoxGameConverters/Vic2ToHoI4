@@ -1,6 +1,6 @@
-#include "DynamicModifiers.h"
-#include "Log.h"
-#include "Modifier.h"
+#include "src/HOI4World/Modifiers/DynamicModifiers.h"
+#include "external/common_items/Log.h"
+#include "src/HOI4World/Modifiers/Modifier.h"
 
 
 

@@ -1,7 +1,7 @@
-#include "StateHistory.h"
-#include "CommonRegexes.h"
-#include "ParserHelpers.h"
-#include "StateBuildings.h"
+#include "src/HOI4World/States/StateHistory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/States/StateBuildings.h"
 
 
 

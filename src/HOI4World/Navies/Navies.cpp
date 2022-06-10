@@ -1,7 +1,7 @@
-#include "Navies.h"
-#include "Log.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "Maps/ProvinceDefinitions.h"
+#include "src/HOI4World/Navies/Navies.h"
+#include "external/common_items/Log.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/Maps/ProvinceDefinitions.h"
 
 
 

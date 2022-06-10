@@ -1,6 +1,6 @@
-#include "FlagsToIdeasMapperFactory.h"
-#include "FlagToIdeaMapping.h"
-#include "ParserHelpers.h"
+#include "src/Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/Mappers/FlagsToIdeas/FlagToIdeaMapping.h"
 
 
 

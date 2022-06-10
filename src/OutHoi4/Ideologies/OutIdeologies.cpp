@@ -1,5 +1,5 @@
-#include "OutIdeologies.h"
-#include "OSCompatibilityLayer.h"
+#include "src/OutHoi4/Ideologies/OutIdeologies.h"
+#include "external/common_items/OSCompatibilityLayer.h"
 #include <fstream>
 
 

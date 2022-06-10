@@ -1,5 +1,5 @@
-#include "ScriptedTriggersUpdater.h"
-#include "Log.h"
+#include "src/HOI4World/ScriptedTriggers/ScriptedTriggersUpdater.h"
+#include "external/common_items/Log.h"
 
 
 

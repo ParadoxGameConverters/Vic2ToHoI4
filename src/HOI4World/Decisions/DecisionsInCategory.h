@@ -3,9 +3,9 @@
 
 
 
-#include "Decision.h"
-#include "HOI4World/Events/Events.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Decisions/Decision.h"
+#include "src/HOI4World/Events/Events.h"
 #include <set>
 #include <string>
 #include <vector>

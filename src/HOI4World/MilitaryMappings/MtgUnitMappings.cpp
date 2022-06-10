@@ -1,5 +1,5 @@
-#include "MtgUnitMappings.h"
-#include "MtgUnitMapping.h"
+#include "src/HOI4World/MilitaryMappings/MtgUnitMappings.h"
+#include "src/HOI4World/MilitaryMappings/MtgUnitMapping.h"
 
 
 

@@ -1,8 +1,8 @@
-#include "HOI4World/Ideologies/IdeologiesBuilder.h"
-#include "HOI4World/Ideologies/IdeologyBuilder.h"
-#include "Mappers/Government/GovernmentMapper.h"
-#include "Mappers/Government/GovernmentMapperFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Ideologies/IdeologiesBuilder.h"
+#include "src/HOI4World/Ideologies/IdeologyBuilder.h"
+#include "src/Mappers/Government/GovernmentMapper.h"
+#include "src/Mappers/Government/GovernmentMapperFactory.h"
 #include <sstream>
 
 

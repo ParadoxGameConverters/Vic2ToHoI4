@@ -1,5 +1,5 @@
-#include "OutBuildings.h"
-#include "OutBuilding.h"
+#include "src/OutHoi4/Map/OutBuildings.h"
+#include "src/OutHoi4/Map/OutBuilding.h"
 #include <fstream>
 #include <ranges>
 

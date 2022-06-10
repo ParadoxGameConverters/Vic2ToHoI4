@@ -1,7 +1,7 @@
-#include "OperativeNamesMappingsFactory.h"
-#include "CommonRegexes.h"
-#include "OperativeNamesMappingFactory.h"
-#include "ParserHelpers.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesMappingsFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesMappingFactory.h"
 
 
 

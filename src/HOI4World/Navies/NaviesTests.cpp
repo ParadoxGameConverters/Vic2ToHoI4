@@ -1,10 +1,10 @@
-#include "HOI4World/Navies/Navies.h"
-#include "HOI4World/TechnologiesBuilder.h"
-#include "Mappers/Provinces/ProvinceMapperBuilder.h"
-#include "Maps/ProvinceDefinitions.h"
-#include "OutHoi4/Navies/OutNavies.h"
-#include "V2World/Military/ArmyFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Navies/Navies.h"
+#include "src/HOI4World/TechnologiesBuilder.h"
+#include "src/Mappers/Provinces/ProvinceMapperBuilder.h"
+#include "src/Maps/ProvinceDefinitions.h"
+#include "src/OutHoi4/Navies/OutNavies.h"
+#include "src/V2World/Military/ArmyFactory.h"
 
 
 

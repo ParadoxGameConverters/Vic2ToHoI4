@@ -1,8 +1,8 @@
-#include "Configuration.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "Mappers/Provinces/ProvinceMapperFactory.h"
-#include "gmock/gmock-matchers.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Configuration.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/Mappers/Provinces/ProvinceMapperFactory.h"
 #include <sstream>
 
 

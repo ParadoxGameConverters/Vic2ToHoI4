@@ -3,8 +3,8 @@
 
 
 
-#include "Parser.h"
-#include "WarGoal.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/V2World/Wars/WarGoal.h"
 
 
 

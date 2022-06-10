@@ -1,11 +1,11 @@
-#include "Configuration.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "Mappers/Provinces/ProvinceMapperBuilder.h"
-#include "V2World/Military/ArmyBuilder.h"
-#include "V2World/World/World.h"
-#include "V2World/World/WorldFactory.h"
-#include "gmock/gmock-matchers.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Configuration.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/Mappers/Provinces/ProvinceMapperBuilder.h"
+#include "src/V2World/Military/ArmyBuilder.h"
+#include "src/V2World/World/World.h"
+#include "src/V2World/World/WorldFactory.h"
 
 
 

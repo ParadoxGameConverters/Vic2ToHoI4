@@ -1,6 +1,6 @@
-#include "V2World/EU4ToVic2Data/CountryData.h"
-#include "V2World/EU4ToVic2Data/CountryDataFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/V2World/EU4ToVic2Data/CountryData.h"
+#include "src/V2World/EU4ToVic2Data/CountryDataFactory.h"
 #include <sstream>
 
 

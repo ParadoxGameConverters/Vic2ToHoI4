@@ -1,7 +1,7 @@
-#include "Configuration.h"
-#include "V2World/Technology/Inventions.h"
-#include "V2World/Technology/InventionsFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Configuration.h"
+#include "src/V2World/Technology/Inventions.h"
+#include "src/V2World/Technology/InventionsFactory.h"
 
 
 

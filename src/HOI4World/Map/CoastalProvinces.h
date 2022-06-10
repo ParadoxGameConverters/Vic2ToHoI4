@@ -3,8 +3,8 @@
 
 
 
-#include "HOI4World/Map/Hoi4Province.h"
-#include "Maps/MapData.h"
+#include "src/HOI4World/Map/Hoi4Province.h"
+#include "src/Maps/MapData.h"
 #include <map>
 #include <vector>
 

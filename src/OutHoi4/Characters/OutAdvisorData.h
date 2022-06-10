@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/Characters/AdvisorData.h"
+#include "src/HOI4World/Characters/AdvisorData.h"
 #include <ostream>
 
 

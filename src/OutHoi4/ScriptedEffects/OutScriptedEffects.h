@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/ScriptedEffects/ScriptedEffects.h"
+#include "src/HOI4World/ScriptedEffects/ScriptedEffects.h"
 #include <set>
 #include <string>
 

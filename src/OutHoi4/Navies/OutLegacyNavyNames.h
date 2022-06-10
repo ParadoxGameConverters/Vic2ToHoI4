@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/Navies/LegacyShipTypeNames.h"
+#include "src/HOI4World/Navies/LegacyShipTypeNames.h"
 #include <ostream>
 #include <set>
 

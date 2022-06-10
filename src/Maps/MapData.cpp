@@ -1,7 +1,7 @@
-#include "MapData.h"
-#include "Color.h"
-#include "Configuration.h"
-#include "Log.h"
+#include "src/Maps/MapData.h"
+#include "external/common_items/Color.h"
+#include "external/common_items/Log.h"
+#include "src/Configuration.h"
 
 
 

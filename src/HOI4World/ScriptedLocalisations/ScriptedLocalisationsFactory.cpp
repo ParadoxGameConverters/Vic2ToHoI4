@@ -1,5 +1,5 @@
-#include "ScriptedLocalisationsFactory.h"
-#include "ParserHelpers.h"
+#include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisationsFactory.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 

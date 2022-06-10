@@ -3,17 +3,17 @@
 
 
 
-#include "Configuration.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "Parser.h"
-#include "V2World/Countries/CountryFactory.h"
-#include "V2World/Culture/CultureGroups.h"
-#include "V2World/Diplomacy/DiplomacyFactory.h"
-#include "V2World/EU4ToVic2Data/CountriesDataFactory.h"
-#include "V2World/Issues/Issues.h"
-#include "V2World/Provinces/ProvinceFactory.h"
-#include "V2World/Wars/WarFactory.h"
-#include "World.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Configuration.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/V2World/Countries/CountryFactory.h"
+#include "src/V2World/Culture/CultureGroups.h"
+#include "src/V2World/Diplomacy/DiplomacyFactory.h"
+#include "src/V2World/EU4ToVic2Data/CountriesDataFactory.h"
+#include "src/V2World/Issues/Issues.h"
+#include "src/V2World/Provinces/ProvinceFactory.h"
+#include "src/V2World/Wars/WarFactory.h"
+#include "src/V2World/World/World.h"
 #include <memory>
 
 

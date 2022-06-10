@@ -1,6 +1,6 @@
-#include "V2World/Military/Unit.h"
-#include "V2World/Military/UnitFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/V2World/Military/Unit.h"
+#include "src/V2World/Military/UnitFactory.h"
 #include <sstream>
 
 

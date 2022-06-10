@@ -3,41 +3,41 @@
 
 
 
-#include "Color.h"
-#include "Date.h"
-#include "Diplomacy/Faction.h"
-#include "Diplomacy/HoI4AIStrategy.h"
-#include "Diplomacy/HoI4Relations.h"
-#include "Diplomacy/HoI4War.h"
-#include "HOI4World/Characters/Character.h"
-#include "HoI4FocusTree.h"
-#include "Ideologies/Ideologies.h"
-#include "Map/CoastalProvinces.h"
-#include "Mappers/Country/CountryMapper.h"
-#include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
-#include "Mappers/Government/GovernmentMapper.h"
-#include "Mappers/Graphics/GraphicsMapper.h"
-#include "Mappers/Ideology/IdeologyMapper.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "Mappers/Technology/TechMapper.h"
-#include "Maps/ProvinceDefinitions.h"
-#include "Military/Airplane.h"
-#include "Military/HoI4Army.h"
-#include "MilitaryMappings/MtgUnitMappings.h"
-#include "MilitaryMappings/UnitMappings.h"
-#include "Names/Names.h"
-#include "Navies/Navies.h"
-#include "Navies/NavyNames.h"
-#include "Operatives/Operative.h"
-#include "Regions/Regions.h"
-#include "ShipTypes/ShipVariants.h"
-#include "States/HoI4State.h"
-#include "TankDesigns/TankDesigns.h"
-#include "Technologies.h"
-#include "V2World/Countries/Country.h"
-#include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/Politics/Party.h"
-#include "V2World/World/World.h"
+#include "external/common_items/Color.h"
+#include "external/common_items/Date.h"
+#include "src/HOI4World/Characters/Character.h"
+#include "src/HOI4World/Diplomacy/Faction.h"
+#include "src/HOI4World/Diplomacy/HoI4AIStrategy.h"
+#include "src/HOI4World/Diplomacy/HoI4Relations.h"
+#include "src/HOI4World/Diplomacy/HoI4War.h"
+#include "src/HOI4World/HoI4FocusTree.h"
+#include "src/HOI4World/Ideologies/Ideologies.h"
+#include "src/HOI4World/Map/CoastalProvinces.h"
+#include "src/HOI4World/Military/Airplane.h"
+#include "src/HOI4World/Military/HoI4Army.h"
+#include "src/HOI4World/MilitaryMappings/MtgUnitMappings.h"
+#include "src/HOI4World/MilitaryMappings/UnitMappings.h"
+#include "src/HOI4World/Names/Names.h"
+#include "src/HOI4World/Navies/Navies.h"
+#include "src/HOI4World/Navies/NavyNames.h"
+#include "src/HOI4World/Operatives/Operative.h"
+#include "src/HOI4World/Regions/Regions.h"
+#include "src/HOI4World/ShipTypes/ShipVariants.h"
+#include "src/HOI4World/States/HoI4State.h"
+#include "src/HOI4World/TankDesigns/TankDesigns.h"
+#include "src/HOI4World/Technologies.h"
+#include "src/Mappers/Country/CountryMapper.h"
+#include "src/Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
+#include "src/Mappers/Government/GovernmentMapper.h"
+#include "src/Mappers/Graphics/GraphicsMapper.h"
+#include "src/Mappers/Ideology/IdeologyMapper.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/Mappers/Technology/TechMapper.h"
+#include "src/Maps/ProvinceDefinitions.h"
+#include "src/V2World/Countries/Country.h"
+#include "src/V2World/Localisations/Vic2Localisations.h"
+#include "src/V2World/Politics/Party.h"
+#include "src/V2World/World/World.h"
 #include <map>
 #include <memory>
 #include <optional>
@@ -153,10 +153,19 @@ class Country
 
 	void addUnbuiltCanal(const std::string& unbuiltCanal) { unbuiltCanals.push_back(unbuiltCanal); }
 
-	void addProvincesToHomeArea(int provinceId,
-		 const std::unique_ptr<Maps::MapData>& theMapData,
-		 const std::map<int, HoI4::State>& states,
+	std::vector<std::set<int>> getDominionAreas(const std::unique_ptr<Maps::MapData>& theMapData,
+		 const std::map<int, HoI4::State>& allStates,
 		 const std::map<int, int>& provinceToStateIdMap);
+	void addProvincesToArea(int startingProvince,
+		 std::set<int>& area,
+		 const std::unique_ptr<Maps::MapData>& theMapData,
+		 const std::map<int, HoI4::State>& allStates,
+		 const std::map<int, int>& provinceToStateIdMap);
+	bool isProvinceInDominionArea(int province, const std::vector<std::set<int>>& dominionAreas);
+	bool isProvinceInCapitalArea(int province, const std::vector<std::set<int>>& dominionAreas) const
+	{
+		return dominionAreas[0].contains(province);
+	}
 
 	[[nodiscard]] std::optional<HoI4::Relations> getRelations(const std::string& withWhom) const;
 	[[nodiscard]] std::optional<date> getTruceUntil(const std::string& withWhom) const;
@@ -313,7 +322,6 @@ class Country
 	void setTrainsMultiplier(float multiplier) { trainsMultiplier = multiplier; }
 
 	[[nodiscard]] const auto& getGlobalEventTargets() const { return globalEventTargets; }
-	[[nodiscard]] bool isProvinceInHomeArea(int provinceId) const { return homeAreaProvinces.contains(provinceId); }
 
 	void convertStrategies(const Mappers::CountryMapper& countryMap,
 		 const Vic2::Country& sourceCountry,
@@ -474,7 +482,6 @@ class Country
 
 	std::map<std::string, float> sourceCountryGoods;
 	std::set<std::string> globalEventTargets;
-	std::set<int> homeAreaProvinces;
 
 	std::vector<std::string> unbuiltCanals;
 

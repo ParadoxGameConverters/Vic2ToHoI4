@@ -3,8 +3,8 @@
 
 
 
-#include "Parser.h"
-#include "RegimentType.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Military/RegimentType.h"
 #include <ostream>
 #include <string>
 #include <vector>

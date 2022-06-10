@@ -1,6 +1,6 @@
-#include "HOI4World/ShipTypes/LegacyShipVariant.h"
-#include "HOI4World/TechnologiesBuilder.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/ShipTypes/LegacyShipVariant.h"
+#include "src/HOI4World/TechnologiesBuilder.h"
 #include <sstream>
 
 

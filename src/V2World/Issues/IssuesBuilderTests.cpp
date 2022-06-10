@@ -1,5 +1,5 @@
-#include "V2World/Issues/IssuesBuilder.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/V2World/Issues/IssuesBuilder.h"
 #include <sstream>
 
 

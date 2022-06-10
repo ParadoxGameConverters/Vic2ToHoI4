@@ -1704,7 +1704,7 @@
       <OmitFramePointers>false</OmitFramePointers>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/src;$(SolutionDir)/external/googletest/googletest/;$(SolutionDir)/external/googletest/googletest/include;$(SolutionDir)/external/googletest/googlemock/;$(SolutionDir)/external/googletest/googlemock/include;$(SolutionDir)external/common_items;$(SolutionDir)external/bitmap;$(SolutionDir)external\common_items\ZipLib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/googletest/googletest/;$(SolutionDir)/external/googletest/googletest/include;$(SolutionDir)/external/googletest/googlemock/;$(SolutionDir)/external/googletest/googlemock/include;</AdditionalIncludeDirectories>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>

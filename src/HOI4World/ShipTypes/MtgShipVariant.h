@@ -3,9 +3,9 @@
 
 
 
-#include "HOI4World/Technologies.h"
-#include "Parser.h"
-#include "ShipModules.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/ShipTypes/ShipModules.h"
+#include "src/HOI4World/Technologies.h"
 #include <memory>
 #include <set>
 #include <string>

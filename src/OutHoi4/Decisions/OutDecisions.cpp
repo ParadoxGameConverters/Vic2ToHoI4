@@ -1,5 +1,5 @@
-#include "OutDecisions.h"
-#include "OutDecisionsCategories.h"
+#include "src/OutHoi4/Decisions/OutDecisions.h"
+#include "src/OutHoi4/Decisions/OutDecisionsCategories.h"
 #include <fstream>
 
 

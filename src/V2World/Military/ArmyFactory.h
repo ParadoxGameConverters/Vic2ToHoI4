@@ -3,9 +3,9 @@
 
 
 
-#include "Army.h"
-#include "Parser.h"
-#include "UnitFactory.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/V2World/Military/Army.h"
+#include "src/V2World/Military/UnitFactory.h"
 #include <memory>
 
 

@@ -3,9 +3,9 @@
 
 
 
-#include "MilitaryMappings.h"
-#include "ModLoader/ModLoader.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "external/common_items/ModLoader/ModLoader.h"
+#include "src/HOI4World/MilitaryMappings/MilitaryMappings.h"
 #include <map>
 #include <string>
 

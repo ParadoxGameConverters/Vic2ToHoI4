@@ -1,5 +1,5 @@
-#include "HOI4World/Map/Hoi4Building.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Map/Hoi4Building.h"
 #include <sstream>
 
 

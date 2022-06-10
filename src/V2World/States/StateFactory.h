@@ -3,10 +3,10 @@
 
 
 
-#include "BuildingReader.h"
-#include "Parser.h"
-#include "State.h"
-#include "StateDefinitions.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/V2World/States/BuildingReader.h"
+#include "src/V2World/States/State.h"
+#include "src/V2World/States/StateDefinitions.h"
 #include <memory>
 
 

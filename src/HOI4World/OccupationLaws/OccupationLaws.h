@@ -3,7 +3,7 @@
 
 
 
-#include "OccupationLaw.h"
+#include "src/HOI4World/OccupationLaws/OccupationLaw.h"
 #include <set>
 #include <vector>
 

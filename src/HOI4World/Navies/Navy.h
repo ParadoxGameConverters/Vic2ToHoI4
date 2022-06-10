@@ -3,7 +3,7 @@
 
 
 
-#include "LegacyShip.h"
+#include "src/HOI4World/Navies/LegacyShip.h"
 #include <string>
 
 

@@ -3,8 +3,8 @@
 
 
 
-#include "Parser.h"
-#include "SoundEffectsMapperLink.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapperLink.h"
 #include <memory>
 
 

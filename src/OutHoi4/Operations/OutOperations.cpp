@@ -1,6 +1,6 @@
-#include "OutOperations.h"
-#include "OSCompatibilityLayer.h"
-#include "OutOperation.h"
+#include "src/OutHoi4/Operations/OutOperations.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "src/OutHoi4/Operations/OutOperation.h"
 #include <fstream>
 
 

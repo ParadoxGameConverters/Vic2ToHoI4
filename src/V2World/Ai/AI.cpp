@@ -1,5 +1,5 @@
-#include "AI.h"
-#include "Log.h"
+#include "src/V2World/Ai/AI.h"
+#include "external/common_items/Log.h"
 #include <ranges>
 
 

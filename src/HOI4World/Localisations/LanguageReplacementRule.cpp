@@ -1,5 +1,5 @@
-#include "LanguageReplacementRule.h"
-#include "LanguageReplacements.h"
+#include "src/HOI4World/Localisations/LanguageReplacementRule.h"
+#include "src/HOI4World/Localisations/LanguageReplacements.h"
 
 
 

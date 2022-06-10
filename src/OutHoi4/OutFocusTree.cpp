@@ -1,6 +1,6 @@
-#include "OutFocusTree.h"
-#include "OutFocus.h"
-#include "OutSharedFocus.h"
+#include "src/OutHoi4/OutFocusTree.h"
+#include "src/OutHoi4/OutFocus.h"
+#include "src/OutHoi4/OutSharedFocus.h"
 #include <fstream>
 #include <string>
 

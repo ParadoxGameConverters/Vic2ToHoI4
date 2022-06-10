@@ -3,8 +3,8 @@
 
 
 
-#include "HOI4World/Military/DivisionTemplate.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Military/DivisionTemplate.h"
 
 
 

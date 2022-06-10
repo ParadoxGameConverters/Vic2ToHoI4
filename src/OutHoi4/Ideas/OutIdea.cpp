@@ -1,5 +1,5 @@
-#include "OutIdea.h"
-#include "HOI4World/Ideas/Idea.h"
+#include "src/OutHoi4/Ideas/OutIdea.h"
+#include "src/HOI4World/Ideas/Idea.h"
 
 
 

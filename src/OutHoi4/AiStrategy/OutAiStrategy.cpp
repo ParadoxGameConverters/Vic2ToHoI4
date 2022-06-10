@@ -1,6 +1,8 @@
-#include "OutAiStrategy.h"
-#include "../../common_items/CommonFunctions.h"
-#include "HOI4World/HoI4Country.h"
+#include "src/OutHoi4/AiStrategy/OutAiStrategy.h"
+#include "external/common_items/CommonFunctions.h"
+#include "src/HOI4World/HoI4Country.h"
+
+
 
 void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const std::string& outputName)
 {

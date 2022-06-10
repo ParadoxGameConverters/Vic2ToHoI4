@@ -1,11 +1,11 @@
-#include "CountryFactory.h"
-#include "CommonRegexes.h"
-#include "Log.h"
-#include "ParserHelpers.h"
-#include "StringUtils.h"
-#include "V2World/Culture/CultureGroupsFactory.h"
-#include "V2World/Military/Leaders/TraitsFactory.h"
-#include "V2World/Technology/InventionsFactory.h"
+#include "src/V2World/Countries/CountryFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/ParserHelpers.h"
+#include "external/common_items/StringUtils.h"
+#include "src/V2World/Culture/CultureGroupsFactory.h"
+#include "src/V2World/Military/Leaders/TraitsFactory.h"
+#include "src/V2World/Technology/InventionsFactory.h"
 #include <cmath>
 #include <sstream>
 

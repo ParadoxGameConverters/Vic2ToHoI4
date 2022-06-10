@@ -1,6 +1,6 @@
-#include "UnitMapping.h"
-#include "CommonRegexes.h"
-#include "ParserHelpers.h"
+#include "src/HOI4World/MilitaryMappings/UnitMapping.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 

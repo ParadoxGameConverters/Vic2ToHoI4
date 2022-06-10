@@ -1,4 +1,4 @@
-#include "ResourceProspectingDecisions.h"
+#include "src/HOI4World/Decisions/ResourceProspectingDecisions.h"
 #include <map>
 #include <regex>
 #include <string>

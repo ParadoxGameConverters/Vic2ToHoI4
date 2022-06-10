@@ -4,7 +4,7 @@
 
 #include <map>
 
-#include "SoundEffectsMapping.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapping.h"
 #include <set>
 
 

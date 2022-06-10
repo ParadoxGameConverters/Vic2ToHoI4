@@ -1,5 +1,5 @@
-#include "HoI4Provinces.h"
-#include "Log.h"
+#include "src/HOI4World/Map/HoI4Provinces.h"
+#include "external/common_items/Log.h"
 #include <fstream>
 
 

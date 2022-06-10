@@ -1,6 +1,6 @@
-#include "HOI4World/Decisions/DecisionsCategory.h"
-#include "OutHoi4/Decisions/OutDecisionsCategory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Decisions/DecisionsCategory.h"
+#include "src/OutHoi4/Decisions/OutDecisionsCategory.h"
 #include <sstream>
 
 

@@ -3,21 +3,21 @@
 
 
 
-#include "CommonCountryData.h"
-#include "Configuration.h"
-#include "Country.h"
-#include "Parser.h"
-#include "V2World/Ai/AIFactory.h"
-#include "V2World/Culture/CultureGroups.h"
-#include "V2World/Diplomacy/RelationsFactory.h"
-#include "V2World/EU4ToVic2Data/CountryData.h"
-#include "V2World/Military/ArmyFactory.h"
-#include "V2World/Military/Leaders/LeaderFactory.h"
-#include "V2World/States/StateFactory.h"
-#include "V2World/States/StateLanguageCategories.h"
-#include "V2World/Stockpiles/StockpileFactory.h"
-#include "V2World/Technology/Inventions.h"
-#include "V2World/Technology/TechnologyFactory.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Configuration.h"
+#include "src/V2World/Ai/AIFactory.h"
+#include "src/V2World/Countries/CommonCountryData.h"
+#include "src/V2World/Countries/Country.h"
+#include "src/V2World/Culture/CultureGroups.h"
+#include "src/V2World/Diplomacy/RelationsFactory.h"
+#include "src/V2World/EU4ToVic2Data/CountryData.h"
+#include "src/V2World/Military/ArmyFactory.h"
+#include "src/V2World/Military/Leaders/LeaderFactory.h"
+#include "src/V2World/States/StateFactory.h"
+#include "src/V2World/States/StateLanguageCategories.h"
+#include "src/V2World/Stockpiles/StockpileFactory.h"
+#include "src/V2World/Technology/Inventions.h"
+#include "src/V2World/Technology/TechnologyFactory.h"
 #include <memory>
 #include <optional>
 

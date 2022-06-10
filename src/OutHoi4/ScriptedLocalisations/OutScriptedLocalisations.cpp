@@ -1,5 +1,5 @@
-#include "OutScriptedLocalisations.h"
-#include "OutScriptedLocalisation.h"
+#include "src/OutHoi4/ScriptedLocalisations/OutScriptedLocalisations.h"
+#include "src/OutHoi4/ScriptedLocalisations/OutScriptedLocalisation.h"
 #include <fstream>
 
 

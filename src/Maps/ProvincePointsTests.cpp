@@ -1,5 +1,5 @@
-#include "Maps/ProvincePoints.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Maps/ProvincePoints.h"
 
 
 

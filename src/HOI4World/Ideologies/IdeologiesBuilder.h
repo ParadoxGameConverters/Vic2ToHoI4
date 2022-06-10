@@ -3,7 +3,7 @@
 
 
 
-#include "Ideologies.h"
+#include "src/HOI4World/Ideologies/Ideologies.h"
 #include <memory>
 
 

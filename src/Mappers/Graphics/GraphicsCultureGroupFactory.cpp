@@ -1,5 +1,5 @@
-#include "GraphicsCultureGroupFactory.h"
-#include "ParserHelpers.h"
+#include "src/Mappers/Graphics/GraphicsCultureGroupFactory.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 

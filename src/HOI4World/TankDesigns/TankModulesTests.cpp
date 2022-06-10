@@ -1,5 +1,5 @@
-#include "HOI4World/TankDesigns/TankModules.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/TankDesigns/TankModules.h"
 #include <sstream>
 
 

@@ -3,8 +3,8 @@
 
 
 
-#include "LegacyShipTypeNames.h"
-#include "MtgShipTypeNames.h"
+#include "src/HOI4World/Navies/LegacyShipTypeNames.h"
+#include "src/HOI4World/Navies/MtgShipTypeNames.h"
 #include <set>
 
 

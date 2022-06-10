@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/Sounds/SoundEffect.h"
+#include "src/HOI4World/Sounds/SoundEffect.h"
 #include <string>
 #include <vector>
 

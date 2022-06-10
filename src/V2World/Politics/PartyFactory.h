@@ -3,8 +3,8 @@
 
 
 
-#include "Parser.h"
-#include "Party.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/V2World/Politics/Party.h"
 #include <memory>
 
 

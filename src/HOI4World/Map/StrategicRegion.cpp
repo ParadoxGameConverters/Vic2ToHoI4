@@ -1,8 +1,8 @@
-#include "StrategicRegion.h"
-#include "CommonRegexes.h"
-#include "Configuration.h"
-#include "MapRegion.h"
-#include "ParserHelpers.h"
+#include "src/HOI4World/Map/StrategicRegion.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/Configuration.h"
+#include "src/HOI4World/Map/MapRegion.h"
 #include <fstream>
 
 

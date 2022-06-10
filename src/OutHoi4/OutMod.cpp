@@ -1,8 +1,8 @@
-#include "OutMod.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
-#include "OutFlags.h"
-#include "OutHoi4World.h"
+#include "src/OutHoi4/OutMod.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "src/OutHoi4/OutFlags.h"
+#include "src/OutHoi4/OutHoi4World.h"
 #include <string>
 
 

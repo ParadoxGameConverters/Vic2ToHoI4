@@ -3,8 +3,8 @@
 
 
 
-#include "Parser.h"
-#include "Trait.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/V2World/Military/Leaders/Trait.h"
 
 
 

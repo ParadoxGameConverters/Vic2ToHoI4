@@ -1,7 +1,7 @@
-#include "LegacyShipVariant.h"
-#include "CommonRegexes.h"
-#include "ParserHelpers.h"
-#include "ShipUpgrades.h"
+#include "src/HOI4World/ShipTypes/LegacyShipVariant.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/ShipTypes/ShipUpgrades.h"
 
 
 

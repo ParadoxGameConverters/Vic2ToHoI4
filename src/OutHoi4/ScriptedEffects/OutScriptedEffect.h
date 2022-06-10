@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/ScriptedEffects/ScriptedEffect.h"
+#include "src/HOI4World/ScriptedEffects/ScriptedEffect.h"
 #include <ostream>
 
 

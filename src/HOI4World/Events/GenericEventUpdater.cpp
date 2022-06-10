@@ -1,6 +1,6 @@
-#include "Event.h"
-#include "EventOption.h"
-#include "GenericEventUpdaters.h"
+#include "src/HOI4World/Events/Event.h"
+#include "src/HOI4World/Events/EventOption.h"
+#include "src/HOI4World/Events/GenericEventUpdaters.h"
 
 
 

@@ -1,11 +1,11 @@
-#include "V2World/Pops/Pop.h"
-#include "V2World/Provinces/Province.h"
-#include "V2World/Provinces/ProvinceBuilder.h"
-#include "V2World/States/State.h"
-#include "V2World/States/StateBuilder.h"
-#include "V2World/States/StateDefinitionsBuilder.h"
-#include "gmock/gmock-matchers.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/V2World/Pops/Pop.h"
+#include "src/V2World/Provinces/Province.h"
+#include "src/V2World/Provinces/ProvinceBuilder.h"
+#include "src/V2World/States/State.h"
+#include "src/V2World/States/StateBuilder.h"
+#include "src/V2World/States/StateDefinitionsBuilder.h"
 
 
 

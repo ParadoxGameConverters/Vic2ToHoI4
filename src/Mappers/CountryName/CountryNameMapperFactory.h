@@ -3,9 +3,9 @@
 
 
 
-#include "CountryNameMapper.h"
-#include "CountryNameMappingFactory.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Mappers/CountryName/CountryNameMapper.h"
+#include "src/Mappers/CountryName/CountryNameMappingFactory.h"
 #include <memory>
 
 

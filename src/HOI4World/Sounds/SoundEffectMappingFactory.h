@@ -3,9 +3,9 @@
 
 
 
-#include "Parser.h"
-#include "SoundEffectMapping.h"
-#include "SoundEffectsMapperLinkFactory.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Sounds/SoundEffectMapping.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapperLinkFactory.h"
 #include <memory>
 
 

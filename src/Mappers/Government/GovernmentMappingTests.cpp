@@ -1,6 +1,6 @@
-#include "Mappers/Government/GovernmentMapping.h"
-#include "Mappers/Government/GovernmentMappingFactory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Mappers/Government/GovernmentMapping.h"
+#include "src/Mappers/Government/GovernmentMappingFactory.h"
 #include <sstream>
 
 

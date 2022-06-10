@@ -1,6 +1,6 @@
-#include "OutIntelligenceAgencies.h"
-#include "OSCompatibilityLayer.h"
-#include "OutIntelligenceAgency.h"
+#include "src/OutHoi4/IntelligenceAgencies/OutIntelligenceAgencies.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "src/OutHoi4/IntelligenceAgencies/OutIntelligenceAgency.h"
 #include <fstream>
 
 

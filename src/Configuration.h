@@ -3,9 +3,9 @@
 
 
 
-#include "ConverterVersion.h"
-#include "ModLoader/ModLoader.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "external/common_items/ConverterVersion.h"
+#include "external/common_items/ModLoader/ModLoader.h"
 #include <set>
 #include <string>
 #include <vector>

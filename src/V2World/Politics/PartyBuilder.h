@@ -3,7 +3,7 @@
 
 
 
-#include "Party.h"
+#include "src/V2World/Politics/Party.h"
 #include <memory>
 
 

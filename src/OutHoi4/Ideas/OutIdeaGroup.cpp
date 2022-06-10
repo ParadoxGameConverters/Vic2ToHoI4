@@ -1,5 +1,5 @@
-#include "OutIdeaGroup.h"
-#include "HOI4World/Ideas/IdeaGroup.h"
+#include "src/OutHoi4/Ideas/OutIdeaGroup.h"
+#include "src/HOI4World/Ideas/IdeaGroup.h"
 
 
 

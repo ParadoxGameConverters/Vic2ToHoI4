@@ -1,5 +1,5 @@
-#include "ProvinceDefinitions.h"
-#include "Configuration.h"
+#include "src/Maps/ProvinceDefinitions.h"
+#include "src/Configuration.h"
 
 
 

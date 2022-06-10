@@ -1,8 +1,8 @@
-#include "SoundEffectsMapperFactory.h"
-#include "CommonRegexes.h"
-#include "ParserHelpers.h"
-#include "SoundEffectsMapperLink.h"
-#include "SoundEffectsMapping.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapperFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapperLink.h"
+#include "src/HOI4World/Sounds/SoundEffectsMapping.h"
 
 
 

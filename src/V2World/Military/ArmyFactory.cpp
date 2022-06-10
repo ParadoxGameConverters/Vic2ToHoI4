@@ -1,7 +1,7 @@
-#include "ArmyFactory.h"
-#include "CommonRegexes.h"
-#include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
+#include "src/V2World/Military/ArmyFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 

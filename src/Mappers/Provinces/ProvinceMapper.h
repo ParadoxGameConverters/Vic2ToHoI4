@@ -3,7 +3,7 @@
 
 
 
-#include "ProvinceMappingTypes.h"
+#include "src/Mappers/Provinces/ProvinceMappingTypes.h"
 #include <map>
 #include <set>
 #include <vector>

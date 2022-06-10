@@ -1,7 +1,7 @@
-#include "PopFactory.h"
-#include "CommonRegexes.h"
-#include "Log.h"
-#include "ParserHelpers.h"
+#include "src/V2World/Pops/PopFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 

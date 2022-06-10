@@ -1,7 +1,7 @@
-#include "OperativeNames.h"
-#include "OperativeNamesMappings.h"
-#include "OperativeNamesMappingsFactory.h"
-#include "V2World/Countries/Country.h"
+#include "src/HOI4World/OperativeNames/OperativeNames.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesMappings.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesMappingsFactory.h"
+#include "src/V2World/Countries/Country.h"
 
 
 

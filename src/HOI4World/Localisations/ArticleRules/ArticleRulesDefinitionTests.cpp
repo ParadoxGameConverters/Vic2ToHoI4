@@ -1,5 +1,5 @@
-#include "HOI4World/Localisations/ArticleRules/ArticleRulesDefinition.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRulesDefinition.h"
 #include <sstream>
 
 

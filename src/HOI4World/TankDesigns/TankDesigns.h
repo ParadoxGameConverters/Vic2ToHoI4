@@ -3,10 +3,10 @@
 
 
 
-#include "HOI4World/Technologies.h"
-#include "Parser.h"
-#include "PossibleTankDesigns.h"
-#include "TankDesign.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/TankDesigns/PossibleTankDesigns.h"
+#include "src/HOI4World/TankDesigns/TankDesign.h"
+#include "src/HOI4World/Technologies.h"
 
 
 

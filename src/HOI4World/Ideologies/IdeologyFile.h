@@ -2,8 +2,8 @@
 #define HOI4_IDEOLOGY_FILE
 
 
-#include "Ideology.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Ideologies/Ideology.h"
 #include <map>
 #include <string>
 

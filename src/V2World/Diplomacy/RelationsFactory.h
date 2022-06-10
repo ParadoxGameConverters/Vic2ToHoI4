@@ -3,8 +3,8 @@
 
 
 
-#include "Parser.h"
-#include "Relations.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/V2World/Diplomacy/Relations.h"
 #include <memory>
 
 

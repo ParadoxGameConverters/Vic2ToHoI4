@@ -1,4 +1,4 @@
-#include "OperativeNamesMappings.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesMappings.h"
 
 
 

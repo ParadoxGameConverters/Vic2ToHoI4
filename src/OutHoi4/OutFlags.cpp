@@ -1,9 +1,9 @@
-#include "OutFlags.h"
-#include "HOI4World/HoI4Country.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
-#include "V2World/Countries/Country.h"
-#include "targa.h"
+#include "src/OutHoi4/OutFlags.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "external/common_items/targa.h"
+#include "src/HOI4World/HoI4Country.h"
+#include "src/V2World/Countries/Country.h"
 #include <optional>
 
 

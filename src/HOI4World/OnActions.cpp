@@ -1,5 +1,5 @@
-#include "OnActions.h"
-#include "Configuration.h"
+#include "src/HOI4World/OnActions.h"
+#include "src/Configuration.h"
 
 
 

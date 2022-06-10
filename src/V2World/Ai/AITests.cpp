@@ -1,8 +1,8 @@
-#include "V2World/Ai/AI.h"
-#include "V2World/Ai/AIFactory.h"
-#include "V2World/Provinces/Province.h"
-#include "V2World/Provinces/ProvinceBuilder.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/V2World/Ai/AI.h"
+#include "src/V2World/Ai/AIFactory.h"
+#include "src/V2World/Provinces/Province.h"
+#include "src/V2World/Provinces/ProvinceBuilder.h"
 
 
 

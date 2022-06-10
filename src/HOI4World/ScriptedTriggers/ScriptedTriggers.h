@@ -3,9 +3,9 @@
 
 
 
-#include "Configuration.h"
-#include "Parser.h"
-#include "ScriptedTrigger.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Configuration.h"
+#include "src/HOI4World/ScriptedTriggers/ScriptedTrigger.h"
 #include <map>
 #include <vector>
 

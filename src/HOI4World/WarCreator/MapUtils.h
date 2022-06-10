@@ -3,8 +3,8 @@
 
 
 
-#include "HOI4World/HoI4Country.h"
-#include "HOI4World/HoI4World.h"
+#include "src/HOI4World/HoI4Country.h"
+#include "src/HOI4World/HoI4World.h"
 #include <memory>
 #include <optional>
 
