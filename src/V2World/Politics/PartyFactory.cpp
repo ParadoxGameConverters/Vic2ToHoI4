@@ -1,4 +1,4 @@
-#include "PartyFactory.h"
+#include "src/V2World/Politics/PartyFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

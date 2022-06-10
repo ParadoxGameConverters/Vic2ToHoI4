@@ -1,6 +1,6 @@
-#include "TraitGroup.h"
+#include "src/V2World/Military/Leaders/TraitGroup.h"
 #include "external/common_items/CommonRegexes.h"
-#include "Trait.h"
+#include "src/V2World/Military/Leaders/Trait.h"
 
 
 

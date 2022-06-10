@@ -3,11 +3,11 @@
 
 
 
-#include "CommonCountryData.h"
+#include "src/V2World/Countries/CommonCountryData.h"
 #include "src/Configuration.h"
 #include "external/common_items/ModLoader/ModLoader.h"
 #include "external/common_items/ConvenientParser.h"
-#include "UnitNamesFactory.h"
+#include "src/V2World/Countries/UnitNamesFactory.h"
 #include "src/V2World/Politics/PartyFactory.h"
 #include <memory>
 

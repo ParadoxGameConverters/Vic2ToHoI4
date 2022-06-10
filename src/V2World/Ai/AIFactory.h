@@ -3,8 +3,8 @@
 
 
 
-#include "AI.h"
-#include "AIStrategyFactory.h"
+#include "src/V2World/Ai/AI.h"
+#include "src/V2World/Ai/AIStrategyFactory.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

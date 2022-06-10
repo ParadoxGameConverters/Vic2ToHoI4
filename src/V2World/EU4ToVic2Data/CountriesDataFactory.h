@@ -4,8 +4,8 @@
 
 
 #include "src/Configuration.h"
-#include "CountriesData.h"
-#include "CountryDataFactory.h"
+#include "src/V2World/EU4ToVic2Data/CountriesData.h"
+#include "src/V2World/EU4ToVic2Data/CountryDataFactory.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

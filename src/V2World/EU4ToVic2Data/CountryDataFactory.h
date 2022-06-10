@@ -3,7 +3,7 @@
 
 
 
-#include "CountryData.h"
+#include "src/V2World/EU4ToVic2Data/CountryData.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

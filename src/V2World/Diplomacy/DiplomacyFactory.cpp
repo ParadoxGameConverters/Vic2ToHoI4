@@ -1,5 +1,5 @@
-#include "DiplomacyFactory.h"
-#include "AgreementFactory.h"
+#include "src/V2World/Diplomacy/DiplomacyFactory.h"
+#include "src/V2World/Diplomacy/AgreementFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/Log.h"
 

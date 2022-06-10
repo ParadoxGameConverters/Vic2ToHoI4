@@ -4,8 +4,8 @@
 
 
 #include "src/Configuration.h"
-#include "CultureGroupFactory.h"
-#include "CultureGroups.h"
+#include "src/V2World/Culture/CultureGroupFactory.h"
+#include "src/V2World/Culture/CultureGroups.h"
 #include "external/common_items/ConvenientParser.h"
 #include <memory>
 

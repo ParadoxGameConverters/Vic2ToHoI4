@@ -3,9 +3,9 @@
 
 
 
-#include "CommonCountryData.h"
+#include "src/V2World/Countries/CommonCountryData.h"
 #include "src/Configuration.h"
-#include "Country.h"
+#include "src/V2World/Countries/Country.h"
 #include "external/common_items/ConvenientParser.h"
 #include "src/V2World/Ai/AIFactory.h"
 #include "src/V2World/Culture/CultureGroups.h"

@@ -1,4 +1,4 @@
-#include "InventionsFactory.h"
+#include "src/V2World/Technology/InventionsFactory.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
 

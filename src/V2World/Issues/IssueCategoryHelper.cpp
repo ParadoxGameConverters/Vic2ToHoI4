@@ -1,6 +1,6 @@
-#include "IssueCategoryHelper.h"
+#include "src/V2World/Issues/IssueCategoryHelper.h"
 #include "external/common_items/CommonRegexes.h"
-#include "IssueHelper.h"
+#include "src/V2World/Issues/IssueHelper.h"
 
 
 

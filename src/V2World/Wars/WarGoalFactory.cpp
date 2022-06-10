@@ -1,4 +1,4 @@
-#include "WarGoalFactory.h"
+#include "src/V2World/Wars/WarGoalFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 

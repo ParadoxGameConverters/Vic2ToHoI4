@@ -1,7 +1,7 @@
-#include "IssuesFactory.h"
+#include "src/V2World/Issues/IssuesFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "src/Configuration.h"
-#include "IssueCategoryHelper.h"
+#include "src/V2World/Issues/IssueCategoryHelper.h"
 
 
 

@@ -3,7 +3,7 @@
 
 
 
-#include "AIStrategy.h"
+#include "src/V2World/Ai/AIStrategy.h"
 #include "src/V2World/Provinces/Province.h"
 
 

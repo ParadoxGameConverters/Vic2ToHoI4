@@ -3,7 +3,7 @@
 
 
 
-#include "Trait.h"
+#include "src/V2World/Military/Leaders/Trait.h"
 #include <string_view>
 
 

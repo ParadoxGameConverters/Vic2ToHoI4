@@ -1,4 +1,4 @@
-#include "AgreementFactory.h"
+#include "src/V2World/Diplomacy/AgreementFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 #include "external/common_items/StringUtils.h"

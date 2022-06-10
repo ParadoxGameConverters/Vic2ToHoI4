@@ -1,4 +1,4 @@
-#include "Trait.h"
+#include "src/V2World/Military/Leaders/Trait.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/ParserHelpers.h"
 

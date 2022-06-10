@@ -4,7 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include "WarGoal.h"
+#include "src/V2World/Wars/WarGoal.h"
 
 
 
