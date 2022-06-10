@@ -7,9 +7,14 @@ ScenarioBuilder::ScenarioBuilder(const std::map<std::string, std::shared_ptr<HoI
 {
 	for (const auto& country: countryMap | std::views::values)
 	{
-		countries.emplace(country);
+		// NOTE: Could maybe use countries as a multiset here, but might not want to later
+		auto position = std::lower_bound(countries.begin(),
+			 countries.end(),
+			 country->getIndustry(),
+			 HoI4::Country::compareCountriesByIndustry);
+		countries.insert(position, country);
 	}
 
-	roles.emplace(RoleSpanishCivilWar());
-	roles.emplace(RoleArsenalOfIdeology());
+	roles.push_back(std::make_shared<RoleSpanishCivilWar>());
+	roles.push_back(std::make_shared<RoleArsenalOfIdeology>());
 }

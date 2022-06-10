@@ -265,6 +265,11 @@
     <ClCompile Include="src\HOI4World\Regions\RegionsFactory.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionsTests.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionTests.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleTests.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilderTests.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFileTests.cpp" />
@@ -893,6 +898,10 @@
     <ClInclude Include="src\HOI4World\Regions\RegionFactory.h" />
     <ClInclude Include="src\HOI4World\Regions\Regions.h" />
     <ClInclude Include="src\HOI4World\Regions\RegionsFactory.h" />
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\Role.h" />
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.h" />
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.h" />
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffect.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.h" />

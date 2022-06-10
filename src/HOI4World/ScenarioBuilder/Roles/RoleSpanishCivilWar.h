@@ -3,7 +3,7 @@
 
 #include "Role.h"
 
-class RoleSpanishCivilWar: Role
+class RoleSpanishCivilWar: public Role
 {
   public:
 	bool isValid(const HoI4::Country& country) const;

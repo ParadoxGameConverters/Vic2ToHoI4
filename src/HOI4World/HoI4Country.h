@@ -331,6 +331,9 @@ class Country
 
 	[[nodiscard]] std::mt19937& getGenerator() { return generator; }
 
+	static bool compareCountriesByIndustry(const std::shared_ptr<HoI4::Country> lhs,
+		 const std::shared_ptr<HoI4::Country> rhs);
+
   private:
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations);

@@ -1,1 +1,1 @@
-#include "ArsenalOfIdeology.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/RoleArsenalOfIdeology.h"
