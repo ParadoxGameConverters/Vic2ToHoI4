@@ -1114,6 +1114,15 @@
     <ClCompile Include="src\HOI4World\Map\SupplyZones.cpp">
       <Filter>src\HoI4World\Map</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.cpp">
+      <Filter>src\HoI4World\ScenarioBuilder</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.cpp">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.cpp">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2475,6 +2484,18 @@
     <ClInclude Include="src\HOI4World\Map\SupplyZones.h">
       <Filter>src\HoI4World\Map</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.h">
+      <Filter>src\HoI4World\ScenarioBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\Role.h">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.h">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.h">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
@@ -3052,6 +3073,12 @@
     </Filter>
     <Filter Include="src\V2World\World">
       <UniqueIdentifier>{8276dfc4-2cf3-46b5-a077-4f3a79e8ce3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ScenarioBuilder">
+      <UniqueIdentifier>{2c8895b2-5ed2-4cdb-bf5f-5a6df770afc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ScenarioBuilder\Roles">
+      <UniqueIdentifier>{27d10bc6-5338-4361-9ec1-b5e0f39e92fb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

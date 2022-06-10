@@ -242,6 +242,7 @@ class Country
 	[[nodiscard]] double getMilitaryFactories() const { return militaryFactories; }
 	[[nodiscard]] double getCivilianFactories() const { return civilianFactories; }
 	[[nodiscard]] double getDockyards() const { return dockyards; }
+	[[nodiscard]] double getIndustry() const { return dockyards + militaryFactories + civilianFactories; }
 	[[nodiscard]] int32_t getEmployedWorkers() const { return employedWorkers; }
 
 	[[nodiscard]] const Army& getArmy() const { return theArmy; }
