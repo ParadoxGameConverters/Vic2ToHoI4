@@ -1,6 +1,6 @@
 #include "src/HOI4World/Operations/OperationsFactory.h"
 #include "external/common_items/CommonRegexes.h"
-#include "OperationFactory.h"
+#include "src/HOI4World/Operations/OperationFactory.h"
 #include "external/common_items/ParserHelpers.h"
 
 

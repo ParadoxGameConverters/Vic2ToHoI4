@@ -20,7 +20,7 @@
 #include <algorithm>
 #include <cmath>
 
-#include "Characters/CharacterFactory.h"
+#include "src/HOI4World/Characters/CharacterFactory.h"
 
 
 HoI4::Country::Country(std::string tag,
