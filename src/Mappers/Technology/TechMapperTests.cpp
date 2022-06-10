@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/Mappers/Technology/TechMapper.h"
 #include "src/Mappers/Technology/TechMapperFactory.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

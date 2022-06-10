@@ -3,8 +3,8 @@
 
 
 
-#include "src/HOI4World/Ideas/IdeaGroup.h"
 #include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Ideas/IdeaGroup.h"
 #include <map>
 #include <set>
 #include <string>

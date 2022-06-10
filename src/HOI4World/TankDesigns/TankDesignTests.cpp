@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/TankDesigns/TankDesign.h"
 #include "src/HOI4World/TechnologiesBuilder.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

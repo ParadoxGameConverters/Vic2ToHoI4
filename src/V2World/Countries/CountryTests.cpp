@@ -1,3 +1,5 @@
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/Configuration.h"
 #include "src/V2World/Countries/CommonCountryDataBuilder.h"
 #include "src/V2World/Countries/Country.h"
@@ -10,8 +12,6 @@
 #include "src/V2World/Provinces/ProvinceBuilder.h"
 #include "src/V2World/States/StateDefinitionsBuilder.h"
 #include "src/V2World/States/StateLanguageCategoriesBuilder.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

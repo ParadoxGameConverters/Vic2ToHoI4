@@ -1,10 +1,10 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Technologies.h"
 #include "src/Mappers/Technology/ResearchBonusMapper.h"
 #include "src/Mappers/Technology/ResearchBonusMapperFactory.h"
 #include "src/Mappers/Technology/TechMapper.h"
 #include "src/Mappers/Technology/TechMapperFactory.h"
 #include "src/OutHoi4/OutTechnologies.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <memory>
 #include <sstream>
 

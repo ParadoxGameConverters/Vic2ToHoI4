@@ -1,8 +1,8 @@
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Issues/Issues.h"
 #include "src/V2World/Provinces/Province.h"
 #include "src/V2World/Provinces/ProvinceFactory.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

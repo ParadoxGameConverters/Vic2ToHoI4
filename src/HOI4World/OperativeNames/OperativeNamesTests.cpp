@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/OperativeNames/OperativeNames.h"
 #include "src/HOI4World/OperativeNames/OperativeNamesFactory.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

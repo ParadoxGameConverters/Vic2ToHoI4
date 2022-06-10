@@ -1,5 +1,5 @@
-#include "src/HOI4World/Leaders/Advisor.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Leaders/Advisor.h"
 #include <sstream>
 
 

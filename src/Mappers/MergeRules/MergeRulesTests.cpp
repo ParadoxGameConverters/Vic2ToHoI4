@@ -1,8 +1,8 @@
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/Configuration.h"
 #include "src/Mappers/MergeRules/MergeRules.h"
 #include "src/Mappers/MergeRules/MergeRulesFactory.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

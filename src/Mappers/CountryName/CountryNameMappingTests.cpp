@@ -1,5 +1,5 @@
-#include "src/Mappers/CountryName/CountryNameMappingFactory.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Mappers/CountryName/CountryNameMappingFactory.h"
 #include <sstream>
 
 

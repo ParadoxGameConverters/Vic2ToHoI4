@@ -1,5 +1,5 @@
-#include "src/HOI4World/Military/Airplane.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Military/Airplane.h"
 #include <sstream>
 
 

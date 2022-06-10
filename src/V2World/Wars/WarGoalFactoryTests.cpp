@@ -1,5 +1,5 @@
-#include "src/V2World/Wars/WarGoalFactory.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/V2World/Wars/WarGoalFactory.h"
 #include <sstream>
 
 

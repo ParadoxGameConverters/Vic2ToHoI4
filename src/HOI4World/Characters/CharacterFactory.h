@@ -3,6 +3,7 @@
 
 
 
+#include "external/common_items/ConvenientParser.h"
 #include "src/HOI4World/Characters/AdmiralDataFactory.h"
 #include "src/HOI4World/Characters/AdvisorDataFactory.h"
 #include "src/HOI4World/Characters/Character.h"
@@ -12,7 +13,6 @@
 #include "src/HOI4World/HoI4Localisation.h"
 #include "src/HOI4World/Names/Names.h"
 #include "src/Mappers/Graphics/GraphicsMapper.h"
-#include "external/common_items/ConvenientParser.h"
 
 
 

@@ -1,3 +1,5 @@
+#include "external/common_items/ConverterVersion.h"
+#include "external/common_items/Log.h"
 #include "src/Configuration.h"
 #include "src/HOI4World/HoI4World.h"
 #include "src/Mappers/Provinces/ProvinceMapper.h"
@@ -5,8 +7,6 @@
 #include "src/OutHoi4/OutMod.h"
 #include "src/V2World/World/World.h"
 #include "src/V2World/World/WorldFactory.h"
-#include "external/common_items/ConverterVersion.h"
-#include "external/common_items/Log.h"
 
 
 

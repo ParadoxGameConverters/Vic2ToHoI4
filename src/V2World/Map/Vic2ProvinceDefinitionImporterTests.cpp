@@ -1,7 +1,7 @@
-#include "src/V2World/Map/Vic2ProvinceDefinitionImporter.h"
-#include "src/V2World/Provinces/ProvinceBuilder.h"
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/V2World/Map/Vic2ProvinceDefinitionImporter.h"
+#include "src/V2World/Provinces/ProvinceBuilder.h"
 
 
 TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, ExceptionThrownForMissingDefinitions)

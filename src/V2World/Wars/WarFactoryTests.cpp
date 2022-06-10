@@ -1,5 +1,5 @@
-#include "src/V2World/Wars/WarFactory.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/V2World/Wars/WarFactory.h"
 #include <gmock/gmock-matchers.h>
 #include <sstream>
 

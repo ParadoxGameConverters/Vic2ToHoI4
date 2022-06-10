@@ -1,5 +1,5 @@
-#include "src/HOI4World/CountryCategories/CountryGrammarFactory.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/CountryCategories/CountryGrammarFactory.h"
 #include <gmock/gmock-matchers.h>
 
 

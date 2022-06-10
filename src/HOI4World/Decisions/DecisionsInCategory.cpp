@@ -1,7 +1,7 @@
 #include "src/HOI4World/Decisions/DecisionsInCategory.h"
 #include "external/common_items/CommonRegexes.h"
-#include "src/HOI4World/Events/Events.h"
 #include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/Events/Events.h"
 
 
 

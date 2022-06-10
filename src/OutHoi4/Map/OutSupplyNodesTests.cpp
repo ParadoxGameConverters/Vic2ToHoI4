@@ -1,6 +1,6 @@
 #include "external/common_items/OSCompatibilityLayer.h"
-#include "src/OutHoi4/Map/OutSupplyNodes.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/OutHoi4/Map/OutSupplyNodes.h"
 #include <fstream>
 
 

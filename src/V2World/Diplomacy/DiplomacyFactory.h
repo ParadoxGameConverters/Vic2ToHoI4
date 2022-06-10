@@ -3,9 +3,9 @@
 
 
 
+#include "external/common_items/ConvenientParser.h"
 #include "src/V2World/Diplomacy/AgreementFactory.h"
 #include "src/V2World/Diplomacy/Diplomacy.h"
-#include "external/common_items/ConvenientParser.h"
 #include <memory>
 
 

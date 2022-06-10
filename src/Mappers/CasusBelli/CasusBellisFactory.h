@@ -3,9 +3,9 @@
 
 
 
+#include "external/common_items/ConvenientParser.h"
 #include "src/Mappers/CasusBelli/CasusBelliMappingFactory.h"
 #include "src/Mappers/CasusBelli/CasusBellis.h"
-#include "external/common_items/ConvenientParser.h"
 #include <memory>
 
 

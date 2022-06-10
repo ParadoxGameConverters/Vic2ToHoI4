@@ -3,10 +3,10 @@
 
 
 
+#include "external/bitmap/bitmap_image.hpp"
 #include "external/common_items/Color.h"
 #include "src/Maps/ProvinceDefinitions.h"
 #include "src/Maps/ProvincePoints.h"
-#include "external/bitmap/bitmap_image.hpp"
 #include <map>
 #include <optional>
 #include <set>

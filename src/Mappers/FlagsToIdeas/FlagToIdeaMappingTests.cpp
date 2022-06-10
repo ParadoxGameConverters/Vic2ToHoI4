@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/Mappers/FlagsToIdeas/FlagToIdeaMapping.h"
 #include "src/Mappers/FlagsToIdeas/FlagToIdeaMappingFactory.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

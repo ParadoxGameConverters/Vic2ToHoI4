@@ -1,14 +1,14 @@
 #include "src/HOI4World/Map/SupplyZones.h"
 #include "external/common_items/CommonRegexes.h"
-#include "src/Configuration.h"
-#include "src/HOI4World/States/DefaultState.h"
-#include "src/HOI4World/States/HoI4State.h"
-#include "src/HOI4World/States/HoI4States.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
+#include "src/Configuration.h"
 #include "src/HOI4World/Map/SupplyArea.h"
 #include "src/HOI4World/Map/SupplyZone.h"
+#include "src/HOI4World/States/DefaultState.h"
+#include "src/HOI4World/States/HoI4State.h"
+#include "src/HOI4World/States/HoI4States.h"
 
 
 

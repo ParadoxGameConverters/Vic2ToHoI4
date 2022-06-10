@@ -1,8 +1,8 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Military/Leaders/Leader.h"
 #include "src/V2World/Military/Leaders/LeaderFactory.h"
 #include "src/V2World/Military/Leaders/Traits.h"
 #include "src/V2World/Military/Leaders/TraitsBuilder.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

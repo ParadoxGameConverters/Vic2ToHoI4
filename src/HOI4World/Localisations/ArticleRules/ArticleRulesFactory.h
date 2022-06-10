@@ -3,8 +3,8 @@
 
 
 
-#include "src/HOI4World/Localisations/ArticleRules/ArticleRules.h"
 #include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRules.h"
 #include <memory>
 #include <string>
 

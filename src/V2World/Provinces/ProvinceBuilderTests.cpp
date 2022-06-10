@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Pops/Pop.h"
 #include "src/V2World/Provinces/ProvinceBuilder.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

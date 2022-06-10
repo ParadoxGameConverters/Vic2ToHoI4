@@ -1,5 +1,5 @@
-#include "src/HOI4World/States/StateHistory.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/States/StateHistory.h"
 #include <sstream>
 
 

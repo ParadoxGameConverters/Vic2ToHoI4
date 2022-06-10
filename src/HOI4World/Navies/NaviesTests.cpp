@@ -1,10 +1,10 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Navies/Navies.h"
 #include "src/HOI4World/TechnologiesBuilder.h"
 #include "src/Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "src/Maps/ProvinceDefinitions.h"
 #include "src/OutHoi4/Navies/OutNavies.h"
 #include "src/V2World/Military/ArmyFactory.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

@@ -1,5 +1,5 @@
-#include "src/Mappers/FactionName/FactionNameMapperFactory.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Mappers/FactionName/FactionNameMapperFactory.h"
 #include <sstream>
 
 

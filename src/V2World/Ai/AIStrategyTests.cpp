@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Ai/AIStrategy.h"
 #include "src/V2World/Ai/AIStrategyFactory.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

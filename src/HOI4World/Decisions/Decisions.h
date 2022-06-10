@@ -3,20 +3,20 @@
 
 
 
-#include "src/HOI4World/Decisions/AgentRecruitmentDecisions.h"
+#include "external/common_items/ConvenientParser.h"
 #include "src/Configuration.h"
+#include "src/HOI4World/Decisions/AgentRecruitmentDecisions.h"
 #include "src/HOI4World/Decisions/DecisionsCategories.h"
 #include "src/HOI4World/Decisions/DecisionsInCategory.h"
 #include "src/HOI4World/Decisions/ExiledGovernmentsDecisions.h"
 #include "src/HOI4World/Decisions/ForeignInfluenceDecisions.h"
 #include "src/HOI4World/Decisions/GenericDecisions.h"
-#include "src/HOI4World/Events/Events.h"
-#include "src/HOI4World/States/DefaultState.h"
 #include "src/HOI4World/Decisions/NavalTreatyDecisions.h"
-#include "external/common_items/ConvenientParser.h"
 #include "src/HOI4World/Decisions/PoliticalDecisions.h"
 #include "src/HOI4World/Decisions/ResourceProspectingDecisions.h"
 #include "src/HOI4World/Decisions/StabilityWarSupportDecisions.h"
+#include "src/HOI4World/Events/Events.h"
+#include "src/HOI4World/States/DefaultState.h"
 #include <map>
 #include <set>
 #include <string>

@@ -1,7 +1,7 @@
-#include "src/Mappers/Provinces/ProvinceMapping.h"
-#include "src/Mappers/Provinces/ProvinceMappingFactory.h"
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Mappers/Provinces/ProvinceMapping.h"
+#include "src/Mappers/Provinces/ProvinceMappingFactory.h"
 #include <sstream>
 
 

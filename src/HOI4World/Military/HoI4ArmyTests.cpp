@@ -1,3 +1,5 @@
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Military/HoI4Army.h"
 #include "src/HOI4World/MilitaryMappings/MilitaryMappings.h"
 #include "src/HOI4World/States/HoI4State.h"
@@ -6,8 +8,6 @@
 #include "src/Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "src/V2World/Military/Army.h"
 #include "src/V2World/Military/ArmyFactory.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 TEST(HoI4World_Military_HoI4ArmyTests, ArmyStartsEmpty)

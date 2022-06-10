@@ -1,9 +1,9 @@
 #include "src/HOI4World/Ideas/Ideas.h"
 #include "external/common_items/CommonRegexes.h"
-#include "src/HOI4World/Ideas/IdeaGroup.h"
-#include "src/HOI4World/Ideas/IdeaUpdaters.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/Ideas/IdeaGroup.h"
+#include "src/HOI4World/Ideas/IdeaUpdaters.h"
 #include <fstream>
 
 

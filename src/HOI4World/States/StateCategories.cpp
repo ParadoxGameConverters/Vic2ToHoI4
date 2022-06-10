@@ -1,6 +1,6 @@
 #include "src/HOI4World/States/StateCategories.h"
-#include "src/Configuration.h"
 #include "external/common_items/OSCompatibilityLayer.h"
+#include "src/Configuration.h"
 #include "src/HOI4World/States/StateCategoryFile.h"
 #include <set>
 

@@ -3,10 +3,10 @@
 
 
 
+#include "external/common_items/ConvenientParser.h"
 #include "src/HOI4World/Characters/Character.h"
 #include "src/HOI4World/Characters/CharacterFactory.h"
 #include "src/HOI4World/Characters/CharactersCountryFactory.h"
-#include "external/common_items/ConvenientParser.h"
 #include <map>
 #include <string>
 

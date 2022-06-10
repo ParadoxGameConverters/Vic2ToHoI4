@@ -1,7 +1,7 @@
-#include "src/Mappers/CasusBelli/CasusBellis.h"
-#include "src/Mappers/CasusBelli/CasusBellisFactory.h"
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Mappers/CasusBelli/CasusBellis.h"
+#include "src/Mappers/CasusBelli/CasusBellisFactory.h"
 
 
 

@@ -1,8 +1,8 @@
 #include "src/Mappers/Ideology/IdeologyMapperFactory.h"
 #include "external/common_items/CommonRegexes.h"
-#include "src/Mappers/Ideology/IdeologyMappingFactory.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/ParserHelpers.h"
+#include "src/Mappers/Ideology/IdeologyMappingFactory.h"
 
 
 

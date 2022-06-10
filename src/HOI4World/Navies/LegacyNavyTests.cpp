@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Navies/LegacyNavy.h"
 #include "src/OutHoi4/Navies/OutLegacyNavy.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

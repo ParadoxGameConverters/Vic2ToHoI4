@@ -1,8 +1,8 @@
 #include "src/HOI4World/Localisations/ArticleRules/ArticleRulesFactory.h"
-#include "src/HOI4World/Localisations/ArticleRules/ArticleRuleBuilder.h"
-#include "src/HOI4World/Localisations/ArticleRules/ArticleRulesDefinition.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRuleBuilder.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRulesDefinition.h"
 
 
 

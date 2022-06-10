@@ -1,7 +1,7 @@
-#include "src/Mappers/Technology/ResearchBonusMapper.h"
-#include "src/Mappers/Technology/ResearchBonusMapperFactory.h"
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/Mappers/Technology/ResearchBonusMapper.h"
+#include "src/Mappers/Technology/ResearchBonusMapperFactory.h"
 
 
 

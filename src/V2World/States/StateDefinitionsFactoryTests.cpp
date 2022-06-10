@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/Configuration.h"
 #include "src/V2World/States/StateDefinitionsFactory.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

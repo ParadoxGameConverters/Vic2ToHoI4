@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Diplomacy/HoI4Relations.h"
 #include "src/V2World/Diplomacy/RelationsBuilder.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 

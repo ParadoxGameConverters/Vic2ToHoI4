@@ -1,7 +1,7 @@
 #include "src/HOI4World/Ideologies/IdeologyFile.h"
 #include "external/common_items/CommonRegexes.h"
-#include "src/HOI4World/Ideologies/Ideology.h"
 #include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/Ideologies/Ideology.h"
 
 
 

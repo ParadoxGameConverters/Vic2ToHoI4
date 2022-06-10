@@ -1,11 +1,11 @@
 #include "src/HOI4World/Names/Names.h"
 #include "external/common_items/CommonRegexes.h"
-#include "src/Configuration.h"
-#include "src/HOI4World/Names/CultureGroupNames.h"
-#include "src/HOI4World/Names/CultureNames.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
+#include "src/Configuration.h"
+#include "src/HOI4World/Names/CultureGroupNames.h"
+#include "src/HOI4World/Names/CultureNames.h"
 #include <ranges>
 
 

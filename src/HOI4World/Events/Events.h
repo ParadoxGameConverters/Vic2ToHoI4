@@ -3,10 +3,10 @@
 
 
 
+#include "external/common_items/ConvenientParser.h"
 #include "src/Configuration.h"
 #include "src/HOI4World/Events/Event.h"
 #include "src/Mappers/FactionName/FactionNameMapper.h"
-#include "external/common_items/ConvenientParser.h"
 #include "src/V2World/Politics/Party.h"
 #include <map>
 #include <set>

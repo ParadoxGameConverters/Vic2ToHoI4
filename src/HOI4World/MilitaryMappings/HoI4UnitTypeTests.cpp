@@ -1,5 +1,5 @@
-#include "src/HOI4World/MilitaryMappings/HoI4UnitType.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/MilitaryMappings/HoI4UnitType.h"
 #include <sstream>
 
 

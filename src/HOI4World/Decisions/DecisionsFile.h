@@ -3,8 +3,8 @@
 
 
 
-#include "src/HOI4World/Decisions/DecisionsInCategory.h"
 #include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Decisions/DecisionsInCategory.h"
 #include <string>
 #include <vector>
 

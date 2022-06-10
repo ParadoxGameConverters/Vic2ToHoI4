@@ -1,7 +1,7 @@
-#include "src/HOI4World/Characters/CharacterFactory.h"
-#include "src/HOI4World/Characters/Portrait.h"
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Characters/CharacterFactory.h"
+#include "src/HOI4World/Characters/Portrait.h"
 
 
 

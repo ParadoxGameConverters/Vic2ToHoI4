@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Diplomacy/Agreement.h"
 #include "src/V2World/Diplomacy/AgreementFactory.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 
 
 

@@ -1,5 +1,5 @@
-#include "src/HOI4World/Localisations/ArticleRules/ArticleRulesFactory.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRulesFactory.h"
 #include <sstream>
 
 

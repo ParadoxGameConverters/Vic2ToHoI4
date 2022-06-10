@@ -1,7 +1,7 @@
 #include "src/OutHoi4/OutLocalisation.h"
-#include "src/Configuration.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
+#include "src/Configuration.h"
 #include <fstream>
 
 

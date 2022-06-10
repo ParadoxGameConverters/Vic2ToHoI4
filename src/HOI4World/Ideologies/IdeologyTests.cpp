@@ -1,6 +1,6 @@
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Ideologies/Ideology.h"
 #include "src/OutHoi4/Ideologies/OutIdeology.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include <sstream>
 
 
