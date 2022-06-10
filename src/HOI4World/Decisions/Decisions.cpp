@@ -1,6 +1,6 @@
-#include "Decisions.h"
-#include "HOI4World/Events/Events.h"
-#include "Log.h"
+#include "src/HOI4World/Decisions/Decisions.h"
+#include "external/common_items/Log.h"
+#include "src/HOI4World/Events/Events.h"
 #include <regex>
 
 

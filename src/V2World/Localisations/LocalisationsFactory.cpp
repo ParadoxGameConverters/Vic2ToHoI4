@@ -1,7 +1,7 @@
-#include "LocalisationsFactory.h"
-#include "Configuration.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
+#include "src/V2World/Localisations/LocalisationsFactory.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "src/Configuration.h"
 #include <array>
 #include <fstream>
 

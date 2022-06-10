@@ -1,6 +1,6 @@
-#include "HOI4World/Localisations/ArticleRules/ArticleRule.h"
-#include "HOI4World/Localisations/ArticleRules/ArticleRuleBuilder.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRule.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRuleBuilder.h"
 
 
 

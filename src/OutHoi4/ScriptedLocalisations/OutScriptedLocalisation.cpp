@@ -1,4 +1,4 @@
-#include "OutScriptedLocalisation.h"
+#include "src/OutHoi4/ScriptedLocalisations/OutScriptedLocalisation.h"
 
 
 

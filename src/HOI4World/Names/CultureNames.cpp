@@ -1,7 +1,7 @@
-#include "CultureNames.h"
-#include "CommonRegexes.h"
-#include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
+#include "src/HOI4World/Names/CultureNames.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 

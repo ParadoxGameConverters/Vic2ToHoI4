@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/OperativeNames/OperativeNamesSet.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesSet.h"
 #include <string>
 
 

@@ -1,4 +1,4 @@
-#include "OutScriptedTrigger.h"
+#include "src/OutHoi4/ScriptedTriggers/OutScriptedTrigger.h"
 
 
 

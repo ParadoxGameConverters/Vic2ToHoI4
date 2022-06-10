@@ -3,8 +3,8 @@
 
 
 
-#include "Mappers/Technology/ResearchBonusMapper.h"
-#include "Mappers/Technology/TechMapper.h"
+#include "src/Mappers/Technology/ResearchBonusMapper.h"
+#include "src/Mappers/Technology/TechMapper.h"
 #include <map>
 #include <set>
 #include <string>

@@ -1,5 +1,5 @@
-#include "IntelligenceAgencyLogoMapping.h"
-#include "ParserHelpers.h"
+#include "src/HOI4World/IntelligenceAgencies/IntelligenceAgencyLogoMapping.h"
+#include "external/common_items/ParserHelpers.h"
 
 
 

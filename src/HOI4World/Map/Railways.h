@@ -3,13 +3,13 @@
 
 
 
-#include "HOI4World/Map/Hoi4Province.h"
-#include "HOI4World/Map/Railway.h"
-#include "ImpassableProvinces.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "Maps/MapData.h"
-#include "V2World/Provinces/Province.h"
-#include "V2World/States/State.h"
+#include "src/HOI4World/Map/Hoi4Province.h"
+#include "src/HOI4World/Map/ImpassableProvinces.h"
+#include "src/HOI4World/Map/Railway.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/Maps/MapData.h"
+#include "src/V2World/Provinces/Province.h"
+#include "src/V2World/States/State.h"
 #include <map>
 #include <memory>
 #include <vector>

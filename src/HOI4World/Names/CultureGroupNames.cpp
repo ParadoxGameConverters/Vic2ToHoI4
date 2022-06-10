@@ -1,7 +1,7 @@
-#include "CultureGroupNames.h"
-#include "CommonRegexes.h"
-#include "CultureNames.h"
-#include "ParserHelpers.h"
+#include "src/HOI4World/Names/CultureGroupNames.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/Names/CultureNames.h"
 
 
 

@@ -1,4 +1,4 @@
-#include "HoI4AIStrategy.h"
+#include "src/HOI4World/Diplomacy/HoI4AIStrategy.h"
 
 
 

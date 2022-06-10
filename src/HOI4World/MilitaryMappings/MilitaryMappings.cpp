@@ -1,7 +1,7 @@
-#include "MilitaryMappings.h"
-#include "DivisionTemplatesImporter.h"
-#include "SubstitutesImporter.h"
-#include "UnitMappings.h"
+#include "src/HOI4World/MilitaryMappings/MilitaryMappings.h"
+#include "src/HOI4World/MilitaryMappings/DivisionTemplatesImporter.h"
+#include "src/HOI4World/MilitaryMappings/SubstitutesImporter.h"
+#include "src/HOI4World/MilitaryMappings/UnitMappings.h"
 
 
 

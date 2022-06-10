@@ -3,8 +3,8 @@
 
 
 
-#include "Parser.h"
-#include "Region.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Regions/Region.h"
 #include <memory>
 
 

@@ -1,10 +1,10 @@
-#include "Configuration.h"
-#include "CommonFunctions.h"
-#include "CommonRegexes.h"
-#include "GameVersion.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
+#include "src/Configuration.h"
+#include "external/common_items/CommonFunctions.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/GameVersion.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "external/common_items/ParserHelpers.h"
 #include <fstream>
 #include <vector>
 

@@ -3,9 +3,9 @@
 
 
 
-#include "AI.h"
-#include "AIStrategyFactory.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/V2World/Ai/AI.h"
+#include "src/V2World/Ai/AIStrategyFactory.h"
 #include <memory>
 
 

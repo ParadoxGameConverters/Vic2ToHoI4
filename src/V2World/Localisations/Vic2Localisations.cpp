@@ -1,5 +1,5 @@
-#include "Vic2Localisations.h"
-#include "Log.h"
+#include "src/V2World/Localisations/Vic2Localisations.h"
+#include "external/common_items/Log.h"
 #include <regex>
 
 

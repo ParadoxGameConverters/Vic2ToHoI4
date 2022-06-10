@@ -1,6 +1,6 @@
-#include "OutOccupationLaws.h"
-#include "OSCompatibilityLayer.h"
-#include "OutOccupationLaw.h"
+#include "src/OutHoi4/OccupationLaws/OutOccupationLaws.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "src/OutHoi4/OccupationLaws/OutOccupationLaw.h"
 #include <fstream>
 
 

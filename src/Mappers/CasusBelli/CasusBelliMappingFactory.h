@@ -3,8 +3,8 @@
 
 
 
-#include "CasusBelliMapping.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Mappers/CasusBelli/CasusBelliMapping.h"
 
 
 

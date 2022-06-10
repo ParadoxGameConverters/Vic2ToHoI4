@@ -3,9 +3,9 @@
 
 
 
-#include "Parser.h"
-#include "ResearchBonusMapper.h"
-#include "ResearchBonusMappingFactory.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Mappers/Technology/ResearchBonusMapper.h"
+#include "src/Mappers/Technology/ResearchBonusMappingFactory.h"
 #include <memory>
 
 

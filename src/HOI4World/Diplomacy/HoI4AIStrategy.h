@@ -3,9 +3,9 @@
 
 
 
-#include "HOI4World/States/HoI4States.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "V2World/Ai/AI.h"
+#include "src/HOI4World/States/HoI4States.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/V2World/Ai/AI.h"
 #include <vector>
 
 

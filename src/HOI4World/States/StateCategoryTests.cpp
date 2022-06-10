@@ -1,5 +1,5 @@
-#include "HOI4World/States/StateCategory.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/States/StateCategory.h"
 #include <sstream>
 
 

@@ -1,7 +1,7 @@
-#include "OperationsFactory.h"
-#include "CommonRegexes.h"
-#include "OperationFactory.h"
-#include "ParserHelpers.h"
+#include "src/HOI4World/Operations/OperationsFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/Operations/OperationFactory.h"
 
 
 

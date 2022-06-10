@@ -1,7 +1,7 @@
-#include "StateCategoryFile.h"
-#include "CommonRegexes.h"
-#include "ParserHelpers.h"
-#include "StateCategory.h"
+#include "src/HOI4World/States/StateCategoryFile.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/States/StateCategory.h"
 
 
 

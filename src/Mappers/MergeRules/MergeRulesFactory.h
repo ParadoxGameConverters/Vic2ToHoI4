@@ -3,9 +3,9 @@
 
 
 
-#include "MergeRuleFactory.h"
-#include "MergeRules.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Mappers/MergeRules/MergeRuleFactory.h"
+#include "src/Mappers/MergeRules/MergeRules.h"
 #include <memory>
 
 

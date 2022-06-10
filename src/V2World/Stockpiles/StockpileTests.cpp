@@ -1,6 +1,6 @@
-#include "V2World/Stockpiles/StockpileFactory.h"
-#include "gmock/gmock-matchers.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/V2World/Stockpiles/StockpileFactory.h"
 
 
 

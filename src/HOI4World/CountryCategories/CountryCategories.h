@@ -3,8 +3,8 @@
 
 
 
-#include "HOI4World/HoI4Country.h"
-#include "Mappers/Country/CountryMapper.h"
+#include "src/HOI4World/HoI4Country.h"
+#include "src/Mappers/Country/CountryMapper.h"
 #include <map>
 #include <optional>
 #include <string>

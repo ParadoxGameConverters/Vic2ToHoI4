@@ -3,8 +3,8 @@
 
 
 
-#include "Parser.h"
-#include "TechMapping.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Mappers/Technology/TechMapping.h"
 #include <memory>
 
 

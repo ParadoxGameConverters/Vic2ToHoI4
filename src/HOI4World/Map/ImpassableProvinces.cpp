@@ -1,6 +1,6 @@
-#include "ImpassableProvinces.h"
-#include "HOI4World/States/DefaultState.h"
-#include "Log.h"
+#include "src/HOI4World/Map/ImpassableProvinces.h"
+#include "external/common_items/Log.h"
+#include "src/HOI4World/States/DefaultState.h"
 
 
 

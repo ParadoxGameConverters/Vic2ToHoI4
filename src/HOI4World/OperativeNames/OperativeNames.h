@@ -3,8 +3,8 @@
 
 
 
-#include "HOI4World/HoI4Country.h"
-#include "OperativeNamesSet.h"
+#include "src/HOI4World/HoI4Country.h"
+#include "src/HOI4World/OperativeNames/OperativeNamesSet.h"
 #include <map>
 #include <string>
 

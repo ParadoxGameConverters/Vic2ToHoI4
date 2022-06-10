@@ -3,11 +3,11 @@
 
 
 
-#include "DivisionType.h"
-#include "HOI4World/MilitaryMappings/MilitaryMappings.h"
-#include "HOI4World/States/HoI4States.h"
-#include "HOI4World/Technologies.h"
-#include "V2World/Military/Army.h"
+#include "src/HOI4World/Military/DivisionType.h"
+#include "src/HOI4World/MilitaryMappings/MilitaryMappings.h"
+#include "src/HOI4World/States/HoI4States.h"
+#include "src/HOI4World/Technologies.h"
+#include "src/V2World/Military/Army.h"
 #include <map>
 #include <string>
 #include <vector>

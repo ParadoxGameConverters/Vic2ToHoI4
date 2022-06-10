@@ -1,6 +1,6 @@
-#include "CultureGroups.h"
-#include "Configuration.h"
-#include "OSCompatibilityLayer.h"
+#include "src/V2World/Culture/CultureGroups.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "src/Configuration.h"
 
 
 

@@ -1,6 +1,6 @@
-#include "OutIdeas.h"
-#include "HOI4World/Ideas/IdeaGroup.h"
-#include "HOI4World/Ideas/Ideas.h"
+#include "src/OutHoi4/Ideas/OutIdeas.h"
+#include "src/HOI4World/Ideas/IdeaGroup.h"
+#include "src/HOI4World/Ideas/Ideas.h"
 #include <fstream>
 
 

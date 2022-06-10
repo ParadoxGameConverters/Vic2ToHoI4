@@ -1,4 +1,4 @@
-#include "OutIdeology.h"
+#include "src/OutHoi4/Ideologies/OutIdeology.h"
 
 
 

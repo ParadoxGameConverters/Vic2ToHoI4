@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/ShipTypes/LegacyShipVariant.h"
+#include "src/HOI4World/ShipTypes/LegacyShipVariant.h"
 #include <ostream>
 
 

@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/Ideologies/Ideology.h"
+#include "src/HOI4World/Ideologies/Ideology.h"
 #include <ostream>
 
 

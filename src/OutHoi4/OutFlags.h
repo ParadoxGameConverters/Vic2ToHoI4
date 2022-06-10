@@ -3,8 +3,8 @@
 
 
 
-#include "HOI4World/HoI4Country.h"
-#include "ModLoader/ModLoader.h"
+#include "external/common_items/ModLoader/ModLoader.h"
+#include "src/HOI4World/HoI4Country.h"
 #include <map>
 #include <string>
 

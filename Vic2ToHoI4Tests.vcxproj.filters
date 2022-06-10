@@ -3483,18 +3483,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\Mods\Dependencies.mod">
-      <Filter>TestFiles\Mods</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod">
-      <Filter>TestFiles\Mods</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod">
-      <Filter>TestFiles\Mods</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod">
-      <Filter>TestFiles\Mods</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\HoI4" />
     <CopyFileToFolders Include="data\test_files\HoI4.exe" />
     <CopyFileToFolders Include="data\test_files\v2game" />

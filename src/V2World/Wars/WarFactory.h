@@ -3,9 +3,9 @@
 
 
 
-#include "Parser.h"
-#include "War.h"
-#include "WarGoalFactory.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/V2World/Wars/War.h"
+#include "src/V2World/Wars/WarGoalFactory.h"
 #include <memory>
 
 

@@ -3,8 +3,8 @@
 
 
 
-#include "HOI4World/HoI4Country.h"
-#include "HOI4World/Ideas/Ideas.h"
+#include "src/HOI4World/HoI4Country.h"
+#include "src/HOI4World/Ideas/Ideas.h"
 #include <set>
 #include <string>
 

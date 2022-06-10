@@ -3,9 +3,9 @@
 
 
 
-#include "Configuration.h"
-#include "Inventions.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Configuration.h"
+#include "src/V2World/Technology/Inventions.h"
 #include <memory>
 #include <string>
 #include <vector>

@@ -3,10 +3,10 @@
 
 
 
-#include "Mappers/CasusBelli/CasusBellis.h"
-#include "Mappers/Country/CountryMapper.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "V2World/Wars/War.h"
+#include "src/Mappers/CasusBelli/CasusBellis.h"
+#include "src/Mappers/Country/CountryMapper.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/V2World/Wars/War.h"
 #include <optional>
 #include <set>
 #include <string>

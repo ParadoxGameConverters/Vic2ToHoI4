@@ -3,9 +3,9 @@
 
 
 
-#include "Parser.h"
-#include "TechMapper.h"
-#include "TechMappingFactory.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Mappers/Technology/TechMapper.h"
+#include "src/Mappers/Technology/TechMappingFactory.h"
 #include <memory>
 
 

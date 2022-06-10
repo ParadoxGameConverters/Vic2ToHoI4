@@ -3,8 +3,8 @@
 
 
 
-#include "DefaultState.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/States/DefaultState.h"
 #include <filesystem>
 #include <map>
 

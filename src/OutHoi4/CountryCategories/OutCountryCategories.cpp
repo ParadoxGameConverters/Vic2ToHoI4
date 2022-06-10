@@ -1,5 +1,5 @@
-#include "OutCountryCategories.h"
-#include "OutCountryCategory.h"
+#include "src/OutHoi4/CountryCategories/OutCountryCategories.h"
+#include "src/OutHoi4/CountryCategories/OutCountryCategory.h"
 #include <fstream>
 
 

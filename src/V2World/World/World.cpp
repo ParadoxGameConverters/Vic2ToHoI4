@@ -1,6 +1,6 @@
-#include "World.h"
-#include "Configuration.h"
-#include "V2World/Provinces/Province.h"
+#include "src/V2World/World/World.h"
+#include "src/Configuration.h"
+#include "src/V2World/Provinces/Province.h"
 #include <ranges>
 
 

@@ -2,7 +2,7 @@
 #define OUT_DECISION_H
 
 
-#include "HOI4World/Decisions/Decision.h"
+#include "src/HOI4World/Decisions/Decision.h"
 #include <ostream>
 
 

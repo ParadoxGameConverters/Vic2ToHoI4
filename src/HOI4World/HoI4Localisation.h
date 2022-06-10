@@ -3,17 +3,17 @@
 
 
 
-#include "Configuration.h"
-#include "Localisations/ArticleRules/ArticleRules.h"
-#include "Mappers/CountryName/CountryNameMapper.h"
-#include "Mappers/Government/GovernmentMapper.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "ScriptedLocalisations/ScriptedLocalisations.h"
-#include "States/HoI4State.h"
-#include "States/HoI4States.h"
-#include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/States/State.h"
-#include "V2World/States/StateDefinitions.h"
+#include "src/Configuration.h"
+#include "src/HOI4World/Localisations/ArticleRules/ArticleRules.h"
+#include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
+#include "src/HOI4World/States/HoI4State.h"
+#include "src/HOI4World/States/HoI4States.h"
+#include "src/Mappers/CountryName/CountryNameMapper.h"
+#include "src/Mappers/Government/GovernmentMapper.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/V2World/Localisations/Vic2Localisations.h"
+#include "src/V2World/States/State.h"
+#include "src/V2World/States/StateDefinitions.h"
 #include <map>
 #include <optional>
 #include <string>

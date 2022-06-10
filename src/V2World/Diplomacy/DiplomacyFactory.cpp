@@ -1,7 +1,7 @@
-#include "DiplomacyFactory.h"
-#include "AgreementFactory.h"
-#include "CommonRegexes.h"
-#include "Log.h"
+#include "src/V2World/Diplomacy/DiplomacyFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/Log.h"
+#include "src/V2World/Diplomacy/AgreementFactory.h"
 
 
 

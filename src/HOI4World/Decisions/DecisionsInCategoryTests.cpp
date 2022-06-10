@@ -1,6 +1,6 @@
-#include "HOI4World/Decisions/DecisionsInCategory.h"
-#include "HOI4World/Events/EventsBuilder.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Decisions/DecisionsInCategory.h"
+#include "src/HOI4World/Events/EventsBuilder.h"
 #include <sstream>
 
 

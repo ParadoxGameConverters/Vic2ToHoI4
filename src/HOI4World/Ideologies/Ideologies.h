@@ -3,9 +3,9 @@
 
 
 
-#include "Configuration.h"
-#include "Ideology.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Configuration.h"
+#include "src/HOI4World/Ideologies/Ideology.h"
 #include <map>
 #include <optional>
 #include <set>

@@ -1,6 +1,6 @@
-#include "OutStrategicRegions.h"
-#include "OSCompatibilityLayer.h"
-#include "OutStrategicRegion.h"
+#include "src/OutHoi4/Map/OutStrategicRegions.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "src/OutHoi4/Map/OutStrategicRegion.h"
 #include <ranges>
 
 

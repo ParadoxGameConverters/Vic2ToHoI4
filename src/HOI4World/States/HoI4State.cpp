@@ -1,9 +1,9 @@
-#include "HoI4State.h"
-#include "HOI4World/Map/CoastalProvinces.h"
-#include "Log.h"
-#include "StateCategories.h"
-#include "V2World/Provinces/Province.h"
-#include "V2World/States/State.h"
+#include "src/HOI4World/States/HoI4State.h"
+#include "external/common_items/Log.h"
+#include "src/HOI4World/Map/CoastalProvinces.h"
+#include "src/HOI4World/States/StateCategories.h"
+#include "src/V2World/Provinces/Province.h"
+#include "src/V2World/States/State.h"
 #include <ranges>
 
 

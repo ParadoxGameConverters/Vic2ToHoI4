@@ -3,10 +3,10 @@
 
 
 
-#include "Configuration.h"
-#include "CultureGroupFactory.h"
-#include "CultureGroups.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Configuration.h"
+#include "src/V2World/Culture/CultureGroupFactory.h"
+#include "src/V2World/Culture/CultureGroups.h"
 #include <memory>
 
 

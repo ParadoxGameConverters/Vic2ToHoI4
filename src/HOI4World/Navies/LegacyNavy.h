@@ -3,8 +3,8 @@
 
 
 
-#include "LegacyShip.h"
-#include "Navy.h"
+#include "src/HOI4World/Navies/LegacyShip.h"
+#include "src/HOI4World/Navies/Navy.h"
 #include <vector>
 
 

@@ -1,7 +1,7 @@
-#include "OccupationLawsFactory.h"
-#include "CommonRegexes.h"
-#include "OccupationLawFactory.h"
-#include "ParserHelpers.h"
+#include "src/HOI4World/OccupationLaws/OccupationLawsFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/OccupationLaws/OccupationLawFactory.h"
 
 
 

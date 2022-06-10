@@ -3,8 +3,8 @@
 
 
 
-#include "AIPeace.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Diplomacy/AIPeace.h"
 #include <string>
 #include <vector>
 

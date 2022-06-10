@@ -3,9 +3,9 @@
 
 
 
-#include "CountryGrammarRule.h"
-#include "CountryGrammarRuleFactory.h"
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/CountryCategories/CountryGrammarRule.h"
+#include "src/HOI4World/CountryCategories/CountryGrammarRuleFactory.h"
 #include <vector>
 
 

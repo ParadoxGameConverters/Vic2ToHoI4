@@ -1,7 +1,7 @@
-#include "CultureGroupsFactory.h"
-#include "CommonRegexes.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
+#include "src/V2World/Culture/CultureGroupsFactory.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/OSCompatibilityLayer.h"
 
 
 

@@ -1,5 +1,5 @@
-#include "CharactersCountryFactory.h"
-#include "CommonRegexes.h"
+#include "src/HOI4World/Characters/CharactersCountryFactory.h"
+#include "external/common_items/CommonRegexes.h"
 
 
 

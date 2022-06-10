@@ -1,5 +1,5 @@
-#include "AiPeacesUpdater.h"
-#include "Log.h"
+#include "src/HOI4World/Diplomacy/AiPeacesUpdater.h"
+#include "external/common_items/Log.h"
 
 
 

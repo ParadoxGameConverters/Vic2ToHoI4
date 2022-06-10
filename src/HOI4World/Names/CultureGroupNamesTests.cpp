@@ -1,5 +1,5 @@
-#include "HOI4World/Names/CultureGroupNames.h"
-#include "gtest/gtest.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Names/CultureGroupNames.h"
 #include <sstream>
 
 

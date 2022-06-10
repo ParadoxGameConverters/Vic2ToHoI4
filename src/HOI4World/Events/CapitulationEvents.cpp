@@ -1,4 +1,4 @@
-#include "CapitulationEvents.h"
+#include "src/HOI4World/Events/CapitulationEvents.h"
 #include <sstream>
 
 

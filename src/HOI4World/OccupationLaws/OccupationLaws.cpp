@@ -1,4 +1,4 @@
-#include "OccupationLaws.h"
+#include "src/HOI4World/OccupationLaws/OccupationLaws.h"
 #include <algorithm>
 
 

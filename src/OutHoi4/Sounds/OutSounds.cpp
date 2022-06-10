@@ -1,5 +1,5 @@
-#include "OutSounds.h"
-#include "OSCompatibilityLayer.h"
+#include "src/OutHoi4/Sounds/OutSounds.h"
+#include "external/common_items/OSCompatibilityLayer.h"
 
 #include <fstream>
 #include <vector>

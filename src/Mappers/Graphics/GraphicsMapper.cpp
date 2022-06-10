@@ -1,8 +1,8 @@
-#include "GraphicsMapper.h"
-#include "CommonFunctions.h"
-#include "GraphicsCultureGroup.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
+#include "src/Mappers/Graphics/GraphicsMapper.h"
+#include "external/common_items/CommonFunctions.h"
+#include "external/common_items/Log.h"
+#include "external/common_items/OSCompatibilityLayer.h"
+#include "src/Mappers/Graphics/GraphicsCultureGroup.h"
 #include <limits>
 #include <ranges>
 

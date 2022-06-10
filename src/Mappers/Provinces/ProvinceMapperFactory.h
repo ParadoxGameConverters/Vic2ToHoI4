@@ -3,10 +3,10 @@
 
 
 
-#include "Configuration.h"
-#include "Parser.h"
-#include "ProvinceMapper.h"
-#include "VersionedMappingsFactory.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/Configuration.h"
+#include "src/Mappers/Provinces/ProvinceMapper.h"
+#include "src/Mappers/Provinces/VersionedMappingsFactory.h"
 #include <memory>
 
 

@@ -1,7 +1,7 @@
-#include "LanguageReplacementRules.h"
-#include "CommonRegexes.h"
-#include "ParserHelpers.h"
-#include "StringUtils.h"
+#include "src/HOI4World/Localisations/LanguageReplacementRules.h"
+#include "external/common_items/CommonRegexes.h"
+#include "external/common_items/ParserHelpers.h"
+#include "external/common_items/StringUtils.h"
 
 
 

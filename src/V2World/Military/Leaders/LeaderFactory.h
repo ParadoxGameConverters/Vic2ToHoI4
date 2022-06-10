@@ -3,9 +3,9 @@
 
 
 
-#include "Leader.h"
-#include "Parser.h"
-#include "Traits.h"
+#include "external/common_items/ConvenientParser.h"
+#include "src/V2World/Military/Leaders/Leader.h"
+#include "src/V2World/Military/Leaders/Traits.h"
 #include <memory>
 
 

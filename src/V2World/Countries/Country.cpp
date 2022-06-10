@@ -1,10 +1,10 @@
-#include "Country.h"
-#include "Log.h"
-#include "V2World/Culture/CultureGroups.h"
-#include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/Pops/Pop.h"
-#include "V2World/Provinces/Province.h"
-#include "V2World/States/State.h"
+#include "src/V2World/Countries/Country.h"
+#include "external/common_items/Log.h"
+#include "src/V2World/Culture/CultureGroups.h"
+#include "src/V2World/Localisations/Vic2Localisations.h"
+#include "src/V2World/Pops/Pop.h"
+#include "src/V2World/Provinces/Province.h"
+#include "src/V2World/States/State.h"
 #include <ranges>
 
 

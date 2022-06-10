@@ -2,7 +2,7 @@
 #define HOI4_DEFAULT_STATES_H
 
 
-#include "Parser.h"
+#include "external/common_items/ConvenientParser.h"
 #include <set>
 #include <string>
 
