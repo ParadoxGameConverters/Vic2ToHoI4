@@ -1726,6 +1726,12 @@
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilderTests.cpp">
       <Filter>src\HOI4World\ScenarioBuilder</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp">
+      <Filter>src\HOI4World\ScenarioBuilder</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParserTests.cpp">
+      <Filter>src\HOI4World\ScenarioBuilder</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="TestFiles">
@@ -3512,6 +3518,9 @@
       <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.h">
+      <Filter>src\HOI4World\ScenarioBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h">
       <Filter>src\HOI4World\ScenarioBuilder</Filter>
     </ClInclude>
   </ItemGroup>

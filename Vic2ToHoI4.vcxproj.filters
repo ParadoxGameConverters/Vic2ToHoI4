@@ -1123,6 +1123,9 @@
     <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.cpp">
       <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp">
+      <Filter>src\HoI4World\ScenarioBuilder</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2495,6 +2498,9 @@
     </ClInclude>
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.h">
       <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h">
+      <Filter>src\HoI4World\ScenarioBuilder</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

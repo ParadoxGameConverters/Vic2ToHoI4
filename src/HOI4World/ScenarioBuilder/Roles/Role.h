@@ -10,9 +10,10 @@ class Role
 
 	[[nodiscard]] double getFit() const { return fit; };
 
+	// NOTE: const reference vs const ptr, any advantage/disadvantage between them?
 	virtual bool isValid(const HoI4::Country& country) const = 0;
 	virtual void calculateFit(const HoI4::Country& country) = 0;
-	virtual void apply(const std::shared_ptr<HoI4::Country> country_ptr) = 0;
+	virtual void apply(const HoI4::Country& country) = 0;
 
 	static bool roleComparator(const std::shared_ptr<Role> lhs, const std::shared_ptr<Role> rhs)
 	{
@@ -20,8 +21,8 @@ class Role
 	};
 
   protected:
-	double fit;		  // Score for how suited this role is for a given country
-	int instances;	  // # of times role is assigned
-	int instanceCap; // # of times role may be assigned
+	double fit;						 // Score for how suited this role is for a given country
+	unsigned short instances;	 // # of times role is assigned
+	unsigned short instanceCap; // # of times role may be assigned
 };
 #endif // ROLE

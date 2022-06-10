@@ -1,14 +1,16 @@
 #ifndef ROLE_ARSENAL_OF_IDEOLOGY_H
 #define ROLE_ARSENAL_OF_IDEOLOGY_H
 
-#include "Role.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/Role.h"
 
 class RoleArsenalOfIdeology: public Role
 {
   public:
+	RoleArsenalOfIdeology();
+
 	bool isValid(const HoI4::Country& country) const;
 	void calculateFit(const HoI4::Country& country);
-	void apply(const std::shared_ptr<HoI4::Country> country_ptr);
+	void apply(const HoI4::Country& country);
 
   private:
 };
