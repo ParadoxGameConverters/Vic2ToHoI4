@@ -10,6 +10,6 @@ class ScenarioBuilder
 
   private:
 	std::vector<std::shared_ptr<Role>> roles;
-	std::vector<std::shared_ptr<HoI4::Country>> countries;
+	std::multiset<std::shared_ptr<HoI4::Country>, decltype(&HoI4::Country::compareCountriesByIndustry)> countries;
 };
 #endif // SCENARIO_BUILDER
