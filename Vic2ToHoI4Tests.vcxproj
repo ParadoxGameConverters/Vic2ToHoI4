@@ -265,13 +265,6 @@
     <ClCompile Include="src\HOI4World\Regions\RegionsFactory.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionsTests.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionTests.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleTests.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilderTests.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParserTests.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFileTests.cpp" />
@@ -900,11 +893,6 @@
     <ClInclude Include="src\HOI4World\Regions\RegionFactory.h" />
     <ClInclude Include="src\HOI4World\Regions\Regions.h" />
     <ClInclude Include="src\HOI4World\Regions\RegionsFactory.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\Role.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffect.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.h" />
@@ -1697,11 +1685,6 @@
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\HoI4Files\Characters\ImportCharacters.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioBuilder\ScenarioBuilderRoles.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

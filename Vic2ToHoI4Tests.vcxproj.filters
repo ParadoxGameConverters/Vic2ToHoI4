@@ -1711,27 +1711,6 @@
     <ClCompile Include="src\HOI4World\Leaders\AdvisorTests.cpp">
       <Filter>src\HOI4World\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilderTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParserTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="TestFiles">
@@ -2132,12 +2111,6 @@
     </Filter>
     <Filter Include="external\googletest\googletest\src">
       <UniqueIdentifier>{1f21c069-213e-49a7-acbe-024a9a218217}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\HOI4World\ScenarioBuilder">
-      <UniqueIdentifier>{24066bc4-329f-4a83-8b96-f2724b6f33d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\HOI4World\ScenarioBuilder\Roles">
-      <UniqueIdentifier>{36b7acb9-a7c8-4ac1-8be5-105e4f72da03}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3508,21 +3481,6 @@
     <ClInclude Include="external\common_items\targa.h">
       <Filter>external\common_items</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\Role.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.h">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\HoI4" />
@@ -3649,6 +3607,5 @@
     <CopyFileToFolders Include="data\test_files\World\BlankWorldProvinces.bmp" />
     <CopyFileToFolders Include="data\test_files\World\mergeWorldProvinces.bmp" />
     <CopyFileToFolders Include="data\test_files\HoI4Files\Characters\ImportCharacters.txt" />
-    <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioBuilder\ScenarioBuilderRoles.txt" />
   </ItemGroup>
 </Project>
