@@ -1,21 +1,23 @@
 #ifndef SCENARIO_CONFIG_PARSER_H
 #define SCENARIO_CONFIG_PARSER_H
 
-#include "external/common_items/ConvenientParser.h"
-#include "src/HOI4World/ScenarioBuilder/ScenarioBuilder.h"
+#include "external/common_items/Parser.h"
+#include <set>
 
 namespace HoI4
 {
 
-class ScenarioBuilder::ConfigParser: commonItems::parser
+class ConfigParser: commonItems::parser
 {
   public:
-	ConfigParser(std::string fileName);
-	[[nodiscard]] std::vector<std::string> getPossibleRoles() const { return possibleRoles; };
+	ConfigParser(std::string fileName, bool preGenned = false);
+	[[nodiscard]] std::set<std::string> getPossibleRoles() const { return possibleRoles; };
 
   private:
 	void registerKeys();
-	std::vector<std::string> possibleRoles; // Roles marked as valid in config file
+	void registerKeysPreGenned();
+	std::set<std::string> possibleRoles; // Roles marked as valid in config file
+	std::map<std::string, std::string> roleAssignments; // Map of tag to pre-assigned role
 };
 } // namespace HoI4
 

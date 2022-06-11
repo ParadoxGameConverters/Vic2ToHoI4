@@ -2,17 +2,36 @@
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 
-HoI4::ScenarioBuilder::ConfigParser::ConfigParser(std::string filename)
+HoI4::ConfigParser::ConfigParser(std::string filename, bool preGenned)
 {
-	registerKeys();
-	parseFile(filename);
-	clearRegisteredKeywords();
+	if (!preGenned)
+	{
+		registerKeys();
+		parseFile(filename);
+		clearRegisteredKeywords();
+	}
+	else
+	{
+		registerKeysPreGenned();
+		parseFile(filename);
+		clearRegisteredKeywords();
+	}
 }
 
-void HoI4::ScenarioBuilder::ConfigParser::registerKeys()
+void HoI4::ConfigParser::registerKeys()
 {
 	registerKeyword("valid", [this](std::istream& theStream) {
-		possibleRoles = commonItems::getStrings(theStream);
+		const auto& vectorRoles = commonItems::getStrings(theStream);
+		possibleRoles = std::set<std::string>(vectorRoles.begin(), vectorRoles.end());
+	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+}
+
+void HoI4::ConfigParser::registerKeysPreGenned()
+{
+	registerRegex(R"(\w+)", [this](const std::string& tag, std::istream& theStream) {
+		possibleRoles.emplace(commonItems::getString(theStream));
+
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

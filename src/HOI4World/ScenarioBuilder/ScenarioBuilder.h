@@ -9,8 +9,6 @@ namespace HoI4
 class ScenarioBuilder
 {
   public:
-	class ConfigParser;
-
 	ScenarioBuilder() = default;
 	explicit ScenarioBuilder(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countryMap,
 		 const std::string fileName = "dude");
@@ -28,13 +26,13 @@ class ScenarioBuilder
 	CountriesByIndustryMultiSet countries;
 
 	// Construct and emplace a role of each class
-	void initialzeRoles();
+	void initialzeRoles(const std::set<std::string> possibleRoles);
 	// For a given country, update all role fit values and sort container
 	void recalculateRoleFits(const HoI4::Country& country);
 	// Apply role to country, no change to country if no valid match exists.
 	void applyRole(const HoI4::Country& country);
 
-	// TODO: config file and pre-gen file I/O
+	// TODO: pre-gen file Output in OutScenarioBuilder
 };
 
 } // namespace HoI4

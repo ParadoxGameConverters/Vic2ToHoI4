@@ -2139,9 +2139,6 @@
     <Filter Include="src\HOI4World\ScenarioBuilder\Roles">
       <UniqueIdentifier>{36b7acb9-a7c8-4ac1-8be5-105e4f72da03}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TestFiles\HoI4\ScenarioBuilder">
-      <UniqueIdentifier>{b8f0a990-6920-4a6c-be69-1aff34444c9e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="TestFiles\World\merge_nations.txt">
@@ -3652,8 +3649,6 @@
     <CopyFileToFolders Include="data\test_files\World\BlankWorldProvinces.bmp" />
     <CopyFileToFolders Include="data\test_files\World\mergeWorldProvinces.bmp" />
     <CopyFileToFolders Include="data\test_files\HoI4Files\Characters\ImportCharacters.txt" />
-    <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioBuilder\ScenarioBuilderRoles.txt">
-      <Filter>TestFiles\HoI4\ScenarioBuilder</Filter>
-    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioBuilder\ScenarioBuilderRoles.txt" />
   </ItemGroup>
 </Project>
