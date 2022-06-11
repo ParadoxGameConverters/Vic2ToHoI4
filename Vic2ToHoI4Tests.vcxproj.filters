@@ -1713,102 +1713,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="TestFiles">
-      <UniqueIdentifier>{89fd2637-c5e8-43c6-a0cb-e58df4a6b60e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mods">
-      <UniqueIdentifier>{255ad4b3-2739-44bd-bff1-e462fa70c6df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Localistations">
-      <UniqueIdentifier>{9af4313e-288c-4c9c-b878-89140e82a79a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Issues">
-      <UniqueIdentifier>{2771abc9-f9df-491a-a3e4-b68760ab5fa1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\ScriptedEffects">
-      <UniqueIdentifier>{b4f66916-2bcb-41a1-9a27-e2fd66607965}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Cultures">
-      <UniqueIdentifier>{2cb57e99-80d7-43ac-9027-e2feea6c5624}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Technology">
-      <UniqueIdentifier>{a76015ec-b05c-4a70-962b-011ab46efb40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Sounds">
-      <UniqueIdentifier>{39b42aae-dee0-4d4c-82e5-367972aed47b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Vic2Military">
-      <UniqueIdentifier>{7bb9f30d-6061-45e7-8b68-19722a2de932}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Leaders">
-      <UniqueIdentifier>{26ac2326-44f3-4983-b047-8afd40eca571}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Countries">
-      <UniqueIdentifier>{964697ec-e907-41d3-bff6-5943b6124a96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\CountryNames">
-      <UniqueIdentifier>{f70ef764-0aeb-4057-8ac1-6b5a15721bdf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\World">
-      <UniqueIdentifier>{5b35b687-24f0-4619-a18a-239de21b04fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers">
-      <UniqueIdentifier>{f128d030-674c-4180-a7ba-dc676a834561}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\Technology">
-      <UniqueIdentifier>{aad5af90-c048-426c-87e3-6ba4cbe1281a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\FlagsToIdeas">
-      <UniqueIdentifier>{db8286f7-f3b8-4abe-852c-c68eca054173}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\Provinces">
-      <UniqueIdentifier>{de357879-9c99-4ce0-887d-e1dbcf2fa99c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\Country">
-      <UniqueIdentifier>{0b677f95-f312-4a1a-94c3-fa7203f7f3a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\Ideology">
-      <UniqueIdentifier>{4fccec2b-87d5-41a0-969f-d4483c3cba3b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\Government">
-      <UniqueIdentifier>{f1edaffd-2ee1-4b2a-bbc9-859bc2e6fa34}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Vic2">
-      <UniqueIdentifier>{84046750-40c8-4338-a2cc-98fa563242c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Vic2\EU4ToVic2Data">
-      <UniqueIdentifier>{33a1fcff-c49d-4e1c-80b5-0bc49357bf9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\MergeRules">
-      <UniqueIdentifier>{877cabb1-d8cf-4b8f-96db-17cddf7c97e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\Graphics">
-      <UniqueIdentifier>{cee8fc55-67f7-4cbb-8589-93b2985d47d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\HoI4">
-      <UniqueIdentifier>{922aef6c-b8ea-4516-b0c8-f8a90089a692}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\HoI4\CountryCategories">
-      <UniqueIdentifier>{02d631f1-9b06-4668-a709-45d7c3ff2f21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\FactionName">
-      <UniqueIdentifier>{cb2830a6-3fc3-443f-bbed-bb6a5612ee3b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Mappers\CasusBelli">
-      <UniqueIdentifier>{deb28b9b-ffe5-4178-a08b-c8fcc624cb89}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Maps">
-      <UniqueIdentifier>{afc250e7-f9f8-426c-8026-0baf1832ac55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\Vic2\Map">
-      <UniqueIdentifier>{d233c4b9-7570-4cd1-ba23-9d2088973870}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="OutHoI4Tests">
-      <UniqueIdentifier>{b1891784-6f49-4deb-9c5f-6601424aa1f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestFiles\HoI4\Characters">
-      <UniqueIdentifier>{254437e9-83f9-40b0-9162-7516f1f481d6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{5696c9de-12b4-423c-832d-debf4f621936}</UniqueIdentifier>
     </Filter>
@@ -2112,10 +2016,106 @@
     <Filter Include="external\googletest\googletest\src">
       <UniqueIdentifier>{1f21c069-213e-49a7-acbe-024a9a218217}</UniqueIdentifier>
     </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{b67a5cdd-d333-49c9-949f-4d5750620695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files">
+      <UniqueIdentifier>{de1e1a2f-5af4-4cae-b377-18f8ce42b8de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Countries">
+      <UniqueIdentifier>{b57a0a33-1ac0-4736-b9ff-1cd14a14656b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\CountryNames">
+      <UniqueIdentifier>{f259f2b0-a16a-4140-8420-943eeff24d84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Cultures">
+      <UniqueIdentifier>{f9da7e4e-4e52-4c04-a0c1-c9dbf7ddac12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\HoI4Files">
+      <UniqueIdentifier>{3051bc43-2841-4651-8768-4b71cee9794a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\HoI4Files\Characters">
+      <UniqueIdentifier>{8c39fcce-305f-4a65-a5ed-17a6c3545698}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\HoI4Files\CountryCategories">
+      <UniqueIdentifier>{2d31f3c1-b928-48fa-a971-3af7ddf9bcf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Issues">
+      <UniqueIdentifier>{5f15dca8-d3e7-4633-8eb4-fe651fec3715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Leaders">
+      <UniqueIdentifier>{b5cae654-62f4-44fa-8f53-f9a51f24639a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Localistations">
+      <UniqueIdentifier>{9af4313e-288c-4c9c-b878-89140e82a79a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\World">
+      <UniqueIdentifier>{5b35b687-24f0-4619-a18a-239de21b04fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Vic2Military">
+      <UniqueIdentifier>{7bb9f30d-6061-45e7-8b68-19722a2de932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Technology">
+      <UniqueIdentifier>{a76015ec-b05c-4a70-962b-011ab46efb40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Sounds">
+      <UniqueIdentifier>{39b42aae-dee0-4d4c-82e5-367972aed47b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\ScriptedEffects">
+      <UniqueIdentifier>{b4f66916-2bcb-41a1-9a27-e2fd66607965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mods">
+      <UniqueIdentifier>{255ad4b3-2739-44bd-bff1-e462fa70c6df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Maps">
+      <UniqueIdentifier>{afc250e7-f9f8-426c-8026-0baf1832ac55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers">
+      <UniqueIdentifier>{f128d030-674c-4180-a7ba-dc676a834561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\Technology">
+      <UniqueIdentifier>{aad5af90-c048-426c-87e3-6ba4cbe1281a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\FlagsToIdeas">
+      <UniqueIdentifier>{db8286f7-f3b8-4abe-852c-c68eca054173}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\Provinces">
+      <UniqueIdentifier>{de357879-9c99-4ce0-887d-e1dbcf2fa99c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\Country">
+      <UniqueIdentifier>{0b677f95-f312-4a1a-94c3-fa7203f7f3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\Ideology">
+      <UniqueIdentifier>{4fccec2b-87d5-41a0-969f-d4483c3cba3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\Government">
+      <UniqueIdentifier>{f1edaffd-2ee1-4b2a-bbc9-859bc2e6fa34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\MergeRules">
+      <UniqueIdentifier>{877cabb1-d8cf-4b8f-96db-17cddf7c97e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\Graphics">
+      <UniqueIdentifier>{cee8fc55-67f7-4cbb-8589-93b2985d47d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\FactionName">
+      <UniqueIdentifier>{cb2830a6-3fc3-443f-bbed-bb6a5612ee3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Mappers\CasusBelli">
+      <UniqueIdentifier>{deb28b9b-ffe5-4178-a08b-c8fcc624cb89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Vic2World">
+      <UniqueIdentifier>{84046750-40c8-4338-a2cc-98fa563242c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Vic2World\EU4ToVic2Data">
+      <UniqueIdentifier>{33a1fcff-c49d-4e1c-80b5-0bc49357bf9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Vic2World\Map">
+      <UniqueIdentifier>{d233c4b9-7570-4cd1-ba23-9d2088973870}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="TestFiles\World\merge_nations.txt">
-      <Filter>TestFiles\World</Filter>
+      <Filter>data\test_files\World</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -3483,129 +3483,377 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\HoI4" />
-    <CopyFileToFolders Include="data\test_files\HoI4.exe" />
-    <CopyFileToFolders Include="data\test_files\v2game" />
-    <CopyFileToFolders Include="data\test_files\v2game.exe" />
-    <CopyFileToFolders Include="data\test_files\definition.csv" />
-    <CopyFileToFolders Include="data\test_files\Mods\EmptyModFile.mod" />
-    <CopyFileToFolders Include="data\test_files\Mods\Test.mod" />
-    <CopyFileToFolders Include="data\test_files\Mods\DirectoryMissing.mod" />
-    <CopyFileToFolders Include="data\test_files\Mods\DirectoryUnspecified.mod" />
-    <CopyFileToFolders Include="data\test_files\World\BlankWorld.v2" />
-    <CopyFileToFolders Include="data\test_files\World\TestWorld.v2" />
-    <CopyFileToFolders Include="data\test_files\World\MoveArmiesWorld.v2" />
-    <CopyFileToFolders Include="data\test_files\Mods\Dependencies.mod" />
-    <CopyFileToFolders Include="data\test_files\Mods\DependencyOne.mod" />
-    <CopyFileToFolders Include="data\test_files\Mods\DependencyTwo.mod" />
-    <CopyFileToFolders Include="data\test_files\Mods\Dependent.mod" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\empty_definition.csv" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\bad_line_definition.csv" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\missing_definition.csv" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\good_definition.csv" />
-    <CopyFileToFolders Include="data\test_files\World\moveArmiesProvinceDefinitions.csv" />
-    <CopyFileToFolders Include="data\test_files\World\moveArmiesProvinceAdjacencies.csv" />
-    <CopyFileToFolders Include="data\test_files\World\resolveBattlesProvinceAdjacencies.csv" />
-    <CopyFileToFolders Include="data\test_files\World\resolvebattlesProvinceDefinitions.csv" />
-    <CopyFileToFolders Include="data\test_files\World\TestWorldProvinceAdjacencies.csv" />
-    <CopyFileToFolders Include="data\test_files\World\TestWorldProvinceDefinitions.csv" />
-    <CopyFileToFolders Include="data\test_files\GameRulesEmpty.txt" />
-    <CopyFileToFolders Include="data\test_files\GameRules.txt" />
-    <CopyFileToFolders Include="data\test_files\IntelligenceAgencyLogos.txt" />
-    <CopyFileToFolders Include="data\test_files\EmptyOccupationLaws.txt" />
-    <CopyFileToFolders Include="data\test_files\OccupationLaws.txt" />
-    <CopyFileToFolders Include="data\test_files\generic_opertive_codenames.txt" />
-    <CopyFileToFolders Include="data\test_files\blank_operative_codenames.txt" />
-    <CopyFileToFolders Include="data\test_files\OperativeNamesMappings.txt" />
-    <CopyFileToFolders Include="data\test_files\vic2_vanilla_regions.txt" />
-    <CopyFileToFolders Include="data\test_files\vic2_mod_regions.txt" />
-    <CopyFileToFolders Include="data\test_files\blank_operations.txt" />
-    <CopyFileToFolders Include="data\test_files\operations.txt" />
-    <CopyFileToFolders Include="data\test_files\operations_to_update.txt" />
-    <CopyFileToFolders Include="data\test_files\v2gameMacApp" />
-    <CopyFileToFolders Include="data\test_files\v2gameMac" />
-    <CopyFileToFolders Include="data\test_files\v2gameMacOS" />
-    <CopyFileToFolders Include="data\test_files\Mods\dummy.txt" />
-    <CopyFileToFolders Include="data\test_files\Localisations\ArticleRules.txt" />
-    <CopyFileToFolders Include="data\test_files\Issues\emptyIssues.txt" />
-    <CopyFileToFolders Include="data\test_files\Issues\issues.txt" />
-    <CopyFileToFolders Include="data\test_files\regions.txt" />
-    <CopyFileToFolders Include="data\test_files\Localisations\StateCategories.txt" />
-    <CopyFileToFolders Include="data\test_files\ScriptedEffects\empty_effects_file.txt" />
-    <CopyFileToFolders Include="data\test_files\ScriptedEffects\effects_file.txt" />
-    <CopyFileToFolders Include="data\test_files\Cultures\BaseCultures.txt" />
-    <CopyFileToFolders Include="data\test_files\Cultures\ModOneCultures.txt" />
-    <CopyFileToFolders Include="data\test_files\Cultures\ModTwoCultures.txt" />
-    <CopyFileToFolders Include="data\test_files\Technology\BaseGameTech1.txt" />
-    <CopyFileToFolders Include="data\test_files\Technology\BaseGameTech2.txt" />
-    <CopyFileToFolders Include="data\test_files\Technology\ModTech3.txt" />
-    <CopyFileToFolders Include="data\test_files\Technology\ModTech4.txt" />
-    <CopyFileToFolders Include="data\test_files\Technology\ModTechOverride1.txt" />
-    <CopyFileToFolders Include="data\test_files\Technology\ModTechOverride2.txt" />
-    <CopyFileToFolders Include="data\test_files\Sounds\CultureToVoiceMappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Localisations\EmptyLocalisations.txt" />
-    <CopyFileToFolders Include="data\test_files\Localisations\BaseLocalisations.txt" />
-    <CopyFileToFolders Include="data\test_files\Localisations\ConverterLocalisations.txt" />
-    <CopyFileToFolders Include="data\test_files\Localisations\ModLocalisations.txt" />
-    <CopyFileToFolders Include="data\test_files\Vic2Military\traits.txt" />
-    <CopyFileToFolders Include="data\test_files\Leaders\HoI4CountryLeaders.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\CommonCountryTestData.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\CommonCountryModTestData.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\VanillaCommonCountriesData.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\TestCountryOne.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\TestCountryTwo.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\ModCommonCountriesData.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\TestCountryMod.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\CountryBlankCultures.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\TestCountryCultures.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\BlankTechnologyFile.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\TestTechnologyFile.txt" />
-    <CopyFileToFolders Include="data\test_files\Countries\BlankTraitsFile.txt" />
-    <CopyFileToFolders Include="data\test_files\CountryNames\CountryNamesMappings.txt" />
-    <CopyFileToFolders Include="data\test_files\World\countries.txt" />
-    <CopyFileToFolders Include="data\test_files\World\ONE.txt" />
-    <CopyFileToFolders Include="data\test_files\World\TWO.txt" />
-    <CopyFileToFolders Include="data\test_files\World\region.txt" />
-    <CopyFileToFolders Include="data\test_files\World\test_localisations.txt" />
-    <CopyFileToFolders Include="data\test_files\World\NON.txt" />
-    <CopyFileToFolders Include="data\test_files\World\NOT.txt" />
-    <CopyFileToFolders Include="data\test_files\World\DED.txt" />
-    <CopyFileToFolders Include="data\test_files\World\MergeWorld.v2" />
-    <CopyFileToFolders Include="data\test_files\launcher-settings.json" />
-    <CopyFileToFolders Include="data\test_files\Maps\adjacencies.csv" />
-    <CopyFileToFolders Include="data\test_files\Vic2World\Map\definition.csv" />
-    <CopyFileToFolders Include="data\test_files\World\BlankWorldProvinceAdjacencies.csv" />
-    <CopyFileToFolders Include="data\test_files\World\BlankWorldProvinceDefinitions.csv" />
-    <CopyFileToFolders Include="data\test_files\World\MergeWorldProvinceAdjacencies.csv" />
-    <CopyFileToFolders Include="data\test_files\World\MergeWorldProvinceDefinitions.csv" />
-    <CopyFileToFolders Include="data\test_files\World\merge_countries.txt" />
-    <CopyFileToFolders Include="data\test_files\World\FOO.txt" />
-    <CopyFileToFolders Include="data\test_files\World\BAR.txt" />
-    <CopyFileToFolders Include="data\test_files\World\ResolveBattlesWorld.v2" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Technology\tech_mappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Technology\research_bonus_mappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Localisations\grammar.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\vanilla_province_mappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\mod_province_mappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Country\country_mappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Ideology\IdeologyMappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Government\GovernmentMappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Vic2World\EU4ToVic2Data\botanical_expedition.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\MergeRules\merge_nations.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\Graphics\cultureGroupToGraphics.txt" />
-    <CopyFileToFolders Include="data\test_files\HoI4Files\CountryCategories\CountryGrammar.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\CasusBelli\casus_bellis_mappings.txt" />
-    <CopyFileToFolders Include="data\test_files\Mappers\FactionName\factions_mappings.txt" />
-    <CopyFileToFolders Include="data\test_files\ReadMe.txt" />
-    <CopyFileToFolders Include="data\test_files\Maps\nocsv.bmp" />
-    <CopyFileToFolders Include="data\test_files\Maps\provinces.bmp" />
-    <CopyFileToFolders Include="data\test_files\World\moveArmiesProvinces.bmp" />
-    <CopyFileToFolders Include="data\test_files\World\resolveBattlesProvinces.bmp" />
-    <CopyFileToFolders Include="data\test_files\World\TestWorldProvinces.bmp" />
-    <CopyFileToFolders Include="data\test_files\World\BlankWorldProvinces.bmp" />
-    <CopyFileToFolders Include="data\test_files\World\mergeWorldProvinces.bmp" />
-    <CopyFileToFolders Include="data\test_files\HoI4Files\Characters\ImportCharacters.txt" />
+    <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\BlankTechnologyFile.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\BlankTraitsFile.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\CommonCountryModTestData.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\CommonCountryTestData.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\CountryBlankCultures.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\ModCommonCountriesData.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\TestCountryCultures.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\TestCountryMod.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\TestCountryOne.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\TestCountryTwo.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\TestTechnologyFile.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Countries\VanillaCommonCountriesData.txt">
+      <Filter>data\test_files\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\CountryNames\CountryNamesMappings.txt">
+      <Filter>data\test_files\CountryNames</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Cultures\BaseCultures.txt">
+      <Filter>data\test_files\Cultures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Cultures\ModOneCultures.txt">
+      <Filter>data\test_files\Cultures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Cultures\ModTwoCultures.txt">
+      <Filter>data\test_files\Cultures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\HoI4Files\CountryCategories\CountryGrammar.txt">
+      <Filter>data\test_files\HoI4Files\CountryCategories</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\HoI4Files\Characters\ImportCharacters.txt">
+      <Filter>data\test_files\HoI4Files\Characters</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Issues\emptyIssues.txt">
+      <Filter>data\test_files\Issues</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Issues\issues.txt">
+      <Filter>data\test_files\Issues</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Leaders\HoI4CountryLeaders.txt">
+      <Filter>data\test_files\Leaders</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Localisations\ArticleRules.txt">
+      <Filter>data\test_files\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Localisations\BaseLocalisations.txt">
+      <Filter>data\test_files\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Localisations\ConverterLocalisations.txt">
+      <Filter>data\test_files\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Localisations\EmptyLocalisations.txt">
+      <Filter>data\test_files\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Localisations\grammar.txt">
+      <Filter>data\test_files\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Localisations\ModLocalisations.txt">
+      <Filter>data\test_files\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Localisations\StateCategories.txt">
+      <Filter>data\test_files\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\CasusBelli\casus_bellis_mappings.txt">
+      <Filter>data\test_files\Mappers\CasusBelli</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Country\country_mappings.txt">
+      <Filter>data\test_files\Mappers\Country</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\FactionName\factions_mappings.txt">
+      <Filter>data\test_files\Mappers\FactionName</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt">
+      <Filter>data\test_files\Mappers\FlagsToIdeas</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Government\GovernmentMappings.txt">
+      <Filter>data\test_files\Mappers\Government</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Graphics\cultureGroupToGraphics.txt">
+      <Filter>data\test_files\Mappers\Graphics</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Ideology\IdeologyMappings.txt">
+      <Filter>data\test_files\Mappers\Ideology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\MergeRules\merge_nations.txt">
+      <Filter>data\test_files\Mappers\MergeRules</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\bad_line_definition.csv">
+      <Filter>data\test_files\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\empty_definition.csv">
+      <Filter>data\test_files\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\good_definition.csv">
+      <Filter>data\test_files\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\missing_definition.csv">
+      <Filter>data\test_files\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\mod_province_mappings.txt">
+      <Filter>data\test_files\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Provinces\vanilla_province_mappings.txt">
+      <Filter>data\test_files\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Technology\research_bonus_mappings.txt">
+      <Filter>data\test_files\Mappers\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mappers\Technology\tech_mappings.txt">
+      <Filter>data\test_files\Mappers\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Maps\adjacencies.csv">
+      <Filter>data\test_files\Maps</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Maps\nocsv.bmp">
+      <Filter>data\test_files\Maps</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Maps\provinces.bmp">
+      <Filter>data\test_files\Maps</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mods\Dependencies.mod">
+      <Filter>data\test_files\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mods\DependencyOne.mod">
+      <Filter>data\test_files\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mods\DependencyTwo.mod">
+      <Filter>data\test_files\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mods\Dependent.mod">
+      <Filter>data\test_files\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mods\DirectoryMissing.mod">
+      <Filter>data\test_files\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mods\DirectoryUnspecified.mod">
+      <Filter>data\test_files\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mods\dummy.txt">
+      <Filter>data\test_files\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mods\EmptyModFile.mod">
+      <Filter>data\test_files\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Mods\Test.mod">
+      <Filter>data\test_files\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\ScriptedEffects\effects_file.txt">
+      <Filter>data\test_files\ScriptedEffects</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\ScriptedEffects\empty_effects_file.txt">
+      <Filter>data\test_files\ScriptedEffects</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Sounds\CultureToVoiceMappings.txt">
+      <Filter>data\test_files\Sounds</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Technology\BaseGameTech1.txt">
+      <Filter>data\test_files\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Technology\BaseGameTech2.txt">
+      <Filter>data\test_files\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Technology\ModTech3.txt">
+      <Filter>data\test_files\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Technology\ModTech4.txt">
+      <Filter>data\test_files\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Technology\ModTechOverride1.txt">
+      <Filter>data\test_files\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Technology\ModTechOverride2.txt">
+      <Filter>data\test_files\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
+      <Filter>data\test_files\Vic2World\EU4ToVic2Data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Vic2World\Map\definition.csv">
+      <Filter>data\test_files\Vic2World\Map</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Vic2Military\traits.txt">
+      <Filter>data\test_files\Vic2Military</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\BAR.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\BlankWorld.v2">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\BlankWorldProvinceAdjacencies.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\BlankWorldProvinceDefinitions.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\BlankWorldProvinces.bmp">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\countries.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\DED.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\FOO.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\merge_countries.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\MergeWorld.v2">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\MergeWorldProvinceAdjacencies.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\MergeWorldProvinceDefinitions.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\mergeWorldProvinces.bmp">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\moveArmiesProvinceAdjacencies.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\moveArmiesProvinceDefinitions.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\moveArmiesProvinces.bmp">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\MoveArmiesWorld.v2">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\NON.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\NOT.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\ONE.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\region.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\resolveBattlesProvinceAdjacencies.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\resolvebattlesProvinceDefinitions.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\resolveBattlesProvinces.bmp">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\ResolveBattlesWorld.v2">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\test_localisations.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\TestWorld.v2">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\TestWorldProvinceAdjacencies.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\TestWorldProvinceDefinitions.csv">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\TestWorldProvinces.bmp">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\World\TWO.txt">
+      <Filter>data\test_files\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\blank_operations.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\blank_operative_codenames.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\definition.csv">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\EmptyOccupationLaws.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\GameRules.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\GameRulesEmpty.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\generic_opertive_codenames.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\HoI4">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\HoI4.exe">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\IntelligenceAgencyLogos.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\launcher-settings.json">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\operations.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\OccupationLaws.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\operations_to_update.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\OperativeNamesMappings.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\ReadMe.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\regions.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\v2game">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\v2game.exe">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\v2gameMac">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\v2gameMacApp">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\v2gameMacOS">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\vic2_mod_regions.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\vic2_vanilla_regions.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
