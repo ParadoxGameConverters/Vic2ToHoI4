@@ -1,6 +1,8 @@
 #include "src/V2World/World/WorldFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/Log.h"
+#include "external/common_items/ModLoader/ModFilesystem.h"
+#include "external/common_items/ModLoader/ModLoader.h"
 #include "external/common_items/ParserHelpers.h"
 #include "src/Mappers/MergeRules/MergeRules.h"
 #include "src/Mappers/MergeRules/MergeRulesFactory.h"
@@ -25,7 +27,9 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 	 stateLanguageCategories(StateLanguageCategories::Factory().getCategories()),
 	 diplomacyFactory(std::make_unique<Diplomacy::Factory>())
 {
-	const auto [commonCountriesData_, allParties_] = importCommonCountriesData(theConfiguration);
+	const commonItems::ModFilesystem filesystem(theConfiguration.getVic2Path(), theConfiguration.getVic2Mods());
+
+	const auto [commonCountriesData_, allParties_] = ImportCommonCountriesData(filesystem);
 	commonCountriesData = commonCountriesData_;
 	allParties = allParties_;
 	countriesData = CountriesData::Factory().importCountriesData(theConfiguration);

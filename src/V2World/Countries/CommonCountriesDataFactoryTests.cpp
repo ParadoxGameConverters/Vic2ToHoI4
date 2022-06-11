@@ -1,117 +1,41 @@
+#include "external/common_items/ModLoader/ModFilesystem.h"
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
-#include "src/Configuration.h"
 #include "src/V2World/Countries/CommonCountriesDataFactory.h"
+#include "src/V2World/Politics/PartyBuilder.h"
 
 
 
-TEST(Vic2World_Countries_CommonCountriesDataTests, commonCountryDataDefaultsToEmpty)
+TEST(Vic2World_Countries_CommonCountriesDataTests, ItemsDefaultToEmpty)
 {
-	const auto& [commonCountryData, unused] = Vic2::importCommonCountriesData(
-		 *Configuration::Builder().setVic2Path("./missing_common_countries_data/").build());
+	const auto& [common_country_data, parties] =
+		 Vic2::ImportCommonCountriesData(commonItems::ModFilesystem("./missing_common_countries_data/", {}));
 
-	ASSERT_TRUE(commonCountryData.empty());
+	EXPECT_TRUE(common_country_data.empty());
+	EXPECT_TRUE(parties.empty());
 }
 
 
-TEST(Vic2World_Countries_CommonCountriesDataTests, commonCountryDataCanBeImported)
+TEST(Vic2World_Countries_CommonCountriesDataTests, ItemsCanBeImported)
 {
-	const auto& [commonCountryData, unused] = Vic2::importCommonCountriesData(
-		 *Configuration::Builder().setVic2Path("./vanilla_common_countries_data/").build());
+	const auto& [common_country_data, parties] =
+		 Vic2::ImportCommonCountriesData(commonItems::ModFilesystem("./vanilla_common_countries_data/", {}));
 
-	ASSERT_EQ(2, commonCountryData.size());
-	ASSERT_TRUE(commonCountryData.contains("ONE"));
-	ASSERT_EQ(2, commonCountryData.at("ONE").getParties().size());
-	ASSERT_EQ("ONE_conservative", commonCountryData.at("ONE").getParties()[0].getName());
-	ASSERT_EQ("ONE_liberal", commonCountryData.at("ONE").getParties()[1].getName());
-	ASSERT_TRUE(commonCountryData.contains("TWO"));
-	ASSERT_EQ(2, commonCountryData.at("TWO").getParties().size());
-	ASSERT_EQ("TWO_conservative", commonCountryData.at("TWO").getParties()[0].getName());
-	ASSERT_EQ("TWO_liberal", commonCountryData.at("TWO").getParties()[1].getName());
-}
+	EXPECT_THAT(common_country_data,
+		 testing::UnorderedElementsAre(testing::Pair("ONE",
+													  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{
+															.color_ = commonItems::Color(std::array<int, 3>{1, 2, 3}),
+															.parties_ = {*Vic2::Party::Builder{}.setName("ONE_conservative").Build(),
+																 *Vic2::Party::Builder{}.setName("ONE_liberal").Build()}})),
+			  testing::Pair("TWO",
+					Vic2::CommonCountryData(
+						 Vic2::CommonCountryDataOptions{.color_ = commonItems::Color(std::array<int, 3>{2, 4, 6}),
+							  .parties_ = {*Vic2::Party::Builder{}.setName("TWO_conservative").Build(),
+									*Vic2::Party::Builder{}.setName("TWO_liberal").Build()}}))));
 
-
-TEST(Vic2World_Countries_CommonCountriesDataTests, commonCountryDataCanBeImportedFromMods)
-{
-	const auto& [commonCountryData, unused] =
-		 Vic2::importCommonCountriesData(*Configuration::Builder()
-														  .setVic2Path("./vanilla_common_countries_data/")
-														  .addVic2Mod(Mod("MOD", "common_countries_mod"))
-														  .build());
-
-	ASSERT_EQ(1, commonCountryData.size());
-	ASSERT_TRUE(commonCountryData.contains("MOD"));
-	ASSERT_EQ(2, commonCountryData.at("MOD").getParties().size());
-	ASSERT_EQ("MOD_conservative", commonCountryData.at("MOD").getParties()[0].getName());
-	ASSERT_EQ("MOD_liberal", commonCountryData.at("MOD").getParties()[1].getName());
-}
-
-
-TEST(Vic2World_Countries_CommonCountriesDataTests, commonCountryDataDefaultsToVanillaForMissingMods)
-{
-	const auto& [commonCountryData, unused] =
-		 Vic2::importCommonCountriesData(*Configuration::Builder()
-														  .setVic2Path("./vanilla_common_countries_data/")
-														  .addVic2Mod(Mod("missing", "missing_mod"))
-														  .build());
-
-	ASSERT_EQ(2, commonCountryData.size());
-	ASSERT_TRUE(commonCountryData.contains("ONE"));
-	ASSERT_EQ(2, commonCountryData.at("ONE").getParties().size());
-	ASSERT_EQ("ONE_conservative", commonCountryData.at("ONE").getParties()[0].getName());
-	ASSERT_EQ("ONE_liberal", commonCountryData.at("ONE").getParties()[1].getName());
-	ASSERT_TRUE(commonCountryData.contains("TWO"));
-	ASSERT_EQ(2, commonCountryData.at("TWO").getParties().size());
-	ASSERT_EQ("TWO_conservative", commonCountryData.at("TWO").getParties()[0].getName());
-	ASSERT_EQ("TWO_liberal", commonCountryData.at("TWO").getParties()[1].getName());
-}
-
-
-TEST(Vic2World_Countries_CommonCountriesDataTests, partiesDefaultToEmpty)
-{
-	const auto& [unused, parties] = Vic2::importCommonCountriesData(
-		 *Configuration::Builder().setVic2Path("./missing_common_countries_data/").build());
-
-	ASSERT_TRUE(parties.empty());
-}
-
-
-TEST(Vic2World_Countries_CommonCountriesDataTests, partiesCanBeImported)
-{
-	const auto& [unused, parties] = Vic2::importCommonCountriesData(
-		 *Configuration::Builder().setVic2Path("./vanilla_common_countries_data/").build());
-
-	ASSERT_EQ(4, parties.size());
-	ASSERT_EQ("ONE_conservative", parties[0].getName());
-	ASSERT_EQ("ONE_liberal", parties[1].getName());
-	ASSERT_EQ("TWO_conservative", parties[2].getName());
-	ASSERT_EQ("TWO_liberal", parties[3].getName());
-}
-
-
-TEST(Vic2World_Countries_CommonCountriesDataTests, partiesCanBeImportedFromMods)
-{
-	const auto& [unused, parties] =
-		 Vic2::importCommonCountriesData(*Configuration::Builder()
-														  .setVic2Path("./vanilla_common_countries_data/")
-														  .addVic2Mod(Mod("the mod", "common_countries_mod/"))
-														  .build());
-
-	ASSERT_EQ(2, parties.size());
-	ASSERT_EQ("MOD_conservative", parties[0].getName());
-	ASSERT_EQ("MOD_liberal", parties[1].getName());
-}
-
-
-TEST(Vic2World_Countries_CommonCountriesDataTests, partiesDefaultToVanillaForMissingMods)
-{
-	const auto& [unused, parties] = Vic2::importCommonCountriesData(*Configuration::Builder()
-																								.setVic2Path("./vanilla_common_countries_data/")
-																								.addVic2Mod(Mod("missing", "missing_mod"))
-																								.build());
-
-	ASSERT_EQ(4, parties.size());
-	ASSERT_EQ("ONE_conservative", parties[0].getName());
-	ASSERT_EQ("ONE_liberal", parties[1].getName());
-	ASSERT_EQ("TWO_conservative", parties[2].getName());
-	ASSERT_EQ("TWO_liberal", parties[3].getName());
+	EXPECT_THAT(parties,
+		 testing::ElementsAre(*Vic2::Party::Builder{}.setName("ONE_conservative").Build(),
+			  *Vic2::Party::Builder{}.setName("ONE_liberal").Build(),
+			  *Vic2::Party::Builder{}.setName("TWO_conservative").Build(),
+			  *Vic2::Party::Builder{}.setName("TWO_liberal").Build()));
 }

@@ -1,7 +1,6 @@
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/Configuration.h"
-#include "src/V2World/Countries/CommonCountryDataBuilder.h"
 #include "src/V2World/Countries/Country.h"
 #include "src/V2World/Countries/CountryFactory.h"
 #include "src/V2World/Culture/CultureGroupsFactory.h"
@@ -32,7 +31,7 @@ TEST(Vic2World_Countries_CountryTests, TagIsAsSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -55,7 +54,7 @@ TEST(Vic2World_Countries_CountryTests, ColorIsFromCommonCountryData)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().setColor(testColor).Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{.color_ = testColor}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -76,7 +75,7 @@ TEST(Vic2World_Countries_CountryTests, HumanDefaultsToFalse)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -98,7 +97,7 @@ TEST(Vic2World_Countries_CountryTests, HumanCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -120,7 +119,7 @@ TEST(Vic2World_Countries_CountryTests, HumanNotSetWithoutYes)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -141,7 +140,7 @@ TEST(Vic2World_Countries_CountryTests, StatesDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -164,7 +163,7 @@ TEST(Vic2World_Countries_CountryTests, StatesCanBeImported)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -185,7 +184,7 @@ TEST(Vic2World_Countries_CountryTests, DoesNotHaveLandByDefault)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -206,7 +205,7 @@ TEST(Vic2World_Countries_CountryTests, HasLandWhenGivenProvinces)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -228,7 +227,7 @@ TEST(Vic2World_Countries_CountryTests, IsEmptyByDefault)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -249,7 +248,7 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenProvinces)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -271,7 +270,7 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenCores)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -293,7 +292,7 @@ TEST(Vic2World_Countries_CountryTests, CoresDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -314,7 +313,7 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeAdded)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -337,7 +336,7 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeReplaced)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -361,7 +360,7 @@ TEST(Vic2World_Countries_CountryTests, CapitalDefaultsToZero)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -383,7 +382,7 @@ TEST(Vic2World_Countries_CountryTests, CapitalCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -404,7 +403,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToNoCulture)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -426,7 +425,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -448,7 +447,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureWithQuotesCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -469,7 +468,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -499,7 +498,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromMultiplePopsAdd
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -530,7 +529,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureNotSetFromLargestCultureIfN
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -554,7 +553,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToNoCulture)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -578,7 +577,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupsSetFromPrimaryCulture
 			  *Configuration::Builder().setVic2Path("./countryTests/").build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -599,7 +598,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCulturGroupeNotSetFromLargestCultu
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -623,7 +622,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupCanBeSetFromLargestCul
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -653,7 +652,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupBecomesNoCultureIfUnse
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -676,7 +675,7 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -698,7 +697,7 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIncludePrimaryCulture)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -723,7 +722,7 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesCanBeAdded)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -748,7 +747,7 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIdentifiedAsAcceptedCultu
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -770,7 +769,7 @@ TEST(Vic2World_Countries_CountryTests, NonAcceptedCulturesNotIdentifiedAsAccepte
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -791,7 +790,7 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -816,7 +815,7 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromTe
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -839,7 +838,7 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromIn
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -861,7 +860,7 @@ TEST(Vic2World_Countries_CountryTests, RelationsDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -886,7 +885,7 @@ TEST(Vic2World_Countries_CountryTests, RelationsCanBeAdded)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -909,7 +908,7 @@ TEST(Vic2World_Countries_CountryTests, AiDefaultsToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -937,7 +936,7 @@ TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -973,7 +972,7 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -997,7 +996,7 @@ TEST(Vic2World_Countries_CountryTests, CivilizedDefaultsToFalse)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1019,7 +1018,7 @@ TEST(Vic2World_Countries_CountryTests, CivilizedCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1041,7 +1040,7 @@ TEST(Vic2World_Countries_CountryTests, CivilizedNotSetWithoutYes)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1062,7 +1061,7 @@ TEST(Vic2World_Countries_CountryTests, ArmiesDefaultsToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1087,7 +1086,7 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeAdded)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1113,7 +1112,7 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeModified)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -1141,7 +1140,7 @@ TEST(Vic2World_Countries_CountryTests, NaviesCanBeAdded)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1171,7 +1170,7 @@ TEST(Vic2World_Countries_CountryTests, TransportedArmiesCanBeAdded)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1194,7 +1193,7 @@ TEST(Vic2World_Countries_CountryTests, LeadersDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1221,7 +1220,7 @@ TEST(Vic2World_Countries_CountryTests, LeadersCanBeAdded)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  1.0,
@@ -1266,7 +1265,7 @@ TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsAreLimited)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.5F,
@@ -1289,7 +1288,7 @@ TEST(Vic2World_Countries_CountryTests, RevanchismDefaultsToZero)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1311,7 +1310,7 @@ TEST(Vic2World_Countries_CountryTests, RevanchismCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1332,7 +1331,7 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionDefaultsToZero)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1354,7 +1353,7 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1375,7 +1374,7 @@ TEST(Vic2World_Countries_CountryTests, BadBoyDefaultsToZero)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1397,7 +1396,7 @@ TEST(Vic2World_Countries_CountryTests, BadBoyCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1418,7 +1417,7 @@ TEST(Vic2World_Countries_CountryTests, FlagsDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1445,7 +1444,7 @@ TEST(Vic2World_Countries_CountryTests, FlagsCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1466,7 +1465,7 @@ TEST(Vic2World_Countries_CountryTests, GovernmentDefaultsToBlank)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1488,7 +1487,7 @@ TEST(Vic2World_Countries_CountryTests, GovernmentCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1509,7 +1508,7 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionDefaultsToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1536,7 +1535,7 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1568,7 +1567,7 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionLogsErrorOnBadInput)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1595,7 +1594,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetLogsWarning)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1628,7 +1627,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNonexistantThrowsException)
 			 {
 				 countryFactory.createCountry("TAG",
 					  theStream,
-					  *Vic2::CommonCountryData::Builder().Build(),
+					  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 					  {},
 					  *Vic2::StateLanguageCategories::Builder().build(),
 					  0.05F,
@@ -1659,7 +1658,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().setName("test_party").Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1681,7 +1680,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNotSetForRebel)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("REB",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().setName("test_party").Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1702,7 +1701,7 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1725,7 +1724,7 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().setName("test_party_one").Build(),
 												*Vic2::Party::Builder().setName("test_party_two").Build(),
 												*Vic2::Party::Builder().setName("test_party_three").Build()},
@@ -1755,7 +1754,7 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesLoggedIfUndefined)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().setName("test_party_one").Build(),
 												*Vic2::Party::Builder().setName("test_party_two").Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
@@ -1784,7 +1783,7 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBecomeRulingPartyIfUnset)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().setName("test_party_one").Build(),
 												*Vic2::Party::Builder().setName("test_party_two").Build(),
 												*Vic2::Party::Builder().setName("test_party_three").Build()},
@@ -1808,7 +1807,7 @@ TEST(Vic2World_Countries_CountryTests, LastElectionDefaultsToOneOneOne)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1830,7 +1829,7 @@ TEST(Vic2World_Countries_CountryTests, LastElectionCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1851,7 +1850,7 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1869,15 +1868,16 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesCanBeSet)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
+
+	std::map<std::string, std::vector<std::string>> unit_names = {
+		 {"dreadnought", std::vector<std::string>{"Azerbaijan", "Nader Shah"}},
+		 {"ironclad", std::vector<std::string>{"Erivan", "Nakchivan"}}};
 	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder()
-												 .addUnitNames("dreadnought", std::vector<std::string>{"Azerbaijan", "Nader Shah"})
-												 .addUnitNames("ironclad", std::vector<std::string>{"Erivan", "Nakchivan"})
-												 .Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{.unit_names_ = unit_names}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1903,7 +1903,7 @@ TEST(Vic2World_Countries_CountryTests, AtWarDefaultsToFalse)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1924,7 +1924,7 @@ TEST(Vic2World_Countries_CountryTests, AtWarCanBeSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -1946,7 +1946,7 @@ TEST(Vic2World_Countries_CountryTests, WarsDefaultToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -1967,7 +1967,7 @@ TEST(Vic2World_Countries_CountryTests, WarsCanBeAdded)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -1989,7 +1989,7 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCores)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2011,7 +2011,7 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCoreOnCapital)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2034,7 +2034,7 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalTrueWithCoreOnCapital)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2057,7 +2057,7 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersDefaultsToZero)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2100,7 +2100,7 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersComeFromStates)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2131,7 +2131,7 @@ TEST(Vic2World_Countries_CountryTests, StateCategoriesCanBeSet)
 			  Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 			  .createCountry("TAG",
 					theStream,
-					*Vic2::CommonCountryData::Builder().Build(),
+					Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 					std::vector{*Vic2::Party::Builder().Build()},
 					*Vic2::StateLanguageCategories::Builder().setCategories({{"TEST_STATE", "TEST_CATEGORY"}}).build(),
 					0.05F,
@@ -2161,7 +2161,7 @@ TEST(Vic2World_Countries_CountryTests, StateCategoriesLoggedWhenNotSet)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2184,7 +2184,7 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportDefaultsToZero)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2205,7 +2205,7 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportComesFromProvinces)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2231,7 +2231,7 @@ TEST(Vic2World_Countries_CountryTests, NameMissingByDefault)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2252,7 +2252,7 @@ TEST(Vic2World_Countries_CountryTests, NameComesFromLocalisations)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2281,7 +2281,7 @@ TEST(Vic2World_Countries_CountryTests, NameCanComeFromDomain)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2310,7 +2310,7 @@ TEST(Vic2World_Countries_CountryTests, NameFromDomainUpdatesLocalisations)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2338,7 +2338,7 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveMissingByDefault)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2359,15 +2359,15 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveComesFromLocalisations)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
 								  std::nullopt);
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Testy"),
-		 std::make_pair("spanish",
-			  "Irascible")}; // yes, I know that's a different meaning than what I was going for. The contrast amuses me.
+		 std::make_pair("spanish", "Irascible")}; // yes, I know that's a different meaning than what I was going for.
+																// The contrast amuses me.
 	const Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG_ADJ", nameInLanguages)};
 	const Vic2::Localisations localisations{keyToLocalisations, {}};
 	country->setLocalisationAdjectives(localisations);
@@ -2389,15 +2389,15 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveCanComeFromDomain)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
 								  std::nullopt);
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Testy"),
-		 std::make_pair("spanish",
-			  "Irascible")}; // yes, I know that's a different meaning than what I was going for. The contrast amuses me.
+		 std::make_pair("spanish", "Irascible")}; // yes, I know that's a different meaning than what I was going for.
+																// The contrast amuses me.
 	const Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG_ADJ", nameInLanguages)};
 	const Vic2::Localisations localisations{keyToLocalisations, {}};
 	country->setLocalisationAdjectives(localisations);
@@ -2428,7 +2428,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2451,7 +2451,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
-											  *Vic2::CommonCountryData::Builder().Build(),
+											  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 											  std::vector{*Vic2::Party::Builder().Build()},
 											  *Vic2::StateLanguageCategories::Builder().build(),
 											  0.05F,
@@ -2477,7 +2477,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2492,7 +2492,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
-											  *Vic2::CommonCountryData::Builder().Build(),
+											  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 											  std::vector{*Vic2::Party::Builder().Build()},
 											  *Vic2::StateLanguageCategories::Builder().build(),
 											  0.05F,
@@ -2522,7 +2522,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2537,7 +2537,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
-											  *Vic2::CommonCountryData::Builder().Build(),
+											  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 											  std::vector{*Vic2::Party::Builder().Build()},
 											  *Vic2::StateLanguageCategories::Builder().build(),
 											  0.05F,
@@ -2568,7 +2568,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInvention
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2587,7 +2587,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInvention
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
-											  *Vic2::CommonCountryData::Builder().Build(),
+											  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 											  std::vector{*Vic2::Party::Builder().Build()},
 											  *Vic2::StateLanguageCategories::Builder().build(),
 											  0.05F,
@@ -2612,7 +2612,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2631,7 +2631,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
-											  *Vic2::CommonCountryData::Builder().Build(),
+											  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 											  std::vector{*Vic2::Party::Builder().Build()},
 											  *Vic2::StateLanguageCategories::Builder().build(),
 											  0.05F,
@@ -2656,7 +2656,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2671,7 +2671,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
-											  *Vic2::CommonCountryData::Builder().Build(),
+											  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 											  std::vector{*Vic2::Party::Builder().Build()},
 											  *Vic2::StateLanguageCategories::Builder().build(),
 											  0.05F,
@@ -2698,7 +2698,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2713,7 +2713,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
-											  *Vic2::CommonCountryData::Builder().Build(),
+											  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 											  std::vector{*Vic2::Party::Builder().Build()},
 											  *Vic2::StateLanguageCategories::Builder().build(),
 											  0.05F,
@@ -2743,7 +2743,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryHasNoEffectOnSelf)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2774,7 +2774,7 @@ TEST(Vic2World_Countries_CountryTests, ProvincesCanBePlacedInStates)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2805,7 +2805,7 @@ TEST(Vic2World_Countries_CountryTests, MissingProvinceInStateLogged)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
-								  *Vic2::CommonCountryData::Builder().Build(),
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 								  std::vector{*Vic2::Party::Builder().Build()},
 								  *Vic2::StateLanguageCategories::Builder().build(),
 								  0.05F,
@@ -2832,7 +2832,7 @@ TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2847,7 +2847,7 @@ TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TAG",
 											  theStreamTwo,
-											  *Vic2::CommonCountryData::Builder().Build(),
+											  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 											  std::vector{*Vic2::Party::Builder().Build()},
 											  *Vic2::StateLanguageCategories::Builder().build(),
 											  0.05F,
@@ -2868,7 +2868,7 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2883,7 +2883,7 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
-											  *Vic2::CommonCountryData::Builder().Build(),
+											  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 											  std::vector{*Vic2::Party::Builder().Build()},
 											  *Vic2::StateLanguageCategories::Builder().build(),
 											  0.05F,
@@ -2904,7 +2904,7 @@ TEST(Vic2World_Countries_CountryTests, DynastyDefaultsToNullopt)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2925,7 +2925,7 @@ TEST(Vic2World_Countries_CountryTests, MonarchDefaultsToNullopt)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2946,7 +2946,7 @@ TEST(Vic2World_Countries_CountryTests, DynastyImportedFromCountryData)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2967,7 +2967,7 @@ TEST(Vic2World_Countries_CountryTests, MonarchImportedFromCountryData)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -2986,7 +2986,7 @@ TEST(Vic2World_Countries_CountryTests, GoodsStockpileDefaultsToEmpty)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  input,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
@@ -3009,7 +3009,7 @@ TEST(Vic2World_Countries_CountryTests, GoodsStockpileIsReturned)
 		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  input,
-										  *Vic2::CommonCountryData::Builder().Build(),
+										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
 										  std::vector{*Vic2::Party::Builder().Build()},
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,

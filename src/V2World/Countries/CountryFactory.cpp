@@ -159,8 +159,8 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 {
 	country = std::make_unique<Country>();
 	country->tag = theTag;
-	country->color = commonCountryData.getColor();
-	country->shipNames = commonCountryData.getUnitNames();
+	country->color = commonCountryData.GetColor();
+	country->shipNames = commonCountryData.GetUnitNames();
 
 	rulingPartyID = 0; // Bad value, but normal for Rebel faction.
 	parseStream(theStream);
