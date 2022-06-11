@@ -1126,6 +1126,9 @@
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp">
       <Filter>src\HoI4World\ScenarioBuilder</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.cpp">
+      <Filter>src\HoI4World\ScenarioBuilder\Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2502,6 +2505,9 @@
     <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h">
       <Filter>src\HoI4World\ScenarioBuilder</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.h">
+      <Filter>src\HoI4World\ScenarioBuilder\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
@@ -3085,6 +3091,9 @@
     </Filter>
     <Filter Include="src\HoI4World\ScenarioBuilder\Roles">
       <UniqueIdentifier>{27d10bc6-5338-4361-9ec1-b5e0f39e92fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ScenarioBuilder\Utilities">
+      <UniqueIdentifier>{6fb1b203-b095-47e7-9970-e929fb6a0fb4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 
 RoleArsenalOfIdeology::RoleArsenalOfIdeology()
 {
+	name = "ArsenalOfIdeology";
 	instanceCap = 1;
 }
 

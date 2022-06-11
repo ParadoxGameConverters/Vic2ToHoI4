@@ -1,5 +1,5 @@
-#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "external/googletest/googlemock/include/gmock/gmock.h"
+#include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/ScenarioBuilder/Roles/RoleArsenalOfIdeology.h"
 #include "src/HOI4World/ScenarioBuilder/Roles/RoleSpanishCivilWar.h"
 #include "src/HOI4World/ScenarioBuilder/ScenarioBuilder.h"
@@ -30,19 +30,25 @@ TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, initializeRoles)
 	expectedRoles.push_back(std::make_shared<RoleSpanishCivilWar>());
 	expectedRoles.push_back(std::make_shared<RoleArsenalOfIdeology>());
 
-	const HoI4::ScenarioBuilder builder;
+	std::map<std::string, std::shared_ptr<HoI4::Country>> empty;
+	const HoI4::ScenarioBuilder builder(empty, "");
 
-	EXPECT_THAT(builder.getRoles(), expectedRoles);
+	// NOTE: Troubles with EXPECT_THAT and shared ptrs
+	EXPECT_EQ(typeid(*builder.getRoles()[0]), typeid(*expectedRoles[0]));
+	EXPECT_EQ(typeid(*builder.getRoles()[1]), typeid(*expectedRoles[1]));
+	EXPECT_EQ(builder.getRoles().size(), 2);
 };
 
 TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, initializeRolesFromPreGen)
 {
-	// Still need to implement pre-gen
 	std::vector<std::shared_ptr<Role>> expectedRoles;
-	expectedRoles.push_back(std::make_shared<RoleSpanishCivilWar>());
 	expectedRoles.push_back(std::make_shared<RoleArsenalOfIdeology>());
 
-	const HoI4::ScenarioBuilder builder;
+	std::map<std::string, std::shared_ptr<HoI4::Country>> ghostItaly;
+	ghostItaly.emplace("ITA", std::shared_ptr<HoI4::Country>());
 
-	EXPECT_THAT(builder.getRoles(), expectedRoles);
+	const HoI4::ScenarioBuilder builder(ghostItaly, "example");
+
+	EXPECT_EQ(typeid(*builder.getRoles()[0]), typeid(*expectedRoles[0]));
+	EXPECT_EQ(builder.getRoles().size(), 1);
 };

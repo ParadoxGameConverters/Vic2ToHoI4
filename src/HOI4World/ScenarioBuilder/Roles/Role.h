@@ -6,9 +6,10 @@
 class Role
 {
   public:
-	Role(): fit(1), instances(0), instanceCap(0){};
+	Role() = default;
 
 	[[nodiscard]] double getFit() const { return fit; };
+	[[nodiscard]] std::string getName() const { return name; };
 
 	// NOTE: const reference vs const ptr, any advantage/disadvantage between them?
 	virtual bool isValid(const HoI4::Country& country) const = 0;
@@ -21,8 +22,10 @@ class Role
 	};
 
   protected:
-	double fit;						 // Score for how suited this role is for a given country
-	unsigned short instances;	 // # of times role is assigned
-	unsigned short instanceCap; // # of times role may be assigned
+	double fit = 1;					  // Score for how suited this role is for a given country
+	unsigned short instances = 0;	  // # of times role is assigned
+	unsigned short instanceCap = 0; // # of times role may be assigned
+
+	std::string name = "";
 };
 #endif // ROLE

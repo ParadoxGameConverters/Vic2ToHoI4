@@ -149,6 +149,7 @@
     <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffects.cpp" />
@@ -545,6 +546,7 @@
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.h" />
     <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.h" />
     <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h" />
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffect.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.h" />

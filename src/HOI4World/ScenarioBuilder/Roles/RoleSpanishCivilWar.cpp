@@ -2,6 +2,7 @@
 
 RoleSpanishCivilWar::RoleSpanishCivilWar()
 {
+	name = "SpanishCivilWar";
 	instanceCap = 1;
 }
 

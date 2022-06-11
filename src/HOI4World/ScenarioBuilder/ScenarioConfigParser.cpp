@@ -30,8 +30,9 @@ void HoI4::ConfigParser::registerKeys()
 void HoI4::ConfigParser::registerKeysPreGenned()
 {
 	registerRegex(R"(\w+)", [this](const std::string& tag, std::istream& theStream) {
-		possibleRoles.emplace(commonItems::getString(theStream));
-
+		const auto& roleName = commonItems::getString(theStream);
+		possibleRoles.emplace(roleName);
+		roleAssignments.emplace(tag, roleName);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

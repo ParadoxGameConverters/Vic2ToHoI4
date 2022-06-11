@@ -12,6 +12,7 @@ class ConfigParser: commonItems::parser
   public:
 	ConfigParser(std::string fileName, bool preGenned = false);
 	[[nodiscard]] std::set<std::string> getPossibleRoles() const { return possibleRoles; };
+	[[nodiscard]] std::map<std::string, std::string> getRoleAssignments() const { return roleAssignments; };
 
   private:
 	void registerKeys();
