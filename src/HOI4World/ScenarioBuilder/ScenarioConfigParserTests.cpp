@@ -4,7 +4,8 @@
 
 TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, ValidRolesStoredAllElseIgnored)
 {
-	const HoI4::ScenarioBuilder::ConfigParser parser("HoI4Files/ScenarioBuilder/ScenarioBuilderRoles.txt");
+	const HoI4::ScenarioBuilder::ConfigParser parser("configurables/ScenarioBuilderRoles.txt");
 
-	EXPECT_EQ(parser.getPossibleRoles().size(),2);
+	std::vector<std::string> roles{"SpanishCivilWar", "ArsenalOfIdeology"};
+	EXPECT_THAT(parser.getPossibleRoles(), roles);
 }

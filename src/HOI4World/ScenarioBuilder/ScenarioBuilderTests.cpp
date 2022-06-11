@@ -1,4 +1,6 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/RoleArsenalOfIdeology.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/RoleSpanishCivilWar.h"
 #include "src/HOI4World/ScenarioBuilder/ScenarioBuilder.h"
 
 TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, DefaultsAreAsSet)
@@ -19,8 +21,11 @@ TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, applyRole)
 	// Test applyRoleFxn
 }
 
-TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, InitializeRolesFromFile)
+TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, initializeRoles)
 {
-	// Read in test file ScenarioBuilderRoles.txt
-	// Expect that manually built vector matches file inputed one.
-}
+	std::vector<std::shared_ptr<Role>> expectedRoles;
+	expectedRoles.push_back(std::make_shared<RoleSpanishCivilWar>());
+	expectedRoles.push_back(std::make_shared<RoleArsenalOfIdeology>());
+
+	const HoI4::ScenarioBuilder builder;
+};
