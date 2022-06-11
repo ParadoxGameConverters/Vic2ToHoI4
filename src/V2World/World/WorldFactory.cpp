@@ -32,7 +32,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 	const auto [commonCountriesData_, allParties_] = ImportCommonCountriesData(filesystem);
 	commonCountriesData = commonCountriesData_;
 	allParties = allParties_;
-	countriesData = CountriesData::Factory().importCountriesData(theConfiguration);
+	countriesData = CountriesData::Factory().ImportCountriesData(filesystem);
 
 	registerKeyword("date", [this](std::istream& theStream) {
 		world->theDate = std::make_unique<date>(date(commonItems::singleString{theStream}.getString()));

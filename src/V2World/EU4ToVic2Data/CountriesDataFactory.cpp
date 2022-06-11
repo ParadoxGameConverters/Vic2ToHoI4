@@ -6,27 +6,21 @@
 
 Vic2::CountriesData::Factory::Factory()
 {
-	registerRegex(commonItems::catchallRegex, [this](const std::string& tag, std::istream& theStream) {
-		countriesData->countriesData.emplace(tag, *countryDataFactory.importCountryData(theStream));
+	parser_.registerRegex(commonItems::catchallRegex, [this](const std::string& tag, std::istream& theStream) {
+		countries_data_->countriesData.emplace(tag, *country_data_factory_.importCountryData(theStream));
 	});
 }
 
 
-std::unique_ptr<Vic2::CountriesData> Vic2::CountriesData::Factory::importCountriesData(
-	 const Configuration& configuration)
+std::unique_ptr<Vic2::CountriesData> Vic2::CountriesData::Factory::ImportCountriesData(
+	 const commonItems::ModFilesystem& mod_filesystem)
 {
-	countriesData = std::make_unique<CountriesData>();
+	countries_data_ = std::make_unique<CountriesData>();
 
-	for (const auto& mod: configuration.getVic2Mods())
+	if (const auto possible_file = mod_filesystem.GetActualFileLocation("/common/botanical_expedition.txt");
+		 possible_file)
 	{
-		const auto filename = mod.path + "/common/botanical_expedition.txt";
-		if (!commonItems::DoesFileExist(filename))
-		{
-			continue;
-		}
-
-		parseFile(filename);
+		parser_.parseFile(*possible_file);
 	}
-
-	return std::move(countriesData);
+	return std::move(countries_data_);
 }
