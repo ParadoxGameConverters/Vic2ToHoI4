@@ -15,6 +15,7 @@ void RoleArsenalOfIdeology::calculateFit(const HoI4::Country& country)
 {
 }
 
-void RoleArsenalOfIdeology::apply(const HoI4::Country& country)
+std::shared_ptr<ScenarioMod> RoleArsenalOfIdeology::apply(const HoI4::Country& country)
 {
+	return std::make_shared<ScenarioMod>();
 }

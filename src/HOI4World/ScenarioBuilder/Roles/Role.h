@@ -12,11 +12,9 @@ class Role
 	[[nodiscard]] double getFit() const { return fit; };
 	[[nodiscard]] std::string getName() const { return name; };
 
-	// NOTE: const reference vs const ptr, any advantage/disadvantage between them?
+	// NOTE: const reference vs ptr, any advantage/disadvantage between them?
 	virtual bool isValid(const HoI4::Country& country) const = 0;
 	virtual void calculateFit(const HoI4::Country& country) = 0;
-	// NOTE: the ScenarioMod is optional, any good way to use a ptr and still mark it as such?
-	// virtual std::optional<ScenarioMod> apply(const HoI4::Country& country) = 0;
 	virtual std::shared_ptr<ScenarioMod> apply(const HoI4::Country& country) = 0;
 
 	static bool roleComparator(const std::shared_ptr<Role> lhs, const std::shared_ptr<Role> rhs)
