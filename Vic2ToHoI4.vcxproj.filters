@@ -1117,17 +1117,23 @@
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.cpp">
       <Filter>src\HoI4World\ScenarioBuilder</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.cpp">
-      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.cpp">
-      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp">
       <Filter>src\HoI4World\ScenarioBuilder</Filter>
     </ClCompile>
     <ClCompile Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.cpp">
       <Filter>src\HoI4World\ScenarioBuilder\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.cpp">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles\ArsenalOfIdeology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.cpp">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles\BellyOfTheBeasts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.cpp">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles\SpanishCivilWar</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScenarioBuilder\OutScenario.cpp">
+      <Filter>src\OutHoi4\ScenarioBuilder</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2496,17 +2502,23 @@
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\Role.h">
       <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.h">
-      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.h">
-      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
-    </ClInclude>
     <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h">
       <Filter>src\HoI4World\ScenarioBuilder</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.h">
       <Filter>src\HoI4World\ScenarioBuilder\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.h">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles\ArsenalOfIdeology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.h">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles\BellyOfTheBeasts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.h">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles\SpanishCivilWar</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScenarioBuilder\OutScenario.h">
+      <Filter>src\OutHoi4\ScenarioBuilder</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3094,6 +3106,18 @@
     </Filter>
     <Filter Include="src\HoI4World\ScenarioBuilder\Utilities">
       <UniqueIdentifier>{6fb1b203-b095-47e7-9970-e929fb6a0fb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ScenarioBuilder\Roles\ArsenalOfIdeology">
+      <UniqueIdentifier>{57131962-1135-4b80-91c0-95627a9bd156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ScenarioBuilder\Roles\SpanishCivilWar">
+      <UniqueIdentifier>{5157175d-5ce0-42c2-a23d-22d9c29c99b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ScenarioBuilder\Roles\BellyOfTheBeasts">
+      <UniqueIdentifier>{d4ff2ab7-028a-45c0-8986-01a35d837163}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\ScenarioBuilder">
+      <UniqueIdentifier>{72aee3a4-2fd4-4e66-b1f1-9afe9e16cb78}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

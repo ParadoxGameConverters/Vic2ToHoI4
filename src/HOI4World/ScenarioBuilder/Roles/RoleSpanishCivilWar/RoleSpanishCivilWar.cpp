@@ -1,4 +1,4 @@
-#include "RoleSpanishCivilWar.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/RoleSpanishCivilWar/RoleSpanishCivilWar.h"
 
 RoleSpanishCivilWar::RoleSpanishCivilWar()
 {

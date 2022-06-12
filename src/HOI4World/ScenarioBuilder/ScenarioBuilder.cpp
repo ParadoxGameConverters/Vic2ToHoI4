@@ -1,6 +1,6 @@
 #include "src/HOI4World/ScenarioBuilder/ScenarioBuilder.h"
-#include "src/HOI4World/ScenarioBuilder/Roles/RoleArsenalOfIdeology.h"
-#include "src/HOI4World/ScenarioBuilder/Roles/RoleSpanishCivilWar.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/RoleArsenalOfIdeology/RoleArsenalOfIdeology.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/RoleSpanishCivilWar/RoleSpanishCivilWar.h"
 #include "src/HOI4World/ScenarioBuilder/ScenarioConfigParser.h"
 #include <filesystem>
 #include <ranges>

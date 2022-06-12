@@ -28,4 +28,4 @@ class Role
 
 	std::string name = "";
 };
-#endif // ROLE
+#endif // ROLE_H

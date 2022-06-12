@@ -1,7 +1,7 @@
 #include "external/googletest/googlemock/include/gmock/gmock.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
-#include "src/HOI4World/ScenarioBuilder/Roles/RoleArsenalOfIdeology.h"
-#include "src/HOI4World/ScenarioBuilder/Roles/RoleSpanishCivilWar.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/RoleArsenalOfIdeology/RoleArsenalOfIdeology.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/RoleSpanishCivilWar/RoleSpanishCivilWar.h"
 #include "src/HOI4World/ScenarioBuilder/ScenarioBuilder.h"
 
 TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, DefaultsAreAsSet)
@@ -16,12 +16,14 @@ TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, recalculateRoleFits)
 {
 	// Test recalculateRoleFitsFxn
 	// Order of vector should change after fxn call
+	// Requires roles with working calculateFit(country) fxns
 }
 
 TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, applyRole)
 {
 	// Test applyRoleFxn
 	// Passed country should be modified
+	// Need a role that acutally does something
 }
 
 TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, initializeRoles)

@@ -1,4 +1,4 @@
-#include "src/HOI4World/ScenarioBuilder/Roles/RoleArsenalOfIdeology.h"
+#include "src/HOI4World/ScenarioBuilder/Roles/RoleArsenalOfIdeology/RoleArsenalOfIdeology.h"
 
 RoleArsenalOfIdeology::RoleArsenalOfIdeology()
 {

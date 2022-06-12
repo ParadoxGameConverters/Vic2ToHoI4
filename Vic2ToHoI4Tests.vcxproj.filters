@@ -1723,15 +1723,6 @@
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParserTests.cpp">
       <Filter>src\HOI4World\ScenarioBuilder</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleTests.cpp">
       <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
     </ClCompile>
@@ -1740,6 +1731,27 @@
     </ClCompile>
     <ClCompile Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilitiesTests.cpp">
       <Filter>src\HOI4World\ScenarioBuilder\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.cpp">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles\ArsenalOfIdeology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeologyTests.cpp">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles\ArsenalOfIdeology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.cpp">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles\BellyOfTheBeasts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeastsTests.cpp">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles\BellyOfTheBeasts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.cpp">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles\SpanishCivilWar</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWarTests.cpp">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles\SpanishCivilWar</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScenarioBuilder\OutScenario.cpp">
+      <Filter>src\OutHoi4\ScenarioBuilder</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2153,6 +2165,18 @@
     </Filter>
     <Filter Include="src\HOI4World\ScenarioBuilder\Utilities">
       <UniqueIdentifier>{59940339-7bff-4b00-b972-6b32f65c9edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HOI4World\ScenarioBuilder\Roles\SpanishCivilWar">
+      <UniqueIdentifier>{5f82bcaf-eb90-46a4-b25d-949e7879e0c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HOI4World\ScenarioBuilder\Roles\ArsenalOfIdeology">
+      <UniqueIdentifier>{f606beab-a998-4ee4-90ec-2c3fd8aeb9ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HOI4World\ScenarioBuilder\Roles\BellyOfTheBeasts">
+      <UniqueIdentifier>{8e814606-f375-4a45-92f8-a7752a0cdc3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\ScenarioBuilder">
+      <UniqueIdentifier>{4c707548-d467-4bac-908e-a8e2f8aee4dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3532,17 +3556,20 @@
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\Role.h">
       <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
-    </ClInclude>
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.h">
       <Filter>src\HOI4World\ScenarioBuilder\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.h">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles\ArsenalOfIdeology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.h">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles\BellyOfTheBeasts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.h">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles\SpanishCivilWar</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScenarioBuilder\OutScenario.h">
+      <Filter>src\OutHoi4\ScenarioBuilder</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
