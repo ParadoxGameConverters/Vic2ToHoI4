@@ -2520,6 +2520,9 @@
     <ClInclude Include="src\OutHoi4\ScenarioBuilder\OutScenario.h">
       <Filter>src\OutHoi4\ScenarioBuilder</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\ScenarioMod.h">
+      <Filter>src\HoI4World\ScenarioBuilder\Roles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">

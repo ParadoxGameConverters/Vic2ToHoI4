@@ -26,7 +26,7 @@ HoI4::ScenarioBuilder::ScenarioBuilder(const std::map<std::string, std::shared_p
 			const auto& tag = assignment.first;
 			const auto& roleName = assignment.second;
 
-			applyRolePreGen(*countryMap.at(tag), getRoleByName(roleName));
+			applyRole(*countryMap.at(tag), getRoleByName(roleName));
 		}
 	}
 	else
@@ -81,16 +81,19 @@ void HoI4::ScenarioBuilder::applyRole(const HoI4::Country& country)
 	{
 		if (role->isValid(country))
 		{
-			role->apply(country);
+			applyRole(country, role);
 			countryToRoleAssignments.emplace(country.getTag(), role->getName());
 			continue;
 		}
 	}
 }
 
-void HoI4::ScenarioBuilder::applyRolePreGen(const HoI4::Country& country, const std::shared_ptr<Role> role)
+void HoI4::ScenarioBuilder::applyRole(const HoI4::Country& country, const std::shared_ptr<Role> role)
 {
-	role->apply(country);
+	if (auto possibleScenarioMod = role->apply(country); possibleScenarioMod)
+	{
+		scenarioMods.push_back(possibleScenarioMod);
+	}
 }
 
 const std::shared_ptr<Role> HoI4::ScenarioBuilder::getRoleByName(const std::string roleName)
