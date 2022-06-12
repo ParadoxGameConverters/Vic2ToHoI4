@@ -22,7 +22,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration, const commo
 	 theCultureGroups(CultureGroups::Factory().GetCultureGroups(mod_filesystem)),
 	 theIssues(Issues::Factory().GetIssues(mod_filesystem)),
 	 provinceFactory(std::make_unique<Province::Factory>(std::make_unique<PopFactory>(*theIssues))),
-	 theStateDefinitions(StateDefinitions::Factory().getStateDefinitions(theConfiguration)),
+	 theStateDefinitions(StateDefinitions::Factory().getStateDefinitions(mod_filesystem)),
 	 countryFactory(std::make_unique<Country::Factory>(theConfiguration, *theStateDefinitions, theCultureGroups)),
 	 stateLanguageCategories(StateLanguageCategories::Factory().getCategories()),
 	 diplomacyFactory(std::make_unique<Diplomacy::Factory>())
@@ -74,7 +74,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration, const commo
 
 
 std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configuration& theConfiguration,
-	 const Mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper, const commonItems::ModFilesystem& mod_filesystem)
 {
 	Log(LogLevel::Progress) << "15%";
 	Log(LogLevel::Info) << "*** Importing V2 save ***";
@@ -85,7 +85,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	wars.clear();
 
 	world = std::make_unique<World>();
-	world->theStateDefinitions = StateDefinitions::Factory().getStateDefinitions(theConfiguration);
+	world->theStateDefinitions = StateDefinitions::Factory().getStateDefinitions(mod_filesystem);
 	world->theLocalisations = Localisations::Factory().importLocalisations(theConfiguration);
 	parseFile(theConfiguration.getInputFile());
 	if (!world->diplomacy)

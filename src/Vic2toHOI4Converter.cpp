@@ -20,8 +20,8 @@ void ConvertV2ToHoI4(const commonItems::ConverterVersion& converterVersion)
 		 Mappers::ProvinceMapper::Factory(*the_configuration).importProvinceMapper(*the_configuration);
 
 	const commonItems::ModFilesystem filesystem(the_configuration->getVic2Path(), the_configuration->getVic2Mods());
-	const auto sourceWorld =
-		 Vic2::World::Factory(*the_configuration, filesystem).importWorld(*the_configuration, *provinceMapper);
+	const auto sourceWorld = Vic2::World::Factory(*the_configuration, filesystem)
+										  .importWorld(*the_configuration, *provinceMapper, filesystem);
 	const HoI4::World destWorld(*sourceWorld, *provinceMapper, *the_configuration);
 
 	output(destWorld,
