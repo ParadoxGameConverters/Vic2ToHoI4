@@ -20,7 +20,7 @@
 
 Vic2::World::Factory::Factory(const Configuration& theConfiguration, const commonItems::ModFilesystem& mod_filesystem):
 	 theCultureGroups(CultureGroups::Factory().GetCultureGroups(mod_filesystem)),
-	 theIssues(Issues::Factory().getIssues(theConfiguration.getVic2Path())),
+	 theIssues(Issues::Factory().GetIssues(mod_filesystem)),
 	 provinceFactory(std::make_unique<Province::Factory>(std::make_unique<PopFactory>(*theIssues))),
 	 theStateDefinitions(StateDefinitions::Factory().getStateDefinitions(theConfiguration)),
 	 countryFactory(std::make_unique<Country::Factory>(theConfiguration, *theStateDefinitions, theCultureGroups)),
