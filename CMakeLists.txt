@@ -709,8 +709,6 @@ configure_file("data/test_files/Countries/TestTechnologyFile.txt" "${TEST_OUTPUT
 configure_file("data/test_files/Countries/VanillaCommonCountriesData.txt" "${TEST_OUTPUT_DIRECTORY}/vanilla_common_countries_data/common/countries.txt" COPYONLY)
 configure_file("data/test_files/CountryNames/CountryNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/CountryNamesMappings.txt" COPYONLY)
 configure_file("data/test_files/Cultures/BaseCultures.txt" "${TEST_OUTPUT_DIRECTORY}/BaseCultures/common/cultures.txt" COPYONLY)
-configure_file("data/test_files/Cultures/ModOneCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModOne/common/cultures.txt" COPYONLY)
-configure_file("data/test_files/Cultures/ModTwoCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModTwo/common/cultures.txt" COPYONLY)
 configure_file("data/test_files/EmptyOccupationLaws.txt" "${TEST_OUTPUT_DIRECTORY}/EmptyOccupationLaws/common/occupation_laws/occupation_laws.txt" COPYONLY)
 configure_file("data/test_files/GameRules.txt" "${TEST_OUTPUT_DIRECTORY}/GameRules.txt" COPYONLY)
 configure_file("data/test_files/GameRulesEmpty.txt" "${TEST_OUTPUT_DIRECTORY}/GameRulesEmpty.txt" COPYONLY)

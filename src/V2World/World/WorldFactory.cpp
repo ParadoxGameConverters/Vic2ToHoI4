@@ -18,8 +18,8 @@
 
 
 
-Vic2::World::Factory::Factory(const Configuration& theConfiguration):
-	 theCultureGroups(CultureGroups::Factory().getCultureGroups(theConfiguration)),
+Vic2::World::Factory::Factory(const Configuration& theConfiguration, const commonItems::ModFilesystem& mod_filesystem):
+	 theCultureGroups(CultureGroups::Factory().GetCultureGroups(mod_filesystem)),
 	 theIssues(Issues::Factory().getIssues(theConfiguration.getVic2Path())),
 	 provinceFactory(std::make_unique<Province::Factory>(std::make_unique<PopFactory>(*theIssues))),
 	 theStateDefinitions(StateDefinitions::Factory().getStateDefinitions(theConfiguration)),
@@ -27,12 +27,10 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 	 stateLanguageCategories(StateLanguageCategories::Factory().getCategories()),
 	 diplomacyFactory(std::make_unique<Diplomacy::Factory>())
 {
-	const commonItems::ModFilesystem filesystem(theConfiguration.getVic2Path(), theConfiguration.getVic2Mods());
-
-	const auto [commonCountriesData_, allParties_] = ImportCommonCountriesData(filesystem);
+	const auto [commonCountriesData_, allParties_] = ImportCommonCountriesData(mod_filesystem);
 	commonCountriesData = commonCountriesData_;
 	allParties = allParties_;
-	countriesData = CountriesData::Factory().ImportCountriesData(filesystem);
+	countriesData = CountriesData::Factory().ImportCountriesData(mod_filesystem);
 
 	registerKeyword("date", [this](std::istream& theStream) {
 		world->theDate = std::make_unique<date>(date(commonItems::singleString{theStream}.getString()));

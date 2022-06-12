@@ -3528,12 +3528,6 @@
     <CopyFileToFolders Include="data\test_files\Cultures\BaseCultures.txt">
       <Filter>data\test_files\Cultures</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Cultures\ModOneCultures.txt">
-      <Filter>data\test_files\Cultures</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Cultures\ModTwoCultures.txt">
-      <Filter>data\test_files\Cultures</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\HoI4Files\CountryCategories\CountryGrammar.txt">
       <Filter>data\test_files\HoI4Files\CountryCategories</Filter>
     </CopyFileToFolders>

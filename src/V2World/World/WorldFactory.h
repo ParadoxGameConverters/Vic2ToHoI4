@@ -24,7 +24,7 @@ namespace Vic2
 class World::Factory: commonItems::parser
 {
   public:
-	explicit Factory(const Configuration& theConfiguration);
+	explicit Factory(const Configuration& theConfiguration, const commonItems::ModFilesystem& mod_filesystem);
 	std::unique_ptr<World> importWorld(const Configuration& theConfiguration,
 		 const Mappers::ProvinceMapper& provinceMapper);
 

@@ -1,9 +1,9 @@
-#ifndef CULTURE_GROUP_FACTORY_H
-#define CULTURE_GROUP_FACTORY_H
+#ifndef SRC_V2WORLD_CULTURE_CULTURE_GROUP_FACTORY_H
+#define SRC_V2WORLD_CULTURE_CULTURE_GROUP_FACTORY_H
 
 
 
-#include "external/common_items/ConvenientParser.h"
+#include "external/common_items/Parser.h"
 #include <string>
 #include <vector>
 
@@ -27,4 +27,4 @@ class CultureGroupFactory: commonItems::parser
 
 
 
-#endif // CULTURE_GROUP_FACTORY_H
+#endif // SRC_V2WORLD_CULTURE_CULTURE_GROUP_FACTORY_H
