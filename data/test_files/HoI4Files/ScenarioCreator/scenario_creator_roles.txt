@@ -1,0 +1,9 @@
+# Cut roles between valid and invalid to select the roles considered by ScenarioCreator
+
+valid = {
+    SpanishCivilWar
+    ArsenalOfIdeology
+}
+invalid = {
+    BellyOfTheBeasts
+}

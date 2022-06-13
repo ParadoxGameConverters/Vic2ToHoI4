@@ -1711,50 +1711,80 @@
     <ClCompile Include="src\HOI4World\Leaders\AdvisorTests.cpp">
       <Filter>src\HOI4World\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\ScenarioConfigParser.cpp">
+      <Filter>src\HOI4World\ScenarioCreator</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilderTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\ScenarioConfigParserTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\ScenarioCreator.cpp">
+      <Filter>src\HOI4World\ScenarioCreator</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParserTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\ScenarioCreatorTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Utilities\ScenarioUtilities.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Utilities</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Utilities\ScenarioUtilitiesTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilitiesTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Utilities</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles\ArsenalOfIdeology</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleTestShell.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeologyTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles\ArsenalOfIdeology</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\ScenarioModTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles\BellyOfTheBeasts</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWar.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeastsTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles\BellyOfTheBeasts</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles\SpanishCivilWar</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWarTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles\SpanishCivilWar</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\RoleSpanishCivilWarTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
     </ClCompile>
-    <ClCompile Include="src\OutHoi4\ScenarioBuilder\OutScenario.cpp">
-      <Filter>src\OutHoi4\ScenarioBuilder</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\ModBellyOfTheBeasts.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\BellyOfTheBeasts</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\ScenarioModTests.cpp">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\ModBellyOfTheBeastsTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\BellyOfTheBeasts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\BellyOfTheBeasts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeastsTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\BellyOfTheBeasts</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\ModArsenalOfIdeology.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\ArsenalOfIdeology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\ModArsenalOfIdeologyTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\ArsenalOfIdeology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\ArsenalOfIdeology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeologyTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\ArsenalOfIdeology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScenarioCreator\OutScenario.cpp">
+      <Filter>src\OutHoi4\ScenarioCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScenarioCreator\OutScenarioMod.cpp">
+      <Filter>src\OutHoi4\ScenarioCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarBuilder.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarBuilderTests.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2157,28 +2187,28 @@
     <Filter Include="data\test_files\Vic2World\Map">
       <UniqueIdentifier>{d233c4b9-7570-4cd1-ba23-9d2088973870}</UniqueIdentifier>
     </Filter>
-    <Filter Include="data\test_files\HoI4Files\ScenarioBuilder">
-      <UniqueIdentifier>{38e5955a-c577-40ec-aefb-8811b9dd0727}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\HOI4World\ScenarioBuilder">
+    <Filter Include="src\HOI4World\ScenarioCreator">
       <UniqueIdentifier>{32516afb-e50c-4b19-9498-7af98afc2527}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\HOI4World\ScenarioBuilder\Roles">
+    <Filter Include="src\HOI4World\ScenarioCreator\Roles">
       <UniqueIdentifier>{dc0eb569-88c2-45d9-90ef-29c2639e01b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\HOI4World\ScenarioBuilder\Utilities">
-      <UniqueIdentifier>{59940339-7bff-4b00-b972-6b32f65c9edb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\HOI4World\ScenarioBuilder\Roles\SpanishCivilWar">
+    <Filter Include="src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar">
       <UniqueIdentifier>{5f82bcaf-eb90-46a4-b25d-949e7879e0c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\HOI4World\ScenarioBuilder\Roles\ArsenalOfIdeology">
+    <Filter Include="src\HOI4World\ScenarioCreator\Roles\ArsenalOfIdeology">
       <UniqueIdentifier>{f606beab-a998-4ee4-90ec-2c3fd8aeb9ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\HOI4World\ScenarioBuilder\Roles\BellyOfTheBeasts">
+    <Filter Include="src\HOI4World\ScenarioCreator\Roles\BellyOfTheBeasts">
       <UniqueIdentifier>{8e814606-f375-4a45-92f8-a7752a0cdc3d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\OutHoi4\ScenarioBuilder">
+    <Filter Include="src\HOI4World\ScenarioCreator\Utilities">
+      <UniqueIdentifier>{59940339-7bff-4b00-b972-6b32f65c9edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\HoI4Files\ScenarioCreator">
+      <UniqueIdentifier>{38e5955a-c577-40ec-aefb-8811b9dd0727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\ScenarioCreator">
       <UniqueIdentifier>{4c707548-d467-4bac-908e-a8e2f8aee4dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -3550,32 +3580,50 @@
     <ClInclude Include="external\common_items\targa.h">
       <Filter>external\common_items</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.h">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\ScenarioConfigParser.h">
+      <Filter>src\HOI4World\ScenarioCreator</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h">
-      <Filter>src\HOI4World\ScenarioBuilder</Filter>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\ScenarioCreator.h">
+      <Filter>src\HOI4World\ScenarioCreator</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\Role.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Utilities\ScenarioUtilities.h">
+      <Filter>src\HOI4World\ScenarioCreator\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Utilities</Filter>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\Role.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles\ArsenalOfIdeology</Filter>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleTestShell.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles\BellyOfTheBeasts</Filter>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\ScenarioMod.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles\SpanishCivilWar</Filter>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWar.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
     </ClInclude>
-    <ClInclude Include="src\OutHoi4\ScenarioBuilder\OutScenario.h">
-      <Filter>src\OutHoi4\ScenarioBuilder</Filter>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\ScenarioMod.h">
-      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\ModBellyOfTheBeasts.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\BellyOfTheBeasts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\BellyOfTheBeasts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\ModArsenalOfIdeology.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\ArsenalOfIdeology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\ArsenalOfIdeology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScenarioCreator\OutScenario.h">
+      <Filter>src\OutHoi4\ScenarioCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScenarioCreator\OutScenarioMod.h">
+      <Filter>src\OutHoi4\ScenarioCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarBuilder.h">
+      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3951,11 +3999,13 @@
     <CopyFileToFolders Include="data\test_files\vic2_vanilla_regions.txt">
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioBuilder\ScenarioBuilderRoles.txt">
-      <Filter>data\test_files\HoI4Files\ScenarioBuilder</Filter>
+    <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioCreator\scenario_creator_roles.txt">
+      <Filter>data\test_files\HoI4Files\ScenarioCreator</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioBuilder\example_scenario.txt">
-      <Filter>data\test_files\HoI4Files\ScenarioBuilder</Filter>
-    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\test_files\HoI4Files\ScenarioCreator\example_scenario.txt">
+      <Filter>data\test_files\HoI4Files\ScenarioCreator</Filter>
+    </Text>
   </ItemGroup>
 </Project>

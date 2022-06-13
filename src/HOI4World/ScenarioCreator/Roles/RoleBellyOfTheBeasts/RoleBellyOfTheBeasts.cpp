@@ -1,0 +1,1 @@
+#include "src/HOI4World/ScenarioCreator/Roles/RoleBellyOfTheBeasts/RoleBellyOfTheBeasts.h"

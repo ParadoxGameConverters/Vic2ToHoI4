@@ -145,12 +145,16 @@
     <ClCompile Include="src\HOI4World\Regions\RegionFactory.cpp" />
     <ClCompile Include="src\HOI4World\Regions\Regions.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionsFactory.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp" />
-    <ClCompile Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\ModArsenalOfIdeology.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\ModBellyOfTheBeasts.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWar.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarBuilder.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\ScenarioConfigParser.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\ScenarioCreator.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Utilities\ScenarioUtilities.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffects.cpp" />
@@ -277,7 +281,8 @@
     <ClCompile Include="src\OutHoi4\OutOnActions.cpp" />
     <ClCompile Include="src\OutHoI4\OutSharedFocus.cpp" />
     <ClCompile Include="src\OutHoi4\OutTechnologies.cpp" />
-    <ClCompile Include="src\OutHoi4\ScenarioBuilder\OutScenario.cpp" />
+    <ClCompile Include="src\OutHoi4\ScenarioCreator\OutScenario.cpp" />
+    <ClCompile Include="src\OutHoi4\ScenarioCreator\OutScenarioMod.cpp" />
     <ClCompile Include="src\OutHoi4\ScriptedEffects\OutScriptedEffect.cpp" />
     <ClCompile Include="src\OutHoi4\ScriptedEffects\OutScriptedEffects.cpp" />
     <ClCompile Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
@@ -543,14 +548,18 @@
     <ClInclude Include="src\HOI4World\Regions\RegionFactory.h" />
     <ClInclude Include="src\HOI4World\Regions\Regions.h" />
     <ClInclude Include="src\HOI4World\Regions\RegionsFactory.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\Role.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\ScenarioMod.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h" />
-    <ClInclude Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\Role.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\ModArsenalOfIdeology.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\ModBellyOfTheBeasts.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWar.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarBuilder.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\ScenarioMod.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\ScenarioConfigParser.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\ScenarioCreator.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Utilities\ScenarioUtilities.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffect.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.h" />
@@ -703,7 +712,6 @@
     <ClInclude Include="src\OutHoi4\OutOnActions.h" />
     <ClInclude Include="src\OutHoI4\OutSharedFocus.h" />
     <ClInclude Include="src\OutHoi4\OutTechnologies.h" />
-    <ClInclude Include="src\OutHoi4\ScenarioBuilder\OutScenario.h" />
     <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffect.h" />
     <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffects.h" />
     <ClInclude Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.h" />
@@ -1031,6 +1039,7 @@
     <Text Include="data\configurables\province_mappings.txt" />
     <Text Include="data\configurables\research_bonus_mappings.txt" />
     <Text Include="data\configurables\Resources.txt" />
+    <Text Include="data\configurables\Scenarios\example_scenario.txt" />
     <Text Include="data\configurables\shipTypes.txt" />
     <Text Include="data\configurables\Sounds\CultureToVoiceMappings.txt" />
     <Text Include="data\configurables\tankDesigns.txt" />
@@ -1039,6 +1048,7 @@
     <Text Include="data\configurables\unit_mappings.txt" />
     <Text Include="data\fronter\fronter-configuration.txt" />
     <Text Include="data\fronter\fronter-options.txt" />
+    <Text Include="data\test_files\HoI4Files\ScenarioCreator\scenario_creator_roles.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\!provincenames_l_english.yml" />
