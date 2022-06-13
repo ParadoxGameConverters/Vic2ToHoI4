@@ -18,7 +18,7 @@
 
 
 
-Vic2::World::Factory::Factory(const Configuration& theConfiguration, const commonItems::ModFilesystem& mod_filesystem):
+Vic2::World::Factory::Factory(const commonItems::ModFilesystem& mod_filesystem, float percentage_of_commanders):
 	 theCultureGroups(CultureGroups::Factory().GetCultureGroups(mod_filesystem)),
 	 theIssues(Issues::Factory().GetIssues(mod_filesystem)),
 	 provinceFactory(std::make_unique<Province::Factory>(std::make_unique<PopFactory>(*theIssues))),
@@ -43,26 +43,27 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration, const commo
 		const auto provinceNum = std::stoi(provinceID); // the regex ensures the ID is always a valid number
 		world->provinces[provinceNum] = provinceFactory->getProvince(provinceNum, theStream);
 	});
-	registerRegex("[A-Z][A-Z0-9]{2}", [this, theConfiguration](const std::string& countryTag, std::istream& theStream) {
-		if (const auto commonCountryData = commonCountriesData.find(countryTag);
-			 commonCountryData != commonCountriesData.end())
-		{
-			world->countries.emplace(countryTag,
-				 *countryFactory->createCountry(countryTag,
-					  theStream,
-					  commonCountryData->second,
-					  allParties,
-					  *stateLanguageCategories,
-					  theConfiguration.getPercentOfCommanders(),
-					  countriesData->getCountryData(countryTag)));
-			tagsInOrder.push_back(countryTag);
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Invalid tag " << countryTag;
-			commonItems::ignoreItem(countryTag, theStream);
-		}
-	});
+	registerRegex("[A-Z][A-Z0-9]{2}",
+		 [this, percentage_of_commanders](const std::string& countryTag, std::istream& theStream) {
+			 if (const auto commonCountryData = commonCountriesData.find(countryTag);
+				  commonCountryData != commonCountriesData.end())
+			 {
+				 world->countries.emplace(countryTag,
+					  *countryFactory->createCountry(countryTag,
+							theStream,
+							commonCountryData->second,
+							allParties,
+							*stateLanguageCategories,
+							percentage_of_commanders,
+							countriesData->getCountryData(countryTag)));
+				 tagsInOrder.push_back(countryTag);
+			 }
+			 else
+			 {
+				 Log(LogLevel::Warning) << "Invalid tag " << countryTag;
+				 commonItems::ignoreItem(countryTag, theStream);
+			 }
+		 });
 	registerKeyword("diplomacy", [this](std::istream& theStream) {
 		world->diplomacy = diplomacyFactory->getDiplomacy(theStream);
 	});
