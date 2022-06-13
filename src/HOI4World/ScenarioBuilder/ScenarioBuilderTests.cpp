@@ -17,6 +17,7 @@ TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, recalculateRoleFits)
 	// Test recalculateRoleFitsFxn
 	// Order of vector should change after fxn call
 	// Requires roles with working calculateFit(country) fxns
+	// Make a dummy role child class just for testing purposes?
 }
 
 TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, applyRole)
@@ -24,6 +25,7 @@ TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, applyRole)
 	// Test applyRoleFxn
 	// Passed country should be modified
 	// Need a role that acutally does something
+	// Make a dummy role child class just for testing purposes?
 }
 
 TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, initializeRoles)
@@ -35,7 +37,7 @@ TEST(HoI4World_ScenarioBuilder_ScenarioBuilderTests, initializeRoles)
 	std::map<std::string, std::shared_ptr<HoI4::Country>> empty;
 	const HoI4::ScenarioBuilder builder(empty, "");
 
-	// NOTE: Troubles with EXPECT_THAT and shared ptrs
+	// NOTE: Troubles with EXPECT_THAT and containers of ptrs
 	EXPECT_EQ(typeid(*builder.getRoles()[0]), typeid(*expectedRoles[0]));
 	EXPECT_EQ(typeid(*builder.getRoles()[1]), typeid(*expectedRoles[1]));
 	EXPECT_EQ(builder.getRoles().size(), 2);

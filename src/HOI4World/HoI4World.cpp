@@ -255,6 +255,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	updateScriptedTriggers(scriptedTriggers, ideologies->getMajorIdeologies());
 	Log(LogLevel::Progress) << "76%";
 
+	// scenarios = ScenarioBuilder(countries,ScenarioUtilities::getSaveName(theConfiguration.getInputFIle()));
+
 	countryCategories =
 		 createCountryCategories(*countryMap, countries, ideologies->getMajorIdeologies(), theConfiguration.getDebug());
 

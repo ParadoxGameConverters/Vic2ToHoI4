@@ -272,6 +272,7 @@
     <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWarTests.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\RoleTests.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\ScenarioModTests.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioBuilderTests.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.cpp" />
@@ -911,6 +912,7 @@
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.h" />
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.h" />
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.h" />
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\ScenarioMod.h" />
     <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioBuilder.h" />
     <ClInclude Include="src\HOI4World\ScenarioBuilder\ScenarioConfigParser.h" />
     <ClInclude Include="src\HOI4World\ScenarioBuilder\Utilities\ScenarioUtilities.h" />

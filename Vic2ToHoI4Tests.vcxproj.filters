@@ -1753,6 +1753,9 @@
     <ClCompile Include="src\OutHoi4\ScenarioBuilder\OutScenario.cpp">
       <Filter>src\OutHoi4\ScenarioBuilder</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioBuilder\Roles\ScenarioModTests.cpp">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -3570,6 +3573,9 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\ScenarioBuilder\OutScenario.h">
       <Filter>src\OutHoi4\ScenarioBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScenarioBuilder\Roles\ScenarioMod.h">
+      <Filter>src\HOI4World\ScenarioBuilder\Roles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
