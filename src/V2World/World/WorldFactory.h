@@ -48,7 +48,7 @@ class World::Factory: commonItems::parser
 	void consolidateConquerStrategies();
 	void moveArmiesHome();
 	void removeBattles();
-	void importMapData(const std::string& path);
+	void ImportMapData(const commonItems::ModFilesystem& mod_filesystem, const std::string& path);
 	[[nodiscard]] std::map<int, std::vector<Army*>> determineArmyLocations() const;
 	[[nodiscard]] static bool armiesHaveDifferentOwners(const std::vector<Army*>& armies);
 

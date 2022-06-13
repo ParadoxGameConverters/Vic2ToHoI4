@@ -112,7 +112,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	consolidateConquerStrategies();
 	moveArmiesHome();
 	removeBattles();
-	importMapData(theConfiguration.getVic2Path());
+	ImportMapData(mod_filesystem, theConfiguration.getVic2Path());
 
 	return std::move(world);
 }
@@ -537,9 +537,9 @@ bool Vic2::World::Factory::armiesHaveDifferentOwners(const std::vector<Army*>& a
 }
 
 
-void Vic2::World::Factory::importMapData(const std::string& path)
+void Vic2::World::Factory::ImportMapData(const commonItems::ModFilesystem& mod_filesystem, const std::string& path)
 {
 	Log(LogLevel::Info) << "\tImporting map data";
-	const auto& provinceDefinitions = importProvinceDefinitions(path, world->provinces);
+	const auto& provinceDefinitions = ImportProvinceDefinitions(mod_filesystem, world->provinces);
 	world->mapData_ = std::make_unique<Maps::MapData>(provinceDefinitions, path);
 }

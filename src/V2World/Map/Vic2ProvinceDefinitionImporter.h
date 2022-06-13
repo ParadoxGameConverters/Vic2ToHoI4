@@ -1,8 +1,9 @@
-#ifndef VIC2_MAP_VIC2PROVINCEDEFINITIONIMPORTER_H
-#define VIC2_MAP_VIC2PROVINCEDEFINITIONIMPORTER_H
+#ifndef SRC_V2WORLD_MAP_VIC2_PROVINCE_DEFINITION_IMPORTER_H
+#define SRC_V2WORLD_MAP_VIC2_PROVINCE_DEFINITION_IMPORTER_H
 
 
 
+#include "external/common_items/ModLoader/ModFilesystem.h"
 #include "src/Maps/ProvinceDefinitions.h"
 #include "src/V2World/Provinces/Province.h"
 #include <map>
@@ -14,11 +15,11 @@
 namespace Vic2
 {
 
-[[nodiscard]] Maps::ProvinceDefinitions importProvinceDefinitions(const std::string& path,
+[[nodiscard]] Maps::ProvinceDefinitions ImportProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem,
 	 const std::map<int, std::shared_ptr<Province>>& provinces);
 
 }
 
 
 
-#endif // VIC2_MAP_VIC2PROVINCEDEFINITIONIMPORTER_H
+#endif // SRC_V2WORLD_MAP_VIC2_PROVINCE_DEFINITION_IMPORTER_H
