@@ -5306,6 +5306,8 @@ central_american_native = {
 		"gfx/leaders/Central_American_Native/Portrait_PAN_Boris_Salazar.tga"
 		"gfx/leaders/Central_American_Native/Portrait_MEX_Pancho_Villa_General.tga"
 		"gfx/leaders/Central_American_Native/Portrait_ELS_general_Maximiliano_Martinez.tga"
+		"gfx/leaders/South_American_Native/portrait_quechua_mamani.dds" 
+		"gfx/leaders/South_American_Native/portrait_quechua_quispe_iskay.dds" 
 	}
 	navy_portraits = {
 		#Generic
@@ -5423,8 +5425,10 @@ south_american_native = {
 
 	army_portraits = {
 		#Generic
-		#Other
-		"gfx/leaders/Central_American_Native/Portrait_ELS_general_Maximiliano_Martinez.tga" #Revise
+		#Other 
+		"gfx/leaders/South_American_Native/portrait_quechua_saturnino.dds" 
+		"gfx/leaders/South_American_Native/portrait_quechua_mamani.dds" 
+		"gfx/leaders/South_American_Native/portrait_quechua_quispe_iskay.dds" 
 		"gfx/leaders/South_American_Native/portrait_nat_south_fascist.dds" #Revise
 		"gfx/leaders/South_American_Native/portrait_nat_south_absolutist.dds" #Revise
 	}
@@ -5438,15 +5442,16 @@ south_american_native = {
 	}
 	leader_portraits = {
 		communism = {
-			"gfx/leaders/ELS/portrait_els_maximiliano_hernandez_martinez.dds"
+			"gfx/leaders/South_American_Native/portrait_quechua_quispe_iskay.dds" 
 			"gfx/leaders/generic/r56_portrait_generic_politician_south_america_1.dds"
 			"gfx/leaders/Central_American_Native/portrait_nat_carib_communist.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_communist.dds"
 			"gfx/leaders/south_american_native/portrait_fop_micaela_feldman.tga"
 		}
 		democratic = {
-			"gfx/leaders/COL/portrait_col_alfonso_lopez_pumarejo.dds"
-			"gfx/leaders/HON/portrait_hon_tiburcio_carias_andino.dds"
+			"gfx/leaders/South_American_Native/portrait_quechua_saturnino.dds" 
+			"gfx/leaders/South_American_Native/portrait_quechua_mamani.dds" 
+			"gfx/leaders/South_American_Native/portrait_quechua_quispe_iskay.dds" 
 			"gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds"
 			"gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.dds"
 			"gfx/leaders/South_American_Native/QCH_Pahacutec.tga"
@@ -5457,6 +5462,7 @@ south_american_native = {
 			"gfx/leaders/PAN/portrait_pan_harmodio_arias_madrid.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_fascist.dds"
 			"gfx/leaders/Central_American_Native/portrait_nat_carib_fascist.dds"
+			"gfx/leaders/South_American_Native/portrait_quechua_mamani.dds" 
 		}
 		absolutist = {
 			"gfx/leaders/central_american_native/portrait_nat_carib_absolutist.dds"
@@ -5470,12 +5476,17 @@ south_american_native = {
 			"gfx/leaders/ECU/portrait_ecu_federico_paez.dds"
 			"gfx/leaders/south_american_native/portrait_nat_south_neutral.dds"
 			"gfx/leaders/Central_American_Native/portrait_nat_carib_neutral.dds"
+			"gfx/leaders/South_American_Native/portrait_quechua_mamani.dds" 
+			"gfx/leaders/South_American_Native/portrait_quechua_quispe_iskay.dds" 
 		}
 		radical = {
 			"gfx/leaders/CUB/portrait_cub_jose_barnet.dds"
 			"gfx/leaders/South_American_Native/portrait_nat_south_radical.dds"
 			"gfx/leaders/South_American_Native/Portrait_Columbia_Mariano_Ospina.tga"
 			"gfx/leaders/Central_American_Native/portrait_nat_carib_radical.dds"
+			"gfx/leaders/South_American_Native/portrait_quechua_saturnino.dds" 
+			"gfx/leaders/South_American_Native/portrait_quechua_mamani.dds" 
+			"gfx/leaders/South_American_Native/portrait_quechua_quispe_iskay.dds" 
 		}
 	}
 	female_portraits = {
