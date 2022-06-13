@@ -88,7 +88,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 
 	world = std::make_unique<World>();
 	world->theStateDefinitions = StateDefinitions::Factory().getStateDefinitions(mod_filesystem);
-	world->theLocalisations = Localisations::Factory().importLocalisations(theConfiguration);
+	world->theLocalisations = Localisations::Factory().ImportLocalisations(mod_filesystem);
 	parseFile(theConfiguration.getInputFile());
 	if (!world->diplomacy)
 	{

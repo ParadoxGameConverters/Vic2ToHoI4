@@ -1,10 +1,11 @@
-#ifndef LOCALISATIONS_FACTORY_H
-#define LOCALISATIONS_FACTORY_H
+#ifndef SRC_V2WORLD_LOCALISATIONS_LOCALISATIONS_FACTORY_H
+#define SRC_V2WORLD_LOCALISATIONS_LOCALISATIONS_FACTORY_H
 
 
 
-#include "src/Configuration.h"
+#include "external/common_items/ModLoader/ModFilesystem.h"
 #include "src/V2World/Localisations/Vic2Localisations.h"
+#include <memory>
 
 
 
@@ -22,21 +23,20 @@ enum class Encoding
 class Localisations::Factory
 {
   public:
-	std::unique_ptr<Localisations> importLocalisations(const Configuration& theConfiguration);
+	std::unique_ptr<Localisations> ImportLocalisations(const commonItems::ModFilesystem& mod_filesystem);
 
   private:
-	void ReadFromAllFilesInFolder(const std::string& folderPath);
 	void ReadFromFile(const std::string& fileName);
-	void processLine(const std::string& line);
-	static std::tuple<std::string, size_t> extractNextLocalisation(const std::string& line, size_t division);
-	static std::string convertToUtf8(const std::string& rawLocalisation, Encoding encoding);
+	void ProcessLine(const std::string& line);
+	static std::tuple<std::string, size_t> ExtractNextLocalisation(const std::string& line, size_t division);
+	static std::string ConvertToUtf8(const std::string& rawLocalisation, Encoding encoding);
 
-	KeyToLocalisationsMap localisations;
-	std::map<std::string, std::string> localisationToKeyMap;
+	KeyToLocalisationsMap localisations_;
+	std::map<std::string, std::string> localisation_to_key_map_;
 };
 
 } // namespace Vic2
 
 
 
-#endif // LOCALISATIONS_FACTORY_H
+#endif // SRC_V2WORLD_LOCALISATIONS_LOCALISATIONS_FACTORY_H
