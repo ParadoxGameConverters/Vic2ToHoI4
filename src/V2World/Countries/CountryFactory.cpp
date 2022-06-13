@@ -17,8 +17,7 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 	 std::shared_ptr<CultureGroups> theCultureGroups_):
 	 theCultureGroups(std::move(theCultureGroups_)),
 	 theInventions(Inventions::Factory().LoadInventions(mod_filesystem)),
-	 leaderFactory(
-		  std::make_unique<Leader::Factory>(std::move(*Traits::Factory().loadTraits(theConfiguration.getVic2Path())))),
+	 leaderFactory(std::make_unique<Leader::Factory>(std::move(*Traits::Factory().LoadTraits(mod_filesystem)))),
 	 stateFactory(std::make_unique<State::Factory>())
 {
 	registerKeyword("capital", [this](std::istream& theStream) {

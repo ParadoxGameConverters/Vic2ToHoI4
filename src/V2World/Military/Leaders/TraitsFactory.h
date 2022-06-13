@@ -1,8 +1,10 @@
-#ifndef TRAITS_FACTORY_H
-#define TRAITS_FACTORY_H
+#ifndef SRC_V2WORLD_MILITARY_LEADERS_TRAITS_FACTORY_H
+#define SRC_V2WORLD_MILITARY_LEADERS_TRAITS_FACTORY_H
 
 
-#include "external/common_items/ConvenientParser.h"
+
+#include "external/common_items/ModLoader/ModFilesystem.h"
+#include "external/common_items/Parser.h"
 #include "src/V2World/Military/Leaders/Traits.h"
 #include <memory>
 
@@ -11,18 +13,19 @@
 namespace Vic2
 {
 
-class Traits::Factory: commonItems::parser
+class Traits::Factory
 {
   public:
 	Factory();
-	std::unique_ptr<Traits> loadTraits(const std::string& Vic2Location);
+	std::unique_ptr<Traits> LoadTraits(const commonItems::ModFilesystem& mod_filesystem);
 
   private:
-	std::unique_ptr<Traits> traits;
+	commonItems::parser parser_;
+	std::unique_ptr<Traits> traits_;
 };
 
 } // namespace Vic2
 
 
 
-#endif // TRAITS_FACTORY_H
+#endif // SRC_V2WORLD_MILITARY_LEADERS_TRAITS_FACTORY_H

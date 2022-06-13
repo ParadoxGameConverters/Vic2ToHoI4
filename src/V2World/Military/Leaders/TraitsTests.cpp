@@ -1,3 +1,4 @@
+#include "external/common_items/ModLoader/ModFilesystem.h"
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Military/Leaders/Traits.h"
@@ -7,7 +8,7 @@
 
 TEST(Vic2World_Military_Leaders_TraitsTests, MissingTraitsHaveNoEffects)
 {
-	const auto traits = Vic2::Traits::Factory().loadTraits("./");
+	const auto traits = Vic2::Traits::Factory().LoadTraits(commonItems::ModFilesystem("./", {}));
 
 	ASSERT_TRUE(traits->getEffectsForTrait("missing_trait").empty());
 }
@@ -15,7 +16,7 @@ TEST(Vic2World_Military_Leaders_TraitsTests, MissingTraitsHaveNoEffects)
 
 TEST(Vic2World_Military_Leaders_TraitsTests, TraitEffectsAreReturned)
 {
-	const auto traits = Vic2::Traits::Factory().loadTraits("./");
+	const auto traits = Vic2::Traits::Factory().LoadTraits(commonItems::ModFilesystem("./", {}));
 	const auto effects = traits->getEffectsForTrait("test_trait");
 
 	ASSERT_THAT(effects,
