@@ -4,6 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
+#include "external/common_items/ModLoader/ModFilesystem.h"
 #include "src/Configuration.h"
 #include "src/V2World/Ai/AIFactory.h"
 #include "src/V2World/Countries/CommonCountryData.h"
@@ -30,6 +31,7 @@ class Country::Factory: commonItems::parser
 {
   public:
 	Factory(const Configuration& theConfiguration,
+		 const commonItems::ModFilesystem& mod_filesystem,
 		 const StateDefinitions& theStateDefinitions,
 		 std::shared_ptr<CultureGroups> theCultureGroups_);
 	std::unique_ptr<Country> createCountry(const std::string& theTag,

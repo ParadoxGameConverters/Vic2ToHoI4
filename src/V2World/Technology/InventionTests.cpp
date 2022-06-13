@@ -42,8 +42,8 @@ TEST(Vic2World_Technology_InventionTests, InventionZeroLogsErrorAndReturnsNullop
 #ifndef _DEBUG // disable some test that break code coverage
 TEST(Vic2World_Technology_InventionTests, InventionNameIsReturned)
 {
-	const auto configuration = Configuration::Builder().setVic2Path("./BaseGameInventions").build();
-	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
+	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {});
+	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("test_tech_one", inventions->getInventionName(1));
 }
@@ -51,8 +51,8 @@ TEST(Vic2World_Technology_InventionTests, InventionNameIsReturned)
 
 TEST(Vic2World_Technology_InventionTests, AllInventionFilesAreRead)
 {
-	const auto configuration = Configuration::Builder().setVic2Path("./BaseGameInventions").build();
-	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
+	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {});
+	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("test_tech_one", inventions->getInventionName(1));
 	ASSERT_EQ("test_tech_two", inventions->getInventionName(2));
@@ -61,8 +61,8 @@ TEST(Vic2World_Technology_InventionTests, AllInventionFilesAreRead)
 
 TEST(Vic2World_Technology_InventionTests, InventionsWithAtypicalCharactersAreReturned)
 {
-	const auto configuration = Configuration::Builder().setVic2Path("./BaseGameInventions").build();
-	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
+	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {});
+	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_NE(std::nullopt, inventions->getInventionName(3));
 }
@@ -70,11 +70,8 @@ TEST(Vic2World_Technology_InventionTests, InventionsWithAtypicalCharactersAreRet
 
 TEST(Vic2World_Technology_InventionTests, ModInventionFilesAreRead)
 {
-	const auto configuration = Configuration::Builder()
-											 .setVic2Path("./BaseGameInventions")
-											 .addVic2Mod(Mod("one", "ModInventions/Mod1"))
-											 .build();
-	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
+	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {Mod("one", "ModInventions/Mod1")});
+	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("test_tech_four", inventions->getInventionName(4));
 }
@@ -82,12 +79,9 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesAreRead)
 
 TEST(Vic2World_Technology_InventionTests, MultipleModInventionFilesAreRead)
 {
-	const auto configuration = Configuration::Builder()
-											 .setVic2Path("./BaseGameInventions")
-											 .addVic2Mod(Mod("one", "ModInventions/Mod1"))
-											 .addVic2Mod(Mod("two", "ModInventions/Mod2"))
-											 .build();
-	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
+	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions",
+		 {Mod("one", "ModInventions/Mod1"), Mod("two", "ModInventions/Mod2")});
+	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("test_tech_five", inventions->getInventionName(5));
 }
@@ -95,11 +89,8 @@ TEST(Vic2World_Technology_InventionTests, MultipleModInventionFilesAreRead)
 
 TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDefaultOnes)
 {
-	const auto configuration = Configuration::Builder()
-											 .setVic2Path("./BaseGameInventions")
-											 .addVic2Mod(Mod("three", "ModInventions/Mod3"))
-											 .build();
-	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
+	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {Mod("three", "ModInventions/Mod3")});
+	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("replacement_tech_one", inventions->getInventionName(1));
 }
@@ -107,13 +98,11 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDefaultOnes)
 
 TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDependeeMods)
 {
-	const auto configuration = Configuration::Builder()
-											 .setVic2Path("./BaseGameInventions")
-											 .addVic2Mod(Mod("Mod1", "ModInventions/Mod1"))
-											 .addVic2Mod(Mod("Mod2", "ModInventions/Mod2", std::set<Name>{"Mod1"}))
-											 .addVic2Mod(Mod("Mod3", "ModInventions/Mod3", std::set<Name>{"Mod2"}))
-											 .build();
-	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
+	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions",
+		 {Mod("one", "ModInventions/Mod1"),
+			  Mod("two", "ModInventions/Mod2"),
+			  Mod("Mod3", "ModInventions/Mod3", std::set<Name>{"Mod2"})});
+	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("replacement_tech_two", inventions->getInventionName(4));
 }

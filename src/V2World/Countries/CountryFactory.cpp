@@ -12,10 +12,11 @@
 
 
 Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
+	 const commonItems::ModFilesystem& mod_filesystem,
 	 const StateDefinitions& theStateDefinitions,
 	 std::shared_ptr<CultureGroups> theCultureGroups_):
 	 theCultureGroups(std::move(theCultureGroups_)),
-	 theInventions(Inventions::Factory().loadInventions(theConfiguration)),
+	 theInventions(Inventions::Factory().LoadInventions(mod_filesystem)),
 	 leaderFactory(
 		  std::make_unique<Leader::Factory>(std::move(*Traits::Factory().loadTraits(theConfiguration.getVic2Path())))),
 	 stateFactory(std::make_unique<State::Factory>())

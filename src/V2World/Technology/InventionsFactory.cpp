@@ -1,75 +1,55 @@
 #include "src/V2World/Technology/InventionsFactory.h"
-#include "external/common_items/OSCompatibilityLayer.h"
+#include "external/common_items/CommonFunctions.h"
 #include "external/common_items/ParserHelpers.h"
 
+
+
+namespace
+{
+
+std::vector<std::string> GetInventionFiles(const commonItems::ModFilesystem& mod_filesystem)
+{
+	const auto tech_files = mod_filesystem.GetAllFilesInFolder("inventions/");
+
+	std::vector<std::string> final_tech_files;
+	final_tech_files.reserve(tech_files.size());
+	for (const auto& tech_file: tech_files)
+	{
+		final_tech_files.push_back(tech_file);
+	}
+	std::ranges::sort(final_tech_files,
+		 [](const std::string& l, const std::string& r) {
+			 return trimPath(l) < trimPath(r);
+		 },
+		 {});
+
+	return final_tech_files;
+}
+
+} // namespace
 
 
 Vic2::Inventions::Factory::Factory()
 {
 	// invention names have the usual alphanumerics, plus טיצü:&
-	registerRegex("[a-zA-Z0-9_.\xe8\xe9\xf6\xfc\\:\\&]+",
+	parser_.registerRegex("[a-zA-Z0-9_.\xe8\xe9\xf6\xfc\\:\\&]+",
 		 [this](const std::string& inventionName, std::istream& theStream) {
-			 inventions->inventionNames.push_back(inventionName);
+			 inventions_->inventionNames.push_back(inventionName);
 			 commonItems::ignoreItem(inventionName, theStream);
 		 });
 }
 
 
-std::unique_ptr<Vic2::Inventions> Vic2::Inventions::Factory::loadInventions(const Configuration& theConfiguration)
+std::unique_ptr<Vic2::Inventions> Vic2::Inventions::Factory::LoadInventions(
+	 const commonItems::ModFilesystem& mod_filesystem)
 {
-	inventions = std::make_unique<Inventions>();
+	inventions_ = std::make_unique<Inventions>();
 
-	const auto inventionFiles = getInventionFiles(theConfiguration);
-	generateNumbers(inventionFiles);
-
-	return std::move(inventions);
-}
-
-
-std::vector<std::string> Vic2::Inventions::Factory::getInventionFiles(const Configuration& theConfiguration) const
-{
-	const auto techFiles = getTechFilesAndPaths(theConfiguration);
-
-	std::vector<std::string> finalTechFiles;
-	finalTechFiles.reserve(techFiles.size());
-	for (const auto& [filename, path]: techFiles)
+	const auto invention_files = GetInventionFiles(mod_filesystem);
+	for (const auto& file: invention_files)
 	{
-		finalTechFiles.push_back(path + filename);
+		parser_.parseFile(file);
 	}
 
-	return finalTechFiles;
-}
-
-
-std::map<std::string, std::string> Vic2::Inventions::Factory::getTechFilesAndPaths(
-	 const Configuration& theConfiguration) const
-{
-	std::map<std::string, std::string> techFiles;
-
-	for (const auto& file: commonItems::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/inventions/"))
-	{
-		techFiles[file] = theConfiguration.getVic2Path() + "/inventions/";
-	}
-	for (const auto& mod: theConfiguration.getVic2Mods())
-	{
-		const auto modInventionsPath = mod.path + "/inventions/";
-		if (commonItems::DoesFolderExist(modInventionsPath))
-		{
-			for (const auto& file: commonItems::GetAllFilesInFolder(modInventionsPath))
-			{
-				techFiles[file] = modInventionsPath;
-			}
-		}
-	}
-
-	return techFiles;
-}
-
-
-void Vic2::Inventions::Factory::generateNumbers(const std::vector<std::string>& inventionFiles)
-{
-	for (const auto& file: inventionFiles)
-	{
-		parseFile(file);
-	}
+	return std::move(inventions_);
 }
