@@ -23,8 +23,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration, const commo
 	 theIssues(Issues::Factory().GetIssues(mod_filesystem)),
 	 provinceFactory(std::make_unique<Province::Factory>(std::make_unique<PopFactory>(*theIssues))),
 	 theStateDefinitions(StateDefinitions::Factory().getStateDefinitions(mod_filesystem)),
-	 countryFactory(
-		  std::make_unique<Country::Factory>(theConfiguration, mod_filesystem, *theStateDefinitions, theCultureGroups)),
+	 countryFactory(std::make_unique<Country::Factory>(mod_filesystem, *theStateDefinitions, theCultureGroups)),
 	 stateLanguageCategories(StateLanguageCategories::Factory().getCategories()),
 	 diplomacyFactory(std::make_unique<Diplomacy::Factory>())
 {

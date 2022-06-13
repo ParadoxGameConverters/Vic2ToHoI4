@@ -11,8 +11,7 @@
 
 
 
-Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
-	 const commonItems::ModFilesystem& mod_filesystem,
+Vic2::Country::Factory::Factory(const commonItems::ModFilesystem& mod_filesystem,
 	 const StateDefinitions& theStateDefinitions,
 	 std::shared_ptr<CultureGroups> theCultureGroups_):
 	 theCultureGroups(std::move(theCultureGroups_)),

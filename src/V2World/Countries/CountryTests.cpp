@@ -1,7 +1,6 @@
 #include "external/common_items/ModLoader/ModFilesystem.h"
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
-#include "src/Configuration.h"
 #include "src/V2World/Countries/Country.h"
 #include "src/V2World/Countries/CountryFactory.h"
 #include "src/V2World/Culture/CultureGroupsFactory.h"
@@ -29,8 +28,7 @@ TEST(Vic2World_Countries_CountryTests, TagIsAsSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -55,8 +53,7 @@ TEST(Vic2World_Countries_CountryTests, ColorIsFromCommonCountryData)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -79,8 +76,7 @@ TEST(Vic2World_Countries_CountryTests, HumanDefaultsToFalse)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -104,8 +100,7 @@ TEST(Vic2World_Countries_CountryTests, HumanCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -129,8 +124,7 @@ TEST(Vic2World_Countries_CountryTests, HumanNotSetWithoutYes)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -153,8 +147,7 @@ TEST(Vic2World_Countries_CountryTests, StatesDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -179,8 +172,7 @@ TEST(Vic2World_Countries_CountryTests, StatesCanBeImported)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -203,8 +195,7 @@ TEST(Vic2World_Countries_CountryTests, DoesNotHaveLandByDefault)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -227,8 +218,7 @@ TEST(Vic2World_Countries_CountryTests, HasLandWhenGivenProvinces)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -252,8 +242,7 @@ TEST(Vic2World_Countries_CountryTests, IsEmptyByDefault)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -276,8 +265,7 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenProvinces)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -301,8 +289,7 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenCores)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -326,8 +313,7 @@ TEST(Vic2World_Countries_CountryTests, CoresDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -350,8 +336,7 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeAdded)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -376,8 +361,7 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeReplaced)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -403,8 +387,7 @@ TEST(Vic2World_Countries_CountryTests, CapitalDefaultsToZero)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -428,8 +411,7 @@ TEST(Vic2World_Countries_CountryTests, CapitalCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -452,8 +434,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToNoCulture)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -477,8 +458,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -502,8 +482,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureWithQuotesCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -526,8 +505,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -558,8 +536,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromMultiplePopsAdd
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -591,8 +568,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureNotSetFromLargestCultureIfN
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -617,8 +593,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToNoCulture)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -643,8 +618,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupsSetFromPrimaryCulture
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -667,8 +641,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCulturGroupeNotSetFromLargestCultu
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -693,8 +666,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupCanBeSetFromLargestCul
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -725,8 +697,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupBecomesNoCultureIfUnse
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -750,8 +721,7 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -775,8 +745,7 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIncludePrimaryCulture)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -803,8 +772,7 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesCanBeAdded)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -831,8 +799,7 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIdentifiedAsAcceptedCultu
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -856,8 +823,7 @@ TEST(Vic2World_Countries_CountryTests, NonAcceptedCulturesNotIdentifiedAsAccepte
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -880,8 +846,7 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -908,8 +873,7 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromTe
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -934,8 +898,7 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromIn
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -959,8 +922,7 @@ TEST(Vic2World_Countries_CountryTests, RelationsDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -987,8 +949,7 @@ TEST(Vic2World_Countries_CountryTests, RelationsCanBeAdded)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1013,8 +974,7 @@ TEST(Vic2World_Countries_CountryTests, AiDefaultsToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1044,8 +1004,7 @@ TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1083,8 +1042,7 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -1110,8 +1068,7 @@ TEST(Vic2World_Countries_CountryTests, CivilizedDefaultsToFalse)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1135,8 +1092,7 @@ TEST(Vic2World_Countries_CountryTests, CivilizedCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1160,8 +1116,7 @@ TEST(Vic2World_Countries_CountryTests, CivilizedNotSetWithoutYes)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1184,8 +1139,7 @@ TEST(Vic2World_Countries_CountryTests, ArmiesDefaultsToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1212,8 +1166,7 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeAdded)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1241,8 +1194,7 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeModified)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -1272,8 +1224,7 @@ TEST(Vic2World_Countries_CountryTests, NaviesCanBeAdded)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1305,8 +1256,7 @@ TEST(Vic2World_Countries_CountryTests, TransportedArmiesCanBeAdded)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1331,8 +1281,7 @@ TEST(Vic2World_Countries_CountryTests, LeadersDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1361,8 +1310,7 @@ TEST(Vic2World_Countries_CountryTests, LeadersCanBeAdded)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1409,8 +1357,7 @@ TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsAreLimited)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1435,8 +1382,7 @@ TEST(Vic2World_Countries_CountryTests, RevanchismDefaultsToZero)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1460,8 +1406,7 @@ TEST(Vic2World_Countries_CountryTests, RevanchismCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1484,8 +1429,7 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionDefaultsToZero)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1509,8 +1453,7 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1533,8 +1476,7 @@ TEST(Vic2World_Countries_CountryTests, BadBoyDefaultsToZero)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1558,8 +1500,7 @@ TEST(Vic2World_Countries_CountryTests, BadBoyCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1582,8 +1523,7 @@ TEST(Vic2World_Countries_CountryTests, FlagsDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1612,8 +1552,7 @@ TEST(Vic2World_Countries_CountryTests, FlagsCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1636,8 +1575,7 @@ TEST(Vic2World_Countries_CountryTests, GovernmentDefaultsToBlank)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1661,8 +1599,7 @@ TEST(Vic2World_Countries_CountryTests, GovernmentCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1685,8 +1622,7 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionDefaultsToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1715,8 +1651,7 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1750,8 +1685,7 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionLogsErrorOnBadInput)
 	std::cout.rdbuf(log.rdbuf());
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1776,8 +1710,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetLogsWarning)
 
 	std::stringstream theStream;
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1802,8 +1735,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNonexistantThrowsException)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto countryFactory = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto countryFactory = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
 
@@ -1841,8 +1773,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1866,8 +1797,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNotSetForRebel)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("REB",
@@ -1890,8 +1820,7 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1916,8 +1845,7 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1949,8 +1877,7 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesLoggedIfUndefined)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -1977,8 +1904,7 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBecomeRulingPartyIfUnset)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2004,8 +1930,7 @@ TEST(Vic2World_Countries_CountryTests, LastElectionDefaultsToOneOneOne)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2029,8 +1954,7 @@ TEST(Vic2World_Countries_CountryTests, LastElectionCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2053,8 +1977,7 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2083,8 +2006,7 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesCanBeSet)
 		 {"ironclad", std::vector<std::string>{"Erivan", "Nakchivan"}}};
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2112,8 +2034,7 @@ TEST(Vic2World_Countries_CountryTests, AtWarDefaultsToFalse)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2136,8 +2057,7 @@ TEST(Vic2World_Countries_CountryTests, AtWarCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2161,8 +2081,7 @@ TEST(Vic2World_Countries_CountryTests, WarsDefaultToEmpty)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2185,8 +2104,7 @@ TEST(Vic2World_Countries_CountryTests, WarsCanBeAdded)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2210,8 +2128,7 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCores)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2235,8 +2152,7 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCoreOnCapital)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2261,8 +2177,7 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalTrueWithCoreOnCapital)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2287,8 +2202,7 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersDefaultsToZero)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2333,8 +2247,7 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersComeFromStates)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2367,8 +2280,7 @@ TEST(Vic2World_Countries_CountryTests, StateCategoriesCanBeSet)
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
 	const auto country =
-		 Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-			  mod_filesystem,
+		 Vic2::Country::Factory(mod_filesystem,
 			  *Vic2::StateDefinitions::Builder().setProvinceToIDMap({{42, "TEST_STATE"}}).build(),
 			  Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 			  .createCountry("TAG",
@@ -2399,8 +2311,7 @@ TEST(Vic2World_Countries_CountryTests, StateCategoriesLoggedWhenNotSet)
 	std::cout.rdbuf(log.rdbuf());
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().setProvinceToIDMap({{42, "TEST_STATE"}}).build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2425,8 +2336,7 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportDefaultsToZero)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2449,8 +2359,7 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportComesFromProvinces)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2478,8 +2387,7 @@ TEST(Vic2World_Countries_CountryTests, NameMissingByDefault)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2502,8 +2410,7 @@ TEST(Vic2World_Countries_CountryTests, NameComesFromLocalisations)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2534,8 +2441,7 @@ TEST(Vic2World_Countries_CountryTests, NameCanComeFromDomain)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2566,8 +2472,7 @@ TEST(Vic2World_Countries_CountryTests, NameFromDomainUpdatesLocalisations)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2597,8 +2502,7 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveMissingByDefault)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -2621,8 +2525,7 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveComesFromLocalisations)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2654,8 +2557,7 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveCanComeFromDomain)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2696,8 +2598,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *stateDefinitions,
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2721,8 +2622,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 	theStreamTwo << "\t}\n";
 	theStreamTwo << "}";
 
-	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto countryTwo = Vic2::Country::Factory(mod_filesystem,
 		 *stateDefinitions,
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 										 .createCountry("TWO",
@@ -2750,8 +2650,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2767,8 +2666,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
 
-	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto countryTwo = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 										 .createCountry("TWO",
@@ -2800,8 +2698,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2817,8 +2714,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
 
-	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto countryTwo = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 										 .createCountry("TWO",
@@ -2851,8 +2747,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInvention
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2872,8 +2767,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInvention
 	theStreamTwo << "\t}\n";
 	theStreamTwo << "}";
 
-	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto countryTwo = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 										 .createCountry("TWO",
@@ -2900,8 +2794,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2921,8 +2814,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 	theStreamTwo << "\t}\n";
 	theStreamTwo << "}";
 
-	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto countryTwo = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 										 .createCountry("TWO",
@@ -2949,8 +2841,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -2966,8 +2857,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
 
-	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto countryTwo = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 										 .createCountry("TWO",
@@ -2996,8 +2886,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -3013,8 +2902,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
 
-	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto countryTwo = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 										 .createCountry("TWO",
@@ -3046,8 +2934,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryHasNoEffectOnSelf)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -3080,8 +2967,7 @@ TEST(Vic2World_Countries_CountryTests, ProvincesCanBePlacedInStates)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -3114,8 +3000,7 @@ TEST(Vic2World_Countries_CountryTests, MissingProvinceInStateLogged)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 							 .createCountry("TAG",
@@ -3144,8 +3029,7 @@ TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -3160,8 +3044,7 @@ TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 	theStreamTwo << "= {\n";
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto countryTwo = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 										 .createCountry("TAG",
@@ -3184,8 +3067,7 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -3201,8 +3083,7 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
 
-	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto countryTwo = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 										 .createCountry("TWO",
@@ -3225,8 +3106,7 @@ TEST(Vic2World_Countries_CountryTests, DynastyDefaultsToNullopt)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -3249,8 +3129,7 @@ TEST(Vic2World_Countries_CountryTests, MonarchDefaultsToNullopt)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -3273,8 +3152,7 @@ TEST(Vic2World_Countries_CountryTests, DynastyImportedFromCountryData)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -3297,8 +3175,7 @@ TEST(Vic2World_Countries_CountryTests, MonarchImportedFromCountryData)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -3318,8 +3195,7 @@ TEST(Vic2World_Countries_CountryTests, GoodsStockpileDefaultsToEmpty)
 	std::stringstream input;
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
@@ -3343,8 +3219,7 @@ TEST(Vic2World_Countries_CountryTests, GoodsStockpileIsReturned)
 	input << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
-		 mod_filesystem,
+	const auto country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
 									 .createCountry("TAG",
