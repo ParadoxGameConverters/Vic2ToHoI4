@@ -2814,6 +2814,9 @@
     <Text Include="data\configurables\scenario_creator_roles.txt">
       <Filter>data\configurables</Filter>
     </Text>
+    <Text Include="data\configurables\Scenarios\SpanishCivilWar\decisions.txt">
+      <Filter>data\configurables\Scenarios\SpanishCivilWar</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

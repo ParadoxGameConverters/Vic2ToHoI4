@@ -7,7 +7,7 @@
 class ModSpanishCivilWar: public ScenarioMod
 {
   public:
-	ModSpanishCivilWar() = default;
+	class Builder;
 	ModSpanishCivilWar(std::shared_ptr<HoI4::Country> country);
 
   private:

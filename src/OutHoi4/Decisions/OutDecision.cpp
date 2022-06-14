@@ -5,6 +5,10 @@
 std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecision)
 {
 	outStream << "\n\t" << outDecision.name << " = {\n";
+	if (!outDecision.priority)
+	{
+		outStream << "\n\t\tpriority = " << *outDecision.priority << "\n";
+	}
 	if (!outDecision.icon.empty())
 	{
 		outStream << "\n\t\ticon = " << outDecision.icon << "\n";
@@ -64,6 +68,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	if (!outDecision.visible.empty())
 	{
 		outStream << "\n\t\tvisible " << outDecision.visible << "\n";
+	}
+	if (!outDecision.cancelIfNotVisable.empty())
+	{
+		outStream << "\n\t\tcancel_if_not_visible = " << outDecision.cancelIfNotVisable << "\n";
 	}
 	if (!outDecision.cancelTrigger.empty())
 	{

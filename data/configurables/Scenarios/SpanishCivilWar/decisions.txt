@@ -1,7 +1,3 @@
-# Missing these keys in decision parser
-# priority
-# cancel_if_not_visible
-
 SPR_the_inevitable_civil_war = {
 
 	SPA_military_plot_nationalists = {

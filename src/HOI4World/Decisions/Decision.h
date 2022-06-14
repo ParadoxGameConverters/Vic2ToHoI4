@@ -44,6 +44,7 @@ class decision: commonItems::parser
 
   private:
 	std::string name;
+	std::optional<int> priority;
 	std::string icon;
 	std::string nameField;
 	std::string isGood;
@@ -62,6 +63,7 @@ class decision: commonItems::parser
 	std::string customCostTrigger;
 	std::string customCostText;
 	std::string visible;
+	std::string cancelIfNotVisable;
 	std::string cancelTrigger;
 	std::string onMapMode;
 	std::string completeEffect;
