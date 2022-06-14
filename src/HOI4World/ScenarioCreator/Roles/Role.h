@@ -12,14 +12,14 @@ class Role
 	[[nodiscard]] double getFit() const { return fit; };
 	[[nodiscard]] std::string getName() const { return name; };
 
-	// NOTE: const reference vs ptr, any advantage/disadvantage between them?
 	virtual bool isValid(const HoI4::Country& country) const = 0;
 	virtual void calculateFit(const HoI4::Country& country) = 0;
 	virtual std::shared_ptr<ScenarioMod> apply(std::shared_ptr<HoI4::Country> country) = 0;
 
+	// True if greater fit, analagous to std::greater
 	static bool roleComparator(const std::shared_ptr<Role> lhs, const std::shared_ptr<Role> rhs)
 	{
-		return lhs->getFit() < rhs->getFit();
+		return lhs->getFit() > rhs->getFit();
 	};
 
   protected:

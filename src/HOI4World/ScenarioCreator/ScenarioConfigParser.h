@@ -17,7 +17,7 @@ class ConfigParser: commonItems::parser
   private:
 	void registerKeys();
 	void registerKeysPreGenned();
-	std::set<std::string> possibleRoles; // Roles marked as valid in config file
+	std::set<std::string> possibleRoles;					 // Roles marked as valid in config file
 	std::map<std::string, std::string> roleAssignments; // Map of tag to pre-assigned role
 };
 } // namespace HoI4

@@ -1,9 +1,6 @@
 #include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
 #include <filesystem>
 
-// Initalize static constants
-const std::string ScenarioUtilities::garrison = "GARRISON";
-
 const std::string ScenarioUtilities::getSaveName(const std::string& inputFile)
 {
 	const auto& match = std::filesystem::path::preferred_separator;
@@ -12,4 +9,3 @@ const std::string ScenarioUtilities::getSaveName(const std::string& inputFile)
 	else
 		return inputFile.substr(0, inputFile.size() - 3);
 }
-

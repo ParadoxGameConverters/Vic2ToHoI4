@@ -924,6 +924,7 @@
     <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\ModBellyOfTheBeasts.h" />
     <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleBellyOfTheBeasts\RoleBellyOfTheBeasts.h" />
     <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWar.h" />
+    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarBuilder.h" />
     <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.h" />
     <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleTestShell.h" />
     <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\ScenarioMod.h" />
@@ -1731,6 +1732,11 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables/Scenarios</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioCreator\scenario_creator_roles.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioCreator\scenario_creator_test_roles.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>

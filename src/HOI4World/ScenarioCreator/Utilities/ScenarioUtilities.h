@@ -12,8 +12,7 @@ class ScenarioUtilities
 	static const std::string getSaveName(const std::string& inputFile);
 
   private:
-	  // Static const member variables for string in file to variable conversion
-	static const std::string garrison;
+	// If nothing goese here at end, just make this part of HoI4 namespace and no class
 };
 
 #endif // SCENARIO_UTILITIES_H

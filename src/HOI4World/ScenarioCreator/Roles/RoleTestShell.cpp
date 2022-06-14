@@ -1,19 +1,38 @@
 #include "src/HOI4World/ScenarioCreator/Roles/RoleTestShell.h"
 
-bool RoleTestShell::isValid(const HoI4::Country& country) const
+// Shell One
+
+bool RoleTestShellOne::isValid(const HoI4::Country& country) const
 {
-	return true;
+	return country.getMilitaryFactories() > 6;
 }
 
-void RoleTestShell::calculateFit(const HoI4::Country& country)
+void RoleTestShellOne::calculateFit(const HoI4::Country& country)
 {
-	if (const auto& name = country.getName(); name)
-		fit = name->at(0);
-	else
-		fit = 0;
+	fit = country.getMilitaryFactories();
 }
 
-std::shared_ptr<ScenarioMod> RoleTestShell::apply(const HoI4::Country& country)
+std::shared_ptr<ScenarioMod> RoleTestShellOne::apply(std::shared_ptr<HoI4::Country> country)
 {
-	return std::shared_ptr<ScenarioMod>();
+	return nullptr;
+}
+
+// Shell Two
+
+bool RoleTestShellTwo::isValid(const HoI4::Country& country) const
+{
+	return country.getTag()[0] == 'C';
+}
+
+void RoleTestShellTwo::calculateFit(const HoI4::Country& country)
+{
+	double sum = 0;
+	for (const auto& letter: country.getTag())
+		sum += letter;
+	fit = sum;
+}
+
+std::shared_ptr<ScenarioMod> RoleTestShellTwo::apply(std::shared_ptr<HoI4::Country> country)
+{
+	return nullptr;
 }

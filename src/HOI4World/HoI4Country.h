@@ -54,6 +54,9 @@ namespace HoI4
 class Country
 {
   public:
+	// For creating shell objects for tests
+	class Builder;
+	Country() = default;
 	// For creating countries from Vic2 countries
 	explicit Country(std::string tag,
 		 const Vic2::Country& sourceCountry,
@@ -334,6 +337,8 @@ class Country
 	static bool compareCountriesByIndustryDescending(const std::shared_ptr<HoI4::Country> lhs,
 		 const std::shared_ptr<HoI4::Country> rhs);
 
+	void setTag(std::string tag) { tag = tag; };
+
   private:
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations);
@@ -499,6 +504,27 @@ class Country
 	bool has_naval_manufacturer_ = false;
 	bool has_industrial_concern_ = false;
 	bool has_electronics_concern_ = false;
+};
+
+class HoI4::Country::Builder
+{
+  public:
+	Builder() { country = std::make_unique<HoI4::Country>(); }
+	std::unique_ptr<HoI4::Country> build() { return std::move(country); }
+
+	Builder& addTag(std::string tag)
+	{
+		country->tag = std::move(tag);
+		return *this;
+	}
+	Builder& addMillitaryFactories(double factories)
+	{
+		country->militaryFactories = std::move(factories);
+		return *this;
+	}
+
+  private:
+	std::unique_ptr<HoI4::Country> country;
 };
 
 } // namespace HoI4

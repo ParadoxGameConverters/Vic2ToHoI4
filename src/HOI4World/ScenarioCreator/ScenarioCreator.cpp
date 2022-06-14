@@ -1,14 +1,16 @@
 #include "src/HOI4World/ScenarioCreator/ScenarioCreator.h"
+#include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "src/HOI4World/ScenarioCreator/Roles/RoleArsenalOfIdeology/RoleArsenalOfIdeology.h"
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/RoleSpanishCivilWar.h"
+#include "src/HOI4World/ScenarioCreator/Roles/RoleTestShell.h"
 #include "src/HOI4World/ScenarioCreator/ScenarioConfigParser.h"
-#include <external/common_items/Log.h>
 #include <filesystem>
 #include <ranges>
 
 HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countryMap,
-	 const std::string& saveName):
+	 const std::string& saveName,
+	 const std::string& roleFileName):
 	 saveName(saveName)
 {
 	const auto& scenarioFile = "Configurables/Scenarios/" + saveName + "_scenario.txt";
@@ -39,7 +41,7 @@ HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_p
 			countries.emplace(country);
 		}
 
-		const auto& possibleRoles = ConfigParser("Configurables/scenario_creator_roles.txt").getPossibleRoles();
+		const auto& possibleRoles = ConfigParser("Configurables/" + roleFileName).getPossibleRoles();
 		initialzeRoles(possibleRoles);
 
 		for (const auto& country: countries)
@@ -62,6 +64,16 @@ void HoI4::ScenarioCreator::initialzeRoles(const std::set<std::string> possibleR
 	{
 		roles.push_back(std::make_shared<RoleArsenalOfIdeology>());
 		roleTracker.erase("ArsenalOfIdeology");
+	}
+	if (roleTracker.contains("TestShellOne"))
+	{
+		roles.push_back(std::make_shared<RoleTestShellOne>());
+		roleTracker.erase("TestShellOne");
+	}
+	if (roleTracker.contains("TestShellTwo"))
+	{
+		roles.push_back(std::make_shared<RoleTestShellTwo>());
+		roleTracker.erase("TestShellTwo");
 	}
 
 	for (const auto& role: roleTracker)

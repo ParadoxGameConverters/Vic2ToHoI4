@@ -9,9 +9,11 @@ namespace HoI4
 class ScenarioCreator
 {
   public:
+	class Builder;
 	ScenarioCreator() = default;
 	ScenarioCreator(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countryMap,
-		 const std::string& saveName);
+		 const std::string& saveName,
+		 const std::string& roleFileName = "scenario_creator_roles.txt");
 
 	typedef std::multiset<std::shared_ptr<HoI4::Country>, decltype(HoI4::Country::compareCountriesByIndustryDescending)*>
 		 CountriesByIndustryDescendingMultiSet;
