@@ -35,6 +35,7 @@
 #include "src/HOI4World/OnActions.h"
 #include "src/HOI4World/Operations/Operations.h"
 #include "src/HOI4World/OperativeNames/OperativeNames.h"
+#include "src/HOI4World/ScenarioCreator/ScenarioCreator.h"
 #include "src/HOI4World/ScriptedEffects/ScriptedEffects.h"
 #include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
 #include "src/HOI4World/ScriptedTriggers/ScriptedTriggers.h"
@@ -112,6 +113,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getLocalisation() const { return *hoi4Localisations; }
 	[[nodiscard]] const auto& getSoundEffects() const { return soundEffects; }
 	[[nodiscard]] const auto& getDate() const { return *theDate; }
+	[[nodiscard]] const auto& getScenarios() const { return scenarios; }
 	[[nodiscard]] const auto& getCustomizedFocusBranches() const { return customizedFocusBranches; }
 
 	const std::map<int, HoI4::State>& getStates() const { return states->getStates(); }
@@ -294,6 +296,8 @@ class World: commonItems::parser
 	std::map<std::pair<std::string, std::string>, std::shared_ptr<Country>> dominions;
 	std::map<std::string, std::shared_ptr<Country>> unrecognizedNations;
 	std::vector<std::string> customizedFocusBranches;
+
+	ScenarioCreator scenarios;
 };
 
 } // namespace HoI4

@@ -24,6 +24,7 @@
 #include "src/OutHoi4/OutHoi4Country.h"
 #include "src/OutHoi4/OutLocalisation.h"
 #include "src/OutHoi4/OutOnActions.h"
+#include "src/OutHoi4/ScenarioCreator/OutScenario.h"
 #include "src/OutHoi4/ScriptedEffects/OutScriptedEffects.h"
 #include "src/OutHoi4/ScriptedLocalisations/OutScriptedLocalisations.h"
 #include "src/OutHoi4/ScriptedTriggers/OutScriptedTriggers.h"
@@ -34,7 +35,6 @@
 #include <iterator>
 #include <optional>
 #include <ranges>
-
 
 
 namespace HoI4
@@ -233,6 +233,7 @@ void HoI4::OutputWorld(const World& world,
 	outputSounds(outputName, world.getSoundEffects());
 	outMonarchInterface(outputName, world.getCountries());
 	copyCustomizedFocusFiles(outputName, world.getCustomizedFocusBranches());
+	outputScenario(world.getScenarios(),outputName);
 }
 
 

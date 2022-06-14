@@ -10,7 +10,7 @@ class RoleArsenalOfIdeology: public Role
 
 	bool isValid(const HoI4::Country& country) const;
 	void calculateFit(const HoI4::Country& country);
-	std::shared_ptr<ScenarioMod> apply(const HoI4::Country& country);
+	std::shared_ptr<ScenarioMod> apply(std::shared_ptr<HoI4::Country> country);
 
   private:
 };

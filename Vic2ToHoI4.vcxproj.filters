@@ -2547,6 +2547,12 @@
     <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleArsenalOfIdeology\RoleArsenalOfIdeology.h">
       <Filter>src\HoI4World\ScenarioCreator\Roles\ArsenalOfIdeology</Filter>
     </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScenarioCreator\OutScenario.h">
+      <Filter>src\OutHoi4\ScenarioCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScenarioCreator\OutScenarioMod.h">
+      <Filter>src\OutHoi4\ScenarioCreator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
@@ -2805,8 +2811,8 @@
     <Text Include="data\configurables\Scenarios\example_scenario.txt">
       <Filter>data\configurables\Scenarios</Filter>
     </Text>
-    <Text Include="data\test_files\HoI4Files\ScenarioCreator\scenario_creator_roles.txt">
-      <Filter>data\configurables\Scenarios</Filter>
+    <Text Include="data\configurables\scenario_creator_roles.txt">
+      <Filter>data\configurables</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>

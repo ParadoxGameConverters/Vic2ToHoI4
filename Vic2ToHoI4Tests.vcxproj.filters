@@ -3622,9 +3622,6 @@
     <ClInclude Include="src\OutHoi4\ScenarioCreator\OutScenarioMod.h">
       <Filter>src\OutHoi4\ScenarioCreator</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarBuilder.h">
-      <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt">
@@ -4002,10 +3999,8 @@
     <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioCreator\scenario_creator_roles.txt">
       <Filter>data\test_files\HoI4Files\ScenarioCreator</Filter>
     </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="data\test_files\HoI4Files\ScenarioCreator\example_scenario.txt">
+    <CopyFileToFolders Include="data\test_files\HoI4Files\ScenarioCreator\example_scenario.txt">
       <Filter>data\test_files\HoI4Files\ScenarioCreator</Filter>
-    </Text>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

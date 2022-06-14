@@ -13,21 +13,22 @@ class ScenarioCreator
 	ScenarioCreator(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countryMap,
 		 const std::string& saveName);
 
-	typedef std::multiset<std::shared_ptr<HoI4::Country>, decltype(&HoI4::Country::compareCountriesByIndustry)>
-		 CountriesByIndustryMultiSet;
+	typedef std::multiset<std::shared_ptr<HoI4::Country>, decltype(HoI4::Country::compareCountriesByIndustryDescending)*>
+		 CountriesByIndustryDescendingMultiSet;
 
-	[[nodiscard]] std::vector<std::shared_ptr<Role>> getRoles() const { return roles; };
-	[[nodiscard]] std::vector<std::shared_ptr<ScenarioMod>> getScenarioMods() const { return scenarioMods; };
-	[[nodiscard]] CountriesByIndustryMultiSet getCountries() const { return countries; };
-	[[nodiscard]] std::map<std::string, std::string> getAssignments() const { return countryToRoleAssignments; };
+	[[nodiscard]] const auto& getRoles() const { return roles; };
+	[[nodiscard]] const auto& getScenarioMods() const { return scenarioMods; };
+	[[nodiscard]] const auto& getCountries() const { return countries; };
+	[[nodiscard]] const auto& getAssignments() const { return countryToRoleAssignments; };
+	[[nodiscard]] const auto& getSaveName() const { return saveName; };
 
 
   private:
-	// NOTE: does more than one ptr to each obj need to exist at a time? could unique_ptr work?
 	std::vector<std::shared_ptr<Role>> roles;
 	std::vector<std::shared_ptr<ScenarioMod>> scenarioMods;
-	CountriesByIndustryMultiSet countries;
+	CountriesByIndustryDescendingMultiSet countries{HoI4::Country::compareCountriesByIndustryDescending};
 	std::map<std::string, std::string> countryToRoleAssignments;
+	std::string saveName;
 
 	// Construct and emplace a role of each class
 	void initialzeRoles(const std::set<std::string> possibleRoles);
@@ -36,10 +37,10 @@ class ScenarioCreator
 	void recalculateRoleFits(const HoI4::Country& country);
 
 	// Apply role to country, only if a valid match exists. Update tag -> Role assignments.
-	void applyRole(const HoI4::Country& country);
+	void applyRole(std::shared_ptr<HoI4::Country> country);
 
 	// Apply role to country, ignore all restrictions and collect possible resulting mod.
-	void applyRole(const HoI4::Country& country, const std::shared_ptr<Role> role);
+	void applyRole(std::shared_ptr<HoI4::Country> country, const std::shared_ptr<Role> role);
 
 
 	const std::shared_ptr<Role> getRoleByName(const std::string roleName);

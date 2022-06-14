@@ -1,4 +1,5 @@
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/RoleSpanishCivilWar.h"
+#include <src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/ModSpanishCivilWar.h>
 
 RoleSpanishCivilWar::RoleSpanishCivilWar()
 {
@@ -29,12 +30,11 @@ void RoleSpanishCivilWar::calculateFit(const HoI4::Country& country)
 	fit = 2;
 }
 
-std::shared_ptr<ScenarioMod> RoleSpanishCivilWar::apply(const HoI4::Country& country)
+std::shared_ptr<ScenarioMod> RoleSpanishCivilWar::apply(std::shared_ptr<HoI4::Country> country)
 {
 	instances += 1;
 
-	// Should the modifications to Country happen here or in the factory/creator/builder thingy class?
+	// Should the modifications to country happen here or in the factory/creator/builder thingy class?
 	// Make a copy of country class before messing with it? Does default copy constructor even make a deep copy/work?
-
-	return std::make_shared<ScenarioMod>();
+	return std::make_shared<ModSpanishCivilWar>(country);
 }

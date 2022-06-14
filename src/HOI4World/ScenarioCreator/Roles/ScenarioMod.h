@@ -13,10 +13,12 @@ class ScenarioMod
 	[[nodiscard]] auto getDecisions() const { return decisions; };
 	[[nodiscard]] auto getDecisionCategories() const { return decisionCategories; };
 	[[nodiscard]] auto getEvents() const { return events; };
+	[[nodiscard]] auto getName() const { return name; };
 
   protected:
 	std::vector<HoI4::decision> decisions;
 	std::vector<HoI4::DecisionsCategory> decisionCategories;
 	std::vector<HoI4::Event> events;
+	std::string name;
 };
 #endif // SCENARIO_MOD_H

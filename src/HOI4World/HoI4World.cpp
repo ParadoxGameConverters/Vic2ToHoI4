@@ -33,6 +33,7 @@
 #include "src/HOI4World/Operations/OperationsFactory.h"
 #include "src/HOI4World/OperativeNames/OperativeNamesFactory.h"
 #include "src/HOI4World/Regions/RegionsFactory.h"
+#include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
 #include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisationsFactory.h"
 #include "src/HOI4World/ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "src/HOI4World/ShipTypes/PossibleShipVariants.h"
@@ -173,7 +174,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Log(LogLevel::Progress) << "48%";
 	convertIndustry(theConfiguration);
 	convertDiplomacy(sourceWorld);
-	//convertWars(sourceWorld, provinceMapper);
+	// convertWars(sourceWorld, provinceMapper);
 	addDominions(countryMapperFactory);
 	addUnrecognizedNations(countryMapperFactory, provinceMapper, sourceWorld);
 	states->addCoresToCorelessStates(sourceWorld.getCountries(),
@@ -243,7 +244,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		createFactions(theConfiguration);
 	}
 
-	//HoI4WarCreator warCreator(this, *theMapData, *provinceDefinitions, *hoi4Localisations, theConfiguration);
+	// HoI4WarCreator warCreator(this, *theMapData, *provinceDefinitions, *hoi4Localisations, theConfiguration);
 
 	transferPuppetsToDominions();
 
@@ -255,7 +256,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	updateScriptedTriggers(scriptedTriggers, ideologies->getMajorIdeologies());
 	Log(LogLevel::Progress) << "76%";
 
-	// scenarios = ScenarioCreator(countries,ScenarioUtilities::getSaveName(theConfiguration.getInputFIle()));
+	scenarios = ScenarioCreator(countries, ScenarioUtilities::getSaveName(theConfiguration.getInputFile()));
 
 	countryCategories =
 		 createCountryCategories(*countryMap, countries, ideologies->getMajorIdeologies(), theConfiguration.getDebug());

@@ -226,10 +226,10 @@ HoI4::Country::Country(const std::string& region_,
 }
 
 
-bool HoI4::Country::compareCountriesByIndustry(const std::shared_ptr<HoI4::Country> lhs,
+bool HoI4::Country::compareCountriesByIndustryDescending(const std::shared_ptr<HoI4::Country> lhs,
 	 const std::shared_ptr<HoI4::Country> rhs)
 {
-	return lhs->getIndustry() < rhs->getIndustry();
+	return lhs->getIndustry() > rhs->getIndustry();
 }
 
 void HoI4::Country::determineFilename()

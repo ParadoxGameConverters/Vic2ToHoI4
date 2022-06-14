@@ -331,7 +331,7 @@ class Country
 
 	[[nodiscard]] std::mt19937& getGenerator() { return generator; }
 
-	static bool compareCountriesByIndustry(const std::shared_ptr<HoI4::Country> lhs,
+	static bool compareCountriesByIndustryDescending(const std::shared_ptr<HoI4::Country> lhs,
 		 const std::shared_ptr<HoI4::Country> rhs);
 
   private:

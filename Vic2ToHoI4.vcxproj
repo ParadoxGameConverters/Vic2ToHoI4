@@ -712,6 +712,8 @@
     <ClInclude Include="src\OutHoi4\OutOnActions.h" />
     <ClInclude Include="src\OutHoI4\OutSharedFocus.h" />
     <ClInclude Include="src\OutHoi4\OutTechnologies.h" />
+    <ClInclude Include="src\OutHoi4\ScenarioCreator\OutScenario.h" />
+    <ClInclude Include="src\OutHoi4\ScenarioCreator\OutScenarioMod.h" />
     <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffect.h" />
     <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffects.h" />
     <ClInclude Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.h" />
@@ -1040,6 +1042,7 @@
     <Text Include="data\configurables\research_bonus_mappings.txt" />
     <Text Include="data\configurables\Resources.txt" />
     <Text Include="data\configurables\Scenarios\example_scenario.txt" />
+    <Text Include="data\configurables\scenario_creator_roles.txt" />
     <Text Include="data\configurables\shipTypes.txt" />
     <Text Include="data\configurables\Sounds\CultureToVoiceMappings.txt" />
     <Text Include="data\configurables\tankDesigns.txt" />
@@ -1048,7 +1051,6 @@
     <Text Include="data\configurables\unit_mappings.txt" />
     <Text Include="data\fronter\fronter-configuration.txt" />
     <Text Include="data\fronter\fronter-options.txt" />
-    <Text Include="data\test_files\HoI4Files\ScenarioCreator\scenario_creator_roles.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\!provincenames_l_english.yml" />
