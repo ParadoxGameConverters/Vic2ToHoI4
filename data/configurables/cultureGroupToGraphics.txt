@@ -60,7 +60,7 @@
 #hispanic, african, deathbringers, animalia
 
 anglo_celtic = {
-	cultures_and_groups = { british celtic american_cultures anglo_saxon australian anglo_canadian anglo_african meashighcaw redwoodian guyanese incacunapic }
+	cultures_and_groups = { british celtic american_cultures anglo_saxon australian anglo_canadian anglo_african meashighcaw redwoodian guyanese incacunapic lepontic }
 	army_portraits = {
 		#Generic European
 		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
@@ -357,8 +357,8 @@ anglo_celtic = {
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
 }
-pan_french = {
-	cultures_and_groups = { french frankish french_canadian tounensois nouvellien australienne africaine antartique }
+french_beneluxian = {
+	cultures_and_groups = { french frankish neo_european_cultures beneluxian }
 		army_portraits = {
 		#Generic European
 		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
@@ -591,7 +591,7 @@ pan_french = {
 	graphical_culture_2d = western_european_2d
 }
 nordic_uralic = {
-	cultures_and_groups = { scandinavian hungarian_culture_group estonian }
+	cultures_and_groups = { scandinavian hungarian_culture_group estonian finnougric }
 	army_portraits = {
 		#Generic European
 		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
@@ -820,8 +820,8 @@ nordic_uralic = {
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
 }
-western_european = {
-	cultures_and_groups = { germanic beneluxian pan_swiss jewish_group jewish_cultures scandinavian british celtic french american_cultures neo_european_cultures lepontic varangian_g gothic_g barbarian neo_european_cultures }
+pan_germanic = {
+	cultures_and_groups = { germanic pan_swiss jewish_group jewish_cultures varangian_g gothic_g barbarian } #jewish cultures will be moved in the final check-up
 	army_portraits = {
 		#Generic European
 		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
