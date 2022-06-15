@@ -91,6 +91,7 @@ void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
 
 HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
+	 const commonItems::ModFilesystem& mod_filesystem,
 	 const Configuration& theConfiguration):
 	 theIdeas(std::make_unique<HoI4::Ideas>()),
 	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
@@ -111,7 +112,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Character::Factory characterFactory;
 	provinceDefinitions =
 		 std::make_unique<Maps::ProvinceDefinitions>(importProvinceDefinitions(theConfiguration.getHoI4Path()));
-	theMapData = std::make_unique<Maps::MapData>(*provinceDefinitions, theConfiguration.getHoI4Path());
+	theMapData = std::make_unique<Maps::MapData>(*provinceDefinitions, mod_filesystem);
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
 	strategicRegions = StrategicRegions::Factory().importStrategicRegions(theConfiguration);

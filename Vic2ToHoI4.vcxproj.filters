@@ -1114,6 +1114,12 @@
     <ClCompile Include="src\HOI4World\Map\SupplyZones.cpp">
       <Filter>src\HoI4World\Map</Filter>
     </ClCompile>
+    <ClCompile Include="external\common_items\ModLoader\ModFilesystem.cpp">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Countries\CommonCountryData.cpp">
+      <Filter>src\V2World\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2235,9 +2241,6 @@
     <ClInclude Include="src\V2World\Countries\CommonCountryData.h">
       <Filter>src\V2World\Countries</Filter>
     </ClInclude>
-    <ClInclude Include="src\V2World\Countries\CommonCountryDataBuilder.h">
-      <Filter>src\V2World\Countries</Filter>
-    </ClInclude>
     <ClInclude Include="src\V2World\Countries\CommonCountryDataFactory.h">
       <Filter>src\V2World\Countries</Filter>
     </ClInclude>
@@ -2474,6 +2477,9 @@
     </ClInclude>
     <ClInclude Include="src\HOI4World\Map\SupplyZones.h">
       <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h">
+      <Filter>external\common_items\ModLoader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

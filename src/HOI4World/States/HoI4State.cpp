@@ -4,6 +4,7 @@
 #include "src/HOI4World/States/StateCategories.h"
 #include "src/V2World/Provinces/Province.h"
 #include "src/V2World/States/State.h"
+#include <cmath>
 #include <ranges>
 
 
@@ -352,7 +353,7 @@ void HoI4::State::convertIndustry(double workerFactoryRatio,
 int HoI4::State::determineFactoryNumbers(double workerFactoryRatio, int ownerIndustryRemainder)
 {
 	double rawFactories = employedWorkers * workerFactoryRatio;
-	rawFactories = round(rawFactories);
+	rawFactories = std::round(rawFactories);
 	return constrainFactoryNumbers(rawFactories + ownerIndustryRemainder);
 }
 

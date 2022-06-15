@@ -1,36 +1,32 @@
-#ifndef INVENTIONS_FACTORY_H
-#define INVENTIONS_FACTORY_H
+#ifndef SRC_V2WORLD_TECHNOLOGY_INVENTIONS_FACTORY_H
+#define SRC_V2WORLD_TECHNOLOGY_INVENTIONS_FACTORY_H
 
 
 
-#include "external/common_items/ConvenientParser.h"
-#include "src/Configuration.h"
+#include "external/common_items/ModLoader/ModFilesystem.h"
+#include "external/common_items/Parser.h"
 #include "src/V2World/Technology/Inventions.h"
 #include <memory>
-#include <string>
-#include <vector>
 
 
 
 namespace Vic2
 {
 
-class Inventions::Factory: commonItems::parser
+class Inventions::Factory
 {
   public:
 	Factory();
-	std::unique_ptr<Inventions> loadInventions(const Configuration& theConfiguration);
+	std::unique_ptr<Inventions> LoadInventions(const commonItems::ModFilesystem& mod_filesystem);
 
   private:
-	[[nodiscard]] std::vector<std::string> getInventionFiles(const Configuration& theConfiguration) const;
-	[[nodiscard]] std::map<std::string, std::string> getTechFilesAndPaths(const Configuration& theConfiguration) const;
-	void generateNumbers(const std::vector<std::string>& inventionFiles);
+	commonItems::parser parser_;
 
-	std::unique_ptr<Inventions> inventions;
+	std::unique_ptr<Inventions> inventions_;
 };
 
 } // namespace Vic2
 
 
 
-#endif // INVENTIONS_FACTORY_H
+#endif // SRC_V2WORLD_TECHNOLOGY_INVENTIONS_FACTORY_H

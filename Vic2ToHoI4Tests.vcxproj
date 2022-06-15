@@ -33,6 +33,7 @@
     <ClCompile Include="external\common_items\GameVersion.cpp" />
     <ClCompile Include="external\common_items\iconvlite.cpp" />
     <ClCompile Include="external\common_items\Log.cpp" />
+    <ClCompile Include="external\common_items\ModLoader\ModFilesystem.cpp" />
     <ClCompile Include="external\common_items\ModLoader\ModLoader.cpp" />
     <ClCompile Include="external\common_items\ModLoader\ModParser.cpp" />
     <ClCompile Include="external\common_items\OSCommonLayer.cpp" />
@@ -504,6 +505,7 @@
     <ClCompile Include="src\V2World\Ai\AITests.cpp" />
     <ClCompile Include="src\V2World\Countries\CommonCountriesDataFactory.cpp" />
     <ClCompile Include="src\V2World\Countries\CommonCountriesDataFactoryTests.cpp" />
+    <ClCompile Include="src\V2World\Countries\CommonCountryData.cpp" />
     <ClCompile Include="src\V2World\Countries\CommonCountryDataFactory.cpp" />
     <ClCompile Include="src\V2World\Countries\CommonCountryDataTests.cpp" />
     <ClCompile Include="src\V2World\Countries\Country.cpp" />
@@ -723,6 +725,7 @@
     <ClInclude Include="external\common_items\iconvlite.h" />
     <ClInclude Include="external\common_items\Log.h" />
     <ClInclude Include="external\common_items\ModLoader\Mod.h" />
+    <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h" />
     <ClInclude Include="external\common_items\ModLoader\ModLoader.h" />
     <ClInclude Include="external\common_items\ModLoader\ModParser.h" />
     <ClInclude Include="external\common_items\OSCompatibilityLayer.h" />
@@ -1301,18 +1304,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\Cultures\ModOneCultures.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModCultures/ModOne/common</DestinationFolders>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cultures%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\Cultures\ModTwoCultures.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModCultures/ModTwo/common</DestinationFolders>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cultures%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Technology\BaseGameTech1.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/BaseGameInventions/inventions</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech1%(Extension)</DestinationFileName>
@@ -1391,11 +1382,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\Countries\CommonCountryModTestData.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/mod/common/countries/</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Countries\VanillaCommonCountriesData.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/vanilla_common_countries_data/common/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">countries%(Extension)</DestinationFileName>
@@ -1409,17 +1395,6 @@
     <CopyFileToFolders Include="data\test_files\Countries\TestCountryTwo.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/vanilla_common_countries_data/common/countries/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\Countries\ModCommonCountriesData.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common_countries_mod/common/</DestinationFolders>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">countries%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\Countries\TestCountryMod.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/vanilla_common_countries_data/common/countries/</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

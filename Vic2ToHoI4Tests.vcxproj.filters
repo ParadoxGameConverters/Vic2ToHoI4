@@ -1711,6 +1711,12 @@
     <ClCompile Include="src\HOI4World\Leaders\AdvisorTests.cpp">
       <Filter>src\HOI4World\Leaders</Filter>
     </ClCompile>
+    <ClCompile Include="external\common_items\ModLoader\ModFilesystem.cpp">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Countries\CommonCountryData.cpp">
+      <Filter>src\V2World\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -3481,6 +3487,9 @@
     <ClInclude Include="external\common_items\targa.h">
       <Filter>external\common_items</Filter>
     </ClInclude>
+    <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt">
@@ -3492,22 +3501,13 @@
     <CopyFileToFolders Include="data\test_files\Countries\BlankTraitsFile.txt">
       <Filter>data\test_files\Countries</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Countries\CommonCountryModTestData.txt">
-      <Filter>data\test_files\Countries</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Countries\CommonCountryTestData.txt">
       <Filter>data\test_files\Countries</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Countries\CountryBlankCultures.txt">
       <Filter>data\test_files\Countries</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Countries\ModCommonCountriesData.txt">
-      <Filter>data\test_files\Countries</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Countries\TestCountryCultures.txt">
-      <Filter>data\test_files\Countries</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Countries\TestCountryMod.txt">
       <Filter>data\test_files\Countries</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Countries\TestCountryOne.txt">
@@ -3526,12 +3526,6 @@
       <Filter>data\test_files\CountryNames</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Cultures\BaseCultures.txt">
-      <Filter>data\test_files\Cultures</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Cultures\ModOneCultures.txt">
-      <Filter>data\test_files\Cultures</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Cultures\ModTwoCultures.txt">
       <Filter>data\test_files\Cultures</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\HoI4Files\CountryCategories\CountryGrammar.txt">

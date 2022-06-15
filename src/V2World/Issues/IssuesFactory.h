@@ -1,9 +1,10 @@
-#ifndef ISSUES_FACTORY_H
-#define ISSUES_FACTORY_H
+#ifndef SRC_V2WORLD_ISSUES_ISSUES_FACTORY_H
+#define SRC_V2WORLD_ISSUES_ISSUES_FACTORY_H
 
 
 
-#include "external/common_items/ConvenientParser.h"
+#include "external/common_items/ModLoader/ModFilesystem.h"
+#include "external/common_items/Parser.h"
 #include "src/V2World/Issues/Issues.h"
 #include <memory>
 
@@ -12,18 +13,20 @@
 namespace Vic2
 {
 
-class Issues::Factory: commonItems::parser
+class Issues::Factory
 {
   public:
 	Factory();
-	std::unique_ptr<Issues> getIssues(const std::string& vic2Path);
+	std::unique_ptr<Issues> GetIssues(const commonItems::ModFilesystem& mod_filesystem);
 
   private:
-	std::unique_ptr<Issues> issues;
+	commonItems::parser parser_;
+
+	std::unique_ptr<Issues> issues_;
 };
 
 } // namespace Vic2
 
 
 
-#endif // ISSUES_FACTORY_H
+#endif // SRC_V2WORLD_ISSUES_ISSUES_FACTORY_H

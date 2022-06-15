@@ -3,7 +3,6 @@
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
-#include "src/Configuration.h"
 #include "src/V2World/Countries/CommonCountryData.h"
 #include "src/V2World/Politics/PartyFactory.h"
 
@@ -12,38 +11,30 @@
 Vic2::CommonCountryData::Factory::Factory()
 {
 	registerKeyword("color", [this](std::istream& theStream) {
-		const commonItems::intList colorComponents(theStream);
-		commonCountryData->theColor = commonItems::Color(
-			 std::array{colorComponents.getInts()[0], colorComponents.getInts()[1], colorComponents.getInts()[2]});
+		const commonItems::intList color_components(theStream);
+		common_country_data_->color_ = commonItems::Color(
+			 std::array{color_components.getInts()[0], color_components.getInts()[1], color_components.getInts()[2]});
 	});
 	registerKeyword("unit_names", [this](std::istream& theStream) {
-		commonCountryData->unitNames = unitNamesFactory.importUnitNames(theStream);
+		common_country_data_->unit_names_ = unit_names_factory_.importUnitNames(theStream);
 	});
 	registerKeyword("party", [this](std::istream& theStream) {
-		commonCountryData->parties.emplace_back(*partyFactory.getParty(theStream));
+		common_country_data_->parties_.emplace_back(*party_factory_.getParty(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 
-std::unique_ptr<Vic2::CommonCountryData> Vic2::CommonCountryData::Factory::importCommonCountryData(
+std::unique_ptr<Vic2::CommonCountryData> Vic2::CommonCountryData::Factory::ImportCommonCountryData(
 	 const std::string& filename,
-	 const Mods& vic2Mods,
-	 const Configuration& theConfiguration)
+	 const commonItems::ModFilesystem& mod_filesystem)
 {
-	commonCountryData = std::make_unique<CommonCountryData>();
+	common_country_data_ = std::make_unique<CommonCountryData>();
 
-	for (const auto& mod: vic2Mods)
+	if (const auto possible_file = mod_filesystem.GetActualFileLocation("/common/countries/" + filename); possible_file)
 	{
-		const auto file = mod.path + "/common/countries/" + filename;
-		if (commonItems::DoesFileExist(file))
-		{
-			parseFile(file);
-			return std::move(commonCountryData);
-		}
+		parseFile(*possible_file);
 	}
 
-	const auto file = theConfiguration.getVic2Path() + "/common/countries/" + filename;
-	parseFile(file);
-	return std::move(commonCountryData);
+	return std::move(common_country_data_);
 }

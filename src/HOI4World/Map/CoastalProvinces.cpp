@@ -17,7 +17,7 @@ void HoI4::CoastalProvinces::init(const Maps::MapData& theMapData, const std::ma
 			continue;
 		}
 
-		auto neighbors = theMapData.getNeighbors(province.first);
+		auto neighbors = theMapData.GetNeighbors(province.first);
 		for (auto adjProvinceNum: neighbors)
 		{
 			if (auto adjProvince = theProvinces.find(adjProvinceNum);

@@ -3,8 +3,8 @@
 
 
 
-#include "external/common_items/ConvenientParser.h"
-#include "src/Configuration.h"
+#include "external/common_items/ModLoader/ModFilesystem.h"
+#include "external/common_items/Parser.h"
 #include "src/V2World/Ai/AIFactory.h"
 #include "src/V2World/Countries/CommonCountryData.h"
 #include "src/V2World/Countries/Country.h"
@@ -29,7 +29,7 @@ namespace Vic2
 class Country::Factory: commonItems::parser
 {
   public:
-	Factory(const Configuration& theConfiguration,
+	Factory(const commonItems::ModFilesystem& mod_filesystem,
 		 const StateDefinitions& theStateDefinitions,
 		 std::shared_ptr<CultureGroups> theCultureGroups_);
 	std::unique_ptr<Country> createCountry(const std::string& theTag,

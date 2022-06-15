@@ -1,4 +1,5 @@
 #include "src/Maps/MapData.h"
+#include "external/bitmap/bitmap_image.hpp"
 #include "external/common_items/Color.h"
 #include "external/common_items/Log.h"
 #include "src/Configuration.h"
@@ -8,16 +9,16 @@
 namespace
 {
 
-commonItems::Color getCenterColor(const Maps::Point position, const bitmap_image& provinceMap)
+commonItems::Color GetCenterColor(const Maps::Point position, const bitmap_image& province_map)
 {
 	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
+	province_map.get_pixel(position.first, position.second, color);
 
 	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-commonItems::Color getAboveColor(Maps::Point position, const bitmap_image& provinceMap)
+commonItems::Color GetAboveColor(Maps::Point position, const bitmap_image& province_map)
 {
 	if (position.second > 0)
 	{
@@ -25,13 +26,13 @@ commonItems::Color getAboveColor(Maps::Point position, const bitmap_image& provi
 	}
 
 	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
+	province_map.get_pixel(position.first, position.second, color);
 
 	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-commonItems::Color getBelowColor(Maps::Point position, const unsigned int height, const bitmap_image& provinceMap)
+commonItems::Color GetBelowColor(Maps::Point position, int height, const bitmap_image& province_map)
 {
 	if (position.second < height - 1)
 	{
@@ -39,13 +40,13 @@ commonItems::Color getBelowColor(Maps::Point position, const unsigned int height
 	}
 
 	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
+	province_map.get_pixel(position.first, position.second, color);
 
 	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-commonItems::Color getLeftColor(Maps::Point position, const unsigned int width, const bitmap_image& provinceMap)
+commonItems::Color GetLeftColor(Maps::Point position, int width, const bitmap_image& province_map)
 {
 	if (position.first > 0)
 	{
@@ -57,13 +58,13 @@ commonItems::Color getLeftColor(Maps::Point position, const unsigned int width, 
 	}
 
 	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
+	province_map.get_pixel(position.first, position.second, color);
 
 	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-commonItems::Color getRightColor(Maps::Point position, const unsigned int width, const bitmap_image& provinceMap)
+commonItems::Color GetRightColor(Maps::Point position, int width, const bitmap_image& province_map)
 {
 	if (position.first < width - 1)
 	{
@@ -75,7 +76,7 @@ commonItems::Color getRightColor(Maps::Point position, const unsigned int width,
 	}
 
 	rgb_t color{0, 0, 0};
-	provinceMap.get_pixel(position.first, position.second, color);
+	province_map.get_pixel(position.first, position.second, color);
 
 	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
@@ -83,67 +84,73 @@ commonItems::Color getRightColor(Maps::Point position, const unsigned int width,
 } // namespace
 
 
-Maps::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const std::string& path):
-	 provinceDefinitions_(provinceDefinitions)
+Maps::MapData::MapData(const ProvinceDefinitions& province_definitions,
+	 const commonItems::ModFilesystem& mod_filesystem):
+	 province_definitions_(province_definitions)
 {
-	bitmap_image provinceMap(path + "/map/provinces.bmp");
-	if (!provinceMap)
-	{
-		throw std::runtime_error("Could not open " + path + "/map/provinces.bmp");
-	}
-
-	importProvinces(provinceMap);
-	importAdjacencies(path);
+	ImportProvinces(mod_filesystem);
+	ImportAdjacencies(mod_filesystem);
 }
 
 
-void Maps::MapData::importProvinces(const bitmap_image& provinceMap)
+void Maps::MapData::ImportProvinces(const commonItems::ModFilesystem& mod_filesystem)
 {
-	const auto height = provinceMap.height();
-	const auto width = provinceMap.width();
-	for (unsigned int y = 0; y < height; y++)
+	const auto path = mod_filesystem.GetActualFileLocation("/map/provinces.bmp");
+	if (!path)
 	{
-		for (unsigned int x = 0; x < width; x++)
+		throw std::runtime_error("Could not find /map/provinces.bmp");
+	}
+	bitmap_image province_map(*path);
+	if (!province_map)
+	{
+		throw std::runtime_error("Could not open " + *path + "/map/provinces.bmp");
+	}
+
+	const int height = static_cast<int>(province_map.height());
+	const int width = static_cast<int>(province_map.width());
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
 		{
 			Point position = {x, y};
 
-			auto centerColor = getCenterColor(position, provinceMap);
-			auto aboveColor = getAboveColor(position, provinceMap);
-			auto belowColor = getBelowColor(position, height, provinceMap);
-			auto leftColor = getLeftColor(position, width, provinceMap);
-			auto rightColor = getRightColor(position, width, provinceMap);
+			auto center_color = GetCenterColor(position, province_map);
+			auto above_color = GetAboveColor(position, province_map);
+			auto below_color = GetBelowColor(position, height, province_map);
+			auto left_color = GetLeftColor(position, width, province_map);
+			auto right_color = GetRightColor(position, width, province_map);
 
 			position.second = height - y - 1;
-			if (centerColor != aboveColor)
+			if (center_color != above_color)
 			{
-				handleNeighbor(centerColor, aboveColor, position);
+				HandleNeighbor(center_color, above_color, position);
 			}
-			if (centerColor != rightColor)
+			if (center_color != right_color)
 			{
-				handleNeighbor(centerColor, rightColor, position);
+				HandleNeighbor(center_color, right_color, position);
 			}
-			if (centerColor != belowColor)
+			if (center_color != below_color)
 			{
-				handleNeighbor(centerColor, belowColor, position);
+				HandleNeighbor(center_color, below_color, position);
 			}
-			if (centerColor != leftColor)
+			if (center_color != left_color)
 			{
-				handleNeighbor(centerColor, leftColor, position);
+				HandleNeighbor(center_color, left_color, position);
 			}
 
-			if (auto province = provinceDefinitions_.getProvinceFromColor(centerColor); province)
+			if (auto province = province_definitions_.getProvinceFromColor(center_color); province)
 			{
-				pointsToProvinces_.emplace(position, *province);
-				if (auto specificProvincePoints = theProvincePoints.find(*province);
-					 specificProvincePoints != theProvincePoints.end())
+				points_to_provinces_.emplace(position, *province);
+				if (auto specific_province_points = the_province_points_.find(*province);
+					 specific_province_points != the_province_points_.end())
 				{
-					specificProvincePoints->second.addPoint(position);
+					specific_province_points->second.addPoint(position);
 				}
 				else
 				{
-					ProvincePoints theNewPoints;
-					theNewPoints.addPoint(position);
-					theProvincePoints.insert(std::make_pair(*province, theNewPoints));
+					ProvincePoints the_new_points;
+					the_new_points.addPoint(position);
+					the_province_points_.insert(std::make_pair(*province, the_new_points));
 				}
 			}
 		}
@@ -151,59 +158,59 @@ void Maps::MapData::importProvinces(const bitmap_image& provinceMap)
 }
 
 
-void Maps::MapData::handleNeighbor(const commonItems::Color& centerColor,
-	 const commonItems::Color& otherColor,
+void Maps::MapData::HandleNeighbor(const commonItems::Color& center_color,
+	 const commonItems::Color& other_color,
 	 const Point& position)
 {
-	auto centerProvince = provinceDefinitions_.getProvinceFromColor(centerColor);
-	auto otherProvince = provinceDefinitions_.getProvinceFromColor(otherColor);
-	if (centerProvince && otherProvince)
+	const auto center_province = province_definitions_.getProvinceFromColor(center_color);
+	const auto other_province = province_definitions_.getProvinceFromColor(other_color);
+	if (center_province && other_province)
 	{
-		addNeighbor(*centerProvince, *otherProvince);
-		addPointToBorder(*centerProvince, *otherProvince, position);
+		AddNeighbor(*center_province, *other_province);
+		AddPointToBorder(*center_province, *other_province, position);
 	}
 }
 
 
-void Maps::MapData::addNeighbor(const int mainProvince, const int neighborProvince)
+void Maps::MapData::AddNeighbor(int main_province, int neighbor_province)
 {
-	if (const auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
+	if (const auto center_mapping = province_neighbors_.find(main_province); center_mapping != province_neighbors_.end())
 	{
-		centerMapping->second.insert(neighborProvince);
+		center_mapping->second.insert(neighbor_province);
 	}
 	else
 	{
-		const std::set<int> neighbors = {neighborProvince};
-		provinceNeighbors[mainProvince] = neighbors;
+		const std::set<int> neighbors = {neighbor_province};
+		province_neighbors_[main_province] = neighbors;
 	}
 }
 
 
-void Maps::MapData::removeNeighbor(const int mainProvince, const int neighborProvince)
+void Maps::MapData::RemoveNeighbor(int main_province, int neighbor_province)
 {
-	if (const auto centerMapping = provinceNeighbors.find(mainProvince); centerMapping != provinceNeighbors.end())
+	if (const auto center_mapping = province_neighbors_.find(main_province); center_mapping != province_neighbors_.end())
 	{
-		centerMapping->second.erase(neighborProvince);
+		center_mapping->second.erase(neighbor_province);
 	}
 }
 
 
-void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, const Point position)
+void Maps::MapData::AddPointToBorder(int main_province, int neighbor_province, const Point position)
 {
-	auto bordersWithNeighbors = borders.find(mainProvince);
-	if (bordersWithNeighbors == borders.end())
+	auto borders_with_neighbors = borders_.find(main_province);
+	if (borders_with_neighbors == borders_.end())
 	{
-		bordersWith newBordersWithNeighbors;
-		borders.insert(make_pair(mainProvince, newBordersWithNeighbors));
-		bordersWithNeighbors = borders.find(mainProvince);
+		BordersWith new_borders_with_neighbors;
+		borders_.insert(make_pair(main_province, new_borders_with_neighbors));
+		borders_with_neighbors = borders_.find(main_province);
 	}
 
-	auto border = bordersWithNeighbors->second.find(neighborProvince);
-	if (border == bordersWithNeighbors->second.end())
+	auto border = borders_with_neighbors->second.find(neighbor_province);
+	if (border == borders_with_neighbors->second.end())
 	{
-		borderPoints newBorder;
-		bordersWithNeighbors->second.insert(make_pair(neighborProvince, newBorder));
-		border = bordersWithNeighbors->second.find(neighborProvince);
+		BorderPoints new_border;
+		borders_with_neighbors->second.insert(make_pair(neighbor_province, new_border));
+		border = borders_with_neighbors->second.find(neighbor_province);
 	}
 
 	if (border->second.empty())
@@ -212,8 +219,8 @@ void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, con
 	}
 	else
 	{
-		if (const auto lastPoint = border->second.back();
-			 (lastPoint.first != position.first) || (lastPoint.second != position.second))
+		if (const auto last_point = border->second.back();
+			 (last_point.first != position.first) || (last_point.second != position.second))
 		{
 			border->second.push_back(position);
 		}
@@ -221,18 +228,24 @@ void Maps::MapData::addPointToBorder(int mainProvince, int neighborProvince, con
 }
 
 
-void Maps::MapData::importAdjacencies(const std::string& path)
+void Maps::MapData::ImportAdjacencies(const commonItems::ModFilesystem& mod_filesystem)
 {
-	std::ifstream adjacenciesFile(path + "/map/adjacencies.csv");
-	if (!adjacenciesFile.is_open())
+	const auto path = mod_filesystem.GetActualFileLocation("/map/adjacencies.csv");
+	if (!path)
 	{
-		throw std::runtime_error("Could not open " + path + "/map/adjacencies.csv");
+		throw std::runtime_error("Could not find /map/adjacencies.csv");
 	}
 
-	while (!adjacenciesFile.eof())
+	std::ifstream adjacencies_file(*path);
+	if (!adjacencies_file.is_open())
+	{
+		throw std::runtime_error("Could not open " + *path);
+	}
+
+	while (!adjacencies_file.eof())
 	{
 		std::string line;
-		getline(adjacenciesFile, line);
+		getline(adjacencies_file, line);
 		if (line.starts_with('#'))
 		{
 			continue;
@@ -246,27 +259,27 @@ void Maps::MapData::importAdjacencies(const std::string& path)
 				continue;
 			}
 
-			const int firstProvince = std::stoi(matches[1]);
-			const int secondProvince = std::stoi(matches[2]);
+			const int first_province = std::stoi(matches[1]);
+			const int second_province = std::stoi(matches[2]);
 			if (matches[3] != "impassable")
 			{
-				addNeighbor(firstProvince, secondProvince);
-				addNeighbor(secondProvince, firstProvince);
+				AddNeighbor(first_province, second_province);
+				AddNeighbor(second_province, first_province);
 			}
 			else
 			{
-				removeNeighbor(firstProvince, secondProvince);
-				removeNeighbor(secondProvince, firstProvince);
+				RemoveNeighbor(first_province, second_province);
+				RemoveNeighbor(second_province, first_province);
 			}
 		}
 	}
 }
 
 
-std::set<int> Maps::MapData::getNeighbors(const int province) const
+std::set<int> Maps::MapData::GetNeighbors(int province) const
 {
-	const auto neighbors = provinceNeighbors.find(province);
-	if (neighbors == provinceNeighbors.end())
+	const auto neighbors = province_neighbors_.find(province);
+	if (neighbors == province_neighbors_.end())
 	{
 		return {};
 	}
@@ -275,19 +288,19 @@ std::set<int> Maps::MapData::getNeighbors(const int province) const
 }
 
 
-std::optional<Maps::Point> Maps::MapData::getSpecifiedBorderCenter(const int mainProvince, const int neighbor) const
+std::optional<Maps::Point> Maps::MapData::GetSpecifiedBorderCenter(int main_province, int neighbor) const
 {
-	const auto bordersWithNeighbors = borders.find(mainProvince);
-	if (bordersWithNeighbors == borders.end())
+	const auto borders_with_neighbors = borders_.find(main_province);
+	if (borders_with_neighbors == borders_.end())
 	{
-		Log(LogLevel::Warning) << "Province " << mainProvince << " has no borders.";
+		Log(LogLevel::Warning) << "Province " << main_province << " has no borders.";
 		return std::nullopt;
 	}
 
-	const auto border = bordersWithNeighbors->second.find(neighbor);
-	if (border == bordersWithNeighbors->second.end())
+	const auto border = borders_with_neighbors->second.find(neighbor);
+	if (border == borders_with_neighbors->second.end())
 	{
-		Log(LogLevel::Warning) << "Province " << mainProvince << " does not border " << neighbor << ".";
+		Log(LogLevel::Warning) << "Province " << main_province << " does not border " << neighbor << ".";
 		return std::nullopt;
 	}
 
@@ -295,25 +308,25 @@ std::optional<Maps::Point> Maps::MapData::getSpecifiedBorderCenter(const int mai
 }
 
 
-std::optional<Maps::Point> Maps::MapData::getAnyBorderCenter(const int province) const
+std::optional<Maps::Point> Maps::MapData::GetAnyBorderCenter(const int province) const
 {
-	const auto bordersWithNeighbors = borders.find(province);
-	if (bordersWithNeighbors == borders.end())
+	const auto borders_with_neighbors = borders_.find(province);
+	if (borders_with_neighbors == borders_.end())
 	{
 		Log(LogLevel::Warning) << "Province " << province << " has no borders.";
 		return std::nullopt;
 	}
 
-	const auto border = bordersWithNeighbors->second.begin();
+	const auto border = borders_with_neighbors->second.begin();
 	// if a province has borders, by definition they're with some number of neighbors and of some length
 	return border->second[(border->second.size() / 2)];
 }
 
 
-std::optional<int> Maps::MapData::getProvinceNumber(const Point& point) const
+std::optional<int> Maps::MapData::GetProvinceNumber(const Point& point) const
 {
-	const auto i = pointsToProvinces_.find(point);
-	if (i == pointsToProvinces_.end())
+	const auto i = points_to_provinces_.find(point);
+	if (i == points_to_provinces_.end())
 	{
 		return std::nullopt;
 	}
@@ -321,12 +334,12 @@ std::optional<int> Maps::MapData::getProvinceNumber(const Point& point) const
 }
 
 
-std::optional<Maps::ProvincePoints> Maps::MapData::getProvincePoints(const int provinceNum) const
+std::optional<Maps::ProvincePoints> Maps::MapData::GetProvincePoints(int province_num) const
 {
-	const auto possiblePoints = theProvincePoints.find(provinceNum);
-	if (possiblePoints == theProvincePoints.end())
+	const auto possible_points = the_province_points_.find(province_num);
+	if (possible_points == the_province_points_.end())
 	{
 		return std::nullopt;
 	}
-	return possiblePoints->second;
+	return possible_points->second;
 }

@@ -73,6 +73,7 @@ class World: commonItems::parser
   public:
 	explicit World(const Vic2::World& sourceWorld,
 		 const Mappers::ProvinceMapper& provinceMapper,
+		 const commonItems::ModFilesystem& mod_filesystem,
 		 const Configuration& theConfiguration);
 	~World() = default;
 

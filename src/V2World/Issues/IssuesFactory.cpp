@@ -7,19 +7,23 @@
 
 Vic2::Issues::Factory::Factory()
 {
-	registerRegex(commonItems::catchallRegex, [this](const std::string& unused, std::istream& theStream) {
+	parser_.registerRegex(commonItems::catchallRegex, [this](const std::string& unused, std::istream& theStream) {
 		for (auto& name: IssueCategoryHelper{theStream}.takeIssues())
 		{
-			issues->issueNames.push_back(name);
+			issues_->issueNames.push_back(name);
 		}
 	});
 }
 
 
-std::unique_ptr<Vic2::Issues> Vic2::Issues::Factory::getIssues(const std::string& vic2Path)
+std::unique_ptr<Vic2::Issues> Vic2::Issues::Factory::GetIssues(const commonItems::ModFilesystem& mod_filesystem)
 {
-	issues = std::make_unique<Issues>();
-	parseFile(vic2Path + "/common/issues.txt");
+	issues_ = std::make_unique<Issues>();
 
-	return std::move(issues);
+	if (const auto& file = mod_filesystem.GetActualFileLocation("/common/issues.txt"); file)
+	{
+		parser_.parseFile(*file);
+	}
+
+	return std::move(issues_);
 }

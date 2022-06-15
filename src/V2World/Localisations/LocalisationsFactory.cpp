@@ -7,31 +7,21 @@
 
 
 
-std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Factory::importLocalisations(
-	 const Configuration& theConfiguration)
+std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Factory::ImportLocalisations(
+	 const commonItems::ModFilesystem& mod_filesystem)
 {
 	Log(LogLevel::Info) << "Reading Vic2 localisation";
 
-	ReadFromAllFilesInFolder(theConfiguration.getVic2Path() + "/localisation");
-
-	for (const auto& mod: theConfiguration.getVic2Mods())
+	for (const auto& file: mod_filesystem.GetAllFilesInFolder("localisation"))
 	{
-		Log(LogLevel::Info) << "\tReading mod localisation";
-		ReadFromAllFilesInFolder(mod.path + "/localisation");
+		ReadFromFile(file);
+	}
+	for (const auto& file_name: commonItems::GetAllFilesInFolder("Configurables/Vic2Localisations"))
+	{
+		ReadFromFile("Configurables/Vic2Localisations/" + file_name);
 	}
 
-	ReadFromAllFilesInFolder("Configurables/Vic2Localisations");
-
-	return std::make_unique<Localisations>(localisations, localisationToKeyMap);
-}
-
-
-void Vic2::Localisations::Factory::ReadFromAllFilesInFolder(const std::string& folderPath)
-{
-	for (const auto& fileName: commonItems::GetAllFilesInFolder(folderPath))
-	{
-		ReadFromFile(folderPath + '/' + fileName);
-	}
+	return std::make_unique<Localisations>(localisations_, localisation_to_key_map_);
 }
 
 
@@ -45,7 +35,7 @@ void Vic2::Localisations::Factory::ReadFromFile(const std::string& fileName)
 		getline(in, line);
 		if (line[0] != '#')
 		{
-			processLine(line);
+			ProcessLine(line);
 		}
 	}
 
@@ -68,36 +58,36 @@ constexpr std::array<std::pair<const char*, Vic2::Encoding>, 13> languages = {{
 	 {"russian", Vic2::Encoding::Win1251},
 	 {"finnish", Vic2::Encoding::Win1252},
 }};
-void Vic2::Localisations::Factory::processLine(const std::string& line)
+void Vic2::Localisations::Factory::ProcessLine(const std::string& line)
 {
 	auto division = line.find_first_of(';');
 	const auto key = line.substr(0, division);
 
 	for (const auto& [language, encoding]: languages)
 	{
-		auto [rawLocalisation, newDivision] = extractNextLocalisation(line, division);
+		auto [rawLocalisation, newDivision] = ExtractNextLocalisation(line, division);
 		division = newDivision;
 
-		auto UTF8Result = convertToUtf8(rawLocalisation, encoding);
+		auto UTF8Result = ConvertToUtf8(rawLocalisation, encoding);
 
 		if (strcmp(language, "english") == 0)
 		{
-			localisationToKeyMap[UTF8Result] = key;
+			localisation_to_key_map_[UTF8Result] = key;
 		}
 
 		if (!UTF8Result.empty())
 		{
-			localisations[key][language] = UTF8Result;
+			localisations_[key][language] = UTF8Result;
 		}
 		else if (strcmp(language, "english") != 0)
 		{
-			localisations[key][language] = localisations[key]["english"];
+			localisations_[key][language] = localisations_[key]["english"];
 		}
 	}
 }
 
 
-std::tuple<std::string, size_t> Vic2::Localisations::Factory::extractNextLocalisation(const std::string& line,
+std::tuple<std::string, size_t> Vic2::Localisations::Factory::ExtractNextLocalisation(const std::string& line,
 	 size_t division)
 {
 	const auto frontDivision = division + 1;
@@ -106,7 +96,7 @@ std::tuple<std::string, size_t> Vic2::Localisations::Factory::extractNextLocalis
 }
 
 
-std::string Vic2::Localisations::Factory::convertToUtf8(const std::string& rawLocalisation, Encoding encoding)
+std::string Vic2::Localisations::Factory::ConvertToUtf8(const std::string& rawLocalisation, Encoding encoding)
 {
 	if (encoding == Encoding::Win1250)
 	{

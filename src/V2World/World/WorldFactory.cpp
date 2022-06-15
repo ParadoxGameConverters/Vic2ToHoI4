@@ -1,6 +1,8 @@
 #include "src/V2World/World/WorldFactory.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/Log.h"
+#include "external/common_items/ModLoader/ModFilesystem.h"
+#include "external/common_items/ModLoader/ModLoader.h"
 #include "external/common_items/ParserHelpers.h"
 #include "src/Mappers/MergeRules/MergeRules.h"
 #include "src/Mappers/MergeRules/MergeRulesFactory.h"
@@ -16,19 +18,19 @@
 
 
 
-Vic2::World::Factory::Factory(const Configuration& theConfiguration):
-	 theCultureGroups(CultureGroups::Factory().getCultureGroups(theConfiguration)),
-	 theIssues(Issues::Factory().getIssues(theConfiguration.getVic2Path())),
+Vic2::World::Factory::Factory(const commonItems::ModFilesystem& mod_filesystem, float percentage_of_commanders):
+	 theCultureGroups(CultureGroups::Factory().GetCultureGroups(mod_filesystem)),
+	 theIssues(Issues::Factory().GetIssues(mod_filesystem)),
 	 provinceFactory(std::make_unique<Province::Factory>(std::make_unique<PopFactory>(*theIssues))),
-	 theStateDefinitions(StateDefinitions::Factory().getStateDefinitions(theConfiguration)),
-	 countryFactory(std::make_unique<Country::Factory>(theConfiguration, *theStateDefinitions, theCultureGroups)),
+	 theStateDefinitions(StateDefinitions::Factory().getStateDefinitions(mod_filesystem)),
+	 countryFactory(std::make_unique<Country::Factory>(mod_filesystem, *theStateDefinitions, theCultureGroups)),
 	 stateLanguageCategories(StateLanguageCategories::Factory().getCategories()),
 	 diplomacyFactory(std::make_unique<Diplomacy::Factory>())
 {
-	const auto [commonCountriesData_, allParties_] = importCommonCountriesData(theConfiguration);
+	const auto [commonCountriesData_, allParties_] = ImportCommonCountriesData(mod_filesystem);
 	commonCountriesData = commonCountriesData_;
 	allParties = allParties_;
-	countriesData = CountriesData::Factory().importCountriesData(theConfiguration);
+	countriesData = CountriesData::Factory().ImportCountriesData(mod_filesystem);
 
 	registerKeyword("date", [this](std::istream& theStream) {
 		world->theDate = std::make_unique<date>(date(commonItems::singleString{theStream}.getString()));
@@ -41,26 +43,27 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 		const auto provinceNum = std::stoi(provinceID); // the regex ensures the ID is always a valid number
 		world->provinces[provinceNum] = provinceFactory->getProvince(provinceNum, theStream);
 	});
-	registerRegex("[A-Z][A-Z0-9]{2}", [this, theConfiguration](const std::string& countryTag, std::istream& theStream) {
-		if (const auto commonCountryData = commonCountriesData.find(countryTag);
-			 commonCountryData != commonCountriesData.end())
-		{
-			world->countries.emplace(countryTag,
-				 *countryFactory->createCountry(countryTag,
-					  theStream,
-					  commonCountryData->second,
-					  allParties,
-					  *stateLanguageCategories,
-					  theConfiguration.getPercentOfCommanders(),
-					  countriesData->getCountryData(countryTag)));
-			tagsInOrder.push_back(countryTag);
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Invalid tag " << countryTag;
-			commonItems::ignoreItem(countryTag, theStream);
-		}
-	});
+	registerRegex("[A-Z][A-Z0-9]{2}",
+		 [this, percentage_of_commanders](const std::string& countryTag, std::istream& theStream) {
+			 if (const auto commonCountryData = commonCountriesData.find(countryTag);
+				  commonCountryData != commonCountriesData.end())
+			 {
+				 world->countries.emplace(countryTag,
+					  *countryFactory->createCountry(countryTag,
+							theStream,
+							commonCountryData->second,
+							allParties,
+							*stateLanguageCategories,
+							percentage_of_commanders,
+							countriesData->getCountryData(countryTag)));
+				 tagsInOrder.push_back(countryTag);
+			 }
+			 else
+			 {
+				 Log(LogLevel::Warning) << "Invalid tag " << countryTag;
+				 commonItems::ignoreItem(countryTag, theStream);
+			 }
+		 });
 	registerKeyword("diplomacy", [this](std::istream& theStream) {
 		world->diplomacy = diplomacyFactory->getDiplomacy(theStream);
 	});
@@ -72,7 +75,8 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 
 
 std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configuration& theConfiguration,
-	 const Mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper,
+	 const commonItems::ModFilesystem& mod_filesystem)
 {
 	Log(LogLevel::Progress) << "15%";
 	Log(LogLevel::Info) << "*** Importing V2 save ***";
@@ -83,8 +87,8 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	wars.clear();
 
 	world = std::make_unique<World>();
-	world->theStateDefinitions = StateDefinitions::Factory().getStateDefinitions(theConfiguration);
-	world->theLocalisations = Localisations::Factory().importLocalisations(theConfiguration);
+	world->theStateDefinitions = StateDefinitions::Factory().getStateDefinitions(mod_filesystem);
+	world->theLocalisations = Localisations::Factory().ImportLocalisations(mod_filesystem);
 	parseFile(theConfiguration.getInputFile());
 	if (!world->diplomacy)
 	{
@@ -108,7 +112,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	consolidateConquerStrategies();
 	moveArmiesHome();
 	removeBattles();
-	importMapData(theConfiguration.getVic2Path());
+	ImportMapData(mod_filesystem);
 
 	return std::move(world);
 }
@@ -533,9 +537,9 @@ bool Vic2::World::Factory::armiesHaveDifferentOwners(const std::vector<Army*>& a
 }
 
 
-void Vic2::World::Factory::importMapData(const std::string& path)
+void Vic2::World::Factory::ImportMapData(const commonItems::ModFilesystem& mod_filesystem)
 {
 	Log(LogLevel::Info) << "\tImporting map data";
-	const auto& provinceDefinitions = importProvinceDefinitions(path, world->provinces);
-	world->mapData_ = std::make_unique<Maps::MapData>(provinceDefinitions, path);
+	const auto& provinceDefinitions = ImportProvinceDefinitions(mod_filesystem, world->provinces);
+	world->mapData_ = std::make_unique<Maps::MapData>(provinceDefinitions, mod_filesystem);
 }

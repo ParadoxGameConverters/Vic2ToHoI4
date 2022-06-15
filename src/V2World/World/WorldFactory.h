@@ -24,9 +24,10 @@ namespace Vic2
 class World::Factory: commonItems::parser
 {
   public:
-	explicit Factory(const Configuration& theConfiguration);
+	explicit Factory(const commonItems::ModFilesystem& mod_filesystem, float percentage_of_commanders);
 	std::unique_ptr<World> importWorld(const Configuration& theConfiguration,
-		 const Mappers::ProvinceMapper& provinceMapper);
+		 const Mappers::ProvinceMapper& provinceMapper,
+		 const commonItems::ModFilesystem& mod_filesystem);
 
   private:
 	void setLocalisations(Localisations& vic2Localisations);
@@ -47,7 +48,7 @@ class World::Factory: commonItems::parser
 	void consolidateConquerStrategies();
 	void moveArmiesHome();
 	void removeBattles();
-	void importMapData(const std::string& path);
+	void ImportMapData(const commonItems::ModFilesystem& mod_filesystem);
 	[[nodiscard]] std::map<int, std::vector<Army*>> determineArmyLocations() const;
 	[[nodiscard]] static bool armiesHaveDifferentOwners(const std::vector<Army*>& armies);
 

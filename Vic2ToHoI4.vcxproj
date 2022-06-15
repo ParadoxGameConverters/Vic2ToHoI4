@@ -80,6 +80,7 @@
     <ClCompile Include="external\common_items\GameVersion.cpp" />
     <ClCompile Include="external\common_items\iconvlite.cpp" />
     <ClCompile Include="external\common_items\Log.cpp" />
+    <ClCompile Include="external\common_items\ModLoader\ModFilesystem.cpp" />
     <ClCompile Include="external\common_items\ModLoader\ModLoader.cpp" />
     <ClCompile Include="external\common_items\ModLoader\ModParser.cpp" />
     <ClCompile Include="external\common_items\OSCommonLayer.cpp" />
@@ -390,6 +391,7 @@
     <ClCompile Include="src\OutHoi4\TankDesigns\OutTankUpgrades.cpp" />
     <ClCompile Include="src\V2World\Ai\AIFactory.cpp" />
     <ClCompile Include="src\V2World\Countries\CommonCountriesDataFactory.cpp" />
+    <ClCompile Include="src\V2World\Countries\CommonCountryData.cpp" />
     <ClCompile Include="src\V2World\Countries\CommonCountryDataFactory.cpp" />
     <ClCompile Include="src\V2World\Countries\Country.cpp" />
     <ClCompile Include="src\V2World\Countries\CountryFactory.cpp" />
@@ -455,6 +457,7 @@
     <ClInclude Include="external\common_items\GameVersion.h" />
     <ClInclude Include="external\common_items\iconvlite.h" />
     <ClInclude Include="external\common_items\Log.h" />
+    <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h" />
     <ClInclude Include="external\common_items\ModLoader\ModLoader.h" />
     <ClInclude Include="external\common_items\ModLoader\ModParser.h" />
     <ClInclude Include="external\common_items\OSCompatibilityLayer.h" />
@@ -827,7 +830,6 @@
     <ClInclude Include="src\V2World\Ai\AIStrategy.h" />
     <ClInclude Include="src\V2World\Ai\AI.h" />
     <ClInclude Include="src\V2World\Countries\CommonCountryData.h" />
-    <ClInclude Include="src\V2World\Countries\CommonCountryDataBuilder.h" />
     <ClInclude Include="src\V2World\Countries\CommonCountryDataFactory.h" />
     <ClInclude Include="src\V2World\Countries\Country.h" />
     <ClInclude Include="src\V2World\Countries\CountryBuilder.h" />

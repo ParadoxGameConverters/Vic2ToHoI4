@@ -11,11 +11,13 @@
 
 TEST(Vic2World_World_WorldTests, ProvincesDefaultToEmpty)
 {
+	const commonItems::ModFilesystem mod_filesystem("BlankWorld", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(
 					*Configuration::Builder().setVic2Path("BlankWorld").setInputFile("V2World/BlankWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_TRUE(world->getProvinces().empty());
 }
@@ -23,10 +25,12 @@ TEST(Vic2World_World_WorldTests, ProvincesDefaultToEmpty)
 
 TEST(Vic2World_World_WorldTests, ProvincesCanBeAdded)
 {
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_EQ(6, world->getProvinces().size());
 	EXPECT_TRUE(world->getProvinces().contains(1));
@@ -35,17 +39,19 @@ TEST(Vic2World_World_WorldTests, ProvincesCanBeAdded)
 	EXPECT_TRUE(world->getProvinces().contains(4));
 	EXPECT_TRUE(world->getProvinces().contains(5));
 	EXPECT_TRUE(world->getProvinces().contains(6));
-	EXPECT_THAT(world->getMapData().getNeighbors(3), testing::UnorderedElementsAre(1, 2, 4, 5));
+	EXPECT_THAT(world->getMapData().GetNeighbors(3), testing::UnorderedElementsAre(1, 2, 4, 5));
 }
 
 
 TEST(Vic2World_World_WorldTests, GetProvinceReturnsNulloptForMissingProvince)
 {
+	const commonItems::ModFilesystem mod_filesystem("BlankWorld", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(
 					*Configuration::Builder().setVic2Path("BlankWorld").setInputFile("V2World/BlankWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_EQ(std::nullopt, world->getProvince(1));
 }
@@ -53,13 +59,15 @@ TEST(Vic2World_World_WorldTests, GetProvinceReturnsNulloptForMissingProvince)
 
 TEST(Vic2World_World_WorldTests, GetProvinceReturnsProvince)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	EXPECT_EQ(1, (*world->getProvince(1))->getNumber());
 }
@@ -67,11 +75,13 @@ TEST(Vic2World_World_WorldTests, GetProvinceReturnsProvince)
 
 TEST(Vic2World_World_WorldTests, CountriesDefaultToEmpty)
 {
+	const commonItems::ModFilesystem mod_filesystem("BlankWorld", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(
 					*Configuration::Builder().setVic2Path("BlankWorld").setInputFile("V2World/BlankWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_TRUE(world->getCountries().empty());
 }
@@ -79,13 +89,15 @@ TEST(Vic2World_World_WorldTests, CountriesDefaultToEmpty)
 
 TEST(Vic2World_World_WorldTests, CountriesCanBeAdded)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_none)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	EXPECT_EQ(4, world->getCountries().size());
 	EXPECT_TRUE(world->getCountries().contains("ONE"));
@@ -101,10 +113,13 @@ TEST(Vic2World_World_WorldTests, InvalidCountriesAreLogged)
 	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const commonItems::ModFilesystem mod_filesystem_two("", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem_two, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -118,13 +133,15 @@ TEST(Vic2World_World_WorldTests, InvalidCountriesAreLogged)
 
 TEST(Vic2World_World_WorldTests, EmptyCountriesCanBeRemoved)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_none)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	EXPECT_EQ(4, world->getCountries().size());
 	EXPECT_TRUE(world->getCountries().contains("ONE"));
@@ -141,11 +158,13 @@ TEST(Vic2World_World_WorldTests, DiplomacyIsLoggedIfMissing)
 	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
+	const commonItems::ModFilesystem mod_filesystem("BlankWorld", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(
 					*Configuration::Builder().setVic2Path("BlankWorld").setInputFile("V2World/BlankWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -155,10 +174,12 @@ TEST(Vic2World_World_WorldTests, DiplomacyIsLoggedIfMissing)
 
 TEST(Vic2World_World_WorldTests, DiplomacyCanBeAdded)
 {
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_EQ(1, world->getDiplomacy().getAgreements().size());
 	EXPECT_EQ("test_agreement", world->getDiplomacy().getAgreements()[0].getType());
@@ -167,11 +188,13 @@ TEST(Vic2World_World_WorldTests, DiplomacyCanBeAdded)
 
 TEST(Vic2World_World_WorldTests, GreatPowersDefaultToEmpty)
 {
+	const commonItems::ModFilesystem mod_filesystem("BlankWorld", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(
 					*Configuration::Builder().setVic2Path("BlankWorld").setInputFile("V2World/BlankWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_TRUE(world->getGreatPowers().empty());
 }
@@ -179,10 +202,12 @@ TEST(Vic2World_World_WorldTests, GreatPowersDefaultToEmpty)
 
 TEST(Vic2World_World_WorldTests, GreatPowersCanBeAdded)
 {
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_EQ(1, world->getGreatPowers().size());
 	EXPECT_EQ("ONE", world->getGreatPowers()[0]);
@@ -195,10 +220,12 @@ TEST(Vic2World_World_WorldTests, GreatPowersLoggedIfInvalid)
 	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -208,11 +235,13 @@ TEST(Vic2World_World_WorldTests, GreatPowersLoggedIfInvalid)
 
 TEST(Vic2World_World_WorldTests, StateDefinitionsDefaultToEmpty)
 {
+	const commonItems::ModFilesystem mod_filesystem("BlankWorld", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(
 					*Configuration::Builder().setVic2Path("BlankWorld").setInputFile("V2World/BlankWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_TRUE(world->getStateDefinitions().getAllProvinces(1).empty());
 	EXPECT_TRUE(world->getStateDefinitions().getAllProvinces(2).empty());
@@ -225,10 +254,12 @@ TEST(Vic2World_World_WorldTests, ProvincesAreAssignedToStates)
 	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -249,10 +280,12 @@ TEST(Vic2World_World_WorldTests, ProvincesAreAssignedToStates)
 
 TEST(Vic2World_World_WorldTests, MissingCulturesAreHandled)
 {
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_TRUE(world->getCountries().contains("ONE"));
 	EXPECT_EQ("test_culture", world->getCountries().at("ONE").getPrimaryCulture());
@@ -261,10 +294,12 @@ TEST(Vic2World_World_WorldTests, MissingCulturesAreHandled)
 
 TEST(Vic2World_World_WorldTests, StateDefinitionsCanBeAdded)
 {
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_EQ(1, world->getStateDefinitions().getAllProvinces(1).size());
 	EXPECT_EQ(1, world->getStateDefinitions().getAllProvinces(2).size());
@@ -273,11 +308,13 @@ TEST(Vic2World_World_WorldTests, StateDefinitionsCanBeAdded)
 
 TEST(Vic2World_World_WorldTests, LocalisationsDefaultToEmpty)
 {
+	const commonItems::ModFilesystem mod_filesystem("BlankWorld", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(
 					*Configuration::Builder().setVic2Path("BlankWorld").setInputFile("V2World/BlankWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_TRUE(world->getLocalisations().getTextInEachLanguage("test_key").empty());
 }
@@ -285,10 +322,12 @@ TEST(Vic2World_World_WorldTests, LocalisationsDefaultToEmpty)
 
 TEST(Vic2World_World_WorldTests, LocalisationsDefinitionsCanBeAdded)
 {
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_THAT(world->getLocalisations().getTextInEachLanguage("test_key"),
 		 testing::UnorderedElementsAre(std::make_pair(std::string("english"), std::string("test_english_text")),
@@ -309,13 +348,15 @@ TEST(Vic2World_World_WorldTests, LocalisationsDefinitionsCanBeAdded)
 
 TEST(Vic2World_World_WorldTests, WarsCanBeAdded)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_none)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	EXPECT_TRUE(world->getCountries().contains("ONE"));
 	EXPECT_EQ(1, world->getCountries().at("ONE").getWars().size());
@@ -332,13 +373,15 @@ TEST(Vic2World_World_WorldTests, WarsCanBeAdded)
 
 TEST(Vic2World_World_WorldTests, CoresAreAssignedToCountries)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_none)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	EXPECT_TRUE(world->getCountries().contains("ONE"));
 	EXPECT_EQ(1, world->getCountries().at("ONE").getCores().size());
@@ -361,13 +404,15 @@ TEST(Vic2World_World_WorldTests, CoresAreAssignedToCountries)
 
 TEST(Vic2World_World_WorldTests, SimpleLandlessNationsAreRemoved)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	EXPECT_TRUE(world->getCountries().contains("ONE"));
 	EXPECT_EQ(1, world->getCountries().at("ONE").getCores().size());
@@ -385,13 +430,15 @@ TEST(Vic2World_World_WorldTests, SimpleLandlessNationsAreRemoved)
 
 TEST(Vic2World_World_WorldTests, CoresAreKeptIfRemovesetToNone)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_none)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province = world->getProvince(1);
 	EXPECT_TRUE(province.has_value());
@@ -418,13 +465,15 @@ TEST(Vic2World_World_WorldTests, CoresAreKeptIfRemovesetToNone)
 
 TEST(Vic2World_World_WorldTests, CoresWithoutOwnerAreRemoved)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province4 = world->getProvince(4);
 	EXPECT_TRUE(province4.has_value());
@@ -434,13 +483,15 @@ TEST(Vic2World_World_WorldTests, CoresWithoutOwnerAreRemoved)
 
 TEST(Vic2World_World_WorldTests, CoresWithInvalidOwnerAreRemoved)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province = world->getProvince(5);
 	EXPECT_TRUE(province.has_value());
@@ -450,13 +501,15 @@ TEST(Vic2World_World_WorldTests, CoresWithInvalidOwnerAreRemoved)
 
 TEST(Vic2World_World_WorldTests, CoresWithTooLowPopulationAreRemoved)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province = world->getProvince(1);
 	EXPECT_TRUE(province.has_value());
@@ -466,13 +519,15 @@ TEST(Vic2World_World_WorldTests, CoresWithTooLowPopulationAreRemoved)
 
 TEST(Vic2World_World_WorldTests, CoresWithSameCultureAsOwnerAreNotRemovedIfOptionTooLow)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province = world->getProvince(2);
 	EXPECT_TRUE(province.has_value());
@@ -487,13 +542,15 @@ TEST(Vic2World_World_WorldTests, CoresWithSameCultureAsOwnerAreNotRemovedIfOptio
 
 TEST(Vic2World_World_WorldTests, CoresWithSameCultureAsOwnerAreRemoved)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_same_culture_as_owner)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province = world->getProvince(2);
 	EXPECT_TRUE(province.has_value());
@@ -503,13 +560,15 @@ TEST(Vic2World_World_WorldTests, CoresWithSameCultureAsOwnerAreRemoved)
 
 TEST(Vic2World_World_WorldTests, CoresWithAcceptedCultureAsOwnerAreNotRemovedIfSettingTooLow)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_same_culture_as_owner)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province = world->getProvince(2);
 	EXPECT_TRUE(province.has_value());
@@ -523,13 +582,15 @@ TEST(Vic2World_World_WorldTests, CoresWithAcceptedCultureAsOwnerAreNotRemovedIfS
 
 TEST(Vic2World_World_WorldTests, CoresWithAcceptedCultureAsOwnerAreRemoved)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province = world->getProvince(2);
 	EXPECT_TRUE(province.has_value());
@@ -539,13 +600,15 @@ TEST(Vic2World_World_WorldTests, CoresWithAcceptedCultureAsOwnerAreRemoved)
 
 TEST(Vic2World_World_WorldTests, CoresFromDeadNationAreNotRemovedIfSettingTooLow)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province = world->getProvince(6);
 	EXPECT_TRUE(province.has_value());
@@ -555,13 +618,15 @@ TEST(Vic2World_World_WorldTests, CoresFromDeadNationAreNotRemovedIfSettingTooLow
 
 TEST(Vic2World_World_WorldTests, CoresFromDeadNationAreRemoved)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("V2World")
 														  .setInputFile("V2World/TestWorld.v2")
 														  .setRemoveCores(removeCoresOptions::extreme_removal)
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	const auto province = world->getProvince(6);
 	EXPECT_TRUE(province.has_value());
@@ -570,10 +635,12 @@ TEST(Vic2World_World_WorldTests, CoresFromDeadNationAreRemoved)
 
 TEST(Vic2World_World_WorldTests, EmployedWorkersAreAssigned)
 {
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_TRUE(world->getCountries().contains("ONE"));
 	EXPECT_EQ(5, world->getCountries().at("ONE").getEmployedWorkers());
@@ -584,11 +651,13 @@ TEST(Vic2World_World_WorldTests, EmployedWorkersAreAssigned)
 
 TEST(Vic2World_World_WorldTests, MergingNationsWorks)
 {
+	const commonItems::ModFilesystem mod_filesystem("MergeWorld", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("MergeWorld").build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(
 					*Configuration::Builder().setVic2Path("MergeWorld").setInputFile("MergeWorld/MergeWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	EXPECT_EQ(1, world->getCountries().size());
 	EXPECT_TRUE(world->getCountries().contains("FOO"));
@@ -602,10 +671,12 @@ TEST(Vic2World_World_WorldTests, ProvinceMappingsAreChecked)
 	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -620,27 +691,31 @@ TEST(Vic2World_World_WorldTests, ProvinceMappingsAreChecked)
 
 TEST(Vic2World_World_WorldTests, ConquerStrategiesAreConsolidated)
 {
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 	const auto world =
-		 Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+		 Vic2::World::Factory(mod_filesystem, 0.0F)
 			  .importWorld(*Configuration::Builder().setVic2Path("V2World").setInputFile("V2World/TestWorld.v2").build(),
-					*Mappers::ProvinceMapper::Builder().Build());
+					*Mappers::ProvinceMapper::Builder().Build(),
+					mod_filesystem);
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
 
 	const Vic2::StrategyData data{.value = 182, .provinces = std::vector<int>{2}};
-	ASSERT_THAT(world->getCountries().at("ONE").getAI().getConsolidatedStrategies(),
+	EXPECT_THAT(world->getCountries().at("ONE").getAI().getConsolidatedStrategies(),
 		 testing::UnorderedElementsAre(std::make_pair(std::string("TWO"), data)));
 }
 
 
 TEST(Vic2World_World_WorldTests, ArmiesAreMovedHome)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("MoveArmiesWorld")
 														  .setInputFile("MoveArmiesWorld/MoveArmiesWorld.v2")
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	EXPECT_TRUE(world->getCountries().contains("ONE"));
 	EXPECT_THAT(world->getCountries().at("ONE").getArmies(),
@@ -668,12 +743,14 @@ TEST(Vic2World_World_WorldTests, ArmiesAreMovedHome)
 
 TEST(Vic2World_World_WorldTests, BattlesAreResolved)
 {
-	const auto world = Vic2::World::Factory(*Configuration::Builder().setVic2Path("V2World").build())
+	const commonItems::ModFilesystem mod_filesystem("V2World", {});
+	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
 														  .setVic2Path("ResolveBattlesWorld")
 														  .setInputFile("ResolveBattlesWorld/ResolveBattlesWorld.v2")
 														  .build(),
-										*Mappers::ProvinceMapper::Builder().Build());
+										*Mappers::ProvinceMapper::Builder().Build(),
+										mod_filesystem);
 
 	EXPECT_TRUE(world->getCountries().contains("ONE"));
 	EXPECT_THAT(world->getCountries().at("ONE").getArmies(),
