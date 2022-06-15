@@ -115,7 +115,7 @@ void Maps::MapData::ImportProvinces(const std::string& path)
 	auto full_path = path;
 	if (path.find("/map/provinces.bmp") == std::string::npos)
 		full_path = path + "/map/provinces.bmp";
-	
+
 	bitmap_image province_map(full_path);
 	if (!province_map)
 	{
