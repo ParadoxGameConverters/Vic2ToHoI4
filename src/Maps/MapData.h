@@ -24,6 +24,7 @@ class MapData
 {
   public:
 	MapData(const ProvinceDefinitions& province_definitions, const commonItems::ModFilesystem& mod_filesystem);
+	MapData(const ProvinceDefinitions& province_definitions, const std::string& path);
 
 	[[nodiscard]] std::set<int> GetNeighbors(int province) const;
 	[[nodiscard]] std::optional<Point> GetSpecifiedBorderCenter(int main_province, int neighbor) const;
@@ -34,6 +35,7 @@ class MapData
 
   private:
 	void ImportProvinces(const commonItems::ModFilesystem& mod_filesystem);
+	void ImportProvinces(const std::string& path);
 	void HandleNeighbor(const commonItems::Color& center_color,
 		 const commonItems::Color& other_color,
 		 const Point& position);
@@ -42,6 +44,7 @@ class MapData
 	void AddPointToBorder(int main_province, int neighbor_province, Point position);
 
 	void ImportAdjacencies(const commonItems::ModFilesystem& mod_filesystem);
+	void ImportAdjacencies(const std::string& path);
 
 	std::map<int, std::set<int>> province_neighbors_;
 	std::map<int, BordersWith> borders_;
