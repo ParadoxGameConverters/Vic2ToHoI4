@@ -162,7 +162,7 @@ std::set<int> HoI4::MapUtils::findBorderStates(const Country& country,
 	std::set<int> borderProvinces;
 	for (const auto& province: ownProvinces)
 	{
-		for (auto borderProvince: theMapData.getNeighbors(province))
+		for (auto borderProvince: theMapData.GetNeighbors(province))
 		{
 			if (ownProvinces.contains(borderProvince))
 			{

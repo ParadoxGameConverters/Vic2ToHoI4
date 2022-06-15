@@ -1759,7 +1759,7 @@ void HoI4::Country::addProvincesToArea(int province,
 	}
 	area.insert(province);
 
-	for (const auto& neighbor: theMapData->getNeighbors(province))
+	for (const auto& neighbor: theMapData->GetNeighbors(province))
 	{
 		addProvincesToArea(neighbor, area, theMapData, allStates, provinceToStateIdMap);
 	}

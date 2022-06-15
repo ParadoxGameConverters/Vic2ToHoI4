@@ -493,7 +493,7 @@ std::vector<std::set<int>> HoI4::States::getConnectedProvinceSets(std::set<int> 
 				provinceNumbers.erase(currentProvince);
 			}
 
-			for (const auto& neighbor: mapData.getNeighbors(currentProvince))
+			for (const auto& neighbor: mapData.GetNeighbors(currentProvince))
 			{
 				if (!closedProvinces.contains(neighbor))
 				{

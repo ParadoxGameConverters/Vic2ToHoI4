@@ -39,7 +39,7 @@ TEST(Vic2World_World_WorldTests, ProvincesCanBeAdded)
 	EXPECT_TRUE(world->getProvinces().contains(4));
 	EXPECT_TRUE(world->getProvinces().contains(5));
 	EXPECT_TRUE(world->getProvinces().contains(6));
-	EXPECT_THAT(world->getMapData().getNeighbors(3), testing::UnorderedElementsAre(1, 2, 4, 5));
+	EXPECT_THAT(world->getMapData().GetNeighbors(3), testing::UnorderedElementsAre(1, 2, 4, 5));
 }
 
 

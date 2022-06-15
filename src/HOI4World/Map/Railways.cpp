@@ -1,6 +1,7 @@
 #include "src/HOI4World/Map/Railways.h"
 #include "external/common_items/Log.h"
 #include "src/HOI4World/Map/PossiblePath.h"
+#include <cmath>
 #include <numeric>
 #include <queue>
 
@@ -79,7 +80,7 @@ std::set<std::vector<int>> determineVic2ProvincePaths(const std::set<int>& valid
 			newPaths.pop();
 
 			const auto lastProvince = path[path.size() - 1];
-			for (const auto& neighborNumber: Vic2MapData.getNeighbors(lastProvince))
+			for (const auto& neighborNumber: Vic2MapData.GetNeighbors(lastProvince))
 			{
 				if (handledProvinces.contains(neighborNumber))
 				{
@@ -347,14 +348,14 @@ int getCostForTerrainType(const std::string& terrainType)
 
 double getDistanceBetweenProvinces(int provinceOne, int provinceTwo, const Maps::MapData& HoI4MapData)
 {
-	const auto possibleProvinceOnePoints = HoI4MapData.getProvincePoints(provinceOne);
+	const auto possibleProvinceOnePoints = HoI4MapData.GetProvincePoints(provinceOne);
 	if (!possibleProvinceOnePoints)
 	{
 		return std::numeric_limits<double>::max();
 	}
 	const auto provinceOneCentermostPoint = possibleProvinceOnePoints->getCentermostPoint();
 
-	const auto possibleProvinceTwoPoints = HoI4MapData.getProvincePoints(provinceTwo);
+	const auto possibleProvinceTwoPoints = HoI4MapData.GetProvincePoints(provinceTwo);
 	if (!possibleProvinceTwoPoints)
 	{
 		return std::numeric_limits<double>::max();
@@ -387,7 +388,7 @@ std::optional<std::vector<int>> findPath(int startProvince,
 		possibleRailwayPaths.pop();
 
 		const auto lastProvince = possibleRailwayPath.getLastProvince();
-		for (const auto& neighborNumber: HoI4MapData.getNeighbors(lastProvince))
+		for (const auto& neighborNumber: HoI4MapData.GetNeighbors(lastProvince))
 		{
 			if (reachedProvinces.contains(neighborNumber))
 			{
