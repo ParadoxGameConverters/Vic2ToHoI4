@@ -1045,6 +1045,7 @@
     <Text Include="data\configurables\Resources.txt" />
     <Text Include="data\configurables\Scenarios\example_scenario.txt" />
     <Text Include="data\configurables\Scenarios\SpanishCivilWar\decisions.txt" />
+    <Text Include="data\configurables\Scenarios\SpanishCivilWar\decision_categories.txt" />
     <Text Include="data\configurables\scenario_creator_roles.txt" />
     <Text Include="data\configurables\shipTypes.txt" />
     <Text Include="data\configurables\Sounds\CultureToVoiceMappings.txt" />

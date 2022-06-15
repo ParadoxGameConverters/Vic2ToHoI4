@@ -1,0 +1,44 @@
+TAG_the_inevitable_civil_war = {
+	priority = 10
+	icon = spr_the_inevitable_civil_war # NOTE: Might want to swap this out with a generic
+
+	picture = GFX_decision_cat_picture_spr_the_inevitable_civil_war  # NOTE: Swap out
+
+	allowed = {
+		original_tag = TAG
+		has_dlc = "La Resistance"
+	}
+
+	custom_icon = {
+		tag = TAG
+		value = spa_civil_war_divisions_counter_icon_value # NOTE: Potential swap out
+		desc = spa_civil_war_divisions_counter_full_breakdown # NOTE: Potential swap out
+
+		visible = {
+			always = yes
+		}
+	}
+	
+	custom_icon = {
+		tag = TAG
+		value = spr_civil_war_divisions_counter_icon_value # NOTE: Potential swap out
+		desc = spr_civil_war_divisions_counter_full_breakdown # NOTE: Potential swap out
+
+		visible = {
+			always = yes
+		}
+	}
+
+	visible_when_empty = yes
+
+	on_map_area = {
+		state = CAPITAL_STATE
+		name = TAG_the_inevitable_civil_war_map_category_name
+		zoom = 250
+	}
+
+	visible = {
+		has_country_flag = TAG_elections_flag
+		NOT = { has_global_flag = TAG_spanish_civil_war }
+	}
+}

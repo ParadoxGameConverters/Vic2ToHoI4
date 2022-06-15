@@ -20,7 +20,9 @@ class ModSpanishCivilWar::Builder: commonItems::parser
 	std::unique_ptr<ModSpanishCivilWar> theCivilWarMod;
 
 	static const std::string tag;
-	static const std::string rebels;
+	static const std::string capitalState;
+	static const std::string plotterIdeology;
+	static const std::string governmentIdeology;
 };
 
 #endif // MOD_SPANISH_CIVIL_WAR_BUILDER_H

@@ -2823,6 +2823,9 @@
     <Text Include="data\configurables\Scenarios\SpanishCivilWar\decisions.txt">
       <Filter>data\configurables\Scenarios\SpanishCivilWar</Filter>
     </Text>
+    <Text Include="data\configurables\Scenarios\SpanishCivilWar\decision_categories.txt">
+      <Filter>data\configurables\Scenarios\SpanishCivilWar</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
