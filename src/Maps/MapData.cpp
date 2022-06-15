@@ -92,6 +92,13 @@ Maps::MapData::MapData(const ProvinceDefinitions& province_definitions,
 	ImportAdjacencies(mod_filesystem);
 }
 
+Maps::MapData::MapData(const ProvinceDefinitions& province_definitions, const std::string& path):
+	 province_definitions_(province_definitions)
+{
+	ImportProvinces(path);
+	ImportAdjacencies(path);
+}
+
 
 void Maps::MapData::ImportProvinces(const commonItems::ModFilesystem& mod_filesystem)
 {
@@ -100,10 +107,19 @@ void Maps::MapData::ImportProvinces(const commonItems::ModFilesystem& mod_filesy
 	{
 		throw std::runtime_error("Could not find /map/provinces.bmp");
 	}
-	bitmap_image province_map(*path);
+	ImportProvinces(*path);
+}
+
+void Maps::MapData::ImportProvinces(const std::string& path)
+{
+	auto full_path = path;
+	if (path.find("/map/provinces.bmp") == std::string::npos)
+		full_path = path + "/map/provinces.bmp";
+	
+	bitmap_image province_map(full_path);
 	if (!province_map)
 	{
-		throw std::runtime_error("Could not open " + *path + "/map/provinces.bmp");
+		throw std::runtime_error("Could not open " + full_path + "/map/provinces.bmp");
 	}
 
 	const int height = static_cast<int>(province_map.height());
@@ -235,11 +251,19 @@ void Maps::MapData::ImportAdjacencies(const commonItems::ModFilesystem& mod_file
 	{
 		throw std::runtime_error("Could not find /map/adjacencies.csv");
 	}
+	ImportAdjacencies(*path);
+}
 
-	std::ifstream adjacencies_file(*path);
+void Maps::MapData::ImportAdjacencies(const std::string& path)
+{
+	auto full_path = path;
+	if (path.find("/map/adjacencies.csv") == std::string::npos)
+		full_path = path + "/map/adjacencies.csv";
+
+	std::ifstream adjacencies_file(full_path);
 	if (!adjacencies_file.is_open())
 	{
-		throw std::runtime_error("Could not open " + *path);
+		throw std::runtime_error("Could not open " + full_path);
 	}
 
 	while (!adjacencies_file.eof())
