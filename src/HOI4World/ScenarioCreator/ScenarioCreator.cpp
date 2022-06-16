@@ -8,113 +8,113 @@
 #include <filesystem>
 #include <ranges>
 
-HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countryMap,
-	 const std::string& saveName,
-	 const std::string& roleFileName):
-	 saveName(saveName)
+HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_ptr<HoI4::Country>>& country_map,
+	 const std::string& save_name,
+	 const std::string& role_file_name):
+	 save_name_(save_name)
 {
-	const auto& scenarioFile = "Configurables/Scenarios/" + saveName + "_scenario.txt";
-	if (std::filesystem::exists(scenarioFile))
+	const auto& scenario_file = "Configurables/Scenarios/" + save_name + "_scenario.txt";
+	if (std::filesystem::exists(scenario_file))
 	{
 		// Use pre-genned scenario
-		bool preGenned = true;
+		bool pregenned = true;
 
-		const auto& configParser = ConfigParser(scenarioFile, preGenned);
-		countryToRoleAssignments = configParser.getRoleAssignments();
-		const auto& possibleRoles = configParser.getPossibleRoles();
+		const auto& config_parser = ConfigParser(scenario_file, pregenned);
+		country_to_role_assignments_ = config_parser.GetRoleAssignments();
+		const auto& possible_roles = config_parser.GetPossibleRoles();
 
-		initialzeRoles(possibleRoles);
+		InitialzeRoles(possible_roles);
 
-		for (const auto& assignment: countryToRoleAssignments)
+		for (const auto& assignment: country_to_role_assignments_)
 		{
 			const auto& tag = assignment.first;
-			const auto& roleName = assignment.second;
+			const auto& role_name = assignment.second;
 
-			applyRole(countryMap.at(tag), getRoleByName(roleName));
+			ApplyRole(country_map.at(tag), GetRoleByName(role_name));
 		}
 	}
 	else
 	{
 		// Craft scenario from scratch
-		for (const auto& country: countryMap | std::views::values)
+		for (const auto& country: country_map | std::views::values)
 		{
-			countries.emplace(country);
+			countries_.emplace(country);
 		}
 
-		const auto& possibleRoles = ConfigParser("Configurables/" + roleFileName).getPossibleRoles();
-		initialzeRoles(possibleRoles);
+		const auto& possible_roles = ConfigParser("Configurables/" + role_file_name).GetPossibleRoles();
+		InitialzeRoles(possible_roles);
 
-		for (const auto& country: countries)
+		for (const auto& country: countries_)
 		{
-			recalculateRoleFits(*country);
-			applyRole(country);
+			RecalculateRoleFits(*country);
+			ApplyRole(country);
 		}
 	}
 }
 
-void HoI4::ScenarioCreator::initialzeRoles(const std::set<std::string> possibleRoles)
+void HoI4::ScenarioCreator::InitialzeRoles(const std::set<std::string> possible_roles)
 {
-	auto roleTracker = possibleRoles;
-	if (roleTracker.contains("SpanishCivilWar"))
+	auto role_tracker = possible_roles;
+	if (role_tracker.contains("SpanishCivilWar"))
 	{
-		roles.push_back(std::make_shared<RoleSpanishCivilWar>());
-		roleTracker.erase("SpanishCivilWar");
+		roles_.push_back(std::make_shared<RoleSpanishCivilWar>());
+		role_tracker.erase("SpanishCivilWar");
 	}
-	if (roleTracker.contains("ArsenalOfIdeology"))
+	if (role_tracker.contains("ArsenalOfIdeology"))
 	{
-		roles.push_back(std::make_shared<RoleArsenalOfIdeology>());
-		roleTracker.erase("ArsenalOfIdeology");
+		roles_.push_back(std::make_shared<RoleArsenalOfIdeology>());
+		role_tracker.erase("ArsenalOfIdeology");
 	}
-	if (roleTracker.contains("TestShellOne"))
+	if (role_tracker.contains("TestShellOne"))
 	{
-		roles.push_back(std::make_shared<RoleTestShellOne>());
-		roleTracker.erase("TestShellOne");
+		roles_.push_back(std::make_shared<RoleTestShellOne>());
+		role_tracker.erase("TestShellOne");
 	}
-	if (roleTracker.contains("TestShellTwo"))
+	if (role_tracker.contains("TestShellTwo"))
 	{
-		roles.push_back(std::make_shared<RoleTestShellTwo>());
-		roleTracker.erase("TestShellTwo");
+		roles_.push_back(std::make_shared<RoleTestShellTwo>());
+		role_tracker.erase("TestShellTwo");
 	}
 
-	for (const auto& role: roleTracker)
+	for (const auto& role: role_tracker)
 		Log(LogLevel::Warning) << "Unkown identifier " + role + " skipping role in scenario builder.";
 }
 
-void HoI4::ScenarioCreator::recalculateRoleFits(const HoI4::Country& country)
+void HoI4::ScenarioCreator::RecalculateRoleFits(const HoI4::Country& country)
 {
-	for (const auto& role: roles)
+	for (const auto& role: roles_)
 	{
-		role->calculateFit(country);
+		role->CalculateFit(country);
 	}
-	std::sort(roles.begin(), roles.end(), Role::roleComparator);
+	std::sort(roles_.begin(), roles_.end(), Role::RoleComparator);
 }
 
-void HoI4::ScenarioCreator::applyRole(const std::shared_ptr<HoI4::Country> country)
+void HoI4::ScenarioCreator::ApplyRole(const std::shared_ptr<HoI4::Country> country)
 {
-	for (const auto& role: roles)
+	for (const auto& role: roles_)
 	{
-		if (role->isValid(*country))
+		if (role->IsValid(*country))
 		{
-			applyRole(country, role);
-			countryToRoleAssignments.emplace(country->getTag(), role->getName());
+			ApplyRole(country, role);
+			country_to_role_assignments_.emplace(country->getTag(), role->GetName());
 			continue;
 		}
 	}
 }
 
-void HoI4::ScenarioCreator::applyRole(std::shared_ptr<HoI4::Country> country, const std::shared_ptr<Role> role)
+void HoI4::ScenarioCreator::ApplyRole(std::shared_ptr<HoI4::Country> country, const std::shared_ptr<Role> role)
 {
-	if (auto possibleScenarioMod = role->apply(country); possibleScenarioMod)
+	if (auto possible_scenario_mod = role->Apply(country); possible_scenario_mod)
 	{
-		scenarioMods.push_back(possibleScenarioMod);
+		scenario_mods_.push_back(possible_scenario_mod);
 	}
 }
 
-const std::shared_ptr<Role> HoI4::ScenarioCreator::getRoleByName(const std::string roleName)
+const std::shared_ptr<Role> HoI4::ScenarioCreator::GetRoleByName(const std::string role_name)
 {
-	for (const auto& role: roles)
+	for (const auto& role: roles_)
 	{
-		if (role->getName() == roleName)
+		if (role->GetName() == role_name)
 			return role;
 	}
 	return nullptr;

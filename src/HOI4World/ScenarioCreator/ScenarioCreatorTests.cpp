@@ -9,15 +9,15 @@ TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, DefaultsAreAsSet)
 {
 	const HoI4::ScenarioCreator creator;
 
-	EXPECT_TRUE(creator.getCountries().empty());
-	EXPECT_TRUE(creator.getRoles().empty());
+	EXPECT_TRUE(creator.GetCountries().empty());
+	EXPECT_TRUE(creator.GetRoles().empty());
 }
 
-TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, recalculateRoleFits)
+TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, RecalculateRoleFits)
 {
-	std::vector<std::shared_ptr<Role>> expectedRoles;
-	expectedRoles.push_back(std::make_shared<RoleTestShellTwo>());
-	expectedRoles.push_back(std::make_shared<RoleTestShellOne>());
+	std::vector<std::shared_ptr<Role>> expected_roles;
+	expected_roles.push_back(std::make_shared<RoleTestShellTwo>());
+	expected_roles.push_back(std::make_shared<RoleTestShellOne>());
 
 	std::map<std::string, std::shared_ptr<HoI4::Country>> countries;
 	auto paridoxistan = HoI4::Country::Builder().addTag("PDX").addMillitaryFactories(5).build();
@@ -29,36 +29,36 @@ TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, recalculateRoleFits)
 
 	// recalculateRoleFits should swap that order so RoleTestShellTwo is first after construction
 
-	EXPECT_EQ(typeid(*creator.getRoles()[0]), typeid(*expectedRoles[0]));
-	EXPECT_EQ(typeid(*creator.getRoles()[1]), typeid(*expectedRoles[1]));
-	EXPECT_EQ(creator.getRoles().size(), 2);
+	EXPECT_EQ(typeid(*creator.GetRoles()[0]), typeid(*expected_roles[0]));
+	EXPECT_EQ(typeid(*creator.GetRoles()[1]), typeid(*expected_roles[1]));
+	EXPECT_EQ(creator.GetRoles().size(), 2);
 }
 
-TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, initializeRoles)
+TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, InitializeRoles)
 {
-	std::vector<std::shared_ptr<Role>> expectedRoles;
-	expectedRoles.push_back(std::make_shared<RoleSpanishCivilWar>());
-	expectedRoles.push_back(std::make_shared<RoleArsenalOfIdeology>());
+	std::vector<std::shared_ptr<Role>> expected_roles;
+	expected_roles.push_back(std::make_shared<RoleSpanishCivilWar>());
+	expected_roles.push_back(std::make_shared<RoleArsenalOfIdeology>());
 
 	std::map<std::string, std::shared_ptr<HoI4::Country>> empty;
 	const HoI4::ScenarioCreator creator(empty, "");
 
 	// NOTE: Troubles with EXPECT_THAT and containers of ptrs
-	EXPECT_EQ(typeid(*creator.getRoles()[0]), typeid(*expectedRoles[0]));
-	EXPECT_EQ(typeid(*creator.getRoles()[1]), typeid(*expectedRoles[1]));
-	EXPECT_EQ(creator.getRoles().size(), 2);
+	EXPECT_EQ(typeid(*creator.GetRoles()[0]), typeid(*expected_roles[0]));
+	EXPECT_EQ(typeid(*creator.GetRoles()[1]), typeid(*expected_roles[1]));
+	EXPECT_EQ(creator.GetRoles().size(), 2);
 };
 
-TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, initializeRolesFromPreGen)
+TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, InitializeRolesFromPreGen)
 {
-	std::vector<std::shared_ptr<Role>> expectedRoles;
-	expectedRoles.push_back(std::make_shared<RoleArsenalOfIdeology>());
+	std::vector<std::shared_ptr<Role>> expected_roles;
+	expected_roles.push_back(std::make_shared<RoleArsenalOfIdeology>());
 
-	std::map<std::string, std::shared_ptr<HoI4::Country>> ghostItaly;
-	ghostItaly.emplace("ITA", std::shared_ptr<HoI4::Country>());
+	std::map<std::string, std::shared_ptr<HoI4::Country>> ghost_italy;
+	ghost_italy.emplace("ITA", std::shared_ptr<HoI4::Country>());
 
-	const HoI4::ScenarioCreator creator(ghostItaly, "example");
+	const HoI4::ScenarioCreator creator(ghost_italy, "example");
 
-	EXPECT_EQ(typeid(*creator.getRoles()[0]), typeid(*expectedRoles[0]));
-	EXPECT_EQ(creator.getRoles().size(), 1);
+	EXPECT_EQ(typeid(*creator.GetRoles()[0]), typeid(*expected_roles[0]));
+	EXPECT_EQ(creator.GetRoles().size(), 1);
 };

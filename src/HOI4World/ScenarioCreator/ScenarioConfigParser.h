@@ -10,15 +10,15 @@ namespace HoI4
 class ConfigParser: commonItems::parser
 {
   public:
-	ConfigParser(std::string fileName, bool preGenned = false);
-	[[nodiscard]] std::set<std::string> getPossibleRoles() const { return possibleRoles; };
-	[[nodiscard]] std::map<std::string, std::string> getRoleAssignments() const { return roleAssignments; };
+	ConfigParser(std::string file_name, bool pre_genned = false);
+	[[nodiscard]] std::set<std::string> GetPossibleRoles() const { return possible_roles_; };
+	[[nodiscard]] std::map<std::string, std::string> GetRoleAssignments() const { return role_assignments_; };
 
   private:
 	void registerKeys();
 	void registerKeysPreGenned();
-	std::set<std::string> possibleRoles;					 // Roles marked as valid in config file
-	std::map<std::string, std::string> roleAssignments; // Map of tag to pre-assigned role
+	std::set<std::string> possible_roles_;						// Roles marked as valid in config file
+	std::map<std::string, std::string> role_assignments_; // Map of tag to pre-assigned role
 };
 } // namespace HoI4
 

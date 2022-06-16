@@ -20,19 +20,19 @@ HoI4::ConfigParser::ConfigParser(std::string filename, bool preGenned)
 
 void HoI4::ConfigParser::registerKeys()
 {
-	registerKeyword("valid", [this](std::istream& theStream) {
-		const auto& vectorRoles = commonItems::getStrings(theStream);
-		possibleRoles = std::set<std::string>(vectorRoles.begin(), vectorRoles.end());
+	registerKeyword("valid", [this](std::istream& the_stream) {
+		const auto& vector_roles = commonItems::getStrings(the_stream);
+		possible_roles_ = std::set<std::string>(vector_roles.begin(), vector_roles.end());
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 void HoI4::ConfigParser::registerKeysPreGenned()
 {
-	registerRegex(R"(\w+)", [this](const std::string& tag, std::istream& theStream) {
-		const auto& roleName = commonItems::getString(theStream);
-		possibleRoles.emplace(roleName);
-		roleAssignments.emplace(tag, roleName);
+	registerRegex(R"(\w+)", [this](const std::string& tag, std::istream& the_stream) {
+		const auto& role_name = commonItems::getString(the_stream);
+		possible_roles_.emplace(role_name);
+		role_assignments_.emplace(tag, role_name);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

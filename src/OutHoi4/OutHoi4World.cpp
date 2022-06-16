@@ -233,7 +233,7 @@ void HoI4::OutputWorld(const World& world,
 	outputSounds(outputName, world.getSoundEffects());
 	outMonarchInterface(outputName, world.getCountries());
 	copyCustomizedFocusFiles(outputName, world.getCustomizedFocusBranches());
-	outputScenario(world.getScenarios(),outputName);
+	OutputScenario(world.getScenarios(), outputName);
 }
 
 

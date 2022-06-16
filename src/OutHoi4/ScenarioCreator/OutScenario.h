@@ -9,7 +9,7 @@
 namespace HoI4
 {
 
-void outputScenario(const ScenarioCreator& scenario, std::string outputName);
+void OutputScenario(const ScenarioCreator& scenario, std::string output_name);
 
 }
 

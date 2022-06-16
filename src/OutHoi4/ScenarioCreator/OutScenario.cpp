@@ -1,20 +1,20 @@
 #include "src/OutHoi4/ScenarioCreator/OutScenario.h"
 #include "src/OutHoi4/ScenarioCreator/OutScenarioMod.h"
 
-void HoI4::outputScenario(const ScenarioCreator& scenario, std::string outputName)
+void HoI4::OutputScenario(const ScenarioCreator& scenario, std::string output_name)
 {
-	std::ofstream output("output/" + outputName + "/" + scenario.getSaveName() + "_scenario.txt");
+	std::ofstream output("output/" + output_name + "/" + scenario.GetSaveName() + "_scenario.txt");
 
-	for (const auto& assignment: scenario.getAssignments())
+	for (const auto& assignment: scenario.GetAssignments())
 	{
 		const auto& tag = assignment.first;
-		const auto& roleName = assignment.second;
+		const auto& role_name = assignment.second;
 
-		output << tag + " = " + roleName + "\n";
+		output << tag + " = " + role_name + "\n";
 	}
 
-	for (const auto& mod: scenario.getScenarioMods())
+	for (const auto& mod: scenario.GetScenarioMods())
 	{
-		outputScenarioMod(*mod, outputName);
+		OutputScenarioMod(*mod, output_name);
 	}
 }

@@ -7,16 +7,16 @@ TEST(HoI4World_ScenarioCreator_ScenarioConfigParserTests, ValidRolesStoredAllEls
 	const HoI4::ConfigParser parser("configurables/scenario_creator_roles.txt");
 
 	std::set<std::string> roles{"SpanishCivilWar", "ArsenalOfIdeology"};
-	EXPECT_THAT(parser.getPossibleRoles(), roles);
+	EXPECT_THAT(parser.GetPossibleRoles(), roles);
 }
 
-TEST(HoI4World_ScenarioCreator_ScenarioConfigParserTests, preGennedScenariosCompleteRoleAssignments)
+TEST(HoI4World_ScenarioCreator_ScenarioConfigParserTests, PreGennedScenariosCompleteRoleAssignments)
 {
 	const bool pregenned = true;
 	HoI4::ConfigParser parser("configurables/scenarios/example_scenario.txt", pregenned);
 
-	std::map<std::string, std::string> roleAssignments;
-	roleAssignments.emplace("ITA", "ArsenalOfIdeology");
+	std::map<std::string, std::string> role_assignments;
+	role_assignments.emplace("ITA", "ArsenalOfIdeology");
 
-	EXPECT_THAT(parser.getRoleAssignments(), roleAssignments);
+	EXPECT_THAT(parser.GetRoleAssignments(), role_assignments);
 }

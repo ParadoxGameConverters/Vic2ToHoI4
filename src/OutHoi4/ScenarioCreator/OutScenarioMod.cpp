@@ -1,24 +1,12 @@
-#include "OutScenarioMod.h"
+#include "src/OutHoi4/ScenarioCreator/OutScenarioMod.h"
 #include <fstream>
 
-void HoI4::outputScenarioMod(const ScenarioMod& mod, std::string outputName)
+void HoI4::OutputScenarioMod(const ScenarioMod& mod, std::string output_name)
 {
-	std::ofstream decisionOutput("output/" + outputName + "/common/decisions/scenario_decisions.txt");
-	for (const auto& dec: mod.getDecisions())
-		decisionOutput << dec;
+	std::ofstream decision_output("output/" + output_name + "/common/decisions/scenario_decisions.txt");
+	for (const auto& dec: mod.GetDecisions())
+		decision_output << dec;
 
-	std::ofstream debugTest("output/" + outputName + "/name.txt");
-	debugTest << mod.getName();
-
-	// std::ofstream decisionCategoryOutput("output/" + outputName +
-	// "/common/decision_categories/scenario_decision_categorgies.txt"); for (const auto& decCategory:
-	// mod.getDecisionCategories()) 	decisionOutput << decCategory;
-
-	// std::ofstream decisionOutput("output/" + outputName + "/common/decisions/scenario_decisions.txt");
-	// for (const auto& dec: mod.getDecisions())
-	//	decisionOutput << dec;
-
-	// std::ofstream decisionOutput("output/" + outputName + "/common/decisions/scenario_decisions.txt");
-	// for (const auto& dec: mod.getDecisions())
-	//	decisionOutput << dec;
+	std::ofstream debugTest("output/" + output_name + "/name.txt");
+	debugTest << mod.GetName();
 }

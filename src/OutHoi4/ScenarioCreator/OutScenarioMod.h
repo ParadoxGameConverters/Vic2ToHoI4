@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputScenarioMod(const ScenarioMod& mod, std::string outputName);
+void OutputScenarioMod(const ScenarioMod& mod, std::string output_name);
 
 }
 

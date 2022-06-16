@@ -9,24 +9,35 @@ class Role
   public:
 	Role() = default;
 
-	[[nodiscard]] double getFit() const { return fit; };
-	[[nodiscard]] std::string getName() const { return name; };
+	[[nodiscard]] double GetFit() const { return fit_; };
+	[[nodiscard]] std::string GetName() const { return name_; };
 
-	virtual bool isValid(const HoI4::Country& country) const = 0;
-	virtual void calculateFit(const HoI4::Country& country) = 0;
-	virtual std::shared_ptr<ScenarioMod> apply(std::shared_ptr<HoI4::Country> country) = 0;
+	virtual bool IsValid(const HoI4::Country& country) const = 0;
+	virtual void CalculateFit(const HoI4::Country& country) = 0;
+	virtual std::shared_ptr<ScenarioMod> Apply(std::shared_ptr<HoI4::Country> country) = 0;
 
 	// True if greater fit, analagous to std::greater
-	static bool roleComparator(const std::shared_ptr<Role> lhs, const std::shared_ptr<Role> rhs)
+	static bool RoleComparator(const std::shared_ptr<Role> lhs, const std::shared_ptr<Role> rhs)
 	{
-		return lhs->getFit() > rhs->getFit();
+		return lhs->GetFit() > rhs->GetFit();
 	};
 
+	// When I ask myself why I did this later: https://google.github.io/styleguide/cppguide.html#Inheritance
+	// (Delete comment once design is settled)
   protected:
-	double fit = 1;					  // Score for how suited this role is for a given country
-	unsigned short instances = 0;	  // # of times role is assigned
-	unsigned short instanceCap = 0; // # of times role may be assigned
+	[[nodiscard]] int GetInstances() const { return instances_; };
+	[[nodiscard]] int GetInstanceCap() const { return instance_cap_; };
 
-	std::string name = "";
+	void SetFit(const double fit) { fit_ = fit; };
+	void SetInstances(const int instances) { instances_ = instances; };
+	void SetInstanceCap(const int instance_cap) { instance_cap_ = instance_cap; };
+	void SetName(const std::string name) { name_ = name; };
+
+  private:
+	double fit_ = 1;		  // Score for how suited this role is for a given country
+	int instances_ = 0;	  // # of times role is assigned
+	int instance_cap_ = 0; // # of times role may be assigned
+
+	std::string name_ = "";
 };
 #endif // ROLE_H

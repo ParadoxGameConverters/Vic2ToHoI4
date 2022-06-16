@@ -8,9 +8,9 @@ class RoleSpanishCivilWar: public Role
   public:
 	RoleSpanishCivilWar();
 
-	bool isValid(const HoI4::Country& country) const;
-	void calculateFit(const HoI4::Country& country);
-	std::shared_ptr<ScenarioMod> apply(std::shared_ptr<HoI4::Country> country);
+	bool IsValid(const HoI4::Country& country) const override;
+	void CalculateFit(const HoI4::Country& country) override;
+	std::shared_ptr<ScenarioMod> Apply(std::shared_ptr<HoI4::Country> country) override;
 
   private:
 };

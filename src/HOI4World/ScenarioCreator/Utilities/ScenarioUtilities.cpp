@@ -1,11 +1,11 @@
 #include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
 #include <filesystem>
 
-const std::string ScenarioUtilities::getSaveName(const std::string& inputFile)
+const std::string ScenarioUtilities::GetSaveName(const std::string& input_file)
 {
 	const auto& match = std::filesystem::path::preferred_separator;
-	if (const auto& i = inputFile.find(match); i != std::string::npos)
-		return getSaveName(inputFile.substr(i + 1));
+	if (const auto& i = input_file.find(match); i != std::string::npos)
+		return GetSaveName(input_file.substr(i + 1));
 	else
-		return inputFile.substr(0, inputFile.size() - 3);
+		return input_file.substr(0, input_file.size() - 3);
 }

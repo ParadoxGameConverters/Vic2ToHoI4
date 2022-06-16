@@ -2,5 +2,5 @@
 
 ModSpanishCivilWar::ModSpanishCivilWar(std::shared_ptr<HoI4::Country> country)
 {
-	name = country->getTag() + "_SpanishCivilWar";
+	SetName(country->getTag() + "_SpanishCivilWar");
 }

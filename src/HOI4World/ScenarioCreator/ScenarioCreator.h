@@ -9,43 +9,42 @@ namespace HoI4
 class ScenarioCreator
 {
   public:
-	class Builder;
-	ScenarioCreator() = default;
-	ScenarioCreator(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countryMap,
-		 const std::string& saveName,
-		 const std::string& roleFileName = "scenario_creator_roles.txt");
-
 	typedef std::multiset<std::shared_ptr<HoI4::Country>, decltype(HoI4::Country::compareCountriesByIndustryDescending)*>
 		 CountriesByIndustryDescendingMultiSet;
 
-	[[nodiscard]] const auto& getRoles() const { return roles; };
-	[[nodiscard]] const auto& getScenarioMods() const { return scenarioMods; };
-	[[nodiscard]] const auto& getCountries() const { return countries; };
-	[[nodiscard]] const auto& getAssignments() const { return countryToRoleAssignments; };
-	[[nodiscard]] const auto& getSaveName() const { return saveName; };
+	class Builder;
+	ScenarioCreator() = default;
+	ScenarioCreator(const std::map<std::string, std::shared_ptr<HoI4::Country>>& country_map,
+		 const std::string& save_name,
+		 const std::string& role_file_name = "scenario_creator_roles.txt");
+
+	[[nodiscard]] const auto& GetRoles() const { return roles_; };
+	[[nodiscard]] const auto& GetScenarioMods() const { return scenario_mods_; };
+	[[nodiscard]] const auto& GetCountries() const { return countries_; };
+	[[nodiscard]] const auto& GetAssignments() const { return country_to_role_assignments_; };
+	[[nodiscard]] const auto& GetSaveName() const { return save_name_; };
 
 
   private:
-	std::vector<std::shared_ptr<Role>> roles;
-	std::vector<std::shared_ptr<ScenarioMod>> scenarioMods;
-	CountriesByIndustryDescendingMultiSet countries{HoI4::Country::compareCountriesByIndustryDescending};
-	std::map<std::string, std::string> countryToRoleAssignments;
-	std::string saveName;
+	// Initializes only the roles specified in scenario_creator_roles.txt
+	void InitialzeRoles(const std::set<std::string> possible_roles);
 
-	// Construct and emplace a role of each class
-	void initialzeRoles(const std::set<std::string> possibleRoles);
-
-	// For a given country, update all role fit values and sort container
-	void recalculateRoleFits(const HoI4::Country& country);
+	// Sorts roles_ vector by fit to parameter country
+	void RecalculateRoleFits(const HoI4::Country& country);
 
 	// Apply role to country, only if a valid match exists. Update tag -> Role assignments.
-	void applyRole(std::shared_ptr<HoI4::Country> country);
+	void ApplyRole(std::shared_ptr<HoI4::Country> country);
 
 	// Apply role to country, ignore all restrictions and collect possible resulting mod.
-	void applyRole(std::shared_ptr<HoI4::Country> country, const std::shared_ptr<Role> role);
+	void ApplyRole(std::shared_ptr<HoI4::Country> country, const std::shared_ptr<Role> role);
 
+	const std::shared_ptr<Role> GetRoleByName(const std::string role_name);
 
-	const std::shared_ptr<Role> getRoleByName(const std::string roleName);
+	std::vector<std::shared_ptr<Role>> roles_;
+	std::vector<std::shared_ptr<ScenarioMod>> scenario_mods_;
+	CountriesByIndustryDescendingMultiSet countries_{HoI4::Country::compareCountriesByIndustryDescending};
+	std::map<std::string, std::string> country_to_role_assignments_;
+	std::string save_name_;
 };
 
 } // namespace HoI4
