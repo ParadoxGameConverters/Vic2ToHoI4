@@ -19,9 +19,9 @@ class ScenarioMod
 	// When I ask myself why I did this later: https://google.github.io/styleguide/cppguide.html#Inheritance
 	// (Delete comment once design is settled)
   protected:
-	void AddDecision(const HoI4::decision& decision, const std::string category)
+	void AddDecision(HoI4::decision decision, const std::string category)
 	{
-		decisions_.emplace(category, decision);
+		decisions_.at(category).addDecision(decision);
 	};
 	void AddDecisionCategory(const HoI4::DecisionsCategory& decision_category)
 	{
