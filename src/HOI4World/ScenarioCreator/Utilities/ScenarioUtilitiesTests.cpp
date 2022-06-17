@@ -2,9 +2,17 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
 
-TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, GetSaveNameRemovesPathAndSaveTpye)
+TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, GetSaveNameRemovesPathAndSaveType)
 {
 	std::string save = "C:\\Users\\Tester\\Documents\\Paradox Interactive\\Victoria II\\save games\\Vanilla.v2";
 
-	EXPECT_THAT(ScenarioUtilities::GetSaveName(save), "Vanilla");
+	EXPECT_THAT(GetSaveName(save), "Vanilla");
+};
+
+TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, TBDFailureToOpenFile)
+{
+	std::string fake_file = "east_vs_west.txt";
+	std::stringstream empty = GetStreamFromFile(fake_file);
+
+	EXPECT_EQ(empty.str(), "");
 };

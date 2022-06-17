@@ -2,43 +2,70 @@ TAG_the_inevitable_civil_war = {
 	priority = 10
 	icon = spr_the_inevitable_civil_war # NOTE: Might want to swap this out with a generic
 
-	picture = GFX_decision_cat_picture_spr_the_inevitable_civil_war  # NOTE: Swap out
+	picture = GFX_decision_cat_picture_spr_the_inevitable_civil_war
 
 	allowed = {
 		original_tag = TAG
-		has_dlc = "La Resistance"
-	}
-
-	custom_icon = {
-		tag = TAG
-		value = spa_civil_war_divisions_counter_icon_value # NOTE: Potential swap out
-		desc = spa_civil_war_divisions_counter_full_breakdown # NOTE: Potential swap out
-
-		visible = {
-			always = yes
-		}
-	}
-	
-	custom_icon = {
-		tag = TAG
-		value = spr_civil_war_divisions_counter_icon_value # NOTE: Potential swap out
-		desc = spr_civil_war_divisions_counter_full_breakdown # NOTE: Potential swap out
-
-		visible = {
-			always = yes
-		}
 	}
 
 	visible_when_empty = yes
 
 	on_map_area = {
 		state = CAPITAL_STATE
-		name = TAG_the_inevitable_civil_war_map_category_name
+		name = SPR_the_inevitable_civil_war_map_category_name # NOTE: Do not touch, is generic as is.
 		zoom = 250
 	}
 
 	visible = {
-		has_country_flag = TAG_elections_flag
+		has_country_flag = TAG_elections_flag # NOTE: don't nessecerialy need elections
 		NOT = { has_global_flag = TAG_spanish_civil_war }
+	}
+}
+
+TAG_opposition_civil_war_preparations = {
+	priority = 9
+	icon = spr_the_inevitable_civil_war
+
+	picture = GFX_decision_cat_picture_spr_the_inevitable_civil_war
+	
+	allowed = {
+		original_tag = TAG
+	}
+}
+
+TAG_civil_war_offensives = {
+	priority = 8
+	icon = spr_civil_war_offensives
+
+	picture = GFX_decision_cat_picture_spr_civil_war_offensives
+
+	on_map_area = {
+		state = CAPITAL_STATE
+		name = SPR_civil_war_offensives_map_category_name
+		zoom = 250
+	}
+
+	visible_when_empty = yes
+	
+	allowed = {
+		original_tag = TAG
+	}
+
+	visible = {
+		has_global_flag = TAG_scw_in_progress
+		any_owned_state = {
+			has_state_flag = TAG_unplanned_offensive_flag
+		}
+	}
+}
+
+TAG_recovering_from_civil_war = {
+
+	priority = 6
+
+	icon = generic_industry
+	
+	allowed = {
+		original_tag = TAG
 	}
 }

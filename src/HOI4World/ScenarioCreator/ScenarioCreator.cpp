@@ -54,7 +54,7 @@ HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_p
 
 void HoI4::ScenarioCreator::InitialzeRoles(const std::set<std::string> possible_roles)
 {
-	auto role_tracker = possible_roles;
+	std::set<std::string> role_tracker = possible_roles;
 	if (role_tracker.contains("SpanishCivilWar"))
 	{
 		roles_.push_back(std::make_shared<RoleSpanishCivilWar>());

@@ -3,6 +3,7 @@
 
 #include "src/HOI4World/HoI4Country.h"
 #include "src/HOI4World/ScenarioCreator/Roles/ScenarioMod.h"
+#include "src/HOI4World/Decisions/DecisionsCategories.h"
 
 class ModSpanishCivilWar: public ScenarioMod
 {
@@ -12,7 +13,6 @@ class ModSpanishCivilWar: public ScenarioMod
 	ModSpanishCivilWar(std::shared_ptr<HoI4::Country> country);
 
   private:
-	int b = 0; // NOTE: quick test, delete
 };
 
 #endif // MOD_SPANISH_CIVIL_WAR_H
