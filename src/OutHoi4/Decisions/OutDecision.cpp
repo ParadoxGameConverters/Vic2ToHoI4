@@ -5,7 +5,7 @@
 std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecision)
 {
 	outStream << "\n\t" << outDecision.name << " = {\n";
-	if (!outDecision.priority)
+	if (outDecision.priority)
 	{
 		outStream << "\n\t\tpriority = " << *outDecision.priority << "\n";
 	}
