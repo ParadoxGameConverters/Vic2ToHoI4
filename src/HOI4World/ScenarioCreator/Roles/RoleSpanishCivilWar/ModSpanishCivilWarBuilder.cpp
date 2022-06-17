@@ -1,4 +1,6 @@
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/ModSpanishCivilWarBuilder.h"
+#include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
+#include <sstream>
 #include <regex>
 
 // No string identifier can be a substring of another identifier for this to work
@@ -27,15 +29,16 @@ ModSpanishCivilWar::Builder::Builder()
 	the_civil_war_mod_ = std::make_unique<ModSpanishCivilWar>();
 
 	// May handle naively with regex in this case
-	auto decision_categories = HoI4::DecisionsCategories::Factory().getDecisionsCategories(
-		 "Configurables/Scenarios/SpanishCivilWar/decision_categories.txt");
-	for (auto& category: decision_categories->getTheCategories())
-	{
-		// Regex all of the constants out at the appropitate places
-	}
+	std::string file = "Configurables/Scenarios/" + kFolder + "/decision_categories.txt";
+	std::stringstream categories_stream = GetStreamFromFile(file);
+
+	//auto decision_categories =
+	//	 HoI4::DecisionsCategories::Factory().getDecisionsCategories(categories_stream);
+
+	// Regex all of the constants out at the appropitate places
 
 	// Thats a std::move on each end, probably a better way to do it
-	the_civil_war_mod_->SetDecisionCategories(decision_categories);
+	// the_civil_war_mod_->SetDecisionCategories(decision_categories);
 }
 
 // decisions.txt

@@ -9,10 +9,28 @@ TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, GetSaveNameRemovesPathAnd
 	EXPECT_THAT(GetSaveName(save), "Vanilla");
 };
 
-TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, TBDFailureToOpenFile)
+TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, NonexistentFileLeavesEmptyString)
 {
 	std::string fake_file = "east_vs_west.txt";
 	std::stringstream empty = GetStreamFromFile(fake_file);
 
 	EXPECT_EQ(empty.str(), "");
+};
+
+TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, ContentsOfFileCopiedToStringStream)
+{
+	std::string fake_file = "Configurables/Scenarios/example_scenario.txt";
+	std::stringstream file = GetStreamFromFile(fake_file);
+
+	EXPECT_EQ(file.str(), "ITA = ArsenalOfIdeology");
+};
+
+TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, DemonstrateCopyOfStringStream)
+{
+	std::string fake_file = "Configurables/Scenarios/example_scenario.txt";
+	std::stringstream file = GetStreamFromFile(fake_file);
+	std::stringstream copy(file.str());
+
+	EXPECT_EQ(file.str(), "ITA = ArsenalOfIdeology");
+	EXPECT_EQ(copy.str(), "ITA = ArsenalOfIdeology");
 };
