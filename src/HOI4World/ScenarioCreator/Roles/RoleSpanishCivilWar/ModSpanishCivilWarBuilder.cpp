@@ -1,7 +1,8 @@
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/ModSpanishCivilWarBuilder.h"
+#include "external/common_items/CommonRegexes.h"
 #include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
-#include <sstream>
 #include <regex>
+#include <sstream>
 
 // No string identifier can be a substring of another identifier for this to work
 const std::string ModSpanishCivilWar::Builder::kFolder = "SpanishCivilWar";
@@ -10,6 +11,10 @@ const std::string ModSpanishCivilWar::Builder::kCapitalState = "CAPITAL_STATE";
 const std::string ModSpanishCivilWar::Builder::kState = "THIS_STATE";
 const std::string ModSpanishCivilWar::Builder::kPlotterIdeology = "OPPOSITION_IDEOLOGY";
 const std::string ModSpanishCivilWar::Builder::kGovernmentIdeology = "GOVERNMENT_IDEOLOGY";
+
+// ALL PARSING IS CURRENTLY EXPLORATORY. Parsing will be compartamentalized into functions and organized and all that
+// jazz. Just trying to figure out the how of it right now, and what adjustments need to be made to the HoI4::decision
+// classes
 
 // Parse over mod files, create nessecary objects while find&replacing keywords to make the magic happen
 
@@ -24,23 +29,48 @@ const std::string ModSpanishCivilWar::Builder::kGovernmentIdeology = "GOVERNMENT
 // to avoid excessive file i/o, does commonItems have such a feature?
 
 // decision_categories.txt
-ModSpanishCivilWar::Builder::Builder()
+ModSpanishCivilWar::Builder::Builder(std::shared_ptr<HoI4::Country> country)
 {
 	the_civil_war_mod_ = std::make_unique<ModSpanishCivilWar>();
 
 	// May handle naively with regex in this case
+	// Slap this in a function later
 	std::string file = "Configurables/Scenarios/" + kFolder + "/decision_categories.txt";
-	std::stringstream categories_stream = GetStreamFromFile(file);
+	std::stringstream buffer_stream = GetStreamFromFile(file);
+	std::string buffer = buffer_stream.str();
+	std::stringstream input_stream;
 
-	//auto decision_categories =
-	//	 HoI4::DecisionsCategories::Factory().getDecisionsCategories(categories_stream);
+	buffer = std::regex_replace(buffer, std::regex(kTag), country->getTag());
+	buffer = std::regex_replace(buffer, std::regex(kCapitalState), std::to_string(country->getCapitalState().value()));
 
-	// Regex all of the constants out at the appropitate places
+	input_stream << buffer;
 
-	// Thats a std::move on each end, probably a better way to do it
-	// the_civil_war_mod_->SetDecisionCategories(decision_categories);
+	auto decision_categories = HoI4::DecisionsCategories::Factory().getDecisionsCategories(input_stream);
+
+	// decisions.txt
+	// Slap this in a function later
+	std::string file2 = "Configurables/Scenarios/" + kFolder + "/decisions.txt";
+	std::stringstream buffer_stream2 = GetStreamFromFile(file2);
+	std::string buffer2 = buffer_stream2.str();
+	std::stringstream input_stream2;
+
+	buffer2 = std::regex_replace(buffer2, std::regex(kTag), country->getTag());
+	buffer2 = std::regex_replace(buffer2, std::regex(kState), "563");
+
+	input_stream2 << buffer2;
+
+
+	// Call parseStream to regex off country->getTag() + "_the_inevitable_civil_war bit
+	// TAG_expand_influence_in_the_THIS_STATE_garrison is a single template that should be generated for multiple states
+	registerRegex(commonItems::catchallRegex, [this](const std::string& category_name, std::istream& the_stream) {
+		const HoI4::DecisionsInCategory decisions(category_name, the_stream);
+		the_civil_war_mod_->AddDecisionsInCategory(decisions, category_name);
+	});
+
+	parseStream(input_stream2);
+	clearRegisteredKeywords();
+
+	the_civil_war_mod_->SetDecisionCategories(decision_categories);
 }
-
-// decisions.txt
 
 // events.txt

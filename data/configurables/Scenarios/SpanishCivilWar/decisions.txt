@@ -15,14 +15,14 @@ TAG_the_inevitable_civil_war = {
 		fire_only_once = yes
 
 		activation = {
-			has_country_flag = TAG_elections_flag
+			# has_country_flag = TAG_elections_flag
 			NOT = { has_global_flag = TAG_spanish_civil_war }
 		}
 
 		visible = {
 			tag = TAG
-			has_completed_focus = TAG_went_with_government # TODO: name the focus better
-			has_country_flag = TAG_elections_flag
+			# has_completed_focus = TAG_went_with_government # TODO: name the focus better
+			# has_country_flag = TAG_elections_flag
 			NOT = { has_global_flag = TAG_spanish_civil_war }
 		}
 
@@ -31,7 +31,7 @@ TAG_the_inevitable_civil_war = {
 		is_good = yes
 
 		timeout_effect = {
-			country_event = lar_TAG.* # TODO: Event TBD 
+			# country_event = lar_TAG.* # TODO: Event TBD 
 			if = {
 				limit = {
 					has_idea = TAG_awaiting_the_rebellion
@@ -63,7 +63,7 @@ TAG_the_inevitable_civil_war = {
 		visible = {
 			tag = TAG
 			has_completed_focus = TAG_the_popular_front # TODO: name the focus better
-			has_country_flag = TAG_elections_flag
+			# has_country_flag = TAG_elections_flag
 			NOT = { has_global_flag = TAG_spanish_civil_war }
 		}
 
@@ -72,7 +72,117 @@ TAG_the_inevitable_civil_war = {
 		is_good = no
 
 		timeout_effect = {
-			country_event = lar_TAG.* # TODO: Event TBD 
+			# country_event = lar_TAG.* # TODO: Event TBD 
 		}
+	}
+
+	TAG_expand_influence_in_the_THIS_STATE_garrison = {
+
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				# has_completed_focus = TAG_a_great_spain
+				THIS_STATE = { check_variable = { var = TAG_garrison_control value = 1 compare = equals } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				# has_completed_focus = SPA_a_great_spain
+				THIS_STATE = {
+					check_variable = { var = TAG_garrison_control value = 2 compare = equals }
+					# NOT = { has_state_flag = SPA_northern_garrisons_state_flag }
+				}
+			}
+		}
+		#icon = {
+		#	key = spa_garrison_control_weak2
+		#	trigger = {
+		#		# has_completed_focus = SPA_a_great_spain
+		#		THIS_STATE = {
+		#			check_variable = { var = TAG_garrison_control value = 2 compare = equals }
+		#			# has_state_flag = SPA_northern_garrisons_state_flag
+		#		}
+		#	}
+		#}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				# has_completed_focus = SPA_a_great_spain
+				THIS_STATE = {
+					check_variable = { var = TAG_garrison_control value = 3 compare = equals }
+					# NOT = { has_state_flag = SPA_northern_garrisons_state_flag }
+				}
+			}
+		}
+		#icon = {
+		#	key = spa_garrison_control_strong2
+		#	trigger = {
+		#		has_completed_focus = SPA_a_great_spain
+		#		THIS_STATE = {
+		#			check_variable = { var = TAG_garrison_control value = 3 compare = equals }
+		#			# has_state_flag = SPA_northern_garrisons_state_flag
+		#		}
+		#	}
+		#}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_completed_focus = SPA_a_great_spain
+				THIS_STATE = { check_variable = { var = TAG_garrison_control value = 4 compare = greater_than_or_equals } }
+			}
+		}
+		# spa version above spr needed version now
+
+		available = {
+			has_full_control_of_state = THIS_STATE
+			if = {
+				limit = {
+					# has_completed_focus = SPA_a_great_spain
+				}
+				custom_trigger_tooltip = {
+					tooltip = SPA_expand_influence_nationalists_trigger_tt
+					# THIS_STATE = { check_variable = { var = TAG_garrison_control value = 4 compare = less_than } }
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = SPR_the_popular_front
+				}
+				custom_trigger_tooltip = {
+					tooltip = SPR_expand_influence_republicans_trigger_tt
+					THIS_STATE = { check_variable = { var = TAG_garrison_control value = 2 compare = greater_than_or_equals } }
+				}
+			}
+			NOT = {
+				has_country_flag = SPA_already_expanding_influence_flag
+			}
+		}
+
+		highlight_states = {
+ 			highlight_state_targets = { state = THIS_STATE } 
+		}
+
+		on_map_mode = map_only
+
+		# cost = THIS_STATE.SPA_garrison_control_cost?10
+
+		fire_only_once = no
+
+		days_remove = 14
+
+		visible = {
+			NOT = { has_global_flag = TAG_spanish_civil_war }
+			# has_country_flag = SPR_spanish_elections_flag
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			set_country_flag = TAG_already_expanding_influence_flag
+		}
+
+		# temp removed remove_effect, put back here
+		# temp removed ai_will_do section, put back here
 	}
 }

@@ -7,12 +7,8 @@
 class ModSpanishCivilWar::Builder: commonItems::parser
 {
   public:
-	Builder();
+	Builder(std::shared_ptr<HoI4::Country> country);
 	std::unique_ptr<ModSpanishCivilWar> Build() { return std::move(the_civil_war_mod_); }
-
-	Builder& AddDecision(const std::string& file, const std::string& category);
-	Builder& AddCategory(const std::string& file, const std::string& name);
-	Builder& AddEvent(const std::string& file, const std::string& category);
 
   private:
 	static const std::string kFolder;
@@ -21,6 +17,8 @@ class ModSpanishCivilWar::Builder: commonItems::parser
 	static const std::string kState;
 	static const std::string kPlotterIdeology;
 	static const std::string kGovernmentIdeology;
+
+
 
 	std::unique_ptr<ModSpanishCivilWar> the_civil_war_mod_;
 };

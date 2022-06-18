@@ -11,7 +11,7 @@ class ScenarioMod
 	ScenarioMod() = default;
 
 	[[nodiscard]] auto GetDecisionsFromCategory(const std::string category) const { return decisions_.at(category); };
-	[[nodiscard]] auto GetAllDecisionsByCategory(const std::string& category) const { return decisions_; };
+	[[nodiscard]] auto GetAllDecisionsByCategory() const { return decisions_; };
 	[[nodiscard]] auto GetDecisionCategories() const { return &decision_categories_; };
 	[[nodiscard]] auto GetEvents() const { return events_; };
 	[[nodiscard]] auto GetName() const { return name_; };
@@ -19,9 +19,13 @@ class ScenarioMod
 	// When I ask myself why I did this later: https://google.github.io/styleguide/cppguide.html#Inheritance
 	// (Delete comment once design is settled)
   protected:
-	void AddDecision(HoI4::decision decision, const std::string category)
+	void AddDecisionInCategory(HoI4::decision decision, const std::string category)
 	{
 		decisions_.at(category).addDecision(decision);
+	};
+	void AddDecisionsInCategory(HoI4::DecisionsInCategory decisions, const std::string category)
+	{
+		decisions_.emplace(category, decisions);
 	};
 	void AddDecisionCategory(const HoI4::DecisionsCategory& decision_category)
 	{
@@ -33,6 +37,7 @@ class ScenarioMod
 	{
 		decision_categories_ = std::move(decision_categories);
 	};
+	void SetDecisions(std::map<std::string, HoI4::DecisionsInCategory> decisions) { decisions_ = decisions; };
 	void SetName(const std::string name) { name_ = name; };
 
   private:

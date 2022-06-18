@@ -3,7 +3,7 @@
 #include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/Events/Events.h"
 
-
+#pragma optimize("", off)
 
 HoI4::DecisionsInCategory::DecisionsInCategory(std::string categoryName, std::istream& theStream):
 	 name(std::move(categoryName))
@@ -16,7 +16,7 @@ HoI4::DecisionsInCategory::DecisionsInCategory(std::string categoryName, std::is
 	parseStream(theStream);
 }
 
-
+#pragma optimize("", on)
 void updateOpenUpPoliticalDiscourse(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
 void updateDiscreditGovernment(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
 void updateInstitutePressCensorship(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
