@@ -705,6 +705,34 @@ void HoI4::States::convertResources()
 			}
 		}
 	}
+
+	Log(LogLevel::Info) << "\tConverted resources:";
+	std::map<std::string, double> total_resources;
+	for (const auto& state: states | std::views::values)
+	{
+		for (const auto& [resource, amount]: state.getResources())
+		{
+			total_resources[resource] += amount;
+		}
+	}
+	for (const auto& [resource, amount]: total_resources)
+	{
+		Log(LogLevel::Info) << "\t\t" << resource << ": " << amount;
+	}
+
+	Log(LogLevel::Info) << "\tDefault resources:";
+	std::map<std::string, double> default_resources;
+	for (const auto& state: defaultStates_ | std::views::values)
+	{
+		for (const auto& [resource, amount]: state.GetResources())
+		{
+			default_resources[resource] += amount;
+		}
+	}
+	for (const auto& [resource, amount]: default_resources)
+	{
+		Log(LogLevel::Info) << "\t\t" << resource << ": " << amount;
+	}
 }
 
 

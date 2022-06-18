@@ -25,6 +25,12 @@ HoI4::DefaultState::DefaultState(std::istream& theStream)
 		dockyards = theHistory.getDockyards();
 		ownerTag = theHistory.getOwner();
 	});
+	registerKeyword("resources", [this](std::istream& the_stream) {
+		for (const auto& [resource, amount]: commonItems::assignments(the_stream).getAssignments())
+		{
+			resources_[resource] += std::stod(amount);
+		}
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
