@@ -357,7 +357,7 @@ anglo_celtic = {
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
 }
-french_beneluxian = {
+low_franconian = {
 	cultures_and_groups = { french frankish neo_european_cultures beneluxian }
 		army_portraits = {
 		#Generic European
@@ -512,7 +512,6 @@ french_beneluxian = {
 			"gfx/interface/ideas/idea_marcel_bucard.dds"
 		}
 		absolutist = {
-			"gfx/interface/ideas/idea_louis_mountbatten.dds"
 			"gfx/interface/ideas/idea_charles_de_gaulle.dds"
 		}
 		neutrality = {
@@ -1308,7 +1307,7 @@ pan_germanic = {
 }
 
 italic = {
-	cultures_and_groups = { italian old_italian iberian levantine tyrrhenian } # Move Iberian later
+	cultures_and_groups = { italian old_italian levantine tyrrhenian } #Anticipating more portraits from upcoming DLC
 
 	army_portraits = {
 		#Generic European
@@ -5444,8 +5443,8 @@ south_american_native = {
 	graphical_culture_2d = southamerican_2d
 }
 
-hispanic = {
-	cultures_and_groups = { latin_american_cultures }
+hispanic_pie = {
+	cultures_and_groups = { latin_american_cultures pre_indo_european iberian }
 
 	army_portraits = {
 		#Generic
