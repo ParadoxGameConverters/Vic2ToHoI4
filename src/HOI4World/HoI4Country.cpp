@@ -1682,7 +1682,7 @@ float HoI4::Country::GetResourcesMultiplier() const
 		return 0.0F;
 	}
 
-	int top_industry_technologies = 0;
+	float top_industry_technologies = 0.0F;
 	if (oldTechnologiesAndInventions.contains("electrical_power_generation"))
 	{
 		++top_industry_technologies;
@@ -1703,7 +1703,10 @@ float HoI4::Country::GetResourcesMultiplier() const
 	{
 		++top_industry_technologies;
 	}
-	return 0.2F * static_cast<float>(top_industry_technologies);
+
+	const float a = 0.025F * top_industry_technologies * top_industry_technologies;
+	const float b = 0.075F * top_industry_technologies;
+	return a + b;
 }
 
 
