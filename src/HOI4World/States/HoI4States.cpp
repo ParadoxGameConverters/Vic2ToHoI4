@@ -702,15 +702,20 @@ void HoI4::States::convertResources(const std::map<std::string, std::shared_ptr<
 			resource_multiplier = owner->second->GetResourcesMultiplier();
 		}
 
+		std::map<std::string, float> state_resources;
 		for (const auto province_number: state.getProvinces())
 		{
 			for (const auto& [resource, amount]: resource_map.getResourcesInProvince(province_number))
 			{
-				const int found_amount = static_cast<int>(static_cast<float>(amount) * resource_multiplier);
-				if (found_amount > 0)
-				{
-					state.addResource(resource, found_amount);
-				}
+				state_resources[resource] += static_cast<float>(amount) * resource_multiplier;
+			}
+		}
+		for (const auto& [resource, amount]: state_resources)
+		{
+			const int found_amount = static_cast<int>(amount);
+			if (found_amount > 0)
+			{
+				state.addResource(resource, found_amount);
 			}
 		}
 	}
