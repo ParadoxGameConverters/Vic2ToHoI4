@@ -690,18 +690,26 @@ void HoI4::States::addBasicAirBases()
 }
 
 
-void HoI4::States::convertResources()
+void HoI4::States::convertResources(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
 {
 	Log(LogLevel::Info) << "\tConverting resources";
-	const Resources resourceMap;
+	const Resources resource_map;
 
-	for (auto& state: states)
+	for (auto& state: states | std::views::values)
 	{
-		for (auto provinceNumber: state.second.getProvinces())
+		float resource_multiplier = 0.0F;
+		if (const auto owner = countries.find(state.getOwner()); owner != countries.end())
 		{
-			for (const auto& resource: resourceMap.getResourcesInProvince(provinceNumber))
+			resource_multiplier = owner->second->GetResourcesMultiplier();
+		}
+
+		for (const auto province_number: state.getProvinces())
+		{
+			for (const auto& [resource, amount]: resource_map.getResourcesInProvince(province_number))
 			{
-				state.second.addResource(resource.first, resource.second);
+				const float found_amount = static_cast<float>(amount) * resource_multiplier;
+				state.addResource(resource, found_amount);
+				// add resources that can be found via event
 			}
 		}
 	}
