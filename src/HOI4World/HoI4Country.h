@@ -177,6 +177,7 @@ class Country
 	[[nodiscard]] std::optional<Faction> getFaction() const;
 	[[nodiscard]] std::optional<HoI4FocusTree> getNationalFocus() const;
 	[[nodiscard]] bool hasMonarchIdea() const;
+	[[nodiscard]] float GetResourcesMultiplier() const;
 
 	[[nodiscard]] const std::string& getTag() const { return tag; }
 	[[nodiscard]] const auto& getOldTag() const { return oldTag; }

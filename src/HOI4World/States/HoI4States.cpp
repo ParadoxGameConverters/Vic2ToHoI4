@@ -690,20 +690,62 @@ void HoI4::States::addBasicAirBases()
 }
 
 
-void HoI4::States::convertResources()
+void HoI4::States::convertResources(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
 {
-	Log(LogLevel::Info) << "\tConverting resources";
-	const Resources resourceMap;
+	const Resources resource_map;
 
-	for (auto& state: states)
+	for (auto& state: states | std::views::values)
 	{
-		for (auto provinceNumber: state.second.getProvinces())
+		float resource_multiplier = 0.0F;
+		if (const auto owner = countries.find(state.getOwner()); owner != countries.end())
 		{
-			for (const auto& resource: resourceMap.getResourcesInProvince(provinceNumber))
+			resource_multiplier = owner->second->GetResourcesMultiplier();
+		}
+
+		std::map<std::string, float> state_resources;
+		for (const auto province_number: state.getProvinces())
+		{
+			for (const auto& [resource, amount]: resource_map.getResourcesInProvince(province_number))
 			{
-				state.second.addResource(resource.first, resource.second);
+				state_resources[resource] += static_cast<float>(amount) * resource_multiplier;
 			}
 		}
+		for (const auto& [resource, amount]: state_resources)
+		{
+			const int found_amount = static_cast<int>(amount);
+			if (found_amount > 0)
+			{
+				state.addResource(resource, found_amount);
+			}
+		}
+	}
+
+	Log(LogLevel::Info) << "\tConverted resources:";
+	std::map<std::string, double> total_resources;
+	for (const auto& state: states | std::views::values)
+	{
+		for (const auto& [resource, amount]: state.getResources())
+		{
+			total_resources[resource] += amount;
+		}
+	}
+	for (const auto& [resource, amount]: total_resources)
+	{
+		Log(LogLevel::Info) << "\t\t" << resource << ": " << amount;
+	}
+
+	Log(LogLevel::Info) << "\tDefault resources:";
+	std::map<std::string, double> default_resources;
+	for (const auto& state: defaultStates_ | std::views::values)
+	{
+		for (const auto& [resource, amount]: state.GetResources())
+		{
+			default_resources[resource] += amount;
+		}
+	}
+	for (const auto& [resource, amount]: default_resources)
+	{
+		Log(LogLevel::Info) << "\t\t" << resource << ": " << amount;
 	}
 }
 

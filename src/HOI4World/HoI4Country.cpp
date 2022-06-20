@@ -1671,6 +1671,44 @@ bool HoI4::Country::hasMonarchIdea() const
 }
 
 
+float HoI4::Country::GetResourcesMultiplier() const
+{
+	if (!civilized)
+	{
+		return 0.0F;
+	}
+	if (unrecognizedNation)
+	{
+		return 0.0F;
+	}
+
+	float top_industry_technologies = 0.0F;
+	if (oldTechnologiesAndInventions.contains("electrical_power_generation"))
+	{
+		++top_industry_technologies;
+	}
+	if (oldTechnologiesAndInventions.contains("shift_work"))
+	{
+		++top_industry_technologies;
+	}
+	if (oldTechnologiesAndInventions.contains("electric_furnace"))
+	{
+		++top_industry_technologies;
+	}
+	if (oldTechnologiesAndInventions.contains("limited_access_roads"))
+	{
+		++top_industry_technologies;
+	}
+	if (oldTechnologiesAndInventions.contains("synthetic_polymers"))
+	{
+		++top_industry_technologies;
+	}
+
+	const float a = 0.025F * top_industry_technologies * top_industry_technologies;
+	const float b = 0.075F * top_industry_technologies;
+	return a + b;
+}
+
 
 const bool HoI4::Country::isEligibleEnemy(std::string target) const
 {

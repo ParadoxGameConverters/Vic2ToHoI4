@@ -182,11 +182,11 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 theConfiguration.getDebug());
 	determineCoresAndClaims();
 	Log(LogLevel::Progress) << "52%";
-	states->convertResources();
+	convertTechs();
+	states->convertResources(countries);
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
 	convertStrategies(sourceWorld, *states, provinceMapper);
-	convertTechs();
 	Log(LogLevel::Progress) << "56%";
 
 	convertCountryNames(vic2Localisations);
