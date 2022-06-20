@@ -692,7 +692,6 @@ void HoI4::States::addBasicAirBases()
 
 void HoI4::States::convertResources(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
 {
-	Log(LogLevel::Info) << "\tConverting resources";
 	const Resources resource_map;
 
 	for (auto& state: states | std::views::values)
