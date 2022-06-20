@@ -753,6 +753,7 @@ void outputAlliances(std::ostream& output, const std::set<std::string>& allies);
 void outputPolitics(std::ostream& output,
 	 const std::string& governmentIdeology,
 	 const date& lastElection,
+	 const date& lastElection36,
 	 const bool& areElectionsAllowed,
 	 const std::map<std::string, int>& ideologySupport);
 void outputRelations(std::ostream& output,
@@ -815,6 +816,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	outputPolitics(output,
 		 governmentIdeology,
 		 theCountry.getLastElection(),
+		 theCountry.getLastElection36(),
 		 theCountry.areElectionsAllowed(),
 		 theCountry.getIdeologySupport());
 	outputPuppets(output, tag, governmentIdeology, theCountry.getPuppets(), theCountry.getPuppetMaster());
@@ -953,6 +955,7 @@ void outputEquipmentStockpile(std::ostream& output,
 void outputPolitics(std::ostream& output,
 	 const std::string& governmentIdeology,
 	 const date& lastElection,
+	 const date& lastElection36,
 	 const bool& areElectionsAllowed,
 	 const std::map<std::string, int>& ideologySupport)
 {
@@ -968,6 +971,23 @@ void outputPolitics(std::ostream& output,
 	{
 		output << "    elections_allowed = no\n";
 	}
+	output << "}\n";
+	output << "\n";
+
+	output << "1936.1.1 = {\n";
+	output << "    set_politics = {\n";
+	output << "        ruling_party = " << governmentIdeology << "\n";
+	output << "        last_election = \"" << lastElection36 << "\"\n";
+	output << "        election_frequency = 48\n";
+	if (areElectionsAllowed)
+	{
+		output << "        elections_allowed = yes\n";
+	}
+	else
+	{
+		output << "        elections_allowed = no\n";
+	}
+	output << "    }\n";
 	output << "}\n";
 	output << "\n";
 

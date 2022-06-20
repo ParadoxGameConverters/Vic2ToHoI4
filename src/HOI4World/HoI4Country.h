@@ -147,6 +147,8 @@ class Country
 	void setGreatPower() { greatPower = true; }
 	void setPuppetMaster(const std::shared_ptr<Country> master) { puppetMaster = master; }
 	void addPuppet(const std::shared_ptr<Country> puppet, const Regions& theRegions);
+	void setLastElection(const date& newDate) { lastElection = newDate; }
+	void setLastElection36(const date& newDate) { lastElection36 = newDate; }
 
 	void makeNavalTreatyAdherent() { navalTreatyAdherent = true; }
 	void makeGreatestNavalPower() { greatestNavalPower = true; }
@@ -229,6 +231,7 @@ class Country
 	[[nodiscard]] const std::set<Vic2::Party>& getParties() const { return parties; }
 	[[nodiscard]] const std::map<std::string, int>& getIdeologySupport() const { return ideologySupport; }
 	[[nodiscard]] const date& getLastElection() const { return lastElection; }
+	[[nodiscard]] const date& getLastElection36() const { return lastElection36; }
 	[[nodiscard]] int getStability() const { return stability; }
 	[[nodiscard]] int getWarSupport() const { return warSupport; }
 	[[nodiscard]] const std::string& getMobilizationLaw() const { return mobilizationLaw; }
@@ -334,7 +337,7 @@ class Country
 
 	[[nodiscard]] std::mt19937& getGenerator() { return generator; }
 
-	static bool compareCountriesByIndustryDescending(const std::shared_ptr<HoI4::Country> lhs,
+	static bool compareCountriesByImportance(const std::shared_ptr<HoI4::Country> lhs,
 		 const std::shared_ptr<HoI4::Country> rhs);
 
 	void setTag(std::string tag) { tag = tag; };
@@ -343,6 +346,7 @@ class Country
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations);
 	void createOperatives(const Mappers::GraphicsMapper& graphicsMapper, Names& names);
+	void determine36Elections();
 	void convertLaws();
 	void convertLeaders(const Vic2::Country& sourceCountry,
 		 Character::Factory& characterFactory,
@@ -428,6 +432,7 @@ class Country
 	std::map<std::string, double> upperHouseComposition;
 	std::map<std::string, int> ideologySupport{std::make_pair("neutrality", 100)};
 	date lastElection;
+	date lastElection36;
 	int stability = 60;
 	int warSupport = 60;
 	std::string mobilizationLaw = "volunteer_only";
@@ -512,12 +517,12 @@ class HoI4::Country::Builder
 	Builder() { country = std::make_unique<HoI4::Country>(); }
 	std::unique_ptr<HoI4::Country> build() { return std::move(country); }
 
-	Builder& addTag(std::string tag)
+	Builder& setTag(std::string tag)
 	{
 		country->tag = std::move(tag);
 		return *this;
 	}
-	Builder& addMillitaryFactories(double factories)
+	Builder& setMillitaryFactories(double factories)
 	{
 		country->militaryFactories = std::move(factories);
 		return *this;

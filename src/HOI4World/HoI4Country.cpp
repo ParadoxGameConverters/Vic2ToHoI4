@@ -41,7 +41,7 @@ HoI4::Country::Country(std::string tag,
 	 civilized(sourceCountry.isCivilized()), primaryCultureGroup(sourceCountry.getPrimaryCultureGroup()),
 	 rulingParty(sourceCountry.getRulingParty()), parties(sourceCountry.getActiveParties()),
 	 oldGovernment(sourceCountry.getGovernment()), upperHouseComposition(sourceCountry.getUpperHouseComposition()),
-	 lastElection(sourceCountry.getLastElection())
+	 lastElection(sourceCountry.getLastElection()), lastElection36("1936.1.1")
 {
 	std::seed_seq seed{tag[0], tag[1], tag[2]};
 	generator.seed(seed);
@@ -131,6 +131,8 @@ HoI4::Country::Country(std::string tag,
 	sourceCountryGoods = sourceCountry.getGoodsStockpile();
 
 	createOperatives(graphicsMapper, names);
+
+	determine36Elections();
 }
 
 
@@ -226,7 +228,7 @@ HoI4::Country::Country(const std::string& region_,
 }
 
 
-bool HoI4::Country::compareCountriesByIndustryDescending(const std::shared_ptr<HoI4::Country> lhs,
+bool HoI4::Country::compareCountriesByImportance(const std::shared_ptr<HoI4::Country> lhs,
 	 const std::shared_ptr<HoI4::Country> rhs)
 {
 	return lhs->getIndustry() > rhs->getIndustry();
@@ -459,6 +461,28 @@ void HoI4::Country::createOperatives(const Mappers::GraphicsMapper& graphicsMapp
 	}
 }
 
+#pragma optimize("", off)
+void HoI4::Country::determine36Elections()
+{
+	date electionDay = lastElection;
+	if (electionDay.addYears(4); electionDay >= lastElection36)
+	{
+		lastElection36 = lastElection;
+	}
+	else
+	{
+		int diffInYears = lastElection36.getYear() - electionDay.getYear();
+		electionDay.addYears(diffInYears);
+
+		if (int yearsToElection = 4 - (diffInYears % 4); yearsToElection != 4 || electionDay < lastElection36)
+		{
+			electionDay.addYears(yearsToElection);
+		}
+	}
+	electionDay.subtractYears(4);
+	lastElection36 = electionDay;
+}
+#pragma optimize("", on)
 
 void HoI4::Country::convertLaws()
 {

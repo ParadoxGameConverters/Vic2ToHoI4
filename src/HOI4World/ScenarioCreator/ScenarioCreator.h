@@ -9,7 +9,7 @@ namespace HoI4
 class ScenarioCreator
 {
   public:
-	typedef std::multiset<std::shared_ptr<HoI4::Country>, decltype(HoI4::Country::compareCountriesByIndustryDescending)*>
+	typedef std::multiset<std::shared_ptr<HoI4::Country>, decltype(HoI4::Country::compareCountriesByImportance)*>
 		 CountriesByIndustryDescendingMultiSet;
 
 	class Builder;
@@ -42,7 +42,7 @@ class ScenarioCreator
 
 	std::vector<std::shared_ptr<Role>> roles_;
 	std::vector<std::shared_ptr<ScenarioMod>> scenario_mods_;
-	CountriesByIndustryDescendingMultiSet countries_{HoI4::Country::compareCountriesByIndustryDescending};
+	CountriesByIndustryDescendingMultiSet countries_{HoI4::Country::compareCountriesByImportance};
 	std::map<std::string, std::string> country_to_role_assignments_;
 	std::string save_name_;
 };

@@ -11,6 +11,7 @@ bool RoleSpanishCivilWar::IsValid(const HoI4::Country& country) const
 {
 	// Properties to consider validty
 	// Don't be a great power
+	// Be independant
 	// Have at least 4 states
 	// Have at least 60% of provinces be contigous with capital
 	// Have instances below instance cap

@@ -20,7 +20,7 @@ TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, RecalculateRoleFits)
 	expected_roles.push_back(std::make_shared<RoleTestShellOne>());
 
 	std::map<std::string, std::shared_ptr<HoI4::Country>> countries;
-	auto paridoxistan = HoI4::Country::Builder().addTag("PDX").addMillitaryFactories(5).build();
+	auto paridoxistan = HoI4::Country::Builder().setTag("PDX").setMillitaryFactories(5).build();
 	countries.emplace(paridoxistan->getTag(), std::move(paridoxistan));
 
 	// The order of roles starts as { RoleTestShellOne, RoleTestShellTwo } from input file
