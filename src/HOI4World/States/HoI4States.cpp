@@ -707,9 +707,8 @@ void HoI4::States::convertResources(const std::map<std::string, std::shared_ptr<
 		{
 			for (const auto& [resource, amount]: resource_map.getResourcesInProvince(province_number))
 			{
-				const float found_amount = static_cast<float>(amount) * resource_multiplier;
+				const int found_amount = static_cast<int>(static_cast<float>(amount) * resource_multiplier);
 				state.addResource(resource, found_amount);
-				// add resources that can be found via event
 			}
 		}
 	}
