@@ -14,7 +14,10 @@ class ScenarioMod
 	[[nodiscard]] auto GetAllDecisionsByCategory() const { return decisions_; };
 	[[nodiscard]] auto GetDecisionCategories() const { return &decision_categories_; };
 	[[nodiscard]] auto GetEvents() const { return events_; };
+	[[nodiscard]] auto GetElectionOnActions() const { return events_; };
 	[[nodiscard]] auto GetName() const { return name_; };
+
+	virtual void OutputRoleSpecifics(std::string output_name) const {}
 
 	// When I ask myself why I did this later: https://google.github.io/styleguide/cppguide.html#Inheritance
 	// (Delete comment once design is settled)

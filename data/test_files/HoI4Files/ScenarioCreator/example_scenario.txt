@@ -1,1 +1,1 @@
-ITA = ArsenalOfIdeology
+ITA = TestShellTwo

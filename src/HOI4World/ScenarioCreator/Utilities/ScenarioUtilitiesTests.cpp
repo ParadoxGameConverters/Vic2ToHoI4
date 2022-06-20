@@ -22,5 +22,5 @@ TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, ContentsOfFileCopiedToStr
 	std::string fake_file = "Configurables/Scenarios/example_scenario.txt";
 	std::stringstream file = GetStreamFromFile(fake_file);
 
-	EXPECT_EQ(file.str(), "ITA = ArsenalOfIdeology");
+	EXPECT_EQ(file.str(), "ITA = TestShellTwo");
 };

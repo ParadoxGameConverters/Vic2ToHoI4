@@ -30,3 +30,10 @@ const std::stringstream GetStreamFromFile(const std::string& input_file)
 
 	return buf_stream;
 }
+
+const std::string GetFileBufferStr(const std::string& input_file, const std::string folder, const std::string path)
+{
+	std::string file = path + "/" + folder + "/" + input_file;
+	std::stringstream buffer_stream = GetStreamFromFile(file);
+	return buffer_stream.str();
+}

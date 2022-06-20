@@ -7,6 +7,12 @@ RoleSpanishCivilWar::RoleSpanishCivilWar()
 	SetInstanceCap(1);
 }
 
+RoleSpanishCivilWar::RoleSpanishCivilWar(const date& the_date): the_date_(the_date)
+{
+	SetName("SpanishCivilWar");
+	SetInstanceCap(1);
+}
+
 bool RoleSpanishCivilWar::IsValid(const HoI4::Country& country) const
 {
 	// Properties to consider validty
@@ -17,10 +23,16 @@ bool RoleSpanishCivilWar::IsValid(const HoI4::Country& country) const
 	// Have instances below instance cap
 	// Ruling party has less than 80% support
 	// Have elections
+	// Have a capital state
 	if (GetInstances() >= GetInstanceCap() || country.isGreatPower() || country.getLastElection() == date("1836.1.1"))
 		return false;
-	else
-		return true;
+
+	if (!country.getCapitalState())
+	{
+		// May want to log this
+		return false;
+	}
+	return true;
 }
 
 void RoleSpanishCivilWar::CalculateFit(const HoI4::Country& country)
@@ -38,6 +50,6 @@ std::shared_ptr<ScenarioMod> RoleSpanishCivilWar::Apply(std::shared_ptr<HoI4::Co
 
 	// Should the modifications to country happen here or in the factory/creator/builder thingy class?
 	// Make a copy of country class before messing with it? Does default copy constructor even make a deep copy/work?
-	ModSpanishCivilWar::Builder bui(country);
+	ModSpanishCivilWar::Builder bui(country, the_date_);
 	return bui.Build();
 }

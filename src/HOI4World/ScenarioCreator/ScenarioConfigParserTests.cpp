@@ -16,7 +16,7 @@ TEST(HoI4World_ScenarioCreator_ScenarioConfigParserTests, PreGennedScenariosComp
 	HoI4::ConfigParser parser("configurables/scenarios/example_scenario.txt", pregenned);
 
 	std::map<std::string, std::string> role_assignments;
-	role_assignments.emplace("ITA", "ArsenalOfIdeology");
+	role_assignments.emplace("ITA", "TestShellTwo");
 
 	EXPECT_THAT(parser.GetRoleAssignments(), role_assignments);
 }

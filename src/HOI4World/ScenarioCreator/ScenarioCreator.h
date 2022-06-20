@@ -16,7 +16,8 @@ class ScenarioCreator
 	ScenarioCreator() = default;
 	ScenarioCreator(const std::map<std::string, std::shared_ptr<HoI4::Country>>& country_map,
 		 const std::string& save_name,
-		 const std::string& role_file_name = "scenario_creator_roles.txt");
+		 const std::string& role_file_name = "scenario_creator_roles.txt",
+		 const date& the_date = date("1836.1.1"));
 
 	[[nodiscard]] const auto& GetRoles() const { return roles_; };
 	[[nodiscard]] const auto& GetScenarioMods() const { return scenario_mods_; };
@@ -27,7 +28,7 @@ class ScenarioCreator
 
   private:
 	// Initializes only the roles specified in scenario_creator_roles.txt
-	void InitialzeRoles(const std::set<std::string> possible_roles);
+	void InitialzeRoles(const std::set<std::string> possible_roles, const date& the_date);
 
 	// Sorts roles_ vector by fit to parameter country
 	void RecalculateRoleFits(const HoI4::Country& country);

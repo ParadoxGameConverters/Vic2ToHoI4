@@ -13,4 +13,6 @@ void HoI4::OutputScenarioMod(const ScenarioMod& mod, std::string output_name)
 
 	std::ofstream debugTest("output/" + output_name + "/name.txt");
 	debugTest << mod.GetName();
+
+	mod.OutputRoleSpecifics(output_name);
 }

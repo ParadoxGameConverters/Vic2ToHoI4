@@ -52,12 +52,12 @@ TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, InitializeRoles)
 TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, InitializeRolesFromPreGen)
 {
 	std::vector<std::shared_ptr<Role>> expected_roles;
-	expected_roles.push_back(std::make_shared<RoleArsenalOfIdeology>());
+	expected_roles.push_back(std::make_shared<RoleTestShellTwo>());
 
 	std::map<std::string, std::shared_ptr<HoI4::Country>> ghost_italy;
 	ghost_italy.emplace("ITA", std::shared_ptr<HoI4::Country>());
 
-	const HoI4::ScenarioCreator creator(ghost_italy, "example");
+	const HoI4::ScenarioCreator creator(ghost_italy, "example", "scenario_creator_test_roles.txt");
 
 	EXPECT_EQ(typeid(*creator.GetRoles()[0]), typeid(*expected_roles[0]));
 	EXPECT_EQ(creator.GetRoles().size(), 1);

@@ -29,36 +29,39 @@ const std::string ModSpanishCivilWar::Builder::kGovernmentIdeology = "GOVERNMENT
 // to avoid excessive file i/o, does commonItems have such a feature?
 
 // decision_categories.txt
-ModSpanishCivilWar::Builder::Builder(std::shared_ptr<HoI4::Country> country)
+ModSpanishCivilWar::Builder::Builder(const std::shared_ptr<HoI4::Country> country, const date& the_date)
 {
 	the_civil_war_mod_ = std::make_unique<ModSpanishCivilWar>();
 
-	// May handle naively with regex in this case
-	// Slap this in a function later
-	std::string file = "Configurables/Scenarios/" + kFolder + "/decision_categories.txt";
-	std::stringstream buffer_stream = GetStreamFromFile(file);
-	std::string buffer = buffer_stream.str();
+	BuildUpdatedElections(country, the_date);
+	BuildDecisionCategories(country->getTag(), country->getCapitalState().value());
+	BuildEvents(country->getTag(), country->getIdeologySupport(), country->getGovernmentIdeology());
+}
+
+void ModSpanishCivilWar::Builder::BuildDecisionCategories(const std::string tag, const int capital_state_id)
+{
+	std::string buffer = GetFileBufferStr("decision_categories.txt", kFolder);
 	std::stringstream input_stream;
 
-	buffer = std::regex_replace(buffer, std::regex(kTag), country->getTag());
-	buffer = std::regex_replace(buffer, std::regex(kCapitalState), std::to_string(country->getCapitalState().value()));
+	buffer = std::regex_replace(buffer, std::regex(kTag), tag);
+	buffer = std::regex_replace(buffer, std::regex(kCapitalState), std::to_string(capital_state_id));
 
 	input_stream << buffer;
 
 	auto decision_categories = HoI4::DecisionsCategories::Factory().getDecisionsCategories(input_stream);
 
-	// decisions.txt
-	// Slap this in a function later
-	std::string file2 = "Configurables/Scenarios/" + kFolder + "/decisions.txt";
-	std::stringstream buffer_stream2 = GetStreamFromFile(file2);
-	std::string buffer2 = buffer_stream2.str();
-	std::stringstream input_stream2;
+	the_civil_war_mod_->SetDecisionCategories(decision_categories);
+}
 
-	buffer2 = std::regex_replace(buffer2, std::regex(kTag), country->getTag());
-	buffer2 = std::regex_replace(buffer2, std::regex(kState), "563");
+void ModSpanishCivilWar::Builder::BuildDecisions(const std::string tag)
+{
+	std::string buffer = GetFileBufferStr("decision_categories.txt", kFolder);
+	std::stringstream input_stream;
 
-	input_stream2 << buffer2;
+	buffer = std::regex_replace(buffer, std::regex(kTag), tag);
+	buffer = std::regex_replace(buffer, std::regex(kState), "563");
 
+	input_stream << buffer;
 
 	// Call parseStream to regex off country->getTag() + "_the_inevitable_civil_war bit
 	// TAG_expand_influence_in_the_THIS_STATE_garrison is a single template that should be generated for multiple states
@@ -67,10 +70,44 @@ ModSpanishCivilWar::Builder::Builder(std::shared_ptr<HoI4::Country> country)
 		the_civil_war_mod_->AddDecisionsInCategory(decisions, category_name);
 	});
 
-	parseStream(input_stream2);
-	clearRegisteredKeywords();
-
-	the_civil_war_mod_->SetDecisionCategories(decision_categories);
+	// TBD decisions/events
+	// SPA_hand_over_the_ceda_campaign_chest_mission
+	// SPR_military_plot_republicans // Unessecary duplication in vanilla?
+	// lar_spain.4
+	// lar_spain.5
+	// SPR_secure_the_guardia_de_asalto_mission
+	// SPR_secure_the_guardia_civil_mission
+	// SPA_military_plot_nationalists
+	// id = lar_spain.3
+	//
+	// TBD ideas
+	// SPR_government_power_struggle
 }
 
-// events.txt
+void ModSpanishCivilWar::Builder::BuildEvents(const std::string tag,
+	 const std::map<std::string, int> ideology_support,
+	 const std::string gov_ideology)
+{
+	the_civil_war_mod_->election_on_action_event_ = tag + "_scw.1";
+}
+
+void ModSpanishCivilWar::Builder::BuildIdeas()
+{
+}
+
+void ModSpanishCivilWar::Builder::BuildUpdatedElections(const std::shared_ptr<HoI4::Country> country,
+	 const date& the_date)
+{
+	date election_day = the_date;
+	election_day.increaseByMonths(1);
+	election_day = date(election_day.getYear(), election_day.getMonth(), election_day.getDay() % 28 + 1);
+	election_day.subtractYears(4);
+
+	country->setLastElection(election_day);
+	country->setLastElection36(date(1932, 2, election_day.getDay()));
+}
+
+void ModSpanishCivilWar::Builder::AddIntervention(const std::shared_ptr<ModSpanishCivilWar> the_war,
+	 const HoI4::Country& interveener)
+{
+}

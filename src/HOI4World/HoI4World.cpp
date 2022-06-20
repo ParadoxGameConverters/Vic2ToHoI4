@@ -244,7 +244,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		createFactions(theConfiguration);
 	}
 
-	// HoI4WarCreator warCreator(this, *theMapData, *provinceDefinitions, *hoi4Localisations, theConfiguration);
+	HoI4WarCreator warCreator(this, *theMapData, *provinceDefinitions, *hoi4Localisations, theConfiguration);
 
 	transferPuppetsToDominions();
 

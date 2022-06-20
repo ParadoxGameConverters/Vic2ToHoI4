@@ -7,7 +7,7 @@
 class ModSpanishCivilWar::Builder: commonItems::parser
 {
   public:
-	Builder(std::shared_ptr<HoI4::Country> country);
+	Builder(const std::shared_ptr<HoI4::Country> country, const date& the_date);
 	std::unique_ptr<ModSpanishCivilWar> Build() { return std::move(the_civil_war_mod_); }
 
   private:
@@ -18,7 +18,13 @@ class ModSpanishCivilWar::Builder: commonItems::parser
 	static const std::string kPlotterIdeology;
 	static const std::string kGovernmentIdeology;
 
+	void BuildDecisionCategories(const std::string tag, const int captial_state_id);
+	void BuildDecisions(const std::string tag);
+	void BuildEvents(const std::string tag, const std::map<std::string,int> ideology_support, const std::string gov_ideology);
+	void BuildIdeas();
+	void BuildUpdatedElections(const std::shared_ptr<HoI4::Country> country, const date& the_date);
 
+	static void AddIntervention(const std::shared_ptr<ModSpanishCivilWar> the_war, const HoI4::Country& interveener);
 
 	std::unique_ptr<ModSpanishCivilWar> the_civil_war_mod_;
 };
