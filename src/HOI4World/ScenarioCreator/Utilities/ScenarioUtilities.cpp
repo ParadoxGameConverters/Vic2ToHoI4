@@ -25,15 +25,15 @@ const std::stringstream GetStreamFromFile(const std::string& input_file)
 	return buf_stream;
 }
 
-const std::string GetFileBufferStr(const std::string& input_file, const std::string folder, const std::string path)
+const std::string GetFileBufferStr(const std::string& input_file, const std::string& folder, const std::string& path)
 {
 	std::string file = path + "/" + folder + "/" + input_file;
 	std::stringstream buffer_stream = GetStreamFromFile(file);
 	return buffer_stream.str();
 }
 
-const IdeologicalSituationSet GetIdeologicalSituation(const std::map<std::string, int> ideology_support,
-	 const std::string gov_ideology)
+const IdeologicalSituationSet GetIdeologicalSituation(const std::map<std::string, int>& ideology_support,
+	 const std::string& gov_ideology)
 {
 	IdeologicalSituationSet ideological_situation;
 	ideological_situation.emplace(gov_ideology, ideology_support.at(gov_ideology), true);

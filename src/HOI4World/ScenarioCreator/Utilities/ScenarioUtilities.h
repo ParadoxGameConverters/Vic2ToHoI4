@@ -21,14 +21,14 @@ struct IdeologySituation
 
 typedef std::set<IdeologySituation, std::greater<IdeologySituation>> IdeologicalSituationSet;
 
-const IdeologicalSituationSet GetIdeologicalSituation(const std::map<std::string, int> ideology_support,
-	 const std::string gov_ideology);
+const IdeologicalSituationSet GetIdeologicalSituation(const std::map<std::string, int>& ideology_support,
+	 const std::string& gov_ideology);
 
 const std::stringstream GetStreamFromFile(const std::string& input_file);
 
 const std::string GetFileBufferStr(const std::string& input_file,
-	 const std::string folder,
-	 const std::string path = "Configurables/Scenarios");
+	 const std::string& folder,
+	 const std::string& path = "Configurables/Scenarios");
 
 // If private functions/static data members are later needed convert this to a static class with constructor deleted
 
