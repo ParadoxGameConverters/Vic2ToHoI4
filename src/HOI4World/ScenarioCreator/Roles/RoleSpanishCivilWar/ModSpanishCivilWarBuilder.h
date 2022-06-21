@@ -2,6 +2,7 @@
 #define MOD_SPANISH_CIVIL_WAR_BUILDER_H
 
 #include "external/common_items/Parser.h"
+#include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/ModSpanishCivilWar.h"
 #include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
 
@@ -27,7 +28,7 @@ class ModSpanishCivilWar::Builder: commonItems::parser
 	void BuildFoci(const std::string tag, const IdeologicalSituationSet& ideological_situation);
 	void BuildUpdatedElections(const std::shared_ptr<HoI4::Country> country, const date& the_date);
 
-	void BuildType1Foci(std::istream& the_stream);
+	void BuildType1Foci(commonItems::blobList blobs, std::vector<HoI4::State> noncontiguous_states);
 	void BuildType2Foci(std::istream& the_stream);
 
 	static void AddIntervention(const std::shared_ptr<ModSpanishCivilWar> the_war, const HoI4::Country& interveener);

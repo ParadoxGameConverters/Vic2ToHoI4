@@ -1,5 +1,6 @@
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/ModSpanishCivilWarBuilder.h"
 #include "external/common_items/CommonRegexes.h"
+#include "external/common_items/Log.h"
 #include <regex>
 #include <sstream>
 
@@ -12,23 +13,7 @@ const std::string ModSpanishCivilWar::Builder::kNonContiguousState = "DISCONNECT
 const std::string ModSpanishCivilWar::Builder::kPlotterIdeology = "OPPOSITION_IDEOLOGY";
 const std::string ModSpanishCivilWar::Builder::kGovernmentIdeology = "GOVERNMENT_IDEOLOGY";
 
-// ALL PARSING IS CURRENTLY EXPLORATORY. Parsing will be compartamentalized into functions and organized and all that
-// jazz. Just trying to figure out the how of it right now, and what adjustments need to be made to the HoI4::decision
-// classes
 
-// Parse over mod files, create nessecary objects while find&replacing keywords to make the magic happen
-
-// Could open the file, regex the stream then pass the stream to the parsers, but it wouldn't work
-// Is there overhead to opening files so many times? If a decision must be crafted for every state
-// that could be 50x opening and closing hte same file per decision like that.
-
-// Alternatively, parse the file directly and then use accessors/settors on the resulting objects
-// to regex out kTag for HUN and such.
-
-// Ideally I could open a file and read everything into a stream, then work off copies of that stream
-// to avoid excessive file i/o, does commonItems have such a feature?
-
-// decision_categories.txt
 ModSpanishCivilWar::Builder::Builder(const std::shared_ptr<HoI4::Country> country, const date& the_date)
 {
 	the_civil_war_mod_ = std::make_unique<ModSpanishCivilWar>();
@@ -87,7 +72,8 @@ void ModSpanishCivilWar::Builder::BuildDecisions(const std::string tag)
 	// SPR_government_power_struggle
 }
 
-void ModSpanishCivilWar::Builder::BuildEvents(const std::string tag, const IdeologicalSituationSet& ideological_situation)
+void ModSpanishCivilWar::Builder::BuildEvents(const std::string tag,
+	 const IdeologicalSituationSet& ideological_situation)
 {
 	the_civil_war_mod_->election_on_action_event_ = tag + "_scw.1";
 }
@@ -96,18 +82,25 @@ void ModSpanishCivilWar::Builder::BuildIdeas()
 {
 }
 
+// Investigate how war creator does its branch thing
 void ModSpanishCivilWar::Builder::BuildFoci(const std::string tag, const IdeologicalSituationSet& ideological_situation)
 {
 	std::string buffer = GetFileBufferStr("foci.txt", kFolder);
 	std::stringstream input_stream;
 
+	auto situation_iter = ideological_situation.begin(); // Maybe assign out what we need to local variables?
+
 	buffer = std::regex_replace(buffer, std::regex(kTag), tag);
+	buffer = std::regex_replace(buffer, std::regex(kGovernmentIdeology), situation_iter->ideology_);
+	buffer = std::regex_replace(buffer, std::regex(kPlotterIdeology), (++situation_iter)->ideology_);
 
 	input_stream << buffer;
 
 	// Rename types once all foci are known
+	// Send them out for additional processing by unique needs
 	registerKeyword("type1", [this](std::istream& the_stream) {
-		BuildType1Foci(the_stream);
+		auto blobs = commonItems::blobList(the_stream);
+		BuildType1Foci(blobs, std::vector<HoI4::State>()); // Need the map data
 	});
 	registerKeyword("type2", [this](std::istream& the_stream) {
 		BuildType2Foci(the_stream);
@@ -129,12 +122,41 @@ void ModSpanishCivilWar::Builder::BuildUpdatedElections(const std::shared_ptr<Ho
 	country->setLastElection36(date(1932, 2, election_day.getDay()));
 }
 
-void ModSpanishCivilWar::Builder::BuildType1Foci(std::istream& the_stream)
+void ModSpanishCivilWar::Builder::BuildType1Foci(commonItems::blobList blobs,
+	 std::vector<HoI4::State> noncontiguous_states)
 {
+	// Duplicate lines with kNonContiguousState for each state in country that matches
+	// Then build the focus
+	const auto& buffer_foci = blobs.getBlobs();
+	std::string delimiter = "\n\t\t\t\t\t\tstate = " + kNonContiguousState;
+	
+	for (auto buffer: buffer_foci)
+	{
+		if(const auto insert_position = buffer.find(delimiter) + delimiter.size(); insert_position != std::string::npos)
+		{
+			for (const auto& state: noncontiguous_states)
+			{
+				std::string to_insert = "\n\t\t\t\t\t\tstate = " + std::to_string(state.getID());
+				buffer.insert(insert_position, to_insert);
+			}
+
+			buffer = std::regex_replace(buffer, std::regex(delimiter), "");
+
+			std::stringstream input_stream;
+			input_stream << buffer;
+
+			the_civil_war_mod_->AddFocus(std::make_shared<HoI4Focus>(input_stream));
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Couldn't generate type1 national focus for " << the_civil_war_mod_->GetName();
+		}
+	}
 }
 
 void ModSpanishCivilWar::Builder::BuildType2Foci(std::istream& the_stream)
 {
+	the_civil_war_mod_->AddFocus(std::make_shared<HoI4Focus>(the_stream));
 }
 
 void ModSpanishCivilWar::Builder::AddIntervention(const std::shared_ptr<ModSpanishCivilWar> the_war,

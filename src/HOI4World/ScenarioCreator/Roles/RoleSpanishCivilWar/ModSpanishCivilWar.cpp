@@ -18,9 +18,6 @@ void ModSpanishCivilWar::OutputExtraOnActions(std::string output_name) const
 		 GetFileBufferStr("99_converter_on_actions.txt", "on_actions", "output/" + output_name + "/common");
 
 	std::string delimiter = "on_new_term_election = {";
-	const auto& pos = buffer.find(delimiter);
-	std::string front = buffer.substr(0, pos);
-	std::string back = buffer.substr(pos + delimiter.size());
 
 	std::stringstream insertion;
 
@@ -34,6 +31,6 @@ void ModSpanishCivilWar::OutputExtraOnActions(std::string output_name) const
 		throw std::runtime_error("Could not recreate on_actions.txt");
 	}
 
-	on_actions_file << front + delimiter + insertion.str() + back;
+	on_actions_file << buffer.insert(buffer.find(delimiter) + delimiter.size(), insertion.str());
 	on_actions_file.close();
 }

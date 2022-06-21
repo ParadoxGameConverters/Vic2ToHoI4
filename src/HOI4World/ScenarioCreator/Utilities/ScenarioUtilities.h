@@ -21,8 +21,7 @@ struct IdeologySituation
 
 typedef std::set<IdeologySituation, std::greater<IdeologySituation>> IdeologicalSituationSet;
 
-const IdeologicalSituationSet GetIdeologicalSituation(
-	 const std::map<std::string, int> ideology_support,
+const IdeologicalSituationSet GetIdeologicalSituation(const std::map<std::string, int> ideology_support,
 	 const std::string gov_ideology);
 
 const std::stringstream GetStreamFromFile(const std::string& input_file);

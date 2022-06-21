@@ -1,147 +1,145 @@
 type1 = {
-	focus = {
-		id = TAG_the_people_need_guidance
+{focus = {
+	id = TAG_the_people_need_guidance
 
-		available = {
-			NOT = {
-				has_country_flag = TAG_scw_conventions
-			}
+	available = {
+		NOT = {
+			has_country_flag = TAG_scw_conventions
 		}
-		cancel_if_invalid = yes
-		
-		bypass = {
-			has_global_flag = TAG_spanish_civil_war
-		}
-		mutually_exclusive = { focus = TAG_sanctity_of_suffrage }
+	}
+	cancel_if_invalid = yes
+	
+	bypass = {
+		has_global_flag = TAG_spanish_civil_war
+	}
+	mutually_exclusive = { focus = TAG_sanctity_of_suffrage }
 
-		allow_branch = {
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = obsolete_focus_branches_visibility
-						option = HIDE
-					}
-				}
-				OR = {
-					NOT = {
-						has_global_flag = TAG_spanish_civil_war
-					}
-					AND = {
-						NOT = { has_completed_focus = TAG_sanctity_of_suffrage }
-						has_global_flag = TAG_spanish_civil_war
-					}
-				}
-			}
-		}
-		
-		
-		icon = GFX_goal_generic_demand_territory
-		x = 31
-		y = 0
-		offset = {
-			x = -14
-			y = 0
-			trigger = {
-				has_completed_focus = TAG_the_people_need_guidance
-				has_global_flag = TAG_spanish_civil_war
+	allow_branch = {
+		if = {
+			limit = {
 				has_game_rule = {
 					rule = obsolete_focus_branches_visibility
 					option = HIDE
 				}
 			}
-		}
-		cost = 5
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_POLITICAL}
-		completion_reward = {
-			add_popularity = {
-				ideology = OPPOSITION_IDEOLOGY
-				popularity = 0.1
-			}
-			hidden_effect = {
-				every_owned_state = {
-					limit = {
-						NOT = {
-							state = DISCONNECTED_STATE
-						}
-					}
-					set_state_flag = TAG_reb_garrison_control_cost_calculation
+			OR = {
+				NOT = {
+					has_global_flag = TAG_spanish_civil_war
+				}
+				AND = {
+					NOT = { has_completed_focus = TAG_sanctity_of_suffrage }
+					has_global_flag = TAG_spanish_civil_war
 				}
 			}
-			add_political_power = 15
 		}
 	}
-}
-
-type1 = {
-	focus = {
-		id = TAG_sanctity_of_suffrage
-		available = {
-			NOT = {
-				has_country_flag = TAG_scw_conventions
-			}
-		}
-		
-		bypass = {
-			has_global_flag = TAG_spanish_civil_war
-		}
-		mutually_exclusive = { focus = TAG_the_people_need_guidance }
-		cancel_if_invalid = yes
-		allow_branch = {
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = obsolete_focus_branches_visibility
-						option = HIDE
-					}
-				}
-				OR = {
-					NOT = {
-						has_global_flag = TAG_spanish_civil_war
-					}
-					AND = {
-						NOT = { has_completed_focus = TAG_the_people_need_guidance }
-						has_global_flag = TAG_spanish_civil_war
-					}
-				}
-			}
-		}
-		
-		icon = GFX_goal_generic_national_unity
-		x = 33
+	
+	
+	icon = GFX_goal_generic_demand_territory
+	x = 31
+	y = 0
+	offset = {
+		x = -14
 		y = 0
-		offset = {
-			x = -19
-			y = 0
-			trigger = {
-				has_completed_focus = TAG_sanctity_of_suffrage
-				has_global_flag = TAG_spanish_civil_war
+		trigger = {
+			has_completed_focus = TAG_the_people_need_guidance
+			has_global_flag = TAG_spanish_civil_war
+			has_game_rule = {
+				rule = obsolete_focus_branches_visibility
+				option = HIDE
+			}
+		}
+	}
+	cost = 5
+
+	available_if_capitulated = yes
+	search_filters = {FOCUS_FILTER_POLITICAL}
+	completion_reward = {
+		add_popularity = {
+			ideology = OPPOSITION_IDEOLOGY
+			popularity = 0.1
+		}
+		hidden_effect = {
+			every_owned_state = {
+				limit = {
+					NOT = {
+						state = DISCONNECTED_STATE
+					}
+				}
+				set_state_flag = TAG_reb_garrison_control_cost_calculation
+			}
+		}
+		add_political_power = 15
+	}
+}}
+
+{focus = {
+	id = TAG_sanctity_of_suffrage
+	available = {
+		NOT = {
+			has_country_flag = TAG_scw_conventions
+		}
+	}
+	
+	bypass = {
+		has_global_flag = TAG_spanish_civil_war
+	}
+	mutually_exclusive = { focus = TAG_the_people_need_guidance }
+	cancel_if_invalid = yes
+	allow_branch = {
+		if = {
+			limit = {
 				has_game_rule = {
 					rule = obsolete_focus_branches_visibility
 					option = HIDE
 				}
 			}
-		}
-		cost = 5
-
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_POLITICAL}
-		completion_reward = {
-			add_popularity = {
-				ideology = GOVERNMENT_IDEOLOGY
-				popularity = 0.1
-			}
-			hidden_effect = {
-				every_owned_state = {
-					limit = {
-						NOT = {
-							state = DISCONNECTED_STATE
-						}
-					}
-					set_state_flag = TAG_gov_garrison_control_cost_calculation
+			OR = {
+				NOT = {
+					has_global_flag = TAG_spanish_civil_war
+				}
+				AND = {
+					NOT = { has_completed_focus = TAG_the_people_need_guidance }
+					has_global_flag = TAG_spanish_civil_war
 				}
 			}
 		}
 	}
+	
+	icon = GFX_goal_generic_national_unity
+	x = 33
+	y = 0
+	offset = {
+		x = -19
+		y = 0
+		trigger = {
+			has_completed_focus = TAG_sanctity_of_suffrage
+			has_global_flag = TAG_spanish_civil_war
+			has_game_rule = {
+				rule = obsolete_focus_branches_visibility
+				option = HIDE
+			}
+		}
+	}
+	cost = 5
+
+	available_if_capitulated = yes
+	search_filters = {FOCUS_FILTER_POLITICAL}
+	completion_reward = {
+		add_popularity = {
+			ideology = GOVERNMENT_IDEOLOGY
+			popularity = 0.1
+		}
+		hidden_effect = {
+			every_owned_state = {
+				limit = {
+					NOT = {
+						state = DISCONNECTED_STATE
+					}
+				}
+				set_state_flag = TAG_gov_garrison_control_cost_calculation
+			}
+		}
+	}
+}}
 }

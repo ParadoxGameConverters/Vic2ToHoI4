@@ -42,7 +42,7 @@ const IdeologicalSituationSet GetIdeologicalSituation(const std::map<std::string
 	{
 		if (ideology.first != gov_ideology)
 		{
-			ideological_situation.emplace(ideology.first,ideology.second);
+			ideological_situation.emplace(ideology.first, ideology.second);
 		}
 	}
 
