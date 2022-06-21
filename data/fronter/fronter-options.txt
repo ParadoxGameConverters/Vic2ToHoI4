@@ -171,6 +171,26 @@ option = {
 }
 
 option = {
+	name = gen_world_tension
+	displayName = GENWORLDTENSION
+	tooltip = GENWORLDTENSIONTIP
+	radioSelector = {
+		radioOption = {
+			name = yes
+			displayName = YES
+			tooltip = GENWORLDTENSIONYESTIP
+			default = true
+		}
+		radioOption = {
+			name = no
+			displayName = NO
+			tooltip = GENWORLDTENSIONNOTIP
+			default = false
+		}
+	}
+}
+
+option = {
 	name = percent_of_commanders
 	displayName = PERCENT_OF_COMMANDERS
 	tooltip = PERCENT_OF_COMMANDERS_TOOLTIP

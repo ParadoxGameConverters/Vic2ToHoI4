@@ -51,6 +51,7 @@ class Configuration
 	[[nodiscard]] const auto& getDebug() const { return debug; }
 	[[nodiscard]] const auto& getRemoveCores() const { return removeCores; }
 	[[nodiscard]] const auto& getCreateFactions() const { return createFactions; }
+	[[nodiscard]] const auto& getGenWorldTension() const { return genWorldTension; }
 	[[nodiscard]] const auto& getPercentOfCommanders() const { return percentOfCommanders; }
 
 	[[nodiscard]] auto getNextLeaderID() { return leaderID++; }
@@ -76,6 +77,7 @@ class Configuration
 	bool debug = false;
 	removeCoresOptions removeCores = removeCoresOptions::remove_accepted_culture_by_owner;
 	bool createFactions = true;
+	bool genWorldTension = true;
 	float percentOfCommanders = 0.05F;
 
 	// set later

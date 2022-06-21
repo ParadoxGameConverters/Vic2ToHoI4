@@ -165,6 +165,19 @@ Configuration::Factory::Factory()
 			Log(LogLevel::Info) << "\tEnabling keep factions";
 		}
 	});
+	registerKeyword("gen_world_tension", [this](std::istream& theStream) {
+		const commonItems::singleString generateWorldTensionValue(theStream);
+		if (generateWorldTensionValue.getString() == "no")
+		{
+			configuration->genWorldTension = false;
+			Log(LogLevel::Info) << "\tDisabling generation of world tension from infamy";
+		}
+		else
+		{
+			configuration->genWorldTension = true;
+			Log(LogLevel::Info) << "\tEnabling generation of world tension from infamy";
+		}
+	});
 	registerKeyword("percent_of_commanders", [this](std::istream& theStream) {
 		configuration->percentOfCommanders =
 			 std::clamp(static_cast<float>(commonItems::singleDouble{theStream}.getDouble()), 0.0F, 100.0F) / 100.0F;

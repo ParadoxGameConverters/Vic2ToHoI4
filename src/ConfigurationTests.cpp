@@ -855,6 +855,39 @@ TEST(ConfigurationTests, CreateFactionsCanBeSetToNo)
 }
 
 
+TEST(ConfigurationTests, GenWorldTensionCanBeSetToYes)
+{
+	std::stringstream input;
+	input << "gen_world_tension = \"no\"\n";
+	input << R"(gen_world_tension = "yes")";
+	const commonItems::ConverterVersion converterVersion;
+	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
+
+	ASSERT_TRUE(theConfiguration->getGenWorldTension());
+}
+
+
+TEST(ConfigurationTests, GenWorldTensionDefaultsToYes)
+{
+	std::stringstream input;
+	const commonItems::ConverterVersion converterVersion;
+	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
+
+	ASSERT_TRUE(theConfiguration->getGenWorldTension());
+}
+
+
+TEST(ConfigurationTests, GenWorldTensionCanBeSetToNo)
+{
+	std::stringstream input;
+	input << R"(gen_world_tension = "no")";
+	const commonItems::ConverterVersion converterVersion;
+	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
+
+	ASSERT_FALSE(theConfiguration->getGenWorldTension());
+}
+
+
 TEST(ConfigurationTests, CreateFactionsCanBeSetToYes)
 {
 	std::stringstream input;

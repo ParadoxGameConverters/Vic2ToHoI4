@@ -55,7 +55,7 @@ TEST(HoI4World_ScenarioCreator_ScenarioCreatorTests, InitializeRolesFromPreGen)
 	expected_roles.push_back(std::make_shared<RoleTestShellTwo>());
 
 	std::map<std::string, std::shared_ptr<HoI4::Country>> ghost_italy;
-	ghost_italy.emplace("ITA", std::shared_ptr<HoI4::Country>());
+	ghost_italy.emplace("ITA", HoI4::Country::Builder().build());
 
 	const HoI4::ScenarioCreator creator(ghost_italy, "example", "scenario_creator_test_roles.txt");
 
