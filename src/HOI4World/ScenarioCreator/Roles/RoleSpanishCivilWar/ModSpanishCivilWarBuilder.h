@@ -20,9 +20,16 @@ class ModSpanishCivilWar::Builder: commonItems::parser
 
 	void BuildDecisionCategories(const std::string tag, const int captial_state_id);
 	void BuildDecisions(const std::string tag);
-	void BuildEvents(const std::string tag, const std::map<std::string,int> ideology_support, const std::string gov_ideology);
+	void BuildEvents(const std::string tag,
+		 const std::map<std::string, int> ideology_support,
+		 const std::string gov_ideology);
 	void BuildIdeas();
+	void BuildFoci(const std::string tag,
+		 const std::map<std::string, int> ideology_support,
+		 const std::string gov_ideology);
 	void BuildUpdatedElections(const std::shared_ptr<HoI4::Country> country, const date& the_date);
+
+	void BuildType1Foci(std::istream& the_stream);
 
 	static void AddIntervention(const std::shared_ptr<ModSpanishCivilWar> the_war, const HoI4::Country& interveener);
 
