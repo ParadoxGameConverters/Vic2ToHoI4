@@ -12,7 +12,8 @@ class Role
 	[[nodiscard]] double GetFit() const { return fit_; };
 	[[nodiscard]] std::string GetName() const { return name_; };
 
-	virtual bool IsValid(const HoI4::Country& country) const = 0;
+	virtual bool IsValid(const HoI4::Country& country) const = 0; // What wouldn't cause a crash, but still not picking
+	virtual bool IsPossible(const HoI4::Country& country) const = 0; // What would cause crashes
 	virtual void CalculateFit(const HoI4::Country& country) = 0;
 	virtual std::shared_ptr<ScenarioMod> Apply(std::shared_ptr<HoI4::Country> country) = 0;
 

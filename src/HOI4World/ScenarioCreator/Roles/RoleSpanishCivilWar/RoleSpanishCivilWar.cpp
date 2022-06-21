@@ -24,12 +24,27 @@ bool RoleSpanishCivilWar::IsValid(const HoI4::Country& country) const
 	// Ruling party has less than 80% support
 	// Have elections
 	// Have a capital state
-	if (GetInstances() >= GetInstanceCap() || country.isGreatPower() || country.getLastElection() == date("1836.1.1"))
+	if (!IsPossible(country))
+	{
 		return false;
+	}
+	if (GetInstances() >= GetInstanceCap() || country.isGreatPower() || country.getLastElection() == date("1836.1.1"))
+	{
+		return false;
+	}
 
+	return true;
+}
+
+bool RoleSpanishCivilWar::IsPossible(const HoI4::Country& country) const
+{
 	if (!country.getCapitalState())
 	{
 		// May want to log this
+		return false;
+	}
+	if (country.getIdeologySupport().size() < 2)
+	{
 		return false;
 	}
 	return true;

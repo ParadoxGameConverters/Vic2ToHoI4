@@ -12,6 +12,11 @@ bool RoleArsenalOfIdeology::IsValid(const HoI4::Country& country) const
 	return false;
 }
 
+bool RoleArsenalOfIdeology::IsPossible(const HoI4::Country& country) const
+{
+	return true;
+}
+
 void RoleArsenalOfIdeology::CalculateFit(const HoI4::Country& country)
 {
 }

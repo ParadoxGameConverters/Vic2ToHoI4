@@ -9,6 +9,7 @@ class RoleArsenalOfIdeology: public Role
 	RoleArsenalOfIdeology();
 
 	bool IsValid(const HoI4::Country& country) const override;
+	bool IsPossible(const HoI4::Country& country) const override;
 	void CalculateFit(const HoI4::Country& country) override;
 	std::shared_ptr<ScenarioMod> Apply(std::shared_ptr<HoI4::Country> country) override;
 

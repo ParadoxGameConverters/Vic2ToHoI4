@@ -1,6 +1,5 @@
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/ModSpanishCivilWarBuilder.h"
 #include "external/common_items/CommonRegexes.h"
-#include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
 #include <regex>
 #include <sstream>
 
@@ -9,6 +8,7 @@ const std::string ModSpanishCivilWar::Builder::kFolder = "SpanishCivilWar";
 const std::string ModSpanishCivilWar::Builder::kTag = "TAG";
 const std::string ModSpanishCivilWar::Builder::kCapitalState = "CAPITAL_STATE";
 const std::string ModSpanishCivilWar::Builder::kState = "THIS_STATE";
+const std::string ModSpanishCivilWar::Builder::kNonContiguousState = "DISCONNECTED_STATE";
 const std::string ModSpanishCivilWar::Builder::kPlotterIdeology = "OPPOSITION_IDEOLOGY";
 const std::string ModSpanishCivilWar::Builder::kGovernmentIdeology = "GOVERNMENT_IDEOLOGY";
 
@@ -35,7 +35,10 @@ ModSpanishCivilWar::Builder::Builder(const std::shared_ptr<HoI4::Country> countr
 
 	BuildUpdatedElections(country, the_date);
 	BuildDecisionCategories(country->getTag(), country->getCapitalState().value());
-	BuildEvents(country->getTag(), country->getIdeologySupport(), country->getGovernmentIdeology());
+	auto the_ideological_situation =
+		 GetIdeologicalSituation(country->getIdeologySupport(), country->getGovernmentIdeology());
+	BuildEvents(country->getTag(), the_ideological_situation);
+	BuildFoci(country->getTag(), the_ideological_situation);
 }
 
 void ModSpanishCivilWar::Builder::BuildDecisionCategories(const std::string tag, const int capital_state_id)
@@ -84,9 +87,7 @@ void ModSpanishCivilWar::Builder::BuildDecisions(const std::string tag)
 	// SPR_government_power_struggle
 }
 
-void ModSpanishCivilWar::Builder::BuildEvents(const std::string tag,
-	 const std::map<std::string, int> ideology_support,
-	 const std::string gov_ideology)
+void ModSpanishCivilWar::Builder::BuildEvents(const std::string tag, const IdeologicalSituationSet& ideological_situation)
 {
 	the_civil_war_mod_->election_on_action_event_ = tag + "_scw.1";
 }
@@ -95,9 +96,7 @@ void ModSpanishCivilWar::Builder::BuildIdeas()
 {
 }
 
-void ModSpanishCivilWar::Builder::BuildFoci(const std::string tag,
-	 const std::map<std::string, int> ideology_support,
-	 const std::string gov_ideology)
+void ModSpanishCivilWar::Builder::BuildFoci(const std::string tag, const IdeologicalSituationSet& ideological_situation)
 {
 	std::string buffer = GetFileBufferStr("foci.txt", kFolder);
 	std::stringstream input_stream;
@@ -107,8 +106,11 @@ void ModSpanishCivilWar::Builder::BuildFoci(const std::string tag,
 	input_stream << buffer;
 
 	// Rename types once all foci are known
-	registerKeyword("type1", [this](std::istream& the_stream) {;
+	registerKeyword("type1", [this](std::istream& the_stream) {
 		BuildType1Foci(the_stream);
+	});
+	registerKeyword("type2", [this](std::istream& the_stream) {
+		BuildType2Foci(the_stream);
 	});
 
 	parseStream(input_stream);
@@ -129,8 +131,10 @@ void ModSpanishCivilWar::Builder::BuildUpdatedElections(const std::shared_ptr<Ho
 
 void ModSpanishCivilWar::Builder::BuildType1Foci(std::istream& the_stream)
 {
-	// Do addition regex and cyclic fills
-	// send new stream to Foci ctor
+}
+
+void ModSpanishCivilWar::Builder::BuildType2Foci(std::istream& the_stream)
+{
 }
 
 void ModSpanishCivilWar::Builder::AddIntervention(const std::shared_ptr<ModSpanishCivilWar> the_war,

@@ -30,8 +30,12 @@ HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_p
 		{
 			const auto& tag = assignment.first;
 			const auto& role_name = assignment.second;
+			auto& country = country_map.at(tag);
 
-			ApplyRole(country_map.at(tag), GetRoleByName(role_name));
+			if (GetRoleByName(role_name)->IsPossible(*country))
+			{
+				ApplyRole(country, GetRoleByName(role_name));
+			}
 		}
 	}
 	else
