@@ -3,9 +3,6 @@
 #ifndef SCENARIO_UTILITIES_H
 #define SCENARIO_UTILITIES_H
 
-// Strips long//path//to/save.v2 down to save
-const std::string GetSaveName(const std::string& input_file);
-
 const std::stringstream GetStreamFromFile(const std::string& input_file);
 
 const std::string GetFileBufferStr(const std::string& input_file,

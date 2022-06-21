@@ -3,17 +3,6 @@
 #include <filesystem>
 #include <fstream>
 
-const std::string GetSaveName(const std::string& input_file)
-{
-	// warning C4244: 'argument': conversion from 'const wchar_t' to 'const _Elem', possible loss of data
-	// TODO: Take a look at this by end of June
-	const auto& match = std::filesystem::path::preferred_separator;
-	if (const auto& i = input_file.find(match); i != std::string::npos)
-		return GetSaveName(input_file.substr(i + 1));
-	else
-		return input_file.substr(0, input_file.size() - 3);
-}
-
 const std::stringstream GetStreamFromFile(const std::string& input_file)
 {
 	std::ifstream the_file(std::filesystem::u8path(input_file));

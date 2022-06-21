@@ -1,4 +1,5 @@
 #include "src/HOI4World/HoI4World.h"
+#include "external/common_items/CommonFunctions.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
@@ -256,7 +257,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	updateScriptedTriggers(scriptedTriggers, ideologies->getMajorIdeologies());
 	Log(LogLevel::Progress) << "76%";
 
-	scenarios = ScenarioCreator(countries, GetSaveName(theConfiguration.getInputFile()));
+	scenarios = ScenarioCreator(countries, trimPath(trimExtension(theConfiguration.getInputFile())));
 
 	countryCategories =
 		 createCountryCategories(*countryMap, countries, ideologies->getMajorIdeologies(), theConfiguration.getDebug());

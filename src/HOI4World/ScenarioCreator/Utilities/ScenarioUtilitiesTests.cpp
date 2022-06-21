@@ -2,13 +2,6 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
 
-TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, GetSaveNameRemovesPathAndSaveType)
-{
-	std::string save = "C:\\Users\\Tester\\Documents\\Paradox Interactive\\Victoria II\\save games\\Vanilla.v2";
-
-	EXPECT_THAT(GetSaveName(save), "Vanilla");
-};
-
 TEST(HoI4World_ScenarioCreator_ScenarioUtilitiesTests, NonexistentFileLeavesEmptyString)
 {
 	std::string fake_file = "east_vs_west.txt";

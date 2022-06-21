@@ -7,15 +7,13 @@ HoI4::ConfigParser::ConfigParser(std::string filename, bool preGenned)
 	if (!preGenned)
 	{
 		registerKeys();
-		parseFile(filename);
-		clearRegisteredKeywords();
 	}
 	else
 	{
 		registerKeysPreGenned();
+	}
 		parseFile(filename);
 		clearRegisteredKeywords();
-	}
 }
 
 void HoI4::ConfigParser::registerKeys()
