@@ -1729,16 +1729,16 @@ std::optional<std::string> HoI4::Country::getDominionTag(const std::string& regi
 }
 
 
-std::vector<std::set<int>> HoI4::Country::getDominionAreas(const std::unique_ptr<Maps::MapData>& theMapData,
+std::vector<std::set<int>> HoI4::Country::getContiguousAreas(const std::unique_ptr<Maps::MapData>& theMapData,
 	 const std::map<int, HoI4::State>& allStates,
 	 const std::map<int, int>& provinceToStateIdMap)
 {
-	std::vector<std::set<int>> dominionAreas;
+	std::vector<std::set<int>> contiguousAreas;
 	std::set<int> area;
 
 	// Provinces with land connection to capital take the 0 index in dominionAreas vector
 	addProvincesToArea(*capitalProvince, area, theMapData, allStates, provinceToStateIdMap);
-	dominionAreas.push_back(area);
+	contiguousAreas.push_back(area);
 
 	// Then cycle through the rest and make province clusters for potential transfer to dominions
 	for (const auto& stateId: states)
@@ -1753,15 +1753,15 @@ std::vector<std::set<int>> HoI4::Country::getDominionAreas(const std::unique_ptr
 		// Check every province in state to ensure that island provinces are added properly
 		for (const auto& province: state->second.getProvinces())
 		{
-			if (isProvinceInDominionArea(province, dominionAreas))
+			if (isProvinceInAreas(province, contiguousAreas))
 			{
 				continue;
 			}
 			addProvincesToArea(province, area, theMapData, allStates, provinceToStateIdMap);
 		}
-		dominionAreas.push_back(area);
+		contiguousAreas.push_back(area);
 	}
-	return dominionAreas;
+	return contiguousAreas;
 }
 
 
@@ -1796,9 +1796,9 @@ void HoI4::Country::addProvincesToArea(int province,
 }
 
 
-bool HoI4::Country::isProvinceInDominionArea(int province, const std::vector<std::set<int>>& dominionAreas)
+bool HoI4::Country::isProvinceInAreas(int province, const std::vector<std::set<int>>& areas)
 {
-	return std::ranges::any_of(dominionAreas, [province](const std::set<int>& area) {
+	return std::ranges::any_of(areas, [province](const std::set<int>& area) {
 		return area.contains(province);
 	});
 }

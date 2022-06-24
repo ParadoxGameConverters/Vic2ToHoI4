@@ -158,7 +158,7 @@ class Country
 
 	void addUnbuiltCanal(const std::string& unbuiltCanal) { unbuiltCanals.push_back(unbuiltCanal); }
 
-	std::vector<std::set<int>> getDominionAreas(const std::unique_ptr<Maps::MapData>& theMapData,
+	std::vector<std::set<int>> getContiguousAreas(const std::unique_ptr<Maps::MapData>& theMapData,
 		 const std::map<int, HoI4::State>& allStates,
 		 const std::map<int, int>& provinceToStateIdMap);
 	void addProvincesToArea(int startingProvince,
@@ -166,7 +166,7 @@ class Country
 		 const std::unique_ptr<Maps::MapData>& theMapData,
 		 const std::map<int, HoI4::State>& allStates,
 		 const std::map<int, int>& provinceToStateIdMap);
-	bool isProvinceInDominionArea(int province, const std::vector<std::set<int>>& dominionAreas);
+	bool isProvinceInAreas(int province, const std::vector<std::set<int>>& areas);
 	bool isProvinceInCapitalArea(int province, const std::vector<std::set<int>>& dominionAreas) const
 	{
 		return dominionAreas[0].contains(province);

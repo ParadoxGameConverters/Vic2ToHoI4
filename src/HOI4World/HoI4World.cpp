@@ -611,7 +611,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 			continue;
 		}
 
-		const auto& areas = country->getDominionAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
+		const auto& areas = country->getContiguousAreas(theMapData, states->getStates(), states->getProvinceToStateIDMap());
 		for (const auto& area: areas)
 		{
 			const auto& areaStates = getAreaStates(area, country, areas, *ownerRegion);
