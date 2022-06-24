@@ -88,7 +88,7 @@ void ModSpanishCivilWar::Builder::BuildFoci(const std::string tag, const Ideolog
 	std::string buffer = GetFileBufferStr("foci.txt", kFolder);
 	std::stringstream input_stream;
 
-	auto situation_iter = ideological_situation.begin(); // Maybe assign out what we need to local variables?
+	auto situation_iter = ideological_situation.begin();
 
 	buffer = std::regex_replace(buffer, std::regex(kTag), tag);
 	buffer = std::regex_replace(buffer, std::regex(kGovernmentIdeology), situation_iter->ideology_);
@@ -108,6 +108,8 @@ void ModSpanishCivilWar::Builder::BuildFoci(const std::string tag, const Ideolog
 
 	parseStream(input_stream);
 	clearRegisteredKeywords();
+
+	// Use national_foci_ vector to make focus tree
 }
 
 void ModSpanishCivilWar::Builder::BuildUpdatedElections(const std::shared_ptr<HoI4::Country> country,
@@ -125,38 +127,29 @@ void ModSpanishCivilWar::Builder::BuildUpdatedElections(const std::shared_ptr<Ho
 void ModSpanishCivilWar::Builder::BuildType1Foci(commonItems::blobList blobs,
 	 std::vector<HoI4::State> noncontiguous_states)
 {
-	// Duplicate lines with kNonContiguousState for each state in country that matches
-	// Then build the focus
+
 	const auto& buffer_foci = blobs.getBlobs();
 	std::string delimiter = "\n\t\t\t\t\t\tstate = " + kNonContiguousState;
-	
-	for (auto buffer: buffer_foci)
+	std::vector<std::string> insertions;
+
+	for (const auto& state: noncontiguous_states)
 	{
-		if(const auto insert_position = buffer.find(delimiter) + delimiter.size(); insert_position != std::string::npos)
-		{
-			for (const auto& state: noncontiguous_states)
-			{
-				std::string to_insert = "\n\t\t\t\t\t\tstate = " + std::to_string(state.getID());
-				buffer.insert(insert_position, to_insert);
-			}
+		insertions.push_back("\n\t\t\t\t\t\tstate = " + std::to_string(state.getID()));
+	}
 
-			buffer = std::regex_replace(buffer, std::regex(delimiter), "");
+	std::map<std::string, std::vector<std::string>> template_instructions{{delimiter, insertions}};
 
-			std::stringstream input_stream;
-			input_stream << buffer;
+	auto streams = ParsableStreamsFromTemplate(buffer_foci, template_instructions);
 
-			// Do a thing
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Couldn't generate type1 national focus for " << the_civil_war_mod_->GetName();
-		}
+	for (auto& stream: streams)
+	{
+		national_focuses_.push_back(HoI4Focus(stream));
 	}
 }
 
 void ModSpanishCivilWar::Builder::BuildType2Foci(std::istream& the_stream)
 {
-	the_civil_war_mod_->AddFocus(std::make_shared<HoI4Focus>(the_stream));
+	national_focuses_.push_back(HoI4Focus(the_stream));
 }
 
 void ModSpanishCivilWar::Builder::AddIntervention(const std::shared_ptr<ModSpanishCivilWar> the_war,

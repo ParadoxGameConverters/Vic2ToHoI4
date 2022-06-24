@@ -22,19 +22,11 @@ class ScenarioMod
 	// When I ask myself why I did this later: https://google.github.io/styleguide/cppguide.html#Inheritance
 	// (Delete comment once design is settled)
   protected:
-	void AddDecisionInCategory(HoI4::decision decision, const std::string category)
-	{
-		decisions_.at(category).addDecision(decision);
-	};
-	void AddDecisionsInCategory(HoI4::DecisionsInCategory decisions, const std::string category)
-	{
-		decisions_.emplace(category, decisions);
-	};
-	void AddDecisionCategory(const HoI4::DecisionsCategory& decision_category)
-	{
-		decision_categories_->addCategory(decision_category);
-	};
-	void AddEvent(const HoI4::Event& hoi4_event) { events_.push_back(hoi4_event); }
+	void AddDecisionInCategory(HoI4::decision decision, const std::string category);
+	void AddDecisionsInCategory(HoI4::DecisionsInCategory decisions, const std::string category);
+	void AddDecisionCategory(const HoI4::DecisionsCategory& decision_category);
+	void AddEvent(const HoI4::Event& hoi4_event);
+
 
 	void SetDecisionCategories(std::unique_ptr<HoI4::DecisionsCategories>& decision_categories)
 	{
@@ -42,6 +34,10 @@ class ScenarioMod
 	}
 	void SetDecisions(std::map<std::string, HoI4::DecisionsInCategory> decisions) { decisions_ = decisions; }
 	void SetName(const std::string name) { name_ = name; }
+
+
+	static std::vector<std::stringstream> ParsableStreamsFromTemplate(const std::vector<std::string>& template_strings,
+		 const std::map<std::string, std::vector<std::string>>& delimiter_to_insertions);
 
   private:
 	std::map<std::string, HoI4::DecisionsInCategory> decisions_;

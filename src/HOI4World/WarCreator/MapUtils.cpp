@@ -360,7 +360,7 @@ std::optional<float> HoI4::MapUtils::getDistanceBetweenCountries(const Country& 
 	return std::sqrt(distanceSquared);
 }
 
-const std::set<int>& HoI4::MapUtils::getAreaBorderProvinces(const std::set<int>& ownProvinces,
+const std::set<int> HoI4::MapUtils::getAreaBorderProvinces(const std::set<int>& ownProvinces,
 	 const Maps::MapData& theMapData,
 	 const Maps::ProvinceDefinitions& provinceDefinitions) const
 {

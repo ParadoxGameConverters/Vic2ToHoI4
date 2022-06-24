@@ -153,6 +153,7 @@
     <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarBuilder.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\RoleSpanishCivilWar.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleTestShell.cpp" />
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\ScenarioMod.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioCreator\ScenarioConfigParser.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioCreator\ScenarioCreator.cpp" />
     <ClCompile Include="src\HOI4World\ScenarioCreator\Utilities\ScenarioUtilities.cpp" />

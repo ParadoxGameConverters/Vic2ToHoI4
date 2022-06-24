@@ -64,7 +64,7 @@ class MapUtils
 	[[nodiscard]] std::optional<Coordinate> getProvincePosition(int provinceNum) const;
 	[[nodiscard]] float getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2);
 	[[nodiscard]] std::optional<float> getDistanceBetweenCountries(const Country& country1, const Country& country2);
-	[[nodiscard]] const std::set<int>& getAreaBorderProvinces(const std::set<int>& ownProvinces,
+	[[nodiscard]] const std::set<int> getAreaBorderProvinces(const std::set<int>& ownProvinces,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions) const;
 

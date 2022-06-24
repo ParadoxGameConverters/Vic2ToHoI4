@@ -1786,6 +1786,9 @@
     <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\RoleSpanishCivilWar\ModSpanishCivilWarBuilderTests.cpp">
       <Filter>src\HOI4World\ScenarioCreator\Roles\SpanishCivilWar</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\ScenarioCreator\Roles\ScenarioMod.cpp">
+      <Filter>src\HOI4World\ScenarioCreator\Roles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

@@ -3,6 +3,7 @@
 
 #include "external/common_items/Parser.h"
 #include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/HoI4Focus.h"
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/ModSpanishCivilWar.h"
 #include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
 
