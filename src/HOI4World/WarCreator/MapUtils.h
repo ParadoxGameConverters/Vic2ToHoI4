@@ -38,6 +38,12 @@ class MapUtils
 		 const std::map<int, int>& provinceToStateIdMapping,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions) const;
+	// Returns the state IDs of all states that border the given state
+	[[nodiscard]] std::set<int> findNeighboringStates(const State& state,
+		 const State& neighbor,
+		 const std::map<int, int>& provinceToStateIdMapping,
+		 const Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions) const;
 	[[nodiscard]] std::vector<int> sortStatesByDistance(const std::set<int>& stateList,
 		 const Coordinate& location,
 		 const std::map<int, State>& states);
@@ -58,6 +64,9 @@ class MapUtils
 	[[nodiscard]] std::optional<Coordinate> getProvincePosition(int provinceNum) const;
 	[[nodiscard]] float getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2);
 	[[nodiscard]] std::optional<float> getDistanceBetweenCountries(const Country& country1, const Country& country2);
+	[[nodiscard]] const std::set<int>& getAreaBorderProvinces(const std::set<int>& ownProvinces,
+		 const Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions) const;
 
 	std::map<int, Coordinate> provincePositions;
 	std::map<int, std::string> provinceToOwnerMap;

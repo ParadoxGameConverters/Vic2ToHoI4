@@ -159,23 +159,7 @@ std::set<int> HoI4::MapUtils::findBorderStates(const Country& country,
 {
 	const auto& ownProvinces = country.getProvinces();
 
-	std::set<int> borderProvinces;
-	for (const auto& province: ownProvinces)
-	{
-		for (auto borderProvince: theMapData.getNeighbors(province))
-		{
-			if (ownProvinces.contains(borderProvince))
-			{
-				continue;
-			}
-			if (!provinceDefinitions.isLandProvince(borderProvince))
-			{
-				continue;
-			}
-
-			borderProvinces.insert(borderProvince);
-		}
-	}
+	std::set<int> borderProvinces = getAreaBorderProvinces(ownProvinces, theMapData, provinceDefinitions);
 
 	std::set<int> borderStates;
 	for (const auto borderProvince: borderProvinces)
@@ -194,6 +178,28 @@ std::set<int> HoI4::MapUtils::findBorderStates(const Country& country,
 	return borderStates;
 }
 
+
+std::set<int> HoI4::MapUtils::findNeighboringStates(const State& state,
+	 const State& neighbor,
+	 const std::map<int, int>& provinceToStateIdMapping,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions) const
+{
+	const auto& ownProvinces = state.getProvinces();
+	std::set<int> borderProvinces = getAreaBorderProvinces(ownProvinces, theMapData, provinceDefinitions);
+
+	std::set<int> borderStates;
+	for (const auto borderProvince: borderProvinces)
+	{
+		if (const auto provinceAndState = provinceToStateIdMapping.find(borderProvince);
+			 provinceAndState != provinceToStateIdMapping.end())
+		{
+			borderStates.insert(provinceAndState->second);
+		}
+	}
+
+	return borderStates;
+}
 
 std::vector<int> HoI4::MapUtils::sortStatesByDistance(const std::set<int>& stateList,
 	 const Coordinate& location,
@@ -352,4 +358,28 @@ std::optional<float> HoI4::MapUtils::getDistanceBetweenCountries(const Country& 
 	}
 
 	return std::sqrt(distanceSquared);
+}
+
+const std::set<int>& HoI4::MapUtils::getAreaBorderProvinces(const std::set<int>& ownProvinces,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions) const
+{
+	std::set<int> borderProvinces;
+	for (const auto& province: ownProvinces)
+	{
+		for (auto borderProvince: theMapData.getNeighbors(province))
+		{
+			if (ownProvinces.contains(borderProvince))
+			{
+				continue;
+			}
+			if (!provinceDefinitions.isLandProvince(borderProvince))
+			{
+				continue;
+			}
+
+			borderProvinces.insert(borderProvince);
+		}
+	}
+	return borderProvinces;
 }

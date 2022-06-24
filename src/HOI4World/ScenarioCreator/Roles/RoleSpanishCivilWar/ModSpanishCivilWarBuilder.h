@@ -35,6 +35,8 @@ class ModSpanishCivilWar::Builder: commonItems::parser
 
 
 	std::unique_ptr<ModSpanishCivilWar> the_civil_war_mod_;
+
+	std::vector<HoI4Focus> national_focuses_;
 };
 
 #endif // MOD_SPANISH_CIVIL_WAR_BUILDER_H

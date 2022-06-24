@@ -145,7 +145,7 @@ void ModSpanishCivilWar::Builder::BuildType1Foci(commonItems::blobList blobs,
 			std::stringstream input_stream;
 			input_stream << buffer;
 
-			the_civil_war_mod_->AddFocus(std::make_shared<HoI4Focus>(input_stream));
+			// Do a thing
 		}
 		else
 		{

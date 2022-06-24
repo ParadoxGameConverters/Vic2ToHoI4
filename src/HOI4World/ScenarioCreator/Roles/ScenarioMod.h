@@ -3,8 +3,6 @@
 
 #include "src/HOI4World/Decisions/DecisionsCategories.h"
 #include "src/HOI4World/Decisions/DecisionsInCategory.h"
-#include "src/HOI4World/HoI4FocusTree.h"
-#include "src/HOI4World/HoI4Focus.h"
 #include "src/HOI4World/Events/Event.h"
 
 class ScenarioMod
@@ -37,9 +35,7 @@ class ScenarioMod
 		decision_categories_->addCategory(decision_category);
 	};
 	void AddEvent(const HoI4::Event& hoi4_event) { events_.push_back(hoi4_event); }
-	void AddFocus(std::shared_ptr<HoI4Focus> focus) { the_focus_tree_->addFocus(focus); }
 
-	void SetFocusTree(std::unique_ptr<HoI4FocusTree>& focus_tree) { the_focus_tree_ = std::move(focus_tree); }
 	void SetDecisionCategories(std::unique_ptr<HoI4::DecisionsCategories>& decision_categories)
 	{
 		decision_categories_ = std::move(decision_categories);
@@ -48,7 +44,6 @@ class ScenarioMod
 	void SetName(const std::string name) { name_ = name; }
 
   private:
-	std::unique_ptr<HoI4FocusTree> the_focus_tree_;
 	std::map<std::string, HoI4::DecisionsInCategory> decisions_;
 	std::unique_ptr<HoI4::DecisionsCategories> decision_categories_;
 	std::vector<HoI4::Event> events_;
