@@ -10,7 +10,10 @@
 class ModSpanishCivilWar::Builder: commonItems::parser
 {
   public:
-	Builder(const std::shared_ptr<HoI4::Country> country, const date& the_date);
+	Builder(const std::shared_ptr<HoI4::Country> country,
+		 const date& the_date,
+		 const std::unique_ptr<Maps::MapData>& map_data,
+		 const std::unique_ptr<HoI4::States>& the_states);
 	std::unique_ptr<ModSpanishCivilWar> Build() { return std::move(the_civil_war_mod_); }
 
   private:
@@ -23,17 +26,17 @@ class ModSpanishCivilWar::Builder: commonItems::parser
 	static const std::string kGovernmentIdeology;
 
 	void BuildDecisionCategories(const std::string tag, const int captial_state_id);
-	void BuildDecisions(const std::string tag);
+	void BuildDecisions(const std::string tag, const int captial_state_id);
 	void BuildEvents(const std::string tag, const IdeologicalSituationSet& ideological_situation);
 	void BuildIdeas();
-	void BuildFoci(const std::string tag, const IdeologicalSituationSet& ideological_situation);
+	void BuildFoci(const std::string tag,
+		 const IdeologicalSituationSet& ideological_situation,
+		 const std::set<int>& home_state_ids,
+		 const std::set<int>& noncontiguous_state_ids);
 	void BuildUpdatedElections(const std::shared_ptr<HoI4::Country> country, const date& the_date);
 
-	void BuildType1Foci(commonItems::blobList blobs, std::vector<HoI4::State> noncontiguous_states);
-	void BuildType2Foci(std::istream& the_stream);
-
-	static void AddIntervention(const std::shared_ptr<ModSpanishCivilWar> the_war, const HoI4::Country& interveener);
-
+	void BuildType1Foci(commonItems::blobList blobs, std::set<int> noncontiguous_state_ids);
+	void BuildType2Foci(commonItems::blobList blobs);
 
 	std::unique_ptr<ModSpanishCivilWar> the_civil_war_mod_;
 

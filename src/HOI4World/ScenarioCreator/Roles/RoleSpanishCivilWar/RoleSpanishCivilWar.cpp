@@ -1,13 +1,17 @@
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/RoleSpanishCivilWar.h"
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/ModSpanishCivilWarBuilder.h"
 
-RoleSpanishCivilWar::RoleSpanishCivilWar()
+RoleSpanishCivilWar::RoleSpanishCivilWar(): map_data_(nullptr), all_states_(nullptr)
 {
 	SetName("SpanishCivilWar");
 	SetInstanceCap(1);
 }
 
-RoleSpanishCivilWar::RoleSpanishCivilWar(const date& the_date): the_date_(the_date)
+RoleSpanishCivilWar::RoleSpanishCivilWar(const date& the_date,
+	 const std::unique_ptr<Maps::MapData>& map_data,
+	 const std::unique_ptr<HoI4::States>& all_states):
+	 the_date_(the_date),
+	 map_data_(map_data), all_states_(all_states)
 {
 	SetName("SpanishCivilWar");
 	SetInstanceCap(1);
@@ -63,8 +67,6 @@ std::shared_ptr<ScenarioMod> RoleSpanishCivilWar::Apply(std::shared_ptr<HoI4::Co
 {
 	SetInstances(GetInstances() + 1);
 
-	// Should the modifications to country happen here or in the factory/creator/builder thingy class?
-	// Make a copy of country class before messing with it? Does default copy constructor even make a deep copy/work?
-	ModSpanishCivilWar::Builder bui(country, the_date_);
-	return bui.Build();
+	ModSpanishCivilWar::Builder factory(country, the_date_, map_data_, all_states_);
+	return factory.Build();
 }

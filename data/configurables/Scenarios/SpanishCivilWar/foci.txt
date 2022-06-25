@@ -1,3 +1,9 @@
+# type = {
+# {focus = {
+# }}
+# For proper reading in
+#
+
 type1 = {
 {focus = {
 	id = TAG_the_people_need_guidance

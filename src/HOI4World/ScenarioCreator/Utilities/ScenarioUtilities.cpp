@@ -1,5 +1,6 @@
 #include "src/HOI4World/ScenarioCreator/Utilities/ScenarioUtilities.h"
 #include "external/common_items/Log.h"
+#include "src/HOI4World/WarCreator/MapUtils.h"
 #include <filesystem>
 #include <fstream>
 
@@ -47,4 +48,32 @@ const IdeologicalSituationSet GetIdeologicalSituation(const std::map<std::string
 	}
 
 	return ideological_situation;
+}
+
+const std::set<int> MergeAreas(const std::vector<std::set<int>> areas)
+{
+	std::set<int> cumulative_area;
+
+	for (const auto& area: areas)
+	{
+		for (const auto& province: area)
+		{
+			cumulative_area.insert(province);
+		}
+	}
+
+	return cumulative_area;
+}
+
+std::set<int> GetDissconnectedStates(std::vector<std::set<int>>& all_contiguous_areas,
+	 const std::map<int, int>& province_to_state_id_mapping)
+{
+	// Would this fit as a static MapUtil?
+
+	// The first area is the home area
+	all_contiguous_areas.erase(all_contiguous_areas.begin());
+
+	// Combine all others
+	std::set<int> disconnected_areas = MergeAreas(all_contiguous_areas);
+	return HoI4::MapUtils::getStatesInArea(disconnected_areas, province_to_state_id_mapping);
 }

@@ -11,7 +11,9 @@
 HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_ptr<HoI4::Country>>& country_map,
 	 const std::string& save_name,
 	 const std::string& role_file_name,
-	 const date& the_date):
+	 const date& the_date,
+	 const std::unique_ptr<Maps::MapData>& map_data,
+	 const std::unique_ptr<HoI4::States>& all_states):
 	 save_name_(save_name)
 {
 	const auto& scenario_file = "Configurables/Scenarios/" + save_name + "_scenario.txt";
@@ -24,7 +26,7 @@ HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_p
 		country_to_role_assignments_ = config_parser.GetRoleAssignments();
 		const auto& possible_roles = config_parser.GetPossibleRoles();
 
-		InitialzeRoles(possible_roles, the_date);
+		InitialzeRoles(possible_roles, the_date, map_data, all_states);
 
 		for (const auto& assignment: country_to_role_assignments_)
 		{
@@ -47,7 +49,7 @@ HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_p
 		}
 
 		const auto& possible_roles = ConfigParser("Configurables/" + role_file_name).GetPossibleRoles();
-		InitialzeRoles(possible_roles, the_date);
+		InitialzeRoles(possible_roles, the_date, map_data, all_states);
 
 		for (const auto& country: countries_)
 		{
@@ -57,12 +59,15 @@ HoI4::ScenarioCreator::ScenarioCreator(const std::map<std::string, std::shared_p
 	}
 }
 
-void HoI4::ScenarioCreator::InitialzeRoles(const std::set<std::string> possible_roles, const date& the_date)
+void HoI4::ScenarioCreator::InitialzeRoles(const std::set<std::string> possible_roles,
+	 const date& the_date,
+	 const std::unique_ptr<Maps::MapData>& map_data,
+	 const std::unique_ptr<HoI4::States>& all_states)
 {
 	std::set<std::string> role_tracker = possible_roles;
 	if (role_tracker.contains("SpanishCivilWar"))
 	{
-		roles_.push_back(std::make_shared<RoleSpanishCivilWar>(the_date));
+		roles_.push_back(std::make_shared<RoleSpanishCivilWar>(the_date, map_data, all_states));
 		role_tracker.erase("SpanishCivilWar");
 	}
 	if (role_tracker.contains("ArsenalOfIdeology"))

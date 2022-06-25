@@ -1,6 +1,7 @@
 #include "src/HOI4World/ScenarioCreator/Roles/RoleSpanishCivilWar/ModSpanishCivilWarBuilder.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/Log.h"
+#include "src/HOI4World/WarCreator/MapUtils.h"
 #include <regex>
 #include <sstream>
 
@@ -14,7 +15,10 @@ const std::string ModSpanishCivilWar::Builder::kPlotterIdeology = "OPPOSITION_ID
 const std::string ModSpanishCivilWar::Builder::kGovernmentIdeology = "GOVERNMENT_IDEOLOGY";
 
 
-ModSpanishCivilWar::Builder::Builder(const std::shared_ptr<HoI4::Country> country, const date& the_date)
+ModSpanishCivilWar::Builder::Builder(const std::shared_ptr<HoI4::Country> country,
+	 const date& the_date,
+	 const std::unique_ptr<Maps::MapData>& map_data,
+	 const std::unique_ptr<HoI4::States>& the_states)
 {
 	the_civil_war_mod_ = std::make_unique<ModSpanishCivilWar>();
 
@@ -23,7 +27,14 @@ ModSpanishCivilWar::Builder::Builder(const std::shared_ptr<HoI4::Country> countr
 	auto the_ideological_situation =
 		 GetIdeologicalSituation(country->getIdeologySupport(), country->getGovernmentIdeology());
 	BuildEvents(country->getTag(), the_ideological_situation);
-	BuildFoci(country->getTag(), the_ideological_situation);
+
+	// Combine contiguous and disconnectes_states in a struct? How many more variations will be needed later? Some.
+	auto contiguous_areas =
+		 country->getContiguousAreas(map_data, the_states->getStates(), the_states->getProvinceToStateIDMap());
+	auto contiguous_states = HoI4::MapUtils::getStatesInArea(contiguous_areas[0], the_states->getProvinceToStateIDMap());
+	auto disconnected_states = GetDissconnectedStates(contiguous_areas, the_states->getProvinceToStateIDMap());
+
+	BuildFoci(country->getTag(), the_ideological_situation, contiguous_states, disconnected_states);
 }
 
 void ModSpanishCivilWar::Builder::BuildDecisionCategories(const std::string tag, const int capital_state_id)
@@ -41,13 +52,13 @@ void ModSpanishCivilWar::Builder::BuildDecisionCategories(const std::string tag,
 	the_civil_war_mod_->SetDecisionCategories(decision_categories);
 }
 
-void ModSpanishCivilWar::Builder::BuildDecisions(const std::string tag)
+void ModSpanishCivilWar::Builder::BuildDecisions(const std::string tag, const int captial_state_id)
 {
 	std::string buffer = GetFileBufferStr("decision_categories.txt", kFolder);
 	std::stringstream input_stream;
 
 	buffer = std::regex_replace(buffer, std::regex(kTag), tag);
-	buffer = std::regex_replace(buffer, std::regex(kState), "563");
+	buffer = std::regex_replace(buffer, std::regex(kState), std::to_string(captial_state_id));
 
 	input_stream << buffer;
 
@@ -83,7 +94,10 @@ void ModSpanishCivilWar::Builder::BuildIdeas()
 }
 
 // Investigate how war creator does its branch thing
-void ModSpanishCivilWar::Builder::BuildFoci(const std::string tag, const IdeologicalSituationSet& ideological_situation)
+void ModSpanishCivilWar::Builder::BuildFoci(const std::string tag,
+	 const IdeologicalSituationSet& ideological_situation,
+	 const std::set<int>& home_state_ids,
+	 const std::set<int>& disconnected_state_ids)
 {
 	std::string buffer = GetFileBufferStr("foci.txt", kFolder);
 	std::stringstream input_stream;
@@ -98,12 +112,13 @@ void ModSpanishCivilWar::Builder::BuildFoci(const std::string tag, const Ideolog
 
 	// Rename types once all foci are known
 	// Send them out for additional processing by unique needs
-	registerKeyword("type1", [this](std::istream& the_stream) {
+	registerKeyword("type1", [this, disconnected_state_ids](std::istream& the_stream) {
 		auto blobs = commonItems::blobList(the_stream);
-		BuildType1Foci(blobs, std::vector<HoI4::State>()); // Need the map data
+		BuildType1Foci(blobs, disconnected_state_ids);
 	});
 	registerKeyword("type2", [this](std::istream& the_stream) {
-		BuildType2Foci(the_stream);
+		auto blobs = commonItems::blobList(the_stream);
+		BuildType2Foci(blobs);
 	});
 
 	parseStream(input_stream);
@@ -124,17 +139,17 @@ void ModSpanishCivilWar::Builder::BuildUpdatedElections(const std::shared_ptr<Ho
 	country->setLastElection36(date(1932, 2, election_day.getDay()));
 }
 
-void ModSpanishCivilWar::Builder::BuildType1Foci(commonItems::blobList blobs,
-	 std::vector<HoI4::State> noncontiguous_states)
+void ModSpanishCivilWar::Builder::BuildType1Foci(commonItems::blobList blobs, std::set<int> noncontiguous_state_ids)
 {
+	// Noncontiguous states templating
 
 	const auto& buffer_foci = blobs.getBlobs();
 	std::string delimiter = "\n\t\t\t\t\t\tstate = " + kNonContiguousState;
 	std::vector<std::string> insertions;
 
-	for (const auto& state: noncontiguous_states)
+	for (const auto& state_id: noncontiguous_state_ids)
 	{
-		insertions.push_back("\n\t\t\t\t\t\tstate = " + std::to_string(state.getID()));
+		insertions.push_back("\n\t\t\t\t\t\tstate = " + std::to_string(state_id));
 	}
 
 	std::map<std::string, std::vector<std::string>> template_instructions{{delimiter, insertions}};
@@ -147,12 +162,14 @@ void ModSpanishCivilWar::Builder::BuildType1Foci(commonItems::blobList blobs,
 	}
 }
 
-void ModSpanishCivilWar::Builder::BuildType2Foci(std::istream& the_stream)
+void ModSpanishCivilWar::Builder::BuildType2Foci(commonItems::blobList blobs)
 {
-	national_focuses_.push_back(HoI4Focus(the_stream));
-}
+	// No templating, just straight up after regex
+	const auto& buffer_foci = blobs.getBlobs();
 
-void ModSpanishCivilWar::Builder::AddIntervention(const std::shared_ptr<ModSpanishCivilWar> the_war,
-	 const HoI4::Country& interveener)
-{
+	for (const auto& foci : buffer_foci)
+	{
+		std::stringstream stream(foci);
+		national_focuses_.push_back(HoI4Focus(stream));
+	}
 }

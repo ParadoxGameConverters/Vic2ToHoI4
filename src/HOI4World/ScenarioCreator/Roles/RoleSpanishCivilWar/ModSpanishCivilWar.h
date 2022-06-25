@@ -14,6 +14,8 @@ class ModSpanishCivilWar: public ScenarioMod
 
 	void OutputRoleSpecifics(std::string output_name) const override;
 
+	// void AddIntervention(const HoI4::Country& interveener);
+
   private:
 	void OutputExtraOnActions(std::string output_name) const;
 

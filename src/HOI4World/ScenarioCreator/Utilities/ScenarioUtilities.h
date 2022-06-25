@@ -1,10 +1,12 @@
 #include <map>
 #include <set>
 #include <string>
+#include <vector>
 
 #ifndef SCENARIO_UTILITIES_H
 #define SCENARIO_UTILITIES_H
 
+// When it feels hard to place a function when making scenarios, put it in here until a more obvious home appears
 
 struct IdeologySituation
 {
@@ -29,6 +31,11 @@ const std::stringstream GetStreamFromFile(const std::string& input_file);
 const std::string GetFileBufferStr(const std::string& input_file,
 	 const std::string& folder,
 	 const std::string& path = "Configurables/Scenarios");
+
+const std::set<int> MergeAreas(const std::vector<std::set<int>> areas);
+
+std::set<int> GetDissconnectedStates(std::vector<std::set<int>>& all_contiguous_areas,
+	 const std::map<int, int>& provinceToStateIdMapping);
 
 // If private functions/static data members are later needed convert this to a static class with constructor deleted
 
