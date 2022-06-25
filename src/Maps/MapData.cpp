@@ -283,7 +283,15 @@ void Maps::MapData::ImportAdjacencies(const std::string& path)
 				continue;
 			}
 
+			if (matches[1].length() == 0)
+			{
+				continue;
+			}
 			const int first_province = std::stoi(matches[1]);
+			if (matches[2].length() == 0)
+			{
+				continue;
+			}
 			const int second_province = std::stoi(matches[2]);
 			if (matches[3] != "impassable")
 			{
