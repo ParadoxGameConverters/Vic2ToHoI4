@@ -4,3 +4,4 @@ From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
 # Vic2-style adjacency
 254;271;sea;2737;0;Irish Strait
 6;7;impassable;42;-1;-1;-1;-1;;Test mountain
+;;;;;
