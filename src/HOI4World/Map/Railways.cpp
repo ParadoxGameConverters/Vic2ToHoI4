@@ -14,38 +14,19 @@ using HoI4::Railway;
 namespace
 {
 
-std::set<int> findValidVic2ProvinceNumbers(const std::vector<std::reference_wrapper<const Vic2::State>>& states,
-	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces)
+std::set<int> FindValidVic2ProvinceNumbers(const std::vector<std::reference_wrapper<const Vic2::State>>& states)
 {
-	std::set<int> validVic2ProvinceNumbers;
+	std::set<int> valid_vic2_province_numbers;
 
 	for (const auto& state: states)
 	{
-		const auto provinceNumbers = state.get().getProvincesOrderedByPopulation();
-
-		// first select any ports
-		int numPorts = 0;
-		for (const auto& provinceNumber: provinceNumbers)
+		for (const auto& province_number: state.get().getProvinceNumbers())
 		{
-			if (const auto& provinceItr = vic2Provinces.find(provinceNumber); provinceItr != vic2Provinces.end())
-			{
-				if (provinceItr->second->getNavalBaseLevel() > 0)
-				{
-					validVic2ProvinceNumbers.insert(provinceNumber);
-					++numPorts;
-				}
-			}
-		}
-
-		// then select the remaining 2/3rd largest provinces
-		const int provinceLimit = static_cast<int>(provinceNumbers.size()) * 2 / 3 - numPorts;
-		for (int i = 0; i < provinceLimit; i++)
-		{
-			validVic2ProvinceNumbers.insert(provinceNumbers[i]);
+			valid_vic2_province_numbers.insert(province_number);
 		}
 	}
 
-	return validVic2ProvinceNumbers;
+	return valid_vic2_province_numbers;
 }
 
 
@@ -452,45 +433,83 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& V
 {
 	Log(LogLevel::Info) << "\tDetermining railways";
 
-	const auto validVic2ProvinceNumbers = findValidVic2ProvinceNumbers(states, Vic2Provinces);
-	const auto vic2provincePaths = determineVic2ProvincePaths(validVic2ProvinceNumbers, Vic2Provinces, Vic2MapData);
+	const auto valid_vic2_province_numbers = FindValidVic2ProvinceNumbers(states);
+	const auto vic2_province_paths = determineVic2ProvincePaths(valid_vic2_province_numbers, Vic2Provinces, Vic2MapData);
 
-	for (const auto& vic2provincePath: vic2provincePaths)
+	std::vector<Railway> possible_railways;
+	for (const auto& vic2_province_path: vic2_province_paths)
 	{
-		const int railwayLevel = getRailwayLevel(vic2provincePath, Vic2Provinces);
-		if (railwayLevel < 1)
+		const int railway_level = getRailwayLevel(vic2_province_path, Vic2Provinces);
+		if (railway_level < 1)
 		{
 			continue;
 		}
 
-		const auto HoI4StartProvinceNumber = getBestHoI4ProvinceNumber(vic2provincePath[0],
+		const auto hoi4_start_province_number = getBestHoI4ProvinceNumber(vic2_province_path[0],
 			 provinceMapper,
 			 impassableProvinces,
 			 hoi4Provinces,
 			 navalBaseLocations);
-		const auto HoI4EndProvinceNumber = getBestHoI4ProvinceNumber(vic2provincePath[vic2provincePath.size() - 1],
+		const auto hoi4_end_province_number = getBestHoI4ProvinceNumber(vic2_province_path[vic2_province_path.size() - 1],
 			 provinceMapper,
 			 impassableProvinces,
 			 hoi4Provinces,
 			 navalBaseLocations);
-		if (!HoI4ProvinceNumbersAreValid(HoI4StartProvinceNumber, HoI4EndProvinceNumber))
+		if (!HoI4ProvinceNumbersAreValid(hoi4_start_province_number, hoi4_end_province_number))
 		{
 			continue;
 		}
 
-		if (const auto possiblePath = findPath(*HoI4StartProvinceNumber,
-				  *HoI4EndProvinceNumber,
-				  vic2provincePath,
+		if (const auto possible_path = findPath(*hoi4_start_province_number,
+				  *hoi4_end_province_number,
+				  vic2_province_path,
 				  provinceMapper,
 				  HoI4MapData,
 				  HoI4ProvinceDefinitions,
 				  impassableProvinces);
-			 possiblePath)
+			 possible_path)
 		{
-			Railway railway(railwayLevel, *possiblePath);
-			railways_.push_back(railway);
-			railway_endpoints_.insert(*HoI4StartProvinceNumber);
-			railway_endpoints_.insert(*HoI4EndProvinceNumber);
+			Railway railway(railway_level, *possible_path);
+			possible_railways.push_back(railway);
 		}
+	}
+
+	std::vector<Railway> loop_railways;
+	while (!possible_railways.empty())
+	{
+		const auto last_railway = possible_railways.end() - 1;
+		railways_.push_back(*last_railway);
+
+		const auto& last_endpoints = last_railway->getProvinces();
+		railway_endpoints_.insert(last_endpoints[0]);
+		railway_endpoints_.insert(last_endpoints[last_endpoints.size() - 1]);
+		possible_railways.pop_back();
+
+		bool added_railways;
+		do
+		{
+			added_railways = false;
+			std::vector<Railway> unused_railways;
+			for (const auto& railway: possible_railways)
+			{
+				const auto start_province = railway.getProvinces().begin();
+				const auto end_province = railway.getProvinces().end() - 1;
+				if (railway_endpoints_.contains(*start_province) && railway_endpoints_.contains(*end_province))
+				{
+					loop_railways.push_back(railway);
+				}
+				else if (railway_endpoints_.contains(*start_province) && railway_endpoints_.contains(*end_province))
+				{
+					railways_.push_back(railway);
+					railway_endpoints_.insert(railway.getProvinces().begin(), railway.getProvinces().end() - 1);
+					added_railways = true;
+				}
+				else
+				{
+					unused_railways.push_back(railway);
+				}
+			}
+			possible_railways = unused_railways;
+		} while (added_railways);
 	}
 }
