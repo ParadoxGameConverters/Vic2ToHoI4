@@ -547,6 +547,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	std::sort(possible_paths.begin(), possible_paths.end());
 	std::ranges::reverse(possible_paths);
 
+	// todo: modify this to be shortest path to one of the capitals, not shortest next connection
 	std::vector<PossiblePath> loop_paths;
 	std::set<int> endpoints;
 	std::vector<PossiblePath> spanning_paths;
@@ -649,6 +650,9 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
+	// todo: simplify paths by removing points that only have two connecting paths and combining the paths into one, though maybe not in cases where it become too long. Certainly not if it was a port or VP
+	// todo: remove parallel paths that result, maybe
+	// todo: remove some single-point destinations to make the map more sparse
 
 	for (const auto& path: spanning_paths)
 	{
@@ -657,3 +661,5 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		railway_endpoints_ = endpoints;
 	}
 }
+
+// todo: code cleanup, it's ugly as can be right now
