@@ -7,6 +7,7 @@
 #include "src/HOI4World/Map/ImpassableProvinces.h"
 #include "src/HOI4World/Map/Railway.h"
 #include "src/HOI4World/States/HoI4State.h"
+#include "src/HOI4World/States/HoI4States.h"
 #include "src/Mappers/Provinces/ProvinceMapper.h"
 #include "src/Maps/MapData.h"
 #include "src/V2World/Provinces/Province.h"
@@ -32,7 +33,7 @@ class Railways
 		 const ImpassableProvinces& impassable_provinces,
 		 const std::map<int, Province>& hoi4_provinces,
 		 const std::set<int>& naval_base_locations,
-		 const std::map<int, State>& hoi4_states);
+		 const HoI4::States& hoi4_states);
 
 	[[nodiscard]] const auto& GetRailways() const { return railways_; }
 	[[nodiscard]] const auto& GetRailwayEndpoints() const { return railway_endpoints_; }

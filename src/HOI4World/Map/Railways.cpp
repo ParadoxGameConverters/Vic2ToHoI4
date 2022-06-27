@@ -11,7 +11,7 @@
 using HoI4::Railway;
 
 
-#pragma optimize("",off)
+
 namespace
 {
 
@@ -350,13 +350,25 @@ double getDistanceBetweenProvinces(int provinceOne, int provinceTwo, const Maps:
 }
 
 
+double DeterminePathCost(const Maps::ProvinceDefinitions& hoi4_province_definitions,
+	 int neighbor_number,
+	 int last_province,
+	 const std::map<int, std::string>& provinces_to_owners_map,
+	 const Maps::MapData& hoi4_map_data)
+{
+	return getCostForTerrainType(hoi4_province_definitions.getTerrainType(neighbor_number)) *
+			 getDistanceBetweenProvinces(neighbor_number, last_province, hoi4_map_data);
+}
+
+
 std::optional<HoI4::PossiblePath> FindPath(int startProvince,
 	 int endProvince,
 	 const std::vector<int>& vic2Provinces,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Maps::MapData& HoI4MapData,
 	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
-	 const HoI4::ImpassableProvinces& impassableProvinces)
+	 const HoI4::ImpassableProvinces& impassableProvinces,
+	 const std::map<int, std::string>& provinces_to_owners_map)
 {
 	std::priority_queue<HoI4::PossiblePath> possibleRailwayPaths;
 	std::set reachedProvinces{startProvince};
@@ -405,8 +417,11 @@ std::optional<HoI4::PossiblePath> FindPath(int startProvince,
 
 			auto newPossibleRailwayPath = possibleRailwayPath;
 			newPossibleRailwayPath.AddProvince(neighborNumber,
-				 getCostForTerrainType(HoI4ProvinceDefinitions.getTerrainType(neighborNumber)) *
-					  getDistanceBetweenProvinces(neighborNumber, lastProvince, HoI4MapData));
+				 DeterminePathCost(HoI4ProvinceDefinitions,
+					  neighborNumber,
+					  lastProvince,
+					  provinces_to_owners_map,
+					  HoI4MapData));
 			possibleRailwayPaths.push(newPossibleRailwayPath);
 		}
 	}
@@ -431,7 +446,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	 const ImpassableProvinces& impassable_provinces,
 	 const std::map<int, Province>& hoi4_provinces,
 	 const std::set<int>& naval_base_locations,
-	 const std::map<int, State>& hoi4_states)
+	 const HoI4::States& hoi4_states)
 {
 	Log(LogLevel::Info) << "\tDetermining railways";
 
@@ -439,7 +454,18 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	const auto vic2_province_paths =
 		 determineVic2PossiblePaths(valid_vic2_province_numbers, vic2_provinces, vic2_map_data);
 
+	std::map<int, std::string> provinces_to_owners_map;
+	for (const auto& state: hoi4_states.getStates() | std::views::values)
+	{
+		const auto& owner = state.getOwner();
+		for (const auto& province: state.getProvinces())
+		{
+			provinces_to_owners_map.emplace(province, owner);
+		}
+	}
+
 	std::vector<PossiblePath> possible_paths;
+	std::vector<PossiblePath> border_crossings;
 	for (const auto& vic2_province_path: vic2_province_paths)
 	{
 		const int railway_level = getRailwayLevel(vic2_province_path, vic2_provinces);
@@ -469,16 +495,37 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 				  province_mapper,
 				  hoi4_map_data,
 				  hoi4_province_definitions,
-				  impassable_provinces);
+				  impassable_provinces,
+				  provinces_to_owners_map);
 			 possible_path)
 		{
 			possible_path->SetLevel(railway_level);
-			possible_paths.push_back(*possible_path);
+
+			std::string last_province_owner;
+			if (const auto& owner = provinces_to_owners_map.find(*hoi4_start_province_number);
+				 owner != provinces_to_owners_map.end())
+			{
+				last_province_owner = owner->second;
+			}
+			std::string neighbor_owner;
+			if (const auto& owner = provinces_to_owners_map.find(*hoi4_end_province_number);
+				 owner != provinces_to_owners_map.end())
+			{
+				neighbor_owner = owner->second;
+			}
+			if (last_province_owner == neighbor_owner)
+			{
+				possible_paths.push_back(*possible_path);
+			}
+			else
+			{
+				border_crossings.push_back(*possible_path);
+			}
 		}
 	}
 
 	std::set<int> initial_endpoints;
-	for (const auto& state: hoi4_states | std::views::values)
+	for (const auto& state: hoi4_states.getStates() | std::views::values)
 	{
 		if (state.IsCapitalState())
 		{
@@ -536,4 +583,3 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 }
-#pragma optimize("",on)

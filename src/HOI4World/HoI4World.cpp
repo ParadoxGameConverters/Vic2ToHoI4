@@ -159,15 +159,15 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
 	railways_ = std::make_unique<Railways>(sourceWorld.getProvinces(),
-		sourceWorld.getStates(),
-		sourceWorld.getMapData(),
-		provinceMapper,
-		*theMapData,
-		*provinceDefinitions,
-		impassableProvinces,
-		theProvinces,
-		states->getNavalBaseLocations(),
-		states->getStates());
+		 sourceWorld.getStates(),
+		 sourceWorld.getMapData(),
+		 provinceMapper,
+		 *theMapData,
+		 *provinceDefinitions,
+		 impassableProvinces,
+		 theProvinces,
+		 states->getNavalBaseLocations(),
+		 *states);
 	supplyNodes_ = determineSupplyNodes(sourceWorld.getProvinces(), provinceMapper, railways_->GetRailwayEndpoints());
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
