@@ -436,6 +436,14 @@ std::optional<HoI4::PossiblePath> FindPath(int startProvince,
 } // namespace
 
 
+struct TreePath
+{
+	int endpoint;
+	double cost;
+	// higher is prioritized where we want lower to be, so reverse the meaning of less than
+	[[nodiscard]] bool operator<(const TreePath& rhs) const { return cost > rhs.cost; }
+};
+
 
 HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
 	 const std::vector<std::reference_wrapper<const Vic2::State>>& vic2_states,
@@ -540,6 +548,8 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	std::ranges::reverse(possible_paths);
 
 	std::vector<PossiblePath> loop_paths;
+	std::set<int> endpoints;
+	std::vector<PossiblePath> spanning_paths;
 	while (!possible_paths.empty())
 	{
 		bool added_railways;
@@ -551,17 +561,16 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			{
 				const auto start_province = path.GetFirstProvince();
 				const auto end_province = path.GetLastProvince();
-				if (railway_endpoints_.contains(start_province) && railway_endpoints_.contains(end_province))
+				if (endpoints.contains(start_province) && endpoints.contains(end_province))
 				{
 					loop_paths.push_back(path);
 				}
-				else if (railway_endpoints_.contains(start_province) || railway_endpoints_.contains(end_province) ||
+				else if (endpoints.contains(start_province) || endpoints.contains(end_province) ||
 							initial_endpoints.contains(start_province) || initial_endpoints.contains(end_province))
 				{
-					Railway railway(path.GetLevel(), path.GetProvinces());
-					railways_.push_back(railway);
-					railway_endpoints_.insert(path.GetFirstProvince());
-					railway_endpoints_.insert(path.GetLastProvince());
+					spanning_paths.push_back(path);
+					endpoints.insert(path.GetFirstProvince());
+					endpoints.insert(path.GetLastProvince());
 					added_railways = true;
 				}
 				else
@@ -575,11 +584,76 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		if (!possible_paths.empty())
 		{
 			const auto initial_path = possible_paths.begin();
-			Railway initial_railway(initial_path->GetLevel(), initial_path->GetProvinces());
-			railways_.push_back(initial_railway);
-			railway_endpoints_.insert(initial_path->GetFirstProvince());
-			railway_endpoints_.insert(initial_path->GetLastProvince());
+			spanning_paths.push_back(*initial_path);
+			endpoints.insert(initial_path->GetFirstProvince());
+			endpoints.insert(initial_path->GetLastProvince());
 			possible_paths.erase(possible_paths.begin());
 		}
+	}
+
+	std::vector<PossiblePath> extra_paths;
+	for (const auto& path: border_crossings)
+	{
+		extra_paths.push_back(path);
+	}
+	for (const auto& path : loop_paths)
+	{
+		extra_paths.push_back(path);
+	}
+	std::sort(extra_paths.begin(), extra_paths.end());
+	std::ranges::reverse(extra_paths);
+
+	for (const auto& extra_path: extra_paths)
+	{
+		double without_cost = std::numeric_limits<double>::max();
+
+		std::set<int> reached_points;
+		std::priority_queue<TreePath> points_to_try;
+		TreePath initial_path;
+		initial_path.endpoint = extra_path.GetFirstProvince();
+		points_to_try.push(initial_path);
+		while (!points_to_try.empty())
+		{
+			const auto point_to_try = points_to_try.top();
+			points_to_try.pop();
+			if (point_to_try.endpoint == extra_path.GetLastProvince())
+			{
+				without_cost = point_to_try.cost;
+				break;
+			}
+
+			for (const auto& path: spanning_paths)
+			{
+				if (path.GetFirstProvince() == point_to_try.endpoint && !reached_points.contains(path.GetLastProvince()))
+				{
+					TreePath new_path;
+					new_path.endpoint = path.GetLastProvince();
+					new_path.cost = point_to_try.cost + path.GetCost();
+					points_to_try.push(new_path);
+					reached_points.insert(path.GetLastProvince());
+				}
+				if (path.GetLastProvince() == point_to_try.endpoint && !reached_points.contains(path.GetFirstProvince()))
+				{
+					TreePath new_path;
+					new_path.endpoint = path.GetFirstProvince();
+					new_path.cost = point_to_try.cost + path.GetCost();
+					points_to_try.push(new_path);
+					reached_points.insert(path.GetFirstProvince());
+				}
+			}
+		}
+
+		if (without_cost / 10.0 > extra_path.GetCost())
+		{
+			spanning_paths.push_back(extra_path);
+		}
+	}
+
+
+	for (const auto& path: spanning_paths)
+	{
+		Railway railway(path.GetLevel(), path.GetProvinces());
+		railways_.push_back(railway);
+		railway_endpoints_ = endpoints;
 	}
 }

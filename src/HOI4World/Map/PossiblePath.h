@@ -28,6 +28,7 @@ class PossiblePath
 	[[nodiscard]] int GetFirstProvince() const { return provinces_[0]; }
 	[[nodiscard]] std::vector<int> GetProvinces() const { return provinces_; }
 	[[nodiscard]] int GetLevel() const { return level_; }
+	[[nodiscard]] double GetCost() const { return cost_; }
 
   private:
 	std::vector<int> provinces_;
