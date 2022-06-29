@@ -296,9 +296,11 @@ void Configuration::Factory::sortMods()
 
 		unsortedMods.erase(itr);
 	}
+	std::ranges::reverse(sortedMods);
 
 	configuration->Vic2Mods = sortedMods;
 }
+
 
 void Configuration::Factory::verifyVic2Version(const commonItems::ConverterVersion& converterVersion) const
 {

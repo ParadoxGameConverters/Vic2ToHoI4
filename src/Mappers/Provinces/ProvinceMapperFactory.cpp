@@ -8,6 +8,7 @@
 #include "src/Mappers/Provinces/ProvinceMapper.h"
 #include "src/Mappers/Provinces/VersionedMappings.h"
 #include <fstream>
+#include <ranges>
 
 
 
@@ -96,7 +97,7 @@ std::unique_ptr<Mappers::ProvinceMapper> Mappers::ProvinceMapper::Factory::impor
 	provinceMapper = std::make_unique<ProvinceMapper>();
 
 	auto mapped = false;
-	for (const auto& mod: theConfiguration.getVic2Mods())
+	for (const auto& mod: theConfiguration.getVic2Mods() | std::views::reverse)
 	{
 		if (commonItems::DoesFileExist(mod.path + "/hybridization.txt"))
 		{
