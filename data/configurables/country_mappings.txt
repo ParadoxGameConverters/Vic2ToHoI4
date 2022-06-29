@@ -77,6 +77,7 @@ link = { vic = ETH hoi = ETH } # Ethiopia
 link = { vic = FIJ hoi = FIJ } # Fiji
 link = { vic = FIN hoi = FIN } # Finland
 link = { vic = FRA hoi = FRA } # France
+link = { vic = BOR hoi = FRA } # Kingdom of france
 #link = { vic = ? hoi = FSM } # Micronesia
 link = { vic = GAB hoi = GAB } # Gabon
 link = { vic = GMB hoi = GAM } # Gambia
