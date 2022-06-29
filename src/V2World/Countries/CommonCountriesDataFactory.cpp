@@ -24,7 +24,6 @@ std::string ExtractCountryFileName(const std::string& country_file_line)
 }
 
 
-int party_num = 1;
 std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Party>> ProcessCountriesDotTxt(
 	 const std::string& country_list_file,
 	 const commonItems::ModFilesystem& mod_filesystem)
@@ -60,8 +59,6 @@ std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Par
 		common_countries_data[tag] = *country_data;
 		for (const auto& party: country_data->GetParties())
 		{
-			Log(LogLevel::Debug) << tag << " has party " << party_num;
-			++party_num;
 			parties.emplace_back(party);
 		}
 	}
