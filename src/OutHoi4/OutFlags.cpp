@@ -98,7 +98,8 @@ constexpr std::array<const char*, numFlagsPerCountry> hoi4Suffixes{
 static std::set<std::string> allowedMods = {"POPs of Darkness",
 	 "New Nations Mod",
 	 "Divergences of Darkness",
-	 "The Concert of Europe"};
+	 "The Concert of Europe",
+	 "Greater Flavor Mod"};
 
 
 void HoI4::processFlagsForCountry(const std::string& tag,

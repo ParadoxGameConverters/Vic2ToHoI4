@@ -78,5 +78,6 @@ Pepper the Incaman - Art
 
 Special thanks to LukyLucaz, who allowed us to incorporate Increased Resources into the converter.
 Special thanks to the Kaiserreich Team who allowed us to use their gfx, especially their leader portraits.
+Special thanks to GFM and PDM who allow us to use their flags.
 
  - AND ALL THE OTHERS WHO GAVE THEIR INPUT ON THE FORUM -
