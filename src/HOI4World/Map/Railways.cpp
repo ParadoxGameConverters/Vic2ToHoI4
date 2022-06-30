@@ -472,7 +472,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
-	std::vector<PossiblePath> possible_paths;
+	std::map<std::string, std::vector<PossiblePath>> possible_paths_by_owner;
 	std::vector<PossiblePath> border_crossings;
 	for (const auto& vic2_province_path: vic2_province_paths)
 	{
@@ -523,7 +523,15 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			}
 			if (last_province_owner == neighbor_owner)
 			{
-				possible_paths.push_back(*possible_path);
+				auto possible_paths_owner = possible_paths_by_owner.find(last_province_owner);
+				if (possible_paths_owner == possible_paths_by_owner.end())
+				{
+					possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{ *possible_path }));
+				}
+				else
+				{
+					possible_paths_owner->second.push_back(*possible_path);
+				}
 			}
 			else
 			{
@@ -532,64 +540,81 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
-	std::set<int> initial_endpoints;
+	std::map<std::string, int> capitals;
 	for (const auto& state: hoi4_states.getStates() | std::views::values)
 	{
 		if (state.IsCapitalState())
 		{
 			if (const auto vp_location = state.getVPLocation(); vp_location)
 			{
-				initial_endpoints.insert(*vp_location);
+				capitals.emplace(state.getOwner(), *vp_location);
 			}
 		}
 	}
 
-	std::sort(possible_paths.begin(), possible_paths.end());
-	std::ranges::reverse(possible_paths);
-
-	// todo: modify this to be shortest path to one of the capitals, not shortest next connection
 	std::vector<PossiblePath> loop_paths;
-	std::set<int> endpoints;
 	std::vector<PossiblePath> spanning_paths;
-	while (!possible_paths.empty())
+	for (const auto& [owner, capital]: capitals)
 	{
-		bool added_railways;
-		do
+		auto possible_paths_itr = possible_paths_by_owner.find(owner);
+		if (possible_paths_itr == possible_paths_by_owner.end())
 		{
-			added_railways = false;
-			std::vector<PossiblePath> unused_paths;
-			for (const auto& path: possible_paths)
+			Log(LogLevel::Warning) << "No possible paths for " << owner;
+			continue;
+		}
+
+		auto possible_paths = possible_paths_itr->second;
+
+		struct point
+		{
+			int province;
+			double cost;
+			PossiblePath in_connection;
+
+			[[nodiscard]] bool operator<(const point& rhs) const { return cost > rhs.cost; }
+		};
+
+		point capital_point{.province = capital, .cost = 0.0, .in_connection = PossiblePath(capital)};
+		std::priority_queue<point> points_to_try;
+		points_to_try.push(capital_point);
+
+		std::set<int> really_done_points;
+		while (!points_to_try.empty())
+		{
+			auto point_to_try = points_to_try.top();
+			points_to_try.pop();
+			if (really_done_points.contains(point_to_try.province))
 			{
-				const auto start_province = path.GetFirstProvince();
-				const auto end_province = path.GetLastProvince();
-				if (endpoints.contains(start_province) && endpoints.contains(end_province))
+				continue;
+			}
+
+			if (point_to_try.in_connection.GetProvinces().size() > 1)
+			{
+				spanning_paths.push_back(point_to_try.in_connection);
+			}
+			really_done_points.insert(point_to_try.province);
+			for (const auto& possible_path: possible_paths)
+			{
+				if (possible_path.GetFirstProvince() == point_to_try.province &&
+					 !really_done_points.contains(possible_path.GetLastProvince()))
 				{
-					loop_paths.push_back(path);
+					point new_point = {.province = possible_path.GetLastProvince(),
+						 .cost = point_to_try.cost + possible_path.GetCost(),
+						 .in_connection = possible_path};
+					points_to_try.emplace(new_point);
 				}
-				else if (endpoints.contains(start_province) || endpoints.contains(end_province) ||
-							initial_endpoints.contains(start_province) || initial_endpoints.contains(end_province))
+				else if (possible_path.GetLastProvince() == point_to_try.province &&
+							!really_done_points.contains(possible_path.GetFirstProvince()))
 				{
-					spanning_paths.push_back(path);
-					endpoints.insert(path.GetFirstProvince());
-					endpoints.insert(path.GetLastProvince());
-					added_railways = true;
-				}
-				else
-				{
-					unused_paths.push_back(path);
+					point new_point = {.province = possible_path.GetFirstProvince(),
+						 .cost = point_to_try.cost + possible_path.GetCost(),
+						 .in_connection = possible_path};
+					points_to_try.emplace(new_point);
 				}
 			}
-			possible_paths = unused_paths;
-		} while (added_railways);
-
-		if (!possible_paths.empty())
-		{
-			const auto initial_path = possible_paths.begin();
-			spanning_paths.push_back(*initial_path);
-			endpoints.insert(initial_path->GetFirstProvince());
-			endpoints.insert(initial_path->GetLastProvince());
-			possible_paths.erase(possible_paths.begin());
 		}
+
+		// todo: handle points disconnected from capital
 	}
 
 	std::vector<PossiblePath> extra_paths;
@@ -597,7 +622,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	{
 		extra_paths.push_back(path);
 	}
-	for (const auto& path : loop_paths)
+	for (const auto& path: loop_paths)
 	{
 		extra_paths.push_back(path);
 	}
@@ -650,16 +675,18 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
-	// todo: simplify paths by removing points that only have two connecting paths and combining the paths into one, though maybe not in cases where it become too long. Certainly not if it was a port or VP
-	// todo: remove parallel paths that result, maybe
-	// todo: remove some single-point destinations to make the map more sparse
+	// todo: simplify paths by removing points that only have two connecting paths and combining the paths into one,
+	// though maybe not in cases where it become too long. Certainly not if it was a port or VP todo: remove parallel
+	// paths that result, maybe todo: remove some single-point destinations to make the map more sparse
 
 	for (const auto& path: spanning_paths)
 	{
 		Railway railway(path.GetLevel(), path.GetProvinces());
 		railways_.push_back(railway);
-		railway_endpoints_ = endpoints;
+		railway_endpoints_.insert(path.GetFirstProvince());
+		railway_endpoints_.insert(path.GetLastProvince());
 	}
 }
+
 
 // todo: code cleanup, it's ugly as can be right now
