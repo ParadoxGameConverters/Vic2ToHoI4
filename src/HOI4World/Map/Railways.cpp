@@ -614,6 +614,24 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			}
 		}
 
+		std::vector<PossiblePath> remaining_possible_paths;
+		for (auto& path: possible_paths)
+		{
+			if (really_done_points.contains(path.GetFirstProvince()) && really_done_points.contains(path.GetLastProvince()))
+			{
+				loop_paths.push_back(path);
+			}
+			else
+			{
+				remaining_possible_paths.push_back(path);
+			}
+		}
+		possible_paths = remaining_possible_paths;
+		if (!possible_paths.empty())
+		{
+			Log(LogLevel::Warning) << owner << " had leftover railways.";
+		}
+
 		// todo: handle points disconnected from capital
 	}
 
