@@ -216,7 +216,8 @@ std::optional<int> getBestHoI4ProvinceNumber(int Vic2ProvinceNum,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const HoI4::ImpassableProvinces& impassableProvinces,
 	 const std::map<int, HoI4::Province>& hoi4Provinces,
-	 const std::set<int>& navalBaseLocations)
+	 const std::set<int>& navalBaseLocations,
+	 const std::set<int>& state_capitals)
 {
 	const auto& HoI4ProvinceNumbers = provinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNum);
 	if (HoI4ProvinceNumbers.empty())
@@ -225,28 +226,31 @@ std::optional<int> getBestHoI4ProvinceNumber(int Vic2ProvinceNum,
 	}
 
 	// prefer naval bases
-	for (const auto provinceNumber: HoI4ProvinceNumbers)
+	if (!state_capitals.contains((Vic2ProvinceNum)))
 	{
-		if (!navalBaseLocations.contains(provinceNumber))
+		for (const auto provinceNumber: HoI4ProvinceNumbers)
 		{
-			continue;
-		}
+			if (!navalBaseLocations.contains(provinceNumber))
+			{
+				continue;
+			}
 
-		const auto province = hoi4Provinces.find(provinceNumber);
-		if (province == hoi4Provinces.end())
-		{
-			continue;
-		}
-		if (!province->second.isLandProvince())
-		{
-			continue;
-		}
-		if (impassableProvinces.isProvinceImpassable(provinceNumber))
-		{
-			continue;
-		}
+			const auto province = hoi4Provinces.find(provinceNumber);
+			if (province == hoi4Provinces.end())
+			{
+				continue;
+			}
+			if (!province->second.isLandProvince())
+			{
+				continue;
+			}
+			if (impassableProvinces.isProvinceImpassable(provinceNumber))
+			{
+				continue;
+			}
 
-		return provinceNumber;
+			return provinceNumber;
+		}
 	}
 
 	// find an appropriate province in priority of the mapping
@@ -459,6 +463,14 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	Log(LogLevel::Info) << "\tDetermining railways";
 
 	const auto valid_vic2_province_numbers = FindValidVic2ProvinceNumbers(vic2_states);
+	std::set<int> vic2_state_capitals;
+	for (const auto& state: vic2_states)
+	{
+		if (auto state_capital = state.get().getCapitalProvince(); state_capital)
+		{
+			vic2_state_capitals.insert(*state_capital);
+		}
+	}
 	const auto vic2_province_paths =
 		 determineVic2PossiblePaths(valid_vic2_province_numbers, vic2_provinces, vic2_map_data);
 
@@ -486,12 +498,14 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			 province_mapper,
 			 impassable_provinces,
 			 hoi4_provinces,
-			 naval_base_locations);
+			 naval_base_locations,
+			 vic2_state_capitals);
 		const auto hoi4_end_province_number = getBestHoI4ProvinceNumber(vic2_province_path[vic2_province_path.size() - 1],
 			 province_mapper,
 			 impassable_provinces,
 			 hoi4_provinces,
-			 naval_base_locations);
+			 naval_base_locations,
+			 vic2_state_capitals);
 		if (!HoI4ProvinceNumbersAreValid(hoi4_start_province_number, hoi4_end_province_number))
 		{
 			continue;
@@ -526,7 +540,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 				auto possible_paths_owner = possible_paths_by_owner.find(last_province_owner);
 				if (possible_paths_owner == possible_paths_by_owner.end())
 				{
-					possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{ *possible_path }));
+					possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{*possible_path}));
 				}
 				else
 				{
@@ -538,6 +552,11 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 				border_crossings.push_back(*possible_path);
 			}
 		}
+	}
+
+	for (const auto& state: hoi4_states.getStates() | std::views::values)
+	{
+		const auto possible_naval_location = state.getMainNavalLocation();
 	}
 
 	std::map<std::string, int> capitals;
@@ -617,7 +636,8 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		std::vector<PossiblePath> remaining_possible_paths;
 		for (auto& path: possible_paths)
 		{
-			if (really_done_points.contains(path.GetFirstProvince()) && really_done_points.contains(path.GetLastProvince()))
+			if (really_done_points.contains(path.GetFirstProvince()) &&
+				 really_done_points.contains(path.GetLastProvince()))
 			{
 				loop_paths.push_back(path);
 			}
