@@ -437,6 +437,56 @@ std::optional<HoI4::PossiblePath> FindPath(int startProvince,
 	return possibleRailwayPaths.top();
 }
 
+
+int GetBestStartingPoint(int capital,
+	 const std::vector<HoI4::PossiblePath>& possible_paths,
+	 const std::map<int, HoI4::State>& states)
+{
+	// record possible endpoints
+	std::set<int> possible_endpoints;
+	for (const auto& possible_path: possible_paths)
+	{
+		possible_endpoints.insert(possible_path.GetFirstProvince());
+		possible_endpoints.insert(possible_path.GetLastProvince());
+	}
+
+	// capital has top priority
+	if (possible_endpoints.contains(capital))
+	{
+		return capital;
+	}
+
+	// return highest value vp
+	int highest_vp_value = -1;
+	std::optional<int> best_vp_location;
+	for (const auto& state: states | std::views::values)
+	{
+		const auto vp_location = state.getVPLocation();
+		if (!vp_location)
+		{
+			continue;
+		}
+		if (!possible_endpoints.contains(*vp_location))
+		{
+			continue;
+		}
+
+		const int vp_value = state.getVpValue();
+		if (vp_value > highest_vp_value)
+		{
+			highest_vp_value = vp_value;
+			best_vp_location = vp_location;
+		}
+	}
+	if (best_vp_location)
+	{
+		return *best_vp_location;
+	}
+
+	// return just any endpoint
+	return *possible_endpoints.begin();
+}
+
 } // namespace
 
 
@@ -556,34 +606,34 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 
 		const auto hoi4_alternate_start_province_number = getBestHoI4ProvinceNumber(vic2_start_province_number,
-			province_mapper,
-			impassable_provinces,
-			hoi4_provinces,
-			naval_base_locations,
-			{});
+			 province_mapper,
+			 impassable_provinces,
+			 hoi4_provinces,
+			 naval_base_locations,
+			 {});
 		if (hoi4_alternate_start_province_number != hoi4_start_province_number)
 		{
 			if (auto possible_path = FindPath(*hoi4_start_province_number,
-				*hoi4_alternate_start_province_number,
-				vic2_province_path,
-				province_mapper,
-				hoi4_map_data,
-				hoi4_province_definitions,
-				impassable_provinces,
-				provinces_to_owners_map);
-				possible_path)
+					  *hoi4_alternate_start_province_number,
+					  vic2_province_path,
+					  province_mapper,
+					  hoi4_map_data,
+					  hoi4_province_definitions,
+					  impassable_provinces,
+					  provinces_to_owners_map);
+				 possible_path)
 			{
 				possible_path->SetLevel(railway_level);
 
 				std::string last_province_owner;
 				if (const auto& owner = provinces_to_owners_map.find(*hoi4_start_province_number);
-					owner != provinces_to_owners_map.end())
+					 owner != provinces_to_owners_map.end())
 				{
 					last_province_owner = owner->second;
 				}
 				std::string neighbor_owner;
 				if (const auto& owner = provinces_to_owners_map.find(*hoi4_alternate_start_province_number);
-					owner != provinces_to_owners_map.end())
+					 owner != provinces_to_owners_map.end())
 				{
 					neighbor_owner = owner->second;
 				}
@@ -592,7 +642,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 					auto possible_paths_owner = possible_paths_by_owner.find(last_province_owner);
 					if (possible_paths_owner == possible_paths_by_owner.end())
 					{
-						possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{ *possible_path }));
+						possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{*possible_path}));
 					}
 					else
 					{
@@ -607,34 +657,34 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 
 		const auto hoi4_alternate_end_province_number = getBestHoI4ProvinceNumber(vic2_end_province_number,
-			province_mapper,
-			impassable_provinces,
-			hoi4_provinces,
-			naval_base_locations,
-			{});
+			 province_mapper,
+			 impassable_provinces,
+			 hoi4_provinces,
+			 naval_base_locations,
+			 {});
 		if (hoi4_alternate_end_province_number != hoi4_end_province_number)
 		{
 			if (auto possible_path = FindPath(*hoi4_end_province_number,
-				*hoi4_alternate_end_province_number,
-				vic2_province_path,
-				province_mapper,
-				hoi4_map_data,
-				hoi4_province_definitions,
-				impassable_provinces,
-				provinces_to_owners_map);
-				possible_path)
+					  *hoi4_alternate_end_province_number,
+					  vic2_province_path,
+					  province_mapper,
+					  hoi4_map_data,
+					  hoi4_province_definitions,
+					  impassable_provinces,
+					  provinces_to_owners_map);
+				 possible_path)
 			{
 				possible_path->SetLevel(railway_level);
 
 				std::string last_province_owner;
 				if (const auto& owner = provinces_to_owners_map.find(*hoi4_end_province_number);
-					owner != provinces_to_owners_map.end())
+					 owner != provinces_to_owners_map.end())
 				{
 					last_province_owner = owner->second;
 				}
 				std::string neighbor_owner;
 				if (const auto& owner = provinces_to_owners_map.find(*hoi4_alternate_end_province_number);
-					owner != provinces_to_owners_map.end())
+					 owner != provinces_to_owners_map.end())
 				{
 					neighbor_owner = owner->second;
 				}
@@ -643,7 +693,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 					auto possible_paths_owner = possible_paths_by_owner.find(last_province_owner);
 					if (possible_paths_owner == possible_paths_by_owner.end())
 					{
-						possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{ *possible_path }));
+						possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{*possible_path}));
 					}
 					else
 					{
@@ -697,66 +747,65 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			[[nodiscard]] bool operator<(const point& rhs) const { return cost > rhs.cost; }
 		};
 
-		point capital_point{.province = capital, .cost = 0.0, .in_connection = PossiblePath(capital)};
-		std::priority_queue<point> points_to_try;
-		points_to_try.push(capital_point);
-
-		std::set<int> really_done_points;
-		while (!points_to_try.empty())
+		while (!possible_paths.empty())
 		{
-			auto point_to_try = points_to_try.top();
-			points_to_try.pop();
-			if (really_done_points.contains(point_to_try.province))
-			{
-				continue;
-			}
+			int starting_point = GetBestStartingPoint(capital, possible_paths, hoi4_states.getStates());
 
-			if (point_to_try.in_connection.GetProvinces().size() > 1)
+			point capital_point{.province = starting_point, .cost = 0.0, .in_connection = PossiblePath(starting_point)};
+			std::priority_queue<point> points_to_try;
+			points_to_try.push(capital_point);
+
+			std::set<int> really_done_points;
+			while (!points_to_try.empty())
 			{
-				spanning_paths.push_back(point_to_try.in_connection);
-			}
-			really_done_points.insert(point_to_try.province);
-			for (const auto& possible_path: possible_paths)
-			{
-				if (possible_path.GetFirstProvince() == point_to_try.province &&
-					 !really_done_points.contains(possible_path.GetLastProvince()))
+				auto point_to_try = points_to_try.top();
+				points_to_try.pop();
+				if (really_done_points.contains(point_to_try.province))
 				{
-					point new_point = {.province = possible_path.GetLastProvince(),
-						 .cost = point_to_try.cost + possible_path.GetCost(),
-						 .in_connection = possible_path};
-					points_to_try.emplace(new_point);
+					continue;
 				}
-				else if (possible_path.GetLastProvince() == point_to_try.province &&
-							!really_done_points.contains(possible_path.GetFirstProvince()))
+
+				if (point_to_try.in_connection.GetProvinces().size() > 1)
 				{
-					point new_point = {.province = possible_path.GetFirstProvince(),
-						 .cost = point_to_try.cost + possible_path.GetCost(),
-						 .in_connection = possible_path};
-					points_to_try.emplace(new_point);
+					spanning_paths.push_back(point_to_try.in_connection);
+				}
+				really_done_points.insert(point_to_try.province);
+				for (const auto& possible_path: possible_paths)
+				{
+					if (possible_path.GetFirstProvince() == point_to_try.province &&
+						 !really_done_points.contains(possible_path.GetLastProvince()))
+					{
+						point new_point = {.province = possible_path.GetLastProvince(),
+							 .cost = point_to_try.cost + possible_path.GetCost(),
+							 .in_connection = possible_path};
+						points_to_try.emplace(new_point);
+					}
+					else if (possible_path.GetLastProvince() == point_to_try.province &&
+								!really_done_points.contains(possible_path.GetFirstProvince()))
+					{
+						point new_point = {.province = possible_path.GetFirstProvince(),
+							 .cost = point_to_try.cost + possible_path.GetCost(),
+							 .in_connection = possible_path};
+						points_to_try.emplace(new_point);
+					}
 				}
 			}
-		}
 
-		std::vector<PossiblePath> remaining_possible_paths;
-		for (auto& path: possible_paths)
-		{
-			if (really_done_points.contains(path.GetFirstProvince()) &&
-				 really_done_points.contains(path.GetLastProvince()))
+			std::vector<PossiblePath> remaining_possible_paths;
+			for (auto& path: possible_paths)
 			{
-				loop_paths.push_back(path);
+				if (really_done_points.contains(path.GetFirstProvince()) &&
+					 really_done_points.contains(path.GetLastProvince()))
+				{
+					loop_paths.push_back(path);
+				}
+				else
+				{
+					remaining_possible_paths.push_back(path);
+				}
 			}
-			else
-			{
-				remaining_possible_paths.push_back(path);
-			}
+			possible_paths = remaining_possible_paths;
 		}
-		possible_paths = remaining_possible_paths;
-		if (!possible_paths.empty())
-		{
-			Log(LogLevel::Warning) << owner << " had leftover railways.";
-		}
-
-		// todo: handle points disconnected from capital
 	}
 
 	std::vector<PossiblePath> extra_paths;
@@ -817,9 +866,14 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
+	// todo: simplify overlapping railways
+
 	// todo: simplify paths by removing points that only have two connecting paths and combining the paths into one,
-	// though maybe not in cases where it become too long. Certainly not if it was a port or VP todo: remove parallel
-	// paths that result, maybe todo: remove some single-point destinations to make the map more sparse
+	// though maybe not in cases where it become too long. Certainly not if it was a port or VP
+
+	// todo: remove parallel paths that result, maybe
+
+	// todo: remove some single-point destinations to make the map more sparse
 
 	for (const auto& path: spanning_paths)
 	{
