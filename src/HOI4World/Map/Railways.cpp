@@ -494,13 +494,15 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			continue;
 		}
 
-		const auto hoi4_start_province_number = getBestHoI4ProvinceNumber(vic2_province_path[0],
+		int vic2_start_province_number = vic2_province_path[0];
+		const auto hoi4_start_province_number = getBestHoI4ProvinceNumber(vic2_start_province_number,
 			 province_mapper,
 			 impassable_provinces,
 			 hoi4_provinces,
 			 naval_base_locations,
 			 vic2_state_capitals);
-		const auto hoi4_end_province_number = getBestHoI4ProvinceNumber(vic2_province_path[vic2_province_path.size() - 1],
+		int vic2_end_province_number = vic2_province_path[vic2_province_path.size() - 1];
+		const auto hoi4_end_province_number = getBestHoI4ProvinceNumber(vic2_end_province_number,
 			 province_mapper,
 			 impassable_provinces,
 			 hoi4_provinces,
@@ -550,6 +552,108 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			else
 			{
 				border_crossings.push_back(*possible_path);
+			}
+		}
+
+		const auto hoi4_alternate_start_province_number = getBestHoI4ProvinceNumber(vic2_start_province_number,
+			province_mapper,
+			impassable_provinces,
+			hoi4_provinces,
+			naval_base_locations,
+			{});
+		if (hoi4_alternate_start_province_number != hoi4_start_province_number)
+		{
+			if (auto possible_path = FindPath(*hoi4_start_province_number,
+				*hoi4_alternate_start_province_number,
+				vic2_province_path,
+				province_mapper,
+				hoi4_map_data,
+				hoi4_province_definitions,
+				impassable_provinces,
+				provinces_to_owners_map);
+				possible_path)
+			{
+				possible_path->SetLevel(railway_level);
+
+				std::string last_province_owner;
+				if (const auto& owner = provinces_to_owners_map.find(*hoi4_start_province_number);
+					owner != provinces_to_owners_map.end())
+				{
+					last_province_owner = owner->second;
+				}
+				std::string neighbor_owner;
+				if (const auto& owner = provinces_to_owners_map.find(*hoi4_alternate_start_province_number);
+					owner != provinces_to_owners_map.end())
+				{
+					neighbor_owner = owner->second;
+				}
+				if (last_province_owner == neighbor_owner)
+				{
+					auto possible_paths_owner = possible_paths_by_owner.find(last_province_owner);
+					if (possible_paths_owner == possible_paths_by_owner.end())
+					{
+						possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{ *possible_path }));
+					}
+					else
+					{
+						possible_paths_owner->second.push_back(*possible_path);
+					}
+				}
+				else
+				{
+					border_crossings.push_back(*possible_path);
+				}
+			}
+		}
+
+		const auto hoi4_alternate_end_province_number = getBestHoI4ProvinceNumber(vic2_end_province_number,
+			province_mapper,
+			impassable_provinces,
+			hoi4_provinces,
+			naval_base_locations,
+			{});
+		if (hoi4_alternate_end_province_number != hoi4_end_province_number)
+		{
+			if (auto possible_path = FindPath(*hoi4_end_province_number,
+				*hoi4_alternate_end_province_number,
+				vic2_province_path,
+				province_mapper,
+				hoi4_map_data,
+				hoi4_province_definitions,
+				impassable_provinces,
+				provinces_to_owners_map);
+				possible_path)
+			{
+				possible_path->SetLevel(railway_level);
+
+				std::string last_province_owner;
+				if (const auto& owner = provinces_to_owners_map.find(*hoi4_end_province_number);
+					owner != provinces_to_owners_map.end())
+				{
+					last_province_owner = owner->second;
+				}
+				std::string neighbor_owner;
+				if (const auto& owner = provinces_to_owners_map.find(*hoi4_alternate_end_province_number);
+					owner != provinces_to_owners_map.end())
+				{
+					neighbor_owner = owner->second;
+				}
+				if (last_province_owner == neighbor_owner)
+				{
+					auto possible_paths_owner = possible_paths_by_owner.find(last_province_owner);
+					if (possible_paths_owner == possible_paths_by_owner.end())
+					{
+						possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{ *possible_path }));
+					}
+					else
+					{
+						possible_paths_owner->second.push_back(*possible_path);
+					}
+				}
+				else
+				{
+					border_crossings.push_back(*possible_path);
+				}
 			}
 		}
 	}
