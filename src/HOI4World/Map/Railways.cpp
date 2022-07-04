@@ -498,7 +498,7 @@ struct TreePath
 	[[nodiscard]] bool operator<(const TreePath& rhs) const { return cost > rhs.cost; }
 };
 
-
+#pragma optimize("",off)
 HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
 	 const std::vector<std::reference_wrapper<const Vic2::State>>& vic2_states,
 	 const Maps::MapData& vic2_map_data,
@@ -866,7 +866,59 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
-	// todo: simplify overlapping railways
+	std::map<int, std::vector<PossiblePath>> endpoints_to_paths;
+	for (const auto& path : spanning_paths)
+	{
+		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path}); !success)
+		{
+			iterator->second.push_back(path);
+		}
+		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{ path }); !success)
+		{
+			iterator->second.push_back(path);
+		}
+	}
+
+	std::vector<std::pair<PossiblePath, std::vector<PossiblePath>>> overlapping_paths;
+	for (auto& path : spanning_paths)
+	{
+		const auto provinces = path.GetProvinces();
+		for (unsigned int i = 0; i < provinces.size(); ++i)
+		{
+			if (provinces[i] == path.GetFirstProvince())
+			{
+				continue;
+			}
+			if (provinces[i] == path.GetLastProvince())
+			{
+				continue;
+			}
+
+			if (const auto& endpoint_to_path = endpoints_to_paths.find(provinces[i]); endpoint_to_path != endpoints_to_paths.end())
+			{
+				if (provinces[0] == endpoint_to_path->second[0].GetFirstProvince() || provinces[0] == endpoint_to_path->second[0].GetLastProvince())
+				{
+					std::vector<int> new_provinces;
+					for (unsigned int j = i; j < provinces.size(); ++j)
+					{
+						new_provinces.push_back(provinces[j]);
+					}
+					path.ReplaceProvinces(new_provinces);
+					break;
+				}
+				if (provinces[provinces.size() - 1] == endpoint_to_path->second[0].GetFirstProvince() || provinces[provinces.size() - 1] == endpoint_to_path->second[0].GetLastProvince())
+				{
+					std::vector<int> new_provinces;
+					for (unsigned int j = 0; j <= i; ++j)
+					{
+						new_provinces.push_back(provinces[j]);
+					}
+					path.ReplaceProvinces(new_provinces);
+					break;
+				}
+			}
+		}
+	}
 
 	// todo: simplify paths by removing points that only have two connecting paths and combining the paths into one,
 	// though maybe not in cases where it become too long. Certainly not if it was a port or VP
@@ -883,6 +935,6 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		railway_endpoints_.insert(path.GetLastProvince());
 	}
 }
-
+#pragma optimize("",on)
 
 // todo: code cleanup, it's ugly as can be right now

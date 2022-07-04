@@ -20,6 +20,7 @@ class PossiblePath
 		provinces_.push_back(province);
 		cost_ += additionalCost;
 	}
+	void ReplaceProvinces(std::vector<int> new_provinces) { provinces_ = std::move(new_provinces); }
 	void SetLevel(int level) { level_ = level; }
 
 	// higher is prioritized where we want lower to be, so reverse the meaning of less than
