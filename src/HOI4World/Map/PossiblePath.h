@@ -31,6 +31,8 @@ class PossiblePath
 	[[nodiscard]] int GetLevel() const { return level_; }
 	[[nodiscard]] double GetCost() const { return cost_; }
 
+	bool operator==(const PossiblePath&) const = default;
+
   private:
 	std::vector<int> provinces_;
 	double cost_ = 0;

@@ -15,7 +15,7 @@ using HoI4::Railway;
 namespace
 {
 
-constexpr float loop_shortcut_requirement = 3.0F;
+constexpr double loop_shortcut_requirement = 3.0;
 
 
 std::set<int> FindValidVic2ProvinceNumbers(const std::vector<std::reference_wrapper<const Vic2::State>>& states)
@@ -98,7 +98,7 @@ std::set<std::vector<int>> determineVic2PossiblePaths(const std::set<int>& valid
 		}
 
 		std::vector<int> bestPotentialNewPath;
-		long potentialNewPathScore = 0;
+		int32_t potentialNewPathScore = 0;
 		for (const auto& potentialNewVic2PossiblePath: potentialNewVic2PossiblePaths)
 		{
 			if (potentialNewVic2PossiblePath.size() == 2)
@@ -490,6 +490,12 @@ int GetBestStartingPoint(int capital,
 	return *possible_endpoints.begin();
 }
 
+
+bool EndpointIsRemovable(int endpoint, const std::set<int>& naval_locations, const std::set<int>& vp_locations)
+{
+	return !naval_locations.contains(endpoint) && !vp_locations.contains(endpoint);
+}
+
 } // namespace
 
 
@@ -501,7 +507,7 @@ struct TreePath
 	[[nodiscard]] bool operator<(const TreePath& rhs) const { return cost > rhs.cost; }
 };
 
-#pragma optimize("",off)
+#pragma optimize("", off)
 HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
 	 const std::vector<std::reference_wrapper<const Vic2::State>>& vic2_states,
 	 const Maps::MapData& vic2_map_data,
@@ -711,9 +717,13 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
+	std::set<int> naval_locations;
 	for (const auto& state: hoi4_states.getStates() | std::views::values)
 	{
-		const auto possible_naval_location = state.getMainNavalLocation();
+		if (const auto possible_naval_location = state.getMainNavalLocation(); possible_naval_location)
+		{
+			naval_locations.insert(*possible_naval_location);
+		}
 	}
 
 	std::map<std::string, int> capitals;
@@ -870,19 +880,19 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	}
 
 	std::map<int, std::vector<PossiblePath>> endpoints_to_paths;
-	for (const auto& path : spanning_paths)
+	for (const auto& path: spanning_paths)
 	{
 		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path}); !success)
 		{
 			iterator->second.push_back(path);
 		}
-		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{ path }); !success)
+		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path}); !success)
 		{
 			iterator->second.push_back(path);
 		}
 	}
 
-	for (auto& path : spanning_paths)
+	for (auto& path: spanning_paths)
 	{
 		const auto provinces = path.GetProvinces();
 		for (unsigned int i = 0; i < provinces.size(); ++i)
@@ -896,9 +906,11 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 				continue;
 			}
 
-			if (const auto& endpoint_to_path = endpoints_to_paths.find(provinces[i]); endpoint_to_path != endpoints_to_paths.end())
+			if (const auto& endpoint_to_path = endpoints_to_paths.find(provinces[i]);
+				 endpoint_to_path != endpoints_to_paths.end())
 			{
-				if (provinces[0] == endpoint_to_path->second[0].GetFirstProvince() || provinces[0] == endpoint_to_path->second[0].GetLastProvince())
+				if (provinces[0] == endpoint_to_path->second[0].GetFirstProvince() ||
+					 provinces[0] == endpoint_to_path->second[0].GetLastProvince())
 				{
 					std::vector<int> new_provinces;
 					for (unsigned int j = i; j < provinces.size(); ++j)
@@ -908,7 +920,8 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 					path.ReplaceProvinces(new_provinces);
 					break;
 				}
-				if (provinces[provinces.size() - 1] == endpoint_to_path->second[0].GetFirstProvince() || provinces[provinces.size() - 1] == endpoint_to_path->second[0].GetLastProvince())
+				if (provinces[provinces.size() - 1] == endpoint_to_path->second[0].GetFirstProvince() ||
+					 provinces[provinces.size() - 1] == endpoint_to_path->second[0].GetLastProvince())
 				{
 					std::vector<int> new_provinces;
 					for (unsigned int j = 0; j <= i; ++j)
@@ -922,14 +935,95 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
+	std::set<int> vp_locations;
+	for (const auto& state: hoi4_states.getStates() | std::views::values)
+	{
+		if (auto vp_location = state.getVPLocation(); vp_location)
+		{
+			vp_locations.insert(*vp_location);
+		}
+	}
+
+	bool paths_removed = false;
+	std::vector<PossiblePath> trimmed_paths = spanning_paths;
+	do
+	{
+		paths_removed = false;
+
+		std::map<int, std::vector<PossiblePath>> endpoints_to_paths;
+		for (const auto& path: trimmed_paths)
+		{
+			if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path});
+				 !success)
+			{
+				bool path_already_stored = false;
+				for (const auto& stored_path: iterator->second)
+				{
+					if (stored_path == path)
+					{
+						path_already_stored = true;
+						break;
+					}
+				}
+				if (!path_already_stored)
+				{
+					iterator->second.push_back(path);
+				}
+			}
+			if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path}); !success)
+			{
+				bool path_already_stored = false;
+				for (const auto& stored_path: iterator->second)
+				{
+					if (stored_path == path)
+					{
+						path_already_stored = true;
+						break;
+					}
+				}
+				if (!path_already_stored)
+				{
+					iterator->second.push_back(path);
+				}
+			}
+		}
+
+		trimmed_paths.clear();
+		for (const auto& [endpoint, paths]: endpoints_to_paths)
+		{
+			if (paths.size() == 1 && EndpointIsRemovable(endpoint, naval_locations, vp_locations))
+			{
+				paths_removed = true;
+				continue;
+			}
+			for (const auto& path: paths)
+			{
+				if (path.GetFirstProvince() == endpoint)
+				{
+					const auto connecting_paths = endpoints_to_paths.find(path.GetLastProvince());
+					if (connecting_paths == endpoints_to_paths.end())
+					{
+						paths_removed = true;
+						continue;
+					}
+					if (connecting_paths->second.size() == 1 &&
+						 EndpointIsRemovable(path.GetLastProvince(), naval_locations, vp_locations))
+					{
+						paths_removed = true;
+						continue;
+					}
+					trimmed_paths.push_back(path);
+				}
+			}
+		}
+	} while (paths_removed);
+
 	// todo: simplify paths by removing points that only have two connecting paths and combining the paths into one,
 	// though maybe not in cases where it become too long. Certainly not if it was a port or VP
 
 	// todo: remove parallel paths that result, maybe
 
-	// todo: remove some single-point destinations to make the map more sparse
-
-	for (const auto& path: spanning_paths)
+	for (const auto& path: trimmed_paths)
 	{
 		Railway railway(path.GetLevel(), path.GetProvinces());
 		railways_.push_back(railway);
@@ -937,6 +1031,6 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		railway_endpoints_.insert(path.GetLastProvince());
 	}
 }
-#pragma optimize("",on)
+#pragma optimize("", on)
 
 // todo: code cleanup, it's ugly as can be right now
