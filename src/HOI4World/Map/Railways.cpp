@@ -1018,10 +1018,107 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	} while (paths_removed);
 
-	// todo: simplify paths by removing points that only have two connecting paths and combining the paths into one,
-	// though maybe not in cases where it become too long. Certainly not if it was a port or VP
+	endpoints_to_paths.clear();
+	for (const auto& path: trimmed_paths)
+	{
+		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path}); !success)
+		{
+			bool path_already_stored = false;
+			for (const auto& stored_path: iterator->second)
+			{
+				if (stored_path == path)
+				{
+					path_already_stored = true;
+					break;
+				}
+			}
+			if (!path_already_stored)
+			{
+				iterator->second.push_back(path);
+			}
+		}
+		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path}); !success)
+		{
+			bool path_already_stored = false;
+			for (const auto& stored_path: iterator->second)
+			{
+				if (stored_path == path)
+				{
+					path_already_stored = true;
+					break;
+				}
+			}
+			if (!path_already_stored)
+			{
+				iterator->second.push_back(path);
+			}
+		}
+	}
 
-	// todo: remove parallel paths that result, maybe
+	trimmed_paths.clear();
+	std::set<int> removed_endpoints;
+	for (const auto& [endpoint, paths]: endpoints_to_paths)
+	{
+		if (paths.size() == 2 && EndpointIsRemovable(endpoint, naval_locations, vp_locations) &&
+			 paths[0].GetProvinces().size() + paths[1].GetProvinces().size() < 11)
+		{
+			removed_endpoints.insert(endpoint);
+			PossiblePath merged_path(endpoint);
+
+
+			std::vector<int> merged_provinces;
+			if (paths[0].GetFirstProvince() == endpoint)
+			{
+				for (auto province: paths[0].GetProvinces() | std::views::reverse)
+				{
+					merged_provinces.push_back(province);
+				}
+			}
+			else
+			{
+				for (auto province: paths[0].GetProvinces())
+				{
+					merged_provinces.push_back(province);
+				}
+			}
+			merged_provinces.pop_back();
+			if (paths[1].GetFirstProvince() == endpoint)
+			{
+				for (auto province: paths[1].GetProvinces())
+				{
+					merged_provinces.push_back(province);
+				}
+			}
+			else
+			{
+				for (auto province: paths[1].GetProvinces() | std::views::reverse)
+				{
+					merged_provinces.push_back(province);
+				}
+			}
+			merged_path.ReplaceProvinces(merged_provinces);
+			merged_path.SetLevel(std::min(paths[0].GetLevel(), paths[1].GetLevel()));
+
+			trimmed_paths.push_back(merged_path);
+
+			continue;
+		}
+	}
+	for (const auto& [endpoint, paths]: endpoints_to_paths)
+	{
+		if (removed_endpoints.contains(endpoint))
+		{
+			continue;
+		}
+		for (const auto& path: paths)
+		{
+			if (endpoint == path.GetFirstProvince() && !removed_endpoints.contains(path.GetFirstProvince()) &&
+				 !removed_endpoints.contains(path.GetLastProvince()))
+			{
+				trimmed_paths.push_back(path);
+			}
+		}
+	}
 
 	for (const auto& path: trimmed_paths)
 	{
