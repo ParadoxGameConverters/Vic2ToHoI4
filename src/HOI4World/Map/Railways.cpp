@@ -15,6 +15,9 @@ using HoI4::Railway;
 namespace
 {
 
+constexpr float loop_shortcut_requirement = 3.0F;
+
+
 std::set<int> FindValidVic2ProvinceNumbers(const std::vector<std::reference_wrapper<const Vic2::State>>& states)
 {
 	std::set<int> valid_vic2_province_numbers;
@@ -860,7 +863,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			}
 		}
 
-		if (without_cost / 10.0 > extra_path.GetCost())
+		if (without_cost / loop_shortcut_requirement > extra_path.GetCost())
 		{
 			spanning_paths.push_back(extra_path);
 		}
@@ -879,7 +882,6 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
-	std::vector<std::pair<PossiblePath, std::vector<PossiblePath>>> overlapping_paths;
 	for (auto& path : spanning_paths)
 	{
 		const auto provinces = path.GetProvinces();
