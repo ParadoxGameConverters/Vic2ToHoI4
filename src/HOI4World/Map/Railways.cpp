@@ -124,13 +124,13 @@ int GetProvincePopulation(int province_num, const std::map<int, std::shared_ptr<
 
 
 std::vector<int> DetermineBestPotentialNewPath(const std::set<std::vector<int>>& potential_new_vic2_possible_paths,
-	const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
-	std::set<std::vector<int>>& vic2_possible_paths)
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
+	 std::set<std::vector<int>>& vic2_possible_paths)
 {
 	std::vector<int> best_potential_new_path;
 	int32_t potential_new_path_score = 0;
 
-	for (const auto& potential_new_vic2_possible_path : potential_new_vic2_possible_paths)
+	for (const auto& potential_new_vic2_possible_path: potential_new_vic2_possible_paths)
 	{
 		if (potential_new_vic2_possible_path.size() == 2)
 		{
@@ -174,7 +174,7 @@ std::set<std::vector<int>> DetermineVic2PossiblePaths(const std::set<int>& valid
 			 vic2_map_data);
 
 		const auto best_potential_new_path =
-			DetermineBestPotentialNewPath(potential_new_vic2_possible_paths, vic2_provinces, vic2_possible_paths);
+			 DetermineBestPotentialNewPath(potential_new_vic2_possible_paths, vic2_provinces, vic2_possible_paths);
 		if (!best_potential_new_path.empty())
 		{
 			auto reversedPath = best_potential_new_path;
@@ -190,11 +190,11 @@ std::set<std::vector<int>> DetermineVic2PossiblePaths(const std::set<int>& valid
 }
 
 
-std::shared_ptr<Vic2::Province> getValidVic2Province(int provinceNum,
-	 const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces)
+std::shared_ptr<Vic2::Province> GetValidVic2Province(int province_num,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces)
 {
-	const auto& itr = Vic2Provinces.find(provinceNum);
-	if (itr == Vic2Provinces.end())
+	const auto& itr = vic2_provinces.find(province_num);
+	if (itr == vic2_provinces.end())
 	{
 		return nullptr;
 	}
@@ -208,21 +208,21 @@ std::shared_ptr<Vic2::Province> getValidVic2Province(int provinceNum,
 }
 
 
-std::vector<std::shared_ptr<Vic2::Province>> getVic2ProvincesFromNumbers(const std::vector<int>& vic2PossiblePath,
-	 const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces)
+std::vector<std::shared_ptr<Vic2::Province>> GetVic2PathProvincesFromNumbers(const std::vector<int>& vic2_possible_path,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces)
 {
-	std::vector<std::shared_ptr<Vic2::Province>> vic2Provinces;
-	for (const auto& vic2ProvinceNumber: vic2PossiblePath)
+	std::vector<std::shared_ptr<Vic2::Province>> vic2_path_provinces;
+	for (const auto& vic2_province_number: vic2_possible_path)
 	{
-		const auto vic2Province = getValidVic2Province(vic2ProvinceNumber, Vic2Provinces);
-		if (vic2Province == nullptr)
+		const auto vic2_province = GetValidVic2Province(vic2_province_number, vic2_provinces);
+		if (vic2_province == nullptr)
 		{
 			continue;
 		}
-		vic2Provinces.push_back(vic2Province);
+		vic2_path_provinces.push_back(vic2_province);
 	}
 
-	return vic2Provinces;
+	return vic2_path_provinces;
 }
 
 
@@ -237,31 +237,31 @@ std::vector<std::shared_ptr<Vic2::Province>> getVic2ProvincesFromNumbers(const s
 // 4|0 0 1 1 2 2 3
 // 5|0 1 1 2 2 3 3
 // 6|0 1 2 2 3 3 3
-int getRailwayLevel(const std::vector<int>& vic2PossiblePath,
-	 const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces)
+int GetRailwayLevel(const std::vector<int>& vic2_possible_path,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces)
 {
-	const auto vic2Provinces = getVic2ProvincesFromNumbers(vic2PossiblePath, Vic2Provinces);
-	if (vic2Provinces.size() != vic2PossiblePath.size())
+	const auto vic2_path_provinces = GetVic2PathProvincesFromNumbers(vic2_possible_path, vic2_provinces);
+	if (vic2_path_provinces.size() != vic2_possible_path.size())
 	{
 		return 0;
 	}
 
-	std::vector<int> railLevels;
-	for (const auto& vic2Province: vic2Provinces)
+	std::vector<int> rail_levels;
+	for (const auto& vic2_province: vic2_path_provinces)
 	{
-		const auto railLevel = vic2Province->getRailLevel();
-		if (railLevel == 0)
+		const auto rail_level = vic2_province->getRailLevel();
+		if (rail_level == 0)
 		{
 			return 0;
 		}
-		railLevels.push_back(vic2Province->getRailLevel());
+		rail_levels.push_back(vic2_province->getRailLevel());
 	}
 
-	int totalRailLevel = std::accumulate(railLevels.begin(), railLevels.end(), 0);
-	totalRailLevel -= 2 * static_cast<int>(railLevels.size());
-	const int railLevel = totalRailLevel / static_cast<int>(railLevels.size());
+	int total_rail_level = std::accumulate(rail_levels.begin(), rail_levels.end(), 0);
+	total_rail_level -= 2 * static_cast<int>(rail_levels.size());
+	const int rail_level = total_rail_level / static_cast<int>(rail_levels.size());
 
-	return std::clamp(railLevel, 0, 3);
+	return std::clamp(rail_level, 0, 3);
 }
 
 
@@ -581,7 +581,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 	const auto vic2_province_paths =
-		DetermineVic2PossiblePaths(valid_vic2_province_numbers, vic2_provinces, vic2_map_data);
+		 DetermineVic2PossiblePaths(valid_vic2_province_numbers, vic2_provinces, vic2_map_data);
 
 	std::map<int, std::string> provinces_to_owners_map;
 	for (const auto& state: hoi4_states.getStates() | std::views::values)
@@ -597,7 +597,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	std::vector<PossiblePath> border_crossings;
 	for (const auto& vic2_province_path: vic2_province_paths)
 	{
-		const int railway_level = getRailwayLevel(vic2_province_path, vic2_provinces);
+		const int railway_level = GetRailwayLevel(vic2_province_path, vic2_provinces);
 		if (railway_level < 1)
 		{
 			continue;
