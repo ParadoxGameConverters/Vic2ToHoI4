@@ -348,65 +348,74 @@ constexpr int marsh_cost = 5;
 constexpr int jungle_cost = 8;
 constexpr int mountain_cost = 8;
 constexpr int unhandled_cost = 100;
-int getCostForTerrainType(const std::string& terrainType)
+int GetCostForTerrainType(const std::string& terrain_type)
 {
-	if (terrainType == "urban")
+	if (terrain_type == "urban")
 	{
 		return urban_cost;
 	}
-	if (terrainType == "plains")
+	if (terrain_type == "plains")
 	{
 		return plains_cost;
 	}
-	if (terrainType == "forest")
+	if (terrain_type == "forest")
 	{
 		return forest_cost;
 	}
-	if (terrainType == "hills")
+	if (terrain_type == "hills")
 	{
 		return hills_cost;
 	}
-	if (terrainType == "desert")
+	if (terrain_type == "desert")
 	{
 		return desert_cost;
 	}
-	if (terrainType == "marsh")
+	if (terrain_type == "marsh")
 	{
 		return marsh_cost;
 	}
-	if (terrainType == "jungle")
+	if (terrain_type == "jungle")
 	{
 		return jungle_cost;
 	}
-	if (terrainType == "mountain")
+	if (terrain_type == "mountain")
 	{
 		return mountain_cost;
 	}
 
-	Log(LogLevel::Warning) << "Unhandled terrain type " << terrainType << ". Please inform the converter team.";
+	Log(LogLevel::Warning) << "Unhandled terrain type " << terrain_type << ". Please inform the converter team.";
 	return unhandled_cost;
 }
 
 
-double getDistanceBetweenProvinces(int provinceOne, int provinceTwo, const Maps::MapData& HoI4MapData)
+std::optional<Maps::Point> GetCentermostPoint(int province, const Maps::MapData& hoi4_map_data)
 {
-	const auto possibleProvinceOnePoints = HoI4MapData.GetProvincePoints(provinceOne);
-	if (!possibleProvinceOnePoints)
+	const auto possible_province_points = hoi4_map_data.GetProvincePoints(province);
+	if (!possible_province_points)
+	{
+		return std::nullopt;
+	}
+	return possible_province_points->getCentermostPoint();
+}
+
+
+double GetDistanceBetweenProvinces(int province_one, int province_two, const Maps::MapData& hoi4_map_data)
+{
+	const auto province_one_centermost_point = GetCentermostPoint(province_one, hoi4_map_data);
+	if (!province_one_centermost_point)
 	{
 		return std::numeric_limits<double>::max();
 	}
-	const auto provinceOneCentermostPoint = possibleProvinceOnePoints->getCentermostPoint();
 
-	const auto possibleProvinceTwoPoints = HoI4MapData.GetProvincePoints(provinceTwo);
-	if (!possibleProvinceTwoPoints)
+	const auto province_two_centermost_point = GetCentermostPoint(province_two, hoi4_map_data);
+	if (!province_two_centermost_point)
 	{
 		return std::numeric_limits<double>::max();
 	}
-	const auto provinceTwoCentermostPoint = possibleProvinceTwoPoints->getCentermostPoint();
 
-	const int deltaX = provinceOneCentermostPoint.first - provinceTwoCentermostPoint.first;
-	const int deltaY = provinceOneCentermostPoint.second - provinceTwoCentermostPoint.second;
-	return std::sqrt(deltaX * deltaX + deltaY * deltaY);
+	const int delta_x = province_one_centermost_point->first - province_two_centermost_point->first;
+	const int delta_y = province_one_centermost_point->second - province_two_centermost_point->second;
+	return std::sqrt(delta_x * delta_x + delta_y * delta_y);
 }
 
 
@@ -416,81 +425,103 @@ double DeterminePathCost(const Maps::ProvinceDefinitions& hoi4_province_definiti
 	 const std::map<int, std::string>& provinces_to_owners_map,
 	 const Maps::MapData& hoi4_map_data)
 {
-	return getCostForTerrainType(hoi4_province_definitions.getTerrainType(neighbor_number)) *
-			 getDistanceBetweenProvinces(neighbor_number, last_province, hoi4_map_data);
+	return GetCostForTerrainType(hoi4_province_definitions.getTerrainType(neighbor_number)) *
+			 GetDistanceBetweenProvinces(neighbor_number, last_province, hoi4_map_data);
 }
 
 
-std::optional<HoI4::PossiblePath> FindPath(int startProvince,
-	 int endProvince,
-	 const std::vector<int>& vic2Provinces,
-	 const Mappers::ProvinceMapper& provinceMapper,
-	 const Maps::MapData& HoI4MapData,
-	 const Maps::ProvinceDefinitions& HoI4ProvinceDefinitions,
-	 const HoI4::ImpassableProvinces& impassableProvinces,
-	 const std::map<int, std::string>& provinces_to_owners_map)
+void FindNextPaths(const HoI4::PossiblePath& possible_railway_path,
+	 const Maps::MapData& hoi4_map_data,
+	 const Maps::ProvinceDefinitions& hoi4_province_definitions,
+	 const HoI4::ImpassableProvinces& impassable_provinces,
+	 const Mappers::ProvinceMapper& province_mapper,
+	 const std::vector<int>& vic2_provinces,
+	 const std::map<int, std::string>& provinces_to_owners_map,
+	 std::set<int>& reached_provinces,
+	 std::priority_queue<HoI4::PossiblePath>& possible_railway_paths)
 {
-	std::priority_queue<HoI4::PossiblePath> possibleRailwayPaths;
-	std::set reachedProvinces{startProvince};
-
-	const HoI4::PossiblePath startingPath(startProvince);
-	possibleRailwayPaths.push(startingPath);
-
-	while (!possibleRailwayPaths.empty() && possibleRailwayPaths.top().GetLastProvince() != endProvince)
+	const auto last_province = possible_railway_path.GetLastProvince();
+	for (const auto& neighbor_number: hoi4_map_data.GetNeighbors(last_province))
 	{
-		auto possibleRailwayPath = possibleRailwayPaths.top();
-		possibleRailwayPaths.pop();
-
-		const auto lastProvince = possibleRailwayPath.GetLastProvince();
-		for (const auto& neighborNumber: HoI4MapData.GetNeighbors(lastProvince))
+		if (reached_provinces.contains(neighbor_number))
 		{
-			if (reachedProvinces.contains(neighborNumber))
+			continue;
+		}
+		reached_provinces.insert(neighbor_number);
+		if (!hoi4_province_definitions.isLandProvince(neighbor_number))
+		{
+			continue;
+		}
+		if (impassable_provinces.isProvinceImpassable(neighbor_number))
+		{
+			continue;
+		}
+		const auto& vic2_neighbor_numbers = province_mapper.getHoI4ToVic2ProvinceMapping(neighbor_number);
+		bool neighbor_is_valid = false;
+		for (const auto& vic2_neighbor_number: vic2_neighbor_numbers)
+		{
+			for (const auto& vic2_province: vic2_provinces)
 			{
-				continue;
-			}
-			reachedProvinces.insert(neighborNumber);
-			if (!HoI4ProvinceDefinitions.isLandProvince(neighborNumber))
-			{
-				continue;
-			}
-			if (impassableProvinces.isProvinceImpassable(neighborNumber))
-			{
-				continue;
-			}
-			const auto& vic2NeighborNumbers = provinceMapper.getHoI4ToVic2ProvinceMapping(neighborNumber);
-			bool neighborIsValid = false;
-			for (const auto& vic2NeighborNumber: vic2NeighborNumbers)
-			{
-				for (const auto& vic2Province: vic2Provinces)
+				if (vic2_neighbor_number == vic2_province)
 				{
-					if (vic2NeighborNumber == vic2Province)
-					{
-						neighborIsValid = true;
-						break;
-					}
+					neighbor_is_valid = true;
+					break;
 				}
 			}
-			if (!neighborIsValid)
-			{
-				continue;
-			}
-
-			auto newPossibleRailwayPath = possibleRailwayPath;
-			newPossibleRailwayPath.AddProvince(neighborNumber,
-				 DeterminePathCost(HoI4ProvinceDefinitions,
-					  neighborNumber,
-					  lastProvince,
-					  provinces_to_owners_map,
-					  HoI4MapData));
-			possibleRailwayPaths.push(newPossibleRailwayPath);
 		}
+		if (!neighbor_is_valid)
+		{
+			continue;
+		}
+
+		auto new_possible_railway_path = possible_railway_path;
+		new_possible_railway_path.AddProvince(neighbor_number,
+			 DeterminePathCost(hoi4_province_definitions,
+				  neighbor_number,
+				  last_province,
+				  provinces_to_owners_map,
+				  hoi4_map_data));
+		possible_railway_paths.push(new_possible_railway_path);
+	}
+}
+
+
+std::optional<HoI4::PossiblePath> FindPath(const int start_province,
+	 const int end_province,
+	 const std::vector<int>& vic2_provinces,
+	 const Mappers::ProvinceMapper& province_mapper,
+	 const Maps::MapData& hoi4_map_data,
+	 const Maps::ProvinceDefinitions& hoi4_province_definitions,
+	 const HoI4::ImpassableProvinces& impassable_provinces,
+	 const std::map<int, std::string>& provinces_to_owners_map)
+{
+	std::priority_queue<HoI4::PossiblePath> possible_railway_paths;
+	std::set reached_provinces{start_province};
+
+	const HoI4::PossiblePath startingPath(start_province);
+	possible_railway_paths.push(startingPath);
+
+	while (!possible_railway_paths.empty() && possible_railway_paths.top().GetLastProvince() != end_province)
+	{
+		auto possible_railway_path = possible_railway_paths.top();
+		possible_railway_paths.pop();
+
+		FindNextPaths(possible_railway_path,
+			 hoi4_map_data,
+			 hoi4_province_definitions,
+			 impassable_provinces,
+			 province_mapper,
+			 vic2_provinces,
+			 provinces_to_owners_map,
+			 reached_provinces,
+			 possible_railway_paths);
 	}
 
-	if (possibleRailwayPaths.empty())
+	if (possible_railway_paths.empty())
 	{
 		return std::nullopt;
 	}
-	return possibleRailwayPaths.top();
+	return possible_railway_paths.top();
 }
 
 
