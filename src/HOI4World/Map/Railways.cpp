@@ -157,6 +157,21 @@ std::vector<int> DetermineBestPotentialNewPath(const std::set<std::vector<int>>&
 }
 
 
+std::set<int> GetVic2StateCapitals(const std::vector<std::reference_wrapper<const Vic2::State>>& vic2_states)
+{
+	std::set<int> vic2_state_capitals;
+	for (const auto& state : vic2_states)
+	{
+		if (auto state_capital = state.get().getCapitalProvince(); state_capital)
+		{
+			vic2_state_capitals.insert(*state_capital);
+		}
+	}
+
+	return vic2_state_capitals;
+}
+
+
 std::set<std::vector<int>> DetermineVic2PossiblePaths(const std::set<int>& valid_vic2_province_numbers,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
 	 const Maps::MapData& vic2_map_data)
@@ -599,14 +614,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	Log(LogLevel::Info) << "\tDetermining railways";
 
 	const auto valid_vic2_province_numbers = FindValidVic2ProvinceNumbers(vic2_states);
-	std::set<int> vic2_state_capitals;
-	for (const auto& state: vic2_states)
-	{
-		if (auto state_capital = state.get().getCapitalProvince(); state_capital)
-		{
-			vic2_state_capitals.insert(*state_capital);
-		}
-	}
+	const auto vic2_state_capitals = GetVic2StateCapitals(vic2_states);
 	const auto vic2_province_paths =
 		 DetermineVic2PossiblePaths(valid_vic2_province_numbers, vic2_provinces, vic2_map_data);
 
