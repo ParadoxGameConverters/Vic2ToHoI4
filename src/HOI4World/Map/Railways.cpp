@@ -798,6 +798,137 @@ bool EndpointIsRemovable(const int endpoint, const std::set<int>& naval_location
 	return !naval_locations.contains(endpoint) && !vp_locations.contains(endpoint);
 }
 
+
+std::vector<HoI4::PossiblePath> LookupOwnersPossiblePaths(const std::string& owner,
+	 const std::map<std::string, std::vector<HoI4::PossiblePath>>& possible_paths_by_owner)
+{
+	const auto possible_paths_itr = possible_paths_by_owner.find(owner);
+	if (possible_paths_itr == possible_paths_by_owner.end())
+	{
+		Log(LogLevel::Warning) << "No possible paths for " << owner;
+		return {};
+	}
+
+	return possible_paths_itr->second;
+}
+
+
+std::set<int> AddSpanningPaths(const std::vector<HoI4::PossiblePath>& possible_paths,
+	 std::priority_queue<HoI4::PathPoint>& points_to_try,
+	 std::vector<HoI4::PossiblePath>& spanning_paths)
+{
+	std::set<int> done_points;
+	while (!points_to_try.empty())
+	{
+		HoI4::PathPoint point_to_try = points_to_try.top();
+		points_to_try.pop();
+		if (done_points.contains(point_to_try.province))
+		{
+			continue;
+		}
+
+		if (point_to_try.in_connection && point_to_try.in_connection->GetProvinces().size() > 1)
+		{
+			spanning_paths.push_back(*point_to_try.in_connection);
+		}
+		done_points.insert(point_to_try.province);
+		for (const auto& possible_path: possible_paths)
+		{
+			if (possible_path.GetFirstProvince() == point_to_try.province &&
+				 !done_points.contains(possible_path.GetLastProvince()))
+			{
+				HoI4::PathPoint new_point = {.province = possible_path.GetLastProvince(),
+					 .cost = point_to_try.cost + possible_path.GetCost(),
+					 .in_connection = possible_path};
+				points_to_try.emplace(new_point);
+			}
+			else if (possible_path.GetLastProvince() == point_to_try.province &&
+						!done_points.contains(possible_path.GetFirstProvince()))
+			{
+				HoI4::PathPoint new_point = {.province = possible_path.GetFirstProvince(),
+					 .cost = point_to_try.cost + possible_path.GetCost(),
+					 .in_connection = possible_path};
+				points_to_try.emplace(new_point);
+			}
+		}
+	}
+
+	return done_points;
+}
+
+
+std::vector<HoI4::PossiblePath> DetermineLoopPaths(const std::vector<HoI4::PossiblePath>& possible_paths,
+	 const std::set<int>& done_points,
+	 std::vector<HoI4::PossiblePath>& loop_paths)
+{
+	std::vector<HoI4::PossiblePath> remaining_possible_paths;
+	for (auto& path: possible_paths)
+	{
+		if (done_points.contains(path.GetFirstProvince()) && done_points.contains(path.GetLastProvince()))
+		{
+			loop_paths.push_back(path);
+		}
+		else
+		{
+			remaining_possible_paths.push_back(path);
+		}
+	}
+
+	return remaining_possible_paths;
+}
+
+
+std::tuple<std::vector<HoI4::PossiblePath>, std::vector<HoI4::PossiblePath>> ConstructSpanningTree(
+	 const std::string& owner,
+	 const std::map<std::string, std::vector<HoI4::PossiblePath>>& possible_paths_by_owner,
+	 const int capital,
+	 const HoI4::States& hoi4_states)
+{
+	std::vector<HoI4::PossiblePath> loop_paths;
+	std::vector<HoI4::PossiblePath> spanning_paths;
+
+	auto possible_paths = LookupOwnersPossiblePaths(owner, possible_paths_by_owner);
+	if (possible_paths.empty())
+	{
+		return {loop_paths, spanning_paths};
+	}
+
+	while (!possible_paths.empty())
+	{
+		int starting_point = GetBestStartingPoint(capital, possible_paths, hoi4_states.getStates());
+
+		HoI4::PathPoint capital_point{.province = starting_point,
+			 .cost = 0.0,
+			 .in_connection = HoI4::PossiblePath(starting_point)};
+		std::priority_queue<HoI4::PathPoint> points_to_try;
+		points_to_try.push(capital_point);
+
+		const auto done_points = AddSpanningPaths(possible_paths, points_to_try, spanning_paths);
+		possible_paths = DetermineLoopPaths(possible_paths, done_points, loop_paths);
+	}
+
+	return {spanning_paths, loop_paths};
+}
+
+
+std::tuple<std::vector<HoI4::PossiblePath>, std::vector<HoI4::PossiblePath>> ConstructSpanningTrees(
+	 const std::map<std::string, int>& capitals,
+	 const std::map<std::string, std::vector<HoI4::PossiblePath>>& possible_paths_by_owner,
+	 const HoI4::States& hoi4_states)
+{
+	std::vector<HoI4::PossiblePath> loop_paths;
+	std::vector<HoI4::PossiblePath> spanning_paths;
+	for (const auto& [owner, capital]: capitals)
+	{
+		const auto [new_spanning_paths, new_loop_paths] =
+			 ConstructSpanningTree(owner, possible_paths_by_owner, capital, hoi4_states);
+		spanning_paths.insert(spanning_paths.end(), new_spanning_paths.begin(), new_spanning_paths.end());
+		loop_paths.insert(loop_paths.end(), new_loop_paths.begin(), new_loop_paths.end());
+	}
+
+	return {spanning_paths, loop_paths};
+}
+
 } // namespace
 
 
@@ -834,82 +965,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 
 	std::set<int> naval_locations = DetermineNavalLocations(hoi4_states);
 	std::map<std::string, int> capitals = DetermineHoI4Capitals(hoi4_states);
-
-	std::vector<PossiblePath> loop_paths;
-	std::vector<PossiblePath> spanning_paths;
-	for (const auto& [owner, capital]: capitals)
-	{
-		auto possible_paths_itr = possible_paths_by_owner.find(owner);
-		if (possible_paths_itr == possible_paths_by_owner.end())
-		{
-			Log(LogLevel::Warning) << "No possible paths for " << owner;
-			continue;
-		}
-
-		auto possible_paths = possible_paths_itr->second;
-
-		while (!possible_paths.empty())
-		{
-			int starting_point = GetBestStartingPoint(capital, possible_paths, hoi4_states.getStates());
-
-			PathPoint capital_point{.province = starting_point,
-				 .cost = 0.0,
-				 .in_connection = PossiblePath(starting_point)};
-			std::priority_queue<PathPoint> points_to_try;
-			points_to_try.push(capital_point);
-
-			std::set<int> really_done_points;
-			while (!points_to_try.empty())
-			{
-				auto point_to_try = points_to_try.top();
-				points_to_try.pop();
-				if (really_done_points.contains(point_to_try.province))
-				{
-					continue;
-				}
-
-				if (point_to_try.in_connection && point_to_try.in_connection->GetProvinces().size() > 1)
-				{
-					spanning_paths.push_back(*point_to_try.in_connection);
-				}
-				really_done_points.insert(point_to_try.province);
-				for (const auto& possible_path: possible_paths)
-				{
-					if (possible_path.GetFirstProvince() == point_to_try.province &&
-						 !really_done_points.contains(possible_path.GetLastProvince()))
-					{
-						PathPoint new_point = {.province = possible_path.GetLastProvince(),
-							 .cost = point_to_try.cost + possible_path.GetCost(),
-							 .in_connection = possible_path};
-						points_to_try.emplace(new_point);
-					}
-					else if (possible_path.GetLastProvince() == point_to_try.province &&
-								!really_done_points.contains(possible_path.GetFirstProvince()))
-					{
-						PathPoint new_point = {.province = possible_path.GetFirstProvince(),
-							 .cost = point_to_try.cost + possible_path.GetCost(),
-							 .in_connection = possible_path};
-						points_to_try.emplace(new_point);
-					}
-				}
-			}
-
-			std::vector<PossiblePath> remaining_possible_paths;
-			for (auto& path: possible_paths)
-			{
-				if (really_done_points.contains(path.GetFirstProvince()) &&
-					 really_done_points.contains(path.GetLastProvince()))
-				{
-					loop_paths.push_back(path);
-				}
-				else
-				{
-					remaining_possible_paths.push_back(path);
-				}
-			}
-			possible_paths = remaining_possible_paths;
-		}
-	}
+	auto [spanning_paths, loop_paths] = ConstructSpanningTrees(capitals, possible_paths_by_owner, hoi4_states);
 
 	std::vector<PossiblePath> extra_paths;
 	for (const auto& path: border_crossings)
