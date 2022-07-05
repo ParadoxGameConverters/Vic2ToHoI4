@@ -365,9 +365,9 @@ std::optional<int> GetBestHoI4ProvinceNumber(const int vic2_province_num,
 }
 
 
-bool Hoi4ProvinceNumbersAreValid(std::optional<int> first_number, std::optional<int> second_nNumber)
+bool Hoi4ProvinceNumbersAreValid(std::optional<int> first_number, std::optional<int> second_number)
 {
-	return first_number && second_nNumber && *first_number != *second_nNumber;
+	return first_number && second_number && *first_number != *second_number;
 }
 
 
@@ -525,7 +525,7 @@ std::optional<HoI4::PossiblePath> FindPath(const int start_province,
 	 const Maps::MapData& hoi4_map_data,
 	 const Maps::ProvinceDefinitions& hoi4_province_definitions,
 	 const HoI4::ImpassableProvinces& impassable_provinces,
-	 const std::map<int, std::string>& provinces_to_owners_map)
+	 const std::map<int, std::string>& hoi4_provinces_to_owners_map)
 {
 	std::priority_queue<HoI4::PossiblePath> possible_railway_paths;
 	std::set reached_provinces{start_province};
@@ -544,7 +544,7 @@ std::optional<HoI4::PossiblePath> FindPath(const int start_province,
 			 impassable_provinces,
 			 province_mapper,
 			 vic2_provinces,
-			 provinces_to_owners_map,
+			 hoi4_provinces_to_owners_map,
 			 reached_provinces,
 			 possible_railway_paths);
 	}
@@ -554,6 +554,159 @@ std::optional<HoI4::PossiblePath> FindPath(const int start_province,
 		return std::nullopt;
 	}
 	return possible_railway_paths.top();
+}
+
+
+void BuildAndClassifyPath(const int start_province,
+	 const int end_province,
+	 const int railway_level,
+	 const std::vector<int>& vic2_provinces,
+	 const Mappers::ProvinceMapper& province_mapper,
+	 const Maps::MapData& hoi4_map_data,
+	 const Maps::ProvinceDefinitions& hoi4_province_definitions,
+	 const HoI4::ImpassableProvinces& impassable_provinces,
+	 const std::map<int, std::string>& hoi4_provinces_to_owners_map,
+	 std::map<std::string, std::vector<HoI4::PossiblePath>>& possible_paths_by_owner,
+	 std::vector<HoI4::PossiblePath>& border_crossings)
+{
+	auto possible_path = FindPath(start_province,
+		 end_province,
+		 vic2_provinces,
+		 province_mapper,
+		 hoi4_map_data,
+		 hoi4_province_definitions,
+		 impassable_provinces,
+		 hoi4_provinces_to_owners_map);
+	if (!possible_path)
+	{
+		return;
+	}
+
+	possible_path->SetLevel(railway_level);
+
+	std::string last_province_owner;
+	if (const auto& owner = hoi4_provinces_to_owners_map.find(start_province);
+		 owner != hoi4_provinces_to_owners_map.end())
+	{
+		last_province_owner = owner->second;
+	}
+	std::string neighbor_owner;
+	if (const auto& owner = hoi4_provinces_to_owners_map.find(end_province); owner != hoi4_provinces_to_owners_map.end())
+	{
+		neighbor_owner = owner->second;
+	}
+	if (last_province_owner == neighbor_owner)
+	{
+		if (auto [iterator, success] =
+				  possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{*possible_path}));
+			 !success)
+		{
+			iterator->second.push_back(*possible_path);
+		}
+	}
+	else
+	{
+		border_crossings.push_back(*possible_path);
+	}
+}
+
+
+std::tuple<std::map<std::string, std::vector<HoI4::PossiblePath>>, std::vector<HoI4::PossiblePath>> FindAllHoi4Paths(
+	 const std::set<std::vector<int>>& vic2_province_paths,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
+	 const Mappers::ProvinceMapper& province_mapper,
+	 const HoI4::ImpassableProvinces& impassable_provinces,
+	 const std::map<int, HoI4::Province>& hoi4_provinces,
+	 const std::set<int>& naval_base_locations,
+	 const std::set<int>& vic2_state_capitals,
+	 const Maps::MapData& hoi4_map_data,
+	 const Maps::ProvinceDefinitions& hoi4_province_definitions,
+	 const std::map<int, std::string>& hoi4_provinces_to_owners_map)
+{
+	std::map<std::string, std::vector<HoI4::PossiblePath>> possible_paths_by_owner;
+	std::vector<HoI4::PossiblePath> border_crossings;
+	for (const auto& vic2_province_path: vic2_province_paths)
+	{
+		const int railway_level = GetRailwayLevel(vic2_province_path, vic2_provinces);
+		if (railway_level < 1)
+		{
+			continue;
+		}
+
+		const int vic2_start_province_number = vic2_province_path.front();
+		const auto hoi4_start_province_number = GetBestHoI4ProvinceNumber(vic2_start_province_number,
+			 province_mapper,
+			 impassable_provinces,
+			 hoi4_provinces,
+			 naval_base_locations,
+			 vic2_state_capitals);
+		const int vic2_end_province_number = vic2_province_path.back();
+		const auto hoi4_end_province_number = GetBestHoI4ProvinceNumber(vic2_end_province_number,
+			 province_mapper,
+			 impassable_provinces,
+			 hoi4_provinces,
+			 naval_base_locations,
+			 vic2_state_capitals);
+		if (!Hoi4ProvinceNumbersAreValid(hoi4_start_province_number, hoi4_end_province_number))
+		{
+			continue;
+		}
+
+		BuildAndClassifyPath(*hoi4_start_province_number,
+			 *hoi4_end_province_number,
+			 railway_level,
+			 vic2_province_path,
+			 province_mapper,
+			 hoi4_map_data,
+			 hoi4_province_definitions,
+			 impassable_provinces,
+			 hoi4_provinces_to_owners_map,
+			 possible_paths_by_owner,
+			 border_crossings);
+		if (const auto hoi4_alternate_start_province_number = GetBestHoI4ProvinceNumber(vic2_start_province_number,
+				  province_mapper,
+				  impassable_provinces,
+				  hoi4_provinces,
+				  naval_base_locations,
+				  {});
+			 hoi4_alternate_start_province_number && *hoi4_alternate_start_province_number != *hoi4_start_province_number)
+		{
+			BuildAndClassifyPath(*hoi4_start_province_number,
+				 *hoi4_alternate_start_province_number,
+				 railway_level,
+				 vic2_province_path,
+				 province_mapper,
+				 hoi4_map_data,
+				 hoi4_province_definitions,
+				 impassable_provinces,
+				 hoi4_provinces_to_owners_map,
+				 possible_paths_by_owner,
+				 border_crossings);
+		}
+
+		if (const auto hoi4_alternate_end_province_number = GetBestHoI4ProvinceNumber(vic2_end_province_number,
+				  province_mapper,
+				  impassable_provinces,
+				  hoi4_provinces,
+				  naval_base_locations,
+				  {});
+			 hoi4_alternate_end_province_number && *hoi4_alternate_end_province_number != *hoi4_end_province_number)
+		{
+			BuildAndClassifyPath(*hoi4_end_province_number,
+				 *hoi4_alternate_end_province_number,
+				 railway_level,
+				 vic2_province_path,
+				 province_mapper,
+				 hoi4_map_data,
+				 hoi4_province_definitions,
+				 impassable_provinces,
+				 hoi4_provinces_to_owners_map,
+				 possible_paths_by_owner,
+				 border_crossings);
+		}
+	}
+
+	return {possible_paths_by_owner, border_crossings};
 }
 
 
@@ -635,179 +788,16 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		 DetermineVic2PossiblePaths(valid_vic2_province_numbers, vic2_provinces, vic2_map_data);
 	const auto hoi4_provinces_to_owners_map = MapHoi4ProvincesToOwners(hoi4_states);
 
-	std::map<std::string, std::vector<PossiblePath>> possible_paths_by_owner;
-	std::vector<PossiblePath> border_crossings;
-	for (const auto& vic2_province_path: vic2_province_paths)
-	{
-		const int railway_level = GetRailwayLevel(vic2_province_path, vic2_provinces);
-		if (railway_level < 1)
-		{
-			continue;
-		}
-
-		int vic2_start_province_number = vic2_province_path[0];
-		const auto hoi4_start_province_number = GetBestHoI4ProvinceNumber(vic2_start_province_number,
-			 province_mapper,
-			 impassable_provinces,
-			 hoi4_provinces,
-			 naval_base_locations,
-			 vic2_state_capitals);
-		int vic2_end_province_number = vic2_province_path[vic2_province_path.size() - 1];
-		const auto hoi4_end_province_number = GetBestHoI4ProvinceNumber(vic2_end_province_number,
-			 province_mapper,
-			 impassable_provinces,
-			 hoi4_provinces,
-			 naval_base_locations,
-			 vic2_state_capitals);
-		if (!Hoi4ProvinceNumbersAreValid(hoi4_start_province_number, hoi4_end_province_number))
-		{
-			continue;
-		}
-
-		if (auto possible_path = FindPath(*hoi4_start_province_number,
-				  *hoi4_end_province_number,
-				  vic2_province_path,
-				  province_mapper,
-				  hoi4_map_data,
-				  hoi4_province_definitions,
-				  impassable_provinces,
-				  hoi4_provinces_to_owners_map);
-			 possible_path)
-		{
-			possible_path->SetLevel(railway_level);
-
-			std::string last_province_owner;
-			if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_start_province_number);
-				 owner != hoi4_provinces_to_owners_map.end())
-			{
-				last_province_owner = owner->second;
-			}
-			std::string neighbor_owner;
-			if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_end_province_number);
-				 owner != hoi4_provinces_to_owners_map.end())
-			{
-				neighbor_owner = owner->second;
-			}
-			if (last_province_owner == neighbor_owner)
-			{
-				auto possible_paths_owner = possible_paths_by_owner.find(last_province_owner);
-				if (possible_paths_owner == possible_paths_by_owner.end())
-				{
-					possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{*possible_path}));
-				}
-				else
-				{
-					possible_paths_owner->second.push_back(*possible_path);
-				}
-			}
-			else
-			{
-				border_crossings.push_back(*possible_path);
-			}
-		}
-
-		const auto hoi4_alternate_start_province_number = GetBestHoI4ProvinceNumber(vic2_start_province_number,
-			 province_mapper,
-			 impassable_provinces,
-			 hoi4_provinces,
-			 naval_base_locations,
-			 {});
-		if (hoi4_alternate_start_province_number != hoi4_start_province_number)
-		{
-			if (auto possible_path = FindPath(*hoi4_start_province_number,
-					  *hoi4_alternate_start_province_number,
-					  vic2_province_path,
-					  province_mapper,
-					  hoi4_map_data,
-					  hoi4_province_definitions,
-					  impassable_provinces,
-					  hoi4_provinces_to_owners_map);
-				 possible_path)
-			{
-				possible_path->SetLevel(railway_level);
-
-				std::string last_province_owner;
-				if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_start_province_number);
-					 owner != hoi4_provinces_to_owners_map.end())
-				{
-					last_province_owner = owner->second;
-				}
-				std::string neighbor_owner;
-				if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_alternate_start_province_number);
-					 owner != hoi4_provinces_to_owners_map.end())
-				{
-					neighbor_owner = owner->second;
-				}
-				if (last_province_owner == neighbor_owner)
-				{
-					auto possible_paths_owner = possible_paths_by_owner.find(last_province_owner);
-					if (possible_paths_owner == possible_paths_by_owner.end())
-					{
-						possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{*possible_path}));
-					}
-					else
-					{
-						possible_paths_owner->second.push_back(*possible_path);
-					}
-				}
-				else
-				{
-					border_crossings.push_back(*possible_path);
-				}
-			}
-		}
-
-		const auto hoi4_alternate_end_province_number = GetBestHoI4ProvinceNumber(vic2_end_province_number,
-			 province_mapper,
-			 impassable_provinces,
-			 hoi4_provinces,
-			 naval_base_locations,
-			 {});
-		if (hoi4_alternate_end_province_number != hoi4_end_province_number)
-		{
-			if (auto possible_path = FindPath(*hoi4_end_province_number,
-					  *hoi4_alternate_end_province_number,
-					  vic2_province_path,
-					  province_mapper,
-					  hoi4_map_data,
-					  hoi4_province_definitions,
-					  impassable_provinces,
-					  hoi4_provinces_to_owners_map);
-				 possible_path)
-			{
-				possible_path->SetLevel(railway_level);
-
-				std::string last_province_owner;
-				if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_end_province_number);
-					 owner != hoi4_provinces_to_owners_map.end())
-				{
-					last_province_owner = owner->second;
-				}
-				std::string neighbor_owner;
-				if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_alternate_end_province_number);
-					 owner != hoi4_provinces_to_owners_map.end())
-				{
-					neighbor_owner = owner->second;
-				}
-				if (last_province_owner == neighbor_owner)
-				{
-					auto possible_paths_owner = possible_paths_by_owner.find(last_province_owner);
-					if (possible_paths_owner == possible_paths_by_owner.end())
-					{
-						possible_paths_by_owner.emplace(std::make_pair(last_province_owner, std::vector{*possible_path}));
-					}
-					else
-					{
-						possible_paths_owner->second.push_back(*possible_path);
-					}
-				}
-				else
-				{
-					border_crossings.push_back(*possible_path);
-				}
-			}
-		}
-	}
+	const auto [possible_paths_by_owner, border_crossings] = FindAllHoi4Paths(vic2_province_paths,
+		 vic2_provinces,
+		 province_mapper,
+		 impassable_provinces,
+		 hoi4_provinces,
+		 naval_base_locations,
+		 vic2_state_capitals,
+		 hoi4_map_data,
+		 hoi4_province_definitions,
+		 hoi4_provinces_to_owners_map);
 
 	std::set<int> naval_locations;
 	for (const auto& state: hoi4_states.getStates() | std::views::values)
