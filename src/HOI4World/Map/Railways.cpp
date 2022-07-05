@@ -160,7 +160,7 @@ std::vector<int> DetermineBestPotentialNewPath(const std::set<std::vector<int>>&
 std::set<int> GetVic2StateCapitals(const std::vector<std::reference_wrapper<const Vic2::State>>& vic2_states)
 {
 	std::set<int> vic2_state_capitals;
-	for (const auto& state : vic2_states)
+	for (const auto& state: vic2_states)
 	{
 		if (auto state_capital = state.get().getCapitalProvince(); state_capital)
 		{
@@ -203,6 +203,22 @@ std::set<std::vector<int>> DetermineVic2PossiblePaths(const std::set<int>& valid
 	}
 
 	return vic2_possible_paths;
+}
+
+
+std::map<int, std::string> MapHoi4ProvincesToOwners(const HoI4::States& hoi4_states)
+{
+	std::map<int, std::string> provinces_to_owners_map;
+	for (const auto& state: hoi4_states.getStates() | std::views::values)
+	{
+		const auto& owner = state.getOwner();
+		for (const auto& province: state.getProvinces())
+		{
+			provinces_to_owners_map.emplace(province, owner);
+		}
+	}
+
+	return provinces_to_owners_map;
 }
 
 
@@ -617,16 +633,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	const auto vic2_state_capitals = GetVic2StateCapitals(vic2_states);
 	const auto vic2_province_paths =
 		 DetermineVic2PossiblePaths(valid_vic2_province_numbers, vic2_provinces, vic2_map_data);
-
-	std::map<int, std::string> provinces_to_owners_map;
-	for (const auto& state: hoi4_states.getStates() | std::views::values)
-	{
-		const auto& owner = state.getOwner();
-		for (const auto& province: state.getProvinces())
-		{
-			provinces_to_owners_map.emplace(province, owner);
-		}
-	}
+	const auto hoi4_provinces_to_owners_map = MapHoi4ProvincesToOwners(hoi4_states);
 
 	std::map<std::string, std::vector<PossiblePath>> possible_paths_by_owner;
 	std::vector<PossiblePath> border_crossings;
@@ -664,20 +671,20 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 				  hoi4_map_data,
 				  hoi4_province_definitions,
 				  impassable_provinces,
-				  provinces_to_owners_map);
+				  hoi4_provinces_to_owners_map);
 			 possible_path)
 		{
 			possible_path->SetLevel(railway_level);
 
 			std::string last_province_owner;
-			if (const auto& owner = provinces_to_owners_map.find(*hoi4_start_province_number);
-				 owner != provinces_to_owners_map.end())
+			if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_start_province_number);
+				 owner != hoi4_provinces_to_owners_map.end())
 			{
 				last_province_owner = owner->second;
 			}
 			std::string neighbor_owner;
-			if (const auto& owner = provinces_to_owners_map.find(*hoi4_end_province_number);
-				 owner != provinces_to_owners_map.end())
+			if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_end_province_number);
+				 owner != hoi4_provinces_to_owners_map.end())
 			{
 				neighbor_owner = owner->second;
 			}
@@ -714,20 +721,20 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 					  hoi4_map_data,
 					  hoi4_province_definitions,
 					  impassable_provinces,
-					  provinces_to_owners_map);
+					  hoi4_provinces_to_owners_map);
 				 possible_path)
 			{
 				possible_path->SetLevel(railway_level);
 
 				std::string last_province_owner;
-				if (const auto& owner = provinces_to_owners_map.find(*hoi4_start_province_number);
-					 owner != provinces_to_owners_map.end())
+				if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_start_province_number);
+					 owner != hoi4_provinces_to_owners_map.end())
 				{
 					last_province_owner = owner->second;
 				}
 				std::string neighbor_owner;
-				if (const auto& owner = provinces_to_owners_map.find(*hoi4_alternate_start_province_number);
-					 owner != provinces_to_owners_map.end())
+				if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_alternate_start_province_number);
+					 owner != hoi4_provinces_to_owners_map.end())
 				{
 					neighbor_owner = owner->second;
 				}
@@ -765,20 +772,20 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 					  hoi4_map_data,
 					  hoi4_province_definitions,
 					  impassable_provinces,
-					  provinces_to_owners_map);
+					  hoi4_provinces_to_owners_map);
 				 possible_path)
 			{
 				possible_path->SetLevel(railway_level);
 
 				std::string last_province_owner;
-				if (const auto& owner = provinces_to_owners_map.find(*hoi4_end_province_number);
-					 owner != provinces_to_owners_map.end())
+				if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_end_province_number);
+					 owner != hoi4_provinces_to_owners_map.end())
 				{
 					last_province_owner = owner->second;
 				}
 				std::string neighbor_owner;
-				if (const auto& owner = provinces_to_owners_map.find(*hoi4_alternate_end_province_number);
-					 owner != provinces_to_owners_map.end())
+				if (const auto& owner = hoi4_provinces_to_owners_map.find(*hoi4_alternate_end_province_number);
+					 owner != hoi4_provinces_to_owners_map.end())
 				{
 					neighbor_owner = owner->second;
 				}
