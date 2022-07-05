@@ -1,5 +1,5 @@
-#ifndef HOI4WORLD_MAP_RAILWAY_H
-#define HOI4WORLD_MAP_RAILWAY_H
+#ifndef SRC_HOI4_WORLD_MAP_RAILWAY_H
+#define SRC_HOI4_WORLD_MAP_RAILWAY_H
 
 
 
@@ -22,9 +22,9 @@ class Railway
 		}
 	}
 
-	[[nodiscard]] int getLevel() const { return level_; }
-	[[nodiscard]] const auto& getProvinces() const { return provinces_; }
-	[[nodiscard]] int getLength() const { return static_cast<int>(provinces_.size()); }
+	[[nodiscard]] int GetLevel() const { return level_; }
+	[[nodiscard]] const auto& GetProvinces() const { return provinces_; }
+	[[nodiscard]] int GetLength() const { return static_cast<int>(provinces_.size()); }
 
   private:
 	int level_ = 0;
@@ -35,4 +35,4 @@ class Railway
 
 
 
-#endif // HOI4WORLD_MAP_RAILWAY_H
+#endif // SRC_HOI4_WORLD_MAP_RAILWAY_H

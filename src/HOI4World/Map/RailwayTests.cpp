@@ -12,7 +12,7 @@ TEST(HoI4World_Map_Railway, LevelIsAsSet)
 {
 	const Railway railway(2, {1, 2});
 
-	EXPECT_EQ(railway.getLevel(), 2);
+	EXPECT_EQ(railway.GetLevel(), 2);
 }
 
 
@@ -25,12 +25,12 @@ TEST(HoI4World_Map_Railway, ExceptionForTooFewProvinces)
 TEST(HoI4World_Map_Railway, ProvincesAreAsSet)
 {
 	const Railway railway(42, {1, 2, 3, 4, 5});
-	EXPECT_THAT(railway.getProvinces(), testing::ElementsAre(1, 2, 3, 4, 5));
+	EXPECT_THAT(railway.GetProvinces(), testing::ElementsAre(1, 2, 3, 4, 5));
 }
 
 
 TEST(HoI4World_Map_Railway, LengthIsEqualToNumberOfProvinces)
 {
 	const Railway railway(42, {1, 2, 3, 4, 5});
-	EXPECT_EQ(railway.getLength(), 5);
+	EXPECT_EQ(railway.GetLength(), 5);
 }
