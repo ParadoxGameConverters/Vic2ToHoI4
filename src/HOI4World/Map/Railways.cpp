@@ -68,7 +68,7 @@ std::vector<std::vector<int>> GetNextPaths(const std::vector<int>& path,
 			continue;
 		}
 
-		auto new_path = path;
+		std::vector<int> new_path = path;
 		new_path.push_back(neighbor_number);
 
 		new_paths.push_back(new_path);
@@ -91,7 +91,7 @@ std::set<std::vector<int>> DetermineAllVic2PossiblePathsForProvince(int vic2_pro
 
 	while (!new_paths.empty())
 	{
-		auto path = new_paths.top();
+		std::vector<int> path = new_paths.top();
 		new_paths.pop();
 
 		for (const auto& new_path:
@@ -134,7 +134,7 @@ std::vector<int> DetermineBestPotentialNewPath(const std::set<std::vector<int>>&
 	{
 		if (potential_new_vic2_possible_path.size() == 2)
 		{
-			auto reversed_path = potential_new_vic2_possible_path;
+			std::vector<int> reversed_path = potential_new_vic2_possible_path;
 			std::ranges::reverse(reversed_path);
 			if (!vic2_possible_paths.contains(reversed_path))
 			{
@@ -173,11 +173,11 @@ std::set<std::vector<int>> DetermineVic2PossiblePaths(const std::set<int>& valid
 			 vic2_provinces,
 			 vic2_map_data);
 
-		const auto best_potential_new_path =
-			 DetermineBestPotentialNewPath(potential_new_vic2_possible_paths, vic2_provinces, vic2_possible_paths);
-		if (!best_potential_new_path.empty())
+		if (const auto best_potential_new_path =
+				  DetermineBestPotentialNewPath(potential_new_vic2_possible_paths, vic2_provinces, vic2_possible_paths);
+			 !best_potential_new_path.empty())
 		{
-			auto reversedPath = best_potential_new_path;
+			std::vector<int> reversedPath = best_potential_new_path;
 			std::ranges::reverse(reversedPath);
 			if (!vic2_possible_paths.contains(reversedPath))
 			{
@@ -265,65 +265,68 @@ int GetRailwayLevel(const std::vector<int>& vic2_possible_path,
 }
 
 
-std::optional<int> getBestHoI4ProvinceNumber(int Vic2ProvinceNum,
-	 const Mappers::ProvinceMapper& provinceMapper,
-	 const HoI4::ImpassableProvinces& impassableProvinces,
-	 const std::map<int, HoI4::Province>& hoi4Provinces,
-	 const std::set<int>& navalBaseLocations,
+bool IsValidRailwayEndpoint(int province_number,
+	 const std::map<int, HoI4::Province>& hoi4_provinces,
+	 const HoI4::ImpassableProvinces& impassable_provinces)
+{
+	const auto province = hoi4_provinces.find(province_number);
+	if (province == hoi4_provinces.end())
+	{
+		return false;
+	}
+	if (!province->second.isLandProvince())
+	{
+		return false;
+	}
+	if (impassable_provinces.isProvinceImpassable(province_number))
+	{
+		return false;
+	}
+
+	return true;
+}
+
+
+std::optional<int> GetBestHoI4ProvinceNumber(const int vic2_province_num,
+	 const Mappers::ProvinceMapper& province_mapper,
+	 const HoI4::ImpassableProvinces& impassable_provinces,
+	 const std::map<int, HoI4::Province>& hoi4_provinces,
+	 const std::set<int>& naval_base_locations,
 	 const std::set<int>& state_capitals)
 {
-	const auto& HoI4ProvinceNumbers = provinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNum);
-	if (HoI4ProvinceNumbers.empty())
+	const auto& hoi4_province_numbers = province_mapper.getVic2ToHoI4ProvinceMapping(vic2_province_num);
+	if (hoi4_province_numbers.empty())
 	{
 		return std::nullopt;
 	}
 
-	// prefer naval bases
-	if (!state_capitals.contains((Vic2ProvinceNum)))
+	// prefer naval bases unless this is a state capital province
+	if (!state_capitals.contains((vic2_province_num)))
 	{
-		for (const auto provinceNumber: HoI4ProvinceNumbers)
+		for (const auto province_number: hoi4_province_numbers)
 		{
-			if (!navalBaseLocations.contains(provinceNumber))
+			if (!naval_base_locations.contains(province_number))
+			{
+				continue;
+			}
+			if (!IsValidRailwayEndpoint(province_number, hoi4_provinces, impassable_provinces))
 			{
 				continue;
 			}
 
-			const auto province = hoi4Provinces.find(provinceNumber);
-			if (province == hoi4Provinces.end())
-			{
-				continue;
-			}
-			if (!province->second.isLandProvince())
-			{
-				continue;
-			}
-			if (impassableProvinces.isProvinceImpassable(provinceNumber))
-			{
-				continue;
-			}
-
-			return provinceNumber;
+			return province_number;
 		}
 	}
 
 	// find an appropriate province in priority of the mapping
-	for (const auto provinceNumber: HoI4ProvinceNumbers)
+	for (const auto province_number: hoi4_province_numbers)
 	{
-		const auto province = hoi4Provinces.find(provinceNumber);
-		if (province == hoi4Provinces.end())
-		{
-			continue;
-		}
-		if (!province->second.isLandProvince())
-		{
-			continue;
-		}
-		if (impassableProvinces.isProvinceImpassable(provinceNumber))
+		if (!IsValidRailwayEndpoint(province_number, hoi4_provinces, impassable_provinces))
 		{
 			continue;
 		}
 
-		return provinceNumber;
+		return province_number;
 	}
 
 	return std::nullopt;
@@ -604,14 +607,14 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 
 		int vic2_start_province_number = vic2_province_path[0];
-		const auto hoi4_start_province_number = getBestHoI4ProvinceNumber(vic2_start_province_number,
+		const auto hoi4_start_province_number = GetBestHoI4ProvinceNumber(vic2_start_province_number,
 			 province_mapper,
 			 impassable_provinces,
 			 hoi4_provinces,
 			 naval_base_locations,
 			 vic2_state_capitals);
 		int vic2_end_province_number = vic2_province_path[vic2_province_path.size() - 1];
-		const auto hoi4_end_province_number = getBestHoI4ProvinceNumber(vic2_end_province_number,
+		const auto hoi4_end_province_number = GetBestHoI4ProvinceNumber(vic2_end_province_number,
 			 province_mapper,
 			 impassable_provinces,
 			 hoi4_provinces,
@@ -664,7 +667,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			}
 		}
 
-		const auto hoi4_alternate_start_province_number = getBestHoI4ProvinceNumber(vic2_start_province_number,
+		const auto hoi4_alternate_start_province_number = GetBestHoI4ProvinceNumber(vic2_start_province_number,
 			 province_mapper,
 			 impassable_provinces,
 			 hoi4_provinces,
@@ -715,7 +718,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			}
 		}
 
-		const auto hoi4_alternate_end_province_number = getBestHoI4ProvinceNumber(vic2_end_province_number,
+		const auto hoi4_alternate_end_province_number = GetBestHoI4ProvinceNumber(vic2_end_province_number,
 			 province_mapper,
 			 impassable_provinces,
 			 hoi4_provinces,
