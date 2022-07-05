@@ -713,7 +713,7 @@ std::tuple<std::map<std::string, std::vector<HoI4::PossiblePath>>, std::vector<H
 std::set<int> DetermineNavalLocations(const HoI4::States& hoi4_states)
 {
 	std::set<int> naval_locations;
-	for (const auto& state : hoi4_states.getStates() | std::views::values)
+	for (const auto& state: hoi4_states.getStates() | std::views::values)
 	{
 		if (const auto possible_naval_location = state.getMainNavalLocation(); possible_naval_location)
 		{
@@ -722,6 +722,24 @@ std::set<int> DetermineNavalLocations(const HoI4::States& hoi4_states)
 	}
 
 	return naval_locations;
+}
+
+
+std::map<std::string, int> DetermineHoI4Capitals(const HoI4::States& hoi4_states)
+{
+	std::map<std::string, int> capitals;
+	for (const auto& state: hoi4_states.getStates() | std::views::values)
+	{
+		if (state.IsCapitalState())
+		{
+			if (const auto vp_location = state.getVPLocation(); vp_location)
+			{
+				capitals.emplace(state.getOwner(), *vp_location);
+			}
+		}
+	}
+
+	return capitals;
 }
 
 
@@ -815,19 +833,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		 hoi4_provinces_to_owners_map);
 
 	std::set<int> naval_locations = DetermineNavalLocations(hoi4_states);
-	
-
-	std::map<std::string, int> capitals;
-	for (const auto& state: hoi4_states.getStates() | std::views::values)
-	{
-		if (state.IsCapitalState())
-		{
-			if (const auto vp_location = state.getVPLocation(); vp_location)
-			{
-				capitals.emplace(state.getOwner(), *vp_location);
-			}
-		}
-	}
+	std::map<std::string, int> capitals = DetermineHoI4Capitals(hoi4_states);
 
 	std::vector<PossiblePath> loop_paths;
 	std::vector<PossiblePath> spanning_paths;
