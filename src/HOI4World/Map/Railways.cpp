@@ -710,6 +710,21 @@ std::tuple<std::map<std::string, std::vector<HoI4::PossiblePath>>, std::vector<H
 }
 
 
+std::set<int> DetermineNavalLocations(const HoI4::States& hoi4_states)
+{
+	std::set<int> naval_locations;
+	for (const auto& state : hoi4_states.getStates() | std::views::values)
+	{
+		if (const auto possible_naval_location = state.getMainNavalLocation(); possible_naval_location)
+		{
+			naval_locations.insert(*possible_naval_location);
+		}
+	}
+
+	return naval_locations;
+}
+
+
 int GetBestStartingPoint(const int capital,
 	 const std::vector<HoI4::PossiblePath>& possible_paths,
 	 const std::map<int, HoI4::State>& states)
@@ -799,14 +814,8 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		 hoi4_province_definitions,
 		 hoi4_provinces_to_owners_map);
 
-	std::set<int> naval_locations;
-	for (const auto& state: hoi4_states.getStates() | std::views::values)
-	{
-		if (const auto possible_naval_location = state.getMainNavalLocation(); possible_naval_location)
-		{
-			naval_locations.insert(*possible_naval_location);
-		}
-	}
+	std::set<int> naval_locations = DetermineNavalLocations(hoi4_states);
+	
 
 	std::map<std::string, int> capitals;
 	for (const auto& state: hoi4_states.getStates() | std::views::values)
