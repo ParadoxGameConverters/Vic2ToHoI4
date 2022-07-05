@@ -333,9 +333,9 @@ std::optional<int> GetBestHoI4ProvinceNumber(const int vic2_province_num,
 }
 
 
-bool HoI4ProvinceNumbersAreValid(std::optional<int> firstNumber, std::optional<int> secondNumber)
+bool Hoi4ProvinceNumbersAreValid(std::optional<int> first_number, std::optional<int> second_nNumber)
 {
-	return firstNumber && secondNumber && *firstNumber != *secondNumber;
+	return first_number && second_nNumber && *first_number != *second_nNumber;
 }
 
 
@@ -620,7 +620,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			 hoi4_provinces,
 			 naval_base_locations,
 			 vic2_state_capitals);
-		if (!HoI4ProvinceNumbersAreValid(hoi4_start_province_number, hoi4_end_province_number))
+		if (!Hoi4ProvinceNumbersAreValid(hoi4_start_province_number, hoi4_end_province_number))
 		{
 			continue;
 		}
