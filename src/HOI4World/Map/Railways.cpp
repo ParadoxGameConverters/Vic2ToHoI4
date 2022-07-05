@@ -929,10 +929,29 @@ std::tuple<std::vector<HoI4::PossiblePath>, std::vector<HoI4::PossiblePath>> Con
 	return {spanning_paths, loop_paths};
 }
 
+
+std::vector<HoI4::PossiblePath> AssembleExtraPaths(const std::vector<HoI4::PossiblePath>& border_crossings,
+	 const std::vector<HoI4::PossiblePath>& loop_paths)
+{
+	std::vector<HoI4::PossiblePath> extra_paths;
+	for (const auto& path: border_crossings)
+	{
+		extra_paths.push_back(path);
+	}
+	for (const auto& path: loop_paths)
+	{
+		extra_paths.push_back(path);
+	}
+	std::sort(extra_paths.begin(), extra_paths.end());
+	std::ranges::reverse(extra_paths);
+
+	return extra_paths;
+}
+
 } // namespace
 
 
-#pragma optimize("", off)
+
 HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
 	 const std::vector<std::reference_wrapper<const Vic2::State>>& vic2_states,
 	 const Maps::MapData& vic2_map_data,
@@ -963,23 +982,11 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		 hoi4_province_definitions,
 		 hoi4_provinces_to_owners_map);
 
-	std::set<int> naval_locations = DetermineNavalLocations(hoi4_states);
-	std::map<std::string, int> capitals = DetermineHoI4Capitals(hoi4_states);
+	const auto naval_locations = DetermineNavalLocations(hoi4_states);
+	const auto capitals = DetermineHoI4Capitals(hoi4_states);
 	auto [spanning_paths, loop_paths] = ConstructSpanningTrees(capitals, possible_paths_by_owner, hoi4_states);
 
-	std::vector<PossiblePath> extra_paths;
-	for (const auto& path: border_crossings)
-	{
-		extra_paths.push_back(path);
-	}
-	for (const auto& path: loop_paths)
-	{
-		extra_paths.push_back(path);
-	}
-	std::sort(extra_paths.begin(), extra_paths.end());
-	std::ranges::reverse(extra_paths);
-
-	for (const auto& extra_path: extra_paths)
+	for (const auto& extra_path: AssembleExtraPaths(border_crossings, loop_paths))
 	{
 		double without_cost = std::numeric_limits<double>::max();
 
@@ -1269,6 +1276,5 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		railway_endpoints_.insert(path.GetLastProvince());
 	}
 }
-#pragma optimize("", on)
 
 // todo: code cleanup, it's ugly as can be right now
