@@ -179,6 +179,7 @@
     <ClCompile Include="src\HOI4World\Map\MapRegion.cpp" />
     <ClCompile Include="src\HOI4World\Map\MapRegionTests.cpp" />
     <ClCompile Include="src\HOI4World\Map\OutRailwayTests.cpp" />
+    <ClCompile Include="src\HOI4World\Map\PathPoint.cpp" />
     <ClCompile Include="src\HOI4World\Map\Railways.cpp" />
     <ClCompile Include="src\HOI4World\Map\RailwayTests.cpp" />
     <ClCompile Include="src\HOI4World\Map\Resources.cpp" />
@@ -832,6 +833,7 @@
     <ClInclude Include="src\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="src\HOI4World\Map\ImpassableProvinces.h" />
     <ClInclude Include="src\HOI4World\Map\MapRegion.h" />
+    <ClInclude Include="src\HOI4World\Map\PathPoint.h" />
     <ClInclude Include="src\HOI4World\Map\PossiblePath.h" />
     <ClInclude Include="src\HOI4World\Map\Railway.h" />
     <ClInclude Include="src\HOI4World\Map\Railways.h" />

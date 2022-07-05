@@ -1,5 +1,6 @@
 #include "src/HOI4World/Map/Railways.h"
 #include "external/common_items/Log.h"
+#include "src/HOI4World/Map/PathPoint.h"
 #include "src/HOI4World/Map/PossiblePath.h"
 #include <cmath>
 #include <numeric>
@@ -440,7 +441,7 @@ void FindNextPaths(const HoI4::PossiblePath& possible_railway_path,
 	 std::set<int>& reached_provinces,
 	 std::priority_queue<HoI4::PossiblePath>& possible_railway_paths)
 {
-	const auto last_province = possible_railway_path.GetLastProvince();
+	const int last_province = possible_railway_path.GetLastProvince();
 	for (const auto& neighbor_number: hoi4_map_data.GetNeighbors(last_province))
 	{
 		if (reached_provinces.contains(neighbor_number))
@@ -474,7 +475,7 @@ void FindNextPaths(const HoI4::PossiblePath& possible_railway_path,
 			continue;
 		}
 
-		auto new_possible_railway_path = possible_railway_path;
+		HoI4::PossiblePath new_possible_railway_path = possible_railway_path;
 		new_possible_railway_path.AddProvince(neighbor_number,
 			 DeterminePathCost(hoi4_province_definitions,
 				  neighbor_number,
@@ -503,7 +504,7 @@ std::optional<HoI4::PossiblePath> FindPath(const int start_province,
 
 	while (!possible_railway_paths.empty() && possible_railway_paths.top().GetLastProvince() != end_province)
 	{
-		auto possible_railway_path = possible_railway_paths.top();
+		HoI4::PossiblePath possible_railway_path = possible_railway_paths.top();
 		possible_railway_paths.pop();
 
 		FindNextPaths(possible_railway_path,
@@ -525,7 +526,7 @@ std::optional<HoI4::PossiblePath> FindPath(const int start_province,
 }
 
 
-int GetBestStartingPoint(int capital,
+int GetBestStartingPoint(const int capital,
 	 const std::vector<HoI4::PossiblePath>& possible_paths,
 	 const std::map<int, HoI4::State>& states)
 {
@@ -575,21 +576,13 @@ int GetBestStartingPoint(int capital,
 }
 
 
-bool EndpointIsRemovable(int endpoint, const std::set<int>& naval_locations, const std::set<int>& vp_locations)
+bool EndpointIsRemovable(const int endpoint, const std::set<int>& naval_locations, const std::set<int>& vp_locations)
 {
 	return !naval_locations.contains(endpoint) && !vp_locations.contains(endpoint);
 }
 
 } // namespace
 
-
-struct TreePath
-{
-	int endpoint;
-	double cost;
-	// higher is prioritized where we want lower to be, so reverse the meaning of less than
-	[[nodiscard]] bool operator<(const TreePath& rhs) const { return cost > rhs.cost; }
-};
 
 #pragma optimize("", off)
 HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
@@ -835,21 +828,14 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 
 		auto possible_paths = possible_paths_itr->second;
 
-		struct point
-		{
-			int province;
-			double cost;
-			PossiblePath in_connection;
-
-			[[nodiscard]] bool operator<(const point& rhs) const { return cost > rhs.cost; }
-		};
-
 		while (!possible_paths.empty())
 		{
 			int starting_point = GetBestStartingPoint(capital, possible_paths, hoi4_states.getStates());
 
-			point capital_point{.province = starting_point, .cost = 0.0, .in_connection = PossiblePath(starting_point)};
-			std::priority_queue<point> points_to_try;
+			PathPoint capital_point{.province = starting_point,
+				 .cost = 0.0,
+				 .in_connection = PossiblePath(starting_point)};
+			std::priority_queue<PathPoint> points_to_try;
 			points_to_try.push(capital_point);
 
 			std::set<int> really_done_points;
@@ -862,9 +848,9 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 					continue;
 				}
 
-				if (point_to_try.in_connection.GetProvinces().size() > 1)
+				if (point_to_try.in_connection && point_to_try.in_connection->GetProvinces().size() > 1)
 				{
-					spanning_paths.push_back(point_to_try.in_connection);
+					spanning_paths.push_back(*point_to_try.in_connection);
 				}
 				really_done_points.insert(point_to_try.province);
 				for (const auto& possible_path: possible_paths)
@@ -872,7 +858,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 					if (possible_path.GetFirstProvince() == point_to_try.province &&
 						 !really_done_points.contains(possible_path.GetLastProvince()))
 					{
-						point new_point = {.province = possible_path.GetLastProvince(),
+						PathPoint new_point = {.province = possible_path.GetLastProvince(),
 							 .cost = point_to_try.cost + possible_path.GetCost(),
 							 .in_connection = possible_path};
 						points_to_try.emplace(new_point);
@@ -880,7 +866,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 					else if (possible_path.GetLastProvince() == point_to_try.province &&
 								!really_done_points.contains(possible_path.GetFirstProvince()))
 					{
-						point new_point = {.province = possible_path.GetFirstProvince(),
+						PathPoint new_point = {.province = possible_path.GetFirstProvince(),
 							 .cost = point_to_try.cost + possible_path.GetCost(),
 							 .in_connection = possible_path};
 						points_to_try.emplace(new_point);
@@ -922,15 +908,14 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		double without_cost = std::numeric_limits<double>::max();
 
 		std::set<int> reached_points;
-		std::priority_queue<TreePath> points_to_try;
-		TreePath initial_path;
-		initial_path.endpoint = extra_path.GetFirstProvince();
+		std::priority_queue<PathPoint> points_to_try;
+		PathPoint initial_path = {.province = extra_path.GetFirstProvince()};
 		points_to_try.push(initial_path);
 		while (!points_to_try.empty())
 		{
 			const auto point_to_try = points_to_try.top();
 			points_to_try.pop();
-			if (point_to_try.endpoint == extra_path.GetLastProvince())
+			if (point_to_try.province == extra_path.GetLastProvince())
 			{
 				without_cost = point_to_try.cost;
 				break;
@@ -938,19 +923,15 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 
 			for (const auto& path: spanning_paths)
 			{
-				if (path.GetFirstProvince() == point_to_try.endpoint && !reached_points.contains(path.GetLastProvince()))
+				if (path.GetFirstProvince() == point_to_try.province && !reached_points.contains(path.GetLastProvince()))
 				{
-					TreePath new_path;
-					new_path.endpoint = path.GetLastProvince();
-					new_path.cost = point_to_try.cost + path.GetCost();
+					PathPoint new_path = {.province = path.GetLastProvince(), .cost = point_to_try.cost + path.GetCost()};
 					points_to_try.push(new_path);
 					reached_points.insert(path.GetLastProvince());
 				}
-				if (path.GetLastProvince() == point_to_try.endpoint && !reached_points.contains(path.GetFirstProvince()))
+				if (path.GetLastProvince() == point_to_try.province && !reached_points.contains(path.GetFirstProvince()))
 				{
-					TreePath new_path;
-					new_path.endpoint = path.GetFirstProvince();
-					new_path.cost = point_to_try.cost + path.GetCost();
+					PathPoint new_path = {.province = path.GetFirstProvince(), .cost = point_to_try.cost + path.GetCost()};
 					points_to_try.push(new_path);
 					reached_points.insert(path.GetFirstProvince());
 				}

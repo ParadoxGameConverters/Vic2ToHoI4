@@ -1717,6 +1717,9 @@
     <ClCompile Include="src\V2World\Countries\CommonCountryData.cpp">
       <Filter>src\V2World\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\PathPoint.cpp">
+      <Filter>src\HOI4World\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -3489,6 +3492,9 @@
     </ClInclude>
     <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h">
       <Filter>external\common_items\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\PathPoint.h">
+      <Filter>src\HOI4World\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
