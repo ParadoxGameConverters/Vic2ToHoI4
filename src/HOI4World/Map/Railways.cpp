@@ -948,6 +948,55 @@ std::vector<HoI4::PossiblePath> AssembleExtraPaths(const std::vector<HoI4::Possi
 	return extra_paths;
 }
 
+
+void AddExtraPaths(const std::vector<HoI4::PossiblePath>& border_crossings,
+	 const std::vector<HoI4::PossiblePath>& loop_paths,
+	 std::vector<HoI4::PossiblePath>& placed_paths)
+{
+	for (const auto& extra_path: AssembleExtraPaths(border_crossings, loop_paths))
+	{
+		double without_cost = std::numeric_limits<double>::max();
+
+		std::set<int> reached_points;
+		std::priority_queue<HoI4::PathPoint> points_to_try;
+		HoI4::PathPoint initial_path = {.province = extra_path.GetFirstProvince()};
+		points_to_try.push(initial_path);
+		while (!points_to_try.empty())
+		{
+			const auto point_to_try = points_to_try.top();
+			points_to_try.pop();
+			if (point_to_try.province == extra_path.GetLastProvince())
+			{
+				without_cost = point_to_try.cost;
+				break;
+			}
+
+			for (const auto& path: placed_paths)
+			{
+				if (path.GetFirstProvince() == point_to_try.province && !reached_points.contains(path.GetLastProvince()))
+				{
+					HoI4::PathPoint new_path = {.province = path.GetLastProvince(),
+						 .cost = point_to_try.cost + path.GetCost()};
+					points_to_try.push(new_path);
+					reached_points.insert(path.GetLastProvince());
+				}
+				if (path.GetLastProvince() == point_to_try.province && !reached_points.contains(path.GetFirstProvince()))
+				{
+					HoI4::PathPoint new_path = {.province = path.GetFirstProvince(),
+						 .cost = point_to_try.cost + path.GetCost()};
+					points_to_try.push(new_path);
+					reached_points.insert(path.GetFirstProvince());
+				}
+			}
+		}
+
+		if (without_cost / loop_shortcut_requirement > extra_path.GetCost())
+		{
+			placed_paths.push_back(extra_path);
+		}
+	}
+}
+
 } // namespace
 
 
@@ -984,51 +1033,11 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 
 	const auto naval_locations = DetermineNavalLocations(hoi4_states);
 	const auto capitals = DetermineHoI4Capitals(hoi4_states);
-	auto [spanning_paths, loop_paths] = ConstructSpanningTrees(capitals, possible_paths_by_owner, hoi4_states);
-
-	for (const auto& extra_path: AssembleExtraPaths(border_crossings, loop_paths))
-	{
-		double without_cost = std::numeric_limits<double>::max();
-
-		std::set<int> reached_points;
-		std::priority_queue<PathPoint> points_to_try;
-		PathPoint initial_path = {.province = extra_path.GetFirstProvince()};
-		points_to_try.push(initial_path);
-		while (!points_to_try.empty())
-		{
-			const auto point_to_try = points_to_try.top();
-			points_to_try.pop();
-			if (point_to_try.province == extra_path.GetLastProvince())
-			{
-				without_cost = point_to_try.cost;
-				break;
-			}
-
-			for (const auto& path: spanning_paths)
-			{
-				if (path.GetFirstProvince() == point_to_try.province && !reached_points.contains(path.GetLastProvince()))
-				{
-					PathPoint new_path = {.province = path.GetLastProvince(), .cost = point_to_try.cost + path.GetCost()};
-					points_to_try.push(new_path);
-					reached_points.insert(path.GetLastProvince());
-				}
-				if (path.GetLastProvince() == point_to_try.province && !reached_points.contains(path.GetFirstProvince()))
-				{
-					PathPoint new_path = {.province = path.GetFirstProvince(), .cost = point_to_try.cost + path.GetCost()};
-					points_to_try.push(new_path);
-					reached_points.insert(path.GetFirstProvince());
-				}
-			}
-		}
-
-		if (without_cost / loop_shortcut_requirement > extra_path.GetCost())
-		{
-			spanning_paths.push_back(extra_path);
-		}
-	}
+	auto [placed_paths, loop_paths] = ConstructSpanningTrees(capitals, possible_paths_by_owner, hoi4_states);
+	AddExtraPaths(border_crossings, loop_paths, placed_paths);
 
 	std::map<int, std::vector<PossiblePath>> endpoints_to_paths;
-	for (const auto& path: spanning_paths)
+	for (const auto& path: placed_paths)
 	{
 		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path}); !success)
 		{
@@ -1040,7 +1049,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	}
 
-	for (auto& path: spanning_paths)
+	for (auto& path: placed_paths)
 	{
 		const auto provinces = path.GetProvinces();
 		for (unsigned int i = 0; i < provinces.size(); ++i)
@@ -1093,7 +1102,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	}
 
 	bool paths_removed = false;
-	std::vector<PossiblePath> trimmed_paths = spanning_paths;
+	std::vector<PossiblePath> trimmed_paths = placed_paths;
 	do
 	{
 		paths_removed = false;
