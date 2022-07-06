@@ -997,6 +997,24 @@ void AddExtraPaths(const std::vector<HoI4::PossiblePath>& border_crossings,
 	}
 }
 
+std::map<int, std::vector<HoI4::PossiblePath>> MapEndpointsAndPaths(const std::vector<HoI4::PossiblePath>& placed_paths)
+{
+	std::map<int, std::vector<HoI4::PossiblePath>> endpoints_to_paths;
+	for (const auto& path: placed_paths)
+	{
+		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path}); !success)
+		{
+			iterator->second.push_back(path);
+		}
+		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path}); !success)
+		{
+			iterator->second.push_back(path);
+		}
+	}
+
+	return endpoints_to_paths;
+}
+
 } // namespace
 
 
@@ -1036,18 +1054,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	auto [placed_paths, loop_paths] = ConstructSpanningTrees(capitals, possible_paths_by_owner, hoi4_states);
 	AddExtraPaths(border_crossings, loop_paths, placed_paths);
 
-	std::map<int, std::vector<PossiblePath>> endpoints_to_paths;
-	for (const auto& path: placed_paths)
-	{
-		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path}); !success)
-		{
-			iterator->second.push_back(path);
-		}
-		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path}); !success)
-		{
-			iterator->second.push_back(path);
-		}
-	}
+	const auto endpoints_to_paths = MapEndpointsAndPaths(placed_paths);
 
 	for (auto& path: placed_paths)
 	{
@@ -1175,10 +1182,11 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 		}
 	} while (paths_removed);
 
-	endpoints_to_paths.clear();
+	std::map<int, std::vector<HoI4::PossiblePath>> new_endpoints_to_paths;
 	for (const auto& path: trimmed_paths)
 	{
-		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path}); !success)
+		if (auto [iterator, success] = new_endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path});
+			 !success)
 		{
 			bool path_already_stored = false;
 			for (const auto& stored_path: iterator->second)
@@ -1194,7 +1202,8 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 				iterator->second.push_back(path);
 			}
 		}
-		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path}); !success)
+		if (auto [iterator, success] = new_endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path});
+			 !success)
 		{
 			bool path_already_stored = false;
 			for (const auto& stored_path: iterator->second)
@@ -1214,7 +1223,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 
 	trimmed_paths.clear();
 	std::set<int> removed_endpoints;
-	for (const auto& [endpoint, paths]: endpoints_to_paths)
+	for (const auto& [endpoint, paths]: new_endpoints_to_paths)
 	{
 		if (paths.size() == 2 && EndpointIsRemovable(endpoint, naval_locations, vp_locations) &&
 			 paths[0].GetProvinces().size() + paths[1].GetProvinces().size() < 11)
@@ -1261,7 +1270,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 			continue;
 		}
 	}
-	for (const auto& [endpoint, paths]: endpoints_to_paths)
+	for (const auto& [endpoint, paths]: new_endpoints_to_paths)
 	{
 		if (removed_endpoints.contains(endpoint))
 		{
