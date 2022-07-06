@@ -963,7 +963,7 @@ void AddExtraPaths(const std::vector<HoI4::PossiblePath>& border_crossings,
 		points_to_try.push(initial_path);
 		while (!points_to_try.empty())
 		{
-			const auto point_to_try = points_to_try.top();
+			const HoI4::PathPoint point_to_try = points_to_try.top();
 			points_to_try.pop();
 			if (point_to_try.province == extra_path.GetLastProvince())
 			{
@@ -1063,6 +1063,21 @@ void MergeSomePaths(const std::map<int, std::vector<HoI4::PossiblePath>>& endpoi
 	}
 }
 
+
+std::set<int> GetVictoryPoints(const HoI4::States& hoi4_states)
+{
+	std::set<int> vp_locations;
+	for (const auto& state: hoi4_states.getStates() | std::views::values)
+	{
+		if (auto vp_location = state.getVPLocation(); vp_location)
+		{
+			vp_locations.insert(*vp_location);
+		}
+	}
+
+	return vp_locations;
+}
+
 } // namespace
 
 
@@ -1105,14 +1120,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	const auto endpoints_to_paths = MapEndpointsAndPaths(placed_paths);
 	MergeSomePaths(endpoints_to_paths, placed_paths);
 
-	std::set<int> vp_locations;
-	for (const auto& state: hoi4_states.getStates() | std::views::values)
-	{
-		if (auto vp_location = state.getVPLocation(); vp_location)
-		{
-			vp_locations.insert(*vp_location);
-		}
-	}
+	std::set<int> vp_locations = GetVictoryPoints(hoi4_states);
 
 	bool paths_removed = false;
 	std::vector<PossiblePath> trimmed_paths = placed_paths;
