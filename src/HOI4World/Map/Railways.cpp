@@ -1015,6 +1015,54 @@ std::map<int, std::vector<HoI4::PossiblePath>> MapEndpointsAndPaths(const std::v
 	return endpoints_to_paths;
 }
 
+
+void MergeSomePaths(const std::map<int, std::vector<HoI4::PossiblePath>>& endpoints_to_paths,
+	 std::vector<HoI4::PossiblePath>& placed_paths)
+{
+	for (auto& path: placed_paths)
+	{
+		const auto provinces = path.GetProvinces();
+		for (unsigned int i = 0; i < provinces.size(); ++i)
+		{
+			if (provinces[i] == path.GetFirstProvince())
+			{
+				continue;
+			}
+			if (provinces[i] == path.GetLastProvince())
+			{
+				continue;
+			}
+
+			if (const auto& endpoint_to_path = endpoints_to_paths.find(provinces[i]);
+				 endpoint_to_path != endpoints_to_paths.end())
+			{
+				if (provinces.front() == endpoint_to_path->second.front().GetFirstProvince() ||
+					 provinces.front() == endpoint_to_path->second.front().GetLastProvince())
+				{
+					std::vector<int> new_provinces;
+					for (unsigned int j = i; j < provinces.size(); ++j)
+					{
+						new_provinces.push_back(provinces[j]);
+					}
+					path.ReplaceProvinces(new_provinces);
+					break;
+				}
+				if (provinces.back() == endpoint_to_path->second.front().GetFirstProvince() ||
+					 provinces.back() == endpoint_to_path->second.front().GetLastProvince())
+				{
+					std::vector<int> new_provinces;
+					for (unsigned int j = 0; j <= i; ++j)
+					{
+						new_provinces.push_back(provinces[j]);
+					}
+					path.ReplaceProvinces(new_provinces);
+					break;
+				}
+			}
+		}
+	}
+}
+
 } // namespace
 
 
@@ -1055,49 +1103,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	AddExtraPaths(border_crossings, loop_paths, placed_paths);
 
 	const auto endpoints_to_paths = MapEndpointsAndPaths(placed_paths);
-
-	for (auto& path: placed_paths)
-	{
-		const auto provinces = path.GetProvinces();
-		for (unsigned int i = 0; i < provinces.size(); ++i)
-		{
-			if (provinces[i] == path.GetFirstProvince())
-			{
-				continue;
-			}
-			if (provinces[i] == path.GetLastProvince())
-			{
-				continue;
-			}
-
-			if (const auto& endpoint_to_path = endpoints_to_paths.find(provinces[i]);
-				 endpoint_to_path != endpoints_to_paths.end())
-			{
-				if (provinces[0] == endpoint_to_path->second[0].GetFirstProvince() ||
-					 provinces[0] == endpoint_to_path->second[0].GetLastProvince())
-				{
-					std::vector<int> new_provinces;
-					for (unsigned int j = i; j < provinces.size(); ++j)
-					{
-						new_provinces.push_back(provinces[j]);
-					}
-					path.ReplaceProvinces(new_provinces);
-					break;
-				}
-				if (provinces[provinces.size() - 1] == endpoint_to_path->second[0].GetFirstProvince() ||
-					 provinces[provinces.size() - 1] == endpoint_to_path->second[0].GetLastProvince())
-				{
-					std::vector<int> new_provinces;
-					for (unsigned int j = 0; j <= i; ++j)
-					{
-						new_provinces.push_back(provinces[j]);
-					}
-					path.ReplaceProvinces(new_provinces);
-					break;
-				}
-			}
-		}
-	}
+	MergeSomePaths(endpoints_to_paths, placed_paths);
 
 	std::set<int> vp_locations;
 	for (const auto& state: hoi4_states.getStates() | std::views::values)
