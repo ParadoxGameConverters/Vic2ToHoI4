@@ -173,10 +173,13 @@ std::set<int> GetVic2StateCapitals(const std::vector<std::reference_wrapper<cons
 }
 
 
-std::set<std::vector<int>> DetermineVic2PossiblePaths(const std::set<int>& valid_vic2_province_numbers,
+std::set<std::vector<int>> DetermineVic2PossiblePaths(
+	 const std::vector<std::reference_wrapper<const Vic2::State>>& vic2_states,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
 	 const Maps::MapData& vic2_map_data)
 {
+	const auto valid_vic2_province_numbers = FindValidVic2ProvinceNumbers(vic2_states);
+
 	std::set<std::vector<int>> vic2_possible_paths;
 	for (const auto& vic2_province_num: valid_vic2_province_numbers)
 	{
@@ -619,11 +622,14 @@ std::tuple<std::map<std::string, std::vector<HoI4::PossiblePath>>, std::vector<H
 	 const HoI4::ImpassableProvinces& impassable_provinces,
 	 const std::map<int, HoI4::Province>& hoi4_provinces,
 	 const std::set<int>& naval_base_locations,
-	 const std::set<int>& vic2_state_capitals,
+	 const std::vector<std::reference_wrapper<const Vic2::State>>& vic2_states,
 	 const Maps::MapData& hoi4_map_data,
 	 const Maps::ProvinceDefinitions& hoi4_province_definitions,
-	 const std::map<int, std::string>& hoi4_provinces_to_owners_map)
+	 const HoI4::States& hoi4_states)
 {
+	const auto vic2_state_capitals = GetVic2StateCapitals(vic2_states);
+	const auto hoi4_provinces_to_owners_map = MapHoi4ProvincesToOwners(hoi4_states);
+
 	std::map<std::string, std::vector<HoI4::PossiblePath>> possible_paths_by_owner;
 	std::vector<HoI4::PossiblePath> border_crossings;
 	for (const auto& vic2_province_path: vic2_province_paths)
@@ -913,10 +919,11 @@ std::tuple<std::vector<HoI4::PossiblePath>, std::vector<HoI4::PossiblePath>> Con
 
 
 std::tuple<std::vector<HoI4::PossiblePath>, std::vector<HoI4::PossiblePath>> ConstructSpanningTrees(
-	 const std::map<std::string, int>& capitals,
 	 const std::map<std::string, std::vector<HoI4::PossiblePath>>& possible_paths_by_owner,
 	 const HoI4::States& hoi4_states)
 {
+	const auto capitals = DetermineHoI4Capitals(hoi4_states);
+
 	std::vector<HoI4::PossiblePath> loop_paths;
 	std::vector<HoI4::PossiblePath> spanning_paths;
 	for (const auto& [owner, capital]: capitals)
@@ -1036,9 +1043,10 @@ std::map<int, std::vector<HoI4::PossiblePath>> MapEndpointsAndPaths(const std::v
 }
 
 
-void MergeSomePaths(const std::map<int, std::vector<HoI4::PossiblePath>>& endpoints_to_paths,
-	 std::vector<HoI4::PossiblePath>& placed_paths)
+void HandleOverlappingPaths(std::vector<HoI4::PossiblePath>& placed_paths)
 {
+	const auto endpoints_to_paths = MapEndpointsAndPaths(placed_paths);
+
 	for (auto& path: placed_paths)
 	{
 		const auto provinces = path.GetProvinces();
@@ -1244,32 +1252,24 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 {
 	Log(LogLevel::Info) << "\tDetermining railways";
 
-	const auto valid_vic2_province_numbers = FindValidVic2ProvinceNumbers(vic2_states);
-	const auto vic2_state_capitals = GetVic2StateCapitals(vic2_states);
-	const auto vic2_province_paths =
-		 DetermineVic2PossiblePaths(valid_vic2_province_numbers, vic2_provinces, vic2_map_data);
-	const auto hoi4_provinces_to_owners_map = MapHoi4ProvincesToOwners(hoi4_states);
-
+	const auto vic2_province_paths = DetermineVic2PossiblePaths(vic2_states, vic2_provinces, vic2_map_data);
 	const auto [possible_paths_by_owner, border_crossings] = FindAllHoi4Paths(vic2_province_paths,
 		 vic2_provinces,
 		 province_mapper,
 		 impassable_provinces,
 		 hoi4_provinces,
 		 naval_base_locations,
-		 vic2_state_capitals,
+		 vic2_states,
 		 hoi4_map_data,
 		 hoi4_province_definitions,
-		 hoi4_provinces_to_owners_map);
+		 hoi4_states);
 
-	const auto capitals = DetermineHoI4Capitals(hoi4_states);
-	auto [placed_paths, loop_paths] = ConstructSpanningTrees(capitals, possible_paths_by_owner, hoi4_states);
+	auto [placed_paths, loop_paths] = ConstructSpanningTrees(possible_paths_by_owner, hoi4_states);
 	AddExtraPaths(border_crossings, loop_paths, placed_paths);
-
-	const auto endpoints_to_paths = MapEndpointsAndPaths(placed_paths);
-	MergeSomePaths(endpoints_to_paths, placed_paths);
+	HandleOverlappingPaths(placed_paths);
 
 	const auto naval_locations = DetermineNavalLocations(hoi4_states);
-	std::set<int> vp_locations = GetVictoryPoints(hoi4_states);
+	const auto vp_locations = GetVictoryPoints(hoi4_states);
 	const auto trimmed_paths = TrimSpurs(placed_paths, naval_locations, vp_locations);
 	const auto merged_paths = MergeStraightforwardPaths(trimmed_paths, naval_locations, vp_locations);
 
