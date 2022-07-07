@@ -1160,7 +1160,9 @@ HoI4::PossiblePath MergeTwoPaths(const int join_point,
 	std::vector<int> merged_provinces;
 	if (path_one.GetFirstProvince() == join_point)
 	{
-		for (auto province: path_one.GetProvinces() | std::views::reverse)
+		auto provinces = path_one.GetProvinces();
+		std::reverse(provinces.begin(), provinces.end());
+		for (auto province: provinces)
 		{
 			merged_provinces.push_back(province);
 		}
@@ -1183,7 +1185,9 @@ HoI4::PossiblePath MergeTwoPaths(const int join_point,
 	}
 	else
 	{
-		for (auto province: path_two.GetProvinces() | std::views::reverse)
+		auto provinces = path_two.GetProvinces();
+		std::reverse(provinces.begin(), provinces.end());
+		for (auto province: provinces)
 		{
 			merged_provinces.push_back(province);
 		}
