@@ -997,18 +997,37 @@ void AddExtraPaths(const std::vector<HoI4::PossiblePath>& border_crossings,
 	}
 }
 
-std::map<int, std::vector<HoI4::PossiblePath>> MapEndpointsAndPaths(const std::vector<HoI4::PossiblePath>& placed_paths)
+
+void AddPathToMapping(const HoI4::PossiblePath& path, std::map<int, std::vector<HoI4::PossiblePath>>::iterator iterator)
+{
+	bool path_already_stored = false;
+	for (const auto& stored_path: iterator->second)
+	{
+		if (stored_path == path)
+		{
+			path_already_stored = true;
+			break;
+		}
+	}
+	if (!path_already_stored)
+	{
+		iterator->second.push_back(path);
+	}
+}
+
+
+std::map<int, std::vector<HoI4::PossiblePath>> MapEndpointsAndPaths(const std::vector<HoI4::PossiblePath>& paths)
 {
 	std::map<int, std::vector<HoI4::PossiblePath>> endpoints_to_paths;
-	for (const auto& path: placed_paths)
+	for (const auto& path: paths)
 	{
 		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path}); !success)
 		{
-			iterator->second.push_back(path);
+			AddPathToMapping(path, iterator);
 		}
 		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path}); !success)
 		{
-			iterator->second.push_back(path);
+			AddPathToMapping(path, iterator);
 		}
 	}
 
@@ -1078,6 +1097,50 @@ std::set<int> GetVictoryPoints(const HoI4::States& hoi4_states)
 	return vp_locations;
 }
 
+
+std::vector<HoI4::PossiblePath> TrimSpurs(std::vector<HoI4::PossiblePath> paths,
+	 const std::set<int>& naval_locations,
+	 const std::set<int>& vp_locations)
+{
+	bool paths_removed = false;
+	do
+	{
+		paths_removed = false;
+		std::map<int, std::vector<HoI4::PossiblePath>> endpoints_to_paths = MapEndpointsAndPaths(paths);
+
+		paths.clear();
+		for (const auto& [endpoint, endpoint_paths]: endpoints_to_paths)
+		{
+			if (endpoint_paths.size() == 1 && EndpointIsRemovable(endpoint, naval_locations, vp_locations))
+			{
+				paths_removed = true;
+				continue;
+			}
+			for (const auto& path: endpoint_paths)
+			{
+				if (path.GetFirstProvince() == endpoint)
+				{
+					const auto connecting_paths = endpoints_to_paths.find(path.GetLastProvince());
+					if (connecting_paths == endpoints_to_paths.end())
+					{
+						paths_removed = true;
+						continue;
+					}
+					if (connecting_paths->second.size() == 1 &&
+						 EndpointIsRemovable(path.GetLastProvince(), naval_locations, vp_locations))
+					{
+						paths_removed = true;
+						continue;
+					}
+					paths.push_back(path);
+				}
+			}
+		}
+	} while (paths_removed);
+
+	return paths;
+}
+
 } // namespace
 
 
@@ -1122,79 +1185,7 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 
 	std::set<int> vp_locations = GetVictoryPoints(hoi4_states);
 
-	bool paths_removed = false;
-	std::vector<PossiblePath> trimmed_paths = placed_paths;
-	do
-	{
-		paths_removed = false;
-
-		std::map<int, std::vector<PossiblePath>> endpoints_to_paths;
-		for (const auto& path: trimmed_paths)
-		{
-			if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path});
-				 !success)
-			{
-				bool path_already_stored = false;
-				for (const auto& stored_path: iterator->second)
-				{
-					if (stored_path == path)
-					{
-						path_already_stored = true;
-						break;
-					}
-				}
-				if (!path_already_stored)
-				{
-					iterator->second.push_back(path);
-				}
-			}
-			if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path}); !success)
-			{
-				bool path_already_stored = false;
-				for (const auto& stored_path: iterator->second)
-				{
-					if (stored_path == path)
-					{
-						path_already_stored = true;
-						break;
-					}
-				}
-				if (!path_already_stored)
-				{
-					iterator->second.push_back(path);
-				}
-			}
-		}
-
-		trimmed_paths.clear();
-		for (const auto& [endpoint, paths]: endpoints_to_paths)
-		{
-			if (paths.size() == 1 && EndpointIsRemovable(endpoint, naval_locations, vp_locations))
-			{
-				paths_removed = true;
-				continue;
-			}
-			for (const auto& path: paths)
-			{
-				if (path.GetFirstProvince() == endpoint)
-				{
-					const auto connecting_paths = endpoints_to_paths.find(path.GetLastProvince());
-					if (connecting_paths == endpoints_to_paths.end())
-					{
-						paths_removed = true;
-						continue;
-					}
-					if (connecting_paths->second.size() == 1 &&
-						 EndpointIsRemovable(path.GetLastProvince(), naval_locations, vp_locations))
-					{
-						paths_removed = true;
-						continue;
-					}
-					trimmed_paths.push_back(path);
-				}
-			}
-		}
-	} while (paths_removed);
+	auto trimmed_paths = TrimSpurs(placed_paths, naval_locations, vp_locations);
 
 	std::map<int, std::vector<HoI4::PossiblePath>> new_endpoints_to_paths;
 	for (const auto& path: trimmed_paths)
