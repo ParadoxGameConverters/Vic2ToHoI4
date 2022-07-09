@@ -114,50 +114,6 @@ std::set<std::vector<int>> DetermineAllVic2PossiblePathsForProvince(int vic2_pro
 }
 
 
-int GetProvincePopulation(int province_num, const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces)
-{
-	const auto potential_last_province_itr = vic2_provinces.find(province_num);
-	if (potential_last_province_itr == vic2_provinces.end())
-	{
-		return 0;
-	}
-	return potential_last_province_itr->second->getPopulation();
-}
-
-
-std::vector<int> DetermineBestPotentialNewPath(const std::set<std::vector<int>>& potential_new_vic2_possible_paths,
-	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
-	 std::set<std::vector<int>>& vic2_possible_paths)
-{
-	std::vector<int> best_potential_new_path;
-	int32_t potential_new_path_score = 0;
-
-	for (const auto& potential_new_vic2_possible_path: potential_new_vic2_possible_paths)
-	{
-		if (potential_new_vic2_possible_path.size() == 2)
-		{
-			std::vector<int> reversed_path = potential_new_vic2_possible_path;
-			std::ranges::reverse(reversed_path);
-			if (!vic2_possible_paths.contains(reversed_path))
-			{
-				vic2_possible_paths.insert(potential_new_vic2_possible_path);
-			}
-			continue;
-		}
-
-		const int potential_last_province_num = potential_new_vic2_possible_path.back();
-		const int potential_last_province_population = GetProvincePopulation(potential_last_province_num, vic2_provinces);
-		if (potential_last_province_population > potential_new_path_score)
-		{
-			best_potential_new_path = potential_new_vic2_possible_path;
-			potential_new_path_score = potential_last_province_population;
-		}
-	}
-
-	return best_potential_new_path;
-}
-
-
 std::set<int> GetVic2StateCapitals(const std::vector<std::reference_wrapper<const Vic2::State>>& vic2_states)
 {
 	std::set<int> vic2_state_capitals;
@@ -192,16 +148,13 @@ std::set<std::vector<int>> DetermineVic2PossiblePaths(
 			 valid_vic2_province_numbers,
 			 vic2_provinces,
 			 vic2_map_data);
-
-		if (const auto best_potential_new_path =
-				  DetermineBestPotentialNewPath(potential_new_vic2_possible_paths, vic2_provinces, vic2_possible_paths);
-			 !best_potential_new_path.empty())
+		for (const auto& potential_new_vic2_possible_path: potential_new_vic2_possible_paths)
 		{
-			std::vector<int> reversedPath = best_potential_new_path;
-			std::ranges::reverse(reversedPath);
-			if (!vic2_possible_paths.contains(reversedPath))
+			std::vector<int> reversed_path = potential_new_vic2_possible_path;
+			std::ranges::reverse(reversed_path);
+			if (!vic2_possible_paths.contains(reversed_path))
 			{
-				vic2_possible_paths.insert(best_potential_new_path);
+				vic2_possible_paths.insert(potential_new_vic2_possible_path);
 			}
 		}
 	}
