@@ -476,8 +476,13 @@ void FindNextPaths(const HoI4::PossiblePath& possible_railway_path,
 	 std::set<int>& reached_provinces,
 	 std::priority_queue<HoI4::PossiblePath>& possible_railway_paths)
 {
-	const int last_province = possible_railway_path.GetLastProvince();
-	for (const auto& neighbor_number: hoi4_map_data.GetNeighbors(last_province))
+	const auto last_province = possible_railway_path.GetLastProvince();
+	if (!last_province)
+	{
+		return;
+	}
+
+	for (const auto& neighbor_number: hoi4_map_data.GetNeighbors(*last_province))
 	{
 		if (reached_provinces.contains(neighbor_number))
 		{
@@ -514,7 +519,7 @@ void FindNextPaths(const HoI4::PossiblePath& possible_railway_path,
 		new_possible_railway_path.AddProvince(neighbor_number,
 			 DeterminePathCost(hoi4_province_definitions,
 				  neighbor_number,
-				  last_province,
+				  *last_province,
 				  provinces_to_owners_map,
 				  hoi4_map_data));
 		possible_railway_paths.push(new_possible_railway_path);
@@ -537,9 +542,16 @@ std::optional<HoI4::PossiblePath> FindPath(const int start_province,
 	const HoI4::PossiblePath startingPath(start_province);
 	possible_railway_paths.push(startingPath);
 
-	while (!possible_railway_paths.empty() && possible_railway_paths.top().GetLastProvince() != end_province)
+	while (!possible_railway_paths.empty())
 	{
 		HoI4::PossiblePath possible_railway_path = possible_railway_paths.top();
+
+		const auto last_province = possible_railway_path.GetLastProvince();
+		if (!last_province || *last_province == end_province)
+		{
+			break;
+		}
+
 		possible_railway_paths.pop();
 
 		FindNextPaths(possible_railway_path,
@@ -758,8 +770,15 @@ int GetBestStartingPoint(const int capital,
 	std::set<int> possible_endpoints;
 	for (const auto& possible_path: possible_paths)
 	{
-		possible_endpoints.insert(possible_path.GetFirstProvince());
-		possible_endpoints.insert(possible_path.GetLastProvince());
+		const auto first_province = possible_path.GetFirstProvince();
+		const auto last_province = possible_path.GetLastProvince();
+		if (!first_province || !last_province)
+		{
+			continue;
+		}
+
+		possible_endpoints.insert(*first_province);
+		possible_endpoints.insert(*last_province);
 	}
 
 	// capital has top priority
@@ -841,18 +860,23 @@ std::set<int> AddSpanningPaths(const std::vector<HoI4::PossiblePath>& possible_p
 		done_points.insert(point_to_try.province);
 		for (const auto& possible_path: possible_paths)
 		{
-			if (possible_path.GetFirstProvince() == point_to_try.province &&
-				 !done_points.contains(possible_path.GetLastProvince()))
+			const auto first_province = possible_path.GetFirstProvince();
+			const auto last_province = possible_path.GetLastProvince();
+			if (!first_province || !last_province)
 			{
-				HoI4::PathPoint new_point = {.province = possible_path.GetLastProvince(),
+				continue;
+			}
+
+			if (*first_province == point_to_try.province && !done_points.contains(*last_province))
+			{
+				HoI4::PathPoint new_point = {.province = *last_province,
 					 .cost = point_to_try.cost + possible_path.GetCost(),
 					 .in_connection = possible_path};
 				points_to_try.emplace(new_point);
 			}
-			else if (possible_path.GetLastProvince() == point_to_try.province &&
-						!done_points.contains(possible_path.GetFirstProvince()))
+			else if (*last_province == point_to_try.province && !done_points.contains(*first_province))
 			{
-				HoI4::PathPoint new_point = {.province = possible_path.GetFirstProvince(),
+				HoI4::PathPoint new_point = {.province = *first_province,
 					 .cost = point_to_try.cost + possible_path.GetCost(),
 					 .in_connection = possible_path};
 				points_to_try.emplace(new_point);
@@ -871,7 +895,14 @@ std::vector<HoI4::PossiblePath> DetermineLoopPaths(const std::vector<HoI4::Possi
 	std::vector<HoI4::PossiblePath> remaining_possible_paths;
 	for (auto& path: possible_paths)
 	{
-		if (done_points.contains(path.GetFirstProvince()) && done_points.contains(path.GetLastProvince()))
+		const auto first_province = path.GetFirstProvince();
+		const auto last_province = path.GetLastProvince();
+		if (!first_province || !last_province)
+		{
+			continue;
+		}
+
+		if (done_points.contains(*first_province) && done_points.contains(*last_province))
 		{
 			loop_paths.push_back(path);
 		}
@@ -963,17 +994,29 @@ void AddExtraPaths(const std::vector<HoI4::PossiblePath>& border_crossings,
 {
 	for (const auto& extra_path: AssembleExtraPaths(border_crossings, loop_paths))
 	{
+		const auto extra_path_first_province = extra_path.GetFirstProvince();
+		if (!extra_path_first_province)
+		{
+			continue;
+		}
+
 		double without_cost = std::numeric_limits<double>::max();
 
 		std::set<int> reached_points;
 		std::priority_queue<HoI4::PathPoint> points_to_try;
-		HoI4::PathPoint initial_path = {.province = extra_path.GetFirstProvince()};
+		HoI4::PathPoint initial_path = {.province = *extra_path_first_province};
 		points_to_try.push(initial_path);
 		while (!points_to_try.empty())
 		{
+			const auto extra_last_province = extra_path.GetLastProvince();
+			if (!extra_last_province)
+			{
+				continue;
+			}
+
 			const HoI4::PathPoint point_to_try = points_to_try.top();
 			points_to_try.pop();
-			if (point_to_try.province == extra_path.GetLastProvince())
+			if (point_to_try.province == *extra_last_province)
 			{
 				without_cost = point_to_try.cost;
 				break;
@@ -981,19 +1024,24 @@ void AddExtraPaths(const std::vector<HoI4::PossiblePath>& border_crossings,
 
 			for (const auto& path: placed_paths)
 			{
-				if (path.GetFirstProvince() == point_to_try.province && !reached_points.contains(path.GetLastProvince()))
+				const auto first_province = path.GetFirstProvince();
+				const auto last_province = path.GetLastProvince();
+				if (!first_province || !last_province)
 				{
-					HoI4::PathPoint new_path = {.province = path.GetLastProvince(),
-						 .cost = point_to_try.cost + path.GetCost()};
-					points_to_try.push(new_path);
-					reached_points.insert(path.GetLastProvince());
+					continue;
 				}
-				if (path.GetLastProvince() == point_to_try.province && !reached_points.contains(path.GetFirstProvince()))
+
+				if (*first_province == point_to_try.province && !reached_points.contains(*last_province))
 				{
-					HoI4::PathPoint new_path = {.province = path.GetFirstProvince(),
-						 .cost = point_to_try.cost + path.GetCost()};
+					HoI4::PathPoint new_path = {.province = *last_province, .cost = point_to_try.cost + path.GetCost()};
 					points_to_try.push(new_path);
-					reached_points.insert(path.GetFirstProvince());
+					reached_points.insert(*last_province);
+				}
+				if (*last_province == point_to_try.province && !reached_points.contains(*first_province))
+				{
+					HoI4::PathPoint new_path = {.province = *first_province, .cost = point_to_try.cost + path.GetCost()};
+					points_to_try.push(new_path);
+					reached_points.insert(*first_province);
 				}
 			}
 		}
@@ -1029,11 +1077,18 @@ std::map<int, std::vector<HoI4::PossiblePath>> MapEndpointsAndPaths(const std::v
 	std::map<int, std::vector<HoI4::PossiblePath>> endpoints_to_paths;
 	for (const auto& path: paths)
 	{
-		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetFirstProvince(), std::vector{path}); !success)
+		const auto first_province = path.GetFirstProvince();
+		const auto last_province = path.GetLastProvince();
+		if (!first_province || !last_province)
+		{
+			continue;
+		}
+
+		if (auto [iterator, success] = endpoints_to_paths.emplace(*first_province, std::vector{path}); !success)
 		{
 			AddPathToMapping(path, iterator);
 		}
-		if (auto [iterator, success] = endpoints_to_paths.emplace(path.GetLastProvince(), std::vector{path}); !success)
+		if (auto [iterator, success] = endpoints_to_paths.emplace(*last_province, std::vector{path}); !success)
 		{
 			AddPathToMapping(path, iterator);
 		}
@@ -1049,14 +1104,21 @@ void HandleOverlappingPaths(std::vector<HoI4::PossiblePath>& placed_paths)
 
 	for (auto& path: placed_paths)
 	{
+		const auto path_first_province = path.GetFirstProvince();
+		const auto path_last_province = path.GetLastProvince();
+		if (!path_first_province || !path_last_province)
+		{
+			continue;
+		}
+
 		const auto provinces = path.GetProvinces();
 		for (unsigned int i = 0; i < provinces.size(); ++i)
 		{
-			if (provinces[i] == path.GetFirstProvince())
+			if (provinces[i] == *path_first_province)
 			{
 				continue;
 			}
-			if (provinces[i] == path.GetLastProvince())
+			if (provinces[i] == *path_last_province)
 			{
 				continue;
 			}
@@ -1064,8 +1126,15 @@ void HandleOverlappingPaths(std::vector<HoI4::PossiblePath>& placed_paths)
 			if (const auto& endpoint_to_path = endpoints_to_paths.find(provinces[i]);
 				 endpoint_to_path != endpoints_to_paths.end())
 			{
-				if (provinces.front() == endpoint_to_path->second.front().GetFirstProvince() ||
-					 provinces.front() == endpoint_to_path->second.front().GetLastProvince())
+				const auto endpoint_to_path_first_province = endpoint_to_path->second.front().GetFirstProvince();
+				const auto endpoint_to_path_last_province = endpoint_to_path->second.front().GetLastProvince();
+				if (!endpoint_to_path_first_province || !endpoint_to_path_last_province)
+				{
+					continue;
+				}
+
+				if (provinces.front() == *endpoint_to_path_first_province ||
+					 provinces.front() == *endpoint_to_path_last_province)
 				{
 					std::vector<int> new_provinces;
 					for (unsigned int j = i; j < provinces.size(); ++j)
@@ -1075,8 +1144,8 @@ void HandleOverlappingPaths(std::vector<HoI4::PossiblePath>& placed_paths)
 					path.ReplaceProvinces(new_provinces);
 					break;
 				}
-				if (provinces.back() == endpoint_to_path->second.front().GetFirstProvince() ||
-					 provinces.back() == endpoint_to_path->second.front().GetLastProvince())
+				if (provinces.back() == *endpoint_to_path_first_province ||
+					 provinces.back() == *endpoint_to_path_last_province)
 				{
 					std::vector<int> new_provinces;
 					for (unsigned int j = 0; j <= i; ++j)
@@ -1127,16 +1196,23 @@ std::vector<HoI4::PossiblePath> TrimSpurs(std::vector<HoI4::PossiblePath> paths,
 			}
 			for (const auto& path: endpoint_paths)
 			{
-				if (path.GetFirstProvince() == endpoint)
+				const auto first_province = path.GetFirstProvince();
+				const auto last_province = path.GetLastProvince();
+				if (!first_province || !last_province)
 				{
-					const auto connecting_paths = endpoints_to_paths.find(path.GetLastProvince());
+					continue;
+				}
+
+				if (*first_province == endpoint)
+				{
+					const auto connecting_paths = endpoints_to_paths.find(*last_province);
 					if (connecting_paths == endpoints_to_paths.end())
 					{
 						paths_removed = true;
 						continue;
 					}
 					if (connecting_paths->second.size() == 1 &&
-						 EndpointIsRemovable(path.GetLastProvince(), naval_locations, vp_locations))
+						 EndpointIsRemovable(*last_province, naval_locations, vp_locations))
 					{
 						paths_removed = true;
 						continue;
@@ -1158,7 +1234,8 @@ HoI4::PossiblePath MergeTwoPaths(const int join_point,
 	HoI4::PossiblePath merged_path;
 
 	std::vector<int> merged_provinces;
-	if (path_one.GetFirstProvince() == join_point)
+	if (const auto path_one_first_province = path_one.GetFirstProvince();
+		 path_one_first_province && *path_one_first_province == join_point)
 	{
 		auto provinces = path_one.GetProvinces();
 		std::reverse(provinces.begin(), provinces.end());
@@ -1176,7 +1253,8 @@ HoI4::PossiblePath MergeTwoPaths(const int join_point,
 	}
 
 	merged_provinces.pop_back();
-	if (path_two.GetFirstProvince() == join_point)
+	if (const auto path_two_first_province = path_two.GetFirstProvince();
+		 path_two_first_province && *path_two_first_province == join_point)
 	{
 		for (auto province: path_two.GetProvinces())
 		{
@@ -1228,8 +1306,15 @@ std::vector<HoI4::PossiblePath> MergeStraightforwardPaths(const std::vector<HoI4
 		}
 		for (const auto& path: paths)
 		{
-			if (endpoint == path.GetFirstProvince() && !removed_endpoints.contains(path.GetFirstProvince()) &&
-				 !removed_endpoints.contains(path.GetLastProvince()))
+			const auto first_province = path.GetFirstProvince();
+			const auto last_province = path.GetLastProvince();
+			if (!first_province || !last_province)
+			{
+				continue;
+			}
+
+			if (endpoint == *first_province && !removed_endpoints.contains(*first_province) &&
+				 !removed_endpoints.contains(*last_province))
 			{
 				merged_paths.push_back(path);
 			}
@@ -1281,7 +1366,13 @@ HoI4::Railways::Railways(const std::map<int, std::shared_ptr<Vic2::Province>>& v
 	{
 		Railway railway(path.GetLevel(), path.GetProvinces());
 		railways_.push_back(railway);
-		railway_endpoints_.insert(path.GetFirstProvince());
-		railway_endpoints_.insert(path.GetLastProvince());
+		if (const auto first_province = path.GetFirstProvince(); first_province)
+		{
+			railway_endpoints_.insert(*first_province);
+		}
+		if (const auto last_province = path.GetLastProvince(); last_province)
+		{
+			railway_endpoints_.insert(*last_province);
+		}
 	}
 }

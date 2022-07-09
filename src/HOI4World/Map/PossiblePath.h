@@ -3,6 +3,7 @@
 
 
 
+#include <optional>
 #include <vector>
 
 
@@ -24,8 +25,22 @@ class PossiblePath
 	void ReplaceProvinces(std::vector<int> new_provinces) { provinces_ = std::move(new_provinces); }
 	void SetLevel(int level) { level_ = level; }
 
-	[[nodiscard]] int GetLastProvince() const { return provinces_[provinces_.size() - 1]; }
-	[[nodiscard]] int GetFirstProvince() const { return provinces_[0]; }
+	[[nodiscard]] std::optional<int> GetFirstProvince() const
+	{
+		if (provinces_.empty())
+		{
+			return std::nullopt;
+		}
+		return provinces_.front();
+	}
+	[[nodiscard]] std::optional<int> GetLastProvince() const
+	{
+		if (provinces_.empty())
+		{
+			return std::nullopt;
+		}
+		return provinces_.back();
+	}
 	[[nodiscard]] std::vector<int> GetProvinces() const { return provinces_; }
 	[[nodiscard]] int GetLevel() const { return level_; }
 	[[nodiscard]] double GetCost() const { return cost_; }
