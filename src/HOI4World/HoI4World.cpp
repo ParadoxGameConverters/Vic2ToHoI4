@@ -149,16 +149,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Log(LogLevel::Progress) << "40%";
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
-	railways_ = std::make_unique<Railways>(sourceWorld.getProvinces(),
-		 sourceWorld.getStates(),
-		 sourceWorld.getMapData(),
-		 provinceMapper,
-		 *theMapData,
-		 *provinceDefinitions,
-		 impassableProvinces,
-		 theProvinces,
-		 states->getNavalBaseLocations());
-	supplyNodes_ = determineSupplyNodes(sourceWorld.getProvinces(), provinceMapper, railways_->getRailwayEndpoints());
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";
 	if (theConfiguration.getDebug())
@@ -168,6 +158,17 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
+	railways_ = std::make_unique<Railways>(sourceWorld.getProvinces(),
+		 sourceWorld.getStates(),
+		 sourceWorld.getMapData(),
+		 provinceMapper,
+		 *theMapData,
+		 *provinceDefinitions,
+		 impassableProvinces,
+		 theProvinces,
+		 states->getNavalBaseLocations(),
+		 *states);
+	supplyNodes_ = determineSupplyNodes(sourceWorld.getProvinces(), provinceMapper, railways_->GetRailwayEndpoints());
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	Log(LogLevel::Progress) << "48%";

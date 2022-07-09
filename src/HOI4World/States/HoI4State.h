@@ -88,6 +88,7 @@ class State
 	int getVpValue() const { return victoryPointValue; }
 	const std::set<int>& getDebugVPs() const { return debugVictoryPoints; }
 	const std::set<int>& getSecondaryDebugVPs() const { return secondaryDebugVictoryPoints; }
+	[[nodiscard]] bool IsCapitalState() const { return capitalState; }
 
 	std::optional<int> getMainNavalLocation() const;
 	[[nodiscard]] int getManpower() const;

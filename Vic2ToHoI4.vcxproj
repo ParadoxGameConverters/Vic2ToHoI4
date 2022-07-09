@@ -121,6 +121,7 @@
     <ClCompile Include="src\HOI4World\Localisations\GrammarMappings.cpp" />
     <ClCompile Include="src\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="src\HOI4World\Map\HoI4Provinces.cpp" />
+    <ClCompile Include="src\HOI4World\Map\PathPoint.cpp" />
     <ClCompile Include="src\HOI4World\Map\PossiblePath.h" />
     <ClCompile Include="src\HOI4World\Map\Railways.cpp" />
     <ClCompile Include="src\HOI4World\Map\StrategicRegions.cpp" />
@@ -509,6 +510,7 @@
     <ClInclude Include="src\HOI4World\Map\CoastalProvincesBuilder.h" />
     <ClInclude Include="src\HOI4World\Map\HoI4ProvinceDefinitionImporter.h" />
     <ClInclude Include="src\HOI4World\Map\HoI4Provinces.h" />
+    <ClInclude Include="src\HOI4World\Map\PathPoint.h" />
     <ClInclude Include="src\HOI4World\Map\Railway.h" />
     <ClInclude Include="src\HOI4World\Map\Railways.h" />
     <ClInclude Include="src\HOI4World\Map\StrategicRegions.h" />
