@@ -1120,13 +1120,7 @@ italic = {
 		"gfx/leaders/ITA/Portrait_Italy_Ubaldo_Soddu.dds"
 		"gfx/leaders/ITA/Portrait_Italy_Ugo_Cavallero.dds"
 		#Other
-		"gfx/leaders/SPA/Portrait_Spain_Francisco_Franco.dds"
 		"gfx/leaders/Generic/Portrait_Italy_Generic_land_4.dds"
-		"gfx/leaders/Mediterranean/Portrait_SPR_Alonso_Vega.tga"
-		"gfx/leaders/Mediterranean/Portrait_SPR_Asensio_Cabanillas.tga"
-		"gfx/leaders/Mediterranean/Portrait_SPR_Miguel_Cabanellas_Ferrer.tga"
-		"gfx/leaders/Mediterranean/Portrait_Portugal_Antonio_Carmona.tga"
-		"gfx/leaders/Mediterranean/Portrait_POR_Castro_Bilstein_Menezes.tga"
 		"gfx/leaders/Mediterranean/Portrait_TUS_Chiariotti_Raoul.tga"
 		"gfx/leaders/Mediterranean/Portrait_TUS_Umberto_Soma.tga"
 		"gfx/leaders/Mediterranean/Portrait_VNC_Antonio_Scaramuzza.tga"
@@ -1157,7 +1151,6 @@ italic = {
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_3.tga"
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_4.tga"
 		"gfx/leaders/Generic/Portrait_Europe_Generic_navy_new_5.tga"
-		"gfx/leaders/Mediterranean/Portrait_POR_Americo_Thomaz.tga"
 		"gfx/leaders/Mediterranean/Portrait_Papal_State_Julio_Valerio_Borghese.tga"
 	}
 	leader_portraits = {
@@ -1166,21 +1159,18 @@ italic = {
 			"gfx/leaders/Europe/portrait_europe_generic_8.dds"
 			"gfx/leaders/ITA/portrait_ita_palmiro_togliatti.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Generic_1.dds"
-			"gfx/leaders/SPR/portrait_spr_jose_diaz.dds"
 			"gfx/leaders/Mediterranean/Portrait_Italy_Filippo_Turati.tga"
 			"gfx/leaders/Mediterranean/Portrait_VNC_Giovanni_Battista_Gianquinto.tga"
 		}
 		democratic = {
 			"gfx/leaders/Europe/portrait_europe_generic_5.dds"
 			"gfx/leaders/ITA/portrait_ita_ferruccio_parri.dds"
-			"gfx/leaders/SPR/Portrait_Spain_Manuel_Azana.dds"
 			"gfx/leaders/Mediterranean/Portrait_SRI_Giacomo_Matteotti.tga"
 			"gfx/leaders/Mediterranean/Portrait_Papal_State_Angelo_Cerica.tga"
 		}
 		fascism = {
 			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Benito_Mussolini.dds"
-			"gfx/leaders/SPR/Portrait_Spain_Francisco_Franco_old.dds"
 			"gfx/leaders/Mediterranean/Portrait_Italy_Alcide_de_Gasperi.tga"
 			"gfx/leaders/Mediterranean/Portrait_Italy_Carlo_Sforza.tga"
 			"gfx/leaders/Mediterranean/Portrait_CAR_Mariano_Gamir_Ulibarri.tga"
@@ -1188,18 +1178,10 @@ italic = {
 		absolutist = {
 			"gfx/leaders/Europe/Portrait_europe_generic_7.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Victor_Emmanuel_III.dds"
-			"gfx/leaders/Mediterranean/Portrait_SPM_Infante_Jaime.tga"
-			"gfx/leaders/Mediterranean/Portrait_Alfonso_XIII.tga"
-			"gfx/leaders/Mediterranean/Portrait_Portugal_Duarte_Nuno.tga"
-			"gfx/leaders/Mediterranean/Portrait_SPR_Jaime_I.tga"
-			"gfx/leaders/Mediterranean/Portrait_Javier_I.tga"
 		}
 		neutrality = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
 			"gfx/leaders/ITA/Portrait_Italy_Generic_3.dds"
-			"gfx/leaders/POR/portrait_por_antonio_de_oliveira_salazar.dds"
-			"gfx/leaders/POR/Portrait_Portugal_Antonio_de_Oliveira_Salazar_OLD.dds"
-			"gfx/leaders/SPR/portrait_spr_niceto_alcala_zamora.dds"
 			"gfx/leaders/Mediterranean/Portrait_Italy_Luigi_Sturzo.dds"
 		}
 		radical = {
@@ -1283,7 +1265,6 @@ italic = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_male_23.dds"
 		"gfx/leaders/Europe/portrait_europe_generic_operative_male_24.dds"
 		"gfx/leaders/Europe/portrait_europe_generic_operative_male_25.dds"
-		"gfx/leaders/SPA/portrait_spa_juan_pujol.dds"
 	}
 	female_operative_portraits = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
@@ -5275,6 +5256,12 @@ hispanic_pie = {
 		"gfx/leaders/Hispanic/Portrait_Paraguay_Hugenio_Morinigi.tga"
 		"gfx/leaders/Hispanic/Portrait_Paraguay_Rafael_Franco_KR.tga"
 		"gfx/leaders/Hispanic/Portrait_Salvador_Alvarado.tga"
+		"gfx/leaders/SPA/Portrait_Spain_Francisco_Franco.dds"
+		"gfx/leaders/Mediterranean/Portrait_SPR_Alonso_Vega.tga"
+		"gfx/leaders/Mediterranean/Portrait_SPR_Asensio_Cabanillas.tga"
+		"gfx/leaders/Mediterranean/Portrait_SPR_Miguel_Cabanellas_Ferrer.tga"
+		"gfx/leaders/Mediterranean/Portrait_Portugal_Antonio_Carmona.tga"
+		"gfx/leaders/Mediterranean/Portrait_POR_Castro_Bilstein_Menezes.tga"
 	}
 	navy_portraits = {
 		#Generic
@@ -5290,7 +5277,7 @@ hispanic_pie = {
 		"gfx/leaders/Hispanic/Portrait_Cuba_Manuel_Lopez_Migoya.tga"
 		"gfx/leaders/Hispanic/Portrait_ECU_Rafael_Valverde.tga"
 		"gfx/leaders/Hispanic/Portrait_ELS_Salvador_Castaneda_Castro.tga"
-
+		"gfx/leaders/Mediterranean/Portrait_POR_Americo_Thomaz.tga"
 	}
 	leader_portraits = {
 		communism = {
@@ -5313,6 +5300,7 @@ hispanic_pie = {
 			"gfx/leaders/Hispanic/Portrait_PAN_Ricardo_Jovane.tga"
 			"gfx/leaders/Hispanic/Portrait_Paraguay_Rafael_Franco_KR.tga"
 			"gfx/leaders/Hispanic/Portrait_URG_Luis Herrera.tga"
+			"gfx/leaders/SPR/portrait_spr_jose_diaz.dds"
 		}
 		democratic = {
 			"gfx/leaders/South America/Portrait_South_America_Generic_5.dds"
@@ -5336,6 +5324,7 @@ hispanic_pie = {
 			"gfx/leaders/Hispanic/Portrait_Mexico_Pascual_Rubio.tga"
 			"gfx/leaders/Hispanic/Portrait_PAN_Arnulfo_Arias_Madrid.tga"
 			"gfx/leaders/Hispanic/Portrait_PAN_Harmodio_Arias_Madrid_our.tga"
+			"gfx/leaders/SPR/Portrait_Spain_Manuel_Azana.dds"
 		}
 		fascism = {
 			"gfx/leaders/South America/portrait_south_america_generic_3.dds"
@@ -5343,6 +5332,7 @@ hispanic_pie = {
 			"gfx/leaders/CHL/portrait_chl_arturo_alessandri.dds"
 			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
 			"gfx/leaders/VEN/Portrait_Venezuela_Elezar_Lopez_Contreras.dds"
+			"gfx/leaders/PRU/portrait_per_oscar_benavides.dds"
 			"gfx/leaders/Hispanic/Portrait_Bolivia_Mamerto_Urriolagoitia.tga"
 			"gfx/leaders/Hispanic/Portrait_CHL_Juan_Esteban_Montero.tga"
 			"gfx/leaders/Hispanic/Portrait_COS_Ricardo_Oreamuno.tga"
@@ -5354,14 +5344,18 @@ hispanic_pie = {
 			"gfx/leaders/Hispanic/Portrait_Mexico_Emiliano_Zapata.tga"
 			"gfx/leaders/Hispanic/Portrait_Mexico_Juan_Almazan.tga"
 			"gfx/leaders/Hispanic/Portrait_PAN_Jose_Antonio_Remon_Cantera.tga"
+			"gfx/leaders/SPR/Portrait_Spain_Francisco_Franco_old.dds"
 		}
 		absolutist = {
-			"gfx/leaders/BRA/Portrait_Brazil_Getulio_Vargas.dds"
-			"gfx/leaders/PRU/portrait_per_oscar_benavides.dds"
 			"gfx/leaders/Hispanic/Portrait_Bolivia_Carlos_Quiroga.tga"
 			"gfx/leaders/Hispanic/Portrait_Ecuador_Alberto_Gallo.tga"
 			"gfx/leaders/Hispanic/Portrait_Paraguay_Raimundo_Rolon.tga"
 			"gfx/leaders/Hispanic/Portrait_Peru_Carlos_Miro_Quesada.tga"
+			"gfx/leaders/Mediterranean/Portrait_SPM_Infante_Jaime.tga"
+			"gfx/leaders/Mediterranean/Portrait_Alfonso_XIII.tga"
+			"gfx/leaders/Mediterranean/Portrait_Portugal_Duarte_Nuno.tga"
+			"gfx/leaders/Mediterranean/Portrait_SPR_Jaime_I.tga"
+			"gfx/leaders/Mediterranean/Portrait_Javier_I.tga"
 		}
 		neutrality = {
 			"gfx/leaders/South America/Portrait_South_America_Generic_6.dds"
@@ -5382,6 +5376,10 @@ hispanic_pie = {
 			"gfx/leaders/Hispanic/Portrait_Mexico_Lazaro_Cardenas.tga"
 			"gfx/leaders/Hispanic/Portrait_PAR_Eusebio_Ayala.tga"
 			"gfx/leaders/Hispanic/Portrait_Yucatan_Gustavo_Correa.tga"
+			"gfx/leaders/BRA/Portrait_Brazil_Getulio_Vargas.dds"
+			"gfx/leaders/POR/portrait_por_antonio_de_oliveira_salazar.dds"
+			"gfx/leaders/POR/Portrait_Portugal_Antonio_de_Oliveira_Salazar_OLD.dds"
+			"gfx/leaders/SPR/portrait_spr_niceto_alcala_zamora.dds"
 		}
 		radical = {
 			"gfx/leaders/South America/Portrait_South_America_Generic_2.dds"
@@ -5468,6 +5466,7 @@ hispanic_pie = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_male_6.dds"
 		"gfx/leaders/Generic/r56_portrait_generic_operative_south_america_1.dds"
 		"gfx/leaders/Generic/r56_portrait_generic_operative_south_america_2.dds"
+		"gfx/leaders/SPA/portrait_spa_juan_pujol.dds"
 	}
 	female_operative_portraits = {
 		"gfx/leaders/India/portrait_india_generic_operative_female_2.dds"
