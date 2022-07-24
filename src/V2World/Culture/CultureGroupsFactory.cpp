@@ -45,7 +45,15 @@ Vic2::CultureGroups::Factory::Factory()
 		const auto culture_group = culture_group_factory_.GetCultureGroup(the_stream);
 		if (culture_group.union_tag)
 		{
-			culture_groups_->union_tags_.insert(*culture_group.union_tag);
+			std::set<std::string> union_cultures;
+			for (const auto& culture: culture_group.cultures)
+			{
+				union_cultures.insert(culture);
+			}
+			if (auto [itr, success] = culture_groups_->unions_.emplace(*culture_group.union_tag, union_cultures); !success)
+			{
+				itr->second.merge(union_cultures);
+			}
 		}
 		for (const auto& culture: culture_group.cultures)
 		{

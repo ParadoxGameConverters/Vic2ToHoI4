@@ -2,16 +2,16 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Culture/CultureGroups.h"
 #include "src/V2World/Culture/CultureGroupsFactory.h"
+#include "gmock/gmock-matchers.h"
 #include <sstream>
 
 
 
 TEST(Vic2World_CultureGroupsTests, UnmatchedCultureReturnsNullopt)
 {
-	const commonItems::ModFilesystem mod_filesystem("", {});
-	const auto culture_groups = Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem);
+	const Vic2::CultureGroups culture_groups;
 
-	EXPECT_EQ(std::nullopt, culture_groups->GetGroup("unmatched_culture"));
+	EXPECT_EQ(std::nullopt, culture_groups.GetGroup("unmatched_culture"));
 }
 
 
@@ -39,4 +39,14 @@ TEST(Vic2World_CultureGroupsTests, NonUnionCountriesCanBeIdentified)
 	const auto culture_groups = Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem);
 
 	EXPECT_FALSE(culture_groups->IsUnionCountry("NON"));
+}
+
+
+TEST(Vic2World_CultureGroupsTests, UnionCulturesAreImported)
+{
+	const commonItems::ModFilesystem mod_filesystem("./BaseCultures", {});
+	const auto culture_groups = Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem);
+
+	EXPECT_THAT(culture_groups->GetUnionCultures("NON"), testing::UnorderedElementsAre());
+	EXPECT_THAT(culture_groups->GetUnionCultures("TAG"), testing::UnorderedElementsAre("matched_culture"));
 }

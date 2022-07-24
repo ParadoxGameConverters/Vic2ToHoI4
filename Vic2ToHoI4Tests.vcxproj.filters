@@ -1720,6 +1720,15 @@
     <ClCompile Include="src\HOI4World\Map\PathPoint.cpp">
       <Filter>src\HOI4World\Map</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Countries\UnionCountry.cpp">
+      <Filter>src\HOI4World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Countries\OutUnionCountry.cpp">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Countries\UnionCountryTests.cpp">
+      <Filter>src\HOI4World\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2120,6 +2129,12 @@
     </Filter>
     <Filter Include="data\test_files\Vic2World\Map">
       <UniqueIdentifier>{d233c4b9-7570-4cd1-ba23-9d2088973870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HOI4World\Countries">
+      <UniqueIdentifier>{17cb54ca-f511-4173-8ae5-60f5ee061978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Countries">
+      <UniqueIdentifier>{32cc1680-e52b-4874-99bb-f3b76b4d500f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3495,6 +3510,12 @@
     </ClInclude>
     <ClInclude Include="src\HOI4World\Map\PathPoint.h">
       <Filter>src\HOI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Countries\UnionCountry.h">
+      <Filter>src\HOI4World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h">
+      <Filter>src\OutHoi4\Countries</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

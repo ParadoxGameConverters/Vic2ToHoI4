@@ -18,13 +18,19 @@ class CultureGroups
 {
   public:
 	class Factory;
+	CultureGroups() = default;
+	CultureGroups(std::map<std::string, std::string> mappings, std::map<std::string, std::set<std::string>> unions):
+		 mappings_(std::move(mappings)), unions_(std::move(unions))
+	{
+	}
 
 	[[nodiscard]] std::optional<std::string> GetGroup(const std::string& culture) const;
 	[[nodiscard]] bool IsUnionCountry(const std::string& tag) const;
+	[[nodiscard]] std::set<std::string> GetUnionCultures(const std::string& tag) const;
 
   private:
 	std::map<std::string, std::string> mappings_;
-	std::set<std::string> union_tags_;
+	std::map<std::string, std::set<std::string>> unions_;
 };
 
 } // namespace Vic2

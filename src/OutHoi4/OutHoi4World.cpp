@@ -1,6 +1,7 @@
 #include "src/OutHoi4/OutHoi4World.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
+#include "src/OutHoi4/Countries/OutUnionCountry.h"
 #include "src/OutHoi4/CountryCategories/OutCountryCategories.h"
 #include "src/OutHoi4/Decisions/OutDecisions.h"
 #include "src/OutHoi4/Diplomacy/OutAiPeaces.h"
@@ -57,6 +58,7 @@ void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& coun
 void outputMap(const States& states, const StrategicRegions& strategicRegions, const std::string& outputName);
 void outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::string& outputName);
 void outputCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::vector<UnionCountry>& union_countries,
 	 const allMilitaryMappings& theMilitaryMappings,
 	 const std::string& outputName,
 	 const Configuration& theConfiguration);
@@ -206,7 +208,11 @@ void HoI4::OutputWorld(const World& world,
 	outputSupplyZones(world.getSupplyZones(), outputName);
 	outputRelations(outputName, world.getMajorIdeologies());
 	outputGenericFocusTree(world.getGenericFocusTree(), outputName);
-	outputCountries(world.getCountries(), world.getMilitaryMappings(), outputName, theConfiguration);
+	outputCountries(world.getCountries(),
+		 world.GetUnionCountries(),
+		 world.getMilitaryMappings(),
+		 outputName,
+		 theConfiguration);
 	outputBuildings(world.getBuildings(), outputName);
 	outputSupplyNodes("output/" + outputName, world.getSupplyNodes());
 	outputRailways("output/" + outputName, world.getRailways()->GetRailways());
@@ -381,6 +387,7 @@ void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const s
 
 
 void HoI4::outputCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::vector<UnionCountry>& union_countries,
 	 const allMilitaryMappings& theMilitaryMappings,
 	 const std::string& outputName,
 	 const Configuration& theConfiguration)
@@ -411,6 +418,16 @@ void HoI4::outputCountries(const std::map<std::string, std::shared_ptr<Country>>
 			const auto& specificMilitaryMappings = theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
 			outputCountry(specificMilitaryMappings.getDivisionTemplates(), *country, theConfiguration);
 		}
+	}
+
+	std::ofstream union_countries_file("output/" + outputName + "/common/countries/cosmetic.txt", std::ios::app);
+	if (!union_countries_file.is_open())
+	{
+		throw std::runtime_error("Could not open output/" + outputName + "/common/countries/cosmetic.txt");
+	}
+	for (const auto& union_country: union_countries)
+	{
+		union_countries_file << union_country;
 	}
 
 	std::ofstream portraitsFile("output/" + outputName + "/portraits/conv_portraits.txt");

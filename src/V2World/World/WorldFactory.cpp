@@ -114,6 +114,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	moveArmiesHome();
 	removeBattles();
 	ImportMapData(mod_filesystem);
+	world->culture_groups_ = *theCultureGroups;
 
 	return std::move(world);
 }

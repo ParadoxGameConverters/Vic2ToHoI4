@@ -316,6 +316,13 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld,
 	{
 		humanCountry = std::nullopt;
 	}
+
+	const auto& culture_groups = sourceWorld.GetCultureGroups();
+	for (const auto& source_union_country: sourceWorld.GetUnionCountries() | std::views::values)
+	{
+		HoI4::UnionCountry union_country(source_union_country, culture_groups);
+		union_countries_.push_back(union_country);
+	}
 }
 
 

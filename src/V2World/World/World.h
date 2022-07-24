@@ -39,6 +39,7 @@ class World
 	[[nodiscard]] const auto& getLocalisations() const { return *theLocalisations; }
 	[[nodiscard]] const auto& getDate() const { return *theDate; }
 	[[nodiscard]] const auto& getMapData() const { return *mapData_; }
+	[[nodiscard]] const auto& GetCultureGroups() const { return culture_groups_; }
 
 	[[nodiscard]] std::vector<std::reference_wrapper<const State>> getStates() const;
 
@@ -52,6 +53,7 @@ class World
 	std::unique_ptr<Localisations> theLocalisations;
 	std::unique_ptr<date> theDate;
 	std::unique_ptr<Maps::MapData> mapData_;
+	CultureGroups culture_groups_;
 };
 
 

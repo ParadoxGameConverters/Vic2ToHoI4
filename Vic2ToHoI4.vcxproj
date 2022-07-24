@@ -99,6 +99,7 @@
     <ClCompile Include="src\HOI4World\Characters\CountryLeaderDataFactory.cpp" />
     <ClCompile Include="src\HOI4World\Characters\PortraitsFactory.cpp" />
     <ClCompile Include="src\HOI4World\Characters\PortraitTypeFactory.cpp" />
+    <ClCompile Include="src\HOI4World\Countries\UnionCountry.cpp" />
     <ClCompile Include="src\HOI4World\CountryCategories\CountryCategories.cpp" />
     <ClCompile Include="src\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp" />
     <ClCompile Include="src\HOI4World\CountryCategories\CountryGrammarFactory.cpp" />
@@ -205,6 +206,7 @@
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.h" />
     <ClCompile Include="src\OutHoi4\Characters\OutPortrait.cpp" />
+    <ClCompile Include="src\OutHoi4\Countries\OutUnionCountry.cpp" />
     <ClCompile Include="src\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
     <ClCompile Include="src\OutHoi4\CountryCategories\OutCountryCategory.cpp" />
     <ClCompile Include="src\OutHoi4\Decisions\OutDecision.cpp" />
@@ -482,6 +484,7 @@
     <ClInclude Include="src\HOI4World\Characters\Portrait.h" />
     <ClInclude Include="src\HOI4World\Characters\PortraitsFactory.h" />
     <ClInclude Include="src\HOI4World\Characters\PortraitTypeFactory.h" />
+    <ClInclude Include="src\HOI4World\Countries\UnionCountry.h" />
     <ClInclude Include="src\HOI4World\CountryCategories\CountryCategories.h" />
     <ClInclude Include="src\HOI4World\CountryCategories\CountryGrammarRule.h" />
     <ClInclude Include="src\HOI4World\CountryCategories\CountryGrammarRuleFactory.h" />
@@ -625,6 +628,7 @@
     <ClInclude Include="src\OutHoi4\Characters\OutCharacter.h" />
     <ClInclude Include="src\OutHoi4\Characters\OutCommanderData.h" />
     <ClInclude Include="src\OutHoi4\Characters\OutPortrait.h" />
+    <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h" />
     <ClInclude Include="src\OutHoi4\CountryCategories\OutCountryCategories.h" />
     <ClInclude Include="src\OutHoi4\CountryCategories\OutCountryCategory.h" />
     <ClInclude Include="src\OutHoi4\Decisions\OutDecision.h" />

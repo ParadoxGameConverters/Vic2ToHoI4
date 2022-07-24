@@ -17,5 +17,18 @@ std::optional<std::string> Vic2::CultureGroups::GetGroup(const std::string& cult
 
 bool Vic2::CultureGroups::IsUnionCountry(const std::string& tag) const
 {
-	return union_tags_.contains(tag);
+	return unions_.contains(tag);
+}
+
+
+std::set<std::string> Vic2::CultureGroups::GetUnionCultures(const std::string& tag) const
+{
+	if (const auto& itr = unions_.find(tag); itr != unions_.end())
+	{
+		return itr->second;
+	}
+	else
+	{
+		return {};
+	}
 }
