@@ -32,6 +32,7 @@ class World
 
 	[[nodiscard]] const auto& getProvinces() const { return provinces; }
 	[[nodiscard]] const auto& getCountries() const { return countries; }
+	[[nodiscard]] const auto& GetUnionCountries() const { return union_countries_; }
 	[[nodiscard]] const auto& getDiplomacy() const { return *diplomacy; }
 	[[nodiscard]] const auto& getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] const auto& getStateDefinitions() const { return *theStateDefinitions; }
@@ -44,6 +45,7 @@ class World
   private:
 	std::map<int, std::shared_ptr<Province>> provinces;
 	std::map<std::string, Country> countries;
+	std::map<std::string, Country> union_countries_;
 	std::unique_ptr<Diplomacy> diplomacy;
 	std::vector<std::string> greatPowers;
 	std::unique_ptr<StateDefinitions> theStateDefinitions;
