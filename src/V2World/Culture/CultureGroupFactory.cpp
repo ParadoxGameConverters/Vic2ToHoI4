@@ -6,21 +6,20 @@
 
 Vic2::CultureGroupFactory::CultureGroupFactory()
 {
-	registerKeyword("union", commonItems::ignoreItem);
-	registerKeyword("leader", commonItems::ignoreItem);
-	registerKeyword("unit", commonItems::ignoreItem);
-	registerKeyword("is_overseas", commonItems::ignoreItem);
-	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureName, std::istream& theStream) {
-		cultureGroup.push_back(cultureName);
-		commonItems::ignoreItem(cultureName, theStream);
+	registerKeyword("union", [this](std::istream& the_stream) {
+		union_tag_ = commonItems::getString(the_stream);
+	});
+	registerRegex(commonItems::catchallRegex, [this](const std::string& culture_name, std::istream& the_stream) {
+		culture_group_.push_back(culture_name);
+		commonItems::ignoreItem(culture_name, the_stream);
 	});
 }
 
 
-
-std::vector<std::string> Vic2::CultureGroupFactory::getCultureGroup(std::istream& theStream)
+Vic2::CultureGroup Vic2::CultureGroupFactory::GetCultureGroup(std::istream& the_stream)
 {
-	cultureGroup.clear();
-	parseStream(theStream);
-	return cultureGroup;
+	culture_group_.clear();
+	union_tag_.reset();
+	parseStream(the_stream);
+	return {.cultures = culture_group_, .union_tag = union_tag_};
 }

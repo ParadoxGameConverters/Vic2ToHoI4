@@ -42,31 +42,36 @@ const std::set<std::string> south_americans{"aimara",
 Vic2::CultureGroups::Factory::Factory()
 {
 	parser_.registerRegex(commonItems::catchallRegex, [this](const std::string& group_name, std::istream& the_stream) {
-		for (const auto& culture: culture_group_factory_.getCultureGroup(the_stream))
+		const auto culture_group = culture_group_factory_.GetCultureGroup(the_stream);
+		if (culture_group.union_tag)
+		{
+			culture_groups_->union_tags_.insert(*culture_group.union_tag);
+		}
+		for (const auto& culture: culture_group.cultures)
 		{
 			// Fix HPM grouping all natives under one culture group
 			if (group_name == "native_american")
 			{
 				if (north_americans.contains(culture))
 				{
-					culture_groups_->mappings.insert(make_pair(culture, "native_north_american"));
+					culture_groups_->mappings_.insert(std::make_pair(culture, "native_north_american"));
 				}
 				else if (central_americans.contains(culture))
 				{
-					culture_groups_->mappings.insert(make_pair(culture, "native_central_american"));
+					culture_groups_->mappings_.insert(std::make_pair(culture, "native_central_american"));
 				}
 				else if (south_americans.contains(culture))
 				{
-					culture_groups_->mappings.insert(make_pair(culture, "native_south_american"));
+					culture_groups_->mappings_.insert(std::make_pair(culture, "native_south_american"));
 				}
 				else
 				{
-					culture_groups_->mappings.insert(make_pair(culture, "native_carribean"));
+					culture_groups_->mappings_.insert(std::make_pair(culture, "native_carribean"));
 				}
 			}
 			else
 			{
-				culture_groups_->mappings.insert(make_pair(culture, group_name));
+				culture_groups_->mappings_.insert(make_pair(culture, group_name));
 			}
 		}
 	});

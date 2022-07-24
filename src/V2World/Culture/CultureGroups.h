@@ -1,11 +1,13 @@
-#ifndef CULTURE_GROUPS_H
-#define CULTURE_GROUPS_H
+#ifndef SRC_V2WORLD_CULTURE_CULTURE_GROUPS_H
+#define SRC_V2WORLD_CULTURE_CULTURE_GROUPS_H
 
 
 
 #include <map>
 #include <optional>
+#include <set>
 #include <string>
+#include <vector>
 
 
 
@@ -17,14 +19,16 @@ class CultureGroups
   public:
 	class Factory;
 
-	[[nodiscard]] std::optional<std::string> getGroup(const std::string& culture) const;
+	[[nodiscard]] std::optional<std::string> GetGroup(const std::string& culture) const;
+	[[nodiscard]] bool IsUnionCountry(const std::string& tag) const;
 
   private:
-	std::map<std::string, std::string> mappings;
+	std::map<std::string, std::string> mappings_;
+	std::set<std::string> union_tags_;
 };
 
 } // namespace Vic2
 
 
 
-#endif // CULTURE_GROUPS_H
+#endif // SRC_V2WORLD_CULTURE_CULTURE_GROUPS_H

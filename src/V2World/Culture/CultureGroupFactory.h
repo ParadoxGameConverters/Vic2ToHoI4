@@ -4,6 +4,8 @@
 
 
 #include "external/common_items/Parser.h"
+#include "src/V2World/Culture/CultureGroup.h"
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -17,10 +19,11 @@ class CultureGroupFactory: commonItems::parser
   public:
 	CultureGroupFactory();
 
-	[[nodiscard]] std::vector<std::string> getCultureGroup(std::istream& theStream);
+	[[nodiscard]] CultureGroup GetCultureGroup(std::istream& the_stream);
 
   private:
-	std::vector<std::string> cultureGroup;
+	std::vector<std::string> culture_group_;
+	std::optional<std::string> union_tag_;
 };
 
 } // namespace Vic2

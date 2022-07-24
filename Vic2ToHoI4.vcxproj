@@ -837,6 +837,7 @@
     <ClInclude Include="src\V2World\Countries\CountryBuilder.h" />
     <ClInclude Include="src\V2World\Countries\CountryFactory.h" />
     <ClInclude Include="src\V2World\Countries\UnitNamesFactory.h" />
+    <ClInclude Include="src\V2World\Culture\CultureGroup.h" />
     <ClInclude Include="src\V2World\Culture\CultureGroupFactory.h" />
     <ClInclude Include="src\V2World\Culture\CultureGroups.h" />
     <ClInclude Include="src\V2World\Culture\CultureGroupsFactory.h" />

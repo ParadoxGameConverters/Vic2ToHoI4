@@ -2487,6 +2487,9 @@
     <ClInclude Include="src\HOI4World\Map\PathPoint.h">
       <Filter>src\HoI4World\Map</Filter>
     </ClInclude>
+    <ClInclude Include="src\V2World\Culture\CultureGroup.h">
+      <Filter>src\V2World\Culture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">

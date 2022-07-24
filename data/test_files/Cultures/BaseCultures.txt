@@ -1,3 +1,4 @@
 base_game_group = {
-	matched_culture
+	matched_culture = {}
+	union = TAG
 }
