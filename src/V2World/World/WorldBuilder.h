@@ -24,6 +24,12 @@ class World::Builder
 		return *this;
 	}
 
+	Builder& AddUnion(const std::string& tag, Country country)
+	{
+		world->union_countries_.emplace(tag, std::move(country));
+		return *this;
+	}
+
   private:
 	std::unique_ptr<World> world;
 };

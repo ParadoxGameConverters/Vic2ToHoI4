@@ -1,6 +1,7 @@
 #include "src/Mappers/Country/CountryMapperFactory.h"
 #include "external/common_items/Log.h"
 #include <iomanip>
+#include <ranges>
 
 
 
@@ -50,8 +51,16 @@ void Mappers::CountryMapper::Factory::createMappings(const Vic2::World& srcWorld
 	Log(LogLevel::Info) << "\tCreating country mappings";
 	resetMappingData();
 
-	for (const auto& [tag, unused]: srcWorld.getCountries())
+	for (const auto& tag: srcWorld.getCountries() | std::views::keys)
 	{
+		makeOneMapping(tag, debug);
+	}
+	for (const auto& tag: srcWorld.GetUnionCountries() | std::views::keys)
+	{
+		if (countryMapper->Vic2TagToHoI4TagMap.contains(tag))
+		{
+			continue;
+		}
 		makeOneMapping(tag, debug);
 	}
 }
