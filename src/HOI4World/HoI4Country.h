@@ -138,6 +138,7 @@ class Country
 	void addFocusTreeBranch(const std::string& branch, OnActions& onActions);
 	void adjustResearchFocuses() const;
 
+	void SetUnionCountryTag(const std::string& union_country_tag) { union_country_tag_ = union_country_tag; }
 	void setSphereLeader(const std::string& SphereLeader) { sphereLeader = SphereLeader; }
 	void setFaction(const std::shared_ptr<const Faction>& newFaction) { faction = newFaction; }
 	void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
@@ -181,6 +182,7 @@ class Country
 
 	[[nodiscard]] const std::string& getTag() const { return tag; }
 	[[nodiscard]] const auto& getOldTag() const { return oldTag; }
+	[[nodiscard]] const auto& GetUnionCountryTag() const { return union_country_tag_; }
 	[[nodiscard]] const auto& getName() const { return name_; }
 	[[nodiscard]] const std::string& getFilename() const { return filename; }
 	[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
@@ -372,6 +374,7 @@ class Country
 
 	std::string tag;
 	std::string oldTag;
+	std::optional<std::string> union_country_tag_;
 	std::optional<std::string> name_;
 	std::optional<std::string> adjective_;
 	std::string filename;

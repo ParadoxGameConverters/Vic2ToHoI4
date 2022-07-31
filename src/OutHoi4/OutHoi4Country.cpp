@@ -799,6 +799,10 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	{
 		output << "set_major = yes\n";
 	}
+	if (const auto& union_country_tag = theCountry.GetUnionCountryTag(); union_country_tag)
+	{
+		output << "set_cosmetic_tag = " << *union_country_tag << "\n";
+	}
 	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.isCivilized(), theCountry.isUnrecognizedNation());
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());

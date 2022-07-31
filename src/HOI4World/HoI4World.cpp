@@ -322,6 +322,11 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld,
 	{
 		HoI4::UnionCountry union_country(source_union_country, culture_groups, *countryMap);
 		union_countries_.push_back(union_country);
+
+		if (const auto& country_itr = countries.find(union_country.GetTag().substr(0, 3)); country_itr != countries.end())
+		{
+			country_itr->second->SetUnionCountryTag(union_country.GetTag());
+		}
 	}
 }
 
