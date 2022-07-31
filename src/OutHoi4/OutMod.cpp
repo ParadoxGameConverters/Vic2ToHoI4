@@ -98,7 +98,11 @@ void output(const HoI4::World& destWorld,
 	CreateOutputFolder(outputName);
 	CreateModFiles(outputName);
 	Log(LogLevel::Progress) << "85%";
-	copyFlags(destWorld.getCountries(), outputName, vic2Mods, destWorld.getMajorIdeologies());
+	copyFlags(destWorld.getCountries(),
+		 destWorld.GetUnionCountries(),
+		 outputName,
+		 vic2Mods,
+		 destWorld.getMajorIdeologies());
 	Log(LogLevel::Progress) << "90%";
 	OutputWorld(destWorld, outputName, debugEnabled, theConfiguration);
 }

@@ -4,6 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Countries/UnionCountry.h"
 #include "src/HOI4World/CountryCategories/CountryCategories.h"
 #include "src/HOI4World/Decisions/Decisions.h"
 #include "src/HOI4World/Diplomacy/AIPeaces.h"
@@ -82,6 +83,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getTheStates() const { return *states; }
 	[[nodiscard]] const auto& getStrategicRegions() const { return *strategicRegions; }
 	[[nodiscard]] const auto& getCountries() const { return countries; }
+	[[nodiscard]] const auto& GetUnionCountries() const { return union_countries_; }
 	[[nodiscard]] const auto& getMilitaryMappings() const { return *theMilitaryMappings; }
 	[[nodiscard]] auto& getGraphicsMapper() { return *graphicsMapper; }
 	[[nodiscard]] auto& getFactionNameMapper() { return *factionNameMapper; }
@@ -250,6 +252,7 @@ class World: commonItems::parser
 	std::map<std::string, std::shared_ptr<HoI4::Country>> countries;
 	std::map<std::string, std::shared_ptr<HoI4::Country>> landedCountries;
 	std::vector<std::shared_ptr<HoI4::Country>> greatPowers;
+	std::vector<HoI4::UnionCountry> union_countries_;
 
 	std::unique_ptr<Ideologies> ideologies;
 	std::map<std::string, std::vector<std::string>> ideologicalLeaderTraits;

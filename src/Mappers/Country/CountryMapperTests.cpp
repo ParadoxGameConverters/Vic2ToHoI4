@@ -34,6 +34,16 @@ TEST(Mappers_Country_CountryMapperTests, MappingCanBeGivenFromRule)
 }
 
 
+TEST(Mappers_Country_CountryMapperTests, UnionsAreValidForMappings)
+{
+	const auto mapper = Mappers::CountryMapper::Factory().importCountryMapper(
+		 *Vic2::World::Builder().AddUnion("AAA", *Vic2::Country::Builder().Build()).Build(),
+		 false);
+
+	ASSERT_EQ("HOI", mapper->getHoI4Tag("AAA"));
+}
+
+
 TEST(Mappers_Country_CountryMapperTests, RuleMappingIsLogged)
 {
 	std::stringstream log;

@@ -57,7 +57,7 @@ Vic2::Country::Factory::Factory(const commonItems::ModFilesystem& mod_filesystem
 		country->primaryCulture = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
 		country->acceptedCultures.insert(country->primaryCulture);
 
-		auto cultureGroupOption = theCultureGroups->getGroup(country->primaryCulture);
+		auto cultureGroupOption = theCultureGroups->GetGroup(country->primaryCulture);
 		if (cultureGroupOption)
 		{
 			country->primaryCultureGroup = *cultureGroupOption;

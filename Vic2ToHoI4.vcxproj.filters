@@ -1123,6 +1123,12 @@
     <ClCompile Include="src\HOI4World\Map\PathPoint.cpp">
       <Filter>src\HoI4World\Map</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Countries\UnionCountry.cpp">
+      <Filter>src\HoI4World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Countries\OutUnionCountry.cpp">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2487,6 +2493,15 @@
     <ClInclude Include="src\HOI4World\Map\PathPoint.h">
       <Filter>src\HoI4World\Map</Filter>
     </ClInclude>
+    <ClInclude Include="src\V2World\Culture\CultureGroup.h">
+      <Filter>src\V2World\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Countries\UnionCountry.h">
+      <Filter>src\HoI4World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
@@ -3064,6 +3079,12 @@
     </Filter>
     <Filter Include="src\V2World\World">
       <UniqueIdentifier>{8276dfc4-2cf3-46b5-a077-4f3a79e8ce3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Countries">
+      <UniqueIdentifier>{f44a1c24-0149-40f1-9738-4a48685df1ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Countries">
+      <UniqueIdentifier>{71f96e42-7401-4ffe-9379-315b86b610ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

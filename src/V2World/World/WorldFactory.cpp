@@ -104,6 +104,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	removeSimpleLandlessNations(theConfiguration.getRemoveCores());
 	determineEmployedWorkers();
 	overallMergeNations(theConfiguration.getDebug());
+	RecordUnionCountries(*theCultureGroups);
 	removeEmptyNations();
 	consolidatePartialStates();
 	addWarsToCountries(wars);
@@ -113,6 +114,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	moveArmiesHome();
 	removeBattles();
 	ImportMapData(mod_filesystem);
+	world->culture_groups_ = *theCultureGroups;
 
 	return std::move(world);
 }
@@ -271,6 +273,19 @@ void Vic2::World::Factory::determineEmployedWorkers()
 	for (auto& country: world->countries | std::views::values)
 	{
 		country.determineEmployedWorkers();
+	}
+}
+
+
+void Vic2::World::Factory::RecordUnionCountries(const CultureGroups& culture_groups)
+{
+	Log(LogLevel::Info) << "\tRecording union countries";
+	for (const auto& [tag, country]: world->countries)
+	{
+		if (culture_groups.IsUnionCountry(tag))
+		{
+			world->union_countries_.emplace(tag, country);
+		}
 	}
 }
 

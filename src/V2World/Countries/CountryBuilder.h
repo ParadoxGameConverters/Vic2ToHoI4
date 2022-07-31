@@ -17,6 +17,12 @@ class Country::Builder
 	Builder() { country = std::make_unique<Country>(); }
 	std::unique_ptr<Country> Build() { return std::move(country); }
 
+	Builder& SetTag(const std::string& tag)
+	{
+		country->tag = tag;
+		return *this;
+	}
+
 	Builder& addNameInLanguage(const std::string& language, const std::string& name)
 	{
 		country->namesByLanguage.insert(std::make_pair(language, name));

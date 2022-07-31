@@ -153,7 +153,7 @@ void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
 	{
 		const auto cultureSizes = determineCultureSizes();
 		primaryCulture = selectLargestCulture(cultureSizes);
-		auto cultureGroupOption = theCultureGroups.getGroup(primaryCulture);
+		auto cultureGroupOption = theCultureGroups.GetGroup(primaryCulture);
 		if (cultureGroupOption)
 		{
 			primaryCultureGroup = *cultureGroupOption;

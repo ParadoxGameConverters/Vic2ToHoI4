@@ -1,3 +1,4 @@
+#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Culture/CultureGroupFactory.h"
 #include <sstream>
@@ -8,36 +9,23 @@ TEST(Vic2World_CultureGroupFactoryTests, GroupDefaultsToEmpy)
 {
 	std::stringstream input;
 
-	const auto cultureGroup = Vic2::CultureGroupFactory().getCultureGroup(input);
-	ASSERT_TRUE(cultureGroup.empty());
+	const auto culture_group = Vic2::CultureGroupFactory().GetCultureGroup(input);
+	EXPECT_TRUE(culture_group.cultures.empty());
+	EXPECT_FALSE(culture_group.union_tag.has_value());
 }
 
 
-TEST(Vic2World_CultureGroupFactoryTests, NonCultureItemsAreIgnored)
-{
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tunion = {}\n";
-	input << "\tleader = {}\n";
-	input << "\tunit = {}\n";
-	input << "\tis_overseas = {}\n";
-	input << "}";
-
-	const auto cultureGroup = Vic2::CultureGroupFactory().getCultureGroup(input);
-	ASSERT_TRUE(cultureGroup.empty());
-}
-
-
-TEST(Vic2World_CultureGroupFactoryTests, CulturesAreImported)
+TEST(Vic2World_CultureGroupFactoryTests, ItemsAreImported)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tculture_one = {}\n";
 	input << "\tculture_two = {}\n";
+	input << "\tunion = TAG\n";
 	input << "}";
 
-	const auto cultureGroup = Vic2::CultureGroupFactory().getCultureGroup(input);
-	ASSERT_EQ(2, cultureGroup.size());
-	ASSERT_EQ("culture_one", cultureGroup[0]);
-	ASSERT_EQ("culture_two", cultureGroup[1]);
+	const auto culture_group = Vic2::CultureGroupFactory().GetCultureGroup(input);
+	EXPECT_THAT(culture_group.cultures, testing::ElementsAre("culture_one", "culture_two"));
+	ASSERT_TRUE(culture_group.union_tag.has_value());
+	EXPECT_EQ(culture_group.union_tag.value(), "TAG");
 }

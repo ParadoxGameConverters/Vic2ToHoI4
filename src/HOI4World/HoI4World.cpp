@@ -316,6 +316,18 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld,
 	{
 		humanCountry = std::nullopt;
 	}
+
+	const auto& culture_groups = sourceWorld.GetCultureGroups();
+	for (const auto& source_union_country: sourceWorld.GetUnionCountries() | std::views::values)
+	{
+		HoI4::UnionCountry union_country(source_union_country, culture_groups, *countryMap);
+		union_countries_.push_back(union_country);
+
+		if (const auto& country_itr = countries.find(union_country.GetTag().substr(0, 3)); country_itr != countries.end())
+		{
+			country_itr->second->SetUnionCountryTag(union_country.GetTag());
+		}
+	}
 }
 
 
@@ -437,6 +449,14 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 				 vic2Localisations,
 				 *articleRules);
 		}
+	}
+	for (const auto& country: union_countries_)
+	{
+		hoi4Localisations->createCountryLocalisations(std::make_pair(country.GetOldTag(), country.GetTag()),
+			 *countryNameMapper,
+			 ideologies->getMajorIdeologies(),
+			 vic2Localisations,
+			 *articleRules);
 	}
 
 	hoi4Localisations->addNonenglishCountryLocalisations();

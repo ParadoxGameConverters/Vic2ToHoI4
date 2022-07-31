@@ -11,68 +11,6 @@
 namespace HoI4
 {
 
-void processFlagsForCountry(const std::string&,
-	 const Country& country,
-	 const std::string& outputName,
-	 const Mods& vic2Mods,
-	 const std::set<std::string>& majorIdeologies);
-std::optional<tga_image*> createDominionFlag(const std::string& hoi4Suffix,
-	 const std::string& vic2Suffix,
-	 const std::string& overlord,
-	 const std::string& region,
-	 const Mods& vic2Mods);
-std::tuple<uint8_t, uint8_t, uint8_t> getDominionFlagBaseColor(std::string_view hoi4Suffix);
-std::optional<tga_image*> createUnrecognizedNationFlag(const std::string& hoi4Suffix,
-	 const std::string& vic2Suffix,
-	 const std::string& region,
-	 const Mods& vic2Mods);
-std::optional<tga_image*> readFlag(const std::string& path);
-tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
-void createBigFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
-void createMediumFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
-void createSmallFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
-std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
-	 const std::string& sourceSuffix,
-	 const Mods& vic2Mods);
-bool isThisAConvertedTag(const std::string& Vic2Tag);
-std::optional<std::string> getConversionModFlag(const std::string& flagFilename, const Mods& vic2Mods);
-std::optional<std::string> getAllowModFlags(const std::string& flagFilename, const Mods& vic2Mods);
-
-} // namespace HoI4
-
-
-
-void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 const std::string& outputName,
-	 const Mods& vic2Mods,
-	 const std::set<std::string>& majorIdeologies)
-{
-	Log(LogLevel::Info) << "\tCreating flags";
-
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx"))
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx");
-	}
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags"))
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags");
-	}
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags/medium"))
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium");
-	}
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags/small"))
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small");
-	}
-
-	for (const auto& [tag, country]: countries)
-	{
-		processFlagsForCountry(tag, *country, outputName, vic2Mods, majorIdeologies);
-	}
-}
-
-
 constexpr int numFlagsPerCountry = 6;
 
 constexpr std::array ideologies{"neutrality", "communism", "democratic", "fascism", "absolutist", "republic"};
@@ -100,6 +38,113 @@ static std::set<std::string> allowedMods = {"POPs of Darkness",
 	 "Divergences of Darkness",
 	 "The Concert of Europe",
 	 "Greater Flavor Mod"};
+
+void processFlagsForCountry(const std::string&,
+	 const Country& country,
+	 const std::string& outputName,
+	 const Mods& vic2Mods,
+	 const std::set<std::string>& majorIdeologies);
+std::optional<tga_image*> createDominionFlag(const std::string& hoi4Suffix,
+	 const std::string& vic2Suffix,
+	 const std::string& overlord,
+	 const std::string& region,
+	 const Mods& vic2Mods);
+std::tuple<uint8_t, uint8_t, uint8_t> getDominionFlagBaseColor(std::string_view hoi4Suffix);
+std::optional<tga_image*> createUnrecognizedNationFlag(const std::string& hoi4Suffix,
+	 const std::string& vic2Suffix,
+	 const std::string& region,
+	 const Mods& vic2Mods);
+std::optional<tga_image*> readFlag(const std::string& path);
+tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
+void createBigFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
+void createMediumFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
+void createSmallFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
+std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
+	 const std::string& sourceSuffix,
+	 const Mods& vic2Mods);
+bool isThisAConvertedTag(const std::string& Vic2Tag);
+std::optional<std::string> getConversionModFlag(const std::string& flagFilename, const Mods& vic2Mods);
+std::optional<std::string> getAllowModFlags(const std::string& flagFilename, const Mods& vic2Mods);
+
+
+void ProcessFlagsForUnionCountry(const UnionCountry& country,
+	 const std::string& outputName,
+	 const Mods& vic2Mods,
+	 const std::set<std::string>& majorIdeologies)
+{
+	for (size_t i = 0; i < numFlagsPerCountry; i++)
+	{
+		if (!majorIdeologies.contains(ideologies[i]))
+		{
+			continue;
+		}
+
+		std::optional<tga_image*> sourceFlag;
+
+		const auto sourcePath = getSourceFlagPath(country.GetOldTag(), vic2Suffixes[i], vic2Mods);
+		if (!sourcePath)
+		{
+			continue;
+		}
+
+		sourceFlag = readFlag(*sourcePath);
+		if (!sourceFlag)
+		{
+			continue;
+		}
+
+		const auto& tag = country.GetTag();
+		createBigFlag(*sourceFlag, tag + hoi4Suffixes[i], outputName);
+		createMediumFlag(*sourceFlag, tag + hoi4Suffixes[i], outputName);
+		createSmallFlag(*sourceFlag, tag + hoi4Suffixes[i], outputName);
+
+		tga_free_buffers(*sourceFlag);
+		delete *sourceFlag;
+	}
+}
+
+} // namespace HoI4
+
+
+
+void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::vector<HoI4::UnionCountry>& union_countries,
+	 const std::string& outputName,
+	 const Mods& vic2Mods,
+	 const std::set<std::string>& majorIdeologies)
+{
+	Log(LogLevel::Info) << "\tCreating flags";
+
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx"))
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx");
+	}
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags"))
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags");
+	}
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags/medium"))
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium");
+	}
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags/small"))
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small");
+	}
+
+	for (const auto& [tag, country]: countries)
+	{
+		processFlagsForCountry(tag, *country, outputName, vic2Mods, majorIdeologies);
+	}
+	for (const auto& country: union_countries)
+	{
+		if (countries.contains(country.GetTag()))
+		{
+			continue;
+		}
+		ProcessFlagsForUnionCountry(country, outputName, vic2Mods, majorIdeologies);
+	}
+}
 
 
 void HoI4::processFlagsForCountry(const std::string& tag,
