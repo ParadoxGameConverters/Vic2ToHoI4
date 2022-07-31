@@ -13,7 +13,7 @@ namespace HoI4
 
 constexpr int numFlagsPerCountry = 6;
 
-constexpr std::array ideologies{ "neutrality", "communism", "democratic", "fascism", "absolutist", "republic" };
+constexpr std::array ideologies{"neutrality", "communism", "democratic", "fascism", "absolutist", "republic"};
 
 constexpr std::array<const char*, numFlagsPerCountry> vic2Suffixes{
 	 ".tga",				 // base flag
@@ -33,11 +33,11 @@ constexpr std::array<const char*, numFlagsPerCountry> hoi4Suffixes{
 	 "_radical.tga",	  // radical flag
 };
 
-static std::set<std::string> allowedMods = { "POPs of Darkness",
+static std::set<std::string> allowedMods = {"POPs of Darkness",
 	 "New Nations Mod",
 	 "Divergences of Darkness",
 	 "The Concert of Europe",
-	 "Greater Flavor Mod" };
+	 "Greater Flavor Mod"};
 
 void processFlagsForCountry(const std::string&,
 	 const Country& country,
@@ -68,9 +68,9 @@ std::optional<std::string> getAllowModFlags(const std::string& flagFilename, con
 
 
 void ProcessFlagsForUnionCountry(const UnionCountry& country,
-	const std::string& outputName,
-	const Mods& vic2Mods,
-	const std::set<std::string>& majorIdeologies)
+	 const std::string& outputName,
+	 const Mods& vic2Mods,
+	 const std::set<std::string>& majorIdeologies)
 {
 	for (size_t i = 0; i < numFlagsPerCountry; i++)
 	{
@@ -99,7 +99,7 @@ void ProcessFlagsForUnionCountry(const UnionCountry& country,
 		createSmallFlag(*sourceFlag, tag + hoi4Suffixes[i], outputName);
 
 		tga_free_buffers(*sourceFlag);
-		delete* sourceFlag;
+		delete *sourceFlag;
 	}
 }
 
@@ -136,7 +136,7 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 	{
 		processFlagsForCountry(tag, *country, outputName, vic2Mods, majorIdeologies);
 	}
-	for (const auto& country : union_countries)
+	for (const auto& country: union_countries)
 	{
 		if (countries.contains(country.GetTag()))
 		{
