@@ -22,11 +22,13 @@ class UnionCountry
 		 const Mappers::CountryMapper& country_mapper);
 
 	[[nodiscard]] const std::string& GetTag() const { return tag_; }
+	[[nodiscard]] const std::string& GetOldTag() const { return old_tag_; }
 	[[nodiscard]] const std::set<std::string>& GetCultures() const { return cultures_; }
 	[[nodiscard]] const commonItems::Color& GetColor() const { return color_; }
 
   private:
 	std::string tag_;
+	std::string old_tag_;
 	std::set<std::string> cultures_;
 	commonItems::Color color_;
 };

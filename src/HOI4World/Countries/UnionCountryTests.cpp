@@ -32,6 +32,18 @@ TEST(HoI4World_Countries_UnionCountryTests, TagIsFromSourceCountryIfNoMapping)
 	EXPECT_EQ(union_country.GetTag(), "TAG_union");
 }
 
+
+TEST(HoI4World_Countries_UnionCountryTests, OldTagIsStored)
+{
+	const auto vic2_country = Vic2::Country::Builder{}.SetTag("TAG").Build();
+	const Vic2::CultureGroups culture_groups;
+	const auto country_mapper = Mappers::CountryMapper::Builder{}.Build();
+
+	const HoI4::UnionCountry union_country(*vic2_country, culture_groups, *country_mapper);
+
+	EXPECT_EQ(union_country.GetOldTag(), "TAG");
+}
+
 TEST(HoI4World_Countries_UnionCountryTests, ColorIsFromSourceCountry)
 {
 	const commonItems::Color test_color(std::array<int, 3>{3, 6, 9});
