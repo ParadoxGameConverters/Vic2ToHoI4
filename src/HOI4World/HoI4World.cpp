@@ -445,6 +445,14 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 				 *articleRules);
 		}
 	}
+	for (const auto& country: union_countries_)
+	{
+		hoi4Localisations->createCountryLocalisations(std::make_pair(country.GetOldTag(), country.GetTag()),
+			 *countryNameMapper,
+			 ideologies->getMajorIdeologies(),
+			 vic2Localisations,
+			 *articleRules);
+	}
 
 	hoi4Localisations->addNonenglishCountryLocalisations();
 }
