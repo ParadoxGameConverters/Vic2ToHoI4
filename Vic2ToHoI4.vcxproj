@@ -106,6 +106,7 @@
     <ClCompile Include="src\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="src\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="src\HOI4World\Decisions\DecisionsCategory.cpp" />
+    <ClCompile Include="src\HOI4World\Decisions\UnionDecisions.cpp" />
     <ClCompile Include="src\HOI4World\Diplomacy\HoI4AIStrategy.cpp" />
     <ClCompile Include="src\HOI4World\Diplomacy\HoI4Relations.cpp" />
     <ClCompile Include="src\HOI4World\Events\CapitulationEvents.cpp" />
@@ -492,6 +493,7 @@
     <ClInclude Include="src\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
     <ClInclude Include="src\HOI4World\Decisions\DecisionsCategories.h" />
     <ClInclude Include="src\HOI4World\Decisions\DecisionsCategory.h" />
+    <ClInclude Include="src\HOI4World\Decisions\UnionDecisions.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\HoI4AIStrategy.h" />
     <ClInclude Include="src\HOI4World\Events\CapitulationEvents.h" />
     <ClInclude Include="src\HOI4World\Events\EventsBuilder.h" />

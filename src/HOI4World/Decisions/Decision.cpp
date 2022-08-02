@@ -3,6 +3,10 @@
 #include "external/common_items/ParserHelpers.h"
 
 
+HoI4::decision::decision(std::string decisionName)
+{
+	name = decisionName;
+}
 
 HoI4::decision::decision(std::string decisionName, std::istream& theStream): name(std::move(decisionName))
 {

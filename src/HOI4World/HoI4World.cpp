@@ -229,7 +229,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 states->getDefaultStates(),
 		 *events,
 		 getSouthAsianCountries(),
-		 strongestGpNavies);
+		 strongestGpNavies,
+		 union_countries_);
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
 	importCharacters(characterFactory);

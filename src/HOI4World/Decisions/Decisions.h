@@ -15,6 +15,7 @@
 #include "src/HOI4World/Decisions/PoliticalDecisions.h"
 #include "src/HOI4World/Decisions/ResourceProspectingDecisions.h"
 #include "src/HOI4World/Decisions/StabilityWarSupportDecisions.h"
+#include "src/HOI4World/Decisions/UnionDecisions.h"
 #include "src/HOI4World/Events/Events.h"
 #include "src/HOI4World/States/DefaultState.h"
 #include <map>
@@ -37,7 +38,8 @@ class decisions: commonItems::parser
 		 const std::map<int, DefaultState>& defaultStates,
 		 const Events& theEvents,
 		 const std::set<std::string>& southAsianCountries,
-		 const std::vector<std::string>& strongestGpNavies);
+		 const std::vector<std::string>& strongestGpNavies,
+		 const std::vector<HoI4::UnionCountry>& unionCountries);
 
 	[[nodiscard]] const auto& getIdeologicalCategories() const { return *ideologicalCategories; }
 	[[nodiscard]] const std::vector<DecisionsInCategory>& getAgentRecruitmentDecisions() const
@@ -68,6 +70,10 @@ class decisions: commonItems::parser
 	{
 		return resourceProspectingDecisions.getDecisions();
 	}
+	[[nodiscard]] const std::vector<DecisionsInCategory>& getUnionDecisions() const
+	{
+		return unionDecisions.getDecisions();
+	}
 	[[nodiscard]] const std::vector<DecisionsInCategory>& getGenericDecisions() const
 	{
 		return genericDecisions.getDecisions();
@@ -81,6 +87,7 @@ class decisions: commonItems::parser
 	static std::optional<int> getRelevantStateFromProvince(int province, const std::map<int, int>& provinceToStateIdMap);
 
 	std::unique_ptr<DecisionsCategories> ideologicalCategories;
+	std::unique_ptr<DecisionsCategories> formableCategories;
 
 	AgentRecruitmentDecisions agentRecruitmentDecisions;
 	StabilityWarSupportDecisions stabilityDecisions;
@@ -89,6 +96,7 @@ class decisions: commonItems::parser
 	ForeignInfluenceDecisions foreignInfluenceDecisions;
 	NavalTreatyDecisions navalTreatyDecisions;
 	ResourceProspectingDecisions resourceProspectingDecisions;
+	UnionDecisions unionDecisions;
 	GenericDecisions genericDecisions;
 };
 

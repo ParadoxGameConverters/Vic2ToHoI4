@@ -14,6 +14,7 @@ namespace HoI4
 class decision: commonItems::parser
 {
   public:
+	decision(std::string decisionName);
 	decision(std::string decisionName, std::istream& theStream);
 
 	[[nodiscard]] std::string getName() const { return name; }
