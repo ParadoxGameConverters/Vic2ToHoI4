@@ -1729,6 +1729,9 @@
     <ClCompile Include="src\HOI4World\Countries\UnionCountryTests.cpp">
       <Filter>src\HOI4World\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\UnionDecisions.cpp">
+      <Filter>src\HOI4World\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -3516,6 +3519,9 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h">
       <Filter>src\OutHoi4\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\UnionDecisions.h">
+      <Filter>src\HOI4World\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

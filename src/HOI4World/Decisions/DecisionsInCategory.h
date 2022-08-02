@@ -18,6 +18,7 @@ namespace HoI4
 class DecisionsInCategory: commonItems::parser
 {
   public:
+	explicit DecisionsInCategory(std::string category_name): name(std::move(category_name)) {}
 	DecisionsInCategory(std::string categoryName, std::istream& theStream);
 
 	[[nodiscard]] auto getDecisions() const { return theDecisions; }
