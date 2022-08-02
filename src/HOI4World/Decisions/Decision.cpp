@@ -125,7 +125,7 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream): nam
 	});
 	registerKeyword("fire_only_once", [this](std::istream& theStream) {
 		const commonItems::singleString theFire(theStream);
-		fireOnlyOnce = theFire.getString();
+		fireOnlyOnce == theFire.getString().find("yes");
 	});
 	registerKeyword("modifier", [this](std::istream& theStream) {
 		const commonItems::stringOfItem theModifier(theStream);

@@ -81,9 +81,9 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	{
 		outStream << "\n\t\tcustom_cost_text " << outDecision.customCostText << "\n";
 	}
-	if (!outDecision.fireOnlyOnce.empty())
+	if (outDecision.fireOnlyOnce)
 	{
-		outStream << "\n\t\tfire_only_once = " << outDecision.fireOnlyOnce << "\n";
+		outStream << "\n\t\tfire_only_once = yes\n";
 	}
 	if (!outDecision.modifier.empty())
 	{
