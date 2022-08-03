@@ -6,6 +6,9 @@
 
 Vic2::CultureGroupFactory::CultureGroupFactory()
 {
+	registerRegex("leader|is_overseas|unit", [this](const std::string& unused, std::istream& the_stream) {
+		commonItems::ignoreItem(unused, the_stream);
+	});
 	registerKeyword("union", [this](std::istream& the_stream) {
 		union_tag_ = commonItems::getString(the_stream);
 	});
