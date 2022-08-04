@@ -587,6 +587,9 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 
 		uint64_t totalPopulation = 0;
 		double acceptedPopulation = 0;
+
+		std::map<std::string, double> popCultureMap;
+
 		for (const auto& sourceProvinceNum: sourceProvinceNums)
 		{
 			if (const auto& vic2Province = vic2Provinces.find(sourceProvinceNum); vic2Province != vic2Provinces.end())
@@ -595,6 +598,14 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 				totalPopulation += provincePopulation;
 				acceptedPopulation +=
 					 provincePopulation * vic2Province->second->getPercentageWithCultures(acceptedCultures);
+
+				for (const auto& culture: vic2Province->second->getCultures())
+					if (!popCultureMap.count(culture))
+						popCultureMap.emplace(culture,
+							 provincePopulation * vic2Province->second->getPercentageWithCulture(culture));
+					else
+						popCultureMap.find(culture)->second +=
+							 provincePopulation * vic2Province->second->getPercentageWithCulture(culture);
 			}
 		}
 
@@ -605,6 +616,13 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 		else
 		{
 			newState.addClaims({HoI4Core});
+		}
+		Log(LogLevel::Debug) << "State: " << newState.getID();
+		for (const auto& popCulture: popCultureMap)
+		{
+			Log(LogLevel::Debug) << "\t\t\t" << popCulture.first << " Pops: " << popCulture.second << "\n\tPopulation: " << static_cast<double>(totalPopulation);
+			if (popCulture.second / static_cast<double>(totalPopulation) >= 0.25 && !newState.getMajorCultures().count(popCulture.first))
+				newState.addMajorCulture(popCulture.first);
 		}
 	}
 }

@@ -96,6 +96,10 @@ void HoI4::outputHoI4State(std::ostream& output, const State& theState, const bo
 	{
 		output << "\t\tadd_claim_by = " << claim << "\n";
 	}
+	for (const auto& majorCulture: theState.getMajorCultures())
+	{
+		output << "\t\tset_state_flag = major_culture_" << majorCulture << "_flag\n";
+	}
 	for (const auto& countryControlledProvinces: theState.getControlledProvinces())
 	{
 		output << "\t\t" << countryControlledProvinces.first << " = {\n";

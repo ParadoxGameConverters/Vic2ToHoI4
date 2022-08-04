@@ -1087,6 +1087,12 @@ ideas = {
 			picture = culture_garanian
 			modifier = { }
 		}
+		culture_gaul = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_gaulish
+			modifier = { }
+		}
 		culture_gaulish = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -3505,7 +3511,7 @@ ideas = {
 			picture = culture_noculture
 			modifier = { }
 		}
-		culture_leader = {
+		culture_unit = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_noculture

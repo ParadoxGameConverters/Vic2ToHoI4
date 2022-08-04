@@ -6906,7 +6906,7 @@ falklands_sunset_invasion = {
 	}
 	male_operative_portraits = {
 		"gfx/leaders/Animalia/portrait_Spymaster_Glitterhoof.dds"
-		"gfx/leaders/Animalia/portrait_unicorn_disguise_buisness.dds"
+		"gfx/leaders/Animalia/portrait_unicorn_operative.dds"
 	}
 	female_operative_portraits = {
 		"gfx/leaders/Animalia/portrait_Spymaster_Glitterhoof.dds" # Revise
