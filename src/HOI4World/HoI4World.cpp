@@ -1580,6 +1580,10 @@ void HoI4::World::addFocusTrees(bool debug)
 			genericFocusTree.eraseBranch("uk_colonial_focus");
 			customizedFocusBranches.push_back("uk_colonial_focus");
 		}
+		if (genericFocusTree.getBranches().contains("FRA_begin_rearmament") && country->isHuman())
+		{
+			country->addFocusTreeBranch("FRA_begin_rearmament", *onActions);
+		}
 	}
 }
 
