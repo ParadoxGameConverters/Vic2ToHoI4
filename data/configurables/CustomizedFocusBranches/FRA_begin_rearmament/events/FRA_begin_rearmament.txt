@@ -1,0 +1,63 @@
+add_namespace = FRA_begin_rearmament
+
+# FRA_begin_rearmament
+country_event = {
+	id = FRA_begin_rearmament.1
+	title = FRA_begin_rearmament.1.t
+	desc = FRA_begin_rearmament.1.desc
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		# Add Chief of Army for FRA_defensive_focus
+		random_character = {
+			limit = {
+				is_army_leader = yes
+				is_advisor = no
+			}
+			set_character_flag = FRA_begin_rearmament_advisor
+		}
+		if = {	# ROOT has no converted army leaders
+			limit = {
+				NOT = { any_character = { has_character_flag = FRA_begin_rearmament_advisor } }
+			}
+			generate_character = {
+				token_base = FRA_begin_rearmament_advisor
+			}
+			FRA_begin_rearmament_advisor = {
+				set_character_flag = FRA_begin_rearmament_advisor
+			}
+		}
+		random_character = {
+			limit = { has_character_flag = FRA_begin_rearmament_advisor }
+			add_advisor_role = {
+				character = THIS
+				advisor={
+					slot = army_chief
+					idea_token = maxime_weygand
+					allowed = {
+						original_tag = ROOT
+					}
+					available = {
+						has_completed_focus = FRA_defensive_focus
+					}
+					cost = 100.000
+					traits = {
+						army_chief_defensive_2
+					}
+					cost = 100
+					ai_will_do = {
+						factor = 1.000
+					}
+				}
+				#activate = yes
+			}
+		}
+	}
+
+	option = {
+		name = FRA_begin_rearmament.1.a
+	}
+}
