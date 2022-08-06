@@ -68,6 +68,16 @@ std::string createNavyScriptedLocalisationsText(const std::vector<std::string>& 
 }
 
 
+void HoI4::ScriptedLocalisations::addDecisionScriptedLocalisations(const std::map<std::string, std::string>& customLoc)
+{
+	for (const auto& loc: customLoc)
+	{
+		ScriptedLocalisation decisionScriptedLoc;
+		decisionScriptedLoc.setName(loc.first);
+		decisionScriptedLoc.addText(loc.second);
+		scriptedLocalisations.push_back(decisionScriptedLoc);
+	}
+}
 void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::vector<std::string>& strongestNaviesTags)
 {
 	ScriptedLocalisation GetStrengthRatioBritain;

@@ -11,11 +11,17 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 		decision formationDecisionStateTrigger(name + "_state_trigger");
 		decision formationDecision(name);
 
+		//Custom Loc
+		formable_decisions_category.addCustomLocalisation(
+			std::pair(name + "_loc_DEF", "\t= {\n\t\tlocalization_key = " + tag + "_DEF\n\t}"));
+		formable_decisions_category.addCustomLocalisation(
+			 std::pair(name + "_loc_ADJ", "\t= {\n\t\tlocalization_key = " + tag + "_ADJ\n\t}"));
+
 		// STATE TRIGGER
 		// Allowed
 		std::string allowed = "= {\n";
 		allowed += "\t\t\tNOT = { original_tag = " + oldTag + " }\n";
-		allowed += "\t\t}\n";
+		allowed += "\t\t}";
 		formationDecisionStateTrigger.setAllowed(allowed);
 
 		// State Target/On Map Mode/Icon
@@ -25,75 +31,82 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 
 		// Target ROOT Trigger
 		std::string targetRootTrigger = "= {\n";
-		targetRootTrigger += "\t\t\t highlight_states_trigger = {\n";
-		targetRootTrigger += "\t\t\t\t OR = {\n";
+		targetRootTrigger += "\t\t\t OR = {\n";
 		for (const auto& culture: unionCountry.GetCultures())
 		{
-			targetRootTrigger += "\t\t\t\t\thas_state_flag = major_culture_" + culture + "_flag\n";
+			targetRootTrigger += "\t\t\t\thas_idea = culture_" + culture + "\n";
 		}
-		targetRootTrigger += "\t\t\t\t}\n";
-		targetRootTrigger += "\t\t\t\tNOT = { is_controlled_by = ROOT }\n";
 		targetRootTrigger += "\t\t\t}\n";
+		targetRootTrigger += "\t\t\tNOT = { has_cosmetic_tag = " + tag + " }\n";
+		targetRootTrigger += "\t\t\t" + oldTag + " = { exists = no }\n";
 		targetRootTrigger += "\t\t}\n";
-		formationDecisionStateTrigger.setTargetTrigger(targetRootTrigger);
+		formationDecisionStateTrigger.setTargetRootTrigger(targetRootTrigger);
 
 		// Target Trigger
 		std::string targetTrigger = "= {\n";
-		targetTrigger += "\t\t\t OR = {\n";
+		targetTrigger += "\t\t\tFROM = {\n";
+		targetTrigger += "\t\t\t\tOR = {\n";
 		for (const auto& culture: unionCountry.GetCultures())
 		{
-			targetTrigger += "\t\t\t\thas_state_flag = major_culture_" + culture + "_flag\n";
+			targetTrigger += "\t\t\t\t\thas_state_flag = major_culture_" + culture + "_flag\n";
 		}
-		targetTrigger += "\t\t\t}\n";
-		targetTrigger += "\t\t\tNOT = { is_controlled_by = ROOT }\n";
+		targetTrigger += "\t\t\t\t}\n";
+		targetTrigger += "\t\t\t}\n";		
 		targetTrigger += "\t\t}\n";
 		formationDecisionStateTrigger.setTargetTrigger(targetTrigger);
 
 		// Highlight States
 		std::string highlightStates = "= {\n";
-		highlightStates += "\t\t\t highlight_states_trigger = {\n";
+		highlightStates += "\t\t\thighlight_states_trigger = {\n";
 		highlightStates += "\t\t\t\t OR = {\n";
 		for (const auto& culture: unionCountry.GetCultures())
 		{
 			highlightStates += "\t\t\t\t\thas_state_flag = major_culture_" + culture + "_flag\n";
 		}
 		highlightStates += "\t\t\t\t}\n";
-		highlightStates += "\t\t\t\tNOT = { is_controlled_by = ROOT }\n";
 		highlightStates += "\t\t\t}\n";
 		highlightStates += "\t\t\thighlight_color_before_active = 1\n";
 		highlightStates += "\t\t\thighlight_color_while_active = 2\n";
-		highlightStates += "\t\t}\n";
+		highlightStates += "\t\t}";
 		formationDecisionStateTrigger.setHighlightStateTargets(highlightStates);
 
 		// Available
 		std::string available = "= {\n";
-		available += "\t\t\t hidden_trigger = {\n";
-		available += "\t\t\t\t set_temp_variable = { temp_original_states = 0 }\n";
-		available += "\t\t\t\t set_temp_variable = { original_states = 0 }\n";
-		available += "\t\t\t\t all_state = {\n";
-		available += "\t\t\t\t\t if = {\n";
-		available += "\t\t\t\t\t\t limit = {\n";
-		available += "\t\t\t\t\t\t\t OR = {\n";
+		available += "\t\t\thidden_trigger = {\n";
+		available += "\t\t\t\tset_temp_variable = { temp_original_states = 0 }\n";
+		available += "\t\t\t\tset_temp_variable = { original_states = 0 }\n";
+		available += "\t\t\t\tif = {\n";
+		available += "\t\t\t\t\tlimit = {\n";
+		available += "\t\t\t\t\t\tall_state = {\n";
+		available += "\t\t\t\t\t\t\tif = {\n";
+		available += "\t\t\t\t\t\t\t\tlimit = {\n";
+		available += "\t\t\t\t\t\t\t\t\tOR = {\n";
 		for (const auto& culture: unionCountry.GetCultures())
 		{
-			available += "\t\t\t\t\t\t\t\thas_state_flag = major_culture_" + culture + "_flag\n";
+			available += "\t\t\t\t\t\t\t\t\t\thas_state_flag = major_culture_" + culture + "_flag\n";
 		}
+		available += "\t\t\t\t\t\t\t\t\t}\n";
+		available += "\t\t\t\t\t\t\t\t}\n";
+		available += "\t\t\t\t\t\t\t\tadd_to_temp_variable = { ROOT.original_states = 1 }\n";
 		available += "\t\t\t\t\t\t\t}\n";
 		available += "\t\t\t\t\t\t}\n";
-		available += "\t\t\t\t\t\tadd_to_temp_variable = { ROOT.original_states = 1 }\n";
 		available += "\t\t\t\t\t}\n";
 		available += "\t\t\t\t}\n";
-		available += "\t\t\t\tall_controlled_state = {\n";
-		available += "\t\t\t\t\t if = {\n";
-		available += "\t\t\t\t\t\t limit = {\n";
-		available += "\t\t\t\t\t\t\t OR = {\n";
+		available += "\t\t\t\tif = {\n";
+		available += "\t\t\t\t\tlimit = {\n";
+		available += "\t\t\t\t\t\tall_controlled_state = {\n";
+		available += "\t\t\t\t\t\t\tif = {\n";
+		available += "\t\t\t\t\t\t\t\tlimit = {\n";
+		available += "\t\t\t\t\t\t\t\t\tOR = {\n";
 		for (const auto& culture: unionCountry.GetCultures())
 		{
-			available += "\t\t\t\t\t\t\t\thas_state_flag = major_culture_" + culture + "_flag\n";
+			available += "\t\t\t\t\t\t\t\t\t\thas_state_flag = major_culture_" + culture + "_flag\n";
 		}
+		available += "\t\t\t\t\t\t\t\t\t}\n";
+		available += "\t\t\t\t\t\t\t\t}\n";
+		available += "\t\t\t\t\t\t\t\tadd_to_temp_variable = { ROOT.temp_original_states = 1 }\n";
 		available += "\t\t\t\t\t\t\t}\n";
 		available += "\t\t\t\t\t\t}\n";
-		available += "\t\t\t\t\t\tadd_to_temp_variable = { ROOT.temp_original_states = 1 }\n";
 		available += "\t\t\t\t\t}\n";
 		available += "\t\t\t\t}\n";
 		available += "\t\t\t\tmultiply_temp_variable = { ROOT.original_states = 0.75 }\n";
@@ -109,11 +122,11 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 		available += "\t\t\t}\n";
 		available += "\t\t\tNOT = {\n";
 		available += "\t\t\t\tany_other_country = {\n";
-		available += "\t\t\t\t\thas_cosmetic_tag = CHI_union\n";
+		available += "\t\t\t\t\thas_cosmetic_tag = " + tag + "\n";
 		available += "\t\t\t\t\texists = yes\n";
 		available += "\t\t\t\t}\n";
 		available += "\t\t\t}\n";
-		available += "\t\t}\n";
+		available += "\t\t}";
 		formationDecisionStateTrigger.setAvailable(available);
 
 		// Complete Effect
@@ -124,6 +137,11 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 
 		// AI Will Do
 		formationDecisionStateTrigger.setAiWillDo("= {\n\t\t\tbase = 100\n\t\t}");
+
+		//Localisation
+		formable_decisions_category.addLocalisation(std::pair(name + "_state_trigger", "[" + name + "_loc_ADJ] State"));
+		formable_decisions_category.addLocalisation(std::pair(name + "_state_trigger_desc",
+			 "One of the [?original_states] states needed to form [" + name + "_loc_DEF]."));
 
 		// Add to Category
 		formable_decisions_category.addDecision(formationDecisionStateTrigger);
@@ -141,8 +159,9 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 			visible += "\t\t\t\thas_idea = culture_" + culture + "\n";
 		}
 		visible += "\t\t\t}\n";
+		visible += "\t\t\tNOT = { has_cosmetic_tag = " + tag + " }\n";
 		visible += "\t\t\t" + oldTag + " = { exists = no }\n";
-		visible += "\t\t}\n";
+		visible += "\t\t}";
 		formationDecision.setVisible(visible);
 
 		// Available
@@ -182,6 +201,12 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 
 		// AI Will Do
 		formationDecision.setAiWillDo("= {\n\t\t\tbase = 100\n\t\t}");
+
+		// Localisation
+		formable_decisions_category.addLocalisation(std::pair(name, "Form [" + name + "_loc_DEF]"));
+		formable_decisions_category.addLocalisation(std::pair(name + "_desc",
+			 "Our great people have been seperated for too long, kept apart by foreign powers who would keep us divided "
+			 "and weak. Now we stand united against any who would dare try to seperate us again."));
 
 		// Add to Category
 		formable_decisions_category.addDecision(formationDecision);
