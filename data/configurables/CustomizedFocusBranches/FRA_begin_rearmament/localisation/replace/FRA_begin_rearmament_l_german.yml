@@ -1,0 +1,5 @@
+﻿l_german:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament.GetName] Befestigungen"
+ FRA_alpine_forts_desc:0 "Die [FRA_begin_rearmament_ITA.GetAdjective]er überkreuzen die Grenze nicht mehr so leicht, wenn wir erst einmal [FRA_begin_rearmament.GetName] mit unserer neu geplanten Verteidigungslinie überzogen haben. Wir werden Zeit haben zu reagieren und unsere Position zu festigen."
+ france.3.t:0 "Erweiterung der [FRA_begin_rearmament.GetName]-Linie"
+ france.3.d:0 "Wir haben mit der Verbesserung der Befestigungsanlagen der [FRA_begin_rearmament.GetName]-Linie in den Alpen begonnen. Wenn diese neuen Verteidigungsstellungen erst einmal fertig sind, müssten die [FRA_begin_rearmament_ITA.GetAdjective]er schon verrückt sein, um die Grenze zu übertreten!"

@@ -1,0 +1,5 @@
+﻿l_french:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament_savoy.GetName] ligne Maginot"
+ FRA_alpine_forts_desc:0 "Lorsque la nouvelle ligne de défense [FRA_begin_rearmament_savoy.GetDuDelaDelNP] [FRA_begin_rearmament_savoy.GetName] aura été achevée, les [FRA_begin_rearmament_ITA.GetHabitants] seront incapables de franchir la frontière. Nous aurons alors tout le temps de réagir à une attaque et de renforcer nos positions."
+ france.3.t:0 "Extension [FRA_begin_rearmament_savoy.GetDuDelaDelNP] [FRA_begin_rearmament_savoy.GetName] ligne Maginot"
+ france.3.d:0 "Les travaux de renforcement [FRA_begin_rearmament_savoy.GetDuDelaDelNP] [FRA_begin_rearmament_savoy.GetName] ligne Maginot ont été lancés. Lorsqu'elle aura été achevée, les [FRA_begin_rearmament_ITA.GetHabitants] seraient bien fous de chercher même à franchir la frontière !"

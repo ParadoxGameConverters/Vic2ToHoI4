@@ -1,0 +1,5 @@
+﻿l_spanish:
+ FRA_alpine_forts:0 "Fuertes [FRA_begin_rearmament_savoy.GetAdjective]os"
+ FRA_alpine_forts_desc:0 "Cuando terminemos de cubrir [FRA_begin_rearmament_savoy.GetName] con nuestra nueva línea de defensa, los [FRA_begin_rearmament_ITA.GetAdjective]os no cruzarán la frontera tan fácilmente. Tendremos tiempo para responder y reforzar nuestra posición."
+ france.3.t:0 "Extensión de la [FRA_begin_rearmament_savoy.GetName] Línea"
+ france.3.d:0 "Hemos comenzado el trabajo para mejorar los fortificaciones de la [FRA_begin_rearmament_savoy.GetName] Línea. ¡Cuando estas nuevas defensas estén terminadas, los [FRA_begin_rearmament_ITA.GetAdjective]os tendrían que estar locos para cruzar la frontera!"

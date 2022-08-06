@@ -166,20 +166,24 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_alpine_forts
+		allow_branch = {
+			any_state = { state = event_target:FRA_begin_rearmament_savoy }
+		}
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = FRA_fortification_focus }
 		x = 0
 		y = 1
 		relative_position_id = FRA_fortification_focus
 		cost = 10
-
 		available = {
-			735 = { is_controlled_by = ROOT }
+			if = {
+				limit = { any_state = { state = event_target:FRA_begin_rearmament_savoy } }
+				event_target:FRA_begin_rearmament_savoy = { is_controlled_by = ROOT }
+			}
 		}
-
 		completion_reward = {
 			ROOT = { country_event = { id = france.3 } }
-			ITA = {
+			event_target:FRA_begin_rearmament_ITA = {
 				add_opinion_modifier = {
 					target = ROOT
 					modifier = FRA_alpine_forts
@@ -187,6 +191,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
 		id = FRA_extend_the_maginot_line
 		icon = GFX_goal_generic_fortify_city

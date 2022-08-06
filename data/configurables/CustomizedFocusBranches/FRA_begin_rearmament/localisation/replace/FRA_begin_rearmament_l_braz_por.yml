@@ -1,0 +1,5 @@
+﻿l_braz_por:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament_savoy.GetName] Fortes"
+ FRA_alpine_forts_desc:0 "Os [FRA_begin_rearmament_ITA.PTGetAdjMP] não cruzarão a fronteira tão facilmente quando terminarmos de cobrir [FRA_begin_rearmament_savoy.GetName] com nossa mais nova linha de defesa. Teremos tempo para responder e reforçar nossa posição."
+ france.3.t:0 "Extensão da [FRA_begin_rearmament_savoy.GetName] Linha"
+ france.3.d:0 "Nós começamos a trabalhar na melhoria das fortificações da [FRA_begin_rearmament_savoy.GetName] Linha. Quando essas novas defesas estiverem prontas, os [FRA_begin_rearmament_ITA.PTGetAdjMP] terão que ser loucos para cruzarem a fronteira!"

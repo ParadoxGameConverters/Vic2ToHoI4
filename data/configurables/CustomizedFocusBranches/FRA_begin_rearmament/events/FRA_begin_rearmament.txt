@@ -55,9 +55,51 @@ country_event = {
 				#activate = yes
 			}
 		}
+
+		# Set targets for FRA_alpine_forts focus
+		random_neighbor_country = {
+			limit = {
+				NOT = { has_government = ROOT }
+				NOT = { has_government = neutrality }
+			}
+			save_global_event_target_as = FRA_begin_rearmament_ITA
+		}
+		random_owned_controlled_state = {
+			limit = {
+				any_neighbor_state = { is_owned_by = event_target:FRA_begin_rearmament_ITA }
+			}
+			save_global_event_target_as = FRA_begin_rearmament_savoy
+		}
 	}
 
 	option = {
 		name = FRA_begin_rearmament.1.a
 	}
 }
+
+add_namespace = france
+# Alpine Line Extension
+country_event = {
+	id = france.3
+	title = france.3.t
+	desc = france.3.d
+	picture = GFX_report_event_bunker_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = france.3.a
+		event_target:FRA_begin_rearmament_savoy = {
+			add_building_construction = {
+				type = bunker
+				province = {
+					all_provinces = yes
+					limit_to_border = yes
+				}
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+

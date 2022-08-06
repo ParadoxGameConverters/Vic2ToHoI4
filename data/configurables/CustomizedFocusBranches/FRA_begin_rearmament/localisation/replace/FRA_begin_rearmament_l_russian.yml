@@ -1,0 +1,5 @@
+﻿l_russian:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament_savoy.GetAdjective]ие укрепления"
+ FRA_alpine_forts_desc:0 "[FRA_begin_rearmament_ITA.GetAdjective]цам будет сложнее перейти нашу границу, когда мы укрепим [FRA_begin_rearmament_savoy.GetName] новыми фортификациями. Это даст нам время собрать силы и нанести ответный удар."
+ france.3.t:0 "Продление [FRA_begin_rearmament_savoy.GetName]ой линии"
+ france.3.d:0 "Мы начали работу по усовершенствованию защитных сооружений [FRA_begin_rearmament_savoy.GetName]ой линии. Когда оборона будет укреплена, [FRA_begin_rearmament_ITA.GetAdjective]цы не рискнут к нам сунуться, если только они не сошли с ума!"

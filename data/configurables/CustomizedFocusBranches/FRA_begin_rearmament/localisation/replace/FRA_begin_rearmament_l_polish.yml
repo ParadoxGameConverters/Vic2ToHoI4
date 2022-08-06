@@ -1,0 +1,4 @@
+﻿l_polish:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament_savoy.GetName] fortyfikacje"
+ FRA_alpine_forts_desc:0 "[FRA_begin_rearmament_ITA.GetName] nie będą mogli tak łatwo sforsować granicy, gdy skończymy budowę alpejskich fortyfikacji. Dzięki tym barierom będziemy mogli szybko umocnić nasze pozycje."
+ france.3.d:0 "Rozpoczęliśmy proces wzmacniania Małej Linii Maginota. Gdy ukończymy budowę nowych fortyfikacji, [FRA_begin_rearmament_ITA.GetName] nie ośmielą się przekroczyć granicy!"
