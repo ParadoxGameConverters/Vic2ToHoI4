@@ -1,0 +1,50 @@
+ideas = {
+
+	country = {
+
+		FRA_firepower = {
+			picture = generic_artillery_regiments
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+
+			modifier = {
+				
+			}
+		}
+
+		FRA_fortification_focus = {
+		
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				production_speed_bunker_factor = 0.1
+				production_speed_coastal_bunker_factor = 0.1
+			}
+		}
+
+	}
+}

@@ -1582,6 +1582,7 @@ void HoI4::World::addFocusTrees(bool debug)
 		}
 		if (genericFocusTree.getBranches().contains("FRA_begin_rearmament") && country->isHuman())
 		{
+			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
 			country->addFocusTreeBranch("FRA_begin_rearmament", *onActions);
 			customizedFocusBranches.push_back("FRA_begin_rearmament");
 		}
