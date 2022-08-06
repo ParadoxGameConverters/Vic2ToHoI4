@@ -620,8 +620,10 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 		Log(LogLevel::Debug) << "State: " << newState.getID();
 		for (const auto& popCulture: popCultureMap)
 		{
-			Log(LogLevel::Debug) << "\t\t\t" << popCulture.first << " Pops: " << popCulture.second << "\n\tPopulation: " << static_cast<double>(totalPopulation);
-			if (popCulture.second / static_cast<double>(totalPopulation) >= 0.25 && !newState.getMajorCultures().count(popCulture.first))
+			Log(LogLevel::Debug) << "\t\t\t" << popCulture.first << " Pops: " << popCulture.second
+										<< "\n\tPopulation: " << static_cast<double>(totalPopulation);
+			if (popCulture.second / static_cast<double>(totalPopulation) >= 0.25 &&
+				 !newState.getMajorCultures().count(popCulture.first))
 				newState.addMajorCulture(popCulture.first);
 		}
 	}

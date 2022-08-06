@@ -93,7 +93,8 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	outStream.open("output/" + outputName + "/common/decisions/formable_nation_decisions.txt");
 	if (!outStream.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/decisions/formable_nation_decisions.txt");
+		throw std::runtime_error(
+			 "Could not open output/" + outputName + "/common/decisions/formable_nation_decisions.txt");
 	}
 	for (const auto& category: theDecisions.getUnionDecisions())
 	{

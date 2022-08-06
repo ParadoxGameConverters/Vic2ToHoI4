@@ -11,9 +11,9 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 		decision formationDecisionStateTrigger(name + "_state_trigger");
 		decision formationDecision(name);
 
-		//Custom Loc
+		// Custom Loc
 		formable_decisions_category.addCustomLocalisation(
-			std::pair(name + "_loc_DEF", "\t= {\n\t\tlocalization_key = " + tag + "_DEF\n\t}"));
+			 std::pair(name + "_loc_DEF", "\t= {\n\t\tlocalization_key = " + tag + "_DEF\n\t}"));
 		formable_decisions_category.addCustomLocalisation(
 			 std::pair(name + "_loc_ADJ", "\t= {\n\t\tlocalization_key = " + tag + "_ADJ\n\t}"));
 
@@ -51,7 +51,7 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 			targetTrigger += "\t\t\t\t\thas_state_flag = major_culture_" + culture + "_flag\n";
 		}
 		targetTrigger += "\t\t\t\t}\n";
-		targetTrigger += "\t\t\t}\n";		
+		targetTrigger += "\t\t\t}\n";
 		targetTrigger += "\t\t}\n";
 		formationDecisionStateTrigger.setTargetTrigger(targetTrigger);
 
@@ -138,7 +138,7 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 		// AI Will Do
 		formationDecisionStateTrigger.setAiWillDo("= {\n\t\t\tbase = 100\n\t\t}");
 
-		//Localisation
+		// Localisation
 		formable_decisions_category.addLocalisation(std::pair(name + "_state_trigger", "[" + name + "_loc_ADJ] State"));
 		formable_decisions_category.addLocalisation(std::pair(name + "_state_trigger_desc",
 			 "One of the [?original_states] states needed to form [" + name + "_loc_DEF]."));

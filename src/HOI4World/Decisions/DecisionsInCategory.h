@@ -20,7 +20,7 @@ class DecisionsInCategory: commonItems::parser
   public:
 	explicit DecisionsInCategory(std::string category_name): name(std::move(category_name)) {}
 	DecisionsInCategory(std::string categoryName, std::istream& theStream);
-	
+
 	[[nodiscard]] auto getDecisions() const { return theDecisions; }
 	[[nodiscard]] std::map<std::string, std::string> getLocalisation() const { return localisation; }
 	[[nodiscard]] const auto& getcustomLocalisation() const { return customLocalisation; }
