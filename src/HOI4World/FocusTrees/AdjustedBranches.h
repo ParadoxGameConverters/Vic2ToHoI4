@@ -16,6 +16,13 @@ class AdjustedBranches
 		HoI4FocusTree& genericFocusTree,
 		OnActions& onActions);
 
+	void addUKColonialFocusBranch(std::map<std::string, std::shared_ptr<Country>> countries,
+		HoI4FocusTree& genericFocusTree,
+		OnActions& onActions);
+	void addBeginRearmamentBranch(std::map<std::string, std::shared_ptr<Country>> countries,
+		HoI4FocusTree& genericFocusTree,
+		OnActions& onActions);
+
 	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
 
 private:
