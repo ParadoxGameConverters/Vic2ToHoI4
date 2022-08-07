@@ -255,6 +255,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	transferPuppetsToDominions();
 
 	addFocusTrees(theConfiguration.getDebug());
+	adjustedBranches = std::make_unique<AdjustedBranches>(AdjustedBranches(countries, genericFocusTree, *onActions));
 	adjustResearchFocuses();
 
 	dynamicModifiers.updateDynamicModifiers(ideologies->getMajorIdeologies());
@@ -1571,20 +1572,6 @@ void HoI4::World::addFocusTrees(bool debug)
 		{
 			country->addGenericFocusTree(ideologies->getMajorIdeologies());
 			country->addPuppetsIntegrationTree(*hoi4Localisations, debug);
-		}
-		if (genericFocusTree.getBranches().contains("uk_colonial_focus") && country->isGreatPower() &&
-			 country->getDominionTag("south_asia"))
-		{
-			country->addGlobalEventTarget("uk_colonial_focus_ENG");
-			country->addFocusTreeBranch("uk_colonial_focus", *onActions);
-			genericFocusTree.eraseBranch("uk_colonial_focus");
-			customizedFocusBranches.push_back("uk_colonial_focus");
-		}
-		if (genericFocusTree.getBranches().contains("FRA_begin_rearmament") && country->isHuman())
-		{
-			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
-			country->addFocusTreeBranch("FRA_begin_rearmament", *onActions);
-			customizedFocusBranches.push_back("FRA_begin_rearmament");
 		}
 	}
 }
