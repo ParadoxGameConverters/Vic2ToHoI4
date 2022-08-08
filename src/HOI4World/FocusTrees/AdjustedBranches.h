@@ -9,23 +9,33 @@
 namespace HoI4
 {
 
+class MapUtils;
+
 class AdjustedBranches
 {
   public:
 	AdjustedBranches(std::map<std::string, std::shared_ptr<Country>> countries,
-		HoI4FocusTree& genericFocusTree,
-		OnActions& onActions);
+		 HoI4FocusTree& genericFocusTree,
+		 OnActions& onActions,
+		 const HoI4::MapUtils& mapUtils,
+		 const std::map<int, int>& provinceToStateIdMapping,
+		 const Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions);
 
 	void addUKColonialFocusBranch(std::map<std::string, std::shared_ptr<Country>> countries,
-		HoI4FocusTree& genericFocusTree,
-		OnActions& onActions);
+		 HoI4FocusTree& genericFocusTree,
+		 OnActions& onActions);
 	void addBeginRearmamentBranch(std::map<std::string, std::shared_ptr<Country>> countries,
-		HoI4FocusTree& genericFocusTree,
-		OnActions& onActions);
+		 HoI4FocusTree& genericFocusTree,
+		 OnActions& onActions,
+		 const HoI4::MapUtils& mapUtils,
+		 const std::map<int, int>& provinceToStateIdMapping,
+		 const Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions);
 
 	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
 
-private:
+  private:
 	std::vector<std::string> branchNames;
 };
 

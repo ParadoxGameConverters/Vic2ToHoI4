@@ -255,7 +255,13 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	transferPuppetsToDominions();
 
 	addFocusTrees(theConfiguration.getDebug());
-	adjustedBranches = std::make_unique<AdjustedBranches>(AdjustedBranches(countries, genericFocusTree, *onActions));
+	adjustedBranches = std::make_unique<AdjustedBranches>(AdjustedBranches(countries,
+		 genericFocusTree,
+		 *onActions,
+		 warCreator.getMapUtils(),
+		 getProvinceToStateIDMap(),
+		 *theMapData,
+		 *provinceDefinitions));
 	adjustResearchFocuses();
 
 	dynamicModifiers.updateDynamicModifiers(ideologies->getMajorIdeologies());
