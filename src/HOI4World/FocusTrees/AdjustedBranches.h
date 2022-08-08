@@ -32,6 +32,8 @@ class AdjustedBranches
 		 const std::map<int, int>& provinceToStateIdMapping,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions);
+	std::vector<std::shared_ptr<Country>> sortCountriesByStrength(
+		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
 	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
 

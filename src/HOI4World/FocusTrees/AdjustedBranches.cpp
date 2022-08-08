@@ -42,6 +42,7 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(std::map<std::string, std:
 			country->addFocusTreeBranch("uk_colonial_focus", onActions);
 			genericFocusTree.eraseBranch("uk_colonial_focus");
 			branchNames.push_back("uk_colonial_focus");
+			break;
 		}
 	}
 }
@@ -64,7 +65,7 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 		}
 	}
 
-	for (auto country: greatPowers)
+	for (auto country: sortCountriesByStrength(countries))
 	{
 		if (country->getGovernmentIdeology() != "democratic")
 		{
@@ -113,6 +114,40 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 			}
 			country->addFocusTreeBranch("FRA_begin_rearmament", onActions);
 			branchNames.push_back("FRA_begin_rearmament");
+			break;
 		}
 	}
+}
+
+std::vector<std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::sortCountriesByStrength(
+	 const std::map<std::string, std::shared_ptr<Country>>& countries)
+{
+	std::vector<std::shared_ptr<Country>> sortedCountries;
+
+	for (const auto& country: countries | std::views::values)
+	{
+		if (country->isGreatPower())
+		{
+			sortedCountries.push_back(country);
+		}
+	}
+
+	std::vector<std::shared_ptr<Country>> nonGPs;
+	for (const auto& country: countries | std::views::values)
+	{
+		if (!country->isGreatPower())
+		{
+			nonGPs.push_back(country);
+		}
+	}
+	std::ranges::sort(nonGPs, [](const std::shared_ptr<Country>& a, const std::shared_ptr<Country>& b) {
+		return a->getStrengthOverTime(1.0) > b->getStrengthOverTime(3.0);
+	});
+
+	for (const auto& country: nonGPs)
+	{
+		sortedCountries.push_back(country);
+	}
+
+	return sortedCountries;
 }
