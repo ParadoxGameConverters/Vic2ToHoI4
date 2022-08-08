@@ -1571,6 +1571,17 @@ void HoI4::Country::addState(const State& state)
 }
 
 
+void HoI4::Country::removeState(const State& state)
+{
+	states.erase(state.getID());
+
+	for (const auto province: state.getProvinces())
+	{
+		provinces.erase(province);
+	}
+}
+
+
 std::optional<HoI4::Relations> HoI4::Country::getRelations(const std::string& withWhom) const
 {
 	if (const auto theRelations = relations.find(withWhom); theRelations != relations.end())

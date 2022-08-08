@@ -129,6 +129,7 @@ class Country
 	void addTankDesigns(const PossibleTankDesigns& possibleDesigns);
 	void convertTechnology(const Mappers::TechMapper& techMapper, const Mappers::ResearchBonusMapper& theTechMapper);
 	void addState(const State& state);
+	void removeState(const State& state);
 	void addCoreState(const int stateId) { coreStates.insert(stateId); }
 	void addClaimedState(const int stateId) { claimedStates.insert(stateId); }
 	void calculateIndustry(const std::map<int, State>& allStates);

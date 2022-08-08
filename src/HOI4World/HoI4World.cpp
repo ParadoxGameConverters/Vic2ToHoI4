@@ -717,6 +717,7 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 				}
 				state->second.setOwner(dominionTag);
 				dominion->addState(state->second);
+				overlord->removeState(state->second);
 			}
 		}
 
