@@ -1,20 +1,21 @@
-#include "src/HOI4World/Decisions/UnionDecisions.h"
+﻿#include "src/HOI4World/Decisions/UnionDecisions.h"
 
 void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>& unionCountries)
 {
-	DecisionsInCategory formable_decisions_category("formable_nations");
+	DecisionsInCategory formableDecisionsCategory("formable_nations");
 	for (auto unionCountry: unionCountries)
 	{
-		const auto& oldTag = unionCountry.GetOldTag();
+		const auto& oldTag = unionCountry.GetTag().substr(0, 2);
 		const auto& tag = unionCountry.GetTag();
 		const auto& name = "form_" + tag;
 		decision formationDecisionStateTrigger(name + "_state_trigger");
 		decision formationDecision(name);
+		DecisionsInCategory::LocBlock locBlock;
 
 		// Custom Loc
-		formable_decisions_category.addCustomLocalisation(
+		formableDecisionsCategory.addCustomLocalisation(
 			 std::pair(name + "_loc_DEF", "\t= {\n\t\tlocalization_key = " + tag + "_DEF\n\t}"));
-		formable_decisions_category.addCustomLocalisation(
+		formableDecisionsCategory.addCustomLocalisation(
 			 std::pair(name + "_loc_ADJ", "\t= {\n\t\tlocalization_key = " + tag + "_ADJ\n\t}"));
 
 		// STATE TRIGGER
@@ -139,12 +140,25 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 		formationDecisionStateTrigger.setAiWillDo("= {\n\t\t\tbase = 100\n\t\t}");
 
 		// Localisation
-		formable_decisions_category.addLocalisation(std::pair(name + "_state_trigger", "[" + name + "_loc_ADJ] State"));
-		formable_decisions_category.addLocalisation(std::pair(name + "_state_trigger_desc",
-			 "One of the [?original_states] states needed to form [" + name + "_loc_DEF]."));
+		locBlock.english = "[" + name + "_loc_ADJ] State";
+		locBlock.french =  "One of the [?original_states] states needed to form [" + name + "_loc_DEF].";
+		locBlock.german = "[" + name + "_loc_ADJ] Zustand";
+		locBlock.polish = "[" + name + "_loc_ADJ] państwo";
+		locBlock.portuguese = "[" + name + "_loc_ADJ] Estado";
+		locBlock.russian = "[" + name + "_loc_ADJ] государство";
+		locBlock.spanish = "[" + name + "_loc_ADJ] Estado";
+		formableDecisionsCategory.addLocalisation(std::pair(name + "_state_trigger", locBlock));
+		locBlock.english = "One of the [?original_states] states needed to form [" + name + "_loc_DEF].";
+		locBlock.french = "L'un des états [?original_states] nécessaires pour former [" + name + "_loc_DEF].";
+		locBlock.german = "Einer der [?original_states]-Zustände, die zum Bilden von [" + name + "_loc_DEF] benötigt werden.";
+		locBlock.polish = "Jeden ze stanów [?original_states] potrzebnych do utworzenia [" + name + "_loc_DEF].";
+		locBlock.portuguese = "Um dos estados [?original_states] precisava formar [" + name + "_loc_DEF].";
+		locBlock.russian = "Одно из состояний [?original_states], необходимое для формирования [" + name + "_loc_DEF].";
+		locBlock.spanish = "Uno de los estados [?original_states] necesarios para formar [" + name + "_loc_DEF].";
+		formableDecisionsCategory.addLocalisation(std::pair(name + "_state_trigger_desc", locBlock));
 
 		// Add to Category
-		formable_decisions_category.addDecision(formationDecisionStateTrigger);
+		formableDecisionsCategory.addDecision(formationDecisionStateTrigger);
 
 
 		// FORMATION DECISION
@@ -203,14 +217,26 @@ void HoI4::UnionDecisions::createDecisions(const std::vector<HoI4::UnionCountry>
 		formationDecision.setAiWillDo("= {\n\t\t\tbase = 100\n\t\t}");
 
 		// Localisation
-		formable_decisions_category.addLocalisation(std::pair(name, "Form [" + name + "_loc_DEF]"));
-		formable_decisions_category.addLocalisation(std::pair(name + "_desc",
-			 "Our great people have been seperated for too long, kept apart by foreign powers who would keep us divided "
-			 "and weak. Now we stand united against any who would dare try to seperate us again."));
+		locBlock.english = "Form [" + name + "_loc_DEF]";
+		locBlock.french = "Formulaire [" + name + "_loc_DEF]";
+		locBlock.german = "Formular [" + name + "_loc_DEF]";
+		locBlock.polish = "Formularz [" + name + "_loc_DEF]";
+		locBlock.portuguese = "Formar [" + name + "_loc_DEF]";
+		locBlock.russian = "Форма [" + name + "_loc_DEF]";
+		locBlock.spanish = "Formulario [" + name + "_loc_DEF]";
+		formableDecisionsCategory.addLocalisation(std::pair(name, locBlock));
+		locBlock.english =  "Our great people have been separated for too long, kept apart by foreign powers who would keep us divided and weak. Now we stand united against any who would dare try to separate us again.";
+		locBlock.french = "Notre grand peuple a été séparé pendant trop longtemps, tenu à l'écart par des puissances étrangères qui nous garderaient divisés et faibles. Maintenant, nous sommes unis contre quiconque oserait essayer de nous séparer à nouveau.";
+		locBlock.german = "Unser großartiges Volk war zu lange getrennt, getrennt gehalten von fremden Mächten, die uns gespalten und schwach halten würden. Jetzt stehen wir vereint gegen jeden, der es wagen würde, uns wieder zu trennen.";
+		locBlock.polish = "Nasi wielcy ludzie byli rozdzieleni zbyt długo, trzymani osobno przez obce mocarstwa, które trzymałyby nas podzielonych i słabych. Teraz stajemy zjednoczeni przeciwko każdemu, kto ośmieliłby się ponownie nas rozdzielić.";
+		locBlock.portuguese = "Nosso grande povo foi separado por muito tempo, mantido à parte por potências estrangeiras que nos manteriam divididos e fracos. Agora estamos unidos contra qualquer um que ousaria tentar nos separar novamente.";
+		locBlock.russian = "Наш великий народ слишком долго был разлучен, его держали в стороне иностранные державы, которые хотели, чтобы мы были разделены и слабы. Теперь мы объединились против любого, кто посмеет снова попытаться разлучить нас.";
+		locBlock.spanish = "Nuestro gran pueblo ha estado separado durante demasiado tiempo, mantenido aparte por potencias extranjeras que nos mantendrían divididos y débiles. Ahora estamos unidos contra cualquiera que se atreva a intentar separarnos de nuevo.";
+		formableDecisionsCategory.addLocalisation(std::pair(name + "_desc", locBlock));
 
 		// Add to Category
-		formable_decisions_category.addDecision(formationDecision);
+		formableDecisionsCategory.addDecision(formationDecision);
 	}
 
-	decisions.push_back(formable_decisions_category);
+	decisions.push_back(formableDecisionsCategory);
 }

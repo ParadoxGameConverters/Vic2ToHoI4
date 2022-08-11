@@ -234,7 +234,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	for (const auto& category: theDecisions->getUnionDecisions())
 	{
 		for (const auto& loc: category.getLocalisation())
-			hoi4Localisations->addDecisionLocalisation(loc.first, loc.second);
+			hoi4Localisations->addDecisionLocalisation(loc.first, loc.second.english);
 		scriptedLocalisations->addDecisionScriptedLocalisations(category.getcustomLocalisation());
 	}
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());

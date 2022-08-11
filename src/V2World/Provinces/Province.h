@@ -25,7 +25,6 @@ class Province
 	[[nodiscard]] int getTotalPopulation() const;
 	[[nodiscard]] int getPopulation(const std::optional<std::string>& type = {}) const;
 	[[nodiscard]] int getLiteracyWeightedPopulation(const std::optional<std::string>& type = {}) const;
-	[[nodiscard]] double getPercentageWithCulture(const std::string& culture) const;
 	[[nodiscard]] double getPercentageWithCultures(const std::set<std::string>& cultures) const;
 	[[nodiscard]] std::set<std::string> getCultures() const;
 

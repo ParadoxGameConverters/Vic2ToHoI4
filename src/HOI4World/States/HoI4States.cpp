@@ -600,12 +600,15 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 					 provincePopulation * vic2Province->second->getPercentageWithCultures(acceptedCultures);
 
 				for (const auto& culture: vic2Province->second->getCultures())
+				{
+					std::set<std::string> oneCulture = {culture};
 					if (!popCultureMap.count(culture))
 						popCultureMap.emplace(culture,
-							 provincePopulation * vic2Province->second->getPercentageWithCulture(culture));
+							 provincePopulation * vic2Province->second->getPercentageWithCultures(oneCulture));
 					else
 						popCultureMap.find(culture)->second +=
-							 provincePopulation * vic2Province->second->getPercentageWithCulture(culture);
+							 provincePopulation * vic2Province->second->getPercentageWithCultures(oneCulture);
+				}
 			}
 		}
 

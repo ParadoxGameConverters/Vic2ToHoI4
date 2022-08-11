@@ -35,27 +35,6 @@ int Vic2::Province::getLiteracyWeightedPopulation(const std::optional<std::strin
 	return totalPopulation;
 }
 
-double Vic2::Province::getPercentageWithCulture(const std::string& culture) const
-{
-	auto totalPopulation = 0;
-	auto populationOfCulture = 0;
-
-	for (const auto& pop: pops)
-	{
-		totalPopulation += pop.getSize();
-		if (culture == pop.getCulture())
-		{
-			populationOfCulture += pop.getSize();
-		}
-	}
-
-	if (totalPopulation <= 0)
-	{
-		return 0.0;
-	}
-	return 1.0 * populationOfCulture / totalPopulation;
-}
-
 double Vic2::Province::getPercentageWithCultures(const std::set<std::string>& cultures) const
 {
 	auto totalPopulation = 0;
