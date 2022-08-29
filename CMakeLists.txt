@@ -10,6 +10,11 @@ set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux/Vic2ToHoI
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-LinuxTests)
 set(CMAKE_CXX_STANDARD 20)
 
+if (DEFINED ENV{COVERAGE})
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall -fprofile-arcs -ftest-coverage")
+	set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
+endif (DEFINED ENV{COVERAGE})
+
 add_compile_options("-O3")
 #add_compile_options("-g")
 
@@ -449,15 +454,17 @@ add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMA
 
 #### Fronter ####
 
-file(COPY "data/fronter/" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration")
-add_custom_command(TARGET Vic2ToHoi4Converter PRE_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND tools/build_fronter.sh)
+if (NOT DEFINED ENV{COVERAGE})
+	file(COPY "data/fronter/" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration")
+	add_custom_command(TARGET Vic2ToHoi4Converter PRE_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND tools/build_fronter.sh)
+endif (NOT DEFINED ENV{COVERAGE})
+
+
+#### Tests ####
 
 set(GMOCK_SOURCES "external/googletest/googletest/src/gtest_main.cc")
 set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/googletest/googletest/src/gtest-all.cc")
 set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/googletest/googlemock/src/gmock-all.cc")
-
-
-#### Tests ####
 
 file(GLOB CONFIGURATION_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/ConfigurationTests.cpp")
 
@@ -806,3 +813,49 @@ configure_file("data/test_files/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/
 configure_file("data/test_files/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
 target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Map Vic2World Mappers ZIPLIB pthread)
+
+if (DEFINED ENV{COVERAGE})
+	add_custom_target(gcov
+		COMMAND mkdir -p gcoverage
+		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+	)
+	add_custom_command(TARGET gcov
+		COMMAND echo "=================== GCOV ===================="
+		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src
+		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/HOI4World/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/HOI4World
+		COMMAND echo "-- Source directories:"
+		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
+		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/HOI4World/"
+		COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
+		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcoverage
+	)
+
+	add_custom_target(lcov
+		COMMAND mkdir -p lcoverage
+	)
+	add_custom_command(TARGET lcov
+		COMMAND echo "=================== LCOV ===================="
+		COMMAND echo "-- Passing lcov tool under code coverage"
+		COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info
+		COMMAND echo "-- Generating HTML output files"
+		COMMAND genhtml lcoverage/main_coverage.info --output-directory lcoverage
+	)
+	add_dependencies(gcov Vic2ToHoi4ConverterTests)
+
+	# Make sure to clean up the coverage folder
+	set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES gcoverage)
+
+	# Create the gcov-clean target. This cleans the build as well as generated 
+	# .gcda and .gcno files.
+	add_custom_target(init
+		COMMAND ${CMAKE_MAKE_PROGRAM} clean
+		COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcno
+		COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcda
+		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+	)
+
+	# Testing
+	enable_testing()
+
+	add_test(Vic2ToHoi4ConverterTests ${CMAKE_CURRENT_BINARY_DIR}/Release-LinuxTests/Vic2ToHoi4ConverterTests)
+endif (DEFINED ENV{COVERAGE})
