@@ -2,6 +2,7 @@
 #include "external/common_items/Log.h"
 #include "src/HOI4World/Map/PathPoint.h"
 #include "src/HOI4World/Map/PossiblePath.h"
+#include <algorithm>
 #include <cmath>
 #include <numeric>
 #include <queue>

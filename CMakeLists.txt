@@ -8,10 +8,8 @@ set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR})
 set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux)
 set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux/Vic2ToHoI4)
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-LinuxTests)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
+set(CMAKE_CXX_STANDARD 20)
 
-add_compile_options("-std=c++20")
-add_compile_options("-lstdc++fs")
 add_compile_options("-O3")
 #add_compile_options("-g")
 
@@ -23,32 +21,8 @@ include_directories(external/googletest/googlemock/include)
 
 add_subdirectory(external/common_items/ZipLib [binary_dir])
 
-configure_file("${DATA_FILE_DIR}/FAQ.txt" "${FRONTER_OUTPUT_DIRECTORY}/FAQ.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/license.txt" "${FRONTER_OUTPUT_DIRECTORY}/license.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/ReadMe.txt" "${FRONTER_OUTPUT_DIRECTORY}/ReadMe.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/configuration_l_english.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/configuration_l_english.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/configuration_l_french.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/configuration_l_french.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/configuration_l_german.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/configuration_l_german.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/configuration_l_italian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/configuration_l_italian.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/configuration_l_latin.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/configuration_l_latin.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/configuration_l_russian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/configuration_l_russian.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/fronter-configuration.txt" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/fronter-configuration.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/fronter-options.txt" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/fronter-options.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/options_l_english.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/options_l_english.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/options_l_french.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/options_l_french.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/options_l_german.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/options_l_german.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/options_l_italian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/options_l_italian.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/options_l_latin.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/options_l_latin.yml" COPYONLY)
-configure_file("${DATA_FILE_DIR}/fronter/options_l_russian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/options_l_russian.yml" COPYONLY)
-configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_english.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_english.yml" COPYONLY)
-configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_french.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_french.yml" COPYONLY)
-configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_german.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_german.yml" COPYONLY)
-configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_italian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_italian.yml" COPYONLY)
-configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_latin.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_latin.yml" COPYONLY)
-configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_russian.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_russian.yml" COPYONLY)
-configure_file("${FRONTER_DATA_FILE_DIR}/converter_l_simp_chinese.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_l_simp_chinese.yml" COPYONLY)
-configure_file("${FRONTER_DATA_FILE_DIR}/converter_languages.yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/converter_languages.yml" COPYONLY)
+
+#### Converter ####
 
 file(GLOB HOI4WORLD_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/*.cpp")
 set(HOI4WORLD_CHARACTERS_SOURCES ${HOI4WORLD_CHARACTERS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Characters/AdmiralDataFactory.cpp")
@@ -472,9 +446,18 @@ file(COPY "${DATA_FILE_DIR}/configurables/CustomizedFocusBranches/" DESTINATION 
 file(COPY "${DATA_FILE_DIR}/flags" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
 add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > build/Release-Linux/commit_id.txt)
 
+
+#### Fronter ####
+
+file(COPY "data/fronter/" DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration")
+add_custom_command(TARGET Vic2ToHoi4Converter PRE_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND tools/build_fronter.sh)
+
 set(GMOCK_SOURCES "external/googletest/googletest/src/gtest_main.cc")
 set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/googletest/googletest/src/gtest-all.cc")
 set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/googletest/googlemock/src/gmock-all.cc")
+
+
+#### Tests ####
 
 file(GLOB CONFIGURATION_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/ConfigurationTests.cpp")
 

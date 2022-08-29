@@ -1,4 +1,5 @@
 #include "src/Mappers/FactionName/FactionNameMapper.h"
+#include <algorithm>
 
 
 

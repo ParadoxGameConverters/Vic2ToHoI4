@@ -12,6 +12,7 @@
 #include "src/V2World/Localisations/Vic2Localisations.h"
 #include "src/V2World/States/State.h"
 #include "src/V2World/States/StateDefinitions.h"
+#include <algorithm>
 #include <fstream>
 #include <ranges>
 

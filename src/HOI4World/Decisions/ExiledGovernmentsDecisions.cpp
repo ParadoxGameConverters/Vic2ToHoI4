@@ -1,4 +1,5 @@
 #include "src/HOI4World/Decisions/ExiledGovernmentsDecisions.h"
+#include <algorithm>
 #include <sstream>
 
 

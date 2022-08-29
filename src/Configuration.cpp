@@ -5,8 +5,10 @@
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
+#include <algorithm>
 #include <fstream>
 #include <vector>
+
 
 
 Configuration::Factory::Factory()
