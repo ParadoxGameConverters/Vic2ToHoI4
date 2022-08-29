@@ -10,9 +10,7 @@ set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux/Vic2ToHoI
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-LinuxTests)
 set(CMAKE_CXX_STANDARD 20)
 
-#add_compile_options("-std=c++20")
-#add_compile_options("-lstdc++fs")
-#add_compile_options("-O3")
+add_compile_options("-O3")
 #add_compile_options("-g")
 
 include_directories(${PROJECT_SOURCE_DIR})
