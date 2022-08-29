@@ -436,7 +436,7 @@ configure_file("${DATA_FILE_DIR}/configurables/names.txt" "${CONVERTER_OUTPUT_DI
 configure_file("${DATA_FILE_DIR}/configurables/OperativeNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/OperativeNamesMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/positions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/positions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Resources.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Resources.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/resources.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/resources.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/shipTypes.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/shipTypes.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/research_bonus_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/tankDesigns.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/tankDesigns.txt" COPYONLY)
