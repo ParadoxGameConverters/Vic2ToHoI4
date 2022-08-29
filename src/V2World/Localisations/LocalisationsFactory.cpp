@@ -2,7 +2,9 @@
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "src/Configuration.h"
+#include <algorithm>
 #include <array>
+#include <cstring>
 #include <fstream>
 
 

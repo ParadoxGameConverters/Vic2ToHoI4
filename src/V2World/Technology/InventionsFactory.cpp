@@ -1,6 +1,7 @@
 #include "src/V2World/Technology/InventionsFactory.h"
 #include "external/common_items/CommonFunctions.h"
 #include "external/common_items/ParserHelpers.h"
+#include <algorithm>
 
 
 

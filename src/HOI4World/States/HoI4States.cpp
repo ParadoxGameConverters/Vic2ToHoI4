@@ -19,6 +19,7 @@
 #include "src/V2World/States/StateDefinitions.h"
 #include "src/V2World/States/StateFactory.h"
 #include "src/V2World/World/World.h"
+#include <algorithm>
 #include <queue>
 #include <ranges>
 #include <unordered_map>
