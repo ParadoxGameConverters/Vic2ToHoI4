@@ -8,6 +8,6 @@ jobs:
       - name: "Download and run script"
         run: |
           cd data
-          wget https://raw.githubusercontent.com/IhateTrains/braces-mismatch-finder/main/bracket_script.py &&
+          wget https://raw.githubusercontent.com/idhrendur/braces-mismatch-finder/main/bracket_script.py &&
           echo "Script downloaded" &&
           python3 bracket_script.py
