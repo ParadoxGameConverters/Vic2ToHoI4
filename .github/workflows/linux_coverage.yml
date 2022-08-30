@@ -54,7 +54,7 @@ jobs:
 
     - name: Run tests
       run: |
-       cd build/test/Release-LinuxTests/
+       cd build/Release-LinuxTests/
        ./Vic2ToHoi4ConverterTests
 
     - name: Run gcov
