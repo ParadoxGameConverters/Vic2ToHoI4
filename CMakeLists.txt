@@ -836,7 +836,6 @@ if (DEFINED ENV{COVERAGE})
 		COMMAND echo "=================== LCOV ===================="
 		COMMAND echo "-- Passing lcov tool under code coverage"
 		COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info
-		COMMAND ll lcoverage
 	)
 	add_dependencies(gcov Vic2ToHoi4ConverterTests)
 
