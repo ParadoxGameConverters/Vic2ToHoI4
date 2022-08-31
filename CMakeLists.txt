@@ -821,7 +821,7 @@ if (DEFINED ENV{COVERAGE})
 	)
 	add_custom_command(TARGET gcov
 		COMMAND echo "=================== GCOV ===================="
-		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src
+		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/Configuration.cpp ${CMAKE_SOURCE_DIR}/src/Vic2toHOI4Converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src
 		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/HOI4World/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/HOI4World
 		COMMAND echo "-- Source directories:"
 		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
