@@ -835,7 +835,8 @@ if (DEFINED ENV{COVERAGE})
 	add_custom_command(TARGET lcov
 		COMMAND echo "=================== LCOV ===================="
 		COMMAND echo "-- Passing lcov tool under code coverage"
-		COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info -r external/*
+		COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info
+		COMMAND lcov --output-file lcoverage/main_coverage.info -r external/*
 		COMMAND echo "-- Generating HTML output files"
 		COMMAND genhtml lcoverage/main_coverage.info --output-directory lcoverage
 	)
