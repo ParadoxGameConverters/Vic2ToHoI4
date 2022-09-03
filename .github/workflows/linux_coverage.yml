@@ -71,7 +71,7 @@ jobs:
 
     - name: Prepare coverage artifact
       run: |
-       zip -r $Env:GITHUB_WORKSPACE/coverage-report.zip $Env:GITHUB_WORKSPACE/build/lcoverage/*
+       zip -r $Env:GITHUB_WORKSPACE/coverage-report.zip -r $Env:GITHUB_WORKSPACE/build/lcoverage/*
 
     - uses: actions/upload-artifact@v3
       with:
@@ -162,7 +162,7 @@ jobs:
 
     - name: Prepare coverage artifact
       run: |
-       zip -r $Env:GITHUB_WORKSPACE/coverage-report.zip $Env:GITHUB_WORKSPACE/build/lcoverage/*
+       zip -r $Env:GITHUB_WORKSPACE/coverage-report.zip -r $Env:GITHUB_WORKSPACE/build/lcoverage/*
 
     - uses: actions/upload-artifact@v3
       with:
