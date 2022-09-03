@@ -69,11 +69,15 @@ jobs:
        pwd
        make lcov
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
+    - name: "Prepare coverage artifact"
+      run: |
+       cd "C:\Program Files\7-Zip\"
+       .\7z.exe a $Env:GITHUB_WORKSPACE\coverage-report.zip $Env:GITHUB_WORKSPACE\build\lcoverage\*
+
+    - uses: actions/upload-artifact@v3
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: build/lcoverage/main_coverage.info
+        name: pull-request-version
+        path: coverage-report.zip
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
