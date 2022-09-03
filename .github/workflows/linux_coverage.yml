@@ -69,16 +69,10 @@ jobs:
        pwd
        make lcov
 
-    - name: Prepare coverage artifact
-      run: |
-       pwd
-       ls
-       zip -r $GITHUB_WORKSPACE/coverage-report.zip -r $GITHUB_WORKSPACE/build/lcoverage
-
     - uses: actions/upload-artifact@v3
       with:
         name: coverage-report
-        path: coverage-report.zip
+        path: build/lcoverage/
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
