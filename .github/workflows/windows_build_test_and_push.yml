@@ -24,24 +24,24 @@ jobs:
       id: previoustag
       uses: "WyriHaximus/github-action-get-previous-tag@v1"
 
-    - name: "Build solution"
+    - name: "Build backend"
       run: |
        dotnet restore Vic2ToHoI4.sln
        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
-       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic2ToHoI4.sln
+       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic2ToHoI4.sln -target:Vic2ToHoI4
 
     - name: "Run tests"
       run: |
+       cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
+       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic2ToHoI4.sln -target:Vic2ToHoI4Tests
        cd $Env:GITHUB_WORKSPACE\build\tests\Release
        .\Vic2ToHoI4Tests.exe
 
-    - name: "Build updater executable"
-      run: |
-       cd external/Fronter.NET/Updater
-       pip3 install -r requirements.txt
-       pyinstaller --onefile --icon=updater.ico updater.py
-       mkdir ../../build/Release/Updater
-       mv dist/updater.exe ../../build/Release/Updater/updater.exe
+    - name: "Build Frontend"
+      uses: ./external/Fronter.NET/.github/actions/build_frontend
+      with:
+        fronter_dir: 'external/Fronter.NET'
+        release_dir: 'build/Release'
 
     - name: "Prepare release"
       if: ${{ github.event_name == 'push' }}
