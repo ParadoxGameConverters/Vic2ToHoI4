@@ -821,11 +821,9 @@ if (DEFINED ENV{COVERAGE})
 	)
 	add_custom_command(TARGET gcov
 		COMMAND echo "=================== GCOV ===================="
-		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src
-		COMMAND gcov -b ${CMAKE_SOURCE_DIR}/src/HOI4World/*.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/HOI4World
+		COMMAND gcov ${CMAKE_SOURCE_DIR}/src/Configuration.cpp ${CMAKE_SOURCE_DIR}/src/Vic2toHOI4Converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src
 		COMMAND echo "-- Source directories:"
 		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
-		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/HOI4World/"
 		COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
 		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcoverage
 	)
@@ -836,7 +834,7 @@ if (DEFINED ENV{COVERAGE})
 	add_custom_command(TARGET lcov
 		COMMAND echo "=================== LCOV ===================="
 		COMMAND echo "-- Passing lcov tool under code coverage"
-		COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info
+		COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info --exclude *Tests.cpp
 		COMMAND echo "-- Generating HTML output files"
 		COMMAND genhtml lcoverage/main_coverage.info --output-directory lcoverage
 	)
