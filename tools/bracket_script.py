@@ -17,7 +17,7 @@ errors_found = False
 for filename in glob.iglob(root_dir + '**/*.txt', recursive=True):
     opening_bracket_count = 0
     closing_bracket_count = 0
-    
+
     file_encoding = 'utf_8'
     if filename == './data/blank_mod/common/ai_strategy/default.txt' or \
     filename == './data/blank_mod/common/country_leader/00_traits.txt' or \
