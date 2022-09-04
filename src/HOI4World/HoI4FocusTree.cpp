@@ -1693,9 +1693,9 @@ void HoI4FocusTree::addIntegratePuppetsBranch(const std::string& tag,
 		std::shared_ptr<HoI4Focus> newFocus = originalFocus.makeTargetedCopy(tag, puppet, hoi4Localisations);
 		newFocus->xPos = nextFreeColumn;
 		newFocus->yPos = yPos;
-		newFocus->updateFocusElement(newFocus->selectEffect, "#TARGET", puppet);
-		newFocus->updateFocusElement(newFocus->bypass, "#TARGET", puppet);
-		newFocus->updateFocusElement(newFocus->completionReward, "#TARGET", puppet);
+		newFocus->updateFocusElement(newFocus->selectEffect, "$TARGET", puppet);
+		newFocus->updateFocusElement(newFocus->bypass, "$TARGET", puppet);
+		newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", puppet);
 		focuses.push_back(newFocus);
 
 		yPos++;
