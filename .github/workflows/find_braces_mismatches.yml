@@ -7,7 +7,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: "Download and run script"
         run: |
-          cd data
-          wget https://raw.githubusercontent.com/idhrendur/braces-mismatch-finder/main/bracket_script.py &&
-          echo "Script downloaded" &&
-          python3 bracket_script.py
+          python3 tools/bracket_script.py
