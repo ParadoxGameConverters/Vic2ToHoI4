@@ -51,6 +51,14 @@ class Buildings
 		 const std::map<int, std::vector<int>>& actualCoastalProvinces,
 		 const Maps::MapData& theMapData,
 		 const Configuration& theConfiguration);
+	void placeFloatingHarbors(const std::map<int, int>& provinceToStateIDMap,
+		 const std::map<int, std::vector<int>>& actualCoastalProvinces,
+		 const Maps::MapData& theMapData,
+		 const Configuration& theConfiguration);
+	void addFloatingHarbors(int stateID,
+		 const std::pair<int, std::vector<int>>& province,
+		 const Maps::MapData& theMapData,
+		 const Configuration& theConfiguration);
 	void addNavalBase(int stateID,
 		 const std::pair<int, std::vector<int>>& province,
 		 const Maps::MapData& theMapData,
@@ -97,6 +105,7 @@ class Buildings
 	defaultPositions defaultSyntheticRefineries;
 	defaultPositions defaultNuclearReactors;
 	defaultPositions defaultSupplyNodes;
+	defaultPositions defaultFloatingHarbors;
 
 	std::map<int, int> airportLocations;
 };

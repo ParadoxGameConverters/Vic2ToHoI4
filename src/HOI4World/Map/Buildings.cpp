@@ -93,6 +93,10 @@ void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMap
 		{
 			importDefaultBuilding(matches, defaultSupplyNodes, theMapData);
 		}
+		else if (matches[2] == "floating_harbor")
+		{
+			importDefaultBuilding(matches, defaultFloatingHarbors, theMapData);
+		}
 	}
 }
 
@@ -138,6 +142,7 @@ void HoI4::Buildings::placeBuildings(const States& theStates,
 	placeNuclearReactors(theStates, theMapData);
 	placeSyntheticRefineries(theStates, theMapData);
 	placeSupplyNodes(provinceToStateIDMap, theMapData, theConfiguration);
+	placeFloatingHarbors(provinceToStateIDMap, actualCoastalProvinces, theMapData, theConfiguration);
 }
 
 
@@ -371,6 +376,74 @@ void HoI4::Buildings::placeNavalBases(const std::map<int, int>& provinceToStateI
 	}
 }
 
+void HoI4::Buildings::placeFloatingHarbors(const std::map<int, int>& provinceToStateIDMap,
+	 const std::map<int, std::vector<int>>& actualCoastalProvinces,
+	 const Maps::MapData& theMapData,
+	 const Configuration& theConfiguration)
+{
+	for (const auto& province: actualCoastalProvinces)
+	{
+		auto provinceToStateMapping = provinceToStateIDMap.find(province.first);
+		if (provinceToStateMapping == provinceToStateIDMap.end())
+		{
+			Log(LogLevel::Warning) << "Could not find state for province " << province.first << ". Floating Harbor not set.";
+			continue;
+		}
+
+		addFloatingHarbors(provinceToStateMapping->second, province, theMapData, theConfiguration);
+	}
+}
+
+void HoI4::Buildings::addFloatingHarbors(int stateID,
+	 const std::pair<int, std::vector<int>>& province,
+	 const Maps::MapData& theMapData,
+	 const Configuration& theConfiguration)
+{
+	BuildingPosition position;
+	auto positionUnset = true;
+	auto connectingSeaProvince = 0;
+	for (auto seaProvince: province.second)
+	{
+		//floating harbors are placed on the sea and "connect" to land tiles,
+		//so the adjacent sea province column is filled in with the province ID of the land the floating harbor supports
+		//they are also in the state of the connected land tile for buildings.txt purposes
+		auto defaultFloatingHarbor = defaultFloatingHarbors.find(std::make_pair(seaProvince, province.first));
+		if (defaultFloatingHarbor != defaultFloatingHarbors.end())
+		{
+			position = defaultFloatingHarbor->second;
+			connectingSeaProvince = province.first;
+			positionUnset = false;
+		}
+	}
+
+	if (positionUnset)
+	{
+		connectingSeaProvince = province.first;
+		auto possiblePosition = theMapData.GetSpecifiedBorderCenter(province.second[0], province.first);
+		if (!possiblePosition)
+		{
+			Log(LogLevel::Warning) << "Could not find position for province " << province.first << ". Floating Harbor not set.";
+			return;
+		}
+
+		position.xCoordinate = possiblePosition->first;
+		position.yCoordinate = 11.0;
+		position.zCoordinate = possiblePosition->second;
+		position.rotation = 0.0;
+
+		if (theConfiguration.getDebug())
+		{
+			Log(LogLevel::Warning) << "The Floating Harbor at province " << province.first 
+										  << " at "
+											  "("
+										  << position.xCoordinate << ", " << position.zCoordinate
+										  << ") "
+											  "did not have a location in default HoI4.";
+		}
+	}
+
+	buildings.insert(std::make_pair(stateID, Building(stateID, "floating_harbor", position, connectingSeaProvince)));
+}
 
 void HoI4::Buildings::placeBunkers(const std::map<int, int>& provinceToStateIDMap,
 	 const Maps::MapData& theMapData,
