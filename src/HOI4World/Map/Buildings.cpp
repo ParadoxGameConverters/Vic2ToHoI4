@@ -85,6 +85,14 @@ void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMap
 		{
 			importDefaultBuilding(matches, defaultNuclearReactors, theMapData);
 		}
+		else if (matches[2] == "nuclear_reactor")
+		{
+			importDefaultBuilding(matches, defaultNuclearReactors, theMapData);
+		}
+		else if (matches[2] == "supply_node")
+		{
+			importDefaultBuilding(matches, defaultSupplyNodes, theMapData);
+		}
 	}
 }
 
@@ -129,6 +137,7 @@ void HoI4::Buildings::placeBuildings(const States& theStates,
 	placeNavalBases(provinceToStateIDMap, actualCoastalProvinces, theMapData, theConfiguration);
 	placeNuclearReactors(theStates, theMapData);
 	placeSyntheticRefineries(theStates, theMapData);
+	placeSupplyNodes(provinceToStateIDMap, theMapData, theConfiguration);
 }
 
 
@@ -673,4 +682,55 @@ void HoI4::Buildings::placeNuclearReactors(const States& theStates, const Maps::
 			}
 		}
 	}
+}
+void HoI4::Buildings::placeSupplyNodes(const std::map<int, int>& provinceToStateIDMap,
+	 const Maps::MapData& theMapData,
+	 const Configuration& theConfiguration)
+{
+	for (const auto& provinceAndStateID: provinceToStateIDMap)
+	{
+		addSupplyNodes(provinceAndStateID.second, provinceAndStateID.first, theMapData, theConfiguration);
+	}
+}
+void HoI4::Buildings::addSupplyNodes(int stateID,
+	 int province,
+	 const Maps::MapData& theMapData,
+	 const Configuration& theConfiguration)
+{
+	BuildingPosition position;
+	auto positionUnset = true;
+
+	const auto defaultSupplyNode = defaultSupplyNodes.find(std::make_pair(province, 0));
+	if (defaultSupplyNode != defaultSupplyNodes.end())
+	{
+		position = defaultSupplyNode->second;
+		positionUnset = false;
+	}
+
+	if (positionUnset)
+	{
+		auto possiblePosition = theMapData.GetAnyBorderCenter(province);
+		if (!possiblePosition)
+		{
+			Log(LogLevel::Warning) << "Could not find position for province " << province << ". Supply Node not set.";
+			return;
+		}
+
+		position.xCoordinate = possiblePosition->first;
+		position.yCoordinate = 11.0;
+		position.zCoordinate = possiblePosition->second;
+		position.rotation = 0.0;
+
+		if (theConfiguration.getDebug())
+		{
+			Log(LogLevel::Warning) << "The Supply Node in " << province
+										  << " at "
+											  "("
+										  << position.xCoordinate << ", " << position.zCoordinate
+										  << ") "
+											  "did not have a location in default HoI4.";
+		}
+	}
+
+	buildings.insert(std::make_pair(stateID, Building(stateID, "supply_node", position, 0)));
 }

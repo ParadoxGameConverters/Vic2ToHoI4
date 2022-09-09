@@ -75,6 +75,15 @@ class Buildings
 	void placeSyntheticRefineries(const States& theStates, const Maps::MapData& theMapData);
 	void placeNuclearReactors(const States& theStates, const Maps::MapData& theMapData);
 
+	void placeSupplyNodes(const std::map<int, int>& provinceToStateIDMap,
+		 const Maps::MapData& theMapData,
+		 const Configuration& theConfiguration);
+
+	void addSupplyNodes(int stateID,
+		 int province,
+		 const Maps::MapData& theMapData,
+		 const Configuration& theConfiguration);
+
 	std::multimap<int, Building> buildings;
 
 	defaultPositions defaultArmsFactories;
@@ -87,6 +96,7 @@ class Buildings
 	defaultPositions defaultAntiAirs;
 	defaultPositions defaultSyntheticRefineries;
 	defaultPositions defaultNuclearReactors;
+	defaultPositions defaultSupplyNodes;
 
 	std::map<int, int> airportLocations;
 };
