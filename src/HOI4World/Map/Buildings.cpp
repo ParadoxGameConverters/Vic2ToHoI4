@@ -85,10 +85,6 @@ void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMap
 		{
 			importDefaultBuilding(matches, defaultNuclearReactors, theMapData);
 		}
-		else if (matches[2] == "nuclear_reactor")
-		{
-			importDefaultBuilding(matches, defaultNuclearReactors, theMapData);
-		}
 		else if (matches[2] == "supply_node")
 		{
 			importDefaultBuilding(matches, defaultSupplyNodes, theMapData);
@@ -386,7 +382,8 @@ void HoI4::Buildings::placeFloatingHarbors(const std::map<int, int>& provinceToS
 		auto provinceToStateMapping = provinceToStateIDMap.find(province.first);
 		if (provinceToStateMapping == provinceToStateIDMap.end())
 		{
-			Log(LogLevel::Warning) << "Could not find state for province " << province.first << ". Floating Harbor not set.";
+			Log(LogLevel::Warning) << "Could not find state for province " << province.first
+										  << ". Floating Harbor not set.";
 			continue;
 		}
 
@@ -404,9 +401,9 @@ void HoI4::Buildings::addFloatingHarbors(int stateID,
 	auto connectingSeaProvince = 0;
 	for (auto seaProvince: province.second)
 	{
-		//floating harbors are placed on the sea and "connect" to land tiles,
-		//so the adjacent sea province column is filled in with the province ID of the land the floating harbor supports
-		//they are also in the state of the connected land tile for buildings.txt purposes
+		// floating harbors are placed on the sea and "connect" to land tiles,
+		// so the adjacent sea province column is filled in with the province ID of the land the floating harbor supports
+		// they are also in the state of the connected land tile for buildings.txt purposes
 		auto defaultFloatingHarbor = defaultFloatingHarbors.find(std::make_pair(seaProvince, province.first));
 		if (defaultFloatingHarbor != defaultFloatingHarbors.end())
 		{
@@ -422,7 +419,8 @@ void HoI4::Buildings::addFloatingHarbors(int stateID,
 		auto possiblePosition = theMapData.GetSpecifiedBorderCenter(province.second[0], province.first);
 		if (!possiblePosition)
 		{
-			Log(LogLevel::Warning) << "Could not find position for province " << province.first << ". Floating Harbor not set.";
+			Log(LogLevel::Warning) << "Could not find position for province " << province.first
+										  << ". Floating Harbor not set.";
 			return;
 		}
 
@@ -433,7 +431,7 @@ void HoI4::Buildings::addFloatingHarbors(int stateID,
 
 		if (theConfiguration.getDebug())
 		{
-			Log(LogLevel::Warning) << "The Floating Harbor at province " << province.first 
+			Log(LogLevel::Warning) << "The Floating Harbor at province " << province.first
 										  << " at "
 											  "("
 										  << position.xCoordinate << ", " << position.zCoordinate
