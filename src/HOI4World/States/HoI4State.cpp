@@ -173,7 +173,14 @@ void HoI4::State::removeControlledProvince(int provinceNum)
 	}
 }
 
-
+void HoI4::State::addOwnerAveragePopPerProvince(int avrgPopPerProv_)
+{
+	ownerAvrgPopPerProvince = avrgPopPerProv_;
+}
+void HoI4::State::addAveragePopPerProvince(int avrgPopPerProv_)
+{
+	avrgPopPerProvince = avrgPopPerProv_;
+}
 void HoI4::State::setControlledProvince(int provinceNum, const std::string& country)
 {
 	if (country == ownerTag)
@@ -405,27 +412,40 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 
 void HoI4::State::addInfrastructureFromRails(float averageRailLevels)
 {
-	infrastructure += averageRailLevels / 2;
+	infrastructure += averageRailLevels / 3;
 }
-
 
 void HoI4::State::addInfrastructureFromFactories(int factories)
 {
 	if (factories >= FIRST_INFRASTRUCTURE_REWARD_LEVEL)
 	{
-		infrastructure += 0.75F;
+		infrastructure += 0.5F;
 	}
 	if (factories >= SECOND_INFRASTRUCTURE_REWARD_LEVEL)
 	{
-		infrastructure += 0.75F;
+		infrastructure += 0.5F;
 	}
 	if (factories >= THIRD_INFRASTRUCTURE_REWARD_LEVEL)
 	{
-		infrastructure += 0.75F;
+		infrastructure += 0.5F;
 	}
-	infrastructure = std::clamp(infrastructure, 0.0F, 5.0F);
 }
-
+void HoI4::State::finishInfrastructureConversion()
+{
+	//clamp infrastrucutre from previous additions (Railway levels and Factories)
+	infrastructure = std::clamp(infrastructure, 1.0F, 3.0F);
+	if (ownerAvrgPopPerProvince > 0)
+	{
+		if (avrgPopPerProvince > ownerAvrgPopPerProvince * 1.2)
+			infrastructure++;
+		else if (avrgPopPerProvince < ownerAvrgPopPerProvince * 0.6)
+			infrastructure--;
+	}
+	if (capitalState)
+		infrastructure++;
+	//Final Clamp for safety
+	infrastructure = std::floor(std::clamp(infrastructure, 1.0F, 5.0F));
+}
 
 void HoI4::State::setIndustry(int factories, const CoastalProvinces& theCoastalProvinces)
 {

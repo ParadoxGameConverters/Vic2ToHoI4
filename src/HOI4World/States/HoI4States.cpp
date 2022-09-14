@@ -780,7 +780,13 @@ void HoI4::States::putIndustryInStates(const std::map<std::string, double>& fact
 		industryRemainder = HoI4State.getIndustryRemainder();
 	}
 }
-
+void HoI4::States::finishInfrastructureConversion()
+{
+	for (auto& state: states | std::views::values)
+	{
+		state.finishInfrastructureConversion();
+	}
+}
 
 void HoI4::States::convertCapitalVPs(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::vector<std::shared_ptr<Country>>& greatPowers)

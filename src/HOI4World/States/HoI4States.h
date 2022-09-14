@@ -81,6 +81,7 @@ class States: commonItems::parser
 	void putIndustryInStates(const std::map<std::string, double>& factoryWorkerRatios,
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Configuration& theConfiguration);
+	void finishInfrastructureConversion();
 	void convertCapitalVPs(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::vector<std::shared_ptr<Country>>& greatPowers);
 	void addCapitalsToStates(const std::map<std::string, std::shared_ptr<Country>>& countries);

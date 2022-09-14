@@ -151,7 +151,9 @@ class World: commonItems::parser
 	void convertIdeologySupport();
 
 	void convertIndustry(const Configuration& theConfiguration);
+	void convertInfrastructure();
 	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper);
+	void CalculateStateAvrgPopPerProv();
 	void addDominions(Mappers::CountryMapper::Factory& countryMapperFactory);
 	void transferPuppetsToDominions();
 	void addUnrecognizedNations(Mappers::CountryMapper::Factory& countryMapperFactory,
