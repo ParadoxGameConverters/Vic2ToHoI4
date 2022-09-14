@@ -432,7 +432,7 @@ void HoI4::State::addInfrastructureFromFactories(int factories)
 }
 void HoI4::State::finishInfrastructureConversion()
 {
-	//clamp infrastrucutre from previous additions (Railway levels and Factories)
+	// clamp infrastrucutre from previous additions (Railway levels and Factories)
 	infrastructure = std::clamp(infrastructure, 1.0F, 3.0F);
 	if (ownerAvrgPopPerProvince > 0)
 	{
@@ -443,7 +443,7 @@ void HoI4::State::finishInfrastructureConversion()
 	}
 	if (capitalState)
 		infrastructure++;
-	//Final Clamp for safety
+	// Final Clamp for safety
 	infrastructure = std::floor(std::clamp(infrastructure, 1.0F, 5.0F));
 }
 
