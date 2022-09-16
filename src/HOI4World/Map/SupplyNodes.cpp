@@ -1,5 +1,5 @@
 #include "src/HOI4World/Map/SupplyNodes.h"
-#include <src/HOI4World/States/HoI4States.h>
+#include "src/HOI4World/States/HoI4States.h"
 
 std::set<int> HoI4::determineSupplyNodes(const std::map<int, State>& states, const std::set<int>& railwayEndpoints)
 {
@@ -7,9 +7,12 @@ std::set<int> HoI4::determineSupplyNodes(const std::map<int, State>& states, con
 	for (const auto& state: states)
 	{
 		if (state.second.isImpassable())
+		{
 			continue;
+		}
 		int SupplyNodesInState = 0;
-		int maxAllowedSupplyNodes = std::max(1, (int)std::floor((double)state.second.getProvinces().size() / (double)6));
+		int maxAllowedSupplyNodes =
+			 std::max(1, static_cast<int>(std::floor(static_cast<double>(state.second.getProvinces().size()) / 6.0)));
 		for (const auto& province: state.second.getProvinces())
 		{
 			if (railwayEndpoints.contains(province))
@@ -18,7 +21,9 @@ std::set<int> HoI4::determineSupplyNodes(const std::map<int, State>& states, con
 				SupplyNodesInState++;
 			}
 			if (SupplyNodesInState == maxAllowedSupplyNodes)
+			{
 				break;
+			}
 		}
 	}
 

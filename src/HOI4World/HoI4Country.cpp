@@ -1483,7 +1483,7 @@ void HoI4::Country::convertStockpile()
 void HoI4::Country::addState(const State& state)
 {
 	states.insert(state.getID());
-
+	nationalPopulation += state.getPopulation();
 	for (const auto province: state.getProvinces())
 	{
 		provinces.insert(province);

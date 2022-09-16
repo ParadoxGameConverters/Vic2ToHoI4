@@ -243,34 +243,59 @@ int GetRailwayLevel(const std::vector<int>& vic2_possible_path,
 	bool capitalRailway = false;
 	for (const auto& vic2_province: vic2_path_provinces)
 	{
-		auto number = vic2_province->getNumber();
-		auto HoI4ProvNumber = province_mapper.getVic2ToHoI4ProvinceMapping(number);
-		auto HoI4Province = hoi4_provinces.find(HoI4ProvNumber[0]);
+		auto HoI4ProvNumbers = province_mapper.getVic2ToHoI4ProvinceMapping(vic2_province->getNumber());
+		if (HoI4ProvNumbers.empty())
+		{
+			continue;
+		}
+		auto HoI4Province = hoi4_provinces.find(HoI4ProvNumbers[0]);
+		if (HoI4Province == hoi4_provinces.end())
+		{
+			continue;
+		}
 		auto terrainType = HoI4Province->second.getType();
 		auto rail_level = static_cast<double>(vic2_province->getRailLevel()) / 3.0;
 		if (rail_level == 0)
+		{
 			return 0;
+		}
 		if (terrainType == "mountain" || terrainType == "jungle" || terrainType == "desert")
+		{
 			rail_level -= 2;
+		}
 		else if (terrainType == "hills" || terrainType == "marsh")
+		{
 			rail_level--;
+		}
 		else // forest, urban, plains
+		{
 			rail_level++;
+		}
 		rail_levels.push_back(rail_level);
 
 		// check to see if the state the province is in is a capital state
 		// if we already know its going through a capital state, dont bother searching
 		if (!capitalRailway)
 		{
-			auto HoI4StateID = hoi4_states.getProvinceToStateIDMap().find(HoI4ProvNumber[0])->second;
-			auto HoI4StateInfo = hoi4_states.getStates().find(HoI4StateID);
+			auto HoI4StateID = hoi4_states.getProvinceToStateIDMap().find(HoI4ProvNumbers[0]);
+			if (HoI4StateID == hoi4_states.getProvinceToStateIDMap().end())
+			{
+				continue;
+			}
+			auto HoI4StateInfo = hoi4_states.getStates().find(HoI4StateID->second);
+			if (HoI4StateInfo == hoi4_states.getStates().end())
+			{
+				continue;
+			}
 			if (HoI4StateInfo->second.IsCapitalState())
+			{
 				capitalRailway = true;
+			}
 		}
 	}
 
 	double total_rail_level = std::accumulate(rail_levels.begin(), rail_levels.end(), 0.0);
-	double rail_level = total_rail_level / static_cast<double>(rail_levels.size());
+	double rail_level = rail_levels.size() == 0 ? 0 : total_rail_level / static_cast<double>(rail_levels.size());
 	int rail_level_int = round(rail_level);
 	// if the railway goes through a capital, the cap is 3. Else it is 2
 	return capitalRailway ? std::clamp(rail_level_int, 1, 3) : std::clamp(rail_level_int, 0, 2);

@@ -52,6 +52,8 @@ class State
 	void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
 	void setVPValue(int value) { victoryPointValue = value; }
 	void setVPLocation(int province) { victoryPointPosition = province; }
+	void setOwnerAveragePopPerProvince(int ownerAvrgPopPerProv_) { ownerAvrgPopPerProvince = ownerAvrgPopPerProv_; }
+	void setAveragePopPerProvince(int avrgPopPerProv_) { avrgPopPerProvince = avrgPopPerProv_; }
 	void finishInfrastructureConversion();
 	void convertNavalBases(const std::map<int, int>& sourceNavalBases,
 		 const CoastalProvinces& theCoastalProvinces,
@@ -65,8 +67,6 @@ class State
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const Mappers::CountryMapper& countryMapper);
 	void removeControlledProvince(int provinceNum);
-	void addOwnerAveragePopPerProvince(int avrgPopPerProv_);
-	void addAveragePopPerProvince(int avrgPopPerProv_);
 	void setControlledProvince(int provinceNum, const std::string& country);
 	void setOwner(std::string newOwner) { ownerTag = std::move(newOwner); }
 
@@ -136,7 +136,7 @@ class State
 	int ID = 0;
 	std::set<int> provinces;
 	std::string ownerTag;
-	int ownerAvrgPopPerProvince = 0;
+	std::optional<int> ownerAvrgPopPerProvince = 0;
 	int avrgPopPerProvince = 0;
 	std::set<std::string> cores;
 	std::set<std::string> claims;

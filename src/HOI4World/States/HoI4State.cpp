@@ -173,14 +173,6 @@ void HoI4::State::removeControlledProvince(int provinceNum)
 	}
 }
 
-void HoI4::State::addOwnerAveragePopPerProvince(int avrgPopPerProv_)
-{
-	ownerAvrgPopPerProvince = avrgPopPerProv_;
-}
-void HoI4::State::addAveragePopPerProvince(int avrgPopPerProv_)
-{
-	avrgPopPerProvince = avrgPopPerProv_;
-}
 void HoI4::State::setControlledProvince(int provinceNum, const std::string& country)
 {
 	if (country == ownerTag)
@@ -434,15 +426,21 @@ void HoI4::State::finishInfrastructureConversion()
 {
 	// clamp infrastrucutre from previous additions (Railway levels and Factories)
 	infrastructure = std::clamp(infrastructure, 1.0F, 3.0F);
-	if (ownerAvrgPopPerProvince > 0)
+	if (ownerAvrgPopPerProvince.has_value())
 	{
-		if (avrgPopPerProvince > ownerAvrgPopPerProvince * 1.2)
+		if (avrgPopPerProvince > ownerAvrgPopPerProvince.value() * 1.2)
+		{
 			infrastructure++;
-		else if (avrgPopPerProvince < ownerAvrgPopPerProvince * 0.6)
+		}
+		else if (avrgPopPerProvince < ownerAvrgPopPerProvince.value() * 0.6)
+		{
 			infrastructure--;
+		}
 	}
 	if (capitalState)
+	{
 		infrastructure++;
+	}
 	// Final Clamp for safety
 	infrastructure = std::floor(std::clamp(infrastructure, 1.0F, 5.0F));
 }

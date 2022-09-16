@@ -602,27 +602,21 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 }
 void HoI4::World::CalculateStateAvrgPopPerProv()
 {
-	for (auto country: countries)
+	for (auto country: countries | std::views::values)
 	{
-		int ownerPopulation = 0;
-		int ownerProvinces = 0;
-		for (auto stateID: country.second->getStates())
+		int ownerPopulation = country->getNationalPopulation();
+		int ownerProvinces = country->getProvinces().size();
+		for (auto stateID: country->getStates())
 		{
 			auto StateInfo = states->getStates().find(stateID);
 			int statePop = StateInfo->second.getPopulation();
 			int provinceCount = StateInfo->second.getProvinces().size();
-			ownerPopulation += statePop;
-			ownerProvinces += provinceCount;
 			states->getModifiableStates()
 				 .find(StateInfo->first)
-				 ->second.addAveragePopPerProvince(provinceCount == 0 ? 0 : statePop / provinceCount);
-		}
-		for (auto stateID: country.second->getStates())
-		{
-			auto StateInfo = states->getStates().find(stateID);
+				 ->second.setAveragePopPerProvince(provinceCount == 0 ? 0 : statePop / provinceCount);
 			states->getModifiableStates()
 				 .find(StateInfo->first)
-				 ->second.addOwnerAveragePopPerProvince(ownerProvinces == 0 ? 0 : ownerPopulation / ownerProvinces);
+				 ->second.setOwnerAveragePopPerProvince(ownerProvinces == 0 ? 0 : ownerPopulation / ownerProvinces);
 		}
 	}
 }
