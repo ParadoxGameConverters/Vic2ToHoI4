@@ -169,7 +169,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 theProvinces,
 		 states->getNavalBaseLocations(),
 		 *states);
-	supplyNodes_ = determineSupplyNodes(*states, railways_->GetRailwayEndpoints());
+	supplyNodes_ = determineSupplyNodes(states->getStates(), railways_->GetRailwayEndpoints());
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	Log(LogLevel::Progress) << "48%";

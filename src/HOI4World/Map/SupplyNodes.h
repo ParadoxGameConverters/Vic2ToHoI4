@@ -12,7 +12,8 @@
 namespace HoI4
 {
 
-[[nodiscard]] std::set<int> determineSupplyNodes(const States& states, const std::set<int>& railwayEndpoints);
+[[nodiscard]] std::set<int> determineSupplyNodes(const std::map<int, State>& states,
+	 const std::set<int>& railwayEndpoints);
 
 } // namespace HoI4
 

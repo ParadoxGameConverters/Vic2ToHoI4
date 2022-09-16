@@ -136,8 +136,8 @@ class State
 	int ID = 0;
 	std::set<int> provinces;
 	std::string ownerTag;
-	int ownerAvrgPopPerProvince;
-	int avrgPopPerProvince;
+	int ownerAvrgPopPerProvince = 0;
+	int avrgPopPerProvince = 0;
 	std::set<std::string> cores;
 	std::set<std::string> claims;
 	std::map<std::string, std::set<int>> controlledProvinces;

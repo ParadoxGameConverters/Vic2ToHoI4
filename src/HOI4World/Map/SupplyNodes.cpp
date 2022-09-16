@@ -1,10 +1,10 @@
 #include "src/HOI4World/Map/SupplyNodes.h"
 #include <src/HOI4World/States/HoI4States.h>
 
-std::set<int> HoI4::determineSupplyNodes(const States& states, const std::set<int>& railwayEndpoints)
+std::set<int> HoI4::determineSupplyNodes(const std::map<int, State>& states, const std::set<int>& railwayEndpoints)
 {
 	std::set<int> supplyNodes;
-	for (const auto& state: states.getStates())
+	for (const auto& state: states)
 	{
 		if (state.second.isImpassable())
 			continue;
