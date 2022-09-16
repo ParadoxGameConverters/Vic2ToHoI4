@@ -10,8 +10,16 @@ on:
 jobs:
   checkout-and-check-formatting:
     runs-on: ubuntu-latest
-
+    
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        # We must fetch at least the immediate parents so that if this is
+        # a pull request then we can checkout the head.
+        fetch-depth: 0
+        submodules: recursive
+
     - uses: actions/checkout@v2
     - name: Run clang-tidy
       uses: HorstBaerbel/action-clang-tidy@1.2
