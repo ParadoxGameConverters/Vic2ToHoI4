@@ -158,6 +158,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
+	CalculateStateAvrgPopPerProv();
 	railways_ = std::make_unique<Railways>(sourceWorld.getProvinces(),
 		 sourceWorld.getStates(),
 		 sourceWorld.getMapData(),
@@ -168,11 +169,12 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 theProvinces,
 		 states->getNavalBaseLocations(),
 		 *states);
-	supplyNodes_ = determineSupplyNodes(sourceWorld.getProvinces(), provinceMapper, railways_->GetRailwayEndpoints());
+	supplyNodes_ = determineSupplyNodes(states->getStates(), railways_->GetRailwayEndpoints());
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	Log(LogLevel::Progress) << "48%";
 	convertIndustry(theConfiguration);
+	convertInfrastructure();
 	convertDiplomacy(sourceWorld);
 	convertWars(sourceWorld, provinceMapper);
 	addDominions(countryMapperFactory);
@@ -389,7 +391,6 @@ void HoI4::World::importIdeologicalMinisters()
 	ideologicalAdvisors.swap(theAcutalAdvisors);
 }
 
-
 void HoI4::World::convertGovernments(const Vic2::World& sourceWorld,
 	 const Vic2::Localisations& vic2Localisations,
 	 bool debug)
@@ -548,6 +549,10 @@ void HoI4::World::convertIndustry(const Configuration& theConfiguration)
 	reportIndustryLevels();
 }
 
+void HoI4::World::convertInfrastructure()
+{
+	states->finishInfrastructureConversion();
+}
 
 void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper)
 {
@@ -595,7 +600,26 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		countries.erase(tag);
 	}
 }
-
+void HoI4::World::CalculateStateAvrgPopPerProv()
+{
+	for (auto country: countries | std::views::values)
+	{
+		int ownerPopulation = country->getNationalPopulation();
+		int ownerProvinces = country->getProvinces().size();
+		for (auto stateID: country->getStates())
+		{
+			auto StateInfo = states->getStates().find(stateID);
+			int statePop = StateInfo->second.getPopulation();
+			int provinceCount = StateInfo->second.getProvinces().size();
+			states->getModifiableStates()
+				 .find(StateInfo->first)
+				 ->second.setAveragePopPerProvince(provinceCount == 0 ? 0 : statePop / provinceCount);
+			states->getModifiableStates()
+				 .find(StateInfo->first)
+				 ->second.setOwnerAveragePopPerProvince(ownerProvinces == 0 ? 0 : ownerPopulation / ownerProvinces);
+		}
+	}
+}
 
 void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFactory)
 {

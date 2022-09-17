@@ -1,29 +1,27 @@
 #include "src/HOI4World/Map/SupplyNodes.h"
+#include "src/HOI4World/States/HoI4States.h"
 
-
-
-std::set<int> HoI4::determineSupplyNodes(const std::map<int, std::shared_ptr<Vic2::Province>>& Vic2Provinces,
-	 const Mappers::ProvinceMapper& provinceMapper,
-	 const std::set<int>& railwayEndpoints)
+std::set<int> HoI4::determineSupplyNodes(const std::map<int, State>& states, const std::set<int>& railwayEndpoints)
 {
 	std::set<int> supplyNodes;
-	for (const auto& [Vic2ProvinceNumber, Vic2Province]: Vic2Provinces)
+	for (const auto& state: states)
 	{
-		if (!Vic2Province->isLandProvince())
+		if (state.second.isImpassable())
 		{
 			continue;
 		}
-
-		const auto HoI4ProvinceNumbers = provinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNumber);
-		if (HoI4ProvinceNumbers.empty())
+		int SupplyNodesInState = 0;
+		int maxAllowedSupplyNodes =
+			 std::max(1, static_cast<int>(std::floor(static_cast<double>(state.second.getProvinces().size()) / 6.0)));
+		for (const auto& province: state.second.getProvinces())
 		{
-			continue;
-		}
-		for (const auto& hoi4ProvinceNumber: HoI4ProvinceNumbers)
-		{
-			if (railwayEndpoints.contains(hoi4ProvinceNumber))
+			if (railwayEndpoints.contains(province))
 			{
-				supplyNodes.insert(hoi4ProvinceNumber);
+				supplyNodes.insert(province);
+				SupplyNodesInState++;
+			}
+			if (SupplyNodesInState == maxAllowedSupplyNodes)
+			{
 				break;
 			}
 		}

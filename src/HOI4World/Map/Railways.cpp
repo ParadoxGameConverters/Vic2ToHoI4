@@ -228,7 +228,10 @@ std::vector<std::shared_ptr<Vic2::Province>> GetVic2PathProvincesFromNumbers(con
 // 5|0 1 1 2 2 3 3
 // 6|0 1 2 2 3 3 3
 int GetRailwayLevel(const std::vector<int>& vic2_possible_path,
-	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces)
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2_provinces,
+	 const Mappers::ProvinceMapper& province_mapper,
+	 const std::map<int, HoI4::Province>& hoi4_provinces,
+	 const HoI4::States& hoi4_states)
 {
 	const auto vic2_path_provinces = GetVic2PathProvincesFromNumbers(vic2_possible_path, vic2_provinces);
 	if (vic2_path_provinces.size() != vic2_possible_path.size())
@@ -236,22 +239,66 @@ int GetRailwayLevel(const std::vector<int>& vic2_possible_path,
 		return 0;
 	}
 
-	std::vector<int> rail_levels;
+	std::vector<double> rail_levels;
+	bool capitalRailway = false;
 	for (const auto& vic2_province: vic2_path_provinces)
 	{
-		const auto rail_level = vic2_province->getRailLevel();
+		auto HoI4ProvNumbers = province_mapper.getVic2ToHoI4ProvinceMapping(vic2_province->getNumber());
+		if (HoI4ProvNumbers.empty())
+		{
+			continue;
+		}
+		auto HoI4Province = hoi4_provinces.find(HoI4ProvNumbers[0]);
+		if (HoI4Province == hoi4_provinces.end())
+		{
+			continue;
+		}
+		auto terrainType = HoI4Province->second.getType();
+		auto rail_level = static_cast<double>(vic2_province->getRailLevel()) / 3.0;
 		if (rail_level == 0)
 		{
 			return 0;
 		}
-		rail_levels.push_back(vic2_province->getRailLevel());
+		if (terrainType == "mountain" || terrainType == "jungle" || terrainType == "desert")
+		{
+			rail_level -= 2;
+		}
+		else if (terrainType == "hills" || terrainType == "marsh")
+		{
+			rail_level--;
+		}
+		else // forest, urban, plains
+		{
+			rail_level++;
+		}
+		rail_levels.push_back(rail_level);
+
+		// check to see if the state the province is in is a capital state
+		// if we already know its going through a capital state, dont bother searching
+		if (!capitalRailway)
+		{
+			auto HoI4StateID = hoi4_states.getProvinceToStateIDMap().find(HoI4ProvNumbers[0]);
+			if (HoI4StateID == hoi4_states.getProvinceToStateIDMap().end())
+			{
+				continue;
+			}
+			auto HoI4StateInfo = hoi4_states.getStates().find(HoI4StateID->second);
+			if (HoI4StateInfo == hoi4_states.getStates().end())
+			{
+				continue;
+			}
+			if (HoI4StateInfo->second.IsCapitalState())
+			{
+				capitalRailway = true;
+			}
+		}
 	}
 
-	int total_rail_level = std::accumulate(rail_levels.begin(), rail_levels.end(), 0);
-	total_rail_level -= 2 * static_cast<int>(rail_levels.size());
-	const int rail_level = total_rail_level / static_cast<int>(rail_levels.size());
-
-	return std::clamp(rail_level, 0, 3);
+	double total_rail_level = std::accumulate(rail_levels.begin(), rail_levels.end(), 0.0);
+	double rail_level = rail_levels.size() == 0 ? 0 : total_rail_level / static_cast<double>(rail_levels.size());
+	int rail_level_int = round(rail_level);
+	// if the railway goes through a capital, the cap is 3. Else it is 2
+	return capitalRailway ? std::clamp(rail_level_int, 1, 3) : std::clamp(rail_level_int, 0, 2);
 }
 
 
@@ -600,7 +647,8 @@ std::tuple<std::map<std::string, std::vector<HoI4::PossiblePath>>, std::vector<H
 	std::vector<HoI4::PossiblePath> border_crossings;
 	for (const auto& vic2_province_path: vic2_province_paths)
 	{
-		const int railway_level = GetRailwayLevel(vic2_province_path, vic2_provinces);
+		const int railway_level =
+			 GetRailwayLevel(vic2_province_path, vic2_provinces, province_mapper, hoi4_provinces, hoi4_states);
 		if (railway_level < 1)
 		{
 			continue;

@@ -216,6 +216,7 @@ class Country
 
 	[[nodiscard]] bool hasProvinces() const { return !provinces.empty(); }
 	[[nodiscard]] const std::set<int>& getProvinces() const { return provinces; }
+	[[nodiscard]] const int& getNationalPopulation() const { return nationalPopulation; }
 	[[nodiscard]] const std::set<int>& getStates() const { return states; }
 	[[nodiscard]] std::optional<int> getCapitalState() const { return capitalState; }
 	[[nodiscard]] std::optional<int> getCapitalProvince() const { return capitalProvince; }
@@ -414,6 +415,7 @@ class Country
 	int oldCapital;
 	std::set<int> coreStates;
 	std::set<int> claimedStates;
+	int nationalPopulation = 0;
 
 	std::string oldGovernment;
 	std::string governmentIdeology = "neutrality";
