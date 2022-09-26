@@ -72,45 +72,39 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 			continue;
 		}
 
-		std::vector<std::shared_ptr<Country>> neighbors;
-		for (const auto& potentialNeighbor: greatPowers)
+		std::vector<std::shared_ptr<Country>> gpThreats;
+		for (const auto& potentialAttacker: greatPowers)
 		{
-			if (potentialNeighbor->getTag() == country->getTag())
+			if (potentialAttacker->getTag() == country->getTag())
 			{
 				continue;
 			}
-			if (potentialNeighbor->getGovernmentIdeology() == "democratic")
+			if (potentialAttacker->getGovernmentIdeology() == "democratic")
 			{
 				continue;
 			}
-			if (const auto& borderStates = mapUtils
-						.findBorderStates(*country,
-							 *potentialNeighbor,
-							 provinceToStateIdMapping,
-							 theMapData,
-							 provinceDefinitions);
-						!borderStates.empty() &&
-				 neighbors.size() < 3)
+			if (attackerCanPositionTroopsOnCountryBorders(country,
+					  potentialAttacker,
+					  mapUtils,
+					  provinceToStateIdMapping,
+					  theMapData,
+					  provinceDefinitions) &&
+				 gpThreats.size() < 3)
 			{
-				Log(LogLevel::Info) << "\t" << potentialNeighbor->getTag();
-				for (const auto& state: borderStates)
-				{
-					Log(LogLevel::Info) << "\t\t" << state;
-				}
-				neighbors.push_back(potentialNeighbor);
+				gpThreats.push_back(potentialAttacker);
 			}
 		}
 
-		if (!neighbors.empty())
+		if (!gpThreats.empty())
 		{
 			Log(LogLevel::Info) << "\t\tFrance: " << country->getTag();
 			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
-			Log(LogLevel::Info) << "\t\tItaly: " << neighbors[0]->getTag();
-			neighbors[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
-			if (neighbors.size() > 1)
+			Log(LogLevel::Info) << "\t\tItaly: " << gpThreats[0]->getTag();
+			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
+			if (gpThreats.size() > 1)
 			{
-				Log(LogLevel::Info) << "\t\tGermany: " << neighbors[1]->getTag();
-				neighbors[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
+				Log(LogLevel::Info) << "\t\tGermany: " << gpThreats[1]->getTag();
+				gpThreats[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
 			}
 			country->addFocusTreeBranch("FRA_begin_rearmament", onActions);
 			branchNames.push_back("FRA_begin_rearmament");
@@ -150,4 +144,41 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::sortCountrie
 	}
 
 	return sortedCountries;
+}
+
+bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& country,
+	 const std::shared_ptr<Country>& attacker,
+	 const HoI4::MapUtils& mapUtils,
+	 const std::map<int, int>& provinceToStateIdMapping,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions)
+{
+	Log(LogLevel::Debug) << "\tChecking if " << attacker->getTag() << " can position troops on " << country->getTag()
+								<< " borders";
+	if (!mapUtils.findBorderStates(*country, *attacker, provinceToStateIdMapping, theMapData, provinceDefinitions)
+				.empty())
+		return true;
+
+	if (!attacker->getFaction())
+	{
+		return false;
+	}
+
+	// Checking faction members because of military access they give; TODO: countries explicitly giving MA
+	for (const auto& enemy: attacker->getFaction()->getMembers())
+	{
+		if (enemy->getTag() == attacker->getTag())
+		{
+			continue;
+		}
+		if (!attackerCanPositionTroopsOnCountryBorders(enemy, attacker, mapUtils, provinceToStateIdMapping, theMapData, provinceDefinitions))
+		{
+			Log(LogLevel::Debug) << " -> does not border " << attacker->getTag();
+			continue;
+		}
+
+		if (attackerCanPositionTroopsOnCountryBorders(country, enemy, mapUtils, provinceToStateIdMapping, theMapData, provinceDefinitions))
+			return true;
+	}
+	return false;
 }
