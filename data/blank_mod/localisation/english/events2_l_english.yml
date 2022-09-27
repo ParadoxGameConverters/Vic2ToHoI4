@@ -537,3 +537,6 @@
  fascist_summit.d:0 "A [From.GetRulingIdeology] summit has been proposed in [From.Capital.GetCapitalVictoryPointName] that would bring [From.GetRulingIdeology] nations closer"
  fascist_summit.a:0 "Tensions are rising"
  communist_summit.t:0 "A Communist Summit in [From.GetName]"
+ static_news.1.t:0 "Support for Fascists in [From.GetName]"
+ static_news.1.d:0 "'Strength through Unity! The government has grown weak, we need a party who can unite us, who can give us a strong national identity and who will not be fooled by capitalism's sweet but poisonous voice.'\n\nThe Third Way, or fascists as they might be called, are looking to get a seat in the [From.GetAdjective] Upper House. They claim state control must be expanded over the vital industries to ensure self-sufficiency and economic independence of the nation. Strongly opposed to all other ideologies, they don't hesitate to resort to use of violence to grow their power."
+ static_news.1.a:0 "Tensions are rising"
