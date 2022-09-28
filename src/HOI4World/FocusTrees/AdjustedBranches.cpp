@@ -177,7 +177,12 @@ bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std
 			continue;
 		}
 
-		if (attackerCanPositionTroopsOnCountryBorders(country, enemy, mapUtils, provinceToStateIdMapping, theMapData, provinceDefinitions))
+		if (attackerCanPositionTroopsOnCountryBorders(country,
+				  enemy,
+				  mapUtils,
+				  provinceToStateIdMapping,
+				  theMapData,
+				  provinceDefinitions))
 			return true;
 	}
 	return false;
