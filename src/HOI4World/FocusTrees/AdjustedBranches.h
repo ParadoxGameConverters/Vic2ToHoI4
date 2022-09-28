@@ -34,8 +34,14 @@ class AdjustedBranches
 		 const Maps::ProvinceDefinitions& provinceDefinitions);
 	std::vector<std::shared_ptr<Country>> sortCountriesByStrength(
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
-	bool attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& country,
+	bool countriesShareBorder(const std::shared_ptr<Country>& country,
 		 const std::shared_ptr<Country>& attacker,
+		 const HoI4::MapUtils& mapUtils,
+		 const std::map<int, int>& provinceToStateIdMapping,
+		 const Maps::MapData& theMapData,
+		 const Maps::ProvinceDefinitions& provinceDefinitions);
+	bool attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& countryOne,
+		 const std::shared_ptr<Country>& countryTwo,
 		 const HoI4::MapUtils& mapUtils,
 		 const std::map<int, int>& provinceToStateIdMapping,
 		 const Maps::MapData& theMapData,

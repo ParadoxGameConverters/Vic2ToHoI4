@@ -67,8 +67,10 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 
 	for (auto country: sortCountriesByStrength(countries))
 	{
+		Log(LogLevel::Debug) << "Checking " << country->getTag();
 		if (country->getGovernmentIdeology() != "democratic")
 		{
+			Log(LogLevel::Debug) << " -> Not democratic";
 			continue;
 		}
 
@@ -146,6 +148,24 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::sortCountrie
 	return sortedCountries;
 }
 
+bool HoI4::AdjustedBranches::countriesShareBorder(const std::shared_ptr<Country>& countryOne,
+	 const std::shared_ptr<Country>& countryTwo,
+	 const HoI4::MapUtils& mapUtils,
+	 const std::map<int, int>& provinceToStateIdMapping,
+	 const Maps::MapData& theMapData,
+	 const Maps::ProvinceDefinitions& provinceDefinitions)
+{
+	if (!mapUtils.findBorderStates(*countryOne, *countryTwo, provinceToStateIdMapping, theMapData, provinceDefinitions)
+				.empty())
+	{
+		Log(LogLevel::Debug) << "\t\t" << countryOne->getTag() << " shares border with " << countryTwo->getTag();
+		return true;
+	}
+
+	Log(LogLevel::Debug) << "\t\t" << countryOne->getTag() << " does not border " << countryTwo->getTag();
+	return false;
+}
+
 bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& country,
 	 const std::shared_ptr<Country>& attacker,
 	 const HoI4::MapUtils& mapUtils,
@@ -155,8 +175,7 @@ bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std
 {
 	Log(LogLevel::Debug) << "\tChecking if " << attacker->getTag() << " can position troops on " << country->getTag()
 								<< " borders";
-	if (!mapUtils.findBorderStates(*country, *attacker, provinceToStateIdMapping, theMapData, provinceDefinitions)
-				.empty())
+	if (countriesShareBorder(country, attacker, mapUtils, provinceToStateIdMapping, theMapData, provinceDefinitions))
 		return true;
 
 	if (!attacker->getFaction())
@@ -165,15 +184,15 @@ bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std
 	}
 
 	// Checking faction members because of military access they give; TODO: countries explicitly giving MA
+	Log(LogLevel::Debug) << "\tChecking faction members";
 	for (const auto& enemy: attacker->getFaction()->getMembers())
 	{
 		if (enemy->getTag() == attacker->getTag())
 		{
 			continue;
 		}
-		if (!attackerCanPositionTroopsOnCountryBorders(enemy, attacker, mapUtils, provinceToStateIdMapping, theMapData, provinceDefinitions))
+		if (!countriesShareBorder(enemy, attacker, mapUtils, provinceToStateIdMapping, theMapData, provinceDefinitions))
 		{
-			Log(LogLevel::Debug) << " -> does not border " << attacker->getTag();
 			continue;
 		}
 
