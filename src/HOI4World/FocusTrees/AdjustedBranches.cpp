@@ -47,6 +47,34 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(std::map<std::string, std:
 	}
 }
 
+void HoI4::AdjustedBranches::determineNeighbors(const std::map<std::string, std::shared_ptr<Country>>& countries)
+{
+	for (const auto& country: countries | std::views::values)
+	{
+		if (country->isGreatPower())
+		{
+			Log(LogLevel::Debug) << "Coloring " << country->getTag() << " zone of access";
+			for (auto [tag, accessible]: countries)
+			{
+				const auto& relations = country->getRelations(tag);
+				if (!relations)
+				{
+					continue;
+				}
+
+				const auto& factionMembers = country->getFaction()->getMembers();
+				if (relations->hasMilitaryAccess() ||
+					 std::find(factionMembers.begin(), factionMembers.end(), accessible) != factionMembers.end() ||
+					 country->getPuppets().contains(tag))
+				{
+					accessible->setColor(country->getColor());
+				}
+			}
+			break;
+		}
+	}
+}
+
 void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std::shared_ptr<Country>> countries,
 	 HoI4FocusTree& genericFocusTree,
 	 OnActions& onActions,
@@ -56,6 +84,8 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 	 const Maps::ProvinceDefinitions& provinceDefinitions)
 {
 	Log(LogLevel::Info) << " -> Adding \"Begin Rearmament\" branch";
+	determineNeighbors(countries);
+
 	std::vector<std::shared_ptr<Country>> greatPowers;
 	for (const auto& country: countries | std::views::values)
 	{

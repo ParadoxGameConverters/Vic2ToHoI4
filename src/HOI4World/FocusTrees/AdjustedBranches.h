@@ -46,6 +46,7 @@ class AdjustedBranches
 		 const std::map<int, int>& provinceToStateIdMapping,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions);
+	void determineNeighbors(const std::map<std::string, std::shared_ptr<Country>>& theCountries);
 
 	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
 
