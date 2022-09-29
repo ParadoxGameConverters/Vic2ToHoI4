@@ -44,7 +44,7 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(std::map<std::string, std:
 }
 
 void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::vector<std::shared_ptr<Country>>& greatPowers,
-		const std::map<std::string, std::shared_ptr<Country>>& countries)
+	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
 	for (const auto& gp: greatPowers)
 	{
