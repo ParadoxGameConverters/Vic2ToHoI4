@@ -49,28 +49,45 @@ void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::vector<std::sha
 	for (const auto& gp: greatPowers)
 	{
 		Log(LogLevel::Debug) << "Determining " << gp->getTag() << " zone of access";
-		for (auto [tag, country]: countries)
+		addToGPZoneOfAccess(gp, getNeighbors(gp, countries));
+	}
+}
+
+void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>& gp,
+	 const std::vector<std::shared_ptr<Country>>& countries)
+{
+	for (const auto& country: countries)
+	{
+		const auto& tag = country->getTag();
+		const auto& relations = gp->getRelations(tag);
+		if (!relations)
 		{
-			addToGPZoneOfAccess(gp, country);
+			continue;
+		}
+
+		const auto& factionMembers = gp->getFaction()->getMembers();
+		if (relations->hasMilitaryAccess() ||
+			 std::find(factionMembers.begin(), factionMembers.end(), country) != factionMembers.end() ||
+			 gp->getPuppets().contains(tag))
+		{
+			country->setColor(gp->getColor());
 		}
 	}
 }
 
-void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>& gp, const std::shared_ptr<Country> country)
+const std::vector<std::shared_ptr<HoI4::Country>>& HoI4::AdjustedBranches::getNeighbors(
+	 const std::shared_ptr<Country>& country,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	const auto& relations = gp->getRelations(tag);
-	if (!relations)
+	std::vector<std::shared_ptr<Country>> neighbors;
+	for (auto potentialNeighbor: countries | std::views::values)
 	{
-		continue;
+		if (countriesShareBorder(country, potentialNeighbor))
+		{
+			neighbors.push_back(potentialNeighbor);
+		}
 	}
-
-	const auto& factionMembers = gp->getFaction()->getMembers();
-	if (relations->hasMilitaryAccess() ||
-		 std::find(factionMembers.begin(), factionMembers.end(), country) != factionMembers.end() ||
-		 gp->getPuppets().contains(tag))
-	{
-		country->setColor(gp->getColor());
-	}
+	return neighbors;
 }
 
 void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std::shared_ptr<Country>> countries,
