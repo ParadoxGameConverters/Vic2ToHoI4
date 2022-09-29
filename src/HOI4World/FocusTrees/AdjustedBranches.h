@@ -50,7 +50,8 @@ class AdjustedBranches
 	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
 
   private:
-	void determineGPZonesOfAccess(const std::map<std::string, std::shared_ptr<Country>>& theCountries);
+	void determineGPZonesOfAccess(const std::vector<std::shared_ptr<Country>>& greatPowers,
+		const std::map<std::string, std::shared_ptr<Country>>& theCountries);
 
 	std::vector<std::string> branchNames;
 };

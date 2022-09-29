@@ -47,30 +47,27 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(std::map<std::string, std:
 	}
 }
 
-void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::map<std::string, std::shared_ptr<Country>>& countries)
+void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::vector<std::shared_ptr<Country>>& greatPowers,
+		const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	for (const auto& country: countries | std::views::values)
+	for (const auto& gp: greatPowers)
 	{
-		if (country->isGreatPower())
+		Log(LogLevel::Debug) << "Determining " << gp->getTag() << " zone of access";
+		for (auto [tag, country]: countries)
 		{
-			Log(LogLevel::Debug) << "Coloring " << country->getTag() << " zone of access";
-			for (auto [tag, accessible]: countries)
+			const auto& relations = gp->getRelations(tag);
+			if (!relations)
 			{
-				const auto& relations = country->getRelations(tag);
-				if (!relations)
-				{
-					continue;
-				}
-
-				const auto& factionMembers = country->getFaction()->getMembers();
-				if (relations->hasMilitaryAccess() ||
-					 std::find(factionMembers.begin(), factionMembers.end(), accessible) != factionMembers.end() ||
-					 country->getPuppets().contains(tag))
-				{
-					accessible->setColor(country->getColor());
-				}
+				continue;
 			}
-			break;
+
+			const auto& factionMembers = gp->getFaction()->getMembers();
+			if (relations->hasMilitaryAccess() ||
+				 std::find(factionMembers.begin(), factionMembers.end(), country) != factionMembers.end() ||
+				 gp->getPuppets().contains(tag))
+			{
+				country->setColor(gp->getColor());
+			}
 		}
 	}
 }
@@ -84,7 +81,6 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 	 const Maps::ProvinceDefinitions& provinceDefinitions)
 {
 	Log(LogLevel::Info) << " -> Adding \"Begin Rearmament\" branch";
-	determineGPZonesOfAccess(countries);
 
 	std::vector<std::shared_ptr<Country>> greatPowers;
 	for (const auto& country: countries | std::views::values)
@@ -94,6 +90,7 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 			greatPowers.push_back(country);
 		}
 	}
+	determineGPZonesOfAccess(greatPowers, countries);
 
 	for (auto country: sortCountriesByStrength(countries))
 	{
