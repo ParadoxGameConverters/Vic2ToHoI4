@@ -54,11 +54,12 @@ void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::vector<std::sha
 }
 
 void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>& gp,
-	 const std::vector<std::shared_ptr<Country>>& countries)
+	 const std::map<std::string, std::shared_ptr<Country>>& targetCountries)
 {
-	for (const auto& country: countries)
+	Log(LogLevel::Info) << "Adding countries to " << gp->getTag() << " zone of access";
+	for (const auto& [tag, country]: targetCountries)
 	{
-		const auto& tag = country->getTag();
+		Log(LogLevel::Info) << " -> " << tag;
 		const auto& relations = gp->getRelations(tag);
 		if (!relations)
 		{
@@ -75,16 +76,16 @@ void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>&
 	}
 }
 
-const std::vector<std::shared_ptr<HoI4::Country>>& HoI4::AdjustedBranches::getNeighbors(
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::getNeighbors(
 	 const std::shared_ptr<Country>& country,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	std::vector<std::shared_ptr<Country>> neighbors;
-	for (auto potentialNeighbor: countries | std::views::values)
+	std::map<std::string, std::shared_ptr<Country>> neighbors;
+	for (const auto& potentialNeighbor: countries)
 	{
-		if (countriesShareBorder(country, potentialNeighbor))
+		if (countriesShareBorder(country, potentialNeighbor.second))
 		{
-			neighbors.push_back(potentialNeighbor);
+			neighbors.emplace(potentialNeighbor);
 		}
 	}
 	return neighbors;

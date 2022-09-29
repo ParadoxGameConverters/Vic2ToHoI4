@@ -39,10 +39,10 @@ class AdjustedBranches
   private:
 	void determineGPZonesOfAccess(const std::vector<std::shared_ptr<Country>>& greatPowers,
 		 const std::map<std::string, std::shared_ptr<Country>>& theCountries);
-	void addToGPZoneOfAccess(const std::shared_ptr<Country>& gp, const std::vector<std::shared_ptr<Country>>& countries);
+	void addToGPZoneOfAccess(const std::shared_ptr<Country>& gp,
+		 const std::map<std::string, std::shared_ptr<Country>>& targetCountries);
 
-	[[nodiscard]] const std::vector<std::shared_ptr<HoI4::Country>>& getNeighbors(
-		 const std::shared_ptr<Country>& country,
+	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const std::shared_ptr<Country>& country,
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
 	std::vector<std::string> branchNames;
