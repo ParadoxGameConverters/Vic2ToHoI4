@@ -47,7 +47,7 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(std::map<std::string, std:
 	}
 }
 
-void HoI4::AdjustedBranches::determineNeighbors(const std::map<std::string, std::shared_ptr<Country>>& countries)
+void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
 	for (const auto& country: countries | std::views::values)
 	{
@@ -84,7 +84,7 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 	 const Maps::ProvinceDefinitions& provinceDefinitions)
 {
 	Log(LogLevel::Info) << " -> Adding \"Begin Rearmament\" branch";
-	determineNeighbors(countries);
+	determineGPZonesOfAccess(countries);
 
 	std::vector<std::shared_ptr<Country>> greatPowers;
 	for (const auto& country: countries | std::views::values)
