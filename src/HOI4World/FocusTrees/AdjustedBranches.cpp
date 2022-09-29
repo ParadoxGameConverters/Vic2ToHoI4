@@ -66,12 +66,18 @@ void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>&
 			continue;
 		}
 
-		const auto& factionMembers = gp->getFaction()->getMembers();
-		if (relations->hasMilitaryAccess() ||
-			 std::find(factionMembers.begin(), factionMembers.end(), country) != factionMembers.end() ||
-			 gp->getPuppets().contains(tag))
+		if (relations->hasMilitaryAccess() || gp->getPuppets().contains(tag))
 		{
-			country->setColor(gp->getColor());
+			gpZonesOfAccess[gp->getTag()].insert(tag);
+		}
+
+		if (const auto& gpFaction = gp->getFaction(); gpFaction)
+		{
+			const auto& factionMembers = gpFaction->getMembers();
+			if (std::find(factionMembers.begin(), factionMembers.end(), country) != factionMembers.end())
+			{
+				gpZonesOfAccess[gp->getTag()].insert(tag);
+			}
 		}
 	}
 }

@@ -46,6 +46,7 @@ class AdjustedBranches
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
 	std::vector<std::string> branchNames;
+	std::map<std::string, std::set<std::string>> gpZonesOfAccess; // great power, contiguous countries GP can access
 
 	const HoI4::MapUtils& mapUtils;
 	const std::map<int, int>& provinceToStateIdMapping;
