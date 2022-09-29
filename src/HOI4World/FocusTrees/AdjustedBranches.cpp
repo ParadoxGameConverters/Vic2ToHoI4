@@ -57,6 +57,9 @@ void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>&
 	 const std::map<std::string, std::shared_ptr<Country>>& targetCountries)
 {
 	Log(LogLevel::Info) << "Adding countries to " << gp->getTag() << " zone of access";
+	const auto& gpTag = gp->getTag();
+	gpZonesOfAccess[gpTag].insert(gpTag);
+	
 	for (const auto& [tag, country]: targetCountries)
 	{
 		Log(LogLevel::Info) << " -> " << tag;
@@ -68,7 +71,7 @@ void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>&
 
 		if (relations->hasMilitaryAccess() || gp->getPuppets().contains(tag))
 		{
-			gpZonesOfAccess[gp->getTag()].insert(tag);
+			gpZonesOfAccess[gpTag].insert(tag);
 		}
 
 		if (const auto& gpFaction = gp->getFaction(); gpFaction)
@@ -76,7 +79,7 @@ void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>&
 			const auto& factionMembers = gpFaction->getMembers();
 			if (std::find(factionMembers.begin(), factionMembers.end(), country) != factionMembers.end())
 			{
-				gpZonesOfAccess[gp->getTag()].insert(tag);
+				gpZonesOfAccess[gpTag].insert(tag);
 			}
 		}
 	}
