@@ -48,7 +48,6 @@ void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::vector<std::sha
 {
 	for (const auto& gp: greatPowers)
 	{
-		Log(LogLevel::Debug) << "Determining " << gp->getTag() << " zone of access";
 		addToGPZoneOfAccess(gp, getNeighbors(gp, countries));
 	}
 }
@@ -201,11 +200,8 @@ bool HoI4::AdjustedBranches::countriesShareBorder(const std::shared_ptr<Country>
 	if (!mapUtils.findBorderStates(*countryOne, *countryTwo, provinceToStateIdMapping, theMapData, provinceDefinitions)
 				.empty())
 	{
-		Log(LogLevel::Debug) << "\t\t" << countryOne->getTag() << " shares border with " << countryTwo->getTag();
 		return true;
 	}
-
-	Log(LogLevel::Debug) << "\t\t" << countryOne->getTag() << " does not border " << countryTwo->getTag();
 	return false;
 }
 
@@ -213,8 +209,6 @@ bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std
 	 const std::string& attackerTag,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	Log(LogLevel::Debug) << "\tChecking if " << attackerTag << " can position troops on " << country->getTag()
-								<< " borders";
 	for (const auto& gpAccessibleTag: gpZonesOfAccess[attackerTag])
 	{
 		const auto& gpAccessibleCountryItr = countries.find(gpAccessibleTag);
