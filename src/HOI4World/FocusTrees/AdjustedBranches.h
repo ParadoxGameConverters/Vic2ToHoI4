@@ -27,25 +27,12 @@ class AdjustedBranches
 		 OnActions& onActions);
 	void addBeginRearmamentBranch(std::map<std::string, std::shared_ptr<Country>> countries,
 		 HoI4FocusTree& genericFocusTree,
-		 OnActions& onActions,
-		 const HoI4::MapUtils& mapUtils,
-		 const std::map<int, int>& provinceToStateIdMapping,
-		 const Maps::MapData& theMapData,
-		 const Maps::ProvinceDefinitions& provinceDefinitions);
+		 OnActions& onActions);
 	std::vector<std::shared_ptr<Country>> sortCountriesByStrength(
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
-	bool countriesShareBorder(const std::shared_ptr<Country>& country,
-		 const std::shared_ptr<Country>& attacker,
-		 const HoI4::MapUtils& mapUtils,
-		 const std::map<int, int>& provinceToStateIdMapping,
-		 const Maps::MapData& theMapData,
-		 const Maps::ProvinceDefinitions& provinceDefinitions);
+	bool countriesShareBorder(const std::shared_ptr<Country>& country, const std::shared_ptr<Country>& attacker);
 	bool attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& countryOne,
-		 const std::shared_ptr<Country>& countryTwo,
-		 const HoI4::MapUtils& mapUtils,
-		 const std::map<int, int>& provinceToStateIdMapping,
-		 const Maps::MapData& theMapData,
-		 const Maps::ProvinceDefinitions& provinceDefinitions);
+		 const std::shared_ptr<Country>& countryTwo);
 
 	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
 
@@ -55,6 +42,11 @@ class AdjustedBranches
 	void addToGPZoneOfAccess(const std::shared_ptr<Country>& gp, const std::shared_ptr<Country> country);
 
 	std::vector<std::string> branchNames;
+
+	const HoI4::MapUtils& mapUtils;
+	const std::map<int, int>& provinceToStateIdMapping;
+	const Maps::MapData& theMapData;
+	const Maps::ProvinceDefinitions& provinceDefinitions;
 };
 
 } // namespace HoI4

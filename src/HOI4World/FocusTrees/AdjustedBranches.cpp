@@ -11,7 +11,9 @@ HoI4::AdjustedBranches::AdjustedBranches(std::map<std::string, std::shared_ptr<C
 	 const HoI4::MapUtils& mapUtils,
 	 const std::map<int, int>& provinceToStateIdMapping,
 	 const Maps::MapData& theMapData,
-	 const Maps::ProvinceDefinitions& provinceDefinitions)
+	 const Maps::ProvinceDefinitions& provinceDefinitions):
+	 mapUtils(mapUtils),
+	 provinceToStateIdMapping(provinceToStateIdMapping), theMapData(theMapData), provinceDefinitions(provinceDefinitions)
 {
 	Log(LogLevel::Info) << "\tAdding adjusted focus branches";
 	if (genericFocusTree.getBranches().contains("uk_colonial_focus"))
@@ -20,13 +22,7 @@ HoI4::AdjustedBranches::AdjustedBranches(std::map<std::string, std::shared_ptr<C
 	}
 	if (genericFocusTree.getBranches().contains("FRA_begin_rearmament"))
 	{
-		addBeginRearmamentBranch(countries,
-			 genericFocusTree,
-			 onActions,
-			 mapUtils,
-			 provinceToStateIdMapping,
-			 theMapData,
-			 provinceDefinitions);
+		addBeginRearmamentBranch(countries, genericFocusTree, onActions);
 	}
 }
 
@@ -79,11 +75,7 @@ void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>&
 
 void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std::shared_ptr<Country>> countries,
 	 HoI4FocusTree& genericFocusTree,
-	 OnActions& onActions,
-	 const HoI4::MapUtils& mapUtils,
-	 const std::map<int, int>& provinceToStateIdMapping,
-	 const Maps::MapData& theMapData,
-	 const Maps::ProvinceDefinitions& provinceDefinitions)
+	 OnActions& onActions)
 {
 	Log(LogLevel::Info) << " -> Adding \"Begin Rearmament\" branch";
 
@@ -117,13 +109,7 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 			{
 				continue;
 			}
-			if (attackerCanPositionTroopsOnCountryBorders(country,
-					  potentialAttacker,
-					  mapUtils,
-					  provinceToStateIdMapping,
-					  theMapData,
-					  provinceDefinitions) &&
-				 gpThreats.size() < 3)
+			if (attackerCanPositionTroopsOnCountryBorders(country, potentialAttacker) && gpThreats.size() < 3)
 			{
 				gpThreats.push_back(potentialAttacker);
 			}
@@ -181,11 +167,7 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::sortCountrie
 }
 
 bool HoI4::AdjustedBranches::countriesShareBorder(const std::shared_ptr<Country>& countryOne,
-	 const std::shared_ptr<Country>& countryTwo,
-	 const HoI4::MapUtils& mapUtils,
-	 const std::map<int, int>& provinceToStateIdMapping,
-	 const Maps::MapData& theMapData,
-	 const Maps::ProvinceDefinitions& provinceDefinitions)
+	 const std::shared_ptr<Country>& countryTwo)
 {
 	if (!mapUtils.findBorderStates(*countryOne, *countryTwo, provinceToStateIdMapping, theMapData, provinceDefinitions)
 				.empty())
@@ -199,15 +181,11 @@ bool HoI4::AdjustedBranches::countriesShareBorder(const std::shared_ptr<Country>
 }
 
 bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& country,
-	 const std::shared_ptr<Country>& attacker,
-	 const HoI4::MapUtils& mapUtils,
-	 const std::map<int, int>& provinceToStateIdMapping,
-	 const Maps::MapData& theMapData,
-	 const Maps::ProvinceDefinitions& provinceDefinitions)
+	 const std::shared_ptr<Country>& attacker)
 {
 	Log(LogLevel::Debug) << "\tChecking if " << attacker->getTag() << " can position troops on " << country->getTag()
 								<< " borders";
-	if (countriesShareBorder(country, attacker, mapUtils, provinceToStateIdMapping, theMapData, provinceDefinitions))
+	if (countriesShareBorder(country, attacker))
 		return true;
 
 	if (!attacker->getFaction())
@@ -223,17 +201,12 @@ bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std
 		{
 			continue;
 		}
-		if (!countriesShareBorder(enemy, attacker, mapUtils, provinceToStateIdMapping, theMapData, provinceDefinitions))
+		if (!countriesShareBorder(enemy, attacker))
 		{
 			continue;
 		}
 
-		if (attackerCanPositionTroopsOnCountryBorders(country,
-				  enemy,
-				  mapUtils,
-				  provinceToStateIdMapping,
-				  theMapData,
-				  provinceDefinitions))
+		if (attackerCanPositionTroopsOnCountryBorders(country, enemy))
 			return true;
 	}
 	return false;
