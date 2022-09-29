@@ -48,6 +48,7 @@ void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::vector<std::sha
 {
 	for (const auto& gp: greatPowers)
 	{
+		gpZonesOfAccess[gp->getTag()].insert(gp->getTag()); // adding self
 		addCountriesToGPZoneOfAccess(gp, gp, countries);
 	}
 }
@@ -57,8 +58,6 @@ void HoI4::AdjustedBranches::addCountriesToGPZoneOfAccess(const std::shared_ptr<
 	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
 	Log(LogLevel::Info) << "Adding countries to " << gp->getTag() << " zone of access";
-	const auto& gpTag = gp->getTag();
-	gpZonesOfAccess[gpTag].insert(gpTag);
 
 	for (const auto& [tag, country]: getNeighbors(referenceCountry, countries))
 	{
