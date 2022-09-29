@@ -48,18 +48,19 @@ void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::vector<std::sha
 {
 	for (const auto& gp: greatPowers)
 	{
-		addToGPZoneOfAccess(gp, getNeighbors(gp, countries));
+		addCountriesToGPZoneOfAccess(gp, gp, countries);
 	}
 }
 
-void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>& gp,
-	 const std::map<std::string, std::shared_ptr<Country>>& targetCountries)
+void HoI4::AdjustedBranches::addCountriesToGPZoneOfAccess(const std::shared_ptr<Country>& gp,
+	 const std::shared_ptr<Country>& referenceCountry,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
 	Log(LogLevel::Info) << "Adding countries to " << gp->getTag() << " zone of access";
 	const auto& gpTag = gp->getTag();
 	gpZonesOfAccess[gpTag].insert(gpTag);
 
-	for (const auto& [tag, country]: targetCountries)
+	for (const auto& [tag, country]: getNeighbors(referenceCountry, countries))
 	{
 		Log(LogLevel::Info) << " -> " << tag;
 		const auto& relations = gp->getRelations(tag);
@@ -70,7 +71,7 @@ void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>&
 
 		if (relations->hasMilitaryAccess() || gp->getPuppets().contains(tag))
 		{
-			gpZonesOfAccess[gpTag].insert(tag);
+			addToGPZoneOfAccess(gp, country, countries);
 		}
 
 		if (const auto& gpFaction = gp->getFaction(); gpFaction)
@@ -78,11 +79,25 @@ void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>&
 			const auto& factionMembers = gpFaction->getMembers();
 			if (std::find(factionMembers.begin(), factionMembers.end(), country) != factionMembers.end())
 			{
-				gpZonesOfAccess[gpTag].insert(tag);
+				addToGPZoneOfAccess(gp, country, countries);
 			}
 		}
 	}
 }
+
+void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>& gp,
+	 const std::shared_ptr<Country>& country,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries)
+{
+	if (gpZonesOfAccess[gp->getTag()].contains(country->getTag()))
+	{
+		return;
+	}
+
+	gpZonesOfAccess[gp->getTag()].insert(country->getTag());
+	addCountriesToGPZoneOfAccess(gp, country, countries);
+}
+
 
 std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::getNeighbors(
 	 const std::shared_ptr<Country>& country,

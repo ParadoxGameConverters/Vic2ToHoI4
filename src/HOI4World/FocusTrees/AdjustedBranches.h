@@ -34,8 +34,12 @@ class AdjustedBranches
   private:
 	void determineGPZonesOfAccess(const std::vector<std::shared_ptr<Country>>& greatPowers,
 		 const std::map<std::string, std::shared_ptr<Country>>& theCountries);
+	void addCountriesToGPZoneOfAccess(const std::shared_ptr<Country>& gp,
+		 const std::shared_ptr<Country>& referenceCountry,
+		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 	void addToGPZoneOfAccess(const std::shared_ptr<Country>& gp,
-		 const std::map<std::string, std::shared_ptr<Country>>& targetCountries);
+		 const std::shared_ptr<Country>& country,
+		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
 	std::vector<std::shared_ptr<Country>> sortCountriesByStrength(
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
