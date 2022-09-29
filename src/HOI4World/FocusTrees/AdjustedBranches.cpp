@@ -59,7 +59,7 @@ void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>&
 	Log(LogLevel::Info) << "Adding countries to " << gp->getTag() << " zone of access";
 	const auto& gpTag = gp->getTag();
 	gpZonesOfAccess[gpTag].insert(gpTag);
-	
+
 	for (const auto& [tag, country]: targetCountries)
 	{
 		Log(LogLevel::Info) << " -> " << tag;
@@ -128,7 +128,8 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 		std::vector<std::shared_ptr<Country>> gpThreats;
 		for (const auto& potentialAttacker: greatPowers)
 		{
-			if (potentialAttacker->getTag() == country->getTag())
+			const auto& potentialAttackerTag = potentialAttacker->getTag();
+			if (potentialAttackerTag == country->getTag())
 			{
 				continue;
 			}
@@ -136,7 +137,8 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 			{
 				continue;
 			}
-			if (attackerCanPositionTroopsOnCountryBorders(country, potentialAttacker) && gpThreats.size() < 3)
+			if (attackerCanPositionTroopsOnCountryBorders(country, potentialAttackerTag, countries) &&
+				 gpThreats.size() < 3)
 			{
 				gpThreats.push_back(potentialAttacker);
 			}
@@ -208,32 +210,21 @@ bool HoI4::AdjustedBranches::countriesShareBorder(const std::shared_ptr<Country>
 }
 
 bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& country,
-	 const std::shared_ptr<Country>& attacker)
+	 const std::string& attackerTag,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	Log(LogLevel::Debug) << "\tChecking if " << attacker->getTag() << " can position troops on " << country->getTag()
+	Log(LogLevel::Debug) << "\tChecking if " << attackerTag << " can position troops on " << country->getTag()
 								<< " borders";
-	if (countriesShareBorder(country, attacker))
-		return true;
-
-	if (!attacker->getFaction())
+	for (const auto& gpAccessibleTag: gpZonesOfAccess[attackerTag])
 	{
-		return false;
-	}
-
-	// Checking faction members because of military access they give; TODO: countries explicitly giving MA
-	Log(LogLevel::Debug) << "\tChecking faction members";
-	for (const auto& enemy: attacker->getFaction()->getMembers())
-	{
-		if (enemy->getTag() == attacker->getTag())
+		const auto& gpAccessibleCountryItr = countries.find(gpAccessibleTag);
+		if (gpAccessibleCountryItr == countries.end())
 		{
 			continue;
 		}
-		if (!countriesShareBorder(enemy, attacker))
-		{
-			continue;
-		}
+		const auto& gpAccessibleCountry = gpAccessibleCountryItr->second;
 
-		if (attackerCanPositionTroopsOnCountryBorders(country, enemy))
+		if (countriesShareBorder(country, gpAccessibleCountry))
 			return true;
 	}
 	return false;

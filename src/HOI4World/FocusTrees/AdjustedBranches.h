@@ -31,8 +31,9 @@ class AdjustedBranches
 	std::vector<std::shared_ptr<Country>> sortCountriesByStrength(
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 	bool countriesShareBorder(const std::shared_ptr<Country>& country, const std::shared_ptr<Country>& attacker);
-	bool attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& countryOne,
-		 const std::shared_ptr<Country>& countryTwo);
+	bool attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& country,
+		 const std::string& attackerTag,
+		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
 	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
 
