@@ -55,20 +55,25 @@ void HoI4::AdjustedBranches::determineGPZonesOfAccess(const std::vector<std::sha
 		Log(LogLevel::Debug) << "Determining " << gp->getTag() << " zone of access";
 		for (auto [tag, country]: countries)
 		{
-			const auto& relations = gp->getRelations(tag);
-			if (!relations)
-			{
-				continue;
-			}
-
-			const auto& factionMembers = gp->getFaction()->getMembers();
-			if (relations->hasMilitaryAccess() ||
-				 std::find(factionMembers.begin(), factionMembers.end(), country) != factionMembers.end() ||
-				 gp->getPuppets().contains(tag))
-			{
-				country->setColor(gp->getColor());
-			}
+			addToGPZoneOfAccess(gp, country);
 		}
+	}
+}
+
+void HoI4::AdjustedBranches::addToGPZoneOfAccess(const std::shared_ptr<Country>& gp, const std::shared_ptr<Country> country)
+{
+	const auto& relations = gp->getRelations(tag);
+	if (!relations)
+	{
+		continue;
+	}
+
+	const auto& factionMembers = gp->getFaction()->getMembers();
+	if (relations->hasMilitaryAccess() ||
+		 std::find(factionMembers.begin(), factionMembers.end(), country) != factionMembers.end() ||
+		 gp->getPuppets().contains(tag))
+	{
+		country->setColor(gp->getColor());
 	}
 }
 
