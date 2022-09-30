@@ -789,59 +789,51 @@
 			allowed_civil_war = {
 				always = yes
 			}
-
+			
 			removal_cost = -1
-
+			
 			equipment_bonus = {
-				fighter_equipment = {
+				small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				cv_fighter_equipment = {
+				cv_small_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				jet_fighter_equipment = {
+				small_plane_cas_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				cv_CAS_equipment = {
+				cv_small_plane_cas_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				CAS_equipment = {
+				small_plane_naval_bomber_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				nav_bomber_equipment = {
+				cv_small_plane_naval_bomber_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				cv_nav_bomber_equipment = {
+				medium_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				rocket_interceptor_equipment = {
+				medium_plane_fighter_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				tac_bomber_equipment = {
+				medium_plane_scout_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.10	
+				}
+				large_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				jet_tac_bomber_equipment = {
-					instant = yes
-					build_cost_ic = -0.10
-				}
-				jet_strat_bomber_equipment = {
-					instant = yes
-					build_cost_ic = -0.10
-				}
-				heavy_fighter_equipment = {
-					instant = yes
-					build_cost_ic = -0.10
-				}
-				strat_bomber_equipment = {
+				large_plane_maritime_patrol_plane_airframe = {
 					instant = yes
 					build_cost_ic = -0.10
 				}
@@ -853,11 +845,7 @@
 					instant = yes
 					build_cost_ic = -0.10
 				}
-				scout_plane_equipment = {
-					instant = yes
-					build_cost_ic = -0.10
-				}
-			}
+			}		
 		}
 
 		reclaim_cores_idea = {
@@ -1078,6 +1066,7 @@
 				#lend_lease_tension = 0.50
 				send_volunteers_tension = 0.20
 				guarantee_tension = 1.0
+				embargo_threshold_factor = 2.5
 				ai_badass_factor = 0.01    # Will receive 1% of the threat from others
 				ai_get_ally_desire_factor = -100
 			}

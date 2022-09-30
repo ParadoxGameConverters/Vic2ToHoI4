@@ -22,9 +22,10 @@ ideologies = {
 		faction_impact_on_world_tension = 0.5
 
 		ai_communist = yes # uses the commie AI behavior
+		ai_ideology_wanted_units_factor = 1.20
 
 		rules = {
-			can_force_government = no
+			can_force_government = yes
 			can_send_volunteers = yes
 			can_puppet = no
 			can_only_justify_war_on_threat_country = no
@@ -38,12 +39,13 @@ ideologies = {
 			lend_lease_tension = 0.50
 			send_volunteers_tension = 0.50
 			guarantee_tension = 0.25
-			annex_cost_factor = 0.5
+			# annex_cost_factor = 0.5 # Deprecated, use common\peace_conference\00_generic_peace.txt instead
 			civilian_intel_to_others = 10.0
 			army_intel_to_others = 7.5
 			navy_intel_to_others = 12.5
 			airforce_intel_to_others = 7.5
 			hidden_modifier = { join_faction_tension = -0.1 }
+			embargo_threshold_factor = 0.5
 		}
 
 		faction_modifiers = {
@@ -97,9 +99,11 @@ ideologies = {
 			navy_intel_to_others = 10.0
 			airforce_intel_to_others = 10.0
 			hidden_modifier = { join_faction_tension = -0.1 }
+			embargo_cost_factor = 1
 		}
 
 		ai_fascist = yes # uses the fascist AI behaviour
+		ai_ideology_wanted_units_factor = 1.65
 	}
 
 	neutrality = {
@@ -155,7 +159,7 @@ ideologies = {
 		faction_impact_on_world_tension = 0.1
 
 		rules = {
-			can_force_government = no
+			can_force_government = yes
 			can_puppet = yes
 			can_send_volunteers = no
 		}
@@ -178,5 +182,6 @@ ideologies = {
 		}
 
 		ai_neutral = yes #
+		ai_ideology_wanted_units_factor = 1.15
 	}
 }

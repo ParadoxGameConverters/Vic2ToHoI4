@@ -173,7 +173,7 @@ leader_traits = {
 		type = { land navy }
 		trait_type = personality_trait
 		
-		non_shared_modifier = {
+		non_shared_modifier = { # WARNING! Changing the value of these modifiers requires changing them also in the tooltip ITA_heroes_of_the_nation_general_traits_tt
 			promote_cost_factor = -0.5
 			reassignment_duration_factor = 0.5   # +50% cost to replace leader
 		}
@@ -343,6 +343,29 @@ leader_traits = {
 		type = land
 		trait_type = personality_trait
 		
+		unit_trigger = {
+			OR = {
+				division_has_majority_template = infantry
+				division_has_majority_template = bicycle_battalion
+				division_has_majority_template = marine
+				division_has_majority_template = mountaineers
+				division_has_majority_template = paratrooper
+				division_has_majority_template = penal_battalion
+				
+				owner = {
+					has_idea = mass_assault_academy_spirit
+				}
+			}
+			owner = {
+				NOT = {
+					OR = {
+						has_idea = best_of_the_best_spirit
+						has_idea = academy_scholarships_spirit
+					}
+				}
+			}
+		}
+		
 		trait_xp_factor = {
 			infantry_leader = 1     #+100%
 		}
@@ -351,8 +374,10 @@ leader_traits = {
 			factor = 1
 			
 			modifier = {
-				FROM = { has_idea = mass_assault_academy_spirit }
-				factor = 1.5
+				FROM = { 
+					has_idea = mass_assault_academy_spirit
+				}
+				factor = 2
 			}
 			
 			modifier = {
@@ -363,6 +388,12 @@ leader_traits = {
 				FROM = { has_idea = academy_scholarships_spirit }
 				factor = 0
 			}
+			modifier = {
+				FROM = { 
+					has_dlc = "By Blood Alone"
+				}
+				factor = 0
+			}
 		}
 		defense_skill_factor = 1
 		planning_skill_factor = 1
@@ -371,6 +402,29 @@ leader_traits = {
 	cavalry_officer = { 
 		type = land
 		trait_type = personality_trait
+		unit_type = {
+			type = cavalry
+			type = camelry
+			type = motorized
+			type = mechanized
+		}
+		
+		unit_trigger = {
+			OR = {
+				division_has_majority_template = cavalry
+				division_has_majority_template = camelry
+				division_has_majority_template = motorized
+				division_has_majority_template = mechanized
+			}
+			owner = {
+				NOT = {
+					OR = {
+						has_idea = best_of_the_best_spirit
+						has_idea = academy_scholarships_spirit
+					}
+				}
+			}
+		}
 		
 		trait_xp_factor = {
 			cavalry_leader = 1     #+100%
@@ -387,6 +441,12 @@ leader_traits = {
 				FROM = { has_idea = academy_scholarships_spirit }
 				factor = 0
 			}
+			modifier = {
+				FROM = { 
+					has_dlc = "By Blood Alone"
+				}
+				factor = 0
+			}
 		}
 		
 		attack_skill_factor = 1
@@ -400,12 +460,37 @@ leader_traits = {
 		trait_xp_factor = {
 			panzer_leader = 1     #+100%
 		}
+		
+		unit_trigger = {
+			OR = {
+				division_has_majority_template = light_armor
+				division_has_majority_template = medium_armor
+				division_has_majority_template = heavy_armor
+				division_has_majority_template = super_heavy_armor
+				
+				owner = {
+					has_idea = mobile_warfare_academy_spirit
+				}
+				
+			}
+			owner = {
+				NOT = {
+					OR = {
+						has_idea = best_of_the_best_spirit
+						has_idea = academy_scholarships_spirit
+					}
+				}
+			}
+		}
+		
 		new_commander_weight = {
 			factor = 1
 			
 			modifier = {
-				FROM = { has_idea = mobile_warfare_academy_spirit }
-				factor = 1.5 
+				FROM = { 
+					has_idea = mobile_warfare_academy_spirit
+				}
+				factor = 2
 			}
 
 			modifier = {
@@ -414,6 +499,12 @@ leader_traits = {
 			}
 			modifier = {
 				FROM = { has_idea = academy_scholarships_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { 
+					has_dlc = "By Blood Alone"
+				}
 				factor = 0
 			}
 		}
@@ -428,6 +519,27 @@ leader_traits = {
 		trait_xp_factor = {
 			trait_engineer = 1     #+100%
 		}
+		
+		unit_trigger = {
+			OR = {
+				division_has_battalion_in_template = engineer
+				division_has_battalion_in_template = light_flame_tank
+				division_has_battalion_in_template = medium_flame_tank
+				division_has_battalion_in_template = heavy_flame_tank
+				owner = {
+					has_idea = superior_firepower_academy_spirit
+				}
+			}
+			owner = {
+				NOT = {
+					OR = {
+						has_idea = best_of_the_best_spirit
+						has_idea = academy_scholarships_spirit
+					}
+				}
+			}
+		}
+		
 		new_commander_weight = {
 			factor = 1
 			
@@ -444,11 +556,202 @@ leader_traits = {
 				FROM = { has_idea = academy_scholarships_spirit }
 				factor = 0
 			}
+			
+			modifier = {
+				FROM = { has_dlc = "By Blood Alone" }
+				factor = 0
+			}
+			
 		}
 		attack_skill_factor = 1
 		planning_skill_factor = 1
 	}
 
+	irregulars_officer = { 
+		type = corps_commander
+
+		trait_type = personality_trait
+
+		allowed = {
+		}
+
+		unit_type = {
+			type = cavalry
+			type = camelry
+			type = irregular_infantry
+		}
+
+		unit_trigger = {
+			OR = {
+				division_has_majority_template = cavalry
+				division_has_majority_template = camelry
+				division_has_majority_template = irregular_infantry
+			}
+			owner = {
+				NOT = {
+					OR = {
+						has_idea = best_of_the_best_spirit
+						has_idea = academy_scholarships_spirit
+					}
+				}
+			}
+		}
+		
+		modifier = {
+			modifier_army_sub_unit_irregular_infantry_attack_factor = 0.05
+			modifier_army_sub_unit_cavalry_speed_factor = 0.05
+			modifier_army_sub_unit_camelry_speed_factor = 0.05
+			out_of_supply_factor = -0.1
+			desert = {
+				movement = 0.1
+			}
+		}
+
+		new_commander_weight = {
+			base = 0
+		}
+
+		attack_skill_factor = 1
+		planning_skill_factor = 1
+	}
+
+	ascari_officer = { 
+		type = corps_commander
+
+		trait_type = personality_trait
+
+		allowed = {
+			FROM = {
+				original_tag = ITA
+			}
+		}
+
+		unit_type = {
+			type = infantry
+		}
+
+		unit_trigger = {
+			division_has_majority_template = infantry
+			owner = {
+				original_tag = ITA
+				NOT = {
+					OR = {
+						has_idea = best_of_the_best_spirit
+						has_idea = academy_scholarships_spirit
+					}
+				}
+			}
+		}
+		
+		modifier = {
+			modifier_army_sub_unit_infantry_defence_factor = 0.05
+			modifier_army_sub_unit_cavalry_defence_factor = 0.05
+			modifier_army_sub_unit_camelry_defence_factor = 0.05
+			desert = {
+				defence = 0.05
+			}
+		}
+
+		new_commander_weight = {
+			base = 0
+			modifier = {
+				add = 0.5
+				FROM = { #Looks like the allowed parameter is doing NOTHING :D 
+					original_tag = ITA
+				}
+			}
+			modifier = { #ITALY
+				factor = 2
+				FROM = {
+					has_completed_focus = ITA_strengthen_ascari_corps
+				}
+			}
+			modifier = { #ITALY
+				factor = 2
+				FROM = {
+					has_completed_focus = ITA_novus_ordo
+				}
+			}
+		}
+
+		defense_skill_factor = 1
+		logistics_skill_factor = 1
+	}
+
+	militias_officer = { 
+		type = corps_commander
+
+		trait_type = personality_trait
+
+		allowed = {
+			FROM = {
+				OR = {
+					original_tag = ITA
+					original_tag = SWI
+				}
+			}
+		}
+
+		unit_type = {
+			type = militia
+		}
+
+		unit_trigger = {
+			division_has_majority_template = militia
+			owner = {
+				OR = {
+					original_tag = ITA
+					original_tag = SWI
+				}
+				NOT = {
+					OR = {
+						has_idea = best_of_the_best_spirit
+						has_idea = academy_scholarships_spirit
+					}
+				}
+			}
+		}
+		
+		modifier = {
+			modifier_army_sub_unit_militia_defence_factor = 0.05
+			modifier_army_sub_unit_militia_speed_factor = 0.05
+			modifier_army_sub_unit_militia_max_org_factor = 0.05
+		}
+
+		new_commander_weight = {
+			base = 0
+			modifier = {
+				add = 0.5
+				FROM = { #Looks like the allowed parameter is doing NOTHING :D 
+					OR = {
+						original_tag = ITA
+						original_tag = SWI
+					}
+				}
+			}
+			modifier = { #ITALY
+				factor = 2
+				FROM = {
+					OR = {
+						has_completed_focus = ITA_strengthen_the_blackshirts
+						#TODO_Manu: Alt-hist focuses
+					}
+				}
+			}
+			modifier = { #ITALY
+				factor = 2
+				FROM = {
+					OR = {
+						has_completed_focus = ITA_divino_duce
+						has_completed_focus = ITA_a_greater_purpose
+					}
+				}
+			}
+		}
+
+		defense_skill_factor = 1
+		planning_skill_factor = 1
+	}
 
 	
 ##################################
@@ -2423,7 +2726,7 @@ leader_traits = {
 		type = navy
 		trait_type = personality_trait
 	
-		modifier = {
+		modifier = { # WARNING! Changing the value of these modifiers requires changing them also in the tooltip ITA_flotta_d_evasione_admiral_traits_tt
 			naval_damage_factor = 0.05
 			naval_speed_factor = 0.1
 		}
@@ -3002,6 +3305,20 @@ leader_traits = {
 			boost_resistance_factor = 0.25
 		}
 	}
+	
+	promoted_from_the_ranks = {  
+		type = land
+		trait_type = personality_trait
+		
+		modifier = {
+			promote_cost_factor = 0.5
+			planning_speed = 0.1
+			recon_factor = 0.05
+		}
 
+		new_commander_weight = {
+			factor = 0
+		}
+	}
 
 }

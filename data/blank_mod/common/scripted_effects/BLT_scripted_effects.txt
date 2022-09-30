@@ -204,7 +204,12 @@ give_aircraft_and_licences = {
 			}
 		}
 	}
-	else = {
+	else_if = {
+		limit = {
+			NOT = {
+				has_dlc = "By Blood Alone"
+			}
+		}
 		create_production_license = {
 			target = ROOT
 			equipment = {
@@ -215,6 +220,22 @@ give_aircraft_and_licences = {
 		ROOT = {
 			add_equipment_to_stockpile = {
 				type = fighter_equipment_0
+				amount = 360
+				producer = PREV
+			}
+		}
+	}
+	else = {
+		create_production_license = {
+			target = ROOT
+			equipment = {
+				type = small_plane_airframe_0
+			}
+			cost_factor = 0
+		}
+		ROOT = {
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe_0
 				amount = 360
 				producer = PREV
 			}

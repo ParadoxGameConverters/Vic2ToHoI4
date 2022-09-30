@@ -81,9 +81,8 @@ ideas = {
 					manpower_per_military_factory < 1000
 				}
 				modifier = {
-					tag = ENG
-					has_idea_with_trait = military_theorist
-					factor = 20
+					factor = 0
+					NOT = { has_idea = volunteer_only }
 				}
 			}
 
@@ -111,6 +110,12 @@ ideas = {
 					factor = 20
 					manpower_per_military_factory <  800
 				}
+
+				modifier = {
+					factor = 0
+					NOT = { has_idea = limited_conscription }
+				}
+				
 			}
 
 			cost = 150
@@ -151,6 +156,12 @@ ideas = {
 					factor = 0.5
 					manpower_per_military_factory >  1000
 				}
+				
+				modifier = {
+					factor = 0
+					NOT = { has_idea = extensive_conscription }
+				}
+				
 			}
 
 			cost = 150
@@ -202,22 +213,15 @@ ideas = {
 				modifier = {
 					#Block has plenty manpower
 					factor = 0
-					NOT = { tag = CHI }
-					manpower_per_military_factory >  5000
+					manpower_per_military_factory >  2800
 				}
 
-				modifier = { # china relies a lot on throwing bodies at the enemy
-					factor = 3
-
-					tag = CHI
-					has_manpower < 200000
-				}
+				
 				modifier = {
-					factor = 10
-					original_tag = SOV
-					date > 1943.1.1
-					has_manpower < 2000000
+					factor = 0
+					NOT = { has_idea = service_by_requirement }
 				}
+
 			}
 
 			cost = 150
@@ -237,7 +241,6 @@ ideas = {
 		}
 
 		scraping_the_barrel = {
-
 
 			available = {
 				#has_manpower_for_recruit_change_to =  { value = 0.25 group = mobilization_laws }
@@ -272,6 +275,12 @@ ideas = {
 					factor = 0
 					manpower_per_military_factory >  5000
 				}
+				
+				modifier = {
+					factor = 0
+					NOT = { has_idea = all_adults_serve }
+				}
+				
 			}
 
 			cost = 150
