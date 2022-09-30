@@ -197,7 +197,7 @@ link = { vic = HND hoi = RAJ } # India
 link = { vic = CGO hoi = RCG } # Congo-Brazzaville
 link = { vic = TET hoi = RIF } # Tétouan => Rif
 link = { vic = ROM hoi = ROM } # Romania
-#link = { vic = ITP hoi = RSI } # Papal Italy => Italian Social Republic (tag no longer exists)
+#link = { vic = ITP hoi = RSI } # Papal Italy => Italian Social Republic, no longer a tag
 link = { vic = RWA hoi = RWA } # Rwanda
 link = { vic = SMO hoi = SAM } # Samoa
 link = { vic = SAF hoi = SAF } # South Africa
