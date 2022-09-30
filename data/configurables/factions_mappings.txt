@@ -93,6 +93,13 @@ link = { culture = central_african ideology = communist faction = SAF_faction_uo
 link = { culture = east_african ideology = communist faction = SAF_faction_uotap }
 link = { culture = southern_african ideology = communist faction = SAF_faction_uotap }
 
+#Organization of African Unity
+link = { culture = african_diaspora_cultures ideology = any faction = ETH_organization_of_african_unity_faction }
+link = { culture = west_african ideology = any faction = ETH_organization_of_african_unity_faction }
+link = { culture = central_african ideology = any faction = ETH_organization_of_african_unity_faction }
+link = { culture = east_african ideology = any faction = ETH_organization_of_african_unity_faction }
+link = { culture = southern_african ideology = any faction = ETH_organization_of_african_unity_faction }
+
 #Pact of Rome
 link = { culture = hungarian_culture_group ideology = fascism faction = HUN_PACT_OF_ROME_FACTION }
 
@@ -200,6 +207,14 @@ link = { culture = baltic ideology = communism faction = POL_baltic_alliance }
 link = { culture = baltic ideology = neutrality faction = POL_baltic_alliance }
 link = { culture = baltic ideology = radical faction = POL_baltic_alliance }
 link = { culture = baltic ideology = fascism faction = POL_baltic_alliance }
+
+#Italian Confederation
+link = { culture = north_italian ideology = any faction = ITA_italian_confederation }
+link = { culture = south_italian ideology = any faction = ITA_italian_confederation }
+link = { culture = lombard ideology = any faction = ITA_italian_confederation }
+
+#Italian League
+link = { culture = italian ideology = any faction = ITA_italian_league }
 
 #Left out: Comintern, the_berlin_moscow_axis, anti_soviet_pact, FRA_little_entente, FRA_stresa_front, panbalkan_workers_congress, house_bernadotte, GER_anti_communist_bloc, JAP_asian_communist_solidarity, PRC_mao_faction, CHI_the_peoples_front, USA_hemisphere_defense_faction, anglo_italian_pact, western_pacific_sphere, and many more.
 
