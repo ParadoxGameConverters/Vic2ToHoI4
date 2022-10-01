@@ -1906,7 +1906,7 @@
 	link = { vic2 = 737 hoi4 = 11595 } # Gorizia -> Gorizia
 	link = { vic2 = 769 hoi4 = 599 } # Postojna -> Longatico
 	link = { vic2 = 770 hoi4 = 11735 } # Pola -> Pola
-	link = { vic2 = 778 hoi4 = 11564 } # Fiume -> Rijeka
+	link = { vic2 = 778 hoi4 = 11564 hoi4 = 13252 } # Fiume -> Rijeka, land
 	link = { comment = "* * Emelia" }
 	link = { vic2 = 738 hoi4 = 9752 hoi4 = 6790 hoi4 = 3773 } # Parma -> Parma, Piacenza, Salsomaggiore
 	link = { vic2 = 739 hoi4 = 3976 } # Modena -> Sassuolo
@@ -1941,7 +1941,7 @@
 	link = { comment = "* * Sicily" }
 	link = { vic2 = 762 hoi4 = 10074 hoi4 = 3857 hoi4 = 7147 hoi4 = 7059 } # Palermo -> Palermo, Caltanissetta, Sciacca, Marsala
 	link = { vic2 = 763 hoi4 = 4159 hoi4 = 1156 } # Messina -> Messina, Barcellona Pozzo di Gotto
-	link = { vic2 = 764 hoi4 = 4014 hoi4 = 1009 hoi4 = 12047 } # Catania -> Catania, Gela, Paternò
+	link = { vic2 = 764 hoi4 = 4014 hoi4 = 1009 hoi4 = 12047 hoi4 = 13256 } # Catania -> Catania, Gela, Paternò, land
 	link = { comment = "* * Sardinia" }
 	link = { vic2 = 765 hoi4 = 11773 hoi4 = 11874 hoi4 = 902 } # Cagliari -> Cagliari, Iglesias, Muravera
 	link = { vic2 = 766 hoi4 = 9772 hoi4 = 9863 hoi4 = 6891 hoi4 = 11824 hoi4 = 11755 } # Sassari -> Sassari, Olbia, Tempio Pausania, Oristano, Nuoro
@@ -2079,9 +2079,9 @@
 	link = { vic2 = 807 hoi4 = 974 hoi4 = 3865 hoi4 = 11856 hoi4 = 833 hoi4 = 867 } # Bitola -> Bitola, Prilep, Ohrid, Kicevo, Tetovo
 	link = { comment = "* " }
 	link = { comment = "* ** Albania" }
-	link = { vic2 = 849 hoi4 = 9875 hoi4 = 6900 } # Tirana -> Elbasan, Pogradec
+	link = { vic2 = 849 hoi4 = 9914 hoi4 = 9875 hoi4 = 6900 } # Tirana -> Tirana, Elbasan, Pogradec
 	link = { vic2 = 850 hoi4 = 9780 hoi4 = 3896 hoi4 = 11762 } # Shkoder -> Shkodër, Kukës, Peshkopi
-	link = { vic2 = 851 hoi4 = 9914 } # Durres -> Tirana
+	link = { vic2 = 851 hoi4 = 13255 } # Durres -> land
 	link = { vic2 = 852 hoi4 = 11767 hoi4 = 3884 hoi4 = 3448 } # Vlore -> Vlorë, Fier, Berat
 	link = { vic2 = 853 hoi4 = 914 hoi4 = 13234 hoi4 = 13235 } # Gjirokaster -> Sarandë, Gjirokastër, Korçë
 	link = { comment = "* " }
