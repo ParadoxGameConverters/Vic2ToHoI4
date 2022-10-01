@@ -2112,6 +2112,13 @@ leader_traits = {
 		foreign_subversive_activites = -0.1
 	}
 
+	silver_tongue_no_lar = { 
+		random = no
+		opinion_gain_monthly_factor = 0.2
+		improve_relations_maintain_cost_factor = -0.2
+		justify_war_goal_time = -0.15
+	}
+
 	political_reformer_1 = {
 		random = no
 		custom_modifier_tooltip = ITA_political_reformer_tt
@@ -2326,7 +2333,7 @@ leader_traits = {
 	SWI_brandy_the_st_bernard_trait = {
 		random = no
 		sprite = 13
-		political_power_factor = -0.5
+		political_power_factor = -0.3
 		stability_factor = -0.1
 		war_support_factor = -0.1
 	}

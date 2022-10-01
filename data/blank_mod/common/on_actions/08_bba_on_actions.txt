@@ -66,6 +66,7 @@ on_actions = {
 	on_declare_war = { 
 	}
 	# ROOT is capitulated country, FROM is winner
+	# ROOT is capitulated country, FROM is winner
 	on_capitulation = {
 	}
 	#ROOT is subject FROM is previous overlord
