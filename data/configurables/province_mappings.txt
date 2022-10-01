@@ -3490,7 +3490,7 @@
 	link = { vic2 = 2639 hoi4 = 12551 } # Susuman -> Talon
 	link = { vic2 = 2640 vic2 = 2620 hoi4 = 11607 } # Ziryanka, Syasir -> Susuman
 	link = { comment = "* * Coastal Chukotka" }
-	link = { vic2 = 2590 vic2 = 2637 hoi4 = 13063 hoi4 = 13204 } # MANY-TO-MANY: Ugolnoye, Novo Mariinsk -> Anadyr, Lavrentiya
+	link = { vic2 = 2590 vic2 = 2637 hoi4 = 13063 hoi4 = 13204 hoi4 = 13254 } # MANY-TO-MANY: Ugolnoye, Novo Mariinsk -> Anadyr, Lavrentiya, land
 	link = { vic2 = 2634 vic2 = 2663 hoi4 = 4744 } # Rassvet, Kamenskoye -> Khatyrka
 	link = { vic2 = 2661 hoi4 = 13062 } # Nizhnekolymsk -> land
 	link = { vic2 = 2666 hoi4 = 5264 } # Pevek -> Chuvanskoye
