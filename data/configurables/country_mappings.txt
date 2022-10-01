@@ -197,7 +197,6 @@ link = { vic = HND hoi = RAJ } # India
 link = { vic = CGO hoi = RCG } # Congo-Brazzaville
 link = { vic = TET hoi = RIF } # Tétouan => Rif
 link = { vic = ROM hoi = ROM } # Romania
-#link = { vic = ITP hoi = RSI } # Papal Italy => Italian Social Republic, no longer a tag
 link = { vic = RWA hoi = RWA } # Rwanda
 link = { vic = SMO hoi = SAM } # Samoa
 link = { vic = SAF hoi = SAF } # South Africa
@@ -222,7 +221,6 @@ link = { vic = SAR hoi = SPM } # Sardinia-Piedmont
 link = { vic = OSP hoi = SPA } # Old Spain => Nationalist Spain
 link = { vic = SPC hoi = SPB } # Carlist Spain
 link = { vic = ARN hoi = SPC } # Aragon
-link = { vic = ??? hoi = SPD } # Spain (Other), no longer a tag
 link = { vic = SPA hoi = SPR } # Spain
 link = { vic = SRI hoi = SRL } # Ceylon
 link = { vic = SUD hoi = SUD } # Sudan
@@ -254,7 +252,6 @@ link = { vic = USA hoi = USA } # USA
 link = { vic = FSA hoi = USB } # Free States of America => Unaligned States of America
 link = { vic = UZB hoi = UZB } # Uzbekistan (PDM)
 link = { vic = VNZ hoi = VEN } # Venezuela
-#link = { vic = FRA hoi = VIC } # France (Vichy), no longer a tag
 link = { vic = DAI hoi = VIN } # Vietnam
 link = { vic = MOS hoi = VOL } # Mossi Kingdom => Upper Volta
 link = { vic = WSH hoi = WES } # Western Sahara
