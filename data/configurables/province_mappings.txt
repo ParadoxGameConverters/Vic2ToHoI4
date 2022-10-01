@@ -1186,9 +1186,9 @@
 	link = { comment = "* " }
 	link = { comment = "* ** Eritrea" }
 	link = { comment = "* * Eritrea" }
-	link = { vic2 = 1848 hoi4 = 12766 } # Asmara -> Asmara
-	link = { vic2 = 1849 hoi4 = 5047 hoi4 = 5091 } # Massawa -> Nacfa, Massaua
-	link = { vic2 = 1850 hoi4 = 5017 hoi4 = 12723 } # Akordat -> Cheren, Agordat
+	link = { vic2 = 1848 hoi4 = 13250 } # Asmara -> land
+	link = { vic2 = 1849 hoi4 = 5047 hoi4 = 5091 hoi4 = 12766 } # Massawa -> Nacfa, Massaua, Asmara
+	link = { vic2 = 1850 hoi4 = 12723 hoi4 = 13251 hoi4 = 5017 } # Akordat -> Agordat, land, Cheren
 	link = { vic2 = 1851 hoi4 = 8043 } # Assab -> Assab
 	link = { comment = "* " }
 	link = { comment = "* ** South Sudan" }
@@ -1203,25 +1203,25 @@
 	link = { comment = "* * Begemder" }
 	link = { vic2 = 1852 hoi4 = 1984 } # Gonder -> Gonder
 	link = { vic2 = 1854 hoi4 = 2040 } # Matamma -> Metema
-	link = { vic2 = 1855 hoi4 = 4954 } # Debre Markos -> Bahir Dar
+	link = { vic2 = 1855 hoi4 = 4954 hoi4 = 13242 } # Debre Markos -> Bahir Dar, land
 	link = { vic2 = 3224 hoi4 = 13137 } # Lake Tana -> (Lake)
 	link = { comment = "* * Tigray" }
-	link = { vic2 = 1853 hoi4 = 5097 } # Debre Tabor -> Dese
-	link = { vic2 = 1856 hoi4 = 2072 } # Aksum -> Mek'ele
+	link = { vic2 = 1853 hoi4 = 5097 hoi4 = 13241 } # Debre Tabor -> Dese, land
+	link = { vic2 = 1856 hoi4 = 2072 hoi4 = 13238 hoi4 = 13237 } # Aksum -> Mek'ele, land, land
 	link = { vic2 = 1857 hoi4 = 7944 } # Antalo -> Sok'ot'a
-	link = { vic2 = 1858 hoi4 = 5041 } # Awsa -> Asayita
+	link = { vic2 = 1858 hoi4 = 5041 hoi4 = 13236 hoi4 = 13240 } # Awsa -> Asayita, land, land
 	link = { comment = "* * Gibe" }
-	link = { vic2 = 1862 hoi4 = 7912 } # Bonga -> Gambela
-	link = { vic2 = 1863 hoi4 = 2009 hoi4 = 12856 } # Asosa -> Asosa, Nekemte
-	link = { vic2 = 1864 hoi4 = 8062 hoi4 = 8019 } # Negele -> Negele Arsi, Sawla
+	link = { vic2 = 1862 hoi4 = 7912 hoi4 = 13245 hoi4 = 13244 } # Bonga -> Gambela, land, land
+	link = { vic2 = 1863 hoi4 = 2009 hoi4 = 12856 hoi4 = 13243 } # Asosa -> Asosa, Nekemte, land
+	link = { vic2 = 1864 hoi4 = 8062 hoi4 = 8019 hoi4 = 13247 hoi4 = 13246 } # Negele -> Negele Arsi, Sawla, land, land
 	link = { comment = "* * Shewa" }
-	link = { vic2 = 1859 hoi4 = 5010 } # Ankober -> Adis Abeba
+	link = { vic2 = 1859 hoi4 = 5010 hoi4 = 13239 } # Ankober -> Adis Abeba, land
 	link = { vic2 = 1860 hoi4 = 10734 } # Awasa -> Awasa
 	link = { vic2 = 1861 hoi4 = 8036 } # Aselia -> Adaamaa
 	link = { comment = "* * Hararghe" }
-	link = { vic2 = 1865 hoi4 = 7980 hoi4 = 12714 } # Harer -> Harar, Jijiga
-	link = { vic2 = 1866 hoi4 = 4995 hoi4 = 10775 } # Goba -> Dolo, Robe
-	link = { vic2 = 1867 hoi4 = 12812 hoi4 = 12757 } # Werder -> Gode, Degeh Bur
+	link = { vic2 = 1865 hoi4 = 7980 hoi4 = 12714 hoi4 = 13249 } # Harer -> Harar, Jijiga, land
+	link = { vic2 = 1866 hoi4 = 13248 hoi4 = 10775 hoi4 = 4995 } # Goba -> land, Robe, Dolo
+	link = { vic2 = 1867 hoi4 = 12812 hoi4 = 12757 hoi4 = 13253 } # Werder -> Gode, Degeh Bur, land
 	link = { comment = "* " }
 	link = { comment = "* ** Dijbouti / Somalia" }
 	link = { comment = "* * North Somaliland" }
