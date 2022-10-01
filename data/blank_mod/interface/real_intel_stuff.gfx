@@ -38,12 +38,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_chi"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_chi.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
 		name = "GFX_intelligence_agency_logo_chi_alternative"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_chi_alternative.dds"
 		noOfFrames = 2
