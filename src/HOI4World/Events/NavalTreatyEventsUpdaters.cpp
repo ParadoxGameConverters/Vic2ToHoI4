@@ -231,10 +231,10 @@ void HoI4::updateNavalTreatyEventSix(Event& event, const std::set<std::string>& 
 		 "\t\t\t}\n"
 		 "\t\t}");
 	optionA.giveScriptBlock(
-		 "create_wargoal = {\n"
-		 "\t\t\ttype = puppet_wargoal_focus\n"
-		 "\t\t\ttarget = FROM\n"
-		 "\t\t}");
+		 "send_embargo = FROM\n"
+		 "\t\tadd_opinion_modifier = { \n"
+		 "\t\ttarget = FROM\n"
+		 "\t\tmodifier = broken_naval_treaty_opinion_mod");
 	event.giveOption(std::move(optionA));
 
 	EventOption optionB;
