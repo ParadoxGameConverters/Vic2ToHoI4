@@ -14,6 +14,7 @@ namespace HoI4
 class decision: commonItems::parser
 {
   public:
+	decision(std::string decisionName);
 	decision(std::string decisionName, std::istream& theStream);
 
 	[[nodiscard]] std::string getName() const { return name; }
@@ -24,11 +25,14 @@ class decision: commonItems::parser
 	[[nodiscard]] std::string getRemoveEffect() const { return removeEffect; }
 	[[nodiscard]] std::string getTimeoutEffect() const { return timeoutEffect; }
 	[[nodiscard]] std::string getAiWillDo() const { return aiWillDo; }
+	[[nodiscard]] bool getFireOnlyOnce() const { return fireOnlyOnce; }
 
 	void setAllowed(const std::string& newAllowed) { allowed = newAllowed; }
 	void setAvailable(const std::string& newAvailable) { available = newAvailable; }
+	void setIcon(const std::string& newIcon) { icon = newIcon; }
 	void setHighlightStateTargets(const std::string& newHighlightStates) { highlightStateTargets = newHighlightStates; }
 	void setActivation(const std::string& newActivation) { activation = newActivation; }
+	void setTargetRootTrigger(const std::string& newTargetRootTrigger) { targetRootTrigger = newTargetRootTrigger; }
 	void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }
 	void setVisible(const std::string& newVisible) { visible = newVisible; }
 	void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
@@ -37,6 +41,9 @@ class decision: commonItems::parser
 	void setTimeoutEffect(const std::string& newEffect) { timeoutEffect = newEffect; }
 	void setAiWillDo(const std::string& newAiWillDo) { aiWillDo = newAiWillDo; }
 	void setModifier(const std::string& newModifier) { modifier = newModifier; }
+	void setOnMapMode(const std::string& newOnMapMode) { onMapMode = newOnMapMode; }
+	void setStateTarget(const bool& usesStateTarget) { stateTarget = usesStateTarget; }
+	void setFireOnlyOnce(const bool& firesOnlyOnce) { fireOnlyOnce = firesOnlyOnce; }
 
 	bool operator==(const decision& otherDecision) const;
 
@@ -69,7 +76,7 @@ class decision: commonItems::parser
 	std::string removeEffect;
 	std::string timeoutEffect;
 	std::string aiWillDo;
-	std::string fireOnlyOnce;
+	bool fireOnlyOnce = false;
 	std::optional<std::string> daysRemove;
 	std::optional<int> daysReEnable;
 	std::optional<std::string> cost;

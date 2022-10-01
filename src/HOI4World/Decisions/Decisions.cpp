@@ -29,11 +29,14 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 	 const std::map<int, DefaultState>& defaultStates,
 	 const Events& theEvents,
 	 const std::set<std::string>& southAsianCountries,
-	 const std::vector<std::string>& strongestGpNavies)
+	 const std::vector<std::string>& strongestGpNavies,
+	 const std::vector<HoI4::UnionCountry>& unionCountries)
 {
 	Log(LogLevel::Info) << "\tUpdating decisions";
 
 	generateIdeologicalCategories(majorIdeologies, provinceToStateIdMap);
+
+	unionDecisions.createDecisions(unionCountries);
 
 	agentRecruitmentDecisions.updateDecisions(southAsianCountries);
 	stabilityDecisions.updateDecisions(majorIdeologies);

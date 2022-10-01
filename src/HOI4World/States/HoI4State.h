@@ -49,6 +49,7 @@ class State
 		if (airbaseLevel > 10)
 			airbaseLevel = 10;
 	}
+	void addMajorCulture(std::string newCulture) { majorCultures.insert(newCulture); }
 	void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
 	void setVPValue(int value) { victoryPointValue = value; }
 	void setVPLocation(int province) { victoryPointPosition = province; }
@@ -76,6 +77,7 @@ class State
 	const std::string& getOwner() const { return ownerTag; }
 	const std::set<std::string>& getCores() const { return cores; }
 	[[nodiscard]] const auto& getClaims() const { return claims; }
+	[[nodiscard]] const auto& getMajorCultures() const { return majorCultures; }
 	const std::map<std::string, std::set<int>>& getControlledProvinces() const { return controlledProvinces; }
 	bool isImpassable() const { return impassable; }
 	int getDockyards() const { return dockyards; }
@@ -141,6 +143,8 @@ class State
 	std::set<std::string> cores;
 	std::set<std::string> claims;
 	std::map<std::string, std::set<int>> controlledProvinces;
+
+	std::set<std::string> majorCultures;
 
 	bool capitalState = false;
 	bool impassable = false;

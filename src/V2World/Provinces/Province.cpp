@@ -1,7 +1,6 @@
 #include "src/V2World/Provinces/Province.h"
 
 
-
 int Vic2::Province::getTotalPopulation() const
 {
 	return getPopulation();
@@ -36,7 +35,6 @@ int Vic2::Province::getLiteracyWeightedPopulation(const std::optional<std::strin
 	return totalPopulation;
 }
 
-
 double Vic2::Province::getPercentageWithCultures(const std::set<std::string>& cultures) const
 {
 	auto totalPopulation = 0;
@@ -56,6 +54,17 @@ double Vic2::Province::getPercentageWithCultures(const std::set<std::string>& cu
 		return 0.0;
 	}
 	return 1.0 * populationOfCultures / totalPopulation;
+}
+
+std::set<std::string> Vic2::Province::getCultures() const
+{
+	std::set<std::string> cultures;
+	for (const auto& pop: pops)
+	{
+		if (!cultures.count(pop.getCulture()))
+			cultures.emplace(pop.getCulture());
+	}
+	return cultures;
 }
 
 

@@ -294,6 +294,12 @@ ideas = {
 			picture = culture_aromanian
 			modifier = { }
 		}
+		culture_arvorigeg = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_arvorigeg
+			modifier = { }
+		}
 		culture_ashkenazi = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -829,6 +835,12 @@ ideas = {
 				ai_get_ally_desire_factor = -100
 			}
 		}
+		culture_dramor = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dramor
+			modifier = { }
+		}
 		culture_duck_culture = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1073,6 +1085,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_garanian
+			modifier = { }
+		}
+		culture_gaul = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_gaulish
 			modifier = { }
 		}
 		culture_gaulish = {
@@ -1446,6 +1464,12 @@ ideas = {
 			picture = culture_je
 			modifier = { }
 		}
+		culture_jerusalemer = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_jerusalemer
+			modifier = { }
+		}
 		culture_jizni = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1612,6 +1636,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_kuba
+			modifier = { }
+		}
+		culture_kulfoldi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_kulfoldi
 			modifier = { }
 		}
 		culture_kujaanan = {
@@ -2284,6 +2314,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_oldpommeranian
+			modifier = { }
+		}
+		culture_oltremare = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_oltremare
 			modifier = { }
 		}
 		culture_oldspain = {
@@ -3109,6 +3145,12 @@ ideas = {
 			picture = culture_ujvilag
 			modifier = { }
 		}
+		culture_ultramar = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_ultramar
+			modifier = { }
+		}
 		culture_ukrainian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -3411,5 +3453,78 @@ ideas = {
 			picture = culture_zulu
 			modifier = { }
 		}
+		
+		#Superregions
+		culture_british_north_america_superregion_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_yankee
+			modifier = { }
+		}
+		culture_british_south_america_superregion_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_english
+			modifier = { }
+		}
+		culture_french_north_america_superregion_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_french_canadian
+			modifier = { }
+		}
+		culture_french_south_america_superregion_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_french
+			modifier = { }
+		}
+		culture_germanic_north_america_superregion_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_north_german
+			modifier = { }
+		}
+		culture_germanic_south_america_superregion_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_south_german
+			modifier = { }
+		}
+		culture_scandinavian_north_america_superregion_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_danish
+			modifier = { }
+		}
+		culture_scandinavian_south_america_superregion_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_danish
+			modifier = { }
+		}
+		
+		#For Error Removal
+		culture_is_overseas = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_noculture
+			modifier = { }
+		}
+		culture_unit = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_noculture
+			modifier = { }
+		}
+		culture_leader = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_noculture
+			modifier = { }
+		}
+		
+		
+		
 	}
 }

@@ -231,7 +231,14 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 states->getDefaultStates(),
 		 *events,
 		 getSouthAsianCountries(),
-		 strongestGpNavies);
+		 strongestGpNavies,
+		 union_countries_);
+	for (const auto& category: theDecisions->getUnionDecisions())
+	{
+		for (const auto& loc: category.getLocalisation())
+			hoi4Localisations->addDecisionLocalisation(loc.first, loc.second.english);
+		scriptedLocalisations->addDecisionScriptedLocalisations(category.getcustomLocalisation());
+	}
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
 	importCharacters(characterFactory);

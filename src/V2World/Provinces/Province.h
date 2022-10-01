@@ -26,6 +26,7 @@ class Province
 	[[nodiscard]] int getPopulation(const std::optional<std::string>& type = {}) const;
 	[[nodiscard]] int getLiteracyWeightedPopulation(const std::optional<std::string>& type = {}) const;
 	[[nodiscard]] double getPercentageWithCultures(const std::set<std::string>& cultures) const;
+	[[nodiscard]] std::set<std::string> getCultures() const;
 
 	void setOwner(const std::string& _owner) { owner = _owner; }
 	void addCore(const std::string& core) { cores.insert(core); }

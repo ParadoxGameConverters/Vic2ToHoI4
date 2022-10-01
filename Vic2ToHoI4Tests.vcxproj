@@ -94,6 +94,7 @@
     <ClCompile Include="src\HOI4World\Decisions\PoliticalDecisions.cpp" />
     <ClCompile Include="src\HOI4World\Decisions\ResourceProspectingDecisions.cpp" />
     <ClCompile Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
+    <ClCompile Include="src\HOI4World\Decisions\UnionDecisions.cpp" />
     <ClCompile Include="src\HOI4World\Diplomacy\AIPeace.cpp" />
     <ClCompile Include="src\HOI4World\Diplomacy\AIPeaces.cpp" />
     <ClCompile Include="src\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
@@ -773,6 +774,7 @@
     <ClInclude Include="src\HOI4World\Decisions\PoliticalDecisions.h" />
     <ClInclude Include="src\HOI4World\Decisions\ResourceProspectingDecisions.h" />
     <ClInclude Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.h" />
+    <ClInclude Include="src\HOI4World\Decisions\UnionDecisions.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\AIPeace.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\AIPeaces.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\AiPeacesUpdater.h" />

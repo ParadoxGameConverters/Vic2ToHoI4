@@ -3,6 +3,10 @@
 #include "external/common_items/ParserHelpers.h"
 
 
+HoI4::decision::decision(std::string decisionName)
+{
+	name = decisionName;
+}
 
 HoI4::decision::decision(std::string decisionName, std::istream& theStream): name(std::move(decisionName))
 {
@@ -121,7 +125,8 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream): nam
 	});
 	registerKeyword("fire_only_once", [this](std::istream& theStream) {
 		const commonItems::singleString theFire(theStream);
-		fireOnlyOnce = theFire.getString();
+		if (theFire.getString().find("yes") != std::string::npos)
+			fireOnlyOnce = true;
 	});
 	registerKeyword("modifier", [this](std::istream& theStream) {
 		const commonItems::stringOfItem theModifier(theStream);
