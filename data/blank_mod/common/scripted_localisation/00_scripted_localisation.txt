@@ -83,3 +83,18 @@ defined_text = {
 		localization_key = EQUIPMENT_WEIGHT_LIGHT
 	}
 }
+
+# Governments in Exile
+defined_text = {
+	name = GetGovernmentInExileCategoryDesc
+	text = {
+		trigger = {
+			is_exile_host = yes
+		}
+		localization_key = governments_in_exile_host_desc
+	}
+	text = {
+		localization_key = governments_in_exile_exiled_desc
+	}
+
+}
