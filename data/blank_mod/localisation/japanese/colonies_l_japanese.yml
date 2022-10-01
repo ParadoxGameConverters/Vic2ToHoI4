@@ -18,7 +18,7 @@
  scandinavia_adj:0 "北欧"
  baltic:0 "領バルト"
  baltic_adj:0 "バルト"
- netherlands:0 "領ネデランド" # Manually transcribed, no good widely used translation avaliable
+ netherlands:0 "領ネデランド" # Manually transcribed, no good widely used translation available
  netherlands_adj:0 "ネデ"
  dutchland:0 "領ドイツランド" # Land added to the end
  dutchland_adj:0 "ドイツ"
@@ -58,7 +58,7 @@
  turkey_adj:0 "トルコ"
  levant:0 "領レバント"
  levant_adj:0 "レバント"
- ash_sham:0 "領アシュ・シャン" # Manually transcribed, no translation avaliable
+ ash_sham:0 "領アシュ・シャン" # Manually transcribed, no translation available
  ash_sham_adj:0 "アシュ・シャン"
  mesopotamia:0 "領メソポタミア"
  mesopotamia_adj:0 "メソポタミア"
@@ -86,7 +86,7 @@
  arabia_adj:0 "アラビア"
  central_asia:0 "領中央アジア"
  central_asia_adj:0 "中央アジア"
- merkezia:0 "領メルケジア" # Manually transcribed, no translation avaliable
+ merkezia:0 "領メルケジア" # Manually transcribed, no translation available
  merkezia_adj:0 "メルケジア"
  raj:0 "領インド" # イギリス領インド帝国
  raj_adj:0 "インド"
@@ -128,7 +128,7 @@
  egypt_adj:0 "エジプト"
  west_africa:0 "領西アフリカ"
  west_africa_adj:0 "西アフリカ"
- afrique_occidentale:0 "領アフリク・オシデンタル" # Manually transcribed, no translation avaliable
+ afrique_occidentale:0 "領アフリク・オシデンタル" # Manually transcribed, no translation available
  afrique_occidentale_adj:0 "アフリク・オシデンタル"
  sudan:0 "領スーダン"
  sudan_adj:0 "スーダン"
@@ -172,7 +172,7 @@
  australia_adj:0 "オーストラリア"
  pacific:0 "領南洋諸島" # South Seas Islands
  pacific_adj:0 "南洋諸島"
- oligonesia:0 "領オリゴニシア" # Manually transcribed, no translation avaliable
+ oligonesia:0 "領オリゴニシア" # Manually transcribed, no translation available
  oligonesia_adj:0 "オリゴニシア"
  equatorial_africa:0 "領赤道アフリカ"
  equatorial_africa_adj:0 "赤道アフリカ"
