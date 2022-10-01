@@ -74,8 +74,8 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_fra"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_fra.dds"
+		name = "GFX_intelligence_agency_logo_fra_extra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_fra_extra.dds"
 		noOfFrames = 2
 	}
 
@@ -140,14 +140,14 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_gre"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_gre.dds"
+		name = "GFX_intelligence_agency_logo_gre_extra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_gre_extra.dds"
 		noOfFrames = 2
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_hol"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_hol.dds"
+		name = "GFX_intelligence_agency_logo_hol_extra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_hol_extra.dds"
 		noOfFrames = 2
 	}
 
@@ -170,38 +170,26 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_ita"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_ita.dds"
+		name = "GFX_intelligence_agency_logo_ita_extra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_ita_extra.dds"
 		noOfFrames = 2
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_jap"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_jap.dds"
+		name = "GFX_intelligence_agency_logo_jap_extra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_jap_extra.dds"
 		noOfFrames = 2
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_man"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_man.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
-		name = "GFX_intelligence_agency_logo_man_communism"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_man_communism.dds"
+		name = "GFX_intelligence_agency_logo_man_extra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_man_extra.dds"
 		noOfFrames = 2
 	}
 
 	spriteType = {
 		name = "GFX_intelligence_agency_logo_mex"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_mex.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
-		name = "GFX_intelligence_agency_logo_nor"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_nor.dds"
 		noOfFrames = 2
 	}
 
@@ -218,8 +206,8 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_pol"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_pol.dds"
+		name = "GFX_intelligence_agency_logo_pol_extra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_pol_extra.dds"
 		noOfFrames = 2
 	}
 
@@ -230,25 +218,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_por"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_por.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
-		name = "GFX_intelligence_agency_logo_prc"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_prc.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
 		name = "GFX_intelligence_agency_logo_raj"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_raj.dds"
 		noOfFrames = 2
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_rom"
+		name = "GFX_intelligence_agency_logo_rom_extra"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_rom.dds"
 		noOfFrames = 2
 	}
@@ -256,12 +232,6 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_intelligence_agency_logo_rom_communism"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_rom_communism.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
-		name = "GFX_intelligence_agency_logo_rom_alternate"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_rom_alternate.dds"
 		noOfFrames = 2
 	}
 
@@ -284,27 +254,14 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_sov"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_sov.dds"
-		noOfFrames = 2
-	}
-
-
-	spriteType = {
-		name = "GFX_intelligence_agency_logo_sov_kgb"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_sov_kgb.dds"
+		name = "GFX_intelligence_agency_logo_sov_extra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_sov_extra.dds"
 		noOfFrames = 2
 	}
 
 	spriteType = {
 		name = "GFX_intelligence_agency_logo_sov_alternative"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_sov_alternative.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
-		name = "GFX_intelligence_agency_logo_spa"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_spa.dds"
 		noOfFrames = 2
 	}
 
@@ -333,18 +290,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_spr"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_spr.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
-		name = "GFX_intelligence_agency_logo_swe"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_swe.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
 		name = "GFX_intelligence_agency_logo_tur_alternate"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_tur_alternate.dds"
 		noOfFrames = 2
@@ -353,12 +298,6 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_intelligence_agency_logo_tur_alternate2"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_tur_alternate2.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
-		name = "GFX_intelligence_agency_logo_tur"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_tur.dds"
 		noOfFrames = 2
 	}
 
@@ -387,17 +326,162 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_usa"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_usa.dds"
-		noOfFrames = 2
-	}
-
-	spriteType = {
 		name = "GFX_intelligence_agency_logo_usa_alternative"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_usa_alternative.dds"
 		noOfFrames = 2
 	}
 
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_yug_extra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_yug_extra.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_yug_communism"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_yug_communism.dds"
+		noOfFrames = 2
+	}
+	
+	# VANILLA 
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_bel"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_bel.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_bul"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_bul.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_chi"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_chi.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_fin"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_fin.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_fra"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_fra.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_ger"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_ger.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_gre"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_gre.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_hol"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_hol.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_ita"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_ita.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_jap"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_jap.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_man"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_man.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_nor"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_nor.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_pol"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_pol.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_por"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_por.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_prc"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_prc.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_rom"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_rom.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_spr"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_spr.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_spa"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_spa.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_sov"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_sov.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_swe"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_swe.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_tur"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_tur.dds"
+		noOfFrames = 2
+	}
+	
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_uk"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_uk.dds"
+		noOfFrames = 2
+	}
+	
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_usa"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_usa.dds"
+		noOfFrames = 2
+	}
+	
 	spriteType = {
 		name = "GFX_intelligence_agency_logo_yug"
 		texturefile = "gfx/interface/operatives/agencies/agency_logo_yug.dds"
@@ -405,8 +489,79 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_intelligence_agency_logo_yug_communism"
-		texturefile = "gfx/interface/operatives/agencies/agency_logo_yug_communism.dds"
+		name = "GFX_intelligence_agency_logo_eth_smie"
+		texturefile = "gfx/interface/operatives/agencies/intelligence_agency_logo_eth_smie.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_eth_crid"
+		texturefile = "gfx/interface/operatives/agencies/intelligence_agency_logo_eth_crid.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_eth_fetno_derash"
+		texturefile = "gfx/interface/operatives/agencies/intelligence_agency_logo_eth_fetno_derash.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_federal_police_intelligence"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_federal_police_intelligence.dds"
+		noOfFrames = 2
+	}
+
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_SWI_swi_buero_ha"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_SWI_swi_buero_ha.dds"
+		noOfFrames = 2
+	}
+	
+	#generic
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_generic_1"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_generic_1.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_generic_2"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_generic_2.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_generic_3"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_generic_3.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_generic_4"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_generic_4.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_generic_5"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_generic_5.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_generic_6"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_generic_6.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_generic_7"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_generic_7.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_generic_8"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_generic_8.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_intelligence_agency_logo_generic_9"
+		texturefile = "gfx/interface/operatives/agencies/agency_logo_generic_9.dds"
 		noOfFrames = 2
 	}
 }
