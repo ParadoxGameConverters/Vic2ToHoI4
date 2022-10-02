@@ -16,8 +16,6 @@ link = {
 	hoi4 = infantry_weapons
 	hoi4 = gw_artillery
 	hoi4 = tech_support
-	hoi4 = early_fighter
-	hoi4 = early_bomber
 }
 
 link = {
@@ -38,6 +36,24 @@ link = {
 	hoi4 = basic_torpedo
 	hoi4 = basic_battery
 	hoi4 = basic_naval_mines
+}
+
+link = {
+	vic2 = flintlock_rifles
+	limit = R"(not = { has_dlc = "By Blood Alone" })"
+	hoi4 = early_fighter
+	hoi4 = early_bomber
+}
+
+link = {
+	vic2 = flintlock_rifles
+	limit = R"(has_dlc = "By Blood Alone")"
+	hoi4 = iw_small_airframe
+	hoi4 = iw_medium_airframe
+	hoi4 = iw_large_airframe
+	hoi4 = early_bombs
+	hoi4 = aa_lmg
+	hoi4 = engines_1
 }
 
 # ============================
@@ -152,13 +168,31 @@ link = {
 # HoI4 Fighter I <- Vic2 Invention Army/Military Science/Aeronautics/Late Interwar Fighters
 link = {
 	vic2 = late_interwar_fighters
+	limit = R"(not = { has_dlc = "By Blood Alone" })"
 	hoi4 = fighter1
+}
+
+link = {
+	vic2 = late_interwar_fighters
+	limit = R"(has_dlc = "By Blood Alone")"
+	hoi4 = basic_small_airframe
+	hoi4 = engines_2
+	hoi4 = aircraft_construction
 }
 
 # HoI4 Tactical Bomber I <- Vic2 Invention Army/Military Science/Aeronautics/Late Interwar Bombers
 link = {
 	vic2 = late_interwar_bombers
+	limit = R"(not = { has_dlc = "By Blood Alone" })"
 	hoi4 = tactical_bomber1
+}
+
+link = {
+	vic2 = late_interwar_bombers
+	limit = R"(has_dlc = "By Blood Alone")"
+	hoi4 = basic_medium_airframe
+	hoi4 = engines_2
+	hoi4 = aircraft_construction
 }
 
 # ===============================
