@@ -1270,6 +1270,24 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 {
 	Log(LogLevel::Info) << "\t\tConverting armies";
 
+	ifstream plane_designs_file("Configurables/plane_designs.txt");
+	if (!plane_designs_file.is_open())
+	{
+		std::runtime_error e("Could not open Configurables/plane_designs.txt. Double-check your converter installation");
+		throw e;
+	}
+	PossiblePlaneDesigns possible_plane_designs(plane_designs_file);
+	plane_designs_file.close();
+
+	ifstream tank_designs_file("Configurables/tankDesigns.txt");
+	if (!tank_designs_file.is_open())
+	{
+		std::runtime_error e("Could not open Configurables/tankDesigns.txt. Double-check your converter installation");
+		throw e;
+	}
+	PossibleTankDesigns possible_tank_designs(tank_designs_file);
+	tank_designs_file.close();
+
 	for (auto& [tag, country]: countries)
 	{
 		std::set<std::string> ownersToSkip;
@@ -1294,16 +1312,8 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 			}
 		}
 
-		ifstream designsFile("Configurables/tankDesigns.txt");
-		if (!designsFile.is_open())
-		{
-			std::runtime_error e("Could not open Configurables/tankDesigns.txt. Double-check your converter installation");
-			throw e;
-		}
-		PossibleTankDesigns possibleDesigns(designsFile);
-		designsFile.close();
-
-		country->addTankDesigns(possibleDesigns);
+		country->AddPlaneDesigns(possible_plane_designs);
+		country->addTankDesigns(possible_tank_designs);
 	}
 }
 

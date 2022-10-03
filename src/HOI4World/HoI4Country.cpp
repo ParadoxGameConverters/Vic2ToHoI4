@@ -1812,6 +1812,12 @@ bool HoI4::Country::isProvinceInDominionArea(int province, const std::vector<std
 }
 
 
+void HoI4::Country::AddPlaneDesigns(const PossiblePlaneDesigns& possible_designs)
+{
+	plane_designs_ = std::make_unique<PlaneDesigns>(possible_designs, *theTechnologies);
+}
+
+
 void HoI4::Country::addTankDesigns(const PossibleTankDesigns& possibleDesigns)
 {
 	tankDesigns = std::make_unique<TankDesigns>(possibleDesigns, *theTechnologies);

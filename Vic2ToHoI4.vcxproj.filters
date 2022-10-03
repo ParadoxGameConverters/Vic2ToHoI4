@@ -1129,6 +1129,27 @@
     <ClCompile Include="src\OutHoi4\Countries\OutUnionCountry.cpp">
       <Filter>src\OutHoi4\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneModules.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesign.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesigns.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2502,6 +2523,27 @@
     <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h">
       <Filter>src\OutHoi4\Countries</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneModules.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesign.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesigns.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
@@ -3085,6 +3127,12 @@
     </Filter>
     <Filter Include="src\OutHoi4\Countries">
       <UniqueIdentifier>{71f96e42-7401-4ffe-9379-315b86b610ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\PlaneDesigns">
+      <UniqueIdentifier>{cde9c425-b0de-40ae-ae8f-9eacdbe5cb78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\PlaneDesigns">
+      <UniqueIdentifier>{a03c7564-b48f-4b43-b0f8-75c29b30fcc5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -21,6 +21,7 @@
 #include "src/HOI4World/Navies/Navies.h"
 #include "src/HOI4World/Navies/NavyNames.h"
 #include "src/HOI4World/Operatives/Operative.h"
+#include "src/HOI4World/PlaneDesigns/PlaneDesigns.h"
 #include "src/HOI4World/Regions/Regions.h"
 #include "src/HOI4World/ShipTypes/ShipVariants.h"
 #include "src/HOI4World/States/HoI4State.h"
@@ -123,6 +124,7 @@ class Country
 		 const HoI4::States& theStates,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
+	void AddPlaneDesigns(const PossiblePlaneDesigns& possible_designs);
 	void addTankDesigns(const PossibleTankDesigns& possibleDesigns);
 	void convertTechnology(const Mappers::TechMapper& techMapper, const Mappers::ResearchBonusMapper& theTechMapper);
 	void addState(const State& state);
@@ -259,6 +261,7 @@ class Country
 
 	[[nodiscard]] const Army& getArmy() const { return theArmy; }
 	[[nodiscard]] const auto& getDivisionLocations() const { return theArmy.getDivisionLocations(); }
+	[[nodiscard]] const PlaneDesigns& GetPlaneDesigns() const { return *plane_designs_; }
 	[[nodiscard]] const TankDesigns& getTankDesigns() const { return *tankDesigns; }
 	[[nodiscard]] const ShipVariants& getTheShipVariants() const { return *theShipVariants; }
 	[[nodiscard]] std::optional<Navies> getNavies() const;
@@ -449,6 +452,7 @@ class Country
 	std::vector<Vic2::Army> oldArmies;
 	Army theArmy;
 	std::shared_ptr<Country> puppetMaster;
+	std::unique_ptr<PlaneDesigns> plane_designs_;
 	std::unique_ptr<TankDesigns> tankDesigns;
 	std::unique_ptr<ShipVariants> theShipVariants;
 	std::unique_ptr<Navies> theNavies;
