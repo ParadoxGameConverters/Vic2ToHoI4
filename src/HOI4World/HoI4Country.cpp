@@ -1312,8 +1312,7 @@ void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 
 void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 {
-	static std::map<std::string, std::vector<std::string>> backups = {
-		 {"fighter_equipment_0", {"tac_bomber_equipment_0"}}};
+	int amount = 0;
 	for (const auto& army: oldArmies)
 	{
 		for (const auto& regiment: army.getUnits())
@@ -1324,19 +1323,7 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 				{
 					if (unitInfo.getCategory() == "air")
 					{
-						// Air units get placed in national stockpile.
-						auto equip = unitInfo.getEquipment();
-						auto amount = unitInfo.getSize();
-						const auto& backup = backups.find(equip);
-						if (backup != backups.end())
-						{
-							amount /= (1 + static_cast<int>(backup->second.size()));
-							for (const auto& b: backup->second)
-							{
-								equipmentStockpile[b] += amount;
-							}
-						}
-						equipmentStockpile[equip] += amount;
+						amount += unitInfo.getSize();
 						break;
 					}
 				}
@@ -1347,6 +1334,28 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 			}
 		}
 	}
+	amount /= 2;
+
+	equipment_stockpile_.emplace_back(tag,
+		 "fighter_equipment_0",
+		 std::nullopt,
+		 R"({ NOT = { has_dlc = "By Blood Alone" } })",
+		 amount);
+	equipment_stockpile_.emplace_back(tag,
+		 "tac_bomber_equipment_0",
+		 std::nullopt,
+		 R"({ NOT = { has_dlc = "By Blood Alone" } })",
+		 amount);
+	equipment_stockpile_.emplace_back(tag,
+		 "small_plane_airframe_1",
+		 "Basic Fighter",
+		 R"({ has_dlc = "By Blood Alone" })",
+		 amount);
+	equipment_stockpile_.emplace_back(tag,
+		 "small_plane_cas_airframe_1",
+		 "Basic CAS",
+		 R"({ has_dlc = "By Blood Alone" })",
+		 amount);
 }
 
 
@@ -1376,7 +1385,7 @@ void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings,
 
 	for (const auto& [equipmentType, amount]: theArmy.getLeftoverEquipment())
 	{
-		equipmentStockpile[equipmentType] += amount;
+		equipment_stockpile_.emplace_back(tag, equipmentType, std::nullopt, std::nullopt, amount);
 	}
 
 	convertStockpile();
@@ -1427,9 +1436,18 @@ void HoI4::Country::convertStockpile()
 	const auto armorSupply = *std::min_element(armorSupplyLevels.begin(), armorSupplyLevels.end());
 	if (const auto tanks = divisionTypesAndAmounts.find("light_armor"); tanks != divisionTypesAndAmounts.end())
 	{
-		equipmentStockpile["gw_tank_equipment"] +=
-			 static_cast<int>(std::ceil(static_cast<float>(tanks->second) * armorSupply / full_light_armor_supply *
-												 light_armor_equipment_per_division));
+		const auto amount = static_cast<int>(std::ceil(static_cast<float>(tanks->second) * armorSupply /
+																	  full_light_armor_supply * light_armor_equipment_per_division));
+		equipment_stockpile_.emplace_back(tag,
+			 "gw_tank_equipment",
+			 std::nullopt,
+			 R"({ has_dlc = "No Step Back" })",
+			 amount);
+		equipment_stockpile_.emplace_back(tag,
+			 "light_tank_chassis_2",
+			 std::nullopt,
+			 R"({ NOT = { has_dlc = "No Step Back" } })",
+			 amount);
 	}
 	sourceCountryGoods["barrels"] -= barrels_supply_required_for_light_armor * armorSupply;
 	sourceCountryGoods["artillery"] -= artillery_supply_required_for_light_armor * armorSupply;
@@ -1443,21 +1461,25 @@ void HoI4::Country::convertStockpile()
 	if (const auto artillery = divisionTypesAndAmounts.find("artillery_brigade");
 		 artillery != divisionTypesAndAmounts.end())
 	{
-		equipmentStockpile["artillery_equipment_1"] +=
+		equipment_stockpile_.emplace_back(tag,
+			 "artillery_equipment_1",
+			 std::nullopt,
+			 std::nullopt,
 			 static_cast<int>(std::ceil(static_cast<float>(artillery->second) * artillerySupply / full_artillery_supply *
-												 artillery_equipment_per_division));
+												 artillery_equipment_per_division)));
 	}
 	sourceCountryGoods["artillery"] -= artillery_supply_required_for_artillery * artillerySupply;
 	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_artillery * artillerySupply;
 
 	// convert supply into infantry equipment via infantry
+	int infantry_equipment_amount = 0;
 	std::set infantrySupplyLevels{getSourceCountryGoodAmount("small_arms") / small_arms_supply_required_for_infantry,
 		 getSourceCountryGoodAmount("ammunition") / ammunition_supply_required_for_infantry,
 		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_infantry};
 	const auto infantrySupply = *std::min_element(infantrySupplyLevels.begin(), infantrySupplyLevels.end());
 	if (const auto tanks = divisionTypesAndAmounts.find("infantry"); tanks != divisionTypesAndAmounts.end())
 	{
-		equipmentStockpile["infantry_equipment_0"] += static_cast<int>(std::ceil(
+		infantry_equipment_amount += static_cast<int>(std::ceil(
 			 static_cast<float>(tanks->second) * infantrySupply / full_infantry_supply * infantry_equipment_per_division));
 	}
 	sourceCountryGoods["small_arms"] -= small_arms_supply_required_for_infantry * infantrySupply;
@@ -1471,12 +1493,20 @@ void HoI4::Country::convertStockpile()
 	const auto cavalrySupply = *std::min_element(cavalrySupplyLevels.begin(), cavalrySupplyLevels.end());
 	if (const auto tanks = divisionTypesAndAmounts.find("cavalry"); tanks != divisionTypesAndAmounts.end())
 	{
-		equipmentStockpile["infantry_equipment_0"] += static_cast<int>(std::ceil(
+		infantry_equipment_amount += static_cast<int>(std::ceil(
 			 static_cast<float>(tanks->second) * cavalrySupply / full_cavalry_supply * cavalry_equipment_per_division));
 	}
 	sourceCountryGoods["small_arms"] -= small_arms_supply_required_for_cavalry * cavalrySupply;
 	sourceCountryGoods["ammunition"] -= ammunition_supply_required_for_cavalry * cavalrySupply;
 	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_cavalry * cavalrySupply;
+	if (infantry_equipment_amount > 0)
+	{
+		equipment_stockpile_.emplace_back(tag,
+			 "infantry_equipment_0",
+			 std::nullopt,
+			 std::nullopt,
+			 infantry_equipment_amount);
+	}
 }
 
 

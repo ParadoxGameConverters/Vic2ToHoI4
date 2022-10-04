@@ -210,6 +210,7 @@
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.h" />
     <ClCompile Include="src\OutHoi4\Characters\OutPortrait.cpp" />
+    <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp" />
     <ClCompile Include="src\OutHoi4\Countries\OutUnionCountry.cpp" />
     <ClCompile Include="src\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
     <ClCompile Include="src\OutHoi4\CountryCategories\OutCountryCategory.cpp" />
@@ -491,6 +492,7 @@
     <ClInclude Include="src\HOI4World\Characters\Portrait.h" />
     <ClInclude Include="src\HOI4World\Characters\PortraitsFactory.h" />
     <ClInclude Include="src\HOI4World\Characters\PortraitTypeFactory.h" />
+    <ClInclude Include="src\HOI4World\Countries\Equipment.h" />
     <ClInclude Include="src\HOI4World\Countries\UnionCountry.h" />
     <ClInclude Include="src\HOI4World\CountryCategories\CountryCategories.h" />
     <ClInclude Include="src\HOI4World\CountryCategories\CountryGrammarRule.h" />
@@ -639,6 +641,7 @@
     <ClInclude Include="src\OutHoi4\Characters\OutCharacter.h" />
     <ClInclude Include="src\OutHoi4\Characters\OutCommanderData.h" />
     <ClInclude Include="src\OutHoi4\Characters\OutPortrait.h" />
+    <ClInclude Include="src\OutHoi4\Countries\OutEquipment.h" />
     <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h" />
     <ClInclude Include="src\OutHoi4\CountryCategories\OutCountryCategories.h" />
     <ClInclude Include="src\OutHoi4\CountryCategories\OutCountryCategory.h" />

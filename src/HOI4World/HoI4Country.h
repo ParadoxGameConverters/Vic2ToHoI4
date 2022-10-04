@@ -6,6 +6,7 @@
 #include "external/common_items/Color.h"
 #include "external/common_items/Date.h"
 #include "src/HOI4World/Characters/Character.h"
+#include "src/HOI4World/Countries/Equipment.h"
 #include "src/HOI4World/Diplomacy/Faction.h"
 #include "src/HOI4World/Diplomacy/HoI4AIStrategy.h"
 #include "src/HOI4World/Diplomacy/HoI4Relations.h"
@@ -269,7 +270,7 @@ class Country
 	[[nodiscard]] int getConvoys() const { return convoys; }
 	[[nodiscard]] auto getTrainsMultiplier() const { return trainsMultiplier; }
 	[[nodiscard]] const std::vector<Airplane>& getPlanes() const { return planes; }
-	[[nodiscard]] const std::map<std::string, unsigned int>& getEquipmentStockpile() const { return equipmentStockpile; }
+	[[nodiscard]] const std::vector<Equipment>& GetEquipmentStockpile() const { return equipment_stockpile_; }
 
 	[[nodiscard]] const auto& getOperatives() const { return operatives_; }
 
@@ -460,7 +461,7 @@ class Country
 	int convoys = 0;
 	std::optional<float> trainsMultiplier;
 	std::vector<Airplane> planes;
-	std::map<std::string, unsigned int> equipmentStockpile;
+	std::vector<Equipment> equipment_stockpile_;
 	std::map<std::string, std::vector<std::string>> shipNames;
 
 	std::vector<Operative> operatives_;
