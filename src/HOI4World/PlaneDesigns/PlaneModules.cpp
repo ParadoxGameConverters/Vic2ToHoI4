@@ -4,12 +4,11 @@
 
 
 
-HoI4::PlaneModules::PlaneModules(std::istream& theStream)
+HoI4::PlaneModules::PlaneModules(std::istream& the_stream)
 {
-	registerRegex(commonItems::catchallRegex, [this](const std::string& moduleSlot, std::istream& regexStream) {
-		const commonItems::singleString module(regexStream);
-		modules.insert(std::make_pair(moduleSlot, module.getString()));
+	registerRegex(commonItems::catchallRegex, [this](const std::string& module_slot, std::istream& regex_stream) {
+		modules_.insert(std::make_pair(module_slot, commonItems::getString(regex_stream)));
 	});
 
-	parseStream(theStream);
+	parseStream(the_stream);
 }

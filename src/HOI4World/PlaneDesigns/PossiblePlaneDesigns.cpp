@@ -4,14 +4,13 @@
 
 
 
-HoI4::PossiblePlaneDesigns::PossiblePlaneDesigns(std::istream& theStream)
+HoI4::PossiblePlaneDesigns::PossiblePlaneDesigns(std::istream& the_stream)
 {
-	registerKeyword("plane_design", [this](std::istream& lambdaRegex) {
-		const PlaneDesign thePlaneDesign(lambdaRegex);
-		tankDesigns.push_back(thePlaneDesign);
+	registerKeyword("plane_design", [this](std::istream& lambda_regex) {
+		plane_designs_.emplace_back(lambda_regex);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseStream(theStream);
+	parseStream(the_stream);
 	clearRegisteredKeywords();
 }

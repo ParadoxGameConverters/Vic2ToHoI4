@@ -4,71 +4,79 @@
 
 
 
-HoI4::PlaneDesign::PlaneDesign(std::istream& theStream)
+HoI4::PlaneDesign::PlaneDesign(std::istream& the_stream)
 {
-	registerKeyword("name", [this](std::istream& lambdaStream) {
-		name = commonItems::singleString(lambdaStream).getString();
+	registerKeyword("name", [this](std::istream& lambda_stream) {
+		name_ = commonItems::singleString(lambda_stream).getString();
 	});
-	registerKeyword("type", [this](std::istream& lambdaStream) {
-		type = commonItems::singleString(lambdaStream).getString();
+	registerKeyword("type", [this](std::istream& lambda_stream) {
+		type_ = commonItems::singleString(lambda_stream).getString();
 	});
-	registerKeyword("modules", [this](std::istream& lambdaStream) {
-		modules = std::make_unique<PlaneModules>(lambdaStream);
+	registerKeyword("modules", [this](std::istream& lambda_stream) {
+		modules_ = std::make_unique<PlaneModules>(lambda_stream);
 	});
-	registerKeyword("icon", [this](std::istream& lambdaStream) {
-		icon = commonItems::singleString(lambdaStream).getString();
+	registerKeyword("icon", [this](std::istream& lambda_stream) {
+		icon_ = commonItems::singleString(lambda_stream).getString();
 	});
-	registerKeyword("obsolete", [this](std::istream& lambdaStream) {
-		const commonItems::singleString obsoleteString(lambdaStream);
-		obsolete = obsoleteString.getString() == "yes";
+	registerKeyword("obsolete", [this](std::istream& lambda_stream) {
+		obsolete_ = commonItems::getString(lambda_stream) == "yes";
 	});
-	registerKeyword("required_techs", [this](std::istream& lambdaStream) {
-		for (const auto& requiredTech: commonItems::stringList(lambdaStream).getStrings())
+	registerKeyword("required_techs", [this](std::istream& lambda_stream) {
+		for (const auto& required_tech: commonItems::getStrings(lambda_stream))
 		{
-			requiredTechnologies.insert(requiredTech);
+			required_technologies_.insert(required_tech);
 		}
 	});
-	registerKeyword("blocking_techs", [this](std::istream& lambdaStream) {
-		for (const auto& blockingTech: commonItems::stringList(lambdaStream).getStrings())
+	registerKeyword("blocking_techs", [this](std::istream& lambda_stream) {
+		for (const auto& blocking_tech: commonItems::getStrings(lambda_stream))
 		{
-			blockingTechnologies.insert(blockingTech);
+			blocking_technologies_.insert(blocking_tech);
 		}
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseStream(theStream);
+	parseStream(the_stream);
 	clearRegisteredKeywords();
+
+	if (name_.empty())
+	{
+		throw std::runtime_error("Plane design missing name");
+	}
+	if (type_.empty())
+	{
+		throw std::runtime_error("Plane design missing type");
+	}
 }
 
 
 HoI4::PlaneDesign& HoI4::PlaneDesign::operator=(const PlaneDesign& rhs)
 {
-	name = rhs.name;
-	type = rhs.type;
-	modules = std::make_unique<PlaneModules>(*rhs.modules);
-	icon = rhs.icon;
-	obsolete = rhs.obsolete;
-	requiredTechnologies = rhs.requiredTechnologies;
-	blockingTechnologies = rhs.blockingTechnologies;
+	name_ = rhs.name_;
+	type_ = rhs.type_;
+	modules_ = std::make_unique<PlaneModules>(*rhs.modules_);
+	icon_ = rhs.icon_;
+	obsolete_ = rhs.obsolete_;
+	required_technologies_ = rhs.required_technologies_;
+	blocking_technologies_ = rhs.blocking_technologies_;
 
 	return *this;
 }
 
 
-bool HoI4::PlaneDesign::isValidDesign(const technologies& ownedTechs) const
+bool HoI4::PlaneDesign::IsValidDesign(const technologies& owned_techs) const
 {
-	if (!std::ranges::all_of(requiredTechnologies.begin(),
-			  requiredTechnologies.end(),
-			  [ownedTechs](const std::string& technology) {
-				  return ownedTechs.hasTechnology(technology);
+	if (!std::ranges::all_of(required_technologies_.begin(),
+			  required_technologies_.end(),
+			  [owned_techs](const std::string& technology) {
+				  return owned_techs.hasTechnology(technology);
 			  }))
 	{
 		return false;
 	}
 
-	return std::ranges::none_of(blockingTechnologies.begin(),
-		 blockingTechnologies.end(),
-		 [ownedTechs](const std::string& technology) {
-			 return ownedTechs.hasTechnology(technology);
+	return std::ranges::none_of(blocking_technologies_.begin(),
+		 blocking_technologies_.end(),
+		 [owned_techs](const std::string& technology) {
+			 return owned_techs.hasTechnology(technology);
 		 });
 }

@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-std::ostream& operator<<(std::ostream& output, const PlaneDesigns& theDesigns);
+std::ostream& operator<<(std::ostream& output, const PlaneDesigns& the_designs_);
 
 } // namespace HoI4
 

@@ -8,19 +8,19 @@
 TEST(HoI4World_PlaneDesigns_PlaneDesignsTests, DesignsDefaultsToEmpty)
 {
 	std::stringstream input;
-	HoI4::PossiblePlaneDesigns possibleDesigns(input);
+	HoI4::PossiblePlaneDesigns possible_designs(input);
 
-	HoI4::PlaneDesigns theDesigns(possibleDesigns, *HoI4::technologies::Builder().Build());
+	HoI4::PlaneDesigns the_designs(possible_designs, *HoI4::technologies::Builder().Build());
 
 	std::stringstream output;
-	output << theDesigns;
+	output << the_designs;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "### PLANE DESIGNS ###\n";
-	expectedOutput << "if = {\n";
-	expectedOutput << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
-	expectedOutput << "}\n";
-	ASSERT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "### PLANE DESIGNS ###\n";
+	expected_output << "if = {\n";
+	expected_output << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
+	expected_output << "}\n";
+	ASSERT_EQ(expected_output.str(), output.str());
 }
 
 
@@ -29,52 +29,46 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignsTests, CanReceivePlaneDesign)
 	std::stringstream input;
 	input << "plane_design = {\n";
 	input << "\trequired_techs = {\n";
-	input << "\t\tgwtank_chassis\n";
-	input << "\t\tgw_artillery\n";
+	input << "\t\tiw_small_airframe\n";
+	input << "\t\tearly_bombs\n";
 	input << "\t}\n";
 	input << "\tblocking_techs = {\n";
-	input << "\t\tbasic_light_tank_chassis\n";
+	input << "\t\tbasic_small_airframe\n";
 	input << "\t}\n";
 	input << "\tname = \"GW Light Plane\"\n";
-	input << "\ttype = light_tank_chassis_0\n";
-	input << "\tparent_version = 0\n";
+	input << "\ttype = small_plane_airframe_0\n";
 	input << "\tmodules = {\n";
-	input << "\t\tmain_armament_slot = tank_small_cannon\n";
-	input << "\t\tturret_type_slot = tank_light_one_man_tank_turret\n";
-	input << "\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	input << "\t\tarmor_type_slot = tank_riveted_armor\n";
-	input << "\t\tengine_type_slot = tank_gasoline_engine\n";
+	input << "\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	input << "\t\tengine_type_slot = engine_1_1x\n";
+	input << "\t\tspecial_type_slot_1 = empty\n";
 	input << "\t}\n";
 	input << "\tobsolete = no\n";
-	input << "\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
+	input << "\ticon = \"gfx/interface/technologies/GFX_USA_light_plane_2_medium.dds\"\n";
 	input << "}\n";
-	HoI4::PossiblePlaneDesigns possibleDesigns(input);
+	HoI4::PossiblePlaneDesigns possible_designs(input);
 
-	HoI4::PlaneDesigns theDesigns(possibleDesigns,
-		 *HoI4::technologies::Builder().addTechnology("gwtank_chassis").addTechnology("gw_artillery").Build());
+	HoI4::PlaneDesigns the_designs(possible_designs,
+		 *HoI4::technologies::Builder().addTechnology("iw_small_airframe").addTechnology("early_bombs").Build());
 
 	std::stringstream output;
-	output << theDesigns;
+	output << the_designs;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "### PLANE DESIGNS ###\n";
-	expectedOutput << "if = {\n";
-	expectedOutput << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"GW Light Plane\"\n";
-	expectedOutput << "\t\ttype = light_tank_chassis_0\n";
-	expectedOutput << "\t\tparent_version = 0\n";
-	expectedOutput << "\t\tmodules = {\n";
-	expectedOutput << "\t\t\tarmor_type_slot = tank_riveted_armor\n";
-	expectedOutput << "\t\t\tengine_type_slot = tank_gasoline_engine\n";
-	expectedOutput << "\t\t\tmain_armament_slot = tank_small_cannon\n";
-	expectedOutput << "\t\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	expectedOutput << "\t\t\tturret_type_slot = tank_light_one_man_tank_turret\n";
-	expectedOutput << "\t\t}\n";
-	expectedOutput << "\t\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "}\n";
-	ASSERT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "### PLANE DESIGNS ###\n";
+	expected_output << "if = {\n";
+	expected_output << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
+	expected_output << "\tcreate_equipment_variant = {\n";
+	expected_output << "\t\tname = \"GW Light Plane\"\n";
+	expected_output << "\t\ttype = small_plane_airframe_0\n";
+	expected_output << "\t\tmodules = {\n";
+	expected_output << "\t\t\tengine_type_slot = engine_1_1x\n";
+	expected_output << "\t\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	expected_output << "\t\t\tspecial_type_slot_1 = empty\n";
+	expected_output << "\t\t}\n";
+	expected_output << "\t\ticon = \"gfx/interface/technologies/GFX_USA_light_plane_2_medium.dds\"\n";
+	expected_output << "\t}\n";
+	expected_output << "}\n";
+	ASSERT_EQ(expected_output.str(), output.str());
 }
 
 
@@ -83,63 +77,57 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignsTests, HeldPlaneDesignIsIdentified)
 	std::stringstream input;
 	input << "plane_design = {\n";
 	input << "\trequired_techs = {\n";
-	input << "\t\tgwtank_chassis\n";
-	input << "\t\tgw_artillery\n";
+	input << "\t\tiw_small_airframe\n";
+	input << "\t\tearly_bombs\n";
 	input << "\t}\n";
 	input << "\tblocking_techs = {\n";
-	input << "\t\tbasic_light_tank_chassis\n";
+	input << "\t\tbasic_small_airframe\n";
 	input << "\t}\n";
 	input << "\tname = \"GW Light Plane\"\n";
-	input << "\ttype = light_tank_chassis_0\n";
-	input << "\tparent_version = 0\n";
+	input << "\ttype = small_plane_airframe_0\n";
 	input << "\tmodules = {\n";
-	input << "\t\tmain_armament_slot = tank_small_cannon\n";
-	input << "\t\tturret_type_slot = tank_light_one_man_tank_turret\n";
-	input << "\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	input << "\t\tarmor_type_slot = tank_riveted_armor\n";
-	input << "\t\tengine_type_slot = tank_gasoline_engine\n";
+	input << "\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	input << "\t\tengine_type_slot = engine_1_1x\n";
+	input << "\t\tspecial_type_slot_1 = empty\n";
 	input << "\t}\n";
 	input << "\tobsolete = no\n";
-	input << "\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
+	input << "\ticon = \"gfx/interface/technologies/GFX_USA_light_plane_2_medium.dds\"\n";
 	input << "}\n";
-	const HoI4::PossiblePlaneDesigns possibleDesigns(input);
+	const HoI4::PossiblePlaneDesigns possible_designs(input);
 
-	const HoI4::PlaneDesigns theDesigns(possibleDesigns,
-		 *HoI4::technologies::Builder().addTechnology("gwtank_chassis").addTechnology("gw_artillery").Build());
+	const HoI4::PlaneDesigns the_designs(possible_designs,
+		 *HoI4::technologies::Builder().addTechnology("iw_small_airframe").addTechnology("early_bombs").Build());
 
-	ASSERT_TRUE(theDesigns.hasPlaneDesign("GW Light Plane"));
+	ASSERT_TRUE(the_designs.HasPlaneDesign("GW Light Plane"));
 }
 
 
 TEST(HoI4World_PlaneDesigns_PlaneDesignsTests, MissingPlaneDesignIsNotIdentified)
 {
 	std::stringstream input;
-	input << "tank_design = {\n";
+	input << "plane_design = {\n";
 	input << "\trequired_techs = {\n";
-	input << "\t\tgwtank_chassis\n";
-	input << "\t\tgw_artillery\n";
+	input << "\t\tiw_small_airframe\n";
+	input << "\t\tearly_bombs\n";
 	input << "\t}\n";
 	input << "\tblocking_techs = {\n";
-	input << "\t\tbasic_light_tank_chassis\n";
+	input << "\t\tbasic_small_airframe\n";
 	input << "\t}\n";
 	input << "\tname = \"GW Light Plane\"\n";
-	input << "\ttype = light_tank_chassis_0\n";
-	input << "\tparent_version = 0\n";
+	input << "\ttype = small_plane_airframe_0\n";
 	input << "\tmodules = {\n";
-	input << "\t\tmain_armament_slot = tank_small_cannon\n";
-	input << "\t\tturret_type_slot = tank_light_one_man_tank_turret\n";
-	input << "\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	input << "\t\tarmor_type_slot = tank_riveted_armor\n";
-	input << "\t\tengine_type_slot = tank_gasoline_engine\n";
+	input << "\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	input << "\t\tengine_type_slot = engine_1_1x\n";
+	input << "\t\tspecial_type_slot_1 = empty\n";
 	input << "\t}\n";
 	input << "\tobsolete = no\n";
-	input << "\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
+	input << "\ticon = \"gfx/interface/technologies/GFX_USA_light_plane_2_medium.dds\"\n";
 	input << "}\n";
-	const HoI4::PossiblePlaneDesigns possibleDesigns(input);
+	const HoI4::PossiblePlaneDesigns possible_designs(input);
 
-	const HoI4::PlaneDesigns theDesigns(possibleDesigns, *HoI4::technologies::Builder().Build());
+	const HoI4::PlaneDesigns the_designs(possible_designs, *HoI4::technologies::Builder().Build());
 
-	ASSERT_FALSE(theDesigns.hasPlaneDesign("GW Medium Plane"));
+	ASSERT_FALSE(the_designs.HasPlaneDesign("GW Medium Plane"));
 }
 
 
@@ -148,73 +136,64 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignsTests, PlaneDesignsNeedRequiredTechs)
 	std::stringstream input;
 	input << "plane_design = {\n";
 	input << "\trequired_techs = {\n";
-	input << "\t\tgwtank_chassis\n";
-	input << "\t\tgw_artillery\n";
+	input << "\t\tiw_small_airframe\n";
+	input << "\t\tearly_bombs\n";
 	input << "\t}\n";
 	input << "\tblocking_techs = {\n";
-	input << "\t\tbasic_light_tank_chassis\n";
+	input << "\t\tbasic_small_airframe\n";
 	input << "\t}\n";
 	input << "\tname = \"GW Light Plane\"\n";
-	input << "\ttype = light_tank_chassis_0\n";
-	input << "\tparent_version = 0\n";
+	input << "\ttype = small_plane_airframe_0\n";
 	input << "\tmodules = {\n";
-	input << "\t\tmain_armament_slot = tank_small_cannon\n";
-	input << "\t\tturret_type_slot = tank_light_one_man_tank_turret\n";
-	input << "\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	input << "\t\tarmor_type_slot = tank_riveted_armor\n";
-	input << "\t\tengine_type_slot = tank_gasoline_engine\n";
+	input << "\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	input << "\t\tengine_type_slot = engine_1_1x\n";
+	input << "\t\tspecial_type_slot_1 = empty\n";
 	input << "\t}\n";
 	input << "\tobsolete = no\n";
-	input << "\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
+	input << "\ticon = \"gfx/interface/technologies/GFX_USA_light_plane_2_medium.dds\"\n";
 	input << "}\n";
 	input << "\n";
 	input << "plane_design = {\n";
 	input << "\trequired_techs = {\n";
-	input << "\t\tbasic_light_tank_chassis\n";
-	input << "\t\tgw_artillery\n";
+	input << "\t\tbasic_small_airframe\n";
+	input << "\t\tearly_bombs\n";
 	input << "\t}\n";
 	input << "\tblocking_techs = {\n";
-	input << "\t\timproved_light_tank_chassis\n";
+	input << "\t\tbasic_medium_airframe\n";
 	input << "\t}\n";
 	input << "\tname = \"Basic Light Plane\"\n";
-	input << "\ttype = light_tank_chassis_1\n";
-	input << "\tparent_version = 0\n";
+	input << "\ttype = cv_small_plane_airframe_0\n";
 	input << "\tmodules = {\n";
-	input << "\t\tmain_armament_slot = tank_small_cannon\n";
-	input << "\t\tturret_type_slot = tank_light_two_man_tank_turret\n";
-	input << "\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	input << "\t\tarmor_type_slot = tank_riveted_armor\n";
-	input << "\t\tengine_type_slot = tank_gasoline_engine\n";
+	input << "\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	input << "\t\tengine_type_slot = engine_1_1x\n";
+	input << "\t\tspecial_type_slot_1 = empty\n";
 	input << "\t}\n";
 	input << "\tobsolete = no\n";
 	input << "}\n";
-	HoI4::PossiblePlaneDesigns possibleDesigns(input);
+	HoI4::PossiblePlaneDesigns possible_designs(input);
 
-	HoI4::PlaneDesigns theDesigns(possibleDesigns,
-		 *HoI4::technologies::Builder().addTechnology("gwtank_chassis").addTechnology("gw_artillery").Build());
+	HoI4::PlaneDesigns the_designs(possible_designs,
+		 *HoI4::technologies::Builder().addTechnology("iw_small_airframe").addTechnology("early_bombs").Build());
 
 	std::stringstream output;
-	output << theDesigns;
+	output << the_designs;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "### PLANE DESIGNS ###\n";
-	expectedOutput << "if = {\n";
-	expectedOutput << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"GW Light Plane\"\n";
-	expectedOutput << "\t\ttype = light_tank_chassis_0\n";
-	expectedOutput << "\t\tparent_version = 0\n";
-	expectedOutput << "\t\tmodules = {\n";
-	expectedOutput << "\t\t\tarmor_type_slot = tank_riveted_armor\n";
-	expectedOutput << "\t\t\tengine_type_slot = tank_gasoline_engine\n";
-	expectedOutput << "\t\t\tmain_armament_slot = tank_small_cannon\n";
-	expectedOutput << "\t\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	expectedOutput << "\t\t\tturret_type_slot = tank_light_one_man_tank_turret\n";
-	expectedOutput << "\t\t}\n";
-	expectedOutput << "\t\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "}\n";
-	ASSERT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "### PLANE DESIGNS ###\n";
+	expected_output << "if = {\n";
+	expected_output << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
+	expected_output << "\tcreate_equipment_variant = {\n";
+	expected_output << "\t\tname = \"GW Light Plane\"\n";
+	expected_output << "\t\ttype = small_plane_airframe_0\n";
+	expected_output << "\t\tmodules = {\n";
+	expected_output << "\t\t\tengine_type_slot = engine_1_1x\n";
+	expected_output << "\t\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	expected_output << "\t\t\tspecial_type_slot_1 = empty\n";
+	expected_output << "\t\t}\n";
+	expected_output << "\t\ticon = \"gfx/interface/technologies/GFX_USA_light_plane_2_medium.dds\"\n";
+	expected_output << "\t}\n";
+	expected_output << "}\n";
+	ASSERT_EQ(expected_output.str(), output.str());
 }
 
 
@@ -223,75 +202,66 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignsTests, PlaneDesignsCanBeBlocked)
 	std::stringstream input;
 	input << "plane_design = {\n";
 	input << "\trequired_techs = {\n";
-	input << "\t\tgwtank_chassis\n";
-	input << "\t\tgw_artillery\n";
+	input << "\t\tiw_small_airframe\n";
+	input << "\t\tearly_bombs\n";
 	input << "\t}\n";
 	input << "\tblocking_techs = {\n";
-	input << "\t\tbasic_light_tank_chassis\n";
+	input << "\t\tbasic_small_airframe\n";
 	input << "\t}\n";
 	input << "\tname = \"GW Light Plane\"\n";
-	input << "\ttype = light_tank_chassis_0\n";
-	input << "\tparent_version = 0\n";
+	input << "\ttype = small_plane_airframe_0\n";
 	input << "\tmodules = {\n";
-	input << "\t\tmain_armament_slot = tank_small_cannon\n";
-	input << "\t\tturret_type_slot = tank_light_one_man_tank_turret\n";
-	input << "\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	input << "\t\tarmor_type_slot = tank_riveted_armor\n";
-	input << "\t\tengine_type_slot = tank_gasoline_engine\n";
+	input << "\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	input << "\t\tengine_type_slot = engine_1_1x\n";
+	input << "\t\tspecial_type_slot_1 = empty\n";
 	input << "\t}\n";
 	input << "\tobsolete = no\n";
-	input << "\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
+	input << "\ticon = \"gfx/interface/technologies/GFX_USA_light_plane_2_medium.dds\"\n";
 	input << "}\n";
 	input << "\n";
 	input << "plane_design = {\n";
 	input << "\trequired_techs = {\n";
-	input << "\t\tbasic_light_tank_chassis\n";
-	input << "\t\tgw_artillery\n";
+	input << "\t\tbasic_small_airframe\n";
+	input << "\t\tearly_bombs\n";
 	input << "\t}\n";
 	input << "\tblocking_techs = {\n";
-	input << "\t\timproved_light_tank_chassis\n";
+	input << "\t\tbasic_medium_airframe\n";
 	input << "\t}\n";
 	input << "\tname = \"Basic Light Plane\"\n";
-	input << "\ttype = light_tank_chassis_1\n";
-	input << "\tparent_version = 0\n";
+	input << "\ttype = cv_small_plane_airframe_0\n";
 	input << "\tmodules = {\n";
-	input << "\t\tmain_armament_slot = tank_small_cannon\n";
-	input << "\t\tturret_type_slot = tank_light_two_man_tank_turret\n";
-	input << "\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	input << "\t\tarmor_type_slot = tank_riveted_armor\n";
-	input << "\t\tengine_type_slot = tank_gasoline_engine\n";
+	input << "\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	input << "\t\tengine_type_slot = engine_1_1x\n";
+	input << "\t\tspecial_type_slot_1 = empty\n";
 	input << "\t}\n";
 	input << "\tobsolete = no\n";
 	input << "}\n";
-	HoI4::PossiblePlaneDesigns possibleDesigns(input);
+	HoI4::PossiblePlaneDesigns possible_designs(input);
 
-	HoI4::PlaneDesigns theDesigns(possibleDesigns,
+	HoI4::PlaneDesigns the_designs(possible_designs,
 		 *HoI4::technologies::Builder()
-				.addTechnology("gwtank_chassis")
-				.addTechnology("gw_artillery")
-				.addTechnology("improved_light_tank_chassis")
+				.addTechnology("iw_small_airframe")
+				.addTechnology("early_bombs")
+				.addTechnology("basic_medium_airframe")
 				.Build());
 
 	std::stringstream output;
-	output << theDesigns;
+	output << the_designs;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "### PLANE DESIGNS ###\n";
-	expectedOutput << "if = {\n";
-	expectedOutput << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"GW Light Plane\"\n";
-	expectedOutput << "\t\ttype = light_tank_chassis_0\n";
-	expectedOutput << "\t\tparent_version = 0\n";
-	expectedOutput << "\t\tmodules = {\n";
-	expectedOutput << "\t\t\tarmor_type_slot = tank_riveted_armor\n";
-	expectedOutput << "\t\t\tengine_type_slot = tank_gasoline_engine\n";
-	expectedOutput << "\t\t\tmain_armament_slot = tank_small_cannon\n";
-	expectedOutput << "\t\t\tsuspension_type_slot = tank_bogie_suspension\n";
-	expectedOutput << "\t\t\tturret_type_slot = tank_light_one_man_tank_turret\n";
-	expectedOutput << "\t\t}\n";
-	expectedOutput << "\t\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "}\n";
-	ASSERT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "### PLANE DESIGNS ###\n";
+	expected_output << "if = {\n";
+	expected_output << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
+	expected_output << "\tcreate_equipment_variant = {\n";
+	expected_output << "\t\tname = \"GW Light Plane\"\n";
+	expected_output << "\t\ttype = small_plane_airframe_0\n";
+	expected_output << "\t\tmodules = {\n";
+	expected_output << "\t\t\tengine_type_slot = engine_1_1x\n";
+	expected_output << "\t\t\tfixed_main_weapon_slot = light_mg_2x\n";
+	expected_output << "\t\t\tspecial_type_slot_1 = empty\n";
+	expected_output << "\t\t}\n";
+	expected_output << "\t\ticon = \"gfx/interface/technologies/GFX_USA_light_plane_2_medium.dds\"\n";
+	expected_output << "\t}\n";
+	expected_output << "}\n";
+	ASSERT_EQ(expected_output.str(), output.str());
 }

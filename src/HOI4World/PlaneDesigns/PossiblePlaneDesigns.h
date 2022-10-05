@@ -15,12 +15,12 @@ namespace HoI4
 class PossiblePlaneDesigns: commonItems::parser
 {
   public:
-	explicit PossiblePlaneDesigns(std::istream& theStream);
+	explicit PossiblePlaneDesigns(std::istream& the_stream);
 
-	[[nodiscard]] auto getPossiblePlaneDesigns() const { return tankDesigns; }
+	[[nodiscard]] auto GetPossiblePlaneDesigns() const { return plane_designs_; }
 
   private:
-	std::vector<PlaneDesign> tankDesigns;
+	std::vector<PlaneDesign> plane_designs_;
 };
 
 } // namespace HoI4

@@ -5,55 +5,44 @@
 
 
 
-TEST(HoI4World_PlaneDesigns_PlaneDesignTests, DefaultsSetCorrectly)
-{
-	std::stringstream input;
-	input << "";
-	HoI4::PlaneDesign thePlaneDesign(input);
-
-	std::stringstream output;
-	output << thePlaneDesign;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"\"\n";
-	expectedOutput << "\t\ttype = \n";
-	expectedOutput << "\t\tparent_version = 0\n";
-	expectedOutput << "\t}\n";
-	EXPECT_EQ(expectedOutput.str(), output.str());
-}
-
-
-TEST(HoI4World_PlaneDesigns_PlaneDesignTests, NameCanBeInput)
+TEST(HoI4World_PlaneDesigns_PlaneDesignTests, NameIsRequiredForDesign)
 {
 	std::stringstream input;
 	input << " = {\n";
-	input << "\tname = \"tank_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "}";
-	const HoI4::PlaneDesign thePlaneDesign(input);
-
-	EXPECT_EQ(std::string("tank_name"), thePlaneDesign.getName());
+	EXPECT_THROW(HoI4::PlaneDesign the_plane_design(input), std::runtime_error);
 }
 
 
-TEST(HoI4World_PlaneDesigns_PlaneDesignTests, TypeCanBeInput)
+TEST(HoI4World_PlaneDesigns_PlaneDesignTests, TypeIsRequiredForDesign)
 {
 	std::stringstream input;
 	input << " = {\n";
-	input << "\ttype = \"tank_type\"\n";
+	input << "\tname = \"plane_name\"\n";
 	input << "}";
-	HoI4::PlaneDesign thePlaneDesign(input);
+	EXPECT_THROW(HoI4::PlaneDesign the_plane_design(input), std::runtime_error);
+}
+
+
+TEST(HoI4World_PlaneDesigns_PlaneDesignTests, NameAndTypeCanBeInput)
+{
+	std::stringstream input;
+	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
+	input << "}";
+	HoI4::PlaneDesign the_plane_design(input);
 
 	std::stringstream output;
-	output << thePlaneDesign;
+	output << the_plane_design;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"\"\n";
-	expectedOutput << "\t\ttype = tank_type\n";
-	expectedOutput << "\t\tparent_version = 0\n";
-	expectedOutput << "\t}\n";
-	EXPECT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "\tcreate_equipment_variant = {\n";
+	expected_output << "\t\tname = \"plane_name\"\n";
+	expected_output << "\t\ttype = plane_type\n";
+	expected_output << "\t}\n";
+	EXPECT_EQ(expected_output.str(), output.str());
 }
 
 
@@ -61,77 +50,51 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignTests, ModulesCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "\tmodules = {\n";
 	input << "\t\tmoduleSpot1 = module1\n";
 	input << "\t\tmoduleSpot2 = module2\n";
 	input << "\t}";
 	input << "}";
-	HoI4::PlaneDesign thePlaneDesign(input);
+	HoI4::PlaneDesign the_plane_design(input);
 
 	std::stringstream output;
-	output << thePlaneDesign;
+	output << the_plane_design;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"\"\n";
-	expectedOutput << "\t\ttype = \n";
-	expectedOutput << "\t\tparent_version = 0\n";
-	expectedOutput << "\t\tmodules = {\n";
-	expectedOutput << "\t\t\tmoduleSpot1 = module1\n";
-	expectedOutput << "\t\t\tmoduleSpot2 = module2\n";
-	expectedOutput << "\t\t}\n";
-	expectedOutput << "\t}\n";
-	EXPECT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "\tcreate_equipment_variant = {\n";
+	expected_output << "\t\tname = \"plane_name\"\n";
+	expected_output << "\t\ttype = plane_type\n";
+	expected_output << "\t\tmodules = {\n";
+	expected_output << "\t\t\tmoduleSpot1 = module1\n";
+	expected_output << "\t\t\tmoduleSpot2 = module2\n";
+	expected_output << "\t\t}\n";
+	expected_output << "\t}\n";
+	EXPECT_EQ(expected_output.str(), output.str());
 }
-
-
-// TEST(HoI4World_PlaneDesigns_PlaneDesignTests, UpgradesCanBeInput)
-//{
-//	std::stringstream input;
-//	input << " = {\n";
-//	input << "\tupgrades = {\n";
-//	input << "\t\tupgradeSpot1 = 1\n";
-//	input << "\t\tupgradeSpot2 = 2\n";
-//	input << "\t}";
-//	input << "}";
-//	HoI4::PlaneDesign thePlaneDesign(input);
-//
-//	std::stringstream output;
-//	output << thePlaneDesign;
-//
-//	std::stringstream expectedOutput;
-//	expectedOutput << "\tcreate_equipment_variant = {\n";
-//	expectedOutput << "\t\tname = \"\"\n";
-//	expectedOutput << "\t\ttype = \n";
-//	expectedOutput << "\t\tparent_version = 0\n";
-//	expectedOutput << "\t\tupgrades = {\n";
-//	expectedOutput << "\t\t\tupgradeSpot1 = 1\n";
-//	expectedOutput << "\t\t\tupgradeSpot2 = 2\n";
-//	expectedOutput << "\t\t}\n";
-//	expectedOutput << "\t}\n";
-//	EXPECT_EQ(expectedOutput.str(), output.str());
-// }
 
 
 TEST(HoI4World_PlaneDesigns_PlaneDesignTests, IconCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
-	input << "\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
+	input << "\ticon = \"gfx/interface/technologies/if_fighter.dds\"\n";
 	input << "}";
-	const HoI4::PlaneDesign thePlaneDesign(input);
+	const HoI4::PlaneDesign the_plane_design(input);
 
 	std::stringstream output;
-	output << thePlaneDesign;
+	output << the_plane_design;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"\"\n";
-	expectedOutput << "\t\ttype = \n";
-	expectedOutput << "\t\tparent_version = 0\n";
-	expectedOutput << "\t\ticon = \"gfx/interface/technologies/gwtank.dds\"\n";
-	expectedOutput << "\t}\n";
-	EXPECT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "\tcreate_equipment_variant = {\n";
+	expected_output << "\t\tname = \"plane_name\"\n";
+	expected_output << "\t\ttype = plane_type\n";
+	expected_output << "\t\ticon = \"gfx/interface/technologies/if_fighter.dds\"\n";
+	expected_output << "\t}\n";
+	EXPECT_EQ(expected_output.str(), output.str());
 }
 
 
@@ -139,21 +102,22 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignTests, CanBeSetObsolete)
 {
 	std::stringstream input;
 	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "\tobsolete = yes\n";
 	input << "}";
-	HoI4::PlaneDesign thePlaneDesign(input);
+	HoI4::PlaneDesign the_plane_design(input);
 
 	std::stringstream output;
-	output << thePlaneDesign;
+	output << the_plane_design;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"\"\n";
-	expectedOutput << "\t\ttype = \n";
-	expectedOutput << "\t\tparent_version = 0\n";
-	expectedOutput << "\t\tobsolete = yes\n";
-	expectedOutput << "\t}\n";
-	EXPECT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "\tcreate_equipment_variant = {\n";
+	expected_output << "\t\tname = \"plane_name\"\n";
+	expected_output << "\t\ttype = plane_type\n";
+	expected_output << "\t\tobsolete = yes\n";
+	expected_output << "\t}\n";
+	EXPECT_EQ(expected_output.str(), output.str());
 }
 
 
@@ -161,20 +125,21 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignTests, OnlySetObsoleteByYes)
 {
 	std::stringstream input;
 	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "\tobsolete = no\n";
 	input << "}";
-	HoI4::PlaneDesign thePlaneDesign(input);
+	HoI4::PlaneDesign the_plane_design(input);
 
 	std::stringstream output;
-	output << thePlaneDesign;
+	output << the_plane_design;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"\"\n";
-	expectedOutput << "\t\ttype = \n";
-	expectedOutput << "\t\tparent_version = 0\n";
-	expectedOutput << "\t}\n";
-	EXPECT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "\tcreate_equipment_variant = {\n";
+	expected_output << "\t\tname = \"plane_name\"\n";
+	expected_output << "\t\ttype = plane_type\n";
+	expected_output << "\t}\n";
+	EXPECT_EQ(expected_output.str(), output.str());
 }
 
 
@@ -182,10 +147,12 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignTests, NoRequiredTechsMeansDesignIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "}";
-	const HoI4::PlaneDesign thePlaneDesign(input);
+	const HoI4::PlaneDesign the_plane_design(input);
 
-	EXPECT_TRUE(thePlaneDesign.isValidDesign(*HoI4::technologies::Builder().Build()));
+	EXPECT_TRUE(the_plane_design.IsValidDesign(*HoI4::technologies::Builder().Build()));
 }
 
 
@@ -193,13 +160,15 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignTests, MissingRequiredTechMeansDesignIsIn
 {
 	std::stringstream input;
 	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "\trequired_techs = {\n";
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::PlaneDesign thePlaneDesign(input);
+	const HoI4::PlaneDesign the_plane_design(input);
 
-	EXPECT_FALSE(thePlaneDesign.isValidDesign(*HoI4::technologies::Builder().Build()));
+	EXPECT_FALSE(the_plane_design.IsValidDesign(*HoI4::technologies::Builder().Build()));
 }
 
 
@@ -207,13 +176,15 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignTests, HavingRequiredTechsMeansDesignIsVa
 {
 	std::stringstream input;
 	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "\trequired_techs = {\n";
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::PlaneDesign thePlaneDesign(input);
+	const HoI4::PlaneDesign the_plane_design(input);
 
-	EXPECT_TRUE(thePlaneDesign.isValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
+	EXPECT_TRUE(the_plane_design.IsValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -221,14 +192,16 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignTests, HavingOnlySomeRequiredTechsMeansDe
 {
 	std::stringstream input;
 	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "\trequired_techs = {\n";
 	input << "\t\trequired_tech1\n";
 	input << "\t\trequired_tech2\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::PlaneDesign thePlaneDesign(input);
+	const HoI4::PlaneDesign the_plane_design(input);
 
-	EXPECT_FALSE(thePlaneDesign.isValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
+	EXPECT_FALSE(the_plane_design.IsValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -236,13 +209,15 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignTests, HavingBlockingTechsMeansDesignIsIn
 {
 	std::stringstream input;
 	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "\tblocking_techs = {\n";
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::PlaneDesign thePlaneDesign(input);
+	const HoI4::PlaneDesign the_plane_design(input);
 
-	EXPECT_FALSE(thePlaneDesign.isValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
+	EXPECT_FALSE(the_plane_design.IsValidDesign(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -250,11 +225,13 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignTests, HavingNoBlockingTechsMeansDesignIs
 {
 	std::stringstream input;
 	input << " = {\n";
+	input << "\tname = \"plane_name\"\n";
+	input << "\ttype = \"plane_type\"\n";
 	input << "\tblocking_techs = {\n";
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::PlaneDesign thePlaneDesign(input);
+	const HoI4::PlaneDesign the_plane_design(input);
 
-	EXPECT_TRUE(thePlaneDesign.isValidDesign(*HoI4::technologies::Builder().Build()));
+	EXPECT_TRUE(the_plane_design.IsValidDesign(*HoI4::technologies::Builder().Build()));
 }

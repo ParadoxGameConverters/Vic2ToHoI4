@@ -2,14 +2,14 @@
 
 
 
-HoI4::PlaneDesigns::PlaneDesigns(const PossiblePlaneDesigns& possiblePlaneDesigns, const technologies& ownedTechs)
+HoI4::PlaneDesigns::PlaneDesigns(const PossiblePlaneDesigns& possible_plane_designs, const technologies& owned_techs)
 {
-	for (auto& possibleDesign : possiblePlaneDesigns.getPossiblePlaneDesigns())
+	for (auto& possible_design: possible_plane_designs.GetPossiblePlaneDesigns())
 	{
-		if (possibleDesign.isValidDesign(ownedTechs))
+		if (possible_design.IsValidDesign(owned_techs))
 		{
-			auto newDesign(possibleDesign);
-			planeDesigns.insert(std::make_pair(newDesign.getName(), newDesign));
+			auto new_design(possible_design);
+			plane_designs_.emplace(std::make_pair(new_design.GetName(), new_design));
 		}
 	}
 }

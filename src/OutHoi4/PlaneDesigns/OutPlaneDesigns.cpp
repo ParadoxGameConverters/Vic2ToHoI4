@@ -3,12 +3,12 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& output, const PlaneDesigns& theDesigns)
+std::ostream& HoI4::operator<<(std::ostream& output, const PlaneDesigns& the_designs_)
 {
 	output << "### PLANE DESIGNS ###\n";
 	output << "if = {\n";
 	output << "\tlimit = { has_dlc = \"By Blood Alone\" }\n";
-	for (const auto& design: theDesigns.planeDesigns | std::views::values)
+	for (const auto& design: the_designs_.plane_designs_ | std::views::values)
 	{
 		output << design;
 	}

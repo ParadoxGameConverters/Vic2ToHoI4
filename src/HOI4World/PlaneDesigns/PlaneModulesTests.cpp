@@ -4,38 +4,38 @@
 
 
 
-TEST(HoI4World_PlaneDesigns_PlaneModulesTests, modulesDefaultToEmpty)
+TEST(HoI4World_PlaneDesigns_PlaneModulesTests, MATH_ERREXCEPTodulesDefaultToEmpty)
 {
 	std::stringstream input;
 	input << "";
-	HoI4::PlaneModules thePlaneModules(input);
+	HoI4::PlaneModules the_plane_modules(input);
 
 	std::stringstream output;
-	output << thePlaneModules;
+	output << the_plane_modules;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "\t\tmodules = {\n";
-	expectedOutput << "\t\t}\n";
-	EXPECT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "\t\tmodules = {\n";
+	expected_output << "\t\t}\n";
+	EXPECT_EQ(expected_output.str(), output.str());
 }
 
 
-TEST(HoI4World_PlaneDesigns_PlaneModulesTests, modulesCanBeInput)
+TEST(HoI4World_PlaneDesigns_PlaneModulesTests, ModulesCanBeInput)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tmodule_slot1 = module1\n";
 	input << "\tmodule_slot2 = module2\n";
 	input << "}";
-	HoI4::PlaneModules thePlaneModules(input);
+	HoI4::PlaneModules the_plane_modules(input);
 
 	std::stringstream output;
-	output << thePlaneModules;
+	output << the_plane_modules;
 
-	std::stringstream expectedOutput;
-	expectedOutput << "\t\tmodules = {\n";
-	expectedOutput << "\t\t\tmodule_slot1 = module1\n";
-	expectedOutput << "\t\t\tmodule_slot2 = module2\n";
-	expectedOutput << "\t\t}\n";
-	EXPECT_EQ(expectedOutput.str(), output.str());
+	std::stringstream expected_output;
+	expected_output << "\t\tmodules = {\n";
+	expected_output << "\t\t\tmodule_slot1 = module1\n";
+	expected_output << "\t\t\tmodule_slot2 = module2\n";
+	expected_output << "\t\t}\n";
+	EXPECT_EQ(expected_output.str(), output.str());
 }

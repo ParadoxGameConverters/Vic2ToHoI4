@@ -15,14 +15,17 @@ namespace HoI4
 class PlaneDesigns
 {
   public:
-	PlaneDesigns(const PossiblePlaneDesigns& possiblePlaneDesigns, const technologies& ownedTechs);
+	PlaneDesigns(const PossiblePlaneDesigns& possible_plane_designs, const technologies& owned_techs);
 
-	[[nodiscard]] bool hasPlaneDesign(const std::string& designName) const { return planeDesigns.contains(designName); }
+	[[nodiscard]] bool HasPlaneDesign(const std::string& design_name) const
+	{
+		return plane_designs_.contains(design_name);
+	}
 
-	friend std::ostream& operator<<(std::ostream& output, const PlaneDesigns& theDesigns);
+	friend std::ostream& operator<<(std::ostream& output, const PlaneDesigns& the_designs);
 
   private:
-	std::map<std::string, PlaneDesign> planeDesigns;
+	std::map<std::string, PlaneDesign> plane_designs_;
 };
 
 } // namespace HoI4
