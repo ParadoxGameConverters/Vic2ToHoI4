@@ -3,6 +3,7 @@
 
 
 
+#include "src/HOI4World/Countries/Equipment.h"
 #include "src/HOI4World/Military/DivisionType.h"
 #include "src/HOI4World/MilitaryMappings/MilitaryMappings.h"
 #include "src/HOI4World/States/HoI4States.h"
@@ -33,18 +34,19 @@ class Army
 
 	void addSourceArmies(const std::vector<Vic2::Army>& _sourceArmies) { sourceArmies = _sourceArmies; }
 
-	void convertArmies(const militaryMappings& theMilitaryMappings,
-		 int backupLocation,
-		 double forceMultiplier,
-		 const technologies& countryTechnologies,
-		 const States& theStates,
-		 const Mappers::ProvinceMapper& provinceMapper);
+	void ConvertArmies(const militaryMappings& military_mappings,
+		 int backup_location,
+		 double force_multiplier,
+		 const technologies& country_technologies,
+		 const States& states,
+		 const Mappers::ProvinceMapper& province_mapper,
+		 const std::string& owner);
 
 
 	friend std::ostream& operator<<(std::ostream& output, const Army& theArmy);
 
 	[[nodiscard]] const auto& getDivisionTypesAndAmounts() const { return divisionTypesAndAmounts; }
-	[[nodiscard]] const auto& getLeftoverEquipment() const { return leftoverEquipment; }
+	[[nodiscard]] const std::vector<Equipment>& GetLeftoverEquipment() const { return leftover_equipment_; }
 	[[nodiscard]] const auto& getDivisionLocations() const { return divisionLocations; }
 
   private:
@@ -65,13 +67,14 @@ class Army
 	bool missingRequiredTechnologies(const DivisionTemplateType& divisionTemplate,
 		 const technologies& countryTechnologies);
 
-	void collectLeftoverEquipment(std::map<std::string, std::vector<SizedRegiment>>& battalionsAndCompanies);
+	void CollectLeftoverEquipment(const std::map<std::string, std::vector<SizedRegiment>>& battalions_and_companies,
+		 const std::string& owner);
 
 	std::vector<Vic2::Army> sourceArmies;
 	std::vector<DivisionType> divisions;
 
 	std::map<std::string, int> divisionTypesAndAmounts;
-	std::map<std::string, unsigned int> leftoverEquipment;
+	std::vector<Equipment> leftover_equipment_;
 
 	std::set<int> divisionLocations;
 };

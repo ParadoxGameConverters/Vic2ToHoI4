@@ -1336,6 +1336,32 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 	}
 	amount /= 2;
 
+	if (theTechnologies->hasTechnology("basic_small_airframe"))
+	{
+		equipment_stockpile_.emplace_back(tag,
+			 "small_plane_airframe_1",
+			 "Basic Fighter",
+			 R"({ has_dlc = "By Blood Alone" })",
+			 amount);
+		equipment_stockpile_.emplace_back(tag,
+			 "small_plane_cas_airframe_1",
+			 "Basic CAS",
+			 R"({ has_dlc = "By Blood Alone" })",
+			 amount);
+	}
+	else
+	{
+		equipment_stockpile_.emplace_back(tag,
+			 "small_plane_airframe_0",
+			 "Interwar Fighter",
+			 R"({ has_dlc = "By Blood Alone" })",
+			 amount);
+		equipment_stockpile_.emplace_back(tag,
+			 "small_plane_cas_airframe_0",
+			 "Interwar CAS",
+			 R"({ has_dlc = "By Blood Alone" })",
+			 amount);
+	}
 	equipment_stockpile_.emplace_back(tag,
 		 "fighter_equipment_0",
 		 std::nullopt,
@@ -1345,16 +1371,6 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 		 "tac_bomber_equipment_0",
 		 std::nullopt,
 		 R"({ NOT = { has_dlc = "By Blood Alone" } })",
-		 amount);
-	equipment_stockpile_.emplace_back(tag,
-		 "small_plane_airframe_1",
-		 "Basic Fighter",
-		 R"({ has_dlc = "By Blood Alone" })",
-		 amount);
-	equipment_stockpile_.emplace_back(tag,
-		 "small_plane_cas_airframe_1",
-		 "Basic CAS",
-		 R"({ has_dlc = "By Blood Alone" })",
 		 amount);
 }
 
@@ -1366,26 +1382,28 @@ void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings,
 {
 	if (capitalProvince)
 	{
-		theArmy.convertArmies(theMilitaryMappings,
+		theArmy.ConvertArmies(theMilitaryMappings,
 			 *capitalProvince,
 			 theConfiguration.getForceMultiplier(),
 			 *theTechnologies,
 			 theStates,
-			 provinceMapper);
+			 provinceMapper,
+			 tag);
 	}
 	else
 	{
-		theArmy.convertArmies(theMilitaryMappings,
+		theArmy.ConvertArmies(theMilitaryMappings,
 			 0,
 			 theConfiguration.getForceMultiplier(),
 			 *theTechnologies,
 			 theStates,
-			 provinceMapper);
+			 provinceMapper,
+			 tag);
 	}
 
-	for (const auto& [equipmentType, amount]: theArmy.getLeftoverEquipment())
+	for (const auto& equipment: theArmy.GetLeftoverEquipment())
 	{
-		equipment_stockpile_.emplace_back(tag, equipmentType, std::nullopt, std::nullopt, amount);
+		equipment_stockpile_.push_back(equipment);
 	}
 
 	convertStockpile();
@@ -1441,13 +1459,24 @@ void HoI4::Country::convertStockpile()
 		equipment_stockpile_.emplace_back(tag,
 			 "gw_tank_equipment",
 			 std::nullopt,
-			 R"({ has_dlc = "No Step Back" })",
-			 amount);
-		equipment_stockpile_.emplace_back(tag,
-			 "light_tank_chassis_2",
-			 std::nullopt,
 			 R"({ NOT = { has_dlc = "No Step Back" } })",
 			 amount);
+		if (theTechnologies->hasTechnology("basic_light_tank_chassis"))
+		{
+			equipment_stockpile_.emplace_back(tag,
+				 "light_tank_chassis_1",
+				 "Basic Light Tank",
+				 R"({ has_dlc = "No Step Back" })",
+				 amount);
+		}
+		else
+		{
+			equipment_stockpile_.emplace_back(tag,
+				 "light_tank_chassis_0",
+				 "GW Light Tank",
+				 R"({ has_dlc = "No Step Back" })",
+				 amount);
+		}
 	}
 	sourceCountryGoods["barrels"] -= barrels_supply_required_for_light_armor * armorSupply;
 	sourceCountryGoods["artillery"] -= artillery_supply_required_for_light_armor * armorSupply;
