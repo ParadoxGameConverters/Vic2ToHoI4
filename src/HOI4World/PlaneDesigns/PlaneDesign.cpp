@@ -65,18 +65,21 @@ HoI4::PlaneDesign& HoI4::PlaneDesign::operator=(const PlaneDesign& rhs)
 
 bool HoI4::PlaneDesign::IsValidDesign(const technologies& owned_techs) const
 {
-	if (!std::ranges::all_of(required_technologies_.begin(),
-			  required_technologies_.end(),
-			  [owned_techs](const std::string& technology) {
-				  return owned_techs.hasTechnology(technology);
-			  }))
+	for (const auto& technology: required_technologies_)
 	{
-		return false;
+		if (!owned_techs.hasTechnology(technology))
+		{
+			return false;
+		}
 	}
 
-	return std::ranges::none_of(blocking_technologies_.begin(),
-		 blocking_technologies_.end(),
-		 [owned_techs](const std::string& technology) {
-			 return owned_techs.hasTechnology(technology);
-		 });
+	for (const auto& technology: blocking_technologies_)
+	{
+		if (owned_techs.hasTechnology(technology))
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
