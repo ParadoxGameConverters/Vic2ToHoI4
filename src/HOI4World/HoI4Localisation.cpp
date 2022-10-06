@@ -1290,7 +1290,7 @@ void HoI4::Localisation::addRulingHouseLocalisations(const std::string& rulingPa
 	politicalPartyLocalisations["polish"][rulingParty] = "Dynastia " + utf8Dynasty + "ów";
 	politicalPartyLocalisations["russian"][rulingParty] = "Династия " + utf8Dynasty;
 	politicalPartyLocalisations["spanish"][rulingParty] = "Casa de " + utf8Dynasty;
-	politicalPartyLocalisations["japanese"][rulingParty] = "House of " + utf8Dynasty;
+	politicalPartyLocalisations["japanese"][rulingParty] = utf8Dynasty + "家";
 }
 
 
