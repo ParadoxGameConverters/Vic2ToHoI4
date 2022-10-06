@@ -750,6 +750,7 @@ void HoI4::Localisation::addNonenglishCountryLocalisations()
 	countryLocalisations.insert(make_pair("braz_por", englishLocalisations->second));
 	countryLocalisations.insert(make_pair("polish", englishLocalisations->second));
 	countryLocalisations.insert(make_pair("russian", englishLocalisations->second));
+	countryLocalisations.insert(make_pair("japanese", englishLocalisations->second));
 }
 
 
@@ -1170,6 +1171,7 @@ void HoI4::Localisation::addNonenglishStateLocalisations()
 	stateLocalisations.insert(make_pair("braz_por", englishLocalisations));
 	stateLocalisations.insert(make_pair("polish", englishLocalisations));
 	stateLocalisations.insert(make_pair("russian", englishLocalisations));
+	stateLocalisations.insert(make_pair("japanese", englishLocalisations));
 }
 
 
@@ -1179,6 +1181,7 @@ void HoI4::Localisation::addNonenglishVPLocalisations()
 	VPLocalisations.insert(make_pair("braz_por", englishLocalisations));
 	VPLocalisations.insert(make_pair("polish", englishLocalisations));
 	VPLocalisations.insert(make_pair("russian", englishLocalisations));
+	VPLocalisations.insert(make_pair("japanese", englishLocalisations));
 }
 
 
@@ -1287,6 +1290,7 @@ void HoI4::Localisation::addRulingHouseLocalisations(const std::string& rulingPa
 	politicalPartyLocalisations["polish"][rulingParty] = "Dynastia " + utf8Dynasty + "ów";
 	politicalPartyLocalisations["russian"][rulingParty] = "Династия " + utf8Dynasty;
 	politicalPartyLocalisations["spanish"][rulingParty] = "Casa de " + utf8Dynasty;
+	politicalPartyLocalisations["japanese"][rulingParty] = "House of " + utf8Dynasty;
 }
 
 
@@ -1448,4 +1452,5 @@ void HoI4::Localisation::addCharacterLocalisation(const std::string& id, const s
 	characterLocalisations_["russian"].emplace(id, name);
 	characterLocalisations_["spanish"].emplace(id, name);
 	characterLocalisations_["swedish"].emplace(id, name);
+	characterLocalisations_["japanese"].emplace(id, name);
 }
