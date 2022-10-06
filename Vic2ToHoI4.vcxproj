@@ -145,6 +145,10 @@
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp" />
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesign.cpp" />
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesigns.cpp" />
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneModules.cpp" />
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionFactory.cpp" />
     <ClCompile Include="src\HOI4World\Regions\Regions.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionsFactory.cpp" />
@@ -275,6 +279,9 @@
     <ClCompile Include="src\OutHoi4\OutOnActions.cpp" />
     <ClCompile Include="src\OutHoI4\OutSharedFocus.cpp" />
     <ClCompile Include="src\OutHoi4\OutTechnologies.cpp" />
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.cpp" />
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.cpp" />
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.cpp" />
     <ClCompile Include="src\OutHoi4\ScriptedEffects\OutScriptedEffect.cpp" />
     <ClCompile Include="src\OutHoi4\ScriptedEffects\OutScriptedEffects.cpp" />
     <ClCompile Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
@@ -540,6 +547,10 @@
     <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesSetFactory.h" />
     <ClInclude Include="src\HOI4World\Operatives\Operative.h" />
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesign.h" />
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesigns.h" />
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneModules.h" />
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.h" />
     <ClInclude Include="src\HOI4World\Regions\Region.h" />
     <ClInclude Include="src\HOI4World\Regions\RegionFactory.h" />
     <ClInclude Include="src\HOI4World\Regions\Regions.h" />
@@ -697,6 +708,9 @@
     <ClInclude Include="src\OutHoi4\OutOnActions.h" />
     <ClInclude Include="src\OutHoI4\OutSharedFocus.h" />
     <ClInclude Include="src\OutHoi4\OutTechnologies.h" />
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.h" />
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.h" />
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.h" />
     <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffect.h" />
     <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffects.h" />
     <ClInclude Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.h" />

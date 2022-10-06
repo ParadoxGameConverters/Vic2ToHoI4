@@ -850,6 +850,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	output << '\n';
 	outputOperatives(output, theCountry, theCountry.getOperatives());
 	output << theCountry.getTheShipVariants();
+	output << theCountry.GetPlaneDesigns();
 	output << theCountry.getTankDesigns();
 	outputGlobalEventTargets(output, theCountry.getGlobalEventTargets());
 
