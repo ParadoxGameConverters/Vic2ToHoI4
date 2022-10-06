@@ -4,7 +4,7 @@
 
 
 
-TEST(HoI4World_PlaneDesigns_PlaneModulesTests, MATH_ERREXCEPTodulesDefaultToEmpty)
+TEST(HoI4World_PlaneDesigns_PlaneModulesTests, ModulesDefaultToEmpty)
 {
 	std::stringstream input;
 	input << "";
