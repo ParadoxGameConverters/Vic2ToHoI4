@@ -17,9 +17,28 @@
 #include <ranges>
 
 
+// watch for getTextInEachLanguage
+
+
 
 namespace
 {
+
+
+const std::set<std::string> supported_languages = {"braz_por",
+	 "czech",
+	 "dutch",
+	 "english",
+	 "finnish",
+	 "french",
+	 "german",
+	 "hungarian",
+	 "italian",
+	 "japanese",
+	 "polish",
+	 "russian",
+	 "spanish",
+	 "swedish"};
 
 void importLocalisationFile(const std::string& filename, HoI4::languageToLocalisationsMap& localisations)
 {
@@ -60,7 +79,10 @@ void importLocalisationFile(const std::string& filename, HoI4::languageToLocalis
 	auto [iterator, success] = localisations.emplace(language, newLocalisations);
 	if (!success)
 	{
-		iterator->second = newLocalisations;
+		for (const auto& [key, new_localization] : newLocalisations)
+		{
+			iterator->second[key] = new_localization;
+		}
 	}
 
 	file.close();
@@ -756,6 +778,7 @@ void HoI4::Localisation::addNonenglishCountryLocalisations()
 
 void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const std::string& newKey)
 {
+	std::set<std::string> handled_languages;
 	for (const auto& [language, localisations]: originalFocuses)
 	{
 		auto newLanguage = newFocuses.find(language);
@@ -769,6 +792,7 @@ void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const
 		if (auto oldLocalisation = localisations.find(oldKey); oldLocalisation != localisations.end())
 		{
 			newLanguage->second[newKey] = oldLocalisation->second;
+			handled_languages.insert(language);
 		}
 		else
 		{
@@ -779,6 +803,40 @@ void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const
 			 oldLocalisationDescription != localisations.end())
 		{
 			newLanguage->second[newKey + "_desc"] = oldLocalisationDescription->second;
+		}
+	}
+
+	for (const auto& language: supported_languages)
+	{
+		if (!handled_languages.contains(language))
+		{
+			const auto english_localisations = newFocuses.find("english");
+			if (english_localisations == newFocuses.end())
+			{
+				break;
+			}
+
+			const auto english_localisation = english_localisations->second.find(newKey);
+			if (english_localisation == english_localisations->second.end())
+			{
+				continue;
+			}
+
+			auto unhandled_language = newFocuses.find(language);
+			if (unhandled_language == newFocuses.end())
+			{
+				keyToLocalisationMap new_localisations;
+				newFocuses.insert(make_pair(language, new_localisations));
+				unhandled_language = newFocuses.find(language);
+			}
+			unhandled_language->second[newKey] = english_localisation->second;
+
+			const auto english_description = english_localisations->second.find(newKey + "_desc");
+			if (english_description == english_localisations->second.end())
+			{
+				continue;
+			}
+			unhandled_language->second[newKey + "_desc"] = english_description->second;
 		}
 	}
 }
