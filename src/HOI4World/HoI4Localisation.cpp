@@ -1387,6 +1387,7 @@ void HoI4::Localisation::addPoliticalPartyLocalisation(const std::string& Vic2Ke
 	 const std::string& HoI4Key,
 	 const Vic2::Localisations& vic2Localisations)
 {
+	std::set<std::string> handled_languages;
 	for (const auto& [language, text]: vic2Localisations.getTextInEachLanguage(Vic2Key))
 	{
 		auto existingLanguage = politicalPartyLocalisations.find(language);
@@ -1398,6 +1399,36 @@ void HoI4::Localisation::addPoliticalPartyLocalisation(const std::string& Vic2Ke
 		}
 
 		existingLanguage->second[HoI4Key] = text;
+		handled_languages.insert(language);
+	}
+
+	for (const auto& language: supported_languages)
+	{
+		if (handled_languages.contains(language))
+		{
+			continue;
+		}
+
+		const auto english_localisations = politicalPartyLocalisations.find("english");
+		if (english_localisations == politicalPartyLocalisations.end())
+		{
+			break;
+		}
+
+		const auto english_localisation = english_localisations->second.find(HoI4Key);
+		if (english_localisation == english_localisations->second.end())
+		{
+			continue;
+		}
+
+		auto unhandled_language = politicalPartyLocalisations.find(language);
+		if (unhandled_language == politicalPartyLocalisations.end())
+		{
+			keyToLocalisationMap new_localisations;
+			politicalPartyLocalisations.insert(make_pair(language, new_localisations));
+			unhandled_language = politicalPartyLocalisations.find(language);
+		}
+		unhandled_language->second[HoI4Key] = english_localisation->second;
 	}
 }
 
