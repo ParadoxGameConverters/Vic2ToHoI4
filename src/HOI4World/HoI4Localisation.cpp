@@ -79,7 +79,7 @@ void importLocalisationFile(const std::string& filename, HoI4::languageToLocalis
 	auto [iterator, success] = localisations.emplace(language, newLocalisations);
 	if (!success)
 	{
-		for (const auto& [key, new_localization] : newLocalisations)
+		for (const auto& [key, new_localization]: newLocalisations)
 		{
 			iterator->second[key] = new_localization;
 		}
@@ -868,7 +868,7 @@ void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const
 		}
 	}
 
-	for (const auto& language : supported_languages)
+	for (const auto& language: supported_languages)
 	{
 		if (handled_languages.contains(language))
 		{
@@ -1289,6 +1289,7 @@ void HoI4::Localisation::addEventLocalisationFromVic2(const std::string& Vic2Key
 	 const std::string& HoI4Key,
 	 const Vic2::Localisations& vic2Localisations)
 {
+	std::set<std::string> handled_languages;
 	for (const auto& [language, text]: vic2Localisations.getTextInEachLanguage(Vic2Key))
 	{
 		auto existingLanguage = newEventLocalisations.find(language);
@@ -1300,6 +1301,36 @@ void HoI4::Localisation::addEventLocalisationFromVic2(const std::string& Vic2Key
 		}
 
 		existingLanguage->second[HoI4Key] = text;
+		handled_languages.insert(language);
+	}
+
+	for (const auto& language: supported_languages)
+	{
+		if (handled_languages.contains(language))
+		{
+			continue;
+		}
+
+		const auto english_localisations = newEventLocalisations.find("english");
+		if (english_localisations == newEventLocalisations.end())
+		{
+			break;
+		}
+
+		const auto english_localisation = english_localisations->second.find(HoI4Key);
+		if (english_localisation == english_localisations->second.end())
+		{
+			continue;
+		}
+
+		auto unhandled_language = newEventLocalisations.find(language);
+		if (unhandled_language == newEventLocalisations.end())
+		{
+			keyToLocalisationMap new_localisations;
+			newEventLocalisations.insert(make_pair(language, new_localisations));
+			unhandled_language = newEventLocalisations.find(language);
+		}
+		unhandled_language->second[HoI4Key] = english_localisation->second;
 	}
 }
 
