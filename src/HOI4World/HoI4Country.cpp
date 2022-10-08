@@ -603,6 +603,7 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Król " + *firstName + " " + *surname, "polish");
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Король " + *firstName + " " + *surname, "russian");
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Rey " + *firstName + " " + *surname, "spanish");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", *firstName + " " + *surname + "王", "japanese");
 	}
 	else
 	{
@@ -613,6 +614,7 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Królowa " + *firstName + " " + *surname, "polish");
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Королева " + *firstName + " " + *surname, "russian");
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Reina " + *firstName + " " + *surname, "spanish");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", *firstName + " " + *surname + "女王", "japanese");
 	}
 
 	if (!female)
@@ -645,6 +647,10 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 			 "Reunida en torno al Rey de [" + tag + ".GetName] y las tierras [" + tag + ".GetAdjective]s, la nación [" +
 				  tag + ".GetAdjective] está unida y orgullosa de su legado imperial.",
 			 "spanish");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+			 "[" + tag + ".GetName]の国王と[" + tag + ".GetAdjective]の領土の周りに結集し、[" + tag +
+				  ".GetAdjective]人は団結し、帝国の遺産を誇りに思っています",
+			 "japanese");
 	}
 	else
 	{
@@ -676,6 +682,10 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 			 "Reunida en torno a la Reina de [" + tag + ".GetName] y las tierras [" + tag +
 				  ".GetAdjective]s, la nación [" + tag + ".GetAdjective] está unida y orgullosa de su legado imperial.",
 			 "spanish");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+			 "[" + tag + ".GetName]の女王と[" + tag + ".GetAdjective]の領土の周りに結集し、[" + tag +
+				  ".GetAdjective]人は団結し、帝国の遺産を誇りに思っています",
+			 "japanese");
 	}
 
 	if (!female)
