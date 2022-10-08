@@ -66,6 +66,7 @@
     <ClCompile Include="src\HOI4World\Characters\PortraitTests.cpp" />
     <ClCompile Include="src\HOI4World\Characters\PortraitTypeFactory.cpp" />
     <ClCompile Include="src\HOI4World\Characters\PortraitTypeFactoryTests.cpp" />
+    <ClCompile Include="src\HOI4World\Countries\EquipmentTests.cpp" />
     <ClCompile Include="src\HOI4World\Countries\UnionCountry.cpp" />
     <ClCompile Include="src\HOI4World\Countries\UnionCountryTests.cpp" />
     <ClCompile Include="src\HOI4World\CountryCategories\CountryCategories.cpp" />

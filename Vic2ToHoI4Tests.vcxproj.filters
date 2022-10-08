@@ -1765,6 +1765,9 @@
     <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp">
       <Filter>src\OutHoi4\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Countries\EquipmentTests.cpp">
+      <Filter>src\HOI4World\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

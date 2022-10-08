@@ -18,11 +18,13 @@ class Equipment
 		 std::string type,
 		 std::optional<std::string> variant,
 		 std::optional<std::string> limit,
-		 int amount_):
+		 int amount):
 		 owner_(std::move(owner)),
-		 type_(std::move(type)), variant_(std::move(variant)), limit_(std::move(limit)), amount_(amount_)
+		 type_(std::move(type)), variant_(std::move(variant)), limit_(std::move(limit)), amount_(amount)
 	{
 	}
+
+	bool operator==(const Equipment&) const = default;
 
 	[[nodiscard]] const std::string& GetOwner() const { return owner_; }
 	[[nodiscard]] const std::string& GetType() const { return type_; }

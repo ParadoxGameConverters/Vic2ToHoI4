@@ -11,7 +11,7 @@ std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::Equipment& equi
 		{
 			indents = "\t";
 			output << "if = {\n";
-			output << "\tlimit = " << *equipment.GetLimit() << "\n";
+			output << "\tlimit = { " << *equipment.GetLimit() << " }\n";
 		}
 		output << indents << "add_equipment_to_stockpile = ";
 		output << "{ type = " << equipment.GetType();
