@@ -1150,6 +1150,12 @@
     <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.cpp">
       <Filter>src\OutHoi4\PlaneDesigns</Filter>
     </ClCompile>
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutCostModifiers.cpp">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.cpp">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClCompile>
     <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp">
       <Filter>src\OutHoi4\Countries</Filter>
     </ClCompile>
@@ -2547,6 +2553,12 @@
     <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.h">
       <Filter>src\OutHoi4\PlaneDesigns</Filter>
     </ClInclude>
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutCostModifiers.h">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.h">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClInclude>
     <ClInclude Include="src\HOI4World\Countries\Equipment.h">
       <Filter>src\HoI4World\Countries</Filter>
     </ClInclude>
@@ -3142,6 +3154,12 @@
     </Filter>
     <Filter Include="src\OutHoi4\PlaneDesigns">
       <UniqueIdentifier>{a03c7564-b48f-4b43-b0f8-75c29b30fcc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\PeaceConference">
+      <UniqueIdentifier>{6f292bfe-465e-4585-9766-4c20b9eed118}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\PeaceConferences">
+      <UniqueIdentifier>{72c38416-0378-4fb2-b46c-b8bb8e2fbb9f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
