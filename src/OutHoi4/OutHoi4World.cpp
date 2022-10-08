@@ -25,6 +25,7 @@
 #include "src/OutHoi4/OutHoi4Country.h"
 #include "src/OutHoi4/OutLocalisation.h"
 #include "src/OutHoi4/OutOnActions.h"
+#include "src/OutHoi4/PeaceConference/OutAiPeace.h"
 #include "src/OutHoi4/PeaceConference/OutCostModifiers.h"
 #include "src/OutHoi4/ScriptedEffects/OutScriptedEffects.h"
 #include "src/OutHoi4/ScriptedLocalisations/OutScriptedLocalisations.h"
@@ -242,6 +243,7 @@ void HoI4::OutputWorld(const World& world,
 	outMonarchInterface(outputName, world.getCountries());
 	copyCustomizedFocusFiles(outputName, world.getCustomizedFocusBranches());
 	OutputCostModifiers(outputName, world.getMajorIdeologies(), world.GetIdeologicalCostModifiers());
+	OutputAiPeace(outputName, world.getMajorIdeologies(), world.GetIdeologicalAiPeace());
 }
 
 

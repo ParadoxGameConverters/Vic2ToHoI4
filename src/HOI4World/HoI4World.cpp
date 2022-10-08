@@ -32,6 +32,7 @@
 #include "src/HOI4World/Names/Names.h"
 #include "src/HOI4World/Operations/OperationsFactory.h"
 #include "src/HOI4World/OperativeNames/OperativeNamesFactory.h"
+#include "src/HOI4World/PeaceConferences/IdeologicalAiPeace.h"
 #include "src/HOI4World/PeaceConferences/IdeologicalCostModifiers.h"
 #include "src/HOI4World/Regions/RegionsFactory.h"
 #include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisationsFactory.h"
@@ -280,6 +281,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	recordUnbuiltCanals(sourceWorld);
 
 	ideological_cost_modifiers_ = ImportIdeologicalCostModifiers();
+	ideological_ai_peace_ = ImportIdeologicalAiPeace();
 }
 
 

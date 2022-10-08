@@ -1774,6 +1774,12 @@
     <ClCompile Include="src\HOI4World\Countries\EquipmentTests.cpp">
       <Filter>src\HOI4World\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.cpp">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutAiPeace.cpp">
+      <Filter>src\OutHoi4\PeaceConferences</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -3606,6 +3612,12 @@
     </ClInclude>
     <ClInclude Include="src\HOI4World\Countries\Equipment.h">
       <Filter>src\HOI4World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.h">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutAiPeace.h">
+      <Filter>src\OutHoi4\PeaceConferences</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

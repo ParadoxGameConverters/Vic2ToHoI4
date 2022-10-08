@@ -1159,6 +1159,12 @@
     <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp">
       <Filter>src\OutHoi4\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.cpp">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutAiPeace.cpp">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2564,6 +2570,12 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Countries\OutEquipment.h">
       <Filter>src\OutHoi4\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.h">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutAiPeace.h">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
