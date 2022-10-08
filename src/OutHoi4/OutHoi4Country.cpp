@@ -9,6 +9,7 @@
 #include "src/HOI4World/Navies/NavyNames.h"
 #include "src/OutHoi4/AiStrategy/OutAiStrategy.h"
 #include "src/OutHoi4/Characters/OutCharacter.h"
+#include "src/OutHoi4/Countries/OutEquipment.h"
 #include "src/OutHoi4/Navies/OutLegacyNavyNames.h"
 #include "src/OutHoi4/Navies/OutMtgNavyNames.h"
 #include "src/OutHoi4/Navies/OutNavies.h"
@@ -377,6 +378,18 @@ void outputOOBLines(std::ostream& output, const std::string& tag, const HoI4::Co
 	output << "\n";
 }
 
+
+void OutputEquipmentStockpile(std::ostream& output,
+	 const std::vector<HoI4::Equipment>& equipment_stockpile,
+	 const std::string& tag)
+{
+	for (const auto& equipment: equipment_stockpile)
+	{
+		output << equipment;
+	}
+	output << "\n";
+}
+
 } // namespace
 
 
@@ -741,9 +754,6 @@ void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars);
 void outputFlags(std::ostream& output, const std::set<std::string>& flags);
 void outputConvoys(std::ostream& output, const int& convoys);
 void outputTrainsModifier(std::ostream& output, const std::optional<float>& trainsMultiplier);
-void outputEquipmentStockpile(std::ostream& output,
-	 const std::map<std::string, unsigned int>& equipmentStockpile,
-	 const std::string& tag);
 void outputPuppets(std::ostream& output,
 	 const std::string& tag,
 	 const std::string& governmentIdeology,
@@ -815,7 +825,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	outputFlags(output, theCountry.getFlags());
 	outputTrainsModifier(output, theCountry.getTrainsMultiplier());
 	outputConvoys(output, theCountry.getConvoys());
-	outputEquipmentStockpile(output, theCountry.getEquipmentStockpile(), tag);
+	OutputEquipmentStockpile(output, theCountry.GetEquipmentStockpile(), tag);
 	outputPolitics(output,
 		 governmentIdeology,
 		 theCountry.getLastElection(),
@@ -939,21 +949,6 @@ void outputTrainsModifier(std::ostream& output, const std::optional<float>& trai
 	}
 }
 
-
-void outputEquipmentStockpile(std::ostream& output,
-	 const std::map<std::string, unsigned int>& equipmentStockpile,
-	 const std::string& tag)
-{
-	for (const auto& [type, amount]: equipmentStockpile)
-	{
-		if (amount > 0)
-		{
-			output << "add_equipment_to_stockpile = ";
-			output << "{ type = " << type << " amount = " << amount << " producer = " << tag << " }\n";
-		}
-	}
-	output << "\n";
-}
 
 void outputPolitics(std::ostream& output,
 	 const std::string& governmentIdeology,

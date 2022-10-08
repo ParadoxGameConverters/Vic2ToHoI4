@@ -1150,6 +1150,9 @@
     <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.cpp">
       <Filter>src\OutHoi4\PlaneDesigns</Filter>
     </ClCompile>
+    <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2543,6 +2546,12 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.h">
       <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Countries\Equipment.h">
+      <Filter>src\HoI4World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Countries\OutEquipment.h">
+      <Filter>src\OutHoi4\Countries</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

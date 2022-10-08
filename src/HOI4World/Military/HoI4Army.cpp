@@ -34,31 +34,29 @@ DivisionType createDivision(const std::map<std::string, int>& templateRequiremen
 } // namespace HoI4
 
 
-void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
-	 const int backupLocation,
-	 const double forceMultiplier,
-	 const technologies& countryTechnologies,
-	 const States& theStates,
-	 const Mappers::ProvinceMapper& provinceMapper)
+void HoI4::Army::ConvertArmies(const militaryMappings& military_mappings,
+	 int backup_location,
+	 double force_multiplier,
+	 const technologies& country_technologies,
+	 const States& states,
+	 const Mappers::ProvinceMapper& province_mapper,
+	 const std::string& owner)
 {
 	std::map<std::string, std::vector<SizedRegiment>> remainingBattalionsAndCompanies;
 
 	for (const auto& army: sourceArmies)
 	{
-		auto location = getLocation(army.getLocation(), provinceMapper);
-		if (!location || isWastelandProvince(*location, theStates))
+		auto location = getLocation(army.getLocation(), province_mapper);
+		if (!location || isWastelandProvince(*location, states))
 		{
-			addAvailableBattalionsAndCompanies(remainingBattalionsAndCompanies,
-				 army,
-				 theMilitaryMappings,
-				 forceMultiplier);
+			addAvailableBattalionsAndCompanies(remainingBattalionsAndCompanies, army, military_mappings, force_multiplier);
 			continue;
 		}
 		std::map<std::string, std::vector<SizedRegiment>> localBattalionsAndCompanies;
-		addAvailableBattalionsAndCompanies(localBattalionsAndCompanies, army, theMilitaryMappings, forceMultiplier);
+		addAvailableBattalionsAndCompanies(localBattalionsAndCompanies, army, military_mappings, force_multiplier);
 		const auto divisionsBefore = divisions.size();
 
-		convertArmyDivisions(theMilitaryMappings, localBattalionsAndCompanies, countryTechnologies, *location);
+		convertArmyDivisions(military_mappings, localBattalionsAndCompanies, country_technologies, *location);
 		if (divisionsBefore != divisions.size())
 		{
 			divisionLocations.insert(*location);
@@ -69,11 +67,11 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 
 	if (!remainingBattalionsAndCompanies.empty())
 	{
-		divisionLocations.insert(backupLocation);
+		divisionLocations.insert(backup_location);
 	}
-	convertArmyDivisions(theMilitaryMappings, remainingBattalionsAndCompanies, countryTechnologies, backupLocation);
+	convertArmyDivisions(military_mappings, remainingBattalionsAndCompanies, country_technologies, backup_location);
 
-	collectLeftoverEquipment(remainingBattalionsAndCompanies);
+	CollectLeftoverEquipment(remainingBattalionsAndCompanies, owner);
 }
 
 
@@ -332,29 +330,55 @@ HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templa
 }
 
 
-void HoI4::Army::collectLeftoverEquipment(std::map<std::string, std::vector<SizedRegiment>>& battalionsAndCompanies)
+void HoI4::Army::CollectLeftoverEquipment(
+	 const std::map<std::string, std::vector<SizedRegiment>>& battalions_and_companies,
+	 const std::string& owner)
 {
-	for (const auto& [type, sizedRegiment]: battalionsAndCompanies)
+	int infantry_equipment_amount = 0;
+	int artillery_equipment_amount = 0;
+	int tank_equipment_amount = 0;
+	for (const auto& [type, sized_regiment]: battalions_and_companies)
 	{
-		for (const auto& regiment: sizedRegiment)
+		for (const auto& regiment: sized_regiment)
 		{
 			// TODO(#737): Make this use the HoI4 data instead of hard-coding
 			if (type == "infantry")
 			{
-				leftoverEquipment["infantry_equipment_0"] += static_cast<int>(regiment.unitSize * 100);
+				infantry_equipment_amount += static_cast<int>(regiment.unitSize * 100);
 			}
 			else if (type == "cavalry")
 			{
-				leftoverEquipment["infantry_equipment_0"] += static_cast<int>(regiment.unitSize * 120);
+				infantry_equipment_amount += static_cast<int>(regiment.unitSize * 120);
 			}
 			else if (type == "artillery_brigade")
 			{
-				leftoverEquipment["artillery_equipment_1"] += static_cast<int>(regiment.unitSize * 12);
+				artillery_equipment_amount += static_cast<int>(regiment.unitSize * 12);
 			}
 			else if (type == "light_armor")
 			{
-				leftoverEquipment["gw_tank_equipment"] += static_cast<int>(regiment.unitSize * 60);
+				tank_equipment_amount += static_cast<int>(regiment.unitSize * 60);
 			}
 		}
 	}
+
+	leftover_equipment_.emplace_back(owner,
+		 "infantry_equipment_0",
+		 std::nullopt,
+		 std::nullopt,
+		 infantry_equipment_amount);
+	leftover_equipment_.emplace_back(owner,
+		 "artillery_equipment_0",
+		 std::nullopt,
+		 std::nullopt,
+		 artillery_equipment_amount);
+	leftover_equipment_.emplace_back(owner,
+		 "gw_tank_equipment",
+		 std::nullopt,
+		 R"({ NOT = { has_dlc = "No Step Back" } })",
+		 tank_equipment_amount);
+	leftover_equipment_.emplace_back(owner,
+		 "light_tank_chassis_0",
+		 "GW Light Tank",
+		 R"({ has_dlc = "No Step Back" })",
+		 tank_equipment_amount);
 }
