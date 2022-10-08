@@ -8,6 +8,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		calculated_restraint_spirit = {
@@ -18,6 +22,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		signals_training_spirit = {
@@ -28,6 +36,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		fleet_in_being_academy_spirit = {
@@ -41,6 +53,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1.5
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		trade_interdiction_academy_spirit = {
@@ -54,6 +70,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1.5
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		base_strike_academy_spirit = {
@@ -67,6 +87,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1.5
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		best_of_the_best_naval_academy_spirit = {
@@ -79,6 +103,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		naval_academy_scholarships_spirit = {
@@ -91,6 +119,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 	}
@@ -106,6 +138,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		#big_gun_club_spirit = {
@@ -136,6 +172,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		integrated_designers_spirit = {
@@ -147,6 +187,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		naval_reform_spirit = {
@@ -156,6 +200,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		naval_refit_yards_spirit = {
@@ -166,6 +214,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		#naval_modernism_spirit = {
@@ -185,6 +237,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1.5
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		trade_interdiction_navy_spirit = {
@@ -198,6 +254,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1.5
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		base_strike_navy_spirit = {
@@ -211,6 +271,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1.5
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 	}
@@ -224,6 +288,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		night_fighting_spirit = {
@@ -235,6 +303,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		surprise_attacks_spirit = { 
@@ -246,6 +318,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1.5
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		efficient_communications_spirit = {
@@ -255,6 +331,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		#discrete_valor_spirit = {
@@ -273,6 +353,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		decisive_battle_spirit = {
@@ -286,6 +370,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1.5
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		inclimate_weather_experience_spirit = {
@@ -295,6 +383,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1.5
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		}
 		brave_commanders_spirit = {
@@ -305,6 +397,10 @@ ideas = {
 			}
 			ai_will_do = {
 				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
 			}
 		} 
 		bureau_of_ordnance_spirit = {

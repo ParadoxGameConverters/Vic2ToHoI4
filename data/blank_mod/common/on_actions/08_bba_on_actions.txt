@@ -1,5 +1,5 @@
 on_actions = {
-	
+
 	on_startup = {
 	}
 
@@ -17,7 +17,7 @@ on_actions = {
 					any_country_with_original_tag = {
 						original_tag_to_check = ROOT
 						NOT = { tag = ROOT }
-						exists = yes 
+						exists = yes
 						is_subject = no
 						has_government = ROOT
 						has_war = no
@@ -25,15 +25,15 @@ on_actions = {
 						NOT = { has_country_flag = no_to_unification_flag }
 						NOT = { has_country_flag = unification_request_sent_flag }
 					}
-					 
+
 				}
 
-				# LOG = "dispatcher event for [ROOT.GetName] triggered" #TODO_TA Remove logging
+				# LOG = "dispatcher event for [ROOT.GetName] triggered" 
 				set_global_flag = global_unification_request_sent_flag
 				every_country = {
-					
+
 					limit = {
-						original_tag = ROOT 
+						original_tag = ROOT
 						is_subject = no
 						has_government = ROOT
 						has_war = no
@@ -63,7 +63,7 @@ on_actions = {
 	#ROOT = attacking side
 	#FROM = defending side
 	#fired when two countries end up at war with each other (on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first)
-	on_declare_war = { 
+	on_declare_war = {
 	}
 	# ROOT is capitulated country, FROM is winner
 	# ROOT is capitulated country, FROM is winner
