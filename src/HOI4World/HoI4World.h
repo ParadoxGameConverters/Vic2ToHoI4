@@ -7,7 +7,6 @@
 #include "src/HOI4World/Countries/UnionCountry.h"
 #include "src/HOI4World/CountryCategories/CountryCategories.h"
 #include "src/HOI4World/Decisions/Decisions.h"
-#include "src/HOI4World/Diplomacy/AIPeaces.h"
 #include "src/HOI4World/Events/Events.h"
 #include "src/HOI4World/GameRules/GameRules.h"
 #include "src/HOI4World/HoI4Country.h"
@@ -100,7 +99,6 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getIntelligenceAgencies() const { return intelligenceAgencies; }
 	[[nodiscard]] const auto& getOperativeNames() const { return *operativeNames; }
 	[[nodiscard]] const auto& getOperations() const { return *operations; }
-	[[nodiscard]] const auto& getPeaces() const { return *peaces; }
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
 	[[nodiscard]] const auto& getOccupationLaws() const { return *occupationLaws; }
@@ -272,7 +270,6 @@ class World: commonItems::parser
 
 	std::vector<std::shared_ptr<Faction>> factions;
 	std::unique_ptr<HoI4::decisions> theDecisions;
-	std::unique_ptr<HoI4::AiPeaces> peaces;
 	std::unique_ptr<HoI4::Events> events;
 	std::unique_ptr<HoI4::OnActions> onActions;
 

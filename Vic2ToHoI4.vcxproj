@@ -221,8 +221,6 @@
     <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
     <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsInCategory.cpp" />
     <ClCompile Include="src\OutHoi4\Decisions\OutDecisions.cpp" />
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeace.cpp" />
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeaces.cpp" />
     <ClCompile Include="src\OutHoi4\Diplomacy\OutWar.cpp" />
     <ClCompile Include="src\OutHoi4\Events\OutEventOption.cpp" />
     <ClCompile Include="src\OutHoi4\Events\OutEvent.cpp" />
@@ -312,9 +310,6 @@
     <ClCompile Include="src\HOI4World\Decisions\PoliticalDecisions.cpp" />
     <ClCompile Include="src\HOI4World\Decisions\ResourceProspectingDecisions.cpp" />
     <ClCompile Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeace.cpp" />
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeaces.cpp" />
-    <ClCompile Include="src\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
     <ClCompile Include="src\HOI4World\Diplomacy\HoI4War.cpp" />
     <ClCompile Include="src\HOI4World\Events\Event.cpp" />
     <ClCompile Include="src\HOI4World\Events\EventHelpers.cpp" />
@@ -656,8 +651,6 @@
     <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsCategory.h" />
     <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsInCategory.h" />
     <ClInclude Include="src\OutHoi4\Decisions\OutDecisions.h" />
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeace.h" />
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeaces.h" />
     <ClInclude Include="src\OutHoi4\Diplomacy\OutWar.h" />
     <ClInclude Include="src\OutHoi4\Events\OutEventOption.h" />
     <ClInclude Include="src\OutHoi4\Events\OutEvent.h" />
@@ -747,9 +740,6 @@
     <ClInclude Include="src\HOI4World\Decisions\PoliticalDecisions.h" />
     <ClInclude Include="src\HOI4World\Decisions\ResourceProspectingDecisions.h" />
     <ClInclude Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.h" />
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeace.h" />
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeaces.h" />
-    <ClInclude Include="src\HOI4World\Diplomacy\AiPeacesUpdater.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\Faction.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\HoI4Relations.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\HoI4War.h" />

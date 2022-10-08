@@ -178,18 +178,6 @@
     <ClCompile Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
       <Filter>src\HOI4World\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeace.cpp">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeaces.cpp">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AiPeacesUpdater.cpp">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AiPeaceTests.cpp">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
       <Filter>src\HOI4World\Diplomacy</Filter>
     </ClCompile>
@@ -1152,12 +1140,6 @@
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsInCategory.cpp">
       <Filter>src\OutHoi4\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeace.cpp">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeaces.cpp">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Diplomacy\OutWar.cpp">
       <Filter>src\OutHoi4\Diplomacy</Filter>
@@ -2353,15 +2335,6 @@
     <ClInclude Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.h">
       <Filter>src\HOI4World\Decisions</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeace.h">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeaces.h">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\Diplomacy\AiPeacesUpdater.h">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClInclude>
     <ClInclude Include="src\HOI4World\Diplomacy\Faction.h">
       <Filter>src\HOI4World\Diplomacy</Filter>
     </ClInclude>
@@ -3096,12 +3069,6 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsInCategory.h">
       <Filter>src\OutHoi4\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeace.h">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClInclude>
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeaces.h">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Diplomacy\OutWar.h">
       <Filter>src\OutHoi4\Diplomacy</Filter>

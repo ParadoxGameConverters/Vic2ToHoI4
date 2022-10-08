@@ -7,7 +7,6 @@
 #include "src/HOI4World/Characters/CharacterFactory.h"
 #include "src/HOI4World/Characters/CharactersFactory.h"
 #include "src/HOI4World/Decisions/Decisions.h"
-#include "src/HOI4World/Diplomacy/AiPeacesUpdater.h"
 #include "src/HOI4World/Diplomacy/Faction.h"
 #include "src/HOI4World/Events/Events.h"
 #include "src/HOI4World/Events/GovernmentInExileEvent.h"
@@ -95,8 +94,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
 	 theIdeas(std::make_unique<HoI4::Ideas>()),
-	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
-	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
+	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), events(make_unique<HoI4::Events>()),
+	 onActions(make_unique<HoI4::OnActions>())
 {
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
@@ -234,7 +233,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 *events,
 		 getSouthAsianCountries(),
 		 strongestGpNavies);
-	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
 	importCharacters(characterFactory);
 	addLeaders(characterFactory);

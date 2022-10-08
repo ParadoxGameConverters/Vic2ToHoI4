@@ -4,7 +4,6 @@
 #include "src/OutHoi4/Countries/OutUnionCountry.h"
 #include "src/OutHoi4/CountryCategories/OutCountryCategories.h"
 #include "src/OutHoi4/Decisions/OutDecisions.h"
-#include "src/OutHoi4/Diplomacy/OutAiPeaces.h"
 #include "src/OutHoi4/Events/OutEvents.h"
 #include "src/OutHoi4/GameRules/OutGameRules.h"
 #include "src/OutHoi4/Ideas/OutIdeas.h"
@@ -222,7 +221,6 @@ void HoI4::OutputWorld(const World& world,
 	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), outputName);
 	outputEvents(world.getEvents(), outputName);
 	outputOnActions(world.getOnActions(), world.getMajorIdeologies(), outputName);
-	outAiPeaces(world.getPeaces(), world.getMajorIdeologies(), outputName);
 	outputIdeologies(world.getIdeologies(), outputName);
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
 	outputGenericAdvisors(world.getActiveIdeologicalAdvisors(), outputName);
