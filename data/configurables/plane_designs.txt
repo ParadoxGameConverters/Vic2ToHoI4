@@ -157,8 +157,6 @@ plane_design = {
 		engine_type_slot = engine_1_4x
 		special_type_slot_1 = lmg_defense_turret
 		special_type_slot_2 = lmg_defense_turret
-		special_type_slot_3 = lmg_defense_turret
-		special_type_slot_4 = lmg_defense_turret
 	}
 	obsolete = no
 }
