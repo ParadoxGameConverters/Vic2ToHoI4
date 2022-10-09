@@ -1762,6 +1762,12 @@
     <ClCompile Include="src\OutHoi4\PeaceConference\OutAiPeace.cpp">
       <Filter>src\OutHoi4\PeaceConferences</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeaceTests.cpp">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiersTests.cpp">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2180,6 +2186,9 @@
     </Filter>
     <Filter Include="src\OutHoi4\PeaceConferences">
       <UniqueIdentifier>{f4d1829e-8e81-48fc-b526-df423125c332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Configurables">
+      <UniqueIdentifier>{4d98c28c-f6eb-4dbb-a8e0-fd13de5021b4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3944,6 +3953,12 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\vic2_vanilla_regions.txt">
       <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Configurables\ideological_ai_peace.txt">
+      <Filter>data\test_files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Configurables\ideological_cost_modifiers.txt">
+      <Filter>data\test_files\Configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

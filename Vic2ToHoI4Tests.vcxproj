@@ -262,7 +262,9 @@
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesTests.cpp" />
     <ClCompile Include="src\HOI4World\OperativeNames\OperativesNamesSetTests.cpp" />
     <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.cpp" />
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeaceTests.cpp" />
     <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.cpp" />
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiersTests.cpp" />
     <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesign.cpp" />
     <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesigns.cpp" />
     <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesignsTests.cpp" />
@@ -1685,6 +1687,16 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\HoI4Files\Characters\ImportCharacters.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Configurables\ideological_ai_peace.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Configurables\ideological_cost_modifiers.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>

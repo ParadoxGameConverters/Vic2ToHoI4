@@ -533,6 +533,8 @@ file(GLOB HOI4WORLD_NAVIES_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Na
 file(GLOB HOI4WORLD_OCCUPATION_LAWS_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/OccupationLaws/*.cpp")
 file(GLOB HOI4WORLD_OPERATIONS_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Operations/*.cpp")
 file(GLOB HOI4WORLD_OPERATIVE_NAMES_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/OperativeNames/*.cpp")
+set(HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES ${HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PeaceConferences/IdeologicalAiPeaceTests.cpp")
+set(HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES ${HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PeaceConferences/IdeologicalCostModifiersTests.cpp")
 set(HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES ${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PlaneDesigns/PlaneDesignTests.cpp")
 set(HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES ${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PlaneDesigns/PlaneDesignsTests.cpp")
 set(HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES ${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PlaneDesigns/PlaneModulesTests.cpp")
@@ -669,7 +671,7 @@ add_executable(
 	${HOI4WORLD_OCCUPATION_LAWS_TESTS_SOURCES}
 	${HOI4WORLD_OPERATIONS_TESTS_SOURCES}
 	${HOI4WORLD_OPERATIVE_NAMES_TESTS_SOURCES}
-	${HOI4WORLD_PEACECONFERENCES_SOURCES}
+	${HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES}
 	${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES}
 	${HOI4WORLD_REGIONS_TESTS_SOURCES}
 	${HOI4WORLD_SCRIPTED_EFFECTS_TESTS_SOURCES}
@@ -723,6 +725,8 @@ set_target_properties( Vic2ToHoi4ConverterTests
 configure_file("data/test_files/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
 configure_file("data/test_files/blank_operations.txt" "${TEST_OUTPUT_DIRECTORY}/blank_operations/common/operations/00_operations.txt" COPYONLY)
 configure_file("data/test_files/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
+configure_file("data/test_files/Configurables/ideological_ai_peace.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
+configure_file("data/test_files/Configurables/ideological_cost_modifiers.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
 configure_file("data/test_files/Countries/blankCommonCountryData.txt" "${TEST_OUTPUT_DIRECTORY}/common/countries/blankCommonCountryData.txt" COPYONLY)
 configure_file("data/test_files/Countries/BlankTechnologyFile.txt" "${TEST_OUTPUT_DIRECTORY}/countries/blank/inventions/BlankTechnologyFile.txt" COPYONLY)
 configure_file("data/test_files/Countries/BlankTraitsFile.txt" "${TEST_OUTPUT_DIRECTORY}/countries/blank/common/traits.txt" COPYONLY)
@@ -1023,6 +1027,7 @@ add_library(run_clang_tidy
 	${HOI4WORLD_OCCUPATION_LAWS_TESTS_SOURCES}
 	${HOI4WORLD_OPERATIONS_TESTS_SOURCES}
 	${HOI4WORLD_OPERATIVE_NAMES_TESTS_SOURCES}
+	${HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES}
 	${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES}
 	${HOI4WORLD_REGIONS_TESTS_SOURCES}
 	${HOI4WORLD_SCRIPTED_EFFECTS_TESTS_SOURCES}
