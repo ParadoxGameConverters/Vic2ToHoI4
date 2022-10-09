@@ -7,7 +7,6 @@
 #include "src/HOI4World/Characters/CharacterFactory.h"
 #include "src/HOI4World/Characters/CharactersFactory.h"
 #include "src/HOI4World/Decisions/Decisions.h"
-#include "src/HOI4World/Diplomacy/AiPeacesUpdater.h"
 #include "src/HOI4World/Diplomacy/Faction.h"
 #include "src/HOI4World/Events/Events.h"
 #include "src/HOI4World/Events/GovernmentInExileEvent.h"
@@ -32,6 +31,8 @@
 #include "src/HOI4World/Names/Names.h"
 #include "src/HOI4World/Operations/OperationsFactory.h"
 #include "src/HOI4World/OperativeNames/OperativeNamesFactory.h"
+#include "src/HOI4World/PeaceConferences/IdeologicalAiPeace.h"
+#include "src/HOI4World/PeaceConferences/IdeologicalCostModifiers.h"
 #include "src/HOI4World/Regions/RegionsFactory.h"
 #include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisationsFactory.h"
 #include "src/HOI4World/ScriptedTriggers/ScriptedTriggersUpdater.h"
@@ -93,8 +94,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
 	 theIdeas(std::make_unique<HoI4::Ideas>()),
-	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
-	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
+	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), events(make_unique<HoI4::Events>()),
+	 onActions(make_unique<HoI4::OnActions>())
 {
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
@@ -232,7 +233,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 *events,
 		 getSouthAsianCountries(),
 		 strongestGpNavies);
-	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
 	importCharacters(characterFactory);
 	addLeaders(characterFactory);
@@ -277,6 +277,9 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	soundEffects = SoundEffectsFactory().createSoundEffects(countries);
 
 	recordUnbuiltCanals(sourceWorld);
+
+	ideological_cost_modifiers_ = ImportIdeologicalCostModifiers();
+	ideological_ai_peace_ = ImportIdeologicalAiPeace();
 }
 
 

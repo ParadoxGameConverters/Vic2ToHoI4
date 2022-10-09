@@ -1,0 +1,15 @@
+test_modifier = {
+	block_one = {
+		foo
+	}
+
+	block_two = {
+		bar
+	}
+}
+
+another_modifier = {
+	block_three = {
+		baz
+	}
+}

@@ -82,6 +82,8 @@ file(GLOB HOI4WORLD_NAVIES_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Navies/*
 file(GLOB HOI4WORLD_OCCUPATION_LAWS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/OccupationLaws/*.cpp")
 file(GLOB HOI4WORLD_OPERATIONS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Operations/*.cpp")
 file(GLOB HOI4WORLD_OPERATIVE_NAMES_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/OperativeNames/*.cpp")
+set(HOI4WORLD_PEACECONFERENCES_SOURCES ${HOI4WORLD_PEACECONFERENCES_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PeaceConferences/IdeologicalCostModifiers.cpp")
+set(HOI4WORLD_PEACECONFERENCES_SOURCES ${HOI4WORLD_PEACECONFERENCES_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PeaceConferences/IdeologicalAiPeace.cpp")
 set(HOI4WORLD_PLANE_DESIGNS_SOURCES ${HOI4WORLD_PLANE_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PlaneDesigns/PlaneDesign.cpp")
 set(HOI4WORLD_PLANE_DESIGNS_SOURCES ${HOI4WORLD_PLANE_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PlaneDesigns/PlaneDesigns.cpp")
 set(HOI4WORLD_PLANE_DESIGNS_SOURCES ${HOI4WORLD_PLANE_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PlaneDesigns/PlaneModules.cpp")
@@ -143,6 +145,7 @@ add_library(HoI4World
 	${HOI4WORLD_OCCUPATION_LAWS_SOURCES}
 	${HOI4WORLD_OPERATIONS_SOURCES}
 	${HOI4WORLD_OPERATIVE_NAMES_SOURCES}
+	${HOI4WORLD_PEACECONFERENCES_SOURCES}
 	${HOI4WORLD_PLANE_DESIGNS_SOURCES}
 	${HOI4WORLD_REGIONS_SOURCES}
 	${HOI4WORLD_SCRIPTED_EFFECTS_SOURCES}
@@ -316,6 +319,8 @@ file(GLOB OUTHOI4_OCCUPATION_LAWS_SOURCES "${PROJECT_SOURCE_DIR}/src/OutHoi4/Occ
 file(GLOB OUTHOI4_OPERATIONS_SOURCES "${PROJECT_SOURCE_DIR}/src/OutHoi4/Operations/*.cpp")
 file(GLOB OUTHOI4_OPERATIVE_NAMES_SOURCES "${PROJECT_SOURCE_DIR}/src/OutHoi4/OperativeNames/*.cpp")
 set(OUTHOI4_OPERATIVE_SOURCES ${OUTHOI4_OPERATIVE_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/Operative/OutOperative.cpp")
+set(OUTHOI4_PEACECONFERENCE_SOURCES ${OUTHOI4_PEACECONFERENCE_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/PeaceConference/OutAiPeace.cpp")
+set(OUTHOI4_PEACECONFERENCE_SOURCES ${OUTHOI4_PEACECONFERENCE_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/PeaceConference/OutCostModifiers.cpp")
 set(OUTHOI4_PLANE_DESIGNS_SOURCES ${OUTHOI4_PLANE_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/PlaneDesigns/OutPlaneDesign.cpp")
 set(OUTHOI4_PLANE_DESIGNS_SOURCES ${OUTHOI4_PLANE_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/PlaneDesigns/OutPlaneDesigns.cpp")
 set(OUTHOI4_PLANE_DESIGNS_SOURCES ${OUTHOI4_PLANE_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/PlaneDesigns/OutPlaneModules.cpp")
@@ -352,6 +357,7 @@ add_library(OutHoI4World
 	${OUTHOI4_OPERATIONS_SOURCES}
 	${OUTHOI4_OPERATIVE_NAMES_SOURCES}
 	${OUTHOI4_OPERATIVE_SOURCES}
+	${OUTHOI4_PEACECONFERENCE_SOURCES}
 	${OUTHOI4_PLANE_DESIGNS_SOURCES}
 	${OUTHOI4_NAVIES_SOURCES}
 	${OUTHOI4_SCRIPTED_EFFECTS_SOURCES}
@@ -418,7 +424,6 @@ configure_file("${DATA_FILE_DIR}/configurables/Map/regions.txt" "${CONVERTER_OUT
 configure_file("${DATA_FILE_DIR}/configurables/casus_bellis_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/casus_bellis_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterDynamicModifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterDynamicModifiers.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Sounds/CultureToVoiceMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ai_peaces.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ai_peaces.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterFocuses.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterFocuses.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeas.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterIdeologies.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeologies.txt" COPYONLY)
@@ -436,6 +441,8 @@ configure_file("${DATA_FILE_DIR}/configurables/Greater Flavor Mod_province_mappi
 configure_file("${DATA_FILE_DIR}/configurables/Historical Flavour Mod v1.27I_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Flavour Mod v1.27I_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Historical Project Mod 0.4.6_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Project Mod 0.4.6_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalAdvisors.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalAdvisors.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ideological_ai_peace.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ideological_cost_modifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalDecisions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/IdeologyMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
@@ -526,6 +533,8 @@ file(GLOB HOI4WORLD_NAVIES_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Na
 file(GLOB HOI4WORLD_OCCUPATION_LAWS_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/OccupationLaws/*.cpp")
 file(GLOB HOI4WORLD_OPERATIONS_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Operations/*.cpp")
 file(GLOB HOI4WORLD_OPERATIVE_NAMES_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/OperativeNames/*.cpp")
+set(HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES ${HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PeaceConferences/IdeologicalAiPeaceTests.cpp")
+set(HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES ${HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PeaceConferences/IdeologicalCostModifiersTests.cpp")
 set(HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES ${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PlaneDesigns/PlaneDesignTests.cpp")
 set(HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES ${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PlaneDesigns/PlaneDesignsTests.cpp")
 set(HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES ${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/PlaneDesigns/PlaneModulesTests.cpp")
@@ -662,6 +671,7 @@ add_executable(
 	${HOI4WORLD_OCCUPATION_LAWS_TESTS_SOURCES}
 	${HOI4WORLD_OPERATIONS_TESTS_SOURCES}
 	${HOI4WORLD_OPERATIVE_NAMES_TESTS_SOURCES}
+	${HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES}
 	${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES}
 	${HOI4WORLD_REGIONS_TESTS_SOURCES}
 	${HOI4WORLD_SCRIPTED_EFFECTS_TESTS_SOURCES}
@@ -715,6 +725,8 @@ set_target_properties( Vic2ToHoi4ConverterTests
 configure_file("data/test_files/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
 configure_file("data/test_files/blank_operations.txt" "${TEST_OUTPUT_DIRECTORY}/blank_operations/common/operations/00_operations.txt" COPYONLY)
 configure_file("data/test_files/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
+configure_file("data/test_files/Configurables/ideological_ai_peace.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
+configure_file("data/test_files/Configurables/ideological_cost_modifiers.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
 configure_file("data/test_files/Countries/blankCommonCountryData.txt" "${TEST_OUTPUT_DIRECTORY}/common/countries/blankCommonCountryData.txt" COPYONLY)
 configure_file("data/test_files/Countries/BlankTechnologyFile.txt" "${TEST_OUTPUT_DIRECTORY}/countries/blank/inventions/BlankTechnologyFile.txt" COPYONLY)
 configure_file("data/test_files/Countries/BlankTraitsFile.txt" "${TEST_OUTPUT_DIRECTORY}/countries/blank/common/traits.txt" COPYONLY)
@@ -918,6 +930,7 @@ add_library(run_clang_tidy
 	${HOI4WORLD_OCCUPATION_LAWS_SOURCES}
 	${HOI4WORLD_OPERATIONS_SOURCES}
 	${HOI4WORLD_OPERATIVE_NAMES_SOURCES}
+	${HOI4WORLD_PEACECONFERENCES_SOURCES}
 	${HOI4WORLD_REGIONS_SOURCES}
 	${HOI4WORLD_SCRIPTED_EFFECTS_SOURCES}
 	${HOI4WORLD_SCRIPTED_LOCALISATIONS_SOURCES}
@@ -979,6 +992,7 @@ add_library(run_clang_tidy
 	${OUTHOI4_OPERATIVE_NAMES_SOURCES}
 	${OUTHOI4_OPERATIVE_SOURCES}
 	${OUTHOI4_NAVIES_SOURCES}
+	${OUTHOI4_PEACECONFERENCE_SOURCES}
 	${OUTHOI4_SCRIPTED_EFFECTS_SOURCES}
 	${OUTHOI4_SCRIPTED_LOCALISATIONS_SOURCES}
 	${OUTHOI4_SCRIPTED_TRIGGERS_SOURCES}
@@ -1013,6 +1027,7 @@ add_library(run_clang_tidy
 	${HOI4WORLD_OCCUPATION_LAWS_TESTS_SOURCES}
 	${HOI4WORLD_OPERATIONS_TESTS_SOURCES}
 	${HOI4WORLD_OPERATIVE_NAMES_TESTS_SOURCES}
+	${HOI4WORLD_PEACECONFERENCES_TESTS_SOURCES}
 	${HOI4WORLD_PLANE_DESIGNS_TESTS_SOURCES}
 	${HOI4WORLD_REGIONS_TESTS_SOURCES}
 	${HOI4WORLD_SCRIPTED_EFFECTS_TESTS_SOURCES}

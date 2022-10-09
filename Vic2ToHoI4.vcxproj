@@ -145,6 +145,8 @@
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp" />
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.cpp" />
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.cpp" />
     <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesign.cpp" />
     <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesigns.cpp" />
     <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneModules.cpp" />
@@ -219,8 +221,6 @@
     <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
     <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsInCategory.cpp" />
     <ClCompile Include="src\OutHoi4\Decisions\OutDecisions.cpp" />
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeace.cpp" />
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeaces.cpp" />
     <ClCompile Include="src\OutHoi4\Diplomacy\OutWar.cpp" />
     <ClCompile Include="src\OutHoi4\Events\OutEventOption.cpp" />
     <ClCompile Include="src\OutHoi4\Events\OutEvent.cpp" />
@@ -280,6 +280,8 @@
     <ClCompile Include="src\OutHoi4\OutOnActions.cpp" />
     <ClCompile Include="src\OutHoI4\OutSharedFocus.cpp" />
     <ClCompile Include="src\OutHoi4\OutTechnologies.cpp" />
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutAiPeace.cpp" />
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutCostModifiers.cpp" />
     <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.cpp" />
     <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.cpp" />
     <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.cpp" />
@@ -308,9 +310,6 @@
     <ClCompile Include="src\HOI4World\Decisions\PoliticalDecisions.cpp" />
     <ClCompile Include="src\HOI4World\Decisions\ResourceProspectingDecisions.cpp" />
     <ClCompile Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeace.cpp" />
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeaces.cpp" />
-    <ClCompile Include="src\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
     <ClCompile Include="src\HOI4World\Diplomacy\HoI4War.cpp" />
     <ClCompile Include="src\HOI4World\Events\Event.cpp" />
     <ClCompile Include="src\HOI4World\Events\EventHelpers.cpp" />
@@ -549,6 +548,8 @@
     <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesSetFactory.h" />
     <ClInclude Include="src\HOI4World\Operatives\Operative.h" />
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.h" />
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.h" />
     <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesign.h" />
     <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesigns.h" />
     <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneModules.h" />
@@ -650,8 +651,6 @@
     <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsCategory.h" />
     <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsInCategory.h" />
     <ClInclude Include="src\OutHoi4\Decisions\OutDecisions.h" />
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeace.h" />
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeaces.h" />
     <ClInclude Include="src\OutHoi4\Diplomacy\OutWar.h" />
     <ClInclude Include="src\OutHoi4\Events\OutEventOption.h" />
     <ClInclude Include="src\OutHoi4\Events\OutEvent.h" />
@@ -711,6 +710,8 @@
     <ClInclude Include="src\OutHoi4\OutOnActions.h" />
     <ClInclude Include="src\OutHoI4\OutSharedFocus.h" />
     <ClInclude Include="src\OutHoi4\OutTechnologies.h" />
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutAiPeace.h" />
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutCostModifiers.h" />
     <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.h" />
     <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.h" />
     <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.h" />
@@ -739,9 +740,6 @@
     <ClInclude Include="src\HOI4World\Decisions\PoliticalDecisions.h" />
     <ClInclude Include="src\HOI4World\Decisions\ResourceProspectingDecisions.h" />
     <ClInclude Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.h" />
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeace.h" />
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeaces.h" />
-    <ClInclude Include="src\HOI4World\Diplomacy\AiPeacesUpdater.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\Faction.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\HoI4Relations.h" />
     <ClInclude Include="src\HOI4World\Diplomacy\HoI4War.h" />
