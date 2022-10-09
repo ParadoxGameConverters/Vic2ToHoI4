@@ -13,8 +13,8 @@ namespace HoI4
 {
 
 void OutputAiPeace(std::string_view output_name,
-	const std::set<std::string>& major_ideologies,
-	const std::map<std::string, std::string>& ideologies_to_ai_peace);
+	 const std::set<std::string>& major_ideologies,
+	 const std::map<std::string, std::string>& ideologies_to_ai_peace);
 
 }
 
