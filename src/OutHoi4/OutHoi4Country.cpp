@@ -825,7 +825,6 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	outputFlags(output, theCountry.getFlags());
 	outputTrainsModifier(output, theCountry.getTrainsMultiplier());
 	outputConvoys(output, theCountry.getConvoys());
-	OutputEquipmentStockpile(output, theCountry.GetEquipmentStockpile(), tag);
 	outputPolitics(output,
 		 governmentIdeology,
 		 theCountry.getLastElection(),
@@ -862,6 +861,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	output << theCountry.getTheShipVariants();
 	output << theCountry.GetPlaneDesigns();
 	output << theCountry.getTankDesigns();
+	OutputEquipmentStockpile(output, theCountry.GetEquipmentStockpile(), tag);
 	outputGlobalEventTargets(output, theCountry.getGlobalEventTargets());
 
 	output.close();
@@ -1275,26 +1275,54 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 		}
 		if (technologies->hasTechnology("fighter1"))
 		{
-			output << "\tadd_equipment_production = {\n";
-			output << "\t\tequipment = {\n";
-			output << "\t\t\ttype = fighter_equipment_1\n";
-			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\tif = {\n";
+			output << "\t\tlimit = { has_dlc = \"By Blood Alone\" }\n";
+			output << "\t\tadd_equipment_production = {\n";
+			output << "\t\t\tequipment = {\n";
+			output << "\t\t\t\ttype = small_plane_airframe_1\n";
+			output << "\t\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t\t}\n";
+			output << "\t\t\trequested_factories = 5\n";
+			output << "\t\t\tprogress = 0.88\n";
+			output << "\t\t\tefficiency = 100\n";
 			output << "\t\t}\n";
-			output << "\t\trequested_factories = 5\n";
-			output << "\t\tprogress = 0.88\n";
-			output << "\t\tefficiency = 100\n";
+			output << "\t}\n";
+			output << "\telse = {\n";
+			output << "\t\tadd_equipment_production = {\n";
+			output << "\t\t\tequipment = {\n";
+			output << "\t\t\t\ttype = fighter_equipment_1\n";
+			output << "\t\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t\t}\n";
+			output << "\t\t\trequested_factories = 5\n";
+			output << "\t\t\tprogress = 0.88\n";
+			output << "\t\t\tefficiency = 100\n";
+			output << "\t\t}\n";
 			output << "\t}\n";
 		}
 		else if (technologies->hasTechnology("early_fighter"))
 		{
-			output << "\tadd_equipment_production = {\n";
-			output << "\t\tequipment = {\n";
-			output << "\t\t\ttype = fighter_equipment_0\n";
-			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\tif = {\n";
+			output << "\t\tlimit = { has_dlc = \"By Blood Alone\" }\n";
+			output << "\t\tadd_equipment_production = {\n";
+			output << "\t\t\tequipment = {\n";
+			output << "\t\t\t\ttype = small_plane_airframe_0\n";
+			output << "\t\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t\t}\n";
+			output << "\t\t\trequested_factories = 5\n";
+			output << "\t\t\tprogress = 0.88\n";
+			output << "\t\t\tefficiency = 100\n";
 			output << "\t\t}\n";
-			output << "\t\trequested_factories = 5\n";
-			output << "\t\tprogress = 0.88\n";
-			output << "\t\tefficiency = 100\n";
+			output << "\t}\n";
+			output << "\telse = {\n";
+			output << "\t\tadd_equipment_production = {\n";
+			output << "\t\t\tequipment = {\n";
+			output << "\t\t\t\ttype = fighter_equipment_0\n";
+			output << "\t\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t\t}\n";
+			output << "\t\t\trequested_factories = 5\n";
+			output << "\t\t\tprogress = 0.88\n";
+			output << "\t\t\tefficiency = 100\n";
+			output << "\t\t}\n";
 			output << "\t}\n";
 		}
 	}

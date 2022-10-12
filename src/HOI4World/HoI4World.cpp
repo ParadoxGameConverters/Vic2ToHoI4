@@ -265,13 +265,13 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 GameRules::Parser().parseRulesFile(theConfiguration.getHoI4Path() + "/common/game_rules/00_game_rules.txt"));
 	gameRules->updateRules();
 
-	occupationLaws = OccupationLaws::Factory().getOccupationLaws(theConfiguration);
+	occupationLaws = OccupationLaws::Factory().getOccupationLaws();
 	occupationLaws->updateLaws(ideologies->getMajorIdeologies());
 
 	operativeNames = OperativeNames::Factory::getOperativeNames(theConfiguration.getHoI4Path());
 	operativeNames->addCountriesToNameSets(countries);
 
-	operations = Operations::Factory().getOperations(theConfiguration.getHoI4Path());
+	operations = Operations::Factory().getOperations();
 	operations->updateOperations(ideologies->getMajorIdeologies());
 
 	soundEffects = SoundEffectsFactory().createSoundEffects(countries);

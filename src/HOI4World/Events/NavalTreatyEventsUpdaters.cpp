@@ -232,9 +232,10 @@ void HoI4::updateNavalTreatyEventSix(Event& event, const std::set<std::string>& 
 		 "\t\t}");
 	optionA.giveScriptBlock(
 		 "send_embargo = FROM\n"
-		 "\t\tadd_opinion_modifier = { \n"
-		 "\t\ttarget = FROM\n"
-		 "\t\tmodifier = broken_naval_treaty_opinion_mod");
+		 "\t\tadd_opinion_modifier = {\n"
+		 "\t\t\ttarget = FROM\n"
+		 "\t\t\tmodifier = broken_naval_treaty_opinion_mod\n"
+		 "\t\t}");
 	event.giveOption(std::move(optionA));
 
 	EventOption optionB;

@@ -367,18 +367,18 @@ void HoI4::Army::CollectLeftoverEquipment(
 		 std::nullopt,
 		 infantry_equipment_amount);
 	leftover_equipment_.emplace_back(owner,
-		 "artillery_equipment_0",
+		 "artillery_equipment",
 		 std::nullopt,
 		 std::nullopt,
 		 artillery_equipment_amount);
 	leftover_equipment_.emplace_back(owner,
 		 "gw_tank_equipment",
 		 std::nullopt,
-		 R"({ NOT = { has_dlc = "No Step Back" } })",
+		 R"(NOT = { has_dlc = "No Step Back" })",
 		 tank_equipment_amount);
 	leftover_equipment_.emplace_back(owner,
 		 "light_tank_chassis_0",
 		 "GW Light Tank",
-		 R"({ has_dlc = "No Step Back" })",
+		 R"(has_dlc = "No Step Back")",
 		 tank_equipment_amount);
 }

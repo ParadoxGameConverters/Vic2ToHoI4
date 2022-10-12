@@ -246,7 +246,6 @@ link = {
 	limit = R"(has_dlc = "Man the Guns")"
 	hoi4 = sonar
 	hoi4 = basic_light_battery
-	hoi4 = basic_secondary_battery
 }
 
 # HoI4 Light Cruiser II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Modern Cruisers

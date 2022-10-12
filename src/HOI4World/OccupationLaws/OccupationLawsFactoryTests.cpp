@@ -3,19 +3,9 @@
 
 
 
-TEST(HoI4World_OccupationLaws_OccupationLawsFactoryTests, ZeroLawsByDefault)
-{
-	const auto configuration = Configuration::Builder().setHoI4Path("EmptyOccupationLaws/").build();
-	const auto occupationLaws = HoI4::OccupationLaws::Factory().getOccupationLaws(*configuration);
-
-	ASSERT_TRUE(occupationLaws->getOccupationLaws().empty());
-}
-
-
 TEST(HoI4World_OccupationLaws_OccupationLawsFactoryTests, LawsCanBeImported)
 {
-	const auto configuration = Configuration::Builder().setHoI4Path("OccupationLaws/").build();
-	const auto occupationLaws = HoI4::OccupationLaws::Factory().getOccupationLaws(*configuration);
+	const auto occupationLaws = HoI4::OccupationLaws::Factory().getOccupationLaws();
 
 	ASSERT_EQ(2, occupationLaws->getOccupationLaws().size());
 	ASSERT_EQ("law_one", occupationLaws->getOccupationLaws()[0].getName());

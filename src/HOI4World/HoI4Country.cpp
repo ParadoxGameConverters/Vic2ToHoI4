@@ -1351,12 +1351,12 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 		equipment_stockpile_.emplace_back(tag,
 			 "small_plane_airframe_1",
 			 "Basic Fighter",
-			 R"({ has_dlc = "By Blood Alone" })",
+			 R"(has_dlc = "By Blood Alone")",
 			 amount);
 		equipment_stockpile_.emplace_back(tag,
 			 "small_plane_cas_airframe_1",
 			 "Basic CAS",
-			 R"({ has_dlc = "By Blood Alone" })",
+			 R"(has_dlc = "By Blood Alone")",
 			 amount);
 	}
 	else
@@ -1364,23 +1364,23 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 		equipment_stockpile_.emplace_back(tag,
 			 "small_plane_airframe_0",
 			 "Interwar Fighter",
-			 R"({ has_dlc = "By Blood Alone" })",
+			 R"(has_dlc = "By Blood Alone")",
 			 amount);
 		equipment_stockpile_.emplace_back(tag,
 			 "small_plane_cas_airframe_0",
 			 "Interwar CAS",
-			 R"({ has_dlc = "By Blood Alone" })",
+			 R"(has_dlc = "By Blood Alone")",
 			 amount);
 	}
 	equipment_stockpile_.emplace_back(tag,
 		 "fighter_equipment_0",
 		 std::nullopt,
-		 R"({ NOT = { has_dlc = "By Blood Alone" } })",
+		 R"(NOT = { has_dlc = "By Blood Alone" })",
 		 amount);
 	equipment_stockpile_.emplace_back(tag,
 		 "tac_bomber_equipment_0",
 		 std::nullopt,
-		 R"({ NOT = { has_dlc = "By Blood Alone" } })",
+		 R"(NOT = { has_dlc = "By Blood Alone" })",
 		 amount);
 }
 
@@ -1469,14 +1469,14 @@ void HoI4::Country::convertStockpile()
 		equipment_stockpile_.emplace_back(tag,
 			 "gw_tank_equipment",
 			 std::nullopt,
-			 R"({ NOT = { has_dlc = "No Step Back" } })",
+			 R"(NOT = { has_dlc = "No Step Back" })",
 			 amount);
 		if (theTechnologies->hasTechnology("basic_light_tank_chassis"))
 		{
 			equipment_stockpile_.emplace_back(tag,
 				 "light_tank_chassis_1",
 				 "Basic Light Tank",
-				 R"({ has_dlc = "No Step Back" })",
+				 R"(has_dlc = "No Step Back")",
 				 amount);
 		}
 		else
@@ -1484,7 +1484,7 @@ void HoI4::Country::convertStockpile()
 			equipment_stockpile_.emplace_back(tag,
 				 "light_tank_chassis_0",
 				 "GW Light Tank",
-				 R"({ has_dlc = "No Step Back" })",
+				 R"(has_dlc = "No Step Back")",
 				 amount);
 		}
 	}

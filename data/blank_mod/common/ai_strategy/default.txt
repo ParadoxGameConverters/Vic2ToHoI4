@@ -590,42 +590,13 @@ highered_armored_production = {
 
 slightly_naval_focused_nation = {
 	enable = {
+		always = yes
 	}
 
 	ai_strategy = {
 		type = unit_ratio
 		id = capital_ship
 		value = 1
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = submarine
-		value = 1
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = screen_ship
-		value = 1
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = convoy
-		value = 1
-	}
-}
-
-more_naval_focused_nation = {
-	enable = {
-		date > "1941.1.1" #Delaying it by a couple of years
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = capital_ship
-		value = 2		 #1 to 2
 	}
 
 	ai_strategy = {
@@ -650,6 +621,7 @@ more_naval_focused_nation = {
 
 default_area_priority = {
 	enable = {
+		always = yes
 	}
 
 	ai_strategy = {

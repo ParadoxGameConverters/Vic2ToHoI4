@@ -5,8 +5,7 @@
 
 
 
-std::unique_ptr<HoI4::OccupationLaws> HoI4::OccupationLaws::Factory::getOccupationLaws(
-	 const Configuration& configuration)
+std::unique_ptr<HoI4::OccupationLaws> HoI4::OccupationLaws::Factory::getOccupationLaws()
 {
 	auto occupationLaws = std::make_unique<OccupationLaws>();
 	OccupationLaw::Factory lawFactory;
@@ -17,6 +16,6 @@ std::unique_ptr<HoI4::OccupationLaws> HoI4::OccupationLaws::Factory::getOccupati
 			 occupationLaws->giveOccupationLaw(std::move(*occupationLaw));
 		 });
 
-	parseFile(configuration.getHoI4Path() + "/common/occupation_laws/occupation_laws.txt");
+	parseFile("blankmod/common/occupation_laws/occupation_laws.txt");
 	return occupationLaws;
 }

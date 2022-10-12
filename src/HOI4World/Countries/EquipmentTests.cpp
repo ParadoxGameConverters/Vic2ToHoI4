@@ -16,7 +16,8 @@ TEST(HoI4World_Countries_EquipmentTests, EquipmentIsAsConstructed)
 	EXPECT_EQ(output.str(),
 		 "if = {\n"
 		 "\tlimit = { has_dlc = \"test dlc\" }\n"
-		 "\tadd_equipment_to_stockpile = { type = test_equipment_1 variant = \"test variant\" amount = 42 producer = TAG "
+		 "\tadd_equipment_to_stockpile = { type = test_equipment_1 variant_name = \"test variant\" amount = 42 producer "
+		 "= TAG "
 		 "}\n"
 		 "}\n");
 }
