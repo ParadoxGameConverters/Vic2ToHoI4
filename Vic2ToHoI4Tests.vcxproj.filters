@@ -3882,16 +3882,10 @@
     <CopyFileToFolders Include="data\test_files\World\TWO.txt">
       <Filter>data\test_files\World</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\blank_operations.txt">
-      <Filter>data\test_files</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\blank_operative_codenames.txt">
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\definition.csv">
-      <Filter>data\test_files</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\EmptyOccupationLaws.txt">
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\GameRules.txt">
@@ -3919,9 +3913,6 @@
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\OccupationLaws.txt">
-      <Filter>data\test_files</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\operations_to_update.txt">
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\OperativeNamesMappings.txt">

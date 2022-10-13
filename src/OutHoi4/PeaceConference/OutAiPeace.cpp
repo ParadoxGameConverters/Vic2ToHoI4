@@ -16,7 +16,7 @@ void HoI4::OutputAiPeace(std::string_view output_name,
 										 "/common/peace_conference/ai_peace/converter_ideology_peace.txt");
 	}
 
-	out << "peace_action_modifiers = {\n";
+	out << "peace_ai_desires = {\n";
 
 	for (const auto& ideology: major_ideologies)
 	{

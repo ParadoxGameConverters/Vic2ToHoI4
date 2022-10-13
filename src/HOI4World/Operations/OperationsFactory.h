@@ -16,7 +16,7 @@ namespace HoI4
 class Operations::Factory: commonItems::parser
 {
   public:
-	std::unique_ptr<Operations> getOperations(const std::string& HoI4Path);
+	std::unique_ptr<Operations> getOperations();
 };
 
 } // namespace HoI4

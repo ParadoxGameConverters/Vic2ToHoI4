@@ -3,27 +3,20 @@
 
 
 
-TEST(HoI4World_Operations_OperationsFactoryTests, ZeroOperationsByDefault)
-{
-	const auto operations = HoI4::Operations::Factory().getOperations("blank_operations/");
-
-	ASSERT_TRUE(operations->getOperations().empty());
-}
-
-
 TEST(HoI4World_Operations_OperationsFactoryTests, OperationsCanBeImported)
 {
-	const auto operations = HoI4::Operations::Factory().getOperations("operations/");
+	const auto operations = HoI4::Operations::Factory().getOperations();
 
-	ASSERT_EQ(2, operations->getOperations().size());
-	ASSERT_EQ("operation_one", operations->getOperations()[0].getName());
-	ASSERT_EQ("operation_two", operations->getOperations()[1].getName());
+	ASSERT_EQ(3, operations->getOperations().size());
+	EXPECT_EQ("operation_one", operations->getOperations()[0].getName());
+	EXPECT_EQ("operation_two", operations->getOperations()[1].getName());
+	EXPECT_EQ("operation_coup_government", operations->getOperations()[2].getName());
 }
 
 
 TEST(HoI4World_Operations_OperationsFactoryTests, UpdateOperationsRemovesIdeologiesFromOperationCoupGovernment)
 {
-	auto operations = HoI4::Operations::Factory().getOperations("operationsToUpdate/");
+	auto operations = HoI4::Operations::Factory().getOperations();
 	operations->updateOperations({});
 
 	std::stringstream expectedAvailable;
@@ -68,13 +61,14 @@ TEST(HoI4World_Operations_OperationsFactoryTests, UpdateOperationsRemovesIdeolog
 	expectedAvailable << "\t\t\t}\n";
 	expectedAvailable << "\t\t}\n";
 	expectedAvailable << "\t}";
-	ASSERT_EQ(expectedAvailable.str(), operations->getOperations()[0].getAvailable());
+	ASSERT_EQ(3, operations->getOperations().size());
+	EXPECT_EQ(expectedAvailable.str(), operations->getOperations()[2].getAvailable());
 }
 
 
 TEST(HoI4World_Operations_OperationsFactoryTests, UpdateOperationsAddsMajorIdeologiesToOperationCoupGovernment)
 {
-	auto operations = HoI4::Operations::Factory().getOperations("operationsToUpdate/");
+	auto operations = HoI4::Operations::Factory().getOperations();
 	operations->updateOperations({"absolutist", "communism", "democratic", "fascism", "radical", "neutrality"});
 
 	std::stringstream expectedAvailable;
@@ -155,5 +149,6 @@ TEST(HoI4World_Operations_OperationsFactoryTests, UpdateOperationsAddsMajorIdeol
 	expectedAvailable << "\t\t\t}\n";
 	expectedAvailable << "\t\t}\n";
 	expectedAvailable << "\t}";
-	ASSERT_EQ(expectedAvailable.str(), operations->getOperations()[0].getAvailable());
+	ASSERT_EQ(3, operations->getOperations().size());
+	EXPECT_EQ(expectedAvailable.str(), operations->getOperations()[2].getAvailable());
 }

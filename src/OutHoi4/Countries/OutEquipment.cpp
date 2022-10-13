@@ -17,7 +17,7 @@ std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::Equipment& equi
 		output << "{ type = " << equipment.GetType();
 		if (equipment.GetVariant().has_value())
 		{
-			output << " variant = \"" << *equipment.GetVariant() << "\"";
+			output << " variant_name = \"" << *equipment.GetVariant() << "\"";
 		}
 		output << " amount = " << equipment.GetAmount() << " producer = " << equipment.GetOwner() << " }\n";
 

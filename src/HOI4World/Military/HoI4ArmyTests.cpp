@@ -205,9 +205,9 @@ TEST(HoI4World_Military_HoI4ArmyTests, LeftoverRegimentsBecomeEquipment)
 
 	std::vector<HoI4::Equipment> expected_equipment{
 		 HoI4::Equipment("", "infantry_equipment_0", std::nullopt, std::nullopt, 660),
-		 HoI4::Equipment("", "artillery_equipment_0", std::nullopt, std::nullopt, 36),
-		 HoI4::Equipment("", "gw_tank_equipment", std::nullopt, "{ NOT = { has_dlc = \"No Step Back\" } }", 60),
-		 HoI4::Equipment("", "light_tank_chassis_0", "GW Light Tank", "{ has_dlc = \"No Step Back\" }", 60)};
+		 HoI4::Equipment("", "artillery_equipment", std::nullopt, std::nullopt, 36),
+		 HoI4::Equipment("", "gw_tank_equipment", std::nullopt, "NOT = { has_dlc = \"No Step Back\" }", 60),
+		 HoI4::Equipment("", "light_tank_chassis_0", "GW Light Tank", "has_dlc = \"No Step Back\"", 60)};
 	EXPECT_THAT(expected_equipment, theArmy.GetLeftoverEquipment());
 }
 
