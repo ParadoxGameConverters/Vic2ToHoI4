@@ -723,7 +723,6 @@ set_target_properties( Vic2ToHoi4ConverterTests
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
 )
 configure_file("data/test_files/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
-configure_file("data/test_files/blank_operations.txt" "${TEST_OUTPUT_DIRECTORY}/blank_operations/common/operations/00_operations.txt" COPYONLY)
 configure_file("data/test_files/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_ai_peace.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_cost_modifiers.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
@@ -788,8 +787,7 @@ configure_file("data/test_files/Mods/EmptyModFile.mod" "${TEST_OUTPUT_DIRECTORY}
 configure_file("data/test_files/Mods/Test.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/Test.mod" COPYONLY)
 configure_file("data/test_files/OccupationLaws.txt" "${TEST_OUTPUT_DIRECTORY}/blankmod/common/occupation_laws/occupation_laws.txt" COPYONLY)
 configure_file("data/test_files/OperativeNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/OperativeNamesMappings.txt" COPYONLY)
-configure_file("data/test_files/operations.txt" "${TEST_OUTPUT_DIRECTORY}/operations/common/operations/00_operations.txt" COPYONLY)
-configure_file("data/test_files/operations_to_update.txt" "${TEST_OUTPUT_DIRECTORY}/operationsToUpdate/common/operations/00_operations.txt" COPYONLY)
+configure_file("data/test_files/operations.txt" "${TEST_OUTPUT_DIRECTORY}/blankmod/common/operations/00_operations.txt" COPYONLY)
 configure_file("data/test_files/regions.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Map/regions.txt" COPYONLY)
 configure_file("data/test_files/ReadMe.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/ReadMe.txt" COPYONLY)
 configure_file("data/test_files/ReadMe.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/ReadMe.txt" COPYONLY)
