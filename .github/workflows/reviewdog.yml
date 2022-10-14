@@ -13,4 +13,3 @@ jobs:
           github_token: ${{ secrets.github_token }}
           locale: "US"
           ignore: defence,necesary,aluminium
-          ignore: defence,necesary,aluminium
