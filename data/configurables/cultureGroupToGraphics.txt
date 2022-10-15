@@ -1177,7 +1177,7 @@ italic = {
 		}
 		absolutist = {
 			"gfx/leaders/Europe/Portrait_europe_generic_7.dds"
-			"gfx/leaders/ITA/Portrait_Italy_Victor_Emmanuel_III.dds"
+			"gfx/leaders/ITA/Portrait_Italy_Vittorio_Emanuele_III.dds"
 		}
 		neutrality = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
