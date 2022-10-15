@@ -53,7 +53,7 @@ void updateIdeologyScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
 	has_same_ideology_body += "\tcustom_trigger_tooltip = {\n";
 	has_same_ideology_body += "\t\ttooltip = has_same_ideology_tt\n";
 	has_same_ideology_body += "\t\tOR = {\n";
-	for (const auto& ideology : majorIdeologies)
+	for (const auto& ideology: majorIdeologies)
 	{
 		has_same_ideology_body += "\t\t\tAND = {\n";
 		has_same_ideology_body += "\t\t\t\thas_government = " + ideology + "\n";
