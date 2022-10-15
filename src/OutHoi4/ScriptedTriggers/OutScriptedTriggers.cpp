@@ -5,8 +5,7 @@
 
 void HoI4::outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, const std::string& outputName)
 {
-	std::ofstream outIdeology("output/" + outputName + "/common/scripted_triggers/ideology_scripted_triggers.txt",
-		 std::ostream::app);
+	std::ofstream outIdeology("output/" + outputName + "/common/scripted_triggers/ideology_scripted_triggers.txt");
 	for (const auto& scriptedTrigger: scriptedTriggers.getIdeologyScriptedTriggers())
 	{
 		outIdeology << scriptedTrigger;

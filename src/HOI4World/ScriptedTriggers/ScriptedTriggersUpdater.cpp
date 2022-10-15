@@ -21,34 +21,49 @@ void HoI4::updateScriptedTriggers(ScriptedTriggers& scriptedTriggers, const std:
 void updateIdeologyScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
 	 const std::set<std::string>& majorIdeologies)
 {
-	std::string body = "= {\n";
-	body += "\tOR = {\n";
+	std::string is_enemy_ideology_body = "= {\n";
+	is_enemy_ideology_body += "\tOR = {\n";
 	for (const auto& ideology: majorIdeologies)
 	{
 		if (ideology == "neutrality")
 		{
 			continue;
 		}
-		body += "\t\tAND = {\n";
-		body += "\t\t\thas_government = " + ideology + "\n";
-		body += "\t\t\tROOT = {\n";
-		body += "\t\t\t\tOR = {\n";
+		is_enemy_ideology_body += "\t\tAND = {\n";
+		is_enemy_ideology_body += "\t\t\thas_government = " + ideology + "\n";
+		is_enemy_ideology_body += "\t\t\tROOT = {\n";
+		is_enemy_ideology_body += "\t\t\t\tOR = {\n";
 		for (const auto& secondIdeology: majorIdeologies)
 		{
 			if ((secondIdeology == ideology) || (secondIdeology == "neutrality"))
 			{
 				continue;
 			}
-			body += "\t\t\t\t\thas_government = " + secondIdeology + "\n";
+			is_enemy_ideology_body += "\t\t\t\t\thas_government = " + secondIdeology + "\n";
 		}
-		body += "\t\t\t\t}\n";
-		body += "\t\t\t}\n";
-		body += "\t\t}\n";
+		is_enemy_ideology_body += "\t\t\t\t}\n";
+		is_enemy_ideology_body += "\t\t\t}\n";
+		is_enemy_ideology_body += "\t\t}\n";
 	}
-	body += "\t}\n";
-	body += "}";
+	is_enemy_ideology_body += "\t}\n";
+	is_enemy_ideology_body += "}";
+	scriptedTriggers.replaceIdeologyScriptedTrigger("is_enemy_ideology", is_enemy_ideology_body);
 
-	scriptedTriggers.replaceIdeologyScriptedTrigger("is_enemy_ideology", body);
+	std::string has_same_ideology_body = "= {\n";
+	has_same_ideology_body += "\tcustom_trigger_tooltip = {\n";
+	has_same_ideology_body += "\t\ttooltip = has_same_ideology_tt\n";
+	has_same_ideology_body += "\t\tOR = {\n";
+	for (const auto& ideology : majorIdeologies)
+	{
+		has_same_ideology_body += "\t\t\tAND = {\n";
+		has_same_ideology_body += "\t\t\t\thas_government = " + ideology + "\n";
+		has_same_ideology_body += "\t\t\t\tROOT = { has_government = " + ideology + " }\n";
+		has_same_ideology_body += "\t\t\t}\n";
+	}
+	has_same_ideology_body += "\t\t}\n";
+	has_same_ideology_body += "\t}\n";
+	has_same_ideology_body += "}\n";
+	scriptedTriggers.replaceIdeologyScriptedTrigger("has_same_ideology", has_same_ideology_body);
 }
 
 
