@@ -31,8 +31,8 @@
 #include "src/OutHoi4/ScriptedTriggers/OutScriptedTriggers.h"
 #include "src/OutHoi4/Sounds/OutSounds.h"
 #include "src/OutHoi4/States/OutHoI4States.h"
-#include "src/OutHoi4/outDifficultySettings.h"
 #include "src/OutHoi4/UnitMedals/OutUnitMedals.h"
+#include "src/OutHoi4/outDifficultySettings.h"
 #include <algorithm>
 #include <fstream>
 #include <iterator>
