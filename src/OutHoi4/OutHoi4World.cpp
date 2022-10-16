@@ -32,6 +32,7 @@
 #include "src/OutHoi4/Sounds/OutSounds.h"
 #include "src/OutHoi4/States/OutHoI4States.h"
 #include "src/OutHoi4/outDifficultySettings.h"
+#include "src/OutHoi4/UnitMedals/OutUnitMedals.h"
 #include <algorithm>
 #include <fstream>
 #include <iterator>
@@ -242,6 +243,7 @@ void HoI4::OutputWorld(const World& world,
 	copyCustomizedFocusFiles(outputName, world.getCustomizedFocusBranches());
 	OutputCostModifiers(outputName, world.getMajorIdeologies(), world.GetIdeologicalCostModifiers());
 	OutputAiPeace(outputName, world.getMajorIdeologies(), world.GetIdeologicalAiPeace());
+	OutputUnitMedals(outputName, world.getMajorIdeologies(), world.GetUnitMedals());
 }
 
 

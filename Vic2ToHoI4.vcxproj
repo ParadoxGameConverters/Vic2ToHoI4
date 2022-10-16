@@ -171,6 +171,7 @@
     <ClCompile Include="src\HOI4World\TankDesigns\TankDesigns.cpp" />
     <ClCompile Include="src\HOI4World\TankDesigns\TankModules.cpp" />
     <ClCompile Include="src\HOI4World\TankDesigns\TankUpgrades.cpp" />
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp" />
     <ClCompile Include="src\HOI4World\WarCreator\MapUtils.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBellis.cpp" />
@@ -399,6 +400,7 @@
     <ClCompile Include="src\OutHoi4\TankDesigns\OutTankDesigns.cpp" />
     <ClCompile Include="src\OutHoi4\TankDesigns\OutTankModules.cpp" />
     <ClCompile Include="src\OutHoi4\TankDesigns\OutTankUpgrades.cpp" />
+    <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp" />
     <ClCompile Include="src\V2World\Ai\AIFactory.cpp" />
     <ClCompile Include="src\V2World\Countries\CommonCountriesDataFactory.cpp" />
     <ClCompile Include="src\V2World\Countries\CommonCountryData.cpp" />
@@ -583,6 +585,7 @@
     <ClInclude Include="src\HOI4World\TankDesigns\TankModules.h" />
     <ClInclude Include="src\HOI4World\TankDesigns\TankUpgrades.h" />
     <ClInclude Include="src\HOI4World\TechnologiesBuilder.h" />
+    <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h" />
     <ClInclude Include="src\HOI4World\WarCreator\MapUtils.h" />
     <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMapping.h" />
     <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.h" />
@@ -845,6 +848,7 @@
     <ClInclude Include="src\OutHoi4\TankDesigns\OutTankDesigns.h" />
     <ClInclude Include="src\OutHoi4\TankDesigns\OutTankModules.h" />
     <ClInclude Include="src\OutHoi4\TankDesigns\OutTankUpgrades.h" />
+    <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h" />
     <ClInclude Include="src\V2World\Ai\AIStrategyFactory.h" />
     <ClInclude Include="src\V2World\Ai\AIFactory.h" />
     <ClInclude Include="src\V2World\Countries\CommonCountriesDataFactory.h" />
@@ -1024,6 +1028,7 @@
     <Text Include="data\configurables\ideologicalAdvisors.txt" />
     <Text Include="data\configurables\ideologicalDecisions.txt" />
     <Text Include="data\configurables\ideologicalIdeas.txt" />
+    <Text Include="data\configurables\ideological_unit_medals.txt" />
     <Text Include="data\configurables\IdeologyMappings.txt" />
     <Text Include="data\configurables\ImportCharacters.txt" />
     <Text Include="data\configurables\IntelligenceAgencyLogos.txt" />

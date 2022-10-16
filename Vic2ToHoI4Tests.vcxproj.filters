@@ -1768,6 +1768,15 @@
     <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiersTests.cpp">
       <Filter>src\HOI4World\PeaceConferences</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp">
+      <Filter>src\HOI4World\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedalsTests.cpp">
+      <Filter>src\HOI4World\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2189,6 +2198,12 @@
     </Filter>
     <Filter Include="data\test_files\Configurables">
       <UniqueIdentifier>{4d98c28c-f6eb-4dbb-a8e0-fd13de5021b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HOI4World\UnitMedals">
+      <UniqueIdentifier>{2426867c-fb04-44ba-ba4b-fd6a0e375b0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\UnitMedals">
+      <UniqueIdentifier>{93a5d9b2-c96c-4a7c-b214-da96fddc1d21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3595,6 +3610,12 @@
     <ClInclude Include="src\OutHoi4\PeaceConference\OutAiPeace.h">
       <Filter>src\OutHoi4\PeaceConferences</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h">
+      <Filter>src\HOI4World\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt">
@@ -3949,6 +3970,9 @@
       <Filter>data\test_files\Configurables</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Configurables\ideological_cost_modifiers.txt">
+      <Filter>data\test_files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Configurables\ideological_unit_medals.txt">
       <Filter>data\test_files\Configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>
