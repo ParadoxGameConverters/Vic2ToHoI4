@@ -40,6 +40,7 @@
 #include "src/HOI4World/Sounds/SoundEffectsFactory.h"
 #include "src/HOI4World/States/DefaultStatesImporter.h"
 #include "src/HOI4World/States/HoI4State.h"
+#include "src/HOI4World/UnitMedals/IdeologicalUnitMedals.h"
 #include "src/HOI4World/WarCreator/HoI4WarCreator.h"
 #include "src/Mappers/CasusBelli/CasusBellisFactory.h"
 #include "src/Mappers/Country/CountryMapperFactory.h"
@@ -280,6 +281,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	ideological_cost_modifiers_ = ImportIdeologicalCostModifiers();
 	ideological_ai_peace_ = ImportIdeologicalAiPeace();
+	ideological_unit_medals_ = ImportIdeologicalUnitMedals();
 }
 
 

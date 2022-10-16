@@ -1150,6 +1150,12 @@
     <ClCompile Include="src\OutHoi4\PeaceConference\OutAiPeace.cpp">
       <Filter>src\OutHoi4\PeaceConference</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp">
+      <Filter>src\HoI4World\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2547,6 +2553,12 @@
     <ClInclude Include="src\OutHoi4\PeaceConference\OutAiPeace.h">
       <Filter>src\OutHoi4\PeaceConference</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h">
+      <Filter>src\HoI4World\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
@@ -2801,6 +2813,9 @@
     </Text>
     <Text Include="data\fronter\fronter-options.txt">
       <Filter>data\fronter</Filter>
+    </Text>
+    <Text Include="data\configurables\ideological_unit_medals.txt">
+      <Filter>data\configurables</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
@@ -3142,6 +3157,12 @@
     </Filter>
     <Filter Include="src\HoI4World\PeaceConferences">
       <UniqueIdentifier>{72c38416-0378-4fb2-b46c-b8bb8e2fbb9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\UnitMedals">
+      <UniqueIdentifier>{41e16a64-6290-4d89-b6e1-86bada413711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\UnitMedals">
+      <UniqueIdentifier>{da53e026-99ce-4d15-a3f4-74aa08d90a4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

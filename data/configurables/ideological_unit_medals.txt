@@ -1,30 +1,4 @@
-# Valid unit modifiers are not exhaustive
-# Currently supported:
-# army_morale
-# army_morale_factor
-# army_org
-# army_org_factor
-# supply_consumption_factor
-# equipment_capture
-# equipment_capture_factor
-# army_fuel_capacity_factor
-# army_fuel_consumption_factor
-# recon_factor
-# recon_factor_while_entrenched
-# transport_capacity (?)
-# breakthrough_factor
-# armor_factor
-# army_strength_factor
-# experience_loss_factor
-# leader_modifier applies unit modifiers to all units under them as a general, similarly to traits.
-# army_attack_factor
-# army_defence_factor
-# max_dig_in
-# max_dig_in_factor
-
-@cost = 30
-
-unit_medals = {
+democratic = {
 	
 	### Generic Democratic
 	
@@ -108,6 +82,10 @@ unit_medals = {
 		}
 		
 	}
+
+}
+
+communism = {
 	
 	### Generic Communist
 	
@@ -192,6 +170,98 @@ unit_medals = {
 		}
 		
 	}
+
+}
+
+radical = {
+	
+	### Generic Radical
+	
+	radical_service_medal = {
+		
+		available = { 
+			has_government = radical
+		}
+		frame = 1
+		icon = "GFX_medal_icon_default"
+	
+		cost = @cost
+		
+		unit_modifiers = {
+			supply_consumption_factor = -0.15
+			army_fuel_consumption_factor = -0.15
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+	radical_yellow_cross = {
+		
+		available = { 
+			has_government = radical
+		}
+		frame = 2
+		icon = "GFX_medal_icon_default"
+	
+		cost = @cost
+		
+		unit_modifiers = {
+			army_morale_factor = 0.1
+			army_defence_factor = 0.05
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+	radical_merit_medal = {
+		
+		available = { 
+			has_government = radical
+		}
+		frame = 3
+		icon = "GFX_medal_icon_default"
+	
+		cost = @cost
+		
+		unit_modifiers = {
+			army_org_factor = 0.1
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+	radical_hero_of_revolution = {
+		
+		available = { 
+			has_government = radical
+		}
+		frame = 4
+		icon = "GFX_medal_icon_default"
+	
+		cost = @cost
+		
+		unit_modifiers = {
+			army_strength_factor = 0.1
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+
+}
+
+fascism = {
 	
 	### Generic Fascism
 	
@@ -275,6 +345,97 @@ unit_medals = {
 		}
 		
 	}
+
+}
+
+absolutist = {
+	
+	### Generic Absolutist
+	
+	absolutist_bravery = {
+		
+		available = { 
+			has_government = absolutist
+		}
+		frame = 1
+		icon = "GFX_medal_icon_fascism"
+		
+		cost = @cost
+		
+		unit_modifiers = {
+			army_org_factor = 0.1
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+	absolutist_military_order = {
+		
+		available = { 
+			has_government = absolutist
+		}
+		frame = 2
+		icon = "GFX_medal_icon_fascism"
+		
+		cost = @cost
+		
+		unit_modifiers = {
+			army_attack_factor = 0.05
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+	absolutist_sword = {
+		
+		available = { 
+			has_government = absolutist
+		}
+		frame = 3
+		icon = "GFX_medal_icon_fascism"
+		
+		cost = @cost
+		
+		unit_modifiers = {
+			armor_factor = 0.1
+			recon_factor = 0.1
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+	absolutist_virtue = {
+		
+		available = { 
+			has_government = absolutist
+		}
+		frame = 4
+		icon = "GFX_medal_icon_fascism"
+	
+		cost = @cost
+		
+		unit_modifiers = {
+			breakthrough_factor = 0.1
+		}
+		
+		one_time_effect = {
+			add_divisional_commander_xp = 100
+		}
+		
+	}
+	
+}
+
+neutrality = {
 	
 	### Generic Neutrality
 	

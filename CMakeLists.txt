@@ -111,6 +111,7 @@ set(HOI4WORLD_TANK_DESIGNS_SOURCES ${HOI4WORLD_TANK_DESIGNS_SOURCES} "${PROJECT_
 set(HOI4WORLD_TANK_DESIGNS_SOURCES ${HOI4WORLD_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/TankDesigns/TankDesigns.cpp")
 set(HOI4WORLD_TANK_DESIGNS_SOURCES ${HOI4WORLD_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/TankDesigns/TankModules.cpp")
 set(HOI4WORLD_TANK_DESIGNS_SOURCES ${HOI4WORLD_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/TankDesigns/TankUpgrades.cpp")
+set(HOI4WORLD_UNIT_MEDALS_SOURCES ${HOI4WORLD_UNIT_MEDALS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/UnitMedals/IdeologicalUnitMedals.cpp")
 set(HOI4WORLD_WAR_CREATOR_SOURCES ${HOI4WORLD_WAR_CREATOR_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/WarCreator/MapUtils.cpp")
 set(HOI4WORLD_WAR_CREATOR_SOURCES ${HOI4WORLD_WAR_CREATOR_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/WarCreator/HoI4WarCreator.cpp")
 add_library(HoI4World
@@ -155,6 +156,7 @@ add_library(HoI4World
 	${HOI4WORLD_STATES_SOURCES}
 	${HOI4WORLD_SOUNDS_SOURCES}
 	${HOI4WORLD_TANK_DESIGNS_SOURCES}
+	${HOI4WORLD_UNIT_MEDALS_SOURCES}
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 )
 
@@ -335,6 +337,7 @@ set(OUTHOI4_TANK_DESIGNS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOUR
 set(OUTHOI4_TANK_DESIGNS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/TankDesigns/OutTankDesigns.cpp")
 set(OUTHOI4_TANK_DESIGNS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/TankDesigns/OutTankModules.cpp")
 set(OUTHOI4_TANK_DESIGNS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/TankDesigns/OutTankUpgrades.cpp")
+set(OUTHOI4_UNIT_MEDALS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/UnitMedals/OutUnitMedals.cpp")
 add_library(OutHoI4World
 	${OUTHOI4_SOURCES}
 	${OUTHOI4_CHARACTERS_SOURCES}
@@ -367,6 +370,7 @@ add_library(OutHoI4World
 	${OUTHOI4_SOUNDS_SOURCES}
 	${OUTHOI4_STATES_SOURCES}
 	${OUTHOI4_TANK_DESIGNS_SOURCES}
+	${OUTHOI4_UNIT_MEDALS_SOURCES}
 	${OUTHOI4_VERSION}
 )
 
@@ -443,6 +447,7 @@ configure_file("${DATA_FILE_DIR}/configurables/Historical Project Mod 0.4.6_prov
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalAdvisors.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalAdvisors.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideological_ai_peace.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideological_cost_modifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ideological_unit_medals.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_unit_medals.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalDecisions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/IdeologyMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
@@ -558,6 +563,7 @@ set(HOI4WORLD_TANK_DESIGNS_TESTS_SOURCES ${HOI4WORLD_TANK_DESIGNS_TESTS_SOURCES}
 set(HOI4WORLD_TANK_DESIGNS_TESTS_SOURCES ${HOI4WORLD_TANK_DESIGNS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/TankDesigns/TankDesignTests.cpp")
 set(HOI4WORLD_TANK_DESIGNS_TESTS_SOURCES ${HOI4WORLD_TANK_DESIGNS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/TankDesigns/TankModulesTests.cpp")
 set(HOI4WORLD_TANK_DESIGNS_TESTS_SOURCES ${HOI4WORLD_TANK_DESIGNS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/TankDesigns/TankUpgradesTests.cpp")
+set(HOI4WORLD_UNIT_MEDALS_TESTS_SOURCES ${HOI4WORLD_UNIT_MEDALS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/UnitMedals/IdeologicalUnitMedalsTests.cpp")
 
 file(GLOB MAPPERS_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/Mappers/*.cpp")
 set(MAPPERS_CASUS_BELLIS_TESTS_SOURCES ${MAPPERS_CASUS_BELLIS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/CasusBelli/CasusBelliMappingTests.cpp")
@@ -681,6 +687,7 @@ add_executable(
 	${HOI4WORLD_SOUNDS_TESTS_SOURCES}
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${HOI4WORLD_TANK_DESIGNS_TESTS_SOURCES}
+	${HOI4WORLD_UNIT_MEDALS_TESTS_SOURCES}
 	${MAPPERS_TESTS_SOURCES}
 	${MAPPERS_CASUS_BELLIS_TESTS_SOURCES}
 	${MAPPERS_COUNTRY_TESTS_SOURCES}
@@ -726,6 +733,7 @@ configure_file("data/test_files/blank_operative_codenames.txt" "${TEST_OUTPUT_DI
 configure_file("data/test_files/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_ai_peace.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_cost_modifiers.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
+configure_file("data/test_files/Configurables/ideological_unit_medals.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_unit_medals.txt" COPYONLY)
 configure_file("data/test_files/Countries/blankCommonCountryData.txt" "${TEST_OUTPUT_DIRECTORY}/common/countries/blankCommonCountryData.txt" COPYONLY)
 configure_file("data/test_files/Countries/BlankTechnologyFile.txt" "${TEST_OUTPUT_DIRECTORY}/countries/blank/inventions/BlankTechnologyFile.txt" COPYONLY)
 configure_file("data/test_files/Countries/BlankTraitsFile.txt" "${TEST_OUTPUT_DIRECTORY}/countries/blank/common/traits.txt" COPYONLY)

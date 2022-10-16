@@ -121,6 +121,7 @@ class World: commonItems::parser
 	{
 		return ideological_ai_peace_;
 	}
+	[[nodiscard]] const std::map<std::string, std::string>& GetUnitMedals() const { return ideological_unit_medals_; }
 
 	const std::map<int, HoI4::State>& getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
@@ -307,6 +308,7 @@ class World: commonItems::parser
 
 	std::map<std::string, std::string> ideological_cost_modifiers_;
 	std::map<std::string, std::string> ideological_ai_peace_;
+	std::map<std::string, std::string> ideological_unit_medals_;
 };
 
 } // namespace HoI4

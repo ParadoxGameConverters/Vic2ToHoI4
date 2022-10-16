@@ -343,6 +343,8 @@
     <ClCompile Include="src\HOI4World\TankDesigns\TankUpgradesTests.cpp" />
     <ClCompile Include="src\HOI4World\Technologies.cpp" />
     <ClCompile Include="src\HOI4World\TechnologiesTests.cpp" />
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp" />
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedalsTests.cpp" />
     <ClCompile Include="src\HOI4World\WarCreator\HoI4WarCreator.cpp" />
     <ClCompile Include="src\HOI4World\WarCreator\MapUtils.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.cpp" />
@@ -515,6 +517,7 @@
     <ClCompile Include="src\OutHoi4\TankDesigns\OutTankDesigns.cpp" />
     <ClCompile Include="src\OutHoi4\TankDesigns\OutTankModules.cpp" />
     <ClCompile Include="src\OutHoi4\TankDesigns\OutTankUpgrades.cpp" />
+    <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp" />
     <ClCompile Include="src\V2World\Ai\AI.cpp" />
     <ClCompile Include="src\V2World\Ai\AIFactory.cpp" />
     <ClCompile Include="src\V2World\Ai\AIStrategyFactory.cpp" />
@@ -965,6 +968,7 @@
     <ClInclude Include="src\HOI4World\TankDesigns\TankUpgrades.h" />
     <ClInclude Include="src\HOI4World\Technologies.h" />
     <ClInclude Include="src\HOI4World\TechnologiesBuilder.h" />
+    <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h" />
     <ClInclude Include="src\HOI4World\WarCreator\HoI4WarCreator.h" />
     <ClInclude Include="src\HOI4World\WarCreator\MapUtils.h" />
     <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMapping.h" />
@@ -1122,6 +1126,7 @@
     <ClInclude Include="src\OutHoi4\TankDesigns\OutTankDesigns.h" />
     <ClInclude Include="src\OutHoi4\TankDesigns\OutTankModules.h" />
     <ClInclude Include="src\OutHoi4\TankDesigns\OutTankUpgrades.h" />
+    <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h" />
     <ClInclude Include="src\V2World\Ai\AI.h" />
     <ClInclude Include="src\V2World\Ai\AIFactory.h" />
     <ClInclude Include="src\V2World\Ai\AIStrategy.h" />
@@ -1679,6 +1684,11 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Configurables\ideological_cost_modifiers.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Configurables\ideological_unit_medals.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>

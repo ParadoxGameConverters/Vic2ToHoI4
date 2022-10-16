@@ -20,13 +20,13 @@ void HoI4::OutputAiPeace(std::string_view output_name,
 
 	for (const auto& ideology: major_ideologies)
 	{
-		const auto ideology_to_cost_modifier = ideologies_to_ai_peace.find(ideology);
-		if (ideology_to_cost_modifier == ideologies_to_ai_peace.end())
+		const auto ideology_to_ai_peace = ideologies_to_ai_peace.find(ideology);
+		if (ideology_to_ai_peace == ideologies_to_ai_peace.end())
 		{
 			continue;
 		}
 
-		out << ideology_to_cost_modifier->second << "\n\n";
+		out << ideology_to_ai_peace->second << "\n\n";
 	}
 
 	out << "}";
