@@ -48,15 +48,18 @@ class Events: commonItems::parser
 		 const std::string& annexedTag,
 		 const std::vector<int>& claimedStates);
 	void createTradeEvent(const Country& leader, const std::string& aggressorTag);
-	void createPoliticalEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);
-	void createWarJustificationEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);
+	void createPoliticalEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation, bool debug);
+	void createWarJustificationEvents(const std::set<std::string>& majorIdeologies,
+		 Localisation& localisation,
+		 bool debug);
 	void importElectionEvents(const std::set<std::string>& majorIdeologies, OnActions& onActions);
 	void addPartyChoiceEvent(const std::string& countryTag,
 		 const std::set<Vic2::Party>& parties,
 		 OnActions& onActions,
 		 const std::set<std::string>& majorIdeologies,
 		 const Vic2::Localisations& vic2Localisations,
-		 Localisation& hoi4Localisations);
+		 Localisation& hoi4Localisations,
+		 bool debug);
 	void createStabilityEvents(const std::set<std::string>& majorIdeologies, const Configuration& theConfiguration);
 	void generateGenericEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
 	void importCapitulationEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
@@ -84,12 +87,14 @@ class Events: commonItems::parser
 	[[nodiscard]] const auto& getSummitNewsEventsIds() const { return summitNewsEventsIds; }
 
   private:
-	void addOnTheRise(const std::set<std::string>& majorIdeologies, Localisation& localisation);
-	void addMinisterRevolutionEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);
-	void addDemocraticMinisterRevolutionEvents(Localisation& localisation);
-	void addFiftyPercentEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);
-	void addRevolutionEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);
-	void addSuppressedEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation);
+	void addOnTheRise(const std::set<std::string>& majorIdeologies, Localisation& localisation, bool debug);
+	void addMinisterRevolutionEvents(const std::set<std::string>& majorIdeologies,
+		 Localisation& localisation,
+		 bool debug);
+	void addDemocraticMinisterRevolutionEvents(Localisation& localisation, bool debug);
+	void addFiftyPercentEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation, bool debug);
+	void addRevolutionEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation, bool debug);
+	void addSuppressedEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation, bool debug);
 
 	static std::string getIdeologicalPicture(const std::string& ideology);
 

@@ -776,7 +776,7 @@ void HoI4::Localisation::addNonenglishCountryLocalisations()
 }
 
 
-void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const std::string& newKey)
+void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const std::string& newKey, bool debug)
 {
 	std::set<std::string> handled_languages;
 	for (const auto& [language, localisations]: originalFocuses)
@@ -794,7 +794,7 @@ void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const
 			newLanguage->second[newKey] = oldLocalisation->second;
 			handled_languages.insert(language);
 		}
-		else
+		else if (debug)
 		{
 			Log(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in " << language;
 		}
@@ -844,7 +844,7 @@ void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const
 }
 
 
-void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const std::string& newKey)
+void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const std::string& newKey, bool debug)
 {
 	std::set<std::string> handled_languages;
 	for (const auto& [language, localisations]: originalEventLocalisations)
@@ -862,7 +862,7 @@ void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const
 			newLanguage->second[newKey] = oldLocalisation->second;
 			handled_languages.insert(language);
 		}
-		else
+		else if (debug)
 		{
 			Log(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in " << language;
 		}

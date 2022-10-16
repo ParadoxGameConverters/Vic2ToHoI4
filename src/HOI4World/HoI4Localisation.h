@@ -109,8 +109,8 @@ class Localisation
 		 const Vic2::Localisations& vic2Localisations,
 		 const ArticleRules& articleRules);
 	void addNonenglishCountryLocalisations();
-	void copyFocusLocalisations(const std::string& oldKey, const std::string& newKey);
-	void copyEventLocalisations(const std::string& oldKey, const std::string& newKey);
+	void copyFocusLocalisations(const std::string& oldKey, const std::string& newKey, bool debug);
+	void copyEventLocalisations(const std::string& oldKey, const std::string& newKey, bool debug);
 	void addEventLocalisation(const std::string& event, const std::string& localisation);
 	void addEventLocalisationFromVic2(const std::string& Vic2Key,
 		 const std::string& HoI4Key,

@@ -216,13 +216,15 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
 	importIdeologicalMinisters();
 	convertParties(vic2Localisations);
-	events->createPoliticalEvents(ideologies->getMajorIdeologies(), *hoi4Localisations);
-	events->createWarJustificationEvents(ideologies->getMajorIdeologies(), *hoi4Localisations);
+	events->createPoliticalEvents(ideologies->getMajorIdeologies(), *hoi4Localisations, theConfiguration.getDebug());
+	events->createWarJustificationEvents(ideologies->getMajorIdeologies(),
+		 *hoi4Localisations,
+		 theConfiguration.getDebug());
 	events->importElectionEvents(ideologies->getMajorIdeologies(), *onActions);
 	events->importCapitulationEvents(theConfiguration, ideologies->getMajorIdeologies());
 	events->importMtgNavalTreatyEvents(theConfiguration, ideologies->getMajorIdeologies());
 	events->importLarOccupationEvents(theConfiguration, ideologies->getMajorIdeologies());
-	addCountryElectionEvents(ideologies->getMajorIdeologies(), vic2Localisations);
+	addCountryElectionEvents(ideologies->getMajorIdeologies(), vic2Localisations, theConfiguration.getDebug());
 	events->createStabilityEvents(ideologies->getMajorIdeologies(), theConfiguration);
 	events->generateGenericEvents(theConfiguration, ideologies->getMajorIdeologies());
 	events->giveGovernmentInExileEvent(createGovernmentInExileEvent(ideologies->getMajorIdeologies()));
@@ -251,7 +253,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	transferPuppetsToDominions();
 
-	addFocusTrees();
+	addFocusTrees(theConfiguration.getDebug());
 	adjustResearchFocuses();
 
 	dynamicModifiers.updateDynamicModifiers(ideologies->getMajorIdeologies());
@@ -1547,7 +1549,7 @@ bool HoI4::World::governmentsAllowFaction(const string& leaderIdeology, const st
 }
 
 
-void HoI4::World::addFocusTrees()
+void HoI4::World::addFocusTrees(bool debug)
 {
 	Log(LogLevel::Info) << "\tAdding focus trees";
 	for (auto [tag, country]: countries)
@@ -1565,7 +1567,7 @@ void HoI4::World::addFocusTrees()
 		if (country->isGeneratedDominion() && !country->getPuppets().empty())
 		{
 			country->addGenericFocusTree(ideologies->getMajorIdeologies());
-			country->addPuppetsIntegrationTree(*hoi4Localisations);
+			country->addPuppetsIntegrationTree(*hoi4Localisations, debug);
 		}
 		if (genericFocusTree.getBranches().contains("uk_colonial_focus") && country->isGreatPower() &&
 			 country->getDominionTag("south_asia"))
@@ -1590,7 +1592,8 @@ void HoI4::World::adjustResearchFocuses()
 
 
 void HoI4::World::addCountryElectionEvents(const std::set<string>& theMajorIdeologies,
-	 const Vic2::Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations,
+	 bool debug)
 {
 	Log(LogLevel::Info) << "\tAdding country election events";
 
@@ -1605,7 +1608,8 @@ void HoI4::World::addCountryElectionEvents(const std::set<string>& theMajorIdeol
 			 *onActions,
 			 theMajorIdeologies,
 			 vic2Localisations,
-			 *hoi4Localisations);
+			 *hoi4Localisations,
+			 debug);
 	}
 }
 
