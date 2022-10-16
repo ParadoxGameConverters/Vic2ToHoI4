@@ -5,7 +5,7 @@ on:
       - [ master ]
   pull_request:
     branches:
-      - [ master, 1.0Rommel ]
+      - [ master ]
 
 jobs:
   build_test_and_publish:

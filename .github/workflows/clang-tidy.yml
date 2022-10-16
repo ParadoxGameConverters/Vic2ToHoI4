@@ -3,9 +3,9 @@ name: Clang-tidy
 
 on:
   push:
-    branches: [ master, 1.0Rommel ]
+    branches: [ master ]
   pull_request:
-    branches: [ master, 1.0Rommel ]
+    branches: [ master ]
 
 jobs:
   checkout-and-check-formatting:
