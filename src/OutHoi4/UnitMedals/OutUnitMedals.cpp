@@ -1,4 +1,5 @@
 #include "src/OutHoi4/UnitMedals/OutUnitMedals.h"
+#include "external/common_items/OSCompatibilityLayer.h"
 #include <fstream>
 #include <stdexcept>
 
@@ -8,6 +9,8 @@ void HoI4::OutputUnitMedals(std::string_view output_name,
 	 const std::set<std::string>& major_ideologies,
 	 const std::map<std::string, std::string>& ideologies_unit_medals)
 {
+	commonItems::TryCreateFolder("output/" + std::string(output_name) + "/common/unit_medals");
+
 	std::ofstream out("output/" + std::string(output_name) + "/common/unit_medals/00_default.txt");
 	if (!out.is_open())
 	{
