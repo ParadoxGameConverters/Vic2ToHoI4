@@ -137,7 +137,7 @@ class Country
 		 const Regions& theRegions);
 	void addEmptyFocusTree();
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
-	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations);
+	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations, bool debug);
 	void addFocusTreeBranch(const std::string& branch, OnActions& onActions);
 	void adjustResearchFocuses() const;
 

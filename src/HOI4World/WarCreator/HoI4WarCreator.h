@@ -73,17 +73,21 @@ class HoI4WarCreator
 		 std::ofstream& AILog,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions,
-		 HoI4::Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations,
+		 bool debug);
 	std::vector<std::shared_ptr<HoI4::Faction>> democracyWarCreator(std::shared_ptr<HoI4::Country> country,
-		 HoI4::Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations,
+		 bool debug);
 	std::vector<std::shared_ptr<HoI4::Faction>> absolutistWarCreator(std::shared_ptr<HoI4::Country> country,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions,
-		 HoI4::Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations,
+		 bool debug);
 	std::vector<std::shared_ptr<HoI4::Faction>> radicalWarCreator(std::shared_ptr<HoI4::Country> country,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions,
-		 HoI4::Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations,
+		 bool debug);
 
 	std::vector<std::shared_ptr<HoI4::Country>> findWeakNeighbors(std::shared_ptr<HoI4::Country> country,
 		 const Maps::MapData& theMapData,
@@ -95,7 +99,8 @@ class HoI4WarCreator
 	std::vector<std::shared_ptr<HoI4::Faction>> addGreatPowerWars(std::shared_ptr<HoI4::Country> country,
 		 HoI4FocusTree& FocusTree,
 		 std::vector<std::shared_ptr<HoI4::Country>>& greatPowerTargets,
-		 HoI4::Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations,
+		 bool debug);
 	void addTradeEvents(std::shared_ptr<HoI4::Country> country,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowerTargets);
 

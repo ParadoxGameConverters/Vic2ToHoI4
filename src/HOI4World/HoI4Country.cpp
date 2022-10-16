@@ -1634,9 +1634,9 @@ void HoI4::Country::transferPuppets(const std::set<std::shared_ptr<Country>>& tr
 }
 
 
-void HoI4::Country::addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations)
+void HoI4::Country::addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations, bool debug)
 {
-	nationalFocus->addIntegratePuppetsBranch(tag, puppets, hoi4Localisations);
+	nationalFocus->addIntegratePuppetsBranch(tag, puppets, hoi4Localisations, debug);
 }
 
 

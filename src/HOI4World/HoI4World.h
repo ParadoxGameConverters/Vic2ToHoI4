@@ -210,11 +210,12 @@ class World: commonItems::parser
 	std::optional<std::string> returnSphereLeader(std::shared_ptr<HoI4::Country> possibleSphereling) const;
 	bool governmentsAllowFaction(const std::string& leaderGovernment, const std::string& allyGovernment) const;
 
-	void addFocusTrees();
+	void addFocusTrees(bool debug);
 	void adjustResearchFocuses();
 
 	void addCountryElectionEvents(const std::set<std::string>& theMajorIdeologies,
-		 const Vic2::Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations,
+		 bool debug);
 
 	std::vector<std::string> getStrongestNavyGps();
 
