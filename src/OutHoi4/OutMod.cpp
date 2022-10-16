@@ -39,13 +39,15 @@ void CreateModFiles(const std::string& output_name)
 	mod_file << "replace_path=\"common/countries\"\n";
 	mod_file << "replace_path=\"common/ideologies\"\n";
 	mod_file << "replace_path=\"common/national_focus\"\n";
+	mod_file << "replace_path=\"common/peace_conference/ai_peace\"\n";
+	mod_file << "replace_path=\"common/peace_conference/cost_modifiers\"\n";
 	mod_file << "replace_path=\"events\"\n";
 	mod_file << "replace_path=\"history/countries\"\n";
 	mod_file << "replace_path=\"history/states\"\n";
 	mod_file << "replace_path=\"history/units\"\n";
 	mod_file << "replace_path=\"map/supplyareas\"\n";
 	mod_file << "replace_path=\"map/strategicregions\"\n";
-	mod_file << "supported_version=\"1.11.*\"";
+	mod_file << "supported_version=\"1.12.*\"";
 	mod_file.close();
 
 	std::ofstream descriptor_file("output/" + output_name + "/descriptor.mod");
@@ -57,13 +59,15 @@ void CreateModFiles(const std::string& output_name)
 	descriptor_file << "replace_path=\"common/countries\"\n";
 	descriptor_file << "replace_path=\"common/ideologies\"\n";
 	descriptor_file << "replace_path=\"common/national_focus\"\n";
+	descriptor_file << "replace_path=\"common/peace_conference/ai_peace\"\n";
+	descriptor_file << "replace_path=\"common/peace_conference/cost_modifiers\"\n";
 	descriptor_file << "replace_path=\"events\"\n";
 	descriptor_file << "replace_path=\"history/countries\"\n";
 	descriptor_file << "replace_path=\"history/states\"\n";
 	descriptor_file << "replace_path=\"history/units\"\n";
 	descriptor_file << "replace_path=\"map/supplyareas\"\n";
 	descriptor_file << "replace_path=\"map/strategicregions\"\n";
-	descriptor_file << "supported_version=\"1.11.*\"";
+	descriptor_file << "supported_version=\"1.12.*\"";
 	descriptor_file.close();
 }
 

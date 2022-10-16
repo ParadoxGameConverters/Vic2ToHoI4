@@ -1,6 +1,6 @@
 autonomy_state = {
 	id = autonomy_supervised_state
-	
+	use_overlord_color = yes
 	min_freedom_level = 0.75
 
 	peace_conference_initial_freedom = 0.001

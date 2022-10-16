@@ -7,7 +7,6 @@
 #include "src/HOI4World/Characters/CharacterFactory.h"
 #include "src/HOI4World/Characters/CharactersFactory.h"
 #include "src/HOI4World/Decisions/Decisions.h"
-#include "src/HOI4World/Diplomacy/AiPeacesUpdater.h"
 #include "src/HOI4World/Diplomacy/Faction.h"
 #include "src/HOI4World/Events/Events.h"
 #include "src/HOI4World/Events/GovernmentInExileEvent.h"
@@ -32,6 +31,8 @@
 #include "src/HOI4World/Names/Names.h"
 #include "src/HOI4World/Operations/OperationsFactory.h"
 #include "src/HOI4World/OperativeNames/OperativeNamesFactory.h"
+#include "src/HOI4World/PeaceConferences/IdeologicalAiPeace.h"
+#include "src/HOI4World/PeaceConferences/IdeologicalCostModifiers.h"
 #include "src/HOI4World/Regions/RegionsFactory.h"
 #include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisationsFactory.h"
 #include "src/HOI4World/ScriptedTriggers/ScriptedTriggersUpdater.h"
@@ -39,6 +40,7 @@
 #include "src/HOI4World/Sounds/SoundEffectsFactory.h"
 #include "src/HOI4World/States/DefaultStatesImporter.h"
 #include "src/HOI4World/States/HoI4State.h"
+#include "src/HOI4World/UnitMedals/IdeologicalUnitMedals.h"
 #include "src/HOI4World/WarCreator/HoI4WarCreator.h"
 #include "src/Mappers/CasusBelli/CasusBellisFactory.h"
 #include "src/Mappers/Country/CountryMapperFactory.h"
@@ -93,8 +95,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
 	 theIdeas(std::make_unique<HoI4::Ideas>()),
-	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
-	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
+	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), events(make_unique<HoI4::Events>()),
+	 onActions(make_unique<HoI4::OnActions>())
 {
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
@@ -232,7 +234,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 *events,
 		 getSouthAsianCountries(),
 		 strongestGpNavies);
-	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
 	importCharacters(characterFactory);
 	addLeaders(characterFactory);
@@ -265,18 +266,22 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 GameRules::Parser().parseRulesFile(theConfiguration.getHoI4Path() + "/common/game_rules/00_game_rules.txt"));
 	gameRules->updateRules();
 
-	occupationLaws = OccupationLaws::Factory().getOccupationLaws(theConfiguration);
+	occupationLaws = OccupationLaws::Factory().getOccupationLaws();
 	occupationLaws->updateLaws(ideologies->getMajorIdeologies());
 
 	operativeNames = OperativeNames::Factory::getOperativeNames(theConfiguration.getHoI4Path());
 	operativeNames->addCountriesToNameSets(countries);
 
-	operations = Operations::Factory().getOperations(theConfiguration.getHoI4Path());
+	operations = Operations::Factory().getOperations();
 	operations->updateOperations(ideologies->getMajorIdeologies());
 
 	soundEffects = SoundEffectsFactory().createSoundEffects(countries);
 
 	recordUnbuiltCanals(sourceWorld);
+
+	ideological_cost_modifiers_ = ImportIdeologicalCostModifiers();
+	ideological_ai_peace_ = ImportIdeologicalAiPeace();
+	ideological_unit_medals_ = ImportIdeologicalUnitMedals();
 }
 
 
@@ -1270,6 +1275,24 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 {
 	Log(LogLevel::Info) << "\t\tConverting armies";
 
+	ifstream plane_designs_file("Configurables/plane_designs.txt");
+	if (!plane_designs_file.is_open())
+	{
+		std::runtime_error e("Could not open Configurables/plane_designs.txt. Double-check your converter installation");
+		throw e;
+	}
+	PossiblePlaneDesigns possible_plane_designs(plane_designs_file);
+	plane_designs_file.close();
+
+	ifstream tank_designs_file("Configurables/tankDesigns.txt");
+	if (!tank_designs_file.is_open())
+	{
+		std::runtime_error e("Could not open Configurables/tankDesigns.txt. Double-check your converter installation");
+		throw e;
+	}
+	PossibleTankDesigns possible_tank_designs(tank_designs_file);
+	tank_designs_file.close();
+
 	for (auto& [tag, country]: countries)
 	{
 		std::set<std::string> ownersToSkip;
@@ -1294,16 +1317,8 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 			}
 		}
 
-		ifstream designsFile("Configurables/tankDesigns.txt");
-		if (!designsFile.is_open())
-		{
-			std::runtime_error e("Could not open Configurables/tankDesigns.txt. Double-check your converter installation");
-			throw e;
-		}
-		PossibleTankDesigns possibleDesigns(designsFile);
-		designsFile.close();
-
-		country->addTankDesigns(possibleDesigns);
+		country->AddPlaneDesigns(possible_plane_designs);
+		country->addTankDesigns(possible_tank_designs);
 	}
 }
 

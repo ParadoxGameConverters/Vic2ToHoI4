@@ -1083,7 +1083,7 @@
 	link = { vic2 = 2332 hoi4 = 12954 hoi4 = 5169 hoi4 = 5118 } # Osorno -> Valdivia, Puerto Montt, Río Negro
 	link = { vic2 = 2333 hoi4 = 2161 hoi4 = 10961 hoi4 = 8198 hoi4 = 8218 hoi4 = 5159 } # Puerto Aisen -> Coyhaique, land, land, Puerto Natales, land
 	link = { vic2 = 2334 hoi4 = 5201 hoi4 = 5215 } # Punta Arenas -> land, Punta Arenas
-	link = { vic2 = 2335 hoi4 = 8913 hoi4 = 5209 } # Porvenir -> land, Porvenir
+	link = { vic2 = 2335 hoi4 = 8913 hoi4 = 5209 } # Porvenir -> lake, Porvenir
 	link = { comment = "* Argentina" }
 	link = { vic2 = 2554 hoi4 = 11007 } # Misiones -> Posadas
 	link = { vic2 = 2358 hoi4 = 8238 } # Santo Tomas -> Santo Tomé
@@ -1271,7 +1271,7 @@
 	link = { vic2 = 765 hoi4 = 11773 hoi4 = 11874 hoi4 = 902 } # Cagliari -> Cagliari, Iglesias, Muravera
 	link = { vic2 = 766 hoi4 = 9772 hoi4 = 11824 hoi4 = 11755 hoi4 = 9863 hoi4 = 6891 } # Sassari -> Sassari, Oristano, Nuoro, Olbia, Tempio Pausania
 	link = { vic2 = 762 hoi4 = 10074 hoi4 = 3857 hoi4 = 7147 hoi4 = 7059 } # Palermo -> Palermo, Caltanissetta, Sciacca, Marsala
-	link = { vic2 = 764 hoi4 = 4014 hoi4 = 1009 hoi4 = 12047 } # Catania -> Catania, Gela, Paternò
+	link = { vic2 = 764 hoi4 = 4014 hoi4 = 1009 hoi4 = 12047 hoi4 = 13256 } # Catania -> Catania, Gela, Paternò, land
 	link = { vic2 = 763 hoi4 = 4159 hoi4 = 1156 } # Messina -> Messina, Barcellona Pozzo di Gotto
 	link = { vic2 = 759 hoi4 = 9990 } # Reggio di Calabria -> Reggio Calabria
 	link = { vic2 = 760 hoi4 = 3901 hoi4 = 12066 hoi4 = 12098 hoi4 = 10027 } # Catanzaro -> Cosenza, Catanzaro, Crotone, Castrovillari
@@ -1316,7 +1316,8 @@
 	link = { vic2 = 736 hoi4 = 6626 } # Trieste -> Trieste
 	link = { vic2 = 737 hoi4 = 9613 } # Gorizia -> Udine
 	link = { vic2 = 769 hoi4 = 599 hoi4 = 11595 } # Postojna -> Longatico, Gorizia
-	link = { vic2 = 778 vic2 = 770 hoi4 = 11735 } # Fiume, Pola -> Pola
+	link = { vic2 = 778 hoi4 = 11564 } # Fiume -> Rijeka
+	link = { vic2 = 770 hoi4 = 11735 } # Pola -> Pola
 	link = { vic2 = 781 hoi4 = 3943 } # Zadar -> Zara
 	link = { vic2 = 734 hoi4 = 6631 hoi4 = 9598 hoi4 = 11598 } # Trent -> Cles, Trento, Bolzano
 	link = { vic2 = 735 hoi4 = 9630 hoi4 = 6675 hoi4 = 11615 } # Bozen -> Merano, Malles Venosta, Brunico
@@ -1576,7 +1577,7 @@
 	link = { vic2 = 768 hoi4 = 9627 hoi4 = 3631 hoi4 = 9596 hoi4 = 6650 } # Ljubljana -> Ljubljana, Kranj, Kamnik, Novo mesto
 	link = { vic2 = 767 hoi4 = 596 hoi4 = 3654 hoi4 = 665 hoi4 = 6672 } # Maribor -> Velenje, Celje, Maribor, Murksa Sobota
 	link = { vic2 = 774 hoi4 = 11901 hoi4 = 591 hoi4 = 6611 hoi4 = 984 } # Senj -> Gospic, Senj, Plitvicka Jezera, Korenica
-	link = { vic2 = 773 hoi4 = 3601 hoi4 = 11564 } # Karlovac -> Ogulin, Rijeka
+	link = { vic2 = 773 hoi4 = 3601 hoi4 = 13252 } # Karlovac -> Ogulin, land
 	link = { vic2 = 780 hoi4 = 3924 hoi4 = 3974 hoi4 = 11816 } # Split -> Split, Knin, Metkovic
 	link = { vic2 = 782 hoi4 = 6889 hoi4 = 3868 } # Dubrovnik -> Dubrovnik, Hvar
 	link = { vic2 = 771 hoi4 = 11581 hoi4 = 3592 } # Zagreb -> Zagreb, Karlovac
@@ -1613,8 +1614,8 @@
 	link = { vic2 = 807 hoi4 = 3865 hoi4 = 11856 hoi4 = 974 } # Bitola -> Prilep, Ohrid, Bitola
 	link = { vic2 = 806 hoi4 = 3882 hoi4 = 3833 hoi4 = 907 hoi4 = 6886 } # Skopje -> Skopje, Kavadarci, Kocani, Strumica
 	link = { comment = "* Albania" }
-	link = { vic2 = 849 hoi4 = 9875 hoi4 = 6900 } # Tirana -> Elbasan, Pogradec
-	link = { vic2 = 851 hoi4 = 9914 } # Durres -> Tirana
+	link = { vic2 = 849 hoi4 = 9914 hoi4 = 9875 hoi4 = 6900 } # Tirana -> Tirana, Elbasan, Pogradec
+	link = { vic2 = 851 hoi4 = 13255 } # Durres -> land
 	link = { vic2 = 850 hoi4 = 9780 hoi4 = 3896 hoi4 = 11762 } # Shkoder -> Shkodër, Kukës, Peshkopi
 	link = { vic2 = 852 hoi4 = 11767 hoi4 = 3884 } # Vlore -> Vlorë, Fier
 	link = { vic2 = 853 hoi4 = 914 hoi4 = 13234 hoi4 = 3448 hoi4 = 13235 } # Gjirokaster -> Sarandë, Gjirokastër, Berat, Korçë
@@ -1697,8 +1698,8 @@
 	link = { vic2 = 953 hoi4 = 9425 hoi4 = 3743 hoi4 = 11550 hoi4 = 11411 hoi4 = 6460 } # Stanislavov -> Nadwórna, Kosów, Kolomyja, Stanislawów, Dolina
 	link = { vic2 = 955 hoi4 = 3430 hoi4 = 6429 hoi4 = 3457 hoi4 = 3511 hoi4 = 6509 hoi4 = 462 } # Proskorov -> Kam'yanets'-Podil's'kyi, Derazhnya, Proskuriv, Shepetivka, Volochys'k, Horodok
 	link = { vic2 = 952 hoi4 = 3562 hoi4 = 438 hoi4 = 3483 hoi4 = 11427 hoi4 = 491 hoi4 = 9454 } # Tarnopol -> Borszczów, Czortków, Tarnopol, Buczacz, Brzezany, Zloczów
-	link = { vic2 = 951 hoi4 = 6431 hoi4 = 6483 hoi4 = 9468} # Stryi -> Sambor, Drohobycz, Gródek
-	link = { vic2 = 705 hoi4 = 466 hoi4 = 3434 hoi4 = 6522 hoi4 = 11507 hoi4 = 6499 hoi4 = 3410 hoi4 = 442 hoi4 = 9494 } # Przemysl -> Krosno, Przemysl, Rzeszów, Stalowa Wola, Mielec, Jaslo, Tarnów, Zamosc
+	link = { vic2 = 951 hoi4 = 6431 hoi4 = 6483 hoi4 = 9468 } # Stryi -> Sambor, Drohobycz, Gródek
+	link = { vic2 = 705 hoi4 = 466 hoi4 = 3434 hoi4 = 6522 hoi4 = 11507 hoi4 = 6499 hoi4 = 3410 hoi4 = 442 hoi4 = 9494 } # Przemysl -> Krosno, Przemysl, Rzeszów, Stalowa Wola, Mielec, Jaslo, Tarnów, Jaroslaw
 	link = { vic2 = 704 hoi4 = 417 } # Nowy Sacz -> Nowy Sacz
 	link = { vic2 = 714 hoi4 = 11413 hoi4 = 11398 } # Tarnow -> Bochnia, Skawina
 	link = { vic2 = 2584 hoi4 = 9412 } # Bielsko -> Oswiecim
@@ -1710,7 +1711,7 @@
 	link = { vic2 = 710 hoi4 = 493 hoi4 = 548 hoi4 = 11515 hoi4 = 6401 hoi4 = 9400 hoi4 = 3482 hoi4 = 11492 } # Skierniewicz -> Borysew, Gostynin, Konin, Wloclawek, Pruszków, Tomaszów Mazowiecki, Sochaczew
 	link = { vic2 = 706 hoi4 = 3544 hoi4 = 6511 hoi4 = 12562 hoi4 = 524 hoi4 = 467 } # Warsaw -> Warszawa, Piaseczno, Minsk Mazowiecki, Legionowo, Grójec
 	link = { vic2 = 713 hoi4 = 6416 hoi4 = 3458 hoi4 = 562 } # Radom -> Starachowice, Radom, Ostrowiec
-	link = { vic2 = 715 hoi4 = 11399 hoi4 = 9521 hoi4 = 6580 hoi4 = 9452 hoi4 = 3559 } # Lublin -> Lublin, Krasnik, Jaroslaw, Chelm, Pulawy
+	link = { vic2 = 715 hoi4 = 11399 hoi4 = 9521 hoi4 = 6580 hoi4 = 9452 hoi4 = 3559 } # Lublin -> Lublin, Krasnik, Zamosc, Chelm, Pulawy
 	link = { vic2 = 711 hoi4 = 9544 hoi4 = 3521 hoi4 = 6484 hoi4 = 11466 hoi4 = 402 } # Siedlce -> Miedzyrzec Podlaski, Lukow, Lubartow, Biala Podlaska, Siedlce
 	link = { vic2 = 702 hoi4 = 11479 hoi4 = 536 hoi4 = 9558 } # Lemberg -> Lwów, Krystynopol, Busk
 	link = { vic2 = 956 hoi4 = 572 hoi4 = 6557 hoi4 = 11543 hoi4 = 6435 } # Rovne -> Luck, Równe, Korzec, Kostopol
@@ -2109,7 +2110,7 @@
 	link = { vic2 = 2621 hoi4 = 1819 } # Srednekolymsk -> Zyryanka
 	link = { vic2 = 2661 hoi4 = 13062 } # Belebino -> land
 	link = { vic2 = 2666 hoi4 = 5264 } # Komsomolskiy -> Chuvanskoye
-	link = { vic2 = 2634 vic2 = 2637 hoi4 = 13063 hoi4 = 13204 } # MANY-TO-MANY: Beringovsky, Vyon -> Anadyr, Lavrentiya
+	link = { vic2 = 2634 vic2 = 2637 hoi4 = 13063 hoi4 = 13204 hoi4 = 13254 } # MANY-TO-MANY: Beringovsky, Vyon -> Anadyr, Lavrentiya, land
 	link = { vic2 = 2622 vic2 = 2616 hoi4 = 4744 } # Majn, Korf -> Khatyrka
 	link = { vic2 = 2663 hoi4 = 1823 } # Manily -> Palana
 	link = { vic2 = 2633 hoi4 = 1839 } # Palana -> Tigil'
@@ -2431,9 +2432,9 @@
 	link = { vic2 = 1952 hoi4 = 5028 } # Nguru -> Gombe
 	link = { vic2 = 1953 vic2 = 1951 hoi4 = 4997 } # Dikoa, Kuka -> Maiduguri
 	link = { comment = "* Abyssinia" }
-	link = { vic2 = 1850 hoi4 = 12723 hoi4 = 5017 } # Keren -> Agordat, Cheren
+	link = { vic2 = 1850 hoi4 = 12723 hoi4 = 5017 hoi4 = 13251 } # Keren -> Agordat, Cheren, land
 	link = { vic2 = 1849 hoi4 = 5091 hoi4 = 5047 } # Massawa -> Massaua, Nacfa
-	link = { vic2 = 1848 hoi4 = 12766 } # Asmara -> Asmara
+	link = { vic2 = 1848 hoi4 = 12766 hoi4 = 13250 } # Asmara -> Asmara, land
 	link = { vic2 = 1851 hoi4 = 8043 } # Assab -> Assab
 	link = { vic2 = 1875 hoi4 = 4985 hoi4 = 8124 } # Djibuti -> Tadjourah, Djibouti
 	link = { vic2 = 1874 hoi4 = 10777 } # Zeyla -> Borama
@@ -2443,22 +2444,22 @@
 	link = { vic2 = 1868 vic2 = 1869 hoi4 = 10928 hoi4 = 8164 hoi4 = 2063 } # MANY-TO-MANY: Mogadishu, Baidoa -> Merca, Gelib, Baidoa
 	link = { vic2 = 1870 hoi4 = 12941 hoi4 = 11014 } # Kismayo -> Chisimaio, Bardera
 	link = { vic2 = 3224 hoi4 = 13137 } # Lake Tana -> (Lake)
-	link = { vic2 = 1867 hoi4 = 12757 hoi4 = 12812 } # Ogaden -> Degeh Bur, Gode
-	link = { vic2 = 1866 hoi4 = 4995 hoi4 = 10775 } # Bale -> Dolo, Robe
-	link = { vic2 = 1864 hoi4 = 8019 hoi4 = 8062 } # Sidamo -> Sawla, Negele Arsi
-	link = { vic2 = 1862 hoi4 = 7912 } # Bonga -> Gambela
+	link = { vic2 = 1867 hoi4 = 12757 hoi4 = 12812 hoi4 = 13253 } # Ogaden -> Degeh Bur, Gode, land
+	link = { vic2 = 1866 hoi4 = 4995 hoi4 = 10775 hoi4 = 13248 } # Bale -> Dolo, Robe, land
+	link = { vic2 = 1864 hoi4 = 8019 hoi4 = 8062 hoi4 = 13246 hoi4 = 13247 } # Sidamo -> Sawla, Negele Arsi, land, land
+	link = { vic2 = 1862 hoi4 = 7912 hoi4 = 13243 hoi4 = 13244 hoi4 = 13245 hoi4 = 2009 } # Bonga -> Gambela, land, land, land, Asosa
 	link = { vic2 = 1860 hoi4 = 10734 } # Hawassa -> Awasa
 	link = { vic2 = 1861 hoi4 = 8036 } # Aselia -> Adaamaa
-	link = { vic2 = 1865 hoi4 = 7980 hoi4 = 12714 } # Harer -> Harar, Jijiga
-	link = { vic2 = 1859 hoi4 = 5010 } # Ankober -> Adis Abeba
-	link = { vic2 = 1863 hoi4 = 2009 hoi4 = 12856 } # Jimma -> Asosa, Nekemte
-	link = { vic2 = 1855 hoi4 = 4954 } # Debre Markos -> Bahir Dar
+	link = { vic2 = 1865 hoi4 = 7980 hoi4 = 12714 hoi4 = 13249 } # Harer -> Harar, Jijiga, land
+	link = { vic2 = 1859 hoi4 = 5010 hoi4 = 13239 } # Ankober -> Adis Abeba, land
+	link = { vic2 = 1863 hoi4 = 12856 } # Jimma -> Nekemte
+	link = { vic2 = 1855 hoi4 = 4954 hoi4 = 13242 } # Debre Markos -> Bahir Dar, land
 	link = { vic2 = 1854 hoi4 = 2040 } # Matamma -> Metema
 	link = { vic2 = 1852 hoi4 = 1984 } # Gonder -> Gonder
-	link = { vic2 = 1853 hoi4 = 5097 } # Debre Tabor -> Dese
-	link = { vic2 = 1858 hoi4 = 5041 } # Asaita -> Asayita
+	link = { vic2 = 1853 hoi4 = 5097 hoi4 = 13241 } # Debre Tabor -> Dese, land
+	link = { vic2 = 1858 hoi4 = 5041 hoi4 = 13236 hoi4 = 13240 } # Asaita -> Asayita, land, land
 	link = { vic2 = 1857 hoi4 = 7944 } # Antalo -> Sok'ot'a
-	link = { vic2 = 1856 hoi4 = 2072 } # Aksum -> Mek'ele
+	link = { vic2 = 1856 hoi4 = 2072 hoi4 = 13237 hoi4 = 13238 } # Aksum -> Mek'ele, land, land
 	link = { comment = "* British East Africa" }
 	link = { vic2 = 3236 vic2 = 3103 vic2 = 3102 vic2 = 3294 vic2 = 3293 hoi4 = 13135 hoi4 = 2308 hoi4 = 13176 hoi4 = 13177 hoi4 = 4201 hoi4 = 2281 hoi4 = 13173 } # MANY-TO-MANY: Anam a Cheper, Lake Tangayika, Ukerewe, Lake Mweru, Lake Rukwa -> (Lake), (Lake), (Lake), (Lake), (Lake), (Lake), (Lake)
 	link = { vic2 = 2029 vic2 = 2033 hoi4 = 5210 } # Mombasa, Voi -> Mombasa

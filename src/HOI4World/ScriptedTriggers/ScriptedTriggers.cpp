@@ -15,7 +15,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 		scriptedTrigger.setBody(bodyString.getString());
 		ideologyScriptedTriggers.push_back(scriptedTrigger);
 	});
-	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/ideology_scripted_triggers.txt");
+	parseFile("blankmod/common/scripted_triggers/ideology_scripted_triggers.txt");
 	clearRegisteredKeywords();
 
 	registerRegex(commonItems::catchallRegex, [this](const std::string& name, std::istream& theStream) {

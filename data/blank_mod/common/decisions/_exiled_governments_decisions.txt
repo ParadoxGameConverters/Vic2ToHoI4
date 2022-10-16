@@ -87,6 +87,13 @@ governments_in_exile = {
 					has_legitimacy > 60
 				}
 			}
+			modifier = {
+				factor = 0
+				has_opinion = {
+					target = FROM
+					value < 60
+				}
+			}
 		}
 	}
 
@@ -103,9 +110,7 @@ governments_in_exile = {
 
 		visible = {
 			FROM = { is_hosting_exile = ROOT }
-		    FROM = {
-		    	has_legitimacy < 100
-		    }
+		    has_legitimacy < 100
 		}
 
 
@@ -122,6 +127,10 @@ governments_in_exile = {
 
 		ai_will_do = {
 			factor = 0.1
+			modifier = {
+				factor = 0
+				has_war = no
+			}
 		}
 	}
 
@@ -170,7 +179,7 @@ governments_in_exile = {
 		}
 
 		days_remove = 120
-
+	
 		ai_will_do = {
 			factor = 0
 		}
@@ -193,6 +202,7 @@ governments_in_exile = {
 		}
 
 		visible = {
+			has_war = yes
 			FROM = { is_hosting_exile = ROOT }
 		    FROM = {
 		    	has_legitimacy > 10
@@ -202,7 +212,9 @@ governments_in_exile = {
 
 		targets = { host }
 
-		target_trigger = { FROM = { is_hosting_exile = ROOT } }
+		target_trigger = {
+			FROM = { is_hosting_exile = ROOT }
+		}
 
 		modifier = {
 			political_power_cost = 1.0
@@ -243,6 +255,7 @@ governments_in_exile = {
 		}
 
 		visible = {
+			has_war = yes
 			FROM = { is_exiled_in = ROOT }
 		    FROM = {
 		    	has_legitimacy > 30
@@ -253,7 +266,9 @@ governments_in_exile = {
 
 		target_array = exiles
 
-		target_trigger = { FROM = { is_exiled_in = ROOT } }
+		target_trigger = {
+			FROM = { is_exiled_in = ROOT }
+		}
 
 		targeted_modifier = {
 			tag = FROM
@@ -315,6 +330,10 @@ governments_in_exile = {
 
 		ai_will_do = {
 			factor = 0.05
+			modifier = {
+				factor = 0
+				has_war = no
+			}
 		}
 	}
 
@@ -454,13 +473,14 @@ category_exile_forces = {
 		}
 
 		visible = {
+			has_war = yes
 			FROM = {
 				is_exiled_in = ROOT
 		    	has_legitimacy > 40
 		    }
 		}
 
-
+		fire_only_once = yes
 		target_array = exiles
 
 		target_trigger = { FROM = { is_exiled_in = ROOT } }
@@ -521,6 +541,7 @@ category_exile_forces = {
 		}
 
 		visible = {
+			has_war = yes
 			FROM = {
 				is_exiled_in = ROOT
 		    	has_legitimacy > 25

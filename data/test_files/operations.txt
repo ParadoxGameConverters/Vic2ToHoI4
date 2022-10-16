@@ -1,2 +1,3 @@
 operation_one = {}
 operation_two = {}
+operation_coup_government = {}

@@ -426,6 +426,7 @@ technologies = {
 		
 		categories = {
 			para_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -454,6 +455,7 @@ technologies = {
 		
 		categories = {
 			para_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -477,6 +479,7 @@ technologies = {
 		
 		categories = {
 			para_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -516,6 +519,7 @@ technologies = {
 		
 		categories = {
 			marine_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -544,6 +548,7 @@ technologies = {
 		
 		categories = {
 			marine_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -566,6 +571,7 @@ technologies = {
 		
 		categories = {
 			marine_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -606,6 +612,7 @@ technologies = {
 		categories = {
 			infantry_tech
 			mountaineers_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -635,6 +642,7 @@ technologies = {
 		categories = {
 			infantry_tech
 			mountaineers_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -657,6 +665,7 @@ technologies = {
 		categories = {
 			infantry_tech
 			mountaineers_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -699,6 +708,7 @@ technologies = {
 			mountaineers_tech
 			marine_tech
 			para_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -735,6 +745,7 @@ technologies = {
 			mountaineers_tech
 			marine_tech
 			para_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -766,6 +777,7 @@ technologies = {
 			mountaineers_tech
 			marine_tech
 			para_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -800,6 +812,7 @@ technologies = {
 			mountaineers_tech
 			marine_tech
 			para_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -833,6 +846,7 @@ technologies = {
 			mountaineers_tech
 			marine_tech
 			para_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -862,6 +876,7 @@ technologies = {
 			mountaineers_tech
 			marine_tech
 			para_tech
+			cat_special_forces_generic
 		}
 		
 		ai_will_do = {
@@ -898,6 +913,29 @@ technologies = {
 		paratrooper = {
 			jungle = {
 				attack = 0.05
+				movement = 0.1
+			}
+		}
+
+	}
+
+	SWI_mountaineer_paratroopers_tech = { #Unlocked in Swiss Focus SWI_mountaneer_paratroopers
+
+		research_cost = 1
+
+		allow = {
+			always = no
+		}
+
+		paratrooper = {  # CHANGE TOOLTIP WHEN NEEDED
+			mountain = {
+				attack = 0.35
+				defence = 0.1
+				movement = 0.2
+			}
+			hills = {
+				attack = 0.2
+				defence = 0.05
 				movement = 0.1
 			}
 		}
@@ -1503,6 +1541,7 @@ technologies = {
 		categories = {
 			motorized_equipment
 			armor
+			cat_armored_cars
 		}
 		
 		ai_will_do = {
@@ -1550,6 +1589,7 @@ technologies = {
 		categories = {
 			motorized_equipment
 			armor
+			cat_armored_cars
 		}
 		
 		ai_will_do = {
@@ -1557,17 +1597,17 @@ technologies = {
 			
 			modifier = {
 				factor = 2
-				date > "1937.1.1"
+				date > "1940.1.1"
 			}
 			
 			modifier = {
 				factor = 2
-				date > "1938.1.1"
+				date > "1941.1.1"
 			}
 			
 			modifier = {
 				factor = 2
-				date > "1939.1.1"
+				date > "1942.1.1"
 			}
 			modifier = {
 				is_major = no
@@ -1592,6 +1632,7 @@ technologies = {
 		categories = {
 			motorized_equipment
 			armor
+			cat_armored_cars
 		}
 		
 		sub_technologies = {
@@ -1603,17 +1644,17 @@ technologies = {
 			
 			modifier = {
 				factor = 2
-				date > "1937.1.1"
+				date > "1942.1.1"
 			}
 			
 			modifier = {
 				factor = 2
-				date > "1938.1.1"
+				date > "1943.1.1"
 			}
 			
 			modifier = {
 				factor = 2
-				date > "1939.1.1"
+				date > "1944.1.1"
 			}
 			modifier = {
 				is_major = no
@@ -1635,6 +1676,7 @@ technologies = {
 		categories = {
 			motorized_equipment
 			armor
+			cat_armored_cars
 		}
 
 		ai_will_do = {
@@ -1642,17 +1684,17 @@ technologies = {
 			
 			modifier = {
 				factor = 2
-				date > "1937.1.1"
+				date > "1942.1.1"
 			}
 			
 			modifier = {
 				factor = 2
-				date > "1938.1.1"
+				date > "1943.1.1"
 			}
 			
 			modifier = {
 				factor = 2
-				date > "1939.1.1"
+				date > "1944.1.1"
 			}
 			modifier = {
 				is_major = no
@@ -1879,6 +1921,56 @@ technologies = {
 
 		enable_subunits = {
 			penal_battalion
+		}
+	}
+
+	######### FROM ITALIAN FOCUS ##########
+	blackshirt_assault_battalion_tech = {
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		enable_subunits = {
+			blackshirt_assault_battalion
+		}
+	}
+
+	mountain_warfare_militias_tech = { #Hidden tech showed as part of ITA_grande_rivolta_rurale_ns national spirit
+		
+		allow = {
+			always = no
+		}
+
+		research_cost = 1
+		start_year = 1936
+
+		militia = {
+			hills = {
+				attack = 0.05 
+				movement = 0.1
+			}
+			mountain = {
+				attack = 0.05 
+				movement = 0.1
+			}
+		}
+	}
+
+	### Improved Irregular Infantry Organization 
+
+	ETH_improved_irregular_infantry_tech = {
+		research_cost = 1
+		# only from focus!!! #####
+		allow = {
+			always = no
+		}
+		irregular_infantry = {
+			max_organisation = 10
+			maximum_speed = 1.25 #TODO_TA for testing only, remove
 		}
 	}
 }

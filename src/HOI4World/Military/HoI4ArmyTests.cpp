@@ -1,5 +1,6 @@
 #include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/googletest/googletest/include/gtest/gtest.h"
+#include "src/HOI4World/Countries/Equipment.h"
 #include "src/HOI4World/Military/HoI4Army.h"
 #include "src/HOI4World/MilitaryMappings/MilitaryMappings.h"
 #include "src/HOI4World/States/HoI4State.h"
@@ -17,7 +18,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, ArmyStartsEmpty)
 	std::ostringstream output;
 	output << theArmy;
 
-	ASSERT_EQ("", output.str());
+	EXPECT_EQ("", output.str());
 }
 
 
@@ -33,17 +34,18 @@ TEST(HoI4World_Military_HoI4ArmyTests, EmptyArmyStaysEmpty)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings("default", mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 0,
 		 1.0,
 		 HoI4::technologies{},
 		 theStates,
-		 *Mappers::ProvinceMapper::Builder().Build());
+		 *Mappers::ProvinceMapper::Builder().Build(),
+		 "");
 
 	std::ostringstream output;
 	output << theArmy;
 
-	ASSERT_EQ("", output.str());
+	EXPECT_EQ("", output.str());
 }
 
 
@@ -77,17 +79,18 @@ TEST(HoI4World_Military_HoI4ArmyTests, InsufficientDivisionsBecomeNothing)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 0,
 		 1.0,
 		 HoI4::technologies{},
 		 theStates,
-		 *Mappers::ProvinceMapper::Builder().Build());
+		 *Mappers::ProvinceMapper::Builder().Build(),
+		 "");
 
 	std::ostringstream output;
 	output << theArmy;
 
-	ASSERT_EQ("", output.str());
+	EXPECT_EQ("", output.str());
 }
 
 
@@ -192,17 +195,20 @@ TEST(HoI4World_Military_HoI4ArmyTests, LeftoverRegimentsBecomeEquipment)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 0,
 		 1.0,
 		 HoI4::technologies{},
 		 theStates,
-		 *Mappers::ProvinceMapper::Builder().Build());
+		 *Mappers::ProvinceMapper::Builder().Build(),
+		 "");
 
-	std::map<std::string, unsigned int> expectedEquipment{{"infantry_equipment_0", 660},
-		 {"artillery_equipment_1", 36},
-		 {"gw_tank_equipment", 60}};
-	ASSERT_EQ(expectedEquipment, theArmy.getLeftoverEquipment());
+	std::vector<HoI4::Equipment> expected_equipment{
+		 HoI4::Equipment("", "infantry_equipment_0", std::nullopt, std::nullopt, 660),
+		 HoI4::Equipment("", "artillery_equipment", std::nullopt, std::nullopt, 36),
+		 HoI4::Equipment("", "gw_tank_equipment", std::nullopt, "NOT = { has_dlc = \"No Step Back\" }", 60),
+		 HoI4::Equipment("", "light_tank_chassis_0", "GW Light Tank", "has_dlc = \"No Step Back\"", 60)};
+	EXPECT_THAT(expected_equipment, theArmy.GetLeftoverEquipment());
 }
 
 
@@ -254,7 +260,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 11821,
 		 1.0,
 		 HoI4::technologies{},
@@ -262,11 +268,12 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 		 *Mappers::ProvinceMapper::Builder()
 				.addHoI4ToVic2ProvinceMapping(11821, {496})
 				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build());
+				.Build(),
+		 "");
 
 	std::ostringstream output;
 	output << theArmy;
-	ASSERT_EQ(std::string("\tdivision = {\n"
+	EXPECT_EQ(std::string("\tdivision = {\n"
 								 "\t\tname = \"1. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
@@ -339,7 +346,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 11821,
 		 1.0,
 		 HoI4::technologies{},
@@ -347,11 +354,12 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 		 *Mappers::ProvinceMapper::Builder()
 				.addHoI4ToVic2ProvinceMapping(11821, {496})
 				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build());
+				.Build(),
+		 "");
 
 	std::ostringstream output;
 	output << theArmy;
-	ASSERT_EQ(std::string("\tdivision = {\n"
+	EXPECT_EQ(std::string("\tdivision = {\n"
 								 "\t\tname = \"1. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
@@ -425,7 +433,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, StrengthConverts)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 11821,
 		 1.0,
 		 HoI4::technologies{},
@@ -433,11 +441,12 @@ TEST(HoI4World_Military_HoI4ArmyTests, StrengthConverts)
 		 *Mappers::ProvinceMapper::Builder()
 				.addHoI4ToVic2ProvinceMapping(11821, {496})
 				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build());
+				.Build(),
+		 "");
 
 	std::ostringstream output;
 	output << theArmy;
-	ASSERT_EQ(std::string("\tdivision = {\n"
+	EXPECT_EQ(std::string("\tdivision = {\n"
 								 "\t\tname = \"1. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
@@ -517,7 +526,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 11821,
 		 1.0,
 		 HoI4::technologies{},
@@ -525,11 +534,12 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 		 *Mappers::ProvinceMapper::Builder()
 				.addHoI4ToVic2ProvinceMapping(11821, {496})
 				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build());
+				.Build(),
+		 "");
 
 	std::ostringstream output;
 	output << theArmy;
-	ASSERT_EQ(std::string("\tdivision = {\n"
+	EXPECT_EQ(std::string("\tdivision = {\n"
 								 "\t\tname = \"1. Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Infantry Brigade\"\n"
@@ -616,16 +626,17 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 11821,
 		 1.0,
 		 HoI4::technologies{},
 		 theStates,
-		 *Mappers::ProvinceMapper::Builder().Build());
+		 *Mappers::ProvinceMapper::Builder().Build(),
+		 "");
 
 	std::ostringstream output;
 	output << theArmy;
-	ASSERT_EQ(std::string("\tdivision = {\n"
+	EXPECT_EQ(std::string("\tdivision = {\n"
 								 "\t\tname = \"1. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
@@ -699,7 +710,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 1,
 		 1.0,
 		 HoI4::technologies{},
@@ -709,11 +720,12 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 				.addHoI4ToVic2ProvinceMapping(12821, {1496})
 				.addVic2ToHoI4ProvinceMap(496, {11821})
 				.addVic2ToHoI4ProvinceMap(1496, {12821})
-				.Build());
+				.Build(),
+		 "");
 
 	std::ostringstream output;
 	output << theArmy;
-	ASSERT_EQ(std::string("\tdivision = {\n"
+	EXPECT_EQ(std::string("\tdivision = {\n"
 								 "\t\tname = \"1. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 1\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
@@ -727,7 +739,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsDefaultToEmpty)
 {
 	const HoI4::Army theArmy;
-	ASSERT_TRUE(theArmy.getDivisionLocations().empty());
+	EXPECT_TRUE(theArmy.getDivisionLocations().empty());
 }
 
 
@@ -779,7 +791,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsAreConverted)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 11821,
 		 1.0,
 		 HoI4::technologies{},
@@ -787,9 +799,10 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsAreConverted)
 		 *Mappers::ProvinceMapper::Builder()
 				.addHoI4ToVic2ProvinceMapping(11821, {496})
 				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build());
+				.Build(),
+		 "");
 
-	ASSERT_EQ(std::set{11821}, theArmy.getDivisionLocations());
+	EXPECT_EQ(std::set{11821}, theArmy.getDivisionLocations());
 }
 
 
@@ -856,7 +869,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, BackupDivisionLocationsAreConverted)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 1,
 		 1.0,
 		 HoI4::technologies{},
@@ -866,9 +879,10 @@ TEST(HoI4World_Military_HoI4ArmyTests, BackupDivisionLocationsAreConverted)
 				.addHoI4ToVic2ProvinceMapping(12821, {1496})
 				.addVic2ToHoI4ProvinceMap(496, {11821})
 				.addVic2ToHoI4ProvinceMap(1496, {12821})
-				.Build());
+				.Build(),
+		 "");
 
-	ASSERT_EQ(std::set{1}, theArmy.getDivisionLocations());
+	EXPECT_EQ(std::set{1}, theArmy.getDivisionLocations());
 }
 
 
@@ -916,14 +930,15 @@ TEST(HoI4World_Military_HoI4ArmyTests, InfantryDivisionsAreReturned)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 0,
 		 1.0,
 		 HoI4::technologies{},
 		 theStates,
-		 *Mappers::ProvinceMapper::Builder().Build());
+		 *Mappers::ProvinceMapper::Builder().Build(),
+		 "");
 
-	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("infantry", 1)));
+	EXPECT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("infantry", 1)));
 }
 
 
@@ -970,14 +985,15 @@ TEST(HoI4World_Military_HoI4ArmyTests, CavalryDivisionsRequireEquipment)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 0,
 		 1.0,
 		 HoI4::technologies{},
 		 theStates,
-		 *Mappers::ProvinceMapper::Builder().Build());
+		 *Mappers::ProvinceMapper::Builder().Build(),
+		 "");
 
-	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("cavalry", 1)));
+	EXPECT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("cavalry", 1)));
 }
 
 
@@ -1025,14 +1041,15 @@ TEST(HoI4World_Military_HoI4ArmyTests, ArtilleryDivisionsAreReturned)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 0,
 		 1.0,
 		 HoI4::technologies{},
 		 theStates,
-		 *Mappers::ProvinceMapper::Builder().Build());
+		 *Mappers::ProvinceMapper::Builder().Build(),
+		 "");
 
-	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(),
+	EXPECT_THAT(theArmy.getDivisionTypesAndAmounts(),
 		 testing::UnorderedElementsAre(testing::Pair("artillery_brigade", 1)));
 }
 
@@ -1081,12 +1098,13 @@ TEST(HoI4World_Military_HoI4ArmyTests, ArmorDivisionsAreReturned)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 0,
 		 1.0,
 		 HoI4::technologies{},
 		 theStates,
-		 *Mappers::ProvinceMapper::Builder().Build());
+		 *Mappers::ProvinceMapper::Builder().Build(),
+		 "");
 
-	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("light_armor", 1)));
+	EXPECT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("light_armor", 1)));
 }

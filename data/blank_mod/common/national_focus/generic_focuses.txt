@@ -4,7 +4,7 @@ shared_focus = {
 	x = 1
 	y = 0
 	cost = 10
-
+	search_filters = {  FOCUS_FILTER_RESEARCH }
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -26,6 +26,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = army_effort
 	cost = 10
+
+	search_filters = {  FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -50,6 +52,8 @@ shared_focus = {
 	relative_position_id = army_effort
 	cost = 10
 
+	search_filters = {  FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -69,6 +73,8 @@ shared_focus = {
 	y = 2
 	relative_position_id = army_effort
 	cost = 10
+
+	search_filters = {  FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -92,6 +98,8 @@ shared_focus = {
 	relative_position_id = equipment_effort
 	cost = 10
 
+	search_filters = {  FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -114,6 +122,8 @@ shared_focus = {
 	relative_position_id = motorization_effort
 	cost = 10
 
+	search_filters = {  FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -134,6 +144,8 @@ shared_focus = {
 	y = 2
 	relative_position_id = doctrine_effort
 	cost = 10
+
+	search_filters = {  FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -157,6 +169,8 @@ shared_focus = {
 	relative_position_id = equipment_effort_2
 	cost = 10
 
+	search_filters = {  FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -178,6 +192,8 @@ shared_focus = {
 	y = 2
 	relative_position_id = mechanization_effort
 	cost = 10
+
+	search_filters = {  FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -201,6 +217,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = equipment_effort_3
 	cost = 10
+
+	search_filters = {  FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -226,6 +244,8 @@ shared_focus = {
 	x = 5
 	y = 0
 	cost = 10
+
+	search_filters = {  FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -313,6 +333,8 @@ shared_focus = {
 	relative_position_id = aviation_effort
 	cost = 10
 
+	search_filters = {  FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -320,13 +342,8 @@ shared_focus = {
 			name = fighter_bonus
 			bonus = 1.0
 			uses = 2
-			technology = early_fighter
-			technology = fighter1
-			technology = fighter2
-			technology = fighter3
-			technology = heavy_fighter1
-			technology = heavy_fighter2
-			technology = heavy_fighter3
+			category = light_fighter
+			category = cat_heavy_fighter
 		}
 	}
 }
@@ -348,9 +365,7 @@ shared_focus = {
 			name = bomber_bonus
 			bonus = 1.0
 			uses = 2
-			technology = strategic_bomber1
-			technology = strategic_bomber2
-			technology = strategic_bomber3
+			category = cat_strategic_bomber
 			category = tactical_bomber
 		}
 	}
@@ -364,6 +379,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = bomber_focus
 	cost = 10
+
+	search_filters = {   FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -453,6 +470,8 @@ shared_focus = {
 	relative_position_id = aviation_effort_2
 	cost = 10
 
+	search_filters = {   FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -475,6 +494,8 @@ shared_focus = {
 	y = 2
 	relative_position_id = aviation_effort_2
 	cost = 10
+
+	search_filters = {   FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -507,6 +528,8 @@ shared_focus = {
 	relative_position_id = aviation_effort_2
 	cost = 10
 
+	search_filters = {   FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -526,6 +549,8 @@ shared_focus = {
 	x = 9
 	y = 0
 	cost = 10
+
+	search_filters = {  FOCUS_FILTER_INDUSTRY }
 
 	available_if_capitulated = yes
 
@@ -656,6 +681,8 @@ shared_focus = {
 	relative_position_id = naval_effort
 	cost = 10
 
+	search_filters = {  FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 
@@ -673,9 +700,9 @@ shared_focus = {
 	}
 
 	completion_reward = {
-		add_tech_bonus = {
+		add_doctrine_cost_reduction = {
 			name = sub_op_bonus
-			bonus = 1.0
+			cost_reduction = 0.5
 			uses = 2
 			technology = convoy_interdiction_ti
 			technology = unrestricted_submarine_warfare
@@ -696,6 +723,8 @@ shared_focus = {
 	relative_position_id = naval_effort
 	cost = 10
 
+	search_filters = {   FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 
@@ -715,7 +744,7 @@ shared_focus = {
 	completion_reward = {
 		add_doctrine_cost_reduction = {
 			name = fleet_in_being_bonus
-			cost_reduction = 0.5
+			cost_reduction = 0.25
 			uses = 2
 			category = fleet_in_being_tree
 		}
@@ -730,6 +759,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = flexible_navy
 	cost = 10
+
+	search_filters = {   FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -766,6 +797,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = large_navy
 	cost = 10
+
+	search_filters = {   FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -804,6 +837,8 @@ shared_focus = {
 	relative_position_id = submarine_effort
 	cost = 10
 
+	search_filters = {   FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 
@@ -839,6 +874,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = cruiser_effort
 	cost = 10
+
+	search_filters = {   FOCUS_FILTER_RESEARCH }
 
 	available_if_capitulated = yes
 
@@ -877,6 +914,8 @@ shared_focus = {
 	y = 0
 	cost = 10
 
+	search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -907,6 +946,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = industrial_effort
 	cost = 10
+
+	search_filters = { FOCUS_FILTER_INDUSTRY  }
 
 	available_if_capitulated = yes
 
@@ -981,6 +1022,8 @@ shared_focus = {
 	relative_position_id = industrial_effort
 	cost = 10
 
+	search_filters = { FOCUS_FILTER_INDUSTRY  }
+
 	available_if_capitulated = yes
 
 
@@ -1052,6 +1095,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = construction_effort
 	cost = 10
+
+	search_filters = { FOCUS_FILTER_INDUSTRY  }
 
 	available_if_capitulated = yes
 
@@ -1125,6 +1170,8 @@ shared_focus = {
 	relative_position_id = production_effort
 	cost = 10
 
+	search_filters = { FOCUS_FILTER_INDUSTRY  }
+
 	available_if_capitulated = yes
 
 
@@ -1196,6 +1243,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = construction_effort_2
 	cost = 10
+
+	search_filters = { FOCUS_FILTER_INDUSTRY  }
 
 	available_if_capitulated = yes
 
@@ -1291,6 +1340,8 @@ shared_focus = {
 	relative_position_id = production_effort_2
 	cost = 10
 
+	search_filters = { FOCUS_FILTER_INDUSTRY  }
+
 	available_if_capitulated = yes
 
 
@@ -1362,6 +1413,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = infrastructure_effort
 	cost = 10
+
+	search_filters = { FOCUS_FILTER_INDUSTRY  }
 
 	available_if_capitulated = yes
 
@@ -1457,6 +1510,8 @@ shared_focus = {
 	relative_position_id = infrastructure_effort
 	cost = 10
 
+	search_filters = { FOCUS_FILTER_INDUSTRY  }
+
 	available_if_capitulated = yes
 
 
@@ -1529,6 +1584,8 @@ shared_focus = {
 	relative_position_id = infrastructure_effort_2
 	cost = 10
 
+	search_filters = { FOCUS_FILTER_RESEARCH  }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -1557,6 +1614,8 @@ shared_focus = {
 	relative_position_id = infrastructure_effort_2
 	cost = 10
 
+	search_filters = { FOCUS_FILTER_RESEARCH  }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -1578,6 +1637,8 @@ shared_focus = {
 	relative_position_id = extra_tech_slot
 	cost = 10
 
+	search_filters = { FOCUS_FILTER_RESEARCH  }
+
 	available_if_capitulated = yes
 
 	completion_reward = {
@@ -1593,6 +1654,8 @@ shared_focus = {
 	y = 1
 	relative_position_id = infrastructure_effort_2
 	cost = 10
+
+	search_filters = { FOCUS_FILTER_RESEARCH  }
 
 	available_if_capitulated = yes
 

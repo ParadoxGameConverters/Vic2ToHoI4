@@ -4,6 +4,7 @@ on_actions = {
 	}
 	on_war = {
 	}
+	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
 	on_state_control_changed = {
 	}
 

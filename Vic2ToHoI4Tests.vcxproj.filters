@@ -178,18 +178,6 @@
     <ClCompile Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
       <Filter>src\HOI4World\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeace.cpp">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeaces.cpp">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AiPeacesUpdater.cpp">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AiPeaceTests.cpp">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
       <Filter>src\HOI4World\Diplomacy</Filter>
     </ClCompile>
@@ -1153,12 +1141,6 @@
     <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsInCategory.cpp">
       <Filter>src\OutHoi4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeace.cpp">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeaces.cpp">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="src\OutHoi4\Diplomacy\OutWar.cpp">
       <Filter>src\OutHoi4\Diplomacy</Filter>
     </ClCompile>
@@ -1729,6 +1711,72 @@
     <ClCompile Include="src\HOI4World\Countries\UnionCountryTests.cpp">
       <Filter>src\HOI4World\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneModules.cpp">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneModulesTests.cpp">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesign.cpp">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesignTests.cpp">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.cpp">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesignsTests.cpp">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesigns.cpp">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesignsTests.cpp">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.cpp">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutCostModifiers.cpp">
+      <Filter>src\OutHoi4\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Countries\EquipmentTests.cpp">
+      <Filter>src\HOI4World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.cpp">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutAiPeace.cpp">
+      <Filter>src\OutHoi4\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeaceTests.cpp">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiersTests.cpp">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp">
+      <Filter>src\HOI4World\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedalsTests.cpp">
+      <Filter>src\HOI4World\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2136,6 +2184,27 @@
     <Filter Include="src\OutHoi4\Countries">
       <UniqueIdentifier>{32cc1680-e52b-4874-99bb-f3b76b4d500f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\HOI4World\PlaneDesigns">
+      <UniqueIdentifier>{04a5113d-d240-4a46-984d-3ceb6d6fe9ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\PlaneDesigns">
+      <UniqueIdentifier>{da183852-9b87-45a5-9fc7-3b5cdb10067a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HOI4World\PeaceConferences">
+      <UniqueIdentifier>{4b84c53e-467b-4287-9c01-daa9010411af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\PeaceConferences">
+      <UniqueIdentifier>{f4d1829e-8e81-48fc-b526-df423125c332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Configurables">
+      <UniqueIdentifier>{4d98c28c-f6eb-4dbb-a8e0-fd13de5021b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HOI4World\UnitMedals">
+      <UniqueIdentifier>{2426867c-fb04-44ba-ba4b-fd6a0e375b0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\UnitMedals">
+      <UniqueIdentifier>{93a5d9b2-c96c-4a7c-b214-da96fddc1d21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="TestFiles\World\merge_nations.txt">
@@ -2289,15 +2358,6 @@
     </ClInclude>
     <ClInclude Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.h">
       <Filter>src\HOI4World\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeace.h">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeaces.h">
-      <Filter>src\HOI4World\Diplomacy</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\Diplomacy\AiPeacesUpdater.h">
-      <Filter>src\HOI4World\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\Diplomacy\Faction.h">
       <Filter>src\HOI4World\Diplomacy</Filter>
@@ -3034,12 +3094,6 @@
     <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsInCategory.h">
       <Filter>src\OutHoi4\Decisions</Filter>
     </ClInclude>
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeace.h">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClInclude>
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeaces.h">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClInclude>
     <ClInclude Include="src\OutHoi4\Diplomacy\OutWar.h">
       <Filter>src\OutHoi4\Diplomacy</Filter>
     </ClInclude>
@@ -3517,6 +3571,51 @@
     <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h">
       <Filter>src\OutHoi4\Countries</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneModules.h">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesign.h">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.h">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesigns.h">
+      <Filter>src\HOI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.h">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutCostModifiers.h">
+      <Filter>src\OutHoi4\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Countries\OutEquipment.h">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Countries\Equipment.h">
+      <Filter>src\HOI4World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.h">
+      <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutAiPeace.h">
+      <Filter>src\OutHoi4\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h">
+      <Filter>src\HOI4World\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt">
@@ -3804,16 +3903,10 @@
     <CopyFileToFolders Include="data\test_files\World\TWO.txt">
       <Filter>data\test_files\World</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\blank_operations.txt">
-      <Filter>data\test_files</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\blank_operative_codenames.txt">
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\definition.csv">
-      <Filter>data\test_files</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\EmptyOccupationLaws.txt">
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\GameRules.txt">
@@ -3841,9 +3934,6 @@
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\OccupationLaws.txt">
-      <Filter>data\test_files</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\operations_to_update.txt">
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\OperativeNamesMappings.txt">
@@ -3875,6 +3965,15 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\vic2_vanilla_regions.txt">
       <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Configurables\ideological_ai_peace.txt">
+      <Filter>data\test_files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Configurables\ideological_cost_modifiers.txt">
+      <Filter>data\test_files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Configurables\ideological_unit_medals.txt">
+      <Filter>data\test_files\Configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

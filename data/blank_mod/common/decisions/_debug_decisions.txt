@@ -1,5 +1,112 @@
 debug_decisions = {
 
+	add_efficiency_growth_debug = {
+		icon = generic_research
+
+		available = {
+			is_ai = no
+			is_debug = yes
+		}
+
+		visible = {
+			always = yes
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			add_ideas = add_production_efficiency
+		}
+	}
+		
+	remove_efficiency_growth_debug = {
+		icon = generic_research
+
+		available = {
+			is_ai = no
+			is_debug = yes
+		}
+
+		visible = {
+			always = yes
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = add_production_efficiency
+				}
+				remove_ideas = add_production_efficiency
+			}
+			if = {
+				limit = {
+					has_idea = decrease_production_efficiency
+				}
+				remove_ideas = decrease_production_efficiency
+			}	
+		}
+	}
+		
+	decrease_efficiency_growth_debug = {
+		icon = generic_research
+
+		available = {
+			is_ai = no
+			is_debug = yes
+		}
+
+		visible = {
+			always = yes
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			add_ideas = decrease_production_efficiency
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
+	history_entry_debug = {
+
+		icon = generic_research
+
+		available = {
+			always = yes
+		}
+
+		visible = {
+			always = yes
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			random_country_division = {
+
+				add_history_entry = {
+					key = custom_localized_key
+					subject = "Custom String (not localized)"
+					allow = yes
+				}
+			}
+			
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+
 	create_operative_debug = {
 
 		icon = generic_research
@@ -24,9 +131,10 @@ debug_decisions = {
 		ai_will_do = {
 			base = 0
 		}
+		
+		power_balance = _test_balance
 	}
 
-	
 
 	create_recruitable_operative_not_to_spy_master_debug = {
 		icon = generic_research

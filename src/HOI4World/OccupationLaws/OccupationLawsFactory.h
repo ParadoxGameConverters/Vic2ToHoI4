@@ -14,7 +14,7 @@ namespace HoI4
 class OccupationLaws::Factory: commonItems::parser
 {
   public:
-	std::unique_ptr<OccupationLaws> getOccupationLaws(const Configuration& configuration);
+	std::unique_ptr<OccupationLaws> getOccupationLaws();
 };
 
 } // namespace HoI4

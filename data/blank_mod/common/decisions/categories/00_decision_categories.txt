@@ -33,6 +33,7 @@ war_measures = {
 
 	visible = {
 		has_war = yes
+		has_war_with_non_exiled_country = yes  
 	}
 }
 operations = {
@@ -113,8 +114,12 @@ governments_in_exile = {
 	icon = generic_formable_nations
 	picture = GFX_decision_cat_picture_government_in_exile
 	allowed = {
-		has_dlc = "Man the Guns"
+		OR = {
+			has_dlc = "Man the Guns"
+			has_dlc = "By Blood Alone"
+		}
 	}
+	priority = 7
 }
 
 category_exile_forces = {
@@ -122,8 +127,12 @@ category_exile_forces = {
 	icon = infiltration
 	picture = GFX_decision_cat_picture_government_in_exile
 	allowed = {
-		has_dlc = "Man the Guns"
+		OR = {
+			has_dlc = "Man the Guns"
+			has_dlc = "By Blood Alone"
+		}
 	}
+	priority = 6
 }
 category_test_decisions = {
 	priority = 110

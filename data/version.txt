@@ -1,10 +1,10 @@
 # Version info
 
-version = "0.3P"
-name = "Patton"
+version = "1.0R"
+name = "Rommel"
 source = "Vic2"
 minSource = "3"
 maxSource = "3"
 target = "HoI4"
-minTarget = "1.11.4"
-maxTarget = "1.11.13"
+minTarget = "1.12"
+maxTarget = "1.12"

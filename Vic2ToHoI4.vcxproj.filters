@@ -154,15 +154,6 @@
     <ClCompile Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
       <Filter>src\HoI4World\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeace.cpp">
-      <Filter>src\HoI4World\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AIPeaces.cpp">
-      <Filter>src\HoI4World\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Diplomacy\AiPeacesUpdater.cpp">
-      <Filter>src\HoI4World\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
       <Filter>src\HoI4World\Diplomacy</Filter>
     </ClCompile>
@@ -724,12 +715,6 @@
     <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsInCategory.cpp">
       <Filter>src\OutHoi4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeace.cpp">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClCompile>
-    <ClCompile Include="src\OutHoi4\Diplomacy\OutAiPeaces.cpp">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="src\OutHoi4\Diplomacy\OutWar.cpp">
       <Filter>src\OutHoi4\Diplomacy</Filter>
     </ClCompile>
@@ -1129,6 +1114,48 @@
     <ClCompile Include="src\OutHoi4\Countries\OutUnionCountry.cpp">
       <Filter>src\OutHoi4\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneModules.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesign.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesigns.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutCostModifiers.cpp">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.cpp">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.cpp">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutAiPeace.cpp">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp">
+      <Filter>src\HoI4World\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -1304,15 +1331,6 @@
     </ClInclude>
     <ClInclude Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.h">
       <Filter>src\HoI4World\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeace.h">
-      <Filter>src\HoI4World\Diplomacy</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\Diplomacy\AIPeaces.h">
-      <Filter>src\HoI4World\Diplomacy</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HOI4World\Diplomacy\AiPeacesUpdater.h">
-      <Filter>src\HoI4World\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\Diplomacy\Faction.h">
       <Filter>src\HoI4World\Diplomacy</Filter>
@@ -2031,12 +2049,6 @@
     <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsInCategory.h">
       <Filter>src\OutHoi4\Decisions</Filter>
     </ClInclude>
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeace.h">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClInclude>
-    <ClInclude Include="src\OutHoi4\Diplomacy\OutAiPeaces.h">
-      <Filter>src\OutHoi4\Diplomacy</Filter>
-    </ClInclude>
     <ClInclude Include="src\OutHoi4\Diplomacy\OutWar.h">
       <Filter>src\OutHoi4\Diplomacy</Filter>
     </ClInclude>
@@ -2502,6 +2514,51 @@
     <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h">
       <Filter>src\OutHoi4\Countries</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneModules.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesign.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesigns.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutCostModifiers.h">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.h">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Countries\Equipment.h">
+      <Filter>src\HoI4World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Countries\OutEquipment.h">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.h">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutAiPeace.h">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h">
+      <Filter>src\HoI4World\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
@@ -2756,6 +2813,9 @@
     </Text>
     <Text Include="data\fronter\fronter-options.txt">
       <Filter>data\fronter</Filter>
+    </Text>
+    <Text Include="data\configurables\ideological_unit_medals.txt">
+      <Filter>data\configurables</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
@@ -3085,6 +3145,24 @@
     </Filter>
     <Filter Include="src\OutHoi4\Countries">
       <UniqueIdentifier>{71f96e42-7401-4ffe-9379-315b86b610ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\PlaneDesigns">
+      <UniqueIdentifier>{cde9c425-b0de-40ae-ae8f-9eacdbe5cb78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\PlaneDesigns">
+      <UniqueIdentifier>{a03c7564-b48f-4b43-b0f8-75c29b30fcc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\PeaceConference">
+      <UniqueIdentifier>{6f292bfe-465e-4585-9766-4c20b9eed118}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\PeaceConferences">
+      <UniqueIdentifier>{72c38416-0378-4fb2-b46c-b8bb8e2fbb9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\UnitMedals">
+      <UniqueIdentifier>{41e16a64-6290-4d89-b6e1-86bada413711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\UnitMedals">
+      <UniqueIdentifier>{da53e026-99ce-4d15-a3f4-74aa08d90a4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

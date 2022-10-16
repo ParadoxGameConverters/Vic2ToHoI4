@@ -6,6 +6,7 @@
 #include "external/common_items/Color.h"
 #include "external/common_items/Date.h"
 #include "src/HOI4World/Characters/Character.h"
+#include "src/HOI4World/Countries/Equipment.h"
 #include "src/HOI4World/Diplomacy/Faction.h"
 #include "src/HOI4World/Diplomacy/HoI4AIStrategy.h"
 #include "src/HOI4World/Diplomacy/HoI4Relations.h"
@@ -21,6 +22,7 @@
 #include "src/HOI4World/Navies/Navies.h"
 #include "src/HOI4World/Navies/NavyNames.h"
 #include "src/HOI4World/Operatives/Operative.h"
+#include "src/HOI4World/PlaneDesigns/PlaneDesigns.h"
 #include "src/HOI4World/Regions/Regions.h"
 #include "src/HOI4World/ShipTypes/ShipVariants.h"
 #include "src/HOI4World/States/HoI4State.h"
@@ -123,6 +125,7 @@ class Country
 		 const HoI4::States& theStates,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
+	void AddPlaneDesigns(const PossiblePlaneDesigns& possible_designs);
 	void addTankDesigns(const PossibleTankDesigns& possibleDesigns);
 	void convertTechnology(const Mappers::TechMapper& techMapper, const Mappers::ResearchBonusMapper& theTechMapper);
 	void addState(const State& state);
@@ -259,6 +262,7 @@ class Country
 
 	[[nodiscard]] const Army& getArmy() const { return theArmy; }
 	[[nodiscard]] const auto& getDivisionLocations() const { return theArmy.getDivisionLocations(); }
+	[[nodiscard]] const PlaneDesigns& GetPlaneDesigns() const { return *plane_designs_; }
 	[[nodiscard]] const TankDesigns& getTankDesigns() const { return *tankDesigns; }
 	[[nodiscard]] const ShipVariants& getTheShipVariants() const { return *theShipVariants; }
 	[[nodiscard]] std::optional<Navies> getNavies() const;
@@ -266,7 +270,7 @@ class Country
 	[[nodiscard]] int getConvoys() const { return convoys; }
 	[[nodiscard]] auto getTrainsMultiplier() const { return trainsMultiplier; }
 	[[nodiscard]] const std::vector<Airplane>& getPlanes() const { return planes; }
-	[[nodiscard]] const std::map<std::string, unsigned int>& getEquipmentStockpile() const { return equipmentStockpile; }
+	[[nodiscard]] const std::vector<Equipment>& GetEquipmentStockpile() const { return equipment_stockpile_; }
 
 	[[nodiscard]] const auto& getOperatives() const { return operatives_; }
 
@@ -449,6 +453,7 @@ class Country
 	std::vector<Vic2::Army> oldArmies;
 	Army theArmy;
 	std::shared_ptr<Country> puppetMaster;
+	std::unique_ptr<PlaneDesigns> plane_designs_;
 	std::unique_ptr<TankDesigns> tankDesigns;
 	std::unique_ptr<ShipVariants> theShipVariants;
 	std::unique_ptr<Navies> theNavies;
@@ -456,7 +461,7 @@ class Country
 	int convoys = 0;
 	std::optional<float> trainsMultiplier;
 	std::vector<Airplane> planes;
-	std::map<std::string, unsigned int> equipmentStockpile;
+	std::vector<Equipment> equipment_stockpile_;
 	std::map<std::string, std::vector<std::string>> shipNames;
 
 	std::vector<Operative> operatives_;
