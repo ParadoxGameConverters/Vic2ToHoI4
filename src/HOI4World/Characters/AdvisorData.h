@@ -20,7 +20,7 @@ class AdvisorData
 		 std::string idea_token,
 		 std::optional<std::string> ledger,
 		 std::optional<std::string> available,
-		 std::string allowed,
+		 std::optional<std::string> allowed,
 		 std::optional<std::string> visible,
 		 std::optional<std::string> research_bonus,
 		 std::vector<std::string> traits,
@@ -54,7 +54,7 @@ class AdvisorData
 	std::string idea_token_;
 	std::optional<std::string> ledger_;
 	std::optional<std::string> available_;
-	std::string allowed_;
+	std::optional<std::string> allowed_;
 	std::optional<std::string> visible_;
 	std::optional<std::string> research_bonus_;
 	std::vector<std::string> traits_;

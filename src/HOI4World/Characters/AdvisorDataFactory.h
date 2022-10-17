@@ -23,7 +23,7 @@ class AdvisorDataFactory: commonItems::parser
 	std::string idea_token_;
 	std::optional<std::string> ledger_;
 	std::optional<std::string> available_;
-	std::string allowed_;
+	std::optional<std::string> allowed_;
 	std::optional<std::string> visible_;
 	std::optional<std::string> research_bonus_;
 	std::vector<std::string> traits_;

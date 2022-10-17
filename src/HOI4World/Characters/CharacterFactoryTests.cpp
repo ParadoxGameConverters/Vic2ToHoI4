@@ -78,6 +78,7 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 	ASSERT_TRUE(character.getAdvisorData().has_value());
 	EXPECT_EQ(character.getAdvisorData()->getSlot(), "political_advisor");
 	EXPECT_EQ(character.getAdvisorData()->getIdeaToken(), "thomas_kinkaid");
+	ASSERT_TRUE(character.getAdvisorData()->getAllowed().has_value());
 	EXPECT_EQ(character.getAdvisorData()->getAllowed(),
 		 "{\n"
 		 "\t\t\t\toriginal_tag = USA\n"

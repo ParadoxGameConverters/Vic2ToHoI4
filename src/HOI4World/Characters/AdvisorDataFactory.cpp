@@ -54,7 +54,7 @@ HoI4::AdvisorData HoI4::AdvisorDataFactory::importAdvisorData(std::istream& inpu
 	idea_token_.clear();
 	ledger_.reset();
 	available_.reset();
-	allowed_.clear();
+	allowed_.reset();
 	visible_.reset();
 	research_bonus_.reset();
 	traits_.clear();
