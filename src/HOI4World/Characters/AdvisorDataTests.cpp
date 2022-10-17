@@ -12,7 +12,7 @@ TEST(HoI4World_Characters_AdvisorData, ItemsAreAsSet)
 		 "",
 		 std::nullopt,
 		 std::nullopt,
-		 "",
+		 std::nullopt,
 		 std::nullopt,
 		 std::nullopt,
 		 {},
@@ -24,7 +24,7 @@ TEST(HoI4World_Characters_AdvisorData, ItemsAreAsSet)
 	EXPECT_TRUE(advisor_data.getIdeaToken().empty());
 	EXPECT_FALSE(advisor_data.getLedger().has_value());
 	EXPECT_FALSE(advisor_data.getAvailable().has_value());
-	EXPECT_TRUE(advisor_data.getAllowed().empty());
+	EXPECT_FALSE(advisor_data.getAllowed().has_value());
 	EXPECT_FALSE(advisor_data.getVisible().has_value());
 	EXPECT_FALSE(advisor_data.getResearchBonus().has_value());
 	EXPECT_TRUE(advisor_data.getTraits().empty());
@@ -102,6 +102,7 @@ TEST(HoI4World_Characters_AdvisorData, TraitsCanBeSet)
 		 "\t\t\t\t\thas_idea = USA_henry_morgenthau\n"
 		 "\t\t\t\t}\n"
 		 "\t\t\t}");
+	ASSERT_TRUE(advisor_data.getAllowed().has_value());
 	EXPECT_EQ(advisor_data.getAllowed(),
 		 "{\n"
 		 "\t\t\t\toriginal_tag = USA\n"
@@ -159,7 +160,7 @@ TEST(HoI4World_Characters_AdvisorData, ImportedItemsAreDefaulted)
 	EXPECT_TRUE(advisor_data.getIdeaToken().empty());
 	EXPECT_FALSE(advisor_data.getLedger().has_value());
 	EXPECT_FALSE(advisor_data.getAvailable().has_value());
-	EXPECT_TRUE(advisor_data.getAllowed().empty());
+	EXPECT_FALSE(advisor_data.getAllowed().has_value());
 	EXPECT_FALSE(advisor_data.getVisible().has_value());
 	EXPECT_FALSE(advisor_data.getResearchBonus().has_value());
 	EXPECT_TRUE(advisor_data.getTraits().empty());
@@ -245,6 +246,7 @@ TEST(HoI4World_Characters_AdvisorData, ImportedItemsCanBeSet)
 		 "\t\t\t\t\thas_idea = USA_henry_morgenthau\n"
 		 "\t\t\t\t}\n"
 		 "\t\t\t}");
+	ASSERT_TRUE(advisor_data.getAllowed().has_value());
 	EXPECT_EQ(advisor_data.getAllowed(),
 		 "{\n"
 		 "\t\t\t\toriginal_tag = USA\n"

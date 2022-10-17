@@ -15,7 +15,10 @@ std::ostream& HoI4::operator<<(std::ostream& out, const AdvisorData& advisor_dat
 	{
 		out << "\t\t\tavailable = " << *available << "\n";
 	}
-	out << "\t\t\tallowed = " << advisor_data.getAllowed() << "\n";
+	if (const auto& allowed = advisor_data.getAllowed(); allowed.has_value())
+	{
+		out << "\t\t\tallowed = " << *allowed << "\n";
+	}
 	if (const auto& visible = advisor_data.getVisible(); visible.has_value())
 	{
 		out << "\t\t\tvisible = " << *visible << "\n";
