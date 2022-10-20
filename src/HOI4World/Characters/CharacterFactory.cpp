@@ -115,12 +115,17 @@ Character Character::Factory::createNewCountryLeader(const std::string& tag,
 
 Character Character::Factory::createNewGeneral(const Vic2::Leader& src_general,
 	 const std::string& tag,
+	 std::string_view portrait_location,
 	 Localisation& localisation)
 {
 	Character general;
 	general.name_ = commonItems::convertWin1252ToUTF8(src_general.getName());
 	general.id_ = commonItems::convertUTF8ToASCII(general.name_);
 	general.id_ = determineId(general.name_, tag);
+
+	general.portraits_.emplace_back("army", "large", portrait_location);
+	general.portraits_.emplace_back("army", "small", portrait_location);
+
 	localisation.addCharacterLocalisation(general.id_, general.name_);
 
 	const int attack_skill =
@@ -146,12 +151,17 @@ Character Character::Factory::createNewGeneral(const Vic2::Leader& src_general,
 
 Character Character::Factory::createNewAdmiral(const Vic2::Leader& src_admiral,
 	 const std::string& tag,
+	 std::string_view portrait_location,
 	 Localisation& localisation)
 {
 	Character admiral;
 	admiral.name_ = commonItems::convertWin1252ToUTF8(src_admiral.getName());
 	admiral.id_ = commonItems::convertUTF8ToASCII(admiral.name_);
 	admiral.id_ = determineId(admiral.name_, tag);
+
+	admiral.portraits_.emplace_back("navy", "large", portrait_location);
+	admiral.portraits_.emplace_back("navy", "small", portrait_location);
+
 	localisation.addCharacterLocalisation(admiral.id_, admiral.name_);
 
 	const int attack_skill =

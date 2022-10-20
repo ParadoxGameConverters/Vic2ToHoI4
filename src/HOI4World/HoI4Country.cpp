@@ -118,7 +118,7 @@ HoI4::Country::Country(std::string tag,
 	{
 		convertMonarch(*lastMonarch);
 	}
-	convertLeaders(sourceCountry, characterFactory, hoi4Localisations);
+	convertLeaders(sourceCountry, characterFactory, graphicsMapper, hoi4Localisations);
 	convertRelations(countryMap, sourceCountry, startDate);
 	atWar = sourceCountry.isAtWar();
 
@@ -511,18 +511,29 @@ void HoI4::Country::convertMonarch(const std::string& lastMonarch)
 
 void HoI4::Country::convertLeaders(const Vic2::Country& sourceCountry,
 	 Character::Factory& characterFactory,
+	 const Mappers::GraphicsMapper& graphics_mapper,
 	 Localisation& localisation)
 {
+	const auto army_portraits = graphics_mapper.getArmyPortraits(primaryCulture, primaryCultureGroup);
+	const auto navy_portraits = graphics_mapper.getNavyPortraits(primaryCulture, primaryCultureGroup);
 	for (const auto& srcLeader: sourceCountry.getLeaders())
 	{
 		if (srcLeader.getType() == "land")
 		{
-			Character newCommander = characterFactory.createNewGeneral(srcLeader, tag, localisation);
+			Character newCommander = characterFactory.createNewGeneral(srcLeader,
+				 tag,
+				 army_portraits[std::uniform_int_distribution<int>{0, static_cast<int>(army_portraits.size() - 1)}(
+					  generator)],
+				 localisation);
 			characters_.push_back(newCommander);
 		}
 		else if (srcLeader.getType() == "sea")
 		{
-			Character newAdmiral = characterFactory.createNewAdmiral(srcLeader, tag, localisation);
+			Character newAdmiral = characterFactory.createNewAdmiral(srcLeader,
+				 tag,
+				 navy_portraits[std::uniform_int_distribution<int>{0, static_cast<int>(navy_portraits.size() - 1)}(
+					  generator)],
+				 localisation);
 			characters_.push_back(newAdmiral);
 		}
 	}

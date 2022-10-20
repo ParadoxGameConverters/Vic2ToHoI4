@@ -345,6 +345,7 @@ class Country
 	void convertLaws();
 	void convertLeaders(const Vic2::Country& sourceCountry,
 		 Character::Factory& characterFactory,
+		 const Mappers::GraphicsMapper& graphics_mapper,
 		 Localisation& localisation);
 	void convertMonarch(const std::string& lastMonarch);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
