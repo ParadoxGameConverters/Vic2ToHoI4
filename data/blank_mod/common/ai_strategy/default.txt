@@ -225,7 +225,7 @@ bba_air_prod_1 = {
 	# TODO BFW: this was moved from germany's strats
 
 	enable = {
-		date < 1940.1.1
+		always = yes
 	}
 
 	abort_when_not_enabled = yes
@@ -234,27 +234,27 @@ bba_air_prod_1 = {
 	ai_strategy = {
 		type = unit_ratio
 		id = fighter
-		value = 300
+		value = 200
 	}
 
 	ai_strategy = {
 		type = equipment_production_factor
 		id = fighter
-		value = 200
+		value = 15
 	}
 
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = fighter
-		value = 6
+		value = 5
 	}
 
 	ai_strategy = {
 		type = unit_ratio
 		id = cas
-		value = 5 #because doctrine this = 15
+		value = 20 #because doctrine this = 15
 	}
-
+ 
 	ai_strategy = {
 		type = unit_ratio
 		id = naval_bomber
@@ -264,7 +264,7 @@ bba_air_prod_1 = {
 	ai_strategy = {
 		type = unit_ratio
 		id = tactical_bomber
-		value = 5
+		value = -99
 	}
 
 	ai_strategy = {
@@ -276,25 +276,25 @@ bba_air_prod_1 = {
 	ai_strategy = {
 		type = unit_ratio
 		id = strategic_bomber
-		value = 0
+		value = -99
 	}
 
 	ai_strategy = {
 		type = equipment_production_factor
 		id = cas
-		value = 50
+		value = 10
 	}
 
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = cas
-		value = 3
+		value = 0
 	}
 
 	ai_strategy = {
 		type = equipment_production_factor
 		id = strategic_bomber
-		value = 0
+		value = 1
 	}
 
 	ai_strategy = {
@@ -306,13 +306,13 @@ bba_air_prod_1 = {
 	ai_strategy = {
 		type = equipment_production_factor
 		id = heavy_fighter
-		value = 0
+		value = 1
 	}
 
 	ai_strategy = {
 		type = unit_ratio
 		id = heavy_fighter
-		value = 0
+		value = 1
 	}
 
 }
