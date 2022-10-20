@@ -36,9 +36,11 @@ class Character::Factory: commonItems::parser
 		 std::mt19937& generator);
 	[[nodiscard]] Character createNewGeneral(const Vic2::Leader& src_general,
 		 const std::string& tag,
+		 std::string_view portrait_location,
 		 Localisation& localisation);
 	[[nodiscard]] Character createNewAdmiral(const Vic2::Leader& src_admiral,
 		 const std::string& tag,
+		 std::string_view portrait_location,
 		 Localisation& localisation);
 	[[nodiscard]] Character importCharacter(std::string_view id, std::istream& input);
 
