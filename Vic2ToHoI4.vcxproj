@@ -145,6 +145,7 @@
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp" />
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
     <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
+    <ClCompile Include="src\HOI4World\PeaceConferences\DynamicAiPeaces.cpp" />
     <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.cpp" />
     <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.cpp" />
     <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesign.cpp" />
@@ -550,6 +551,7 @@
     <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesSetFactory.h" />
     <ClInclude Include="src\HOI4World\Operatives\Operative.h" />
+    <ClInclude Include="src\HOI4World\PeaceConferences\DynamicAiPeaces.h" />
     <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.h" />
     <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.h" />
     <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesign.h" />

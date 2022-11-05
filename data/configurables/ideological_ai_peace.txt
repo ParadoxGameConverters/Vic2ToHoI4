@@ -163,18 +163,4 @@ democratic = {
 		}
 		ai_desire = -200
 	}
-
-	force_gov_puppets = {
-		peace_action_type = force_government
-		enable = {
-			ROOT = {
-				has_government = democratic
-				ROOT.FROM.FROM = {
-					NOT = { has_government = democratic }
-					is_subject = yes
-				}
-			}
-		}
-		ai_desire = 100
-	}
 }
