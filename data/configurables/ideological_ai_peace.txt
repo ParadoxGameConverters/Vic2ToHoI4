@@ -71,18 +71,18 @@ communism = {
 
 democratic = {
 	force_gov_puppets = {
-        peace_action_type = force_government
-        enable = {
-            ROOT = {
-                has_government = democratic
-                ROOT.FROM.FROM = {
-                    NOT = { has_government = democratic }
-                    is_subject = yes
-                }
-            }
-        }
-        ai_desire = 100
-    }
+		peace_action_type = force_government
+		enable = {
+			ROOT = {
+				has_government = democratic
+				ROOT.FROM.FROM = {
+					NOT = { has_government = democratic }
+					is_subject = yes
+				}
+			}
+		}
+		ai_desire = 100
+	}
 
 	democracy_owner_does_not_have_core = {
 		peace_action_type = { force_government puppet take_states }

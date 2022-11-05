@@ -18,6 +18,10 @@ std::vector<std::string> HoI4::GenerateDynamicAiPeaces(const std::set<std::strin
 	dont_puppet_and_force_government << "\t\t\t}\n";
 	for (const auto& major_ideology: major_ideologies)
 	{
+		if (major_ideology == "neutrality")
+		{
+			continue;
+		}
 		dont_puppet_and_force_government << "\t\t\telse_if = {\n";
 		dont_puppet_and_force_government << "\t\t\t\tlimit = { has_government = " << major_ideology << " }\n";
 		dont_puppet_and_force_government << "\t\t\t\tROOT.FROM.FROM = { pc_is_forced_government_to = " << major_ideology
@@ -44,6 +48,10 @@ std::vector<std::string> HoI4::GenerateDynamicAiPeaces(const std::set<std::strin
 	do_force_government_if_forced_to_our_ideology << "\t\t\t}\n";
 	for (const auto& major_ideology: major_ideologies)
 	{
+		if (major_ideology == "neutrality")
+		{
+			continue;
+		}
 		do_force_government_if_forced_to_our_ideology << "\t\t\telse_if = {\n";
 		do_force_government_if_forced_to_our_ideology << "\t\t\t\tlimit = { has_government = " << major_ideology
 																	 << " }\n";
@@ -51,16 +59,6 @@ std::vector<std::string> HoI4::GenerateDynamicAiPeaces(const std::set<std::strin
 			 << "\t\t\t\tROOT.FROM.FROM = { pc_is_forced_government_to = " << major_ideology << " }\n";
 		do_force_government_if_forced_to_our_ideology << "\t\t\t}\n";
 	}
-	do_force_government_if_forced_to_our_ideology << "\t\t\telse_if = {\n";
-	do_force_government_if_forced_to_our_ideology << "\t\t\t\tlimit = { has_government = fascism }\n";
-	do_force_government_if_forced_to_our_ideology
-		 << "\t\t\t\tROOT.FROM.FROM = { pc_is_forced_government_to = fascism }\n";
-	do_force_government_if_forced_to_our_ideology << "\t\t\t}\n";
-	do_force_government_if_forced_to_our_ideology << "\t\t\telse_if = {\n";
-	do_force_government_if_forced_to_our_ideology << "\t\t\t\tlimit = { has_government = communism }\n";
-	do_force_government_if_forced_to_our_ideology
-		 << "\t\t\t\tROOT.FROM.FROM = { pc_is_forced_government_to = communism }\n";
-	do_force_government_if_forced_to_our_ideology << "\t\t\t}\n";
 	do_force_government_if_forced_to_our_ideology << "\t\t\telse = {\n";
 	do_force_government_if_forced_to_our_ideology << "\t\t\t\talways = no\n";
 	do_force_government_if_forced_to_our_ideology << "\t\t\t}\n";
