@@ -31,7 +31,7 @@ peace_action_modifiers = {
             ROOT.FROM = { pc_is_puppeted = yes } # Taker is puppet or will be
         }
 
-        cost_multiplier = 0.95
+        cost_multiplier = 0.5
     }
 
     # State isn't Core of losing country - cheaper to take colonies
