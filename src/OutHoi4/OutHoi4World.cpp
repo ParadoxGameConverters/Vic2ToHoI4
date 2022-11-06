@@ -242,7 +242,7 @@ void HoI4::OutputWorld(const World& world,
 	outMonarchInterface(outputName, world.getCountries());
 	copyCustomizedFocusFiles(outputName, world.getCustomizedFocusBranches());
 	OutputCostModifiers(outputName, world.getMajorIdeologies(), world.GetIdeologicalCostModifiers());
-	OutputAiPeace(outputName, world.getMajorIdeologies(), world.GetIdeologicalAiPeace());
+	OutputAiPeace(outputName, world.getMajorIdeologies(), world.GetIdeologicalAiPeace(), world.GetDynamicAiPeace());
 	OutputUnitMedals(outputName, world.getMajorIdeologies(), world.GetUnitMedals());
 }
 

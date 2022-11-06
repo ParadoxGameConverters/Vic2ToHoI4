@@ -1156,6 +1156,9 @@
     <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp">
       <Filter>src\OutHoi4\UnitMedals</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\DynamicAiPeaces.cpp">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2558,6 +2561,9 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h">
       <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\DynamicAiPeaces.h">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

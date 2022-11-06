@@ -9,13 +9,13 @@ technologies = {
 		
 		# EFFECT #############
 		battleship = {
-			max_organisation = 10			
+			max_organisation = 5			
 		}
 		battle_cruiser = {
-			max_organisation = 10			
+			max_organisation = 5			
 		}
 		heavy_cruiser = {
-			max_organisation = 10			
+			max_organisation = 5			
 		}
 		light_cruiser = {
 			surface_detection = 0.10
@@ -74,13 +74,13 @@ technologies = {
 	battlefleet_concentration = {
 		# EFFECT #############
 		battleship = {
-			max_organisation = 10
+			max_organisation = 5
 		}
 		battle_cruiser = {
-			max_organisation = 10
+			max_organisation = 5
 		}
 		heavy_cruiser = {
-			max_organisation = 10
+			max_organisation = 5
 		}
 		strike_force_movement_org_loss = -0.2
 		########
@@ -189,11 +189,11 @@ technologies = {
 		
 		# EFFECT #############
 		destroyer = {
-			max_organisation = 20
+			max_organisation = 5
 			sub_detection = 0.1
 		}
 		light_cruiser = {
-			max_organisation = 10
+			max_organisation = 5
 			sub_detection = 0.2
 		}
 
@@ -404,7 +404,7 @@ technologies = {
 		
 		# EFFECT #############
 		destroyer = {
-			max_organisation = 10
+			max_organisation = 5
 			sub_detection = 0.05
 		}
 		convoy_escort_efficiency = 0.05
@@ -457,7 +457,7 @@ technologies = {
 		
 		# EFFECT #############
 		destroyer = {
-			max_organisation = 10
+			max_organisation = 5
 			sub_detection = 0.05
 		}
 		convoy_escort_efficiency = 0.1
@@ -578,7 +578,7 @@ technologies = {
 		
 		# EFFECT #############
 		destroyer = {
-			max_organisation = 20
+			max_organisation = 5
 			sub_detection = 0.1
 		}
 		light_cruiser = {
@@ -1531,7 +1531,7 @@ technologies = {
 		#same as convoy_sailing
 		# EFFECT #############
 		destroyer = {
-			max_organisation = 10
+			max_organisation = 5
 			sub_detection = 0.05
 		}
 		convoy_escort_efficiency = 0.05
@@ -2285,7 +2285,7 @@ technologies = {
 		#same as convoy_escorts
 		# EFFECT #############
 		destroyer = {
-			max_organisation = 10
+			max_organisation = 5
 			sub_detection = 0.05
 		}
 		convoy_escort_efficiency = 0.1
@@ -2336,11 +2336,11 @@ technologies = {
 		
 		# EFFECT ##############
 		destroyer = {
-			max_organisation = 10
+			max_organisation = 5
 			sub_detection = 0.05
 		}
 		light_cruiser = {
-			max_organisation = 10
+			max_organisation = 5
 			sub_detection = 0.1
 		}
 		
@@ -2400,7 +2400,7 @@ technologies = {
 		#same as convoy_sailing
 		# EFFECT #############
 		destroyer = {
-			max_organisation = 10
+			max_organisation = 5
 			sub_detection = 0.05
 		}
 		convoy_escort_efficiency = 0.05
@@ -2459,11 +2459,11 @@ technologies = {
 		#same as integrated_convoy_defence
 		# EFFECT #############
 		destroyer = {
-			max_organisation = 20
+			max_organisation = 5
 			sub_detection = 0.10
 		}
 		light_cruiser = {
-			max_organisation = 10
+			max_organisation = 5
 			sub_detection = 0.15
 		}
 		carrier = {

@@ -58,7 +58,8 @@ on_actions = {
 	on_peace = {
 	}
 	#ROOT = country that joined a war
-	on_war = {
+	#on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first
+	on_war = { 
 	}
 	#ROOT = attacking side
 	#FROM = defending side

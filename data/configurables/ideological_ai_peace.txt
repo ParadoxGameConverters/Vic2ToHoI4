@@ -70,6 +70,20 @@ communism = {
 
 
 democratic = {
+	force_gov_puppets = {
+		peace_action_type = force_government
+		enable = {
+			ROOT = {
+				has_government = democratic
+				ROOT.FROM.FROM = {
+					NOT = { has_government = democratic }
+					is_subject = yes
+				}
+			}
+		}
+		ai_desire = 100
+	}
+
 	democracy_owner_does_not_have_core = {
 		peace_action_type = { force_government puppet take_states }
 		enable = {
@@ -133,7 +147,7 @@ democratic = {
 			}
 		}
 
-		ai_desire = 30
+		ai_desire = 20
 	}
 	
 	wrong_ideology_faction_members_dont_force_gov = {
@@ -148,19 +162,5 @@ democratic = {
 			}
 		}
 		ai_desire = -200
-	}
-
-	force_gov_puppets = {
-		peace_action_type = force_government
-		enable = {
-			ROOT = {
-				has_government = democratic
-				ROOT.FROM.FROM = {
-					NOT = { has_government = democratic }
-					is_subject = yes
-				}
-			}
-		}
-		ai_desire = 100
 	}
 }

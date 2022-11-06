@@ -54,7 +54,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 			
 			modifier = {
 				factor = 2
@@ -137,7 +137,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 			
 			modifier = {
 				factor = 2
@@ -179,7 +179,7 @@ technologies = {
 		start_year = 1934
 		
 		ai_will_do = {
-			factor = 0.5
+			base = 0.5
 			
 			modifier = {
 				has_template_containing_unit = light_tank_destroyer_brigade
@@ -219,7 +219,7 @@ technologies = {
 		start_year = 1934
 		
 		ai_will_do = {
-			factor = 0.25
+			base = 0.25
 			modifier = {
 				has_template_containing_unit = light_sp_artillery_brigade
 				add = 2
@@ -252,7 +252,7 @@ technologies = {
 		start_year = 1934
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 			modifier = {
 				is_major = yes
 				add = 0.25
@@ -308,7 +308,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 			
 			modifier = {
 				factor = 2
@@ -347,11 +347,11 @@ technologies = {
 		start_year = 1936
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				has_template_containing_unit = light_tank_destroyer_brigade
-				factor = 2
+				add = 2
 			}
 			modifier = {
 				factor = 0
@@ -378,7 +378,7 @@ technologies = {
 		start_year = 1936
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				has_template_containing_unit = light_sp_artillery_brigade
@@ -410,7 +410,7 @@ technologies = {
 		start_year = 1936
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -455,7 +455,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 0.5
+			base = 0.5
 			
 			modifier = {
 				factor = 2
@@ -492,7 +492,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 0.5
+			base = 0.5
 			
 			modifier = {
 				factor = 2
@@ -535,7 +535,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 0.5
+			base = 0.5
 			modifier = {
 				is_major = no
 				factor = 2
@@ -573,7 +573,7 @@ technologies = {
 		start_year = 1941
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 		
 		categories = {
@@ -591,7 +591,7 @@ technologies = {
 		start_year = 1941
 	
 		ai_will_do = {
-			factor = 0.1
+			base = 0.1
 		}
 		
 		categories = {
@@ -609,7 +609,7 @@ technologies = {
 		start_year = 1941
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 		
 		categories = {
@@ -647,7 +647,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 2
+			base = 2
 			
 			modifier = {
 				factor = 2
@@ -691,7 +691,7 @@ technologies = {
 
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 			
 
 			modifier = {
@@ -738,7 +738,7 @@ technologies = {
 		start_year = 1939
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -784,7 +784,7 @@ technologies = {
 		start_year = 1939
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -831,7 +831,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 3
+			base = 3
 			
 			modifier = {
 				factor = 2
@@ -874,7 +874,7 @@ technologies = {
 		start_year = 1941
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 			
 			modifier = {
 				has_template_containing_unit = medium_tank_destroyer_brigade
@@ -921,7 +921,7 @@ technologies = {
 		start_year = 1941
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -966,7 +966,7 @@ technologies = {
 		start_year = 1941
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -1014,7 +1014,7 @@ technologies = {
 		
 
 		ai_will_do = {
-			factor = 1
+			base = 1
 			
 			modifier = {
 				factor = 1.2
@@ -1048,7 +1048,7 @@ technologies = {
 		start_year = 1943
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 			
 			modifier = {
 				factor = 0
@@ -1094,7 +1094,7 @@ technologies = {
 		start_year = 1943
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 
 			modifier = {
 				factor = 0
@@ -1140,7 +1140,7 @@ technologies = {
 		start_year = 1943
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1181,7 +1181,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 			
 			modifier = {
 				factor = 2
@@ -1219,7 +1219,7 @@ technologies = {
 		start_year = 1945
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 			
 			modifier = {
 				factor = 2
@@ -1256,7 +1256,7 @@ technologies = {
 		start_year = 1945
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 			
 			modifier = {
 				factor = 2
@@ -1293,7 +1293,7 @@ technologies = {
 		start_year = 1945
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 		
 		categories = {
@@ -1357,7 +1357,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 0.8
+			base = 0.8
 			
 			modifier = {
 				factor = 1.2
@@ -1402,7 +1402,7 @@ technologies = {
 		start_year = 1934
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1433,7 +1433,7 @@ technologies = {
 		start_year = 1934
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1464,7 +1464,7 @@ technologies = {
 		start_year = 1934
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1516,7 +1516,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 0.8
+			base = 0.8
 			modifier = {
 				factor = 1.2
 				date > "1942.1.1"
@@ -1556,7 +1556,7 @@ technologies = {
 		start_year = 1941
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1583,7 +1583,7 @@ technologies = {
 		start_year = 1941
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1611,7 +1611,7 @@ technologies = {
 		start_year = 1941
 		
 		ai_will_do = {
-			factor = 0
+			base = 0
 
 			modifier = {
 				factor = 0
@@ -1658,7 +1658,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 0.8
+			base = 0.8
 			
 			modifier = {
 				factor = 1.2
