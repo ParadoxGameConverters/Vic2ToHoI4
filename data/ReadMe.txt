@@ -43,38 +43,39 @@ CREDITS
 
 An (incomplete) list of those who contributed effort to this mammoth undertaking
 
-Idhrendur		- Project Lead, Programming, Analysis
-thatsgerman		- Programming, Analysis
-jepaan			- Programming
-Hamiller78		- Programming
-barryvm			- Programming
-RaduM84			- Programming, Data Files
-King_of_Men		- Programming, Analysis
-icalamesa		- Programming
+Idhrendur			- Project Lead, Programming, Analysis
+thatsgerman			- Programming, Analysis
+jepaan				- Programming
+Hamiller78			- Programming
+barryvm				- Programming
+RaduM84				- Programming, Data Files
+King_of_Men			- Programming, Analysis
+icalamesa			- Programming
 PheonixScale		- Programming
-Gawquon			- Programming
-Italianajt		- Analysis, Data Files, QA
+Gawquon				- Programming
+Italianajt			- Analysis, Data Files, QA
 Ordinary_Kraut		- Analysis, Data Files
 DasGuntLord01		- Analysis
-dtremenak		- Analysis
-history_fan		- Analysis
-PTSnoop			- Analysis
-schombert		- Analysis
+dtremenak			- Analysis
+history_fan			- Analysis
+PTSnoop				- Analysis
+schombert			- Analysis
 AllUncertain		- Analysis
-simsulla		- Data Files
-Mattymooz		- Data Files
+simsulla			- Data Files
+Mattymooz			- Data Files
 DiegoAFGamer		- Data Files
 Skulltcarretilla	- Data Files
-cetvrtak		- Data Files
-Herr B.			- Data Files
-Yellowone1		- Art
-KaeI			- Art
-Ostheim			- Art
-CSRZ			- Art (Intelligence Agencies Logos)
-Plati			- Art
-កាបូន២៦			- Art, Voices
-PPSYRIUS		- Voices
-Pepper the Incaman - Art
+cetvrtak			- Data Files
+Herr B.				- Data Files
+Anate				- Translations
+Yellowone1			- Art
+KaeI				- Art
+Ostheim				- Art
+CSRZ				- Art (Intelligence Agencies Logos)
+Plati				- Art
+កាបូន២៦				- Art, Voices
+PPSYRIUS			- Voices
+Pepper the Incaman	- Art
 
 Special thanks to LukyLucaz, who allowed us to incorporate Increased Resources into the converter.
 Special thanks to the Kaiserreich Team who allowed us to use their gfx, especially their leader portraits.
