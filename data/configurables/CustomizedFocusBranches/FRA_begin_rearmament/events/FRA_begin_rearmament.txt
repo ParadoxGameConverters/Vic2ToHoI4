@@ -57,13 +57,6 @@ country_event = {
 		}
 
 		# Set targets for FRA_alpine_forts focus
-		random_neighbor_country = {
-			limit = {
-				NOT = { has_government = ROOT }
-				NOT = { has_government = neutrality }
-			}
-			save_global_event_target_as = FRA_begin_rearmament_ITA
-		}
 		random_owned_controlled_state = {
 			limit = {
 				any_neighbor_state = { is_owned_by = event_target:FRA_begin_rearmament_ITA }
