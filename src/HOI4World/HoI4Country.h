@@ -171,7 +171,7 @@ class Country
 	{
 		return dominionAreas[0].contains(province);
 	}
-	void setColor(const commonItems::Color& color_) { color = color_; }
+	void setFlag(const std::string& flag) { flags.insert(flag); }
 
 	[[nodiscard]] std::optional<HoI4::Relations> getRelations(const std::string& withWhom) const;
 	[[nodiscard]] std::optional<date> getTruceUntil(const std::string& withWhom) const;

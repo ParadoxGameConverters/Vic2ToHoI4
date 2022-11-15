@@ -163,14 +163,32 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
 			Log(LogLevel::Info) << "\t\tItaly: " << gpThreats[0]->getTag();
 			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
+			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
 			if (gpThreats.size() > 1)
 			{
 				Log(LogLevel::Info) << "\t\tGermany: " << gpThreats[1]->getTag();
 				gpThreats[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
+				flagZoneOfAccess(gpThreats[1]->getTag(), "FRA_begin_rearmament_GER_zone", countries);
 			}
 			country->addFocusTreeBranch("FRA_begin_rearmament", onActions);
 			branchNames.push_back("FRA_begin_rearmament");
 			break;
+		}
+	}
+}
+
+void HoI4::AdjustedBranches::flagZoneOfAccess(const std::string& gpTag,
+	 const std::string& flag,
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+{
+	for (const auto& tag: gpZonesOfAccess[gpTag])
+	{
+		if (!countries.contains(tag))
+			continue;
+
+		if (const auto& country = countries.at(tag); country)
+		{
+			country->setFlag(flag);
 		}
 	}
 }

@@ -201,22 +201,37 @@ focus_tree = {
 		relative_position_id = FRA_alpine_forts
 		cost = 10
 
+		allow_branch = {
+			any_state = { state = event_target:FRA_begin_rearmament_maginot }
+		}
 		available = {
-			18 = { is_controlled_by = ROOT }
-			29 = { is_controlled_by = ROOT }
-			785 = { is_controlled_by = ROOT }
-			has_idea = FRA_protected_by_the_maginot_line
+			if = {
+				limit = { any_state = { state = event_target:FRA_begin_rearmament_maginot } }
+				event_target:FRA_begin_rearmament_maginot = { is_controlled_by = ROOT }
+			}
 		}
 		completion_reward = {
 			ROOT = { country_event = { id = france.2 } }
-			BEL = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = FRA_extend_the_maginot_line_focus_neg
+			if = {
+				limit = {
+					event_target:FRA_begin_rearmament_maginot = {
+						NOT = { any_neighbor_state = { is_owned_by = event_target:FRA_begin_rearmament_GER } }
+					}
 				}
-				add_opinion_modifier = {
-					target = GER
-					modifier = FRA_extend_the_maginot_line_focus_pos
+				event_target:FRA_begin_rearmament_maginot = {
+					random_neighbor_state = {
+						limit = { owner = { has_country_flag = FRA_begin_rearmament_GER_zone } }
+						owner = {
+							add_opinion_modifier = {
+								target = ROOT
+								modifier = FRA_extend_the_maginot_line_focus_neg
+							}
+							add_opinion_modifier = {
+								target = event_target:FRA_begin_rearmament_GER
+								modifier = FRA_extend_the_maginot_line_focus_pos
+							}
+						}
+					}
 				}
 			}
 		}

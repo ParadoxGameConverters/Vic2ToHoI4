@@ -47,6 +47,9 @@ class AdjustedBranches
 	bool attackerCanPositionTroopsOnCountryBorders(const std::shared_ptr<Country>& country,
 		 const std::string& attackerTag,
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
+	void flagZoneOfAccess(const std::string& gpTag,
+		 const std::string& flag,
+		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const std::shared_ptr<Country>& country,
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
