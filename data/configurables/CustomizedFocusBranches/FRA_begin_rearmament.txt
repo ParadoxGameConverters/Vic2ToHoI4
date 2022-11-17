@@ -335,8 +335,7 @@ focus_tree = {
 
 		completion_reward = {
 			division_template = {
-				name = "Division Cuirassée" 	
-				division_names_group = FRA_ARM_01
+				name = "Armored Division" 	
 
 				regiments = {
 					medium_armor = { x = 0 y = 0 }		
@@ -359,11 +358,11 @@ focus_tree = {
 				}
 				capital_scope = {
 					create_unit = {
-						division = "name = \"1re Division Cuirassée\" division_template = \"Division Cuirassée\" start_experience_factor = 0.7 force_equipment_variants = { heavy_tank_chassis_0 = { creator = \"FRA\" version_name = \"Char B1\"} }"  
+						division = "name = \"1st Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7 force_equipment_variants = { heavy_tank_chassis_0 = { creator = ROOT } }"  
 						owner = ROOT
 					}
 					create_unit = {
-						division = "name = \"2me Division Cuirassée\" division_template = \"Division Cuirassée\" start_experience_factor = 0.7 force_equipment_variants = { heavy_tank_chassis_0 = { creator = \"FRA\" version_name = \"Char B1\"} }"  
+						division = "name = \"2nd Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7 force_equipment_variants = { heavy_tank_chassis_0 = { creator = ROOT } }"  
 						owner = ROOT
 					}
 				}
@@ -371,11 +370,11 @@ focus_tree = {
 			else = {
 				capital_scope = {
 					create_unit = {
-						division = "name = \"1re Division Cuirassée\" division_template = \"Division Cuirassée\" start_experience_factor = 0.7"  
+						division = "name = \"1st Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7"  
 						owner = ROOT
 					}
 					create_unit = {
-						division = "name = \"2me Division Cuirassée\" division_template = \"Division Cuirassée\" start_experience_factor = 0.7"  
+						division = "name = \"2nd Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7"  
 						owner = ROOT
 					}
 				}
