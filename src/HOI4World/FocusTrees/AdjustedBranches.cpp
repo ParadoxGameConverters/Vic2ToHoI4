@@ -57,11 +57,8 @@ void HoI4::AdjustedBranches::addCountriesToGPZoneOfAccess(const std::shared_ptr<
 	 const std::shared_ptr<Country>& referenceCountry,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	Log(LogLevel::Info) << "Adding countries to " << gp->getTag() << " zone of access";
-
 	for (const auto& [tag, country]: getNeighbors(referenceCountry, countries))
 	{
-		Log(LogLevel::Info) << " -> " << tag;
 		const auto& relations = gp->getRelations(tag);
 		if (!relations)
 		{
@@ -117,8 +114,6 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 	 HoI4FocusTree& genericFocusTree,
 	 OnActions& onActions)
 {
-	Log(LogLevel::Info) << " -> Adding \"Begin Rearmament\" branch";
-
 	std::vector<std::shared_ptr<Country>> greatPowers;
 	for (const auto& country: countries | std::views::values)
 	{
@@ -131,10 +126,8 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 
 	for (auto country: sortCountriesByStrength(countries))
 	{
-		Log(LogLevel::Debug) << "Checking " << country->getTag();
 		if (country->getGovernmentIdeology() != "democratic")
 		{
-			Log(LogLevel::Debug) << " -> Not democratic";
 			continue;
 		}
 
@@ -159,14 +152,11 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std:
 
 		if (!gpThreats.empty())
 		{
-			Log(LogLevel::Info) << "\t\tFrance: " << country->getTag();
 			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
-			Log(LogLevel::Info) << "\t\tItaly: " << gpThreats[0]->getTag();
 			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
 			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
 			if (gpThreats.size() > 1)
 			{
-				Log(LogLevel::Info) << "\t\tGermany: " << gpThreats[1]->getTag();
 				gpThreats[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
 				flagZoneOfAccess(gpThreats[1]->getTag(), "FRA_begin_rearmament_GER_zone", countries);
 			}
