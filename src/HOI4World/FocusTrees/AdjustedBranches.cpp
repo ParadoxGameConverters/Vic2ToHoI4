@@ -5,7 +5,7 @@
 
 
 
-HoI4::AdjustedBranches::AdjustedBranches(std::map<std::string, std::shared_ptr<Country>> countries,
+HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 HoI4FocusTree& genericFocusTree,
 	 OnActions& onActions,
 	 const HoI4::MapUtils& mapUtils,
@@ -26,7 +26,7 @@ HoI4::AdjustedBranches::AdjustedBranches(std::map<std::string, std::shared_ptr<C
 	}
 }
 
-void HoI4::AdjustedBranches::addUKColonialFocusBranch(std::map<std::string, std::shared_ptr<Country>> countries,
+void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 HoI4FocusTree& genericFocusTree,
 	 OnActions& onActions)
 {
@@ -110,7 +110,7 @@ std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::ge
 	return neighbors;
 }
 
-void HoI4::AdjustedBranches::addBeginRearmamentBranch(std::map<std::string, std::shared_ptr<Country>> countries,
+void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 HoI4FocusTree& genericFocusTree,
 	 OnActions& onActions)
 {
