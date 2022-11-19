@@ -68,26 +68,6 @@ ideas = {
 			}
 		}
 
-		FRA_hotchkiss = {
-		
-			picture = generic_tank_manufacturer_3
-
-			available = {
-				has_completed_focus = FRA_infantry_tanks
-			}
-						
-			allowed = {
-				original_tag = event_target:FRA_begin_rearmament_FRA
-			}
-						
-			research_bonus = {
-				armor = 0.15
-			}
-			
-
-			traits = { infantry_tank_manufacturer }
-		}
-
 		FRA_motorized_focus = {
 		
 			allowed = {
@@ -208,6 +188,32 @@ ideas = {
 				stability_factor = -0.10
 				surrender_limit = -0.5
 			}
+		}
+
+	}
+
+	tank_manufacturer = {
+
+		designer = yes
+	
+		FRA_hotchkiss = {
+		
+			picture = generic_tank_manufacturer_3
+
+			available = {
+				has_completed_focus = FRA_infantry_tanks
+			}
+						
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+			}
+						
+			research_bonus = {
+				armor = 0.15
+			}
+			
+
+			traits = { infantry_tank_manufacturer }
 		}
 
 		FRA_AMX = {
