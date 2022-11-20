@@ -14,7 +14,7 @@ class MapUtils;
 class AdjustedBranches
 {
   public:
-	AdjustedBranches(std::map<std::string, std::shared_ptr<Country>> countries,
+	AdjustedBranches(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 HoI4FocusTree& genericFocusTree,
 		 OnActions& onActions,
 		 const HoI4::MapUtils& mapUtils,
@@ -22,10 +22,10 @@ class AdjustedBranches
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions);
 
-	void addUKColonialFocusBranch(std::map<std::string, std::shared_ptr<Country>> countries,
+	void addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 HoI4FocusTree& genericFocusTree,
 		 OnActions& onActions);
-	void addBeginRearmamentBranch(std::map<std::string, std::shared_ptr<Country>> countries,
+	void addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 HoI4FocusTree& genericFocusTree,
 		 OnActions& onActions);
 
