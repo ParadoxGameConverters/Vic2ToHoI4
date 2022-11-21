@@ -1,0 +1,239 @@
+ideas = {
+
+	country = {
+
+		FRA_firepower = {
+			picture = generic_artillery_regiments
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+
+			modifier = {
+				
+			}
+		}
+
+		FRA_fortification_focus = {
+		
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				production_speed_bunker_factor = 0.1
+				production_speed_coastal_bunker_factor = 0.1
+			}
+		}
+
+		FRA_infantry_focus = {
+		
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_infantry_bonus
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+
+		FRA_motorized_focus = {
+		
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				motorized_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+
+		FRA_air_dominance = {
+			picture = generic_air_bonus
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				small_plane_airframe = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				small_plane_cas_airframe = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+
+			modifier = {
+				
+			}
+		}
+
+		FRA_flying_artillery = {
+			picture = combined_bomber_offensive
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				medium_plane_airframe = {
+					air_ground_attack = 0.15
+					instant = yes
+				}
+				small_plane_cas_airframe = {
+					air_ground_attack = 0.15
+					instant = yes
+				}
+			}
+
+			modifier = {
+				
+			}
+		}
+
+		FRA_victors_of_wwi = {
+			
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			picture = generic_victors_of_ww1
+			
+			modifier = {
+				conscription = -0.003
+				war_support_factor = -0.05
+				land_doctrine_cost_factor = 0.5
+			}
+		}
+
+		FRA_disjointed_government = {
+			
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				political_power_cost = 0.8
+				stability_factor = -0.10
+				surrender_limit = -0.5
+			}
+		}
+
+	}
+
+	tank_manufacturer = {
+
+		designer = yes
+	
+		FRA_hotchkiss = {
+		
+			picture = generic_tank_manufacturer_3
+
+			available = {
+				has_completed_focus = FRA_infantry_tanks
+			}
+						
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+			}
+						
+			research_bonus = {
+				armor = 0.15
+			}
+			
+
+			traits = { infantry_tank_manufacturer }
+		}
+
+		FRA_AMX = {
+		
+			picture = generic_tank_manufacturer_2
+
+			available = {
+				has_completed_focus = FRA_army_reform
+			}
+						
+			allowed = {
+				original_tag = event_target:FRA_begin_rearmament_FRA
+			}
+						
+			research_bonus = {
+				armor = 0.15
+			}
+			
+
+			traits = { fast_tank_manufacturer }
+		}
+	}
+}

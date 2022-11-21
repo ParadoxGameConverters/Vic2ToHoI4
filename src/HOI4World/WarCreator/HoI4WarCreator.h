@@ -40,6 +40,8 @@ class HoI4WarCreator
 		 HoI4::Localisation& hoi4Localisations,
 		 const Configuration& theConfiguration);
 
+	[[nodiscard]] const auto& getMapUtils() const { return mapUtils; }
+
   private:
 	HoI4WarCreator(const HoI4WarCreator&) = delete;
 	HoI4WarCreator& operator=(const HoI4WarCreator&) = delete;

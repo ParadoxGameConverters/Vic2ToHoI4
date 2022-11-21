@@ -1780,6 +1780,9 @@
     <ClCompile Include="src\HOI4World\PeaceConferences\DynamicAiPeaces.cpp">
       <Filter>src\HOI4World\PeaceConferences</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp">
+      <Filter>src\HOI4World\FocusTrees</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2207,6 +2210,9 @@
     </Filter>
     <Filter Include="src\OutHoi4\UnitMedals">
       <UniqueIdentifier>{93a5d9b2-c96c-4a7c-b214-da96fddc1d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HOI4World\FocusTrees">
+      <UniqueIdentifier>{0f64a54e-5b9c-47ae-89cd-58afdec9b5cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3621,6 +3627,9 @@
     </ClInclude>
     <ClInclude Include="src\HOI4World\PeaceConferences\DynamicAiPeaces.h">
       <Filter>src\HOI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranches.h">
+      <Filter>src\HOI4World\FocusTrees</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

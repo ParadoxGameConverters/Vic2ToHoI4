@@ -46,6 +46,7 @@ class MapUtils
 	[[nodiscard]] std::set<std::string> getFarCountries(const std::string& country, float range) const;
 	[[nodiscard]] std::vector<std::string> getGPsByDistance(const Country& country,
 		 const std::vector<std::shared_ptr<Country>>& greatPowers);
+	[[nodiscard]] const auto& getNeighbors(const std::string& country) const { return neighbors.at(country); }
 
   private:
 	void establishProvincePositions();
@@ -62,6 +63,7 @@ class MapUtils
 	std::map<int, Coordinate> provincePositions;
 	std::map<int, std::string> provinceToOwnerMap;
 	std::map<std::string, std::map<std::string, float>> distancesBetweenCountries;
+	std::map<std::string, std::set<std::string>> neighbors;
 };
 
 } // namespace HoI4

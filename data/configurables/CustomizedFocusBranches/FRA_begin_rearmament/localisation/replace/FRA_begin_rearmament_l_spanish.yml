@@ -1,0 +1,11 @@
+﻿l_spanish:
+ FRA_alpine_forts:0 "Fuertes [FRA_begin_rearmament_savoy.GetAdjective]os"
+ FRA_alpine_forts_desc:0 "Cuando terminemos de cubrir [FRA_begin_rearmament_savoy.GetName] con nuestra nueva línea de defensa, los [FRA_begin_rearmament_ITA.GetAdjective]os no cruzarán la frontera tan fácilmente. Tendremos tiempo para responder y reforzar nuestra posición."
+ FRA_extend_the_maginot_line:0 "Establecer la línea [FRA_begin_rearmament_maginot.GetName]"
+ FRA_extend_the_maginot_line_desc:0 "No podemos contar con que nuestros vecinos se mantengan firmes. Si dejan pasar a los ejércitos enemigos, podríamos tener problemas. ¡Establecer la línea [FRA_begin_rearmament_maginot.GetName] es crucial para mantener fuera de Francia a los ejércitos no deseados!"
+ FRA_division_cuirassee_desc:0 "Un oficial con iniciativa ha propuesto una nueva división en la que se combinaría la artillería pesada con infantería y tanques medianos para que luchen como colectivo."
+ france.2.t:0 "Establecimiento de la línea [FRA_begin_rearmament_maginot.GetName]"
+ france.2.d:0 "Los planes para el establecimiento de la línea [FRA_begin_rearmament_maginot.GetName] a lo largo de la frontera [FRA_begin_rearmament_GER.GetAdjective]a han finalizado y se han realizado las órdenes de construcción. Al otro lado de la frontera, están presentando una protesta oficial después de ver nuestra preparativos, pero el trabajo continúa".
+ france.2.a:0 "Quizás no deberían haberse aliado con nuestro enemigo."
+ france.3.t:0 "Extensión de la [FRA_begin_rearmament_savoy.GetName] Línea"
+ france.3.d:0 "Hemos comenzado el trabajo para mejorar los fortificaciones de la [FRA_begin_rearmament_savoy.GetName] Línea. ¡Cuando estas nuevas defensas estén terminadas, los [FRA_begin_rearmament_ITA.GetAdjective]os tendrían que estar locos para cruzar la frontera!"

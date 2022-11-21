@@ -113,6 +113,7 @@
     <ClCompile Include="src\HOI4World\Events\GovernmentInExileEvent.cpp" />
     <ClCompile Include="src\HOI4World\Events\LarOccupationEvents.cpp" />
     <ClCompile Include="src\HOI4World\Events\NavalTreatyEventsUpdaters.cpp" />
+    <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp" />
     <ClCompile Include="src\HOI4World\GameRules\GameRule.cpp" />
     <ClCompile Include="src\HOI4World\GameRules\GameRuleOption.cpp" />
     <ClCompile Include="src\HOI4World\GameRules\GameRuleOptionTests.cpp" />
@@ -806,6 +807,7 @@
     <ClInclude Include="src\HOI4World\Events\GovernmentInExileEvent.h" />
     <ClInclude Include="src\HOI4World\Events\LarOccupationEvents.h" />
     <ClInclude Include="src\HOI4World\Events\NavalTreatyEventsUpdaters.h" />
+    <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranches.h" />
     <ClInclude Include="src\HOI4World\GameRules\GameRule.h" />
     <ClInclude Include="src\HOI4World\GameRules\GameRuleOption.h" />
     <ClInclude Include="src\HOI4World\GameRules\GameRules.h" />

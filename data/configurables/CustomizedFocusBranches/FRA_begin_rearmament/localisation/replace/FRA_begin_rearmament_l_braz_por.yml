@@ -1,0 +1,11 @@
+﻿l_braz_por:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament_savoy.GetName] Fortes"
+ FRA_alpine_forts_desc:0 "Os [FRA_begin_rearmament_ITA.PTGetAdjMP] não cruzarão a fronteira tão facilmente quando terminarmos de cobrir [FRA_begin_rearmament_savoy.GetName] com nossa mais nova linha de defesa. Teremos tempo para responder e reforçar nossa posição."
+ FRA_extend_the_maginot_line:0 "Estabelecer a linha [FRA_begin_rearmament_maginot.GetName]"
+ FRA_extend_the_maginot_line_desc:0 "Não podemos contar com nossos vizinhos para manter sua posição, se eles deixarem os exércitos inimigos passarem, podemos ter problemas. Estabelecer a Linha [FRA_begin_rearmament_maginot.GetName] é crucial para manter exércitos indesejados fora de [Root.GetName]!"
+ FRA_division_cuirassee_desc:0 "Um oficial empreendedor propôs um novo tipo de divisão, combinando blindagem pesada com infantaria e tanques médios para lutarem como um todo."
+ france.2.t:0 "Estabelecimento da Linha [FRA_begin_rearmament_maginot.GetName]"
+ france.2.d:0 "Os planos para o estabelecimento da Linha [FRA_begin_rearmament_maginot.GetName] ao longo da fronteira [FRA_begin_rearmament_GER.PTGetAdjFS] foram concluídos e as ordens de construção foram feitas. Do outro lado da fronteira, eles estão apresentando um protesto oficial depois de ver nosso preparativos, mas o trabalho continua."
+ france.2.a:0 "Talvez eles não devessem ter ficado do lado do nosso inimigo."
+ france.3.t:0 "Extensão da [FRA_begin_rearmament_savoy.GetName] Linha"
+ france.3.d:0 "Nós começamos a trabalhar na melhoria das fortificações da [FRA_begin_rearmament_savoy.GetName] Linha. Quando essas novas defesas estiverem prontas, os [FRA_begin_rearmament_ITA.PTGetAdjMP] terão que ser loucos para cruzarem a fronteira!"

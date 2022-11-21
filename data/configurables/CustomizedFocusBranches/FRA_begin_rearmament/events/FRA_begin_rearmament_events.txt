@@ -1,0 +1,264 @@
+add_namespace = FRA_begin_rearmament
+
+# FRA_begin_rearmament
+country_event = {
+	id = FRA_begin_rearmament.1
+	title = FRA_begin_rearmament.1.t
+	desc = FRA_begin_rearmament.1.desc
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		# Add Maxime Weygand for FRA_defensive_focus
+		random_character = {
+			limit = {
+				is_army_leader = yes
+				is_advisor = no
+			}
+			set_character_flag = FRA_begin_rearmament_maxime_weygand
+		}
+		if = {	# ROOT has no converted army leaders
+			limit = {
+				NOT = { any_character = { has_character_flag = FRA_begin_rearmament_maxime_weygand } }
+			}
+			generate_character = {
+				token_base = FRA_begin_rearmament_maxime_weygand
+			}
+			FRA_begin_rearmament_maxime_weygand = {
+				set_character_flag = FRA_begin_rearmament_maxime_weygand
+			}
+		}
+		random_character = {
+			limit = { has_character_flag = FRA_begin_rearmament_maxime_weygand }
+			add_advisor_role = {
+				character = THIS
+				advisor={
+					slot = army_chief
+					idea_token = maxime_weygand
+					allowed = {
+						original_tag = ROOT
+					}
+					available = {
+						has_completed_focus = FRA_defensive_focus
+					}
+					cost = 100.000
+					traits = {
+						army_chief_defensive_2
+					}
+					cost = 100
+					ai_will_do = {
+						factor = 1.000
+					}
+				}
+				#activate = yes
+			}
+		}
+		# Add Maurice Gamelin for FRA_aggressive_focus
+		random_character = {
+			limit = {
+				NOT = { has_character_flag = FRA_begin_rearmament_maxime_weygand }
+				is_army_leader = yes
+				is_advisor = no
+			}
+			set_character_flag = FRA_begin_rearmament_maurice_gamelin
+		}
+		if = {	# ROOT has no converted army leaders
+			limit = {
+				NOT = { any_character = { has_character_flag = FRA_begin_rearmament_maurice_gamelin } }
+			}
+			generate_character = {
+				token_base = FRA_begin_rearmament_maurice_gamelin
+			}
+			FRA_begin_rearmament_maurice_gamelin = {
+				set_character_flag = FRA_begin_rearmament_maurice_gamelin
+			}
+		}
+		random_character = {
+			limit = { has_character_flag = FRA_begin_rearmament_maurice_gamelin }
+			add_advisor_role = {
+				character = THIS
+				advisor={
+					slot = army_chief
+					idea_token = maurice_gamelin
+					allowed = {
+						original_tag = ROOT
+					}
+					available = {
+						has_completed_focus = FRA_aggressive_focus
+					}
+					cost = 100.000
+					traits = {
+						army_chief_offensive_2
+					}
+					cost = 100
+					ai_will_do = {
+						factor = 1.000
+					}
+				}
+			}
+
+			add_field_marshal_role={
+				traits={ old_guard inflexible_strategist career_officer defensive_doctrine }
+				skill=2
+				attack_skill=1
+				defense_skill=3
+				planning_skill=2
+				logistics_skill=1
+				legacy_id=0
+			}
+		}
+		# Add Charle de Gaulle for FRA_battle_of_maneuver
+		random_character = {
+			limit = {
+				NOT = { has_character_flag = FRA_begin_rearmament_maxime_weygand }
+				NOT = { has_character_flag = FRA_begin_rearmament_maurice_gamelin }
+				is_army_leader = yes
+				is_advisor = no
+			}
+			set_character_flag = FRA_begin_rearmament_charles_de_gaulle
+		}
+		if = {	# ROOT has no converted army leaders
+			limit = {
+				NOT = { any_character = { has_character_flag = FRA_begin_rearmament_charles_de_gaulle } }
+			}
+			generate_character = {
+				token_base = FRA_begin_rearmament_charles_de_gaulle
+			}
+			FRA_begin_rearmament_charles_de_gaulle = {
+				set_character_flag = FRA_begin_rearmament_charles_de_gaulle
+			}
+		}
+		random_character = {
+			limit = { has_character_flag = FRA_begin_rearmament_charles_de_gaulle }
+			add_advisor_role = {
+				character = THIS
+				advisor={
+					cost = 100
+					slot = theorist
+					idea_token = charles_de_gaulle
+					ledger = army
+					allowed = {
+						original_tag = ROOT
+					}
+					available = {
+						has_completed_focus = FRA_battle_of_maneuver
+					}
+					
+					traits = {
+						blitzkrieg_theorist
+					}
+					ai_will_do = {
+						factor = 1.000
+					}
+				}
+			}
+
+			add_corps_commander_role={
+				traits={ media_personality harsh_leader armor_officer }
+				skill=4
+				attack_skill=4
+				defense_skill=4
+				planning_skill=3
+				logistics_skill=2
+				legacy_id=101
+			}
+		}
+
+		# Set targets for FRA_alpine_forts focus
+		random_owned_controlled_state = {
+			limit = {
+				any_neighbor_state = { is_owned_by = event_target:FRA_begin_rearmament_ITA }
+			}
+			save_global_event_target_as = FRA_begin_rearmament_savoy
+		}
+		if = {
+			limit = { NOT = { any_owned_state = { state = event_target:FRA_begin_rearmament_savoy } } }
+			random_owned_controlled_state = {
+				limit = {
+					any_neighbor_state = {
+						owner = { has_country_flag = FRA_begin_rearmament_ITA_zone }
+					}
+				}
+				save_global_event_target_as = FRA_begin_rearmament_savoy
+			}
+		}
+		# Set targets for FRA_extend_the_maginot_line focus
+		random_owned_controlled_state = {
+			limit = {
+				NOT = { state = event_target:FRA_begin_rearmament_savoy }
+				any_neighbor_state = { is_owned_by = event_target:FRA_begin_rearmament_GER }
+			}
+			save_global_event_target_as = FRA_begin_rearmament_maginot
+		}
+		if = {
+			limit = { NOT = { any_owned_state = { state = event_target:FRA_begin_rearmament_maginot } } }
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { state = event_target:FRA_begin_rearmament_savoy }
+					any_neighbor_state = {
+						owner = { has_country_flag = FRA_begin_rearmament_GER_zone }
+					}
+				}
+				save_global_event_target_as = FRA_begin_rearmament_maginot
+			}
+		}
+	}
+
+	option = {
+		name = FRA_begin_rearmament.1.a
+	}
+}
+
+add_namespace = france
+# Maginot Line Extension
+country_event = {
+	id = france.2
+	title = france.2.t
+	desc = france.2.d
+	picture = GFX_report_event_bunker_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = france.2.a
+		event_target:FRA_begin_rearmament_maginot = {
+			add_building_construction = {
+				type = bunker
+				province = {
+					all_provinces = yes
+					limit_to_border = yes
+				}
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+
+# Alpine Line Extension
+country_event = {
+	id = france.3
+	title = france.3.t
+	desc = france.3.d
+	picture = GFX_report_event_bunker_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = france.3.a
+		event_target:FRA_begin_rearmament_savoy = {
+			add_building_construction = {
+				type = bunker
+				province = {
+					all_provinces = yes
+					limit_to_border = yes
+				}
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+

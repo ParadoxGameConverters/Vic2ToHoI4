@@ -1,0 +1,12 @@
+﻿l_english:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament_savoy.GetName] Forts"
+ FRA_alpine_forts_desc:0 "The [FRA_begin_rearmament_ITA.GetAdjective] troops won't cross the border so easily once we finish covering [FRA_begin_rearmament_savoy.GetName] with our newly planned line of defense. We will have time to respond and reinforce our position."
+ FRA_extend_the_maginot_line:0 "Establish the [FRA_begin_rearmament_maginot.GetName] Line"
+ FRA_extend_the_maginot_line_desc:0 "We cannot count on our neighbors to hold their ground, if they let enemy armies through we might be in trouble. Establishing the [FRA_begin_rearmament_maginot.GetName] Line is crucial to keeping unwanted armies out of [Root.GetName]!"
+ FRA_heavy_armor_focus_desc:0 "Battle tanks are the way forward for the [FRA_begin_rearmament_FRA.GetAdjective] Army. We want to control the battlefield and for this we will need new powerful tanks!"
+ FRA_division_cuirassee_desc:0 "An enterprising officer has proposed a new kind of division, combining heavy armor with infantry and medium tanks to fight as a combined whole."
+ france.2.t:0 "Establishment of the [FRA_begin_rearmament_maginot.GetName] Line"
+ france.2.d:0 "Plans for the establishment of the [FRA_begin_rearmament_maginot.GetName] Line along the [FRA_begin_rearmament_GER.GetAdjective] border have been finished, and construction orders placed. Across the border, they are lodging an official protest after seeing our preparations, but work continues."
+ france.2.a:0 "Perhaps they shouldn't have sided with our enemy."
+ france.3.t:0 "Extension of the [FRA_begin_rearmament_savoy.GetName] Line"
+ france.3.d:0 "We have begun work on improving the fortifications of the [FRA_begin_rearmament_savoy.GetName] Line. When these new defenses are finished, the [FRA_begin_rearmament_ITA.GetAdjective] army would have to be mad to cross the border!"

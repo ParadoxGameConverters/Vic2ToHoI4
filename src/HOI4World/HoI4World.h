@@ -8,6 +8,7 @@
 #include "src/HOI4World/CountryCategories/CountryCategories.h"
 #include "src/HOI4World/Decisions/Decisions.h"
 #include "src/HOI4World/Events/Events.h"
+#include "src/HOI4World/FocusTrees/AdjustedBranches.h"
 #include "src/HOI4World/GameRules/GameRules.h"
 #include "src/HOI4World/HoI4Country.h"
 #include "src/HOI4World/HoI4Localisation.h"
@@ -112,7 +113,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getLocalisation() const { return *hoi4Localisations; }
 	[[nodiscard]] const auto& getSoundEffects() const { return soundEffects; }
 	[[nodiscard]] const auto& getDate() const { return *theDate; }
-	[[nodiscard]] const auto& getCustomizedFocusBranches() const { return customizedFocusBranches; }
+	[[nodiscard]] const auto& getAdjustedFocusBranches() const { return adjustedBranches->getBranchNames(); }
 	[[nodiscard]] const std::map<std::string, std::string>& GetIdeologicalCostModifiers() const
 	{
 		return ideological_cost_modifiers_;
@@ -307,7 +308,7 @@ class World: commonItems::parser
 	std::unique_ptr<Regions> theRegions;
 	std::map<std::pair<std::string, std::string>, std::shared_ptr<Country>> dominions;
 	std::map<std::string, std::shared_ptr<Country>> unrecognizedNations;
-	std::vector<std::string> customizedFocusBranches;
+	std::unique_ptr<AdjustedBranches> adjustedBranches;
 
 	std::map<std::string, std::string> ideological_cost_modifiers_;
 	std::map<std::string, std::string> ideological_ai_peace_;

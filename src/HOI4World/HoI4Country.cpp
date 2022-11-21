@@ -1571,6 +1571,17 @@ void HoI4::Country::addState(const State& state)
 }
 
 
+void HoI4::Country::removeState(const State& state)
+{
+	states.erase(state.getID());
+
+	for (const auto province: state.getProvinces())
+	{
+		provinces.erase(province);
+	}
+}
+
+
 std::optional<HoI4::Relations> HoI4::Country::getRelations(const std::string& withWhom) const
 {
 	if (const auto theRelations = relations.find(withWhom); theRelations != relations.end())
@@ -1653,7 +1664,10 @@ void HoI4::Country::addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisati
 
 void HoI4::Country::addFocusTreeBranch(const std::string& branch, OnActions& onActions)
 {
-	nationalFocus->addBranch(tag, branch, onActions);
+	if (nationalFocus)
+	{
+		nationalFocus->addBranch(tag, branch, onActions);
+	}
 }
 
 

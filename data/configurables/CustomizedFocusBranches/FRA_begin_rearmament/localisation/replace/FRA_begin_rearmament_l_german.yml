@@ -1,0 +1,11 @@
+﻿l_german:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament.GetName] Befestigungen"
+ FRA_alpine_forts_desc:0 "Die [FRA_begin_rearmament_ITA.GetAdjective]er überkreuzen die Grenze nicht mehr so leicht, wenn wir erst einmal [FRA_begin_rearmament.GetName] mit unserer neu geplanten Verteidigungslinie überzogen haben. Wir werden Zeit haben zu reagieren und unsere Position zu festigen."
+ FRA_extend_the_maginot_line:0 "Errichten Sie die [FRA_begin_rearmament_maginot.GetName]-Linie"
+ FRA_extend_the_maginot_line_desc:0 "Wir können uns nicht darauf verlassen, dass unsere Nachbarn sich behaupten, wenn sie feindliche Armeen durchlassen, könnten wir in Schwierigkeiten geraten. Die Errichtung der [FRA_begin_rearmament_maginot.GetName]-Linie ist entscheidend, um unerwünschte Armeen von [Root.GetName] fernzuhalten!"
+ FRA_division_cuirassee_desc:0 "Ein einfallsreicher Offizier hat eine neue Art von Division vorgeschlagen, in der die schwere Panzer, mittlere Panzer und Infanterie gemeinsam kämpfen."
+ france.2.t:0 "Errichtung der Linie [FRA_begin_rearmament_maginot.GetName]"
+ france.2.d:0 "Pläne für die Errichtung der [FRA_begin_rearmament_maginot.GetName]-Linie entlang der [FRA_begin_rearmament_GER.GetAdjective]e-Grenze wurden abgeschlossen und Bauaufträge erteilt. Jenseits der Grenze erheben sie einen offiziellen Protest, nachdem sie unsere gesehen haben Vorbereitungen, aber die Arbeit geht weiter."
+ france.2.a:0 "Vielleicht hätten sie sich nicht auf die Seite unseres Feindes stellen sollen."
+ france.3.t:0 "Erweiterung der [FRA_begin_rearmament.GetName]-Linie"
+ france.3.d:0 "Wir haben mit der Verbesserung der Befestigungsanlagen der [FRA_begin_rearmament.GetName]-Linie in den Alpen begonnen. Wenn diese neuen Verteidigungsstellungen erst einmal fertig sind, müssten die [FRA_begin_rearmament_ITA.GetAdjective]er schon verrückt sein, um die Grenze zu übertreten!"
