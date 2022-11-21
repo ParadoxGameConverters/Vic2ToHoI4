@@ -1,6 +1,7 @@
 #include "AdjustedBranches.h"
 #include "external/common_items/Log.h"
 #include "src/HOI4World/WarCreator/MapUtils.h"
+#include <algorithm>
 #include <ranges>
 
 
