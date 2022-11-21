@@ -389,6 +389,10 @@ set_target_properties( Vic2ToHoi4Converter
 target_link_libraries(Vic2ToHoi4Converter OutHoI4World HoI4World Map Vic2World Mappers ZIPLIB pthread)
 
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/FAQ.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../FAQ.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/license.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../license.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/ReadMe.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../ReadMe.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/version.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../version.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/arabic_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/arabic_operative_codenames.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/CZE_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/CZE_operative_codenames.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/ENG_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/ENG_operative_codenames.txt" COPYONLY)
@@ -436,6 +440,7 @@ configure_file("${DATA_FILE_DIR}/configurables/languageReplacementsBis.txt" "${C
 configure_file("${DATA_FILE_DIR}/configurables/merge_nations.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/merge_nations.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/names.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/names.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/OperativeNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/OperativeNamesMappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/plane_designs.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/plane_designs.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/positions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/positions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/resources.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/resources.txt" COPYONLY)
@@ -449,7 +454,7 @@ configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/Vic2Localisatio
 configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/dominions.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/dominions.csv" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/unrecognized_nations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/unrecognized_nations.csv" COPYONLY)
 file(COPY "${DATA_FILE_DIR}/blank_mod/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/blankmod/")
-file(COPY "${DATA_FILE_DIR}/configurables/CustomizedFocusBranches/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/configurables/CustomizedFocusBranches/")
+file(COPY "${DATA_FILE_DIR}/configurables/CustomizedFocusBranches/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CustomizedFocusBranches/")
 file(COPY "${DATA_FILE_DIR}/flags" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
 add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > build/Release-Linux/commit_id.txt)
 
