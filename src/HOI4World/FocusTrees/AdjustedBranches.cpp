@@ -144,6 +144,11 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 			{
 				continue;
 			}
+			const auto& relations = potentialAttacker->getRelations(country->getTag());
+			if (!relations || (relations->getRelations() >= 0))
+			{
+				continue;
+			}
 			if (attackerCanPositionTroopsOnCountryBorders(country, potentialAttackerTag, countries) &&
 				 gpThreats.size() < 3)
 			{
