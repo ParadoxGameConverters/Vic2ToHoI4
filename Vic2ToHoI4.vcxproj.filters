@@ -2694,6 +2694,12 @@
     <Text Include="data\configurables\CodenamesOperatives\TUR_operative_codenames.txt">
       <Filter>data\configurables\CodenamesOperatives</Filter>
     </Text>
+    <Text Include="data\configurables\CustomizedFocusBranches\FRA_begin_rearmament_characters.txt">
+      <Filter>data\configurables\CustomizedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\CustomizedFocusBranches\FRA_begin_rearmament.txt">
+      <Filter>data\configurables\CustomizedFocusBranches</Filter>
+    </Text>
     <Text Include="data\configurables\CustomizedFocusBranches\uk_colonial_focus.txt">
       <Filter>data\configurables\CustomizedFocusBranches</Filter>
     </Text>

@@ -20,14 +20,16 @@ class AdjustedBranches
 		 const HoI4::MapUtils& mapUtils,
 		 const std::map<int, int>& provinceToStateIdMapping,
 		 const Maps::MapData& theMapData,
-		 const Maps::ProvinceDefinitions& provinceDefinitions);
+		 const Maps::ProvinceDefinitions& provinceDefinitions,
+		 Character::Factory& characterFactory);
 
 	void addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 HoI4FocusTree& genericFocusTree,
 		 OnActions& onActions);
 	void addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 HoI4FocusTree& genericFocusTree,
-		 OnActions& onActions);
+		 OnActions& onActions,
+		 Character::Factory& characterFactory);
 
 	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
 
@@ -50,6 +52,7 @@ class AdjustedBranches
 	void flagZoneOfAccess(const std::string& gpTag,
 		 const std::string& flag,
 		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+	void importCharacters(std::shared_ptr<Country> country, std::string_view filename, Character::Factory& characterFactory);
 	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const std::shared_ptr<Country>& country,
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 

@@ -737,7 +737,7 @@ void HoI4::outputCountry(const std::vector<DivisionTemplateType>& divisionTempla
 		outputCommonCountryFile(theCountry, theConfiguration);
 		outputAdvisorIdeas(tag, theConfiguration.getOutputName(), theCountry);
 		outputAIStrategy(theCountry, outputName);
-		outputCharacters("output/" + outputName + "/common/characters/" + tag + ".txt ", theCountry.getCharacters());
+		outputCharacters("output/" + outputName + "/common/characters/" + tag + ".txt", theCountry.getCharacters());
 
 		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
 		{

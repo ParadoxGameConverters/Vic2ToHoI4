@@ -261,7 +261,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 warCreator.getMapUtils(),
 		 getProvinceToStateIDMap(),
 		 *theMapData,
-		 *provinceDefinitions));
+		 *provinceDefinitions,
+		 characterFactory));
 	adjustResearchFocuses();
 
 	dynamicModifiers.updateDynamicModifiers(ideologies->getMajorIdeologies());
@@ -532,7 +533,7 @@ void HoI4::World::importCharacters(Character::Factory& characterFactory)
 {
 	Log(LogLevel::Info) << "\tImporting characters";
 	CharactersFactory charactersFactory(characterFactory);
-	const auto importedCharacters = charactersFactory.importCharacters();
+	const auto importedCharacters = charactersFactory.importCharacters("Configurables/ImportCharacters.txt");
 
 	for (auto& [tag, country]: countries)
 	{
