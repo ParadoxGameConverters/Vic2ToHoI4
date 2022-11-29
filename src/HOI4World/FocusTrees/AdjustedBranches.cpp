@@ -1,8 +1,8 @@
 #include "AdjustedBranches.h"
 #include "external/common_items/Log.h"
-#include "src/HOI4World/WarCreator/MapUtils.h"
 #include "src/HOI4World/Characters/CharacterFactory.h"
 #include "src/HOI4World/Characters/CharactersFactory.h"
+#include "src/HOI4World/WarCreator/MapUtils.h"
 #include <algorithm>
 #include <ranges>
 
@@ -163,7 +163,9 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 		if (!gpThreats.empty())
 		{
 			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
-			importCharacters(country, "Configurables/CustomizedFocusBranches/FRA_begin_rearmament_characters.txt", characterFactory);
+			importCharacters(country,
+				 "Configurables/CustomizedFocusBranches/FRA_begin_rearmament_characters.txt",
+				 characterFactory);
 			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
 			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
 			if (gpThreats.size() > 1)
@@ -178,7 +180,10 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 	}
 }
 
-void HoI4::AdjustedBranches::importCharacters(std::shared_ptr<Country> country, std::string_view filename, Character::Factory& characterFactory) {
+void HoI4::AdjustedBranches::importCharacters(std::shared_ptr<Country> country,
+	 std::string_view filename,
+	 Character::Factory& characterFactory)
+{
 	CharactersFactory charactersFactory(characterFactory);
 	const auto importedCharacters = charactersFactory.importCharacters(filename);
 	for (const auto& character: importedCharacters | std::views::values)

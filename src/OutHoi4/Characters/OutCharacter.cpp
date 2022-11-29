@@ -10,7 +10,8 @@
 std::ostream& HoI4::operator<<(std::ostream& out, const Character& character)
 {
 	out << "\t" << character.getId() << "={\n";
-	if (!character.getName().empty()) {
+	if (!character.getName().empty())
+	{
 		out << "\t\tname=" << character.getId() << "\n";
 	}
 	if (!character.getPortraits().empty())
