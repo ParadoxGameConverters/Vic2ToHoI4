@@ -3,7 +3,7 @@
 #
 # You may wish to alter this file to override the set of languages analyzed,
 # or to provide custom queries or build logic.
-name: "Coverage"
+name: "Linux-based analysis"
 
 env:
   COVERAGE: YES
@@ -14,6 +14,8 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [master]
+  schedule:
+    - cron: '0 16 * * 6'
 
 jobs:
   analyze_main:
@@ -48,9 +50,28 @@ jobs:
       run: |
        gcov --version
 
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+        # If you wish to specify custom queries, you can do so here or in a config file.
+        # By default, queries listed here will override any specified in a config file.
+        # Prefix the list here with "+" to use these queries and those in the config file.
+        # queries: ./path/to/local/query, your-org/your-repo/queries@main
+
+    # ℹ️ Command-line programs to run using the OS shell.
+    # 📚 https://git.io/JvXDl
+
+    - name: Setup Dotnet for use with actions
+      uses: actions/setup-dotnet@v3.0.3
+      with:
+        dotnet-version: '7.*'
+        include-prerelease: true
+
     - name: Build solution
       run: |
-       cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter Vic2ToHoi4ConverterTests -- -j40
+       cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter Fronter Vic2ToHoi4ConverterTests -- -j40
 
     - name: Run tests
       run: |
@@ -73,6 +94,9 @@ jobs:
       with:
         name: coverage-report
         path: build/lcoverage/
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
@@ -108,6 +132,25 @@ jobs:
     - name: "Check version of gcov"
       run: |
        gcov --version
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+        # If you wish to specify custom queries, you can do so here or in a config file.
+        # By default, queries listed here will override any specified in a config file.
+        # Prefix the list here with "+" to use these queries and those in the config file.
+        # queries: ./path/to/local/query, your-org/your-repo/queries@main
+
+    # ℹ️ Command-line programs to run using the OS shell.
+    # 📚 https://git.io/JvXDl
+
+    - name: Setup Dotnet for use with actions
+      uses: actions/setup-dotnet@v3.0.3
+      with:
+        dotnet-version: '7.*'
+        include-prerelease: true
 
     - name: Build solution
       run: |
@@ -160,6 +203,9 @@ jobs:
       with:
         name: coverage-report
         path: build/lcoverage/
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
