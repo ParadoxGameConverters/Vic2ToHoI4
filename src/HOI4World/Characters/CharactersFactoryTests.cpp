@@ -10,7 +10,7 @@ TEST(HoI4World_Characters_CharactersFactory, CharactersCanBeImported)
 	HoI4::Character::Factory characterFactory;
 	HoI4::CharactersFactory charactersFactory(characterFactory);
 
-	const auto characters = charactersFactory.importCharacters();
+	const auto characters = charactersFactory.importCharacters("Configurables/ImportCharacters.txt");
 
 	std::stringstream empty_character_input;
 	EXPECT_THAT(characters,

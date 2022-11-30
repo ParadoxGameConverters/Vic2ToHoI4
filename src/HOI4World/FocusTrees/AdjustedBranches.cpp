@@ -1,5 +1,7 @@
 #include "AdjustedBranches.h"
 #include "external/common_items/Log.h"
+#include "src/HOI4World/Characters/CharacterFactory.h"
+#include "src/HOI4World/Characters/CharactersFactory.h"
 #include "src/HOI4World/WarCreator/MapUtils.h"
 #include <algorithm>
 #include <ranges>
@@ -12,7 +14,8 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	 const HoI4::MapUtils& mapUtils,
 	 const std::map<int, int>& provinceToStateIdMapping,
 	 const Maps::MapData& theMapData,
-	 const Maps::ProvinceDefinitions& provinceDefinitions):
+	 const Maps::ProvinceDefinitions& provinceDefinitions,
+	 Character::Factory& characterFactory):
 	 mapUtils(mapUtils),
 	 provinceToStateIdMapping(provinceToStateIdMapping), theMapData(theMapData), provinceDefinitions(provinceDefinitions)
 {
@@ -23,7 +26,7 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	}
 	if (genericFocusTree.getBranches().contains("FRA_begin_rearmament"))
 	{
-		addBeginRearmamentBranch(countries, genericFocusTree, onActions);
+		addBeginRearmamentBranch(countries, genericFocusTree, onActions, characterFactory);
 	}
 }
 
@@ -113,7 +116,8 @@ std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::ge
 
 void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 HoI4FocusTree& genericFocusTree,
-	 OnActions& onActions)
+	 OnActions& onActions,
+	 Character::Factory& characterFactory)
 {
 	std::vector<std::shared_ptr<Country>> greatPowers;
 	for (const auto& country: countries | std::views::values)
@@ -144,6 +148,11 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 			{
 				continue;
 			}
+			const auto& relations = potentialAttacker->getRelations(country->getTag());
+			if (!relations || (relations->getRelations() >= 0))
+			{
+				continue;
+			}
 			if (attackerCanPositionTroopsOnCountryBorders(country, potentialAttackerTag, countries) &&
 				 gpThreats.size() < 3)
 			{
@@ -154,6 +163,9 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 		if (!gpThreats.empty())
 		{
 			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
+			importCharacters(country,
+				 "Configurables/CustomizedFocusBranches/FRA_begin_rearmament_characters.txt",
+				 characterFactory);
 			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
 			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
 			if (gpThreats.size() > 1)
@@ -165,6 +177,18 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 			branchNames.push_back("FRA_begin_rearmament");
 			break;
 		}
+	}
+}
+
+void HoI4::AdjustedBranches::importCharacters(std::shared_ptr<Country> country,
+	 std::string_view filename,
+	 Character::Factory& characterFactory)
+{
+	CharactersFactory charactersFactory(characterFactory);
+	const auto importedCharacters = charactersFactory.importCharacters(filename);
+	for (const auto& character: importedCharacters | std::views::values)
+	{
+		country->addCharacter(character);
 	}
 }
 
