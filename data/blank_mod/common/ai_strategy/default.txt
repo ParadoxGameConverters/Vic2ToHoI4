@@ -264,7 +264,7 @@ bba_air_prod_1 = {
 	ai_strategy = {
 		type = unit_ratio
 		id = tactical_bomber
-		value = -99
+		value = 15
 	}
 
 	ai_strategy = {
@@ -276,7 +276,7 @@ bba_air_prod_1 = {
 	ai_strategy = {
 		type = unit_ratio
 		id = strategic_bomber
-		value = -99
+		value = 5
 	}
 
 	ai_strategy = {
