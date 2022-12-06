@@ -1,5 +1,7 @@
 from PIL import Image
 import os
+import glob
+import sys
 
 def DetermineSmallFilename(big_filename):
     small_filename = "data/blank_mod/gfx/interface/ideas/" + os.path.basename(big_filename).replace("Portrait", "idea")
@@ -35,11 +37,14 @@ def CreateSmallVersion(filename):
     on_canvas.save(small_filename)
 
     
-gfx_file = open("data/blank_mod/interface/_leader_portraits_mod.gfx", "w")
+gfx_file = open("data/blank_mod/interface/_leader_portraits_mod_generated.gfx", "w")
 gfx_file.write("spriteTypes = {\n")
 
 
-image_fileme in glob.iglob('data/blank_mod/gfx/leaders/**/*.txt', recursive=True):
+for image_file in glob.iglob('data/blank_mod/gfx/leaders/**/*', recursive=True):
+    if(os.path.isdir(image_file)):
+        continue
+    print("Processing " + image_file)
     CreateSmallVersion(image_file)
     gfx_file.write(GetDefinition(image_file))
 
