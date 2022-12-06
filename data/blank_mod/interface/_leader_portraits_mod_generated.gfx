@@ -10,16 +10,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_Portait_Sarawak_Ye_Jianying
-		texturefile = "data/blank_mod/gfx/leaders/Aborigine_Polynesia/Portait_Sarawak_Ye_Jianying.tga"
-	}
-
-	spriteType = {
-		name = GFX_Portait_Sarawak_Ye_Jianying_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Portait_Sarawak_Ye_Jianying.tga"
-	}
-
-	spriteType = {
 		name = GFX_CAF_CLR_James
 		texturefile = "data/blank_mod/gfx/leaders/Aborigine_Polynesia/Portrait_CAF_CLR_James.tga"
 	}
@@ -297,6 +287,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Sarawak_Ong_Tiang_Swee_small
 		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Sarawak_Ong_Tiang_Swee.tga"
+	}
+
+	spriteType = {
+		name = GFX_Sarawak_Ye_Jianying
+		texturefile = "data/blank_mod/gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ye_Jianying.tga"
+	}
+
+	spriteType = {
+		name = GFX_Sarawak_Ye_Jianying_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Sarawak_Ye_Jianying.tga"
 	}
 
 	spriteType = {
@@ -3910,13 +3910,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_Portriat_Poland_Roza_Luksemburg
-		texturefile = "data/blank_mod/gfx/leaders/Eastern_European/Female/Portriat_Poland_Roza_Luksemburg.tga"
+		name = GFX_Poland_Roza_Luksemburg
+		texturefile = "data/blank_mod/gfx/leaders/Eastern_European/Female/Portrait_Poland_Roza_Luksemburg.tga"
 	}
 
 	spriteType = {
-		name = GFX_Portriat_Poland_Roza_Luksemburg_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Portriat_Poland_Roza_Luksemburg.tga"
+		name = GFX_Poland_Roza_Luksemburg_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Poland_Roza_Luksemburg.tga"
 	}
 
 	spriteType = {
