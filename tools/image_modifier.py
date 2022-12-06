@@ -4,7 +4,8 @@ import glob
 import sys
 
 def DetermineSmallFilename(big_filename):
-    small_filename = "data/blank_mod/gfx/interface/ideas/" + os.path.basename(big_filename).replace("Portrait", "idea")
+    small_filename = "data/blank_mod/gfx/interface/ideas/idea_" + os.path.basename(big_filename).replace("Portrait_", "").replace("portrait_", "")
+    small_filename = small_filename.replace("portrait_", "idea_")
     return small_filename
 
 def GetScalingFactor(width):
@@ -12,12 +13,12 @@ def GetScalingFactor(width):
 
 def GetDefinition(filename):
     definition = "\tspriteType = {\n"
-    definition += "\t\tname = GFX" + os.path.basename(filename).replace("Portrait", "").replace(".tga","").replace(".dds","") + "\n"
+    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","") + "\n"
     definition += "\t\ttexturefile = \"" + filename + "\"\n"
     definition += "\t}\n"
     definition += "\n"
     definition += "\tspriteType = {\n"
-    definition += "\t\tname = GFX" + os.path.basename(filename).replace("Portrait", "").replace(".tga","").replace(".dds","") + "_small\n"
+    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","") + "_small\n"
     definition += "\t\ttexturefile = \"" + DetermineSmallFilename(filename) + "\"\n"
     definition += "\t}\n"
     definition += "\n"

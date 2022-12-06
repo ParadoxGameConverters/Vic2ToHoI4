@@ -1,22 +1,22 @@
 spriteTypes = {
 	spriteType = {
-		name = GFXDavid.png
+		name = GFX_David.png
 		texturefile = "data/blank_mod/gfx/leaders/David.png"
 	}
 
 	spriteType = {
-		name = GFXDavid.png_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/David.png"
+		name = GFX_David.png_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_David.png"
 	}
 
 	spriteType = {
-		name = GFXPortait_Sarawak_Ye_Jianying
+		name = GFX_Portait_Sarawak_Ye_Jianying
 		texturefile = "data/blank_mod/gfx/leaders/Aborigine_Polynesia/Portait_Sarawak_Ye_Jianying.tga"
 	}
 
 	spriteType = {
-		name = GFXPortait_Sarawak_Ye_Jianying_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Portait_Sarawak_Ye_Jianying.tga"
+		name = GFX_Portait_Sarawak_Ye_Jianying_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Portait_Sarawak_Ye_Jianying.tga"
 	}
 
 	spriteType = {
@@ -1240,353 +1240,353 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_bear_buisnessman_leader
+		name = GFX_bear_buisnessman_leader
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_bear_buisnessman_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_bear_buisnessman_leader_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_bear_buisnessman_leader.dds"
+		name = GFX_bear_buisnessman_leader_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_bear_buisnessman_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_bear_buisnessman_operator
+		name = GFX_bear_buisnessman_operator
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_bear_buisnessman_operator.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_bear_buisnessman_operator_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_bear_buisnessman_operator.dds"
+		name = GFX_bear_buisnessman_operator_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_bear_buisnessman_operator.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_cat_leader
+		name = GFX_cat_leader
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_cat_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_cat_leader_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_cat_leader.dds"
+		name = GFX_cat_leader_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_cat_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_cat_operative
+		name = GFX_cat_operative
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_cat_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_cat_operative_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_cat_operative.dds"
+		name = GFX_cat_operative_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_cat_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Chancellor_Glitterhoof
+		name = GFX_Chancellor_Glitterhoof
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Chancellor_Glitterhoof_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Chancellor_Glitterhoof.dds"
+		name = GFX_Chancellor_Glitterhoof_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Chancellor_Glitterhoof.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dog_leader
+		name = GFX_dog_leader
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_dog_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dog_leader_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_dog_leader.dds"
+		name = GFX_dog_leader_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_dog_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dog_operative
+		name = GFX_dog_operative
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_dog_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dog_operative_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_dog_operative.dds"
+		name = GFX_dog_operative_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_dog_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dragon_businessman_leader
+		name = GFX_dragon_businessman_leader
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_dragon_businessman_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dragon_businessman_leader_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_dragon_businessman_leader.dds"
+		name = GFX_dragon_businessman_leader_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_dragon_businessman_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dragon_businessman_operative
+		name = GFX_dragon_businessman_operative
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_dragon_businessman_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dragon_businessman_operative_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_dragon_businessman_operative.dds"
+		name = GFX_dragon_businessman_operative_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_dragon_businessman_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_duck_leader
+		name = GFX_duck_leader
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_duck_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_duck_leader_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_duck_leader.dds"
+		name = GFX_duck_leader_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_duck_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_duck_operative
+		name = GFX_duck_operative
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_duck_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_duck_operative_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_duck_operative.dds"
+		name = GFX_duck_operative_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_duck_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_elephant_leader
+		name = GFX_elephant_leader
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_elephant_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_elephant_leader_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_elephant_leader.dds"
+		name = GFX_elephant_leader_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_elephant_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_elephant_operative
+		name = GFX_elephant_operative
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_elephant_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_elephant_operative_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_elephant_operative.dds"
+		name = GFX_elephant_operative_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_elephant_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_hedgehog_leader
+		name = GFX_hedgehog_leader
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_hedgehog_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_hedgehog_leader_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_hedgehog_leader.dds"
+		name = GFX_hedgehog_leader_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_hedgehog_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_hedgehog_operative
+		name = GFX_hedgehog_operative
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_hedgehog_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_hedgehog_operative_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_hedgehog_operative.dds"
+		name = GFX_hedgehog_operative_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_hedgehog_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_red_panda_leader
+		name = GFX_red_panda_leader
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_red_panda_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_red_panda_leader_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_red_panda_leader.dds"
+		name = GFX_red_panda_leader_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_red_panda_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_red_panda_operative
+		name = GFX_red_panda_operative
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_red_panda_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_red_panda_operative_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_red_panda_operative.dds"
+		name = GFX_red_panda_operative_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_red_panda_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Spymaster_Glitterhoof
+		name = GFX_Spymaster_Glitterhoof
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_Spymaster_Glitterhoof.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Spymaster_Glitterhoof_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Spymaster_Glitterhoof.dds"
+		name = GFX_Spymaster_Glitterhoof_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Spymaster_Glitterhoof.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_unicorn_disguise_buisness
+		name = GFX_unicorn_disguise_buisness
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_unicorn_disguise_buisness.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_unicorn_disguise_buisness_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_unicorn_disguise_buisness.dds"
+		name = GFX_unicorn_disguise_buisness_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_unicorn_disguise_buisness.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_unicorn_leader_of_buisness
+		name = GFX_unicorn_leader_of_buisness
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/portrait_unicorn_leader_of_buisness.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_unicorn_leader_of_buisness_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_unicorn_leader_of_buisness.dds"
+		name = GFX_unicorn_leader_of_buisness_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_unicorn_leader_of_buisness.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_cat_leader_F
+		name = GFX_cat_leader_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_cat_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_cat_leader_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_cat_leader_F.dds"
+		name = GFX_cat_leader_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_cat_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_cat_operative_F
+		name = GFX_cat_operative_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_cat_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_cat_operative_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_cat_operative_F.dds"
+		name = GFX_cat_operative_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_cat_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Chancellor_Glitterhoof_F
+		name = GFX_Chancellor_Glitterhoof_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_Chancellor_Glitterhoof_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Chancellor_Glitterhoof_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Chancellor_Glitterhoof_F.dds"
+		name = GFX_Chancellor_Glitterhoof_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Chancellor_Glitterhoof_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dog_leader_F
+		name = GFX_dog_leader_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_dog_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dog_leader_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_dog_leader_F.dds"
+		name = GFX_dog_leader_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_dog_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dog_operative_F
+		name = GFX_dog_operative_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_dog_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_dog_operative_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_dog_operative_F.dds"
+		name = GFX_dog_operative_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_dog_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_duck_leader_F
+		name = GFX_duck_leader_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_duck_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_duck_leader_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_duck_leader_F.dds"
+		name = GFX_duck_leader_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_duck_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_duck_operative_F
+		name = GFX_duck_operative_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_duck_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_duck_operative_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_duck_operative_F.dds"
+		name = GFX_duck_operative_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_duck_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_elephant_leader_F
+		name = GFX_elephant_leader_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_elephant_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_elephant_leader_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_elephant_leader_F.dds"
+		name = GFX_elephant_leader_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_elephant_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_elephant_operative_F
+		name = GFX_elephant_operative_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_elephant_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_elephant_operative_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_elephant_operative_F.dds"
+		name = GFX_elephant_operative_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_elephant_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_hedgehog_leader_F
+		name = GFX_hedgehog_leader_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_hedgehog_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_hedgehog_leader_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_hedgehog_leader_F.dds"
+		name = GFX_hedgehog_leader_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_hedgehog_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_hedgehog_operative_F
+		name = GFX_hedgehog_operative_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_hedgehog_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_hedgehog_operative_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_hedgehog_operative_F.dds"
+		name = GFX_hedgehog_operative_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_hedgehog_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_red_panda_leader_F
+		name = GFX_red_panda_leader_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_red_panda_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_red_panda_leader_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_red_panda_leader_F.dds"
+		name = GFX_red_panda_leader_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_red_panda_leader_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_red_panda_operative_F
+		name = GFX_red_panda_operative_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_red_panda_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_red_panda_operative_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_red_panda_operative_F.dds"
+		name = GFX_red_panda_operative_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_red_panda_operative_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Spymaster_Glitterhoof_F
+		name = GFX_Spymaster_Glitterhoof_F
 		texturefile = "data/blank_mod/gfx/leaders/Animalia/Female/portrait_Spymaster_Glitterhoof_F.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Spymaster_Glitterhoof_F_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Spymaster_Glitterhoof_F.dds"
+		name = GFX_Spymaster_Glitterhoof_F_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Spymaster_Glitterhoof_F.dds"
 	}
 
 	spriteType = {
-		name = GFXJohannes_Bell
+		name = GFX_Johannes_Bell
 		texturefile = "data/blank_mod/gfx/leaders/Arabic_Persian/Johannes_Bell.tga"
 	}
 
 	spriteType = {
-		name = GFXJohannes_Bell_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Johannes_Bell.tga"
+		name = GFX_Johannes_Bell_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Johannes_Bell.tga"
 	}
 
 	spriteType = {
@@ -2370,13 +2370,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_MON_Gengis_Khan
+		name = GFX_MON_Gengis_Khan
 		texturefile = "data/blank_mod/gfx/leaders/Asian_Steppe/portrait_MON_Gengis_Khan.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_MON_Gengis_Khan_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_MON_Gengis_Khan.dds"
+		name = GFX_MON_Gengis_Khan_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_MON_Gengis_Khan.dds"
 	}
 
 	spriteType = {
@@ -2540,13 +2540,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXZhumabay_Shayakhmetov
+		name = GFX_Zhumabay_Shayakhmetov
 		texturefile = "data/blank_mod/gfx/leaders/Asian_Steppe/Zhumabay_Shayakhmetov.tga"
 	}
 
 	spriteType = {
-		name = GFXZhumabay_Shayakhmetov_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Zhumabay_Shayakhmetov.tga"
+		name = GFX_Zhumabay_Shayakhmetov_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Zhumabay_Shayakhmetov.tga"
 	}
 
 	spriteType = {
@@ -2560,33 +2560,33 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXAlexander_II
+		name = GFX_Alexander_II
 		texturefile = "data/blank_mod/gfx/leaders/Balkans/Alexander_II.tga"
 	}
 
 	spriteType = {
-		name = GFXAlexander_II_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Alexander_II.tga"
+		name = GFX_Alexander_II_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Alexander_II.tga"
 	}
 
 	spriteType = {
-		name = GFXDraza_Mihailovic
+		name = GFX_Draza_Mihailovic
 		texturefile = "data/blank_mod/gfx/leaders/Balkans/Draza_Mihailovic.tga"
 	}
 
 	spriteType = {
-		name = GFXDraza_Mihailovic_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Draza_Mihailovic.tga"
+		name = GFX_Draza_Mihailovic_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Draza_Mihailovic.tga"
 	}
 
 	spriteType = {
-		name = GFXPetar_Vukcevic
+		name = GFX_Petar_Vukcevic
 		texturefile = "data/blank_mod/gfx/leaders/Balkans/Petar_Vukcevic.tga"
 	}
 
 	spriteType = {
-		name = GFXPetar_Vukcevic_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Petar_Vukcevic.tga"
+		name = GFX_Petar_Vukcevic_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Petar_Vukcevic.tga"
 	}
 
 	spriteType = {
@@ -2860,73 +2860,73 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXSlobodan_Jovanovic
+		name = GFX_Slobodan_Jovanovic
 		texturefile = "data/blank_mod/gfx/leaders/Balkans/Slobodan_Jovanovic.tga"
 	}
 
 	spriteType = {
-		name = GFXSlobodan_Jovanovic_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Slobodan_Jovanovic.tga"
+		name = GFX_Slobodan_Jovanovic_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Slobodan_Jovanovic.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_absolutist
+		name = GFX_Apocalypto_absolutist
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_Apocalypto_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_absolutist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Apocalypto_absolutist.dds"
+		name = GFX_Apocalypto_absolutist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Apocalypto_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_communist
+		name = GFX_Apocalypto_communist
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_Apocalypto_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_communist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Apocalypto_communist.dds"
+		name = GFX_Apocalypto_communist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Apocalypto_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_democratic
+		name = GFX_Apocalypto_democratic
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_Apocalypto_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_democratic_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Apocalypto_democratic.dds"
+		name = GFX_Apocalypto_democratic_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Apocalypto_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_fascist
+		name = GFX_Apocalypto_fascist
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_Apocalypto_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_fascist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Apocalypto_fascist.dds"
+		name = GFX_Apocalypto_fascist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Apocalypto_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_neutral
+		name = GFX_Apocalypto_neutral
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_Apocalypto_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_neutral_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Apocalypto_neutral.dds"
+		name = GFX_Apocalypto_neutral_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Apocalypto_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_radical
+		name = GFX_Apocalypto_radical
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_Apocalypto_radical.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Apocalypto_radical_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Apocalypto_radical.dds"
+		name = GFX_Apocalypto_radical_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Apocalypto_radical.dds"
 	}
 
 	spriteType = {
@@ -2970,63 +2970,63 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_1
+		name = GFX_mesoamerican_generic_land_1
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_1.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_1_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_mesoamerican_generic_land_1.tga"
+		name = GFX_mesoamerican_generic_land_1_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_mesoamerican_generic_land_1.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_2
+		name = GFX_mesoamerican_generic_land_2
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_2.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_2_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_mesoamerican_generic_land_2.tga"
+		name = GFX_mesoamerican_generic_land_2_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_mesoamerican_generic_land_2.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_3
+		name = GFX_mesoamerican_generic_land_3
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_3.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_3_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_mesoamerican_generic_land_3.tga"
+		name = GFX_mesoamerican_generic_land_3_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_mesoamerican_generic_land_3.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_4
+		name = GFX_mesoamerican_generic_land_4
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_4.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_4_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_mesoamerican_generic_land_4.dds"
+		name = GFX_mesoamerican_generic_land_4_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_mesoamerican_generic_land_4.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_5
+		name = GFX_mesoamerican_generic_land_5
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_5.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_5_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_mesoamerican_generic_land_5.tga"
+		name = GFX_mesoamerican_generic_land_5_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_mesoamerican_generic_land_5.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_6
+		name = GFX_mesoamerican_generic_land_6
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_mesoamerican_generic_land_6.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_mesoamerican_generic_land_6_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_mesoamerican_generic_land_6.tga"
+		name = GFX_mesoamerican_generic_land_6_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_mesoamerican_generic_land_6.tga"
 	}
 
 	spriteType = {
@@ -3040,63 +3040,63 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_absolutist
+		name = GFX_nat_carib_absolutist
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_nat_carib_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_absolutist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_carib_absolutist.dds"
+		name = GFX_nat_carib_absolutist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_carib_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_communist
+		name = GFX_nat_carib_communist
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_nat_carib_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_communist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_carib_communist.dds"
+		name = GFX_nat_carib_communist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_carib_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_democratic
+		name = GFX_nat_carib_democratic
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_democratic_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_carib_democratic.dds"
+		name = GFX_nat_carib_democratic_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_carib_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_fascist
+		name = GFX_nat_carib_fascist
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_nat_carib_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_fascist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_carib_fascist.dds"
+		name = GFX_nat_carib_fascist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_carib_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_neutral
+		name = GFX_nat_carib_neutral
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_nat_carib_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_neutral_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_carib_neutral.dds"
+		name = GFX_nat_carib_neutral_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_carib_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_radical
+		name = GFX_nat_carib_radical
 		texturefile = "data/blank_mod/gfx/leaders/Central_American_Native/portrait_nat_carib_radical.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_carib_radical_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_carib_radical.dds"
+		name = GFX_nat_carib_radical_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_carib_radical.dds"
 	}
 
 	spriteType = {
@@ -3140,83 +3140,83 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader
+		name = GFX_synthetic_leader
 		texturefile = "data/blank_mod/gfx/leaders/Deathbringers/portrait_synthetic_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_synthetic_leader.dds"
+		name = GFX_synthetic_leader_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_synthetic_leader.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_absolutism
+		name = GFX_synthetic_leader_absolutism
 		texturefile = "data/blank_mod/gfx/leaders/Deathbringers/portrait_synthetic_leader_absolutism.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_absolutism_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_synthetic_leader_absolutism.dds"
+		name = GFX_synthetic_leader_absolutism_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_synthetic_leader_absolutism.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_communism
+		name = GFX_synthetic_leader_communism
 		texturefile = "data/blank_mod/gfx/leaders/Deathbringers/portrait_synthetic_leader_communism.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_communism_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_synthetic_leader_communism.dds"
+		name = GFX_synthetic_leader_communism_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_synthetic_leader_communism.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_democratic
+		name = GFX_synthetic_leader_democratic
 		texturefile = "data/blank_mod/gfx/leaders/Deathbringers/portrait_synthetic_leader_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_democratic_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_synthetic_leader_democratic.dds"
+		name = GFX_synthetic_leader_democratic_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_synthetic_leader_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_fascism
+		name = GFX_synthetic_leader_fascism
 		texturefile = "data/blank_mod/gfx/leaders/Deathbringers/portrait_synthetic_leader_fascism.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_fascism_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_synthetic_leader_fascism.dds"
+		name = GFX_synthetic_leader_fascism_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_synthetic_leader_fascism.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_neutrality
+		name = GFX_synthetic_leader_neutrality
 		texturefile = "data/blank_mod/gfx/leaders/Deathbringers/portrait_synthetic_leader_neutrality.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_neutrality_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_synthetic_leader_neutrality.dds"
+		name = GFX_synthetic_leader_neutrality_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_synthetic_leader_neutrality.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_radical
+		name = GFX_synthetic_leader_radical
 		texturefile = "data/blank_mod/gfx/leaders/Deathbringers/portrait_synthetic_leader_radical.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_leader_radical_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_synthetic_leader_radical.dds"
+		name = GFX_synthetic_leader_radical_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_synthetic_leader_radical.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_operative
+		name = GFX_synthetic_operative
 		texturefile = "data/blank_mod/gfx/leaders/Deathbringers/portrait_synthetic_operative.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_synthetic_operative_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_synthetic_operative.dds"
+		name = GFX_synthetic_operative_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_synthetic_operative.dds"
 	}
 
 	spriteType = {
@@ -3420,13 +3420,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_EST_Adolf_Friedrich_von_Mecklenburg
+		name = GFX_EST_Adolf_Friedrich_von_Mecklenburg
 		texturefile = "data/blank_mod/gfx/leaders/Eastern_European/portrait_EST_Adolf_Friedrich_von_Mecklenburg.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_EST_Adolf_Friedrich_von_Mecklenburg_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_EST_Adolf_Friedrich_von_Mecklenburg.dds"
+		name = GFX_EST_Adolf_Friedrich_von_Mecklenburg_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_EST_Adolf_Friedrich_von_Mecklenburg.dds"
 	}
 
 	spriteType = {
@@ -3450,13 +3450,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_GEO_Kandid_Charkviani
+		name = GFX_GEO_Kandid_Charkviani
 		texturefile = "data/blank_mod/gfx/leaders/Eastern_European/portrait_GEO_Kandid_Charkviani.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_GEO_Kandid_Charkviani_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_GEO_Kandid_Charkviani.dds"
+		name = GFX_GEO_Kandid_Charkviani_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_GEO_Kandid_Charkviani.dds"
 	}
 
 	spriteType = {
@@ -3480,13 +3480,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_LAT_Gustavs_Celminsh
+		name = GFX_LAT_Gustavs_Celminsh
 		texturefile = "data/blank_mod/gfx/leaders/Eastern_European/portrait_LAT_Gustavs_Celminsh.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_LAT_Gustavs_Celminsh_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_LAT_Gustavs_Celminsh.dds"
+		name = GFX_LAT_Gustavs_Celminsh_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_LAT_Gustavs_Celminsh.dds"
 	}
 
 	spriteType = {
@@ -3910,13 +3910,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXPortriat_Poland_Roza_Luksemburg
+		name = GFX_Portriat_Poland_Roza_Luksemburg
 		texturefile = "data/blank_mod/gfx/leaders/Eastern_European/Female/Portriat_Poland_Roza_Luksemburg.tga"
 	}
 
 	spriteType = {
-		name = GFXPortriat_Poland_Roza_Luksemburg_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Portriat_Poland_Roza_Luksemburg.tga"
+		name = GFX_Portriat_Poland_Roza_Luksemburg_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Portriat_Poland_Roza_Luksemburg.tga"
 	}
 
 	spriteType = {
@@ -4320,83 +4320,83 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_admiral_GRE_1
+		name = GFX_r56_generic_admiral_GRE_1
 		texturefile = "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_admiral_GRE_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_admiral_GRE_1_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_generic_admiral_GRE_1.dds"
+		name = GFX_r56_generic_admiral_GRE_1_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_generic_admiral_GRE_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_admiral_GRE_2
+		name = GFX_r56_generic_admiral_GRE_2
 		texturefile = "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_admiral_GRE_2.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_admiral_GRE_2_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_generic_admiral_GRE_2.dds"
+		name = GFX_r56_generic_admiral_GRE_2_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_generic_admiral_GRE_2.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_operative_south_america_1
+		name = GFX_r56_generic_operative_south_america_1
 		texturefile = "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_operative_south_america_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_operative_south_america_1_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_generic_operative_south_america_1.dds"
+		name = GFX_r56_generic_operative_south_america_1_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_generic_operative_south_america_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_operative_south_america_2
+		name = GFX_r56_generic_operative_south_america_2
 		texturefile = "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_operative_south_america_2.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_operative_south_america_2_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_generic_operative_south_america_2.dds"
+		name = GFX_r56_generic_operative_south_america_2_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_generic_operative_south_america_2.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_politician_africa_1
+		name = GFX_r56_generic_politician_africa_1
 		texturefile = "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_africa_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_politician_africa_1_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_generic_politician_africa_1.dds"
+		name = GFX_r56_generic_politician_africa_1_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_generic_politician_africa_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_politician_africa_2
+		name = GFX_r56_generic_politician_africa_2
 		texturefile = "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_africa_2.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_politician_africa_2_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_generic_politician_africa_2.dds"
+		name = GFX_r56_generic_politician_africa_2_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_generic_politician_africa_2.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_politician_south_america_1
+		name = GFX_r56_generic_politician_south_america_1
 		texturefile = "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_south_america_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_politician_south_america_1_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_generic_politician_south_america_1.dds"
+		name = GFX_r56_generic_politician_south_america_1_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_generic_politician_south_america_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_Turkey_Generic_land_1
+		name = GFX_r56_Turkey_Generic_land_1
 		texturefile = "data/blank_mod/gfx/leaders/Generic/r56_portrait_Turkey_Generic_land_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_Turkey_Generic_land_1_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_Turkey_Generic_land_1.dds"
+		name = GFX_r56_Turkey_Generic_land_1_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_Turkey_Generic_land_1.dds"
 	}
 
 	spriteType = {
@@ -5430,13 +5430,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_The_Che
+		name = GFX_The_Che
 		texturefile = "data/blank_mod/gfx/leaders/Hispanic/portrait_The_Che.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_The_Che_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_The_Che.dds"
+		name = GFX_The_Che_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_The_Che.dds"
 	}
 
 	spriteType = {
@@ -5470,13 +5470,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_Bartolome_Blanche
+		name = GFX_r56_Bartolome_Blanche
 		texturefile = "data/blank_mod/gfx/leaders/Hispanic/r56_portrait_Bartolome_Blanche.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_Bartolome_Blanche_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_Bartolome_Blanche.dds"
+		name = GFX_r56_Bartolome_Blanche_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_Bartolome_Blanche.dds"
 	}
 
 	spriteType = {
@@ -5600,13 +5600,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXWoman_Peru_Manuel_Odria
+		name = GFX_WomanPeru_Manuel_Odria
 		texturefile = "data/blank_mod/gfx/leaders/Hispanic/Female/WomanPortrait_Peru_Manuel_Odria.tga"
 	}
 
 	spriteType = {
-		name = GFXWoman_Peru_Manuel_Odria_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Womanidea_Peru_Manuel_Odria.tga"
+		name = GFX_WomanPeru_Manuel_Odria_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_WomanPeru_Manuel_Odria.tga"
 	}
 
 	spriteType = {
@@ -5950,13 +5950,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_PAK_Mirza_Mughal
+		name = GFX_PAK_Mirza_Mughal
 		texturefile = "data/blank_mod/gfx/leaders/Indian/portrait_PAK_Mirza_Mughal.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_PAK_Mirza_Mughal_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_PAK_Mirza_Mughal.dds"
+		name = GFX_PAK_Mirza_Mughal_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_PAK_Mirza_Mughal.dds"
 	}
 
 	spriteType = {
@@ -6180,23 +6180,23 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXHo_chi_minh
+		name = GFX_Ho_chi_minh
 		texturefile = "data/blank_mod/gfx/leaders/Indo_Chinese_Nesia/Ho_chi_minh.tga"
 	}
 
 	spriteType = {
-		name = GFXHo_chi_minh_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Ho_chi_minh.tga"
+		name = GFX_Ho_chi_minh_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Ho_chi_minh.tga"
 	}
 
 	spriteType = {
-		name = GFXPortait_Sarawak_Ye_Jianying
+		name = GFX_Portait_Sarawak_Ye_Jianying
 		texturefile = "data/blank_mod/gfx/leaders/Indo_Chinese_Nesia/Portait_Sarawak_Ye_Jianying.tga"
 	}
 
 	spriteType = {
-		name = GFXPortait_Sarawak_Ye_Jianying_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Portait_Sarawak_Ye_Jianying.tga"
+		name = GFX_Portait_Sarawak_Ye_Jianying_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Portait_Sarawak_Ye_Jianying.tga"
 	}
 
 	spriteType = {
@@ -7140,33 +7140,33 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXYi_Un
+		name = GFX_Yi_Un
 		texturefile = "data/blank_mod/gfx/leaders/Korean_Japan/Yi_Un.tga"
 	}
 
 	spriteType = {
-		name = GFXYi_Un_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Yi_Un.tga"
+		name = GFX_Yi_Un_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Yi_Un.tga"
 	}
 
 	spriteType = {
-		name = GFXAlfredoPalacios
+		name = GFX_AlfredoPalacios
 		texturefile = "data/blank_mod/gfx/leaders/Mediterranean/AlfredoPalacios.tga"
 	}
 
 	spriteType = {
-		name = GFXAlfredoPalacios_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/AlfredoPalacios.tga"
+		name = GFX_AlfredoPalacios_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_AlfredoPalacios.tga"
 	}
 
 	spriteType = {
-		name = GFXDanilo_I
+		name = GFX_Danilo_I
 		texturefile = "data/blank_mod/gfx/leaders/Mediterranean/Danilo_I.tga"
 	}
 
 	spriteType = {
-		name = GFXDanilo_I_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Danilo_I.tga"
+		name = GFX_Danilo_I_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Danilo_I.tga"
 	}
 
 	spriteType = {
@@ -7750,143 +7750,143 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_Native_American
+		name = GFX_Native_American
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_Native_American.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Native_American_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Native_American.dds"
+		name = GFX_Native_American_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Native_American.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_absolutist
+		name = GFX_native_north_american_absolutist
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_native_north_american_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_absolutist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_native_north_american_absolutist.dds"
+		name = GFX_native_north_american_absolutist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_native_north_american_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_communist
+		name = GFX_native_north_american_communist
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_native_north_american_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_communist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_native_north_american_communist.dds"
+		name = GFX_native_north_american_communist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_native_north_american_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_democratic
+		name = GFX_native_north_american_democratic
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_native_north_american_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_democratic_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_native_north_american_democratic.dds"
+		name = GFX_native_north_american_democratic_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_native_north_american_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_fascist
+		name = GFX_native_north_american_fascist
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_native_north_american_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_fascist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_native_north_american_fascist.dds"
+		name = GFX_native_north_american_fascist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_native_north_american_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_general
+		name = GFX_native_north_american_general
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_native_north_american_general.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_general_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_native_north_american_general.dds"
+		name = GFX_native_north_american_general_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_native_north_american_general.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_neutral
+		name = GFX_native_north_american_neutral
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_native_north_american_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_neutral_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_native_north_american_neutral.dds"
+		name = GFX_native_north_american_neutral_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_native_north_american_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_radical
+		name = GFX_native_north_american_radical
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_native_north_american_radical.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_native_north_american_radical_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_native_north_american_radical.dds"
+		name = GFX_native_north_american_radical_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_native_north_american_radical.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_absolutist
+		name = GFX_nat_north_absolutist
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_nat_north_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_absolutist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_north_absolutist.dds"
+		name = GFX_nat_north_absolutist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_north_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_communist
+		name = GFX_nat_north_communist
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_nat_north_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_communist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_north_communist.dds"
+		name = GFX_nat_north_communist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_north_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_democratic
+		name = GFX_nat_north_democratic
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_nat_north_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_democratic_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_north_democratic.dds"
+		name = GFX_nat_north_democratic_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_north_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_fascist
+		name = GFX_nat_north_fascist
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_nat_north_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_fascist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_north_fascist.dds"
+		name = GFX_nat_north_fascist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_north_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_neutral
+		name = GFX_nat_north_neutral
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_nat_north_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_neutral_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_north_neutral.dds"
+		name = GFX_nat_north_neutral_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_north_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_radical
+		name = GFX_nat_north_radical
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/portrait_nat_north_radical.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_north_radical_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_north_radical.dds"
+		name = GFX_nat_north_radical_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_north_radical.dds"
 	}
 
 	spriteType = {
@@ -7900,23 +7900,23 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_Native_American_female
+		name = GFX_Native_American_female
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/Female/portrait_Native_American_female.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Native_American_female_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Native_American_female.dds"
+		name = GFX_Native_American_female_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Native_American_female.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Native_American_female_2
+		name = GFX_Native_American_female_2
 		texturefile = "data/blank_mod/gfx/leaders/North_American_Native/Female/portrait_Native_American_female_2.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_Native_American_female_2_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Native_American_female_2.dds"
+		name = GFX_Native_American_female_2_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Native_American_female_2.dds"
 	}
 
 	spriteType = {
@@ -7930,533 +7930,533 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Aemilian
+		name = GFX_SPQR_Aemilian
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aemilian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Aemilian_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Aemilian.tga"
+		name = GFX_SPQR_Aemilian_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Aemilian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Antoninus_Pius
+		name = GFX_SPQR_Antoninus_Pius
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Antoninus_Pius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Antoninus_Pius_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Antoninus_Pius.tga"
+		name = GFX_SPQR_Antoninus_Pius_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Antoninus_Pius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Augustus
+		name = GFX_SPQR_Augustus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Augustus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Augustus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Augustus.tga"
+		name = GFX_SPQR_Augustus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Augustus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Aurelian
+		name = GFX_SPQR_Aurelian
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Aurelian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Aurelian_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Aurelian.tga"
+		name = GFX_SPQR_Aurelian_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Aurelian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Balbinus
+		name = GFX_SPQR_Balbinus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Balbinus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Balbinus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Balbinus.tga"
+		name = GFX_SPQR_Balbinus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Balbinus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Caligula
+		name = GFX_SPQR_Caligula
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caligula.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Caligula_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Caligula.tga"
+		name = GFX_SPQR_Caligula_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Caligula.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Caracalla
+		name = GFX_SPQR_Caracalla
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Caracalla.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Caracalla_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Caracalla.tga"
+		name = GFX_SPQR_Caracalla_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Caracalla.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Carinus
+		name = GFX_SPQR_Carinus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carinus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Carinus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Carinus.tga"
+		name = GFX_SPQR_Carinus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Carinus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Carus
+		name = GFX_SPQR_Carus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Carus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Carus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Carus.tga"
+		name = GFX_SPQR_Carus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Carus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Claudius
+		name = GFX_SPQR_Claudius
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Claudius_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Claudius.tga"
+		name = GFX_SPQR_Claudius_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Claudius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Claudius_Gothicus
+		name = GFX_SPQR_Claudius_Gothicus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Claudius_Gothicus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Claudius_Gothicus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Claudius_Gothicus.tga"
+		name = GFX_SPQR_Claudius_Gothicus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Claudius_Gothicus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Commodus
+		name = GFX_SPQR_Commodus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Commodus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Commodus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Commodus.tga"
+		name = GFX_SPQR_Commodus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Commodus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Decius
+		name = GFX_SPQR_Decius
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Decius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Decius_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Decius.tga"
+		name = GFX_SPQR_Decius_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Decius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Diadumenian
+		name = GFX_SPQR_Diadumenian
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Diadumenian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Diadumenian_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Diadumenian.tga"
+		name = GFX_SPQR_Diadumenian_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Diadumenian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Didus_Julianus
+		name = GFX_SPQR_Didus_Julianus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Didus_Julianus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Didus_Julianus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Didus_Julianus.tga"
+		name = GFX_SPQR_Didus_Julianus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Didus_Julianus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Domitian
+		name = GFX_SPQR_Domitian
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Domitian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Domitian_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Domitian.tga"
+		name = GFX_SPQR_Domitian_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Domitian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Elagabalus
+		name = GFX_SPQR_Elagabalus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Elagabalus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Elagabalus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Elagabalus.tga"
+		name = GFX_SPQR_Elagabalus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Elagabalus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Florianus
+		name = GFX_SPQR_Florianus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Florianus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Florianus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Florianus.tga"
+		name = GFX_SPQR_Florianus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Florianus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Galba
+		name = GFX_SPQR_Galba
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Galba.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Galba_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Galba.tga"
+		name = GFX_SPQR_Galba_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Galba.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Gallienus
+		name = GFX_SPQR_Gallienus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gallienus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Gallienus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Gallienus.tga"
+		name = GFX_SPQR_Gallienus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Gallienus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Geta
+		name = GFX_SPQR_Geta
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Geta.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Geta_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Geta.tga"
+		name = GFX_SPQR_Geta_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Geta.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Gordian_I
+		name = GFX_SPQR_Gordian_I
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_I.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Gordian_I_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Gordian_I.tga"
+		name = GFX_SPQR_Gordian_I_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Gordian_I.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Gordian_II
+		name = GFX_SPQR_Gordian_II
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_II.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Gordian_II_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Gordian_II.tga"
+		name = GFX_SPQR_Gordian_II_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Gordian_II.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Gordian_III
+		name = GFX_SPQR_Gordian_III
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Gordian_III.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Gordian_III_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Gordian_III.tga"
+		name = GFX_SPQR_Gordian_III_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Gordian_III.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Hadrian
+		name = GFX_SPQR_Hadrian
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hadrian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Hadrian_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Hadrian.tga"
+		name = GFX_SPQR_Hadrian_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Hadrian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Herennius_Etruscus
+		name = GFX_SPQR_Herennius_Etruscus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Herennius_Etruscus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Herennius_Etruscus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Herennius_Etruscus.tga"
+		name = GFX_SPQR_Herennius_Etruscus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Herennius_Etruscus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Hostilian
+		name = GFX_SPQR_Hostilian
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Hostilian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Hostilian_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Hostilian.tga"
+		name = GFX_SPQR_Hostilian_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Hostilian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Lucius_Verus
+		name = GFX_SPQR_Lucius_Verus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Lucius_Verus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Lucius_Verus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Lucius_Verus.tga"
+		name = GFX_SPQR_Lucius_Verus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Lucius_Verus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Macrinus
+		name = GFX_SPQR_Macrinus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Macrinus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Macrinus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Macrinus.tga"
+		name = GFX_SPQR_Macrinus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Macrinus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Marcus_Aurelius
+		name = GFX_SPQR_Marcus_Aurelius
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Marcus_Aurelius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Marcus_Aurelius_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Marcus_Aurelius.tga"
+		name = GFX_SPQR_Marcus_Aurelius_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Marcus_Aurelius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Maximinus_Thrax
+		name = GFX_SPQR_Maximinus_Thrax
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Maximinus_Thrax.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Maximinus_Thrax_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Maximinus_Thrax.tga"
+		name = GFX_SPQR_Maximinus_Thrax_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Maximinus_Thrax.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Nero
+		name = GFX_SPQR_Nero
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nero.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Nero_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Nero.tga"
+		name = GFX_SPQR_Nero_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Nero.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Nerva
+		name = GFX_SPQR_Nerva
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Nerva.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Nerva_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Nerva.tga"
+		name = GFX_SPQR_Nerva_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Nerva.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Numerian
+		name = GFX_SPQR_Numerian
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Numerian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Numerian_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Numerian.tga"
+		name = GFX_SPQR_Numerian_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Numerian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Otho
+		name = GFX_SPQR_Otho
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Otho.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Otho_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Otho.tga"
+		name = GFX_SPQR_Otho_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Otho.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Pertinax
+		name = GFX_SPQR_Pertinax
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pertinax.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Pertinax_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Pertinax.tga"
+		name = GFX_SPQR_Pertinax_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Pertinax.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Philip_II
+		name = GFX_SPQR_Philip_II
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_II.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Philip_II_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Philip_II.tga"
+		name = GFX_SPQR_Philip_II_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Philip_II.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Philip_the_Arab
+		name = GFX_SPQR_Philip_the_Arab
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Philip_the_Arab.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Philip_the_Arab_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Philip_the_Arab.tga"
+		name = GFX_SPQR_Philip_the_Arab_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Philip_the_Arab.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Probus
+		name = GFX_SPQR_Probus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Probus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Probus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Probus.tga"
+		name = GFX_SPQR_Probus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Probus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Pupienus
+		name = GFX_SPQR_Pupienus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Pupienus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Pupienus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Pupienus.tga"
+		name = GFX_SPQR_Pupienus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Pupienus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Quintillus
+		name = GFX_SPQR_Quintillus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Quintillus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Quintillus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Quintillus.tga"
+		name = GFX_SPQR_Quintillus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Quintillus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Saloninus
+		name = GFX_SPQR_Saloninus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Saloninus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Saloninus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Saloninus.tga"
+		name = GFX_SPQR_Saloninus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Saloninus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Septimius_Severus
+		name = GFX_SPQR_Septimius_Severus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Septimius_Severus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Septimius_Severus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Septimius_Severus.tga"
+		name = GFX_SPQR_Septimius_Severus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Septimius_Severus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Severus_Alexander
+		name = GFX_SPQR_Severus_Alexander
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Severus_Alexander.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Severus_Alexander_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Severus_Alexander.tga"
+		name = GFX_SPQR_Severus_Alexander_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Severus_Alexander.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Tacitus
+		name = GFX_SPQR_Tacitus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tacitus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Tacitus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Tacitus.tga"
+		name = GFX_SPQR_Tacitus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Tacitus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Tiberius
+		name = GFX_SPQR_Tiberius
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Tiberius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Tiberius_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Tiberius.tga"
+		name = GFX_SPQR_Tiberius_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Tiberius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Titus
+		name = GFX_SPQR_Titus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Titus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Titus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Titus.tga"
+		name = GFX_SPQR_Titus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Titus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Trajan
+		name = GFX_SPQR_Trajan
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trajan.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Trajan_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Trajan.tga"
+		name = GFX_SPQR_Trajan_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Trajan.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Trebonianus_Gallus
+		name = GFX_SPQR_Trebonianus_Gallus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Trebonianus_Gallus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Trebonianus_Gallus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Trebonianus_Gallus.tga"
+		name = GFX_SPQR_Trebonianus_Gallus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Trebonianus_Gallus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Valerian
+		name = GFX_SPQR_Valerian
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Valerian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Valerian_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Valerian.tga"
+		name = GFX_SPQR_Valerian_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Valerian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Vespasian
+		name = GFX_SPQR_Vespasian
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vespasian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Vespasian_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Vespasian.tga"
+		name = GFX_SPQR_Vespasian_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Vespasian.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Vitellius
+		name = GFX_SPQR_Vitellius
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Vitellius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Vitellius_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Vitellius.tga"
+		name = GFX_SPQR_Vitellius_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Vitellius.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Volusianus
+		name = GFX_SPQR_Volusianus
 		texturefile = "data/blank_mod/gfx/leaders/Romantic_Barbarian/portrait_SPQR_Volusianus.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_SPQR_Volusianus_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SPQR_Volusianus.tga"
+		name = GFX_SPQR_Volusianus_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SPQR_Volusianus.tga"
 	}
 
 	spriteType = {
@@ -8620,13 +8620,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_SQI_wang_yaowu
+		name = GFX_SQI_wang_yaowu
 		texturefile = "data/blank_mod/gfx/leaders/Sino/portrait_SQI_wang_yaowu.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_SQI_wang_yaowu_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_SQI_wang_yaowu.dds"
+		name = GFX_SQI_wang_yaowu_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_SQI_wang_yaowu.dds"
 	}
 
 	spriteType = {
@@ -8770,103 +8770,103 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_absolutist
+		name = GFX_nat_south_absolutist
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/portrait_nat_south_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_absolutist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_south_absolutist.dds"
+		name = GFX_nat_south_absolutist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_south_absolutist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_communist
+		name = GFX_nat_south_communist
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/portrait_nat_south_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_communist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_south_communist.dds"
+		name = GFX_nat_south_communist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_south_communist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_democratic
+		name = GFX_nat_south_democratic
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/portrait_nat_south_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_democratic_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_south_democratic.dds"
+		name = GFX_nat_south_democratic_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_south_democratic.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_fascist
+		name = GFX_nat_south_fascist
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/portrait_nat_south_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_fascist_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_south_fascist.dds"
+		name = GFX_nat_south_fascist_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_south_fascist.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_neutral
+		name = GFX_nat_south_neutral
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/portrait_nat_south_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_neutral_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_south_neutral.dds"
+		name = GFX_nat_south_neutral_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_south_neutral.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_radical
+		name = GFX_nat_south_radical
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/portrait_nat_south_radical.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_nat_south_radical_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_nat_south_radical.dds"
+		name = GFX_nat_south_radical_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_nat_south_radical.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_quechua_mamani
+		name = GFX_quechua_mamani
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/portrait_quechua_mamani.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_quechua_mamani_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_quechua_mamani.dds"
+		name = GFX_quechua_mamani_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_quechua_mamani.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_quechua_quispe_iskay
+		name = GFX_quechua_quispe_iskay
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/portrait_quechua_quispe_iskay.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_quechua_quispe_iskay_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_quechua_quispe_iskay.dds"
+		name = GFX_quechua_quispe_iskay_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_quechua_quispe_iskay.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_quechua_saturnino
+		name = GFX_quechua_saturnino
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/portrait_quechua_saturnino.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_quechua_saturnino_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_quechua_saturnino.dds"
+		name = GFX_quechua_saturnino_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_quechua_saturnino.dds"
 	}
 
 	spriteType = {
-		name = GFXQCH_Pahacutec
+		name = GFX_QCH_Pahacutec
 		texturefile = "data/blank_mod/gfx/leaders/South_American_Native/QCH_Pahacutec.tga"
 	}
 
 	spriteType = {
-		name = GFXQCH_Pahacutec_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/QCH_Pahacutec.tga"
+		name = GFX_QCH_Pahacutec_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_QCH_Pahacutec.tga"
 	}
 
 	spriteType = {
@@ -8880,33 +8880,33 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXOTTLeader01
+		name = GFX_OTTLeader01
 		texturefile = "data/blank_mod/gfx/leaders/Turkic_Steppe/OTTLeader01.tga"
 	}
 
 	spriteType = {
-		name = GFXOTTLeader01_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/OTTLeader01.tga"
+		name = GFX_OTTLeader01_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_OTTLeader01.tga"
 	}
 
 	spriteType = {
-		name = GFXOTTLeader05
+		name = GFX_OTTLeader05
 		texturefile = "data/blank_mod/gfx/leaders/Turkic_Steppe/OTTLeader05.tga"
 	}
 
 	spriteType = {
-		name = GFXOTTLeader05_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/OTTLeader05.tga"
+		name = GFX_OTTLeader05_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_OTTLeader05.tga"
 	}
 
 	spriteType = {
-		name = GFXOTTLeader_Navy_01
+		name = GFX_OTTLeader_Navy_01
 		texturefile = "data/blank_mod/gfx/leaders/Turkic_Steppe/OTTLeader_Navy_01.tga"
 	}
 
 	spriteType = {
-		name = GFXOTTLeader_Navy_01_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/OTTLeader_Navy_01.tga"
+		name = GFX_OTTLeader_Navy_01_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_OTTLeader_Navy_01.tga"
 	}
 
 	spriteType = {
@@ -9190,13 +9190,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_TUR_Alparslan_Turkesh
+		name = GFX_TUR_Alparslan_Turkesh
 		texturefile = "data/blank_mod/gfx/leaders/Turkic_Steppe/portrait_TUR_Alparslan_Turkesh.dds"
 	}
 
 	spriteType = {
-		name = GFXportrait_TUR_Alparslan_Turkesh_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_TUR_Alparslan_Turkesh.dds"
+		name = GFX_TUR_Alparslan_Turkesh_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_TUR_Alparslan_Turkesh.dds"
 	}
 
 	spriteType = {
@@ -9280,13 +9280,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXZhumabay_Shayakhmetov
+		name = GFX_Zhumabay_Shayakhmetov
 		texturefile = "data/blank_mod/gfx/leaders/Turkic_Steppe/Zhumabay_Shayakhmetov.tga"
 	}
 
 	spriteType = {
-		name = GFXZhumabay_Shayakhmetov_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/Zhumabay_Shayakhmetov.tga"
+		name = GFX_Zhumabay_Shayakhmetov_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Zhumabay_Shayakhmetov.tga"
 	}
 
 	spriteType = {
@@ -10090,13 +10090,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXportrait_Lucie_Dujardin
+		name = GFX_Lucie_Dujardin
 		texturefile = "data/blank_mod/gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
 	}
 
 	spriteType = {
-		name = GFXportrait_Lucie_Dujardin_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/portrait_Lucie_Dujardin.tga"
+		name = GFX_Lucie_Dujardin_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Lucie_Dujardin.tga"
 	}
 
 	spriteType = {
@@ -10110,23 +10110,23 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_operative_commonwealth_1
+		name = GFX_r56_generic_operative_commonwealth_1
 		texturefile = "data/blank_mod/gfx/leaders/Western_European/Operatives/r56_portrait_generic_operative_commonwealth_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_operative_commonwealth_1_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_generic_operative_commonwealth_1.dds"
+		name = GFX_r56_generic_operative_commonwealth_1_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_generic_operative_commonwealth_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_operative_europe_1
+		name = GFX_r56_generic_operative_europe_1
 		texturefile = "data/blank_mod/gfx/leaders/Western_European/Operatives/r56_portrait_generic_operative_europe_1.dds"
 	}
 
 	spriteType = {
-		name = GFXr56_portrait_generic_operative_europe_1_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/r56_portrait_generic_operative_europe_1.dds"
+		name = GFX_r56_generic_operative_europe_1_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_r56_generic_operative_europe_1.dds"
 	}
 
 }
