@@ -2013,7 +2013,7 @@ other_balto_slavic = {
 		military = {
 			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
 			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
-			"gfx/leaders/Eastern_European/Female/Portriat_Poland_Roza_Luksemburg.tga"
+			"gfx/leaders/Eastern_European/Female/Portrait_Poland_Roza_Luksemburg.tga"
 		}
 		monarch = {
 			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
@@ -2024,7 +2024,7 @@ other_balto_slavic = {
 			"gfx/leaders/Western_European/Female/Portrait_England_Sylvia_Pankhurst.tga"
 			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
 			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
-			"gfx/leaders/Eastern_European/Female/Portriat_Poland_Roza_Luksemburg.tga"
+			"gfx/leaders/Eastern_European/Female/Portrait_Poland_Roza_Luksemburg.tga"
 		}
 	}
 	ideology_minister_portraits = {
@@ -2268,7 +2268,7 @@ eastern_slavic = {
 		military = {
 			"gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
 			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
-			"gfx/leaders/Eastern_European/Female/Portriat_Poland_Roza_Luksemburg.tga"
+			"gfx/leaders/Eastern_European/Female/Portrait_Poland_Roza_Luksemburg.tga"
 		}
 		monarch = {
 			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
@@ -2279,7 +2279,7 @@ eastern_slavic = {
 			"gfx/leaders/ARG/Portrait_Argentina_Fanny_Edelman.dds"
 			"gfx/leaders/Western_European/Female/Portrait_HOL_Marie_Adelaide.tga"
 			"gfx/leaders/Western_European/Female/portrait_Lucie_Dujardin.tga"
-			"gfx/leaders/Eastern_European/Female/Portriat_Poland_Roza_Luksemburg.tga"
+			"gfx/leaders/Eastern_European/Female/Portrait_Poland_Roza_Luksemburg.tga"
 		}
 	}
 	ideology_minister_portraits = {
@@ -3413,7 +3413,7 @@ austronesian = {
 		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Manuel_F_Cabal.tga"
 		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Mateo_Capinpin.tga"
 		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Philippines_Paulino_Santos.tga"
-		"gfx/leaders/Indo_Chinese_Nesia/Portait_Sarawak_Ye_Jianying.tga"
+		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Ye_Jianying.tga"
 	}
 	navy_portraits = {
 		#Generic Asian
@@ -4724,7 +4724,7 @@ polynesia_micronesia = {
 		"gfx/leaders/Aborigine_Polynesia/Portrait_INC_Nguyen_Binh.tga"
 		"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Samuel_Maharero.tga"
 		"gfx/leaders/Aborigine_Polynesia/Portrait_NAM_Samuel.tga"
-		"gfx/leaders/Aborigine_Polynesia/Portait_Sarawak_Ye_Jianying.tga"
+		"gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ye_Jianying.tga"
 		"gfx/leaders/Aborigine_Polynesia/Portrait_YEM_Abdullah_as_Sallal.tga"
 		"gfx/leaders/Aborigine_Polynesia/Portrait_YEM_Hassal_Al_Amiri.tga"
 	}
