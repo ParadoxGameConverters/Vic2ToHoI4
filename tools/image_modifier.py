@@ -41,19 +41,29 @@ def CreateSmallVersion(filename):
     on_canvas.paste(frame, (0,0), frame)
     on_canvas.save(small_filename)
 
-    
+def UpdateMappings(filename):
+    to_replace = '\"' + filename.replace('data/blank_mod/', '') + '\"'
+    replacement = "GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","")
+    mappings_file = open("data/configurables/cultureGroupToGraphics.txt", "r")
+    mappings_lines = mappings_file.read()
+    mappings_file.close()
+    new_mappings_file = open("data/configurables/cultureGroupToGraphics.txt", "w")
+    replacement_lines = mappings_lines.replace(to_replace, replacement)
+    new_mappings_file.write(replacement_lines)
+    new_mappings_file.close()
+
+
 gfx_file = open("data/blank_mod/interface/_leader_portraits_mod_generated.gfx", "w")
 gfx_file.write("spriteTypes = {\n")
-
 
 for image_file in glob.iglob('data/blank_mod/gfx/leaders/**/*', recursive=True):
     if(os.path.isdir(image_file)):
         continue
     if image_file in files_to_skip:
         continue
-
-    print("Processing " + image_file)
     CreateSmallVersion(image_file)
     gfx_file.write(GetDefinition(image_file))
+    UpdateMappings(image_file.replace('data/blank_mod/', ''))
 
 gfx_file.write("}")
+gfx_file.close()
