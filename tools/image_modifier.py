@@ -3,6 +3,10 @@ import os
 import glob
 import sys
 
+
+files_to_skip = ["data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_admiral_south_america_1.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_middle_east_1.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_democracy.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_fascism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_democracy.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_fascism.dds", "data/blank_mod/gfx/leaders/Generic/r56_portrait_generic_politician_south_america_2.dds"]
+
+
 def DetermineSmallFilename(big_filename):
     small_filename = "data/blank_mod/gfx/interface/ideas/idea_" + os.path.basename(big_filename).replace("Portrait_", "").replace("portrait_", "")
     small_filename = small_filename.replace("portrait_", "idea_")
@@ -45,6 +49,9 @@ gfx_file.write("spriteTypes = {\n")
 for image_file in glob.iglob('data/blank_mod/gfx/leaders/**/*', recursive=True):
     if(os.path.isdir(image_file)):
         continue
+    if image_file in files_to_skip:
+        continue
+
     print("Processing " + image_file)
     CreateSmallVersion(image_file)
     gfx_file.write(GetDefinition(image_file))
