@@ -6190,16 +6190,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_Portait_Sarawak_Ye_Jianying
-		texturefile = "data/blank_mod/gfx/leaders/Indo_Chinese_Nesia/Portait_Sarawak_Ye_Jianying.tga"
-	}
-
-	spriteType = {
-		name = GFX_Portait_Sarawak_Ye_Jianying_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Portait_Sarawak_Ye_Jianying.tga"
-	}
-
-	spriteType = {
 		name = GFX_Burma_Ba_Cho
 		texturefile = "data/blank_mod/gfx/leaders/Indo_Chinese_Nesia/Portrait_Burma_Ba_Cho.tga"
 	}
@@ -6817,6 +6807,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Sarawak_Ong_Tiang_Swee_small
 		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Sarawak_Ong_Tiang_Swee.tga"
+	}
+
+	spriteType = {
+		name = GFX_Sarawak_Ye_Jianying
+		texturefile = "data/blank_mod/gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Ye_Jianying.tga"
+	}
+
+	spriteType = {
+		name = GFX_Sarawak_Ye_Jianying_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Sarawak_Ye_Jianying.tga"
 	}
 
 	spriteType = {

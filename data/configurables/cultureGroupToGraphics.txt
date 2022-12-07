@@ -3413,7 +3413,7 @@ austronesian = {
 		GFX_Philippines_Manuel_F_Cabal
 		GFX_Philippines_Mateo_Capinpin
 		GFX_Philippines_Paulino_Santos
-		"gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Ye_Jianying.tga"
+		GFX_Sarawak_Ye_Jianying
 	}
 	navy_portraits = {
 		#Generic Asian
