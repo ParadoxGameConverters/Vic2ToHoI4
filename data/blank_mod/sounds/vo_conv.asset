@@ -1,5 +1,5 @@
 ########### AUDIO ASSETS
-########### SIA
+########### SIAM
 sound =
 {
 	name = "sia_Idle_001"
@@ -145,6 +145,8 @@ sound =
 	name = "CAM_Idle_001"
 	file = "khmer/CAM_Idle_001.wav"
 }
+
+########### CAMBODIA
 sound =
 {
 	name = "CAM_Move_001"
@@ -166,3 +168,104 @@ sound =
 	file = "khmer/CAM_Winning_001.wav"
 }
 
+########### PERSIA/IRAN
+sound =
+{
+	name = "per_idle_001"
+	file = "per/per_idle_001.wav"
+}
+sound =
+{
+	name = "per_idle_001_alt"
+	file = "per/per_idle_001_alt.wav"
+}
+sound =
+{
+	name = "per_idle_002"
+	file = "per/per_idle_002.wav"
+}
+sound =
+{
+	name = "per_idle_002_alt"
+	file = "per/per_idle_002_alt.wav"
+}
+sound =
+{
+	name = "per_idle_002_alt_2"
+	file = "per/per_idle_002_alt_2.wav"
+}
+sound =
+{
+	name = "per_idle_003"
+	file = "per/per_idle_003.wav"
+}
+sound =
+{
+	name = "per_idle_003_alt"
+	file = "per/per_idle_003_alt.wav"
+}
+sound =
+{
+	name = "per_neutral_001"
+	file = "per/per_neutral_001.wav"
+}
+sound =
+{
+	name = "per_neutral_002"
+	file = "per/per_neutral_002.wav"
+}
+sound =
+{
+	name = "per_neutral_002_alt"
+	file = "per/per_neutral_002_alt.wav"
+}
+sound =
+{
+	name = "per_positive_001"
+	file = "per/per_positive_001.wav"
+}
+sound =
+{
+	name = "per_positive_001_alt"
+	file = "per/per_positive_001_alt.wav"
+}
+sound =
+{
+	name = "per_positive_002"
+	file = "per/per_positive_002.wav"
+}
+sound =
+{
+	name = "per_positive_002_alt"
+	file = "per/per_positive_002_alt.wav"
+}
+sound =
+{
+	name = "per_positive_002_alt_2"
+	file = "per/per_positive_002_alt_2.wav"
+}
+sound =
+{
+	name = "per_retreat_001"
+	file = "per/per_retreat_001.wav"
+}
+sound =
+{
+	name = "per_retreat_001_alt"
+	file = "per/per_retreat_001_alt.wav"
+}
+sound =
+{
+	name = "per_retreat_001_alt_2"
+	file = "per/per_retreat_001_alt_2.wav"
+}
+sound =
+{
+	name = "per_retreat_002"
+	file = "per/per_retreat_002.wav"
+}
+sound =
+{
+	name = "per_retreat_002_alt"
+	file = "per/per_retreat_002_alt.wav"
+}
