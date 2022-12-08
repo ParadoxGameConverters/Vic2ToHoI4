@@ -63,49 +63,49 @@ anglo_celtic = {
 	cultures_and_groups = { british celtic american_cultures anglo_saxon australian anglo_canadian anglo_african meashighcaw redwoodian guyanese incacunapic lepontic }
 	army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Britain and its Dependencies
-		"gfx/leaders/ENG/Portrait_Britain_Generic_land_1.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Generic_land_2.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Generic_land_3.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Generic_land_4.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Generic_land_5.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Generic_land_6.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Alan_Brooke.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Archibald_Wavell.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Arthur_Percival.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Bernard_Montgomery.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Brian_Horrocks.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Claude_Auchinleck.dds"
-		"gfx/leaders/ENG/Portrait_Britain_George_Giffard.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Harold_Alexander.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Henry_Maitland_Wilson.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Henry_Pownall.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Jock_Campbell.dds"
-		"gfx/leaders/ENG/Portrait_Britain_John_Jackie_Smyth.dds"
-		"gfx/leaders/ENG/Portrait_Britain_John_Vereker.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Merton_Beckwith_Smith.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Miles_Dempsey.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Neil_Ritchie.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Oliver_Leese.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Richard_OConnor.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Thomas_Jacomb_Hutton.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Tom_Moore.dds"
-		"gfx/leaders/ENG/Portrait_Britain_William_Gott.dds"
-		"gfx/leaders/ENG/Portrait_Britain_William_Platt.dds"
+		"GFX_Portrait_Britain_Generic_land_1"
+		"GFX_Portrait_Britain_Generic_land_2"
+		"GFX_Portrait_Britain_Generic_land_3"
+		"GFX_Portrait_Britain_Generic_land_4"
+		"GFX_Portrait_Britain_Generic_land_5"
+		"GFX_Portrait_Britain_Generic_land_6"
+		"GFX_portrait_ENG_alan_brooke"
+		"GFX_portrait_ENG_archibald_wavell"
+		"GFX_portrait_ENG_arthur_percival"
+		"GFX_portrait_ENG_bernard_montgomery"
+		"GFX_portrait_ENG_brian_horrocks"
+		"GFX_portrait_ENG_claude_auchinleck"
+		"GFX_portrait_ENG_george_giffard"
+		"GFX_portrait_ENG_harold_alexander"
+		"GFX_portrait_ENG_henry_wilson"
+		"GFX_portrait_ENG_henry_pownall"
+		"GFX_portrait_ENG_jock_campbell"
+		"GFX_portrait_ENG_jackie_smyth"
+		"GFX_portrait_ENG_john_vereker"
+		"GFX_portrait_ENG_merton_beckwithsmith"
+		"GFX_portrait_ENG_miles_dempsey"
+		"GFX_portrait_ENG_neil_ritchie"
+		"GFX_portrait_ENG_oliver_leese"
+		"GFX_portrait_ENG_richard_oconnor"
+		"GFX_portrait_ENG_thomas_jacomb_hutton"
+		"GFX_portrait_ENG_thomas_moore"
+		"GFX_portrait_ENG_william_gott"
+		"GFX_portrait_ENG_william_platt"
 		#USA - All portraits with "US" on the uniform are being avoided, sorry Eisenhower
-		"gfx/leaders/USA/Portrait_USA_Douglas_MacArthur.dds"
-		"gfx/leaders/USA/Portrait_USA_Oscar_Griswold.dds"
+		"GFX_portrait_USA_douglas_macarthur"
+		"GFX_portrait_USA_oscar_griswold"
 		#Other
 		GFX_USA_gen_Clarence_Huebner
 		GFX_USA_gen_omar_bradley
@@ -117,36 +117,36 @@ anglo_celtic = {
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#Britain and its Dependencies
-		"gfx/leaders/ENG/Portrait_Britain_Generic_navy_1.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Generic_navy_2.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Generic_navy_3.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Algernon_Willis.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Andrew_Cunningham.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Arthur_Power.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Bernard_Rawlings.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Bruce_Fraser.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Charles_Forbes.dds"
-		"gfx/leaders/ENG/Portrait_Britain_Henry_Harwood.dds"
-		"gfx/leaders/ENG/Portrait_Britain_James_Fownes_Somerville.dds"
-		"gfx/leaders/ENG/Portrait_Britain_John_Cunningham.dds"
-		"gfx/leaders/ENG/Portrait_Britain_John_Tovey.dds"
+		"GFX_Portrait_Britain_Generic_navy_1"
+		"GFX_Portrait_Britain_Generic_navy_2"
+		"GFX_Portrait_Britain_Generic_navy_3"
+		"GFX_portrait_ENG_algernon_willis"
+		"GFX_portrait_ENG_andrew_cunningham"
+		"GFX_portrait_ENG_arthur_power"
+		"GFX_portrait_ENG_bernard_rawlings"
+		"GFX_portrait_ENG_bruce_fraser"
+		"GFX_portrait_ENG_charles_forbes"
+		"GFX_portrait_ENG_henry_harwood"
+		"GFX_portrait_ENG_james_fownes_somerville"
+		"GFX_portrait_ENG_john_cunningham"
+		"GFX_portrait_ENG_john_tovey"
 		#USA
-		"gfx/leaders/USA/Portrait_USA_Generic_navy_1.dds"
-		"gfx/leaders/USA/Portrait_USA_Generic_navy_2.dds"
-		"gfx/leaders/USA/Portrait_USA_Generic_navy_3.dds"
-		"gfx/leaders/USA/Portrait_USA_Arleigh_Burke.dds"
-		"gfx/leaders/USA/Portrait_USA_Charles_M_Cooke.dds"
-		"gfx/leaders/USA/Portrait_USA_Chester_W_Nimitz.dds"
-		"gfx/leaders/USA/Portrait_USA_Earnest_King.dds"
-		"gfx/leaders/USA/Portrait_USA_Frank_Jack_Fletcher.dds"
-		"gfx/leaders/USA/Portrait_USA_Raymond_A_Spruance.dds"
-		"gfx/leaders/USA/Portrait_USA_William_Halsey_Jr.dds"
+		"GFX_Portrait_USA_Generic_navy_1"
+		"GFX_Portrait_USA_Generic_navy_2"
+		"GFX_Portrait_USA_Generic_navy_3"
+		"GFX_portrait_USA_arleigh_burke"
+		"GFX_portrait_USA_charles_m_cooke_jr"
+		"GFX_portrait_USA_chester_w_nimitz"
+		"GFX_portrait_USA_ernest_king"
+		"GFX_portrait_USA_frank_jack_fletcher"
+		"GFX_portrait_USA_raymond_a_spruance"
+		"GFX_portrait_USA_william_halsey_jr"
 		#Other
 		GFX_Europe_Generic_navy_new_1
 		GFX_Europe_Generic_navy_new_2
@@ -361,50 +361,50 @@ low_franconian = {
 	cultures_and_groups = { french frankish neo_european_cultures beneluxian }
 		army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#French
-		"gfx/leaders/FRA/Portrait_France_Generic_land_1.dds"
-		"gfx/leaders/FRA/Portrait_France_Generic_land_2.dds"
-		"gfx/leaders/FRA/Portrait_France_Generic_land_3.dds"
-		"gfx/leaders/FRA/Portrait_France_Generic_land_4.dds"
-		"gfx/leaders/FRA/Portrait_France_Generic_land_5.dds"
-		"gfx/leaders/FRA/Portrait_France_Alphonse_Joseph_Georges.dds"
-		"gfx/leaders/FRA/Portrait_France_Charles_De_Gaulle.dds"
-		"gfx/leaders/FRA/portrait_france_charles_huntziger.dds"
-		"gfx/leaders/FRA/Portrait_France_Philippe_Petain.dds"
-		"gfx/leaders/FRA/Portrait_France_Jean_de_Lattre_de_Tassigny.dds"
-		"gfx/leaders/FRA/portrait_france_henri_giraud.dds"
-		"gfx/leaders/FRA/Portrait_France_Maurice_Gamelin.dds"
-		"gfx/leaders/FRA/portrait_france_philippe_leclerc.dds"
+		"GFX_Portrait_France_Generic_land_1"
+		"GFX_Portrait_France_Generic_land_2"
+		"GFX_Portrait_France_Generic_land_3"
+		"GFX_Portrait_France_Generic_land_4"
+		"GFX_Portrait_France_Generic_land_5"
+		"GFX_portrait_FRA_alphonse_georges"
+		"GFX_portrait_FRA_charles_de_gaulle"
+		"GFX_portrait_FRA_charles_huntziger"
+		"GFX_portrait_Philippe_Petain"
+		"GFX_portrait_FRA_jean_de_lattre_de_tassigny"
+		"GFX_portrait_FRA_henri_giraud"
+		"GFX_portrait_FRA_maurice_gamelin"
+		"GFX_portrait_FRA_philippe_leclerc"
 		#Other
 		GFX_Canada_Adrian_Wiart
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#French
-		"gfx/leaders/FRA/Portrait_France_Generic_navy_1.dds"
-		"gfx/leaders/FRA/Portrait_France_Generic_navy_2.dds"
-		"gfx/leaders/FRA/Portrait_France_Generic_navy_3.dds"
-		"gfx/leaders/FRA/Portrait_France_Francois_Darlan.dds"
-		"gfx/leaders/FRA/Portrait_France_Rene-Emile_Godfroy.dds"
-		"gfx/leaders/FRA/Portrait_France_Jean_de_Laborde.dds"
-		"gfx/leaders/FRA/Portrait_France_Jean-Marie_Charles_Abrial.dds"
-		"gfx/leaders/FRA/Portrait_France_Jean-Pierre_Esteva.dds"
+		"GFX_Portrait_France_Generic_navy_1"
+		"GFX_Portrait_France_Generic_navy_2"
+		"GFX_Portrait_France_Generic_navy_3"
+		"GFX_portrait_FRA_francois_darlan"
+		"GFX_portrait_FRA_rene_emile_godfroy"
+		"GFX_portrait_FRA_jean_de_laborde"
+		"GFX_portrait_FRA_jeanmarie_charles_abrial"
+		"GFX_portrait_FRA_jeanpierre_esteva"
 		#Other
 		GFX_Europe_Generic_navy_new_1
 		GFX_Europe_Generic_navy_new_2
@@ -593,40 +593,40 @@ nordic_uralic = {
 	cultures_and_groups = { scandinavian hungarian_culture_group estonian finnougric }
 	army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
-		"gfx/leaders/FIN/portrait_fin_carl_mannerheim.dds"
-		GFX_Denmark_Christian_von_Schalburg
-		GFX_Sweden_Ernst_Klercker
-		GFX_Norway_Trygve_Frivold_Graff_Wang
-		GFX_Norway_Wilhelm_Tangen_Hansteen
-		GFX_Norway_William_Steffens
-		GFX_Norway_Oliver_Moystad
-		GFX_Finland_Hjalmar_Siilasvuo
-		GFX_Finland_Paavo_Talvela
-		GFX_Finland_Kurt_Martti_Wallenius
-		GFX_HUN_Karoly_Beregfy
-		GFX_HUN_Janky_Kocsard
-		GFX_Estonia_Aleksander_Tonisson
-		GFX_Estonia_Andres_Larka
+		"GFX_portrait_fin_carl_mannerheim"
+		"gfx/leaders/Western_European/Portrait_Denmark_Christian_von_Schalburg.tga"
+		"gfx/leaders/Western_European/Portrait_Sweden_Ernst_Klercker.tga"
+		"gfx/leaders/Western_European/Portrait_Norway_Trygve_Frivold_Graff_Wang.tga"
+		"gfx/leaders/Western_European/Portrait_Norway_Wilhelm_Tangen_Hansteen.tga"
+		"gfx/leaders/Western_European/Portrait_Norway_William_Steffens.tga"
+		"gfx/leaders/Western_European/Portrait_Norway_Oliver_Moystad.tga"
+		"gfx/leaders/Western_European/Portrait_Finland_Hjalmar_Siilasvuo.tga"
+		"gfx/leaders/Western_European/Portrait_Finland_Paavo_Talvela.tga"
+		"gfx/leaders/Western_European/Portrait_Finland_Kurt_Martti_Wallenius.tga"
+		"gfx/leaders/Balkans/Portrait_HUN_Karoly_Beregfy.tga"
+		"gfx/leaders/Balkans/Portrait_HUN_Janky_Kocsard.tga"
+		"gfx/leaders/Eastern_European/Portrait_Estonia_Aleksander_Tonisson.tga"
+		"gfx/leaders/Eastern_European/Portrait_Estonia_Andres_Larka.tga"
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#Other
 		GFX_Europe_Generic_navy_new_1
 		GFX_Europe_Generic_navy_new_2
@@ -823,72 +823,72 @@ pan_germanic = {
 	cultures_and_groups = { germanic pan_swiss jewish_group jewish_cultures varangian_g gothic_g barbarian } #jewish cultures will be moved in the final check-up
 	army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#German
-		"gfx/leaders/GER/Portrait_Germany_Generic_land_1.dds"
-		"gfx/leaders/GER/Portrait_Germany_Generic_land_2.dds"
-		"gfx/leaders/GER/Portrait_Germany_Generic_land_3.dds"
-		"gfx/leaders/GER/Portrait_Germany_Generic_land_4.dds"
-		"gfx/leaders/GER/Portrait_Germany_Generic_land_5.dds"
-		"gfx/leaders/GER/portrait_ger_felix_steiner.dds"
-		"gfx/leaders/GER/portrait_ger_hans_von_luck.dds"
-		"gfx/leaders/GER/Portrait_Germany_Albert_Kesselring.dds"
-		"gfx/leaders/GER/Portrait_Germany_Alfred_Jodl.dds"
+		"GFX_Portrait_Germany_Generic_land_1"
+		"GFX_Portrait_Germany_Generic_land_2"
+		"GFX_Portrait_Germany_Generic_land_3"
+		"GFX_Portrait_Germany_Generic_land_4"
+		"GFX_Portrait_Germany_Generic_land_5"
+		"GFX_portrait_ger_felix_steiner"
+		"GFX_portrait_GER_hans_von_luck"
+		"GFX_portrait_GER_albert_kesselring"
+		"GFX_portrait_GER_alfred_jodl"
 		"gfx/leaders/GER/Portrait_Germany_Erhard_Milch.dds"
-		"gfx/leaders/GER/Portrait_Germany_Erich_von_Manstein.dds"
-		"gfx/leaders/GER/Portrait_Germany_Erwin_Rommel.dds"
-		"gfx/leaders/GER/Portrait_Germany_Erwin_von_Witzleben.dds"
-		"gfx/leaders/GER/Portrait_Germany_Ewald_von_Kleist.dds"
-		"gfx/leaders/GER/Portrait_Germany_Fedor_von_Bock.dds"
-		"gfx/leaders/GER/Portrait_Germany_Friedrich_Paulus.dds"
-		"gfx/leaders/GER/Portrait_Germany_Georg_von_Kuchler.dds"
-		"gfx/leaders/GER/Portrait_Germany_Georg_von_Reinhardt.dds"
-		"gfx/leaders/GER/Portrait_Germany_Gerd_von_Rundstedt.dds"
-		"gfx/leaders/GER/Portrait_Germany_Gotthard_Heinrici.dds"
-		"gfx/leaders/GER/Portrait_Germany_Gunther_von_Kluge.dds"
+		"GFX_portrait_GER_erich_von_manstein"
+		"GFX_portrait_GER_erwin_rommel"
+		"GFX_portrait_GER_erwin_von_witzleben"
+		"GFX_portrait_GER_ewald_von_kleist"
+		"GFX_portrait_GER_fedor_von_bock"
+		"GFX_portrait_GER_friedrich_paulus"
+		"GFX_portrait_GER_georg_von_kuchler"
+		"GFX_portrait_GER_georghans_reinhardt"
+		"GFX_portrait_GER_gerd_von_rundstedt"
+		"GFX_portrait_GER_gotthard_heinrici"
+		"GFX_portrait_Gunther_von_Kluge"
 		"gfx/leaders/GER/Portrait_Germany_Hans-Karl_Freiherr_von_Esebeck.dds"
-		"gfx/leaders/GER/Portrait_Germany_Hasso_von_Manteuffel.dds"
-		"gfx/leaders/GER/Portrait_Germany_Heinz_Guderian.dds"
-		"gfx/leaders/GER/Portrait_Germany_Herman_Hoth.dds"
-		"gfx/leaders/GER/Portrait_Germany_Johannes_Blaskowitz.dds"
-		"gfx/leaders/GER/Portrait_Germany_Josef_Dietrich.dds"
-		"gfx/leaders/GER/Portrait_Germany_Kurt_Student.dds"
-		"gfx/leaders/GER/Portrait_Germany_Maximilian_von_Weichs.dds"
-		"gfx/leaders/GER/Portrait_Germany_Paul_Hausser.dds"
-		"gfx/leaders/GER/Portrait_Germany_Walter_Kruger.dds"
-		"gfx/leaders/GER/Portrait_Germany_Walter_Model.dds"
-		"gfx/leaders/GER/Portrait_Germany_Wilhelm_List.dds"
-		"gfx/leaders/GER/Portrait_Germany_Wilhelm_Ritter_von_Leeb.dds"
+		"GFX_portrait_GER_hasso_von_manteuffel"
+		"GFX_portrait_GER_heinz_guderian"
+		"GFX_portrait_GER_hermann_hoth"
+		"GFX_portrait_GER_johannes_blaskowitz"
+		"GFX_portrait_GER_sepp_dietrich"
+		"GFX_portrait_GER_kurt_student"
+		"GFX_portrait_GER_maximilian_von_weichs"
+		"GFX_portrait_GER_paul_hausser"
+		"GFX_portrait_GER_paul_hausser"
+		"GFX_portrait_GER_walter_model"
+		"GFX_portrait_GER_wilhelm_list"
+		"GFX_portrait_GER_wilhelm_ritter_von_leeb"
 		"gfx/leaders/GER/Portrait_Germany_Willi_Reschke.dds"
 		"gfx/leaders/GER/Portrait_Germany_Wolfram_Freiherr_von_Richthofen.dds"
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#German
-		"gfx/leaders/GER/Portrait_Germany_Generic_navy_1.dds"
-		"gfx/leaders/GER/Portrait_Germany_Generic_navy_2.dds"
-		"gfx/leaders/GER/Portrait_Germany_Generic_navy_3.dds"
-		"gfx/leaders/GER/Portrait_Germany_Alfred_Saalwachter.dds"
-		"gfx/leaders/GER/Portrait_Germany_Erich_Raeder.dds"
-		"gfx/leaders/GER/Portrait_Germany_Gunter_Lutjens.dds"
-		"gfx/leaders/GER/Portrait_Germany_Hermann_Boehm.dds"
-		"gfx/leaders/GER/Portrait_Germany_Karl_Donitz.dds"
-		"gfx/leaders/GER/Portrait_Germany_Wilhelm_Marschall.dds"
+		"GFX_Portrait_Germany_Generic_navy_1"
+		"GFX_Portrait_Germany_Generic_navy_2"
+		"GFX_Portrait_Germany_Generic_navy_3"
+		"GFX_portrait_GER_alfred_saalwachter"
+		"GFX_portrait_GER_erich_raeder"
+		"GFX_portrait_GER_gunther_lutjens"
+		"GFX_portrait_GER_hermann_boehm"
+		"GFX_portrait_GER_karl_donitz"
+		"GFX_portrait_GER_wilhelm_marschall"
 		#Other
 		GFX_Europe_Generic_navy_new_1
 		GFX_Europe_Generic_navy_new_2
@@ -1095,30 +1095,34 @@ italic = {
 
 	army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Italian
-		"gfx/leaders/ITA/Portrait_Italy_Generic_land_1.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Generic_land_2.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Generic_land_3.dds" #No 4
-		"gfx/leaders/ITA/Portrait_Italy_Generic_land_5.dds"
-		"gfx/leaders/ITA/portrait_italy_emilio_de_bono.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Giovanni_Messe.dds"
-		"gfx/leaders/ITA/portrait_italy_italo_balbo.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Pietro_Badoglio.dds"
-		"gfx/leaders/ITA/portrait_italy_radolfo_graziani.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Sebastiano_Visconti_Prasca.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Ubaldo_Soddu.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Ugo_Cavallero.dds"
+		"GFX_Portrait_Italy_Generic_land_1"
+		"GFX_Portrait_Italy_Generic_land_2"
+		"GFX_Portrait_Italy_Generic_land_3"
+		"GFX_Portrait_Italy_Generic_land_4"
+		"GFX_Portrait_Italy_Generic_land_5"
+		"GFX_Portrait_Italy_Generic_land_6"
+		"GFX_Portrait_Italy_Generic_land_7"
+		"GFX_Portrait_Italy_Generic_land_8"
+		"GFX_portrait_ITA_emilio_de_bono"
+		"GFX_portrait_ITA_giovanni_messe"
+		"GFX_portrait_ITA_italo_balbo"
+		"GFX_portrait_ITA_pietro_badoglio"
+		"GFX_portrait_ITA_rodolfo_graziani"
+		"GFX_portrait_ITA_sebastiano_visconti_prasca"
+		"GFX_portrait_ITA_ubaldo_soddu"
+		"GFX_portrait_ITA_ugo_cavallero"
 		#Other
 		GFX_Italy_Generic_land_4
 		GFX_TUS_Chiariotti_Raoul
@@ -1130,21 +1134,21 @@ italic = {
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#Italian
-		"gfx/leaders/ITA/Portrait_Italy_Generic_navy_1.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Generic_navy_2.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Generic_navy_3.dds"
-		"gfx/leaders/ITA/portrait_ITA_ferdinando_adalberto.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Alberto_Da_Zara.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Angelo_Iachino.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Carlo_Bergamini.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Giuseppe_Fioravanzo.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Inigo_Campioni.dds"
+		"GFX_Portrait_Italy_Generic_navy_1"
+		"GFX_Portrait_Italy_Generic_navy_2"
+		"GFX_Portrait_Italy_Generic_navy_3"
+		"GFX_portrait_ITA_ferdinando_adalberto"
+		"GFX_portrait_ITA_alberto_da_zara"
+		"GFX_portrait_ITA_angelo_iachino"
+		"GFX_portrait_ITA_carlo_bergamini"
+		"GFX_portrait_ITA_giuseppe_fioravanzo"
+		"GFX_portrait_ITA_inigo_campioni"
 		#Other
 		GFX_Europe_Generic_navy_new_1
 		GFX_Europe_Generic_navy_new_2
@@ -1308,17 +1312,17 @@ hellenic_caucasian = {
 
 	army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
 		GFX_GRE_Alexandros_Papagos
 		GFX_GRE_George_army
@@ -1327,21 +1331,21 @@ hellenic_caucasian = {
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#Italian
-		"gfx/leaders/ITA/Portrait_Italy_Generic_navy_1.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Generic_navy_2.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Generic_navy_3.dds"
-		"gfx/leaders/ITA/portrait_ITA_ferdinando_adalberto.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Alberto_Da_Zara.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Angelo_Iachino.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Carlo_Bergamini.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Giuseppe_Fioravanzo.dds"
-		"gfx/leaders/ITA/Portrait_Italy_Inigo_Campioni.dds"
+		"GFX_Portrait_Italy_Generic_navy_1"
+		"GFX_Portrait_Italy_Generic_navy_2"
+		"GFX_Portrait_Italy_Generic_navy_3"
+		"GFX_portrait_ITA_ferdinando_adalberto"
+		"GFX_portrait_ITA_alberto_da_zara"
+		"GFX_portrait_ITA_angelo_iachino"
+		"GFX_portrait_ITA_carlo_bergamini"
+		"GFX_portrait_ITA_giuseppe_fioravanzo"
+		"GFX_portrait_ITA_inigo_campioni"
 		#Other
 		GFX_Europe_Generic_navy_new_1
 		GFX_Europe_Generic_navy_new_2
@@ -1513,17 +1517,17 @@ other_balkan = {
 
 	army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
 		GFX_Balkan_Generic_land_new_1
 		GFX_Balkan_Generic_land_new_2
@@ -1537,11 +1541,11 @@ other_balkan = {
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#Other
 		GFX_Romania_Horia_Macellariu
 		GFX_Europe_Generic_navy_new_1
@@ -1714,17 +1718,17 @@ serbo_croat_bulgarian = {
 
 	army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
 		"gfx/leaders/YUG/portrait_yugoslavia_josef_depre.dds"
 		GFX_Balkan_Generic_land_new_1
@@ -1742,11 +1746,11 @@ serbo_croat_bulgarian = {
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#Other
 		GFX_Europe_Generic_navy_new_1
 		GFX_Europe_Generic_navy_new_2
@@ -1924,23 +1928,23 @@ other_balto_slavic = {
 
 	army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
-		"gfx/leaders/POL/Portrait_POL_Roman_Abraham.dds"
-		"gfx/leaders/POL/Portrait_POL_Stanislaw_Kopamski.dds"
-		"gfx/leaders/POL/Portrait_POL_Wincentry_Kowalski.dds"
-		"gfx/leaders/POL/Portrait_POL_Wladyslaw_Anders.dds"
-		"gfx/leaders/POL/Portrait_POL_Wladyslaw_Bortnowski.dds"
+		"GFX_POL_roman_abraham"
+		"GFX_POL_stanislav_kopanski"
+		"GFX_POL_wincenty_kowalski"
+		"GFX_POL_wladislaw_anders"
+		"GFX_POL_wladyslaw_bortnowski"
 		GFX_Lithuania_Stasys_Rastikis
 		GFX_Lithuania_Mikas_Reklaitis
 		GFX_Baltic_Yudenich
@@ -1949,11 +1953,11 @@ other_balto_slavic = {
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#Other
 		GFX_Europe_Generic_navy_new_1
 		GFX_Europe_Generic_navy_new_2
@@ -2118,59 +2122,63 @@ eastern_slavic = {
 
 	army_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_6.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_7.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_8.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_9.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_13.dds"
-		"gfx/leaders/Europe/Portrait_europe_generic_land_19.dds"
+		"GFX_Portrait_Europe_Generic_land_1"
+		"GFX_Portrait_Europe_Generic_land_2"
+		"GFX_Portrait_Europe_Generic_land_3"
+		"GFX_Portrait_Europe_Generic_land_4"
+		"GFX_Portrait_Europe_Generic_land_5"
+		"GFX_Portrait_europe_generic_land_6"
+		"GFX_Portrait_europe_generic_land_7"
+		"GFX_Portrait_europe_generic_land_8"
+		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_13"
+		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Soviets
-		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_1.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_2.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_3.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_4.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Generic_land_5.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Aleksandr_Vasilevsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Aleksandr_Gorbatov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Andrei_Antonovich_Grechko.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Andrey_Yeryomenko.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Boris_Shaposhnikov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Dmitri_Danilovich_Lelyushenko.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Filipp_Golikov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Georgiy_Zakharov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Gregory_Zhukov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Grigory_Kulik.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Issa_Pliyev.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Ivan_Chernyakhovsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Ivan_Fedyuninsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Ivan_Konev.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Kirill_Meretskov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Kirill_Moskalenko.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Kliment_Voroshilov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Konstantin_Rokossovsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Kuzma_Galitsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Leonid_Govorov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Maksim_Purkayev.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Matkian_Popov.dds"
+		"GFX_Portrait_Soviet_Generic_land_1"
+		"GFX_Portrait_Soviet_Generic_land_2"
+		"GFX_Portrait_Soviet_Generic_land_3"
+		"GFX_Portrait_Soviet_Generic_land_4"
+		"GFX_Portrait_Soviet_Generic_land_5"
+		"GFX_Portrait_Soviet_Generic_land_6"
+		"GFX_Portrait_Soviet_Generic_land_7"
+		"GFX_Portrait_Soviet_Generic_land_8"
+		"GFX_Portrait_Soviet_Generic_land_9"
+		"GFX_portrait_SOV_aleksandr_vasilevsky"
+		"GFX_portrait_SOV_aleksandr_gorbatov"
+		"GFX_portrait_SOV_andrey_grechko"
+		"GFX_portrait_SOV_andrey_yeryomenko"
+		"GFX_portrait_SOV_boris_shaposhnikov" #no small/repeated below
+		"GFX_portrait_SOV_dmitry_lelyushenko"
+		"GFX_portrait_SOV_filipp_golikov"
+		"GFX_portrait_SOV_georgy_zakharov"
+		"GFX_portrait_SOV_georgy_zhukov" #no small/repeated below
+		"GFX_portrait_SOV_grigory_kulik"
+		"GFX_portrait_SOV_issa_pliyev"
+		"GFX_portrait_SOV_ivan_chernyakhovsky"
+		"GFX_portrait_SOV_ivan_fedyuninsky"
+		"GFX_portrait_SOV_ivan_konev"
+		"GFX_portrait_SOV_kirill_meretskov"
+		"GFX_portrait_SOV_kirill_moskalenko"
+		"GFX_portrait_SOV_kliment_voroshilov" #no small
+		"GFX_portrait_SOV_konstantin_rokossovsky" #no small
+		"GFX_portrait_SOV_kuzma_galitsky"
+		"GFX_portrait_SOV_leonid_govorov"
+		"GFX_portrait_SOV_maksim_purkayev"
+		"GFX_portrait_SOV_markian_popov"
 		"gfx/leaders/SOV/Portrait_Soviet_Max_Andreyevich.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Mikhail_Tukhachevsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Nikandr_Yevlampyevich_Chibisov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Nikolay_Berzarin.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Nikolai_Fyodorovich_Vatutin.dds"
-		"gfx/leaders/SOV/portrait_soviet_pdxcon_magic_winner.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Rodion_Malinovsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Semyon_Budyonny.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Semyon_Timoshenko.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Vasily_Chuykov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Vasily_Kuznetsov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Yakov_Cherevichenko.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Gregory_Zhukov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Boris_Shaposhnikov.dds"
+		"GFX_portrait_SOV_mikhail_tukhachevsky" #no small
+		"GFX_portrait_SOV_nikandr_chibisov"
+		"GFX_portrait_SOV_nikolay_berzarin"
+		"GFX_portrait_SOV_nikolay_vatutin"
+		"GFX_Portrait_Soviet_Magic_Winner"
+		"GFX_portrait_SOV_rodion_malinovsky"
+		"GFX_portrait_SOV_semyon_budyonny"
+		"GFX_portrait_SOV_semyon_timoshenko"
+		"GFX_portrait_SOV_vasily_chuykov"
+		"GFX_portrait_SOV_vasily_kuznetsov"
+		"GFX_portrait_SOV_yakov_cherevichenko"
+		"GFX_portrait_SOV_georgy_zhukov" #no small/repeat of above
+		"GFX_portrait_SOV_boris_shaposhnikov" #no small/repeat of above
 		#Other
 		GFX_Belarus_Bronislav_Kaminski
 		GFX_Belarus_Vital_Kazlou
@@ -2189,20 +2197,20 @@ eastern_slavic = {
 	}
 	navy_portraits = {
 		#Generic European
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		"gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
-		"gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+		"GFX_Portrait_Europe_Generic_navy_1"
+		"GFX_Portrait_Europe_Generic_navy_2"
+		"GFX_Portrait_Europe_Generic_navy_3"
+		"GFX_portrait_europe_generic_navy_4"
+		"GFX_portrait_europe_generic_navy_5"
 		#Soviets
-		"gfx/leaders/SOV/Portrait_Soviet_Generic_navy_1.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Generic_navy_2.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Generic_navy_3.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Arseniy_Golovko.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Filipp_Oktyabrsky.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Gordey_Levchenko.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Sergey_Gorshkov.dds"
-		"gfx/leaders/SOV/Portrait_Soviet_Vladimir_Kasatonov.dds"
+		"GFX_Portrait_Soviet_Generic_navy_1"
+		"GFX_Portrait_Soviet_Generic_navy_2"
+		"GFX_Portrait_Soviet_Generic_navy_3"
+		"GFX_portrait_SOV_arseny_golovko" #no small
+		"GFX_portrait_SOV_filipp_oktyabrsky"
+		"GFX_portrait_SOV_gordey_levchenko" #no small
+		"GFX_portrait_SOV_sergey_gorshkov" #no small
+		"GFX_portrait_SOV_vladimir_kasatonov" #no small
 		#Other
 		GFX_Europe_Generic_navy_new_1
 		GFX_Europe_Generic_navy_new_2
@@ -2377,8 +2385,8 @@ indian = {
 
 	army_portraits = {
 		#Generic Indian
-		"gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic.dds"
-		"gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic_2.dds"
+		"GFX_Portrait_The_Raj_Army_Generic"
+		"GFX_Portrait_The_Raj_Army_Generic_2"
 		#Other
 		GFX_India_Generic_land_new_1
 		GFX_India_Generic_land_new_2
@@ -2398,8 +2406,8 @@ indian = {
 	}
 	navy_portraits = {
 		#Generic Indian
-		"gfx/leaders/RAJ/Portrait_The_Raj_Generic_navy_1.dds"
-		"gfx/leaders/RAJ/Portrait_The_Raj_Generic_navy_2.dds"
+		"GFX_Portrait_The_Raj_Generic_navy_1"
+		"GFX_Portrait_The_Raj_Generic_navy_2"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 	}
@@ -2533,11 +2541,11 @@ turkic = {
 
 	army_portraits = {
 		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_3.dds"
+		"GFX_Portrait_Arabia_Generic_land_1"
+		"GFX_Portrait_Arabia_Generic_land_2"
+		"GFX_Portrait_Arabia_Generic_land_3"
 		#Other
-		"gfx/leaders/TUR/Portrait_Turkey_Mustafa_Kemal_Ataturk_Military.dds"
+		"GFX_portrait_TUR_mustafa_kemal_ataturk_military" #no small
 		GFX_Arabia_Generic_new_1
 		GFX_r56_Turkey_Generic_land_1
 		GFX_OTTLeader01
@@ -2554,11 +2562,11 @@ turkic = {
 	}
 	navy_portraits = {
 		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
+		"GFX_Portrait_Arabia_Generic_navy_1"
+		"GFX_Portrait_Arabia_Generic_navy_2"
+		"GFX_Portrait_Arabia_Generic_navy_3"
 		#Turkey
-		"gfx/leaders/TUR/portrait_tur_sukru_okan.dds"
+		"GFX_portrait_tur_sukru_okan" #no small
 		#Other
 		GFX_OTTLeader_Navy_01
 		GFX_EGY_Suleiman_Ezzat
@@ -2684,9 +2692,9 @@ iranian = {
 
 	army_portraits = {
 		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_3.dds"
+		"GFX_Portrait_Arabia_Generic_land_1"
+		"GFX_Portrait_Arabia_Generic_land_2"
+		"GFX_Portrait_Arabia_Generic_land_3"
 		#Other
 		GFX_Arabia_Generic_new_1
 		GFX_Arabia_Generic_land_new_2
@@ -2708,9 +2716,9 @@ iranian = {
 	}
 	navy_portraits = {
 		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
+		"GFX_Portrait_Arabia_Generic_navy_1"
+		"GFX_Portrait_Arabia_Generic_navy_2"
+		"GFX_Portrait_Arabia_Generic_navy_3"
 		#Other
 		GFX_EGY_Suleiman_Ezzat
 		GFX_EGY_Hussein_Refki #Marine
@@ -2831,9 +2839,9 @@ north_african = {
 	cultures_and_groups = { maghrebi berber maures frencharab andalucian ifriqi tuareg }
 	army_portraits = {
 		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_3.dds"
+		"GFX_Portrait_Arabia_Generic_land_1"
+		"GFX_Portrait_Arabia_Generic_land_2"
+		"GFX_Portrait_Arabia_Generic_land_3"
 		#Other
 		GFX_Arabia_Generic_new_1
 		GFX_Arabia_Generic_land_new_2
@@ -2847,13 +2855,13 @@ north_african = {
 		GFX_Oman_Suleiman_Ryami
 		GFX_SYR_Sami_Al_Hinawi
 		GFX_YEM_Ali_Nasser_Al-Qardai
-		"gfx/leaders/SPA/portrait_spa_mohamed_meziane.dds"
+		"GFX_portrait_SPA_mohamed_meziane"
 	}
 	navy_portraits = {
 		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
+		"GFX_Portrait_Arabia_Generic_navy_1"
+		"GFX_Portrait_Arabia_Generic_navy_2"
+		"GFX_Portrait_Arabia_Generic_navy_3"
 		#Other
 		GFX_EGY_Suleiman_Ezzat
 		GFX_EGY_Hussein_Refki #Marine
@@ -2987,9 +2995,9 @@ near_eastern = {
 
 	army_portraits = {
 		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_land_3.dds"
+		"GFX_Portrait_Arabia_Generic_land_1"
+		"GFX_Portrait_Arabia_Generic_land_2"
+		"GFX_Portrait_Arabia_Generic_land_3"
 		#Other
 		GFX_Arabia_Generic_new_1
 		GFX_Arabia_Generic_land_new_2
@@ -2999,9 +3007,9 @@ near_eastern = {
 	}
 	navy_portraits = {
 		#Generic Middle Eastern
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_1.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_3.dds"
+		"GFX_Portrait_Arabia_Generic_navy_1"
+		"GFX_Portrait_Arabia_Generic_navy_2"
+		"GFX_Portrait_Arabia_Generic_navy_3"
 		#Other
 		GFX_EGY_Suleiman_Ezzat
 		GFX_EGY_Hussein_Refki #Marine
@@ -3104,12 +3112,12 @@ tibetian_burman_karenic = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Other
 		GFX_AOG_Generic_1
 		GFX_Asia_Generic_land_new_1
@@ -3117,10 +3125,10 @@ tibetian_burman_karenic = {
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_Asia_Generic_navy_new_2
@@ -3232,12 +3240,12 @@ asian_steppe = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Other
 		GFX_AOG_Generic_1
 		GFX_r56_Turkey_Generic_land_1
@@ -3256,10 +3264,10 @@ asian_steppe = {
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_Asia_Generic_navy_new_2
@@ -3391,12 +3399,12 @@ austronesian = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Other
 		GFX_AOG_Generic_1
 		GFX_Asia_Generic_land_new_1
@@ -3417,10 +3425,10 @@ austronesian = {
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_Asia_Generic_navy_new_2
@@ -3552,12 +3560,12 @@ tai = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Other
 		GFX_AOG_Generic_1
 		GFX_Asia_Generic_land_new_1
@@ -3566,10 +3574,10 @@ tai = {
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_Asia_Generic_navy_new_2
@@ -3687,12 +3695,12 @@ austroasiatic = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Other
 		GFX_AOG_Generic_1
 		GFX_Asia_Generic_land_new_1
@@ -3713,10 +3721,10 @@ austroasiatic = {
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_Asia_Generic_navy_new_2
@@ -3838,12 +3846,12 @@ tungustic = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Fengtian
 		GFX_FNG_Wan_Fulin
 		GFX_FNG_Wang_Shuchang
@@ -3854,10 +3862,10 @@ tungustic = {
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_Asia_Generic_navy_new_2
@@ -3972,12 +3980,12 @@ koreanic = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Other
 		GFX_AOG_Generic_1
 		GFX_Asia_Generic_land_new_1
@@ -3985,10 +3993,10 @@ koreanic = {
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_Asia_Generic_navy_new_2
@@ -4015,7 +4023,7 @@ koreanic = {
 		}
 		absolutist = {
 			GFX_Yi_Un
-			"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+			"GFX_Portrait_Asia_Generic_land_1"
 		}
 		neutrality = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_fascism.dds"
@@ -4104,29 +4112,29 @@ paleosiberian = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Japan
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_1.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_2.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_3.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_4.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_5.dds"
+		"GFX_Portrait_Japan_Generic_land_1"
+		"GFX_Portrait_Japan_Generic_land_2"
+		"GFX_Portrait_Japan_Generic_land_3"
+		"GFX_Portrait_Japan_Generic_land_4"
+		"GFX_Portrait_Japan_Generic_land_5"
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Japan
-		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_1.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_2.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_3.dds"
+		"GFX_Portrait_Japan_Generic_navy_1"
+		"GFX_Portrait_Japan_Generic_navy_2"
+		"GFX_Portrait_Japan_Generic_navy_3"
 		}
 	leader_portraits = {
 		communism = {
@@ -4232,47 +4240,47 @@ japonic = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Japan
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_1.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_2.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_3.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_4.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_land_5.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Akira_Muto.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Harukichi_Hyakutake.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Hatazo_Adachi.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Hisaichi_Terauchi.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Hitoshi_Imamura.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Iwane_Matsui.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Jo_Iimura.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Kanji_Ishiwara.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Keisuke_Fujie.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Kenji_Doihara.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Kenkichi_Ueda.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Kiichiro_Higuchi.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Kuniaki_Koiso.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Masaharu_Homma.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Masatane_Kanda.dds"
+		"GFX_Portrait_Japan_Generic_land_1"
+		"GFX_Portrait_Japan_Generic_land_2"
+		"GFX_Portrait_Japan_Generic_land_3"
+		"GFX_Portrait_Japan_Generic_land_4"
+		"GFX_Portrait_Japan_Generic_land_5"
+		"GFX_portrait_JAP_akira_muto"
+		"GFX_portrait_JAP_harukichi_hyakutake"
+		"GFX_portrait_JAP_hatazo_adachi"
+		"GFX_portrait_JAP_hisaichi_terauchi"
+		"GFX_portrait_JAP_hitoshi_imamura" #no small
+		"GFX_portrait_JAP_iwane_matsui"
+		"GFX_portrait_JAP_jo_iimura"
+		"GFX_portrait_JAP_kanji_ishiwara"
+		"GFX_portrait_JAP_keisuke_fujie"
+		"GFX_portrait_JAP_kenji_doihara" #no small
+		"GFX_portrait_JAP_kenkichi_ueda"
+		"GFX_portrait_JAP_kiichiro_higuchi"
+		"GFX_portrait_JAP_kuniaki_koiso"
+		"GFX_portrait_JAP_masaharu_homma"
+		"GFX_portrait_JAP_masatane_kanda"
 		"gfx/leaders/JAP/Portrait_Japan_Morihiro_Higashikuni.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Naruhiko_Higashikuni.dds"
+		"GFX_portrait_JAP_naruhiko_higashikuni"
 		"gfx/leaders/JAP/Portrait_Japan_Nobuyoshi_Muto.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Rikichi_Ando.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Sadao_Araki.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Seishiro_Itagaki.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Shigeru_Honjo.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Shizuichi_Tanaka.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Shunroku_Hata.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Takashi_Sakai.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Tomoyuki_Yamashita.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Toshizo_Nishio.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Yasuji_Okamura.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Yoshijiro_Umezu.dds"
+		"GFX_portrait_JAP_rikichi_ando"
+		"GFX_portrait_JAP_sadao_araki"
+		"GFX_portrait_JAP_seishiro_itagaki"
+		"GFX_portrait_JAP_shigeru_honjo"
+		"GFX_portrait_JAP_shizuichi_tanaka"
+		"GFX_portrait_JAP_shunroku_hata" #no small
+		"GFX_portrait_JAP_takashi_sakai"
+		"GFX_portrait_JAP_tomoyuki_yamashita" #no small
+		"GFX_portrait_JAP_toshizo_nishio"
+		"GFX_portrait_JAP_yasuji_okamura" #no small
+		"GFX_portrait_JAP_yoshijiro_umezu"
 		#Other
 		GFX_AOG_Generic_1
 		GFX_Asia_Generic_land_new_1
@@ -4280,26 +4288,26 @@ japonic = {
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Japan
-		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_1.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_2.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Generic_navy_3.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Gengo_Hyakutake.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Hasegawa_Kiyoshi.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Hiroaki_Abe.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Isoroku_Yamamoto.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Jisaburo_Ozawa.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Mineichi_Koga.dds"
+		"GFX_Portrait_Japan_Generic_navy_1"
+		"GFX_Portrait_Japan_Generic_navy_2"
+		"GFX_Portrait_Japan_Generic_navy_3"
+		"GFX_portrait_JAP_gengo_hyakutake"
+		"GFX_portrait_JAP_kiyoshi_hasegawa"
+		"GFX_portrait_JAP_hiroaki_abe"
+		"GFX_portrait_JAP_isoroku_yamamoto" #no small
+		"GFX_portrait_JAP_jisaburo_ozawa"
+		"GFX_portrait_JAP_mineichi_koga"
 		"gfx/leaders/JAP/Portrait_Japan_Nishizo_Tsukahara.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Nobutake_Kondo.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Shigeyoshi_Inoue.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Tadashige_Daigo.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Takeo_Takagi.dds"
-		"gfx/leaders/JAP/Portrait_Japan_Zengo_Yoshida.dds"
+		"GFX_portrait_JAP_nobutake_kondo"
+		"GFX_portrait_JAP_shigeyoshi_inoue"
+		"GFX_portrait_JAP_tadashige_daigo"
+		"GFX_portrait_JAP_takeo_takagi"
+		"GFX_portrait_JAP_zengo_yoshida"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_Asia_Generic_navy_new_2
@@ -4431,12 +4439,12 @@ sinitic = {
 
 	army_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_3.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_4.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_land_5.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_land_6.dds"
+		"GFX_Portrait_Asia_Generic_land_1"
+		"GFX_Portrait_Asia_Generic_land_2"
+		"GFX_Portrait_Asia_Generic_land_3"
+		"GFX_Portrait_Asia_Generic_land_4"
+		"GFX_Portrait_Asia_Generic_land_5"
+		"GFX_portrait_asia_generic_land_6"
 		#Other
 		GFX_AOG_Generic_1
 		GFX_Asia_Generic_land_new_1
@@ -4453,10 +4461,10 @@ sinitic = {
 	}
 	navy_portraits = {
 		#Generic Asian
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_1.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_2.dds"
-		"gfx/leaders/Asia/Portrait_Asia_Generic_navy_3.dds"
-		"gfx/leaders/Asia/portrait_asia_generic_navy_4.dds"
+		"GFX_Portrait_Asia_Generic_navy_1"
+		"GFX_Portrait_Asia_Generic_navy_2"
+		"GFX_Portrait_Asia_Generic_navy_3"
+		"GFX_portrait_asia_generic_navy_4"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_Asia_Generic_navy_new_2
@@ -4599,18 +4607,18 @@ australia_melanesia_madagascar = {
 
 	army_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_3.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_4.dds"
-		"gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic.dds"
+		"GFX_Portrait_Africa_Generic_land_3"
+		"GFX_Portrait_Africa_Generic_land_4"
+		"GFX_Portrait_The_Raj_Army_Generic"
 		#Other
 		GFX_Africa_Generic_land_new_1
 		GFX_Africa_Generic_land_new_2
 	}
 	navy_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_4.dds"
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
+		"GFX_Portrait_Africa_Generic_navy_3"
+		"GFX_Portrait_Africa_Generic_navy_4"
+		"GFX_Portrait_Arabia_Generic_navy_2"
 	}
 	leader_portraits = {
 		communism = {
@@ -4717,7 +4725,7 @@ polynesia_micronesia = {
 
 	army_portraits = {
 		#Generic
-		"gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic.dds"
+		"GFX_Portrait_The_Raj_Army_Generic"
 		#Other
 		GFX_AOG_Generic_1
 		GFX_HAW_barney_hajiro
@@ -4730,7 +4738,7 @@ polynesia_micronesia = {
 	}
 	navy_portraits = {
 		#Generic
-		"gfx/leaders/JOR/Portrait_Arabia_Generic_navy_2.dds"
+		"GFX_Portrait_Arabia_Generic_navy_2"
 		#Other
 		GFX_Asia_Generic_navy_new_1
 		GFX_HAW_gordon_hoon
@@ -5213,11 +5221,11 @@ hispanic_pie = {
 
 	army_portraits = {
 		#Generic
-		"gfx/leaders/South America/Portrait_South_America_Generic_land_1.dds"
-		"gfx/leaders/South America/Portrait_South_America_Generic_land_2.dds"
-		"gfx/leaders/South America/Portrait_South_America_Generic_land_3.dds"
-		"gfx/leaders/South America/Portrait_South_America_Generic_land_4.dds"
-		"gfx/leaders/South America/Portrait_South_America_Generic_land_5.dds"
+		"GFX_Portrait_South_America_Generic_land_1"
+		"GFX_Portrait_South_America_Generic_land_2"
+		"GFX_Portrait_South_America_Generic_land_3"
+		"GFX_Portrait_South_America_Generic_land_4"
+		"GFX_Portrait_South_America_Generic_land_5"
 		#Other
 		GFX_South_America_Generic_land_new_1
 		GFX_South_America_Generic_land_new_2
@@ -5256,7 +5264,7 @@ hispanic_pie = {
 		GFX_Paraguay_Hugenio_Morinigi
 		GFX_Paraguay_Rafael_Franco_KR
 		GFX_Salvador_Alvarado
-		"gfx/leaders/SPA/Portrait_Spain_Francisco_Franco.dds"
+		GFX_portrait_spain_francisco_franco
 		GFX_SPR_Alonso_Vega
 		GFX_SPR_Asensio_Cabanillas
 		GFX_SPR_Miguel_Cabanellas_Ferrer
@@ -5265,9 +5273,9 @@ hispanic_pie = {
 	}
 	navy_portraits = {
 		#Generic
-		"gfx/leaders/South America/Portrait_South_America_Generic_navy_1.dds"
-		"gfx/leaders/South America/Portrait_South_America_Generic_navy_2.dds"
-		"gfx/leaders/South America/Portrait_South_America_Generic_navy_3.dds"
+		"GFX_Portrait_South_America_Generic_navy_1"
+		"GFX_Portrait_South_America_Generic_navy_2"
+		"GFX_Portrait_South_America_Generic_navy_3"
 		#Other
 		"gfx/leaders/Generic/r56_portrait_generic_admiral_south_america_1.dds"
 		GFX_r56_generic_admiral_GRE_1
@@ -5493,10 +5501,10 @@ cushitic_omotic_nilotic = {
 
 	army_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_1.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_2.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_3.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_4.dds"
+		"GFX_Portrait_Africa_Generic_land_1"
+		"GFX_Portrait_Africa_Generic_land_2"
+		"GFX_Portrait_Africa_Generic_land_3"
+		"GFX_Portrait_Africa_Generic_land_4"
 		#Other
 		GFX_Ethiopia_Abiye_Abebe
 		GFX_Ethiopia_Kassa_Haile_Darge
@@ -5507,10 +5515,10 @@ cushitic_omotic_nilotic = {
 	}
 	navy_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_1.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_2.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_4.dds"
+		"GFX_Portrait_Africa_Generic_navy_1"
+		"GFX_Portrait_Africa_Generic_navy_2"
+		"GFX_Portrait_Africa_Generic_navy_3"
+		"GFX_Portrait_Africa_Generic_navy_4"
 	}
 	leader_portraits = {
 		communism = {
@@ -5615,13 +5623,13 @@ niger_congo = {
 	cultures_and_groups = { central_african chewa nyasa herero lomwe makua nguni southern_bantu ovimbundu sena shona sotho tonga tswana xhosa yao zulu azande baganda kikuyu nuba ruanda rundi sukuma kilombero lacustrine_bantu akan bambara dyula ewe fon fulbe ibibio itsekari ibo kru mande western_nigritic mossi gur senufo songhai tiv wolof yoruba east_kwa fur swahili unyamwezi edo }
 	army_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_1.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_2.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_3.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_4.dds"
+		"GFX_Portrait_Africa_Generic_land_1"
+		"GFX_Portrait_Africa_Generic_land_2"
+		"GFX_Portrait_Africa_Generic_land_3"
+		"GFX_Portrait_Africa_Generic_land_4"
 		#Other
-		"gfx/leaders/SAF/Portrait_South_Africa_Army_Generic.dds"
-		"gfx/leaders/SAF/Portrait_South_Africa_Army_Generic_2.dds"
+		"GFX_Portrait_South_Africa_Army_Generic"
+		"GFX_Portrait_South_Africa_Army_Generic_2"
 		GFX_Africa_Generic_land_new_1
 		GFX_Africa_Generic_land_new_2
 		GFX_Africa_Generic_land_new_3
@@ -5642,10 +5650,10 @@ niger_congo = {
 	}
 	navy_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_1.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_2.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_4.dds"
+		"GFX_Portrait_Africa_Generic_navy_1"
+		"GFX_Portrait_Africa_Generic_navy_2"
+		"GFX_Portrait_Africa_Generic_navy_3"
+		"GFX_Portrait_Africa_Generic_navy_4"
 	}
 	leader_portraits = {
 		communism = {
@@ -5781,13 +5789,13 @@ african = {
 
 	army_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_1.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_2.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_3.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_land_4.dds"
+		"GFX_Portrait_Africa_Generic_land_1"
+		"GFX_Portrait_Africa_Generic_land_2"
+		"GFX_Portrait_Africa_Generic_land_3"
+		"GFX_Portrait_Africa_Generic_land_4"
 		#Other
-		"gfx/leaders/SAF/Portrait_South_Africa_Army_Generic.dds"
-		"gfx/leaders/SAF/Portrait_South_Africa_Army_Generic_2.dds"
+		"GFX_Portrait_South_Africa_Army_Generic"
+		"GFX_Portrait_South_Africa_Army_Generic_2"
 		GFX_Africa_Generic_land_new_1
 		GFX_Africa_Generic_land_new_2
 		GFX_Africa_Generic_land_new_3
@@ -5816,10 +5824,10 @@ african = {
 	}
 	navy_portraits = {
 		#Generic
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_1.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_2.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_3.dds"
-		"gfx/leaders/Africa/Portrait_Africa_Generic_navy_4.dds"
+		"GFX_Portrait_Africa_Generic_navy_1"
+		"GFX_Portrait_Africa_Generic_navy_2"
+		"GFX_Portrait_Africa_Generic_navy_3"
+		"GFX_Portrait_Africa_Generic_navy_4"
 		#Other
 		GFX_CAF_Felix_Eboue
 		GFX_Haiti_John_Russell
@@ -6701,10 +6709,10 @@ jan_mayenese = {
 	cultures_and_groups = { polar_bears }
 
 	army_portraits = {
-		"gfx/leaders/POL/Portrait_POL_Voytek.dds"
+		"GFX_portrait_POL_wojtek" #no small
 	}
 	navy_portraits = {
-		"gfx/leaders/POL/Portrait_POL_Voytek.dds"
+		"GFX_portrait_POL_wojtek" #no small
 	}
 	leader_portraits = {
 		communism = {
