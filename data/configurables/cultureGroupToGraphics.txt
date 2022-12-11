@@ -3442,7 +3442,7 @@ austronesian = {
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_1_communism.dds"
 			"gfx/leaders/Generic/r56_portrait_generic_politician_asia_2_communism.dds"
 			GFX_Philippines_Crisanto_Evangelista
-			GFX_Sarawak_Ong Kee Hui
+			GFX_Sarawak_Ong_Kee_Hui
 		}
 		democratic = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
@@ -4747,7 +4747,7 @@ polynesia_micronesia = {
 		communism = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_communism.dds"
 			GFX_INC_Pham_Van_Dong_old_happy
-			GFX_Sarawak_Ong Kee Hui
+			GFX_Sarawak_Ong_Kee_Hui
 		}
 		democratic = {
 			"gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
@@ -5297,7 +5297,7 @@ hispanic_pie = {
 			GFX_The_Che
 			GFX_BOL_Alcides_Arguedas
 			GFX_BOL_Javier_Granado
-			GFX_CHL_Jorge Alessandri
+			GFX_CHL_Jorge_Alessandri
 			GFX_Columbia_Eduardo_Montejo
 			GFX_Cuba_Lazaro_Pena_Gonzalez
 			GFX_GRP_Cordeiro
@@ -5307,7 +5307,7 @@ hispanic_pie = {
 			GFX_Mexico_Rosendo_Salazar
 			GFX_PAN_Ricardo_Jovane
 			GFX_Paraguay_Rafael_Franco_KR
-			GFX_URG_Luis Herrera
+			GFX_URG_Luis_Herrera
 			"gfx/leaders/SPR/portrait_spr_jose_diaz.dds"
 		}
 		democratic = {
@@ -5433,7 +5433,7 @@ hispanic_pie = {
 			GFX_BRA_Eugenia_Moreyra
 			GFX_BRA_Maria_Lacerda_Moura
 			GFX_BRA_Pagu
-			GFX_BRA_Rachel de Queiroz
+			GFX_BRA_Rachel_de_Queiroz
 			GFX_Chile_Gabriela
 			GFX_Cuba_Tina_Modotti
 			GFX_Ecuador_Nela_Martinez

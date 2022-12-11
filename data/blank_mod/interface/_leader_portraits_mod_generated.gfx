@@ -270,16 +270,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_Sarawak_Ong Kee Hui
-		texturefile = "data/blank_mod/gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ong Kee Hui.tga"
-	}
-
-	spriteType = {
-		name = GFX_Sarawak_Ong Kee Hui_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Sarawak_Ong Kee Hui.tga"
-	}
-
-	spriteType = {
 		name = GFX_Sarawak_Ong_Tiang_Swee
 		texturefile = "data/blank_mod/gfx/leaders/Aborigine_Polynesia/Portrait_Sarawak_Ong_Tiang_Swee.tga"
 	}
@@ -4570,12 +4560,12 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_CHL_Jorge Alessandri
+		name = GFX_CHL_Jorge_Alessandri
 		texturefile = "data/blank_mod/gfx/leaders/Hispanic/Portrait_CHL_Jorge Alessandri.tga"
 	}
 
 	spriteType = {
-		name = GFX_CHL_Jorge Alessandri_small
+		name = GFX_CHL_Jorge_Alessandri_small
 		texturefile = "data/blank_mod/gfx/interface/ideas/idea_CHL_Jorge Alessandri.tga"
 	}
 
@@ -5440,12 +5430,12 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_URG_Luis Herrera
+		name = GFX_URG_Luis_Herrera
 		texturefile = "data/blank_mod/gfx/leaders/Hispanic/Portrait_URG_Luis Herrera.tga"
 	}
 
 	spriteType = {
-		name = GFX_URG_Luis Herrera_small
+		name = GFX_URG_Luis_Herrera_small
 		texturefile = "data/blank_mod/gfx/interface/ideas/idea_URG_Luis Herrera.tga"
 	}
 
@@ -5530,12 +5520,12 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_BRA_Rachel de Queiroz
+		name = GFX_BRA_Rachel_de_Queiroz
 		texturefile = "data/blank_mod/gfx/leaders/Hispanic/Female/Portrait_BRA_Rachel de Queiroz.tga"
 	}
 
 	spriteType = {
-		name = GFX_BRA_Rachel de Queiroz_small
+		name = GFX_BRA_Rachel_de_Queiroz_small
 		texturefile = "data/blank_mod/gfx/interface/ideas/idea_BRA_Rachel de Queiroz.tga"
 	}
 
@@ -6790,13 +6780,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_Sarawak_Ong Kee Hui
-		texturefile = "data/blank_mod/gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Ong Kee Hui.tga"
+		name = GFX_Sarawak_Ong_Kee_Hui
+		texturefile = "data/blank_mod/gfx/leaders/Indo_Chinese_Nesia/Portrait_Sarawak_Ong_Kee_Hui.tga"
 	}
 
 	spriteType = {
-		name = GFX_Sarawak_Ong Kee Hui_small
-		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Sarawak_Ong Kee Hui.tga"
+		name = GFX_Sarawak_Ong_Kee_Hui_small
+		texturefile = "data/blank_mod/gfx/interface/ideas/idea_Sarawak_Ong_Kee_Hui.tga"
 	}
 
 	spriteType = {
