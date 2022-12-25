@@ -184,7 +184,7 @@ void Vic2::Country::Factory::setParties(const std::vector<Party>& allParties)
 	}
 	for (auto ID: country->activePartyIDs)
 	{
-		if (ID <= allParties.size())
+		if (ID > 0 && ID <= allParties.size())
 		{
 			country->activeParties.insert(allParties.at(ID - 1)); // Subtract 1, because party ID starts from index of 1
 		}
