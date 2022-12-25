@@ -827,12 +827,11 @@
 	link = { vic2 = 2188 vic2 = 3410 vic2 = 3544 hoi4 = 13085 } # Puerto Barrios, Morales, Lake Izabal -> Cobán
 	link = { vic2 = 2191 hoi4 = 12823 } # San Salvador -> San Salvador
 	link = { vic2 = 2192 hoi4 = 13093 } # San Miguel -> San Miguel
-	link = { vic2 = 2194 hoi4 = 8017 } # San Pedro Sula -> San Pedro Sula
+	link = { vic2 = 2194 vic2 = 2193 hoi4 = 8017 } # San Pedro Sula, Comayagua -> San Pedro Sula
 	link = { vic2 = 2195 vic2 = 2196 hoi4 = 2031 } # La Ceiba, Puerto Lempira -> La Ceiba
-	link = { vic2 = 2193 hoi4 = 12865 } # Comayagua -> Tegucigalpa
-	link = { vic2 = 2199 hoi4 = 12738 } # León -> Managua
-	link = { vic2 = 2197 vic2 = 3492 hoi4 = 10728 hoi4 = 1988 } # MANY-TO-MANY: Managua, Juigalpa -> Estelí, Bluefields
-	link = { vic2 = 2198 } # Rivas -> DROPPED
+	link = { vic2 = 3363 hoi4 = 12865 } # Kolin -> Tegucigalpa
+	link = { vic2 = 2199 vic2 = 2197 vic2 = 2198 hoi4 = 12738 } # León, Managua, Rivas -> Managua
+	link = { vic2 = 3492 hoi4 = 10728 hoi4 = 1988 } # Juigalpa -> Estelí, Bluefields
 	link = { vic2 = 2200 vic2 = 3614 hoi4 = 2075 } # Bluefields, San Andres y Providencia -> Puerto Cabezas
 	link = { vic2 = 3110 vic2 = 3486 hoi4 = 13139 hoi4 = 13178 } # MANY-TO-MANY: Lake Nicaragua, Lake Xolotlan -> (Lake), (Lake)
 	link = { vic2 = 2202 hoi4 = 13092 } # Liberia -> Liberia
@@ -881,13 +880,14 @@
 	link = { vic2 = 2271 hoi4 = 2052 hoi4 = 1997 } # Valera -> San Cristóbal, Mérida
 	link = { vic2 = 2262 hoi4 = 5026 } # Casanare -> Villavicencio
 	link = { vic2 = 2260 hoi4 = 2007 } # San Jose del Gauaviare -> Florencia
-	link = { vic2 = 2261 hoi4 = 12729 hoi4 = 10792 hoi4 = 12770 } # Obando -> Mitú, land, land
+	link = { vic2 = 2261 hoi4 = 12770 } # Obando -> land
 	link = { vic2 = 2257 hoi4 = 2079 hoi4 = 7936 } # Popayan -> Neiva, Cali
 	link = { vic2 = 2259 hoi4 = 10846 } # Pasto -> Pasto
 	link = { vic2 = 2258 hoi4 = 7991 } # Buenaventura -> Popayán
 	link = { vic2 = 2263 hoi4 = 12825 } # El Encanto -> Leticia
+	link = { vic2 = 904 vic2 = 696 hoi4 = 10792 } # Hama, Allenstein -> land
 	link = { vic2 = 2278 hoi4 = 8050 } # San Fernado de Atabapo -> San Fernando de Atabapo
-	link = { vic2 = 2277 vic2 = 904 hoi4 = 5317 hoi4 = 7915 } # MANY-TO-MANY: El Jobal, Hama -> land, Puerto Ayacucho
+	link = { vic2 = 2277 hoi4 = 5317 hoi4 = 7915 } # El Jobal -> land, Puerto Ayacucho
 	link = { vic2 = 2275 hoi4 = 10849 hoi4 = 10879 hoi4 = 10736 } # Angostura -> Santa Elena de Uairén, Ciudad Guayana, Caicara del Orinoco
 	link = { vic2 = 2276 hoi4 = 10767 hoi4 = 10823 hoi4 = 1981 } # Curiapo -> Tucupita, Maturín, Tumeremo
 	link = { vic2 = 2269 hoi4 = 10912 } # Guiria -> Cumaná
@@ -898,7 +898,7 @@
 	link = { vic2 = 2265 hoi4 = 4942 } # Guanare -> Acarigua
 	link = { vic2 = 2268 vic2 = 2273 hoi4 = 10855 } # San Felipe, Barquisimento -> Barquisimeto
 	link = { vic2 = 2272 hoi4 = 4526 hoi4 = 5088 } # Coro -> Coro, Cabimas
-	link = { vic2 = 2243 vic2 = 2242 vic2 = 3568 hoi4 = 12716 } # Essequibo, Mahdia, Bonfim -> Anna Regina
+	link = { vic2 = 2243 hoi4 = 12716 } # Essequibo -> Anna Regina
 	link = { vic2 = 2239 hoi4 = 4982 } # Georgetown -> Georgetown
 	link = { vic2 = 1979 hoi4 = 8107 } # Biloka -> Lethem
 	link = { vic2 = 2240 hoi4 = 10906 hoi4 = 12828 } # Paramaribo -> Paramaribo, Nieuw Nickerie
@@ -953,9 +953,11 @@
 	link = { vic2 = 2407 hoi4 = 2198 hoi4 = 8185 } # Tabatinga -> Cruzeiro do Sul, Carauari
 	link = { vic2 = 2549 vic2 = 3381 hoi4 = 5216 hoi4 = 10960 } # MANY-TO-MANY: Tarauaca, Boca do Acre -> Eirunepé, Rio Branco
 	link = { vic2 = 2404 hoi4 = 8254 hoi4 = 12965 } # Tefe -> Coari, Humaitá
-	link = { vic2 = 2401 hoi4 = 13083 } # Marabitanas -> Tabatinga
-	link = { vic2 = 2403 vic2 = 3567 hoi4 = 12919 hoi4 = 5083 } # MANY-TO-MANY: Cachoeira, Santa Vitoria -> Manacapuru, São Gabriel da Cachoeira
-	link = { vic2 = 2532 hoi4 = 5214 } # Forte Sao Joaquim -> Boa Vista
+	link = { vic2 = 2532 vic2 = 3568 vic2 = 830 hoi4 = 5083 } # Forte Sao Joaquim, Bonfim, Dedeagatch -> São Gabriel da Cachoeira
+	link = { vic2 = 3359 hoi4 = 13083 } # Damour -> Tabatinga
+	link = { vic2 = 2401 hoi4 = 12729 } # Marabitanas -> Mitú
+	link = { vic2 = 2403 vic2 = 3567 hoi4 = 12919 } # Cachoeira, Santa Vitoria -> Manacapuru
+	link = { vic2 = 2242 hoi4 = 5214 } # Mahdia -> Boa Vista
 	link = { vic2 = 2402 hoi4 = 10934 } # Manaus -> Manaus
 	link = { vic2 = 2408 vic2 = 2412 hoi4 = 5008 } # Oriximina, Obidos -> Itacoatiara
 	link = { vic2 = 2415 hoi4 = 4980 } # Macapa -> Macapá
@@ -1157,7 +1159,7 @@
 	link = { vic2 = 474 hoi4 = 758 hoi4 = 11710 hoi4 = 6955 hoi4 = 3761 hoi4 = 6764 hoi4 = 11692 hoi4 = 729 hoi4 = 11677 } # La Coruna -> land, Riveira, Santiago de Compostela, Vivero, Foz, Lugo, Becerreá, Monforte de Lemos
 	link = { vic2 = 476 hoi4 = 6734 hoi4 = 9689 hoi4 = 9686 hoi4 = 11675 hoi4 = 11840 } # Vigo -> Vigo, Pontevedra, Orense, Verín, El Barco de Valdeorras
 	link = { vic2 = 475 hoi4 = 11707 hoi4 = 3729 hoi4 = 9719 hoi4 = 3744 hoi4 = 6749 hoi4 = 13218 } # Oviedo -> Gijón, Oviedo, Navia, Cangas del Narcea, Llanes, Tineo
-	link = { vic2 = 477 vic2 = 3400 hoi4 = 9699 hoi4 = 6746 hoi4 = 726 hoi4 = 3920 hoi4 = 3918 hoi4 = 3727 hoi4 = 3725 hoi4 = 11843 hoi4 = 920 hoi4 = 6907 hoi4 = 918 hoi4 = 13219 } # MANY-TO-MANY: Leon, Braganca -> Riaño, Guardo, León, Sahagún, Villalpando, Benavente, La Bañeza, Ponferrada, Zamora, Fermoselle, land, Astorga
+	link = { vic2 = 477 hoi4 = 9699 hoi4 = 6746 hoi4 = 726 hoi4 = 3920 hoi4 = 3918 hoi4 = 3727 hoi4 = 3725 hoi4 = 11843 hoi4 = 920 hoi4 = 6907 hoi4 = 918 hoi4 = 13219 } # Leon -> Riaño, Guardo, León, Sahagún, Villalpando, Benavente, La Bañeza, Ponferrada, Zamora, Fermoselle, land, Astorga
 	link = { vic2 = 480 hoi4 = 11825 hoi4 = 9872 hoi4 = 4024 hoi4 = 6936 hoi4 = 9700 hoi4 = 11684 hoi4 = 903 hoi4 = 9827 hoi4 = 9846 } # Valladolid -> Valladolid, Saldaña, Medina de Rioseco, Peñafiel, Cervera de Pisuerga, land, land, Laguna de Duero, Tordesillas
 	link = { vic2 = 478 hoi4 = 9703 hoi4 = 11688 hoi4 = 13220 } # Santander -> Torrelavega, Santander, Medina de Pomar
 	link = { vic2 = 479 hoi4 = 885 hoi4 = 11809 hoi4 = 11854 hoi4 = 738 hoi4 = 11852 hoi4 = 9870 hoi4 = 11806 hoi4 = 13226 } # Burgos -> Burgos, Cuéllar, Aguilar de Campoo, land, Miranda de Ebro, Aranda de Duero, Fuentespina, Osma
@@ -1210,9 +1212,11 @@
 	link = { vic2 = 2134 hoi4 = 1751 } # Azores -> land
 	link = { vic2 = 521 hoi4 = 11805 } # Lisbon -> Lisboa
 	link = { vic2 = 523 hoi4 = 11768 hoi4 = 924 hoi4 = 844 } # Abrantes -> Coruche, Santarém, land
-	link = { vic2 = 522 vic2 = 3473 hoi4 = 799 hoi4 = 3861 hoi4 = 3798 hoi4 = 6924 } # MANY-TO-MANY: Coimbra, Aveiro -> Figueira da Foz, Leiria, Coimbra, Aveiro
+	link = { vic2 = 3473 hoi4 = 6924 } # Aveiro -> Aveiro
+	link = { vic2 = 522 hoi4 = 799 hoi4 = 3861 hoi4 = 3798 } # Coimbra -> Figueira da Foz, Leiria, Coimbra
+	link = { vic2 = 3400 hoi4 = 3892 hoi4 = 877 } # Braganca -> Bragança, land
 	link = { vic2 = 518 hoi4 = 9817 hoi4 = 11673 } # Oporto -> Porto, Braga
-	link = { vic2 = 519 hoi4 = 3892 hoi4 = 6941 hoi4 = 877 hoi4 = 724 hoi4 = 6921 } # Vila Real -> Bragança, Mirandela, land, Vila Real, Chaves
+	link = { vic2 = 519 hoi4 = 6941 hoi4 = 724 hoi4 = 6921 } # Vila Real -> Mirandela, Vila Real, Chaves
 	link = { vic2 = 520 hoi4 = 6818 hoi4 = 6996 hoi4 = 11885 hoi4 = 3969 hoi4 = 938 hoi4 = 845 hoi4 = 889 hoi4 = 9787 } # Covilha -> Guarda, Covilhã, Abrantes, Castelo Branco, Vilar Formoso, Vila Nova de Foz Côa, land, Viseu
 	link = { vic2 = 525 hoi4 = 6986 hoi4 = 9869 hoi4 = 3846 hoi4 = 3886 hoi4 = 3926 } # Evora -> Estremoz, Évora, Redondo, Elvas, Portalegre
 	link = { vic2 = 524 hoi4 = 980 hoi4 = 970 } # Setubal -> land, Setúbal
@@ -1472,13 +1476,13 @@
 	link = { vic2 = 631 vic2 = 632 vic2 = 688 hoi4 = 569 hoi4 = 3553 hoi4 = 3569 } # MANY-TO-MANY: Brno, Olomouc, Troppau -> Trebíc, Blansko, Brno
 	link = { vic2 = 683 vic2 = 3418 hoi4 = 6485 hoi4 = 3545 hoi4 = 6534 hoi4 = 11517 hoi4 = 3485 } # MANY-TO-MANY: Liegnitz, Crossen -> Krnov, Waldenburg, Oels, Lauban, Glatz
 	link = { vic2 = 684 vic2 = 3277 hoi4 = 9511 hoi4 = 9457 hoi4 = 11467 hoi4 = 479 hoi4 = 506 } # MANY-TO-MANY: Oppeln, Hultschin -> Oppeln, Rybnick, Gleiwitz, Kreuzburg, Tarnowskie Gory
-	link = { vic2 = 701 vic2 = 717 hoi4 = 11558 hoi4 = 9532 hoi4 = 17 } # MANY-TO-MANY: Gniezno, Kalisz -> Ostrów Wielkopolski, Srem, Wrzesnia
+	link = { vic2 = 701 hoi4 = 11558 hoi4 = 9532 hoi4 = 17 } # Gniezno -> Ostrów Wielkopolski, Srem, Wrzesnia
 	link = { vic2 = 699 hoi4 = 6558 hoi4 = 3532 hoi4 = 9470 hoi4 = 3510 hoi4 = 3460 } # Posen -> Poznan, Koscian, Glogau, Dyhernfurth, Leszno
 	link = { vic2 = 700 hoi4 = 3381 hoi4 = 279 hoi4 = 243 } # Bromberg -> Mogilno, land, Inowroclaw
 	link = { vic2 = 691 hoi4 = 334 hoi4 = 9263 hoi4 = 3324 hoi4 = 389 } # Tuchel -> Chojnice, Gdynia, Swiecie, Tczew
 	link = { vic2 = 690 hoi4 = 362 } # Danzig -> Gdansk
 	link = { vic2 = 3328 vic2 = 3326 hoi4 = 9346 hoi4 = 11245 hoi4 = 3351 hoi4 = 3380 hoi4 = 6402 } # MANY-TO-MANY: Osterode, Neumark -> Soldau, Bartenstein, Osterode, Marienburg, Elbing
-	link = { vic2 = 3329 vic2 = 696 hoi4 = 9327 hoi4 = 266 hoi4 = 9398 } # MANY-TO-MANY: Lotzen, Allenstein -> Goldap, Lötzen, Rastenburg
+	link = { vic2 = 3329 hoi4 = 9327 hoi4 = 266 hoi4 = 9398 } # Lotzen -> Goldap, Lötzen, Rastenburg
 	link = { vic2 = 3327 hoi4 = 11386 hoi4 = 9372 hoi4 = 6375 } # Ortelsburg -> Lyck, Ortelsburg, Allenstein
 	link = { vic2 = 695 hoi4 = 6332 hoi4 = 11265 hoi4 = 395 hoi4 = 348 } # Konigsburg -> Königsberg, Cranz, Insterburg, Tilsit
 	link = { vic2 = 697 hoi4 = 3384 hoi4 = 281 } # Gumbinnen -> Gumbinnen, Ragnit
@@ -1569,8 +1573,7 @@
 	link = { vic2 = 805 vic2 = 3342 hoi4 = 11818 hoi4 = 10163 hoi4 = 3526 } # MANY-TO-MANY: Salonika, Kilkis -> Thessaloníki, Alexándreia, Kilkís
 	link = { vic2 = 822 hoi4 = 895 hoi4 = 3936 } # Polygyros -> Néa Moudaniá, Nigríta
 	link = { vic2 = 823 vic2 = 825 vic2 = 3613 hoi4 = 6990 hoi4 = 9930 hoi4 = 9791 } # MANY-TO-MANY: Kavala, Arta, Thassos -> Sérrai, land, Dráma
-	link = { vic2 = 829 hoi4 = 11774 } # Xanthe -> Komotiní
-	link = { vic2 = 830 hoi4 = 11905 } # Dedeagatch -> Alexandroúpolis
+	link = { vic2 = 829 hoi4 = 11774 hoi4 = 11905 } # Xanthe -> Komotiní, Alexandroúpolis
 	link = { vic2 = 832 hoi4 = 3973 } # Volos -> Lárisa
 	link = { vic2 = 831 hoi4 = 863 hoi4 = 6930 } # Larisa -> Kardítsa, Tríkala
 	link = { vic2 = 833 hoi4 = 11786 } # Trikkala -> Vourgaréli
@@ -1642,10 +1645,10 @@
 	link = { vic2 = 703 hoi4 = 9427 hoi4 = 11398 } # Krakow -> Kraków, Skawina
 	link = { vic2 = 685 hoi4 = 6464 hoi4 = 13205 } # Kattowitz -> Katowice, Tychy
 	link = { vic2 = 716 hoi4 = 11430 hoi4 = 3497 } # Kielce -> Kielce, Staszow
-	link = { vic2 = 712 hoi4 = 9508 hoi4 = 11428 hoi4 = 584 hoi4 = 3586 hoi4 = 11532 } # Lodz -> Lódz, Piotrków Trybunalski, land, Wloszczowa, Skarzysko-Kamienna
+	link = { vic2 = 712 hoi4 = 9508 hoi4 = 11428 hoi4 = 3586 hoi4 = 11532 } # Lodz -> Lódz, Piotrków Trybunalski, Wloszczowa, Skarzysko-Kamienna
 	link = { vic2 = 3336 hoi4 = 6462 hoi4 = 3283 } # Lubin -> Zwickau, Trebnitz
-	link = { vic2 = 3363 hoi4 = 9439 hoi4 = 9546 } # Kolin -> Turek, Kalisz
-	link = { vic2 = 710 hoi4 = 493 hoi4 = 548 hoi4 = 11515 hoi4 = 6401 hoi4 = 9400 hoi4 = 3482 hoi4 = 11492 } # Skierniewicz -> Borysew, Gostynin, Konin, Wloclawek, Pruszków, Tomaszów Mazowiecki, Sochaczew
+	link = { vic2 = 717 hoi4 = 9439 hoi4 = 9546 hoi4 = 11515 hoi4 = 6401 hoi4 = 584 } # Kalisz -> Turek, Kalisz, Konin, Wloclawek, land
+	link = { vic2 = 710 hoi4 = 493 hoi4 = 548 hoi4 = 9400 hoi4 = 3482 hoi4 = 11492 } # Skierniewicz -> Borysew, Gostynin, Pruszków, Tomaszów Mazowiecki, Sochaczew
 	link = { vic2 = 706 hoi4 = 3544 hoi4 = 6511 hoi4 = 12562 hoi4 = 524 hoi4 = 467 } # Warsaw -> Warszawa, Piaseczno, Minsk Mazowiecki, Legionowo, Grójec
 	link = { vic2 = 713 hoi4 = 6416 hoi4 = 3458 hoi4 = 562 } # Radom -> Starachowice, Radom, Ostrowiec
 	link = { vic2 = 715 hoi4 = 11399 hoi4 = 9521 hoi4 = 6580 hoi4 = 9452 hoi4 = 3559 } # Lublin -> Lublin, Krasnik, Zamosc, Chelm, Pulawy
@@ -2064,7 +2067,7 @@
 	link = { vic2 = 905 hoi4 = 10087 hoi4 = 1088 } # Latakia -> Tartous, Lattaquié
 	link = { vic2 = 914 vic2 = 912 vic2 = 3361 hoi4 = 1108 } # Askaleh, Baalbeck, Byblos -> Tripoli
 	link = { vic2 = 913 hoi4 = 792 } # Beirut -> Beyrouth
-	link = { vic2 = 915 vic2 = 3359 vic2 = 3360 hoi4 = 11919 } # Sidon, Damour, Joub Jannine -> Sidon
+	link = { vic2 = 915 vic2 = 3360 hoi4 = 11919 } # Sidon, Joub Jannine -> Sidon
 	link = { vic2 = 923 hoi4 = 10106 hoi4 = 10804 hoi4 = 1938 hoi4 = 1600 } # Mosul -> Al-Mawsil, Tal'afar, land, Tikrit
 	link = { vic2 = 924 hoi4 = 10811 hoi4 = 3916 hoi4 = 5014 } # Arbil -> Dahuk, Arbil, Suran
 	link = { vic2 = 925 hoi4 = 6826 hoi4 = 8123 } # Kirkuk -> As-Sulaymaniyah, Kirkuk
