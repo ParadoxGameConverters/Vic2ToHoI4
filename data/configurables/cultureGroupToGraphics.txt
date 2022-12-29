@@ -1091,7 +1091,7 @@ pan_germanic = {
 }
 
 italic = {
-	cultures_and_groups = { italian old_italian levantine tyrrhenian } #Anticipating more portraits from upcoming DLC
+	cultures_and_groups = { italian old_italian levantine tyrrhenian rhaeto_romance } #Anticipating more portraits from upcoming DLC
 
 	army_portraits = {
 		#Generic European
@@ -2381,7 +2381,7 @@ eastern_slavic = {
 }
 
 indian = {
-	cultures_and_groups = { south_asian indo_iranian gypsy asian_minor nepali } # Double Fallback, had to move out of place
+	cultures_and_groups = { south_asian indo_iranian gypsy asian_minor nepali burushaki_group nuristani_group traveller } # Double Fallback, had to move out of place
 
 	army_portraits = {
 		#Generic Indian
