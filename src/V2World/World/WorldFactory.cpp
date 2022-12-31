@@ -399,7 +399,8 @@ void Vic2::World::Factory::checkAllProvincesMapped(const Mappers::ProvinceMapper
 	{
 		if (!provinceMapper.isVic2ProvinceMapped(provinceNum))
 		{
-			Log(LogLevel::Warning) << "No mapping for Vic2 province " << provinceNum;
+			Log(LogLevel::Error) << "No mapping for Vic2 province " << provinceNum;
+			throw std::runtime_error("Please upload log.txt to forums to check if your used mods are supported");
 		}
 	}
 }
