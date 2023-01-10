@@ -516,6 +516,12 @@ void HoI4::Country::convertLeaders(const Vic2::Country& sourceCountry,
 {
 	const auto army_portraits = graphics_mapper.getArmyPortraits(primaryCulture, primaryCultureGroup);
 	const auto navy_portraits = graphics_mapper.getNavyPortraits(primaryCulture, primaryCultureGroup);
+	if (army_portraits.empty() || navy_portraits.empty())
+	{
+		Log(LogLevel::Warning) << "No portraits for culture " << primaryCulture;
+		return;
+	}
+
 	for (const auto& srcLeader: sourceCountry.getLeaders())
 	{
 		if (srcLeader.getType() == "land")
