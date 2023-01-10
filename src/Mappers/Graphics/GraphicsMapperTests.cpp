@@ -244,7 +244,7 @@ TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedFemaleOperativePortraitsAreR
 
 TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedGraphicalCultureIsNullopt)
 {
-	EXPECT_EQ(std::nullopt, graphicsMapper->getGraphicalCulture("nonexistent_culture", "nonexistent_culture_group"));
+	EXPECT_THROW(graphicsMapper->getGraphicalCulture("nonexistent_culture", "nonexistent_culture_group"), std::runtime_error);
 }
 
 
