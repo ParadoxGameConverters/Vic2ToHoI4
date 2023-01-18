@@ -87,7 +87,7 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
-    
+
     - name: "Setup Dotnet for use with actions"
       uses: actions/setup-dotnet@v3
       with:
@@ -105,19 +105,19 @@ jobs:
        .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\Vic2ToHoI4.sln -target:Vic2ToHoI4Tests
        cd $Env:GITHUB_WORKSPACE\build\tests\Release
        .\Vic2ToHoI4Tests.exe
-       
+
     - name: "Build Frontend"
       uses: ./external/Fronter.NET/.github/actions/build_frontend
       with:
         fronter_dir: 'external/Fronter.NET'
         release_dir: 'build/Release'
-        
+
     - name: "Prepare pull request artifact"
       if: ${{ github.event_name == 'pull_request' }}
       run: |
        cd "C:\Program Files\7-Zip\"
        .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
-       
+
     - uses: actions/upload-artifact@v3
       if: ${{ github.event_name == 'pull_request' }}
       with:
