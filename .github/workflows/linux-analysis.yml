@@ -147,10 +147,9 @@ jobs:
     # 📚 https://git.io/JvXDl
 
     - name: Setup Dotnet for use with actions
-      uses: actions/setup-dotnet@v3.0.3
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.*'
-        include-prerelease: true
+        global-json-file: Fronter.NET/global.json
 
     - name: Build solution
       run: |
