@@ -63,12 +63,6 @@ jobs:
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
 
-    - name: Setup Dotnet for use with actions
-      uses: actions/setup-dotnet@v3.0.3
-      with:
-        dotnet-version: '7.*'
-        include-prerelease: true
-
     - name: Build solution
       run: |
        cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter Fronter Vic2ToHoi4ConverterTests -- -j40
@@ -165,8 +159,6 @@ jobs:
        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
        sudo apt-get update
        sudo apt-get install gcc-12 g++-12
-       sudo apt-get install libwxbase3.1-0-unofficial3 libwxbase3.1unofficial3-dev libwxgtk3.1-0-unofficial3 libwxgtk3.1unofficial3-dev wx3.1-headers wx-common libgtk-3-0 libcurl4-openssl-dev libnotify-dev
-       sudo apt-get install libwxbase3.1-0-unofficial libwxbase3.1unofficial-dev libwxgtk3.1-0-unofficial libwxgtk3.1unofficial-dev wx3.1-headers wx-common libwxgtk-media3.1-0-unofficial libwxgtk-media3.1unofficial-dev libwxgtk-webview3.1-0-unofficial libwxgtk-webview3.1unofficial-dev libwxgtk-webview3.1-0-unofficial-dbg libwxbase3.1-0-unofficial-dbg libwxgtk3.1-0-unofficial-dbg libwxgtk-media3.1-0-unofficial-dbg wx3.1-i18n wx3.1-examples
        # Link gcc-12 and g++-12 to their standard commands
        sudo ln -s /usr/bin/gcc-12 /usr/local/bin/gcc
        sudo ln -s /usr/bin/g++-12 /usr/local/bin/g++
