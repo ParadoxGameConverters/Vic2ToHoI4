@@ -1,0 +1,20 @@
+#ifndef GOVERNMENT_IN_EXILE_EVENT_H
+#define GOVERNMENT_IN_EXILE_EVENT_H
+
+
+
+#include "src/HOI4World/Events/Event.h"
+#include <set>
+#include <string>
+
+
+namespace HoI4
+{
+
+Event createGovernmentInExileEvent(const std::set<std::string>& majorIdeologies);
+
+} // namespace HoI4
+
+
+
+#endif // GOVERNMENT_IN_EXILE_EVENT_H

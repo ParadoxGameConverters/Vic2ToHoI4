@@ -1,0 +1,12 @@
+﻿l_russian:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament_savoy.GetAdjective]ие укрепления"
+ FRA_alpine_forts_desc:0 "[FRA_begin_rearmament_ITA.GetAdjective]цам будет сложнее перейти нашу границу, когда мы укрепим [FRA_begin_rearmament_savoy.GetName] новыми фортификациями. Это даст нам время собрать силы и нанести ответный удар."
+ FRA_extend_the_maginot_line:0 "Установить линию [FRA_begin_rearmament_maginot.GetName]"
+ FRA_extend_the_maginot_line_desc:0 "Мы не можем рассчитывать на то, что наши соседи удержат свои позиции, если они пропустят вражеские армии, у нас могут возникнуть проблемы. Установление линии [FRA_begin_rearmament_maginot.GetName] имеет решающее значение для удержания нежелательных армий от Франции!"
+ FRA_heavy_armor_focus_desc:0 "Производство танков — залог успеха [FRA_begin_rearmament_FRA.GetAdjective]ой армии. Мы хотим контролировать поле боя, а это невозможно без новейших мощных танков!"
+ FRA_division_cuirassee_desc:0 "Изобретательный офицер предложил новый вид дивизий, в которых тяжёлая бронетехника будет объединена с пехотой и средними танками."
+ france.2.t:0 "Создание линии [FRA_begin_rearmament_maginot.GetName]"
+ france.2.d:0 "Планы по созданию линии [FRA_begin_rearmament_maginot.GetName] вдоль границы [FRA_begin_rearmament_GER.GetAdjective] завершены, и заказы на строительство размещены. Через границу они подают официальный протест, увидев наши подготовка, но работа продолжается".
+ france.2.a:0 "Возможно, им не стоило становиться на сторону нашего врага."
+ france.3.t:0 "Продление [FRA_begin_rearmament_savoy.GetName]ой линии"
+ france.3.d:0 "Мы начали работу по усовершенствованию защитных сооружений [FRA_begin_rearmament_savoy.GetName]ой линии. Когда оборона будет укреплена, [FRA_begin_rearmament_ITA.GetAdjective]цы не рискнут к нам сунуться, если только они не сошли с ума!"

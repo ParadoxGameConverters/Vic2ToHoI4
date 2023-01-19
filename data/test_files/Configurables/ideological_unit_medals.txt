@@ -1,0 +1,15 @@
+test_ideology = {
+	block_one = {
+		foo
+	}
+
+	block_two = {
+		bar
+	}
+}
+
+another_ideology = {
+	block_three = {
+		baz
+	}
+}

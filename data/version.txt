@@ -1,0 +1,10 @@
+# Version info
+
+version = "1.0R"
+name = "Rommel"
+source = "Vic2"
+minSource = "3"
+maxSource = "3"
+target = "HoI4"
+minTarget = "1.12"
+maxTarget = "1.12"

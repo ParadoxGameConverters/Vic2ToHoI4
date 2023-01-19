@@ -1,0 +1,109 @@
+add_namespace = FRA_begin_rearmament
+
+# FRA_begin_rearmament
+country_event = {
+	id = FRA_begin_rearmament.1
+	title = FRA_begin_rearmament.1.t
+	desc = FRA_begin_rearmament.1.desc
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		# Set targets for FRA_alpine_forts focus
+		random_owned_controlled_state = {
+			limit = {
+				any_neighbor_state = { is_owned_by = event_target:FRA_begin_rearmament_ITA }
+			}
+			save_global_event_target_as = FRA_begin_rearmament_savoy
+		}
+		if = {
+			limit = { NOT = { any_owned_state = { state = event_target:FRA_begin_rearmament_savoy } } }
+			random_owned_controlled_state = {
+				limit = {
+					any_neighbor_state = {
+						owner = { has_country_flag = FRA_begin_rearmament_ITA_zone }
+					}
+				}
+				save_global_event_target_as = FRA_begin_rearmament_savoy
+			}
+		}
+		# Set targets for FRA_extend_the_maginot_line focus
+		random_owned_controlled_state = {
+			limit = {
+				NOT = { state = event_target:FRA_begin_rearmament_savoy }
+				any_neighbor_state = { is_owned_by = event_target:FRA_begin_rearmament_GER }
+			}
+			save_global_event_target_as = FRA_begin_rearmament_maginot
+		}
+		if = {
+			limit = { NOT = { any_owned_state = { state = event_target:FRA_begin_rearmament_maginot } } }
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { state = event_target:FRA_begin_rearmament_savoy }
+					any_neighbor_state = {
+						owner = { has_country_flag = FRA_begin_rearmament_GER_zone }
+					}
+				}
+				save_global_event_target_as = FRA_begin_rearmament_maginot
+			}
+		}
+	}
+
+	option = {
+		name = FRA_begin_rearmament.1.a
+	}
+}
+
+add_namespace = france
+# Maginot Line Extension
+country_event = {
+	id = france.2
+	title = france.2.t
+	desc = france.2.d
+	picture = GFX_report_event_bunker_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = france.2.a
+		event_target:FRA_begin_rearmament_maginot = {
+			add_building_construction = {
+				type = bunker
+				province = {
+					all_provinces = yes
+					limit_to_border = yes
+				}
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+
+# Alpine Line Extension
+country_event = {
+	id = france.3
+	title = france.3.t
+	desc = france.3.d
+	picture = GFX_report_event_bunker_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = france.3.a
+		event_target:FRA_begin_rearmament_savoy = {
+			add_building_construction = {
+				type = bunker
+				province = {
+					all_provinces = yes
+					limit_to_border = yes
+				}
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+

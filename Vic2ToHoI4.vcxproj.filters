@@ -1,0 +1,3189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="external\common_items\ModLoader\ModLoader.cpp">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\ModLoader\ModParser.cpp">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\Color.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\CommonFunctions.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\ConvenientParser.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\ConverterVersion.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\Date.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\GameVersion.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Configuration.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\iconvlite.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\Log.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\OSCommonLayer.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\Parser.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\ParserHelpers.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\StringUtils.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\targa.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vic2toHOI4Converter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\WinUtils.cpp">
+      <Filter>external\common_items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\HoI4Country.cpp">
+      <Filter>src\HoI4World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\HoI4Focus.cpp">
+      <Filter>src\HoI4World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\HoI4FocusTree.cpp">
+      <Filter>src\HoI4World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\HoI4Localisation.cpp">
+      <Filter>src\HoI4World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\HoI4World.cpp">
+      <Filter>src\HoI4World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\AdmiralDataFactory.cpp">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\AdvisorDataFactory.cpp">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\CharacterFactory.cpp">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\CharactersCountryFactory.cpp">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\CharactersFactory.cpp">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\CommanderDataFactory.cpp">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\CountryLeaderDataFactory.cpp">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\PortraitsFactory.cpp">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\PortraitTypeFactory.cpp">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\CountryCategories\CountryCategories.cpp">
+      <Filter>src\HoI4World\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\CountryCategories\CountryGrammarFactory.cpp">
+      <Filter>src\HoI4World\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp">
+      <Filter>src\HoI4World\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\AgentRecruitmentDecisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\Decision.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\Decisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\DecisionsCategories.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\DecisionsCategory.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\DecisionsFile.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\DecisionsInCategory.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\ExiledGovernmentsDecisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\ForeignInfluenceDecisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\GenericDecisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\IdeologicalDecisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\NavalTreatyDecisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\PoliticalDecisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\ResourceProspectingDecisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
+      <Filter>src\HoI4World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Diplomacy\HoI4Relations.cpp">
+      <Filter>src\HoI4World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Diplomacy\HoI4War.cpp">
+      <Filter>src\HoI4World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\CapitulationEvents.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\Event.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\EventHelpers.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\EventOption.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\Events.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\EventsFile.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\GenericEventUpdater.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\GovernmentInExileEvent.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\LarOccupationEvents.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Events\NavalTreatyEventsUpdaters.cpp">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\GameRules\GameRule.cpp">
+      <Filter>src\HoI4World\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\GameRules\GameRuleOption.cpp">
+      <Filter>src\HoI4World\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\GameRules\GameRules.cpp">
+      <Filter>src\HoI4World\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Ideas\Idea.cpp">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Ideas\IdeaGroup.cpp">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Ideas\Ideas.cpp">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Ideas\IdeaUpdaters.cpp">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Ideologies\Ideologies.cpp">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Ideologies\Ideology.cpp">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Ideologies\IdeologyFile.cpp">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Ideologies\IdeologyItems.cpp">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp">
+      <Filter>src\HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp">
+      <Filter>src\HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp">
+      <Filter>src\HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp">
+      <Filter>src\HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Leaders\Advisor.cpp">
+      <Filter>src\HoI4World\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Leaders\IdeologicalAdvisors.cpp">
+      <Filter>src\HoI4World\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Localisations\ArticleRules\ArticleRule.cpp">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Localisations\ArticleRules\ArticleRules.cpp">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.cpp">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Localisations\AllReplacementRules.cpp">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Localisations\GrammarMappings.cpp">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Localisations\LanguageReplacementRule.cpp">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Localisations\LanguageReplacementRules.cpp">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Localisations\LanguageReplacements.cpp">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\ActualResources.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\Buildings.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\CoastalProvinces.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\Hoi4Building.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\HoI4Provinces.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\ImpassableProvinces.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\MapRegion.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Military\DivisionTemplate.cpp">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Military\HoI4Army.cpp">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Military\RegimentType.cpp">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Military\RegimentTypeGroup.cpp">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\DivisionTemplatesImporter.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\HoI4UnitType.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\MilitaryMappings.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\MilitaryMappingsFile.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\MtgUnitMapping.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\MtgUnitMappings.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\outDifficultySettings.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OutFlags.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OutFocus.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OutFocusTree.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OutHoi4Country.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OutHoi4World.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OutLocalisation.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OutMod.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OutOnActions.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoI4\OutSharedFocus.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OutTechnologies.cpp">
+      <Filter>src\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\SubstitutesImporter.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\UnitMapping.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\MilitaryMappings\UnitMappings.cpp">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Modifiers\DynamicModifiers.cpp">
+      <Filter>src\HoI4World\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Modifiers\Modifier.cpp">
+      <Filter>src\HoI4World\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Names\CultureGroupNames.cpp">
+      <Filter>src\HoI4World\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Names\CultureNames.cpp">
+      <Filter>src\HoI4World\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Names\Names.cpp">
+      <Filter>src\HoI4World\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Navies\MtgNavy.cpp">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Navies\Navies.cpp">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Navies\MtgShip.cpp">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OccupationLaws\OccupationLawFactory.cpp">
+      <Filter>src\HoI4World\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OccupationLaws\OccupationLaws.cpp">
+      <Filter>src\HoI4World\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OccupationLaws\OccupationLawsFactory.cpp">
+      <Filter>src\HoI4World\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Operations\OperationFactory.cpp">
+      <Filter>src\HoI4World\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Operations\Operations.cpp">
+      <Filter>src\HoI4World\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Operations\OperationsFactory.cpp">
+      <Filter>src\HoI4World\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OperativeNames\OperativeNames.cpp">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesFactory.cpp">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesMappingFactory.cpp">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesMappings.cpp">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Regions\RegionFactory.cpp">
+      <Filter>src\HoI4World\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Regions\Regions.cpp">
+      <Filter>src\HoI4World\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Regions\RegionsFactory.cpp">
+      <Filter>src\HoI4World\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp">
+      <Filter>src\HoI4World\ScriptedEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.cpp">
+      <Filter>src\HoI4World\ScriptedEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffects.cpp">
+      <Filter>src\HoI4World\ScriptedEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp">
+      <Filter>src\HoI4World\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp">
+      <Filter>src\HoI4World\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScriptedLocalisations\ScriptedLocalisations.cpp">
+      <Filter>src\HoI4World\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp">
+      <Filter>src\HoI4World\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScriptedTriggers\ScriptedTriggers.cpp">
+      <Filter>src\HoI4World\ScriptedTriggers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
+      <Filter>src\HoI4World\ScriptedTriggers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ShipTypes\LegacyShipVariant.cpp">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ShipTypes\MtgShipVariant.cpp">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ShipTypes\PossibleShipVariants.cpp">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ShipTypes\ShipModules.cpp">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ShipTypes\ShipUpgrades.cpp">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\ShipTypes\ShipVariants.cpp">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Sounds\SoundEffectMappingFactory.cpp">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Sounds\SoundEffectsFactory.cpp">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Sounds\SoundEffectsMapper.cpp">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Sounds\SoundEffectsMapperFactory.cpp">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\DefaultState.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\DefaultStatesImporter.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\DockyardProvince.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\HoI4State.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\HoI4States.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\StateBuildings.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\StateCategories.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\StateCategory.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\StateCategoryFile.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\States\StateHistory.cpp">
+      <Filter>src\HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\TankDesigns\PossibleTankDesigns.cpp">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\TankDesigns\TankDesign.cpp">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\TankDesigns\TankDesigns.cpp">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\TankDesigns\TankModules.cpp">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\TankDesigns\TankUpgrades.cpp">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\WarCreator\HoI4WarCreator.cpp">
+      <Filter>src\HoI4World\WarCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\WarCreator\MapUtils.cpp">
+      <Filter>src\HoI4World\WarCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OnActions.cpp">
+      <Filter>src\HoI4World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Technologies.cpp">
+      <Filter>src\HoI4World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.cpp">
+      <Filter>src\Mappers\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\CasusBelli\CasusBellis.cpp">
+      <Filter>src\Mappers\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\CasusBelli\CasusBellisFactory.cpp">
+      <Filter>src\Mappers\CasusBelli</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Country\CountryMapper.cpp">
+      <Filter>src\Mappers\Country</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Country\CountryMapperFactory.cpp">
+      <Filter>src\Mappers\Country</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Country\CountryMappingRuleFactory.cpp">
+      <Filter>src\Mappers\Country</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\CountryName\CountryNameMapper.cpp">
+      <Filter>src\Mappers\CountryName</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\CountryName\CountryNameMapperFactory.cpp">
+      <Filter>src\Mappers\CountryName</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\CountryName\CountryNameMappingFactory.cpp">
+      <Filter>src\Mappers\CountryName</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\FactionName\FactionNameMapper.cpp">
+      <Filter>src\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\FactionName\FactionNameMapperFactory.cpp">
+      <Filter>src\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\FactionName\FactionNameMappingFactory.cpp">
+      <Filter>src\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
+      <Filter>src\Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp">
+      <Filter>src\Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp">
+      <Filter>src\Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Government\GovernmentMapper.cpp">
+      <Filter>src\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Government\GovernmentMapperFactory.cpp">
+      <Filter>src\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Government\GovernmentMappingFactory.cpp">
+      <Filter>src\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Graphics\GraphicsCultureGroupFactory.cpp">
+      <Filter>src\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Graphics\GraphicsMapper.cpp">
+      <Filter>src\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Graphics\GraphicsMapperFactory.cpp">
+      <Filter>src\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Graphics\IdeologyToPortraitsMappingFactory.cpp">
+      <Filter>src\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Ideology\IdeologyMapper.cpp">
+      <Filter>src\Mappers\Ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Ideology\IdeologyMapperFactory.cpp">
+      <Filter>src\Mappers\Ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Ideology\IdeologyMappingFactory.cpp">
+      <Filter>src\Mappers\Ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\MergeRules\MergeRuleFactory.cpp">
+      <Filter>src\Mappers\MergeRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\MergeRules\MergeRulesFactory.cpp">
+      <Filter>src\Mappers\MergeRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Provinces\ProvinceMapperFactory.cpp">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Provinces\ProvinceMappingFactory.cpp">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Provinces\VersionedMappingsFactory.cpp">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Technology\ResearchBonusMapperFactory.cpp">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Technology\ResearchBonusMappingFactory.cpp">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Technology\TechMapperFactory.cpp">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Technology\TechMappingFactory.cpp">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Maps\MapData.cpp">
+      <Filter>src\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Maps\ProvinceDefinitions.cpp">
+      <Filter>src\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Maps\ProvincePoints.cpp">
+      <Filter>src\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\AiStrategy\OutAiStrategy.cpp">
+      <Filter>src\OutHoi4\AiStrategy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Characters\OutAdmiralData.cpp">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Characters\OutAdvisorData.cpp">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Characters\OutCharacter.cpp">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Characters\OutCommanderData.cpp">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.cpp">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.h">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Characters\OutPortrait.cpp">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\CountryCategories\OutCountryCategories.cpp">
+      <Filter>src\OutHoi4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\CountryCategories\OutCountryCategory.cpp">
+      <Filter>src\OutHoi4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Decisions\OutDecision.cpp">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Decisions\OutDecisions.cpp">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsCategories.cpp">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsCategory.cpp">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Decisions\OutDecisionsInCategory.cpp">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Diplomacy\OutWar.cpp">
+      <Filter>src\OutHoi4\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Events\OutEvent.cpp">
+      <Filter>src\OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Events\OutEventOption.cpp">
+      <Filter>src\OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Events\OutEvents.cpp">
+      <Filter>src\OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\GameRules\OutGameRule.cpp">
+      <Filter>src\OutHoi4\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\GameRules\OutGameRuleOption.cpp">
+      <Filter>src\OutHoi4\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\GameRules\OutGameRules.cpp">
+      <Filter>src\OutHoi4\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Ideas\OutIdea.cpp">
+      <Filter>src\OutHoi4\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Ideas\OutIdeaGroup.cpp">
+      <Filter>src\OutHoi4\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Ideas\OutIdeas.cpp">
+      <Filter>src\OutHoi4\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Ideologies\OutIdeologies.cpp">
+      <Filter>src\OutHoi4\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Ideologies\OutIdeology.cpp">
+      <Filter>src\OutHoi4\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp">
+      <Filter>src\OutHoi4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp">
+      <Filter>src\OutHoi4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Interface\OutMonarchsInterface.cpp">
+      <Filter>src\OutHoi4\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Leaders\OutAdvisor.cpp">
+      <Filter>src\OutHoi4\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutBuilding.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutBuildings.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutRailway.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutRailways.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutStrategicRegion.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutStrategicRegions.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutSupplyNodes.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutSupplyZone.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutSupplyZones.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Military\OutAirplane.cpp">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Military\OutArmy.cpp">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Military\OutDivisionTemplate.cpp">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Military\OutDivisionType.cpp">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Military\OutRegimentType.cpp">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Modifiers\OutDynamicModifiers.cpp">
+      <Filter>src\OutHoi4\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Modifiers\OutModifier.cpp">
+      <Filter>src\OutHoi4\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Navies\OutLegacyNavy.cpp">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Navies\OutLegacyNavyNames.cpp">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Navies\OutLegacyShip.cpp">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Navies\OutLegacyShipTypeNames.cpp">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Navies\OutMtgNavy.cpp">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Navies\OutMtgNavyNames.cpp">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Navies\OutMtgShip.cpp">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Navies\OutMtgShipTypeNames.cpp">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Navies\OutNavies.cpp">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OccupationLaws\OutOccupationLaw.cpp">
+      <Filter>src\OutHoi4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OccupationLaws\OutOccupationLaws.cpp">
+      <Filter>src\OutHoi4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Operations\OutOperation.cpp">
+      <Filter>src\OutHoi4\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Operations\OutOperations.cpp">
+      <Filter>src\OutHoi4\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Operative\OutOperative.cpp">
+      <Filter>src\OutHoi4\Operative</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OperativeNames\OutOperativeNames.cpp">
+      <Filter>src\OutHoi4\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\OperativeNames\OutOperativeNamesSet.cpp">
+      <Filter>src\OutHoi4\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScriptedEffects\OutScriptedEffect.cpp">
+      <Filter>src\OutHoi4\ScriptedEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScriptedEffects\OutScriptedEffects.cpp">
+      <Filter>src\OutHoi4\ScriptedEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp">
+      <Filter>src\OutHoi4\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.cpp">
+      <Filter>src\OutHoi4\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScriptedTriggers\OutScriptedTrigger.cpp">
+      <Filter>src\OutHoi4\ScriptedTriggers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ScriptedTriggers\OutScriptedTriggers.cpp">
+      <Filter>src\OutHoi4\ScriptedTriggers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ShipTypes\OutLegacyShipVariant.cpp">
+      <Filter>src\OutHoi4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ShipTypes\OutMtgShipVariant.cpp">
+      <Filter>src\OutHoi4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ShipTypes\OutShipModules.cpp">
+      <Filter>src\OutHoi4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\ShipTypes\OutShipVariants.cpp">
+      <Filter>src\OutHoi4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Sounds\OutSounds.cpp">
+      <Filter>src\OutHoi4\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\States\OutHoI4State.cpp">
+      <Filter>src\OutHoi4\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\States\OutHoI4States.cpp">
+      <Filter>src\OutHoi4\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\TankDesigns\OutTankDesign.cpp">
+      <Filter>src\OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\TankDesigns\OutTankDesigns.cpp">
+      <Filter>src\OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\TankDesigns\OutTankModules.cpp">
+      <Filter>src\OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\TankDesigns\OutTankUpgrades.cpp">
+      <Filter>src\OutHoi4\TankDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Ai\AI.cpp">
+      <Filter>src\V2World\Ai</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Ai\AIFactory.cpp">
+      <Filter>src\V2World\Ai</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Ai\AIStrategyFactory.cpp">
+      <Filter>src\V2World\Ai</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Countries\CommonCountriesDataFactory.cpp">
+      <Filter>src\V2World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Countries\CommonCountryDataFactory.cpp">
+      <Filter>src\V2World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Countries\Country.cpp">
+      <Filter>src\V2World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Countries\CountryFactory.cpp">
+      <Filter>src\V2World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Countries\UnitNamesFactory.cpp">
+      <Filter>src\V2World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Culture\CultureGroupFactory.cpp">
+      <Filter>src\V2World\Culture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Culture\CultureGroups.cpp">
+      <Filter>src\V2World\Culture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Culture\CultureGroupsFactory.cpp">
+      <Filter>src\V2World\Culture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Diplomacy\AgreementFactory.cpp">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Diplomacy\DiplomacyFactory.cpp">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Diplomacy\Relations.cpp">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Diplomacy\RelationsFactory.cpp">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\EU4ToVic2Data\CountriesData.cpp">
+      <Filter>src\V2World\EU4ToVic2Data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\EU4ToVic2Data\CountriesDataFactory.cpp">
+      <Filter>src\V2World\EU4ToVic2Data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\EU4ToVic2Data\CountryDataFactory.cpp">
+      <Filter>src\V2World\EU4ToVic2Data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Issues\IssueCategoryHelper.cpp">
+      <Filter>src\V2World\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Issues\IssueHelper.cpp">
+      <Filter>src\V2World\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Issues\Issues.cpp">
+      <Filter>src\V2World\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Issues\IssuesFactory.cpp">
+      <Filter>src\V2World\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Localisations\LocalisationsFactory.cpp">
+      <Filter>src\V2World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Localisations\Vic2Localisations.cpp">
+      <Filter>src\V2World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Map\Vic2ProvinceDefinitionImporter.cpp">
+      <Filter>src\V2World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Military\Leaders\Leader.cpp">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Military\Leaders\LeaderFactory.cpp">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Military\Leaders\Trait.cpp">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Military\Leaders\TraitGroup.cpp">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Military\Leaders\Traits.cpp">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Military\Leaders\TraitsFactory.cpp">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Military\ArmyFactory.cpp">
+      <Filter>src\V2World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Military\UnitFactory.cpp">
+      <Filter>src\V2World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Politics\Party.cpp">
+      <Filter>src\V2World\Politics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Politics\PartyFactory.cpp">
+      <Filter>src\V2World\Politics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Pops\Pop.cpp">
+      <Filter>src\V2World\Pops</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Pops\PopFactory.cpp">
+      <Filter>src\V2World\Pops</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Provinces\Province.cpp">
+      <Filter>src\V2World\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Provinces\ProvinceFactory.cpp">
+      <Filter>src\V2World\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\States\BuildingReader.cpp">
+      <Filter>src\V2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\States\State.cpp">
+      <Filter>src\V2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\States\StateDefinitions.cpp">
+      <Filter>src\V2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\States\StateDefinitionsFactory.cpp">
+      <Filter>src\V2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\States\StateFactory.cpp">
+      <Filter>src\V2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\States\StateLanguageCategories.cpp">
+      <Filter>src\V2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\States\StateLanguageCategoriesFactory.cpp">
+      <Filter>src\V2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Stockpiles\StockpileFactory.cpp">
+      <Filter>src\V2World\Stockpiles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Technology\Inventions.cpp">
+      <Filter>src\V2World\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Technology\InventionsFactory.cpp">
+      <Filter>src\V2World\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Technology\TechnologyFactory.cpp">
+      <Filter>src\V2World\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Wars\WarFactory.cpp">
+      <Filter>src\V2World\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Wars\WarGoalFactory.cpp">
+      <Filter>src\V2World\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\World\World.cpp">
+      <Filter>src\V2World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\World\WorldFactory.cpp">
+      <Filter>src\V2World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\PossiblePath.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\Railways.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\Resources.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\ResourcesLink.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\StrategicRegion.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\StrategicRegions.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\SupplyArea.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\SupplyNodes.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\SupplyZones.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="external\common_items\ModLoader\ModFilesystem.cpp">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Countries\CommonCountryData.cpp">
+      <Filter>src\V2World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\PathPoint.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Countries\UnionCountry.cpp">
+      <Filter>src\HoI4World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Countries\OutUnionCountry.cpp">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneModules.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesign.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PlaneDesigns\PlaneDesigns.cpp">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.cpp">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutCostModifiers.cpp">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.cpp">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.cpp">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\PeaceConference\OutAiPeace.cpp">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp">
+      <Filter>src\HoI4World\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\PeaceConferences\DynamicAiPeaces.cpp">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp">
+      <Filter>src\HoI4World\FocusTrees</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\bitmap\bitmap_image.hpp">
+      <Filter>external\bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\ModLoader\ModLoader.h">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\ModLoader\ModParser.h">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\Color.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\CommonFunctions.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\CommonRegexes.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\ConvenientParser.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\ConverterVersion.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\Date.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\GameVersion.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\iconvlite.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\Log.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\OSCompatibilityLayer.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\Parser.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\ParserHelpers.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\StringUtils.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\targa.h">
+      <Filter>external\common_items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vic2ToHoI4Converter.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\HoI4Country.h">
+      <Filter>src\HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\HoI4Focus.h">
+      <Filter>src\HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\HoI4FocusTree.h">
+      <Filter>src\HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\HoI4Localisation.h">
+      <Filter>src\HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\HoI4World.h">
+      <Filter>src\HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\AdmiralData.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\AdmiralDataFactory.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\AdvisorData.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\AdvisorDataFactory.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\Character.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\CharacterFactory.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\CharactersCountryFactory.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\CharactersFactory.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\CommanderData.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\CommanderDataFactory.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\CountryLeaderData.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\CountryLeaderDataFactory.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\Portrait.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\PortraitsFactory.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Characters\PortraitTypeFactory.h">
+      <Filter>src\HoI4World\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\CountryCategories\CountryCategories.h">
+      <Filter>src\HoI4World\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\CountryCategories\CountryGrammarFactory.h">
+      <Filter>src\HoI4World\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\CountryCategories\CountryGrammarRule.h">
+      <Filter>src\HoI4World\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\CountryCategories\CountryGrammarRuleFactory.h">
+      <Filter>src\HoI4World\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\NavalTreatyDecisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\AgentRecruitmentDecisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\Decision.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\Decisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\DecisionsCategories.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\DecisionsCategory.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\DecisionsFile.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\DecisionsInCategory.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\ExiledGovernmentsDecisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\ForeignInfluenceDecisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\GenericDecisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\IdeologicalDecisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\PoliticalDecisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\ResourceProspectingDecisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Decisions\StabilityWarSupportDecisions.h">
+      <Filter>src\HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Diplomacy\Faction.h">
+      <Filter>src\HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Diplomacy\HoI4AIStrategy.h">
+      <Filter>src\HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Diplomacy\HoI4Relations.h">
+      <Filter>src\HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Diplomacy\HoI4War.h">
+      <Filter>src\HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\NavalTreatyEventsUpdaters.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\CapitulationEvents.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\Event.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\EventHelpers.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\EventOption.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\Events.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\EventsBuilder.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\EventsFile.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\GenericEventUpdaters.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\GovernmentInExileEvent.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Events\LarOccupationEvents.h">
+      <Filter>src\HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\GameRules\GameRule.h">
+      <Filter>src\HoI4World\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\GameRules\GameRuleOption.h">
+      <Filter>src\HoI4World\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\GameRules\GameRules.h">
+      <Filter>src\HoI4World\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideas\Idea.h">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideas\IdeaGroup.h">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideas\Ideas.h">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideas\IdeaUpdaters.h">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideologies\Ideologies.h">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideologies\IdeologiesBuilder.h">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideologies\Ideology.h">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideologies\IdeologyBuilder.h">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideologies\IdeologyFile.h">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideologies\IdeologyItems.h">
+      <Filter>src\HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h">
+      <Filter>src\HoI4World\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgency.h">
+      <Filter>src\HoI4World\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h">
+      <Filter>src\HoI4World\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h">
+      <Filter>src\HoI4World\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Leaders\Advisor.h">
+      <Filter>src\HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Leaders\IdeologicalAdvisors.h">
+      <Filter>src\HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\ArticleRules\ArticleRule.h">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\ArticleRules\ArticleRuleBuilder.h">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\ArticleRules\ArticleRules.h">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\ArticleRules\ArticleRulesBuilder.h">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.h">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.h">
+      <Filter>src\HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\AllReplacementRules.h">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\GrammarMappings.h">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\LanguageReplacementRule.h">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\LanguageReplacementRules.h">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Localisations\LanguageReplacements.h">
+      <Filter>src\HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\ActualResources.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\BuildingPosition.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\Buildings.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\CoastalProvinces.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\CoastalProvincesBuilder.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\Hoi4Building.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\Hoi4Province.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\HoI4ProvinceDefinitionImporter.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\HoI4Provinces.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\ImpassableProvinces.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\MapRegion.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Military\Airplane.h">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Military\DivisionTemplate.h">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Military\DivisionType.h">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Military\HoI4Army.h">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Military\RegimentType.h">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Military\RegimentTypeGroup.h">
+      <Filter>src\HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\AllMilitaryMappings.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\DivisionTemplatesImporter.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\HoI4UnitType.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\MilitaryMappings.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\MilitaryMappingsFile.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\MtgUnitMapping.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\MtgUnitMappings.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\outDifficultySettings.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OutFlags.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OutFocus.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OutFocusTree.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OutHoi4Country.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OutHoi4World.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OutLocalisation.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OutMod.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OutOnActions.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoI4\OutSharedFocus.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OutTechnologies.h">
+      <Filter>src\OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\SubstitutesImporter.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\UnitMapping.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\MilitaryMappings\UnitMappings.h">
+      <Filter>src\HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Modifiers\DynamicModifiers.h">
+      <Filter>src\HoI4World\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Modifiers\Modifier.h">
+      <Filter>src\HoI4World\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Names\CultureGroupNames.h">
+      <Filter>src\HoI4World\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Names\CultureNames.h">
+      <Filter>src\HoI4World\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Names\Names.h">
+      <Filter>src\HoI4World\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\LegacyNavy.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\MtgNavy.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\Navies.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\Navy.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\NavyNames.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\LegacyShip.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\LegacyShipTypeNames.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\MtgShip.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\MtgShipTypeNames.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Navies\Ship.h">
+      <Filter>src\HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OccupationLaws\OccupationLaw.h">
+      <Filter>src\HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OccupationLaws\OccupationLawFactory.h">
+      <Filter>src\HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OccupationLaws\OccupationLaws.h">
+      <Filter>src\HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OccupationLaws\OccupationLawsFactory.h">
+      <Filter>src\HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Operations\Operation.h">
+      <Filter>src\HoI4World\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Operations\OperationFactory.h">
+      <Filter>src\HoI4World\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Operations\Operations.h">
+      <Filter>src\HoI4World\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Operations\OperationsFactory.h">
+      <Filter>src\HoI4World\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesSetFactory.h">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OperativeNames\OperativeNames.h">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesFactory.h">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesMappingFactory.h">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesMappings.h">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesMappingsFactory.h">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesSet.h">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
+      <Filter>src\HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Operatives\Operative.h">
+      <Filter>src\HoI4World\Operatives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Regions\Region.h">
+      <Filter>src\HoI4World\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Regions\RegionFactory.h">
+      <Filter>src\HoI4World\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Regions\Regions.h">
+      <Filter>src\HoI4World\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Regions\RegionsFactory.h">
+      <Filter>src\HoI4World\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffect.h">
+      <Filter>src\HoI4World\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.h">
+      <Filter>src\HoI4World\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.h">
+      <Filter>src\HoI4World\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffects.h">
+      <Filter>src\HoI4World\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedLocalisations\ScriptedLocalisation.h">
+      <Filter>src\HoI4World\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.h">
+      <Filter>src\HoI4World\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedLocalisations\ScriptedLocalisations.h">
+      <Filter>src\HoI4World\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.h">
+      <Filter>src\HoI4World\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedTriggers\ScriptedTrigger.h">
+      <Filter>src\HoI4World\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedTriggers\ScriptedTriggers.h">
+      <Filter>src\HoI4World\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.h">
+      <Filter>src\HoI4World\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ShipTypes\LegacyShipVariant.h">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ShipTypes\MtgShipVariant.h">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ShipTypes\PossibleShipVariants.h">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ShipTypes\ShipModules.h">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ShipTypes\ShipUpgrades.h">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\ShipTypes\ShipVariants.h">
+      <Filter>src\HoI4World\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Sounds\SoundEffect.h">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Sounds\SoundEffectMapping.h">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Sounds\SoundEffectMappingFactory.h">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Sounds\SoundEffectsFactory.h">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Sounds\SoundEffectsMapper.h">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Sounds\SoundEffectsMapperFactory.h">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Sounds\SoundEffectsMapperLink.h">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Sounds\SoundEffectsMapperLinkFactory.h">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Sounds\SoundEffectsMapping.h">
+      <Filter>src\HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\DefaultState.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\DefaultStatesImporter.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\DockyardProvince.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\HoI4State.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\HoI4StateBuilder.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\HoI4States.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\StateBuildings.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\StateCategories.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\StateCategoriesBuilder.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\StateCategory.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\StateCategoryFile.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\States\StateHistory.h">
+      <Filter>src\HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\TankDesigns\PossibleTankDesigns.h">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\TankDesigns\TankDesign.h">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\TankDesigns\TankDesigns.h">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\TankDesigns\TankModules.h">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\TankDesigns\TankUpgrades.h">
+      <Filter>src\HoI4World\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\WarCreator\HoI4WarCreator.h">
+      <Filter>src\HoI4World\WarCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\WarCreator\MapUtils.h">
+      <Filter>src\HoI4World\WarCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OnActions.h">
+      <Filter>src\HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\SharedFocus.h">
+      <Filter>src\HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Technologies.h">
+      <Filter>src\HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\TechnologiesBuilder.h">
+      <Filter>src\HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMapping.h">
+      <Filter>src\Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.h">
+      <Filter>src\Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\CasusBelli\CasusBellis.h">
+      <Filter>src\Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\CasusBelli\CasusBellisFactory.h">
+      <Filter>src\Mappers\CasusBelli</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Country\CountryMapper.h">
+      <Filter>src\Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Country\CountryMapperBuilder.h">
+      <Filter>src\Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Country\CountryMapperFactory.h">
+      <Filter>src\Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Country\CountryMappingRuleFactory.h">
+      <Filter>src\Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\CountryName\CountryNameMapper.h">
+      <Filter>src\Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\CountryName\CountryNameMapperFactory.h">
+      <Filter>src\Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\CountryName\CountryNameMapping.h">
+      <Filter>src\Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\CountryName\CountryNameMappingFactory.h">
+      <Filter>src\Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\FactionName\FactionNameMapper.h">
+      <Filter>src\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\FactionName\FactionNameMapperFactory.h">
+      <Filter>src\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\FactionName\FactionNameMapping.h">
+      <Filter>src\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\FactionName\FactionNameMappingFactory.h">
+      <Filter>src\Mappers\FactionName</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h">
+      <Filter>src\Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h">
+      <Filter>src\Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h">
+      <Filter>src\Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\FlagsToIdeas\FlagToIdeaMapping.h">
+      <Filter>src\Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Government\GovernmentMapper.h">
+      <Filter>src\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Government\GovernmentMapperBuilder.h">
+      <Filter>src\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Government\GovernmentMapperFactory.h">
+      <Filter>src\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Government\GovernmentMapping.h">
+      <Filter>src\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Government\GovernmentMappingFactory.h">
+      <Filter>src\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Graphics\GraphicsCultureGroup.h">
+      <Filter>src\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Graphics\GraphicsCultureGroupFactory.h">
+      <Filter>src\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Graphics\GraphicsMapper.h">
+      <Filter>src\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Graphics\GraphicsMapperFactory.h">
+      <Filter>src\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Graphics\IdeologyToPortraitsMappingFactory.h">
+      <Filter>src\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Ideology\IdeologyMapper.h">
+      <Filter>src\Mappers\Ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Ideology\IdeologyMapperFactory.h">
+      <Filter>src\Mappers\Ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Ideology\IdeologyMapping.h">
+      <Filter>src\Mappers\Ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Ideology\IdeologyMappingFactory.h">
+      <Filter>src\Mappers\Ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\MergeRules\MergeRule.h">
+      <Filter>src\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\MergeRules\MergeRuleFactory.h">
+      <Filter>src\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\MergeRules\MergeRules.h">
+      <Filter>src\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\MergeRules\MergeRulesFactory.h">
+      <Filter>src\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Provinces\ProvinceMapper.h">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Provinces\ProvinceMapperBuilder.h">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Provinces\ProvinceMapperFactory.h">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Provinces\ProvinceMapping.h">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Provinces\ProvinceMappingFactory.h">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Provinces\ProvinceMappingTypes.h">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Provinces\VersionedMappings.h">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Provinces\VersionedMappingsFactory.h">
+      <Filter>src\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Technology\ResearchBonusMapper.h">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Technology\ResearchBonusMapperFactory.h">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Technology\ResearchBonusMapping.h">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Technology\ResearchBonusMappingFactory.h">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Technology\TechMappingFactory.h">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Technology\TechMapper.h">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Technology\TechMapperFactory.h">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Technology\TechMapping.h">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Technology\TechMappingBuilder.h">
+      <Filter>src\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Maps\MapData.h">
+      <Filter>src\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Maps\ProvinceDefinitions.h">
+      <Filter>src\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Maps\ProvincePoints.h">
+      <Filter>src\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\AiStrategy\OutAiStrategy.h">
+      <Filter>src\OutHoi4\AiStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Characters\OutAdmiralData.h">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Characters\OutAdvisorData.h">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Characters\OutCharacter.h">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Characters\OutCommanderData.h">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Characters\OutPortrait.h">
+      <Filter>src\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\CountryCategories\OutCountryCategories.h">
+      <Filter>src\OutHoi4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\CountryCategories\OutCountryCategory.h">
+      <Filter>src\OutHoi4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Decisions\OutDecision.h">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Decisions\OutDecisions.h">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsCategories.h">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsCategory.h">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Decisions\OutDecisionsInCategory.h">
+      <Filter>src\OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Diplomacy\OutWar.h">
+      <Filter>src\OutHoi4\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Events\OutEvent.h">
+      <Filter>src\OutHoi4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Events\OutEventOption.h">
+      <Filter>src\OutHoi4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Events\OutEvents.h">
+      <Filter>src\OutHoi4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\GameRules\OutGameRule.h">
+      <Filter>src\OutHoi4\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\GameRules\OutGameRuleOption.h">
+      <Filter>src\OutHoi4\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\GameRules\OutGameRules.h">
+      <Filter>src\OutHoi4\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Ideas\OutIdea.h">
+      <Filter>src\OutHoi4\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Ideas\OutIdeaGroup.h">
+      <Filter>src\OutHoi4\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Ideas\OutIdeas.h">
+      <Filter>src\OutHoi4\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Ideologies\OutIdeologies.h">
+      <Filter>src\OutHoi4\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Ideologies\OutIdeology.h">
+      <Filter>src\OutHoi4\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h">
+      <Filter>src\OutHoi4\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h">
+      <Filter>src\OutHoi4\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Interface\OutMonarchsInterface.h">
+      <Filter>src\OutHoi4\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Leaders\OutAdvisor.h">
+      <Filter>src\OutHoi4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutBuilding.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutBuildings.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutRailway.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutRailways.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutStrategicRegion.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutStrategicRegions.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutSupplyNodes.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutSupplyZone.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutSupplyZones.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Military\OutAirplane.h">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Military\OutArmy.h">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Military\OutDivisionTemplate.h">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Military\OutDivisionType.h">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Military\OutRegimentType.h">
+      <Filter>src\OutHoi4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Modifiers\OutDynamicModifiers.h">
+      <Filter>src\OutHoi4\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Modifiers\OutModifier.h">
+      <Filter>src\OutHoi4\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Navies\OutLegacyNavy.h">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Navies\OutLegacyNavyNames.h">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Navies\OutLegacyShip.h">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Navies\OutLegacyShipTypeNames.h">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Navies\OutMtgNavy.h">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Navies\OutMtgNavyNames.h">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Navies\OutMtgShip.h">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Navies\OutMtgShipTypeNames.h">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Navies\OutNavies.h">
+      <Filter>src\OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OccupationLaws\OutOccupationLaw.h">
+      <Filter>src\OutHoi4\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OccupationLaws\OutOccupationLaws.h">
+      <Filter>src\OutHoi4\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Operations\OutOperation.h">
+      <Filter>src\OutHoi4\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Operations\OutOperations.h">
+      <Filter>src\OutHoi4\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Operative\OutOperative.h">
+      <Filter>src\OutHoi4\Operative</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OperativeNames\OutOperativeNames.h">
+      <Filter>src\OutHoi4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\OperativeNames\OutOperativeNamesSet.h">
+      <Filter>src\OutHoi4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffect.h">
+      <Filter>src\OutHoi4\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffects.h">
+      <Filter>src\OutHoi4\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.h">
+      <Filter>src\OutHoi4\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.h">
+      <Filter>src\OutHoi4\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScriptedTriggers\OutScriptedTrigger.h">
+      <Filter>src\OutHoi4\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ScriptedTriggers\OutScriptedTriggers.h">
+      <Filter>src\OutHoi4\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ShipTypes\OutLegacyShipVariant.h">
+      <Filter>src\OutHoi4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ShipTypes\OutMtgShipVariant.h">
+      <Filter>src\OutHoi4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ShipTypes\OutShipModules.h">
+      <Filter>src\OutHoi4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\ShipTypes\OutShipVariants.h">
+      <Filter>src\OutHoi4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Sounds\OutSounds.h">
+      <Filter>src\OutHoi4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\States\OutHoI4State.h">
+      <Filter>src\OutHoi4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\States\OutHoI4States.h">
+      <Filter>src\OutHoi4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\TankDesigns\OutTankDesign.h">
+      <Filter>src\OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\TankDesigns\OutTankDesigns.h">
+      <Filter>src\OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\TankDesigns\OutTankModules.h">
+      <Filter>src\OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\TankDesigns\OutTankUpgrades.h">
+      <Filter>src\OutHoi4\TankDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Ai\AI.h">
+      <Filter>src\V2World\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Ai\AIFactory.h">
+      <Filter>src\V2World\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Ai\AIStrategy.h">
+      <Filter>src\V2World\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Ai\AIStrategyFactory.h">
+      <Filter>src\V2World\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Countries\CommonCountriesDataFactory.h">
+      <Filter>src\V2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Countries\CommonCountryData.h">
+      <Filter>src\V2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Countries\CommonCountryDataFactory.h">
+      <Filter>src\V2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Countries\Country.h">
+      <Filter>src\V2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Countries\CountryBuilder.h">
+      <Filter>src\V2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Countries\CountryFactory.h">
+      <Filter>src\V2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Countries\UnitNamesFactory.h">
+      <Filter>src\V2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Culture\CultureGroupFactory.h">
+      <Filter>src\V2World\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Culture\CultureGroups.h">
+      <Filter>src\V2World\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Culture\CultureGroupsFactory.h">
+      <Filter>src\V2World\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Diplomacy\Agreement.h">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Diplomacy\AgreementFactory.h">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Diplomacy\Diplomacy.h">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Diplomacy\DiplomacyFactory.h">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Diplomacy\Relations.h">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Diplomacy\RelationsBuilder.h">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Diplomacy\RelationsFactory.h">
+      <Filter>src\V2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\EU4ToVic2Data\CountriesData.h">
+      <Filter>src\V2World\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\EU4ToVic2Data\CountriesDataFactory.h">
+      <Filter>src\V2World\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\EU4ToVic2Data\CountryData.h">
+      <Filter>src\V2World\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\EU4ToVic2Data\CountryDataBuilder.h">
+      <Filter>src\V2World\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\EU4ToVic2Data\CountryDataFactory.h">
+      <Filter>src\V2World\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Issues\IssueCategoryHelper.h">
+      <Filter>src\V2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Issues\IssueHelper.h">
+      <Filter>src\V2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Issues\Issues.h">
+      <Filter>src\V2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Issues\IssuesBuilder.h">
+      <Filter>src\V2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Issues\IssuesFactory.h">
+      <Filter>src\V2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Localisations\LocalisationsFactory.h">
+      <Filter>src\V2World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Localisations\Vic2Localisations.h">
+      <Filter>src\V2World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Map\Vic2ProvinceDefinitionImporter.h">
+      <Filter>src\V2World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\Leaders\Leader.h">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\Leaders\LeaderFactory.h">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\Leaders\Trait.h">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\Leaders\TraitGroup.h">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\Leaders\Traits.h">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\Leaders\TraitsBuilder.h">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\Leaders\TraitsFactory.h">
+      <Filter>src\V2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\Army.h">
+      <Filter>src\V2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\ArmyBuilder.h">
+      <Filter>src\V2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\ArmyFactory.h">
+      <Filter>src\V2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\Unit.h">
+      <Filter>src\V2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Military\UnitFactory.h">
+      <Filter>src\V2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Politics\Party.h">
+      <Filter>src\V2World\Politics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Politics\PartyBuilder.h">
+      <Filter>src\V2World\Politics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Politics\PartyFactory.h">
+      <Filter>src\V2World\Politics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Pops\Pop.h">
+      <Filter>src\V2World\Pops</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Pops\PopFactory.h">
+      <Filter>src\V2World\Pops</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Provinces\Province.h">
+      <Filter>src\V2World\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Provinces\ProvinceBuilder.h">
+      <Filter>src\V2World\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Provinces\ProvinceFactory.h">
+      <Filter>src\V2World\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\BuildingReader.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\State.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\StateBuilder.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\StateDefinitions.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\StateDefinitionsBuilder.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\StateDefinitionsFactory.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\StateFactory.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\StateLanguageCategories.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\StateLanguageCategoriesBuilder.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\States\StateLanguageCategoriesFactory.h">
+      <Filter>src\V2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Stockpiles\StockpileFactory.h">
+      <Filter>src\V2World\Stockpiles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Technology\Inventions.h">
+      <Filter>src\V2World\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Technology\InventionsFactory.h">
+      <Filter>src\V2World\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Technology\TechnologyFactory.h">
+      <Filter>src\V2World\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Wars\War.h">
+      <Filter>src\V2World\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Wars\WarFactory.h">
+      <Filter>src\V2World\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Wars\WarGoal.h">
+      <Filter>src\V2World\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Wars\WarGoalFactory.h">
+      <Filter>src\V2World\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\World\World.h">
+      <Filter>src\V2World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\World\WorldBuilder.h">
+      <Filter>src\V2World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\World\WorldFactory.h">
+      <Filter>src\V2World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\Railway.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\Railways.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\Resources.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\ResourcesLink.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\StrategicRegion.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\StrategicRegions.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\SupplyArea.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\SupplyNodes.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\SupplyZone.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\SupplyZones.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\PathPoint.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\V2World\Culture\CultureGroup.h">
+      <Filter>src\V2World\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Countries\UnionCountry.h">
+      <Filter>src\HoI4World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneModules.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesign.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesigns.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PlaneDesigns\PlaneDesigns.h">
+      <Filter>src\HoI4World\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.h">
+      <Filter>src\OutHoi4\PlaneDesigns</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutCostModifiers.h">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalCostModifiers.h">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Countries\Equipment.h">
+      <Filter>src\HoI4World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Countries\OutEquipment.h">
+      <Filter>src\OutHoi4\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\IdeologicalAiPeace.h">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\PeaceConference\OutAiPeace.h">
+      <Filter>src\OutHoi4\PeaceConference</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h">
+      <Filter>src\HoI4World\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h">
+      <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\PeaceConferences\DynamicAiPeaces.h">
+      <Filter>src\HoI4World\PeaceConferences</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranches.h">
+      <Filter>src\HoI4World\FocusTrees</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
+      <Filter>data\resources</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\resources\vcruntime140_1.dll">
+      <Filter>data\resources</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\configuration-example.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\FAQ.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\license.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\ReadMe.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\version.txt">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\resources\msvcp140_codecvt_ids.dll">
+      <Filter>data\resources</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\configurables\Vic2Localisations\dominions.csv">
+      <Filter>data\configurables\Vic2Localisations</Filter>
+    </None>
+    <None Include="data\configurables\Vic2Localisations\unrecognized_nations.csv">
+      <Filter>data\configurables\Vic2Localisations</Filter>
+    </None>
+    <None Include="data\configurables\Vic2Localisations\Vic2Localisations.csv">
+      <Filter>data\configurables\Vic2Localisations</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_english.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_french.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_german.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_italian.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_latin.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\configuration_l_russian.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_english.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_french.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_german.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_italian.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_latin.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\fronter\options_l_russian.yml">
+      <Filter>data\fronter</Filter>
+    </None>
+    <None Include="data\!provincenames_l_english.yml">
+      <Filter>data</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\configurables\ai_peaces.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\casus_bellis_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\arabic_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\CZE_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\ENG_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\EST_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\GRE_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\HUN_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\LAT_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\NOR_opertive_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\RME_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\SIA_opertive_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\SOV_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\SWE_opertive_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CodenamesOperatives\TUR_operative_codenames.txt">
+      <Filter>data\configurables\CodenamesOperatives</Filter>
+    </Text>
+    <Text Include="data\configurables\CustomizedFocusBranches\FRA_begin_rearmament_characters.txt">
+      <Filter>data\configurables\CustomizedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\CustomizedFocusBranches\FRA_begin_rearmament.txt">
+      <Filter>data\configurables\CustomizedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\CustomizedFocusBranches\uk_colonial_focus.txt">
+      <Filter>data\configurables\CustomizedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\Localisations\ArticleRules.txt">
+      <Filter>data\configurables\Localisations</Filter>
+    </Text>
+    <Text Include="data\configurables\Localisations\StateCategories.txt">
+      <Filter>data\configurables\Localisations</Filter>
+    </Text>
+    <Text Include="data\configurables\Map\regions.txt">
+      <Filter>data\configurables\Maps</Filter>
+    </Text>
+    <Text Include="data\configurables\Sounds\CultureToVoiceMappings.txt">
+      <Filter>data\configurables\Sounds</Filter>
+    </Text>
+    <Text Include="data\configurables\converterDynamicModifiers.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\converterFocuses.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\converterIdeas.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\converterIdeologies.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\converterLeaderTraits.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\country_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\CountryGrammar.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\CountryNamesMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\cultureGroupToGraphics.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\factions_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\FlagsToIdeasMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\foreignInfluenceDecisions.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\GovernmentMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\grammar.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\Greater Flavor Mod_province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\Historical Flavour Mod v1.27I_province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\Historical Project Mod 0.4.6_province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\ideologicalAdvisors.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\ideologicalDecisions.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\ideologicalIdeas.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\IdeologyMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\ImportCharacters.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\IntelligenceAgencyLogos.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\languageReplacements.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\languageReplacementsBis.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\merge_nations.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\names.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\OperativeNamesMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\positions.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\research_bonus_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\Resources.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\shipTypes.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\tankDesigns.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\tech_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\The Concert of Europe_province_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\unit_mappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\fronter\fronter-configuration.txt">
+      <Filter>data\fronter</Filter>
+    </Text>
+    <Text Include="data\fronter\fronter-options.txt">
+      <Filter>data\fronter</Filter>
+    </Text>
+    <Text Include="data\configurables\ideological_unit_medals.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{f20b0ff2-6b7d-44a8-83d5-d0bc2c409ed1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{06343a74-7d90-43b6-b59d-52faeb06c727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\bitmap">
+      <UniqueIdentifier>{d6d3ec70-7755-4527-b34c-9892bf4e39fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\common_items">
+      <UniqueIdentifier>{d0b12f71-1637-42a6-8fe4-b9dd98c0344b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\common_items\ModLoader">
+      <UniqueIdentifier>{3c4e3920-4b81-4f42-affc-3b251ac7b63c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World">
+      <UniqueIdentifier>{cf12320e-a1e0-4962-8ae8-4ec9967dce47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Characters">
+      <UniqueIdentifier>{00cbed4c-802e-4e69-b703-98ce76df2f33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\CountryCategories">
+      <UniqueIdentifier>{95d3dad5-d5dc-418d-91d9-cf9094676d23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Decisions">
+      <UniqueIdentifier>{7708edf8-e180-4221-a3f9-82c2ee3d2a45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Diplomacy">
+      <UniqueIdentifier>{b6a36cbb-03a9-4068-a575-a170346687e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Events">
+      <UniqueIdentifier>{be1afe26-af91-4af5-8313-d07f71bb040e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\GameRules">
+      <UniqueIdentifier>{ec57f37c-447c-4418-955a-5f4da13fba54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Ideas">
+      <UniqueIdentifier>{c6868d56-2828-4eaf-a13e-620ffb162b8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Ideologies">
+      <UniqueIdentifier>{afb642d5-9d70-4d92-be79-320174f30872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\IntelligenceAgencies">
+      <UniqueIdentifier>{faae13c1-c4eb-469c-a7fa-592adf568ee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Leaders">
+      <UniqueIdentifier>{215cb181-1311-47d5-8df8-d065aff38988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Localisations">
+      <UniqueIdentifier>{7cf09a5b-290f-4175-b49d-e0163a77d20c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Localisations\ArticleRules">
+      <UniqueIdentifier>{4a71a1f3-ccfb-4241-b7bd-2c001613abd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Map">
+      <UniqueIdentifier>{2d5284c6-1088-4429-92f0-bf4b80aae3ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Military">
+      <UniqueIdentifier>{07ed1757-0080-4b7a-a721-a8cf67dd5743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\MilitaryMappings">
+      <UniqueIdentifier>{ac135a5b-ad78-4781-be6b-0dcc83e12c58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4">
+      <UniqueIdentifier>{93527a59-0225-493a-8d39-f716005022b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Modifiers">
+      <UniqueIdentifier>{b5d0e1fa-29cd-4aa0-8d9c-cf9e4821e636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Names">
+      <UniqueIdentifier>{751e7f26-2a05-4f44-b80f-ef7c4b4ed515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Navies">
+      <UniqueIdentifier>{ead0de51-f2a4-4539-adb9-dc3a77d7b4e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\OccupationLaws">
+      <UniqueIdentifier>{281692fc-c6c1-48fe-aaa3-f5f811d87bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Operations">
+      <UniqueIdentifier>{df0f208b-fd0c-4cc4-ad9c-e0206f837871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\OperativeNames">
+      <UniqueIdentifier>{b7321d48-682f-4f80-acc8-6d2bee2a0520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Operatives">
+      <UniqueIdentifier>{55fd769c-5da4-41d0-813f-ebea0c03e3a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Regions">
+      <UniqueIdentifier>{5e1b582e-c53f-4bd8-b821-19b76d115e79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ScriptedEffects">
+      <UniqueIdentifier>{4ce3bb5d-0dde-480b-92b5-ca4c6834c340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ScriptedLocalisations">
+      <UniqueIdentifier>{a31f93ac-87bf-4bae-b04b-08e755a9dd9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ScriptedTriggers">
+      <UniqueIdentifier>{a7cd1e4c-5263-481c-8531-ff8a325b9008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\ShipTypes">
+      <UniqueIdentifier>{a2c4cb96-8c01-4827-b494-8e9ec034274e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Sounds">
+      <UniqueIdentifier>{0dcff956-8d0b-4264-bf47-199db845d9d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\States">
+      <UniqueIdentifier>{bab5064c-c3b8-465c-80c8-be66b030e7c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{b7d0b467-df85-40eb-ba73-4228bb54dfca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\configurables">
+      <UniqueIdentifier>{05246138-daba-4905-a099-758e7d1828d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\configurables\CodenamesOperatives">
+      <UniqueIdentifier>{5993b470-c8a3-47df-ba4d-1ac794e89d95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\configurables\CustomizedFocusBranches">
+      <UniqueIdentifier>{87a15561-4887-4b98-b267-a6e955f1ff97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\configurables\Localisations">
+      <UniqueIdentifier>{7afc3f14-1f75-4a9c-ae85-c805a8aa13b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\configurables\Maps">
+      <UniqueIdentifier>{ac20a6d0-b250-42dc-b8e3-8eafc913d43b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\configurables\Sounds">
+      <UniqueIdentifier>{cd87ba41-9e58-4e5a-b610-b7a8df83a0a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\configurables\Vic2Localisations">
+      <UniqueIdentifier>{afb542c8-dfa2-43c6-a610-038cce22f5f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\fronter">
+      <UniqueIdentifier>{062d2133-8d7f-45bc-9e42-30917afe65b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\resources">
+      <UniqueIdentifier>{8d7e2d88-1eff-4971-976b-57bfc8d45dee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\TankDesigns">
+      <UniqueIdentifier>{ddfa7886-4d1e-48ca-b41b-e7bccef52e91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\WarCreator">
+      <UniqueIdentifier>{b7994d3b-dde9-47e2-95cf-4d6580791ce8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers">
+      <UniqueIdentifier>{741cf1b9-f712-4d33-931f-c05e49531de6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\CasusBelli">
+      <UniqueIdentifier>{c85a272a-e224-4f1b-b4b4-067719769a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\Country">
+      <UniqueIdentifier>{1ccfd884-83ad-4685-8eee-080c432b441f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\CountryName">
+      <UniqueIdentifier>{5b1be6e8-0657-409a-ae7c-30ba6f096490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\FactionName">
+      <UniqueIdentifier>{a7cef09a-5381-4dcb-add7-e5d9a6936383}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\FlagsToIdeas">
+      <UniqueIdentifier>{f9aa6044-55e3-48c2-8129-ffae033b721a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\Government">
+      <UniqueIdentifier>{419d36c5-463b-4339-b983-060bccdd40ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\Graphics">
+      <UniqueIdentifier>{b67a513b-5d2f-4dc1-af4c-ff2df727b75a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\Ideology">
+      <UniqueIdentifier>{9f527931-44a6-4081-bc0e-592471bada9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\MergeRules">
+      <UniqueIdentifier>{1a86eb83-8cbf-4a21-98b4-fd754c85df9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\Provinces">
+      <UniqueIdentifier>{cbc7b0a7-c497-4936-a3af-58a38c62c8b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\Technology">
+      <UniqueIdentifier>{da56daa2-d9cd-44a2-9a91-b65e6bdbeb42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Maps">
+      <UniqueIdentifier>{e49ea52f-965a-41d7-994d-6162adc0a4f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\AiStrategy">
+      <UniqueIdentifier>{0cbf8a19-fbf8-48c1-b762-677eb8458c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Characters">
+      <UniqueIdentifier>{6b65f25f-f639-4586-91e8-2c99bf30647f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\CountryCategories">
+      <UniqueIdentifier>{1c3ff6bd-9b93-4369-84d3-25bb2e4afcf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Decisions">
+      <UniqueIdentifier>{e527277e-2721-488b-8519-512b22f101e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Diplomacy">
+      <UniqueIdentifier>{20ad3497-1fb4-458b-9f1f-c9d212bb5e56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Events">
+      <UniqueIdentifier>{04a22375-54d7-43a9-9188-7e835acb5447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\GameRules">
+      <UniqueIdentifier>{a06f0205-b933-4a81-b937-3be9626148fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Ideas">
+      <UniqueIdentifier>{8f454dc7-007f-4441-8ae0-9495195b8d0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Ideologies">
+      <UniqueIdentifier>{762af6f1-1fce-43e2-b05e-3c12b7ff93b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\IntelligenceAgencies">
+      <UniqueIdentifier>{1599b11f-b26a-41eb-8c54-0ac052bf06e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Interface">
+      <UniqueIdentifier>{ecd94c77-8758-49c6-ba98-7474862258f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Leaders">
+      <UniqueIdentifier>{f2d11a44-19b3-44a5-b6ff-fd2958a276df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Map">
+      <UniqueIdentifier>{3ac8a5ab-1852-4ba9-85c4-1708bf9c3453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Military">
+      <UniqueIdentifier>{c9e397b2-cf20-4a78-aa65-03ad703f512c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Modifiers">
+      <UniqueIdentifier>{7986d953-444c-4ffb-9f74-7c96865c8fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Navies">
+      <UniqueIdentifier>{daeb8ea1-0c08-4ea3-acad-9b1d44ca0bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\OccupationLaws">
+      <UniqueIdentifier>{bef769f5-92ea-4723-a503-db9ece456e59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Operations">
+      <UniqueIdentifier>{f6e21fe6-3e9b-427f-811f-2dec9ea1e94d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Operative">
+      <UniqueIdentifier>{09076910-f5d8-433a-be14-b7e727ba1c4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\OperativeNames">
+      <UniqueIdentifier>{a1a0716f-99e5-4829-a4f2-4357e7ea020b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\ScriptedEffects">
+      <UniqueIdentifier>{9699145b-07cc-4352-a0bc-a46e8bb33254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\ScriptedLocalisations">
+      <UniqueIdentifier>{2f49b50a-a858-46ca-912f-9bfd57e79395}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\ScriptedTriggers">
+      <UniqueIdentifier>{1f0f1bf8-79cb-47a2-8c9b-18c8e1bf16e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\ShipTypes">
+      <UniqueIdentifier>{68dff936-c4b0-4156-923e-d4d95e491356}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Sounds">
+      <UniqueIdentifier>{a25cbd78-c8e8-45de-984b-2974f7b29d68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\States">
+      <UniqueIdentifier>{8988b1ef-f7bd-4035-81d0-ad21a0ad4baf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\TankDesigns">
+      <UniqueIdentifier>{3b2d9d61-876b-4291-8bb2-b13e711a5e95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World">
+      <UniqueIdentifier>{2186a317-5755-4274-bccd-bdcc7d329b01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Ai">
+      <UniqueIdentifier>{fc60af09-d233-4ca0-9906-a703ba916233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Countries">
+      <UniqueIdentifier>{6267c31d-6f92-45b7-bb20-fa79706b8761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Culture">
+      <UniqueIdentifier>{f8bdbc52-fee8-4e77-a616-80cf9fac8bf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Diplomacy">
+      <UniqueIdentifier>{2d35930e-6feb-468c-80f7-89fcab02cc8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\EU4ToVic2Data">
+      <UniqueIdentifier>{b5e719fa-d8e2-409c-8209-ceb9cd6dae2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Issues">
+      <UniqueIdentifier>{1ea3410e-a36e-4902-89b4-39742c1e7460}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Localisations">
+      <UniqueIdentifier>{4ba27e96-412f-447f-a601-07f2f192dacc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Map">
+      <UniqueIdentifier>{30b92f51-aee3-428e-84c6-61945e157db3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Military">
+      <UniqueIdentifier>{686d5b05-0b2a-49fa-aed8-8bba47c9d930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Military\Leaders">
+      <UniqueIdentifier>{bf28bf21-63b6-48fa-a198-8a198c81a750}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Politics">
+      <UniqueIdentifier>{deb5fe2e-21c7-4a24-b445-c9fff44d71ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Pops">
+      <UniqueIdentifier>{04b017e0-6cef-4cb9-9ec0-af07c4edae30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Provinces">
+      <UniqueIdentifier>{4648b391-723b-4d3a-850e-af066d0ea3ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\States">
+      <UniqueIdentifier>{e4d3608c-3d10-4d1f-bda1-7c9551f38d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Stockpiles">
+      <UniqueIdentifier>{1d529996-0215-4c87-80d2-4ecb59a43082}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Technology">
+      <UniqueIdentifier>{9c45f394-cbc7-4611-8351-4a93cb464462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\Wars">
+      <UniqueIdentifier>{a5220532-6a20-4eb2-984f-cec3e0de670a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\V2World\World">
+      <UniqueIdentifier>{8276dfc4-2cf3-46b5-a077-4f3a79e8ce3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\Countries">
+      <UniqueIdentifier>{f44a1c24-0149-40f1-9738-4a48685df1ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Countries">
+      <UniqueIdentifier>{71f96e42-7401-4ffe-9379-315b86b610ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\PlaneDesigns">
+      <UniqueIdentifier>{cde9c425-b0de-40ae-ae8f-9eacdbe5cb78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\PlaneDesigns">
+      <UniqueIdentifier>{a03c7564-b48f-4b43-b0f8-75c29b30fcc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\PeaceConference">
+      <UniqueIdentifier>{6f292bfe-465e-4585-9766-4c20b9eed118}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\PeaceConferences">
+      <UniqueIdentifier>{72c38416-0378-4fb2-b46c-b8bb8e2fbb9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\UnitMedals">
+      <UniqueIdentifier>{41e16a64-6290-4d89-b6e1-86bada413711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\UnitMedals">
+      <UniqueIdentifier>{da53e026-99ce-4d15-a3f4-74aa08d90a4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\HoI4World\FocusTrees">
+      <UniqueIdentifier>{956eaec7-b39e-4efe-8c0c-58a049646b9a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

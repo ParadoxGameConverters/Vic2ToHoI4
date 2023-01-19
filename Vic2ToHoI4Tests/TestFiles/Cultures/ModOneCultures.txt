@@ -1,3 +1,0 @@
-mod_one_group = {
-	matched_mod_one_culture
-}

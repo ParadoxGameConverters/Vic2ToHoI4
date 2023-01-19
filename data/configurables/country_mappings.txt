@@ -1,0 +1,294 @@
+#The links that come first in the list are executed before the links after it.
+
+#link = { vic = ENG hoi = ENG }	# Great Britain	=> United Kingdom
+
+link = { vic = REB hoi = REB } # Rebels
+link = { vic = ABK hoi = ABK } # Abkhazia
+link = { vic = ADU hoi = ADU } # Andalusia
+link = { vic = AFG hoi = AFG } # Afghanistan
+link = { vic = ALB hoi = ALB } # Albania
+link = { vic = ALD hoi = ALG } # Algeria
+link = { vic = ALT hoi = ALT } # Altai
+link = { vic = ANG hoi = ANG } # Angola (PDM)
+#link = { vic = ? hoi = AOI } Italian East Africa
+link = { vic = ARG hoi = ARG } # Argentina
+link = { vic = ARM hoi = ARM } # Armenia
+link = { vic = AWS hoi = AFA } # Afar
+link = { vic = AST hoi = AST } # Australia
+link = { vic = AUS hoi = AUS } # Austria
+link = { vic = KUK hoi = AUS } # Austria-Hungary
+link = { vic = AZB hoi = AZR } # Azerbaijan
+link = { vic = BHM hoi = BAH } # The Bahamas
+link = { vic = BNG hoi = BAN } # Bengal => Bangladesh
+link = { vic = CRB hoi = BAS } # The Caribbean => British Antilles
+link = { vic = BAV hoi = BAY } # Bavaria
+#link = { vic = ? hoi = BEG } # Benishangul-Gumuz
+link = { vic = BEL hoi = BEL } # Belgium
+link = { vic = BLZ hoi = BLZ } # Belize
+link = { vic = BHU hoi = BHU } # Bhutan
+link = { vic = BYE hoi = BLR } # Belarus
+link = { vic = BOL hoi = BOL } # Bolivia
+link = { vic = BOS hoi = BOS } # Bosnia
+link = { vic = TSW hoi = BOT } # Botswana (PDM)
+link = { vic = BRZ hoi = BRA } # Brazil
+link = { vic = BRD hoi = BRD } # Burundi
+link = { vic = BUR hoi = BRM } # Burma
+link = { vic = BSK hoi = BSK } # Bashkiria
+link = { vic = BUK hoi = BUK } # Bukkhara
+link = { vic = BUL hoi = BUL } # Bulgaria
+link = { vic = BRY hoi = BYA } # Buryatia
+link = { vic = CAM hoi = CAM } # Cambodia
+link = { vic = CAN hoi = CAN } # Canada
+link = { vic = CAR hoi = CAR } # Equatorial Africa => Central African Republic
+link = { vic = CAT hoi = CAT } # Catalonia
+link = { vic = CAY hoi = CAY } # Cayenne
+link = { vic = CHD hoi = CHA } # Chad
+link = { vic = CHI hoi = CHI } # China
+link = { vic = CHL hoi = CHL } # Chile
+link = { vic = CVS hoi = CHU } # Chuvashia
+link = { vic = CHY hoi = CIN } # Chechnya
+link = { vic = CHU hoi = CKK } # Chukchi => Chukotka
+link = { vic = CMR hoi = CMR } # Cameroon
+link = { vic = CNG hoi = COG } # Congo => Zaire
+link = { vic = CLM hoi = COL } # Colombia
+link = { vic = COS hoi = COS } # Costa Rica
+link = { vic = CUR hoi = CRC } # Curaçao
+link = { vic = CRI hoi = CRI } # Crimea
+link = { vic = CRO hoi = CRO } # Croatia
+link = { vic = CSA hoi = CSA } # CSA
+link = { vic = CUB hoi = CUB } # Cuba
+link = { vic = CZH hoi = CZE } # Czechoslovakia
+link = { vic = BOH hoi = CZE } # Bohemia-Moravia => Czechoslovakia
+link = { vic = CYP hoi = CYP } # Cyprus
+link = { vic = DAG hoi = DAG } # Dagestan
+link = { vic = DAH hoi = DAH } # Dahomey
+#link = { vic = SGF hoi = DDR } # South => East Germany
+link = { vic = DEN hoi = DEN } # Denmark
+link = { vic = DJI hoi = DJI } # Djibouti
+link = { vic = DZG hoi = DNZ } # Danzig
+link = { vic = DOM hoi = DOM } # Dominican Republic
+link = { vic = DON hoi = DON } # Don-Kuban
+link = { vic = ECU hoi = ECU } # Ecuador
+link = { vic = EGY hoi = EGY } # Egypt
+link = { vic = ELS hoi = ELS } # El Salvador
+link = { vic = ENG hoi = ENG } # United Kingdom
+link = { vic = EQG hoi = EQG } # Equatorial Guinea
+link = { vic = ERI hoi = ERI } # Eritrea
+link = { vic = EST hoi = EST } # Estonia
+link = { vic = IBR hoi = ESU } # Iberia
+link = { vic = ETH hoi = ETH } # Ethiopia
+link = { vic = FIJ hoi = FIJ } # Fiji
+link = { vic = FIN hoi = FIN } # Finland
+link = { vic = FRA hoi = FRA } # France
+link = { vic = BOR hoi = FRA } # Kingdom of france
+#link = { vic = ? hoi = FSM } # Micronesia
+link = { vic = GAB hoi = GAB } # Gabon
+#link = { vic = ? hoi = GBA } # Gambela
+link = { vic = GMB hoi = GAM } # Gambia
+link = { vic = GDL hoi = GDL } # Guadeloupe
+link = { vic = GEO hoi = GEO } # Georgia
+link = { vic = GER hoi = GER } # Germany
+link = { vic = GHN hoi = GHA } # Ghana
+link = { vic = GAL hoi = GLC } # Galicia
+link = { vic = GNE hoi = GNA } # Guinea
+link = { vic = GBI hoi = GNB } # Guinea-Bissau
+link = { vic = GRE hoi = GRE } # Greece
+link = { vic = GUA hoi = GUA } # Guatemala
+#link = { vic = ? hoi = GUM } # Guam
+link = { vic = GUY hoi = GUY } # Guyana
+link = { vic = GXI hoi = GXC } # Guangxi
+link = { vic = GUY hoi = GYA } # Guyana
+link = { vic = HAI hoi = HAI } # Haiti
+link = { vic = HAN hoi = HAN } # Hannover
+link = { vic = HAR hoi = HAR } # Harar
+link = { vic = HAW hoi = HAW } # Hawaii
+link = { vic = NET hoi = HOL } # Netherlands
+link = { vic = HON hoi = HON } # Honduras
+link = { vic = HUN hoi = HUN } # Hungary
+link = { vic = ICL hoi = ICE } # Iceland
+link = { vic = INO hoi = INS } # Indonesia (PDM)
+link = { vic = JAV hoi = INS } # Java => Indonesia
+link = { vic = IRE hoi = IRE } # Ireland
+link = { vic = IRQ hoi = IRQ } # Iraq
+link = { vic = ISR hoi = ISR } # Israel
+link = { vic = ITA hoi = ITA } # Italy
+link = { vic = IVC hoi = IVO } # Ivory Coast
+link = { vic = JAM hoi = JAM } # Jamaica
+link = { vic = JAP hoi = JAP } # Japan
+link = { vic = JOR hoi = JOR } # Jordan
+link = { vic = KMK hoi = KAL } # Kalmykia
+link = { vic = GRH hoi = KAL } # Great Horde => Great Horde
+link = { vic = KRL hoi = KAR } # Karelia
+link = { vic = KAZ hoi = KAZ } # Kazakhstan
+link = { vic = KNY hoi = KEN } # Kenya
+link = { vic = SWA hoi = KEN } # Swahili => Kenya
+link = { vic = KHI hoi = KHI } # Khiva
+#link = { vic = ? hoi = KHA } # Khakassia
+link = { vic = KOR hoi = KOR } # Korea
+#link = { vic = PYO hoi = KOR } # DPRK => Korea
+link = { vic = KOS hoi = KOS } # Kosovo
+link = { vic = PML hoi = KSH } # Pomerelia => Kashubia
+link = { vic = KWT hoi = KUW } # Kuwait
+link = { vic = KYR hoi = KYR } # Kyrgyzstan (PDM)
+link = { vic = KOK hoi = KYR } # Kokand => Kyrgyzstan
+link = { vic = LUA hoi = LAO } # Laos
+link = { vic = LAT hoi = LAT } # Latvia
+link = { vic = LBY hoi = LBA } # Libya
+link = { vic = TRI hoi = LBA } # Tripoli => Libya
+link = { vic = LOM hoi = LBV } # Lombardy-Venice
+link = { vic = LBN hoi = LEB } # Lebanon
+link = { vic = LIB hoi = LIB } # Liberia
+link = { vic = LIT hoi = LIT } # Lithuania
+link = { vic = LUX hoi = LUX } # Luxembourg
+link = { vic = MCD hoi = MAC } # Macedonia TFYR
+link = { vic = MAD hoi = MAD } # Madagascar
+link = { vic = MLY hoi = MAL } # Malaya => Malaysia
+link = { vic = MCK hoi = MAN } # Manchukuo
+link = { vic = MEC hoi = MEK } # Mecklenburg
+link = { vic = MRR hoi = MEL } # Merya => Mari El
+link = { vic = GMJ hoi = MEN } # Guominjun => Mengjiang
+link = { vic = MEX hoi = MEX } # Mexico
+link = { vic = MLD hoi = MLD } # Maldives
+link = { vic = MLI hoi = MLI } # Mali
+link = { vic = MLT hoi = MLT } # Malta
+link = { vic = MLW hoi = MLW } # Malawi
+link = { vic = MON hoi = MNT } # Montenegro
+link = { vic = MDV hoi = MOL } # Moldova (HPM)
+link = { vic = MOL hoi = MOL } # Moldavia => Moldova
+link = { vic = MGL hoi = MON } # Mongolia
+link = { vic = MOR hoi = MOR } # Morocco
+link = { vic = TRZ hoi = MRT } # Mauritania
+link = { vic = MOZ hoi = MZB } # Mozambique
+link = { vic = NAV hoi = NAV } # Navarra
+link = { vic = NEP hoi = NEP } # Nepal
+link = { vic = NGR hoi = NGA } # Nigeria
+link = { vic = SOK hoi = NGA } # Sokoto => Nigeria
+link = { vic = NIG hoi = NGR } # Niger
+link = { vic = NIC hoi = NIC } # Nicaragua
+link = { vic = ULS hoi = NIR } # Ulster => Northern Ireland
+link = { vic = TYR hoi = NIR } # Tyrone => Northern Ireland
+link = { vic = NMB hoi = NMB } # Namibia
+link = { vic = NOR hoi = NOR } # Norway
+link = { vic = NZL hoi = NZL } # New Zealand
+link = { vic = OMA hoi = OMA } # Oman
+link = { vic = OCC hoi = OCC } # Occitania
+#link = { vic = ? hoi = ORO } # Oromo
+#link = { vic = ? hoi = OVO } # Ostyakia
+link = { vic = HDU hoi = PAK } # Hindustan => Pakistan
+link = { vic = PAK hoi = PAK } # Pakistan (HPM)
+link = { vic = MUG hoi = PAK } # Mughalistan => Pakistan
+link = { vic = PLS hoi = PAL } # Palestine
+link = { vic = PNM hoi = PAN } # Panama
+link = { vic = PAP hoi = PAP } # Papal States
+link = { vic = PRG hoi = PAR } # Paraguay
+link = { vic = PER hoi = PER } # Persia
+link = { vic = PHI hoi = PHI } # Philippines
+link = { vic = POL hoi = POL } # Poland
+link = { vic = CPL hoi = POL } # Congress Poland => Poland
+link = { vic = PPG hoi = PNG } # Papua New Guinea
+link = { vic = POR hoi = POR } # Portugal
+link = { vic = TPG hoi = PRC } # Heavenly Kingdom (which was a protocommunist state) => Communist China
+link = { vic = PRU hoi = PRE } # Prussia
+link = { vic = PEU hoi = PRU } # Peru
+link = { vic = PRI hoi = PUE } # Puerto Rico
+link = { vic = QAT hoi = QAT } # Qatar
+#link = { vic = ? hoi = QEM } # Qement
+link = { vic = HND hoi = RAJ } # India
+link = { vic = CGO hoi = RCG } # Congo-Brazzaville
+link = { vic = TET hoi = RIF } # Tétouan => Rif
+link = { vic = ROM hoi = ROM } # Romania
+link = { vic = RWA hoi = RWA } # Rwanda
+link = { vic = SMO hoi = SAM } # Samoa
+link = { vic = SAF hoi = SAF } # South Africa
+link = { vic = ARA hoi = SAU } # (Saudi) Arabia
+link = { vic = SAX hoi = SAX } # Saxony
+link = { vic = SCO hoi = SCO } # Scotland
+link = { vic = SNG hoi = SEN } # Senegal
+link = { vic = SER hoi = SER } # Serbia
+link = { vic = HOL hoi = SHL } # (Schleswig-)Holstein
+link = { vic = SXI hoi = SHX } # Shanxi
+link = { vic = SIA hoi = SIA } # Siam
+link = { vic = SLE hoi = SIE } # Sierra Leone
+#link = { vic = ? hoi = SID } # Sidamo
+link = { vic = XIN hoi = SIK } # Xinjiang => Sinkiang
+link = { vic = SLS hoi = SIL } # Silesia
+link = { vic = SLV hoi = SLO } # Slovakia
+link = { vic = SLO hoi = SLV } # Slovenia
+#link = { vic = ? hoi = SOL } # Solomon Islands
+link = { vic = SOM hoi = SOM } # Somalia
+link = { vic = RUS hoi = SOV } # Russia
+link = { vic = SAR hoi = SPM } # Sardinia-Piedmont
+link = { vic = OSP hoi = SPA } # Old Spain => Nationalist Spain
+link = { vic = SPC hoi = SPB } # Carlist Spain
+link = { vic = ARN hoi = SPC } # Aragon
+link = { vic = SPA hoi = SPR } # Spain
+link = { vic = SRI hoi = SRL } # Ceylon
+link = { vic = SUD hoi = SUD } # Sudan
+link = { vic = NUB hoi = SUD } # Funj => Sudan
+link = { vic = SUR hoi = SUR } # Suriname
+link = { vic = SWE hoi = SWE } # Sweden
+link = { vic = SWI hoi = SWI } # Switzerland
+link = { vic = SYR hoi = SYR } # Syria
+link = { vic = TAH hoi = TAH } # Tahiti
+link = { vic = TAJ hoi = TAJ } # Tajikistan
+link = { vic = TNT hoi = TAN } # Tannu Tuva
+link = { vic = TAR hoi = TAT } # Tatarstan
+link = { vic = TIB hoi = TIB } # Tibet
+link = { vic = TKM hoi = TMS } # Turkmenistan (PDM)
+link = { vic = TOG hoi = TOG } # Togo
+link = { vic = TUS hoi = TOS } # Tuscany
+link = { vic = TTB hoi = TRI } # Trinidad and Tobago
+link = { vic = MED hoi = TIG } # Medri Bahri => Tigray
+link = { vic = TUN hoi = TUN } # Tunisia
+link = { vic = TUR hoi = TUR } # Ottomans => Turkey
+link = { vic = TNZ hoi = TZN } # Tanzania
+link = { vic = SIC hoi = TTS } # Two Sicilies
+link = { vic = ABU hoi = UAE } # Abu Dhabi => United Arab Emirates
+link = { vic = UDM hoi = UDM } # Udmurtia
+link = { vic = BUG hoi = UGA } # (B)uganda
+link = { vic = UKR hoi = UKR } # Ukraine
+link = { vic = URU hoi = URG } # Uruguay
+link = { vic = USA hoi = USA } # USA
+link = { vic = FSA hoi = USB } # Free States of America => Unaligned States of America
+link = { vic = UZB hoi = UZB } # Uzbekistan (PDM)
+link = { vic = VNZ hoi = VEN } # Venezuela
+link = { vic = DAI hoi = VIN } # Vietnam
+link = { vic = MOS hoi = VOL } # Mossi Kingdom => Upper Volta
+link = { vic = WSH hoi = WES } # Western Sahara
+#link = { vic = NGF hoi = WGR } # North => West Germany
+link = { vic = WHA hoi = WLS } # Wales
+link = { vic = WUR hoi = WUR } # Württemberg
+link = { vic = XBI hoi = XSM } # Xibei San Ma
+link = { vic = YAK hoi = YAK } # Yakutia
+link = { vic = YEM hoi = YEM } # Yemen
+link = { vic = YUG hoi = YUG } # Yugoslavia
+link = { vic = YNN hoi = YUN } # Yunnan
+link = { vic = ZAM hoi = ZAM } # Zambia
+link = { vic = RHO hoi = ZIM } # Rhodesia => Zimbabwe
+link = { vic = ZBW hoi = ZIM } # Zimbabwe
+
+#Countries in Darkest Hour (generated tags)
+link = { vic = BEN hoi = BEN } # Benin (PDM)
+link = { vic = BRU hoi = BRU } # Brunei
+link = { vic = CAL hoi = CAL } # California
+link = { vic = BSQ hoi = EUS } # Euskadi
+link = { vic = FLA hoi = FLA } # Flanders
+link = { vic = KDS hoi = KUR } # Kurdistan
+link = { vic = ARD hoi = KUR } # Ardalan => Kurdistan
+link = { vic = QUE hoi = QUE } # Quebec
+link = { vic = SWK hoi = SAR } # Sarawak (PDM)
+link = { vic = SCA hoi = SCA } # Scandinavia
+link = { vic = SIB hoi = SIB } # Siberia
+link = { vic = TEX hoi = TEX } # Texas
+link = { vic = URA hoi = TRA } # (Trans)uralia
+link = { vic = PAP hoi = VAT } # Papal States => Holy See
+link = { vic = WLL hoi = WLL } # Wallonia
+
+link = { vic = SPQ hoi = RME } # Roman Empire
+link = { vic = HLR hoi = HLR } # Holy Roman Empire
+
+link = { vic = UCV hoi = UCV } # Terra Nullius - only for the purposes of generating no leader
+
+# Countries in HPM
+link = { vic = PHL hoi = PHI } # Philippines - HPM
+link = { vic = TKG hoi = JAP } # Tokugawa => Japan

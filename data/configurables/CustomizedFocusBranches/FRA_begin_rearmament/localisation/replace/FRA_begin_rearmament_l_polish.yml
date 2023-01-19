@@ -1,0 +1,10 @@
+﻿l_polish:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament_savoy.GetName] fortyfikacje"
+ FRA_alpine_forts_desc:0 "[FRA_begin_rearmament_ITA.GetName] nie będą mogli tak łatwo sforsować granicy, gdy skończymy budowę alpejskich fortyfikacji. Dzięki tym barierom będziemy mogli szybko umocnić nasze pozycje."
+ FRA_extend_the_maginot_line:0 "Ustanowienie linii [FRA_begin_rearmament_maginot.GetName]"
+ FRA_extend_the_maginot_line_desc:0 "Nie możemy liczyć na to, że nasi sąsiedzi utrzymają pozycję, jeśli przepuszczą wrogie armie, możemy mieć kłopoty. Ustanowienie linii [FRA_begin_rearmament_maginot.GetName] ma kluczowe znaczenie dla powstrzymania niechcianych armii przed [Root.GetName]!"
+ FRA_division_cuirassee_desc:0 "Zaradny oficer  zaproponował utworzenie dywizji nowego rodzaju, łączącej czołgi ciężkie z piechotą i czołgami średnimi, walczącymi jako jedna struktura."
+ france.2.t:0 "Utworzenie linii [FRA_begin_rearmament_maginot.GetName]"
+ france.2.d:0 "Plany utworzenia linii [FRA_begin_rearmament_maginot.GetName] wzdłuż granicy [FRA_begin_rearmament_GER.GetAdjective] zostały zakończone, a zamówienia na budowę złożone. Po drugiej stronie granicy składają oficjalny protest po obejrzeniu naszych przygotowania, ale prace trwają”.
+ france.2.a:0 „Być może nie powinni byli opowiadać się po stronie naszego wroga”.
+ france.3.d:0 "Rozpoczęliśmy proces wzmacniania Małej Linii Maginota. Gdy ukończymy budowę nowych fortyfikacji, [FRA_begin_rearmament_ITA.GetName] nie ośmielą się przekroczyć granicy!"

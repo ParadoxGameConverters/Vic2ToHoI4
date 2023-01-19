@@ -1,0 +1,7 @@
+From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
+# HoI4-style adjacency
+101;102;sea;199;-1;-1;-1;-1;;Test strait
+# Vic2-style adjacency
+254;271;sea;2737;0;Irish Strait
+6;7;impassable;42;-1;-1;-1;-1;;Test mountain
+;;;;;

@@ -1,0 +1,10 @@
+name: "Find braces mismatches"
+on: [push, pull_request]
+jobs:
+  find_braces_mismatches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Download and run script"
+        run: |
+          python3 tools/bracket_script.py

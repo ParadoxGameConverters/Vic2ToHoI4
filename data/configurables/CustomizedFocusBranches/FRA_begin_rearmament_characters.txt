@@ -1,0 +1,98 @@
+UTI = {
+    UTI_maurice_gamelin={
+        name=""
+        advisor={
+            slot = army_chief
+            idea_token = maurice_gamelin
+            allowed = {
+                original_tag = event_target:FRA_begin_rearmament_FRA
+            }
+            available = {
+                has_completed_focus = FRA_aggressive_focus
+            }
+            cost = 100.000
+            traits = {
+                army_chief_offensive_2
+            }
+            cost = 100
+            ai_will_do = {
+                factor = 1.000
+            }
+        }
+
+        field_marshal={
+            traits={ old_guard inflexible_strategist career_officer defensive_doctrine }
+            skill=2
+            attack_skill=1
+            defense_skill=3
+            planning_skill=2
+            logistics_skill=1
+            legacy_id=0
+        }
+    }
+
+    UTI_maxime_weygand={
+        name=""
+        advisor={
+            slot = army_chief
+            idea_token = maxime_weygand
+            allowed = {
+                original_tag = event_target:FRA_begin_rearmament_FRA
+            }
+            available = {
+                has_completed_focus = FRA_defensive_focus
+            }
+            cost = 100.000
+            traits = {
+                army_chief_defensive_2
+            }
+            cost = 100
+            ai_will_do = {
+                factor = 1.000
+            }
+        }
+        
+        field_marshal={
+            traits={ old_guard inflexible_strategist career_officer defensive_doctrine }
+            skill=3
+            attack_skill=3
+            defense_skill=3
+            planning_skill=2
+            logistics_skill=2
+            legacy_id=0
+        }
+    }
+
+    UTI_charles_de_gaulle={
+        name=""
+        advisor={
+            cost = 100
+            slot = theorist
+            idea_token = charles_de_gaulle
+            ledger = army
+            allowed = {
+                original_tag = event_target:FRA_begin_rearmament_FRA
+            }
+            available = {
+                has_completed_focus = FRA_battle_of_maneuver
+            }
+            
+            traits = {
+                blitzkrieg_theorist
+            }
+            ai_will_do = {
+                factor = 1.000
+            }
+        }
+        
+        corps_commander={
+            traits={ media_personality harsh_leader armor_officer }
+            skill=4
+            attack_skill=4
+            defense_skill=4
+            planning_skill=3
+            logistics_skill=2
+            legacy_id=101
+        }
+    }
+}

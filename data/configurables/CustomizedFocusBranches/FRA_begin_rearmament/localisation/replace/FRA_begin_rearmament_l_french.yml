@@ -1,0 +1,12 @@
+﻿l_french:
+ FRA_alpine_forts:0 "[FRA_begin_rearmament_savoy.GetName] ligne Maginot"
+ FRA_alpine_forts_desc:0 "Lorsque la nouvelle ligne de défense [FRA_begin_rearmament_savoy.GetDuDelaDelNP] [FRA_begin_rearmament_savoy.GetName] aura été achevée, les [FRA_begin_rearmament_ITA.GetHabitants] seront incapables de franchir la frontière. Nous aurons alors tout le temps de réagir à une attaque et de renforcer nos positions."
+ FRA_extend_the_maginot_line:0 "Établir la ligne [FRA_begin_rearmament_maginot.GetName]"
+ FRA_extend_the_maginot_line_desc:0 "Nous ne pouvons pas compter sur nos voisins pour tenir bon, s'ils laissent passer les armées ennemies, nous risquons d'avoir des ennuis. L'établissement de la ligne [FRA_begin_rearmament_maginot.GetName] est crucial pour éloigner les armées indésirables de [Root.GetName] !"
+ FRA_heavy_armor_focus_desc:0 "Les chars de combat sont l'avenir de l'armée [FRA_begin_rearmament_FRA.GetAdjFS]. Si nous voulons qu'elle puisse dominer le champ de bataille, il lui faut des chars puissants et modernes !"
+ FRA_division_cuirassee_desc:0 "Un officier dynamique a proposé la mise en place d'un nouveau type de division combinant des blindés lourds, de l'infanterie et des chars intermédiaires, destinés à combattre de manière coordonnée."
+ france.2.t:0 "Mise en place de la ligne [FRA_begin_rearmament_maginot.GetName]"
+ france.2.d:0 "Les plans pour l'établissement de la ligne [FRA_begin_rearmament_maginot.GetName] le long de la frontière [FRA_begin_rearmament_GER.GetAdjFS] sont terminés et les commandes de construction passées. De l'autre côté de la frontière, ils déposent une protestation officielle après avoir vu notre préparatifs, mais le travail continue."
+ france.2.a:0 "Peut-être qu'ils n'auraient pas dû se ranger du côté de notre ennemi."
+ france.3.t:0 "Extension [FRA_begin_rearmament_savoy.GetDuDelaDelNP] [FRA_begin_rearmament_savoy.GetName] ligne Maginot"
+ france.3.d:0 "Les travaux de renforcement [FRA_begin_rearmament_savoy.GetDuDelaDelNP] [FRA_begin_rearmament_savoy.GetName] ligne Maginot ont été lancés. Lorsqu'elle aura été achevée, les [FRA_begin_rearmament_ITA.GetHabitants] seraient bien fous de chercher même à franchir la frontière !"

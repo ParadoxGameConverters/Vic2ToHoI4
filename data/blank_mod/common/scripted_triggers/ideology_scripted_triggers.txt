@@ -1,0 +1,56 @@
+
+is_enemy_ideology = {
+	OR = {
+		AND = {
+			has_government = communism
+			ROOT = {
+				OR = {
+					has_government = fascism
+					has_government = democratic
+				}
+			}
+		}
+		AND = {
+			has_government = democratic
+			ROOT = {
+				OR = {
+					has_government = communism
+					has_government = fascism
+				}
+			}
+		}
+		AND = {
+			has_government = fascism
+			ROOT = {
+				OR = {
+					has_government = democratic
+					has_government = communism
+				}
+			}
+		}
+	}
+}
+
+has_same_ideology = {
+	custom_trigger_tooltip = {
+		tooltip = has_same_ideology_tt
+		OR = {
+			AND = {
+				has_government = democratic
+				ROOT = { has_government = democratic }
+			}
+			AND = {
+				has_government = fascism
+				ROOT = { has_government = fascism }
+			}
+			AND = {
+				has_government = communism
+				ROOT = { has_government = communism }
+			}
+			AND = {
+				has_government = neutrality
+				ROOT = { has_government = neutrality }
+			}
+		}
+	}
+}
