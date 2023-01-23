@@ -12,13 +12,13 @@ ai_decryption_target_scorer = {
 
 			modifier = {
 				has_capitulated = yes
-				factor = 0 
+				factor = 0
 			}
 			# strat is directly added
 			modifier = {
 				add = FROM.ai_strategy_decrypt_target@THIS
 			}
-		
+
 			# continue existing decryptions
 			modifier = {
 				FROM = {
@@ -34,7 +34,7 @@ ai_decryption_target_scorer = {
 				has_war_with = FROM
 				factor = 2.0
 			}
-			
+
 			modifier = {
 				OR = {
 					is_in_array = { FROM.potential_and_current_enemies = this }
@@ -61,7 +61,7 @@ ai_decryption_target_scorer = {
 				factor = 1.2
 			}
 
-			
+
 			modifier = {
 				is_major = yes
 				factor = 1.1
@@ -81,7 +81,7 @@ ai_decryption_target_scorer = {
 				clamp_temp_variable = { var = temp_score max = 1.2 }
 				factor = temp_score
 			}
-			
+
 		}
 	}
 }

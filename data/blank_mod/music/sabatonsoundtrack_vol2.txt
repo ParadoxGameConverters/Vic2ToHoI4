@@ -5,7 +5,7 @@ music_station = "sabaton"
 
 music = {
 	song = "fourty_to_one"
-	
+
 	chance = {
 		factor = 1
 
@@ -23,7 +23,7 @@ music = {
 
 music = {
 	song = "coat_of_arms"
-	
+
 	chance = {
 		factor = 1
 	}
@@ -31,7 +31,7 @@ music = {
 
 music = {
 	song = "ghost_division"
-	
+
 	chance = {
 		factor = 1
 	}
@@ -39,7 +39,7 @@ music = {
 
 music = {
 	song = "panzerkampf"
-	
+
 	chance = {
 		factor = 1
 	}
@@ -47,7 +47,7 @@ music = {
 
 music = {
 	song = "resist_and_bite"
-	
+
 	chance = {
 		factor = 1
 	}
@@ -55,10 +55,10 @@ music = {
 
 music = {
 	song = "screaming_eagles"
-	
+
 	chance = {
 		factor = 1
-		
+
 		modifier = {
 			factor = 0.5
 			has_war = no
@@ -68,7 +68,7 @@ music = {
 
 music = {
 	song = "smoking_snakes"
-	
+
 	chance = {
 		factor = 1
 	}
@@ -76,20 +76,20 @@ music = {
 
 music = {
 	song = "the_last_battle"
-	
+
 	chance = {
 		factor = 1
 
 		modifier = {
 			factor = 0.1
 			has_war = no
-		}				
+		}
 	}
 }
 
 music = {
 	song = "to_hell_and_back"
-	
+
 	chance = {
 		factor = 1
 	}
@@ -97,7 +97,7 @@ music = {
 
 music = {
 	song = "uprising"
-	
+
 	chance = {
 		factor = 1
 	}

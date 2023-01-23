@@ -51,7 +51,7 @@ UTI = {
                 factor = 1.000
             }
         }
-        
+
         field_marshal={
             traits={ old_guard inflexible_strategist career_officer defensive_doctrine }
             skill=3
@@ -76,7 +76,7 @@ UTI = {
             available = {
                 has_completed_focus = FRA_battle_of_maneuver
             }
-            
+
             traits = {
                 blitzkrieg_theorist
             }
@@ -84,7 +84,7 @@ UTI = {
                 factor = 1.000
             }
         }
-        
+
         corps_commander={
             traits={ media_personality harsh_leader armor_officer }
             skill=4

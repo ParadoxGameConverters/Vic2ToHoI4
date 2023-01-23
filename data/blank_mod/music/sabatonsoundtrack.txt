@@ -5,7 +5,7 @@ music_station = "sabaton"
 
 music = {
 	song = "hearts_of_iron"
-	
+
 	chance = {
 		factor = 1
 		modifier = {
@@ -31,7 +31,7 @@ music = {
 
 music = {
 	song = "night_witches"
-	
+
 	chance = {
 		factor = 1
 		modifier = {
@@ -53,7 +53,7 @@ music = {
 
 music = {
 	song = "primo_victoria"
-	
+
 	chance = {
 		factor = 1
 		modifier = {
@@ -75,7 +75,7 @@ music = {
 
 music = {
 	song = "stalingrad"
-	
+
 	chance = {
 		factor = 1
 		modifier = {
@@ -97,7 +97,7 @@ music = {
 
 music = {
 	song = "wolfpack"
-	
+
 	chance = {
 		factor = 1
 		modifier = {

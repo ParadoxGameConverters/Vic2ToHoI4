@@ -4,15 +4,15 @@ ideas = {
 			allowed = {
 				always = no
 			}
-			
+
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			picture = generic_morale_bonus
-			
+
 			removal_cost = -1
-			
+
 			modifier = {
 				# minor bonuses for being GP
 				army_core_attack_factor = 0.05

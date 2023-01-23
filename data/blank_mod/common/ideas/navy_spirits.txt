@@ -102,7 +102,7 @@ ideas = {
 			visible = { has_tech = fleet_in_being }
 			research_bonus = {
 				bb_tech = 0.20
-				ca_tech = 0.20 
+				ca_tech = 0.20
 			}
 			modifier = {
 				ship_hull_heavy_design_cost_factor = -0.6
@@ -181,7 +181,7 @@ ideas = {
 				}
 			}
 		}
-		surprise_attacks_spirit = { 
+		surprise_attacks_spirit = {
 			ledger = navy
 			visible = { has_tech = base_strike }
 			modifier = {
@@ -274,7 +274,7 @@ ideas = {
 					NOT = { has_dlc = "No Step Back" }
 				}
 			}
-		} 
+		}
 		bureau_of_ordnance_spirit = {
 			ledger = navy
 			modifier = {

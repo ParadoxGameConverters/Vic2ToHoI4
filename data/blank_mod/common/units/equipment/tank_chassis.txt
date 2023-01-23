@@ -11,7 +11,7 @@ equipments = {
 		interface_category = interface_category_armor
 		priority = 2000
 
-		
+
 
 		module_slots = {
 			main_armament_slot = {
@@ -85,12 +85,12 @@ equipments = {
 					tank_secondary_turret
 				}
 			}
-			
+
 		}
 		module_count_limit = {
 			module = sloped_armor
 			count < 2
-		}	
+		}
 		module_count_limit = {
 			category = tank_radio_module
 			count < 2
@@ -224,7 +224,7 @@ equipments = {
 		}
 	}
 
-	
+
 
 	medium_tank_chassis = {
 		year = 1922
@@ -310,12 +310,12 @@ equipments = {
 					tank_radio_module
 				}
 			}
-			
+
 		}
 		module_count_limit = {
 			module = sloped_armor
 			count < 2
-		}	
+		}
 		module_count_limit = {
 			category = tank_radio_module
 			count < 2
@@ -539,7 +539,7 @@ equipments = {
 		module_count_limit = {
 			module = sloped_armor
 			count < 2
-		}	
+		}
 		module_count_limit = {
 			category = tank_radio_module
 			count < 2
@@ -757,7 +757,7 @@ equipments = {
 		module_count_limit = {
 			module = sloped_armor
 			count < 2
-		}	
+		}
 		module_count_limit = {
 			category = tank_radio_module
 			count < 2
@@ -929,7 +929,7 @@ equipments = {
 		module_count_limit = {
 			module = sloped_armor
 			count < 2
-		}	
+		}
 		module_count_limit = {
 			category = tank_radio_module
 			count < 2
@@ -1090,7 +1090,7 @@ equipments = {
 		module_count_limit = {
 			module = sloped_armor
 			count < 2
-		}	
+		}
 		module_count_limit = {
 			category = tank_radio_module
 			count < 2

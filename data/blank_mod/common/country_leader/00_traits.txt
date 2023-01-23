@@ -847,7 +847,7 @@ leader_traits = {
 		army_core_attack_factor = 0.1
 		army_core_defence_factor = 0.1
 	}
-	
+
 
 	champion_of_peace_1 = {
 		random = no
@@ -1582,25 +1582,25 @@ leader_traits = {
 	}
 	# Haile Selassie - Starting trait + King of Kings + Lord of Lords
 	king_of_kings_3a = {
-		
+
 		random = no
 		# From King of Kings
 		drift_defence_factor = 0.1
 		political_power_factor = 0.1
 		mobilization_speed = 0.05
 		stability_factor = 0.1 # +0.05
-		# Lord of Lords new 
+		# Lord of Lords new
 		puppet_cost_factor = -0.1
 		max_command_power_mult = 0.1
 		guarantee_tension = -0.2
 	}
 	# Haile Selassie - Starting trait + King of Kings + Elect of God
 	king_of_kings_3b = {
-		
+
 		random = no
 		# From King of Kings
 		drift_defence_factor = 0.1
-		political_power_factor = 0.1 
+		political_power_factor = 0.1
 		mobilization_speed = 0.05
 		stability_factor = 0.05
 		# Elect of God New
@@ -1610,23 +1610,23 @@ leader_traits = {
 	}
 	# Haile Selassie - Starting trait + King of Kings + Lord of Lords + Elect of God
 	king_of_kings_4 = {
-		
+
 		random = no
-		# From King of Kings (modified) 
+		# From King of Kings (modified)
 		drift_defence_factor = 0.1
 		political_power_factor = 0.1
 		mobilization_speed = 0.05
-		stability_factor = 0.1 
-		# From Lord of Lords  
+		stability_factor = 0.1
+		# From Lord of Lords
 		puppet_cost_factor = -0.1
 		max_command_power_mult = 0.1
 		guarantee_tension = -0.2
-		# From Elect of God 
+		# From Elect of God
 		conscription_factor = 0.05
 		compliance_gain = 0.1
 		enemy_justify_war_goal_time = 0.25
 	}
-	
+
 	imperator_absentis = {
 		random = no
 		surrender_limit = -0.2
@@ -1646,14 +1646,14 @@ leader_traits = {
 		opinion_gain_monthly_factor = -0.4
 		army_core_attack_factor = 0.15
 		neutrality_acceptance = 30
-		
+
 	}
 	crowned_adder_2 = {
 		random = no
 		opinion_gain_monthly_factor = -0.2
 		army_core_attack_factor = 0.15
 		neutrality_acceptance = 30
-		
+
 	}
 	# Hailu Tekle Haymanot
 	tainted_ras = {
@@ -1662,7 +1662,7 @@ leader_traits = {
 		consumer_goods_factor = 0.05
 		equipment_capture_factor = 0.25
 		neutrality_acceptance = 30
-		
+
 	}
 	tainted_ras_2 = {
 		random = no
@@ -1671,7 +1671,7 @@ leader_traits = {
 		equipment_capture_factor = 0.25
 		neutrality_acceptance = 30
 		stability_factor = 0.05
-		
+
 	}
 	# Abba Jofir
 	inexperienced_sultan = {
@@ -1680,7 +1680,7 @@ leader_traits = {
 		political_power_cost = 0.3
 		justify_war_goal_time = -0.3
 		neutrality_acceptance = 30
-		
+
 	}
 	inexperienced_sultan_2 = {
 		random = no
@@ -1688,7 +1688,7 @@ leader_traits = {
 		political_power_cost = 0
 		justify_war_goal_time = -0.3
 		neutrality_acceptance = 30
-		
+
 	}
 
 	# Alemework Beyene
@@ -1821,19 +1821,19 @@ leader_traits = {
 		conscription_factor = 0.05
 		non_core_manpower = 0.05
 	}
-	
+
 	constitutional_philosopher = {
 		random = no
 		political_power_factor = 0.10
 		stability_factor = 0.10
 	}
-	
+
 	democratic_firebrand = {
 		random = no
 		democratic_drift = 0.10
 		conscription_factor = 0.1
 	}
-	
+
 	commander_of_the_fetno_derash = {
 		random = no
 		sprite = 15
@@ -2104,7 +2104,7 @@ leader_traits = {
 	}
 
 	#DINO GRANDI TRAITS
-	silver_tongue = { 
+	silver_tongue = {
 		random = no
 		opinion_gain_monthly_factor = 0.2
 		improve_relations_maintain_cost_factor = -0.2
@@ -2112,7 +2112,7 @@ leader_traits = {
 		foreign_subversive_activites = -0.1
 	}
 
-	silver_tongue_no_lar = { 
+	silver_tongue_no_lar = {
 		random = no
 		opinion_gain_monthly_factor = 0.2
 		improve_relations_maintain_cost_factor = -0.2
@@ -2140,7 +2140,7 @@ leader_traits = {
 			navy_advisor_cost_factor = -0.25
 		}
 		drift_defence_factor = 0.05
-		research_speed_factor = 0.025 
+		research_speed_factor = 0.025
 	}
 
 	political_reformer_2 = {
@@ -2153,7 +2153,7 @@ leader_traits = {
 			navy_advisor_cost_factor = -0.25
 		}
 		drift_defence_factor = 0.05
-		research_speed_factor = 0.025 
+		research_speed_factor = 0.025
 		operative_slot = 1
 	}
 
@@ -2169,26 +2169,26 @@ leader_traits = {
 		}
 	}
 
-	BBA_ALB_fascist_lawyer = { 
-		random = no 
-		
+	BBA_ALB_fascist_lawyer = {
+		random = no
+
 		political_power_gain = 0.25
 		consumer_goods_factor = -0.02
 		puppet_cost_factor = -0.4
-		
+
 		ai_will_do = {
 			factor = 1
 		}
-	} 
+	}
 
-	ITA_head_of_the_national_committee = { 
-		random = no 
-		
+	ITA_head_of_the_national_committee = {
+		random = no
+
 		war_support_factor = 0.1
 		modifier_army_sub_unit_mountaineers_attack_factor = 0.1
 		modifier_army_sub_unit_mountaineers_speed_factor = 0.1
 		modifier_army_sub_unit_mountaineers_max_org_factor = 0.15
-		
+
 		ai_will_do = {
 			factor = 1
 		}
@@ -2225,7 +2225,7 @@ leader_traits = {
 		resistance_decay_on_our_occupied_states = -0.1
 	}
 
-	### AOI 
+	### AOI
 
 	duke_of_aosta = {
 		random = no
@@ -2262,7 +2262,7 @@ leader_traits = {
 	####  SWISS ADVISOR TRAITS  ####
 	################################
 
-	SWI_commander_in_chief = { 
+	SWI_commander_in_chief = {
 		random = no
 		sprite = 5
 		experience_gain_army = @chief_experience_gain_high
@@ -2272,15 +2272,15 @@ leader_traits = {
 	}
 
 	SWI_guisan_leader_trait = {
-		random = no 
+		random = no
 		sprite = 5
 		army_defence_factor = 0.15
 		army_attack_factor = 0.1
 		war_support_factor = 0.15
-		stability_factor = 0.1  
+		stability_factor = 0.1
 	}
 
-	### Pro Council ### 
+	### Pro Council ###
 
 	SWI_militaristic_nationalist = { #Unlocks Militarization Drive
 		random = no
@@ -2303,16 +2303,16 @@ leader_traits = {
 
 	### Neutrals ###
 
-	SWI_diplomat = {  #Unlocks Diplomatic Mission 
+	SWI_diplomat = {  #Unlocks Diplomatic Mission
 		random = no
-		sprite = 13 
+		sprite = 13
 		opinion_gain_monthly_factor = 0.3
 		trade_opinion_factor = 0.5
 		drift_defence_factor = 0.2
 		intel_network_gain_factor = 0.15
 	}
 
-	SWI_intelligence_officer = { #Unlocks Expand Covert Operations  
+	SWI_intelligence_officer = { #Unlocks Expand Covert Operations
 		random = no
 		sprite = 15
 		agency_upgrade_time = -0.15
@@ -2321,11 +2321,11 @@ leader_traits = {
 		operative_slot = 1
 	}
 
-	SWI_weapons_designer = { #Unlocks Expand Arms Industry 
-		random = no 
+	SWI_weapons_designer = { #Unlocks Expand Arms Industry
+		random = no
 		sprite = 10
 		production_factory_max_efficiency_factor = 0.1
-		neutrality_drift = 0.03 
+		neutrality_drift = 0.03
 		materiel_manufacturer_cost_factor = -0.75
 		research_speed_factor = 0.1
 	}
@@ -2886,8 +2886,8 @@ leader_traits = {
 	}
 
 	### IDEA TRAITS ###
-	
-	
+
+
 	shadow_of_calles = {
 		random = no
 		sprite = 13
@@ -3387,7 +3387,7 @@ leader_traits = {
 
 		political_power_factor = 0.1
 		stability_factor = 0.05
-		
+
 		ai_will_do = {
 			factor = 1
 		}
@@ -3637,7 +3637,7 @@ leader_traits = {
 		army_core_attack_factor = 0.05
 		army_core_defence_factor = 0.05
 	}
-	
+
 	leftist_independent = {
 		random = no
 		sprite = 13
@@ -3673,7 +3673,7 @@ leader_traits = {
 		drift_defence_factor = 0.15
 		autonomy_gain = 0.5
 	}
-	
+
 	the_last_romanov_maybe = {
 		random = no
 		sprite = 13
@@ -7027,18 +7027,18 @@ leader_traits = {
 			factor = 1
 		}
 	}
-	
+
 	cockatoo_trait = { #at end for save compat
 		random = no
 		equipment_bonus = {
 			heavy_cruiser = {
-				naval_range = 0.3 
-				sub_detection = 0.1 
+				naval_range = 0.3
+				sub_detection = 0.1
 				naval_speed = 0.1
 			}
 			screen_ship = {
-				naval_range = 0.3 
-				sub_detection = 0.1 
+				naval_range = 0.3
+				sub_detection = 0.1
 				naval_speed = 0.1
 			}
 		}

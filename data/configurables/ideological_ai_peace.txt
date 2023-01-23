@@ -2,7 +2,7 @@ fascism = {
 	fascist_majors_on_a_mission = {
 		peace_action_type = take_states
 		enable = {
-			ROOT = { 
+			ROOT = {
 				is_major = yes				#We are big
 				has_government = fascism	#We are the baddies
 				tag = ROOT.FROM				#We are acting for ourselves
@@ -11,11 +11,11 @@ fascism = {
 
 		ai_desire = 50
 	}
-	
+
 	fascist_puppet_desire = {
 		peace_action_type = puppet
 		enable = {
-			ROOT = { 
+			ROOT = {
 				is_major = yes				#We are big
 				has_government = fascism	#We are the baddies
 				tag = ROOT.FROM				#We are acting for ourselves
@@ -24,11 +24,11 @@ fascism = {
 
 		ai_desire = -75
 	}
-	
+
 	fascist_liberate_desire = {
 		peace_action_type = liberate
 		enable = {
-			ROOT = { 
+			ROOT = {
 				is_major = yes				#We are big
 				has_government = fascism	#We are the baddies
 				tag = ROOT.FROM				#We are acting for ourselves
@@ -38,7 +38,7 @@ fascism = {
 
 		ai_desire = -75
 	}
-	
+
 	fascism_dont_liberate_the_wrong_ideology = {
 		peace_action_type = liberate
 		enable = {
@@ -92,7 +92,7 @@ democratic = {
 		}
 		ai_desire = -50
 	}
-	
+
 	leave_force_gov_at_will_to_allies = { #It is a bit hacky, but we need a preference here or we end up worse than where we started
 		peace_action_type = force_government
 		enable = {
@@ -110,7 +110,7 @@ democratic = {
 		}
 		ai_desire = -80
 	}
-	
+
 	democrats_dont_liberate_the_wrong_ideology = {
 		peace_action_type = liberate
 		enable = {
@@ -134,7 +134,7 @@ democratic = {
 
 		ai_desire = 10
 	}
-	
+
 	liberate_if_already_exists = {
 		peace_action_type = liberate
 		enable = {
@@ -149,7 +149,7 @@ democratic = {
 
 		ai_desire = 20
 	}
-	
+
 	wrong_ideology_faction_members_dont_force_gov = {
 		peace_action_type = force_government
 		enable = {

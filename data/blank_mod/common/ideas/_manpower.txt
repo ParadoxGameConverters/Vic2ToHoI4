@@ -115,7 +115,7 @@ ideas = {
 					factor = 0
 					NOT = { has_idea = limited_conscription }
 				}
-				
+
 			}
 
 			cost = 150
@@ -156,12 +156,12 @@ ideas = {
 					factor = 0.5
 					manpower_per_military_factory >  1000
 				}
-				
+
 				modifier = {
 					factor = 0
 					NOT = { has_idea = extensive_conscription }
 				}
-				
+
 			}
 
 			cost = 150
@@ -216,7 +216,7 @@ ideas = {
 					manpower_per_military_factory >  2800
 				}
 
-				
+
 				modifier = {
 					factor = 0
 					NOT = { has_idea = service_by_requirement }
@@ -275,12 +275,12 @@ ideas = {
 					factor = 0
 					manpower_per_military_factory >  5000
 				}
-				
+
 				modifier = {
 					factor = 0
 					NOT = { has_idea = all_adults_serve }
 				}
-				
+
 			}
 
 			cost = 150

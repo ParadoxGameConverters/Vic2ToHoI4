@@ -789,9 +789,9 @@
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
-			
+
 			equipment_bonus = {
 				small_plane_airframe = {
 					instant = yes
@@ -827,7 +827,7 @@
 				}
 				medium_plane_scout_plane_airframe = {
 					instant = yes
-					build_cost_ic = -0.10	
+					build_cost_ic = -0.10
 				}
 				large_plane_airframe = {
 					instant = yes
@@ -845,7 +845,7 @@
 					instant = yes
 					build_cost_ic = -0.10
 				}
-			}		
+			}
 		}
 
 		reclaim_cores_idea = {

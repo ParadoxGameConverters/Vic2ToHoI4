@@ -258,13 +258,13 @@ shared_focus = {
 				level = 2
 				instant_build = yes
 			}
-		}			
+		}
 		add_doctrine_cost_reduction = {
 			name = air_doc_bonus
 			cost_reduction = 0.5
 			uses = 1
 			category = air_doctrine
-		}			
+		}
 	}
 
 	completion_reward = {
@@ -447,7 +447,7 @@ shared_focus = {
 					type = air_base
 					level = 2
 					instant_build = yes
-				}				
+				}
 				ROOT = { set_country_flag = aviation_effort_2_AB }
 			}
 		}
@@ -571,7 +571,7 @@ shared_focus = {
 			instant_build = yes
 		}
 	}
-	
+
 	completion_reward = {
 		navy_experience = 25
 		if = {
@@ -667,7 +667,7 @@ shared_focus = {
 					instant_build = yes
 				}
 			}
-		}			
+		}
 	}
 }
 
@@ -952,7 +952,7 @@ shared_focus = {
 	available_if_capitulated = yes
 
 
-	
+
 	ai_will_do = {
 		factor = 2
 	}
@@ -965,7 +965,7 @@ shared_focus = {
 					building = industrial_complex
 					size < 1
 					include_locked = yes
-				}					
+				}
 			}
 		}
 	}
@@ -976,7 +976,7 @@ shared_focus = {
 			type = industrial_complex
 			level = 1
 			instant_build = yes
-		}			
+		}
 	}
 
 	completion_reward = {
@@ -1028,7 +1028,7 @@ shared_focus = {
 
 
 	ai_will_do = {
-		factor = 2			
+		factor = 2
 	}
 
 	bypass = {
@@ -1125,7 +1125,7 @@ shared_focus = {
 			level = 1
 			instant_build = yes
 		}
-	}		
+	}
 
 	completion_reward = {
 		random_owned_controlled_state = {
@@ -1199,7 +1199,7 @@ shared_focus = {
 			level = 1
 			instant_build = yes
 		}
-	}		
+	}
 
 	completion_reward = {
 		random_owned_controlled_state = {
@@ -1251,7 +1251,7 @@ shared_focus = {
 	bypass = {
 		custom_trigger_tooltip = {
 			tooltip = infrastructure_effort_tt
-			all_owned_state = {			
+			all_owned_state = {
 				free_building_slots = {
 					building = infrastructure
 					size < 1
@@ -1357,7 +1357,7 @@ shared_focus = {
 					building = arms_factory
 					size < 1
 					include_locked = yes
-				}					
+				}
 			}
 		}
 	}
@@ -1369,7 +1369,7 @@ shared_focus = {
 			level = 1
 			instant_build = yes
 		}
-	}		
+	}
 
 	completion_reward = {
 		random_owned_controlled_state = {
@@ -1421,7 +1421,7 @@ shared_focus = {
 	bypass = {
 		custom_trigger_tooltip = {
 			tooltip = infrastructure_effort_tt
-			all_owned_state = {			
+			all_owned_state = {
 				free_building_slots = {
 					building = infrastructure
 					size < 1
@@ -1644,7 +1644,7 @@ shared_focus = {
 	completion_reward = {
 		add_research_slot = 1
 	}
-}	
+}
 
 shared_focus = {
 	id = secret_weapons

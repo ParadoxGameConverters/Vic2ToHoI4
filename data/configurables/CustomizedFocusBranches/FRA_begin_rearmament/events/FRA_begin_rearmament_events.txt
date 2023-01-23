@@ -63,9 +63,9 @@ country_event = {
 	title = france.2.t
 	desc = france.2.d
 	picture = GFX_report_event_bunker_01
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = france.2.a
 		event_target:FRA_begin_rearmament_maginot = {
@@ -90,7 +90,7 @@ country_event = {
 	picture = GFX_report_event_bunker_01
 
 	is_triggered_only = yes
-	
+
 	option = {
 		name = france.3.a
 		event_target:FRA_begin_rearmament_savoy = {

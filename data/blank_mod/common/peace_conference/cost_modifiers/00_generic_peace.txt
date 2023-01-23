@@ -71,8 +71,8 @@ peace_action_modifiers = {
         peace_action_type = { take_states puppet liberate force_government }
 
         enable = {
-            FROM.FROM.FROM = { 
-				is_controlled_by = ROOT 
+            FROM.FROM.FROM = {
+				is_controlled_by = ROOT
 				compliance > 0 #To prevent capitulation-occupation kicking in
 			}
         }
@@ -101,7 +101,7 @@ peace_action_modifiers = {
     }
 
 
-    # Test to see if we can apply Defensive War modifiers where appropriate without adding a separate wargoal 
+    # Test to see if we can apply Defensive War modifiers where appropriate without adding a separate wargoal
     defensive_war_liberate = {
         category = defensive_war # Should possibly be a "wargoal" category. Esp if we move other wrgoals to here
         peace_action_type = { liberate force_government }

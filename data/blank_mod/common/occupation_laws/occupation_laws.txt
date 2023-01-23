@@ -243,7 +243,7 @@ military_governor_occupation = {
 	sound_effect = "Martial_Law_Interface_Military_Governor_Occupation"
 	default_law = yes
 	starting_law = yes
-	
+
 	state_modifier = {
 		resistance_target 			= -0.35
 		compliance_gain 			= -0.045

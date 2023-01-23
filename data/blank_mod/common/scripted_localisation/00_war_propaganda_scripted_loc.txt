@@ -49,5 +49,5 @@ defined_text = {
 			10 = { localization_key = blood_and_toil }
 		}
 	}
-	
+
 }

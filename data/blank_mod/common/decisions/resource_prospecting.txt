@@ -7015,7 +7015,7 @@ prospect_for_resources = {
 			}
 		}
 	}
-	
+
 	develop_derna_oilfield = { #76
 
 		icon = oil
@@ -7068,5 +7068,5 @@ prospect_for_resources = {
 			}
 		}
 	}
-	
+
 }

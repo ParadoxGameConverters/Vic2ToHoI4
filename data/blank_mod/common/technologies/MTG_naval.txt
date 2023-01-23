@@ -428,7 +428,7 @@ technologies = {
 #    ###  #  #  #   #  ##  ###   #
 #  # #  # #  #  #    # #   #  #   #
  ##  #  #  ##  ### ##  ### #  # ##
-	
+
 
 	early_ship_hull_cruiser = {
 
@@ -616,7 +616,7 @@ technologies = {
 		}
 
 		XOR = {
-            
+
         }
 
 		xp_research_type = navy
@@ -715,7 +715,7 @@ technologies = {
 			leads_to_tech = basic_heavy_armor_scheme
 			research_cost_coeff = 1
 		}
-		
+
 		research_cost = 1.5
 
 		start_year = 1936
@@ -730,7 +730,7 @@ technologies = {
 
 		ai_will_do = {
 			factor = 1
-			
+
 			modifier = {
 				is_major = yes
 				factor = 2
@@ -991,7 +991,7 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
 		}
 
 		categories = {
@@ -1024,7 +1024,7 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
 		}
 
 		categories = {
@@ -1052,7 +1052,7 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
 		}
 
 		categories = {
@@ -1094,7 +1094,7 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
 		}
 
 		categories = {
@@ -1128,7 +1128,7 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
 		}
 
 		categories = {
@@ -1168,7 +1168,7 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
 		}
 
 		categories = {
@@ -1198,7 +1198,7 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
 		}
 
 		categories = {
@@ -1230,7 +1230,7 @@ early_ship_hull_carrier = {
 
 		ai_will_do = {
 			factor = 1
-			
+
 		}
 
 		categories = {

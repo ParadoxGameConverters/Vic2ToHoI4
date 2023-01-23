@@ -117,7 +117,7 @@ peace_ai_desires = {
         peace_action_type = { take_states puppet liberate force_government }
 
         enable = {
-            FROM.FROM.FROM = { 
+            FROM.FROM.FROM = {
                 NOT = { is_controlled_by = ROOT }
                 controller = {
                     pc_is_loser = no
@@ -198,7 +198,7 @@ peace_ai_desires = {
     non_aligned_should_stick_to_claims = {
         peace_action_type = take_states
         enable = {
-            ROOT = { 
+            ROOT = {
                 has_government = neutrality
                 is_major = no
             }
@@ -223,7 +223,7 @@ peace_ai_desires = {
         }
         ai_desire = 10
     }
-	
+
 
     avoid_forcing_gov_if_ally_has_core = {
         peace_action_type = force_government
@@ -313,7 +313,7 @@ peace_ai_desires = {
         }
         ai_desire = -75
     }
-	
+
     return_puppet_cores = { #This simply has to be the highest priority.
         peace_action_type = take_states
         enable = {
@@ -559,7 +559,7 @@ peace_ai_desires = {
 
         enable = {
             is_faction_leader = yes
-            ROOT.FROM.FROM = { 
+            ROOT.FROM.FROM = {
                 is_subject = yes
                 OR = {
                     pc_is_puppeted = no
@@ -578,7 +578,7 @@ peace_ai_desires = {
         peace_action_type = { force_government }
 
         enable = {
-            ROOT.FROM.FROM = { 
+            ROOT.FROM.FROM = {
                 is_subject = yes
             }
             ROOT.FROM.FROM.FROM = {

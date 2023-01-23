@@ -26,7 +26,7 @@ every_possible_country = {
 				}
 			}
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_head_of_intelligence }
 		}
 	}
@@ -41,7 +41,7 @@ every_possible_country = {
 			slot = political_advisor
 			traits = { captain_of_industry }
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_captain_of_industry }
 		}
 	}
@@ -51,7 +51,7 @@ every_possible_country = {
 			slot = political_advisor
 			traits = { fortification_engineer }
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_fortification_engineer }
 		}
 	}
@@ -61,7 +61,7 @@ every_possible_country = {
 			slot = political_advisor
 			traits = { war_industrialist }
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_war_industrialist }
 		}
 	}
@@ -73,7 +73,7 @@ every_possible_country = {
 			traits = { army_chief_offensive_1 }
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_army_chief_off }
 		}
 	}
@@ -84,7 +84,7 @@ every_possible_country = {
 			traits = { army_chief_defensive_1 }
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_army_chief_def }
 		}
 	}
@@ -96,7 +96,7 @@ every_possible_country = {
 			traits = { navy_chief_decisive_battle_2 }
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_navy_chief_decisive_bat }
 		}
 	}
@@ -107,7 +107,7 @@ every_possible_country = {
 			traits = { navy_anti_submarine_2 }
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_navy_anti_submarine }
 		}
 	}
@@ -119,7 +119,7 @@ every_possible_country = {
 			traits = { air_close_air_support_2 }
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_air_close_air_sup }
 		}
 	}
@@ -130,7 +130,7 @@ every_possible_country = {
 			traits = { air_chief_all_weather_2 }
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_air_chief_all_weather }
 		}
 	}
@@ -143,7 +143,7 @@ every_possible_country = {
 			ledger = army
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_army_art }
 		}
 	}
@@ -155,7 +155,7 @@ every_possible_country = {
 			ledger = army
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_army_log }
 		}
 	}
@@ -167,7 +167,7 @@ every_possible_country = {
 			ledger = navy
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_navy_fleet_log }
 		}
 	}
@@ -179,7 +179,7 @@ every_possible_country = {
 			ledger = air
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_air_air_combat_trainer }
 		}
 	}
@@ -192,7 +192,7 @@ every_possible_country = {
 			ledger = army
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_military_theorist }
 		}
 	}
@@ -204,7 +204,7 @@ every_possible_country = {
 			ledger = navy
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_naval_theorist }
 		}
 	}
@@ -216,7 +216,7 @@ every_possible_country = {
 			ledger = air
 			cost = 50
 		}
-		portraits = { 
+		portraits = {
 			army = { small = GFX_idea_generic_air_warfare_theorist }
 		}
 	}

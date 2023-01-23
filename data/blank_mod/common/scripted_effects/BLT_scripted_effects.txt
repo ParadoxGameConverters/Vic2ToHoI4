@@ -108,7 +108,7 @@ give_fascist_tank_licences = { #does not have to take non-dlc into account becau
 	}
 }
 
-give_aircraft_and_licences = {	
+give_aircraft_and_licences = {
 	if = {
 		limit = {
 			has_tech = jet_fighter2

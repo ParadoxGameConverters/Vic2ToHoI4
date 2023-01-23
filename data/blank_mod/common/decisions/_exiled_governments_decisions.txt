@@ -179,7 +179,7 @@ governments_in_exile = {
 		}
 
 		days_remove = 120
-	
+
 		ai_will_do = {
 			factor = 0
 		}

@@ -5,7 +5,7 @@ default = {
 		#female = {
 		#}
 	#}
-	
+
 	#army = {
 		#male = {
 		#}
@@ -28,7 +28,7 @@ default = {
 	female = {
 		"tools/art/portrait_leader_background.png"
 	}
-	
+
 	political = { # This should never actually appear, but better do define something here
 		communism = {
 			male = { "gfx/interface/operations/coup_government.dds" }
@@ -55,6 +55,6 @@ default = {
 			female = { "tools/art/portrait_leader_background.png" }
 		}
 	}
-	
+
 }
 #All groups should have plenty of generic pictures to draw from.

@@ -19,7 +19,7 @@ debug_decisions = {
 			add_ideas = add_production_efficiency
 		}
 	}
-		
+
 	remove_efficiency_growth_debug = {
 		icon = generic_research
 
@@ -47,10 +47,10 @@ debug_decisions = {
 					has_idea = decrease_production_efficiency
 				}
 				remove_ideas = decrease_production_efficiency
-			}	
+			}
 		}
 	}
-		
+
 	decrease_efficiency_growth_debug = {
 		icon = generic_research
 
@@ -74,7 +74,7 @@ debug_decisions = {
 			base = 0
 		}
 	}
-	
+
 	history_entry_debug = {
 
 		icon = generic_research
@@ -99,7 +99,7 @@ debug_decisions = {
 					allow = yes
 				}
 			}
-			
+
 		}
 
 		ai_will_do = {
@@ -131,7 +131,7 @@ debug_decisions = {
 		ai_will_do = {
 			base = 0
 		}
-		
+
 		power_balance = _test_balance
 	}
 
@@ -190,7 +190,7 @@ debug_decisions = {
 
 	#FRA_capture_operative_debug - Removed because references FRA tag
 	#FRA_turn_operative_debug
-  
+
 	harm_operative_debug = {
 		available = {
 			num_of_operatives > 0

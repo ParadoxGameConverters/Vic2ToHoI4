@@ -4,24 +4,24 @@ ideas = {
 			allowed = {
 				always = no
 			}
-			
+
 			allowed_civil_war = {
 				always = yes
 			}
-			
+
 			removal_cost = -1
-			
+
 			picture = generic_agrarian_society
-			
+
 			research_bonus = {
 				armor = -4.00
 				air_equipment = -4.00
 				naval_equipment = -4.00
 				artillery = -4.00
 			}
-			
+
 			modifier = {
-				production_factory_max_efficiency_factor = -0.2		
+				production_factory_max_efficiency_factor = -0.2
 				research_speed_factor = -0.50
 				political_power_factor = -0.50
 				stability_factor = -0.25

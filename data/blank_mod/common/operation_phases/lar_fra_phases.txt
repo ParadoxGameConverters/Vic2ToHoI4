@@ -4,9 +4,9 @@ lar_fra_coup_pre_position_units = {
 	outcome = preposition_units_outcome
 	picture = "GFX_phase_lar_fra_coup_pre_position_units"
 	icon = "GFX_phase_lar_fra_coup_pre_position_units_small"
-	
+
 	equipment = {
-	
+
 	}
 }
 
@@ -17,8 +17,8 @@ lar_fra_launch_coup = {
 	risk_extra = launch_coup_exfiltration_outcome_fail
 	picture = "GFX_phase_lar_fra_launch_coup"
 	icon = "GFX_phase_lar_fra_coup_launch_coup_small"
-	
+
 	equipment = {
-		
+
 	}
 }

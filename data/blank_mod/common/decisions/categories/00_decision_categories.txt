@@ -33,7 +33,7 @@ war_measures = {
 
 	visible = {
 		has_war = yes
-		has_war_with_non_exiled_country = yes  
+		has_war_with_non_exiled_country = yes
 	}
 }
 operations = {
@@ -43,11 +43,11 @@ operations = {
 
 foreign_support = {
 	icon = generic_political_actions
-	
+
 }
 
 prestigious_projects = {
-	
+
 }
 
 foreign_politics = {
@@ -81,7 +81,7 @@ crisis = {
 demobilization = {
 	icon = generic_crisis
 	priority = 100
-	
+
 	visible = {
 		has_war = no
 	}
@@ -101,7 +101,7 @@ prospect_for_resources = {
 }
 
 special_projects = {
-	
+
 	icon = generic_prospect_for_resources
 
 	allowed = {
@@ -110,7 +110,7 @@ special_projects = {
 }
 
 governments_in_exile = {
-	
+
 	icon = generic_formable_nations
 	picture = GFX_decision_cat_picture_government_in_exile
 	allowed = {
@@ -123,7 +123,7 @@ governments_in_exile = {
 }
 
 category_exile_forces = {
-	
+
 	icon = infiltration
 	picture = GFX_decision_cat_picture_government_in_exile
 	allowed = {

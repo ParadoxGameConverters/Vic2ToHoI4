@@ -1388,7 +1388,7 @@ hellenic_caucasian = {
 			GFX_GRE_Alexander
 			GFX_GRE_George
 			GFX_GRE_Paul
-			GFX_Cyprus_Makarios_Third 
+			GFX_Cyprus_Makarios_Third
 		}
 		neutrality = {
 			"gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
@@ -4967,8 +4967,8 @@ central_american_native = {
 		GFX_PAN_Boris_Salazar
 		GFX_MEX_Pancho_Villa_General
 		GFX_ELS_general_Maximiliano_Martinez
-		GFX_quechua_mamani 
-		GFX_quechua_quispe_iskay 
+		GFX_quechua_mamani
+		GFX_quechua_quispe_iskay
 	}
 	navy_portraits = {
 		#Generic
@@ -5086,10 +5086,10 @@ south_american_native = {
 
 	army_portraits = {
 		#Generic
-		#Other 
-		GFX_quechua_saturnino 
-		GFX_quechua_mamani 
-		GFX_quechua_quispe_iskay 
+		#Other
+		GFX_quechua_saturnino
+		GFX_quechua_mamani
+		GFX_quechua_quispe_iskay
 		GFX_nat_south_fascist #Revise
 		GFX_nat_south_absolutist #Revise
 	}
@@ -5103,16 +5103,16 @@ south_american_native = {
 	}
 	leader_portraits = {
 		communism = {
-			GFX_quechua_quispe_iskay 
+			GFX_quechua_quispe_iskay
 			"gfx/leaders/generic/r56_portrait_generic_politician_south_america_1.dds"
 			GFX_nat_carib_communist
 			GFX_nat_south_communist
 			"gfx/leaders/south_american_native/portrait_fop_micaela_feldman.tga"
 		}
 		democratic = {
-			GFX_quechua_saturnino 
-			GFX_quechua_mamani 
-			GFX_quechua_quispe_iskay 
+			GFX_quechua_saturnino
+			GFX_quechua_mamani
+			GFX_quechua_quispe_iskay
 			GFX_nat_south_democratic
 			GFX_nat_carib_democratic
 			GFX_QCH_Pahacutec
@@ -5123,31 +5123,31 @@ south_american_native = {
 			"gfx/leaders/PAN/portrait_pan_harmodio_arias_madrid.dds"
 			GFX_nat_south_fascist
 			GFX_nat_carib_fascist
-			GFX_quechua_mamani 
+			GFX_quechua_mamani
 		}
 		absolutist = {
 			"gfx/leaders/central_american_native/portrait_nat_carib_absolutist.dds"
 			"gfx/leaders/central_american_native/portrait_nat_carib_democratic.dds"
 			GFX_nat_south_absolutist
 			GFX_Bolivia_Carlos_Quiroga
-			GFX_quechua_saturnino 
+			GFX_quechua_saturnino
 		}
 		neutrality = {
 			"gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds"
 			"gfx/leaders/ECU/portrait_ecu_federico_paez.dds"
 			"gfx/leaders/south_american_native/portrait_nat_south_neutral.dds"
 			GFX_nat_carib_neutral
-			GFX_quechua_mamani 
-			GFX_quechua_quispe_iskay 
+			GFX_quechua_mamani
+			GFX_quechua_quispe_iskay
 		}
 		radical = {
 			"gfx/leaders/CUB/portrait_cub_jose_barnet.dds"
 			GFX_nat_south_radical
 			GFX_Columbia_Mariano_Ospina
 			GFX_nat_carib_radical
-			GFX_quechua_saturnino 
-			GFX_quechua_mamani 
-			GFX_quechua_quispe_iskay 
+			GFX_quechua_saturnino
+			GFX_quechua_mamani
+			GFX_quechua_quispe_iskay
 		}
 	}
 	female_portraits = {

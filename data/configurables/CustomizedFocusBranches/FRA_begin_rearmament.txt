@@ -20,7 +20,7 @@ focus_tree = {
 		available = {
 			has_war_support > 0.12
 		}
-		
+
 		bypass = {
 
 		}
@@ -95,9 +95,9 @@ focus_tree = {
 		}
 
 		available = {
-			
+
 		}
-		
+
 		bypass = {
 
 		}
@@ -129,9 +129,9 @@ focus_tree = {
 		}
 
 		available = {
-			
+
 		}
-		
+
 		bypass = {
 
 		}
@@ -324,7 +324,7 @@ focus_tree = {
 				}
 			}
 		}
-		
+
 		bypass = {
 
 		}
@@ -335,19 +335,19 @@ focus_tree = {
 
 		completion_reward = {
 			division_template = {
-				name = "Armored Division" 	
+				name = "Armored Division"
 
 				regiments = {
-					medium_armor = { x = 0 y = 0 }		
-					heavy_armor = { x = 0 y = 1 }		
-					medium_armor = { x = 1 y = 0 }		
-					medium_armor = { x = 1 y = 1 }		
-					motorized = { x = 2 y = 0 }			
+					medium_armor = { x = 0 y = 0 }
+					heavy_armor = { x = 0 y = 1 }
+					medium_armor = { x = 1 y = 0 }
+					medium_armor = { x = 1 y = 1 }
+					motorized = { x = 2 y = 0 }
 					motorized = { x = 2 y = 1 }
 					motorized = { x = 2 y = 2 }
 				}
 				support = {
-					recon = { x = 0 y = 0 }      		
+					recon = { x = 0 y = 0 }
 					artillery = { x = 0 y = 1 }
 					engineer = { x = 0 y = 2 }
 				}
@@ -358,11 +358,11 @@ focus_tree = {
 				}
 				capital_scope = {
 					create_unit = {
-						division = "name = \"1st Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7 force_equipment_variants = { heavy_tank_chassis_0 = { creator = ROOT } }"  
+						division = "name = \"1st Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7 force_equipment_variants = { heavy_tank_chassis_0 = { creator = ROOT } }"
 						owner = ROOT
 					}
 					create_unit = {
-						division = "name = \"2nd Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7 force_equipment_variants = { heavy_tank_chassis_0 = { creator = ROOT } }"  
+						division = "name = \"2nd Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7 force_equipment_variants = { heavy_tank_chassis_0 = { creator = ROOT } }"
 						owner = ROOT
 					}
 				}
@@ -370,11 +370,11 @@ focus_tree = {
 			else = {
 				capital_scope = {
 					create_unit = {
-						division = "name = \"1st Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7"  
+						division = "name = \"1st Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7"
 						owner = ROOT
 					}
 					create_unit = {
-						division = "name = \"2nd Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7"  
+						division = "name = \"2nd Armored Division\" division_template = \"Armored Division\" start_experience_factor = 0.7"
 						owner = ROOT
 					}
 				}
@@ -401,9 +401,9 @@ focus_tree = {
 		}
 
 		available = {
-			
+
 		}
-		
+
 		bypass = {
 
 		}
@@ -436,9 +436,9 @@ focus_tree = {
 		}
 
 		available = {
-			
+
 		}
-		
+
 		bypass = {
 
 		}
@@ -470,9 +470,9 @@ focus_tree = {
 		}
 
 		available = {
-			
+
 		}
-		
+
 		bypass = {
 
 		}
@@ -530,9 +530,9 @@ focus_tree = {
 		}
 
 		available = {
-			
+
 		}
-		
+
 		bypass = {
 
 		}
@@ -621,9 +621,9 @@ focus_tree = {
 		}
 
 		available = {
-			
+
 		}
-		
+
 		bypass = {
 
 		}
@@ -639,7 +639,7 @@ focus_tree = {
 	focus = {
 		id = FRA_cas_focus
 		icon = GFX_goal_generic_CAS
-	 	prerequisite = { 
+	 	prerequisite = {
 	 		focus = FRA_air_dominance
 	 	}
 		x = 0
@@ -677,9 +677,9 @@ focus_tree = {
 		}
 
 		available = {
-			
+
 		}
-		
+
 		bypass = {
 
 		}
@@ -716,9 +716,9 @@ focus_tree = {
 		}
 
 		available = {
-			
+
 		}
-		
+
 		bypass = {
 
 		}
@@ -734,9 +734,9 @@ focus_tree = {
 	focus = {
 		id = FRA_army_reform
 		icon = GFX_goal_generic_army_doctrines
-		prerequisite = { 
-			focus = FRA_light_medium_armor 
-			focus = FRA_heavy_armor_focus 
+		prerequisite = {
+			focus = FRA_light_medium_armor
+			focus = FRA_heavy_armor_focus
 			focus = FRA_extend_the_maginot_line
 			focus = FRA_flying_artillery
 		}
@@ -763,5 +763,5 @@ focus_tree = {
 			custom_effect_tooltip = available_designer
 			show_ideas_tooltip = FRA_AMX
 		}
-	}	
+	}
 }

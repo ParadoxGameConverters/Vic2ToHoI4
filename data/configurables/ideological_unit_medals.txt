@@ -1,525 +1,525 @@
 democratic = {
-	
+
 	### Generic Democratic
-	
+
 	democratic_gallantry = {
-		
-		available = { 
-			has_government = democratic 
+
+		available = {
+			has_government = democratic
 		}
 		frame = 1
 		icon = "GFX_medal_icon_democratic"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_morale_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	democratic_honor = {
-		
-		available = { 
-			has_government = democratic 
+
+		available = {
+			has_government = democratic
 		}
 		frame = 2
 		icon = "GFX_medal_icon_democratic"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			supply_consumption_factor = -0.15
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	democratic_war_cross = {
-		
-		available = { 
+
+		available = {
 			has_government = democratic
 		}
 		frame = 3
 		icon = "GFX_medal_icon_democratic"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_defence_factor = 0.05
 			recon_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	democratic_lion = {
-		
-		available = { 
+
+		available = {
 			has_government = democratic
 		}
 		frame = 4
 		icon = "GFX_medal_icon_democratic"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			experience_loss_factor = -0.25
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
 
 }
 
 communism = {
-	
+
 	### Generic Communist
-	
+
 	communist_service_medal = {
-		
-		available = { 
+
+		available = {
 			has_government = communism
 		}
 		frame = 1
 		icon = "GFX_medal_icon_communism"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			supply_consumption_factor = -0.15
 			army_fuel_consumption_factor = -0.15
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	communist_red_star = {
-		
-		available = { 
+
+		available = {
 			has_government = communism
 		}
 		frame = 2
 		icon = "GFX_medal_icon_communism"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_morale_factor = 0.1
 			army_defence_factor = 0.05
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	communist_merit_medal = {
-		
-		available = { 
+
+		available = {
 			has_government = communism
 		}
 		frame = 3
 		icon = "GFX_medal_icon_communism"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_org_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	communist_hero_of_revolution = {
-		
-		available = { 
+
+		available = {
 			has_government = communism
 		}
 		frame = 4
 		icon = "GFX_medal_icon_communism"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_strength_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
 
 }
 
 radical = {
-	
+
 	### Generic Radical
-	
+
 	radical_service_medal = {
-		
-		available = { 
+
+		available = {
 			has_government = radical
 		}
 		frame = 1
 		icon = "GFX_medal_icon_default"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			supply_consumption_factor = -0.15
 			army_fuel_consumption_factor = -0.15
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	radical_yellow_cross = {
-		
-		available = { 
+
+		available = {
 			has_government = radical
 		}
 		frame = 2
 		icon = "GFX_medal_icon_default"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_morale_factor = 0.1
 			army_defence_factor = 0.05
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	radical_merit_medal = {
-		
-		available = { 
+
+		available = {
 			has_government = radical
 		}
 		frame = 3
 		icon = "GFX_medal_icon_default"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_org_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	radical_hero_of_revolution = {
-		
-		available = { 
+
+		available = {
 			has_government = radical
 		}
 		frame = 4
 		icon = "GFX_medal_icon_default"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_strength_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
 
 }
 
 fascism = {
-	
+
 	### Generic Fascism
-	
+
 	fascism_bravery = {
-		
-		available = { 
+
+		available = {
 			has_government = fascism
 		}
 		frame = 1
 		icon = "GFX_medal_icon_fascism"
-		
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_org_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	fascism_merit = {
-		
-		available = { 
+
+		available = {
 			has_government = fascism
 		}
 		frame = 2
 		icon = "GFX_medal_icon_fascism"
-		
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_attack_factor = 0.05
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	fascism_order_brave = {
-		
-		available = { 
+
+		available = {
 			has_government = fascism
 		}
 		frame = 3
 		icon = "GFX_medal_icon_fascism"
-		
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			armor_factor = 0.1
 			recon_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	fascism_heroism = {
-		
-		available = { 
+
+		available = {
 			has_government = fascism
 		}
 		frame = 4
 		icon = "GFX_medal_icon_fascism"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			breakthrough_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
 
 }
 
 absolutist = {
-	
+
 	### Generic Absolutist
-	
+
 	absolutist_bravery = {
-		
-		available = { 
+
+		available = {
 			has_government = absolutist
 		}
 		frame = 1
 		icon = "GFX_medal_icon_fascism"
-		
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_org_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	absolutist_military_order = {
-		
-		available = { 
+
+		available = {
 			has_government = absolutist
 		}
 		frame = 2
 		icon = "GFX_medal_icon_fascism"
-		
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_attack_factor = 0.05
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	absolutist_sword = {
-		
-		available = { 
+
+		available = {
 			has_government = absolutist
 		}
 		frame = 3
 		icon = "GFX_medal_icon_fascism"
-		
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			armor_factor = 0.1
 			recon_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	absolutist_virtue = {
-		
-		available = { 
+
+		available = {
 			has_government = absolutist
 		}
 		frame = 4
 		icon = "GFX_medal_icon_fascism"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			breakthrough_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 }
 
 neutrality = {
-	
+
 	### Generic Neutrality
-	
+
 	neutral_bravery = {
-		
-		available = { 
+
+		available = {
 			has_government = neutrality
 		}
 		frame = 1
 		icon = "GFX_medal_icon_default"
-		
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_defence_factor = 0.05
 			max_dig_in_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	neutral_military_order = {
-		
-		available = { 
+
+		available = {
 			has_government = neutrality
 		}
 		frame = 2
 		icon = "GFX_medal_icon_default"
-		
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			supply_consumption_factor = -0.15
 			army_morale_factor = 0.1
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	neutral_sword = {
-		
-		available = { 
+
+		available = {
 			has_government = neutrality
 		}
 		frame = 3
 		icon = "GFX_medal_icon_default"
-		
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			army_attack_factor = 0.05
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 	neutral_virtue = {
-		
-		available = { 
+
+		available = {
 			has_government = neutrality
 		}
 		frame = 4
 		icon = "GFX_medal_icon_default"
-	
+
 		cost = @cost
-		
+
 		unit_modifiers = {
 			experience_loss_factor = -0.2
 			army_morale_factor = 0.05
 		}
-		
+
 		one_time_effect = {
 			add_divisional_commander_xp = 100
 		}
-		
+
 	}
-	
+
 }

@@ -2459,7 +2459,7 @@
 	link = { vic2 = 1096 hoi4 = 3653 } # Batum -> Batumi
 	link = { comment = "* * Van" }
 	link = { vic2 = 887 hoi4 = 11853 hoi4 = 652 hoi4 = 6991 hoi4 = 6976 hoi4 = 9886 } # Erzurum -> Erzurum, land, Oltu, Ispir, Bayburt
-	link = { vic2 = 890 hoi4 = 6935 hoi4 = 864 hoi4 = 7470 hoi4 = 4583 hoi4 = 12376 } # Van -> Van, Edremit, Ercis, Igdir, Karaköse 
+	link = { vic2 = 890 hoi4 = 6935 hoi4 = 864 hoi4 = 7470 hoi4 = 4583 hoi4 = 12376 } # Van -> Van, Edremit, Ercis, Igdir, Karaköse
 	link = { vic2 = 891 hoi4 = 12318 hoi4 = 9858 hoi4 = 11880 hoi4 = 10399 } # Bitlis -> Tatvan, Mus, Bulanik, Solhan
 	link = { vic2 = 3231 hoi4 = 13121 } # Lake Van -> (Lake)
 	link = { comment = "* " }
