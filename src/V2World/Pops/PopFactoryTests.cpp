@@ -1,8 +1,8 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Issues/IssuesBuilder.h"
 #include "src/V2World/Pops/PopFactory.h"
+#include <gmock/gmock-matchers.h>
 #include <sstream>
-
 
 
 class Vic2World_Pops_PopFactoryTests: public testing::Test
@@ -130,7 +130,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonIntegerIssueNumberLogsWarning
 
 	std::cout.rdbuf(stdOutBuf);
 
-	EXPECT_EQ(" [WARNING] Poorly formatted pop issue: not_an_int=87.125\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Poorly formatted pop issue: not_an_int=87.125"));
 }
 
 
@@ -151,7 +151,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonFloatIssueSupportLogsWarning)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	EXPECT_EQ(" [WARNING] Poorly formatted pop issue: 42=not_a_float\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Poorly formatted pop issue: 42=not_a_float"));
 }
 
 

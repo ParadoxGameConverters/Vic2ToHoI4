@@ -1162,6 +1162,9 @@
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClCompile>
+    <ClCompile Include="external\common_items\external\zip\src\zip.c">
+      <Filter>external\zip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2571,6 +2574,15 @@
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranches.h">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClInclude>
+    <ClInclude Include="external\common_items\external\zip\src\miniz.h">
+      <Filter>external\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\external\zip\src\zip.h">
+      <Filter>external\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\ModLoader\Mod.h">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
@@ -3184,6 +3196,9 @@
     </Filter>
     <Filter Include="src\HoI4World\FocusTrees">
       <UniqueIdentifier>{956eaec7-b39e-4efe-8c0c-58a049646b9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\zip">
+      <UniqueIdentifier>{c9742784-eff9-4b13-bf56-74a104faeed6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

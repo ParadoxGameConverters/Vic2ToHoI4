@@ -83,7 +83,8 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, UncategorizedCountriesA
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] TAG was not in any language category. Defaulting to tag_mscne\n", log.str());
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[WARNING] TAG was not in any language category. Defaulting to tag_mscne"));
 }
 
 

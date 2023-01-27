@@ -1783,6 +1783,9 @@
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp">
       <Filter>src\HOI4World\FocusTrees</Filter>
     </ClCompile>
+    <ClCompile Include="external\common_items\external\zip\src\zip.c">
+      <Filter>external\common_items\zip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2213,6 +2216,9 @@
     </Filter>
     <Filter Include="src\HOI4World\FocusTrees">
       <UniqueIdentifier>{0f64a54e-5b9c-47ae-89cd-58afdec9b5cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\common_items\zip">
+      <UniqueIdentifier>{e07dd871-3220-4e8a-8309-23b899160b72}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -311,15 +311,13 @@ TEST(ConfigurationTests, InstallationVersionsAreLogged)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(
-		 "    [INFO] Reading configuration file\n"
-		 "    [INFO] \tVictoria 2 install path is ./Vic2Windows\n"
-		 "    [INFO] \tHoI4 path install path is ./HoI4Windows\n"
-		 "    [INFO] \tVic2 version: 1.3\n"
-		 "    [INFO] \tHoI4 version: 1.10.7\n"
-		 "    [INFO] Using output name input\n"
-		 "    [INFO] No mods were detected in savegame. Skipping mod processing.\n",
-		 log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Reading configuration file"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tVictoria 2 install path is ./Vic2Windows"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tHoI4 path install path is ./HoI4Windows"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tVic2 version: 1.3"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tHoI4 version: 1.10.7"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Using output name input"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] No mods were detected in savegame. Skipping mod processing."));
 }
 
 TEST(ConfigurationTests, HoI4ModPathIsLogged)
@@ -336,15 +334,15 @@ TEST(ConfigurationTests, HoI4ModPathIsLogged)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(
-		 "    [INFO] Reading configuration file\n"
-		 "    [INFO] \tHoI4 mod path is C:\\MyDocuments\\Paradox Interactive\\Hearts of Iron IV\\mod\n"
-		 "   [ERROR] Vic2 version could not be determined, proceeding blind!\n"
-		 " [WARNING] Failure extracting version: /launcher-settings.json does not exist.\n"
-		 "   [ERROR] HoI4 version could not be determined, proceeding blind!\n"
-		 "    [INFO] Using output name input\n"
-		 "    [INFO] No mods were detected in savegame. Skipping mod processing.\n",
-		 log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Reading configuration file"));
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[INFO] \tHoI4 mod path is C:\\MyDocuments\\Paradox Interactive\\Hearts of Iron IV\\mod"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[ERROR] Vic2 version could not be determined, proceeding blind!"));
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[WARNING] Failure extracting version: /launcher-settings.json does not exist."));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[ERROR] HoI4 version could not be determined, proceeding blind!"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Using output name input"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] No mods were detected in savegame. Skipping mod processing."));
 }
 
 

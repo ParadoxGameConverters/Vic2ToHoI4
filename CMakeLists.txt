@@ -26,9 +26,6 @@ include_directories(external/googletest/googletest/include)
 include_directories(external/googletest/googlemock)
 include_directories(external/googletest/googlemock/include)
 
-add_subdirectory(external/common_items/ZipLib [binary_dir])
-
-
 #### Converter ####
 
 file(GLOB HOI4WORLD_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/*.cpp")
@@ -398,6 +395,7 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/Parser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/ParserHelpers.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/StringUtils.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/targa.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/external/zip/src/zip.c ")
 
 add_executable(
 	Vic2ToHoi4Converter

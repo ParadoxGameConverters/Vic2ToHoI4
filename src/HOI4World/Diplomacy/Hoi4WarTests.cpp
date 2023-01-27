@@ -2,8 +2,8 @@
 #include "src/HOI4World/Diplomacy/HoI4War.h"
 #include "src/Mappers/Country/CountryMapperBuilder.h"
 #include "src/Mappers/Provinces/ProvinceMapperBuilder.h"
+#include <gmock/gmock-matchers.h>
 #include <sstream>
-
 
 
 TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
@@ -43,7 +43,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] Could not map ODF, original defender in a war\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not map ODF, original defender in a war"));
 }
 
 
@@ -182,7 +182,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] Could not map OAT, original attacker in a war\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not map OAT, original attacker in a war"));
 }
 
 

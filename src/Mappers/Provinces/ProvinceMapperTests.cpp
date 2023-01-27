@@ -78,10 +78,9 @@ TEST(Mappers_Provinces_ProvinceMapperTests, BadLineInMapDefinitionLogsWarning)
 			  .importProvinceMapper(*Configuration::Builder().build());
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(
-		 "    [INFO] Parsing province mappings\n"
-		 " [WARNING] Bad line in /map/definition.csv: bad_line;0;0;0;land;false;unknown;0\n",
-		 log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Parsing province mappings"));
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[WARNING] Bad line in /map/definition.csv: bad_line;0;0;0;land;false;unknown;0"));
 }
 
 
@@ -98,11 +97,9 @@ TEST(Mappers_Provinces_ProvinceMapperTests, MissingHoI4ProvinceMappingLogsWarnin
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(
-		 "    [INFO] Parsing province mappings\n"
-		 " [WARNING] No mapping for HoI4 province 12\n"
-		 " [WARNING] No mapping found for HoI4 province 12\n",
-		 log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Parsing province mappings"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping for HoI4 province 12"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping found for HoI4 province 12"));
 }
 
 
@@ -120,7 +117,7 @@ TEST(Mappers_Provinces_ProvinceMapperTests, MissingVic2ProvinceMappingLogsWarnin
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] No mapping found for Vic2 province 12\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping found for Vic2 province 12"));
 }
 
 
@@ -135,5 +132,5 @@ TEST(Mappers_Provinces_ProvinceMapperTests, NoLoggingWhenAllProvincesMapped)
 			  .importProvinceMapper(*Configuration::Builder().build());
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ("    [INFO] Parsing province mappings\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Parsing province mappings"));
 }

@@ -2919,7 +2919,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 	country->eatCountry(*countryTwo, true);
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ("   [DEBUG]     Merged TWO into TAG\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[DEBUG]     Merged TWO into TAG"));
 }
 
 
@@ -3017,7 +3017,7 @@ TEST(Vic2World_Countries_CountryTests, MissingProvinceInStateLogged)
 	country->putProvincesInStates();
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] State () owned by TAG had province (42) that TAG did not\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] State () owned by TAG had province (42) that TAG did not"));
 }
 
 

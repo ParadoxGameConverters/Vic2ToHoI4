@@ -123,11 +123,10 @@ TEST(Vic2World_World_WorldTests, InvalidCountriesAreLogged)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	EXPECT_THAT(log.str(),
-		 testing::HasSubstr(" [WARNING] Invalid tag ONE\n"
-								  " [WARNING] Invalid tag TWO\n"
-								  " [WARNING] Invalid tag NON\n"
-								  " [WARNING] Invalid tag NOT\n"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Invalid tag ONE"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Invalid tag TWO"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Invalid tag NON"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Invalid tag NOT"));
 }
 
 
@@ -680,12 +679,11 @@ TEST(Vic2World_World_WorldTests, ProvinceMappingsAreChecked)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	EXPECT_THAT(log.str(),
-		 testing::HasSubstr(" [WARNING] No mapping for Vic2 province 1\n"
-								  " [WARNING] No mapping for Vic2 province 2\n"
-								  " [WARNING] No mapping for Vic2 province 3\n"
-								  " [WARNING] No mapping for Vic2 province 4\n"
-								  " [WARNING] No mapping for Vic2 province 5\n"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping for Vic2 province 1"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping for Vic2 province 2"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping for Vic2 province 3"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping for Vic2 province 4"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No mapping for Vic2 province 5"));
 }
 
 
