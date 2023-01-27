@@ -395,7 +395,7 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/Parser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/ParserHelpers.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/StringUtils.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/targa.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/external/zip/src/zip.c ")
+set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/external/zip/src/zip.c")
 
 add_executable(
 	Vic2ToHoi4Converter
