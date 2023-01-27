@@ -937,17 +937,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="data\resources\msvcp140_codecvt_ids.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\resources\vcruntime140_1.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="data\flags\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
@@ -976,7 +965,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="external\Release\**\*.*">
+    <Content Include="Release\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DeploymentContent>true</DeploymentContent>
       <Link>..\%(RecursiveDir)\%(Filename)%(Extension)</Link>

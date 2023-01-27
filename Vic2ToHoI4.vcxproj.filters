@@ -2585,12 +2585,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
-      <Filter>data\resources</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\resources\vcruntime140_1.dll">
-      <Filter>data\resources</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="data\configuration-example.txt">
       <Filter>data</Filter>
     </CopyFileToFolders>
@@ -2605,9 +2599,6 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\version.txt">
       <Filter>data</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\resources\msvcp140_codecvt_ids.dll">
-      <Filter>data\resources</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -2983,9 +2974,6 @@
     </Filter>
     <Filter Include="data\fronter">
       <UniqueIdentifier>{062d2133-8d7f-45bc-9e42-30917afe65b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="data\resources">
-      <UniqueIdentifier>{8d7e2d88-1eff-4971-976b-57bfc8d45dee}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\HoI4World\TankDesigns">
       <UniqueIdentifier>{ddfa7886-4d1e-48ca-b41b-e7bccef52e91}</UniqueIdentifier>
