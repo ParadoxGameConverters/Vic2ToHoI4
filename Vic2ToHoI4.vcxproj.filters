@@ -1162,6 +1162,9 @@
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClCompile>
+    <ClCompile Include="external\common_items\external\zip\src\zip.c">
+      <Filter>external\zip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
@@ -2571,14 +2574,17 @@
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranches.h">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClInclude>
+    <ClInclude Include="external\common_items\external\zip\src\miniz.h">
+      <Filter>external\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\external\zip\src\zip.h">
+      <Filter>external\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="external\common_items\ModLoader\Mod.h">
+      <Filter>external\common_items\ModLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="data\resources\VC_redist.x64.exe">
-      <Filter>data\resources</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\resources\vcruntime140_1.dll">
-      <Filter>data\resources</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="data\configuration-example.txt">
       <Filter>data</Filter>
     </CopyFileToFolders>
@@ -2593,9 +2599,6 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\version.txt">
       <Filter>data</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\resources\msvcp140_codecvt_ids.dll">
-      <Filter>data\resources</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -2972,9 +2975,6 @@
     <Filter Include="data\fronter">
       <UniqueIdentifier>{062d2133-8d7f-45bc-9e42-30917afe65b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="data\resources">
-      <UniqueIdentifier>{8d7e2d88-1eff-4971-976b-57bfc8d45dee}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\HoI4World\TankDesigns">
       <UniqueIdentifier>{ddfa7886-4d1e-48ca-b41b-e7bccef52e91}</UniqueIdentifier>
     </Filter>
@@ -3184,6 +3184,9 @@
     </Filter>
     <Filter Include="src\HoI4World\FocusTrees">
       <UniqueIdentifier>{956eaec7-b39e-4efe-8c0c-58a049646b9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\zip">
+      <UniqueIdentifier>{c9742784-eff9-4b13-bf56-74a104faeed6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

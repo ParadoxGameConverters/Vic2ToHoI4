@@ -43,5 +43,5 @@ TEST(Vic2World_Military_Leaders_TraitTests, BadTraitEffectAmountsAreLogged)
 	const auto traitEffects = Vic2::getTraitEffects(input);
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] Trait effect amount couldn't be parsed\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Trait effect amount couldn't be parsed"));
 }

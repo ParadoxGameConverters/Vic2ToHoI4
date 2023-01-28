@@ -26,9 +26,6 @@ include_directories(external/googletest/googletest/include)
 include_directories(external/googletest/googlemock)
 include_directories(external/googletest/googlemock/include)
 
-add_subdirectory(external/common_items/ZipLib [binary_dir])
-
-
 #### Converter ####
 
 file(GLOB HOI4WORLD_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/*.cpp")
@@ -398,6 +395,7 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/Parser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/ParserHelpers.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/StringUtils.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/targa.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/external/zip/src/zip.c")
 
 add_executable(
 	Vic2ToHoi4Converter
@@ -409,7 +407,7 @@ set_target_properties( Vic2ToHoi4Converter
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
-target_link_libraries(Vic2ToHoi4Converter OutHoI4World HoI4World Map Vic2World Mappers ZIPLIB pthread)
+target_link_libraries(Vic2ToHoi4Converter OutHoI4World HoI4World Map Vic2World Mappers pthread)
 
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/FAQ.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../FAQ.txt" COPYONLY)
@@ -861,7 +859,7 @@ configure_file("data/test_files/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}/something
 configure_file("data/test_files/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("data/test_files/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Map Vic2World Mappers ZIPLIB pthread)
+target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Map Vic2World Mappers pthread)
 
 
 #### Coverage ####

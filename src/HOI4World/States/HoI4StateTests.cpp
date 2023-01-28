@@ -683,7 +683,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 	std::cout.rdbuf(coutBuffer);
 
 	EXPECT_EQ(std::nullopt, theState.getVPLocation());
-	EXPECT_EQ(log.str(), " [WARNING] Could not create VP for state 42\n");
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Could not create VP for state 42"));
 }
 
 

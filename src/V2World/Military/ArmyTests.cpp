@@ -1,8 +1,8 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Military/Army.h"
 #include "src/V2World/Military/ArmyFactory.h"
+#include <gmock/gmock-matchers.h>
 #include <sstream>
-
 
 
 TEST(Vic2World_Military_ArmyTests, NameDefaultsToEmpty)
@@ -52,7 +52,7 @@ TEST(Vic2World_Military_ArmyTests, LocationDefaultsToNullopt)
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_FALSE(army->getLocation());
-	ASSERT_EQ(" [WARNING] Army or Navy test_name has no location\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Army or Navy test_name has no location"));
 }
 
 

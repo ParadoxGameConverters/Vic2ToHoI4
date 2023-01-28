@@ -1,8 +1,8 @@
 #include "external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Military/Unit.h"
 #include "src/V2World/Military/UnitFactory.h"
+#include <gmock/gmock-matchers.h>
 #include <sstream>
-
 
 
 TEST(Vic2World_Military_UnitTests, NameDefaultsToEmpty)
@@ -40,7 +40,7 @@ TEST(Vic2World_Military_UnitTests, TypeDefaultsToEmpty)
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_TRUE(unit->getType().empty());
-	ASSERT_EQ(" [WARNING] Regiment or Ship test_name has no type\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Regiment or Ship test_name has no type"));
 }
 
 

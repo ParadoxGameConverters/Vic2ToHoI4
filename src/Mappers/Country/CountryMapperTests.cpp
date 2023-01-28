@@ -56,11 +56,10 @@ TEST(Mappers_Country_CountryMapperTests, RuleMappingIsLogged)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(log.str(),
-		 "    [INFO] Getting country mappings\n"
-		 "    [INFO] \tReading country mapping rules\n"
-		 "    [INFO] \tCreating country mappings\n"
-		 "   [DEBUG]     Mapping AAA -> HOI (mapping rule)\n");
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Getting country mappings"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tReading country mapping rules"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tCreating country mappings"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[DEBUG]     Mapping AAA -> HOI (mapping rule)"));
 }
 
 
@@ -100,11 +99,10 @@ TEST(Mappers_Country_CountryMapperTests, GeneratedMappingIsLogged)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(log.str(),
-		 "    [INFO] Getting country mappings\n"
-		 "    [INFO] \tReading country mapping rules\n"
-		 "    [INFO] \tCreating country mappings\n"
-		 "   [DEBUG]     Mapping CCC -> X00 (generated tag)\n");
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Getting country mappings"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tReading country mapping rules"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] \tCreating country mappings"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[DEBUG]     Mapping CCC -> X00 (generated tag)"));
 }
 
 

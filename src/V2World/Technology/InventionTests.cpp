@@ -2,6 +2,7 @@
 #include "src/Configuration.h"
 #include "src/V2World/Technology/Inventions.h"
 #include "src/V2World/Technology/InventionsFactory.h"
+#include <gmock/gmock-matchers.h>
 
 
 
@@ -17,7 +18,8 @@ TEST(Vic2World_Technology_InventionTests, MissingInventionLogsErrorAndReturnsNul
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] Invalid invention. Is this using a mod that changed inventions?\n", log.str());
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[WARNING] Invalid invention. Is this using a mod that changed inventions?"));
 	ASSERT_EQ(std::nullopt, inventionName);
 }
 
@@ -34,7 +36,7 @@ TEST(Vic2World_Technology_InventionTests, InventionZeroLogsErrorAndReturnsNullop
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ(" [WARNING] Invalid invention zero.\n", log.str());
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] Invalid invention zero."));
 	ASSERT_EQ(std::nullopt, inventionName);
 }
 

@@ -3,8 +3,8 @@
 #include "src/HOI4World/Ideologies/IdeologyBuilder.h"
 #include "src/Mappers/Government/GovernmentMapper.h"
 #include "src/Mappers/Government/GovernmentMapperFactory.h"
+#include <gmock/gmock-matchers.h>
 #include <sstream>
-
 
 
 TEST(Mappers_Government_GovernmentMapperTests, DefaultIdeologyIsNeutrality)
@@ -40,7 +40,8 @@ TEST(Mappers_Government_GovernmentMapperTests, IdeologyMappingIsLogged)
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ("test_ideology", ideology);
-	ASSERT_EQ("   [DEBUG]     \t\tMapped TAG government source_government to test_ideology\n", log.str());
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[DEBUG]     \t\tMapped TAG government source_government to test_ideology"));
 }
 
 
@@ -106,7 +107,8 @@ TEST(Mappers_Government_GovernmentMapperTests, LeaderIdeologyMappingIsLogged)
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ("test_leader_ideology", ideology);
-	ASSERT_EQ("   [DEBUG]     \t\tMapped TAG leader source_government to test_leader_ideology\n", log.str());
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[DEBUG]     \t\tMapped TAG leader source_government to test_leader_ideology"));
 }
 
 
@@ -176,7 +178,8 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingIdeologyMappingIsLogged)
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ("test_ideology", ideology);
-	ASSERT_EQ("   [DEBUG]     \t\tMapped TAG government source_government to test_ideology\n", log.str());
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[DEBUG]     \t\tMapped TAG government source_government to test_ideology"));
 }
 
 
@@ -308,7 +311,8 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyMappingIsLo
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ("test_leader_ideology", ideology);
-	ASSERT_EQ("   [DEBUG]     \t\tMapped TAG leader source_government to test_leader_ideology\n", log.str());
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[DEBUG]     \t\tMapped TAG leader source_government to test_leader_ideology"));
 }
 
 
