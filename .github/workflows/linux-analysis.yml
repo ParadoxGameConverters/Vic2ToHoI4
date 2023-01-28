@@ -116,7 +116,7 @@ jobs:
        export CXX=/usr/bin/g++-12
        # Check versions of gcc, g++ and cmake
        # Run your build commands next
-       cmake -H. -Bbuild && cmake --build ./build -- -j3
+       cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter Fronter Vic2ToHoi4ConverterTests -- -j3
 
     - name: Run tests
       run: |
