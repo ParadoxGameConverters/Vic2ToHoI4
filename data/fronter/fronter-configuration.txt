@@ -10,6 +10,7 @@ displayName = VIC2DISPLAYNAME
 sourceGame = VIC2GAME
 targetGame = HOI4GAME
 autoGenerateModsFrom = Vic2directory
+overwritePlayset = true
 
 requiredFile = {
 	name = SaveGame
