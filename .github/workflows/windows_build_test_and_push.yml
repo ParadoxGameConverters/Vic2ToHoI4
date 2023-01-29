@@ -33,10 +33,13 @@ jobs:
        .\Vic2ToHoI4Tests.exe
 
     - name: "Prepare release"
-      if: ${{ github.event_name == 'push' }}
       run: |
        cd "C:\Program Files\7-Zip\"
        .\7z.exe a $Env:GITHUB_WORKSPACE\Vic2ToHoI4-1.0Rommel-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
+
+    - name: "Prepare installer"
+      run: |
+        c:\"Program Files (x86)\Inno Setup 6\iscc" Vic2ToHoI4-Installer.iss
 
     - name: "Upload binaries to release"
       if: ${{ github.event_name == 'push' }}
@@ -46,7 +49,7 @@ jobs:
         allowUpdates: true
         omitBodyDuringUpdate: true
         omitNameDuringUpdate: true
-        artifacts: Vic2ToHoI4-1.0Rommel-win-x64.zip
+        artifacts: Vic2ToHoI4-1.0Rommel-win-x64.zip, Output\Vic2ToHoI4-1.0Rommel-win-x64.exe
         token: ${{ secrets.API_TOKEN_GITHUB }}
 
     - name: "Prepare pull request artifact"
