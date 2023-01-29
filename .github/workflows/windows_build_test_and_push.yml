@@ -40,6 +40,7 @@ jobs:
     - name: "Prepare installer"
       run: |
         c:\"Program Files (x86)\Inno Setup 6\iscc" Vic2ToHoI4-Installer.iss
+        cp $Env:GITHUB_WORKSPACE\Output\Vic2ToHoI4-latest-win-x64.exe $Env:GITHUB_WORKSPACE\Output\Vic2ToHoI4-1.0Rommel-win-x64.exe
 
     - name: "Upload binaries to release"
       if: ${{ github.event_name == 'push' }}
