@@ -40,7 +40,7 @@ jobs:
     - name: "Prepare installer"
       run: |
         c:\"Program Files (x86)\Inno Setup 6\iscc" Vic2ToHoI4-Installer.iss
-       
+
     - name: "Upload binaries to release"
       if: ${{ github.event_name == 'push' }}
       uses: ncipollo/release-action@v1
