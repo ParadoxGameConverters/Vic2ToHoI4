@@ -1,5 +1,5 @@
 #include "external/common_items/ModLoader/ModFilesystem.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/EU4ToVic2Data/CountriesData.h"
 #include "src/V2World/EU4ToVic2Data/CountriesDataFactory.h"
 #include <sstream>

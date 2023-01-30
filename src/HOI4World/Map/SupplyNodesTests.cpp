@@ -1,4 +1,4 @@
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Map/SupplyNodes.h"
 #include "src/HOI4World/States/HoI4State.h"
 #include "src/HOI4World/States/StateCategoriesBuilder.h"

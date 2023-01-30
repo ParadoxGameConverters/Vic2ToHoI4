@@ -1,4 +1,4 @@
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/Mappers/FlagsToIdeas/FlagToIdeaMapping.h"
 #include "src/Mappers/FlagsToIdeas/FlagToIdeaMappingFactory.h"
 #include <sstream>

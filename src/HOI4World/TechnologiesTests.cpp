@@ -1,4 +1,4 @@
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Technologies.h"
 #include "src/Mappers/Technology/ResearchBonusMapper.h"
 #include "src/Mappers/Technology/ResearchBonusMapperFactory.h"

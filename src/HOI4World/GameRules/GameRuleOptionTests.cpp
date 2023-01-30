@@ -1,4 +1,4 @@
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/GameRules/GameRuleOption.h"
 #include "src/OutHoi4/GameRules/OutGameRuleOption.h"
 #include <sstream>

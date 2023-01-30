@@ -1,5 +1,5 @@
 #include "external/common_items/ModLoader/ModFilesystem.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Localisations/LocalisationsFactory.h"
 #include "src/V2World/Localisations/Vic2Localisations.h"
 #include <sstream>

@@ -21,10 +21,10 @@ add_compile_options("-O3")
 #add_compile_options("-g")
 
 include_directories(${PROJECT_SOURCE_DIR})
-include_directories(external/googletest/googletest)
-include_directories(external/googletest/googletest/include)
-include_directories(external/googletest/googlemock)
-include_directories(external/googletest/googlemock/include)
+include_directories(external/common_items/external/googletest/googletest)
+include_directories(external/common_items/external/googletest/googletest/include)
+include_directories(external/common_items/external/googletest/googlemock)
+include_directories(external/common_items/external/googletest/googlemock/include)
 
 #### Converter ####
 
@@ -496,9 +496,9 @@ add_custom_command(TARGET Fronter
 
 #### Tests ####
 
-set(GMOCK_SOURCES "external/googletest/googletest/src/gtest_main.cc")
-set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/googletest/googletest/src/gtest-all.cc")
-set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/googletest/googlemock/src/gmock-all.cc")
+set(GMOCK_SOURCES "external/common_items/external/googletest/googletest/src/gtest_main.cc")
+set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/common_items/external/googletest/googletest/src/gtest-all.cc")
+set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/common_items/external/googletest/googlemock/src/gmock-all.cc")
 
 file(GLOB CONFIGURATION_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/ConfigurationTests.cpp")
 

@@ -30,6 +30,9 @@
     <ClCompile Include="external\common_items\CommonFunctions.cpp" />
     <ClCompile Include="external\common_items\ConvenientParser.cpp" />
     <ClCompile Include="external\common_items\Date.cpp" />
+    <ClCompile Include="external\common_items\external\googletest\googlemock\src\gmock-all.cc" />
+    <ClCompile Include="external\common_items\external\googletest\googletest\src\gtest-all.cc" />
+    <ClCompile Include="external\common_items\external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="external\common_items\external\zip\src\zip.c" />
     <ClCompile Include="external\common_items\GameVersion.cpp" />
     <ClCompile Include="external\common_items\iconvlite.cpp" />
@@ -43,9 +46,6 @@
     <ClCompile Include="external\common_items\StringUtils.cpp" />
     <ClCompile Include="external\common_items\targa.cpp" />
     <ClCompile Include="external\common_items\WinUtils.cpp" />
-    <ClCompile Include="external\googletest\googlemock\src\gmock-all.cc" />
-    <ClCompile Include="external\googletest\googletest\src\gtest-all.cc" />
-    <ClCompile Include="external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="src\Configuration.cpp" />
     <ClCompile Include="src\ConfigurationTests.cpp" />
     <ClCompile Include="src\HOI4World\Characters\AdmiralDataFactory.cpp" />
@@ -1706,7 +1706,7 @@
       <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;_SILENCE_CXX20_U8PATH_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/googletest/googletest/;$(SolutionDir)/external/googletest/googletest/include;$(SolutionDir)/external/googletest/googlemock/;$(SolutionDir)/external/googletest/googlemock/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/common_items/external/googletest/googletest/;$(SolutionDir)/external/common_items/external/googletest/googletest/include;$(SolutionDir)/external/common_items/external/googletest/googlemock/;$(SolutionDir)/external/common_items/external/googletest/googlemock/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
