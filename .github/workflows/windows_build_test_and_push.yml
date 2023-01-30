@@ -19,11 +19,11 @@ jobs:
 
     - name: "Cloning selective submodules"
       run: |
-       git submodule update --init --recursive commonItems
+       git submodule update --init --recursive external\common_items
        git -c submodule."googletest".update=none `
            -c submodule."external/googletest".update=none `
            -c submodule."external/zip".update=none `
-           submodule update --init --recursive Fronter
+           submodule update --init --recursive external\Fronter
 
     - name: "Get previous tag"
       if: ${{ github.event_name == 'push' }}
@@ -89,11 +89,11 @@ jobs:
 
     - name: "Cloning selective submodules"
       run: |
-       git submodule update --init --recursive commonItems
+       git submodule update --init --recursive external\common_items
        git -c submodule."googletest".update=none `
            -c submodule."external/googletest".update=none `
            -c submodule."external/zip".update=none `
-           submodule update --init --recursive Fronter
+           submodule update --init --recursive external\Fronter
 
     - name: "Build solution"
       run: |
