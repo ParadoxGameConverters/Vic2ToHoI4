@@ -27,6 +27,8 @@ jobs:
     steps:
     - name: "Cloning repo"
       uses: actions/checkout@v3
+      with:
+        submodules: true
 
     - name: "Cloning selective submodules"
       run: |
@@ -87,7 +89,9 @@ jobs:
     steps:
     - name: "Cloning repo"
       uses: actions/checkout@v3
-
+      with:
+        submodules: true
+        
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive external/common_items
