@@ -1,4 +1,4 @@
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Politics/Party.h"
 #include "src/V2World/Politics/PartyFactory.h"
 #include <sstream>

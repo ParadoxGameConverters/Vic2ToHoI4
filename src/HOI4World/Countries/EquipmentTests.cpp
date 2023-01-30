@@ -1,5 +1,5 @@
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Countries/Equipment.h"
 #include "src/OutHoi4/Countries/OutEquipment.h"
 

@@ -1,4 +1,4 @@
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Diplomacy/Diplomacy.h"
 #include "src/V2World/Diplomacy/DiplomacyFactory.h"
 

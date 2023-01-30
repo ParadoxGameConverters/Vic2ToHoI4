@@ -1,4 +1,4 @@
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Countries/UnionCountry.h"
 #include "src/Mappers/Country/CountryMapper.h"
 #include "src/Mappers/Country/CountryMapperBuilder.h"

@@ -1,6 +1,6 @@
 #include "external/common_items/ModLoader/ModFilesystem.h"
-#include "external/googletest/googlemock/include/gmock/gmock-matchers.h"
-#include "external/googletest/googletest/include/gtest/gtest.h"
+#include "external/common_items/external/googletest/googlemock/include/gmock/gmock-matchers.h"
+#include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/V2World/Countries/CommonCountriesDataFactory.h"
 #include "src/V2World/Politics/PartyBuilder.h"
 
