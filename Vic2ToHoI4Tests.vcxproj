@@ -26,24 +26,9 @@
     <IntDir>$(SolutionDir)\build\tests\$(Configuration)-Intermediate\</IntDir>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="external\common_items\Color.cpp" />
-    <ClCompile Include="external\common_items\CommonFunctions.cpp" />
-    <ClCompile Include="external\common_items\ConvenientParser.cpp" />
-    <ClCompile Include="external\common_items\Date.cpp" />
     <ClCompile Include="external\common_items\external\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="external\common_items\external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="external\common_items\external\googletest\googletest\src\gtest_main.cc" />
-    <ClCompile Include="external\common_items\GameVersion.cpp" />
-    <ClCompile Include="external\common_items\iconvlite.cpp" />
-    <ClCompile Include="external\common_items\Log.cpp" />
-    <ClCompile Include="external\common_items\ModLoader\ModFilesystem.cpp" />
-    <ClCompile Include="external\common_items\ModLoader\ModLoader.cpp" />
-    <ClCompile Include="external\common_items\ModLoader\ModParser.cpp" />
-    <ClCompile Include="external\common_items\OSCommonLayer.cpp" />
-    <ClCompile Include="external\common_items\Parser.cpp" />
-    <ClCompile Include="external\common_items\ParserHelpers.cpp" />
-    <ClCompile Include="external\common_items\StringUtils.cpp" />
-    <ClCompile Include="external\common_items\WinUtils.cpp" />
     <ClCompile Include="src\Configuration.cpp" />
     <ClCompile Include="src\ConfigurationTests.cpp" />
     <ClCompile Include="src\HOI4World\Characters\AdmiralDataFactory.cpp" />
@@ -737,22 +722,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="external\common_items\Color.h" />
-    <ClInclude Include="external\common_items\CommonFunctions.h" />
-    <ClInclude Include="external\common_items\CommonRegexes.h" />
-    <ClInclude Include="external\common_items\ConvenientParser.h" />
-    <ClInclude Include="external\common_items\Date.h" />
-    <ClInclude Include="external\common_items\GameVersion.h" />
-    <ClInclude Include="external\common_items\iconvlite.h" />
-    <ClInclude Include="external\common_items\Log.h" />
-    <ClInclude Include="external\common_items\ModLoader\Mod.h" />
-    <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h" />
-    <ClInclude Include="external\common_items\ModLoader\ModLoader.h" />
-    <ClInclude Include="external\common_items\ModLoader\ModParser.h" />
-    <ClInclude Include="external\common_items\OSCompatibilityLayer.h" />
-    <ClInclude Include="external\common_items\Parser.h" />
-    <ClInclude Include="external\common_items\ParserHelpers.h" />
-    <ClInclude Include="external\common_items\StringUtils.h" />
     <ClInclude Include="src\Configuration.h" />
     <ClInclude Include="src\HOI4World\Characters\AdmiralData.h" />
     <ClInclude Include="src\HOI4World\Characters\AdmiralDataFactory.h" />
