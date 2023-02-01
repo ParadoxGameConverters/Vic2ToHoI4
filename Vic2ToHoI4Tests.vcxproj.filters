@@ -1,48 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="external\common_items\ModLoader\ModLoader.cpp">
-      <Filter>external\common_items\ModLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\ModLoader\ModParser.cpp">
-      <Filter>external\common_items\ModLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\Color.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\CommonFunctions.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\ConvenientParser.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\Date.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\GameVersion.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\iconvlite.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\Log.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\OSCommonLayer.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\Parser.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\ParserHelpers.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\StringUtils.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\WinUtils.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\Characters\AdmiralDataFactory.cpp">
       <Filter>src\HOI4World\Characters</Filter>
     </ClCompile>
@@ -1678,14 +1636,8 @@
     <ClCompile Include="src\Vic2toHOI4Converter.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="external\common_items\targa.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\Leaders\AdvisorTests.cpp">
       <Filter>src\HOI4World\Leaders</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\ModLoader\ModFilesystem.cpp">
-      <Filter>external\common_items\ModLoader</Filter>
     </ClCompile>
     <ClCompile Include="src\V2World\Countries\CommonCountryData.cpp">
       <Filter>src\V2World\Countries</Filter>
@@ -1774,9 +1726,6 @@
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp">
       <Filter>src\HOI4World\FocusTrees</Filter>
     </ClCompile>
-    <ClCompile Include="external\common_items\external\zip\src\zip.c">
-      <Filter>external\common_items\zip</Filter>
-    </ClCompile>
     <ClCompile Include="external\common_items\external\googletest\googlemock\src\gmock-all.cc">
       <Filter>external\googletest\googlemock\src</Filter>
     </ClCompile>
@@ -1793,12 +1742,6 @@
     </Filter>
     <Filter Include="external">
       <UniqueIdentifier>{eba2fd57-417b-4441-bd58-fb355a85d0da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\common_items">
-      <UniqueIdentifier>{b2dafe60-8f3c-43fe-aa32-c1aea1a6aaa3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\common_items\ModLoader">
-      <UniqueIdentifier>{f4cbd097-bc95-4503-8e24-d64b30227533}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\HOI4World">
       <UniqueIdentifier>{1553f95a-41e3-4f8a-ab6b-344fd05db646}</UniqueIdentifier>
@@ -2217,9 +2160,6 @@
     <Filter Include="src\HOI4World\FocusTrees">
       <UniqueIdentifier>{0f64a54e-5b9c-47ae-89cd-58afdec9b5cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\common_items\zip">
-      <UniqueIdentifier>{e07dd871-3220-4e8a-8309-23b899160b72}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="TestFiles\World\merge_nations.txt">
@@ -2227,51 +2167,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="external\common_items\ModLoader\Mod.h">
-      <Filter>external\common_items\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\ModLoader\ModLoader.h">
-      <Filter>external\common_items\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\ModLoader\ModParser.h">
-      <Filter>external\common_items\ModLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\Color.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\CommonFunctions.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\CommonRegexes.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\ConvenientParser.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\Date.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\GameVersion.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\iconvlite.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\Log.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\OSCompatibilityLayer.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\Parser.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\ParserHelpers.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\StringUtils.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
     <ClInclude Include="src\HOI4World\Characters\AdmiralData.h">
       <Filter>src\HOI4World\Characters</Filter>
     </ClInclude>
@@ -3570,12 +3465,6 @@
     </ClInclude>
     <ClInclude Include="src\Vic2ToHoI4Converter.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\targa.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h">
-      <Filter>external\common_items\ModLoader</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\Map\PathPoint.h">
       <Filter>src\HOI4World\Map</Filter>

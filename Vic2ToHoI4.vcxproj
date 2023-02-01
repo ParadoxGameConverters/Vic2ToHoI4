@@ -41,11 +41,19 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <EnablePREfast>false</EnablePREfast>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)lib;$(SolutionDir)external\common_items\pch</AdditionalIncludeDirectories>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(SolutionDir)lib\pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(SolutionDir)lib\common.pdb</ProgramDataBaseFileName>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pch.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>tools\save_commit_id.bat</Command>
@@ -55,24 +63,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="external\common_items\Color.cpp" />
-    <ClCompile Include="external\common_items\CommonFunctions.cpp" />
-    <ClCompile Include="external\common_items\ConvenientParser.cpp" />
-    <ClCompile Include="external\common_items\ConverterVersion.cpp" />
-    <ClCompile Include="external\common_items\Date.cpp" />
-    <ClCompile Include="external\common_items\external\zip\src\zip.c" />
-    <ClCompile Include="external\common_items\GameVersion.cpp" />
-    <ClCompile Include="external\common_items\iconvlite.cpp" />
-    <ClCompile Include="external\common_items\Log.cpp" />
-    <ClCompile Include="external\common_items\ModLoader\ModFilesystem.cpp" />
-    <ClCompile Include="external\common_items\ModLoader\ModLoader.cpp" />
-    <ClCompile Include="external\common_items\ModLoader\ModParser.cpp" />
-    <ClCompile Include="external\common_items\OSCommonLayer.cpp" />
-    <ClCompile Include="external\common_items\Parser.cpp" />
-    <ClCompile Include="external\common_items\ParserHelpers.cpp" />
-    <ClCompile Include="external\common_items\StringUtils.cpp" />
-    <ClCompile Include="external\common_items\WinUtils.cpp" />
-    <ClCompile Include="external\common_items\targa.cpp" />
     <ClCompile Include="src\Configuration.cpp" />
     <ClCompile Include="src\HOI4World\Characters\AdmiralDataFactory.cpp" />
     <ClCompile Include="src\HOI4World\Characters\AdvisorDataFactory.cpp" />
@@ -108,7 +98,7 @@
     <ClCompile Include="src\HOI4World\Map\HoI4ProvinceDefinitionImporter.cpp" />
     <ClCompile Include="src\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="src\HOI4World\Map\PathPoint.cpp" />
-    <ClCompile Include="src\HOI4World\Map\PossiblePath.h" />
+    <ClInclude Include="src\HOI4World\Map\PossiblePath.h" />
     <ClCompile Include="src\HOI4World\Map\Railways.cpp" />
     <ClCompile Include="src\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="src\HOI4World\Map\SupplyNodes.cpp" />
@@ -197,7 +187,7 @@
     <ClCompile Include="src\OutHoi4\Characters\OutCharacter.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutCommanderData.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.cpp" />
-    <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.h" />
+    <ClInclude Include="src\OutHoi4\Characters\OutCountryLeaderData.h" />
     <ClCompile Include="src\OutHoi4\Characters\OutPortrait.cpp" />
     <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp" />
     <ClCompile Include="src\OutHoi4\Countries\OutUnionCountry.cpp" />
@@ -445,27 +435,7 @@
     <ClCompile Include="src\V2World\Wars\WarGoalFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\bitmap\bitmap_image.hpp" />
-    <ClInclude Include="external\common_items\Color.h" />
-    <ClInclude Include="external\common_items\CommonFunctions.h" />
-    <ClInclude Include="external\common_items\CommonRegexes.h" />
-    <ClInclude Include="external\common_items\ConvenientParser.h" />
-    <ClInclude Include="external\common_items\ConverterVersion.h" />
-    <ClInclude Include="external\common_items\Date.h" />
-    <ClInclude Include="external\common_items\external\zip\src\miniz.h" />
-    <ClInclude Include="external\common_items\external\zip\src\zip.h" />
-    <ClInclude Include="external\common_items\GameVersion.h" />
-    <ClInclude Include="external\common_items\iconvlite.h" />
-    <ClInclude Include="external\common_items\Log.h" />
-    <ClInclude Include="external\common_items\ModLoader\Mod.h" />
-    <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h" />
-    <ClInclude Include="external\common_items\ModLoader\ModLoader.h" />
-    <ClInclude Include="external\common_items\ModLoader\ModParser.h" />
-    <ClInclude Include="external\common_items\OSCompatibilityLayer.h" />
-    <ClInclude Include="external\common_items\Parser.h" />
-    <ClInclude Include="external\common_items\ParserHelpers.h" />
-    <ClInclude Include="external\common_items\StringUtils.h" />
-    <ClInclude Include="external\common_items\targa.h" />
+    <ClInclude Include="external\bitmap\bitmap_image.hpp" />
     <ClInclude Include="src\Configuration.h" />
     <ClInclude Include="src\HOI4World\Characters\AdmiralData.h" />
     <ClInclude Include="src\HOI4World\Characters\AdmiralDataFactory.h" />
