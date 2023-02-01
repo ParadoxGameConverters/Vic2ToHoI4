@@ -49,9 +49,6 @@
     <ClCompile Include="external\common_items\StringUtils.cpp">
       <Filter>external\common_items</Filter>
     </ClCompile>
-    <ClCompile Include="external\common_items\targa.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
     <ClCompile Include="src\Vic2toHOI4Converter.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -688,9 +685,6 @@
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.cpp">
       <Filter>src\OutHoi4\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.h">
-      <Filter>src\OutHoi4\Characters</Filter>
-    </ClCompile>
     <ClCompile Include="src\OutHoi4\Characters\OutPortrait.cpp">
       <Filter>src\OutHoi4\Characters</Filter>
     </ClCompile>
@@ -1072,9 +1066,6 @@
     <ClCompile Include="src\V2World\World\WorldFactory.cpp">
       <Filter>src\V2World\World</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\Map\PossiblePath.h">
-      <Filter>src\HoI4World\Map</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\Map\Railways.cpp">
       <Filter>src\HoI4World\Map</Filter>
     </ClCompile>
@@ -1162,14 +1153,8 @@
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClCompile>
-    <ClCompile Include="external\common_items\external\zip\src\zip.c">
-      <Filter>external\zip</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\bitmap\bitmap_image.hpp">
-      <Filter>external\bitmap</Filter>
-    </ClInclude>
     <ClInclude Include="external\common_items\ModLoader\ModLoader.h">
       <Filter>external\common_items\ModLoader</Filter>
     </ClInclude>
@@ -1216,9 +1201,6 @@
       <Filter>external\common_items</Filter>
     </ClInclude>
     <ClInclude Include="external\common_items\StringUtils.h">
-      <Filter>external\common_items</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\targa.h">
       <Filter>external\common_items</Filter>
     </ClInclude>
     <ClInclude Include="src\Vic2ToHoI4Converter.h">
@@ -2574,14 +2556,17 @@
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranches.h">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClInclude>
-    <ClInclude Include="external\common_items\external\zip\src\miniz.h">
-      <Filter>external\zip</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\external\zip\src\zip.h">
-      <Filter>external\zip</Filter>
-    </ClInclude>
     <ClInclude Include="external\common_items\ModLoader\Mod.h">
       <Filter>external\common_items\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\bitmap\bitmap_image.hpp">
+      <Filter>external\bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\PossiblePath.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Characters\OutCountryLeaderData.h">
+      <Filter>src\OutHoi4\Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3184,9 +3169,6 @@
     </Filter>
     <Filter Include="src\HoI4World\FocusTrees">
       <UniqueIdentifier>{956eaec7-b39e-4efe-8c0c-58a049646b9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\zip">
-      <UniqueIdentifier>{c9742784-eff9-4b13-bf56-74a104faeed6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

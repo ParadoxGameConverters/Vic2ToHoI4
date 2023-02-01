@@ -1678,9 +1678,6 @@
     <ClCompile Include="src\Vic2toHOI4Converter.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="external\common_items\targa.cpp">
-      <Filter>external\common_items</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\Leaders\AdvisorTests.cpp">
       <Filter>src\HOI4World\Leaders</Filter>
     </ClCompile>
@@ -1773,9 +1770,6 @@
     </ClCompile>
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp">
       <Filter>src\HOI4World\FocusTrees</Filter>
-    </ClCompile>
-    <ClCompile Include="external\common_items\external\zip\src\zip.c">
-      <Filter>external\common_items\zip</Filter>
     </ClCompile>
     <ClCompile Include="external\common_items\external\googletest\googlemock\src\gmock-all.cc">
       <Filter>external\googletest\googlemock\src</Filter>
@@ -2216,9 +2210,6 @@
     </Filter>
     <Filter Include="src\HOI4World\FocusTrees">
       <UniqueIdentifier>{0f64a54e-5b9c-47ae-89cd-58afdec9b5cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\common_items\zip">
-      <UniqueIdentifier>{e07dd871-3220-4e8a-8309-23b899160b72}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3570,9 +3561,6 @@
     </ClInclude>
     <ClInclude Include="src\Vic2ToHoI4Converter.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="external\common_items\targa.h">
-      <Filter>external\common_items</Filter>
     </ClInclude>
     <ClInclude Include="external\common_items\ModLoader\ModFilesystem.h">
       <Filter>external\common_items\ModLoader</Filter>

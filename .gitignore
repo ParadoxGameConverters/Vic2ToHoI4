@@ -15,3 +15,4 @@ changelog.txt
 .vs/
 packages/
 Debug_x64.json
+lib/
