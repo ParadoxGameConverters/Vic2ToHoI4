@@ -1,5 +1,4 @@
 name: "Linux-based analysis"
-
 env:
   COVERAGE: YES
 
@@ -139,7 +138,7 @@ jobs:
     - name: Run gcov
       run: |
        cd build
-	   pwd
+       pwd
        make gcov
 
     - name: Run lcov
