@@ -21,7 +21,7 @@ add_compile_options("-O3")
 add_compile_options(-D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXGTK__ -pthread)
 #add_compile_options("-g")
 
-set(CURL_LIBRARY "-lcurl")
+#set(CURL_LIBRARY "-lcurl")
 find_package(CURL REQUIRED)
 
 include_directories(${PROJECT_SOURCE_DIR})
@@ -317,7 +317,7 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_item
 
 add_library(CommonItems ${COMMON_SOURCES})
 
-# add all vi2 sources to a list.
+# add all vic2 sources to a list.
 
 list(APPEND ALL_HOI4_FILES 
 	${CONVERTER_SOURCES}
@@ -441,7 +441,7 @@ add_library(Vic2ToHoi4lib
 	${ALL_HOI4_FILES}
 )
 target_precompile_headers(Vic2ToHoi4lib PUBLIC ${PCH_SOURCES})
-target_link_libraries(Vic2ToHoi4lib LINK_PUBLIC CommonItems)
+target_link_libraries(Vic2ToHoi4lib LINK_PUBLIC CommonItems pthread)
 
 add_executable(
 	Vic2ToHoi4Converter
@@ -452,7 +452,7 @@ set_target_properties( Vic2ToHoi4Converter
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
 target_precompile_headers(Vic2ToHoi4Converter REUSE_FROM Vic2ToHoi4lib)
-target_link_libraries(Vic2ToHoi4Converter LINK_PUBLIC Vic2ToHoi4lib)
+target_link_libraries(Vic2ToHoi4Converter LINK_PUBLIC Vic2ToHoi4lib pthread)
 
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/FAQ.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../FAQ.txt" COPYONLY)
@@ -568,7 +568,7 @@ set_target_properties(ConverterFrontend
 target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} CommonItems)
 
 add_custom_command(TARGET ConverterFrontend
-	COMMAND cp -r "data/fronter/" "${FRONTER_OUTPUT_DIRECTORY}/Configuration"
+	COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" && cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/"
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
@@ -945,7 +945,7 @@ configure_file("data/test_files/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}/something
 configure_file("data/test_files/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("data/test_files/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests LINK_PUBLIC Vic2ToHoi4lib)
+target_link_libraries(Vic2ToHoi4ConverterTests LINK_PUBLIC Vic2ToHoi4lib pthread)
 
 
 #### Coverage ####
@@ -956,7 +956,7 @@ add_custom_target(gcov
 )
 add_custom_command(TARGET gcov
 	COMMAND echo "=================== GCOV ===================="
-	COMMAND gcov ${CMAKE_SOURCE_DIR}/src/Configuration.cpp ${CMAKE_SOURCE_DIR}/src/Vic2toHOI4Converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src
+	# COMMAND gcov ${CMAKE_SOURCE_DIR}/src/Configuration.cpp ${CMAKE_SOURCE_DIR}/src/Vic2toHOI4Converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src
 	COMMAND echo "-- Source directories:"
 	COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
 	COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
