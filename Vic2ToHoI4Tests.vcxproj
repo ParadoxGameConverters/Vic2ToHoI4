@@ -855,7 +855,7 @@
       <SubSystem>Console</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>CommonItems.lib;Vic2toHoI4lib.lib;pch.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Vic2toHoI4lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IncrementalLinkDatabaseFile>$(SolutionDir)lib\$(TargetName).ilk</IncrementalLinkDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
