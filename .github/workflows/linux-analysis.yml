@@ -1,5 +1,4 @@
 name: "Linux-based analysis"
-
 env:
   COVERAGE: YES
 
@@ -35,9 +34,8 @@ jobs:
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive external/common_items
-       git -c submodule."googletest".update=none \
-           -c submodule."external/googletest".update=none \
-           -c submodule."external/zip".update=none \
+       git -c submodule."external/commonItems".update=none \
+           -c submodule."googletest".update=none \
            submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
@@ -47,7 +45,7 @@ jobs:
 
     - name: Build solution
       run: |
-       cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter Fronter Vic2ToHoi4ConverterTests -- -j40
+       cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter ConverterFrontend Vic2ToHoi4ConverterTests -- -j40
 
     - name: Run tests
       run: |
@@ -97,9 +95,8 @@ jobs:
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive external/common_items
-       git -c submodule."googletest".update=none \
-           -c submodule."external/googletest".update=none \
-           -c submodule."external/zip".update=none \
+       git -c submodule."external/commonItems".update=none \
+           -c submodule."googletest".update=none \
            submodule update --init --recursive external/Fronter
 
     - name: Initialize CodeQL
@@ -131,7 +128,7 @@ jobs:
        export CXX=/usr/bin/g++-12
        # Check versions of gcc, g++ and cmake
        # Run your build commands next
-       cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter Fronter Vic2ToHoi4ConverterTests -- -j3
+       cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter ConverterFrontend Vic2ToHoi4ConverterTests -- -j5
 
     - name: Run tests
       run: |
@@ -141,6 +138,7 @@ jobs:
     - name: Run gcov
       run: |
        cd build
+       pwd
        make gcov
 
     - name: Run lcov

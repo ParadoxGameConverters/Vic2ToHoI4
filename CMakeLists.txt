@@ -1,32 +1,65 @@
-cmake_minimum_required(VERSION 3.13)
-#set(CMAKE_VERBOSE_MAKEFILE on)
+cmake_minimum_required(VERSION 3.16)
 
 project(Vic2ToHoI4)
 set(DATA_FILE_DIR ${CMAKE_SOURCE_DIR}/data)
 set(FRONTER_DATA_FILE_DIR ${CMAKE_SOURCE_DIR}/external/Fronter/Fronter/Resources)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR})
+set(FRONTER_SOURCE_DIR ${CMAKE_SOURCE_DIR}/external/Fronter/Fronter/Source)
 set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux)
 set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux/Vic2ToHoI4)
 set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-LinuxTests)
 set(CMAKE_CXX_STANDARD 20)
 
 #if (DEFINED ENV{COVERAGE})
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall -fprofile-arcs -ftest-coverage")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
 	set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 #elseif (DEFINED ENV{COVERAGE})
 #	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall")
 #endif (DEFINED ENV{COVERAGE})
 
 add_compile_options("-O3")
+add_compile_options(-D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXGTK__ -pthread)
 #add_compile_options("-g")
 
+find_package(CURL REQUIRED)
+
 include_directories(${PROJECT_SOURCE_DIR})
+include_directories("/usr/include/wx-3.2-unofficial")
+include_directories("/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2-unofficial")
+include_directories("external/Fronter/external/SQLiteCpp/include")
+include_directories("external/Fronter/external/SQLiteCpp/sqlite3")
+include_directories("external/Fronter/Fronter/Source")
+include_directories(external/common_items)
+include_directories(external/common_items/external/json/single_include)
 include_directories(external/common_items/external/googletest/googletest)
 include_directories(external/common_items/external/googletest/googletest/include)
 include_directories(external/common_items/external/googletest/googlemock)
 include_directories(external/common_items/external/googletest/googlemock/include)
 
 #### Converter ####
+
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/BulkParser.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Color.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/CommonFunctions.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/CommonRegexes.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ConvenientParser.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ConverterVersion.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Date.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/GameVersion.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Log.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/OSCompatibilityLayer.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Parser.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ParserHelpers.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/StringUtils.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/targa.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModFilesystem.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/Mod.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModLoader.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModParser.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Localization/LocalizationBlock.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Localization/LocalizationDatabase.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Localization/LocalizationLambdas.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/bitmap/bitmap_image.hpp")
 
 file(GLOB HOI4WORLD_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/*.cpp")
 set(HOI4WORLD_CHARACTERS_SOURCES ${HOI4WORLD_CHARACTERS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Characters/AdmiralDataFactory.cpp")
@@ -113,52 +146,6 @@ set(HOI4WORLD_TANK_DESIGNS_SOURCES ${HOI4WORLD_TANK_DESIGNS_SOURCES} "${PROJECT_
 set(HOI4WORLD_UNIT_MEDALS_SOURCES ${HOI4WORLD_UNIT_MEDALS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/UnitMedals/IdeologicalUnitMedals.cpp")
 set(HOI4WORLD_WAR_CREATOR_SOURCES ${HOI4WORLD_WAR_CREATOR_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/WarCreator/MapUtils.cpp")
 set(HOI4WORLD_WAR_CREATOR_SOURCES ${HOI4WORLD_WAR_CREATOR_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/WarCreator/HoI4WarCreator.cpp")
-add_library(HoI4World
-	${HOI4_SOURCES}
-	${HOI4WORLD_CHARACTERS_SOURCES}
-	${HOI4_DECISIONS_SOURCES}
-	${HOI4_DIPLOMACY_SOURCES}
-	${HOI4_EVENTS_SOURCES}
-	${HOI4_NAVIES_SOURCES}
-	${HOI4_SCRIPTED_LOCALISATIONS_SOURCES}
-	${HOI4_SHIP_TYPES_SOURCES}
-	${HOI4_STATES_SOURCES}
-	${HOI4WORLD_SOURCES}
-	${HOI4WORLD_COUNTRY_SOURCES}
-	${HOI4WORLD_COUNTRY_CATEGORIES_SOURCES}
-	${HOI4WORLD_DECISIONS_SOURCES}
-	${HOI4WORLD_DIPLOMACY_SOURCES}
-	${HOI4WORLD_EVENTS_SOURCES}
-	${HOI4WORLD_FOCUS_TREES_SOURCES}
-	${HOI4WORLD_GAME_RULES_SOURCES}
-	${HOI4WORLD_IDEAS_SOURCES}
-	${HOI4WORLD_IDEOLOGIES_SOURCES}
-	${HOI4WORLD_INTELLIGENCE_AGENCIES_SOURCES}
-	${HOI4WORLD_LEADERS_SOURCES}
-	${HOI4WORLD_LOCALISATIONS_SOURCES}
-	${HOI4WORLD_LOCALISATIONS_ARTICLERULES_SOURCES}
-	${HOI4WORLD_MILITARY_SOURCES}
-	${HOI4WORLD_MILITARY_MAPPINGS_SOURCES}
-	${HOI4WORLD_MAP_SOURCES}
-	${HOI4WORLD_MODIFIERS_SOURCES}
-	${HOI4WORLD_NAMES_SOURCES}
-	${HOI4WORLD_NAVIES_SOURCES}
-	${HOI4WORLD_OCCUPATION_LAWS_SOURCES}
-	${HOI4WORLD_OPERATIONS_SOURCES}
-	${HOI4WORLD_OPERATIVE_NAMES_SOURCES}
-	${HOI4WORLD_PEACECONFERENCES_SOURCES}
-	${HOI4WORLD_PLANE_DESIGNS_SOURCES}
-	${HOI4WORLD_REGIONS_SOURCES}
-	${HOI4WORLD_SCRIPTED_EFFECTS_SOURCES}
-	${HOI4WORLD_SCRIPTED_LOCALISATIONS_SOURCES}
-	${HOI4WORLD_SCRIPTED_TRIGGERS_SOURCES}
-	${HOI4WORLD_SHIP_TYPES_SOURCES}
-	${HOI4WORLD_STATES_SOURCES}
-	${HOI4WORLD_SOUNDS_SOURCES}
-	${HOI4WORLD_TANK_DESIGNS_SOURCES}
-	${HOI4WORLD_UNIT_MEDALS_SOURCES}
-	${HOI4WORLD_WAR_CREATOR_SOURCES}
-)
 
 set(MAPPERS_CASUS_BELLIS_SOURCES ${MAPPERS_CASUS_BELLIS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/CasusBelli/CasusBelliMappingFactory.cpp")
 set(MAPPERS_CASUS_BELLIS_SOURCES ${MAPPERS_CASUS_BELLIS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/CasusBelli/CasusBellis.cpp")
@@ -194,26 +181,10 @@ set(MAPPERS_TECHNOLOGY_SOURCES ${MAPPERS_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_D
 set(MAPPERS_FACTIONNAME_SOURCES ${MAPPERS_FACTIONNAME_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/FactionName/FactionNameMapperFactory.cpp")
 set(MAPPERS_FACTIONNAME_SOURCES ${MAPPERS_FACTIONNAME_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/FactionName/FactionNameMappingFactory.cpp")
 set(MAPPERS_FACTIONNAME_SOURCES ${MAPPERS_FACTIONNAME_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/FactionName/FactionNameMapper.cpp")
-add_library(Mappers
-	${MAPPERS_CASUS_BELLIS_SOURCES}
-	${MAPPERS_COUNTRY_SOURCES}
-	${MAPPERS_COUNTRYNAME_SOURCES}
-	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
-	${MAPPERS_GOVERNMENT_SOURCES}
-	${MAPPERS_GRAPHICS_SOURCES}
-	${MAPPERS_IDEOLOGY_SOURCES}
-	${MAPPERS_MERGE_RULES_SOURCES}
-	${MAPPERS_TECHNOLOGY_SOURCES}
-	${MAPPERS_PROVINCES_SOURCES}
-	${MAPPERS_FACTIONNAME_SOURCES}
-)
 
 set (MAPS_SOURCES ${MAPS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Maps/MapData.cpp")
 set (MAPS_SOURCES ${MAPS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Maps/ProvinceDefinitions.cpp")
 set (MAPS_SOURCES ${MAPS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Maps/ProvincePoints.cpp")
-add_library(Map
-	${MAPS_SOURCES}
-)
 
 set(VIC2WORLD_AI_SOURCES ${VIC2WORLD_AI_SOURCES} "${PROJECT_SOURCE_DIR}/src/V2World/Ai/AI.cpp")
 set(VIC2WORLD_AI_SOURCES ${VIC2WORLD_AI_SOURCES} "${PROJECT_SOURCE_DIR}/src/V2World/Ai/AIFactory.cpp")
@@ -270,26 +241,6 @@ set(VIC2WORLD_WARS_SOURCES ${VIC2WORLD_WARS_SOURCES} "${PROJECT_SOURCE_DIR}/src/
 set(VIC2WORLD_WARS_SOURCES ${VIC2WORLD_WARS_SOURCES} "${PROJECT_SOURCE_DIR}/src/V2World/Wars/WarGoalFactory.cpp")
 set(VIC2WORLD_WORLD_SOURCES ${VIC2WORLD_WORLD_SOURCES} "${PROJECT_SOURCE_DIR}/src/V2World/World/World.cpp")
 set(VIC2WORLD_WORLD_SOURCES ${VIC2WORLD_WORLD_SOURCES} "${PROJECT_SOURCE_DIR}/src/V2World/World/WorldFactory.cpp")
-add_library(Vic2World
-	${VIC2WORLD_AI_SOURCES}
-	${VIC2WORLD_COUNTRIES_SOURCES}
-	${VIC2WORLD_CULTURES_SOURCES}
-	${VIC2WORLD_DIPLOMACY_SOURCES}
-	${VIC2WORLD_EU4TOVIC2DATA_SOURCES}
-	${VIC2WORLD_ISSUES_SOURCES}
-	${VIC2WORLD_LOCALISATIONS_SOURCES}
-	${VIC2WORLD_MAP_SOURCES}
-	${VIC2WORLD_MILITARY_SOURCES}
-	${VIC2WORLD_MILITARY_LEADERS_SOURCES}
-	${VIC2WORLD_POLITICS_SOURCES}
-	${VIC2WORLD_POPS_SOURCES}
-	${VIC2WORLD_PROVINCES_SOURCES}
-	${VIC2WORLD_STATES_SOURCES}
-	${VIC2WORLD_STOCKPILES_SOURCES}
-	${VIC2WORLD_TECHNOLOGY_SOURCES}
-	${VIC2WORLD_WARS_SOURCES}
-	${VIC2WORLD_WORLD_SOURCES}
-)
 
 file(GLOB OUTHOI4_SOURCES "${PROJECT_SOURCE_DIR}/src/OutHoi4/*.cpp")
 set(OUTHOI4_AI_STRATEGY_SOURCES ${OUTHOI4_AI_STRATEGY_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/AiStrategy/OutAiStrategy.cpp")
@@ -338,7 +289,38 @@ set(OUTHOI4_TANK_DESIGNS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOUR
 set(OUTHOI4_TANK_DESIGNS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/TankDesigns/OutTankModules.cpp")
 set(OUTHOI4_TANK_DESIGNS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/TankDesigns/OutTankUpgrades.cpp")
 set(OUTHOI4_UNIT_MEDALS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/UnitMedals/OutUnitMedals.cpp")
-add_library(OutHoI4World
+
+file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/src/main.cpp")
+file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/src/Configuration.cpp")
+file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/src/Vic2toHOI4Converter.cpp")
+
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/BulkParser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Color.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/CommonFunctions.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ConvenientParser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ConverterVersion.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Date.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/GameVersion.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/iconvlite.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/LinuxUtils.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Log.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModFilesystem.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModLoader.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModParser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/OSCommonLayer.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Parser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ParserHelpers.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/StringUtils.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/targa.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/external/zip/src/zip.c")
+
+add_library(CommonItems ${COMMON_SOURCES})
+
+# add all vic2 sources to a list.
+
+list(APPEND ALL_HOI4_FILES 
+	${CONVERTER_SOURCES}
+
 	${OUTHOI4_SOURCES}
 	${OUTHOI4_CHARACTERS_SOURCES}
 	${OUTHOI4_COUNTRY_SOURCES}
@@ -372,42 +354,104 @@ add_library(OutHoI4World
 	${OUTHOI4_TANK_DESIGNS_SOURCES}
 	${OUTHOI4_UNIT_MEDALS_SOURCES}
 	${OUTHOI4_VERSION}
+
+	${VIC2WORLD_AI_SOURCES}
+	${VIC2WORLD_COUNTRIES_SOURCES}
+	${VIC2WORLD_CULTURES_SOURCES}
+	${VIC2WORLD_DIPLOMACY_SOURCES}
+	${VIC2WORLD_EU4TOVIC2DATA_SOURCES}
+	${VIC2WORLD_ISSUES_SOURCES}
+	${VIC2WORLD_LOCALISATIONS_SOURCES}
+	${VIC2WORLD_MAP_SOURCES}
+	${VIC2WORLD_MILITARY_SOURCES}
+	${VIC2WORLD_MILITARY_LEADERS_SOURCES}
+	${VIC2WORLD_POLITICS_SOURCES}
+	${VIC2WORLD_POPS_SOURCES}
+	${VIC2WORLD_PROVINCES_SOURCES}
+	${VIC2WORLD_STATES_SOURCES}
+	${VIC2WORLD_STOCKPILES_SOURCES}
+	${VIC2WORLD_TECHNOLOGY_SOURCES}
+	${VIC2WORLD_WARS_SOURCES}
+	${VIC2WORLD_WORLD_SOURCES}
+
+	${MAPPERS_CASUS_BELLIS_SOURCES}
+	${MAPPERS_COUNTRY_SOURCES}
+	${MAPPERS_COUNTRYNAME_SOURCES}
+	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
+	${MAPPERS_GOVERNMENT_SOURCES}
+	${MAPPERS_GRAPHICS_SOURCES}
+	${MAPPERS_IDEOLOGY_SOURCES}
+	${MAPPERS_MERGE_RULES_SOURCES}
+	${MAPPERS_TECHNOLOGY_SOURCES}
+	${MAPPERS_PROVINCES_SOURCES}
+	${MAPPERS_FACTIONNAME_SOURCES}
+
+	${MAPS_SOURCES}
+
+	${HOI4_SOURCES}
+	${HOI4WORLD_CHARACTERS_SOURCES}
+	${HOI4_DECISIONS_SOURCES}
+	${HOI4_DIPLOMACY_SOURCES}
+	${HOI4_EVENTS_SOURCES}
+	${HOI4_NAVIES_SOURCES}
+	${HOI4_SCRIPTED_LOCALISATIONS_SOURCES}
+	${HOI4_SHIP_TYPES_SOURCES}
+	${HOI4_STATES_SOURCES}
+	${HOI4WORLD_SOURCES}
+	${HOI4WORLD_COUNTRY_SOURCES}
+	${HOI4WORLD_COUNTRY_CATEGORIES_SOURCES}
+	${HOI4WORLD_DECISIONS_SOURCES}
+	${HOI4WORLD_DIPLOMACY_SOURCES}
+	${HOI4WORLD_EVENTS_SOURCES}
+	${HOI4WORLD_FOCUS_TREES_SOURCES}
+	${HOI4WORLD_GAME_RULES_SOURCES}
+	${HOI4WORLD_IDEAS_SOURCES}
+	${HOI4WORLD_IDEOLOGIES_SOURCES}
+	${HOI4WORLD_INTELLIGENCE_AGENCIES_SOURCES}
+	${HOI4WORLD_LEADERS_SOURCES}
+	${HOI4WORLD_LOCALISATIONS_SOURCES}
+	${HOI4WORLD_LOCALISATIONS_ARTICLERULES_SOURCES}
+	${HOI4WORLD_MILITARY_SOURCES}
+	${HOI4WORLD_MILITARY_MAPPINGS_SOURCES}
+	${HOI4WORLD_MAP_SOURCES}
+	${HOI4WORLD_MODIFIERS_SOURCES}
+	${HOI4WORLD_NAMES_SOURCES}
+	${HOI4WORLD_NAVIES_SOURCES}
+	${HOI4WORLD_OCCUPATION_LAWS_SOURCES}
+	${HOI4WORLD_OPERATIONS_SOURCES}
+	${HOI4WORLD_OPERATIVE_NAMES_SOURCES}
+	${HOI4WORLD_PEACECONFERENCES_SOURCES}
+	${HOI4WORLD_PLANE_DESIGNS_SOURCES}
+	${HOI4WORLD_REGIONS_SOURCES}
+	${HOI4WORLD_SCRIPTED_EFFECTS_SOURCES}
+	${HOI4WORLD_SCRIPTED_LOCALISATIONS_SOURCES}
+	${HOI4WORLD_SCRIPTED_TRIGGERS_SOURCES}
+	${HOI4WORLD_SHIP_TYPES_SOURCES}
+	${HOI4WORLD_STATES_SOURCES}
+	${HOI4WORLD_SOUNDS_SOURCES}
+	${HOI4WORLD_TANK_DESIGNS_SOURCES}
+	${HOI4WORLD_UNIT_MEDALS_SOURCES}
+	${HOI4WORLD_WAR_CREATOR_SOURCES}
 )
+# filter globbed tests out.
+list(FILTER ALL_HOI4_FILES EXCLUDE REGEX ".*Tests\\.cpp$")
 
-file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/src/main.cpp")
-file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/src/Configuration.cpp")
-file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/src/Vic2toHOI4Converter.cpp")
-
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/Color.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/CommonFunctions.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/ConvenientParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/ConverterVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/Date.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/GameVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/iconvlite.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/LinuxUtils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/Log.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/ModLoader/ModFilesystem.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/ModLoader/ModLoader.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/ModLoader/ModParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/OSCommonLayer.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/Parser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/ParserHelpers.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/StringUtils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/targa.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "external/common_items/external/zip/src/zip.c")
+add_library(Vic2ToHoi4lib
+	${ALL_HOI4_FILES}
+)
+target_precompile_headers(Vic2ToHoi4lib PUBLIC ${PCH_SOURCES})
+target_link_libraries(Vic2ToHoi4lib LINK_PUBLIC CommonItems)
 
 add_executable(
 	Vic2ToHoi4Converter
 	${MAIN_SOURCE}
-	${CONVERTER_SOURCES}
-	${COMMON_SOURCES}
 )
 set_target_properties( Vic2ToHoi4Converter
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
-target_link_libraries(Vic2ToHoi4Converter OutHoI4World HoI4World Map Vic2World Mappers pthread)
+target_precompile_headers(Vic2ToHoi4Converter REUSE_FROM Vic2ToHoi4lib)
+target_link_libraries(Vic2ToHoi4Converter LINK_PUBLIC Vic2ToHoi4lib)
 
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/FAQ.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../FAQ.txt" COPYONLY)
@@ -481,18 +525,51 @@ file(COPY "${DATA_FILE_DIR}/configurables/CustomizedFocusBranches/" DESTINATION 
 file(COPY "${DATA_FILE_DIR}/flags" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
 add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > build/Release-Linux/commit_id.txt)
 
-
 #### Fronter ####
 
-add_custom_target(Fronter
-	COMMAND tools/build_fronter.sh
-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-)
-add_custom_command(TARGET Fronter
-	COMMAND cp -r "data/fronter/" "${FRONTER_OUTPUT_DIRECTORY}/Configuration"
-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+file(GLOB F_MAIN_SOURCES "${FRONTER_SOURCE_DIR}/*.cpp")
+file(GLOB F_CONFIGURATION_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/*.cpp")
+file(GLOB F_CONFIGURATION_OPTIONS_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/Options/*.cpp")
+file(GLOB F_FRAMES_SOURCES "${FRONTER_SOURCE_DIR}/Frames/*.cpp")
+file(GLOB F_FRAMES_TABS_SOURCES "${FRONTER_SOURCE_DIR}/Frames/Tabs/*.cpp")
+file(GLOB F_UTILS_SOURCES "${FRONTER_SOURCE_DIR}/Utils/*.cpp")
+file(GLOB F_UTILS_LOCALIZATION_SOURCES "${FRONTER_SOURCE_DIR}/Utils/Localization/*.cpp")
+file(GLOB F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/*.cpp")
+list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/WinConverterLauncher.cpp")
+file(GLOB F_LOGWATCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/LogWatcher/*.cpp")
+file(GLOB F_MODCOPIER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ModCopier/*.cpp")
+file(GLOB F_UPDATECHECKER_SOURCES "${FRONTER_SOURCE_DIR}/UpdateChecker/*.cpp")
+file(GLOB F_SQLITE_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/src/*.cpp")
+file(GLOB F_SQLITE3_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/sqlite3/*.c")
+
+add_executable(ConverterFrontend
+	${F_MAIN_SOURCES}
+	${F_CONFIGURATION_SOURCES}
+	${F_CONFIGURATION_OPTIONS_SOURCES}
+	${F_FRAMES_SOURCES}
+	${F_FRAMES_TABS_SOURCES}
+	${F_UTILS_SOURCES}
+	${F_UTILS_LOCALIZATION_SOURCES}
+	${F_CONVERTERLAUNCHER_SOURCES}
+	${F_LOGWATCHER_SOURCES}
+	${F_MODCOPIER_SOURCES}
+	${F_UPDATECHECKER_SOURCES}
+	${F_SQLITE_SOURCES}
+	${F_SQLITE3_SOURCES}
 )
 
+find_package(wxWidgets REQUIRED COMPONENTS net core base)
+include(${wxWidgets_USE_FILE})
+set_target_properties(ConverterFrontend
+    PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
+)
+target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} CommonItems)
+
+add_custom_command(TARGET ConverterFrontend
+	COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" && cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/"
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
 
 #### Tests ####
 
@@ -657,8 +734,7 @@ set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${PROJECT_SOURCE
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/V2World/Wars/WarGoalFactoryTests.cpp")
 set(VIC2WORLD_WORLD_TESTS_SOURCES ${VIC2WORLD_WORLD_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/V2World/World/WorldTests.cpp")
 
-add_executable(
-	Vic2ToHoi4ConverterTests
+list(APPEND ALL_HOI4_TESTS_FILES 
 	${CONVERTER_SOURCES}
 	${CONFIGURATION_TESTS_SOURCES}
 	${HOI4WORLD_TESTS_SOURCES}
@@ -730,13 +806,22 @@ add_executable(
 	${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES}
 	${VIC2WORLD_WAR_TESTS_SOURCES}
 	${VIC2WORLD_WORLD_TESTS_SOURCES}
-	${COMMON_SOURCES}
+)
+
+# fish out only actual tests.
+list(FILTER ALL_HOI4_TESTS_FILES INCLUDE REGEX ".*Tests\\.cpp$")
+
+add_executable(
+	Vic2ToHoi4ConverterTests
+	${ALL_HOI4_TESTS_FILES}
 	${GMOCK_SOURCES}
 )
 set_target_properties( Vic2ToHoi4ConverterTests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
 )
+target_precompile_headers(Vic2ToHoi4ConverterTests REUSE_FROM Vic2ToHoi4lib)
+
 configure_file("data/test_files/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
 configure_file("data/test_files/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_ai_peace.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
@@ -859,7 +944,7 @@ configure_file("data/test_files/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}/something
 configure_file("data/test_files/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("data/test_files/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests OutHoI4World HoI4World Map Vic2World Mappers pthread)
+target_link_libraries(Vic2ToHoi4ConverterTests LINK_PUBLIC Vic2ToHoi4lib)
 
 
 #### Coverage ####
@@ -870,7 +955,6 @@ add_custom_target(gcov
 )
 add_custom_command(TARGET gcov
 	COMMAND echo "=================== GCOV ===================="
-	COMMAND gcov ${CMAKE_SOURCE_DIR}/src/Configuration.cpp ${CMAKE_SOURCE_DIR}/src/Vic2toHOI4Converter.cpp -o ${CMAKE_BINARY_DIR}/CMakeFiles/Vic2ToHoi4ConverterTests.dir/src
 	COMMAND echo "-- Source directories:"
 	COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
 	COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"

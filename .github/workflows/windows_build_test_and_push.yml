@@ -25,10 +25,8 @@ jobs:
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive external\common_items
-       git -c submodule."external/commonItems".update=none `
+       git -c submodule."external/common_items".update=none `
            -c submodule."googletest".update=none `
-           -c submodule."external/googletest".update=none `
-           -c submodule."external/zip".update=none `
            submodule update --init --recursive external\Fronter
 
     - name: "Get previous tag"
@@ -98,10 +96,8 @@ jobs:
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive external\common_items
-       git -c submodule."external/commonItems".update=none `
+       git -c submodule."external/common_items".update=none `
            -c submodule."googletest".update=none `
-           -c submodule."external/googletest".update=none `
-           -c submodule."external/zip".update=none `
            submodule update --init --recursive external\Fronter
 
     - name: "Build solution"
