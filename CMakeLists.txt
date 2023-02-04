@@ -22,8 +22,7 @@ add_compile_options(-D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXGTK__ -pthread)
 #add_compile_options("-g")
 
 set(CURL_LIBRARY "-lcurl")
-find_package(CURL REQUIRED) 
-include_directories(${CURL_INCLUDE_DIR})
+find_package(CURL REQUIRED)
 
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories("/usr/include/wx-3.2-unofficial")
