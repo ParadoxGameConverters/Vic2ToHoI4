@@ -26,7 +26,6 @@ jobs:
       run: |
        git submodule update --init --recursive external\common_items
        git -c submodule."external/commonItems".update=none `
-           -c submodule."googletest".update=none `
            submodule update --init --recursive external\Fronter
 
     - name: "Get previous tag"
@@ -97,7 +96,6 @@ jobs:
       run: |
        git submodule update --init --recursive external\common_items
        git -c submodule."external/commonItems".update=none `
-           -c submodule."googletest".update=none `
            submodule update --init --recursive external\Fronter
 
     - name: "Build solution"
