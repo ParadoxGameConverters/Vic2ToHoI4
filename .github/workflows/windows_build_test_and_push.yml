@@ -25,7 +25,7 @@ jobs:
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive external\common_items
-       git -c submodule."external/common_items".update=none `
+       git -c submodule."external/commonItems".update=none `
            -c submodule."googletest".update=none `
            submodule update --init --recursive external\Fronter
 
@@ -78,7 +78,7 @@ jobs:
         path: Vic3ToHoI4-pull-request-win-x64.zip
 
     - name: "Cleanup"
-      if: ${{ true }}
+      if: always()
       run: |
         Get-ChildItem -Path $Env:GITHUB_WORKSPACE -Recurse -Force | Remove-Item -force -recurse
 
@@ -96,7 +96,7 @@ jobs:
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive external\common_items
-       git -c submodule."external/common_items".update=none `
+       git -c submodule."external/commonItems".update=none `
            -c submodule."googletest".update=none `
            submodule update --init --recursive external\Fronter
 
@@ -123,7 +123,7 @@ jobs:
         path: Vic3ToHoI4-pull-request-win-x64.zip
 
     - name: "Cleanup"
-      if: ${{ true }}
+      if: always()
       run: |
         Get-ChildItem -Path $Env:GITHUB_WORKSPACE -Recurse -Force | Remove-Item -force -recurse
 
