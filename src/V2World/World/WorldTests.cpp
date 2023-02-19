@@ -691,16 +691,14 @@ TEST(Vic2World_World_WorldTests, UnmappedModProvinceThrowsError)
 {
 	const commonItems::ModFilesystem mod_filesystem("V2World", {});
 
-	ASSERT_THROW(
-		 Vic2::World::Factory(mod_filesystem, 0.0F)
-			  .importWorld(
-					*Configuration::Builder()
-						.setVic2Path("V2World")
-						.setInputFile("V2World/TestWorld.v2")
-						.addVic2Mod(Mod("no_mappings_mod", "no_mappings_mod"))
-						.build(),
-					*Mappers::ProvinceMapper::Builder().Build(),
-					mod_filesystem),
+	ASSERT_THROW(Vic2::World::Factory(mod_filesystem, 0.0F)
+						  .importWorld(*Configuration::Builder()
+												  .setVic2Path("V2World")
+												  .setInputFile("V2World/TestWorld.v2")
+												  .addVic2Mod(Mod("no_mappings_mod", "no_mappings_mod"))
+												  .build(),
+								*Mappers::ProvinceMapper::Builder().Build(),
+								mod_filesystem),
 		 std::runtime_error);
 }
 
