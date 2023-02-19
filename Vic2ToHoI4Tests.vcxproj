@@ -39,6 +39,7 @@
     <ClCompile Include="src\HOI4World\Characters\CommanderDataTests.cpp" />
     <ClCompile Include="src\HOI4World\Characters\CountryLeaderDataTests.cpp" />
     <ClCompile Include="src\HOI4World\Characters\PortraitsFactoryTests.cpp" />
+    <ClCompile Include="src\HOI4World\Characters\PortraitTests.cpp" />
     <ClCompile Include="src\HOI4World\Characters\PortraitTypeFactoryTests.cpp" />
     <ClCompile Include="src\HOI4World\Countries\EquipmentTests.cpp" />
     <ClCompile Include="src\HOI4World\Countries\UnionCountryTests.cpp" />
@@ -94,6 +95,7 @@
     <ClCompile Include="src\HOI4World\MilitaryMappings\SubstitutesImporterTests.cpp" />
     <ClCompile Include="src\HOI4World\MilitaryMappings\UnitMappingsTests.cpp" />
     <ClCompile Include="src\HOI4World\MilitaryMappings\UnitMappingTests.cpp" />
+    <ClCompile Include="src\HOI4World\Military\AirplaneTests.cpp" />
     <ClCompile Include="src\HOI4World\Military\DivisionTemplateTests.cpp" />
     <ClCompile Include="src\HOI4World\Military\DivisionTypeTests.cpp" />
     <ClCompile Include="src\HOI4World\Military\HoI4ArmyTests.cpp" />
@@ -163,6 +165,7 @@
     <ClCompile Include="src\Mappers\Country\CountryMapperTests.cpp" />
     <ClCompile Include="src\Mappers\Country\CountryMappingRuleFactoryTests.cpp" />
     <ClCompile Include="src\Mappers\FactionName\FactionNameMapperTests.cpp" />
+    <ClCompile Include="src\Mappers\FactionName\FactionNameMappingTests.cpp" />
     <ClCompile Include="src\Mappers\FlagsToIdeas\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="src\Mappers\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="src\Mappers\Government\GovernmentMapperTests.cpp" />
@@ -217,19 +220,24 @@
     <ClCompile Include="src\V2World\Military\Leaders\TraitTests.cpp" />
     <ClCompile Include="src\V2World\Military\UnitTests.cpp" />
     <ClCompile Include="src\V2World\Politics\PartyTests.cpp" />
+    <ClCompile Include="src\V2World\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="src\V2World\Pops\PopTests.cpp" />
     <ClCompile Include="src\V2World\Provinces\ProvinceBuilderTests.cpp" />
     <ClCompile Include="src\V2World\Provinces\ProvinceFactoryTests.cpp" />
     <ClCompile Include="src\V2World\Provinces\ProvinceTests.cpp" />
     <ClCompile Include="src\V2World\States\BuildingTests.cpp" />
+    <ClCompile Include="src\V2World\States\StateDefinitionsFactoryTests.cpp" />
     <ClCompile Include="src\V2World\States\StateDefinitionsTests.cpp" />
     <ClCompile Include="src\V2World\States\StateFactoryTests.cpp" />
+    <ClCompile Include="src\V2World\States\StateLanguageCategoriesFactory.cpp" />
     <ClCompile Include="src\V2World\States\StateLanguageCategoriesTests.cpp" />
     <ClCompile Include="src\V2World\States\StateTests.cpp" />
     <ClCompile Include="src\V2World\Stockpiles\StockpileTests.cpp" />
     <ClCompile Include="src\V2World\Technology\InventionTests.cpp" />
+    <ClCompile Include="src\V2World\Technology\TechnologyFactoryTests.cpp" />
     <ClCompile Include="src\V2World\Wars\WarFactoryTests.cpp" />
     <ClCompile Include="src\V2World\Wars\WarGoalFactoryTests.cpp" />
+    <ClCompile Include="src\V2World\World\WorldTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\HoI4">
