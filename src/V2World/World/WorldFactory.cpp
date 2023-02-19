@@ -109,7 +109,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	consolidatePartialStates();
 	addWarsToCountries(wars);
 	setLocalisations(*world->theLocalisations);
-	checkAllProvincesMapped(provinceMapper);
+	checkAllProvincesMapped(provinceMapper, theConfiguration.getVic2Mods());
 	consolidateConquerStrategies();
 	moveArmiesHome();
 	removeBattles();
@@ -392,7 +392,8 @@ void Vic2::World::Factory::setLocalisations(Localisations& vic2Localisations)
 }
 
 
-void Vic2::World::Factory::checkAllProvincesMapped(const Mappers::ProvinceMapper& provinceMapper) const
+void Vic2::World::Factory::checkAllProvincesMapped(const Mappers::ProvinceMapper& provinceMapper,
+	 const Mods& vic2Mods) const
 {
 	Log(LogLevel::Info) << "\tChecking all provinces are mapped";
 	for (const auto& provinceNum: world->provinces | std::views::keys)
@@ -400,6 +401,10 @@ void Vic2::World::Factory::checkAllProvincesMapped(const Mappers::ProvinceMapper
 		if (!provinceMapper.isVic2ProvinceMapped(provinceNum))
 		{
 			Log(LogLevel::Warning) << "No mapping for Vic2 province " << provinceNum;
+			if (!vic2Mods.empty())
+			{
+				throw std::runtime_error("Please upload log.txt to forums to check if your used mods are supported");
+			}
 		}
 	}
 }

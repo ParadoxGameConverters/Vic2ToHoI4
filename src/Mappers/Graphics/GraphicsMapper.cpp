@@ -352,7 +352,8 @@ std::optional<std::string> Mappers::GraphicsMapper::getGraphicalCulture(const st
 		return graphicalCulture->second;
 	}
 
-	return std::nullopt;
+	Log(LogLevel::Error) << "No mapping for " << culture << " (" << cultureGroup << ")";
+	throw std::runtime_error("Please upload log.txt to forums to check if your used mods are supported");
 }
 
 
