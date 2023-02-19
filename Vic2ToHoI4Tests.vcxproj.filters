@@ -610,6 +610,30 @@
     <ClCompile Include="src\HOI4World\Navies\NaviesTests.cpp">
       <Filter>src\HOI4World\Navies</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Characters\PortraitTests.cpp">
+      <Filter>src\HOI4World\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Military\AirplaneTests.cpp">
+      <Filter>src\HOI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\FactionName\FactionNameMappingTests.cpp">
+      <Filter>src\Mappers\FactionName</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\World\WorldTests.cpp">
+      <Filter>src\V2World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Technology\TechnologyFactoryTests.cpp">
+      <Filter>src\V2World\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\States\StateDefinitionsFactoryTests.cpp">
+      <Filter>src\V2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\States\StateLanguageCategoriesFactory.cpp">
+      <Filter>src\V2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\V2World\Pops\PopFactoryTests.cpp">
+      <Filter>src\V2World\Pops</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
