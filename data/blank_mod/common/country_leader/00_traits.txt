@@ -368,19 +368,6 @@ leader_traits = {
 #ai_focus_naval_air_factor
 #ai_focus_aviation_factor
 
-	dislikes_germany = {
-		random = no
-		ai_strategy = {
-			type = antagonize
-			id = "GER"
-			value = 200
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
 	tenacious_defender = {
 		random = no
 
@@ -547,7 +534,7 @@ leader_traits = {
 		}
 	}
 
-	revolutionary_general = { #Francisco José Mugica
+	revolutionary_general = { #Francisco JosÃ© Mugica
 		random = no
 		resistance_growth_on_our_occupied_states = 0.25
 		mobilization_laws_cost_factor = -0.25
@@ -559,7 +546,7 @@ leader_traits = {
 		}
 	}
 
-	fascist_militia_leader = { #Nicolás Rodríguez Carrasco, probably others too could be used for random fascist leaders
+	fascist_militia_leader = { #NicolÃ¡s RodrÃ­guez Carrasco, probably others too could be used for random fascist leaders
 		random = no
 		war_support_factor = 0.05
 		ai_will_do = {
@@ -567,7 +554,7 @@ leader_traits = {
 		}
 	}
 
-	cristero_general = { #Jesús Degollado Guízar
+	cristero_general = { #JesÃºs Degollado GuÃ­zar
 		random = no
 		conscription = 0.01
 		ai_will_do = {
@@ -575,7 +562,7 @@ leader_traits = {
 		}
 	}
 
-	primate_of_mexico = { # Luis María Martínez
+	primate_of_mexico = { # Luis MarÃ­a MartÃ­nez
 		random = no
 		stability_factor = 0.05
 		ai_will_do = {
@@ -1219,7 +1206,7 @@ leader_traits = {
 		mobilization_speed = 0.25
 	}
 
-	sultana = { #Dürrüsehvar
+	sultana = { #DÃ¼rrÃ¼sehvar
 		random = no
 		stability_factor = 0.15
 		war_support_factor = 0.1
@@ -3425,7 +3412,7 @@ leader_traits = {
 		}
 	}
 
-	gran_carabinero = { # Hundred Thousand Sons of Negrín!
+	gran_carabinero = { # Hundred Thousand Sons of NegrÃ­n!
 		random = no
 		sprite = 13
 
