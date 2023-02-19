@@ -45,8 +45,7 @@ class World::Factory: commonItems::parser
 	void addWarsToCountries(const std::vector<War>& wars);
 	void overallMergeNations(bool debug);
 	void mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags, bool debug);
-	void checkAllProvincesMapped(const Mappers::ProvinceMapper& provinceMapper,
-		 const Mods& vic2Mods) const;
+	void checkAllProvincesMapped(const Mappers::ProvinceMapper& provinceMapper, const Mods& vic2Mods) const;
 	void consolidateConquerStrategies();
 	void moveArmiesHome();
 	void removeBattles();
