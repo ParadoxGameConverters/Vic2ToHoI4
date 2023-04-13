@@ -754,7 +754,7 @@ dont_build_capitals_if_on_treaty = {
 	}
 
 	abort = {
-		not = { has_idea = MTG_naval_treaty_adherent }
+		NOT = { has_idea = MTG_naval_treaty_adherent }
 	}
 
 	ai_strategy = {
