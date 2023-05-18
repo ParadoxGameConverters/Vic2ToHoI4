@@ -9,6 +9,30 @@
 
 
 
+namespace
+{
+
+std::optional<std::string> SelectLargestCulture(const std::map<std::string, int>& culture_sizes)
+{
+	std::optional<std::string> largest_culture;
+	int largest_culture_size = 0;
+
+	for (const auto& [culture, size]: culture_sizes)
+	{
+		if (size > largest_culture_size)
+		{
+			largest_culture = culture;
+			largest_culture_size = size;
+		}
+	}
+
+	return largest_culture;
+}
+
+} // namespace
+
+
+
 void Vic2::Country::eatCountry(Country& target, bool debug)
 {
 	if (target.tag == tag)
@@ -147,17 +171,26 @@ void Vic2::Country::setLocalisationAdjective(const std::string& language, const 
 }
 
 
-void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
+void Vic2::Country::HandleMissingCulture(const CultureGroups& culture_groups)
 {
-	if (primaryCulture == "no_culture")
+	if (primaryCulture)
 	{
-		const auto cultureSizes = determineCultureSizes();
-		primaryCulture = selectLargestCulture(cultureSizes);
-		auto cultureGroupOption = theCultureGroups.GetGroup(primaryCulture);
-		if (cultureGroupOption)
-		{
-			primaryCultureGroup = *cultureGroupOption;
-		}
+		return;
+	}
+
+	Log(LogLevel::Warning) << tag << " had no primary culture set. Attempting to get one via pops.";
+
+	const std::map<std::string, int> culture_sizes = determineCultureSizes();
+	primaryCulture = SelectLargestCulture(culture_sizes);
+	if (!primaryCulture)
+	{
+		Log(LogLevel::Warning) << "\tCould not set primary culture via pops.";
+	}
+
+	if (const std::optional<std::string> culture_group_option = culture_groups.GetGroup(*primaryCulture);
+		 culture_group_option)
+	{
+		primaryCultureGroup = *culture_group_option;
 	}
 }
 
@@ -181,23 +214,6 @@ std::map<std::string, int> Vic2::Country::determineCultureSizes()
 	}
 
 	return cultureSizes;
-}
-
-
-std::string Vic2::Country::selectLargestCulture(const std::map<std::string, int>& cultureSizes)
-{
-	std::string largestCulture = "no_culture";
-	auto largestCultureSize = 0;
-	for (const auto& [culture, size]: cultureSizes)
-	{
-		if (size > largestCultureSize)
-		{
-			largestCulture = culture;
-			largestCultureSize = size;
-		}
-	}
-
-	return largestCulture;
 }
 
 
