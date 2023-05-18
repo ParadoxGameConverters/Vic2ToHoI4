@@ -584,7 +584,11 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 			continue;
 		}
 		auto acceptedCultures = sourceCountry->second.getAcceptedCultures();
-		acceptedCultures.insert(sourceCountry->second.getPrimaryCulture());
+		if (const std::optional<std::string>& primary_culture = sourceCountry->second.getPrimaryCulture();
+			 primary_culture)
+		{
+			acceptedCultures.insert(*primary_culture);
+		}
 
 		uint64_t totalPopulation = 0;
 		double acceptedPopulation = 0;
@@ -876,7 +880,11 @@ void HoI4::States::addCoresToCorelessStates(const std::map<std::string, Vic2::Co
 				continue;
 			}
 			auto acceptedCultures = sourceCountry->second.getAcceptedCultures();
-			acceptedCultures.insert(sourceCountry->second.getPrimaryCulture());
+			if (const std::optional<std::string>& primary_culture = sourceCountry->second.getPrimaryCulture();
+				 primary_culture)
+			{
+				acceptedCultures.insert(*primary_culture);
+			}
 
 			double acceptedPopulation = 0;
 			for (const auto& sourceProvinceNum: sourceProvinceNums)

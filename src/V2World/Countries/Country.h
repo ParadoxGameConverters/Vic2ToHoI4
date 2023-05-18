@@ -57,7 +57,7 @@ class Country
 	void determineEmployedWorkers();
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
-	void handleMissingCulture(const CultureGroups& theCultureGroups);
+	void HandleMissingCulture(const CultureGroups& culture_groups);
 
 	// functions to look up aspects of the country
 	[[nodiscard]] const auto& getTag() const { return tag; }
@@ -108,7 +108,6 @@ class Country
 
   private:
 	std::map<std::string, int> determineCultureSizes();
-	static std::string selectLargestCulture(const std::map<std::string, int>& cultureSizes);
 
 	void setLocalisationName(const std::string& language, const std::string& name);
 	void setLocalisationAdjective(const std::string& language, const std::string& adjective);
@@ -122,8 +121,8 @@ class Country
 	std::vector<std::shared_ptr<Province>> cores;
 	int capital = 0;
 
-	std::string primaryCulture = "no_culture";
-	std::string primaryCultureGroup = "no_culture";
+	std::optional<std::string> primaryCulture;
+	std::optional<std::string> primaryCultureGroup;
 	std::set<std::string> acceptedCultures;
 
 	std::set<std::string> technologiesAndInventions;

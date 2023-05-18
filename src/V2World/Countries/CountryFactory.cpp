@@ -54,17 +54,17 @@ Vic2::Country::Factory::Factory(const commonItems::ModFilesystem& mod_filesystem
 		}
 	});
 	registerKeyword("primary_culture", [this](std::istream& theStream) {
-		country->primaryCulture = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
-		country->acceptedCultures.insert(country->primaryCulture);
+		country->primaryCulture = commonItems::remQuotes(commonItems::getString(theStream));
+		country->acceptedCultures.emplace(*country->primaryCulture);
 
-		auto cultureGroupOption = theCultureGroups->GetGroup(country->primaryCulture);
-		if (cultureGroupOption)
+		if (const std::optional<std::string> culture_group_option = theCultureGroups->GetGroup(*country->primaryCulture);
+			 culture_group_option)
 		{
-			country->primaryCultureGroup = *cultureGroupOption;
+			country->primaryCultureGroup = *culture_group_option;
 		}
 		else
 		{
-			country->primaryCultureGroup.clear();
+			country->primaryCultureGroup.reset();
 		}
 	});
 	registerKeyword("culture", [this](std::istream& theStream) {

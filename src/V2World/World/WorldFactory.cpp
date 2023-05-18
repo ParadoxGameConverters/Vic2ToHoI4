@@ -160,7 +160,7 @@ void Vic2::World::Factory::setProvinceOwners()
 	for (auto& country: world->countries | std::views::values)
 	{
 		country.putProvincesInStates();
-		country.handleMissingCulture(*theCultureGroups);
+		country.HandleMissingCulture(*theCultureGroups);
 	}
 }
 
@@ -254,7 +254,8 @@ bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core,
 		return false;
 	}
 
-	if (owner->second.isAnAcceptedCulture(country.getPrimaryCulture()))
+	if (const std::optional<std::string>& primary_culture = country.getPrimaryCulture();
+		 primary_culture && owner->second.isAnAcceptedCulture(*primary_culture))
 	{
 		return true;
 	}

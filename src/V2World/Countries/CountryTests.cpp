@@ -411,22 +411,22 @@ TEST(Vic2World_Countries_CountryTests, CapitalCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(mod_filesystem,
+	const std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-									 .createCountry("TAG",
-										  theStream,
-										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-										  std::vector{*Vic2::Party::Builder().Build()},
-										  *Vic2::StateLanguageCategories::Builder().build(),
-										  0.05F,
-										  std::nullopt);
+																		.createCountry("TAG",
+																			 theStream,
+																			 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																			 std::vector{*Vic2::Party::Builder().Build()},
+																			 *Vic2::StateLanguageCategories::Builder().build(),
+																			 0.05F,
+																			 std::nullopt);
 
 	ASSERT_EQ(42, country->getCapital());
 }
 
 
-TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToNoCulture)
+TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToNullopt)
 {
 	std::stringstream theStream;
 	theStream << "= {\n";
@@ -434,18 +434,18 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToNoCulture)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(mod_filesystem,
+	const std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-									 .createCountry("TAG",
-										  theStream,
-										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-										  std::vector{*Vic2::Party::Builder().Build()},
-										  *Vic2::StateLanguageCategories::Builder().build(),
-										  0.05F,
-										  std::nullopt);
+																		.createCountry("TAG",
+																			 theStream,
+																			 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																			 std::vector{*Vic2::Party::Builder().Build()},
+																			 *Vic2::StateLanguageCategories::Builder().build(),
+																			 0.05F,
+																			 std::nullopt);
 
-	ASSERT_EQ("no_culture", country->getPrimaryCulture());
+	EXPECT_EQ(country->getPrimaryCulture(), std::nullopt);
 }
 
 
@@ -458,18 +458,19 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(mod_filesystem,
+
+	const std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-									 .createCountry("TAG",
-										  theStream,
-										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-										  std::vector{*Vic2::Party::Builder().Build()},
-										  *Vic2::StateLanguageCategories::Builder().build(),
-										  0.05F,
-										  std::nullopt);
+																		.createCountry("TAG",
+																			 theStream,
+																			 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																			 std::vector{*Vic2::Party::Builder().Build()},
+																			 *Vic2::StateLanguageCategories::Builder().build(),
+																			 0.05F,
+																			 std::nullopt);
 
-	ASSERT_EQ("test_primary", country->getPrimaryCulture());
+	EXPECT_EQ(country->getPrimaryCulture(), std::make_optional("test_primary"));
 }
 
 
@@ -482,18 +483,19 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureWithQuotesCanBeSet)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(mod_filesystem,
+
+	const std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-									 .createCountry("TAG",
-										  theStream,
-										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-										  std::vector{*Vic2::Party::Builder().Build()},
-										  *Vic2::StateLanguageCategories::Builder().build(),
-										  0.05F,
-										  std::nullopt);
+																		.createCountry("TAG",
+																			 theStream,
+																			 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																			 std::vector{*Vic2::Party::Builder().Build()},
+																			 *Vic2::StateLanguageCategories::Builder().build(),
+																			 0.05F,
+																			 std::nullopt);
 
-	ASSERT_EQ("test_primary", country->getPrimaryCulture());
+	EXPECT_EQ(country->getPrimaryCulture(), std::make_optional("test_primary"));
 }
 
 
@@ -505,16 +507,16 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	auto country = Vic2::Country::Factory(mod_filesystem,
+	std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-							 .createCountry("TAG",
-								  theStream,
-								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-								  std::vector{*Vic2::Party::Builder().Build()},
-								  *Vic2::StateLanguageCategories::Builder().build(),
-								  0.05F,
-								  std::nullopt);
+																.createCountry("TAG",
+																	 theStream,
+																	 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																	 std::vector{*Vic2::Party::Builder().Build()},
+																	 *Vic2::StateLanguageCategories::Builder().build(),
+																	 0.05F,
+																	 std::nullopt);
 	country->addProvince(1,
 		 Vic2::Province::Builder()
 			  .setNumber(1)
@@ -522,9 +524,17 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 					Pop(PopOptions{.culture = "test_secondary", .size = 5})})
 			  .build());
 
-	country->handleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
+	std::stringstream log;
+	auto std_out_buf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
 
-	ASSERT_EQ("test_primary", country->getPrimaryCulture());
+	country->HandleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
+
+	std::cout.rdbuf(std_out_buf);
+
+	EXPECT_EQ(country->getPrimaryCulture(), std::make_optional("test_primary"));
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[WARNING] TAG had no primary culture set. Attempting to get one via pops."));
 }
 
 
@@ -536,16 +546,17 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromMultiplePopsAdd
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	auto country = Vic2::Country::Factory(mod_filesystem,
+
+	std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-							 .createCountry("TAG",
-								  theStream,
-								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-								  std::vector{*Vic2::Party::Builder().Build()},
-								  *Vic2::StateLanguageCategories::Builder().build(),
-								  0.05F,
-								  std::nullopt);
+																.createCountry("TAG",
+																	 theStream,
+																	 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																	 std::vector{*Vic2::Party::Builder().Build()},
+																	 *Vic2::StateLanguageCategories::Builder().build(),
+																	 0.05F,
+																	 std::nullopt);
 	country->addProvince(1,
 		 Vic2::Province::Builder()
 			  .setNumber(1)
@@ -554,9 +565,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromMultiplePopsAdd
 					Pop(PopOptions{.culture = "test_secondary", .size = 5})})
 			  .build());
 
-	country->handleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
+	country->HandleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
 
-	ASSERT_EQ("test_primary", country->getPrimaryCulture());
+	EXPECT_EQ(country->getPrimaryCulture(), std::make_optional("test_primary"));
 }
 
 
@@ -568,24 +579,32 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureNotSetFromLargestCultureIfN
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	auto country = Vic2::Country::Factory(mod_filesystem,
+
+	std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-							 .createCountry("TAG",
-								  theStream,
-								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-								  std::vector{*Vic2::Party::Builder().Build()},
-								  *Vic2::StateLanguageCategories::Builder().build(),
-								  0.05F,
-								  std::nullopt);
+																.createCountry("TAG",
+																	 theStream,
+																	 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																	 std::vector{*Vic2::Party::Builder().Build()},
+																	 *Vic2::StateLanguageCategories::Builder().build(),
+																	 0.05F,
+																	 std::nullopt);
 
-	country->handleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
+	std::stringstream log;
+	auto std_out_buf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
 
-	ASSERT_EQ("no_culture", country->getPrimaryCulture());
+	country->HandleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
+
+	std::cout.rdbuf(std_out_buf);
+
+	EXPECT_EQ(country->getPrimaryCulture(), std::nullopt);
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] \tCould not set primary culture via pops."));
 }
 
 
-TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToNoCulture)
+TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToNullopt)
 {
 	std::stringstream theStream;
 	theStream << "= {\n";
@@ -593,18 +612,18 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToNoCulture)
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
-	const auto country = Vic2::Country::Factory(mod_filesystem,
+	const std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-									 .createCountry("TAG",
-										  theStream,
-										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-										  std::vector{*Vic2::Party::Builder().Build()},
-										  *Vic2::StateLanguageCategories::Builder().build(),
-										  0.05F,
-										  std::nullopt);
+																		.createCountry("TAG",
+																			 theStream,
+																			 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																			 std::vector{*Vic2::Party::Builder().Build()},
+																			 *Vic2::StateLanguageCategories::Builder().build(),
+																			 0.05F,
+																			 std::nullopt);
 
-	ASSERT_EQ("no_culture", country->getPrimaryCultureGroup());
+	EXPECT_EQ(country->getPrimaryCulture(), std::nullopt);
 }
 
 
@@ -618,22 +637,22 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupsSetFromPrimaryCulture
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	const auto country = Vic2::Country::Factory(mod_filesystem,
+	const std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-									 .createCountry("TAG",
-										  theStream,
-										  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-										  std::vector{*Vic2::Party::Builder().Build()},
-										  *Vic2::StateLanguageCategories::Builder().build(),
-										  0.05F,
-										  std::nullopt);
+																		.createCountry("TAG",
+																			 theStream,
+																			 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																			 std::vector{*Vic2::Party::Builder().Build()},
+																			 *Vic2::StateLanguageCategories::Builder().build(),
+																			 0.05F,
+																			 std::nullopt);
 
-	ASSERT_EQ("test_primary_group", country->getPrimaryCultureGroup());
+	EXPECT_EQ(country->getPrimaryCultureGroup(), std::make_optional("test_primary_group"));
 }
 
 
-TEST(Vic2World_Countries_CountryTests, PrimaryCulturGroupeNotSetFromLargestCultureIfNoPops)
+TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupNotSetFromLargestCultureIfNoPops)
 {
 	std::stringstream theStream;
 	theStream << "= {\n";
@@ -641,20 +660,29 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCulturGroupeNotSetFromLargestCultu
 	theStream << "}";
 
 	const commonItems::ModFilesystem mod_filesystem("./countryTests/", {});
-	auto country = Vic2::Country::Factory(mod_filesystem,
+	std::unique_ptr<Vic2::Country> country = Vic2::Country::Factory(mod_filesystem,
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
-							 .createCountry("TAG",
-								  theStream,
-								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
-								  std::vector{*Vic2::Party::Builder().Build()},
-								  *Vic2::StateLanguageCategories::Builder().build(),
-								  0.05F,
-								  std::nullopt);
+																.createCountry("TAG",
+																	 theStream,
+																	 Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+																	 std::vector{*Vic2::Party::Builder().Build()},
+																	 *Vic2::StateLanguageCategories::Builder().build(),
+																	 0.05F,
+																	 std::nullopt);
 
-	country->handleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
+	std::stringstream log;
+	auto std_out_buf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
 
-	ASSERT_EQ("no_culture", country->getPrimaryCultureGroup());
+	country->HandleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
+
+	std::cout.rdbuf(std_out_buf);
+
+	EXPECT_EQ(country->getPrimaryCultureGroup(), std::nullopt);
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[WARNING] TAG had no primary culture set. Attempting to get one via pops."));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] \tCould not set primary culture via pops."));
 }
 
 
@@ -683,13 +711,13 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupCanBeSetFromLargestCul
 					Pop(PopOptions{.culture = "test_secondary", .size = 6})})
 			  .build());
 
-	country->handleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
+	country->HandleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
 
-	ASSERT_EQ("test_primary_group", country->getPrimaryCultureGroup());
+	EXPECT_EQ(country->getPrimaryCultureGroup(), std::make_optional("test_primary_group"));
 }
 
 
-TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupBecomesNoCultureIfUnset)
+TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupBecomesNulloptfUnset)
 {
 	std::stringstream theStream;
 	theStream << "= {\n";
@@ -707,9 +735,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupBecomesNoCultureIfUnse
 										  *Vic2::StateLanguageCategories::Builder().build(),
 										  0.05F,
 										  std::nullopt);
-	country->handleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
+	country->HandleMissingCulture(*Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem));
 
-	ASSERT_EQ("no_culture", country->getPrimaryCultureGroup());
+	EXPECT_EQ(country->getPrimaryCultureGroup(), std::nullopt);
 }
 
 
