@@ -37,11 +37,9 @@ HoI4::Country::Country(std::string tag,
 	 tag(std::move(tag)),
 	 name_(sourceCountry.getName("english")), adjective_(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
-	 oldCapital(sourceCountry.getCapital()),
-	 primaryCulture(sourceCountry.getPrimaryCulture() ? *sourceCountry.getPrimaryCulture() : "no_culture"),
+	 oldCapital(sourceCountry.getCapital()), primaryCulture(sourceCountry.getPrimaryCulture().value_or("no_culture")),
 	 civilized(sourceCountry.isCivilized()),
-	 primaryCultureGroup(
-		  sourceCountry.getPrimaryCultureGroup() ? *sourceCountry.getPrimaryCultureGroup() : "no_culture"),
+	 primaryCultureGroup(sourceCountry.getPrimaryCultureGroup().value_or("no_culture")),
 	 rulingParty(sourceCountry.getRulingParty()), parties(sourceCountry.getActiveParties()),
 	 oldGovernment(sourceCountry.getGovernment()), upperHouseComposition(sourceCountry.getUpperHouseComposition()),
 	 lastElection(sourceCountry.getLastElection())
