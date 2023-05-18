@@ -681,7 +681,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupNotSetFromLargestCultu
 
 	EXPECT_EQ(country->getPrimaryCultureGroup(), std::nullopt);
 	EXPECT_THAT(log.str(),
-		testing::HasSubstr("[WARNING] TAG had no primary culture set. Attempting to get one via pops."));
+		 testing::HasSubstr("[WARNING] TAG had no primary culture set. Attempting to get one via pops."));
 	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] \tCould not set primary culture via pops."));
 }
 
