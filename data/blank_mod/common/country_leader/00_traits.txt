@@ -7034,5 +7034,14 @@ leader_traits = {
 			factor = 1
 		}
 	}
+	
+	viceroy_emeritus = {
+		random = no
+		generate_wargoal_tension = 0.1
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
 
 }
