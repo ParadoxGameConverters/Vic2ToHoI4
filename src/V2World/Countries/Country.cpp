@@ -185,6 +185,8 @@ void Vic2::Country::HandleMissingCulture(const CultureGroups& culture_groups)
 	if (!primaryCulture)
 	{
 		Log(LogLevel::Warning) << "\tCould not set primary culture via pops.";
+		primaryCultureGroup.reset();
+		return;
 	}
 
 	if (const std::optional<std::string> culture_group_option = culture_groups.GetGroup(*primaryCulture);
