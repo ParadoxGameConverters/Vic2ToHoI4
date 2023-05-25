@@ -341,6 +341,11 @@ std::vector<std::string> Mappers::GraphicsMapper::getFemaleOperativePortraits(co
 std::optional<std::string> Mappers::GraphicsMapper::getGraphicalCulture(const std::string& culture,
 	 const std::string& cultureGroup) const
 {
+	if (culture == "no_culture")
+	{
+		return std::nullopt;
+	}
+
 	if (const auto graphicalCulture = graphicalCultureMap.find(culture); graphicalCulture != graphicalCultureMap.end())
 	{
 		return graphicalCulture->second;
