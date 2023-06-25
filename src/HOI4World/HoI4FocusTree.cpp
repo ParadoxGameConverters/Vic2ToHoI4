@@ -141,7 +141,7 @@ std::map<std::string, std::set<int>> determineWarTargets(const HoI4::Country& th
 }
 
 
-double getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conquerStrategies)
+double getStrategiesMaxValue(const std::vector<HoI4::AIStrategy>& conquerStrategies)
 {
 	const auto& maxConquerValueItr =
 		 std::ranges::max_element(conquerStrategies, [](const HoI4::AIStrategy& a, const HoI4::AIStrategy& b) {
@@ -1564,6 +1564,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 		return conquerTags;
 	}
 
+	const auto& conquerStrategiesMaxValue = getStrategiesMaxValue(conquerStrategies);
 	for (const auto& strategy: conquerStrategies)
 	{
 		if (strategy.getID() == tag)
@@ -1571,7 +1572,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 			continue;
 		}
 
-		const double relativeValue = strategy.getValue() / getMaxConquerValue(conquerStrategies);
+		const double relativeValue = strategy.getValue() / conquerStrategiesMaxValue;
 		if (hasMaxNeighborWars(numWarsWithNeighbors) || relativeValue < strategyValueThreshold)
 		{
 			break;
