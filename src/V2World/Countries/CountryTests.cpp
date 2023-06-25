@@ -1049,6 +1049,36 @@ TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
 	ASSERT_EQ(42, country->getAI().getStrategies()[0].getValue());
 }
 
+TEST(Vic2World_Countries_CountryTests, DefaultConquerStrategiesAreIgnored)
+{
+	std::stringstream theStream;
+	theStream << "={\n";
+	theStream << "\tai= {\n";
+	theStream << "\t\tconquer_prov=\n";
+	theStream << "\t\t{\n";
+	theStream << "\t\t\tid=\"1\"\n";
+	theStream << "\t\t\tvalue=5\n";
+	theStream << "\t\t}\n";
+	theStream << "\t}\n";
+	theStream << "}";
+
+	const commonItems::ModFilesystem mod_filesystem("./countries/blank/", {});
+	auto country = Vic2::Country::Factory(mod_filesystem,
+		 *Vic2::StateDefinitions::Builder().build(),
+		 Vic2::CultureGroups::Factory().GetCultureGroups(mod_filesystem))
+							 .createCountry("TAG",
+								  theStream,
+								  Vic2::CommonCountryData(Vic2::CommonCountryDataOptions{}),
+								  std::vector{*Vic2::Party::Builder().Build()},
+								  *Vic2::StateLanguageCategories::Builder().build(),
+								  0.05F,
+								  std::nullopt);
+	country->consolidateConquerStrategies(
+		 {std::make_pair(1, Vic2::Province::Builder().setNumber(1).setOwner("TWO").build())});
+
+	ASSERT_TRUE(country->getAI().getConsolidatedStrategies().empty());
+}
+
 
 TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 {
@@ -1059,12 +1089,12 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 	theStream << "\t\tconquer_prov=\n";
 	theStream << "\t\t{\n";
 	theStream << "\t\t\tid=\"1\"\n";
-	theStream << "\t\t\tvalue=5\n";
+	theStream << "\t\t\tvalue=50\n";
 	theStream << "\t\t}\n";
 	theStream << "\t\tconquer_prov=\n";
 	theStream << "\t\t{\n";
 	theStream << "\t\t\tid=\"2\"\n";
-	theStream << "\t\t\tvalue=7\n";
+	theStream << "\t\t\tvalue=71\n";
 	theStream << "\t\t}\n";
 	theStream << "\t}\n";
 	theStream << "}";
@@ -1084,7 +1114,7 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 		 {std::make_pair(1, Vic2::Province::Builder().setNumber(1).setOwner("TWO").build()),
 			  std::make_pair(2, Vic2::Province::Builder().setNumber(2).setOwner("TWO").build())});
 
-	ASSERT_EQ(12, country->getAI().getConsolidatedStrategies().find("TWO")->second.value);
+	ASSERT_EQ(121, country->getAI().getConsolidatedStrategies().find("TWO")->second.value);
 }
 
 
