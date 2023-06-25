@@ -96,31 +96,37 @@ TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesProperlyConsolidated)
 	input << "conquer_prov=\n";
 	input << "{\n";
 	input << "\tid=42\n";
-	input << "\tvalue=2\n";
+	input << "\tvalue=20\n";
 	input << "}\n";
 	input << "conquer_prov=\n";
 	input << "{\n";
 	input << "\tid=43\n";
-	input << "\tvalue=3\n";
+	input << "\tvalue=30\n";
 	input << "}\n";
 	input << "conquer_prov=\n";
 	input << "{\n";
 	input << "\tid=44\n";
-	input << "\tvalue=7\n";
+	input << "\tvalue=70\n";
 	input << "}\n";
 	input << "conquer_prov=\n";
 	input << "{\n";
 	input << "\tid=45\n";
-	input << "\tvalue=11\n";
+	input << "\tvalue=110\n";
+	input << "}\n";
+	input << "conquer_prov=\n";
+	input << "{\n";
+	input << "\tid=46\n";
+	input << "\tvalue=110\n";
 	input << "}\n";
 	auto newVic2Ai = Vic2::AI::Factory().importAI(input);
 
 	const std::map<int, std::shared_ptr<Vic2::Province>> provinceMap{
 		 {42, Vic2::Province::Builder().setNumber(42).setOwner("TAG").build()},
 		 {43, Vic2::Province::Builder().setNumber(43).setOwner("TAG").build()},
-		 {44, {}}};
+		 {44, Vic2::Province::Builder().setNumber(44).setOwner("TAG").build()},
+		 {45, {}}};
 
 	newVic2Ai->consolidateConquerStrategies(provinceMap);
 
-	ASSERT_EQ(5, newVic2Ai->getConsolidatedStrategies().find("TAG")->second.value);
+	ASSERT_EQ(50, newVic2Ai->getConsolidatedStrategies().find("TAG")->second.value);
 }
