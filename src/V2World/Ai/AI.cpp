@@ -8,6 +8,10 @@ void Vic2::AI::consolidateConquerStrategies(const std::map<int, std::shared_ptr<
 {
 	for (const auto& strategy: conquerStrategies)
 	{
+		if (strategy.getValue() <= 10 || strategy.getValue() == 70) // default values for all strategies
+		{
+			continue;
+		}
 		const auto& provinceItr = provinces.find(strategy.getProvID());
 		if (provinceItr == provinces.end())
 		{
