@@ -731,7 +731,7 @@
 	link = { vic2 = 3647 hoi4 = 4884 hoi4 = 12410 } # Victoria -> land, land
 	link = { vic2 = 137 hoi4 = 12782 hoi4 = 6987 hoi4 = 2042 } # San Antonio -> land, land, land
 	link = { vic2 = 138 hoi4 = 5061 hoi4 = 12369 hoi4 = 6785 hoi4 = 2019 } # Laredo -> land, land, land, land
-	link = { vic2 = 2662 hoi4 = 5044 } # Ánimas -> land
+	link = { vic2 = 2662 hoi4 = 5044 } # Animas -> land
 	link = { vic2 = 2148 hoi4 = 1972 hoi4 = 10645 hoi4 = 12552 } # Albuquerque -> land, land, land
 	link = { vic2 = 3589 hoi4 = 10914 } # Las Cruces -> land
 	link = { vic2 = 105 hoi4 = 4975 hoi4 = 10867 hoi4 = 12684 hoi4 = 2102 hoi4 = 10642 } # Santa Fe -> land, land, land, land, land
