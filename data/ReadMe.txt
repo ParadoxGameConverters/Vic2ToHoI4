@@ -68,6 +68,7 @@ DiegoAFGamer		- Data Files
 Skulltcarretilla	- Data Files
 cetvrtak			- Data Files
 Herr B.				- Data Files
+Tuyuko				- Data Files
 Anate				- Translations
 Yellowone1			- Art
 KaeI				- Art
