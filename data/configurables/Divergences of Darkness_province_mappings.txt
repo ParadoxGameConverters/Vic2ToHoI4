@@ -1142,7 +1142,7 @@
 	link = { vic2 = 2399 hoi4 = 5173 hoi4 = 12946 } # Skitby -> land, land
 	link = { vic2 = 2400 hoi4 = 11009 } # Land's End -> land
 	link = { comment = "* British Atlantis" }
-	link = { vic2 = 2131 hoi4 = 10995 hoi4 = 12960 } # Tapt Ø -> land, land
+	link = { vic2 = 2131 hoi4 = 12960 } # Tapt Ø -> land
 	link = { vic2 = 2129 vic2 = 2132 vic2 = 2130 hoi4 = 13016 hoi4 = 13013 } # MANY-TO-MANY: Ile Royale, Ile de Brugge, Erikskyst -> land, land
 	link = { comment = "* * Europe" }
 	link = { comment = "* Danish Iceland" }
@@ -1956,12 +1956,11 @@
 	link = { vic2 = 1094 hoi4 = 772 } # Poti -> land
 	link = { vic2 = 1092 hoi4 = 654 hoi4 = 6674 hoi4 = 9632 hoi4 = 9626 hoi4 = 3658 hoi4 = 3656 } # Kutaisi -> land, land, land, land, land, land
 	link = { vic2 = 1093 vic2 = 3393 hoi4 = 6669 hoi4 = 9702 } # MANY-TO-MANY: Akhaltsikhe, Akhalkalaki -> land, land
-	link = { vic2 = 3385 hoi4 = 4605 hoi4 = 12309 } # Kakheti -> land, land
+	link = { vic2 = 3385 hoi4 = 4605 hoi4 = 12309 hoi4 = 6436 } # Kakheti -> land, land, land
 	link = { vic2 = 1090 hoi4 = 1599 } # Tblisi -> land
-	link = { vic2 = 1091 hoi4 = 3667 hoi4 = 4534 } # Pasanauri -> land, land
+	link = { vic2 = 1091 hoi4 = 4534 } # Pasanauri -> land
 	link = { vic2 = 3384 hoi4 = 1530 hoi4 = 11609 } # Tskhinval -> land, land
 	link = { vic2 = 3383 hoi4 = 6671 } # Gori -> land
-	link = { hoi4 = 6436 } # NOTHING -> land
 	link = { vic2 = 1099 hoi4 = 12441 hoi4 = 12380 } # Gyumri -> land, land
 	link = { vic2 = 3280 hoi4 = 13123 } # Sevan Lake -> lake
 	link = { vic2 = 3390 vic2 = 3391 hoi4 = 12450 } # Gegharkunik, Istisu -> land
@@ -1981,7 +1980,7 @@
 	link = { vic2 = 1052 hoi4 = 1450 hoi4 = 3711 hoi4 = 7624 hoi4 = 4463 hoi4 = 9645 } # Kumukh -> land, land, land, land, land
 	link = { vic2 = 1053 hoi4 = 6689 hoi4 = 7554 hoi4 = 1455 hoi4 = 3668 hoi4 = 6701 } # Gunib -> land, land, land, land, land
 	link = { vic2 = 1057 hoi4 = 700 hoi4 = 6748 hoi4 = 6730 hoi4 = 3682 hoi4 = 728 } # Kizylyar -> land, land, land, land, land
-	link = { vic2 = 1055 hoi4 = 3672 hoi4 = 11632 hoi4 = 712 hoi4 = 6702 hoi4 = 9647 hoi4 = 683 hoi4 = 666 hoi4 = 670 } # Sölza-Gala -> land, land, land, land, land, land, land, land
+	link = { vic2 = 1055 hoi4 = 3672 hoi4 = 11632 hoi4 = 712 hoi4 = 6702 hoi4 = 9647 hoi4 = 683 hoi4 = 666 hoi4 = 670 hoi4 = 3667 } # Sölza-Gala -> land, land, land, land, land, land, land, land, land
 	link = { vic2 = 1054 hoi4 = 11614 hoi4 = 9628 } # Dzaudzhikau -> land, land
 	link = { vic2 = 1056 hoi4 = 6718 hoi4 = 11633 hoi4 = 685 hoi4 = 6733 } # Beshtau -> land, land, land, land
 	link = { vic2 = 1050 hoi4 = 3748 hoi4 = 6753 hoi4 = 11678 hoi4 = 731 hoi4 = 9707 hoi4 = 11661 hoi4 = 6750 hoi4 = 11690 hoi4 = 11693 hoi4 = 9705 hoi4 = 11694 hoi4 = 9722 hoi4 = 11727 hoi4 = 6796 hoi4 = 3779 hoi4 = 775 hoi4 = 9742 hoi4 = 9688 hoi4 = 748 hoi4 = 11696 hoi4 = 9726 } # Jarymaj Sehere -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
@@ -2047,9 +2046,9 @@
 	link = { vic2 = 1062 hoi4 = 7895 hoi4 = 7796 hoi4 = 4746 hoi4 = 4774 hoi4 = 1744 hoi4 = 12700 hoi4 = 4846 hoi4 = 12630 hoi4 = 7733 hoi4 = 10604 hoi4 = 4710 } # Khanty -> land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 2685 hoi4 = 10648 hoi4 = 11307 hoi4 = 7228 hoi4 = 10716 hoi4 = 10216 hoi4 = 12659 hoi4 = 1771 hoi4 = 1841 hoi4 = 10720 hoi4 = 1704 hoi4 = 1808 } # Muzhi -> land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 3359 hoi4 = 5087 } # Tashkurgan -> land
-	link = { vic2 = 2614 hoi4 = 1750 hoi4 = 7778 hoi4 = 12696 hoi4 = 4813 hoi4 = 10189 hoi4 = 1543 hoi4 = 9553 hoi4 = 12102 hoi4 = 8112 hoi4 = 5042 hoi4 = 1970 hoi4 = 2015 } # Yarkand -> land, land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 2614 hoi4 = 8112 hoi4 = 5042 hoi4 = 1970 hoi4 = 2015 } # Yarkand -> land, land, land, land
 	link = { vic2 = 1066 hoi4 = 12390 hoi4 = 7833 hoi4 = 4659 hoi4 = 1880 hoi4 = 6787 hoi4 = 10659 } # Qashliq -> land, land, land, land, land, land
-	link = { vic2 = 1061 hoi4 = 9512 hoi4 = 7774 hoi4 = 7846 hoi4 = 4754 hoi4 = 3472 hoi4 = 10670 hoi4 = 4780 hoi4 = 12521 hoi4 = 4209 hoi4 = 4824 hoi4 = 1387 } # Tyumen -> land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 1061 hoi4 = 9512 hoi4 = 7774 hoi4 = 7846 hoi4 = 4754 hoi4 = 3472 hoi4 = 10670 hoi4 = 4780 hoi4 = 12521 hoi4 = 4209 hoi4 = 4824 hoi4 = 1387 hoi4 = 10189 hoi4 = 1543 hoi4 = 1750 hoi4 = 9553 hoi4 = 12102 hoi4 = 12696 hoi4 = 7778 hoi4 = 4813 } # Tyumen -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 2658 hoi4 = 1292 hoi4 = 1327 hoi4 = 4242 hoi4 = 12106 hoi4 = 10542 hoi4 = 1775 hoi4 = 10170 hoi4 = 1294 } # Kheta -> land, land, land, land, land, land, land, land
 	link = { vic2 = 1184 hoi4 = 12619 hoi4 = 1418 hoi4 = 1391 hoi4 = 7298 hoi4 = 1229 hoi4 = 12285 hoi4 = 4369 hoi4 = 12257 hoi4 = 1363 hoi4 = 7357 hoi4 = 12185 hoi4 = 4850 hoi4 = 1694 hoi4 = 7741 hoi4 = 7874 hoi4 = 1662 hoi4 = 1309 hoi4 = 4670 hoi4 = 12616 hoi4 = 10202 hoi4 = 7708 hoi4 = 4685 } # Kokshetau -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 1181 hoi4 = 10239 hoi4 = 1223 hoi4 = 12111 hoi4 = 12194 hoi4 = 10268 hoi4 = 7326 hoi4 = 7383 hoi4 = 1276 hoi4 = 4309 hoi4 = 4238 hoi4 = 10211 hoi4 = 4281 hoi4 = 1680 hoi4 = 7317 hoi4 = 10633 hoi4 = 10308 hoi4 = 1375 hoi4 = 1879 hoi4 = 10630 hoi4 = 12152 hoi4 = 4333 hoi4 = 4232 hoi4 = 7425 } # Qaraganda -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
@@ -2084,9 +2083,9 @@
 	link = { vic2 = 1189 hoi4 = 12640 hoi4 = 10408 hoi4 = 7706 hoi4 = 12583 } # Bishkek -> land, land, land, land
 	link = { vic2 = 1186 hoi4 = 1591 hoi4 = 7711 hoi4 = 4651 hoi4 = 10146 hoi4 = 4773 hoi4 = 1840 hoi4 = 4845 hoi4 = 10547 } # Alma Ata -> land, land, land, land, land, land, land, land
 	link = { vic2 = 1188 hoi4 = 7784 hoi4 = 10680 hoi4 = 12529 hoi4 = 10550 hoi4 = 10619 hoi4 = 7795 hoi4 = 7856 hoi4 = 12662 hoi4 = 13197 hoi4 = 4674 hoi4 = 12564 hoi4 = 7890 hoi4 = 12427 hoi4 = 1864 hoi4 = 1749 hoi4 = 1818 hoi4 = 10610 } # Qaratal -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
-	link = { vic2 = 1187 hoi4 = 10218 hoi4 = 4661 hoi4 = 12594 hoi4 = 10584 hoi4 = 4867 hoi4 = 12635 hoi4 = 10653 hoi4 = 1668 hoi4 = 4764 hoi4 = 7332 hoi4 = 10290 hoi4 = 10161 } # Semeï -> land, land, land, land, land, land, land, land, land, land, land, land
-	link = { vic2 = 1067 hoi4 = 1794 hoi4 = 10546 hoi4 = 10537 hoi4 = 1797 hoi4 = 12613 hoi4 = 11410 hoi4 = 7680 hoi4 = 1779 hoi4 = 4803 hoi4 = 1297 hoi4 = 12515 hoi4 = 12528 } # Barnaul -> land, land, land, land, land, land, land, land, land, land, land, land
-	link = { vic2 = 1064 hoi4 = 7274 hoi4 = 12606 hoi4 = 4840 hoi4 = 10555 hoi4 = 1860 hoi4 = 7687 hoi4 = 4806 hoi4 = 1733 hoi4 = 12679 hoi4 = 4366 hoi4 = 7722 hoi4 = 1790 hoi4 = 7825 hoi4 = 4734 hoi4 = 4866 hoi4 = 10652 } # Yadegar -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 1187 hoi4 = 10218 hoi4 = 4661 hoi4 = 10584 hoi4 = 4867 hoi4 = 12635 hoi4 = 10653 hoi4 = 1668 hoi4 = 4764 hoi4 = 7332 hoi4 = 10290 hoi4 = 10161 } # Semeï -> land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 1067 hoi4 = 4803 hoi4 = 1297 hoi4 = 12515 hoi4 = 12528 hoi4 = 1702 hoi4 = 7822 hoi4 = 1816 hoi4 = 1685 hoi4 = 10580 } # Barnaul -> land, land, land, land, land, land, land, land, land
+	link = { vic2 = 1064 hoi4 = 7274 hoi4 = 12606 hoi4 = 4840 hoi4 = 10555 hoi4 = 1860 hoi4 = 7687 hoi4 = 1733 hoi4 = 12679 hoi4 = 4366 hoi4 = 7722 hoi4 = 1790 hoi4 = 7825 hoi4 = 4734 hoi4 = 4866 hoi4 = 10652 hoi4 = 10537 } # Yadegar -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 2686 hoi4 = 10696 hoi4 = 10568 hoi4 = 1800 hoi4 = 12546 hoi4 = 1709 hoi4 = 7800 hoi4 = 12652 hoi4 = 10600 hoi4 = 7681 hoi4 = 12580 hoi4 = 1835 hoi4 = 4700 hoi4 = 10626 } # Ishim -> land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 2683 hoi4 = 4827 hoi4 = 1824 hoi4 = 1765 hoi4 = 12510 hoi4 = 1674 hoi4 = 4767 hoi4 = 7655 hoi4 = 10617 hoi4 = 4730 hoi4 = 12514 hoi4 = 10533 hoi4 = 1726 hoi4 = 4771 hoi4 = 7793 hoi4 = 10529 } # Bakchar -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 2646 hoi4 = 7837 hoi4 = 12672 hoi4 = 1784 hoi4 = 12542 hoi4 = 1856 hoi4 = 10663 hoi4 = 7882 } # Ases Igan -> land, land, land, land, land, land, land
@@ -2097,12 +2096,12 @@
 	link = { vic2 = 2657 hoi4 = 3336 hoi4 = 2972 } # Koibal -> land, land
 	link = { vic2 = 2680 hoi4 = 13064 hoi4 = 4859 } # Nganasan -> land, land
 	link = { vic2 = 2692 hoi4 = 4733 hoi4 = 10635 hoi4 = 1828 hoi4 = 12615 hoi4 = 12643 } # Anatjenci -> land, land, land, land, land
-	link = { vic2 = 1070 hoi4 = 12655 hoi4 = 12555 hoi4 = 10705 hoi4 = 10576 hoi4 = 1679 hoi4 = 7750 hoi4 = 1780 hoi4 = 7701 hoi4 = 12595 hoi4 = 10544 hoi4 = 4785 hoi4 = 4687 hoi4 = 1777 } # Chuvash -> land, land, land, land, land, land, land, land, land, land, land, land, land
-	link = { vic2 = 1063 hoi4 = 4681 hoi4 = 12599 hoi4 = 7849 hoi4 = 10673 hoi4 = 10613 hoi4 = 10686 hoi4 = 1718 hoi4 = 12174 hoi4 = 7789 hoi4 = 12536 hoi4 = 7861 } # Chuldum -> land, land, land, land, land, land, land, land, land, land, land
-	link = { vic2 = 1077 hoi4 = 4724 hoi4 = 7815 hoi4 = 1850 hoi4 = 12666 hoi4 = 12691 hoi4 = 10639 hoi4 = 10712 } # Kyzyl -> land, land, land, land, land, land, land
-	link = { vic2 = 2698 hoi4 = 4665 hoi4 = 12631 hoi4 = 7757 hoi4 = 4789 hoi4 = 4793 hoi4 = 1369 hoi4 = 1685 hoi4 = 7822 hoi4 = 7886 } # Anchimha -> land, land, land, land, land, land, land, land, land
-	link = { vic2 = 2674 hoi4 = 1816 hoi4 = 10580 hoi4 = 1702 } # Abakan -> land, land, land
-	link = { vic2 = 2691 hoi4 = 12563 hoi4 = 12628 hoi4 = 4690 hoi4 = 4711 hoi4 = 10649 hoi4 = 4818 } # Anatri -> land, land, land, land, land, land
+	link = { vic2 = 1070 hoi4 = 12655 hoi4 = 12555 hoi4 = 10705 hoi4 = 10576 hoi4 = 1780 hoi4 = 7701 hoi4 = 12595 hoi4 = 10544 hoi4 = 4785 hoi4 = 4687 hoi4 = 1777 } # Chuvash -> land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 1063 hoi4 = 10686 hoi4 = 1718 hoi4 = 12174 hoi4 = 7789 hoi4 = 12536 hoi4 = 7861 hoi4 = 1369 hoi4 = 12631 hoi4 = 7886 hoi4 = 4789 hoi4 = 4793 hoi4 = 7757 hoi4 = 4665 hoi4 = 10712 hoi4 = 7815 hoi4 = 1850 hoi4 = 10613 hoi4 = 12666 } # Chuldum -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 1077 hoi4 = 4724 hoi4 = 12691 hoi4 = 10639 hoi4 = 4690 hoi4 = 4711 hoi4 = 12563 hoi4 = 10649 hoi4 = 12628 hoi4 = 4818 } # Kyzyl -> land, land, land, land, land, land, land, land, land
+	link = { vic2 = 2698 hoi4 = 12594 hoi4 = 12613 hoi4 = 7680 hoi4 = 11410 hoi4 = 10546 hoi4 = 1779 hoi4 = 1794 hoi4 = 1797 hoi4 = 4806 } # Anchimha -> land, land, land, land, land, land, land, land, land
+	link = { vic2 = 2674 hoi4 = 6211 } # Abakan -> land
+	link = { vic2 = 2691 hoi4 = 7750 hoi4 = 1679 hoi4 = 12599 hoi4 = 10673 hoi4 = 4681 hoi4 = 7849 } # Anatri -> land, land, land, land, land, land
 	link = { vic2 = 1068 hoi4 = 10531 hoi4 = 10713 hoi4 = 12509 hoi4 = 4781 hoi4 = 4800 } # Ulala -> land, land, land, land, land
 	link = { vic2 = 1469 hoi4 = 10627 hoi4 = 4680 hoi4 = 10646 hoi4 = 1676 hoi4 = 7804 hoi4 = 7819 hoi4 = 1877 hoi4 = 10597 hoi4 = 12610 hoi4 = 7703 hoi4 = 12625 hoi4 = 7731 } # Uriankhai -> land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 3107 vic2 = 3305 vic2 = 3306 vic2 = 3307 vic2 = 3308 vic2 = 3310 hoi4 = 13152 } # Baigal Nuur, Khovsgol Nuur, Uvs Lake, Khyargas Lake, Khar Us Lake, Dalai Nuur -> lake
@@ -2115,23 +2114,22 @@
 	link = { vic2 = 2675 hoi4 = 10688 hoi4 = 12681 hoi4 = 7726 hoi4 = 12668 hoi4 = 12531 } # Eventi -> land, land, land, land, land
 	link = { vic2 = 2655 vic2 = 2651 hoi4 = 12687 hoi4 = 1741 hoi4 = 4743 hoi4 = 4812 hoi4 = 10607 } # MANY-TO-MANY: Tura, Shiwei -> land, land, land, land, land
 	link = { vic2 = 2693 hoi4 = 2923 hoi4 = 4692 hoi4 = 11328 hoi4 = 13065 } # Uchami -> land, land, land, land
-	link = { vic2 = 2673 hoi4 = 6085 hoi4 = 2900 hoi4 = 9224 } # Olkhan -> land, land, land
+	link = { vic2 = 2673 hoi4 = 2900 hoi4 = 9224 } # Olkhan -> land, land
 	link = { vic2 = 2654 hoi4 = 11261 } # Khatanga -> land
 	link = { vic2 = 2670 hoi4 = 13060 } # Tiksi -> land
 	link = { vic2 = 2653 hoi4 = 11122 } # Sakha -> land
 	link = { vic2 = 2652 hoi4 = 3184 } # Kular -> land
 	link = { vic2 = 2649 hoi4 = 1722 hoi4 = 1745 } # Kumis -> land, land
-	link = { vic2 = 1069 hoi4 = 2853 hoi4 = 1852 hoi4 = 7765 } # Yilehuli -> land, land, land
+	link = { vic2 = 1069 hoi4 = 2853 hoi4 = 1852 hoi4 = 7765 hoi4 = 7817 hoi4 = 10589 } # Yilehuli -> land, land, land, land, land
 	link = { vic2 = 2650 hoi4 = 13059 hoi4 = 12611 hoi4 = 10557 } # Nyurba -> land, land, land
 	link = { vic2 = 2695 hoi4 = 12608 hoi4 = 12538 } # Mukhtuya -> land, land
-	link = { vic2 = 2644 hoi4 = 12565 hoi4 = 7889 hoi4 = 4855 hoi4 = 1795 hoi4 = 4726 hoi4 = 10714 hoi4 = 4821 hoi4 = 7785 hoi4 = 4675 hoi4 = 4832 } # Ducher -> land, land, land, land, land, land, land, land, land, land
-	link = { vic2 = 2645 hoi4 = 4762 hoi4 = 4868 hoi4 = 1666 hoi4 = 4795 hoi4 = 10681 hoi4 = 10565 hoi4 = 12556 } # Chilchi -> land, land, land, land, land, land, land
+	link = { vic2 = 2644 hoi4 = 12565 hoi4 = 7889 hoi4 = 4855 hoi4 = 1795 hoi4 = 10714 hoi4 = 4821 hoi4 = 4675 } # Ducher -> land, land, land, land, land, land, land
+	link = { vic2 = 2645 hoi4 = 4762 hoi4 = 4868 hoi4 = 1666 hoi4 = 4795 hoi4 = 10681 hoi4 = 10565 } # Chilchi -> land, land, land, land, land, land
 	link = { vic2 = 2676 hoi4 = 10654 hoi4 = 1792 hoi4 = 4737 hoi4 = 12575 hoi4 = 10524 hoi4 = 12506 hoi4 = 7759 hoi4 = 10583 hoi4 = 4716 hoi4 = 4835 hoi4 = 7736 hoi4 = 7854 hoi4 = 1761 } # Ulan-Ude -> land, land, land, land, land, land, land, land, land, land, land, land, land
-	link = { vic2 = 2671 } # Daur -> DROPPED
+	link = { vic2 = 2671 hoi4 = 6085 } # Daur -> land
 	link = { vic2 = 1078 hoi4 = 7835 hoi4 = 7816 hoi4 = 10528 hoi4 = 4837 hoi4 = 1762 hoi4 = 1696 hoi4 = 4705 hoi4 = 10658 hoi4 = 12507 hoi4 = 4766 hoi4 = 7860 hoi4 = 12644 } # Chita -> land, land, land, land, land, land, land, land, land, land, land, land
-	link = { hoi4 = 12641 hoi4 = 7751 hoi4 = 1826 hoi4 = 10643 hoi4 = 7786 hoi4 = 10683 hoi4 = 1672 } # NOTHING -> land, land, land, land, land, land, land
-	link = { vic2 = 1079 hoi4 = 7725 hoi4 = 10574 hoi4 = 4677 hoi4 = 4719 hoi4 = 12622 hoi4 = 10559 } # Ust-Urda -> land, land, land, land, land, land
-	link = { vic2 = 1081 hoi4 = 12543 hoi4 = 12660 hoi4 = 7851 } # Yakesa -> land, land, land
+	link = { vic2 = 1079 hoi4 = 12641 hoi4 = 7751 hoi4 = 1826 hoi4 = 7786 hoi4 = 10683 hoi4 = 1672 hoi4 = 4677 hoi4 = 4719 hoi4 = 10559 hoi4 = 12622 hoi4 = 7725 } # Ust-Urda -> land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 1081 hoi4 = 12543 hoi4 = 12660 hoi4 = 7851 hoi4 = 7785 hoi4 = 4832 hoi4 = 12556 hoi4 = 10574 hoi4 = 10643 } # Yakesa -> land, land, land, land, land, land, land, land
 	link = { vic2 = 1553 hoi4 = 4809 hoi4 = 10541 hoi4 = 7848 hoi4 = 10675 hoi4 = 7873 hoi4 = 7832 hoi4 = 12548 hoi4 = 1693 hoi4 = 10698 hoi4 = 12618 } # Aigun -> land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 1002 hoi4 = 7743 hoi4 = 7697 hoi4 = 10612 hoi4 = 12690 hoi4 = 4745 hoi4 = 13150 hoi4 = 4852 hoi4 = 1776 hoi4 = 12537 } # Manzhouli -> land, land, land, land, land, land, land, land, land
 	link = { vic2 = 2617 hoi4 = 12261 hoi4 = 7672 hoi4 = 10722 hoi4 = 12678 hoi4 = 4805 hoi4 = 12192 hoi4 = 12263 hoi4 = 675 hoi4 = 4701 } # Saghalian Oula -> land, land, land, land, land, land, land, land, land
@@ -2145,13 +2143,13 @@
 	link = { vic2 = 1084 hoi4 = 10577 hoi4 = 7871 hoi4 = 12569 hoi4 = 12638 hoi4 = 9659 hoi4 = 1724 hoi4 = 4290 hoi4 = 3664 hoi4 = 10571 hoi4 = 4844 hoi4 = 12559 } # Utchan -> land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 2697 hoi4 = 4731 hoi4 = 1739 hoi4 = 7754 hoi4 = 4847 hoi4 = 12591 hoi4 = 1730 hoi4 = 1845 hoi4 = 10678 } # Jingkiri -> land, land, land, land, land, land, land, land
 	link = { vic2 = 1080 hoi4 = 1772 hoi4 = 10590 hoi4 = 1807 } # Toron -> land, land, land
-	link = { vic2 = 2696 hoi4 = 12694 hoi4 = 1748 hoi4 = 7844 hoi4 = 7691 hoi4 = 10608 hoi4 = 10667 hoi4 = 4752 hoi4 = 7746 } # Aldan -> land, land, land, land, land, land, land, land
+	link = { vic2 = 2696 hoi4 = 12694 hoi4 = 1748 hoi4 = 7844 hoi4 = 7691 hoi4 = 10608 hoi4 = 10667 hoi4 = 4752 } # Aldan -> land, land, land, land, land, land, land
 	link = { vic2 = 2641 hoi4 = 10598 hoi4 = 4881 hoi4 = 12650 hoi4 = 7772 hoi4 = 1805 hoi4 = 10572 hoi4 = 4810 } # Ayan -> land, land, land, land, land, land, land
 	link = { vic2 = 2639 vic2 = 2620 hoi4 = 1865 hoi4 = 12683 } # MANY-TO-MANY: Susuman, Syasir -> land, land
-	link = { vic2 = 2648 hoi4 = 10641 hoi4 = 7817 hoi4 = 4798 hoi4 = 10701 hoi4 = 12623 hoi4 = 1878 } # Nanai -> land, land, land, land, land, land
-	link = { vic2 = 2672 hoi4 = 10589 } # Udege -> land
-	link = { vic2 = 2642 hoi4 = 12634 hoi4 = 4878 hoi4 = 1714 hoi4 = 11607 } # Ust Nera -> land, land, land, land
-	link = { vic2 = 2668 hoi4 = 13061 hoi4 = 6211 } # Negidal -> land, land
+	link = { vic2 = 2648 hoi4 = 10641 hoi4 = 4798 hoi4 = 10701 hoi4 = 12623 hoi4 = 1878 hoi4 = 7746 hoi4 = 4726 } # Nanai -> land, land, land, land, land, land, land
+	link = { vic2 = 2672 hoi4 = 4878 } # Udege -> land
+	link = { vic2 = 2642 hoi4 = 12634 hoi4 = 1714 hoi4 = 11607 } # Ust Nera -> land, land, land
+	link = { vic2 = 2668 hoi4 = 13061 } # Negidal -> land
 	link = { vic2 = 2643 hoi4 = 4229 } # Honuu -> land
 	link = { vic2 = 2667 hoi4 = 2877 hoi4 = 12549 } # Bulun -> land, land
 	link = { vic2 = 2665 hoi4 = 4006 } # Chokurdakh -> land
@@ -2223,7 +2221,8 @@
 	link = { vic2 = 1161 hoi4 = 10923 hoi4 = 12813 } # Sharurah -> land, land
 	link = { vic2 = 3323 hoi4 = 1536 hoi4 = 4614 } # Neftçala -> land, land
 	link = { vic2 = 3394 hoi4 = 12434 } # Parsabad -> land
-	link = { vic2 = 2586 vic2 = 3387 hoi4 = 8118 hoi4 = 12740 hoi4 = 12768 hoi4 = 10870 hoi4 = 8030 hoi4 = 4932 hoi4 = 5093 hoi4 = 5081 hoi4 = 7495 } # MANY-TO-MANY: Rub' al Khali, Shirvan -> land, land, land, land, land, land, land, land, land
+	link = { vic2 = 3387 hoi4 = 7495 } # Shirvan -> land
+	link = { vic2 = 2586 hoi4 = 8118 hoi4 = 12740 hoi4 = 12768 hoi4 = 10870 hoi4 = 8030 hoi4 = 4932 hoi4 = 5093 hoi4 = 5081 } # Rub' al Khali -> land, land, land, land, land, land, land, land
 	link = { vic2 = 1159 hoi4 = 8004 hoi4 = 8060 } # Halaban -> land, land
 	link = { vic2 = 1157 hoi4 = 12727 hoi4 = 12870 hoi4 = 7995 hoi4 = 5024 } # Riyadh -> land, land, land, land
 	link = { vic2 = 1164 hoi4 = 10791 } # Hufuf -> land
@@ -2298,7 +2297,7 @@
 	link = { vic2 = 1776 hoi4 = 5034 } # Rosso -> land
 	link = { vic2 = 1777 hoi4 = 5077 } # Aleg -> land
 	link = { vic2 = 1778 hoi4 = 8058 } # Maghama -> land
-	link = { vic2 = 1806 hoi4 = 4963 hoi4 = 4961 } # Bayuda -> land, land
+	link = { vic2 = 1806 hoi4 = 4961 } # Bayuda -> land
 	link = { vic2 = 2609 hoi4 = 10725 hoi4 = 1115 } # Araouane -> land, land
 	link = { vic2 = 1807 hoi4 = 2068 hoi4 = 10868 hoi4 = 5101 } # Tessalit -> land, land, land
 	link = { vic2 = 1803 hoi4 = 2044 } # Timbuktu -> land
@@ -2344,7 +2343,8 @@
 	link = { vic2 = 1811 hoi4 = 8028 } # Maradi -> land
 	link = { vic2 = 1808 hoi4 = 1975 } # Niamey -> land
 	link = { vic2 = 1810 hoi4 = 2056 } # Dosso -> land
-	link = { vic2 = 1813 vic2 = 3376 hoi4 = 1549 hoi4 = 4913 hoi4 = 7939 } # MANY-TO-MANY: Arlit, Al Hasakah -> land, land, land
+	link = { vic2 = 3376 hoi4 = 1549 } # Al Hasakah -> land
+	link = { vic2 = 1813 hoi4 = 4913 hoi4 = 7939 } # Arlit -> land, land
 	link = { vic2 = 1812 hoi4 = 10917 } # Agades -> land
 	link = { vic2 = 1814 hoi4 = 8128 } # Madama -> land
 	link = { vic2 = 1817 hoi4 = 1956 } # Bilma -> land
@@ -2432,11 +2432,11 @@
 	link = { vic2 = 1837 hoi4 = 12796 hoi4 = 12826 hoi4 = 12881 } # Atbara -> land, land, land
 	link = { vic2 = 2564 hoi4 = 10900 hoi4 = 7987 hoi4 = 8103 } # Salima -> land, land, land
 	link = { vic2 = 1842 hoi4 = 5060 hoi4 = 10739 } # Junaynah -> land, land
-	link = { vic2 = 1836 hoi4 = 10902 hoi4 = 7989 hoi4 = 2046 hoi4 = 10745 } # Hayya -> land, land, land, land
+	link = { vic2 = 1836 hoi4 = 10902 hoi4 = 7989 hoi4 = 2046 hoi4 = 10745 hoi4 = 4963 } # Hayya -> land, land, land, land, land
 	link = { vic2 = 1833 hoi4 = 12725 hoi4 = 2003 } # Suakin -> land, land
-	link = { vic2 = 1829 hoi4 = 10784 hoi4 = 12862 hoi4 = 2088 } # Kassala -> land, land, land
-	link = { vic2 = 1828 hoi4 = 10743 } # Wad Madani -> land
-	link = { vic2 = 1827 hoi4 = 12806 hoi4 = 7925 } # Khartoum -> land, land
+	link = { vic2 = 1829 hoi4 = 10784 hoi4 = 12862 hoi4 = 2088 hoi4 = 10743 } # Kassala -> land, land, land, land
+	link = { vic2 = 1828 hoi4 = 12806 } # Wad Madani -> land
+	link = { vic2 = 1827 hoi4 = 7925 } # Khartoum -> land
 	link = { vic2 = 1830 hoi4 = 4918 } # Sennar -> land
 	link = { vic2 = 1831 hoi4 = 1914 hoi4 = 12887 } # Rabak -> land, land
 	link = { vic2 = 1838 hoi4 = 2016 hoi4 = 10795 } # Obeid -> land, land
@@ -2732,9 +2732,9 @@
 	link = { vic2 = 1213 hoi4 = 1995 hoi4 = 12788 hoi4 = 2078 hoi4 = 7916 } # Bamyan -> land, land, land, land
 	link = { vic2 = 3342 hoi4 = 12877 hoi4 = 7584 hoi4 = 7448 } # Maymana -> land, land, land
 	link = { vic2 = 1211 hoi4 = 10852 hoi4 = 12248 } # Balkh -> land, land
-	link = { vic2 = 1217 hoi4 = 10789 hoi4 = 5064 hoi4 = 8090 hoi4 = 5082 hoi4 = 12831 } # Ghazni -> land, land, land, land, land
+	link = { vic2 = 1217 hoi4 = 10789 hoi4 = 5064 hoi4 = 8090 hoi4 = 5082 hoi4 = 12831 hoi4 = 12769 } # Ghazni -> land, land, land, land, land, land
 	link = { vic2 = 1209 hoi4 = 10737 } # Kabul -> land
-	link = { vic2 = 2133 hoi4 = 12769 } # Duvborg -> land
+	link = { vic2 = 2133 hoi4 = 10995 } # Duvborg -> land
 	link = { vic2 = 1216 hoi4 = 10826 } # Jalalabad -> land
 	link = { vic2 = 3373 hoi4 = 7519 } # Wakhan -> land
 	link = { vic2 = 3343 hoi4 = 10781 hoi4 = 12314 } # Konduz -> land, land
