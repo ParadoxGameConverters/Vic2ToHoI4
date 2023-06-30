@@ -60,7 +60,7 @@
 #hispanic, african, deathbringers, animalia
 
 anglo_celtic = {
-	cultures_and_groups = { british celtic american_cultures anglo_saxon australian anglo_canadian anglo_african meashighcaw redwoodian guyanese incacunapic lepontic }
+	cultures_and_groups = { british celtic beornian american_cultures anglo_saxon australian anglo_canadian anglo_african meashighcaw redwoodian guyanese incacunapic lepontic }
 	army_portraits = {
 		#Generic European
 		"GFX_Portrait_Europe_Generic_land_1"
@@ -358,7 +358,7 @@ anglo_celtic = {
 	graphical_culture_2d = western_european_2d
 }
 low_franconian = {
-	cultures_and_groups = { french frankish neo_european_cultures beneluxian }
+	cultures_and_groups = { french frankish neo_european_cultures beneluxian anglois_american burgundian_american }
 		army_portraits = {
 		#Generic European
 		"GFX_Portrait_Europe_Generic_land_1"
@@ -590,7 +590,7 @@ low_franconian = {
 	graphical_culture_2d = western_european_2d
 }
 nordic_uralic = {
-	cultures_and_groups = { scandinavian hungarian_culture_group estonian finnougric }
+	cultures_and_groups = { scandinavian hungarian_culture_group scandinavian_american estonian finnougric }
 	army_portraits = {
 		#Generic European
 		"GFX_Portrait_Europe_Generic_land_1"
@@ -820,7 +820,7 @@ nordic_uralic = {
 	graphical_culture_2d = western_european_2d
 }
 pan_germanic = {
-	cultures_and_groups = { germanic pan_swiss jewish_group jewish_cultures varangian_g gothic_g barbarian } #jewish cultures will be moved in the final check-up
+	cultures_and_groups = { germanic pan_swiss boer_cultures jewish_group jewish_cultures varangian_g gothic_g barbarian } #jewish cultures will be moved in the final check-up
 	army_portraits = {
 		#Generic European
 		"GFX_Portrait_Europe_Generic_land_1"
@@ -1091,7 +1091,7 @@ pan_germanic = {
 }
 
 italic = {
-	cultures_and_groups = { italian old_italian levantine tyrrhenian rhaeto_romance } #Anticipating more portraits from upcoming DLC
+	cultures_and_groups = { italian old_italian italian_american levantine tyrrhenian rhaeto_romance } #Anticipating more portraits from upcoming DLC
 
 	army_portraits = {
 		#Generic European
@@ -1924,7 +1924,7 @@ serbo_croat_bulgarian = {
 }
 
 other_balto_slavic = {
-	cultures_and_groups = { polish_culture_group baltic czecho_slovak_culture_group }
+	cultures_and_groups = { polish_culture_group west_slavic baltic czecho_slovak_culture_group }
 
 	army_portraits = {
 		#Generic European
@@ -2381,7 +2381,7 @@ eastern_slavic = {
 }
 
 indian = {
-	cultures_and_groups = { south_asian indo_iranian gypsy asian_minor nepali burushaki_group nuristani_group traveller } # Double Fallback, had to move out of place
+	cultures_and_groups = { south_asian dravidian indo_iranian gypsy asian_minor nepali burushaki_group nuristani_group traveller } # Double Fallback, had to move out of place
 
 	army_portraits = {
 		#Generic Indian
@@ -2537,7 +2537,7 @@ indian = {
 }
 
 turkic = {
-	cultures_and_groups = { turkish azerbaijani pecheneg yenidun guney esmer uzbek kazak kirgiz uighur turkmen tatar yakut siberian }
+	cultures_and_groups = { turkish azerbaijani khalaj north_caucasian_group fahlavi lurish pamiri kalash parsi tat caspian ossetian astrakhani baluchi qashqai pecheneg yenidun guney esmer uzbek kazak kirgiz uighur turkmen tatar crimean yakut siberian }
 
 	army_portraits = {
 		#Generic Middle Eastern
@@ -2688,7 +2688,7 @@ turkic = {
 }
 
 iranian = {
-	cultures_and_groups = { iranian_turanian kurdish turko_semitic } # Fallback
+	cultures_and_groups = { iranian_turanian persian pashtun kurdish turko_semitic } # Fallback
 
 	army_portraits = {
 		#Generic Middle Eastern
@@ -2836,7 +2836,7 @@ iranian = {
 }
 
 north_african = {
-	cultures_and_groups = { maghrebi berber maures frencharab andalucian ifriqi tuareg }
+	cultures_and_groups = { maghrebi berber maures bedouin druze khaliji mashriqi misri frencharab andalucian ifriqi tuareg }
 	army_portraits = {
 		#Generic Middle Eastern
 		"GFX_Portrait_Arabia_Generic_land_1"
@@ -3395,7 +3395,7 @@ asian_steppe = {
 }
 
 austronesian = {
-	cultures_and_groups = { malay bornean filipino javan moluccan }
+	cultures_and_groups = { malay bornean champa filipino javan moluccan maori acehnese balinese polynesian hawaiian }
 
 	army_portraits = {
 		#Generic Asian
@@ -4435,7 +4435,7 @@ japonic = {
 }
 
 sinitic = {
-	cultures_and_groups = { east_asian } # Fallback, have to move this out of place
+	cultures_and_groups = { east_asian chinese oversea_chinese } # Fallback, have to move this out of place
 
 	army_portraits = {
 		#Generic Asian
@@ -5082,7 +5082,7 @@ central_american_native = {
 }
 
 south_american_native = {
-	cultures_and_groups = { native_south_american native_carribean }
+	cultures_and_groups = { native_south_american mesoandean native_carribean }
 
 	army_portraits = {
 		#Generic
@@ -5217,7 +5217,7 @@ south_american_native = {
 }
 
 hispanic_pie = {
-	cultures_and_groups = { latin_american_cultures pre_indo_european iberian }
+	cultures_and_groups = { latin_american_cultures latin_american pre_indo_european iberian }
 
 	army_portraits = {
 		#Generic
