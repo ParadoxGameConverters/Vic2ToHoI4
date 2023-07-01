@@ -9,21 +9,16 @@ updates:
       interval: "daily"
 
   - package-ecosystem: "gitsubmodule"
-    directory: "/googletest"
+    directory: "external/bitmap"
     schedule:
       interval: "monthly"
 
   - package-ecosystem: "gitsubmodule"
-    directory: "/bitmap"
-    schedule:
-      interval: "monthly"
-
-  - package-ecosystem: "gitsubmodule"
-    directory: "/common_items"
+    directory: "external/common_items"
     schedule:
       interval: "daily"
 
   - package-ecosystem: "gitsubmodule"
-    directory: "/Fronter"
+    directory: "external/Fronter"
     schedule:
       interval: "daily"
