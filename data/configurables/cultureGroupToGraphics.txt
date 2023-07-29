@@ -60,7 +60,7 @@
 #hispanic, african, deathbringers, animalia
 
 anglo_celtic = {
-	cultures_and_groups = { british celtic beornian american_cultures anglo_saxon australian anglo_canadian anglo_african meashighcaw redwoodian guyanese incacunapic lepontic }
+	cultures_and_groups = { british celtic beornian american_cultures pan_british anglo_saxon australian anglo_canadian anglo_african meashighcaw redwoodian guyanese incacunapic lepontic }
 	army_portraits = {
 		#Generic European
 		"GFX_Portrait_Europe_Generic_land_1"
@@ -358,7 +358,7 @@ anglo_celtic = {
 	graphical_culture_2d = western_european_2d
 }
 low_franconian = {
-	cultures_and_groups = { french frankish neo_european_cultures beneluxian anglois_american burgundian_american }
+	cultures_and_groups = { french pan_french frankish neo_european_cultures beneluxian anglois_american burgundian_american }
 		army_portraits = {
 		#Generic European
 		"GFX_Portrait_Europe_Generic_land_1"
@@ -1513,7 +1513,7 @@ hellenic_caucasian = {
 	graphical_culture_2d = western_european_2d
 }
 other_balkan = {
-	cultures_and_groups = { albanian pan_romanian balkan }
+	cultures_and_groups = { albanian pan_romanian pan_albanian balkan }
 
 	army_portraits = {
 		#Generic European
@@ -4849,7 +4849,7 @@ polynesia_micronesia = {
 }
 
 north_american_native = {
-	cultures_and_groups = { native_north_american }
+	cultures_and_groups = { native_north_american native_american }
 
 	army_portraits = {
 		#Generic
@@ -5785,7 +5785,7 @@ niger_congo = {
 }
 
 african = {
-	cultures_and_groups = { african_diaspora_cultures west_african east_african southern_african } # Fallback
+	cultures_and_groups = { african_diaspora_cultures west_african khoe_san east_african southern_african } # Fallback
 
 	army_portraits = {
 		#Generic
