@@ -31,7 +31,7 @@ std::unique_ptr<Vic2::CommonCountryData> Vic2::CommonCountryData::Factory::Impor
 {
 	common_country_data_ = std::make_unique<CommonCountryData>();
 
-	if (const auto possible_file = mod_filesystem.GetActualFileLocation("/common/countries/" + filename); possible_file)
+	if (const auto possible_file = mod_filesystem.GetActualFileLocation("/common/" + filename); possible_file)
 	{
 		parseFile(*possible_file);
 	}

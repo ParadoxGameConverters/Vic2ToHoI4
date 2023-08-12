@@ -10,7 +10,7 @@
 TEST(Vic2World_Countries_CommonCountryDataTests, DefaultsAreSet)
 {
 	const auto common_country_data =
-		 Vic2::CommonCountryData::Factory().ImportCommonCountryData("blankCommonCountryData.txt",
+		 Vic2::CommonCountryData::Factory().ImportCommonCountryData("countries/blankCommonCountryData.txt",
 			  commonItems::ModFilesystem("./", {}));
 
 	EXPECT_EQ(common_country_data->GetColor(), std::nullopt);
@@ -22,7 +22,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, DefaultsAreSet)
 TEST(Vic2World_Countries_CommonCountryDataTests, ItemsCanBeSet)
 {
 	const auto common_country_data =
-		 Vic2::CommonCountryData::Factory().ImportCommonCountryData("CommonCountryTestData.txt",
+		 Vic2::CommonCountryData::Factory().ImportCommonCountryData("countries/CommonCountryTestData.txt",
 			  commonItems::ModFilesystem("./", {}));
 
 	ASSERT_TRUE(common_country_data->GetColor().has_value());
