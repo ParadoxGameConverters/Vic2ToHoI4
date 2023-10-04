@@ -1416,7 +1416,8 @@
 	link = { vic2 = 3425 vic2 = 561 hoi4 = 9497 hoi4 = 482 } # MANY-TO-MANY: Altenburg, Weimar -> land, land
 	link = { vic2 = 562 hoi4 = 13116 } # Gotha -> land
 	link = { vic2 = 563 hoi4 = 6421 } # Meiningen -> land
-	link = { vic2 = 598 hoi4 = 9416 hoi4 = 3474 hoi4 = 11404 hoi4 = 586 } # Bayreuth -> land, land, land, land
+	link = { vic2 = 3682 hoi4 = 3474 } # Rudolstadt -> land
+	link = { vic2 = 598 hoi4 = 9416 hoi4 = 11404 hoi4 = 586 } # Bayreuth -> land, land, land
 	link = { vic2 = 602 hoi4 = 571 hoi4 = 3571 hoi4 = 3299 hoi4 = 3541 } # Regensburg -> land, land, land, land
 	link = { vic2 = 597 hoi4 = 11417 hoi4 = 9572 hoi4 = 9557 } # Würzburg -> land, land, land
 	link = { vic2 = 538 hoi4 = 11388 } # Osnabrück -> land
@@ -1749,8 +1750,8 @@
 	link = { vic2 = 337 hoi4 = 3073 hoi4 = 6134 hoi4 = 3149 hoi4 = 11079 hoi4 = 11024 hoi4 = 7 hoi4 = 9233 hoi4 = 6045 } # Kajaani -> land, land, land, land, land, land, land, land
 	link = { vic2 = 338 vic2 = 3339 hoi4 = 11125 hoi4 = 11164 hoi4 = 30 hoi4 = 9223 hoi4 = 6179 hoi4 = 3156 hoi4 = 11030 hoi4 = 6128 hoi4 = 3158 hoi4 = 3097 hoi4 = 103 hoi4 = 6061 hoi4 = 3069 hoi4 = 167 hoi4 = 203 hoi4 = 11130 hoi4 = 11115 hoi4 = 124 hoi4 = 3193 hoi4 = 3055 hoi4 = 162 hoi4 = 6087 hoi4 = 9189 hoi4 = 6076 hoi4 = 2992 hoi4 = 6142 hoi4 = 3107 hoi4 = 11167 hoi4 = 11204 hoi4 = 9112 hoi4 = 6137 } # MANY-TO-MANY: Tornio, Rovaniemi -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 982 hoi4 = 11142 hoi4 = 6012 hoi4 = 6183 hoi4 = 9140 } # Pechenga -> land, land, land, land
-	link = { hoi4 = 13115 hoi4 = 13114 hoi4 = 13109 hoi4 = 13108 hoi4 = 13111 hoi4 = 13112 hoi4 = 13113 hoi4 = 13110 hoi4 = 13104 hoi4 = 13105 hoi4 = 13103 hoi4 = 13106 hoi4 = 13107 hoi4 = 13100 hoi4 = 13101 hoi4 = 13102 } # NOTHING -> lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake
-	link = { vic2 = 2714 hoi4 = 2332 } # Ladoga -> lake
+	link = { vic2 = 3685 vic2 = 3686 vic2 = 3687 hoi4 = 13115 hoi4 = 13114 hoi4 = 13109 hoi4 = 13108 hoi4 = 13111 hoi4 = 13112 hoi4 = 13113 hoi4 = 13110 hoi4 = 13104 hoi4 = 13105 hoi4 = 13103 hoi4 = 13106 hoi4 = 13107 hoi4 = 13100 hoi4 = 13101 hoi4 = 13102 } # MANY-TO-MANY: Saimaa, Päijänne, Nasijarv -> lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake, lake
+	link = { vic2 = 2714 vic2 = 3688 hoi4 = 2332 } # Lake Ladoga, Lake Ilmen -> lake
 	link = { vic2 = 859 hoi4 = 849 hoi4 = 3879 } # Gallipoli -> land, land
 	link = { vic2 = 828 vic2 = 3302 vic2 = 3303 vic2 = 3470 hoi4 = 3893 hoi4 = 11842 } # MANY-TO-MANY: Adrianople, Kirklareli, Vasilikoz, Kesan -> land, land
 	link = { vic2 = 858 hoi4 = 922 hoi4 = 6895 } # Manastir -> land, land
@@ -1839,17 +1840,19 @@
 	link = { vic2 = 1017 hoi4 = 9355 hoi4 = 11368 hoi4 = 11214 hoi4 = 11242 hoi4 = 384 hoi4 = 261 hoi4 = 3376 hoi4 = 356 hoi4 = 3291 hoi4 = 302 hoi4 = 328 hoi4 = 3346 hoi4 = 11337 hoi4 = 11283 hoi4 = 11310 hoi4 = 6355 hoi4 = 9328 hoi4 = 6386 hoi4 = 6411 hoi4 = 9384 hoi4 = 9411 hoi4 = 3199 } # Oryol -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 977 hoi4 = 3580 hoi4 = 9260 hoi4 = 6304 hoi4 = 580 hoi4 = 6254 hoi4 = 6330 hoi4 = 3306 hoi4 = 9542 hoi4 = 11526 hoi4 = 6543 hoi4 = 558 hoi4 = 6603 hoi4 = 11244 hoi4 = 457 hoi4 = 3554 hoi4 = 288 } # Kursk -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 1018 hoi4 = 3492 hoi4 = 9518 hoi4 = 6517 hoi4 = 11500 hoi4 = 6577 hoi4 = 9449 hoi4 = 6481 } # Bjelgorod -> land, land, land, land, land, land, land
-	link = { vic2 = 963 vic2 = 3662 hoi4 = 9413 hoi4 = 559 hoi4 = 11504 hoi4 = 6507 hoi4 = 9463 hoi4 = 6578 hoi4 = 9479 hoi4 = 511 hoi4 = 3508 hoi4 = 11397 hoi4 = 3520 hoi4 = 501 hoi4 = 3455 hoi4 = 3557 hoi4 = 11462 hoi4 = 463 hoi4 = 6605 hoi4 = 11425 hoi4 = 9437 hoi4 = 11530 hoi4 = 3584 hoi4 = 9491 hoi4 = 9519 hoi4 = 6495 } # MANY-TO-MANY: Poltava, Sumy -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 3684 hoi4 = 9437 hoi4 = 3584 hoi4 = 9519 hoi4 = 9491 hoi4 = 11530 } # Priluki -> land, land, land, land, land
+	link = { vic2 = 963 vic2 = 3662 hoi4 = 9413 hoi4 = 559 hoi4 = 11504 hoi4 = 6507 hoi4 = 9463 hoi4 = 6578 hoi4 = 9479 hoi4 = 511 hoi4 = 3508 hoi4 = 11397 hoi4 = 3520 hoi4 = 501 hoi4 = 3455 hoi4 = 3557 hoi4 = 11462 hoi4 = 463 hoi4 = 6605 hoi4 = 11425 hoi4 = 6495 } # MANY-TO-MANY: Poltava, Sumy -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 972 hoi4 = 11437 hoi4 = 11422 hoi4 = 9419 hoi4 = 9433 hoi4 = 6423 } # Yekaterinoslav -> land, land, land, land, land
 	link = { vic2 = 965 hoi4 = 568 hoi4 = 737 hoi4 = 721 hoi4 = 9712 } # Kherson -> land, land, land, land
-	link = { vic2 = 973 hoi4 = 6596 hoi4 = 11700 hoi4 = 6771 hoi4 = 767 hoi4 = 3573 hoi4 = 588 hoi4 = 3767 hoi4 = 9729 hoi4 = 9571 hoi4 = 3399 hoi4 = 11405 hoi4 = 429 } # Melitopol -> land, land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 973 hoi4 = 6596 hoi4 = 11700 hoi4 = 6771 hoi4 = 767 hoi4 = 3573 hoi4 = 588 } # Melitopol -> land, land, land, land, land, land
 	link = { vic2 = 964 vic2 = 3437 vic2 = 3436 hoi4 = 11649 hoi4 = 705 hoi4 = 6724 hoi4 = 3722 hoi4 = 9718 } # MANY-TO-MANY: Simferopol, Dzhankóy, Yevpatoriya -> land, land, land, land, land
 	link = { vic2 = 967 vic2 = 3438 vic2 = 3439 hoi4 = 3686 hoi4 = 6704 hoi4 = 9677 } # MANY-TO-MANY: Sevastopol, Yálta, Feodosiya -> land, land, land
 	link = { vic2 = 966 hoi4 = 9680 } # Kerch -> land
 	link = { vic2 = 1049 vic2 = 3392 hoi4 = 6741 hoi4 = 11668 hoi4 = 11729 hoi4 = 3760 hoi4 = 717 hoi4 = 9663 hoi4 = 3698 hoi4 = 719 } # MANY-TO-MANY: Anapa, Gelendzhik -> land, land, land, land, land, land, land, land
-	link = { vic2 = 976 hoi4 = 6420 hoi4 = 3421 } # Mariupol -> land, land
-	link = { vic2 = 975 hoi4 = 6474 hoi4 = 6776 hoi4 = 3449 hoi4 = 3466 hoi4 = 6493 } # Berdyansk -> land, land, land, land, land
-	link = { vic2 = 974 hoi4 = 11461 hoi4 = 11452 hoi4 = 453 hoi4 = 472 hoi4 = 486 hoi4 = 502 hoi4 = 3479 hoi4 = 6530 hoi4 = 3531 } # Priluki -> land, land, land, land, land, land, land, land, land
+	link = { vic2 = 3683 hoi4 = 3531 hoi4 = 11461 hoi4 = 6530 hoi4 = 502 hoi4 = 3466 hoi4 = 6474 hoi4 = 3479 } # Bakhmut -> land, land, land, land, land, land, land
+	link = { vic2 = 976 hoi4 = 6420 hoi4 = 3421 hoi4 = 6776 hoi4 = 3449 hoi4 = 6493 } # Mariupol -> land, land, land, land, land
+	link = { vic2 = 975 hoi4 = 9729 hoi4 = 9571 hoi4 = 3767 hoi4 = 429 hoi4 = 3399 hoi4 = 11405 } # Berdyansk -> land, land, land, land, land, land
+	link = { vic2 = 974 hoi4 = 11452 hoi4 = 453 hoi4 = 472 hoi4 = 486 } # Aleksandrovsk -> land, land, land, land
 	link = { vic2 = 978 hoi4 = 418 hoi4 = 6554 hoi4 = 9556 hoi4 = 3409 hoi4 = 11541 hoi4 = 9531 hoi4 = 3491 hoi4 = 11487 } # Kharkov -> land, land, land, land, land, land, land, land
 	link = { vic2 = 1011 hoi4 = 6262 hoi4 = 6396 hoi4 = 11347 hoi4 = 3292 hoi4 = 212 hoi4 = 3250 hoi4 = 6315 hoi4 = 6290 hoi4 = 9348 hoi4 = 9282 } # Tula -> land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 1010 hoi4 = 3263 hoi4 = 274 hoi4 = 11369 hoi4 = 11300 hoi4 = 382 hoi4 = 3236 hoi4 = 3377 hoi4 = 6348 hoi4 = 3308 } # Kaluga -> land, land, land, land, land, land, land, land, land
