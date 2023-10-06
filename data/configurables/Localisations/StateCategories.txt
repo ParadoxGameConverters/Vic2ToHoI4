@@ -384,6 +384,46 @@ msac = { # Le Sahara Occidental français
 	ENG_1844 # Sudd
 	AUS_652 # Banat
 	JAP_1086 # Sakhalin
+
+	### GFM ###
+	PER_3353 # Azarbayjan-e Qarbi
+	BRU_1395 # Sarawak
+	TUR_3300 # Dayr al-Zur
+	PER_1142 # Laristan
+	PER_1130 # Yazd va Semnan
+	PER_3350 # Qa'inat
+	HAI_2214 # Hispaniola Orientale
+	BRZ_2446_1 # Minas Gerais
+	PEU_278 # Ucayali
+	RUS_945 # Vitebsk
+	RUS_936 # Grodno
+	RUS_1025 # Tambov
+	RUS_976 # Yekaterinoslav
+	RUS_2700 # Vologda
+	RUS_1006 # Pskov
+	RUS_1044 # Orenburg
+	RUS_3390 # Northern Caucasus
+	FRA_406 # Champagne
+	FRA_432 # Franche-Comté
+	TUR_887 # Erzurum
+	RUS_1013 # Vladimir
+	PRU_685 # Oberschlesien
+	NEJ_1160 # Rub al-Khali
+	AZB_1105 # Arran
+	KHI_3298 # Turkestan
+	AFG_1215 # Sistan
+	AFG_1212 # Herat
+	AUS_624 # Burgenland
+	AUS_635 # Karpatenland
+	TAJ_1208 # Khatlon
+	TUR_870 # Eskishehir
+	TUR_879 # Sivas
+	SWI_2568 # Ticino
+	SWI_607 # Région Lémanique
+	ARG_2389 # Cuyo
+	ARG_2379 # Córdoba de Argentina
+	FRA_1312 # French India
+	POR_1303 # Portuguese India
 }
 
 msav = { # L'Afghanistan Occidental français
@@ -423,6 +463,8 @@ msav = { # L'Afghanistan Occidental français
 	USA_196 # Alabama
 	USA_81 # Oregon
 	USA_91 # Idaho
+	AFG_1213 # Hazaristan
+	AFG_1218 # East Pashtunistan
 }
 
 msnv = { # [Ø] Abou-Dabi français
@@ -454,6 +496,7 @@ msnv = { # [Ø] Abou-Dabi français
 
 mpac = { # Les Territoires du Nord-Ouest français
 	ENG_9 # Northwest Territories
+	ENG_1244 # East United Provinces
 }
 
 mpav = { # Les États Shan français
@@ -668,6 +711,9 @@ fsav = { # L'Hongrie Centrale française
 	RUS_994 # Ingria
 	SPA_512 # Andalucia
 	TUR_853 # Albania
+	ETH_1855 # Amhara
+	RUS_1092 # Abkhazia
+	EGY_1156 # Anazzah
 }
 
 fsnc = { # [Ø] La-Pampa française
@@ -711,6 +757,12 @@ fsnv = { # [Ø] Antioquía française
 	FRA_1700 # Algiers
 	HAI_2213 # Hispaniola
 	PEU_2303 # Arequipa
+	KHI_1200 # Bukhara
+	KHI_1195 # Ferghana
+	ETH_3591 # Kaffa
+	NEJ_1164 # Hassa
+	EGY_1751 # al-Iskandariyyah
+	RUS_358 # Kurland
 }
 
 fpac = { # Les Fidjis françaises
