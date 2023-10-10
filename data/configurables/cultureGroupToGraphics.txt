@@ -1429,7 +1429,7 @@ hellenic_caucasian = {
 		democratic = {
 			"gfx/interface/ideas/idea_GRE_dimitrios_psarros.dds"
 			"gfx/interface/ideas/idea_GRE_eleftherios_venizelos.dds"
-			"gfx/interface/ideas/idea_GRE_themistoklis_sofoulis.dds"
+			"gfx/interface/ideas/idea_GRE_themistoklis_sofoulis.tga"
 		}
 		fascism = {
 			"gfx/interface/ideas/idea_GRE_charalambos_katsimitros.dds"

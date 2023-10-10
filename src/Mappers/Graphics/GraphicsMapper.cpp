@@ -406,6 +406,11 @@ void Mappers::GraphicsMapper::debugPortraits(const Configuration& theConfigurati
 
 	for (const auto& portrait: mapperPortraits)
 	{
+		if (!portrait.ends_with(".dds") && !portrait.ends_with(".tga"))
+		{
+			continue;
+		}
+
 		if (!portraitFiles.contains(portrait))
 		{
 			Log(LogLevel::Debug) << "Missing portrait: " << portrait;
