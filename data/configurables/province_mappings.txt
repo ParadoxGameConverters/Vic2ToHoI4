@@ -1408,8 +1408,9 @@
 	link = { vic2 = 2632 hoi4 = 10636 hoi4 = 13066 } # Ammassalik -> Ammassalik, land
 	link = { comment = "* " }
 	link = { comment = "* ** Iceland" }
-	link = { vic2 = 252 hoi4 = 12674 hoi4 = 4861 hoi4 = 12689 } # Iceland -> Reykjavík, Akureyri, Reyðarfjörður
-	link = { vic2 = 253 vic2 = 3246 hoi4 = 13003 } # Faroe Islands, Jan Mayen -> Tórshavn
+	link = { vic2 = 252 hoi4 = 12674 hoi4 = 4861 hoi4 = 12689 hoi4 = 13268 hoi4 = 13266 hoi4 = 13267 hoi4 = 13271 } # Iceland -> Reykjavík, Akureyri, Reyðarfjörður, land, land, land, land
+	link = { vic2 = 3246 hoi4 = 13272 } # Jan Mayen -> land
+	link = { vic2 = 253 hoi4 = 13003 } # Faroe Islands -> Tórshavn
 	link = { comment = "* " }
 	link = { comment = "* ** Atlantic Islands" }
 	link = { comment = "* " }
@@ -1556,7 +1557,7 @@
 	link = { vic2 = 272 hoi4 = 11218 hoi4 = 9350 hoi4 = 9314 hoi4 = 11378 } # Dumfries -> Dumfries, Dalbeattie, Hawick, Dunbar
 	link = { comment = "* * Highland" }
 	link = { vic2 = 266 hoi4 = 11136 hoi4 = 200 hoi4 = 11207 hoi4 = 9161 hoi4 = 11055 } # Aberdeen -> Aberdeen, Peterhead, Elgin, Inverness, Aboyne
-	link = { vic2 = 267 hoi4 = 9075 hoi4 = 6046 hoi4 = 6104 hoi4 = 3159 hoi4 = 11064 hoi4 = 131 hoi4 = 9090 hoi4 = 6196 hoi4 = 11161 hoi4 = 11266 hoi4 = 6205 hoi4 = 3178 hoi4 = 6062 } # Inverness -> Kingussie, Fort Augustus, Lairg, Alness, Kirkwall, Tongue, Ullapool, Lerwick, Fort William, Tobermory, Gairloch, Portree, Stornoway
+	link = { vic2 = 267 hoi4 = 9075 hoi4 = 6046 hoi4 = 6104 hoi4 = 3159 hoi4 = 11064 hoi4 = 131 hoi4 = 9090 hoi4 = 6196 hoi4 = 11161 hoi4 = 11266 hoi4 = 6205 hoi4 = 3178 hoi4 = 6062 hoi4 = 13269 hoi4 = 13270 } # Inverness -> Kingussie, Fort Augustus, Lairg, Alness, Kirkwall, Tongue, Ullapool, Lerwick, Fort William, Tobermory, Gairloch, Portree, Stornoway, land, land
 	link = { vic2 = 268 hoi4 = 6300 hoi4 = 3150 hoi4 = 11306 hoi4 = 159 } # Dundee -> Dunfermline, Dundee, Pitlochry, Perth
 	link = { comment = "* " }
 	link = { comment = "* ** France" }
@@ -1709,8 +1710,8 @@
 	link = { comment = "* ** Sweden" }
 	link = { comment = "* * Malmo" }
 	link = { vic2 = 331 hoi4 = 6258 hoi4 = 408 } # Gotland -> Hemse, Visby
-	link = { vic2 = 332 hoi4 = 299 hoi4 = 329 hoi4 = 6148 hoi4 = 3229 hoi4 = 11390 hoi4 = 211 hoi4 = 363 } # Kalmar -> Kalmar, Torsås, Vimmerby, Oskarshamn, Västervik, Borgholm, Emmaboda
-	link = { vic2 = 333 hoi4 = 242 hoi4 = 9329 hoi4 = 9406 hoi4 = 11311 hoi4 = 11280 hoi4 = 9410 hoi4 = 11231 hoi4 = 9251 } # Växjö -> Växjö, Jönköping, Tranås, Eksjö, Tingsryd, Ljungby, Värnamo, Gislaved
+	link = { vic2 = 332 hoi4 = 299 hoi4 = 329 hoi4 = 6148 hoi4 = 3229 hoi4 = 11390 hoi4 = 211 hoi4 = 363 hoi4 = 13264 } # Kalmar -> Kalmar, Torsås, Vimmerby, Oskarshamn, Västervik, Borgholm, Emmaboda, land
+	link = { vic2 = 333 hoi4 = 242 hoi4 = 9329 hoi4 = 9406 hoi4 = 11311 hoi4 = 11280 hoi4 = 9410 hoi4 = 11231 hoi4 = 9251 hoi4 = 13265 } # Växjö -> Växjö, Jönköping, Tranås, Eksjö, Tingsryd, Ljungby, Värnamo, Gislaved, land
 	link = { vic2 = 334 hoi4 = 9279 hoi4 = 11376 hoi4 = 6345 hoi4 = 9362 hoi4 = 6412 hoi4 = 3307 } # Malmö -> Malmö, Ystad, Helsingborg, Ängelholm, Halmstad, Varberg
 	link = { vic2 = 335 hoi4 = 11215 hoi4 = 9300 hoi4 = 6120 hoi4 = 11160 hoi4 = 11327 } # Karlskrona -> Karlskrona, Hässleholm, Åhus, Kristianstad, Karlshamn
 	link = { comment = "* * Stockholm" }
@@ -1736,15 +1737,15 @@
 	link = { comment = "* ** Denmark" }
 	link = { comment = "* * Flensburg" }
 	link = { vic2 = 370 hoi4 = 317 hoi4 = 11366 } # Flensburg -> Flensburg, Sylt
-	link = { vic2 = 371 hoi4 = 11251 hoi4 = 332 } # Aabenraa -> Kolding, Ribe
+	link = { vic2 = 371 hoi4 = 11251 hoi4 = 332 hoi4 = 13258 } # Aabenraa -> Kolding, Ribe, land
 	link = { comment = "* * Jylland" }
-	link = { vic2 = 366 hoi4 = 6364 } # Aarhus -> Aarhus
+	link = { vic2 = 366 hoi4 = 6364 hoi4 = 13259 } # Aarhus -> Aarhus, land
 	link = { vic2 = 367 hoi4 = 6235 hoi4 = 3206 hoi4 = 316 hoi4 = 394 } # Aalborg -> Aalborg, Viborg, Thisted, Hjørring
-	link = { vic2 = 368 hoi4 = 399 } # Ribe -> Esbjerg
-	link = { vic2 = 2557 hoi4 = 3277 hoi4 = 3341 } # Esbjerg -> Horsens, Herning
+	link = { vic2 = 368 hoi4 = 13262 } # Ribe -> land
+	link = { vic2 = 2557 hoi4 = 3277 hoi4 = 3341 hoi4 = 399 hoi4 = 13263 } # Esbjerg -> Horsens, Herning, Esbjerg, land
 	link = { comment = "* * Sjaelland" }
-	link = { vic2 = 372 hoi4 = 6287 hoi4 = 6393 hoi4 = 3260 hoi4 = 3305 } # Copenhagen -> København, Roskilde, Slagelse, Næstved
-	link = { vic2 = 373 hoi4 = 3325 hoi4 = 3374 } # Odense -> Odense, Svendborg
+	link = { vic2 = 372 hoi4 = 6287 hoi4 = 6393 hoi4 = 3260 hoi4 = 3305 hoi4 = 13261 } # Copenhagen -> København, Roskilde, Slagelse, Næstved, land
+	link = { vic2 = 373 hoi4 = 3325 hoi4 = 3374 hoi4 = 13260 } # Odense -> Odense, Svendborg, land
 	link = { vic2 = 374 hoi4 = 6361 } # Bornholm -> Rønne
 	link = { comment = "* " }
 	link = { comment = "* ** Germany" }
@@ -1770,7 +1771,7 @@
 	link = { comment = "* * Pomerania" }
 	link = { vic2 = 546 hoi4 = 6282 hoi4 = 6390 hoi4 = 6334 hoi4 = 6309 hoi4 = 9334 } # Stettin -> Stettin, Stargard, Swinemünde, Arnswalde, Greifenberg
 	link = { vic2 = 547 hoi4 = 3340 hoi4 = 349 } # Swinemünde -> Greifswald, Anklam
-	link = { vic2 = 548 hoi4 = 9388 } # Stralsund -> Stralsund
+	link = { vic2 = 548 hoi4 = 9388 hoi4 = 13257 } # Stralsund -> Stralsund, land
 	link = { vic2 = 679 hoi4 = 9361 hoi4 = 9277 hoi4 = 9306 } # Kolberg -> Kolberg, Dramburg, Belgard
 	link = { vic2 = 680 hoi4 = 11372 hoi4 = 11343 hoi4 = 11316 } # Köslin -> Köslin, Stolp, Lauenburg
 	link = { vic2 = 692 hoi4 = 9252 hoi4 = 11288 hoi4 = 11260 } # Deutsch Krone -> Deutsch Krone, Bütow, Neustettin
