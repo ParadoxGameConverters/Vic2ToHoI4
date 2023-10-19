@@ -1096,10 +1096,10 @@
 	link = { vic2 = 2129 vic2 = 2132 vic2 = 2130 hoi4 = 13016 hoi4 = 13013 } # MANY-TO-MANY: Saint Helena, Tristan da Cunha, Ascension -> land, land
 	link = { vic2 = 251 hoi4 = 12512 hoi4 = 13066 } # Godthåb -> land, land
 	link = { vic2 = 2636 hoi4 = 13058 hoi4 = 10636 hoi4 = 10245 } # South Greenland Ice Shelf -> land, land, land
-	link = { vic2 = 252 vic2 = 3246 hoi4 = 12674 hoi4 = 4861 hoi4 = 12689 } # MANY-TO-MANY: Island, Saint Barths -> land, land, land
+	link = { vic2 = 3246 vic2 = 252 hoi4 = 12674 hoi4 = 4861 hoi4 = 12689 hoi4 = 13271 hoi4 = 13268 hoi4 = 13266 hoi4 = 13267 hoi4 = 13272 } # MANY-TO-MANY: Island, Saint Barths -> land, land, land, land, land, land, land, land
 	link = { vic2 = 253 hoi4 = 13003 } # Færøerne -> land
 	link = { vic2 = 1724 hoi4 = 6196 } # Shetland -> land
-	link = { vic2 = 267 vic2 = 3478 vic2 = 3479 vic2 = 3477 hoi4 = 6104 hoi4 = 3159 hoi4 = 11064 hoi4 = 131 hoi4 = 9090 hoi4 = 6205 hoi4 = 6062 hoi4 = 3178 hoi4 = 6046 hoi4 = 11266 hoi4 = 11161 hoi4 = 9075 } # MANY-TO-MANY: Inverness, Highlands, Hebrides, Orkney Islands -> land, land, land, land, land, land, land, land, land, land, land, land
+	link = { vic2 = 267 vic2 = 3478 vic2 = 3479 vic2 = 3477 hoi4 = 6104 hoi4 = 3159 hoi4 = 11064 hoi4 = 131 hoi4 = 9090 hoi4 = 6205 hoi4 = 6062 hoi4 = 3178 hoi4 = 6046 hoi4 = 11266 hoi4 = 11161 hoi4 = 9075 hoi4 = 13270 hoi4 = 13269 } # MANY-TO-MANY: Inverness, Highlands, Hebrides, Orkney Islands -> land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 266 hoi4 = 11055 hoi4 = 11207 hoi4 = 200 hoi4 = 11136 hoi4 = 9161 } # Aberdeen -> land, land, land, land, land
 	link = { vic2 = 268 hoi4 = 159 hoi4 = 11306 hoi4 = 3150 hoi4 = 6300 } # Dundee -> land, land, land, land
 	link = { vic2 = 270 hoi4 = 284 hoi4 = 3373 hoi4 = 6385 } # Stirling -> land, land, land
@@ -1386,7 +1386,8 @@
 	link = { vic2 = 529 hoi4 = 9320 } # Lauenburg -> land
 	link = { vic2 = 528 vic2 = 2640 hoi4 = 9347 } # Hamburg, Gwadar -> land
 	link = { vic2 = 544 hoi4 = 11305 hoi4 = 9294 hoi4 = 11276 hoi4 = 268 hoi4 = 321 hoi4 = 293 } # Schwerin -> land, land, land, land, land, land
-	link = { vic2 = 548 vic2 = 3561 hoi4 = 9388 } # Stralsund, Rügen -> land
+	link = { vic2 = 3561 hoi4 = 13257 } # Rügen -> land
+	link = { vic2 = 548 hoi4 = 9388 } # Stralsund -> land
 	link = { vic2 = 547 hoi4 = 3340 hoi4 = 349 } # Greifswald -> land, land
 	link = { vic2 = 545 hoi4 = 3258 } # Neustrelitz -> land
 	link = { vic2 = 550 hoi4 = 3207 hoi4 = 11444 hoi4 = 3312 hoi4 = 11505 } # Prenzlau -> land, land, land, land
@@ -1695,13 +1696,14 @@
 	link = { vic2 = 3617 hoi4 = 6201 } # Dagö -> land
 	link = { vic2 = 353 hoi4 = 185 } # Ösel -> land
 	link = { vic2 = 2713 hoi4 = 13127 } # Peipsi Järv -> lake
-	link = { vic2 = 370 hoi4 = 11366 hoi4 = 317 } # Flensburg -> land, land
+	link = { vic2 = 370 hoi4 = 11366 hoi4 = 317 hoi4 = 13258 } # Flensburg -> land, land, land
 	link = { vic2 = 371 vic2 = 368 hoi4 = 11251 hoi4 = 332 } # MANY-TO-MANY: Apenrade, Queen Charlotte Islands -> land, land
-	link = { vic2 = 2557 hoi4 = 399 hoi4 = 3277 } # Ribe -> land, land
-	link = { vic2 = 366 hoi4 = 6364 } # Arhus -> land
-	link = { vic2 = 367 hoi4 = 3206 hoi4 = 3341 hoi4 = 6235 hoi4 = 394 hoi4 = 316 } # Alborg -> land, land, land, land, land
-	link = { vic2 = 373 hoi4 = 3325 hoi4 = 3374 } # Odense -> land, land
-	link = { vic2 = 372 vic2 = 3667 hoi4 = 6287 hoi4 = 6393 hoi4 = 3260 hoi4 = 3305 } # MANY-TO-MANY: København, Lolland -> land, land, land, land
+	link = { vic2 = 2557 hoi4 = 399 hoi4 = 3277 hoi4 = 13263 } # Ribe -> land, land, land
+	link = { vic2 = 366 hoi4 = 6364 hoi4 = 13259 } # Arhus -> land, land
+	link = { vic2 = 367 hoi4 = 3206 hoi4 = 3341 hoi4 = 6235 hoi4 = 394 hoi4 = 316 hoi4 = 13262 } # Alborg -> land, land, land, land, land, land
+	link = { vic2 = 373 hoi4 = 3325 hoi4 = 3374 hoi4 = 13260 } # Odense -> land, land, land
+	link = { vic2 = 372 hoi4 = 6287 hoi4 = 6393 hoi4 = 3260 hoi4 = 3305 } # København -> land, land, land, land
+	link = { vic2 = 3667 hoi4 = 13261 } # Lolland -> land
 	link = { vic2 = 374 hoi4 = 6361 } # Bornholm -> land
 	link = { vic2 = 313 hoi4 = 6115 hoi4 = 3171 hoi4 = 11184 hoi4 = 11078 } # Christiania -> land, land, land, land
 	link = { vic2 = 314 hoi4 = 3021 hoi4 = 6160 hoi4 = 179 hoi4 = 133 hoi4 = 10 hoi4 = 3136 hoi4 = 3105 hoi4 = 111 hoi4 = 11113 hoi4 = 9227 hoi4 = 6042 hoi4 = 11028 } # Hamar -> land, land, land, land, land, land, land, land, land, land, land, land
@@ -1728,10 +1730,10 @@
 	link = { vic2 = 330 hoi4 = 3386 hoi4 = 6406 hoi4 = 6331 hoi4 = 295 hoi4 = 3286 hoi4 = 3375 hoi4 = 3063 } # Borås -> land, land, land, land, land, land, land
 	link = { vic2 = 334 hoi4 = 9279 hoi4 = 9362 hoi4 = 6412 hoi4 = 3307 hoi4 = 6345 hoi4 = 11376 } # Malmö -> land, land, land, land, land, land
 	link = { vic2 = 335 hoi4 = 11215 hoi4 = 11327 hoi4 = 11160 hoi4 = 9300 hoi4 = 6120 } # Karlskrona -> land, land, land, land, land
-	link = { vic2 = 332 vic2 = 3562 hoi4 = 6148 hoi4 = 299 hoi4 = 329 hoi4 = 3229 hoi4 = 11390 hoi4 = 211 } # MANY-TO-MANY: Kalmar, Öland -> land, land, land, land, land, land
+	link = { vic2 = 332 vic2 = 3562 hoi4 = 6148 hoi4 = 299 hoi4 = 329 hoi4 = 3229 hoi4 = 11390 hoi4 = 211 hoi4 = 13264 } # MANY-TO-MANY: Kalmar, Öland -> land, land, land, land, land, land, land
 	link = { vic2 = 333 hoi4 = 9251 hoi4 = 11231 hoi4 = 9410 hoi4 = 11280 hoi4 = 363 hoi4 = 242 hoi4 = 11311 hoi4 = 9329 hoi4 = 9406 } # Växjö -> land, land, land, land, land, land, land, land, land
 	link = { vic2 = 331 hoi4 = 6258 hoi4 = 408 } # Gotland -> land, land
-	link = { vic2 = 325 hoi4 = 11380 hoi4 = 6311 hoi4 = 6397 hoi4 = 11289 hoi4 = 9393 hoi4 = 9308 } # Norrköping -> land, land, land, land, land, land
+	link = { vic2 = 325 hoi4 = 11380 hoi4 = 6311 hoi4 = 6397 hoi4 = 11289 hoi4 = 9393 hoi4 = 9308 hoi4 = 13265 } # Norrköping -> land, land, land, land, land, land, land
 	link = { vic2 = 327 hoi4 = 6164 hoi4 = 6188 hoi4 = 9209 hoi4 = 6084 } # Örebro -> land, land, land, land
 	link = { vic2 = 326 hoi4 = 11188 hoi4 = 9109 hoi4 = 11082 hoi4 = 9185 hoi4 = 35 hoi4 = 3106 hoi4 = 6127 } # Västerås -> land, land, land, land, land, land, land
 	link = { vic2 = 322 hoi4 = 6050 hoi4 = 6209 hoi4 = 161 } # Stockholm -> land, land, land
