@@ -24,6 +24,7 @@ class Idea: commonItems::parser
 	void setAllowedCivilWar(const std::string& newAllowedCivilWar) { allowedCivilWar = newAllowedCivilWar; }
 	void updateCancel(const std::string& newCancel) { cancel = newCancel; }
 	void setAllowedToRemove(const std::string& newAllowedToRemove) { allowedToRemove = newAllowedToRemove; }
+	void setAiWillDo(const std::string& newAiWillDo) { aiWillDo = newAiWillDo; }
 
   private:
 	std::string name;
