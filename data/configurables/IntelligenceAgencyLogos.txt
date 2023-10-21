@@ -24,13 +24,14 @@ link = { culture = polish logo = GFX_intelligence_agency_logo_pol }
 link = { culture = manchu logo = GFX_intelligence_agency_logo_man }
 link = { culture = portuguese logo = GFX_intelligence_agency_logo_por }
 link = { culture = finnish logo = GFX_intelligence_agency_logo_fin }
+link = { culture = danish logo = GFX_intelligence_agency_logo_DEN_sipo }
+link = { culture = icelandic logo = GFX_intelligence_agency_logo_ICE_logreglan }
 # From CSRZ's mod 2017272267
 link = { culture = platinean logo = GFX_intelligence_agency_logo_arg }
 link = { culture = australian logo = GFX_intelligence_agency_logo_ast }
 link = { culture = brazilian logo = GFX_intelligence_agency_logo_bra }
 link = { culture = anglo_canadian logo = GFX_intelligence_agency_logo_can }
 link = { culture = czech logo = GFX_intelligence_agency_logo_cze }
-link = { culture = danish logo = GFX_intelligence_agency_logo_den }
 link = { culture = greek logo = GFX_intelligence_agency_logo_gre }
 link = { culture = hungarian logo = GFX_intelligence_agency_logo_hun }
 link = { culture = south_german logo = GFX_intelligence_agency_logo_hun_empire }
