@@ -193,6 +193,44 @@ void HoI4::updateTradeLaws(IdeaGroup& tradeLaws, const std::set<std::string>& ma
 		}
 		available += "\t\t\t}";
 		limitedExports->setAvailable(available);
+
+		std::string aiWillDo = "= {\n";
+		aiWillDo += "\t\t\t\tfactor = 1\n";
+		aiWillDo += "\n";
+		aiWillDo += "\t\t\t\tmodifier = {\n";
+		aiWillDo += "\t\t\t\t\tadd = -1\n";
+		aiWillDo += "\n";
+		aiWillDo += "\t\t\t\t\tis_major = no\n";
+		aiWillDo += "\t\t\t\t\tis_in_faction = yes\n";
+		aiWillDo += "\t\t\t\t\thas_war = yes\n";
+		aiWillDo += "\t\t\t\t}\n";
+		aiWillDo += "\n";
+		aiWillDo += "\t\t\t\t# minors not at war should want to get the bonuses from free trade\n";
+		aiWillDo += "\t\t\t\tmodifier = {\n";
+		aiWillDo += "\t\t\t\t\tadd = -1\n";
+		aiWillDo += "\n";
+		aiWillDo += "\t\t\t\t\tis_major = no\n";
+		aiWillDo += "\t\t\t\t\thas_war = no\n";
+		aiWillDo += "\t\t\t\t}\n";
+		aiWillDo += "\t\t\t\tmodifier = {\n";
+		aiWillDo += "\t\t\t\t\tfactor = 200\n";
+		if (majorIdeologies.contains("fascism"))
+		{
+			aiWillDo += "\t\t\t\t\tNOT = { has_government = fascism }\n";
+		}
+		aiWillDo += "\t\t\t\t\tNOT = { has_idea = closed_economy }\n";
+		aiWillDo += "\t\t\t\t\thas_war = yes\n";
+		aiWillDo += "\t\t\t\t\tis_major = yes\n";
+		aiWillDo += "\t\t\t\t}\n";
+		aiWillDo += "\t\t\t\tmodifier = {\n";
+		aiWillDo += "\t\t\t\t\tadd = 1500\n";
+		aiWillDo += "\n";
+		aiWillDo += "\t\t\t\t\t# revert from closed_economy if we have large allies\n";
+		aiWillDo += "\t\t\t\t\thas_idea = closed_economy\n";
+		aiWillDo += "\t\t\t\t\thas_large_ally_not_pick_closed_economy = yes\n";
+		aiWillDo += "\t\t\t\t}\n";
+		aiWillDo += "\t\t\t}\n";
+		limitedExports->setAiWillDo(aiWillDo);
 		tradeLaws.replaceIdea(*limitedExports);
 	}
 }
