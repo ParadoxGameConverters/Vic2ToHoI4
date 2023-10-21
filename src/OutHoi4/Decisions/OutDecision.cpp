@@ -53,9 +53,9 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	{
 		outStream << "\n\t\ttarget_root_trigger " << outDecision.targetRootTrigger << "\n";
 	}
-	if (outDecision.stateTarget)
+	if (!outDecision.stateTarget.empty())
 	{
-		outStream << "\n\t\tstate_target = yes\n";
+		outStream << "\n\t\tstate_target = " << outDecision.stateTarget << "\n";
 	}
 	if (!outDecision.targetTrigger.empty())
 	{

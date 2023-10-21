@@ -53,7 +53,7 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream): nam
 	});
 	registerKeyword("state_target", [this](std::istream& theStream) {
 		const commonItems::singleString yesString(theStream);
-		stateTarget = yesString.getString() == "yes";
+		stateTarget = yesString.getString();
 	});
 	registerKeyword("target_trigger", [this](std::istream& theStream) {
 		const commonItems::stringOfItem theTargetTrigger(theStream);

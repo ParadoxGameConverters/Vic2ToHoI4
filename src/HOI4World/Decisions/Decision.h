@@ -55,7 +55,7 @@ class decision: commonItems::parser
 	std::string targets;
 	std::string targetArray;
 	std::string targetRootTrigger;
-	bool stateTarget = false;
+	std::string stateTarget;
 	std::string targetTrigger;
 	bool targetNonExisting = false;
 	std::string removeTrigger;
