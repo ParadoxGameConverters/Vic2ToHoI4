@@ -29,6 +29,7 @@ class decision: commonItems::parser
 	void setAvailable(const std::string& newAvailable) { available = newAvailable; }
 	void setHighlightStateTargets(const std::string& newHighlightStates) { highlightStateTargets = newHighlightStates; }
 	void setActivation(const std::string& newActivation) { activation = newActivation; }
+	void setTargetRootTrigger(const std::string& newTargetRootTrigger) { targetRootTrigger = newTargetRootTrigger; }
 	void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }
 	void setVisible(const std::string& newVisible) { visible = newVisible; }
 	void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
@@ -55,7 +56,7 @@ class decision: commonItems::parser
 	std::string targets;
 	std::string targetArray;
 	std::string targetRootTrigger;
-	bool stateTarget = false;
+	std::string stateTarget;
 	std::string targetTrigger;
 	bool targetNonExisting = false;
 	std::string removeTrigger;
