@@ -5902,7 +5902,7 @@ sami = {
 	Tellervo Maija Pirjo Karoliina Pauliina Minna Sari Irmeli Eeva Tiina Laura Elisabet Marika Pirkko Eveliina Tarja Anja Satu Mari Seija Hanna Eila Marita Heidi Sirpa Raija Annika Irene Sisko Jaana Anita Sanna Eija Kirsi
 	Ilona Marianne Julia Merja Katriina Amanda Ulla Sirkka Paula Kaisa Marketta Terttu Anni Marjaana Tuulia Elisabeth Matilda Elisa Linnea Jenni Helmi Olivia Katja Hilkka Mirjami Heli Aurora Iida Kirsti Raili Emma Mirja
 	Nina Katri }
-	callsigns = { "the Sami" Santa Rudolph }
+	callsigns = { "the Sami" Santa Rudolph Jokkmokk Rovaniemi Torneo Kola Gällivare }
 	industry_companies = { "Riikkavuloš Industrija" }
 	electronic_companies = { "Šleaðga Duovdda" }
 	car_companies = { Vovdna }
