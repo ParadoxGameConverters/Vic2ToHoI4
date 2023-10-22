@@ -45,13 +45,13 @@ void HoI4::AgentRecruitmentDecisions::updateDecisions(const std::set<std::string
 			if (decision.getName() == "recruit_in_india_state")
 			{
 				decision.setTargetRootTrigger(
-					"= {\n"
-					"\t\t\tOR = {\n"
-					"\t\t\t\thas_country_flag = india_recruitment_unlocked\n"
-					"\t\t\t\thas_country_flag = conv_south_asia\n"
-					"\t\t\t}\n"
-					"\t\t\tNOT = { has_country_flag = india_recruitment_in_process }\n"
-					"\t\t}\n");
+					 "= {\n"
+					 "\t\t\tOR = {\n"
+					 "\t\t\t\thas_country_flag = india_recruitment_unlocked\n"
+					 "\t\t\t\thas_country_flag = conv_south_asia\n"
+					 "\t\t\t}\n"
+					 "\t\t\tNOT = { has_country_flag = india_recruitment_in_process }\n"
+					 "\t\t}\n");
 				decision.setTargetTrigger(
 					 "= {\n"
 					 "\t\t\tFROM = {\n"
@@ -93,16 +93,16 @@ void HoI4::AgentRecruitmentDecisions::updateDecisions(const std::set<std::string
 			if (decision.getName() == "recruit_in_asia_state")
 			{
 				decision.setTargetRootTrigger(
-					"= {\n"
-					"\t\t\tOR = {\n"
-					"\t\t\t\thas_country_flag = asia_recruitment_unlocked\n"
-					"\t\t\t\tcapital_scope = {\n"
-					"\t\t\t\t\tis_on_continent = asia\n"
-					"\t\t\t\t}\n"
-					"\t\t\t}\n"
-					"\t\t\tNOT = { has_country_flag = conv_south_asia }\n"
-					"\t\t\tNOT = { has_country_flag = asia_recruitment_in_process }\n"
-					"\t\t}\n");
+					 "= {\n"
+					 "\t\t\tOR = {\n"
+					 "\t\t\t\thas_country_flag = asia_recruitment_unlocked\n"
+					 "\t\t\t\tcapital_scope = {\n"
+					 "\t\t\t\t\tis_on_continent = asia\n"
+					 "\t\t\t\t}\n"
+					 "\t\t\t}\n"
+					 "\t\t\tNOT = { has_country_flag = conv_south_asia }\n"
+					 "\t\t\tNOT = { has_country_flag = asia_recruitment_in_process }\n"
+					 "\t\t}\n");
 				decision.setTargetTrigger(
 					 "= {\n"
 					 "\t\t\tFROM = {\n"
