@@ -358,7 +358,8 @@ void outputMajorScorersByContinent(const std::set<std::string>& majorIdeologies,
 				output << "\t\t\t\t}\n";
 				output << "\t\t\t\tfactor = 0 \n";
 				output << "\t\t\t}\n";
-			} else if (continent == "asia" || continent == "australia" || continent == "middle_east")
+			}
+			else if (continent == "asia" || continent == "australia" || continent == "middle_east")
 			{
 				output << "\t\t\tmodifier = {\n";
 				output << "\t\t\t\tOR = { \n";
