@@ -313,6 +313,9 @@
     <Filter Include="external\bitmap">
       <UniqueIdentifier>{3b5bae8f-1a84-4852-b2b3-1024028d64d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\OutHoi4\Scorers">
+      <UniqueIdentifier>{9c69757e-3603-4863-aa32-d2759b2899a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Configuration.cpp">
@@ -1415,6 +1418,9 @@
     </ClCompile>
     <ClCompile Include="src\V2World\World\WorldFactory.cpp">
       <Filter>src\V2World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Scorers\OutScorers.cpp">
+      <Filter>src\OutHoi4\Scorers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2779,6 +2785,9 @@
     </ClInclude>
     <ClInclude Include="external\bitmap\bitmap_image.hpp">
       <Filter>external\bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Scorers\OutScorers.h">
+      <Filter>src\OutHoi4\Scorers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
