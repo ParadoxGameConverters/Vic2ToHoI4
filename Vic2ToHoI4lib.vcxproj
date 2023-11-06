@@ -144,6 +144,10 @@
     <ClCompile Include="src\HOI4World\Regions\RegionFactory.cpp" />
     <ClCompile Include="src\HOI4World\Regions\Regions.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionsFactory.cpp" />
+    <ClCompile Include="src\HOI4World\Scorers\Scorer.cpp" />
+    <ClCompile Include="src\HOI4World\Scorers\ScorerFactory.cpp" />
+    <ClCompile Include="src\HOI4World\Scorers\Scorers.cpp" />
+    <ClCompile Include="src\HOI4World\Scorers\ScorersFactory.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffects.cpp" />
@@ -300,6 +304,8 @@
     <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.cpp" />
     <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.cpp" />
     <ClCompile Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.cpp" />
+    <ClCompile Include="src\OutHoi4\Scorers\OutScorer.cpp" />
+    <ClCompile Include="src\OutHoi4\Scorers\OutScorers.cpp" />
     <ClCompile Include="src\OutHoi4\ScriptedEffects\OutScriptedEffect.cpp" />
     <ClCompile Include="src\OutHoi4\ScriptedEffects\OutScriptedEffects.cpp" />
     <ClCompile Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
@@ -548,6 +554,10 @@
     <ClInclude Include="src\HOI4World\Regions\RegionFactory.h" />
     <ClInclude Include="src\HOI4World\Regions\Regions.h" />
     <ClInclude Include="src\HOI4World\Regions\RegionsFactory.h" />
+    <ClInclude Include="src\HOI4World\Scorers\Scorer.h" />
+    <ClInclude Include="src\HOI4World\Scorers\ScorerFactory.h" />
+    <ClInclude Include="src\HOI4World\Scorers\Scorers.h" />
+    <ClInclude Include="src\HOI4World\Scorers\ScorersFactory.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffect.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFactory.h" />
     <ClInclude Include="src\HOI4World\ScriptedEffects\ScriptedEffectFile.h" />
@@ -735,6 +745,8 @@
     <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesign.h" />
     <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneDesigns.h" />
     <ClInclude Include="src\OutHoi4\PlaneDesigns\OutPlaneModules.h" />
+    <ClInclude Include="src\OutHoi4\Scorers\OutScorer.h" />
+    <ClInclude Include="src\OutHoi4\Scorers\OutScorers.h" />
     <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffect.h" />
     <ClInclude Include="src\OutHoi4\ScriptedEffects\OutScriptedEffects.h" />
     <ClInclude Include="src\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.h" />

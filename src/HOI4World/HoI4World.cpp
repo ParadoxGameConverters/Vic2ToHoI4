@@ -207,6 +207,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertMilitaries(*provinceDefinitions, provinceMapper, theConfiguration);
 
 	scriptedEffects = std::make_unique<ScriptedEffects>(theConfiguration.getHoI4Path());
+	scorers = Scorers::Factory().getScorers();
+	scorers->updateScorers(ideologies->getMajorIdeologies());
 	setupNavalTreaty();
 	Log(LogLevel::Progress) << "64%";
 
