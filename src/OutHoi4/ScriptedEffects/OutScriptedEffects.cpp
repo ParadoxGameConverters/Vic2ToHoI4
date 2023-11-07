@@ -94,6 +94,132 @@ void outputRemoveFromAllowedParty(const std::set<std::string>& majorIdeologies, 
 	output << "}\n";
 }
 
+void outputGlobalPlatonicCountries(const std::set<std::string>& majorIdeologies, std::ostream& output)
+{
+	output << "find_global_platonic_countries = { # Look for the countries that meet the best criteria for the "
+				 "different platonic countries we expect in HoI \n";
+	if (majorIdeologies.contains("fascist"))
+	{
+		output << "\tfind_biggest_fascist = yes\n";
+		output << "\tfind_biggest_fascist_bully = yes\n";
+		output << "\tfind_local_dangerous_fascist = yes \n";
+	}
+	if (majorIdeologies.contains("democratic"))
+	{
+		output << "\tfind_biggest_democrat = yes\n";
+		output << "\tfind_best_democratic_ally_leader = yes\n";
+		output << "\tfind_democratic_sleeping_giant = yes\n";
+	}
+	if (majorIdeologies.contains("communist"))
+	{
+		output << "\tfind_biggest_communist = yes\n";
+	}
+	output << "\tfind_biggest_non_aligned = yes\n";
+	output << "}\n";
+	output << "\n";
+	output << "\n";
+	if (majorIdeologies.contains("fascist"))
+	{
+		output << "find_biggest_fascist_bully = { # Finds the biggest and/or meanest fascist country \n";
+		output << "\tget_highest_scored_country = {\n";
+		output << "\t\tvar = GLOBAL.platonic_fascist_bully\n";
+		output << "\t\tscorer = fascist_bully_scorer\n";
+		output << "\t}\n";
+		output << "}\n";
+		output << "\n";
+		output << "find_biggest_fascist = { # Finds Nazi Germany, or the closest to it \n";
+		output << "\tget_highest_scored_country = {\n";
+		output << "\t\tvar = GLOBAL.platonic_big_fascist\n";
+		output << "\t\tscorer = fascist_major_scorer\n";
+		output << "\t}\n";
+		output << "}\n";
+		output << "\n";
+		output << "find_local_dangerous_fascist = {\n";
+		output << "\tget_highest_scored_country = {\n";
+		output << "\t\tvar = platonic_local_dangerous_fascist\n";
+		output << "\t\tscorer = local_fascist_country\n";
+		output << "\t}\n";
+		output << "}\n";
+	}
+	if (majorIdeologies.contains("democratic"))
+	{
+		output << "find_best_democratic_ally_leader = { # Finds the most suitable democratic country to lead a faction\n";
+		output << "\tget_highest_scored_country = {\n";
+		output << "\t\tvar = GLOBAL.platonic_democratic_ally_leader\n";
+		output << "\t\tscorer = democratic_faction_leader_scorer\n";
+		output << "\t}\n";
+		output << "}\n";
+		output << "\n";
+		output << "find_democratic_sleeping_giant = { # Finds biggest desarmed democratic nation. Expected to be USA \n";
+		output << "\tget_highest_scored_country = {\n";
+		output << "\t\tvar = GLOBAL.platonic_democratic_sleeping_giant\n";
+		output << "\t\tscorer = democratic_sleeping_giant_scorer\n";
+		output << "\t}\n";
+		output << "}\n";
+		output << "\n";
+		output << "find_biggest_democrat = { # Finds biggest Democratic Nation\n";
+		output << "\tget_highest_scored_country = {\n";
+		output << "\t\tvar = GLOBAL.platonic_big_democratic\n";
+		output << "\t\tscorer = democratic_major_scorer\n";
+		output << "\t}\n";
+		output << "}\n";
+		output << "\n";
+	}
+	if (majorIdeologies.contains("communist"))
+	{
+		output << "find_biggest_communist = { # Finds biggest Communist\n";
+		output << "\tget_highest_scored_country = {\n";
+		output << "\t\tvar = GLOBAL.platonic_big_communist\n";
+		output << "\t\tscorer = communist_major_scorer\n";
+		output << "\t}\n";
+		output << "}\n";
+		output << "\n";
+	}
+	output << "find_biggest_non_aligned = { # Finds biggest... anything else\n";
+	output << "\tget_highest_scored_country = {\n";
+	output << "\t\tvar = GLOBAL.platonic_big_non_aligned\n";
+	output << "\t\tscorer = non_aligned_major_scorer\n";
+	output << "\t}\n";
+	output << "}\n";
+	output << "# There are ideology scorers for each continent. If you need more check the generic_platonic_scorers "
+				 "file and make a new scripted effect \n";
+	output << "\n";
+}
+
+void outputRestoreIdeologyPopularities(const std::set<std::string>& majorIdeologies, std::ostream& output)
+{
+	const std::map<std::string, std::string> ideologyNameMap = {{"fascism", "fascist"},
+		 {"communism", "communist"},
+		 {"democratic", "democratic"},
+		 {"neutrality", "neutrality"},
+		 {"absolutist", "absolutist"},
+		 {"radical", "radical"}};
+
+	output << "get_current_ideology_popularities = {\n";
+	for (const auto& ideology: majorIdeologies)
+	{
+		output << "\tset_variable = { ROOT." << ideologyNameMap.at(ideology)
+				 << "_support_before_change = ROOT.party_popularity_100@" << ideology << " }\n";
+	}
+	output << "}\n";
+	output << "restore_ideology_popularities = {\n";
+	output << "\thidden_effect = {\n";
+	output << "\t\t# Reset popluarities to what they were before puppeting \n";
+	output << "\t\tset_popularities = {\n";
+	for (const auto& ideology: majorIdeologies)
+	{
+		output << "\t\t\t" << ideology << " = ROOT." << ideologyNameMap.at(ideology) << "_support_before_change\n";
+	}
+	output << "\t\t}\n";
+	for (const auto& ideology: majorIdeologies)
+	{
+		output << "\t\tclear_variable = ROOT." << ideologyNameMap.at(ideology) << "_support_before_change\n";
+	}
+	output << "\t}\n";
+	output << "}\n";
+	output << "\n";
+}
+
 
 
 void HoI4::outputScriptedEffects(const ScriptedEffects& scriptedEffects,
@@ -121,6 +247,8 @@ void HoI4::outputScriptedEffects(const ScriptedEffects& scriptedEffects,
 
 	outputGetBestAllianceMatchIdeologyEffects(majorIdeologies, scriptedEffectsFile);
 	outputRemoveFromAllowedParty(majorIdeologies, scriptedEffectsFile);
+	outputGlobalPlatonicCountries(majorIdeologies, scriptedEffectsFile);
+	outputRestoreIdeologyPopularities(majorIdeologies, scriptedEffectsFile);
 
 	scriptedEffectsFile.close();
 }
