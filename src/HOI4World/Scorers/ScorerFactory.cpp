@@ -13,8 +13,7 @@ HoI4::Scorer::Factory::Factory()
 }
 
 
-std::unique_ptr<HoI4::Scorer> HoI4::Scorer::Factory::getScorer(const std::string& name,
-	 std::istream& theStream)
+std::unique_ptr<HoI4::Scorer> HoI4::Scorer::Factory::getScorer(const std::string& name, std::istream& theStream)
 {
 	scorer = std::make_unique<Scorer>();
 	scorer->setName(name);
