@@ -13,11 +13,11 @@ void HoI4::outputScorers(const Scorers& scorers, const Configuration& configurat
 		throw std::runtime_error("Could not create output/" + configuration.getOutputName() + "/common/scorers/country/");
 	}
 
-	std::ofstream output("output/" + configuration.getOutputName() + "/common/scorers/country/converter_scorers.txt");
+	std::ofstream output("output/" + configuration.getOutputName() + "/common/scorers/country/generic_platonic_scorers.txt");
 	if (!output.is_open())
 	{
 		throw std::runtime_error(
-			 "Could not create output/" + configuration.getOutputName() + "/common/scorers/country/converter_scorers.txt");
+			 "Could not create output/" + configuration.getOutputName() + "/common/scorers/country/generic_platonic_scorers.txt");
 	}
 
 	for (const auto& scorer: scorers.getCustomizedScorers() | std::views::values)
