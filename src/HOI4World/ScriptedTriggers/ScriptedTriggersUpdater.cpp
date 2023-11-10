@@ -1,5 +1,6 @@
 #include "src/HOI4World/ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "external/common_items/Log.h"
+#include "src/HOI4World/ScriptedTriggers/ScriptedTrigger.h"
 
 
 
@@ -64,6 +65,72 @@ void updateIdeologyScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
 	has_same_ideology_body += "\t}\n";
 	has_same_ideology_body += "}\n";
 	scriptedTriggers.replaceIdeologyScriptedTrigger("has_same_ideology", has_same_ideology_body);
+
+	if (majorIdeologies.contains("communism"))
+	{
+		std::string big_communist_exists_body = "= {\n";
+		big_communist_exists_body += "\tany_other_country = {\n";
+		big_communist_exists_body += "\t\tis_major = yes \n";
+		big_communist_exists_body += "\t\thas_government = communism\n";
+		big_communist_exists_body += "\t\thas_capitulated = no \n";
+		big_communist_exists_body += "\t\texists = yes \n";
+		big_communist_exists_body += "\t}\n";
+		big_communist_exists_body += "}\n";
+
+		auto bigCommunistExists = HoI4::ScriptedTrigger("big_communist_exists");
+		bigCommunistExists.setBody(big_communist_exists_body);
+		scriptedTriggers.addIdeologyTrigger(bigCommunistExists);
+	}
+
+	if (majorIdeologies.contains("fascism"))
+	{
+		std::string big_fascist_exists_body = "= {\n";
+		big_fascist_exists_body += "\tany_other_country = {\n";
+		big_fascist_exists_body += "\t\tis_major = yes \n";
+		big_fascist_exists_body += "\t\thas_government = fascism\n";
+		big_fascist_exists_body += "\t\thas_capitulated = no \n";
+		big_fascist_exists_body += "\t\texists = yes \n";
+		big_fascist_exists_body += "\t}\n";
+		big_fascist_exists_body += "}\n";
+
+		auto bigFascistExists = HoI4::ScriptedTrigger("big_fascist_exists");
+		bigFascistExists.setBody(big_fascist_exists_body);
+		scriptedTriggers.addIdeologyTrigger(bigFascistExists);
+
+		std::string is_fascist_seller_trigger_body = "= {\n";
+		is_fascist_seller_trigger_body += "\tNOT = { has_war_with = ROOT\t}\n";
+		is_fascist_seller_trigger_body += "\thas_government = fascism \n";
+		is_fascist_seller_trigger_body += "}\n";
+
+		auto isFascistSeller = HoI4::ScriptedTrigger("is_fascist_seller_trigger");
+		isFascistSeller.setBody(is_fascist_seller_trigger_body);
+		scriptedTriggers.addIdeologyTrigger(isFascistSeller);
+	}
+
+	if (majorIdeologies.contains("democratic"))
+	{
+		std::string is_democratic_seller_trigger_body = "= {\n";
+		is_democratic_seller_trigger_body += "\tcustom_trigger_tooltip = {\n";
+		is_democratic_seller_trigger_body += "\t\ttooltip = \"Democratic Countries\"\n";
+		is_democratic_seller_trigger_body += "\t\tFROM = {\n";
+		is_democratic_seller_trigger_body += "\t\t\thas_government = democratic\n";
+		is_democratic_seller_trigger_body += "\t\t}\n";
+		is_democratic_seller_trigger_body += "\t}\n";
+		is_democratic_seller_trigger_body += "}\n";
+
+		auto isDemocraticSeller = HoI4::ScriptedTrigger("is_democratic_seller_trigger");
+		isDemocraticSeller.setBody(is_democratic_seller_trigger_body);
+		scriptedTriggers.addIdeologyTrigger(isDemocraticSeller);
+
+		std::string is_democracy_seller_trigger_body = "= {\n";
+		is_democracy_seller_trigger_body += "\tNOT = { has_war_with = ROOT\t}\n";
+		is_democracy_seller_trigger_body += "\thas_government = democratic \n";
+		is_democracy_seller_trigger_body += "}\n";
+
+		auto isDemocracySeller = HoI4::ScriptedTrigger("is_democracy_seller_trigger");
+		isDemocracySeller.setBody(is_democracy_seller_trigger_body);
+		scriptedTriggers.addIdeologyTrigger(isDemocracySeller);
+	}
 }
 
 
