@@ -634,6 +634,18 @@
     <ClCompile Include="src\V2World\Pops\PopFactoryTests.cpp">
       <Filter>src\V2World\Pops</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Scorers\ScorerFactoryTests.cpp">
+      <Filter>src\HOI4World\Scorers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Scorers\ScorerTests.cpp">
+      <Filter>src\HOI4World\Scorers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Scorers\ScorersFactoryTests.cpp">
+      <Filter>src\HOI4World\Scorers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Scorers\ScorersTests.cpp">
+      <Filter>src\HOI4World\Scorers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1059,6 +1071,9 @@
     <Filter Include="src\HOI4World\FocusTrees">
       <UniqueIdentifier>{0f64a54e-5b9c-47ae-89cd-58afdec9b5cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\HOI4World\Scorers">
+      <UniqueIdentifier>{c7079fbb-9df6-467f-a26e-cbfcf59b89a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="TestFiles\World\merge_nations.txt">
@@ -1391,6 +1406,9 @@
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\regions.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Scorers.txt">
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\v2game">
