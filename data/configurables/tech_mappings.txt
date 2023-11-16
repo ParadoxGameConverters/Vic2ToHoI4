@@ -82,6 +82,7 @@ link = {
 
 link = {
 	vic2 = armoured_cars
+	hoi4 = tech_trucks
 	hoi4 = motorised_infantry
 }
 

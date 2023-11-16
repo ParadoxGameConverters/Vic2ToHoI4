@@ -38,6 +38,7 @@ void CreateModFiles(const std::string& output_name)
 	mod_file << "user_dir = \"" << output_name << "_user_dir\"\n";
 	mod_file << "replace_path=\"common/countries\"\n";
 	mod_file << "replace_path=\"common/ideologies\"\n";
+	mod_file << "replace_path=\"common/military_industrial_organization/organizations\"\n";
 	mod_file << "replace_path=\"common/national_focus\"\n";
 	mod_file << "replace_path=\"common/peace_conference/ai_peace\"\n";
 	mod_file << "replace_path=\"common/peace_conference/cost_modifiers\"\n";
@@ -58,6 +59,7 @@ void CreateModFiles(const std::string& output_name)
 	descriptor_file << "name = \"Converted - " << output_name << "\"\n";
 	descriptor_file << "replace_path=\"common/countries\"\n";
 	descriptor_file << "replace_path=\"common/ideologies\"\n";
+	descriptor_file << "replace_path=\"common/military_industrial_organization/organizations\"\n";
 	descriptor_file << "replace_path=\"common/national_focus\"\n";
 	descriptor_file << "replace_path=\"common/peace_conference/ai_peace\"\n";
 	descriptor_file << "replace_path=\"common/peace_conference/cost_modifiers\"\n";
