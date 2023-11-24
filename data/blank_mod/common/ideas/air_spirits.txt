@@ -186,20 +186,6 @@ ideas = {
 				}
 			}
 		}
-		steel_wings_steel_hearts_spirit = {
-			ledger = air
-			visible = { has_government = communism }
-			modifier = {
-				air_untrained_pilots_penalty_factor = -0.33
-			}
-			ai_will_do = {
-				factor = 1
-				modifier = {
-					factor = 0
-					NOT = { has_dlc = "No Step Back" }
-				}
-			}
-		}
 		home_defence_spirit = {
 			ledger = air
 			modifier = {

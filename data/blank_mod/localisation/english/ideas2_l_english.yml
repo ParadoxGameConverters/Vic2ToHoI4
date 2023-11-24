@@ -99,3 +99,6 @@
  generic_war_of_national_liberation_desc:0 "With the Ultimatum refused, we must go on the offensive and liberate all of our territory."
  generic_national_unification:0 "National Unification"
  generic_national_unification_desc:0 "Successes in our Liberation Campaigns have only increased the interest among the [Root.GetAdjective] men to sign up for duty."
+ political_loyalty_spirit_fasc:0 "Political Loyalty"
+ political_loyalty_spirit_fasc_desc:1 "An unreliable military is a threat to the state it is meant to protect.\n\n§GThis spirit is available due to our ideology.§!"
+ political_loyalty_spirit_fasc_tt:1 "New Officers: begin with either §Y"Politically Connected"§! or §Y"Media Personality"§! traits."

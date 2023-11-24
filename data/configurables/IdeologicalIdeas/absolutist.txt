@@ -1,0 +1,160 @@
+	country = {
+		royal_dictatorship_focus = {
+
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+
+			removal_cost = -1
+
+			picture = generic_intel_bonus
+
+			modifier = {
+				drift_defence_factor = 0.2
+			}
+		}
+
+		historical_claims_focus = {
+
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+
+			removal_cost = -1
+
+			picture = Generic_constitutional_guarantee
+
+			modifier = {
+				justify_war_goal_time = -0.5
+			}
+		}
+		absolutist_defeated = {
+			removal_cost = -1
+
+			allowed = {
+				always = no # Triggered via event
+			}
+
+			picture = generic_democratic_drift_bonus
+
+			modifier = {
+				stability_factor = 0.1
+			}
+		}
+
+		absolutist_influence = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+
+			modifier = {
+				absolutist_drift = 0.1
+				absolutist_acceptance = 85
+			}
+		}
+
+		absolutism = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+
+			removal_cost = -1
+
+			picture = generic_infantry_bonus
+
+
+			modifier = {
+				absolutist_drift = 0.1
+			}
+		}
+
+		absolutist_revolutionaries = {
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Triggered via event
+			}
+
+			picture = generic_fascism_drift_bonus
+
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+
+		absolutist_partisans_recruiting = {
+
+			allowed = {
+				always = no # Triggered via event
+			}
+
+			picture = generic_communism_drift_bonus
+
+			modifier = {
+				conscription = -0.002
+				absolutist_drift = 0.05
+			}
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		militarism_focus_absolutist = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.05
+				resistance_damage_to_garrison = -0.1
+			}
+		}
+
+		absolutist_military_parade = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+			modifier = {
+				absolutist_drift = 0.1
+				mobilization_speed = 0.15
+			}
+		}
+	}

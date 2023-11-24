@@ -99,3 +99,6 @@
  generic_war_of_national_liberation_desc:0 "Nachdem das Ultimatum abgelehnt wurde, müssen wir in die Offensive gehen und unser gesamtes Territorium befreien."
  generic_national_unification:0 "Nationale Vereinigung"
  generic_national_unification_desc:0 "Erfolge in unseren Befreiungskampagnen haben nur das Interesse der [Root.GetAdjective]en Männer erhöht, sich für den Dienst anzumelden."
+ political_loyalty_spirit_fasc: "Politische Loyalität"
+ political_loyalty_spirit_fasc_desc: "Ein unzuverlässiges Militär ist eine Gefahr für den Staat, den es eigentlich beschützen sollte.\n\n§GDieser Nationalgeist ist aufgrund unserer Ideologie verfügbar.§!"
+ political_loyalty_spirit_fasc_tt: "Neue Offiziere: Beginnen mit der Eigenschaft §Y\"Politisch vernetzt\"§! oder §Y\"Medienpersönlichkeit\"§!."

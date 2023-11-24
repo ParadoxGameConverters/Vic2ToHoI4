@@ -99,3 +99,6 @@
  generic_war_of_national_liberation_desc:0 "Po odrzuceniu Ultimatum musimy przejść do ofensywy i wyzwolić całe nasze terytorium."
  generic_national_unification:0 "Zjednoczenie narodowe"
  generic_national_unification_desc:0 "Sukcesy w naszych kampaniach wyzwoleńczych tylko zwiększyły zainteresowanie [Root.GetHabitants] przyjęciem do służby."
+ political_loyalty_spirit_fasc: "Lojalność polityczna"
+ political_loyalty_spirit_fasc_desc: "Niesolidne wojsko stanowi zagrożenie dla kraju, którego ma bronić.\n\n§GTen duch narodowy jest dostępny dzięki naszej ideologii.§!"
+ political_loyalty_spirit_fasc_tt: "Nowi oficerowie: otrzymują specjalizację §YKoneksje polityczne§! lub §YOsoba medialna§!."

@@ -99,3 +99,6 @@
  generic_war_of_national_liberation_desc:0 "Avec le refus de l'Ultimatum, nous devons passer à l'offensive et libérer tout notre territoire."
  generic_national_unification:0 "Unification nationale"
  generic_national_unification_desc:0 "Les succès de nos campagnes de libération n'ont fait qu'augmenter l'intérêt des [Root.GetHabitants] à s'engager."
+ political_loyalty_spirit_fasc: "Loyauté politique"
+ political_loyalty_spirit_fasc_desc: "Une armée peu fiable est une menace pour l'État qu'elle est censée protéger.\n\n§GCet esprit est permis par notre idéologie.§!"
+ political_loyalty_spirit_fasc_tt: "Nouveaux officiers : apparaissent avec les traits §Y$politically_connected$§! ou §Y$media_personality$§!."

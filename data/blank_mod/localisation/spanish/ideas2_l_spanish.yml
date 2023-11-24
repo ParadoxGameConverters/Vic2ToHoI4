@@ -99,3 +99,6 @@
  generic_war_of_national_liberation_desc:0 "Con el Ultimátum rechazado, debemos pasar a la ofensiva y liberar todo nuestro territorio".
  generic_national_unification:0 "Unificación nacional"
  generic_national_unification_desc:0 "Los éxitos en nuestras Campañas de Liberación solo han aumentado el interés entre los hombres [Root.GetAdjMP] para inscribirse en el servicio".
+ political_loyalty_spirit_fasc: "Lealtad política"
+ political_loyalty_spirit_fasc_desc: "La desconfianza militar es una amenaza para el Estado al que se supone que debe proteger.\n\n§GEste espíritu está disponible gracias a nuestra ideología.§!"
+ political_loyalty_spirit_fasc_tt: "Nuevos oficiales: empiezan con el rasgo §YCon conexiones políticas§! o §YEstrella mediática§!."
