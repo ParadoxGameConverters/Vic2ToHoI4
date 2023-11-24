@@ -22,9 +22,10 @@ void HoI4::Ideas::importIdeologicalIdeas(const std::set<std::string>& majorIdeol
 {
 	for (const auto& ideology: majorIdeologies)
 	{
-		registerRegex(commonItems::catchallRegex, [this, ideology](const std::string& groupName, std::istream& theStream) {
-			ideologicalIdeas[groupName].push_back(IdeaGroup(ideology, theStream));
-		});
+		registerRegex(commonItems::catchallRegex,
+			 [this, ideology](const std::string& groupName, std::istream& theStream) {
+				 ideologicalIdeas[groupName].push_back(IdeaGroup(ideology, theStream));
+			 });
 
 		parseFile("Configurables/IdeologicalIdeas/" + ideology + ".txt");
 		clearRegisteredKeywords();
@@ -72,8 +73,7 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 	});
 	updateHiddenIdeas(*foundGroup, majorIdeologies);
 
-	if (auto countryIdeas = ideologicalIdeas.find("country");
-		 countryIdeas != ideologicalIdeas.end())
+	if (auto countryIdeas = ideologicalIdeas.find("country"); countryIdeas != ideologicalIdeas.end())
 	{
 		foundGroup = std::find_if(countryIdeas->second.begin(), countryIdeas->second.end(), [](auto& theGroup) {
 			return (theGroup.getName() == "neutrality");
