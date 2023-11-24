@@ -1,0 +1,68 @@
+	country = {
+		collectivist_ethos_focus_neutral = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				AND = {
+					NOT = { has_government = democratic }
+					NOT = { has_government = neutrality }
+				}
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				neutrality_drift = -0.02
+			}
+		}
+
+		liberty_ethos_focus_neutral = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+
+			modifier = {
+				trade_opinion_factor = 0.2
+			}
+		}
+	}
+
+	academy_spirit = {
+		political_loyalty_spirit = {
+			ledger = army
+			visible = { 
+				has_government = neutrality
+			}
+			modifier = {
+				military_leader_cost_factor = -0.5
+				party_popularity_stability_factor = 0.15
+				custom_modifier_tooltip = political_loyalty_spirit_tt
+			}
+			ai_will_do = {
+				base = 1
+
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
+
+				modifier = {
+					factor = 2
+					has_government = neutrality
+				}
+			}
+		}
+	}

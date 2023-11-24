@@ -99,3 +99,6 @@
  generic_war_of_national_liberation_desc:0 "Com a recusa do Ultimatum, devemos partir para a ofensiva e libertar todo o nosso território."
  generic_national_unification:0 "Unificação Nacional"
  generic_national_unification_desc:0 "Os sucessos de nossas Campanhas de Libertação só aumentaram o interesse dos [Root.GetHabitants] em se inscrever para o serviço militar."
+ political_loyalty_spirit_fasc: "Lealdade política"
+ political_loyalty_spirit_fasc_desc: "Um exército duvidoso é uma ameaça ao estado que deve proteger.\n\n§GEsse espírito está disponível devido às sua ideologia.§!"
+ political_loyalty_spirit_fasc_tt: "Novos oficiais: começam com as características §Y\"conexões políticas\"§! ou §Y\"personalidade da mídia\"§!."
