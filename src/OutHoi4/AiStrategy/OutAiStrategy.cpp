@@ -15,10 +15,13 @@ void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const std::string& 
 	output << commonItems::utf8BOM; // add the BOM to make HoI4 happy
 
 	output << "converted_war_strategies_" << theCountry.getTag() << " = {\n";
-	output << "\tenable = {\n";
+	output << "\tallowed = {\n";
 	output << "\t\ttag = " + theCountry.getTag() + "\n";
+	output << "\t}\n";
+	output << "\tenable = {\n";
 	output << "\t\talways = no\n";
 	output << "\t}\n";
+	output << "\tabort_when_not_enabled = yes\n";
 	output << "\t\n";
 	for (const auto& conquerStr: theCountry.getConquerStrategies())
 	{
@@ -32,13 +35,13 @@ void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const std::string& 
 	output << "\n";
 
 	output << "converted_diplo_strategies_" << theCountry.getTag() << " = {\n";
-	output << "\tenable = {\n";
+	output << "\tallowed = {\n";
 	output << "\t\ttag = " + theCountry.getTag() + "\n";
+	output << "\t}\n";
+	output << "\tenable = {\n";
 	output << "\t\talways = no\n";
 	output << "\t}\n";
-	output << "\tabort = {\n";
-	output << "\t\talways = no\n";
-	output << "\t}\n";
+	output << "\tabort_when_not_enabled = yes\n";
 	output << "\t\n";
 	for (const auto& strategy: theCountry.getAIStrategies())
 	{
