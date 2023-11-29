@@ -1498,16 +1498,6 @@ leader_traits = {
 		political_advisor_cost_factor = -0.1
 	}
 
-	elected_regency_council_pro_allies = { #Regency Council (pro allies)
-		name = elected_regency_council
-
-		random = no
-		political_power_factor = 0.05
-		stability_factor = 0.1
-		political_advisor_cost_factor = -0.1
-		democratic_acceptance = 50
-	}
-
 	the_bloody_professor_regency_council = { #Regency Council (led by Aleksandar Tsankov)
 		random = no
 		master_ideology_drift = 0.1
@@ -1823,12 +1813,6 @@ leader_traits = {
 		random = no
 		political_power_factor = 0.10
 		stability_factor = 0.10
-	}
-	
-	democratic_firebrand = {
-		random = no
-		democratic_drift = 0.10
-		conscription_factor = 0.1
 	}
 	
 	commander_of_the_fetno_derash = {
@@ -2541,17 +2525,6 @@ leader_traits = {
 		subversive_activites_upkeep = -0.5
 		conscription = 0.02
 		war_support_factor = 0.05
-	}
-
-	#PRINCE WOLFGANG VON HESSE
-	crown_prince_of_finland = {
-		random = no
-		custom_modifier_tooltip = FIN_crown_prince_of_finland_tt
-		fascism_acceptance = 75
-		political_power_factor = 0.1
-		stability_factor = 0.05
-		neutrality_drift = 0.1
-		conscription = 0.025
 	}
 
 	### KARELIAN LEADER TRAITS ###
