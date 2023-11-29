@@ -1,0 +1,128 @@
+
+on_actions = {
+
+	#### MIO on actions
+	# ROOT is MIO
+	on_mio_size_increased = {}
+	# NB : all the following also exist at MIO level
+	# use on-action here if the purpose is to execute for any MIO
+	# use on-action at MIO level to execute just for one precise MIO
+	# i.e. don't use this here : if = { limit = { is_military_industrial_organisation = ... } } }
+	on_mio_design_team_assigned_to_tech = {}
+	on_mio_design_team_assigned_to_variant = {}
+	on_mio_industrial_manufacturer_assigned = {}
+	on_mio_tech_research_cancelled = {}
+	on_mio_tech_research_completed = {}
+	on_mio_industrial_manufacturer_unassigned = {}
+
+
+	#Not run on a specific country.
+	on_startup = {
+		#SET UP MIO SIZE IN 1939 BOOKMARK
+		effect = {
+			if = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+					date > 1939.01.01 #1939 Bookmark
+				}
+				every_country = {
+					limit = {
+						is_major = yes
+					}
+					every_military_industrial_organization = {
+						add_mio_size = 4
+					}
+				}
+				every_country = {
+					limit = {
+						is_major = no
+					}
+					every_military_industrial_organization = {
+						add_mio_size = 3
+					}
+				}
+			}
+		}
+	}
+
+	on_new_term_election = {
+		random_events = {
+		}
+	}
+
+	#ROOT is capitulated country, FROM is winner.
+	on_capitulation_immediate = {
+	}
+	
+	# ROOT is capitulated country, FROM is winner
+	on_capitulation = {
+	}
+
+	##ROOT is affected country
+	on_uncapitulation = {
+	}
+
+	# FROM is the country that is hosting the government in exile.
+	# ROOT is the government in exile
+	on_government_exiled = {
+	}
+
+	#Root is exile
+	#From is old host 
+	on_exile_government_reinstated = {
+	}
+
+	on_create_faction = {
+	}
+
+	on_liberate = {
+	}
+ 	#ROOT is the nation being released, FROM is the overlord
+	on_release_as_free = {
+	}
+
+	#ROOT is winner #FROM gets annexed - This fires just before FROM gets annexed, meaning the country and everything it owns still exists. It will also fire on_annex and on_civil_war_end
+	on_civil_war_end_before_annexation = {
+	}
+
+	#ROOT = attacking side
+	#FROM = defending side
+	#fired when two countries end up at war with each other (on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first)
+	on_war_relation_added = { # ---> Fires in 2nd place (1st is on_declare_war) -> This one is triggered ALWAYS
+	}
+
+	on_peaceconference_ended = {
+	}
+
+	on_peace = {
+	}
+
+	#	ROOT is new controller, FROM is old controller, FROM.FROM is state ID.
+	on_state_control_changed = {
+	}
+
+	on_puppet = { #ROOT = nation being puppeted, FROM = overlord
+	}
+
+	#ROOT is winner, FROM gets annexed. For civil wars on_civil_war_end is also fired.
+	on_annex = {
+	}
+
+	#ROOT is subject FROM is previous overlord
+	on_subject_free = {
+	}
+
+	on_ruling_party_change = {
+	}
+
+  	#FROM is faction leader on join faction requests. THIS DOES NOT FIRE ON ADD_TO_FACTION EFFECT! USE ON_OFFER_JOIN_FACTION!
+	on_join_faction = { 
+	}
+
+	#FROM is country getting invited. THIS GETS TRIGGERED WHEN THE COUNTRY BEING OFFERED ACTUALLY JOINS THE FACTION (AND ALSO TRIGGERED ON ADD_TO_ACTION EFFECT TACK SÅ MYCKET)
+	on_offer_join_faction = {
+	}
+	# FROM is the faction Leader, ROOT is the country leaving the faction 
+	on_leave_faction = {
+	}
+}
