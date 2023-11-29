@@ -47,6 +47,17 @@ void HoI4::StabilityWarSupportDecisions::updateDecisions(const std::set<std::str
 				category.replaceDecision(decision);
 				updated = true;
 			}
+			if (decision.getName() == "demob_economic_mission")
+			{
+				decision.setActivation(
+					 "= {\n"
+					 "\t\t\thas_unsupported_economic_law = yes\n"
+					 "\t\t\thas_war = no\n"
+					 "\t\t}");
+				decision.setVisible("");
+				category.replaceDecision(decision);
+				updated = true;
+			}
 		}
 		if (updated)
 		{

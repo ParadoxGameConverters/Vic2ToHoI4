@@ -94,50 +94,6 @@ NOR_prep_resistance_dmod = {
 	resistance_decay = -0.2
 }
 
-NOR_defend_state_dmod = { #Added when deploying Level 1 Prep 
-	enable = { always = yes }
-	
-	icon = GFX_modifiers_generic_defense  
-	
-	remove_trigger = {
-		NOR = {
-			OR = {
-				has_country_flag = NOR_going_dem_historical
-				has_country_flag = NOR_going_dem_allied
-			}
-			OR = {
-				has_defensive_war = no 
-				exists = no 
-				has_capitulated = yes 
-			}
-		}
-	}
-	army_morale_factor = 0.1
-	dig_in_speed_factor = 0.25
-	max_dig_in_factor = 0.15
-	pocket_penalty = -0.25
-}
-
-#### Monarchist ##### 
-NOR_royal_defenses = {
-	enable = {
-		always = yes 
-	}	
-	remove_trigger = {
-		NOR = {
-			has_capitulated = yes  
-		}
-	}
-
-	icon = GFX_modifiers_NOR_monarchism
-
-	state_production_speed_bunker_factor = 0.4
-	state_production_speed_coastal_bunker_factor = 0.4
-	state_production_speed_infrastructure_factor = -0.2
-	state_production_speed_industrial_complex_factor = -0.2
-	state_production_speed_arms_factory_factor = -0.2
-}
-
 ### Country Modifiers ###
 
 SF_PARA_dispersed_drop = {
