@@ -806,7 +806,7 @@ std::set<int> HoI4::World::getAreaStates(const std::set<int>& area,
 		const auto& region = theRegions->getRegion(province);
 		if (!region)
 		{
-			Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
+			Log(LogLevel::Warning) << "Province " << province << " is not defined in Configurables/regions.txt";
 			continue;
 		}
 		auto state = states->getStates().find(stateId);

@@ -78,6 +78,22 @@ democratic = {
 			factor = 1
 		}
 	}
+
+	elected_regency_council_pro_allies = { #Regency Council (pro allies)
+		name = elected_regency_council
+
+		random = no
+		political_power_factor = 0.05
+		stability_factor = 0.1
+		political_advisor_cost_factor = -0.1
+		democratic_acceptance = 50
+	}
+	
+	democratic_firebrand = {
+		random = no
+		democratic_drift = 0.10
+		conscription_factor = 0.1
+	}
 }
 
 fascism = {
@@ -104,5 +120,16 @@ fascism = {
 	incognito = {
 		fascism_drift = 0.1
 		drift_defence_factor = 0.15
+	}
+
+	#PRINCE WOLFGANG VON HESSE
+	crown_prince_of_finland = {
+		random = no
+		custom_modifier_tooltip = FIN_crown_prince_of_finland_tt
+		fascism_acceptance = 75
+		political_power_factor = 0.1
+		stability_factor = 0.05
+		neutrality_drift = 0.1
+		conscription = 0.025
 	}
 }
