@@ -1053,7 +1053,10 @@ void outputAlliances(std::ostream& output, const std::set<std::string>& allies)
 	for (const auto& ally: allies)
 	{
 		output << "give_guarantee = " << ally << "\n";
-		output << "diplomatic_relation = { country = " << ally << " relation = non_aggression_pact }\n";
+		output << "if = {\n";
+		output << "\tlimit = { NOT = { has_non_aggression_pact_with = " << ally << " } }\n";
+		output << "\tdiplomatic_relation = { country = " << ally << " relation = non_aggression_pact }\n";
+		output << "}\n";
 		output << "\n";
 	}
 }
