@@ -801,7 +801,7 @@ technologies = {
 
 	armor_piercing_bombs = {
 		enable_equipment_modules = {
-					armor_piercing_bomb_locks
+			armor_piercing_bomb_locks
 		}
 			
 		research_cost = 1
