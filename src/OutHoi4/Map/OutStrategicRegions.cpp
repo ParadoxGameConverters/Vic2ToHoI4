@@ -11,7 +11,7 @@ void HoI4::outputStrategicRegions(const StrategicRegions& strategicRegions, cons
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/map/strategicregions");
 	}
-	for (const auto& strategicRegion: strategicRegions.getStrategicRegions() | std::views::values)
+	for (const auto& strategicRegion: strategicRegions.GetStrategicRegions() | std::views::values)
 	{
 		outputStrategicRegion(strategicRegion, "output/" + outputName + "/map/strategicregions/");
 	}
