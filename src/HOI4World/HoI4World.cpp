@@ -117,7 +117,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	theMapData = std::make_unique<Maps::MapData>(*provinceDefinitions, theConfiguration.getHoI4Path());
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
-	strategicRegions = StrategicRegions::Factory().importStrategicRegions(theConfiguration);
+	strategicRegions = StrategicRegions::Factory().ImportStrategicRegions(theConfiguration);
 	const auto defaultStates = DefaultStatesImporter().ImportDefaultStates(theConfiguration.getHoI4Path());
 	const ImpassableProvinces impassableProvinces(defaultStates);
 	states = std::make_unique<States>(sourceWorld,
@@ -191,7 +191,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertTechs();
 	states->convertResources(countries);
 	supplyZones->convertSupplyZones(*states);
-	strategicRegions->convert(*states);
+	strategicRegions->Convert(*states, *theMapData);
 	convertStrategies(sourceWorld, *states, provinceMapper);
 	Log(LogLevel::Progress) << "56%";
 

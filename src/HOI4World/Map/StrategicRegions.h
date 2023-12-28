@@ -22,34 +22,30 @@ class StrategicRegions
 {
   public:
 	class Factory;
-	StrategicRegions(std::map<int, StrategicRegion>&& strategicRegions,
-		 std::map<int, int>&& provinceToStrategicRegionMap):
-		 strategicRegions(strategicRegions),
-		 provinceToStrategicRegionMap(provinceToStrategicRegionMap)
+	StrategicRegions(std::map<int, StrategicRegion> strategic_regions,
+		 std::map<int, int> province_to_strategic_region_map):
+		 strategic_regions_(std::move(strategic_regions)),
+		 original_province_to_strategic_region_map_(std::move(province_to_strategic_region_map))
 	{
+		new_province_to_strategic_region_map_ = original_province_to_strategic_region_map_;
 	}
 
-	[[nodiscard]] const auto& getStrategicRegions() const { return strategicRegions; }
-	[[nodiscard]] const auto& getProvinceToStrategicRegionMap() const { return provinceToStrategicRegionMap; }
+	[[nodiscard]] const auto& GetStrategicRegions() const { return strategic_regions_; }
+	[[nodiscard]] const auto& GetProvinceToStrategicRegionMap() const { return new_province_to_strategic_region_map_; }
 
-	void convert(const States& theStates);
+	void Convert(const States& states, const Maps::MapData& hoi4_map_data);
 
   private:
-	std::map<int, int> determineUsedRegions(const State& state);
-	[[nodiscard]] static std::optional<int> determineMostUsedRegion(const std::map<int, int>& usedRegions);
-	void addLeftoverProvincesToRegions();
-	void addProvincesToRegion(int regionNumber, const State& state);
-	void addProvinceToRegion(int regionNumber, int provinceId);
-
-	std::map<int, StrategicRegion> strategicRegions;
-	std::map<int, int> provinceToStrategicRegionMap;
+	std::map<int, StrategicRegion> strategic_regions_;
+	std::map<int, int> original_province_to_strategic_region_map_;
+	std::map<int, int> new_province_to_strategic_region_map_;
 };
 
 
 class StrategicRegions::Factory
 {
   public:
-	static std::unique_ptr<StrategicRegions> importStrategicRegions(const Configuration& theConfiguration);
+	static std::unique_ptr<StrategicRegions> ImportStrategicRegions(const Configuration& configuration);
 };
 
 } // namespace HoI4

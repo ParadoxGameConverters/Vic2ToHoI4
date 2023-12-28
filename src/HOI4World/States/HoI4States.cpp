@@ -373,7 +373,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	const auto allProvinces = getProvincesInState(vic2State, stateOwner, provinceMapper);
 	const auto initialConnectedProvinceSets = getConnectedProvinceSets(allProvinces, mapData, provinces);
 	auto finalConnectedProvinceSets =
-		 consolidateProvinceSets(initialConnectedProvinceSets, strategicRegions.getProvinceToStrategicRegionMap());
+		 consolidateProvinceSets(initialConnectedProvinceSets, strategicRegions.GetProvinceToStrategicRegionMap());
 
 	for (const auto& connectedProvinces: finalConnectedProvinceSets)
 	{
