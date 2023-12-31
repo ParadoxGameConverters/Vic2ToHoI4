@@ -1167,7 +1167,7 @@ bomullborgar = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 bornean = {
 	female_names = { "Rim" Merenui Metetini Miri Moea Moeata Moerani Mohea Nanihi Nu’utea Orama Poe Pear Poehina Poenui Poerava Puaiti
@@ -1272,7 +1272,7 @@ bundsfoervant = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 burmese = {
 	female_names = { "Yaza Dewi" "Atula Thiri" "Khin Myo Sit" "Khin Myat Hset" "Khin Ma Lat" }
@@ -1887,7 +1887,7 @@ danish = {
 	car_companies = { "Atlas Maskinfabrik AS" }
 	electronic_companies = { "Bang & Olufsen" }
 	industry_companies = { "De Forenede Automobilfabriker" }
-	intelligence_agencies = { "Politiets Efterretningstjeneste" }
+	intelligence_agencies = { Sikkerhedspolitiet "Politiets Efterretningstjeneste" }
 }
 deagostinian = {
 	female_names = { Maria Anna }
@@ -2152,7 +2152,7 @@ elsinorian = {
 	car_companies = { "Atlas Maskinfabrik AS" }
 	electronic_companies = { "Bang & Olufsen" }
 	industry_companies = { "De Forenede Automobilfabriker" }
-	intelligence_agencies = { "Politiets Efterretningstjeneste" }
+	intelligence_agencies = { Sikkerhedspolitiet "Politiets Efterretningstjeneste" }
 }
 english = {
 	female_names = { Elizabeth Anne }
@@ -2741,7 +2741,7 @@ guldfjallling = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 guney = {
 	female_names = { Çiçek Çilen Çiltanesi Özgul Özlem Akgul }
@@ -2977,7 +2977,7 @@ hjartnaaeter = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 hnedy = {
 	female_names = { "Marie" "Anna" "Hana" "Božena" "Alžběta" "Marta" }
@@ -3006,7 +3006,7 @@ holmgardr = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 hopeajokan = {
 	female_names = { Anna }
@@ -3076,7 +3076,7 @@ hvitrduptling = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 ibibio = {
 	female_names = { Adiaba Amaeka Aniekan Ayanti }
@@ -3111,7 +3111,7 @@ icelandic = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 ifriqi = {
 	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand
@@ -5742,7 +5742,7 @@ raudhskogarling = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 redwoodian = {
 	female_names = { Anne Mary }
@@ -5783,7 +5783,7 @@ rollonian = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 romanian = {
 	female_names = { Andrea }
@@ -5902,7 +5902,7 @@ sami = {
 	Tellervo Maija Pirjo Karoliina Pauliina Minna Sari Irmeli Eeva Tiina Laura Elisabet Marika Pirkko Eveliina Tarja Anja Satu Mari Seija Hanna Eila Marita Heidi Sirpa Raija Annika Irene Sisko Jaana Anita Sanna Eija Kirsi
 	Ilona Marianne Julia Merja Katriina Amanda Ulla Sirkka Paula Kaisa Marketta Terttu Anni Marjaana Tuulia Elisabeth Matilda Elisa Linnea Jenni Helmi Olivia Katja Hilkka Mirjami Heli Aurora Iida Kirsti Raili Emma Mirja
 	Nina Katri }
-	callsigns = { "the Sami" Santa Rudolph }
+	callsigns = { "the Sami" Santa Rudolph Jokkmokk Rovaniemi Torneo Kola Gällivare }
 	industry_companies = { "Riikkavuloš Industrija" }
 	electronic_companies = { "Šleaðga Duovdda" }
 	car_companies = { Vovdna }
@@ -6129,7 +6129,7 @@ silfrvazling = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 sindi = {
 	female_names = { Indira }
@@ -6511,7 +6511,7 @@ sydlig = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 symacom = {
 	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
@@ -7192,7 +7192,7 @@ vinlander = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
-	intelligence_agencies = { "GVMSÍ" }
+	intelligence_agencies = { Lögreglan "GVMSÍ" }
 }
 virshjuros = {
 	female_names = { Agnė Aldona Anastasija Aurelija Austėja Birutė Daiva Danutė Donata Edita Elena Elzė Ernesta Gabija Gertrüda Gintarė Ieva Inga Irma Janina Jolanta Julija Kamilė Katrė Kristina Laimutė Lilija Liucija Margarita Marijona
@@ -7242,7 +7242,7 @@ wandernorse = {
 	car_companies = { "Atlas Maskinfabrik AS" }
 	electronic_companies = { "Bang & Olufsen" }
 	industry_companies = { "De Forenede Automobilfabriker" }
-	intelligence_agencies = { "Politiets Efterretningstjeneste" }
+	intelligence_agencies = { Sikkerhedspolitiet "Politiets Efterretningstjeneste" }
 }
 welsh = {
 	female_names = { Elain }

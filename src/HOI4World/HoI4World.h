@@ -36,6 +36,7 @@
 #include "src/HOI4World/OnActions.h"
 #include "src/HOI4World/Operations/Operations.h"
 #include "src/HOI4World/OperativeNames/OperativeNames.h"
+#include "src/HOI4World/Scorers/ScorersFactory.h"
 #include "src/HOI4World/ScriptedEffects/ScriptedEffects.h"
 #include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
 #include "src/HOI4World/ScriptedTriggers/ScriptedTriggers.h"
@@ -104,6 +105,8 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
 	[[nodiscard]] const auto& getOccupationLaws() const { return *occupationLaws; }
 	[[nodiscard]] const auto& getDynamicModifiers() const { return dynamicModifiers; }
+	[[nodiscard]] const auto& getScorers() const { return *scorers; }
+	[[nodiscard]] const auto& getCustomizedScorers() const { return scorers->getCustomizedScorers(); }
 	[[nodiscard]] const auto& getScriptedEffects() const { return *scriptedEffects; }
 	[[nodiscard]] const auto& getScriptedLocalisations() const { return scriptedLocalisations; }
 	[[nodiscard]] const auto& getScriptedTriggers() const { return scriptedTriggers; }
@@ -289,6 +292,7 @@ class World: commonItems::parser
 	std::unique_ptr<Maps::MapData> theMapData;
 
 	std::unique_ptr<ScriptedEffects> scriptedEffects;
+	std::unique_ptr<Scorers> scorers;
 
 	std::unique_ptr<ScriptedLocalisations> scriptedLocalisations;
 	ScriptedTriggers scriptedTriggers;

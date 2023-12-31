@@ -22,6 +22,10 @@ class ScriptedTriggers: commonItems::parser
 	void replaceElectionsScriptedTrigger(std::string_view name, const std::string& replacementBody);
 	void replaceLawsWarSupportTriggers(const std::map<std::string_view, std::string>& replacements);
 
+	void addIdeologyTrigger(HoI4::ScriptedTrigger& ideologyTrigger)
+	{
+		ideologyScriptedTriggers.push_back(ideologyTrigger);
+	}
 	void addNationalFocusTrigger(HoI4::ScriptedTrigger& NFTrigger) { nationalFocusTriggers.push_back(NFTrigger); }
 
 	[[nodiscard]] const auto& getIdeologyScriptedTriggers() const { return ideologyScriptedTriggers; }

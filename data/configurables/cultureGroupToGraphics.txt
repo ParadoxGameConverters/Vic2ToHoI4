@@ -646,7 +646,7 @@ nordic_uralic = {
 		democratic = {
 			"gfx/leaders/Europe/portrait_europe_generic_5.dds"
 			"gfx/leaders/FIN/Portrait_Finland_Risto_Heikki_Ryti.dds"
-			"gfx/leaders/NOR/Portrait_Norway_Johan_Nygaardsvold.dds"
+			"gfx/leaders/NOR/portrait_NOR_johan_nygaardsvold.dds"
 			"gfx/leaders/EST/portrait_est_konstantin_pats.dds"
 			GFX_Estonia_Jaan_Tonisson
 		}

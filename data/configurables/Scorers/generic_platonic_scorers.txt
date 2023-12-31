@@ -1,0 +1,458 @@
+$IDEOLOGY_major_scorer = {
+    # Valid example of mission scorer:
+	targets = {
+		# describe the target to consider
+		targets_dynamic = no
+		target_non_existing = no
+		#target_array = global.majors
+		target_array = global.countries
+		# MTTH like score description
+		# THIS is a target
+		# FROM is the initiator
+		score = {
+			base = 1
+			# Add tension added by country
+			modifier = {
+				always = yes 
+				add = has_added_tension_amount
+			}        
+			# Add total number of Divisions 
+			modifier = {
+				always = yes 
+				add = num_armies
+			}
+			# add factories
+			modifier = {
+				always = yes 
+				add = num_of_factories
+			}
+			modifier = {
+				is_major = yes
+				add = 100
+			}
+			modifier = {
+				is_faction_leader = yes 
+				add = 50
+			}
+			modifier = {
+				NOT = { has_government = $IDEOLOGY }
+				factor = 0 
+			}
+			modifier = {
+				exists = no 
+				factor = 0
+			}
+		}
+	}
+}
+
+local_$IDEOLOGY_country = {
+	# Valid example of mission scorer:
+	targets = {
+		# describe the target to consider
+		targets_dynamic = no
+		target_non_existing = no
+		#target_array = global.majors
+		target_array = global.countries
+		# MTTH like score description
+		# THIS is a target
+		# FROM is the initiator
+		score = {
+			base = 1
+			
+			modifier = {
+				is_major = yes
+				factor = 10
+			}
+			# Add tension added by country
+			modifier = {
+				always = yes 
+				add = has_added_tension_amount
+			}
+			# Add total number of Divisions 
+			modifier = {
+				always = yes
+				add = num_armies 
+			}
+			# Same continent also more scary
+			modifier = {
+				OR = {
+					AND = {
+						THIS.capital_scope = { is_on_continent = europe }
+						FROM.capital_scope = { is_on_continent = europe }
+					}
+					AND = {
+						THIS.capital_scope = { is_on_continent = asia }
+						FROM.capital_scope = { is_on_continent = asia }
+					}
+					AND = {
+						OR = {
+							THIS.capital_scope = { is_on_continent = north_america }
+							THIS.capital_scope = { is_on_continent = south_america }
+						}
+						OR = {
+							FROM.capital_scope = { is_on_continent = north_america }
+							FROM.capital_scope = { is_on_continent = south_america }
+						}
+					}
+					AND = {
+						THIS.capital_scope = { is_on_continent = africa }
+						FROM.capital_scope = { is_on_continent = africa }
+					}
+					AND = {
+						THIS.capital_scope = { is_on_continent = middle_east }
+						FROM.capital_scope = { is_on_continent = middle_east }
+					}
+					AND = {
+						OR = {
+							THIS.capital_scope = { is_on_continent = australia }
+							THIS.capital_scope = { is_on_continent = asia }
+						}
+						FROM.capital_scope = { is_on_continent = australia }
+					}	
+				}
+				factor = 3
+			}
+			modifier = {
+				add = num_armies
+			}
+			# add factories
+			modifier = {
+				always = yes 
+				add = num_of_factories
+			}
+			modifier = {
+				NOT = { has_government = $IDEOLOGY }
+				factor = 0 
+			}
+		}
+	}
+}
+
+$IDEOLOGY_bully_scorer = {
+    # Valid example of mission scorer:
+	targets = {
+		# describe the target to consider
+		targets_dynamic = no
+		target_non_existing = no
+		#target_array = global.majors
+		target_array = global.countries
+		# MTTH like score description
+		# THIS is a target
+		# FROM is the initiator
+		score = {
+			base = 1
+			# Add tension added by country
+			# Add total number of Divisions 
+			modifier = {
+				always = yes 
+				add = num_armies
+			}
+			# add factories
+			modifier = {
+				always = yes 
+				add = num_of_factories
+			}
+			modifier = {
+				always = yes 
+				add = has_added_tension_amount
+			}
+			modifier = {
+				is_major = yes
+				add = 100
+			}
+			modifier = {
+				is_faction_leader = yes 
+				add = 100
+			}
+			modifier = {
+				NOT = { has_government = $IDEOLOGY }
+				factor = 0 
+			}
+		}
+	}
+}
+
+$IDEOLOGY_faction_leader_scorer = {
+	targets = {
+		# describe the target to consider
+		targets_dynamic = no
+		target_non_existing = no
+		#target_array = global.majors
+		target_array = global.countries
+		# MTTH like score description
+		# THIS is a target
+		# FROM is the initiator
+		score = {
+			base = 1
+			# Add tension added by country
+			modifier = {
+				always = yes 
+				add = has_added_tension_amount
+			}        
+			# Add total number of Divisions 
+			modifier = {
+				always = yes 
+				add = num_armies
+			}
+			# add factories
+			modifier = {
+				always = yes 
+				add = num_of_factories
+			}
+			modifier = {
+				is_major = yes
+				add = 100
+			}
+			modifier = {
+				is_faction_leader = no 
+				factor = 0.1
+			}
+			modifier = {
+				NOT = { has_government = $IDEOLOGY }
+				factor = 0 
+			}
+		}
+	}
+}
+
+$IDEOLOGY_sleeping_giant_scorer = {
+ 	targets = {
+		# describe the target to consider
+		targets_dynamic = no
+		target_non_existing = no
+		#target_array = global.majors
+		target_array = global.countries
+		# MTTH like score description
+		# THIS is a target
+		# FROM is the initiator
+		score = {
+			base = 1
+			# Add tension added by country
+			# Add total number of Divisions 
+			# add factories
+			modifier = {
+				always = yes 
+				add = num_of_factories
+			}
+			modifier = {
+				always = yes 
+				add = -num_armies
+			}
+			modifier = {
+				always = yes 
+				add = -has_added_tension_amount
+			}        
+			modifier = {
+				is_major = yes
+				add = 30
+			}
+			modifier = {
+				is_faction_leader = yes 
+				factor = 0.5
+			}
+			modifier = {
+				NOT = { has_government = $IDEOLOGY }
+				factor = 0 
+			}
+		}
+	}   
+}
+
+european_$IDEOLOGY_major_scorer = {
+    # Valid example of mission scorer:
+	targets = {
+		# describe the target to consider
+		targets_dynamic = no
+		target_non_existing = no
+		#target_array = global.majors
+		target_array = global.countries
+		# MTTH like score description
+		# THIS is a target
+		# FROM is the initiator
+		score = {
+			base = 1
+			# Add tension added by country
+			modifier = {
+				always = yes 
+				add = has_added_tension_amount
+			}        
+			# Add total number of Divisions 
+			modifier = {
+				always = yes 
+				add = num_armies
+			}
+			# add factories
+			modifier = {
+				always = yes 
+				add = num_of_factories
+			}
+			modifier = {
+				is_major = yes
+				add = 100
+			}
+			modifier = {
+				is_faction_leader = yes 
+				add = 50
+			}
+			modifier = {
+				NOT = { has_government = $IDEOLOGY }
+				factor = 0 
+			}
+			modifier = {
+				NOT = { THIS.capital_scope = { is_on_continent = europe } }
+			}
+		}
+	}
+}
+
+asian_$IDEOLOGY_major_scorer = {
+    # Valid example of mission scorer:
+	targets = {
+		# describe the target to consider
+		targets_dynamic = no
+		target_non_existing = no
+		#target_array = global.majors
+		target_array = global.countries
+		# MTTH like score description
+		# THIS is a target
+		# FROM is the initiator
+		score = {
+			base = 1
+			# Add tension added by country
+			modifier = {
+				always = yes 
+				add = has_added_tension_amount
+			}        
+			# Add total number of Divisions 
+			modifier = {
+				always = yes 
+				add = num_armies
+			}
+			# add factories
+			modifier = {
+				always = yes 
+				add = num_of_factories
+			}
+			modifier = {
+				is_major = yes
+				add = 100
+			}
+			modifier = {
+				is_faction_leader = yes 
+				add = 50
+			}
+			modifier = {
+				NOT = { has_government = $IDEOLOGY }
+				factor = 0 
+			}
+			modifier = {
+				OR = { 
+					NOT = { THIS.capital_scope = { is_on_continent = asia } } 
+					NOT = { THIS.capital_scope = { is_on_continent = australia } }
+					NOT = { THIS.capital_scope = { is_on_continent = middle_east } }
+				}
+				factor = 0
+			}
+		}
+	}
+}
+
+american_$IDEOLOGY_major_scorer = {
+    # Valid example of mission scorer:
+	targets = {
+		# describe the target to consider
+		targets_dynamic = no
+		target_non_existing = no
+		#target_array = global.majors
+		target_array = global.countries
+		# MTTH like score description
+		# THIS is a target
+		# FROM is the initiator
+		score = {
+			base = 1
+			# Add tension added by country
+			modifier = {
+				always = yes 
+				add = has_added_tension_amount
+			}        
+			# Add total number of Divisions 
+			modifier = {
+				always = yes 
+				add = num_armies
+			}
+			# add factories
+			modifier = {
+				always = yes 
+				add = num_of_factories
+			}
+			modifier = {
+				is_major = yes
+				add = 100
+			}
+			modifier = {
+				is_faction_leader = yes 
+				add = 50
+			}
+			modifier = {
+				NOT = { has_government = $IDEOLOGY }
+				factor = 0 
+			}
+			modifier = {
+				OR = { 
+					NOT = { THIS.capital_scope = { is_on_continent = south_america } } 
+					NOT = { THIS.capital_scope = { is_on_continent = north_america } }
+				}
+				factor = 0
+			}
+		}
+	}
+}
+
+african_$IDEOLOGY_major_scorer = {
+    # Valid example of mission scorer:
+	targets = {
+		# describe the target to consider
+		targets_dynamic = no
+		target_non_existing = no
+		#target_array = global.majors
+		target_array = global.countries
+		# MTTH like score description
+		# THIS is a target
+		# FROM is the initiator
+		score = {
+			base = 1
+			# Add tension added by country
+			modifier = {
+				always = yes 
+				add = has_added_tension_amount
+			}        
+			# Add total number of Divisions 
+			modifier = {
+				always = yes 
+				add = num_armies
+			}
+			# add factories
+			modifier = {
+				always = yes 
+				add = num_of_factories
+			}
+			modifier = {
+				is_major = yes
+				add = 100
+			}
+			modifier = {
+				is_faction_leader = yes 
+				add = 50
+			}
+			modifier = {
+				NOT = { has_government = $IDEOLOGY }
+				factor = 0 
+			}
+			modifier = {
+				NOT = { THIS.capital_scope = { is_on_continent = africa } }
+			}
+		}
+	}
+}
+

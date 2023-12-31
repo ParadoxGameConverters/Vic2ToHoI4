@@ -1,0 +1,160 @@
+	country = {
+		radical_defeated = {
+			removal_cost = -1
+
+			allowed = {
+				always = no # Triggered via event
+			}
+
+			picture = generic_democratic_drift_bonus
+
+			modifier = {
+				stability_factor = 0.1
+			}
+		}
+
+		radical_influence = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = radical
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+
+			modifier = {
+				radical_drift = 0.1
+				radical_acceptance = 85
+			}
+		}
+
+		radicalism = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = radical
+			}
+
+			removal_cost = -1
+
+			picture = generic_infantry_bonus
+
+			modifier = {
+				radical_drift = 0.1
+			}
+		}
+
+		radical_revolutionaries = {
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Triggered via event
+			}
+
+			picture = generic_fascism_drift_bonus
+
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+
+		radical_partisans_recruiting = {
+
+			allowed = {
+				always = no # Triggered via event
+			}
+
+			picture = generic_communism_drift_bonus
+
+			modifier = {
+				conscription = -0.002
+				radical_drift = 0.05
+			}
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+
+		private_channels_focus = {
+
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = radical
+			}
+
+			removal_cost = -1
+
+			picture = can_wartime_prices_and_trade_board
+
+			modifier = {
+				trade_opinion_factor = 0.2
+			}
+		}
+
+		hardfought_market_focus = {
+
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = radical
+			}
+
+			removal_cost = -1
+
+			picture = generic_license_production
+
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+
+		army_provides_focus = {
+
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = radical
+			}
+
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.025
+			}
+		}
+
+		committee_of_public_safety = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = radical
+			}
+			removal_cost = -1
+			picture = generic_communism_drift_bonus
+			modifier = {
+				radical_drift = 0.1
+				research_speed_factor = 0.035
+			}
+		}
+	}

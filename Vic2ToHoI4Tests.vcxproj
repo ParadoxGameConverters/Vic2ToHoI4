@@ -128,6 +128,10 @@
     <ClCompile Include="src\HOI4World\PlaneDesigns\PossiblePlaneDesignsTests.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionsTests.cpp" />
     <ClCompile Include="src\HOI4World\Regions\RegionTests.cpp" />
+    <ClCompile Include="src\HOI4World\Scorers\ScorerFactoryTests.cpp" />
+    <ClCompile Include="src\HOI4World\Scorers\ScorerTests.cpp" />
+    <ClCompile Include="src\HOI4World\Scorers\ScorersFactoryTests.cpp" />
+    <ClCompile Include="src\HOI4World\Scorers\ScorersTests.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectFileTests.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedEffects\ScriptedEffectTests.cpp" />
     <ClCompile Include="src\HOI4World\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
@@ -450,6 +454,12 @@
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Localisations\StateCategories.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables/Localisations</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Scorers.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables/Scorers/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">generic_platonic_scorers%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

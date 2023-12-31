@@ -5,7 +5,7 @@
 
 
 
-void outputIdeologicalIdeas(const std::map<std::string, HoI4::IdeaGroup>& ideologicalIdeas,
+void outputIdeologicalIdeas(const std::map<std::string, std::vector<HoI4::IdeaGroup>>& ideologicalIdeas,
 	 const std::set<std::string>& majorIdeologies,
 	 const std::string& outputName);
 void outputGeneralIdeas(const std::vector<HoI4::IdeaGroup>& generalIdeas, const std::string& outputName);
@@ -21,26 +21,26 @@ void HoI4::outIdeas(const Ideas& ideas,
 }
 
 
-void outputIdeologicalIdeas(const std::map<std::string, HoI4::IdeaGroup>& ideologicalIdeas,
+void outputIdeologicalIdeas(const std::map<std::string, std::vector<HoI4::IdeaGroup>>& ideologicalIdeas,
 	 const std::set<std::string>& majorIdeologies,
 	 const std::string& outputName)
 {
 	std::ofstream ideasFile("output/" + outputName + "/common/ideas/convertedIdeas.txt");
 	ideasFile << "ideas = {\n";
-	ideasFile << "\tcountry = {\n";
-	for (const auto& majorIdeology: majorIdeologies)
+	for (const auto& [ideaCategory, ideaGroups]: ideologicalIdeas)
 	{
-		auto ideologicalIdea = ideologicalIdeas.find(majorIdeology);
-		if (ideologicalIdea != ideologicalIdeas.end())
+		ideasFile << "\n";
+		ideasFile << "\t" << ideaCategory << " = {\n";
+		for (const auto& ideaGroup: ideaGroups)
 		{
-			for (const auto& idea: ideologicalIdea->second.getIdeas())
+			for (const auto& idea: ideaGroup.getIdeas())
 			{
-				ideasFile << idea;
 				ideasFile << "\n";
+				ideasFile << idea;
 			}
 		}
+		ideasFile << "\t}\n";
 	}
-	ideasFile << "\t}\n";
 	ideasFile << "}";
 	ideasFile.close();
 }

@@ -26,6 +26,7 @@
 #include "src/OutHoi4/OutOnActions.h"
 #include "src/OutHoi4/PeaceConference/OutAiPeace.h"
 #include "src/OutHoi4/PeaceConference/OutCostModifiers.h"
+#include "src/OutHoi4/Scorers/OutScorers.h"
 #include "src/OutHoi4/ScriptedEffects/OutScriptedEffects.h"
 #include "src/OutHoi4/ScriptedLocalisations/OutScriptedLocalisations.h"
 #include "src/OutHoi4/ScriptedTriggers/OutScriptedTriggers.h"
@@ -237,6 +238,7 @@ void HoI4::OutputWorld(const World& world,
 	outputOperativeNames(world.getOperativeNames(), outputName);
 	outputOperations(world.getOperations(), outputName);
 	outputScriptedEffects(world.getScriptedEffects(), world.getMajorIdeologies(), outputName);
+	outputScorers(world.getScorers(), theConfiguration);
 	outCountryCategories(world.getCountryCategories(), outputName);
 	outputSounds(outputName, world.getSoundEffects());
 	outMonarchInterface(outputName, world.getCountries());

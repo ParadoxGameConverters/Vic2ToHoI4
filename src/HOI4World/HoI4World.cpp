@@ -95,9 +95,8 @@ void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
 HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
-	 theIdeas(std::make_unique<HoI4::Ideas>()),
-	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), events(make_unique<HoI4::Events>()),
-	 onActions(make_unique<HoI4::OnActions>())
+	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)),
+	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
 {
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
@@ -207,6 +206,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertMilitaries(*provinceDefinitions, provinceMapper, theConfiguration);
 
 	scriptedEffects = std::make_unique<ScriptedEffects>(theConfiguration.getHoI4Path());
+	scorers = Scorers::Factory().getScorers();
+	scorers->updateScorers(ideologies->getMajorIdeologies());
 	setupNavalTreaty();
 	Log(LogLevel::Progress) << "64%";
 
@@ -229,7 +230,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	events->createStabilityEvents(ideologies->getMajorIdeologies(), theConfiguration);
 	events->generateGenericEvents(theConfiguration, ideologies->getMajorIdeologies());
 	events->giveGovernmentInExileEvent(createGovernmentInExileEvent(ideologies->getMajorIdeologies()));
-	theIdeas->updateIdeas(ideologies->getMajorIdeologies());
+	theIdeas = std::make_unique<HoI4::Ideas>(ideologies->getMajorIdeologies());
 	Log(LogLevel::Progress) << "68%";
 	theDecisions->updateDecisions(ideologies->getMajorIdeologies(),
 		 states->getProvinceToStateIDMap(),
@@ -805,7 +806,7 @@ std::set<int> HoI4::World::getAreaStates(const std::set<int>& area,
 		const auto& region = theRegions->getRegion(province);
 		if (!region)
 		{
-			Log(LogLevel::Debug) << "State " << stateId << " is not defined in Configurables/regions.txt";
+			Log(LogLevel::Warning) << "Province " << province << " is not defined in Configurables/regions.txt";
 			continue;
 		}
 		auto state = states->getStates().find(stateId);

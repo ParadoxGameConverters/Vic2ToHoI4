@@ -251,5 +251,10 @@ on_actions = {
 		}
 	}
 
+	on_peace = {
+		effect = {
+			log = "PEACE - ROOT is [ROOT.GetName] and FROM is [FROM.GetName]"
+		}
+	}
 }
 
