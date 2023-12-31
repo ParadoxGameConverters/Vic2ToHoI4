@@ -1,4 +1,4 @@
-#include "src/HoI4World/Scorers/Scorer.h"
+#include "src/HOI4World/Scorers/Scorer.h"
 
 std::shared_ptr<HoI4::Scorer> HoI4::Scorer::makeCustomizedCopy(const std::string& ideology) const
 {
