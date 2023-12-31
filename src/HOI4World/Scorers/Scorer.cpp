@@ -2,7 +2,7 @@
 
 std::shared_ptr<HoI4::Scorer> HoI4::Scorer::makeCustomizedCopy(const std::string& ideology) const
 {
-	constexpr std::string ideologyToken = "$IDEOLOGY";
+	const std::string ideologyToken = "$IDEOLOGY";
 	const std::map<std::string, std::string> ideologyNameMap = {{"fascism", "fascist"},
 		 {"communism", "communist"},
 		 {"democratic", "democratic"},
