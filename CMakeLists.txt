@@ -506,7 +506,6 @@ configure_file("${DATA_FILE_DIR}/configurables/ideological_ai_peace.txt" "${CONV
 configure_file("${DATA_FILE_DIR}/configurables/ideological_cost_modifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideological_unit_medals.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_unit_medals.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalDecisions.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideologicalIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/IdeologyMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ImportCharacters.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ImportCharacters.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/IntelligenceAgencyLogos.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IntelligenceAgencyLogos.txt" COPYONLY)
@@ -530,6 +529,7 @@ configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/dominions.csv" 
 configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/unrecognized_nations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/unrecognized_nations.csv" COPYONLY)
 file(COPY "${DATA_FILE_DIR}/blank_mod/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/blankmod/")
 file(COPY "${DATA_FILE_DIR}/configurables/CustomizedFocusBranches/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CustomizedFocusBranches/")
+file(COPY "${DATA_FILE_DIR}/configurables/ideologicalIdeas/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas/")
 file(COPY "${DATA_FILE_DIR}/flags" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
 add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > build/Release-Linux/commit_id.txt)
 
