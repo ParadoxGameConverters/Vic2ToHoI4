@@ -29,6 +29,7 @@ for filename in glob.iglob(root_dir + '**/*.txt', recursive=True):
     filename == './data/configurables/province_mappings.txt' or \
     filename == './data/configurables/TGC - The Grand Combination_province_mappings.txt' or \
     filename == './data/configurables/The Concert of Europe_province_mappings.txt' or \
+    filename == "./data/configurables/Napoleon's Legacy EEM Edition_province_mappings.txt" or \
     filename == './data/test_files/Technology/BaseGameTech2.txt':
         file_encoding = 'cp1252'
 
