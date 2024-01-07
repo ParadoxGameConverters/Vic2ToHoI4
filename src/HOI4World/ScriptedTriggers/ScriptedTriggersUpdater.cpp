@@ -160,16 +160,56 @@ void updateElectionsScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
 }
 
 
+std::string getHasUnsupportedEconomicLaw();
 std::string getHasUnsupportedManpowerLawBody(const std::set<std::string>& majorIdeologies);
 std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeologies);
 void updateLawsWarSupportTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
 	 const std::set<std::string>& majorIdeologies)
 {
 	std::map<std::string_view, std::string> replacements;
+	replacements.insert(std::make_pair("has_unsupported_economic_law", getHasUnsupportedEconomicLaw()));
 	replacements.insert(
 		 std::make_pair("has_unsupported_manpower_law", getHasUnsupportedManpowerLawBody(majorIdeologies)));
 	replacements.insert(std::make_pair("has_excessive_army_size", getHasExcessiveArmySizeBody(majorIdeologies)));
 	scriptedTriggers.replaceLawsWarSupportTriggers(replacements);
+}
+
+std::string getHasUnsupportedEconomicLaw()
+{
+	std::string unsupportedEconomicLawBody = "= {\n";
+	unsupportedEconomicLawBody += "\tif = {\n";
+	unsupportedEconomicLawBody += "\t\tlimit = {\n";
+	unsupportedEconomicLawBody += "\t\t\thas_idea = low_economic_mobilisation\n";
+	unsupportedEconomicLawBody += "\t\t}\n";
+	unsupportedEconomicLawBody += "\t\thas_idea = low_economic_mobilisation\n";
+	unsupportedEconomicLawBody += "\t\thas_war_support < 0.15\n";
+	unsupportedEconomicLawBody += "\t}\n";
+	unsupportedEconomicLawBody += "\telse_if = {\n";
+	unsupportedEconomicLawBody += "\t\tlimit = {\n";
+	unsupportedEconomicLawBody += "\t\t\thas_idea = partial_economic_mobilisation\n";
+	unsupportedEconomicLawBody += "\t\t}\n";
+	unsupportedEconomicLawBody += "\t\thas_idea = partial_economic_mobilisation\n";
+	unsupportedEconomicLawBody += "\t\thas_war_support < 0.25\n";
+	unsupportedEconomicLawBody += "\t}\n";
+	unsupportedEconomicLawBody += "\telse_if = {\n";
+	unsupportedEconomicLawBody += "\t\tlimit = {\n";
+	unsupportedEconomicLawBody += "\t\t\thas_idea = war_economy\n";
+	unsupportedEconomicLawBody += "\t\t}\n";
+	unsupportedEconomicLawBody += "\t\thas_idea = war_economy\n";
+	unsupportedEconomicLawBody += "\t\thas_war_support < 0.5\n";
+	unsupportedEconomicLawBody += "\t}\n";
+	unsupportedEconomicLawBody += "\telse_if = {\n";
+	unsupportedEconomicLawBody += "\t\tlimit = {\n";
+	unsupportedEconomicLawBody += "\t\t\thas_idea = tot_economic_mobilisation\n";
+	unsupportedEconomicLawBody += "\t\t}\n";
+	unsupportedEconomicLawBody += "\t\thas_idea = tot_economic_mobilisation\n";
+	unsupportedEconomicLawBody += "\t\thas_war_support < 0.8\n";
+	unsupportedEconomicLawBody += "\t}\n";
+	unsupportedEconomicLawBody += "\telse = {\n";
+	unsupportedEconomicLawBody += "\t\talways = no\n";
+	unsupportedEconomicLawBody += "\t}\n";
+	unsupportedEconomicLawBody += "}\n";
+	return unsupportedEconomicLawBody;
 }
 
 
