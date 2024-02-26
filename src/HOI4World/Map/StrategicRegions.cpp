@@ -10,7 +10,7 @@
 namespace
 {
 
-[[no_discard]] std::map<int, int> DetermineUsedRegions(const HoI4::State& state,
+[[nodiscard]] std::map<int, int> DetermineUsedRegions(const HoI4::State& state,
 	 const std::map<int, int>& province_to_strategic_region_map)
 {
 	std::map<int, int> used_regions; // region ID -> number of provinces in that region
@@ -30,11 +30,18 @@ namespace
 		}
 	}
 
+	// hack to make Novgorod a last-choice region to work around this hoi4 bug:
+	// https://forum.paradoxplaza.com/forum/threads/crash-due-to-some-strategic-regions.1619874/
+	if (used_regions.contains(132))
+	{
+		used_regions[132] = 1;
+	}
+
 	return used_regions;
 }
 
 
-[[no_discard]] std::optional<int> DetermineMostUsedRegion(const std::map<int, int>& used_regions)
+[[nodiscard]] std::optional<int> DetermineMostUsedRegion(const std::map<int, int>& used_regions)
 {
 	if (!used_regions.empty())
 	{
@@ -60,7 +67,7 @@ void AddProvinceToRegion(int region_number, int province_id, std::map<int, HoI4:
 }
 
 
-[[no_discard]] std::set<int> DetermineAssignedProvinces(const std::map<int, HoI4::StrategicRegion>& strategic_regions)
+[[nodiscard]] std::set<int> DetermineAssignedProvinces(const std::map<int, HoI4::StrategicRegion>& strategic_regions)
 {
 	std::set<int> assigned_provinces;
 	for (const HoI4::StrategicRegion& strategic_region: strategic_regions | std::ranges::views::values)
