@@ -1,7 +1,7 @@
 # Version info
 
-version = "1.0R"
-name = "Rommel"
+version = "1.0S"
+name = "Spruance"
 source = "Vic2"
 minSource = "3"
 maxSource = "3"
