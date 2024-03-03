@@ -17,13 +17,13 @@ def GetScalingFactor(width):
 
 def GetDefinition(filename):
     definition = "\tspriteType = {\n"
-    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","") + "\n"
-    definition += "\t\ttexturefile = \"" + filename + "\"\n"
+    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","").replace(" ", "_") + "\n"
+    definition += "\t\ttexturefile = \"" + filename.replace("data/blank_mod/", "").replace("\\","/") + "\"\n"
     definition += "\t}\n"
     definition += "\n"
     definition += "\tspriteType = {\n"
-    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","") + "_small\n"
-    definition += "\t\ttexturefile = \"" + DetermineSmallFilename(filename) + "\"\n"
+    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","").replace(" ", "_") + "_small\n"
+    definition += "\t\ttexturefile = \"" + DetermineSmallFilename(filename).replace("data/blank_mod/", "").replace("\\","/") + "\"\n"
     definition += "\t}\n"
     definition += "\n"
     return definition
