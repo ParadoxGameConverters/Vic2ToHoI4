@@ -18,8 +18,17 @@ Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& pat
 
 	while (true)
 	{
+		if (definitions.eof())
+		{
+			break;
+		}
+
 		std::string line;
 		getline(definitions, line);
+		if (line.empty())
+		{
+			continue;
+		}
 
 		// number
 		auto pos = line.find_first_of(';');
