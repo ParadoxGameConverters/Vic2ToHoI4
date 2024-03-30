@@ -1,10 +1,10 @@
 # Version info
 
-version = "1.0S"
-name = "Spruance"
+version = "1.2T"
+name = "TBD"
 source = "Vic2"
 minSource = "3"
 maxSource = "3"
 target = "HoI4"
-minTarget = "1.13"
-maxTarget = "1.13"
+minTarget = "1.14"
+maxTarget = "1.14"
