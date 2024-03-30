@@ -53,16 +53,16 @@ jobs:
         c:\"Program Files (x86)\Inno Setup 6\iscc" Vic2ToHoI4-Installer.iss
         cp $Env:GITHUB_WORKSPACE\Output\Vic2ToHoI4-latest-win-x64.exe $Env:GITHUB_WORKSPACE\Output\Vic2ToHoI4-1.1Spruance-win-x64.exe
 
-    - name: "Upload binaries to release"
-      if: ${{ github.event_name == 'push' }}
-      uses: ncipollo/release-action@v1
-      with:
-        tag: ${{ steps.previoustag.outputs.tag }}
-        allowUpdates: true
-        omitBodyDuringUpdate: true
-        omitNameDuringUpdate: true
-        artifacts: Vic2ToHoI4-1.1Spruance-win-x64.zip, Output\Vic2ToHoI4-1.1Spruance-win-x64.exe
-        token: ${{ secrets.API_TOKEN_GITHUB }}
+    # - name: "Upload binaries to release"
+      # if: ${{ github.event_name == 'push' }}
+      # uses: ncipollo/release-action@v1
+      # with:
+        # tag: ${{ steps.previoustag.outputs.tag }}
+        # allowUpdates: true
+        # omitBodyDuringUpdate: true
+        # omitNameDuringUpdate: true
+        # artifacts: Vic2ToHoI4-1.1Spruance-win-x64.zip, Output\Vic2ToHoI4-1.1Spruance-win-x64.exe
+        # token: ${{ secrets.API_TOKEN_GITHUB }}
 
     - name: "Prepare pull request artifact"
       if: ${{ github.event_name == 'pull_request' }}

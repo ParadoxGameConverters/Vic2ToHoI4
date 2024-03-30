@@ -12,7 +12,7 @@ Development version download: https://github.com/ParadoxGameConverters/Vic2ToHoI
 ----
 REQUIREMENTS
 ----
-HoI4 - 1.13
+HoI4 - 1.14
 V2 - HoD required
 
 
