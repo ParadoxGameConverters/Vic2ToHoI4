@@ -21,7 +21,7 @@ std::map<int, HoI4::Province> HoI4::importProvinces(const Configuration& theConf
 		getline(provinceDefinitions, line);
 		if (line.length() == 0)
 		{
-			break;
+			continue;
 		}
 
 		auto IDSeparator = line.find_first_of(';');
