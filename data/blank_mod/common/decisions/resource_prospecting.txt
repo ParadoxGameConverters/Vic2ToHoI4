@@ -7236,5 +7236,143 @@ prospect_for_resources = {
 			}
 		}
 	}
+
+	# Drill for oil in Chaco Boreal
+	drill_for_oil_in_chaco_boreal = { #688
+
+		icon = oil
+
+		allowed = {
+
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 688
+			}
+		}
+		available = {
+			has_tech = excavation3
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 688
+			controls_state = 688
+		}
+
+		visible = {
+			owns_state = 688
+			controls_state = 688
+			688 = {
+				NOT = {
+					has_state_flag = drill_for_oil_in_chaco_boreal_done_1
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {  # Too low PP
+				factor = 0.5
+				has_political_power < 75
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				has_resources_in_country = {
+					resource = oil
+					amount < 1
+				}
+			}
+		}
+
+		remove_effect = {
+			688 = { set_state_flag = drill_for_oil_in_chaco_boreal_done_1 }
+			688 = {
+				add_resource = {
+					type = oil
+					amount = 12
+				}
+			}
+		}
+	}
+
+	# Drill for oil in Chaco Boreal
+	drill_for_oil_in_chaco_boreal_2 = { #688
+
+		icon = oil
+
+		allowed = {
+
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 688
+			}
+		}
+		available = {
+			has_tech = excavation4
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 688
+			controls_state = 688
+		}
+
+		visible = {
+			owns_state = 688
+			controls_state = 688
+			688 = {
+				has_state_flag = drill_for_oil_in_chaco_boreal_done_1
+				NOT = {
+					has_state_flag = drill_for_oil_in_chaco_boreal_done_2
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 120
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {  # Too low PP
+				factor = 0.5
+				has_political_power < 80 
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				has_resources_in_country = {
+					resource = oil
+					amount < 1
+				}
+			}
+		}
+		remove_effect = {
+			688 = { set_state_flag = drill_for_oil_in_chaco_boreal_done_2 }
+			688 = {
+				add_resource = {
+					type = oil
+					amount = 16
+				}
+			}
+		}
+	}
 	
 }
