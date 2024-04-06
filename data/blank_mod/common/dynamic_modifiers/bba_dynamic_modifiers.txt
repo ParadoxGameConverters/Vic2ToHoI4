@@ -1260,7 +1260,7 @@ ITA_novus_ordo_modifier = {
 	enable = { always = yes  }
 	icon = GFX_modifiers_generic_military_industry
 	local_non_core_manpower = 0.25
-	local_resources_factor = 0.15
+	state_resources_factor = 0.15
 	compliance_growth = 0.1
 	resistance_decay = 0.05
 	state_production_speed_arms_factory_factor = 0.2
@@ -1270,7 +1270,7 @@ ITA_novus_ordo_modifier = {
 ITA_expanded_corporatism_modifier = {
 	enable = { always = yes  }
 	icon = GFX_modifiers_generic_fascist_corporatism
-	local_resources_factor = 0.1
+	state_resources_factor = 0.1
 	local_factories = 0.2
 	local_supplies = 0.1
 	compliance_growth = 0.05
@@ -1431,7 +1431,7 @@ SWI_alpine_redoubt_dynamic_modifier = {
 	army_defence_factor = 0.2
 	enemy_army_bonus_air_superiority_factor = -0.15
 	cas_damage_reduction = 0.1
-	production_speed_bunker_factor = 0.35
+	state_production_speed_bunker_factor = 0.35
 	production_speed_anti_air_building_factor = 0.2
 }
 
@@ -1439,5 +1439,5 @@ SWI_infrastructure_rigged_to_blow = {
 	enable = { always = yes }
 	icon = GFX_modifiers_SOV_civilian_labor_in_defense
 
-	production_speed_buildings_factor = -0.15
+	state_production_speed_buildings_factor = -0.15
 }
