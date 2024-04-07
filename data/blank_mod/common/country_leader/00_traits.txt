@@ -3381,8 +3381,6 @@ leader_traits = {
 		research_speed_factor = -0.05
 	}
 
-	}
-
 	################################
 	## SOVIET UNION LEADER TRAITS ##
 	################################
