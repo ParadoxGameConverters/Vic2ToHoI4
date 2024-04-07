@@ -1,0 +1,847 @@
+# Allows you to create your own dynamic keys
+# to be called in localization.
+# defined_text -> this is it, we're defining the text
+# text -> a discrete entry that can be picked to display in loc.
+# trigger -> determines if a text entry will be picked or not.
+# (The triggers need to be valid for the scope the key is called in
+# (eg Root or From.From).)
+# localization_key -> points to the localization key
+# that'll be used if trigger passes
+
+
+##### Example #####
+# The Army
+defined_text = {
+	name = SMB_army_key
+	text = {
+		localization_key = SMB_army_default
+	}
+}
+# The Army desc
+defined_text = {
+	name = SMB_army_desc_key
+	text = {
+		localization_key = SMB_army_default_desc
+	}
+}
+# Military Facilities
+defined_text = { 
+	name = SMB_military_facilities_key
+	text = {
+		localization_key = SMB_military_facilities_default
+	}
+}
+# Military Facilities desc
+defined_text = { 
+	name = SMB_military_facilities_desc_key
+	text = {
+		localization_key = SMB_military_facilities_default_desc
+	}
+}
+# Department of Propaganda 
+defined_text = { 
+	name = SMB_department_of_propaganda_key
+	text = {
+		localization_key = SMB_department_of_propaganda_default
+	}
+}
+# Department of Propaganda desc
+defined_text = { 
+	name = SMB_department_of_propaganda_desc_key
+	text = {
+		localization_key = SMB_department_of_propaganda_default_desc
+	}
+}
+# Logistics Department
+defined_text = { 
+	name = SMB_logistics_department_key
+	text = {
+		localization_key = SMB_logistics_department_default
+	}
+}
+# Logistics Department desc
+defined_text = { 
+	name = SMB_logistics_department_desc_key
+	text = {
+		localization_key = SMB_logistics_department_default_desc
+	}
+}
+# Support Company
+defined_text = { 
+	name = SMB_support_company_key
+	text = {
+		localization_key = SMB_support_company_default
+	}
+}
+# Support Company desc
+defined_text = { 
+	name = SMB_support_company_desc_key
+	text = {
+		localization_key = SMB_support_company_default_desc
+	}
+}
+# Department of Military Intelligence
+defined_text = { 
+	name = SMB_department_of_military_intelligence_key
+	text = {
+		localization_key = SMB_department_of_military_intelligence_default
+	}
+}
+# Department of Military Intelligence desc
+defined_text = { 
+	name = SMB_department_of_military_intelligence_desc_key
+	text = {
+		localization_key = SMB_department_of_military_intelligence_default_desc
+	}
+}
+# Motorized Equipment
+defined_text = { 
+	name = SMB_motorized_key
+	text = {
+		localization_key = SMB_motorized_default
+	}
+}
+# Motorized Equipment desc
+defined_text = { 
+	name = SMB_motorized_desc_key
+	text = {
+		localization_key = SMB_motorized_default_desc
+	}
+}
+# Tank Warfare
+defined_text = { 
+	name = SMB_tank_warfare_key
+	text = {
+		localization_key = SMB_tank_warfare_default
+	}
+}
+# Tank Warfare desc
+defined_text = { 
+	name = SMB_tank_warfare_desc_key
+	text = {
+		localization_key = SMB_tank_warfare_default_desc
+	}
+}
+# Domestic Production Army
+defined_text = { 
+	name = SMB_domestic_production_key
+	text = {
+		localization_key = SMB_domestic_production_default
+	}
+}
+# Domestic Production Army desc
+defined_text = { 
+	name = SMB_domestic_production_desc_key
+	text = {
+		localization_key = SMB_domestic_production_default_desc
+	}
+}
+# Mechanized Troops
+defined_text = { 
+	name = SMB_mechanized_troops_key
+	text = {
+		localization_key = SMB_mechanized_troops_default
+	}
+}
+# Mechanized Troops desc
+defined_text = { 
+	name = SMB_mechanized_troops_desc_key
+	text = {
+		localization_key = SMB_mechanized_troops_default_desc
+	}
+}
+# Army Academy
+defined_text = { 
+	name = SMB_army_academy_key
+	text = {
+		localization_key = SMB_army_academy_default
+	}
+}
+# Army Academy desc
+defined_text = { 
+	name = SMB_army_academy_desc_key
+	text = {
+		localization_key = SMB_army_academy_default_desc
+	}
+}
+# Regular Infantry
+defined_text = { 
+	name = SMB_regular_infantry_key
+	text = {
+		localization_key = SMB_regular_infantry_default
+	}
+}
+# Regular Infantry desc
+defined_text = { 
+	name = SMB_regular_infantry_desc_key
+	text = {
+		localization_key = SMB_regular_infantry_default_desc
+	}
+}
+# Artillery Equipment
+defined_text = { 
+	name = SMB_artillery_key
+	text = {
+		localization_key = SMB_artillery_default
+	}
+}
+# Artillery Equipment desc
+defined_text = { 
+	name = SMB_artillery_desc_key
+	text = {
+		localization_key = SMB_artillery_default_desc
+	}
+}
+# Foreign Designs Army
+defined_text = { 
+	name = SMB_foreign_designs_key
+	text = {
+		localization_key = SMB_foreign_designs_default
+	}
+}
+# Foreign Designs Army desc
+defined_text = { 
+	name = SMB_foreign_designs_desc_key
+	text = {
+		localization_key = SMB_foreign_designs_default_desc
+	}
+}
+# Foreign Advisors 
+defined_text = { 
+	name = SMB_foreign_advisors_key
+	text = {
+		localization_key = SMB_foreign_advisors_default
+	}
+}
+# Foreign Advisors desc
+defined_text = { 
+	name = SMB_foreign_advisors_desc_key
+	text = {
+		localization_key = SMB_foreign_advisors_default_desc
+	}
+}
+# Army Professionalism
+defined_text = { 
+	name = SMB_army_professionalism_key
+	text = {
+		localization_key = SMB_army_professionalism_default
+	}
+}
+# Army Professionalism desc
+defined_text = { 
+	name = SMB_army_professionalism_desc_key
+	text = {
+		localization_key = SMB_army_professionalism_default_desc
+	}
+}
+# Conscription
+defined_text = { 
+	name = SMB_conscription_key
+	text = {
+		localization_key = SMB_conscription_default
+	}
+}
+# Conscription desc
+defined_text = { 
+	name = SMB_conscription_desc_key
+	text = {
+		localization_key = SMB_conscription_default_desc
+	}
+}
+# Experimental Weapons Department
+defined_text = { 
+	name = SMB_experimental_weapons_department_key
+	text = {
+		localization_key = SMB_experimental_weapons_department_default
+	}
+}
+# Experimental Weapons Department desc
+defined_text = { 
+	name = SMB_experimental_weapons_department_desc_key
+	text = {
+		localization_key = SMB_experimental_weapons_department_default_desc
+	}
+}
+# Nuclear Program
+defined_text = { 
+	name = SMB_nuclear_program_key
+	text = {
+		localization_key = SMB_nuclear_program_default
+	}
+}
+# Nuclear Program desc
+defined_text = { 
+	name = SMB_nuclear_program_desc_key
+	text = {
+		localization_key = SMB_nuclear_program_default_desc
+	}
+}
+# Special Forces
+defined_text = { 
+	name = SMB_special_forces_key
+	text = {
+		localization_key = SMB_special_forces_default
+	}
+}
+# Special Forces desc
+defined_text = { 
+	name = SMB_special_forces_desc_key
+	text = {
+		localization_key = SMB_special_forces_default_desc
+	}
+}
+# Mountaineers
+defined_text = { 
+	name = SMB_special_forces_option_1_key
+	text = {
+		localization_key = SMB_special_forces_option_1_default
+	}
+}
+# Mountaineers desc
+defined_text = { 
+	name = SMB_special_forces_option_1_desc_key
+	text = {
+		localization_key = SMB_special_forces_option_1_default_desc
+	}
+}
+# Marines
+defined_text = { 
+	name = SMB_special_forces_option_2_key
+	text = {
+		localization_key = SMB_special_forces_option_2_default
+	}
+}
+# Marines desc
+defined_text = { 
+	name = SMB_special_forces_option_2_desc_key
+	text = {
+		localization_key = SMB_special_forces_option_2_default_desc
+	}
+}
+# Paratroopers
+defined_text = { 
+	name = SMB_special_forces_option_3_key
+	text = {
+		localization_key = SMB_special_forces_option_3_default
+	}
+}
+# Paratroopers desc
+defined_text = { 
+	name = SMB_special_forces_option_3_desc_key
+	text = {
+		localization_key = SMB_special_forces_option_3_default_desc
+	}
+}
+# Mountaineers 2
+defined_text = { 
+	name = SMB_special_forces_option_1_continuation_key
+	text = {
+		localization_key = SMB_special_forces_option_1_continuation_default
+	}
+}
+# Mountaineers 2 desc
+defined_text = { 
+	name = SMB_special_forces_option_1_continuation_desc_key
+	text = {
+		localization_key = SMB_special_forces_option_1_continuation_default_desc
+	}
+}
+# Marines 2
+defined_text = { 
+	name = SMB_special_forces_option_2_continuation_key
+	text = {
+		localization_key = SMB_special_forces_option_2_continuation_default
+	}
+}
+# Marines 2 desc
+defined_text = { 
+	name = SMB_special_forces_option_2_continuation_desc_key
+	text = {
+		localization_key = SMB_special_forces_option_2_continuation_default_desc
+	}
+}
+# Paratroopers 2
+defined_text = { 
+	name = SMB_special_forces_option_3_continuation_key
+	text = {
+		localization_key = SMB_special_forces_option_3_continuation_default
+	}
+}
+# Paratroopers 2 desc
+defined_text = { 
+	name = SMB_special_forces_option_3_continuation_desc_key
+	text = {
+		localization_key = SMB_special_forces_option_3_continuation_default_desc
+	}
+}
+# Air Defenses
+defined_text = { 
+	name = SMB_air_defense_key
+	text = {
+		localization_key = SMB_air_defense_default
+	}
+}
+# Air Defenses desc
+defined_text = { 
+	name = SMB_air_defense_desc_key
+	text = {
+		localization_key = SMB_air_defense_default_desc
+	}
+}
+# The Airforce
+defined_text = { 
+	name = SMB_air_force_key
+	text = {
+		localization_key = SMB_air_force_default
+	}
+}
+# The Airforce desc
+defined_text = { 
+	name = SMB_air_force_desc_key
+	text = {
+		localization_key = SMB_air_force_default_desc
+	}
+}
+# Air Academy
+defined_text = { 
+	name = SMB_air_academy_key
+	text = {
+		localization_key = SMB_air_academy_default
+	}
+}
+# Air Academy desc
+defined_text = { 
+	name = SMB_air_academy_desc_key
+	text = {
+		localization_key = SMB_air_academy_default_desc
+	}
+}
+# Air Bases
+defined_text = { 
+	name = SMB_construct_air_bases_key
+	text = {
+		localization_key = SMB_construct_air_bases_default
+	}
+}
+# Air Bases desc
+defined_text = { 
+	name = SMB_construct_air_bases_desc_key
+	text = {
+		localization_key = SMB_construct_air_bases_default_desc
+	}
+}
+# Domestic Designs air
+defined_text = { 
+	name = SMB_domestic_designs_key
+	text = {
+		localization_key = SMB_domestic_designs_default
+	}
+}
+# Domestic Designs air desc
+defined_text = { 
+	name = SMB_domestic_designs_desc_key
+	text = {
+		localization_key = SMB_domestic_designs_default_desc
+	}
+}
+# License Design air
+defined_text = { 
+	name = SMB_license_designs_key
+	text = {
+		localization_key = SMB_license_designs_default
+	}
+}
+# License Design air desc
+defined_text = { 
+	name = SMB_license_designs_desc_key
+	text = {
+		localization_key = SMB_license_designs_default_desc
+	}
+}
+# Purchase Aircraft
+defined_text = { 
+	name = SMB_purchase_aircraft_key
+	text = {
+		localization_key = SMB_purchase_aircraft_default
+	}
+}
+# Purchase Aircraft desc
+defined_text = { 
+	name = SMB_purchase_aircraft_desc_key
+	text = {
+		localization_key = SMB_purchase_aircraft_default_desc
+	}
+}
+# Aircraft Industry
+defined_text = { 
+	name = SMB_establish_aircraft_industry_key
+	text = {
+		localization_key = SMB_establish_aircraft_industry_default
+	}
+}
+# Aircraft Industry desc
+defined_text = { 
+	name = SMB_establish_aircraft_industry_desc_key
+	text = {
+		localization_key = SMB_establish_aircraft_industry_default_desc
+	}
+}
+# Flying Fortesses
+defined_text = { 
+	name = SMB_flying_fortress_key
+	text = {
+		localization_key = SMB_flying_fortress_default
+	}
+}
+# Flying Fortesses desc
+defined_text = { 
+	name = SMB_flying_fortress_desc_key
+	text = {
+		localization_key = SMB_flying_fortress_default_desc
+	}
+}
+# A Tactical Airforce
+defined_text = { 
+	name = SMB_tactical_air_force_key
+	text = {
+		localization_key = SMB_tactical_air_force_default
+	}
+}
+# A Tactical Airforce desc
+defined_text = { 
+	name = SMB_tactical_air_force_desc_key
+	text = {
+		localization_key = SMB_tactical_air_force_default_desc
+	}
+}
+# A Nimble Airforce
+defined_text = { 
+	name = SMB_nimble_air_force_key
+	text = {
+		localization_key = SMB_nimble_air_force_default
+	}
+}
+# A Nimble Airforce desc
+defined_text = { 
+	name = SMB_nimble_air_force_desc_key
+	text = {
+		localization_key = SMB_nimble_air_force_default_desc
+	}
+}
+# Strategic Bombing
+defined_text = { 
+	name = SMB_strategic_bombing_key
+	text = {
+		localization_key = SMB_strategic_bombing_default
+	}
+}
+# Strategic Bombing desc
+defined_text = { 
+	name = SMB_strategic_bombing_desc_key
+	text = {
+		localization_key = SMB_strategic_bombing_default_desc
+	}
+}
+# Army Support
+defined_text = { 
+	name = SMB_army_support_key
+	text = {
+		localization_key = SMB_army_support_default
+	}
+}
+# Army Support desc
+defined_text = { 
+	name = SMB_army_support_desc_key
+	text = {
+		localization_key = SMB_army_support_default_desc
+	}
+}
+# Winning the Airwar
+defined_text = { 
+	name = SMB_winning_the_air_war_key
+	text = {
+		localization_key = SMB_winning_the_air_war_default
+	}
+}
+# Winning the Airwar desc
+defined_text = { 
+	name = SMB_winning_the_air_war_desc_key
+	text = {
+		localization_key = SMB_winning_the_air_war_default_desc
+	}
+}
+# Naval Support
+defined_text = { 
+	name = SMB_naval_support_key
+	text = {
+		localization_key = SMB_naval_support_default
+	}
+}
+# Naval Support desc
+defined_text = { 
+	name = SMB_naval_support_desc_key
+	text = {
+		localization_key = SMB_naval_support_default_desc
+	}
+}
+# Ground Support Specialization
+defined_text = { 
+	name = SMB_air_modifier_boost_1_key
+	text = {
+		localization_key = SMB_air_modifier_boost_1_default
+	}
+}
+# Ground Support Specialization desc
+defined_text = { 
+	name = SMB_air_modifier_boost_1_desc_key
+	text = {
+		localization_key = SMB_air_modifier_boost_1_default_desc
+	}
+}
+# Improved Airframes
+defined_text = { 
+	name = SMB_air_modifier_boost_2_key
+	text = {
+		localization_key = SMB_air_modifier_boost_2_default
+	}
+}
+# Improved Airframes desc
+defined_text = { 
+	name = SMB_air_modifier_boost_2_desc_key
+	text = {
+		localization_key = SMB_air_modifier_boost_2_default_desc
+	}
+}
+# Doctrinal Research air
+defined_text = { 
+	name = SMB_air_doctrine_key
+	text = {
+		localization_key = SMB_air_doctrine_default
+	}
+}
+# Doctrinal Research air desc
+defined_text = { 
+	name = SMB_air_doctrine_desc_key
+	text = {
+		localization_key = SMB_air_doctrine_default_desc
+	}
+}
+
+defined_text = { 
+	name = SMB_aircraft_carriers_key
+	text = {
+		localization_key = SMB_aircraft_carriers_default
+	}
+}
+# Joint Operative Command
+defined_text = { 
+	name = SMB_joint_operative_command_key
+	text = {
+		localization_key = SMB_joint_operative_command_default
+	}
+}
+# Joint Operative Command desc
+defined_text = { 
+	name = SMB_joint_operative_command_desc_key
+	text = {
+		localization_key = SMB_joint_operative_command_default_desc
+	}
+}
+# War Planning Office
+defined_text = { 
+	name = SMB_war_planning_office_key
+	text = {
+		localization_key = SMB_war_planning_office_default
+	}
+}
+# War Planning Office desc
+defined_text = { 
+	name = SMB_war_planning_office_desc_key
+	text = {
+		localization_key = SMB_war_planning_office_default_desc
+	}
+}
+# Women in Aviation
+defined_text = { 
+	name = SMB_women_in_aviation_key
+	text = {
+		localization_key = SMB_women_in_aviation_default
+	}
+}
+# Women in Aviation desc
+defined_text = { 
+	name = SMB_women_in_aviation_desc_key
+	text = {
+		localization_key = SMB_women_in_aviation_default_desc
+	}
+}
+
+defined_text = { 
+	name = SMB_navy_key
+	text = {
+		localization_key = SMB_navy_default
+	}
+}
+
+# The Army desc
+defined_text = {
+	name = SMB_navy_desc_key
+	text = {
+		localization_key = SMB_navy_desc_default
+	}
+}
+
+# Military Facilities
+defined_text = { 
+	name = SMB_military_facilities_key
+	text = {
+		localization_key = SMB_military_facilities_default
+	}
+}
+
+defined_text = { 
+	name = SMB_naval_academy_key
+	text = {
+		localization_key = SMB_naval_academy_default
+	}
+}
+# Naval Academy desc
+defined_text = {
+	name = SMB_naval_academy_desc_key
+	text = {
+		localization_key = SMB_naval_academy_default_desc
+	}
+}
+
+defined_text = { 
+	name = SMB_construct_naval_bases_key
+	text = {
+		localization_key = SMB_construct_naval_bases_default
+	}
+}
+
+defined_text = { 
+	name = SMB_naval_foreign_advisors_key
+	text = {
+		localization_key = SMB_naval_foreign_advisors_default
+	}
+}
+
+defined_text = { 
+	name = SMB_purchase_destroyers_and_subs_key
+	text = {
+		localization_key = SMB_purchase_destroyers_and_subs_default
+	}
+}
+
+defined_text = { 
+	name = SMB_reescalate_the_naval_arms_race_key
+	text = {
+		localization_key = SMB_reescalate_the_naval_arms_race_default
+	}
+}
+
+defined_text = { 
+	name = SMB_blue_water_fleet_key
+	text = {
+		localization_key = SMB_blue_water_fleet_default
+	}
+}
+
+defined_text = { 
+	name = SMB_coastal_fleet_key
+	text = {
+		localization_key = SMB_coastal_fleet_default
+	}
+}
+
+defined_text = { 
+	name = SMB_purchase_cruisers_and_dreadnoughts_key
+	text = {
+		localization_key = SMB_purchase_cruisers_and_dreadnoughts_default
+	}
+}
+
+defined_text = { 
+	name = SMB_minelaying_key
+	text = {
+		localization_key = SMB_minelaying_default
+	}
+}
+
+defined_text = { 
+	name = SMB_escort_fleet_key
+	text = {
+		localization_key = SMB_escort_fleet_default
+	}
+}
+
+defined_text = { 
+	name = SMB_raiding_fleet_key
+	text = {
+		localization_key = SMB_raiding_fleet_default
+	}
+}
+
+defined_text = { 
+	name = SMB_degaussing_key
+	text = {
+		localization_key = SMB_degaussing_default
+	}
+}
+
+defined_text = { 
+	name = SMB_naval_invasion_key
+	text = {
+		localization_key = SMB_naval_invasion_default
+	}
+}
+
+defined_text = { 
+	name = SMB_cruiser_subs_key
+	text = {
+		localization_key = SMB_cruiser_subs_default
+	}
+}
+
+defined_text = { 
+	name = SMB_midget_subs_key
+	text = {
+		localization_key = SMB_midget_subs_default
+	}
+}
+
+defined_text = { 
+	name = SMB_expand_repair_yards_key
+	text = {
+		localization_key = SMB_expand_repair_yards_default
+	}
+}
+
+defined_text = { 
+	name = SMB_enlarge_naval_facilities_key
+	text = {
+		localization_key = SMB_enlarge_naval_facilities_default
+	}
+}
+
+defined_text = { 
+	name = SMB_merchant_marine_key
+	text = {
+		localization_key = SMB_merchant_marine_default
+	}
+}
+
+defined_text = { 
+	name = SMB_fortification_effort_key
+	text = {
+		localization_key = SMB_fortification_effort_default
+	}
+}
+
+defined_text = {
+	name = SMB_armed_forces_decision
+	text = {
+		localization_key = improving_our_army_spanish
+	}
+}
