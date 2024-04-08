@@ -614,4 +614,22 @@ debug_decisions = {
 		}
 	}
 
+	debug_clr_dreadnought_flags = {
+		cost = 0
+		icon = GFX_decision_generic_naval
+		fire_only_once = no
+		visible = {
+			has_country_flag = generic_purchase_dreadnoughts_flag
+		}
+		available = {
+		}
+		days_remove = 1
+		remove_effect = {
+			every_other_country = {
+				clr_country_flag = negotiating_dreadnought_purchase_flag@ROOT  
+				clr_country_flag = sold_dreadnoughts_to_us@ROOT
+			}
+		}
+	}
+	
 }

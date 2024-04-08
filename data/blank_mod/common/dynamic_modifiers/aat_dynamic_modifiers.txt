@@ -148,7 +148,7 @@ SWE_blown_up_mines = {
 SWE_hygenic_housing_resource_bonus = {
 	enable = { always = yes }
 	icon = GFX_modifiers_SWE_hygienic_housing
-	local_resources_factor = 0.12
+	state_resources_factor = 0.12
 
 }
 
