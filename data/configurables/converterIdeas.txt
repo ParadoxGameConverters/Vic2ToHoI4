@@ -69,9 +69,18 @@
 			ai_will_do = {
    				factor = 1
 				modifier = {
+					# Ignore if high on manpower
+					factor = 0.5
+					manpower_per_military_factory > 5000
+				}
+				modifier = {
 					#Prio if low on manpower
 					factor = 20
-					manpower_per_military_factory <  1000
+					manpower_per_military_factory < 2000
+				}
+				modifier = {
+					factor = 0
+					NOT = { has_idea = volunteer_only }
 				}
 			}
 
@@ -100,11 +109,24 @@
 
 			ai_will_do = {
    				factor = 1
+
+				modifier = {
+					# Ignore if high on manpower
+					factor = 0.5
+					manpower_per_military_factory > 3000
+				}
+
 				modifier = {
 					#Prio if low on manpower
 					factor = 20
 					manpower_per_military_factory <  800
 				}
+
+				modifier = {
+					factor = 0
+					NOT = { has_idea = limited_conscription }
+				}
+			
 			}
 
 			cost = 150
@@ -158,6 +180,15 @@
 					factor = 0.5
 					manpower_per_military_factory >  1000
 				}
+				modifier = {
+					#Block has plenty manpower
+					factor = 0
+					manpower_per_military_factory >  3000
+				}
+				modifier = {
+					factor = 0
+					NOT = { has_idea = extensive_conscription }
+				}
 			}
 
 			cost = 150
@@ -206,6 +237,15 @@
 					factor = 0.5
 					manpower_per_military_factory >  1000
 				}
+				modifier = {
+					#Block has plenty manpower
+					factor = 0
+					manpower_per_military_factory >  2800
+				}
+				modifier = {
+					factor = 0
+					NOT = { has_idea = service_by_requirement }
+				}
 			}
 
 			cost = 150
@@ -225,7 +265,6 @@
 		}
 
 		scraping_the_barrel = {
-
 
 			available = {
 				#has_manpower_for_recruit_change_to =  { value = 0.25 group = mobilization_laws }
@@ -260,6 +299,10 @@
 					factor = 0
 					manpower_per_military_factory >  5000
 				}
+				modifier = {
+					factor = 0
+					NOT = { has_idea = all_adults_serve }
+				}
 			}
 
 			cost = 150
@@ -290,7 +333,7 @@
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.50
+				consumer_goods_expected_value = 0.50
 				production_speed_industrial_complex_factor = -0.5
 				production_speed_arms_factory_factor = -0.5
 				production_speed_dockyard_factor = -0.5
@@ -318,15 +361,13 @@
 
 		isolation = {
 
-
-
 			allowed = {
 				always = no
 			}
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.4
+				consumer_goods_expected_value = 0.4
 				production_speed_industrial_complex_factor = -0.4
 				production_speed_arms_factory_factor = -0.4
 				production_speed_dockyard_factor = -0.4
@@ -334,6 +375,7 @@
 				conversion_cost_mil_to_civ_factor = 0.4
 				generate_wargoal_tension = 1.00
 				join_faction_tension = 0.20
+				lend_lease_tension = 0.10
 				send_volunteers_tension = 0.20
 				guarantee_tension = 0.5
 				max_fuel_factor = -0.35
@@ -357,7 +399,7 @@
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.35
+				consumer_goods_expected_value = 0.35
 				production_speed_industrial_complex_factor = -0.3
 				production_speed_arms_factory_factor = -0.3
 				conversion_cost_civ_to_mil_factor= 0.3
@@ -381,7 +423,7 @@
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.3
+				consumer_goods_expected_value = 0.3
 				production_speed_industrial_complex_factor = -0.1
 				production_speed_arms_factory_factor = -0.1
 				fuel_gain_factor = -0.25
@@ -414,7 +456,7 @@
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.25
+				consumer_goods_expected_value = 0.25
 				production_speed_arms_factory_factor = 0.1
 				conversion_cost_civ_to_mil_factor= -0.1
 				conversion_cost_mil_to_civ_factor = -0.1
@@ -457,7 +499,7 @@
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.2
+				consumer_goods_expected_value = 0.2
 				production_speed_arms_factory_factor = 0.2
 				conversion_cost_civ_to_mil_factor= -0.2
 				conversion_cost_mil_to_civ_factor = -0.2
@@ -475,13 +517,27 @@
 				}
 
 				modifier = {
+					# If we CAN go for total mobilization and have enough manpower for it, skip war economy, it's only a waste of PP
+					factor = 0
+
+					manpower_per_military_factory > 15000
+					has_war = yes
+					has_war_support > 0.8
+					any_enemy_country = {
+						ic_ratio = {
+							tag = ROOT
+							ratio > 0.5
+						}
+					}
+				}
+
+				modifier = {
 					add = 1800
 
 					# revert from closed_economy if we have large allies
 					has_idea = closed_economy
 					has_large_ally_not_pick_closed_economy = yes
 				}
-
    			}
 		}
 
@@ -512,7 +568,7 @@
 				modifier = {
 					#Block  unless nation has a lot of manpower
 					factor = 0
-					manpower_per_military_factory <  7000
+					manpower_per_military_factory <  10000
 				}
 
 
@@ -530,7 +586,7 @@
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.10
+				consumer_goods_expected_value = 0.10
 				conscription = -0.03
 				production_speed_arms_factory_factor = 0.3
 				conversion_cost_civ_to_mil_factor= -0.3
@@ -557,7 +613,7 @@
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.15
+				consumer_goods_expected_value = 0.15
 				production_speed_buildings_factor = -0.15
 
 			}
@@ -587,7 +643,7 @@
 			removal_cost = -1
 
 			modifier = {
-				consumer_goods_factor = 0.10
+				consumer_goods_expected_value = 0.10
 				production_speed_buildings_factor = -0.2
 				global_building_slots_factor = 0.1
 			}
@@ -617,6 +673,7 @@
 				research_speed_factor = 0.10
 				civilian_intel_to_others = 40.0
 				navy_intel_to_others = 20.0
+				cic_construction_boost_factor = 0.05
 			}
 
 			cancel_if_invalid = no
@@ -640,6 +697,7 @@
 				research_speed_factor = 0.05
 				civilian_intel_to_others = 20.0
 				navy_intel_to_others = 10.0
+				cic_construction_boost_factor = 0.1
 			}
 
 			default = yes
@@ -648,6 +706,14 @@
 
 			ai_will_do = {
    				factor = 1
+
+				modifier = {
+					factor = 0
+
+					is_major = no
+					has_war = no
+					is_in_faction = no
+				}
    			}
 		}
 
@@ -669,6 +735,8 @@
 				research_speed_factor = 0.01
 				civilian_intel_to_others = 10.0
 				navy_intel_to_others = 5
+				lend_lease_tension = 0.20
+				cic_construction_boost = -0.05
 			}
 
 			cancel_if_invalid = no
@@ -716,13 +784,19 @@
 				}
 			}
 
+			rule = {
+				can_access_market = no
+				desc = can_not_access_market_closed_economy
+			}
+
 			cost = 150
 			removal_cost = -1
-
 
 			modifier = {
 				min_export = 0
 				#civilian_intel_to_others = 0.0
+				lend_lease_tension = 0.40
+				cic_construction_boost = -0.1
 			}
 
 			on_add = {
@@ -1653,7 +1727,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = tank_manufacturer limit = 1 }
 				}
 			}
 
@@ -1678,7 +1752,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = naval_manufacturer limit = 1 }
 				}
 			}
 
@@ -1703,7 +1777,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
 				}
 			}
 
@@ -1723,7 +1797,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
 				}
 			}
 
@@ -1743,7 +1817,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
 				}
 			}
 
@@ -1763,7 +1837,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
 				}
 			}
 
@@ -1786,7 +1860,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = industrial_concern limit = 1 }
+					has_allowed_idea_with_traits = { idea = industrial_concern limit = 1 }
 				}
 			}
 
@@ -1806,7 +1880,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = electronics_concern limit = 1 }
+					has_allowed_idea_with_traits = { idea = electronics_concern limit = 1 }
 				}
 			}
 
@@ -1831,7 +1905,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
 				}
 			}
 
@@ -1851,7 +1925,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
 				}
 			}
 
@@ -1871,7 +1945,7 @@
 
 			allowed = {
 				NOT = {
-					has_available_idea_with_traits = { idea = artillery_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = artillery_manufacturer limit = 1 }
 				}
 			}
 
