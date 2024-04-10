@@ -18,11 +18,10 @@ fascism = {
 			ROOT = { 
 				is_major = yes				#We are big
 				has_government = fascism	#We are the baddies
-				tag = ROOT.FROM				#We are acting for ourselves
 			}
 		}
 
-		ai_desire = -75
+		ai_desire = -50
 	}
 	
 	fascist_liberate_desire = {
@@ -132,7 +131,7 @@ democratic = {
 			}
 		}
 
-		ai_desire = 10
+		ai_desire = 20
 	}
 	
 	liberate_if_already_exists = {
@@ -147,7 +146,7 @@ democratic = {
 			}
 		}
 
-		ai_desire = 20
+		ai_desire = 100
 	}
 	
 	wrong_ideology_faction_members_dont_force_gov = {
