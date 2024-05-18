@@ -1409,6 +1409,7 @@
 	link = { vic2 = 2568 hoi4 = 3641 hoi4 = 9600 } # Lugano -> land, land
 	link = { vic2 = 611 hoi4 = 3660 hoi4 = 658 hoi4 = 3662 } # Chur -> land, land, land
 	link = { vic2 = 3284 hoi4 = 13126 } # Lake Constance -> lake
+	link = { vic2 = 3283 hoi4 = 13124 } # Lake Geneva -> lake
 	link = { vic2 = 603 hoi4 = 663 hoi4 = 11623 hoi4 = 661 } # Zurich -> land, land, land
 	link = { vic2 = 606 hoi4 = 11604 hoi4 = 11601 } # Lucern -> land, land
 	link = { vic2 = 605 hoi4 = 9620 hoi4 = 9618 } # Bern -> land, land
