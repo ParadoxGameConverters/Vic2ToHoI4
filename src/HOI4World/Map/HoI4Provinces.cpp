@@ -25,6 +25,10 @@ std::map<int, HoI4::Province> HoI4::importProvinces(const Configuration& theConf
 		}
 
 		auto IDSeparator = line.find_first_of(';');
+		if (IDSeparator == std::string::npos)
+		{
+			continue;
+		}
 		auto ID = stoi(line.substr(0, IDSeparator));
 		if (ID == 0)
 		{

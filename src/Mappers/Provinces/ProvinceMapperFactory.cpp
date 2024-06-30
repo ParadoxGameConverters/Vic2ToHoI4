@@ -58,10 +58,14 @@ void checkAllHoI4ProvincesMapped(const Mappers::VersionedMappings& versionedMapp
 
 	while (true)
 	{
+		if (definitions.eof())
+		{
+			break;
+		}
 		auto provNum = getNextProvinceNumFromFile(definitions);
 		if (!provNum)
 		{
-			break;
+			continue;
 		}
 		if (*provNum == 0)
 		{
