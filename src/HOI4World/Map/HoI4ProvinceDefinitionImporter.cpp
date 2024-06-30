@@ -34,7 +34,7 @@ Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& pat
 		auto pos = line.find_first_of(';');
 		if (pos == std::string::npos)
 		{
-			break;
+			continue;
 		}
 		auto provNum = stoi(line.substr(0, pos));
 		if (provNum == 0)
@@ -47,7 +47,7 @@ Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& pat
 		pos = line.find_first_of(';');
 		if (pos == std::string::npos)
 		{
-			break;
+			continue;
 		}
 		const int red(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
@@ -56,7 +56,7 @@ Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& pat
 		pos = line.find_first_of(';');
 		if (pos == std::string::npos)
 		{
-			break;
+			continue;
 		}
 		const int green(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
@@ -65,7 +65,7 @@ Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& pat
 		pos = line.find_first_of(';');
 		if (pos == std::string::npos)
 		{
-			break;
+			continue;
 		}
 		const int blue(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
@@ -77,7 +77,7 @@ Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& pat
 		pos = line.find_first_of(';');
 		if (pos == std::string::npos)
 		{
-			break;
+			continue;
 		}
 		const std::string landOrSea = line.substr(0, pos);
 		line = line.substr(pos + 1, line.length());
@@ -94,7 +94,7 @@ Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& pat
 		pos = line.find_first_of(';');
 		if (pos == std::string::npos)
 		{
-			break;
+			continue;
 		}
 		line = line.substr(pos + 1, line.length());
 
@@ -102,7 +102,7 @@ Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& pat
 		pos = line.find_first_of(';');
 		if (pos == std::string::npos)
 		{
-			break;
+			continue;
 		}
 		const std::string terrain = line.substr(0, pos);
 		line = line.substr(pos + 1, line.length());
