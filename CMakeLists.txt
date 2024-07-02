@@ -485,6 +485,7 @@ configure_file("${DATA_FILE_DIR}/configurables/Map/regions.txt" "${CONVERTER_OUT
 configure_file("${DATA_FILE_DIR}/configurables/casus_bellis_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/casus_bellis_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterDynamicModifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterDynamicModifiers.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Sounds/CultureToVoiceMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/Scorers/generic_platonic_scorers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Scorers/generic_platonic_scorers.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterFocuses.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterFocuses.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeas.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterIdeologies.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeologies.txt" COPYONLY)
