@@ -156,7 +156,6 @@ void Maps::MapData::ImportProvinces(const std::string& path)
 
 			if (auto province = province_definitions_.getProvinceFromColor(center_color); province)
 			{
-				points_to_provinces_.emplace(position, *province);
 				if (auto specific_province_points = the_province_points_.find(*province);
 					 specific_province_points != the_province_points_.end())
 				{
@@ -357,12 +356,14 @@ std::optional<Maps::Point> Maps::MapData::GetAnyBorderCenter(const int province)
 
 std::optional<int> Maps::MapData::GetProvinceNumber(const Point& point) const
 {
-	const auto i = points_to_provinces_.find(point);
-	if (i == points_to_provinces_.end())
+	const auto i = std::find_if(the_province_points_.begin(), the_province_points_.end(), [point](const auto& province) {
+		return province.second.hasPoint(point);
+	});
+	if (i == the_province_points_.end())
 	{
 		return std::nullopt;
 	}
-	return i->second;
+	return i->first;
 }
 
 

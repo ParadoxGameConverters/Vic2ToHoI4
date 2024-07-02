@@ -51,7 +51,6 @@ class MapData
 	std::map<int, ProvincePoints> the_province_points_;
 
 	ProvinceDefinitions province_definitions_;
-	std::map<Point, int> points_to_provinces_;
 };
 
 } // namespace Maps

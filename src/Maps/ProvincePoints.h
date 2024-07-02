@@ -19,6 +19,7 @@ class ProvincePoints
 	void addPoint(const Point& thePoint);
 
 	[[nodiscard]] Point getCentermostPoint() const;
+	[[nodiscard]] bool hasPoint(const Point& thePoint) const { return thePoints.contains(thePoint); }
 
   private:
 	std::set<Point> thePoints;
