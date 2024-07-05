@@ -27,7 +27,7 @@ void HoI4::Ideas::importIdeologicalIdeas(const std::set<std::string>& majorIdeol
 				 ideologicalIdeas[groupName].push_back(IdeaGroup(ideology, theStream));
 			 });
 
-		parseFile("Configurables/IdeologicalIdeas/" + ideology + ".txt");
+		parseFile("Configurables/ideologicalIdeas/" + ideology + ".txt");
 		clearRegisteredKeywords();
 	}
 }
