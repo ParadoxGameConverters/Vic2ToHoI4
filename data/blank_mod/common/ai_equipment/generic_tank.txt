@@ -683,7 +683,7 @@ generic_medium_tanks = {
 		}
 		modifier = {
 			num_of_factories < 50
-			factor = 0
+			factor = 0.5
 		}
 	}
 

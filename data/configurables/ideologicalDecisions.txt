@@ -561,7 +561,7 @@ political_actions = {
 		cost = 150
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 }
@@ -1055,7 +1055,7 @@ political_actions = {
 		}
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 
@@ -1111,7 +1111,7 @@ political_actions = {
 		}
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 
@@ -1131,7 +1131,7 @@ political_actions = {
 		cost = 150
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 }
@@ -1626,7 +1626,7 @@ political_actions =
 		}
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 
@@ -1681,7 +1681,7 @@ political_actions =
 		}
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 
@@ -1701,7 +1701,7 @@ political_actions =
 		cost = 150
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 }
@@ -1713,6 +1713,96 @@ required_ideologies = {
 }
 
 political_actions = {
+    anti_neutrality_raids = {
+
+    	icon = generic_civil_support
+
+    	allowed = {
+    	}
+
+    	visible = {
+			NOT = { has_government = neutrality }
+		}
+
+		available = {
+            neutrality > 0.1
+        }
+	
+		modifier = {
+			neutrality_drift = -0.05
+			stability_weekly = 0.007
+		}
+	
+		days_remove = 120
+		cost = 50
+
+		complete_effect = {
+			add_stability = -0.1
+		}
+		
+		remove_effect = {
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+    }
+    
+	ban_neutrality_party = {
+
+		icon = generic_civil_support
+
+		allowed = {	
+		}
+
+		visible = {
+			NOT = { has_government = neutrality }
+			neutrality > 0
+		}
+
+		available = {
+			neutrality < 0.2
+		}
+
+		remove_trigger = {
+		}
+	
+		modifier = {
+			neutrality_drift = -0.05
+		}
+	
+		days_remove = -1
+		cost = 100
+		
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = ban_ideology_var
+					value = party_popularity@neutrality
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = -1
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = ban_ideology_var
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = 0.66
+				}
+				set_country_flag = banned_neutrality_flag
+			}
+			custom_effect_tooltip = ban_neutrality_party_tt
+			add_stability = ban_ideology_var
+		}
+		
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
 	institute_press_censorship_neutrality_state = {
 
 		icon = generic_political_discourse
@@ -1729,7 +1819,7 @@ political_actions = {
 		cost = 150
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 }
@@ -2278,7 +2368,7 @@ political_actions = {
 		cost = 150
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 }
@@ -2828,7 +2918,7 @@ political_actions = {
 		cost = 150
 
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 }

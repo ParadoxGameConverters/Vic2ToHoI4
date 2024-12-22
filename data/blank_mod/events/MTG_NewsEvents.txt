@@ -74,6 +74,21 @@ news_event = {
 		trigger = {
 			is_major = no
 			not = { has_naval_treaty_trigger = yes }
+			any_controlled_state = {
+				is_coastal = yes
+			}
+		}
+	}
+	option = {
+		name = MTG_naval_treaty.9.d
+		trigger = { 
+			is_major = no
+			not = { has_naval_treaty_trigger = yes }
+			NOT = {
+				any_controlled_state = {
+					is_coastal = yes
+				}
+			}
 		}
 	}
 }

@@ -1,4 +1,4 @@
-add_namespace = news
+﻿add_namespace = news
 # About Olympic games:
 # HoI4 syntax did not allow me to tell "check if major country is X and, if you find no major country
 # like X, then take a random minor"
@@ -301,5 +301,33 @@ news_event = {
 			is_in_faction_with = FROM
 		}
 		name = news.159.c
+	}
+}
+
+news_event = { #Nuclear Reactor Tested
+	id = news.338
+	title = news.338.t
+	desc = news.338.desc
+	picture = GFX_news_event_journalists_speech
+
+	trigger = {
+		
+	}
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.338.a
+		trigger = {
+			NOT = {	TAG = FROM }
+		}
+	}
+	option = {
+		name = news.338.b
+		trigger = { 
+			TAG = FROM 
+		}
 	}
 }

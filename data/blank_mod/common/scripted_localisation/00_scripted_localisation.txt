@@ -98,3 +98,35 @@ defined_text = {
 	}
 
 }
+
+# Handshake event picture (pick Hitler one only if Hitler is in charge, otherwise pick generic handshake tack)
+defined_text = {
+	name = GetHitlerHandshakeEventPicture
+	text = {
+		localization_key = GFX_report_event_generic_handshake
+	}
+}
+
+# Croatian Handshake event picture (pick Hitler one only if Hitler is in charge, otherwise pick generic croatian handshake tack)
+defined_text = {
+	name = GetHitlerCroatianHandshakeEventPicture
+	text = {
+		localization_key = GFX_report_event_generic_croatia_handshake
+	}
+}
+
+# German-China event picture (pick Hitler one only if Hitler is in charge, otherwise use picture without Hitler tack)
+defined_text = {
+	name = GetHitlerChinaEventPicture
+	text = {
+		localization_key = GFX_report_event_generic_china
+	}
+}
+
+# German-China event picture (pick Hitler one only if Hitler is in charge, otherwise use picture without Hitler tack)
+defined_text = {
+	name = GetHitlerHandshakeNewsEventPicture
+	text = {
+		localization_key = GFX_news_event_generic_handshake
+	}
+}

@@ -258,6 +258,33 @@ debug_decisions = {
 			add_ideas = add_production_efficiency
 		}
 	}
+
+	#nuke_target_debug = {
+	#	icon = generic_research
+#
+	#	available = {
+	#		is_ai = no
+	#		is_debug = yes
+	#	}
+#
+	#	visible = {
+	#		is_ai = no
+	#		is_debug = yes
+	#		has_global_flag = show_debug_decisions_flag
+	#	}
+#
+	#	fire_only_once = no
+	#	cost = 0
+#
+	#	complete_effect = {
+	#		TIB = {
+	#			launch_nuke = {
+	#				province = 9950
+	#				use_nuke = no
+	#			}	
+	#		}
+	#	}
+	#}
 		
 	remove_efficiency_growth_debug = {
 		icon = generic_research
@@ -500,6 +527,36 @@ debug_decisions = {
 
 	}
 
+	add_1_convoy = {
+
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
+
+		fire_only_once = no
+		cost = 0
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 1
+			}
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -1
+			}
+
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+
+	}
+
 	slot_machine = { # we pegi 18 now
 		available = {
 			is_ai = no
@@ -631,5 +688,90 @@ debug_decisions = {
 			}
 		}
 	}
-	
+
+#	unlock_mothership = {
+#		available = {
+#			is_ai = no
+#		}
+#
+#		visible = {
+#			is_ai = no
+#			is_debug = yes
+#			has_global_flag = show_debug_decisions_flag
+#		}
+#		complete_effect = {
+#			set_technology = {
+#				mothership = 1
+#				popup = yes
+#			}
+#		}
+#	}
+
+	unlock_supersonic_jet = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
+		complete_effect = {
+			set_technology = {
+				supersonic_small_airframe = 1
+				popup = yes
+			}
+
+			set_technology = {
+				modern_small_airframe = 1
+				popup = yes
+			}
+		}
+	}
+
+	unlock_all_radars = {
+		available = {
+			is_ai = no
+		}
+
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = show_debug_decisions_flag
+		}
+		days_remove = 100
+		complete_effect = {
+			set_technology = {
+				radio_detection = 1
+				popup = no
+			}
+
+
+			set_technology = {
+				radio_detection = 1
+				popup = no
+			}
+
+			set_technology = {
+				cavity_magnatron = 1
+				popup = no
+			}
+
+			set_technology = {
+				centimetric_radar = 1
+				popup = no
+			}
+
+			set_technology = {
+				phased_array = 1
+				popup = no
+			}
+
+			set_technology = {
+				monopulse_radar = 1
+				popup = no
+			}
+		}
+	}
 }
