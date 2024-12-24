@@ -69,7 +69,7 @@ void CreateModFiles(const std::string& output_name)
 	descriptor_file << "replace_path=\"history/units\"\n";
 	descriptor_file << "replace_path=\"map/supplyareas\"\n";
 	descriptor_file << "replace_path=\"map/strategicregions\"\n";
-	descriptor_file << "supported_version=\"1.14.*\"";
+	descriptor_file << "supported_version=\"1.15.*\"";
 	descriptor_file.close();
 }
 
