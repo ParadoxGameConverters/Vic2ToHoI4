@@ -362,20 +362,6 @@ void HoI4::outputMap(const States& states, const StrategicRegions& strategicRegi
 		throw std::runtime_error("Could not create output/" + outputName + "/map");
 	}
 
-	std::ofstream rocketSitesFile("output/" + outputName + "/map/rocketsites.txt");
-	if (!rocketSitesFile.is_open())
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/map/rocketsites.txt");
-	}
-	for (const auto& state: states.getStates() | std::views::values)
-	{
-		if (auto provinces = state.getProvinces(); !provinces.empty())
-		{
-			rocketSitesFile << state.getID() << "={" << *provinces.cbegin() << " }\n";
-		}
-	}
-	rocketSitesFile.close();
-
 	outputStrategicRegions(strategicRegions, outputName);
 }
 
