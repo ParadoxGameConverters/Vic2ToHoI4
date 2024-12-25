@@ -9362,7 +9362,6 @@ leader_traits = {
 			}
 		}
 	}
-}
 
 	### CONGO ###
 
@@ -11332,3 +11331,4 @@ leader_traits = {
 		production_factory_start_efficiency_factor = 0.05
 	}
 
+}

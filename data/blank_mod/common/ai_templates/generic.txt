@@ -317,8 +317,6 @@ infantry_generic = {
 		base = 5
 	}
 
-	match_to_count = 0.10
-	
 	infantry_early = {
 	
 		upgrade_prio = {

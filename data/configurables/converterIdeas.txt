@@ -597,6 +597,39 @@
 			cancel_if_invalid = no
 		}
 
+		totaler_krieg_economy = {
+
+			allowed = {
+				always = no
+			}
+
+			available = {
+				has_war_with_major = yes
+				has_war_support > 0.8
+				any_enemy_country = {
+					ic_ratio = {
+						tag = ROOT
+						ratio > 0.5
+					}
+				}
+			}
+
+			cost = 150
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_expected_value = 0.15
+				conscription = -0.02
+				production_speed_arms_factory_factor = 0.2
+				production_speed_dockyard_factor = 0.2
+				conversion_cost_civ_to_mil_factor= -0.3
+				conversion_cost_mil_to_civ_factor = -0.3
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+			}
+			cancel_if_invalid = no
+		}
+
 		new_economic_policy = {
 
 			picture = new_economic_policy
@@ -947,6 +980,61 @@
 
 	# Special ones that can be applied on other countries through focus system.
 	country = {
+		damage_to_naval_base_low = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = POL_disjointed_industry
+			
+			removal_cost = -1
+			
+			modifier = {
+				refit_speed = -0.05
+				repair_speed_factor = -0.05
+			}
+		}
+		damage_to_naval_base_medium = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = POL_disjointed_industry
+			
+			removal_cost = -1
+			
+			modifier = {
+				refit_speed = -0.1
+				repair_speed_factor = -0.1
+			}
+		}
+		damage_to_naval_base_high = {
+			allowed = {
+				always = no
+			}
+
+			picture = POL_disjointed_industry
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				refit_speed = -0.25
+				repair_speed_factor = -0.25
+			}
+		}
+
 		neutrality_influence = {
 			allowed = {
 				always = no
@@ -984,6 +1072,26 @@
 			modifier = {
 				neutrality_drift = 0.1
 				neutrality_acceptance = 35
+			}
+		}
+
+		# Secret Weapons
+		generic_secret_weapons_ns = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_research_bonus
+			
+			modifier = {
+				special_project_speed_factor = 0.05
 			}
 		}
 
@@ -1044,7 +1152,8 @@
 			picture = generic_manpower_bonus
 
 			modifier = {
-				conscription = 0.02
+				conscription = 0.01
+				mobilization_speed = 0.25
 			}
 		}
 
@@ -1067,6 +1176,7 @@
 
 			modifier = {
 				training_time_army_factor = -0.1
+				supply_combat_penalties_on_core_factor = -0.15
 			}
 		}
 
@@ -1089,6 +1199,7 @@
 
 			modifier = {
 				stability_factor = 0.05
+				weekly_manpower = 400
 			}
 		}
 
@@ -1167,6 +1278,7 @@
 				production_speed_coastal_bunker_factor = 0.2
 				production_speed_anti_air_building_factor = 0.2
 				production_speed_arms_factory_factor = 0.2
+				bunker_max_level_terrain_limit = 1
 			}
 		}
 
@@ -1203,6 +1315,8 @@
 
 			modifier = {
 				send_volunteer_divisions_required = -0.5
+				send_volunteer_factor = 0.1
+				send_volunteers_tension = -0.1
 			}
 		}
 
@@ -1259,10 +1373,12 @@
 			picture = generic_research_bonus
 
 			modifier = {
-				production_speed_nuclear_reactor_factor = 0.2
+				production_speed_nuclear_reactor_factor = 0.15 # was 0.2
+				specialization_nuclear_speed_factor = 0.05
+				production_speed_nuclear_facility_factor = 0.05
 			}
 			research_bonus = {
-				nuclear = 0.15
+				nuclear = 0.05 # was 0.15
 			}
 		}
 
@@ -1282,11 +1398,13 @@
 			picture = generic_research_bonus
 
 			modifier = {
-				production_speed_nuclear_reactor_factor = 0.25
+				production_speed_nuclear_reactor_factor = 0.2 # was 0.25
 				political_power_factor = -0.5
+				specialization_nuclear_speed_factor = 0.05
+				production_speed_nuclear_facility_factor = 0.05
 			}
 			research_bonus = {
-				nuclear = 0.15
+				nuclear = 0.05
 			}
 		}
 
@@ -1708,6 +1826,57 @@
 				production_cost_max_ship_hull_cruiser = 6500
 				production_cost_max_ship_hull_heavy = 14000
 				production_cost_max_ship_hull_carrier = 10750
+			}
+		}
+
+		special_project_consumer_costs_high = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+			
+			modifier = {
+				consumer_goods_factor = 0.1
+			}
+		}
+
+		special_project_consumer_costs_medium = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		special_project_consumer_costs_low = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+			
+			modifier = {
+				consumer_goods_factor = 0.025
 			}
 		}
 	}

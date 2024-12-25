@@ -7440,7 +7440,6 @@ prospect_for_resources = {
 		visible = {
 			owns_state = 155
 			controls_state = 155
-			has_completed_focus = wuw_HUN_expand_the_lignite_industry
 			155 = {
 				NOT = {
 					has_state_flag = nagykanizsa_oil_developed
