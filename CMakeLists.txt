@@ -686,6 +686,8 @@ set(MAPPERS_GRAPHICS_TESTS_SOURCES ${MAPPERS_GRAPHICS_TESTS_SOURCES} "${PROJECT_
 set(MAPPERS_GRAPHICS_TESTS_SOURCES ${MAPPERS_GRAPHICS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Graphics/GraphicsMapperTests.cpp")
 set(MAPPERS_IDEOLOGY_TESTS_SOURCES ${MAPPERS_IDEOLOGY_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMappingTests.cpp")
 set(MAPPERS_IDEOLOGY_TESTS_SOURCES ${MAPPERS_IDEOLOGY_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMapperTests.cpp")
+set(MAPPERS_LANDMARKS_TESTS_SOURCES ${MAPPERS_LANDMARKS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Buildings/LandmarksMapperTests.cpp")
+set(MAPPERS_LANDMARKS_TESTS_SOURCES ${MAPPERS_LANDMARKS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Buildings/LandmarksMappingTests.cpp")
 set(MAPPERS_MERGE_RULES_TESTS_SOURCES ${MAPPERS_MERGE_RULES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/MergeRules/MergeRulesTests.cpp")
 set(MAPPERS_MERGE_RULES_TESTS_SOURCES ${MAPPERS_MERGE_RULES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/MergeRules/MergeRuleTests.cpp")
 set(MAPPERS_PROVINCES_TESTS_SOURCES ${MAPPERS_PROVINCES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Provinces/ProvinceMapperTests.cpp")
@@ -802,6 +804,7 @@ list(APPEND ALL_HOI4_TESTS_FILES
 	${MAPPERS_GOVERNMENT_TESTS_SOURCES}
 	${MAPPERS_GRAPHICS_TESTS_SOURCES}
 	${MAPPERS_IDEOLOGY_TESTS_SOURCES}
+	${MAPPERS_LANDMARKS_TESTS_SOURCES}
 	${MAPPERS_MERGE_RULES_TESTS_SOURCES}
 	${MAPPERS_PROVINCES_TESTS_SOURCES}
 	${MAPPERS_TECHNOLOGY_TESTS_SOURCES}
@@ -846,6 +849,7 @@ target_precompile_headers(Vic2ToHoi4ConverterTests REUSE_FROM Vic2ToHoi4lib)
 
 configure_file("data/test_files/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
 configure_file("data/test_files/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
+configure_file("data/test_files/Buildings/LandmarksMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/LandmarksMappings.txt" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_ai_peace.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_cost_modifiers.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_unit_medals.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_unit_medals.txt" COPYONLY)
@@ -1069,6 +1073,7 @@ add_library(run_clang_tidy
 	${MAPPERS_GOVERNMENT_SOURCES}
 	${MAPPERS_GRAPHICS_SOURCES}
 	${MAPPERS_IDEOLOGY_SOURCES}
+	${MAPPERS_LANDMARKS_SOURCES}
 	${MAPPERS_MERGE_RULES_SOURCES}
 	${MAPPERS_TECHNOLOGY_SOURCES}
 	${MAPPERS_PROVINCES_SOURCES}
@@ -1170,6 +1175,7 @@ add_library(run_clang_tidy
 	${MAPPERS_GOVERNMENT_TESTS_SOURCES}
 	${MAPPERS_GRAPHICS_TESTS_SOURCES}
 	${MAPPERS_IDEOLOGY_TESTS_SOURCES}
+	${MAPPERS_LANDMARKS_TESTS_SOURCES}
 	${MAPPERS_MERGE_RULES_TESTS_SOURCES}
 	${MAPPERS_PROVINCES_TESTS_SOURCES}
 	${MAPPERS_TECHNOLOGY_TESTS_SOURCES}

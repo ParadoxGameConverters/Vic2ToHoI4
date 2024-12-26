@@ -1,0 +1,1 @@
+link = { building = landmark_test location = 42 }

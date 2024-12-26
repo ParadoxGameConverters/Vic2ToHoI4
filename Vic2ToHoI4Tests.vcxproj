@@ -162,6 +162,8 @@
     <ClCompile Include="src\HOI4World\TankDesigns\TankUpgradesTests.cpp" />
     <ClCompile Include="src\HOI4World\TechnologiesTests.cpp" />
     <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedalsTests.cpp" />
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMapperTests.cpp" />
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMappingTests.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingTests.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBellisTests.cpp" />
     <ClCompile Include="src\Mappers\CountryName\CountryNameMapperTests.cpp" />
@@ -849,6 +851,11 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Configurables\ideological_unit_medals.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Buildings\LandmarksMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>

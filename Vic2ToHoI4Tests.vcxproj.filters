@@ -343,6 +343,12 @@
     <ClCompile Include="src\HOI4World\TechnologiesTests.cpp">
       <Filter>src\HOI4World</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMapperTests.cpp">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMappingTests.cpp">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClCompile>
     <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingTests.cpp">
       <Filter>src\Mappers\CasusBelli</Filter>
     </ClCompile>
@@ -753,6 +759,9 @@
     <Filter Include="src\Mappers">
       <UniqueIdentifier>{6fb33366-5823-4622-b1a0-a6c1c9bb47d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Mappers\Buildings">
+      <UniqueIdentifier>{2a7a5681-e5ef-4ade-aeff-a175cad52db9}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Mappers\CasusBelli">
       <UniqueIdentifier>{acb06cbf-4662-414e-9676-50c8268ef42c}</UniqueIdentifier>
     </Filter>
@@ -951,6 +960,9 @@
     <Filter Include="data\test_files">
       <UniqueIdentifier>{de1e1a2f-5af4-4cae-b377-18f8ce42b8de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="data\test_files\Buildings">
+      <UniqueIdentifier>{f259f2b0-a16a-4140-8420-943eeff24d84}</UniqueIdentifier>
+    </Filter>
     <Filter Include="data\test_files\Countries">
       <UniqueIdentifier>{b57a0a33-1ac0-4736-b9ff-1cd14a14656b}</UniqueIdentifier>
     </Filter>
@@ -1081,6 +1093,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Buildings\LandmarksMappings.txt">
+      <Filter>data\test_files\Buildings</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt">
       <Filter>data\test_files\Countries</Filter>
     </CopyFileToFolders>
