@@ -43,6 +43,7 @@
 #include "src/HOI4World/States/HoI4State.h"
 #include "src/HOI4World/UnitMedals/IdeologicalUnitMedals.h"
 #include "src/HOI4World/WarCreator/HoI4WarCreator.h"
+#include "src/Mappers/Buildings/LandmarksMapperFactory.h"
 #include "src/Mappers/CasusBelli/CasusBellisFactory.h"
 #include "src/Mappers/Country/CountryMapperFactory.h"
 #include "src/Mappers/CountryName/CountryNameMapperFactory.h"
@@ -95,8 +96,8 @@ void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
 HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
-	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)),
-	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
+	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), events(make_unique<HoI4::Events>()),
+	 onActions(make_unique<HoI4::OnActions>())
 {
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
@@ -150,6 +151,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	setTrainMultipliers();
 	Log(LogLevel::Progress) << "40%";
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
+	landmarksMapper = Mappers::LandmarksMapper::Factory().importLandmarksMapper();
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";
@@ -245,6 +247,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Log(LogLevel::Progress) << "72%";
 	states->convertCapitalVPs(countries, greatPowers);
 	states->convertAirBases(countries, greatPowers);
+	states->addLandmarks(*landmarksMapper);
 	factionNameMapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
 	if (theConfiguration.getCreateFactions())
 	{

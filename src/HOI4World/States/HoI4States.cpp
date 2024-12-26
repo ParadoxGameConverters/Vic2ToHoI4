@@ -11,6 +11,7 @@
 #include "src/HOI4World/Map/Resources.h"
 #include "src/HOI4World/States/HoI4State.h"
 #include "src/HOI4World/States/StateCategories.h"
+#include "src/Mappers/Buildings/LandmarksMapper.h"
 #include "src/Mappers/Country/CountryMapper.h"
 #include "src/Maps/ProvinceDefinitions.h"
 #include "src/V2World/Localisations/Vic2Localisations.h"
@@ -44,8 +45,7 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const ImpassableProvinces& impassableProvinces,
 	 const std::map<int, DefaultState>& defaultStates,
-	 const Configuration& theConfiguration):
-	 defaultStates_(defaultStates)
+	 const Configuration& theConfiguration): defaultStates_(defaultStates)
 {
 	Log(LogLevel::Info) << "\tConverting states";
 
@@ -690,6 +690,23 @@ void HoI4::States::addBasicAirBases()
 		if (state.getInfrastructure() >= AIRBASES_FOR_INFRASTRUCTURE_LEVEL)
 		{
 			state.addAirBase(1);
+		}
+	}
+}
+
+void HoI4::States::addLandmarks(const Mappers::LandmarksMapper& landmarksMapper)
+{
+	Log(LogLevel::Info) << "\tAdding landmark buildings";
+
+	for (const auto& [landmark, location]: landmarksMapper.getMappings())
+	{
+		for (auto& state: states | std::views::values)
+		{
+			if (state.getProvinces().contains(location))
+			{
+				state.addLandmark(landmark, location);
+				break;
+			}
 		}
 	}
 }

@@ -44,6 +44,7 @@
 #include "src/HOI4World/States/DefaultState.h"
 #include "src/HOI4World/States/HoI4State.h"
 #include "src/HOI4World/States/HoI4States.h"
+#include "src/Mappers/Buildings/LandmarksMapper.h"
 #include "src/Mappers/CasusBelli/CasusBellis.h"
 #include "src/Mappers/Country/CountryMapper.h"
 #include "src/Mappers/CountryName/CountryNameMapper.h"
@@ -255,6 +256,7 @@ class World: commonItems::parser
 	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;
 	std::unique_ptr<Mappers::CasusBellis> casusBellis;
 	std::unique_ptr<Mappers::FactionNameMapper> factionNameMapper;
+	std::unique_ptr<Mappers::LandmarksMapper> landmarksMapper;
 	std::unique_ptr<date> theDate;
 
 	std::unique_ptr<States> states;
