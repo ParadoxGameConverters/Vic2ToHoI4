@@ -173,6 +173,8 @@ set(MAPPERS_GRAPHICS_SOURCES ${MAPPERS_GRAPHICS_SOURCES} "${PROJECT_SOURCE_DIR}/
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMappingFactory.cpp")
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMapper.cpp")
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMapperFactory.cpp")
+set(MAPPERS_LANDMARKS_SOURCES ${MAPPERS_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Buildings/LandmarksMapperFactory.cpp")
+set(MAPPERS_LANDMARKS_SOURCES ${MAPPERS_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Buildings/LandmarksMappingFactory.cpp")
 set(MAPPERS_MERGE_RULES_SOURCES ${MAPPERS_MERGE_RULES_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/MergeRules/MergeRuleFactory.cpp")
 set(MAPPERS_MERGE_RULES_SOURCES ${MAPPERS_MERGE_RULES_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/MergeRules/MergeRulesFactory.cpp")
 set(MAPPERS_PROVINCES_SOURCES ${MAPPERS_PROVINCES_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Provinces/ProvinceMapperFactory.cpp")
@@ -388,6 +390,7 @@ list(APPEND ALL_HOI4_FILES
 	${MAPPERS_GOVERNMENT_SOURCES}
 	${MAPPERS_GRAPHICS_SOURCES}
 	${MAPPERS_IDEOLOGY_SOURCES}
+	${MAPPERS_LANDMARKS_SOURCES}
 	${MAPPERS_MERGE_RULES_SOURCES}
 	${MAPPERS_TECHNOLOGY_SOURCES}
 	${MAPPERS_PROVINCES_SOURCES}
@@ -510,6 +513,7 @@ configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONV
 configure_file("${DATA_FILE_DIR}/configurables/IdeologyMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ImportCharacters.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ImportCharacters.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/IntelligenceAgencyLogos.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IntelligenceAgencyLogos.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/LandmarksMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/LandmarksMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/languageReplacements.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacements.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/languageReplacementsBis.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacementsBis.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/merge_nations.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/merge_nations.txt" COPYONLY)

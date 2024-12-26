@@ -187,6 +187,8 @@
     <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp" />
     <ClCompile Include="src\HOI4World\WarCreator\HoI4WarCreator.cpp" />
     <ClCompile Include="src\HOI4World\WarCreator\MapUtils.cpp" />
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMapperFactory.cpp" />
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMappingFactory.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBellis.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBellisFactory.cpp" />
@@ -607,6 +609,10 @@
     <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h" />
     <ClInclude Include="src\HOI4World\WarCreator\HoI4WarCreator.h" />
     <ClInclude Include="src\HOI4World\WarCreator\MapUtils.h" />
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapper.h" />
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapperFactory.h" />
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapping.h" />
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMappingFactory.h" />
     <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMapping.h" />
     <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.h" />
     <ClInclude Include="src\Mappers\CasusBelli\CasusBellis.h" />

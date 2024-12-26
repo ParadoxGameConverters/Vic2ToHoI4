@@ -208,6 +208,9 @@
     <Text Include="data\configurables\IntelligenceAgencyLogos.txt">
       <Filter>data\configurables</Filter>
     </Text>
+    <Text Include="data\configurables\LandmarksMappings.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
     <Text Include="data\configurables\languageReplacements.txt">
       <Filter>data\configurables</Filter>
     </Text>

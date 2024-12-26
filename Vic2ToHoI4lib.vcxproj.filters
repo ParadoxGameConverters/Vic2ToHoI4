@@ -214,6 +214,9 @@
     <Filter Include="src\Mappers">
       <UniqueIdentifier>{614be27f-9385-4440-a34e-dc2a184e69f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Mappers\Buildings">
+      <UniqueIdentifier>{05050f4b-4a65-4f55-84b9-95b214724e39}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Mappers\CasusBelli">
       <UniqueIdentifier>{24c72c11-c639-4be2-8308-206b8e42df90}</UniqueIdentifier>
     </Filter>
@@ -1145,6 +1148,12 @@
     </ClCompile>
     <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp">
       <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMapperFactory.cpp">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMappingFactory.cpp">
+      <Filter>src\Mappers\Buildings</Filter>
     </ClCompile>
     <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.cpp">
       <Filter>src\Mappers\CasusBelli</Filter>
@@ -2398,6 +2407,18 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h">
       <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapper.h">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapperFactory.h">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapping.h">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMappingFactory.h">
+      <Filter>src\Mappers\Buildings</Filter>
     </ClInclude>
     <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMapping.h">
       <Filter>src\Mappers\CasusBelli</Filter>
