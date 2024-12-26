@@ -702,9 +702,8 @@ void HoI4::States::addLandmarks(const Mappers::LandmarksMapper& landmarksMapper)
 	{
 		for (auto& state: states | std::views::values)
 		{
-			if (state.getProvinces().contains(location))
+			if (bool added = state.addLandmark(landmark, location); added)
 			{
-				state.addLandmark(landmark, location);
 				break;
 			}
 		}

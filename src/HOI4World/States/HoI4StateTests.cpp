@@ -808,11 +808,36 @@ TEST(HoI4World_States_StateTests, MainNavalBaseLocationGoesToLargestBase)
 	EXPECT_EQ(24, *theState.getMainNavalLocation());
 }
 
+
+TEST(HoI4World_States_StateTests, EmptyLandmarksAreNotAssigned)
+{
+	const auto sourceState = *Vic2::State::Builder().build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	theState.addProvince(12);
+	theState.addLandmark("", 12);
+
+	EXPECT_TRUE(theState.getLandmarks().empty());
+}
+
+
+TEST(HoI4World_States_StateTests, LandmarksAreNotAssignedWhenLocationNotInState)
+{
+	const auto sourceState = *Vic2::State::Builder().build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	theState.addLandmark("landmark_test", 12);
+
+	EXPECT_TRUE(theState.getLandmarks().empty());
+}
+
+
 TEST(HoI4World_States_StateTests, LandmarksCanBeAssigned)
 {
 	const auto sourceState = *Vic2::State::Builder().build();
 	HoI4::State theState(sourceState, 42, "TAG");
 
+	theState.addProvince(12);
 	theState.addLandmark("landmark_test", 12);
 
     std::stringstream expectedOutput;
@@ -842,7 +867,7 @@ TEST(HoI4World_States_StateTests, LandmarksCanBeAssigned)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\n";
 	expectedOutput << "\tprovinces={\n";
-	expectedOutput << "\t\t";
+	expectedOutput << "\t\t12 ";
 	expectedOutput << "\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=1\n";

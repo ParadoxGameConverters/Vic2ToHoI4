@@ -99,6 +99,17 @@ void HoI4::State::addNavalBase(int level, int location)
 	}
 }
 
+bool HoI4::State::addLandmark(const std::string& landmark, int location)
+{
+	if (!landmark.empty() && provinces.contains(location))
+	{
+		landmarks[landmark] = location;
+		return true;
+	}
+	
+	return false;
+}
+
 
 void HoI4::State::smashNavalBases()
 {
