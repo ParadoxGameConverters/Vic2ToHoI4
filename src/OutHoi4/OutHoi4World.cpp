@@ -10,6 +10,7 @@
 #include "src/OutHoi4/Ideologies/OutIdeologies.h"
 #include "src/OutHoi4/IntelligenceAgencies/OutIntelligenceAgencies.h"
 #include "src/OutHoi4/Interface/OutMonarchsInterface.h"
+#include "src/OutHoi4/Landmarks/OutLandmarkBuildings.h"
 #include "src/OutHoi4/Leaders/OutAdvisor.h"
 #include "src/OutHoi4/Map/OutBuildings.h"
 #include "src/OutHoi4/Map/OutRailways.h"
@@ -218,6 +219,7 @@ void HoI4::OutputWorld(const World& world,
 		 outputName,
 		 theConfiguration);
 	outputBuildings(world.getBuildings(), outputName);
+	outputLandmarkBuildings(world.getLandmarkBuildings(), outputName);
 	outputSupplyNodes("output/" + outputName, world.getSupplyNodes());
 	outputRailways("output/" + outputName, world.getRailways()->GetRailways());
 	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), outputName);

@@ -34,6 +34,9 @@
     <Filter Include="src\HoI4World\IntelligenceAgencies">
       <UniqueIdentifier>{20858508-58a5-4286-a11e-0067faa365e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\HoI4World\Landmarks">
+      <UniqueIdentifier>{d8004c86-5d56-41de-8146-00b74a86699f}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\HoI4World\Leaders">
       <UniqueIdentifier>{d8004c86-5d56-41de-8146-00b74a86699f}</UniqueIdentifier>
     </Filter>
@@ -150,6 +153,9 @@
     </Filter>
     <Filter Include="src\OutHoi4\Interface">
       <UniqueIdentifier>{045700d2-2aa9-4c10-8469-8af5b97653f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Landmarks">
+      <UniqueIdentifier>{e1e8d203-1d4d-49d8-8326-82f1f242bab4}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\OutHoi4\Leaders">
       <UniqueIdentifier>{e1e8d203-1d4d-49d8-8326-82f1f242bab4}</UniqueIdentifier>
@@ -515,6 +521,18 @@
     </ClCompile>
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp">
       <Filter>src\HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Landmarks\Landmark.cpp">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Landmarks\Landmarks.cpp">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkBuildings.cpp">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkModifiers.cpp">
+      <Filter>src\HoI4World\Landmarks</Filter>
     </ClCompile>
     <ClCompile Include="src\HOI4World\Leaders\Advisor.cpp">
       <Filter>src\HoI4World\Leaders</Filter>
@@ -974,6 +992,12 @@
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Interface\OutMonarchsInterface.cpp">
       <Filter>src\OutHoi4\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Landmarks\OutLandmark.cpp">
+      <Filter>src\OutHoi4\Landmarks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Landmarks\OutLandmarkBuildings.cpp">
+      <Filter>src\OutHoi4\Landmarks</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Leaders\OutAdvisor.cpp">
       <Filter>src\OutHoi4\Leaders</Filter>
@@ -1682,6 +1706,18 @@
     <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h">
       <Filter>src\HoI4World\IntelligenceAgencies</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\Landmarks\Landmark.h">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Landmarks\Landmarks.h">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Landmarks\LandmarkBuildings.h">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Landmarks\LandmarkModifiers.h">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClInclude>
     <ClInclude Include="src\HOI4World\Leaders\Advisor.h">
       <Filter>src\HoI4World\Leaders</Filter>
     </ClInclude>
@@ -2233,6 +2269,12 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Interface\OutMonarchsInterface.h">
       <Filter>src\OutHoi4\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Landmarks\OutLandmark.h">
+      <Filter>src\OutHoi4\Landmarks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Landmarks\OutLandmarkBuildings.h">
+      <Filter>src\OutHoi4\Landmarks</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Leaders\OutAdvisor.h">
       <Filter>src\OutHoi4\Leaders</Filter>

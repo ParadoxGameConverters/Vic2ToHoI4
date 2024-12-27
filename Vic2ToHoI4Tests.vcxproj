@@ -66,6 +66,7 @@
     <ClCompile Include="src\HOI4World\Ideologies\IdeologyTests.cpp" />
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMappingTests.cpp" />
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp" />
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkBuildingsTests.cpp" />
     <ClCompile Include="src\HOI4World\Leaders\AdvisorTests.cpp" />
     <ClCompile Include="src\HOI4World\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="src\HOI4World\Localisations\ArticleRules\ArticleRulesDefinitionTests.cpp" />
@@ -855,6 +856,9 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Buildings\01_landmark_buildings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Windonws/common/buildings</DestinationFolders>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Buildings\LandmarksMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>

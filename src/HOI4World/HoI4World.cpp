@@ -22,6 +22,7 @@
 #include "src/HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
 #include "src/HOI4World/Map/HoI4Provinces.h"
 #include "src/HOI4World/Map/ImpassableProvinces.h"
+#include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include "src/HOI4World/Map/Railways.h"
 #include "src/HOI4World/Map/StrategicRegion.h"
 #include "src/HOI4World/Map/SupplyNodes.h"
@@ -152,6 +153,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Log(LogLevel::Progress) << "40%";
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	landmarksMapper = Mappers::LandmarksMapper::Factory().importLandmarksMapper();
+	landmarkBuildings = new HoI4::LandmarkBuildings(theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";

@@ -16,6 +16,7 @@
 #include "src/HOI4World/Ideologies/Ideologies.h"
 #include "src/HOI4World/Ideologies/Ideology.h"
 #include "src/HOI4World/IntelligenceAgencies/IntelligenceAgencies.h"
+#include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include "src/HOI4World/Leaders/Advisor.h"
 #include "src/HOI4World/Localisations/ArticleRules/ArticleRules.h"
 #include "src/HOI4World/Map/Buildings.h"
@@ -93,6 +94,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] const auto& getSupplyZones() const { return *supplyZones; }
 	[[nodiscard]] const auto& getBuildings() const { return *buildings; }
+	[[nodiscard]] const auto& getLandmarkBuildings() const { return *landmarkBuildings; }
 	[[nodiscard]] const auto& getSupplyNodes() const { return supplyNodes_; }
 	[[nodiscard]] const auto& getRailways() const { return railways_; }
 	[[nodiscard]] const auto& getDecisions() const { return *theDecisions; }
@@ -264,6 +266,7 @@ class World: commonItems::parser
 	HoI4::SupplyZones* supplyZones = nullptr;
 	std::unique_ptr<StrategicRegions> strategicRegions;
 	Buildings* buildings = nullptr;
+	LandmarkBuildings* landmarkBuildings = nullptr;
 	std::set<int> supplyNodes_;
 	std::unique_ptr<Railways> railways_;
 

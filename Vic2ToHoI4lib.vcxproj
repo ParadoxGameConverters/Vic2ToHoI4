@@ -70,6 +70,10 @@
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
+    <ClCompile Include="src\HOI4World\Landmarks\Landmark.cpp" />
+    <ClCompile Include="src\HOI4World\Landmarks\Landmarks.cpp" />
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkBuildings.cpp" />
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkModifiers.cpp" />
     <ClCompile Include="src\HOI4World\Leaders\Advisor.cpp" />
     <ClCompile Include="src\HOI4World\Leaders\IdeologicalAdvisors.cpp" />
     <ClCompile Include="src\HOI4World\Localisations\AllReplacementRules.cpp" />
@@ -257,6 +261,8 @@
     <ClCompile Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="src\OutHoi4\Interface\OutMonarchsInterface.cpp" />
+    <ClCompile Include="src\OutHoi4\Landmarks\OutLandmark.cpp" />
+    <ClCompile Include="src\OutHoi4\Landmarks\OutLandmarkBuildings.cpp" />
     <ClCompile Include="src\OutHoi4\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutBuilding.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutBuildings.cpp" />
@@ -460,6 +466,10 @@
     <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
     <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h" />
+    <ClInclude Include="src\HOI4World\Landmarks\Landmark.h" />
+    <ClInclude Include="src\HOI4World\Landmarks\Landmarks.h" />
+    <ClInclude Include="src\HOI4World\Landmarks\LandmarkBuildings.h" />
+    <ClInclude Include="src\HOI4World\Landmarks\LandmarModifiers.h" />
     <ClInclude Include="src\HOI4World\Leaders\Advisor.h" />
     <ClInclude Include="src\HOI4World\Leaders\IdeologicalAdvisors.h" />
     <ClInclude Include="src\HOI4World\Localisations\AllReplacementRules.h" />
@@ -702,6 +712,8 @@
     <ClInclude Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h" />
     <ClInclude Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h" />
     <ClInclude Include="src\OutHoi4\Interface\OutMonarchsInterface.h" />
+    <ClInclude Include="src\OutHoi4\Landmarks\OutLandmark.h" />
+    <ClInclude Include="src\OutHoi4\Landmarks\OutLandmarkBuildings.h" />
     <ClInclude Include="src\OutHoi4\Leaders\OutAdvisor.h" />
     <ClInclude Include="src\OutHoi4\Map\OutBuilding.h" />
     <ClInclude Include="src\OutHoi4\Map\OutBuildings.h" />

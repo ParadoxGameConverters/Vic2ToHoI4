@@ -97,6 +97,9 @@
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp">
       <Filter>src\HOI4World\IntelligenceAgencies</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkBuildingsTests.cpp">
+      <Filter>src\HOI4World\Landmarks</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\Localisations\ArticleRules\ArticleRulesDefinitionTests.cpp">
       <Filter>src\HOI4World\Localisations\ArticleRules</Filter>
     </ClCompile>
@@ -690,6 +693,9 @@
     <Filter Include="src\HOI4World\IntelligenceAgencies">
       <UniqueIdentifier>{0b0d1e2e-cfeb-4133-877a-78148a319fa6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\HOI4World\Landmarks">
+      <UniqueIdentifier>{9d693e42-c3ce-4007-b430-8d3bc6b00614}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\HOI4World\Leaders">
       <UniqueIdentifier>{9d693e42-c3ce-4007-b430-8d3bc6b00614}</UniqueIdentifier>
     </Filter>
@@ -1093,6 +1099,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Buildings\01_landmark_buildings.txt">
+      <Filter>data\test_files\Buildings</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Buildings\LandmarksMappings.txt">
       <Filter>data\test_files\Buildings</Filter>
     </CopyFileToFolders>
