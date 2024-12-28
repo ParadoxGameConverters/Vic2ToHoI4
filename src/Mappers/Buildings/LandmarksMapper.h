@@ -18,6 +18,7 @@ class LandmarksMapper
 	class Factory;
 
 	[[nodiscard]] const auto& getMappings() const { return mappings; }
+	[[nodiscard]] std::optional<int> getLocation(const std::string& landmark) const;
 
   private:
 	std::vector<LandmarksMapping> mappings;

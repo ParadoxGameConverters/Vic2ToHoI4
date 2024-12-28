@@ -154,6 +154,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	landmarksMapper = Mappers::LandmarksMapper::Factory().importLandmarksMapper();
 	landmarkBuildings = new HoI4::LandmarkBuildings(theConfiguration);
+	landmarkBuildings->updateBuildings(states->getStates(), *landmarksMapper);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";

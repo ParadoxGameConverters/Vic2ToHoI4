@@ -6,6 +6,8 @@
 #include "external/common_items/ConvenientParser.h"
 #include "src/Configuration.h"
 #include "src/HOI4World/Landmarks/Landmark.h"
+#include "src/HOI4World/States/HoI4State.h"
+#include "src/Mappers/Buildings/LandmarksMapper.h"
 #include <map>
 
 
@@ -20,6 +22,7 @@ class LandmarkBuildings: commonItems::parser
 
 	void importDefaultLandmarkBuildings(const Configuration& theConfiguration);
 	void registerKeywords();
+	void updateBuildings(const std::map<int, State>& states, const Mappers::LandmarksMapper& landmarksMapper);
 
 	[[nodiscard]] const auto& getConstants() const { return constants; }
 	[[nodiscard]] const auto& getBuildings() const { return buildings; }

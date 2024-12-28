@@ -32,3 +32,30 @@ void HoI4::LandmarkBuildings::registerKeywords()
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
+
+void HoI4::LandmarkBuildings::updateBuildings(const std::map<int, State>& states,
+	const Mappers::LandmarksMapper& landmarksMapper)
+{
+	for (const auto& [name, landmark]: buildings)
+	{
+		const auto& location = landmarksMapper.getLocation(name);
+		if (!location)
+		{
+			continue;
+		}
+		
+		const auto& stateItr = std::find_if(states.begin(), states.end(),
+			[location](const std::pair<int, State>& state) {
+				return state.second.getProvinces().contains(*location);
+			});
+		if (stateItr == states.end())
+		{
+			Log(LogLevel::Warning) << "Couldn't find state for " << name << " location " << *location;
+			continue;
+		}
+
+		const auto& ownerTag = stateItr->second.getOwner();
+
+		landmark->setEnabledControllers({ownerTag});
+	}
+}

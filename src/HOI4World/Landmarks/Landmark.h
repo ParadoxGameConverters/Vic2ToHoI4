@@ -16,6 +16,10 @@ class Landmark: commonItems::parser
   public:
 	Landmark(const std::string& landmarkName, std::istream& theStream);
 
+	void setEnabledControllers(const std::vector<std::string>& tags) {
+		countryModifiers->setEnabledControllers(tags);
+	}
+
 	const auto& getEnabledControllers() const { return countryModifiers->getEnabledControllers(); }
 	const auto& getModifiers() const { return countryModifiers->getModifiers(); }
 

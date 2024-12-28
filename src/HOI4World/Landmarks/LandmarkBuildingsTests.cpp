@@ -1,5 +1,8 @@
 #include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Landmarks/LandmarkBuildings.h"
+#include "src/HOI4World/States/HoI4State.h"
+#include "src/V2World/States/StateBuilder.h"
+#include "src/Mappers/Buildings/LandmarksMapperFactory.h"
 #include <sstream>
 
 
@@ -121,4 +124,31 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, LandmarksCanBeImported)
 	expectedOutput << "\t}\n";
 
 	EXPECT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_Landmarks_LandmarkBuildingsTests, EnabledControllersCanBeSet)
+{
+	std::stringstream input;
+	input << R"(HoI4directory = "./HoI4Windows")";
+	const commonItems::ConverterVersion converterVersion;
+	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
+
+	auto landmarkBuildings = HoI4::LandmarkBuildings(*theConfiguration);
+
+	const auto mapper = Mappers::LandmarksMapper::Factory().importLandmarksMapper();
+
+	const auto sourceState = *Vic2::State::Builder().build();
+	HoI4::State theState(sourceState, 123, "X01");
+	theState.addProvince(42);
+	std::map<int, HoI4::State> states = {{123, theState}};
+
+	landmarkBuildings.updateBuildings(states, *mapper);
+
+	const auto& landmarks = landmarkBuildings.getBuildings();
+	ASSERT_TRUE(landmarks.contains("landmark_test"));
+
+	const auto& controllers = landmarks.at("landmark_test")->getEnabledControllers();
+
+	EXPECT_EQ(std::vector<std::string>{"X01"}, controllers);
 }
