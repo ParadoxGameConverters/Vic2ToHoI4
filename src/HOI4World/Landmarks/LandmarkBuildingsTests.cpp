@@ -1,11 +1,10 @@
 #include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
-#include "external/common_items/Log.h"
 #include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include <sstream>
 
 
 
-TEST(HoI4World_Landmarks_LandmarkBuildingsTests, LandmarkBuildingsCanBeImported)
+TEST(HoI4World_Landmarks_LandmarkBuildingsTests, DefaultLandmarkBuildingsCanBeImported)
 {
 	std::stringstream input;
 	input << R"(HoI4directory = "./HoI4Windows")";
@@ -76,7 +75,6 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, SpawnPointsCanBeImported)
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
 
 	auto landmarkBuildings = HoI4::LandmarkBuildings(*theConfiguration);
-	Log(LogLevel::Info) << landmarkBuildings.getSpawnPoints();
 
 	std::stringstream spawnPoints;
 	spawnPoints << "= {\n";
@@ -102,7 +100,6 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, LandmarksCanBeImported)
 	const auto& landmarks = landmarkBuildings.getBuildings();
 
 	ASSERT_FALSE(landmarks.empty());
-	Log(LogLevel::Info) << *landmarks.begin();
 
 	std::stringstream output;
 	output << *landmarks.begin();

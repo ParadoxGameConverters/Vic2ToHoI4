@@ -16,7 +16,7 @@ class Landmark: commonItems::parser
   public:
 	Landmark(const std::string& landmarkName, std::istream& theStream);
 
-	const auto& getEnableForControllers() const { return countryModifiers->getEnableForControllers(); }
+	const auto& getEnabledControllers() const { return countryModifiers->getEnabledControllers(); }
 	const auto& getModifiers() const { return countryModifiers->getModifiers(); }
 
 	[[nodiscard]] const auto& getName() { return name; }
@@ -26,7 +26,7 @@ class Landmark: commonItems::parser
 
   private:
 	std::string name;
-	LandmarkModifiers* countryModifiers;
+	std::shared_ptr<LandmarkModifiers> countryModifiers;
 	std::vector<std::pair<std::string, std::string>> properties;
 };
 

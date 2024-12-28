@@ -19,8 +19,6 @@ class Landmarks: commonItems::parser
 
 	[[nodiscard]] const auto& getBuildings() const { return buildings; }
 
-	friend std::ostream& operator<<(std::ostream& outStream, const Landmarks& outLandmarks);
-
   private:
 	std::vector<Landmark> buildings;
 };

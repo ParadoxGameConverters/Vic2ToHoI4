@@ -469,7 +469,7 @@
     <ClInclude Include="src\HOI4World\Landmarks\Landmark.h" />
     <ClInclude Include="src\HOI4World\Landmarks\Landmarks.h" />
     <ClInclude Include="src\HOI4World\Landmarks\LandmarkBuildings.h" />
-    <ClInclude Include="src\HOI4World\Landmarks\LandmarModifiers.h" />
+    <ClInclude Include="src\HOI4World\Landmarks\LandmarkModifiers.h" />
     <ClInclude Include="src\HOI4World\Leaders\Advisor.h" />
     <ClInclude Include="src\HOI4World\Leaders\IdeologicalAdvisors.h" />
     <ClInclude Include="src\HOI4World\Localisations\AllReplacementRules.h" />

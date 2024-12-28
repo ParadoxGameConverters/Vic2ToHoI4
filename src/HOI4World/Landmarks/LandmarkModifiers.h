@@ -15,13 +15,11 @@ class LandmarkModifiers: commonItems::parser
   public:
 	LandmarkModifiers(std::istream& theStream);
 
-  const auto& getEnableForControllers() const { return enableForControllers; }
+  const auto& getEnabledControllers() const { return enabledControllers; }
   const auto& getModifiers() const { return modifiers; }
 
-	friend std::ostream& operator<<(std::ostream& outStream, const LandmarkModifiers& outLandmarkModifiers);
-
   private:
-  std::string enableForControllers;
+  std::vector<std::string> enabledControllers;
   std::string modifiers;
 };
 

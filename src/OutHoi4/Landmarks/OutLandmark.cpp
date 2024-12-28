@@ -13,7 +13,12 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const Landmark& outLandm
 	}
 
 	outStream << "\t\tcountry_modifiers = {\n";
-	outStream << "\t\t\tenable_for_controllers " << outLandmark.getEnableForControllers() << "\n";
+	outStream << "\t\t\tenable_for_controllers = { ";
+	for (const auto& tag: outLandmark.getEnabledControllers())
+	{
+		outStream << tag << " ";
+	}
+	outStream << "}\n";
 	outStream << "\t\t\tmodifiers " << outLandmark.getModifiers() << "\n";
 	outStream << "\t\t}\n"; 
 	outStream << "\t}\n";

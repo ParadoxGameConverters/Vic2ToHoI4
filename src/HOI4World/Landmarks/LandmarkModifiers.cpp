@@ -6,7 +6,7 @@
 HoI4::LandmarkModifiers::LandmarkModifiers(std::istream& theStream)
 {
 	registerKeyword("enable_for_controllers", [this](std::istream& theStream) {
-		enableForControllers = commonItems::stringOfItem{theStream}.getString();
+		enabledControllers = commonItems::stringList{theStream}.getStrings();
 	});
 	registerKeyword("modifiers", [this](std::istream& theStream) {
 		modifiers = commonItems::stringOfItem{theStream}.getString();
