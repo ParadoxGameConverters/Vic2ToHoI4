@@ -8,7 +8,7 @@ HoI4::Landmarks::Landmarks(std::istream& theStream)
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& landmarkName, std::istream& theStream) {
 		const Landmark newLandmark(landmarkName, theStream);
-		buildings.push_back(newLandmark);
+		buildings[landmarkName] = std::make_shared<HoI4::Landmark>(newLandmark);
 	});
 
 	parseStream(theStream);

@@ -7,7 +7,6 @@
 #include "src/Configuration.h"
 #include "src/HOI4World/Landmarks/Landmark.h"
 #include <map>
-#include <vector>
 
 
 
@@ -30,7 +29,7 @@ class LandmarkBuildings: commonItems::parser
 
   private:
 	std::map<std::string, double> constants;
-	std::vector<Landmark> buildings;
+	std::map<std::string, std::shared_ptr<Landmark>> buildings;
 	std::string spawnPoints;
 };
 

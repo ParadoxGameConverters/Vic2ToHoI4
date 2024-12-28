@@ -5,7 +5,7 @@
 
 #include "external/common_items/ConvenientParser.h"
 #include "src/HOI4World/Landmarks/Landmark.h"
-#include <vector>
+#include <map>
 
 
 
@@ -20,7 +20,7 @@ class Landmarks: commonItems::parser
 	[[nodiscard]] const auto& getBuildings() const { return buildings; }
 
   private:
-	std::vector<Landmark> buildings;
+	std::map<std::string, std::shared_ptr<Landmark>> buildings;
 };
 
 } // namespace HoI4

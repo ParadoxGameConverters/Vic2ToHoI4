@@ -26,10 +26,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const HoI4::LandmarkBuil
 	outStream << "\n";
 
 	outStream << "buildings = {\n";
-	for (const auto& building: outLandmarkBuildings.getBuildings())
+	for (const auto& building: outLandmarkBuildings.getBuildings() | std::views::values)
 	{
 		outStream << "\n";
-		outStream << building;
+		outStream << *building;
 	}
 	outStream << "}\n";
 	outStream << "\n";

@@ -102,7 +102,7 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, LandmarksCanBeImported)
 	ASSERT_FALSE(landmarks.empty());
 
 	std::stringstream output;
-	output << *landmarks.begin();
+	output << *landmarks.begin()->second;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\tlandmark_test = {\n";
