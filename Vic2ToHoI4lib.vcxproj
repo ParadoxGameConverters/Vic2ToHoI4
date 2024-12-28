@@ -191,6 +191,7 @@
     <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp" />
     <ClCompile Include="src\HOI4World\WarCreator\HoI4WarCreator.cpp" />
     <ClCompile Include="src\HOI4World\WarCreator\MapUtils.cpp" />
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMapper.cpp" />
     <ClCompile Include="src\Mappers\Buildings\LandmarksMapperFactory.cpp" />
     <ClCompile Include="src\Mappers\Buildings\LandmarksMappingFactory.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.cpp" />

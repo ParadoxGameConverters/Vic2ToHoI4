@@ -1173,6 +1173,9 @@
     <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp">
       <Filter>src\OutHoi4\UnitMedals</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMapper.cpp">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClCompile>
     <ClCompile Include="src\Mappers\Buildings\LandmarksMapperFactory.cpp">
       <Filter>src\Mappers\Buildings</Filter>
     </ClCompile>
