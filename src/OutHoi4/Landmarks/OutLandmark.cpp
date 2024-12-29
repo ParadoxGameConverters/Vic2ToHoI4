@@ -19,7 +19,11 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const Landmark& outLandm
 		outStream << tag << " ";
 	}
 	outStream << "}\n";
-	outStream << "\t\t\tmodifiers " << outLandmark.getModifiers() << "\n";
+
+	if (!outLandmark.getModifiers().empty())
+	{
+		outStream << "\t\t\tmodifiers " << outLandmark.getModifiers() << "\n";
+	}
 	outStream << "\t\t}\n"; 
 	outStream << "\t}\n";
 

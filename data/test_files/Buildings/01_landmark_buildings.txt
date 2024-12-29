@@ -16,6 +16,10 @@ buildings = {
 			}
 		}
 	}
+
+	landmark_unmapped = {
+		country_modifiers = { }
+	}
 }
 
 spawn_points = {

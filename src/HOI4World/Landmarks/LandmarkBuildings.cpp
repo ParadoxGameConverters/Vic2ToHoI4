@@ -36,11 +36,14 @@ void HoI4::LandmarkBuildings::registerKeywords()
 void HoI4::LandmarkBuildings::updateBuildings(const std::map<int, State>& states,
 	const Mappers::LandmarksMapper& landmarksMapper)
 {
+	std::map<std::string, std::shared_ptr<Landmark>> outBuildings;
+
 	for (const auto& [name, landmark]: buildings)
 	{
 		const auto& location = landmarksMapper.getLocation(name);
 		if (!location)
 		{
+			Log(LogLevel::Warning) << "No landmark location mapping for " << name;
 			continue;
 		}
 		
@@ -57,5 +60,8 @@ void HoI4::LandmarkBuildings::updateBuildings(const std::map<int, State>& states
 		const auto& ownerTag = stateItr->second.getOwner();
 
 		landmark->setEnabledControllers({ownerTag});
+		outBuildings.insert({name, landmark});
 	}
+
+	buildings = std::move(outBuildings);
 }

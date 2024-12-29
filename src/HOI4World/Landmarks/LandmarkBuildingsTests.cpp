@@ -3,6 +3,7 @@
 #include "src/HOI4World/States/HoI4State.h"
 #include "src/V2World/States/StateBuilder.h"
 #include "src/Mappers/Buildings/LandmarksMapperFactory.h"
+#include <gmock/gmock-matchers.h>
 #include <sstream>
 
 
@@ -36,6 +37,12 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, DefaultLandmarkBuildingsCanBeIm
 	expectedOutput << "\t\t\t\tmodifier_one = 0.1\n";
 	expectedOutput << "\t\t\t\tmodifier_two = 0.2\n";
 	expectedOutput << "\t\t\t}\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tlandmark_unmapped = {\n";
+	expectedOutput << "\t\tcountry_modifiers = {\n";
+	expectedOutput << "\t\t\tenable_for_controllers = { }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
@@ -151,4 +158,63 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, EnabledControllersCanBeSet)
 	const auto& controllers = landmarks.at("landmark_test")->getEnabledControllers();
 
 	EXPECT_EQ(std::vector<std::string>{"X01"}, controllers);
+}
+
+
+TEST(HoI4World_Landmarks_LandmarkBuildingsTests, UnmappedLandmarksLogWarning)
+{
+	std::stringstream input;
+	input << R"(HoI4directory = "./HoI4Windows")";
+	const commonItems::ConverterVersion converterVersion;
+	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
+
+	auto landmarkBuildings = HoI4::LandmarkBuildings(*theConfiguration);
+
+	const auto mapper = Mappers::LandmarksMapper::Factory().importLandmarksMapper();
+	std::map<int, HoI4::State> states;
+
+	const std::stringstream log;
+	auto* const stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+
+	landmarkBuildings.updateBuildings(states, *mapper);
+
+	std::cout.rdbuf(stdOutBuf);
+
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No landmark location mapping for landmark_unmapped"));
+}
+
+
+TEST(HoI4World_Landmarks_LandmarkBuildingsTests, UnmappedLandmarksAreNotOutput)
+{
+	std::stringstream input;
+	input << R"(HoI4directory = "./HoI4Windows")";
+	const commonItems::ConverterVersion converterVersion;
+	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
+
+	auto landmarkBuildings = HoI4::LandmarkBuildings(*theConfiguration);
+
+	const auto mapper = Mappers::LandmarksMapper::Factory().importLandmarksMapper();
+	std::map<int, HoI4::State> states;
+
+	landmarkBuildings.updateBuildings(states, *mapper);
+
+	std::stringstream output;
+	output << landmarkBuildings;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "@landmark_constant = 0.1\n";
+	expectedOutput << "\n";
+	expectedOutput << "buildings = {\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "spawn_points = {\n";
+	expectedOutput << "\tlandmark_spawn = {\n";
+	expectedOutput << "\t\ttype = province\n";
+	expectedOutput << "\t\tmax = 1\n";
+	expectedOutput << "\t\tdisable_auto_nudging = yes\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}";
+
+	EXPECT_EQ(expectedOutput.str(), output.str());
 }
