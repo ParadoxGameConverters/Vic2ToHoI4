@@ -40,6 +40,12 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, DefaultLandmarkBuildingsCanBeIm
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\n";
+	expectedOutput << "\tlandmark_unbuilt = {\n";
+	expectedOutput << "\t\tcountry_modifiers = {\n";
+	expectedOutput << "\t\t\tenable_for_controllers = { }\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
 	expectedOutput << "\tlandmark_unmapped = {\n";
 	expectedOutput << "\t\tcountry_modifiers = {\n";
 	expectedOutput << "\t\t\tenable_for_controllers = { }\n";

@@ -2,13 +2,16 @@
 # Unmapped buildings will not be output to the conversion mod
 # Location represents the province ID where the landmark gets placed
 # Original locations are defined inside /history/states in the corresponding state file
+# or the NF that builds the landmark if it's unbuilt
+# Built entry defines if the landmark will show up as built in the conversion
+# By default, landmarks assigned in HoI4 /history/states are built
 
-link = { building = landmark_big_ben location = 6103 }
-link = { building = landmark_colosseum location = 9904 }
-link = { building = landmark_cristo_redentor location = 10980 }
-link = { building = landmark_eiffel_tower location = 9523 }
-link = { building = landmark_statue_of_liberty location = 3878 }
-link = { building = landmark_kremlin location = 6380 }
-link = { building = landmark_hofburg_palace location = 11666 }
-link = { building = landmark_berlin_reichstag location = 6521 }
-link = { building = landmark_berlin_volkshalle location = 6521 }
+link = { building = landmark_big_ben location = 6103 built = yes }
+link = { building = landmark_colosseum location = 9904 built = yes }
+link = { building = landmark_cristo_redentor location = 10980 built = yes }
+link = { building = landmark_eiffel_tower location = 9523 built = yes }
+link = { building = landmark_statue_of_liberty location = 3878 built = yes }
+link = { building = landmark_kremlin location = 6380 built = yes }
+link = { building = landmark_hofburg_palace location = 11666 built = yes }
+link = { building = landmark_berlin_reichstag location = 6521 built = yes }
+link = { building = landmark_berlin_volkshalle location = 6521 built = no }

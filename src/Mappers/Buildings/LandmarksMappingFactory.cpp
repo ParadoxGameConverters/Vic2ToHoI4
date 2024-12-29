@@ -12,6 +12,9 @@ Mappers::LandmarksMappingFactory::LandmarksMappingFactory()
 	registerKeyword("location", [this](std::istream& theStream) {
 		landmarksMapping->location = commonItems::singleInt{theStream}.getInt();
 	});
+	registerKeyword("built", [this](std::istream& theStream) {
+		landmarksMapping->built = commonItems::singleString{theStream}.getString() == "yes";
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

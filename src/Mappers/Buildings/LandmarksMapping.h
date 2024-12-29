@@ -13,6 +13,7 @@ struct LandmarksMapping
 {
 	std::string building;
 	int location = 0;
+	bool built = false;
 };
 
 } // namespace Mappers

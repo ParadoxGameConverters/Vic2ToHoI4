@@ -20,6 +20,10 @@ buildings = {
 	landmark_unmapped = {
 		country_modifiers = { }
 	}
+
+	landmark_unbuilt = {
+		country_modifiers = { }
+	}
 }
 
 spawn_points = {

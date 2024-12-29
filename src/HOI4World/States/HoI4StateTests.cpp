@@ -815,7 +815,7 @@ TEST(HoI4World_States_StateTests, EmptyLandmarksAreNotAssigned)
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.addProvince(12);
-	theState.addLandmark("", 12);
+	theState.addLandmark("", 12, true);
 
 	EXPECT_TRUE(theState.getLandmarks().empty());
 }
@@ -826,7 +826,18 @@ TEST(HoI4World_States_StateTests, LandmarksAreNotAssignedWhenLocationNotInState)
 	const auto sourceState = *Vic2::State::Builder().build();
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	theState.addLandmark("landmark_test", 12);
+	theState.addLandmark("landmark_test", 12, true);
+
+	EXPECT_TRUE(theState.getLandmarks().empty());
+}
+
+
+TEST(HoI4World_States_StateTests, UnbuiltLandmarksAreNotAssigned)
+{
+	const auto sourceState = *Vic2::State::Builder().build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	theState.addLandmark("landmark_test", 12, false);
 
 	EXPECT_TRUE(theState.getLandmarks().empty());
 }
@@ -838,7 +849,7 @@ TEST(HoI4World_States_StateTests, LandmarksCanBeAssigned)
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.addProvince(12);
-	theState.addLandmark("landmark_test", 12);
+	theState.addLandmark("landmark_test", 12, true);
 
     std::stringstream expectedOutput;
  	expectedOutput << "\n";

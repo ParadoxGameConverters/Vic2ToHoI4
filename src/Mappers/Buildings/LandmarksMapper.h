@@ -19,6 +19,7 @@ class LandmarksMapper
 
 	[[nodiscard]] const auto& getMappings() const { return mappings; }
 	[[nodiscard]] std::optional<int> getLocation(const std::string& landmark) const;
+	[[nodiscard]] bool getBuilt(const std::string& landmark) const;
 
   private:
 	std::vector<LandmarksMapping> mappings;
