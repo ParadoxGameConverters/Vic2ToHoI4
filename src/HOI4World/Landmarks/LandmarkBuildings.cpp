@@ -1,5 +1,6 @@
 #include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include "external/common_items/CommonRegexes.h"
+#include "external/common_items/Log.h"
 #include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/Landmarks/Landmarks.h"
 
@@ -34,7 +35,7 @@ void HoI4::LandmarkBuildings::registerKeywords()
 }
 
 void HoI4::LandmarkBuildings::updateBuildings(const std::map<int, State>& states,
-	const Mappers::LandmarksMapper& landmarksMapper)
+	 const Mappers::LandmarksMapper& landmarksMapper)
 {
 	std::map<std::string, std::shared_ptr<Landmark>> outBuildings;
 
@@ -46,11 +47,10 @@ void HoI4::LandmarkBuildings::updateBuildings(const std::map<int, State>& states
 			Log(LogLevel::Warning) << "No landmark location mapping for " << name;
 			continue;
 		}
-		
-		const auto& stateItr = std::find_if(states.begin(), states.end(),
-			[location](const std::pair<int, State>& state) {
-				return state.second.getProvinces().contains(*location);
-			});
+
+		const auto& stateItr = std::find_if(states.begin(), states.end(), [location](const std::pair<int, State>& state) {
+			return state.second.getProvinces().contains(*location);
+		});
 		if (stateItr == states.end())
 		{
 			Log(LogLevel::Warning) << "Couldn't find state for " << name << " location " << *location;

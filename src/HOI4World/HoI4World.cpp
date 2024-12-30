@@ -14,6 +14,7 @@
 #include "src/HOI4World/HoI4FocusTree.h"
 #include "src/HOI4World/HoI4Localisation.h"
 #include "src/HOI4World/Ideas/Ideas.h"
+#include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include "src/HOI4World/Leaders/Advisor.h"
 #include "src/HOI4World/Leaders/IdeologicalAdvisors.h"
 #include "src/HOI4World/Localisations/ArticleRules/ArticleRules.h"
@@ -22,7 +23,6 @@
 #include "src/HOI4World/Map/HoI4ProvinceDefinitionImporter.h"
 #include "src/HOI4World/Map/HoI4Provinces.h"
 #include "src/HOI4World/Map/ImpassableProvinces.h"
-#include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include "src/HOI4World/Map/Railways.h"
 #include "src/HOI4World/Map/StrategicRegion.h"
 #include "src/HOI4World/Map/SupplyNodes.h"
@@ -97,8 +97,8 @@ void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
 HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
-	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), events(make_unique<HoI4::Events>()),
-	 onActions(make_unique<HoI4::OnActions>())
+	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)),
+	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
 {
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";

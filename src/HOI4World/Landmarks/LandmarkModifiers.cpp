@@ -1,4 +1,5 @@
 #include "src/HOI4World/Landmarks/LandmarkModifiers.h"
+#include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
 
 

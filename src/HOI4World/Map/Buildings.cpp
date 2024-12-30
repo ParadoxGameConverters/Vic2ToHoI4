@@ -745,7 +745,8 @@ void HoI4::Buildings::placeNuclearReactors(const States& theStates, const Maps::
 				thePosition.yCoordinate = 11.0;
 				thePosition.zCoordinate = centermostPoint.second;
 				thePosition.rotation = 0;
-				buildings.insert(std::make_pair(state.first, Building(state.first, "nuclear_reactor_spawn", thePosition, 0)));
+				buildings.insert(
+					 std::make_pair(state.first, Building(state.first, "nuclear_reactor_spawn", thePosition, 0)));
 			}
 			else
 			{

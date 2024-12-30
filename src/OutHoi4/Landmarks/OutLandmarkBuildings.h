@@ -14,7 +14,7 @@ void outputLandmarkBuildings(const LandmarkBuildings& landmarkBuildings, const s
 
 std::ostream& operator<<(std::ostream& outStream, const LandmarkBuildings& outLandmarkBuildings);
 
-}
+} // namespace HoI4
 
 
 

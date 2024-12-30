@@ -24,7 +24,7 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const Landmark& outLandm
 	{
 		outStream << "\t\t\tmodifiers " << outLandmark.getModifiers() << "\n";
 	}
-	outStream << "\t\t}\n"; 
+	outStream << "\t\t}\n";
 	outStream << "\t}\n";
 
 	return outStream;

@@ -851,8 +851,8 @@ TEST(HoI4World_States_StateTests, LandmarksCanBeAssigned)
 	theState.addProvince(12);
 	theState.addLandmark("landmark_test", 12, true);
 
-    std::stringstream expectedOutput;
- 	expectedOutput << "\n";
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
 	expectedOutput << "state={"
 						<< "\n";
 	expectedOutput << "\tid=42\n";
@@ -866,13 +866,13 @@ TEST(HoI4World_States_StateTests, LandmarksCanBeAssigned)
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";
 	expectedOutput << "\t\t\t12 = {\n";
-    expectedOutput << "\t\t\t\tlandmark_test = {\n";
-    expectedOutput << "\t\t\t\t\tlevel = 1\n";
-    expectedOutput << "\t\t\t\t\tallowed = {\n";
-    expectedOutput << "\t\t\t\t\t\thas_dlc = \"Gotterdammerung\"\n";
-    expectedOutput << "\t\t\t\t\t}\n";
-    expectedOutput << "\t\t\t\t}\n";
-    expectedOutput << "\t\t\t}\n";
+	expectedOutput << "\t\t\t\tlandmark_test = {\n";
+	expectedOutput << "\t\t\t\t\tlevel = 1\n";
+	expectedOutput << "\t\t\t\t\tallowed = {\n";
+	expectedOutput << "\t\t\t\t\t\thas_dlc = \"Gotterdammerung\"\n";
+	expectedOutput << "\t\t\t\t\t}\n";
+	expectedOutput << "\t\t\t\t}\n";
+	expectedOutput << "\t\t\t}\n";
 	expectedOutput << "\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
@@ -888,8 +888,8 @@ TEST(HoI4World_States_StateTests, LandmarksCanBeAssigned)
 	expectedOutput << "\tlocal_supplies=10.0\n";
 	expectedOutput << "}\n";
 
-    std::stringstream output;
-    outputHoI4State(output, theState, false);
+	std::stringstream output;
+	outputHoI4State(output, theState, false);
 
-    EXPECT_EQ(expectedOutput.str(), output.str());
+	EXPECT_EQ(expectedOutput.str(), output.str());
 }

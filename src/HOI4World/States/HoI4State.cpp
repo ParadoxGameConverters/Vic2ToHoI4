@@ -106,7 +106,7 @@ bool HoI4::State::addLandmark(const std::string& landmark, int location, bool is
 		landmarks[landmark] = location;
 		return true;
 	}
-	
+
 	return false;
 }
 
