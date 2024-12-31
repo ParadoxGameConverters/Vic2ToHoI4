@@ -1,0 +1,31 @@
+adjacency_rule =
+{
+	name = "CANAL"
+
+	rule =
+	{
+		army = no
+		navy = no
+		submarine = no
+		trade = no
+	}
+	
+	required_provinces = { 42 1234 }
+
+	is_disabled = {
+		OR = {
+			has_global_flag = CANAL_BLOCKED
+			has_country_flag = CANAL_BLOCKED_FOR_COUNTRY
+			$STATE = {
+				has_dynamic_modifier = {
+					modifier = canal_damaged_modifier
+					scope = THIS
+				}
+			}
+		}
+		tooltip = canal_damaged_tt
+	}
+		
+	icon = 7617
+	offset = { -3 0 -2 }
+}

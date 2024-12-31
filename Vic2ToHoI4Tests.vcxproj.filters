@@ -130,6 +130,9 @@
     <ClCompile Include="src\HOI4World\Map\ActualResourcesTests.cpp">
       <Filter>src\HOI4World\Map</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\AdjacencyRulesTests.cpp">
+      <Filter>src\HOI4World\Map</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\Map\Hoi4BuildingTests.cpp">
       <Filter>src\HOI4World\Map</Filter>
     </ClCompile>
