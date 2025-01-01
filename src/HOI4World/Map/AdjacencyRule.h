@@ -4,6 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/States/HoI4State.h"
 #include <map>
 #include <optional>
 #include <vector>
@@ -17,6 +18,8 @@ class AdjacencyRule: commonItems::parser
 {
   public:
 	AdjacencyRule(std::istream& theStream);
+
+	void updateIsDisabledStr(const std::map<int, State>& states);
 
 	[[nodiscard]] const auto& getName() const { return name; }
 	[[nodiscard]] const auto& getRules() const { return rules; }

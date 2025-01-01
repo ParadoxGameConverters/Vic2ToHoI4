@@ -3,14 +3,16 @@
 #include "external/common_items/Log.h"
 #include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/Map/AdjacencyRule.h"
+#include <ranges>
 
 
 
-HoI4::AdjacencyRules::AdjacencyRules()
+HoI4::AdjacencyRules::AdjacencyRules(const std::map<int, State>& states)
 {
 	Log(LogLevel::Info) << "\tImporting adjacency rules";
 
 	importDefaultAdjacencyRules();
+	updateRules(states);
 }
 
 void HoI4::AdjacencyRules::importDefaultAdjacencyRules()
@@ -27,4 +29,12 @@ void HoI4::AdjacencyRules::registerKeywords()
 		rules[newRule.getName()] = std::make_shared<AdjacencyRule>(newRule);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+}
+
+void HoI4::AdjacencyRules::updateRules(const std::map<int, State>& states)
+{
+	for (const auto& rule: rules | std::views::values)
+	{
+		rule->updateIsDisabledStr(states);
+	}
 }

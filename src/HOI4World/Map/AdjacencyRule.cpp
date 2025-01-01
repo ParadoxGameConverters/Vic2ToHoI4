@@ -1,6 +1,7 @@
 #include "src/HOI4World/Map/AdjacencyRule.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
+#include <algorithm>
 
 
 
@@ -28,4 +29,30 @@ HoI4::AdjacencyRule::AdjacencyRule(std::istream& theStream)
 
 	parseStream(theStream);
 	clearRegisteredKeywords();
+}
+
+void HoI4::AdjacencyRule::updateIsDisabledStr(const std::map<int, State>& states)
+{
+	if (!isDisabledStr)
+	{
+		return;
+	}
+	std::string placeholder = "$STATE";
+	size_t pos = isDisabledStr->find(placeholder);
+	if (pos == std::string::npos)
+	{
+		return;
+	}
+
+	// `icon` contains province ID whose state gets the disabling modifier
+	const auto& stateItr = std::find_if(states.begin(), states.end(), [this](const std::pair<int, State>& state) {
+		return state.second.getProvinces().contains(this->getIcon());
+	});
+	if (stateItr == states.end())
+	{
+		return;
+	}
+	const auto& stateId = std::to_string(stateItr->first);
+
+	isDisabledStr->replace(pos, placeholder.size(), stateId);
 }

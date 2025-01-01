@@ -19,6 +19,7 @@
 #include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include "src/HOI4World/Leaders/Advisor.h"
 #include "src/HOI4World/Localisations/ArticleRules/ArticleRules.h"
+#include "src/HOI4World/Map/AdjacencyRules.h"
 #include "src/HOI4World/Map/Buildings.h"
 #include "src/HOI4World/Map/CoastalProvinces.h"
 #include "src/HOI4World/Map/Railway.h"
@@ -131,6 +132,7 @@ class World: commonItems::parser
 	[[nodiscard]] const std::map<std::string, std::string>& GetUnitMedals() const { return ideological_unit_medals_; }
 
 	[[nodiscard]] const std::vector<std::string>& GetDynamicAiPeace() const { return dynamic_ai_peace_; }
+	[[nodiscard]] const auto& getAdjacencyRules() const { return adjacencyRules->getRules(); }
 
 	const std::map<int, HoI4::State>& getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
@@ -267,6 +269,7 @@ class World: commonItems::parser
 	std::unique_ptr<StrategicRegions> strategicRegions;
 	Buildings* buildings = nullptr;
 	LandmarkBuildings* landmarkBuildings = nullptr;
+	std::unique_ptr<AdjacencyRules> adjacencyRules;
 	std::set<int> supplyNodes_;
 	std::unique_ptr<Railways> railways_;
 

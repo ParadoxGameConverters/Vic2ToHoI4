@@ -16,7 +16,7 @@ namespace HoI4
 class AdjacencyRules: commonItems::parser
 {
   public:
-	explicit AdjacencyRules();
+	explicit AdjacencyRules(const std::map<int, State>& states);
 
 	void importDefaultAdjacencyRules();
 	void registerKeywords();

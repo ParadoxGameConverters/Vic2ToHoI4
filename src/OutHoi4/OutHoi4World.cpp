@@ -77,6 +77,8 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const date& vic2Date,
 	 const std::string& outputName);
 void copyAdjustedFocusFiles(const std::string& outputName, const std::vector<std::string>& branchNames);
+void outputAdjacencyRules(const std::string& outputName,
+	 const std::map<std::string, std::shared_ptr<AdjacencyRule>> rules);
 
 } // namespace HoI4
 
@@ -248,6 +250,7 @@ void HoI4::OutputWorld(const World& world,
 	OutputCostModifiers(outputName, world.getMajorIdeologies(), world.GetIdeologicalCostModifiers());
 	OutputAiPeace(outputName, world.getMajorIdeologies(), world.GetIdeologicalAiPeace(), world.GetDynamicAiPeace());
 	OutputUnitMedals(outputName, world.getMajorIdeologies(), world.GetUnitMedals());
+	outputAdjacencyRules(outputName, world.getAdjacencyRules());
 }
 
 
@@ -653,4 +656,21 @@ void HoI4::copyAdjustedFocusFiles(const std::string& outputName, const std::vect
 	{
 		commonItems::CopyFolder("Configurables/CustomizedFocusBranches/" + branch, "output/" + outputName);
 	}
+}
+
+void HoI4::outputAdjacencyRules(const std::string& outputName,
+	 const std::map<std::string, std::shared_ptr<AdjacencyRule>> adjacencyRules)
+{
+	std::ofstream outputFile("output/" + outputName + "/map/adjacency_rules.txt");
+	if (!outputFile.is_open())
+	{
+		throw std::runtime_error(
+			 "Could not create output/" + outputName + "/map/adjacency_rules.txt");
+	}
+
+	for (const auto& rule: adjacencyRules | std::views::values)
+	{
+		outputFile << *rule;
+	}
+	outputFile.close();
 }

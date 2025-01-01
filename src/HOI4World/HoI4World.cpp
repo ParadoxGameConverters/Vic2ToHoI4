@@ -296,6 +296,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	soundEffects = SoundEffectsFactory().createSoundEffects(countries);
 
 	recordUnbuiltCanals(sourceWorld);
+	adjacencyRules = std::make_unique<AdjacencyRules>(states->getStates());
 
 	ideological_cost_modifiers_ = ImportIdeologicalCostModifiers();
 	ideological_ai_peace_ = ImportIdeologicalAiPeace();

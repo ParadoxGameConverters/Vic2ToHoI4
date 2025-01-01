@@ -1,5 +1,7 @@
 #include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Map/AdjacencyRule.h"
+#include "src/HOI4World/States/HoI4State.h"
+#include "src/V2World/States/StateBuilder.h"
 #include <sstream>
 
 
@@ -103,6 +105,36 @@ TEST(HoI4World_Map_AdjacencyRule, IsDisabledStrCanBeSet)
 
 	EXPECT_EQ(expectedOutput.str(), *adjacencyRule.getIsDisabledStr());
 }
+
+
+TEST(HoI4World_Map_AdjacencyRule, IsDisabledStrCanBeUpdated)
+{
+	std::stringstream input;
+	input << "=\n";
+	input << "{\n";
+	input << "\tis_disabled = {\n";
+	input << "\t\t$STATE = { }\n";
+	input << "\t}\n";
+	input << "\ticon = 42\n";
+	input << "}\n";
+	auto adjacencyRule = HoI4::AdjacencyRule(input);
+
+	ASSERT_TRUE(adjacencyRule.getIsDisabledStr());
+
+	const auto& sourceState = *Vic2::State::Builder().build();
+	HoI4::State theState(sourceState, 123, "TAG");
+	theState.addProvince(42);
+	std::map<int, HoI4::State> states = {{123, theState}};
+	adjacencyRule.updateIsDisabledStr(states);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "= {\n";
+	expectedOutput << "\t\t123 = { }\n";
+	expectedOutput << "\t}";
+
+	EXPECT_EQ(expectedOutput.str(), *adjacencyRule.getIsDisabledStr());
+}
+
 
 TEST(HoI4World_Map_AdjacencyRule, IconDefaultsToZero)
 {
