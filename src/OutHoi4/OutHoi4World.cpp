@@ -664,8 +664,7 @@ void HoI4::outputAdjacencyRules(const std::string& outputName,
 	std::ofstream outputFile("output/" + outputName + "/map/adjacency_rules.txt");
 	if (!outputFile.is_open())
 	{
-		throw std::runtime_error(
-			 "Could not create output/" + outputName + "/map/adjacency_rules.txt");
+		throw std::runtime_error("Could not create output/" + outputName + "/map/adjacency_rules.txt");
 	}
 
 	for (const auto& rule: adjacencyRules | std::views::values)
