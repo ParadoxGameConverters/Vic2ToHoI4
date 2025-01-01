@@ -78,6 +78,7 @@
     <ClCompile Include="src\HOI4World\Localisations\LanguageReplacementRuleTests.cpp" />
     <ClCompile Include="src\HOI4World\Localisations\LanguageReplacementsTests.cpp" />
     <ClCompile Include="src\HOI4World\Map\ActualResourcesTests.cpp" />
+    <ClCompile Include="src\HOI4World\Map\AdjacencyRuleTests.cpp" />
     <ClCompile Include="src\HOI4World\Map\AdjacencyRulesTests.cpp" />
     <ClCompile Include="src\HOI4World\Map\Hoi4BuildingTests.cpp" />
     <ClCompile Include="src\HOI4World\Map\HoI4ProvincesTests.cpp" />
