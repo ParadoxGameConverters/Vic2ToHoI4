@@ -699,11 +699,11 @@ void HoI4::States::addLandmarks(const Mappers::LandmarksMapper& landmarksMapper)
 {
 	Log(LogLevel::Info) << "\tAdding landmark buildings";
 
-	for (const auto& [landmark, location, built]: landmarksMapper.getMappings())
+	for (const auto& [landmark, mapping]: landmarksMapper.getMappings())
 	{
 		for (auto& state: states | std::views::values)
 		{
-			if (bool added = state.addLandmark(landmark, location, built); added)
+			if (bool added = state.addLandmark(landmark, mapping.location, mapping.built); added)
 			{
 				break;
 			}

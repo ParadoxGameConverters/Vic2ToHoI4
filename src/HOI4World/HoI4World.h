@@ -260,7 +260,7 @@ class World: commonItems::parser
 	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;
 	std::unique_ptr<Mappers::CasusBellis> casusBellis;
 	std::unique_ptr<Mappers::FactionNameMapper> factionNameMapper;
-	std::unique_ptr<Mappers::LandmarksMapper> landmarksMapper;
+	Mappers::LandmarksMapper landmarksMapper;
 	std::unique_ptr<date> theDate;
 
 	std::unique_ptr<States> states;

@@ -2,18 +2,16 @@
 #define LANDMARKS_MAPPING_H
 
 
-#include <string>
-
-
 
 namespace Mappers
 {
 
 struct LandmarksMapping
 {
-	std::string building;
 	int location = 0;
 	bool built = false;
+
+	bool operator==(const LandmarksMapping& other) const { return location == other.location && built == other.built; }
 };
 
 } // namespace Mappers

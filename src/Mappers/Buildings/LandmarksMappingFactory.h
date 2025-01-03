@@ -5,7 +5,6 @@
 
 #include "external/common_items/ConvenientParser.h"
 #include "src/Mappers/Buildings/LandmarksMapping.h"
-#include <memory>
 
 
 namespace Mappers
@@ -15,10 +14,10 @@ class LandmarksMappingFactory: commonItems::parser
 {
   public:
 	LandmarksMappingFactory();
-	std::unique_ptr<LandmarksMapping> importMapping(std::istream& theStream);
+	LandmarksMapping importMapping(std::istream& theStream);
 
   private:
-	std::unique_ptr<LandmarksMapping> landmarksMapping;
+	LandmarksMapping landmarksMapping;
 };
 
 } // namespace Mappers

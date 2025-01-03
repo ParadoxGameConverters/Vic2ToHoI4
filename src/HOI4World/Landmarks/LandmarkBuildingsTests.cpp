@@ -1,7 +1,7 @@
 #include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include "src/HOI4World/States/HoI4State.h"
-#include "src/Mappers/Buildings/LandmarksMapperFactory.h"
+#include "src/Mappers/Buildings/LandmarksMapper.h"
 #include "src/V2World/States/StateBuilder.h"
 #include <gmock/gmock-matchers.h>
 #include <sstream>
@@ -149,14 +149,14 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, EnabledControllersCanBeSet)
 
 	auto landmarkBuildings = HoI4::LandmarkBuildings(*theConfiguration);
 
-	const auto mapper = Mappers::LandmarksMapper::Factory().importLandmarksMapper();
+	const auto mapper = Mappers::LandmarksMapper();
 
 	const auto sourceState = *Vic2::State::Builder().build();
 	HoI4::State theState(sourceState, 123, "X01");
 	theState.addProvince(42);
 	std::map<int, HoI4::State> states = {{123, theState}};
 
-	landmarkBuildings.updateBuildings(states, *mapper);
+	landmarkBuildings.updateBuildings(states, mapper);
 
 	const auto& landmarks = landmarkBuildings.getBuildings();
 	ASSERT_TRUE(landmarks.contains("landmark_test"));
@@ -176,14 +176,14 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, UnmappedLandmarksLogWarning)
 
 	auto landmarkBuildings = HoI4::LandmarkBuildings(*theConfiguration);
 
-	const auto mapper = Mappers::LandmarksMapper::Factory().importLandmarksMapper();
+	const auto mapper = Mappers::LandmarksMapper();
 	std::map<int, HoI4::State> states;
 
 	const std::stringstream log;
 	auto* const stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	landmarkBuildings.updateBuildings(states, *mapper);
+	landmarkBuildings.updateBuildings(states, mapper);
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -200,10 +200,10 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, UnmappedLandmarksAreNotOutput)
 
 	auto landmarkBuildings = HoI4::LandmarkBuildings(*theConfiguration);
 
-	const auto mapper = Mappers::LandmarksMapper::Factory().importLandmarksMapper();
+	const auto mapper = Mappers::LandmarksMapper();
 	std::map<int, HoI4::State> states;
 
-	landmarkBuildings.updateBuildings(states, *mapper);
+	landmarkBuildings.updateBuildings(states, mapper);
 
 	std::stringstream output;
 	output << landmarkBuildings;

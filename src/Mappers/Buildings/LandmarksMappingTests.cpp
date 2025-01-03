@@ -4,31 +4,13 @@
 
 
 
-TEST(Mappers_Landmark_LandmarksMappingTests, LandmarkDefaultsToEmpty)
+TEST(Mappers_Landmark_LandmarksMappingTests, ImportedItemsAreDefaulted)
 {
 	std::stringstream input;
 	const auto mapping = Mappers::LandmarksMappingFactory().importMapping(input);
 
-	ASSERT_TRUE(mapping->building.empty());
-}
-
-
-TEST(Mappers_Landmark_LandmarksMappingTests, LandmarkCanBeSet)
-{
-	std::stringstream input;
-	input << "= { building = landmark_test }";
-	const auto mapping = Mappers::LandmarksMappingFactory().importMapping(input);
-
-	ASSERT_EQ("landmark_test", mapping->building);
-}
-
-
-TEST(Mappers_Landmark_LandmarksMappingTests, LocationDefaultsToZero)
-{
-	std::stringstream input;
-	const auto mapping = Mappers::LandmarksMappingFactory().importMapping(input);
-
-	ASSERT_EQ(0, mapping->location);
+	EXPECT_EQ(0, mapping.location);
+	EXPECT_FALSE(mapping.built);
 }
 
 
@@ -38,5 +20,15 @@ TEST(Mappers_Landmark_LandmarksMappingTests, LocationCanBeSet)
 	input << "= { location = 42 }";
 	const auto mapping = Mappers::LandmarksMappingFactory().importMapping(input);
 
-	ASSERT_EQ(42, mapping->location);
+	EXPECT_EQ(42, mapping.location);
+}
+
+
+TEST(Mappers_Landmark_LandmarksMappingTests, BuiltCanBeSet)
+{
+	std::stringstream input;
+	input << "= { built = yes }";
+	const auto mapping = Mappers::LandmarksMappingFactory().importMapping(input);
+
+	EXPECT_TRUE(mapping.built);
 }

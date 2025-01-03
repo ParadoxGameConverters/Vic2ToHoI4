@@ -1,2 +1,2 @@
-link = { building = landmark_test location = 42 built = yes }
-link = { building = landmark_unbuilt location = 42 built = no }
+landmark_test = { location = 42 built = yes }
+landmark_unbuilt = { location = 42 built = no }

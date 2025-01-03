@@ -6,22 +6,19 @@
 
 Mappers::LandmarksMappingFactory::LandmarksMappingFactory()
 {
-	registerKeyword("building", [this](std::istream& theStream) {
-		landmarksMapping->building = commonItems::singleString{theStream}.getString();
-	});
 	registerKeyword("location", [this](std::istream& theStream) {
-		landmarksMapping->location = commonItems::singleInt{theStream}.getInt();
+		landmarksMapping.location = commonItems::singleInt{theStream}.getInt();
 	});
 	registerKeyword("built", [this](std::istream& theStream) {
-		landmarksMapping->built = commonItems::singleString{theStream}.getString() == "yes";
+		landmarksMapping.built = commonItems::singleString{theStream}.getString() == "yes";
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 
-std::unique_ptr<Mappers::LandmarksMapping> Mappers::LandmarksMappingFactory::importMapping(std::istream& theStream)
+Mappers::LandmarksMapping Mappers::LandmarksMappingFactory::importMapping(std::istream& theStream)
 {
-	landmarksMapping = std::make_unique<LandmarksMapping>();
 	parseStream(theStream);
-	return std::move(landmarksMapping);
+	clearRegisteredKeywords();
+	return {.location = landmarksMapping.location, .built = landmarksMapping.built};
 }

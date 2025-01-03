@@ -1185,9 +1185,6 @@
     <ClCompile Include="src\Mappers\Buildings\LandmarksMapper.cpp">
       <Filter>src\Mappers\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mappers\Buildings\LandmarksMapperFactory.cpp">
-      <Filter>src\Mappers\Buildings</Filter>
-    </ClCompile>
     <ClCompile Include="src\Mappers\Buildings\LandmarksMappingFactory.cpp">
       <Filter>src\Mappers\Buildings</Filter>
     </ClCompile>
@@ -2472,9 +2469,6 @@
       <Filter>src\OutHoi4\UnitMedals</Filter>
     </ClInclude>
     <ClInclude Include="src\Mappers\Buildings\LandmarksMapper.h">
-      <Filter>src\Mappers\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mappers\Buildings\LandmarksMapperFactory.h">
       <Filter>src\Mappers\Buildings</Filter>
     </ClInclude>
     <ClInclude Include="src\Mappers\Buildings\LandmarksMapping.h">
