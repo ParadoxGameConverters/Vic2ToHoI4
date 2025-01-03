@@ -588,6 +588,12 @@
     <ClCompile Include="src\HOI4World\Map\ActualResources.cpp">
       <Filter>src\HoI4World\Map</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\AdjacencyRule.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\AdjacencyRules.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\Map\Hoi4Building.cpp">
       <Filter>src\HoI4World\Map</Filter>
     </ClCompile>
@@ -1001,6 +1007,9 @@
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Leaders\OutAdvisor.cpp">
       <Filter>src\OutHoi4\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutAdjacencyRule.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Map\OutBuilding.cpp">
       <Filter>src\OutHoi4\Map</Filter>
@@ -1790,6 +1799,12 @@
     <ClInclude Include="src\HOI4World\Map\ActualResources.h">
       <Filter>src\HoI4World\Map</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\AdjacencyRule.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\AdjacencyRules.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
     <ClInclude Include="src\HOI4World\Map\Hoi4Building.h">
       <Filter>src\HoI4World\Map</Filter>
     </ClInclude>
@@ -2292,6 +2307,9 @@
       <Filter>src\OutHoi4\Map</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Map\OutSupplyNodes.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutAdjacencyRule.h">
       <Filter>src\OutHoi4\Map</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Map\OutBuilding.h">
