@@ -77,8 +77,7 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const date& vic2Date,
 	 const std::string& outputName);
 void copyAdjustedFocusFiles(const std::string& outputName, const std::vector<std::string>& branchNames);
-void outputAdjacencyRules(const std::string& outputName,
-	 const std::map<std::string, AdjacencyRule>& rules);
+void outputAdjacencyRules(const std::string& outputName, const std::map<std::string, AdjacencyRule>& rules);
 
 } // namespace HoI4
 
