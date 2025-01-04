@@ -11,7 +11,7 @@ struct LandmarksMapping
 	int location = 0;
 	bool built = false;
 
-	bool operator==(const LandmarksMapping& other) const { return location == other.location && built == other.built; }
+	std::strong_ordering operator<=>(const LandmarksMapping&) const = default;
 };
 
 } // namespace Mappers

@@ -50,9 +50,16 @@ void HoI4::AdjacencyRule::updateIsDisabledStr(const std::map<int, State>& states
 	});
 	if (stateItr == states.end())
 	{
+		Log(LogLevel::Error) << "Couldn't find state for province " << icon << " to update adjacency rule " << name;
 		return;
 	}
 	const auto& stateId = std::to_string(stateItr->first);
 
 	isDisabledStr->replace(pos, placeholder.size(), stateId);
+}
+
+bool HoI4::AdjacencyRule::operator==(const HoI4::AdjacencyRule& other) const
+{
+	return name == other.name && rules == other.rules && requiredProvinces == other.requiredProvinces &&
+			 isDisabledStr == other.isDisabledStr && icon == other.icon && offset == other.offset;
 }

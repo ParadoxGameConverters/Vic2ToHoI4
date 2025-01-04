@@ -26,7 +26,7 @@ void HoI4::AdjacencyRules::registerKeywords()
 {
 	registerKeyword("adjacency_rule", [this](std::istream& theStream) {
 		const AdjacencyRule newRule(theStream);
-		rules[newRule.getName()] = HoI4::AdjacencyRule(newRule);
+		rules.emplace(std::make_pair(newRule.getName(), newRule));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

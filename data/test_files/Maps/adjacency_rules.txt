@@ -2,7 +2,7 @@ adjacency_rule =
 {
 	name = "CANAL"
 
-	rule =
+	contested =
 	{
 		army = no
 		navy = no

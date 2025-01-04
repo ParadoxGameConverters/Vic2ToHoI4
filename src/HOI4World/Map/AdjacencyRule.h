@@ -5,6 +5,7 @@
 
 #include "external/common_items/ConvenientParser.h"
 #include "src/HOI4World/States/HoI4State.h"
+#include <compare>
 #include <map>
 #include <optional>
 #include <vector>
@@ -27,6 +28,9 @@ class AdjacencyRule: commonItems::parser
 	[[nodiscard]] const auto& getIsDisabledStr() const { return isDisabledStr; }
 	[[nodiscard]] const auto& getIcon() const { return icon; }
 	[[nodiscard]] const auto& getOffset() const { return offset; }
+
+	std::strong_ordering operator<=>(const AdjacencyRule&) const = default;
+	bool operator==(const AdjacencyRule& other) const;
 
 	friend std::ostream& operator<<(std::ostream& outStream, const AdjacencyRule& outAdjacencyRule);
 
