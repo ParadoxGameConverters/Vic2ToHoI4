@@ -269,6 +269,14 @@
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Linux/map</DestinationFolders>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="data/test_files/Buildings/01_landmark_buildings.txt">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Windows/common/buildings</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data/test_files/Buildings/LandmarksMappings.txt">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Mods\EmptyModFile.mod">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
@@ -662,6 +670,10 @@
     <CopyFileToFolders Include="data\test_files\Maps\adjacencies.csv">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/maptests/map</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Maps\adjacency_rules.txt">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables/Map</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Vic2World\Map\definition.csv">
       <FileType>Document</FileType>

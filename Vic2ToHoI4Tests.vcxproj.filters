@@ -1234,6 +1234,9 @@
     <CopyFileToFolders Include="data\test_files\Maps\adjacencies.csv">
       <Filter>data\test_files\Maps</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Maps\adjacency_rules.txt">
+      <Filter>data\test_files\Maps</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Maps\nocsv.bmp">
       <Filter>data\test_files\Maps</Filter>
     </CopyFileToFolders>
@@ -1400,6 +1403,12 @@
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\definition.csv">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Buildings\01_landmark_buildings.txt">
+      <Filter>data\test_files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Buildings\LandmarksMappings.txt">
       <Filter>data\test_files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\GameRules.txt">
