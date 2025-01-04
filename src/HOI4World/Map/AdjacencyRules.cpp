@@ -26,15 +26,15 @@ void HoI4::AdjacencyRules::registerKeywords()
 {
 	registerKeyword("adjacency_rule", [this](std::istream& theStream) {
 		const AdjacencyRule newRule(theStream);
-		rules[newRule.getName()] = std::make_shared<AdjacencyRule>(newRule);
+		rules[newRule.getName()] = HoI4::AdjacencyRule(newRule);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 void HoI4::AdjacencyRules::updateRules(const std::map<int, State>& states)
 {
-	for (const auto& rule: rules | std::views::values)
+	for (auto rule: rules | std::views::values)
 	{
-		rule->updateIsDisabledStr(states);
+		rule.updateIsDisabledStr(states);
 	}
 }
