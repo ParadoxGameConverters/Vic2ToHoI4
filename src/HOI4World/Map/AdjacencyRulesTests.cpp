@@ -7,7 +7,7 @@
 TEST(HoI4World_Map_AdjacencyRules, DefaultAdjacencyRulesCanBeImported)
 {
 	const std::map<int, HoI4::State> states;
-	auto adjacencyRules = HoI4::AdjacencyRules(states).getRules();
+	const auto& adjacencyRules = HoI4::AdjacencyRules(states).getRules();
 
 	EXPECT_FALSE(adjacencyRules.empty());
 }

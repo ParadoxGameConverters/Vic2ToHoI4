@@ -6,12 +6,17 @@
 
 
 
-TEST(HoI4World_Map_AdjacencyRule, NameDefaultsToEmpty)
+TEST(HoI4World_Map_AdjacencyRule, PropertiesDefaultOnEmptyInput)
 {
 	std::stringstream input;
 	const auto& adjacencyRule = HoI4::AdjacencyRule(input);
 
 	EXPECT_EQ("", adjacencyRule.getName());
+	EXPECT_TRUE(adjacencyRule.getRules().empty());
+	EXPECT_TRUE(adjacencyRule.getRequiredProvinces().empty());
+	EXPECT_EQ(std::nullopt, adjacencyRule.getIsDisabledStr());
+	EXPECT_EQ(0, adjacencyRule.getIcon());
+	EXPECT_TRUE(adjacencyRule.getOffset().empty());
 }
 
 
@@ -25,14 +30,6 @@ TEST(HoI4World_Map_AdjacencyRule, NameCanBeSet)
 	const auto& adjacencyRule = HoI4::AdjacencyRule(input);
 
 	EXPECT_EQ("CANAL", adjacencyRule.getName());
-}
-
-TEST(HoI4World_Map_AdjacencyRule, RulesDefaultToEmpty)
-{
-	std::stringstream input;
-	const auto& adjacencyRule = HoI4::AdjacencyRule(input);
-
-	EXPECT_TRUE(adjacencyRule.getRules().empty());
 }
 
 
@@ -54,14 +51,6 @@ TEST(HoI4World_Map_AdjacencyRule, RuleCanBeSet)
 	EXPECT_TRUE(adjacencyRule.getRules().contains("contested"));
 }
 
-TEST(HoI4World_Map_AdjacencyRule, RequiredProvincesDefaultToEmpty)
-{
-	std::stringstream input;
-	const auto& adjacencyRule = HoI4::AdjacencyRule(input);
-
-	EXPECT_TRUE(adjacencyRule.getRequiredProvinces().empty());
-}
-
 
 TEST(HoI4World_Map_AdjacencyRule, RequiredProvincesCanBeSet)
 {
@@ -74,14 +63,6 @@ TEST(HoI4World_Map_AdjacencyRule, RequiredProvincesCanBeSet)
 	const auto& provinces = adjacencyRule.getRequiredProvinces();
 
 	EXPECT_FALSE(std::find(provinces.begin(), provinces.end(), 42) == provinces.end());
-}
-
-TEST(HoI4World_Map_AdjacencyRule, IsDisabledStrDefaultsToNullopt)
-{
-	std::stringstream input;
-	const auto& adjacencyRule = HoI4::AdjacencyRule(input);
-
-	EXPECT_EQ(std::nullopt, adjacencyRule.getIsDisabledStr());
 }
 
 
@@ -136,15 +117,6 @@ TEST(HoI4World_Map_AdjacencyRule, IsDisabledStrCanBeUpdated)
 }
 
 
-TEST(HoI4World_Map_AdjacencyRule, IconDefaultsToZero)
-{
-	std::stringstream input;
-	const auto& adjacencyRule = HoI4::AdjacencyRule(input);
-
-	EXPECT_EQ(0, adjacencyRule.getIcon());
-}
-
-
 TEST(HoI4World_Map_AdjacencyRule, IconCanBeSet)
 {
 	std::stringstream input;
@@ -155,14 +127,6 @@ TEST(HoI4World_Map_AdjacencyRule, IconCanBeSet)
 	const auto& adjacencyRule = HoI4::AdjacencyRule(input);
 
 	EXPECT_EQ(42, adjacencyRule.getIcon());
-}
-
-TEST(HoI4World_Map_AdjacencyRule, OffsetDefaultsToEmpty)
-{
-	std::stringstream input;
-	const auto& adjacencyRule = HoI4::AdjacencyRule(input);
-
-	EXPECT_TRUE(adjacencyRule.getOffset().empty());
 }
 
 
