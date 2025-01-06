@@ -1,7 +1,7 @@
 # Version info
 
-version = "1.2T"
-name = "Tito"
+version = "1.3U"
+name = "Umberto II"
 source = "Vic2"
 minSource = "3"
 maxSource = "3"

@@ -12,7 +12,7 @@ Development version download: https://github.com/ParadoxGameConverters/Vic2ToHoI
 ----
 REQUIREMENTS
 ----
-HoI4 - 1.14
+HoI4 - 1.15
 V2 - HoD required
 
 
@@ -53,6 +53,7 @@ King_of_Men			- Programming, Analysis
 icalamesa			- Programming
 PheonixScale		- Programming
 Gawquon				- Programming
+cetvrtak			- Programming, Data Files
 Italianajt			- Analysis, Data Files, QA
 Ordinary_Kraut		- Analysis, Data Files
 CaesarVincens		- Analysis, Data Files
@@ -66,7 +67,6 @@ simsulla			- Data Files
 Mattymooz			- Data Files
 DiegoAFGamer		- Data Files
 Skulltcarretilla	- Data Files
-cetvrtak			- Data Files
 Herr B.				- Data Files
 Tuyuko				- Data Files
 Anate				- Translations
