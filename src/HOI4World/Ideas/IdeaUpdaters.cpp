@@ -350,6 +350,16 @@ void HoI4::updateNeutralIdeas(IdeaGroup& neutralIdeas, const std::set<std::strin
 			 "\t\t\t}");
 	}
 	neutralIdeas.replaceIdea(*collectivistEthosFocusNeutral);
+
+	auto libertyEthosFocusNeutral = neutralIdeas.getIdea("liberty_ethos_focus_neutral");
+	if (majorIdeologies.contains("democratic"))
+	{
+		libertyEthosFocusNeutral->setAllowedCivilWar(
+			 "= {\n"
+			 "\t\t\t\thas_government = democratic\n"
+			 "\t\t\t}");
+	}
+	neutralIdeas.replaceIdea(*libertyEthosFocusNeutral);
 }
 
 void HoI4::updateHiddenIdeas(IdeaGroup& generalIdeas, const std::set<std::string>& majorIdeologies)
