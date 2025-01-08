@@ -654,7 +654,7 @@ void HoI4::copyAdjustedFocusFiles(const std::string& outputName, const std::vect
 {
 	for (const auto& branch: branchNames)
 	{
-		commonItems::CopyFolder("Configurables/CustomizedFocusBranches/" + branch, "output/" + outputName);
+		commonItems::CopyFolder("Configurables/AdjustedFocusBranches/" + branch, "output/" + outputName);
 	}
 }
 

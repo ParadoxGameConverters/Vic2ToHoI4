@@ -118,14 +118,14 @@
     <Text Include="data\configurables\CodenamesOperatives\TUR_operative_codenames.txt">
       <Filter>data\configurables\CodenamesOperatives</Filter>
     </Text>
-    <Text Include="data\configurables\CustomizedFocusBranches\FRA_begin_rearmament_characters.txt">
-      <Filter>data\configurables\CustomizedFocusBranches</Filter>
+    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_characters.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
     </Text>
-    <Text Include="data\configurables\CustomizedFocusBranches\FRA_begin_rearmament.txt">
-      <Filter>data\configurables\CustomizedFocusBranches</Filter>
+    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
     </Text>
-    <Text Include="data\configurables\CustomizedFocusBranches\uk_colonial_focus.txt">
-      <Filter>data\configurables\CustomizedFocusBranches</Filter>
+    <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
     </Text>
     <Text Include="data\configurables\Localisations\ArticleRules.txt">
       <Filter>data\configurables\Localisations</Filter>
@@ -276,7 +276,7 @@
     <Filter Include="data\configurables\CodenamesOperatives">
       <UniqueIdentifier>{5993b470-c8a3-47df-ba4d-1ac794e89d95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="data\configurables\CustomizedFocusBranches">
+    <Filter Include="data\configurables\AdjustedFocusBranches">
       <UniqueIdentifier>{87a15561-4887-4b98-b267-a6e955f1ff97}</UniqueIdentifier>
     </Filter>
     <Filter Include="data\configurables\Localisations">

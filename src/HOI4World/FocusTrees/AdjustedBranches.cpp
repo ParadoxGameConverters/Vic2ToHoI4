@@ -164,7 +164,7 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 		{
 			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
 			importCharacters(country,
-				 "Configurables/CustomizedFocusBranches/FRA_begin_rearmament_characters.txt",
+				 "Configurables/AdjustedFocusBranches/FRA_begin_rearmament_characters.txt",
 				 characterFactory);
 			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
 			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
