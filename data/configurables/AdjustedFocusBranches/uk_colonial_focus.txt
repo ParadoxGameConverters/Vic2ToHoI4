@@ -26,7 +26,7 @@ focus_tree = {
 			country_exists = event_target:uk_colonial_focus_NZL
 		}
 		available = {
-			NOT = { has_government = communism }
+			#NOT_COMMUNISM
 			num_subjects > 0
 		}
 		icon = GFX_focus_research2
@@ -364,7 +364,7 @@ focus_tree = {
 			event_target:uk_colonial_focus_japan = {
 				ENG_focus_available_embargo_sanction = yes
 			}
-			has_government = democratic
+			#DEMOCRATIC
 		}
 		bypass = {
 			has_war_with = event_target:uk_colonial_focus_japan
@@ -404,7 +404,7 @@ focus_tree = {
 			event_target:uk_colonial_focus_japan = {
 				ENG_focus_available_war = yes
 			}
-			has_government = democratic
+			#DEMOCRATIC
 		}
 		bypass = {
 			has_war_with = event_target:uk_colonial_focus_japan
@@ -777,7 +777,7 @@ focus_tree = {
 		prerequisite = { focus = hk_air_focus  }
 		available = {
 			event_target:uk_colonial_focus_china = { exists = yes }
-			has_government = democratic
+			#DEMOCRATIC
 		}
 		cancel = {
 			event_target:uk_colonial_focus_china = { exists = no }
@@ -805,7 +805,7 @@ focus_tree = {
 			}
 			every_other_country = {
 				limit = {
-					NOT = { has_government = democratic }
+					#NOT_DEMOCRATIC
 					num_of_factories > 30
 				}
 				add_opinion_modifier = { target = event_target:uk_colonial_focus_china modifier = democratic_leanings_bad }
@@ -1110,7 +1110,7 @@ focus_tree = {
 						}
 					}
 					AND = {
-						NOT = { has_government = democratic }
+						#NOT_DEMOCRATIC
 						event_target:uk_colonial_focus_RAJ = {
 							is_subject_of = ROOT
 							has_war = no
@@ -1119,7 +1119,7 @@ focus_tree = {
 				}
 				else = {
 					has_global_flag = indian_national_army_setup
-					has_government = democratic
+					#DEMOCRATIC
 					event_target:uk_colonial_focus_RAJ = {
 						is_puppet_of = ROOT
 					}

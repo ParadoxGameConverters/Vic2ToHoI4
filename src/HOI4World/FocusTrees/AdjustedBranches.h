@@ -16,6 +16,7 @@ class AdjustedBranches
   public:
 	AdjustedBranches(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 HoI4FocusTree& genericFocusTree,
+		 const std::set<std::string>& majorIdeologies,
 		 OnActions& onActions,
 		 const HoI4::MapUtils& mapUtils,
 		 const std::map<int, int>& provinceToStateIdMapping,
@@ -23,8 +24,11 @@ class AdjustedBranches
 		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 Character::Factory& characterFactory);
 
+	std::unique_ptr<HoI4FocusTree> updateAdjustedFocuses(const HoI4FocusTree& nationalFocus,
+		 const std::set<std::string>& majorIdeologies);
 	void addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 HoI4FocusTree& genericFocusTree,
+		 const std::set<std::string>& majorIdeologies,
 		 OnActions& onActions);
 	void addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 HoI4FocusTree& genericFocusTree,

@@ -1673,7 +1673,7 @@ void HoI4::Country::addFocusTreeBranch(const std::string& branch, OnActions& onA
 {
 	if (nationalFocus)
 	{
-		nationalFocus->addBranch(tag, branch, onActions);
+		nationalFocus->addBranch(branch, onActions);
 	}
 }
 

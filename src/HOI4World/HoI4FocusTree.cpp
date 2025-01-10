@@ -344,26 +344,26 @@ void HoI4FocusTree::confirmLoadedFocuses()
 }
 
 
-void HoI4FocusTree::loadFocuses(const std::string& branch)
+void HoI4FocusTree::importFocuses(const std::string& filePath)
 {
 	registerKeyword("focus_tree", [this](std::istream& theStream) {
 	});
-	registerRegex("focus|shared_focus", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("focus", [this](std::istream& theStream) {
 		HoI4Focus newFocus(theStream);
-		loadedFocuses.insert(make_pair(newFocus.id, newFocus));
+		focuses.push_back(std::make_shared<HoI4Focus>(newFocus));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile("Configurables/AdjustedFocusBranches/" + branch + ".txt");
+	parseFile(filePath);
 	clearRegisteredKeywords();
 
 	createBranches();
 }
 
 
-void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch, HoI4::OnActions& onActions)
+void HoI4FocusTree::addBranch(const std::string& branch, HoI4::OnActions& onActions)
 {
-	loadFocuses(branch);
+	importFocuses("Configurables/AdjustedFocusBranches/" + branch + ".txt");
 
 	if (!branches.contains(branch))
 	{
@@ -386,7 +386,7 @@ void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch,
 			{
 				branchWidth = newFocus->xPos;
 				newFocus->xPos = nextFreeColumn + branchWidth / 2;
-				onActions.addFocusEvent(tag, focus);
+				onActions.addFocusEvent(dstCountryTag, focus);
 			}
 			focuses.push_back(newFocus);
 		}

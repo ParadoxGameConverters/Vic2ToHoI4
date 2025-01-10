@@ -2,6 +2,7 @@
 #include "external/common_items/Log.h"
 #include "src/HOI4World/Characters/CharacterFactory.h"
 #include "src/HOI4World/Characters/CharactersFactory.h"
+#include "src/HOI4World/HoI4Focus.h"
 #include "src/HOI4World/WarCreator/MapUtils.h"
 #include <algorithm>
 #include <ranges>
@@ -10,6 +11,7 @@
 
 HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 HoI4FocusTree& genericFocusTree,
+	 const std::set<std::string>& majorIdeologies,
 	 OnActions& onActions,
 	 const HoI4::MapUtils& mapUtils,
 	 const std::map<int, int>& provinceToStateIdMapping,
@@ -22,7 +24,7 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	Log(LogLevel::Info) << "\tAdding adjusted focus branches";
 	if (genericFocusTree.getBranches().contains("uk_colonial_focus"))
 	{
-		addUKColonialFocusBranch(countries, genericFocusTree, onActions);
+		addUKColonialFocusBranch(countries, genericFocusTree, majorIdeologies, onActions);
 	}
 	if (genericFocusTree.getBranches().contains("FRA_begin_rearmament"))
 	{
@@ -30,16 +32,87 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	}
 }
 
+std::unique_ptr<HoI4FocusTree> HoI4::AdjustedBranches::updateAdjustedFocuses(const HoI4FocusTree& nationalFocus,
+	 const std::set<std::string>& majorIdeologies)
+{
+	Log(LogLevel::Info) << "\tUpdating adjusted focuses";
+
+	auto newTree = HoI4FocusTree(nationalFocus);
+
+	for (auto focus: newTree.getFocuses())
+	{
+		if (focus->id == "uk_colonial_focus")
+		{
+			focus->updateFocusElement(focus->available,
+				 "#NOT_COMMUNISM",
+				 "NOT = { has_government = communism }",
+				 majorIdeologies.contains("communism"));
+		}
+
+		if (focus->id == "uk_sanction_japan_focus")
+		{
+			focus->updateFocusElement(focus->available,
+				 "#DEMOCRATIC",
+				 "has_government = democratic",
+				 majorIdeologies.contains("democratic"));
+		}
+
+		if (focus->id == "ENG_war_with_japan")
+		{
+			focus->updateFocusElement(focus->available,
+				 "#DEMOCRATIC",
+				 "has_government = democratic",
+				 majorIdeologies.contains("democratic"));
+		}
+
+		if (focus->id == "uk_china_focus")
+		{
+			focus->updateFocusElement(focus->available,
+				 "#DEMOCRATIC",
+				 "has_government = democratic",
+				 majorIdeologies.contains("democratic"));
+			focus->updateFocusElement(focus->completionReward,
+				 "#NOT_DEMOCRATIC",
+				 "NOT = { has_government = democratic }",
+				 majorIdeologies.contains("democratic"));
+		}
+
+		if (focus->id == "uk_free_india_focus")
+		{
+			focus->updateFocusElement(focus->available,
+				 "#NOT_DEMOCRATIC",
+				 "NOT = { has_government = democratic }",
+				 majorIdeologies.contains("democratic"));
+			focus->updateFocusElement(focus->available,
+				 "#DEMOCRATIC",
+				 "has_government = democratic",
+				 majorIdeologies.contains("democratic"));
+		}
+	}
+
+	return std::make_unique<HoI4FocusTree>(newTree);
+}
+
 void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 HoI4FocusTree& genericFocusTree,
+	 const std::set<std::string>& majorIdeologies,
 	 OnActions& onActions)
 {
 	for (auto [tag, country]: countries)
 	{
 		if (country->isGreatPower() && country->getDominionTag("south_asia"))
 		{
+			auto nationalFocus = country->getNationalFocus();
+			if (!nationalFocus)
+			{
+				continue;
+			}
+
+			nationalFocus->addBranch("uk_colonial_focus", onActions);
+			auto updatedTree = updateAdjustedFocuses(*nationalFocus, majorIdeologies);
+			country->giveNationalFocus(updatedTree);
+
 			country->addGlobalEventTarget("uk_colonial_focus_ENG");
-			country->addFocusTreeBranch("uk_colonial_focus", onActions);
 			genericFocusTree.eraseBranch("uk_colonial_focus");
 			branchNames.push_back("uk_colonial_focus");
 			break;

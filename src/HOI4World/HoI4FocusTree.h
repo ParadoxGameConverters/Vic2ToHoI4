@@ -111,6 +111,7 @@ class HoI4FocusTree: commonItems::parser
 	void makeEmpty() { emptyFocusTree = true; }
 
 	void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }
+	void importFocuses(const std::string& filePath);
 
 	[[nodiscard]] const auto& getDestinationCountryTag() const { return dstCountryTag; }
 	[[nodiscard]] const auto& getFocuses() const { return focuses; }
@@ -118,12 +119,11 @@ class HoI4FocusTree: commonItems::parser
 	[[nodiscard]] const auto& getBranches() const { return branches; }
 	[[nodiscard]] bool isEmpty() const { return emptyFocusTree; }
 
-	void addBranch(const std::string& tag, const std::string& branch, HoI4::OnActions& onActions);
+	void addBranch(const std::string& branch, HoI4::OnActions& onActions);
 	void eraseBranch(const std::string& branch) { branches.erase(branch); }
 
   private:
 	void confirmLoadedFocuses();
-	void loadFocuses(const std::string& branch);
 	void createBranches();
 	void addChildrenToBranch(const std::string& head, const std::string& id, int branchLevel);
 
