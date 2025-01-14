@@ -11,7 +11,6 @@
 
 
 HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 HoI4FocusTree& genericFocusTree,
 	 const std::set<std::string>& majorIdeologies,
 	 OnActions& onActions,
 	 const HoI4::MapUtils& mapUtils,
@@ -23,14 +22,8 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	 provinceToStateIdMapping(provinceToStateIdMapping), theMapData(theMapData), provinceDefinitions(provinceDefinitions)
 {
 	Log(LogLevel::Info) << "\tAdding adjusted focus branches";
-	if (genericFocusTree.getBranches().contains("uk_colonial_focus"))
-	{
-		addUKColonialFocusBranch(countries, genericFocusTree, majorIdeologies, onActions);
-	}
-	if (genericFocusTree.getBranches().contains("FRA_begin_rearmament"))
-	{
-		addBeginRearmamentBranch(countries, genericFocusTree, onActions, characterFactory);
-	}
+	addUKColonialFocusBranch(countries, majorIdeologies, onActions);
+	addBeginRearmamentBranch(countries, onActions, characterFactory);
 }
 
 
@@ -107,7 +100,6 @@ void HoI4::AdjustedBranches::updateAdjustedFocuses(const std::set<std::string>& 
 }
 
 void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 HoI4FocusTree& genericFocusTree,
 	 const std::set<std::string>& majorIdeologies,
 	 OnActions& onActions)
 {
@@ -121,7 +113,6 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string
 			country->addFocusTreeBranch(focuses, onActions);
 
 			country->addGlobalEventTarget("uk_colonial_focus_ENG");
-			genericFocusTree.eraseBranch("uk_colonial_focus");
 			branchNames.push_back("uk_colonial_focus");
 			break;
 		}
@@ -196,7 +187,6 @@ std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::ge
 }
 
 void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 HoI4FocusTree& genericFocusTree,
 	 OnActions& onActions,
 	 Character::Factory& characterFactory)
 {
