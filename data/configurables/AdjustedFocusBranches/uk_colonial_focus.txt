@@ -30,7 +30,7 @@ focus_tree = {
 			num_subjects > 0
 		}
 		icon = GFX_focus_research2
-		# x is set in the Converter
+		x = 12
 		y = 0
 		cost = 10
 

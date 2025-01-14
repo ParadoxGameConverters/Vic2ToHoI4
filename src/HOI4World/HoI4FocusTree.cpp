@@ -338,7 +338,7 @@ void HoI4FocusTree::confirmLoadedFocuses()
 }
 
 
-int HoI4FocusTree::calculateBranchWidth(const std::vector<std::shared_ptr<HoI4Focus>>& focuses)
+std::pair<int, int> HoI4FocusTree::calculateBranchSpan(const std::vector<std::shared_ptr<HoI4Focus>>& focuses)
 {
 	// Maps focus IDs to their computed X positions
 	std::map<std::string, int> computedXPositions;
@@ -346,7 +346,12 @@ int HoI4FocusTree::calculateBranchWidth(const std::vector<std::shared_ptr<HoI4Fo
 	// Find and calculate all x-positions
 	for (const auto& focus: focuses)
 	{
-		if (!focus->relativePositionId.empty())
+		if (focus->relativePositionId.empty())
+		{
+			// Root focus - reference point for minX and maxX
+			computedXPositions[focus->id] = 0;
+		}
+		else
 		{
 			// If the focus has a relative position ID, calculate its absolute position
 			const auto& relativeFocusId = focus->relativePositionId;
@@ -356,13 +361,8 @@ int HoI4FocusTree::calculateBranchWidth(const std::vector<std::shared_ptr<HoI4Fo
 			}
 			else
 			{
-				Log(LogLevel::Warning) << "Relative position ID " << relativeFocusId << " not found.\n";
+				Log(LogLevel::Warning) << "Relative focus " << relativeFocusId << "  must be scripted before " << focus->id;
 			}
-		}
-		else
-		{
-			// Absolute position, directly assign it
-			computedXPositions[focus->id] = focus->xPos;
 		}
 	}
 
@@ -376,17 +376,19 @@ int HoI4FocusTree::calculateBranchWidth(const std::vector<std::shared_ptr<HoI4Fo
 		maxX = std::max(maxX, xPos);
 	}
 
-	return maxX - minX;
+	return {minX, maxX};
 }
 
 
 void HoI4FocusTree::addBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses,
 	 HoI4::OnActions& onActions)
 {
-	int branchWidth = calculateBranchWidth(adjustedFocuses);
+	auto [minX, maxX] = calculateBranchSpan(adjustedFocuses);
 	auto& rootFocus = *adjustedFocuses.begin();
 
-	rootFocus->xPos = nextFreeColumn + branchWidth / 2;
+	rootFocus->xPos = nextFreeColumn + std::abs(minX);
+	nextFreeColumn += maxX - minX + 2;
+
 	onActions.addFocusEvent(dstCountryTag, rootFocus->id);
 
 	focuses.insert(focuses.end(), adjustedFocuses.begin(), adjustedFocuses.end());
