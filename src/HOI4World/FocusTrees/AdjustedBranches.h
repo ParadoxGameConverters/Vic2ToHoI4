@@ -2,6 +2,7 @@
 #define ADJUSTED_BRANCHES_ value
 
 
+#include "external/common_items/ConvenientParser.h"
 #include "src/HOI4World/HoI4Country.h"
 
 
@@ -11,7 +12,7 @@ namespace HoI4
 
 class MapUtils;
 
-class AdjustedBranches
+class AdjustedBranches: commonItems::parser
 {
   public:
 	AdjustedBranches(const std::map<std::string, std::shared_ptr<Country>>& countries,
@@ -24,8 +25,9 @@ class AdjustedBranches
 		 const Maps::ProvinceDefinitions& provinceDefinitions,
 		 Character::Factory& characterFactory);
 
-	std::unique_ptr<HoI4FocusTree> updateAdjustedFocuses(const HoI4FocusTree& nationalFocus,
-		 const std::set<std::string>& majorIdeologies);
+	void importFocuses(const std::string& filePath);
+	void updateAdjustedFocuses(const std::set<std::string>& majorIdeologies);
+
 	void addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 HoI4FocusTree& genericFocusTree,
 		 const std::set<std::string>& majorIdeologies,
@@ -62,6 +64,7 @@ class AdjustedBranches
 	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const std::shared_ptr<Country>& country,
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
+	std::vector<std::shared_ptr<HoI4Focus>> focuses;
 	std::vector<std::string> branchNames;
 	std::map<std::string, std::set<std::string>> gpZonesOfAccess; // great power, contiguous countries GP can access
 
