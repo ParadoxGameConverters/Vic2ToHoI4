@@ -4,6 +4,7 @@
 
 #include "external/common_items/ConvenientParser.h"
 #include "src/HOI4World/HoI4Country.h"
+#include "src/HOI4World/Ideas/Ideas.h"
 
 
 
@@ -22,19 +23,23 @@ class AdjustedBranches: commonItems::parser
 		 const std::map<int, int>& provinceToStateIdMapping,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions,
-		 Character::Factory& characterFactory);
+		 Character::Factory& characterFactory,
+		 Ideas& ideas);
 
 	void importFocuses(const std::string& filePath);
 	void updateAdjustedFocuses(const std::set<std::string>& majorIdeologies);
 
 	void addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::set<std::string>& majorIdeologies,
-		 OnActions& onActions);
+		 OnActions& onActions,
+		 Ideas& ideas);
 	void addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 OnActions& onActions,
-		 Character::Factory& characterFactory);
+		 Character::Factory& characterFactory,
+		 Ideas& ideas,
+		 const std::set<std::string>& majorIdeologies);
 
-	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
+	[[nodiscard]] const auto& getAddedBranches() const { return addedBranches; }
 
   private:
 	void determineGPZonesOfAccess(const std::vector<std::shared_ptr<Country>>& greatPowers,
@@ -61,8 +66,12 @@ class AdjustedBranches: commonItems::parser
 	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const std::shared_ptr<Country>& country,
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
+	void importIdeas(const std::string& filePath);
+	void addIdeas(Ideas& ideas, const std::set<std::string>& majorIdeologies);
+
 	std::vector<std::shared_ptr<HoI4Focus>> focuses;
-	std::vector<std::string> branchNames;
+	std::vector<IdeaGroup> importedIdeas;
+	std::vector<std::string> addedBranches;
 	std::map<std::string, std::set<std::string>> gpZonesOfAccess; // great power, contiguous countries GP can access
 
 	const HoI4::MapUtils& mapUtils;

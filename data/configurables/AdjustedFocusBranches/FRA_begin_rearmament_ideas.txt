@@ -1,5 +1,3 @@
-ideas = {
-
 	country = {
 
 		FRA_firepower = {
@@ -175,10 +173,6 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = democratic
-			}
-
 			removal_cost = -1
 
 			picture = generic_disjointed_gov
@@ -236,4 +230,3 @@ ideas = {
 			traits = { fast_tank_manufacturer }
 		}
 	}
-}

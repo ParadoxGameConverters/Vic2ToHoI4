@@ -124,7 +124,13 @@
     <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament.txt">
       <Filter>data\configurables\AdjustedFocusBranches</Filter>
     </Text>
+    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_ideas.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
     <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus_ideas.txt">
       <Filter>data\configurables\AdjustedFocusBranches</Filter>
     </Text>
     <Text Include="data\configurables\Localisations\ArticleRules.txt">

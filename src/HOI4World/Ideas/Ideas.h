@@ -21,6 +21,7 @@ class Ideas: commonItems::parser
 	Ideas(const std::set<std::string>& majorIdeologies) noexcept;
 
 	void updateIdeas(const std::set<std::string>& majorIdeologies);
+	void addGeneralIdeas(const IdeaGroup& theGroup) { generalIdeas.push_back(theGroup); }
 
 	[[nodiscard]] const auto& getIdeologicalIdeas() const { return ideologicalIdeas; }
 	[[nodiscard]] const auto& getGeneralIdeas() const { return generalIdeas; }

@@ -268,7 +268,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 getProvinceToStateIDMap(),
 		 *theMapData,
 		 *provinceDefinitions,
-		 characterFactory));
+		 characterFactory,
+		 *theIdeas));
 	adjustResearchFocuses();
 
 	dynamicModifiers.updateDynamicModifiers(ideologies->getMajorIdeologies());
