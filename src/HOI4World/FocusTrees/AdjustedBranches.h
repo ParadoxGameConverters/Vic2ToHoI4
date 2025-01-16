@@ -61,7 +61,7 @@ class AdjustedBranches: commonItems::parser
 		 const std::string& flag,
 		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 	void importCharacters(std::shared_ptr<Country> country,
-		 std::string_view filename,
+		 const std::string& branch,
 		 Character::Factory& characterFactory);
 	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const std::shared_ptr<Country>& country,
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);

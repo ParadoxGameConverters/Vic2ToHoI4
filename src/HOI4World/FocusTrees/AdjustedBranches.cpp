@@ -43,11 +43,10 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string
 			const auto& theBranch = createBranch("uk_colonial_focus", majorIdeologies);
 
 			country->addFocusTreeBranch(theBranch.getFocuses(), onActions);
-			country->addGlobalEventTarget("uk_colonial_focus_ENG");
-
-			addIdeas("uk_colonial_focus", ideas, majorIdeologies);
-
 			addedBranches.push_back("uk_colonial_focus");
+
+			country->addGlobalEventTarget("uk_colonial_focus_ENG");
+			addIdeas("uk_colonial_focus", ideas, majorIdeologies);
 			break;
 		}
 	}
@@ -104,10 +103,11 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 		{
 			const auto& theBranch = createBranch("FRA_begin_rearmament", majorIdeologies);
 
+			country->addFocusTreeBranch(theBranch.getFocuses(), onActions);
+			addedBranches.push_back("FRA_begin_rearmament");
+
 			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
-			importCharacters(country,
-				 "Configurables/AdjustedFocusBranches/FRA_begin_rearmament_characters.txt",
-				 characterFactory);
+			importCharacters(country, "FRA_begin_rearmament", characterFactory);
 
 			addIdeas("FRA_begin_rearmament", ideas, majorIdeologies);
 
@@ -118,8 +118,6 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 				gpThreats[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
 				flagZoneOfAccess(gpThreats[1]->getTag(), "FRA_begin_rearmament_GER_zone", countries);
 			}
-			country->addFocusTreeBranch(theBranch.getFocuses(), onActions);
-			addedBranches.push_back("FRA_begin_rearmament");
 			break;
 		}
 	}
@@ -275,9 +273,11 @@ std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::ge
 }
 
 void HoI4::AdjustedBranches::importCharacters(std::shared_ptr<Country> country,
-	 std::string_view filename,
+	 const std::string& branch,
 	 Character::Factory& characterFactory)
 {
+	const auto& filename = "Configurables/AdjustedFocusBranches/" + branch + "_characters.txt";
+
 	CharactersFactory charactersFactory(characterFactory);
 	const auto importedCharacters = charactersFactory.importCharacters(filename);
 	for (const auto& character: importedCharacters | std::views::values)
