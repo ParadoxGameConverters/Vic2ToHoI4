@@ -26,8 +26,6 @@ class AdjustedBranches: commonItems::parser
 		 Character::Factory& characterFactory,
 		 Ideas& ideas);
 
-	void updateAdjustedFocuses(HoI4FocusTree& focusTree, const std::set<std::string>& majorIdeologies);
-
 	void addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::set<std::string>& majorIdeologies,
 		 OnActions& onActions,
@@ -41,6 +39,9 @@ class AdjustedBranches: commonItems::parser
 	[[nodiscard]] const auto& getAddedBranches() const { return addedBranches; }
 
   private:
+	HoI4FocusTree createBranch(const std::string& name, const std::set<std::string>& majorIdeologies);
+	void updateAdjustedFocuses(HoI4FocusTree& focusTree, const std::set<std::string>& majorIdeologies);
+
 	void determineGPZonesOfAccess(const std::vector<std::shared_ptr<Country>>& greatPowers,
 		 const std::map<std::string, std::shared_ptr<Country>>& theCountries);
 	void addCountriesToGPZoneOfAccess(const std::shared_ptr<Country>& gp,

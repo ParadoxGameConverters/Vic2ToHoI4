@@ -39,11 +39,9 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string
 	{
 		if (country->isGreatPower() && country->getDominionTag("south_asia"))
 		{
-			HoI4FocusTree::Factory factory = HoI4FocusTree::Factory();
-			auto focusTree = factory.importFocusTree("Configurables/AdjustedFocusBranches/uk_colonial_focus.txt");
-			updateAdjustedFocuses(focusTree, majorIdeologies);
+			const auto& theBranch = createBranch("uk_colonial_focus", majorIdeologies);
 
-			country->addFocusTreeBranch(focusTree.getFocuses(), onActions);
+			country->addFocusTreeBranch(theBranch.getFocuses(), onActions);
 			country->addGlobalEventTarget("uk_colonial_focus_ENG");
 
 			importIdeas("Configurables/AdjustedFocusBranches/uk_colonial_focus_ideas.txt");
@@ -104,12 +102,16 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 
 		if (!gpThreats.empty())
 		{
-			importFocuses("Configurables/AdjustedFocusBranches/FRA_begin_rearmament.txt");
+			const auto& theBranch = createBranch("FRA_begin_rearmament", majorIdeologies);
 
 			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
 			importCharacters(country,
 				 "Configurables/AdjustedFocusBranches/FRA_begin_rearmament_characters.txt",
 				 characterFactory);
+
+			importIdeas("Configurables/AdjustedFocusBranches/FRA_begin_rearmament_ideas.txt");
+			addIdeas(ideas, majorIdeologies);
+
 			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
 			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
 			if (gpThreats.size() > 1)
@@ -117,11 +119,21 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 				gpThreats[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
 				flagZoneOfAccess(gpThreats[1]->getTag(), "FRA_begin_rearmament_GER_zone", countries);
 			}
-			country->addFocusTreeBranch(focuses, onActions);
+			country->addFocusTreeBranch(theBranch.getFocuses(), onActions);
 			addedBranches.push_back("FRA_begin_rearmament");
 			break;
 		}
 	}
+}
+
+
+HoI4FocusTree HoI4::AdjustedBranches::createBranch(const std::string& name,
+	 const std::set<std::string>& majorIdeologies)
+{
+	auto branch = HoI4FocusTree::Factory().importFocusTree("Configurables/AdjustedFocusBranches/" + name + ".txt");
+	updateAdjustedFocuses(branch, majorIdeologies);
+
+	return branch;
 }
 
 
