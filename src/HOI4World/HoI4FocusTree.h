@@ -35,6 +35,7 @@ class World;
 class HoI4FocusTree: commonItems::parser
 {
   public:
+	class Factory;
 	explicit HoI4FocusTree(const HoI4::Country& country);
 
 	HoI4FocusTree() = default;

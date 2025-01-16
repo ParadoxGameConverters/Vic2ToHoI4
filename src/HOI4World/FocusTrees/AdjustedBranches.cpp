@@ -3,7 +3,9 @@
 #include "external/common_items/Log.h"
 #include "src/HOI4World/Characters/CharacterFactory.h"
 #include "src/HOI4World/Characters/CharactersFactory.h"
+#include "src/HOI4World/FocusTrees/FocusTreeFactory.h"
 #include "src/HOI4World/HoI4Focus.h"
+#include "src/HOI4World/HoI4FocusTree.h"
 #include "src/HOI4World/Ideas/IdeaUpdaters.h"
 #include "src/HOI4World/WarCreator/MapUtils.h"
 #include <algorithm>
@@ -29,27 +31,12 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 }
 
 
-void HoI4::AdjustedBranches::importFocuses(const std::string& filePath)
-{
-	focuses.clear();
-
-	registerKeyword("focus_tree", [this](std::istream& theStream) {
-	});
-	registerKeyword("focus", [this](std::istream& theStream) {
-		const auto& newFocus = std::make_shared<HoI4Focus>(theStream);
-		focuses.push_back(newFocus);
-	});
-	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
-
-	parseFile(filePath);
-	clearRegisteredKeywords();
-}
-
-void HoI4::AdjustedBranches::updateAdjustedFocuses(const std::set<std::string>& majorIdeologies)
+void HoI4::AdjustedBranches::updateAdjustedFocuses(HoI4FocusTree& focusTree,
+	 const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\tUpdating adjusted focuses";
 
-	for (auto focus: focuses)
+	for (auto focus: focusTree.getFocuses())
 	{
 		if (focus->id == "uk_colonial_focus")
 		{
@@ -110,10 +97,11 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string
 	{
 		if (country->isGreatPower() && country->getDominionTag("south_asia"))
 		{
-			importFocuses("Configurables/AdjustedFocusBranches/uk_colonial_focus.txt");
-			updateAdjustedFocuses(majorIdeologies);
+			HoI4FocusTree::Factory factory = HoI4FocusTree::Factory();
+			auto focusTree = factory.importFocusTree("Configurables/AdjustedFocusBranches/uk_colonial_focus.txt");
+			updateAdjustedFocuses(focusTree, majorIdeologies);
 
-			country->addFocusTreeBranch(focuses, onActions);
+			country->addFocusTreeBranch(focusTree.getFocuses(), onActions);
 			country->addGlobalEventTarget("uk_colonial_focus_ENG");
 
 			importIdeas("Configurables/AdjustedFocusBranches/uk_colonial_focus_ideas.txt");
@@ -241,7 +229,9 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 
 		if (!gpThreats.empty())
 		{
-			importFocuses("Configurables/AdjustedFocusBranches/FRA_begin_rearmament.txt");
+			HoI4FocusTree::Factory factory = HoI4FocusTree::Factory();
+			auto focusTree = factory.importFocusTree("Configurables/AdjustedFocusBranches/FRA_begin_rearmament.txt");
+			updateAdjustedFocuses(focusTree, majorIdeologies);
 
 			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
 			importCharacters(country,
@@ -258,7 +248,7 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 				gpThreats[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
 				flagZoneOfAccess(gpThreats[1]->getTag(), "FRA_begin_rearmament_GER_zone", countries);
 			}
-			country->addFocusTreeBranch(focuses, onActions);
+			country->addFocusTreeBranch(focusTree.getFocuses(), onActions);
 			addedBranches.push_back("FRA_begin_rearmament");
 			break;
 		}

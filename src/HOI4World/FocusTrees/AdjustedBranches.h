@@ -26,8 +26,7 @@ class AdjustedBranches: commonItems::parser
 		 Character::Factory& characterFactory,
 		 Ideas& ideas);
 
-	void importFocuses(const std::string& filePath);
-	void updateAdjustedFocuses(const std::set<std::string>& majorIdeologies);
+	void updateAdjustedFocuses(HoI4FocusTree& focusTree, const std::set<std::string>& majorIdeologies);
 
 	void addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::set<std::string>& majorIdeologies,
@@ -69,7 +68,6 @@ class AdjustedBranches: commonItems::parser
 	void importIdeas(const std::string& filePath);
 	void addIdeas(Ideas& ideas, const std::set<std::string>& majorIdeologies);
 
-	std::vector<std::shared_ptr<HoI4Focus>> focuses;
 	std::vector<IdeaGroup> importedIdeas;
 	std::vector<std::string> addedBranches;
 	std::map<std::string, std::set<std::string>> gpZonesOfAccess; // great power, contiguous countries GP can access
