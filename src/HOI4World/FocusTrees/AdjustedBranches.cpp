@@ -30,6 +30,100 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	addBeginRearmamentBranch(countries, onActions, characterFactory, ideas, majorIdeologies);
 }
 
+void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::set<std::string>& majorIdeologies,
+	 OnActions& onActions,
+	 Ideas& ideas)
+{
+	for (auto [tag, country]: countries)
+	{
+		if (country->isGreatPower() && country->getDominionTag("south_asia"))
+		{
+			HoI4FocusTree::Factory factory = HoI4FocusTree::Factory();
+			auto focusTree = factory.importFocusTree("Configurables/AdjustedFocusBranches/uk_colonial_focus.txt");
+			updateAdjustedFocuses(focusTree, majorIdeologies);
+
+			country->addFocusTreeBranch(focusTree.getFocuses(), onActions);
+			country->addGlobalEventTarget("uk_colonial_focus_ENG");
+
+			importIdeas("Configurables/AdjustedFocusBranches/uk_colonial_focus_ideas.txt");
+			addIdeas(ideas, majorIdeologies);
+
+			addedBranches.push_back("uk_colonial_focus");
+			break;
+		}
+	}
+}
+
+void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 OnActions& onActions,
+	 Character::Factory& characterFactory,
+	 Ideas& ideas,
+	 const std::set<std::string>& majorIdeologies)
+{
+	std::vector<std::shared_ptr<Country>> greatPowers;
+	for (const auto& country: countries | std::views::values)
+	{
+		if (country->isGreatPower())
+		{
+			greatPowers.push_back(country);
+		}
+	}
+	determineGPZonesOfAccess(greatPowers, countries);
+
+	for (auto country: sortCountriesByStrength(countries))
+	{
+		if (country->getGovernmentIdeology() != "democratic")
+		{
+			continue;
+		}
+
+		std::vector<std::shared_ptr<Country>> gpThreats;
+		for (const auto& potentialAttacker: greatPowers)
+		{
+			const auto& potentialAttackerTag = potentialAttacker->getTag();
+			if (potentialAttackerTag == country->getTag())
+			{
+				continue;
+			}
+			if (potentialAttacker->getGovernmentIdeology() == "democratic")
+			{
+				continue;
+			}
+			const auto& relations = potentialAttacker->getRelations(country->getTag());
+			if (!relations || (relations->getRelations() >= 0))
+			{
+				continue;
+			}
+			if (attackerCanPositionTroopsOnCountryBorders(country, potentialAttackerTag, countries) &&
+				 gpThreats.size() < 3)
+			{
+				gpThreats.push_back(potentialAttacker);
+			}
+		}
+
+		if (!gpThreats.empty())
+		{
+			importFocuses("Configurables/AdjustedFocusBranches/FRA_begin_rearmament.txt");
+
+			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
+			importCharacters(country,
+				 "Configurables/AdjustedFocusBranches/FRA_begin_rearmament_characters.txt",
+				 characterFactory);
+			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
+			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
+			if (gpThreats.size() > 1)
+			{
+				gpThreats[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
+				flagZoneOfAccess(gpThreats[1]->getTag(), "FRA_begin_rearmament_GER_zone", countries);
+			}
+			country->addFocusTreeBranch(focuses, onActions);
+			addedBranches.push_back("FRA_begin_rearmament");
+			break;
+		}
+	}
+}
+
 
 void HoI4::AdjustedBranches::updateAdjustedFocuses(HoI4FocusTree& focusTree,
 	 const std::set<std::string>& majorIdeologies)
@@ -84,31 +178,6 @@ void HoI4::AdjustedBranches::updateAdjustedFocuses(HoI4FocusTree& focusTree,
 				 "#DEMOCRATIC",
 				 "has_government = democratic",
 				 majorIdeologies.contains("democratic"));
-		}
-	}
-}
-
-void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 const std::set<std::string>& majorIdeologies,
-	 OnActions& onActions,
-	 Ideas& ideas)
-{
-	for (auto [tag, country]: countries)
-	{
-		if (country->isGreatPower() && country->getDominionTag("south_asia"))
-		{
-			HoI4FocusTree::Factory factory = HoI4FocusTree::Factory();
-			auto focusTree = factory.importFocusTree("Configurables/AdjustedFocusBranches/uk_colonial_focus.txt");
-			updateAdjustedFocuses(focusTree, majorIdeologies);
-
-			country->addFocusTreeBranch(focusTree.getFocuses(), onActions);
-			country->addGlobalEventTarget("uk_colonial_focus_ENG");
-
-			importIdeas("Configurables/AdjustedFocusBranches/uk_colonial_focus_ideas.txt");
-			addIdeas(ideas, majorIdeologies);
-
-			addedBranches.push_back("uk_colonial_focus");
-			break;
 		}
 	}
 }
@@ -178,81 +247,6 @@ std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::AdjustedBranches::ge
 		}
 	}
 	return neighbors;
-}
-
-void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 OnActions& onActions,
-	 Character::Factory& characterFactory,
-	 Ideas& ideas,
-	 const std::set<std::string>& majorIdeologies)
-{
-	std::vector<std::shared_ptr<Country>> greatPowers;
-	for (const auto& country: countries | std::views::values)
-	{
-		if (country->isGreatPower())
-		{
-			greatPowers.push_back(country);
-		}
-	}
-	determineGPZonesOfAccess(greatPowers, countries);
-
-	for (auto country: sortCountriesByStrength(countries))
-	{
-		if (country->getGovernmentIdeology() != "democratic")
-		{
-			continue;
-		}
-
-		std::vector<std::shared_ptr<Country>> gpThreats;
-		for (const auto& potentialAttacker: greatPowers)
-		{
-			const auto& potentialAttackerTag = potentialAttacker->getTag();
-			if (potentialAttackerTag == country->getTag())
-			{
-				continue;
-			}
-			if (potentialAttacker->getGovernmentIdeology() == "democratic")
-			{
-				continue;
-			}
-			const auto& relations = potentialAttacker->getRelations(country->getTag());
-			if (!relations || (relations->getRelations() >= 0))
-			{
-				continue;
-			}
-			if (attackerCanPositionTroopsOnCountryBorders(country, potentialAttackerTag, countries) &&
-				 gpThreats.size() < 3)
-			{
-				gpThreats.push_back(potentialAttacker);
-			}
-		}
-
-		if (!gpThreats.empty())
-		{
-			HoI4FocusTree::Factory factory = HoI4FocusTree::Factory();
-			auto focusTree = factory.importFocusTree("Configurables/AdjustedFocusBranches/FRA_begin_rearmament.txt");
-			updateAdjustedFocuses(focusTree, majorIdeologies);
-
-			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
-			importCharacters(country,
-				 "Configurables/AdjustedFocusBranches/FRA_begin_rearmament_characters.txt",
-				 characterFactory);
-
-			importIdeas("Configurables/AdjustedFocusBranches/FRA_begin_rearmament_ideas.txt");
-			addIdeas(ideas, majorIdeologies);
-
-			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
-			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
-			if (gpThreats.size() > 1)
-			{
-				gpThreats[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
-				flagZoneOfAccess(gpThreats[1]->getTag(), "FRA_begin_rearmament_GER_zone", countries);
-			}
-			country->addFocusTreeBranch(focusTree.getFocuses(), onActions);
-			addedBranches.push_back("FRA_begin_rearmament");
-			break;
-		}
-	}
 }
 
 void HoI4::AdjustedBranches::importCharacters(std::shared_ptr<Country> country,
