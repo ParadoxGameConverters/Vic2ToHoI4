@@ -18,6 +18,9 @@ namespace HoI4
 class Ideas: commonItems::parser
 {
   public:
+	class Factory;
+
+	Ideas() = default;
 	Ideas(const std::set<std::string>& majorIdeologies) noexcept;
 
 	void updateIdeas(const std::set<std::string>& majorIdeologies);

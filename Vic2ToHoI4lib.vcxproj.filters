@@ -495,6 +495,9 @@
     <ClCompile Include="src\HOI4World\Ideas\Ideas.cpp">
       <Filter>src\HoI4World\Ideas</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Ideas\IdeasFactory.cpp">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\Ideas\IdeaUpdaters.cpp">
       <Filter>src\HoI4World\Ideas</Filter>
     </ClCompile>
@@ -1683,6 +1686,9 @@
       <Filter>src\HoI4World\Ideas</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\Ideas\Ideas.h">
+      <Filter>src\HoI4World\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Ideas\IdeasFactory.h">
       <Filter>src\HoI4World\Ideas</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\Ideas\IdeaUpdaters.h">

@@ -66,10 +66,8 @@ class AdjustedBranches: commonItems::parser
 	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const std::shared_ptr<Country>& country,
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
-	void importIdeas(const std::string& filePath);
-	void addIdeas(Ideas& ideas, const std::set<std::string>& majorIdeologies);
+	void addIdeas(const std::string& branch, Ideas& ideas, const std::set<std::string>& majorIdeologies);
 
-	std::vector<IdeaGroup> importedIdeas;
 	std::vector<std::string> addedBranches;
 	std::map<std::string, std::set<std::string>> gpZonesOfAccess; // great power, contiguous countries GP can access
 

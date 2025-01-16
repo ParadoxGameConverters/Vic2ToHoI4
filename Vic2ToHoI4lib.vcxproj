@@ -62,6 +62,7 @@
     <ClCompile Include="src\HOI4World\Ideas\Idea.cpp" />
     <ClCompile Include="src\HOI4World\Ideas\IdeaGroup.cpp" />
     <ClCompile Include="src\HOI4World\Ideas\Ideas.cpp" />
+    <ClCompile Include="src\HOI4World\Ideas\IdeasFactory.cpp" />
     <ClCompile Include="src\HOI4World\Ideas\IdeaUpdaters.cpp" />
     <ClCompile Include="src\HOI4World\Ideologies\Ideologies.cpp" />
     <ClCompile Include="src\HOI4World\Ideologies\Ideology.cpp" />
@@ -460,6 +461,7 @@
     <ClInclude Include="src\HOI4World\Ideas\Idea.h" />
     <ClInclude Include="src\HOI4World\Ideas\IdeaGroup.h" />
     <ClInclude Include="src\HOI4World\Ideas\Ideas.h" />
+    <ClInclude Include="src\HOI4World\Ideas\IdeasFactory.h" />
     <ClInclude Include="src\HOI4World\Ideas\IdeaUpdaters.h" />
     <ClInclude Include="src\HOI4World\Ideologies\Ideologies.h" />
     <ClInclude Include="src\HOI4World\Ideologies\IdeologiesBuilder.h" />

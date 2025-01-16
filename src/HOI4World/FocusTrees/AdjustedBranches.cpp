@@ -7,6 +7,7 @@
 #include "src/HOI4World/HoI4Focus.h"
 #include "src/HOI4World/HoI4FocusTree.h"
 #include "src/HOI4World/Ideas/IdeaUpdaters.h"
+#include "src/HOI4World/Ideas/IdeasFactory.h"
 #include "src/HOI4World/WarCreator/MapUtils.h"
 #include <algorithm>
 #include <ranges>
@@ -44,8 +45,7 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string
 			country->addFocusTreeBranch(theBranch.getFocuses(), onActions);
 			country->addGlobalEventTarget("uk_colonial_focus_ENG");
 
-			importIdeas("Configurables/AdjustedFocusBranches/uk_colonial_focus_ideas.txt");
-			addIdeas(ideas, majorIdeologies);
+			addIdeas("uk_colonial_focus", ideas, majorIdeologies);
 
 			addedBranches.push_back("uk_colonial_focus");
 			break;
@@ -109,8 +109,7 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 				 "Configurables/AdjustedFocusBranches/FRA_begin_rearmament_characters.txt",
 				 characterFactory);
 
-			importIdeas("Configurables/AdjustedFocusBranches/FRA_begin_rearmament_ideas.txt");
-			addIdeas(ideas, majorIdeologies);
+			addIdeas("FRA_begin_rearmament", ideas, majorIdeologies);
 
 			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
 			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
@@ -191,6 +190,20 @@ void HoI4::AdjustedBranches::updateAdjustedFocuses(HoI4FocusTree& focusTree,
 				 "has_government = democratic",
 				 majorIdeologies.contains("democratic"));
 		}
+	}
+}
+
+void HoI4::AdjustedBranches::addIdeas(const std::string& branch,
+	 Ideas& ideas,
+	 const std::set<std::string>& majorIdeologies)
+{
+	const auto& fileName = "Configurables/AdjustedFocusBranches/" + branch + "_ideas.txt";
+	auto importedIdeas = HoI4::Ideas::Factory().importIdeas(fileName);
+
+	for (auto ideaGroup: importedIdeas.getGeneralIdeas())
+	{
+		updateGeneralIdeas(ideaGroup, majorIdeologies);
+		ideas.addGeneralIdeas(ideaGroup);
 	}
 }
 
@@ -350,26 +363,4 @@ bool HoI4::AdjustedBranches::attackerCanPositionTroopsOnCountryBorders(const std
 			return true;
 	}
 	return false;
-}
-
-
-void HoI4::AdjustedBranches::importIdeas(const std::string& filePath)
-{
-	importedIdeas.clear();
-
-	registerRegex(commonItems::catchallRegex, [this](const std::string& ideaGroupName, std::istream& theStream) {
-		importedIdeas.emplace_back(IdeaGroup{ideaGroupName, theStream});
-	});
-
-	parseFile(filePath);
-	clearRegisteredKeywords();
-}
-
-void HoI4::AdjustedBranches::addIdeas(Ideas& ideas, const std::set<std::string>& majorIdeologies)
-{
-	for (auto ideaGroup: importedIdeas)
-	{
-		updateGeneralIdeas(ideaGroup, majorIdeologies);
-		ideas.addGeneralIdeas(ideaGroup);
-	}
 }
