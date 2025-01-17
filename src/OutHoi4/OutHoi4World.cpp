@@ -77,7 +77,8 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const date& vic2Date,
 	 const std::string& outputName);
 void copyAdjustedFocusFiles(const std::string& outputName, const std::vector<std::string>& branchNames);
-void outputAdjacencyRules(const std::string& outputName, const std::map<std::string, AdjacencyRule>& rules);
+void outputAdjacencyRules(const std::string& outputName,
+	 const std::map<std::string, std::shared_ptr<AdjacencyRule>>& rules);
 
 } // namespace HoI4
 
@@ -658,7 +659,7 @@ void HoI4::copyAdjustedFocusFiles(const std::string& outputName, const std::vect
 }
 
 void HoI4::outputAdjacencyRules(const std::string& outputName,
-	 const std::map<std::string, AdjacencyRule>& adjacencyRules)
+	 const std::map<std::string, std::shared_ptr<AdjacencyRule>>& adjacencyRules)
 {
 	std::ofstream outputFile("output/" + outputName + "/map/adjacency_rules.txt");
 	if (!outputFile.is_open())
@@ -668,7 +669,7 @@ void HoI4::outputAdjacencyRules(const std::string& outputName,
 
 	for (const auto& rule: adjacencyRules | std::views::values)
 	{
-		outputFile << rule;
+		outputFile << *rule;
 	}
 	outputFile.close();
 }

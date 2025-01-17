@@ -25,7 +25,7 @@ class AdjacencyRules: commonItems::parser
 	[[nodiscard]] const auto& getRules() const { return rules; }
 
   private:
-	std::map<std::string, AdjacencyRule> rules;
+	std::map<std::string, std::shared_ptr<AdjacencyRule>> rules;
 };
 
 } // namespace HoI4

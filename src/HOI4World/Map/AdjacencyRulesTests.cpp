@@ -45,7 +45,7 @@ TEST(HoI4World_Map_AdjacencyRules, DefaultAdjacencyRulesCanBeImported)
 	input << "\toffset = { -3 0 -2 }\n";
 	input << "}\n";
 
-	const auto& adjacencyRule = HoI4::AdjacencyRule(input);
+	const auto& adjacencyRule = std::make_shared<HoI4::AdjacencyRule>(input);
 
 	EXPECT_THAT(adjacencyRules.getRules(), testing::UnorderedElementsAre(testing::Pair("CANAL", adjacencyRule)));
 }
