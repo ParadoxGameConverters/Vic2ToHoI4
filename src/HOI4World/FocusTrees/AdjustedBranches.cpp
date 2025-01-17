@@ -175,6 +175,10 @@ void HoI4::AdjustedBranches::updateAdjustedFocuses(HoI4FocusTree& focusTree,
 				 "#NOT_DEMOCRATIC",
 				 "NOT = { has_government = democratic }",
 				 majorIdeologies.contains("democratic"));
+			focus->updateFocusElement(focus->completionReward,
+				 "#ADD_DEMOCRATIC_INFLUENCE_IDEA",
+				 "add_timed_idea = { idea = democratic_influence days = 1095 }",
+				 majorIdeologies.contains("democratic"));
 		}
 
 		if (focus->id == "uk_free_india_focus")

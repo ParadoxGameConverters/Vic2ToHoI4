@@ -799,7 +799,7 @@ focus_tree = {
 			event_target:uk_colonial_focus_china = {
 				add_offsite_building = { type = arms_factory level = 2 }
 				add_opinion_modifier = { target = ROOT modifier = democratic_leanings_good }
-				add_timed_idea = { idea = democratic_influence days = 1095 }
+				#ADD_DEMOCRATIC_INFLUENCE_IDEA
 				country_event = { id = generic.1 }
 				set_country_flag = ENG_influenced_by_britain_flag
 			}
