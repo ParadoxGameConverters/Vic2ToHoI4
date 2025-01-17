@@ -228,23 +228,6 @@ DEN_neglected_military_dynamic_modifier = {
 	planning_speed = DEN_neglected_military_planning_speed # -0.1
 }
 
-DEN_economic_crisis_dynamic_modifier = { 
-	enable = { always = yes }
-	icon = GFX_idea_generic_economic_crisis
-
-	remove_trigger = {
-		check_variable = { DEN.DEN_economic_crisis_monthly_population = 0 }
-		check_variable = { DEN.DEN_economic_crisis_stability_weekly = 0 }
-		check_variable = { DEN.DEN_economic_crisis_neutrality_drift = 0 }
-		check_variable = { DEN.DEN_economic_crisis_democratic_drift = 0 }
-	}
-
-	monthly_population = DEN_economic_crisis_monthly_population #-0.1
-	stability_weekly = DEN_economic_crisis_stability_weekly #-0.001
-	neutrality_drift = DEN_economic_crisis_neutrality_drift #0.02
-	democratic_drift = DEN_economic_crisis_democratic_drift #-0.05
-}
-
 DEN_industrial_capability_dynamic_modifier = {
 	enable = { always = yes }
 	icon = GFX_idea_SOV_second_five_year_plan

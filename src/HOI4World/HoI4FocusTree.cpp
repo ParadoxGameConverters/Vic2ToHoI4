@@ -304,6 +304,7 @@ void HoI4FocusTree::addGenericFocusTree(const std::set<std::string>& majorIdeolo
 	{
 		whyWeFightFocus->prerequisites.clear();
 		whyWeFightFocus->prerequisites.push_back("= { focus = deterrence }");
+		whyWeFightFocus->relativePositionId = "deterrence";
 	}
 	sharedFocuses.push_back(whyWeFightFocus);
 
@@ -312,6 +313,7 @@ void HoI4FocusTree::addGenericFocusTree(const std::set<std::string>& majorIdeolo
 	{
 		technologySharingFocus->prerequisites.clear();
 		technologySharingFocus->prerequisites.push_back("= { focus = why_we_fight }");
+		technologySharingFocus->relativePositionId = "why_we_fight";
 	}
 	technologySharingFocus->xPos = numCollectivistIdeologies;
 	sharedFocuses.push_back(technologySharingFocus);
