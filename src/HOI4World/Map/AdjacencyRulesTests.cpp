@@ -47,5 +47,6 @@ TEST(HoI4World_Map_AdjacencyRules, DefaultAdjacencyRulesCanBeImported)
 
 	const auto& adjacencyRule = std::make_shared<HoI4::AdjacencyRule>(input);
 
-	EXPECT_THAT(adjacencyRules.getRules(), testing::UnorderedElementsAre(testing::Pair("CANAL", testing::Pointee(*adjacencyRule))));
+	EXPECT_THAT(adjacencyRules.getRules(),
+		 testing::UnorderedElementsAre(testing::Pair("CANAL", testing::Pointee(*adjacencyRule))));
 }
