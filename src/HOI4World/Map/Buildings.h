@@ -33,7 +33,6 @@ class Buildings
 		 const Configuration& theConfiguration);
 
 	[[nodiscard]] const auto& getBuildings() const { return buildings; }
-	[[nodiscard]] const auto& getAirportLocations() const { return airportLocations; }
 
   private:
 	void importDefaultBuildings(Maps::MapData& theMapData, const Configuration& theConfiguration);
@@ -82,6 +81,7 @@ class Buildings
 	void placeAntiAir(const States& theStates, const Maps::MapData& theMapData);
 	void placeSyntheticRefineries(const States& theStates, const Maps::MapData& theMapData);
 	void placeNuclearReactors(const States& theStates, const Maps::MapData& theMapData);
+	void placeRocketSites(const States& theStates, const Maps::MapData& theMapData);
 
 	void placeSupplyNodes(const std::map<int, int>& provinceToStateIDMap,
 		 const Maps::MapData& theMapData,
@@ -106,8 +106,7 @@ class Buildings
 	defaultPositions defaultNuclearReactors;
 	defaultPositions defaultSupplyNodes;
 	defaultPositions defaultFloatingHarbors;
-
-	std::map<int, int> airportLocations;
+	defaultPositions defaultRocketSites;
 };
 
 } // namespace HoI4

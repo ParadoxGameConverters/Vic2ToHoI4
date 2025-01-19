@@ -85,6 +85,18 @@ void HoI4::outputHoI4State(std::ostream& output, const State& theState, const bo
 		}
 
 		output << "\t\t\tair_base = " << theState.getAirbaseLevel() << "\n";
+
+		for (const auto& [landmark, location]: theState.getLandmarks())
+		{
+			output << "\t\t\t" << location << " = {\n";
+			output << "\t\t\t\t" << landmark << " = {\n";
+			output << "\t\t\t\t\tlevel = 1\n";
+			output << "\t\t\t\t\tallowed = {\n";
+			output << "\t\t\t\t\t\thas_dlc = \"Gotterdammerung\"\n";
+			output << "\t\t\t\t\t}\n";
+			output << "\t\t\t\t}\n";
+			output << "\t\t\t}\n";
+		}
 		output << "\n";
 		output << "\t\t}\n";
 	}

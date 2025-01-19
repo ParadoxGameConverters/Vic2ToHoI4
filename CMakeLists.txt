@@ -92,6 +92,10 @@ file(GLOB HOI4WORLD_GAME_RULES_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Game
 file(GLOB HOI4WORLD_IDEAS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Ideas/*.cpp")
 file(GLOB HOI4WORLD_IDEOLOGIES_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Ideologies/*.cpp")
 file(GLOB HOI4WORLD_INTELLIGENCE_AGENCIES_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/IntelligenceAgencies/*.cpp")
+set(HOI4WORLD_LANDMARKS_SOURCES ${HOI4WORLD_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Landmarks/Landmark.cpp")
+set(HOI4WORLD_LANDMARKS_SOURCES ${HOI4WORLD_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Landmarks/Landmarks.cpp")
+set(HOI4WORLD_LANDMARKS_SOURCES ${HOI4WORLD_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Landmarks/LandmarkBuildings.cpp")
+set(HOI4WORLD_LANDMARKS_SOURCES ${HOI4WORLD_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Landmarks/LandmarkModifiers.cpp")
 set(HOI4WORLD_LEADERS_SOURCES ${HOI4WORLD_LEADERS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Leaders/Advisor.cpp")
 set(HOI4WORLD_LEADERS_SOURCES ${HOI4WORLD_LEADERS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Leaders/IdeologicalAdvisors.cpp")
 set(HOI4WORLD_LOCALISATIONS_SOURCES ${HOI4WORLD_LOCALISATIONS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Localisations/AllReplacementRules.cpp")
@@ -173,6 +177,8 @@ set(MAPPERS_GRAPHICS_SOURCES ${MAPPERS_GRAPHICS_SOURCES} "${PROJECT_SOURCE_DIR}/
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMappingFactory.cpp")
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMapper.cpp")
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMapperFactory.cpp")
+set(MAPPERS_LANDMARKS_SOURCES ${MAPPERS_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Buildings/LandmarksMapper.cpp")
+set(MAPPERS_LANDMARKS_SOURCES ${MAPPERS_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Buildings/LandmarksMappingFactory.cpp")
 set(MAPPERS_MERGE_RULES_SOURCES ${MAPPERS_MERGE_RULES_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/MergeRules/MergeRuleFactory.cpp")
 set(MAPPERS_MERGE_RULES_SOURCES ${MAPPERS_MERGE_RULES_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/MergeRules/MergeRulesFactory.cpp")
 set(MAPPERS_PROVINCES_SOURCES ${MAPPERS_PROVINCES_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Provinces/ProvinceMapperFactory.cpp")
@@ -266,6 +272,8 @@ file(GLOB OUTHOI4_IDEAS_SOURCES "${PROJECT_SOURCE_DIR}/src/OutHoi4/Ideas/*.cpp")
 file(GLOB OUTHOI4_IDEOLOGIES_SOURCES "${PROJECT_SOURCE_DIR}/src/OutHoi4/Ideologies/*.cpp")
 file(GLOB OUTHOI4_INTELLIGENCE_AGENCIES_SOURCES "${PROJECT_SOURCE_DIR}/src/OutHoi4/IntelligenceAgencies/*.cpp")
 set(OUTHOI4_INTERFACE_SOURCES ${OUTHOI4_INTERFACE_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/Interface/OutMonarchsInterface.cpp")
+set(OUTHOI4_LANDMARKS_SOURCES ${OUTHOI4_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/Landmarks/OutLandmark.cpp")
+set(OUTHOI4_LANDMARKS_SOURCES ${OUTHOI4_LANDMARKS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/Landmarks/OutLandmarkBuildings.cpp")
 set(OUTHOI4_LEADERS_SOURCES ${OUTHOI4_LEADERS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/Leaders/OutAdvisor.cpp")
 file(GLOB OUTHOI4_MAP_SOURCES "${PROJECT_SOURCE_DIR}/src/OutHoi4/Map/*.cpp")
 file(GLOB OUTHOI4_MILITARY_SOURCES "${PROJECT_SOURCE_DIR}/src/OutHoi4/Military/*.cpp")
@@ -340,6 +348,7 @@ list(APPEND ALL_HOI4_FILES
 	${OUTHOI4_IDEOLOGIES_SOURCES}
 	${OUTHOI4_INTELLIGENCE_AGENCIES_SOURCES}
 	${OUTHOI4_INTERFACE_SOURCES}
+	${OUTHOI4_LANDMARKS_SOURCES}
 	${OUTHOI4_LEADERS_SOURCES}
 	${OUTHOI4_MAP_SOURCES}
 	${OUTHOI4_MILITARY_SOURCES}
@@ -388,6 +397,7 @@ list(APPEND ALL_HOI4_FILES
 	${MAPPERS_GOVERNMENT_SOURCES}
 	${MAPPERS_GRAPHICS_SOURCES}
 	${MAPPERS_IDEOLOGY_SOURCES}
+	${MAPPERS_LANDMARKS_SOURCES}
 	${MAPPERS_MERGE_RULES_SOURCES}
 	${MAPPERS_TECHNOLOGY_SOURCES}
 	${MAPPERS_PROVINCES_SOURCES}
@@ -415,6 +425,7 @@ list(APPEND ALL_HOI4_FILES
 	${HOI4WORLD_IDEAS_SOURCES}
 	${HOI4WORLD_IDEOLOGIES_SOURCES}
 	${HOI4WORLD_INTELLIGENCE_AGENCIES_SOURCES}
+	${HOI4WORLD_LANDMARKS_SOURCES}
 	${HOI4WORLD_LEADERS_SOURCES}
 	${HOI4WORLD_LOCALISATIONS_SOURCES}
 	${HOI4WORLD_LOCALISATIONS_ARTICLERULES_SOURCES}
@@ -481,6 +492,7 @@ configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SWE_opertive_
 configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/TUR_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/TUR_operative_codenames.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Localisations/ArticleRules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/ArticleRules.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Localisations/StateCategories.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/StateCategories.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/Map/adjacency_rules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Map/adjacency_rules.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Map/regions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Map/regions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/casus_bellis_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/casus_bellis_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterDynamicModifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterDynamicModifiers.txt" COPYONLY)
@@ -510,6 +522,7 @@ configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONV
 configure_file("${DATA_FILE_DIR}/configurables/IdeologyMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ImportCharacters.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ImportCharacters.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/IntelligenceAgencyLogos.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IntelligenceAgencyLogos.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/LandmarksMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/LandmarksMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/languageReplacements.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacements.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/languageReplacementsBis.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacementsBis.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/merge_nations.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/merge_nations.txt" COPYONLY)
@@ -616,6 +629,7 @@ file(GLOB HOI4WORLD_GAME_RULES_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4Worl
 file(GLOB HOI4WORLD_IDEAS_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Ideas/*.cpp")
 file(GLOB HOI4WORLD_IDEOLOGIES_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/Ideologies/*.cpp")
 file(GLOB HOI4WORLD_INTELLIGENCE_AGENCIES_TESTS_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/IntelligenceAgencies/*.cpp")
+set(HOI4WORLD_LANDMARKS_TESTS_SOURCES ${HOI4WORLD_LANDMARKS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Landmarks/LandmarkBuildingsTests.cpp")
 set(HOI4WORLD_LEADER_TESTS_SOURCES ${HOI4WORLD_LEADER_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Leaders/AdvisorTests.cpp")
 set(HOI4WORLD_LOCALISATIONS_TESTS_SOURCES ${HOI4WORLD_LOCALISATIONS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Localisations/AllReplacementRulesTests.cpp")
 set(HOI4WORLD_LOCALISATIONS_TESTS_SOURCES ${HOI4WORLD_LOCALISATIONS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Localisations/GrammarMappingsTests.cpp")
@@ -682,6 +696,8 @@ set(MAPPERS_GRAPHICS_TESTS_SOURCES ${MAPPERS_GRAPHICS_TESTS_SOURCES} "${PROJECT_
 set(MAPPERS_GRAPHICS_TESTS_SOURCES ${MAPPERS_GRAPHICS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Graphics/GraphicsMapperTests.cpp")
 set(MAPPERS_IDEOLOGY_TESTS_SOURCES ${MAPPERS_IDEOLOGY_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMappingTests.cpp")
 set(MAPPERS_IDEOLOGY_TESTS_SOURCES ${MAPPERS_IDEOLOGY_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Ideology/IdeologyMapperTests.cpp")
+set(MAPPERS_LANDMARKS_TESTS_SOURCES ${MAPPERS_LANDMARKS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Buildings/LandmarksMapperTests.cpp")
+set(MAPPERS_LANDMARKS_TESTS_SOURCES ${MAPPERS_LANDMARKS_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Buildings/LandmarksMappingTests.cpp")
 set(MAPPERS_MERGE_RULES_TESTS_SOURCES ${MAPPERS_MERGE_RULES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/MergeRules/MergeRulesTests.cpp")
 set(MAPPERS_MERGE_RULES_TESTS_SOURCES ${MAPPERS_MERGE_RULES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/MergeRules/MergeRuleTests.cpp")
 set(MAPPERS_PROVINCES_TESTS_SOURCES ${MAPPERS_PROVINCES_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/Mappers/Provinces/ProvinceMapperTests.cpp")
@@ -766,6 +782,7 @@ list(APPEND ALL_HOI4_TESTS_FILES
 	${HOI4WORLD_IDEAS_TESTS_SOURCES}
 	${HOI4WORLD_IDEOLOGIES_TESTS_SOURCES}
 	${HOI4WORLD_INTELLIGENCE_AGENCIES_TESTS_SOURCES}
+	${HOI4WORLD_LANDMARKS_TESTS_SOURCES}
 	${HOI4WORLD_LEADER_TESTS_SOURCES}
 	${HOI4WORLD_LOCALISATIONS_TESTS_SOURCES}
 	${HOI4WORLD_LOCALISATIONS_ARTICLERULES_TESTS_SOURCES}
@@ -798,12 +815,14 @@ list(APPEND ALL_HOI4_TESTS_FILES
 	${MAPPERS_GOVERNMENT_TESTS_SOURCES}
 	${MAPPERS_GRAPHICS_TESTS_SOURCES}
 	${MAPPERS_IDEOLOGY_TESTS_SOURCES}
+	${MAPPERS_LANDMARKS_TESTS_SOURCES}
 	${MAPPERS_MERGE_RULES_TESTS_SOURCES}
 	${MAPPERS_PROVINCES_TESTS_SOURCES}
 	${MAPPERS_TECHNOLOGY_TESTS_SOURCES}
 	${MAPPERS_FACTIONNAME_TESTS_SOURCES}
 	${MAPS_TESTS_SOURCES}
 	${OUTHOI4_CHARACTERS_TESTS_SOURCES}
+	${OUTHOI4_LANDMARKS_SOURCES}
 	${OUTHOI4_MAP_TESTS_SOURCES}
 	${VIC2WORLD_AI_TESTS_SOURCES}
 	${VIC2WORLD_COUNTRIES_TESTS_SOURCES}
@@ -842,6 +861,8 @@ target_precompile_headers(Vic2ToHoi4ConverterTests REUSE_FROM Vic2ToHoi4lib)
 
 configure_file("data/test_files/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
 configure_file("data/test_files/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
+configure_file("data/test_files/Buildings/01_landmark_buildings.txt" "${TEST_OUTPUT_DIRECTORY}/HoI4Windows/common/buildings/01_landmark_buildings.txt" COPYONLY)
+configure_file("data/test_files/Buildings/LandmarksMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/LandmarksMappings.txt" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_ai_peace.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_cost_modifiers.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
 configure_file("data/test_files/Configurables/ideological_unit_medals.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_unit_medals.txt" COPYONLY)
@@ -893,6 +914,7 @@ configure_file("data/test_files/Mappers/Technology/research_bonus_mappings.txt" 
 configure_file("data/test_files/Mappers/Technology/tech_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
 configure_file("data/test_files/Mappers/FactionName/factions_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/factions_mappings.txt" COPYONLY)
 configure_file("data/test_files/Maps/adjacencies.csv" "${TEST_OUTPUT_DIRECTORY}/maptests/map/adjacencies.csv" COPYONLY)
+configure_file("data/test_files/Maps/adjacency_rules.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/Map/adjacency_rules.txt" COPYONLY)
 configure_file("data/test_files/Maps/nocsv.bmp" "${TEST_OUTPUT_DIRECTORY}/maptests/nocsv/map/nocsv.bmp" COPYONLY)
 configure_file("data/test_files/Maps/provinces.bmp" "${TEST_OUTPUT_DIRECTORY}/maptests/map/provinces.bmp" COPYONLY)
 configure_file("data/test_files/Mods/Dependencies.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/mod/Dependencies.mod" COPYONLY)
@@ -1035,6 +1057,7 @@ add_library(run_clang_tidy
 	${HOI4WORLD_IDEAS_SOURCES}
 	${HOI4WORLD_IDEOLOGIES_SOURCES}
 	${HOI4WORLD_INTELLIGENCE_AGENCIES_SOURCES}
+	${HOI4WORLD_LANDMARKS_SOURCES}
 	${HOI4WORLD_LEADERS_SOURCES}
 	${HOI4WORLD_LOCALISATIONS_SOURCES}
 	${HOI4WORLD_LOCALISATIONS_ARTICLERULES_SOURCES}
@@ -1065,6 +1088,7 @@ add_library(run_clang_tidy
 	${MAPPERS_GOVERNMENT_SOURCES}
 	${MAPPERS_GRAPHICS_SOURCES}
 	${MAPPERS_IDEOLOGY_SOURCES}
+	${MAPPERS_LANDMARKS_SOURCES}
 	${MAPPERS_MERGE_RULES_SOURCES}
 	${MAPPERS_TECHNOLOGY_SOURCES}
 	${MAPPERS_PROVINCES_SOURCES}
@@ -1101,6 +1125,7 @@ add_library(run_clang_tidy
 	${OUTHOI4_IDEOLOGIES_SOURCES}
 	${OUTHOI4_INTELLIGENCE_AGENCIES_SOURCES}
 	${OUTHOI4_INTERFACE_SOURCES}
+	${OUTHOI4_LANDMARKS_SOURCES}
 	${OUTHOI4_LEADERS_SOURCES}
 	${OUTHOI4_MAP_SOURCES}
 	${OUTHOI4_MILITARY_SOURCES}
@@ -1135,6 +1160,7 @@ add_library(run_clang_tidy
 	${HOI4WORLD_IDEAS_TESTS_SOURCES}
 	${HOI4WORLD_IDEOLOGIES_TESTS_SOURCES}
 	${HOI4WORLD_INTELLIGENCE_AGENCIES_TESTS_SOURCES}
+	${HOI4WORLD_LANDMARKS_TESTS_SOURCES}
 	${HOI4WORLD_LEADER_TESTS_SOURCES}
 	${HOI4WORLD_LOCALISATIONS_TESTS_SOURCES}
 	${HOI4WORLD_LOCALISATIONS_ARTICLERULES_TESTS_SOURCES}
@@ -1166,6 +1192,7 @@ add_library(run_clang_tidy
 	${MAPPERS_GOVERNMENT_TESTS_SOURCES}
 	${MAPPERS_GRAPHICS_TESTS_SOURCES}
 	${MAPPERS_IDEOLOGY_TESTS_SOURCES}
+	${MAPPERS_LANDMARKS_TESTS_SOURCES}
 	${MAPPERS_MERGE_RULES_TESTS_SOURCES}
 	${MAPPERS_PROVINCES_TESTS_SOURCES}
 	${MAPPERS_TECHNOLOGY_TESTS_SOURCES}

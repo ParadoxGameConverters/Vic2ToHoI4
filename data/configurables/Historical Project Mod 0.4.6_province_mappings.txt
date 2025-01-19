@@ -2332,7 +2332,8 @@
 	link = { vic2 = 1972 hoi4 = 5139 } # Baraka -> land
 	link = { vic2 = 1974 hoi4 = 8207 } # Mayumbe -> land
 	link = { vic2 = 1980 hoi4 = 2192 hoi4 = 3109 hoi4 = 6008 } # Djambala -> land, land, land
-	link = { vic2 = 1977 vic2 = 1983 hoi4 = 8193 } # Nkuna, Boma -> land
+	link = { vic2 = 1983 hoi4 = 10968 hoi4 = 13365 } # Boma -> land, land
+	link = { vic2 = 1977 hoi4 = 8193 } # Nkuna -> land
 	link = { vic2 = 2624 vic2 = 1978 hoi4 = 12975 } # Loango, Madingou -> land
 	link = { vic2 = 2000 hoi4 = 2115 } # Cabinda -> land
 	link = { comment = "* Libya" }
@@ -2483,8 +2484,8 @@
 	link = { vic2 = 2021 hoi4 = 7133 } # Masindi -> land
 	link = { vic2 = 2019 hoi4 = 12989 } # Entebbe -> land
 	link = { vic2 = 2020 hoi4 = 7088 hoi4 = 3854 } # Mbarara -> land, land
-	link = { vic2 = 2034 hoi4 = 9962 } # Kigali -> land
-	link = { vic2 = 2035 hoi4 = 2220 } # Usumbura -> land
+	link = { vic2 = 2034 hoi4 = 9962 hoi4 = 13364 } # Kigali -> land, land
+	link = { vic2 = 2035 hoi4 = 2220 hoi4 = 13363 } # Usumbura -> land, land
 	link = { vic2 = 2044 hoi4 = 4171 hoi4 = 10932 } # Mwanza -> land, land
 	link = { vic2 = 2047 hoi4 = 2206 hoi4 = 11017 hoi4 = 5224 } # Arusha -> land, land, land
 	link = { vic2 = 2037 hoi4 = 8183 } # Tanga -> land

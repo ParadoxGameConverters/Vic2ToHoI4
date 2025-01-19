@@ -162,6 +162,7 @@
     <Text Include="data\configurables\IdeologyMappings.txt" />
     <Text Include="data\configurables\ImportCharacters.txt" />
     <Text Include="data\configurables\IntelligenceAgencyLogos.txt" />
+    <Text Include="data\configurables\LandmarksMappings.txt" />
     <Text Include="data\configurables\languageReplacements.txt" />
     <Text Include="data\configurables\languageReplacementsBis.txt" />
     <Text Include="data\configurables\Localisations\ArticleRules.txt" />

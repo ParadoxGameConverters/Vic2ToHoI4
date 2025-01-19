@@ -523,7 +523,7 @@
 	link = { vic2 = 2274 hoi4 = 5000 hoi4 = 5056 hoi4 = 4892 } # Barinas -> Barinas, San Fernando de Apure, Achaguas
 	link = { comment = "* * Bolivar" }
 	link = { vic2 = 2269 hoi4 = 10912 } # Güiria -> Cumaná
-	link = { vic2 = 2275 hoi4 = 10879 hoi4 = 10849 hoi4 = 10736 hoi4 = 13362 } # Angostura -> Ciudad Guayana, Santa Elena de Uairén, Caicara del Orinoco, land
+	link = { vic2 = 2275 hoi4 = 10879 hoi4 = 10849 hoi4 = 10736 hoi4 = 13362 } # Angostura -> Ciudad Guayana, Santa Elena de Uairén, Caicara del Orinoco, Santa Elena de Uairén
 	link = { vic2 = 2276 hoi4 = 1981 hoi4 = 10767 hoi4 = 10823 } # Curiapo -> Tumeremo, Tucupita, Maturín
 	link = { vic2 = 2277 hoi4 = 7915 hoi4 = 5317 } # El Jobal -> Puerto Ayacucho, land
 	link = { vic2 = 2278 hoi4 = 8050 } # San Fernando de Atabapo -> San Fernando de Atabapo
@@ -586,14 +586,14 @@
 	link = { vic2 = 2435 hoi4 = 8143 } # Aracaju -> Aracaju
 	link = { comment = "* * Maranhao" }
 	link = { vic2 = 2424 hoi4 = 5220 hoi4 = 12933 } # São Luís -> Santa Inês, São Luís
-	link = { vic2 = 2425 hoi4 = 12913 hoi4 = 12947 hoi4 = 13275 } # Chapada -> Imperatriz, Balsas, land
+	link = { vic2 = 2425 hoi4 = 12913 hoi4 = 12947 hoi4 = 13275 } # Chapada -> Imperatriz, Balsas, Alenquer
 	link = { vic2 = 2426 hoi4 = 2150 hoi4 = 2228 } # Teresina -> Caxias, Teresina
 	link = { vic2 = 2427 hoi4 = 5153 hoi4 = 10984 hoi4 = 5204 } # Oeiras -> Picos, Floriano, Bom Jesus
-	link = { vic2 = 2429 hoi4 = 5107 hoi4 = 8179 hoi4 = 2132 hoi4 = 13273 } # Fortaleza -> Fortaleza, Russas, Sobral, land
+	link = { vic2 = 2429 hoi4 = 5107 hoi4 = 8179 hoi4 = 2132 hoi4 = 13273 } # Fortaleza -> Fortaleza, Russas, Sobral, Mossoró
 	link = { vic2 = 2430 hoi4 = 2164 hoi4 = 2178 } # Crato -> Crato, Crateús
 	link = { comment = "* * Goias" }
 	link = { vic2 = 2421 hoi4 = 8140 hoi4 = 12987 hoi4 = 5115 } # Vila Boa -> Goiânia, Iporá, Rio Verde
-	link = { vic2 = 2422 hoi4 = 5208 hoi4 = 12959 hoi4 = 13281 hoi4 = 13282 } # Aganja -> Minaçu, Goianésia, land, land
+	link = { vic2 = 2422 hoi4 = 5208 hoi4 = 12959 hoi4 = 13281 hoi4 = 13282 } # Aganja -> Minaçu, Goianésia, Gurupi, Porto Nacional
 	link = { vic2 = 2423 hoi4 = 5151 hoi4 = 2168 } # Palmas -> Porto Nacional, Araguaina
 	link = { comment = "* * Mato Grosso" }
 	link = { vic2 = 2416 hoi4 = 5200 hoi4 = 12951 } # Dourados -> Jardim, Maracaju
@@ -601,23 +601,23 @@
 	link = { vic2 = 2418 hoi4 = 2204 hoi4 = 5148 hoi4 = 2111 } # Cuiabá -> Água Boa, Barra do Garças, Cuiabá
 	link = { vic2 = 2419 hoi4 = 8189 hoi4 = 10959 hoi4 = 2181 } # Corumbá -> Corumbá, Campo Grande, Três Lagoas
 	link = { vic2 = 2420 hoi4 = 8224 } # Iguatemi -> Dourados
-	link = { vic2 = 2550 hoi4 = 12939 hoi4 = 13284 hoi4 = 13283 hoi4 = 13326 hoi4 = 13335 } # Forte do Príncipe -> Porto Velho, land, land, land, land
+	link = { vic2 = 2550 hoi4 = 12939 hoi4 = 13284 hoi4 = 13283 hoi4 = 13326 hoi4 = 13335 } # Forte do Príncipe -> Porto Velho, Cacoal, Ariquemes, land, land
 	link = { comment = "* * Amazonas" }
-	link = { vic2 = 2401 hoi4 = 13083 hoi4 = 13352 hoi4 = 13323 hoi4 = 13322 hoi4 = 13343 } # Marabitanas -> Tabatinga, land, land, land, land
-	link = { vic2 = 2403 hoi4 = 12919 hoi4 = 13347 hoi4 = 13344 hoi4 = 13342 hoi4 = 13348 hoi4 = 13351 hoi4 = 13350 hoi4 = 13321 hoi4 = 13349 hoi4 = 13346 hoi4 = 13345 hoi4 = 5083 } # Cachoeira -> Manacapuru, land, land, land, land, land, land, land, land, land, land, São Gabriel da Cachoeira
-	link = { vic2 = 2404 hoi4 = 8254 hoi4 = 12965 hoi4 = 13318 hoi4 = 13325 hoi4 = 13328 hoi4 = 13319 hoi4 = 13320 hoi4 = 13334 hoi4 = 13332 hoi4 = 13333 hoi4 = 13330 hoi4 = 13331 hoi4 = 13329 hoi4 = 13327 } # Tefe -> Coari, Humaitá, land, land, land, land, land, land, land, land, land, land, land, land
-	link = { vic2 = 2405 hoi4 = 5232 hoi4 = 1979 hoi4 = 13336 hoi4 = 13337 } # Borba -> Manicoré, Parintins, land, land
+	link = { vic2 = 2401 hoi4 = 13083 hoi4 = 13352 hoi4 = 13323 hoi4 = 13322 hoi4 = 13343 } # Marabitanas -> Tabatinga, land, Benjamin Constant, Fonte Boa, Santo Antônio do Içá
+	link = { vic2 = 2403 hoi4 = 12919 hoi4 = 13347 hoi4 = 13344 hoi4 = 13342 hoi4 = 13348 hoi4 = 13351 hoi4 = 13350 hoi4 = 13321 hoi4 = 13349 hoi4 = 13346 hoi4 = 13345 hoi4 = 5083 } # Cachoeira -> Manacapuru, land, Santa Isabel do Rio Negro, land, Barcelos, Maraã, land, Tefé, Manacapuru, land, São Gabriel da Cachoeira, São Gabriel da Cachoeira
+	link = { vic2 = 2404 hoi4 = 8254 hoi4 = 12965 hoi4 = 13318 hoi4 = 13325 hoi4 = 13328 hoi4 = 13319 hoi4 = 13320 hoi4 = 13334 hoi4 = 13332 hoi4 = 13333 hoi4 = 13330 hoi4 = 13331 hoi4 = 13329 hoi4 = 13327 } # Tefe -> Coari, Humaitá, land, Lábrea, land, Canutama, Coari, land, land, land, land, land, Tapauá, Humaitá
+	link = { vic2 = 2405 hoi4 = 5232 hoi4 = 1979 hoi4 = 13336 hoi4 = 13337 } # Borba -> Manicoré, Parintins, Manicore, Urucuritiba
 	link = { vic2 = 2407 hoi4 = 8185 hoi4 = 2198 } # Tabatinga -> Carauari, Cruzeiro do Sul
 	link = { vic2 = 2532 hoi4 = 5214 hoi4 = 13339 hoi4 = 13361 hoi4 = 13340 hoi4 = 13341 hoi4 = 13285 } # Forte São Joaquim -> Boa Vista, land, land, land, land, land
-	link = { vic2 = 2549 hoi4 = 5216 hoi4 = 10960 hoi4 = 13324 hoi4 = 13317 hoi4 = 13278 hoi4 = 13279 } # Tarauacá -> Eirunepé, Rio Branco, land, land, land, land
+	link = { vic2 = 2549 hoi4 = 5216 hoi4 = 10960 hoi4 = 13324 hoi4 = 13317 hoi4 = 13278 hoi4 = 13279 } # Tarauacá -> Eirunepé, Rio Branco, land, Pauini, Porto Velho, Tarauacá
 	link = { comment = "* * Para" }
 	link = { vic2 = 2402 hoi4 = 13338 hoi4 = 10934 } # Manaus -> land, Manaus
-	link = { vic2 = 2412 hoi4 = 13354 hoi4 = 13353 } # Óbidos -> land, land
+	link = { vic2 = 2412 hoi4 = 13354 hoi4 = 13353 } # Óbidos -> Alenquer, Oriximiná
 	link = { vic2 = 2408 hoi4 = 5008 hoi4 = 13277 } # Oriximina -> Itacoatiara, land
-	link = { vic2 = 2410 hoi4 = 12853 hoi4 = 10874 hoi4 = 12999 hoi4 = 13274 } # Belém -> Belém, Cametá, Paragominas, land
-	link = { vic2 = 2411 hoi4 = 2035 hoi4 = 13356 hoi4 = 13358 hoi4 = 13359 hoi4 = 13355 hoi4 = 13360 hoi4 = 13357 } # Santarém -> Santarém, land, land, land, land, land, land
+	link = { vic2 = 2410 hoi4 = 12853 hoi4 = 10874 hoi4 = 12999 hoi4 = 13274 } # Belém -> Belém, Cametá, Paragominas, Breves
+	link = { vic2 = 2411 hoi4 = 2035 hoi4 = 13356 hoi4 = 13358 hoi4 = 13359 hoi4 = 13355 hoi4 = 13360 hoi4 = 13357 } # Santarém -> Santarém, Santarem, Itaituba, Jacareacanga, Paritins, land, land
 	link = { vic2 = 2413 hoi4 = 10956 hoi4 = 2214 } # Marabá -> Redenção, Marabá
-	link = { vic2 = 2414 hoi4 = 13276 } # Amapá -> land
+	link = { vic2 = 2414 hoi4 = 13276 } # Amapá -> Amapá
 	link = { vic2 = 2415 hoi4 = 4980 } # Macapá -> Macapá
 	link = { vic2 = 2600 hoi4 = 8172 } # Altamira -> Itaituba
 	link = { comment = "* " }
@@ -632,7 +632,7 @@
 	link = { comment = "* ** Peru" }
 	link = { comment = "* * Pastaza" }
 	link = { vic2 = 2286 hoi4 = 8213 hoi4 = 10970 } # Iquitos -> Requena, land
-	link = { vic2 = 2288 hoi4 = 8149 hoi4 = 13289 hoi4 = 13290 } # Yuncos -> Iquitos, land, land
+	link = { vic2 = 2288 hoi4 = 8149 hoi4 = 13289 hoi4 = 13290 } # Yuncos -> Iquitos, Iquitos, San Lorenzo
 	link = { vic2 = 2289 hoi4 = 12869 hoi4 = 13291 } # Puca Urco -> Mazán, land
 	link = { comment = "* * Cajamarca" }
 	link = { vic2 = 2290 hoi4 = 12969 } # Cajamarca -> Huánuco
@@ -645,15 +645,15 @@
 	link = { vic2 = 2295 hoi4 = 12997 } # Lima -> Lima
 	link = { vic2 = 2296 hoi4 = 2162 } # Huancavelica -> Huancayo
 	link = { vic2 = 2298 hoi4 = 12983 hoi4 = 5190 } # Huaraz -> Huacho, Chimbote
-	link = { vic2 = 2300 hoi4 = 2226 hoi4 = 13280 hoi4 = 13316 } # Pucallpa -> Contamana, land, land
+	link = { vic2 = 2300 hoi4 = 2226 hoi4 = 13280 hoi4 = 13316 } # Pucallpa -> Contamana, Cruzeiro do Sul, land
 	link = { comment = "* * Ica" }
 	link = { vic2 = 2297 hoi4 = 2225 hoi4 = 5202 } # Ica -> Ica, Abancay
 	link = { vic2 = 2299 hoi4 = 12953 } # Ayacucho -> Ayacucho
 	link = { vic2 = 2301 hoi4 = 8191 hoi4 = 8160 hoi4 = 10940 } # Puerto Maldonado -> land, Atalaya, Puerto Maldonado
 	link = { vic2 = 2302 hoi4 = 5166 } # Cusco -> Cusco
 	link = { comment = "* * Arequipa" }
-	link = { vic2 = 2303 hoi4 = 2182 hoi4 = 2210 hoi4 = 13286 } # Puno -> Juliaca, Arequipa, land
-	link = { vic2 = 2304 hoi4 = 13288 hoi4 = 13287 } # Arequipa -> land, land
+	link = { vic2 = 2303 hoi4 = 2182 hoi4 = 2210 hoi4 = 13286 } # Puno -> Juliaca, Arequipa, Puno
+	link = { vic2 = 2304 hoi4 = 13288 hoi4 = 13287 } # Arequipa -> Mollendo, Moquegua
 	link = { vic2 = 2578 hoi4 = 13086 } # Tacna -> Tacna
 	link = { comment = "* " }
 	link = { comment = "* ** Bolivia" }
@@ -692,10 +692,10 @@
 	link = { comment = "* " }
 	link = { comment = "* ** Chile" }
 	link = { comment = "* * Antofagasta" }
-	link = { vic2 = 2305 hoi4 = 12994 hoi4 = 5171 hoi4 = 5146 hoi4 = 13304 } # Antofagasta -> Antofagasta, Taltal, land, land
+	link = { vic2 = 2305 hoi4 = 12994 hoi4 = 5171 hoi4 = 5146 hoi4 = 13304 } # Antofagasta -> Antofagasta, Taltal, land, San Pedro de Atacama
 	link = { vic2 = 2307 hoi4 = 13303 hoi4 = 8217 hoi4 = 8231 } # Iquique -> land, Tocopilla, Calama
 	link = { vic2 = 2308 hoi4 = 5131 } # Arica -> Iquique
-	link = { vic2 = 2309 hoi4 = 13302 hoi4 = 13301 } # Calama -> land, land
+	link = { vic2 = 2309 hoi4 = 13302 hoi4 = 13301 } # Calama -> Calama, Tocopilla
 	link = { comment = "* * Santiago" }
 	link = { vic2 = 2322 hoi4 = 11000 hoi4 = 12914 hoi4 = 5228 hoi4 = 5192 } # Copiapó -> Copiapó, land, Vallenar, El Salvador
 	link = { vic2 = 2323 hoi4 = 8194 } # La Serena -> Copiapó
@@ -708,15 +708,15 @@
 	link = { vic2 = 2330 hoi4 = 12984 } # Cauquenes -> Concepción
 	link = { vic2 = 2331 hoi4 = 8251 } # Chillán -> Chillán
 	link = { comment = "* * Araucania" }
-	link = { vic2 = 2332 hoi4 = 12954 hoi4 = 5169 hoi4 = 5118 hoi4 = 13297 } # Osorno -> Valdivia, Puerto Montt, Río Negro, land
+	link = { vic2 = 2332 hoi4 = 12954 hoi4 = 5169 hoi4 = 5118 hoi4 = 13297 } # Osorno -> Valdivia, Puerto Montt, Río Negro, Castro
 	link = { vic2 = 2333 hoi4 = 2161 hoi4 = 10961 hoi4 = 8198 hoi4 = 5159 hoi4 = 8218 hoi4 = 13295 } # Puerto Aisén -> Coyhaique, land, land, land, Puerto Natales, land
 	link = { vic2 = 2334 hoi4 = 5201 hoi4 = 5215 } # Punta Arenas -> land, Punta Arenas
-	link = { vic2 = 2335 hoi4 = 5209 hoi4 = 13300 } # Porvenir -> Porvenir, land
+	link = { vic2 = 2335 hoi4 = 5209 hoi4 = 13300 } # Porvenir -> Porvenir, Ushuaia
 	link = { comment = "* " }
 	link = { comment = "* ** Argentina" }
 	link = { comment = "* * Jujuy" }
 	link = { vic2 = 2315 hoi4 = 5229 hoi4 = 12979 } # Tarija -> Tarija, Camiri
-	link = { vic2 = 2368 hoi4 = 11001 hoi4 = 13311 hoi4 = 8216 hoi4 = 13308 hoi4 = 13310 } # Salta -> Salta, land, Tucumán, land, land
+	link = { vic2 = 2368 hoi4 = 11001 hoi4 = 13311 hoi4 = 8216 hoi4 = 13308 hoi4 = 13310 } # Salta -> Salta, San José de Metán, Tucumán, Salta, land
 	link = { vic2 = 2369 vic2 = 2370 vic2 = 2371 hoi4 = 2224 } # Jujuy, Cochinoca, Equia -> La Quiaca
 	link = { vic2 = 2372 hoi4 = 10965 hoi4 = 10944 } # Rivadavia -> San José de Metán, Tartagal
 	link = { comment = "* * Chaco" }
@@ -725,7 +725,7 @@
 	link = { vic2 = 2366 hoi4 = 12922 } # Formosa -> Formosa
 	link = { vic2 = 2367 hoi4 = 12943 } # Xolotas -> Las Lomitas
 	link = { comment = "* * Catamarca" }
-	link = { vic2 = 2373 hoi4 = 13309 } # Tucumán -> land
+	link = { vic2 = 2373 hoi4 = 13309 } # Tucumán -> Concepción
 	link = { vic2 = 2374 hoi4 = 12978 } # Catamarca -> land
 	link = { vic2 = 2375 hoi4 = 8253 hoi4 = 8195 } # Vinchina -> Chilecito, Belén
 	link = { vic2 = 2385 hoi4 = 2136 hoi4 = 12928 } # La Rioja -> La Rioja, San José de Jáchal
@@ -770,8 +770,8 @@
 	link = { vic2 = 2391 hoi4 = 12306 hoi4 = 8192 hoi4 = 2199 } # Neuquén -> Neuquén, Rincón de los Sauces, Zapala
 	link = { vic2 = 2392 hoi4 = 10981 hoi4 = 12349 } # Viedma -> Viedma, Puerto Madryn
 	link = { vic2 = 2394 hoi4 = 12982 } # Bariloche -> land
-	link = { vic2 = 2396 hoi4 = 10953 hoi4 = 11005 hoi4 = 13305 hoi4 = 13307 hoi4 = 13296 } # Rawson -> land, land, land, land, land
-	link = { vic2 = 2397 hoi4 = 8161 hoi4 = 8176 hoi4 = 13306 } # Esquel -> San Carlos de Bariloche, land, land
+	link = { vic2 = 2396 hoi4 = 10953 hoi4 = 11005 hoi4 = 13305 hoi4 = 13307 hoi4 = 13296 } # Rawson -> land, land, Caleta Olivia, Puerto Madryn, land
+	link = { vic2 = 2397 hoi4 = 8161 hoi4 = 8176 hoi4 = 13306 } # Esquel -> San Carlos de Bariloche, land, Río Mayo
 	link = { comment = "* * Patagonia Meridional" }
 	link = { vic2 = 2131 hoi4 = 12960 hoi4 = 13292 } # Falkland Islands -> Stanley, land
 	link = { vic2 = 2398 hoi4 = 12952 hoi4 = 2169 hoi4 = 8913 } # Puerto Deseado -> Caleta Olivia, Las Heras, lake
@@ -1150,7 +1150,7 @@
 	link = { vic2 = 1995 hoi4 = 12824 hoi4 = 10883 hoi4 = 12741 hoi4 = 7931 } # Gemena -> Gemena, Bumba, Gbadolite, Dongo
 	link = { comment = "* * Bas-Congo" }
 	link = { vic2 = 1982 hoi4 = 5117 hoi4 = 12925 } # Kinshasa -> Léopoldville, Matadi
-	link = { vic2 = 1983 hoi4 = 10968 } # Boma -> Boma
+	link = { vic2 = 1983 hoi4 = 10968 hoi4 = 13365 } # Boma -> Boma, Nkamba
 	link = { vic2 = 1985 hoi4 = 12896 hoi4 = 12945 hoi4 = 10025 } # Kumbana -> Kikwit, Bandundu, Kahumba
 	link = { vic2 = 2000 hoi4 = 2115 } # Cabinda -> Cabinda
 	link = { comment = "* * Kasai" }
@@ -1189,9 +1189,9 @@
 	link = { comment = "* " }
 	link = { comment = "* ** Eritrea" }
 	link = { comment = "* * Eritrea" }
-	link = { vic2 = 1848 hoi4 = 13250 } # Asmara -> land
+	link = { vic2 = 1848 hoi4 = 13250 } # Asmara -> Asmara
 	link = { vic2 = 1849 hoi4 = 5047 hoi4 = 5091 hoi4 = 12766 } # Massawa -> Nacfa, Massaua, Asmara
-	link = { vic2 = 1850 hoi4 = 12723 hoi4 = 13251 hoi4 = 5017 } # Akordat -> Agordat, land, Cheren
+	link = { vic2 = 1850 hoi4 = 12723 hoi4 = 13251 hoi4 = 5017 } # Akordat -> Agordat, Teseney, Cheren
 	link = { vic2 = 1851 hoi4 = 8043 } # Assab -> Assab
 	link = { comment = "* " }
 	link = { comment = "* ** South Sudan" }
@@ -1206,25 +1206,25 @@
 	link = { comment = "* * Begemder" }
 	link = { vic2 = 1852 hoi4 = 1984 } # Gonder -> Gonder
 	link = { vic2 = 1854 hoi4 = 2040 } # Matamma -> Metema
-	link = { vic2 = 1855 hoi4 = 4954 hoi4 = 13242 } # Debre Markos -> Bahir Dar, land
+	link = { vic2 = 1855 hoi4 = 4954 hoi4 = 13242 } # Debre Markos -> Bahir Dar, Debre Markos
 	link = { vic2 = 3224 hoi4 = 13137 } # Lake Tana -> (Lake)
 	link = { comment = "* * Tigray" }
-	link = { vic2 = 1853 hoi4 = 5097 hoi4 = 13241 } # Debre Tabor -> Dese, land
-	link = { vic2 = 1856 hoi4 = 2072 hoi4 = 13238 hoi4 = 13237 } # Aksum -> Mek'ele, land, land
+	link = { vic2 = 1853 hoi4 = 5097 hoi4 = 13241 } # Debre Tabor -> Dese, Debre Tabor
+	link = { vic2 = 1856 hoi4 = 2072 hoi4 = 13238 hoi4 = 13237 } # Aksum -> Mek'ele, Adwa, Aksum
 	link = { vic2 = 1857 hoi4 = 7944 } # Antalo -> Sok'ot'a
-	link = { vic2 = 1858 hoi4 = 5041 hoi4 = 13236 hoi4 = 13240 } # Awsa -> Asayita, land, land
+	link = { vic2 = 1858 hoi4 = 5041 hoi4 = 13236 hoi4 = 13240 } # Awsa -> Asayita, Semera, Asayita
 	link = { comment = "* * Gibe" }
-	link = { vic2 = 1862 hoi4 = 7912 hoi4 = 13245 hoi4 = 13244 } # Bonga -> Gambela, land, land
-	link = { vic2 = 1863 hoi4 = 2009 hoi4 = 12856 hoi4 = 13243 } # Asosa -> Asosa, Nekemte, land
-	link = { vic2 = 1864 hoi4 = 8062 hoi4 = 8019 hoi4 = 13247 hoi4 = 13246 } # Negele -> Negele Arsi, Sawla, land, land
+	link = { vic2 = 1862 hoi4 = 7912 hoi4 = 13245 hoi4 = 13244 } # Bonga -> Gambela, Mizan, Gambela
+	link = { vic2 = 1863 hoi4 = 2009 hoi4 = 12856 hoi4 = 13243 } # Asosa -> Asosa, Nekemte, Dembidolo
+	link = { vic2 = 1864 hoi4 = 8062 hoi4 = 8019 hoi4 = 13247 hoi4 = 13246 } # Negele -> Negele Arsi, Sawla, Moyale, Awasa
 	link = { comment = "* * Shewa" }
-	link = { vic2 = 1859 hoi4 = 5010 hoi4 = 13239 } # Ankober -> Adis Abeba, land
+	link = { vic2 = 1859 hoi4 = 5010 hoi4 = 13239 } # Ankober -> Adis Abeba, Debre Birhan
 	link = { vic2 = 1860 hoi4 = 10734 } # Awasa -> Awasa
 	link = { vic2 = 1861 hoi4 = 8036 } # Aselia -> Adaamaa
 	link = { comment = "* * Hararghe" }
-	link = { vic2 = 1865 hoi4 = 7980 hoi4 = 12714 hoi4 = 13249 } # Harer -> Harar, Jijiga, land
-	link = { vic2 = 1866 hoi4 = 13248 hoi4 = 10775 hoi4 = 4995 } # Goba -> land, Robe, Dolo
-	link = { vic2 = 1867 hoi4 = 12812 hoi4 = 12757 hoi4 = 13253 } # Werder -> Gode, Degeh Bur, land
+	link = { vic2 = 1865 hoi4 = 7980 hoi4 = 12714 hoi4 = 13249 } # Harer -> Harar, Jijiga, Harar
+	link = { vic2 = 1866 hoi4 = 13248 hoi4 = 10775 hoi4 = 4995 } # Goba -> Robe, Robe, Dolo
+	link = { vic2 = 1867 hoi4 = 12812 hoi4 = 12757 hoi4 = 13253 } # Werder -> Gode, Degeh Bur, Gode
 	link = { comment = "* " }
 	link = { comment = "* ** Dijbouti / Somalia" }
 	link = { comment = "* * North Somaliland" }
@@ -1264,8 +1264,8 @@
 	link = { comment = "* " }
 	link = { comment = "* ** Rawanda / Burundi" }
 	link = { comment = "* * Ruanda-Urundi" }
-	link = { vic2 = 2034 hoi4 = 9962 } # Kigali -> Kigali
-	link = { vic2 = 2035 hoi4 = 2220 } # Usumbura -> Usumbura
+	link = { vic2 = 2034 hoi4 = 9962 hoi4 = 13364 } # Kigali -> Kigali, Nyanza
+	link = { vic2 = 2035 hoi4 = 2220 hoi4 = 13363 } # Usumbura -> Usumbura, Kitega
 	link = { comment = "* " }
 	link = { comment = "* ** Tanzania" }
 	link = { comment = "* * Tanganyika" }
@@ -1411,7 +1411,7 @@
 	link = { vic2 = 2632 hoi4 = 10636 hoi4 = 13066 } # Ammassalik -> Ammassalik, land
 	link = { comment = "* " }
 	link = { comment = "* ** Iceland" }
-	link = { vic2 = 252 hoi4 = 12674 hoi4 = 4861 hoi4 = 12689 hoi4 = 13268 hoi4 = 13266 hoi4 = 13267 hoi4 = 13271 } # Iceland -> Reykjavík, Akureyri, Reyðarfjörður, land, land, land, land
+	link = { vic2 = 252 hoi4 = 12674 hoi4 = 4861 hoi4 = 12689 hoi4 = 13268 hoi4 = 13266 hoi4 = 13267 hoi4 = 13271 } # Iceland -> Reykjavík, Akureyri, Reyðarfjörður, Selfoss, Höfn, Neskaupstaður, Ísafjörður
 	link = { vic2 = 3246 hoi4 = 13272 } # Jan Mayen -> land
 	link = { vic2 = 253 hoi4 = 13003 } # Faroe Islands -> Tórshavn
 	link = { comment = "* " }
@@ -1560,7 +1560,7 @@
 	link = { vic2 = 272 hoi4 = 11218 hoi4 = 9350 hoi4 = 9314 hoi4 = 11378 } # Dumfries -> Dumfries, Dalbeattie, Hawick, Dunbar
 	link = { comment = "* * Highland" }
 	link = { vic2 = 266 hoi4 = 11136 hoi4 = 200 hoi4 = 11207 hoi4 = 9161 hoi4 = 11055 } # Aberdeen -> Aberdeen, Peterhead, Elgin, Inverness, Aboyne
-	link = { vic2 = 267 hoi4 = 9075 hoi4 = 6046 hoi4 = 6104 hoi4 = 3159 hoi4 = 11064 hoi4 = 131 hoi4 = 9090 hoi4 = 6196 hoi4 = 11161 hoi4 = 11266 hoi4 = 6205 hoi4 = 3178 hoi4 = 6062 hoi4 = 13269 hoi4 = 13270 } # Inverness -> Kingussie, Fort Augustus, Lairg, Alness, Kirkwall, Tongue, Ullapool, Lerwick, Fort William, Tobermory, Gairloch, Portree, Stornoway, land, land
+	link = { vic2 = 267 hoi4 = 9075 hoi4 = 6046 hoi4 = 6104 hoi4 = 3159 hoi4 = 11064 hoi4 = 131 hoi4 = 9090 hoi4 = 6196 hoi4 = 11161 hoi4 = 11266 hoi4 = 6205 hoi4 = 3178 hoi4 = 6062 hoi4 = 13269 hoi4 = 13270 } # Inverness -> Kingussie, Fort Augustus, Lairg, Alness, Kirkwall, Tongue, Ullapool, Lerwick, Fort William, Tobermory, Gairloch, Portree, Stornoway, land, Thurso
 	link = { vic2 = 268 hoi4 = 6300 hoi4 = 3150 hoi4 = 11306 hoi4 = 159 } # Dundee -> Dunfermline, Dundee, Pitlochry, Perth
 	link = { comment = "* " }
 	link = { comment = "* ** France" }
@@ -1713,8 +1713,8 @@
 	link = { comment = "* ** Sweden" }
 	link = { comment = "* * Malmo" }
 	link = { vic2 = 331 hoi4 = 6258 hoi4 = 408 } # Gotland -> Hemse, Visby
-	link = { vic2 = 332 hoi4 = 299 hoi4 = 329 hoi4 = 6148 hoi4 = 3229 hoi4 = 11390 hoi4 = 211 hoi4 = 363 hoi4 = 13264 } # Kalmar -> Kalmar, Torsås, Vimmerby, Oskarshamn, Västervik, Borgholm, Emmaboda, land
-	link = { vic2 = 333 hoi4 = 242 hoi4 = 9329 hoi4 = 9406 hoi4 = 11311 hoi4 = 11280 hoi4 = 9410 hoi4 = 11231 hoi4 = 9251 hoi4 = 13265 } # Växjö -> Växjö, Jönköping, Tranås, Eksjö, Tingsryd, Ljungby, Värnamo, Gislaved, land
+	link = { vic2 = 332 hoi4 = 299 hoi4 = 329 hoi4 = 6148 hoi4 = 3229 hoi4 = 11390 hoi4 = 211 hoi4 = 363 hoi4 = 13264 } # Kalmar -> Kalmar, Torsås, Vimmerby, Oskarshamn, Västervik, Borgholm, Emmaboda, Åtvidaberg
+	link = { vic2 = 333 hoi4 = 242 hoi4 = 9329 hoi4 = 9406 hoi4 = 11311 hoi4 = 11280 hoi4 = 9410 hoi4 = 11231 hoi4 = 9251 hoi4 = 13265 } # Växjö -> Växjö, Jönköping, Tranås, Eksjö, Tingsryd, Ljungby, Värnamo, Gislaved, Ödeshög
 	link = { vic2 = 334 hoi4 = 9279 hoi4 = 11376 hoi4 = 6345 hoi4 = 9362 hoi4 = 6412 hoi4 = 3307 } # Malmö -> Malmö, Ystad, Helsingborg, Ängelholm, Halmstad, Varberg
 	link = { vic2 = 335 hoi4 = 11215 hoi4 = 9300 hoi4 = 6120 hoi4 = 11160 hoi4 = 11327 } # Karlskrona -> Karlskrona, Hässleholm, Åhus, Kristianstad, Karlshamn
 	link = { comment = "* * Stockholm" }
@@ -1740,15 +1740,15 @@
 	link = { comment = "* ** Denmark" }
 	link = { comment = "* * Flensburg" }
 	link = { vic2 = 370 hoi4 = 317 hoi4 = 11366 } # Flensburg -> Flensburg, Sylt
-	link = { vic2 = 371 hoi4 = 11251 hoi4 = 332 hoi4 = 13258 } # Aabenraa -> Kolding, Ribe, land
+	link = { vic2 = 371 hoi4 = 11251 hoi4 = 332 hoi4 = 13258 } # Aabenraa -> Kolding, Ribe, Sønderborg
 	link = { comment = "* * Jylland" }
-	link = { vic2 = 366 hoi4 = 6364 hoi4 = 13259 } # Aarhus -> Aarhus, land
+	link = { vic2 = 366 hoi4 = 6364 hoi4 = 13259 } # Aarhus -> Aarhus, Tranebjerg
 	link = { vic2 = 367 hoi4 = 6235 hoi4 = 3206 hoi4 = 316 hoi4 = 394 } # Aalborg -> Aalborg, Viborg, Thisted, Hjørring
-	link = { vic2 = 368 hoi4 = 13262 } # Ribe -> land
-	link = { vic2 = 2557 hoi4 = 3277 hoi4 = 3341 hoi4 = 399 hoi4 = 13263 } # Esbjerg -> Horsens, Herning, Esbjerg, land
+	link = { vic2 = 368 hoi4 = 13262 } # Ribe -> Holstebro
+	link = { vic2 = 2557 hoi4 = 3277 hoi4 = 3341 hoi4 = 399 hoi4 = 13263 } # Esbjerg -> Horsens, Herning, Esbjerg, Grindsted
 	link = { comment = "* * Sjaelland" }
-	link = { vic2 = 372 hoi4 = 6287 hoi4 = 6393 hoi4 = 3260 hoi4 = 3305 hoi4 = 13261 } # Copenhagen -> København, Roskilde, Slagelse, Næstved, land
-	link = { vic2 = 373 hoi4 = 3325 hoi4 = 3374 hoi4 = 13260 } # Odense -> Odense, Svendborg, land
+	link = { vic2 = 372 hoi4 = 6287 hoi4 = 6393 hoi4 = 3260 hoi4 = 3305 hoi4 = 13261 } # Copenhagen -> København, Roskilde, Slagelse, Næstved, Nakskov
+	link = { vic2 = 373 hoi4 = 3325 hoi4 = 3374 hoi4 = 13260 } # Odense -> Odense, Svendborg, Rudkøbing
 	link = { vic2 = 374 hoi4 = 6361 } # Bornholm -> Rønne
 	link = { comment = "* " }
 	link = { comment = "* ** Germany" }
@@ -1774,7 +1774,7 @@
 	link = { comment = "* * Pomerania" }
 	link = { vic2 = 546 hoi4 = 6282 hoi4 = 6390 hoi4 = 6334 hoi4 = 6309 hoi4 = 9334 } # Stettin -> Stettin, Stargard, Swinemünde, Arnswalde, Greifenberg
 	link = { vic2 = 547 hoi4 = 3340 hoi4 = 349 } # Swinemünde -> Greifswald, Anklam
-	link = { vic2 = 548 hoi4 = 9388 hoi4 = 13257 } # Stralsund -> Stralsund, land
+	link = { vic2 = 548 hoi4 = 9388 hoi4 = 13257 } # Stralsund -> Stralsund, Bergen auf Rügen
 	link = { vic2 = 679 hoi4 = 9361 hoi4 = 9277 hoi4 = 9306 } # Kolberg -> Kolberg, Dramburg, Belgard
 	link = { vic2 = 680 hoi4 = 11372 hoi4 = 11343 hoi4 = 11316 } # Köslin -> Köslin, Stolp, Lauenburg
 	link = { vic2 = 692 hoi4 = 9252 hoi4 = 11288 hoi4 = 11260 } # Deutsch Krone -> Deutsch Krone, Bütow, Neustettin
@@ -1910,7 +1910,7 @@
 	link = { vic2 = 737 hoi4 = 11595 } # Gorizia -> Gorizia
 	link = { vic2 = 769 hoi4 = 599 } # Postojna -> Longatico
 	link = { vic2 = 770 hoi4 = 11735 } # Pola -> Pola
-	link = { vic2 = 778 hoi4 = 11564 hoi4 = 13252 } # Fiume -> Rijeka, land
+	link = { vic2 = 778 hoi4 = 11564 hoi4 = 13252 } # Fiume -> Rijeka, Crikvenica
 	link = { comment = "* * Emelia" }
 	link = { vic2 = 738 hoi4 = 9752 hoi4 = 6790 hoi4 = 3773 } # Parma -> Parma, Piacenza, Salsomaggiore
 	link = { vic2 = 739 hoi4 = 3976 } # Modena -> Sassuolo
@@ -1945,7 +1945,7 @@
 	link = { comment = "* * Sicily" }
 	link = { vic2 = 762 hoi4 = 10074 hoi4 = 3857 hoi4 = 7147 hoi4 = 7059 } # Palermo -> Palermo, Caltanissetta, Sciacca, Marsala
 	link = { vic2 = 763 hoi4 = 4159 hoi4 = 1156 } # Messina -> Messina, Barcellona Pozzo di Gotto
-	link = { vic2 = 764 hoi4 = 4014 hoi4 = 1009 hoi4 = 12047 hoi4 = 13256 } # Catania -> Catania, Gela, Paternò, land
+	link = { vic2 = 764 hoi4 = 4014 hoi4 = 1009 hoi4 = 12047 hoi4 = 13256 } # Catania -> Catania, Gela, Paternò, Siracusa
 	link = { comment = "* * Sardinia" }
 	link = { vic2 = 765 hoi4 = 11773 hoi4 = 11874 hoi4 = 902 } # Cagliari -> Cagliari, Iglesias, Muravera
 	link = { vic2 = 766 hoi4 = 9772 hoi4 = 9863 hoi4 = 6891 hoi4 = 11824 hoi4 = 11755 } # Sassari -> Sassari, Olbia, Tempio Pausania, Oristano, Nuoro
@@ -2085,7 +2085,7 @@
 	link = { comment = "* ** Albania" }
 	link = { vic2 = 849 hoi4 = 9914 hoi4 = 9875 hoi4 = 6900 } # Tirana -> Tirana, Elbasan, Pogradec
 	link = { vic2 = 850 hoi4 = 9780 hoi4 = 3896 hoi4 = 11762 } # Shkoder -> Shkodër, Kukës, Peshkopi
-	link = { vic2 = 851 hoi4 = 13255 } # Durres -> land
+	link = { vic2 = 851 hoi4 = 13255 } # Durres -> Durrës
 	link = { vic2 = 852 hoi4 = 11767 hoi4 = 3884 hoi4 = 3448 } # Vlore -> Vlorë, Fier, Berat
 	link = { vic2 = 853 hoi4 = 914 hoi4 = 13234 hoi4 = 13235 } # Gjirokaster -> Sarandë, Gjirokastër, Korçë
 	link = { comment = "* " }
@@ -2584,7 +2584,7 @@
 	link = { comment = "* ** United Arab Emirates / Qatar / Bahrain" }
 	link = { comment = "* * Abu Dhabi" }
 	link = { vic2 = 1165 hoi4 = 8051 } # Doha -> Doha
-	link = { vic2 = 1162 hoi4 = 13313 } # Bahrain -> land
+	link = { vic2 = 1162 hoi4 = 13313 } # Bahrain -> Manama
 	link = { vic2 = 1167 hoi4 = 7960 hoi4 = 8108 hoi4 = 2048 } # Abu Dhabi -> Abu Dhabi, Ar-Ruwais, Liwa
 	link = { vic2 = 1168 hoi4 = 10904 } # Dubai -> Dubai
 	link = { comment = "* " }
@@ -2659,7 +2659,7 @@
 	link = { comment = "* * Kerman" }
 	link = { vic2 = 1139 hoi4 = 12863 hoi4 = 12780 } # Sirjan -> Baft, Rafsanjan
 	link = { vic2 = 1140 hoi4 = 10913 hoi4 = 12809 hoi4 = 11249 } # Kerman -> Kerman, land, Zarand
-	link = { vic2 = 1142 hoi4 = 7982 hoi4 = 13312 } # Bandar Abbas -> Bandar-e Abbas, land
+	link = { vic2 = 1142 hoi4 = 7982 hoi4 = 13312 } # Bandar Abbas -> Bandar-e Abbas, Qeshm
 	link = { vic2 = 1143 hoi4 = 1986 hoi4 = 2039 } # Bam -> Bam, Kahnuj
 	link = { vic2 = 1145 hoi4 = 1889 } # Jask -> Minab
 	link = { comment = "* * Baluchistan" }
@@ -2979,7 +2979,7 @@
 	link = { vic2 = 1390 hoi4 = 7399 hoi4 = 1392 hoi4 = 12255 hoi4 = 4384 hoi4 = 12271 hoi4 = 4367 } # Kuantan -> Kuantan, Temerloh, Bentong, Bidor, Pekan, Mersing
 	link = { vic2 = 1391 hoi4 = 7329 hoi4 = 12199 hoi4 = 4355 hoi4 = 1348 hoi4 = 10227 } # Kota Bahru -> Kota Bharu, Kuala Terengganu, Kemaman, Tembeling, Gua Musang
 	link = { vic2 = 2575 hoi4 = 1364 hoi4 = 4310 hoi4 = 12215 hoi4 = 1376 } # Ipoh -> Ipoh, Gerik, Taiping, Teluk Anson
-	link = { vic2 = 2576 hoi4 = 13298 } # Natuna -> land
+	link = { vic2 = 2576 hoi4 = 13298 } # Natuna -> Ranai
 	link = { comment = "* * Southern Malaya" }
 	link = { vic2 = 1385 hoi4 = 10313 hoi4 = 4424 } # Johor Bahru -> Kota Tinggi, Johore Bahru
 	link = { vic2 = 1386 hoi4 = 7427 } # Malacca -> Malacca
@@ -3614,7 +3614,7 @@
 	link = { comment = "* " }
 	link = { comment = "* ** Pacific Islands" }
 	link = { comment = "* * Araucania" }
-	link = { vic2 = 2336 hoi4 = 13294 } # Easter Island -> land
+	link = { vic2 = 2336 hoi4 = 13294 } # Easter Island -> Hanga Roa
 	link = { comment = "* * Tahiti" }
 	link = { vic2 = 801 vic2 = 2551 vic2 = 2553 hoi4 = 12148 hoi4 = 10188 } # MANY-TO-MANY: Tahiti, Marquesas, Tuamotus -> Pape'ete, Uturoa
 	link = { vic2 = 2552 hoi4 = 1280 } # Pitcairn -> Adamstown

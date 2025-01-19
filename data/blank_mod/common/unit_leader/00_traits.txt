@@ -1874,7 +1874,7 @@ leader_traits = {
 	concealment_expert = { 
 		type = navy
 		modifier = {
-			navy_visibility = -0.2
+			navy_visibility = -0.1
 		}
 				
 		ai_will_do = {
@@ -1940,7 +1940,8 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = { seawolf spotter fleet_protector superior_tactician }
+		any_parent = { seawolf spotter fleet_protector superior_tactician } 
+		mutually_exclusive = silent_hunter
 		
 		gui_row = 3
 		gui_column = 1
@@ -2925,6 +2926,26 @@ leader_traits = {
 		}
 	}
 
+
+	trait_HUN_fascist_sympathies = {
+
+		type = all
+		trait_type = personality_trait
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+
+	trait_HUN_vitez = {
+
+		type = all
+		trait_type = personality_trait
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
 
 ##################################
 # operative traits

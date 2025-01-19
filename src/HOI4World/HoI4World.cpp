@@ -14,6 +14,7 @@
 #include "src/HOI4World/HoI4FocusTree.h"
 #include "src/HOI4World/HoI4Localisation.h"
 #include "src/HOI4World/Ideas/Ideas.h"
+#include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include "src/HOI4World/Leaders/Advisor.h"
 #include "src/HOI4World/Leaders/IdeologicalAdvisors.h"
 #include "src/HOI4World/Localisations/ArticleRules/ArticleRules.h"
@@ -150,6 +151,9 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	setTrainMultipliers();
 	Log(LogLevel::Progress) << "40%";
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
+	landmarksMapper = Mappers::LandmarksMapper();
+	landmarkBuildings = new HoI4::LandmarkBuildings(theConfiguration);
+	landmarkBuildings->updateBuildings(states->getStates(), landmarksMapper);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, theConfiguration);
 	theRegions = Regions::Factory().getRegions();
 	Log(LogLevel::Progress) << "44%";
@@ -245,6 +249,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Log(LogLevel::Progress) << "72%";
 	states->convertCapitalVPs(countries, greatPowers);
 	states->convertAirBases(countries, greatPowers);
+	states->addLandmarks(landmarksMapper);
 	factionNameMapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
 	if (theConfiguration.getCreateFactions())
 	{
@@ -290,6 +295,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	soundEffects = SoundEffectsFactory().createSoundEffects(countries);
 
 	recordUnbuiltCanals(sourceWorld);
+	adjacencyRules = std::make_unique<AdjacencyRules>(states->getStates());
 
 	ideological_cost_modifiers_ = ImportIdeologicalCostModifiers();
 	ideological_ai_peace_ = ImportIdeologicalAiPeace();

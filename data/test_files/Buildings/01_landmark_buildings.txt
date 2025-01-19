@@ -1,0 +1,35 @@
+@landmark_constant = 0.1
+
+buildings = {
+
+	landmark_test = {
+		property_one = test_string
+		property_two = 42
+		property_three = {
+			variable = 1
+		}
+		country_modifiers = {
+			enable_for_controllers = { TAG }
+			modifiers = {
+				modifier_one = 0.1
+				modifier_two = 0.2
+			}
+		}
+	}
+
+	landmark_unmapped = {
+		country_modifiers = { }
+	}
+
+	landmark_unbuilt = {
+		country_modifiers = { }
+	}
+}
+
+spawn_points = {
+	landmark_spawn = {
+		type = province
+		max = 1
+		disable_auto_nudging = yes
+	}
+}

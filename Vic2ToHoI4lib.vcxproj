@@ -70,6 +70,10 @@
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
+    <ClCompile Include="src\HOI4World\Landmarks\Landmark.cpp" />
+    <ClCompile Include="src\HOI4World\Landmarks\Landmarks.cpp" />
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkBuildings.cpp" />
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkModifiers.cpp" />
     <ClCompile Include="src\HOI4World\Leaders\Advisor.cpp" />
     <ClCompile Include="src\HOI4World\Leaders\IdeologicalAdvisors.cpp" />
     <ClCompile Include="src\HOI4World\Localisations\AllReplacementRules.cpp" />
@@ -82,6 +86,8 @@
     <ClCompile Include="src\HOI4World\Localisations\LanguageReplacementRules.cpp" />
     <ClCompile Include="src\HOI4World\Localisations\LanguageReplacements.cpp" />
     <ClCompile Include="src\HOI4World\Map\ActualResources.cpp" />
+    <ClCompile Include="src\HOI4World\Map\AdjacencyRule.cpp" />
+    <ClCompile Include="src\HOI4World\Map\AdjacencyRules.cpp" />
     <ClCompile Include="src\HOI4World\Map\Buildings.cpp" />
     <ClCompile Include="src\HOI4World\Map\CoastalProvinces.cpp" />
     <ClCompile Include="src\HOI4World\Map\Hoi4Building.cpp" />
@@ -187,6 +193,8 @@
     <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp" />
     <ClCompile Include="src\HOI4World\WarCreator\HoI4WarCreator.cpp" />
     <ClCompile Include="src\HOI4World\WarCreator\MapUtils.cpp" />
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMapper.cpp" />
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMappingFactory.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBellis.cpp" />
     <ClCompile Include="src\Mappers\CasusBelli\CasusBellisFactory.cpp" />
@@ -255,7 +263,10 @@
     <ClCompile Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="src\OutHoi4\Interface\OutMonarchsInterface.cpp" />
+    <ClCompile Include="src\OutHoi4\Landmarks\OutLandmark.cpp" />
+    <ClCompile Include="src\OutHoi4\Landmarks\OutLandmarkBuildings.cpp" />
     <ClCompile Include="src\OutHoi4\Leaders\OutAdvisor.cpp" />
+    <ClCompile Include="src\OutHoi4\Map\OutAdjacencyRule.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutBuilding.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutBuildings.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutRailway.cpp" />
@@ -458,6 +469,10 @@
     <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
     <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h" />
+    <ClInclude Include="src\HOI4World\Landmarks\Landmark.h" />
+    <ClInclude Include="src\HOI4World\Landmarks\Landmarks.h" />
+    <ClInclude Include="src\HOI4World\Landmarks\LandmarkBuildings.h" />
+    <ClInclude Include="src\HOI4World\Landmarks\LandmarkModifiers.h" />
     <ClInclude Include="src\HOI4World\Leaders\Advisor.h" />
     <ClInclude Include="src\HOI4World\Leaders\IdeologicalAdvisors.h" />
     <ClInclude Include="src\HOI4World\Localisations\AllReplacementRules.h" />
@@ -472,6 +487,8 @@
     <ClInclude Include="src\HOI4World\Localisations\LanguageReplacementRules.h" />
     <ClInclude Include="src\HOI4World\Localisations\LanguageReplacements.h" />
     <ClInclude Include="src\HOI4World\Map\ActualResources.h" />
+    <ClInclude Include="src\HOI4World\Map\AdjacencyRule.h" />
+    <ClInclude Include="src\HOI4World\Map\AdjacencyRules.h" />
     <ClInclude Include="src\HOI4World\Map\BuildingPosition.h" />
     <ClInclude Include="src\HOI4World\Map\Buildings.h" />
     <ClInclude Include="src\HOI4World\Map\CoastalProvinces.h" />
@@ -607,6 +624,9 @@
     <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h" />
     <ClInclude Include="src\HOI4World\WarCreator\HoI4WarCreator.h" />
     <ClInclude Include="src\HOI4World\WarCreator\MapUtils.h" />
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapper.h" />
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapping.h" />
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMappingFactory.h" />
     <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMapping.h" />
     <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.h" />
     <ClInclude Include="src\Mappers\CasusBelli\CasusBellis.h" />
@@ -696,7 +716,10 @@
     <ClInclude Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h" />
     <ClInclude Include="src\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h" />
     <ClInclude Include="src\OutHoi4\Interface\OutMonarchsInterface.h" />
+    <ClInclude Include="src\OutHoi4\Landmarks\OutLandmark.h" />
+    <ClInclude Include="src\OutHoi4\Landmarks\OutLandmarkBuildings.h" />
     <ClInclude Include="src\OutHoi4\Leaders\OutAdvisor.h" />
+    <ClInclude Include="src\OutHoi4\Map\OutAdjacencyRule.h" />
     <ClInclude Include="src\OutHoi4\Map\OutBuilding.h" />
     <ClInclude Include="src\OutHoi4\Map\OutBuildings.h" />
     <ClInclude Include="src\OutHoi4\Map\OutRailway.h" />

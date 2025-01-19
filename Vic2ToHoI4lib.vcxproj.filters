@@ -34,6 +34,9 @@
     <Filter Include="src\HoI4World\IntelligenceAgencies">
       <UniqueIdentifier>{20858508-58a5-4286-a11e-0067faa365e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\HoI4World\Landmarks">
+      <UniqueIdentifier>{d8004c86-5d56-41de-8146-00b74a86699f}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\HoI4World\Leaders">
       <UniqueIdentifier>{d8004c86-5d56-41de-8146-00b74a86699f}</UniqueIdentifier>
     </Filter>
@@ -151,6 +154,9 @@
     <Filter Include="src\OutHoi4\Interface">
       <UniqueIdentifier>{045700d2-2aa9-4c10-8469-8af5b97653f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\OutHoi4\Landmarks">
+      <UniqueIdentifier>{e1e8d203-1d4d-49d8-8326-82f1f242bab4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\OutHoi4\Leaders">
       <UniqueIdentifier>{e1e8d203-1d4d-49d8-8326-82f1f242bab4}</UniqueIdentifier>
     </Filter>
@@ -213,6 +219,9 @@
     </Filter>
     <Filter Include="src\Mappers">
       <UniqueIdentifier>{614be27f-9385-4440-a34e-dc2a184e69f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mappers\Buildings">
+      <UniqueIdentifier>{05050f4b-4a65-4f55-84b9-95b214724e39}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Mappers\CasusBelli">
       <UniqueIdentifier>{24c72c11-c639-4be2-8308-206b8e42df90}</UniqueIdentifier>
@@ -513,6 +522,18 @@
     <ClCompile Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp">
       <Filter>src\HoI4World\IntelligenceAgencies</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Landmarks\Landmark.cpp">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Landmarks\Landmarks.cpp">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkBuildings.cpp">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Landmarks\LandmarkModifiers.cpp">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\Leaders\Advisor.cpp">
       <Filter>src\HoI4World\Leaders</Filter>
     </ClCompile>
@@ -565,6 +586,12 @@
       <Filter>src\HoI4World\Map</Filter>
     </ClCompile>
     <ClCompile Include="src\HOI4World\Map\ActualResources.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\AdjacencyRule.cpp">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Map\AdjacencyRules.cpp">
       <Filter>src\HoI4World\Map</Filter>
     </ClCompile>
     <ClCompile Include="src\HOI4World\Map\Hoi4Building.cpp">
@@ -972,8 +999,17 @@
     <ClCompile Include="src\OutHoi4\Interface\OutMonarchsInterface.cpp">
       <Filter>src\OutHoi4\Interface</Filter>
     </ClCompile>
+    <ClCompile Include="src\OutHoi4\Landmarks\OutLandmark.cpp">
+      <Filter>src\OutHoi4\Landmarks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Landmarks\OutLandmarkBuildings.cpp">
+      <Filter>src\OutHoi4\Landmarks</Filter>
+    </ClCompile>
     <ClCompile Include="src\OutHoi4\Leaders\OutAdvisor.cpp">
       <Filter>src\OutHoi4\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Map\OutAdjacencyRule.cpp">
+      <Filter>src\OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Map\OutBuilding.cpp">
       <Filter>src\OutHoi4\Map</Filter>
@@ -1145,6 +1181,12 @@
     </ClCompile>
     <ClCompile Include="src\OutHoi4\UnitMedals\OutUnitMedals.cpp">
       <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMapper.cpp">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mappers\Buildings\LandmarksMappingFactory.cpp">
+      <Filter>src\Mappers\Buildings</Filter>
     </ClCompile>
     <ClCompile Include="src\Mappers\CasusBelli\CasusBelliMappingFactory.cpp">
       <Filter>src\Mappers\CasusBelli</Filter>
@@ -1673,6 +1715,18 @@
     <ClInclude Include="src\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h">
       <Filter>src\HoI4World\IntelligenceAgencies</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\Landmarks\Landmark.h">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Landmarks\Landmarks.h">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Landmarks\LandmarkBuildings.h">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Landmarks\LandmarkModifiers.h">
+      <Filter>src\HoI4World\Landmarks</Filter>
+    </ClInclude>
     <ClInclude Include="src\HOI4World\Leaders\Advisor.h">
       <Filter>src\HoI4World\Leaders</Filter>
     </ClInclude>
@@ -1740,6 +1794,12 @@
       <Filter>src\HoI4World\Map</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\Map\ActualResources.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\AdjacencyRule.h">
+      <Filter>src\HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Map\AdjacencyRules.h">
       <Filter>src\HoI4World\Map</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\Map\Hoi4Building.h">
@@ -2225,6 +2285,12 @@
     <ClInclude Include="src\OutHoi4\Interface\OutMonarchsInterface.h">
       <Filter>src\OutHoi4\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="src\OutHoi4\Landmarks\OutLandmark.h">
+      <Filter>src\OutHoi4\Landmarks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Landmarks\OutLandmarkBuildings.h">
+      <Filter>src\OutHoi4\Landmarks</Filter>
+    </ClInclude>
     <ClInclude Include="src\OutHoi4\Leaders\OutAdvisor.h">
       <Filter>src\OutHoi4\Leaders</Filter>
     </ClInclude>
@@ -2238,6 +2304,9 @@
       <Filter>src\OutHoi4\Map</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Map\OutSupplyNodes.h">
+      <Filter>src\OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Map\OutAdjacencyRule.h">
       <Filter>src\OutHoi4\Map</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Map\OutBuilding.h">
@@ -2398,6 +2467,15 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\UnitMedals\OutUnitMedals.h">
       <Filter>src\OutHoi4\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapper.h">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMapping.h">
+      <Filter>src\Mappers\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mappers\Buildings\LandmarksMappingFactory.h">
+      <Filter>src\Mappers\Buildings</Filter>
     </ClInclude>
     <ClInclude Include="src\Mappers\CasusBelli\CasusBelliMapping.h">
       <Filter>src\Mappers\CasusBelli</Filter>

@@ -57,7 +57,7 @@ void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMap
 		{
 			importDefaultBuilding(matches, defaultAirBases, theMapData);
 		}
-		else if (matches[2] == "naval_base")
+		else if (matches[2] == "naval_base_spawn")
 		{
 			importDefaultBuilding(matches, defaultNavalBases, theMapData);
 		}
@@ -81,7 +81,7 @@ void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMap
 		{
 			importDefaultBuilding(matches, defaultSyntheticRefineries, theMapData);
 		}
-		else if (matches[2] == "nuclear_reactor")
+		else if (matches[2] == "nuclear_reactor_spawn")
 		{
 			importDefaultBuilding(matches, defaultNuclearReactors, theMapData);
 		}
@@ -92,6 +92,10 @@ void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMap
 		else if (matches[2] == "floating_harbor")
 		{
 			importDefaultBuilding(matches, defaultFloatingHarbors, theMapData);
+		}
+		else if (matches[2] == "rocket_site_spawn")
+		{
+			importDefaultBuilding(matches, defaultRocketSites, theMapData);
 		}
 	}
 }
@@ -139,6 +143,7 @@ void HoI4::Buildings::placeBuildings(const States& theStates,
 	placeSyntheticRefineries(theStates, theMapData);
 	placeSupplyNodes(provinceToStateIDMap, theMapData, theConfiguration);
 	placeFloatingHarbors(provinceToStateIDMap, actualCoastalProvinces, theMapData, theConfiguration);
+	placeRocketSites(theStates, theMapData);
 }
 
 
@@ -265,7 +270,6 @@ void HoI4::Buildings::placeAirports(const States& theStates, const Maps::MapData
 			{
 				auto position = possibleAirbase->second;
 				buildings.insert(std::make_pair(state.first, Building(state.first, "air_base", position, 0)));
-				airportLocations.insert(std::make_pair(state.first, theProvince));
 				airportPlaced = true;
 				break;
 			}
@@ -273,7 +277,6 @@ void HoI4::Buildings::placeAirports(const States& theStates, const Maps::MapData
 		if (!airportPlaced)
 		{
 			auto theProvince = *state.second.getProvinces().begin();
-			airportLocations.insert(std::make_pair(state.first, theProvince));
 
 			auto theProvincePoints = theMapData.GetProvincePoints(theProvince);
 			if (theProvincePoints)
@@ -499,7 +502,7 @@ void HoI4::Buildings::addNavalBase(int stateID,
 		}
 	}
 
-	buildings.insert(std::make_pair(stateID, Building(stateID, "naval_base", position, connectingSeaProvince)));
+	buildings.insert(std::make_pair(stateID, Building(stateID, "naval_base_spawn", position, connectingSeaProvince)));
 }
 
 
@@ -725,7 +728,7 @@ void HoI4::Buildings::placeNuclearReactors(const States& theStates, const Maps::
 			if (possibleReactor != defaultNuclearReactors.end())
 			{
 				auto position = possibleReactor->second;
-				buildings.insert(std::make_pair(state.first, Building(state.first, "nuclear_reactor", position, 0)));
+				buildings.insert(std::make_pair(state.first, Building(state.first, "nuclear_reactor_spawn", position, 0)));
 				reactorPlaced = true;
 				break;
 			}
@@ -742,7 +745,8 @@ void HoI4::Buildings::placeNuclearReactors(const States& theStates, const Maps::
 				thePosition.yCoordinate = 11.0;
 				thePosition.zCoordinate = centermostPoint.second;
 				thePosition.rotation = 0;
-				buildings.insert(std::make_pair(state.first, Building(state.first, "nuclear_reactor", thePosition, 0)));
+				buildings.insert(
+					 std::make_pair(state.first, Building(state.first, "nuclear_reactor_spawn", thePosition, 0)));
 			}
 			else
 			{
@@ -804,4 +808,45 @@ void HoI4::Buildings::addSupplyNodes(int stateID,
 	}
 
 	buildings.insert(std::make_pair(stateID, Building(stateID, "supply_node", position, 0)));
+}
+
+void HoI4::Buildings::placeRocketSites(const States& theStates, const Maps::MapData& theMapData)
+{
+	for (const auto& state: theStates.getStates())
+	{
+		auto rocketSitePlaced = false;
+		for (auto theProvince: state.second.getProvinces())
+		{
+			auto possibleRocketSite = defaultRocketSites.find(std::make_pair(theProvince, 0));
+			if (possibleRocketSite != defaultRocketSites.end())
+			{
+				auto position = possibleRocketSite->second;
+				buildings.insert(std::make_pair(state.first, Building(state.first, "rocket_site_spawn", position, 0)));
+				rocketSitePlaced = true;
+				break;
+			}
+		}
+		if (!rocketSitePlaced)
+		{
+			const auto theProvince = *state.second.getProvinces().begin();
+			auto theProvincePoints = theMapData.GetProvincePoints(theProvince);
+			if (theProvincePoints)
+			{
+				const auto centermostPoint = theProvincePoints->getCentermostPoint();
+				BuildingPosition thePosition;
+				thePosition.xCoordinate = centermostPoint.first;
+				thePosition.yCoordinate = 11.0;
+				thePosition.zCoordinate = centermostPoint.second;
+				thePosition.rotation = 0;
+				buildings.insert(std::make_pair(state.first, Building(state.first, "rocket_site_spawn", thePosition, 0)));
+			}
+			else
+			{
+				Log(LogLevel::Warning) << "Province " << theProvince
+											  << " did not have any points. "
+												  "Rocket site not set for state "
+											  << state.first << ".";
+			}
+		}
+	}
 }

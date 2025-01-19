@@ -52,6 +52,7 @@ ideologies = {
 			faction_trade_opinion_factor = 0.50 #plus 50% trade opinion
 		}
 
+		ai_give_core_state_control_threshold = 10
 	}
 
 	absolutist = {
@@ -104,6 +105,8 @@ ideologies = {
 
 		ai_fascist = yes # uses the fascist AI behaviour
 		ai_ideology_wanted_units_factor = 1.65
+		
+		ai_give_core_state_control_threshold = 10000
 	}
 
 	neutrality = {
@@ -183,5 +186,7 @@ ideologies = {
 
 		ai_neutral = yes #
 		ai_ideology_wanted_units_factor = 1.15
+		
+		ai_give_core_state_control_threshold = 10000
 	}
 }

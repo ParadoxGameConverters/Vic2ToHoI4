@@ -33,7 +33,7 @@ governments_in_exile = {
 		}
 
 		ai_will_do = {
-			factor = 1
+			base = 10
 		}
 	}
 
@@ -58,7 +58,6 @@ governments_in_exile = {
 		    }
 		}
 
-
 		target_array = exiles
 
 		target_trigger = { FROM = { is_exiled_in = ROOT } }
@@ -75,10 +74,12 @@ governments_in_exile = {
 		days_remove = 120
 
 		ai_will_do = {
-			factor = 0.03
+			base = 0.02
 			modifier = {
-				has_political_power < 150
-				political_power_daily < 0.85
+				OR = {
+					has_political_power < 180
+					political_power_daily < 0.85
+				}
 				factor = 0
 			}
 			modifier = {
@@ -113,7 +114,6 @@ governments_in_exile = {
 		    has_legitimacy < 100
 		}
 
-
 		targets = { host }
 
 		target_trigger = { FROM = { is_hosting_exile = ROOT } }
@@ -126,10 +126,14 @@ governments_in_exile = {
 		days_remove = 120
 
 		ai_will_do = {
-			factor = 0.1
+			base = 0.1
 			modifier = {
 				factor = 0
 				has_war = no
+			}
+			modifier = {
+				factor = 0
+				has_legitimacy > 90
 			}
 		}
 	}
@@ -152,7 +156,6 @@ governments_in_exile = {
 		    	has_legitimacy < 100
 		    }
 		}
-
 
 		target_root_trigger = {
 			is_major = yes
@@ -181,7 +184,7 @@ governments_in_exile = {
 		days_remove = 120
 	
 		ai_will_do = {
-			factor = 0
+			base = 0
 		}
 	}
 
@@ -222,7 +225,7 @@ governments_in_exile = {
 		}
 
 		ai_will_do = {
-			factor = 0.01
+			base = 0.01
 			modifier = {
 				has_political_power < 150
 				political_power_daily < 0.75
@@ -282,7 +285,7 @@ governments_in_exile = {
 		}
 
 		ai_will_do = {
-			factor = 0.05
+			base = 0.05
 
 			modifier = {
 				factor = 0 # Save for more immediately useful stuff
@@ -329,7 +332,7 @@ governments_in_exile = {
 		}
 
 		ai_will_do = {
-			factor = 0.05
+			base = 0.05
 			modifier = {
 				factor = 0
 				has_war = no
@@ -383,7 +386,7 @@ governments_in_exile = {
 		}
 
 		ai_will_do = {
-			factor = 5
+			base = 5
 		}
 	}
 }
@@ -454,7 +457,7 @@ category_exile_forces = {
 		}
 
 		ai_will_do = {
-			factor = 0.01
+			base = 0.01
 		}
 	}
 
@@ -498,7 +501,7 @@ category_exile_forces = {
 		days_remove = 45
 
 		ai_will_do = {
-			factor = 0.03
+			base = 0.01
 			modifier = {
 				factor = 0
 		    	has_war_support > 0.7
@@ -571,7 +574,7 @@ category_exile_forces = {
 		}
 
 		ai_will_do = {
-			factor = 0.05
+			base = 0.05
 			modifier = {
 				OR = {
 					has_army_experience < 25

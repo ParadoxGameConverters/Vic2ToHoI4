@@ -807,3 +807,83 @@ TEST(HoI4World_States_StateTests, MainNavalBaseLocationGoesToLargestBase)
 
 	EXPECT_EQ(24, *theState.getMainNavalLocation());
 }
+
+
+TEST(HoI4World_States_StateTests, EmptyLandmarksAreNotAssigned)
+{
+	const auto sourceState = *Vic2::State::Builder().build();
+	HoI4::State theState(sourceState, 42, "TAG");
+	theState.addProvince(12);
+
+	EXPECT_FALSE(theState.addLandmark("", 12, true));
+}
+
+
+TEST(HoI4World_States_StateTests, LandmarksAreNotAssignedWhenLocationNotInState)
+{
+	const auto sourceState = *Vic2::State::Builder().build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	EXPECT_FALSE(theState.addLandmark("landmark_test", 12, true));
+}
+
+
+TEST(HoI4World_States_StateTests, UnbuiltLandmarksAreNotAssigned)
+{
+	const auto sourceState = *Vic2::State::Builder().build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	EXPECT_FALSE(theState.addLandmark("landmark_test", 12, false));
+}
+
+
+TEST(HoI4World_States_StateTests, LandmarksCanBeAssigned)
+{
+	const auto sourceState = *Vic2::State::Builder().build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	theState.addProvince(12);
+	theState.addLandmark("landmark_test", 12, true);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={"
+						<< "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 1\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\t\t\t12 = {\n";
+	expectedOutput << "\t\t\t\tlandmark_test = {\n";
+	expectedOutput << "\t\t\t\t\tlevel = 1\n";
+	expectedOutput << "\t\t\t\t\tallowed = {\n";
+	expectedOutput << "\t\t\t\t\t\thas_dlc = \"Gotterdammerung\"\n";
+	expectedOutput << "\t\t\t\t\t}\n";
+	expectedOutput << "\t\t\t\t}\n";
+	expectedOutput << "\t\t\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t12 ";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=1\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=wasteland\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tlocal_supplies=10.0\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	outputHoI4State(output, theState, false);
+
+	EXPECT_EQ(expectedOutput.str(), output.str());
+}

@@ -48,7 +48,7 @@ void CreateModFiles(const std::string& output_name)
 	mod_file << "replace_path=\"history/units\"\n";
 	mod_file << "replace_path=\"map/supplyareas\"\n";
 	mod_file << "replace_path=\"map/strategicregions\"\n";
-	mod_file << "supported_version=\"1.14.*\"";
+	mod_file << "supported_version=\"1.15.*\"";
 	mod_file.close();
 
 	std::ofstream descriptor_file("output/" + output_name + "/descriptor.mod");
@@ -69,7 +69,7 @@ void CreateModFiles(const std::string& output_name)
 	descriptor_file << "replace_path=\"history/units\"\n";
 	descriptor_file << "replace_path=\"map/supplyareas\"\n";
 	descriptor_file << "replace_path=\"map/strategicregions\"\n";
-	descriptor_file << "supported_version=\"1.14.*\"";
+	descriptor_file << "supported_version=\"1.15.*\"";
 	descriptor_file.close();
 }
 

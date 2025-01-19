@@ -59,6 +59,7 @@ class State
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
+	bool addLandmark(const std::string& landmark, int location, bool isBuilt);
 	void smashNavalBases();
 	void addCores(const std::set<std::string>& newCores);
 	void removeCore(const std::string& theCore) { cores.erase(theCore); }
@@ -84,6 +85,7 @@ class State
 	const std::string& getCategory() const { return category; }
 	[[nodiscard]] auto getInfrastructure() const { return infrastructure; }
 	const std::map<int, int>& getNavalBases() const { return navalBases; }
+	const std::map<std::string, int>& getLandmarks() const { return landmarks; }
 	int getAirbaseLevel() const { return airbaseLevel; }
 	bool hasResources() const { return !resources.empty(); }
 	const std::map<std::string, double>& getResources() const { return resources; }
@@ -156,6 +158,7 @@ class State
 	float infrastructure = 1.0F;
 
 	std::map<int, int> navalBases;
+	std::map<std::string, int> landmarks;
 
 	int airbaseLevel = 0;
 

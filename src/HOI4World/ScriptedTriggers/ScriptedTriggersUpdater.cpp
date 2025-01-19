@@ -205,6 +205,13 @@ std::string getHasUnsupportedEconomicLaw()
 	unsupportedEconomicLawBody += "\t\thas_idea = tot_economic_mobilisation\n";
 	unsupportedEconomicLawBody += "\t\thas_war_support < 0.8\n";
 	unsupportedEconomicLawBody += "\t}\n";
+	unsupportedEconomicLawBody += "\telse_if = {\n";
+	unsupportedEconomicLawBody += "\t\tlimit = {\n";
+	unsupportedEconomicLawBody += "\t\t\thas_idea = totaler_krieg_economy\n";
+	unsupportedEconomicLawBody += "\t\t}\n";
+	unsupportedEconomicLawBody += "\t\thas_idea = totaler_krieg_economy\n";
+	unsupportedEconomicLawBody += "\t\thas_war_support < 0.8\n";
+	unsupportedEconomicLawBody += "\t}\n";
 	unsupportedEconomicLawBody += "\telse = {\n";
 	unsupportedEconomicLawBody += "\t\talways = no\n";
 	unsupportedEconomicLawBody += "\t}\n";

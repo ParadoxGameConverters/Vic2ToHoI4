@@ -910,8 +910,8 @@ pan_germanic = {
 		}
 		fascism = {
 			"gfx/leaders/Europe/portrait_europe_generic_6.dds"
-			"gfx/leaders/GER/Portrait_Germany_Heinrich_Himmler.dds"
-			"gfx/leaders/GER/Portrait_Germany_Hermann_Goring.dds"
+			"gfx/leaders/GER/portrait_GER_heinrich_himmler.dds"
+			"gfx/leaders/GER/portrait_GER_hermann_goring.dds"
 			"gfx/leaders/GER/Portrait_Germany_Generic_3.dds"
 		}
 		absolutist = {

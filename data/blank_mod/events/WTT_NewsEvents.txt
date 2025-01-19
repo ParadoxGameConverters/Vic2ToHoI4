@@ -1,4 +1,4 @@
-add_namespace = wtt_news
+﻿add_namespace = wtt_news
 
 
 # Events that need to be dynamically generated

@@ -16,8 +16,10 @@
 #include "src/HOI4World/Ideologies/Ideologies.h"
 #include "src/HOI4World/Ideologies/Ideology.h"
 #include "src/HOI4World/IntelligenceAgencies/IntelligenceAgencies.h"
+#include "src/HOI4World/Landmarks/LandmarkBuildings.h"
 #include "src/HOI4World/Leaders/Advisor.h"
 #include "src/HOI4World/Localisations/ArticleRules/ArticleRules.h"
+#include "src/HOI4World/Map/AdjacencyRules.h"
 #include "src/HOI4World/Map/Buildings.h"
 #include "src/HOI4World/Map/CoastalProvinces.h"
 #include "src/HOI4World/Map/Railway.h"
@@ -44,6 +46,7 @@
 #include "src/HOI4World/States/DefaultState.h"
 #include "src/HOI4World/States/HoI4State.h"
 #include "src/HOI4World/States/HoI4States.h"
+#include "src/Mappers/Buildings/LandmarksMapper.h"
 #include "src/Mappers/CasusBelli/CasusBellis.h"
 #include "src/Mappers/Country/CountryMapper.h"
 #include "src/Mappers/CountryName/CountryNameMapper.h"
@@ -92,6 +95,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] const auto& getSupplyZones() const { return *supplyZones; }
 	[[nodiscard]] const auto& getBuildings() const { return *buildings; }
+	[[nodiscard]] const auto& getLandmarkBuildings() const { return *landmarkBuildings; }
 	[[nodiscard]] const auto& getSupplyNodes() const { return supplyNodes_; }
 	[[nodiscard]] const auto& getRailways() const { return railways_; }
 	[[nodiscard]] const auto& getDecisions() const { return *theDecisions; }
@@ -128,6 +132,7 @@ class World: commonItems::parser
 	[[nodiscard]] const std::map<std::string, std::string>& GetUnitMedals() const { return ideological_unit_medals_; }
 
 	[[nodiscard]] const std::vector<std::string>& GetDynamicAiPeace() const { return dynamic_ai_peace_; }
+	[[nodiscard]] const auto& getAdjacencyRules() const { return adjacencyRules->getRules(); }
 
 	const std::map<int, HoI4::State>& getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
@@ -255,6 +260,7 @@ class World: commonItems::parser
 	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;
 	std::unique_ptr<Mappers::CasusBellis> casusBellis;
 	std::unique_ptr<Mappers::FactionNameMapper> factionNameMapper;
+	Mappers::LandmarksMapper landmarksMapper;
 	std::unique_ptr<date> theDate;
 
 	std::unique_ptr<States> states;
@@ -262,6 +268,8 @@ class World: commonItems::parser
 	HoI4::SupplyZones* supplyZones = nullptr;
 	std::unique_ptr<StrategicRegions> strategicRegions;
 	Buildings* buildings = nullptr;
+	LandmarkBuildings* landmarkBuildings = nullptr;
+	std::unique_ptr<AdjacencyRules> adjacencyRules;
 	std::set<int> supplyNodes_;
 	std::unique_ptr<Railways> railways_;
 
