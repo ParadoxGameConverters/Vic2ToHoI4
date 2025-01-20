@@ -869,14 +869,6 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\Buildings\01_landmark_buildings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Windonws/common/buildings</DestinationFolders>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Buildings\LandmarksMappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
