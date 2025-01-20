@@ -7,6 +7,8 @@
 
 void HoI4::outputLandmarkBuildings(const LandmarkBuildings& landmarkBuildings, const std::string& outputName)
 {
+	commonItems::TryCreateFolder("output/" + outputName + "/common/buildings");
+
 	std::ofstream out("output/" + outputName + "/common/buildings/01_landmark_buildings.txt");
 	if (!out.is_open())
 	{

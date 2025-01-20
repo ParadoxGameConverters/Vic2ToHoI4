@@ -661,6 +661,8 @@ void HoI4::copyAdjustedFocusFiles(const std::string& outputName, const std::vect
 void HoI4::outputAdjacencyRules(const std::string& outputName,
 	 const std::map<std::string, std::shared_ptr<AdjacencyRule>>& adjacencyRules)
 {
+	commonItems::TryCreateFolder("output/" + outputName + "/map");
+
 	std::ofstream outputFile("output/" + outputName + "/map/adjacency_rules.txt");
 	if (!outputFile.is_open())
 	{
