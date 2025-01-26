@@ -1615,6 +1615,13 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 		borderDisputesFocus->xPos = nextFreeColumn;
 		borderDisputesFocus->yPos = 0;
 		borderDisputesFocus->updateFocusElement(borderDisputesFocus->aiWillDo, "$TARGET", strategy.getID());
+		borderDisputesFocus->updateFocusElement(borderDisputesFocus->aiWillDo,
+			 "#DEMOCRATIC",
+			 "modifier = {\n"
+			 "\t\t\t\tfactor = 0\n"
+			 "\t\t\t\thas_government = democratic\n"
+			 "\t\t\t}\n",
+			 majorIdeologies.contains("democratic"));
 		focuses.push_back(borderDisputesFocus);
 
 		auto assertClaimsFocus =
@@ -1647,6 +1654,13 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 			 "#ADDCLAIM",
 			 "add_state_claim = " + claimStateId);
 		assertClaimsFocus->updateFocusElement(assertClaimsFocus->aiWillDo, "$TARGET", strategy.getID());
+		assertClaimsFocus->updateFocusElement(assertClaimsFocus->aiWillDo,
+			 "#DEMOCRATIC",
+			 "modifier = {\n"
+			 "\t\t\t\tfactor = 0\n"
+			 "\t\t\t\thas_government = democratic\n"
+			 "\t\t\t}\n",
+			 majorIdeologies.contains("democratic"));
 		focuses.push_back(assertClaimsFocus);
 
 		auto prepareForWarFocus =

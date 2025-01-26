@@ -3003,12 +3003,10 @@ focus = {
 		}
 		ai_will_do = {
 			factor = 1
+			#DEMOCRATIC
 			modifier = {
 				factor = 0
-				OR = {
-					has_government = democratic
-					has_government = neutrality
-				}
+				has_government = neutrality
 			}
 			modifier = {
 				factor = 0
@@ -3078,12 +3076,10 @@ focus = {
 		}
 		ai_will_do = {
 			factor = 10
+			#DEMOCRATIC
 			modifier = {
 				factor = 0
-				OR = {
-					has_government = democratic
-					has_government = neutrality
-				}
+				has_government = neutrality
 			}
 			modifier = {
 				factor = 0
