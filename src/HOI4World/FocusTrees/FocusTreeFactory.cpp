@@ -1,6 +1,4 @@
 #include "src/HOI4World/FocusTrees/FocusTreeFactory.h"
-#include "external/common_items/CommonFunctions.h"
-#include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/HoI4Focus.h"

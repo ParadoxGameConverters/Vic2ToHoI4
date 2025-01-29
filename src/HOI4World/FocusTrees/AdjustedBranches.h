@@ -2,7 +2,6 @@
 #define ADJUSTED_BRANCHES_ value
 
 
-#include "external/common_items/ConvenientParser.h"
 #include "src/HOI4World/HoI4Country.h"
 #include "src/HOI4World/Ideas/Ideas.h"
 
@@ -13,7 +12,7 @@ namespace HoI4
 
 class MapUtils;
 
-class AdjustedBranches: commonItems::parser
+class AdjustedBranches
 {
   public:
 	AdjustedBranches(const std::map<std::string, std::shared_ptr<Country>>& countries,
