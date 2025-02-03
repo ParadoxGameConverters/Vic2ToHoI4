@@ -35,6 +35,7 @@ class World;
 class HoI4FocusTree: commonItems::parser
 {
   public:
+	class Factory;
 	explicit HoI4FocusTree(const HoI4::Country& country);
 
 	HoI4FocusTree() = default;
@@ -115,17 +116,13 @@ class HoI4FocusTree: commonItems::parser
 	[[nodiscard]] const auto& getDestinationCountryTag() const { return dstCountryTag; }
 	[[nodiscard]] const auto& getFocuses() const { return focuses; }
 	[[nodiscard]] const auto& getSharedFocuses() const { return sharedFocuses; }
-	[[nodiscard]] const auto& getBranches() const { return branches; }
 	[[nodiscard]] bool isEmpty() const { return emptyFocusTree; }
 
-	void addBranch(const std::string& tag, const std::string& branch, HoI4::OnActions& onActions);
-	void eraseBranch(const std::string& branch) { branches.erase(branch); }
+	std::pair<int, int> calculateBranchSpan(const std::vector<std::shared_ptr<HoI4Focus>>& focuses);
+	void addBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses, HoI4::OnActions& onActions);
 
   private:
 	void confirmLoadedFocuses();
-	void loadFocuses(const std::string& branch);
-	void createBranches();
-	void addChildrenToBranch(const std::string& head, const std::string& id, int branchLevel);
 
 	void addFascistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies);
 	void addCommunistGenericFocuses(int relativePosition, const std::set<std::string>& majorIdeologies);
@@ -135,7 +132,6 @@ class HoI4FocusTree: commonItems::parser
 	std::string dstCountryTag;
 	std::vector<std::shared_ptr<HoI4Focus>> focuses;
 	std::vector<std::shared_ptr<HoI4::SharedFocus>> sharedFocuses;
-	std::map<std::string, std::map<std::string, int>> branches; // <first focus, all focuses>
 	int nextFreeColumn = 0;
 
 	bool emptyFocusTree = false;

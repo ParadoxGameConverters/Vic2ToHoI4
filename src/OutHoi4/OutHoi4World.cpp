@@ -76,7 +76,7 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::optional<std::string> humanCountry,
 	 const date& vic2Date,
 	 const std::string& outputName);
-void copyAdjustedFocusFiles(const std::string& outputName, const std::vector<std::string>& branchNames);
+void copyAdjustedFocusFiles(const std::string& outputName, const std::vector<std::string>& addedBranches);
 void outputAdjacencyRules(const std::string& outputName,
 	 const std::map<std::string, std::shared_ptr<AdjacencyRule>>& rules);
 
@@ -650,11 +650,11 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	}
 }
 
-void HoI4::copyAdjustedFocusFiles(const std::string& outputName, const std::vector<std::string>& branchNames)
+void HoI4::copyAdjustedFocusFiles(const std::string& outputName, const std::vector<std::string>& addedBranches)
 {
-	for (const auto& branch: branchNames)
+	for (const auto& branch: addedBranches)
 	{
-		commonItems::CopyFolder("Configurables/CustomizedFocusBranches/" + branch, "output/" + outputName);
+		commonItems::CopyFolder("Configurables/AdjustedFocusBranches/" + branch, "output/" + outputName);
 	}
 }
 

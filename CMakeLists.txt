@@ -542,7 +542,7 @@ configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/Vic2Localisatio
 configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/dominions.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/dominions.csv" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/unrecognized_nations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/unrecognized_nations.csv" COPYONLY)
 file(COPY "${DATA_FILE_DIR}/blank_mod/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/blankmod/")
-file(COPY "${DATA_FILE_DIR}/configurables/CustomizedFocusBranches/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CustomizedFocusBranches/")
+file(COPY "${DATA_FILE_DIR}/configurables/AdjustedFocusBranches/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/AdjustedFocusBranches/")
 file(COPY "${DATA_FILE_DIR}/configurables/IdeologicalIdeas/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas/")
 file(COPY "${DATA_FILE_DIR}/flags" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
 add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > build/Release-Linux/commit_id.txt)

@@ -26,11 +26,11 @@ focus_tree = {
 			country_exists = event_target:uk_colonial_focus_NZL
 		}
 		available = {
-			NOT = { has_government = communism }
+			#NOT_COMMUNISM
 			num_subjects > 0
 		}
 		icon = GFX_focus_research2
-		x = 12 # Entire branch width
+		x = 12
 		y = 0
 		cost = 10
 
@@ -364,7 +364,7 @@ focus_tree = {
 			event_target:uk_colonial_focus_japan = {
 				ENG_focus_available_embargo_sanction = yes
 			}
-			has_government = democratic
+			#DEMOCRATIC
 		}
 		bypass = {
 			has_war_with = event_target:uk_colonial_focus_japan
@@ -404,7 +404,7 @@ focus_tree = {
 			event_target:uk_colonial_focus_japan = {
 				ENG_focus_available_war = yes
 			}
-			has_government = democratic
+			#DEMOCRATIC
 		}
 		bypass = {
 			has_war_with = event_target:uk_colonial_focus_japan
@@ -777,7 +777,7 @@ focus_tree = {
 		prerequisite = { focus = hk_air_focus  }
 		available = {
 			event_target:uk_colonial_focus_china = { exists = yes }
-			has_government = democratic
+			#DEMOCRATIC
 		}
 		cancel = {
 			event_target:uk_colonial_focus_china = { exists = no }
@@ -799,13 +799,13 @@ focus_tree = {
 			event_target:uk_colonial_focus_china = {
 				add_offsite_building = { type = arms_factory level = 2 }
 				add_opinion_modifier = { target = ROOT modifier = democratic_leanings_good }
-				add_timed_idea = { idea = democratic_influence days = 1095 }
+				#ADD_DEMOCRATIC_INFLUENCE_IDEA
 				country_event = { id = generic.1 }
 				set_country_flag = ENG_influenced_by_britain_flag
 			}
 			every_other_country = {
 				limit = {
-					NOT = { has_government = democratic }
+					#NOT_DEMOCRATIC
 					num_of_factories > 30
 				}
 				add_opinion_modifier = { target = event_target:uk_colonial_focus_china modifier = democratic_leanings_bad }
@@ -1110,7 +1110,7 @@ focus_tree = {
 						}
 					}
 					AND = {
-						NOT = { has_government = democratic }
+						#NOT_DEMOCRATIC
 						event_target:uk_colonial_focus_RAJ = {
 							is_subject_of = ROOT
 							has_war = no
@@ -1119,7 +1119,7 @@ focus_tree = {
 				}
 				else = {
 					has_global_flag = indian_national_army_setup
-					has_government = democratic
+					#DEMOCRATIC
 					event_target:uk_colonial_focus_RAJ = {
 						is_puppet_of = ROOT
 					}

@@ -3,6 +3,7 @@
 
 
 #include "src/HOI4World/HoI4Country.h"
+#include "src/HOI4World/Ideas/Ideas.h"
 
 
 
@@ -15,25 +16,31 @@ class AdjustedBranches
 {
   public:
 	AdjustedBranches(const std::map<std::string, std::shared_ptr<Country>>& countries,
-		 HoI4FocusTree& genericFocusTree,
+		 const std::set<std::string>& majorIdeologies,
 		 OnActions& onActions,
 		 const HoI4::MapUtils& mapUtils,
 		 const std::map<int, int>& provinceToStateIdMapping,
 		 const Maps::MapData& theMapData,
 		 const Maps::ProvinceDefinitions& provinceDefinitions,
-		 Character::Factory& characterFactory);
+		 Character::Factory& characterFactory,
+		 Ideas& ideas);
 
 	void addUKColonialFocusBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
-		 HoI4FocusTree& genericFocusTree,
-		 OnActions& onActions);
-	void addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
-		 HoI4FocusTree& genericFocusTree,
+		 const std::set<std::string>& majorIdeologies,
 		 OnActions& onActions,
-		 Character::Factory& characterFactory);
+		 Ideas& ideas);
+	void addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
+		 OnActions& onActions,
+		 Character::Factory& characterFactory,
+		 Ideas& ideas,
+		 const std::set<std::string>& majorIdeologies);
 
-	[[nodiscard]] const auto& getBranchNames() const { return branchNames; }
+	[[nodiscard]] const auto& getAddedBranches() const { return addedBranches; }
 
   private:
+	HoI4FocusTree createBranch(const std::string& name, const std::set<std::string>& majorIdeologies);
+	void updateAdjustedFocuses(HoI4FocusTree& focusTree, const std::set<std::string>& majorIdeologies);
+
 	void determineGPZonesOfAccess(const std::vector<std::shared_ptr<Country>>& greatPowers,
 		 const std::map<std::string, std::shared_ptr<Country>>& theCountries);
 	void addCountriesToGPZoneOfAccess(const std::shared_ptr<Country>& gp,
@@ -53,12 +60,14 @@ class AdjustedBranches
 		 const std::string& flag,
 		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 	void importCharacters(std::shared_ptr<Country> country,
-		 std::string_view filename,
+		 const std::string& branch,
 		 Character::Factory& characterFactory);
 	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const std::shared_ptr<Country>& country,
 		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
-	std::vector<std::string> branchNames;
+	void addIdeas(const std::string& branch, Ideas& ideas, const std::set<std::string>& majorIdeologies);
+
+	std::vector<std::string> addedBranches;
 	std::map<std::string, std::set<std::string>> gpZonesOfAccess; // great power, contiguous countries GP can access
 
 	const HoI4::MapUtils& mapUtils;

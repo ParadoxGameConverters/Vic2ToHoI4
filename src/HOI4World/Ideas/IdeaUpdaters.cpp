@@ -326,6 +326,16 @@ void HoI4::updateGeneralIdeas(IdeaGroup& generalIdeas, const std::set<std::strin
 		indianIndependencePromised->setAllowedCivilWar(allowedCivilWar);
 		generalIdeas.replaceIdea(*indianIndependencePromised);
 	}
+
+	auto disjointedGovernment = generalIdeas.getIdea("FRA_disjointed_government");
+	if (disjointedGovernment && majorIdeologies.contains("democratic"))
+	{
+		std::string allowedCivilWar = "= {\n";
+		allowedCivilWar += "\t\t\t\thas_government = democratic\n";
+		allowedCivilWar += "\t\t\t}";
+		disjointedGovernment->setAllowedCivilWar(allowedCivilWar);
+		generalIdeas.replaceIdea(*disjointedGovernment);
+	}
 }
 
 
