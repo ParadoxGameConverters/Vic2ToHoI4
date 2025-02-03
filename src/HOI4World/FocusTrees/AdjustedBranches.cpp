@@ -181,7 +181,7 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 }
 
 void HoI4::AdjustedBranches::importCharacters(std::shared_ptr<Country> country,
-	 std::string_view filename,
+	 std::filesystem::path filename,
 	 Character::Factory& characterFactory)
 {
 	CharactersFactory charactersFactory(characterFactory);

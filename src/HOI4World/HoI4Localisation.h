@@ -200,13 +200,13 @@ class Localisation
 class Localisation::Importer
 {
   public:
-	std::unique_ptr<Localisation> generateLocalisations(std::string_view hoi4_directory);
+	std::unique_ptr<Localisation> generateLocalisations(std::filesystem::path hoi4_directory);
 
   private:
-	void importLocalisations(std::string_view hoi4_directory);
-	void importFocusLocalisations(const std::string& filename);
-	void importGenericIdeaLocalisations(const std::string& filename);
-	void importEventLocalisations(const std::string& filename);
+	void importLocalisations(const std::filesystem::path& hoi4_directory);
+	void importFocusLocalisations(const std::filesystem::path& filename);
+	void importGenericIdeaLocalisations(const std::filesystem::path& filename);
+	void importEventLocalisations(const std::filesystem::path& filename);
 	void prepareBlankLocalisations();
 
 	std::map<language, std::map<stateNumber, std::string>> stateLocalisations;

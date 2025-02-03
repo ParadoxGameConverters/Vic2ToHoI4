@@ -17,11 +17,11 @@ std::map<int, HoI4::DefaultState> HoI4::DefaultStatesImporter::ImportDefaultStat
 	 const std::filesystem::path& hoi4Path)
 {
 	const auto statesPath = hoi4Path / "history" / "states";
-	for (const auto& stateFile: commonItems::GetAllFilesInFolder(statesPath.string()))
+	for (const auto& stateFile: commonItems::GetAllFilesInFolder(statesPath))
 	{
-		num_ = std::stoi(stateFile.substr(0, stateFile.find_first_of('-')));
+		num_ = std::stoi(stateFile.string().substr(0, stateFile.string().find_first_of('-')));
 		const auto filePath = statesPath / stateFile;
-		parseFile(filePath.string());
+		parseFile(filePath);
 	}
 
 	return defaultStates_;

@@ -29,7 +29,7 @@ HoI4::IntelligenceAgencyLogos::Factory::Factory()
 
 std::unique_ptr<HoI4::IntelligenceAgencyLogos> HoI4::IntelligenceAgencyLogos::Factory::getIntelligenceAgencyLogos()
 {
-	parseFile("Configurables/IntelligenceAgencyLogos.txt");
+	parseFile(std::filesystem::path("Configurables/IntelligenceAgencyLogos.txt"));
 
 	return std::make_unique<IntelligenceAgencyLogos>(std::map<std::string, std::string>(cultureToLogoMap));
 }

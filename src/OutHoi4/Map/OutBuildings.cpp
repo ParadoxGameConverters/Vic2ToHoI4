@@ -4,12 +4,13 @@
 #include <ranges>
 
 
-void HoI4::outputBuildings(const Buildings& buildings, const std::string& outputName)
+void HoI4::outputBuildings(const Buildings& buildings, const std::filesystem::path& outputName)
 {
-	std::ofstream out("output/" + outputName + "/map/buildings.txt");
+	const std::filesystem::path folder = "output" / outputName / "map/buildings.txt";
+	std::ofstream out(folder);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/map/buildings.txt");
+		throw std::runtime_error("Could not open " + folder.string());
 	}
 	for (const auto& building: buildings.getBuildings() | std::views::values)
 	{

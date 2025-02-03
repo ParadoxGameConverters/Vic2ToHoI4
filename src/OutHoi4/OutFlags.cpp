@@ -41,7 +41,7 @@ static std::set<std::string> allowedMods = {"POPs of Darkness",
 
 void processFlagsForCountry(const std::string&,
 	 const Country& country,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 const Mods& vic2Mods,
 	 const std::set<std::string>& majorIdeologies);
 std::optional<tga_image*> createDominionFlag(const std::string& hoi4Suffix,
@@ -54,21 +54,28 @@ std::optional<tga_image*> createUnrecognizedNationFlag(const std::string& hoi4Su
 	 const std::string& vic2Suffix,
 	 const std::string& region,
 	 const Mods& vic2Mods);
-std::optional<tga_image*> readFlag(const std::string& path);
+std::optional<tga_image*> readFlag(const std::filesystem::path& path);
 tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
-void createBigFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
-void createMediumFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
-void createSmallFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
-std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
+void createBigFlag(const tga_image* sourceFlag,
+	 const std::filesystem::path& filename,
+	 const std::filesystem::path& outputName);
+void createMediumFlag(const tga_image* sourceFlag,
+	 const std::filesystem::path& filename,
+	 const std::filesystem::path& outputName);
+void createSmallFlag(const tga_image* sourceFlag,
+	 const std::filesystem::path& filename,
+	 const std::filesystem::path& outputName);
+std::optional<std::filesystem::path> getSourceFlagPath(const std::string& Vic2Tag,
 	 const std::string& sourceSuffix,
 	 const Mods& vic2Mods);
 bool isThisAConvertedTag(const std::string& Vic2Tag);
-std::optional<std::string> getConversionModFlag(const std::string& flagFilename, const Mods& vic2Mods);
-std::optional<std::string> getAllowModFlags(const std::string& flagFilename, const Mods& vic2Mods);
+std::optional<std::filesystem::path> getConversionModFlag(const std::filesystem::path& flagFilename,
+	 const Mods& vic2Mods);
+std::optional<std::filesystem::path> getAllowModFlags(const std::filesystem::path& flagFilename, const Mods& vic2Mods);
 
 
 void ProcessFlagsForUnionCountry(const UnionCountry& country,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 const Mods& vic2Mods,
 	 const std::set<std::string>& majorIdeologies)
 {
@@ -109,27 +116,23 @@ void ProcessFlagsForUnionCountry(const UnionCountry& country,
 
 void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::vector<HoI4::UnionCountry>& union_countries,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 const Mods& vic2Mods,
 	 const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\tCreating flags";
 
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx"))
+	if (!std::filesystem::create_directories("output" / outputName / "gfx/flags"))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx");
+		throw std::runtime_error("Could not create output/" + outputName.string() + "/gfx/flags");
 	}
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags"))
+	if (!std::filesystem::create_directories("output" / outputName / "gfx/flags/medium"))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags");
+		throw std::runtime_error("Could not create output/" + outputName.string() + "/gfx/flags/medium");
 	}
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags/medium"))
+	if (!std::filesystem::create_directories("output" / outputName / "gfx/flags/small"))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium");
-	}
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags/small"))
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small");
+		throw std::runtime_error("Could not create output/" + outputName.string() + "/gfx/flags/small");
 	}
 
 	for (const auto& [tag, country]: countries)
@@ -149,7 +152,7 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 
 void HoI4::processFlagsForCountry(const std::string& tag,
 	 const Country& country,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 const Mods& vic2Mods,
 	 const std::set<std::string>& majorIdeologies)
 {
@@ -200,11 +203,11 @@ void HoI4::processFlagsForCountry(const std::string& tag,
 }
 
 
-std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
+std::optional<std::filesystem::path> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 	 const std::string& sourceSuffix,
 	 const Mods& vic2Mods)
 {
-	auto path = "flags/" + Vic2Tag + sourceSuffix;
+	auto path = std::filesystem::path("flags") / Vic2Tag / sourceSuffix;
 	if (commonItems::DoesFileExist(path))
 	{
 		return path;
@@ -251,11 +254,12 @@ bool HoI4::isThisAConvertedTag(const std::string& Vic2Tag)
 }
 
 
-std::optional<std::string> HoI4::getConversionModFlag(const std::string& flagFilename, const Mods& vic2Mods)
+std::optional<std::filesystem::path> HoI4::getConversionModFlag(const std::filesystem::path& flagFilename,
+	 const Mods& vic2Mods)
 {
 	for (const auto& mod: vic2Mods)
 	{
-		const auto path = mod.path + "/gfx/flags/" + flagFilename;
+		const auto path = mod.path / "gfx/flags" / flagFilename;
 		if (commonItems::DoesFileExist(path))
 		{
 			return path;
@@ -266,7 +270,8 @@ std::optional<std::string> HoI4::getConversionModFlag(const std::string& flagFil
 }
 
 
-std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilename, const Mods& vic2Mods)
+std::optional<std::filesystem::path> HoI4::getAllowModFlags(const std::filesystem::path& flagFilename,
+	 const Mods& vic2Mods)
 {
 	for (const auto& mod: vic2Mods)
 	{
@@ -274,7 +279,7 @@ std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilenam
 		{
 			continue;
 		}
-		const auto path = mod.path + "/gfx/flags/" + flagFilename;
+		const auto path = mod.path / "gfx/flags" / flagFilename;
 		if (commonItems::DoesFileExist(path))
 		{
 			return path;
@@ -487,13 +492,13 @@ std::optional<tga_image*> HoI4::createUnrecognizedNationFlag(const std::string& 
 }
 
 
-std::optional<tga_image*> HoI4::readFlag(const std::string& path)
+std::optional<tga_image*> HoI4::readFlag(const std::filesystem::path& path)
 {
 	auto flag = new tga_image;
-	const auto result = tga_read(flag, path.c_str());
+	const auto result = tga_read(flag, path.string().c_str());
 	if (result != TGA_NOERR)
 	{
-		Log(LogLevel::Warning) << "Could not read flag " << path << ": " << tga_error(result) << ".";
+		Log(LogLevel::Warning) << "Could not read flag " << path.string() << ": " << tga_error(result) << ".";
 		delete flag;
 		return std::nullopt;
 	}
@@ -547,17 +552,18 @@ tga_image* HoI4::createNewFlag(const tga_image* const sourceFlag, const unsigned
 }
 
 
-void HoI4::createBigFlag(const tga_image* const sourceFlag, const std::string& filename, const std::string& outputName)
+void HoI4::createBigFlag(const tga_image* const sourceFlag,
+	 const std::filesystem::path& filename,
+	 const std::filesystem::path& outputName)
 {
 	const auto destFlag = createNewFlag(sourceFlag, 82, 52);
 
-	const tga_result result = tga_write(("output/" + outputName + "/gfx/flags/" + filename).c_str(), destFlag);
-	if (result)
+	const std::filesystem::path result_path = "output" / outputName / "gfx/flags" / filename;
+	if (const tga_result result = tga_write(result_path.string().c_str(), destFlag); result)
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error(
-			 "Could not create output/" + outputName + "/gfx/flags/" + filename + " : " + tga_error(result));
+		throw std::runtime_error("Could not create " + result_path.string() + " : " + tga_error(result));
 	}
 
 	tga_free_buffers(destFlag);
@@ -566,18 +572,17 @@ void HoI4::createBigFlag(const tga_image* const sourceFlag, const std::string& f
 
 
 void HoI4::createMediumFlag(const tga_image* const sourceFlag,
-	 const std::string& filename,
-	 const std::string& outputName)
+	 const std::filesystem::path& filename,
+	 const std::filesystem::path& outputName)
 {
 	const auto destFlag = createNewFlag(sourceFlag, 41, 26);
 
-	const tga_result result = tga_write(("output/" + outputName + "/gfx/flags/medium/" + filename).c_str(), destFlag);
-	if (result)
+	const std::filesystem::path result_path = "output" / outputName / "gfx/flags/medium" / filename;
+	if (const tga_result result = tga_write(result_path.string().c_str(), destFlag); result)
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error(
-			 "Could not create output/" + outputName + "/gfx/flags/medium/" + filename + " : " + tga_error(result));
+		throw std::runtime_error("Could not create " + result_path.string() + " : " + tga_error(result));
 	}
 
 	tga_free_buffers(destFlag);
@@ -586,18 +591,17 @@ void HoI4::createMediumFlag(const tga_image* const sourceFlag,
 
 
 void HoI4::createSmallFlag(const tga_image* const sourceFlag,
-	 const std::string& filename,
-	 const std::string& outputName)
+	 const std::filesystem::path& filename,
+	 const std::filesystem::path& outputName)
 {
 	const auto destFlag = createNewFlag(sourceFlag, 10, 7);
 
-	const tga_result result = tga_write(("output/" + outputName + "/gfx/flags/small/" + filename).c_str(), destFlag);
-	if (result)
+	const std::filesystem::path result_path = "output" / outputName / "gfx/flags/small" / filename;
+	if (const tga_result result = tga_write(result_path.string().c_str(), destFlag); result)
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error(
-			 "Could not create output/" + outputName + "/gfx/flags/small/" + filename + " : " + tga_error(result));
+		throw std::runtime_error("Could not create " + result_path.string() + " : " + tga_error(result));
 	}
 
 	tga_free_buffers(destFlag);

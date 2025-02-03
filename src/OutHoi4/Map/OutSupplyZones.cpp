@@ -4,11 +4,12 @@
 
 
 
-void HoI4::outputSupplyZones(const SupplyZones& supplyZones, const std::string& outputName)
+void HoI4::outputSupplyZones(const SupplyZones& supplyZones, const std::filesystem::path& outputName)
 {
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/map/supplyareas"))
+	std::filesystem::path folder = "output" / outputName / "map/supplyareas";
+	if (!std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/map/supplyareas");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
 
 	for (const auto& zone: supplyZones.getSupplyZones())

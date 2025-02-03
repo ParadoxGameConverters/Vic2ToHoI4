@@ -8,19 +8,19 @@
 namespace
 {
 
-std::vector<std::string> GetInventionFiles(const commonItems::ModFilesystem& mod_filesystem)
+std::vector< std::filesystem::path> GetInventionFiles(const commonItems::ModFilesystem& mod_filesystem)
 {
 	const auto tech_files = mod_filesystem.GetAllFilesInFolder("inventions/");
 
-	std::vector<std::string> final_tech_files;
+	std::vector< std::filesystem::path> final_tech_files;
 	final_tech_files.reserve(tech_files.size());
 	for (const auto& tech_file: tech_files)
 	{
 		final_tech_files.push_back(tech_file);
 	}
 	std::ranges::sort(final_tech_files,
-		 [](const std::string& l, const std::string& r) {
-			 return trimPath(l) < trimPath(r);
+		 [](const std::filesystem::path& l, const std::filesystem::path& r) {
+			 return l.filename() < r.filename();
 		 },
 		 {});
 

@@ -18,7 +18,7 @@ std::map<std::string, std::string> HoI4::ImportIdeologicalUnitMedals()
 			 ideologies_to_unit_medals.emplace(ideology, raw_string.substr(4, raw_string.size() - 6));
 		 });
 
-	cost_modifiers_parser.parseFile("Configurables/ideological_unit_medals.txt");
+	cost_modifiers_parser.parseFile(std::filesystem::path("Configurables/ideological_unit_medals.txt"));
 
 	return ideologies_to_unit_medals;
 }

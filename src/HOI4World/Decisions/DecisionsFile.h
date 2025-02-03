@@ -16,7 +16,7 @@ namespace HoI4
 class DecisionsFile: commonItems::parser
 {
   public:
-	void importDecisions(const std::string& filename);
+	void importDecisions(const std::filesystem::path& filename);
 
 	[[nodiscard]] const std::vector<DecisionsInCategory>& getDecisions() const { return decisions; }
 

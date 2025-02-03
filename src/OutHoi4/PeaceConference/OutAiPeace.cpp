@@ -4,17 +4,17 @@
 
 
 
-void HoI4::OutputAiPeace(std::string_view output_name,
+void HoI4::OutputAiPeace(std::filesystem::path output_name,
 	 const std::set<std::string>& major_ideologies,
 	 const std::map<std::string, std::string>& ideologies_to_ai_peace,
 	 const std::vector<std::string>& dynamic_ai_peaces)
 {
-	std::ofstream out(
-		 "output/" + std::string(output_name) + "/common/peace_conference/ai_peace/converter_ideology_peace.txt");
+	const std::filesystem::path filename =
+		 "output" / output_name / "common/peace_conference/ai_peace/converter_ideology_peace.txt";
+	std::ofstream out(filename);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not create output/" + std::string(output_name) +
-										 "/common/peace_conference/ai_peace/converter_ideology_peace.txt");
+		throw std::runtime_error("Could not create " + filename.string());
 	}
 
 	out << "peace_ai_desires = {\n";

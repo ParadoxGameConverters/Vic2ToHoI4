@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, const std::string& outputName);
+void outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, const std::filesystem::path& outputName);
 
 }
 

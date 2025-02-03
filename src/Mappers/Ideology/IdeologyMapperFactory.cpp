@@ -20,6 +20,6 @@ std::unique_ptr<Mappers::IdeologyMapper> Mappers::IdeologyMapper::Factory::impor
 	Log(LogLevel::Info) << "\tParsing ideology mappings";
 
 	ideologyMapper = std::make_unique<IdeologyMapper>();
-	parseFile("Configurables/IdeologyMappings.txt");
+	parseFile(std::filesystem::path("Configurables/IdeologyMappings.txt"));
 	return std::move(ideologyMapper);
 }

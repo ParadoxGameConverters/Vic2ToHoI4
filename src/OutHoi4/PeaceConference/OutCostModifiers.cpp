@@ -4,16 +4,16 @@
 
 
 
-void HoI4::OutputCostModifiers(std::string_view output_name,
+void HoI4::OutputCostModifiers(std::filesystem::path output_name,
 	 const std::set<std::string>& major_ideologies,
 	 const std::map<std::string, std::string>& ideologies_to_cost_modifiers)
 {
-	std::ofstream out(
-		 "output/" + std::string(output_name) + "/common/peace_conference/cost_modifiers/converter_ideology_peace.txt");
+	const std::filesystem::path filename =
+		 "output" / output_name / "common/peace_conference/cost_modifiers/converter_ideology_peace.txt";
+	std::ofstream out(filename);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not create output/" + std::string(output_name) +
-										 "/common/peace_conference/cost_modifiers/converter_ideology_peace.txt");
+		throw std::runtime_error("Could not create " + filename.string());
 	}
 
 	out << "peace_action_modifiers = {\n";

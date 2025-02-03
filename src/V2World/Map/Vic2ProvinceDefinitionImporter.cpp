@@ -47,7 +47,7 @@ Maps::ProvinceDefinitions Vic2::ImportProvinceDefinitions(const commonItems::Mod
 	std::ifstream definitions(*path);
 	if (!definitions.is_open())
 	{
-		throw std::runtime_error("Could not open " + *path);
+		throw std::runtime_error("Could not open " + path->string());
 	}
 
 	std::set<int> landProvinces;

@@ -4,11 +4,12 @@
 
 
 
-void HoI4::outMonarchInterface(const std::string& outputFolder,
+void HoI4::outMonarchInterface(const std::filesystem::path& outputFolder,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	commonItems::TryCreateFolder("output/" + outputFolder + "/interface/");
-	std::ofstream monarchsFile("output/" + outputFolder + "/interface/monarchs.gfx");
+
+	std::filesystem::create_directories("output" / outputFolder / "interface");
+	std::ofstream monarchsFile("output" / outputFolder / "interface/monarchs.gfx");
 
 	monarchsFile << "spriteTypes = {\n";
 

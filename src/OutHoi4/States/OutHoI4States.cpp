@@ -6,31 +6,33 @@
 
 
 
-void HoI4::outputStates(const States& theStates, const std::string& outputName, const bool debugEnabled)
+void HoI4::outputStates(const States& theStates, const std::filesystem::path& outputName, const bool debugEnabled)
 {
 	Log(LogLevel::Info) << "\t\tWriting states";
 
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/history/states"))
+	std::filesystem::path history_folder = "output" / outputName / "history/states";
+	if (!std::filesystem::create_directories(history_folder))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/history/states");
+		throw std::runtime_error("Could not create " + outputName.string());
 	}
 	for (const auto& state: theStates.getStates())
 	{
-		auto filename("output/" + outputName + "/history/states/" + std::to_string(state.first) + ".txt");
+		std::filesystem::path filename = history_folder / std::to_string(state.first);
+		filename += ".txt";
 		std::ofstream out(filename);
 		if (!out.is_open())
 		{
-			throw std::runtime_error("Could not open \"" + filename + "\"");
+			throw std::runtime_error("Could not open " + filename.string());
 		}
 		outputHoI4State(out, state.second, debugEnabled);
 		out.close();
 	}
 
-	auto filename("output/" + outputName + "/common/scripted_triggers/state_triggers_FR_loc.txt");
+	auto filename("output" / outputName / "common/scripted_triggers/state_triggers_FR_loc.txt");
 	std::ofstream out(filename);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not open \"" + filename + "\"");
+		throw std::runtime_error("Could not open " + filename.string());
 	}
 	for (const auto& [category, stateIds]: theStates.getLanguageCategories())
 	{

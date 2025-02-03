@@ -34,7 +34,7 @@ HoI4::ArticleRules::Factory::Factory()
 }
 
 
-std::unique_ptr<HoI4::ArticleRules> HoI4::ArticleRules::Factory::getRules(const std::string& rulesFile)
+std::unique_ptr<HoI4::ArticleRules> HoI4::ArticleRules::Factory::getRules(const std::filesystem::path& rulesFile)
 {
 	rules = std::make_unique<ArticleRules>();
 	parseFile(rulesFile);

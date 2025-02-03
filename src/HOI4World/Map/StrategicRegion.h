@@ -18,9 +18,9 @@ namespace HoI4
 class StrategicRegion: commonItems::parser
 {
   public:
-	explicit StrategicRegion(const std::string& _filename, const Configuration& theConfiguration);
+	explicit StrategicRegion(const std::filesystem::path& filename, const Configuration& theConfiguration);
 
-	[[nodiscard]] const auto& getFilename() const { return filename; }
+	[[nodiscard]] const auto& getFilename() const { return filename_; }
 	[[nodiscard]] auto getID() const { return ID; }
 	[[nodiscard]] std::string_view getName() const { return name; }
 	[[nodiscard]] const auto& getOldProvinces() const { return oldProvinces; }
@@ -33,7 +33,7 @@ class StrategicRegion: commonItems::parser
 	void addNewProvince(const int province) { newProvinces.push_back(province); }
 
   private:
-	std::string filename;
+	std::filesystem::path filename_;
 	int ID = 0;
 	std::string name;
 	std::vector<int> oldProvinces;

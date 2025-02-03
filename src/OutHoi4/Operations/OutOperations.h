@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-void outputOperations(const Operations& operations, const std::string& outputName);
+void outputOperations(const Operations& operations, const std::filesystem::path& outputName);
 
 }
 

@@ -16,9 +16,9 @@ HoI4::StateCategories::StateCategories(const Configuration& theConfiguration)
 		}
 	});
 
-	for (const auto& file: commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/common/state_category"))
+	for (const auto& file: commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() / "common/state_category"))
 	{
-		parseFile(theConfiguration.getHoI4Path() + "/common/state_category/" + file);
+		parseFile(theConfiguration.getHoI4Path() / "common/state_category" / file);
 	}
 }
 

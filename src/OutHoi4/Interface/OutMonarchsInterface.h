@@ -13,7 +13,7 @@
 namespace HoI4
 {
 
-void outMonarchInterface(const std::string& outputFolder,
+void outMonarchInterface(const std::filesystem::path& outputFolder,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
 }

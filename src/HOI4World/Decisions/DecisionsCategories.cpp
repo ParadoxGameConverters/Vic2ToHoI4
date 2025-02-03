@@ -30,7 +30,7 @@ std::unique_ptr<HoI4::DecisionsCategories> HoI4::DecisionsCategories::Factory::g
 
 
 std::unique_ptr<HoI4::DecisionsCategories> HoI4::DecisionsCategories::Factory::getDecisionsCategories(
-	 const std::string& filename)
+	 const std::filesystem::path& filename)
 {
 	theCategories.clear();
 	parseFile(filename);

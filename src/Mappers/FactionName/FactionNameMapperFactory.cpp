@@ -17,7 +17,7 @@ Mappers::FactionNameMapper::Factory::Factory()
 std::unique_ptr<Mappers::FactionNameMapper> Mappers::FactionNameMapper::Factory::importFactionNameMapper()
 {
 	factionNameMapper = std::make_unique<FactionNameMapper>();
-	parseFile("./Configurables/factions_mappings.txt");
+	parseFile(std::filesystem::path("./Configurables/factions_mappings.txt"));
 	Log(LogLevel::Info) << "\tLoaded " << factionNameMapper->mappings.size() << " Faction Name Mappings";
 	return std::move(factionNameMapper);
 }

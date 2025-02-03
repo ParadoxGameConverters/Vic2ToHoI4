@@ -11,7 +11,7 @@ namespace HoI4
 {
 
 void OutputWorld(const World& world,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 bool debugEnabled,
 	 const Configuration& theConfiguration);
 

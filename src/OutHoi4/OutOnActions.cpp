@@ -10,12 +10,13 @@ constexpr int numNonIdeologicalEvents = 4;
 
 void HoI4::outputOnActions(const OnActions& onActions,
 	 const std::set<std::string>& majorIdeologies,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
-	std::ofstream onActionsFile("output/" + outputName + "/common/on_actions/99_converter_on_actions.txt");
+	const std::filesystem::path filename = "output" / outputName / "common/on_actions/99_converter_on_actions.txt";
+	std::ofstream onActionsFile(filename);
 	if (!onActionsFile.is_open())
 	{
-		throw std::runtime_error("Could not create NF_events.txt");
+		throw std::runtime_error("Could not create " + filename.string());
 	}
 
 	onActionsFile << "on_actions = {\n";

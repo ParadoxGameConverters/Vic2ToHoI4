@@ -296,7 +296,7 @@ int GetRailwayLevel(const std::vector<int>& vic2_possible_path,
 
 	double total_rail_level = std::accumulate(rail_levels.begin(), rail_levels.end(), 0.0);
 	double rail_level = rail_levels.size() == 0 ? 0 : total_rail_level / static_cast<double>(rail_levels.size());
-	int rail_level_int = round(rail_level);
+	int rail_level_int = static_cast<int>(round(rail_level));
 	// if the railway goes through a capital, the cap is 3. Else it is 2
 	return capitalRailway ? std::clamp(rail_level_int, 1, 3) : std::clamp(rail_level_int, 0, 2);
 }

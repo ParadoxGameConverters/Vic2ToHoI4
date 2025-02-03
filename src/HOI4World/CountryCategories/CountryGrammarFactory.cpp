@@ -13,6 +13,6 @@ HoI4::CountryGrammarFactory::CountryGrammarFactory()
 std::vector<HoI4::CountryGrammarRule> HoI4::CountryGrammarFactory::importCountryGrammar()
 {
 	countryGrammarRules.clear();
-	parseFile("Configurables/CountryGrammar.txt");
+	parseFile(std::filesystem::path("Configurables/CountryGrammar.txt"));
 	return countryGrammarRules;
 }

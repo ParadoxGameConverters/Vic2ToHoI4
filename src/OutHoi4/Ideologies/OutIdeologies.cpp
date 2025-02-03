@@ -4,13 +4,15 @@
 
 
 
-void HoI4::outputIdeologies(const Ideologies& ideologies, const std::string& outputName)
+void HoI4::outputIdeologies(const Ideologies& ideologies, const std::filesystem::path& outputName)
 {
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/ideologies/"))
+	const std::filesystem::path folder = "output" / outputName / "common/ideologies/";
+	if (!std::filesystem::create_directories(folder))
 	{
-		Log(LogLevel::Error) << "Could not create output/" + outputName + "/common/ideologies/";
+		Log(LogLevel::Error) << "Could not create " + folder.string();
 	}
-	std::ofstream ideologyFile("output/" + outputName + "/common/ideologies/00_ideologies.txt");
+
+	std::ofstream ideologyFile(folder / "00_ideologies.txt");
 	ideologyFile << "ideologies = {\n";
 	ideologyFile << "\t\n";
 	for (const auto& ideologyName: ideologies.getMajorIdeologies())

@@ -89,6 +89,112 @@ void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
 	}
 }
 
+
+struct gpStrengthStruct
+{
+	std::string tag;
+	float strength;
+	int meansIndex;
+};
+
+struct meansStruct
+{
+	float value;
+	std::vector<float> strengthAssignments;
+	std::vector<std::string> tags;
+	bool operator<(const meansStruct& rhs) const { return value < rhs.value; }
+};
+
+
+struct modelStruct
+{
+	std::vector<gpStrengthStruct> gpStrengths;
+	std::vector<meansStruct> means;
+	float score = 0.0F;
+};
+
+
+// Initialize a k-means model.
+// Initialize a k-means model.
+// The great powers hold their tag and naval strength and are assigned the the first means
+// The means are distributed evenly across the range of naval strengths
+modelStruct initializeModel(int numMeans,
+	 float strongestNavy,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
+{
+	modelStruct model;
+
+	for (const auto& greatPower: greatPowers)
+	{
+		model.gpStrengths.push_back(
+			 {.tag = greatPower->getTag(), .strength = greatPower->getNavalStrength(), .meansIndex = 0});
+	}
+	for (auto i = 0; i < numMeans; i++)
+	{
+		model.means.push_back({.value = i * strongestNavy / (numMeans - 1)});
+	}
+
+	return model;
+}
+
+
+// run the naive k-means algorithm as described here:
+// https://en.wikipedia.org/wiki/K-means_clustering#Standard_algorithm_(naive_k-means)
+void runKMeans(modelStruct& model)
+{
+	bool assignmentsChanged;
+	do
+	{
+		assignmentsChanged = false;
+		for (auto& mean: model.means)
+		{
+			mean.tags.clear();
+		}
+
+		// assignment
+		for (auto& gpStrength: model.gpStrengths)
+		{
+			auto leastDistance = std::abs(model.means[gpStrength.meansIndex].value - gpStrength.strength);
+			for (auto i = 0; i < model.means.size(); i++)
+			{
+				if (std::abs(model.means[i].value - gpStrength.strength) < leastDistance)
+				{
+					leastDistance = std::abs(model.means[i].value - gpStrength.strength);
+					gpStrength.meansIndex = i;
+					assignmentsChanged = true;
+				}
+			}
+			model.means[gpStrength.meansIndex].strengthAssignments.push_back(gpStrength.strength);
+			model.means[gpStrength.meansIndex].tags.push_back(gpStrength.tag);
+		}
+
+		// adjustment
+		for (auto& mean: model.means)
+		{
+			if (!mean.strengthAssignments.empty())
+			{
+				mean.value = std::accumulate(mean.strengthAssignments.begin(), mean.strengthAssignments.end(), 0.0F) /
+								 mean.strengthAssignments.size();
+				mean.strengthAssignments.clear();
+			}
+		}
+	} while (assignmentsChanged);
+}
+
+
+// find sum of the deviations between each strength and the mean it's associated with. Lower is better.
+float rateModel(const modelStruct& model)
+{
+	float score = 0.0F;
+	for (const auto& gpStrength: model.gpStrengths)
+	{
+		const auto difference = gpStrength.strength - model.means[gpStrength.meansIndex].value;
+		score += difference * difference;
+	}
+
+	return score;
+}
+
 } // namespace
 
 
@@ -96,8 +202,8 @@ void checkAllProvincesAssignedToRegion(const HoI4::Regions& theRegions,
 HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
-	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)),
-	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
+	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), events(make_unique<HoI4::Events>()),
+	 onActions(make_unique<HoI4::OnActions>())
 {
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
@@ -105,7 +211,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Mappers::CountryMapper::Factory countryMapperFactory;
 	countryMap = countryMapperFactory.importCountryMapper(sourceWorld, theConfiguration.getDebug());
 
-	auto vic2Localisations = sourceWorld.getLocalisations();
+	const auto& vic2Localisations = sourceWorld.getLocalisations();
 	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration.getHoI4Path());
 	Log(LogLevel::Progress) << "28%";
 
@@ -280,7 +386,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 createCountryCategories(*countryMap, countries, ideologies->getMajorIdeologies(), theConfiguration.getDebug());
 
 	gameRules = std::make_unique<GameRules>(
-		 GameRules::Parser().parseRulesFile(theConfiguration.getHoI4Path() + "/common/game_rules/00_game_rules.txt"));
+		 GameRules::Parser().parseRulesFile(theConfiguration.getHoI4Path() / "common/game_rules/00_game_rules.txt"));
 	gameRules->updateRules();
 
 	occupationLaws = OccupationLaws::Factory().getOccupationLaws();
@@ -403,7 +509,7 @@ void HoI4::World::importLeaderTraits()
 		commonItems::stringsOfItems traits(theStream);
 		ideologicalLeaderTraits.insert(make_pair(ideologyName, traits.getStrings()));
 	});
-	parseFile("Configurables/converterLeaderTraits.txt");
+	parseFile(std::filesystem::path("Configurables/converterLeaderTraits.txt"));
 }
 
 
@@ -412,8 +518,8 @@ void HoI4::World::importIdeologicalMinisters()
 	Log(LogLevel::Info) << "\tImporting ideological ministers";
 
 	HoI4::IdeologicalAdvisors theAdvisors;
-	auto theAcutalAdvisors = theAdvisors.getAdvisors();
-	ideologicalAdvisors.swap(theAcutalAdvisors);
+	std::map<std::string, Advisor> theActualAdvisors = theAdvisors.getAdvisors();
+	ideologicalAdvisors.swap(theActualAdvisors);
 }
 
 void HoI4::World::convertGovernments(const Vic2::World& sourceWorld,
@@ -493,12 +599,9 @@ void HoI4::World::convertParties(const Vic2::Localisations& vic2Localisations)
 {
 	Log(LogLevel::Info) << "\tConverting political parties";
 
-	for (auto country: countries)
+	for (std::shared_ptr<Country> country: countries | std::views::values)
 	{
-		country.second->convertParties(ideologies->getMajorIdeologies(),
-			 *ideologyMapper,
-			 vic2Localisations,
-			 *hoi4Localisations);
+		country->convertParties(ideologies->getMajorIdeologies(), *ideologyMapper, vic2Localisations, *hoi4Localisations);
 	}
 }
 
@@ -506,11 +609,11 @@ void HoI4::World::convertParties(const Vic2::Localisations& vic2Localisations)
 void HoI4::World::addNeutrality(bool debug)
 {
 	Log(LogLevel::Info) << "\tAdding neutrality";
-	for (auto country: countries)
+	for (std::shared_ptr<Country> country: countries | std::views::values)
 	{
-		if (!ideologies->getMajorIdeologies().contains(country.second->getGovernmentIdeology()))
+		if (!ideologies->getMajorIdeologies().contains(country->getGovernmentIdeology()))
 		{
-			country.second->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(),
+			country->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(),
 				 *ideologies,
 				 *governmentMapper,
 				 *hoi4Localisations,
@@ -523,7 +626,7 @@ void HoI4::World::addNeutrality(bool debug)
 void HoI4::World::addLeaders(Character::Factory& characterFactory)
 {
 	Log(LogLevel::Info) << "\tAdding leaders";
-	if (commonItems::DoesFileExist("./Configurables/HoI4CountryLeaders.txt"))
+	if (commonItems::DoesFileExist(std::filesystem::path("./Configurables/HoI4CountryLeaders.txt")))
 	{
 		Log(LogLevel::Warning)
 			 << "HoI4CountryLeaders.txt is no longer used, convert your imported characters to use ImportCharacters.txt";
@@ -556,9 +659,9 @@ void HoI4::World::importCharacters(Character::Factory& characterFactory)
 void HoI4::World::convertIdeologySupport()
 {
 	Log(LogLevel::Info) << "\tConverting ideology support";
-	for (auto country: countries)
+	for (std::shared_ptr<Country> country: countries | std::views::values)
 	{
-		country.second->convertIdeologySupport(ideologies->getMajorIdeologies(), *ideologyMapper);
+		country->convertIdeologySupport(ideologies->getMajorIdeologies(), *ideologyMapper);
 	}
 }
 
@@ -582,7 +685,7 @@ void HoI4::World::convertInfrastructure()
 void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper)
 {
 	Log(LogLevel::Info) << "\tAdding states to countries";
-	for (auto state: states->getStates() | std::views::values)
+	for (const State& state: states->getStates() | std::views::values)
 	{
 		auto owner = countries.find(state.getOwner());
 		if (owner != countries.end())
@@ -627,15 +730,15 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 }
 void HoI4::World::CalculateStateAvrgPopPerProv()
 {
-	for (auto country: countries | std::views::values)
+	for (std::shared_ptr<Country> country: countries | std::views::values)
 	{
 		int ownerPopulation = country->getNationalPopulation();
-		int ownerProvinces = country->getProvinces().size();
+		int ownerProvinces = static_cast<int>(country->getProvinces().size());
 		for (auto stateID: country->getStates())
 		{
 			auto StateInfo = states->getStates().find(stateID);
 			int statePop = StateInfo->second.getPopulation();
-			int provinceCount = StateInfo->second.getProvinces().size();
+			int provinceCount = static_cast<int>(StateInfo->second.getProvinces().size());
 			states->getModifiableStates()
 				 .find(StateInfo->first)
 				 ->second.setAveragePopPerProvince(provinceCount == 0 ? 0 : statePop / provinceCount);
@@ -1036,15 +1139,15 @@ map<string, double> HoI4::World::calculateFactoryWorkerRatios(const Configuratio
 		 getWorldwideWorkerFactoryRatio(adjustedWorkersPerCountry, totalWorldWorkers, theConfiguration);
 
 	map<string, double> factoryWorkerRatios;
-	for (auto country: landedCountries)
+	for (auto& [tag, country]: landedCountries)
 	{
-		auto adjustedWorkers = adjustedWorkersPerCountry.find(country.first);
+		auto adjustedWorkers = adjustedWorkersPerCountry.find(tag);
 		double factories = adjustedWorkers->second * acutalWorkerFactoryRatio;
 
-		const auto& actualWorkers = country.second->getEmployedWorkers();
+		const auto& actualWorkers = country->getEmployedWorkers();
 		if (actualWorkers > 0)
 		{
-			factoryWorkerRatios.insert(make_pair(country.first, factories / actualWorkers));
+			factoryWorkerRatios.insert(make_pair(tag, factories / actualWorkers));
 		}
 	}
 
@@ -1055,12 +1158,12 @@ map<string, double> HoI4::World::calculateFactoryWorkerRatios(const Configuratio
 map<string, double> HoI4::World::getIndustrialWorkersPerCountry()
 {
 	map<string, double> industrialWorkersPerCountry;
-	for (auto country: landedCountries)
+	for (const auto& [tag, country]: landedCountries)
 	{
-		const auto& employedWorkers = country.second->getEmployedWorkers();
+		const auto& employedWorkers = country->getEmployedWorkers();
 		if (employedWorkers > 0)
 		{
-			industrialWorkersPerCountry.insert(make_pair(country.first, employedWorkers));
+			industrialWorkersPerCountry.emplace(tag, employedWorkers);
 		}
 	}
 
@@ -1071,9 +1174,9 @@ map<string, double> HoI4::World::getIndustrialWorkersPerCountry()
 double HoI4::World::getTotalWorldWorkers(const map<string, double>& industrialWorkersPerCountry)
 {
 	double totalWorldWorkers = 0.0;
-	for (auto countryWorkers: industrialWorkersPerCountry)
+	for (double countryWorkers: industrialWorkersPerCountry | std::views::values)
 	{
-		totalWorldWorkers += countryWorkers.second;
+		totalWorldWorkers += countryWorkers;
 	}
 
 	return totalWorldWorkers;
@@ -1087,18 +1190,18 @@ map<string, double> HoI4::World::adjustWorkers(const map<string, double>& indust
 	double meanWorkersPerCountry = totalWorldWorkers / industrialWorkersPerCountry.size();
 
 	map<string, double> workersDelta;
-	for (auto countryWorkers: industrialWorkersPerCountry)
+	for (auto& [country, countryWorkers]: industrialWorkersPerCountry)
 	{
-		double delta = countryWorkers.second - meanWorkersPerCountry;
-		workersDelta.insert(make_pair(countryWorkers.first, delta));
+		double delta = countryWorkers - meanWorkersPerCountry;
+		workersDelta.emplace(country, delta);
 	}
 
 	map<string, double> adjustedWorkers;
-	for (auto countryWorkers: industrialWorkersPerCountry)
+	for (auto& [country, countryWorkers]: industrialWorkersPerCountry)
 	{
-		double delta = workersDelta.find(countryWorkers.first)->second;
-		double newWorkers = countryWorkers.second - theConfiguration.getIndustrialShapeFactor() * delta;
-		adjustedWorkers.insert(make_pair(countryWorkers.first, newWorkers));
+		double delta = workersDelta.find(country)->second;
+		double newWorkers = countryWorkers - theConfiguration.getIndustrialShapeFactor() * delta;
+		adjustedWorkers.emplace(country, newWorkers);
 	}
 
 	return adjustedWorkers;
@@ -1110,9 +1213,9 @@ double HoI4::World::getWorldwideWorkerFactoryRatio(const map<string, double>& wo
 	 const Configuration& theConfiguration)
 {
 	double baseIndustry = 0.0;
-	for (auto countryWorkers: workersInCountries)
+	for (double countryWorkers: workersInCountries | std::views::values)
 	{
-		baseIndustry += countryWorkers.second * 0.000019;
+		baseIndustry += countryWorkers * 0.000019;
 	}
 
 	int defaultFactories = 1201;
@@ -1127,9 +1230,9 @@ double HoI4::World::getWorldwideWorkerFactoryRatio(const map<string, double>& wo
 
 void HoI4::World::calculateIndustryInCountries()
 {
-	for (auto country: countries)
+	for (std::shared_ptr<HoI4::Country> country: countries | std::views::values)
 	{
-		country.second->calculateIndustry(states->getStates());
+		country->calculateIndustry(states->getStates());
 	}
 }
 
@@ -1167,7 +1270,7 @@ void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tConverting diplomacy";
 	const auto& diplomacy = sourceWorld.getDiplomacy();
-	for (auto agreement: diplomacy.getAgreements())
+	for (const auto& agreement: diplomacy.getAgreements())
 	{
 		auto possibleHoI4Tag1 = countryMap->getHoI4Tag(agreement.getCountry1());
 		if (!possibleHoI4Tag1)
@@ -1360,16 +1463,16 @@ void HoI4::World::convertNavies(const UnitMappings& unitMap,
 	PossibleShipVariants possibleVariants(variantsFile);
 	variantsFile.close();
 
-	for (auto country: countries)
+	for (std::shared_ptr<HoI4::Country> country: countries | std::views::values)
 	{
-		country.second->determineShipVariants(possibleVariants);
-		country.second->convertNavies(unitMap,
+		country->determineShipVariants(possibleVariants);
+		country->convertNavies(unitMap,
 			 mtgUnitMap,
 			 states->getProvinceToStateIDMap(),
 			 states->getStates(),
 			 provinceDefinitions,
 			 provinceMapper);
-		country.second->convertConvoys(unitMap);
+		country->convertConvoys(unitMap);
 	}
 }
 
@@ -1378,9 +1481,9 @@ void HoI4::World::convertAirforces(const UnitMappings& unitMap)
 {
 	Log(LogLevel::Info) << "\t\tConverting air forces";
 
-	for (auto country: countries)
+	for (std::shared_ptr<HoI4::Country> country: countries | std::views::values)
 	{
-		country.second->convertAirForce(unitMap);
+		country->convertAirForce(unitMap);
 	}
 }
 
@@ -1388,7 +1491,7 @@ void HoI4::World::convertAirforces(const UnitMappings& unitMap)
 void HoI4::World::determineGreatPowers(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tDetermining great powers";
-	for (auto greatPowerVic2Tag: sourceWorld.getGreatPowers())
+	for (const auto& greatPowerVic2Tag: sourceWorld.getGreatPowers())
 	{
 		auto possibleGreatPowerTag = countryMap->getHoI4Tag(greatPowerVic2Tag);
 		if (possibleGreatPowerTag)
@@ -1522,9 +1625,9 @@ void HoI4::World::logFactionMember(std::ofstream& factionsLog, const Country& me
 
 optional<string> HoI4::World::returnSphereLeader(shared_ptr<HoI4::Country> possibleSphereling) const
 {
-	for (auto greatPower: greatPowers)
+	for (std::shared_ptr<HoI4::Country> greatPower: greatPowers)
 	{
-		auto relations = greatPower->getRelations();
+		const auto& relations = greatPower->getRelations();
 		auto relation = relations.find(possibleSphereling->getTag());
 		if (relation != relations.end())
 		{
@@ -1571,7 +1674,7 @@ bool HoI4::World::governmentsAllowFaction(const string& leaderIdeology, const st
 void HoI4::World::addFocusTrees(bool debug)
 {
 	Log(LogLevel::Info) << "\tAdding focus trees";
-	for (auto [tag, country]: countries)
+	for (auto& [tag, country]: countries)
 	{
 		if (tag == "UCV" || country->isUnrecognizedNation())
 		{
@@ -1595,9 +1698,9 @@ void HoI4::World::addFocusTrees(bool debug)
 void HoI4::World::adjustResearchFocuses()
 {
 	Log(LogLevel::Info) << "\tAdjusting research focuses";
-	for (auto country: countries)
+	for (std::shared_ptr<HoI4::Country> country: countries | std::views::values)
 	{
-		country.second->adjustResearchFocuses();
+		country->adjustResearchFocuses();
 	}
 }
 
@@ -1641,110 +1744,6 @@ std::set<HoI4::Advisor> HoI4::World::getActiveIdeologicalAdvisors() const
 }
 
 
-struct gpStrengthStruct
-{
-	std::string tag;
-	float strength;
-	int meansIndex;
-};
-
-struct meansStruct
-{
-	float value;
-	std::vector<float> strengthAssignments;
-	std::vector<std::string> tags;
-	bool operator<(const meansStruct& rhs) const { return value < rhs.value; }
-};
-
-struct modelStruct
-{
-	std::vector<gpStrengthStruct> gpStrengths;
-	std::vector<meansStruct> means;
-	float score;
-};
-
-
-// Initialize a k-means model.
-// The great powers hold their tag and naval strength and are assigned the the first means
-// The means are distributed evenly across the range of naval strengths
-modelStruct initializeModel(int numMeans,
-	 float strongestNavy,
-	 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
-{
-	modelStruct model;
-
-	for (const auto& greatPower: greatPowers)
-	{
-		model.gpStrengths.push_back(
-			 {.tag = greatPower->getTag(), .strength = greatPower->getNavalStrength(), .meansIndex = 0});
-	}
-	for (auto i = 0; i < numMeans; i++)
-	{
-		model.means.push_back({.value = i * strongestNavy / (numMeans - 1)});
-	}
-
-	return model;
-}
-
-
-// run the naive k-means algorithm as described here:
-// https://en.wikipedia.org/wiki/K-means_clustering#Standard_algorithm_(naive_k-means)
-void runKMeans(modelStruct& model)
-{
-	bool assignmentsChanged;
-	do
-	{
-		assignmentsChanged = false;
-		for (auto& mean: model.means)
-		{
-			mean.tags.clear();
-		}
-
-		// assignment
-		for (auto& gpStrength: model.gpStrengths)
-		{
-			auto leastDistance = std::abs(model.means[gpStrength.meansIndex].value - gpStrength.strength);
-			for (auto i = 0; i < model.means.size(); i++)
-			{
-				if (std::abs(model.means[i].value - gpStrength.strength) < leastDistance)
-				{
-					leastDistance = std::abs(model.means[i].value - gpStrength.strength);
-					gpStrength.meansIndex = i;
-					assignmentsChanged = true;
-				}
-			}
-			model.means[gpStrength.meansIndex].strengthAssignments.push_back(gpStrength.strength);
-			model.means[gpStrength.meansIndex].tags.push_back(gpStrength.tag);
-		}
-
-		// adjustment
-		for (auto& mean: model.means)
-		{
-			if (!mean.strengthAssignments.empty())
-			{
-				mean.value = std::accumulate(mean.strengthAssignments.begin(), mean.strengthAssignments.end(), 0.0F) /
-								 mean.strengthAssignments.size();
-				mean.strengthAssignments.clear();
-			}
-		}
-	} while (assignmentsChanged);
-}
-
-
-// find sum of the deviations between each strength and the mean it's associated with. Lower is better.
-float rateModel(const modelStruct& model)
-{
-	float score = 0.0F;
-	for (const auto& gpStrength: model.gpStrengths)
-	{
-		const auto difference = gpStrength.strength - model.means[gpStrength.meansIndex].value;
-		score += difference * difference;
-	}
-
-	return score;
-}
-
-
 // Identify the countries with the strongest navies by examining Great Power naval strengths, finding the clusters of
 // similar strength, and returning the strongest cluster Clusters are found using the naive k-means clustering algorithm
 // To identify the number of clusters, run k-means assuming two clusters, then run repeated k-means clustering with
@@ -1784,11 +1783,11 @@ std::vector<std::string> HoI4::World::getStrongestNavyGps()
 std::set<std::string> HoI4::World::getSouthAsianCountries() const
 {
 	std::set<std::string> southAsianCountries;
-	for (const auto country: countries)
+	for (const auto& [tag, country]: countries)
 	{
-		if (country.second->getFlags().contains("conv_south_asia"))
+		if (country->getFlags().contains("conv_south_asia"))
 		{
-			southAsianCountries.insert(country.first);
+			southAsianCountries.insert(tag);
 		}
 	}
 
@@ -1798,7 +1797,7 @@ std::set<std::string> HoI4::World::getSouthAsianCountries() const
 
 void HoI4::World::recordUnbuiltCanals(const Vic2::World& sourceWorld)
 {
-	auto greatestCountry = greatPowers.front();
+	std::shared_ptr<HoI4::Country> greatestCountry = greatPowers.front();
 
 	bool kielCanalBuilt = false;
 	bool panamaCanalBuilt = false;

@@ -5,12 +5,13 @@
 #include <vector>
 
 
-void HoI4::outputSounds(const std::string& outputName, const std::vector<SoundEffect>& soundEffects)
+void HoI4::outputSounds(const std::filesystem::path& outputName, const std::vector<SoundEffect>& soundEffects)
 {
-	std::ofstream output("output/" + outputName + "/sounds/vo_conv.asset", std::ios::app);
+	const std::filesystem::path filename = "output" / outputName / "sounds/vo_conv.asset";
+	std::ofstream output(filename, std::ios::app);
 	if (!output.is_open())
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/sounds/vo_conv.asset");
+		throw std::runtime_error("Could not create " + filename.string());
 	}
 
 	output << "category = {\n";

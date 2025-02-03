@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputDifficultySettings(const std::vector<std::shared_ptr<Country>>& greatPowers, const std::string& outputName);
+void outputDifficultySettings(const std::vector<std::shared_ptr<Country>>& greatPowers, const std::filesystem::path& outputName);
 
 }
 

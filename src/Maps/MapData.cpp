@@ -85,14 +85,13 @@ commonItems::Color GetRightColor(Maps::Point position, int width, const bitmap_i
 
 
 Maps::MapData::MapData(const ProvinceDefinitions& province_definitions,
-	 const commonItems::ModFilesystem& mod_filesystem):
-	 province_definitions_(province_definitions)
+	 const commonItems::ModFilesystem& mod_filesystem): province_definitions_(province_definitions)
 {
 	ImportProvinces(mod_filesystem);
 	ImportAdjacencies(mod_filesystem);
 }
 
-Maps::MapData::MapData(const ProvinceDefinitions& province_definitions, const std::string& path):
+Maps::MapData::MapData(const ProvinceDefinitions& province_definitions, const std::filesystem::path& path):
 	 province_definitions_(province_definitions)
 {
 	ImportProvinces(path);
@@ -110,16 +109,19 @@ void Maps::MapData::ImportProvinces(const commonItems::ModFilesystem& mod_filesy
 	ImportProvinces(*path);
 }
 
-void Maps::MapData::ImportProvinces(const std::string& path)
-{
-	auto full_path = path;
-	if (path.find("/map/provinces.bmp") == std::string::npos)
-		full_path = path + "/map/provinces.bmp";
 
-	bitmap_image province_map(full_path);
+void Maps::MapData::ImportProvinces(const std::filesystem::path& path)
+{
+	std::filesystem::path full_path = path;
+	if (!path.string().contains("map/provinces.bmp") && !path.string().contains("map\\provinces.bmp"))
+	{
+		full_path = path / "map/provinces.bmp";
+	}
+
+	bitmap_image province_map(full_path.string());
 	if (!province_map)
 	{
-		throw std::runtime_error("Could not open " + full_path + "/map/provinces.bmp");
+		throw std::runtime_error("Could not open " + (full_path / "map/provinces.bmp").string());
 	}
 
 	const int height = static_cast<int>(province_map.height());
@@ -253,16 +255,19 @@ void Maps::MapData::ImportAdjacencies(const commonItems::ModFilesystem& mod_file
 	ImportAdjacencies(*path);
 }
 
-void Maps::MapData::ImportAdjacencies(const std::string& path)
+
+void Maps::MapData::ImportAdjacencies(const std::filesystem::path& path)
 {
-	auto full_path = path;
-	if (path.find("/map/adjacencies.csv") == std::string::npos)
-		full_path = path + "/map/adjacencies.csv";
+	std::filesystem::path full_path = path;
+	if (!path.string().contains("map/adjacencies.csv") && !path.string().contains("map\\adjacencies.csv"))
+	{
+		full_path = path / "map/adjacencies.csv";
+	}
 
 	std::ifstream adjacencies_file(full_path);
 	if (!adjacencies_file.is_open())
 	{
-		throw std::runtime_error("Could not open " + full_path);
+		throw std::runtime_error("Could not open " + full_path.string());
 	}
 
 	while (!adjacencies_file.eof())

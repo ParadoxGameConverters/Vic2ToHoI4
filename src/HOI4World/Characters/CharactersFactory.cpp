@@ -15,7 +15,7 @@ HoI4::CharactersFactory::CharactersFactory(Character::Factory& characterFactory)
 }
 
 
-std::multimap<std::string, HoI4::Character> HoI4::CharactersFactory::importCharacters(std::string_view filename)
+std::multimap<std::string, HoI4::Character> HoI4::CharactersFactory::importCharacters(std::filesystem::path filename)
 {
 	characters_.clear();
 	parseFile(filename);

@@ -16,6 +16,6 @@ HoI4::OperativeNamesMappings HoI4::OperativeNamesMappings::Factory::getMappings(
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile("Configurables/OperativeNamesMappings.txt");
+	parseFile(std::filesystem::path("Configurables/OperativeNamesMappings.txt"));
 	return operativeNamesMappings;
 }

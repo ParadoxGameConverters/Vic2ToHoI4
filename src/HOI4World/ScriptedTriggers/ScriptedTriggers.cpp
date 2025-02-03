@@ -15,7 +15,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 		scriptedTrigger.setBody(bodyString.getString());
 		ideologyScriptedTriggers.push_back(scriptedTrigger);
 	});
-	parseFile("blankmod/common/scripted_triggers/ideology_scripted_triggers.txt");
+	parseFile(std::filesystem::path("blankmod/common/scripted_triggers/ideology_scripted_triggers.txt"));
 	clearRegisteredKeywords();
 
 	registerRegex(commonItems::catchallRegex, [this](const std::string& name, std::istream& theStream) {
@@ -24,7 +24,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 		scriptedTrigger.setBody(bodyString.getString());
 		electionsScriptedTriggers.push_back(scriptedTrigger);
 	});
-	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/Elections_scripted_triggers.txt");
+	parseFile(theConfiguration.getHoI4Path() / "common/scripted_triggers/Elections_scripted_triggers.txt");
 	clearRegisteredKeywords();
 
 	registerRegex(commonItems::catchallRegex, [this](const std::string& name, std::istream& theStream) {
@@ -33,7 +33,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 		scriptedTrigger.setBody(bodyString.getString());
 		lawsWarSupportTriggers.push_back(scriptedTrigger);
 	});
-	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/laws_war_support.txt");
+	parseFile(theConfiguration.getHoI4Path() / "common/scripted_triggers/laws_war_support.txt");
 	clearRegisteredKeywords();
 }
 

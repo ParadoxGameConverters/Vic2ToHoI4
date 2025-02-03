@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-[[nodiscard]] Maps::ProvinceDefinitions importProvinceDefinitions(const std::string& path);
+[[nodiscard]] Maps::ProvinceDefinitions importProvinceDefinitions(const std::filesystem::path& path);
 
 }
 

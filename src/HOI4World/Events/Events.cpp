@@ -1176,7 +1176,7 @@ void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeolo
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile("blankmod/events/ElectionEvents.txt");
+	parseFile(std::filesystem::path("blankmod/events/ElectionEvents.txt"));
 	clearRegisteredKeywords();
 
 	if (majorIdeologies.contains("democratic"))
@@ -1380,7 +1380,7 @@ void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeol
 		}
 	});
 
-	parseFile(theConfiguration.getHoI4Path() + "/events/stability_events.txt");
+	parseFile(theConfiguration.getHoI4Path() / "events/stability_events.txt");
 
 	auto lowStabilitySelector = stabilityEvents.find("stability.3");
 	std::stringstream trigger;
@@ -1572,10 +1572,10 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 {
 	Log(LogLevel::Info) << "\tCreating generic events";
 
-	std::ifstream genericEventsFileStream(theConfiguration.getHoI4Path() + "/events/Generic.txt");
+	std::ifstream genericEventsFileStream(theConfiguration.getHoI4Path() / "events/Generic.txt");
 	if (!genericEventsFileStream.is_open())
 	{
-		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/events/Generic.txt");
+		throw std::runtime_error("Could not open " + (theConfiguration.getHoI4Path() / "events/Generic.txt").string());
 	}
 	commonItems::absorbBOM(genericEventsFileStream);
 
@@ -1633,7 +1633,7 @@ void HoI4::Events::importCapitulationEvents(const Configuration& theConfiguratio
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile(theConfiguration.getHoI4Path() + "/events/CapitulationEvents.txt");
+	parseFile(theConfiguration.getHoI4Path() / "events/CapitulationEvents.txt");
 	clearRegisteredKeywords();
 
 	updateCapitulationEvent(capitulationEvents[0], majorIdeologies);
@@ -1651,7 +1651,7 @@ void HoI4::Events::importMtgNavalTreatyEvents(const Configuration& theConfigurat
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile(theConfiguration.getHoI4Path() + "/events/MTG_naval_treaty_events.txt");
+	parseFile(theConfiguration.getHoI4Path() / "events/MTG_naval_treaty_events.txt");
 	clearRegisteredKeywords();
 
 	for (auto& event: mtgNavalTreatyEvents)
@@ -1687,7 +1687,7 @@ void HoI4::Events::importLarOccupationEvents(const Configuration& theConfigurati
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile(theConfiguration.getHoI4Path() + "/events/LAR_occupation.txt");
+	parseFile(theConfiguration.getHoI4Path() / "events/LAR_occupation.txt");
 	clearRegisteredKeywords();
 
 	for (auto& event: larOccupationEvents)

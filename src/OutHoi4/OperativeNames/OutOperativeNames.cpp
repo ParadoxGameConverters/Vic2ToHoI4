@@ -5,9 +5,9 @@
 
 
 
-void HoI4::outputOperativeNames(const OperativeNames& operativeNames, const std::string& outputName)
+void HoI4::outputOperativeNames(const OperativeNames& operativeNames, const std::filesystem::path& outputName)
 {
-	commonItems::TryCreateFolder("output/" + outputName + "/common/units/codenames_operatives/");
+	std::filesystem::create_directories("output" / outputName / "common/units/codenames_operatives");
 	for (const auto& operativeNamesSet: operativeNames.getOperativeNamesSets() | std::views::values)
 	{
 		outputOperativeNamesSet(operativeNamesSet, outputName);

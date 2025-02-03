@@ -5,17 +5,20 @@
 
 
 
-void HoI4::outputIntelligenceAgencies(const IntelligenceAgencies& intelligenceAgencies, const std::string& outputName)
+void HoI4::outputIntelligenceAgencies(const IntelligenceAgencies& intelligenceAgencies,
+	 const std::filesystem::path& outputName)
 {
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/intelligence_agencies/"))
+	const std::filesystem::path folder = "output" / outputName / "common/intelligence_agencies/";
+	if (!std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/intelligence_agencies/");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
-	std::ofstream out("output/" + outputName + "/common/intelligence_agencies/00_intelligence_agencies.txt");
+
+	const std::filesystem::path file = folder / "00_intelligence_agencies.txt";
+	std::ofstream out(file);
 	if (!out.is_open())
 	{
-		throw std::runtime_error(
-			 "Could not create output/" + outputName + "/common/intelligence_agencies/00_intelligence_agencies.txt");
+		throw std::runtime_error("Could not create " + file.string());
 	}
 
 	for (const auto& intelligenceAgency: intelligenceAgencies.getIntelligenceAgencies())
