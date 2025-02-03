@@ -7,7 +7,7 @@
 
 TEST(Vic2World_States_StateDefinitionsFactoryTests, ItemsInStateAreImported)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	const auto stateDefinitions = Vic2::StateDefinitions::Factory().getStateDefinitions(mod_filesystem);
 
 	const std::set<int> expectedProvinces{1, 2, 3};

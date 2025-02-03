@@ -7,14 +7,15 @@
 
 TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, ExceptionThrownForMissingDefinitions)
 {
-	const commonItems::ModFilesystem mod_filesystem("badfolder", {});
-	EXPECT_THROW(Vic2::ImportProvinceDefinitions(mod_filesystem, {}), std::runtime_error);
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("badfolder"), {});
+	EXPECT_THROW([[maybe_unused]] const auto& _ = Vic2::ImportProvinceDefinitions(mod_filesystem, {}),
+		 std::runtime_error);
 }
 
 
 TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, NoProvinceFromUndefinedColor)
 {
-	const commonItems::ModFilesystem mod_filesystem("ProvinceDefinition", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("ProvinceDefinition"), {});
 	const auto definitions = Vic2::ImportProvinceDefinitions(mod_filesystem, {});
 
 	const auto province = definitions.getProvinceFromColor(commonItems::Color(std::array{255, 255, 255}));
@@ -24,7 +25,7 @@ TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, NoProvinceFromUndefinedC
 
 TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, ProvinceFromDefinedColor)
 {
-	const commonItems::ModFilesystem mod_filesystem("ProvinceDefinition", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("ProvinceDefinition"), {});
 	const auto definitions = Vic2::ImportProvinceDefinitions(mod_filesystem, {});
 
 	const auto province = definitions.getProvinceFromColor(commonItems::Color(std::array<int, 3>{136, 0, 21}));
@@ -35,7 +36,7 @@ TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, ProvinceFromDefinedColor
 
 TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, LandProvincesCanBeDetermined)
 {
-	const commonItems::ModFilesystem mod_filesystem("ProvinceDefinition", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("ProvinceDefinition"), {});
 	const auto definitions = Vic2::ImportProvinceDefinitions(mod_filesystem,
 		 {{1, Vic2::Province::Builder{}.setNumber(1).setIsLand().build()}});
 
@@ -46,7 +47,7 @@ TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, LandProvincesCanBeDeterm
 
 TEST(Vic2World_Map_Vic2ProvinceDefinitionImporterTests, SeaProvincesCanBeDetermined)
 {
-	const commonItems::ModFilesystem mod_filesystem("ProvinceDefinition", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("ProvinceDefinition"), {});
 	const auto definitions =
 		 Vic2::ImportProvinceDefinitions(mod_filesystem, {{1, Vic2::Province::Builder{}.setNumber(1).build()}});
 

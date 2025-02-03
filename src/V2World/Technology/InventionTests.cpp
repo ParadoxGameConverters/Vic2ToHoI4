@@ -44,7 +44,7 @@ TEST(Vic2World_Technology_InventionTests, InventionZeroLogsErrorAndReturnsNullop
 #ifndef _DEBUG // disable some test that break code coverage
 TEST(Vic2World_Technology_InventionTests, InventionNameIsReturned)
 {
-	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("BaseGameInventions"), {});
 	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("test_tech_one", inventions->getInventionName(1));
@@ -53,7 +53,7 @@ TEST(Vic2World_Technology_InventionTests, InventionNameIsReturned)
 
 TEST(Vic2World_Technology_InventionTests, AllInventionFilesAreRead)
 {
-	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("BaseGameInventions"), {});
 	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("test_tech_one", inventions->getInventionName(1));
@@ -63,7 +63,7 @@ TEST(Vic2World_Technology_InventionTests, AllInventionFilesAreRead)
 
 TEST(Vic2World_Technology_InventionTests, InventionsWithAtypicalCharactersAreReturned)
 {
-	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("BaseGameInventions"), {});
 	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_NE(std::nullopt, inventions->getInventionName(3));
@@ -72,7 +72,8 @@ TEST(Vic2World_Technology_InventionTests, InventionsWithAtypicalCharactersAreRet
 
 TEST(Vic2World_Technology_InventionTests, ModInventionFilesAreRead)
 {
-	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {Mod("one", "ModInventions/Mod1")});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("BaseGameInventions"),
+		 {Mod("one", "ModInventions/Mod1")});
 	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("test_tech_four", inventions->getInventionName(4));
@@ -81,7 +82,7 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesAreRead)
 
 TEST(Vic2World_Technology_InventionTests, MultipleModInventionFilesAreRead)
 {
-	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions",
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("BaseGameInventions"),
 		 {Mod("one", "ModInventions/Mod1"), Mod("two", "ModInventions/Mod2")});
 	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
@@ -91,7 +92,8 @@ TEST(Vic2World_Technology_InventionTests, MultipleModInventionFilesAreRead)
 
 TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDefaultOnes)
 {
-	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions", {Mod("three", "ModInventions/Mod3")});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("BaseGameInventions"),
+		 {Mod("three", "ModInventions/Mod3")});
 	const auto inventions = Vic2::Inventions::Factory().LoadInventions(mod_filesystem);
 
 	ASSERT_EQ("replacement_tech_one", inventions->getInventionName(1));
@@ -100,7 +102,7 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDefaultOnes)
 
 TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDependeeMods)
 {
-	const commonItems::ModFilesystem mod_filesystem("./BaseGameInventions",
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("BaseGameInventions"),
 		 {Mod("one", "ModInventions/Mod1"),
 			  Mod("two", "ModInventions/Mod2"),
 			  Mod("Mod3", "ModInventions/Mod3", std::set<Name>{"Mod2"})});
