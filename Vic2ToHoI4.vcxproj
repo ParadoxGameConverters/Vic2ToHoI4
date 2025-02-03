@@ -53,7 +53,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Vic2toHoI4lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Vic2toHoI4lib.lib;zip.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IncrementalLinkDatabaseFile>$(SolutionDir)lib\$(TargetName).ilk</IncrementalLinkDatabaseFile>
     </Link>
     <PostBuildEvent>
