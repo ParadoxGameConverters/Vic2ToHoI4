@@ -22,8 +22,8 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 Character::Factory& characterFactory,
 	 Ideas& ideas):
-	 mapUtils(mapUtils),
-	 provinceToStateIdMapping(provinceToStateIdMapping), theMapData(theMapData), provinceDefinitions(provinceDefinitions)
+	 mapUtils(mapUtils), provinceToStateIdMapping(provinceToStateIdMapping), theMapData(theMapData),
+	 provinceDefinitions(provinceDefinitions)
 {
 	Log(LogLevel::Info) << "\tAdding adjusted focus branches";
 	addUKColonialFocusBranch(countries, majorIdeologies, onActions, ideas);
@@ -279,7 +279,8 @@ void HoI4::AdjustedBranches::importCharacters(std::shared_ptr<Country> country,
 	 const std::string& branch,
 	 Character::Factory& characterFactory)
 {
-	const auto& filename = "Configurables/AdjustedFocusBranches/" + branch + "_characters.txt";
+	auto filename = std::filesystem::path("Configurables/AdjustedFocusBranches") / branch;
+	filename += "_characters.txt";
 
 	CharactersFactory charactersFactory(characterFactory);
 	const auto importedCharacters = charactersFactory.importCharacters(filename);
