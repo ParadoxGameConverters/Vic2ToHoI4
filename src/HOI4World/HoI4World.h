@@ -120,7 +120,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getLocalisation() const { return *hoi4Localisations; }
 	[[nodiscard]] const auto& getSoundEffects() const { return soundEffects; }
 	[[nodiscard]] const auto& getDate() const { return *theDate; }
-	[[nodiscard]] const auto& getAdjustedFocusBranches() const { return adjustedBranches->getBranchNames(); }
+	[[nodiscard]] const auto& getAdjustedFocusBranches() const { return adjustedBranches->getAddedBranches(); }
 	[[nodiscard]] const std::map<std::string, std::string>& GetIdeologicalCostModifiers() const
 	{
 		return ideological_cost_modifiers_;

@@ -139,7 +139,7 @@ class Country
 	void addEmptyFocusTree();
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations, bool debug);
-	void addFocusTreeBranch(const std::string& branch, OnActions& onActions);
+	void addFocusTreeBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses, HoI4::OnActions& onActions);
 	void adjustResearchFocuses() const;
 
 	void SetUnionCountryTag(const std::string& union_country_tag) { union_country_tag_ = union_country_tag; }

@@ -1669,11 +1669,12 @@ void HoI4::Country::addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisati
 }
 
 
-void HoI4::Country::addFocusTreeBranch(const std::string& branch, OnActions& onActions)
+void HoI4::Country::addFocusTreeBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses,
+	 HoI4::OnActions& onActions)
 {
 	if (nationalFocus)
 	{
-		nationalFocus->addBranch(tag, branch, onActions);
+		nationalFocus->addBranch(adjustedFocuses, onActions);
 	}
 }
 

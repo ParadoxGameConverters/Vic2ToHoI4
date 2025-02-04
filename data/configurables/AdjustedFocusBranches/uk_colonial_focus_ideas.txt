@@ -1,13 +1,8 @@
-ideas = {
 	country = {
 		ENG_colonial_elite = {
 
 			allowed = {
 				always = no
-			}
-
-			allowed_civil_war = {
-				# ideologies added in code
 			}
 
 			picture = generic_research_bonus
@@ -126,10 +121,6 @@ ideas = {
 
 			allowed = {
 				always = no
-			}
-
-			allowed_civil_war = {
-				# ideologies added in code
 			}
 
 			picture = generic_morale_bonus
@@ -467,4 +458,3 @@ ideas = {
 
 		}
 	}
-}

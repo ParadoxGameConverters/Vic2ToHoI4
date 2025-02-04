@@ -144,9 +144,11 @@
     <Text Include="data\configurables\CountryNamesMappings.txt" />
     <Text Include="data\configurables\country_mappings.txt" />
     <Text Include="data\configurables\cultureGroupToGraphics.txt" />
-    <Text Include="data\configurables\CustomizedFocusBranches\FRA_begin_rearmament_characters.txt" />
-    <Text Include="data\configurables\CustomizedFocusBranches\FRA_begin_rearmament.txt" />
-    <Text Include="data\configurables\CustomizedFocusBranches\uk_colonial_focus.txt" />
+    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_characters.txt" />
+    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament.txt" />
+    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_ideas.txt" />
+    <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus.txt" />
+    <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus_ideas.txt" />
     <Text Include="data\configurables\factions_mappings.txt" />
     <Text Include="data\configurables\FlagsToIdeasMappings.txt" />
     <Text Include="data\configurables\foreignInfluenceDecisions.txt" />

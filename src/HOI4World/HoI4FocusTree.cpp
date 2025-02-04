@@ -161,7 +161,7 @@ HoI4FocusTree::HoI4FocusTree(const HoI4::Country& country): dstCountryTag(countr
 
 void HoI4FocusTree::addGenericFocusTree(const std::set<std::string>& majorIdeologies)
 {
-	Log(LogLevel::Info) << "\t\tCreating generic focus tree";
+	Log(LogLevel::Info) << "\t\tCreating generic focus tree " << dstCountryTag;
 	confirmLoadedFocuses();
 
 	auto numCollectivistIdeologies = static_cast<int>(calculateNumCollectivistIdeologies(majorIdeologies));
@@ -332,106 +332,66 @@ void HoI4FocusTree::confirmLoadedFocuses()
 		});
 		registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-		parseFile(std::filesystem::path("Configurables/converterFocuses.txt"));
-		for (const auto& file:
-			 commonItems::GetAllFilesInFolder(std::filesystem::path("Configurables/CustomizedFocusBranches")))
-		{
-			parseFile("Configurables/CustomizedFocusBranches" / file);
-		}
+		parseFile("Configurables/converterFocuses.txt");
 		clearRegisteredKeywords();
-
-		createBranches();
 	}
 }
 
 
-void HoI4FocusTree::loadFocuses(const std::string& branch)
+std::pair<int, int> HoI4FocusTree::calculateBranchSpan(const std::vector<std::shared_ptr<HoI4Focus>>& focuses)
 {
-	registerKeyword("focus_tree", [this](std::istream& theStream) {
-	});
-	registerRegex("focus|shared_focus", [this](const std::string& unused, std::istream& theStream) {
-		HoI4Focus newFocus(theStream);
-		loadedFocuses.insert(make_pair(newFocus.id, newFocus));
-	});
-	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+	// Maps focus IDs to their computed X positions
+	std::map<std::string, int> computedXPositions;
 
-	std::filesystem::path file = std::filesystem::path("Configurables/CustomizedFocusBranches") / branch;
-	file += ".txt";
-	parseFile(file);
-	clearRegisteredKeywords();
-
-	createBranches();
-}
-
-
-void HoI4FocusTree::addBranch(const std::string& tag, const std::string& branch, HoI4::OnActions& onActions)
-{
-	loadFocuses(branch);
-
-	if (!branches.contains(branch))
+	// Find and calculate all x-positions
+	for (const auto& focus: focuses)
 	{
-		return;
-	}
-	const auto& branchFocuses = branches.at(branch);
-	std::map<int, std::vector<std::string>> branchLevels;
-	for (const auto& [focus, level]: branchFocuses)
-	{
-		branchLevels[level].push_back(focus);
-	}
-
-	int branchWidth = 0;
-	for (const auto& levelFocuses: branchLevels | std::views::values)
-	{
-		for (const auto& focus: levelFocuses)
+		if (focus->relativePositionId.empty())
 		{
-			const auto& newFocus = std::make_shared<HoI4Focus>(GetLoadedFocus(focus));
-			if (focus == branch)
+			// Root focus - reference point for minX and maxX
+			computedXPositions[focus->id] = 0;
+		}
+		else
+		{
+			// If the focus has a relative position ID, calculate its absolute position
+			const auto& relativeFocusId = focus->relativePositionId;
+			if (computedXPositions.count(relativeFocusId) > 0)
 			{
-				branchWidth = newFocus->xPos;
-				newFocus->xPos = nextFreeColumn + branchWidth / 2;
-				onActions.addFocusEvent(tag, focus);
+				computedXPositions[focus->id] = computedXPositions[relativeFocusId] + focus->xPos;
 			}
-			focuses.push_back(newFocus);
-		}
-	}
-	nextFreeColumn += branchWidth + 2;
-}
-
-
-void HoI4FocusTree::createBranches()
-{
-	int branchLevel = 0;
-	for (const auto& [id, focus]: loadedFocuses)
-	{
-		if (!focus.prerequisites.empty())
-		{
-			continue;
-		}
-		branches[id].insert(std::make_pair(id, branchLevel));
-		addChildrenToBranch(id, id, branchLevel);
-	}
-}
-
-
-void HoI4FocusTree::addChildrenToBranch(const std::string& head, const std::string& id, int branchLevel)
-{
-	branchLevel++;
-	for (const auto& [childId, childFocus]: loadedFocuses)
-	{
-		if (branches[head].contains(childId))
-		{
-			continue;
-		}
-		for (const auto& prerequisiteStr: childFocus.prerequisites)
-		{
-			const auto& prerequisites = extractIds(prerequisiteStr);
-			if (prerequisites.contains(id))
+			else
 			{
-				branches[head].insert(std::make_pair(childId, branchLevel));
-				addChildrenToBranch(head, childId, branchLevel);
+				Log(LogLevel::Warning) << "Relative focus " << relativeFocusId << "  must be scripted before " << focus->id;
 			}
 		}
 	}
+
+	// Calculate the minimum and maximum x-positions
+	int minX = std::numeric_limits<int>::max();
+	int maxX = std::numeric_limits<int>::min();
+
+	for (const auto& [id, xPos]: computedXPositions)
+	{
+		minX = std::min(minX, xPos);
+		maxX = std::max(maxX, xPos);
+	}
+
+	return {minX, maxX};
+}
+
+
+void HoI4FocusTree::addBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses,
+	 HoI4::OnActions& onActions)
+{
+	auto [minX, maxX] = calculateBranchSpan(adjustedFocuses);
+	auto& rootFocus = *adjustedFocuses.begin();
+
+	rootFocus->xPos = nextFreeColumn + std::abs(minX);
+	nextFreeColumn += maxX - minX + 2;
+
+	onActions.addFocusEvent(dstCountryTag, rootFocus->id);
+
+	focuses.insert(focuses.end(), adjustedFocuses.begin(), adjustedFocuses.end());
 }
 
 
@@ -1618,6 +1578,13 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 		borderDisputesFocus->xPos = nextFreeColumn;
 		borderDisputesFocus->yPos = 0;
 		borderDisputesFocus->updateFocusElement(borderDisputesFocus->aiWillDo, "$TARGET", strategy.getID());
+		borderDisputesFocus->updateFocusElement(borderDisputesFocus->aiWillDo,
+			 "#DEMOCRATIC",
+			 "modifier = {\n"
+			 "\t\t\t\tfactor = 0\n"
+			 "\t\t\t\thas_government = democratic\n"
+			 "\t\t\t}\n",
+			 majorIdeologies.contains("democratic"));
 		focuses.push_back(borderDisputesFocus);
 
 		auto assertClaimsFocus =
@@ -1650,6 +1617,13 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(const HoI4::Country& theCo
 			 "#ADDCLAIM",
 			 "add_state_claim = " + claimStateId);
 		assertClaimsFocus->updateFocusElement(assertClaimsFocus->aiWillDo, "$TARGET", strategy.getID());
+		assertClaimsFocus->updateFocusElement(assertClaimsFocus->aiWillDo,
+			 "#DEMOCRATIC",
+			 "modifier = {\n"
+			 "\t\t\t\tfactor = 0\n"
+			 "\t\t\t\thas_government = democratic\n"
+			 "\t\t\t}\n",
+			 majorIdeologies.contains("democratic"));
 		focuses.push_back(assertClaimsFocus);
 
 		auto prepareForWarFocus =
