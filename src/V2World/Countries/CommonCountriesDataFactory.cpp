@@ -51,5 +51,5 @@ std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Par
 	 const commonItems::ModFilesystem& mod_filesystem)
 {
 	Log(LogLevel::Info) << "\tReading country files";
-	return ProcessCountriesDotTxt("/common/countries.txt", mod_filesystem);
+	return ProcessCountriesDotTxt("common/countries.txt", mod_filesystem);
 }

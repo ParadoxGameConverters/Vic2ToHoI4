@@ -101,10 +101,10 @@ Maps::MapData::MapData(const ProvinceDefinitions& province_definitions, const st
 
 void Maps::MapData::ImportProvinces(const commonItems::ModFilesystem& mod_filesystem)
 {
-	const auto path = mod_filesystem.GetActualFileLocation("/map/provinces.bmp");
+	const auto path = mod_filesystem.GetActualFileLocation("map/provinces.bmp");
 	if (!path)
 	{
-		throw std::runtime_error("Could not find /map/provinces.bmp");
+		throw std::runtime_error("Could not find map/provinces.bmp");
 	}
 	ImportProvinces(*path);
 }
@@ -247,10 +247,10 @@ void Maps::MapData::AddPointToBorder(int main_province, int neighbor_province, c
 
 void Maps::MapData::ImportAdjacencies(const commonItems::ModFilesystem& mod_filesystem)
 {
-	const auto path = mod_filesystem.GetActualFileLocation("/map/adjacencies.csv");
+	const auto path = mod_filesystem.GetActualFileLocation("map/adjacencies.csv");
 	if (!path)
 	{
-		throw std::runtime_error("Could not find /map/adjacencies.csv");
+		throw std::runtime_error("Could not find map/adjacencies.csv");
 	}
 	ImportAdjacencies(*path);
 }

@@ -38,10 +38,10 @@ std::optional<int> extractNumber(std::string& string)
 Maps::ProvinceDefinitions Vic2::ImportProvinceDefinitions(const commonItems::ModFilesystem& mod_filesystem,
 	 const std::map<int, std::shared_ptr<Province>>& provinces)
 {
-	const auto path = mod_filesystem.GetActualFileLocation("/map/definition.csv");
+	const auto path = mod_filesystem.GetActualFileLocation("map/definition.csv");
 	if (!path)
 	{
-		throw std::runtime_error("Could not find /map/definition.csv");
+		throw std::runtime_error("Could not find map/definition.csv");
 	}
 
 	std::ifstream definitions(*path);
