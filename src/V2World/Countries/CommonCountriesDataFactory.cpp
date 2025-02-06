@@ -18,7 +18,8 @@ std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Par
 	std::map<std::string, Vic2::CommonCountryData> common_countries_data;
 	std::vector<Vic2::Party> parties;
 
-	if (const std::optional<std::filesystem::path> possible_file = mod_filesystem.GetActualFileLocation(country_list_file);
+	if (const std::optional<std::filesystem::path> possible_file =
+			  mod_filesystem.GetActualFileLocation(country_list_file);
 		 possible_file)
 	{
 		Vic2::CommonCountryData::Factory common_country_data_factory;

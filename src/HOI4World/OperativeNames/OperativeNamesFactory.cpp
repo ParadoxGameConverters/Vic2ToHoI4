@@ -4,7 +4,8 @@
 
 
 
-std::unique_ptr<HoI4::OperativeNames> HoI4::OperativeNames::Factory::getOperativeNames(const std::filesystem::path& HoI4Path)
+std::unique_ptr<HoI4::OperativeNames> HoI4::OperativeNames::Factory::getOperativeNames(
+	 const std::filesystem::path& HoI4Path)
 {
 	auto operativeNames = std::make_unique<OperativeNames>();
 	OperativeNamesSet::Factory operativeNameSetFactory;

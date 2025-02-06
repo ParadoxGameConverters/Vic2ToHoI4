@@ -11,9 +11,10 @@
 namespace HoI4
 {
 
-void outputIntelligenceAgencies(const IntelligenceAgencies& intelligenceAgencies, const std::filesystem::path& outputName);
+void outputIntelligenceAgencies(const IntelligenceAgencies& intelligenceAgencies,
+	 const std::filesystem::path& outputName);
 
-}
+} // namespace HoI4
 
 
 

@@ -667,7 +667,8 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	}
 }
 
-void HoI4::copyAdjustedFocusFiles(const std::filesystem::path& outputName, const std::vector<std::string>& addedBranches)
+void HoI4::copyAdjustedFocusFiles(const std::filesystem::path& outputName,
+	 const std::vector<std::string>& addedBranches)
 {
 	for (const auto& branch: addedBranches)
 	{

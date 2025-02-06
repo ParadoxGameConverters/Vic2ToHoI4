@@ -8,11 +8,11 @@
 namespace
 {
 
-std::vector< std::filesystem::path> GetInventionFiles(const commonItems::ModFilesystem& mod_filesystem)
+std::vector<std::filesystem::path> GetInventionFiles(const commonItems::ModFilesystem& mod_filesystem)
 {
 	const auto tech_files = mod_filesystem.GetAllFilesInFolder("inventions/");
 
-	std::vector< std::filesystem::path> final_tech_files;
+	std::vector<std::filesystem::path> final_tech_files;
 	final_tech_files.reserve(tech_files.size());
 	for (const auto& tech_file: tech_files)
 	{
