@@ -13,7 +13,7 @@ HoI4::Ideas::Factory::Factory()
 }
 
 
-HoI4::Ideas HoI4::Ideas::Factory::importIdeas(const std::string& filePath)
+HoI4::Ideas HoI4::Ideas::Factory::importIdeas(const std::filesystem::path& filePath)
 {
 	importedIdeas = std::make_unique<HoI4::Ideas>();
 	parseFile(filePath);

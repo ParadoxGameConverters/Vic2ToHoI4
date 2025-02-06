@@ -198,8 +198,9 @@ void HoI4::AdjustedBranches::addIdeas(const std::string& branch,
 	 Ideas& ideas,
 	 const std::set<std::string>& majorIdeologies)
 {
-	const auto& fileName = "Configurables/AdjustedFocusBranches/" + branch + "_ideas.txt";
-	auto importedIdeas = HoI4::Ideas::Factory().importIdeas(fileName);
+	auto fileName = std::filesystem::path("Configurables/AdjustedFocusBranches") / branch;
+	fileName += "_ideas.txt";
+	const auto importedIdeas = HoI4::Ideas::Factory().importIdeas(fileName);
 
 	for (auto ideaGroup: importedIdeas.getGeneralIdeas())
 	{
