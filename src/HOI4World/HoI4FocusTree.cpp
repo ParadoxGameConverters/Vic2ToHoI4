@@ -332,7 +332,7 @@ void HoI4FocusTree::confirmLoadedFocuses()
 		});
 		registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-		parseFile("Configurables/converterFocuses.txt");
+		parseFile(std::filesystem::path("Configurables/converterFocuses.txt"));
 		clearRegisteredKeywords();
 	}
 }

@@ -126,7 +126,9 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 HoI4FocusTree HoI4::AdjustedBranches::createBranch(const std::string& name,
 	 const std::set<std::string>& majorIdeologies)
 {
-	auto branch = HoI4FocusTree::Factory().importFocusTree("Configurables/AdjustedFocusBranches/" + name + ".txt");
+	std::filesystem::path path = std::filesystem::path("Configurables/AdjustedFocusBranches") / name;
+	path += ".txt";
+	auto branch = HoI4FocusTree::Factory().importFocusTree(path);
 	updateAdjustedFocuses(branch, majorIdeologies);
 
 	return branch;

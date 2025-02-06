@@ -13,7 +13,7 @@ class HoI4FocusTree::Factory: commonItems::parser
   public:
 	Factory();
 
-	[[nodiscard]] HoI4FocusTree importFocusTree(std::string_view filePath);
+	[[nodiscard]] HoI4FocusTree importFocusTree(std::filesystem::path filePath);
 
   private:
 	std::unique_ptr<HoI4FocusTree> imported_focus_tree_;
