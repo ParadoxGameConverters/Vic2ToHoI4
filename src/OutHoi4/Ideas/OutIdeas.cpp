@@ -9,11 +9,11 @@ void outputIdeologicalIdeas(const std::map<std::string, std::vector<HoI4::IdeaGr
 	 const std::set<std::string>& majorIdeologies,
 	 const std::filesystem::path& outputName);
 void outputGeneralIdeas(const std::vector<HoI4::IdeaGroup>& generalIdeas, const std::filesystem::path& outputName);
-void outputMonarchIdeas(std::map<std::string, std::shared_ptr<HoI4::Country>> countries,
+void outputMonarchIdeas(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
 	 const std::filesystem::path& outputName);
 void HoI4::outIdeas(const Ideas& ideas,
 	 const std::set<std::string>& majorIdeologies,
-	 std::map<std::string, std::shared_ptr<HoI4::Country>> countries,
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
 	 const std::filesystem::path& outputName)
 {
 	outputIdeologicalIdeas(ideas.getIdeologicalIdeas(), majorIdeologies, outputName);
@@ -92,7 +92,7 @@ void closeIdeaFile(std::ofstream& fileStream)
 }
 
 
-void outputMonarchIdeas(std::map<std::string, std::shared_ptr<HoI4::Country>> countries,
+void outputMonarchIdeas(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
 	 const std::filesystem::path& outputName)
 {
 	std::ofstream monarchFile("output" / outputName / "common/ideas/_monarchs.txt");

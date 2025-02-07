@@ -10,16 +10,17 @@ void HoI4::outputLandmarkBuildings(const LandmarkBuildings& landmarkBuildings, c
 	const std::filesystem::path folder = "output" / outputName / "common/buildings";
 	std::filesystem::create_directories(folder);
 
-	std::filesystem::path filename = folder / "01_landmark_buildings.txt";
-	std::ofstream out(folder);
+	const std::filesystem::path filename = folder / "01_landmark_buildings.txt";
+	std::ofstream out(filename);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not open " + folder.string());
+		throw std::runtime_error("Could not open " + filename.string());
 	}
 
 	out << landmarkBuildings;
 	out.close();
 }
+
 
 std::ostream& HoI4::operator<<(std::ostream& outStream, const HoI4::LandmarkBuildings& outLandmarkBuildings)
 {
