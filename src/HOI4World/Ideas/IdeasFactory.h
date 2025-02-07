@@ -17,7 +17,7 @@ class Ideas::Factory: commonItems::parser
   public:
 	Factory();
 
-	[[nodiscard]] Ideas importIdeas(const std::string& filePath);
+	[[nodiscard]] Ideas importIdeas(const std::filesystem::path& filePath);
 
   private:
 	std::unique_ptr<Ideas> importedIdeas;

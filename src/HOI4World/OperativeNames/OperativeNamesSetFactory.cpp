@@ -16,13 +16,13 @@ HoI4::OperativeNamesSet::Factory::Factory()
 
 
 std::unique_ptr<HoI4::OperativeNamesSet> HoI4::OperativeNamesSet::Factory::getOperativeNamesSetFromFile(
-	 const std::string& filename)
+	 const std::filesystem::path& filename)
 {
 	parseFile(filename);
 	if (!operativeNamesSet)
 	{
 		operativeNamesSet = std::make_unique<OperativeNamesSet>();
 	}
-	operativeNamesSet->filename = trimPath(filename);
+	operativeNamesSet->filename = filename.filename();
 	return std::move(operativeNamesSet);
 }

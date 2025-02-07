@@ -8,17 +8,19 @@
 
 void HoI4::outputScorers(const Scorers& scorers, const Configuration& configuration)
 {
-	if (!commonItems::TryCreateFolder("output/" + configuration.getOutputName() + "/common/scorers/country/"))
+	const std::filesystem::path folder =
+		 std::filesystem::path("output") / configuration.getOutputName() / "common/scorers/country";
+	if (!std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create output/" + configuration.getOutputName() + "/common/scorers/country/");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
 
-	std::ofstream output(
-		 "output/" + configuration.getOutputName() + "/common/scorers/country/generic_platonic_scorers.txt");
+	const std::filesystem::path file = std::filesystem::path("output") / configuration.getOutputName() /
+												  "common/scorers/country/generic_platonic_scorers.txt";
+	std::ofstream output(file);
 	if (!output.is_open())
 	{
-		throw std::runtime_error("Could not create output/" + configuration.getOutputName() +
-										 "/common/scorers/country/generic_platonic_scorers.txt");
+		throw std::runtime_error("Could not create " + file.string());
 	}
 
 	for (const auto& scorer: scorers.getCustomizedScorers() | std::views::values)

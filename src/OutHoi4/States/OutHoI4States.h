@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputStates(const States& theStates, const std::string& outputName, bool debugEnabled);
+void outputStates(const States& theStates, const std::filesystem::path& outputName, bool debugEnabled);
 
 }
 

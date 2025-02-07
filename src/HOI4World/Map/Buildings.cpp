@@ -24,10 +24,10 @@ HoI4::Buildings::Buildings(const States& theStates,
 
 void HoI4::Buildings::importDefaultBuildings(Maps::MapData& theMapData, const Configuration& theConfiguration)
 {
-	std::ifstream buildingsFile(theConfiguration.getHoI4Path() + "/map/buildings.txt");
+	std::ifstream buildingsFile(theConfiguration.getHoI4Path() / "map/buildings.txt");
 	if (!buildingsFile.is_open())
 	{
-		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/map/buildings.txt");
+		throw std::runtime_error("Could not open " + (theConfiguration.getHoI4Path() / "map/buildings.txt").string());
 	}
 
 	while (!buildingsFile.eof())

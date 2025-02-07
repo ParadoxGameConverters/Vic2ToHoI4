@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputScriptedLocalisations(const std::string& outputName, const ScriptedLocalisations& scriptedLocalisations);
+void outputScriptedLocalisations(const std::filesystem::path& outputName, const ScriptedLocalisations& scriptedLocalisations);
 
 }
 

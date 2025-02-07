@@ -5,9 +5,10 @@
 
 
 void HoI4::outCountryCategories(const std::map<std::string, TagsAndExtras>& countryCategories,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
-	std::ofstream countryCategoriesFile("output/" + outputName + "/common/scripted_triggers/country_categories.txt");
+	const std::filesystem::path filename = "output" / outputName / "common/scripted_triggers/country_categories.txt";
+	std::ofstream countryCategoriesFile(filename);
 
 	for (const auto& [category, tagsAndExtras]: countryCategories)
 	{

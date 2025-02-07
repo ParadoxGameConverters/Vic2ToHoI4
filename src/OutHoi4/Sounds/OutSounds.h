@@ -12,7 +12,7 @@
 namespace HoI4
 {
 
-void outputSounds(const std::string& outputName, const std::vector<SoundEffect>& soundEffects);
+void outputSounds(const std::filesystem::path& outputName, const std::vector<SoundEffect>& soundEffects);
 
 } // namespace HoI4
 

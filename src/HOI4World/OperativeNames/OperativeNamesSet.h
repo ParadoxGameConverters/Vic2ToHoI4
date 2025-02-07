@@ -26,7 +26,7 @@ class OperativeNamesSet
 	void addCountry(std::string country) { countries.push_back(std::move(country)); }
 
   private:
-	std::string filename;
+	std::filesystem::path filename;
 	std::string wrapper;
 	std::string name;
 	std::vector<std::string> countries;

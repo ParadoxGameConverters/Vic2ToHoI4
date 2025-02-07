@@ -97,7 +97,7 @@ class Names::Factory: commonItems::parser
 	std::unique_ptr<Names> getNames(const Configuration& theConfiguration);
 
   private:
-	void processVic2CulturesFile(const std::string& filename);
+	void processVic2CulturesFile(const std::filesystem::path& filename);
 	void processNamesFile();
 	void checkForNames();
 	void addNamesToMap(std::map<std::string, std::vector<std::string>>& map,

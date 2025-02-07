@@ -869,22 +869,14 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\Buildings\01_landmark_buildings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Windonws/common/buildings</DestinationFolders>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Buildings\LandmarksMappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;_SILENCE_CXX20_U8PATH_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PreprocessorDefinitions>WINDOWS;NDEBUG;_CONSOLE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;_SILENCE_CXX20_U8PATH_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/external/common_items/external/googletest/googletest/;$(SolutionDir)/external/common_items/external/googletest/googletest/include;$(SolutionDir)/external/common_items/external/googletest/googlemock/;$(SolutionDir)/external/common_items/external/googletest/googlemock/include;$(SolutionDir)lib;$(SolutionDir)external\common_items\pch</AdditionalIncludeDirectories>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
@@ -898,7 +890,7 @@
       <SubSystem>Console</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <AdditionalLibraryDirectories>$(SolutionDir)lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Vic2toHoI4lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Vic2toHoI4lib.lib;zip.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IncrementalLinkDatabaseFile>$(SolutionDir)lib\$(TargetName).ilk</IncrementalLinkDatabaseFile>
     </Link>
   </ItemDefinitionGroup>

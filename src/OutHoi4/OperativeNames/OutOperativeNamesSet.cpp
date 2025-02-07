@@ -3,9 +3,9 @@
 
 
 
-void HoI4::outputOperativeNamesSet(const OperativeNamesSet& operativeNamesSet, const std::string& outputName)
+void HoI4::outputOperativeNamesSet(const OperativeNamesSet& operativeNamesSet, const std::filesystem::path& outputName)
 {
-	std::ofstream out("output/" + outputName + "/common/units/codenames_operatives/" + operativeNamesSet.getFilename());
+	std::ofstream out("output" / outputName / "common/units/codenames_operatives" / operativeNamesSet.getFilename());
 
 	out << operativeNamesSet.getWrapper() << " = {\n";
 	out << "\tname = " << operativeNamesSet.getName() << "\n";

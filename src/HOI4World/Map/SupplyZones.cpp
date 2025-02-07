@@ -36,11 +36,12 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates,
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	for (const auto& supplyZonesFile:
-		 commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/supplyareas"))
+		 commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() / "map/supplyareas"))
 	{
-		auto num = stoi(supplyZonesFile.substr(0, supplyZonesFile.find_first_of('-')));
-		supplyZonesFileNames.insert(make_pair(num, supplyZonesFile));
-		parseFile(theConfiguration.getHoI4Path() + "/map/supplyareas/" + supplyZonesFile);
+		std::string file_string = supplyZonesFile.string();
+		auto num = stoi(file_string.substr(0, file_string.find_first_of('-')));
+		supplyZonesFileNames.insert(std::make_pair(num, supplyZonesFile));
+		parseFile(theConfiguration.getHoI4Path() / "map/supplyareas" / supplyZonesFile);
 	}
 
 	clearRegisteredKeywords();
@@ -76,7 +77,7 @@ void HoI4::SupplyZones::convertSupplyZones(const States& states)
 }
 
 
-std::optional<std::string> HoI4::SupplyZones::getSupplyZoneFileName(const int supplyZoneNum) const
+std::optional<std::filesystem::path> HoI4::SupplyZones::getSupplyZoneFileName(const int supplyZoneNum) const
 {
 	if (const auto filenameMap = supplyZonesFileNames.find(supplyZoneNum); filenameMap != supplyZonesFileNames.end())
 	{

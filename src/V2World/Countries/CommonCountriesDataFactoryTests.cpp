@@ -8,8 +8,8 @@
 
 TEST(Vic2World_Countries_CommonCountriesDataTests, ItemsDefaultToEmpty)
 {
-	const auto& [common_country_data, parties] =
-		 Vic2::ImportCommonCountriesData(commonItems::ModFilesystem("./missing_common_countries_data/", {}));
+	const auto& [common_country_data, parties] = Vic2::ImportCommonCountriesData(
+		 commonItems::ModFilesystem(std::filesystem::path("missing_common_countries_data"), {}));
 
 	EXPECT_TRUE(common_country_data.empty());
 	EXPECT_TRUE(parties.empty());
@@ -18,8 +18,8 @@ TEST(Vic2World_Countries_CommonCountriesDataTests, ItemsDefaultToEmpty)
 
 TEST(Vic2World_Countries_CommonCountriesDataTests, ItemsCanBeImported)
 {
-	const auto& [common_country_data, parties] =
-		 Vic2::ImportCommonCountriesData(commonItems::ModFilesystem("./vanilla_common_countries_data/", {}));
+	const auto& [common_country_data, parties] = Vic2::ImportCommonCountriesData(
+		 commonItems::ModFilesystem(std::filesystem::path("vanilla_common_countries_data"), {}));
 
 	EXPECT_THAT(common_country_data,
 		 testing::UnorderedElementsAre(testing::Pair("ONE",

@@ -7,13 +7,14 @@
 
 void outputIdeologicalIdeas(const std::map<std::string, std::vector<HoI4::IdeaGroup>>& ideologicalIdeas,
 	 const std::set<std::string>& majorIdeologies,
-	 const std::string& outputName);
-void outputGeneralIdeas(const std::vector<HoI4::IdeaGroup>& generalIdeas, const std::string& outputName);
-void outputMonarchIdeas(std::map<std::string, std::shared_ptr<HoI4::Country>> countries, const std::string& outputName);
+	 const std::filesystem::path& outputName);
+void outputGeneralIdeas(const std::vector<HoI4::IdeaGroup>& generalIdeas, const std::filesystem::path& outputName);
+void outputMonarchIdeas(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::filesystem::path& outputName);
 void HoI4::outIdeas(const Ideas& ideas,
 	 const std::set<std::string>& majorIdeologies,
-	 std::map<std::string, std::shared_ptr<HoI4::Country>> countries,
-	 const std::string& outputName)
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::filesystem::path& outputName)
 {
 	outputIdeologicalIdeas(ideas.getIdeologicalIdeas(), majorIdeologies, outputName);
 	outputGeneralIdeas(ideas.getGeneralIdeas(), outputName);
@@ -23,9 +24,9 @@ void HoI4::outIdeas(const Ideas& ideas,
 
 void outputIdeologicalIdeas(const std::map<std::string, std::vector<HoI4::IdeaGroup>>& ideologicalIdeas,
 	 const std::set<std::string>& majorIdeologies,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
-	std::ofstream ideasFile("output/" + outputName + "/common/ideas/convertedIdeas.txt");
+	std::ofstream ideasFile("output" / outputName / "common/ideas/convertedIdeas.txt");
 	ideasFile << "ideas = {\n";
 	for (const auto& [ideaCategory, ideaGroups]: ideologicalIdeas)
 	{
@@ -46,13 +47,13 @@ void outputIdeologicalIdeas(const std::map<std::string, std::vector<HoI4::IdeaGr
 }
 
 
-std::ofstream openIdeaFile(const std::string& fileName);
+std::ofstream openIdeaFile(const std::filesystem::path& fileName);
 void closeIdeaFile(std::ofstream& fileStream);
-void outputGeneralIdeas(const std::vector<HoI4::IdeaGroup>& generalIdeas, const std::string& outputName)
+void outputGeneralIdeas(const std::vector<HoI4::IdeaGroup>& generalIdeas, const std::filesystem::path& outputName)
 {
-	auto manpowerFile = openIdeaFile("output/" + outputName + "/common/ideas/_manpower.txt");
-	auto economicFile = openIdeaFile("output/" + outputName + "/common/ideas/_economic.txt");
-	auto genericFile = openIdeaFile("output/" + outputName + "/common/ideas/zzz_generic.txt");
+	auto manpowerFile = openIdeaFile("output" / outputName / "common/ideas/_manpower.txt");
+	auto economicFile = openIdeaFile("output" / outputName / "common/ideas/_economic.txt");
+	auto genericFile = openIdeaFile("output" / outputName / "common/ideas/zzz_generic.txt");
 
 	for (const auto& theGroup: generalIdeas)
 	{
@@ -76,7 +77,7 @@ void outputGeneralIdeas(const std::vector<HoI4::IdeaGroup>& generalIdeas, const 
 }
 
 
-std::ofstream openIdeaFile(const std::string& fileName)
+std::ofstream openIdeaFile(const std::filesystem::path& fileName)
 {
 	std::ofstream theFile(fileName);
 	theFile << "ideas = {\n";
@@ -91,9 +92,10 @@ void closeIdeaFile(std::ofstream& fileStream)
 }
 
 
-void outputMonarchIdeas(std::map<std::string, std::shared_ptr<HoI4::Country>> countries, const std::string& outputName)
+void outputMonarchIdeas(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::filesystem::path& outputName)
 {
-	std::ofstream monarchFile("output/" + outputName + "/common/ideas/_monarchs.txt");
+	std::ofstream monarchFile("output" / outputName / "common/ideas/_monarchs.txt");
 
 	monarchFile << "ideas = {\n";
 	monarchFile << "\tcountry = {\n";

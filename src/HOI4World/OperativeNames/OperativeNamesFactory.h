@@ -15,7 +15,7 @@ namespace HoI4
 class OperativeNames::Factory: commonItems::parser
 {
   public:
-	static std::unique_ptr<OperativeNames> getOperativeNames(const std::string& HoI4Path);
+	static std::unique_ptr<OperativeNames> getOperativeNames(const std::filesystem::path& HoI4Path);
 };
 
 } // namespace HoI4

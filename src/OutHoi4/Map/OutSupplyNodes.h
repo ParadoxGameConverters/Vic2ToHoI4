@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-void outputSupplyNodes(const std::string& path, const std::set<int>& SupplyNodes);
+void outputSupplyNodes(const std::filesystem::path& path, const std::set<int>& SupplyNodes);
 
 }
 

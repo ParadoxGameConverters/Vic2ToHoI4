@@ -16,7 +16,7 @@ namespace HoI4
 class ScriptedEffects
 {
   public:
-	explicit ScriptedEffects(const std::string& HoI4Location);
+	explicit ScriptedEffects(const std::filesystem::path& HoI4Location);
 
 	[[nodiscard]] const auto& getOperationStratEffects() const { return operationStratEffects; }
 
