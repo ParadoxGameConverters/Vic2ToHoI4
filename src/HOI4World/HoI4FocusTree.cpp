@@ -1138,32 +1138,38 @@ void HoI4FocusTree::addGPWarBranch(const HoI4::Country& home,
 
 		events.createSummitNewsEvents(majorIdeologies);
 		auto& eventIds = events.getSummitNewsEventsIds();
-		std::string hiddenEffect = "hidden_effect = {\n";
-		hiddenEffect += "\t\t\tif = {\n";
-		hiddenEffect += "\t\t\t\tlimit = { has_government = fascism }\n";
-		hiddenEffect += "\t\t\t\tevery_other_country = {\n";
-		hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
-		hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds.at("fascism") + " }\n";
-		hiddenEffect += "\t\t\t\t}\n";
-		hiddenEffect += "\t\t\t}\n";
-		hiddenEffect += "\t\t}\n";
-		summitFocus->updateFocusElement(summitFocus->completionReward,
-			 "#FASC_NEWS",
-			 hiddenEffect,
-			 majorIdeologies.contains("fascism"));
-		hiddenEffect = "hidden_effect = {\n";
-		hiddenEffect += "\t\t\tif = {\n";
-		hiddenEffect += "\t\t\t\tlimit = { has_government = communism }\n";
-		hiddenEffect += "\t\t\t\tevery_other_country = {\n";
-		hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
-		hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds.at("communism") + " }\n";
-		hiddenEffect += "\t\t\t\t}\n";
-		hiddenEffect += "\t\t\t}\n";
-		hiddenEffect += "\t\t}\n";
-		summitFocus->updateFocusElement(summitFocus->completionReward,
-			 "#COMM_NEWS",
-			 hiddenEffect,
-			 majorIdeologies.contains("communism"));
+		if (majorIdeologies.contains("fascism"))
+		{
+			std::string hiddenEffect = "hidden_effect = {\n";
+			hiddenEffect += "\t\t\tif = {\n";
+			hiddenEffect += "\t\t\t\tlimit = { has_government = fascism }\n";
+			hiddenEffect += "\t\t\t\tevery_other_country = {\n";
+			hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
+			hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds.at("fascism") + " }\n";
+			hiddenEffect += "\t\t\t\t}\n";
+			hiddenEffect += "\t\t\t}\n";
+			hiddenEffect += "\t\t}\n";
+			summitFocus->updateFocusElement(summitFocus->completionReward,
+				 "#FASC_NEWS",
+				 hiddenEffect,
+				 majorIdeologies.contains("fascism"));
+		}
+		if (majorIdeologies.contains("communism"))
+		{
+			std::string hiddenEffect = "hidden_effect = {\n";
+			hiddenEffect += "\t\t\tif = {\n";
+			hiddenEffect += "\t\t\t\tlimit = { has_government = communism }\n";
+			hiddenEffect += "\t\t\t\tevery_other_country = {\n";
+			hiddenEffect += "\t\t\t\t\tlimit = { is_major = yes }\n";
+			hiddenEffect += "\t\t\t\t\tnews_event = { id = " + eventIds.at("communism") + " }\n";
+			hiddenEffect += "\t\t\t\t}\n";
+			hiddenEffect += "\t\t\t}\n";
+			hiddenEffect += "\t\t}\n";
+			summitFocus->updateFocusElement(summitFocus->completionReward,
+				 "#COMM_NEWS",
+				 hiddenEffect,
+				 majorIdeologies.contains("communism"));
+		}
 		focuses.push_back(summitFocus);
 		hoi4Localisations.copyFocusLocalisations("_Summit", summitFocus->text, debug);
 		hoi4Localisations.updateLocalisationText(summitFocus->text, "$TARGET", ideology);
