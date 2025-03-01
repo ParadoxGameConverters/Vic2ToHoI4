@@ -13,7 +13,6 @@
 #include "src/V2World/States/State.h"
 #include "src/V2World/States/StateDefinitions.h"
 #include <algorithm>
-#include <format>
 #include <fstream>
 #include <ranges>
 
@@ -1024,9 +1023,7 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 			if (!possibleOwnerAdjective)
 			{
 				// in the final case, just use the word "partial"
-				Log(LogLevel::Warning) << fmt::format("No localisation found for {}_ADJ in {}",
-					 vic2State.getOwner(),
-					 language);
+				Log(LogLevel::Warning) << "No localisation found for " << vic2State.getOwner() << "_ADJ in " << language;
 				if (const auto& partial = vic2Localisations.getTextInLanguage("PARTIAL", language); partial)
 				{
 					possibleOwnerAdjective = *partial;
