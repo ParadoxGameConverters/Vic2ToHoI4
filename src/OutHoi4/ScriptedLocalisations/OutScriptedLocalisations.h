@@ -10,9 +10,10 @@
 namespace HoI4
 {
 
-void outputScriptedLocalisations(const std::filesystem::path& outputName, const ScriptedLocalisations& scriptedLocalisations);
+void outputScriptedLocalisations(const std::filesystem::path& outputName,
+	 const ScriptedLocalisations& scriptedLocalisations);
 
-}
+} // namespace HoI4
 
 
 

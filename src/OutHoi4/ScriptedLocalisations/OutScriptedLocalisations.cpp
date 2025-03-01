@@ -7,8 +7,8 @@
 void HoI4::outputScriptedLocalisations(const std::filesystem::path& outputName,
 	 const ScriptedLocalisations& scriptedLocalisations)
 {
-	std::ofstream scriptedLocalisationsFile("output" / outputName /
-															  "common/scripted_localisation/00_scripted_localisation.txt",
+	std::ofstream scriptedLocalisationsFile(
+       "output" / outputName / "common/scripted_localisation/00_scripted_localisation.txt",
 		 std::ofstream::app);
 	for (const auto& localisation: scriptedLocalisations.getLocalisations())
 	{
