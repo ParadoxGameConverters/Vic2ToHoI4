@@ -69,7 +69,7 @@ void HoI4::outputLocalisation(const Localisation& localisation, const std::files
 {
 	Log(LogLevel::Debug) << "Writing localisations";
 	const auto localisationPath = "output" / outputName / "localisation";
-	if (!std::filesystem::create_directories(localisationPath))
+	if (!commonItems::DoesFolderExist(localisationPath) && !std::filesystem::create_directories(localisationPath))
 	{
 		throw std::runtime_error("Could not create localisation folder");
 	}

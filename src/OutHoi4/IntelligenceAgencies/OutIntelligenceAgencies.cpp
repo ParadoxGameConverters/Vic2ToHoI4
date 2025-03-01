@@ -8,8 +8,8 @@
 void HoI4::outputIntelligenceAgencies(const IntelligenceAgencies& intelligenceAgencies,
 	 const std::filesystem::path& outputName)
 {
-	const std::filesystem::path folder = "output" / outputName / "common/intelligence_agencies/";
-	if (!std::filesystem::create_directories(folder))
+	const std::filesystem::path folder = "output" / outputName / "common/intelligence_agencies";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error("Could not create " + folder.string());
 	}

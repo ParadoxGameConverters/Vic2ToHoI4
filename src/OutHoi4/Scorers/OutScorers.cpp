@@ -10,7 +10,7 @@ void HoI4::outputScorers(const Scorers& scorers, const Configuration& configurat
 {
 	const std::filesystem::path folder =
 		 std::filesystem::path("output") / configuration.getOutputName() / "common/scorers/country";
-	if (!std::filesystem::create_directories(folder))
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error("Could not create " + folder.string());
 	}

@@ -6,8 +6,8 @@
 
 void HoI4::outputIdeologies(const Ideologies& ideologies, const std::filesystem::path& outputName)
 {
-	const std::filesystem::path folder = "output" / outputName / "common/ideologies/";
-	if (!std::filesystem::create_directories(folder))
+	const std::filesystem::path folder = "output" / outputName / "common/ideologies";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		Log(LogLevel::Error) << "Could not create " + folder.string();
 	}

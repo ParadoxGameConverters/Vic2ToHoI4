@@ -8,7 +8,7 @@
 void HoI4::outputStrategicRegions(const StrategicRegions& strategicRegions, const std::filesystem::path& outputName)
 {
 	const std::filesystem::path folder = "output" / outputName / "map/strategicregions";
-	if (!std::filesystem::create_directories(folder))
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error("Could not create " + folder.string());
 	}

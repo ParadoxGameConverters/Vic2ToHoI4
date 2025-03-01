@@ -7,7 +7,7 @@
 void HoI4::outputGameRules(const GameRules& rules, const std::filesystem::path& outputName)
 {
 	const std::filesystem::path folder = "output" / outputName / "common/game_rules";
-	if (!std::filesystem::create_directories(folder))
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error{"Could not create " + folder.string()};
 	}

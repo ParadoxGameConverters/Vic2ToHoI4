@@ -122,15 +122,19 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 {
 	Log(LogLevel::Info) << "\tCreating flags";
 
-	if (!std::filesystem::create_directories("output" / outputName / "gfx/flags"))
+	const std::filesystem::path flags_path = "output" / outputName / "gfx/flags";
+	if (!commonItems::DoesFolderExist(flags_path) && !std::filesystem::create_directories(flags_path))
 	{
 		throw std::runtime_error("Could not create output/" + outputName.string() + "/gfx/flags");
 	}
-	if (!std::filesystem::create_directories("output" / outputName / "gfx/flags/medium"))
+	const std::filesystem::path medium_flags_path = "output" / outputName / "gfx/flags/medium";
+	if (!commonItems::DoesFolderExist(medium_flags_path) && !std::filesystem::create_directories(medium_flags_path))
 	{
 		throw std::runtime_error("Could not create output/" + outputName.string() + "/gfx/flags/medium");
+
 	}
-	if (!std::filesystem::create_directories("output" / outputName / "gfx/flags/small"))
+	const std::filesystem::path small_flags_path = "output" / outputName / "gfx/flags/small";
+	if (!commonItems::DoesFolderExist(small_flags_path) && !std::filesystem::create_directories(small_flags_path))
 	{
 		throw std::runtime_error("Could not create output/" + outputName.string() + "/gfx/flags/small");
 	}

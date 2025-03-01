@@ -203,7 +203,7 @@ void HoI4::OutputWorld(const World& world,
 	Log(LogLevel::Info) << "\tOutputting world";
 
 	const std::filesystem::path history_folder = "output" / outputName / "history";
-	if (!std::filesystem::create_directories(history_folder))
+	if (!commonItems::DoesFolderExist(history_folder) && !std::filesystem::create_directories(history_folder))
 	{
 		throw std::runtime_error("Could not create " + history_folder.string());
 	}
@@ -262,7 +262,7 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 {
 	Log(LogLevel::Info) << "\t\tCreating country tags";
 	const std::filesystem::path folder = "output" / outputName / "common/country_tags";
-	if (!std::filesystem::create_directories(folder))
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error("Could not create " + folder.string());
 	}
@@ -301,7 +301,7 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>
 	Log(LogLevel::Info) << "\t\tWriting country colors";
 
 	const std::filesystem::path folder = "output" / outputName / "common/countries";
-	if (!std::filesystem::create_directories(folder))
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error("Could not create " + folder.string());
 	}
@@ -373,7 +373,7 @@ void HoI4::outputMap(const States& states,
 	Log(LogLevel::Info) << "\t\tWriting map info";
 
 	const std::filesystem::path folder = "output" / outputName / "map";
-	if (!std::filesystem::create_directories(folder))
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error("Could not create " + folder.string());
 	}
@@ -387,7 +387,7 @@ void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const s
 	Log(LogLevel::Info) << "\t\tWriting generic focus tree";
 
 	const std::filesystem::path folder = "output" / outputName / "common/national_focus";
-	if (!std::filesystem::create_directories(folder))
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error("Could not create " + folder.string());
 	}
@@ -405,17 +405,17 @@ void HoI4::outputCountries(const std::map<std::string, std::shared_ptr<Country>>
 	Log(LogLevel::Info) << "\t\tWriting countries";
 
 	std::filesystem::path countries_folder = "output" / outputName / "history/countries";
-	if (!std::filesystem::create_directories(countries_folder))
+	if (!commonItems::DoesFolderExist(countries_folder) && !std::filesystem::create_directories(countries_folder))
 	{
 		throw std::runtime_error("Could not create " + countries_folder.string());
 	}
 	std::filesystem::path states_folder = "output" / outputName / "history/states";
-	if (!std::filesystem::create_directories(states_folder))
+	if (!commonItems::DoesFolderExist(states_folder) && !std::filesystem::create_directories(states_folder))
 	{
 		throw std::runtime_error("Could not create " + states_folder.string());
 	}
 	std::filesystem::path units_folder = "output" / outputName / "history/units";
-	if (!std::filesystem::create_directories(units_folder))
+	if (!commonItems::DoesFolderExist(units_folder) && !std::filesystem::create_directories(units_folder))
 	{
 		throw std::runtime_error("Could not create " + units_folder.string());
 	}
@@ -462,7 +462,7 @@ void HoI4::outputRelations(const std::filesystem::path& outputName, const std::s
 	Log(LogLevel::Info) << "\t\tWriting opinion modifiers";
 
 	std::filesystem::path folder = "output" / outputName / "common/opinion_modifiers";
-	if (!std::filesystem::create_directories(folder))
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error("Could not create " + folder.string());
 	}

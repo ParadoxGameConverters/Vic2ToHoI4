@@ -11,7 +11,7 @@ void HoI4::outputStates(const States& theStates, const std::filesystem::path& ou
 	Log(LogLevel::Info) << "\t\tWriting states";
 
 	std::filesystem::path history_folder = "output" / outputName / "history/states";
-	if (!std::filesystem::create_directories(history_folder))
+	if (!commonItems::DoesFolderExist(history_folder) && !std::filesystem::create_directories(history_folder))
 	{
 		throw std::runtime_error("Could not create " + outputName.string());
 	}

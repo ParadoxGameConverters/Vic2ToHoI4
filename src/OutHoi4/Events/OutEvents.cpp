@@ -22,7 +22,7 @@ void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent,
 void HoI4::outputEvents(const Events& theEvents, const std::filesystem::path& outputName)
 {
 	const auto eventPath = "output" / outputName / "events";
-	if (!std::filesystem::create_directories(eventPath))
+	if (!commonItems::DoesFolderExist(eventPath) && !std::filesystem::create_directories(eventPath))
 	{
 		throw std::runtime_error("Could not create " + eventPath.string());
 	}

@@ -9,7 +9,7 @@ void HoI4::outputOccupationLaws(const OccupationLaws& occupationLaws, const Conf
 {
 	const std::filesystem::path folder =
 		 std::filesystem::path("output") / configuration.getOutputName() / "common/occupation_laws";
-	if (!std::filesystem::create_directories(folder))
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
 		throw std::runtime_error("Could not create " + folder.string());
 	}
