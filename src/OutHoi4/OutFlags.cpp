@@ -131,7 +131,6 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 	if (!commonItems::DoesFolderExist(medium_flags_path) && !std::filesystem::create_directories(medium_flags_path))
 	{
 		throw std::runtime_error("Could not create output/" + outputName.string() + "/gfx/flags/medium");
-
 	}
 	const std::filesystem::path small_flags_path = "output" / outputName / "gfx/flags/small";
 	if (!commonItems::DoesFolderExist(small_flags_path) && !std::filesystem::create_directories(small_flags_path))
