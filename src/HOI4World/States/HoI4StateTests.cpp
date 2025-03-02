@@ -294,10 +294,10 @@ TEST(HoI4World_States_StateTests, categoryCanBeChanged)
 	const auto sourceState = *Vic2::State::Builder()
 											.setEmployedWorkers(500000)
 											.setProvinces({Vic2::Province::Builder()
-																	 .setNumber(0)
-																	 .setPops({Pop(PopOptions{.size = 60'000})})
-																	 .setRailLevel(0)
-																	 .build()})
+													  .setNumber(0)
+													  .setPops({Pop(PopOptions{.size = 60'000})})
+													  .setRailLevel(0)
+													  .build()})
 											.build();
 	HoI4::State theState(sourceState, 42, "TAG");
 
@@ -350,10 +350,10 @@ TEST(HoI4World_States_StateTests, InfrastructureForSixFactories)
 	const auto sourceState = *Vic2::State::Builder()
 											.setEmployedWorkers(60'000)
 											.setProvinces({Vic2::Province::Builder()
-																	 .setNumber(0)
-																	 .setPops({Pop(PopOptions{.size = 100'000})})
+													  .setNumber(0)
+													  .setPops({Pop(PopOptions{.size = 100'000})})
 
-																	 .build()})
+													  .build()})
 											.build();
 
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -734,9 +734,9 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 
 	theState.tryToCreateVP(sourceState,
 		 *Mappers::ProvinceMapper::Builder()
-				.addVic2ToHoI4ProvinceMap(12, {12, 13})
-				.addVic2ToHoI4ProvinceMap(24, {24, 25})
-				.Build(),
+			  .addVic2ToHoI4ProvinceMap(12, {12, 13})
+			  .addVic2ToHoI4ProvinceMap(24, {24, 25})
+			  .Build(),
 		 theConfiguration);
 
 	std::stringstream expectedOutput;

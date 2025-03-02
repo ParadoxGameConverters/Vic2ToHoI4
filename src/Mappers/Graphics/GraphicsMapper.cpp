@@ -389,13 +389,13 @@ void Mappers::GraphicsMapper::debugPortraits(const Configuration& theConfigurati
 	}
 
 	Log(LogLevel::Debug) << "Debugging portraits";
-	std::set<std::string> portraitFiles;
-	portraitFiles.merge(loadPortraitFiles(theConfiguration.getHoI4Path() + "/", "gfx/leaders/"));
+	std::set<std::filesystem::path> portraitFiles;
+	portraitFiles.merge(loadPortraitFiles(theConfiguration.getHoI4Path(), "gfx/leaders/"));
 	portraitFiles.merge(loadPortraitFiles("blankmod/", "gfx/leaders/"));
-	portraitFiles.merge(loadPortraitFiles(theConfiguration.getHoI4Path() + "/", "gfx/interface/ideas/"));
+	portraitFiles.merge(loadPortraitFiles(theConfiguration.getHoI4Path(), "gfx/interface/ideas/"));
 	portraitFiles.merge(loadPortraitFiles("blankmod/", "gfx/interface/ideas/"));
 
-	std::set<std::string> mapperPortraits;
+	std::set<std::filesystem::path> mapperPortraits;
 	mapperPortraits.merge(loadPortraitMappings(armyPortraitMappings));
 	mapperPortraits.merge(loadPortraitMappings(navyPortraitMappings));
 	mapperPortraits.merge(loadPortraitMappings(maleMonarchMappings));
@@ -406,7 +406,7 @@ void Mappers::GraphicsMapper::debugPortraits(const Configuration& theConfigurati
 
 	for (const auto& portrait: mapperPortraits)
 	{
-		if (!portrait.ends_with(".dds") && !portrait.ends_with(".tga"))
+		if (portrait.extension() != ".dds" && portrait.extension() != ".tga")
 		{
 			continue;
 		}
@@ -420,22 +420,23 @@ void Mappers::GraphicsMapper::debugPortraits(const Configuration& theConfigurati
 }
 
 
-std::set<std::string> Mappers::GraphicsMapper::loadPortraitFiles(const std::string& root, const std::string& gfxFolder)
+std::set<std::filesystem::path> Mappers::GraphicsMapper::loadPortraitFiles(const std::filesystem::path& root,
+	 const std::filesystem::path& gfxFolder)
 {
-	std::set<std::string> portraitFiles;
-	for (auto path: commonItems::GetAllFilesInFolderRecursive(root + gfxFolder))
+	std::set<std::filesystem::path> portraitFiles;
+	for (std::filesystem::path path: commonItems::GetAllFilesInFolderRecursive(root / gfxFolder))
 	{
-		path = gfxFolder + path;
-		path = std::regex_replace(path, std::regex(R"(\\)"), "/");
-		portraitFiles.insert(toLower(path));
+		path = gfxFolder / path;
+		portraitFiles.insert(path);
 	}
 	return portraitFiles;
 }
 
 
-std::set<std::string> Mappers::GraphicsMapper::loadPortraitMappings(const culturesAndGroupsToPortraitsMap& mappings)
+std::set<std::filesystem::path> Mappers::GraphicsMapper::loadPortraitMappings(
+	 const culturesAndGroupsToPortraitsMap& mappings)
 {
-	std::set<std::string> mapperPortraits;
+	std::set<std::filesystem::path> mapperPortraits;
 	for (const auto& culture: mappings | std::views::values)
 	{
 		for (const auto& portrait: culture)
@@ -447,9 +448,9 @@ std::set<std::string> Mappers::GraphicsMapper::loadPortraitMappings(const cultur
 }
 
 
-std::set<std::string> Mappers::GraphicsMapper::loadPortraitMappings(const ideologyToPortraitsMap& mappings)
+std::set<std::filesystem::path> Mappers::GraphicsMapper::loadPortraitMappings(const ideologyToPortraitsMap& mappings)
 {
-	std::set<std::string> mapperPortraits;
+	std::set<std::filesystem::path> mapperPortraits;
 	for (const auto& cultureGroup: mappings | std::views::values)
 	{
 		for (const auto& culture: cultureGroup | std::views::values)
@@ -474,12 +475,13 @@ std::string Mappers::GraphicsMapper::toLower(const std::string& oldString)
 }
 
 
-void Mappers::GraphicsMapper::tryFindingPortrait(const std::string& path, std::set<std::string> portraitFiles)
+void Mappers::GraphicsMapper::tryFindingPortrait(const std::filesystem::path& path,
+	 const std::set<std::filesystem::path>& portraitFiles)
 {
-	const auto& portraitName = trimExtension(trimPath(path));
+	const auto& portraitName = path.filename().stem();
 	for (const auto& portraitFile: portraitFiles)
 	{
-		const auto& filename = trimExtension(trimPath(portraitFile));
+		const auto& filename = portraitFile.filename().stem();
 		if (filename == portraitName)
 		{
 			Log(LogLevel::Debug) << " -> Potential match in " << portraitFile;

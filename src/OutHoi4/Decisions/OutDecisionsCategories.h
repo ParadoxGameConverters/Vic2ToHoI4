@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-void outputDecisionCategories(const std::string& filename, const DecisionsCategories& categories);
+void outputDecisionCategories(const std::filesystem::path& filename, const DecisionsCategories& categories);
 
 }
 

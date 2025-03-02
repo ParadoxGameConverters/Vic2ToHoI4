@@ -30,7 +30,7 @@ std::unique_ptr<HoI4::Regions> HoI4::Regions::Factory::getRegions()
 {
 	theRegions = std::make_unique<Regions>();
 
-	parseFile("./Configurables/Map/regions.txt");
+	parseFile(std::filesystem::path("./Configurables/Map/regions.txt"));
 
 	return std::move(theRegions);
 }

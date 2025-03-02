@@ -21,8 +21,7 @@ class GameRuleOption
 		 std::string _text,
 		 std::string _description,
 		 const std::optional<bool>& _allowAchievements):
-		 isDefault(_isDefault),
-		 name(std::move(_name)), text(std::move(_text)), description(std::move(_description)),
+		 isDefault(_isDefault), name(std::move(_name)), text(std::move(_text)), description(std::move(_description)),
 		 allowAchievements(_allowAchievements)
 	{
 	}

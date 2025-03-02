@@ -22,9 +22,9 @@ HoI4::Ideologies::Ideologies(const Configuration& theConfiguration)
 
 	if (theConfiguration.getIdeologiesOptions() != ideologyOptions::keep_default)
 	{
-		parseFile("Configurables/converterIdeologies.txt");
+		parseFile(std::filesystem::path("Configurables/converterIdeologies.txt"));
 	}
-	parseFile(theConfiguration.getHoI4Path() + "/common/ideologies/00_ideologies.txt");
+	parseFile(theConfiguration.getHoI4Path() / "common/ideologies/00_ideologies.txt");
 	clearRegisteredKeywords();
 }
 

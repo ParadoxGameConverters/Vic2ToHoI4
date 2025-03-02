@@ -34,8 +34,7 @@ HoI4::Country::Country(std::string tag,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
 	 const States& worldStates,
 	 Character::Factory& characterFactory):
-	 tag(std::move(tag)),
-	 name_(sourceCountry.getName("english")), adjective_(sourceCountry.getAdjective("english")),
+	 tag(std::move(tag)), name_(sourceCountry.getName("english")), adjective_(sourceCountry.getAdjective("english")),
 	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
 	 oldCapital(sourceCountry.getCapital()), primaryCulture(sourceCountry.getPrimaryCulture().value_or("no_culture")),
 	 civilized(sourceCountry.isCivilized()),
@@ -140,14 +139,13 @@ HoI4::Country::Country(const std::shared_ptr<Country> owner,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names):
-	 primaryCulture(owner->primaryCulture),
-	 primaryCultureGroup(owner->primaryCultureGroup), civilized(owner->civilized), rulingParty(owner->rulingParty),
-	 parties(owner->parties), upperHouseComposition(owner->upperHouseComposition), lastElection(owner->lastElection),
-	 color(owner->color), graphicalCulture(owner->graphicalCulture), graphicalCulture2d(owner->graphicalCulture2d),
-	 warSupport(owner->warSupport), oldTechnologiesAndInventions(owner->oldTechnologiesAndInventions),
-	 atWar(owner->atWar), shipNames(owner->shipNames), generatedDominion(true), region(region_), puppetMaster(owner),
-	 puppetMasterOldTag(owner->getOldTag()), governmentIdeology(owner->getGovernmentIdeology()),
-	 leaderIdeology(owner->getLeaderIdeology()), oldCapital(-1)
+	 primaryCulture(owner->primaryCulture), primaryCultureGroup(owner->primaryCultureGroup), civilized(owner->civilized),
+	 rulingParty(owner->rulingParty), parties(owner->parties), upperHouseComposition(owner->upperHouseComposition),
+	 lastElection(owner->lastElection), color(owner->color), graphicalCulture(owner->graphicalCulture),
+	 graphicalCulture2d(owner->graphicalCulture2d), warSupport(owner->warSupport),
+	 oldTechnologiesAndInventions(owner->oldTechnologiesAndInventions), atWar(owner->atWar), shipNames(owner->shipNames),
+	 generatedDominion(true), region(region_), puppetMaster(owner), puppetMasterOldTag(owner->getOldTag()),
+	 governmentIdeology(owner->getGovernmentIdeology()), leaderIdeology(owner->getLeaderIdeology()), oldCapital(-1)
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
@@ -210,8 +208,8 @@ HoI4::Country::Country(const std::string& region_,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names):
-	 primaryCulture("unrecognized"),
-	 primaryCultureGroup("unrecognized"), unrecognizedNation(true), region(region_), oldCapital(-1)
+	 primaryCulture("unrecognized"), primaryCultureGroup("unrecognized"), unrecognizedNation(true), region(region_),
+	 oldCapital(-1)
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{

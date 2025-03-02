@@ -13,7 +13,7 @@ HoI4::ScriptedEffectFile::ScriptedEffectFile()
 
 
 
-std::vector<HoI4::ScriptedEffect> HoI4::ScriptedEffectFile::getScriptedEffects(const std::string& filename)
+std::vector<HoI4::ScriptedEffect> HoI4::ScriptedEffectFile::getScriptedEffects(const std::filesystem::path& filename)
 {
 	scriptedEffects.clear();
 	parseFile(filename);

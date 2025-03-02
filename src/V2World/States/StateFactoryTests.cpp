@@ -206,9 +206,9 @@ TEST(Vic2World_States_StateFactoryTests, GetStateSetsCapitalProvince)
 	const auto state = Vic2::State::Factory().getState(input,
 		 "TAG",
 		 *Vic2::StateDefinitions::Builder()
-				.setProvinceToIDMap({{42, "TEST_STATE"}})
-				.setStateToCapitalMap({{"TEST_STATE", 42}})
-				.build());
+			  .setProvinceToIDMap({{42, "TEST_STATE"}})
+			  .setStateToCapitalMap({{"TEST_STATE", 42}})
+			  .build());
 
 	ASSERT_EQ(42, state->getCapitalProvince());
 }
@@ -218,9 +218,9 @@ TEST(Vic2World_States_StateFactoryTests, GetUnownedStateSetsCapitalProvince)
 {
 	const auto state = Vic2::State::Factory().getUnownedState({{42, nullptr}},
 		 *Vic2::StateDefinitions::Builder()
-				.setProvinceToIDMap({{42, "TEST_STATE"}})
-				.setStateToCapitalMap({{"TEST_STATE", 42}})
-				.build());
+			  .setProvinceToIDMap({{42, "TEST_STATE"}})
+			  .setStateToCapitalMap({{"TEST_STATE", 42}})
+			  .build());
 
 	ASSERT_EQ(42, state->getCapitalProvince());
 }

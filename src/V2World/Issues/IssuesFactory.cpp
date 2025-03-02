@@ -20,7 +20,7 @@ std::unique_ptr<Vic2::Issues> Vic2::Issues::Factory::GetIssues(const commonItems
 {
 	issues_ = std::make_unique<Issues>();
 
-	if (const auto& file = mod_filesystem.GetActualFileLocation("/common/issues.txt"); file)
+	if (const auto& file = mod_filesystem.GetActualFileLocation("common/issues.txt"); file)
 	{
 		parser_.parseFile(*file);
 	}

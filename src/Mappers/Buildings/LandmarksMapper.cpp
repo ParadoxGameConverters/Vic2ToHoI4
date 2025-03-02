@@ -10,7 +10,7 @@ Mappers::LandmarksMapper::LandmarksMapper()
 	registerRegex(commonItems::catchallRegex, [this](const std::string& name, std::istream& theStream) {
 		mappings[name] = Mappers::LandmarksMappingFactory().importMapping(theStream);
 	});
-	parseFile("./Configurables/LandmarksMappings.txt");
+	parseFile(std::filesystem::path("./Configurables/LandmarksMappings.txt"));
 	clearRegisteredKeywords();
 }
 

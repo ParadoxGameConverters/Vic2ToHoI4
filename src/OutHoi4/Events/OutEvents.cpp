@@ -4,26 +4,27 @@
 #include <ranges>
 
 
-void outputActualEvents(const std::string& eventsFileName,
+void outputActualEvents(const std::filesystem::path& eventsFileName,
 	 const std::string& eventNamespace,
 	 const std::vector<HoI4::Event>& events,
-	 const std::string& outputName);
+	 const std::filesystem::path& outputName);
 void outputWarJustificationEvents(const std::vector<HoI4::Event>& warJustificationEvents,
-	 const std::string& outputName);
+	 const std::filesystem::path& outputName);
 void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEvents,
 	 const std::map<std::string, HoI4::Event>& strikesEvents,
 	 const std::map<std::string, HoI4::Event>& mutinyEvents,
-	 const std::string& outputName);
-void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent, const std::string& outputName);
+	 const std::filesystem::path& outputName);
+void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent,
+	 const std::filesystem::path& outputName);
 
 
 
-void HoI4::outputEvents(const Events& theEvents, const std::string& outputName)
+void HoI4::outputEvents(const Events& theEvents, const std::filesystem::path& outputName)
 {
-	const auto eventPath = "output/" + outputName + "/events";
-	if (!commonItems::TryCreateFolder(eventPath))
+	const auto eventPath = "output" / outputName / "events";
+	if (!commonItems::DoesFolderExist(eventPath) && !std::filesystem::create_directories(eventPath))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/events\"");
+		throw std::runtime_error("Could not create " + eventPath.string());
 	}
 
 	outputActualEvents("NF_events.txt", "NFEvents", theEvents.getNationalFocusEvents(), outputName);
@@ -46,15 +47,16 @@ void HoI4::outputEvents(const Events& theEvents, const std::string& outputName)
 }
 
 
-void outputActualEvents(const std::string& eventsFileName,
+void outputActualEvents(const std::filesystem::path& eventsFileName,
 	 const std::string& eventNamespace,
 	 const std::vector<HoI4::Event>& events,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
-	std::ofstream outEvents("output/" + outputName + "/events/" + eventsFileName);
+	const std::filesystem::path filename = "output" / outputName / "events" / eventsFileName;
+	std::ofstream outEvents(filename);
 	if (!outEvents.is_open())
 	{
-		throw std::runtime_error("Could not create " + eventsFileName);
+		throw std::runtime_error("Could not create " + filename.string());
 	}
 
 	outEvents << "\xEF\xBB\xBF";
@@ -69,12 +71,14 @@ void outputActualEvents(const std::string& eventsFileName,
 }
 
 
-void outputWarJustificationEvents(const std::vector<HoI4::Event>& warJustificationEvents, const std::string& outputName)
+void outputWarJustificationEvents(const std::vector<HoI4::Event>& warJustificationEvents,
+	 const std::filesystem::path& outputName)
 {
-	std::ofstream outWarJustificationEvents("output/" + outputName + "/events/WarJustification.txt", std::ios_base::app);
+	const std::filesystem::path filename = "output" / outputName / "events/WarJustification.txt";
+	std::ofstream outWarJustificationEvents(filename, std::ios_base::app);
 	if (!outWarJustificationEvents.is_open())
 	{
-		throw std::runtime_error("Could not open WarJustification.txt");
+		throw std::runtime_error("Could not open " + filename.string());
 	}
 
 	for (const auto& theEvent: warJustificationEvents)
@@ -90,12 +94,13 @@ void outputWarJustificationEvents(const std::vector<HoI4::Event>& warJustificati
 void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEvents,
 	 const std::map<std::string, HoI4::Event>& strikesEvents,
 	 const std::map<std::string, HoI4::Event>& mutinyEvents,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
-	std::ofstream outStabilityEvents("output/" + outputName + "/events/stability_events.txt");
+	const std::filesystem::path filename = "output" / outputName / "events/stability_events.txt";
+	std::ofstream outStabilityEvents(filename);
 	if (!outStabilityEvents.is_open())
 	{
-		throw std::runtime_error("Could not open StabilityEvents.txt");
+		throw std::runtime_error("Could not open " + filename.string());
 	}
 
 	outStabilityEvents << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
@@ -130,12 +135,13 @@ void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEv
 }
 
 
-void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent, const std::string& outputName)
+void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent, const std::filesystem::path& outputName)
 {
-	std::ofstream outEvents("output/" + outputName + "/events/MTG_generic.txt", std::ofstream::app);
+	const std::filesystem::path filename = "output" / outputName / "events/MTG_generic.txt";
+	std::ofstream outEvents(filename, std::ofstream::app);
 	if (!outEvents.is_open())
 	{
-		throw std::runtime_error("Could not add to MTG_generic.txt");
+		throw std::runtime_error("Could not add to " + filename.string());
 	}
 
 	outEvents << governmentInExileEvent;

@@ -38,7 +38,7 @@ std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Factory::getStat
 
 	state_definitions_ = std::make_unique<StateDefinitions>();
 
-	if (const auto& file = mod_filesystem.GetActualFileLocation("/map/region.txt"); file)
+	if (const auto& file = mod_filesystem.GetActualFileLocation("map/region.txt"); file)
 	{
 		parser_.parseFile(*file);
 	}

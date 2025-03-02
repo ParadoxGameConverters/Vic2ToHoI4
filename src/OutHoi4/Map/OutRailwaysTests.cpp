@@ -17,9 +17,7 @@ TEST(OutHoI4_Map_OutRailways, ExceptionThrownOnBadPath)
 
 TEST(OutHoI4_Map_OutRailways, RailwaysAreOutput)
 {
-	commonItems::TryCreateFolder("OutHoI4Tests");
-	commonItems::TryCreateFolder("OutHoI4Tests/Map");
-	commonItems::TryCreateFolder("OutHoI4Tests/Map/map");
+	std::filesystem::create_directories("OutHoI4Tests/Map/map");
 
 	const Railway railwayOne(1, {1, 2, 3});
 	const Railway railwayTwo(2, {10, 11, 12, 13});

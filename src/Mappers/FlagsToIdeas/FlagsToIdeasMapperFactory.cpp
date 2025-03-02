@@ -16,6 +16,6 @@ Mappers::FlagsToIdeasMapper::Factory::Factory()
 std::unique_ptr<Mappers::FlagsToIdeasMapper> Mappers::FlagsToIdeasMapper::Factory::importFlagsToIdeaMapper()
 {
 	flagsToIdeaMapper = std::make_unique<FlagsToIdeasMapper>();
-	parseFile("Configurables/FlagsToIdeasMappings.txt");
+	parseFile(std::filesystem::path("Configurables/FlagsToIdeasMappings.txt"));
 	return std::move(flagsToIdeaMapper);
 }

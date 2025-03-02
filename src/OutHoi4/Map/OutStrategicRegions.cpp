@@ -5,14 +5,16 @@
 
 
 
-void HoI4::outputStrategicRegions(const StrategicRegions& strategicRegions, const std::string& outputName)
+void HoI4::outputStrategicRegions(const StrategicRegions& strategicRegions, const std::filesystem::path& outputName)
 {
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/map/strategicregions"))
+	const std::filesystem::path folder = "output" / outputName / "map/strategicregions";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/map/strategicregions");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
+
 	for (const auto& strategicRegion: strategicRegions.GetStrategicRegions() | std::views::values)
 	{
-		outputStrategicRegion(strategicRegion, "output/" + outputName + "/map/strategicregions/");
+		outputStrategicRegion(strategicRegion, "output" / outputName / "map/strategicregions/");
 	}
 }

@@ -22,8 +22,8 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 Character::Factory& characterFactory,
 	 Ideas& ideas):
-	 mapUtils(mapUtils),
-	 provinceToStateIdMapping(provinceToStateIdMapping), theMapData(theMapData), provinceDefinitions(provinceDefinitions)
+	 mapUtils(mapUtils), provinceToStateIdMapping(provinceToStateIdMapping), theMapData(theMapData),
+	 provinceDefinitions(provinceDefinitions)
 {
 	Log(LogLevel::Info) << "\tAdding adjusted focus branches";
 	addUKColonialFocusBranch(countries, majorIdeologies, onActions, ideas);
@@ -126,7 +126,9 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 HoI4FocusTree HoI4::AdjustedBranches::createBranch(const std::string& name,
 	 const std::set<std::string>& majorIdeologies)
 {
-	auto branch = HoI4FocusTree::Factory().importFocusTree("Configurables/AdjustedFocusBranches/" + name + ".txt");
+	std::filesystem::path path = std::filesystem::path("Configurables/AdjustedFocusBranches") / name;
+	path += ".txt";
+	auto branch = HoI4FocusTree::Factory().importFocusTree(path);
 	updateAdjustedFocuses(branch, majorIdeologies);
 
 	return branch;
@@ -198,8 +200,9 @@ void HoI4::AdjustedBranches::addIdeas(const std::string& branch,
 	 Ideas& ideas,
 	 const std::set<std::string>& majorIdeologies)
 {
-	const auto& fileName = "Configurables/AdjustedFocusBranches/" + branch + "_ideas.txt";
-	auto importedIdeas = HoI4::Ideas::Factory().importIdeas(fileName);
+	auto fileName = std::filesystem::path("Configurables/AdjustedFocusBranches") / branch;
+	fileName += "_ideas.txt";
+	const auto importedIdeas = HoI4::Ideas::Factory().importIdeas(fileName);
 
 	for (auto ideaGroup: importedIdeas.getGeneralIdeas())
 	{
@@ -279,7 +282,8 @@ void HoI4::AdjustedBranches::importCharacters(std::shared_ptr<Country> country,
 	 const std::string& branch,
 	 Character::Factory& characterFactory)
 {
-	const auto& filename = "Configurables/AdjustedFocusBranches/" + branch + "_characters.txt";
+	auto filename = std::filesystem::path("Configurables/AdjustedFocusBranches") / branch;
+	filename += "_characters.txt";
 
 	CharactersFactory charactersFactory(characterFactory);
 	const auto importedCharacters = charactersFactory.importCharacters(filename);
@@ -342,7 +346,7 @@ bool HoI4::AdjustedBranches::countriesShareBorder(const std::shared_ptr<Country>
 	 const std::shared_ptr<Country>& countryTwo)
 {
 	if (!mapUtils.findBorderStates(*countryOne, *countryTwo, provinceToStateIdMapping, theMapData, provinceDefinitions)
-				.empty())
+			  .empty())
 	{
 		return true;
 	}

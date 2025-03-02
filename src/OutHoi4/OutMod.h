@@ -7,9 +7,9 @@
 
 
 
-void clearOutputFolder(const std::string& outputName);
+void clearOutputFolder(const std::filesystem::path& outputName);
 void output(const HoI4::World& destWorld,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 bool debugEnabled,
 	 const Mods& vic2Mods,
 	 const Configuration& theConfiguration);

@@ -31,7 +31,7 @@ class GameRules
 class GameRules::Parser: commonItems::parser
 {
   public:
-	GameRules parseRulesFile(const std::string& filename);
+	GameRules parseRulesFile(const std::filesystem::path& filename);
 };
 
 } // namespace HoI4

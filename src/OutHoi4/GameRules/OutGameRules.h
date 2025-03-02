@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputGameRules(const GameRules& rules, const std::string& outputName);
+void outputGameRules(const GameRules& rules, const std::filesystem::path& outputName);
 
 }
 

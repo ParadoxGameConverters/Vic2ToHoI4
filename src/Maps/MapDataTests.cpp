@@ -6,7 +6,7 @@
 
 TEST(Maps_MapData, ExceptionThrownForMissingProvincesBmp)
 {
-	const commonItems::ModFilesystem mod_filesystem("", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	const Maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
 	EXPECT_THROW(const Maps::MapData map_data(province_definitions, mod_filesystem), std::runtime_error);
 }
@@ -14,7 +14,7 @@ TEST(Maps_MapData, ExceptionThrownForMissingProvincesBmp)
 
 TEST(Maps_MapData, ExceptionThrownForMissingAdjacenciesCsv)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests/nocsv", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests/nocsv"), {});
 	const Maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
 	EXPECT_THROW(const Maps::MapData map_data(province_definitions, mod_filesystem), std::runtime_error);
 }
@@ -22,7 +22,7 @@ TEST(Maps_MapData, ExceptionThrownForMissingAdjacenciesCsv)
 
 TEST(Maps_MapData, NoNeighborsForNonexistentProvince)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
 	const Maps::MapData map_data(province_definitions, mod_filesystem);
 
@@ -32,7 +32,7 @@ TEST(Maps_MapData, NoNeighborsForNonexistentProvince)
 
 TEST(Maps_MapData, NeighborDefinedFromBelow)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -48,7 +48,7 @@ TEST(Maps_MapData, NeighborDefinedFromBelow)
 
 TEST(Maps_MapData, NeighborDefinedFromRight)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -64,7 +64,7 @@ TEST(Maps_MapData, NeighborDefinedFromRight)
 
 TEST(Maps_MapData, NeighborDefinedFromLeft)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -80,7 +80,7 @@ TEST(Maps_MapData, NeighborDefinedFromLeft)
 
 TEST(Maps_MapData, NeighborDefinedFromAbove)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -96,7 +96,7 @@ TEST(Maps_MapData, NeighborDefinedFromAbove)
 
 TEST(Maps_MapData, NeighborDefinedFromNonImpassableAdjacency)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
 	const Maps::MapData map_data(province_definitions, mod_filesystem);
 
@@ -107,7 +107,7 @@ TEST(Maps_MapData, NeighborDefinedFromNonImpassableAdjacency)
 
 TEST(Maps_MapData, NeighborRemovedFromImpassableAdjacency)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -123,7 +123,7 @@ TEST(Maps_MapData, NeighborRemovedFromImpassableAdjacency)
 
 TEST(Maps_MapData, NoSpecifiedBorderForNonexistentProvince)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
 	const Maps::MapData map_data(province_definitions, mod_filesystem);
 
@@ -133,7 +133,7 @@ TEST(Maps_MapData, NoSpecifiedBorderForNonexistentProvince)
 
 TEST(Maps_MapData, NoBorderForNonBorderingProvinces)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -154,7 +154,7 @@ TEST(Maps_MapData, NoBorderForNonBorderingProvinces)
 
 TEST(Maps_MapData, SpecifiedBorderForBorderingProvinces)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -179,7 +179,7 @@ TEST(Maps_MapData, SpecifiedBorderForBorderingProvinces)
 
 TEST(Maps_MapData, SpecifiedBorderForImpassableBorderProvinces)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -204,7 +204,7 @@ TEST(Maps_MapData, SpecifiedBorderForImpassableBorderProvinces)
 
 TEST(Maps_MapData, NoBorderForNonexistentProvince)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
 	const Maps::MapData map_data(province_definitions, mod_filesystem);
 
@@ -214,7 +214,7 @@ TEST(Maps_MapData, NoBorderForNonexistentProvince)
 
 TEST(Maps_MapData, NoBorderForProvinceWithNoBorders)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -229,7 +229,7 @@ TEST(Maps_MapData, NoBorderForProvinceWithNoBorders)
 
 TEST(Maps_MapData, AnyBorderForBorderingProvinces)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -254,7 +254,7 @@ TEST(Maps_MapData, AnyBorderForBorderingProvinces)
 
 TEST(Maps_MapData, NoProvinceNumberForUndefinedPoint)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
 	const Maps::MapData map_data(province_definitions, mod_filesystem);
 
@@ -264,7 +264,7 @@ TEST(Maps_MapData, NoProvinceNumberForUndefinedPoint)
 
 TEST(Maps_MapData, ProvinceNumberForDefinedPoint)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},
@@ -281,7 +281,7 @@ TEST(Maps_MapData, ProvinceNumberForDefinedPoint)
 
 TEST(Maps_MapData, NoProvincePointsForUndefinedProvince)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({}, {}, {}, {});
 	const Maps::MapData map_data(province_definitions, mod_filesystem);
 
@@ -291,7 +291,7 @@ TEST(Maps_MapData, NoProvincePointsForUndefinedProvince)
 
 TEST(Maps_MapData, ProvincePointsForDefinedProvince)
 {
-	const commonItems::ModFilesystem mod_filesystem("maptests", {});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("maptests"), {});
 	const Maps::ProvinceDefinitions province_definitions({},
 		 {},
 		 {},

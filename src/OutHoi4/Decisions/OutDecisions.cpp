@@ -6,16 +6,17 @@
 
 void HoI4::outputDecisions(const decisions& theDecisions,
 	 const std::set<std::string>& majorIdeologies,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
-	outputDecisionCategories("output/" + outputName + "/common/decisions/categories/00_decision_categories.txt",
+	outputDecisionCategories("output" / outputName / "common/decisions/categories/00_decision_categories.txt",
 		 theDecisions.getIdeologicalCategories());
 
-	std::ofstream outStream("output/" + outputName + "/common/decisions/lar_agent_recruitment_decisions.txt");
+	const std::filesystem::path agents_filename =
+		 "output" / outputName / "common/decisions/lar_agent_recruitment_decisions.txt";
+	std::ofstream outStream(agents_filename);
 	if (!outStream.is_open())
 	{
-		throw std::runtime_error(
-			 "Could not open output/" + outputName + "/common/decisions/categories/00_decision_categories.txt");
+		throw std::runtime_error("Could not open " + agents_filename.string());
 	}
 	for (const auto& category: theDecisions.getAgentRecruitmentDecisions())
 	{
@@ -23,10 +24,12 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	}
 	outStream.close();
 
-	outStream.open("output/" + outputName + "/common/decisions/stability_war_support.txt");
+	const std::filesystem::path stability_war_support_filename =
+		 "output" / outputName / "common/decisions/stability_war_support.txt";
+	outStream.open(stability_war_support_filename);
 	if (!outStream.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/decisions/stability_war_support.txt");
+		throw std::runtime_error("Could not open " + stability_war_support_filename.string());
 	}
 	for (const auto& category: theDecisions.getStabilityDecisions())
 	{
@@ -34,10 +37,12 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	}
 	outStream.close();
 
-	outStream.open("output/" + outputName + "/common/decisions/political_decisions.txt");
+	const std::filesystem::path political_decisions_filename =
+		 "output" / outputName / "common/decisions/political_decisions.txt";
+	outStream.open(political_decisions_filename);
 	if (!outStream.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/decisions/political_decisions.txt");
+		throw std::runtime_error("Could not open " + political_decisions_filename.string());
 	}
 	for (const auto& category: theDecisions.getPoliticalDecisions())
 	{
@@ -45,11 +50,12 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	}
 	outStream.close();
 
-	outStream.open("output/" + outputName + "/common/decisions/_exiled_governments_decisions.txt");
+	const std::filesystem::path exiled_governments_decisions_filename =
+		 "output" / outputName / "common/decisions/_exiled_governments_decisions.txt";
+	outStream.open(exiled_governments_decisions_filename);
 	if (!outStream.is_open())
 	{
-		throw std::runtime_error(
-			 "Could not open output/" + outputName + "/common/decisions/_exiled_governments_decisions.txt");
+		throw std::runtime_error("Could not open " + exiled_governments_decisions_filename.string());
 	}
 	for (const auto& category: theDecisions.getExiledGovernmentsDecisions())
 	{
@@ -57,10 +63,12 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	}
 	outStream.close();
 
-	outStream.open("output/" + outputName + "/common/decisions/foreign_influence.txt");
+	const std::filesystem::path foreign_influence_filename =
+		 "output" / outputName / "common/decisions/foreign_influence.txt";
+	outStream.open(foreign_influence_filename);
 	if (!outStream.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/decisions/foreign_influence.txt");
+		throw std::runtime_error("Could not open " + foreign_influence_filename.string());
 	}
 	for (const auto& category: theDecisions.getForeignInfluenceDecisions())
 	{
@@ -68,10 +76,12 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	}
 	outStream.close();
 
-	outStream.open("output/" + outputName + "/common/decisions/MTG_naval_treaty.txt");
+	const std::filesystem::path MTG_naval_treaty_filename =
+		 "output" / outputName / "common/decisions/MTG_naval_treaty.txt";
+	outStream.open(MTG_naval_treaty_filename);
 	if (!outStream.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/decisions/MTG_naval_treaty.txt");
+		throw std::runtime_error("Could not open " + MTG_naval_treaty_filename.string());
 	}
 	for (const auto& category: theDecisions.getNavalTreatyDecisions())
 	{
@@ -79,10 +89,12 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	}
 	outStream.close();
 
-	outStream.open("output/" + outputName + "/common/decisions/resource_prospecting.txt");
+	const std::filesystem::path resource_prospecting_filename =
+		 "output" / outputName / "common/decisions/resource_prospecting.txt";
+	outStream.open(resource_prospecting_filename);
 	if (!outStream.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/decisions/resource_prospecting.txt");
+		throw std::runtime_error("Could not open " + resource_prospecting_filename.string());
 	}
 	for (const auto& category: theDecisions.getResourceProspectingDecisions())
 	{
@@ -90,10 +102,12 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	}
 	outStream.close();
 
-	outStream.open("output/" + outputName + "/common/decisions/_generic_decisions.txt");
+	const std::filesystem::path generic_decisions_filename =
+		 "output" / outputName / "common/decisions/_generic_decisions.txt";
+	outStream.open(generic_decisions_filename);
 	if (!outStream.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/decisions/_generic_decisions.txt");
+		throw std::runtime_error("Could not open " + generic_decisions_filename.string());
 	}
 	for (const auto& category: theDecisions.getGenericDecisions())
 	{

@@ -15,9 +15,9 @@ HoI4::ArticleRules::Factory::Factory()
 		for (const auto& matcher: definition.getMatchers())
 		{
 			articleRules.push_back(*ArticleRule::Builder()
-												 .setMatcher(std::regex(matcher))
-												 .setReplacement(definition.getReplacement())
-												 .build());
+					  .setMatcher(std::regex(matcher))
+					  .setReplacement(definition.getReplacement())
+					  .build());
 		}
 
 		if (rules->rules.contains(definition.getLanguage()))
@@ -34,7 +34,7 @@ HoI4::ArticleRules::Factory::Factory()
 }
 
 
-std::unique_ptr<HoI4::ArticleRules> HoI4::ArticleRules::Factory::getRules(const std::string& rulesFile)
+std::unique_ptr<HoI4::ArticleRules> HoI4::ArticleRules::Factory::getRules(const std::filesystem::path& rulesFile)
 {
 	rules = std::make_unique<ArticleRules>();
 	parseFile(rulesFile);

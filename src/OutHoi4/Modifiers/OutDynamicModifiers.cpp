@@ -11,17 +11,19 @@ namespace HoI4
 
 void outDynamicModifiers(const DynamicModifiers& dynamicModifiers, const Configuration& theConfiguration)
 {
-	if (!commonItems::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/common/dynamic_modifiers"))
+	const std::filesystem::path folder =
+		 std::filesystem::path("output") / theConfiguration.getOutputName() / "common/dynamic_modifiers";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error(
-			 "Could not create output/" + theConfiguration.getOutputName() + "/common/dynamic_modifiers/");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
 
-	std::ofstream out(
-		 "output/" + theConfiguration.getOutputName() + "/common/dynamic_modifiers/01_converter_modifiers.txt");
+	const std::filesystem::path file = std::filesystem::path("output") / theConfiguration.getOutputName() /
+												  "common/dynamic_modifiers/01_converter_modifiers.txt";
+	std::ofstream out(file);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not create 01_converter_modifiers.txt.");
+		throw std::runtime_error("Could not create " + file.string());
 	}
 
 	for (const auto& modifier: dynamicModifiers.getDynamicModifiers() | std::views::values)

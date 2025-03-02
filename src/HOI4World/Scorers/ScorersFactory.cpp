@@ -16,6 +16,6 @@ std::unique_ptr<HoI4::Scorers> HoI4::Scorers::Factory::getScorers()
 			 scorers->giveScorer(std::move(*scorer));
 		 });
 
-	parseFile("Configurables/Scorers/generic_platonic_scorers.txt");
+	parseFile(std::filesystem::path("Configurables/Scorers/generic_platonic_scorers.txt"));
 	return scorers;
 }

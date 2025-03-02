@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputSupplyZones(const SupplyZones& supplyZones, const std::string& outputName);
+void outputSupplyZones(const SupplyZones& supplyZones, const std::filesystem::path& outputName);
 
 }
 

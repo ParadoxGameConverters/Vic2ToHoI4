@@ -16,7 +16,7 @@ class OperativeNamesSet::Factory: commonItems::parser
 {
   public:
 	Factory();
-	std::unique_ptr<OperativeNamesSet> getOperativeNamesSetFromFile(const std::string& filename);
+	std::unique_ptr<OperativeNamesSet> getOperativeNamesSetFromFile(const std::filesystem::path& filename);
 
   private:
 	Details operativeNamesSetDetails;

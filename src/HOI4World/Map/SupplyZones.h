@@ -26,13 +26,13 @@ class SupplyZones: commonItems::parser
 
 	[[nodiscard]] const auto& getSupplyZones() const { return supplyZones; }
 
-	[[nodiscard]] std::optional<std::string> getSupplyZoneFileName(int supplyZoneNum) const;
+	[[nodiscard]] std::optional<std::filesystem::path> getSupplyZoneFileName(int supplyZoneNum) const;
 
   private:
 	void importStates(const std::map<int, DefaultState>& defaultStates);
 
 	std::map<int, std::set<int>> defaultStateToProvinceMap;
-	std::map<int, std::string> supplyZonesFileNames;
+	std::map<int, std::filesystem::path> supplyZonesFileNames;
 	std::map<int, SupplyZone> supplyZones;
 	std::map<int, int> provinceToSupplyZoneMap;
 };

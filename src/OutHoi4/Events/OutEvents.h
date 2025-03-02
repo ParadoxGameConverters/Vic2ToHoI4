@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputEvents(const Events& theEvents, const std::string& outputName);
+void outputEvents(const Events& theEvents, const std::filesystem::path& outputName);
 
 }
 

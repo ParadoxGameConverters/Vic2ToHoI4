@@ -102,9 +102,9 @@ TEST(Vic2World_Military_LeaderTests, TraitEffectValueFromBackgroundAndPersonalit
 
 	const auto leader =
 		 Vic2::Leader::Factory(std::move(*Vic2::Traits::Builder()
-														  .addTrait("test_background", {{"effect_1", 0.5F}, {"effect_2", -0.25F}})
-														  .addTrait("test_personality", {{"effect_1", 0.5F}, {"effect_2", -0.25F}})
-														  .Build()))
+												 .addTrait("test_background", {{"effect_1", 0.5F}, {"effect_2", -0.25F}})
+												 .addTrait("test_personality", {{"effect_1", 0.5F}, {"effect_2", -0.25F}})
+												 .Build()))
 			  .getLeader(input);
 
 	ASSERT_EQ(1.0, leader->getTraitEffectValue("effect_1"));

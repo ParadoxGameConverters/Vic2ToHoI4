@@ -20,9 +20,8 @@ class MtgShipTypeNames
 		 std::set<std::string> _shipTypes,
 		 std::string _fallbackName,
 		 std::vector<std::string> _names):
-		 type(std::move(_type)),
-		 theme(std::move(_theme)), shipTypes(std::move(_shipTypes)), fallbackName(std::move(_fallbackName)),
-		 names(std::move(_names))
+		 type(std::move(_type)), theme(std::move(_theme)), shipTypes(std::move(_shipTypes)),
+		 fallbackName(std::move(_fallbackName)), names(std::move(_names))
 	{
 	}
 
