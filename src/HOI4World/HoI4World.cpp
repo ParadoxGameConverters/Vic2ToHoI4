@@ -202,8 +202,8 @@ float rateModel(const modelStruct& model)
 HoI4::World::World(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
-	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)),
-	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
+	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), events(make_unique<HoI4::Events>()),
+	 onActions(make_unique<HoI4::OnActions>())
 {
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";

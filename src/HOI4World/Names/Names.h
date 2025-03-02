@@ -33,9 +33,8 @@ class Names
 		 std::map<std::string, std::vector<std::string>>&& industryCompanyNames,
 		 std::map<std::string, std::vector<std::string>>&& electronicCompanyNames,
 		 std::map<std::string, std::vector<std::string>>&& intelligenceAgencyNames):
-		 maleNames(maleNames),
-		 femaleNames(femaleNames), surnames(surnames), femaleSurnames(femaleSurnames), callsigns(callsigns),
-		 carCompanyNames(carCompanyNames), weaponCompanyNames(weaponCompanyNames),
+		 maleNames(maleNames), femaleNames(femaleNames), surnames(surnames), femaleSurnames(femaleSurnames),
+		 callsigns(callsigns), carCompanyNames(carCompanyNames), weaponCompanyNames(weaponCompanyNames),
 		 aircraftCompanyNames(aircraftCompanyNames), navalCompanyNames(navalCompanyNames),
 		 industryCompanyNames(industryCompanyNames), electronicCompanyNames(electronicCompanyNames),
 		 intelligenceAgencyNames(intelligenceAgencyNames)

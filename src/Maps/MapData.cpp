@@ -85,8 +85,7 @@ commonItems::Color GetRightColor(Maps::Point position, int width, const bitmap_i
 
 
 Maps::MapData::MapData(const ProvinceDefinitions& province_definitions,
-	 const commonItems::ModFilesystem& mod_filesystem):
-	 province_definitions_(province_definitions)
+	 const commonItems::ModFilesystem& mod_filesystem): province_definitions_(province_definitions)
 {
 	ImportProvinces(mod_filesystem);
 	ImportAdjacencies(mod_filesystem);

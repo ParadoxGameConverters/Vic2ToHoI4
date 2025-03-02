@@ -15,9 +15,9 @@ HoI4::ArticleRules::Factory::Factory()
 		for (const auto& matcher: definition.getMatchers())
 		{
 			articleRules.push_back(*ArticleRule::Builder()
-												 .setMatcher(std::regex(matcher))
-												 .setReplacement(definition.getReplacement())
-												 .build());
+					  .setMatcher(std::regex(matcher))
+					  .setReplacement(definition.getReplacement())
+					  .build());
 		}
 
 		if (rules->rules.contains(definition.getLanguage()))

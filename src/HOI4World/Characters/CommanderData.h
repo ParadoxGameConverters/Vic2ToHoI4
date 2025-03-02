@@ -28,9 +28,8 @@ class CommanderData
 		 int defense_skill,
 		 int planning_skill,
 		 int logistics_skill):
-		 level_(level),
-		 traits_(std::move(traits)), skill_(skill), attack_skill_(attack_skill), defense_skill_(defense_skill),
-		 planning_skill_(planning_skill), logistics_skill_(logistics_skill)
+		 level_(level), traits_(std::move(traits)), skill_(skill), attack_skill_(attack_skill),
+		 defense_skill_(defense_skill), planning_skill_(planning_skill), logistics_skill_(logistics_skill)
 	{
 	}
 

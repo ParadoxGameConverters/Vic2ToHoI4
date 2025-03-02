@@ -62,10 +62,10 @@ TEST(Vic2World_World_WorldTests, GetProvinceReturnsProvince)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -92,10 +92,10 @@ TEST(Vic2World_World_WorldTests, CountriesCanBeAdded)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_none)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_none)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -135,10 +135,10 @@ TEST(Vic2World_World_WorldTests, EmptyCountriesCanBeRemoved)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_none)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_none)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -350,10 +350,10 @@ TEST(Vic2World_World_WorldTests, WarsCanBeAdded)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_none)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_none)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -375,10 +375,10 @@ TEST(Vic2World_World_WorldTests, CoresAreAssignedToCountries)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_none)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_none)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -406,10 +406,10 @@ TEST(Vic2World_World_WorldTests, SimpleLandlessNationsAreRemoved)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -432,10 +432,10 @@ TEST(Vic2World_World_WorldTests, CoresAreKeptIfRemovesetToNone)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_none)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_none)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -467,10 +467,10 @@ TEST(Vic2World_World_WorldTests, CoresWithoutOwnerAreRemoved)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_too_little_culture)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -485,10 +485,10 @@ TEST(Vic2World_World_WorldTests, CoresWithInvalidOwnerAreRemoved)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_too_little_culture)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -503,10 +503,10 @@ TEST(Vic2World_World_WorldTests, CoresWithTooLowPopulationAreRemoved)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_too_little_culture)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -521,10 +521,10 @@ TEST(Vic2World_World_WorldTests, CoresWithSameCultureAsOwnerAreNotRemovedIfOptio
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_too_little_culture)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_too_little_culture)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -544,10 +544,10 @@ TEST(Vic2World_World_WorldTests, CoresWithSameCultureAsOwnerAreRemoved)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_same_culture_as_owner)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_same_culture_as_owner)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -562,10 +562,10 @@ TEST(Vic2World_World_WorldTests, CoresWithAcceptedCultureAsOwnerAreNotRemovedIfS
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_same_culture_as_owner)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_same_culture_as_owner)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -584,10 +584,10 @@ TEST(Vic2World_World_WorldTests, CoresWithAcceptedCultureAsOwnerAreRemoved)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -602,10 +602,10 @@ TEST(Vic2World_World_WorldTests, CoresFromDeadNationAreNotRemovedIfSettingTooLow
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::remove_accepted_culture_by_owner)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -620,10 +620,10 @@ TEST(Vic2World_World_WorldTests, CoresFromDeadNationAreRemoved)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("V2World")
-														  .setInputFile("V2World/TestWorld.v2")
-														  .setRemoveCores(removeCoresOptions::extreme_removal)
-														  .build(),
+														 .setVic2Path("V2World")
+														 .setInputFile("V2World/TestWorld.v2")
+														 .setRemoveCores(removeCoresOptions::extreme_removal)
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -693,10 +693,10 @@ TEST(Vic2World_World_WorldTests, UnmappedModProvinceThrowsError)
 
 	ASSERT_THROW(Vic2::World::Factory(mod_filesystem, 0.0F)
 						  .importWorld(*Configuration::Builder()
-												  .setVic2Path("V2World")
-												  .setInputFile("V2World/TestWorld.v2")
-												  .addVic2Mod(Mod("no_mappings_mod", "no_mappings_mod"))
-												  .build(),
+												 .setVic2Path("V2World")
+												 .setInputFile("V2World/TestWorld.v2")
+												 .addVic2Mod(Mod("no_mappings_mod", "no_mappings_mod"))
+												 .build(),
 								*Mappers::ProvinceMapper::Builder().Build(),
 								mod_filesystem),
 		 std::runtime_error);
@@ -725,9 +725,9 @@ TEST(Vic2World_World_WorldTests, ArmiesAreMovedHome)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("MoveArmiesWorld")
-														  .setInputFile("MoveArmiesWorld/MoveArmiesWorld.v2")
-														  .build(),
+														 .setVic2Path("MoveArmiesWorld")
+														 .setInputFile("MoveArmiesWorld/MoveArmiesWorld.v2")
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -740,18 +740,18 @@ TEST(Vic2World_World_WorldTests, ArmiesAreMovedHome)
 			  *Vic2::Army::Builder().setOwner("ONE").setName("In owned territory army").setLocation(2).Build(),
 			  *Vic2::Army::Builder().setOwner("ONE").setName("In at-war province army").setLocation(1).Build(),
 			  *Vic2::Army::Builder()
-					 .setOwner("ONE")
-					 .setName("In non-at-war province army")
-					 .setLocation(std::nullopt)
-					 .Build()));
+					.setOwner("ONE")
+					.setName("In non-at-war province army")
+					.setLocation(std::nullopt)
+					.Build()));
 	EXPECT_TRUE(world->getCountries().contains("TWO"));
 	EXPECT_TRUE(world->getCountries().contains("NON"));
 	EXPECT_THAT(world->getCountries().at("NON").getArmies(),
 		 testing::ElementsAre(*Vic2::Army::Builder()
-											.setOwner("NON")
-											.setName("Not at war country army")
-											.setLocation(std::nullopt)
-											.Build()));
+					.setOwner("NON")
+					.setName("Not at war country army")
+					.setLocation(std::nullopt)
+					.Build()));
 }
 
 
@@ -760,9 +760,9 @@ TEST(Vic2World_World_WorldTests, BattlesAreResolved)
 	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("V2World"), {});
 	const auto world = Vic2::World::Factory(mod_filesystem, 0.0F)
 								  .importWorld(*Configuration::Builder()
-														  .setVic2Path("ResolveBattlesWorld")
-														  .setInputFile("ResolveBattlesWorld/ResolveBattlesWorld.v2")
-														  .build(),
+														 .setVic2Path("ResolveBattlesWorld")
+														 .setInputFile("ResolveBattlesWorld/ResolveBattlesWorld.v2")
+														 .build(),
 										*Mappers::ProvinceMapper::Builder().Build(),
 										mod_filesystem);
 
@@ -779,8 +779,8 @@ TEST(Vic2World_World_WorldTests, BattlesAreResolved)
 	EXPECT_TRUE(world->getCountries().contains("TWO"));
 	EXPECT_THAT(world->getCountries().at("TWO").getArmies(),
 		 testing::ElementsAre(*Vic2::Army::Builder()
-											.setOwner("TWO")
-											.setName("Second in different-country province")
-											.setLocation(std::nullopt)
-											.Build()));
+					.setOwner("TWO")
+					.setName("Second in different-country province")
+					.setLocation(std::nullopt)
+					.Build()));
 }

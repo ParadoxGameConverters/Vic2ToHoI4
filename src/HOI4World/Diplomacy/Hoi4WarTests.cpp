@@ -53,10 +53,10 @@ TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}, .defenders{{"OED"}}}),
 		 std::set<std::string>{"NED"},
 		 *Mappers::CountryMapper::Builder()
-				.addMapping("ODF", "NDF")
-				.addMapping("OED", "NED")
-				.addMapping("OAT", "NAT")
-				.Build(),
+			  .addMapping("ODF", "NDF")
+			  .addMapping("OED", "NED")
+			  .addMapping("OAT", "NAT")
+			  .Build(),
 		 Mappers::CasusBellis({}),
 		 Mappers::ProvinceMapper{},
 		 std::map<int, int>{});
@@ -86,10 +86,10 @@ TEST(HoI4World_Diplomacy_WarTests, puppetDefendersAreNotAdded)
 		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .originalDefender{"ODF"}, .defenders{{"OED"}}}),
 		 std::set<std::string>{},
 		 *Mappers::CountryMapper::Builder()
-				.addMapping("ODF", "NDF")
-				.addMapping("OED", "NED")
-				.addMapping("OAT", "NAT")
-				.Build(),
+			  .addMapping("ODF", "NDF")
+			  .addMapping("OED", "NED")
+			  .addMapping("OAT", "NAT")
+			  .Build(),
 		 Mappers::CasusBellis({}),
 		 Mappers::ProvinceMapper{},
 		 std::map<int, int>{});
@@ -113,10 +113,10 @@ TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .attackers{{"OEA"}}, .originalDefender{"ODF"}}),
 		 std::set<std::string>{"NEA"},
 		 *Mappers::CountryMapper::Builder()
-				.addMapping("ODF", "NDF")
-				.addMapping("OEA", "NEA")
-				.addMapping("OAT", "NAT")
-				.Build(),
+			  .addMapping("ODF", "NDF")
+			  .addMapping("OEA", "NEA")
+			  .addMapping("OAT", "NAT")
+			  .Build(),
 		 Mappers::CasusBellis({}),
 		 Mappers::ProvinceMapper{},
 		 std::map<int, int>{});
@@ -146,10 +146,10 @@ TEST(HoI4World_Diplomacy_WarTests, puppetAttackersAreNotAdded)
 		 Vic2::War(Vic2::WarOptions{.originalAttacker{"OAT"}, .attackers{{"OEA"}}, .originalDefender{"ODF"}}),
 		 std::set<std::string>{},
 		 *Mappers::CountryMapper::Builder()
-				.addMapping("ODF", "NDF")
-				.addMapping("OEA", "NEA")
-				.addMapping("OAT", "NAT")
-				.Build(),
+			  .addMapping("ODF", "NDF")
+			  .addMapping("OEA", "NEA")
+			  .addMapping("OAT", "NAT")
+			  .Build(),
 		 Mappers::CasusBellis({}),
 		 Mappers::ProvinceMapper{},
 		 std::map<int, int>{});

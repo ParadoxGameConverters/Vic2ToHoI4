@@ -14,8 +14,7 @@
 Vic2::Country::Factory::Factory(const commonItems::ModFilesystem& mod_filesystem,
 	 const StateDefinitions& theStateDefinitions,
 	 std::shared_ptr<CultureGroups> theCultureGroups_):
-	 theCultureGroups(std::move(theCultureGroups_)),
-	 theInventions(Inventions::Factory().LoadInventions(mod_filesystem)),
+	 theCultureGroups(std::move(theCultureGroups_)), theInventions(Inventions::Factory().LoadInventions(mod_filesystem)),
 	 leaderFactory(std::make_unique<Leader::Factory>(std::move(*Traits::Factory().LoadTraits(mod_filesystem)))),
 	 stateFactory(std::make_unique<State::Factory>())
 {

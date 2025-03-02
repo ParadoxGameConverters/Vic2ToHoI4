@@ -98,8 +98,8 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	onActionsFile << "\ton_justifying_wargoal_pulse = {\n";
 	onActionsFile << "\t\trandom_events = {\n";
 	for (unsigned int i = firstWarJustificationEvent;
-		  i < (majorIdeologies.size() * majorIdeologies.size() + numNonIdeologicalEvents + firstWarJustificationEvent);
-		  i++)
+		 i < (majorIdeologies.size() * majorIdeologies.size() + numNonIdeologicalEvents + firstWarJustificationEvent);
+		 i++)
 	{
 		onActionsFile << "\t\t\t100 = war_justification." << i << "\n";
 	}

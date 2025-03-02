@@ -22,9 +22,9 @@ class DecisionsCategory
 		 std::string visible,
 		 std::string visibilityType,
 		 std::vector<std::pair<std::string, std::string>> extraItems):
-		 name(std::move(name)),
-		 icon(std::move(icon)), picture(std::move(picture)), priority(priority), allowed(std::move(allowed)),
-		 visible(std::move(visible)), visibilityType(std::move(visibilityType)), extraItems(std::move(extraItems))
+		 name(std::move(name)), icon(std::move(icon)), picture(std::move(picture)), priority(priority),
+		 allowed(std::move(allowed)), visible(std::move(visible)), visibilityType(std::move(visibilityType)),
+		 extraItems(std::move(extraItems))
 	{
 	}
 

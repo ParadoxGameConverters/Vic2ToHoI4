@@ -22,8 +22,8 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 Character::Factory& characterFactory,
 	 Ideas& ideas):
-	 mapUtils(mapUtils),
-	 provinceToStateIdMapping(provinceToStateIdMapping), theMapData(theMapData), provinceDefinitions(provinceDefinitions)
+	 mapUtils(mapUtils), provinceToStateIdMapping(provinceToStateIdMapping), theMapData(theMapData),
+	 provinceDefinitions(provinceDefinitions)
 {
 	Log(LogLevel::Info) << "\tAdding adjusted focus branches";
 	addUKColonialFocusBranch(countries, majorIdeologies, onActions, ideas);
@@ -346,7 +346,7 @@ bool HoI4::AdjustedBranches::countriesShareBorder(const std::shared_ptr<Country>
 	 const std::shared_ptr<Country>& countryTwo)
 {
 	if (!mapUtils.findBorderStates(*countryOne, *countryTwo, provinceToStateIdMapping, theMapData, provinceDefinitions)
-				.empty())
+			  .empty())
 	{
 		return true;
 	}
