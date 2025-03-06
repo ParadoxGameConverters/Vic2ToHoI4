@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputLandmarkBuildings(const LandmarkBuildings& landmarkBuildings, const std::string& outputName);
+void outputLandmarkBuildings(const LandmarkBuildings& landmarkBuildings, const std::filesystem::path& outputName);
 
 std::ostream& operator<<(std::ostream& outStream, const LandmarkBuildings& outLandmarkBuildings);
 

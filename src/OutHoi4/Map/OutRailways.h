@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-void outputRailways(const std::string& path, const std::vector<Railway>& railways);
+void outputRailways(const std::filesystem::path& path, const std::vector<Railway>& railways);
 
 }
 

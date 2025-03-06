@@ -45,8 +45,7 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const ImpassableProvinces& impassableProvinces,
 	 const std::map<int, DefaultState>& defaultStates,
-	 const Configuration& theConfiguration):
-	 defaultStates_(defaultStates)
+	 const Configuration& theConfiguration): defaultStates_(defaultStates)
 {
 	Log(LogLevel::Info) << "\tConverting states";
 

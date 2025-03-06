@@ -5,17 +5,17 @@
 
 
 
-void HoI4::OutputUnitMedals(std::string_view output_name,
+void HoI4::OutputUnitMedals(std::filesystem::path output_name,
 	 const std::set<std::string>& major_ideologies,
 	 const std::map<std::string, std::string>& ideologies_unit_medals)
 {
-	commonItems::TryCreateFolder("output/" + std::string(output_name) + "/common/unit_medals");
+	std::filesystem::create_directories("output" / output_name / "common/unit_medals");
 
-	std::ofstream out("output/" + std::string(output_name) + "/common/unit_medals/00_default.txt");
+	const std::filesystem::path path = "output" / output_name / "common/unit_medals/00_default.txt";
+	std::ofstream out(path);
 	if (!out.is_open())
 	{
-		throw std::runtime_error(
-			 "Could not create output/" + std::string(output_name) + "/common/unit_medals/00_default.txt");
+		throw std::runtime_error("Could not create " + path.string());
 	}
 
 	out << "@cost = 30\n";

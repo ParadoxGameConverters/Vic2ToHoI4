@@ -6,6 +6,7 @@
 #include "external/common_items/ConvenientParser.h"
 #include "external/common_items/ConverterVersion.h"
 #include "external/common_items/ModLoader/ModLoader.h"
+#include <filesystem>
 #include <set>
 #include <string>
 #include <vector>
@@ -60,11 +61,11 @@ class Configuration
 
   private:
 	// set on construction
-	std::string inputFile{"input.v2"};
+	std::filesystem::path inputFile{"input.v2"};
 	std::string outputName;
 	std::string customOutputName;
-	std::string HoI4Path;
-	std::string Vic2Path;
+	std::filesystem::path HoI4Path;
+	std::filesystem::path Vic2Path;
 	Mods Vic2Mods;
 
 	float forceMultiplier = 1.0f;
@@ -87,13 +88,13 @@ class Configuration::Factory: commonItems::parser
 {
   public:
 	Factory();
-	std::unique_ptr<Configuration> importConfiguration(const std::string& filename,
+	std::unique_ptr<Configuration> importConfiguration(const std::filesystem::path& filename,
 		 const commonItems::ConverterVersion& converterVersion);
 	std::unique_ptr<Configuration> importConfiguration(std::istream& theStream,
 		 const commonItems::ConverterVersion& converterVersion);
 
   private:
-	void setOutputName(const std::string& V2SaveFileName, const std::string& OutputCustomName);
+	void setOutputName(const std::filesystem::path& V2SaveFileName, const std::string& OutputCustomName);
 	void importMods();
 	void sortMods();
 	void verifyVic2Version(const commonItems::ConverterVersion& converterVersion) const;
@@ -111,14 +112,14 @@ class Configuration::Builder
 	Builder() { configuration = std::make_unique<Configuration>(); }
 	std::unique_ptr<Configuration> build() { return std::move(configuration); }
 
-	Builder& setHoI4Path(std::string HoI4Path)
+	Builder& setHoI4Path(std::filesystem::path HoI4Path)
 	{
-		configuration->HoI4Path = std::move(HoI4Path);
+		configuration->HoI4Path = HoI4Path;
 		return *this;
 	}
-	Builder& setVic2Path(std::string Vic2Path)
+	Builder& setVic2Path(std::filesystem::path Vic2Path)
 	{
-		configuration->Vic2Path = std::move(Vic2Path);
+		configuration->Vic2Path = Vic2Path;
 		return *this;
 	}
 	Builder& addVic2Mod(Mod Vic2Mod)
@@ -126,9 +127,9 @@ class Configuration::Builder
 		configuration->Vic2Mods.push_back(std::move(Vic2Mod));
 		return *this;
 	}
-	Builder& setInputFile(std::string inputFile)
+	Builder& setInputFile(std::filesystem::path inputFile)
 	{
-		configuration->inputFile = std::move(inputFile);
+		configuration->inputFile = inputFile;
 		return *this;
 	}
 	Builder& setRemoveCores(removeCoresOptions removeCores)

@@ -40,14 +40,14 @@ const std::set<std::string> supported_languages = {"braz_por",
 	 "spanish",
 	 "swedish"};
 
-void importLocalisationFile(const std::string& filename, HoI4::languageToLocalisationsMap& localisations)
+void importLocalisationFile(const std::filesystem::path& filename, HoI4::languageToLocalisationsMap& localisations)
 {
 	HoI4::keyToLocalisationMap newLocalisations;
 
 	std::ifstream file(filename);
 	if (!file.is_open())
 	{
-		throw std::runtime_error("Could not open " + filename);
+		throw std::runtime_error("Could not open " + filename.string());
 	}
 	commonItems::absorbBOM(file);
 
@@ -321,7 +321,8 @@ void insertScriptedLocalisation(const std::string& localisationKey,
 } // namespace
 
 
-std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocalisations(std::string_view hoi4_directory)
+std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocalisations(
+	 std::filesystem::path hoi4_directory)
 {
 	importLocalisations(hoi4_directory);
 	prepareBlankLocalisations();
@@ -342,45 +343,42 @@ std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocali
 }
 
 
-void HoI4::Localisation::Importer::importLocalisations(std::string_view hoi4_directory)
+void HoI4::Localisation::Importer::importLocalisations(const std::filesystem::path& hoi4_directory)
 {
-	for (const auto& subdirectory: commonItems::GetAllSubfolders(std::string(hoi4_directory).append("/localisation")))
+	for (const auto& subdirectory: commonItems::GetAllSubfolders(hoi4_directory / "localisation"))
 	{
-		for (const auto& fileName:
-			 commonItems::GetAllFilesInFolder(std::string(hoi4_directory).append("/localisation/").append(subdirectory)))
+		for (const auto& fileName: commonItems::GetAllFilesInFolder(hoi4_directory / "localisation" / subdirectory))
 		{
-			const std::string full_path =
-				 std::string(hoi4_directory).append("/localisation/").append(subdirectory).append("/").append(fileName);
-			if (fileName.starts_with("focus"))
+			const std::filesystem::path full_path = hoi4_directory / "localisation" / subdirectory / fileName;
+			if (fileName.string().starts_with("focus"))
 			{
 				importFocusLocalisations(full_path);
 			}
-			else if (fileName.starts_with("ideas"))
+			else if (fileName.string().starts_with("ideas"))
 			{
 				importGenericIdeaLocalisations(full_path);
 			}
-			else if (fileName.starts_with("events"))
+			else if (fileName.string().starts_with("events"))
 			{
 				importEventLocalisations(full_path);
 			}
 		}
 	}
 
-	for (const auto& subdirectory: commonItems::GetAllSubfolders("blankmod/localisation"))
+	for (const auto& subdirectory: commonItems::GetAllSubfolders(std::filesystem::path("blankmod/localisation")))
 	{
-		for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/localisation/" + subdirectory))
+		for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/localisation" / subdirectory))
 		{
-			const std::string full_path =
-				 std::string("blankmod/localisation/").append(subdirectory).append("/").append(fileName);
-			if (fileName.starts_with("focus"))
+			const std::filesystem::path full_path = "blankmod/localisation" / subdirectory / fileName;
+			if (fileName.string().starts_with("focus"))
 			{
 				importFocusLocalisations(full_path);
 			}
-			else if (fileName.starts_with("ideas"))
+			else if (fileName.string().starts_with("ideas"))
 			{
 				importGenericIdeaLocalisations(full_path);
 			}
-			else if (fileName.starts_with("events"))
+			else if (fileName.string().starts_with("events"))
 			{
 				importEventLocalisations(full_path);
 			}
@@ -389,19 +387,19 @@ void HoI4::Localisation::Importer::importLocalisations(std::string_view hoi4_dir
 }
 
 
-void HoI4::Localisation::Importer::importFocusLocalisations(const std::string& filename)
+void HoI4::Localisation::Importer::importFocusLocalisations(const std::filesystem::path& filename)
 {
 	importLocalisationFile(filename, originalFocuses);
 }
 
 
-void HoI4::Localisation::Importer::importGenericIdeaLocalisations(const std::string& filename)
+void HoI4::Localisation::Importer::importGenericIdeaLocalisations(const std::filesystem::path& filename)
 {
 	importLocalisationFile(filename, genericIdeaLocalisations);
 }
 
 
-void HoI4::Localisation::Importer::importEventLocalisations(const std::string& filename)
+void HoI4::Localisation::Importer::importEventLocalisations(const std::filesystem::path& filename)
 {
 	importLocalisationFile(filename, originalEventLocalisations);
 }
@@ -1025,8 +1023,7 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 			if (!possibleOwnerAdjective)
 			{
 				// in the final case, just use the word "partial"
-				Log(LogLevel::Warning) << "No localisation found for " << vic2State.getOwner() + "_ADJ"
-											  << " in " << language;
+				Log(LogLevel::Warning) << "No localisation found for " << vic2State.getOwner() << "_ADJ in " << language;
 				if (const auto& partial = vic2Localisations.getTextInLanguage("PARTIAL", language); partial)
 				{
 					possibleOwnerAdjective = *partial;

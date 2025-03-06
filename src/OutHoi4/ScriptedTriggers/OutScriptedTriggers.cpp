@@ -3,16 +3,16 @@
 
 
 
-void HoI4::outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, const std::string& outputName)
+void HoI4::outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, const std::filesystem::path& outputName)
 {
-	std::ofstream outIdeology("output/" + outputName + "/common/scripted_triggers/ideology_scripted_triggers.txt");
+	std::ofstream outIdeology("output" / outputName / "common/scripted_triggers/ideology_scripted_triggers.txt");
 	for (const auto& scriptedTrigger: scriptedTriggers.getIdeologyScriptedTriggers())
 	{
 		outIdeology << scriptedTrigger;
 	}
 	outIdeology.close();
 
-	std::ofstream outElections("output/" + outputName + "/common/scripted_triggers/Elections_scripted_triggers.txt",
+	std::ofstream outElections("output" / outputName / "common/scripted_triggers/Elections_scripted_triggers.txt",
 		 std::ostream::app);
 	for (const auto& scriptedTrigger: scriptedTriggers.getElectionsScriptedTriggers())
 	{
@@ -20,7 +20,7 @@ void HoI4::outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, cons
 	}
 	outElections.close();
 
-	std::ofstream outLawsWarSupport("output/" + outputName + "/common/scripted_triggers/laws_war_support.txt",
+	std::ofstream outLawsWarSupport("output" / outputName / "common/scripted_triggers/laws_war_support.txt",
 		 std::ostream::app);
 	for (const auto& scriptedTrigger: scriptedTriggers.getLawsWarSupportTriggers())
 	{
@@ -28,7 +28,7 @@ void HoI4::outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, cons
 	}
 	outLawsWarSupport.close();
 
-	std::ofstream outNationalFocus("output/" + outputName + "/common/scripted_triggers/nf_triggers.txt",
+	std::ofstream outNationalFocus("output" / outputName / "common/scripted_triggers/nf_triggers.txt",
 		 std::ostream::app);
 	for (const auto& scriptedTrigger: scriptedTriggers.getNationalFocusTriggers())
 	{

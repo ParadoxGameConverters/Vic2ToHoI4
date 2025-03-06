@@ -19,8 +19,8 @@ class Equipment
 		 std::optional<std::string> variant,
 		 std::optional<std::string> limit,
 		 int amount):
-		 owner_(std::move(owner)),
-		 type_(std::move(type)), variant_(std::move(variant)), limit_(std::move(limit)), amount_(amount)
+		 owner_(std::move(owner)), type_(std::move(type)), variant_(std::move(variant)), limit_(std::move(limit)),
+		 amount_(amount)
 	{
 	}
 

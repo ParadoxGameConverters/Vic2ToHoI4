@@ -19,9 +19,7 @@ class MtgShip final: public Ship
 		 const std::string& equipment,
 		 const std::string& owner,
 		 std::string version,
-		 const float& experience):
-		 Ship(name, type, equipment, owner),
-		 version(std::move(version)), experience(experience)
+		 const float& experience): Ship(name, type, equipment, owner), version(std::move(version)), experience(experience)
 	{
 	}
 

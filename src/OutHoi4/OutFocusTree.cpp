@@ -53,12 +53,12 @@ void HoI4::outputFocusTree(const HoI4FocusTree& focusTree, const std::string& fi
 }
 
 
-void HoI4::outputSharedFocuses(const HoI4FocusTree& focusTree, const std::string& filename)
+void HoI4::outputSharedFocuses(const HoI4FocusTree& focusTree, const std::filesystem::path& filename)
 {
 	std::ofstream SharedFocuses(filename);
 	if (!SharedFocuses.is_open())
 	{
-		throw std::runtime_error("Could not create " + filename);
+		throw std::runtime_error("Could not create " + filename.string());
 	}
 
 	for (const auto& focus: focusTree.getSharedFocuses())

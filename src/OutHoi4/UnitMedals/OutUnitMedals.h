@@ -12,7 +12,7 @@
 namespace HoI4
 {
 
-void OutputUnitMedals(std::string_view output_name,
+void OutputUnitMedals(std::filesystem::path output_name,
 	 const std::set<std::string>& major_ideologies,
 	 const std::map<std::string, std::string>& ideologies_unit_medals);
 

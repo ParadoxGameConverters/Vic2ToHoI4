@@ -18,16 +18,17 @@ std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Factory::ImportLocalis
 	{
 		ReadFromFile(file);
 	}
-	for (const auto& file_name: commonItems::GetAllFilesInFolder("Configurables/Vic2Localisations"))
+	for (const auto& file_name:
+		 commonItems::GetAllFilesInFolder(std::filesystem::path("Configurables/Vic2Localisations")))
 	{
-		ReadFromFile("Configurables/Vic2Localisations/" + file_name);
+		ReadFromFile("Configurables/Vic2Localisations" / file_name);
 	}
 
 	return std::make_unique<Localisations>(localisations_, localisation_to_key_map_);
 }
 
 
-void Vic2::Localisations::Factory::ReadFromFile(const std::string& fileName)
+void Vic2::Localisations::Factory::ReadFromFile(const std::filesystem::path& fileName)
 {
 	std::ifstream in(fileName);
 

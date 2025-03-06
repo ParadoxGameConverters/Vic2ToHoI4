@@ -14,6 +14,6 @@ HoI4::ScriptedLocalisations::Factory::Factory()
 std::unique_ptr<HoI4::ScriptedLocalisations> HoI4::ScriptedLocalisations::Factory::getScriptedLocalisations()
 {
 	scriptedLocalisations = std::make_unique<ScriptedLocalisations>();
-	parseFile("blankmod/common/scripted_localisation/ideologies.txt");
+	parseFile(std::filesystem::path("blankmod/common/scripted_localisation/ideologies.txt"));
 	return std::move(scriptedLocalisations);
 }

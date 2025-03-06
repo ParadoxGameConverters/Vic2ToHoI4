@@ -20,7 +20,7 @@ class CharactersFactory: commonItems::parser
   public:
 	explicit CharactersFactory(Character::Factory& characterFactory);
 
-	std::multimap<std::string, Character> importCharacters(std::string_view filename);
+	std::multimap<std::string, Character> importCharacters(std::filesystem::path filename);
 
   private:
 	std::multimap<std::string, Character> characters_;

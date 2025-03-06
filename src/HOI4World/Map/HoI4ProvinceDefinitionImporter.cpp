@@ -3,12 +3,12 @@
 
 
 
-Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::string& path)
+Maps::ProvinceDefinitions HoI4::importProvinceDefinitions(const std::filesystem::path& path)
 {
-	std::ifstream definitions(path + "/map/definition.csv");
+	std::ifstream definitions(path / "map/definition.csv");
 	if (!definitions.is_open())
 	{
-		throw std::runtime_error("Could not open " + path + "/map/definition.csv");
+		throw std::runtime_error("Could not open " + path.string() + "/map/definition.csv");
 	}
 
 	std::set<int> landProvinces;

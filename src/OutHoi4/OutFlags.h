@@ -16,7 +16,7 @@ namespace HoI4
 
 void copyFlags(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::vector<HoI4::UnionCountry>& union_countries,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 const Mods& vic2Mods,
 	 const std::set<std::string>& majorIdeologies);
 

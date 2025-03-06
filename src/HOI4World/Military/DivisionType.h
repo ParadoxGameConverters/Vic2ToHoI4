@@ -21,9 +21,8 @@ class DivisionType
 		 const double _experience,
 		 double _startEquipment,
 		 std::map<std::string, int> _regiments):
-		 name(std::move(_name)),
-		 type(std::move(_type)), location(_location), experience(_experience), startEquipment(_startEquipment),
-		 regiments(_regiments)
+		 name(std::move(_name)), type(std::move(_type)), location(_location), experience(_experience),
+		 startEquipment(_startEquipment), regiments(_regiments)
 	{
 	}
 

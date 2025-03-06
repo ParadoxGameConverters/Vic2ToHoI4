@@ -14,45 +14,42 @@
 Configuration::Factory::Factory()
 {
 	registerKeyword("SaveGame", [this](std::istream& theStream) {
-		const commonItems::singleString filenameString(theStream);
-		configuration->inputFile = filenameString.getString();
-		const auto length = configuration->inputFile.find_last_of('.');
-		if ((length == std::string::npos) ||
-			 (".v2" != configuration->inputFile.substr(length, configuration->inputFile.length())))
+		configuration->inputFile = commonItems::getString(theStream);
+		if (".v2" != configuration->inputFile.extension())
 		{
 			throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
 		}
-		Log(LogLevel::Info) << "\tVic2 save is " << configuration->inputFile;
+		Log(LogLevel::Info) << "\tVic2 save is " << configuration->inputFile.string();
 	});
 	registerKeyword("HoI4directory", [this](std::istream& theStream) {
-		configuration->HoI4Path = commonItems::singleString{theStream}.getString();
+		configuration->HoI4Path = commonItems::getString(theStream);
 		if (configuration->HoI4Path.empty() || !commonItems::DoesFolderExist(configuration->HoI4Path))
 		{
 			throw std::runtime_error("No HoI4 path was specified in configuration.txt, or the path was invalid");
 		}
-		if (!commonItems::DoesFileExist(configuration->HoI4Path + "/hoi4.exe") &&
-			 !commonItems::DoesFileExist(configuration->HoI4Path + "/hoi4"))
+		if (!commonItems::DoesFileExist(configuration->HoI4Path / "hoi4.exe") &&
+			 !commonItems::DoesFileExist(configuration->HoI4Path / "hoi4"))
 		{
 			throw std::runtime_error("The HoI4 path specified in configuration.txt does not contain HoI4");
 		}
 
-		Log(LogLevel::Info) << "\tHoI4 path install path is " << configuration->HoI4Path;
+		Log(LogLevel::Info) << "\tHoI4 path install path is " << configuration->HoI4Path.string();
 	});
 	registerKeyword("Vic2directory", [this](std::istream& theStream) {
-		configuration->Vic2Path = commonItems::singleString{theStream}.getString();
+		configuration->Vic2Path = commonItems::getString(theStream);
 		if (configuration->Vic2Path.empty() || !commonItems::DoesFolderExist(configuration->Vic2Path))
 		{
 			throw std::runtime_error("No Victoria 2 path was specified in configuration.txt, or the path was invalid");
 		}
-		if (!commonItems::DoesFileExist(configuration->Vic2Path + "/v2game.exe") &&
-			 !commonItems::DoesFileExist(configuration->Vic2Path + "/v2game") &&
-			 !commonItems::DoesFolderExist(configuration->Vic2Path + "/Victoria 2 - Heart Of Darkness.app") &&
-			 !commonItems::DoesFolderExist(configuration->Vic2Path + "/../../MacOS"))
+		if (!commonItems::DoesFileExist(configuration->Vic2Path / "v2game.exe") &&
+			 !commonItems::DoesFileExist(configuration->Vic2Path / "v2game") &&
+			 !commonItems::DoesFolderExist(configuration->Vic2Path / "Victoria 2 - Heart Of Darkness.app") &&
+			 !commonItems::DoesFolderExist(configuration->Vic2Path / "../../MacOS"))
 		{
 			throw std::runtime_error("The Victoria 2 path specified in configuration.txt does not contain Victoria 2");
 		}
 
-		Log(LogLevel::Info) << "\tVictoria 2 install path is " << configuration->Vic2Path;
+		Log(LogLevel::Info) << "\tVictoria 2 install path is " << configuration->Vic2Path.string();
 	});
 	registerKeyword("targetGameModPath", [this](std::istream& theStream) {
 		Log(LogLevel::Info) << "\tHoI4 mod path is " << commonItems::getString(theStream);
@@ -179,7 +176,7 @@ Configuration::Factory::Factory()
 }
 
 
-std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::string& filename,
+std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::filesystem::path& filename,
 	 const commonItems::ConverterVersion& converterVersion)
 {
 	Log(LogLevel::Info) << "Reading configuration file";
@@ -209,17 +206,18 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::
 }
 
 
-void Configuration::Factory::setOutputName(const std::string& V2SaveFileName, const std::string& customOutputName)
+void Configuration::Factory::setOutputName(const std::filesystem::path& V2SaveFileName,
+	 const std::string& customOutputName)
 {
 	std::string outputName;
 	if (customOutputName.empty())
 	{
-		outputName = trimPath(V2SaveFileName);
-		if (getExtension(outputName) != "v2")
+		const std::filesystem::path filename = V2SaveFileName.filename();
+		if (filename.extension() != ".v2")
 		{
 			throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
 		}
-		outputName = trimExtension(outputName);
+		outputName = filename.stem().string();
 	}
 	else
 	{
@@ -307,16 +305,16 @@ void Configuration::Factory::sortMods()
 void Configuration::Factory::verifyVic2Version(const commonItems::ConverterVersion& converterVersion) const
 {
 	GameVersion vic2version;
-	if (commonItems::DoesFileExist(configuration->Vic2Path + "/changelog_3.04.txt"))
+	if (commonItems::DoesFileExist(configuration->Vic2Path / "changelog_3.04.txt"))
 	{
 		Log(LogLevel::Info) << "\tVic2 version: 3.0.4";
 		return;
 	}
 
-	std::string readmePath = configuration->Vic2Path + "/ReadMe.txt";
+	std::filesystem::path readmePath = configuration->Vic2Path / "ReadMe.txt";
 	if (!commonItems::DoesFileExist(readmePath))
 	{
-		readmePath = configuration->Vic2Path + "/Readme.txt";
+		readmePath = configuration->Vic2Path / "Readme.txt";
 		if (!commonItems::DoesFileExist(readmePath))
 		{
 			Log(LogLevel::Error) << "Vic2 version could not be determined, proceeding blind!";
@@ -349,8 +347,7 @@ void Configuration::Factory::verifyVic2Version(const commonItems::ConverterVersi
 
 void Configuration::Factory::verifyHoI4Version(const commonItems::ConverterVersion& converterVersion) const
 {
-	const auto HoI4Version =
-		 GameVersion::extractVersionFromLauncher(configuration->HoI4Path + "/launcher-settings.json");
+	const auto HoI4Version = GameVersion::extractVersionFromLauncher(configuration->HoI4Path / "launcher-settings.json");
 	if (!HoI4Version)
 	{
 		Log(LogLevel::Error) << "HoI4 version could not be determined, proceeding blind!";

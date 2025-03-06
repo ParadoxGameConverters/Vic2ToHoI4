@@ -17,7 +17,7 @@ HoI4FocusTree::Factory::Factory()
 }
 
 
-HoI4FocusTree HoI4FocusTree::Factory::importFocusTree(std::string_view filePath)
+HoI4FocusTree HoI4FocusTree::Factory::importFocusTree(std::filesystem::path filePath)
 {
 	imported_focus_tree_ = std::make_unique<HoI4FocusTree>();
 	parseFile(filePath);

@@ -27,11 +27,10 @@ class AdvisorData
 		 std::optional<float> cost,
 		 std::optional<std::string> do_effect,
 		 std::optional<std::string> ai_will_do):
-		 slot_(std::move(slot)),
-		 idea_token_(std::move(idea_token)), ledger_(std::move(ledger)), available_(std::move(available)),
-		 allowed_(std::move(allowed)), visible_(std::move(visible)), research_bonus_(std::move(research_bonus)),
-		 traits_(std::move(traits)), cost_(std::move(cost)), do_effect_(std::move(do_effect)),
-		 ai_will_do_(std::move(ai_will_do))
+		 slot_(std::move(slot)), idea_token_(std::move(idea_token)), ledger_(std::move(ledger)),
+		 available_(std::move(available)), allowed_(std::move(allowed)), visible_(std::move(visible)),
+		 research_bonus_(std::move(research_bonus)), traits_(std::move(traits)), cost_(std::move(cost)),
+		 do_effect_(std::move(do_effect)), ai_will_do_(std::move(ai_will_do))
 	{
 	}
 

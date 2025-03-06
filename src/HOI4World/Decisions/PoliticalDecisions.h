@@ -15,7 +15,7 @@ namespace HoI4
 class PoliticalDecisions: commonItems::parser
 {
   public:
-	void importDecisions(const std::string& filename);
+	void importDecisions(const std::filesystem::path& filename);
 
 	[[nodiscard]] const auto& getDecisions() const { return decisions; }
 

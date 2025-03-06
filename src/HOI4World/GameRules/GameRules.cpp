@@ -5,7 +5,7 @@
 
 
 
-HoI4::GameRules HoI4::GameRules::Parser::parseRulesFile(const std::string& filename)
+HoI4::GameRules HoI4::GameRules::Parser::parseRulesFile(const std::filesystem::path& filename)
 {
 	std::vector<GameRule> rules;
 

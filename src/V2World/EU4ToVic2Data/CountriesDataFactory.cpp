@@ -17,7 +17,7 @@ std::unique_ptr<Vic2::CountriesData> Vic2::CountriesData::Factory::ImportCountri
 {
 	countries_data_ = std::make_unique<CountriesData>();
 
-	if (const auto possible_file = mod_filesystem.GetActualFileLocation("/common/botanical_expedition.txt");
+	if (const auto possible_file = mod_filesystem.GetActualFileLocation("common/botanical_expedition.txt");
 		 possible_file)
 	{
 		parser_.parseFile(*possible_file);

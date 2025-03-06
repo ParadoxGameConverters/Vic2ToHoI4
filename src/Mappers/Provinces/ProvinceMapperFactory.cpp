@@ -50,10 +50,10 @@ void verifyProvinceIsMapped(const Mappers::VersionedMappings& versionedMapper, i
 void checkAllHoI4ProvincesMapped(const Mappers::VersionedMappings& versionedMapper,
 	 const Configuration& theConfiguration)
 {
-	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
+	std::ifstream definitions(theConfiguration.getHoI4Path() / "map/definition.csv");
 	if (!definitions.is_open())
 	{
-		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/map/definition.csv");
+		throw std::runtime_error("Could not open " + (theConfiguration.getHoI4Path() / "map/definition.csv").string());
 	}
 
 	while (true)
@@ -103,22 +103,25 @@ std::unique_ptr<Mappers::ProvinceMapper> Mappers::ProvinceMapper::Factory::impor
 	auto mapped = false;
 	for (const auto& mod: theConfiguration.getVic2Mods() | std::views::reverse)
 	{
-		if (commonItems::DoesFileExist(mod.path + "/hybridization.txt"))
+		if (commonItems::DoesFileExist(mod.path / "hybridization.txt"))
 		{
-			parseFile("Configurables/Historical Project Mod 0.4.6_province_mappings.txt");
+			parseFile(std::filesystem::path("Configurables/Historical Project Mod 0.4.6_province_mappings.txt"));
 			mapped = true;
 			break;
 		}
-		if (commonItems::DoesFileExist("Configurables/" + mod.name + "_province_mappings.txt"))
+
+		std::filesystem::path mod_mappings = std::filesystem::path("Configurables") / mod.name;
+		mod_mappings += "_province_mappings.txt";
+		if (commonItems::DoesFileExist(mod_mappings))
 		{
-			parseFile("Configurables/" + mod.name + "_province_mappings.txt");
+			parseFile(mod_mappings);
 			mapped = true;
 			break;
 		}
 	}
 	if (!mapped)
 	{
-		parseFile("Configurables/province_mappings.txt");
+		parseFile(std::filesystem::path("Configurables/province_mappings.txt"));
 	}
 
 	return std::move(provinceMapper);

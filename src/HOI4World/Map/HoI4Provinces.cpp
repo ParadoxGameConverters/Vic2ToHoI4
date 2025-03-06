@@ -8,10 +8,10 @@ std::map<int, HoI4::Province> HoI4::importProvinces(const Configuration& theConf
 {
 	Log(LogLevel::Info) << "\tImporting HoI4 province definitions";
 
-	std::ifstream provinceDefinitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
+	std::ifstream provinceDefinitions(theConfiguration.getHoI4Path() / "map/definition.csv");
 	if (!provinceDefinitions.is_open())
 	{
-		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/map/definition.csv");
+		throw std::runtime_error("Could not open " + (theConfiguration.getHoI4Path() / "map/definition.csv").string());
 	}
 
 	std::map<int, Province> provinces;
