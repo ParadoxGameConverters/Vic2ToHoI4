@@ -1149,10 +1149,7 @@ void HoI4FocusTree::addGPWarBranch(const HoI4::Country& home,
 			hiddenEffect += "\t\t\t\t}\n";
 			hiddenEffect += "\t\t\t}\n";
 			hiddenEffect += "\t\t}\n";
-			summitFocus->updateFocusElement(summitFocus->completionReward,
-				 "#FASC_NEWS",
-				 hiddenEffect,
-				 majorIdeologies.contains("fascism"));
+			summitFocus->updateFocusElement(summitFocus->completionReward, "#FASC_NEWS", hiddenEffect);
 		}
 		if (majorIdeologies.contains("communism"))
 		{
@@ -1165,10 +1162,7 @@ void HoI4FocusTree::addGPWarBranch(const HoI4::Country& home,
 			hiddenEffect += "\t\t\t\t}\n";
 			hiddenEffect += "\t\t\t}\n";
 			hiddenEffect += "\t\t}\n";
-			summitFocus->updateFocusElement(summitFocus->completionReward,
-				 "#COMM_NEWS",
-				 hiddenEffect,
-				 majorIdeologies.contains("communism"));
+			summitFocus->updateFocusElement(summitFocus->completionReward, "#COMM_NEWS", hiddenEffect);
 		}
 		focuses.push_back(summitFocus);
 		hoi4Localisations.copyFocusLocalisations("_Summit", summitFocus->text, debug);
