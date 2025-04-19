@@ -652,10 +652,10 @@
     <ClCompile Include="src\HOI4World\Scorers\ScorersTests.cpp">
       <Filter>src\HOI4World\Scorers</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\Military\RegimentTypeGroup.cpp">
+    <ClCompile Include="src\HOI4World\Military\RegimentTypeTests.cpp">
       <Filter>src\HOI4World\Military</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\Military\RegimentTypeTests.cpp">
+    <ClCompile Include="src\HOI4World\Military\RegimentTypeGroupTests.cpp">
       <Filter>src\HOI4World\Military</Filter>
     </ClCompile>
   </ItemGroup>
