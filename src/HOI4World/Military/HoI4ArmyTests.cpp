@@ -557,7 +557,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_SubstituteDivisionsAllowConversion)
+TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 {
 	HoI4::States theStates;
 
@@ -647,7 +647,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_SubstituteDivisionsAllowConversi
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_UnconvertedDivisionsMergeAndConvert)
+TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 {
 	HoI4::States theStates;
 
@@ -736,14 +736,14 @@ TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_UnconvertedDivisionsMergeAndConv
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_DivisionLocationsDefaultToEmpty)
+TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsDefaultToEmpty)
 {
 	const HoI4::Army theArmy;
 	EXPECT_TRUE(theArmy.getDivisionLocations().empty());
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_DivisionLocationsAreConverted)
+TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsAreConverted)
 {
 	HoI4::States theStates;
 
