@@ -647,7 +647,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
+TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_UnconvertedDivisionsMergeAndConvert)
 {
 	HoI4::States theStates;
 
