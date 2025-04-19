@@ -647,7 +647,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_SubstituteDivisionsAllowConversi
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_UnconvertedDivisionsMergeAndConvert)
+TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 {
 	HoI4::States theStates;
 
@@ -736,14 +736,14 @@ TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_UnconvertedDivisionsMergeAndConv
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_DivisionLocationsDefaultToEmpty)
+TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsDefaultToEmpty)
 {
 	const HoI4::Army theArmy;
 	EXPECT_TRUE(theArmy.getDivisionLocations().empty());
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_DivisionLocationsAreConverted)
+TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsAreConverted)
 {
 	HoI4::States theStates;
 
@@ -806,7 +806,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_DivisionLocationsAreConverted)
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_BackupDivisionLocationsAreConverted)
+TEST(HoI4World_Military_HoI4ArmyTests, BackupDivisionLocationsAreConverted)
 {
 	HoI4::States theStates;
 
@@ -886,7 +886,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_BackupDivisionLocationsAreConver
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_InfantryDivisionsAreReturned)
+TEST(HoI4World_Military_HoI4ArmyTests, InfantryDivisionsAreReturned)
 {
 	HoI4::States theStates;
 
@@ -942,7 +942,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_InfantryDivisionsAreReturned)
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_CavalryDivisionsRequireEquipment)
+TEST(HoI4World_Military_HoI4ArmyTests, CavalryDivisionsRequireEquipment)
 {
 	HoI4::States theStates;
 
@@ -997,7 +997,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_CavalryDivisionsRequireEquipment
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_ArtilleryDivisionsAreReturned)
+TEST(HoI4World_Military_HoI4ArmyTests, ArtilleryDivisionsAreReturned)
 {
 	HoI4::States theStates;
 
@@ -1054,7 +1054,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_ArtilleryDivisionsAreReturned)
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_ArmorDivisionsAreReturned)
+TEST(HoI4World_Military_HoI4ArmyTests, ArmorDivisionsAreReturned)
 {
 	HoI4::States theStates;
 
