@@ -169,15 +169,6 @@
     <ClCompile Include="src\HOI4World\Military\DivisionTypeTests.cpp">
       <Filter>src\HOI4World\Military</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\Military\HoI4ArmyTests.cpp">
-      <Filter>src\HOI4World\Military</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Military\RegimentTypeGroupTests.cpp">
-      <Filter>src\HOI4World\Military</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HOI4World\Military\RegimentTypeTests.cpp">
-      <Filter>src\HOI4World\Military</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\MilitaryMappings\AllMilitaryMappingsTests.cpp">
       <Filter>src\HOI4World\MilitaryMappings</Filter>
     </ClCompile>
@@ -1105,12 +1096,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\Buildings\01_landmark_buildings.txt">
-      <Filter>data\test_files\Buildings</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Buildings\LandmarksMappings.txt">
-      <Filter>data\test_files\Buildings</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt">
       <Filter>data\test_files\Countries</Filter>
     </CopyFileToFolders>
@@ -1480,5 +1465,7 @@
     <CopyFileToFolders Include="data\test_files\Configurables\ideological_unit_medals.txt">
       <Filter>data\test_files\Configurables</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="data/test_files/Buildings/01_landmark_buildings.txt" />
+    <CopyFileToFolders Include="data/test_files/Buildings/LandmarksMappings.txt" />
   </ItemGroup>
 </Project>
