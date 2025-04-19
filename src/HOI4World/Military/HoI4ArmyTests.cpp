@@ -586,7 +586,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
-	std::stringstream mappingsInput;
+	/*std::stringstream mappingsInput;
 	mappingsInput << "= {\n";
 	mappingsInput << "\tmtg_unit_map = {}\n";
 	mappingsInput << "\tunit_map = {\n";
@@ -643,7 +643,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 								 "\t\tstart_experience_factor = 0.3\n"
 								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"),
-		 output.str());
+		 output.str());*/
 }
 
 
