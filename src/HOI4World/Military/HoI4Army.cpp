@@ -52,7 +52,7 @@ void HoI4::Army::ConvertArmies(const militaryMappings& military_mappings,
 			addAvailableBattalionsAndCompanies(remainingBattalionsAndCompanies, army, military_mappings, force_multiplier);
 			continue;
 		}
-		std::map<std::string, std::vector<SizedRegiment>> localBattalionsAndCompanies;
+		/*std::map<std::string, std::vector<SizedRegiment>> localBattalionsAndCompanies;
 		addAvailableBattalionsAndCompanies(localBattalionsAndCompanies, army, military_mappings, force_multiplier);
 		const auto divisionsBefore = divisions.size();
 
@@ -62,7 +62,7 @@ void HoI4::Army::ConvertArmies(const militaryMappings& military_mappings,
 			divisionLocations.insert(*location);
 		}
 
-		addRemainingBattalionsAndCompanies(remainingBattalionsAndCompanies, localBattalionsAndCompanies);
+		addRemainingBattalionsAndCompanies(remainingBattalionsAndCompanies, localBattalionsAndCompanies);*/
 	}
 
 	/*if (!remainingBattalionsAndCompanies.empty())
