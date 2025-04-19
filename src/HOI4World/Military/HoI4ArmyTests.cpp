@@ -626,7 +626,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	/*theArmy.ConvertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 11821,
 		 1.0,
 		 HoI4::technologies{},
@@ -634,7 +634,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 		 *Mappers::ProvinceMapper::Builder().Build(),
 		 "");
 
-	std::ostringstream output;
+	/*std::ostringstream output;
 	output << theArmy;
 	EXPECT_EQ(std::string("\tdivision = {\n"
 								 "\t\tname = \"1. Light Infantry Brigade\"\n"
