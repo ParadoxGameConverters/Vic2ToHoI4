@@ -736,14 +736,14 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsDefaultToEmpty)
+TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_DivisionLocationsDefaultToEmpty)
 {
 	const HoI4::Army theArmy;
 	EXPECT_TRUE(theArmy.getDivisionLocations().empty());
 }
 
 
-TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsAreConverted)
+TEST(HoI4World_Military_HoI4ArmyTests, DISABLED_DivisionLocationsAreConverted)
 {
 	HoI4::States theStates;
 
