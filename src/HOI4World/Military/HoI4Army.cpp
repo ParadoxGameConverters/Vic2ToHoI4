@@ -65,13 +65,13 @@ void HoI4::Army::ConvertArmies(const militaryMappings& military_mappings,
 		addRemainingBattalionsAndCompanies(remainingBattalionsAndCompanies, localBattalionsAndCompanies);
 	}
 
-	if (!remainingBattalionsAndCompanies.empty())
+	/*if (!remainingBattalionsAndCompanies.empty())
 	{
 		divisionLocations.insert(backup_location);
 	}
 	convertArmyDivisions(military_mappings, remainingBattalionsAndCompanies, country_technologies, backup_location);
 
-	CollectLeftoverEquipment(remainingBattalionsAndCompanies, owner);
+	CollectLeftoverEquipment(remainingBattalionsAndCompanies, owner);*/
 }
 
 
