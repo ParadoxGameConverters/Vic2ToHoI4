@@ -586,7 +586,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
-	/*std::stringstream mappingsInput;
+	std::stringstream mappingsInput;
 	mappingsInput << "= {\n";
 	mappingsInput << "\tmtg_unit_map = {}\n";
 	mappingsInput << "\tunit_map = {\n";
@@ -626,7 +626,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.ConvertArmies(theMilitaryMappings,
+	/*theArmy.ConvertArmies(theMilitaryMappings,
 		 11821,
 		 1.0,
 		 HoI4::technologies{},
