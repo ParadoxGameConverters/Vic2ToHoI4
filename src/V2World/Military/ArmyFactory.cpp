@@ -14,7 +14,7 @@ Vic2::Army::Factory::Factory()
 		army->location = commonItems::singleInt{theStream}.getInt();
 	});
 	registerKeyword("regiment", [this](std::istream& theStream) {
-		//army->units.push_back(*unitFactory.getUnit(theStream));
+		army->units.push_back(*unitFactory.getUnit(theStream));
 	});
 	registerKeyword("ship", [this](std::istream& theStream) {
 		army->units.push_back(*unitFactory.getUnit(theStream));
