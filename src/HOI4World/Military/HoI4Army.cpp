@@ -46,14 +46,13 @@ void HoI4::Army::ConvertArmies(const militaryMappings& military_mappings,
 
 	for (const auto& army: sourceArmies)
 	{
-		auto src_location = army.getLocation();
-		auto location = getLocation(src_location, province_mapper);
+		auto location = getLocation(army.getLocation(), province_mapper);
 		if (!location || isWastelandProvince(*location, states))
 		{
 			addAvailableBattalionsAndCompanies(remainingBattalionsAndCompanies, army, military_mappings, force_multiplier);
 			continue;
 		}
-		/*std::map<std::string, std::vector<SizedRegiment>> localBattalionsAndCompanies;
+		std::map<std::string, std::vector<SizedRegiment>> localBattalionsAndCompanies;
 		addAvailableBattalionsAndCompanies(localBattalionsAndCompanies, army, military_mappings, force_multiplier);
 		const auto divisionsBefore = divisions.size();
 
@@ -63,16 +62,16 @@ void HoI4::Army::ConvertArmies(const militaryMappings& military_mappings,
 			divisionLocations.insert(*location);
 		}
 
-		addRemainingBattalionsAndCompanies(remainingBattalionsAndCompanies, localBattalionsAndCompanies);*/
+		addRemainingBattalionsAndCompanies(remainingBattalionsAndCompanies, localBattalionsAndCompanies);
 	}
 
-	/*if (!remainingBattalionsAndCompanies.empty())
+	if (!remainingBattalionsAndCompanies.empty())
 	{
 		divisionLocations.insert(backup_location);
 	}
 	convertArmyDivisions(military_mappings, remainingBattalionsAndCompanies, country_technologies, backup_location);
 
-	CollectLeftoverEquipment(remainingBattalionsAndCompanies, owner);*/
+	CollectLeftoverEquipment(remainingBattalionsAndCompanies, owner);
 }
 
 
@@ -120,7 +119,7 @@ void HoI4::Army::addAvailableBattalionsAndCompanies(
 	{
 		auto Vic2Type = regiment.getType();
 
-		/*if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
+		if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
 		{
 			for (const auto& unitInfo: theMilitaryMappings.getUnitMappings().getMatchingUnitInfo(Vic2Type))
 			{
@@ -139,7 +138,7 @@ void HoI4::Army::addAvailableBattalionsAndCompanies(
 		else
 		{
 			Log(LogLevel::Warning) << "Unknown unit type: " << Vic2Type;
-		}*/
+		}
 	}
 }
 

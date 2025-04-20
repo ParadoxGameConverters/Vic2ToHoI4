@@ -634,7 +634,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 		 *Mappers::ProvinceMapper::Builder().Build(),
 		 "");
 
-	/*std::ostringstream output;
+	std::ostringstream output;
 	output << theArmy;
 	EXPECT_EQ(std::string("\tdivision = {\n"
 								 "\t\tname = \"1. Light Infantry Brigade\"\n"
@@ -643,7 +643,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 								 "\t\tstart_experience_factor = 0.3\n"
 								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"),
-		 output.str());*/
+		 output.str());
 }
 
 
