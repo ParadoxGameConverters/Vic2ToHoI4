@@ -118,7 +118,7 @@ void HoI4::Army::addAvailableBattalionsAndCompanies(
 {
 	for (const auto& regiment: sourceArmy.getUnits())
 	{
-		//auto Vic2Type = regiment.getType();
+		auto Vic2Type = regiment.getType();
 
 		/*if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
 		{

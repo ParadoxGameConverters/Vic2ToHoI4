@@ -8,7 +8,7 @@
 Vic2::Unit::Factory::Factory()
 {
 	registerKeyword("name", [this](std::istream& theStream) {
-		unit->name = commonItems::convertWin1252ToUTF8(commonItems::getString(theStream));
+		unit->name = commonItems::getString(theStream); //commonItems::convertWin1252ToUTF8(commonItems::getString(theStream));
 	});
 	registerKeyword("type", [this](std::istream& theStream) {
 		unit->type = commonItems::singleString{theStream}.getString();
