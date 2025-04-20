@@ -119,7 +119,7 @@ void HoI4::Army::addAvailableBattalionsAndCompanies(
 	{
 		auto Vic2Type = regiment.getType();
 
-		if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
+		/*if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
 		{
 			for (const auto& unitInfo: theMilitaryMappings.getUnitMappings().getMatchingUnitInfo(Vic2Type))
 			{
@@ -138,7 +138,7 @@ void HoI4::Army::addAvailableBattalionsAndCompanies(
 		else
 		{
 			Log(LogLevel::Warning) << "Unknown unit type: " << Vic2Type;
-		}
+		}*/
 	}
 }
 
