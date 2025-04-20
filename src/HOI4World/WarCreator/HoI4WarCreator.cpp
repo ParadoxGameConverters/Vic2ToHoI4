@@ -90,8 +90,8 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 	 const Maps::ProvinceDefinitions& provinceDefinitions,
 	 HoI4::Localisation& hoi4Localisations,
 	 const Configuration& theConfiguration):
-	 genericFocusTree(new HoI4FocusTree),
-	 theWorld(world), mapUtils(theWorld->getStates(), theWorld->getCountries()), AggressorFactions(), WorldTargetMap()
+	 genericFocusTree(new HoI4FocusTree), theWorld(world), mapUtils(theWorld->getStates(), theWorld->getCountries()),
+	 AggressorFactions(), WorldTargetMap()
 {
 	Log(LogLevel::Info) << "\tCreating wars";
 

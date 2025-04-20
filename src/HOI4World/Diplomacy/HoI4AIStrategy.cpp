@@ -6,9 +6,7 @@ HoI4::AIStrategy::AIStrategy(const std::string& strategyType,
 	 const std::string& HoI4Tag,
 	 const Vic2::StrategyData& data,
 	 const States& states,
-	 const Mappers::ProvinceMapper& provinceMapper):
-	 type(strategyType),
-	 id(HoI4Tag), value(data.value)
+	 const Mappers::ProvinceMapper& provinceMapper): type(strategyType), id(HoI4Tag), value(data.value)
 {
 	determineClaimedState(data.provinces, states, provinceMapper);
 }

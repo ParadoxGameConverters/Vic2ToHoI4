@@ -151,8 +151,8 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingIdeologyCanBeMapped)
 		 "ruling_ideology",
 		 {"test_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("test_ideology", ideology);
@@ -171,8 +171,8 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingIdeologyMappingIsLogged)
 		 "ruling_ideology",
 		 {"test_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
+			  .Build(),
 		 true);
 
 	std::cout.rdbuf(stdOutBuf);
@@ -192,11 +192,11 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingIdeologyCanBeMappedWithGo
 		 "ruling_ideology",
 		 {"source_government_not_required_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder()
-										.addName("source_government_not_required_ideology")
-										.addType("source_government_not_required_leader_ideology")
-										.Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder()
+						 .addName("source_government_not_required_ideology")
+						 .addType("source_government_not_required_leader_ideology")
+						 .Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("source_government_not_required_ideology", ideology);
@@ -212,11 +212,11 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingIdeologyCanBeMappedWithRu
 		 "bad_ruling_ideology",
 		 {"ruling_ideology_not_required_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder()
-										.addName("ruling_ideology_not_required_ideology")
-										.addType("ruling_ideology_not_required_leader_ideology")
-										.Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder()
+						 .addName("ruling_ideology_not_required_ideology")
+						 .addType("ruling_ideology_not_required_leader_ideology")
+						 .Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("ruling_ideology_not_required_ideology", ideology);
@@ -232,11 +232,11 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingIdeologyCanBeMappedWithTa
 		 "ruling_ideology",
 		 {"tag_not_required_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder()
-										.addName("tag_not_required_ideology")
-										.addType("tag_not_required_leader_ideology")
-										.Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder()
+						 .addName("tag_not_required_ideology")
+						 .addType("tag_not_required_leader_ideology")
+						 .Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("tag_not_required_ideology", ideology);
@@ -252,8 +252,8 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingIdeologyIsRequired)
 		 "ruling_ideology",
 		 {},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("neutrality", ideology);
@@ -284,8 +284,8 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyCanBeMapped
 		 "ruling_ideology",
 		 {"test_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("test_leader_ideology", ideology);
@@ -304,8 +304,8 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyMappingIsLo
 		 "ruling_ideology",
 		 {"test_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
+			  .Build(),
 		 true);
 
 	std::cout.rdbuf(stdOutBuf);
@@ -325,11 +325,11 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyCanBeMapped
 		 "ruling_ideology",
 		 {"source_government_not_required_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder()
-										.addName("source_government_not_required_ideology")
-										.addType("source_government_not_required_leader_ideology")
-										.Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder()
+						 .addName("source_government_not_required_ideology")
+						 .addType("source_government_not_required_leader_ideology")
+						 .Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("source_government_not_required_leader_ideology", ideology);
@@ -345,11 +345,11 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyCanBeMapped
 		 "bad_ruling_ideology",
 		 {"ruling_ideology_not_required_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder()
-										.addName("ruling_ideology_not_required_ideology")
-										.addType("ruling_ideology_not_required_leader_ideology")
-										.Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder()
+						 .addName("ruling_ideology_not_required_ideology")
+						 .addType("ruling_ideology_not_required_leader_ideology")
+						 .Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("ruling_ideology_not_required_leader_ideology", ideology);
@@ -365,11 +365,11 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyCanBeMapped
 		 "ruling_ideology",
 		 {"tag_not_required_ideology"},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder()
-										.addName("tag_not_required_ideology")
-										.addType("tag_not_required_leader_ideology")
-										.Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder()
+						 .addName("tag_not_required_ideology")
+						 .addType("tag_not_required_leader_ideology")
+						 .Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("tag_not_required_leader_ideology", ideology);
@@ -385,8 +385,8 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyIsRequired)
 		 "ruling_ideology",
 		 {},
 		 *HoI4::Ideologies::Builder()
-				.addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
-				.Build(),
+			  .addIdeology(*HoI4::Ideology::Builder().addName("test_ideology").addType("test_leader_ideology").Build())
+			  .Build(),
 		 false);
 
 	ASSERT_EQ("dictatorship_neutral", ideology);

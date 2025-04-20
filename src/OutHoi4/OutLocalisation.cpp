@@ -6,7 +6,7 @@
 
 
 
-void outputLocalisations(const std::string& localisationPath,
+void outputLocalisations(const std::filesystem::path& localisationPath,
 	 const std::string& filenameStart,
 	 const HoI4::languageToLocalisationsMap& localisations)
 {
@@ -16,10 +16,11 @@ void outputLocalisations(const std::string& localisationPath,
 		{
 			continue;
 		}
-		commonItems::TryCreateFolder(localisationPath + "/" + languageToLocalisations.first);
-		std::ofstream localisationFile(localisationPath + "/" + languageToLocalisations.first + filenameStart +
-													  languageToLocalisations.first + ".yml",
-			 std::ios_base::app);
+		std::filesystem::path folder = localisationPath / languageToLocalisations.first;
+		std::filesystem::path file = folder / filenameStart;
+		file += languageToLocalisations.first + ".yml";
+		std::filesystem::create_directories(folder);
+		std::ofstream localisationFile(file, std::ios_base::app);
 		if (!localisationFile.is_open())
 		{
 			throw std::runtime_error("Could not update localisation text file");
@@ -35,7 +36,7 @@ void outputLocalisations(const std::string& localisationPath,
 }
 
 
-void outputStateLocalisations(const std::string& localisationPath,
+void outputStateLocalisations(const std::filesystem::path& localisationPath,
 	 const std::map<HoI4::language, std::map<HoI4::stateNumber, std::string>>& stateLocalisations)
 {
 	for (const auto& languageToLocalisations: stateLocalisations)
@@ -44,10 +45,11 @@ void outputStateLocalisations(const std::string& localisationPath,
 		{
 			continue;
 		}
-		commonItems::TryCreateFolder(localisationPath + "/" + languageToLocalisations.first);
-		std::ofstream localisationFile(localisationPath + "/" + languageToLocalisations.first + "/state_names_l_" +
-													  languageToLocalisations.first + ".yml",
-			 std::ios_base::app);
+		std::filesystem::path folder = localisationPath / languageToLocalisations.first;
+		std::filesystem::path file = folder / "state_names_l_";
+		file += languageToLocalisations.first + ".yml";
+		std::filesystem::create_directories(folder);
+		std::ofstream localisationFile(file, std::ios_base::app);
 		if (!localisationFile.is_open())
 		{
 			throw std::runtime_error("Could not update state localisation text file");
@@ -63,25 +65,25 @@ void outputStateLocalisations(const std::string& localisationPath,
 }
 
 
-void HoI4::outputLocalisation(const Localisation& localisation, const std::string& outputName)
+void HoI4::outputLocalisation(const Localisation& localisation, const std::filesystem::path& outputName)
 {
 	Log(LogLevel::Debug) << "Writing localisations";
-	const auto localisationPath = "output/" + outputName + "/localisation";
-	if (!commonItems::TryCreateFolder(localisationPath))
+	const auto localisationPath = "output" / outputName / "localisation";
+	if (!commonItems::DoesFolderExist(localisationPath) && !std::filesystem::create_directories(localisationPath))
 	{
 		throw std::runtime_error("Could not create localisation folder");
 	}
 
-	outputLocalisations(localisationPath, "/countries_l_", localisation.getCountryLocalisations());
-	outputLocalisations(localisationPath, "/focus_mod_l_", localisation.getNewFocuses());
+	outputLocalisations(localisationPath, "countries_l_", localisation.getCountryLocalisations());
+	outputLocalisations(localisationPath, "focus_mod_l_", localisation.getNewFocuses());
 	outputStateLocalisations(localisationPath, localisation.getStateLocalisations());
-	outputLocalisations(localisationPath, +"/victory_points_l_", localisation.getVPLocalisations());
-	outputLocalisations(localisationPath, "/converted_ideas_l_", localisation.getIdeaLocalisations());
-	outputLocalisations(localisationPath, "/converted_events_l_", localisation.getNewEventLocalisations());
-	outputLocalisations(localisationPath, "/parties3_l_", localisation.getPoliticalPartyLocalisations());
-	outputLocalisations(localisationPath, "/decisions3_l_", localisation.getDecisionLocalisations());
-	outputLocalisations(localisationPath, "/custom_localization_converter_l_", localisation.getCustomLocalisations());
+	outputLocalisations(localisationPath, "victory_points_l_", localisation.getVPLocalisations());
+	outputLocalisations(localisationPath, "converted_ideas_l_", localisation.getIdeaLocalisations());
+	outputLocalisations(localisationPath, "converted_events_l_", localisation.getNewEventLocalisations());
+	outputLocalisations(localisationPath, "parties3_l_", localisation.getPoliticalPartyLocalisations());
+	outputLocalisations(localisationPath, "decisions3_l_", localisation.getDecisionLocalisations());
+	outputLocalisations(localisationPath, "custom_localization_converter_l_", localisation.getCustomLocalisations());
 	outputLocalisations(localisationPath,
-		 "/converted_character_localisation_l_",
+		 "converted_character_localisation_l_",
 		 localisation.getCharacterLocalisations());
 }

@@ -224,25 +224,26 @@ void outputRestoreIdeologyPopularities(const std::set<std::string>& majorIdeolog
 
 void HoI4::outputScriptedEffects(const ScriptedEffects& scriptedEffects,
 	 const std::set<std::string>& majorIdeologies,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
-	std::ofstream operationStratEffects("output/" + outputName + "/common/scripted_effects/operation_strat_effects.txt");
+	const std::filesystem::path strategic_effects_filename =
+		 "output" / outputName / "common/scripted_effects/operation_strat_effects.txt";
+	std::ofstream operationStratEffects(strategic_effects_filename);
 	if (!operationStratEffects.is_open())
 	{
-		throw std::runtime_error(
-			 "Could not open output/" + outputName + "/common/scripted_effects/operation_strat_effects.txt");
+		throw std::runtime_error("Could not open " + strategic_effects_filename.string());
 	}
 	for (const auto& effect: scriptedEffects.getOperationStratEffects())
 	{
 		operationStratEffects << effect << "\n";
 	}
 
-	std::ofstream scriptedEffectsFile("output/" + outputName + "/common/scripted_effects/00_scripted_effects.txt",
-		 std::ios::app);
+	const std::filesystem::path scripted_effects_file =
+		 "output" / outputName / "common/scripted_effects/00_scripted_effects.txt";
+	std::ofstream scriptedEffectsFile(scripted_effects_file, std::ios::app);
 	if (!scriptedEffectsFile.is_open())
 	{
-		throw std::runtime_error(
-			 "Could not open output/" + outputName + "/common/scripted_effects/00_scripted_effects.txt");
+		throw std::runtime_error("Could not open " + scripted_effects_file.string());
 	}
 
 	outputGetBestAllianceMatchIdeologyEffects(majorIdeologies, scriptedEffectsFile);

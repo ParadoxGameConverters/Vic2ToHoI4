@@ -4,7 +4,7 @@
 
 
 
-void HoI4::PoliticalDecisions::importDecisions(const std::string& filename)
+void HoI4::PoliticalDecisions::importDecisions(const std::filesystem::path& filename)
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& unused, std::istream& theStream) {
 		const IdeologicalDecisions ideologicalDecisions(theStream);

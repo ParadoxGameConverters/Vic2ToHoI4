@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-void outputOperativeNames(const OperativeNames& operativeNames, const std::string& outputName);
+void outputOperativeNames(const OperativeNames& operativeNames, const std::filesystem::path& outputName);
 
 }
 

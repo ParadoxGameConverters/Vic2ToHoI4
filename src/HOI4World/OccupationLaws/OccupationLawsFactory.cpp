@@ -16,6 +16,6 @@ std::unique_ptr<HoI4::OccupationLaws> HoI4::OccupationLaws::Factory::getOccupati
 			 occupationLaws->giveOccupationLaw(std::move(*occupationLaw));
 		 });
 
-	parseFile("blankmod/common/occupation_laws/occupation_laws.txt");
+	parseFile(std::filesystem::path("blankmod/common/occupation_laws/occupation_laws.txt"));
 	return occupationLaws;
 }

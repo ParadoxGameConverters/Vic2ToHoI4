@@ -8,7 +8,7 @@
 
 TEST(Vic2World_Localisations_LocalisationsTests, MissingKeyGivesNullopt)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	const auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	ASSERT_EQ(std::nullopt, localisations->getTextInLanguage("bad_key", "english"));
@@ -17,7 +17,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, MissingKeyGivesNullopt)
 
 TEST(Vic2World_Localisations_LocalisationsTests, MissingLanguageGivesNullopt)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	const auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	ASSERT_EQ(std::nullopt, localisations->getTextInLanguage("test_key", "bad_language"));
@@ -26,7 +26,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, MissingLanguageGivesNullopt)
 
 TEST(Vic2World_Localisations_LocalisationsTests, MissingTextInAllLanguagesGivesEmptyMap)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	const auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	ASSERT_TRUE(localisations->getTextInEachLanguage("bad_key").empty());
@@ -35,7 +35,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, MissingTextInAllLanguagesGivesE
 
 TEST(Vic2World_Localisations_LocalisationsTests, TextInLanguageIsReturned)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	const auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	ASSERT_EQ("english_loc", localisations->getTextInLanguage("test_key", "english"));
@@ -56,7 +56,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, TextInLanguageIsReturned)
 
 TEST(Vic2World_Localisations_LocalisationsTests, MissingLocalisationsReplacedWithEnglish)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	const auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	ASSERT_EQ("english_loc", localisations->getTextInLanguage("replace_key", "english"));
@@ -77,7 +77,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, MissingLocalisationsReplacedWit
 
 TEST(Vic2World_Localisations_LocalisationsTests, TextInAllLanguagesTextInAllLanguages)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	const auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	const Vic2::LanguageToLocalisationMap expected{
@@ -101,7 +101,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, TextInAllLanguagesTextInAllLang
 
 TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromMod)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {Mod("Mod Locs", "modLocalisations/")});
+	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path(""), {Mod("Mod Locs", "modLocalisations/")});
 	const auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	ASSERT_EQ("english_mod_loc", localisations->getTextInLanguage("mod_key", "english"));
@@ -122,7 +122,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromMod
 
 TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromConverter)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	const auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	ASSERT_EQ("english_converter_loc", localisations->getTextInLanguage("converter_key", "english"));
@@ -143,7 +143,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromCon
 
 TEST(Vic2World_Localisations_LocalisationsTests, RegionTextCanBeReplaced)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 	localisations->updateDomainCountry("TAG", "Replace Region");
 
@@ -167,7 +167,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, RegionTextCanBeReplaced)
 
 TEST(Vic2World_Localisations_LocalisationsTests, ReplacementRegionTextCanBeFromLocalisation)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 	localisations->updateDomainCountry("TAG", "Replacement Region English");
 
@@ -202,7 +202,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, ReplacementRegionTextCanBeFromL
 
 TEST(Vic2World_Localisations_LocalisationsTests, UpdateDomainCountrySkipsMissingTag)
 {
-	const commonItems::ModFilesystem mod_filesystem("./", {});
+	const commonItems::ModFilesystem mod_filesystem;
 	auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	ASSERT_NO_THROW(localisations->updateDomainCountry("NON", "Replacement Region English"));

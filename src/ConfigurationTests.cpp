@@ -339,7 +339,7 @@ TEST(ConfigurationTests, HoI4ModPathIsLogged)
 		 testing::HasSubstr("[INFO] \tHoI4 mod path is C:\\MyDocuments\\Paradox Interactive\\Hearts of Iron IV\\mod"));
 	EXPECT_THAT(log.str(), testing::HasSubstr("[ERROR] Vic2 version could not be determined, proceeding blind!"));
 	EXPECT_THAT(log.str(),
-		 testing::HasSubstr("[WARNING] Failure extracting version: /launcher-settings.json does not exist."));
+		 testing::HasSubstr("[WARNING] Failure extracting version: \"launcher-settings.json\" does not exist."));
 	EXPECT_THAT(log.str(), testing::HasSubstr("[ERROR] HoI4 version could not be determined, proceeding blind!"));
 	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] Using output name input"));
 	EXPECT_THAT(log.str(), testing::HasSubstr("[INFO] No mods were detected in savegame. Skipping mod processing."));
@@ -374,7 +374,7 @@ TEST(ConfigurationTests, Vic2ModsCanBeSet)
 TEST(ConfigurationTests, Vic2ModsWithDependenciesAreAfterTheirDependencies)
 {
 	std::stringstream input;
-	input << R"(Vic2directory = "./Vic2")";
+	input << R"(Vic2directory = "Vic2")";
 	input << "selectedMods = { \n";
 	input << "\t\"DependencyTwo.mod\"\n";
 	input << "\t\"DependencyOne.mod\"\n";
@@ -384,11 +384,19 @@ TEST(ConfigurationTests, Vic2ModsWithDependenciesAreAfterTheirDependencies)
 	const commonItems::ConverterVersion converterVersion;
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input, converterVersion);
 
+#ifdef WINDOWS
 	EXPECT_THAT(theConfiguration->getVic2Mods(),
-		 testing::ElementsAre(Mod("Test Mod", "./Vic2/mod/test_directory/"),
-			  Mod("Dependency Two", "./Vic2/mod/test_directory/"),
-			  Mod("Dependency One", "./Vic2/mod/test_directory/", std::set<Name>{"Dependency Two"}),
-			  Mod("Dependent Mod", "./Vic2/mod/test_directory/", std::set<Name>{"Dependency One"})));
+		 testing::ElementsAre(Mod("Test Mod", std::filesystem::path("Vic2\\mod\\test_directory")),
+			  Mod("Dependency Two", std::filesystem::path("Vic2\\mod\\test_directory")),
+			  Mod("Dependency One", std::filesystem::path("Vic2\\mod\\test_directory"), std::set<Name>{"Dependency Two"}),
+			  Mod("Dependent Mod", std::filesystem::path("Vic2\\mod\\test_directory"), std::set<Name>{"Dependency One"})));
+#else
+	EXPECT_THAT(theConfiguration->getVic2Mods(),
+		 testing::ElementsAre(Mod("Test Mod", std::filesystem::path("Vic2/mod/test_directory")),
+			  Mod("Dependency Two", std::filesystem::path("Vic2/mod/test_directory")),
+			  Mod("Dependency One", std::filesystem::path("Vic2/mod/test_directory"), std::set<Name>{"Dependency Two"}),
+			  Mod("Dependent Mod", std::filesystem::path("Vic2/mod/test_directory"), std::set<Name>{"Dependency One"})));
+#endif
 }
 
 

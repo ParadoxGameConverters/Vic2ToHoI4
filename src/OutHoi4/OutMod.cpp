@@ -3,6 +3,7 @@
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "src/OutHoi4/OutFlags.h"
 #include "src/OutHoi4/OutHoi4World.h"
+#include <filesystem>
 #include <string>
 
 
@@ -10,25 +11,31 @@
 namespace
 {
 
-void CreateOutputFolder(const std::string& output_name)
+void CreateOutputFolder(const std::filesystem::path& output_name)
 {
 	Log(LogLevel::Info) << "\tCopying blank mod";
-	if (!commonItems::TryCreateFolder("output"))
+	if (!commonItems::DoesFolderExist(std::filesystem::path("output")) && !std::filesystem::create_directories("output"))
 	{
 		throw std::runtime_error("Could not create output folder");
 	}
-	if (!commonItems::CopyFolder("blankmod", "output/" + output_name))
+	try
+	{
+		std::filesystem::copy("blankmod", "output" / output_name, std::filesystem::copy_options::recursive);
+	}
+	catch (...)
 	{
 		throw std::runtime_error("Could not copy blankMod");
 	}
 }
 
 
-void CreateModFiles(const std::string& output_name)
+void CreateModFiles(const std::filesystem::path& output_name)
 {
 	Log(LogLevel::Info) << "\tCreating .mod files";
 
-	std::ofstream mod_file("output/" + output_name + ".mod");
+	std::filesystem::path mod_filename = "output" / output_name;
+	mod_filename += ".mod";
+	std::ofstream mod_file(mod_filename);
 	if (!mod_file.is_open())
 	{
 		throw std::runtime_error("Could not create .mod file");
@@ -51,7 +58,9 @@ void CreateModFiles(const std::string& output_name)
 	mod_file << "supported_version=\"1.15.*\"";
 	mod_file.close();
 
-	std::ofstream descriptor_file("output/" + output_name + "/descriptor.mod");
+	std::filesystem::path descriptor_filename = "output" / output_name;
+	descriptor_filename += "/descriptor.mod";
+	std::ofstream descriptor_file(descriptor_filename);
 	if (!descriptor_file.is_open())
 	{
 		throw std::runtime_error("Could not create descriptor.mod");
@@ -77,15 +86,15 @@ void CreateModFiles(const std::string& output_name)
 
 
 
-void clearOutputFolder(const std::string& outputName)
+void clearOutputFolder(const std::filesystem::path& outputName)
 {
-	const auto outputFolder = "output/" + outputName;
+	const auto outputFolder = "output" / outputName;
 	if (commonItems::DoesFolderExist(outputFolder))
 	{
 		Log(LogLevel::Info) << "Removing pre-existing copy of " << outputName;
-		if (!commonItems::DeleteFolder(outputFolder))
+		if (std::filesystem::remove_all(outputFolder) == -1)
 		{
-			throw std::runtime_error("Could not remove pre-existing output folder " + outputFolder +
+			throw std::runtime_error("Could not remove pre-existing output folder " + outputFolder.string() +
 											 ". Please delete folder and try converting again.");
 		}
 	}
@@ -93,7 +102,7 @@ void clearOutputFolder(const std::string& outputName)
 
 
 void output(const HoI4::World& destWorld,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 const bool debugEnabled,
 	 const Mods& vic2Mods,
 	 const Configuration& theConfiguration)

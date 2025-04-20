@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputBuildings(const Buildings& buildings, const std::string& outputName);
+void outputBuildings(const Buildings& buildings, const std::filesystem::path& outputName);
 
 }
 

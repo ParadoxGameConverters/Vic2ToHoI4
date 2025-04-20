@@ -240,10 +240,10 @@ TEST(HoI4World_PlaneDesigns_PlaneDesignsTests, PlaneDesignsCanBeBlocked)
 
 	HoI4::PlaneDesigns the_designs(possible_designs,
 		 *HoI4::technologies::Builder()
-				.addTechnology("iw_small_airframe")
-				.addTechnology("early_bombs")
-				.addTechnology("basic_medium_airframe")
-				.Build());
+			  .addTechnology("iw_small_airframe")
+			  .addTechnology("early_bombs")
+			  .addTechnology("basic_medium_airframe")
+			  .Build());
 
 	std::stringstream output;
 	output << the_designs;

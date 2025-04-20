@@ -17,7 +17,7 @@ class ScriptedEffectFile: commonItems::parser
 {
   public:
 	ScriptedEffectFile();
-	std::vector<ScriptedEffect> getScriptedEffects(const std::string& filename);
+	std::vector<ScriptedEffect> getScriptedEffects(const std::filesystem::path& filename);
 
   private:
 	ScriptedEffect::Factory factory;

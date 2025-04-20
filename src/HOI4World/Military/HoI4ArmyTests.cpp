@@ -266,9 +266,9 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 		 HoI4::technologies{},
 		 theStates,
 		 *Mappers::ProvinceMapper::Builder()
-				.addHoI4ToVic2ProvinceMapping(11821, {496})
-				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build(),
+			  .addHoI4ToVic2ProvinceMapping(11821, {496})
+			  .addVic2ToHoI4ProvinceMap(496, {11821})
+			  .Build(),
 		 "");
 
 	std::ostringstream output;
@@ -352,9 +352,9 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 		 HoI4::technologies{},
 		 theStates,
 		 *Mappers::ProvinceMapper::Builder()
-				.addHoI4ToVic2ProvinceMapping(11821, {496})
-				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build(),
+			  .addHoI4ToVic2ProvinceMapping(11821, {496})
+			  .addVic2ToHoI4ProvinceMap(496, {11821})
+			  .Build(),
 		 "");
 
 	std::ostringstream output;
@@ -439,9 +439,9 @@ TEST(HoI4World_Military_HoI4ArmyTests, StrengthConverts)
 		 HoI4::technologies{},
 		 theStates,
 		 *Mappers::ProvinceMapper::Builder()
-				.addHoI4ToVic2ProvinceMapping(11821, {496})
-				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build(),
+			  .addHoI4ToVic2ProvinceMapping(11821, {496})
+			  .addVic2ToHoI4ProvinceMap(496, {11821})
+			  .Build(),
 		 "");
 
 	std::ostringstream output;
@@ -532,9 +532,9 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 		 HoI4::technologies{},
 		 theStates,
 		 *Mappers::ProvinceMapper::Builder()
-				.addHoI4ToVic2ProvinceMapping(11821, {496})
-				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build(),
+			  .addHoI4ToVic2ProvinceMapping(11821, {496})
+			  .addVic2ToHoI4ProvinceMap(496, {11821})
+			  .Build(),
 		 "");
 
 	std::ostringstream output;
@@ -570,12 +570,14 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 		 "\t\tlocation=496\n"
 		 "\t\tregiment=\n"
 		 "\t\t{\n"
+		 "\t\t\tname=\"regiment one\""
 		 "\t\t\texperience=30.000\n"
 		 "\t\t\tcount=1\n"
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t\tregiment=\n"
 		 "\t\t{\n"
+		 "\t\t\tname=\"regiment two\""
 		 "\t\t\texperience=30.000\n"
 		 "\t\t\tcount=1\n"
 		 "\t\t\ttype=artillery\n"
@@ -716,11 +718,11 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 		 HoI4::technologies{},
 		 theStates,
 		 *Mappers::ProvinceMapper::Builder()
-				.addHoI4ToVic2ProvinceMapping(11821, {496})
-				.addHoI4ToVic2ProvinceMapping(12821, {1496})
-				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.addVic2ToHoI4ProvinceMap(1496, {12821})
-				.Build(),
+			  .addHoI4ToVic2ProvinceMapping(11821, {496})
+			  .addHoI4ToVic2ProvinceMapping(12821, {1496})
+			  .addVic2ToHoI4ProvinceMap(496, {11821})
+			  .addVic2ToHoI4ProvinceMap(1496, {12821})
+			  .Build(),
 		 "");
 
 	std::ostringstream output;
@@ -797,9 +799,9 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsAreConverted)
 		 HoI4::technologies{},
 		 theStates,
 		 *Mappers::ProvinceMapper::Builder()
-				.addHoI4ToVic2ProvinceMapping(11821, {496})
-				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.Build(),
+			  .addHoI4ToVic2ProvinceMapping(11821, {496})
+			  .addVic2ToHoI4ProvinceMap(496, {11821})
+			  .Build(),
 		 "");
 
 	EXPECT_EQ(std::set{11821}, theArmy.getDivisionLocations());
@@ -875,11 +877,11 @@ TEST(HoI4World_Military_HoI4ArmyTests, BackupDivisionLocationsAreConverted)
 		 HoI4::technologies{},
 		 theStates,
 		 *Mappers::ProvinceMapper::Builder()
-				.addHoI4ToVic2ProvinceMapping(11821, {496})
-				.addHoI4ToVic2ProvinceMapping(12821, {1496})
-				.addVic2ToHoI4ProvinceMap(496, {11821})
-				.addVic2ToHoI4ProvinceMap(1496, {12821})
-				.Build(),
+			  .addHoI4ToVic2ProvinceMapping(11821, {496})
+			  .addHoI4ToVic2ProvinceMapping(12821, {1496})
+			  .addVic2ToHoI4ProvinceMap(496, {11821})
+			  .addVic2ToHoI4ProvinceMap(1496, {12821})
+			  .Build(),
 		 "");
 
 	EXPECT_EQ(std::set{1}, theArmy.getDivisionLocations());

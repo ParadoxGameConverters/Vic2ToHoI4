@@ -4,16 +4,19 @@
 
 
 
-void HoI4::outputGameRules(const GameRules& rules, const std::string& outputName)
+void HoI4::outputGameRules(const GameRules& rules, const std::filesystem::path& outputName)
 {
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/game_rules"))
+	const std::filesystem::path folder = "output" / outputName / "common/game_rules";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error{"Could not create output/" + outputName + "/common/game_rules"};
+		throw std::runtime_error{"Could not create " + folder.string()};
 	}
-	std::ofstream rulesFile("output/" + outputName + "/common/game_rules/00_game_rules.txt");
+
+	const std::filesystem::path file = folder / "00_game_rules.txt";
+	std::ofstream rulesFile(file);
 	if (!rulesFile.is_open())
 	{
-		throw std::runtime_error{"Could not open output/" + outputName + "/common/game_rules/00_game_rules.txt"};
+		throw std::runtime_error{"Could not open " + file.string()};
 	}
 
 	for (const auto& rule: rules.getGameRules())

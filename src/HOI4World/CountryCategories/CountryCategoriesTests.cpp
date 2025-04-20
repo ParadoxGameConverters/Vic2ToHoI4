@@ -8,10 +8,10 @@
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, CategoriesCanBeCreated)
 {
 	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder()
-																				  .addMapping("BAN", "BAN")
-																				  .addMapping("ENG", "ENG")
-																				  .addMapping("BGL", "BGL")
-																				  .Build(),
+																				 .addMapping("BAN", "BAN")
+																				 .addMapping("ENG", "ENG")
+																				 .addMapping("BGL", "BGL")
+																				 .Build(),
 		 {},
 		 {"absolutist", "democratic"},
 		 false);
@@ -30,10 +30,10 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, CategoriesCanBeCreated)
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, TagsAreTranslated)
 {
 	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder()
-																				  .addMapping("BAN", "B2N")
-																				  .addMapping("ENG", "EN2")
-																				  .addMapping("BGL", "BG2")
-																				  .Build(),
+																				 .addMapping("BAN", "B2N")
+																				 .addMapping("ENG", "EN2")
+																				 .addMapping("BGL", "BG2")
+																				 .Build(),
 		 {},
 		 {"absolutist", "democratic"},
 		 false);
@@ -91,10 +91,10 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, UncategorizedCountriesA
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, MissingIdeologiesAreRemovedFromExtras)
 {
 	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder()
-																				  .addMapping("BAN", "BAN")
-																				  .addMapping("ENG", "ENG")
-																				  .addMapping("BGL", "BGL")
-																				  .Build(),
+																				 .addMapping("BAN", "BAN")
+																				 .addMapping("ENG", "ENG")
+																				 .addMapping("BGL", "BGL")
+																				 .Build(),
 		 {},
 		 {"absolutist"},
 		 false);
@@ -111,10 +111,10 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, MissingIdeologiesAreRem
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, MissingIdeologiesCanTurnExtraToNullopt)
 {
 	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder()
-																				  .addMapping("BAN", "BAN")
-																				  .addMapping("ENG", "ENG")
-																				  .addMapping("BGL", "BGL")
-																				  .Build(),
+																				 .addMapping("BAN", "BAN")
+																				 .addMapping("ENG", "ENG")
+																				 .addMapping("BGL", "BGL")
+																				 .Build(),
 		 {},
 		 {},
 		 false);

@@ -5,16 +5,19 @@
 
 
 
-void HoI4::outputOperations(const Operations& operations, const std::string& outputName)
+void HoI4::outputOperations(const Operations& operations, const std::filesystem::path& outputName)
 {
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/operations/"))
+	const std::filesystem::path folder = "output" / outputName / "common/operations";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/operations/");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
-	std::ofstream output("output/" + outputName + "/common/operations/00_operations.txt");
+
+	const std::filesystem::path file = folder / "00_operations.txt";
+	std::ofstream output(file);
 	if (!output.is_open())
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/operations/00_operations.txt");
+		throw std::runtime_error("Could not create " + file.string());
 	}
 
 	for (const auto& operation: operations.getOperations())

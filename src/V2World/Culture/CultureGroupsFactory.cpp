@@ -93,7 +93,7 @@ std::unique_ptr<Vic2::CultureGroups> Vic2::CultureGroups::Factory::GetCultureGro
 
 	culture_groups_ = std::make_unique<CultureGroups>();
 
-	if (const auto cultures_file = mod_filesystem.GetActualFileLocation("/common/cultures.txt"); cultures_file)
+	if (const auto cultures_file = mod_filesystem.GetActualFileLocation("common/cultures.txt"); cultures_file)
 	{
 		parser_.parseFile(*cultures_file);
 	}

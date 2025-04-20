@@ -10,9 +10,10 @@
 namespace HoI4
 {
 
-void outCountryCategories(const std::map<std::string, TagsAndExtras>& countryCategories, const std::string& outputName);
+void outCountryCategories(const std::map<std::string, TagsAndExtras>& countryCategories,
+	 const std::filesystem::path& outputName);
 
-}
+} // namespace HoI4
 
 
 

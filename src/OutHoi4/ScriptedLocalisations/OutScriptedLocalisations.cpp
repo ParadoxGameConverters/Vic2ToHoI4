@@ -4,11 +4,11 @@
 
 
 
-void HoI4::outputScriptedLocalisations(const std::string& outputName,
+void HoI4::outputScriptedLocalisations(const std::filesystem::path& outputName,
 	 const ScriptedLocalisations& scriptedLocalisations)
 {
-	std::ofstream scriptedLocalisationsFile(
-		 "output/" + outputName + "/common/scripted_localisation/00_scripted_localisation.txt",
+	std::ofstream scriptedLocalisationsFile("output" / outputName /
+															  "common/scripted_localisation/00_scripted_localisation.txt",
 		 std::ofstream::app);
 	for (const auto& localisation: scriptedLocalisations.getLocalisations())
 	{
@@ -16,7 +16,7 @@ void HoI4::outputScriptedLocalisations(const std::string& outputName,
 	}
 	scriptedLocalisationsFile.close();
 
-	std::ofstream ideologyLocalisationsFile("output/" + outputName + "/common/scripted_localisation/ideologies.txt");
+	std::ofstream ideologyLocalisationsFile("output" / outputName / "common/scripted_localisation/ideologies.txt");
 	for (const auto& localisation: scriptedLocalisations.getIdeologyLocalisations())
 	{
 		ideologyLocalisationsFile << localisation;
@@ -25,8 +25,8 @@ void HoI4::outputScriptedLocalisations(const std::string& outputName,
 
 	for (const auto& localisationsInLanguage: scriptedLocalisations.getAdjectiveLocalisations())
 	{
-		auto filename{"output/" + outputName + "/common/scripted_localisation/000_scripted_localisation_" +
-						  localisationsInLanguage.first + "_loc.txt"};
+		auto filename = "output" / outputName / "common/scripted_localisation/000_scripted_localisation_";
+		filename += localisationsInLanguage.first + "_loc.txt";
 		std::ofstream adjectiveLocalisationsFile(filename, std::ofstream::app);
 
 		for (const auto& localisation: localisationsInLanguage.second)

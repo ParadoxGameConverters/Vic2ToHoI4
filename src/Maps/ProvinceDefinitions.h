@@ -24,8 +24,7 @@ class ProvinceDefinitions
 		 std::set<int> seaProvinces,
 		 std::map<int, std::string> terrain_types,
 		 std::map<int, int> colorToProvinceMap):
-		 landProvinces(std::move(landProvinces)),
-		 seaProvinces(std::move(seaProvinces)), terrain_types_(terrain_types),
+		 landProvinces(std::move(landProvinces)), seaProvinces(std::move(seaProvinces)), terrain_types_(terrain_types),
 		 colorToProvinceMap(std::move(colorToProvinceMap))
 	{
 	}

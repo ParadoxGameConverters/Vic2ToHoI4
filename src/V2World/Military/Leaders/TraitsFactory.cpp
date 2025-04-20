@@ -20,7 +20,7 @@ std::unique_ptr<Vic2::Traits> Vic2::Traits::Factory::LoadTraits(const commonItem
 {
 	traits_ = std::make_unique<Traits>();
 
-	if (const auto& file = mod_filesystem.GetActualFileLocation("/common/traits.txt"))
+	if (const auto& file = mod_filesystem.GetActualFileLocation("common/traits.txt"))
 	{
 		parser_.parseFile(*file);
 	}

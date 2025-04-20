@@ -18,6 +18,6 @@ Vic2::StateLanguageCategories::Factory::Factory()
 std::unique_ptr<Vic2::StateLanguageCategories> Vic2::StateLanguageCategories::Factory::getCategories()
 {
 	theCategories = std::make_unique<StateLanguageCategories>();
-	parseFile("./Configurables/Localisations/StateCategories.txt");
+	parseFile(std::filesystem::path("./Configurables/Localisations/StateCategories.txt"));
 	return std::move(theCategories);
 }

@@ -20,9 +20,8 @@ class AdmiralData
 		 int defense_skill,
 		 int maneuvering_skill,
 		 int coordination_skill):
-		 traits_(std::move(traits)),
-		 skill_(skill), attack_skill_(attack_skill), defense_skill_(defense_skill), maneuvering_skill_(maneuvering_skill),
-		 coordination_skill_(coordination_skill)
+		 traits_(std::move(traits)), skill_(skill), attack_skill_(attack_skill), defense_skill_(defense_skill),
+		 maneuvering_skill_(maneuvering_skill), coordination_skill_(coordination_skill)
 	{
 	}
 

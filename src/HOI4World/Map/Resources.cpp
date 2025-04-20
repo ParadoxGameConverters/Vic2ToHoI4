@@ -13,7 +13,7 @@ HoI4::Resources::Resources() noexcept
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile("Configurables/resources.txt");
+	parseFile(std::filesystem::path("Configurables/resources.txt"));
 	clearRegisteredKeywords();
 }
 

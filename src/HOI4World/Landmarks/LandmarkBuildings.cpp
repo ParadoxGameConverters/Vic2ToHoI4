@@ -16,7 +16,7 @@ HoI4::LandmarkBuildings::LandmarkBuildings(const Configuration& theConfiguration
 void HoI4::LandmarkBuildings::importDefaultLandmarkBuildings(const Configuration& theConfiguration)
 {
 	registerKeywords();
-	parseFile(theConfiguration.getHoI4Path() + "/common/buildings/01_landmark_buildings.txt");
+	parseFile(theConfiguration.getHoI4Path() / "common/buildings/01_landmark_buildings.txt");
 	clearRegisteredKeywords();
 }
 

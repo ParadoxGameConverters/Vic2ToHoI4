@@ -53,31 +53,32 @@ std::pair<std::string, std::array<int, 3>> getDefaultStateIndustry(const Default
 void reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& countriesIndustry);
 
 void outputCommonCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 const std::string& outputName);
-void outputColorsFile(const std::map<std::string, std::shared_ptr<Country>>& countries, const std::string& outputName);
+	 const std::filesystem::path& outputName);
+void outputColorsFile(const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::filesystem::path& outputName);
 void outputNames(const Names& names,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 const std::string& outputName);
+	 const std::filesystem::path& outputName);
 void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const Configuration& theConfiguration);
-void outputMap(const States& states, const StrategicRegions& strategicRegions, const std::string& outputName);
-void outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::string& outputName);
+void outputMap(const States& states, const StrategicRegions& strategicRegions, const std::filesystem::path& outputName);
+void outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::filesystem::path& outputName);
 void outputCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::vector<UnionCountry>& union_countries,
 	 const allMilitaryMappings& theMilitaryMappings,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 const Configuration& theConfiguration);
-void outputRelations(const std::string& outputName, const std::set<std::string>& majorIdeologies);
+void outputRelations(const std::filesystem::path& outputName, const std::set<std::string>& majorIdeologies);
 void outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& ideologicalLeaderTraits,
 	 const std::set<std::string>& majorIdeologies,
-	 const std::string& outputName);
+	 const std::filesystem::path& outputName);
 void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::optional<std::string> humanCountry,
 	 const date& vic2Date,
-	 const std::string& outputName);
-void copyAdjustedFocusFiles(const std::string& outputName, const std::vector<std::string>& addedBranches);
-void outputAdjacencyRules(const std::string& outputName,
+	 const std::filesystem::path& outputName);
+void copyAdjustedFocusFiles(const std::filesystem::path& outputName, const std::vector<std::string>& addedBranches);
+void outputAdjacencyRules(const std::filesystem::path& outputName,
 	 const std::map<std::string, std::shared_ptr<AdjacencyRule>>& rules);
 
 } // namespace HoI4
@@ -86,12 +87,13 @@ void outputAdjacencyRules(const std::string& outputName,
 namespace
 {
 
-void outputGenericAdvisors(const std::set<HoI4::Advisor>& advisors, const std::string& outputName)
+void outputGenericAdvisors(const std::set<HoI4::Advisor>& advisors, const std::filesystem::path& outputName)
 {
-	std::ofstream advisorsFile("output/" + outputName + "/history/general/convertedAdvisors.txt");
+	const std::filesystem::path advisors_path = "output" / outputName / "history/general/convertedAdvisors.txt";
+	std::ofstream advisorsFile(advisors_path);
 	if (!advisorsFile.is_open())
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/history/general/convertedAdvisors.txt");
+		throw std::runtime_error("Could not create " + advisors_path.string());
 	}
 
 	for (const auto& advisor: advisors)
@@ -192,7 +194,7 @@ std::pair<std::string, std::array<int, 3>> HoI4::getDefaultStateIndustry(const D
 
 
 void HoI4::OutputWorld(const World& world,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 const bool debugEnabled,
 	 const Configuration& theConfiguration)
 {
@@ -200,9 +202,10 @@ void HoI4::OutputWorld(const World& world,
 
 	Log(LogLevel::Info) << "\tOutputting world";
 
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/history"))
+	const std::filesystem::path history_folder = "output" / outputName / "history";
+	if (!commonItems::DoesFolderExist(history_folder) && !std::filesystem::create_directories(history_folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/history");
+		throw std::runtime_error("Could not create " + history_folder.string());
 	}
 
 	outputCommonCountries(world.getCountries(), outputName);
@@ -222,8 +225,8 @@ void HoI4::OutputWorld(const World& world,
 		 theConfiguration);
 	outputBuildings(world.getBuildings(), outputName);
 	outputLandmarkBuildings(world.getLandmarkBuildings(), outputName);
-	outputSupplyNodes("output/" + outputName, world.getSupplyNodes());
-	outputRailways("output/" + outputName, world.getRailways()->GetRailways());
+	outputSupplyNodes("output" / outputName, world.getSupplyNodes());
+	outputRailways("output" / outputName, world.getRailways()->GetRailways());
 	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), outputName);
 	outputEvents(world.getEvents(), outputName);
 	outputOnActions(world.getOnActions(), world.getMajorIdeologies(), outputName);
@@ -255,18 +258,20 @@ void HoI4::OutputWorld(const World& world,
 
 
 void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
 	Log(LogLevel::Info) << "\t\tCreating country tags";
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/country_tags"))
+	const std::filesystem::path folder = "output" / outputName / "common/country_tags";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/country_tags");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
 
-	std::ofstream allCountriesFile("output/" + outputName + "/common/country_tags/00_countries.txt");
+	const std::filesystem::path allCountriesFilename = "output" / outputName / "common/country_tags/00_countries.txt";
+	std::ofstream allCountriesFile(allCountriesFilename);
 	if (!allCountriesFile.is_open())
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/country_tags/00_countries.txt");
+		throw std::runtime_error("Could not create " + allCountriesFilename.string());
 	}
 
 	for (const auto& country: countries | std::views::values)
@@ -291,19 +296,21 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 
 
 void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting country colors";
 
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/countries"))
+	const std::filesystem::path folder = "output" / outputName / "common/countries";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/countries");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
 
-	std::ofstream output("output/" + outputName + "/common/countries/colors.txt");
+	const std::filesystem::path file = "output" / outputName / "common/countries/colors.txt";
+	std::ofstream output(file);
 	if (!output.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/countries/colors.txt");
+		throw std::runtime_error("Could not open " + file.string());
 	}
 
 	output << "#reload countrycolors\n";
@@ -321,14 +328,15 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>
 
 void HoI4::outputNames(const Names& names,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting names";
 
-	std::ofstream namesFile("output/" + outputName + "/common/names/01_names.txt");
+	const std::filesystem::path namesFilename = "output" / outputName / "common/names/01_names.txt";
+	std::ofstream namesFile(namesFilename);
 	if (!namesFile.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/names/01_names.txt");
+		throw std::runtime_error("Could not open " + namesFilename.string());
 	}
 
 	namesFile << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
@@ -358,55 +366,58 @@ void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>
 }
 
 
-void HoI4::outputMap(const States& states, const StrategicRegions& strategicRegions, const std::string& outputName)
+void HoI4::outputMap(const States& states,
+	 const StrategicRegions& strategicRegions,
+	 const std::filesystem::path& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting map info";
 
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/map"))
+	const std::filesystem::path folder = "output" / outputName / "map";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/map");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
 
 	outputStrategicRegions(strategicRegions, outputName);
 }
 
 
-void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::string& outputName)
+void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::filesystem::path& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting generic focus tree";
 
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/national_focus"))
+	const std::filesystem::path folder = "output" / outputName / "common/national_focus";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/national_focus");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
 
-	outputSharedFocuses(genericFocusTree, "output/" + outputName + "/common/national_focus/shared_focuses.txt");
+	outputSharedFocuses(genericFocusTree, folder / "shared_focuses.txt");
 }
 
 
 void HoI4::outputCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::vector<UnionCountry>& union_countries,
 	 const allMilitaryMappings& theMilitaryMappings,
-	 const std::string& outputName,
+	 const std::filesystem::path& outputName,
 	 const Configuration& theConfiguration)
 {
 	Log(LogLevel::Info) << "\t\tWriting countries";
 
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/history"))
+	std::filesystem::path countries_folder = "output" / outputName / "history/countries";
+	if (!commonItems::DoesFolderExist(countries_folder) && !std::filesystem::create_directories(countries_folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/history");
+		throw std::runtime_error("Could not create " + countries_folder.string());
 	}
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/history/countries"))
+	std::filesystem::path states_folder = "output" / outputName / "history/states";
+	if (!commonItems::DoesFolderExist(states_folder) && !std::filesystem::create_directories(states_folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/history/countries");
+		throw std::runtime_error("Could not create " + states_folder.string());
 	}
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/history/states"))
+	std::filesystem::path units_folder = "output" / outputName / "history/units";
+	if (!commonItems::DoesFolderExist(units_folder) && !std::filesystem::create_directories(units_folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/history/states");
-	}
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/history/units"))
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/history/units");
+		throw std::runtime_error("Could not create " + units_folder.string());
 	}
 
 	for (const auto& country: countries | std::views::values)
@@ -418,20 +429,22 @@ void HoI4::outputCountries(const std::map<std::string, std::shared_ptr<Country>>
 		}
 	}
 
-	std::ofstream union_countries_file("output/" + outputName + "/common/countries/cosmetic.txt", std::ios::app);
+	const std::filesystem::path union_countries_filename = "output" / outputName / "common/countries/cosmetic.txt";
+	std::ofstream union_countries_file(union_countries_filename, std::ios::app);
 	if (!union_countries_file.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/common/countries/cosmetic.txt");
+		throw std::runtime_error("Could not open " + union_countries_filename.string());
 	}
 	for (const auto& union_country: union_countries)
 	{
 		union_countries_file << union_country;
 	}
 
-	std::ofstream portraitsFile("output/" + outputName + "/portraits/conv_portraits.txt");
+	const std::filesystem::path portraitsFilename = "output" / outputName / "portraits/conv_portraits.txt";
+	std::ofstream portraitsFile(portraitsFilename);
 	if (!portraitsFile.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/interface/conv_portraits.gfx");
+		throw std::runtime_error("Could not open " + portraitsFilename.string());
 	}
 	for (const auto& country: countries | std::views::values)
 	{
@@ -444,19 +457,20 @@ void HoI4::outputCountries(const std::map<std::string, std::shared_ptr<Country>>
 }
 
 
-void HoI4::outputRelations(const std::string& outputName, const std::set<std::string>& majorIdeologies)
+void HoI4::outputRelations(const std::filesystem::path& outputName, const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\t\tWriting opinion modifiers";
 
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/opinion_modifiers"))
+	std::filesystem::path folder = "output" / outputName / "common/opinion_modifiers";
+	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/opinion_modifiers/");
+		throw std::runtime_error("Could not create " + folder.string());
 	}
-	std::ofstream out("output/" + outputName + "/common/opinion_modifiers/01_opinion_modifiers.txt");
+	const std::filesystem::path file = folder / "01_opinion_modifiers.txt";
+	std::ofstream out(file);
 	if (!out.is_open())
 	{
-		throw std::runtime_error(
-			 "Could not create output/" + outputName + "/common/opinion_modifiers/01_opinion_modifiers.txt");
+		throw std::runtime_error("Could not create " + file.string());
 	}
 
 	out << "opinion_modifiers = {\n";
@@ -498,14 +512,15 @@ void HoI4::outputRelations(const std::string& outputName, const std::set<std::st
 
 void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& ideologicalLeaderTraits,
 	 const std::set<std::string>& majorIdeologies,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting leader traits";
 
-	std::ofstream traitsFile("output/" + outputName + "/common/country_leader/converterTraits.txt");
+	const std::filesystem::path file = "output" / outputName / "common/country_leader/converterTraits.txt";
+	std::ofstream traitsFile(file);
 	if (!traitsFile.is_open())
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/common/country_leader/converterTraits.txt");
+		throw std::runtime_error("Could not create " + file.string());
 	}
 
 	traitsFile << "leader_traits = {\n";
@@ -530,7 +545,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::optional<std::string> humanCountry,
 	 const date& vic2Date,
-	 const std::string& outputName)
+	 const std::filesystem::path& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting bookmarks";
 
@@ -538,11 +553,13 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 		std::string uppercaseBookmarkName = bookmarkName;
 		std::ranges::transform(uppercaseBookmarkName, uppercaseBookmarkName.begin(), ::toupper);
 
-		std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_" + bookmarkName + ".txt");
+		std::filesystem::path bookmarkFilename = "output" / outputName / "common/bookmarks/the_";
+		bookmarkFilename += bookmarkName;
+		bookmarkFilename += ".txt";
+		std::ofstream bookmarkFile(bookmarkFilename);
 		if (!bookmarkFile.is_open())
 		{
-			throw std::runtime_error(
-				 "Could not create output/" + outputName + "/common/bookmarks/the_" + bookmarkName + ".txt");
+			throw std::runtime_error("Could not create " + bookmarkFilename.string());
 		}
 
 		bookmarkFile << "bookmarks = {\n";
@@ -650,23 +667,28 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	}
 }
 
-void HoI4::copyAdjustedFocusFiles(const std::string& outputName, const std::vector<std::string>& addedBranches)
+void HoI4::copyAdjustedFocusFiles(const std::filesystem::path& outputName,
+	 const std::vector<std::string>& addedBranches)
 {
 	for (const auto& branch: addedBranches)
 	{
-		commonItems::CopyFolder("Configurables/AdjustedFocusBranches/" + branch, "output/" + outputName);
+		std::filesystem::copy(std::filesystem::path("Configurables/AdjustedFocusBranches") / branch,
+			 "output" / outputName,
+			 std::filesystem::copy_options::recursive);
 	}
 }
 
-void HoI4::outputAdjacencyRules(const std::string& outputName,
+void HoI4::outputAdjacencyRules(const std::filesystem::path& outputName,
 	 const std::map<std::string, std::shared_ptr<AdjacencyRule>>& adjacencyRules)
 {
-	commonItems::TryCreateFolder("output/" + outputName + "/map");
+	const std::filesystem::path folder = "output" / outputName / "map";
+	std::filesystem::create_directories(folder);
 
-	std::ofstream outputFile("output/" + outputName + "/map/adjacency_rules.txt");
+	const std::filesystem::path filename = "output" / outputName / "map/adjacency_rules.txt";
+	std::ofstream outputFile(filename);
 	if (!outputFile.is_open())
 	{
-		throw std::runtime_error("Could not create output/" + outputName + "/map/adjacency_rules.txt");
+		throw std::runtime_error("Could not create " + filename.string());
 	}
 
 	for (const auto& rule: adjacencyRules | std::views::values)

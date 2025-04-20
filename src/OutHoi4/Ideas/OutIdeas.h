@@ -15,8 +15,8 @@ namespace HoI4
 
 void outIdeas(const Ideas& ideas,
 	 const std::set<std::string>& majorIdeologies,
-	 std::map<std::string, std::shared_ptr<Country>> countries,
-	 const std::string& outputName);
+	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::filesystem::path& outputName);
 
 } // namespace HoI4
 

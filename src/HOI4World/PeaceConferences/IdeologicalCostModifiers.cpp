@@ -18,7 +18,7 @@ std::map<std::string, std::string> HoI4::ImportIdeologicalCostModifiers()
 			 ideologies_to_cost_modifiers.emplace(ideology, raw_string.substr(4, raw_string.size() - 6));
 		 });
 
-	cost_modifiers_parser.parseFile("Configurables/ideological_cost_modifiers.txt");
+	cost_modifiers_parser.parseFile(std::filesystem::path("Configurables/ideological_cost_modifiers.txt"));
 
 	return ideologies_to_cost_modifiers;
 }

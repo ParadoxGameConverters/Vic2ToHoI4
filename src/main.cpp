@@ -8,7 +8,7 @@ int main(const int argc, const char* argv[])
 	try
 	{
 		commonItems::ConverterVersion converterVersion;
-		converterVersion.loadVersion("../version.txt");
+		converterVersion.loadVersion(std::filesystem::path("../version.txt"));
 		Log(LogLevel::Info) << converterVersion;
 		Log(LogLevel::Progress) << "0%";
 		ConvertV2ToHoI4(converterVersion);

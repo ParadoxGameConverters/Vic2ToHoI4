@@ -13,6 +13,6 @@ Mappers::TechMapper::Factory::Factory()
 std::unique_ptr<Mappers::TechMapper> Mappers::TechMapper::Factory::importTechMapper()
 {
 	techMapper = std::make_unique<TechMapper>();
-	parseFile("Configurables/tech_mappings.txt");
+	parseFile(std::filesystem::path("Configurables/tech_mappings.txt"));
 	return std::move(techMapper);
 }

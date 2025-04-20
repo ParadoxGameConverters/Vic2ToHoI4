@@ -18,7 +18,7 @@ std::map<std::string, std::string> HoI4::ImportIdeologicalAiPeace()
 			 ideologies_to_ai_peace.emplace(ideology, raw_string.substr(4, raw_string.size() - 6));
 		 });
 
-	cost_modifiers_parser.parseFile("Configurables/ideological_ai_peace.txt");
+	cost_modifiers_parser.parseFile(std::filesystem::path("Configurables/ideological_ai_peace.txt"));
 
 	return ideologies_to_ai_peace;
 }

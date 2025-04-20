@@ -7,8 +7,8 @@
 
 
 
-HoI4::StrategicRegion::StrategicRegion(const std::string& _filename, const Configuration& theConfiguration):
-	 filename(_filename)
+HoI4::StrategicRegion::StrategicRegion(const std::filesystem::path& filename, const Configuration& theConfiguration):
+	 filename_(filename)
 {
 	registerKeyword("strategic_region", [this](std::istream& theStream) {
 		MapRegion theRegion(theStream);
@@ -21,6 +21,6 @@ HoI4::StrategicRegion::StrategicRegion(const std::string& _filename, const Confi
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile(theConfiguration.getHoI4Path() + "/map/strategicregions/" + _filename);
+	parseFile(theConfiguration.getHoI4Path() / "map/strategicregions" / filename);
 	clearRegisteredKeywords();
 }

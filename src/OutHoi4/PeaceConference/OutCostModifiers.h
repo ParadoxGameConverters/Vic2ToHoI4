@@ -12,7 +12,7 @@
 namespace HoI4
 {
 
-void OutputCostModifiers(std::string_view output_name,
+void OutputCostModifiers(std::filesystem::path output_name,
 	 const std::set<std::string>& major_ideologies,
 	 const std::map<std::string, std::string>& ideologies_to_cost_modifiers);
 

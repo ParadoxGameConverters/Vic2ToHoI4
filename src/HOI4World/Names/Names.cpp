@@ -16,14 +16,14 @@ std::unique_ptr<HoI4::Names> HoI4::Names::Factory::getNames(const Configuration&
 
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		if (commonItems::DoesFileExist(mod.path + "/common/cultures.txt"))
+		if (commonItems::DoesFileExist(mod.path / "common/cultures.txt"))
 		{
 			Log(LogLevel::Debug) << "Reading mod cultures from " << mod.name;
-			processVic2CulturesFile(mod.path + "/common/cultures.txt");
+			processVic2CulturesFile(mod.path / "common/cultures.txt");
 		}
 	}
 
-	processVic2CulturesFile(theConfiguration.getVic2Path() + "/common/cultures.txt");
+	processVic2CulturesFile(theConfiguration.getVic2Path() / "common/cultures.txt");
 
 	processNamesFile();
 	if (theConfiguration.getDebug())
@@ -46,7 +46,7 @@ std::unique_ptr<HoI4::Names> HoI4::Names::Factory::getNames(const Configuration&
 }
 
 
-void HoI4::Names::Factory::processVic2CulturesFile(const std::string& filename)
+void HoI4::Names::Factory::processVic2CulturesFile(const std::filesystem::path& filename)
 {
 	clearRegisteredKeywords();
 	registerRegex(commonItems::catchallRegex, [this](const std::string& unused, std::istream& theStream) {
@@ -84,7 +84,7 @@ void HoI4::Names::Factory::processNamesFile()
 		addNamesToMap(intelligenceAgencyNames, cultureName, cultureNames.takeIntelligenceAgencies());
 	});
 
-	parseFile("Configurables/names.txt");
+	parseFile(std::filesystem::path("Configurables/names.txt"));
 }
 
 

@@ -3,13 +3,15 @@
 
 
 
-void HoI4::outputSupplyZone(const SupplyZone& supplyZone, const std::string& filename, const std::string& outputName)
+void HoI4::outputSupplyZone(const SupplyZone& supplyZone,
+	 const std::filesystem::path& filename,
+	 const std::filesystem::path& outputName)
 {
-	const auto fullFilename("output/" + outputName + "/map/supplyareas/" + filename);
+	const auto fullFilename("output" / outputName / "map/supplyareas" / filename);
 	std::ofstream out(fullFilename);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not open \"output/input/map/supplyareas/" + filename);
+		throw std::runtime_error("Could not open " + ("output/input/map/supplyareas/" / filename).string());
 	}
 	out << "\n";
 	out << "supply_area={\n";

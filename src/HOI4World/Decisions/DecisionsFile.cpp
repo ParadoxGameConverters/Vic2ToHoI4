@@ -4,7 +4,7 @@
 
 
 
-void HoI4::DecisionsFile::importDecisions(const std::string& filename)
+void HoI4::DecisionsFile::importDecisions(const std::filesystem::path& filename)
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& categoryName, std::istream& theStream) {
 		const DecisionsInCategory category(categoryName, theStream);

@@ -267,10 +267,10 @@ TEST(HoI4World_TankDesigns_TankDesignsTests, TankDesignsCanBeBlocked)
 
 	HoI4::TankDesigns theDesigns(possibleDesigns,
 		 *HoI4::technologies::Builder()
-				.addTechnology("gwtank_chassis")
-				.addTechnology("gw_artillery")
-				.addTechnology("improved_light_tank_chassis")
-				.Build());
+			  .addTechnology("gwtank_chassis")
+			  .addTechnology("gw_artillery")
+			  .addTechnology("improved_light_tank_chassis")
+			  .Build());
 
 	std::stringstream output;
 	output << theDesigns;

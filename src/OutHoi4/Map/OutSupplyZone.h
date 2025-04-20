@@ -11,7 +11,9 @@
 namespace HoI4
 {
 
-void outputSupplyZone(const SupplyZone& supplyZone, const std::string& filename, const std::string& outputName);
+void outputSupplyZone(const SupplyZone& supplyZone,
+	 const std::filesystem::path& filename,
+	 const std::filesystem::path& outputName);
 
 }
 

@@ -3,12 +3,13 @@
 
 
 
-void HoI4::outputStrategicRegion(const StrategicRegion& strategicRegion, const std::string& path)
+void HoI4::outputStrategicRegion(const StrategicRegion& strategicRegion, const std::filesystem::path& path)
 {
-	std::ofstream out(path + strategicRegion.getFilename());
+	const auto filename = path / strategicRegion.getFilename();
+	std::ofstream out(filename);
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not open " + path + strategicRegion.getFilename());
+		throw std::runtime_error("Could not open " + filename.string());
 	}
 
 	out << "\n";

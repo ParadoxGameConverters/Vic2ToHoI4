@@ -15,6 +15,6 @@ HoI4::GrammarMappings::GrammarMappings()
 std::map<std::string, std::string> HoI4::GrammarMappings::importGrammarMappings()
 {
 	grammarMappings.clear();
-	parseFile("Configurables/grammar.txt");
+	parseFile(std::filesystem::path("Configurables/grammar.txt"));
 	return grammarMappings;
 }
