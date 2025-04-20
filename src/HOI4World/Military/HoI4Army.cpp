@@ -47,7 +47,7 @@ void HoI4::Army::ConvertArmies(const militaryMappings& military_mappings,
 	for (const auto& army: sourceArmies)
 	{
 		auto src_location = army.getLocation();
-		//auto location = getLocation(src_location, province_mapper);
+		auto location = getLocation(src_location, province_mapper);
 		/*if (!location || isWastelandProvince(*location, states))
 		{
 			addAvailableBattalionsAndCompanies(remainingBattalionsAndCompanies, army, military_mappings, force_multiplier);
