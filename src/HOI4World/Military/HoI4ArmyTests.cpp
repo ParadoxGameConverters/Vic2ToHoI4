@@ -626,15 +626,13 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	auto province_mapper = Mappers::ProvinceMapper::Builder().Build();
-	
-	/*theArmy.ConvertArmies(theMilitaryMappings,
+	theArmy.ConvertArmies(theMilitaryMappings,
 		 11821,
 		 1.0,
 		 HoI4::technologies{},
 		 theStates,
-		 *province_mapper,
-		 "");*/
+		 *Mappers::ProvinceMapper::Builder().Build(),
+		 "");
 
 	/*std::ostringstream output;
 	output << theArmy;
