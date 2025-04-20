@@ -42,7 +42,7 @@ void HoI4::Army::ConvertArmies(const militaryMappings& military_mappings,
 	 const Mappers::ProvinceMapper& province_mapper,
 	 const std::string& owner)
 {
-	//std::map<std::string, std::vector<SizedRegiment>> remainingBattalionsAndCompanies;
+	std::map<std::string, std::vector<SizedRegiment>> remainingBattalionsAndCompanies;
 
 	//for (const auto& army: sourceArmies)
 	//{
