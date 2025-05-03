@@ -221,7 +221,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 	std::istringstream armyInput(
 		 "=\n"
 		 "\t{\n"
-		 "\t\tname=\"I. Legio\"\n"
+		 "\t\t\tname=\"regiment one\""
 		 "\t\tlocation=496\n"
 		 "\t\tregiment=\n"
 		 "\t\t{\n"
