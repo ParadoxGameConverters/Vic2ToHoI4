@@ -15,3 +15,6 @@ landmark_kremlin = { location = 6380 built = yes }
 landmark_hofburg_palace = { location = 11666 built = yes }
 landmark_berlin_reichstag = { location = 6521 built = yes }
 landmark_berlin_volkshalle = { location = 6521 built = no }
+landmark_taj_mahal = { location = 4915 built = yes }
+landmark_sadabad_complex = { location = 10837 built = yes }
+landmark_hagia_sophia = { location = 9833 built = yes }

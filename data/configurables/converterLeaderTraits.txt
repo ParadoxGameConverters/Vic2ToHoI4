@@ -738,6 +738,64 @@ communism = {
 		production_speed_industrial_complex_factor = 0.1
 	}
 
+
+
+	anti_stalinist_marxist = {
+		random = no
+		sprite = 13
+		communism_acceptance = -20
+		trade_opinion_factor = 0.10
+		justify_war_goal_time = -0.1
+	}
+
+	munckska_karens_member = {
+		random = no
+		sprite = 13
+		resistance_activity = -0.1
+		drift_defence_factor = 0.25
+		communism_acceptance = -50
+	}
+
+	socialist_writer = {
+		random = no
+		sprite = 13
+		communism_drift = 0.1
+		conscription_factor = 0.1
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	IRQ_comrade_fahd = {
+		random = no 
+		sprite = 13
+
+		communism_drift = 0.05
+		army_core_defence_factor = 0.1
+	}
+
+	IRQ_as_sahifah_editor = {
+		random = no 
+		sprite = 13
+
+		communism_drift = 0.05
+		research_speed_factor = 0.03
+		improve_relations_maintain_cost_factor = -0.2
+		stability_factor = -0.05
+	}
+
+	IRQ_hashemite_caliph = {
+		random = no
+		sprite = 13
+		neutrality_drift = 0.02
+		communism_acceptance = -50
+		political_power_factor = 0.1
+		stability_factor = 0.2
+		war_support_factor = 0.2
+		justify_war_goal_time = -0.5
+		army_core_defence_factor = 0.1
+		army_core_attack_factor = 0.1
+	}
 }
 
 democratic = {
@@ -1327,6 +1385,15 @@ democratic = {
 		ai_will_do = {
 			factor = 0
 		}
+	}
+
+	IRQ_pro_western_iraqi_nationalist = {
+		random = no 
+		sprite = 13
+
+		democratic_drift = 0.05
+		stability_factor = 0.1
+		war_support_factor = 0.05
 	}
 
 }
@@ -2154,4 +2221,87 @@ fascism = {
 		}
 	}
 
+
+	national_socialist_sympathizer = {
+		random = no
+		sprite = 13
+		fascism_drift = 0.02
+		fascism_acceptance = 40
+	}
+
+	PER_fascist_dynasty = {
+		random = no
+		sprite = 13
+		
+		war_support_factor = 0.1
+		political_power_factor = 0.05
+		fascism_drift = 0.03
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	IRQ_nationalist_lawyer = {
+		random = no
+		sprite = 13
+
+		drift_defence_factor = 0.1
+		fascism_drift = 0.02
+		neutrality_drift = 0.01
+		stability_factor = 0.05
+	}
+
+	IRQ_pan_arab_nationalist = {
+		random = no 
+		sprite = 13
+
+		fascism_drift = 0.05
+		justify_war_goal_time = -0.2
+		war_support_factor = 0.05
+	}
+
+	IRQ_minister_of_defense = {
+		random = no 
+		sprite = 13
+
+		army_core_defence_factor = 0.05
+		war_support_factor = 0.1
+		conscription = 0.015
+		fascism_acceptance = -20
+	}
+
+	IRQ_the_grand_mufti = {
+		random = no 
+		sprite = 13
+
+		war_support_factor = 0.1
+		fascism_acceptance = 30
+	}
+
+	IRQ_emir_of_taif = {
+		random = no 
+		sprite = 13
+
+		fascism_drift = 0.06
+		stability_factor = 0.1
+	}
+
+	IRQ_knight_of_arabism = {
+		random = no 
+		sprite = 13
+
+		fascism_drift = 0.08
+		political_power_factor = 0.05
+		conscription_factor = 0.1
+	}
+
+	IRQ_al_muthanna_leader = {
+		random = no 
+		sprite = 13
+
+		fascism_drift = 0.05
+		conscription_factor = 0.05
+		research_speed_factor = 0.03
+	}
 }
