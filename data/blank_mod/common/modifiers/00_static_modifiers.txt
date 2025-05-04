@@ -311,7 +311,10 @@ free_license = {
 ITA_military_agreements = {
 	valid_relation_trigger = {
 		FROM = {
-			is_in_faction_with = ROOT
+			OR = {
+				is_in_faction_with = ROOT
+				has_government = ROOT
+			}
 		}
 	}
 	license_purchase_cost = 0 #base cost reduction
