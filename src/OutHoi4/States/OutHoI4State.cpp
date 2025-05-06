@@ -77,24 +77,27 @@ void HoI4::outputHoI4State(std::ostream& output, const State& theState, const bo
 			output << "\t\t\tdockyard = " << theState.getDockyards() << "\n";
 		}
 
-		for (const auto& navalBase: theState.getNavalBases())
-		{
-			output << "\t\t\t" << navalBase.first << " = {\n";
-			output << "\t\t\t\tnaval_base = " << navalBase.second << "\n";
-			output << "\t\t\t}\n";
-		}
-
 		output << "\t\t\tair_base = " << theState.getAirbaseLevel() << "\n";
 
-		for (const auto& [landmark, location]: theState.getLandmarks())
+		for (const auto& [location, buildings]: theState.getProvinceBuildings())
 		{
 			output << "\t\t\t" << location << " = {\n";
-			output << "\t\t\t\t" << landmark << " = {\n";
-			output << "\t\t\t\t\tlevel = 1\n";
-			output << "\t\t\t\t\tallowed = {\n";
-			output << "\t\t\t\t\t\thas_dlc = \"Gotterdammerung\"\n";
-			output << "\t\t\t\t\t}\n";
-			output << "\t\t\t\t}\n";
+			for (const auto& [building, level, allowedStr]: buildings)
+			{
+				if (allowedStr)
+				{
+					output << "\t\t\t\t" << building << " = {\n";
+					output << "\t\t\t\t\tlevel = " << level << "\n";
+					output << "\t\t\t\t\tallowed = {\n";
+					output << "\t\t\t\t\t\t" << *allowedStr << "\n";
+					output << "\t\t\t\t\t}\n";
+					output << "\t\t\t\t}\n";
+				}
+				else
+				{
+					output << "\t\t\t\t" << building << " = " << level << "\n";
+				}
+			}
 			output << "\t\t\t}\n";
 		}
 		output << "\n";

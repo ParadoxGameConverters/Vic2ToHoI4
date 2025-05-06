@@ -49,7 +49,7 @@ void HoI4::State::convertNavalBases(const std::map<int, int>& sourceNavalBases,
 		}
 	}
 
-	if (navalBases.empty())
+	if (getNavalBases().empty())
 	{
 		for (const auto& province: provinces)
 		{
@@ -95,15 +95,18 @@ void HoI4::State::addNavalBase(int level, int location)
 {
 	if ((level > 0) && provinces.contains(location))
 	{
-		navalBases[location] = level;
+		const building& navalBase = {"naval_base", level};
+		provinceBuildings[location].push_back(navalBase);
 	}
 }
 
-bool HoI4::State::addLandmark(const std::string& landmark, int location, bool isBuilt)
+bool HoI4::State::addLandmark(const std::string& landmarkName, int location, bool isBuilt)
 {
-	if (!landmark.empty() && provinces.contains(location) && isBuilt)
+	if (!landmarkName.empty() && provinces.contains(location) && isBuilt)
 	{
-		landmarks[landmark] = location;
+		const building& landmark = {landmarkName, 1, "has_dlc = \"Gotterdammerung\""};
+		provinceBuildings[location].push_back(landmark);
+		;
 		return true;
 	}
 
@@ -113,10 +116,33 @@ bool HoI4::State::addLandmark(const std::string& landmark, int location, bool is
 
 void HoI4::State::smashNavalBases()
 {
-	for (auto& baseLevel: navalBases | std::views::values)
+	for (auto& buildings: provinceBuildings | std::views::values)
 	{
-		baseLevel = 0;
+		for (auto& building: buildings)
+		{
+			if (building.name == "naval_base")
+			{
+				building.level = 0;
+			}
+		}
 	}
+}
+
+
+std::map<int, int> HoI4::State::getNavalBases() const
+{
+	std::map<int, int> navalBases;
+	for (const auto& [location, buildings]: provinceBuildings)
+	{
+		for (const auto& building: buildings)
+		{
+			if (building.name == "naval_base")
+			{
+				navalBases[location] = building.level;
+			}
+		}
+	}
+	return navalBases;
 }
 
 
@@ -229,7 +255,7 @@ std::optional<int> HoI4::State::getMainNavalLocation() const
 {
 	std::optional<int> mainLocation;
 	int mainSize = 0;
-	for (const auto& navalBase: navalBases)
+	for (const auto& navalBase: getNavalBases())
 	{
 		if (navalBase.second > mainSize)
 		{
