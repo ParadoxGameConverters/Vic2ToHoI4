@@ -619,6 +619,24 @@ ideas = {
 			picture = culture_celtiberian
 			modifier = { }
 		}
+		culture_celtic_african = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_celtic_african
+			modifier = { }
+		}
+		culture_celtic_american = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_celtic_american
+			modifier = { }
+		}
+		culture_celtic_australian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_celtic_australian
+			modifier = { }
+		}
 		culture_central_algonquian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
