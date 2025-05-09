@@ -106,7 +106,6 @@ bool HoI4::State::addLandmark(const std::string& landmarkName, int location, boo
 	{
 		const building& landmark = {landmarkName, 1, "has_dlc = \"Gotterdammerung\""};
 		provinceBuildings[location].push_back(landmark);
-		;
 		return true;
 	}
 
