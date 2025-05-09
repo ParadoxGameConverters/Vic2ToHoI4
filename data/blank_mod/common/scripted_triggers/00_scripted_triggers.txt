@@ -9,7 +9,7 @@
 #	In a script file:
 #
 #	trigger = {
-#		exampel_trigger = yes
+#		example_trigger = yes
 #	}
 #
 
@@ -95,6 +95,20 @@ is_controlled_by_ROOT_or_ally = {
 		tooltip = is_controlled_by_ROOT_or_ally
 		CONTROLLER = {
 			OR = {
+				tag = ROOT
+				is_subject_of = ROOT
+				is_in_faction_with = ROOT
+			}
+		}
+	}
+}
+
+#State scope
+is_not_controlled_by_ROOT_or_ally = {
+	custom_trigger_tooltip = {
+		tooltip = is_not_controlled_by_ROOT_or_ally
+		CONTROLLER = {
+			NOT = {
 				tag = ROOT
 				is_subject_of = ROOT
 				is_in_faction_with = ROOT
@@ -326,7 +340,6 @@ is_major_not_original_tag_root = {
 
 has_subject_autonomy_feature = {
 	has_dlc = "Together for Victory"
-	#TODO_Manu: More DLCs?
 }
 
 has_tech_sharing_feature = {

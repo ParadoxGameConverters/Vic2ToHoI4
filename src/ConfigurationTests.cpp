@@ -66,6 +66,7 @@ TEST(ConfigurationTests, OutputNameDerivedFromInputName)
 }
 
 
+#ifdef _MSC_BUILD
 TEST(ConfigurationTests, OutputNameExtractedFromWindowsPath)
 {
 	std::stringstream input;
@@ -75,6 +76,7 @@ TEST(ConfigurationTests, OutputNameExtractedFromWindowsPath)
 
 	ASSERT_EQ("hoi4", theConfiguration->getOutputName());
 }
+#endif // _MSC_BUILD
 
 
 TEST(ConfigurationTests, OutputNameExtractedFromLinuxPath)
@@ -99,6 +101,7 @@ TEST(ConfigurationTests, OutputNameExtractedFromMixedPathEndingLinuxStyle)
 }
 
 
+#ifdef _MSC_BUILD
 TEST(ConfigurationTests, OutputNameExtractedFromMixedPathEndingWindowsStyle)
 {
 	std::stringstream input;
@@ -108,6 +111,7 @@ TEST(ConfigurationTests, OutputNameExtractedFromMixedPathEndingWindowsStyle)
 
 	ASSERT_EQ("hoi4", theConfiguration->getOutputName());
 }
+#endif // _MSC_BUILD
 
 
 TEST(ConfigurationTests, OutputNameHasDashesReplaced)

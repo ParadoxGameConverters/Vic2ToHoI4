@@ -21,6 +21,13 @@
 namespace HoI4
 {
 
+struct building
+{
+	std::string name;
+	int level;
+	std::optional<std::string> allowedStr;
+};
+
 class State
 {
   public:
@@ -59,7 +66,7 @@ class State
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
-	bool addLandmark(const std::string& landmark, int location, bool isBuilt);
+	bool addLandmark(const std::string& landmarkName, int location, bool isBuilt);
 	void smashNavalBases();
 	void addCores(const std::set<std::string>& newCores);
 	void removeCore(const std::string& theCore) { cores.erase(theCore); }
@@ -84,8 +91,8 @@ class State
 	int getMilFactories() const { return milFactories; }
 	const std::string& getCategory() const { return category; }
 	[[nodiscard]] auto getInfrastructure() const { return infrastructure; }
-	const std::map<int, int>& getNavalBases() const { return navalBases; }
-	const std::map<std::string, int>& getLandmarks() const { return landmarks; }
+	std::map<int, int> getNavalBases() const;
+	const std::map<int, std::vector<building>>& getProvinceBuildings() const { return provinceBuildings; }
 	int getAirbaseLevel() const { return airbaseLevel; }
 	bool hasResources() const { return !resources.empty(); }
 	const std::map<std::string, double>& getResources() const { return resources; }
@@ -157,8 +164,7 @@ class State
 	std::string category = "wasteland";
 	float infrastructure = 1.0F;
 
-	std::map<int, int> navalBases;
-	std::map<std::string, int> landmarks;
+	std::map<int, std::vector<building>> provinceBuildings;
 
 	int airbaseLevel = 0;
 

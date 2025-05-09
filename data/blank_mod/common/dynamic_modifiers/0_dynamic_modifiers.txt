@@ -52,15 +52,6 @@ autonomous_state = {
 	local_building_slots_factor = -0.25
 	state_resources_factor = -0.25
 	state_production_speed_buildings_factor = -0.25
-	remove_trigger = {
-		OWNER = { 
-			OR = {
-				original_tag = CAT 
-				original_tag = GLC 
-				original_tag = BAS 
-			}
-		}
-	}
 }
 
 semi_autonomous_state = {
@@ -71,15 +62,6 @@ semi_autonomous_state = {
 	local_building_slots_factor = -0.25
 	state_resources_factor = -0.25
 	state_production_speed_buildings_factor = -0.25
-	remove_trigger = {
-		OWNER = { 
-			OR = {
-				original_tag = CAT 
-				original_tag = GLC 
-				original_tag = BAS 
-			}
-		}
-	}
 }
 
 kurdish_agitation = {
@@ -1229,14 +1211,7 @@ RAJ_industrialized_personnel = {
 }
 
 
-PAR_protected_by_humaita = {
-	enable = {
-		PAR = { controls_province = 2173 } 
-	}
+malaria = {
 	icon = GFX_modifiers_SOV_defend_moscow
-	local_org_regain = 0.15
-	recruitable_population_factor = 0.25
-	army_core_defence_factor = 0.1
-	supply_factor = 0.15
+	
 }
-

@@ -122,16 +122,17 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 			has_war = no
 		}
 	}
+
 	if = {
 		limit = {
 			has_game_rule = {
 				rule = allow_release_nations
-				option = BLOCKED
+				option = FREE
 			}
+			has_dlc = "Battle for the Bosporus"
 		}
 		custom_trigger_tooltip = {
-			tooltip = RULE_ALLOW_RELEASE_NATIONS_BLOCKED_TOOLTIP
-			always = no
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_KURDISTAN_TOOLTIP
 		}
 	}
 }
@@ -702,6 +703,29 @@ DIPLOMACY_SEND_VOLUNTEERS_ENABLE_TRIGGER = {
 		}
 		custom_trigger_tooltip = {
 			tooltip = RULE_VOLUNTEERS_BLOCKED_TT
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_JOIN_ALLY_ENABLE_TRIGGER = {
+	if = { 
+		limit = {
+			FROM = { NOT = { has_war_with_non_exiled_country = yes } }
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_NON_GIE_JOIN
+			always = no
+		}
+	}
+}
+DIPLOMACY_CALL_ALLY_ENABLE_TRIGGER = {
+	if = { 
+		limit = {
+			NOT = { has_war_with_non_exiled_country = yes } 
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_NON_GIE_CALL
 			always = no
 		}
 	}

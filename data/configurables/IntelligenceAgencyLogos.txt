@@ -26,6 +26,17 @@ link = { culture = portuguese logo = GFX_intelligence_agency_logo_por }
 link = { culture = finnish logo = GFX_intelligence_agency_logo_fin }
 link = { culture = danish logo = GFX_intelligence_agency_logo_DEN_sipo }
 link = { culture = icelandic logo = GFX_intelligence_agency_logo_ICE_logreglan }
+link = { culture = bulgarian logo = GFX_intelligence_agency_logo_bul }
+link = { culture = amhara logo = GFX_agency_logo_eth_fetno_derash }
+link = { culture = swiss logo = GFX_intelligence_agency_logo_SWI_swi_buero_ha }
+link = { culture = hungarian logo = GFX_intelligence_agency_logo_HUN_IH }
+link = { culture = south_german logo = GFX_intelligence_agency_logo_AUS_evidenzbureau }
+link = { culture = brazilian logo = GFX_intelligence_agency_logo_BRA_neutrality }
+link = { culture = platinean logo = GFX_intelligence_agency_logo_ARG_intelligence }
+link = { culture = bakongo logo = GFX_intelligence_agency_logo_COG_anr }
+link = { culture = mashriqi logo = GFX_intelligence_agency_logo_IRQ_DGS }
+link = { culture = pashtun logo = GFX_intelligence_agency_logo_AFG_neutrality }
+link = { culture = persian logo = GFX_intelligence_agency_logo_PER_savak }
 # From CSRZ's mod 2017272267
 link = { culture = platinean logo = GFX_intelligence_agency_logo_arg }
 link = { culture = australian logo = GFX_intelligence_agency_logo_ast }
