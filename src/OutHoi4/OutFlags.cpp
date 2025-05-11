@@ -210,7 +210,8 @@ std::optional<std::filesystem::path> HoI4::getSourceFlagPath(const std::string& 
 	 const std::string& sourceSuffix,
 	 const Mods& vic2Mods)
 {
-	auto path = std::filesystem::path("flags") / Vic2Tag / sourceSuffix;
+	auto path = std::filesystem::path("flags") / Vic2Tag;
+	path += sourceSuffix;
 	if (commonItems::DoesFileExist(path))
 	{
 		return path;
