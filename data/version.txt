@@ -1,7 +1,7 @@
 # Version info
 
-version = "1.3U"
-name = "Umberto II"
+version = "1.4V"
+name = "Vasilevsky"
 source = "Vic2"
 minSource = "3"
 maxSource = "3"
