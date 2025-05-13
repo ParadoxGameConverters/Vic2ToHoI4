@@ -1,10 +1,10 @@
 # Version info
 
-version = "1.3U"
-name = "Umberto II"
+version = "1.4V"
+name = "Vasilevsky"
 source = "Vic2"
 minSource = "3"
 maxSource = "3"
 target = "HoI4"
-minTarget = "1.15"
-maxTarget = "1.15"
+minTarget = "1.16"
+maxTarget = "1.16"

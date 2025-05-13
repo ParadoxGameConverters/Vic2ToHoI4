@@ -15,11 +15,11 @@ debug_decisions = {
 			set_global_flag = show_debug_decisions_flag
 		}
 	}
-
+ 
 	debug_hide_decisions = {
 		priority = -1
 		allowed = {
-			always = yes
+			always = yes 
 		}
 
 		visible = {
@@ -485,7 +485,7 @@ debug_decisions = {
 		cost = 0
 
 		complete_effect = {
-			add_political_power = 1000
+			controlled_civilian_factories_excluding_trade = yes
 		}
 
 		ai_will_do = {

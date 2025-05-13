@@ -1154,11 +1154,11 @@
 	link = { comment = "* ** Democratic Republic of the Congo" }
 	link = { comment = "* * Equateur" }
 	link = { vic2 = 1992 hoi4 = 8048 hoi4 = 10951 } # Basoko -> Port-Empain, land
-	link = { vic2 = 1993 hoi4 = 7219 hoi4 = 988 hoi4 = 10071 } # Irebu -> Boende, Coquilhatville, Inongo
+	link = { vic2 = 1993 hoi4 = 7219 hoi4 = 988 hoi4 = 10071 hoi4 = 13370 } # Irebu -> Boende, Coquilhatville, Inongo, land
 	link = { vic2 = 1995 hoi4 = 12824 hoi4 = 10883 hoi4 = 12741 hoi4 = 7931 } # Gemena -> Gemena, Bumba, Gbadolite, Dongo
 	link = { comment = "* * Bas-Congo" }
 	link = { vic2 = 1982 hoi4 = 5117 hoi4 = 12925 } # Kinshasa -> Léopoldville, Matadi
-	link = { vic2 = 1983 hoi4 = 10968 } # Boma -> Boma
+	link = { vic2 = 1983 hoi4 = 10968 hoi4 = 13365 } # Boma -> Boma, Nkamba
 	link = { vic2 = 1985 hoi4 = 12896 hoi4 = 12945 hoi4 = 10025 } # Kumbana -> Kikwit, Bandundu, Kahumba
 	link = { vic2 = 2000 hoi4 = 2115 } # Cabinda -> Cabinda
 	link = { comment = "* * Kasai" }
@@ -1181,7 +1181,7 @@
 	link = { comment = "* ** Angola" }
 	link = { comment = "* * North Angola" }
 	link = { vic2 = 1999 hoi4 = 8248 } # Luanda -> Luanda
-	link = { vic2 = 2001 hoi4 = 8219 } # Mbanza -> Santo António do Zaire
+	link = { vic2 = 2001 hoi4 = 8219 hoi4 = 13373 } # Mbanza -> Santo António do Zaire, land
 	link = { vic2 = 2002 hoi4 = 5158 } # Quibala -> Novo Redondo
 	link = { vic2 = 2009 hoi4 = 12981 } # Malanje -> Malanje
 	link = { comment = "* * South Angola" }
@@ -1190,9 +1190,9 @@
 	link = { vic2 = 2005 hoi4 = 10966 hoi4 = 8138 } # Huambo -> Nova Lisboa, Sá da Bandeira
 	link = { vic2 = 2008 hoi4 = 12391 hoi4 = 8202 } # Ondjiva -> Serpa Pinto, Cahama
 	link = { comment = "* * East Angola" }
-	link = { vic2 = 2006 hoi4 = 2126 } # Kuito -> Cuito
+	link = { vic2 = 2006 hoi4 = 2126 hoi4 = 13372 } # Kuito -> Cuito, land
 	link = { vic2 = 2007 hoi4 = 4735 hoi4 = 1552 } # Mavinga -> Mavinga, Luso
-	link = { vic2 = 2010 hoi4 = 7548 } # Saurimo -> Henrique de Carvalho
+	link = { vic2 = 2010 hoi4 = 7548 hoi4 = 13371 } # Saurimo -> Henrique de Carvalho, land
 	link = { vic2 = 2011 hoi4 = 8054 } # Kubanda -> Teixeira de Sousa
 	link = { comment = "* " }
 	link = { comment = "* ** Eritrea" }
@@ -1272,8 +1272,8 @@
 	link = { comment = "* " }
 	link = { comment = "* ** Rawanda / Burundi" }
 	link = { comment = "* * Ruanda-Urundi" }
-	link = { vic2 = 2034 hoi4 = 9962 } # Kigali -> Kigali
-	link = { vic2 = 2035 hoi4 = 2220 } # Usumbura -> Usumbura
+	link = { vic2 = 2034 hoi4 = 9962 hoi4 = 13364 } # Kigali -> Kigali, Nyanza
+	link = { vic2 = 2035 hoi4 = 2220 hoi4 = 13363 } # Usumbura -> Usumbura, Kitega
 	link = { comment = "* " }
 	link = { comment = "* ** Tanzania" }
 	link = { comment = "* * Tanganyika" }
@@ -1699,7 +1699,7 @@
 	link = { vic2 = 386 hoi4 = 9309 } # Assen -> Emmen
 	link = { comment = "* " }
 	link = { comment = "* ** Luxembourg" }
-	link = { vic2 = 397 hoi4 = 6583 } # Luxembourg -> Lëtzebuerg
+	link = { vic2 = 397 hoi4 = 6583 hoi4 = 13375 } # Luxembourg -> Lëtzebuerg, land
 	link = { comment = "* " }
 	link = { comment = "* ** Norway" }
 	link = { comment = "* * Vestlandet" }
@@ -2538,7 +2538,7 @@
 	link = { vic2 = 927 hoi4 = 3795 hoi4 = 12372 } # Samarra -> Balad, Haditha
 	link = { vic2 = 929 hoi4 = 12839 } # Karbala -> Ar-Ramadi
 	link = { vic2 = 931 hoi4 = 4951 hoi4 = 1631 hoi4 = 12413 } # Rutbah -> An-Nukhayb, Ar-Rutbah, Al-Qa'im
-	link = { vic2 = 934 hoi4 = 10744 hoi4 = 10876 hoi4 = 7994 hoi4 = 12879 hoi4 = 8001 } # Najaf -> land, Karbala', Al-Hillah, land, An-Najaf
+	link = { vic2 = 934 hoi4 = 10744 hoi4 = 10876 hoi4 = 7994 hoi4 = 12879 hoi4 = 8001 hoi4 = 13368 } # Najaf -> land, Karbala', Al-Hillah, land, An-Najaf, land
 	link = { comment = "* * Basra" }
 	link = { vic2 = 930 hoi4 = 7977 hoi4 = 78 hoi4 = 12855 } # Kut -> Al-Kut, Al-'Amarah, Al-'Aziziyah
 	link = { vic2 = 932 hoi4 = 2089 } # Basra -> Al-Basrah
@@ -2546,7 +2546,7 @@
 	link = { comment = "* " }
 	link = { comment = "* ** Kuwait" }
 	link = { comment = "* * Basra" }
-	link = { vic2 = 935 hoi4 = 8085 } # Kuwait -> Kuwait City
+	link = { vic2 = 935 hoi4 = 8085 hoi4 = 13367 hoi4 = 13366 } # Kuwait -> Kuwait City, land, land
 	link = { comment = "* " }
 	link = { comment = "* ** Egypt" }
 	link = { comment = "* * Sinai" }
@@ -2597,7 +2597,7 @@
 	link = { vic2 = 1165 hoi4 = 8051 } # Doha -> Doha
 	link = { vic2 = 1162 hoi4 = 13313 } # Bahrain -> Manama
 	link = { vic2 = 1167 hoi4 = 7960 hoi4 = 8108 hoi4 = 2048 } # Abu Dhabi -> Abu Dhabi, Ar-Ruwais, Liwa
-	link = { vic2 = 1168 hoi4 = 10904 } # Dubai -> Dubai
+	link = { vic2 = 1168 hoi4 = 10904 hoi4 = 13369 } # Dubai -> Dubai, Khasab
 	link = { comment = "* " }
 	link = { comment = "* ** Oman" }
 	link = { comment = "* * Oman" }
@@ -2616,7 +2616,7 @@
 	link = { comment = "* * Aden" }
 	link = { vic2 = 1173 hoi4 = 2029 hoi4 = 4976 } # Mukalla -> Al-Mukalla, Al-Qatn
 	link = { vic2 = 1175 hoi4 = 13079 hoi4 = 12894 } # Ghayda -> Al-Ghaydah, Thamud
-	link = { vic2 = 1176 hoi4 = 12821 } # Bayda -> Ataq
+	link = { vic2 = 1176 hoi4 = 12821 hoi4 = 13374 } # Bayda -> Ataq, land
 	link = { vic2 = 1177 hoi4 = 8000 } # Socotra -> Tamrida
 	link = { vic2 = 1412 hoi4 = 5074 } # Aden -> Aden
 	link = { comment = "* " }

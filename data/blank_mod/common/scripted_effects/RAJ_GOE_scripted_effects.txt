@@ -1,0 +1,31 @@
+controlled_civilian_factories_excluding_trade = {
+    set_variable = { ROOT.actually_controlled_civs = 0 }
+    every_controlled_state = {
+        if = {
+            limit = {
+                check_variable = { var:industrial_complex_level > 0 }
+            }
+            add_to_variable = { ROOT.actually_controlled_civs  = var:industrial_complex_level }
+        }
+    }
+
+    if = { #lock up civs if they are used for paying out investors so u can like double invest
+        limit = {
+            ROOT = { has_country_flag = has_payed_high_dividends }
+        }
+        subtract_from_variable = { ROOT.actually_controlled_civs = 5 }
+    }
+    else_if = {
+        limit = {
+            ROOT = { has_country_flag = has_payed_normal_dividends }
+        }
+        subtract_from_variable = { ROOT.actually_controlled_civs = 2 }
+    }
+    else_if = {
+        limit = {
+           ROOT = { has_country_flag = has_payed_small_dividends } 
+        }
+        subtract_from_variable = { ROOT.actually_controlled_civs = 1 }
+    }
+}
+
