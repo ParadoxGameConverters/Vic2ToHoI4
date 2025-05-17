@@ -15,7 +15,6 @@ focus_tree = {
 				}
 			}
 		}
-		relative_position_id = SOV_strengthen_the_mobilization_plan
 		cost = 5
 
 		allow_branch = {
