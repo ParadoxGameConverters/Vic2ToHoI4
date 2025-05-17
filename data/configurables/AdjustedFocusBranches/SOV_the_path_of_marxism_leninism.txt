@@ -55,7 +55,7 @@ focus_tree = {
 		id = SOV_the_centre
 		icon = GFX_focus_fra_loyalty_stalin
 		prerequisite = { focus = SOV_the_path_of_marxism_leninism }
-		x = -8
+		x = 0
 		y = 1
 		offset = {
 			x = 8
