@@ -1,0 +1,20 @@
+add_namespace = SOV_the_path_of_marxism_leninism
+
+# SOV_the_path_of_marxism_leninism
+country_event = {
+	id = SOV_the_path_of_marxism_leninism.1
+	title = SOV_the_path_of_marxism_leninism.1.t
+	desc = SOV_the_path_of_marxism_leninism.1.desc
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		#save_global_event_target_as = SOV_the_path_of_marxism_leninism_SOV
+	}
+
+	option = {
+		name = SOV_the_path_of_marxism_leninism.1.a
+	}
+}
