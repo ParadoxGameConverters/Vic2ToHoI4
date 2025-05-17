@@ -13,13 +13,10 @@ focus_tree = {
 					rule = obsolete_focus_branches_visibility
 					option = HIDE
 				}
-				has_completed_focus = SOV_beaten_but_not_defeated
 			}
 		}
 		relative_position_id = SOV_strengthen_the_mobilization_plan
 		cost = 5
-
-		mutually_exclusive = { focus = SOV_beaten_but_not_defeated }
 
 		allow_branch = {
 			if = {
@@ -29,7 +26,6 @@ focus_tree = {
 						option = HIDE
 					}
 				}
-				NOT = { has_completed_focus = SOV_the_hands_do }
 			}
 		}
 
@@ -70,14 +66,10 @@ focus_tree = {
 					rule = obsolete_focus_branches_visibility
 					option = HIDE
 				}
-				has_completed_focus = SOV_beaten_but_not_defeated
-				NOT = { has_completed_focus = SOV_the_hands_do }
 			}
 		}
 		relative_position_id = SOV_the_path_of_marxism_leninism
 		cost = 5
-
-		mutually_exclusive = { focus = SOV_the_right_opposition focus = SOV_the_left_opposition }
 
 		allow_branch = {
 			if = {
@@ -85,20 +77,6 @@ focus_tree = {
 					has_game_rule = {
 						rule = obsolete_focus_branches_visibility
 						option = HIDE
-					}
-				}
-				NOT = {
-					AND = {
-						has_completed_focus = SOV_the_left_opposition
-						has_completed_focus = SOV_left_opposition_coup
-					}
-					AND = {
-						has_completed_focus = SOV_the_right_opposition
-						has_completed_focus = SOV_coup_detat
-					}
-					AND = {
-						has_completed_focus = SOV_beaten_but_not_defeated
-						has_completed_focus = SOV_the_hands_do
 					}
 				}
 			}
@@ -968,7 +946,6 @@ focus_tree = {
 					days > 175
 				}
 			}
-			has_completed_focus = SOV_expand_the_agitprop
 			has_country_leader = {
 				character = SOV_iosif_stalin
 				ruling_only = yes
