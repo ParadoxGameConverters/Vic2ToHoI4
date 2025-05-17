@@ -26,6 +26,7 @@ class Character
 	[[nodiscard]] const auto& getId() const { return id_; }
 	[[nodiscard]] const auto& getName() const { return name_; }
 	[[nodiscard]] const auto& getPortraits() const { return portraits_; }
+	[[nodiscard]] const auto& getAllowedCivilWar() const { return allowed_civil_war_; }
 
 	[[nodiscard]] const auto& getAdvisorData() const { return advisor_data; }
 	[[nodiscard]] const auto& getCountryLeaderData() const { return country_leader_data_; }
@@ -39,6 +40,7 @@ class Character
 	std::string name_ = "Nomen Nescio"; // Nescio Nomen (or N.N.) literally means "I don't know the name" and is
 													// sometimes used when the name of a person is unknown
 	std::vector<Portrait> portraits_;
+	std::optional<std::string> allowed_civil_war_;
 
 	std::optional<AdvisorData> advisor_data;
 	std::optional<CountryLeaderData> country_leader_data_;

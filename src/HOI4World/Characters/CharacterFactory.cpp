@@ -19,6 +19,10 @@ Character::Factory::Factory()
 	registerKeyword("portraits", [this](std::istream& input) {
 		imported_character_->portraits_ = portraits_factory_.importPortraits(input);
 	});
+	registerKeyword("allowed_civil_war", [this](std::istream& input) {
+		getNextTokenWithoutMatching(input);
+		imported_character_->allowed_civil_war_ = commonItems::stringOfItem(input).getString();
+	});
 	registerKeyword("advisor", [this](std::istream& input) {
 		imported_character_->advisor_data = advisor_data_factory_.importAdvisorData(input);
 	});

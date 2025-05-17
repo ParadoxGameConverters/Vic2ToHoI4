@@ -23,6 +23,10 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Character& character)
 		}
 		out << "\t\t}\n";
 	}
+	if (const auto& allowedCivilWar = character.getAllowedCivilWar(); allowedCivilWar.has_value())
+	{
+		out << "\t\tallowed_civil_war=" << *allowedCivilWar << "\n";
+	}
 
 	if (const auto& advisorData = character.getAdvisorData(); advisorData.has_value())
 	{

@@ -34,6 +34,10 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 	input << "\t\t\t\tsmall=\"gfx/interface/ideas/idea_TAG_test_character.dds\"\n";
 	input << "\t\t\t}\n";
 	input << "\t\t}\n";
+	input << "\t\tallowed_civil_war = {\n";
+	input << "\t\t\ttag = USA\n";
+	input << "\t\t\thas_government = communism\n";
+	input << "\t\t}\n";
 	input << "\t\tadvisor={\n";
 	input << "\t\t\tslot = political_advisor\n";
 	input << "\t\t\tidea_token = thomas_kinkaid\n";
@@ -74,6 +78,11 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 
 	HoI4::Portrait portraitOne("civilian", "large", "gfx/leaders/TAG/TAG_test_character.dds");
 	HoI4::Portrait portraitTwo("army", "small", "gfx/interface/ideas/idea_TAG_test_character.dds");
+	EXPECT_EQ(character.getAllowedCivilWar(),
+		 "{\n"
+		 "\t\t\ttag = USA\n"
+		 "\t\t\thas_government = communism\n"
+		 "\t\t}");
 	EXPECT_THAT(character.getPortraits(), testing::ElementsAre(portraitOne, portraitTwo));
 	ASSERT_TRUE(character.getAdvisorData().has_value());
 	EXPECT_EQ(character.getAdvisorData()->getSlot(), "political_advisor");
