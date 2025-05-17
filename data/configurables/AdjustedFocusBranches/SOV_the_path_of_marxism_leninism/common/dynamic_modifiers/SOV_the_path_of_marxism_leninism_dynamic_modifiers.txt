@@ -1,0 +1,26 @@
+SOV_the_politburo_good_dynamic_modifier = {
+	enable = { always = yes }
+
+	icon = GFX_idea_SOV_the_politburo_ccp_2d_sov_compatibility
+	
+	#INITIAL
+	drift_defence_factor = SOV_the_politburo_drift_defence_factor #0.05
+
+	#FUTURE
+	defensive_war_stability_factor = SOV_the_politburo_defensive_war_stability_factor #-0.25 -> Socialism in One Country
+	communism_drift = SOV_the_politburo_communism_drift #0.05 -> Socialism in One Country
+	political_power_factor = SOV_the_politburo_political_power_factor #0.05 -> The Stalin Constitution
+	economy_cost_factor = SOV_the_politburo_economy_cost_factor #0.2 -> Secure the Administration
+	trade_laws_cost_factor = SOV_the_politburo_trade_laws_cost_factor #-0.2 -> Secure the Administration
+	mobilization_laws_cost_factor = SOV_the_politburo_mobilization_laws_cost_factor #-0.2 -> Secure the Administration
+	consumer_goods_factor = SOV_the_politburo_good_consumer_goods_factor #0.05 -> Collectivization Process
+	production_speed_buildings_factor = SOV_the_politburo_production_speed_buildings_factor #0.05 -> Collectivization Process
+	global_building_slots_factor = SOV_the_politburo_global_building_slots_factor #0.1 -> Collectivization Process
+	max_surrender_limit_offset = SOV_the_politburo_max_surrender_limit_offset #0.05 -> The Workers Dictatorship
+	max_command_power = SOV_the_politburo_max_command_power # 20 -> Organization, Centralization, Discipline
+	mobilization_speed = SOV_the_politburo_mobilization_speed # 0.1 -> Organization, Centralization, Discipline
+	operative_slot = SOV_the_politburo_operative_slot # 1 -> Behead the Snake
+	political_advisor_cost_factor = SOV_the_politburo_political_advisor_cost_factor #-0.15 -> Freedom of Debate, Unity of Action
+	opinion_gain_monthly_same_ideology_factor = SOV_the_politburo_opinion_gain_monthly_same_ideology_factor #0.25 -> The Construction of Communism
+}
+
