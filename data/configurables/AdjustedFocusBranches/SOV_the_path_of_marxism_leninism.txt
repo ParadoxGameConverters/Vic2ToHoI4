@@ -1,0 +1,1476 @@
+focus_tree = {
+
+	focus = {
+		id = SOV_the_path_of_marxism_leninism
+		icon = GFX_focus_SOV_the_path_of_marxism_leninism
+		x = 16
+		y = 0
+		offset = {
+			x = -8
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = SOV_beaten_but_not_defeated
+			}
+		}
+		relative_position_id = SOV_strengthen_the_mobilization_plan
+		cost = 5
+
+		mutually_exclusive = { focus = SOV_beaten_but_not_defeated }
+
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = SOV_the_hands_do }
+			}
+		}
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		completion_reward = {
+			add_political_power = 25
+
+			SOV_paranoia_low_decrease_effect = yes	
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_the_centre
+		icon = GFX_focus_fra_loyalty_stalin
+		prerequisite = { focus = SOV_the_path_of_marxism_leninism }
+		x = -8
+		y = 1
+		offset = {
+			x = 8
+			y = 1
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = SOV_beaten_but_not_defeated
+				NOT = { has_completed_focus = SOV_the_hands_do }
+			}
+		}
+		relative_position_id = SOV_the_path_of_marxism_leninism
+		cost = 5
+
+		mutually_exclusive = { focus = SOV_the_right_opposition focus = SOV_the_left_opposition }
+
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = {
+					AND = {
+						has_completed_focus = SOV_the_left_opposition
+						has_completed_focus = SOV_left_opposition_coup
+					}
+					AND = {
+						has_completed_focus = SOV_the_right_opposition
+						has_completed_focus = SOV_coup_detat
+					}
+					AND = {
+						has_completed_focus = SOV_beaten_but_not_defeated
+						has_completed_focus = SOV_the_hands_do
+					}
+				}
+			}
+		}
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA FOCUS_FILTER_STABILITY}
+
+		completion_reward = {
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = SOV_the_politburo_good_dynamic_modifier }
+			}
+			custom_effect_tooltip = SOV_the_centre_ns_tt
+
+			add_political_power = 25
+			add_stability = 0.05
+			set_division_template_lock = {
+				division_template = "NKVD Pogranichnaya Diviziya"
+				is_locked = no
+			}
+
+			SOV_paranoia_low_decrease_effect = yes
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_socialism_in_one_country
+		icon = GFX_focus_SOV_socialism_in_one_country
+		prerequisite = { focus = SOV_the_centre }
+		x = -1
+		y = 1
+		relative_position_id = SOV_the_centre
+		cost = 5
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		completion_reward = {
+			add_to_variable = { SOV_the_politburo_communism_drift = 0.05 }
+			add_to_variable = { SOV_the_politburo_drift_defence_factor = 0.05 } 
+			add_to_variable = { SOV_the_politburo_defensive_war_stability_factor = 0.25 } 
+			custom_effect_tooltip = SOV_socialism_in_one_country_ns_tt
+
+			add_political_power = 25
+
+			SOV_paranoia_low_decrease_effect = yes
+		}
+	}
+
+	focus = {
+		id = SOV_the_stalin_constitution
+		icon = GFX_SOV_the_stalin_constitutiony_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_the_centre }
+		x = 1
+		y = 1
+		relative_position_id = SOV_the_centre
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA FOCUS_FILTER_STABILITY}
+
+		completion_reward = {
+			add_to_variable = { SOV_the_politburo_political_power_factor = 0.05 }
+			add_to_variable = { SOV_the_politburo_drift_defence_factor = 0.05 } 
+			custom_effect_tooltip = SOV_the_stalin_constitution_ns_tt
+
+			add_political_power = 50
+			add_stability = 0.05
+
+			SOV_paranoia_low_decrease_effect = yes
+		}
+	}
+
+	focus = {
+		id = SOV_the_zinovyevite_terrorist_center
+		icon = GFX_focus_SOV_purge_zinovyevists
+		prerequisite = { focus = SOV_the_stalin_constitution }
+		x = 0
+		y = 1
+		relative_position_id = SOV_the_stalin_constitution
+		cost = 5
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		select_effect = {
+			set_country_flag = SOV_paranoia_do_not_cancel_focus_flag #This focus cannot be canceled
+		}
+
+		completion_reward = {
+			clr_country_flag = SOV_paranoia_do_not_cancel_focus_flag
+			set_country_flag = { flag = SOV_paranoia_random_purge_cooldown_from_focus_flag days = 15 } #Used to prevent random purges from popping up while this is active
+			set_country_flag = SOV_first_moscow_trial_flag #Used to unlock the next purge focus
+
+			add_political_power = 25
+
+			SOV_paranoia_high_increase_effect = yes
+			
+			#HISTORICAL
+			#Zinovyev
+			if = {
+				limit = {
+					has_character = SOV_grigory_zinovyev
+				}
+				SOV_grigory_zinovyev = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Kamenev
+			if = {
+				limit = {
+					has_character = SOV_lev_kamenev
+				}
+				SOV_lev_kamenev = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Smirnov
+			if = {
+				limit = {
+					has_character = SOV_ivan_smirnov
+				}
+				SOV_ivan_smirnov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+
+			#NOT-SO-HISTORICAL
+			#Sokolnikov
+			if = {
+				limit = {
+					has_character = SOV_grigory_sokolnikov
+				}
+				SOV_grigory_sokolnikov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Shlyapnikov
+			if = {
+				limit = {
+					has_character = SOV_aleksandr_shlyapnikov
+				}
+				SOV_aleksandr_shlyapnikov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			
+			custom_effect_tooltip = SOV_will_trigger_a_great_purge_tt
+			hidden_effect = {
+				set_country_flag = SOV_purge_event_unavoidable_flag #No way to avoid this purge. This people are about to be purged and there's nothing you can do for them.
+				SOV_trigger_great_purge_moscow_trial_effect = yes #FIRST MOSCOW TRIAL -> Zinovyev & friends
+			}
+			custom_effect_tooltip = SOV_trigger_first_moscow_trial_tt
+		}
+	}
+
+	focus = {
+		id = SOV_secure_the_administration
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = SOV_the_zinovyevite_terrorist_center }
+		x = -1
+		y = 1
+		relative_position_id = SOV_the_zinovyevite_terrorist_center
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		completion_reward = {
+			add_to_variable = { SOV_the_politburo_economy_cost_factor = -0.2 }
+			add_to_variable = { SOV_the_politburo_trade_laws_cost_factor = -0.2 }
+			add_to_variable = { SOV_the_politburo_mobilization_laws_cost_factor = -0.2 }
+			custom_effect_tooltip = SOV_secure_the_administration_ns_tt
+
+			add_political_power = 50
+
+			SOV_paranoia_medium_decrease_effect = yes
+		}
+	}
+
+	focus = {
+		id = SOV_the_collectivization_process
+		icon = GFX_focus_prc_agrarian_socialism
+		prerequisite = { focus = SOV_socialism_in_one_country }
+		prerequisite = { focus = SOV_secure_the_administration }
+		x = 0
+		y = 3
+		relative_position_id = SOV_socialism_in_one_country
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		completion_reward = {
+			add_to_variable = { SOV_the_politburo_good_consumer_goods_factor = -0.02 }
+			add_to_variable = { SOV_the_politburo_production_speed_buildings_factor = 0.05 } 
+			add_to_variable = { SOV_the_politburo_global_building_slots_factor = 0.1 } 
+			custom_effect_tooltip = SOV_the_collectivization_process_ns_tt
+
+			add_stability = -0.05
+			add_war_support = -0.05
+
+			if = { #Target a rural state with no civs
+				limit = {
+					any_owned_state = {
+						OR = {
+							has_state_category = town #Developed Rural Region
+							has_state_category = rural #Rural Region
+						}
+						is_fully_controlled_by = ROOT
+						industrial_complex < 1
+						arms_factory < 1
+						dockyard < 1
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+				}
+				random_owned_state = {
+					limit = {
+						OR = {
+							has_state_category = town #Developed Rural Region
+							has_state_category = rural #Rural Region
+						}
+						is_fully_controlled_by = ROOT
+						industrial_complex < 1
+						arms_factory < 1
+						dockyard < 1
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			else_if = { #Failsafe 1: Target a random rural state
+				limit = {
+					any_owned_state = {
+						OR = {
+							has_state_category = town #Developed Rural Region
+							has_state_category = rural #Rural Region
+						}
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+				}
+				random_owned_state = {
+					limit = {
+						OR = {
+							has_state_category = town #Developed Rural Region
+							has_state_category = rural #Rural Region
+						}
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			else_if = { #Failsafe 2: Target a random state
+				limit = {
+					any_owned_state = {
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+				}
+				random_owned_state = {
+					limit = {
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+
+			SOV_paranoia_medium_decrease_effect = yes
+		}
+	}
+
+	focus = {
+		id = SOV_the_anti_soviet_trotskyist_center
+		icon = GFX_focus_SOV_purge_trotskyists
+		prerequisite = { focus = SOV_the_zinovyevite_terrorist_center }
+		x = 0
+		y = 2
+		relative_position_id = SOV_the_zinovyevite_terrorist_center
+		cost = 5
+
+		available = {
+			has_country_flag = {
+				flag = SOV_first_moscow_trial_flag
+				days > 175
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_last_purge_focus_days_tt
+				has_country_flag = {
+					flag = SOV_first_moscow_trial_flag
+					days > 175
+				}
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		select_effect = {
+			set_country_flag = SOV_paranoia_do_not_cancel_focus_flag #This focus cannot be canceled
+		}
+
+		completion_reward = {
+			clr_country_flag = SOV_paranoia_do_not_cancel_focus_flag
+			set_country_flag = { flag = SOV_paranoia_random_purge_cooldown_from_focus_flag days = 15 } #Used to prevent random purges from popping up while this is active
+			set_country_flag = SOV_second_moscow_trial_flag #Used to unlock the next purge focus
+
+			add_political_power = 25
+
+			SOV_paranoia_high_increase_effect = yes
+
+			#HISTORICAL
+			#Radek
+			if = {
+				limit = {
+					has_character = SOV_karl_radek
+				}
+				SOV_karl_radek = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#NOT-SO-HISTORICAL
+			#Smilga
+			if = {
+				limit = {
+					has_character = SOV_ivar_smilga
+				}
+				SOV_ivar_smilga = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Preobrazhensky
+			if = {
+				limit = {
+					has_character = SOV_yevgeny_preobrazhensky
+				}
+				SOV_yevgeny_preobrazhensky = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Ryutin
+			if = {
+				limit = {
+					has_character = SOV_martemyan_ryutin
+				}
+				SOV_martemyan_ryutin = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Ustryalov
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				if = {
+					limit = {
+						has_character = SOV_nikolay_ustryalov
+					}
+					SOV_nikolay_ustryalov = {
+						set_character_flag = SOV_targeted_for_purge_flag
+					}
+				}
+				else = {
+					SOV_add_random_character_to_purge_targets_effect = yes
+				}
+			}
+
+			custom_effect_tooltip = SOV_will_trigger_a_great_purge_tt
+			hidden_effect = {
+				set_country_flag = SOV_purge_event_unavoidable_flag #No way to avoid this purge. This people are about to be purged and there's nothing you can do for them.
+				SOV_trigger_great_purge_moscow_trial_effect = yes #SECOND MOSCOW TRIAL -> Left Opposition
+			}
+			custom_effect_tooltip = SOV_trigger_second_moscow_trial_tt
+
+			hidden_effect = {
+				swap_ruler_traits = {
+					remove = stalin_political_paranoia
+					add = stalin_political_paranoia_advanced
+				}
+				add_to_variable = { SOV_paranoia_weekly_modifiers_amount = 1 }
+				SOV_paranoia_modifier_update_gui_tooltip = yes
+			}		
+			custom_effect_tooltip = SOV_increase_weekly_paranoia_in_trait_tt
+		}
+	}
+
+	focus = {
+		id = SOV_the_workers_dictatorship
+		icon = GFX_SOV_the_workers_dictatorship_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_the_anti_soviet_trotskyist_center }
+		x = 0
+		y = 1
+		relative_position_id = SOV_the_anti_soviet_trotskyist_center
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		completion_reward = {
+			add_to_variable = { SOV_the_politburo_political_power_factor = 0.05 }
+			add_to_variable = { SOV_the_politburo_max_surrender_limit_offset = 0.05 }
+			custom_effect_tooltip = SOV_the_workers_dictatorship_ns_tt
+
+			add_political_power = 50
+
+			SOV_paranoia_low_decrease_effect = yes
+		}
+	}
+
+	focus = {
+		id = SOV_organization_centralization_discipline
+		icon = GFX_focus_SOV_organization_centralization_discipline
+		prerequisite = { focus = SOV_the_collectivization_process }
+		prerequisite = { focus = SOV_the_workers_dictatorship }
+		x = -2
+		y = 1
+		relative_position_id = SOV_the_workers_dictatorship
+		cost = 5
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		completion_reward = {
+			add_to_variable = { SOV_the_politburo_max_command_power = 20 }
+			add_to_variable = { SOV_the_politburo_mobilization_speed = 0.05 }
+			custom_effect_tooltip = SOV_organization_centralization_discipline_ns_tt
+
+			add_political_power = 50
+
+			SOV_paranoia_medium_decrease_effect = yes
+		}
+	}
+
+	focus = {
+		id = SOV_war_economy
+		icon = GFX_SOV_war_economy_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_organization_centralization_discipline }
+		x = 0
+		y = 1
+		relative_position_id = SOV_organization_centralization_discipline
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+			custom_effect_tooltip = SOV_war_economy_stability_tt
+			if = {
+				limit = {
+					has_war = no
+				}
+				add_stability = -0.1
+			}
+			else = {
+				custom_effect_tooltip = SOV_war_economy_stability_war_tt
+			}
+			if = {
+				limit = {
+					NOT = { has_idea = war_economy }
+					NOT = { has_idea = tot_economic_mobilisation }
+				}
+				add_ideas = war_economy
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = {
+					217 = {
+						is_controlled_by = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+				}
+				217 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			else = {
+				random_controlled_state = {
+					limit = {
+						arms_factory > 1
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_the_military_conspiracy
+		icon = GFX_focus_SOV_military_purge
+		prerequisite = { focus = SOV_the_workers_dictatorship }
+		x = 0
+		y = 2
+		relative_position_id = SOV_the_anti_soviet_trotskyist_center
+		cost = 5
+
+		available = {
+			has_country_flag = {
+				flag = SOV_second_moscow_trial_flag
+				days > 175
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_last_purge_focus_days_military_tt
+				has_country_flag = {
+					flag = SOV_second_moscow_trial_flag
+					days > 175
+				}
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		select_effect = {
+			set_country_flag = SOV_paranoia_do_not_cancel_focus_flag #This focus cannot be canceled
+		}
+
+		completion_reward = {
+			clr_country_flag = SOV_paranoia_do_not_cancel_focus_flag
+			set_country_flag = { flag = SOV_paranoia_random_purge_cooldown_from_focus_flag days = 15 } #Used to prevent random purges from popping up while this is active
+			set_country_flag = SOV_trial_of_the_generals_flag #Used to unlock the next purge focus
+
+			add_political_power = 25
+
+			SOV_paranoia_high_increase_effect = yes
+
+			#Historical
+			if = {
+				limit = {
+					has_character = SOV_mikhail_tukhachevsky
+				}
+				SOV_mikhail_tukhachevsky = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#NOT-SO-HISTORICAL
+			#Yegorov
+			if = {
+				limit = {
+					has_character = SOV_aleksandr_yegorov
+				}
+				SOV_aleksandr_yegorov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Blyukher
+			if = {
+				limit = {
+					has_character = SOV_vasily_blyukher
+				}
+				SOV_vasily_blyukher = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Primakov
+			if = {
+				limit = {
+					has_character = SOV_vitaly_primakov
+				}
+				SOV_vitaly_primakov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}			
+
+			custom_effect_tooltip = SOV_will_trigger_a_great_purge_tt
+			hidden_effect = {
+				set_country_flag = SOV_purge_event_unavoidable_flag #No way to avoid this purge. This people are about to be purged and there's nothing you can do for them.
+				SOV_great_purge_army_trial_of_the_generals_effect = yes #TRIAL OF THE GENERALS -> Tukhachevsky
+			}
+
+			set_country_flag = SOV_stalinist_military_flag #New Generals have more chances of being Stalinists after this
+		}
+	}
+
+	focus = {
+		id = SOV_the_bloc_of_rights_and_trotskyites
+		icon = GFX_focus_SOV_purge_bukharinists
+		prerequisite = { focus = SOV_the_military_conspiracy }
+		x = 0
+		y = 1
+		relative_position_id = SOV_the_military_conspiracy
+		cost = 10
+
+		available = {
+			has_country_flag = {
+				flag = SOV_trial_of_the_generals_flag
+				days > 175
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_last_purge_focus_days_rights_tt
+				has_country_flag = {
+					flag = SOV_trial_of_the_generals_flag
+					days > 175
+				}
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		select_effect = {
+			set_country_flag = SOV_paranoia_do_not_cancel_focus_flag #This focus cannot be canceled
+		}
+
+		completion_reward = {
+			clr_country_flag = SOV_paranoia_do_not_cancel_focus_flag
+			set_country_flag = { flag = SOV_paranoia_random_purge_cooldown_from_focus_flag days = 15 } #Used to prevent random purges from popping up while this is active
+			set_country_flag = SOV_third_moscow_trial_flag #Used to unlock the next purge focus
+
+			add_political_power = 25
+
+			#HISTORICAL
+			#Bukharin
+			if = {
+				limit = {
+					has_character = SOV_nikolay_bukharin
+				}
+				SOV_nikolay_bukharin = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Rykov
+			if = {
+				limit = {
+					has_character = SOV_aleksey_rykov
+				}
+				SOV_aleksey_rykov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#NOT-SO-HISTORICAL
+			#Tomsky
+			if = {
+				limit = {
+					has_character = SOV_mikhail_tomsky
+				}
+				SOV_mikhail_tomsky = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+			#Litvinov
+			if = {
+				limit = {
+					has_character = SOV_maksim_litvinov
+				}
+				SOV_maksim_litvinov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			else = {
+				SOV_add_random_character_to_purge_targets_effect = yes
+			}
+
+			custom_effect_tooltip = SOV_will_trigger_a_great_purge_tt
+			hidden_effect = {
+				set_country_flag = SOV_purge_event_unavoidable_flag #No way to avoid this purge. This people are about to be purged and there's nothing you can do for them.
+				SOV_trigger_great_purge_moscow_trial_effect = yes #THIRD MOSCOW TRIAL -> Right Opposition
+			}
+			custom_effect_tooltip = SOV_trigger_third_moscow_trial_tt
+
+			SOV_remove_paranoia_effect = yes #REMOVE PARANOIA SYSTEM
+		}
+	}
+
+	focus = {
+		id = SOV_behead_the_snake
+		icon = GFX_focus_SOV_behead_the_snake
+		prerequisite = { focus = SOV_the_military_conspiracy }
+		x = 2
+		y = 1
+		relative_position_id = SOV_the_military_conspiracy
+		cost = 5
+
+		available = {
+			has_government = communism
+			NOT = { has_global_flag = AAT_trotsky_sent_to_stalin }
+			has_global_flag = AAT_trotsky_in_mexico
+		}
+		
+		search_filters = {FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				custom_effect_tooltip = SOV_behead_the_snake_lar_tt
+				create_operative_leader = {
+					name = "Ramón Mercader"
+					GFX = GFX_portrait_SOV_ramon_mercader
+					traits = { operative_tough operative_infiltrator }
+					bypass_recruitment = no
+					available_to_spy_master = yes
+					nationalities = { SOV SPR MEX }
+				}
+
+				#Extra operative slot
+				set_variable = { SOV_the_politburo_operative_slot = 1 }
+				custom_effect_tooltip = SOV_behead_the_snake_ns_tt
+			}
+			else = {
+				custom_effect_tooltip = SOV_behead_the_snake_no_lar_tt
+			}
+
+			SOV_paranoia_high_decrease_effect = yes
+		}
+	}
+
+	focus = {
+		id = SOV_stalins_cult_of_personality
+		icon = GFX_focus_SOV_stalins_cult_of_personality
+		prerequisite = { focus = SOV_the_bloc_of_rights_and_trotskyites }
+		x = 0
+		y = 1
+		relative_position_id = SOV_the_bloc_of_rights_and_trotskyites
+		cost = 5
+
+		available = {
+			has_country_flag = {
+				flag = SOV_third_moscow_trial_flag
+				days > 175
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_last_purge_focus_days_cult_tt
+				has_country_flag = {
+					flag = SOV_third_moscow_trial_flag
+					days > 175
+				}
+			}
+			has_completed_focus = SOV_expand_the_agitprop
+			has_country_leader = {
+				character = SOV_iosif_stalin
+				ruling_only = yes
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_PROPAGANDA}
+
+		completion_reward = {
+			add_political_power = 25
+
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = SOV_propaganda_stalin
+			custom_effect_tooltip = propaganda_campaign_requirement_tt
+		}
+	}
+
+	focus = {
+		id = SOV_they_will_know_fear
+		icon = GFX_SOV_they_will_know_fear_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_stalins_cult_of_personality }
+		x = -3
+		y = 1
+		relative_position_id = SOV_stalins_cult_of_personality
+		cost = 5
+
+		available = {
+			has_defensive_war = yes
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				has_tech = advanced_heavy_tank_chassis
+			}
+			else = {
+				has_tech = advanced_heavy_tank
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_RESEARCH}
+
+		completion_reward = {
+
+			add_breakthrough_progress = {
+				specialization = specialization_land
+				value = 1
+			}
+
+			add_tech_bonus = {
+				name = SOV_they_will_know_fear
+				bonus = 1
+				uses = 1 # was 2
+				category = armor
+			}
+
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				# IS-2 tank template
+				if = {
+					limit = {
+						OR = {
+							has_tech = antiair2
+							has_tech = antitank2
+						}
+					}
+					create_equipment_variant = {
+						name = "IS-2"
+						type = heavy_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon_2
+							turret_type_slot = tank_heavy_three_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = tank_radio_1
+							special_type_slot_2 = sloped_armor
+							special_type_slot_3 = smoke_launchers
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 8
+							tank_nsb_armor_upgrade = 6
+						}
+						icon = "GFX_SOV_advanced_heavy_tank_medium"
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = interwar_antiair
+							has_tech = interwar_antitank
+						}
+					}
+					create_equipment_variant = {
+						name = "IS-2"
+						type = heavy_tank_chassis_3
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_heavy_cannon
+							turret_type_slot = tank_heavy_three_man_tank_turret
+							suspension_type_slot = tank_torsion_bar_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = tank_radio_1
+							special_type_slot_2 = sloped_armor
+							special_type_slot_3 = smoke_launchers
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 8
+							tank_nsb_armor_upgrade = 6
+						}
+						icon = "GFX_SOV_advanced_heavy_tank_medium"
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_inheritor_of_the_mantle_of_lenin
+		icon = GFX_SOV_inheritor_of_the_mantle_of_lenin_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_stalins_cult_of_personality }
+		x = -1
+		y = 1
+		relative_position_id = SOV_stalins_cult_of_personality
+		cost = 5
+
+		mutually_exclusive = { focus = SOV_the_faithful_servant_of_lenin }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_propaganda_campaigns_taken_5_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 5 compare = greater_than_or_equals }
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT}
+
+		completion_reward = {
+			add_war_support = 0.05
+			add_country_leader_trait = stalin_inheritor_of_lenin
+		}
+	}
+
+	focus = {
+		id = SOV_brilliant_genius
+		icon = GFX_focus_generic_socialist_science
+		prerequisite = { focus = SOV_inheritor_of_the_mantle_of_lenin }
+		x = -1
+		y = 1
+		relative_position_id = SOV_inheritor_of_the_mantle_of_lenin
+		cost = 10
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_propaganda_campaigns_taken_10_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 10 compare = greater_than_or_equals }
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_RESEARCH}
+
+		completion_reward = {
+			#Academies of Sciences decisions are 50% cheaper
+			divide_variable = { SOV_national_academy_of_sciences_construction_cost = 2 }
+			custom_effect_tooltip = SOV_brilliant_genius_academies_of_sciences_tt
+
+			if = {
+				limit = {
+					has_completed_focus = SOV_leader_of_the_party_and_the_people
+				}
+				swap_ruler_traits = {
+					remove = stalin_inheritor_of_lenin_leader
+					add = stalin_inheritor_of_lenin_final
+				}
+			}
+			else = {
+				swap_ruler_traits = {
+					remove = stalin_inheritor_of_lenin
+					add = stalin_inheritor_of_lenin_genius
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_the_faithful_servant_of_lenin
+		icon = GFX_SOV_the_faithful_servant_of_lenin_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_stalins_cult_of_personality }
+		x = 1
+		y = 1
+		relative_position_id = SOV_stalins_cult_of_personality
+		cost = 5
+
+		mutually_exclusive = { focus = SOV_inheritor_of_the_mantle_of_lenin }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_propaganda_campaigns_taken_5_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 5 compare = greater_than_or_equals }
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_STABILITY}
+
+		completion_reward = {
+			add_stability = 0.1
+			add_country_leader_trait = stalin_servant_of_lenin
+		}
+	}
+
+	focus = {
+		id = SOV_ban_excessive_hero_worship
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		prerequisite = { focus = SOV_the_faithful_servant_of_lenin }
+		x = 1
+		y = 1
+		relative_position_id = SOV_the_faithful_servant_of_lenin
+		cost = 10
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_propaganda_campaigns_taken_10_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 10 compare = greater_than_or_equals }
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
+
+		completion_reward = {
+			custom_effect_tooltip = SOV_ban_excessive_hero_worship_dec_cost_tt
+			SOV_foreign_politics_decision_cost_reduction_effect = yes
+
+			if = {
+				limit = {
+					has_completed_focus = SOV_leader_of_the_party_and_the_people
+				}
+				swap_ruler_traits = {
+					remove = stalin_servant_of_lenin_leader
+					add = stalin_servant_of_lenin_final
+				}
+			}
+			else = {
+				swap_ruler_traits = {
+					remove = stalin_servant_of_lenin
+					add = stalin_servant_of_lenin_worship
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_leader_of_the_party_and_the_people
+		icon = GFX_SOV_leader_of_the_party_and_the_people_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_inheritor_of_the_mantle_of_lenin focus = SOV_the_faithful_servant_of_lenin }
+		x = 1
+		y = 1
+		relative_position_id = SOV_inheritor_of_the_mantle_of_lenin
+		cost = 5
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_propaganda_campaigns_taken_10_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 10 compare = greater_than_or_equals }
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
+
+		completion_reward = {
+			add_political_power = 50
+
+			#Swap Stalin's Trait
+			if = { #INHERITOR BRANCH
+				limit = {
+					has_completed_focus = SOV_inheritor_of_the_mantle_of_lenin
+				}
+				if = {
+					limit = {
+						has_completed_focus = SOV_brilliant_genius
+					}
+					swap_ruler_traits = {
+						remove = stalin_inheritor_of_lenin_genius
+						add = stalin_inheritor_of_lenin_final
+					}
+				}
+				else = {
+					swap_ruler_traits = {
+						remove = stalin_inheritor_of_lenin
+						add = stalin_inheritor_of_lenin_leader
+					}
+				}
+			}
+			else_if = { #SERVANT BRANCH
+				limit = {
+					has_completed_focus = SOV_the_faithful_servant_of_lenin
+				}
+				if = {
+					limit = {
+						has_completed_focus = SOV_ban_excessive_hero_worship
+					}
+					swap_ruler_traits = {
+						remove = stalin_servant_of_lenin_worship
+						add = stalin_servant_of_lenin_final
+					}
+				}
+				else = {
+					swap_ruler_traits = {
+						remove = stalin_servant_of_lenin
+						add = stalin_servant_of_lenin_leader
+					}
+				}
+			}
+			else = {
+				custom_effect_tooltip = SOV_leader_of_the_party_and_the_people_trait_tt
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_great_commander
+		icon = GFX_SOV_great_commander_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_inheritor_of_the_mantle_of_lenin }
+		prerequisite = { focus = SOV_leader_of_the_party_and_the_people }
+		x = -1
+		y = 1
+		relative_position_id = SOV_leader_of_the_party_and_the_people
+		cost = 5
+
+		mutually_exclusive = { focus = SOV_architect_of_communism }
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_propaganda_campaigns_taken_15_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 15 compare = greater_than_or_equals }
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+
+		completion_reward = {
+			add_country_leader_trait = stalin_great_commander
+			add_field_marshal_role = {
+				character = "SOV_iosif_stalin"
+				traits={ old_guard politically_connected media_personality harsh_leader }
+				skill=3
+				attack_skill=1
+				defense_skill=3
+				planning_skill=3
+				logistics_skill=3
+				legacy_id=0
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_architect_of_communism
+		icon = GFX_SOV_architect_of_communism_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_the_faithful_servant_of_lenin }
+		prerequisite = { focus = SOV_leader_of_the_party_and_the_people }
+		x = 1
+		y = 1
+		relative_position_id = SOV_leader_of_the_party_and_the_people
+		cost = 5
+
+		mutually_exclusive = { focus = SOV_great_commander }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_propaganda_campaigns_taken_15_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 15 compare = greater_than_or_equals }
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			add_country_leader_trait = stalin_architect_of_communism
+		}
+	}
+
+	focus = {
+		id = SOV_father_of_nations
+		icon = GFX_SOV_father_of_nations_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_great_commander focus = SOV_architect_of_communism }
+		x = 1
+		y = 1
+		relative_position_id = SOV_great_commander
+		cost = 10
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_propaganda_campaigns_taken_20_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 20 compare = greater_than_or_equals }
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY}
+
+		completion_reward = {
+			swap_ruler_traits = {
+				remove = stalin_heart_of_steel
+				add = stalin_father_of_nations
+			}
+			hidden_effect = {
+				play_song = "comintern_war_1"
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_freedom_of_debate_unity_of_action
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = SOV_stalins_cult_of_personality }
+		x = 3
+		y = 1
+		relative_position_id = SOV_stalins_cult_of_personality
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY}
+
+		completion_reward = {
+			add_to_variable = { SOV_the_politburo_political_power_factor = 0.05 }
+			add_to_variable = { SOV_the_politburo_political_advisor_cost_factor = -0.15 }
+			custom_effect_tooltip = SOV_freedom_of_debate_unity_of_action_ns_tt
+
+			add_political_power = 50
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = SOV_the_construction_of_communism
+		icon = GFX_focus_ger_great_red_menace
+		prerequisite = { focus = SOV_freedom_of_debate_unity_of_action }
+		x = 0
+		y = 2
+		relative_position_id = SOV_freedom_of_debate_unity_of_action
+		cost = 10
+
+		available = {
+			num_subjects > 0
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+			add_to_variable = { SOV_the_politburo_opinion_gain_monthly_same_ideology_factor = 0.25 }
+			custom_effect_tooltip = SOV_the_construction_of_communism_ns_tt
+
+			if = {
+				limit = {
+					num_subjects > 0
+				}
+				every_subject_country = {
+					add_autonomy_score = {
+						value = -100
+						localization = SOV_the_construction_of_communism
+					}
+				}
+			}
+			else = {
+				custom_effect_tooltip = SOV_the_construction_of_communism_puppet_autonomy_tt
+			}
+
+			custom_effect_tooltip = SOV_the_construction_of_communism_railways_tt
+			#Build railway from Moscow to Puppets
+			hidden_effect = { #Hiidden for tooltip reasons
+				every_subject_country = {
+					limit = {
+						capital_scope = {
+							OR = {
+								is_on_continent = europe
+								is_on_continent = asia
+								is_on_continent = middle_east
+							}
+						}
+					}
+
+					if = {
+						limit = {
+							can_build_railway = {
+								start_state = ROOT.capital
+								target_state = THIS.capital
+								build_only_on_allied = yes
+							}
+						}
+						build_railway = {				
+							start_state = ROOT.capital
+							target_state = THIS.capital
+							build_only_on_allied = yes
+						}
+					}		
+				}
+			}
+		}
+	}
+}
