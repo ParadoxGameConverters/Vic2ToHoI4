@@ -1,0 +1,940 @@
+UTI = {
+    SOV_grigory_zinovyev = {
+        name = SOV_grigory_zinovyev
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_SOV_grigory_zinovyev"
+            }
+            army = {
+                small = "GFX_idea_SOV_grigory_zinovyev_imprisoned"
+            }
+        }
+        allowed_civil_war = { 
+            OR = {
+                AND = {
+                    tag = SOV 
+                    has_government = communism
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_grigory_zinovyev
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                has_completed_focus = SOV_align_the_zinovyevites
+                OR = {
+                    has_global_flag = SOV_soviet_civil_war
+                    has_global_flag = SOV_soviet_civil_war_over
+                    AND = {
+                        has_completed_focus = SOV_the_plan_for_the_coup
+                        has_completed_focus = SOV_coup_detat
+                    }
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_imprisoned_flag
+                    }
+                    NOT = { has_character_flag = SOV_imprisoned_flag } #For flavor purposes only -> Removed in the appropriate focus/event/dec
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                communist_theorist
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }       
+    }
+    
+    SOV_lev_kamenev = {
+        name = SOV_lev_kamenev
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_SOV_lev_kamenev"
+            }
+            army = {
+                small = "GFX_idea_SOV_lev_kamenev_imprisoned"
+            }
+        }
+        allowed_civil_war = { 
+            OR = {
+                AND = {
+                    tag = SOV 
+                    has_government = communism
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_lev_kamenev
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                has_completed_focus = SOV_align_the_zinovyevites
+                OR = {
+                    has_global_flag = SOV_soviet_civil_war
+                    has_global_flag = SOV_soviet_civil_war_over
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_imprisoned_flag
+                    }
+                    NOT = { has_character_flag = SOV_imprisoned_flag } #For flavor purposes only -> Removed in the appropriate focus/event/dec
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                appeasing_technocrat 
+            }
+            ai_will_do = {
+                base = 2
+            }
+        }
+    }
+
+    SOV_ivan_smirnov = {
+        name = SOV_ivan_smirnov
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_SOV_ivan_smirnov"
+            }
+            army = {
+                small = "GFX_idea_SOV_ivan_smirnov_imprisoned"
+            }
+        }
+        allowed_civil_war = { 
+            OR = {
+                AND = {
+                    tag = SOV 
+                    has_government = communism
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_ivan_smirnov
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = { has_character_flag = SOV_character_purged_flag }
+                
+            }
+            available = {
+                OR = {
+                    has_global_flag = SOV_soviet_civil_war
+                    has_global_flag = SOV_soviet_civil_war_over
+                }
+                OR = {
+                    has_completed_focus = SOV_integrate_smirnovs_bloc
+                    has_completed_focus = SOV_return_democracy_to_the_party
+                }
+                is_country_leader = no
+                if = {
+                    limit = {
+                        has_character_flag = SOV_imprisoned_flag
+                    }
+                    NOT = { has_character_flag = SOV_imprisoned_flag } #For flavor purposes only -> Removed in the appropriate focus/event/dec
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                head_directorate_of_new_buildings 
+            }
+            ai_will_do = {
+                base = 2
+            }
+        }
+    }
+
+    SOV_grigory_sokolnikov = {
+        name = SOV_grigory_sokolnikov
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_grigory_sokolnikov"
+            }
+        }
+        allowed_civil_war = {
+            has_government = communism
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_grigory_sokolnikov
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                OR = {
+                    has_completed_focus = SOV_the_need_for_policy_changes 
+                    has_completed_focus = SOV_return_democracy_to_the_party
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                peoples_commissar_of_finance 
+            }
+            ai_will_do = {
+                base = 2
+            }
+        }
+    }
+
+    SOV_aleksandr_shlyapnikov = {
+        name = SOV_aleksandr_shlyapnikov
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_aleksandr_shlyapnikov_imprisoned"
+            }
+        }
+        allowed_civil_war = { 
+            OR = {
+                AND = {
+                    tag = SOV 
+                    has_government = communism
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_aleksandr_shlyapnikov
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                OR = {
+                    SOV_is_left_opposition = yes
+                    has_completed_focus = SOV_return_democracy_to_the_party
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_imprisoned_flag
+                    }
+                    NOT = { has_character_flag = SOV_imprisoned_flag } #For flavor purposes only -> Removed in the appropriate focus/event/dec
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                left_trade_unionist
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+    }
+
+    SOV_karl_radek = {
+        name = SOV_karl_radek
+
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_karl_radek"
+            }
+        }
+
+        allowed_civil_war = {
+            OR = {
+                AND = {
+                    tag = SOV
+                    SOV_is_left_opposition = yes 
+                    has_completed_focus = SOV_bring_old_trotskyists_back
+                }
+                AND = {
+                    tag = SOV
+                    SOV_is_right_opposition = yes 
+                    has_completed_focus = SOV_cooperation_against_stalin 
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_karl_radek
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                OR = {
+                    AND = {
+                        SOV_is_left_opposition = yes 
+                        has_completed_focus = SOV_bring_old_trotskyists_back
+                    }
+                    AND = {
+                        SOV_is_right_opposition = yes 
+                        has_completed_focus = SOV_cooperation_against_stalin 
+                    }
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                international_revolutionary 
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+    }
+
+    SOV_ivar_smilga = {
+        name = SOV_ivar_smilga
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_ivar_smilga_imprisoned"
+            }
+        }
+        allowed_civil_war = { 
+            OR = {
+                AND = {
+                    tag = SOV 
+                    has_government = communism
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_ivar_smilga
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                OR = {
+                    has_completed_focus = SOV_integrate_smirnovs_bloc
+                    has_completed_focus = SOV_return_democracy_to_the_party
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_imprisoned_flag
+                    }
+                    NOT = { has_character_flag = SOV_imprisoned_flag } #For flavor purposes only -> Removed in the appropriate focus/event/dec
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                soviet_economist
+            }
+            ai_will_do = {
+                base = 2
+            }
+        }
+    }
+
+
+    SOV_yevgeny_preobrazhensky = {
+        name = SOV_yevgeny_preobrazhensky
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_yevgeny_preobrazhensky"
+            }
+        }
+
+        allowed_civil_war = {
+            OR = {
+                AND = {
+                    tag = SOV
+                    SOV_is_left_opposition = yes 
+                    has_completed_focus = SOV_bring_old_trotskyists_back
+                }
+                AND = {
+                    tag = SOV
+                    SOV_is_right_opposition = yes 
+                    has_completed_focus = SOV_cooperation_against_stalin 
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_yevgeny_preobrazhensky
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                OR = {
+                    AND = {
+                        tag = SOV
+                        SOV_is_left_opposition = yes 
+                        has_completed_focus = SOV_bring_old_trotskyists_back
+                    }
+                    AND = {
+                        tag = SOV
+                        SOV_is_right_opposition = yes 
+                        has_completed_focus = SOV_cooperation_against_stalin 
+                    }
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                ecomonist_publicist 
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+    }
+
+    SOV_martemyan_ryutin = {
+        name = SOV_martemyan_ryutin
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_martemyan_ryutin_imprisoned"
+            }
+        }
+
+        allowed_civil_war = {
+            OR = {
+                AND = {
+                    SOV_is_left_opposition = yes 
+                    has_completed_focus = SOV_liberate_ryutin
+                }
+                AND = {
+                    SOV_is_right_opposition = yes 
+                    has_completed_focus = SOV_liberate_ryutin 
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism
+                }
+            }
+        }
+
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_martemyan_ryutin
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                has_completed_focus = SOV_liberate_ryutin
+                OR = {
+                    has_global_flag = SOV_soviet_civil_war
+                    has_global_flag = SOV_soviet_civil_war_over
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_imprisoned_flag
+                    }
+                    NOT = { has_character_flag = SOV_imprisoned_flag } #For flavor purposes only -> Removed in the appropriate focus/event/dec
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                anti_stalinist_propagandist 
+            }
+            ai_will_do = {
+                base = 0.5
+            }
+        }
+    }
+    
+    SOV_nikolay_ustryalov = {
+        name = SOV_nikolay_ustryalov
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_nikolay_ustryalov"
+            }
+        }
+        allowed_civil_war = {
+            OR = {
+                has_government = neutrality 
+                has_government = fascism
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_nikolay_ustryalov
+            allowed = {
+                original_tag = SOV
+            }
+            available = {
+                has_completed_focus = SOV_consolidate_power
+            }
+            traits = {
+                political_chameleon
+            }
+            ai_will_do = {
+                base = 0
+            }
+        }       
+    }
+
+    SOV_mikhail_tukhachevsky = {
+        name = SOV_mikhail_tukhachevsky
+        portraits = {
+            army = {
+                small = "GFX_idea_mikhail_tukhachevsky"
+                large = GFX_portrait_SOV_mikhail_tukhachevsky
+            }
+        }
+        advisor = {
+            cost = 150
+            slot = theorist
+            idea_token = mikhail_tukhachevsky
+            ledger = army
+            allowed = {
+                original_tag = SOV
+            }
+            available = {
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                mass_assault_expert
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+
+        field_marshal = {
+            traits = { brilliant_strategist career_officer trait_reckless infantry_officer offensive_doctrine }
+            skill = 4
+            attack_skill = 3
+            defense_skill = 4
+            planning_skill = 4
+            logistics_skill = 2
+            legacy_id = 401
+            visible = { NOT = { has_character_flag = SOV_exiled_flag } }
+        }
+    }
+
+    SOV_aleksandr_yegorov = {
+        name = SOV_aleksandr_yegorov
+        portraits = {
+            army = {
+                small = "GFX_idea_aleksandr_yegorov"
+                large = "GFX_portrait_SOV_aleksandr_yegorov"
+            }
+        }
+        advisor = {
+            slot = army_chief
+            idea_token = SOV_aleksandr_yegorov
+            allowed = {
+                original_tag = SOV
+            }
+            traits = {
+                army_chief_defensive_2
+            }
+            cost = 100
+            ai_will_do = {
+                base = 0.5
+                modifier = {
+                    factor = 5
+                    NOT = { has_character = SOV_semyon_timoshenko }
+                }
+            }
+        }
+
+        field_marshal = {
+            traits = { career_officer inflexible_strategist trait_reckless }
+            skill = 3
+            attack_skill = 2
+            defense_skill = 2
+            planning_skill = 4
+            logistics_skill = 2
+            legacy_id = 0
+            visible = { NOT = { has_character_flag = SOV_exiled_flag } }
+        }   
+    }
+
+    SOV_vasily_blyukher = {
+        name = SOV_vasily_blyukher
+        portraits = {
+            army = {
+                small = "GFX_portrait_SOV_blyukher_small" #"gfx/interface/ideas/idea_SOV_blyukher.dds"
+                large = "GFX_portrait_SOV_blyukher"
+            }
+        }
+        advisor = {
+            slot = army_chief
+            idea_token = SOV_vasily_blyukher
+            allowed = {
+                original_tag = SOV
+            }
+            traits = {
+                army_chief_maneuver_2
+            }
+            cost = 100
+            ai_will_do = {
+                base = 1
+                modifier = {
+                    factor = 5
+                    NOT = { has_character = SOV_semyon_timoshenko }
+                }
+            }
+        }
+
+        field_marshal = {
+            traits = { old_guard career_officer infantry_officer organizer }
+            skill = 3
+            attack_skill = 2
+            defense_skill = 1
+            planning_skill = 3
+            logistics_skill = 4
+            legacy_id = 0
+            visible = { NOT = { has_character_flag = SOV_exiled_flag } }
+        }
+    }
+
+    SOV_vitaly_primakov = {
+        name = SOV_vitaly_primakov
+
+        portraits = {
+            army = {
+                large = "GFX_portrait_SOV_vasily_primakov"
+                small = "GFX_portrait_SOV_vasily_primakov_small"
+            }
+        }
+
+        corps_commander = {
+            traits = { cavalry_officer trait_reckless war_hero cavalry_leader }
+            skill = 3
+            attack_skill = 3
+            defense_skill = 2
+            planning_skill = 2
+            logistics_skill = 3
+            legacy_id = 0
+            visible = { NOT = { has_character_flag = SOV_exiled_flag } }
+        }
+    }
+
+    SOV_nikolay_bukharin = {
+        name = SOV_nikolay_bukharin
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_SOV_nikolay_bukharin"
+            }
+            army = {
+                small = "GFX_idea_SOV_nikolay_bukharin"
+            }
+        }
+
+        allowed_civil_war = {
+            OR = {
+                SOV_is_right_opposition = yes 
+                AND = {
+                    SOV_is_left_opposition = yes 
+                    has_completed_focus = SOV_cooperation_against_stalin 
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_nikolay_bukharin
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                OR = {
+                    SOV_is_right_opposition = yes 
+                    AND = {
+                        SOV_is_left_opposition = yes 
+                        has_completed_focus = SOV_cooperation_against_stalin 
+                    }
+                }
+                is_country_leader = no
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                economy_reformer 
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+    }
+    
+    SOV_aleksey_rykov = {
+        name = SOV_aleksey_rykov
+
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_SOV_aleksey_rykov"
+            }
+            army = {
+                small = "GFX_idea_SOV_aleksey_rykov"
+            }
+        }
+
+        allowed_civil_war = {
+            OR = {
+                SOV_is_right_opposition = yes 
+                AND = {
+                    SOV_is_left_opposition = yes 
+                    has_completed_focus = SOV_cooperation_against_stalin 
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_aleksey_rykov
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                OR = {
+                    SOV_is_right_opposition = yes 
+                    AND = {
+                        SOV_is_left_opposition = yes 
+                        has_completed_focus = SOV_cooperation_against_stalin 
+                    }
+                }
+                is_country_leader = no
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            
+            traits = {
+                peoples_commissar_for_posts_and_telegraphs 
+            }
+            ai_will_do = {
+                base = 1
+            }
+        }
+    }
+
+    SOV_mikhail_tomsky = {
+        name = SOV_mikhail_tomsky
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_mikhail_tomsky"
+            }
+        }
+        allowed_civil_war = { 
+            OR = {
+                AND = {
+                    tag = SOV 
+                    has_government = communism
+                }
+                AND = {
+                    SOV_is_exiles = yes 
+                    has_government = communism 
+                }
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_mikhail_tomsky
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                OR = {
+                    SOV_is_right_opposition = yes
+                    has_completed_focus = SOV_return_democracy_to_the_party
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                right_trade_unionist 
+            }
+            ai_will_do = {
+                base = 2
+            }
+        }
+    }
+
+    SOV_maksim_litvinov = {
+        name = SOV_maksim_litvinov
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_maksim_litvinov"
+            }
+        }
+        allowed_civil_war = {
+            has_government = communism
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = SOV_maksim_litvinov
+            allowed = {
+                original_tag = SOV
+            }
+            visible = {
+                NOT = {
+                    has_character_flag = SOV_character_purged_flag 
+                }
+            }
+            available = {
+                has_completed_focus = SOV_policy_of_collective_security 
+            }
+            traits = {
+                pc_for_foreign_affairs_litvinov 
+            }
+            ai_will_do = {
+                base = 0.5
+            }
+        }
+    }
+
+}
