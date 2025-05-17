@@ -12,7 +12,7 @@ UTI = {
         allowed_civil_war = { 
             OR = {
                 AND = {
-                    tag = SOV 
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV 
                     has_government = communism
                 }
                 AND = {
@@ -26,7 +26,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_grigory_zinovyev
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -78,7 +78,7 @@ UTI = {
         allowed_civil_war = { 
             OR = {
                 AND = {
-                    tag = SOV 
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV 
                     has_government = communism
                 }
                 AND = {
@@ -92,7 +92,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_lev_kamenev
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -140,7 +140,7 @@ UTI = {
         allowed_civil_war = { 
             OR = {
                 AND = {
-                    tag = SOV 
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV 
                     has_government = communism
                 }
                 AND = {
@@ -154,7 +154,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_ivan_smirnov
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = { has_character_flag = SOV_character_purged_flag }
@@ -207,7 +207,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_grigory_sokolnikov
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -245,7 +245,7 @@ UTI = {
         allowed_civil_war = { 
             OR = {
                 AND = {
-                    tag = SOV 
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV 
                     has_government = communism
                 }
                 AND = {
@@ -259,7 +259,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_aleksandr_shlyapnikov
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -305,12 +305,12 @@ UTI = {
         allowed_civil_war = {
             OR = {
                 AND = {
-                    tag = SOV
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV
                     SOV_is_left_opposition = yes 
                     has_completed_focus = SOV_bring_old_trotskyists_back
                 }
                 AND = {
-                    tag = SOV
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV
                     SOV_is_right_opposition = yes 
                     has_completed_focus = SOV_cooperation_against_stalin 
                 }
@@ -325,7 +325,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_karl_radek
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -369,7 +369,7 @@ UTI = {
         allowed_civil_war = { 
             OR = {
                 AND = {
-                    tag = SOV 
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV 
                     has_government = communism
                 }
                 AND = {
@@ -383,7 +383,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_ivar_smilga
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -429,12 +429,12 @@ UTI = {
         allowed_civil_war = {
             OR = {
                 AND = {
-                    tag = SOV
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV
                     SOV_is_left_opposition = yes 
                     has_completed_focus = SOV_bring_old_trotskyists_back
                 }
                 AND = {
-                    tag = SOV
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV
                     SOV_is_right_opposition = yes 
                     has_completed_focus = SOV_cooperation_against_stalin 
                 }
@@ -449,7 +449,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_yevgeny_preobrazhensky
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -459,12 +459,12 @@ UTI = {
             available = {
                 OR = {
                     AND = {
-                        tag = SOV
+                        tag = event_target:SOV_the_path_of_marxism_leninism_SOV
                         SOV_is_left_opposition = yes 
                         has_completed_focus = SOV_bring_old_trotskyists_back
                     }
                     AND = {
-                        tag = SOV
+                        tag = event_target:SOV_the_path_of_marxism_leninism_SOV
                         SOV_is_right_opposition = yes 
                         has_completed_focus = SOV_cooperation_against_stalin 
                     }
@@ -515,7 +515,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_martemyan_ryutin
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -568,7 +568,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_nikolay_ustryalov
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             available = {
                 has_completed_focus = SOV_consolidate_power
@@ -596,7 +596,7 @@ UTI = {
             idea_token = mikhail_tukhachevsky
             ledger = army
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             available = {
                 if = {
@@ -638,7 +638,7 @@ UTI = {
             slot = army_chief
             idea_token = UTI_aleksandr_yegorov
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             traits = {
                 army_chief_defensive_2
@@ -677,7 +677,7 @@ UTI = {
             slot = army_chief
             idea_token = UTI_vasily_blyukher
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             traits = {
                 army_chief_maneuver_2
@@ -756,7 +756,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_nikolay_bukharin
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -818,7 +818,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_aleksey_rykov
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -861,7 +861,7 @@ UTI = {
         allowed_civil_war = { 
             OR = {
                 AND = {
-                    tag = SOV 
+                    tag = event_target:SOV_the_path_of_marxism_leninism_SOV 
                     has_government = communism
                 }
                 AND = {
@@ -875,7 +875,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_mikhail_tomsky
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
@@ -918,7 +918,7 @@ UTI = {
             slot = political_advisor
             idea_token = UTI_maksim_litvinov
             allowed = {
-                original_tag = SOV
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             visible = {
                 NOT = {
