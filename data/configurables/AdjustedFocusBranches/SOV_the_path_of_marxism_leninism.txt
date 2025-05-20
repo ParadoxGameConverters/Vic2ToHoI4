@@ -946,7 +946,7 @@ focus_tree = {
 				}
 			}
 			has_country_leader = {
-				character = SOV_iosif_stalin
+				character = UTI_iosif_stalin
 				ruling_only = yes
 			}
 		}
@@ -1290,7 +1290,7 @@ focus_tree = {
 		completion_reward = {
 			add_country_leader_trait = stalin_great_commander
 			add_field_marshal_role = {
-				character = "SOV_iosif_stalin"
+				character = "UTI_iosif_stalin"
 				traits={ old_guard politically_connected media_personality harsh_leader }
 				skill=3
 				attack_skill=1

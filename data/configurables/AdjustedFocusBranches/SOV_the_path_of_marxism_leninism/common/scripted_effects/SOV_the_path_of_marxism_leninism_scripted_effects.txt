@@ -634,3 +634,133 @@ SOV_paranoia_clamp_and_update_ui_effect = {
 	SOV_update_ui_effect = yes
 }
 
+SOV_reset_specific_random_target_override_effect = {
+	set_variable = { SOV_specific_random_purge_targets_override = -1 }
+}
+
+SOV_update_ui_effect = {
+	if = {
+		limit = {
+			check_variable = { SOV_paranoia = 0 }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 1 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 5 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 2 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 10 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 3 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 15 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 4 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 20 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 5 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 25 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 6 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 30 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 7 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 35 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 8 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 40 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 9 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 45 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 10 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 50 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 11 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 55 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 12 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 60 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 13 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 65 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 14 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 70 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 15 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 75 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 16 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 80 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 17 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 85 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 18 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 90 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 19 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { SOV_paranoia = 95 compare = less_than_or_equals }
+		}
+		set_variable = { SOV_paranoia_main_paranoiameter = 20 }
+	}
+	else = { # paranoia > 95
+		set_variable = { SOV_paranoia_main_paranoiameter = 21 }
+	}
+}
+
