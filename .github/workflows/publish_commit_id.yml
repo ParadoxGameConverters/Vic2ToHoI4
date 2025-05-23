@@ -12,13 +12,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    # - name: Publish commit id
-      # uses: ParadoxGameConverters/publish_commit_id@main
-      # env:
-        # API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      # with:
-        # destination_file: 'Vic2ToHoI4.txt'
-        # user_email: 'idhrendur@hotmail.com'
-        # user_name: 'idhrendur'
-        # destination_branch: 'main'
-        # commit_message: "Publish Vic2ToHoI4's commit id"
+    - name: Publish commit id
+      uses: ParadoxGameConverters/publish_commit_id@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        destination_file: 'Vic2ToHoI4.txt'
+        user_email: 'idhrendur@hotmail.com'
+        user_name: 'idhrendur'
+        destination_branch: 'main'
+        commit_message: "Publish Vic2ToHoI4's commit id"
