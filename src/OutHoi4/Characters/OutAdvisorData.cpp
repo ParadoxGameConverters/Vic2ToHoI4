@@ -7,6 +7,14 @@ std::ostream& HoI4::operator<<(std::ostream& out, const AdvisorData& advisor_dat
 	out << "\t\tadvisor={\n";
 	out << "\t\t\tslot = " << advisor_data.getSlot() << "\n";
 	out << "\t\t\tidea_token = " << advisor_data.getIdeaToken() << "\n";
+	if (const auto& name = advisor_data.getName(); name.has_value())
+	{
+		out << "\t\t\tname = \"" << *name << "\"\n";
+	}
+	if (!advisor_data.getCanBeFired())
+	{
+		out << "\t\t\tcan_be_fired = no\n";
+	}
 	if (const auto& ledger = advisor_data.getLedger(); ledger.has_value())
 	{
 		out << "\t\t\tledger = " << *ledger << "\n";
@@ -47,6 +55,14 @@ std::ostream& HoI4::operator<<(std::ostream& out, const AdvisorData& advisor_dat
 	if (const auto& ai_will_do = advisor_data.getAiWillDo(); ai_will_do.has_value())
 	{
 		out << "\t\t\tai_will_do = " << *ai_will_do << "\n";
+	}
+	if (const auto& on_add = advisor_data.getOnAdd(); on_add.has_value())
+	{
+		out << "\t\t\ton_add = " << *on_add << "\n";
+	}
+	if (const auto& on_remove = advisor_data.getOnRemove(); on_remove.has_value())
+	{
+		out << "\t\t\ton_remove = " << *on_remove << "\n";
 	}
 	out << "\t\t}\n";
 
