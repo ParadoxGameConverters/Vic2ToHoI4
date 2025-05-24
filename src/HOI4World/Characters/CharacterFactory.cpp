@@ -13,6 +13,15 @@ using HoI4::Character;
 
 Character::Factory::Factory()
 {
+	registerKeyword("instance", [this](std::istream& input) {
+		Character::Factory instanceFactory;
+		const auto& instance = instanceFactory.importCharacter("instance", input);
+		imported_character_->instances_.push_back(instance);
+	});
+	registerKeyword("allowed", [this](std::istream& input) {
+		getNextTokenWithoutMatching(input); // remove equals
+		imported_character_->allowed_ = commonItems::stringOfItem(input).getString();
+	});
 	registerKeyword("name", [this](std::istream& input) {
 		imported_character_->name_ = commonItems::getString(input);
 	});
@@ -20,7 +29,7 @@ Character::Factory::Factory()
 		imported_character_->portraits_ = portraits_factory_.importPortraits(input);
 	});
 	registerKeyword("allowed_civil_war", [this](std::istream& input) {
-		getNextTokenWithoutMatching(input);
+		getNextTokenWithoutMatching(input); // remove equals
 		imported_character_->allowed_civil_war_ = commonItems::stringOfItem(input).getString();
 	});
 	registerKeyword("advisor", [this](std::istream& input) {
