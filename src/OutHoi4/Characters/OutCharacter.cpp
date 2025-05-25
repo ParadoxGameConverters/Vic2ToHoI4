@@ -10,7 +10,7 @@
 std::ostream& HoI4::operator<<(std::ostream& out, const Character& character)
 {
 	out << "\t" << character.getId() << "={\n";
-	
+
 	if (const auto& instances = character.getInstances(); !instances.empty())
 	{
 		for (const auto& instance: instances)
