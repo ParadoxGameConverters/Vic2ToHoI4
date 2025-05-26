@@ -14,10 +14,13 @@ TEST(HoI4World_Characters_CharacterFactory, AllImportedItemsAreDefaulted)
 	EXPECT_EQ(character.getId(), "");
 	EXPECT_EQ(character.getName(), "Nomen Nescio");
 	EXPECT_TRUE(character.getPortraits().empty());
+	EXPECT_FALSE(character.getAllowed().has_value());
+	EXPECT_FALSE(character.getAllowedCivilWar().has_value());
 	EXPECT_FALSE(character.getAdvisorData().has_value());
 	EXPECT_FALSE(character.getCountryLeaderData().has_value());
 	EXPECT_FALSE(character.getCommanderData().has_value());
 	EXPECT_FALSE(character.getAdmiralData().has_value());
+	EXPECT_TRUE(character.getInstances().empty());
 }
 
 
@@ -25,6 +28,9 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 {
 	std::stringstream input;
 	input << "={\n";
+	input << "\t\tallowed = {\n";
+	input << "\t\t\thas_dlc = \"La Resistance\"\n";
+	input << "\t\t}\n";
 	input << "\t\tname=TAG_test_character_name\n";
 	input << "\t\tportraits={\n";
 	input << "\t\t\tcivilian={\n";
@@ -33,6 +39,10 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 	input << "\t\t\tarmy={\n";
 	input << "\t\t\t\tsmall=\"gfx/interface/ideas/idea_TAG_test_character.dds\"\n";
 	input << "\t\t\t}\n";
+	input << "\t\t}\n";
+	input << "\t\tallowed_civil_war = {\n";
+	input << "\t\t\ttag = USA\n";
+	input << "\t\t\thas_government = communism\n";
 	input << "\t\t}\n";
 	input << "\t\tadvisor={\n";
 	input << "\t\t\tslot = political_advisor\n";
@@ -74,6 +84,15 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 
 	HoI4::Portrait portraitOne("civilian", "large", "gfx/leaders/TAG/TAG_test_character.dds");
 	HoI4::Portrait portraitTwo("army", "small", "gfx/interface/ideas/idea_TAG_test_character.dds");
+	EXPECT_EQ(character.getAllowed(),
+		 "{\n"
+		 "\t\t\thas_dlc = \"La Resistance\"\n"
+		 "\t\t}");
+	EXPECT_EQ(character.getAllowedCivilWar(),
+		 "{\n"
+		 "\t\t\ttag = USA\n"
+		 "\t\t\thas_government = communism\n"
+		 "\t\t}");
 	EXPECT_THAT(character.getPortraits(), testing::ElementsAre(portraitOne, portraitTwo));
 	ASSERT_TRUE(character.getAdvisorData().has_value());
 	EXPECT_EQ(character.getAdvisorData()->getSlot(), "political_advisor");
@@ -103,4 +122,46 @@ TEST(HoI4World_Characters_CharacterFactory, ItemsAreSetWhenImportingCharacter)
 	EXPECT_EQ(character.getAdmiralData()->getDefenseSkill(), 3);
 	EXPECT_EQ(character.getAdmiralData()->getManeuveringSkill(), 2);
 	EXPECT_EQ(character.getAdmiralData()->getCoordinationSkill(), 6);
+}
+
+TEST(HoI4World_Characters_CharacterFactory, CharacterInstanceCanBeImported)
+{
+	std::stringstream input;
+	input << "={\n";
+	input << "\t\tinstance={\n";
+	input << "\t\t\tallowed = {\n";
+	input << "\t\t\t\thas_dlc = \"La Resistance\"\n";
+	input << "\t\t\t}\n";
+	input << "\t\t\tname=TAG_test_character_name\n";
+	input << "\t\t}\n";
+	input << "\t\tinstance={\n";
+	input << "\t\t\tallowed = {\n";
+	input << "\t\t\t\tNOT = { has_dlc = \"La Resistance\" }\n";
+	input << "\t\t\t}\n";
+	input << "\t\t\tname=TAG_test_character_name\n";
+	input << "\t\t}\n";
+	input << "\t}\n";
+
+	const auto character = HoI4::Character::Factory().importCharacter("TAG_test_character_id", input);
+
+	std::stringstream inputOne;
+	inputOne << "={\n";
+	inputOne << "\t\t\tallowed = {\n";
+	inputOne << "\t\t\t\thas_dlc = \"La Resistance\"\n";
+	inputOne << "\t\t\t}\n";
+	inputOne << "\t\t\tname=TAG_test_character_name\n";
+	inputOne << "\t\t}\n";
+
+	std::stringstream inputTwo;
+	inputTwo << "={\n";
+	inputTwo << "\t\t\tallowed = {\n";
+	inputTwo << "\t\t\t\tNOT = { has_dlc = \"La Resistance\" }\n";
+	inputTwo << "\t\t\t}\n";
+	inputTwo << "\t\t\tname=TAG_test_character_name\n";
+	inputTwo << "\t\t}\n";
+
+	const auto instanceOne = HoI4::Character::Factory().importCharacter("instance", inputOne);
+	const auto instanceTwo = HoI4::Character::Factory().importCharacter("instance", inputTwo);
+
+	EXPECT_THAT(character.getInstances(), testing::ElementsAre(instanceOne, instanceTwo));
 }

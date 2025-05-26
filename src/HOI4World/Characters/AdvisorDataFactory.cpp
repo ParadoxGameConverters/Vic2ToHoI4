@@ -45,6 +45,20 @@ HoI4::AdvisorDataFactory::AdvisorDataFactory()
 		getNextTokenWithoutMatching(input); // remove equals
 		ai_will_do_ = commonItems::stringOfItem(input).getString();
 	});
+	registerKeyword("name", [this](std::istream& input) {
+		name_ = commonItems::getString(input);
+	});
+	registerKeyword("on_add", [this](std::istream& input) {
+		getNextTokenWithoutMatching(input); // remove equals
+		on_add_ = commonItems::stringOfItem(input).getString();
+	});
+	registerKeyword("on_remove", [this](std::istream& input) {
+		getNextTokenWithoutMatching(input); // remove equals
+		on_remove_ = commonItems::stringOfItem(input).getString();
+	});
+	registerKeyword("can_be_fired", [this](std::istream& input) {
+		can_be_fired_ = commonItems::getString(input) == "yes";
+	});
 }
 
 
@@ -61,6 +75,9 @@ HoI4::AdvisorData HoI4::AdvisorDataFactory::importAdvisorData(std::istream& inpu
 	cost_.reset();
 	do_effect_.reset();
 	ai_will_do_.reset();
+	name_.reset();
+	on_add_.reset();
+	on_remove_.reset();
 
 	parseStream(input);
 
@@ -74,5 +91,9 @@ HoI4::AdvisorData HoI4::AdvisorDataFactory::importAdvisorData(std::istream& inpu
 		 traits_,
 		 cost_,
 		 do_effect_,
-		 ai_will_do_);
+		 ai_will_do_,
+		 name_,
+		 on_add_,
+		 on_remove_,
+		 can_be_fired_);
 }

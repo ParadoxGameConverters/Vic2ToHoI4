@@ -18,6 +18,9 @@ TEST(HoI4World_Characters_AdvisorData, ItemsAreAsSet)
 		 {},
 		 std::nullopt,
 		 std::nullopt,
+		 std::nullopt,
+		 std::nullopt,
+		 std::nullopt,
 		 std::nullopt);
 
 	EXPECT_TRUE(advisor_data.getSlot().empty());
@@ -31,6 +34,10 @@ TEST(HoI4World_Characters_AdvisorData, ItemsAreAsSet)
 	EXPECT_FALSE(advisor_data.getCost().has_value());
 	EXPECT_FALSE(advisor_data.getDoEffect().has_value());
 	EXPECT_FALSE(advisor_data.getAiWillDo().has_value());
+	EXPECT_FALSE(advisor_data.getName().has_value());
+	EXPECT_FALSE(advisor_data.getOnAdd().has_value());
+	EXPECT_FALSE(advisor_data.getOnRemove().has_value());
+	EXPECT_TRUE(advisor_data.getCanBeFired());
 }
 
 
@@ -83,7 +90,17 @@ TEST(HoI4World_Characters_AdvisorData, TraitsCanBeSet)
 		 "\t\t\t\t\t}\n"
 		 "\t\t\t\t\tfactor = 0.000\n"
 		 "\t\t\t\t}\n"
-		 "\t\t\t}");
+		 "\t\t\t}",
+		 "Thomas Kinkaid",
+		 "{\n"
+		 "\t\t\t\t\tROOT = { add_to_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n"
+		 "\t\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n"
+		 "\t\t\t\t}",
+		 "{\n"
+		 "\t\t\t\t\tROOT = { subtract_from_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n"
+		 "\t\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n"
+		 "\t\t\t\t}",
+		 false);
 
 	EXPECT_EQ(advisor_data.getSlot(), "political_advisor");
 	EXPECT_EQ(advisor_data.getIdeaToken(), "thomas_kinkaid");
@@ -147,6 +164,18 @@ TEST(HoI4World_Characters_AdvisorData, TraitsCanBeSet)
 		 "\t\t\t\t\tfactor = 0.000\n"
 		 "\t\t\t\t}\n"
 		 "\t\t\t}");
+	EXPECT_EQ(*advisor_data.getName(), "Thomas Kinkaid");
+	EXPECT_EQ(*advisor_data.getOnAdd(),
+		 "{\n"
+		 "\t\t\t\t\tROOT = { add_to_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n"
+		 "\t\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n"
+		 "\t\t\t\t}");
+	EXPECT_EQ(*advisor_data.getOnRemove(),
+		 "{\n"
+		 "\t\t\t\t\tROOT = { subtract_from_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n"
+		 "\t\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n"
+		 "\t\t\t\t}");
+	EXPECT_FALSE(advisor_data.getCanBeFired());
 }
 
 
@@ -167,6 +196,10 @@ TEST(HoI4World_Characters_AdvisorData, ImportedItemsAreDefaulted)
 	EXPECT_FALSE(advisor_data.getCost().has_value());
 	EXPECT_FALSE(advisor_data.getDoEffect().has_value());
 	EXPECT_FALSE(advisor_data.getAiWillDo().has_value());
+	EXPECT_FALSE(advisor_data.getName().has_value());
+	EXPECT_FALSE(advisor_data.getOnAdd().has_value());
+	EXPECT_FALSE(advisor_data.getOnRemove().has_value());
+	EXPECT_TRUE(advisor_data.getCanBeFired());
 }
 
 
@@ -176,6 +209,8 @@ TEST(HoI4World_Characters_AdvisorData, ImportedItemsCanBeSet)
 	input << "= {\n";
 	input << "\t\t\tslot = political_advisor\n";
 	input << "\t\t\tidea_token = thomas_kinkaid\n";
+	input << "\t\t\tname = \"Thomas Kinkaid\"\n";
+	input << "\t\t\tcan_be_fired = no\n";
 	input << "\t\t\tledger = army\n";
 	input << "\t\t\tavailable = {\n";
 	input << "\t\t\t\tif = {\n";
@@ -224,6 +259,14 @@ TEST(HoI4World_Characters_AdvisorData, ImportedItemsCanBeSet)
 	input << "\t\t\t\t\t}\n";
 	input << "\t\t\t\t\tfactor = 0.000\n";
 	input << "\t\t\t\t}\n";
+	input << "\t\t\t}";
+	input << "\t\t\ton_add = {\n";
+	input << "\t\t\t\tROOT = { add_to_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n";
+	input << "\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n";
+	input << "\t\t\t}";
+	input << "\t\t\ton_remove = {\n";
+	input << "\t\t\t\tROOT = { subtract_from_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n";
+	input << "\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n";
 	input << "\t\t\t}";
 	input << "\t\t}";
 
@@ -291,4 +334,16 @@ TEST(HoI4World_Characters_AdvisorData, ImportedItemsCanBeSet)
 		 "\t\t\t\t\tfactor = 0.000\n"
 		 "\t\t\t\t}\n"
 		 "\t\t\t}");
+	EXPECT_EQ(*advisor_data.getName(), "Thomas Kinkaid");
+	EXPECT_EQ(*advisor_data.getOnAdd(),
+		 "{\n"
+		 "\t\t\t\tROOT = { add_to_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n"
+		 "\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n"
+		 "\t\t\t}");
+	EXPECT_EQ(*advisor_data.getOnRemove(),
+		 "{\n"
+		 "\t\t\t\tROOT = { subtract_from_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n"
+		 "\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n"
+		 "\t\t\t}");
+	EXPECT_FALSE(advisor_data.getCanBeFired());
 }

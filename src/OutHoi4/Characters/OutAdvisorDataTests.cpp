@@ -17,6 +17,9 @@ TEST(OutHoI4World_Characters_OutAdvisorDataTests, AdvisorDataIsOutput)
 		 {},
 		 std::nullopt,
 		 std::nullopt,
+		 std::nullopt,
+		 std::nullopt,
+		 std::nullopt,
 		 std::nullopt);
 
 	std::stringstream output;
@@ -82,7 +85,17 @@ TEST(OutHoI4World_Characters_OutAdvisorDataTests, TraitsAreOutput)
 		 "\t\t\t\t\t}\n"
 		 "\t\t\t\t\tfactor = 0.000\n"
 		 "\t\t\t\t}\n"
-		 "\t\t\t}");
+		 "\t\t\t}",
+		 "Thomas Kinkaid",
+		 "{\n"
+		 "\t\t\t\tROOT = { add_to_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n"
+		 "\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n"
+		 "\t\t\t}",
+		 "{\n"
+		 "\t\t\t\tROOT = { subtract_from_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n"
+		 "\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n"
+		 "\t\t\t}",
+		 false);
 
 	std::stringstream output;
 	output << advisor_data;
@@ -91,6 +104,8 @@ TEST(OutHoI4World_Characters_OutAdvisorDataTests, TraitsAreOutput)
 	expected << "\t\tadvisor={\n";
 	expected << "\t\t\tslot = political_advisor\n";
 	expected << "\t\t\tidea_token = thomas_kinkaid\n";
+	expected << "\t\t\tname = \"Thomas Kinkaid\"\n";
+	expected << "\t\t\tcan_be_fired = no\n";
 	expected << "\t\t\tledger = army\n";
 	expected << "\t\t\tavailable = {\n";
 	expected << "\t\t\t\tif = {\n";
@@ -139,6 +154,14 @@ TEST(OutHoI4World_Characters_OutAdvisorDataTests, TraitsAreOutput)
 	expected << "\t\t\t\t\t}\n";
 	expected << "\t\t\t\t\tfactor = 0.000\n";
 	expected << "\t\t\t\t}\n";
+	expected << "\t\t\t}\n";
+	expected << "\t\t\ton_add = {\n";
+	expected << "\t\t\t\tROOT = { add_to_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n";
+	expected << "\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n";
+	expected << "\t\t\t}\n";
+	expected << "\t\t\ton_remove = {\n";
+	expected << "\t\t\t\tROOT = { subtract_from_variable = { SOV_paranoia_weekly_modifiers_amount = 3 } }\n";
+	expected << "\t\t\t\tSOV_paranoia_modifier_update_gui_tooltip = yes\n";
 	expected << "\t\t\t}\n";
 	expected << "\t\t}\n";
 

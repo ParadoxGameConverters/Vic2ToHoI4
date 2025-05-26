@@ -30,6 +30,10 @@ class AdvisorDataFactory: commonItems::parser
 	std::optional<float> cost_;
 	std::optional<std::string> do_effect_;
 	std::optional<std::string> ai_will_do_;
+	std::optional<std::string> name_;
+	std::optional<std::string> on_add_;
+	std::optional<std::string> on_remove_;
+	bool can_be_fired_ = true;
 };
 
 } // namespace HoI4
