@@ -1,5 +1,5 @@
 UTI = {
-    SOV_grigory_zinovyev = {
+    UTI_grigory_zinovyev = {
         name = SOV_grigory_zinovyev
         portraits = {
             civilian = {
@@ -24,7 +24,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_grigory_zinovyev
+            idea_token = UTI_grigory_zinovyev
             allowed = {
                 original_tag = SOV
             }
@@ -65,7 +65,7 @@ UTI = {
         }       
     }
     
-    SOV_lev_kamenev = {
+    UTI_lev_kamenev = {
         name = SOV_lev_kamenev
         portraits = {
             civilian = {
@@ -90,7 +90,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_lev_kamenev
+            idea_token = UTI_lev_kamenev
             allowed = {
                 original_tag = SOV
             }
@@ -127,7 +127,7 @@ UTI = {
         }
     }
 
-    SOV_ivan_smirnov = {
+    UTI_ivan_smirnov = {
         name = SOV_ivan_smirnov
         portraits = {
             civilian = {
@@ -152,7 +152,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_ivan_smirnov
+            idea_token = UTI_ivan_smirnov
             allowed = {
                 original_tag = SOV
             }
@@ -192,7 +192,7 @@ UTI = {
         }
     }
 
-    SOV_grigory_sokolnikov = {
+    UTI_grigory_sokolnikov = {
         name = SOV_grigory_sokolnikov
         portraits = {
             army = {
@@ -205,7 +205,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_grigory_sokolnikov
+            idea_token = UTI_grigory_sokolnikov
             allowed = {
                 original_tag = SOV
             }
@@ -235,7 +235,7 @@ UTI = {
         }
     }
 
-    SOV_aleksandr_shlyapnikov = {
+    UTI_aleksandr_shlyapnikov = {
         name = SOV_aleksandr_shlyapnikov
         portraits = {
             army = {
@@ -257,7 +257,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_aleksandr_shlyapnikov
+            idea_token = UTI_aleksandr_shlyapnikov
             allowed = {
                 original_tag = SOV
             }
@@ -293,7 +293,7 @@ UTI = {
         }
     }
 
-    SOV_karl_radek = {
+    UTI_karl_radek = {
         name = SOV_karl_radek
 
         portraits = {
@@ -323,7 +323,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_karl_radek
+            idea_token = UTI_karl_radek
             allowed = {
                 original_tag = SOV
             }
@@ -359,7 +359,7 @@ UTI = {
         }
     }
 
-    SOV_ivar_smilga = {
+    UTI_ivar_smilga = {
         name = SOV_ivar_smilga
         portraits = {
             army = {
@@ -381,7 +381,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_ivar_smilga
+            idea_token = UTI_ivar_smilga
             allowed = {
                 original_tag = SOV
             }
@@ -418,7 +418,7 @@ UTI = {
     }
 
 
-    SOV_yevgeny_preobrazhensky = {
+    UTI_yevgeny_preobrazhensky = {
         name = SOV_yevgeny_preobrazhensky
         portraits = {
             army = {
@@ -447,7 +447,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_yevgeny_preobrazhensky
+            idea_token = UTI_yevgeny_preobrazhensky
             allowed = {
                 original_tag = SOV
             }
@@ -485,7 +485,7 @@ UTI = {
         }
     }
 
-    SOV_martemyan_ryutin = {
+    UTI_martemyan_ryutin = {
         name = SOV_martemyan_ryutin
         portraits = {
             army = {
@@ -513,7 +513,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_martemyan_ryutin
+            idea_token = UTI_martemyan_ryutin
             allowed = {
                 original_tag = SOV
             }
@@ -550,7 +550,7 @@ UTI = {
         }
     }
     
-    SOV_nikolay_ustryalov = {
+    UTI_nikolay_ustryalov = {
         name = SOV_nikolay_ustryalov
         portraits = {
             army = {
@@ -566,7 +566,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_nikolay_ustryalov
+            idea_token = UTI_nikolay_ustryalov
             allowed = {
                 original_tag = SOV
             }
@@ -582,7 +582,7 @@ UTI = {
         }       
     }
 
-    SOV_mikhail_tukhachevsky = {
+    UTI_mikhail_tukhachevsky = {
         name = SOV_mikhail_tukhachevsky
         portraits = {
             army = {
@@ -626,7 +626,7 @@ UTI = {
         }
     }
 
-    SOV_aleksandr_yegorov = {
+    UTI_aleksandr_yegorov = {
         name = SOV_aleksandr_yegorov
         portraits = {
             army = {
@@ -636,7 +636,7 @@ UTI = {
         }
         advisor = {
             slot = army_chief
-            idea_token = SOV_aleksandr_yegorov
+            idea_token = UTI_aleksandr_yegorov
             allowed = {
                 original_tag = SOV
             }
@@ -665,7 +665,7 @@ UTI = {
         }   
     }
 
-    SOV_vasily_blyukher = {
+    UTI_vasily_blyukher = {
         name = SOV_vasily_blyukher
         portraits = {
             army = {
@@ -675,7 +675,7 @@ UTI = {
         }
         advisor = {
             slot = army_chief
-            idea_token = SOV_vasily_blyukher
+            idea_token = UTI_vasily_blyukher
             allowed = {
                 original_tag = SOV
             }
@@ -704,7 +704,7 @@ UTI = {
         }
     }
 
-    SOV_vitaly_primakov = {
+    UTI_vitaly_primakov = {
         name = SOV_vitaly_primakov
 
         portraits = {
@@ -726,7 +726,7 @@ UTI = {
         }
     }
 
-    SOV_nikolay_bukharin = {
+    UTI_nikolay_bukharin = {
         name = SOV_nikolay_bukharin
         portraits = {
             civilian = {
@@ -754,7 +754,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_nikolay_bukharin
+            idea_token = UTI_nikolay_bukharin
             allowed = {
                 original_tag = SOV
             }
@@ -788,7 +788,7 @@ UTI = {
         }
     }
     
-    SOV_aleksey_rykov = {
+    UTI_aleksey_rykov = {
         name = SOV_aleksey_rykov
 
         portraits = {
@@ -816,7 +816,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_aleksey_rykov
+            idea_token = UTI_aleksey_rykov
             allowed = {
                 original_tag = SOV
             }
@@ -851,7 +851,7 @@ UTI = {
         }
     }
 
-    SOV_mikhail_tomsky = {
+    UTI_mikhail_tomsky = {
         name = SOV_mikhail_tomsky
         portraits = {
             army = {
@@ -873,7 +873,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_mikhail_tomsky
+            idea_token = UTI_mikhail_tomsky
             allowed = {
                 original_tag = SOV
             }
@@ -903,7 +903,7 @@ UTI = {
         }
     }
 
-    SOV_maksim_litvinov = {
+    UTI_maksim_litvinov = {
         name = SOV_maksim_litvinov
         portraits = {
             army = {
@@ -916,7 +916,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_maksim_litvinov
+            idea_token = UTI_maksim_litvinov
             allowed = {
                 original_tag = SOV
             }

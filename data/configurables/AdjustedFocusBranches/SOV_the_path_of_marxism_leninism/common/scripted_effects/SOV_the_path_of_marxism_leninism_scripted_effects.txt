@@ -480,30 +480,30 @@ SOV_remove_paranoia_effect = { # NO MORE PARANOIA, COMRADES
 	hidden_effect = {
 		if = {
 			limit = {
-				has_character = SOV_genrikh_yagoda
+				has_character = UTI_genrikh_yagoda
 			}
 
 			#Remove old trait
 			if = {
 				limit = {
-					SOV_genrikh_yagoda = {
+					UTI_genrikh_yagoda = {
 						has_trait = head_of_the_nkvd_yagoda_initial
 					}
 				}
 				remove_trait = {
-					character = SOV_genrikh_yagoda
+					character = UTI_genrikh_yagoda
 					trait = head_of_the_nkvd_yagoda_initial
 					slot = political_advisor
 				}
 			}
 			else_if = {
 				limit = {
-					SOV_genrikh_yagoda = {
+					UTI_genrikh_yagoda = {
 						has_trait = head_of_the_nkvd_yagoda
 					}
 				}
 				remove_trait = {
-					character = SOV_genrikh_yagoda
+					character = UTI_genrikh_yagoda
 					trait = head_of_the_nkvd_yagoda
 					slot = political_advisor
 				}
@@ -511,42 +511,42 @@ SOV_remove_paranoia_effect = { # NO MORE PARANOIA, COMRADES
 
 			#Add final trait
 			add_trait = {
-				character = SOV_genrikh_yagoda
+				character = UTI_genrikh_yagoda
 				trait = head_of_the_nkvd_yagoda_no_paranoia
 				slot = political_advisor
 			}
 			set_can_be_fired_in_advisor_role = {
-				character = SOV_genrikh_yagoda 
+				character = UTI_genrikh_yagoda 
 				value = yes
 			}
 		}
 
 		if = {
 			limit = {
-				has_character = SOV_nikolay_yezhov
+				has_character = UTI_nikolay_yezhov
 			}
 
 			#Remove old trait
 			if = {
 				limit = {
-					SOV_nikolay_yezhov = {
+					UTI_nikolay_yezhov = {
 						has_trait = head_of_the_nkvd_yezhov_initial
 					}
 				}
 				remove_trait = {
-					character = SOV_nikolay_yezhov
+					character = UTI_nikolay_yezhov
 					trait = head_of_the_nkvd_yezhov_initial
 					slot = political_advisor
 				}
 			}
 			else_if = {
 				limit = {
-					SOV_nikolay_yezhov = {
+					UTI_nikolay_yezhov = {
 						has_trait = head_of_the_nkvd_yezhov
 					}
 				}
 				remove_trait = {
-					character = SOV_nikolay_yezhov
+					character = UTI_nikolay_yezhov
 					trait = head_of_the_nkvd_yezhov
 					slot = political_advisor
 				}
@@ -554,42 +554,42 @@ SOV_remove_paranoia_effect = { # NO MORE PARANOIA, COMRADES
 			
 			#Add final trait
 			add_trait = {
-				character = SOV_nikolay_yezhov
+				character = UTI_nikolay_yezhov
 				trait = head_of_the_nkvd_yezhov_no_paranoia
 				slot = political_advisor
 			}
 			set_can_be_fired_in_advisor_role = {
-				character = SOV_nikolay_yezhov 
+				character = UTI_nikolay_yezhov 
 				value = yes
 			}
 		}
 
 		if = {
 			limit = {
-				has_character = SOV_lavrenty_beriya
+				has_character = UTI_lavrenty_beriya
 			}
 
 			#Remove old trait
 			if = {
 				limit = {
-					SOV_lavrenty_beriya = {
+					UTI_lavrenty_beriya = {
 						has_trait = head_of_the_nkvd_beriya_initial
 					}
 				}
 				remove_trait = {
-					character = SOV_lavrenty_beriya
+					character = UTI_lavrenty_beriya
 					trait = head_of_the_nkvd_beriya_initial
 					slot = political_advisor
 				}
 			}
 			else_if = {
 				limit = {
-					SOV_lavrenty_beriya = {
+					UTI_lavrenty_beriya = {
 						has_trait = head_of_the_nkvd_beriya
 					}
 				}
 				remove_trait = {
-					character = SOV_lavrenty_beriya
+					character = UTI_lavrenty_beriya
 					trait = head_of_the_nkvd_beriya
 					slot = political_advisor
 				}
@@ -597,12 +597,12 @@ SOV_remove_paranoia_effect = { # NO MORE PARANOIA, COMRADES
 			
 			#Add final trait
 			add_trait = {
-				character = SOV_lavrenty_beriya
+				character = UTI_lavrenty_beriya
 				trait = head_of_the_nkvd_beriya_no_paranoia
 				slot = political_advisor
 			}
 			set_can_be_fired_in_advisor_role = {
-				character = SOV_lavrenty_beriya 
+				character = UTI_lavrenty_beriya 
 				value = yes
 			}
 		}

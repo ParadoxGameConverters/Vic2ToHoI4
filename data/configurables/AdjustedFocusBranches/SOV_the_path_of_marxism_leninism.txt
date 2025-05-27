@@ -199,9 +199,9 @@ focus_tree = {
 			#Zinovyev
 			if = {
 				limit = {
-					has_character = SOV_grigory_zinovyev
+					has_character = UTI_grigory_zinovyev
 				}
-				SOV_grigory_zinovyev = {
+				UTI_grigory_zinovyev = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -211,9 +211,9 @@ focus_tree = {
 			#Kamenev
 			if = {
 				limit = {
-					has_character = SOV_lev_kamenev
+					has_character = UTI_lev_kamenev
 				}
-				SOV_lev_kamenev = {
+				UTI_lev_kamenev = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -223,9 +223,9 @@ focus_tree = {
 			#Smirnov
 			if = {
 				limit = {
-					has_character = SOV_ivan_smirnov
+					has_character = UTI_ivan_smirnov
 				}
-				SOV_ivan_smirnov = {
+				UTI_ivan_smirnov = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -237,9 +237,9 @@ focus_tree = {
 			#Sokolnikov
 			if = {
 				limit = {
-					has_character = SOV_grigory_sokolnikov
+					has_character = UTI_grigory_sokolnikov
 				}
-				SOV_grigory_sokolnikov = {
+				UTI_grigory_sokolnikov = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -249,9 +249,9 @@ focus_tree = {
 			#Shlyapnikov
 			if = {
 				limit = {
-					has_character = SOV_aleksandr_shlyapnikov
+					has_character = UTI_aleksandr_shlyapnikov
 				}
-				SOV_aleksandr_shlyapnikov = {
+				UTI_aleksandr_shlyapnikov = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -473,9 +473,9 @@ focus_tree = {
 			#Radek
 			if = {
 				limit = {
-					has_character = SOV_karl_radek
+					has_character = UTI_karl_radek
 				}
-				SOV_karl_radek = {
+				UTI_karl_radek = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -486,9 +486,9 @@ focus_tree = {
 			#Smilga
 			if = {
 				limit = {
-					has_character = SOV_ivar_smilga
+					has_character = UTI_ivar_smilga
 				}
-				SOV_ivar_smilga = {
+				UTI_ivar_smilga = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -498,9 +498,9 @@ focus_tree = {
 			#Preobrazhensky
 			if = {
 				limit = {
-					has_character = SOV_yevgeny_preobrazhensky
+					has_character = UTI_yevgeny_preobrazhensky
 				}
-				SOV_yevgeny_preobrazhensky = {
+				UTI_yevgeny_preobrazhensky = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -510,9 +510,9 @@ focus_tree = {
 			#Ryutin
 			if = {
 				limit = {
-					has_character = SOV_martemyan_ryutin
+					has_character = UTI_martemyan_ryutin
 				}
-				SOV_martemyan_ryutin = {
+				UTI_martemyan_ryutin = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -526,9 +526,9 @@ focus_tree = {
 				}
 				if = {
 					limit = {
-						has_character = SOV_nikolay_ustryalov
+						has_character = UTI_nikolay_ustryalov
 					}
-					SOV_nikolay_ustryalov = {
+					UTI_nikolay_ustryalov = {
 						set_character_flag = SOV_targeted_for_purge_flag
 					}
 				}
@@ -725,9 +725,9 @@ focus_tree = {
 			#Historical
 			if = {
 				limit = {
-					has_character = SOV_mikhail_tukhachevsky
+					has_character = UTI_mikhail_tukhachevsky
 				}
-				SOV_mikhail_tukhachevsky = {
+				UTI_mikhail_tukhachevsky = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -738,9 +738,9 @@ focus_tree = {
 			#Yegorov
 			if = {
 				limit = {
-					has_character = SOV_aleksandr_yegorov
+					has_character = UTI_aleksandr_yegorov
 				}
-				SOV_aleksandr_yegorov = {
+				UTI_aleksandr_yegorov = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -750,9 +750,9 @@ focus_tree = {
 			#Blyukher
 			if = {
 				limit = {
-					has_character = SOV_vasily_blyukher
+					has_character = UTI_vasily_blyukher
 				}
-				SOV_vasily_blyukher = {
+				UTI_vasily_blyukher = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -762,9 +762,9 @@ focus_tree = {
 			#Primakov
 			if = {
 				limit = {
-					has_character = SOV_vitaly_primakov
+					has_character = UTI_vitaly_primakov
 				}
-				SOV_vitaly_primakov = {
+				UTI_vitaly_primakov = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -822,9 +822,9 @@ focus_tree = {
 			#Bukharin
 			if = {
 				limit = {
-					has_character = SOV_nikolay_bukharin
+					has_character = UTI_nikolay_bukharin
 				}
-				SOV_nikolay_bukharin = {
+				UTI_nikolay_bukharin = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -834,9 +834,9 @@ focus_tree = {
 			#Rykov
 			if = {
 				limit = {
-					has_character = SOV_aleksey_rykov
+					has_character = UTI_aleksey_rykov
 				}
-				SOV_aleksey_rykov = {
+				UTI_aleksey_rykov = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -847,9 +847,9 @@ focus_tree = {
 			#Tomsky
 			if = {
 				limit = {
-					has_character = SOV_mikhail_tomsky
+					has_character = UTI_mikhail_tomsky
 				}
-				SOV_mikhail_tomsky = {
+				UTI_mikhail_tomsky = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
@@ -859,9 +859,9 @@ focus_tree = {
 			#Litvinov
 			if = {
 				limit = {
-					has_character = SOV_maksim_litvinov
+					has_character = UTI_maksim_litvinov
 				}
-				SOV_maksim_litvinov = {
+				UTI_maksim_litvinov = {
 					set_character_flag = SOV_targeted_for_purge_flag
 				}
 			}
