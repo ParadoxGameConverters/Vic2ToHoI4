@@ -1,6 +1,6 @@
 UTI = {
     UTI_grigory_zinovyev = {
-        name = SOV_grigory_zinovyev
+        name = ""
         portraits = {
             civilian = {
                 large = "GFX_portrait_SOV_grigory_zinovyev"
@@ -66,7 +66,7 @@ UTI = {
     }
     
     UTI_lev_kamenev = {
-        name = SOV_lev_kamenev
+        name = ""
         portraits = {
             civilian = {
                 large = "GFX_portrait_SOV_lev_kamenev"
@@ -128,7 +128,7 @@ UTI = {
     }
 
     UTI_ivan_smirnov = {
-        name = SOV_ivan_smirnov
+        name = ""
         portraits = {
             civilian = {
                 large = "GFX_portrait_SOV_ivan_smirnov"
@@ -193,7 +193,7 @@ UTI = {
     }
 
     UTI_grigory_sokolnikov = {
-        name = SOV_grigory_sokolnikov
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_SOV_grigory_sokolnikov"
@@ -236,7 +236,7 @@ UTI = {
     }
 
     UTI_aleksandr_shlyapnikov = {
-        name = SOV_aleksandr_shlyapnikov
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_SOV_aleksandr_shlyapnikov_imprisoned"
@@ -294,7 +294,7 @@ UTI = {
     }
 
     UTI_karl_radek = {
-        name = SOV_karl_radek
+        name = ""
 
         portraits = {
             army = {
@@ -360,7 +360,7 @@ UTI = {
     }
 
     UTI_ivar_smilga = {
-        name = SOV_ivar_smilga
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_SOV_ivar_smilga_imprisoned"
@@ -419,7 +419,7 @@ UTI = {
 
 
     UTI_yevgeny_preobrazhensky = {
-        name = SOV_yevgeny_preobrazhensky
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_SOV_yevgeny_preobrazhensky"
@@ -486,7 +486,7 @@ UTI = {
     }
 
     UTI_martemyan_ryutin = {
-        name = SOV_martemyan_ryutin
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_SOV_martemyan_ryutin_imprisoned"
@@ -551,7 +551,7 @@ UTI = {
     }
     
     UTI_nikolay_ustryalov = {
-        name = SOV_nikolay_ustryalov
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_SOV_nikolay_ustryalov"
@@ -583,7 +583,7 @@ UTI = {
     }
 
     UTI_mikhail_tukhachevsky = {
-        name = SOV_mikhail_tukhachevsky
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_mikhail_tukhachevsky"
@@ -627,7 +627,7 @@ UTI = {
     }
 
     UTI_aleksandr_yegorov = {
-        name = SOV_aleksandr_yegorov
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_aleksandr_yegorov"
@@ -666,7 +666,7 @@ UTI = {
     }
 
     UTI_vasily_blyukher = {
-        name = SOV_vasily_blyukher
+        name = ""
         portraits = {
             army = {
                 small = "GFX_portrait_SOV_blyukher_small" #"gfx/interface/ideas/idea_SOV_blyukher.dds"
@@ -705,7 +705,7 @@ UTI = {
     }
 
     UTI_vitaly_primakov = {
-        name = SOV_vitaly_primakov
+        name = ""
 
         portraits = {
             army = {
@@ -727,7 +727,7 @@ UTI = {
     }
 
     UTI_nikolay_bukharin = {
-        name = SOV_nikolay_bukharin
+        name = ""
         portraits = {
             civilian = {
                 large = "GFX_portrait_SOV_nikolay_bukharin"
@@ -789,7 +789,7 @@ UTI = {
     }
     
     UTI_aleksey_rykov = {
-        name = SOV_aleksey_rykov
+        name = ""
 
         portraits = {
             civilian = {
@@ -852,7 +852,7 @@ UTI = {
     }
 
     UTI_mikhail_tomsky = {
-        name = SOV_mikhail_tomsky
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_SOV_mikhail_tomsky"
@@ -904,7 +904,7 @@ UTI = {
     }
 
     UTI_maksim_litvinov = {
-        name = SOV_maksim_litvinov
+        name = ""
         portraits = {
             army = {
                 small = "GFX_idea_SOV_maksim_litvinov"
