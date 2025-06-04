@@ -76,6 +76,9 @@
     <ClCompile Include="src\HOI4World\GameRules\GameRuleTests.cpp">
       <Filter>src\HOI4World\GameRules</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\HoI4CountryTests.cpp">
+      <Filter>src\HOI4World</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\Ideas\IdeaGroupTests.cpp">
       <Filter>src\HOI4World\Ideas</Filter>
     </ClCompile>
