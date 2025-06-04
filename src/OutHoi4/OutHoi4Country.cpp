@@ -857,6 +857,13 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		output << "recruit_character = " << character.getId() << "\n";
 	}
 	output << '\n';
+	for (const auto& [characterName, flag]: theCountry.getCharacterFlags())
+	{
+		output << characterName << " = {\n";
+		output << "\tset_character_flag = " << flag << "\n";
+		output << "}\n";
+	}
+	output << '\n';
 	outputOperatives(output, theCountry, theCountry.getOperatives());
 	output << theCountry.getTheShipVariants();
 	output << theCountry.GetPlaneDesigns();

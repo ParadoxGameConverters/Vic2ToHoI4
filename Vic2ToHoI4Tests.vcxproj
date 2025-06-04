@@ -59,6 +59,7 @@
     <ClCompile Include="src\HOI4World\GameRules\GameRuleOptionTests.cpp" />
     <ClCompile Include="src\HOI4World\GameRules\GameRulesTests.cpp" />
     <ClCompile Include="src\HOI4World\GameRules\GameRuleTests.cpp" />
+    <ClCompile Include="src\HOI4World\HoI4CountryTests.cpp" />
     <ClCompile Include="src\HOI4World\Ideas\IdeaGroupTests.cpp" />
     <ClCompile Include="src\HOI4World\Ideas\IdeaTests.cpp" />
     <ClCompile Include="src\HOI4World\Ideologies\IdeologyFileTests.cpp" />
