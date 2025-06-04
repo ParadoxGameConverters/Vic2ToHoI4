@@ -450,7 +450,7 @@ class Country
 	std::set<std::string> ideas;
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
 	std::set<std::string> flags;
-	std::map<std::string, std::string> characterFlags;	// character name, flag
+	std::map<std::string, std::string> characterFlags;
 
 	std::string monarchIdeaTexture = "gfx/interface/ideas/idea_george_v.dds";
 
