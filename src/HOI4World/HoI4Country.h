@@ -172,6 +172,10 @@ class Country
 		return dominionAreas[0].contains(province);
 	}
 	void setFlag(const std::string& flag) { flags.insert(flag); }
+	void setCharacterFlag(const std::string& characterName, const std::string& flag)
+	{
+		characterFlags[characterName] = flag;
+	}
 
 	[[nodiscard]] std::optional<HoI4::Relations> getRelations(const std::string& withWhom) const;
 	[[nodiscard]] std::optional<date> getTruceUntil(const std::string& withWhom) const;
@@ -256,6 +260,7 @@ class Country
 	[[nodiscard]] const std::optional<technologies>& getTechnologies() const { return theTechnologies; }
 	[[nodiscard]] const std::set<std::string>& getIdeas() const { return ideas; }
 	[[nodiscard]] const auto& getFlags() const { return flags; }
+	[[nodiscard]] const auto& getCharacterFlags() const { return characterFlags; }
 
 	[[nodiscard]] double getMilitaryFactories() const { return militaryFactories; }
 	[[nodiscard]] double getCivilianFactories() const { return civilianFactories; }
@@ -445,6 +450,7 @@ class Country
 	std::set<std::string> ideas;
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
 	std::set<std::string> flags;
+	std::map<std::string, std::string> characterFlags;
 
 	std::string monarchIdeaTexture = "gfx/interface/ideas/idea_george_v.dds";
 
