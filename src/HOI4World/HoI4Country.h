@@ -11,6 +11,7 @@
 #include "src/HOI4World/Diplomacy/HoI4AIStrategy.h"
 #include "src/HOI4World/Diplomacy/HoI4Relations.h"
 #include "src/HOI4World/Diplomacy/HoI4War.h"
+#include "src/HOI4World/FocusTrees/AdjustedBranch.h"
 #include "src/HOI4World/HoI4FocusTree.h"
 #include "src/HOI4World/Ideologies/Ideologies.h"
 #include "src/HOI4World/Map/CoastalProvinces.h"
@@ -139,7 +140,9 @@ class Country
 	void addEmptyFocusTree();
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisations, bool debug);
-	void addFocusTreeBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses, HoI4::OnActions& onActions);
+	void addAdjustedBranch(const std::shared_ptr<HoI4::AdjustedBranch>& theBranch,
+		 const std::string& originalTag,
+		 HoI4::OnActions& onActions);
 	void adjustResearchFocuses() const;
 
 	void SetUnionCountryTag(const std::string& union_country_tag) { union_country_tag_ = union_country_tag; }

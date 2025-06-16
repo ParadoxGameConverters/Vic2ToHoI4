@@ -44,10 +44,8 @@ void HoI4::AdjustedBranches::addUKColonialFocusBranch(const std::map<std::string
 			const auto& theBranch = std::make_shared<AdjustedBranch>("uk_colonial_focus");
 			theBranch->updateUKColonialFocuses(majorIdeologies);
 
-			country->addFocusTreeBranch(theBranch->getFocusTree().getFocuses(), onActions);
+			country->addAdjustedBranch(theBranch, "ENG", onActions);
 			addedBranches.push_back(theBranch);
-
-			country->addGlobalEventTarget("uk_colonial_focus_ENG");
 			break;
 		}
 	}
@@ -101,14 +99,8 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 		{
 			const auto& theBranch = std::make_shared<AdjustedBranch>("FRA_begin_rearmament");
 
-			country->addFocusTreeBranch(theBranch->getFocusTree().getFocuses(), onActions);
+			country->addAdjustedBranch(theBranch, "FRA", onActions);
 			addedBranches.push_back(theBranch);
-
-			country->addGlobalEventTarget("FRA_begin_rearmament_FRA");
-			for (const auto& character: theBranch->getCharacters() | std::views::values)
-			{
-				country->addCharacter(character);
-			}
 
 			gpThreats[0]->addGlobalEventTarget("FRA_begin_rearmament_ITA");
 			flagZoneOfAccess(gpThreats[0]->getTag(), "FRA_begin_rearmament_ITA_zone", countries);
