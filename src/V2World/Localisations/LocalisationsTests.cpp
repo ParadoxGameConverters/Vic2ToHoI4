@@ -101,7 +101,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, TextInAllLanguagesTextInAllLang
 
 TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromMod)
 {
-	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path(""), {Mod("Mod Locs", "modLocalisations/")});
+	const commonItems::ModFilesystem mod_filesystem("", {Mod("Mod Locs", "modLocalisations/")});
 	const auto localisations = Vic2::Localisations::Factory().ImportLocalisations(mod_filesystem);
 
 	ASSERT_EQ("english_mod_loc", localisations->getTextInLanguage("mod_key", "english"));

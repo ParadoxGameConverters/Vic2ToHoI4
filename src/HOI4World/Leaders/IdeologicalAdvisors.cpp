@@ -13,6 +13,6 @@ HoI4::IdeologicalAdvisors::IdeologicalAdvisors() noexcept
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	parseFile(std::filesystem::path("Configurables/ideologicalAdvisors.txt"));
+	parseFile("Configurables/ideologicalAdvisors.txt");
 	clearRegisteredKeywords();
 }

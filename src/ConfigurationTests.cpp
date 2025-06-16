@@ -390,16 +390,16 @@ TEST(ConfigurationTests, Vic2ModsWithDependenciesAreAfterTheirDependencies)
 
 #ifdef WINDOWS
 	EXPECT_THAT(theConfiguration->getVic2Mods(),
-		 testing::ElementsAre(Mod("Test Mod", std::filesystem::path("Vic2\\mod\\test_directory")),
-			  Mod("Dependency Two", std::filesystem::path("Vic2\\mod\\test_directory")),
-			  Mod("Dependency One", std::filesystem::path("Vic2\\mod\\test_directory"), std::set<Name>{"Dependency Two"}),
-			  Mod("Dependent Mod", std::filesystem::path("Vic2\\mod\\test_directory"), std::set<Name>{"Dependency One"})));
+		 testing::ElementsAre(Mod("Test Mod", "Vic2\\mod\\test_directory"),
+			  Mod("Dependency Two", "Vic2\\mod\\test_directory"),
+			  Mod("Dependency One", "Vic2\\mod\\test_directory", std::set<Name>{"Dependency Two"}),
+			  Mod("Dependent Mod", "Vic2\\mod\\test_directory", std::set<Name>{"Dependency One"})));
 #else
 	EXPECT_THAT(theConfiguration->getVic2Mods(),
-		 testing::ElementsAre(Mod("Test Mod", std::filesystem::path("Vic2/mod/test_directory")),
-			  Mod("Dependency Two", std::filesystem::path("Vic2/mod/test_directory")),
-			  Mod("Dependency One", std::filesystem::path("Vic2/mod/test_directory"), std::set<Name>{"Dependency Two"}),
-			  Mod("Dependent Mod", std::filesystem::path("Vic2/mod/test_directory"), std::set<Name>{"Dependency One"})));
+		 testing::ElementsAre(Mod("Test Mod", "Vic2/mod/test_directory"),
+			  Mod("Dependency Two", "Vic2/mod/test_directory"),
+			  Mod("Dependency One", "Vic2/mod/test_directory", std::set<Name>{"Dependency Two"}),
+			  Mod("Dependent Mod", "Vic2/mod/test_directory", std::set<Name>{"Dependency One"})));
 #endif
 }
 

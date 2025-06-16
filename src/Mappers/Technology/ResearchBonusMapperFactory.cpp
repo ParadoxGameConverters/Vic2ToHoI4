@@ -14,6 +14,6 @@ Mappers::ResearchBonusMapper::Factory::Factory()
 std::unique_ptr<Mappers::ResearchBonusMapper> Mappers::ResearchBonusMapper::Factory::importResearchBonusMapper()
 {
 	researchBonusMapper = std::make_unique<ResearchBonusMapper>();
-	parseFile(std::filesystem::path("Configurables/research_bonus_mappings.txt"));
+	parseFile("Configurables/research_bonus_mappings.txt");
 	return std::move(researchBonusMapper);
 }

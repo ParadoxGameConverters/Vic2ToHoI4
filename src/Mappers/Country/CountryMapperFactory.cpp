@@ -42,7 +42,7 @@ std::unique_ptr<Mappers::CountryMapper> Mappers::CountryMapper::Factory::importC
 void Mappers::CountryMapper::Factory::readRules()
 {
 	Log(LogLevel::Info) << "\tReading country mapping rules";
-	parseFile(std::filesystem::path("Configurables/country_mappings.txt"));
+	parseFile("Configurables/country_mappings.txt");
 }
 
 

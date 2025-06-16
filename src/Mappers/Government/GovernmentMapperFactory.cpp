@@ -20,6 +20,6 @@ std::unique_ptr<Mappers::GovernmentMapper> Mappers::GovernmentMapper::Factory::i
 	Log(LogLevel::Info) << "\tParsing governments mappings";
 
 	governmentMapper = std::make_unique<GovernmentMapper>();
-	parseFile(std::filesystem::path("Configurables/GovernmentMappings.txt"));
+	parseFile("Configurables/GovernmentMappings.txt");
 	return std::move(governmentMapper);
 }

@@ -510,7 +510,7 @@ void HoI4::World::importLeaderTraits()
 		commonItems::stringsOfItems traits(theStream);
 		ideologicalLeaderTraits.insert(make_pair(ideologyName, traits.getStrings()));
 	});
-	parseFile(std::filesystem::path("Configurables/converterLeaderTraits.txt"));
+	parseFile("Configurables/converterLeaderTraits.txt");
 }
 
 
@@ -627,7 +627,7 @@ void HoI4::World::addNeutrality(bool debug)
 void HoI4::World::addLeaders(Character::Factory& characterFactory)
 {
 	Log(LogLevel::Info) << "\tAdding leaders";
-	if (commonItems::DoesFileExist(std::filesystem::path("./Configurables/HoI4CountryLeaders.txt")))
+	if (commonItems::DoesFileExist("./Configurables/HoI4CountryLeaders.txt"))
 	{
 		Log(LogLevel::Warning)
 			 << "HoI4CountryLeaders.txt is no longer used, convert your imported characters to use ImportCharacters.txt";
