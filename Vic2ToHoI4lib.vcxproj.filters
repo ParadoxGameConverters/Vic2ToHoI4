@@ -879,6 +879,9 @@
     <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp">
       <Filter>src\HoI4World\UnitMedals</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranch.cpp">
+      <Filter>src\HoI4World\FocusTrees</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClCompile>
@@ -2170,6 +2173,9 @@
     </ClInclude>
     <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h">
       <Filter>src\HoI4World\UnitMedals</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranch.h">
+      <Filter>src\HoI4World\FocusTrees</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranches.h">
       <Filter>src\HoI4World\FocusTrees</Filter>
