@@ -17,7 +17,8 @@ TEST(HoI4World_FocusTrees_AdjustedBranch, PathCanBeSet)
 {
 	HoI4::AdjustedBranch theBranch("test_adjusted_branch");
 
-	EXPECT_EQ("Configurables/AdjustedFocusBranches/test_adjusted_branch", theBranch.getPath().string());
+	EXPECT_EQ(std::filesystem::path("Configurables") / "AdjustedFocusBranches" / "test_adjusted_branch",
+		 theBranch.getPath());
 }
 
 TEST(HoI4World_FocusTrees_AdjustedBranch, FocusTreeDefaultsToEmpty)
@@ -37,8 +38,13 @@ TEST(HoI4World_FocusTrees_AdjustedBranch, LoadingNonexistantFocusTreeLogsWarning
 
 	std::cout.rdbuf(stdOutBuf);
 
+#ifdef WINDOWS
+	EXPECT_THAT(log.str(),
+		 testing::HasSubstr("[WARNING] Couldn't load Configurables\\AdjustedFocusBranches\\nonexistant_branch.txt"));
+#else
 	EXPECT_THAT(log.str(),
 		 testing::HasSubstr("[WARNING] Couldn't load Configurables/AdjustedFocusBranches/nonexistant_branch.txt"));
+#endif
 }
 
 TEST(HoI4World_FocusTrees_AdjustedBranch, FocusesCanBeImported)

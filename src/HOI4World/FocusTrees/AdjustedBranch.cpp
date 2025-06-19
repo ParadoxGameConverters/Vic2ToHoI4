@@ -9,7 +9,7 @@
 
 
 HoI4::AdjustedBranch::AdjustedBranch(const std::string& name):
-	 name_(name), path_(std::filesystem::path("Configurables/AdjustedFocusBranches") / name)
+	 name_(name), path_(std::filesystem::path("Configurables") / "AdjustedFocusBranches" / name)
 {
 	importFocuses();
 	importIdeas();
