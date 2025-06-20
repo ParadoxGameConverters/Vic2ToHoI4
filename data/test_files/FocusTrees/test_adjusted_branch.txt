@@ -1,0 +1,5 @@
+focus_tree = {
+	focus = {
+		id = test_adjusted_focus
+	}
+}

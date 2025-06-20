@@ -77,7 +77,8 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::optional<std::string> humanCountry,
 	 const date& vic2Date,
 	 const std::filesystem::path& outputName);
-void copyAdjustedFocusFiles(const std::filesystem::path& outputName, const std::vector<std::string>& addedBranches);
+void copyAdjustedFocusFiles(const std::filesystem::path& outputName,
+	 const std::vector<std::shared_ptr<AdjustedBranch>>& addedBranches);
 void outputAdjacencyRules(const std::filesystem::path& outputName,
 	 const std::map<std::string, std::shared_ptr<AdjacencyRule>>& rules);
 
@@ -668,13 +669,11 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 }
 
 void HoI4::copyAdjustedFocusFiles(const std::filesystem::path& outputName,
-	 const std::vector<std::string>& addedBranches)
+	 const std::vector<std::shared_ptr<AdjustedBranch>>& addedBranches)
 {
 	for (const auto& branch: addedBranches)
 	{
-		std::filesystem::copy(std::filesystem::path("Configurables/AdjustedFocusBranches") / branch,
-			 "output" / outputName,
-			 std::filesystem::copy_options::recursive);
+		std::filesystem::copy(branch->getPath(), "output" / outputName, std::filesystem::copy_options::recursive);
 	}
 }
 

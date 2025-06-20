@@ -19,6 +19,7 @@
 #include "src/V2World/World/World.h"
 #include <algorithm>
 #include <cmath>
+#include <ranges>
 
 #include "src/HOI4World/Characters/CharacterFactory.h"
 
@@ -1667,12 +1668,19 @@ void HoI4::Country::addPuppetsIntegrationTree(HoI4::Localisation& hoi4Localisati
 }
 
 
-void HoI4::Country::addFocusTreeBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses,
+void HoI4::Country::addAdjustedBranch(const std::shared_ptr<HoI4::AdjustedBranch>& theBranch,
+	 const std::string& originalTag,
 	 HoI4::OnActions& onActions)
 {
 	if (nationalFocus)
 	{
-		nationalFocus->addBranch(adjustedFocuses, onActions);
+		nationalFocus->addBranch(theBranch->getFocusTree().getFocuses(), onActions);
+	}
+
+	addGlobalEventTarget(theBranch->getName() + "_" + originalTag);
+	for (const auto& character: theBranch->getCharacters() | std::views::values)
+	{
+		addCharacter(character);
 	}
 }
 
