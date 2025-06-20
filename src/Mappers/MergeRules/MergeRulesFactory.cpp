@@ -19,6 +19,6 @@ Mappers::MergeRules::Factory::Factory()
 std::unique_ptr<Mappers::MergeRules> Mappers::MergeRules::Factory::importMergeRules()
 {
 	mergeRules = std::make_unique<MergeRules>();
-	parseFile(std::filesystem::path("Configurables/merge_nations.txt"));
+	parseFile("Configurables/merge_nations.txt");
 	return std::move(mergeRules);
 }

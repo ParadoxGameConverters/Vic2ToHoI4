@@ -30,7 +30,7 @@ std::unique_ptr<Mappers::GraphicsMapper> Mappers::GraphicsMapper::Factory::impor
 	Log(LogLevel::Info) << "\tReading graphics mappings";
 
 	graphicsMapper = std::make_unique<GraphicsMapper>();
-	parseFile(std::filesystem::path("Configurables/cultureGroupToGraphics.txt"));
+	parseFile("Configurables/cultureGroupToGraphics.txt");
 	return std::move(graphicsMapper);
 }
 

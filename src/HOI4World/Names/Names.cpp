@@ -84,7 +84,7 @@ void HoI4::Names::Factory::processNamesFile()
 		addNamesToMap(intelligenceAgencyNames, cultureName, cultureNames.takeIntelligenceAgencies());
 	});
 
-	parseFile(std::filesystem::path("Configurables/names.txt"));
+	parseFile("Configurables/names.txt");
 }
 
 

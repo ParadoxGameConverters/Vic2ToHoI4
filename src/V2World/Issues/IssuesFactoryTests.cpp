@@ -6,7 +6,7 @@
 
 TEST(Vic2World_Issues_IssuesFactoryTests, IssuesDefaultToEmpty)
 {
-	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path("EmptyIssues"), {});
+	const commonItems::ModFilesystem mod_filesystem("EmptyIssues", {});
 	const auto issues = Vic2::Issues::Factory().GetIssues(mod_filesystem);
 
 	ASSERT_TRUE(issues->getIssueName(1).empty());

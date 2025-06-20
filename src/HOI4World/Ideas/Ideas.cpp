@@ -27,7 +27,7 @@ void HoI4::Ideas::importIdeologicalIdeas(const std::set<std::string>& majorIdeol
 				 ideologicalIdeas[groupName].push_back(IdeaGroup(ideology, theStream));
 			 });
 
-		parseFile(std::filesystem::path("Configurables/ideologicalIdeas/" + ideology + ".txt"));
+		parseFile("Configurables/ideologicalIdeas/" + ideology + ".txt");
 		clearRegisteredKeywords();
 	}
 }
@@ -39,7 +39,7 @@ void HoI4::Ideas::importGeneralIdeas()
 		generalIdeas.emplace_back(IdeaGroup{ideaGroupName, theStream});
 	});
 
-	parseFile(std::filesystem::path("Configurables/converterIdeas.txt"));
+	parseFile("Configurables/converterIdeas.txt");
 	clearRegisteredKeywords();
 }
 

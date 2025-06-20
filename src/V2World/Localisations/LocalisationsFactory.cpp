@@ -18,8 +18,7 @@ std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Factory::ImportLocalis
 	{
 		ReadFromFile(file);
 	}
-	for (const auto& file_name:
-		 commonItems::GetAllFilesInFolder(std::filesystem::path("Configurables/Vic2Localisations")))
+	for (const auto& file_name: commonItems::GetAllFilesInFolder("Configurables/Vic2Localisations"))
 	{
 		ReadFromFile("Configurables/Vic2Localisations" / file_name);
 	}

@@ -18,7 +18,7 @@ HoI4::AdjacencyRules::AdjacencyRules(const std::map<int, State>& states)
 void HoI4::AdjacencyRules::importDefaultAdjacencyRules()
 {
 	registerKeywords();
-	parseFile(std::filesystem::path("Configurables/Map/adjacency_rules.txt"));
+	parseFile("Configurables/Map/adjacency_rules.txt");
 	clearRegisteredKeywords();
 }
 

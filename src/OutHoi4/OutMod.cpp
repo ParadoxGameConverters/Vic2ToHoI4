@@ -14,7 +14,7 @@ namespace
 void CreateOutputFolder(const std::filesystem::path& output_name)
 {
 	Log(LogLevel::Info) << "\tCopying blank mod";
-	if (!commonItems::DoesFolderExist(std::filesystem::path("output")) && !std::filesystem::create_directories("output"))
+	if (!commonItems::DoesFolderExist("output") && !std::filesystem::create_directories("output"))
 	{
 		throw std::runtime_error("Could not create output folder");
 	}

@@ -11,7 +11,7 @@ HoI4::DynamicModifiers::DynamicModifiers()
 		Modifier modifier(modifierName, theStream);
 		dynamicModifiers.insert(make_pair(modifierName, modifier));
 	});
-	parseFile(std::filesystem::path("Configurables/converterDynamicModifiers.txt"));
+	parseFile("Configurables/converterDynamicModifiers.txt");
 	clearRegisteredKeywords();
 }
 

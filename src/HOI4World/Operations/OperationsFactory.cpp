@@ -15,7 +15,7 @@ std::unique_ptr<HoI4::Operations> HoI4::Operations::Factory::getOperations()
 			 operations->operations.push_back(*operationFactory.getOperation(name, theStream));
 		 });
 
-	parseFile(std::filesystem::path("blankmod/common/operations/00_operations.txt"));
+	parseFile("blankmod/common/operations/00_operations.txt");
 
 	return operations;
 }

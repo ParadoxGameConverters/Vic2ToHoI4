@@ -19,6 +19,6 @@ Mappers::CasusBellisFactory::CasusBellisFactory()
 std::unique_ptr<Mappers::CasusBellis> Mappers::CasusBellisFactory::importCasusBellis()
 {
 	mappings.clear();
-	parseFile(std::filesystem::path("Configurables/casus_bellis_mappings.txt"));
+	parseFile("Configurables/casus_bellis_mappings.txt");
 	return std::make_unique<CasusBellis>(mappings);
 }

@@ -16,7 +16,7 @@ TEST(Vic2World_EU4ToVic2Data_CountriesDataTests, CountryDataDefaultsToNullopt)
 
 TEST(Vic2World_EU4ToVic2Data_CountriesDataTests, CountryDataCanBeImported)
 {
-	const commonItems::ModFilesystem mod_filesystem(std::filesystem::path(""),
+	const commonItems::ModFilesystem mod_filesystem("",
 		 {Mod("boring", "uninteresting_mod"), Mod("interesting", "Vic2/mod/test_directory")});
 	const auto countries_data = Vic2::CountriesData::Factory().ImportCountriesData(mod_filesystem);
 

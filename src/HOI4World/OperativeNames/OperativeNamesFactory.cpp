@@ -17,8 +17,7 @@ std::unique_ptr<HoI4::OperativeNames> HoI4::OperativeNames::Factory::getOperativ
 		operativeNames->operativeNamesSets.insert(
 			 std::make_pair(operativesNamesSet->getWrapper(), std::move(*operativesNamesSet)));
 	}
-	for (const auto& filename:
-		 commonItems::GetAllFilesInFolder(std::filesystem::path("Configurables/CodenamesOperatives")))
+	for (const auto& filename: commonItems::GetAllFilesInFolder("Configurables/CodenamesOperatives"))
 	{
 		auto operativesNamesSet =
 			 operativeNameSetFactory.getOperativeNamesSetFromFile("Configurables/CodenamesOperatives" / filename);
