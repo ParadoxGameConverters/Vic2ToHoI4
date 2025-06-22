@@ -365,7 +365,7 @@ void HoI4::Localisation::Importer::importLocalisations(const std::filesystem::pa
 		}
 	}
 
-	for (const auto& subdirectory: commonItems::GetAllSubfolders(std::filesystem::path("blankmod/localisation")))
+	for (const auto& subdirectory: commonItems::GetAllSubfolders("blankmod/localisation"))
 	{
 		for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/localisation" / subdirectory))
 		{

@@ -16,6 +16,6 @@ Mappers::CountryNameMapper::Factory::Factory()
 std::unique_ptr<Mappers::CountryNameMapper> Mappers::CountryNameMapper::Factory::importCountryNameMapper()
 {
 	countryNameMapper = std::make_unique<CountryNameMapper>();
-	parseFile(std::filesystem::path("./Configurables/CountryNamesMappings.txt"));
+	parseFile("./Configurables/CountryNamesMappings.txt");
 	return std::move(countryNameMapper);
 }

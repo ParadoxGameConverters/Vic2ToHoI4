@@ -105,7 +105,7 @@ std::unique_ptr<Mappers::ProvinceMapper> Mappers::ProvinceMapper::Factory::impor
 	{
 		if (commonItems::DoesFileExist(mod.path / "hybridization.txt"))
 		{
-			parseFile(std::filesystem::path("Configurables/Historical Project Mod 0.4.6_province_mappings.txt"));
+			parseFile("Configurables/Historical Project Mod 0.4.6_province_mappings.txt");
 			mapped = true;
 			break;
 		}
@@ -121,7 +121,7 @@ std::unique_ptr<Mappers::ProvinceMapper> Mappers::ProvinceMapper::Factory::impor
 	}
 	if (!mapped)
 	{
-		parseFile(std::filesystem::path("Configurables/province_mappings.txt"));
+		parseFile("Configurables/province_mappings.txt");
 	}
 
 	return std::move(provinceMapper);

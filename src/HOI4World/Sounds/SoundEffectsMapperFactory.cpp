@@ -32,6 +32,6 @@ HoI4::SoundEffectsMapper::Factory::Factory()
 std::unique_ptr<HoI4::SoundEffectsMapper> HoI4::SoundEffectsMapper::Factory::getMapper()
 {
 	mapper = std::make_unique<SoundEffectsMapper>();
-	parseFile(std::filesystem::path("Configurables/Sounds/CultureToVoiceMappings.txt"));
+	parseFile("Configurables/Sounds/CultureToVoiceMappings.txt");
 	return std::move(mapper);
 }
