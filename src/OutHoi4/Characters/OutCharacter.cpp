@@ -15,10 +15,8 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Character& character)
 	{
 		for (const auto& instance: instances)
 		{
-			out << "\n";
 			out << instance;
 		}
-		return out;
 	}
 
 	if (const auto& allowed = character.getAllowed(); allowed.has_value())
