@@ -199,3 +199,16 @@ Character Character::Factory::importCharacter(std::string_view id, std::istream&
 	parseStream(input);
 	return *imported_character_;
 }
+
+void Character::Factory::customizeCharacterPortraits(Character& character, const std::string& portrait_location)
+{
+	for (auto& portrait: character.portraits_)
+	{
+		auto location = portrait_location;
+		if (portrait.getSize() == "small")
+		{
+			location += "_small";
+		}
+		portrait = HoI4::Portrait(portrait.getType(), portrait.getSize(), location);
+	}
+}

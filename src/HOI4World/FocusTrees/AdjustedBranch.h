@@ -23,6 +23,7 @@ class AdjustedBranch
 	[[nodiscard]] const auto& getFocusTree() const { return focusTree_; }
 	[[nodiscard]] const auto& getIdeas() const { return ideas_; }
 	[[nodiscard]] const auto& getCharacters() const { return characters_; }
+	[[nodiscard]] auto& getModifiableCharacters() { return characters_; }
 
   private:
 	void importFocuses();
