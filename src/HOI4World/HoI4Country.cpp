@@ -1678,8 +1678,14 @@ void HoI4::Country::addAdjustedBranch(const std::shared_ptr<HoI4::AdjustedBranch
 	}
 
 	addGlobalEventTarget(theBranch->getName() + "_" + originalTag);
-	for (const auto& character: theBranch->getCharacters() | std::views::values)
+
+	HoI4::Character::Factory characterFactory;
+	for (auto character: theBranch->getModifiableCharacters() | std::views::values)
 	{
+		const auto& portrait_location =
+			 armyPortraits[std::uniform_int_distribution<int>{0, static_cast<int>(armyPortraits.size() - 1)}(generator)];
+		characterFactory.customizeCharacterPortraits(character, portrait_location);
+
 		addCharacter(character);
 	}
 }
