@@ -24,6 +24,8 @@ class Character::Factory: commonItems::parser
   public:
 	Factory();
 
+	void customizeCharacterPortraits(Character& character, const std::string& portrait_location);
+
 	[[nodiscard]] Character createNewCountryLeader(const std::string& tag,
 		 const std::pair<std::string, std::string>& nextMonarch,
 		 const std::string& primaryCulture,
