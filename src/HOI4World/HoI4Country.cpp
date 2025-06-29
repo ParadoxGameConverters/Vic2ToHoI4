@@ -1686,6 +1686,10 @@ void HoI4::Country::addAdjustedBranch(const std::shared_ptr<HoI4::AdjustedBranch
 			 armyPortraits[std::uniform_int_distribution<int>{0, static_cast<int>(armyPortraits.size() - 1)}(generator)];
 		characterFactory.customizeCharacterPortraits(character, portrait_location);
 
+		if (character.getCountryLeaderData().has_value())
+		{
+			character.promote();
+		}
 		addCharacter(character);
 	}
 }
