@@ -23,6 +23,8 @@ class Character
   public:
 	class Factory;
 
+	void promote() { isPromoted_ = true; }
+
 	[[nodiscard]] const auto& getId() const { return id_; }
 	[[nodiscard]] const auto& getName() const { return name_; }
 	[[nodiscard]] const auto& getPortraits() const { return portraits_; }
@@ -35,6 +37,7 @@ class Character
 	[[nodiscard]] const auto& getAdmiralData() const { return admiral_data_; }
 
 	[[nodiscard]] const auto& getInstances() const { return instances_; }
+	[[nodiscard]] const auto& isPromoted() const { return isPromoted_; }
 
 	[[nodiscard]] bool operator==(const Character& rhs) const = default;
 
@@ -52,6 +55,7 @@ class Character
 	std::optional<AdmiralData> admiral_data_;
 
 	std::vector<Character> instances_;
+	bool isPromoted_ = false;
 };
 
 } // namespace HoI4

@@ -855,6 +855,10 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	for (const auto& character: theCountry.getCharacters())
 	{
 		output << "recruit_character = " << character.getId() << "\n";
+		if (character.isPromoted())
+		{
+			output << "promote_character = " << character.getId() << "\n";
+		}
 	}
 	for (const auto& [characterName, flag]: theCountry.getCharacterFlags())
 	{
