@@ -25,7 +25,7 @@ SOV_propaganda_campaigns = {
 		}
 
 		allowed = {
-			original_tag = SOV
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
 		}
 
 		available = {
