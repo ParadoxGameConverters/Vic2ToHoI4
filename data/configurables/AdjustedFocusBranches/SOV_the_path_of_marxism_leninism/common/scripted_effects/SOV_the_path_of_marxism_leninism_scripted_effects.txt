@@ -31,6 +31,17 @@ SOV_paranoia_high_decrease_effect = {
 	}
 }
 
+SOV_paranoia_very_high_decrease_effect = {
+	if = {
+		limit = {
+			has_country_flag = SOV_paranoia_system_active_flag
+		}
+		custom_effect_tooltip = SOV_paranoia_very_high_decrease_effect_tt
+		add_to_variable = { SOV_paranoia = SOV_paranoia_very_high_decrease }
+		SOV_paranoia_clamp_and_update_ui_effect = yes
+	}
+}
+
 SOV_paranoia_high_increase_effect = {
 	if = {
 		limit = {
@@ -38,6 +49,17 @@ SOV_paranoia_high_increase_effect = {
 		}
 		custom_effect_tooltip = SOV_paranoia_high_increase_effect_tt
 		add_to_variable = { SOV_paranoia = SOV_paranoia_high_increase }
+		SOV_paranoia_clamp_and_update_ui_effect = yes
+	}
+}
+
+SOV_paranoia_very_high_increase_effect = {
+	if = {
+		limit = {
+			has_country_flag = SOV_paranoia_system_active_flag
+		}
+		custom_effect_tooltip = SOV_paranoia_very_high_increase_effect_tt
+		add_to_variable = { SOV_paranoia = SOV_paranoia_very_high_increase }
 		SOV_paranoia_clamp_and_update_ui_effect = yes
 	}
 }
@@ -182,6 +204,128 @@ SOV_trigger_great_purge_moscow_trial_effect = {
 SOV_paranoia_modifier_update_gui_tooltip = { #Only updates the tooltip in the decision GUI
 	ROOT = { set_variable = { SOV_paranoia_weekly_modifier_ui = SOV_paranoia_modifier_increase } } #Get default weekly modifier increase value
 	ROOT = { multiply_variable = { SOV_paranoia_weekly_modifier_ui = SOV_paranoia_weekly_modifiers_amount } } #Multiply default weekly modifier increase by the number of active weekly modifiers
+}
+
+SOV_paranoia_increase_purge_counter_great = {
+	add_to_variable = { SOV_great_purge_counter = 1 }
+	add_to_variable = { SOV_total_purge_counter = 1 }
+}
+
+SOV_paranoia_daunt_generals_effect = {
+	set_temp_variable = { temp_targets_index = 0 }
+
+	while_loop_effect = {
+		limit = {
+			check_variable = { temp_targets_index = 5 compare = less_than }
+			any_army_leader = {
+				NOT = { has_character_flag = SOV_targeted_for_purge_flag }
+				NOT = { has_trait = trait_SOV_cowed_by_stalin_army }
+			}
+		}
+		random_army_leader = {
+			limit = {
+				NOT = { has_character_flag = SOV_targeted_for_purge_flag }
+				NOT = { has_trait = trait_SOV_cowed_by_stalin_army }
+			}
+			add_unit_leader_trait = trait_SOV_cowed_by_stalin_army
+		}
+		add_to_temp_variable = { temp_targets_index = 1 }
+		#log = "LOOP ROUND [?temp_targets_index]"
+	}
+
+	custom_effect_tooltip = SOV_daunt_generals_tt
+}
+
+SOV_purge_character_effect = { #Expected to be called in the character scope
+	set_character_flag = SOV_character_purged_flag
+	PREV = { retire_character = PREV }
+}
+
+SOV_paranoia_update_portraits_ui = { #Expected to be called in the country scope
+	if = {
+		limit = {
+			NOT = { has_character = SOV_grigory_zinovyev }
+			check_variable = { SOV.SOV_paranoia_photo_zinovyev = 8 compare = not_equals }
+		}
+		set_variable = { SOV.SOV_paranoia_photo_zinovyev = 8 }
+		set_country_flag = SOV_added_purged_portrait_flag
+	}
+	if = {
+		limit = {
+			NOT = { has_character = SOV_karl_radek }
+			check_variable = { SOV.SOV_paranoia_photo_radek = 9 compare = not_equals }
+		}
+		set_variable = { SOV.SOV_paranoia_photo_radek = 9 }
+		set_country_flag = SOV_added_purged_portrait_flag
+	}
+	if = {
+		limit = {
+			NOT = { has_character = SOV_nikolay_bukharin }
+			check_variable = { SOV.SOV_paranoia_photo_bukharin = 10 compare = not_equals }
+		}
+		set_variable = { SOV.SOV_paranoia_photo_bukharin = 10 }
+		set_country_flag = SOV_added_purged_portrait_flag
+	}
+	if = {
+		limit = {
+			NOT = { has_character = SOV_lev_trotsky }
+			check_variable = { SOV.SOV_paranoia_photo_trotsky = 11 compare = not_equals }
+		}
+		set_variable = { SOV.SOV_paranoia_photo_trotsky = 11 }
+		set_country_flag = SOV_added_purged_portrait_flag
+	}
+	if = {
+		limit = {
+			NOT = { has_character = SOV_mikhail_tukhachevsky }
+			check_variable = { SOV.SOV_paranoia_photo_tukhachevsky = 12 compare = not_equals }
+		}
+		set_variable = { SOV.SOV_paranoia_photo_tukhachevsky = 12 }
+		set_country_flag = SOV_added_purged_portrait_flag
+	}
+	if = { #Generic
+		limit = {
+			NOT = { has_country_flag = SOV_added_purged_portrait_flag } #IMPORTANT: This flag needs to be cleared after the purge character effect in eevery event purging characters
+		}
+		set_temp_variable = { SOV_generic_portrait_frame = SOV_paranoia_portrait_index }
+		if = { #There are 6 portraits and 12 slots, so second round of generic portraits
+			limit = {
+				check_variable = { SOV_paranoia_portrait_index = 6 compare = greater_than }
+			}
+			subtract_from_temp_variable = { SOV_generic_portrait_frame = 6 }
+		}
+		add_to_temp_variable = { SOV_generic_portrait_frame = 1 }
+
+		add_to_array = {
+			array = SOV_paranoia_generic_portraits_array
+			value = SOV_generic_portrait_frame
+			index = SOV_paranoia_portrait_index
+		}
+		
+		add_to_variable = { SOV_paranoia_portrait_index = 1 }
+	}
+	clr_country_flag = SOV_added_purged_portrait_flag
+}
+
+SOV_clean_purge_targets_effect = {
+	hidden_effect = {
+		every_character = {
+			limit = {
+				has_character_flag = SOV_targeted_for_purge_flag
+			}
+			clr_character_flag = SOV_targeted_for_purge_flag
+		}
+	}
+}
+
+SOV_clear_unavoidable_purge_flags_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				has_country_flag = SOV_purge_event_unavoidable_flag
+			}
+			clr_country_flag = SOV_purge_event_unavoidable_flag
+		}
+	}
 }
 
 SOV_great_purge_army_trial_of_the_generals_effect = {
@@ -883,5 +1027,109 @@ SOV_reset_propaganda_campaign_slot_effect = {
 
 SOV_increase_propaganda_campaign_cost_effect = {
 	multiply_variable = { SOV_propaganda_cost = SOV_propaganda_cost_increase } #Using generic var SOV_propaganda_cost so that we only need to change this operation to tweak all propagandas' cost escalation
+}
+
+SOV_get_centre_military_support = {
+	IF = {
+		limit = { SOV_is_left_opposition = yes }
+		set_variable = { SOV.SOV_centre_army_support = 1 }
+		subtract_from_variable = { SOV.SOV_centre_army_support = SOV.SOV_left_opposition_army_support }
+		set_variable = { SOV.SOV_centre_navy_support = 1 }
+		subtract_from_variable = { SOV.SOV_centre_navy_support = SOV.SOV_left_opposition_navy_support }
+		set_variable = { SOV.SOV_centre_air_support = 1 }
+		subtract_from_variable = { SOV.SOV_centre_air_support = SOV.SOV_left_opposition_air_support }
+	}
+	ELSE_IF = {
+		limit = { SOV_is_right_opposition = yes }
+		set_variable = { SOV.SOV_centre_army_support = 1 }
+		subtract_from_variable = { SOV.SOV_centre_army_support = SOV.SOV_right_opposition_army_support }
+		set_variable = { SOV.SOV_centre_navy_support = 1 }
+		subtract_from_variable = { SOV.SOV_centre_navy_support = SOV.SOV_right_opposition_navy_support }
+		set_variable = { SOV.SOV_centre_air_support = 1 }
+		subtract_from_variable = { SOV.SOV_centre_air_support = SOV.SOV_right_opposition_air_support }
+	}
+	ELSE_IF = {
+		limit = { SOV_is_exiles = yes }
+		set_variable = { SOV.SOV_centre_army_support = 1 }
+		subtract_from_variable = { SOV.SOV_centre_army_support = SOV.SOV_exiles_army_support }
+		set_variable = { SOV.SOV_centre_navy_support = 1 }
+		subtract_from_variable = { SOV.SOV_centre_navy_support = SOV.SOV_exiles_navy_support }
+		set_variable = { SOV.SOV_centre_air_support = 1 }
+		subtract_from_variable = { SOV.SOV_centre_air_support = SOV.SOV_exiles_air_support }
+	}
+
+}
+
+SOV_increase_opposition_army_support_small = {
+	IF = {
+		limit = {
+			SOV_is_opposition = yes 
+		}
+		custom_effect_tooltip = SOV_increase_opposition_army_support_small_tt
+		hidden_effect = {
+			random_list = {
+				25 = {}
+				50 = {
+					IF = {
+						limit = { SOV_is_left_opposition = yes }
+						add_to_variable = { SOV.SOV_left_opposition_army_support = 0.02 }
+						clamp_variable = {
+							var = SOV.SOV_left_opposition_army_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+					ELSE_IF = {
+						limit = { SOV_is_right_opposition = yes }
+						add_to_variable = { SOV.SOV_right_opposition_army_support = 0.02 }
+						clamp_variable = {
+							var = SOV.SOV_right_opposition_army_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+					ELSE_IF = {
+						limit = { SOV_is_exiles = yes }
+						add_to_variable = { SOV.SOV_exiles_army_support = 0.02 }
+						clamp_variable = {
+							var = SOV.SOV_exiles_army_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+				}
+				25 = {
+					IF = {
+						limit = { SOV_is_left_opposition = yes }
+						add_to_variable = { SOV.SOV_left_opposition_army_support = 0.05 }
+						clamp_variable = {
+							var = SOV.SOV_left_opposition_army_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+					ELSE_IF = {
+						limit = { SOV_is_right_opposition = yes }
+						add_to_variable = { SOV.SOV_right_opposition_army_support = 0.05 }
+						clamp_variable = {
+							var = SOV.SOV_right_opposition_army_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+					ELSE_IF = {
+						limit = { SOV_is_exiles = yes }
+						add_to_variable = { SOV.SOV_exiles_army_support = 0.05 }
+						clamp_variable = {
+							var = SOV.SOV_exiles_army_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+				}
+			}
+		}
+	}
+	SOV_get_centre_military_support = yes 
 }
 

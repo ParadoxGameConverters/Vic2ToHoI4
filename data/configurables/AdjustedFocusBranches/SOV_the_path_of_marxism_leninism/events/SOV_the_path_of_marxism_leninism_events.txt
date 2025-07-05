@@ -25,6 +25,8 @@ country_event = {
 		set_variable = { SOV_default_propaganda_campaign_cooldown = 90 }
 		set_variable = { SOV_default_propaganda_campaign_old_days = 150 }
 
+		set_variable = { SOV_purge_event_pp_to_avoid_great = 0 } #PP Required to show the option to avoid a great purge
+		set_variable = { SOV_purge_event_pp_to_avoid_great_pay = -120 } #PP to be paid to avoid a great purge
 	}
 
 	option = {

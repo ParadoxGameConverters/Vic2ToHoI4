@@ -19,6 +19,17 @@ SOV_is_right_opposition = {
 	#}
 }
 
+SOV_is_opposition = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_is_opposition_tt
+		OR = {
+			SOV_is_left_opposition = yes 
+			SOV_is_right_opposition = yes 
+			SOV_is_exiles = yes 
+		}
+	}
+}
+
 SOV_character_can_be_purged = {
 	NOT = { has_character_flag = SOV_safe_from_purge_flag }
 	NOT = { has_character_flag = SOV_exiled_flag }
