@@ -46,6 +46,25 @@ country_event = {
 		SOV_paranoia_modifier_update_gui_tooltip = yes #Used in the Paranoia GUI to show total weekly increase/decrease of Paranoia
 		set_country_flag = SOV_paranoia_modifier_active_flag
 		country_event = { id = NSB_soviet_paranoia_system_events.01 days = 90 random_days = 10 } # EVENT ACTIVATING THE PARANOIA SYSTEM
+
+		#THE POLITBURO SPIRIT VARS
+		set_variable = { SOV_the_politburo_communism_drift = 0.05 }
+
+		set_variable = { SOV_the_politburo_defensive_war_stability_factor = 0 } # -> Socialism in One Country
+		set_variable = { SOV_the_politburo_drift_defence_factor = 0 } # -> Socialism in One Country
+		set_variable = { SOV_the_politburo_political_power_factor = 0 } #0.05 -> The Stalin Constitution
+		set_variable = { SOV_the_politburo_economy_cost_factor = 0 } # -> Secure the Administration
+		set_variable = { SOV_the_politburo_trade_laws_cost_factor = 0 } # -> Secure the Administration
+		set_variable = { SOV_the_politburo_mobilization_laws_cost_factor = 0 } # -> Secure the Administration
+		set_variable = { SOV_the_politburo_good_consumer_goods_factor = 0 } # -> Collectivization Process
+		set_variable = { SOV_the_politburo_production_speed_buildings_factor = 0 } # -> Collectivization Process
+		set_variable = { SOV_the_politburo_global_building_slots_factor = 0 } # -> Collectivization Process
+		set_variable = { SOV_the_politburo_max_surrender_limit_offset = 0 } # -> The Workers Dictatorship
+		set_variable = { SOV_the_politburo_max_command_power = 0 } # -> Organization, Centralization, Discipline
+		set_variable = { SOV_the_politburo_mobilization_speed = 0 } # -> Organization, Centralization, Discipline
+		set_variable = { SOV_the_politburo_operative_slot = 0 } # -> Behead the Snake
+		set_variable = { SOV_the_politburo_political_advisor_cost_factor = 0 } # -> Freedom of Debate, Unity of Action
+		set_variable = { SOV_the_politburo_opinion_gain_monthly_same_ideology_factor = 0 } # -> The Construction of Communism
 	}
 
 	option = {
