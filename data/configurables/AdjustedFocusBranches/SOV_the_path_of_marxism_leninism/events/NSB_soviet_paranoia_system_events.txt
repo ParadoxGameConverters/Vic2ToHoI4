@@ -1,5 +1,46 @@
 add_namespace = NSB_soviet_paranoia_system_events
 
+#########################
+### INTRO TO PARANOIA ###
+#########################
+
+### PARANOIA SYSTEM STARTS ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.01
+	title = NSB_soviet_paranoia_system_events.01.t
+	desc = NSB_soviet_paranoia_system_events.01.desc
+	picture = GFX_report_event_stalin_01
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_initiate_paranoia_effect = yes
+		}
+	}
+
+	trigger = {
+		NOT = { has_completed_focus = SOV_the_bloc_of_rights_and_trotskyites }
+	}
+
+	option = { #GOOD TO KNOW, THANKS
+		name = NSB_soviet_paranoia_system_events.01.a
+		
+		custom_effect_tooltip = SOV_paranoia_system_intro_tt
+		unlock_decision_category_tooltip = SOV_paranoia_system
+
+		#Stalin gets paranoid
+		effect_tooltip = {
+			add_country_leader_trait = stalin_political_paranoia
+		}
+
+		#NKVD chiefs will make Political Paranoia worse
+		custom_effect_tooltip = SOV_paranoia_system_nkvd_trait_tt
+	}
+}
+
 ### GREAT PURGE - MOSCOW TRIALS - ADMIN ###
 country_event = {
 	id = NSB_soviet_paranoia_system_events.19

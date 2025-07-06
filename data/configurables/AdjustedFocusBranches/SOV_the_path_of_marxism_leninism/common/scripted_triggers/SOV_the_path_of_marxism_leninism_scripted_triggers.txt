@@ -30,6 +30,10 @@ SOV_is_opposition = {
 	}
 }
 
+SOV_is_stalinist = {
+	has_completed_focus = SOV_the_centre
+}
+
 SOV_character_can_be_purged = {
 	NOT = { has_character_flag = SOV_safe_from_purge_flag }
 	NOT = { has_character_flag = SOV_exiled_flag }

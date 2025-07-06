@@ -211,6 +211,47 @@ SOV_paranoia_increase_purge_counter_great = {
 	add_to_variable = { SOV_total_purge_counter = 1 }
 }
 
+SOV_initiate_paranoia_effect = { #PARANOIA SYSTEM STARTS, GOOD LUCK COMRADE
+	set_country_flag = SOV_paranoia_system_active_flag #Uh oh...
+
+	#Stalin gets paranoid
+	add_country_leader_trait = stalin_political_paranoia
+
+	#NKVD chiefs will make Political Paranoia worse
+	remove_trait = {
+		character = UTI_genrikh_yagoda
+		slot = political_advisor
+		trait = head_of_the_nkvd_yagoda_initial
+	}
+	add_trait = {
+		character = UTI_genrikh_yagoda
+		slot = political_advisor
+		trait = head_of_the_nkvd_yagoda
+	}
+
+	remove_trait = {
+		character = UTI_nikolay_yezhov
+		slot = political_advisor
+		trait = head_of_the_nkvd_yezhov_initial
+	}
+	add_trait = {
+		character = UTI_nikolay_yezhov
+		slot = political_advisor
+		trait = head_of_the_nkvd_yezhov
+	}
+
+	remove_trait = {
+		character = UTI_lavrenty_beriya
+		slot = political_advisor
+		trait = head_of_the_nkvd_beriya_initial
+	}
+	add_trait = {
+		character = UTI_lavrenty_beriya
+		slot = political_advisor
+		trait = head_of_the_nkvd_beriya
+	}
+}
+
 SOV_paranoia_daunt_generals_effect = {
 	set_temp_variable = { temp_targets_index = 0 }
 
