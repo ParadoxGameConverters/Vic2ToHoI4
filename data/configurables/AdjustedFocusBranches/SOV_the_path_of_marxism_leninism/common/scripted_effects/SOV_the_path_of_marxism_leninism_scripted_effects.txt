@@ -244,7 +244,7 @@ SOV_purge_character_effect = { #Expected to be called in the character scope
 SOV_paranoia_update_portraits_ui = { #Expected to be called in the country scope
 	if = {
 		limit = {
-			NOT = { has_character = SOV_grigory_zinovyev }
+			NOT = { has_character = UTI_grigory_zinovyev }
 			check_variable = { SOV.SOV_paranoia_photo_zinovyev = 8 compare = not_equals }
 		}
 		set_variable = { SOV.SOV_paranoia_photo_zinovyev = 8 }
@@ -252,7 +252,7 @@ SOV_paranoia_update_portraits_ui = { #Expected to be called in the country scope
 	}
 	if = {
 		limit = {
-			NOT = { has_character = SOV_karl_radek }
+			NOT = { has_character = UTI_karl_radek }
 			check_variable = { SOV.SOV_paranoia_photo_radek = 9 compare = not_equals }
 		}
 		set_variable = { SOV.SOV_paranoia_photo_radek = 9 }
@@ -260,7 +260,7 @@ SOV_paranoia_update_portraits_ui = { #Expected to be called in the country scope
 	}
 	if = {
 		limit = {
-			NOT = { has_character = SOV_nikolay_bukharin }
+			NOT = { has_character = UTI_nikolay_bukharin }
 			check_variable = { SOV.SOV_paranoia_photo_bukharin = 10 compare = not_equals }
 		}
 		set_variable = { SOV.SOV_paranoia_photo_bukharin = 10 }
@@ -276,7 +276,7 @@ SOV_paranoia_update_portraits_ui = { #Expected to be called in the country scope
 	}
 	if = {
 		limit = {
-			NOT = { has_character = SOV_mikhail_tukhachevsky }
+			NOT = { has_character = UTI_mikhail_tukhachevsky }
 			check_variable = { SOV.SOV_paranoia_photo_tukhachevsky = 12 compare = not_equals }
 		}
 		set_variable = { SOV.SOV_paranoia_photo_tukhachevsky = 12 }
