@@ -309,7 +309,7 @@ SOV_paranoia_update_portraits_ui = { #Expected to be called in the country scope
 	}
 	if = {
 		limit = {
-			NOT = { has_character = SOV_lev_trotsky }
+			NOT = { has_character = UTI_lev_trotsky }
 			check_variable = { SOV.SOV_paranoia_photo_trotsky = 11 compare = not_equals }
 		}
 		set_variable = { SOV.SOV_paranoia_photo_trotsky = 11 }

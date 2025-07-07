@@ -1067,4 +1067,49 @@ UTI = {
         }
     }
 
+    UTI_lev_trotsky = {
+        name = ""
+        portraits = {
+            civilian = {
+                large = GFX_portrait_SOV_lev_trotsky
+            }
+            army = {
+                small = "GFX_idea_SOV_lev_trotsky"
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = UTI_lev_trotsky
+            allowed = {
+                always = no
+            }
+            traits = {
+                pc_military_naval_affairs
+            }
+        }
+    }
+
+    UTI_sergei_kirov = {
+        name = ""
+        portraits = {
+            civilian = {
+                large = GFX_portrait_SOV_lev_trotsky
+            }
+            army = {
+                small = "GFX_idea_SOV_lev_trotsky"
+            }
+        }
+
+        advisor = {
+            slot = political_advisor
+            idea_token = UTI_sergei_kirov
+            allowed = {
+                always = no
+            }
+            traits = {
+            }
+        }
+    }
+
 }
