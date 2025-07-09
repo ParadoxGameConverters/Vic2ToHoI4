@@ -1,0 +1,53 @@
+SOV_paranoia_system = {
+
+	priority = 101
+
+	icon = SOV_paranoia
+
+	scripted_gui = sov_paranoia_system_ui
+
+	allowed = {
+		original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+	}
+
+	visible = {
+		OR = {
+			has_country_flag = SOV_paranoia_system_active_flag
+			has_country_flag = SOV_third_moscow_trial_flag
+			has_country_flag = SOV_debug_show_paranoia_system_flag #Debug
+
+			# So Opposition can get rid of the Anti-Soviet Military Thinking NS
+			has_idea = SOV_anti_soviet_military_thinking_banned_army
+			has_idea = SOV_anti_soviet_military_thinking_banned_navy
+			has_idea = SOV_anti_soviet_military_thinking_banned_airforce
+			# So Opposition can get rid of the Junior Army/Navy Officers Purged NS
+			has_idea = SOV_purged_junior_army_officers_1
+			has_idea = SOV_purged_junior_army_officers_2
+			has_idea = SOV_purged_junior_army_officers_3
+			has_idea = SOV_purged_junior_navy_officers_1
+			has_idea = SOV_purged_junior_navy_officers_2
+			has_idea = SOV_purged_junior_navy_officers_3
+			SOV_is_stalinist = yes
+			has_country_flag = SOV_assassinated_stalin_flag
+		}
+	}
+
+	visible_when_empty = yes
+}
+
+SOV_propaganda_campaigns = {
+	priority = 100
+
+	icon = SOV_propaganda
+
+	scripted_gui = sov_propaganda_campaigns_ui
+
+	allowed = {
+		original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+	}
+
+	visible = {
+		has_country_flag = SOV_debug_show_propaganda_system_flag #Debug
+	}
+}
+

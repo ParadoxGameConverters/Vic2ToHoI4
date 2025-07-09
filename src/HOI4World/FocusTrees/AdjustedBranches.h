@@ -31,6 +31,8 @@ class AdjustedBranches
 		 OnActions& onActions);
 	void addBeginRearmamentBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 OnActions& onActions);
+	void addPathOfMarxismLeninismBranch(const std::map<std::string, std::shared_ptr<Country>>& countries,
+		 OnActions& onActions);
 
 	[[nodiscard]] const auto& getAddedBranches() const { return addedBranches; }
 

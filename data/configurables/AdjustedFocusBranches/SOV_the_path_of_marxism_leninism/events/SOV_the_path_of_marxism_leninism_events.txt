@@ -1,0 +1,87 @@
+add_namespace = SOV_the_path_of_marxism_leninism
+
+# SOV_the_path_of_marxism_leninism
+country_event = {
+	id = SOV_the_path_of_marxism_leninism.1
+	title = SOV_the_path_of_marxism_leninism.1.t
+	desc = SOV_the_path_of_marxism_leninism.1.desc
+	picture = GFX_report_event_hitler_handshake
+
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		#save_global_event_target_as = SOV_the_path_of_marxism_leninism_SOV
+		set_variable = { SOV_propaganda_cost = 15 }
+		set_variable = { SOV_propaganda_stalin_cost = SOV_propaganda_cost }
+		set_variable = { SOV_propaganda_cost_increase = 2 }
+
+		set_variable = { SOV_propaganda_locked_slot_index = 1 }
+		set_variable = { SOV_poster_left_icon_frame = SOV_propaganda_locked_slot_index }
+		set_variable = { SOV_poster_center_icon_frame = SOV_propaganda_locked_slot_index }
+		set_variable = { SOV_poster_right_icon_frame = SOV_propaganda_locked_slot_index }
+
+		set_variable = { SOV_default_propaganda_campaign_duration = 180 }
+		set_variable = { SOV_default_propaganda_campaign_cooldown = 90 }
+		set_variable = { SOV_default_propaganda_campaign_old_days = 150 }
+
+		set_variable = { SOV_purge_event_pp_to_avoid_great = 0 } #PP Required to show the option to avoid a great purge
+		set_variable = { SOV_purge_event_pp_to_avoid_great_pay = -120 } #PP to be paid to avoid a great purge
+
+		###PARANOIA ###
+		set_variable = { SOV_paranoia = 0 } # Intitial Paranoia value
+		set_variable = { SOV_paranoia_very_low_increase = 5 } #Paranoia very low increment
+		set_variable = { SOV_paranoia_low_increase = 10 } #Paranoia low increment
+		set_variable = { SOV_paranoia_medium_increase = 20 } #Paranoia medium increment
+		set_variable = { SOV_paranoia_high_increase = 30 } #Paranoia high increment
+		set_variable = { SOV_paranoia_very_high_increase = 50 } #Paranoia very high increment
+		set_variable = { SOV_paranoia_low_decrease = -10 } #Paranoia low decrement --------> (prev -5)
+		set_variable = { SOV_paranoia_medium_decrease = -20 } #Paranoia medium decrement --------> (prev -10)
+		set_variable = { SOV_paranoia_high_decrease = -30 } #Paranoia high decrement --------> (prev -15)
+		set_variable = { SOV_paranoia_very_high_decrease = -50 } #Paranoia very high decrement --------> (prev -25)
+		set_variable = { SOV_paranoia_lower_threshold = 25 } #Lower Threshold -> Below Stalin doesn't purge
+		set_variable = { SOV_paranoia_higher_threshold = 75 } #Higher Threshold -> Below Stalin purges occasionally / Above Stalin can start a Great Purge
+		set_variable = { SOV_paranoia_modifier_increase = 1 } #Paranoia weekly increase via modifiers (Stalin's Paranoid leader trait) // WARNING: CUSTOM TOOLTIP DOES NOT WORK WITH VARS so needs to be updated
+		set_variable = { SOV_paranoia_weekly_modifiers_amount = 1 } #Number of Weekly Paranoia Modifiers currently active (Stalin's trait, Heads of NKVD, etc.). This value will be mulptiplied by SOV_paranoia_modifier_increase in order to apply the final weekly modifier
+		SOV_paranoia_modifier_update_gui_tooltip = yes #Used in the Paranoia GUI to show total weekly increase/decrease of Paranoia
+		set_country_flag = SOV_paranoia_modifier_active_flag
+		set_variable = { SOV_paranoia_great_purge_administration_number_of_targets = 4 } #Max amount of targets to be purged by the appropriate Great Purge (so that it can be changed if necessary)
+		set_variable = { SOV_paranoia_great_purge_army_number_of_targets = 4 } #Max amount of targets to be purged by the appropriate Great Purge (so that it can be changed if necessary)
+		set_variable = { SOV_paranoia_great_purge_navy_number_of_targets = 4 } #Max amount of targets to be purged by the appropriate Great Purge (so that it can be changed if necessary)
+		set_variable = { SOV_paranoia_great_purge_air_number_of_targets = 3 } #Max amount of targets to be purged by the appropriate Great Purge (so that it can be changed if necessary)
+		set_variable = { SOV_specific_random_purge_targets_override = -1 } #-1 = default random people will be purged // 0+ = that many chars will be randomly targeted - Then the var is reset to -1
+
+		set_variable = { SOV_total_purge_counter = 0 } #Total Purges Counter
+		set_variable = { SOV_great_purge_counter = 0 } #Great Purges Counter
+		set_country_flag = SOV_last_purge_flag #Used for Cooldown between purges
+		set_variable = { SOV_moscow_trial_index = 1 }
+		set_variable = { SOV_last_great_purge_area = 0 } # 1=ADMIN | 2=ARMY | 3=NAVY | 4=AIRFORCE // Used to prevent an area (army, administration...) to be GREATLY purged twice in a row
+		set_variable = { SOV_purge_event_pp_to_avoid_great = 0 } #PP Required to show the option to avoid a great purge
+		set_variable = { SOV_purge_event_pp_to_avoid_great_pay = -120 } #PP to be paid to avoid a great purge
+
+		country_event = { id = NSB_soviet_paranoia_system_events.01 days = 90 random_days = 10 } # EVENT ACTIVATING THE PARANOIA SYSTEM
+
+		#THE POLITBURO SPIRIT VARS
+		set_variable = { SOV_the_politburo_communism_drift = 0.05 }
+
+		set_variable = { SOV_the_politburo_defensive_war_stability_factor = 0 } # -> Socialism in One Country
+		set_variable = { SOV_the_politburo_drift_defence_factor = 0 } # -> Socialism in One Country
+		set_variable = { SOV_the_politburo_political_power_factor = 0 } #0.05 -> The Stalin Constitution
+		set_variable = { SOV_the_politburo_economy_cost_factor = 0 } # -> Secure the Administration
+		set_variable = { SOV_the_politburo_trade_laws_cost_factor = 0 } # -> Secure the Administration
+		set_variable = { SOV_the_politburo_mobilization_laws_cost_factor = 0 } # -> Secure the Administration
+		set_variable = { SOV_the_politburo_good_consumer_goods_factor = 0 } # -> Collectivization Process
+		set_variable = { SOV_the_politburo_production_speed_buildings_factor = 0 } # -> Collectivization Process
+		set_variable = { SOV_the_politburo_global_building_slots_factor = 0 } # -> Collectivization Process
+		set_variable = { SOV_the_politburo_max_surrender_limit_offset = 0 } # -> The Workers Dictatorship
+		set_variable = { SOV_the_politburo_max_command_power = 0 } # -> Organization, Centralization, Discipline
+		set_variable = { SOV_the_politburo_mobilization_speed = 0 } # -> Organization, Centralization, Discipline
+		set_variable = { SOV_the_politburo_operative_slot = 0 } # -> Behead the Snake
+		set_variable = { SOV_the_politburo_political_advisor_cost_factor = 0 } # -> Freedom of Debate, Unity of Action
+		set_variable = { SOV_the_politburo_opinion_gain_monthly_same_ideology_factor = 0 } # -> The Construction of Communism
+	}
+
+	option = {
+		name = SOV_the_path_of_marxism_leninism.1.a
+	}
+}

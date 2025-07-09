@@ -147,6 +147,9 @@
     <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_characters.txt" />
     <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament.txt" />
     <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_ideas.txt" />
+    <Text Include="data\configurables\AdjustedFocusBranches\SOV_the_path_of_marxism_leninism.txt" />
+    <Text Include="data\configurables\AdjustedFocusBranches\SOV_the_path_of_marxism_leninism_characters.txt" />
+    <Text Include="data\configurables\AdjustedFocusBranches\SOV_the_path_of_marxism_leninism_ideas.txt" />
     <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus.txt" />
     <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus_ideas.txt" />
     <Text Include="data\configurables\factions_mappings.txt" />

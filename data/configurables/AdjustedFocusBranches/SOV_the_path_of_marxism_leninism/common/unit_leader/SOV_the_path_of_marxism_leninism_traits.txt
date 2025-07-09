@@ -1,0 +1,26 @@
+leader_traits = {
+
+	trait_SOV_cowed_by_stalin_army = {
+
+		type = { land }
+		trait_type = personality_trait
+
+		allowed = {
+			FROM = { original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV }
+		}
+
+		new_commander_weight = {
+			factor = 0
+		}
+
+		attack_skill = -2
+		defense_skill = -2
+		
+		modifier = {
+			custom_modifier_tooltip = SOV_cowed_by_stalin_trait_tt
+			army_morale_factor = -0.1
+			land_reinforce_rate = -0.02
+		}
+	}
+
+}
