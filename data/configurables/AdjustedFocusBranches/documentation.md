@@ -23,6 +23,3 @@
 * Create add[branch_id]Branch() function in AdjustedBranches.cpp for branch creation logic
 * Create initializer country event [branch_id].1 in `data/configurables/AdjustedFocusBranches/[branch_id]/events/[branch_id].txt`
 * Set used variables inside the initializer country event [branch_id].1
-
-# Project
-* Add parsed files to CMakeLists.txt, Vic2ToHoI4.vcxproj, Vic2ToHoI4.vcxproj.filters; only files located directly inside data/configurables/AdjustedFocusBranches/ need to be added to project files
