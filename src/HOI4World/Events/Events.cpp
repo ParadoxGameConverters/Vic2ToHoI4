@@ -11,7 +11,7 @@
 #include "src/HOI4World/Events/NavalTreatyEventsUpdaters.h"
 #include "src/HOI4World/HoI4Country.h"
 #include "src/HOI4World/HoI4Localisation.h"
-#include "src/HOI4World/OnActions.h"
+#include "src/HOI4World/OnActions/OnActions.h"
 #include "src/V2World/Countries/Country.h"
 #include "src/V2World/Politics/Party.h"
 #include <fstream>
