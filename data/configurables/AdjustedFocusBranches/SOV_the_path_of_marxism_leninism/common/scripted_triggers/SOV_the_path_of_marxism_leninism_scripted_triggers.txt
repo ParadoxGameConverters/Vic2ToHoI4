@@ -1,0 +1,53 @@
+SOV_is_exiles = {
+	#custom_trigger_tooltip = {
+		#tooltip = SOV_is_exiles_tt
+		#SOV = { has_completed_focus = SOV_beaten_but_not_defeated }
+	#}
+}
+
+SOV_is_left_opposition = {
+	#custom_trigger_tooltip = {
+		#tooltip = SOV_is_left_opposition_tt
+		#SOV = { has_completed_focus = SOV_the_left_opposition }
+	#}
+}
+
+SOV_is_right_opposition = {
+	#custom_trigger_tooltip = {
+		#tooltip = SOV_is_right_opposition_tt
+		#SOV = { has_completed_focus = SOV_the_right_opposition }
+	#}
+}
+
+SOV_is_opposition = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_is_opposition_tt
+		OR = {
+			SOV_is_left_opposition = yes 
+			SOV_is_right_opposition = yes 
+			SOV_is_exiles = yes 
+		}
+	}
+}
+
+SOV_is_stalinist = {
+	has_completed_focus = SOV_the_centre
+}
+
+SOV_character_can_be_purged = {
+	NOT = { has_character_flag = SOV_safe_from_purge_flag }
+	NOT = { has_character_flag = SOV_exiled_flag }
+	NOT = { has_character_flag = SOV_character_purged_flag }
+}
+
+SOV_propaganda_poster_slot_available = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_propaganda_poster_slot_available_tt
+		OR = {
+			check_variable = { SOV_poster_left_icon_frame = SOV_propaganda_empty_slot_index }
+			check_variable = { SOV_poster_center_icon_frame = SOV_propaganda_empty_slot_index }
+			check_variable = { SOV_poster_right_icon_frame = SOV_propaganda_empty_slot_index }
+		}
+	}
+}
+

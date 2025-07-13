@@ -1,0 +1,73 @@
+SOV_propaganda_campaigns = {
+	SOV_propaganda_stalin = { # ID = 23
+		priority = 22
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 2
+				has_war = no
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_stalin_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_stalin_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_stalin_cost > 90 } #Shouldn't even considered doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_stalins_cult_of_personality
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+		cost = SOV_propaganda_stalin_cost
+
+		modifier = {
+			political_power_factor = 0.07
+			command_power_gain_mult = 0.1
+			war_support_weekly = 0.002
+			communism_drift = 0.1
+		}
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 23 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { SOV_propaganda_campaign_to_remove = 23 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_stalin_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_stalin_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+}

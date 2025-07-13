@@ -29,6 +29,7 @@ HoI4::AdjustedBranches::AdjustedBranches(const std::map<std::string, std::shared
 	Log(LogLevel::Info) << "\tAdding adjusted focus branches";
 	addUKColonialFocusBranch(countries, majorIdeologies, onActions);
 	addBeginRearmamentBranch(countries, onActions);
+	addPathOfMarxismLeninismBranch(countries, onActions);
 
 	addIdeas(ideas, majorIdeologies);
 }
@@ -109,6 +110,30 @@ void HoI4::AdjustedBranches::addBeginRearmamentBranch(const std::map<std::string
 				gpThreats[1]->addGlobalEventTarget("FRA_begin_rearmament_GER");
 				flagZoneOfAccess(gpThreats[1]->getTag(), "FRA_begin_rearmament_GER_zone", countries);
 			}
+			break;
+		}
+	}
+}
+
+void HoI4::AdjustedBranches::addPathOfMarxismLeninismBranch(
+	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 OnActions& onActions)
+{
+	for (auto [tag, country]: countries)
+	{
+		if (country->isGreatPower() && country->getGovernmentIdeology() == "communism")
+		{
+			const auto& theBranch = std::make_shared<AdjustedBranch>("SOV_the_path_of_marxism_leninism");
+
+			country->addAdjustedBranch(theBranch, "SOV", onActions);
+			addedBranches.push_back(theBranch);
+
+			country->setCharacterFlag("UTI_grigory_zinovyev", "SOV_imprisoned_flag");
+			country->setCharacterFlag("UTI_lev_kamenev", "SOV_imprisoned_flag");
+			country->setCharacterFlag("UTI_ivan_smirnov", "SOV_imprisoned_flag");
+			country->setCharacterFlag("UTI_aleksandr_shlyapnikov", "SOV_imprisoned_flag");
+			country->setCharacterFlag("UTI_ivar_smilga", "SOV_imprisoned_flag");
+			country->setCharacterFlag("UTI_martemyan_ryutin", "SOV_imprisoned_flag");
 			break;
 		}
 	}
