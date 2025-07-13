@@ -133,6 +133,7 @@
     <ClCompile Include="src\HOI4World\OccupationLaws\OccupationLaws.cpp" />
     <ClCompile Include="src\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
     <ClCompile Include="src\HOI4World\OnActions\OnActions.cpp" />
+    <ClCompile Include="src\HOI4World\OnActions\OnActionsFactory.cpp" />
     <ClCompile Include="src\HOI4World\Operations\OperationFactory.cpp" />
     <ClCompile Include="src\HOI4World\Operations\Operations.cpp" />
     <ClCompile Include="src\HOI4World\Operations\OperationsFactory.cpp" />
@@ -553,6 +554,7 @@
     <ClInclude Include="src\HOI4World\OccupationLaws\OccupationLaws.h" />
     <ClInclude Include="src\HOI4World\OccupationLaws\OccupationLawsFactory.h" />
     <ClInclude Include="src\HOI4World\OnActions\OnActions.h" />
+    <ClInclude Include="src\HOI4World\OnActions\OnActionsFactory.h" />
     <ClInclude Include="src\HOI4World\Operations\Operation.h" />
     <ClInclude Include="src\HOI4World\Operations\OperationFactory.h" />
     <ClInclude Include="src\HOI4World\Operations\Operations.h" />

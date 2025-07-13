@@ -16,6 +16,8 @@ namespace HoI4
 class OnActions
 {
   public:
+	class Factory;
+
 	OnActions() noexcept;
 
 	void addElectionEvent(const std::string& electionEvent) { electionEvents.push_back(electionEvent); }

@@ -702,6 +702,9 @@
     <ClCompile Include="src\HOI4World\OnActions\OnActions.cpp">
       <Filter>src\HoI4World\OnActions</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\OnActions\OnActionsFactory.cpp">
+      <Filter>src\HoI4World\OnActions</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\Operations\OperationFactory.cpp">
       <Filter>src\HoI4World\Operations</Filter>
     </ClCompile>
@@ -1956,6 +1959,9 @@
       <Filter>src\HoI4World\OccupationLaws</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\OnActions\OnActions.h">
+      <Filter>src\HoI4World\OnActions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OnActions\OnActionsFactory.h">
       <Filter>src\HoI4World\OnActions</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\Operations\Operation.h">
