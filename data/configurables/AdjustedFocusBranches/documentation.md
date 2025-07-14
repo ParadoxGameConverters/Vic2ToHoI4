@@ -14,6 +14,10 @@
 
 - Copy ideas to `data/configurables/AdjustedFocusBranches/[branch_id]_ideas.txt`
 
+# On actions
+
+- Copy tag specific on_actions (e.g. on_daily_TAG) to `data/configurables/AdjustedFocusBranches/[branch_id]_on_actions.txt`
+
 # Files
 
 - Copy used events, dynamic modifiers, decisions, traits, scripted triggers, scripted effects etc. to `data/configurables/AdjustedFocusBranches/[branch_id]/[directory name]/[branch_id].txt` following HoI4 file structure
