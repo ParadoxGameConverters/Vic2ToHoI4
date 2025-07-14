@@ -1112,4 +1112,77 @@ UTI = {
         }
     }
 
+    UTI_sergey_khudyakov = {
+        name = ""
+        portraits = {
+            army = {
+                small = "GFX_idea_sergei_khudyakov"
+            }
+        }
+
+        advisor = {
+            slot = high_command
+            idea_token = sergei_khudyakov
+            ledger = air
+            allowed = {
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+            }
+            traits = {
+                air_close_air_support_2
+            }
+            cost = 100
+            ai_will_do = {
+                base = 1
+            }
+        }       
+    }
+
+    UTI_yakov_smushkevich = {
+        name = ""
+        portraits = {
+            army = {
+                small = "GFX_idea_yakov_smushkevich"
+            }
+        }
+
+        advisor = { 
+            slot = air_chief
+            idea_token = yakov_smushkevich
+            allowed = {
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+            }
+            traits = {
+                air_chief_safety_2
+            }
+            cost = 100
+            ai_will_do = {
+                base = 1
+            }
+        }   
+    }
+
+    UTI_pavel_rychagov = {
+        name = ""
+        portraits = {
+            army = {
+                small = "GFX_idea_pavel_rychagov"
+            }
+        }
+
+        advisor = {
+            slot = air_chief
+            idea_token = pavel_rychagov
+            allowed = {
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+            }
+            traits = {
+                air_chief_all_weather_2
+            }
+            cost = 100
+            ai_will_do = {
+                base = 1
+            }
+        }       
+    }
+
 }
