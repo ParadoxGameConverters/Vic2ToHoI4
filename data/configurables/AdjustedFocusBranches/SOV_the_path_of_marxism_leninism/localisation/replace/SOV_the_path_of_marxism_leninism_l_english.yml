@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  SOV_the_centre_desc:0 "Comrade [ROOT.GetLeader] has been the greatest fighter for our nation. We should leave the future of the revolution in his more than capable hands."
  SOV_the_stalin_constitution:0 "The [ROOT.GetLeader] Constitution"
  SOV_the_stalin_constitution_desc:0 "The constitution of 1924 was a good attempt at organizing a state following the Civil War, but it has served its purpose. A new constitution is needed. Primarily, we much acknowledge the tireless work of Comrade [ROOT.GetLeader] in keeping [ROOT.GetNameDef] strong and safe and whose genius and wisdom has been instrumental in leading the cause of communism forward."
