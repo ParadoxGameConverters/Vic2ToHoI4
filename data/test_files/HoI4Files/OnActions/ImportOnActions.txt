@@ -1,0 +1,11 @@
+	on_weekly_TAG = {
+		effect = {
+			
+		}
+	}
+
+	on_daily_TAG = {
+		effect = {
+			
+		}
+	}

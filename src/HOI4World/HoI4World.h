@@ -35,7 +35,7 @@
 #include "src/HOI4World/Modifiers/Modifier.h"
 #include "src/HOI4World/Names/Names.h"
 #include "src/HOI4World/OccupationLaws/OccupationLawsFactory.h"
-#include "src/HOI4World/OnActions.h"
+#include "src/HOI4World/OnActions/OnActions.h"
 #include "src/HOI4World/Operations/Operations.h"
 #include "src/HOI4World/OperativeNames/OperativeNames.h"
 #include "src/HOI4World/Scorers/ScorersFactory.h"

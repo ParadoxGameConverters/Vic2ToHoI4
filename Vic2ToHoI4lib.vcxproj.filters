@@ -351,9 +351,6 @@
     <ClCompile Include="src\HOI4World\HoI4World.cpp">
       <Filter>src\HoI4World</Filter>
     </ClCompile>
-    <ClCompile Include="src\HOI4World\OnActions.cpp">
-      <Filter>src\HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="src\HOI4World\Technologies.cpp">
       <Filter>src\HoI4World</Filter>
     </ClCompile>
@@ -701,6 +698,12 @@
     </ClCompile>
     <ClCompile Include="src\HOI4World\OccupationLaws\OccupationLawsFactory.cpp">
       <Filter>src\HoI4World\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OnActions\OnActions.cpp">
+      <Filter>src\HoI4World\OnActions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\OnActions\OnActionsFactory.cpp">
+      <Filter>src\HoI4World\OnActions</Filter>
     </ClCompile>
     <ClCompile Include="src\HOI4World\Operations\OperationFactory.cpp">
       <Filter>src\HoI4World\Operations</Filter>
@@ -1520,9 +1523,6 @@
     <ClInclude Include="src\HOI4World\HoI4World.h">
       <Filter>src\HoI4World</Filter>
     </ClInclude>
-    <ClInclude Include="src\HOI4World\OnActions.h">
-      <Filter>src\HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="src\HOI4World\Technologies.h">
       <Filter>src\HoI4World</Filter>
     </ClInclude>
@@ -1957,6 +1957,12 @@
     </ClInclude>
     <ClInclude Include="src\HOI4World\OccupationLaws\OccupationLaws.h">
       <Filter>src\HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OnActions\OnActions.h">
+      <Filter>src\HoI4World\OnActions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\OnActions\OnActionsFactory.h">
+      <Filter>src\HoI4World\OnActions</Filter>
     </ClInclude>
     <ClInclude Include="src\HOI4World\Operations\Operation.h">
       <Filter>src\HoI4World\Operations</Filter>
