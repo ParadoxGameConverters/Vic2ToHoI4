@@ -42,6 +42,41 @@ SOV_paranoia_very_high_decrease_effect = {
 	}
 }
 
+SOV_paranoia_increase_based_on_unit_leader_level_effect = {
+	if = {
+		limit = {
+			has_country_flag = SOV_paranoia_system_active_flag
+		}
+		#custom_effect_tooltip = SOV_paranoia_increase_based_on_unit_leader_level_effect_tt
+		add_to_variable = { SOV_paranoia = SOV_unit_leader_level }
+		SOV_paranoia_clamp_and_update_ui_effect = yes
+		clear_variable = SOV_unit_leader_level
+	}
+}
+
+SOV_paranoia_decrease_based_on_unit_leader_level_effect = {
+	if = {
+		limit = {
+			has_country_flag = SOV_paranoia_system_active_flag
+		}
+		#custom_effect_tooltip = SOV_paranoia_decrease_based_on_unit_leader_level_effect_tt
+		subtract_from_variable = { SOV_paranoia = SOV_unit_leader_level }
+		SOV_paranoia_clamp_and_update_ui_effect = yes
+		clear_variable = SOV_unit_leader_level
+	}
+}
+
+SOV_paranoia_low_increase_effect = {
+	if = {
+		limit = {
+			has_country_flag = SOV_paranoia_system_active_flag
+		}
+		custom_effect_tooltip = SOV_paranoia_low_increase_effect_tt
+		add_to_variable = { SOV_paranoia = SOV_paranoia_low_increase }
+		SOV_paranoia_clamp_and_update_ui_effect = yes
+	}
+}
+
 SOV_paranoia_high_increase_effect = {
 	if = {
 		limit = {
@@ -1780,6 +1815,82 @@ SOV_paranoia_daunt_generals_effect = {
 	custom_effect_tooltip = SOV_daunt_generals_tt
 }
 
+SOV_paranoia_daunt_generals_minor_effect = {
+	set_temp_variable = { temp_targets_index = 0 }
+
+	while_loop_effect = {
+		limit = {
+			check_variable = { temp_targets_index = 2 compare = less_than }
+			any_army_leader = {
+				NOT = { has_character_flag = SOV_targeted_for_purge_flag }
+				NOT = { has_trait = trait_SOV_cowed_by_stalin_army }
+			}
+		}
+		random_army_leader = {
+			limit = {
+				NOT = { has_character_flag = SOV_targeted_for_purge_flag }
+				NOT = { has_trait = trait_SOV_cowed_by_stalin_army }
+			}
+			add_unit_leader_trait = trait_SOV_cowed_by_stalin_army
+		}
+		add_to_temp_variable = { temp_targets_index = 1 }
+		#log = "LOOP ROUND [?temp_targets_index]"
+	}
+
+	custom_effect_tooltip = SOV_daunt_generals_minor_tt
+}
+
+SOV_paranoia_daunt_admirals_effect = {
+	set_temp_variable = { temp_targets_index = 0 }
+
+	while_loop_effect = {
+		limit = {
+			check_variable = { temp_targets_index = 5 compare = less_than }
+			any_navy_leader = {
+				NOT = { has_character_flag = SOV_targeted_for_purge_flag }
+				NOT = { has_trait = trait_SOV_cowed_by_stalin_navy }
+			}
+		}
+		random_navy_leader = {
+			limit = {
+				NOT = { has_character_flag = SOV_targeted_for_purge_flag }
+				NOT = { has_trait = trait_SOV_cowed_by_stalin_navy }
+			}
+			add_unit_leader_trait = trait_SOV_cowed_by_stalin_navy
+		}
+		add_to_temp_variable = { temp_targets_index = 1 }
+		#log = "LOOP ROUND [?temp_targets_index]"
+	}
+
+	custom_effect_tooltip = SOV_daunt_admirals_tt
+}
+
+SOV_paranoia_daunt_admirals_minor_effect = {
+	set_temp_variable = { temp_targets_index = 0 }
+
+	while_loop_effect = {
+		limit = {
+			check_variable = { temp_targets_index = 2 compare = less_than }
+			any_navy_leader = {
+				NOT = { has_character_flag = SOV_targeted_for_purge_flag }
+				NOT = { has_trait = trait_SOV_cowed_by_stalin_navy }
+			}
+		}
+		random_navy_leader = {
+			limit = {
+				NOT = { has_character_flag = SOV_targeted_for_purge_flag }
+				NOT = { has_trait = trait_SOV_cowed_by_stalin_navy }
+			}
+			add_unit_leader_trait = trait_SOV_cowed_by_stalin_navy
+		}
+		add_to_temp_variable = { temp_targets_index = 1 }
+		#log = "LOOP ROUND [?temp_targets_index]"
+	}
+
+	custom_effect_tooltip = SOV_daunt_admirals_minor_tt
+}
+
+
 SOV_purge_character_effect = { #Expected to be called in the character scope
 	set_character_flag = SOV_character_purged_flag
 	PREV = { retire_character = PREV }
@@ -2322,6 +2433,11 @@ SOV_paranoia_clamp_and_update_ui_effect = {
 	SOV_update_ui_effect = yes
 }
 
+SOV_paranoia_increase_purge_counter_regular = {
+	add_to_variable = { SOV_regular_purge_counter = 1 }
+	add_to_variable = { SOV_total_purge_counter = 1 }
+}
+
 SOV_reset_specific_random_target_override_effect = {
 	set_variable = { SOV_specific_random_purge_targets_override = -1 }
 }
@@ -2666,6 +2782,79 @@ SOV_increase_opposition_army_support_small = {
 						add_to_variable = { SOV.SOV_exiles_army_support = 0.05 }
 						clamp_variable = {
 							var = SOV.SOV_exiles_army_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+				}
+			}
+		}
+	}
+	SOV_get_centre_military_support = yes 
+}
+
+SOV_increase_opposition_navy_support_small = {
+	IF = {
+		limit = {
+			SOV_is_opposition = yes 
+		}
+		custom_effect_tooltip = SOV_increase_opposition_navy_support_small_tt
+		hidden_effect = {
+			random_list = {
+				25 = {}
+				50 = {
+					IF = {
+						limit = { SOV_is_left_opposition = yes }
+						add_to_variable = { SOV.SOV_left_opposition_navy_support = 0.02 }
+						clamp_variable = {
+							var = SOV.SOV_left_opposition_navy_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+					ELSE_IF = {
+						limit = { SOV_is_right_opposition = yes }
+						add_to_variable = { SOV.SOV_right_opposition_navy_support = 0.02 }
+						clamp_variable = {
+							var = SOV.SOV_right_opposition_navy_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+					ELSE_IF = {
+						limit = { SOV_is_exiles = yes }
+						add_to_variable = { SOV.SOV_exiles_navy_support = 0.02 }
+						clamp_variable = {
+							var = SOV.SOV_exiles_navy_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+				}
+				25 = {
+					IF = {
+						limit = { SOV_is_left_opposition = yes }
+						add_to_variable = { SOV.SOV_left_opposition_navy_support = 0.05 }
+						clamp_variable = {
+							var = SOV.SOV_left_opposition_navy_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+					ELSE_IF = {
+						limit = { SOV_is_right_opposition = yes }
+						add_to_variable = { SOV.SOV_right_opposition_navy_support = 0.05 }
+						clamp_variable = {
+							var = SOV.SOV_right_opposition_navy_support
+							max = 0.9
+							min = 0.1
+						}
+					}
+					ELSE_IF = {
+						limit = { SOV_is_exiles = yes }
+						add_to_variable = { SOV.SOV_exiles_navy_support = 0.05 }
+						clamp_variable = {
+							var = SOV.SOV_exiles_navy_support
 							max = 0.9
 							min = 0.1
 						}

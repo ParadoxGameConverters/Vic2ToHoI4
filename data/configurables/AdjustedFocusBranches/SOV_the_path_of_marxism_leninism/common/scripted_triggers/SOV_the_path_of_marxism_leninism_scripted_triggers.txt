@@ -101,3 +101,7 @@ SOV_paranoia_is_finishing_purge_focus = {
 	}
 }
 
+SOV_is_going_historical_stalinist = { # Add/Change stuff here instead of doing it in 2243987238472854294 places, tack så mycket
+	has_completed_focus = SOV_the_centre	
+}
+

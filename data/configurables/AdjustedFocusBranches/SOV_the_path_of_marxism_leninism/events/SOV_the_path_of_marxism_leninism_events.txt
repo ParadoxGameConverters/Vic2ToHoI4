@@ -51,12 +51,24 @@ country_event = {
 		set_variable = { SOV_paranoia_great_purge_air_number_of_targets = 3 } #Max amount of targets to be purged by the appropriate Great Purge (so that it can be changed if necessary)
 		set_variable = { SOV_specific_random_purge_targets_override = -1 } #-1 = default random people will be purged // 0+ = that many chars will be randomly targeted - Then the var is reset to -1
 
+		#Purge-Related Decs Vars
 		set_variable = { SOV_total_purge_counter = 0 } #Total Purges Counter
+		set_variable = { SOV_regular_purge_counter = 0 } #Regular Purges Counter
 		set_variable = { SOV_great_purge_counter = 0 } #Great Purges Counter
 		set_country_flag = SOV_last_purge_flag #Used for Cooldown between purges
+		set_variable = { SOV_paranoia_weekly_bucket = 0 }
+		set_variable = { SOV_medium_paranoia_days = 0 }
+		set_variable = { SOV_high_paranoia_days = 0 }
+
+		set_variable = { SOV_paranoia_based_on_level_multiplier = 5 } #Used in certain situations where unit leaders are purged and paranoia should be affected based on their level
+
 		set_variable = { SOV_moscow_trial_index = 1 }
+
+		set_variable = { SOV_last_regular_purge_area = 0 } # 1=ADMIN | 2=ARMY | 3=NAVY | 4=AIRFORCE // Used to prevent an area (army, administration...) to be purged twice in a row
 		set_variable = { SOV_last_great_purge_area = 0 } # 1=ADMIN | 2=ARMY | 3=NAVY | 4=AIRFORCE // Used to prevent an area (army, administration...) to be GREATLY purged twice in a row
+		set_variable = { SOV_purge_event_pp_to_avoid_regular = 0 } #PP Required to show the option to avoid a regular purge
 		set_variable = { SOV_purge_event_pp_to_avoid_great = 0 } #PP Required to show the option to avoid a great purge
+		set_variable = { SOV_purge_event_pp_to_avoid_regular_pay = -60 } #PP to be paid to avoid a regular purge
 		set_variable = { SOV_purge_event_pp_to_avoid_great_pay = -120 } #PP to be paid to avoid a great purge
 
 		country_event = { id = NSB_soviet_paranoia_system_events.01 days = 90 random_days = 10 } # EVENT ACTIVATING THE PARANOIA SYSTEM
