@@ -1,0 +1,52 @@
+defined_text = {
+	name = GetPropagandaCampaignRequirementColor_5
+	text = {
+		trigger = {
+			check_variable = { SOV_propaganda_campaigns_taken = 5 compare = greater_than_or_equals }
+		}
+		localization_key = SOV_propaganda_campaigns_taken_requirement_color_green
+	}
+	text = {
+		localization_key = SOV_propaganda_campaigns_taken_requirement_color_red
+	}
+}
+
+defined_text = {
+	name = GetPropagandaCampaignRequirementColor_10
+	text = {
+		trigger = {
+			check_variable = { SOV_propaganda_campaigns_taken = 10 compare = greater_than_or_equals }
+		}
+		localization_key = SOV_propaganda_campaigns_taken_requirement_color_green
+	}
+	text = {
+		localization_key = SOV_propaganda_campaigns_taken_requirement_color_red
+	}
+}
+
+defined_text = {
+	name = GetPropagandaCampaignRequirementColor_15
+	text = {
+		trigger = {
+			check_variable = { SOV_propaganda_campaigns_taken = 15 compare = greater_than_or_equals }
+		}
+		localization_key = SOV_propaganda_campaigns_taken_requirement_color_green
+	}
+	text = {
+		localization_key = SOV_propaganda_campaigns_taken_requirement_color_red
+	}
+}
+
+defined_text = {
+	name = GetPropagandaCampaignRequirementColor_20
+	text = {
+		trigger = {
+			check_variable = { SOV_propaganda_campaigns_taken = 20 compare = greater_than_or_equals }
+		}
+		localization_key = SOV_propaganda_campaigns_taken_requirement_color_green
+	}
+	text = {
+		localization_key = SOV_propaganda_campaigns_taken_requirement_color_red
+	}
+}
+

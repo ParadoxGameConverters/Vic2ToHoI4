@@ -1,4 +1,757 @@
 SOV_propaganda_campaigns = {
+	SOV_propaganda_motherland_calls = { # ID = 3
+		priority = 2
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				surrender_progress > 0.4
+			}
+			modifier = {
+				add = 10
+				has_manpower < 500000
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_motherland_calls_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_motherland_calls_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_motherland_calls_cost > 90 } #Shouldn't even consider doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+
+			has_war = yes
+			any_enemy_country = {
+				is_major = yes
+			}
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_expand_the_agitprop
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+		cost = SOV_propaganda_motherland_calls_cost
+
+		modifier = {
+			weekly_manpower = 1000
+			training_time_factor = -0.1
+			minimum_training_level = -0.1
+		}
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 3 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { SOV_propaganda_campaign_to_remove = 3 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			# Okay this looks dumb I know but it's better than having to change 24 operations each time we feel like tweaking how propaganda campaign's cost escalates
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_motherland_calls_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_motherland_calls_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	SOV_propaganda_victory_at_hand = { # ID = 4
+		priority = 3
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_victory_at_hand_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_victory_at_hand_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_victory_at_hand_cost > 90 } #Shouldn't even consider doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+
+			has_war = yes
+			surrender_progress < 0.01
+			any_enemy_country = {
+				is_major = yes
+				ROOT = {
+					any_controlled_state = {
+						is_core_of = PREV.PREV
+					}
+				}
+			}
+			SOV_propaganda_victory_at_hand_available = yes
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_expand_the_agitprop
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+		cost = SOV_propaganda_victory_at_hand_cost
+
+		modifier = {
+			army_attack_factor = 0.05
+			army_speed_factor = 0.1
+			org_loss_when_moving = -0.05
+		}
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 4 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { SOV_propaganda_campaign_to_remove = 4 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_victory_at_hand_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_victory_at_hand_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	SOV_propaganda_defend_moscow = { # ID = 5
+		priority = 4
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 500
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_defend_moscow_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_defend_moscow_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_defend_moscow_cost > 90 } #Shouldn't even consider doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+
+			capital_scope = {
+				is_controlled_by = ROOT
+				any_neighbor_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+				}
+			}
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_expand_the_agitprop
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+		cost = SOV_propaganda_defend_moscow_cost
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 5 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+
+			capital_scope = {
+				add_dynamic_modifier = { modifier = SOV_defend_moscow scope = event_target:SOV_the_path_of_marxism_leninism_SOV }
+				every_neighbor_state = {
+					add_dynamic_modifier = { modifier = SOV_defend_moscow scope = event_target:SOV_the_path_of_marxism_leninism_SOV }
+				}
+			}
+			custom_effect_tooltip = SOV_propaganda_defend_moscow_state_modifier_tt
+		}
+
+		remove_effect = {
+			capital_scope = {
+				remove_dynamic_modifier = { modifier = SOV_defend_moscow }
+				every_neighbor_state = {
+					remove_dynamic_modifier = { modifier = SOV_defend_moscow }
+				}
+			}
+
+			set_variable = { SOV_propaganda_campaign_to_remove = 5 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_defend_moscow_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_defend_moscow_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	SOV_propaganda_fight_to_the_last = { # ID = 6
+		priority = 5
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 0.75
+			modifier = {
+				factor = 10
+				OR = {
+					AND = {
+						stockpile_ratio = {
+							archetype = train_equipment
+							ratio < 0.75
+						}
+						stockpile_ratio = {
+							archetype = motorized_equipment
+							ratio < 0.75
+						}
+					}
+					stockpile_ratio = {
+						archetype = convoy
+						ratio < 5
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_fight_to_the_last_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_fight_to_the_last_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_fight_to_the_last_cost > 90 } #Shouldn't even consider doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+			has_war = yes
+			surrender_progress > 0.1
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_expand_the_agitprop
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+
+		cost = SOV_propaganda_fight_to_the_last_cost
+
+		modifier = {
+			army_org_factor = 0.05
+			out_of_supply_factor = -0.1
+			no_supply_grace = 70
+		}
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 6 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { SOV_propaganda_campaign_to_remove = 6 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_fight_to_the_last_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_fight_to_the_last_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	SOV_propaganda_hit_of_hammer = { # ID = 7
+		priority = 6
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_hit_of_hammer_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_hit_of_hammer_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_hit_of_hammer_cost > 90 } #Shouldn't even consider doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+
+			has_war = yes
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_expand_the_agitprop
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+		cost = SOV_propaganda_hit_of_hammer_cost
+
+		modifier = {
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+		}
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 7 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { SOV_propaganda_campaign_to_remove = 7 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_hit_of_hammer_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_hit_of_hammer_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	SOV_propaganda_transport = { # ID = 8
+		priority = 7
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 0.7
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_transport_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_transport_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_transport_cost > 90 } #Shouldn't even considered doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_expand_the_agitprop
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+		cost = SOV_propaganda_transport_cost
+
+		modifier = {
+			production_speed_supply_node_factor = 0.15
+			production_speed_rail_way_factor = 0.15
+			supply_consumption_factor = -0.1
+		}
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 8 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { SOV_propaganda_campaign_to_remove = 8 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_transport_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_transport_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	SOV_propaganda_oil_for_the_motherland = { # ID = 9
+		priority = 8
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				fuel_ratio < 0.5
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_oil_for_the_motherland_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_oil_for_the_motherland_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_oil_for_the_motherland_cost > 90 } #Shouldn't even considered doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+
+			any_controlled_state = {
+				has_resources_amount = {
+					resource = oil
+					amount > 0
+				}
+			}
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_expand_the_agitprop
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+		cost = SOV_propaganda_oil_for_the_motherland_cost
+
+		modifier = {
+			fuel_gain_factor = 0.1
+			army_fuel_consumption_factor = -0.1
+			air_fuel_consumption_factor = -0.1
+		}
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 9 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { SOV_propaganda_campaign_to_remove = 9 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_oil_for_the_motherland_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_oil_for_the_motherland_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	SOV_propaganda_more_metal = { # ID = 10
+		priority = 9
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 0.8
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_more_metal_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_more_metal_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_more_metal_cost > 90 } #Shouldn't even considered doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+
+			any_controlled_state = {
+				OR = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+					has_resources_amount = {
+						resource = aluminium
+						amount > 0
+					}
+					has_resources_amount = {
+						resource = chromium
+						amount > 0
+					}
+					has_resources_amount = {
+						resource = tungsten
+						amount > 0
+					}
+				}
+			}
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_expand_the_agitprop
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+		cost = SOV_propaganda_more_metal_cost
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 10 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+			hidden_effect = {
+				capital_scope = {
+					set_variable = { SOV_steel_bonus = 0 }
+					set_variable = { SOV_aluminium_bonus = 0 }
+					set_variable = { SOV_chromium_bonus = 0 }
+					set_variable = { SOV_tungsten_bonus = 0 }
+				}
+				every_controlled_state = {
+					limit = {
+						has_resources_amount = {
+							resource = steel
+							amount > 0
+						}
+					}
+					capital_scope = { add_to_variable = { SOV_steel_bonus = 1 } }
+				}
+
+				every_controlled_state = {
+					limit = {
+						has_resources_amount = {
+							resource = aluminium
+							amount > 0
+						}
+					}
+					capital_scope = { add_to_variable = { SOV_aluminium_bonus = 1 } }
+				}
+
+				every_controlled_state = {
+					limit = {
+						has_resources_amount = {
+							resource = chromium
+							amount > 0
+						}
+					}
+					capital_scope = { add_to_variable = { SOV_chromium_bonus = 1 } }
+				}
+
+				every_controlled_state = {
+					limit = {
+						has_resources_amount = {
+							resource = tungsten
+							amount > 0
+						}
+					}
+					capital_scope = { add_to_variable = { SOV_tungsten_bonus = 1 } }
+				}
+			}
+
+			capital_scope = {
+				add_dynamic_modifier = { modifier = SOV_increased_metals_production }
+			}
+
+			custom_effect_tooltip = SOV_propaganda_more_metal_tt
+		}
+
+		remove_effect = {
+			capital_scope = {
+				remove_dynamic_modifier = { modifier = SOV_increased_metals_production }
+			}
+
+			set_variable = { SOV_propaganda_campaign_to_remove = 10 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_more_metal_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_more_metal_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	SOV_propaganda_high_yield = { # ID = 11
+		priority = 10
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_high_yield_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { SOV_propaganda_high_yield_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { SOV_propaganda_high_yield_cost > 90 } #Shouldn't even considered doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+		}
+
+		available = {
+			SOV_propaganda_poster_slot_available = yes
+
+			surrender_progress < 0.15
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = SOV_expand_the_agitprop
+				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = SOV_default_propaganda_campaign_duration
+
+		days_re_enable = SOV_default_propaganda_campaign_cooldown
+
+		cost = SOV_propaganda_high_yield_cost
+
+		modifier = {
+			consumer_goods_factor = -0.15
+		}
+
+		complete_effect = {
+			set_variable = { SOV_new_propaganda_campaign = 11 }
+			SOV_pick_propaganda_campaign_slot_effect = yes
+			SOV_achievement_propaganda_counter_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { SOV_propaganda_campaign_to_remove = 11 }
+			SOV_reset_propaganda_campaign_slot_effect = yes
+
+			set_variable = { SOV_propaganda_cost = SOV_propaganda_high_yield_cost }
+			SOV_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { SOV_propaganda_high_yield_cost = SOV_propaganda_cost }
+			clear_variable = SOV_propaganda_cost
+
+			custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
+		}
+	}
+
 	SOV_propaganda_stalin = { # ID = 23
 		priority = 22
 
