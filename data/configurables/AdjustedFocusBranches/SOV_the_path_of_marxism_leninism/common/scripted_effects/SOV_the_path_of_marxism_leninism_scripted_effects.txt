@@ -336,23 +336,6 @@ SOV_manage_a_great_purge_effect = {
 					}
 				}
 			}
-			modifier = { #We have closed a lot of designers man
-				factor = 0.5
-				has_country_flag = SOV_purged_airforce_chiefs_flag  #This purge can only happen "randomly" once, unless some air advisors are forcefully targeted in a focus or something
-				NOT = {
-					any_character = {
-						has_air_ledger = yes
-						has_character_flag = SOV_potential_target_flag
-					}
-				}
-				count_triggers = {
-					amount = 2
-					has_country_flag = SOV_mig_design_bureau_dissolved_flag
-					has_country_flag = SOV_ilyushin_design_bureau_dissolved_flag
-					has_country_flag = SOV_tupolev_design_bureau_dissolved_flag
-					has_country_flag = SOV_yakovlev_design_bureau_dissolved_flag
-				}
-			}
 
 			modifier = { #There are no purges available
 				factor = 0
@@ -363,12 +346,8 @@ SOV_manage_a_great_purge_effect = {
 						has_character_flag = SOV_potential_target_flag
 					}
 				}
-				has_country_flag = SOV_mig_design_bureau_dissolved_flag
-				has_country_flag = SOV_ilyushin_design_bureau_dissolved_flag
-				has_country_flag = SOV_tupolev_design_bureau_dissolved_flag
-				has_country_flag = SOV_yakovlev_design_bureau_dissolved_flag
 			}
-			SOV_pick_great_purge_airforce_type_effect = yes
+			SOV_trigger_great_purge_airforce_chiefs_effect = yes
 		}
 	}
 }
@@ -688,44 +667,6 @@ SOV_pick_regular_purge_airforce_type_effect = {
 			check_variable = { SOV_random_purge_test = 0 }
 		}
 		#log = "RANDOM PURGE FAILED. NO VALID PURGE AVAILABLE"
-	}
-}
-
-SOV_pick_great_purge_airforce_type_effect = {
-	random_list = {
-		50 = { # DISSOLVE DESIGN BUREAU
-			modifier = { #Nothing left to dissolve
-				factor = 0
-				has_country_flag = SOV_mig_design_bureau_dissolved_flag
-				has_country_flag = SOV_ilyushin_design_bureau_dissolved_flag
-				has_country_flag = SOV_tupolev_design_bureau_dissolved_flag
-				has_country_flag = SOV_yakovlev_design_bureau_dissolved_flag
-			}
-			SOV_trigger_great_purge_design_bureau_dissolved_effect = yes
-		}
-		50 = { # PURGE ARIFORCE CHIEFS
-			modifier = { #No pastia no comiercio
-				factor = 0
-				has_country_flag = SOV_purged_airforce_chiefs_flag  #This purge can only happen "randomly" once, unless some air advisors are forcefully targeted in a focus or something
-				NOT = {
-					any_character = {
-						has_air_ledger = yes
-						has_character_flag = SOV_potential_target_flag
-					}
-				}
-			}
-			modifier = { #Someone is a potential target
-				factor = 2
-				OR = {
-					NOT = { has_country_flag = SOV_purged_airforce_chiefs_flag } #This purge can only happen "randomly" once, unless some air advisors are forcefully targeted in a focus or something
-					any_character = {
-						has_air_ledger = yes
-						has_character_flag = SOV_potential_target_flag
-					}
-				}
-			}
-			SOV_trigger_great_purge_airforce_chiefs_effect = yes
-		}
 	}
 }
 
@@ -1580,18 +1521,6 @@ SOV_trigger_regular_purge_airforce_anti_saboteur_campaign_effect = {
 	country_event = NSB_soviet_paranoia_system_events.42 # TRIGGER EVENT
 
 	set_variable = { SOV_last_regular_purge_area = 4 } #Set area purged to prevent same area from being purged twice in a row
-	set_country_flag = SOV_last_purge_flag
-}
-
-SOV_trigger_great_purge_design_bureau_dissolved_effect = {
-	hidden_effect = {
-		set_variable = { SOV_random_bureau_to_dissolve = random } # THIS IS NOW PASSED TO THE EVENT, BUT NEEDS TO BE DONE HERE AND STORED IN VAR
-		#log = "Random bureau to dissolve: [?SOV_random_bureau_to_dissolve]"
-	}
-
-	country_event = NSB_soviet_paranoia_system_events.48 # TRIGGER EVENT
-
-	set_variable = { SOV_last_great_purge_area = 4 } #Set area purged to prevent same area from being purged twice in a row
 	set_country_flag = SOV_last_purge_flag
 }
 
