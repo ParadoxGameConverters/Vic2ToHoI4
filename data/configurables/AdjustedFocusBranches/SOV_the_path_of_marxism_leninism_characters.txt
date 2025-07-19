@@ -895,7 +895,7 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_genrikh_yagoda
+            idea_token = UTI_genrikh_yagoda
             can_be_fired = no
             allowed = {
                 original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
@@ -933,14 +933,14 @@ UTI = {
 
         advisor = {
             slot = political_advisor
-            idea_token = SOV_nikolay_yezhov
+            idea_token = UTI_nikolay_yezhov
             can_be_fired = no
             allowed = {
                 original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
             }
             available = {
-                NOT = { has_idea = SOV_genrikh_yagoda }
-                NOT = { has_idea = SOV_lavrenty_beriya }
+                NOT = { has_idea = UTI_genrikh_yagoda }
+                NOT = { has_idea = UTI_lavrenty_beriya }
             }
             traits = {
                 head_of_the_nkvd_yezhov_initial 
@@ -972,8 +972,8 @@ UTI = {
         name = ""
         advisor = {
             slot = political_advisor
-            idea_token = SOV_lavrenty_beriya
-            name = SOV_lavrenty_beriya
+            idea_token = UTI_lavrenty_beriya
+            name = UTI_lavrenty_beriya
             can_be_fired = no
             allowed = {
                 original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
@@ -984,8 +984,8 @@ UTI = {
                 }
             }
             available = {
-                NOT = { has_idea = SOV_nikolay_yezhov }
-                NOT = { has_idea = SOV_genrikh_yagoda }
+                NOT = { has_idea = UTI_nikolay_yezhov }
+                NOT = { has_idea = UTI_genrikh_yagoda }
                 NOT = { is_country_leader = yes }
             }
 
@@ -1016,8 +1016,8 @@ UTI = {
         name = ""
         advisor = {
             slot = political_advisor
-            idea_token = SOV_lavrenty_beriya
-            name = SOV_lavrenty_beriya
+            idea_token = UTI_lavrenty_beriya
+            name = UTI_lavrenty_beriya
             can_be_fired = no
             allowed = {
                 original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
@@ -1028,8 +1028,8 @@ UTI = {
                 }
             }
             available = {
-                NOT = { has_idea = SOV_nikolay_yezhov }
-                NOT = { has_idea = SOV_genrikh_yagoda }
+                NOT = { has_idea = UTI_nikolay_yezhov }
+                NOT = { has_idea = UTI_genrikh_yagoda }
             }
 
             traits = {

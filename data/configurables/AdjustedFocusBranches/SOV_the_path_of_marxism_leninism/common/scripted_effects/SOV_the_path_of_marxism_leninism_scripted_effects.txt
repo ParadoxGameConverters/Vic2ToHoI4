@@ -142,7 +142,7 @@ SOV_manage_a_regular_purge_effect = { # Phase 2: Set the Area to be purged (admi
 			}
 			modifier = { #Yagoda is in the NKVD -> He shall be purged
 				factor = 1.5
-				has_idea = SOV_genrikh_yagoda
+				has_idea = UTI_genrikh_yagoda
 			}
 			modifier = { #There are no purges available
 				factor = 0
@@ -153,7 +153,7 @@ SOV_manage_a_regular_purge_effect = { # Phase 2: Set the Area to be purged (admi
 					}
 				}
 				has_idea = SOV_understaffed_bureaucracy
-				has_idea = SOV_lavrenty_beriya
+				has_idea = UTI_lavrenty_beriya
 			}
 			SOV_pick_regular_purge_administration_type_effect = yes
 		}
@@ -253,9 +253,9 @@ SOV_manage_a_great_purge_effect = {
 					any_character = {
 						is_character_slot = political_advisor
 						NOT = { #NKVDs have their own purge
-							is_character = SOV_genrikh_yagoda
-							is_character = SOV_nikolay_yezhov
-							is_character = SOV_lavrenty_beriya
+							is_character = UTI_genrikh_yagoda
+							is_character = UTI_nikolay_yezhov
+							is_character = UTI_lavrenty_beriya
 						}
 						SOV_character_can_be_purged = yes
 					}
@@ -413,16 +413,16 @@ SOV_pick_regular_purge_administration_type_effect = {
 		33 = { # NKVD PURGE
 			modifier = { #Beriya is huevo pocho
 				factor = 0
-				has_idea = SOV_lavrenty_beriya
+				has_idea = UTI_lavrenty_beriya
 			}
 			modifier = { #Yagoda is in the NKVD -> He shall be purged
 				factor = 3
-				has_idea = SOV_genrikh_yagoda
+				has_idea = UTI_genrikh_yagoda
 				date > 1938.1.1
 			}
 			modifier = { #Yezhov is in the NKVD -> He should be purged
 				factor = 2
-				has_idea = SOV_nikolay_yezhov
+				has_idea = UTI_nikolay_yezhov
 				date > 1939.1.1
 			}
 			SOV_trigger_regular_purge_nkvd_effect = yes
@@ -444,9 +444,9 @@ SOV_pick_great_purge_administration_type_effect = {
 			any_character = {
 				is_character_slot = political_advisor
 				NOT = { #NKVDs have their own purge
-					is_character = SOV_genrikh_yagoda
-					is_character = SOV_nikolay_yezhov
-					is_character = SOV_lavrenty_beriya
+					is_character = UTI_genrikh_yagoda
+					is_character = UTI_nikolay_yezhov
+					is_character = UTI_lavrenty_beriya
 				}
 				SOV_character_can_be_purged = yes
 			}

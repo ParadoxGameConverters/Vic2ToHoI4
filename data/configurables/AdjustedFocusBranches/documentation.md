@@ -9,6 +9,7 @@
 - Copy characters involved to `data/configurables/AdjustedFocusBranches/[branch_id]_characters.txt` inside UTI = {} block - the block is parsed and characters added to the country owning the focus tree
 - Replace tag reference in character ID with UTI tag
 - Set name to empty string (name = "")
+- Replace tag references in character idea token with UTI tag
 
 # Ideas
 
