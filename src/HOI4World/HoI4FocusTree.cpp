@@ -382,16 +382,13 @@ std::pair<int, int> HoI4FocusTree::calculateBranchSpan(const std::vector<std::sh
 }
 
 
-void HoI4FocusTree::addBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses,
-	 HoI4::OnActions& onActions)
+void HoI4FocusTree::addBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses)
 {
 	auto [minX, maxX] = calculateBranchSpan(adjustedFocuses);
 	auto& rootFocus = *adjustedFocuses.begin();
 
 	rootFocus->xPos = nextFreeColumn + std::abs(minX);
 	nextFreeColumn += maxX - minX + 2;
-
-	onActions.addFocusEvent(dstCountryTag, rootFocus->id);
 
 	focuses.insert(focuses.end(), adjustedFocuses.begin(), adjustedFocuses.end());
 }

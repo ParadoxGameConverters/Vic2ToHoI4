@@ -1674,7 +1674,7 @@ void HoI4::Country::addAdjustedBranch(const std::shared_ptr<HoI4::AdjustedBranch
 {
 	if (nationalFocus)
 	{
-		nationalFocus->addBranch(theBranch->getFocusTree().getFocuses(), onActions);
+		nationalFocus->addBranch(theBranch->getFocusTree().getFocuses());
 	}
 
 	addGlobalEventTarget(theBranch->getName() + "_" + originalTag);
@@ -1693,6 +1693,7 @@ void HoI4::Country::addAdjustedBranch(const std::shared_ptr<HoI4::AdjustedBranch
 		addCharacter(character);
 	}
 
+	onActions.addFocusEvent(tag, theBranch->getName());
 	for (const auto& [key, effects]: theBranch->getOnActions())
 	{
 		if (key.ends_with(originalTag))

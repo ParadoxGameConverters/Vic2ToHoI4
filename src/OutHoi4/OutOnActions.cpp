@@ -139,7 +139,7 @@ void HoI4::outputOnActions(const OnActions& onActions,
 
 	for (const auto& [key, effects]: onActions.getImportedOnActions())
 	{
-		onActionsFile << "\t" << key << effects << "\n";
+		onActionsFile << "\t" << key << " " << effects << "\n";
 	}
 
 	onActionsFile << "}\n";

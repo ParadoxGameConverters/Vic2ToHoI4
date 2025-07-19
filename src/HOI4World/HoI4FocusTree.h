@@ -119,7 +119,7 @@ class HoI4FocusTree: commonItems::parser
 	[[nodiscard]] bool isEmpty() const { return emptyFocusTree; }
 
 	std::pair<int, int> calculateBranchSpan(const std::vector<std::shared_ptr<HoI4Focus>>& focuses);
-	void addBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses, HoI4::OnActions& onActions);
+	void addBranch(const std::vector<std::shared_ptr<HoI4Focus>>& adjustedFocuses);
 
   private:
 	void confirmLoadedFocuses();
