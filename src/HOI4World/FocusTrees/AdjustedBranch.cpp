@@ -5,6 +5,7 @@
 #include "src/HOI4World/HoI4Focus.h"
 #include "src/HOI4World/Ideas/IdeaUpdaters.h"
 #include "src/HOI4World/Ideas/IdeasFactory.h"
+#include "src/HOI4World/OnActions/OnActionsFactory.h"
 
 
 
@@ -14,6 +15,7 @@ HoI4::AdjustedBranch::AdjustedBranch(const std::string& name):
 	importFocuses();
 	importIdeas();
 	importCharacters();
+	importOnActions();
 }
 
 void HoI4::AdjustedBranch::importFocuses()
@@ -50,6 +52,17 @@ void HoI4::AdjustedBranch::importCharacters()
 	HoI4::Character::Factory characterFactory;
 	CharactersFactory charactersFactory(characterFactory);
 	characters_ = charactersFactory.importCharacters(filePath);
+}
+
+void HoI4::AdjustedBranch::importOnActions()
+{
+	const auto& filePath = std::filesystem::path(path_.string() + "_on_actions.txt");
+	if (!std::filesystem::exists(filePath))
+	{
+		return;
+	}
+
+	onActions_ = HoI4::OnActions::Factory().importOnActions(filePath);
 }
 
 void HoI4::AdjustedBranch::updateUKColonialFocuses(const std::set<std::string>& majorIdeologies)

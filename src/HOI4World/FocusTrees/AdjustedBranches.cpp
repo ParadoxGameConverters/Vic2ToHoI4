@@ -134,6 +134,9 @@ void HoI4::AdjustedBranches::addPathOfMarxismLeninismBranch(
 			country->setCharacterFlag("UTI_aleksandr_shlyapnikov", "SOV_imprisoned_flag");
 			country->setCharacterFlag("UTI_ivar_smilga", "SOV_imprisoned_flag");
 			country->setCharacterFlag("UTI_martemyan_ryutin", "SOV_imprisoned_flag");
+			country->setCharacterFlag("UTI_genrikh_yagoda", "SOV_safe_from_purge_flag");
+			country->setCharacterFlag("UTI_nikolay_yezhov", "SOV_safe_from_purge_flag");
+			country->setCharacterFlag("UTI_lavrenty_beriya", "SOV_safe_from_purge_flag");
 			break;
 		}
 	}

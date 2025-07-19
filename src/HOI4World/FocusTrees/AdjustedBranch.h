@@ -24,17 +24,20 @@ class AdjustedBranch
 	[[nodiscard]] const auto& getIdeas() const { return ideas_; }
 	[[nodiscard]] const auto& getCharacters() const { return characters_; }
 	[[nodiscard]] auto& getModifiableCharacters() { return characters_; }
+	[[nodiscard]] const auto& getOnActions() const { return onActions_; }
 
   private:
 	void importFocuses();
 	void importIdeas();
 	void importCharacters();
+	void importOnActions();
 
 	std::string name_;
 	std::filesystem::path path_;
 	HoI4FocusTree focusTree_;
 	Ideas ideas_;
 	std::multimap<std::string, Character> characters_;
+	std::multimap<std::string, std::string> onActions_;
 };
 
 } // namespace HoI4

@@ -1,0 +1,119 @@
+	on_weekly_SOV = {
+		effect ={ #Weekly Paranoia modifiers
+			if = { #If other modifiers affect Paranoia, then use the same flag with different values, which will work as a multiplier
+				limit = {
+					has_country_flag = SOV_paranoia_system_active_flag
+					has_country_flag = SOV_paranoia_modifier_active_flag #Stalin's Paranoid leader trait
+				}
+				SOV_paranoia_modifier_increase_effect = yes
+			}
+		}
+
+		effect = { #Randomly Triggered Purges
+			if = {
+				limit = {
+					NOT = { has_country_flag = SOV_civil_war_triggered_flag } # check if Civil war has been triggered first TODO_THOMAS: remove if not using paranoia
+					has_country_flag = SOV_paranoia_system_active_flag
+				}
+				set_temp_variable = { SOV_temp_paranoia_days = SOV_medium_paranoia_days }
+				add_to_temp_variable = { SOV_temp_paranoia_days = SOV_high_paranoia_days }
+				#log = "Total Paranoia days = [?SOV_temp_paranoia_days]"
+
+				if = {
+					limit = {
+						check_variable = { SOV_temp_paranoia_days > 3 }
+						NOT = { has_country_flag = SOV_paranoia_conducting_inspection_flag } #Don't trigger a random purge if one is already going to be triggered from decision
+						SOV_paranoia_is_finishing_purge_focus = no #Don't trigger a random purge if one is already going to be triggered from focus
+						NOT = { has_country_flag = SOV_paranoia_random_purge_cooldown_from_focus_flag } #Wait 15 days after a purge has been triggered from focus
+						NOT = { has_country_flag = SOV_paranoia_random_purge_cooldown_from_decision_flag } #Wait 15 days after a purge has been triggered from decision
+					}
+					random_list = {
+						100 = { # Nothing Happens
+							modifier = {
+								factor = 5
+								check_variable = { SOV_paranoia_weekly_bucket < 400 }
+							}
+							modifier = {
+								factor = 0.75
+								check_variable = { SOV_paranoia_weekly_bucket > 500 }
+							}
+							#log = "Lucky you: No random purge this week"
+						}
+
+						100 = { # Regular Purge
+							modifier = {
+								factor = 0
+								check_variable = { SOV_medium_paranoia_days = 0 }
+							}
+							modifier = {
+								factor = 1.5
+								check_variable = { SOV_paranoia_weekly_bucket > 400 }
+							}
+							modifier = {
+								factor = 2
+								check_variable = { SOV_medium_paranoia_days > SOV_high_paranoia_days }
+							}
+							SOV_manage_a_regular_purge_effect = yes
+						}
+
+						100 = { #Great Purge
+							modifier = {
+								factor = 0
+								check_variable = { SOV_high_paranoia_days = 0 }
+							}
+							modifier = {
+								factor = 0.5
+								check_variable = { SOV_high_paranoia_days < 3 }
+							}
+							modifier = {
+								factor = 2
+								check_variable = { SOV_high_paranoia_days > SOV_medium_paranoia_days }
+							}
+							modifier = {
+								factor = 1.5
+								check_variable = { SOV_paranoia_weekly_bucket > 400 }
+							}
+
+							SOV_manage_a_great_purge_effect = yes
+						}
+					}
+				}
+
+				#CLEAN STUFF FOR NEXT WEEK
+				set_variable = { SOV_medium_paranoia_days = 0 }
+				set_variable = { SOV_high_paranoia_days = 0 }
+				set_variable = { SOV_paranoia_weekly_bucket = 0 }
+			}
+		}
+	}
+
+	on_daily_SOV = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = { flag = SOV_last_purge_flag days > 15 }
+				}
+				add_to_variable = { SOV_paranoia_weekly_bucket = SOV_paranoia }
+				#log = "Added [?SOV_paranoia] Paranoia. Weekly BUCKET = [?SOV_paranoia_weekly_bucket]" #Debug 
+
+				if = { #MEDIUM PARANOIA LEVEL
+					limit = {
+						SOV_paranoia_is_medium_level = yes
+					}
+					add_to_variable = { SOV_medium_paranoia_days = 1 } #Used to randomize having a Great or a Regular purge (so that every day kinda counts)
+				}
+				else_if = { #HIGH PARANOIA LEVEL
+					limit = {
+						SOV_paranoia_is_high_level = yes
+					}
+					add_to_variable = { SOV_high_paranoia_days = 1 } #Used to randomize having a Great or a Regular purge (so that every day kinda counts)
+				}
+				#log = "Medium Paranoia days = [?SOV_medium_paranoia_days] // High Paranoia days = [?SOV_high_paranoia_days]" #Debug
+			}
+			else = {
+				#log = "NOT A PURGE WEEK" #Debug
+			}
+
+		}
+	}
+

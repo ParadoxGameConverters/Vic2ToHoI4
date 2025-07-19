@@ -1692,6 +1692,20 @@ void HoI4::Country::addAdjustedBranch(const std::shared_ptr<HoI4::AdjustedBranch
 		}
 		addCharacter(character);
 	}
+
+	for (const auto& [key, effects]: theBranch->getOnActions())
+	{
+		if (key.ends_with(originalTag))
+		{
+			std::string newKey = key.substr(0, key.size() - originalTag.size()) + tag;
+			onActions.addOnAction(std::move(newKey), effects);
+		}
+		else
+		{
+			// to allow non-tag-specific on_actions from imported file
+			onActions.addOnAction(key, effects);
+		}
+	}
 }
 
 

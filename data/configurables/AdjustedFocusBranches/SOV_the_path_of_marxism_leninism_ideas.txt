@@ -1,5 +1,25 @@
 	country = {
 
+		SOV_understaffed_bureaucracy = {
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via purges
+			}
+
+			allowed_civil_war = {
+				NOT = { tag = event_target:SOV_the_path_of_marxism_leninism_SOV } #Go to Stalinist side
+			}
+
+			picture = generic_democratic_opposition
+
+			modifier = {
+				political_power_factor = -0.10
+				production_speed_buildings_factor = -0.10
+				political_advisor_cost_factor = 0.25
+			}
+		}
+
 		SOV_anti_soviet_military_thinking_banned_army = {
 			removal_cost = -1
 
@@ -25,6 +45,27 @@
 				reassignment_duration_factor = 0.25
 			}
 		}
+
+		SOV_training_activities_curtailed = {
+			removal_cost = -1
+
+			picture = generic_army_problems
+
+			allowed = {
+				always = no # Added via purges
+			}
+
+			allowed_civil_war = {
+				NOT = { tag = SOV } #Go to Stalinist side
+			}
+
+			modifier = {
+				experience_gain_army_factor = -0.15
+				training_time_factor = 0.25
+				land_equipment_upgrade_xp_cost = 0.15
+			}
+		}
+
 
 		SOV_purged_junior_army_officers_1 = {
 			removal_cost = -1
@@ -141,6 +182,30 @@
 			}
 		}
 
+		SOV_shipyard_staff_purged = {
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via purges
+			}
+
+			allowed_civil_war = {
+				NOT = { tag = SOV } #Go to Stalinist side
+			}
+
+			picture = SOV_shipyard_staff_purged
+
+			research_bonus = {
+				naval_equipment = -0.20
+			}
+
+			modifier = {
+				industrial_capacity_dockyard = -0.1
+				naval_equipment_upgrade_xp_cost = 0.2
+				refit_speed = -0.1
+			}
+		}
+
 		SOV_purged_junior_navy_officers_1 = {
 			removal_cost = -1
 
@@ -226,6 +291,26 @@
 				air_ace_generation_chance_factor = -0.25
 				air_mission_efficiency = -0.15
 				air_maximum_speed_factor = -0.1
+			}
+		}
+
+		SOV_ground_based_training = {
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via purges
+			}
+
+			allowed_civil_war = {
+				NOT = { tag = SOV } #Go to Stalinist side
+			}
+
+			picture = SOV_ground_based_training
+
+			modifier = {
+				experience_gain_air_factor = -0.2
+				air_mission_xp_gain_factor = -0.2
+				air_accidents_factor = 0.25
 			}
 		}
 
