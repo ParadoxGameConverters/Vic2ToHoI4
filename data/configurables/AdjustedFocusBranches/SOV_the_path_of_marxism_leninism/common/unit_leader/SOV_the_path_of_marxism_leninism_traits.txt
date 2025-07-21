@@ -23,4 +23,25 @@ leader_traits = {
 		}
 	}
 
+	trait_SOV_cowed_by_stalin_navy = {
+
+		type = { navy }
+		trait_type = personality_trait
+
+		allowed = {
+			FROM = { original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV }
+		}
+
+		new_commander_weight = {
+			factor = 0
+		}
+
+		attack_skill = -2
+		defense_skill = -2
+		
+		modifier = {
+			naval_retreat_chance = -0.25
+		}
+	}
+
 }

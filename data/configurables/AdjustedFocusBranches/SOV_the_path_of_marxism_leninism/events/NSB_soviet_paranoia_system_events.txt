@@ -41,6 +41,270 @@ country_event = {
 	}
 }
 
+####################
+### ADMIN PURGES ###
+####################
+
+### ADVISOR ACCUSED OF TREASON - ADMIN ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.11
+	title = NSB_soviet_paranoia_system_events.11.t
+	desc = NSB_soviet_paranoia_system_events.11.desc
+	picture = GFX_report_event_soviet_purge_trial
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = { #PURGE MODE ON
+		name = NSB_soviet_paranoia_system_events.11.a
+		ai_chance = {
+			base = 10
+		}
+		hidden_effect = {
+			every_character = {
+				limit = {
+					is_character_slot = political_advisor
+					has_character_flag = SOV_targeted_for_purge_flag
+				}
+				SOV_purge_character_effect = yes
+			}
+		}
+
+		custom_effect_tooltip = SOV_characters_will_be_purged_tt
+		character_list_tooltip = {
+			limit = {
+				has_character_flag = SOV_targeted_for_purge_flag
+			}
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_high_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+
+		clear_variable = SOV_purged_character_for_loc
+	}
+
+	option = { #PURGE MODE OFF
+		name = NSB_soviet_paranoia_system_events.11.b
+		ai_chance = {
+			base = 1
+			#modifier = { #Don't purge historically-not-purged people on historical # SOV_historically_not_purged_flag not implemented for now -> Adds more randomness
+			#	factor = 100
+			#	SOV_is_going_historical_stalinist = yes
+			#	any_character = {
+			#		has_character_flag = SOV_targeted_for_purge_flag
+			#		has_character_flag = SOV_historically_not_purged_flag
+			#	}
+			#}
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+
+		#CLEAN EVERYTHING THANKS
+		SOV_clean_purge_targets_effect = yes
+		clear_variable = SOV_purged_character_for_loc
+	}
+}
+
+### CIVIL SERVANTS PURGED - ADMIN ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.12
+	title = NSB_soviet_paranoia_system_events.12.t
+	desc = NSB_soviet_paranoia_system_events.12.desc
+	picture = GFX_report_event_SOV_purge_administration
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = {
+		name = NSB_soviet_paranoia_system_events.12.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_timed_idea = {
+			idea = SOV_understaffed_bureaucracy
+			days = 365
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_medium_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+	}
+
+	option = {
+		name = NSB_soviet_paranoia_system_events.12.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+	}
+}
+
+### NKVD PURGED - ADMIN ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.13
+	title = NSB_soviet_paranoia_system_events.13.t
+	desc = NSB_soviet_paranoia_system_events.13.desc
+	picture = GFX_report_event_soviet_purge_trial
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = {
+		name = NSB_soviet_paranoia_system_events.13.a
+		ai_chance = {
+			base = 10
+		}
+
+		if = {
+			limit = {
+				has_idea = UTI_genrikh_yagoda
+			}
+			hidden_effect = {
+				UTI_genrikh_yagoda = {
+					SOV_purge_character_effect = yes
+				}
+			}
+
+			custom_effect_tooltip = SOV_characters_will_be_purged_tt
+			character_list_tooltip = {
+				limit = {
+					is_character = UTI_genrikh_yagoda
+				}
+			}
+
+			activate_advisor = UTI_nikolay_yezhov
+		}
+		else_if = {
+			limit = {
+				has_idea = UTI_nikolay_yezhov
+			}
+			hidden_effect = {
+				UTI_nikolay_yezhov = {
+					SOV_purge_character_effect = yes
+				}
+			}
+			custom_effect_tooltip = SOV_characters_will_be_purged_tt
+			character_list_tooltip = {
+				limit = {
+					is_character = UTI_nikolay_yezhov
+				}
+			}
+
+			activate_advisor = UTI_lavrenty_beriya
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_high_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+	}
+
+	option = {
+		name = NSB_soviet_paranoia_system_events.13.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+	}
+}
+
 ### GREAT PURGE - MOSCOW TRIALS - ADMIN ###
 country_event = {
 	id = NSB_soviet_paranoia_system_events.19
@@ -166,6 +430,533 @@ country_event = {
 	}
 }
 
+###################
+### ARMY PURGES ###
+###################
+
+### GENERAL ACCUSED OF TREASON - ARMY ###
+unit_leader_event = {
+	id = NSB_soviet_paranoia_system_events.21
+	title = NSB_soviet_paranoia_system_events.21.t
+	desc = NSB_soviet_paranoia_system_events.21.desc
+	picture = GFX_report_event_soviet_purge_officers_02
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = { #PURGE
+		name = NSB_soviet_paranoia_system_events.21.a
+		ai_chance = {
+			base = 10
+		}
+
+		hidden_effect = {
+			random_army_leader = {
+				limit = {
+					has_character_flag = SOV_targeted_for_purge_flag
+				}
+				SOV_purge_character_effect = yes
+			}
+		}
+		#custom_effect_tooltip = SOV_retire_purged_character_tt
+
+		custom_effect_tooltip = SOV_characters_will_be_purged_tt
+		character_list_tooltip = {
+			limit = {
+				has_character_flag = SOV_targeted_for_purge_flag
+			}
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#RANDOM GENERALS COWED
+		SOV_paranoia_daunt_generals_minor_effect = yes
+
+		#PARANOIA DECREASES based on general's level
+		set_variable = { SOV_unit_leader_level = SOV_accused_unit_leader_level } #Set the appropriate var used in the scripted effect
+		SOV_paranoia_decrease_based_on_unit_leader_level_effect = yes
+		custom_effect_tooltip = NSB_soviet_paranoia_system_events.24_paranoia_accused_decrease_tt
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+		# Increase opposition Army Support 
+		SOV_increase_opposition_army_support_small = yes 
+		clear_variable = SOV_purged_character_for_loc
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.21.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		SOV_paranoia_increase_based_on_unit_leader_level_effect = yes
+
+		#PARANOIA INCREASES
+		set_variable = { SOV_unit_leader_level = SOV_accused_unit_leader_level } #Set the appropriate var used in the scripted effect
+		SOV_paranoia_increase_based_on_unit_leader_level_effect = yes
+		custom_effect_tooltip = NSB_soviet_paranoia_system_events.24_paranoia_accused_increase_tt
+
+		#CLEAN EVERYTHING THANKS
+		SOV_clean_purge_targets_effect = yes
+		clear_variable = SOV_purged_character_for_loc
+	}
+}
+
+### CONSPIRACY IN THE ACADEMY - ARMY ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.22
+	title = NSB_soviet_paranoia_system_events.22.t
+	desc = NSB_soviet_paranoia_system_events.22.desc
+	picture = GFX_report_event_SOV_purge_administration
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = { #PURGE
+		name = NSB_soviet_paranoia_system_events.22.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_ideas = SOV_anti_soviet_military_thinking_banned_army
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_low_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+		# Increase opposition Army Support 
+		SOV_increase_opposition_army_support_small = yes 
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.22.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+	}
+}
+
+### ANTI-SABOTEUR CAMPAIGN - ARMY ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.23
+	title = NSB_soviet_paranoia_system_events.23.t
+	desc = NSB_soviet_paranoia_system_events.23.desc
+	picture = GFX_report_event_soviet_soldiers_tank
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = { #PURGE
+		name = NSB_soviet_paranoia_system_events.23.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_timed_idea = {
+			idea = SOV_training_activities_curtailed
+			days = 365
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_low_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+		# Increase opposition Army Support 
+		SOV_increase_opposition_army_support_small = yes 
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.23.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+	}
+}
+
+### GENERAL ACCUSES GENERAL - ARMY ###
+unit_leader_event = {
+	id = NSB_soviet_paranoia_system_events.24
+	title = NSB_soviet_paranoia_system_events.24.t
+	desc = NSB_soviet_paranoia_system_events.24.desc
+	picture = GFX_report_event_soviet_purge_officers_02
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = { #PURGE ACCUSED
+		name = NSB_soviet_paranoia_system_events.24.a
+		ai_chance = {
+			base = 10
+		}
+
+		hidden_effect = {
+			random_army_leader = {
+				limit = {
+					has_character_flag = SOV_purge_accused_flag
+				}
+				SOV_purge_character_effect = yes
+			}
+		}
+		#custom_effect_tooltip = SOV_retire_accused_character_tt
+		custom_effect_tooltip = SOV_characters_will_be_purged_tt
+		character_list_tooltip = {
+			limit = {
+				has_character_flag = SOV_purge_accused_flag
+			}
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#RANDOM GENERALS COWED
+		SOV_paranoia_daunt_generals_minor_effect = yes
+		
+		#PARANOIA decreases based on general's level
+		set_variable = { SOV_unit_leader_level = SOV_accused_unit_leader_level } #Set the appropriate var used in the scripted effect
+		SOV_paranoia_decrease_based_on_unit_leader_level_effect = yes
+		custom_effect_tooltip = NSB_soviet_paranoia_system_events.24_paranoia_accused_decrease_tt
+
+		#CLEAN EVERYTHING THANKS
+		hidden_effect = {
+			clear_variable = SOV_accused_unit_leader_level
+			clear_variable = SOV_accuser_unit_leader_level
+			clear_variable = SOV_accused_character_for_loc
+			clear_variable = SOV_accuser_character_for_loc
+			every_army_leader = {
+				limit = {
+					has_character_flag = SOV_purge_accuser_flag
+				}
+				clr_character_flag = SOV_purge_accuser_flag
+			}
+		}
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+		# Increase opposition Army Support 
+		SOV_increase_opposition_army_support_small = yes 
+	}
+
+	option = { #PURGE ACCUSER 
+		name = NSB_soviet_paranoia_system_events.24.b
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 2
+				SOV_is_going_historical_stalinist = no
+			}
+		}
+
+		hidden_effect = {
+			random_army_leader = {
+				limit = {
+					has_character_flag = SOV_purge_accuser_flag
+				}
+				SOV_purge_character_effect = yes
+			}
+		}
+		#custom_effect_tooltip = SOV_retire_accuser_character_tt
+		custom_effect_tooltip = SOV_characters_will_be_purged_tt
+		character_list_tooltip = {
+			limit = {
+				has_character_flag = SOV_purge_accuser_flag
+			}
+		}
+
+		#RANDOM GENERALS COWED
+		SOV_paranoia_daunt_generals_minor_effect = yes
+
+		#PARANOIA decreases based on general's level
+		set_variable = { SOV_unit_leader_level = SOV_accuser_unit_leader_level } #Set the appropriate var used in the scripted effect and clean vars and flags
+		SOV_paranoia_decrease_based_on_unit_leader_level_effect = yes
+		custom_effect_tooltip = NSB_soviet_paranoia_system_events.24_paranoia_accused_decrease_tt
+
+		#CLEAN EVERYTHING THANKS
+		hidden_effect = {
+			clear_variable = SOV_accused_unit_leader_level
+			clear_variable = SOV_accuser_unit_leader_level
+			clear_variable = SOV_accused_character_for_loc
+			clear_variable = SOV_accuser_character_for_loc
+			every_army_leader = {
+				limit = {
+					has_character_flag = SOV_purge_accused_flag
+				}
+				clr_character_flag = SOV_purge_accused_flag
+			}
+		}
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+		# Increase opposition Army Support 
+		SOV_increase_opposition_army_support_small = yes 
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.24.c
+		ai_chance = {
+			base = 2
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		every_army_leader = { #Both characters get cowed
+			limit = {
+				OR = {
+					has_character_flag = SOV_purge_accuser_flag
+					has_character_flag = SOV_purge_accused_flag
+				}
+			}
+			add_unit_leader_trait = trait_SOV_cowed_by_stalin_army
+		}
+
+		#PARANOIA INCREASES
+		set_variable = { SOV_unit_leader_level = SOV_accused_unit_leader_level } #Set the appropriate var used in the scripted effect and clean vars and flags
+		add_to_variable = { SOV_unit_leader_level = SOV_accuser_unit_leader_level }
+		SOV_paranoia_increase_based_on_unit_leader_level_effect = yes
+		custom_effect_tooltip = NSB_soviet_paranoia_system_events.24_paranoia_both_increase_tt
+
+		#CLEAN EVERYTHING THANKS
+		hidden_effect = {
+			clear_variable = SOV_accused_unit_leader_level
+			clear_variable = SOV_accuser_unit_leader_level
+			clear_variable = SOV_accused_character_for_loc
+			clear_variable = SOV_accuser_character_for_loc
+			random_army_leader = {
+				limit = {
+					has_character_flag = SOV_purge_accused_flag
+				}
+				clr_character_flag = SOV_purge_accused_flag
+			}
+			random_army_leader = {
+				limit = {
+					has_character_flag = SOV_purge_accuser_flag
+				}
+				clr_character_flag = SOV_purge_accuser_flag
+			}
+		}
+	}
+}
+
+### GREAT PURGE OF JUNIOR ARMY OFFICERS - ARMY ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.28
+	title = NSB_soviet_paranoia_system_events.28.t
+	desc = NSB_soviet_paranoia_system_events.28.desc
+	picture = GFX_report_event_SOV_purge_young_officers
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_great = yes
+		}
+	}
+
+	option = { #PURGE THEM!!
+		name = NSB_soviet_paranoia_system_events.28.a
+		ai_chance = {
+			base = 10
+		}
+
+		if = {
+			limit = {
+				has_idea = SOV_purged_junior_army_officers_3
+			}
+			#NOTHING HAPPENS, but this should not be a possibility
+		}
+		else_if = {
+			limit = {
+				has_idea = SOV_purged_junior_army_officers_2
+			}
+			swap_ideas = {
+				remove_idea = SOV_purged_junior_army_officers_2
+				add_idea = SOV_purged_junior_army_officers_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = SOV_purged_junior_army_officers_1
+			}
+			swap_ideas = {
+				remove_idea = SOV_purged_junior_army_officers_1
+				add_idea = SOV_purged_junior_army_officers_2
+			}
+		}
+		else = {
+			add_ideas = SOV_purged_junior_army_officers_1
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+		
+		#PARANOIA decreases
+		SOV_paranoia_medium_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_country_flag = SOV_purge_event_unavoidable_flag
+			}
+			custom_effect_tooltip = SOV_purge_event_unavoidable_purge_great_tt
+		}
+		else_if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_great
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_great_tt
+		}
+
+		#Clear flags forbidding the "avoid purge" option from showing up
+		SOV_clear_unavoidable_purge_flags_effect = yes
+
+		# Increase opposition Army Support 
+		SOV_increase_opposition_army_support_small = yes 
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.28.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_great_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_great }
+			NOT = { has_country_flag = SOV_purge_event_unavoidable_flag } #Used for historical purges triggered via focus
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_great_pay
+
+		#PARANOIA INCREASES
+		SOV_paranoia_high_increase_effect = yes
+	}
+}
+
 ### GREAT PURGE TRIAL OF THE GENERALS - ARMY ###
 country_event = {
 	id = NSB_soviet_paranoia_system_events.29
@@ -278,4 +1069,681 @@ country_event = {
 		SOV_clean_purge_targets_effect = yes
 	}
 }
+
+###################
+### NAVY PURGES ###
+###################
+
+### ADMIRAL ACCUSED OF TREASON - NAVY ###
+unit_leader_event = {
+	id = NSB_soviet_paranoia_system_events.31
+	title = NSB_soviet_paranoia_system_events.31.t
+	desc = NSB_soviet_paranoia_system_events.31.desc
+	picture = GFX_report_event_soviet_purge_trial
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = { #PURGE
+		name = NSB_soviet_paranoia_system_events.31.a
+		ai_chance = {
+			base = 10
+		}
+
+		hidden_effect = {
+			random_navy_leader = {
+				limit = {
+					has_character_flag = SOV_targeted_for_purge_flag
+				}
+				SOV_purge_character_effect = yes
+			}
+		}
+		#custom_effect_tooltip = SOV_retire_purged_character_tt
+		custom_effect_tooltip = SOV_characters_will_be_purged_tt
+		character_list_tooltip = {
+			limit = {
+				has_character_flag = SOV_targeted_for_purge_flag
+			}
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#RANDOM ADMIRALS COWED
+		SOV_paranoia_daunt_admirals_minor_effect = yes
+
+		#PARANOIA DECREASES based on general's level
+		set_variable = { SOV_unit_leader_level = SOV_accused_unit_leader_level } #Set the appropriate var used in the scripted effect
+		SOV_paranoia_decrease_based_on_unit_leader_level_effect = yes
+		custom_effect_tooltip = NSB_soviet_paranoia_system_events.24_paranoia_accused_decrease_tt
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+
+		# Increase opposition Navy Support 
+		SOV_increase_opposition_navy_support_small = yes
+		clear_variable = SOV_purged_character_for_loc 
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.21.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA INCREASES
+		set_variable = { SOV_unit_leader_level = SOV_accused_unit_leader_level } #Set the appropriate var used in the scripted effect
+		SOV_paranoia_increase_based_on_unit_leader_level_effect = yes
+		custom_effect_tooltip = NSB_soviet_paranoia_system_events.24_paranoia_accused_increase_tt
+
+		#CLEAN EVERYTHING THANKS
+		SOV_clean_purge_targets_effect = yes
+		clear_variable = SOV_purged_character_for_loc
+	}
+}
+
+### CONSPIRACY IN THE ACADEMY - NAVY ###
+#Loc taken from the Army event
+country_event = {
+	id = NSB_soviet_paranoia_system_events.32
+	title = NSB_soviet_paranoia_system_events.22.t
+	desc = NSB_soviet_paranoia_system_events.22.desc
+	picture = GFX_report_event_SOV_purge_administration
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = { #PURGE
+		name = NSB_soviet_paranoia_system_events.22.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_ideas = SOV_anti_soviet_military_thinking_banned_navy
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_medium_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+
+		# Increase opposition Navy Support 
+		SOV_increase_opposition_navy_support_small = yes  	
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.22.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+
+		#CLEAN EVERYTHING THANKS
+		SOV_clean_purge_targets_effect = yes
+	}
+}
+
+### ANTI-SABOTEUR CAMPAIGN - NAVY ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.33
+	title = NSB_soviet_paranoia_system_events.23.t
+	desc = NSB_soviet_paranoia_system_events.33.desc
+	picture = GFX_report_event_SOV_purge_navy
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = { #PURGE
+		name = NSB_soviet_paranoia_system_events.23.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_timed_idea = {
+			idea = SOV_shipyard_staff_purged
+			days = 365
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_medium_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+
+		# Increase opposition Navy Support 
+		SOV_increase_opposition_navy_support_small = yes  
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.23.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+
+		#CLEAN EVERYTHING THANKS
+		SOV_clean_purge_targets_effect = yes
+	}
+}
+
+### GREAT PURGE - JUNIOR NAVY OFFICERS - NAVY ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.38
+	title = NSB_soviet_paranoia_system_events.38.t
+	desc = NSB_soviet_paranoia_system_events.38.desc
+	picture = GFX_report_event_SOV_purge_young_officers
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_great = yes
+		}
+	}
+
+	option = { #PURGE
+		name = NSB_soviet_paranoia_system_events.28.a
+		ai_chance = {
+			base = 10
+		}
+
+		if = {
+			limit = {
+				has_idea = SOV_purged_junior_navy_officers_3
+			}
+			# NOTHING HAPPENS, but this should not be a possibility
+		}
+		else_if = {
+			limit = {
+				has_idea = SOV_purged_junior_navy_officers_2
+			}
+			swap_ideas = {
+				remove_idea = SOV_purged_junior_navy_officers_2
+				add_idea = SOV_purged_junior_navy_officers_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = SOV_purged_junior_navy_officers_1
+			}
+			swap_ideas = {
+				remove_idea = SOV_purged_junior_navy_officers_1
+				add_idea = SOV_purged_junior_navy_officers_2
+			}
+		}
+		else = {
+			add_ideas = SOV_purged_junior_navy_officers_1
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_low_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_country_flag = SOV_purge_event_unavoidable_flag
+			}
+			custom_effect_tooltip = SOV_purge_event_unavoidable_purge_great_tt
+		}
+		else_if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_great
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_great_tt
+		}
+
+		#Clear flags forbidding the "avoid purge" option from showing up
+		SOV_clear_unavoidable_purge_flags_effect = yes	
+
+		# Increase opposition Navy Support 
+		SOV_increase_opposition_navy_support_small = yes  
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.28.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_great_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_great }
+			NOT = { has_country_flag = SOV_purge_event_unavoidable_flag } #Used for historical purges triggered via focus
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_great_pay
+
+		#PARANOIA increases
+		SOV_paranoia_high_increase_effect = yes
+	}
+}
+
+### GREAT PURGE - TRIAL OF THE ADMIRALS - NAVY ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.39
+	title = NSB_soviet_paranoia_system_events.39.t
+	desc = NSB_soviet_paranoia_system_events.39.desc
+	picture = GFX_report_event_SOV_purge_navy
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_great = yes
+		}
+	}
+
+	option = { #PURGE
+		name = NSB_soviet_paranoia_system_events.29.a
+		ai_chance = {
+			base = 10
+		}
+
+		hidden_effect = {
+			#Purge any Advisors
+			every_character = {
+				limit = {
+					has_navy_ledger = yes
+					has_character_flag = SOV_targeted_for_purge_flag
+				}
+				SOV_purge_character_effect = yes	
+			}
+
+			#Purge any Admirals # This is a duplicate as a workaround for tooltip purposes
+			every_navy_leader = {
+				limit = {
+					has_character_flag = SOV_targeted_for_purge_flag
+				}
+				SOV_purge_character_effect = yes	
+			}
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		custom_effect_tooltip = SOV_characters_will_be_purged_tt
+		character_list_tooltip = {
+			limit = {
+				has_character_flag = SOV_targeted_for_purge_flag
+			}
+		}
+
+		#RANDOM ADMIRALS COWED
+		SOV_paranoia_daunt_admirals_effect = yes
+
+		#PARANOIA decreases
+		SOV_paranoia_very_high_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_country_flag = SOV_purge_event_unavoidable_flag
+			}
+			custom_effect_tooltip = SOV_purge_event_unavoidable_purge_great_tt
+		}
+		else_if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_great
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_great_tt
+		}
+
+		#Clear flags forbidding the "avoid purge" option from showing up
+		SOV_clear_unavoidable_purge_flags_effect = yes
+
+		# Increase opposition Navy Support 
+		SOV_increase_opposition_navy_support_small = yes  
+	}
+
+	option = { #NO WAIT! Let's Think about it
+		name = NSB_soviet_paranoia_system_events.29.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_great_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_great }
+			NOT = { has_country_flag = SOV_purge_event_unavoidable_flag } #Used for historical purges triggered via focus
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_great_pay
+
+		#PARANOIA increases
+		SOV_paranoia_very_high_increase_effect = yes
+
+		#CLEAN EVERYTHING THANKS
+		SOV_clean_purge_targets_effect = yes
+	}
+}
+
+
+#######################
+### AIRFORCE PURGES ###
+#######################
+
+### CONSPIRACY IN THE ACADEMY - AIRFORCE ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.41
+	title = NSB_soviet_paranoia_system_events.22.t
+	desc = NSB_soviet_paranoia_system_events.22.desc
+	picture = GFX_report_event_SOV_purge_administration
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = {
+		name = NSB_soviet_paranoia_system_events.22.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_ideas = SOV_anti_soviet_military_thinking_banned_airforce
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_medium_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}
+	}
+
+	option = {
+		name = NSB_soviet_paranoia_system_events.22.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+	}
+}
+
+#### ANTI-SABOTEUR CAMPAIGN - AIRFORCE ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.42
+	title = NSB_soviet_paranoia_system_events.23.t
+	desc = NSB_soviet_paranoia_system_events.42.desc
+	picture = GFX_report_event_SOV_purge_aircraft_2
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV_paranoia_increase_purge_counter_regular = yes
+		}
+	}
+
+	option = {
+		name = NSB_soviet_paranoia_system_events.23.a
+		ai_chance = {
+			base = 10
+		}
+
+		add_timed_idea = {
+			idea = SOV_ground_based_training
+			days = 365
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_medium_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_regular
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_regular_tt
+		}	
+	}
+
+	option = {
+		name = NSB_soviet_paranoia_system_events.23.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+	}
+}
+
+### GREAT PURGE - AIRFORCE CHIEFS - AIRFORCE ###
+country_event = {
+	id = NSB_soviet_paranoia_system_events.49
+	title = NSB_soviet_paranoia_system_events.49.t
+	desc = NSB_soviet_paranoia_system_events.49.desc
+	picture = GFX_report_event_soviet_purge_trial
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = SOV_purged_airforce_chiefs_flag }
+				}
+				set_country_flag = SOV_purged_airforce_chiefs_flag
+			}		
+			SOV_paranoia_increase_purge_counter_great = yes
+		}
+	}
+
+	option = { #PURGE MODE ON
+		name = NSB_soviet_paranoia_system_events.49.a
+		ai_chance = {
+			base = 10
+		}
+
+		hidden_effect = {
+			every_character = {
+				limit = {
+					has_character_flag = SOV_targeted_for_purge_flag
+					has_air_ledger = yes
+				}
+				SOV_purge_character_effect = yes
+			}
+		}
+
+		#Update purged portraits in UI
+		hidden_effect = {
+			SOV_paranoia_update_portraits_ui = yes
+		}
+
+		custom_effect_tooltip = SOV_characters_will_be_purged_tt
+		character_list_tooltip = {
+			limit = {
+				has_character_flag = SOV_targeted_for_purge_flag
+			}
+		}
+
+		#PARANOIA decreases
+		SOV_paranoia_high_decrease_effect = yes
+
+		if = {
+			limit = {
+				has_political_power < SOV_purge_event_pp_to_avoid_great
+			}
+			custom_effect_tooltip = SOV_purge_event_not_enough_pp_to_avoid_great_tt
+		}
+	}
+
+	option = { #PURGE MODE OFF
+		name = NSB_soviet_paranoia_system_events.49.b
+		ai_chance = {
+			base = 1
+			modifier = { #Don't go to negative PP please
+				factor = 0
+				has_political_power < SOV_purge_event_pp_to_avoid_great_pay
+			}
+			modifier = { #Don't risk starting CW too early
+				factor = 0
+				SOV_is_opposition = yes 
+			}
+		}
+
+		trigger = {
+			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_great }
+		}
+
+		add_political_power = SOV_purge_event_pp_to_avoid_great_pay
+
+		#PARANOIA increases
+		SOV_paranoia_low_increase_effect = yes
+
+		#CLEAN EVERYTHING THANKS
+		SOV_clean_purge_targets_effect = yes
+	}
+}
+
+
 
