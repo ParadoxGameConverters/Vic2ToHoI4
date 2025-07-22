@@ -12,18 +12,33 @@ country_event = {
 
 	immediate = {
 		#save_global_event_target_as = SOV_the_path_of_marxism_leninism_SOV
-		set_variable = { SOV_propaganda_cost = 15 }
-		set_variable = { SOV_propaganda_stalin_cost = SOV_propaganda_cost }
-		set_variable = { SOV_propaganda_cost_increase = 2 }
 
-		set_variable = { SOV_propaganda_locked_slot_index = 1 }
-		set_variable = { SOV_poster_left_icon_frame = SOV_propaganda_locked_slot_index }
-		set_variable = { SOV_poster_center_icon_frame = SOV_propaganda_locked_slot_index }
-		set_variable = { SOV_poster_right_icon_frame = SOV_propaganda_locked_slot_index }
+		### PROPAGANDA ###
+		set_variable = { SOV_new_propaganda_campaign = 0 } #Used to pick a poster slot
+		set_variable = { SOV_propaganda_campaign_to_remove = 0 } #Used to reset a poster slot
+		set_variable = { SOV_propaganda_locked_slot_index = 1 } #### === INSERT LOCKED SLOT INDEX IN STRIPE HERE === ####
+		set_variable = { SOV_propaganda_empty_slot_index = 2 } #### === INSERT EMPTY SLOT INDEX IN STRIPE HERE === ####
+		set_variable = { SOV_poster_left_icon_frame = SOV_propaganda_locked_slot_index } #Set up the appropriate empty slot GFX
+		set_variable = { SOV_poster_center_icon_frame = SOV_propaganda_locked_slot_index } #Set up the appropriate locked slot GFX
+		set_variable = { SOV_poster_right_icon_frame = SOV_propaganda_locked_slot_index } #Set up the appropriate locked slot GFX
 
-		set_variable = { SOV_default_propaganda_campaign_duration = 180 }
-		set_variable = { SOV_default_propaganda_campaign_cooldown = 90 }
-		set_variable = { SOV_default_propaganda_campaign_old_days = 150 }
+		set_variable = { SOV_default_propaganda_campaign_duration = 180 } #Duration days for propaganda campaigns
+		set_variable = { SOV_default_propaganda_campaign_cooldown = 90 } #Days of cooldown after a Propaganda Campaign has been finished.
+		set_variable = { SOV_default_propaganda_campaign_old_days = 150 } #A propaganda poster will age (change GFX) after this amount of days have passed since the campaign was activated
+		set_variable = { SOV_propaganda_cost = 15 } #Used not only to set the rest of propaganda campaign costs here, but also used to increase each campaign cost after being activated
+		set_variable = { SOV_propaganda_cost_increase = 2 } #This will multiply the regular propaganda_cost each time a propaganda campaign is activated, so that it's cost is increased
+		set_variable = { SOV_propaganda_motherland_calls_cost = SOV_propaganda_cost } # ID = 2
+		set_variable = { SOV_propaganda_victory_at_hand_cost = SOV_propaganda_cost } # ID = 3
+		set_variable = { SOV_propaganda_defend_moscow_cost = SOV_propaganda_cost } # ID = 4
+		set_variable = { SOV_propaganda_fight_to_the_last_cost = SOV_propaganda_cost } # ID = 5
+		set_variable = { SOV_propaganda_hit_of_hammer_cost = SOV_propaganda_cost } # ID = 6
+		set_variable = { SOV_propaganda_transport_cost = SOV_propaganda_cost } # ID = 7
+		set_variable = { SOV_propaganda_oil_for_the_motherland_cost = SOV_propaganda_cost } # ID = 8
+		set_variable = { SOV_propaganda_more_metal_cost = SOV_propaganda_cost } # ID = 9
+		set_variable = { SOV_propaganda_high_yield_cost = SOV_propaganda_cost } # ID = 10
+		set_variable = { SOV_propaganda_stalin_cost = SOV_propaganda_cost } # ID = 22
+
+		set_variable = { SOV_propaganda_campaigns_taken = 0 } #Used as a requirement for certain focuses
 
 		set_variable = { SOV_purge_event_pp_to_avoid_great = 0 } #PP Required to show the option to avoid a great purge
 		set_variable = { SOV_purge_event_pp_to_avoid_great_pay = -120 } #PP to be paid to avoid a great purge

@@ -105,3 +105,11 @@ SOV_is_going_historical_stalinist = { # Add/Change stuff here instead of doing i
 	has_completed_focus = SOV_the_centre	
 }
 
+SOV_propaganda_victory_at_hand_available = { #Basically Great Patriotic War is ongoing
+	custom_trigger_tooltip = {
+		tooltip = SOV_propaganda_victory_at_hand_available_tt
+		has_country_flag = SOV_third_five_year_plan_locked_flag
+		NOT = { has_country_flag = SOV_fourth_five_year_plan_available_flag }
+	}
+}
+
