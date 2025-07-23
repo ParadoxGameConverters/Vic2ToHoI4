@@ -58,3 +58,7 @@
  SOV_purged_junior_navy_officers_1_desc: "Значительное количество младших офицеров Флота было арестовано НКВД по обвинениям в мятеже, саботаже и анти-[ROOT.GetAdjective] мышлении. Потеря столь многих опытных офицеров и ветеранов прошлых войн оставила [ROOT.GetAdjectiveCap] Флот в опасном беспорядке."
  SOV_anti_soviet_military_thinking_banned_airforce: "Запрет анти-[ROOT.GetAdjectiveCap] военного мышления"
  SOV_anti_soviet_military_thinking_banned_airforce_desc: "Изучение и обсуждение документов и идей дискредитированных и реакционных теоретиков теперь запрещено для офицеров наших ВВС в Академии, а новые выпускники тщательно проверяются, чтобы ни один враг народа не попал в ряды [ROOT.GetAdjectiveCap] ВВС."
+ SOV_expand_the_agitprop_desc: "Чтобы достучаться до миллионов рабочих по всему [ROOT.GetName], мы должны говорить на их языке. Наши доводы должны быть простыми и легко запоминающимися, чтобы остаться в памяти простого гражданина. Мы должны расширить наши усилия в этом направлении."
+ SOV_propaganda_defend_moscow: "Мы защитим [ROOT.Capital.GetCapitalVictoryPointName]!"
+ SOV_defend_moscow: "Защитить [ROOT.Capital.GetCapitalVictoryPointName]"
+ SOV_propaganda_transport: "Транспорт — брат [ROOT.GetAdjectiveCap] Армии"

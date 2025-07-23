@@ -58,3 +58,7 @@
  SOV_purged_junior_navy_officers_1_desc: "Un nombre important d'officiers subalternes de la Marine ont été arrêtés par le NKVD pour sédition, sabotage et pensée anti-[ROOT.GetAdjective]. La perte de nombreux officiers expérimentés et vétérans des guerres passées a laissé la Flotte [ROOT.GetAdjectiveCap] en désarroi dangereux."
  SOV_anti_soviet_military_thinking_banned_airforce: "Interdiction de la pensée militaire anti-[ROOT.GetAdjectiveCap]"
  SOV_anti_soviet_military_thinking_banned_airforce_desc: "L'étude et la discussion des documents et idées de théoriciens discrédités et réactionnaires sont désormais interdites pour les officiers de l'Armée de l'air à l'Académie, et les nouveaux diplômés sont soigneusement contrôlés pour s'assurer qu'aucun ennemi du peuple n'accède aux rangs de l'Armée de l'air [ROOT.GetAdjectiveCap]."
+ SOV_expand_the_agitprop_desc: "Pour atteindre les millions de travailleurs à travers [ROOT.GetName], nous devons parler leur langage. Nos arguments doivent être simples et faciles à comprendre, afin qu'ils restent dans la mémoire du citoyen ordinaire. Nous devons intensifier nos efforts dans ce domaine."
+ SOV_propaganda_defend_moscow: "Nous défendrons [ROOT.Capital.GetCapitalVictoryPointName] !"
+ SOV_defend_moscow: "Défendre [ROOT.Capital.GetCapitalVictoryPointName]"
+ SOV_propaganda_transport: "Le transport est le frère de l’armée [ROOT.GetAdjectiveCap]"
