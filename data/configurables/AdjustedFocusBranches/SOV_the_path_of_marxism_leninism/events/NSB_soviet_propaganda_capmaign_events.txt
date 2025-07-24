@@ -1,0 +1,62 @@
+add_namespace = NSB_soviet_propaganda_capmaign_events
+
+#Propaganda Dispatcher - Left Slot - Used to update Campaign GFX when it's old.
+country_event = {
+	id = NSB_soviet_propaganda_capmaign_events.101
+	title = NSB_soviet_propaganda_capmaign_events.101.t
+	desc = NSB_soviet_propaganda_capmaign_events.101.desc
+	
+	is_triggered_only = yes
+
+	trigger = {
+		check_variable = { SOV_propaganda_left_poster_to_age = SOV_poster_left_icon_frame } #So that this does not happen if a propaganda is cancelled, breaking everything
+	}
+
+	hidden = yes
+
+	immediate = {
+		set_country_flag = SOV_propaganda_left_slot_is_old_flag
+		#log = "I AM HERE: LEFT FRAME IS [?SOV_poster_left_icon_frame] // POSTER TO AGE IS [?SOV_propaganda_left_poster_to_age]" #Debug
+	}
+}
+
+#Propaganda Dispatcher - Center Slot - Used to update Campaign GFX when it's old.
+country_event = {
+	id = NSB_soviet_propaganda_capmaign_events.102
+	title = NSB_soviet_propaganda_capmaign_events.102.t
+	desc = NSB_soviet_propaganda_capmaign_events.102.desc
+	
+	is_triggered_only = yes
+
+	trigger = {
+		check_variable = { SOV_propaganda_center_poster_to_age = SOV_poster_center_icon_frame } #So that this does not happen if a propaganda is cancelled, breaking everything
+	}
+
+	hidden = yes
+
+	immediate = {
+		set_country_flag = SOV_propaganda_center_slot_is_old_flag
+		#log = "I AM HERE: CENTER FRAME IS [?SOV_poster_center_icon_frame] // POSTER TO AGE IS [?SOV_propaganda_center_poster_to_age]" #Debug
+	}
+}
+
+#Propaganda Dispatcher - Right Slot - Used to update Campaign GFX when it's old.
+country_event = {
+	id = NSB_soviet_propaganda_capmaign_events.103
+	title = NSB_soviet_propaganda_capmaign_events.103.t
+	desc = NSB_soviet_propaganda_capmaign_events.103.desc
+	
+	is_triggered_only = yes
+
+	trigger = {
+		check_variable = { SOV_propaganda_right_poster_to_age = SOV_poster_right_icon_frame } #So that this does not happen if a propaganda is cancelled, breaking everything
+	}
+
+	hidden = yes
+
+	immediate = {
+		set_country_flag = SOV_propaganda_right_slot_is_old_flag
+		#log = "I AM HERE: RIGHT FRAME IS [?SOV_poster_right_icon_frame] // POSTER TO AGE IS [?SOV_propaganda_right_poster_to_age]" #Debug
+	}
+}
+

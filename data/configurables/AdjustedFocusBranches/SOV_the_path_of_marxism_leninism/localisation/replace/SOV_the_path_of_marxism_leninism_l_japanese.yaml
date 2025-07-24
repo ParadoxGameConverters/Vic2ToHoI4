@@ -58,3 +58,7 @@ l_japanese:
  SOV_purged_junior_navy_officers_1_desc: "多くの若手海軍将校がNKVDにより扇動、破壊活動、反[ROOT.GetAdjective]的思想の罪で逮捕されました。多くの経験豊富な将校や過去の戦争の退役軍人を失った[ROOT.GetAdjectiveCap]艦隊は危険な混乱状態に陥っています。"
  SOV_anti_soviet_military_thinking_banned_airforce: "反[ROOT.GetAdjectiveCap]的軍事思想禁止"
  SOV_anti_soviet_military_thinking_banned_airforce_desc: "退潮し反動的な理論家の文書や思想の研究・議論は、空軍士官学校の士官に対して禁止されており、新卒者は厳格に審査され、人民の敵が[ROOT.GetAdjectiveCap]空軍に入ることを防いでいます。"
+ SOV_expand_the_agitprop_desc: "全国の[ROOT.GetName]の何百万人もの労働者に訴えるには、彼らの言葉で話す必要があります。我々の主張はシンプルで分かりやすく、一般市民の記憶に残るものでなければなりません。この分野での取り組みをさらに拡大すべきです。"
+ SOV_propaganda_defend_moscow: "[ROOT.Capital.GetCapitalVictoryPointName]を守り抜け！"
+ SOV_defend_moscow: "[ROOT.Capital.GetCapitalVictoryPointName]を防衛せよ"
+ SOV_propaganda_transport: "輸送は[ROOT.GetAdjectiveCap]軍の兄弟である"

@@ -1445,4 +1445,69 @@ focus_tree = {
 			}
 		}
 	}
+
+
+######################################################################################################################################
+
+#### ##    ## ######## ######## ########  ##    ##    ###    ##             ###    ######## ########    ###    #### ########   ######  
+ ##  ###   ##    ##    ##       ##     ## ###   ##   ## ##   ##            ## ##   ##       ##         ## ##    ##  ##     ## ##    ## 
+ ##  ####  ##    ##    ##       ##     ## ####  ##  ##   ##  ##           ##   ##  ##       ##        ##   ##   ##  ##     ## ##       
+ ##  ## ## ##    ##    ######   ########  ## ## ## ##     ## ##          ##     ## ######   ######   ##     ##  ##  ########   ######  
+ ##  ##  ####    ##    ##       ##   ##   ##  #### ######### ##          ######### ##       ##       #########  ##  ##   ##         ## 
+ ##  ##   ###    ##    ##       ##    ##  ##   ### ##     ## ##          ##     ## ##       ##       ##     ##  ##  ##    ##  ##    ## 
+#### ##    ##    ##    ######## ##     ## ##    ## ##     ## ########    ##     ## ##       ##       ##     ## #### ##     ##  ######  
+	
+
+
+	focus = {
+		id = SOV_addressing_internal_affairs
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = SOV_the_path_of_marxism_leninism }
+		x = 3 # originally 24
+		y = 1
+
+		relative_position_id = SOV_the_path_of_marxism_leninism
+		cost = 5
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
+
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.1
+		}
+	}
+
+	focus = {
+		id = SOV_expand_the_agitprop
+		icon = GFX_SOV_expand_the_agitprop_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_addressing_internal_affairs }
+		x = 0
+		y = 1
+		relative_position_id = SOV_addressing_internal_affairs
+		cost = 5
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_PROPAGANDA}
+
+		completion_reward = {
+			add_political_power = 25
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+
+			hidden_effect = {
+				SOV_unlock_propaganda_campaign_slot_effect = yes
+			}
+			unlock_decision_category_tooltip = SOV_propaganda_campaigns
+		}
+	}
+
 }
