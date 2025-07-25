@@ -75,6 +75,9 @@ HoI4::Idea::Idea(std::string ideaName, std::istream& theStream): name(std::move(
 		const commonItems::stringOfItem onAddString(theStream);
 		onAdd = onAddString.getString();
 	});
+	registerKeyword("on_remove", [this](std::istream& theStream) {
+		onRemove = commonItems::stringOfItem(theStream).getString();
+	});
 	registerKeyword("allowed_to_remove", [this](std::istream& theStream) {
 		const commonItems::stringOfItem allowedString(theStream);
 		allowedToRemove = allowedString.getString();
