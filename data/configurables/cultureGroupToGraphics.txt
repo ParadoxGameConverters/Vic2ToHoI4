@@ -606,19 +606,19 @@ nordic_uralic = {
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
 		"GFX_portrait_fin_carl_mannerheim"
-		"gfx/leaders/Western_European/Portrait_Denmark_Christian_von_Schalburg.tga"
-		"gfx/leaders/Western_European/Portrait_Sweden_Ernst_Klercker.tga"
-		"gfx/leaders/Western_European/Portrait_Norway_Trygve_Frivold_Graff_Wang.tga"
-		"gfx/leaders/Western_European/Portrait_Norway_Wilhelm_Tangen_Hansteen.tga"
-		"gfx/leaders/Western_European/Portrait_Norway_William_Steffens.tga"
-		"gfx/leaders/Western_European/Portrait_Norway_Oliver_Moystad.tga"
-		"gfx/leaders/Western_European/Portrait_Finland_Hjalmar_Siilasvuo.tga"
-		"gfx/leaders/Western_European/Portrait_Finland_Paavo_Talvela.tga"
-		"gfx/leaders/Western_European/Portrait_Finland_Kurt_Martti_Wallenius.tga"
-		"gfx/leaders/Balkans/Portrait_HUN_Karoly_Beregfy.tga"
-		"gfx/leaders/Balkans/Portrait_HUN_Janky_Kocsard.tga"
-		"gfx/leaders/Eastern_European/Portrait_Estonia_Aleksander_Tonisson.tga"
-		"gfx/leaders/Eastern_European/Portrait_Estonia_Andres_Larka.tga"
+		GFX_Denmark_Christian_von_Schalburg
+		GFX_Sweden_Ernst_Klercker
+		GFX_Norway_Trygve_Frivold_Graff_Wang
+		GFX_Norway_Wilhelm_Tangen_Hansteen
+		GFX_Norway_William_Steffens
+		GFX_Norway_Oliver_Moystad
+		GFX_Finland_Hjalmar_Siilasvuo
+		GFX_Finland_Paavo_Talvela
+		GFX_Finland_Kurt_Martti_Wallenius
+		GFX_HUN_Karoly_Beregfy
+		GFX_HUN_Janky_Kocsard
+		GFX_Estonia_Aleksander_Tonisson
+		GFX_Estonia_Andres_Larka
 	}
 	navy_portraits = {
 		#Generic European
