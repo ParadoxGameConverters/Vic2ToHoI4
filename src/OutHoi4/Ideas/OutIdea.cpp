@@ -78,6 +78,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const Idea& outIdea)
 	{
 		outStream << "\t\t\ton_add " << outIdea.onAdd << "\n";
 	}
+	if (!outIdea.onRemove.empty())
+	{
+		outStream << "\t\t\ton_remove " << outIdea.onRemove << "\n";
+	}
 	if (!outIdea.allowedToRemove.empty())
 	{
 		outStream << "\t\t\tallowed_to_remove " << outIdea.allowedToRemove << "\n";

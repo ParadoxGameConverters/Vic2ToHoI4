@@ -49,6 +49,7 @@ class Idea: commonItems::parser
 	std::string equipmentBonus;
 	std::string traits;
 	std::string onAdd;
+	std::string onRemove;
 	std::string allowedToRemove;
 
 	bool isDefault = false;

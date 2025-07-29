@@ -429,6 +429,26 @@ TEST(HoI4World_Ideas_IdeaTests, OnAddCanBeSet)
 }
 
 
+TEST(HoI4World_Ideas_IdeaTests, OnRemoveCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\ton_remove = yes";
+	input << "}";
+	const HoI4::Idea theIdea("theIdea", input);
+
+	std::stringstream actualOutput;
+	actualOutput << theIdea;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\t\ttheIdea = {\n";
+	expectedOutput << "\t\t\ton_remove = yes\n";
+	expectedOutput << "\t\t}\n";
+
+	ASSERT_EQ(expectedOutput.str(), actualOutput.str());
+}
+
+
 TEST(HoI4World_Ideas_IdeaTests, AllowedToRemoveCanBeSet)
 {
 	std::stringstream input;
