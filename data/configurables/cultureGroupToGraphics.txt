@@ -69,9 +69,9 @@ anglo_celtic = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Britain and its Dependencies
@@ -367,9 +367,9 @@ low_franconian = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#French
@@ -599,9 +599,9 @@ nordic_uralic = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
@@ -829,9 +829,9 @@ pan_germanic = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#German
@@ -1101,9 +1101,9 @@ italic = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Italian
@@ -1318,9 +1318,9 @@ hellenic_caucasian = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
@@ -1523,9 +1523,9 @@ other_balkan = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
@@ -1724,9 +1724,9 @@ serbo_croat_bulgarian = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
@@ -1934,9 +1934,9 @@ other_balto_slavic = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Other
@@ -2128,9 +2128,9 @@ eastern_slavic = {
 		"GFX_Portrait_Europe_Generic_land_4"
 		"GFX_Portrait_Europe_Generic_land_5"
 		"GFX_Portrait_europe_generic_land_6"
-		"GFX_Portrait_europe_generic_land_7"
-		"GFX_Portrait_europe_generic_land_8"
-		"GFX_Portrait_europe_generic_land_9"
+		"GFX_portrait_europe_generic_land_7"
+		"GFX_portrait_europe_generic_land_8"
+		"GFX_portrait_europe_generic_land_9"
 		"GFX_portrait_europe_generic_land_13"
 		"GFX_portrait_MEX_Luis_Maria_Martinez" #used for three, but this def has a small
 		#Soviets
