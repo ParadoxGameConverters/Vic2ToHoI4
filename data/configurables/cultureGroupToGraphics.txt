@@ -5289,8 +5289,8 @@ hispanic_pie = {
 	}
 	leader_portraits = {
 		communism = {
-			"gfx/leaders/South America/Portrait_South_America_Generic_1.dds"
-			"gfx/leaders/South America/Portrait_South_America_Generic_4.dds"
+			"GFX_South_America_Generic_1"
+			"GFX_South_America_Generic_4"
 			"GFX_par_rafael_franco"
 			"GFX_urg_gabriel_terra"
 			GFX_r56_generic_politician_south_america_1
@@ -5311,7 +5311,7 @@ hispanic_pie = {
 			"GFX_spr_jose_diaz"
 		}
 		democratic = {
-			"gfx/leaders/South America/Portrait_South_America_Generic_5.dds"
+			"GFX_South_America_Generic_5"
 			"GFX_Brazil_Plinio_Salgado"
 			"GFX_col_alfonso_lopez_pumarejo"
 			"GFX_cos_ricardo_jiminez_oreamuno"
@@ -5335,7 +5335,7 @@ hispanic_pie = {
 			"GFX_Spain_Manuel_Azana"
 		}
 		fascism = {
-			"gfx/leaders/South America/portrait_south_america_generic_3.dds"
+			"GFX_south_america_generic_3"
 			"gfx/leaders/South America/portrait_south_america_generic_8.dds"
 			"GFX_chl_arturo_alessandri"
 			"GFX_dom_rafael_trujillo"
@@ -5366,7 +5366,7 @@ hispanic_pie = {
 			GFX_Javier_I
 		}
 		neutrality = {
-			"gfx/leaders/South America/Portrait_South_America_Generic_6.dds"
+			"GFX_South_America_Generic_6"
 			"gfx/leaders/South America/portrait_south_america_generic_9.dds"
 			"GFX_Argentina_Agustin_Pedro_Justo"
 			"GFX_Bolivia_Jose_Luis_Tejada_Sorzano"
@@ -5390,7 +5390,7 @@ hispanic_pie = {
 			"GFX_spr_niceto_alcala_zamora"
 		}
 		radical = {
-			"gfx/leaders/South America/Portrait_South_America_Generic_2.dds"
+			"GFX_South_America_Generic_2"
 			"gfx/leaders/South America/portrait_south_america_generic_7.dds"
 			"GFX_cub_jose_barnet"
 			"GFX_gua_jorge_ubico"

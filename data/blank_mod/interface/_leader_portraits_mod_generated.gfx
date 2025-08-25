@@ -11081,12 +11081,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = GFX_Japan_Generic_1
-		texturefile = "gfx/leaders/JAP/Portrait_Japan_Generic_1.dds"
+		texturefile = "gfx/leaders/Generic/Portrait_Japan_Generic_1.tga"
 	}
 
 	spriteType = {
 		name = GFX_Japan_Generic_1_small
-		texturefile = "gfx/interface/ideas/idea_Japan_Generic_1.dds"
+		texturefile = "gfx/interface/ideas/idea_Japan_Generic_1.tga"
 	}
 
 	spriteType = {
@@ -11147,16 +11147,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Japan_Yasuhito_small
 		texturefile = "gfx/interface/ideas/idea_Japan_Yasuhito.tga"
-	}
-
-	spriteType = {
-		name = GFX_Japan_Generic_1
-		texturefile = "gfx/leaders/Generic/Portrait_Japan_Generic_1.tga"
-	}
-
-	spriteType = {
-		name = GFX_Japan_Generic_1_small
-		texturefile = "gfx/interface/ideas/idea_Japan_Generic_1.tga"
 	}
 
 	spriteType = {
@@ -12191,7 +12181,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = GFX_r56_generic_politician_south_america_1
-		texturefile = "gfx/leaders/Generic/r56_portrait_generic_politician_south_america_1.dds"
+		texturefile = "gfx/leaders/generic/r56_portrait_generic_politician_south_america_1.dds"
 	}
 
 	spriteType = {
@@ -12201,7 +12191,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = GFX_nat_carib_democratic
-		texturefile = "gfx/leaders/Central_American_Native/portrait_nat_carib_democratic.dds"
+		texturefile = "gfx/leaders/central_american_native/portrait_nat_carib_democratic.dds"
 	}
 
 	spriteType = {
@@ -12261,7 +12251,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = GFX_nat_carib_absolutist
-		texturefile = "gfx/leaders/Central_American_Native/portrait_nat_carib_absolutist.dds"
+		texturefile = "gfx/leaders/central_american_native/portrait_nat_carib_absolutist.dds"
 	}
 
 	spriteType = {
@@ -12430,16 +12420,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_r56_generic_politician_south_america_1
-		texturefile = "gfx/leaders/generic/r56_portrait_generic_politician_south_america_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_r56_generic_politician_south_america_1_small
-		texturefile = "gfx/interface/ideas/idea_r56_generic_politician_south_america_1.dds"
-	}
-
-	spriteType = {
 		name = GFX_nat_carib_communist
 		texturefile = "gfx/leaders/Central_American_Native/portrait_nat_carib_communist.dds"
 	}
@@ -12477,26 +12457,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_pan_harmodio_arias_madrid_small
 		texturefile = "gfx/interface/ideas/idea_pan_harmodio_arias_madrid.dds"
-	}
-
-	spriteType = {
-		name = GFX_nat_carib_absolutist
-		texturefile = "gfx/leaders/central_american_native/portrait_nat_carib_absolutist.dds"
-	}
-
-	spriteType = {
-		name = GFX_nat_carib_absolutist_small
-		texturefile = "gfx/interface/ideas/idea_nat_carib_absolutist.dds"
-	}
-
-	spriteType = {
-		name = GFX_nat_carib_democratic
-		texturefile = "gfx/leaders/central_american_native/portrait_nat_carib_democratic.dds"
-	}
-
-	spriteType = {
-		name = GFX_nat_carib_democratic_small
-		texturefile = "gfx/interface/ideas/idea_nat_carib_democratic.dds"
 	}
 
 	spriteType = {
@@ -13110,6 +13070,26 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_South_America_Generic_1
+		texturefile = "gfx/leaders/South America/Portrait_South_America_Generic_1.dds"
+	}
+
+	spriteType = {
+		name = GFX_South_America_Generic_1_small
+		texturefile = "gfx/interface/ideas/idea_South_America_Generic_1.dds"
+	}
+
+	spriteType = {
+		name = GFX_South_America_Generic_4
+		texturefile = "gfx/leaders/South America/Portrait_South_America_Generic_4.dds"
+	}
+
+	spriteType = {
+		name = GFX_South_America_Generic_4_small
+		texturefile = "gfx/interface/ideas/idea_South_America_Generic_4.dds"
+	}
+
+	spriteType = {
 		name = GFX_par_rafael_franco
 		texturefile = "gfx/leaders/PAR/portrait_par_rafael_franco.dds"
 	}
@@ -13267,6 +13247,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_spr_jose_diaz_small
 		texturefile = "gfx/interface/ideas/idea_spr_jose_diaz.dds"
+	}
+
+	spriteType = {
+		name = GFX_South_America_Generic_5
+		texturefile = "gfx/leaders/South America/Portrait_South_America_Generic_5.dds"
+	}
+
+	spriteType = {
+		name = GFX_South_America_Generic_5_small
+		texturefile = "gfx/interface/ideas/idea_South_America_Generic_5.dds"
 	}
 
 	spriteType = {
@@ -13457,6 +13447,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Spain_Manuel_Azana_small
 		texturefile = "gfx/interface/ideas/idea_Spain_Manuel_Azana.dds"
+	}
+
+	spriteType = {
+		name = GFX_south_america_generic_3
+		texturefile = "gfx/leaders/South America/portrait_south_america_generic_3.dds"
+	}
+
+	spriteType = {
+		name = GFX_south_america_generic_3_small
+		texturefile = "gfx/interface/ideas/idea_south_america_generic_3.dds"
 	}
 
 	spriteType = {
@@ -13670,6 +13670,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_South_America_Generic_6
+		texturefile = "gfx/leaders/South America/Portrait_South_America_Generic_6.dds"
+	}
+
+	spriteType = {
+		name = GFX_South_America_Generic_6_small
+		texturefile = "gfx/interface/ideas/idea_South_America_Generic_6.dds"
+	}
+
+	spriteType = {
 		name = GFX_Argentina_Agustin_Pedro_Justo
 		texturefile = "gfx/leaders/ARG/Portrait_Argentina_Agustin_Pedro_Justo.dds"
 	}
@@ -13847,6 +13857,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_spr_niceto_alcala_zamora_small
 		texturefile = "gfx/interface/ideas/idea_spr_niceto_alcala_zamora.dds"
+	}
+
+	spriteType = {
+		name = GFX_South_America_Generic_2
+		texturefile = "gfx/leaders/South America/Portrait_South_America_Generic_2.dds"
+	}
+
+	spriteType = {
+		name = GFX_South_America_Generic_2_small
+		texturefile = "gfx/interface/ideas/idea_South_America_Generic_2.dds"
 	}
 
 	spriteType = {

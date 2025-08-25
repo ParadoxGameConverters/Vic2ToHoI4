@@ -37,7 +37,7 @@ def extract_sprite_textures(interface_dirs):
 def extract_portrait_references(file_path):
     references = []
     seen = set()
-    portrait_pattern = re.compile(r'"?(GFX[^"\s]+|gfx[^"\s]+)"?')
+    portrait_pattern = re.compile(r'\s+"?(GFX[^"\n]+|gfx[^"\n]+)"?')
 
     with open(file_path, encoding="utf-8") as f:
         for line in f:
