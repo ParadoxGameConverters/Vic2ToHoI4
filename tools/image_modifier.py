@@ -51,6 +51,22 @@ def extract_portrait_references(file_path):
 
     return references
 
+# === Discover all DLC gfx/interface directories ===
+def discover_dlc_dirs(hoi4_path):
+    dlc_interface_dirs = []
+    dlc_gfx_dirs = []
+    dlc_dir = hoi4_path / "dlc"
+    if dlc_dir.exists():
+        for subdir in dlc_dir.iterdir():
+            if subdir.is_dir():
+                intf = subdir / "interface"
+                gfx = subdir / "gfx"
+                if intf.exists():
+                    dlc_interface_dirs.append(intf)
+                if gfx.exists():
+                    dlc_gfx_dirs.append(gfx)
+    return dlc_interface_dirs, dlc_gfx_dirs
+
 # === Load all image files from gfx directories ===
 def load_existing_files(*gfx_dirs):
     existing = {}
@@ -114,10 +130,13 @@ if not hoi4_exe.exists():
 
 interface_dirs = [hoi4_path / "interface", mod_interface_dir]
 gfx_dirs = [hoi4_path / "gfx", mod_gfx_dir]
+dlc_interface_dirs, dlc_gfx_dirs = discover_dlc_dirs(hoi4_path)
 
 portrait_refs = extract_portrait_references(config_file)
 existing_files = load_existing_files(*gfx_dirs)
 sprite_textures = extract_sprite_textures(interface_dirs)
+dlc_sprites = extract_sprite_textures(dlc_interface_dirs)
+dlc_files = load_existing_files(*dlc_gfx_dirs)
 
 log = open("tools/portraits.log", "w")
 gfx_file = open("data/blank_mod/interface/_leader_portraits_mod_generated.gfx", "w")
@@ -138,7 +157,7 @@ for ref in portrait_refs:
                 gfx_file.write(GetDefinition(texture))
             else:
                 log.write(f"Missing texture file for {ref}: {texture}\n")
-        else:
+        elif normalized_ref not in dlc_sprites:
             log.write(f"Missing sprite: {ref}\n")
     else:
         normalized_path = ref_lower.lstrip("/")
@@ -147,7 +166,7 @@ for ref in portrait_refs:
             CreateSmallVersion(image_file)
             gfx_file.write(GetDefinition(ref))
             UpdateMappings(ref)
-        else:
+        elif normalized_path not in dlc_files:
             log.write(f"Missing file: {ref}\n")
 
 gfx_file.write("}")
