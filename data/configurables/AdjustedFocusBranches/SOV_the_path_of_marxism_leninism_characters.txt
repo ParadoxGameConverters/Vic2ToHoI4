@@ -883,6 +883,11 @@ UTI = {
 
     UTI_genrikh_yagoda = {
         name = ""
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_genrikh_yagoda"
+            }
+        }
         allowed_civil_war = {
             OR = {
                 AND = { #If not aligned by Right oppo, then stays with Stalin
@@ -921,6 +926,11 @@ UTI = {
 
     UTI_nikolay_yezhov = {
         name = ""
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_nikolay_yezhov"
+            }
+        }
         allowed_civil_war = {
             OR = {
                 AND = { #If not aligned by Right oppo, then stays with Stalin
@@ -970,6 +980,14 @@ UTI = {
             NOT = { tag = event_target:SOV_the_path_of_marxism_leninism_SOV }
         }
         name = ""
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_SOV_lavrenty_beriya"
+            }
+            army = {
+                small = "GFX_idea_SOV_lavrenty_beriya"
+            }
+        }
         advisor = {
             slot = political_advisor
             idea_token = UTI_lavrenty_beriya
@@ -1014,6 +1032,14 @@ UTI = {
             has_government = communism
         }
         name = ""
+        portraits = {
+            civilian = {
+                large = "GFX_portrait_SOV_lavrenty_beriya"
+            }
+            army = {
+                small = "GFX_idea_SOV_lavrenty_beriya"
+            }
+        }
         advisor = {
             slot = political_advisor
             idea_token = UTI_lavrenty_beriya
