@@ -52,10 +52,9 @@ def extract_portrait_references(file_path):
     return references
 
 # === Discover all DLC gfx/interface directories ===
-def discover_dlc_dirs(hoi4_path):
+def discover_dlc_dirs(dlc_dir):
     dlc_interface_dirs = []
     dlc_gfx_dirs = []
-    dlc_dir = hoi4_path / "dlc"
     if dlc_dir.exists():
         for subdir in dlc_dir.iterdir():
             if subdir.is_dir():
@@ -130,7 +129,10 @@ if not hoi4_exe.exists():
 
 interface_dirs = [hoi4_path / "interface", mod_interface_dir]
 gfx_dirs = [hoi4_path / "gfx", mod_gfx_dir]
-dlc_interface_dirs, dlc_gfx_dirs = discover_dlc_dirs(hoi4_path)
+dlc_interface_dirs, dlc_gfx_dirs = discover_dlc_dirs(hoi4_path / "dlc")
+integrated_dlc_interface_dirs, integrated_dlc_gfx_dirs = discover_dlc_dirs(hoi4_path / "integrated_dlc")
+interface_dirs.extend(integrated_dlc_interface_dirs)
+gfx_dirs.extend(integrated_dlc_gfx_dirs)
 
 portrait_refs = extract_portrait_references(config_file)
 existing_files = load_existing_files(*gfx_dirs)
