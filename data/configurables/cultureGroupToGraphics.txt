@@ -349,10 +349,10 @@ anglo_celtic = {
 		"gfx/leaders/ENG/portrait_eng_krystyna_skarbek.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_brittish_stoicism" # Yes, Paradox did misspell this
+		"gfx/interface/ideas/brittish_stoicism.dds" # Yes, Paradox did misspell this
 	}
 	female_monarch_portraits = {
-		"GFX_brittish_stoicism"
+		"gfx/interface/ideas/brittish_stoicism.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -581,10 +581,10 @@ low_franconian = {
 		"gfx/leaders/FRA/portrait_fra_odette_samson.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_france_shield"
+		"gfx/interface/ideas/crowns/france_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_france_shield"
+		"gfx/interface/ideas/crowns/france_shield.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -811,10 +811,10 @@ nordic_uralic = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_sweden"
+		"gfx/interface/ideas/crowns/sweden_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_sweden"
+		"gfx/interface/ideas/crowns/sweden_shield.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -1081,10 +1081,10 @@ pan_germanic = {
 		"GFX_Germany_Hilter_F"
 	}
 	male_monarch_portraits = {
-		"GFX_germany_shield"
+		"gfx/interface/ideas/crowns/germany_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_germany_shield"
+		"gfx/interface/ideas/crowns/germany_shield.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -1298,10 +1298,10 @@ italic = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_italy_shield"
+		"gfx/interface/ideas/crowns/italy_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_italy_shield"
+		"gfx/interface/ideas/crowns/italy_shield.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -1504,10 +1504,10 @@ hellenic_caucasian = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_greece_shield"
+		"gfx/interface/ideas/crowns/greece_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_greece_shield"
+		"gfx/interface/ideas/crowns/greece_shield.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -1704,10 +1704,10 @@ other_balkan = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_romania_shield"
+		"gfx/interface/ideas/crowns/romania_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_romania_shield"
+		"gfx/interface/ideas/crowns/romania_shield.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -1914,10 +1914,10 @@ serbo_croat_bulgarian = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_bulgaria_shield"
+		"gfx/interface/ideas/crowns/bulgaria_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_bulgaria_shield"
+		"gfx/interface/ideas/crowns/bulgaria_shield.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -2108,10 +2108,10 @@ other_balto_slavic = {
 		"gfx/leaders/POL/portrait_pol_krystyna_skarbek.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_commonwealth_shield"
+		"gfx/interface/ideas/crowns/commonwealth_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_commonwealth_shield"
+		"gfx/interface/ideas/crowns/commonwealth_shield.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -2371,10 +2371,10 @@ eastern_slavic = {
 		"gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_russia_shield"
+		"gfx/interface/ideas/crowns/russia_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_russia_shield"
+		"gfx/interface/ideas/crowns/russia_shield.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -2527,10 +2527,10 @@ indian = {
 		"gfx/leaders/RAJ/portrait_raj_noor_inayat_khan.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_idea_raj_indian_gentlemen_officers"
+		"gfx/interface/ideas/idea_raj_indian_gentlemen_officers.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_idea_raj_indian_gentlemen_officers"
+		"gfx/interface/ideas/idea_raj_indian_gentlemen_officers.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -2678,10 +2678,10 @@ turkic = {
 		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_focus_TUR_turanist_ambition"
+		"gfx/interface/goals/focus_TUR_turanist_ambition.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_focus_TUR_turanist_ambition"
+		"gfx/interface/goals/focus_TUR_turanist_ambition.dds"
 	}
 	graphical_culture = asian_gfx # Not just Turkey
 	graphical_culture_2d = middle_eastern_2d
@@ -2826,10 +2826,10 @@ iranian = {
 		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_persia"
+		"gfx/interface/ideas/crowns/persia.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_persia"
+		"gfx/interface/ideas/crowns/persia.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -2981,10 +2981,10 @@ north_african = {
 		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_egypt"
+		"gfx/interface/ideas/crowns/egypt.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_egypt"
+		"gfx/interface/ideas/crowns/egypt.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -3098,10 +3098,10 @@ near_eastern = {
 		"gfx/leaders/Arabia/portrait_arabia_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_egypt_emblem"
+		"gfx/interface/ideas/crowns/egypt_emblem.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_egypt_emblem"
+		"gfx/interface/ideas/crowns/egypt_emblem.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -3225,10 +3225,10 @@ tibetian_burman_karenic = {
 		"gfx/leaders/India/portrait_india_generic_operative_female_5.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_bhutan"
+		"gfx/interface/ideas/crowns/bhutan.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_bhutan"
+		"gfx/interface/ideas/crowns/bhutan.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3385,10 +3385,10 @@ asian_steppe = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_bhutan" # Revise
+		"gfx/interface/ideas/crowns/bhutan.dds" # Revise
 	}
 	female_monarch_portraits = {
-		"GFX_bhutan" # Revise
+		"gfx/interface/ideas/crowns/bhutan.dds" # Revise
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3546,10 +3546,10 @@ austronesian = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_cambodia" # Revise
+		"gfx/interface/ideas/crowns/cambodia.dds" # Revise
 	}
 	female_monarch_portraits = {
-		"GFX_cambodia" # Revise
+		"gfx/interface/ideas/crowns/cambodia.dds" # Revise
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3681,10 +3681,10 @@ tai = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_cambodia" # Revise
+		"gfx/interface/ideas/crowns/cambodia.dds" # Revise
 	}
 	female_monarch_portraits = {
-		"GFX_cambodia" # Revise
+		"gfx/interface/ideas/crowns/cambodia.dds" # Revise
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3832,10 +3832,10 @@ austroasiatic = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_cambodia"
+		"gfx/interface/ideas/crowns/cambodia.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_cambodia"
+		"gfx/interface/ideas/crowns/cambodia.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3966,10 +3966,10 @@ tungustic = {
 		"gfx/leaders/CHI/portrait_chi_yoshiko_kawashima.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_idea_man_low_legitimacy5"
+		"gfx/interface/ideas/idea_man_low_legitimacy5.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_idea_man_low_legitimacy5"
+		"gfx/interface/ideas/idea_man_low_legitimacy5.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -4098,10 +4098,10 @@ koreanic = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_joseon_emblem"
+		"gfx/interface/ideas/crowns/joseon_emblem.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_joseon_emblem"
+		"gfx/interface/ideas/crowns/joseon_emblem.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -4226,10 +4226,10 @@ paleosiberian = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_vojtek_commander" # Iomante
+		"gfx/achievements/vojtek_commander.dds" # Iomante
 	}
 	female_monarch_portraits = {
-		"GFX_vojtek_commander"
+		"gfx/achievements/vojtek_commander.dds"
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = asian_2d
@@ -4425,10 +4425,10 @@ japonic = {
 		"gfx/leaders/Asia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_focus_jap_pacific_guardian" # This is a shield with the Japanese flag on it
+		"gfx/interface/goals/focus_jap_pacific_guardian.dds" # This is a shield with the Japanese flag on it
 	}
 	female_monarch_portraits = {
-		"GFX_focus_jap_pacific_guardian" # This is so it matches with most of the world
+		"gfx/interface/goals/focus_jap_pacific_guardian.dds" # This is so it matches with most of the world
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -4593,10 +4593,10 @@ sinitic = {
 		"gfx/leaders/CHI/portrait_chi_yoshiko_kawashima.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_focus_man_claim_the_mandate_of_heaven"
+		"gfx/interface/goals/focus_man_claim_the_mandate_of_heaven.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_focus_man_claim_the_mandate_of_heaven"
+		"gfx/interface/goals/focus_man_claim_the_mandate_of_heaven.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -4711,10 +4711,10 @@ australia_melanesia_madagascar = {
 		"gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_tonga"
+		"gfx/interface/ideas/crowns/tonga.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_tonga"
+		"gfx/interface/ideas/crowns/tonga.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = asian_2d
@@ -4839,10 +4839,10 @@ polynesia_micronesia = {
 		"gfx/leaders/Australia/portrait_asia_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_tonga_shield"
+		"gfx/interface/ideas/crowns/tonga_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_tonga_shield"
+		"gfx/interface/ideas/crowns/tonga_shield.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = asian_2d
@@ -4949,10 +4949,10 @@ north_american_native = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_female_5.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_longobards" #Revise
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	female_monarch_portraits = {
-		"GFX_longobards" #Revise
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
@@ -5072,10 +5072,10 @@ central_american_native = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_longobards" #Revise
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	female_monarch_portraits = {
-		"GFX_longobards" #Revise
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
@@ -5207,10 +5207,10 @@ south_american_native = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_longobards" #Revise
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	female_monarch_portraits = {
-		"GFX_longobards" #Revise
+		"gfx/interface/ideas/crowns/longobards.dds" #Revise
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
@@ -5487,10 +5487,10 @@ hispanic_pie = {
 		"gfx/leaders/South America/portrait_south_america_generic_operative_female_6.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_brazil_shield"
+		"gfx/interface/ideas/crowns/brazil_shield.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_brazil_shield"
+		"gfx/interface/ideas/crowns/brazil_shield.dds"
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
@@ -5610,10 +5610,10 @@ cushitic_omotic_nilotic = {
 		"gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_ethiopia"
+		"gfx/interface/ideas/crowns/ethiopia.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_ethiopia"
+		"gfx/interface/ideas/crowns/ethiopia.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
@@ -5775,10 +5775,10 @@ niger_congo = {
 		"gfx/leaders/Africa/portrait_africa_generic_operative_female_9.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_ethiopia_emblem"
+		"gfx/interface/ideas/crowns/ethiopia_emblem.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_ethiopia_emblem"
+		"gfx/interface/ideas/crowns/ethiopia_emblem.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
@@ -5982,10 +5982,10 @@ african = {
 		"gfx/leaders/USA/portrait_usa_josephine_baker.dds"
 	}
 	male_monarch_portraits = {
-		"GFX_ethiopia"
+		"gfx/interface/ideas/crowns/ethiopia.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_ethiopia"
+		"gfx/interface/ideas/crowns/ethiopia.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
@@ -6465,10 +6465,10 @@ classical_latin = {
 		radical = { "GFX_idea_alfredo_guzzoni" } # Revise
 	}
 	male_monarch_portraits = {
-		"GFX_camp_crown"
+		"gfx/interface/ideas/crowns/camp_crown.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_camp_crown"
+		"gfx/interface/ideas/crowns/camp_crown.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -6544,10 +6544,10 @@ deathbringers = {
 		GFX_synthetic_operative
 	}
 	male_monarch_portraits = {
-		"GFX_eldritch"
+		"gfx/interface/ideas/crowns/eldritch.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_eldritch"
+		"gfx/interface/ideas/crowns/eldritch.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -6620,10 +6620,10 @@ silhoutte_o = {
 		"GFX_operative_unknown"
 	}
 	male_monarch_portraits = {
-		"GFX_spr_anarchist_society"
+		"gfx/interface/ideas/spr_anarchist_society.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_spr_anarchist_society"
+		"gfx/interface/ideas/spr_anarchist_society.dds"
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = african_2d
@@ -6695,10 +6695,10 @@ the_portraitless = {
 		"tools/art/portrait_operative_background.png"
 	}
 	male_monarch_portraits = {
-		"GFX_brains"
+		"gfx/achievements/brains.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_brains"
+		"gfx/achievements/brains.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -6761,10 +6761,10 @@ jan_mayenese = {
 		GFX_bear_buisnessman_operator # Revise
 	}
 	male_monarch_portraits = {
-		"GFX_vojtek_commander"
+		"gfx/achievements/vojtek_commander.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_vojtek_commander"
+		"gfx/achievements/vojtek_commander.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -6837,10 +6837,10 @@ cats = {
 		"GFX_cat_operative_F"
 	}
 	male_monarch_portraits = {
-		"GFX_idea_generic_motorized_equipment_manufacturer_1"
+		"gfx/interface/ideas/idea_generic_motorized_equipment_manufacturer_1.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_idea_generic_motorized_equipment_manufacturer_1"
+		"gfx/interface/ideas/idea_generic_motorized_equipment_manufacturer_1.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -6920,10 +6920,10 @@ falklands_sunset_invasion = {
 		GFX_Spymaster_Glitterhoof # Revise
 	}
 	male_monarch_portraits = {
-		"GFX_idea_porsche"
+		"gfx/interface/ideas/idea_porsche.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_idea_porsche"
+		"gfx/interface/ideas/idea_porsche.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -7061,10 +7061,10 @@ komodo = {
 		GFX_dragon_businessman_operative # Revise
 	}
 	male_monarch_portraits = {
-		"GFX_idea_man_low_legitimacy5"
+		"gfx/interface/ideas/idea_man_low_legitimacy5.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_idea_man_low_legitimacy5"
+		"gfx/interface/ideas/idea_man_low_legitimacy5.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = asian_2d
@@ -7137,10 +7137,10 @@ lemonade_stand = {
 		GFX_duck_operative_F
 	}
 	male_monarch_portraits = {
-		"GFX_zoo"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_zoo"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -7214,10 +7214,10 @@ indian_calvary = {
 		GFX_elephant_operative_F
 	}
 	male_monarch_portraits = {
-		"GFX_zoo"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_zoo"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -7291,10 +7291,10 @@ SHH_protein = {
 		GFX_hedgehog_operative_F
 	}
 	male_monarch_portraits = {
-		"GFX_zoo"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_zoo"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -7368,10 +7368,10 @@ animalia = {
 		GFX_red_panda_operative_F
 	}
 	male_monarch_portraits = {
-		"GFX_zoo"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_zoo"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
