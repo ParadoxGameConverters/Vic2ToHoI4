@@ -511,6 +511,7 @@ configure_file("${DATA_FILE_DIR}/configurables/CountryGrammar.txt" "${CONVERTER_
 configure_file("${DATA_FILE_DIR}/configurables/CountryNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryNamesMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/country_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/cultureGroupToGraphics.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/cultureGroupToGraphics.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/Divergences of Darkness_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Divergences of Darkness_province_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/FlagsToIdeasMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/foreignInfluenceDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/foreignInfluenceDecisions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/GovernmentMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/GovernmentMappings.txt" COPYONLY)

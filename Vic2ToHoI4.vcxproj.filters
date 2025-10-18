@@ -73,6 +73,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_characters.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_ideas.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\AdjustedFocusBranches\SOV_the_path_of_marxism_leninism.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\AdjustedFocusBranches\SOV_the_path_of_marxism_leninism_characters.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\AdjustedFocusBranches\SOV_the_path_of_marxism_leninism_ideas.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
+    <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus_ideas.txt">
+      <Filter>data\configurables\AdjustedFocusBranches</Filter>
+    </Text>
     <Text Include="data\configurables\ai_peaces.txt">
       <Filter>data\configurables</Filter>
     </Text>
@@ -118,30 +142,6 @@
     <Text Include="data\configurables\CodenamesOperatives\TUR_operative_codenames.txt">
       <Filter>data\configurables\CodenamesOperatives</Filter>
     </Text>
-    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_characters.txt">
-      <Filter>data\configurables\AdjustedFocusBranches</Filter>
-    </Text>
-    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament.txt">
-      <Filter>data\configurables\AdjustedFocusBranches</Filter>
-    </Text>
-    <Text Include="data\configurables\AdjustedFocusBranches\FRA_begin_rearmament_ideas.txt">
-      <Filter>data\configurables\AdjustedFocusBranches</Filter>
-    </Text>
-    <Text Include="data\configurables\AdjustedFocusBranches\SOV_the_path_of_marxism_leninism.txt">
-      <Filter>data\configurables\AdjustedFocusBranches</Filter>
-    </Text>
-    <Text Include="data\configurables\AdjustedFocusBranches\SOV_the_path_of_marxism_leninism_characters.txt">
-      <Filter>data\configurables\AdjustedFocusBranches</Filter>
-    </Text>
-    <Text Include="data\configurables\AdjustedFocusBranches\SOV_the_path_of_marxism_leninism_ideas.txt">
-      <Filter>data\configurables\AdjustedFocusBranches</Filter>
-    </Text>
-    <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus.txt">
-      <Filter>data\configurables\AdjustedFocusBranches</Filter>
-    </Text>
-    <Text Include="data\configurables\AdjustedFocusBranches\uk_colonial_focus_ideas.txt">
-      <Filter>data\configurables\AdjustedFocusBranches</Filter>
-    </Text>
     <Text Include="data\configurables\Localisations\ArticleRules.txt">
       <Filter>data\configurables\Localisations</Filter>
     </Text>
@@ -179,6 +179,9 @@
       <Filter>data\configurables</Filter>
     </Text>
     <Text Include="data\configurables\cultureGroupToGraphics.txt">
+      <Filter>data\configurables</Filter>
+    </Text>
+    <Text Include="data\configurables\Divergences of Darkness_province_mappings.txt">
       <Filter>data\configurables</Filter>
     </Text>
     <Text Include="data\configurables\factions_mappings.txt">
