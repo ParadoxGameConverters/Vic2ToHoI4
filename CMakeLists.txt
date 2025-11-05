@@ -1074,9 +1074,9 @@ add_custom_target(lcov
 add_custom_command(TARGET lcov
 	COMMAND echo "=================== LCOV ===================="
 	COMMAND echo "-- Passing lcov tool under code coverage"
-	COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info --exclude *Tests.cpp
+	COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info --exclude *Tests.cpp --ignore-errors inconsistent,inconsistent,unused,unused
 	COMMAND echo "-- Generating HTML output files"
-	COMMAND genhtml lcoverage/main_coverage.info --output-directory lcoverage
+	COMMAND genhtml lcoverage/main_coverage.info --output-directory lcoverage --ignore-errors inconsistent,inconsistent,unused,unused
 )
 add_dependencies(gcov Vic2ToHoi4ConverterTests)
 
