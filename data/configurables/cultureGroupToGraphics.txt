@@ -3143,6 +3143,7 @@ tibetian_burman_karenic = {
 			"GFX_r56_generic_politician_asia_2_communism"
 			GFX_Burma_Ba_Cho
 			GFX_XSM_Sun_Lianguang
+			GFX_portrait_TIB_thubten_kunphela
 		}
 		democratic = {
 			"GFX_Asia_Generic_democracy"
@@ -3167,6 +3168,8 @@ tibetian_burman_karenic = {
 			"GFX_Guanxi_Clique_Li_Zongren"
 			"GFX_yun_long_yun"
 			GFX_TAJ_Bobodzhan_Gafurov
+			GFX_portrait_TIB_tsarong_dzasa
+			GFX_portrait_TIB_thubten_kunphela
 		}
 		radical = {
 			"GFX_Asia_Generic_2"
@@ -3282,6 +3285,8 @@ asian_steppe = {
 			"GFX_r56_generic_politician_asia_1_communism"
 			"GFX_r56_generic_politician_asia_2_communism"
 			GFX_Zhumabay_Shayakhmetov
+			GFX_portrait_MEN_jin_yongchang
+			GFX_portrait_MEN_altanochir
 		}
 		democratic = {
 			"GFX_Asia_Generic_democracy"
@@ -3298,12 +3303,14 @@ asian_steppe = {
 			"GFX_r56_generic_politician_asia_1_fascism"
 			"GFX_r56_generic_politician_asia_2_fascism"
 			GFX_Mongolia_Sternberg
+			GFX_portrait_MEN_li_shouxin
 		}
 		absolutist = {
 			GFX_MON_Gengis_Khan
 			GFX_FNG_Zhang_Zuolin
 			GFX_SIK_Hoja_Niyaz_Haji
 			"GFX_men_demchugdongrub"
+			GFX_portrait_MEN_yondonwangchug
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -3313,6 +3320,7 @@ asian_steppe = {
 			"GFX_xsm_ma_bufang"
 			GFX_ALO_Alikhan_Bukeikhanov
 			GFX_XSM_Ma_Lin
+			GFX_portrait_MEN_jodbajab
 		}
 		radical = {
 			"GFX_Asia_Generic_2"
@@ -3611,6 +3619,7 @@ tai = {
 			GFX_Shan_Sao_Shwe_Thaik
 			GFX_Siam_Rama_IX
 			GFX_Siam_Rama_VII
+			GFX_portrait_LAO_sisavang_vong
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -3761,6 +3770,8 @@ austroasiatic = {
 			GFX_Cambodia_Sisowath_Monivong
 			GFX_Cambodia_Khuang_Aphaiwong
 			GFX_Cambodia_Norodom_Suramarit
+			GFX_portrait_CAM_norodom_sihanouk
+			GFX_portrait_VIN_emperor_bao_dai
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -3883,6 +3894,7 @@ tungustic = {
 			"GFX_Asia_Generic_democracy"
 			"GFX_r56_generic_politician_asia_1_democracy"
 			"GFX_chi_zhang_xueliang"
+			GFX_portrait_MAN_ma_zhanshan
 		}
 		fascism = {
 			GFX_FNG_Zhang_Haipeng
@@ -3894,6 +3906,7 @@ tungustic = {
 			"GFX_man_aisin_gioro_xiqia"
 			GFX_China_Puyi
 			GFX_China_Pujie
+			GFX_portrait_MAN_pujie
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -4024,6 +4037,7 @@ koreanic = {
 		absolutist = {
 			GFX_Yi_Un
 			"GFX_Portrait_Asia_Generic_land_1"
+			GFX_portrait_KOR_yi_un
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -4327,17 +4341,20 @@ japonic = {
 			"GFX_jap_tetsu_katayama"
 			"GFX_Japan_Soemu_Toyoda"
 			"GFX_r56_generic_politician_asia_1_democracy"
+			"GFX_portrait_JAP_keisuke_okada"
 		}
 		fascism = {
 			"GFX_Asia_Generic_3"
 			"gfx/leaders/Asia/portrait_asia_generic_4.dds"
 			"GFX_r56_generic_politician_asia_1_fascism"
 			"GFX_r56_generic_politician_asia_2_fascism"
+			"GFX_portrait_JAP_hideki_tojo"
 		}
 		absolutist = {
 			"GFX_Japan_Hirohito"
 			GFX_Japan_Hirohito_kr
 			GFX_Japan_Yasuhito
+			"GFX_portrait_JAP_fumimaro_konoe"
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -4345,6 +4362,7 @@ japonic = {
 			"GFX_Asia_Generic_warlord2"
 			"GFX_Japan_Generic_3"
 			"GFX_Japan_Otozo_Yamada"
+			"GFX_portrait_JAP_yoshitoshi_tokugawa"
 		}
 		radical = {
 			"GFX_Asia_Generic_2"
@@ -4593,10 +4611,10 @@ sinitic = {
 		"gfx/leaders/CHI/portrait_chi_yoshiko_kawashima.dds"
 	}
 	male_monarch_portraits = {
-		"gfx/interface/goals/focus_man_claim_the_mandate_of_heaven.dds"
+		"GFX_idea_MAN_the_kangde_emperor"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/goals/focus_man_claim_the_mandate_of_heaven.dds"
+		"GFX_idea_MAN_the_kangde_emperor"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
