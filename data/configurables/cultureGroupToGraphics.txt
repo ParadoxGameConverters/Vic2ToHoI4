@@ -233,6 +233,8 @@ anglo_celtic = {
 			GFX_CSA_benjamin_katine
 			GFX_NEE_Nelson_Rockefeller
 			GFX_TEX_james_richardson
+			"GFX_portrait_BRM_archibald_cochrane"
+			"GFX_portrait_PAL_harold_macmichael"
 		}
 	}
 	female_portraits = {
@@ -907,6 +909,7 @@ pan_germanic = {
 		democratic = {
 			"GFX_europe_generic_5"
 			"GFX_Germany_Konrad_Adenauer"
+			"GFX_portrait_ISR_david_ben_gurion"
 		}
 		fascism = {
 			"GFX_europe_generic_6"
@@ -2745,6 +2748,7 @@ iranian = {
 			GFX_Persia_Ahmad_Qavam
 			GFX_Persia_Mohammad_Ali_Foroughi
 			GFX_SYR_Sabri
+			"GFX_portrait_kur_seyid_riza"
 		}
 		fascism = {
 			"GFX_Arabia_Generic_3"
@@ -2755,6 +2759,7 @@ iranian = {
 			GFX_LBA_Abu_Meniar
 			GFX_PAL_The_Mufti
 			GFX_YEM_Abdullah_as_Sallal
+			"GFX_portrait_Ihsan_Nuri_Pasa"
 		}
 		absolutist = {
 			"GFX_Afghanistan_Mohammed_Zahir_Shah"
@@ -2763,6 +2768,7 @@ iranian = {
 			GFX_Afghan_Mohammed_Zahir
 			GFX_Persia_Ahmad_Shah_Qajar
 			GFX_Persia_Hassan_Mirza_Qajar
+			"GFX_portrait_TAJ_alim_khan"
 		}
 		neutrality = {
 			"GFX_kur_seyid_riza"
@@ -2884,6 +2890,8 @@ north_african = {
 			GFX_PAL_Alami
 			GFX_PAL_Nashashibi
 			GFX_SYR_Sabri
+			"GFX_portrait_SYR_hashim_al_atassi"
+			"GFX_portrait_SYR_mehemed_ali_abed"
 		}
 		fascism = {
 			"GFX_Arabia_Generic_3"
@@ -2913,6 +2921,9 @@ north_african = {
 			GFX_MOR_El_Glaui
 			GFX_Tunisia_Moncef_Bey
 			GFX_YEM_Ahmad_bin_Yahya
+			"GFX_portrait_egy_faud_i"
+			"GFX_portrait_JOR_abdullah_bin_al_hussein"
+			"GFX_portrait_PAL_amin_al_husseini"
 		}
 		neutrality = {
 			"GFX_kur_seyid_riza"
@@ -3122,6 +3133,7 @@ tibetian_burman_karenic = {
 		GFX_AOG_Generic_1
 		GFX_Asia_Generic_land_new_1
 		GFX_Burma_Smith_Dun
+		"GFX_portrait_BRM_ne_win"
 	}
 	navy_portraits = {
 		#Generic Asian
@@ -3143,12 +3155,13 @@ tibetian_burman_karenic = {
 			"GFX_r56_generic_politician_asia_2_communism"
 			GFX_Burma_Ba_Cho
 			GFX_XSM_Sun_Lianguang
-			GFX_portrait_TIB_thubten_kunphela
+			"GFX_portrait_TIB_thubten_kunphela"
 		}
 		democratic = {
 			"GFX_Asia_Generic_democracy"
 			"GFX_r56_generic_politician_asia_1_democracy"
 			GFX_DEI_Palar
+			"GFX_portrait_BRM_u_nu"
 		}
 		fascism = {
 			"GFX_Asia_Generic_3"
@@ -3156,6 +3169,7 @@ tibetian_burman_karenic = {
 			"GFX_r56_generic_politician_asia_1_fascism"
 			"GFX_r56_generic_politician_asia_2_fascism"
 			GFX_Burma_Pe_Maung_Tin
+			"GFX_portrait_BRM_ba_maw"
 		}
 		absolutist = {
 			GFX_Shan_Sao_Shwe_Thaik
@@ -3168,8 +3182,8 @@ tibetian_burman_karenic = {
 			"GFX_Guanxi_Clique_Li_Zongren"
 			"GFX_yun_long_yun"
 			GFX_TAJ_Bobodzhan_Gafurov
-			GFX_portrait_TIB_tsarong_dzasa
-			GFX_portrait_TIB_thubten_kunphela
+			"GFX_portrait_TIB_tsarong_dzasa"
+			"GFX_portrait_TIB_thubten_kunphela"
 		}
 		radical = {
 			"GFX_Asia_Generic_2"
@@ -3303,14 +3317,14 @@ asian_steppe = {
 			"GFX_r56_generic_politician_asia_1_fascism"
 			"GFX_r56_generic_politician_asia_2_fascism"
 			GFX_Mongolia_Sternberg
-			GFX_portrait_MEN_li_shouxin
+			"GFX_portrait_MEN_li_shouxin"
 		}
 		absolutist = {
 			GFX_MON_Gengis_Khan
 			GFX_FNG_Zhang_Zuolin
 			GFX_SIK_Hoja_Niyaz_Haji
 			"GFX_men_demchugdongrub"
-			GFX_portrait_MEN_yondonwangchug
+			"GFX_portrait_MEN_yondonwangchug"
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -3320,7 +3334,7 @@ asian_steppe = {
 			"GFX_xsm_ma_bufang"
 			GFX_ALO_Alikhan_Bukeikhanov
 			GFX_XSM_Ma_Lin
-			GFX_portrait_MEN_jodbajab
+			"GFX_portrait_MEN_jodbajab"
 		}
 		radical = {
 			"GFX_Asia_Generic_2"
@@ -3619,7 +3633,7 @@ tai = {
 			GFX_Shan_Sao_Shwe_Thaik
 			GFX_Siam_Rama_IX
 			GFX_Siam_Rama_VII
-			GFX_portrait_LAO_sisavang_vong
+			"GFX_portrait_LAO_sisavang_vong"
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -3770,8 +3784,8 @@ austroasiatic = {
 			GFX_Cambodia_Sisowath_Monivong
 			GFX_Cambodia_Khuang_Aphaiwong
 			GFX_Cambodia_Norodom_Suramarit
-			GFX_portrait_CAM_norodom_sihanouk
-			GFX_portrait_VIN_emperor_bao_dai
+			"GFX_portrait_CAM_norodom_sihanouk"
+			"GFX_portrait_VIN_emperor_bao_dai"
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -3894,7 +3908,7 @@ tungustic = {
 			"GFX_Asia_Generic_democracy"
 			"GFX_r56_generic_politician_asia_1_democracy"
 			"GFX_chi_zhang_xueliang"
-			GFX_portrait_MAN_ma_zhanshan
+			"GFX_portrait_MAN_ma_zhanshan"
 		}
 		fascism = {
 			GFX_FNG_Zhang_Haipeng
@@ -3906,7 +3920,7 @@ tungustic = {
 			"GFX_man_aisin_gioro_xiqia"
 			GFX_China_Puyi
 			GFX_China_Pujie
-			GFX_portrait_MAN_pujie
+			"GFX_portrait_MAN_pujie"
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -3923,7 +3937,7 @@ tungustic = {
 			"GFX_Asia_Generic_female_1"
 		}
 		monarch = {
-			"GFX_Asia_Generic_female_1"
+			"GFX_portrait_man_yoshiko_kawashima"
 		}
 		ideological_leader = {
 			"GFX_Asia_Generic_female_1"
@@ -4037,7 +4051,7 @@ koreanic = {
 		absolutist = {
 			GFX_Yi_Un
 			"GFX_Portrait_Asia_Generic_land_1"
-			GFX_portrait_KOR_yi_un
+			"GFX_portrait_KOR_yi_un"
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
@@ -4349,6 +4363,8 @@ japonic = {
 			"GFX_r56_generic_politician_asia_1_fascism"
 			"GFX_r56_generic_politician_asia_2_fascism"
 			"GFX_portrait_JAP_hideki_tojo"
+			"GFX_portrait_KOR_jiro_minami"
+			"GFX_portrait_JAP_masanobu_tsuji"
 		}
 		absolutist = {
 			"GFX_Japan_Hirohito"
@@ -4521,8 +4537,7 @@ sinitic = {
 		absolutist = {
 			"GFX_China_Chiang_Kai_Shek"
 			GFX_CHI_Yuan_Shikai
-			GFX_China_Puyi
-			GFX_China_Pujie
+			"GFX_portrait_RNG_sun_dianying"
 		}
 		neutrality = {
 			"GFX_Asia_Generic_fascism"
