@@ -2981,14 +2981,14 @@
 	link = { vic2 = 2575 hoi4 = 1364 hoi4 = 4310 hoi4 = 12215 hoi4 = 1376 } # Ipoh -> Ipoh, Gerik, Taiping, Teluk Anson
 	link = { vic2 = 2576 hoi4 = 13298 } # Natuna -> Ranai
 	link = { comment = "* * Southern Malaya" }
-	link = { vic2 = 1385 hoi4 = 10313 hoi4 = 4424 } # Johor Bahru -> Kota Tinggi, Johore Bahru
+	link = { vic2 = 1385 hoi4 = 10313 hoi4 = 4424 hoi4 = 13376 } # Johor Bahru -> Kota Tinggi, Johore Bahru, land
 	link = { vic2 = 1386 hoi4 = 7427 } # Malacca -> Malacca
 	link = { vic2 = 1387 hoi4 = 10297 hoi4 = 4412 } # Kuala Lumpur -> Kuala Lumpur, Seremban
 	link = { comment = "* * West Borneo" }
 	link = { vic2 = 1394 hoi4 = 1208 hoi4 = 12905 hoi4 = 4216 hoi4 = 7443 } # Kuching -> Kuching, Sri Aman, Betong, Kapit
-	link = { vic2 = 1395 hoi4 = 4396 hoi4 = 12283 hoi4 = 2117 hoi4 = 8091 hoi4 = 10285 hoi4 = 10269 hoi4 = 1335 } # Bintulu -> Bintulu, Sibu, land, Long Palai, Miri, Long Seridan, Ba'kelalan
+	link = { vic2 = 1395 hoi4 = 4396 hoi4 = 12283 hoi4 = 2117 hoi4 = 8091 hoi4 = 10285 hoi4 = 10269 hoi4 = 13377 hoi4 = 13378 } # Bintulu -> Bintulu, Sibu, land, Long Palai, Miri, Long Seridan, land, land
 	link = { comment = "* * Sabah" }
-	link = { vic2 = 1396 hoi4 = 10212 hoi4 = 12171 hoi4 = 4282 hoi4 = 10143 } # Api -> Jesselton, Beaufort, Kudat, Sungai Sungai
+	link = { vic2 = 1396 hoi4 = 10212 hoi4 = 12171 hoi4 = 4282 hoi4 = 10143 hoi4 = 1335 } # Api -> Jesselton, Beaufort, Kudat, Sungai Sungai, Ba'kelalan
 	link = { vic2 = 1397 hoi4 = 10199 hoi4 = 12186 hoi4 = 4338 hoi4 = 7358 hoi4 = 10240 hoi4 = 1306 hoi4 = 12228 } # Sandakan -> Sandakan, Ranau, Sapulut, land, Lahad Datu, land, Tawau
 	link = { comment = "* " }
 	link = { comment = "* ** Singapore" }
@@ -3127,8 +3127,8 @@
 	link = { vic2 = 1491 hoi4 = 8081 hoi4 = 3742 } # Ningxia -> Yanchi, Zhongwei
 	link = { vic2 = 1492 hoi4 = 5025 hoi4 = 1985 hoi4 = 1647 hoi4 = 3745 hoi4 = 4939 hoi4 = 517 } # Pingliang -> Guyuan, Haiyuan, Pingliang, Dingbian, Jingbian, Ansai
 	link = { comment = "* * Qinghai" }
-	link = { vic2 = 1556 hoi4 = 10834 hoi4 = 10796 hoi4 = 7997 hoi4 = 12890 hoi4 = 10865 hoi4 = 1698 hoi4 = 12596 hoi4 = 5076 } # Makhai -> land, Delhi, Qaidam, Mangnai, Tongren, land, Aksay, Dangchengwan
-	link = { vic2 = 1557 hoi4 = 12815 hoi4 = 12846 hoi4 = 4536 hoi4 = 10750 hoi4 = 10490 hoi4 = 2053 hoi4 = 2099 } # Balekungomi -> Wenquan, Dulan, Xinghai, Ulan, Qabqa, Gangca, Têmqên
+	link = { vic2 = 1556 hoi4 = 10834 hoi4 = 10796 hoi4 = 7997 hoi4 = 12890 hoi4 = 10865 hoi4 = 1698 hoi4 = 12596 hoi4 = 5076 hoi4 = 2099 } # Makhai -> land, Delhi, Qaidam, Mangnai, Tongren, land, Aksay, Dangchengwan, Têmqên
+	link = { vic2 = 1557 hoi4 = 12815 hoi4 = 12846 hoi4 = 4536 hoi4 = 10750 hoi4 = 10490 hoi4 = 2053 hoi4 = 13380 hoi4 = 13381 } # Balekungomi -> Wenquan, Dulan, Xinghai, Ulan, Qabqa, Gangca, land, land
 	link = { vic2 = 1558 hoi4 = 7940 hoi4 = 12899 hoi4 = 4964 hoi4 = 4914 hoi4 = 8037 hoi4 = 8018 hoi4 = 1882 } # Kegudo -> Golmud, land, Yushu, Qumarlêb, Dangla, Dulan, Madoi
 	link = { vic2 = 3234 hoi4 = 13146 } # Qinghai Lake -> (Lake)
 	link = { comment = "* * Eastern Himulayas" }
@@ -3199,7 +3199,7 @@
 	link = { vic2 = 1552 hoi4 = 4506 hoi4 = 12485 hoi4 = 1502 hoi4 = 10638 hoi4 = 10567 hoi4 = 7894 hoi4 = 4876 hoi4 = 1588 hoi4 = 1645 hoi4 = 7582 hoi4 = 7897 hoi4 = 4592 hoi4 = 4649 hoi4 = 10379 hoi4 = 7613 hoi4 = 7767 hoi4 = 1545 hoi4 = 7526 hoi4 = 10368 } # Qiqihar -> Daqing, Tailai, Jalaid, Dayan, Xuguit, Zalantun, Arxan, Baiquan, Wangkui, Zhaodong, Bei'an, Suihua, Mulan, Tonghe, Longzhen, Tieli, Hegang, Bayan, Luobei
 	link = { vic2 = 1553 hoi4 = 7832 hoi4 = 10675 hoi4 = 7848 hoi4 = 10541 hoi4 = 4809 hoi4 = 7873 hoi4 = 1847 hoi4 = 12618 hoi4 = 12548 hoi4 = 1693 hoi4 = 10698 hoi4 = 1732 } # Aigun -> Heihe, Xinlin, Tahe, Mohe, Jagdaqi, Nierji, Qiqihar, Nenjiang, Wudanlianchi, Xunke, Tangwanghe, Yichun
 	link = { comment = "* * North Hunan" }
-	link = { vic2 = 1613 hoi4 = 814 hoi4 = 10331 hoi4 = 881 hoi4 = 6937 hoi4 = 11801 hoi4 = 7575 hoi4 = 972 hoi4 = 9873 hoi4 = 3830 hoi4 = 1052 hoi4 = 10426 hoi4 = 7633 hoi4 = 3881 hoi4 = 3814 hoi4 = 9905 hoi4 = 3900 hoi4 = 3828 hoi4 = 11855 hoi4 = 6898 hoi4 = 4514 hoi4 = 6852 hoi4 = 934 hoi4 = 9927 hoi4 = 9768 hoi4 = 6988 } # Chengde -> Kuancheng, Jingoutun, Xinglong, Fengshan, Yingshouyingzi, Weichang, Longhua, Chengde, Qian'an, Luannan, Chifeng, Kalaqin, Pingquan, Qinglong, Qianxi, Qinhuangdao, Chaoyang, Lingyuan, Nanpiao, Beipiao, Ershijia, Jinzhou, Yixian, Luanping, Guojiantun
+	link = { vic2 = 1613 hoi4 = 814 hoi4 = 10331 hoi4 = 881 hoi4 = 6937 hoi4 = 11801 hoi4 = 7575 hoi4 = 972 hoi4 = 9873 hoi4 = 3830 hoi4 = 1052 hoi4 = 10426 hoi4 = 7633 hoi4 = 3881 hoi4 = 3814 hoi4 = 9905 hoi4 = 3900 hoi4 = 3828 hoi4 = 11855 hoi4 = 6898 hoi4 = 4514 hoi4 = 6852 hoi4 = 934 hoi4 = 9927 hoi4 = 9768 hoi4 = 6988 hoi4 = 13379 } # Chengde -> Kuancheng, Jingoutun, Xinglong, Fengshan, Yingshouyingzi, Weichang, Longhua, Chengde, Qian'an, Luannan, Chifeng, Kalaqin, Pingquan, Qinglong, Qianxi, Qinhuangdao, Chaoyang, Lingyuan, Nanpiao, Beipiao, Ershijia, Jinzhou, Yixian, Luanping, Guojiantun, land
 	link = { vic2 = 1616 hoi4 = 900 hoi4 = 12043 hoi4 = 11822 hoi4 = 6969 hoi4 = 3955 hoi4 = 9776 hoi4 = 952 hoi4 = 4495 hoi4 = 6904 hoi4 = 10397 hoi4 = 1489 hoi4 = 7674 hoi4 = 1590 hoi4 = 828 hoi4 = 7545 } # Tangshan -> Zunhua, Tangshan, Tongzhou, Zunhua, Sanhe, Mentougou, Yanqing, Fengning, Fangshan, Zhuolu, Xuanhua, Chicheng, Xiheying, Yangyuan, Kalgan
 	link = { vic2 = 1617 hoi4 = 10068 hoi4 = 9969 hoi4 = 4137 hoi4 = 11944 hoi4 = 11996 hoi4 = 11980 hoi4 = 10003 } # Tianjin -> Tianjin, Cangzhou, Tanggu, Huanghua, Cangzhou, Cangxian, Botou
 	link = { comment = "* * Fengtian" }
