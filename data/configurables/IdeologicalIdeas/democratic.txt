@@ -122,8 +122,11 @@
 	academy_spirit = {
 		best_of_the_best_spirit = {
 			ledger = army
-			visible = { 
-				has_government = democratic
+			visible = {
+				AND = { 
+					has_military_academy = yes 
+		 			has_government = democratic
+				}
 			}
 			modifier = {
 				army_leader_start_level = 2
@@ -135,7 +138,10 @@
 
 				modifier = {
 					factor = 0
-					NOT = { has_dlc = "No Step Back" }
+					OR = {
+						NOT = { has_dlc = "No Step Back" }
+						NOT = { has_government = democratic }
+					}
 				}
 
 				modifier = {

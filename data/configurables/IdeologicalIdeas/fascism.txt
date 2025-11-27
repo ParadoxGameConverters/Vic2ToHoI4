@@ -177,7 +177,10 @@
 			ledger = army
 			picture = political_loyalty_spirit
 			visible = { 
+				AND = {
+				has_military_academy = yes 
 				has_government = fascism
+				}
 			}
 			modifier = {
 				military_leader_cost_factor = -0.5
@@ -189,7 +192,10 @@
 
 				modifier = {
 					factor = 0
-					NOT = { has_dlc = "No Step Back" }
+					OR = {
+						NOT = { has_dlc = "No Step Back" }
+						NOT = { has_government = fascism }
+					}
 				}
 
 				modifier = {

@@ -170,7 +170,10 @@
 		academy_scholarships_spirit = {
 			ledger = army
 			visible = { 
-				has_government = communism
+				AND = {
+					has_military_academy = yes 
+					has_government = communism
+				}
 			}
 			modifier = {
 				army_leader_start_level = 1
@@ -183,7 +186,10 @@
 
 				modifier = {
 					factor = 0
-					NOT = { has_dlc = "No Step Back" }
+					OR = {
+						NOT = { has_dlc = "No Step Back" }
+						NOT = { has_government = communism }
+					}
 				}
 
 				modifier = {
@@ -197,7 +203,12 @@
 	air_force_command_spirit = {
 		steel_wings_steel_hearts_spirit = {
 			ledger = air
-			visible = { has_government = communism }
+			visible = { 
+				AND = {
+					has_air_force_command = yes
+					has_government = communism
+				}
+			}
 			modifier = {
 				air_untrained_pilots_penalty_factor = -0.33
 			}
@@ -205,7 +216,10 @@
 				factor = 1
 				modifier = {
 					factor = 0
-					NOT = { has_dlc = "No Step Back" }
+					OR = {
+						NOT = { has_dlc = "No Step Back" }
+						NOT = { has_government = communism }
+					}
 				}
 			}
 		}

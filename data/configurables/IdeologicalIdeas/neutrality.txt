@@ -40,7 +40,10 @@
 		political_loyalty_spirit = {
 			ledger = army
 			visible = { 
+				AND = {
+				has_military_academy = yes 
 				has_government = neutrality
+				}
 			}
 			modifier = {
 				military_leader_cost_factor = -0.5
@@ -52,7 +55,10 @@
 
 				modifier = {
 					factor = 0
-					NOT = { has_dlc = "No Step Back" }
+					OR = {
+						NOT = { has_dlc = "No Step Back" }
+						NOT = { has_government = neutrality }
+					}
 				}
 
 				modifier = {
