@@ -1,4 +1,34 @@
 fascism = {
+    generic_influence_cutoff_force_government_fascism = { #Don't do ANYTHING outside influence range
+
+        # This AI modifier attempts to make the AI start taking a new land area from specific provinces (e.g. ports) rather than starting at a random coast line.
+
+        peace_action_type = { take_states puppet force_government liberate }
+        enable = {
+            # ROOT = { tag = ROOT.FROM } #We are negotiating for ourselves
+            has_government = fascism
+            # ROOT.FROM.FROM.FROM = { NOT = { is_core_of = ROOT } } #It is not ours
+            ROOT.FROM.FROM.FROM = {
+                NOT = { is_claimed_by = ROOT.FROM }
+                ROOT = { pc_is_winner = yes }
+                any_country = { #avoid rump states in states that aren't cored by anyone
+                    PREV = {
+                        is_core_of = PREV
+                    }
+                }
+                pc_is_state_outside_influence_for_winner = ROOT  # NOTE: potentially superflous after the addition of the PEACE_BID_CONTEST_TIE_BREAKER_xxx defines
+                # is_coastal = no
+                NOT = {
+                    AND = {
+                        is_capital = yes
+                        is_coastal = yes
+                    }
+                }
+            } #It is not claimed by us
+        }
+        ai_desire = -1000
+    }
+
 	fascist_majors_on_a_mission = {
 		peace_action_type = take_states
 		enable = {
@@ -57,6 +87,35 @@ fascism = {
 
 
 communism = {
+    generic_influence_cutoff_communism = { #Only do force gov and liberate outside influence range
+
+        # This AI modifier attempts to make the AI start taking a new land area from specific provinces (e.g. ports) rather than starting at a random coast line.
+
+        peace_action_type = { take_states puppet }
+        enable = {
+            ROOT = { tag = ROOT.FROM } #We are negotiating for ourselves
+            has_government = communism
+            ROOT.FROM.FROM.FROM = { NOT = { is_core_of = ROOT.FROM } } #It is not ours
+            ROOT.FROM.FROM.FROM = {
+                NOT = { is_claimed_by = ROOT.FROM }
+                any_country = { #avoid rump states in states that aren't cored by anyone
+                    PREV = {
+                        is_core_of = PREV
+                    }
+                }
+                pc_is_state_outside_influence_for_winner = ROOT.FROM  # NOTE: potentially superflous after the addition of the PEACE_BID_CONTEST_TIE_BREAKER_xxx defines
+                #is_coastal = no
+                NOT = {
+                    AND = {
+                        is_capital = yes
+                        is_coastal = yes
+                    }
+                }
+            } #It is not claimed by us
+        }
+        ai_desire = -1000
+    }
+
 	communism_dont_liberate_the_wrong_ideology = {
 		peace_action_type = liberate
 		enable = {
@@ -69,6 +128,35 @@ communism = {
 
 
 democratic = {
+    generic_influence_cutoff_democratic = { #Only do force gov and liberate outside influence range
+
+        # This AI modifier attempts to make the AI start taking a new land area from specific provinces (e.g. ports) rather than starting at a random coast line.
+
+        peace_action_type = { take_states puppet }
+        enable = {
+            ROOT = { tag = ROOT.FROM } #We are negotiating for ourselves
+            has_government = democratic
+            ROOT.FROM.FROM.FROM = { NOT = { is_core_of = ROOT.FROM } } #It is not ours
+            ROOT.FROM.FROM.FROM = {
+                NOT = { is_claimed_by = ROOT.FROM }
+                any_country = { #avoid rump states in states that aren't cored by anyone
+                    PREV = {
+                        is_core_of = PREV
+                    }
+                }
+                pc_is_state_outside_influence_for_winner = ROOT.FROM  # NOTE: potentially superflous after the addition of the PEACE_BID_CONTEST_TIE_BREAKER_xxx defines
+                #is_coastal = no
+                NOT = {
+                    AND = {
+                        is_capital = yes
+                        is_coastal = yes
+                    }
+                }
+            } #It is not claimed by us
+        }
+        ai_desire = -1000
+    }
+
 	force_gov_puppets = {
 		peace_action_type = force_government
 		enable = {
@@ -162,4 +250,22 @@ democratic = {
 		}
 		ai_desire = -200
 	}
+
+    annex_non_core_states = {   #avoid rump states in states that aren't cored by anyone - counteracts democracy_owner_does_not_have_core
+        peace_action_type = { take_states }
+        enable = {
+            has_government = democratic
+            ROOT.FROM.FROM.FROM = {
+                NOT = {
+                    any_country = {
+                        PREV = {
+                            is_core_of = PREV
+                        }
+                    }
+                }
+            }
+        }
+        ai_desire = 50
+    }
+
 }

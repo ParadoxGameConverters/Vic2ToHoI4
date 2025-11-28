@@ -12,24 +12,29 @@ peace_ai_desires = {
         ai_desire = 100
     }
 
-    generic_influence_cutoff = { #Only do force gov and liberate outside influence range
+    generic_influence_cutoff_force_government_neutrality = { #Don't do ANYTHING outside influence range
 
         # This AI modifier attempts to make the AI start taking a new land area from specific provinces (e.g. ports) rather than starting at a random coast line.
 
-        peace_action_type = { take_states puppet }
+        peace_action_type = { take_states puppet force_government liberate }
         enable = {
-            ROOT = { tag = ROOT.FROM } #We are negotiating for ourselves
-            ROOT.FROM.FROM.FROM = { NOT = { is_core_of = ROOT.FROM } } #It is not ours
+            # ROOT = { tag = ROOT.FROM } #We are negotiating for ourselves
+            has_government = neutrality
+            # ROOT.FROM.FROM.FROM = { NOT = { is_core_of = ROOT } } #It is not ours
             ROOT.FROM.FROM.FROM = {
                 NOT = { is_claimed_by = ROOT.FROM }
-                pc_is_state_outside_influence_for_winner = ROOT.FROM  # NOTE: potentially superflous after the addition of the PEACE_BID_CONTEST_TIE_BREAKER_xxx defines
-                #is_coastal = no
+                ROOT = { pc_is_winner = yes }
+                any_country = { #avoid rump states in states that aren't cored by anyone
+                    PREV = {
+                        is_core_of = PREV
+                    }
+                }
+                pc_is_state_outside_influence_for_winner = ROOT  # NOTE: potentially superflous after the addition of the PEACE_BID_CONTEST_TIE_BREAKER_xxx defines
+                # is_coastal = no
                 NOT = {
-                    OR = {
-                        AND = {
-                            is_capital = yes
-                            is_coastal = yes
-                        }
+                    AND = {
+                        is_capital = yes
+                        is_coastal = yes
                     }
                 }
             } #It is not claimed by us
