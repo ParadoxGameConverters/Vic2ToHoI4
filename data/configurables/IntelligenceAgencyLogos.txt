@@ -10,7 +10,7 @@ link = { culture = british culture = english logo = GFX_intelligence_agency_logo
 link = { culture = russian logo = GFX_intelligence_agency_logo_sov }
 link = { culture = french logo = GFX_intelligence_agency_logo_fra }
 link = { culture = north_german logo = GFX_intelligence_agency_logo_ger }
-link = { culture = japanese logo = GFX_intelligence_agency_logo_jap }
+link = { culture = japanese logo = GFX_intelligence_agency_logo_JAP_Kempeitai }
 link = { culture = north_italian culture = south_italian culture = all_italian logo = GFX_intelligence_agency_logo_ita }
 link = { culture = swedish logo = GFX_intelligence_agency_logo_swe }
 link = { culture = norwegian logo = GFX_intelligence_agency_logo_nor }
@@ -37,6 +37,8 @@ link = { culture = bakongo logo = GFX_intelligence_agency_logo_COG_anr }
 link = { culture = mashriqi logo = GFX_intelligence_agency_logo_IRQ_DGS }
 link = { culture = pashtun logo = GFX_intelligence_agency_logo_AFG_neutrality }
 link = { culture = persian logo = GFX_intelligence_agency_logo_PER_savak }
+link = { culture = panjabi logo = GFX_intelligence_agency_logo_PAK_ISI }
+link = { culture = bengali logo = GFX_intelligence_agency_logo_BAN_NSI }
 # From CSRZ's mod 2017272267
 link = { culture = platinean logo = GFX_intelligence_agency_logo_arg }
 link = { culture = australian logo = GFX_intelligence_agency_logo_ast }

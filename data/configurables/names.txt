@@ -1106,7 +1106,7 @@ bengali = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
-	intelligence_agencies = { "Research and Analysis Wing" }
+	intelligence_agencies = { "National Security Intelligence" }
 }
 berber = {
 	female_names = { Randa Tabassum 	Dema Dimah Dinara Dua Durra Durriyya Edza Eleonorka Eleanor Faghissa Fahriya Fariza Fedada
@@ -3302,7 +3302,7 @@ japanese = {
 	naval_companies = { "Kure Naval Arsenal" "Yokosuka Naval Arsenal" "Maizuru Naval Arsenal" "Sasebo Naval Arsenal" }
 	weapon_companies = { "Tokyo Arsenal" Nissan }
 	aircraft_companies = { Mitsubishi Aichi Nakajima Yokosuka }
-	intelligence_agencies = { "Kenpeitai" }
+	intelligence_agencies = { "Kempeitai" }
 }
 javan = {
 	female_names = { Diah Siti }
