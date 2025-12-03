@@ -1,3 +1,4 @@
+#include "external/common_items/CommonRegexes.h"
 #include "external/common_items/Parser.h"
 #include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/Factions/FactionGoals.h"
@@ -33,6 +34,16 @@ HoI4::FactionGoal::FactionGoal(const std::string& id, std::istream& theStream): 
 	registerKeyword("complete_effect", [this](std::istream& theStream) {
 		completeEffect = commonItems::stringOfItem(theStream).getString();
 	});
+	registerKeyword("ai_will_do", [this](std::istream& theStream) {
+		aiWillDo = commonItems::stringOfItem(theStream).getString();
+	});
+	registerKeyword("is_manifest", [this](std::istream& theStream) {
+		isManifest = commonItems::getString(theStream) == "yes";
+	});
+	registerKeyword("ratio_progress", [this](std::istream& theStream) {
+		ratioProgress = commonItems::stringOfItem(theStream).getString();
+	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 	parseStream(theStream);
 	clearRegisteredKeywords();
 }

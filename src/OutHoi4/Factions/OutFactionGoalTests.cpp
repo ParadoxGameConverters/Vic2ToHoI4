@@ -27,6 +27,9 @@ TEST(OutHoI4World_Factions_FactionGoal, FactionGoalIsOutput)
 	theStream << "\t\tadd_faction_power_projection = 500\n";
 	theStream << "\t\tcustom_effect_tooltip = generic_skip_one_line_tt\n";
 	theStream << "\t}\n";
+	theStream << "\tai_will_do = {\n";
+	theStream << "\t\tbase = 1\n";
+	theStream << "\t}\n";
 	theStream << "}\n";
 	const HoI4::FactionGoal theGoal("test_faction_goal", theStream);
 
@@ -54,6 +57,39 @@ TEST(OutHoI4World_Factions_FactionGoal, FactionGoalIsOutput)
 	expected << "\tcomplete_effect = {\n";
 	expected << "\t\tadd_faction_power_projection = 500\n";
 	expected << "\t\tcustom_effect_tooltip = generic_skip_one_line_tt\n";
+	expected << "\t}\n";
+	expected << "\tai_will_do = {\n";
+	expected << "\t\tbase = 1\n";
+	expected << "\t}\n";
+	expected << "}\n";
+	expected << "\n";
+
+	EXPECT_EQ(output.str(), expected.str());
+}
+
+TEST(OutHoI4World_Factions_FactionGoal, ManifestIsOutput)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\tname = goal_name\n";
+	theStream << "\tdescription = goal_desc\n";
+	theStream << "\tis_manifest = yes\n";
+	theStream << "\tratio_progress = {\n";
+	theStream << "\t\ttotal_amount = 40\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	const HoI4::FactionGoal theGoal("test_manifest", theStream);
+
+	std::stringstream output;
+	output << theGoal;
+
+	std::stringstream expected;
+	expected << "test_manifest = {\n";
+	expected << "\tname = goal_name\n";
+	expected << "\tdescription = goal_desc\n";
+	expected << "\tis_manifest = yes\n";
+	expected << "\tratio_progress = {\n";
+	expected << "\t\ttotal_amount = 40\n";
 	expected << "\t}\n";
 	expected << "}\n";
 	expected << "\n";

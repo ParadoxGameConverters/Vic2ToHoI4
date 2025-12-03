@@ -216,3 +216,76 @@ TEST(HoI4World_Factions_FactionGoal, CompleteEffectCanBeSet)
 
 	EXPECT_EQ(expectedOutput, theGoal.getCompleteEffect());
 }
+
+
+TEST(HoI4World_Factions_FactionGoal, AiWillDoDefaultsToEmpty)
+{
+	std::stringstream theStream;
+	HoI4::FactionGoal theGoal("test_goal", theStream);
+
+	EXPECT_TRUE(theGoal.getAiWillDo().empty());
+}
+
+
+TEST(HoI4World_Factions_FactionGoal, AiWillDoCanBeSet)
+{
+	std::stringstream theStream;
+	theStream << "ai_will_do = {\n";
+	theStream << "\tbase = 1\n";
+	theStream << "}";
+	HoI4::FactionGoal theGoal("test_goal", theStream);
+
+	std::string expectedOutput;
+	expectedOutput = "= {\n";
+	expectedOutput += "\tbase = 1\n";
+	expectedOutput += "}";
+
+	EXPECT_EQ(expectedOutput, theGoal.getAiWillDo());
+}
+
+
+TEST(HoI4World_Factions_FactionGoal, IsManifestDefaultsToFalse)
+{
+	std::stringstream theStream;
+	HoI4::FactionGoal theGoal("test_goal", theStream);
+
+	EXPECT_FALSE(theGoal.getIsManifest());
+}
+
+
+TEST(HoI4World_Factions_FactionGoal, IsManifestCanBeSet)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "is_manifest = yes\n";
+	theStream << "}";
+	HoI4::FactionGoal theGoal("test_goal", theStream);
+
+	EXPECT_TRUE(theGoal.getIsManifest());
+}
+
+
+TEST(HoI4World_Factions_FactionGoal, RatioProgressDefaultsToEmpty)
+{
+	std::stringstream theStream;
+	HoI4::FactionGoal theGoal("test_goal", theStream);
+
+	EXPECT_TRUE(theGoal.getRatioProgress().empty());
+}
+
+
+TEST(HoI4World_Factions_FactionGoal, RatioProgressCanBeSet)
+{
+	std::stringstream theStream;
+	theStream << "ratio_progress = {\n";
+	theStream << "\ttotal_amount = 40\n";
+	theStream << "}";
+	HoI4::FactionGoal theGoal("test_goal", theStream);
+
+	std::string expectedOutput;
+	expectedOutput = "= {\n";
+	expectedOutput += "\ttotal_amount = 40\n";
+	expectedOutput += "}";
+
+	EXPECT_EQ(expectedOutput, theGoal.getRatioProgress());
+}

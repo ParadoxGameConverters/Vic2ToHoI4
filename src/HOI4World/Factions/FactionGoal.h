@@ -26,6 +26,9 @@ class FactionGoal: commonItems::parser
 	[[nodiscard]] const auto& getAvailable() const { return available; }
 	[[nodiscard]] const auto& getCompleted() const { return completed; }
 	[[nodiscard]] const auto& getCompleteEffect() const { return completeEffect; }
+	[[nodiscard]] const auto& getAiWillDo() const { return aiWillDo; }
+	[[nodiscard]] const auto& getIsManifest() const { return isManifest; }
+	[[nodiscard]] const auto& getRatioProgress() const { return ratioProgress; }
 
 	bool operator==(const FactionGoal& other) const;
 	friend std::ostream& operator<<(std::ostream& out, const FactionGoal& theGoal);
@@ -41,6 +44,9 @@ class FactionGoal: commonItems::parser
 	std::string available;
 	std::string completed;
 	std::string completeEffect;
+	std::string aiWillDo;
+	bool isManifest = false;
+	std::string ratioProgress;
 };
 
 } // namespace HoI4
