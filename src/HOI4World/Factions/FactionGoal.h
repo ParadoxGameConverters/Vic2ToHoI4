@@ -27,6 +27,7 @@ class FactionGoal: commonItems::parser
 	[[nodiscard]] const auto& getCompleted() const { return completed; }
 	[[nodiscard]] const auto& getCompleteEffect() const { return completeEffect; }
 
+	bool operator==(const FactionGoal& other) const;
 	friend std::ostream& operator<<(std::ostream& out, const FactionGoal& theGoal);
 
   private:

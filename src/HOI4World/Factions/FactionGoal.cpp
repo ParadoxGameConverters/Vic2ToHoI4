@@ -36,3 +36,10 @@ HoI4::FactionGoal::FactionGoal(const std::string& id, std::istream& theStream): 
 	parseStream(theStream);
 	clearRegisteredKeywords();
 }
+
+bool HoI4::FactionGoal::operator==(const FactionGoal& other) const
+{
+	return id == other.id && name == other.name && description == other.description && group == other.group &&
+			 category == other.category && visible == other.visible && lockedGoal == other.lockedGoal &&
+			 available == other.available && completed == other.completed && completeEffect == other.completeEffect;
+}
