@@ -67,6 +67,12 @@
     <ClCompile Include="src\HOI4World\Events\EventTests.cpp">
       <Filter>src\HOI4World\Events</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionGoalTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionGoalsTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranchTests.cpp">
       <Filter>src\HOI4World\FocusTrees</Filter>
     </ClCompile>
@@ -454,6 +460,9 @@
     <ClCompile Include="src\OutHoi4\Characters\OutPortraitTests.cpp">
       <Filter>src\OutHoi4\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
     <ClCompile Include="src\OutHoi4\Map\OutRailwaysTests.cpp">
       <Filter>src\OutHoi4\Map</Filter>
     </ClCompile>
@@ -837,6 +846,9 @@
     <Filter Include="src\OutHoi4\Events">
       <UniqueIdentifier>{462f35fe-9546-4183-9109-505fadd0322e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\OutHoi4\Factions">
+      <UniqueIdentifier>{5b232204-fdfc-436c-a4ef-03f8d6f9b6ce}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\OutHoi4\GameRules">
       <UniqueIdentifier>{d75cadc8-a93a-4799-b1dd-2df1528d66fc}</UniqueIdentifier>
     </Filter>
@@ -989,6 +1001,12 @@
     </Filter>
     <Filter Include="data\test_files\Cultures">
       <UniqueIdentifier>{f9da7e4e-4e52-4c04-a0c1-c9dbf7ddac12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Factions">
+      <UniqueIdentifier>{d8f1049d-c2b7-4be5-8d86-10836045f13b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Factions\Goals">
+      <UniqueIdentifier>{00c0c500-57c9-42d2-b3d6-12c3f7365614}</UniqueIdentifier>
     </Filter>
     <Filter Include="data\test_files\HoI4Files">
       <UniqueIdentifier>{3051bc43-2841-4651-8768-4b71cee9794a}</UniqueIdentifier>
@@ -1146,6 +1164,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Cultures\BaseCultures.txt">
       <Filter>data\test_files\Cultures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\Goals\faction_goals.txt">
+      <Filter>data\test_files\Factions\Goals</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\HoI4Files\CountryCategories\CountryGrammar.txt">
       <Filter>data\test_files\HoI4Files\CountryCategories</Filter>

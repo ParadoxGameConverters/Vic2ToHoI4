@@ -1,0 +1,22 @@
+test_faction_goal = {
+	name = goal_name
+	description = goal_desc
+	group = FOCUS_FILTER_CONSOLIDATION
+	category = long_term
+	visible = {
+		collection_size = {
+		}
+	}
+	locked_goal = yes
+	available = {
+
+	}
+	completed = {
+		collection_size = {
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 500
+		custom_effect_tooltip = generic_skip_one_line_tt
+	}
+}

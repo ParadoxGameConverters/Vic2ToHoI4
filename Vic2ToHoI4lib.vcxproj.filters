@@ -115,6 +115,9 @@
     <Filter Include="src\HoI4World\UnitMedals">
       <UniqueIdentifier>{4ad22919-0d0b-4831-a8ac-6c3e44d7d852}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\HoI4World\Factions">
+      <UniqueIdentifier>{1424655f-0bd6-4741-b574-baa547875d5f}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\HoI4World\FocusTrees">
       <UniqueIdentifier>{9feddc1e-1405-4fa1-a621-e25c09d2243e}</UniqueIdentifier>
     </Filter>
@@ -138,6 +141,9 @@
     </Filter>
     <Filter Include="src\OutHoi4\Events">
       <UniqueIdentifier>{4c0607a6-2491-4bf8-880a-f2492276c946}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Factions">
+      <UniqueIdentifier>{3d30b2c4-7eca-45a1-8a72-a1958694465f}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\OutHoi4\GameRules">
       <UniqueIdentifier>{31239717-0955-4b4f-9bfc-71f9c5cd7859}</UniqueIdentifier>
@@ -882,6 +888,12 @@
     <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp">
       <Filter>src\HoI4World\UnitMedals</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionGoal.cpp">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionGoals.cpp">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranch.cpp">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClCompile>
@@ -977,6 +989,9 @@
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Events\OutEvents.cpp">
       <Filter>src\OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoal.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRule.cpp">
       <Filter>src\OutHoi4\GameRules</Filter>
@@ -2180,6 +2195,12 @@
     <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h">
       <Filter>src\HoI4World\UnitMedals</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\Factions\FactionGoal.h">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Factions\FactionGoals.h">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClInclude>
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranch.h">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClInclude>
@@ -2275,6 +2296,9 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Events\OutEvents.h">
       <Filter>src\OutHoi4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Factions\OutFactionGoal.h">
+      <Filter>src\OutHoi4\Factions</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRule.h">
       <Filter>src\OutHoi4\GameRules</Filter>

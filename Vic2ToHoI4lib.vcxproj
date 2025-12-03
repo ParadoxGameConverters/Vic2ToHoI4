@@ -49,6 +49,8 @@
     <ClCompile Include="src\HOI4World\Events\GovernmentInExileEvent.cpp" />
     <ClCompile Include="src\HOI4World\Events\LarOccupationEvents.cpp" />
     <ClCompile Include="src\HOI4World\Events\NavalTreatyEventsUpdaters.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionGoal.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionGoals.cpp" />
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranch.cpp" />
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp" />
     <ClCompile Include="src\HOI4World\FocusTrees\FocusTreeFactory.cpp" />
@@ -256,6 +258,7 @@
     <ClCompile Include="src\OutHoi4\Events\OutEvent.cpp" />
     <ClCompile Include="src\OutHoi4\Events\OutEventOption.cpp" />
     <ClCompile Include="src\OutHoi4\Events\OutEvents.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoal.cpp" />
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRule.cpp" />
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRuleOption.cpp" />
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRules.cpp" />
@@ -450,6 +453,8 @@
     <ClInclude Include="src\HOI4World\Events\GovernmentInExileEvent.h" />
     <ClInclude Include="src\HOI4World\Events\LarOccupationEvents.h" />
     <ClInclude Include="src\HOI4World\Events\NavalTreatyEventsUpdaters.h" />
+    <ClInclude Include="src\HOI4World\Factions\FactionGoal.h" />
+    <ClInclude Include="src\HOI4World\Factions\FactionGoals.h" />
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranch.h" />
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranches.h" />
     <ClInclude Include="src\HOI4World\FocusTrees\FocusTreeFactory.h" />
@@ -713,6 +718,7 @@
     <ClInclude Include="src\OutHoi4\Events\OutEvent.h" />
     <ClInclude Include="src\OutHoi4\Events\OutEventOption.h" />
     <ClInclude Include="src\OutHoi4\Events\OutEvents.h" />
+    <ClInclude Include="src\OutHoi4\Factions\OutFactionGoal.h" />
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRule.h" />
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRuleOption.h" />
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRules.h" />
