@@ -10,6 +10,6 @@ TEST(HoI4World_Factions_FactionGoals, FactionGoalsCanBeImported)
 	std::stringstream emptyStream;
 	const auto& theGoal = std::make_shared<HoI4::FactionGoal>("faction_goal_one", emptyStream);
 
-	EXPECT_THAT(goals.getFactionGoals(),
+	EXPECT_THAT(goals.getImportedGoals(),
 		 testing::UnorderedElementsAre(testing::Pair("faction_goal_one", testing::Pointee(*theGoal))));
 }

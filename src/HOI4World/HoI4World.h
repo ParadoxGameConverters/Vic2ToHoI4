@@ -8,6 +8,7 @@
 #include "src/HOI4World/CountryCategories/CountryCategories.h"
 #include "src/HOI4World/Decisions/Decisions.h"
 #include "src/HOI4World/Events/Events.h"
+#include "src/HOI4World/Factions/FactionGoals.h"
 #include "src/HOI4World/FocusTrees/AdjustedBranches.h"
 #include "src/HOI4World/GameRules/GameRules.h"
 #include "src/HOI4World/HoI4Country.h"
@@ -285,6 +286,7 @@ class World: commonItems::parser
 	std::unique_ptr<OccupationLaws> occupationLaws;
 
 	std::vector<std::shared_ptr<Faction>> factions;
+	std::unique_ptr<HoI4::FactionGoals> factionGoals;
 	std::unique_ptr<HoI4::decisions> theDecisions;
 	std::unique_ptr<HoI4::Events> events;
 	std::unique_ptr<HoI4::OnActions> onActions;

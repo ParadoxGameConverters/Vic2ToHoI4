@@ -529,6 +529,7 @@ configure_file("${DATA_FILE_DIR}/configurables/Historical Project Mod 0.4.6_prov
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalAdvisors.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalAdvisors.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideological_ai_peace.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideological_cost_modifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ideological_faction_goals.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_faction_goals.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideological_unit_medals.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_unit_medals.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalDecisions.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/IdeologyMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)

@@ -15,13 +15,14 @@ class FactionGoals: commonItems::parser
 {
   public:
 	FactionGoals() = default;
+	FactionGoals(const std::set<std::string>& majorIdeologies);
 
 	void importFactionGoals(const std::filesystem::path& fileName);
 
-	[[nodiscard]] const auto& getFactionGoals() const { return factionGoals; }
+	[[nodiscard]] const auto& getImportedGoals() const { return importedGoals; }
 
   private:
-	std::map<std::string, std::shared_ptr<FactionGoal>> factionGoals;
+	std::map<std::string, std::shared_ptr<FactionGoal>> importedGoals;
 };
 
 

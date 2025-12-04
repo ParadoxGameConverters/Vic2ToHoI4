@@ -357,6 +357,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	states->convertAirBases(countries, greatPowers);
 	states->addLandmarks(landmarksMapper);
 	factionNameMapper = Mappers::FactionNameMapper::Factory().importFactionNameMapper();
+	factionGoals = std::make_unique<FactionGoals>(ideologies->getMajorIdeologies());
 	if (theConfiguration.getCreateFactions())
 	{
 		createFactions(theConfiguration);
