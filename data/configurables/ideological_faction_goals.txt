@@ -1,3 +1,5 @@
+# Source: common/factions/goals - when updating to new HoI4 version, check for ideology based goals in this folder
+
 # Defeat of [ideology] 
 faction_goal_defeat_of_ideology = {
 	name = defeat_of_ideology_goal_name

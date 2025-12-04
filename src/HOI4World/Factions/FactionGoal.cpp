@@ -19,6 +19,9 @@ HoI4::FactionGoal::FactionGoal(const std::string& id, std::istream& theStream): 
 	registerKeyword("category", [this](std::istream& theStream) {
 		category = commonItems::getString(theStream);
 	});
+	registerKeyword("allowed", [this](std::istream& theStream) {
+		allowed = commonItems::stringOfItem(theStream).getString();
+	});
 	registerKeyword("visible", [this](std::istream& theStream) {
 		visible = commonItems::stringOfItem(theStream).getString();
 	});
@@ -30,6 +33,15 @@ HoI4::FactionGoal::FactionGoal(const std::string& id, std::istream& theStream): 
 	});
 	registerKeyword("completed", [this](std::istream& theStream) {
 		completed = commonItems::stringOfItem(theStream).getString();
+	});
+	registerKeyword("select_effect", [this](std::istream& theStream) {
+		selectEffect = commonItems::stringOfItem(theStream).getString();
+	});
+	registerKeyword("auto_complete", [this](std::istream& theStream) {
+		autoComplete = commonItems::getString(theStream) == "yes";
+	});
+	registerKeyword("cancel", [this](std::istream& theStream) {
+		cancel = commonItems::stringOfItem(theStream).getString();
 	});
 	registerKeyword("complete_effect", [this](std::istream& theStream) {
 		completeEffect = commonItems::stringOfItem(theStream).getString();
