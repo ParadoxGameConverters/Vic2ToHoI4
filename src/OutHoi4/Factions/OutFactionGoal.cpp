@@ -12,7 +12,6 @@ std::ostream& HoI4::operator<<(std::ostream& out, const FactionGoal& theGoal)
 		out << "\tis_manifest = yes\n";
 		out << "\tratio_progress " << theGoal.ratioProgress << "\n";
 		out << "}\n";
-		out << "\n";
 		return out;
 	}
 
@@ -28,7 +27,6 @@ std::ostream& HoI4::operator<<(std::ostream& out, const FactionGoal& theGoal)
 	out << "\tcomplete_effect " << theGoal.completeEffect << "\n";
 	out << "\tai_will_do " << theGoal.aiWillDo << "\n";
 	out << "}\n";
-	out << "\n";
 
 	return out;
 }

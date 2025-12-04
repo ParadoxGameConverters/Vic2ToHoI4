@@ -259,6 +259,7 @@
     <ClCompile Include="src\OutHoi4\Events\OutEventOption.cpp" />
     <ClCompile Include="src\OutHoi4\Events\OutEvents.cpp" />
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoal.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoals.cpp" />
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRule.cpp" />
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRuleOption.cpp" />
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRules.cpp" />
@@ -719,6 +720,7 @@
     <ClInclude Include="src\OutHoi4\Events\OutEventOption.h" />
     <ClInclude Include="src\OutHoi4\Events\OutEvents.h" />
     <ClInclude Include="src\OutHoi4\Factions\OutFactionGoal.h" />
+    <ClInclude Include="src\OutHoi4\Factions\OutFactionGoals.h" />
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRule.h" />
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRuleOption.h" />
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRules.h" />

@@ -993,6 +993,9 @@
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoal.cpp">
       <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoals.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRule.cpp">
       <Filter>src\OutHoi4\GameRules</Filter>
     </ClCompile>
@@ -2298,6 +2301,9 @@
       <Filter>src\OutHoi4\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Factions\OutFactionGoal.h">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Factions\OutFactionGoals.h">
       <Filter>src\OutHoi4\Factions</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRule.h">

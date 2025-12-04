@@ -463,6 +463,9 @@
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalTests.cpp">
       <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalsTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
     <ClCompile Include="src\OutHoi4\Map\OutRailwaysTests.cpp">
       <Filter>src\OutHoi4\Map</Filter>
     </ClCompile>

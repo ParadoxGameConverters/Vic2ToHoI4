@@ -206,6 +206,7 @@
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderDataTests.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutPortraitTests.cpp" />
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalsTests.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutRailwaysTests.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutSupplyNodesTests.cpp" />
     <ClCompile Include="src\V2World\Ai\AIStrategyTests.cpp" />
