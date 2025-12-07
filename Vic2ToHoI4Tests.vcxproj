@@ -809,7 +809,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="data\test_files\Factions\Goals\faction_goals.txt">
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_goals.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>

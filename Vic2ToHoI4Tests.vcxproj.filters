@@ -1008,9 +1008,6 @@
     <Filter Include="data\test_files\Factions">
       <UniqueIdentifier>{d8f1049d-c2b7-4be5-8d86-10836045f13b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="data\test_files\Factions\Goals">
-      <UniqueIdentifier>{00c0c500-57c9-42d2-b3d6-12c3f7365614}</UniqueIdentifier>
-    </Filter>
     <Filter Include="data\test_files\HoI4Files">
       <UniqueIdentifier>{3051bc43-2841-4651-8768-4b71cee9794a}</UniqueIdentifier>
     </Filter>
@@ -1168,8 +1165,8 @@
     <CopyFileToFolders Include="data\test_files\Cultures\BaseCultures.txt">
       <Filter>data\test_files\Cultures</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="data\test_files\Factions\Goals\faction_goals.txt">
-      <Filter>data\test_files\Factions\Goals</Filter>
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_goals.txt">
+      <Filter>data\test_files\Factions</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\HoI4Files\CountryCategories\CountryGrammar.txt">
       <Filter>data\test_files\HoI4Files\CountryCategories</Filter>
