@@ -63,6 +63,9 @@ HoI4::FactionGoal::FactionGoal(const std::string& id, std::istream& theStream): 
 bool HoI4::FactionGoal::operator==(const FactionGoal& other) const
 {
 	return id == other.id && name == other.name && description == other.description && group == other.group &&
-			 category == other.category && visible == other.visible && lockedGoal == other.lockedGoal &&
-			 available == other.available && completed == other.completed && completeEffect == other.completeEffect;
+			 category == other.category && allowed == other.allowed && visible == other.visible &&
+			 lockedGoal == other.lockedGoal && available == other.available && selectEffect == other.selectEffect &&
+			 completed == other.completed && cancel == other.cancel && autoComplete == other.autoComplete &&
+			 completeEffect == other.completeEffect && aiWillDo == other.aiWillDo && isManifest == other.isManifest &&
+			 ratioProgress == other.ratioProgress;
 }
