@@ -51,6 +51,88 @@ faction_goal_war_on_democracy = {
 	}
 }
 
+# Defense of Democracy
+faction_manifest_defense_of_democracy = {
+	name = defense_of_democracy_goal_name
+	description = defense_of_democracy_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount = 40
+		completed_amount_collection = collection:world_uncapitulated_democratic_countries_and_dominions
+			
+		scale = {
+			trade_opinion_factor = 0.20
+		}
+		
+		#reversed = { #Scaled upwards as you approach 0% fulfillment
+		#	stability_factor = 0.50
+		#}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+	
+				modifier = { 
+					democratic_drift_from_guarantees = 0.05
+					can_guarantee_other_ideologies = 1
+				}
+			}
+		}
+	}
+}
+
+# Defense of Democracy
+faction_manifest_defense_of_democracy_allies = {
+	name = defense_of_democracy_goal_name
+	description = defense_of_democracy_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount = 50
+		completed_amount_collection = collection:world_uncapitulated_democratic_countries_and_dominions
+			
+		scale = {
+			trade_opinion_factor = 0.20
+			guarantee_cost = -0.50
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+	
+				modifier = { 
+					democratic_drift_from_guarantees = 0.08
+					can_guarantee_other_ideologies = 1
+				}
+			}
+		}
+	}
+}
+
+# Supress Regional Democracy
+faction_manifest_suppress_regional_democracy = {
+	name = suppress_regional_democracy_goal_name
+	description = suppress_regional_democracy_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:states_on_my_continent
+		completed_amount_collection = collection:non_democratic_controlled_states_on_my_continent
+		
+		scale = {
+			democratic_drift = -0.05
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+	
+				modifier = { 
+					weekly_casualties_war_support = 0.003
+				}			
+			}
+		}
+	}
+}
+
 }
 
 communism = {
@@ -306,6 +388,142 @@ faction_goal_war_on_communism = {
 	}
 }
 
+# Containment of Communism
+faction_manifest_containment_of_communism = {
+	name = containment_of_communism_goal_name
+	description = containment_of_communism_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = game:all_states
+		completed_amount_collection = collection:world_non_communist_states
+		
+		scale = {
+			communism_drift = -0.08
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+	
+				modifier = { 
+					required_garrison_factor = -0.15
+					generate_wargoal_tension = -0.15
+				}
+			}
+		}
+	}
+}
+
+# Supress Regional Communism
+faction_manifest_suppress_regional_communism = {
+	name = suppress_regional_communism_goal_name
+	description = suppress_regional_communism_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:states_on_my_continent
+		completed_amount_collection = collection:non_communist_controlled_states_on_my_continent
+		
+		scale = {
+			communism_drift = -0.05
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+	
+				modifier = { 
+					weekly_casualties_war_support = 0.003
+				}
+			}
+		}
+	}
+}
+
+# Spread of Communism 
+faction_manifest_spread_of_communism = {
+	name = spread_of_communism_goal_name
+	description = spread_of_communism_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = game:all_countries
+		completed_amount_collection = collection:world_communist_countries
+		range = { 
+			max = 1
+		}
+		
+		scale = {
+			communism_drift = 0.1
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+	
+				modifier = { 
+					conscription_factor = 0.05
+					party_popularity_stability_factor = 0.1
+				}			
+			}
+		}
+	}
+
+}
+
+# Supress Asian Communism 
+faction_manifest_suppress_asian_communism = {
+	name = suppress_asian_communism_goal_name
+	description = suppress_asian_communism_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:countries_asia
+		completed_amount_collection = collection:non_communist_or_capitulated_countries_asia
+		
+		scale = {
+			communism_drift = -0.05
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+	
+				modifier = { 
+					political_power_factor = 0.1
+				}
+			}
+		}
+	}
+}
+
+# An Iron Curtain 
+faction_manifest_an_iron_curtain = {
+	name = an_iron_curtain_goal_name
+	description = an_iron_curtain_goal_name_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:countries_my_continent
+		completed_amount_collection = collection:communist_or_capitulated_countries_my_continent
+		
+		scale = {
+			cic_to_overlord_factor = 0.15
+			mic_to_overlord_factor = 0.15
+			resources_to_overlord_factor = 0.15 
+			subjects_autonomy_gain = -0.50
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = 0 # WAD
+	
+				modifier = {
+					communism_drift_from_guarantees = 0.12
+					can_guarantee_other_ideologies = 1
+					generate_wargoal_tension = -0.15
+				}
+			}
+		}
+	}
+}
+
 }
 
 fascism = {
@@ -469,6 +687,30 @@ faction_goal_preemptive_strike_on_fascism = {
 		modifier = {
 			add = 1
 			is_historical_focus_on = yes
+		}
+	}
+}
+
+# Supress Regional Fascism
+faction_manifest_suppress_regional_fascism = {
+	name = suppress_regional_fascism_goal_name
+	description = suppress_regional_fascism_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:states_on_my_continent
+		completed_amount_collection = collection:non_fascist_controlled_states_on_my_continent
+		
+		scale = {
+			fascism_drift = -0.08
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+				modifier = { 
+					weekly_casualties_war_support = 0.006
+				}
+			}
 		}
 	}
 }
