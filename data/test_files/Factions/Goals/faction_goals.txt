@@ -1,2 +1,0 @@
-faction_goal_one = {
-}

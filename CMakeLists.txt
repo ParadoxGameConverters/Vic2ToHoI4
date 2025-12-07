@@ -959,7 +959,7 @@ configure_file("data/test_files/FocusTrees/test_adjusted_branch_ideas.txt" "${TE
 configure_file("data/test_files/GameRules.txt" "${TEST_OUTPUT_DIRECTORY}/GameRules.txt" COPYONLY)
 configure_file("data/test_files/GameRulesEmpty.txt" "${TEST_OUTPUT_DIRECTORY}/GameRulesEmpty.txt" COPYONLY)
 configure_file("data/test_files/generic_opertive_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/generic_opertive_codenames.txt" COPYONLY)
-configure_file("data/test_files/Factions/Goals/faction_goals.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/faction_goals.txt" COPYONLY)
+configure_file("data/test_files/Factions/Goals/ideological_faction_goals.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ideological_faction_goals.txt" COPYONLY)
 configure_file("data/test_files/HoI4Files/Characters/ImportCharacters.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ImportCharacters.txt" COPYONLY)
 configure_file("data/test_files/HoI4Files/CountryCategories/CountryGrammar.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/CountryGrammar.txt" COPYONLY)
 configure_file("data/test_files/HoI4Files/OnActions/ImportOnActions.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/ImportOnActions.txt" COPYONLY)

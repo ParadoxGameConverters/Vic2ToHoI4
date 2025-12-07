@@ -5,11 +5,11 @@
 TEST(HoI4World_Factions_FactionGoals, FactionGoalsCanBeImported)
 {
 	HoI4::FactionGoals goals;
-	goals.importFactionGoals(std::filesystem::path("Configurables") / "faction_goals.txt");
 
 	std::stringstream emptyStream;
-	const auto& theGoal = std::make_shared<HoI4::FactionGoal>("faction_goal_one", emptyStream);
+	const auto& goalOne = HoI4::FactionGoal("faction_goal_one", emptyStream);
+	const auto& goalTwo = HoI4::FactionGoal("faction_goal_two", emptyStream);
 
 	EXPECT_THAT(goals.getImportedGoals(),
-		 testing::UnorderedElementsAre(testing::Pair("faction_goal_one", testing::Pointee(*theGoal))));
+		 testing::UnorderedElementsAre(testing::Pair("ideology", testing::ElementsAre(goalOne, goalTwo))));
 }

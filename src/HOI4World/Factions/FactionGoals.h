@@ -14,15 +14,15 @@ namespace HoI4
 class FactionGoals: commonItems::parser
 {
   public:
-	FactionGoals() = default;
-	FactionGoals(const std::set<std::string>& majorIdeologies);
+	FactionGoals();
+	FactionGoals(std::istream& theStream);
 
-	void importFactionGoals(const std::filesystem::path& fileName);
 
 	[[nodiscard]] const auto& getImportedGoals() const { return importedGoals; }
 
   private:
-	std::map<std::string, std::shared_ptr<FactionGoal>> importedGoals;
+	std::map<std::string, std::vector<FactionGoal>> importedGoals;
+	std::vector<FactionGoal> ideologicalGoals;
 };
 
 
