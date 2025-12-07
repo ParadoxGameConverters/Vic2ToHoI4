@@ -43,6 +43,7 @@ void CreateModFiles(const std::filesystem::path& output_name)
 	mod_file << "name = \"Converted - " << output_name.string() << "\"\n";
 	mod_file << "path = \"mod/" << output_name.string() << "/\"\n";
 	mod_file << "user_dir = \"" << output_name.string() << "_user_dir\"\n";
+	mod_file << "replace_path=\"common/abilities\"\n";
 	mod_file << "replace_path=\"common/countries\"\n";
 	mod_file << "replace_path=\"common/ideologies\"\n";
 	mod_file << "replace_path=\"common/military_industrial_organization/organizations\"\n";
@@ -66,6 +67,7 @@ void CreateModFiles(const std::filesystem::path& output_name)
 		throw std::runtime_error("Could not create descriptor.mod");
 	}
 	descriptor_file << "name = \"Converted - " << output_name.string() << "\"\n";
+	descriptor_file << "replace_path=\"common/abilities\"\n";
 	descriptor_file << "replace_path=\"common/countries\"\n";
 	descriptor_file << "replace_path=\"common/ideologies\"\n";
 	descriptor_file << "replace_path=\"common/military_industrial_organization/organizations\"\n";
