@@ -5,8 +5,7 @@
 
 
 
-void HoI4::outputFactionGoals(const std::filesystem::path& outputName,
-	 const std::vector<std::shared_ptr<FactionGoal>>& factionGoals)
+void HoI4::outputFactionGoals(const std::filesystem::path& outputName, const std::vector<FactionGoal>& factionGoals)
 {
 	const std::filesystem::path folder = outputName / "common/factions/goals";
 	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
@@ -23,6 +22,6 @@ void HoI4::outputFactionGoals(const std::filesystem::path& outputName,
 
 	for (const auto& factionGoal: factionGoals)
 	{
-		out << *factionGoal << "\n";
+		out << factionGoal << "\n";
 	}
 }

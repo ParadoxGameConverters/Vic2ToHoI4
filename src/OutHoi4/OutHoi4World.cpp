@@ -5,6 +5,7 @@
 #include "src/OutHoi4/CountryCategories/OutCountryCategories.h"
 #include "src/OutHoi4/Decisions/OutDecisions.h"
 #include "src/OutHoi4/Events/OutEvents.h"
+#include "src/OutHoi4/Factions/OutFactionGoals.h"
 #include "src/OutHoi4/GameRules/OutGameRules.h"
 #include "src/OutHoi4/Ideas/OutIdeas.h"
 #include "src/OutHoi4/Ideologies/OutIdeologies.h"
@@ -255,6 +256,7 @@ void HoI4::OutputWorld(const World& world,
 	OutputAiPeace(outputName, world.getMajorIdeologies(), world.GetIdeologicalAiPeace(), world.GetDynamicAiPeace());
 	OutputUnitMedals(outputName, world.getMajorIdeologies(), world.GetUnitMedals());
 	outputAdjacencyRules(outputName, world.getAdjacencyRules());
+	outputFactionGoals("output" / outputName, world.getIdeologicalFactionGoals());
 }
 
 

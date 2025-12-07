@@ -10,8 +10,7 @@
 namespace HoI4
 {
 
-void outputFactionGoals(const std::filesystem::path& outputName,
-	 const std::vector<std::shared_ptr<FactionGoal>>& factionGoals);
+void outputFactionGoals(const std::filesystem::path& outputName, const std::vector<FactionGoal>& factionGoals);
 
 } // namespace HoI4
 

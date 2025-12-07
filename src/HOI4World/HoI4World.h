@@ -138,6 +138,7 @@ class World: commonItems::parser
 	const std::map<int, HoI4::State>& getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
 	std::vector<std::shared_ptr<Faction>> getFactions() const { return factions; }
+	const auto& getIdeologicalFactionGoals() const { return factionGoals->getIdeologicalGoals(); }
 	const auto& getMajorIdeologies() const { return ideologies->getMajorIdeologies(); }
 
 	std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag) const;

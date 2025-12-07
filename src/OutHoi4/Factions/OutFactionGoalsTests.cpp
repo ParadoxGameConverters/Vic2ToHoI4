@@ -38,7 +38,7 @@ TEST(OutHoI4_Factions_OutFactionGoals, FactionGoalsAreOutput)
 	theStream << "\t\tbase = 1\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto& theGoal = std::make_shared<FactionGoal>("test_faction_goal", theStream);
+	FactionGoal theGoal("test_faction_goal", theStream);
 	HoI4::outputFactionGoals("OutHoI4Tests/Factions", {theGoal});
 
 	std::ifstream file("OutHoI4Tests/Factions/common/factions/goals/ideological_faction_goals.txt");

@@ -23,6 +23,7 @@ class FactionGoals: commonItems::parser
 	void updateGuardiansOfPeaceGoal(const std::set<std::string>& majorIdeologies);
 
 	[[nodiscard]] const auto& getImportedGoals() const { return importedGoals; }
+	[[nodiscard]] const auto& getIdeologicalGoals() const { return ideologicalGoals; }
 
   private:
 	std::map<std::string, std::vector<FactionGoal>> importedGoals;
