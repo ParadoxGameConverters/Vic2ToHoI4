@@ -34,6 +34,24 @@ class FactionGoal: commonItems::parser
 	[[nodiscard]] const auto& getIsManifest() const { return isManifest; }
 	[[nodiscard]] const auto& getRatioProgress() const { return ratioProgress; }
 
+	void setId(const std::string& newValue) { id = newValue; }
+	void setName(const std::string& newValue) { name = newValue; }
+	void setDescription(const std::string& newValue) { description = newValue; }
+	void setGroup(const std::string& newValue) { group = newValue; }
+	void setCategory(const std::string& newValue) { category = newValue; }
+	void setAllowed(const std::string& newValue) { allowed = newValue; }
+	void setVisible(const std::string& newValue) { visible = newValue; }
+	void setLockedGoal(bool newValue) { lockedGoal = newValue; }
+	void setAvailable(const std::string& newValue) { available = newValue; }
+	void setSelectEffect(const std::string& newValue) { selectEffect = newValue; }
+	void setCompleted(const std::string& newValue) { completed = newValue; }
+	void setCancel(const std::string& newValue) { cancel = newValue; }
+	void setAutoComplete(bool newValue) { autoComplete = newValue; }
+	void setCompleteEffect(const std::string& newValue) { completeEffect = newValue; }
+	void setAiWillDo(const std::string& newValue) { aiWillDo = newValue; }
+	void setIsManifest(bool newValue) { isManifest = newValue; }
+	void setRatioProgress(const std::string& newValue) { ratioProgress = newValue; }
+
 	bool operator==(const FactionGoal& other) const;
 	friend std::ostream& operator<<(std::ostream& out, const FactionGoal& theGoal);
 

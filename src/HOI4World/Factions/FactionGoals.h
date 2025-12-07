@@ -17,6 +17,10 @@ class FactionGoals: commonItems::parser
 	FactionGoals();
 	FactionGoals(std::istream& theStream);
 
+	void updateFactionGoals(const std::set<std::string>& majorIdeologies);
+
+	void updateDefeatOfAntiIdeologyGoal(const std::string& ideology, const std::set<std::string>& majorIdeologies);
+	void updateGuardiansOfPeaceGoal(const std::set<std::string>& majorIdeologies);
 
 	[[nodiscard]] const auto& getImportedGoals() const { return importedGoals; }
 
