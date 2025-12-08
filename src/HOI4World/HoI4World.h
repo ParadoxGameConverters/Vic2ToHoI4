@@ -9,6 +9,7 @@
 #include "src/HOI4World/Decisions/Decisions.h"
 #include "src/HOI4World/Events/Events.h"
 #include "src/HOI4World/Factions/FactionGoals.h"
+#include "src/HOI4World/Factions/FactionRules.h"
 #include "src/HOI4World/FocusTrees/AdjustedBranches.h"
 #include "src/HOI4World/GameRules/GameRules.h"
 #include "src/HOI4World/HoI4Country.h"
@@ -140,6 +141,7 @@ class World: commonItems::parser
 	std::vector<std::shared_ptr<Faction>> getFactions() const { return factions; }
 	const auto& getIdeologicalFactionGoals() const { return factionGoals->getIdeologicalGoals(); }
 	const auto& getManifestsVariables() const { return factionGoals->getVariables(); }
+	const auto& getIdeologicalFactionRules() const { return factionRules->getIdeologicalRules(); }
 	const auto& getMajorIdeologies() const { return ideologies->getMajorIdeologies(); }
 
 	std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag) const;
@@ -289,6 +291,7 @@ class World: commonItems::parser
 
 	std::vector<std::shared_ptr<Faction>> factions;
 	std::unique_ptr<HoI4::FactionGoals> factionGoals;
+	std::unique_ptr<HoI4::FactionRules> factionRules;
 	std::unique_ptr<HoI4::decisions> theDecisions;
 	std::unique_ptr<HoI4::Events> events;
 	std::unique_ptr<HoI4::OnActions> onActions;

@@ -58,6 +58,8 @@
     <ClCompile Include="src\HOI4World\Events\EventTests.cpp" />
     <ClCompile Include="src\HOI4World\Factions\FactionGoalTests.cpp" />
     <ClCompile Include="src\HOI4World\Factions\FactionGoalsTests.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionRuleTests.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionRulesTests.cpp" />
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranchTests.cpp" />
     <ClCompile Include="src\HOI4World\GameRules\GameRuleOptionTests.cpp" />
     <ClCompile Include="src\HOI4World\GameRules\GameRulesTests.cpp" />
@@ -207,6 +209,8 @@
     <ClCompile Include="src\OutHoi4\Characters\OutPortraitTests.cpp" />
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalTests.cpp" />
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalsTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRulesTests.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutRailwaysTests.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutSupplyNodesTests.cpp" />
     <ClCompile Include="src\V2World\Ai\AIStrategyTests.cpp" />
@@ -810,6 +814,9 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_goals.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_rules.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>

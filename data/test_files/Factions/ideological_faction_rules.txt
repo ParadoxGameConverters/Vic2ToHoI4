@@ -1,0 +1,5 @@
+ideology = {
+	faction_rule_one = {
+	}
+	faction_rule_two = {}
+}
