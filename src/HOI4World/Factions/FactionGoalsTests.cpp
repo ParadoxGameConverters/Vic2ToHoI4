@@ -11,5 +11,6 @@ TEST(HoI4World_Factions_FactionGoals, FactionGoalsCanBeImported)
 	const auto& goalTwo = HoI4::FactionGoal("faction_goal_two", emptyStream);
 
 	EXPECT_THAT(goals.getImportedGoals(),
-		 testing::UnorderedElementsAre(testing::Pair("ideology", testing::ElementsAre(goalOne, goalTwo))));
+		 testing::UnorderedElementsAre(
+			  testing::Pair("ideology", testing::ElementsAre(testing::Pointee(goalOne), testing::Pointee(goalTwo)))));
 }

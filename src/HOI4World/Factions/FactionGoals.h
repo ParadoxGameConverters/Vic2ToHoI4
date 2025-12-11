@@ -22,11 +22,13 @@ class FactionGoals: commonItems::parser
 	void updateDefeatOfAntiIdeologyGoal(const std::string& ideology, const std::set<std::string>& majorIdeologies);
 	void updateGuardiansOfPeaceGoal(const std::set<std::string>& majorIdeologies);
 
+	std::shared_ptr<FactionGoal> getGoal(const std::string& goalId);
+
 	[[nodiscard]] const auto& getImportedGoals() const { return importedGoals; }
 	[[nodiscard]] const auto& getIdeologicalGoals() const { return ideologicalGoals; }
 
   private:
-	std::map<std::string, std::vector<FactionGoal>> importedGoals;
+	std::map<std::string, std::vector<std::shared_ptr<FactionGoal>>> importedGoals;
 	std::vector<FactionGoal> ideologicalGoals;
 };
 
