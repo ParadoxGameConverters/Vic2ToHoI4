@@ -1,0 +1,195 @@
+democratic = {
+
+faction_template_democratic = {
+	name = Allies
+	manifest = faction_manifest_defense_of_democracy_allies
+
+	goals = {
+
+		# Short term goals
+		
+		# Medium term goals
+		faction_goal_air_superiority
+
+		# Long term goals
+		faction_goal_the_atomic_race
+		faction_goal_rule_the_waves
+
+	}
+
+
+	default_rules = {
+		joining_rule_non_fascist
+		joining_rule_has_no_offensive_war
+		faction_peace_rule_liberation_focus
+		government_in_exile_allowed
+		change_leader_rule_manifest_below_35
+		dismissal_rule_ideology_not_democratic
+		change_leader_rule_industry
+	}
+	
+	icon = GFX_faction_icon_allies
+}
+
+}
+
+communism = {
+
+faction_template_communism = {
+	name = Comintern
+	manifest = faction_manifest_spread_of_communism
+	icon = GFX_faction_logo_comintern
+	goals = {
+
+		# Short term goals
+		# faction_goal_stall_the_fascist_threat
+
+		# Medium term goals
+		faction_goal_indifference_is_a_threat
+
+		# Long term goals
+		faction_goal_the_red_tide
+		
+	}
+
+	default_rules = {
+		joining_rule_communist_only
+		faction_peace_rule_puppeting_focus
+		change_leader_rule_manpower
+		change_leader_rule_industry
+		war_declaration_rule_major_only
+	}
+}
+
+}
+
+fascism = {
+
+faction_template_fascism = {
+	name = Axis
+	icon = GFX_faction_logo_axis
+	manifest = faction_manifest_conquest_of_territory
+
+	goals = {
+
+		# Short term goals
+		faction_goal_an_armored_fist #It is ok for them not to start with a free slot
+		#faction_goal_high_seas_fleet
+
+		# Medium term goals
+		faction_goal_secure_european_continent
+
+		# Long terms
+		faction_goal_resource_control
+	
+	}
+
+	default_rules = {
+		call_to_war_rule_independent_only
+		joining_rule_non_communist
+		faction_peace_rule_conquest_focus
+		change_leader_rule_manpower
+		change_leader_rule_manifest_below_35
+		dismissal_rule_offensive_war
+	}
+}
+
+}
+
+radical = {
+
+faction_template_radical = {
+	name = Axis
+	icon = GFX_faction_logo_axis
+	manifest = faction_manifest_regional_expansionism
+
+	goals = {
+
+		# Short term goals
+		faction_goal_war_on_democracy
+
+		# Medium term goals
+		faction_goal_aggressive_defense
+
+		# Long terms
+		faction_goal_defeat_of_anti_radicals
+	
+	}
+
+	default_rules = {
+		call_to_war_rule_independent_only
+		joining_rule_non_democratic
+		faction_peace_rule_conquest_focus
+		change_leader_rule_manpower
+		change_leader_rule_manifest_below_35
+		dismissal_rule_offensive_war
+	}
+}
+
+}
+
+absolutist = {
+
+faction_template_absolutist = {
+	name = Axis
+	icon = GFX_faction_logo_axis
+	manifest = faction_manifest_suppress_regional_communism
+
+	goals = {
+
+		# Short term goals
+
+		# Medium term goals
+		faction_goal_a_military_base
+
+		# Long terms
+		faction_goal_defeat_of_anti_absolutists
+	
+	}
+
+	default_rules = {
+		call_to_war_rule_independent_only
+		joining_rule_non_communist
+		faction_peace_rule_liberation_focus
+		government_in_exile_allowed
+		change_leader_rule_manpower
+		change_leader_rule_manifest_below_35
+		dismissal_rule_offensive_war
+	}
+}
+
+}
+
+neutrality = {
+
+faction_template_neutrality = {
+	name = Allies
+	manifest = faction_goal_guardians_of_peace
+
+	goals = {
+
+		# Short term goals
+		
+		# Medium term goals
+		faction_goal_guardians_of_peace
+
+		# Long term goals
+		faction_goal_industrial_domination
+
+	}
+
+
+	default_rules = {
+		joining_rule_democratic_non_aligned
+		joining_rule_has_no_offensive_war
+		faction_peace_rule_liberation_focus
+		government_in_exile_allowed
+		change_leader_rule_manifest_below_35
+		dismissal_rule_world_tension
+		change_leader_rule_industry
+	}
+	
+	icon = GFX_faction_icon_allies
+}
+
+}
