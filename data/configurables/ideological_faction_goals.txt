@@ -882,6 +882,30 @@ faction_goal_preemptive_strike_on_radical = {
 	}
 }
 
+# Supress Regional Radical
+faction_manifest_suppress_regional_radical = {
+	name = suppress_regional_radical_goal_name
+	description = suppress_regional_radical_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:states_on_my_continent
+		completed_amount_collection = collection:non_fascist_controlled_states_on_my_continent
+		
+		scale = {
+			radical_drift = -0.08
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+				modifier = { 
+					weekly_casualties_war_support = 0.006
+				}
+			}
+		}
+	}
+}
+
 }
 
 absolutist = {
@@ -1045,6 +1069,30 @@ faction_goal_preemptive_strike_on_absolutist = {
 		modifier = {
 			add = 1
 			is_historical_focus_on = yes
+		}
+	}
+}
+
+# Supress Regional Absolutist
+faction_manifest_suppress_regional_absolutist = {
+	name = suppress_regional_absolutist_goal_name
+	description = suppress_regional_absolutist_goal_desc
+	is_manifest = yes
+	ratio_progress = {
+		total_amount_collection = collection:states_on_my_continent
+		completed_amount_collection = collection:non_fascist_controlled_states_on_my_continent
+		
+		scale = {
+			absolutist_drift = -0.08
+		}
+		
+		progress_sections = {
+			manifest_fulfilled = {
+				min = @manifest_fulfilled_value
+				modifier = { 
+					weekly_casualties_war_support = 0.006
+				}
+			}
 		}
 	}
 }
