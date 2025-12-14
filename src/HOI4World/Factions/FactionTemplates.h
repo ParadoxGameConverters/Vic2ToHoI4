@@ -24,6 +24,9 @@ class FactionTemplates: commonItems::parser
 	void updateFactionTemplateRadical(const std::set<std::string>& majorIdeologies);
 	void updateFactionTemplateAbsolutist(const std::set<std::string>& majorIdeologies);
 	void updateFactionTemplateNeutrality(const std::set<std::string>& majorIdeologies);
+	void updateFactionTemplateRegional(const std::set<std::string>& majorIdeologies);
+	void updateFactionTemplateEuropeanUnity(const std::set<std::string>& majorIdeologies);
+	void updateFactionTemplateEuropeanDominanceMonarchist(const std::set<std::string>& majorIdeologies);
 
 	std::shared_ptr<HoI4::FactionTemplate> getTemplate(const std::string& templateId);
 

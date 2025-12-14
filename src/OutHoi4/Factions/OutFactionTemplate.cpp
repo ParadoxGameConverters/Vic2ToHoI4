@@ -8,6 +8,18 @@ std::ostream& HoI4::operator<<(std::ostream& out, const FactionTemplate& theTemp
 	out << "\tname = " << theTemplate.name << "\n";
 	out << "\ticon = " << theTemplate.icon << "\n";
 	out << "\tmanifest = " << theTemplate.manifest << "\n";
+	if (theTemplate.canLeaderJoinOtherFactions)
+	{
+		out << "\tcan_leader_join_other_factions = yes\n";
+	}
+	if (theTemplate.visible)
+	{
+		out << "\tvisible " << *theTemplate.visible << "\n";
+	}
+	if (theTemplate.available)
+	{
+		out << "\tavailable " << *theTemplate.available << "\n";
+	}
 
 	out << "\tgoals = {\n";
 	for (const auto& goal: theTemplate.goals)

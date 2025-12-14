@@ -16,6 +16,15 @@ HoI4::FactionTemplate::FactionTemplate(const std::string& id, std::istream& theS
 	registerKeyword("manifest", [this](std::istream& theStream) {
 		manifest = commonItems::getString(theStream);
 	});
+	registerKeyword("can_leader_join_other_factions", [this](std::istream& theStream) {
+		canLeaderJoinOtherFactions = commonItems::getString(theStream) == "yes";
+	});
+	registerKeyword("visible", [this](std::istream& theStream) {
+		visible = commonItems::stringOfItem(theStream).getString();
+	});
+	registerKeyword("available", [this](std::istream& theStream) {
+		available = commonItems::stringOfItem(theStream).getString();
+	});
 	registerKeyword("goals", [this](std::istream& theStream) {
 		goals = commonItems::stringList(theStream).getStrings();
 	});

@@ -63,6 +63,77 @@ TEST(HoI4World_Factions_FactionTemplate, ManifestCanBeSet)
 }
 
 
+TEST(HoI4World_Factions_FactionTemplate, CanLeaderJoinOtherFactionsDefaultsToFalse)
+{
+	std::stringstream theStream;
+	HoI4::FactionTemplate theTemplate("test_template", theStream);
+
+	EXPECT_FALSE(theTemplate.getCanLeaderJoinOtherFactions());
+}
+
+
+TEST(HoI4World_Factions_FactionTemplate, CanLeaderJoinOtherFactionsCanBeSet)
+{
+	std::stringstream theStream;
+	theStream << "can_leader_join_other_factions = yes\n";
+	HoI4::FactionTemplate theTemplate("test_template", theStream);
+
+	EXPECT_TRUE(theTemplate.getCanLeaderJoinOtherFactions());
+}
+
+
+TEST(HoI4World_Factions_FactionTemplate, VisibleHasNoValueByDefault)
+{
+	std::stringstream theStream;
+	HoI4::FactionTemplate theTemplate("test_template", theStream);
+
+	EXPECT_FALSE(theTemplate.getVisible().has_value());
+}
+
+
+TEST(HoI4World_Factions_FactionTemplate, VisibleCanBeSet)
+{
+	std::stringstream theStream;
+	theStream << "\tvisible = {\n";
+	theStream << "\t\tNOT = { has_government = communism }\n";
+	theStream << "\t}";
+	HoI4::FactionTemplate theTemplate("test_template", theStream);
+
+	std::string expected;
+	expected += "= {\n";
+	expected += "\t\tNOT = { has_government = communism }\n";
+	expected += "\t}";
+
+	EXPECT_EQ(expected, theTemplate.getVisible());
+}
+
+
+TEST(HoI4World_Factions_FactionTemplate, AvailableHasNoValueByDefault)
+{
+	std::stringstream theStream;
+	HoI4::FactionTemplate theTemplate("test_template", theStream);
+
+	EXPECT_FALSE(theTemplate.getAvailable().has_value());
+}
+
+
+TEST(HoI4World_Factions_FactionTemplate, AvailableCanBeSet)
+{
+	std::stringstream theStream;
+	theStream << "\tavailable = {\n";
+	theStream << "\t\tNOT = { has_government = communism }\n";
+	theStream << "\t}";
+	HoI4::FactionTemplate theTemplate("test_template", theStream);
+
+	std::string expected;
+	expected += "= {\n";
+	expected += "\t\tNOT = { has_government = communism }\n";
+	expected += "\t}";
+
+	EXPECT_EQ(expected, theTemplate.getAvailable());
+}
+
+
 TEST(HoI4World_Factions_FactionTemplate, GoalsDefaultsToEmpty)
 {
 	std::stringstream theStream;
@@ -83,6 +154,20 @@ TEST(HoI4World_Factions_FactionTemplate, GoalsCanBeSet)
 
 	EXPECT_THAT(theTemplate.getGoals(),
 		 testing::ElementsAre("faction_goal_air_superiority", "faction_goal_rule_the_waves"));
+}
+
+
+TEST(HoI4World_Factions_FactionTemplate, GoalCanBeAdded)
+{
+	std::stringstream theStream;
+	theStream << "\tgoals = {\n";
+	theStream << "\t\tfaction_goal_rule_the_waves\n";
+	theStream << "\t}";
+	HoI4::FactionTemplate theTemplate("test_template", theStream);
+	theTemplate.addGoal("faction_goal_air_superiority");
+
+	EXPECT_THAT(theTemplate.getGoals(),
+		 testing::ElementsAre("faction_goal_rule_the_waves", "faction_goal_air_superiority"));
 }
 
 

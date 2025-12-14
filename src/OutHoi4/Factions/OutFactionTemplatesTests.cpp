@@ -18,6 +18,13 @@ TEST(OutHoI4_Factions_OutFactionTemplates, FactionTemplatesAreOutput)
 	theStream << "\tname = Allies\n";
 	theStream << "\ticon = GFX_faction_icon_allies\n";
 	theStream << "\tmanifest = faction_manifest_defense_of_democracy_allies\n";
+	theStream << "\tcan_leader_join_other_factions = yes\n";
+	theStream << "\tvisible = {\n";
+	theStream << "\t\talways = no\n";
+	theStream << "\t}\n";
+	theStream << "\tavailable = {\n";
+	theStream << "\t\thas_government = democratic\n";
+	theStream << "\t}\n";
 	theStream << "\tgoals = {\n";
 	theStream << "\t\tfaction_goal_air_superiority\n";
 	theStream << "\t}\n";
@@ -36,6 +43,13 @@ TEST(OutHoI4_Factions_OutFactionTemplates, FactionTemplatesAreOutput)
 	expected << "\tname = Allies\n";
 	expected << "\ticon = GFX_faction_icon_allies\n";
 	expected << "\tmanifest = faction_manifest_defense_of_democracy_allies\n";
+	expected << "\tcan_leader_join_other_factions = yes\n";
+	expected << "\tvisible = {\n";
+	expected << "\t\talways = no\n";
+	expected << "\t}\n";
+	expected << "\tavailable = {\n";
+	expected << "\t\thas_government = democratic\n";
+	expected << "\t}\n";
 	expected << "\tgoals = {\n";
 	expected << "\t\tfaction_goal_air_superiority\n";
 	expected << "\t}\n";
