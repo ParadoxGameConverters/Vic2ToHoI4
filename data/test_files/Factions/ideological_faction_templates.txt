@@ -1,0 +1,4 @@
+ideology = {
+	faction_template_one = {}
+	faction_template_two = {}
+}

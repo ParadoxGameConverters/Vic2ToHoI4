@@ -82,6 +82,12 @@
     <ClCompile Include="src\HOI4World\Factions\FactionRuleGroupsTests.cpp">
       <Filter>src\HOI4World\Factions</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionTemplateTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionTemplatesTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranchTests.cpp">
       <Filter>src\HOI4World\FocusTrees</Filter>
     </ClCompile>
@@ -482,6 +488,12 @@
       <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleGroupsTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionTemplateTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionTemplatesTests.cpp">
       <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Map\OutRailwaysTests.cpp">
@@ -1190,6 +1202,9 @@
       <Filter>data\test_files\Factions</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Factions\rule_groups.txt">
+      <Filter>data\test_files\Factions</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_templates.txt">
       <Filter>data\test_files\Factions</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\HoI4Files\CountryCategories\CountryGrammar.txt">

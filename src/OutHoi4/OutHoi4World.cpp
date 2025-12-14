@@ -8,6 +8,7 @@
 #include "src/OutHoi4/Factions/OutFactionGoals.h"
 #include "src/OutHoi4/Factions/OutFactionRules.h"
 #include "src/OutHoi4/Factions/OutFactionRuleGroups.h"
+#include "src/OutHoi4/Factions/OutFactionTemplates.h"
 #include "src/OutHoi4/GameRules/OutGameRules.h"
 #include "src/OutHoi4/Ideas/OutIdeas.h"
 #include "src/OutHoi4/Ideologies/OutIdeologies.h"
@@ -261,6 +262,7 @@ void HoI4::OutputWorld(const World& world,
 	outputFactionGoals("output" / outputName, world.getIdeologicalFactionGoals(), world.getManifestsVariables());
 	outputFactionRules("output" / outputName, world.getIdeologicalFactionRules());
 	outputFactionRuleGroups("output" / outputName, world.getIdeologicalFactionRuleGroups());
+	outputFactionTemplates("output" / outputName, world.getIdeologicalFactionTemplates());
 }
 
 

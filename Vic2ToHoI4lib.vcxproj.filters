@@ -903,6 +903,12 @@
     <ClCompile Include="src\HOI4World\Factions\FactionRuleGroups.cpp">
       <Filter>src\HoI4World\Factions</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionTemplate.cpp">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionTemplates.cpp">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranch.cpp">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClCompile>
@@ -1012,6 +1018,12 @@
       <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleGroups.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionTemplate.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionTemplates.cpp">
       <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRule.cpp">
@@ -2231,6 +2243,12 @@
     <ClInclude Include="src\HOI4World\Factions\FactionRuleGroups.h">
       <Filter>src\HoI4World\Factions</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\Factions\FactionTemplate.h">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Factions\FactionTemplates.h">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClInclude>
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranch.h">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClInclude>
@@ -2340,6 +2358,12 @@
       <Filter>src\OutHoi4\Factions</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Factions\OutFactionRuleGroups.h">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Factions\OutFactionTemplate.h">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Factions\OutFactionTemplates.h">
       <Filter>src\OutHoi4\Factions</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRule.h">
