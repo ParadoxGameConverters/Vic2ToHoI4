@@ -600,7 +600,7 @@ neutrality = {
 
 faction_template_neutrality = {
 	name = Allies
-	manifest = faction_goal_guardians_of_peace
+	manifest = faction_manifest_protector_of_peace
 
 	goals = {
 
