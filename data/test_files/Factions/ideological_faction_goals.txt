@@ -1,3 +1,5 @@
+@variable = 0.75
+
 ideology = {
 	faction_goal_one = {
 	}

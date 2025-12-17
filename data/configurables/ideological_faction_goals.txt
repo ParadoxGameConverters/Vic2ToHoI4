@@ -1,5 +1,7 @@
 # Source: common/factions/goals - when updating to new HoI4 version, check for ideology based goals in this folder
 
+@manifest_fulfilled_value = 0.75
+
 democratic = {
 
 faction_goal_war_on_democracy = {

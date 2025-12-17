@@ -39,7 +39,7 @@ TEST(OutHoI4_Factions_OutFactionGoals, FactionGoalsAreOutput)
 	theStream << "\t}\n";
 	theStream << "}";
 	FactionGoal theGoal("test_faction_goal", theStream);
-	HoI4::outputFactionGoals("OutHoI4Tests/Factions", {theGoal});
+	HoI4::outputFactionGoals("OutHoI4Tests/Factions", {theGoal}, {});
 
 	std::ifstream file("OutHoI4Tests/Factions/common/factions/goals/ideological_faction_goals.txt");
 	const std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
@@ -70,5 +70,25 @@ TEST(OutHoI4_Factions_OutFactionGoals, FactionGoalsAreOutput)
 	expected << "\t}\n";
 	expected << "}\n";
 	expected << "\n";
+	EXPECT_EQ(content, expected.str());
+}
+
+
+TEST(OutHoI4_Factions_OutFactionGoals, ManifestsVariablesAreOutput)
+{
+	std::filesystem::create_directories("OutHoI4Tests/Factions/ManifestsVariables/common/factions/goals");
+
+	const std::map<std::string, double> variables = {{"@manifest_fulfilled_value", 0.75}};
+	HoI4::outputFactionGoals("OutHoI4Tests/Factions/ManifestsVariables", {}, variables);
+
+	std::ifstream file("OutHoI4Tests/Factions/ManifestsVariables/common/factions/goals/ideological_faction_goals.txt");
+	const std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+
+	std::stringstream expected;
+	expected << "@manifest_fulfilled_value = 0.75\n";
+	expected << "\n";
+
+	Log(LogLevel::Info) << "Content ->\n" << content;
+	Log(LogLevel::Info) << "Expected ->\n" << expected.str();
 	EXPECT_EQ(content, expected.str());
 }

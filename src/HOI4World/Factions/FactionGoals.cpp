@@ -9,6 +9,9 @@ HoI4::FactionGoals::FactionGoals()
 {
 	Log(LogLevel::Info) << "\tImporting faction goals and manifests";
 
+	registerRegex("@[a-z_]+", [this](const std::string& varName, std::istream& theStream) {
+		variables[varName] = commonItems::getDouble(theStream);
+	});
 	registerRegex(commonItems::catchallRegex, [this](const std::string& ideology, std::istream& theStream) {
 		const FactionGoals& ideologyGoals(theStream);
 		for (const auto& goal: ideologyGoals.ideologicalGoals)

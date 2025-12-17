@@ -14,3 +14,11 @@ TEST(HoI4World_Factions_FactionGoals, FactionGoalsCanBeImported)
 		 testing::UnorderedElementsAre(
 			  testing::Pair("ideology", testing::ElementsAre(testing::Pointee(goalOne), testing::Pointee(goalTwo)))));
 }
+
+
+TEST(HoI4World_Factions_FactionGoals, VariablesCanBeImported)
+{
+	HoI4::FactionGoals goals;
+
+	EXPECT_THAT(goals.getVariables(), testing::UnorderedElementsAre(testing::Pair("@variable", 0.75)));
+}

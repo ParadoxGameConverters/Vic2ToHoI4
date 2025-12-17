@@ -256,7 +256,7 @@ void HoI4::OutputWorld(const World& world,
 	OutputAiPeace(outputName, world.getMajorIdeologies(), world.GetIdeologicalAiPeace(), world.GetDynamicAiPeace());
 	OutputUnitMedals(outputName, world.getMajorIdeologies(), world.GetUnitMedals());
 	outputAdjacencyRules(outputName, world.getAdjacencyRules());
-	outputFactionGoals("output" / outputName, world.getIdeologicalFactionGoals());
+	outputFactionGoals("output" / outputName, world.getIdeologicalFactionGoals(), world.getManifestsVariables());
 }
 
 

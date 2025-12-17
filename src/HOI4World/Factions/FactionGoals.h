@@ -26,10 +26,12 @@ class FactionGoals: commonItems::parser
 
 	[[nodiscard]] const auto& getImportedGoals() const { return importedGoals; }
 	[[nodiscard]] const auto& getIdeologicalGoals() const { return ideologicalGoals; }
+	[[nodiscard]] const auto& getVariables() const { return variables; }
 
   private:
 	std::map<std::string, std::vector<std::shared_ptr<FactionGoal>>> importedGoals;
 	std::vector<FactionGoal> ideologicalGoals;
+	std::map<std::string, double> variables;
 };
 
 

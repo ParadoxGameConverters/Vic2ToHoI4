@@ -5,7 +5,9 @@
 
 
 
-void HoI4::outputFactionGoals(const std::filesystem::path& outputName, const std::vector<FactionGoal>& factionGoals)
+void HoI4::outputFactionGoals(const std::filesystem::path& outputName,
+	 const std::vector<FactionGoal>& factionGoals,
+	 const std::map<std::string, double>& variables)
 {
 	const std::filesystem::path folder = outputName / "common/factions/goals";
 	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))
@@ -18,6 +20,12 @@ void HoI4::outputFactionGoals(const std::filesystem::path& outputName, const std
 	if (!out.is_open())
 	{
 		throw std::runtime_error("Could not create " + file.string());
+	}
+
+	for (const auto& [varName, value]: variables)
+	{
+		out << varName << " = " << value << "\n";
+		out << "\n";
 	}
 
 	for (const auto& factionGoal: factionGoals)
