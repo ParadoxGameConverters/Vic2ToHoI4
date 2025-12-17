@@ -53,6 +53,7 @@
     <ClCompile Include="src\HOI4World\Factions\FactionGoals.cpp" />
     <ClCompile Include="src\HOI4World\Factions\FactionRule.cpp" />
     <ClCompile Include="src\HOI4World\Factions\FactionRules.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionRuleGroups.cpp" />
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranch.cpp" />
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranches.cpp" />
     <ClCompile Include="src\HOI4World\FocusTrees\FocusTreeFactory.cpp" />
@@ -264,6 +265,7 @@
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoals.cpp" />
     <ClCompile Include="src\OutHoi4\Factions\OutFactionRule.cpp" />
     <ClCompile Include="src\OutHoi4\Factions\OutFactionRules.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleGroups.cpp" />
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRule.cpp" />
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRuleOption.cpp" />
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRules.cpp" />
@@ -462,6 +464,7 @@
     <ClInclude Include="src\HOI4World\Factions\FactionGoals.h" />
     <ClInclude Include="src\HOI4World\Factions\FactionRule.h" />
     <ClInclude Include="src\HOI4World\Factions\FactionRules.h" />
+    <ClInclude Include="src\HOI4World\Factions\FactionRuleGroups.h" />
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranch.h" />
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranches.h" />
     <ClInclude Include="src\HOI4World\FocusTrees\FocusTreeFactory.h" />
@@ -729,6 +732,7 @@
     <ClInclude Include="src\OutHoi4\Factions\OutFactionGoals.h" />
     <ClInclude Include="src\OutHoi4\Factions\OutFactionRule.h" />
     <ClInclude Include="src\OutHoi4\Factions\OutFactionRules.h" />
+    <ClInclude Include="src\OutHoi4\Factions\OutFactionRuleGroups.h" />
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRule.h" />
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRuleOption.h" />
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRules.h" />

@@ -17,7 +17,7 @@ class FactionRules: commonItems::parser
 	FactionRules();
 	FactionRules(std::istream& theStream);
 
-	void updateFactionRules(const std::set<std::string>& majorIdeologies);
+	void updateFactionRules(const std::set<std::string>& majorIdeologies, const std::filesystem::path& hoi4Path);
 
 	void updateCallToWarRuleFactionLeaderOnly(const std::set<std::string>& majorIdeologies);
 	void updateGuaranteeThreatReduction15(const std::set<std::string>& majorIdeologies);
@@ -33,10 +33,12 @@ class FactionRules: commonItems::parser
 
 	[[nodiscard]] const auto& getImportedRules() const { return importedRules; }
 	[[nodiscard]] const auto& getIdeologicalRules() const { return ideologicalRules; }
+	[[nodiscard]] const auto& getIdeologicalRuleGroups() const { return ideologicalRuleGroups; }
 
   private:
 	std::map<std::string, std::vector<std::shared_ptr<FactionRule>>> importedRules;
 	std::vector<FactionRule> ideologicalRules;
+	std::map<std::string, std::vector<std::string>> ideologicalRuleGroups;
 };
 
 

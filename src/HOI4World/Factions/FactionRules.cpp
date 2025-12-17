@@ -1,6 +1,7 @@
 #include "src/HOI4World/Factions/FactionRules.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
+#include "src/HOI4World/Factions/FactionRuleGroups.h"
 #include <ranges>
 
 
@@ -29,7 +30,8 @@ HoI4::FactionRules::FactionRules(std::istream& theStream)
 }
 
 
-void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorIdeologies)
+void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorIdeologies,
+	 const std::filesystem::path& hoi4Path)
 {
 	Log(LogLevel::Info) << "\tUpdating ideological faction rules";
 
@@ -43,11 +45,20 @@ void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorId
 	updatePeaceRuleLiberationFocus(majorIdeologies);
 	updatePeaceRuleConquestFocus(majorIdeologies);
 
-	for (const auto& ideology: majorIdeologies)
+	FactionRuleGroups factionRuleGroups(hoi4Path);
+	for (const auto& [ideology, rules]: importedRules)
 	{
-		for (const auto& rule: importedRules.at(ideology))
+		for (const auto& rule: rules)
 		{
-			ideologicalRules.push_back(*rule);
+			if (majorIdeologies.contains(ideology))
+			{
+				ideologicalRules.push_back(*rule);
+			}
+			else
+			{
+				factionRuleGroups.removeRule(rule->getId());
+				ideologicalRuleGroups = factionRuleGroups.getRuleGroups();
+			}
 		}
 	}
 }

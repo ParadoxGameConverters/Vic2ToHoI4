@@ -142,6 +142,7 @@ class World: commonItems::parser
 	const auto& getIdeologicalFactionGoals() const { return factionGoals->getIdeologicalGoals(); }
 	const auto& getManifestsVariables() const { return factionGoals->getVariables(); }
 	const auto& getIdeologicalFactionRules() const { return factionRules->getIdeologicalRules(); }
+	const auto& getIdeologicalFactionRuleGroups() const { return factionRules->getIdeologicalRuleGroups(); }
 	const auto& getMajorIdeologies() const { return ideologies->getMajorIdeologies(); }
 
 	std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag) const;

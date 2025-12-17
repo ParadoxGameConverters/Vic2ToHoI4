@@ -360,7 +360,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	factionGoals = std::make_unique<FactionGoals>();
 	factionGoals->updateFactionGoals(ideologies->getMajorIdeologies());
 	factionRules = std::make_unique<FactionRules>();
-	factionRules->updateFactionRules(ideologies->getMajorIdeologies());
+	factionRules->updateFactionRules(ideologies->getMajorIdeologies(), theConfiguration.getHoI4Path());
 	if (theConfiguration.getCreateFactions())
 	{
 		createFactions(theConfiguration);

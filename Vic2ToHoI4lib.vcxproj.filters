@@ -900,6 +900,9 @@
     <ClCompile Include="src\HOI4World\Factions\FactionRules.cpp">
       <Filter>src\HoI4World\Factions</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionRuleGroups.cpp">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranch.cpp">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClCompile>
@@ -1006,6 +1009,9 @@
       <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Factions\OutFactionRules.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleGroups.cpp">
       <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\GameRules\OutGameRule.cpp">
@@ -2222,6 +2228,9 @@
     <ClInclude Include="src\HOI4World\Factions\FactionRules.h">
       <Filter>src\HoI4World\Factions</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\Factions\FactionRuleGroups.h">
+      <Filter>src\HoI4World\Factions</Filter>
+    </ClInclude>
     <ClInclude Include="src\HOI4World\FocusTrees\AdjustedBranch.h">
       <Filter>src\HoI4World\FocusTrees</Filter>
     </ClInclude>
@@ -2328,6 +2337,9 @@
       <Filter>src\OutHoi4\Factions</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Factions\OutFactionRules.h">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Factions\OutFactionRuleGroups.h">
       <Filter>src\OutHoi4\Factions</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\GameRules\OutGameRule.h">

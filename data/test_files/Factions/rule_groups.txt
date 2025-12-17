@@ -1,0 +1,12 @@
+rule_group_one = {
+	rules = {
+		rule_one
+		rule_two
+	}
+}
+
+rule_group_two = {
+	rules = {
+		rule_three
+	}
+}
