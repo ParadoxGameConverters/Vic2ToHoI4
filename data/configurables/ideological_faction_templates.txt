@@ -297,7 +297,7 @@ faction_template_fascism = {
 		#faction_goal_high_seas_fleet
 
 		# Medium term goals
-		faction_goal_secure_european_continent
+		faction_goal_secure_the_oil_supply
 
 		# Long terms
 		faction_goal_resource_control

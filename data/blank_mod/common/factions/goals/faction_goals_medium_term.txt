@@ -20,53 +20,6 @@
 #  # #   # ### ##  
 
 
-faction_goal_secure_european_continent = {
-	name = secure_european_continent_goal_name
-	description = secure_european_continent_goal_desc
-	category = medium_term
-	group = FOCUS_FILTER_ANNEXATION
-	visible = {
-	}
-	completed = {
-		collection_size = {
-			input = {
-				input = constant:country_groups.continental_europe_1936
-				operators = {
-					limit = {
-						OR = {
-							is_in_faction_with = ROOT
-							has_capitulated = yes
-							exists = no
-							is_subject_of = ROOT 
-						}
-					}
-				}
-				name = COLLECTION_CONTINENTAL_EUROPE_DEFEATED_OR_FACTION_MEMBERS
-			}
-			value > 8
-		}
-	}
-	complete_effect = {
-		add_faction_power_projection = 100
-		custom_effect_tooltip = generic_skip_one_line_tt
-		every_faction_member = { 
-			tooltip = INFLUENCE_ABOVE_30_PERCENT
-			visible_when_empty = yes
-			limit = {
-				faction_influence_ratio > 0.3
-			}
-			add_faction_initiative = 1
-		}
-	}
-	ai_will_do = {
-		base = 1
-		modifier = {
-			add = 9
-			is_historical_focus_on = yes
-		}
-	}
-}
-
 faction_goal_high_seas_fleet = {
 	name = high_seas_fleet_goal_name
 	description = high_seas_fleet_goal_desc
