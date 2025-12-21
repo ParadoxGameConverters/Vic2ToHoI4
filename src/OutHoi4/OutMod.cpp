@@ -58,6 +58,7 @@ void CreateModFiles(const std::filesystem::path& output_name)
 	mod_file << "replace_path=\"common/ideologies\"\n";
 	mod_file << "replace_path=\"common/military_industrial_organization/organizations\"\n";
 	mod_file << "replace_path=\"common/national_focus\"\n";
+	mod_file << "replace_path=\"common/on_actions\"\n";
 	mod_file << "replace_path=\"common/peace_conference/ai_peace\"\n";
 	mod_file << "replace_path=\"common/peace_conference/cost_modifiers\"\n";
 	mod_file << "replace_path=\"events\"\n";
@@ -92,6 +93,7 @@ void CreateModFiles(const std::filesystem::path& output_name)
 	descriptor_file << "replace_path=\"common/ideologies\"\n";
 	descriptor_file << "replace_path=\"common/military_industrial_organization/organizations\"\n";
 	descriptor_file << "replace_path=\"common/national_focus\"\n";
+	descriptor_file << "replace_path=\"common/on_actions\"\n";
 	descriptor_file << "replace_path=\"common/peace_conference/ai_peace\"\n";
 	descriptor_file << "replace_path=\"common/peace_conference/cost_modifiers\"\n";
 	descriptor_file << "replace_path=\"events\"\n";
