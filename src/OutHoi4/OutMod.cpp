@@ -66,6 +66,7 @@ void CreateModFiles(const std::filesystem::path& output_name)
 	mod_file << "replace_path=\"common/scripted_effects\"\n";
 	mod_file << "replace_path=\"common/scripted_localisation\"\n";
 	mod_file << "replace_path=\"common/scripted_triggers\"\n";
+	mod_file << "replace_path=\"common/technology_sharing\"\n";
 	mod_file << "replace_path=\"events\"\n";
 	mod_file << "replace_path=\"history/countries\"\n";
 	mod_file << "replace_path=\"history/states\"\n";
@@ -106,6 +107,7 @@ void CreateModFiles(const std::filesystem::path& output_name)
 	descriptor_file << "replace_path=\"common/scripted_effects\"\n";
 	descriptor_file << "replace_path=\"common/scripted_localisation\"\n";
 	descriptor_file << "replace_path=\"common/scripted_triggers\"\n";
+	descriptor_file << "replace_path=\"common/technology_sharing\"\n";
 	descriptor_file << "replace_path=\"events\"\n";
 	descriptor_file << "replace_path=\"history/countries\"\n";
 	descriptor_file << "replace_path=\"history/states\"\n";
