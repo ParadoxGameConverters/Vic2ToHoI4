@@ -4,6 +4,7 @@
 
 
 #include "external/common_items/ConvenientParser.h"
+#include "src/HOI4World/Collections/Collections.h"
 #include "src/HOI4World/Countries/UnionCountry.h"
 #include "src/HOI4World/CountryCategories/CountryCategories.h"
 #include "src/HOI4World/Decisions/Decisions.h"
@@ -145,6 +146,7 @@ class World: commonItems::parser
 	const auto& getIdeologicalFactionRules() const { return factionRules->getIdeologicalRules(); }
 	const auto& getIdeologicalFactionRuleGroups() const { return factionRules->getIdeologicalRuleGroups(); }
 	const auto& getIdeologicalFactionTemplates() const { return factionTemplates->getIdeologicalTemplates(); }
+	const auto& getIdeologicalCollections() const { return collections->getIdeologicalCollections(); }
 	const auto& getMajorIdeologies() const { return ideologies->getMajorIdeologies(); }
 
 	std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag) const;
@@ -296,6 +298,7 @@ class World: commonItems::parser
 	std::unique_ptr<HoI4::FactionGoals> factionGoals;
 	std::unique_ptr<HoI4::FactionRules> factionRules;
 	std::unique_ptr<HoI4::FactionTemplates> factionTemplates;
+	std::unique_ptr<HoI4::Collections> collections;
 	std::unique_ptr<HoI4::decisions> theDecisions;
 	std::unique_ptr<HoI4::Events> events;
 	std::unique_ptr<HoI4::OnActions> onActions;

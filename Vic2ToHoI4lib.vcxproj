@@ -17,6 +17,8 @@
     <ClCompile Include="src\HOI4World\Characters\CountryLeaderDataFactory.cpp" />
     <ClCompile Include="src\HOI4World\Characters\PortraitsFactory.cpp" />
     <ClCompile Include="src\HOI4World\Characters\PortraitTypeFactory.cpp" />
+    <ClCompile Include="src\HOI4World\Collections\Collection.cpp" />
+    <ClCompile Include="src\HOI4World\Collections\Collections.cpp" />
     <ClCompile Include="src\HOI4World\Countries\UnionCountry.cpp" />
     <ClCompile Include="src\HOI4World\CountryCategories\CountryCategories.cpp" />
     <ClCompile Include="src\HOI4World\CountryCategories\CountryGrammarFactory.cpp" />
@@ -250,6 +252,8 @@
     <ClCompile Include="src\OutHoi4\Characters\OutCommanderData.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderData.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutPortrait.cpp" />
+    <ClCompile Include="src\OutHoi4\Collections\OutCollection.cpp" />
+    <ClCompile Include="src\OutHoi4\Collections\OutCollections.cpp" />
     <ClCompile Include="src\OutHoi4\Countries\OutEquipment.cpp" />
     <ClCompile Include="src\OutHoi4\Countries\OutUnionCountry.cpp" />
     <ClCompile Include="src\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
@@ -428,6 +432,8 @@
     <ClInclude Include="src\HOI4World\Characters\Portrait.h" />
     <ClInclude Include="src\HOI4World\Characters\PortraitsFactory.h" />
     <ClInclude Include="src\HOI4World\Characters\PortraitTypeFactory.h" />
+    <ClInclude Include="src\HOI4World\Collections\Collection.h" />
+    <ClInclude Include="src\HOI4World\Collections\Collections.h" />
     <ClInclude Include="src\HOI4World\Countries\Equipment.h" />
     <ClInclude Include="src\HOI4World\Countries\UnionCountry.h" />
     <ClInclude Include="src\HOI4World\CountryCategories\CountryCategories.h" />
@@ -721,6 +727,8 @@
     <ClInclude Include="src\OutHoi4\Characters\OutCommanderData.h" />
     <ClInclude Include="src\OutHoi4\Characters\OutCountryLeaderData.h" />
     <ClInclude Include="src\OutHoi4\Characters\OutPortrait.h" />
+    <ClInclude Include="src\OutHoi4\Collections\OutCollection.h" />
+    <ClInclude Include="src\OutHoi4\Collections\OutCollections.h" />
     <ClInclude Include="src\OutHoi4\Countries\OutEquipment.h" />
     <ClInclude Include="src\OutHoi4\Countries\OutUnionCountry.h" />
     <ClInclude Include="src\OutHoi4\CountryCategories\OutCountryCategories.h" />

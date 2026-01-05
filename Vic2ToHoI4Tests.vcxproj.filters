@@ -28,6 +28,12 @@
     <ClCompile Include="src\HOI4World\Characters\PortraitTypeFactoryTests.cpp">
       <Filter>src\HOI4World\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Collections\CollectionTests.cpp">
+      <Filter>src\HOI4World\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Collections\CollectionsTests.cpp">
+      <Filter>src\HOI4World\Collections</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\CountryCategories\CountryCategoriesTests.cpp">
       <Filter>src\HOI4World\CountryCategories</Filter>
     </ClCompile>
@@ -475,6 +481,12 @@
     <ClCompile Include="src\OutHoi4\Characters\OutPortraitTests.cpp">
       <Filter>src\OutHoi4\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="src\OutHoi4\Collections\OutCollectionTests.cpp">
+      <Filter>src\OutHoi4\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Collections\OutCollectionsTests.cpp">
+      <Filter>src\OutHoi4\Collections</Filter>
+    </ClCompile>
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalTests.cpp">
       <Filter>src\OutHoi4\Factions</Filter>
     </ClCompile>
@@ -867,6 +879,9 @@
     <Filter Include="src\OutHoi4\Characters">
       <UniqueIdentifier>{e6fb1f73-b1ae-4abe-8fd0-d9fbd8057509}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\OutHoi4\Collections">
+      <UniqueIdentifier>{ae81827f-1422-4c62-b47d-068b18f7f1e0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\OutHoi4\CountryCategories">
       <UniqueIdentifier>{c4f4bbc3-cddb-4667-800c-91ed64048adf}</UniqueIdentifier>
     </Filter>
@@ -1026,6 +1041,9 @@
     <Filter Include="data\test_files\Buildings">
       <UniqueIdentifier>{f259f2b0-a16a-4140-8420-943eeff24d84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="data\test_files\Collections">
+      <UniqueIdentifier>{1c97b91b-b518-4ec7-8484-88cdfdc874e9}</UniqueIdentifier>
+    </Filter>
     <Filter Include="data\test_files\Countries">
       <UniqueIdentifier>{b57a0a33-1ac0-4736-b9ff-1cd14a14656b}</UniqueIdentifier>
     </Filter>
@@ -1159,6 +1177,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Collections\ideological_collections.txt">
+      <Filter>data\test_files\Collections</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt">
       <Filter>data\test_files\Countries</Filter>
     </CopyFileToFolders>

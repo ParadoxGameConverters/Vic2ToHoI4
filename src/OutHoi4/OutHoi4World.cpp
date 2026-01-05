@@ -1,6 +1,7 @@
 #include "src/OutHoi4/OutHoi4World.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
+#include "src/OutHoi4/Collections/OutCollections.h"
 #include "src/OutHoi4/Countries/OutUnionCountry.h"
 #include "src/OutHoi4/CountryCategories/OutCountryCategories.h"
 #include "src/OutHoi4/Decisions/OutDecisions.h"
@@ -263,6 +264,7 @@ void HoI4::OutputWorld(const World& world,
 	outputFactionRules("output" / outputName, world.getIdeologicalFactionRules());
 	outputFactionRuleGroups("output" / outputName, world.getIdeologicalFactionRuleGroups());
 	outputFactionTemplates("output" / outputName, world.getIdeologicalFactionTemplates());
+	outputCollections("output" / outputName, world.getIdeologicalCollections());
 }
 
 

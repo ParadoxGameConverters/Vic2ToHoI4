@@ -1,0 +1,6 @@
+ideology = {
+	collection_one = {
+	}
+	collection_two = {
+	}
+}

@@ -115,6 +115,9 @@
     <Filter Include="src\HoI4World\UnitMedals">
       <UniqueIdentifier>{4ad22919-0d0b-4831-a8ac-6c3e44d7d852}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\HoI4World\Collections">
+      <UniqueIdentifier>{776f26c6-e271-434b-8605-0ec19eb92f5f}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\HoI4World\Factions">
       <UniqueIdentifier>{1424655f-0bd6-4741-b574-baa547875d5f}</UniqueIdentifier>
     </Filter>
@@ -129,6 +132,9 @@
     </Filter>
     <Filter Include="src\OutHoi4\Characters">
       <UniqueIdentifier>{a8018ea2-2b0b-4c35-ab4b-e0a00e1ef5a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Collections">
+      <UniqueIdentifier>{bec97722-11ce-47f1-9883-4bbe2183bfe0}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\OutHoi4\CountryCategories">
       <UniqueIdentifier>{6cab88a5-d8b1-4e1b-bc8a-f30acc50ec94}</UniqueIdentifier>
@@ -888,6 +894,12 @@
     <ClCompile Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.cpp">
       <Filter>src\HoI4World\UnitMedals</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Collections\Collection.cpp">
+      <Filter>src\HoI4World\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Collections\Collections.cpp">
+      <Filter>src\HoI4World\Collections</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\Factions\FactionGoal.cpp">
       <Filter>src\HoI4World\Factions</Filter>
     </ClCompile>
@@ -971,6 +983,12 @@
     </ClCompile>
     <ClCompile Include="src\OutHoi4\Characters\OutPortrait.cpp">
       <Filter>src\OutHoi4\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Collections\OutCollection.cpp">
+      <Filter>src\OutHoi4\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Collections\OutCollections.cpp">
+      <Filter>src\OutHoi4\Collections</Filter>
     </ClCompile>
     <ClCompile Include="src\OutHoi4\CountryCategories\OutCountryCategories.cpp">
       <Filter>src\OutHoi4\CountryCategories</Filter>
@@ -2228,6 +2246,12 @@
     <ClInclude Include="src\HOI4World\UnitMedals\IdeologicalUnitMedals.h">
       <Filter>src\HoI4World\UnitMedals</Filter>
     </ClInclude>
+    <ClInclude Include="src\HOI4World\Collections\Collection.h">
+      <Filter>src\HoI4World\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HOI4World\Collections\Collections.h">
+      <Filter>src\HoI4World\Collections</Filter>
+    </ClInclude>
     <ClInclude Include="src\HOI4World\Factions\FactionGoal.h">
       <Filter>src\HoI4World\Factions</Filter>
     </ClInclude>
@@ -2311,6 +2335,12 @@
     </ClInclude>
     <ClInclude Include="src\OutHoi4\Characters\OutPortrait.h">
       <Filter>src\OutHoi4\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Collections\OutCollection.h">
+      <Filter>src\OutHoi4\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutHoi4\Collections\OutCollections.h">
+      <Filter>src\OutHoi4\Collections</Filter>
     </ClInclude>
     <ClInclude Include="src\OutHoi4\CountryCategories\OutCountryCategories.h">
       <Filter>src\OutHoi4\CountryCategories</Filter>
