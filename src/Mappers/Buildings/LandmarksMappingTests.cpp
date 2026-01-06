@@ -1,3 +1,4 @@
+#include "external/common_items/external/googletest/googlemock/include/gmock/gmock-matchers.h"
 #include "external/common_items/external/googletest/googletest/include/gtest/gtest.h"
 #include "src/Mappers/Buildings/LandmarksMappingFactory.h"
 #include <sstream>
@@ -9,18 +10,18 @@ TEST(Mappers_Landmark_LandmarksMappingTests, ImportedItemsAreDefaulted)
 	std::stringstream input;
 	const auto mapping = Mappers::LandmarksMappingFactory().importMapping(input);
 
-	EXPECT_EQ(0, mapping.location);
+	EXPECT_TRUE(mapping.locations.empty());
 	EXPECT_FALSE(mapping.built);
 }
 
 
-TEST(Mappers_Landmark_LandmarksMappingTests, LocationCanBeSet)
+TEST(Mappers_Landmark_LandmarksMappingTests, LocationsCanBeSet)
 {
 	std::stringstream input;
-	input << "= { location = 42 }";
+	input << "= { location = 42 location = 43 }";
 	const auto mapping = Mappers::LandmarksMappingFactory().importMapping(input);
 
-	EXPECT_EQ(42, mapping.location);
+	EXPECT_THAT(mapping.locations, testing::UnorderedElementsAre(42, 43));
 }
 
 

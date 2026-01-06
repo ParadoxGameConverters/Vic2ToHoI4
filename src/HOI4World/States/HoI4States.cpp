@@ -700,11 +700,16 @@ void HoI4::States::addLandmarks(const Mappers::LandmarksMapper& landmarksMapper)
 
 	for (const auto& [landmark, mapping]: landmarksMapper.getMappings())
 	{
-		for (auto& state: states | std::views::values)
+		for (int location: mapping.locations)
 		{
-			if (bool added = state.addLandmark(landmark, mapping.location, mapping.built); added)
+			auto stateItr =
+				 std::find_if(states.begin(), states.end(), [location](const std::pair<int, HoI4::State>& theState) {
+					 return theState.second.getProvinces().contains(location);
+				 });
+
+			if (stateItr != states.end())
 			{
-				break;
+				stateItr->second.addLandmark(landmark, location, mapping.built);
 			}
 		}
 	}

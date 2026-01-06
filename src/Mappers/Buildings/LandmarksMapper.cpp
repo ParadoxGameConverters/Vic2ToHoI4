@@ -14,14 +14,14 @@ Mappers::LandmarksMapper::LandmarksMapper()
 	clearRegisteredKeywords();
 }
 
-std::optional<int> Mappers::LandmarksMapper::getLocation(const std::string& landmark) const
+std::set<int> Mappers::LandmarksMapper::getLocations(const std::string& landmark) const
 {
 	if (mappings.contains(landmark))
 	{
-		return mappings.at(landmark).location;
+		return mappings.at(landmark).locations;
 	}
 
-	return std::nullopt;
+	return {};
 }
 
 bool Mappers::LandmarksMapper::getBuilt(const std::string& landmark) const
