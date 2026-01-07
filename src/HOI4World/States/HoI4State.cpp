@@ -100,16 +100,9 @@ void HoI4::State::addNavalBase(int level, int location)
 	}
 }
 
-bool HoI4::State::addLandmark(const std::string& landmarkName, int location, bool isBuilt)
+void HoI4::State::addLandmark(const building& landmark, int location)
 {
-	if (!landmarkName.empty() && provinces.contains(location) && isBuilt)
-	{
-		const building& landmark = {landmarkName, 1, "has_dlc = \"Gotterdammerung\""};
-		provinceBuildings[location].push_back(landmark);
-		return true;
-	}
-
-	return false;
+	provinceBuildings[location].push_back(landmark);
 }
 
 

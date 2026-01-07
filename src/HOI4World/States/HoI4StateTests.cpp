@@ -809,41 +809,13 @@ TEST(HoI4World_States_StateTests, MainNavalBaseLocationGoesToLargestBase)
 }
 
 
-TEST(HoI4World_States_StateTests, EmptyLandmarksAreNotAssigned)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	HoI4::State theState(sourceState, 42, "TAG");
-	theState.addProvince(12);
-
-	EXPECT_FALSE(theState.addLandmark("", 12, true));
-}
-
-
-TEST(HoI4World_States_StateTests, LandmarksAreNotAssignedWhenLocationNotInState)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	HoI4::State theState(sourceState, 42, "TAG");
-
-	EXPECT_FALSE(theState.addLandmark("landmark_test", 12, true));
-}
-
-
-TEST(HoI4World_States_StateTests, UnbuiltLandmarksAreNotAssigned)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	HoI4::State theState(sourceState, 42, "TAG");
-
-	EXPECT_FALSE(theState.addLandmark("landmark_test", 12, false));
-}
-
-
 TEST(HoI4World_States_StateTests, LandmarksCanBeAssigned)
 {
 	const auto sourceState = *Vic2::State::Builder().build();
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.addProvince(12);
-	theState.addLandmark("landmark_test", 12, true);
+	theState.addLandmark({"landmark_test", 1, "has_dlc = \"Gotterdammerung\""}, 12);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";

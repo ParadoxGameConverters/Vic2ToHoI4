@@ -66,7 +66,7 @@ class State
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
-	bool addLandmark(const std::string& landmarkName, int location, bool isBuilt);
+	void addLandmark(const building& landmark, int location);
 	void smashNavalBases();
 	void addCores(const std::set<std::string>& newCores);
 	void removeCore(const std::string& theCore) { cores.erase(theCore); }
