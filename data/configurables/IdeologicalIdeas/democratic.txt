@@ -124,7 +124,6 @@
 			ledger = army
 			visible = {
 				AND = { 
-					has_military_academy = yes 
 		 			has_government = democratic
 				}
 			}
@@ -147,6 +146,27 @@
 				modifier = {
 					factor = 2
 					has_government = democratic
+				}
+			}
+		}
+	}
+
+	army_spirit = {
+		relief_of_command_spirit = {
+			ledger = army
+			modifier = {
+				experience_gain_army_factor = 0.25
+				army_advisor_cost_factor = -0.5
+			}
+			ai_will_do = {
+				base = 1
+
+				modifier = {
+					factor = 0
+					OR = {
+						NOT = { has_dlc = "No Step Back" }
+						NOT = {has_government = democratic }
+					}
 				}
 			}
 		}

@@ -43,7 +43,6 @@ ideas = {
 			ledger = navy
 			available = {
 				AND = { 
-				has_naval_academy = yes
 				has_doctrine = new_fleet_in_being
 				}
 			}
@@ -69,7 +68,6 @@ ideas = {
 			ledger = navy
 			available = {
 				AND = { 
-				has_naval_academy = yes
 				has_doctrine = new_convoy_raiding
 				}
 			}
@@ -95,7 +93,6 @@ ideas = {
 			ledger = navy
 			available = {
 				AND = { 
-				has_naval_academy = yes
 				has_doctrine = new_base_strike
 				}
 			}

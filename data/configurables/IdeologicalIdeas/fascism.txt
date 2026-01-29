@@ -178,7 +178,6 @@
 			picture = political_loyalty_spirit
 			visible = { 
 				AND = {
-				has_military_academy = yes 
 				has_government = fascism
 				}
 			}
@@ -201,6 +200,27 @@
 				modifier = {
 					factor = 2
 					has_government = fascism
+				}
+			}
+		}
+	}
+
+	army_spirit = {
+		state_serves_the_military_spirit = {
+			ledger = army
+			modifier = {
+				offensive_war_stability_factor = 0.1
+				mobilization_laws_cost_factor = -0.25
+			}
+			ai_will_do = {
+				base = 1
+
+				modifier = {
+					factor = 0
+					OR = {
+						NOT = { has_dlc = "No Step Back" }
+						NOT = {has_government = fascism }
+					}
 				}
 			}
 		}

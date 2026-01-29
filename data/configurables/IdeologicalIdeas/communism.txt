@@ -171,7 +171,6 @@
 			ledger = army
 			visible = { 
 				AND = {
-					has_military_academy = yes 
 					has_government = communism
 				}
 			}
@@ -205,7 +204,6 @@
 			ledger = air
 			visible = { 
 				AND = {
-					has_air_force_command = yes
 					has_government = communism
 				}
 			}
@@ -219,6 +217,27 @@
 					OR = {
 						NOT = { has_dlc = "No Step Back" }
 						NOT = { has_government = communism }
+					}
+				}
+			}
+		}
+	}
+
+	army_spirit = {
+		ideological_loyalty_spirit = {
+			ledger = army
+			modifier = {
+				pocket_penalty = -0.2
+				weekly_manpower = 500
+			}
+			ai_will_do = {
+				base = 1
+
+				modifier = {
+					factor = 0
+					OR = {
+						NOT = { has_dlc = "No Step Back" }
+						NOT = {has_government = communism }
 					}
 				}
 			}

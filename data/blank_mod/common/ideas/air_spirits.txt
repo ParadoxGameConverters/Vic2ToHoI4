@@ -17,7 +17,6 @@ ideas = {
 			ledger = air
 			available = { 
 				AND = {
-					has_air_academy = yes
 					has_doctrine = new_strategic_destruction
 				}
 			}
@@ -41,7 +40,6 @@ ideas = {
 			ledger = air
 			available = {
 				AND = {
-					has_air_academy = yes
 					has_doctrine = new_battlefield_support
 				}
 			}
@@ -66,7 +64,6 @@ ideas = {
 			ledger = air
 			available = { 
 				AND = {
-					has_air_academy = yes
 					has_doctrine = new_operational_integrity
 				}
 			}
@@ -234,7 +231,6 @@ ideas = {
 			ledger = air
 			available = { 
 				AND = {
-					has_air_force_command = yes
 					has_doctrine = new_operational_integrity
 				}
 			}
@@ -253,7 +249,6 @@ ideas = {
 			ledger = air
 			available = { 
 				AND = {
-					has_air_force_command = yes
 					has_doctrine = new_battlefield_support
 				}
 			}
@@ -272,7 +267,6 @@ ideas = {
 			ledger = air
 			available = { 
 				AND = {
-					has_air_force_command = yes
 					has_doctrine = new_strategic_destruction
 				}
 			}

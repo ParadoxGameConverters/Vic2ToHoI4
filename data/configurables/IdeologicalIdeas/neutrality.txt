@@ -41,7 +41,6 @@
 			ledger = army
 			visible = { 
 				AND = {
-				has_military_academy = yes 
 				has_government = neutrality
 				}
 			}

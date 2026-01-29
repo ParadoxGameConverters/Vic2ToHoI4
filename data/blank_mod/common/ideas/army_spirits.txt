@@ -70,7 +70,6 @@ ideas = {
 			ledger = army
 			available = {
 				AND = {
-				has_military_academy = yes 
 				has_doctrine = new_mobile_warfare	
 				}
 			}
@@ -96,7 +95,6 @@ ideas = {
 			ledger = army
 			available = { 
 				AND = {
-				has_military_academy = yes 
 				has_doctrine = superior_firepower	
 				}
 			}
@@ -124,7 +122,6 @@ ideas = {
 			ledger = army
 			available = {
 				AND = { 
-				has_military_academy = yes 
 				has_doctrine = grand_battleplan
 				}
 			}
@@ -150,7 +147,6 @@ ideas = {
 			ledger = army
 			available = {
 				AND = { 
-				has_military_academy = yes 
 				has_doctrine = mass_assault
 				}
 			}
@@ -268,63 +264,6 @@ ideas = {
 					has_doctrine = mounted_infantry
 					has_doctrine = great_war_infantry
 					has_doctrine = armored_infantry_support
-					}
-				}
-			}
-		}
-
-		relief_of_command_spirit = {
-			ledger = army
-			modifier = {
-				experience_gain_army_factor = 0.25
-				army_advisor_cost_factor = -0.5
-			}
-			ai_will_do = {
-				base = 1
-
-				modifier = {
-					factor = 0
-					OR = {
-						NOT = { has_dlc = "No Step Back" }
-						NOT = {has_government = democratic }
-					}
-				}
-			}
-		}
-
-		ideological_loyalty_spirit = {
-			ledger = army
-			modifier = {
-				pocket_penalty = -0.2
-				weekly_manpower = 500
-			}
-			ai_will_do = {
-				base = 1
-
-				modifier = {
-					factor = 0
-					OR = {
-						NOT = { has_dlc = "No Step Back" }
-						NOT = {has_government = communism }
-					}
-				}
-			}
-		}
-
-		state_serves_the_military_spirit = {
-			ledger = army
-			modifier = {
-				offensive_war_stability_factor = 0.1
-				mobilization_laws_cost_factor = -0.25
-			}
-			ai_will_do = {
-				base = 1
-
-				modifier = {
-					factor = 0
-					OR = {
-						NOT = { has_dlc = "No Step Back" }
-						NOT = {has_government = fascism }
 					}
 				}
 			}
