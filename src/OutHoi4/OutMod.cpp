@@ -48,7 +48,6 @@ void CreateModFiles(const std::filesystem::path& output_name)
 	mod_file << "replace_path=\"common/ai_navy/taskforce\"\n";
 	mod_file << "replace_path=\"common/ai_strategy\"\n";
 	mod_file << "replace_path=\"common/ai_templates\"\n";
-	mod_file << "replace_path=\"common/autonomous_states\"\n";
 	mod_file << "replace_path=\"common/countries\"\n";
 	mod_file << "replace_path=\"common/decisions\"\n";
 	mod_file << "replace_path=\"common/decisions/categories\"\n";
@@ -88,7 +87,6 @@ void CreateModFiles(const std::filesystem::path& output_name)
 	descriptor_file << "replace_path=\"common/ai_navy/taskforce\"\n";
 	descriptor_file << "replace_path=\"common/ai_strategy\"\n";
 	descriptor_file << "replace_path=\"common/ai_templates\"\n";
-	descriptor_file << "replace_path=\"common/autonomous_states\"\n";
 	descriptor_file << "replace_path=\"common/countries\"\n";
 	descriptor_file << "replace_path=\"common/decisions\"\n";
 	descriptor_file << "replace_path=\"common/decisions/categories\"\n";
