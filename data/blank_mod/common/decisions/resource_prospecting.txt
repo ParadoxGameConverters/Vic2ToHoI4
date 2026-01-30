@@ -8331,13 +8331,6 @@ prospect_for_resources = {
 
 		ai_will_do = {
 			base = 1
-			modifier = {
-				factor = 0
-				AND = { #Ultimatum decisions are available and we should prio them
-					original_tag = SOV
-					SOV_we_want_to_send_ultimatums = yes
-				}
-			}
 			modifier = {  # Too low PP
 				factor = 0.5
 				has_political_power < 80
