@@ -5,8 +5,9 @@
 
 #include "external/common_items/ConvenientParser.h"
 #include "src/Configuration.h"
-#include <map>
+#include "src/HOI4World/States/StateCategory.h"
 #include <string>
+#include <vector>
 
 
 
@@ -22,10 +23,10 @@ class StateCategories: commonItems::parser
 
 	class Builder;
 
-	std::string getBestCategory(int numBuildingSlots) const;
+	StateCategory getBestCategory(int numBuildingSlots, int navalBaseLevel) const;
 
   private:
-	std::map<int, std::string> theCategories;
+	std::vector<StateCategory> theCategories;
 };
 
 } // namespace HoI4

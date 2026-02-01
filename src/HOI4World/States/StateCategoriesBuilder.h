@@ -19,7 +19,18 @@ class StateCategories::Builder
 
 	Builder& addCategory(int level, const std::string& name)
 	{
-		stateCategories->theCategories.insert(std::make_pair(level, name));
+		StateCategory category;
+		category.setName(name);
+		category.setNumberOfSlots(level);
+		stateCategories->theCategories.push_back(category);
+		return *this;
+	}
+
+	Builder& capBuilding(const std::string& building, int level)
+	{
+		StateCategory category;
+		category.setBuildingsMaxLevel(building, level);
+		stateCategories->theCategories.push_back(category);
 		return *this;
 	}
 

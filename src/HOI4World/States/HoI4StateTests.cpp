@@ -429,6 +429,21 @@ TEST(HoI4World_States_StateTests, AirbaseLevelCappedAtTen)
 }
 
 
+TEST(HoI4World_States_StateTests, AirbaseLevelCappedByStateCategory)
+{
+	HoI4::State theState;
+	theState.convertIndustry(0.0001,
+		 0,
+		 *HoI4::StateCategories::Builder().capBuilding("air_base", 8).Build(),
+		 *HoI4::CoastalProvinces::Builder().Build());
+
+	theState.addAirBase(5);
+	theState.addAirBase(10);
+
+	EXPECT_EQ(8, theState.getAirbaseLevel());
+}
+
+
 TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 {
 	const std::shared_ptr<Vic2::Province> theProvince =

@@ -26,35 +26,3 @@ TEST(HoI4World_States_StateCategoryFileTests, categoriesCanBeAdded)
 
 	ASSERT_EQ(1, theStateCategoryFile.getCategories().size());
 }
-
-
-TEST(HoI4World_States_StateCategoryFileTests, categoriesReferencedByNumberOfSlots)
-{
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tcity = {\n";
-	input << "\t\tlocal_building_slots = 6\n";
-	input << "\t}\n";
-	input << "\t}";
-	const HoI4::StateCategoryFile theStateCategoryFile(input);
-
-	ASSERT_EQ("city", theStateCategoryFile.getCategories().find(6)->second);
-}
-
-
-TEST(HoI4World_States_StateCategoryFileTests, secondCategoryWithSameSlotsDiscarded)
-{
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tcity = {\n";
-	input << "\t\tlocal_building_slots = 6\n";
-	input << "\t}\n";
-	input << "\tsecond_city = {\n";
-	input << "\t\tlocal_building_slots = 6\n";
-	input << "\t}\n";
-	input << "\t}";
-	const HoI4::StateCategoryFile theStateCategoryFile(input);
-
-	ASSERT_EQ(theStateCategoryFile.getCategories().size(), 1);
-	ASSERT_EQ("city", theStateCategoryFile.getCategories().find(6)->second);
-}

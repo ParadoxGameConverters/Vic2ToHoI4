@@ -7,6 +7,7 @@
 #include "src/Configuration.h"
 #include "src/HOI4World/Map/CoastalProvinces.h"
 #include "src/HOI4World/States/StateCategories.h"
+#include "src/HOI4World/States/StateCategory.h"
 #include "src/Mappers/Country/CountryMapper.h"
 #include "src/Mappers/Provinces/ProvinceMapper.h"
 #include "src/V2World/Provinces/Province.h"
@@ -50,12 +51,7 @@ class State
 	}
 	void markHadImpassablePart() { hadImpassablePart = true; }
 	void addResource(const std::string& resource, double amount) { resources[resource] += amount; }
-	void addAirBase(int newAirBase)
-	{
-		airbaseLevel += newAirBase;
-		if (airbaseLevel > 10)
-			airbaseLevel = 10;
-	}
+	void addAirBase(int newAirBase);
 	void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
 	void setVPValue(int value) { victoryPointValue = value; }
 	void setVPLocation(int province) { victoryPointPosition = province; }
@@ -89,9 +85,10 @@ class State
 	int getDockyards() const { return dockyards; }
 	int getCivFactories() const { return civFactories; }
 	int getMilFactories() const { return milFactories; }
-	const std::string& getCategory() const { return category; }
+	const std::string& getCategory() const { return category.getName(); }
 	[[nodiscard]] auto getInfrastructure() const { return infrastructure; }
 	std::map<int, int> getNavalBases() const;
+	[[nodiscard]] int getMaxNavalBaseLevel() const;
 	const std::map<int, std::vector<building>>& getProvinceBuildings() const { return provinceBuildings; }
 	int getAirbaseLevel() const { return airbaseLevel; }
 	bool hasResources() const { return !resources.empty(); }
@@ -161,7 +158,7 @@ class State
 	int milFactories = 0;
 	int dockyards = 0;
 	int industryRemainder = 0;
-	std::string category = "wasteland";
+	StateCategory category;
 	float infrastructure = 1.0F;
 
 	std::map<int, std::vector<building>> provinceBuildings;

@@ -8,8 +8,8 @@
 HoI4::StateCategoryFile::StateCategoryFile(std::istream& theStream)
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& categoryName, std::istream& theStream) {
-		HoI4::StateCategory category(theStream);
-		theCategories.insert(make_pair(category.getNumberOfSlots(), categoryName));
+		HoI4::StateCategory category(categoryName, theStream);
+		theCategories.push_back(category);
 	});
 
 	parseStream(theStream);
