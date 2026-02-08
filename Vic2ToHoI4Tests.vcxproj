@@ -212,8 +212,8 @@
     <ClCompile Include="src\OutHoi4\Characters\OutCommanderDataTests.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderDataTests.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutPortraitTests.cpp" />
-    <ClCompile Include="src\OutHoi4\Collctions\OutCollectionTests.cpp" />
-    <ClCompile Include="src\OutHoi4\Collctions\OutCollectionsTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Collections\OutCollectionTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Collections\OutCollectionsTests.cpp" />
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalTests.cpp" />
     <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalsTests.cpp" />
     <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleTests.cpp" />
