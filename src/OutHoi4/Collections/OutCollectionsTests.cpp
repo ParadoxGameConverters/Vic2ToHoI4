@@ -40,6 +40,7 @@ TEST(OutHoI4_Collections_OutCollections, CollectionsAreOutput)
 	expected << "\t\t\thas_government = democratic\n";
 	expected << "\t\t}\n";
 	expected << "\t}\n";
+	expected << "}\n";
 	expected << "\n";
 	EXPECT_EQ(content, expected.str());
 }
