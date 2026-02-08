@@ -10,7 +10,8 @@
 namespace HoI4
 {
 
-void outputFactionTemplates(const std::filesystem::path& outputName, const std::vector<FactionTemplate>& factionTemplates);
+void outputFactionTemplates(const std::filesystem::path& outputName,
+	 const std::vector<FactionTemplate>& factionTemplates);
 
 } // namespace HoI4
 

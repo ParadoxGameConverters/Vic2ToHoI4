@@ -5,7 +5,8 @@
 
 
 
-void HoI4::outputFactionTemplates(const std::filesystem::path& outputName, const std::vector<FactionTemplate>& factionTemplates)
+void HoI4::outputFactionTemplates(const std::filesystem::path& outputName,
+	 const std::vector<FactionTemplate>& factionTemplates)
 {
 	const std::filesystem::path folder = outputName / "common/factions/templates";
 	if (!commonItems::DoesFolderExist(folder) && !std::filesystem::create_directories(folder))

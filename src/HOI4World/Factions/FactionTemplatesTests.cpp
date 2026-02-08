@@ -11,6 +11,6 @@ TEST(HoI4World_Factions_FactionTemplates, FactionTemplatesCanBeImported)
 	const auto& templateTwo = HoI4::FactionTemplate("faction_template_two", emptyStream);
 
 	EXPECT_THAT(templates.getImportedTemplates(),
-		 testing::UnorderedElementsAre(
-			  testing::Pair("ideology", testing::ElementsAre(testing::Pointee(templateOne), testing::Pointee(templateTwo)))));
+		 testing::UnorderedElementsAre(testing::Pair("ideology",
+			  testing::ElementsAre(testing::Pointee(templateOne), testing::Pointee(templateTwo)))));
 }
