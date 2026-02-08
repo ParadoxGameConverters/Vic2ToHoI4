@@ -83,7 +83,6 @@ std::shared_ptr<HoI4::FactionRule> HoI4::FactionRules::getRule(const std::string
 
 void HoI4::FactionRules::updateCallToWarRuleFactionLeaderOnly(const std::set<std::string>& majorIdeologies)
 {
-
 	if (auto rule = getRule("call_to_war_rule_faction_leader_only"); rule)
 	{
 		std::string aiWillDoStr = "= {\n";
@@ -185,7 +184,7 @@ void HoI4::FactionRules::updateJoiningRulesDifferentIdeology(const std::set<std:
 			aiWillDoStr += "\t\t}\n";
 			for (const auto& evilIdeology: evilIdeologiesSorted)
 			{
-				if (ideology != evilIdeology & majorIdeologies.contains(evilIdeology))
+				if (ideology != evilIdeology && majorIdeologies.contains(evilIdeology))
 				{
 					aiWillDoStr += "\t\tmodifier = {\n";
 					aiWillDoStr += "\t\t\tadd = 1\n";
