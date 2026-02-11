@@ -50,15 +50,6 @@ peace_action_modifiers = {
 		faction_modifier = yes
 	}
 
-	faction_rule_modifier_encourage_chinese_states = {
-		peace_action_type = { take_states puppet }
-		enable = { 
-			FROM.FROM.FROM = { OR = { is_core_of = CHI is_core_of = PRC } }
-		}
-		cost_multiplier = 0.95
-		faction_modifier = yes
-	}
-
 	#### extra costs 
 	# +5% take states 
 	faction_rule_modifier_extra_cost_take_states = {

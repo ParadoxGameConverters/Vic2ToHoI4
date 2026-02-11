@@ -745,7 +745,12 @@ shared_focus = {
 			bonus = 0.1
 			days = 240
 			grand_doctrine = new_convoy_raiding
-			track = submarines
+		}
+		add_mastery_bonus = {
+			name = flexible_navy
+			bonus = 0.1
+			days = 240
+			grand_doctrine = new_base_strike
 		}
 
 		add_doctrine_cost_reduction = {
@@ -793,7 +798,12 @@ shared_focus = {
 			bonus = 0.1
 			days = 240
 			grand_doctrine = new_fleet_in_being
-			track = capital_ships
+		}
+		add_mastery_bonus = {
+			name = large_navy
+			bonus = 0.1
+			days = 240
+			grand_doctrine = new_base_strike
 		}
 		add_doctrine_cost_reduction = {
 			name = large_navy

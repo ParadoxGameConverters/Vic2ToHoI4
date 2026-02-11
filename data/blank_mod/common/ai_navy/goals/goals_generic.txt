@@ -64,6 +64,6 @@ generic_training = {
 generic_naval_blockade = {
     objective_type = naval_blockade
 
-     min_priority = 10
+    min_priority = 10
     max_priority = 20
 }
