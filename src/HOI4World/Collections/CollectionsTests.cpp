@@ -11,6 +11,5 @@ TEST(HoI4World_Collections_Collections, CollectionsCanBeImported)
 	const auto& collectionTwo = HoI4::Collection("collection_two", emptyStream);
 
 	EXPECT_THAT(collections.getImportedCollections(),
-		 testing::UnorderedElementsAre(testing::Pair("ideology",
-			  testing::ElementsAre(testing::Pointee(collectionOne), testing::Pointee(collectionTwo)))));
+		 testing::UnorderedElementsAre(testing::Pair("ideology", testing::ElementsAre(collectionOne, collectionTwo))));
 }

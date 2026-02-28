@@ -13,7 +13,7 @@ HoI4::Collections::Collections()
 		const Collections& ideologyCollections(theStream);
 		for (const auto& collection: ideologyCollections.ideologicalCollections)
 		{
-			importedCollections[ideology].push_back(std::make_shared<Collection>(collection));
+			importedCollections[ideology].push_back(collection);
 		}
 	});
 	parseFile(std::filesystem::path("Configurables") / "ideological_collections.txt");
@@ -32,40 +32,24 @@ HoI4::Collections::Collections(std::istream& theStream)
 void HoI4::Collections::updateCollections(const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\tUpdating ideological collections";
-	for (const auto& [ideology, collections]: importedCollections)
+	for (auto [ideology, collections]: importedCollections)
 	{
 		if (!majorIdeologies.contains(ideology))
 		{
 			continue;
 		}
 
-		updateAntiIdeologyControlledStatesMyContinentCollection(ideology, majorIdeologies);
-		for (const auto& collection: collections)
-		{
-			ideologicalCollections.push_back(*collection);
-		}
-	}
-}
-
-
-std::shared_ptr<HoI4::Collection> HoI4::Collections::getCollection(const std::string& collectionId)
-{
-	for (auto& collections: importedCollections | std::views::values)
-	{
 		for (auto& collection: collections)
 		{
-			if (collection->getId() == collectionId)
-			{
-				return collection;
-			}
+			updateAntiIdeologyControlledStatesMyContinentCollection(ideology, collection, majorIdeologies);
+			ideologicalCollections.push_back(collection);
 		}
 	}
-
-	return nullptr;
 }
 
 
 void HoI4::Collections::updateAntiIdeologyControlledStatesMyContinentCollection(const std::string& ideology,
+	 Collection& collection,
 	 const std::set<std::string>& majorIdeologies)
 {
 	std::map<std::string, std::string> ideologyAdjMap;
@@ -78,7 +62,7 @@ void HoI4::Collections::updateAntiIdeologyControlledStatesMyContinentCollection(
 
 	const auto& ideologyAdj = ideologyAdjMap.at(ideology);
 
-	if (auto collection = getCollection("anti_" + ideologyAdj + "_controlled_states_my_continent"); collection)
+	if (collection.getId() == "anti_" + ideologyAdj + "_controlled_states_my_continent")
 	{
 		std::set<std::string> antiIdeologies;
 		for (const auto& antiIdeology: majorIdeologies)
@@ -96,7 +80,7 @@ void HoI4::Collections::updateAntiIdeologyControlledStatesMyContinentCollection(
 			std::ranges::transform(uppercaseAntiIdeologyAdj, uppercaseAntiIdeologyAdj.begin(), ::toupper);
 			nameStr += "_" + uppercaseAntiIdeologyAdj;
 		}
-		collection->setName(nameStr);
+		collection.setName(nameStr);
 
 		std::string operatorsStr = "= {\n";
 		operatorsStr += "\t\tlimit = {\n";
@@ -111,6 +95,6 @@ void HoI4::Collections::updateAntiIdeologyControlledStatesMyContinentCollection(
 		operatorsStr += "\t\t\t}\n";
 		operatorsStr += "\t\t}\n";
 		operatorsStr += "\t}";
-		collection->setOperators(operatorsStr);
+		collection.setOperators(operatorsStr);
 	}
 }

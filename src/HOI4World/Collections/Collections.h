@@ -20,15 +20,14 @@ class Collections: commonItems::parser
 	void updateCollections(const std::set<std::string>& majorIdeologies);
 
 	void updateAntiIdeologyControlledStatesMyContinentCollection(const std::string& ideology,
+		 Collection& collection,
 		 const std::set<std::string>& majorIdeologies);
-
-	std::shared_ptr<Collection> getCollection(const std::string& collectionId);
 
 	[[nodiscard]] const auto& getImportedCollections() const { return importedCollections; }
 	[[nodiscard]] const auto& getIdeologicalCollections() const { return ideologicalCollections; }
 
   private:
-	std::map<std::string, std::vector<std::shared_ptr<Collection>>> importedCollections;
+	std::map<std::string, std::vector<Collection>> importedCollections;
 	std::vector<Collection> ideologicalCollections;
 };
 
