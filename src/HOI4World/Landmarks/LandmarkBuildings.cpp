@@ -41,25 +41,36 @@ void HoI4::LandmarkBuildings::updateBuildings(const std::map<int, State>& states
 
 	for (const auto& [name, landmark]: buildings)
 	{
-		const auto& location = landmarksMapper.getLocation(name);
-		if (!location)
+		if (const auto& mappings = landmarksMapper.getMappings(); !mappings.contains(name))
 		{
-			Log(LogLevel::Warning) << "No landmark location mapping for " << name;
+			Log(LogLevel::Warning) << "No landmark mapping for " << name;
 			continue;
 		}
 
-		const auto& stateItr = std::find_if(states.begin(), states.end(), [location](const std::pair<int, State>& state) {
-			return state.second.getProvinces().contains(*location);
-		});
-		if (stateItr == states.end())
+		std::set<std::string> ownerTags;
+		for (int location: landmarksMapper.getLocations(name))
 		{
-			Log(LogLevel::Warning) << "Couldn't find state for " << name << " location " << *location;
+			const auto& stateItr =
+				 std::find_if(states.begin(), states.end(), [location](const std::pair<int, State>& state) {
+					 return state.second.getProvinces().contains(location);
+				 });
+			if (stateItr == states.end())
+			{
+				Log(LogLevel::Warning) << "Couldn't find state for " << name << " location " << location;
+				continue;
+			}
+
+			ownerTags.emplace(stateItr->second.getOwner());
+		}
+
+		if (ownerTags.empty())
+		{
 			continue;
 		}
 
-		const auto& ownerTag = stateItr->second.getOwner();
+		std::vector<std::string> controllers(ownerTags.begin(), ownerTags.end());
 
-		landmark->setEnabledControllers({ownerTag});
+		landmark->setEnabledControllers(controllers);
 		outBuildings.insert({name, landmark});
 	}
 

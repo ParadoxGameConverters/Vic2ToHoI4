@@ -56,6 +56,15 @@
     <ClCompile Include="src\HOI4World\Events\EventOptionTests.cpp" />
     <ClCompile Include="src\HOI4World\Events\EventsFileTests.cpp" />
     <ClCompile Include="src\HOI4World\Events\EventTests.cpp" />
+    <ClCompile Include="src\HOI4World\Collections\CollectionTests.cpp" />
+    <ClCompile Include="src\HOI4World\Collections\CollectionsTests.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionGoalTests.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionGoalsTests.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionRuleTests.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionRulesTests.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionRuleGroupsTests.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionTemplateTests.cpp" />
+    <ClCompile Include="src\HOI4World\Factions\FactionTemplatesTests.cpp" />
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranchTests.cpp" />
     <ClCompile Include="src\HOI4World\GameRules\GameRuleOptionTests.cpp" />
     <ClCompile Include="src\HOI4World\GameRules\GameRulesTests.cpp" />
@@ -203,6 +212,15 @@
     <ClCompile Include="src\OutHoi4\Characters\OutCommanderDataTests.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutCountryLeaderDataTests.cpp" />
     <ClCompile Include="src\OutHoi4\Characters\OutPortraitTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Collections\OutCollectionTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Collections\OutCollectionsTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalsTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionTemplatesTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionTemplateTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRulesTests.cpp" />
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleGroupsTests.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutRailwaysTests.cpp" />
     <ClCompile Include="src\OutHoi4\Map\OutSupplyNodesTests.cpp" />
     <ClCompile Include="src\V2World\Ai\AIStrategyTests.cpp" />
@@ -801,6 +819,25 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="data\test_files\Mappers\Graphics\cultureGroupToGraphics.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Collections\ideological_collections.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_goals.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_rules.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\rule_groups.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Windows/common/factions/rules/groups</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_templates.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>

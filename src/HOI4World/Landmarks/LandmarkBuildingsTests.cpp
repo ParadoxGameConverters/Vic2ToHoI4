@@ -187,7 +187,7 @@ TEST(HoI4World_Landmarks_LandmarkBuildingsTests, UnmappedLandmarksLogWarning)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No landmark location mapping for landmark_unmapped"));
+	EXPECT_THAT(log.str(), testing::HasSubstr("[WARNING] No landmark mapping for landmark_unmapped"));
 }
 
 

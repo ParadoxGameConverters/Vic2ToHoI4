@@ -4,6 +4,7 @@
 #include "src/HOI4World/States/StateCategories.h"
 #include "src/V2World/Provinces/Province.h"
 #include "src/V2World/States/State.h"
+#include <algorithm>
 #include <cmath>
 #include <ranges>
 
@@ -26,6 +27,18 @@ HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _
 		infrastructure = 0;
 	}
 	addInfrastructureFromRails(sourceState.getAverageRailLevel());
+}
+
+
+void HoI4::State::addAirBase(int newAirBase)
+{
+	airbaseLevel += newAirBase;
+	int maxAirbaseLevel = category.getBuildingMaxLevel("air_base");
+
+	if (airbaseLevel > maxAirbaseLevel)
+	{
+		airbaseLevel = maxAirbaseLevel;
+	}
 }
 
 
@@ -100,16 +113,9 @@ void HoI4::State::addNavalBase(int level, int location)
 	}
 }
 
-bool HoI4::State::addLandmark(const std::string& landmarkName, int location, bool isBuilt)
+void HoI4::State::addLandmark(const building& landmark, int location)
 {
-	if (!landmarkName.empty() && provinces.contains(location) && isBuilt)
-	{
-		const building& landmark = {landmarkName, 1, "has_dlc = \"Gotterdammerung\""};
-		provinceBuildings[location].push_back(landmark);
-		return true;
-	}
-
-	return false;
+	provinceBuildings[location].push_back(landmark);
 }
 
 
@@ -142,6 +148,18 @@ std::map<int, int> HoI4::State::getNavalBases() const
 		}
 	}
 	return navalBases;
+}
+
+
+int HoI4::State::getMaxNavalBaseLevel() const
+{
+	const auto& navalBaseLevels = getNavalBases() | std::views::values;
+	if (const auto& it = std::ranges::max_element(navalBaseLevels); it != navalBaseLevels.end())
+	{
+		return *it;
+	}
+
+	return 0;
 }
 
 
@@ -433,7 +451,8 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 
 	if (!impassable)
 	{
-		category = theStateCategories.getBestCategory(stateSlots);
+		const auto& navalBaseLevel = getMaxNavalBaseLevel();
+		category = theStateCategories.getBestCategory(stateSlots, navalBaseLevel);
 	}
 }
 

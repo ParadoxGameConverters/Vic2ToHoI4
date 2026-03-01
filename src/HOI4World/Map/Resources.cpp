@@ -9,7 +9,16 @@ HoI4::Resources::Resources() noexcept
 {
 	registerKeyword("link", [this](std::istream& theStream) {
 		ResourcesLink theLink(theStream);
-		resourceMap.insert(std::make_pair(theLink.getProvinceNum(), theLink.takeResources()));
+
+		const auto province = theLink.getProvinceNum();
+		auto newResources = theLink.takeResources();
+
+		auto& existingResources = resourceMap[province]; // creates entry if missing
+
+		for (const auto& [resource, amount]: newResources)
+		{
+			existingResources[resource] += amount;
+		}
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 

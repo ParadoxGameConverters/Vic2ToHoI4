@@ -1,0 +1,344 @@
+democratic = {
+
+democratic_faction_members = {
+	input = game:scope
+	operators = {
+		faction_members
+		limit = {
+			has_government = democratic
+		}
+	}
+	name = COLLECTION_DEMOCRATIC_FACTION_MEMBERS
+}
+
+uncapitulated_democratic_faction_members = {
+	input = game:scope
+	operators = {
+		faction_members
+		limit = {
+			has_government = democratic
+			has_capitulated = no
+		}
+	}
+	name = COLLECTION_UNCAPITULATED_DEMOCRATIC_FACTION_MEMBERS
+}
+
+world_democratic_countries = {
+	input = game:all_countries
+	name = COLLECTION_WORLD_DEMOCRATIC_COUNTRIES
+	operators = {
+		limit = {
+			has_government = democratic
+		}
+	}
+}
+
+###
+world_uncapitulated_democratic_countries_and_dominions = {
+	input = game:all_countries
+	name = COLLECTION_UNCAPITULATED_DEMOCRATIC_COUNTRIES_AND_DOMINIONS
+	operators = {
+		limit = {
+			has_government = democratic
+			has_capitulated = no
+			OR = {
+				is_subject = no
+				has_autonomy_state = autonomy_dominion
+			}
+		}
+	}
+}
+###
+world_uncapitulated_democratic_countries = {
+	input = collection:world_democratic_countries
+	name = COLLECTION_UNCAPITULATED_DEMOCRATIC_COUNTRIES
+	operators = {
+		limit = {
+			has_capitulated = no
+		}
+	}	
+}
+
+non_democratic_controlled_states_on_my_continent = {
+	input = collection:states_on_my_continent
+	operators = {
+		limit = {
+			controller = { NOT = { has_government = democratic } }
+		}
+	}
+	name = COLLECTION_NON_DEMOCRATIC_STATES_MY_CONTINENT
+}
+
+}
+
+communism = {
+
+world_non_communist_countries = {
+	input = game:all_countries
+	name = COLLECTION_NON_COMMUNIST_COUNTRIES
+	operators = {
+		limit = {
+			NOT = { has_government = communism }
+		}
+	}
+}
+
+world_non_communist_states = {
+	input = game:all_states
+	name = COLLECTION_NON_COMMUNIST_STATES
+	operators = {
+		limit = {
+			NOT = { controller = { has_government = communism } }
+		}
+	}
+}
+
+world_communist_countries = {
+	input = game:all_countries
+	name = COLLECTION_WORLD_COMMUNIST_COUNTRIES
+	operators = {
+		limit = {
+			has_government = communism
+		}
+	}
+}
+
+communist_countries_asia = {
+	input = game:all_countries
+	name = COLLECTION_COUNTRIES_ASIA_COMMUNIST
+	operators = {
+		limit = {
+			capital_scope = { is_on_continent = asia }
+			has_government = communism
+		}
+	}
+}
+
+non_communist_or_capitulated_countries_asia = {
+	input = game:all_countries
+	name = COLLECTION_COUNTRIES_ASIA_NON_COMMUNIST
+	operators = {
+		limit = {
+			capital_scope = { is_on_continent = asia }
+			OR = {
+				NOT = { has_government = communism }
+				AND = {
+					has_capitulated = yes 
+					has_government = communism
+				}
+			}
+		}
+	}
+}
+
+non_communist_controlled_states_on_my_continent = {
+	input = collection:states_on_my_continent
+	operators = {
+		limit = {
+			controller = { NOT = { has_government = communism } }
+		}
+	}
+	name = COLLECTION_NON_COMMUNIST_STATES_MY_CONTINENT
+}
+
+# New Order in east Asia
+communist_controlled_states_my_continent = {
+	input = game:all_states
+	name = COLLECTION_AMOUNT_OF_COMMUNIST_CONTROLLED_STATES_SAME_CONTINENT
+	operators = {
+		limit = {
+			is_on_same_continent_as = ROOT
+			controller = {
+				has_government = communism
+			}
+		}
+	}
+}
+
+communist_or_capitulated_countries_my_continent = {
+	input = game:all_countries
+	name = COLLECTION_ALL_COMMUNIST_OR_DEFEATED_SAME_CONTINENT_COUNTRIES
+	operators = {
+		limit = {
+			is_on_same_continent_as = ROOT
+			OR = {
+				has_government = communism 
+				has_capitulated = yes
+			}
+		}
+	}
+}
+
+anti_communist_controlled_states_my_continent = {
+	input = game:all_states
+	name = COLLECTION_STATES_MY_CONTINENT_CONTROLLED_DEMOCRATIC_FASCIST
+	operators = {
+		limit = {
+			is_on_same_continent_as = ROOT
+			controller = {
+				OR = {
+					has_government = fascism
+					has_government = democratic
+				}
+			}
+		}
+	}
+}
+
+}
+
+fascism = {
+
+world_non_fascist_controlled_states = {
+	input = game:all_states
+	operators = {
+		limit = {
+			controller = { NOT = { has_government = fascism } }
+		}
+	}
+}
+
+non_fascist_controlled_states_on_my_continent = {
+	input = collection:states_on_my_continent
+	operators = {
+		limit = {
+			controller = { NOT = { has_government = fascism } }
+		}
+	}
+	name = COLLECTION_NON_FASCIST_STATES_MY_CONTINENT
+}
+
+fascist_controlled_states_my_continent = {
+	input = game:all_states
+	name = COLLECTION_AMOUNT_OF_FASCIST_CONTROLLED_STATES_SAME_CONTINENT
+	operators = {
+		limit = {
+			is_on_same_continent_as = ROOT
+			controller = {
+				has_government = fascism
+			}
+		}
+	}
+}
+
+anti_fascist_controlled_states_my_continent = {
+	input = game:all_states
+	name = COLLECTION_STATES_MY_CONTINENT_CONTROLLED_DEMOCRATIC_COMMUNIST
+	operators = {
+		limit = {
+			is_on_same_continent_as = ROOT
+			controller = {
+				OR = {
+					has_government = communism
+					has_government = democratic
+				}
+			}
+		}
+	}
+}
+
+}
+
+radical = {
+
+world_non_radical_controlled_states = {
+	input = game:all_states
+	operators = {
+		limit = {
+			controller = { NOT = { has_government = radical } }
+		}
+	}
+}
+
+non_radical_controlled_states_on_my_continent = {
+	input = collection:states_on_my_continent
+	operators = {
+		limit = {
+			controller = { NOT = { has_government = radical } }
+		}
+	}
+	name = COLLECTION_NON_RADICAL_STATES_MY_CONTINENT
+}
+
+radical_controlled_states_my_continent = {
+	input = game:all_states
+	name = COLLECTION_AMOUNT_OF_RADICAL_CONTROLLED_STATES_SAME_CONTINENT
+	operators = {
+		limit = {
+			is_on_same_continent_as = ROOT
+			controller = {
+				has_government = radical
+			}
+		}
+	}
+}
+
+anti_radical_controlled_states_my_continent = {
+	input = game:all_states
+	name = COLLECTION_STATES_MY_CONTINENT_CONTROLLED_DEMOCRATIC_COMMUNIST
+	operators = {
+		limit = {
+			is_on_same_continent_as = ROOT
+			controller = {
+				OR = {
+					has_government = communism
+					has_government = democratic
+				}
+			}
+		}
+	}
+}
+
+}
+
+absolutist = {
+
+world_non_absolutist_controlled_states = {
+	input = game:all_states
+	operators = {
+		limit = {
+			controller = { NOT = { has_government = absolutist } }
+		}
+	}
+}
+
+non_absolutist_controlled_states_on_my_continent = {
+	input = collection:states_on_my_continent
+	operators = {
+		limit = {
+			controller = { NOT = { has_government = absolutist } }
+		}
+	}
+	name = COLLECTION_NON_ABSOLUTIST_STATES_MY_CONTINENT
+}
+
+absolutist_controlled_states_my_continent = {
+	input = game:all_states
+	name = COLLECTION_AMOUNT_OF_ABSOLUTIST_CONTROLLED_STATES_SAME_CONTINENT
+	operators = {
+		limit = {
+			is_on_same_continent_as = ROOT
+			controller = {
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+anti_absolutist_controlled_states_my_continent = {
+	input = game:all_states
+	name = COLLECTION_STATES_MY_CONTINENT_CONTROLLED_DEMOCRATIC_COMMUNIST
+	operators = {
+		limit = {
+			is_on_same_continent_as = ROOT
+			controller = {
+				OR = {
+					has_government = communism
+					has_government = democratic
+				}
+			}
+		}
+	}
+}
+
+}

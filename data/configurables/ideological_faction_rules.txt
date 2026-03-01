@@ -1,0 +1,482 @@
+democratic = {
+
+dismissal_rule_ideology_not_democratic = {
+	type = dismissal_rules
+	visible = { has_government = democratic }
+	ai_will_do = {
+		base = 0
+	}
+
+	dismiss_member_trigger = {
+		NOT = {
+			has_government = democratic 
+		}
+	}
+}
+
+dismissal_rule_ideology_democratic = {
+	type = dismissal_rules
+	visible = { NOT = { has_government = democratic } }
+	ai_will_do = {
+		base = 0
+	}
+
+	dismiss_member_trigger = {
+		has_government = democratic
+	}
+}
+
+joining_rule_non_democratic = {
+	type = joining_rules
+	visible = {
+		NOT = { has_government = democratic }
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			NOT = { has_government = democratic }
+		}
+		modifier = {
+			add = 1
+			has_government = fascism
+		}
+	}
+	trigger = {
+		NOT = {
+			has_government = democratic 
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_democratic_non_aligned = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	available = {
+		has_government = democratic
+	}
+	trigger = {
+		OR = {
+			has_government = democratic
+			has_government = neutrality
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+}
+
+communism = {
+
+dismissal_rule_ideology_not_communism = {
+	type = dismissal_rules
+	visible = { has_government = communism }
+	ai_will_do = {
+		base = 0
+	}
+
+	dismiss_member_trigger = {
+		NOT = {
+			has_government = communism 
+		}
+	}
+}
+
+dismissal_rule_ideology_communist = {
+	type = dismissal_rules
+	visible = { NOT = { has_government = communism } }
+	ai_will_do = {
+		base = 0
+	}
+
+	dismiss_member_trigger = {
+		has_government = communism
+	}
+}
+
+joining_rule_non_communist = {
+	type = joining_rules
+	visible = {
+		NOT = { has_government = communism }
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			NOT = { has_government = communism }
+		}
+		modifier = {
+			add = 1
+			has_government = fascism
+		}
+	}
+	trigger = {
+		NOT = {
+			has_government = communism 
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_communist_only = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	available = {
+		has_government = communism
+	}
+	trigger = {
+		has_government = communism
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+}
+
+fascism = {
+
+dismissal_rule_ideology_fascist = {
+	type = dismissal_rules
+	visible = { NOT = { has_government = fascism } }
+	ai_will_do = {
+		base = 0
+	}
+
+	dismiss_member_trigger = {
+		has_government = fascism
+	}
+}
+
+joining_rule_non_fascist = {
+	type = joining_rules
+	visible = {
+		NOT = { has_government = fascism }
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			NOT = { has_government = fascism }
+		}
+		modifier = {
+			add = 1
+			has_government = communism
+		}
+	}
+	trigger = {
+		NOT = {
+			has_government = fascism
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_fascist_only = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	available = {
+		has_government = fascism
+	}
+	trigger = {
+		has_government = fascism
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+}
+
+radical = {
+
+dismissal_rule_ideology_radical = {
+	type = dismissal_rules
+	visible = { NOT = { has_government = radical } }
+	ai_will_do = {
+		base = 0
+	}
+
+	dismiss_member_trigger = {
+		has_government = radical
+	}
+}
+
+joining_rule_non_radical = {
+	type = joining_rules
+	visible = {
+		NOT = { has_government = radical }
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			NOT = { has_government = radical }
+		}
+		modifier = {
+			add = 1
+			has_government = fascism
+		}
+	}
+	trigger = {
+		NOT = {
+			has_government = radical
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_radical_only = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	available = {
+		has_government = radical
+	}
+	trigger = {
+		has_government = radical
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+}
+
+absolutist = {
+
+dismissal_rule_ideology_absolutist = {
+	type = dismissal_rules
+	visible = { NOT = { has_government = absolutist } }
+	ai_will_do = {
+		base = 0
+	}
+
+	dismiss_member_trigger = {
+		has_government = absolutist
+	}
+}
+
+joining_rule_non_absolutist = {
+	type = joining_rules
+	visible = {
+		NOT = { has_government = absolutist }
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			NOT = { has_government = absolutist }
+		}
+		modifier = {
+			add = 1
+			has_government = fascism
+		}
+	}
+	trigger = {
+		NOT = {
+			has_government = absolutist
+		}
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+joining_rule_absolutist_only = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+	}
+	available = {
+		has_government = absolutist
+	}
+	trigger = {
+		has_government = absolutist
+		IF = {
+			limit = { NOT = { has_rule = can_join_opposite_factions } }
+			has_government = FROM
+		}
+	}
+}
+
+}
+
+neutrality = { # Always created
+
+call_to_war_rule_faction_leader_only = {
+	type = call_to_war_rules
+	trigger = {
+		is_faction_leader = yes
+	}
+	ai_will_do = {
+		base = 0
+		modifier = { 
+			add = 2
+			is_faction_leader = yes
+			NOT = { has_government = democratic }
+		}
+	}
+	modifier = {
+		political_power_factor = -0.1
+	}
+}
+
+guarantee_threat_reduction_15 = {
+	type = call_to_war_rules
+	ai_will_do = {
+		base = 0
+		modifier = { 
+			add = 2
+			has_government = democratic
+		}
+	}
+	modifier = {
+		guarantee_tension = -0.15
+		stability_factor = -0.05
+	}
+	effect = {
+	}
+}
+	
+change_leader_rule_never = {
+	type = change_leader_rules
+	trigger = {
+		always = no
+	}
+	available = {
+		faction_manifest_fulfillment > 0.66
+	}
+
+	can_remove = { 
+		faction_manifest_fulfillment < 0.5 
+	}
+
+	modifier = {
+		research_sharing_per_country_bonus_factor = -0.25
+		surrender_limit = -0.05
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {  
+			add = 5
+			has_government = fascism
+			is_faction_leader = yes 
+		}
+	}
+}
+
+dismissal_rule_world_tension = {
+	type = dismissal_rules
+	ai_will_do = {
+		base = 0
+		modifier = {  
+			add = 1
+			has_government = democratic
+			is_faction_leader = yes 
+		}
+	}
+	dismiss_member_trigger = {
+		has_added_tension_amount > 0.1
+	}
+}
+
+joining_rule_has_no_offensive_war = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 2
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+		}
+	}
+	trigger = {
+		has_offensive_war = no
+	}
+	modifier = {
+		defensive_war_stability_factor = 0.15
+	}
+}
+
+faction_peace_rule_puppeting_focus = {
+	type = peace_conference_rules
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			has_government = communism
+		}
+	}
+	peace_action_modifiers = {
+		faction_rule_modifier_encourage_puppet
+	}
+	modifier = {
+		custom_modifier_tooltip = faction_rule_modifier_encourage_puppet_tt
+	} 
+}
+
+faction_peace_rule_liberation_focus = {
+	type = peace_conference_rules
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			has_government = democratic
+		}
+	}
+	peace_action_modifiers = {
+		faction_rule_modifier_encourage_liberate
+	}
+	modifier = {
+		custom_modifier_tooltip = faction_rule_modifier_encourage_liberate_tt
+	}
+}
+
+faction_peace_rule_conquest_focus = {
+	type = peace_conference_rules
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 2
+			has_government = fascism
+		}
+	}
+	peace_action_modifiers = {
+		faction_rule_modifier_encourage_take_states
+	}
+	modifier = {
+		custom_modifier_tooltip = faction_rule_modifier_encourage_take_states_tt
+	}
+}
+
+}

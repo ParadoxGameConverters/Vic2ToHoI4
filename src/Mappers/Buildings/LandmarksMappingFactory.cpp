@@ -7,7 +7,7 @@
 Mappers::LandmarksMappingFactory::LandmarksMappingFactory()
 {
 	registerKeyword("location", [this](std::istream& theStream) {
-		landmarksMapping.location = commonItems::singleInt{theStream}.getInt();
+		landmarksMapping.locations.emplace(commonItems::singleInt{theStream}.getInt());
 	});
 	registerKeyword("built", [this](std::istream& theStream) {
 		landmarksMapping.built = commonItems::singleString{theStream}.getString() == "yes";
@@ -20,5 +20,5 @@ Mappers::LandmarksMapping Mappers::LandmarksMappingFactory::importMapping(std::i
 {
 	parseStream(theStream);
 	clearRegisteredKeywords();
-	return {.location = landmarksMapping.location, .built = landmarksMapping.built};
+	return {.locations = landmarksMapping.locations, .built = landmarksMapping.built};
 }

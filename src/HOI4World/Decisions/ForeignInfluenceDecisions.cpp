@@ -84,13 +84,12 @@ void HoI4::ForeignInfluenceDecisions::updateDecisions(const std::set<std::string
 				aiWillDo += "\t\t\t}\n";
 				aiWillDo += "\t\t\t# don't create collab governments if you have contested cores\n";
 				aiWillDo += "\t\t\tmodifier = {\n";
-				aiWillDo += "\t\t\t\tany_state = {\n";
+				aiWillDo += "\t\t\t\tany_core_state = {\n";
 				aiWillDo += "\t\t\t\t\tOR = {\n";
 				aiWillDo += "\t\t\t\t\t\tis_controlled_by = ROOT\n";
 				aiWillDo += "\t\t\t\t\t\tis_owned_by = ROOT\n";
 				aiWillDo += "\t\t\t\t\t}\n";
 				aiWillDo += "\t\t\t\t\tis_core_of = FROM\n";
-				aiWillDo += "\t\t\t\t\tis_core_of = ROOT\n";
 				aiWillDo += "\t\t\t\t}\n";
 				aiWillDo += "\t\t\t\tfactor = 0\n";
 				aiWillDo += "\t\t\t}";

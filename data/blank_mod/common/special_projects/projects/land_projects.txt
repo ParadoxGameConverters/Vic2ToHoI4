@@ -242,7 +242,7 @@ sp_land_land_cruiser = {
 		modifier = {
 			factor = 0 
 			OR = {
-				FROM = { is_major = no } # Pointless unless we are big enough to do this
+				ROOT = { is_major = no } # Pointless unless we are big enough to do this
 			}
 		}
 	}

@@ -4,8 +4,8 @@
 
 
 #include "external/common_items/ConvenientParser.h"
-#include <map>
-#include <string>
+#include "src/HOI4World/States/StateCategory.h"
+#include <vector>
 
 
 
@@ -20,7 +20,7 @@ class StateCategoryFile: commonItems::parser
 	auto getCategories() const { return theCategories; }
 
   private:
-	std::map<int, std::string> theCategories;
+	std::vector<StateCategory> theCategories;
 };
 
 } // namespace HoI4

@@ -1,0 +1,18 @@
+government_in_exile_allowed = {
+	type = member_rules
+	government_in_exile_allowed_trigger = {
+		always = yes
+	}
+	ai_will_do = {
+		base = 0
+	}
+}
+
+#government_in_exile_not_allowed = 
+#{
+#	type = member_rules
+#	government_in_exile_allowed_trigger = {
+#		always = no
+#	}
+#}
+

@@ -325,7 +325,7 @@ link = {
 link = {
 	vic2 = naval_firepower_doctrine
 	limit = R"(has_dlc = "Man the Guns")"
-	hoi4 = basic_medium_battery
+	hoi4 = basic_light_shell
 }
 
 # HoI4 Basic Heavy Battery <- Vic2 Invention Navy/Naval Engineering/Modern Naval Design/15-inch Main Armament
@@ -342,11 +342,6 @@ link = {
 	hoi4 = mtg_transport
 }
 
-link = {
-	vic2 = on_board_recon_aircraft
-	limit = R"(has_dlc = "Man the Guns")"
-	hoi4 = improved_airplane_launcher
-}
 link = {
 	vic2 = war_gamming
 	limit = R"(has_dlc = "Man the Guns")"

@@ -429,6 +429,21 @@ TEST(HoI4World_States_StateTests, AirbaseLevelCappedAtTen)
 }
 
 
+TEST(HoI4World_States_StateTests, AirbaseLevelCappedByStateCategory)
+{
+	HoI4::State theState;
+	theState.convertIndustry(0.0001,
+		 0,
+		 *HoI4::StateCategories::Builder().capBuilding("air_base", 8).Build(),
+		 *HoI4::CoastalProvinces::Builder().Build());
+
+	theState.addAirBase(5);
+	theState.addAirBase(10);
+
+	EXPECT_EQ(8, theState.getAirbaseLevel());
+}
+
+
 TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 {
 	const std::shared_ptr<Vic2::Province> theProvince =
@@ -809,41 +824,13 @@ TEST(HoI4World_States_StateTests, MainNavalBaseLocationGoesToLargestBase)
 }
 
 
-TEST(HoI4World_States_StateTests, EmptyLandmarksAreNotAssigned)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	HoI4::State theState(sourceState, 42, "TAG");
-	theState.addProvince(12);
-
-	EXPECT_FALSE(theState.addLandmark("", 12, true));
-}
-
-
-TEST(HoI4World_States_StateTests, LandmarksAreNotAssignedWhenLocationNotInState)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	HoI4::State theState(sourceState, 42, "TAG");
-
-	EXPECT_FALSE(theState.addLandmark("landmark_test", 12, true));
-}
-
-
-TEST(HoI4World_States_StateTests, UnbuiltLandmarksAreNotAssigned)
-{
-	const auto sourceState = *Vic2::State::Builder().build();
-	HoI4::State theState(sourceState, 42, "TAG");
-
-	EXPECT_FALSE(theState.addLandmark("landmark_test", 12, false));
-}
-
-
 TEST(HoI4World_States_StateTests, LandmarksCanBeAssigned)
 {
 	const auto sourceState = *Vic2::State::Builder().build();
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	theState.addProvince(12);
-	theState.addLandmark("landmark_test", 12, true);
+	theState.addLandmark({"landmark_test", 1, "has_dlc = \"Gotterdammerung\""}, 12);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";

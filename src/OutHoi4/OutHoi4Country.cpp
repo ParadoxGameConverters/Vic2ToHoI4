@@ -1113,10 +1113,14 @@ void outputFactions(std::ostream& output, const std::string& tag, const std::opt
 {
 	if (faction && (faction->getLeader()->getTag() == tag))
 	{
+		const auto& leaderIdeology = faction->getLeader()->getGovernmentIdeology();
 		const std::string allianceName = faction->getFactionName().has_value()
 														 ? faction->getFactionName().value()
 														 : ("\"Alliance Of [" + tag + ".GetName]\"");
-		output << "create_faction = " + allianceName + "\n";
+		output << "create_faction_from_template = {\n";
+		output << "\ttemplate = faction_template_" + leaderIdeology + "\n";
+		output << "\tname = " + allianceName + "\n";
+		output << "}\n";
 		for (const auto& factionMember: faction->getMembers())
 		{
 			output << "add_to_faction = " + factionMember->getTag() + "\n";

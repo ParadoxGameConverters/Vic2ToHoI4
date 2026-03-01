@@ -8,7 +8,7 @@ namespace Mappers
 
 struct LandmarksMapping
 {
-	int location = 0;
+	std::set<int> locations;
 	bool built = false;
 
 	std::strong_ordering operator<=>(const LandmarksMapping&) const = default;

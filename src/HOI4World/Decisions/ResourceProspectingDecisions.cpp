@@ -40,6 +40,10 @@ HoI4::decision updateDecision(HoI4::decision decisionToUpdate,
 	std::regex stateNumRegex(".+ (\\d+).*");
 	std::smatch match;
 	std::regex_search(highlightStates, match, stateNumRegex);
+	if (match.empty())
+	{
+		return decisionToUpdate;
+	}
 	auto oldStateNum = std::stoi(match[1]);
 
 	auto possibleNewStateNum = getRelevantStateFromOldState(oldStateNum, provinceToStateIdMap, defaultStates);

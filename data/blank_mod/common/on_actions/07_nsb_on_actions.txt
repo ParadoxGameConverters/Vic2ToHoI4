@@ -141,7 +141,7 @@ on_actions = {
 						root = {
 							random_list = {
 								50 = { 
-									add_unit_leader_trait = panzer_leader
+									add_unit_leader_trait = armor_officer
 								}
 								50 = {}
 							}

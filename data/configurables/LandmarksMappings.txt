@@ -18,3 +18,11 @@ landmark_berlin_volkshalle = { location = 6521 built = no }
 landmark_taj_mahal = { location = 4915 built = yes }
 landmark_sadabad_complex = { location = 10837 built = yes }
 landmark_hagia_sophia = { location = 9833 built = yes }
+landmark_forbidden_city = { location = 9843 built = yes }
+landmark_great_wall_section = { location = 1590 location = 3900 location = 8127 location = 11808 location = 2028 built = yes }
+landmark_hakko_ichiu = { location = 1020 built = no }
+landmark_nanjing_presidential_palace = { location = 11913 built = yes }
+landmark_nanjing_presidential_palace_gen = { location = 11913 built = no }
+landmark_nanjing_presidential_palace_prc = { location = 11913 built = no }
+landmark_national_diet = { location = 1182 built = no }
+landmark_tokyo_imperial_palace = { location = 1182 built = yes }

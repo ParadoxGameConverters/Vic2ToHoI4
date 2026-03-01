@@ -28,6 +28,12 @@
     <ClCompile Include="src\HOI4World\Characters\PortraitTypeFactoryTests.cpp">
       <Filter>src\HOI4World\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="src\HOI4World\Collections\CollectionTests.cpp">
+      <Filter>src\HOI4World\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Collections\CollectionsTests.cpp">
+      <Filter>src\HOI4World\Collections</Filter>
+    </ClCompile>
     <ClCompile Include="src\HOI4World\CountryCategories\CountryCategoriesTests.cpp">
       <Filter>src\HOI4World\CountryCategories</Filter>
     </ClCompile>
@@ -66,6 +72,27 @@
     </ClCompile>
     <ClCompile Include="src\HOI4World\Events\EventTests.cpp">
       <Filter>src\HOI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionGoalTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionGoalsTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionRuleTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionRulesTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionRuleGroupsTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionTemplateTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HOI4World\Factions\FactionTemplatesTests.cpp">
+      <Filter>src\HOI4World\Factions</Filter>
     </ClCompile>
     <ClCompile Include="src\HOI4World\FocusTrees\AdjustedBranchTests.cpp">
       <Filter>src\HOI4World\FocusTrees</Filter>
@@ -454,6 +481,33 @@
     <ClCompile Include="src\OutHoi4\Characters\OutPortraitTests.cpp">
       <Filter>src\OutHoi4\Characters</Filter>
     </ClCompile>
+    <ClCompile Include="src\OutHoi4\Collections\OutCollectionTests.cpp">
+      <Filter>src\OutHoi4\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Collections\OutCollectionsTests.cpp">
+      <Filter>src\OutHoi4\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionGoalsTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRulesTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionRuleGroupsTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionTemplateTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OutHoi4\Factions\OutFactionTemplatesTests.cpp">
+      <Filter>src\OutHoi4\Factions</Filter>
+    </ClCompile>
     <ClCompile Include="src\OutHoi4\Map\OutRailwaysTests.cpp">
       <Filter>src\OutHoi4\Map</Filter>
     </ClCompile>
@@ -825,6 +879,9 @@
     <Filter Include="src\OutHoi4\Characters">
       <UniqueIdentifier>{e6fb1f73-b1ae-4abe-8fd0-d9fbd8057509}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\OutHoi4\Collections">
+      <UniqueIdentifier>{ae81827f-1422-4c62-b47d-068b18f7f1e0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\OutHoi4\CountryCategories">
       <UniqueIdentifier>{c4f4bbc3-cddb-4667-800c-91ed64048adf}</UniqueIdentifier>
     </Filter>
@@ -836,6 +893,9 @@
     </Filter>
     <Filter Include="src\OutHoi4\Events">
       <UniqueIdentifier>{462f35fe-9546-4183-9109-505fadd0322e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OutHoi4\Factions">
+      <UniqueIdentifier>{5b232204-fdfc-436c-a4ef-03f8d6f9b6ce}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\OutHoi4\GameRules">
       <UniqueIdentifier>{d75cadc8-a93a-4799-b1dd-2df1528d66fc}</UniqueIdentifier>
@@ -981,6 +1041,9 @@
     <Filter Include="data\test_files\Buildings">
       <UniqueIdentifier>{f259f2b0-a16a-4140-8420-943eeff24d84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="data\test_files\Collections">
+      <UniqueIdentifier>{1c97b91b-b518-4ec7-8484-88cdfdc874e9}</UniqueIdentifier>
+    </Filter>
     <Filter Include="data\test_files\Countries">
       <UniqueIdentifier>{b57a0a33-1ac0-4736-b9ff-1cd14a14656b}</UniqueIdentifier>
     </Filter>
@@ -989,6 +1052,9 @@
     </Filter>
     <Filter Include="data\test_files\Cultures">
       <UniqueIdentifier>{f9da7e4e-4e52-4c04-a0c1-c9dbf7ddac12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test_files\Factions">
+      <UniqueIdentifier>{d8f1049d-c2b7-4be5-8d86-10836045f13b}</UniqueIdentifier>
     </Filter>
     <Filter Include="data\test_files\HoI4Files">
       <UniqueIdentifier>{3051bc43-2841-4651-8768-4b71cee9794a}</UniqueIdentifier>
@@ -1111,6 +1177,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="data\test_files\Collections\ideological_collections.txt">
+      <Filter>data\test_files\Collections</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Countries\blankCommonCountryData.txt">
       <Filter>data\test_files\Countries</Filter>
     </CopyFileToFolders>
@@ -1146,6 +1215,18 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\Cultures\BaseCultures.txt">
       <Filter>data\test_files\Cultures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_goals.txt">
+      <Filter>data\test_files\Factions</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_rules.txt">
+      <Filter>data\test_files\Factions</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\rule_groups.txt">
+      <Filter>data\test_files\Factions</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\test_files\Factions\ideological_faction_templates.txt">
+      <Filter>data\test_files\Factions</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="data\test_files\HoI4Files\CountryCategories\CountryGrammar.txt">
       <Filter>data\test_files\HoI4Files\CountryCategories</Filter>

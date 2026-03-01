@@ -19,8 +19,9 @@ class LandmarksMapper: commonItems::parser
 	LandmarksMapper();
 
 	[[nodiscard]] const auto& getMappings() const { return mappings; }
-	[[nodiscard]] std::optional<int> getLocation(const std::string& landmark) const;
+	[[nodiscard]] std::set<int> getLocations(const std::string& landmark) const;
 	[[nodiscard]] bool getBuilt(const std::string& landmark) const;
+	[[nodiscard]] std::string getDlcAllowed(const std::string& landmark) const;
 
   private:
 	std::map<std::string, LandmarksMapping> mappings;

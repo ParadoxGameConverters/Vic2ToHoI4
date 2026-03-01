@@ -2,6 +2,8 @@
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "src/Configuration.h"
 #include "src/HOI4World/States/StateCategoryFile.h"
+#include <algorithm>
+#include <ranges>
 #include <set>
 
 
@@ -12,7 +14,7 @@ HoI4::StateCategories::StateCategories(const Configuration& theConfiguration)
 		StateCategoryFile theFile(theStream);
 		for (auto category: theFile.getCategories())
 		{
-			theCategories.insert(category);
+			theCategories.push_back(category);
 		}
 	});
 
@@ -23,16 +25,20 @@ HoI4::StateCategories::StateCategories(const Configuration& theConfiguration)
 }
 
 
-std::string HoI4::StateCategories::getBestCategory(int numBuildingSlots) const
+HoI4::StateCategory HoI4::StateCategories::getBestCategory(int numBuildingSlots, int navalBaseLevel) const
 {
-	std::string theCategory;
-	for (auto possibleCategory: theCategories)
-	{
-		if (numBuildingSlots >= possibleCategory.first)
-		{
-			theCategory = possibleCategory.second;
-		}
-	}
+	static const StateCategory fallback;
 
-	return theCategory;
+	auto fits = [numBuildingSlots, navalBaseLevel](const StateCategory& c) {
+		return c.getNumberOfSlots() <= numBuildingSlots && c.getBuildingMaxLevel("naval_base") >= navalBaseLevel;
+	};
+
+	auto filtered = theCategories | std::views::filter(fits);
+
+	auto it = std::ranges::max_element(filtered, {}, &StateCategory::getNumberOfSlots);
+
+	if (it == std::ranges::end(filtered))
+		return fallback;
+
+	return *it;
 }

@@ -1,10 +1,15 @@
 #include "src/OutHoi4/OutHoi4World.h"
 #include "external/common_items/Log.h"
 #include "external/common_items/OSCompatibilityLayer.h"
+#include "src/OutHoi4/Collections/OutCollections.h"
 #include "src/OutHoi4/Countries/OutUnionCountry.h"
 #include "src/OutHoi4/CountryCategories/OutCountryCategories.h"
 #include "src/OutHoi4/Decisions/OutDecisions.h"
 #include "src/OutHoi4/Events/OutEvents.h"
+#include "src/OutHoi4/Factions/OutFactionGoals.h"
+#include "src/OutHoi4/Factions/OutFactionRuleGroups.h"
+#include "src/OutHoi4/Factions/OutFactionRules.h"
+#include "src/OutHoi4/Factions/OutFactionTemplates.h"
 #include "src/OutHoi4/GameRules/OutGameRules.h"
 #include "src/OutHoi4/Ideas/OutIdeas.h"
 #include "src/OutHoi4/Ideologies/OutIdeologies.h"
@@ -255,6 +260,11 @@ void HoI4::OutputWorld(const World& world,
 	OutputAiPeace(outputName, world.getMajorIdeologies(), world.GetIdeologicalAiPeace(), world.GetDynamicAiPeace());
 	OutputUnitMedals(outputName, world.getMajorIdeologies(), world.GetUnitMedals());
 	outputAdjacencyRules(outputName, world.getAdjacencyRules());
+	outputFactionGoals("output" / outputName, world.getIdeologicalFactionGoals(), world.getManifestsVariables());
+	outputFactionRules("output" / outputName, world.getIdeologicalFactionRules());
+	outputFactionRuleGroups("output" / outputName, world.getIdeologicalFactionRuleGroups());
+	outputFactionTemplates("output" / outputName, world.getIdeologicalFactionTemplates());
+	outputCollections("output" / outputName, world.getIdeologicalCollections());
 }
 
 

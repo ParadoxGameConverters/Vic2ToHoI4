@@ -1,10 +1,10 @@
 # Version info
 
-version = "1.4V"
-name = "Vasilevsky"
+version = "1.5W"
+name = "Wavell"
 source = "Vic2"
 minSource = "3"
 maxSource = "3"
 target = "HoI4"
-minTarget = "1.16"
-maxTarget = "1.16"
+minTarget = "1.17"
+maxTarget = "1.17"

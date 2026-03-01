@@ -1,0 +1,34 @@
+call_to_war_rule_major_only = {
+	type = call_to_war_rules
+	trigger = {
+		is_major = yes
+	}
+	ai_will_do = {
+		base = 0
+	}
+	modifier = {
+		political_power_factor = -0.05
+	}
+}
+
+call_to_war_rule_independent_only = {
+	type = call_to_war_rules
+	trigger = {
+		is_subject = no 
+	}
+}
+
+# World Tension
+
+guarantee_threat_reduction_40 = {
+	type = call_to_war_rules
+	ai_will_do = {
+		base = 0
+	}
+	modifier = {
+		guarantee_tension = -0.4
+		stability_factor = -0.1
+	}
+	effect = {
+	}
+}

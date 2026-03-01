@@ -348,6 +348,7 @@
 				max_fuel_factor = -0.45
 				fuel_gain_factor = -0.6
 				agency_upgrade_time = 1.0
+				factory_energy_consumption = -0.3
 			}
 
 			allowed_to_remove = {
@@ -382,6 +383,7 @@
 				max_fuel_factor = -0.35
 				fuel_gain_factor = -0.5
 				agency_upgrade_time = 0.8
+				factory_energy_consumption = -0.3
 			}
 			allowed_to_remove = {
 				OR = {
@@ -407,6 +409,7 @@
 				conversion_cost_mil_to_civ_factor = 0.3
 				max_fuel_factor = -0.25
 				fuel_gain_factor = -0.4
+				factory_energy_consumption = -0.3
 			}
 
 			default = yes
@@ -428,6 +431,7 @@
 				production_speed_industrial_complex_factor = -0.1
 				production_speed_arms_factory_factor = -0.1
 				fuel_gain_factor = -0.25
+				factory_energy_consumption = -0.15
 			}
 
 			cancel_if_invalid = no
@@ -504,6 +508,7 @@
 				production_speed_arms_factory_factor = 0.2
 				conversion_cost_civ_to_mil_factor= -0.2
 				conversion_cost_mil_to_civ_factor = -0.2
+				factory_energy_consumption = 0.25
 			}
 
 			cancel_if_invalid = no
@@ -558,7 +563,7 @@
 			}
 
 			ai_will_do = {
-   				factor = 1
+   				base = 1
 
 				modifier = {
 					factor = 25
@@ -592,6 +597,7 @@
 				production_speed_arms_factory_factor = 0.3
 				conversion_cost_civ_to_mil_factor= -0.3
 				conversion_cost_mil_to_civ_factor = -0.3
+				factory_energy_consumption = 0.5
 			}
 
 			cancel_if_invalid = no
@@ -626,6 +632,7 @@
 				conversion_cost_mil_to_civ_factor = -0.3
 				industrial_capacity_factory = 0.05
 				industrial_capacity_dockyard = 0.05
+				factory_energy_consumption = 0.5
 			}
 			cancel_if_invalid = no
 		}
@@ -649,7 +656,7 @@
 			modifier = {
 				consumer_goods_expected_value = 0.15
 				production_speed_buildings_factor = -0.15
-
+				factory_energy_consumption = 0.25
 			}
 
 			cancel_if_invalid = no
@@ -680,6 +687,7 @@
 				consumer_goods_expected_value = 0.10
 				production_speed_buildings_factor = -0.2
 				global_building_slots_factor = 0.1
+				factory_energy_consumption = 0.35
 			}
 
 			cancel_if_invalid = no
