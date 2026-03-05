@@ -579,7 +579,7 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 3
+			factor = 2
 
 			modifier = {
 				factor = 2
@@ -1004,12 +1004,12 @@ technologies = {
 			factor = 1
 
 			modifier = {
-				factor = 2
+				factor = 10
 				is_major = yes
 			}
 			modifier = {
 				has_war = yes
-				factor = 2
+				factor = 10
 			}
 
 			modifier = {
@@ -1018,12 +1018,12 @@ technologies = {
 			}
 
 			modifier = {
-				factor = 1.1
+				factor = 1.5
 				date > "1938.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
+				factor = 2
 				date > "1939.1.1"
 			}
 		}
@@ -1064,7 +1064,7 @@ technologies = {
 			factor = 1
 
 			modifier = {
-				factor = 2
+				factor = 4
 				is_major = yes
 			}
 			modifier = {
@@ -1074,17 +1074,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.1
-				date > "1937.1.1"
-			}
-
-			modifier = {
-				factor = 1.1
 				date > "1938.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
+				factor = 1.5
 				date > "1939.1.1"
+			}
+
+			modifier = {
+				factor = 2
+				date > "1940.1.1"
 			}
 		}
 
@@ -1135,17 +1135,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.1
-				date > "1937.1.1"
+				date > "1941.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
-				date > "1938.1.1"
+				factor = 1.5
+				date > "1942.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
-				date > "1939.1.1"
+				factor = 2
+				date > "1943.1.1"
 			}
 		}
 
@@ -1187,17 +1187,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.1
-				date > "1937.1.1"
+				date > "1944.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
-				date > "1938.1.1"
+				factor = 1.5
+				date > "1945.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
-				date > "1939.1.1"
+				factor = 2
+				date > "1946.1.1"
 			}
 		}
 
@@ -1247,12 +1247,12 @@ technologies = {
 			}
 
 			modifier = {
-				factor = 1.1
+				factor = 1.5
 				date > "1938.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
+				factor = 2
 				date > "1939.1.1"
 			}
 		}
@@ -1301,17 +1301,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.1
-				date > "1937.1.1"
-			}
-
-			modifier = {
-				factor = 1.1
 				date > "1938.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
+				factor = 1.5
 				date > "1939.1.1"
+			}
+
+			modifier = {
+				factor = 2
+				date > "1940.1.1"
 			}
 		}
 
@@ -1357,17 +1357,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.1
-				date > "1937.1.1"
+				date > "1941.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
-				date > "1938.1.1"
+				factor = 1.5
+				date > "1942.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
-				date > "1939.1.1"
+				factor = 2
+				date > "1943.1.1"
 			}
 		}
 
@@ -1407,17 +1407,17 @@ technologies = {
 
 			modifier = {
 				factor = 1.1
-				date > "1937.1.1"
+				date > "1944.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
-				date > "1938.1.1"
+				factor = 1.5
+				date > "1945.1.1"
 			}
 
 			modifier = {
-				factor = 1.1
-				date > "1939.1.1"
+				factor = 2
+				date > "1946.1.1"
 			}
 		}
 
