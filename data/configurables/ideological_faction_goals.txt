@@ -891,7 +891,7 @@ faction_manifest_suppress_regional_radical = {
 	is_manifest = yes
 	ratio_progress = {
 		total_amount_collection = collection:states_on_my_continent
-		completed_amount_collection = collection:non_fascist_controlled_states_on_my_continent
+		completed_amount_collection = collection:non_radical_controlled_states_on_my_continent
 		
 		scale = {
 			radical_drift = -0.08
@@ -1082,7 +1082,7 @@ faction_manifest_suppress_regional_absolutist = {
 	is_manifest = yes
 	ratio_progress = {
 		total_amount_collection = collection:states_on_my_continent
-		completed_amount_collection = collection:non_fascist_controlled_states_on_my_continent
+		completed_amount_collection = collection:non_absolutist_controlled_states_on_my_continent
 		
 		scale = {
 			absolutist_drift = -0.08
