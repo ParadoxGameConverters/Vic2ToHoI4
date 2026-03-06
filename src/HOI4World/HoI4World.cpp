@@ -361,7 +361,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	factionGoals->updateFactionGoals(ideologies->getMajorIdeologies());
 	factionRules = std::make_unique<FactionRules>();
 	factionRules->updateFactionRules(ideologies->getMajorIdeologies());
-	factionRules->generateRuleGroups(theConfiguration.getHoI4Path(), ideologies->getMajorIdeologies());
+	factionRules->generateRuleGroups(ideologies->getMajorIdeologies());
 	factionTemplates = std::make_unique<FactionTemplates>();
 	factionTemplates->updateFactionTemplates(ideologies->getMajorIdeologies());
 	collections = std::make_unique<Collections>();

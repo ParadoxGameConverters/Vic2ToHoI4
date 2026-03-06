@@ -1,3 +1,5 @@
+# When adding new rules here, update /configurables/rule_groups.txt as well
+
 democratic = {
 
 dismissal_rule_ideology_not_democratic = {

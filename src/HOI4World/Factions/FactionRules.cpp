@@ -57,12 +57,11 @@ void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorId
 }
 
 
-void HoI4::FactionRules::generateRuleGroups(const std::filesystem::path& hoi4Path,
-	 const std::set<std::string>& majorIdeologies)
+void HoI4::FactionRules::generateRuleGroups(const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\tGenerating faction rule groups";
 
-	FactionRuleGroups factionRuleGroups(hoi4Path);
+	FactionRuleGroups factionRuleGroups(std::filesystem::path("Configurables") / "rule_groups.txt");
 
 	for (const auto& [ideology, rules]: importedRules)
 	{
