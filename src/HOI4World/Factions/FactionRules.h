@@ -21,8 +21,6 @@ class FactionRules: commonItems::parser
 	void updateFactionRules(const std::set<std::string>& majorIdeologies);
 	void generateRuleGroups(const std::set<std::string>& majorIdeologies);
 
-	void updateRule(FactionRule& rule, const std::string& ideology, const std::set<std::string>& majorIdeologies);
-
 	[[nodiscard]] const auto& getImportedRules() const { return importedRules; }
 	[[nodiscard]] const auto& getIdeologicalRules() const { return ideologicalRules; }
 	[[nodiscard]] const auto& getIdeologicalRuleGroups() const { return factionRuleGroups->getRuleGroups(); }
