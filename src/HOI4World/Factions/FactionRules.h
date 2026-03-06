@@ -17,7 +17,8 @@ class FactionRules: commonItems::parser
 	FactionRules();
 	FactionRules(std::istream& theStream);
 
-	void updateFactionRules(const std::set<std::string>& majorIdeologies, const std::filesystem::path& hoi4Path);
+	void updateFactionRules(const std::set<std::string>& majorIdeologies);
+	void generateRuleGroups(const std::filesystem::path& hoi4Path, const std::set<std::string>& majorIdeologies);
 
 	void updateCallToWarRuleFactionLeaderOnly(const std::set<std::string>& majorIdeologies);
 	void updateGuaranteeThreatReduction15(const std::set<std::string>& majorIdeologies);

@@ -30,8 +30,7 @@ HoI4::FactionRules::FactionRules(std::istream& theStream)
 }
 
 
-void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorIdeologies,
-	 const std::filesystem::path& hoi4Path)
+void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\tUpdating ideological faction rules";
 
@@ -45,7 +44,6 @@ void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorId
 	updatePeaceRuleLiberationFocus(majorIdeologies);
 	updatePeaceRuleConquestFocus(majorIdeologies);
 
-	FactionRuleGroups factionRuleGroups(hoi4Path);
 	for (const auto& [ideology, rules]: importedRules)
 	{
 		for (const auto& rule: rules)
@@ -54,13 +52,30 @@ void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorId
 			{
 				ideologicalRules.push_back(*rule);
 			}
-			else
+		}
+	}
+}
+
+
+void HoI4::FactionRules::generateRuleGroups(const std::filesystem::path& hoi4Path,
+	 const std::set<std::string>& majorIdeologies)
+{
+	Log(LogLevel::Info) << "\tGenerating faction rule groups";
+
+	FactionRuleGroups factionRuleGroups(hoi4Path);
+
+	for (const auto& [ideology, rules]: importedRules)
+	{
+		if (!majorIdeologies.contains(ideology))
+		{
+			for (const auto& rule: rules)
 			{
 				factionRuleGroups.removeRule(rule->getId());
-				ideologicalRuleGroups = factionRuleGroups.getRuleGroups();
 			}
 		}
 	}
+
+	ideologicalRuleGroups = factionRuleGroups.getRuleGroups();
 }
 
 
