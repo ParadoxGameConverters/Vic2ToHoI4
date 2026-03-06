@@ -5,6 +5,7 @@
 
 #include "external/common_items/Parser.h"
 #include "src/HOI4World/Factions/FactionRule.h"
+#include "src/HOI4World/Factions/FactionRuleGroups.h"
 
 
 
@@ -34,12 +35,12 @@ class FactionRules: commonItems::parser
 
 	[[nodiscard]] const auto& getImportedRules() const { return importedRules; }
 	[[nodiscard]] const auto& getIdeologicalRules() const { return ideologicalRules; }
-	[[nodiscard]] const auto& getIdeologicalRuleGroups() const { return ideologicalRuleGroups; }
+	[[nodiscard]] const auto& getIdeologicalRuleGroups() const { return factionRuleGroups->getRuleGroups(); }
 
   private:
 	std::map<std::string, std::vector<std::shared_ptr<FactionRule>>> importedRules;
 	std::vector<FactionRule> ideologicalRules;
-	std::map<std::string, std::vector<std::string>> ideologicalRuleGroups;
+	std::unique_ptr<FactionRuleGroups> factionRuleGroups;
 };
 
 

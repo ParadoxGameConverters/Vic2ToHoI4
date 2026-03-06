@@ -61,7 +61,7 @@ void HoI4::FactionRules::generateRuleGroups(const std::set<std::string>& majorId
 {
 	Log(LogLevel::Info) << "\tGenerating faction rule groups";
 
-	FactionRuleGroups factionRuleGroups(std::filesystem::path("Configurables") / "rule_groups.txt");
+	factionRuleGroups = std::make_unique<FactionRuleGroups>(std::filesystem::path("Configurables") / "rule_groups.txt");
 
 	for (const auto& [ideology, rules]: importedRules)
 	{
@@ -69,12 +69,10 @@ void HoI4::FactionRules::generateRuleGroups(const std::set<std::string>& majorId
 		{
 			for (const auto& rule: rules)
 			{
-				factionRuleGroups.removeRule(rule->getId());
+				factionRuleGroups->removeRule(rule->getId());
 			}
 		}
 	}
-
-	ideologicalRuleGroups = factionRuleGroups.getRuleGroups();
 }
 
 
