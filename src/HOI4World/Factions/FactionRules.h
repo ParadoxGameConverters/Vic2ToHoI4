@@ -26,7 +26,7 @@ class FactionRules: commonItems::parser
 	[[nodiscard]] const auto& getIdeologicalRuleGroups() const { return factionRuleGroups->getRuleGroups(); }
 
   private:
-	std::map<std::string, std::vector<std::shared_ptr<FactionRule>>> importedRules;
+	std::map<std::string, std::vector<FactionRule>> importedRules;
 	std::vector<FactionRule> ideologicalRules;
 	std::unique_ptr<FactionRuleGroups> factionRuleGroups;
 };

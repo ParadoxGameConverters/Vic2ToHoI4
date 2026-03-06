@@ -11,6 +11,5 @@ TEST(HoI4World_Factions_FactionRules, FactionRulesCanBeImported)
 	const auto& ruleTwo = HoI4::FactionRule("faction_rule_two", emptyStream);
 
 	EXPECT_THAT(rules.getImportedRules(),
-		 testing::UnorderedElementsAre(
-			  testing::Pair("ideology", testing::ElementsAre(testing::Pointee(ruleOne), testing::Pointee(ruleTwo)))));
+		 testing::UnorderedElementsAre(testing::Pair("ideology", testing::ElementsAre(ruleOne, ruleTwo))));
 }

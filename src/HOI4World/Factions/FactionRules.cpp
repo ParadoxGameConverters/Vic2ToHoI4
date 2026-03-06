@@ -14,7 +14,7 @@ HoI4::FactionRules::FactionRules()
 		const FactionRules& ideologyRules(theStream);
 		for (const auto& rule: ideologyRules.ideologicalRules)
 		{
-			importedRules[ideology].push_back(std::make_shared<FactionRule>(rule));
+			importedRules[ideology].push_back(rule);
 		}
 	});
 	parseFile(std::filesystem::path("Configurables") / "ideological_faction_rules.txt");
@@ -40,8 +40,8 @@ void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorId
 		{
 			for (auto& rule: rules)
 			{
-				rule->updateRule(ideology, majorIdeologies);
-				ideologicalRules.push_back(*rule);
+				rule.updateRule(ideology, majorIdeologies);
+				ideologicalRules.push_back(rule);
 			}
 		}
 	}
@@ -60,7 +60,7 @@ void HoI4::FactionRules::generateRuleGroups(const std::set<std::string>& majorId
 		{
 			for (const auto& rule: rules)
 			{
-				factionRuleGroups->removeRule(rule->getId());
+				factionRuleGroups->removeRule(rule.getId());
 			}
 		}
 	}
