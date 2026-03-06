@@ -1,6 +1,7 @@
 #include "src/HOI4World/Factions/FactionRuleGroups.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
+#include <ranges>
 
 
 
@@ -28,7 +29,7 @@ HoI4::FactionRuleGroups::FactionRuleGroups(std::istream& theStream)
 
 void HoI4::FactionRuleGroups::removeRule(const std::string& ruleId)
 {
-	for (auto& [groupId, rules]: ruleGroups)
+	for (auto& rules: ruleGroups | std::views::values)
 	{
 		std::erase(rules, ruleId);
 	}
