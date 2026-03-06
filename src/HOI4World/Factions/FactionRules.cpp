@@ -46,9 +46,9 @@ void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorId
 
 	for (const auto& [ideology, rules]: importedRules)
 	{
-		for (const auto& rule: rules)
+		if (majorIdeologies.contains(ideology))
 		{
-			if (majorIdeologies.contains(ideology))
+			for (const auto& rule: rules)
 			{
 				ideologicalRules.push_back(*rule);
 			}
