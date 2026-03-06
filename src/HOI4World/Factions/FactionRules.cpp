@@ -34,22 +34,13 @@ void HoI4::FactionRules::updateFactionRules(const std::set<std::string>& majorId
 {
 	Log(LogLevel::Info) << "\tUpdating ideological faction rules";
 
-	updateCallToWarRuleFactionLeaderOnly(majorIdeologies);
-	updateGuaranteeThreatReduction15(majorIdeologies);
-	updateChangeLeaderRuleNever(majorIdeologies);
-	updateDismissalRuleWorldTension(majorIdeologies);
-	updateJoiningRulesDifferentIdeology(majorIdeologies);
-	updateJoiningRuleHasNoOffensiveWar(majorIdeologies);
-	updatePeaceRulePuppetingFocus(majorIdeologies);
-	updatePeaceRuleLiberationFocus(majorIdeologies);
-	updatePeaceRuleConquestFocus(majorIdeologies);
-
-	for (const auto& [ideology, rules]: importedRules)
+	for (auto& [ideology, rules]: importedRules)
 	{
 		if (majorIdeologies.contains(ideology))
 		{
-			for (const auto& rule: rules)
+			for (auto& rule: rules)
 			{
+				updateRule(*rule, ideology, majorIdeologies);
 				ideologicalRules.push_back(*rule);
 			}
 		}
@@ -76,26 +67,11 @@ void HoI4::FactionRules::generateRuleGroups(const std::set<std::string>& majorId
 }
 
 
-std::shared_ptr<HoI4::FactionRule> HoI4::FactionRules::getRule(const std::string& ruleId)
+void HoI4::FactionRules::updateRule(FactionRule& rule,
+	 const std::string& ideology,
+	 const std::set<std::string>& majorIdeologies)
 {
-	for (auto& rules: importedRules | std::views::values)
-	{
-		for (auto& rule: rules)
-		{
-			if (rule->getId() == ruleId)
-			{
-				return rule;
-			}
-		}
-	}
-
-	return nullptr;
-}
-
-
-void HoI4::FactionRules::updateCallToWarRuleFactionLeaderOnly(const std::set<std::string>& majorIdeologies)
-{
-	if (auto rule = getRule("call_to_war_rule_faction_leader_only"); rule)
+	if (rule.getId() == "call_to_war_rule_faction_leader_only")
 	{
 		std::string aiWillDoStr = "= {\n";
 		aiWillDoStr += "\t\tbase = 0\n";
@@ -108,14 +84,10 @@ void HoI4::FactionRules::updateCallToWarRuleFactionLeaderOnly(const std::set<std
 		}
 		aiWillDoStr += "\t\t}\n";
 		aiWillDoStr += "\t}\n";
-		rule->setAiWillDo(aiWillDoStr);
+		rule.setAiWillDo(aiWillDoStr);
 	}
-}
 
-
-void HoI4::FactionRules::updateGuaranteeThreatReduction15(const std::set<std::string>& majorIdeologies)
-{
-	if (auto rule = getRule("guarantee_threat_reduction_15"); rule)
+	if (rule.getId() == "guarantee_threat_reduction_15")
 	{
 		std::string aiWillDoStr = "= {\n";
 		aiWillDoStr += "\t\tbase = 0\n";
@@ -127,14 +99,10 @@ void HoI4::FactionRules::updateGuaranteeThreatReduction15(const std::set<std::st
 		}
 		aiWillDoStr += "\t\t}\n";
 		aiWillDoStr += "\t}\n";
-		rule->setAiWillDo(aiWillDoStr);
+		rule.setAiWillDo(aiWillDoStr);
 	}
-}
 
-
-void HoI4::FactionRules::updateChangeLeaderRuleNever(const std::set<std::string>& majorIdeologies)
-{
-	if (auto rule = getRule("change_leader_rule_never"); rule)
+	if (rule.getId() == "change_leader_rule_never")
 	{
 		std::string aiWillDoStr = "= {\n";
 		aiWillDoStr += "\t\tbase = 0\n";
@@ -147,14 +115,10 @@ void HoI4::FactionRules::updateChangeLeaderRuleNever(const std::set<std::string>
 		aiWillDoStr += "\t\t\tis_faction_leader = yes \n";
 		aiWillDoStr += "\t\t}\n";
 		aiWillDoStr += "\t}\n";
-		rule->setAiWillDo(aiWillDoStr);
+		rule.setAiWillDo(aiWillDoStr);
 	}
-}
 
-
-void HoI4::FactionRules::updateDismissalRuleWorldTension(const std::set<std::string>& majorIdeologies)
-{
-	if (auto rule = getRule("dismissal_rule_world_tension"); rule)
+	if (rule.getId() == "dismissal_rule_world_tension")
 	{
 		std::string aiWillDoStr = "= {\n";
 		aiWillDoStr += "\t\tbase = 0\n";
@@ -167,13 +131,9 @@ void HoI4::FactionRules::updateDismissalRuleWorldTension(const std::set<std::str
 		aiWillDoStr += "\t\t\tis_faction_leader = yes \n";
 		aiWillDoStr += "\t\t}\n";
 		aiWillDoStr += "\t}\n";
-		rule->setAiWillDo(aiWillDoStr);
+		rule.setAiWillDo(aiWillDoStr);
 	}
-}
 
-
-void HoI4::FactionRules::updateJoiningRulesDifferentIdeology(const std::set<std::string>& majorIdeologies)
-{
 	const std::map<std::string, std::string>& ideologyAdjMap = {{"democratic", "democratic"},
 		 {"communism", "communist"},
 		 {"fascism", "fasist"},
@@ -183,38 +143,31 @@ void HoI4::FactionRules::updateJoiningRulesDifferentIdeology(const std::set<std:
 
 	const std::vector<std::string>& evilIdeologiesSorted = {"fascism", "communism", "radical", "absolutist"};
 
-	for (const auto& ideology: majorIdeologies)
+	const auto& ideologyAdj = ideologyAdjMap.at(ideology);
+	if (rule.getId() == "joining_rule_non_" + ideologyAdj)
 	{
-		const auto& ideologyAdj = ideologyAdjMap.at(ideology);
-		if (auto rule = getRule("joining_rule_non_" + ideologyAdj); rule)
+		std::string aiWillDoStr = "= {\n";
+		aiWillDoStr += "\t\tbase = 0\n";
+		aiWillDoStr += "\t\tmodifier = {\n";
+		aiWillDoStr += "\t\t\tadd = 1\n";
+		aiWillDoStr += "\t\t\tNOT = { has_government = " + ideology + " }\n";
+		aiWillDoStr += "\t\t}\n";
+		for (const auto& evilIdeology: evilIdeologiesSorted)
 		{
-			std::string aiWillDoStr = "= {\n";
-			aiWillDoStr += "\t\tbase = 0\n";
-			aiWillDoStr += "\t\tmodifier = {\n";
-			aiWillDoStr += "\t\t\tadd = 1\n";
-			aiWillDoStr += "\t\t\tNOT = { has_government = " + ideology + " }\n";
-			aiWillDoStr += "\t\t}\n";
-			for (const auto& evilIdeology: evilIdeologiesSorted)
+			if (ideology != evilIdeology && majorIdeologies.contains(evilIdeology))
 			{
-				if (ideology != evilIdeology && majorIdeologies.contains(evilIdeology))
-				{
-					aiWillDoStr += "\t\tmodifier = {\n";
-					aiWillDoStr += "\t\t\tadd = 1\n";
-					aiWillDoStr += "\t\t\thas_government = " + evilIdeology + "\n";
-					aiWillDoStr += "\t\t}\n";
-					break;
-				}
+				aiWillDoStr += "\t\tmodifier = {\n";
+				aiWillDoStr += "\t\t\tadd = 1\n";
+				aiWillDoStr += "\t\t\thas_government = " + evilIdeology + "\n";
+				aiWillDoStr += "\t\t}\n";
+				break;
 			}
-			aiWillDoStr += "\t}\n";
-			rule->setAiWillDo(aiWillDoStr);
 		}
+		aiWillDoStr += "\t}\n";
+		rule.setAiWillDo(aiWillDoStr);
 	}
-}
 
-
-void HoI4::FactionRules::updateJoiningRuleHasNoOffensiveWar(const std::set<std::string>& majorIdeologies)
-{
-	if (auto rule = getRule("joining_rule_has_no_offensive_war"); rule)
+	if (rule.getId() == "joining_rule_has_no_offensive_war")
 	{
 		std::string aiWillDoStr = "= {\n";
 		aiWillDoStr += "\t\tbase = 0\n";
@@ -229,14 +182,10 @@ void HoI4::FactionRules::updateJoiningRuleHasNoOffensiveWar(const std::set<std::
 		aiWillDoStr += "\t\t\t}\n";
 		aiWillDoStr += "\t\t}\n";
 		aiWillDoStr += "\t}\n";
-		rule->setAiWillDo(aiWillDoStr);
+		rule.setAiWillDo(aiWillDoStr);
 	}
-}
 
-
-void HoI4::FactionRules::updatePeaceRulePuppetingFocus(const std::set<std::string>& majorIdeologies)
-{
-	if (auto rule = getRule("faction_peace_rule_puppeting_focus"); rule)
+	if (rule.getId() == "faction_peace_rule_puppeting_focus")
 	{
 		std::string aiWillDoStr = "= {\n";
 		aiWillDoStr += "\t\tbase = 0\n";
@@ -248,14 +197,10 @@ void HoI4::FactionRules::updatePeaceRulePuppetingFocus(const std::set<std::strin
 			aiWillDoStr += "\t\t}\n";
 		}
 		aiWillDoStr += "\t}\n";
-		rule->setAiWillDo(aiWillDoStr);
+		rule.setAiWillDo(aiWillDoStr);
 	}
-}
 
-
-void HoI4::FactionRules::updatePeaceRuleLiberationFocus(const std::set<std::string>& majorIdeologies)
-{
-	if (auto rule = getRule("faction_peace_rule_liberation_focus"); rule)
+	if (rule.getId() == "faction_peace_rule_liberation_focus")
 	{
 		std::string aiWillDoStr = "= {\n";
 		aiWillDoStr += "\t\tbase = 0\n";
@@ -267,14 +212,10 @@ void HoI4::FactionRules::updatePeaceRuleLiberationFocus(const std::set<std::stri
 			aiWillDoStr += "\t\t}\n";
 		}
 		aiWillDoStr += "\t}\n";
-		rule->setAiWillDo(aiWillDoStr);
+		rule.setAiWillDo(aiWillDoStr);
 	}
-}
 
-
-void HoI4::FactionRules::updatePeaceRuleConquestFocus(const std::set<std::string>& majorIdeologies)
-{
-	if (auto rule = getRule("faction_peace_rule_conquest_focus"); rule)
+	if (rule.getId() == "faction_peace_rule_conquest_focus")
 	{
 		std::string aiWillDoStr = "= {\n";
 		aiWillDoStr += "\t\tbase = 0\n";
@@ -286,6 +227,6 @@ void HoI4::FactionRules::updatePeaceRuleConquestFocus(const std::set<std::string
 			aiWillDoStr += "\t\t}\n";
 		}
 		aiWillDoStr += "\t}\n";
-		rule->setAiWillDo(aiWillDoStr);
+		rule.setAiWillDo(aiWillDoStr);
 	}
 }

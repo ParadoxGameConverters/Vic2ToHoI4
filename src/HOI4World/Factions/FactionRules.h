@@ -21,17 +21,7 @@ class FactionRules: commonItems::parser
 	void updateFactionRules(const std::set<std::string>& majorIdeologies);
 	void generateRuleGroups(const std::set<std::string>& majorIdeologies);
 
-	void updateCallToWarRuleFactionLeaderOnly(const std::set<std::string>& majorIdeologies);
-	void updateGuaranteeThreatReduction15(const std::set<std::string>& majorIdeologies);
-	void updateChangeLeaderRuleNever(const std::set<std::string>& majorIdeologies);
-	void updateDismissalRuleWorldTension(const std::set<std::string>& majorIdeologies);
-	void updateJoiningRulesDifferentIdeology(const std::set<std::string>& majorIdeologies);
-	void updateJoiningRuleHasNoOffensiveWar(const std::set<std::string>& majorIdeologies);
-	void updatePeaceRulePuppetingFocus(const std::set<std::string>& majorIdeologies);
-	void updatePeaceRuleLiberationFocus(const std::set<std::string>& majorIdeologies);
-	void updatePeaceRuleConquestFocus(const std::set<std::string>& majorIdeologies);
-
-	std::shared_ptr<HoI4::FactionRule> getRule(const std::string& ruleId);
+	void updateRule(FactionRule& rule, const std::string& ideology, const std::set<std::string>& majorIdeologies);
 
 	[[nodiscard]] const auto& getImportedRules() const { return importedRules; }
 	[[nodiscard]] const auto& getIdeologicalRules() const { return ideologicalRules; }
