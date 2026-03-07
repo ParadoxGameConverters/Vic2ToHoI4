@@ -13,7 +13,8 @@ namespace HoI4
 class FactionRuleGroups: commonItems::parser
 {
   public:
-	FactionRuleGroups(const std::filesystem::path& hoi4Path);
+	FactionRuleGroups() = default;
+	FactionRuleGroups(const std::filesystem::path& filePath);
 	FactionRuleGroups(std::istream& theStream);
 
 	[[nodiscard]] const auto& getRuleGroups() const { return ruleGroups; }

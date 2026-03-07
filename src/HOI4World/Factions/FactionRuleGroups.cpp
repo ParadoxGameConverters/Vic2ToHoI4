@@ -1,10 +1,11 @@
 #include "src/HOI4World/Factions/FactionRuleGroups.h"
 #include "external/common_items/CommonRegexes.h"
 #include "external/common_items/ParserHelpers.h"
+#include <ranges>
 
 
 
-HoI4::FactionRuleGroups::FactionRuleGroups(const std::filesystem::path& hoi4Path)
+HoI4::FactionRuleGroups::FactionRuleGroups(const std::filesystem::path& filePath)
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& ruleGroupId, std::istream& theStream) {
 		const FactionRuleGroups& ruleGroup(theStream);
@@ -13,7 +14,7 @@ HoI4::FactionRuleGroups::FactionRuleGroups(const std::filesystem::path& hoi4Path
 			ruleGroups[ruleGroupId].push_back(rule);
 		}
 	});
-	parseFile(hoi4Path / "common/factions/rules/groups/rule_groups.txt");
+	parseFile(filePath);
 }
 
 
@@ -28,7 +29,7 @@ HoI4::FactionRuleGroups::FactionRuleGroups(std::istream& theStream)
 
 void HoI4::FactionRuleGroups::removeRule(const std::string& ruleId)
 {
-	for (auto& [groupId, rules]: ruleGroups)
+	for (auto& rules: ruleGroups | std::views::values)
 	{
 		std::erase(rules, ruleId);
 	}

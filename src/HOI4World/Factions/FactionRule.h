@@ -16,6 +16,8 @@ class FactionRule: commonItems::parser
   public:
 	FactionRule(const std::string& id, std::istream& theStream);
 
+	void updateRule(const std::string& ideology, const std::set<std::string>& majorIdeologies);
+
 	[[nodiscard]] const auto& getId() const { return id; }
 	[[nodiscard]] const auto& getType() const { return type; }
 	[[nodiscard]] const auto& getVisible() const { return visible; }
