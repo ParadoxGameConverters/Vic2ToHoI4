@@ -39,11 +39,31 @@ void HoI4::Buildings::importDefaultBuildings(Maps::MapData& theMapData, const Co
 }
 
 
+std::vector<std::string> HoI4::Buildings::splitLine(std::string_view line, std::string_view delim = ";") const
+{
+	std::vector<std::string> output;
+	size_t first = 0;
+
+	while (first < line.size())
+	{
+		const auto second = line.find_first_of(delim, first);
+
+		if (first != second)
+		{
+			output.emplace_back(line.substr(first, second - first));
+		}
+
+		if (second == std::string_view::npos)
+			break;
+		first = second + 1;
+	}
+	return output;
+}
+
+
 void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMapData)
 {
-	const std::regex pattern("(.+);(.+);(.+);(.+);(.+);(.+);(.+)");
-	std::smatch matches;
-	if (regex_match(line, matches, pattern))
+	if (const auto& matches = splitLine(line); matches.size() == 7)
 	{
 		if (matches[2] == "arms_factory")
 		{
@@ -101,17 +121,17 @@ void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMap
 }
 
 
-void HoI4::Buildings::importDefaultBuilding(const std::smatch& matches,
+void HoI4::Buildings::importDefaultBuilding(const std::vector<std::string>& matches,
 	 defaultPositions& positions,
 	 Maps::MapData& theMapData) const
 {
 	BuildingPosition position;
-	position.xCoordinate = stof(matches[3].str());
-	position.yCoordinate = stof(matches[4].str());
-	position.zCoordinate = stof(matches[5].str());
-	position.rotation = stof(matches[6].str());
+	position.xCoordinate = stof(matches[3]);
+	position.yCoordinate = stof(matches[4]);
+	position.zCoordinate = stof(matches[5]);
+	position.rotation = stof(matches[6]);
 
-	auto connectingSeaProvince = stoi(matches[7].str());
+	auto connectingSeaProvince = stoi(matches[7]);
 
 	if (auto province = theMapData.GetProvinceNumber(
 			  {static_cast<int>(position.xCoordinate), static_cast<int>(position.zCoordinate)});
