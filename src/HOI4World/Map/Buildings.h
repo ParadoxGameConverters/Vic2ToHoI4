@@ -36,7 +36,6 @@ class Buildings
 
   private:
 	void importDefaultBuildings(Maps::MapData& theMapData, const Configuration& theConfiguration);
-	std::vector<std::string> splitLine(std::string_view line, std::string_view delim) const;
 	void processLine(const std::string& line, Maps::MapData& theMapData);
 	void importDefaultBuilding(const std::vector<std::string>& matches,
 		 defaultPositions& positions,
