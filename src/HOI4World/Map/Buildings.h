@@ -37,7 +37,9 @@ class Buildings
   private:
 	void importDefaultBuildings(Maps::MapData& theMapData, const Configuration& theConfiguration);
 	void processLine(const std::string& line, Maps::MapData& theMapData);
-	void importDefaultBuilding(const std::smatch& matches, defaultPositions& positions, Maps::MapData& theMapData) const;
+	void importDefaultBuilding(const std::vector<std::string>& matches,
+		 defaultPositions& positions,
+		 Maps::MapData& theMapData) const;
 
 	void placeBuildings(const States& theStates,
 		 const CoastalProvinces& theCoastalProvinces,

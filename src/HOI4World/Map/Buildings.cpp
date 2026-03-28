@@ -7,6 +7,7 @@
 #include "src/HOI4World/States/HoI4States.h"
 #include "src/Maps/MapData.h"
 #include <fstream>
+#include <ranges>
 
 
 
@@ -41,9 +42,14 @@ void HoI4::Buildings::importDefaultBuildings(Maps::MapData& theMapData, const Co
 
 void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMapData)
 {
-	const std::regex pattern("(.+);(.+);(.+);(.+);(.+);(.+);(.+)");
-	std::smatch matches;
-	if (regex_match(line, matches, pattern))
+	std::vector<std::string> matches;
+
+	for (const auto& part: std::views::split(line, ';'))
+	{
+		matches.emplace_back(part.begin(), part.end());
+	}
+
+	if (matches.size() == 7)
 	{
 		if (matches[2] == "arms_factory")
 		{
@@ -101,17 +107,17 @@ void HoI4::Buildings::processLine(const std::string& line, Maps::MapData& theMap
 }
 
 
-void HoI4::Buildings::importDefaultBuilding(const std::smatch& matches,
+void HoI4::Buildings::importDefaultBuilding(const std::vector<std::string>& matches,
 	 defaultPositions& positions,
 	 Maps::MapData& theMapData) const
 {
 	BuildingPosition position;
-	position.xCoordinate = stof(matches[3].str());
-	position.yCoordinate = stof(matches[4].str());
-	position.zCoordinate = stof(matches[5].str());
-	position.rotation = stof(matches[6].str());
+	position.xCoordinate = stof(matches[3]);
+	position.yCoordinate = stof(matches[4]);
+	position.zCoordinate = stof(matches[5]);
+	position.rotation = stof(matches[6]);
 
-	auto connectingSeaProvince = stoi(matches[7].str());
+	auto connectingSeaProvince = stoi(matches[7]);
 
 	if (auto province = theMapData.GetProvinceNumber(
 			  {static_cast<int>(position.xCoordinate), static_cast<int>(position.zCoordinate)});

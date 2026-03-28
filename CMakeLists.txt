@@ -1,13 +1,22 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(Vic2ToHoI4)
+add_definitions(-DUNICODE -D_UNICODE)
 set(DATA_FILE_DIR ${CMAKE_SOURCE_DIR}/data)
 set(FRONTER_DATA_FILE_DIR ${CMAKE_SOURCE_DIR}/external/Fronter/Fronter/Resources)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR})
 set(FRONTER_SOURCE_DIR ${CMAKE_SOURCE_DIR}/external/Fronter/Fronter/Source)
-set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux)
-set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-Linux/Vic2ToHoI4)
-set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/Release-LinuxTests)
+set(BASE_OUTPUT_DIR ${CMAKE_SOURCE_DIR}/build)
+
+if (WIN32)
+    set(TARGET_PLATFORM Win)
+else()
+    set(TARGET_PLATFORM Linux)
+endif()
+
+set(FRONTER_OUTPUT_DIRECTORY ${BASE_OUTPUT_DIR}/Release-${TARGET_PLATFORM})
+set(CONVERTER_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}/Vic2ToHoI4)
+set(TEST_OUTPUT_DIRECTORY ${BASE_OUTPUT_DIR}/Release-${TARGET_PLATFORM}Tests)
 set(CMAKE_CXX_STANDARD 23)
 
 #if (DEFINED ENV{COVERAGE})
@@ -338,7 +347,7 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_item
 set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Date.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/GameVersion.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/iconvlite.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/LinuxUtils.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/${TARGET_PLATFORM}Utils.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Log.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModFilesystem.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModLoader.cpp")
@@ -492,6 +501,13 @@ add_executable(
 	Vic2ToHoi4Converter
 	${MAIN_SOURCE}
 )
+if (WIN32)
+	target_link_options(Vic2ToHoi4Converter PRIVATE
+		-static
+		-static-libgcc
+		-static-libstdc++
+	)
+endif()
 set_target_properties( Vic2ToHoi4Converter
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
@@ -578,57 +594,61 @@ file(COPY "${DATA_FILE_DIR}/blank_mod/" DESTINATION "${CONVERTER_OUTPUT_DIRECTOR
 file(COPY "${DATA_FILE_DIR}/configurables/AdjustedFocusBranches/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/AdjustedFocusBranches/")
 file(COPY "${DATA_FILE_DIR}/configurables/IdeologicalIdeas/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas/")
 file(COPY "${DATA_FILE_DIR}/flags" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
-add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > build/Release-Linux/commit_id.txt)
+add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > build/Release-${TARGET_PLATFORM}/commit_id.txt)
 
 #### Fronter ####
 
-file(GLOB F_MAIN_SOURCES "${FRONTER_SOURCE_DIR}/*.cpp")
-file(GLOB F_CONFIGURATION_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/*.cpp")
-file(GLOB F_CONFIGURATION_OPTIONS_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/Options/*.cpp")
-file(GLOB F_FRAMES_SOURCES "${FRONTER_SOURCE_DIR}/Frames/*.cpp")
-file(GLOB F_FRAMES_TABS_SOURCES "${FRONTER_SOURCE_DIR}/Frames/Tabs/*.cpp")
-file(GLOB F_UTILS_SOURCES "${FRONTER_SOURCE_DIR}/Utils/*.cpp")
-file(GLOB F_UTILS_LOCALIZATION_SOURCES "${FRONTER_SOURCE_DIR}/Utils/Localization/*.cpp")
-file(GLOB F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/*.cpp")
-list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/WinConverterLauncher.cpp")
-file(GLOB F_LOGWATCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/LogWatcher/*.cpp")
-file(GLOB F_MODCOPIER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ModCopier/*.cpp")
-file(GLOB F_UPDATECHECKER_SOURCES "${FRONTER_SOURCE_DIR}/UpdateChecker/*.cpp")
-file(GLOB F_SQLITE_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/src/*.cpp")
-file(GLOB F_SQLITE3_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/sqlite3/*.c")
+option(BUILD_FRONTEND "Build GUI frontend" ON)
 
-add_executable(ConverterFrontend
-	${F_MAIN_SOURCES}
-	${F_CONFIGURATION_SOURCES}
-	${F_CONFIGURATION_OPTIONS_SOURCES}
-	${F_FRAMES_SOURCES}
-	${F_FRAMES_TABS_SOURCES}
-	${F_UTILS_SOURCES}
-	${F_UTILS_LOCALIZATION_SOURCES}
-	${F_CONVERTERLAUNCHER_SOURCES}
-	${F_LOGWATCHER_SOURCES}
-	${F_MODCOPIER_SOURCES}
-	${F_UPDATECHECKER_SOURCES}
-	${F_SQLITE_SOURCES}
-	${F_SQLITE3_SOURCES}
-)
+if (BUILD_FRONTEND)
+	file(GLOB F_MAIN_SOURCES "${FRONTER_SOURCE_DIR}/*.cpp")
+	file(GLOB F_CONFIGURATION_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/*.cpp")
+	file(GLOB F_CONFIGURATION_OPTIONS_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/Options/*.cpp")
+	file(GLOB F_FRAMES_SOURCES "${FRONTER_SOURCE_DIR}/Frames/*.cpp")
+	file(GLOB F_FRAMES_TABS_SOURCES "${FRONTER_SOURCE_DIR}/Frames/Tabs/*.cpp")
+	file(GLOB F_UTILS_SOURCES "${FRONTER_SOURCE_DIR}/Utils/*.cpp")
+	file(GLOB F_UTILS_LOCALIZATION_SOURCES "${FRONTER_SOURCE_DIR}/Utils/Localization/*.cpp")
+	file(GLOB F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/*.cpp")
+	list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/WinConverterLauncher.cpp")
+	file(GLOB F_LOGWATCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/LogWatcher/*.cpp")
+	file(GLOB F_MODCOPIER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ModCopier/*.cpp")
+	file(GLOB F_UPDATECHECKER_SOURCES "${FRONTER_SOURCE_DIR}/UpdateChecker/*.cpp")
+	file(GLOB F_SQLITE_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/src/*.cpp")
+	file(GLOB F_SQLITE3_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/sqlite3/*.c")
 
-find_package(wxWidgets REQUIRED COMPONENTS net core base)
-include(${wxWidgets_USE_FILE})
-set_target_properties(ConverterFrontend
-    PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
-)
-target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} CommonItems)
+	add_executable(ConverterFrontend
+		${F_MAIN_SOURCES}
+		${F_CONFIGURATION_SOURCES}
+		${F_CONFIGURATION_OPTIONS_SOURCES}
+		${F_FRAMES_SOURCES}
+		${F_FRAMES_TABS_SOURCES}
+		${F_UTILS_SOURCES}
+		${F_UTILS_LOCALIZATION_SOURCES}
+		${F_CONVERTERLAUNCHER_SOURCES}
+		${F_LOGWATCHER_SOURCES}
+		${F_MODCOPIER_SOURCES}
+		${F_UPDATECHECKER_SOURCES}
+		${F_SQLITE_SOURCES}
+		${F_SQLITE3_SOURCES}
+	)
 
-add_custom_command(TARGET ConverterFrontend
-	COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" && 
-	cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-	cp -r "external/Fronter/Fronter/Resources/*yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-	cp external/Fronter/Fronter/Resources/converter.ico ${FRONTER_OUTPUT_DIRECTORY} &&
-	cp external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-)
+	find_package(wxWidgets REQUIRED COMPONENTS net core base)
+	include(${wxWidgets_USE_FILE})
+	set_target_properties(ConverterFrontend
+		PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
+	)
+	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} CommonItems)
+
+	add_custom_command(TARGET ConverterFrontend
+		COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" && 
+		cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+		cp -r "external/Fronter/Fronter/Resources/*yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+		cp external/Fronter/Fronter/Resources/converter.ico ${FRONTER_OUTPUT_DIRECTORY} &&
+		cp external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	)
+endif()
 
 #### Tests ####
 
@@ -1149,7 +1169,12 @@ add_custom_target(init
 # Testing
 enable_testing()
 
-add_test(Vic2ToHoi4ConverterTests ${CMAKE_CURRENT_BINARY_DIR}/Release-LinuxTests/Vic2ToHoi4ConverterTests)
+add_test(
+    NAME Vic2ToHoi4ConverterTests
+    COMMAND
+        $<$<BOOL:${WIN32}>:wine>
+        $<TARGET_FILE:Vic2ToHoi4ConverterTests>
+)
 
 
 #### Clang-tidy ####

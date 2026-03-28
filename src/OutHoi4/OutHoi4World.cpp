@@ -683,7 +683,26 @@ void HoI4::copyAdjustedFocusFiles(const std::filesystem::path& outputName,
 {
 	for (const auto& branch: addedBranches)
 	{
-		std::filesystem::copy(branch->getPath(), "output" / outputName, std::filesystem::copy_options::recursive);
+		auto src = branch->getPath();
+
+		for (const auto& entry: std::filesystem::recursive_directory_iterator(src))
+		{
+			auto relative = std::filesystem::relative(entry.path(), src);
+			auto target = std::filesystem::path("output") / outputName / relative;
+
+			if (entry.is_directory())
+			{
+				std::filesystem::create_directories(target);
+			}
+			else if (entry.is_regular_file())
+			{
+				if (!std::filesystem::exists(target))
+				{
+					std::filesystem::create_directories(target.parent_path());
+					std::filesystem::copy_file(entry.path(), target);
+				}
+			}
+		}
 	}
 }
 
