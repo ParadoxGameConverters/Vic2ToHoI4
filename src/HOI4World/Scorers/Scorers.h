@@ -4,6 +4,7 @@
 
 
 #include "src/HOI4World/Scorers/Scorer.h"
+#include <map>
 #include <set>
 #include <vector>
 

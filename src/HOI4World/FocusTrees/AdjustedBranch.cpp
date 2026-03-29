@@ -1,4 +1,5 @@
 #include "AdjustedBranch.h"
+#include "external/common_items/Log.h"
 #include "src/HOI4World/Characters/CharacterFactory.h"
 #include "src/HOI4World/Characters/CharactersFactory.h"
 #include "src/HOI4World/FocusTrees/FocusTreeFactory.h"

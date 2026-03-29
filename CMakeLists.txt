@@ -1,52 +1,180 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.25)
+set(VERBOSE true)
 
 project(Vic2ToHoI4)
-add_definitions(-DUNICODE -D_UNICODE)
+if (RUN_CLANG_TIDY)
+	set(BUILD_TYPE "Clang-tidy")
+else (RUN_CLANG_TIDY)
+	set(BUILD_TYPE ${CMAKE_BUILD_TYPE})
+endif (RUN_CLANG_TIDY)
+
 set(DATA_FILE_DIR ${CMAKE_SOURCE_DIR}/data)
 set(FRONTER_DATA_FILE_DIR ${CMAKE_SOURCE_DIR}/external/Fronter/Fronter/Resources)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR})
-set(FRONTER_SOURCE_DIR ${CMAKE_SOURCE_DIR}/external/Fronter/Fronter/Source)
-set(BASE_OUTPUT_DIR ${CMAKE_SOURCE_DIR}/build)
+set(FRONTER_SOURCE_DIR ${PROJECT_SOURCE_DIR}/external/Fronter/Fronter/Source)
+set(FRONTER_COMMONS_SOURCE_DIR ${PROJECT_SOURCE_DIR}/external/Fronter/commonItems)
+set(FRONTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/${BUILD_TYPE}-${PLATFORM})
+set(CONVERTER_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/${BUILD_TYPE}-${PLATFORM}/Vic2ToHoI4)
+set(TEST_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/test/${BUILD_TYPE}-${PLATFORM})
 
-if (WIN32)
-    set(TARGET_PLATFORM Win)
-else()
-    set(TARGET_PLATFORM Linux)
-endif()
-
-set(FRONTER_OUTPUT_DIRECTORY ${BASE_OUTPUT_DIR}/Release-${TARGET_PLATFORM})
-set(CONVERTER_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}/Vic2ToHoI4)
-set(TEST_OUTPUT_DIRECTORY ${BASE_OUTPUT_DIR}/Release-${TARGET_PLATFORM}Tests)
 set(CMAKE_CXX_STANDARD 23)
+set (UNICODE_DEFAULT OFF)
 
-#if (DEFINED ENV{COVERAGE})
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
-	set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
-#elseif (DEFINED ENV{COVERAGE})
-#	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall")
-#endif (DEFINED ENV{COVERAGE})
+if (PLATFORM STREQUAL "Windows")
+	ADD_DEFINITIONS(-DUNICODE -D_UNICODE -DWINDOWS)
+elseif (PLATFORM STREQUAL "Linux")
+	if (COVERAGE STREQUAL true)
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
+		set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
+	else (COVERAGE STREQUAL true)
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall")
+	endif (COVERAGE STREQUAL true)
+endif (PLATFORM STREQUAL "Windows")
 
-add_compile_options("-O3")
-add_compile_options(-D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXGTK__ -pthread)
-#add_compile_options("-g")
 
-find_package(CURL REQUIRED)
+#### Gtest ####
+set(GTEST_SOURCES ${GTEST_SOURCES} "external/common_items/external/googletest/googletest/src/gtest_main.cc")
+set(GTEST_SOURCES ${GTEST_SOURCES} "external/common_items/external/googletest/googletest/src/gtest-all.cc")
+set(GTEST_SOURCES ${GTEST_SOURCES} "external/common_items/external/googletest/googlemock/src/gmock-all.cc")
 
-include_directories(${PROJECT_SOURCE_DIR})
-include_directories("/usr/include/wx-3.2-unofficial")
-include_directories("/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2-unofficial")
-include_directories("external/Fronter/external/SQLiteCpp/include")
-include_directories("external/Fronter/external/SQLiteCpp/sqlite3")
-include_directories("external/Fronter/Fronter/Source")
-include_directories(external/common_items)
-include_directories(external/common_items/external/json/single_include)
-include_directories(external/common_items/external/googletest/googletest)
-include_directories(external/common_items/external/googletest/googletest/include)
-include_directories(external/common_items/external/googletest/googlemock)
-include_directories(external/common_items/external/googletest/googlemock/include)
+add_library(
+	GtestLib
+	${GTEST_SOURCES}
+  )
+
+
+#### Fronter ####
+
+if (PLATFORM STREQUAL "Windows")
+	link_directories("./external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll")
+	link_directories("./external/Fronter/external/curl/lib")
+	find_library(LIBCURL_LIB libcurl HINT "./external/Fronter/external/curl/lib" NO_DEFAULT_PATH)
+	find_library(LIBCURL_DLL_LIB libcurl.dll HINT "./external/Fronter/external/curl/lib" NO_DEFAULT_PATH)
+endif (PLATFORM STREQUAL "Windows")
+
+include_directories("./external/Fronter/external/SQLiteCpp/include")
+include_directories("./external/Fronter/external/SQLiteCpp/sqlite3")
+include_directories("./external/Fronter/external/commonItems/external/json/single_include")
+if (PLATFORM STREQUAL "Windows")
+	include_directories(${PROJECT_SOURCE_DIR}/external/Fronter/external/curl/include)
+	include_directories(${PROJECT_SOURCE_DIR}/external/Fronter/external/wxWidgets/3.2.1/include)
+	include_directories(${PROJECT_SOURCE_DIR}/external/Fronter/external/wxWidgets/3.2.1/include/msvc)
+	ADD_DEFINITIONS(-D_WINDOWS)
+	ADD_DEFINITIONS(-D__WXMSW__)
+	ADD_DEFINITIONS(-DwxMSVC_VERSION_AUTO)
+	ADD_DEFINITIONS(-DWXUSINGDLL)
+	ADD_DEFINITIONS(-DwxMSVC_VERSION_ABI_COMPAT)
+elseif (PLATFORM STREQUAL "Linux")
+	find_package(CURL REQUIRED)
+	find_package(wxWidgets REQUIRED COMPONENTS net core base)
+	include_directories("/usr/include/wx-3.2-unofficial")
+	include_directories("/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.2-unofficial")
+	include(${wxWidgets_USE_FILE})
+	add_compile_options(-D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXGTK__ -pthread)
+endif (PLATFORM STREQUAL "Windows")
+
+file(GLOB F_MAIN_SOURCES "${FRONTER_SOURCE_DIR}/*.cpp")
+file(GLOB F_CONFIGURATION_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/*.cpp")
+file(GLOB F_CONFIGURATION_OPTIONS_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/Options/*.cpp")
+file(GLOB F_FRAMES_SOURCES "${FRONTER_SOURCE_DIR}/Frames/*.cpp")
+file(GLOB F_FRAMES_TABS_SOURCES "${FRONTER_SOURCE_DIR}/Frames/Tabs/*.cpp")
+file(GLOB F_UPDATECHECKER_SOURCES "${FRONTER_SOURCE_DIR}/UpdateChecker/*.cpp")
+file(GLOB F_UTILS_SOURCES "${FRONTER_SOURCE_DIR}/Utils/*.cpp")
+file(GLOB F_UTILS_LOCALIZATION_SOURCES "${FRONTER_SOURCE_DIR}/Utils/Localization/*.cpp")
+file(GLOB F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/*.cpp")
+if (PLATFORM STREQUAL "Windows")
+	list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/LinuxConverterLauncher.cpp")
+elseif (PLATFORM STREQUAL "Linux")
+	list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/WinConverterLauncher.cpp")
+endif (PLATFORM STREQUAL "Windows")
+file(GLOB F_LOGWATCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/LogWatcher/*.cpp")
+file(GLOB F_MODCOPIER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ModCopier/*.cpp")
+file(GLOB F_SQLITE_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/src/*.cpp")
+file(GLOB F_SQLITE3_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/sqlite3/*.c")
+
+if (PLATFORM STREQUAL "Windows")
+	add_executable(ConverterFrontend WIN32
+		${F_MAIN_SOURCES}
+		${F_CONFIGURATION_SOURCES}
+		${F_CONFIGURATION_OPTIONS_SOURCES}
+		${F_FRAMES_SOURCES}
+		${F_FRAMES_TABS_SOURCES}
+		${F_UTILS_SOURCES}
+		${F_UTILS_LOCALIZATION_SOURCES}
+		${F_CONVERTERLAUNCHER_SOURCES}
+		${F_LOGWATCHER_SOURCES}
+		${F_MODCOPIER_SOURCES}
+		${F_UPDATECHECKER_SOURCES}
+		${F_SQLITE_SOURCES}
+		${F_SQLITE3_SOURCES}
+	)
+	set_target_properties(ConverterFrontend
+		PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
+	)
+elseif (PLATFORM STREQUAL "Linux")
+	add_executable(ConverterFrontend
+		${F_MAIN_SOURCES}
+		${F_CONFIGURATION_SOURCES}
+		${F_CONFIGURATION_OPTIONS_SOURCES}
+		${F_FRAMES_SOURCES}
+		${F_FRAMES_TABS_SOURCES}
+		${F_UTILS_SOURCES}
+		${F_UTILS_LOCALIZATION_SOURCES}
+		${F_CONVERTERLAUNCHER_SOURCES}
+		${F_LOGWATCHER_SOURCES}
+		${F_MODCOPIER_SOURCES}
+		${F_UPDATECHECKER_SOURCES}
+		${F_SQLITE_SOURCES}
+		${F_SQLITE3_SOURCES}
+	)
+	set_target_properties(ConverterFrontend
+		PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
+	)
+endif (PLATFORM STREQUAL "Windows")
+
+if (PLATFORM STREQUAL "Windows")
+	target_link_libraries(ConverterFrontend LINK_PUBLIC ${LIBCURL_LIB} ${LIBCURL_DLL_LIB} commonLib) 
+elseif (PLATFORM STREQUAL "Linux")
+	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} commonLib)
+endif (PLATFORM STREQUAL "Windows")
+
+if (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
+	configure_file("external/Fronter/Fronter/Resources/converter.ico" "${FRONTER_OUTPUT_DIRECTORY}/converter.ico" COPYONLY)
+	configure_file("external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt" "${FRONTER_OUTPUT_DIRECTORY}/GeneralFAQ-READ.ME.FIRST.txt" COPYONLY)
+	configure_file("external/Fronter/Fronter/Resources/libcrypto-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}/libcrypto-1_1-x64.dll" COPYONLY)
+	configure_file("external/Fronter/Fronter/Resources/libssl-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}/libssl-1_1-x64.dll" COPYONLY)
+	configure_file("external/Fronter/external/curl/bin/libcurl-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}/libcurl-x64.dll" COPYONLY)
+	if (CMAKE_BUILD_TYPE STREQUAL "Release")
+		configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32u_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+		configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32u_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	elseif (CMAKE_BUILD_TYPE STREQUAL "Debug")
+		configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32ud_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+		configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32ud_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+	endif (CMAKE_BUILD_TYPE STREQUAL "Release")
+	file(GLOB FRONTER_CONFIG "data/fronter/*")
+	file(COPY ${FRONTER_CONFIG} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
+	file(GLOB LOCALIZATIONS "external/Fronter/Fronter/Resources/*.yml")
+	file(COPY ${LOCALIZATIONS} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
+elseif (PLATFORM STREQUAL "Linux" AND NOT RUN_CLANG_TIDY)
+	add_custom_command(TARGET ConverterFrontend
+		COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+		cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+		cp -r "external/Fronter/Fronter/Resources/*yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+		cp external/Fronter/Fronter/Resources/converter.ico ${FRONTER_OUTPUT_DIRECTORY} &&
+		cp external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	)
+endif (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
+
 
 #### Converter ####
 
+include_directories(.)
+include_directories("./external/common_items")
+
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/bitmap/bitmap_image.hpp")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/BulkParser.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Color.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/CommonFunctions.h")
@@ -55,20 +183,21 @@ set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Conv
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ConverterVersion.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Date.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/GameVersion.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Localization/LocalizationBlock.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Localization/LocalizationDatabase.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Localization/LocalizationLambdas.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Log.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/Mod.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModFilesystem.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModLoader.h")
+set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModParser.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/OSCompatibilityLayer.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Parser.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ParserHelpers.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/StringUtils.h")
 set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/targa.h")
-set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModFilesystem.h")
-set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/Mod.h")
-set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModLoader.h")
-set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModParser.h")
-set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Localization/LocalizationBlock.h")
-set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Localization/LocalizationDatabase.h")
-set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Localization/LocalizationLambdas.h")
-set(PCH_SOURCES ${PCH_SOURCES} "${PROJECT_SOURCE_DIR}/external/bitmap/bitmap_image.hpp")
+
+set(MAIN_SOURCE "${PROJECT_SOURCE_DIR}/src/main.cpp")
 
 file(GLOB HOI4WORLD_SOURCES "${PROJECT_SOURCE_DIR}/src/HOI4World/*.cpp")
 set(HOI4WORLD_CHARACTERS_SOURCES ${HOI4WORLD_CHARACTERS_SOURCES} "${PROJECT_SOURCE_DIR}/src/HOI4World/Characters/AdmiralDataFactory.cpp")
@@ -335,31 +464,12 @@ set(OUTHOI4_TANK_DESIGNS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOUR
 set(OUTHOI4_TANK_DESIGNS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/TankDesigns/OutTankUpgrades.cpp")
 set(OUTHOI4_UNIT_MEDALS_SOURCES ${OUTHOI4_TANK_DESIGNS_SOURCES} "${PROJECT_SOURCE_DIR}/src/OutHoi4/UnitMedals/OutUnitMedals.cpp")
 
-file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/src/main.cpp")
+
 file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/src/Configuration.cpp")
 file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/src/Vic2toHOI4Converter.cpp")
 
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/BulkParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Color.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/CommonFunctions.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ConvenientParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ConverterVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Date.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/GameVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/iconvlite.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/${TARGET_PLATFORM}Utils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Log.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModFilesystem.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModLoader.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ModLoader/ModParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/OSCommonLayer.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/Parser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/ParserHelpers.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/StringUtils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/targa.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "${PROJECT_SOURCE_DIR}/external/common_items/external/zip/src/zip.c")
 
-add_library(CommonItems ${COMMON_SOURCES})
+add_subdirectory(external/common_items EXCLUDE_FROM_ALL)
 
 # add all vic2 sources to a list.
 
@@ -491,170 +601,128 @@ list(APPEND ALL_HOI4_FILES
 # filter globbed tests out.
 list(FILTER ALL_HOI4_FILES EXCLUDE REGEX ".*Tests\\.cpp$")
 
-add_library(Vic2ToHoi4lib
+if (RUN_CLANG_TIDY)
+	set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc)
+endif(RUN_CLANG_TIDY)
+add_library(Vic2ToHoI4lib
 	${ALL_HOI4_FILES}
 )
-target_precompile_headers(Vic2ToHoi4lib PUBLIC ${PCH_SOURCES})
-target_link_libraries(Vic2ToHoi4lib LINK_PUBLIC CommonItems)
+target_precompile_headers(Vic2ToHoI4lib PUBLIC ${PCH_SOURCES})
+if (PLATFORM STREQUAL "Windows")
+	#add more warnings here, see https://github.com/cpp-best-practices/cppbestpractices/blob/master/02-Use_the_Tools_Available.md#compilers
+	target_link_libraries(Vic2ToHoI4lib LINK_PUBLIC commonLib)
+elseif (PLATFORM STREQUAL "Linux")
+	target_link_libraries(Vic2ToHoI4lib LINK_PUBLIC commonLib)
+endif (PLATFORM  STREQUAL "Windows")
 
 add_executable(
-	Vic2ToHoi4Converter
+	Vic2ToHoI4
 	${MAIN_SOURCE}
 )
-if (WIN32)
-	target_link_options(Vic2ToHoi4Converter PRIVATE
-		-static
-		-static-libgcc
-		-static-libstdc++
-	)
-endif()
-set_target_properties( Vic2ToHoi4Converter
+set_target_properties( Vic2ToHoI4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
-target_precompile_headers(Vic2ToHoi4Converter REUSE_FROM Vic2ToHoi4lib)
-target_link_libraries(Vic2ToHoi4Converter LINK_PUBLIC Vic2ToHoi4lib)
+target_precompile_headers(Vic2ToHoI4 REUSE_FROM Vic2ToHoI4lib)
+target_link_libraries(Vic2ToHoI4 LINK_PUBLIC Vic2ToHoI4lib)
+if (PLATFORM STREQUAL "Windows")
+	#add more warnings here, see https://github.com/cpp-best-practices/cppbestpractices/blob/master/02-Use_the_Tools_Available.md#compilers
+	target_link_libraries(Vic2ToHoI4 LINK_PUBLIC commonLib)
+elseif (PLATFORM STREQUAL "Linux")
+	target_link_libraries(Vic2ToHoI4 LINK_PUBLIC commonLib)
+endif (PLATFORM  STREQUAL "Windows")
 
-configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/FAQ.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../FAQ.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/license.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../license.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/ReadMe.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../ReadMe.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/version.txt" "${CONVERTER_OUTPUT_DIRECTORY}/../version.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/arabic_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/arabic_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/CZE_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/CZE_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/ENG_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/ENG_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/EST_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/EST_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/GRE_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/GRE_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/HUN_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/HUN_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/LAT_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/LAT_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/NOR_opertive_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/NOR_opertive_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/RME_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/RME_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SIA_opertive_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/SIA_opertive_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SOV_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/SOV_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SWE_opertive_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/SWE_opertive_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/TUR_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/TUR_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Localisations/ArticleRules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/ArticleRules.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Localisations/StateCategories.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/StateCategories.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Map/adjacency_rules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Map/adjacency_rules.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Map/regions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Map/regions.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/casus_bellis_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/casus_bellis_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/converterDynamicModifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterDynamicModifiers.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Sounds/CultureToVoiceMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Scorers/generic_platonic_scorers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Scorers/generic_platonic_scorers.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/converterFocuses.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterFocuses.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/converterIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeas.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/converterIdeologies.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeologies.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/converterLeaderTraits.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterLeaderTraits.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CountryGrammar.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryGrammar.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CountryNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryNamesMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/country_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/cultureGroupToGraphics.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/cultureGroupToGraphics.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Divergences of Darkness_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Divergences of Darkness_province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/FlagsToIdeasMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/foreignInfluenceDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/foreignInfluenceDecisions.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/GovernmentMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/GovernmentMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/factions_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/factions_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/grammar.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/grammar.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Greater Flavor Mod_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Greater Flavor Mod_province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Historical Flavour Mod v1.27I_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Flavour Mod v1.27I_province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Historical Project Mod 0.4.6_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Project Mod 0.4.6_province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideologicalAdvisors.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalAdvisors.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideological_ai_peace.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideological_collections.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_collections.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideological_cost_modifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideological_faction_goals.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_faction_goals.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideological_faction_rules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_faction_rules.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideological_faction_templates.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_faction_templates.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideological_unit_medals.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_unit_medals.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalDecisions.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/IdeologyMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ImportCharacters.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ImportCharacters.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/IntelligenceAgencyLogos.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IntelligenceAgencyLogos.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/LandmarksMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/LandmarksMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/languageReplacements.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacements.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/languageReplacementsBis.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacementsBis.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/merge_nations.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/merge_nations.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/names.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/names.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/OperativeNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/OperativeNamesMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/plane_designs.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/plane_designs.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/positions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/positions.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/resources.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/resources.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/rule_groups.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/rule_groups.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/shipTypes.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/shipTypes.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/research_bonus_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/tankDesigns.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/tankDesigns.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/tech_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/The Concert of Europe_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/The Concert of Europe_province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/unit_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/unit_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/Vic2Localisations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/Vic2Localisations.csv" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/dominions.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/dominions.csv" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/unrecognized_nations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/unrecognized_nations.csv" COPYONLY)
-file(COPY "${DATA_FILE_DIR}/blank_mod/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/blankmod/")
-file(COPY "${DATA_FILE_DIR}/configurables/AdjustedFocusBranches/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/AdjustedFocusBranches/")
-file(COPY "${DATA_FILE_DIR}/configurables/IdeologicalIdeas/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas/")
-file(COPY "${DATA_FILE_DIR}/flags" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
-add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > build/Release-${TARGET_PLATFORM}/commit_id.txt)
+if (NOT RUN_CLANG_TIDY)
+	configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/FAQ.txt" "${FRONTER_OUTPUT_DIRECTORY}/FAQ.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/license.txt" "${FRONTER_OUTPUT_DIRECTORY}/license.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/version.txt" "${FRONTER_OUTPUT_DIRECTORY}/version.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/ReadMe.txt" "${FRONTER_OUTPUT_DIRECTORY}/ReadMe.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/arabic_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/arabic_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/CZE_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/CZE_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/ENG_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/ENG_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/EST_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/EST_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/GRE_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/GRE_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/HUN_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/HUN_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/LAT_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/LAT_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/NOR_opertive_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/NOR_opertive_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/RME_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/RME_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SIA_opertive_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/SIA_opertive_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SOV_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/SOV_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/SWE_opertive_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/SWE_opertive_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CodenamesOperatives/TUR_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/TUR_operative_codenames.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Localisations/ArticleRules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/ArticleRules.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Localisations/StateCategories.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/StateCategories.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Map/adjacency_rules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Map/adjacency_rules.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Map/regions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Map/regions.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/casus_bellis_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/casus_bellis_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/converterDynamicModifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterDynamicModifiers.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Sounds/CultureToVoiceMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Scorers/generic_platonic_scorers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Scorers/generic_platonic_scorers.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/converterFocuses.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterFocuses.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/converterIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeas.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/converterIdeologies.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeologies.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/converterLeaderTraits.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterLeaderTraits.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CountryGrammar.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryGrammar.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/CountryNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryNamesMappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/country_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/cultureGroupToGraphics.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/cultureGroupToGraphics.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Divergences of Darkness_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Divergences of Darkness_province_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/FlagsToIdeasMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/foreignInfluenceDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/foreignInfluenceDecisions.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/GovernmentMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/GovernmentMappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/factions_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/factions_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/grammar.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/grammar.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Greater Flavor Mod_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Greater Flavor Mod_province_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Historical Flavour Mod v1.27I_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Flavour Mod v1.27I_province_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Historical Project Mod 0.4.6_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Project Mod 0.4.6_province_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ideologicalAdvisors.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalAdvisors.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ideological_ai_peace.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_ai_peace.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ideological_collections.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_collections.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ideological_cost_modifiers.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_cost_modifiers.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ideological_faction_goals.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_faction_goals.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ideological_faction_rules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_faction_rules.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ideological_faction_templates.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_faction_templates.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ideological_unit_medals.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideological_unit_medals.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalDecisions.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/IdeologyMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/ImportCharacters.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ImportCharacters.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/IntelligenceAgencyLogos.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IntelligenceAgencyLogos.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/LandmarksMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/LandmarksMappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/languageReplacements.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacements.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/languageReplacementsBis.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacementsBis.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/merge_nations.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/merge_nations.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/names.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/names.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/OperativeNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/OperativeNamesMappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/plane_designs.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/plane_designs.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/positions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/positions.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/province_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/resources.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/resources.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/rule_groups.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/rule_groups.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/shipTypes.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/shipTypes.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/research_bonus_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/tankDesigns.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/tankDesigns.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/tech_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/The Concert of Europe_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/The Concert of Europe_province_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/unit_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/unit_mappings.txt" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/Vic2Localisations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/Vic2Localisations.csv" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/dominions.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/dominions.csv" COPYONLY)
+	configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations/unrecognized_nations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations/unrecognized_nations.csv" COPYONLY)
+	file(COPY "${DATA_FILE_DIR}/blank_mod/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/blankmod/")
+	file(COPY "${DATA_FILE_DIR}/configurables/AdjustedFocusBranches/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/AdjustedFocusBranches/")
+	file(COPY "${DATA_FILE_DIR}/configurables/IdeologicalIdeas/" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas/")
+	file(COPY "${DATA_FILE_DIR}/flags" DESTINATION "${CONVERTER_OUTPUT_DIRECTORY}")
+	add_custom_command(TARGET Vic2ToHoI4 POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND git rev-parse HEAD > ${CONVERTER_OUTPUT_DIRECTORY}/../commit_id.txt)
 
-#### Fronter ####
+endif (NOT RUN_CLANG_TIDY)
 
-option(BUILD_FRONTEND "Build GUI frontend" ON)
-
-if (BUILD_FRONTEND)
-	file(GLOB F_MAIN_SOURCES "${FRONTER_SOURCE_DIR}/*.cpp")
-	file(GLOB F_CONFIGURATION_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/*.cpp")
-	file(GLOB F_CONFIGURATION_OPTIONS_SOURCES "${FRONTER_SOURCE_DIR}/Configuration/Options/*.cpp")
-	file(GLOB F_FRAMES_SOURCES "${FRONTER_SOURCE_DIR}/Frames/*.cpp")
-	file(GLOB F_FRAMES_TABS_SOURCES "${FRONTER_SOURCE_DIR}/Frames/Tabs/*.cpp")
-	file(GLOB F_UTILS_SOURCES "${FRONTER_SOURCE_DIR}/Utils/*.cpp")
-	file(GLOB F_UTILS_LOCALIZATION_SOURCES "${FRONTER_SOURCE_DIR}/Utils/Localization/*.cpp")
-	file(GLOB F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/*.cpp")
-	list(REMOVE_ITEM F_CONVERTERLAUNCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ConverterLauncher/WinConverterLauncher.cpp")
-	file(GLOB F_LOGWATCHER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/LogWatcher/*.cpp")
-	file(GLOB F_MODCOPIER_SOURCES "${FRONTER_SOURCE_DIR}/WorkerThreads/ModCopier/*.cpp")
-	file(GLOB F_UPDATECHECKER_SOURCES "${FRONTER_SOURCE_DIR}/UpdateChecker/*.cpp")
-	file(GLOB F_SQLITE_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/src/*.cpp")
-	file(GLOB F_SQLITE3_SOURCES "${FRONTER_SOURCE_DIR}/../../external/SQLiteCpp/sqlite3/*.c")
-
-	add_executable(ConverterFrontend
-		${F_MAIN_SOURCES}
-		${F_CONFIGURATION_SOURCES}
-		${F_CONFIGURATION_OPTIONS_SOURCES}
-		${F_FRAMES_SOURCES}
-		${F_FRAMES_TABS_SOURCES}
-		${F_UTILS_SOURCES}
-		${F_UTILS_LOCALIZATION_SOURCES}
-		${F_CONVERTERLAUNCHER_SOURCES}
-		${F_LOGWATCHER_SOURCES}
-		${F_MODCOPIER_SOURCES}
-		${F_UPDATECHECKER_SOURCES}
-		${F_SQLITE_SOURCES}
-		${F_SQLITE3_SOURCES}
-	)
-
-	find_package(wxWidgets REQUIRED COMPONENTS net core base)
-	include(${wxWidgets_USE_FILE})
-	set_target_properties(ConverterFrontend
-		PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${FRONTER_OUTPUT_DIRECTORY}
-	)
-	target_link_libraries(ConverterFrontend LINK_PUBLIC ${wxWidgets_LIBRARIES} ${CURL_LIBRARIES} CommonItems)
-
-	add_custom_command(TARGET ConverterFrontend
-		COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" && 
-		cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-		cp -r "external/Fronter/Fronter/Resources/*yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-		cp external/Fronter/Fronter/Resources/converter.ico ${FRONTER_OUTPUT_DIRECTORY} &&
-		cp external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
-		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-	)
-endif()
 
 #### Tests ####
 
-set(GMOCK_SOURCES "external/common_items/external/googletest/googletest/src/gtest_main.cc")
-set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/common_items/external/googletest/googletest/src/gtest-all.cc")
-set(GMOCK_SOURCES ${GMOCK_SOURCES} "external/common_items/external/googletest/googlemock/src/gmock-all.cc")
+include_directories("./external/common_items/external/googletest/googletest")
+include_directories("./external/common_items/external/googletest/googletest/include")
+include_directories("./external/common_items/external/googletest/googlemock")
+include_directories("./external/common_items/external/googletest/googlemock/include")
 
 set(CONFIGURATION_TESTS_SOURCES ${CONFIGURATION_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/ConfigurationTests.cpp")
 
@@ -901,7 +969,7 @@ set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${PROJECT_SOURCE
 set(VIC2WORLD_WORLD_TESTS_SOURCES ${VIC2WORLD_WORLD_TESTS_SOURCES} "${PROJECT_SOURCE_DIR}/src/V2World/World/WorldTests.cpp")
 
 add_executable(
-	Vic2ToHoi4ConverterTests
+	Vic2ToHoI4Tests
 	${CONVERTER_SOURCES}
 	${CONFIGURATION_TESTS_SOURCES}
 	${HOI4WORLD_TESTS_SOURCES}
@@ -984,11 +1052,15 @@ add_executable(
 	${VIC2WORLD_WORLD_TESTS_SOURCES}
 	${GMOCK_SOURCES}
 )
-set_target_properties( Vic2ToHoi4ConverterTests
+set_target_properties(Vic2ToHoI4Tests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
 )
-target_precompile_headers(Vic2ToHoi4ConverterTests REUSE_FROM Vic2ToHoi4lib)
+target_precompile_headers(Vic2ToHoI4Tests REUSE_FROM Vic2ToHoI4lib)
+if (PLATFORM STREQUAL "Windows")
+    #add more warnings here, see https://github.com/cpp-best-practices/cppbestpractices/blob/master/02-Use_the_Tools_Available.md#compilers
+elseif (PLATFORM STREQUAL "Linux")
+endif (PLATFORM STREQUAL "Windows")
 
 configure_file("data/test_files/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
 configure_file("data/test_files/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
@@ -1125,62 +1197,59 @@ configure_file("data/test_files/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}/something
 configure_file("data/test_files/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("data/test_files/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
-target_link_libraries(Vic2ToHoi4ConverterTests LINK_PUBLIC Vic2ToHoi4lib)
+target_link_libraries(Vic2ToHoI4Tests LINK_PUBLIC Vic2ToHoI4lib GtestLib)
 
-
-#### Coverage ####
-
-add_custom_target(gcov
-	COMMAND mkdir -p gcoverage
-	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-)
-add_custom_command(TARGET gcov
-	COMMAND echo "=================== GCOV ===================="
-	COMMAND echo "-- Source directories:"
-	COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
-	COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
-	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcoverage
-)
-
-add_custom_target(lcov
-	COMMAND mkdir -p lcoverage
-)
-add_custom_command(TARGET lcov
-	COMMAND echo "=================== LCOV ===================="
-	COMMAND echo "-- Passing lcov tool under code coverage"
-	COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info --exclude *Tests.cpp --ignore-errors inconsistent,inconsistent,unused,unused
-	COMMAND echo "-- Generating HTML output files"
-	COMMAND genhtml lcoverage/main_coverage.info --output-directory lcoverage --ignore-errors inconsistent,inconsistent,unused,unused
-)
-add_dependencies(gcov Vic2ToHoi4ConverterTests)
-
-# Make sure to clean up the coverage folder
-set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES gcoverage)
-
-# Create the gcov-clean target. This cleans the build as well as generated 
-# .gcda and .gcno files.
-add_custom_target(init
-	COMMAND ${CMAKE_MAKE_PROGRAM} clean
-	COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcno
-	COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcda
-	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-)
-
-# Testing
 enable_testing()
 
-add_test(
-    NAME Vic2ToHoi4ConverterTests
-    COMMAND
-        $<$<BOOL:${WIN32}>:wine>
-        $<TARGET_FILE:Vic2ToHoi4ConverterTests>
-)
+add_test(NAME Vic2ToHoI4Tests COMMAND Vic2ToHoI4Tests WORKING_DIRECTORY ${TEST_OUTPUT_DIRECTORY})
+
+####  Coverage ####
+
+if (COVERAGE STREQUAL true)
+	add_custom_target(gcov
+		COMMAND mkdir -p gcoverage
+	)
+	add_custom_command(TARGET gcov
+		COMMAND echo "=================== GCOV ===================="
+		COMMAND echo "-- Source directories:"
+		COMMAND echo "		${CMAKE_SOURCE_DIR}/src/"
+		COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/gcoverage"
+	)
+
+	add_custom_target(lcov
+		COMMAND mkdir -p lcoverage
+	)
+	add_custom_command(TARGET lcov
+		COMMAND echo "=================== LCOV ===================="
+		COMMAND echo "-- Passing lcov tool under code coverage"
+		COMMAND lcov --capture --directory CMakeFiles/Vic2ToHoi4ConverterTests.dir/src/ --output-file lcoverage/main_coverage.info --exclude *Tests.cpp --ignore-errors inconsistent,inconsistent,unused,unused
+		COMMAND echo "-- Generating HTML output files"
+		COMMAND genhtml lcoverage/main_coverage.info --output-directory lcoverage --ignore-errors inconsistent,inconsistent,unused,unused
+	)
+	add_dependencies(gcov Vic2ToHoI4Tests)
+
+	# Make sure to clean up the coverage folder
+	set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES gcoverage)
+
+	# Create the gcov-clean target. This cleans the build as well as generated 
+	# .gcda and .gcno files.
+	add_custom_target(init
+		COMMAND ${CMAKE_MAKE_PROGRAM} clean
+		COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcno
+		COMMAND rm -f ${TEST_OUTPUT_DIRECTORY}/*.gcda
+		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+	)
+endif (COVERAGE STREQUAL true)
 
 
 #### Clang-tidy ####
 
-find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
-set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}")
+#find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
+#set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}")
+# checks to maybe add:
+#  cert-*
+#  cppcoreguidelines-*,
+
 add_library(run_clang_tidy
 	${HOI4_SOURCES}
 	${HOI4WORLD_CHARACTERS_SOURCES}
@@ -1375,3 +1444,4 @@ add_library(run_clang_tidy
 )
 target_link_libraries(run_clang_tidy pthread)
 set_target_properties(run_clang_tidy PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+add_dependencies(run_clang_tidy Vic2ToHoI4 Vic2ToHoI4Tests)

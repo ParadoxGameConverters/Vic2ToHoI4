@@ -1,5 +1,6 @@
 #include "src/HOI4World/Factions/FactionRules.h"
 #include "external/common_items/CommonRegexes.h"
+#include "external/common_items/Log.h"
 #include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/Factions/FactionRuleGroups.h"
 #include <ranges>

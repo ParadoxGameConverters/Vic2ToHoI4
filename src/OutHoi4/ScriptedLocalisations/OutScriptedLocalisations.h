@@ -4,6 +4,7 @@
 
 
 #include "src/HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
+#include <filesystem>
 
 
 
