@@ -31,42 +31,36 @@ jobs:
       with:
         submodules: true
 
-    - name: "Cloning selective submodules"
-      run: |
-       git submodule update --init --recursive external/common_items
-       git -c submodule."external/commonItems".update=none \
-           submodule update --init --recursive external/Fronter
+    - name: "Cloning submodules"
+      run: git submodule update --init --recursive
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v4
       with:
         languages: ${{ matrix.language }}
 
+    - name: Configure cmake
+      run: cmake --preset x64-coverage-linux
+
     - name: Build solution
-      run: |
-       cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter ConverterFrontend Vic2ToHoi4ConverterTests -- -j40
+      run: cmake --build --preset build-x64-coverage-linux --target Vic2ToHoi4 ConverterFrontend Vic2ToHoi4Tests -- -j40
 
     - name: Run tests
       run: |
-       cd build/Release-LinuxTests/
-       ./Vic2ToHoi4ConverterTests
+       cd build/test/Coverage-Linux/
+       ./Vic2ToHoi4Tests
 
     - name: Run gcov
-      run: |
-       cd build
-       pwd
-       make gcov
+      run: cmake --build --preset build-x64-coverage-linux --target gcov
 
     - name: Run lcov
-      run: |
-       cd build
-       pwd
-       make lcov
+      run: cmake --build --preset build-x64-coverage-linux --target lcov
 
-    - uses: actions/upload-artifact@v7
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
       with:
-        name: coverage-report
-        path: build/lcoverage/
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: build/x64-coverage-linux/lcoverage/coverage.info
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
@@ -92,16 +86,12 @@ jobs:
         submodules: true
 
     - name: "Cloning selective submodules"
-      run: |
-       git submodule update --init --recursive external/common_items
-       git -c submodule."external/commonItems".update=none \
-           submodule update --init --recursive external/Fronter
+      run: git submodule update --init --recursive
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v4
       with:
         languages: ${{ matrix.language }}
-
 
     - name: Install Prerequisites
       run: |
@@ -111,9 +101,10 @@ jobs:
        sudo apt-get update
        sudo apt-get install libcurl4-openssl-dev libwxbase3.2-0-unofficial \
                 libwxbase3.2unofficial-dev libwxgtk3.2-0-unofficial libwxgtk3.2unofficial-dev \
-                wx3.2-headers wx-common libnotify-dev libnotify4 libcurl4-openssl-dev lcov
+                wx3.2-headers wx-common libnotify-dev libnotify4 libcurl4-openssl-dev lcov cmake \
+                ninja-build
 
-    - name: Build solution
+    - name: Prepare build
       run: |
        # Link gcc-12 and g++-12 to their standard commands
        sudo ln -s /usr/bin/gcc-12 /usr/local/bin/gcc
@@ -124,32 +115,16 @@ jobs:
        # Export CC and CXX to tell cmake which compiler to use
        export CC=/usr/bin/gcc-12
        export CXX=/usr/bin/g++-12
-       # Check versions of gcc, g++ and cmake
-       # Run your build commands next
-       cmake -H. -Bbuild && cmake --build ./build --target Vic2ToHoi4Converter ConverterFrontend Vic2ToHoi4ConverterTests -- -j5
+    
+    - name: Build solution
+      run: |
+        cmake --preset x64-release-linux
+        cmake --build --preset build-x64-release-linux --target Vic2ToHoi4 ConverterFrontend Vic2ToHoi4Tests -- -j5
 
     - name: Run tests
       run: |
-       cd build/Release-LinuxTests/
-       ./Vic2ToHoi4ConverterTests
-
-    - name: Run gcov
-      run: |
-       cd build
-       pwd
-       make gcov
-
-    - name: Run lcov
-      run: |
-       cd build
-       pwd
-       make lcov
-
-    - uses: actions/upload-artifact@v7
-      with:
-        name: coverage-report
-        path: build/lcoverage/
-
+       cd build/test/Release-Linux/
+       ./Vic2ToHoi4Tests
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
 
