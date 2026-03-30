@@ -312,7 +312,7 @@ default = {
 			}
 		}
 	}
-	super_heavy_tank_chassis_1 = {
+	super_heavy_tank_chassis = {
 		pool = {
 			weight = 0.1
 			icons = { 
@@ -324,7 +324,7 @@ default = {
 		}
 	}
 
-	modern_tank_chassis_1 = {
+	modern_tank_chassis = {
 		pool = {
 			weight = 0.1 
 			icons = { 
