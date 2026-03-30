@@ -48,7 +48,7 @@ jobs:
     - name: Run tests
       run: |
        cd build/test/Coverage-Linux/
-       ./Vic2ToHoi4Tests
+       ./Vic2ToHoI4Tests
 
     - name: Run gcov
       run: cmake --build --preset build-x64-coverage-linux --target gcov
