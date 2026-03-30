@@ -316,8 +316,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\tallowed = {\n";
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
-			ideasFile
-				 << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
