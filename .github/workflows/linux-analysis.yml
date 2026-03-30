@@ -43,7 +43,7 @@ jobs:
       run: cmake --preset x64-coverage-linux
 
     - name: Build solution
-      run: cmake --build --preset build-x64-coverage-linux --target Vic2ToHoi4 ConverterFrontend Vic2ToHoi4Tests -- -j40
+      run: cmake --build --preset build-x64-coverage-linux --target Vic2ToHoI4 ConverterFrontend Vic2ToHoI4Tests -- -j40
 
     - name: Run tests
       run: |

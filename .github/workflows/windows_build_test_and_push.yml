@@ -55,7 +55,7 @@ jobs:
     - name: "Prepare release"
       run: |
        cd "C:\Program Files\7-Zip\"
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic2ToHoI4-1.5Wavell-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic2ToHoI4-1.5Wavell-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release-Windows\*
 
     - name: "Prepare installer"
       run: |
@@ -127,7 +127,7 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       run: |
        cd "C:\Program Files\7-Zip\"
-       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\Vic3ToHoI4-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release-Windows\*
 
     - uses: actions/upload-artifact@v7
       if: ${{ github.event_name == 'pull_request' }}
