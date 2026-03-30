@@ -4,8 +4,8 @@
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/Ideas/IdeaGroup.h"
+#include <external/common_items/CommonRegexes.h>
 #include <external/common_items/Parser.h>
-#include <external/common_items/commonRegexes.h>
 
 
 

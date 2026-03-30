@@ -3,8 +3,8 @@
 #include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/HoI4Focus.h"
 #include "src/HOI4World/HoI4FocusTree.h"
+#include <external/common_items/CommonRegexes.h>
 #include <external/common_items/Parser.h>
-#include <external/common_items/commonRegexes.h>
 
 
 HoI4FocusTree::Factory::Factory()
