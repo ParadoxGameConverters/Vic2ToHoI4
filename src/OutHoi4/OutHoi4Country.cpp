@@ -68,7 +68,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 		ideasFile << "\t\t\tallowed = {\n";
 		ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 		ideasFile << "\t\t\t\tNOT = {\n";
-		ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }\n";
+		ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = tank_manufacturer limit = 1 }\n";
 		ideasFile << "\t\t\t\t}\n";
 		ideasFile << "\t\t\t}\n";
 		ideasFile << "\n";
@@ -97,7 +97,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 		ideasFile << "\t\t\tallowed = {\n";
 		ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 		ideasFile << "\t\t\t\tNOT = {\n";
-		ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }\n";
+		ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = naval_manufacturer limit = 1 }\n";
 		ideasFile << "\t\t\t\t}\n";
 		ideasFile << "\t\t\t}\n";
 		ideasFile << "\n";
@@ -130,7 +130,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\tallowed = {\n";
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
-			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
@@ -154,7 +154,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\tallowed = {\n";
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
-			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
@@ -178,7 +178,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\tallowed = {\n";
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
-			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
@@ -202,7 +202,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\tallowed = {\n";
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
-			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
@@ -233,7 +233,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\tallowed = {\n";
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
-			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = industrial_concern limit = 1 }\n";
+			ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = industrial_concern limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
@@ -257,7 +257,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\tallowed = {\n";
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
-			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = electronics_concern limit = 1 }\n";
+			ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = electronics_concern limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
@@ -292,7 +292,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
 			ideasFile
-				 << "\t\t\t\t\thas_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }\n";
+				 << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
@@ -316,8 +316,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\tallowed = {\n";
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
-			ideasFile
-				 << "\t\t\t\t\thas_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
@@ -341,7 +340,7 @@ void outputAdvisorIdeas(std::string_view tag, std::string_view output_name, cons
 			ideasFile << "\t\t\tallowed = {\n";
 			ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
 			ideasFile << "\t\t\t\tNOT = {\n";
-			ideasFile << "\t\t\t\t\thas_available_idea_with_traits = { idea = artillery_manufacturer limit = 1 }\n";
+			ideasFile << "\t\t\t\t\thas_allowed_idea_with_traits = { idea = artillery_manufacturer limit = 1 }\n";
 			ideasFile << "\t\t\t\t}\n";
 			ideasFile << "\t\t\t}\n";
 			ideasFile << "\n";
