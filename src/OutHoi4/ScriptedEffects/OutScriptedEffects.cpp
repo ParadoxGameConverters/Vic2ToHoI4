@@ -1,6 +1,7 @@
 #include "src/OutHoi4/ScriptedEffects/OutScriptedEffects.h"
 #include "src/OutHoi4/ScriptedEffects/OutScriptedEffect.h"
 #include <fstream>
+#include <map>
 
 
 

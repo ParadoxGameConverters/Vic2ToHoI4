@@ -40,7 +40,7 @@ Type: filesandordirs; Name: "{app}\Vic2ToHoI4\Configurables"
 Type: filesandordirs; Name: "{app}\Vic2ToHoI4\flags"
 
 [Files]
-Source: "build\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "build\Release-Windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

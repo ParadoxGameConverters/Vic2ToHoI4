@@ -1,14 +1,18 @@
 #include "src/HOI4World/Ideas/IdeasFactory.h"
+
+#include "Ideas.h"
 #include "external/common_items/OSCompatibilityLayer.h"
 #include "external/common_items/ParserHelpers.h"
 #include "src/HOI4World/Ideas/IdeaGroup.h"
+#include <external/common_items/CommonRegexes.h>
+#include <external/common_items/Parser.h>
 
 
 
 HoI4::Ideas::Factory::Factory()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& ideaGroupName, std::istream& theStream) {
-		importedIdeas->generalIdeas.emplace_back(IdeaGroup{ideaGroupName, theStream});
+		importedIdeas->generalIdeas.emplace_back(HoI4::IdeaGroup{ideaGroupName, theStream});
 	});
 }
 

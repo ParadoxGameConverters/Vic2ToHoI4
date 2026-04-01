@@ -4,6 +4,7 @@
 
 
 #include "src/HOI4World/ScriptedEffects/ScriptedEffect.h"
+#include <filesystem>
 #include <set>
 #include <string>
 #include <vector>

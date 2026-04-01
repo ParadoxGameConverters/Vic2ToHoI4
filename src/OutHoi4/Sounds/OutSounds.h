@@ -4,6 +4,7 @@
 
 
 #include "src/HOI4World/Sounds/SoundEffect.h"
+#include <filesystem>
 #include <string>
 #include <vector>
 
