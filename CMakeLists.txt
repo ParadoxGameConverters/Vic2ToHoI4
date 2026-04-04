@@ -619,6 +619,13 @@ add_executable(
 	Vic2ToHoI4
 	${MAIN_SOURCE}
 )
+if (WIN32)
+	target_link_options(Vic2ToHoI4 PRIVATE
+		-static
+		-static-libgcc
+		-static-libstdc++
+	)
+endif()
 set_target_properties( Vic2ToHoI4
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}

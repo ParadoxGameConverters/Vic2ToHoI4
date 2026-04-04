@@ -19,6 +19,26 @@
       }
     },
     {
+      "name": "windows-mingw-base",
+      "description": "Cross-compile Windows on Linux using MinGW",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/install/${presetName}",
+      "cacheVariables": {
+        "CMAKE_SYSTEM_NAME": "Windows",
+        "CMAKE_C_COMPILER": "x86_64-w64-mingw32-gcc",
+        "CMAKE_CXX_COMPILER": "x86_64-w64-mingw32-g++",
+        "CMAKE_RC_COMPILER": "x86_64-w64-mingw32-windres",
+        "PLATFORM": "Windows"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
       "name": "linux-base",
       "description": "Target Linux with the gcc/g++ build environment.",
       "hidden": true,
@@ -76,6 +96,32 @@
         "RUN_CLANG_TIDY": "ON",
         "CMAKE_BUILD_TYPE": "Release",
         "PLATFORM": "Windows"
+      }
+    },
+    {
+      "name": "x64-release-windows-mingw",
+      "displayName": "x64 Release Windows (MinGW)",
+      "description": "Cross-compile Windows (64-bit) on Linux using MinGW (Release)",
+      "inherits": "windows-mingw-base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "x64-debug-windows-mingw",
+      "displayName": "x64 Debug Windows (MinGW)",
+      "description": "Cross-compile Windows (64-bit) on Linux using MinGW (Debug)",
+      "inherits": "windows-mingw-base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
       }
     },
     {
@@ -151,6 +197,26 @@
         "type": "equals",
         "lhs": "${hostSystemName}",
         "rhs": "Windows"
+      }
+    },
+    {
+      "name": "build-x64-release-windows-mingw",
+      "displayName": "x64 release (mingw)",
+      "configurePreset": "x64-release-windows-mingw",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "build-x64-debug-windows-mingw",
+      "displayName": "x64 debug (mingw)",
+      "configurePreset": "x64-debug-windows-mingw",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
       }
     },
     {
