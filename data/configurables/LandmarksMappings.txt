@@ -26,3 +26,5 @@ landmark_nanjing_presidential_palace_gen = { location = 11913 built = no }
 landmark_nanjing_presidential_palace_prc = { location = 11913 built = no }
 landmark_national_diet = { location = 1182 built = no }
 landmark_tokyo_imperial_palace = { location = 1182 built = yes }
+landmark_prague_castle = { location = 11542 built = yes }
+landmark_bojnice_castle = { location = 3484 built = yes }
