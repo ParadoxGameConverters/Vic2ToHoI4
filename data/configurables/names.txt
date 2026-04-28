@@ -1761,7 +1761,7 @@ czech = {
 	naval_companies = { "Škoda Shipyards" }
 	weapon_companies = { "Zbrojovka Brno" "Škoda Artillery" Praga }
 	aircraft_companies = { CKD-Praga Avia Aero LETOV }
-	intelligence_agencies = { "Vojenské zpravodajství" }
+	intelligence_agencies = { "Vojenské zpravodajství" "2. oddelení Hl. štábu" }
 }
 dacian = {
 	first_names = { Bastiza Bikilis Blegissa Blaesus Blaikisa Brasus Burebista Comosicus Cothelas Cotiso Dablosa Dadas Dadazai
