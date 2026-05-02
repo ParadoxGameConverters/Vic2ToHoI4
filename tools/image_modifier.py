@@ -85,14 +85,17 @@ def DetermineSmallFilename(big_filename):
 def GetScalingFactor(width):
     return 34.0 / width;
 
-def GetDefinition(filename):
+def GetSpriteName(filename):
+    return "GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","").replace(" ", "_")
+
+def GetDefinition(name, filename):
     definition = "\tspriteType = {\n"
-    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","").replace(" ", "_") + "\n"
+    definition += "\t\tname = " + name + "\n"
     definition += "\t\ttexturefile = \"" + filename.replace("data/blank_mod/", "").replace("\\","/") + "\"\n"
     definition += "\t}\n"
     definition += "\n"
     definition += "\tspriteType = {\n"
-    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","").replace(" ", "_") + "_small\n"
+    definition += "\t\tname = " + name + "_small\n"
     definition += "\t\ttexturefile = \"" + DetermineSmallFilename(filename).replace("data/blank_mod/", "").replace("\\","/") + "\"\n"
     definition += "\t}\n"
     definition += "\n"
@@ -160,7 +163,7 @@ for ref in portrait_refs:
                 image_file = existing_files[normalized_path]
                 if not is_idea:
                     CreateSmallVersion(image_file)
-                    gfx_file.write(GetDefinition(texture))
+                    gfx_file.write(GetDefinition(ref, texture))
             else:
                 log.write(f"Missing texture file for {ref}: {texture}\n")
         elif normalized_ref not in dlc_sprites:
@@ -171,7 +174,8 @@ for ref in portrait_refs:
             image_file = existing_files[normalized_path]
             if not is_idea:
                 CreateSmallVersion(image_file)
-                gfx_file.write(GetDefinition(ref))
+                name = GetSpriteName(ref)
+                gfx_file.write(GetDefinition(name, ref))
                 UpdateMappings(ref)
         elif normalized_path not in dlc_files:
             log.write(f"Missing file: {ref}\n")
