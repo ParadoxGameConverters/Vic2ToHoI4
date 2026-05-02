@@ -124,8 +124,10 @@ def UpdateMappings(filename):
 
 hoi4_path = options["hoi4_path"]
 hoi4_exe = hoi4_path / "hoi4.exe"
-if not hoi4_exe.exists():
-    raise ("Enter a valid HoI4 path!")
+hoi4_linux = hoi4_path / "hoi4"
+
+if not (hoi4_exe.exists() or hoi4_linux.exists()):
+    raise ValueError("Enter a valid HoI4 path!")
 
 interface_dirs = [hoi4_path / "interface", mod_interface_dir]
 gfx_dirs = [hoi4_path / "gfx", mod_gfx_dir]
@@ -148,6 +150,7 @@ for ref in portrait_refs:
     normalized_ref = ref.strip('"')
     ref_lower = normalized_ref.lower()
     is_sprite = not ref_lower.endswith(tuple(gfx_extensions))
+    is_idea = "idea" in ref
     
     if is_sprite:
         if normalized_ref in sprite_textures:
@@ -155,8 +158,9 @@ for ref in portrait_refs:
             normalized_path = texture.lower().lstrip("/")
             if normalized_path in existing_files:
                 image_file = existing_files[normalized_path]
-                CreateSmallVersion(image_file)
-                gfx_file.write(GetDefinition(texture))
+                if not is_idea:
+                    CreateSmallVersion(image_file)
+                    gfx_file.write(GetDefinition(texture))
             else:
                 log.write(f"Missing texture file for {ref}: {texture}\n")
         elif normalized_ref not in dlc_sprites:
@@ -165,9 +169,10 @@ for ref in portrait_refs:
         normalized_path = ref_lower.lstrip("/")
         if normalized_path in existing_files:
             image_file = existing_files[normalized_path]
-            CreateSmallVersion(image_file)
-            gfx_file.write(GetDefinition(ref))
-            UpdateMappings(ref)
+            if not is_idea:
+                CreateSmallVersion(image_file)
+                gfx_file.write(GetDefinition(ref))
+                UpdateMappings(ref)
         elif normalized_path not in dlc_files:
             log.write(f"Missing file: {ref}\n")
 

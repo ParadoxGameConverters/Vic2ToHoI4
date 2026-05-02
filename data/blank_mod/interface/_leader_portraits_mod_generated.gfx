@@ -60,13 +60,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_europe_generic_land_19
-		texturefile = "gfx/leaders/Europe/portrait_europe_generic_land_19.dds"
+		name = GFX_MEX_Luis_Maria_Martinez
+		texturefile = "gfx/leaders/MEX/portrait_MEX_Luis_Maria_Martinez.dds"
 	}
 
 	spriteType = {
-		name = GFX_europe_generic_land_19_small
-		texturefile = "gfx/interface/ideas/idea_europe_generic_land_19.dds"
+		name = GFX_MEX_Luis_Maria_Martinez_small
+		texturefile = "gfx/interface/ideas/idea_MEX_Luis_Maria_Martinez.dds"
 	}
 
 	spriteType = {
@@ -467,6 +467,26 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Europe_Generic_navy_3_small
 		texturefile = "gfx/interface/ideas/idea_Europe_Generic_navy_3.dds"
+	}
+
+	spriteType = {
+		name = GFX_europe_generic_navy_4
+		texturefile = "gfx/leaders/Europe/portrait_europe_generic_navy_4.dds"
+	}
+
+	spriteType = {
+		name = GFX_europe_generic_navy_4_small
+		texturefile = "gfx/interface/ideas/idea_europe_generic_navy_4.dds"
+	}
+
+	spriteType = {
+		name = GFX_europe_generic_navy_5
+		texturefile = "gfx/leaders/Europe/portrait_europe_generic_navy_5.dds"
+	}
+
+	spriteType = {
+		name = GFX_europe_generic_navy_5_small
+		texturefile = "gfx/interface/ideas/idea_europe_generic_navy_5.dds"
 	}
 
 	spriteType = {
@@ -1400,6 +1420,26 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_BRM_archibald_cochrane
+		texturefile = "gfx/leaders/MISC/portrait_BRM_archibald_cochrane.dds"
+	}
+
+	spriteType = {
+		name = GFX_BRM_archibald_cochrane_small
+		texturefile = "gfx/interface/ideas/idea_BRM_archibald_cochrane.dds"
+	}
+
+	spriteType = {
+		name = GFX_PAL_harold_macmichael
+		texturefile = "gfx/leaders/MISC/portrait_PAL_harold_macmichael.dds"
+	}
+
+	spriteType = {
+		name = GFX_PAL_harold_macmichael_small
+		texturefile = "gfx/interface/ideas/idea_PAL_harold_macmichael.dds"
+	}
+
+	spriteType = {
 		name = GFX_AST_Elsie_Farrely
 		texturefile = "gfx/leaders/Western_European/Female/Portrait_AST_Elsie_Farrely.tga"
 	}
@@ -1510,146 +1550,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_harry_pollitt
-		texturefile = "gfx/interface/ideas/idea_harry_pollitt.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_harry_pollitt_small
-		texturefile = "gfx/interface/ideas/idea_idea_harry_pollitt.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_arthur_harris
-		texturefile = "gfx/interface/ideas/idea_arthur_harris.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_arthur_harris_small
-		texturefile = "gfx/interface/ideas/idea_idea_arthur_harris.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_clement_attlee
-		texturefile = "gfx/interface/ideas/idea_clement_attlee.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_clement_attlee_small
-		texturefile = "gfx/interface/ideas/idea_idea_clement_attlee.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_andrew_cunningham
-		texturefile = "gfx/interface/ideas/idea_andrew_cunningham.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_andrew_cunningham_small
-		texturefile = "gfx/interface/ideas/idea_idea_andrew_cunningham.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_john_beckett
-		texturefile = "gfx/interface/ideas/idea_john_beckett.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_john_beckett_small
-		texturefile = "gfx/interface/ideas/idea_idea_john_beckett.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_kenneth_anderson
-		texturefile = "gfx/interface/ideas/idea_kenneth_anderson.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_kenneth_anderson_small
-		texturefile = "gfx/interface/ideas/idea_idea_kenneth_anderson.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_king_edward
-		texturefile = "gfx/interface/ideas/idea_king_edward.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_king_edward_small
-		texturefile = "gfx/interface/ideas/idea_idea_king_edward.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ENG_winston_churchill
-		texturefile = "gfx/interface/ideas/idea_ENG_winston_churchill.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ENG_winston_churchill_small
-		texturefile = "gfx/interface/ideas/idea_idea_ENG_winston_churchill.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_bernard_montgomery
-		texturefile = "gfx/interface/ideas/idea_bernard_montgomery.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_bernard_montgomery_small
-		texturefile = "gfx/interface/ideas/idea_idea_bernard_montgomery.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_john_vereker
-		texturefile = "gfx/interface/ideas/idea_john_vereker.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_john_vereker_small
-		texturefile = "gfx/interface/ideas/idea_idea_john_vereker.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_robert_oppenheimer
-		texturefile = "gfx/interface/ideas/idea_robert_oppenheimer.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_robert_oppenheimer_small
-		texturefile = "gfx/interface/ideas/idea_idea_robert_oppenheimer.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alan_brooke
-		texturefile = "gfx/interface/ideas/idea_alan_brooke.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alan_brooke_small
-		texturefile = "gfx/interface/ideas/idea_idea_alan_brooke.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_archibald_wavell
-		texturefile = "gfx/interface/ideas/idea_archibald_wavell.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_archibald_wavell_small
-		texturefile = "gfx/interface/ideas/idea_idea_archibald_wavell.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alphonse_georges
-		texturefile = "gfx/interface/ideas/idea_alphonse_georges.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alphonse_georges_small
-		texturefile = "gfx/interface/ideas/idea_idea_alphonse_georges.dds"
-	}
-
-	spriteType = {
 		name = GFX_eng_patrick_fermor
 		texturefile = "gfx/leaders/ENG/portrait_eng_patrick_fermor.dds"
 	}
@@ -1677,16 +1577,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_r56_generic_operative_commonwealth_1_small
 		texturefile = "gfx/interface/ideas/idea_r56_generic_operative_commonwealth_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_brittish_stoicism
-		texturefile = "gfx/interface/ideas/brittish_stoicism.dds"
-	}
-
-	spriteType = {
-		name = GFX_brittish_stoicism_small
-		texturefile = "gfx/interface/ideas/idea_brittish_stoicism.dds"
 	}
 
 	spriteType = {
@@ -2070,66 +1960,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_maurice_thorez
-		texturefile = "gfx/interface/ideas/idea_maurice_thorez.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_maurice_thorez_small
-		texturefile = "gfx/interface/ideas/idea_idea_maurice_thorez.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_leon_blum
-		texturefile = "gfx/interface/ideas/idea_leon_blum.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_leon_blum_small
-		texturefile = "gfx/interface/ideas/idea_idea_leon_blum.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_marcel_bucard
-		texturefile = "gfx/interface/ideas/idea_marcel_bucard.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_marcel_bucard_small
-		texturefile = "gfx/interface/ideas/idea_idea_marcel_bucard.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_charles_de_gaulle
-		texturefile = "gfx/interface/ideas/idea_charles_de_gaulle.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_charles_de_gaulle_small
-		texturefile = "gfx/interface/ideas/idea_idea_charles_de_gaulle.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alfred_heurtaux
-		texturefile = "gfx/interface/ideas/idea_alfred_heurtaux.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alfred_heurtaux_small
-		texturefile = "gfx/interface/ideas/idea_idea_alfred_heurtaux.dds"
-	}
-
-	spriteType = {
-		name = GFX_france_shield
-		texturefile = "gfx/interface/ideas/crowns/france_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_france_shield_small
-		texturefile = "gfx/interface/ideas/idea_france_shield.dds"
-	}
-
-	spriteType = {
 		name = GFX_fin_carl_mannerheim
 		texturefile = "gfx/leaders/FIN/portrait_fin_carl_mannerheim.dds"
 	}
@@ -2437,246 +2267,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Finland_Ernst_von_Born_small
 		texturefile = "gfx/interface/ideas/idea_Finland_Ernst_von_Born.tga"
-	}
-
-	spriteType = {
-		name = GFX_idea_ernst_thalmann
-		texturefile = "gfx/interface/ideas/idea_ernst_thalmann.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ernst_thalmann_small
-		texturefile = "gfx/interface/ideas/idea_idea_ernst_thalmann.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_henri_giraud
-		texturefile = "gfx/interface/ideas/idea_henri_giraud.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_henri_giraud_small
-		texturefile = "gfx/interface/ideas/idea_idea_henri_giraud.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ferdinand_schorner
-		texturefile = "gfx/interface/ideas/idea_ferdinand_schorner.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ferdinand_schorner_small
-		texturefile = "gfx/interface/ideas/idea_idea_ferdinand_schorner.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_martin_bormann
-		texturefile = "gfx/interface/ideas/idea_martin_bormann.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_martin_bormann_small
-		texturefile = "gfx/interface/ideas/idea_idea_martin_bormann.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_kurt_schumacher
-		texturefile = "gfx/interface/ideas/idea_kurt_schumacher.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_kurt_schumacher_small
-		texturefile = "gfx/interface/ideas/idea_idea_kurt_schumacher.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_franz_halder
-		texturefile = "gfx/interface/ideas/idea_franz_halder.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_franz_halder_small
-		texturefile = "gfx/interface/ideas/idea_idea_franz_halder.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_carl_spaatz
-		texturefile = "gfx/interface/ideas/idea_carl_spaatz.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_carl_spaatz_small
-		texturefile = "gfx/interface/ideas/idea_idea_carl_spaatz.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ludwig_beck
-		texturefile = "gfx/interface/ideas/idea_ludwig_beck.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ludwig_beck_small
-		texturefile = "gfx/interface/ideas/idea_idea_ludwig_beck.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alfred_saalwachter
-		texturefile = "gfx/interface/ideas/idea_alfred_saalwachter.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alfred_saalwachter_small
-		texturefile = "gfx/interface/ideas/idea_idea_alfred_saalwachter.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_donitz
-		texturefile = "gfx/interface/ideas/idea_donitz.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_donitz_small
-		texturefile = "gfx/interface/ideas/idea_idea_donitz.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_gunther_lutjens
-		texturefile = "gfx/interface/ideas/idea_gunther_lutjens.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_gunther_lutjens_small
-		texturefile = "gfx/interface/ideas/idea_idea_gunther_lutjens.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ger_wilhelm_iii
-		texturefile = "gfx/interface/ideas/idea_ger_wilhelm_iii.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ger_wilhelm_iii_small
-		texturefile = "gfx/interface/ideas/idea_idea_ger_wilhelm_iii.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_gerd_von_rundstedt
-		texturefile = "gfx/interface/ideas/idea_gerd_von_rundstedt.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_gerd_von_rundstedt_small
-		texturefile = "gfx/interface/ideas/idea_idea_gerd_von_rundstedt.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_charles_huntziger
-		texturefile = "gfx/interface/ideas/idea_charles_huntziger.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_charles_huntziger_small
-		texturefile = "gfx/interface/ideas/idea_idea_charles_huntziger.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_raeder
-		texturefile = "gfx/interface/ideas/idea_raeder.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_raeder_small
-		texturefile = "gfx/interface/ideas/idea_idea_raeder.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_louis_mountbatten
-		texturefile = "gfx/interface/ideas/idea_louis_mountbatten.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_louis_mountbatten_small
-		texturefile = "gfx/interface/ideas/idea_idea_louis_mountbatten.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_albert_kesselring
-		texturefile = "gfx/interface/ideas/idea_albert_kesselring.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_albert_kesselring_small
-		texturefile = "gfx/interface/ideas/idea_idea_albert_kesselring.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_erich_bey
-		texturefile = "gfx/interface/ideas/idea_erich_bey.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_erich_bey_small
-		texturefile = "gfx/interface/ideas/idea_idea_erich_bey.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_erhard_milch
-		texturefile = "gfx/interface/ideas/idea_erhard_milch.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_erhard_milch_small
-		texturefile = "gfx/interface/ideas/idea_idea_erhard_milch.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ritter_von_greim
-		texturefile = "gfx/interface/ideas/idea_ritter_von_greim.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ritter_von_greim_small
-		texturefile = "gfx/interface/ideas/idea_idea_ritter_von_greim.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hjalmar_schacht
-		texturefile = "gfx/interface/ideas/idea_hjalmar_schacht.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hjalmar_schacht_small
-		texturefile = "gfx/interface/ideas/idea_idea_hjalmar_schacht.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hermann_gortz
-		texturefile = "gfx/interface/ideas/idea_hermann_gortz.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hermann_gortz_small
-		texturefile = "gfx/interface/ideas/idea_idea_hermann_gortz.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ernst_udet
-		texturefile = "gfx/interface/ideas/idea_ernst_udet.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ernst_udet_small
-		texturefile = "gfx/interface/ideas/idea_idea_ernst_udet.dds"
-	}
-
-	spriteType = {
-		name = GFX_sweden
-		texturefile = "gfx/interface/ideas/crowns/sweden.dds"
-	}
-
-	spriteType = {
-		name = GFX_sweden_small
-		texturefile = "gfx/interface/ideas/idea_sweden.dds"
 	}
 
 	spriteType = {
@@ -3110,6 +2700,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_ISR_david_ben_gurion
+		texturefile = "gfx/leaders/MISC/portrait_ISR_david_ben_gurion.dds"
+	}
+
+	spriteType = {
+		name = GFX_ISR_david_ben_gurion_small
+		texturefile = "gfx/interface/ideas/idea_ISR_david_ben_gurion.dds"
+	}
+
+	spriteType = {
 		name = GFX_GER_heinrich_himmler
 		texturefile = "gfx/leaders/GER/portrait_GER_heinrich_himmler.dds"
 	}
@@ -3277,16 +2877,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Germany_Hilter_F_small
 		texturefile = "gfx/interface/ideas/idea_Germany_Hilter_F.dds"
-	}
-
-	spriteType = {
-		name = GFX_germany_shield
-		texturefile = "gfx/interface/ideas/crowns/germany_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_germany_shield_small
-		texturefile = "gfx/interface/ideas/idea_germany_shield.dds"
 	}
 
 	spriteType = {
@@ -3850,166 +3440,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_amadeo_bordiga
-		texturefile = "gfx/interface/ideas/idea_amadeo_bordiga.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_amadeo_bordiga_small
-		texturefile = "gfx/interface/ideas/idea_idea_amadeo_bordiga.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_dolores_ibarruri
-		texturefile = "gfx/interface/ideas/idea_dolores_ibarruri.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_dolores_ibarruri_small
-		texturefile = "gfx/interface/ideas/idea_idea_dolores_ibarruri.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_carlo_bergamini
-		texturefile = "gfx/interface/ideas/idea_carlo_bergamini.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_carlo_bergamini_small
-		texturefile = "gfx/interface/ideas/idea_idea_carlo_bergamini.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ivanoe_bonomi
-		texturefile = "gfx/interface/ideas/idea_ivanoe_bonomi.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ivanoe_bonomi_small
-		texturefile = "gfx/interface/ideas/idea_idea_ivanoe_bonomi.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ettore_muti
-		texturefile = "gfx/interface/ideas/idea_ettore_muti.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ettore_muti_small
-		texturefile = "gfx/interface/ideas/idea_idea_ettore_muti.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_arturo_riccardi
-		texturefile = "gfx/interface/ideas/idea_arturo_riccardi.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_arturo_riccardi_small
-		texturefile = "gfx/interface/ideas/idea_idea_arturo_riccardi.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_carlo_scorza
-		texturefile = "gfx/interface/ideas/idea_carlo_scorza.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_carlo_scorza_small
-		texturefile = "gfx/interface/ideas/idea_idea_carlo_scorza.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_gaetano_crocco
-		texturefile = "gfx/interface/ideas/idea_gaetano_crocco.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_gaetano_crocco_small
-		texturefile = "gfx/interface/ideas/idea_idea_gaetano_crocco.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_angelo_iachino
-		texturefile = "gfx/interface/ideas/idea_angelo_iachino.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_angelo_iachino_small
-		texturefile = "gfx/interface/ideas/idea_idea_angelo_iachino.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_giovanni_messe
-		texturefile = "gfx/interface/ideas/idea_giovanni_messe.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_giovanni_messe_small
-		texturefile = "gfx/interface/ideas/idea_idea_giovanni_messe.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alberto_da_zara
-		texturefile = "gfx/interface/ideas/idea_alberto_da_zara.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alberto_da_zara_small
-		texturefile = "gfx/interface/ideas/idea_idea_alberto_da_zara.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_amedeo_mecozzi
-		texturefile = "gfx/interface/ideas/idea_amedeo_mecozzi.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_amedeo_mecozzi_small
-		texturefile = "gfx/interface/ideas/idea_idea_amedeo_mecozzi.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alfredo_guzzoni
-		texturefile = "gfx/interface/ideas/idea_alfredo_guzzoni.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alfredo_guzzoni_small
-		texturefile = "gfx/interface/ideas/idea_idea_alfredo_guzzoni.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_francesco_pricolo
-		texturefile = "gfx/interface/ideas/idea_francesco_pricolo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_francesco_pricolo_small
-		texturefile = "gfx/interface/ideas/idea_idea_francesco_pricolo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_domenico_cavagnari
-		texturefile = "gfx/interface/ideas/idea_domenico_cavagnari.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_domenico_cavagnari_small
-		texturefile = "gfx/interface/ideas/idea_idea_domenico_cavagnari.dds"
-	}
-
-	spriteType = {
-		name = GFX_italy_shield
-		texturefile = "gfx/interface/ideas/crowns/italy_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_italy_shield_small
-		texturefile = "gfx/interface/ideas/idea_italy_shield.dds"
-	}
-
-	spriteType = {
 		name = GFX_GRE_Alexandros_Papagos
 		texturefile = "gfx/leaders/Mediterranean/Portrait_GRE_Alexandros_Papagos.tga"
 	}
@@ -4340,56 +3770,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_GRE_themistoklis_sofoulis
-		texturefile = "gfx/interface/ideas/idea_GRE_themistoklis_sofoulis.tga"
-	}
-
-	spriteType = {
-		name = GFX_idea_GRE_themistoklis_sofoulis_small
-		texturefile = "gfx/interface/ideas/idea_idea_GRE_themistoklis_sofoulis.tga"
-	}
-
-	spriteType = {
-		name = GFX_idea_gre_george_ii
-		texturefile = "gfx/interface/ideas/idea_gre_george_ii.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_gre_george_ii_small
-		texturefile = "gfx/interface/ideas/idea_idea_gre_george_ii.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_emilio_de_bono
-		texturefile = "gfx/interface/ideas/idea_emilio_de_bono.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_emilio_de_bono_small
-		texturefile = "gfx/interface/ideas/idea_idea_emilio_de_bono.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_GRE_aristotle_onassis
-		texturefile = "gfx/interface/ideas/idea_GRE_aristotle_onassis.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_GRE_aristotle_onassis_small
-		texturefile = "gfx/interface/ideas/idea_idea_GRE_aristotle_onassis.dds"
-	}
-
-	spriteType = {
-		name = GFX_greece_shield
-		texturefile = "gfx/interface/ideas/crowns/greece_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_greece_shield_small
-		texturefile = "gfx/interface/ideas/idea_greece_shield.dds"
-	}
-
-	spriteType = {
 		name = GFX_Balkan_Generic_land_new_1
 		texturefile = "gfx/leaders/Balkans/Portrait_Balkan_Generic_land_new_1.tga"
 	}
@@ -4640,276 +4020,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_georgy_zhukov
-		texturefile = "gfx/interface/ideas/idea_georgy_zhukov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_georgy_zhukov_small
-		texturefile = "gfx/interface/ideas/idea_idea_georgy_zhukov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_konstantin_rokossovsky
-		texturefile = "gfx/interface/ideas/idea_konstantin_rokossovsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_konstantin_rokossovsky_small
-		texturefile = "gfx/interface/ideas/idea_idea_konstantin_rokossovsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mikhail_frinovsky
-		texturefile = "gfx/interface/ideas/idea_mikhail_frinovsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mikhail_frinovsky_small
-		texturefile = "gfx/interface/ideas/idea_idea_mikhail_frinovsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sergei_korolev
-		texturefile = "gfx/interface/ideas/idea_sergei_korolev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sergei_korolev_small
-		texturefile = "gfx/interface/ideas/idea_idea_sergei_korolev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_yakov_smushkevich
-		texturefile = "gfx/interface/ideas/idea_yakov_smushkevich.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_yakov_smushkevich_small
-		texturefile = "gfx/interface/ideas/idea_idea_yakov_smushkevich.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_gordey_levchenko
-		texturefile = "gfx/interface/ideas/idea_gordey_levchenko.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_gordey_levchenko_small
-		texturefile = "gfx/interface/ideas/idea_idea_gordey_levchenko.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ivan_yumashev
-		texturefile = "gfx/interface/ideas/idea_ivan_yumashev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ivan_yumashev_small
-		texturefile = "gfx/interface/ideas/idea_idea_ivan_yumashev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mikhail_kalinin
-		texturefile = "gfx/interface/ideas/idea_mikhail_kalinin.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mikhail_kalinin_small
-		texturefile = "gfx/interface/ideas/idea_idea_mikhail_kalinin.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_pavel_zhigarev
-		texturefile = "gfx/interface/ideas/idea_pavel_zhigarev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_pavel_zhigarev_small
-		texturefile = "gfx/interface/ideas/idea_idea_pavel_zhigarev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_vladimir_kasatonov
-		texturefile = "gfx/interface/ideas/idea_vladimir_kasatonov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_vladimir_kasatonov_small
-		texturefile = "gfx/interface/ideas/idea_idea_vladimir_kasatonov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_boris_shaposhnikov
-		texturefile = "gfx/interface/ideas/idea_boris_shaposhnikov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_boris_shaposhnikov_small
-		texturefile = "gfx/interface/ideas/idea_idea_boris_shaposhnikov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_elyesa_bazna
-		texturefile = "gfx/interface/ideas/idea_elyesa_bazna.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_elyesa_bazna_small
-		texturefile = "gfx/interface/ideas/idea_idea_elyesa_bazna.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mikhail_tukhachevsky
-		texturefile = "gfx/interface/ideas/idea_mikhail_tukhachevsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mikhail_tukhachevsky_small
-		texturefile = "gfx/interface/ideas/idea_idea_mikhail_tukhachevsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sergei_khudyakov
-		texturefile = "gfx/interface/ideas/idea_sergei_khudyakov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sergei_khudyakov_small
-		texturefile = "gfx/interface/ideas/idea_idea_sergei_khudyakov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_vladimir_tributs
-		texturefile = "gfx/interface/ideas/idea_vladimir_tributs.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_vladimir_tributs_small
-		texturefile = "gfx/interface/ideas/idea_idea_vladimir_tributs.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_arseniy_golovko
-		texturefile = "gfx/interface/ideas/idea_arseniy_golovko.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_arseniy_golovko_small
-		texturefile = "gfx/interface/ideas/idea_idea_arseniy_golovko.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ivan_konev
-		texturefile = "gfx/interface/ideas/idea_ivan_konev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_ivan_konev_small
-		texturefile = "gfx/interface/ideas/idea_idea_ivan_konev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_pyotr_smirnov
-		texturefile = "gfx/interface/ideas/idea_pyotr_smirnov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_pyotr_smirnov_small
-		texturefile = "gfx/interface/ideas/idea_idea_pyotr_smirnov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_vasily_blyukher
-		texturefile = "gfx/interface/ideas/idea_vasily_blyukher.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_vasily_blyukher_small
-		texturefile = "gfx/interface/ideas/idea_idea_vasily_blyukher.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_aleksandr_yegorov
-		texturefile = "gfx/interface/ideas/idea_aleksandr_yegorov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_aleksandr_yegorov_small
-		texturefile = "gfx/interface/ideas/idea_idea_aleksandr_yegorov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_kliment_voroshilov
-		texturefile = "gfx/interface/ideas/idea_kliment_voroshilov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_kliment_voroshilov_small
-		texturefile = "gfx/interface/ideas/idea_idea_kliment_voroshilov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_pavel_rychagov
-		texturefile = "gfx/interface/ideas/idea_pavel_rychagov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_pavel_rychagov_small
-		texturefile = "gfx/interface/ideas/idea_idea_pavel_rychagov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_igor_kurchatov
-		texturefile = "gfx/interface/ideas/idea_igor_kurchatov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_igor_kurchatov_small
-		texturefile = "gfx/interface/ideas/idea_idea_igor_kurchatov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_konstantin_vershinin
-		texturefile = "gfx/interface/ideas/idea_konstantin_vershinin.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_konstantin_vershinin_small
-		texturefile = "gfx/interface/ideas/idea_idea_konstantin_vershinin.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_nikolay_kuznetsov
-		texturefile = "gfx/interface/ideas/idea_nikolay_kuznetsov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_nikolay_kuznetsov_small
-		texturefile = "gfx/interface/ideas/idea_idea_nikolay_kuznetsov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_semyon_timoshenko
-		texturefile = "gfx/interface/ideas/idea_semyon_timoshenko.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_semyon_timoshenko_small
-		texturefile = "gfx/interface/ideas/idea_idea_semyon_timoshenko.dds"
-	}
-
-	spriteType = {
-		name = GFX_romania_shield
-		texturefile = "gfx/interface/ideas/crowns/romania_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_romania_shield_small
-		texturefile = "gfx/interface/ideas/idea_romania_shield.dds"
-	}
-
-	spriteType = {
 		name = GFX_yugoslavia_josef_depre
 		texturefile = "gfx/leaders/YUG/portrait_yugoslavia_josef_depre.dds"
 	}
@@ -5117,16 +4227,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_BUL_Aleksandar_Stamboliyski_small
 		texturefile = "gfx/interface/ideas/idea_BUL_Aleksandar_Stamboliyski.tga"
-	}
-
-	spriteType = {
-		name = GFX_bulgaria_shield
-		texturefile = "gfx/interface/ideas/crowns/bulgaria_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_bulgaria_shield_small
-		texturefile = "gfx/interface/ideas/idea_bulgaria_shield.dds"
 	}
 
 	spriteType = {
@@ -5467,26 +4567,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Poland_Roza_Luksemburg_small
 		texturefile = "gfx/interface/ideas/idea_Poland_Roza_Luksemburg.tga"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_europe_1
-		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_europe_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_europe_1_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_political_advisor_europe_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_commonwealth_shield
-		texturefile = "gfx/interface/ideas/crowns/commonwealth_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_commonwealth_shield_small
-		texturefile = "gfx/interface/ideas/idea_commonwealth_shield.dds"
 	}
 
 	spriteType = {
@@ -6460,106 +5540,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_nikita_khrushchev
-		texturefile = "gfx/interface/ideas/idea_nikita_khrushchev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_nikita_khrushchev_small
-		texturefile = "gfx/interface/ideas/idea_idea_nikita_khrushchev.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alexander_kerensky
-		texturefile = "gfx/interface/ideas/idea_alexander_kerensky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alexander_kerensky_small
-		texturefile = "gfx/interface/ideas/idea_idea_alexander_kerensky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_konstantin_rodzaevsky
-		texturefile = "gfx/interface/ideas/idea_konstantin_rodzaevsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_konstantin_rodzaevsky_small
-		texturefile = "gfx/interface/ideas/idea_idea_konstantin_rodzaevsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sergey_gorshkov
-		texturefile = "gfx/interface/ideas/idea_sergey_gorshkov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sergey_gorshkov_small
-		texturefile = "gfx/interface/ideas/idea_idea_sergey_gorshkov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_aleksandr_vasilevsky
-		texturefile = "gfx/interface/ideas/idea_aleksandr_vasilevsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_aleksandr_vasilevsky_small
-		texturefile = "gfx/interface/ideas/idea_idea_aleksandr_vasilevsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sergei_rudenko
-		texturefile = "gfx/interface/ideas/idea_sergei_rudenko.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sergei_rudenko_small
-		texturefile = "gfx/interface/ideas/idea_idea_sergei_rudenko.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alexander_novikov
-		texturefile = "gfx/interface/ideas/idea_alexander_novikov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alexander_novikov_small
-		texturefile = "gfx/interface/ideas/idea_idea_alexander_novikov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_stepan_krasovsky
-		texturefile = "gfx/interface/ideas/idea_stepan_krasovsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_stepan_krasovsky_small
-		texturefile = "gfx/interface/ideas/idea_idea_stepan_krasovsky.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alexander_golovanov
-		texturefile = "gfx/interface/ideas/idea_alexander_golovanov.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_alexander_golovanov_small
-		texturefile = "gfx/interface/ideas/idea_idea_alexander_golovanov.dds"
-	}
-
-	spriteType = {
-		name = GFX_russia_shield
-		texturefile = "gfx/interface/ideas/crowns/russia_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_russia_shield_small
-		texturefile = "gfx/interface/ideas/idea_russia_shield.dds"
-	}
-
-	spriteType = {
 		name = GFX_The_Raj_Army_Generic
 		texturefile = "gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic.dds"
 	}
@@ -7270,46 +6250,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_chakravarti_rajagopalachari
-		texturefile = "gfx/interface/ideas/idea_chakravarti_rajagopalachari.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_chakravarti_rajagopalachari_small
-		texturefile = "gfx/interface/ideas/idea_idea_chakravarti_rajagopalachari.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sir_mohammed_iqbal
-		texturefile = "gfx/interface/ideas/idea_sir_mohammed_iqbal.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sir_mohammed_iqbal_small
-		texturefile = "gfx/interface/ideas/idea_idea_sir_mohammed_iqbal.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_subhas_chanda_bose
-		texturefile = "gfx/interface/ideas/idea_subhas_chanda_bose.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_subhas_chanda_bose_small
-		texturefile = "gfx/interface/ideas/idea_idea_subhas_chanda_bose.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_agha_khan
-		texturefile = "gfx/interface/ideas/idea_agha_khan.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_agha_khan_small
-		texturefile = "gfx/interface/ideas/idea_idea_agha_khan.dds"
-	}
-
-	spriteType = {
 		name = GFX_generic_political_advisor_india_1
 		texturefile = "gfx/interface/ideas/generic_political_advisor_india_1.dds"
 	}
@@ -7317,26 +6257,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_generic_political_advisor_india_1_small
 		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_india_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_fascist_arab
-		texturefile = "gfx/interface/ideas/idea_generic_fascist_arab.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_fascist_arab_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_fascist_arab.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_raj_indian_gentlemen_officers
-		texturefile = "gfx/interface/ideas/idea_raj_indian_gentlemen_officers.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_raj_indian_gentlemen_officers_small
-		texturefile = "gfx/interface/ideas/idea_idea_raj_indian_gentlemen_officers.dds"
 	}
 
 	spriteType = {
@@ -7980,66 +6900,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_tur_nazim_hikmet
-		texturefile = "gfx/interface/ideas/idea_tur_nazim_hikmet.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_nazim_hikmet_small
-		texturefile = "gfx/interface/ideas/idea_idea_tur_nazim_hikmet.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_celal_bayar
-		texturefile = "gfx/interface/ideas/idea_tur_celal_bayar.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_celal_bayar_small
-		texturefile = "gfx/interface/ideas/idea_idea_tur_celal_bayar.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_zeki_velidi_togan
-		texturefile = "gfx/interface/ideas/idea_tur_zeki_velidi_togan.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_zeki_velidi_togan_small
-		texturefile = "gfx/interface/ideas/idea_idea_tur_zeki_velidi_togan.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_halil_kut
-		texturefile = "gfx/interface/ideas/idea_tur_halil_kut.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_halil_kut_small
-		texturefile = "gfx/interface/ideas/idea_idea_tur_halil_kut.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_sukru_saracoglu
-		texturefile = "gfx/interface/ideas/idea_tur_sukru_saracoglu.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_sukru_saracoglu_small
-		texturefile = "gfx/interface/ideas/idea_idea_tur_sukru_saracoglu.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_mehmet_fahri_engin
-		texturefile = "gfx/interface/ideas/idea_tur_mehmet_fahri_engin.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_mehmet_fahri_engin_small
-		texturefile = "gfx/interface/ideas/idea_idea_tur_mehmet_fahri_engin.dds"
-	}
-
-	spriteType = {
 		name = GFX_focus_TUR_turanist_ambition
 		texturefile = "gfx/interface/goals/focus_TUR_turanist_ambition.dds"
 	}
@@ -8370,6 +7230,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_kur_seyid_riza
+		texturefile = "gfx/leaders/KUR/portrait_kur_seyid_riza.dds"
+	}
+
+	spriteType = {
+		name = GFX_kur_seyid_riza_small
+		texturefile = "gfx/interface/ideas/idea_kur_seyid_riza.dds"
+	}
+
+	spriteType = {
 		name = GFX_irq_rashid_al_gaylani
 		texturefile = "gfx/leaders/IRQ/portrait_irq_rashid_al_gaylani.dds"
 	}
@@ -8470,6 +7340,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_TAJ_alim_khan
+		texturefile = "gfx/leaders/MISC/portrait_TAJ_alim_khan.dds"
+	}
+
+	spriteType = {
+		name = GFX_TAJ_alim_khan_small
+		texturefile = "gfx/interface/ideas/idea_TAJ_alim_khan.dds"
+	}
+
+	spriteType = {
 		name = GFX_Persia_Sayyed_Hasan_Taqizadeh
 		texturefile = "gfx/leaders/Arabic_Persian/Portrait_Persia_Sayyed_Hasan_Taqizadeh.tga"
 	}
@@ -8540,43 +7420,23 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_generic_communist_arab
-		texturefile = "gfx/interface/ideas/idea_generic_communist_arab.dds"
+		name = GFX_SYR_hashim_al_atassi
+		texturefile = "gfx/leaders/MISC/portrait_SYR_hashim_al_atassi.dds"
 	}
 
 	spriteType = {
-		name = GFX_idea_generic_communist_arab_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_communist_arab.dds"
+		name = GFX_SYR_hashim_al_atassi_small
+		texturefile = "gfx/interface/ideas/idea_SYR_hashim_al_atassi.dds"
 	}
 
 	spriteType = {
-		name = GFX_idea_generic_democratic_arab
-		texturefile = "gfx/interface/ideas/idea_generic_democratic_arab.dds"
+		name = GFX_SYR_mehemed_ali_abed
+		texturefile = "gfx/leaders/MISC/portrait_SYR_mehemed_ali_abed.dds"
 	}
 
 	spriteType = {
-		name = GFX_idea_generic_democratic_arab_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_democratic_arab.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_arab_3
-		texturefile = "gfx/interface/ideas/idea_generic_army_arab_3.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_arab_3_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_army_arab_3.dds"
-	}
-
-	spriteType = {
-		name = GFX_persia
-		texturefile = "gfx/interface/ideas/crowns/persia.dds"
-	}
-
-	spriteType = {
-		name = GFX_persia_small
-		texturefile = "gfx/interface/ideas/idea_persia.dds"
+		name = GFX_SYR_mehemed_ali_abed_small
+		texturefile = "gfx/interface/ideas/idea_SYR_mehemed_ali_abed.dds"
 	}
 
 	spriteType = {
@@ -8720,6 +7580,36 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_EGY_faud_i
+		texturefile = "gfx/leaders/EGY/Portrait_EGY_faud_i.dds"
+	}
+
+	spriteType = {
+		name = GFX_EGY_faud_i_small
+		texturefile = "gfx/interface/ideas/idea_EGY_faud_i.dds"
+	}
+
+	spriteType = {
+		name = GFX_JOR_abdullah_bin_al_hussein
+		texturefile = "gfx/leaders/MISC/portrait_JOR_abdullah_bin_al_hussein.dds"
+	}
+
+	spriteType = {
+		name = GFX_JOR_abdullah_bin_al_hussein_small
+		texturefile = "gfx/interface/ideas/idea_JOR_abdullah_bin_al_hussein.dds"
+	}
+
+	spriteType = {
+		name = GFX_PAL_amin_al_husseini
+		texturefile = "gfx/leaders/MISC/portrait_PAL_amin_al_husseini.dds"
+	}
+
+	spriteType = {
+		name = GFX_PAL_amin_al_husseini_small
+		texturefile = "gfx/interface/ideas/idea_PAL_amin_al_husseini.dds"
+	}
+
+	spriteType = {
 		name = GFX_EGY_Hussein_Al_Shafei
 		texturefile = "gfx/leaders/Arabic_Persian/Portrait_EGY_Hussein_Al_Shafei.tga"
 	}
@@ -8777,66 +7667,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_MOR_Zayani_small
 		texturefile = "gfx/interface/ideas/idea_MOR_Zayani.tga"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_sevket_sureyya_aydemir
-		texturefile = "gfx/interface/ideas/idea_tur_sevket_sureyya_aydemir.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_sevket_sureyya_aydemir_small
-		texturefile = "gfx/interface/ideas/idea_idea_tur_sevket_sureyya_aydemir.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_recep_peker
-		texturefile = "gfx/interface/ideas/idea_tur_recep_peker.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_recep_peker_small
-		texturefile = "gfx/interface/ideas/idea_idea_tur_recep_peker.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_arab_2
-		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_arab_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_arab_2_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_political_advisor_arab_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_egypt
-		texturefile = "gfx/interface/ideas/crowns/egypt.dds"
-	}
-
-	spriteType = {
-		name = GFX_egypt_small
-		texturefile = "gfx/interface/ideas/idea_egypt.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_arab_2
-		texturefile = "gfx/interface/ideas/idea_generic_army_arab_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_arab_2_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_army_arab_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_egypt_emblem
-		texturefile = "gfx/interface/ideas/crowns/egypt_emblem.dds"
-	}
-
-	spriteType = {
-		name = GFX_egypt_emblem_small
-		texturefile = "gfx/interface/ideas/idea_egypt_emblem.dds"
 	}
 
 	spriteType = {
@@ -8917,6 +7747,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Burma_Smith_Dun_small
 		texturefile = "gfx/interface/ideas/idea_Burma_Smith_Dun.tga"
+	}
+
+	spriteType = {
+		name = GFX_BRM_ne_win
+		texturefile = "gfx/leaders/MISC/portrait_BRM_ne_win.dds"
+	}
+
+	spriteType = {
+		name = GFX_BRM_ne_win_small
+		texturefile = "gfx/interface/ideas/idea_BRM_ne_win.dds"
 	}
 
 	spriteType = {
@@ -9040,6 +7880,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_TIB_thubten_kunphela
+		texturefile = "gfx/leaders/TIB/portrait_TIB_thubten_kunphela.dds"
+	}
+
+	spriteType = {
+		name = GFX_TIB_thubten_kunphela_small
+		texturefile = "gfx/interface/ideas/idea_TIB_thubten_kunphela.dds"
+	}
+
+	spriteType = {
 		name = GFX_Asia_Generic_democracy
 		texturefile = "gfx/leaders/Asia/Portrait_Asia_Generic_democracy.dds"
 	}
@@ -9067,6 +7917,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_DEI_Palar_small
 		texturefile = "gfx/interface/ideas/idea_DEI_Palar.tga"
+	}
+
+	spriteType = {
+		name = GFX_BRM_u_nu
+		texturefile = "gfx/leaders/MISC/portrait_BRM_u_nu.dds"
+	}
+
+	spriteType = {
+		name = GFX_BRM_u_nu_small
+		texturefile = "gfx/interface/ideas/idea_BRM_u_nu.dds"
 	}
 
 	spriteType = {
@@ -9110,6 +7970,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_BRM_ba_maw
+		texturefile = "gfx/leaders/MISC/portrait_BRM_ba_maw.dds"
+	}
+
+	spriteType = {
+		name = GFX_BRM_ba_maw_small
+		texturefile = "gfx/interface/ideas/idea_BRM_ba_maw.dds"
+	}
+
+	spriteType = {
 		name = GFX_Shan_Sao_Shwe_Thaik
 		texturefile = "gfx/leaders/Indo_Chinese_Nesia/Portrait_Shan_Sao_Shwe_Thaik.tga"
 	}
@@ -9127,16 +7997,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_bhu_jigme_wangchuk_small
 		texturefile = "gfx/interface/ideas/idea_bhu_jigme_wangchuk.dds"
-	}
-
-	spriteType = {
-		name = GFX_Tibet_Jamphel_Yeshe_Gyaltsen
-		texturefile = "gfx/leaders/TIB/Portrait_Tibet_Jamphel_Yeshe_Gyaltsen.dds"
-	}
-
-	spriteType = {
-		name = GFX_Tibet_Jamphel_Yeshe_Gyaltsen_small
-		texturefile = "gfx/interface/ideas/idea_Tibet_Jamphel_Yeshe_Gyaltsen.dds"
 	}
 
 	spriteType = {
@@ -9180,6 +8040,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_TIB_tsarong_dzasa
+		texturefile = "gfx/leaders/TIB/portrait_TIB_tsarong_dzasa.dds"
+	}
+
+	spriteType = {
+		name = GFX_TIB_tsarong_dzasa_small
+		texturefile = "gfx/interface/ideas/idea_TIB_tsarong_dzasa.dds"
+	}
+
+	spriteType = {
 		name = GFX_Asia_Generic_2
 		texturefile = "gfx/leaders/Asia/Portrait_Asia_Generic_2.dds"
 	}
@@ -9217,66 +8087,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Asia_Generic_female_1_small
 		texturefile = "gfx/interface/ideas/idea_Asia_Generic_female_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_communist_asia
-		texturefile = "gfx/interface/ideas/idea_generic_communist_asia.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_communist_asia_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_communist_asia.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_democratic_asia
-		texturefile = "gfx/interface/ideas/idea_generic_democratic_asia.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_democratic_asia_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_democratic_asia.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_asia_1
-		texturefile = "gfx/interface/ideas/idea_generic_army_asia_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_asia_1_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_army_asia_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_china_luo_ruiqing
-		texturefile = "gfx/interface/ideas/idea_china_luo_ruiqing.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_china_luo_ruiqing_small
-		texturefile = "gfx/interface/ideas/idea_idea_china_luo_ruiqing.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_fascist_asia
-		texturefile = "gfx/interface/ideas/idea_generic_fascist_asia.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_fascist_asia_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_fascist_asia.dds"
-	}
-
-	spriteType = {
-		name = GFX_bhutan
-		texturefile = "gfx/interface/ideas/crowns/bhutan.dds"
-	}
-
-	spriteType = {
-		name = GFX_bhutan_small
-		texturefile = "gfx/interface/ideas/idea_bhutan.dds"
 	}
 
 	spriteType = {
@@ -9400,6 +8210,26 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_MEN_jin_yongchang
+		texturefile = "gfx/leaders/MEN/portrait_MEN_jin_yongchang.dds"
+	}
+
+	spriteType = {
+		name = GFX_MEN_jin_yongchang_small
+		texturefile = "gfx/interface/ideas/idea_MEN_jin_yongchang.dds"
+	}
+
+	spriteType = {
+		name = GFX_MEN_altanochir
+		texturefile = "gfx/leaders/MEN/portrait_MEN_altanochir.dds"
+	}
+
+	spriteType = {
+		name = GFX_MEN_altanochir_small
+		texturefile = "gfx/interface/ideas/idea_MEN_altanochir.dds"
+	}
+
+	spriteType = {
 		name = GFX_Asia_Generic_new_2
 		texturefile = "gfx/leaders/Generic/Portrait_Asia_Generic_new_2.tga"
 	}
@@ -9440,6 +8270,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_MEN_li_shouxin
+		texturefile = "gfx/leaders/MEN/portrait_MEN_li_shouxin.dds"
+	}
+
+	spriteType = {
+		name = GFX_MEN_li_shouxin_small
+		texturefile = "gfx/interface/ideas/idea_MEN_li_shouxin.dds"
+	}
+
+	spriteType = {
 		name = GFX_MON_Gengis_Khan
 		texturefile = "gfx/leaders/Asian_Steppe/portrait_MON_Gengis_Khan.dds"
 	}
@@ -9467,6 +8307,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_SIK_Hoja_Niyaz_Haji_small
 		texturefile = "gfx/interface/ideas/idea_SIK_Hoja_Niyaz_Haji.tga"
+	}
+
+	spriteType = {
+		name = GFX_MEN_yondonwangchug
+		texturefile = "gfx/leaders/MEN/portrait_MEN_yondonwangchug.dds"
+	}
+
+	spriteType = {
+		name = GFX_MEN_yondonwangchug_small
+		texturefile = "gfx/interface/ideas/idea_MEN_yondonwangchug.dds"
 	}
 
 	spriteType = {
@@ -9517,6 +8367,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_XSM_Ma_Lin_small
 		texturefile = "gfx/interface/ideas/idea_XSM_Ma_Lin.tga"
+	}
+
+	spriteType = {
+		name = GFX_MEN_jodbajab
+		texturefile = "gfx/leaders/MEN/portrait_MEN_jodbajab.dds"
+	}
+
+	spriteType = {
+		name = GFX_MEN_jodbajab_small
+		texturefile = "gfx/interface/ideas/idea_MEN_jodbajab.dds"
 	}
 
 	spriteType = {
@@ -9970,46 +8830,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_hitoshi_imamura
-		texturefile = "gfx/interface/ideas/idea_hitoshi_imamura.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hitoshi_imamura_small
-		texturefile = "gfx/interface/ideas/idea_idea_hitoshi_imamura.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hideki_tojo
-		texturefile = "gfx/interface/ideas/idea_hideki_tojo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hideki_tojo_small
-		texturefile = "gfx/interface/ideas/idea_idea_hideki_tojo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hajime_sugiyama
-		texturefile = "gfx/interface/ideas/idea_hajime_sugiyama.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hajime_sugiyama_small
-		texturefile = "gfx/interface/ideas/idea_idea_hajime_sugiyama.dds"
-	}
-
-	spriteType = {
-		name = GFX_cambodia
-		texturefile = "gfx/interface/ideas/crowns/cambodia.dds"
-	}
-
-	spriteType = {
-		name = GFX_cambodia_small
-		texturefile = "gfx/interface/ideas/idea_cambodia.dds"
-	}
-
-	spriteType = {
 		name = GFX_Siam_Charun_Rattanakun_Seriroengri
 		texturefile = "gfx/leaders/Indo_Chinese_Nesia/Portrait_Siam_Charun_Rattanakun_Seriroengri.tga"
 	}
@@ -10097,6 +8917,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Siam_Rama_VII_small
 		texturefile = "gfx/interface/ideas/idea_Siam_Rama_VII.tga"
+	}
+
+	spriteType = {
+		name = GFX_LAO_sisavang_vong
+		texturefile = "gfx/leaders/LAO/portrait_LAO_sisavang_vong.dds"
+	}
+
+	spriteType = {
+		name = GFX_LAO_sisavang_vong_small
+		texturefile = "gfx/interface/ideas/idea_LAO_sisavang_vong.dds"
 	}
 
 	spriteType = {
@@ -10360,6 +9190,26 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_CAM_norodom_sihanouk
+		texturefile = "gfx/leaders/CAM/portrait_CAM_norodom_sihanouk.dds"
+	}
+
+	spriteType = {
+		name = GFX_CAM_norodom_sihanouk_small
+		texturefile = "gfx/interface/ideas/idea_CAM_norodom_sihanouk.dds"
+	}
+
+	spriteType = {
+		name = GFX_VIN_emperor_bao_dai
+		texturefile = "gfx/leaders/VIN/portrait_VIN_emperor_bao_dai.dds"
+	}
+
+	spriteType = {
+		name = GFX_VIN_emperor_bao_dai_small
+		texturefile = "gfx/interface/ideas/idea_VIN_emperor_bao_dai.dds"
+	}
+
+	spriteType = {
 		name = GFX_Vietnam_Ngo_Din_Diem
 		texturefile = "gfx/leaders/Indo_Chinese_Nesia/Portrait_Vietnam_Ngo_Din_Diem.tga"
 	}
@@ -10440,6 +9290,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_MAN_ma_zhanshan
+		texturefile = "gfx/leaders/MAN/portrait_MAN_ma_zhanshan.dds"
+	}
+
+	spriteType = {
+		name = GFX_MAN_ma_zhanshan_small
+		texturefile = "gfx/interface/ideas/idea_MAN_ma_zhanshan.dds"
+	}
+
+	spriteType = {
 		name = GFX_Manchuria_Henry_Pu_Yi
 		texturefile = "gfx/leaders/MAN/Portrait_Manchuria_Henry_Pu_Yi.dds"
 	}
@@ -10480,63 +9340,23 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_prc_deng_xiaoping
-		texturefile = "gfx/interface/ideas/idea_prc_deng_xiaoping.dds"
+		name = GFX_MAN_pujie
+		texturefile = "gfx/leaders/MAN/portrait_MAN_pujie.dds"
 	}
 
 	spriteType = {
-		name = GFX_idea_prc_deng_xiaoping_small
-		texturefile = "gfx/interface/ideas/idea_idea_prc_deng_xiaoping.dds"
+		name = GFX_MAN_pujie_small
+		texturefile = "gfx/interface/ideas/idea_MAN_pujie.dds"
 	}
 
 	spriteType = {
-		name = GFX_idea_prc_zhou_enlai
-		texturefile = "gfx/interface/ideas/idea_prc_zhou_enlai.dds"
+		name = GFX_man_yoshiko_kawashima
+		texturefile = "gfx/leaders/MAN/portrait_man_yoshiko_kawashima.dds"
 	}
 
 	spriteType = {
-		name = GFX_idea_prc_zhou_enlai_small
-		texturefile = "gfx/interface/ideas/idea_idea_prc_zhou_enlai.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_chi_chen_cheng
-		texturefile = "gfx/interface/ideas/idea_chi_chen_cheng.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_chi_chen_cheng_small
-		texturefile = "gfx/interface/ideas/idea_idea_chi_chen_cheng.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_chi_chiang_ching_kuo
-		texturefile = "gfx/interface/ideas/idea_chi_chiang_ching_kuo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_chi_chiang_ching_kuo_small
-		texturefile = "gfx/interface/ideas/idea_idea_chi_chiang_ching_kuo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hino_kumazo
-		texturefile = "gfx/interface/ideas/idea_hino_kumazo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_hino_kumazo_small
-		texturefile = "gfx/interface/ideas/idea_idea_hino_kumazo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_man_low_legitimacy5
-		texturefile = "gfx/interface/ideas/idea_man_low_legitimacy5.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_man_low_legitimacy5_small
-		texturefile = "gfx/interface/ideas/idea_idea_man_low_legitimacy5.dds"
+		name = GFX_man_yoshiko_kawashima_small
+		texturefile = "gfx/interface/ideas/idea_man_yoshiko_kawashima.dds"
 	}
 
 	spriteType = {
@@ -10570,23 +9390,13 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_kijuro_shidehara
-		texturefile = "gfx/interface/ideas/idea_kijuro_shidehara.dds"
+		name = GFX_KOR_yi_un
+		texturefile = "gfx/leaders/KOR/portrait_KOR_yi_un.dds"
 	}
 
 	spriteType = {
-		name = GFX_idea_kijuro_shidehara_small
-		texturefile = "gfx/interface/ideas/idea_idea_kijuro_shidehara.dds"
-	}
-
-	spriteType = {
-		name = GFX_joseon_emblem
-		texturefile = "gfx/interface/ideas/crowns/joseon_emblem.dds"
-	}
-
-	spriteType = {
-		name = GFX_joseon_emblem_small
-		texturefile = "gfx/interface/ideas/idea_joseon_emblem.dds"
+		name = GFX_KOR_yi_un_small
+		texturefile = "gfx/interface/ideas/idea_KOR_yi_un.dds"
 	}
 
 	spriteType = {
@@ -10767,46 +9577,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Nunavut_Leona_Aglukkaq_small
 		texturefile = "gfx/interface/ideas/idea_Nunavut_Leona_Aglukkaq.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sanzo_nosaka
-		texturefile = "gfx/interface/ideas/idea_sanzo_nosaka.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_sanzo_nosaka_small
-		texturefile = "gfx/interface/ideas/idea_idea_sanzo_nosaka.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_kingoro_hashimoto
-		texturefile = "gfx/interface/ideas/idea_kingoro_hashimoto.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_kingoro_hashimoto_small
-		texturefile = "gfx/interface/ideas/idea_idea_kingoro_hashimoto.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_chuichi_nagumo
-		texturefile = "gfx/interface/ideas/idea_chuichi_nagumo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_chuichi_nagumo_small
-		texturefile = "gfx/interface/ideas/idea_idea_chuichi_nagumo.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_fushimi_hiroyasu
-		texturefile = "gfx/interface/ideas/idea_fushimi_hiroyasu.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_fushimi_hiroyasu_small
-		texturefile = "gfx/interface/ideas/idea_idea_fushimi_hiroyasu.dds"
 	}
 
 	spriteType = {
@@ -11270,6 +10040,46 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_JAP_keisuke_okada
+		texturefile = "gfx/leaders/JAP/portrait_JAP_keisuke_okada.dds"
+	}
+
+	spriteType = {
+		name = GFX_JAP_keisuke_okada_small
+		texturefile = "gfx/interface/ideas/idea_JAP_keisuke_okada.dds"
+	}
+
+	spriteType = {
+		name = GFX_JAP_hideki_tojo
+		texturefile = "gfx/leaders/JAP/portrait_JAP_hideki_tojo.dds"
+	}
+
+	spriteType = {
+		name = GFX_JAP_hideki_tojo_small
+		texturefile = "gfx/interface/ideas/idea_JAP_hideki_tojo.dds"
+	}
+
+	spriteType = {
+		name = GFX_KOR_jiro_minami
+		texturefile = "gfx/leaders/KOR/portrait_KOR_jiro_minami.dds"
+	}
+
+	spriteType = {
+		name = GFX_KOR_jiro_minami_small
+		texturefile = "gfx/interface/ideas/idea_KOR_jiro_minami.dds"
+	}
+
+	spriteType = {
+		name = GFX_JAP_masanobu_tsuji
+		texturefile = "gfx/leaders/JAP/portrait_JAP_masanobu_tsuji.dds"
+	}
+
+	spriteType = {
+		name = GFX_JAP_masanobu_tsuji_small
+		texturefile = "gfx/interface/ideas/idea_JAP_masanobu_tsuji.dds"
+	}
+
+	spriteType = {
 		name = GFX_Japan_Hirohito
 		texturefile = "gfx/leaders/JAP/Portrait_Japan_Hirohito.dds"
 	}
@@ -11300,13 +10110,23 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_jap_hirohito
-		texturefile = "gfx/interface/ideas/idea_jap_hirohito.dds"
+		name = GFX_JAP_fumimaro_konoe
+		texturefile = "gfx/leaders/JAP/portrait_JAP_fumimaro_konoe.dds"
 	}
 
 	spriteType = {
-		name = GFX_idea_jap_hirohito_small
-		texturefile = "gfx/interface/ideas/idea_idea_jap_hirohito.dds"
+		name = GFX_JAP_fumimaro_konoe_small
+		texturefile = "gfx/interface/ideas/idea_JAP_fumimaro_konoe.dds"
+	}
+
+	spriteType = {
+		name = GFX_JAP_yoshitoshi_tokugawa
+		texturefile = "gfx/leaders/JAP/portrait_JAP_yoshitoshi_tokugawa.dds"
+	}
+
+	spriteType = {
+		name = GFX_JAP_yoshitoshi_tokugawa_small
+		texturefile = "gfx/interface/ideas/idea_JAP_yoshitoshi_tokugawa.dds"
 	}
 
 	spriteType = {
@@ -11440,6 +10260,16 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_RNG_sun_dianying
+		texturefile = "gfx/leaders/MISC/portrait_RNG_sun_dianying.dds"
+	}
+
+	spriteType = {
+		name = GFX_RNG_sun_dianying_small
+		texturefile = "gfx/interface/ideas/idea_RNG_sun_dianying.dds"
+	}
+
+	spriteType = {
 		name = GFX_China_Wu_Peifu
 		texturefile = "gfx/leaders/Sino/Portrait_China_Wu_Peifu.tga"
 	}
@@ -11447,16 +10277,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_China_Wu_Peifu_small
 		texturefile = "gfx/interface/ideas/idea_China_Wu_Peifu.tga"
-	}
-
-	spriteType = {
-		name = GFX_focus_man_claim_the_mandate_of_heaven
-		texturefile = "gfx/interface/goals/focus_man_claim_the_mandate_of_heaven.dds"
-	}
-
-	spriteType = {
-		name = GFX_focus_man_claim_the_mandate_of_heaven_small
-		texturefile = "gfx/interface/ideas/idea_focus_man_claim_the_mandate_of_heaven.dds"
 	}
 
 	spriteType = {
@@ -11660,76 +10480,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_generic_communist_africa
-		texturefile = "gfx/interface/ideas/idea_generic_communist_africa.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_communist_africa_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_communist_africa.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_democratic_africa
-		texturefile = "gfx/interface/ideas/idea_generic_democratic_africa.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_democratic_africa_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_democratic_africa.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_fascist_africa
-		texturefile = "gfx/interface/ideas/idea_generic_fascist_africa.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_fascist_africa_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_fascist_africa.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_africa_3
-		texturefile = "gfx/interface/ideas/idea_generic_army_africa_3.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_africa_3_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_army_africa_3.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_africa_3
-		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_africa_3.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_africa_3_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_political_advisor_africa_3.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_africa_5
-		texturefile = "gfx/interface/ideas/idea_generic_army_africa_5.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_africa_5_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_army_africa_5.dds"
-	}
-
-	spriteType = {
-		name = GFX_tonga
-		texturefile = "gfx/interface/ideas/crowns/tonga.dds"
-	}
-
-	spriteType = {
-		name = GFX_tonga_small
-		texturefile = "gfx/interface/ideas/idea_tonga.dds"
-	}
-
-	spriteType = {
 		name = GFX_HAW_barney_hajiro
 		texturefile = "gfx/leaders/Aborigine_Polynesia/Portrait_HAW_barney_hajiro.tga"
 	}
@@ -11887,66 +10637,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_HAW_Lydia_Liliuokalani_small
 		texturefile = "gfx/interface/ideas/idea_HAW_Lydia_Liliuokalani.tga"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_asia_3
-		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_asia_3.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_asia_3_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_political_advisor_asia_3.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_asia_1
-		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_asia_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_asia_1_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_political_advisor_asia_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_south_america_2
-		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_south_america_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_south_america_2_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_political_advisor_south_america_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_fascist_south_america
-		texturefile = "gfx/interface/ideas/idea_generic_fascist_south_america.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_fascist_south_america_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_fascist_south_america.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_south_america_1
-		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_south_america_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_political_advisor_south_america_1_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_political_advisor_south_america_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_tonga_shield
-		texturefile = "gfx/interface/ideas/crowns/tonga_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_tonga_shield_small
-		texturefile = "gfx/interface/ideas/idea_tonga_shield.dds"
 	}
 
 	spriteType = {
@@ -12137,56 +10827,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Native_American_female_2_small
 		texturefile = "gfx/interface/ideas/idea_Native_American_female_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_democratic_south_america
-		texturefile = "gfx/interface/ideas/idea_generic_democratic_south_america.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_democratic_south_america_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_democratic_south_america.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mex_alberto_pani
-		texturefile = "gfx/interface/ideas/idea_mex_alberto_pani.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mex_alberto_pani_small
-		texturefile = "gfx/interface/ideas/idea_idea_mex_alberto_pani.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mex_luis_montes_de_oca
-		texturefile = "gfx/interface/ideas/idea_mex_luis_montes_de_oca.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_mex_luis_montes_de_oca_small
-		texturefile = "gfx/interface/ideas/idea_idea_mex_luis_montes_de_oca.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_asia_6
-		texturefile = "gfx/interface/ideas/idea_generic_army_asia_6.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_army_asia_6_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_army_asia_6.dds"
-	}
-
-	spriteType = {
-		name = GFX_longobards
-		texturefile = "gfx/interface/ideas/crowns/longobards.dds"
-	}
-
-	spriteType = {
-		name = GFX_longobards_small
-		texturefile = "gfx/interface/ideas/idea_longobards.dds"
 	}
 
 	spriteType = {
@@ -14250,26 +12890,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_generic_communist_south_america
-		texturefile = "gfx/interface/ideas/idea_generic_communist_south_america.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_communist_south_america_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_communist_south_america.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_francisco_franco
-		texturefile = "gfx/interface/ideas/idea_francisco_franco.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_francisco_franco_small
-		texturefile = "gfx/interface/ideas/idea_idea_francisco_franco.dds"
-	}
-
-	spriteType = {
 		name = GFX_r56_generic_operative_south_america_1
 		texturefile = "gfx/leaders/Generic/r56_portrait_generic_operative_south_america_1.dds"
 	}
@@ -14287,16 +12907,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_r56_generic_operative_south_america_2_small
 		texturefile = "gfx/interface/ideas/idea_r56_generic_operative_south_america_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_brazil_shield
-		texturefile = "gfx/interface/ideas/crowns/brazil_shield.dds"
-	}
-
-	spriteType = {
-		name = GFX_brazil_shield_small
-		texturefile = "gfx/interface/ideas/idea_brazil_shield.dds"
 	}
 
 	spriteType = {
@@ -14517,16 +13127,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_SOM_Haaji_small
 		texturefile = "gfx/interface/ideas/idea_SOM_Haaji.tga"
-	}
-
-	spriteType = {
-		name = GFX_ethiopia
-		texturefile = "gfx/interface/ideas/crowns/ethiopia.dds"
-	}
-
-	spriteType = {
-		name = GFX_ethiopia_small
-		texturefile = "gfx/interface/ideas/idea_ethiopia.dds"
 	}
 
 	spriteType = {
@@ -15027,16 +13627,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_Uganda_Mutesa_small
 		texturefile = "gfx/interface/ideas/idea_Uganda_Mutesa.tga"
-	}
-
-	spriteType = {
-		name = GFX_ethiopia_emblem
-		texturefile = "gfx/interface/ideas/crowns/ethiopia_emblem.dds"
-	}
-
-	spriteType = {
-		name = GFX_ethiopia_emblem_small
-		texturefile = "gfx/interface/ideas/idea_ethiopia_emblem.dds"
 	}
 
 	spriteType = {
@@ -15760,26 +14350,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_vittorio_emanuele
-		texturefile = "gfx/interface/ideas/idea_vittorio_emanuele.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_vittorio_emanuele_small
-		texturefile = "gfx/interface/ideas/idea_idea_vittorio_emanuele.dds"
-	}
-
-	spriteType = {
-		name = GFX_camp_crown
-		texturefile = "gfx/interface/ideas/crowns/camp_crown.dds"
-	}
-
-	spriteType = {
-		name = GFX_camp_crown_small
-		texturefile = "gfx/interface/ideas/idea_camp_crown.dds"
-	}
-
-	spriteType = {
 		name = GFX_synthetic_leader
 		texturefile = "gfx/leaders/Deathbringers/portrait_synthetic_leader.dds"
 	}
@@ -15867,16 +14437,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_synthetic_operative_small
 		texturefile = "gfx/interface/ideas/idea_synthetic_operative.dds"
-	}
-
-	spriteType = {
-		name = GFX_eldritch
-		texturefile = "gfx/interface/ideas/crowns/eldritch.dds"
-	}
-
-	spriteType = {
-		name = GFX_eldritch_small
-		texturefile = "gfx/interface/ideas/idea_eldritch.dds"
 	}
 
 	spriteType = {
@@ -16000,16 +14560,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_generic_motorized_equipment_manufacturer_1
-		texturefile = "gfx/interface/ideas/idea_generic_motorized_equipment_manufacturer_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_generic_motorized_equipment_manufacturer_1_small
-		texturefile = "gfx/interface/ideas/idea_idea_generic_motorized_equipment_manufacturer_1.dds"
-	}
-
-	spriteType = {
 		name = GFX_Chancellor_Glitterhoof
 		texturefile = "gfx/leaders/Animalia/portrait_Chancellor_Glitterhoof.dds"
 	}
@@ -16060,16 +14610,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_idea_porsche
-		texturefile = "gfx/interface/ideas/idea_porsche.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_porsche_small
-		texturefile = "gfx/interface/ideas/idea_idea_porsche.dds"
-	}
-
-	spriteType = {
 		name = GFX_dog_leader
 		texturefile = "gfx/leaders/Animalia/portrait_dog_leader.dds"
 	}
@@ -16087,16 +14627,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_dog_leader_F_small
 		texturefile = "gfx/interface/ideas/idea_dog_leader_F.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_golden_age_of_the_wolf
-		texturefile = "gfx/interface/ideas/idea_tur_golden_age_of_the_wolf.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_tur_golden_age_of_the_wolf_small
-		texturefile = "gfx/interface/ideas/idea_idea_tur_golden_age_of_the_wolf.dds"
 	}
 
 	spriteType = {
@@ -16127,16 +14657,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_dragon_businessman_leader_small
 		texturefile = "gfx/interface/ideas/idea_dragon_businessman_leader.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_man_low_legitimacy4
-		texturefile = "gfx/interface/ideas/idea_man_low_legitimacy4.dds"
-	}
-
-	spriteType = {
-		name = GFX_idea_man_low_legitimacy4_small
-		texturefile = "gfx/interface/ideas/idea_idea_man_low_legitimacy4.dds"
 	}
 
 	spriteType = {
@@ -16187,16 +14707,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_duck_operative_F_small
 		texturefile = "gfx/interface/ideas/idea_duck_operative_F.dds"
-	}
-
-	spriteType = {
-		name = GFX_zoo
-		texturefile = "gfx/interface/ideas/crowns/zoo.dds"
-	}
-
-	spriteType = {
-		name = GFX_zoo_small
-		texturefile = "gfx/interface/ideas/idea_zoo.dds"
 	}
 
 	spriteType = {
