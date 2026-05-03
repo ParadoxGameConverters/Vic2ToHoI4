@@ -137,7 +137,7 @@ Character Character::Factory::createNewGeneral(const Vic2::Leader& src_general,
 	general.id_ = determineId(general.name_, tag);
 
 	general.portraits_.emplace_back("army", "large", portrait_location);
-	general.portraits_.emplace_back("army", "small", portrait_location);
+	general.portraits_.emplace_back("army", "small", std::string(portrait_location) + "_small");
 
 	localisation.addCharacterLocalisation(general.id_, general.name_);
 
@@ -173,7 +173,7 @@ Character Character::Factory::createNewAdmiral(const Vic2::Leader& src_admiral,
 	admiral.id_ = determineId(admiral.name_, tag);
 
 	admiral.portraits_.emplace_back("navy", "large", portrait_location);
-	admiral.portraits_.emplace_back("navy", "small", portrait_location);
+	admiral.portraits_.emplace_back("navy", "small", std::string(portrait_location) + "_small");
 
 	localisation.addCharacterLocalisation(admiral.id_, admiral.name_);
 
