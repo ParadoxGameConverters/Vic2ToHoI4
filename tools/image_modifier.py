@@ -34,20 +34,19 @@ def extract_sprite_textures(interface_dirs):
     return sprite_textures
 
 # === Extract portrait references from the config file ===
-def extract_portrait_references(file_path):
+def extract_portrait_references(file_content):
     references = []
     seen = set()
     portrait_pattern = re.compile(r'\s+"?(GFX[^"\n]+|gfx[^"\n]+)"?')
 
-    with open(file_path, encoding="utf-8") as f:
-        for line in f:
-            line = line.split('#', 1)[0]  # strip comments
-            matches = portrait_pattern.findall(line)
-            for ref in matches:
-                cleaned = ref.strip().strip('"')
-                if cleaned and cleaned not in seen:
-                    seen.add(cleaned)
-                    references.append(cleaned)
+    for line in file_content.split('\n'):
+        line = line.split('#', 1)[0]  # strip comments
+        matches = portrait_pattern.findall(line)
+        for ref in matches:
+            cleaned = ref.strip().strip('"')
+            if cleaned and cleaned not in seen:
+                seen.add(cleaned)
+                references.append(cleaned)
 
     return references
 
@@ -149,14 +148,14 @@ integrated_dlc_interface_dirs, integrated_dlc_gfx_dirs = discover_dlc_dirs(hoi4_
 interface_dirs.extend(integrated_dlc_interface_dirs)
 gfx_dirs.extend(integrated_dlc_gfx_dirs)
 
-portrait_refs = extract_portrait_references(config_file)
+with open(config_file, "r", encoding="utf-8") as mappings_file:
+    mappings_lines = mappings_file.read()
+
+portrait_refs = extract_portrait_references(mappings_lines)
 existing_files = load_existing_files(*gfx_dirs)
 sprite_textures = extract_sprite_textures(interface_dirs)
 dlc_sprites = extract_sprite_textures(dlc_interface_dirs)
 dlc_files = load_existing_files(*dlc_gfx_dirs)
-
-with open(config_file, "r", encoding="utf-8") as mappings_file:
-    mappings_lines = mappings_file.read()
 
 log = open("tools/portraits.log", "w")
 gfx_file = open("data/blank_mod/interface/_leader_portraits_mod_generated.gfx", "w")
