@@ -129,14 +129,10 @@ def CreateSmallVersion(filename):
     on_canvas.save(small_filename)
 
 def UpdateMappings(filename):
+    global mappings_lines
+
     replacement = "GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","")
-    mappings_file = open("data/configurables/cultureGroupToGraphics.txt", "r")
-    mappings_lines = mappings_file.read()
-    mappings_file.close()
-    new_mappings_file = open("data/configurables/cultureGroupToGraphics.txt", "w")
-    replacement_lines = mappings_lines.replace(filename, replacement)
-    new_mappings_file.write(replacement_lines)
-    new_mappings_file.close()
+    mappings_lines = mappings_lines.replace(filename, replacement)
 
 
 hoi4_path = options["hoi4_path"]
@@ -158,6 +154,9 @@ existing_files = load_existing_files(*gfx_dirs)
 sprite_textures = extract_sprite_textures(interface_dirs)
 dlc_sprites = extract_sprite_textures(dlc_interface_dirs)
 dlc_files = load_existing_files(*dlc_gfx_dirs)
+
+with open(config_file, "r", encoding="utf-8") as mappings_file:
+    mappings_lines = mappings_file.read()
 
 log = open("tools/portraits.log", "w")
 gfx_file = open("data/blank_mod/interface/_leader_portraits_mod_generated.gfx", "w")
@@ -196,3 +195,6 @@ for ref in portrait_refs:
 
 gfx_file.write("}")
 gfx_file.close()
+
+with open(config_file, "w", encoding="utf-8") as mappings_file:
+    mappings_file.write(mappings_lines)
