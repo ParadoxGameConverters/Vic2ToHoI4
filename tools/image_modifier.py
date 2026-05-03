@@ -77,6 +77,20 @@ def load_existing_files(*gfx_dirs):
                 existing[key] = str(path)
     return existing
 
+
+def find_existing_file(path):
+    normalized_path = str(path).lower().lstrip("/")
+    if normalized_path in existing_files:
+        return existing_files[normalized_path]
+
+    stem = Path(normalized_path).stem.lower()
+    for key, file_path in existing_files.items():
+        if Path(key).stem.lower() == stem:
+            return file_path
+
+    return None
+
+
 def DetermineSmallFilename(big_filename):
     small_filename = "data/blank_mod/gfx/interface/ideas/idea_" + os.path.basename(big_filename).replace("Portrait_", "").replace("portrait_", "")
     small_filename = small_filename.replace("portrait_", "idea_")
@@ -158,9 +172,8 @@ for ref in portrait_refs:
     if is_sprite:
         if normalized_ref in sprite_textures:
             texture = sprite_textures[normalized_ref]
-            normalized_path = texture.lower().lstrip("/")
-            if normalized_path in existing_files:
-                image_file = existing_files[normalized_path]
+            image_file = find_existing_file(texture)
+            if image_file:
                 if not is_idea:
                     CreateSmallVersion(image_file)
                     gfx_file.write(GetDefinition(ref, texture))
@@ -169,16 +182,17 @@ for ref in portrait_refs:
         elif normalized_ref not in dlc_sprites:
             log.write(f"Missing sprite: {ref}\n")
     else:
-        normalized_path = ref_lower.lstrip("/")
-        if normalized_path in existing_files:
-            image_file = existing_files[normalized_path]
+        image_file = find_existing_file(normalized_ref)
+        if image_file:
             if not is_idea:
                 CreateSmallVersion(image_file)
                 name = GetSpriteName(ref)
                 gfx_file.write(GetDefinition(name, ref))
                 UpdateMappings(ref)
-        elif normalized_path not in dlc_files:
-            log.write(f"Missing file: {ref}\n")
+        else:
+            normalized_path = normalized_ref.lower().lstrip("/")
+            if normalized_path not in dlc_files:
+                log.write(f"Missing file: {ref}\n")
 
 gfx_file.write("}")
 gfx_file.close()

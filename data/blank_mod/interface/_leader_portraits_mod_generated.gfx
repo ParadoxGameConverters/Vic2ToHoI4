@@ -1660,6 +1660,18 @@ spriteTypes = {
 	}
 
 	spriteType = {
+		name = GFX_portrait_Philippe_Petain
+		texturefile = "gfx/leaders/FRA/Portrait_France_Philippe_Petain.dds
+"
+	}
+
+	spriteType = {
+		name = GFX_portrait_Philippe_Petain_small
+		texturefile = "gfx/interface/ideas/idea_France_Philippe_Petain.dds
+"
+	}
+
+	spriteType = {
 		name = GFX_portrait_FRA_jean_de_lattre_de_tassigny
 		texturefile = "gfx/leaders/FRA/Portrait_France_Jean_de_Lattre_de_Tassigny.dds"
 	}
@@ -2467,6 +2479,18 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_portrait_GER_gotthard_heinrici_small
 		texturefile = "gfx/interface/ideas/idea_Germany_Gotthard_Heinrici.dds"
+	}
+
+	spriteType = {
+		name = GFX_portrait_Gunther_von_Kluge
+		texturefile = "gfx/leaders/GER/Portrait_Germany_Gunther_von_Kluge.dds
+"
+	}
+
+	spriteType = {
+		name = GFX_portrait_Gunther_von_Kluge_small
+		texturefile = "gfx/interface/ideas/idea_Germany_Gunther_von_Kluge.dds
+"
 	}
 
 	spriteType = {
