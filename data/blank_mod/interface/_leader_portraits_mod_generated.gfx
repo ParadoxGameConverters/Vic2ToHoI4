@@ -6264,26 +6264,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_generic_political_advisor_india_2
-		texturefile = "gfx/interface/ideas/generic_political_advisor_india_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_generic_political_advisor_india_2_small
-		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_india_2.dds"
-	}
-
-	spriteType = {
-		name = GFX_generic_political_advisor_india_1
-		texturefile = "gfx/interface/ideas/generic_political_advisor_india_1.dds"
-	}
-
-	spriteType = {
-		name = GFX_generic_political_advisor_india_1_small
-		texturefile = "gfx/interface/ideas/idea_generic_political_advisor_india_1.dds"
-	}
-
-	spriteType = {
 		name = GFX_Portrait_Arabia_Generic_land_1
 		texturefile = "gfx/leaders/SAU/Portrait_Arabia_Generic_land_1.dds"
 	}
@@ -6921,16 +6901,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_SYR_Nazik_Abid_small
 		texturefile = "gfx/interface/ideas/idea_SYR_Nazik_Abid.tga"
-	}
-
-	spriteType = {
-		name = GFX_focus_TUR_turanist_ambition
-		texturefile = "gfx/interface/goals/focus_TUR_turanist_ambition.dds"
-	}
-
-	spriteType = {
-		name = GFX_focus_TUR_turanist_ambition_small
-		texturefile = "gfx/interface/ideas/idea_focus_TUR_turanist_ambition.dds"
 	}
 
 	spriteType = {
@@ -8021,6 +7991,16 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_bhu_jigme_wangchuk_small
 		texturefile = "gfx/interface/ideas/idea_bhu_jigme_wangchuk.dds"
+	}
+
+	spriteType = {
+		name = GFX_portrait_Jamphel_Yeshe_Gyaltsen
+		texturefile = "gfx/leaders/TIB/portrait_TIB_jamphel_yeshe_gyaltsen.dds"
+	}
+
+	spriteType = {
+		name = GFX_portrait_Jamphel_Yeshe_Gyaltsen_small
+		texturefile = "gfx/interface/ideas/idea_TIB_jamphel_yeshe_gyaltsen.dds"
 	}
 
 	spriteType = {
@@ -9604,16 +9584,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_vojtek_commander
-		texturefile = "gfx/achievements/vojtek_commander.dds"
-	}
-
-	spriteType = {
-		name = GFX_vojtek_commander_small
-		texturefile = "gfx/interface/ideas/idea_vojtek_commander.dds"
-	}
-
-	spriteType = {
 		name = GFX_portrait_JAP_akira_muto
 		texturefile = "gfx/leaders/JAP/Portrait_Japan_Akira_Muto.dds"
 	}
@@ -10151,16 +10121,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_portrait_JAP_yoshitoshi_tokugawa_small
 		texturefile = "gfx/interface/ideas/idea_JAP_yoshitoshi_tokugawa.dds"
-	}
-
-	spriteType = {
-		name = GFX_focus_jap_pacific_guardian
-		texturefile = "gfx/interface/goals/focus_jap_pacific_guardian.dds"
-	}
-
-	spriteType = {
-		name = GFX_focus_jap_pacific_guardian_small
-		texturefile = "gfx/interface/ideas/idea_focus_jap_pacific_guardian.dds"
 	}
 
 	spriteType = {
@@ -14444,16 +14404,6 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = GFX_spr_anarchist_society
-		texturefile = "gfx/interface/ideas/spr_anarchist_society.dds"
-	}
-
-	spriteType = {
-		name = GFX_spr_anarchist_society_small
-		texturefile = "gfx/interface/ideas/idea_spr_anarchist_society.dds"
-	}
-
-	spriteType = {
 		name = GFX_synthetic_operative
 		texturefile = "gfx/leaders/Deathbringers/portrait_synthetic_operative.dds"
 	}
@@ -14501,16 +14451,6 @@ spriteTypes = {
 	spriteType = {
 		name = GFX_operative_unknown_small
 		texturefile = "gfx/interface/ideas/idea_operative_unknown.dds"
-	}
-
-	spriteType = {
-		name = GFX_brains
-		texturefile = "gfx/achievements/brains.dds"
-	}
-
-	spriteType = {
-		name = GFX_brains_small
-		texturefile = "gfx/interface/ideas/idea_brains.dds"
 	}
 
 	spriteType = {

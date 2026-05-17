@@ -98,6 +98,11 @@ def DetermineSmallFilename(big_filename):
 def GetScalingFactor(width):
     return 34.0 / width;
 
+def IsBigImage(image_path):
+    with Image.open(image_path) as img:
+        return img.width > 100 and img.height > 100
+
+
 def GetSpriteName(filename):
     return "GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","").replace(" ", "_")
 
@@ -165,14 +170,13 @@ for ref in portrait_refs:
     normalized_ref = ref.strip('"')
     ref_lower = normalized_ref.lower()
     is_sprite = not ref_lower.endswith(tuple(gfx_extensions))
-    is_idea = "idea" in ref
     
     if is_sprite:
         if normalized_ref in sprite_textures:
             texture = sprite_textures[normalized_ref]
             image_file = find_existing_file(texture)
             if image_file:
-                if not is_idea:
+                if IsBigImage(image_file):
                     CreateSmallVersion(image_file)
                     gfx_file.write(GetDefinition(ref, texture))
             else:
@@ -182,7 +186,7 @@ for ref in portrait_refs:
     else:
         image_file = find_existing_file(normalized_ref)
         if image_file:
-            if not is_idea:
+            if IsBigImage(image_file):
                 CreateSmallVersion(image_file)
                 name = GetSpriteName(ref)
                 gfx_file.write(GetDefinition(name, ref))
