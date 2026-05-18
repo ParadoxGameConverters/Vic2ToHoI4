@@ -1241,7 +1241,7 @@ italic = {
 			"GFX_idea_amedeo_mecozzi"
 		}
 		radical = {
-			"GFX_idea_alfredo_guzzoni"
+			"gfx/interface/ideas/idea_alfredo_guzzoni.dds"
 			"GFX_idea_francesco_pricolo"
 			"GFX_idea_domenico_cavagnari"
 		}
@@ -1432,7 +1432,7 @@ hellenic_caucasian = {
 		democratic = {
 			"gfx/interface/ideas/idea_GRE_dimitrios_psarros.dds"
 			"gfx/interface/ideas/idea_GRE_eleftherios_venizelos.dds"
-			"GFX_idea_GRE_themistoklis_sofoulis"
+			"gfx/interface/ideas/idea_GRE_themistoklis_sofoulis.tga"
 		}
 		fascism = {
 			"gfx/interface/ideas/idea_GRE_charalambos_katsimitros.dds"
@@ -1448,7 +1448,7 @@ hellenic_caucasian = {
 			"GFX_idea_amedeo_mecozzi" # Revise
 		}
 		radical = {
-			"GFX_idea_GRE_aristotle_onassis"
+			"gfx/interface/ideas/idea_GRE_aristotle_onassis.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -2495,23 +2495,23 @@ indian = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_generic_political_advisor_india_2"
+			"gfx/interface/ideas/generic_political_advisor_india_2.dds"
 		}
 		democratic = {
-			"GFX_idea_chakravarti_rajagopalachari"
-			"GFX_idea_sir_mohammed_iqbal"
+			"gfx/interface/ideas/idea_chakravarti_rajagopalachari.dds"
+			"gfx/interface/ideas/idea_sir_mohammed_iqbal.dds"
 		}
 		fascism = {
-			"GFX_idea_subhas_chanda_bose"
+			"gfx/interface/ideas/idea_subhas_chanda_bose.dds"
 		}
 		absolutist = {
-			"GFX_idea_agha_khan"
+			"gfx/interface/ideas/idea_agha_khan.dds"
 		}
 		neutrality = {
-			"GFX_generic_political_advisor_india_1"
+			"gfx/interface/ideas/generic_political_advisor_india_1.dds"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_arab"
+			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -2797,13 +2797,13 @@ iranian = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_arab"
+			"gfx/interface/ideas/idea_generic_communist_arab.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_arab"
+			"gfx/interface/ideas/idea_generic_democratic_arab.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_arab"
+			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 		absolutist = {
 			"GFX_idea_generic_army_arab_3" #Revise
@@ -2812,7 +2812,7 @@ iranian = {
 			"GFX_idea_tur_sukru_saracoglu"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_arab"
+			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -2963,7 +2963,7 @@ north_african = {
 			"GFX_idea_tur_recep_peker"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_arab"
+			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 		absolutist = {
 			"GFX_idea_generic_army_arab_3" #Revise
@@ -2972,7 +2972,7 @@ north_african = {
 			"GFX_idea_generic_political_advisor_arab_2"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_arab"
+			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -3073,13 +3073,13 @@ near_eastern = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_arab"
+			"gfx/interface/ideas/idea_generic_communist_arab.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_arab"
+			"gfx/interface/ideas/idea_generic_democratic_arab.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_arab"
+			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 		absolutist = {
 			"GFX_idea_generic_army_arab_3"
@@ -3089,7 +3089,7 @@ near_eastern = {
 			"GFX_idea_tur_sukru_saracoglu"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_arab"
+			"gfx/interface/ideas/idea_generic_fascist_arab.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -3174,7 +3174,7 @@ tibetian_burman_karenic = {
 		absolutist = {
 			GFX_Shan_Sao_Shwe_Thaik
 			"GFX_bhu_jigme_wangchuk"
-			"GFX_Tibet_Jamphel_Yeshe_Gyaltsen"
+			"GFX_portrait_Jamphel_Yeshe_Gyaltsen"
 			"GFX_Asia_Generic_3"
 		}
 		neutrality = {
@@ -3209,10 +3209,10 @@ tibetian_burman_karenic = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_asia"
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_asia"
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
 		}
 		fascism = {
 			"GFX_idea_generic_army_asia_1"
@@ -3224,7 +3224,7 @@ tibetian_burman_karenic = {
 			"GFX_idea_tur_sukru_saracoglu"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -3366,10 +3366,10 @@ asian_steppe = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_asia"
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_asia"
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
 		}
 		fascism = {
 			"GFX_idea_generic_army_asia_1"
@@ -3381,7 +3381,7 @@ asian_steppe = {
 			"GFX_idea_tur_sukru_saracoglu"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -3527,10 +3527,10 @@ austronesian = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_asia"
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_asia"
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
 		}
 		fascism = {
 			"GFX_idea_hitoshi_imamura"
@@ -3542,7 +3542,7 @@ austronesian = {
 			"GFX_idea_hajime_sugiyama"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -3663,10 +3663,10 @@ tai = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_asia"
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_asia"
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
 		}
 		fascism = {
 			"GFX_idea_hitoshi_imamura"
@@ -3678,7 +3678,7 @@ tai = {
 			"GFX_idea_hajime_sugiyama"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -3816,10 +3816,10 @@ austroasiatic = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_asia"
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_asia"
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
 		}
 		fascism = {
 			"GFX_idea_hitoshi_imamura"
@@ -3831,7 +3831,7 @@ austroasiatic = {
 			"GFX_idea_hajime_sugiyama"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -3948,12 +3948,12 @@ tungustic = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_prc_deng_xiaoping"
-			"GFX_idea_prc_zhou_enlai"
+			"gfx/interface/ideas/idea_prc_deng_xiaoping.dds"
+			"gfx/interface/ideas/idea_prc_zhou_enlai.dds"
 		}
 		democratic = {
-			"GFX_idea_chi_chen_cheng"
-			"GFX_idea_chi_chiang_ching_kuo"
+			"gfx/interface/ideas/idea_chi_chen_cheng.dds"
+			"gfx/interface/ideas/idea_chi_chiang_ching_kuo.dds"
 		}
 		fascism = {
 			"GFX_idea_hitoshi_imamura"
@@ -3965,7 +3965,7 @@ tungustic = {
 			"GFX_idea_hajime_sugiyama"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 			"GFX_idea_hino_kumazo"
 		}
 	}
@@ -4085,13 +4085,13 @@ koreanic = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_asia"
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_asia"
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 		}
 		absolutist = {
 			"GFX_idea_hajime_sugiyama"
@@ -4100,7 +4100,7 @@ koreanic = {
 			"GFX_idea_kijuro_shidehara"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -4410,11 +4410,11 @@ japonic = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_asia"
+			"gfx/interface/ideas/idea_generic_communist_asia.dds"
 			"GFX_idea_sanzo_nosaka"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_asia"
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
 			"GFX_idea_kijuro_shidehara"
 		}
 		fascism = {
@@ -4430,7 +4430,7 @@ japonic = {
 			"GFX_idea_chuichi_nagumo"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 			"GFX_idea_hino_kumazo"
 			"GFX_idea_fushimi_hiroyasu"
 		}
@@ -4581,12 +4581,12 @@ sinitic = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_prc_deng_xiaoping"
-			"GFX_idea_prc_zhou_enlai"
+			"gfx/interface/ideas/idea_prc_deng_xiaoping.dds"
+			"gfx/interface/ideas/idea_prc_zhou_enlai.dds"
 		}
 		democratic = {
-			"GFX_idea_chi_chen_cheng"
-			"GFX_idea_chi_chiang_ching_kuo"
+			"gfx/interface/ideas/idea_chi_chen_cheng.dds"
+			"gfx/interface/ideas/idea_chi_chiang_ching_kuo.dds"
 		}
 		fascism = {
 			"GFX_idea_hitoshi_imamura"
@@ -4598,7 +4598,7 @@ sinitic = {
 			"GFX_idea_hajime_sugiyama"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 			"GFX_idea_hino_kumazo"
 		}
 	}
@@ -4703,22 +4703,22 @@ australia_melanesia_madagascar = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_africa"
+			"gfx/interface/ideas/idea_generic_communist_africa.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_africa"
+			"gfx/interface/ideas/idea_generic_democratic_africa.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_africa"
+			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
 		}
 		absolutist = {
-			"GFX_idea_generic_army_africa_3"
+			"gfx/interface/ideas/idea_generic_army_africa_3.dds"
 		}
 		neutrality = {
-			"GFX_idea_generic_political_advisor_africa_3"
+			"gfx/interface/ideas/idea_generic_political_advisor_africa_3.dds"
 		}
 		radical = {
-			"GFX_idea_generic_army_africa_5"
+			"gfx/interface/ideas/idea_generic_army_africa_5.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -4835,13 +4835,13 @@ polynesia_micronesia = {
 			"GFX_idea_generic_political_advisor_asia_1"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_asia"
+			"gfx/interface/ideas/idea_generic_fascist_asia.dds"
 		}
 		absolutist = {
 			"GFX_idea_generic_political_advisor_south_america_2"
 		}
 		neutrality = {
-			"GFX_idea_generic_fascist_south_america"
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
 		}
 		radical = {
 			"GFX_idea_generic_political_advisor_south_america_1"
@@ -4948,16 +4948,16 @@ north_american_native = {
 			"GFX_idea_generic_political_advisor_asia_3"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_south_america"
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_south_america"
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
 		}
 		absolutist = {
-			"GFX_idea_mex_alberto_pani"
+			"gfx/interface/ideas/idea_mex_alberto_pani.dds"
 		}
 		neutrality = {
-			"GFX_idea_mex_luis_montes_de_oca"
+			"gfx/interface/ideas/idea_mex_luis_montes_de_oca.dds"
 		}
 		radical = {
 			"GFX_idea_generic_army_asia_6"
@@ -5068,16 +5068,16 @@ central_american_native = {
 			"GFX_idea_generic_political_advisor_asia_3"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_south_america"
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_south_america"
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
 		}
 		absolutist = {
-			"GFX_idea_mex_alberto_pani"
+			"gfx/interface/ideas/idea_mex_alberto_pani.dds"
 		}
 		neutrality = {
-			"GFX_idea_mex_luis_montes_de_oca"
+			"gfx/interface/ideas/idea_mex_luis_montes_de_oca.dds"
 		}
 		radical = {
 			"GFX_idea_generic_army_asia_6"
@@ -5203,16 +5203,16 @@ south_american_native = {
 			"GFX_idea_generic_political_advisor_asia_3"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_south_america"
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_south_america"
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
 		}
 		absolutist = {
-			"GFX_idea_mex_alberto_pani"
+			"gfx/interface/ideas/idea_mex_alberto_pani.dds"
 		}
 		neutrality = {
-			"GFX_idea_mex_luis_montes_de_oca"
+			"gfx/interface/ideas/idea_mex_luis_montes_de_oca.dds"
 		}
 		radical = {
 			"GFX_idea_generic_army_asia_6"
@@ -5477,22 +5477,22 @@ hispanic_pie = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_south_america"
+			"gfx/interface/ideas/idea_generic_communist_south_america.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_south_america"
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_south_america"
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
 		}
 		absolutist = {
 			"GFX_idea_francisco_franco"
 		}
 		neutrality = {
-			"GFX_idea_generic_democratic_asia"
+			"gfx/interface/ideas/idea_generic_democratic_asia.dds"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_south_america"
+			"gfx/interface/ideas/idea_generic_fascist_south_america.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -5602,22 +5602,22 @@ cushitic_omotic_nilotic = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_africa"
+			"gfx/interface/ideas/idea_generic_communist_africa.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_africa"
+			"gfx/interface/ideas/idea_generic_democratic_africa.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_africa"
+			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
 		}
 		absolutist = {
-			"GFX_idea_generic_army_africa_3"
+			"gfx/interface/ideas/idea_generic_army_africa_3.dds"
 		}
 		neutrality = {
-			"GFX_idea_generic_political_advisor_africa_3"
+			"gfx/interface/ideas/idea_generic_political_advisor_africa_3.dds"
 		}
 		radical = {
-			"GFX_idea_generic_army_africa_5"
+			"gfx/interface/ideas/idea_generic_army_africa_5.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -5767,22 +5767,22 @@ niger_congo = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_africa"
+			"gfx/interface/ideas/idea_generic_communist_africa.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_africa"
+			"gfx/interface/ideas/idea_generic_democratic_africa.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_africa"
+			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
 		}
 		absolutist = {
-			"GFX_idea_generic_army_africa_3"
+			"gfx/interface/ideas/idea_generic_army_africa_3.dds"
 		}
 		neutrality = {
-			"GFX_idea_generic_political_advisor_africa_3"
+			"gfx/interface/ideas/idea_generic_political_advisor_africa_3.dds"
 		}
 		radical = {
-			"GFX_idea_generic_army_africa_5"
+			"gfx/interface/ideas/idea_generic_army_africa_5.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -5973,22 +5973,22 @@ african = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_idea_generic_communist_africa"
+			"gfx/interface/ideas/idea_generic_communist_africa.dds"
 		}
 		democratic = {
-			"GFX_idea_generic_democratic_africa"
+			"gfx/interface/ideas/idea_generic_democratic_africa.dds"
 		}
 		fascism = {
-			"GFX_idea_generic_fascist_africa"
+			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
 		}
 		absolutist = {
-			"GFX_idea_generic_army_africa_3"
+			"gfx/interface/ideas/idea_generic_army_africa_3.dds"
 		}
 		neutrality = {
-			"GFX_idea_generic_democratic_south_america"
+			"gfx/interface/ideas/idea_generic_democratic_south_america.dds"
 		}
 		radical = {
-			"GFX_idea_generic_fascist_africa"
+			"gfx/interface/ideas/idea_generic_fascist_africa.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -6495,7 +6495,7 @@ classical_latin = {
 		fascism = { "GFX_idea_carlo_scorza" } # Revise
 		absolutist = { "GFX_idea_vittorio_emanuele" }
 		neutrality = { "GFX_idea_alberto_da_zara" } # Revise
-		radical = { "GFX_idea_alfredo_guzzoni" } # Revise
+		radical = { "gfx/interface/ideas/idea_alfredo_guzzoni.dds" } # Revise
 	}
 	male_monarch_portraits = {
 		"gfx/interface/ideas/crowns/camp_crown.dds"
@@ -6552,22 +6552,22 @@ deathbringers = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -6628,22 +6628,22 @@ silhoutte_o = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -6703,22 +6703,22 @@ the_portraitless = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -6769,22 +6769,22 @@ jan_mayenese = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -6845,22 +6845,22 @@ cats = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -6927,22 +6927,22 @@ falklands_sunset_invasion = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -7145,22 +7145,22 @@ lemonade_stand = {
 	}
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -7222,22 +7222,22 @@ indian_calvary = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -7299,22 +7299,22 @@ SHH_protein = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {
@@ -7376,22 +7376,22 @@ animalia = {
 
 	ideology_minister_portraits = {
 		communism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		democratic = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		fascism = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		absolutist = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		neutrality = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 		radical = {
-			"GFX_spr_anarchist_society"
+			"gfx/interface/ideas/spr_anarchist_society.dds"
 		}
 	}
 	male_operative_portraits = {

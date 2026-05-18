@@ -34,20 +34,19 @@ def extract_sprite_textures(interface_dirs):
     return sprite_textures
 
 # === Extract portrait references from the config file ===
-def extract_portrait_references(file_path):
+def extract_portrait_references(file_content):
     references = []
     seen = set()
     portrait_pattern = re.compile(r'\s+"?(GFX[^"\n]+|gfx[^"\n]+)"?')
 
-    with open(file_path, encoding="utf-8") as f:
-        for line in f:
-            line = line.split('#', 1)[0]  # strip comments
-            matches = portrait_pattern.findall(line)
-            for ref in matches:
-                cleaned = ref.strip().strip('"')
-                if cleaned and cleaned not in seen:
-                    seen.add(cleaned)
-                    references.append(cleaned)
+    for line in file_content.split('\n'):
+        line = line.split('#', 1)[0]  # strip comments
+        matches = portrait_pattern.findall(line)
+        for ref in matches:
+            cleaned = ref.strip().strip('"')
+            if cleaned and cleaned not in seen:
+                seen.add(cleaned)
+                references.append(cleaned)
 
     return references
 
@@ -77,6 +76,20 @@ def load_existing_files(*gfx_dirs):
                 existing[key] = str(path)
     return existing
 
+
+def find_existing_file(path):
+    normalized_path = str(path).lower().lstrip("/")
+    if normalized_path in existing_files:
+        return existing_files[normalized_path]
+
+    stem = Path(normalized_path).stem.lower()
+    for key, file_path in existing_files.items():
+        if Path(key).stem.lower() == stem:
+            return file_path
+
+    return None
+
+
 def DetermineSmallFilename(big_filename):
     small_filename = "data/blank_mod/gfx/interface/ideas/idea_" + os.path.basename(big_filename).replace("Portrait_", "").replace("portrait_", "")
     small_filename = small_filename.replace("portrait_", "idea_")
@@ -85,14 +98,22 @@ def DetermineSmallFilename(big_filename):
 def GetScalingFactor(width):
     return 34.0 / width;
 
-def GetDefinition(filename):
+def IsBigImage(image_path):
+    with Image.open(image_path) as img:
+        return img.width > 100 and img.height > 100
+
+
+def GetSpriteName(filename):
+    return "GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","").replace(" ", "_")
+
+def GetDefinition(name, filename):
     definition = "\tspriteType = {\n"
-    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","").replace(" ", "_") + "\n"
+    definition += "\t\tname = " + name + "\n"
     definition += "\t\ttexturefile = \"" + filename.replace("data/blank_mod/", "").replace("\\","/") + "\"\n"
     definition += "\t}\n"
     definition += "\n"
     definition += "\tspriteType = {\n"
-    definition += "\t\tname = GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","").replace(" ", "_") + "_small\n"
+    definition += "\t\tname = " + name + "_small\n"
     definition += "\t\ttexturefile = \"" + DetermineSmallFilename(filename).replace("data/blank_mod/", "").replace("\\","/") + "\"\n"
     definition += "\t}\n"
     definition += "\n"
@@ -112,20 +133,18 @@ def CreateSmallVersion(filename):
     on_canvas.save(small_filename)
 
 def UpdateMappings(filename):
+    global mappings_lines
+
     replacement = "GFX_" + os.path.basename(filename).replace("Portrait_", "").replace("portrait_", "").replace(".tga","").replace(".dds","")
-    mappings_file = open("data/configurables/cultureGroupToGraphics.txt", "r")
-    mappings_lines = mappings_file.read()
-    mappings_file.close()
-    new_mappings_file = open("data/configurables/cultureGroupToGraphics.txt", "w")
-    replacement_lines = mappings_lines.replace(filename, replacement)
-    new_mappings_file.write(replacement_lines)
-    new_mappings_file.close()
+    mappings_lines = mappings_lines.replace(filename, replacement)
 
 
 hoi4_path = options["hoi4_path"]
 hoi4_exe = hoi4_path / "hoi4.exe"
-if not hoi4_exe.exists():
-    raise ("Enter a valid HoI4 path!")
+hoi4_linux = hoi4_path / "hoi4"
+
+if not (hoi4_exe.exists() or hoi4_linux.exists()):
+    raise ValueError("Enter a valid HoI4 path!")
 
 interface_dirs = [hoi4_path / "interface", mod_interface_dir]
 gfx_dirs = [hoi4_path / "gfx", mod_gfx_dir]
@@ -134,7 +153,10 @@ integrated_dlc_interface_dirs, integrated_dlc_gfx_dirs = discover_dlc_dirs(hoi4_
 interface_dirs.extend(integrated_dlc_interface_dirs)
 gfx_dirs.extend(integrated_dlc_gfx_dirs)
 
-portrait_refs = extract_portrait_references(config_file)
+with open(config_file, "r", encoding="utf-8") as mappings_file:
+    mappings_lines = mappings_file.read()
+
+portrait_refs = extract_portrait_references(mappings_lines)
 existing_files = load_existing_files(*gfx_dirs)
 sprite_textures = extract_sprite_textures(interface_dirs)
 dlc_sprites = extract_sprite_textures(dlc_interface_dirs)
@@ -152,24 +174,30 @@ for ref in portrait_refs:
     if is_sprite:
         if normalized_ref in sprite_textures:
             texture = sprite_textures[normalized_ref]
-            normalized_path = texture.lower().lstrip("/")
-            if normalized_path in existing_files:
-                image_file = existing_files[normalized_path]
-                CreateSmallVersion(image_file)
-                gfx_file.write(GetDefinition(texture))
+            image_file = find_existing_file(texture)
+            if image_file:
+                if IsBigImage(image_file):
+                    CreateSmallVersion(image_file)
+                    gfx_file.write(GetDefinition(ref, texture))
             else:
                 log.write(f"Missing texture file for {ref}: {texture}\n")
         elif normalized_ref not in dlc_sprites:
             log.write(f"Missing sprite: {ref}\n")
     else:
-        normalized_path = ref_lower.lstrip("/")
-        if normalized_path in existing_files:
-            image_file = existing_files[normalized_path]
-            CreateSmallVersion(image_file)
-            gfx_file.write(GetDefinition(ref))
-            UpdateMappings(ref)
-        elif normalized_path not in dlc_files:
-            log.write(f"Missing file: {ref}\n")
+        image_file = find_existing_file(normalized_ref)
+        if image_file:
+            if IsBigImage(image_file):
+                CreateSmallVersion(image_file)
+                name = GetSpriteName(ref)
+                gfx_file.write(GetDefinition(name, ref))
+                UpdateMappings(ref)
+        else:
+            normalized_path = normalized_ref.lower().lstrip("/")
+            if normalized_path not in dlc_files:
+                log.write(f"Missing file: {ref}\n")
 
 gfx_file.write("}")
 gfx_file.close()
+
+with open(config_file, "w", encoding="utf-8") as mappings_file:
+    mappings_file.write(mappings_lines)
