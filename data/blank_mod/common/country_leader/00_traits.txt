@@ -54,6 +54,18 @@ leader_traits = {
 		}
 	}
 
+	dictator2 = {
+		random = no
+		political_power_factor = 0.15
+		subjects_autonomy_gain = -0.5
+		opinion_gain_monthly_same_ideology_factor = 0.5
+		ai_desired_divisions_factor = 0.20
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
 	warrior_code = {
 		random = no
 		ai_call_ally_desire_factor = -40
@@ -150,6 +162,16 @@ leader_traits = {
 		random = no
 		political_power_factor = -0.5
 		stability_factor = -0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	cabinet_crisis_2 = {
+		random = no
+		political_power_factor = -0.05
+		stability_factor = -0.05
 
 		ai_will_do = {
 			factor = 1
@@ -1474,6 +1496,7 @@ leader_traits = {
 		resistance_target_on_our_occupied_states = 0.1
 
 		
+
 	}
 
 	# TURKEY MINISTERS
@@ -3707,6 +3730,15 @@ leader_traits = {
 		stability_factor = -0.05
 	}
 
+	LEB_great_statesman = {
+		random = no 
+		sprite = 13
+
+		political_power_factor = 0.1
+		enemy_justify_war_goal_time = 0.15
+		stability_factor = -0.05
+	}
+
 	humanist = { 
 		random = no
 		sprite = 13 	
@@ -3721,6 +3753,16 @@ leader_traits = {
 		stability_factor = 0.05
 		political_advisor_cost_factor = -0.5
 		political_power_factor = 0.1
+	}
+
+	RAJ_khudai_khidmatgar_leader = {
+		random = no 
+		sprite = 13
+		
+		war_support_factor = -0.1
+		stability_factor = 0.05
+		political_power_factor = 0.1
+
 	}
 
 	########################
@@ -3973,6 +4015,7 @@ leader_traits = {
 		neutrality_drift = 0.02
 		air_accidents_factor = 0.05
 		army_speed_factor = 0.02
+		stability_factor = 0.05
 		ai_will_do = {
 			factor = 1
 		}
@@ -6662,6 +6705,30 @@ leader_traits = {
 		}
 	}
 
+	infrastructure_group = {
+		random = no
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	brewery = {
+		random = no
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	food_distributor = {
+		random = no
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
 	electronics_concern = {
 		random = no
 
@@ -6995,6 +7062,7 @@ leader_traits = {
 
 		country_resource_aluminium = 10 
 		production_speed_industrial_complex_factor = 0.1
+		factory_energy_consumption = -0.1
 
 		ai_will_do = {
 			factor = 1
@@ -7006,6 +7074,7 @@ leader_traits = {
 		country_resource_aluminium = 20 
 		production_speed_industrial_complex_factor = 0.15
 		production_speed_infrastructure_factor = 0.1
+		factory_energy_consumption = -0.1
 
 		ai_will_do = {
 			factor = 1
@@ -7105,6 +7174,78 @@ leader_traits = {
 			factor = 1
 		}
 	}
+
+	## NZL Traits ##
+
+	NZL_minister_of_public_works = {
+		sprite = 10
+		random = no
+		production_speed_industrial_complex_factor = 0.1
+		production_speed_infrastructure_factor = 0.1
+		production_speed_rail_way_factor = 0.1
+		production_speed_synthetic_refinery_factor = 0.1
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 1.8
+				date < 1939.1.1
+			}
+		}
+	}
+
+	NZL_social_welfare_architect_trait = {
+		sprite = 13
+		random = no
+		
+		production_speed_industrial_complex_factor = 0.05
+		stability_factor = 0.05
+
+	}
+
+	NZL_pro_american_nationalist_trait = {
+		sprite = 13
+		random = no
+		
+		war_support_factor = 0.05
+		party_popularity_stability_factor = 0.1
+
+	}
+
+	NZL_new_zealand_legionare_trait = {
+		sprite = 13
+		random = no
+		
+		justify_war_goal_time = -0.15
+		conscription_factor = 0.1
+
+	}
+
+	NZL_reserve_bank_governor = {
+		sprite = 13
+		random = no
+		
+		production_speed_buildings_factor = 0.05
+		consumer_goods_factor = -0.05
+
+	}
+
+	NZL_hydro_electricity_professor = {
+		random = no
+		sprite = 13
+		production_speed_buildings_factor = 0.05
+		research_speed_factor = 0.08
+	}
+
+	NZL_treasury_secretary = {
+		random = no
+		sprite = 13
+		
+		consumer_goods_factor = -0.1
+		production_lack_of_resource_penalty_factor = -0.1
+
+	}
+
 
 	### Military Minister Traits
 
@@ -9851,6 +9992,16 @@ leader_traits = {
 		}
 	}
 
+	MAL_governor_of_the_straits_settlements_trait  = {
+		random = no
+		sprite = 13
+		
+		political_power_factor = 0.05
+		stability_factor = -0.1
+		production_speed_buildings_factor = 0.05
+
+	}
+
 	### CONGO ###
 
 	trait_mwami = {
@@ -11834,7 +11985,7 @@ leader_traits = {
 		production_factory_start_efficiency_factor = 0.05
 	}
 
-############Pfot - CZE - SLO - RUT
+	############Pfot - CZE - SLO - RUT
 	CZE_2nd_prezident = {
 		random = no
 		sprite = 13
@@ -11856,6 +12007,15 @@ leader_traits = {
 
 		improve_relations_maintain_cost_factor = -0.1
 		trade_opinion_factor = 0.1
+	}
+
+	CZE_exiled_president = { #Needs to be the same as 	CZE_edvard_benesh_eng_exile_ns
+		random = no
+		sprite = 13
+		
+		exile_manpower_factor = 0.25
+		legitimacy_gain_factor = 0.25
+		exiled_government_weekly_manpower = 25
 	}
 
 	de_facto_leader = {
@@ -12030,7 +12190,7 @@ leader_traits = {
 		planning_speed = 0.02
 		dig_in_speed_factor = 0.02
 		supply_consumption_factor = -0.02
-		out_of_supply_factor = -0.03
+		out_of_supply_factor = -0.02
 		resistance_growth_on_our_occupied_states = 0.05
 	}
 	
@@ -12121,12 +12281,15 @@ leader_traits = {
 	bold_intelligence_officer = {
 		random = no
 		sprite = 15
+		#new_operative_slot_bonus = 1
 		operative_slot = 1
 		intel_network_gain_factor = 0.15
 		commando_trait_chance_factor = 0.50
+		operation_boost_resistance_cost = -0.25
 		boost_resistance_factor = 0.25
 		operation_make_resistance_contacts_risk = -0.25
 		resistance_damage_to_garrison_on_our_occupied_states = 0.25
+		operation_make_resistance_contacts_cost = -0.25
 	}
 
 	bold_intelligence_officer_no_lar = {
@@ -12138,4 +12301,304 @@ leader_traits = {
 		resistance_growth_on_our_occupied_states = 0.15
 		resistance_damage_to_garrison_on_our_occupied_states = 0.25
 	}
+	INS_staunch_imperialist = {
+		sprite = 13
+		random = no
+		autonomy_gain_ll_to_overlord = -0.3
+		autonomy_gain = -0.25
+		cic_to_overlord_factor = 0.15
+	}
+
+	INS_staunch_imperialist_upgraded = {
+		sprite = 13
+		random = no
+		autonomy_gain = -0.1
+		stability_factor = 0.05
+		political_power_factor = 0.2
+		drift_defence_factor = 0.3
+	}
+
+	AST_naval_engineer = {
+		sprite = 14
+		refit_speed = 0.10
+		repair_speed_factor = 0.10
+		experience_gain_navy = @chief_experience_gain_low
+
+		command_cap_increase = @tier1_cp_cap_increase
+		command_power = @tier1_cp_cost
+
+		ai_will_do = {
+			factor = @navy_chief_factor_1
+			modifier = {
+				factor = 0
+				command_power < @tier1_cp_cost
+			}
+		}
+	}
+
+	########################
+	#######Australia########
+	########################
+
+	### Industrial Traits
+
+	AST_denim_factory = {
+
+		random = no
+
+		stability_factor = 0.05
+		equipment_bonus = {
+			infantry_equipment = {
+				build_cost_ic = -0.05
+				instant = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	AST_denim_factory_upgraded = {
+		random = no
+
+		stability_factor = 0.05
+		equipment_bonus = {
+			infantry_equipment = {
+				build_cost_ic = -0.05
+				instant = yes
+			}
+			support_equipment = {
+				build_cost_ic = -0.05
+				instant = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	AST_the_big_australian = {
+
+		random = no
+
+		local_resources_factor = 0.10
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	AST_steelworks_and_shipyard = {
+
+		random = no
+
+		country_resource_steel = 10
+		industrial_capacity_dockyard = 0.05
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	AST_the_big_australian_upgraded = {
+
+		random = no
+
+		local_resources_factor = 0.20
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	AST_steelworks_and_shipyard_upgraded = {
+
+		random = no
+
+		country_resource_steel = 20
+		industrial_capacity_dockyard = 0.10
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	AST_mount_isa = {
+		random = no
+
+		production_lack_of_resource_penalty_factor = -0.20
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	AST_mount_isa_upgraded = {
+		random = no
+
+		production_lack_of_resource_penalty_factor = -0.25
+		local_resources_factor = 0.05
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# Bali
+	INS_lord_of_the_nine_kingdoms = {
+		war_support_factor = 0.10
+		army_core_defence_factor = 0.05
+		stability_factor = -0.10
+		army_org_regain = 0.15
+		random = no
+	}
+ 
+	# Aceh
+	INS_sultan_in_the_hills = {
+		political_power_gain = 0.10
+		resistance_growth_on_our_occupied_states = 0.25
+		army_core_attack_factor = 0.10
+		army_core_defence_factor = 0.10
+		army_attack_factor = -0.10
+		random = no
+	}
+ 
+	# Pontianak
+	INS_sultan_of_the_kapuas_mouth = {
+		production_speed_industrial_complex_factor = 0.15
+		local_resources_factor = 0.10
+		political_power_gain = 0.05
+		trade_opinion_factor = 0.05
+		random = no
+	}
+ 
+	# Gowa
+	INS_heir_to_the_rooster_of_the_east = {
+		army_morale_factor = 0.20
+		war_support_factor = 0.10
+		random = no
+	}
+ 
+	# Ternate
+	INS_kolano_of_the_spice_sea = {
+		stability_factor = 0.10
+		subjects_autonomy_gain = -0.25
+		random = no
+	}
+ 
+	# Siak
+	INS_the_king_who_gave_his_crown = {
+		political_power_gain = 0.15
+		political_power_factor = 0.10
+		opinion_gain_monthly_factor = 0.20
+		stability_factor = -0.10
+		random = no
+	}
+ 
+	# Bali advisor
+	INS_paramount_of_bali = {
+		war_support_factor = 0.05
+		army_core_defence_factor = 0.05
+		army_org_regain = 0.10
+		random = no
+		sprite = 2
+		ai_will_do = { factor = 1 }
+	}
+ 
+	# Aceh advisor
+	INS_the_veranda_of_mecca = {
+		political_power_gain = 0.05
+		resistance_growth_on_our_occupied_states = 0.05
+		intel_network_gain_factor = 0.10
+		random = no
+		sprite = 2
+		ai_will_do = { factor = 1 }
+	}
+ 
+	# Pontianak advisor
+	INS_the_merchant_sultan_of_pontianak = {
+		production_speed_industrial_complex_factor = 0.10
+		production_factory_efficiency_gain_factor = 0.05
+		trade_opinion_factor = 0.05
+		random = no
+		sprite = 2
+		ai_will_do = { factor = 1 }
+	}
+ 
+	# Gowa advisor
+	INS_sombaya_of_gowa = {
+		non_core_manpower = 0.02
+		army_morale_factor = 0.05
+		random = no
+		sprite = 2
+		ai_will_do = { factor = 1 }
+	}
+ 
+	# Ternate advisor
+	INS_the_four_mountains_of_ternate = {
+		subjects_autonomy_gain = 0.10
+		stability_factor = 0.1
+		opinion_gain_monthly_same_ideology_factor = 0.25
+		random = no
+		sprite = 2
+		ai_will_do = { factor = 1 }
+	}
+ 
+	# Siak advisor
+	INS_the_sultan_schoolmaster_of_siak = {
+		research_speed_factor = 0.05
+		political_power_factor = 0.10
+		production_factory_efficiency_gain_factor = 0.05
+		random = no
+		sprite = 2
+		ai_will_do = { factor = 1 }
+	}
+
+	INS_the_indonesian_general = {
+		random = no
+	    political_power_gain = -0.25
+	    army_org_factor = 0.15
+	    army_core_defence_factor = 0.25
+	    stability_factor = 0.075
+	    war_support_factor = 0.1
+	}
+
+	INS_the_steady_hand = {
+		random = no
+	    stability_factor = 0.05
+	    political_power_gain = 0.10
+	    foreign_subversive_activites = -0.25
+	    army_morale_factor = 0.03
+	}
+
+	INS_longstanding_nationalist = {
+		random = no
+		production_speed_buildings_factor = 0.15
+		political_power_gain = 0.15
+		experience_gain_army = 0.03
+	}
+
+
+	bold_intelligence_officer_lesser = {
+		random = no
+		sprite = 15
+		operative_slot = 1
+		#commando_trait_chance_factor = 0.25
+		operation_boost_resistance_cost = -0.25
+		boost_resistance_factor = 0.25
+		operation_make_resistance_contacts_risk = -0.25
+		operation_make_resistance_contacts_cost = -0.25
+	}
+
+	bold_intelligence_officer_no_lar_lesser = {
+		random = no
+		sprite = 15
+		decryption_factor = 0.15
+		subversive_activites_upkeep = -0.15
+		resistance_growth_on_our_occupied_states = 0.15
+		resistance_damage_to_garrison_on_our_occupied_states = 0.25
+	}
+
 }
