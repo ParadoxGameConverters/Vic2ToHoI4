@@ -2,6 +2,7 @@ debug_decisions = {
 	icon = generic_research
 	visible = {
 		is_debug = yes
+		is_ai = no
 	}
 }
 propaganda_efforts = {
@@ -48,6 +49,11 @@ foreign_support = {
 
 prestigious_projects = {
 	
+}
+
+CHI_occupation_actions = {
+	icon = generic_crisis
+	priority = 2
 }
 
 foreign_politics = {
