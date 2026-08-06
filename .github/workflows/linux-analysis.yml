@@ -35,7 +35,7 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v4.37.4
+      uses: github/codeql-action/init@v4.37.5
       with:
         languages: ${{ matrix.language }}
 
@@ -63,7 +63,7 @@ jobs:
         path-to-lcov: build/x64-coverage-linux/lcoverage/coverage.info
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v4.37.4
+      uses: github/codeql-action/analyze@v4.37.5
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
@@ -89,7 +89,7 @@ jobs:
       run: git submodule update --init --recursive
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v4.37.4
+      uses: github/codeql-action/init@v4.37.5
       with:
         languages: ${{ matrix.language }}
 
@@ -126,7 +126,7 @@ jobs:
        cd build/test/Release-Linux/
        ./Vic2ToHoi4Tests
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v4.37.4
+      uses: github/codeql-action/analyze@v4.37.5
 
     - name: Cleanup
       uses: colpal/actions-clean@v1
