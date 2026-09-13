@@ -37,10 +37,15 @@ void HoI4::FactionGoals::updateFactionGoals(const std::set<std::string>& majorId
 {
 	Log(LogLevel::Info) << "\tUpdating ideological faction goals";
 	updateGuardiansOfPeaceGoal(majorIdeologies);
-	for (const auto& ideology: majorIdeologies)
+	for (const auto& [ideology, goals]: importedGoals)
 	{
+		if (!majorIdeologies.contains(ideology))
+		{
+			continue;
+		}
+
 		updateDefeatOfAntiIdeologyGoal(ideology, majorIdeologies);
-		for (const auto& goal: importedGoals.at(ideology))
+		for (const auto& goal: goals)
 		{
 			ideologicalGoals.push_back(*goal);
 		}

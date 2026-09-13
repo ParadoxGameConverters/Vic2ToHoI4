@@ -998,6 +998,7 @@ faction_goal_defeat_of_absolutist = {
 				}
 				add_political_power = 100
 			}
+		}
 	}
 }
 
