@@ -695,23 +695,7 @@ peoples_war = {
     xp_type = army
 
     available = {
-        if = {
-            limit = {
-                NOT = {
-                    original_tag = INS
-                }
-            }
-            has_government = communism
-        }
-        else = {
-            OR = {
-                has_government = communism
-                AND = {
-                    original_tag = INS
-                    has_completed_focus = INS_underground_revolution
-                }
-            }
-        }
+        has_government = communism
     }
     visible = {
         has_dlc = "No Compromise, No Surrender"

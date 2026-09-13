@@ -844,7 +844,6 @@ faction_goal_an_armored_fist = {
 					}
 					gain_xp = 400
 					add_attack = 1
-					}
 				}
 			}
 		}
