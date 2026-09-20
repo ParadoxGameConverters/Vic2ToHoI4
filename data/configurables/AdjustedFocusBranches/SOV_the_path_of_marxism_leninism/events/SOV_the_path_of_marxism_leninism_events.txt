@@ -35,6 +35,11 @@ country_event = {
 		set_variable = { SOV_propaganda_transport_cost = SOV_propaganda_cost } # ID = 7
 		set_variable = { SOV_propaganda_oil_for_the_motherland_cost = SOV_propaganda_cost } # ID = 8
 		set_variable = { SOV_propaganda_more_metal_cost = SOV_propaganda_cost } # ID = 9
+		set_variable = { SOV_propaganda_for_the_motherland_cost = SOV_propaganda_cost } # ID = 11
+		set_variable = { SOV_propaganda_heroes_forward_cost = SOV_propaganda_cost } # ID = 12
+		set_variable = { SOV_propaganda_sweep_scum_out_cost = SOV_propaganda_cost } # ID = 17
+		set_variable = { SOV_propaganda_knowledge_cost = SOV_propaganda_cost } # ID = 18
+		set_variable = { SOV_propaganda_builders_of_communism_cost = SOV_propaganda_cost } # ID = 19
 		set_variable = { SOV_propaganda_high_yield_cost = SOV_propaganda_cost } # ID = 10
 		set_variable = { SOV_propaganda_stalin_cost = SOV_propaganda_cost } # ID = 22
 

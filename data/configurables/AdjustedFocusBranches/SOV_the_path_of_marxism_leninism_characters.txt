@@ -1,4 +1,161 @@
 UTI = {
+    UTI_georgy_zhukov = {
+        name = ""
+
+        portraits = {
+            army = {
+                small = "GFX_idea_georgy_zhukov"
+                large = GFX_portrait_SOV_georgy_zhukov
+            }
+        }
+
+        corps_commander = {
+            traits = { media_personality armor_officer war_hero winter_specialist }
+            skill = 5
+            attack_skill = 5
+            defense_skill = 2
+            planning_skill = 4
+            logistics_skill = 5
+            legacy_id = 410
+            visible = { NOT = { has_character_flag = SOV_exiled_flag } }
+        }
+
+        advisor = {
+            cost = 150
+            slot = theorist
+            idea_token = UTI_georgy_zhukov
+            ledger = army
+            allowed = {
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+            }
+            available = {
+                has_completed_focus = SOV_positive_heroism
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                mass_assault_expert
+            }
+            ai_will_do = {
+                base = 2
+            }
+        }       
+    }
+
+    UTI_konstantin_rokossovsky = {
+        name = ""
+
+        portraits = {
+            army = {
+                small = "GFX_idea_konstantin_rokossovsky"
+                large = GFX_portrait_SOV_konstantin_rokossovsky
+            }
+        }
+
+        corps_commander = {
+            traits = { brilliant_strategist trait_cautious armor_officer }
+            skill = 4
+            attack_skill = 3
+            defense_skill = 4
+            planning_skill = 2
+            logistics_skill = 4
+            legacy_id = 402
+            visible = { NOT = { has_character_flag = SOV_exiled_flag } }
+        }
+
+        advisor = {
+            slot = high_command
+            idea_token = UTI_konstantin_rokossovsky
+            ledger = army
+            allowed = {
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+                hidden_trigger = {
+                    NOT = {
+                        any_other_country = {
+                            has_war_with = event_target:SOV_the_path_of_marxism_leninism_SOV
+                            original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+                            has_unit_leader = 403.000
+                        }
+                    }
+                }
+            }
+            available = {
+                has_completed_focus = SOV_positive_heroism
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                army_armored_3
+            }
+            cost = 200
+            ai_will_do = {
+                base = 2
+            }
+        }       
+    }
+
+    UTI_ivan_konev = {
+        name = ""
+        portraits = {
+            army = {
+                small = "GFX_idea_SOV_ivan_konev"
+                large = "GFX_portrait_SOV_ivan_konev"
+            }
+        }
+        advisor = {
+            slot = high_command
+            idea_token = UTI_ivan_konev
+            ledger = army
+            allowed = {
+                original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+            }
+            available = {
+                custom_trigger_tooltip = {
+                    tooltip = SOV_konev_civil_war
+                    NOT = {
+                        any_other_country = {
+                            has_war_with = event_target:SOV_the_path_of_marxism_leninism_SOV
+                            original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+                            has_unit_leader = 408.000
+                        }
+                    }
+                }
+                if = {
+                    limit = {
+                        has_character_flag = SOV_exiled_flag
+                    }
+                    NOT = { has_character_flag = SOV_exiled_flag }
+                }
+            }
+            traits = {
+                army_concealment_2
+            }
+            cost = 100
+            ai_will_do = {
+                base = 1
+            }
+        }
+
+        corps_commander = {
+            traits = { harsh_leader armor_officer politically_connected }
+            skill = 5
+            attack_skill = 4
+            defense_skill = 5
+            planning_skill = 2
+            logistics_skill = 5
+            legacy_id = 408
+            visible = { NOT = { has_character_flag = SOV_exiled_flag } }
+        }
+    }
+
     UTI_grigory_zinovyev = {
         name = ""
         portraits = {

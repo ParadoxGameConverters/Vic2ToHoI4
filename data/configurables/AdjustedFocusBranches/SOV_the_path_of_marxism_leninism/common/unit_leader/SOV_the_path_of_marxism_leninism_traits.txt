@@ -44,4 +44,13 @@ leader_traits = {
 		}
 	}
 
+	trait_SOV_determined = {
+
+		type = { land navy }
+		trait_type = status_trait
+
+		attack_skill = 1
+		defense_skill = 1
+	}
+
 }

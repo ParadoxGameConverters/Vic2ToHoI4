@@ -1463,7 +1463,7 @@ focus_tree = {
 		id = SOV_addressing_internal_affairs
 		icon = GFX_focus_generic_self_management
 		prerequisite = { focus = SOV_the_path_of_marxism_leninism }
-		x = 3 # originally 24
+		x = 5 # originally 24
 		y = 1
 
 		relative_position_id = SOV_the_path_of_marxism_leninism
@@ -1507,6 +1507,248 @@ focus_tree = {
 				SOV_unlock_propaganda_campaign_slot_effect = yes
 			}
 			unlock_decision_category_tooltip = SOV_propaganda_campaigns
+		}
+	}
+
+	focus = {
+		id = SOV_positive_heroism
+		icon = GFX_SOV_positive_heroism_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_expand_the_agitprop }
+		x = -2
+		y = 1
+		relative_position_id = SOV_expand_the_agitprop
+		cost = 10
+
+		mutually_exclusive = { focus = SOV_collectivist_propaganda }
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_PROPAGANDA}
+
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = available_military_high_command
+			show_ideas_tooltip = UTI_konstantin_rokossovsky 
+			custom_effect_tooltip = available_theorist
+			show_ideas_tooltip = UTI_georgy_zhukov
+
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = SOV_propaganda_heroes_forward
+			custom_effect_tooltip = unlock_propaganda_campaign_slot_tt
+			SOV_unlock_propaganda_campaign_slot_effect = yes
+		}
+	}
+
+	focus = {
+		id = SOV_revive_the_stakhanovite_movement
+		icon = GFX_SOV_revive_the_stakhanovite_movement_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_positive_heroism }
+		x = 0
+		y = 1
+		relative_position_id = SOV_positive_heroism
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+			add_ideas = SOV_stakhanovite_movement
+		}
+	}
+
+	focus = {
+		id = SOV_war_heroes
+		icon = GFX_SOV_war_heroes_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_revive_the_stakhanovite_movement }
+		x = 0
+		y = 1
+		relative_position_id = SOV_revive_the_stakhanovite_movement
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = SOV_war_heroes_ns
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			if = {
+				limit = {
+					UTI_georgy_zhukov = {
+						NOT = { has_character_flag = SOV_character_purged_flag }
+						is_corps_commander = yes
+					}
+				}
+				UTI_georgy_zhukov = {
+					promote_leader = yes
+				}
+			}
+			else = {
+				random_army_leader = {
+					limit = {
+						NOT = { has_character_flag = SOV_potential_target_flag }
+						is_corps_commander = yes
+						NOT = { is_character = UTI_konstantin_rokossovsky }
+						NOT = { is_character = UTI_ivan_konev }
+					}
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					UTI_konstantin_rokossovsky = {
+						NOT = { has_character_flag = SOV_character_purged_flag }
+						is_corps_commander = yes
+					}
+				}
+				UTI_konstantin_rokossovsky = {
+					promote_leader = yes
+				}
+			}
+			else = {
+				random_army_leader = {
+					limit = {
+						NOT = { has_character_flag = SOV_potential_target_flag }
+						is_corps_commander = yes
+						NOT = { is_character = UTI_georgy_zhukov }
+						NOT = { is_character = UTI_ivan_konev }
+					}
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					UTI_ivan_konev = {
+						NOT = { has_character_flag = SOV_character_purged_flag }
+						is_corps_commander = yes
+					}
+				}
+				UTI_ivan_konev = {
+					promote_leader = yes
+				}
+			}
+			else = {
+				random_army_leader = {
+					limit = {
+						NOT = { has_character_flag = SOV_potential_target_flag }
+						is_corps_commander = yes
+						NOT = { is_character = UTI_georgy_zhukov }
+						NOT = { is_character = UTI_konstantin_rokossovsky }
+					}
+					promote_leader = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_collectivist_propaganda
+		icon = GFX_SOV_collectivist_propaganda_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_expand_the_agitprop }
+		x = 0
+		y = 1
+		relative_position_id = SOV_expand_the_agitprop
+		cost = 10
+
+		mutually_exclusive = { focus = SOV_positive_heroism }
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_PROPAGANDA}
+
+		completion_reward = {
+			add_political_power = 25
+			add_ideas = SOV_collectivist_propaganda_ns
+
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = SOV_propaganda_for_the_motherland
+			custom_effect_tooltip = unlock_propaganda_campaign_slot_tt
+			SOV_unlock_propaganda_campaign_slot_effect = yes
+		}
+	}
+
+	focus = {
+		id = SOV_socialist_emulation
+		icon = GFX_SOV_socialist_emulation_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_collectivist_propaganda }
+		x = 0
+		y = 1
+		relative_position_id = SOV_collectivist_propaganda
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
+
+		completion_reward = {
+			add_ideas = SOV_socialist_emulation_1_ns
+		}
+	}
+
+	focus = {
+		id = SOV_socialist_realism
+		icon = GFX_SOV_socialist_realism_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_socialist_emulation }
+		x = 0
+		y = 1
+		relative_position_id = SOV_socialist_emulation
+		cost = 10
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_socialist_emulation_1_ns
+				add_idea = SOV_socialist_emulation_2_ns
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_the_komsomol
+		icon = GFX_SOV_the_komsomol_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_expand_the_agitprop }
+		x = 2
+		y = 1
+		relative_position_id = SOV_expand_the_agitprop
+		cost = 5
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_PROPAGANDA}
+
+		completion_reward = {
+			add_political_power = 50
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = SOV_propaganda_knowledge
+			unlock_decision_tooltip = SOV_propaganda_builders_of_communism
+			unlock_decision_tooltip = SOV_propaganda_sweep_scum_out
+			custom_effect_tooltip = unlock_propaganda_campaign_slot_tt
+			SOV_unlock_propaganda_campaign_slot_effect = yes
 		}
 	}
 

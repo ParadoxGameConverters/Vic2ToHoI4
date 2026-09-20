@@ -62,3 +62,6 @@
  SOV_propaganda_defend_moscow: "Defenderemos [ROOT.Capital.GetCapitalVictoryPointName]!"
  SOV_defend_moscow: "Defender [ROOT.Capital.GetCapitalVictoryPointName]"
  SOV_propaganda_transport: "O transporte é o irmão do Exército [ROOT.GetAdjectiveCap]"
+ SOV_war_heroes_desc: "Os [ROOT.GetAdjectiveCap] sempre foram capazes e dispostos a realizar atos de extrema bravura na causa de derrotar qualquer invasor da pátria-mãe. Embora estejamos unidos em nossa luta contra o inimigo, não devemos fingir que não existam soldados em nossas forças armadas que foram muito além do dever."
+ SOV_konev_civil_war: "[ROOT.UTI_ivan_konev.GetName] não apoia uma guerra civil contra a União Soviética."
+ NSB_soviet_propaganda_capmaign_events.1.desc: "Nossos amigos e guias em [FROM.GetNameDef] iniciaram um programa para garantir que a geração que está crescendo agora compreenda plenamente o que se espera dela. Um bom comunista deve ser fisicamente forte, para realizar o trabalho necessário para construir um mundo melhor, e bem instruído para entender completamente o que deve ser feito. \n\nJovens entusiasmados em nossa nação seguiram esse exemplo e agora tentam emular essa abordagem tanto quanto possível."

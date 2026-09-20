@@ -314,6 +314,135 @@
 			}
 		}
 
+		SOV_young_builders_of_communism = { #Comes from Propaganda Campaign
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via decision
+			}
+
+			allowed_civil_war = {
+				tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+			}
+
+			picture = socialist_science_focus
+
+			modifier = {
+				master_ideology_drift = 0.25
+				research_speed_factor = 0.01
+			}
+		}
+
+		SOV_stakhanovite_movement = {
+
+			picture = SOV_stakhanovite_movement
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+			}
+
+			modifier = {
+				industrial_capacity_factory = 0.03
+				industrial_capacity_dockyard = 0.03
+			}
+		}
+
+		SOV_war_heroes_ns = {
+			name = SOV_war_heroes
+
+			picture = SOV_war_heroes
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+			}
+
+			modifier = {
+				military_leader_cost_factor = -0.2
+				promote_cost_factor	 = -0.15
+				army_org_factor = 0.05
+			}
+		}
+
+		SOV_collectivist_propaganda_ns = {
+			name = SOV_collectivist_propaganda
+
+			picture = por_iberian_workers_united
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+			}
+
+			modifier = {
+				stability_factor = 0.1
+				conscription_factor = 0.15
+				non_core_manpower = 0.05
+				army_morale_factor = 0.05
+			}
+		}
+
+		SOV_socialist_emulation_1_ns = {
+			name = SOV_socialist_emulation
+
+			picture = por_nation_in_arms
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+			}
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				research_speed_factor = 0.02
+			}
+		}
+
+		SOV_socialist_emulation_2_ns = {
+			name = SOV_socialist_emulation
+
+			picture = por_nation_in_arms
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				original_tag = event_target:SOV_the_path_of_marxism_leninism_SOV
+			}
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				research_speed_factor = 0.02
+				drift_defence_factor = 0.05
+				communism_drift = 0.05
+				consumer_goods_factor = -0.05
+			}
+		}
+
 		SOV_purged_junior_army_officers_equipment_effects_1 = { #Used as a hidden idea to prevent overcrowding in the regular Purged Junior Army Officers tooltip
 			name = SOV_purged_junior_army_officers_1
 

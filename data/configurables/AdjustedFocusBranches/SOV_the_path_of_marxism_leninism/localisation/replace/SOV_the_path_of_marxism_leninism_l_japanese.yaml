@@ -1,4 +1,4 @@
-l_japanese:
+﻿l_japanese:
  SOV_the_centre_desc: "同志[ROOT.GetLeader]は我が国にとって最も偉大な闘士です。革命の未来は彼の極めて有能な手に委ねるべきです。"
  SOV_the_stalin_constitution: "[ROOT.GetLeader]憲法"
  SOV_the_stalin_constitution_desc: "1924年の憲法は内戦後の国家を整備する試みとしては良いものでしたが、その役目は終わりました。新たな憲法が必要です。何よりもまず、[ROOT.GetNameDef]を強く安全に保ち、共産主義の前進に貢献してきた同志[ROOT.GetLeader]の尽力とその才知を称えなければなりません。"
@@ -62,3 +62,6 @@ l_japanese:
  SOV_propaganda_defend_moscow: "[ROOT.Capital.GetCapitalVictoryPointName]を守り抜け！"
  SOV_defend_moscow: "[ROOT.Capital.GetCapitalVictoryPointName]を防衛せよ"
  SOV_propaganda_transport: "輸送は[ROOT.GetAdjectiveCap]軍の兄弟である"
+ SOV_war_heroes_desc: "[ROOT.GetAdjectiveCap]は常に祖国への侵略者を打ち倒すため、並外れた勇敢さを発揮する能力と意思を持っていた。我々は敵との戦いにおいて団結しているが、軍の中に義務を遥かに超える働きをした兵士が存在することを否定すべきではない。"
+ SOV_konev_civil_war: "[ROOT.UTI_ivan_konev.GetName]はソビエト連邦に対する内戦を支持していない。"
+ NSB_soviet_propaganda_capmaign_events.1.desc: "[FROM.GetNameDef]の我々の友人であり指導者たちは、今成長している世代が自分たちに何が期待されているのかを十分理解できるようにする計画を開始した。優れた共産主義者は、より良い世界を築くために必要な労働を行うための強健な肉体と、何をなすべきかを完全に理解するための十分な教育の両方を備えていなければならない。 \n\n我が国の熱意ある若者たちはこれに刺激を受け、可能な限りこの方針を模倣しようとしている。"

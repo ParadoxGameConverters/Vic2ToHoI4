@@ -173,7 +173,7 @@ for ref in portrait_refs:
     
     if is_sprite:
         if normalized_ref in sprite_textures:
-            texture = sprite_textures[normalized_ref]
+            texture = sprite_textures[normalized_ref].strip()
             image_file = find_existing_file(texture)
             if image_file:
                 if IsBigImage(image_file):

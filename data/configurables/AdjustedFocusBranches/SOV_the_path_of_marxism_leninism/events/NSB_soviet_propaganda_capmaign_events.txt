@@ -60,3 +60,22 @@ country_event = {
 	}
 }
 
+# YOUNG BUILDERS OF COMMUNISM - event for SOV's puppets
+country_event = {
+	id = NSB_soviet_propaganda_capmaign_events.1
+	title = NSB_soviet_propaganda_capmaign_events.1.t
+	desc = NSB_soviet_propaganda_capmaign_events.1.desc
+	picture = GFX_report_event_SOV_young_builders_of_communism
+	
+	is_triggered_only = yes
+
+	option = { #OK
+		name = NSB_soviet_propaganda_capmaign_events.1.a
+
+		add_timed_idea = {
+			idea = SOV_young_builders_of_communism
+			days = event_target:SOV_the_path_of_marxism_leninism_SOV.SOV_default_propaganda_campaign_duration
+		}
+	}
+}
+

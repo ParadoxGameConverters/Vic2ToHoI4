@@ -1,4 +1,4 @@
-l_simp_chinese:
+﻿l_simp_chinese:
  SOV_the_centre_desc: "同志[ROOT.GetLeader]是我们国家最伟大的斗士。我们应该将革命的未来交到他那双极其有能力的手中。"
  SOV_the_stalin_constitution: "[ROOT.GetLeader]宪法"
  SOV_the_stalin_constitution_desc: "1924年的宪法是在内战后组织国家的一次良好尝试，但它已经完成了自己的使命。我们需要一部新宪法。首先，我们必须承认同志[ROOT.GetLeader]为保持[ROOT.GetNameDef]强大和安全所做的不懈努力，他的智慧和天赋对推进共产主义事业至关重要。"
@@ -62,3 +62,7 @@ l_simp_chinese:
  SOV_propaganda_defend_moscow: "我们必将保卫[ROOT.Capital.GetCapitalVictoryPointName]！"
  SOV_defend_moscow: "保卫[ROOT.Capital.GetCapitalVictoryPointName]"
  SOV_propaganda_transport: "运输是[ROOT.GetAdjectiveCap]军队的兄弟"
+ SOV_war_heroes_desc: "[ROOT.GetAdjectiveCap]人民始终有能力并愿意为了击败任何祖国的侵略者而展现非凡的英勇行为。虽然我们在与敌人的斗争中团结一致，但我们不应假装军队中不存在那些远远超出职责要求的士兵。"
+ SOV_konev_civil_war: "[ROOT.UTI_ivan_konev.GetName]不支持反对苏联的内战。"
+ NSB_soviet_propaganda_capmaign_events.1.desc: "[FROM.GetNameDef]的朋友和导师们已经开始实施一项计划，以确保正在成长的一代人充分理解社会对他们的期望。一个优秀的共产主义者必须既拥有强健的体魄，以完成建设更美好世界所需的工作，也必须受过良好的教育，以充分理解需要完成什么。 \n\n我国充满热情的年轻人受到了这一理念的启发，现在正尽可能地效仿这种做法。"
+
