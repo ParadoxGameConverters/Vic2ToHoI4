@@ -20,6 +20,14 @@ neutrality = {
 			factor = 0
 		}
 	}
+
+	BRA_head_of_house_orleans_braganza_trait = {
+		random = no
+		neutrality_drift = 0.05
+		political_power_factor = 0.1 
+		justify_war_goal_time = -0.1
+	}
+
 }
 
 absolutist = {
@@ -1396,6 +1404,52 @@ democratic = {
 		war_support_factor = 0.05
 	}
 
+		INS_trusted_leader = {
+		random = no
+		sprite = 14
+
+		democratic_drift = 0.01
+		political_power_gain = 0.25
+		stability_factor = 0.15
+		consumer_goods_factor = 0.1
+	}
+
+	INS_inefficient_government = {
+		random = no
+		sprite = 14
+
+		# the bad
+		political_power_gain = -0.2
+		economy_cost_factor = 0.25
+		mobilization_laws_cost_factor = 0.25
+
+		# the good
+		democratic_drift = 0.04
+		war_support_factor = 0.1
+		surrender_limit = 0.75
+	}
+
+	INS_federal_parliament = {
+		random = no
+		sprite = 14
+
+		# the bad
+		economy_cost_factor = 0.2
+		mobilization_laws_cost_factor = 0.2
+
+		# the good
+		democratic_drift = 0.04
+		war_support_factor = 0.1
+		surrender_limit = 0.75
+		subjects_autonomy_gain = -0.5
+	}
+
+	steady_statesman = {
+	    stability_factor = 0.05
+	    war_support_factor = 0.05
+	    surrender_limit = 0.05
+	    democratic_drift = 0.05
+    }
 }
 
 fascism = {

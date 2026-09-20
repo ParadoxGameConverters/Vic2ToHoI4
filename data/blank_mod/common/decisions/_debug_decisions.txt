@@ -1,5 +1,23 @@
 debug_decisions = {
 
+	debug_test_has_dlc = {
+		priority = 100
+		allowed = {
+			always = yes
+		}
+
+		visible = {
+			always = yes
+		}
+		available = {
+			has_dlc = "Thunder at Our Gates"
+			not = { has_dlc = "Thunder at Our Gates" }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_flag
+		}
+	}
+
 	debug_show_decisions = {
 		priority = 100
 		allowed = {

@@ -356,8 +356,14 @@ guarantee_threat_reduction_15 = {
 	ai_will_do = {
 		base = 0
 		modifier = { 
-			add = 2
+			add = 1
 			has_government = democratic
+			is_historical_focus_on = no  
+		}
+		modifier = { 
+			add = 0.5
+			has_government = democratic
+			is_historical_focus_on = yes   
 		}
 	}
 	modifier = {
@@ -423,7 +429,10 @@ joining_rule_has_no_offensive_war = {
 		}
 	}
 	trigger = {
-		has_offensive_war = no
+		custom_trigger_tooltip = {
+			tooltip = TRIGGER_HAS_NOT_OFFENSIVE_WAR
+			has_offensive_war = no
+		}
 	}
 	modifier = {
 		defensive_war_stability_factor = 0.15
