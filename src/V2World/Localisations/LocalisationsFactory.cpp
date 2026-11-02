@@ -65,6 +65,11 @@ void Vic2::Localisations::Factory::ProcessLine(const std::string& line)
 	auto division = line.find_first_of(';');
 	const auto key = line.substr(0, division);
 
+	if (localisations_.contains(key))
+	{
+		return;
+	}
+
 	for (const auto& [language, encoding]: languages)
 	{
 		auto [rawLocalisation, newDivision] = ExtractNextLocalisation(line, division);
