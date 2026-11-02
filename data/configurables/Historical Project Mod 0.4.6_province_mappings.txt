@@ -3112,11 +3112,11 @@
 	link = { vic2 = 1396 hoi4 = 10212 hoi4 = 12171 hoi4 = 4282 hoi4 = 12186 hoi4 = 10143 hoi4 = 1335 } # Api -> Jesselton, Beaufort, Kudat, Ranau, Sungai Sungai, Ba'kelalan
 	link = { vic2 = 1397 hoi4 = 10240 hoi4 = 12228 hoi4 = 7358 hoi4 = 4338 hoi4 = 10199 hoi4 = 1306 } # Sandakan -> Lahad Datu, Tawau, land, Sapulut, Sandakan, land
 	link = { comment = "* Dutch East Indies" }
-	link = { vic2 = 1405 hoi4 = 10509 hoi4 = 13398 } # Banda Aceh -> Lhokseumawe, Banda Aceh
+	link = { vic2 = 1405 hoi4 = 10509 hoi4 = 13398 hoi4 = 1648 } # Banda Aceh -> Lhokseumawe, Banda Aceh, Langsa
 	link = { vic2 = 1407 hoi4 = 12488 hoi4 = 7658 hoi4 = 13399 hoi4 = 13401 } # Tapaktuan -> Lhok Bengkuang, Banda Atjeh, land, land
 	link = { vic2 = 1409 hoi4 = 10522 hoi4 = 8360 hoi4 = 4446 } # Sibolga -> Limau Purut, Subulussalam, Panyambungan
 	link = { vic2 = 1411 hoi4 = 12126 hoi4 = 1428 hoi4 = 13396 hoi4 = 13397 hoi4 = 13395 } # Gunungsitoli -> Gunungsitoli, Tuapejat, land, land, land
-	link = { vic2 = 1406 hoi4 = 4652 hoi4 = 1648 hoi4 = 7673 hoi4 = 13402 } # Medan -> Medan, Langsa, Tanjungbalai, land
+	link = { vic2 = 1406 hoi4 = 4652 hoi4 = 7673 hoi4 = 13402 } # Medan -> Medan, Tanjungbalai, land
 	link = { vic2 = 1408 hoi4 = 10382 hoi4 = 10354 hoi4 = 1460 hoi4 = 7368 } # Padang -> Padang, Bukittinggi, Lingkuang Aua, Sungai Penuh
 	link = { vic2 = 1401 hoi4 = 1277 hoi4 = 7463 hoi4 = 12302 hoi4 = 7327 hoi4 = 12181 hoi4 = 12168 } # Siak -> Bengkalis, Dumai, Kotapinang, Duri, Pekanbaru, Selatpanjang
 	link = { vic2 = 1400 hoi4 = 10225 hoi4 = 12184 hoi4 = 10209 hoi4 = 12343 } # Inderagiri -> Tembilaham, Sungaiguntung, Pangkalan Kerinci, Payakumbuh
@@ -3129,8 +3129,8 @@
 	link = { vic2 = 1413 hoi4 = 7381 hoi4 = 10279 hoi4 = 12249 } # Batavia -> Batavia, Serang, Karawang
 	link = { vic2 = 1414 hoi4 = 10307 hoi4 = 4406 hoi4 = 1398 hoi4 = 1425 hoi4 = 4621 hoi4 = 7421 hoi4 = 13382 } # Bogor -> Soekaboemi, Bogor, Labuhan, Cianjoer, Tasikmalaja, Bandoeng, land
 	link = { vic2 = 1415 hoi4 = 7223 hoi4 = 1386 } # Cirebon -> Pekalongan, Cirebon
-	link = { vic2 = 1416 hoi4 = 7642 hoi4 = 4434 hoi4 = 10135 hoi4 = 12277 hoi4 = 13404 hoi4 = 13406 } # Yogyakarta -> Purwokerto, Cilacap, Jogjakarta, Samarang, Purwokerto, Yogyakarta
-	link = { vic2 = 1417 hoi4 = 1413 hoi4 = 13405 } # Semarang -> Kudus, Semarang
+	link = { vic2 = 1416 hoi4 = 7642 hoi4 = 4434 hoi4 = 10135 hoi4 = 13404 hoi4 = 13406 } # Yogyakarta -> Purwokerto, Cilacap, Jogjakarta, Purwokerto, Yogyakarta
+	link = { vic2 = 1417 hoi4 = 1413 hoi4 = 13405 hoi4 = 12277 } # Semarang -> Kudus, Semarang, Samarang
 	link = { vic2 = 1419 hoi4 = 10491 hoi4 = 1209 hoi4 = 13407 } # Surakarta -> Kediri, Blitar, Surakarta
 	link = { vic2 = 1418 hoi4 = 4608 hoi4 = 4390 hoi4 = 12293 hoi4 = 13403 } # Surabaya -> Soerabaja, Bojonegoro, Purwodadi, Surabaya
 	link = { vic2 = 1421 hoi4 = 4306 hoi4 = 13383 hoi4 = 13384 } # Madura -> Pamekasan, land, land

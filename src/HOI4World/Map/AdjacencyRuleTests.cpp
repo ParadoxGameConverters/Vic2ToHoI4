@@ -102,7 +102,7 @@ TEST(HoI4World_Map_AdjacencyRule, IsDisabledStrCanBeUpdated)
 
 	ASSERT_TRUE(adjacencyRule.getIsDisabledStr());
 
-	const auto& sourceState = *Vic2::State::Builder().build();
+	const auto sourceState = *Vic2::State::Builder().build();
 	HoI4::State theState(sourceState, 123, "TAG");
 	theState.addProvince(42);
 	std::map<int, HoI4::State> states = {{123, theState}};

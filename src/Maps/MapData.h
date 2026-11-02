@@ -7,9 +7,11 @@
 #include "external/common_items/ModLoader/ModFilesystem.h"
 #include "src/Maps/ProvinceDefinitions.h"
 #include "src/Maps/ProvincePoints.h"
+#include <cstddef>
 #include <map>
 #include <optional>
 #include <set>
+#include <vector>
 
 
 
@@ -49,6 +51,9 @@ class MapData
 	std::map<int, std::set<int>> province_neighbors_;
 	std::map<int, BordersWith> borders_;
 	std::map<int, ProvincePoints> the_province_points_;
+	int width = 0;
+	int height = 0;
+	std::vector<int> province_number_by_point_;
 
 	ProvinceDefinitions province_definitions_;
 };

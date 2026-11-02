@@ -259,6 +259,7 @@ TEST(Maps_MapData, NoProvinceNumberForUndefinedPoint)
 	const Maps::MapData map_data(province_definitions, mod_filesystem);
 
 	EXPECT_EQ(map_data.GetProvinceNumber({0, 0}), std::nullopt);
+	EXPECT_EQ(map_data.GetProvinceNumber({-1, 0}), std::nullopt);
 }
 
 

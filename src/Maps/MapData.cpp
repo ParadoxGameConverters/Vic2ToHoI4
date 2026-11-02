@@ -124,8 +124,9 @@ void Maps::MapData::ImportProvinces(const std::filesystem::path& path)
 		throw std::runtime_error("Could not open " + (full_path / "map/provinces.bmp").string());
 	}
 
-	const int height = static_cast<int>(province_map.height());
-	const int width = static_cast<int>(province_map.width());
+	height = static_cast<int>(province_map.height());
+	width = static_cast<int>(province_map.width());
+	province_number_by_point_.assign(static_cast<std::size_t>(width) * height, -1);
 	for (int y = 0; y < height; y++)
 	{
 		for (int x = 0; x < width; x++)
@@ -158,6 +159,9 @@ void Maps::MapData::ImportProvinces(const std::filesystem::path& path)
 
 			if (auto province = province_definitions_.getProvinceFromColor(center_color); province)
 			{
+				const auto point_index = static_cast<std::size_t>(position.second) * width + static_cast<std::size_t>(x);
+				province_number_by_point_[point_index] = *province;
+
 				if (auto specific_province_points = the_province_points_.find(*province);
 					 specific_province_points != the_province_points_.end())
 				{
@@ -361,14 +365,18 @@ std::optional<Maps::Point> Maps::MapData::GetAnyBorderCenter(const int province)
 
 std::optional<int> Maps::MapData::GetProvinceNumber(const Point& point) const
 {
-	const auto i = std::find_if(the_province_points_.begin(), the_province_points_.end(), [point](const auto& province) {
-		return province.second.hasPoint(point);
-	});
-	if (i == the_province_points_.end())
+	if (point.first < 0 || point.first >= width || point.second < 0 || point.second >= height)
 	{
 		return std::nullopt;
 	}
-	return i->first;
+
+	const auto point_index = static_cast<std::size_t>(point.second) * width + static_cast<std::size_t>(point.first);
+	const auto province_number = province_number_by_point_[point_index];
+	if (province_number == -1)
+	{
+		return std::nullopt;
+	}
+	return province_number;
 }
 
 

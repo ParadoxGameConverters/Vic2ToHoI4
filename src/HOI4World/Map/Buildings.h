@@ -76,13 +76,35 @@ class Buildings
 		 const std::pair<int, std::vector<int>>& province,
 		 const Maps::MapData& theMapData,
 		 const Configuration& theConfiguration);
+	void placeStrongholds(const States& theStates, const Maps::MapData& theMapData);
 	void placeDockyards(const States& theStates,
 		 const CoastalProvinces& theCoastalProvinces,
 		 std::map<int, std::vector<int>> actualCoastalProvinces,
 		 const Maps::MapData& theMapData);
 	void placeAntiAir(const States& theStates, const Maps::MapData& theMapData);
 	void placeSyntheticRefineries(const States& theStates, const Maps::MapData& theMapData);
+	void placeFuelSilos(const States& theStates, const Maps::MapData& theMapData);
+	void placeRadarStations(const States& theStates, const Maps::MapData& theMapData);
+	void placeNavalSupplyHubs(const std::map<int, int>& provinceToStateIDMap,
+		 const std::map<int, std::vector<int>>& actualCoastalProvinces,
+		 const Maps::MapData& theMapData,
+		 const Configuration& theConfiguration);
+	void addNavalSupplyHub(int stateID,
+		 const std::pair<int, std::vector<int>>& province,
+		 const Maps::MapData& theMapData,
+		 const Configuration& theConfiguration);
+	void placeNavalHeadquarters(const std::map<int, int>& provinceToStateIDMap,
+		 const std::map<int, std::vector<int>>& actualCoastalProvinces,
+		 const Maps::MapData& theMapData,
+		 const Configuration& theConfiguration);
+	void addNavalHeadquarters(int stateID,
+		 const std::pair<int, std::vector<int>>& province,
+		 const Maps::MapData& theMapData,
+		 const Configuration& theConfiguration);
 	void placeNuclearReactors(const States& theStates, const Maps::MapData& theMapData);
+	void placeSpecialProjects(const States& theStates, const Maps::MapData& theMapData);
+	void placeDams(const States& theStates, const Maps::MapData& theMapData);
+	void placeCanals(const States& theStates, const Maps::MapData& theMapData);
 	void placeRocketSites(const States& theStates, const Maps::MapData& theMapData);
 
 	void placeSupplyNodes(const std::map<int, int>& provinceToStateIDMap,
@@ -94,6 +116,8 @@ class Buildings
 		 const Maps::MapData& theMapData,
 		 const Configuration& theConfiguration);
 
+	void placeLandmarks(const States& theStates, const Maps::MapData& theMapData);
+
 	std::multimap<int, Building> buildings;
 
 	defaultPositions defaultArmsFactories;
@@ -102,13 +126,22 @@ class Buildings
 	defaultPositions defaultNavalBases;
 	defaultPositions defaultBunkers;
 	defaultPositions defaultCoastalBunkers;
+	defaultPositions defaultStrongholds;
 	defaultPositions defaultDockyards;
 	defaultPositions defaultAntiAirs;
 	defaultPositions defaultSyntheticRefineries;
+	defaultPositions defaultFuelSilos;
+	defaultPositions defaultRadarStations;
+	defaultPositions defaultNavalSupplyHubs;
+	defaultPositions defaultNavalHqs;
 	defaultPositions defaultNuclearReactors;
+	defaultPositions defaultSpecialProjects;
+	defaultPositions defaultDams;
+	defaultPositions defaultCanals;
 	defaultPositions defaultSupplyNodes;
 	defaultPositions defaultFloatingHarbors;
 	defaultPositions defaultRocketSites;
+	defaultPositions defaultLandmarks;
 };
 
 } // namespace HoI4
