@@ -9,18 +9,49 @@
 
 
 
+constexpr std::array<std::pair<const char*, Vic2::Encoding>, 13> languages = {{
+	 {"english", Vic2::Encoding::Win1252},
+	 {"french", Vic2::Encoding::Win1252},
+	 {"german", Vic2::Encoding::Win1252},
+	 {"polish", Vic2::Encoding::Win1250},
+	 {"spanish", Vic2::Encoding::Win1252},
+	 {"italian", Vic2::Encoding::Win1252},
+	 {"swedish", Vic2::Encoding::Win1250},
+	 {"czech", Vic2::Encoding::Win1250},
+	 {"hungarian", Vic2::Encoding::Win1250},
+	 {"dutch", Vic2::Encoding::Win1252},
+	 {"braz_por", Vic2::Encoding::Win1252},
+	 {"russian", Vic2::Encoding::Win1251},
+	 {"finnish", Vic2::Encoding::Win1252},
+}};
+
+
+
 std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Factory::ImportLocalisations(
 	 const commonItems::ModFilesystem& mod_filesystem)
 {
 	Log(LogLevel::Info) << "Reading Vic2 localisation";
 
+	for (const auto& file_name: commonItems::GetAllFilesInFolder("Configurables/Vic2Localisations"))
+	{
+		ReadFromFile("Configurables/Vic2Localisations" / file_name);
+	}
 	for (const auto& file: mod_filesystem.GetAllFilesInFolder("localisation"))
 	{
 		ReadFromFile(file);
 	}
-	for (const auto& file_name: commonItems::GetAllFilesInFolder("Configurables/Vic2Localisations"))
+
+	for (auto& localisation: localisations_)
 	{
-		ReadFromFile("Configurables/Vic2Localisations" / file_name);
+		auto& translations = localisation.second;
+		const auto& englishTranslation = translations["english"];
+		for (const auto& language: languages)
+		{
+			if (strcmp(language.first, "english") != 0)
+			{
+				translations.try_emplace(language.first, englishTranslation);
+			}
+		}
 	}
 
 	return std::make_unique<Localisations>(localisations_, localisation_to_key_map_);
@@ -45,30 +76,11 @@ void Vic2::Localisations::Factory::ReadFromFile(const std::filesystem::path& fil
 }
 
 
-constexpr std::array<std::pair<const char*, Vic2::Encoding>, 13> languages = {{
-	 {"english", Vic2::Encoding::Win1252},
-	 {"french", Vic2::Encoding::Win1252},
-	 {"german", Vic2::Encoding::Win1252},
-	 {"polish", Vic2::Encoding::Win1250},
-	 {"spanish", Vic2::Encoding::Win1252},
-	 {"italian", Vic2::Encoding::Win1252},
-	 {"swedish", Vic2::Encoding::Win1250},
-	 {"czech", Vic2::Encoding::Win1250},
-	 {"hungarian", Vic2::Encoding::Win1250},
-	 {"dutch", Vic2::Encoding::Win1252},
-	 {"braz_por", Vic2::Encoding::Win1252},
-	 {"russian", Vic2::Encoding::Win1251},
-	 {"finnish", Vic2::Encoding::Win1252},
-}};
 void Vic2::Localisations::Factory::ProcessLine(const std::string& line)
 {
 	auto division = line.find_first_of(';');
 	const auto key = line.substr(0, division);
-
-	if (localisations_.contains(key))
-	{
-		return;
-	}
+	auto& translations = localisations_[key];
 
 	for (const auto& [language, encoding]: languages)
 	{
@@ -76,19 +88,20 @@ void Vic2::Localisations::Factory::ProcessLine(const std::string& line)
 		division = newDivision;
 
 		auto UTF8Result = ConvertToUtf8(rawLocalisation, encoding);
+		if (UTF8Result.empty())
+		{
+			continue;
+		}
 
-		if (strcmp(language, "english") == 0)
+		if (UTF8Result == "x")
+		{
+			break;
+		}
+
+		const auto inserted = translations.try_emplace(language, UTF8Result).second;
+		if (inserted && strcmp(language, "english") == 0)
 		{
 			localisation_to_key_map_[UTF8Result] = key;
-		}
-
-		if (!UTF8Result.empty())
-		{
-			localisations_[key][language] = UTF8Result;
-		}
-		else if (strcmp(language, "english") != 0)
-		{
-			localisations_[key][language] = localisations_[key]["english"];
 		}
 	}
 }
